@@ -1,25 +1,40 @@
-# 함께 작업하는 방법
+# 협업 안내
 
-## 기본 규칙
+기본 환경 설치와 웹 실행은 [README](README.md)의 빠른 시작을 따릅니다.
+이 문서는 작업 브랜치에서 PR 병합까지의 흐름을 설명합니다.
 
-- 이슈는 필요할 때 자유롭게 작성합니다. 빈 이슈와 기존 템플릿을 모두 사용할 수 있습니다.
-- 이슈 연결, 브랜치 이름의 이슈 번호, 이슈 미작성 사유는 필수가 아닙니다.
-- `main`에는 PR로 병합합니다. 필요한 승인 수는 **0명**입니다.
-- 리뷰와 리뷰 대화 해결은 선택입니다. CodeRabbit 결과도 참고용입니다.
-- CI의 `python-check`, `web-check`를 통과한 PR을 작성자가 직접 Squash 병합할 수 있습니다.
-- 병합 전에 최신 `main`을 반영합니다. 작업 브랜치는 병합 후 자동 삭제됩니다.
-- `main` 강제 푸시와 삭제를 차단합니다. 관리자도 평소에는 같은 PR 흐름을 사용합니다.
+## 협업 규칙
 
-브랜치 예: `feat/data-loader`, `fix/time-alignment`, `docs/experiment-guide`.
-Codex가 만드는 작업 브랜치는 `codex/` 접두사를 사용합니다.
+| 항목 | 운영 방식 |
+|---|---|
+| 이슈 | 자유롭게 작성합니다. 빈 이슈와 작업·버그·실험 템플릿을 사용할 수 있습니다. |
+| 변경 반영 | 작업 브랜치에서 PR을 만들고 `main`에 Squash 병합합니다. |
+| 필수 검사 | `python-check`, `web-check` |
+| 승인·리뷰 | 승인 인원은 0명이며, 리뷰 대화 해결과 CodeRabbit 완료는 병합 필수 조건이 아닙니다. |
+| 브랜치 정리 | 병합한 원격 작업 브랜치는 자동으로 삭제됩니다. |
 
-## 로컬 개발
+## 1. 작업 시작
 
-Python 3.12.13과 uv를 사용합니다. Windows에서는 연구 실행에 WSL2를 권장합니다.
-저장소마다 가상환경을 만들며 `.venv`는 커밋하지 않습니다.
+최신 `main`에서 작업 브랜치를 만듭니다.
 
 ```bash
-uv sync --locked
+git switch main
+git pull --ff-only
+git switch -c feat/result-filter
+```
+
+브랜치 이름은 작업 내용을 알아볼 수 있게 정합니다.
+예를 들어 `feat/data-loader`, `fix/time-alignment`, `docs/experiment-guide`를 사용합니다.
+위 예제의 `feat/result-filter`는 실제 작업에 맞게 바꿉니다.
+
+한 PR에는 함께 설명하고 검토할 수 있는 변경을 담습니다.
+실행 방법이나 결과 형식을 바꾸면 관련 문서도 같은 PR에서 수정합니다.
+
+## 2. 변경 확인
+
+저장소 최상위 폴더에서 다음 검사를 실행할 수 있습니다.
+
+```bash
 uv run --locked ruff check .
 uv run --locked ruff format --check .
 uv run --locked pytest
@@ -27,62 +42,94 @@ uv run --locked python -m traffic_forecasting check-data --site web
 uv run --locked python scripts/check_reproducibility.py
 ```
 
-의존성을 바꿀 때는 `pyproject.toml`과 `uv.lock`을 함께 커밋합니다.
-CI에서 사용하는 uv 버전은 0.11.28입니다. Python이나 uv를 바꿀 때도 PR로 검증합니다.
-GPU·모델 가중치가 필요한 실험 환경은 기본 개발 환경과 구분하여 기록합니다.
+| CI 작업 | 검사 내용 |
+|---|---|
+| `python-check` | Python 정적 검사, 코드 포맷, 자동 테스트 |
+| `web-check` | JSON 형식과 파일 간 일관성, HTML의 로컬 CSS·스크립트 경로, 예제 결과 재현성 |
 
-## PR 작성과 CodeRabbit
+포맷 검사만 실패했다면 `uv run --locked ruff format .`으로 정리하고 변경 내용을 확인합니다.
+웹 화면을 수정했다면 [웹 개발 안내](web/README.md)의 화면 확인 항목도 점검합니다.
 
-1. 작업 브랜치를 푸시하고 `main` 대상으로 PR을 엽니다.
-2. 제목 자동 작성을 원하면 PR 제목을 `@coderabbitai`로 지정합니다.
-3. 템플릿의 `@coderabbitai summary` 위치에 CodeRabbit이 변경 요약을 작성합니다.
-4. 리뷰가 자동으로 시작되지 않으면 `Trigger review`를 누르거나 PR 댓글에
-   `@coderabbitai review`를 작성합니다. 무료 공개 레포 정책에서는 별 10개 미만인 경우
-   수동 요청이 필요하며, 체험 요금제에서는 자동으로 시작될 수 있습니다.
-5. 생성된 제목·요약을 확인하고, 직접 확인한 내용이 있으면 보완합니다.
-6. 필수 CI가 통과하면 별도 승인 없이 병합할 수 있습니다.
+의존성을 추가·변경할 때는 `pyproject.toml`과 `uv.lock`을 함께 반영합니다.
+Python 버전은 `.python-version`, CI의 uv 버전은
+[워크플로](.github/workflows/ci.yml)에서 관리합니다.
 
-제목 자동 생성은 제목에 `@coderabbitai`가 있을 때 실행됩니다. 이미 직접 작성한 제목은
-유지합니다. 본문에서는 `@coderabbitai summary` 부분에 변경 요약을 채우며,
-직접 실행한 검사나 참고 사항까지 자동으로 확인하거나 작성하는 것은 아닙니다.
+## 3. PR 작성
 
-리뷰 본문과 대화 답변은 `.coderabbit.yaml`의 `language: ko-KR`과 한국어 작성 지침을
-따릅니다. 처리 중·건너뜀·오류 안내와 버튼 등 서비스의 고정 문구는 영문으로 표시될 수 있습니다.
-처리 중 표시나 제목·요약 생성만으로 코드 리뷰가 끝났다고 판단하지 않습니다.
-CodeRabbit의 완료 결과와 실제 리뷰 내용을 확인합니다. 리뷰 도중 추가 커밋을 푸시하거나
-PR을 병합하면 진행 중인 리뷰가 중단되거나 건너뛰어질 수 있습니다.
+수정한 파일을 커밋한 뒤 작업 브랜치를 푸시하고, GitHub에서 `main`을 대상으로 PR을 엽니다.
 
-리뷰 결과를 확인하려면 완료될 때까지 기다린 뒤 병합합니다. 이는 선택 사항이며,
-CodeRabbit 완료나 리뷰 대화 해결을 병합 조건으로 강제하지 않습니다.
+```bash
+git push -u origin feat/result-filter
+```
 
-CodeRabbit은 필수 검사나 필수 승인자로 지정하지 않습니다. 유료 Coding Agent,
-자동 수정, 자동 병합, 푸시만으로 PR을 생성하는 자동화는 기본 구성에 포함하지 않습니다.
-정책이 바뀌면 [공식 요금제 문서](https://docs.coderabbit.ai/management/plans)를 확인합니다.
+PR 본문은 다음 세 가지를 중심으로 작성합니다.
 
-## 연구 변경
+| 항목 | 작성할 내용 |
+|---|---|
+| 변경 내용 | 해결하려는 문제와 변경 후 동작 |
+| 확인한 내용 | 직접 실행한 명령과 결과, 화면 확인 내용 |
+| 참고 사항 | 관련 자료, 스크린샷, 후속 작업 등 필요한 설명 |
 
-데이터·모델·평가가 바뀌면 실행 설정과 결과 위치를 기록합니다. 이슈, PR 설명,
-`docs/progress/` 중 편한 곳을 사용합니다. 평가 기준은
-[공통 실험 규약](docs/research-protocol.md)을 따릅니다.
+관련 이슈가 있다면 링크를 넣습니다. 이슈 없이도 PR을 만들 수 있습니다.
 
-성능이 개선되지 않아도 비교 조건과 해석을 남기면 유효한 연구 결과입니다.
-전체 원본 데이터·가중치·캐시·비밀키는 커밋하지 않습니다.
+### CodeRabbit 사용
 
-## 작업 보드와 마일스톤
+| 목적 | 사용 방법 |
+|---|---|
+| 제목 자동 생성 | PR 제목에 `@coderabbitai` 입력 |
+| 본문 요약 자동 생성 | 템플릿의 `@coderabbitai summary` 유지 |
+| 리뷰 요청 | PR 댓글에 `@coderabbitai review` 작성 |
+| PR 전체 다시 검토 | PR 댓글에 `@coderabbitai full review` 작성 |
 
-[팀 보드](https://github.com/orgs/2026-fall-capstone-design/projects/1)는 선택적으로 사용합니다.
-Backlog → Ready → In Progress → In Review → Done 순서입니다.
-필요한 작업이나 PR만 추가하며 모든 작업을 이슈로 만들 필요는 없습니다.
-프로젝트는 조직 내부용이며, 접근 권한은 조직의 프로젝트 권한 설정을 따릅니다.
+자동 생성된 제목과 요약을 읽고 실제 변경과 맞는지 확인합니다.
+`확인한 내용`에는 작성자가 수행한 검증을 기록합니다.
 
-마일스톤은 환경과 합성 예제 → 데이터와 기준 모델 → 연구 비교 실험 → 최종 데모와 보고서로
-준비했습니다. 일정과 담당자는 팀에서 정합니다.
+현재 설정은 `main` 대상의 Draft가 아닌 PR에 자동 리뷰를 요청하며,
+리뷰와 대화 답변은 한국어로 작성하도록 되어 있습니다.
+리뷰 결과를 반영할 계획이라면 `Review completed`와 실제 검토 내용을 확인한 뒤 병합합니다.
+`Review in progress`는 진행 중, `Review skipped`는 검토를 건너뛴 상태입니다.
 
-## 라벨
+설정은 [.coderabbit.yaml](.coderabbit.yaml), 추가 명령은
+[CodeRabbit 공식 안내](https://docs.coderabbit.ai/reference/review-commands)에서 확인합니다.
 
-라벨은 필요할 때만 사용합니다. 이름은 접두사 없이 영문 소문자로, 설명은 한국어로 통일합니다.
-작업 종류와 영역을 함께 표시할 수 있습니다. 예를 들어 데이터 오류 수정은 `bug`와 `data`,
-모델 비교 실험은 `experiment`와 `model`을 붙이면 됩니다.
+## 4. 최신 main 반영과 병합
+
+다른 PR이 먼저 병합되었다면 현재 작업 브랜치에서 최신 `main`을 반영합니다.
+
+```bash
+git fetch origin
+git merge origin/main
+```
+
+충돌이 있다면 해당 파일을 수정하고 해결한 변경을 커밋합니다.
+이후 `git push`로 PR을 갱신합니다.
+
+PR의 변경 파일과 확인 결과를 검토하고, `python-check`와 `web-check`가 통과하면
+**Squash and merge**로 병합합니다. 다음 작업은 최신 `main`에서 시작합니다.
+
+```bash
+git switch main
+git pull --ff-only
+```
+
+병합 후에는 `main`의 검사와 Pages 배포가 실행됩니다.
+진행 상태는 저장소의 **Actions → Checks and Pages**에서 확인합니다.
+
+## 작업 보드와 라벨
+
+[팀 작업 보드](https://github.com/orgs/2026-fall-capstone-design/projects/1)에는
+공유할 작업이나 PR을 추가합니다. 상태는 다음 기준으로 사용합니다.
+
+| 상태 | 의미 |
+|---|---|
+| Backlog | 아직 범위나 우선순위를 정하지 않은 작업 |
+| Ready | 착수할 수 있도록 목표와 범위를 정한 작업 |
+| In Progress | 구현·분석 중인 작업 |
+| In Review | PR 검토나 결과 확인 중인 작업 |
+| Done | 병합하거나 결과 정리를 마친 작업 |
+
+라벨은 작업 종류와 영역을 조합합니다.
+데이터 오류 수정에는 `bug`와 `data`, 모델 비교에는 `experiment`와 `model`을 붙일 수 있습니다.
 
 | 라벨 | 용도 |
 |---|---|
@@ -97,6 +144,4 @@ Backlog → Ready → In Progress → In Review → Done 순서입니다.
 | `infra` | 개발 환경과 CI·배포 |
 | `blocked` | 선행 작업이나 결정 대기 |
 
-영역 라벨은 파란색, 일반 작업·문서·실험은 초록색, 버그는 빨간색, 대기는 노란색으로 구분합니다.
-새 기능이나 개선은 `task`로 표시합니다. 진행 상태는 보드에서 관리하고,
-진행을 막는 원인이 있을 때만 `blocked`를 추가합니다.
+진행 단계와 기록 양식은 [진행 기록 안내](docs/progress/README.md)를 참고합니다.
