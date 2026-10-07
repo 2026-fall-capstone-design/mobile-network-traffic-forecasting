@@ -22,6 +22,9 @@ Python 3.12.13과 uv를 사용합니다. Windows에서는 연구 실행에 WSL2�
 uv sync --locked
 uv run --locked ruff check .
 uv run --locked ruff format --check .
+uv run --locked pytest
+uv run --locked python -m traffic_forecasting check-data --site web
+uv run --locked python scripts/check_reproducibility.py
 ```
 
 의존성을 바꿀 때는 `pyproject.toml`과 `uv.lock`을 함께 커밋합니다.
@@ -33,8 +36,9 @@ GPU·모델 가중치가 필요한 실험 환경은 기본 개발 환경과 구�
 1. 작업 브랜치를 푸시하고 `main` 대상으로 PR을 엽니다.
 2. 제목 자동 작성을 원하면 PR 제목을 `@coderabbitai`로 지정합니다.
 3. 템플릿의 `@coderabbitai summary` 위치에 CodeRabbit이 변경 요약을 작성합니다.
-4. 별 10개 미만 공개 레포에서는 현행 정책상 리뷰를 수동 요청합니다.
-   `Trigger review`를 누르거나 PR 댓글에 `@coderabbitai review`를 작성합니다.
+4. 리뷰가 자동으로 시작되지 않으면 `Trigger review`를 누르거나 PR 댓글에
+   `@coderabbitai review`를 작성합니다. 무료 공개 레포 정책에서는 별 10개 미만인 경우
+   수동 요청이 필요하며, 체험 요금제에서는 자동으로 시작될 수 있습니다.
 5. 생성된 제목·요약을 확인하고, 직접 확인한 내용이 있으면 보완합니다.
 6. 필수 CI가 통과하면 별도 승인 없이 병합할 수 있습니다.
 
@@ -50,3 +54,13 @@ CodeRabbit은 필수 검사나 필수 승인자로 지정하지 않습니다. �
 
 성능이 개선되지 않아도 비교 조건과 해석을 남기면 유효한 연구 결과입니다.
 전체 원본 데이터·가중치·캐시·비밀키는 커밋하지 않습니다.
+
+## 작업 보드와 마일스톤
+
+[팀 보드](https://github.com/orgs/2026-fall-capstone-design/projects/1)는 선택적으로 사용합니다.
+Backlog → Ready → In Progress → In Review → Done 순서입니다.
+필요한 작업이나 PR만 추가하며 모든 작업을 이슈로 만들 필요는 없습니다.
+프로젝트는 조직 내부용이며, 접근 권한은 조직의 프로젝트 권한 설정을 따릅니다.
+
+마일스톤은 환경과 합성 예제 → 데이터와 기준 모델 → 연구 비교 실험 → 최종 데모와 보고서로
+준비했습니다. 일정과 담당자는 팀에서 정합니다. `area:*` 라벨로 작업 영역을 표시할 수 있습니다.

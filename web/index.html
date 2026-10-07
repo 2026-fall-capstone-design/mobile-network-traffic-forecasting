@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TabICLv2 캡스톤 팀의 모바일 트래픽 예측 결과 뷰어. 현재는 합성 데이터로 동작을 확인하는 데모입니다.">
+  <title>Traffic Lab · 예측 결과</title>
+  <link rel="stylesheet" href="./assets/style.css">
+  <script defer src="./assets/vendor/chart.umd.min.js"></script>
+  <script defer src="./assets/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">↗</span> TRAFFIC LAB</a>
+    <span class="team">2026 CAPSTONE</span>
+    <a class="repo-link" href="https://github.com/2026-fall-capstone-design/tabicl-traffic-forecasting">GitHub ↗</a>
+  </header>
+  <main id="main">
+    <section class="intro">
+      <p class="eyebrow">MOBILE TRAFFIC FORECASTING</p>
+      <h1>예측을 살펴보고,<br>차이를 비교합니다.</h1>
+      <p class="lead">시간에 따른 실제 값과 예측 값을 한눈에 확인하는 팀의 실험 기록입니다.</p>
+      <p class="notice" id="dataset-notice">합성 데이터 데모 · 실제 연구 성능을 나타내지 않습니다.</p>
+    </section>
+
+    <section class="filters panel" aria-label="결과 선택">
+      <label>실험<select id="run" disabled><option>불러오는 중</option></select></label>
+      <label>예측 모델<select id="model" disabled><option>불러오는 중</option></select></label>
+      <label>셀<select id="cell" disabled><option>불러오는 중</option></select></label>
+      <label>차트 표시 구간<select id="period" disabled>
+        <option value="all">전체 구간</option>
+        <option value="12">마지막 12개 시점</option>
+        <option value="6">마지막 6개 시점</option>
+      </select></label>
+    </section>
+    <div class="status" id="status" role="status" aria-live="polite">결과를 불러오고 있습니다.</div>
+    <button class="retry" id="retry" hidden>다시 불러오기</button>
+
+    <div id="results" hidden aria-busy="false">
+      <section class="panel chart-panel" aria-labelledby="chart-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / TIME SERIES</p><h2 id="chart-title">실제 값과 예측 값</h2></div>
+          <p class="chart-caption" id="chart-caption"></p>
+        </div>
+        <div class="legend" aria-hidden="true"><span class="actual">실제 값</span><span class="predicted">예측 값</span></div>
+        <div class="chart-wrap"><canvas id="forecast" role="img" aria-label="실제 값과 예측 값의 시간별 비교. 아래 표에서 수치를 확인할 수 있습니다."></canvas></div>
+        <p class="muted" id="chart-range"></p>
+        <details class="data-details">
+          <summary>표로 수치 확인</summary>
+          <div class="table-scroll" tabindex="0" aria-label="선택 구간 예측 수치">
+            <table><caption class="sr-only">차트에 표시된 시간별 실제 값과 예측 값</caption>
+              <thead><tr><th scope="col">시각 (UTC)</th><th scope="col">실제 값</th><th scope="col">예측 값</th></tr></thead>
+              <tbody id="point-rows"></tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+
+      <section aria-labelledby="metrics-title">
+        <div class="section-heading metric-heading">
+          <div><p class="eyebrow">02 / MODEL COMPARISON</p><h2 id="metrics-title">전체 평가 결과</h2></div>
+          <p class="muted" id="metric-scope"></p>
+        </div>
+        <p class="muted">지표는 전체 셀·전체 테스트 구간의 결과입니다. 차트의 셀·표시 구간을 바꿔도 같으며, 값이 작을수록 오차가 작습니다.</p>
+        <div class="kpis">
+          <article class="panel kpi"><h3>MAE <span>평균 절대 오차</span></h3><p id="mae">—</p></article>
+          <article class="panel kpi"><h3>RMSE <span>전체 표본 기준</span></h3><p id="rmse">—</p></article>
+          <article class="panel kpi"><h3>Macro RMSE <span>셀별 RMSE의 평균</span></h3><p id="macro-rmse">—</p></article>
+        </div>
+        <div class="panel table-scroll" tabindex="0" aria-label="전체 모델 지표 비교">
+          <table><caption>동일한 테스트 표본에서 모델 비교</caption>
+            <thead><tr><th scope="col">모델</th><th scope="col">MAE</th><th scope="col">RMSE</th><th scope="col">Macro RMSE</th></tr></thead>
+            <tbody id="metric-rows"></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel record" aria-labelledby="record-title">
+        <div><p class="eyebrow">03 / EXPERIMENT RECORD</p><h2 id="record-title">이 결과에 대하여</h2>
+          <p class="muted" id="dataset-description"></p></div>
+        <dl id="record"></dl>
+        <p class="muted">각 시점에서 1시간 뒤를 예측합니다. 앞선 시점에서 관측된 실제 값은 다음 예측에 사용할 수 있습니다.</p>
+      </section>
+    </div>
+    <noscript><p class="notice">결과를 표시하려면 브라우저의 JavaScript를 켜 주세요.</p></noscript>
+  </main>
+  <footer><span>TabICLv2 · 4인 캡스톤 프로젝트</span><a href="https://github.com/2026-fall-capstone-design/tabicl-traffic-forecasting/blob/main/docs/research-protocol.md">실험 규약 ↗</a></footer>
+</body>
+</html>
