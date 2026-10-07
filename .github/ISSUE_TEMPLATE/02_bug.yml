@@ -1,0 +1,51 @@
+name: 버그 제보
+description: 오류를 재현하고 수정하는 데 필요한 정보를 정리합니다.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        같은 오류가 이미 등록되어 있는지 확인하고, 다른 팀원이 재현할 수 있도록 작성해 주세요.
+        담당자가 정해졌다면 오른쪽 Assignees에서 지정해 주세요.
+  - type: textarea
+    id: actual
+    attributes:
+      label: 발생한 문제
+      description: 실제 동작과 영향을 받는 기능을 적어 주세요.
+      placeholder: 특정 기간을 선택하면 예측 그래프가 비어 있는 상태로 표시됩니다.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 동작
+      placeholder: 선택한 기간의 예측값과 실제값이 표시되어야 합니다.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 방법
+      description: 실행 명령, 입력값 또는 화면 조작 순서를 적어 주세요. 재현이 불규칙하다면 발생 조건을 적어 주세요.
+      placeholder: |
+        1. 사용한 데이터 또는 입력값:
+        2. 실행한 명령 또는 조작:
+        3. 오류가 발생한 시점:
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 실행 환경
+      description: 해당하는 항목만 작성해 주세요.
+      placeholder: |
+        - 브랜치 / 커밋:
+        - OS:
+        - Python / 주요 라이브러리 버전:
+        - 브라우저 또는 CPU / GPU:
+        - 데이터 / 모델 버전:
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 로그 / 스크린샷 / 참고 자료
+      description: 오류 메시지, 스크린샷 또는 관련 이슈를 첨부해 주세요.
