@@ -1,3 +1,5 @@
+<!-- 제목 자동 생성을 원하면 PR 제목에 @coderabbitai를 입력하세요. -->
+
 ## 변경 내용
 
 @coderabbitai summary
