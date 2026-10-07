@@ -14,14 +14,14 @@ body:
       description: 실제 동작과 영향을 받는 기능을 적어 주세요.
       placeholder: 특정 기간을 선택하면 예측 그래프가 비어 있는 상태로 표시됩니다.
     validations:
-      required: true
+      required: false
   - type: textarea
     id: expected
     attributes:
       label: 기대한 동작
       placeholder: 선택한 기간의 예측값과 실제값이 표시되어야 합니다.
     validations:
-      required: true
+      required: false
   - type: textarea
     id: steps
     attributes:
@@ -32,7 +32,7 @@ body:
         2. 실행한 명령 또는 조작:
         3. 오류가 발생한 시점:
     validations:
-      required: true
+      required: false
   - type: textarea
     id: environment
     attributes:
