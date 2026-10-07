@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: ko-KR
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  high_level_summary_in_walkthrough: false
+  high_level_summary_placeholder: "@coderabbitai summary"
+  high_level_summary_instructions: |
+    핵심 변경과 사용자 또는 연구 결과에 미치는 영향을 한국어로 간결하게 작성한다.
+    이슈 작성과 연결은 선택이다. 이슈가 없다는 이유로 지적하지 않는다.
+    실제로 확인되지 않은 테스트 결과나 연구 성능을 만들어 쓰지 않는다.
+    예제 데이터는 합성 데이터이며 실제 TabICLv2 실험 결과와 구분한다.
+  auto_title_placeholder: "@coderabbitai"
+  auto_title_instructions: "핵심 변경을 설명하는 간결한 한국어 제목을 작성한다. 이슈 번호는 필수가 아니다."
+  assess_linked_issues: false
+  suggested_reviewers: false
+  auto_assign_reviewers: false
+  poem: false
+  sequence_diagrams: false
+  auto_review:
+    enabled: true
+    drafts: false
+  path_filters:
+    - "!web/data/**"
+    - "!data/sample/**"
+    - "!web/assets/vendor/**"
+  path_instructions:
+    - path: "src/traffic_forecasting/**"
+      instructions: |
+        미래 정보 누수, 셀·시간 정렬, 결측과 0 구분, 지표 집계, 재현성을 검토한다.
+        연구 모델의 종류는 미정이다. 특정 군집화·예측 모델을 강제하지 않는다.
+    - path: "web/**"
+      instructions: |
+        GitHub Pages 프로젝트 하위 경로, 데이터 로딩 실패, 빈 결과, 접근성을 검토한다.
+        HTML/CSS/JavaScript 정적 웹이다. Node.js나 프레임워크 도입을 필수로 요구하지 않는다.

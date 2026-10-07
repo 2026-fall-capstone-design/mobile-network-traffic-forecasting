@@ -1,0 +1,28 @@
+[project]
+name = "traffic-forecasting"
+version = "0.1.0"
+description = "Reproducible traffic forecasting experiments and a static results viewer"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = ["jsonschema[format]>=4.23,<5", "pyyaml>=6.0.2,<7"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/traffic_forecasting"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

@@ -14,7 +14,7 @@ body:
       description: 무엇을 비교하거나 확인하려고 하나요?
       placeholder: 입력 이력 길이를 변경했을 때 TabICLv2의 트래픽 예측 오차가 줄어드는지 비교합니다.
     validations:
-      required: true
+      required: false
   - type: textarea
     id: data
     attributes:
@@ -26,7 +26,7 @@ body:
         - 학습 또는 컨텍스트 / 검증 / 테스트 기간:
         - 미래 정보가 입력이나 전처리에 포함되지 않도록 확인할 사항:
     validations:
-      required: true
+      required: false
   - type: textarea
     id: setup
     attributes:
@@ -40,7 +40,7 @@ body:
         - 실행 명령 또는 노트북 / 설정 파일:
         - 랜덤 시드 / 실행 환경:
     validations:
-      required: true
+      required: false
   - type: textarea
     id: acceptance
     attributes:
@@ -48,7 +48,7 @@ body:
       description: 성능이 개선되지 않더라도 실험을 완료했다고 판단할 기준을 적어 주세요.
       placeholder: 동일한 테스트 구간에서 기준 모델과 비교하고, 지표·실행 시간·해석을 기록한다.
     validations:
-      required: true
+      required: false
   - type: textarea
     id: results
     attributes:
