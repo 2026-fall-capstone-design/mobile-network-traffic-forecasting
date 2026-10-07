@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "model_id",
+    "cell_id",
+    "points"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "model_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "cell_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "points": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "origin_time",
+          "timestamp",
+          "actual",
+          "predicted"
+        ],
+        "properties": {
+          "origin_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actual": {
+            "type": "number",
+            "minimum": 0
+          },
+          "predicted": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

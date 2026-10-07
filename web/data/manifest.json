@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "dataset": {
+    "id": "synthetic-hourly-v1",
+    "kind": "synthetic",
+    "unit": "합성 활동량",
+    "timezone": "UTC",
+    "description": "구성 확인용 합성 데이터입니다. 실제 연구 성능을 나타내지 않습니다."
+  },
+  "runs": [
+    {
+      "id": "synthetic-demo-v1",
+      "label": "합성 데이터 기본 비교",
+      "test_start": "2026-01-04T00:00:00Z",
+      "test_end": "2026-01-04T23:00:00Z",
+      "generated_at": "2026-10-07T07:39:57.566112Z",
+      "provenance": {
+        "commit": "81e6fad14e63033c8dd632082518c270e1f30339",
+        "dirty": true,
+        "python": "3.12.13",
+        "data_sha256": "575569bce1ddd45ba8c96bfd27f8c4e7d4e913fb5024fc54edb2e7fa45994e29",
+        "config_sha256": "0e27203d9a71cecb0436c10032d6237d0a866cd284fecd2973e0ff54e8aa69e9"
+      },
+      "metrics_path": "metrics/synthetic-demo-v1.json",
+      "models": [
+        {
+          "id": "last-value",
+          "label": "직전 값",
+          "series": [
+            {
+              "cell_id": "1001",
+              "path": "predictions/synthetic-demo-v1/last-value/1001.json"
+            },
+            {
+              "cell_id": "1002",
+              "path": "predictions/synthetic-demo-v1/last-value/1002.json"
+            },
+            {
+              "cell_id": "1003",
+              "path": "predictions/synthetic-demo-v1/last-value/1003.json"
+            }
+          ]
+        },
+        {
+          "id": "seasonal-24h",
+          "label": "24시간 전 값",
+          "series": [
+            {
+              "cell_id": "1001",
+              "path": "predictions/synthetic-demo-v1/seasonal-24h/1001.json"
+            },
+            {
+              "cell_id": "1002",
+              "path": "predictions/synthetic-demo-v1/seasonal-24h/1002.json"
+            },
+            {
+              "cell_id": "1003",
+              "path": "predictions/synthetic-demo-v1/seasonal-24h/1003.json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
