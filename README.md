@@ -5,6 +5,9 @@
 Python에서 데이터를 처리하고 예측·평가한 뒤 JSON으로 내보냅니다.
 웹은 HTML·CSS·JavaScript로 결과를 표시하며 GitHub Pages에 배포합니다.
 
+- [정적 데모](https://2026-fall-capstone-design.github.io/tabicl-traffic-forecasting/)
+- [팀 작업 보드](https://github.com/orgs/2026-fall-capstone-design/projects/1)
+
 ## 현재 범위
 
 연구 방향은 아직 결정되지 않았습니다. TabICLv2 직접 예측과 TabICLv2 기반 군집화 후
@@ -24,18 +27,33 @@ uv run --locked ruff check .
 uv run --locked ruff format --check .
 uv run --locked pytest
 uv run --locked python -m traffic_forecasting demo --config configs/demo.yaml
-uv run --locked python -m traffic_forecasting check-data
+uv run --locked python -m traffic_forecasting check-data --site web
+uv run --locked python scripts/check_reproducibility.py
+uv run --locked python -m http.server 8000 --directory web
 ```
+
+마지막 명령을 실행한 뒤 <http://localhost:8000>에서 웹을 확인합니다.
+JSON을 읽으므로 HTML 파일을 직접 더블클릭하는 대신 HTTP 서버를 사용합니다.
+기본 데모는 합성 데이터 3개 셀과 두 기준 모델을 비교합니다.
+셀·표시 구간 필터는 차트만 바꾸며, 평가 지표는 전체 테스트 표본 기준입니다.
 
 웹 개발에 Node.js·npm·React는 필요하지 않습니다.
 TabICLv2·RCTL의 실행 의존성은 선택한 구현의 호환성을 검증한 뒤 별도로 추가합니다.
 
 ## 협업
 
+`main`의 필수 검사가 통과하면 GitHub Actions가 `web/`를 Pages에 배포합니다.
+PR에서는 검사만 실행합니다. 별도 서버·API 키·웹 빌드 과정은 없습니다.
+
 이슈는 자유롭게 작성하고 PR로 병합합니다. 승인과 리뷰 대화 해결은 필수가 아닙니다.
 자세한 절차는 [기여 안내](CONTRIBUTING.md)에 있습니다.
 
 ## 문서
+
+코드는 `src/traffic_forecasting/`, 실행 설정은 `configs/`, 검증은 `tests/`와
+`schemas/`에 있습니다. `data/sample/`만 예제 데이터로 커밋하며,
+`data/raw/`, `data/processed/`, `artifacts/`, `models/`는 Git에서 제외합니다.
+웹에 공개할 검증된 JSON은 `web/data/`에 둡니다.
 
 - [데이터 준비](data/README.md)
 - [공통 실험 규약](docs/research-protocol.md)
