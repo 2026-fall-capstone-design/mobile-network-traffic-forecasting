@@ -22,6 +22,9 @@ cd tabicl-traffic-forecasting
 uv sync --locked
 uv run --locked ruff check .
 uv run --locked ruff format --check .
+uv run --locked pytest
+uv run --locked python -m traffic_forecasting demo --config configs/demo.yaml
+uv run --locked python -m traffic_forecasting check-data
 ```
 
 웹 개발에 Node.js·npm·React는 필요하지 않습니다.
@@ -36,6 +39,7 @@ TabICLv2·RCTL의 실행 의존성은 선택한 구현의 호환성을 검증한
 
 - [데이터 준비](data/README.md)
 - [공통 실험 규약](docs/research-protocol.md)
+- [웹 데이터 규약](docs/web-data-contract.md)
 - [주요 결정](docs/decisions.md)
 - [역할과 진행 기록](docs/progress/README.md)
 
