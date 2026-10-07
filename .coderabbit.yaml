@@ -1,8 +1,9 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
 language: ko-KR
 tone_instructions: >-
-  리뷰 요약, 코드별 지적, 개선 제안, 질문과 대화 답변은 한국어 존댓말로 간결하게 작성한다.
-  코드 식별자, 파일 경로, 명령어는 원문을 유지한다. 문제의 이유와 필요한 조치를 명확히 설명한다.
+  모든 리뷰 설명은 한국어 존댓말로 작성한다. Merge Risk의 판단 근거와 Architecture Summary,
+  Architecture concerns, Review details의 설명도 한국어로 작성한다. 코드 식별자·경로·명령어는
+  원문을 유지한다. 게시 전 REVIEW.md와 언어 관련 Learnings를 확인한다.
 reviews:
   profile: chill
   request_changes_workflow: false
@@ -15,6 +16,7 @@ reviews:
     실제로 확인되지 않은 테스트 결과나 연구 성능을 만들어 쓰지 않는다.
     테스트 정보가 없으면 요약에서 생략하고 작성자의 '확인한 내용' 섹션은 유지한다.
     예제 데이터는 합성 데이터이며 실제 TabICLv2 실험 결과와 구분한다.
+    생성한 설명에 영어 문장이 남아 있으면 코드·경로·명령어를 제외하고 한국어로 고쳐 작성한다.
   auto_title_placeholder: "@coderabbitai"
   auto_title_instructions: "핵심 변경을 설명하는 간결한 한국어 제목을 작성한다. 이슈 번호는 필수가 아니다."
   assess_linked_issues: false
@@ -40,5 +42,12 @@ reviews:
       instructions: |
         GitHub Pages 프로젝트 하위 경로, 데이터 로딩 실패, 빈 결과, 접근성을 검토한다.
         HTML/CSS/JavaScript 정적 웹이다. Node.js나 프레임워크 도입을 필수로 요구하지 않는다.
+knowledge_base:
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - "REVIEW.md"
+  learnings:
+    scope: local
 chat:
   art: false

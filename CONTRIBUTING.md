@@ -89,7 +89,9 @@ PR 본문은 다음 세 가지를 중심으로 작성합니다.
 리뷰 결과를 반영할 계획이라면 `Review completed`와 실제 검토 내용을 확인한 뒤 병합합니다.
 `Review in progress`는 진행 중, `Review skipped`는 검토를 건너뛴 상태입니다.
 
-설정은 [.coderabbit.yaml](.coderabbit.yaml), 추가 명령은
+한국어 리뷰 작성 기준은 [REVIEW.md](REVIEW.md), 설정은 [.coderabbit.yaml](.coderabbit.yaml)에서 관리합니다.
+리뷰에 영어 설명이 남으면 해당 댓글 링크와 함께 `@coderabbitai 이 리뷰의 영어 설명을 한국어로 번역해 주세요.`라고 댓글을 작성합니다.
+추가 명령은
 [CodeRabbit 공식 안내](https://docs.coderabbit.ai/reference/review-commands)에서 확인합니다.
 
 ## 4. 최신 main 반영과 병합
