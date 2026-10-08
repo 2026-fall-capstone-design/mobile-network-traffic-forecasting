@@ -1,0 +1,238 @@
+"""Fixed-cell post-clustering diagnosis; never used to select memberships."""
+import os
+for key in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS"):
+    os.environ[key] = "4"
+import copy
+import hashlib
+import json
+import random
+import sys
+import time
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+OUT = ROOT / "results/self_only_reference_160"
+LEDGER = ROOT / "cumulative_execution_budget.json"
+OUT.mkdir(parents=True, exist_ok=True)
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def load(path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+def save(path, value):
+    # Atomic local state replacement; a new training run is never inferred from a missing poll.
+    temp = path.with_name(path.name + ".writing")
+    temp.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+    os.replace(temp, path)
+
+def prepare():
+    assert not (OUT / "frozen_settings.json").exists(), "Reuse existing preparation"
+    inventory = load(ROOT / "results/reference_inventory_160.json")
+    assert inventory["self_only_fits"] == 0
+    old = load(ROOT / "results/rctl_pilot/frozen_settings.json")
+    corrected = load(ROOT / "results/corrected_partition_118/frozen_settings.json")
+    assert sha(ROOT / "rctl_torch.py") == old["model_code_sha256"]
+    assert len(corrected["cell_ids"]) == 16
+    sources = [ROOT / "160_self_only_reference_plan.md", Path(__file__), ROOT / "account_self_only_160.py",
+               ROOT / "rctl_torch.py", ROOT / "results/reference_inventory_160.json",
+               ROOT / "results/rctl_pilot/frozen_settings.json", ROOT / "results/rctl_pilot/fit_results.json",
+               ROOT / "results/rctl_pilot/evaluation_data.npz", ROOT / "results/design_data.npz",
+               ROOT / "results/corrected_partition_118/frozen_settings.json",
+               ROOT / "results/corrected_partition_118/evaluation_data.npz", ROOT / "assets/data_git_version.h5"]
+    references = []
+    for stage, tasks in [("rctl_pilot", old["tasks"]), ("corrected_partition_118", corrected["tasks"])]:
+        for item in tasks:
+            if isinstance(item, list):
+                method, seed, cluster, members = item
+            else:
+                method, seed, cluster, members = [item[k] for k in ("method", "seed", "cluster", "members")]
+            key = f"{method}_{seed}_cluster{cluster}"
+            path = ROOT / "results" / stage / (key + ".npz")
+            sources.append(path)
+            references.append({"stage": stage, "method": method, "seed": seed, "cluster": cluster,
+                               "members": members, "prediction_path": str(path.relative_to(ROOT))})
+    assert len(references) == 37 and all(len(t["members"]) > 1 for t in references)
+    settings = {k: old[k] for k in ("max_epochs", "batch_size", "patience", "learning_rate", "adam_eps", "loss",
+                                   "threads", "train_targets", "validation_targets", "test_targets")}
+    settings.update(seed=20260925, cell_ids=corrected["cell_ids"],
+        tasks=[{"cell_index": j, "cell_id": i, "members": [j]} for j, i in enumerate(corrected["cell_ids"])],
+        max_new_fits=16, max_new_epochs=1280, wall_cap_seconds=600, ram_cap_bytes=2*1024**3,
+        references=references, initial_ledger_sha256=sha(LEDGER),
+        source_hashes={str(p.relative_to(ROOT)): sha(p) for p in sources},
+        RCTL_results_used_for_clustering=False, TabICL_calls=0,
+        comparison_scope="Fixed 16 cells and previously inspected development periods; a self-only reference, not a new clustering candidate.",
+        sampling_scope="All fixed cells; no performance-based early cancellation or subset selection.")
+    assert settings["initial_ledger_sha256"] == inventory["source_hashes"]["cumulative_execution_budget.json"]
+    save(OUT / "frozen_settings.json", settings)
+    print(json.dumps({"prepared": True, "new_fits": 16, "reused_reference_fits": len(references),
+                      "settings_sha256": sha(OUT / "frozen_settings.json")}), flush=True)
+
+def train():
+    import h5py
+    import numpy as np
+    import pandas as pd
+    import psutil
+    import torch
+    from rctl_torch import RCTL
+    torch.set_num_threads(4)
+    torch.set_num_interop_threads(2)
+    assert not (OUT / "run_started.json").exists(), "Do not rerun training"
+    s = load(OUT / "frozen_settings.json")
+    authorization = load(OUT / "budget_authorization.json")
+    assert sha(OUT / "frozen_settings.json") == authorization["settings_sha256"]
+    assert sha(LEDGER) == authorization["ledger_reserved_sha256"]
+    assert all(sha(ROOT / p) == h for p, h in s["source_hashes"].items())
+    start = time.perf_counter()
+    state = {"fits_started": 0, "fits_completed": 0, "epochs_started": 0, "epochs_completed": 0,
+             "results": [], "active_task": None, "peak_rss_bytes": 0, "input_and_reference_checks_passed": False,
+             "reference_models_called": 0, "TabICL_calls": 0}
+    save(OUT / "run_started.json", {"pid": os.getpid(), "unix": time.time(), "settings_sha256": authorization["settings_sha256"]})
+    process = psutil.Process()
+
+    def guard():
+        state["peak_rss_bytes"] = max(state["peak_rss_bytes"], process.memory_info().rss)
+        if time.perf_counter() - start >= s["wall_cap_seconds"]:
+            raise RuntimeError("precommitted stage wall limit")
+        if state["peak_rss_bytes"] > s["ram_cap_bytes"]:
+            raise RuntimeError("precommitted resident memory limit")
+
+    def predict(model, x):
+        model.eval()
+        output = []
+        with torch.no_grad():
+            for offset in range(0, len(x), 512):
+                guard()
+                output.append(model(x[offset:offset+512]))
+        return torch.cat(output).cpu().numpy()
+
+    try:
+        ids = np.array(s["cell_ids"]) - 1
+        with np.load(ROOT / "results/design_data.npz", allow_pickle=False) as d:
+            sel = np.array([int(np.flatnonzero(d["cell_indices"] == i)[0]) for i in ids])
+            scales = d["scales"][sel]
+            reference_X = d["X"][sel]
+        with h5py.File(ROOT / "assets/data_git_version.h5", "r") as h:
+            raw = h["data"][:, ids, 2]
+            dates = pd.to_datetime(h["idx"][:].astype(str))
+        assert np.isfinite(raw).all()
+        z = raw / scales
+        times = np.arange(168, len(raw))
+        cal = dates[times]
+        calendar = np.column_stack([np.sin(2*np.pi*cal.hour/24), np.cos(2*np.pi*cal.hour/24),
+                                    np.sin(2*np.pi*cal.dayofweek/7), np.cos(2*np.pi*cal.dayofweek/7)])
+        flat = np.stack([np.array([np.r_[z[t-8:t, j], z[t-24, j], z[t-168, j],
+                         z[t-24:t, j].mean(), z[t-24:t, j].std(), calendar[k]]
+                         for k, t in enumerate(times)]) for j in range(len(ids))]).astype(np.float32)
+        assert np.allclose(flat[:, :840], reference_X, rtol=1e-6, atol=1e-6)
+        seq = np.empty((len(ids), len(times), 8, 9), np.float32)
+        seq[:, :, :, 0] = flat[:, :, :8]
+        seq[:, :, :, 1:] = flat[:, :, None, 8:]
+        y = z[times].T.astype(np.float32)
+        tr, va, te = times < 840, (times >= 840) & (times < 1008), times >= 1008
+        assert (tr.sum(), va.sum(), te.sum()) == (672, 168, 480)
+        for stage in ("rctl_pilot", "corrected_partition_118"):
+            with np.load(ROOT / "results" / stage / "evaluation_data.npz", allow_pickle=False) as d:
+                assert np.array_equal(d["cell_ids"], ids+1)
+                assert np.array_equal(d["scales"], scales)
+                assert np.array_equal(d["test_y"], y[:, te])
+                assert np.array_equal(d["test_times"], times[te])
+        for reference in s["references"]:
+            with np.load(ROOT / reference["prediction_path"], allow_pickle=False) as p:
+                members = reference["members"]
+                assert np.array_equal(p["cell_ids"], ids[members]+1)
+                assert np.array_equal(p["members"], members)
+                assert np.array_equal(p["y"], y[members][:, te])
+                assert p["prediction"].shape == (len(members), 480)
+                assert np.isfinite(p["prediction"]).all()
+        np.savez_compressed(OUT / "prepared_arrays.npz", seq=seq, y=y, times=times, cell_ids=ids+1, scales=scales)
+        np.savez_compressed(OUT / "evaluation_data.npz", test_y=y[:, te], test_times=times[te], cell_ids=ids+1, scales=scales)
+        state["input_and_reference_checks_passed"] = True
+        save(OUT / "attempt_progress.json", state)
+        print(json.dumps({"event": "input_checks_passed", "reference_files": 37,
+                          "train_rows_per_cell": 672, "validation_rows_per_cell": 168, "query_rows_per_cell": 480}), flush=True)
+        for task in s["tasks"]:
+            guard()
+            j = task["cell_index"]
+            key = f"self_only_{s['seed']}_cell{task['cell_id']}"
+            state["fits_started"] += 1
+            assert state["fits_started"] <= s["max_new_fits"]
+            state["active_task"] = task
+            save(OUT / "attempt_progress.json", state)
+            random.seed(s["seed"]); np.random.seed(s["seed"]); torch.manual_seed(s["seed"])
+            generator = torch.Generator().manual_seed(s["seed"])
+            trainx, trainy = torch.from_numpy(seq[j, tr]), torch.from_numpy(y[j, tr])
+            valx, valy, testx = torch.from_numpy(seq[j, va]), y[j, va], torch.from_numpy(seq[j, te])
+            model = RCTL(steps=8, channels=9)
+            optimizer = torch.optim.Adam((p for p in model.parameters() if p.requires_grad),
+                                         lr=s["learning_rate"], eps=s["adam_eps"])
+            best, best_state, best_epoch, stale, history = float("inf"), None, 0, 0, []
+            fit_start, reason = time.perf_counter(), "epoch_cap"
+            print(json.dumps({"event": "fit_start", "cell_id": task["cell_id"], "ordinal": j+1}), flush=True)
+            for epoch in range(1, s["max_epochs"]+1):
+                guard()
+                state["epochs_started"] += 1
+                assert state["epochs_started"] <= s["max_new_epochs"]
+                save(OUT / "attempt_progress.json", state)
+                model.train()
+                order, total = torch.randperm(len(trainx), generator=generator), 0.0
+                for offset in range(0, len(order), s["batch_size"]):
+                    guard()
+                    ix = order[offset:offset+s["batch_size"]]
+                    optimizer.zero_grad(set_to_none=True)
+                    prediction = model(trainx[ix])
+                    loss = torch.abs(prediction-trainy[ix]).mean()
+                    if not torch.isfinite(loss):
+                        raise RuntimeError("nonfinite training loss")
+                    loss.backward(); optimizer.step()
+                    total += float(loss.detach()) * len(ix)
+                val = float(np.abs(predict(model, valx)-valy).mean())
+                if not np.isfinite(val):
+                    raise RuntimeError("nonfinite validation loss")
+                state["epochs_completed"] += 1
+                history.append({"epoch": epoch, "train_mae": total/len(trainx), "val_mae": val,
+                                "seconds_from_fit_start": time.perf_counter()-fit_start})
+                if val < best:
+                    best, best_epoch, best_state, stale = val, epoch, copy.deepcopy(model.state_dict()), 0
+                else:
+                    stale += 1
+                save(OUT / (key+"_history.json"), history)
+                if stale >= s["patience"]:
+                    reason = "validation_patience"
+                    break
+            assert best_state is not None
+            model.load_state_dict(best_state)
+            p = predict(model, testx)
+            assert np.isfinite(p).all()
+            np.savez_compressed(OUT / (key+".npz"), prediction=p[None, :], y=y[j, te][None, :],
+                                cell_ids=ids[j:j+1]+1, members=[j])
+            torch.save(best_state, OUT / (key+".pt"))
+            record = {"cell_id": task["cell_id"], "cell_index": j, "seed": s["seed"],
+                      "epochs_run": len(history), "best_epoch": best_epoch, "best_val_mae": best,
+                      "stop_reason": reason, "fit_seconds": time.perf_counter()-fit_start,
+                      "test_mae": float(np.abs(p-y[j, te]).mean()), "file_stem": key}
+            state["results"].append(record)
+            state["fits_completed"] += 1
+            state["active_task"] = None
+            save(OUT / "fit_results.json", state["results"])
+            save(OUT / "attempt_progress.json", state)
+            print(json.dumps({"event": "fit_done", **record}), flush=True)
+        assert state["fits_completed"] == 16
+        guard()
+        save(OUT / "run_finished.json", {"success": True, "wall_seconds": time.perf_counter()-start, "state": state})
+        print(json.dumps({"event": "all_fits_done", "fits": 16, "epochs": state["epochs_completed"],
+                          "stage_wall_seconds": time.perf_counter()-start}), flush=True)
+    except BaseException as error:
+        save(OUT / "run_finished.json", {"success": False, "wall_seconds": time.perf_counter()-start,
+                                         "state": state, "reason": repr(error)})
+        raise
+
+if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
+    if sys.argv[1:] == ["prepare"]:
+        prepare()
+    elif sys.argv[1:] == ["train"]:
+        train()
+    else:
+        raise ValueError("Choose prepare or train")

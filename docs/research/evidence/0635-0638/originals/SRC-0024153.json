@@ -1,0 +1,826 @@
+{
+  "at": "2026-10-03T16:42:44.959599+00:00",
+  "success": true,
+  "branch": "distinct_Tab_assignment",
+  "common_valid_edges": 22,
+  "previous_edges": 2,
+  "recovered_rows": {
+    "Tab": 1853,
+    "HGB": 0
+  },
+  "original_dtypes": {
+    "0": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "1": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "10": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "11": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "12": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "13": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "14": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "15": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "2": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "3": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "5": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "6": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "8": {
+      "Tab": "float32",
+      "HGB": "float64"
+    },
+    "9": {
+      "Tab": "float32",
+      "HGB": "float64"
+    }
+  },
+  "assignments": {
+    "Tab": {
+      "labels": [
+        3,
+        3,
+        0,
+        3,
+        2,
+        2,
+        3,
+        2,
+        0,
+        1,
+        2,
+        2,
+        2,
+        2,
+        3,
+        0
+      ],
+      "groups": [
+        [
+          3753,
+          5337,
+          6165
+        ],
+        [
+          5345
+        ],
+        [
+          4537,
+          4545,
+          4565,
+          5353,
+          5365,
+          6137,
+          6145
+        ],
+        [
+          3737,
+          3745,
+          3765,
+          4553,
+          6153
+        ]
+      ],
+      "changed_cell_ids": [
+        3745,
+        3765,
+        6153
+      ],
+      "initial_objective": [
+        0.29096192446038216,
+        0.45107141793354943
+      ],
+      "final_objective": [
+        0.2169254581495688,
+        0.2718418708966189
+      ],
+      "moves": [
+        {
+          "sweep": 0,
+          "cell_id": 3745,
+          "source": 1,
+          "destination": 3,
+          "change": [
+            -0.04591787949877507,
+            -0.10216991657678587
+          ],
+          "objective_after": [
+            0.2450440449616071,
+            0.34890150135676357
+          ]
+        },
+        {
+          "sweep": 0,
+          "cell_id": 6153,
+          "source": 1,
+          "destination": 3,
+          "change": [
+            -0.01623213144464844,
+            -0.05637044809291403
+          ],
+          "objective_after": [
+            0.22881191351695865,
+            0.29253105326384954
+          ]
+        },
+        {
+          "sweep": 1,
+          "cell_id": 3765,
+          "source": 2,
+          "destination": 3,
+          "change": [
+            -0.011886455367389859,
+            -0.020689182367230663
+          ],
+          "objective_after": [
+            0.2169254581495688,
+            0.2718418708966189
+          ]
+        }
+      ],
+      "stop": "no_admissible_move"
+    },
+    "HGB": {
+      "labels": [
+        3,
+        3,
+        0,
+        2,
+        2,
+        2,
+        3,
+        2,
+        0,
+        1,
+        2,
+        2,
+        2,
+        2,
+        1,
+        0
+      ],
+      "groups": [
+        [
+          3753,
+          5337,
+          6165
+        ],
+        [
+          5345,
+          6153
+        ],
+        [
+          3765,
+          4537,
+          4545,
+          4565,
+          5353,
+          5365,
+          6137,
+          6145
+        ],
+        [
+          3737,
+          3745,
+          4553
+        ]
+      ],
+      "changed_cell_ids": [
+        3745
+      ],
+      "initial_objective": [
+        0.41851168187741883,
+        0.33617369387753154
+      ],
+      "final_objective": [
+        0.3296933316260775,
+        0.20219079069037932
+      ],
+      "moves": [
+        {
+          "sweep": 0,
+          "cell_id": 3745,
+          "source": 1,
+          "destination": 3,
+          "change": [
+            -0.08881835025134133,
+            -0.13398290318715222
+          ],
+          "objective_after": [
+            0.3296933316260775,
+            0.20219079069037932
+          ]
+        }
+      ],
+      "stop": "no_admissible_move"
+    }
+  },
+  "edge_records": [
+    {
+      "cell_ids": [
+        3737,
+        3745
+      ],
+      "common_supported": true,
+      "common_rows": 110,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 34,
+          "cost": [
+            0.0,
+            0.0001468912752393604
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.022894771917347727,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3737,
+        3753
+      ],
+      "common_supported": true,
+      "common_rows": 88,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 31,
+          "cost": [
+            0.06313114844585092,
+            0.011714058898856924
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.011004474506774713,
+            0.02451141246937187
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3737,
+        3765
+      ],
+      "common_supported": true,
+      "common_rows": 70,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 30,
+          "cost": [
+            0.09726044755437585,
+            0.07147935928117853
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.027995289581157195,
+            0.0032175085721119715
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3737,
+        5353
+      ],
+      "common_supported": true,
+      "common_rows": 113,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 42,
+          "cost": [
+            0.08667713434479364,
+            0.01027331427776111
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.09819024305762104,
+            0.021375103518435343
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3737,
+        6153
+      ],
+      "common_supported": true,
+      "common_rows": 86,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 41,
+          "cost": [
+            0.009801353866858549,
+            0.04233027270001268
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.052265398601052115,
+            0.005403629402838282
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3745,
+        3753
+      ],
+      "common_supported": true,
+      "common_rows": 72,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 49,
+          "cost": [
+            0.1633238584603632,
+            0.00870471546555003
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.14008229045687887,
+            0.06938762798564899
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3745,
+        4553
+      ],
+      "common_supported": true,
+      "common_rows": 64,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 52,
+          "cost": [
+            0.0,
+            0.038054485218301265
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.0004971626853081414,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3745,
+        5345
+      ],
+      "common_supported": true,
+      "common_rows": 76,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 62,
+          "cost": [
+            0.045917879498775044,
+            0.0944003544271671
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.0436292180764795,
+            0.08126228475808685
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3745,
+        5353
+      ],
+      "common_supported": true,
+      "common_rows": 120,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 49,
+          "cost": [
+            0.11024131834857537,
+            0.05267037561244585
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.0720680958005119,
+            0.06338167901581156
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3745,
+        6153
+      ],
+      "common_supported": true,
+      "common_rows": 128,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 60,
+          "cost": [
+            0.0,
+            0.04597093864315938
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.06858106677751771,
+            0.05272061842906537
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3753,
+        3765
+      ],
+      "common_supported": true,
+      "common_rows": 69,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 44,
+          "cost": [
+            0.03663380905884145,
+            0.044000847476334363
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.14083517398017378,
+            0.013801749577542682
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3753,
+        4545
+      ],
+      "common_supported": true,
+      "common_rows": 100,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 42,
+          "cost": [
+            0.011207111407072643,
+            0.03212779523637305
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.03268980911049281,
+            0.01721957274004511
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3753,
+        6153
+      ],
+      "common_supported": true,
+      "common_rows": 97,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 39,
+          "cost": [
+            0.0778785265168335,
+            0.11908037012097672
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.02388137045377066,
+            0.12285227614476521
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3765,
+        4545
+      ],
+      "common_supported": true,
+      "common_rows": 97,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 51,
+          "cost": [
+            0.06863289790417842,
+            0.07081155894197763
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.0926809719618552,
+            0.040146810664119535
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3765,
+        5365
+      ],
+      "common_supported": true,
+      "common_rows": 53,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 51,
+          "cost": [
+            0.06375416169405587,
+            0.0942191432436378
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.08802419419224813,
+            0.0871306393876712
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        3765,
+        6153
+      ],
+      "common_supported": true,
+      "common_rows": 63,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 48,
+          "cost": [
+            0.02324015667646859,
+            0.07286216053720623
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.028005759840928214,
+            0.05638511884517927
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        4545,
+        5353
+      ],
+      "common_supported": true,
+      "common_rows": 61,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 39,
+          "cost": [
+            0.08662350005186581,
+            0.000997763241521378
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.1255962308693183,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        5337,
+        6145
+      ],
+      "common_supported": true,
+      "common_rows": 87,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 47,
+          "cost": [
+            0.11610268472414008,
+            0.07378004942298193
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.06219189789164924,
+            0.03964017171203874
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        5345,
+        5353
+      ],
+      "common_supported": true,
+      "common_rows": 57,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 38,
+          "cost": [
+            0.11928074900685982,
+            0.07083692060360018
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.147111898409872,
+            0.12878447486276318
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        5345,
+        6153
+      ],
+      "common_supported": true,
+      "common_rows": 79,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 37,
+          "cost": [
+            0.02603348531150699,
+            0.14467165943608612
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.0,
+            0.07491334063858858
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        5353,
+        6153
+      ],
+      "common_supported": true,
+      "common_rows": 80,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 35,
+          "cost": [
+            0.10564538947058369,
+            0.08299297929553642
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.05251476829520069,
+            0.02573567827427343
+          ]
+        }
+      }
+    },
+    {
+      "cell_ids": [
+        6137,
+        6165
+      ],
+      "common_supported": true,
+      "common_rows": 111,
+      "stats": {
+        "Tab": {
+          "valid_rows": 128,
+          "old_valid_rows": 42,
+          "cost": [
+            0.045195198433112545,
+            0.10419964898219364
+          ]
+        },
+        "HGB": {
+          "valid_rows": 128,
+          "old_valid_rows": 128,
+          "cost": [
+            0.044815055707196134,
+            0.049317208891404195
+          ]
+        }
+      }
+    }
+  ],
+  "new_models": 0,
+  "RCTL_read": false,
+  "all_periods_development": true
+}

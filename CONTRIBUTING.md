@@ -46,6 +46,11 @@ uv run --locked python scripts/check_reproducibility.py
 |---|---|
 | `python-check` | Python 정적 검사, 코드 포맷, 자동 테스트 |
 | `web-check` | JSON 형식과 파일 간 일관성, HTML의 로컬 CSS·스크립트 경로, 예제 결과 재현성 |
+| `archive-check` | 연구 아카이브의 원본 해시·출처 연결·문서 경로와 저장 예측 검산. 새 모델은 실행하지 않음 |
+
+아카이브를 변경했다면 `uv run --locked --group archive python scripts/research_archive/check_archive.py`로
+출처와 링크를 확인합니다. 수치 검산 명령은 [근거 묶음 안내](docs/research/evidence/0639/README.md)에 있습니다.
+`archive-check`는 추가 CI 검사이며 기존 브랜치 보호의 필수 검사 두 개와 구분합니다.
 
 포맷 검사만 실패했다면 `uv run --locked ruff format .`으로 정리하고 변경 내용을 확인합니다.
 웹 화면을 수정했다면 [웹 개발 안내](web/README.md)의 화면 확인 항목도 점검합니다.

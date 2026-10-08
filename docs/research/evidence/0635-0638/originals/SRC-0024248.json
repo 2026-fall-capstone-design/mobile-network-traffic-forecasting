@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-03T16:23:09.787695+00:00",
+  "success": false,
+  "seconds": 80.81354970000393,
+  "Tab_seconds": 73.71690230001695,
+  "other_seconds": 7.096647399986978,
+  "peak_process_tree_RSS_bytes": 616521728,
+  "cap_satisfied": true,
+  "failure": {
+    "reason": "controller_exception",
+    "trace": "Traceback (most recent call last):\n  File \"C:\\Users\\jungj\\OneDrive\\Desktop\\연구실\\Tab-ICL\\tmp\\redesign_20260925\\bounded_relation_graph_635.py\", line 265, in run\n    meter=read(O/'meter.json');elapsed=time.perf_counter()-start\n          ^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\jungj\\OneDrive\\Desktop\\연구실\\Tab-ICL\\tmp\\redesign_20260925\\bounded_relation_graph_635.py\", line 12, in <lambda>\n    read=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\jungj\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\pathlib.py\", line 1027, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\jungj\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: 'C:\\\\Users\\\\jungj\\\\OneDrive\\\\Desktop\\\\연구실\\\\Tab-ICL\\\\tmp\\\\redesign_20260925\\\\results\\\\bounded_relation_storage_recovery_636\\\\meter.json'\n"
+  },
+  "returncode": null,
+  "worker_reaped": true,
+  "meter": {
+    "contexts_attempted": 6,
+    "contexts_completed": 6,
+    "query_rows_attempted": 1984,
+    "query_rows_completed": 1856,
+    "quantile_attempted": 45,
+    "quantile_completed": 45,
+    "propensity_attempted": 79,
+    "propensity_completed": 79,
+    "Tab_seconds": 73.58899210001982,
+    "HGB_quantile_query_rows": 16704,
+    "propensity_query_rows": 10112,
+    "phase": "Tab_predict",
+    "phase_started_perf": 108903.6791259
+  }
+}

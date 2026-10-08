@@ -1,0 +1,523 @@
+{
+  "at": "2026-09-28T11:51:10.315994+00:00",
+  "cell_ids": [
+    3737,
+    3745,
+    3753,
+    3765,
+    4537,
+    4545,
+    4553,
+    4565,
+    5337,
+    5345,
+    5353,
+    5365,
+    6137,
+    6145,
+    6153,
+    6165
+  ],
+  "partitions": {
+    "U_small_UPC": [
+      3,
+      1,
+      0,
+      2,
+      2,
+      2,
+      3,
+      2,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      0
+    ],
+    "D_daily_profile": [
+      0,
+      0,
+      1,
+      2,
+      3,
+      1,
+      0,
+      3,
+      1,
+      0,
+      3,
+      2,
+      2,
+      2,
+      3,
+      2
+    ]
+  },
+  "tasks": [
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        2,
+        8,
+        15
+      ],
+      "cell_ids": [
+        3753,
+        5337,
+        6165
+      ],
+      "reuse": null
+    },
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        1,
+        9,
+        14
+      ],
+      "cell_ids": [
+        3745,
+        5345,
+        6153
+      ],
+      "reuse": null
+    },
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        3,
+        4,
+        5,
+        7,
+        10,
+        11,
+        12,
+        13
+      ],
+      "cell_ids": [
+        3765,
+        4537,
+        4545,
+        4565,
+        5353,
+        5365,
+        6137,
+        6145
+      ],
+      "reuse": null
+    },
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        0,
+        6
+      ],
+      "cell_ids": [
+        3737,
+        4553
+      ],
+      "reuse": null
+    },
+    {
+      "method": "D_daily_profile",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        0,
+        1,
+        6,
+        9
+      ],
+      "cell_ids": [
+        3737,
+        3745,
+        4553,
+        5345
+      ],
+      "reuse": {
+        "record": {
+          "stage": "rctl_pilot",
+          "method": "pcc_balanced",
+          "seed": 20260925,
+          "cluster": 0,
+          "members": [
+            0,
+            1,
+            6,
+            9
+          ],
+          "cell_ids": [
+            3737,
+            3745,
+            4553,
+            5345
+          ],
+          "stem": "pcc_balanced_20260925_cluster0",
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/rctl_pilot/pcc_balanced_20260925_cluster0.npz",
+              "bytes": 14228,
+              "sha256": "7c26bfed27e2fa8be756a8f763794cbcf75c42ea63c8820e21e67999b6fa414d"
+            },
+            ".pt": {
+              "relative_path": "results/rctl_pilot/pcc_balanced_20260925_cluster0.pt",
+              "bytes": 745123,
+              "sha256": "1a4fde1b22a667f042d65d84fdab5831faf9545675b846fe579fa35951170b25"
+            },
+            "_history.json": {
+              "relative_path": "results/rctl_pilot/pcc_balanced_20260925_cluster0_history.json",
+              "bytes": 7231,
+              "sha256": "11daa64e84420f539902200fb7fcd726bb443dde7cfd9b641ae3fd0b4bfafb96"
+            }
+          }
+        },
+        "all_exact_matches": 1
+      }
+    },
+    {
+      "method": "D_daily_profile",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        2,
+        5,
+        8
+      ],
+      "cell_ids": [
+        3753,
+        4545,
+        5337
+      ],
+      "reuse": null
+    },
+    {
+      "method": "D_daily_profile",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        3,
+        11,
+        12,
+        13,
+        15
+      ],
+      "cell_ids": [
+        3765,
+        5365,
+        6137,
+        6145,
+        6165
+      ],
+      "reuse": null
+    },
+    {
+      "method": "D_daily_profile",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        4,
+        7,
+        10,
+        14
+      ],
+      "cell_ids": [
+        4537,
+        4565,
+        5353,
+        6153
+      ],
+      "reuse": {
+        "record": {
+          "stage": "rctl_pilot",
+          "method": "pcc_balanced",
+          "seed": 20260925,
+          "cluster": 3,
+          "members": [
+            4,
+            7,
+            10,
+            14
+          ],
+          "cell_ids": [
+            4537,
+            4565,
+            5353,
+            6153
+          ],
+          "stem": "pcc_balanced_20260925_cluster3",
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/rctl_pilot/pcc_balanced_20260925_cluster3.npz",
+              "bytes": 14455,
+              "sha256": "cf8f8a8f3494912114737fba9d28dc05a3beedb8f4bc08a570582eec17ed1f0c"
+            },
+            ".pt": {
+              "relative_path": "results/rctl_pilot/pcc_balanced_20260925_cluster3.pt",
+              "bytes": 745123,
+              "sha256": "978b17168e9bbf8a4855b04d93bd631ca29995f6d29618c47b39f408ab6439ec"
+            },
+            "_history.json": {
+              "relative_path": "results/rctl_pilot/pcc_balanced_20260925_cluster3_history.json",
+              "bytes": 8921,
+              "sha256": "1951e98b69187f82d305d0ae1ca59f3b1cebe5a009a7c10c4ae55b5d72ba381c"
+            }
+          }
+        },
+        "all_exact_matches": 1
+      }
+    }
+  ],
+  "max_epochs": 80,
+  "batch_size": 256,
+  "patience": 10,
+  "learning_rate": 0.001,
+  "adam_eps": 1e-07,
+  "loss": "MAE",
+  "threads": 4,
+  "train_targets": [
+    168,
+    839
+  ],
+  "validation_targets": [
+    840,
+    1007
+  ],
+  "test_targets": [
+    1008,
+    1487
+  ],
+  "seed": 20260925,
+  "steps": 8,
+  "channels": 9,
+  "max_new_fits": 6,
+  "max_new_epochs": 480,
+  "wall_cap_seconds": 540,
+  "ram_cap_bytes": 2147483648,
+  "torch_interop_threads": 2,
+  "architecture": "unchanged rctl_torch.RCTL",
+  "prepared_arrays": "results/self_only_reference_160/prepared_arrays.npz",
+  "source_hashes": {
+    "305_frozen_profile_RCTL_contract_plan.md": "f368f187c0d9014b21686061bc886113a4bd031506e110c7c730abbfd2032cf8",
+    "frozen_profile_rctl_contract_305.py": "1a942a18a0ed65ad389903ce3428657fcb24c3e2143f635e2992a1fd9419e556",
+    "results/cross_profile_coverage_178/audit.json": "dd2daeda8dd2c7d1360d1e7f99da1bee268e2596eb225e19f704f0f7a0e9393f",
+    "results/cross_profile_coverage_178/source_hashes.json": "2b1981fd1a3fba21f2cf26f26f0306457582abdfd6f74e8cb9beb62177197c11",
+    "results/diurnal_profile_recovery_300/partition_frozen.json": "87ea65318f6be1fa3090187c488a8fbc35309b77c2615736e9efa6c064cf168b",
+    "results/fixed_budget_baseline_close_287/inputs_frozen.json": "24096282f52bb7c78d90af713e9e4aa2630316aef7de3d710b6f242e6c5be744",
+    "results/self_only_reference_160/prepared_arrays.npz": "ff4a1e355afc4fca4587ce3fd322b6c7732e32532600c4af10d4cd29917cd563",
+    "runtime_versions.json": "a8f3e1d5556cbd31ba650d64b82e0931973f340c68d3b3ac30361d34fce083e6",
+    "results/rctl_pilot/frozen_settings.json": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+    "results/rctl_pilot/fit_results.json": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+    "results/rctl_pilot/run_finished.json": "38341c98462e0775c59a0f3a7d28ca430a45641e3db306e0212acafc22643e2f",
+    "train_rctl_pilot.py": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+    "results/corrected_partition_118/frozen_settings.json": "10e1c5624d7b38d4c85f155605ee2530de0fac39e7987ee8e2c15a6cc335b740",
+    "results/corrected_partition_118/fit_results.json": "1c69ec3e48512b11e8072426934ee08151c14658e0472515946a7fb07eede3b5",
+    "results/corrected_partition_118/run_finished.json": "6a0d596f3ca6ca0a2808f6b6bb0f228fc09cc89a2aeb6cf3338246fd84a2649b",
+    "corrected_partition_rctl_118.py": "04fc71dccf728ab79d1b93eb54735fa479c7cb44f77a930268e9c740de1cdbf4",
+    "results/self_only_reference_160/frozen_settings.json": "93552c3b39749a0de80e6150b43ccf09bd7d56348071fd050fcd80e737c8967f",
+    "results/self_only_reference_160/fit_results.json": "dbcf11c0a63fabb51b318a156bca1870a61bd473b70c643d150a76fdb3d0bfac",
+    "results/self_only_reference_160/run_finished.json": "4e5ba1b4accba994f4b9659fd5ea097dd4a7481f3512caf2076d811218762276",
+    "self_only_reference_160.py": "007dd090c00f0197de6787a9a60d7d6b5f132ab4e8205fbf3768e9666877a512",
+    "rctl_torch.py": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+    "results/rctl_pilot/global_20260925_cluster0.npz": "b9ff015ee3f484a5b106be5ed7cf28df2fd1aadb29e500693a2c06e592f2146e",
+    "results/rctl_pilot/global_20260925_cluster0.pt": "822808952e35b22921569f915db4b693f0929362e564ff4deae7cafbd6bc8476",
+    "results/rctl_pilot/global_20260925_cluster0_history.json": "9feb83ff3c2dbe248f2da48a5c3fa1eea449719c2b21c1ba083abfb5decc9be0",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster0.npz": "8da3b067a176ee4a280312eea7da1397796d42e3eb4a794ee0696ca197bb04a0",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster0.pt": "081bcc8b369f3f3cb275cfb839677c004be3e2b55837b2fddb921aecbba82e69",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster0_history.json": "50c1df1d0deafff345a4b48e50bc362e3c552ceec73e8e33057c43f7d9d82b64",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster1.npz": "1b8527e1dc48f75184ca3a36ce44d44de9eaa645855104ef0f61e6d9f5d76bd0",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster1.pt": "ae92219d6aff933933f726d783275f136dd6e05eb0aaa329d1ccedc3426424c2",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster1_history.json": "4b8b1902e0d684fb972d13e87388ddb55b8b5b796d90ff5bb5669fd359807c90",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster2.npz": "6f9949beefb7d471073bd9520c48f111b07d618b5c5c1e06616157f5a3d8a345",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster2.pt": "c165bbe9b891a9b2ad9f77058f387b72d9cfd1bb11d35254a45ef05fe3023ff9",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster2_history.json": "2256c5f0a4e6341665de56df64288abda8fb53243545b18ae7f23e54980fb50d",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster3.npz": "f3726be3ac9685d26bfdb9fe4f9ea8ea494f08b9ef55210f54670ef9d538dcf9",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster3.pt": "29381448c41cb1f0ec0b111215817875b8586fba74ea2df365974ddc4cf5f7d7",
+    "results/rctl_pilot/tabicl_risk_20260925_cluster3_history.json": "3c593c78b6d5fa24a651d77e76e1172b5a56c6034c5b6af69fc68f3fe2994b9c",
+    "results/rctl_pilot/empirical_risk_20260925_cluster0.npz": "cfaa54e656441f7f9dc406f5be35733c3e050bb77f5d275179372d11874b9863",
+    "results/rctl_pilot/empirical_risk_20260925_cluster0.pt": "95a274b8e4b7825756b5d9bb79ed6ed7d780db57d4a4993d4d3e54fe46b155b8",
+    "results/rctl_pilot/empirical_risk_20260925_cluster0_history.json": "f3028c07659755c166142537942c92d84a7f592270ecb4861ab81849a1efe760",
+    "results/rctl_pilot/empirical_risk_20260925_cluster1.npz": "c8abf4b32dc7ceda8963eed91fff12a9307c21e05e1ddc3f1a4ba510231b7306",
+    "results/rctl_pilot/empirical_risk_20260925_cluster1.pt": "aec1ff6c877631699da297e766b46057322e98e32c9663f4a6c1918d4817a38a",
+    "results/rctl_pilot/empirical_risk_20260925_cluster1_history.json": "67759362dc6748f05e9ccb737b1ca2455a4cbf9339da69f3b20a32ea1f397b2b",
+    "results/rctl_pilot/empirical_risk_20260925_cluster2.npz": "66f0f91daec3ccfe635116a27827bc12c086b805827ea5c5aba74eae0153c014",
+    "results/rctl_pilot/empirical_risk_20260925_cluster2.pt": "a6f4418c7cf5ce97f4a6a9f1abfb9686d3134aa1f4785b1af7748fde006ac6da",
+    "results/rctl_pilot/empirical_risk_20260925_cluster2_history.json": "c0423cd825e6a635d621cbbbe186ef72ae4a6504a4e593e5370f3f250dc95f52",
+    "results/rctl_pilot/empirical_risk_20260925_cluster3.npz": "c864eaa8ba25c6ace14287b97fa3a560535ff9ffb65b96f299b4d5d2f5bbcb7e",
+    "results/rctl_pilot/empirical_risk_20260925_cluster3.pt": "d2b926912cfc95129d4c6d646fcaf581a07b47939d63136c6bc3d753e0caad28",
+    "results/rctl_pilot/empirical_risk_20260925_cluster3_history.json": "3491cf9b34652c13cb69151a55d1c1b49bc24c383841f4e60c70fbe18d2fe9e2",
+    "results/rctl_pilot/knn_risk_20260925_cluster0.npz": "c3bb08e36d4687c037fb5d006134015e34f5b748f4a5d5447fac963f9e224fd9",
+    "results/rctl_pilot/knn_risk_20260925_cluster0.pt": "b587f2dc11da117bd07988dae0a164803433d3bc8a2935eebc86c2c2d01b8d8b",
+    "results/rctl_pilot/knn_risk_20260925_cluster0_history.json": "865f5dfb7bf900e424697ed2fd167d33ee0cb19ca4713be21baa2437caac19fd",
+    "results/rctl_pilot/knn_risk_20260925_cluster1.npz": "38772f1200027f216577daafda91e3b73d92d4a93c0eaf0dce70c9bfeefb29e0",
+    "results/rctl_pilot/knn_risk_20260925_cluster1.pt": "5a8f5721e8554601b61c06be2cce043b702ac62bb6e89ca4244bf01abb7f0a6a",
+    "results/rctl_pilot/knn_risk_20260925_cluster1_history.json": "5bd9913d247c5218f6ddd69e072a4b37fc217e79ac76f221147a0700846aaab8",
+    "results/rctl_pilot/knn_risk_20260925_cluster2.npz": "f945e984fe1d858b7c3b3cb7fcf61cdbcab07ed33adc496e96401df340289824",
+    "results/rctl_pilot/knn_risk_20260925_cluster2.pt": "8cc1bfa889056faaf2eafb45bab08ccc9cd8811bb4c6618984587bf2ce29457f",
+    "results/rctl_pilot/knn_risk_20260925_cluster2_history.json": "24491fd489d39d2c5acd57ba64a3c68479c0cc2fa594d15144185fee25f4fc28",
+    "results/rctl_pilot/knn_risk_20260925_cluster3.npz": "bb1a947cbbab35a1f55915f4a5e2d9c4b9a1500d3ffb8b27fbe2d2fed8db5c29",
+    "results/rctl_pilot/knn_risk_20260925_cluster3.pt": "a1b5269a0deb639279c2fb61fb0489582bec01c293c8a7443bc2172844143553",
+    "results/rctl_pilot/knn_risk_20260925_cluster3_history.json": "953a492db84962f1ccf902f270235a6ba20c8b3238f98e0c320b0d21b05ea35f",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster0.npz": "7c26bfed27e2fa8be756a8f763794cbcf75c42ea63c8820e21e67999b6fa414d",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster0.pt": "1a4fde1b22a667f042d65d84fdab5831faf9545675b846fe579fa35951170b25",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster0_history.json": "11daa64e84420f539902200fb7fcd726bb443dde7cfd9b641ae3fd0b4bfafb96",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster1.npz": "ee27c4ea08aea8710bc3b82391b3352183b0f36d0ff0e906000cddee71172bf2",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster1.pt": "f1a3e436ef959c3e241efe2af78d911eef8f2f4d926f2ee458932fd4a464f7de",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster1_history.json": "5540e25416b640b0245a2716e82fb177d0ae6d132fae7fe604a02060f7a88234",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster2.npz": "54277cc5fd2b38d87be3505c4f109290179cdcf28fd893cac8fe02f5d5b55d33",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster2.pt": "7f6ac992db0e4822147ff6696c6d155696c6ef01ecea13a5617f2f7b9d54ecd7",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster2_history.json": "afa5045dd624a191bd1df1efe2286591a7795e7e17efb19e037632d95f972656",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster3.npz": "cf8f8a8f3494912114737fba9d28dc05a3beedb8f4bc08a570582eec17ed1f0c",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster3.pt": "978b17168e9bbf8a4855b04d93bd631ca29995f6d29618c47b39f408ab6439ec",
+    "results/rctl_pilot/pcc_balanced_20260925_cluster3_history.json": "1951e98b69187f82d305d0ae1ca59f3b1cebe5a009a7c10c4ae55b5d72ba381c",
+    "results/rctl_pilot/random_balanced_20260925_cluster0.npz": "6f3324740d783688bf347f59ca5cf2302ec945e03aef6f3378af5e61144f975e",
+    "results/rctl_pilot/random_balanced_20260925_cluster0.pt": "8c6ac3f12b1281d631002285b5ebdb0684e373b00b09c3629f77e31073980d8e",
+    "results/rctl_pilot/random_balanced_20260925_cluster0_history.json": "4dd8e90f11d7097a2002c638e5822f0fa93bd78ba5be61cc9edf0a21e4f3b302",
+    "results/rctl_pilot/random_balanced_20260925_cluster1.npz": "89cfd21129595ef419ede498aebc64321b89437a4f4bed89aa45a9cbabffc704",
+    "results/rctl_pilot/random_balanced_20260925_cluster1.pt": "29bca0346f52ddc064d10c5eb3b9b21646a8b801023f63c91a9ab3354700a70b",
+    "results/rctl_pilot/random_balanced_20260925_cluster1_history.json": "96378adb6650b343b015895705ee18924f814e4651a379aedf0ce3aa59b60ae4",
+    "results/rctl_pilot/random_balanced_20260925_cluster2.npz": "8ac7613b27e4cfcb1f7ff84c0fcfc695846f9f8ccc963649b24c68aff9b99f49",
+    "results/rctl_pilot/random_balanced_20260925_cluster2.pt": "734e7e3b6188e565b972e602faa6d41645b38bc4d774fac3a484c48e0808e1b6",
+    "results/rctl_pilot/random_balanced_20260925_cluster2_history.json": "d366a21a78f743812d1331363e2cb42f29dd5765b6f91b8f0364e901283985cd",
+    "results/rctl_pilot/random_balanced_20260925_cluster3.npz": "838de8639fcca277f2aede59138854c35c1ee5073d51bfc4e12e31556672fd90",
+    "results/rctl_pilot/random_balanced_20260925_cluster3.pt": "c5068eb7d7c86565b75a7be1311d80e22ba32542194a5a96c83e9d5cd622812d",
+    "results/rctl_pilot/random_balanced_20260925_cluster3_history.json": "c411029fd23225ec3ef0e187535a2a0b4215f6fcfb0ab20eb60235501f8f2500",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster0.npz": "15c692f9b9c8592d548adf436793382a33a89e1d3d69a4477848d2879187ea17",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster0.pt": "a24f2f383394d8c5fb32b9bd3e94165760b8d066bc5223d85bd37d40ca3abd92",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster0_history.json": "a3e0a1312f8178627f974b926473f7c531c5db5fd930ddbab892dc1dcf92e466",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster1.npz": "d6db8b3672879aef5c6495d7cb4a8eeb4283bf4ff3e8561690ab8758ba9e70ac",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster1.pt": "540e5b5a4256e9fa1757b5f6724f35735e291ea4c945a586388ecc899db74571",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster1_history.json": "0b523694b7b2de4b11339866eecf7ac7c78d0d3400ca70af059fe318030a7809",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster2.npz": "654a926968d4a202688263315c8b2f10a9eaa503a8bed78417c8a10ea6fd71a4",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster2.pt": "583ffd07fc60aef204ff95c69401f224c120cec31736275fdb4ddc2e03b9aeba",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster2_history.json": "0dade3db630cd368f0888583812b7ba9a8b8732463e667327242b5392b232597",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster3.npz": "9b2b865af9648de4926600fb50cd1c95ac3f7d097bd02a068ca44e0ac459dc71",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster3.pt": "347b576cee4fc0f32ef801690a2811de9a6cce02711ab6e14a239032c7e0c3bf",
+    "results/rctl_pilot/tabicl_risk_20260926_cluster3_history.json": "acdfdb474ddd1591a34f30be6b64889d3c4bc17c59599c5a1affb50d165a274b",
+    "results/rctl_pilot/empirical_risk_20260926_cluster0.npz": "82544be740d5d46fa59784725ba0aec2be00ffb11240cb744855e0fcbfb04688",
+    "results/rctl_pilot/empirical_risk_20260926_cluster0.pt": "79e00ba093ec31f4d1bbe2916f4503409292a1d46428b2140ec787717f909d37",
+    "results/rctl_pilot/empirical_risk_20260926_cluster0_history.json": "63b4b3a398fd719e9a6e02f6e814c1d6358216ff329b2ee92a7b095b668cf531",
+    "results/rctl_pilot/empirical_risk_20260926_cluster1.npz": "fb4e925639e38abc90b648bdb04da283277e68a9cb2b55586ce29ae0c5a91574",
+    "results/rctl_pilot/empirical_risk_20260926_cluster1.pt": "b4fbcfd4377394cad9f510750af89f609554c91ab39df823ca36e146f4dce986",
+    "results/rctl_pilot/empirical_risk_20260926_cluster1_history.json": "ab9853fb6fc847cc3d0499b8623943c19fe8d8cc7780febd6b923b5c284a05c7",
+    "results/rctl_pilot/empirical_risk_20260926_cluster2.npz": "a086019a89d2464599e30aa8fbcbc9f0ff031106ad49d245d248d8a9e5225046",
+    "results/rctl_pilot/empirical_risk_20260926_cluster2.pt": "62116c4b607e2af512659338427461f39f09f2975c31c09323925f5ab0fac4d1",
+    "results/rctl_pilot/empirical_risk_20260926_cluster2_history.json": "6f29fe503920f742f11fe710cbed36f6a0102243ca5c7a67e4369d085ea9cbbc",
+    "results/rctl_pilot/empirical_risk_20260926_cluster3.npz": "3140a59d62fabd94be8b966cb299c9e9de386164b440071dadadcac41072d742",
+    "results/rctl_pilot/empirical_risk_20260926_cluster3.pt": "130d1e5f32047c81dffc5e2c40ccd17e84b05b1ac21e436dbf665a1dd3a8b67b",
+    "results/rctl_pilot/empirical_risk_20260926_cluster3_history.json": "171c0eba098b9de887ca379b1bff8b9dbba79cf0cfada54a54342293b4d64630",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster0.npz": "116b1dc01425773f68f88842242548e230fce8bc1c65584f0f1d678fb3e69305",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster0.pt": "c40d79454d4f91abb92d8b40c545e78d2da07d98963a109cb22fb3a26896c2ec",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster0_history.json": "070f281d8c047e9e97672b42ee357b9f360824982fd8860a02964eac274af741",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster1.npz": "c71f5d19377d53801bdb2ecff7ea4d81eaa317f1e22582cc8ff5c281bfbb31a9",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster1.pt": "9c46ad9782fe4d9687d10dd3da97d9e0f252c1c94469851a502d51528127fd87",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster1_history.json": "9f05e73302ecce82fb94aa24061d5301df9faf1542ea5c435c3b9aa9096e603e",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster2.npz": "efe370dbb3d07865322ceb609c35ea359ad2f8a4b7ea3143146930165a8162b1",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster2.pt": "a26605c024b37b3bebd6ed343a8b8476710ad6af0c8194ed62448bc9be02261e",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster2_history.json": "a53f092fe35710ad60b0a0c45be27dadc1911da175db3a22ab4760add2fea57b",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster3.npz": "d3f5f8dd14a1bea96178e35d9578d250092f67507828f764067e1f0899f41d4f",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster3.pt": "021a34c191788affe9d4bbce877679511b3dbaa02ec0ef528373702199a7b68d",
+    "results/corrected_partition_118/tabicl_risk_20260925_cluster3_history.json": "f023c020968665c1d8122183e2f05bb201e5e8dbe86cf1ded538783066dc72a1",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster0.npz": "960af3191ded10ba890e8fab05641bb1fa89f678dbcbea7b0c75ec5e146e9295",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster0.pt": "89f366bbac06c562c11651dae4df6f64c8f77748bbd8860f990f9c07a223727c",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster0_history.json": "e1da88797bc8b5e314e5bdea1c79d262c05d26ac2613018e960d94d10ae0b008",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster1.npz": "29d6199c04ef3d4776472152d9b25f5a1da138caf431e838683b3d9774e213a4",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster1.pt": "7cd05b5f5870b733513a2b7b5483904b8c160657c87a422f79db19e88d208d26",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster1_history.json": "08c7d99845b6456e4a2d532c09ca8bd0ccc6f41078da26167d5c09f78fbfa781",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster2.npz": "65df6779ace079ae4dadf52f83834cf7b98893d6883c5010b25199167efe5140",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster2.pt": "ab3c0cf5a86a396a88be838dc3c0e9ba6a98eb5d363742451fb342506c21483f",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster2_history.json": "decc8efbd26c4397e4cbcacdbf139b5c3996549b9be94e5b98921765c698e419",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster3.npz": "f7e3130629446ef3c00b3aefc52a0e7c1a12b9fbd6a8a3409e3acd86c9074643",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster3.pt": "f037706699952875a537561f8103331a501eb42291c1ba3b872eb4e6a802eaaf",
+    "results/corrected_partition_118/empirical_risk_20260925_cluster3_history.json": "ef01f9660890d18f0bce944c281d488b104ae3c06a039bb8584d04d678090990",
+    "results/self_only_reference_160/self_only_20260925_cell3737.npz": "2d3d6501f269ecfbdc6cadbbc552e6b3a804febfb9406c02c0a11770c4d53863",
+    "results/self_only_reference_160/self_only_20260925_cell3737.pt": "91be3534643fc7eb89132ae1c948f61daa548290f77cfff2ce86433e32e538bf",
+    "results/self_only_reference_160/self_only_20260925_cell3737_history.json": "e026727008defad9570c1b9b10272643f3629fd4d7bb4948d380691b3401bc87",
+    "results/self_only_reference_160/self_only_20260925_cell3745.npz": "cccfdc691e43a6c979a4d7fbef95d0b6d94f1c4e4494e9ca531b92985dcc0ac9",
+    "results/self_only_reference_160/self_only_20260925_cell3745.pt": "5fb087c5b9de85cf444427d328decfbc395488425afa1cc688e8b5dc93e764a3",
+    "results/self_only_reference_160/self_only_20260925_cell3745_history.json": "892798e3ecb2b0476c9d282d630cd85df0af02a910f661eee3d92efea862c020",
+    "results/self_only_reference_160/self_only_20260925_cell3753.npz": "13e9720966f96b31cf1c8d38065df49cf56d8ab3bb41b3c0c96d69e34e10af4b",
+    "results/self_only_reference_160/self_only_20260925_cell3753.pt": "5e880db405b0e9238a49e117bd07bc188c5fc3171a4b127346bd736f409a5be9",
+    "results/self_only_reference_160/self_only_20260925_cell3753_history.json": "f0fcaf99e9d64efcbb8ec67046b3c9b8236521a34cbe7cfd42ce81d7f369aae9",
+    "results/self_only_reference_160/self_only_20260925_cell3765.npz": "0c5a1b24ee94db406483b2b31c9e05ca2fb80d1bcadf4f2c713cd46ff9aedffc",
+    "results/self_only_reference_160/self_only_20260925_cell3765.pt": "58a05f008fe53904b2d02a5c22f999e60edc31a056ae7c39be2e0fed1c7fec93",
+    "results/self_only_reference_160/self_only_20260925_cell3765_history.json": "1dcd637c2137726ad8e622240a8102464d696a75147a74076d6e7d72db5ce985",
+    "results/self_only_reference_160/self_only_20260925_cell4537.npz": "b01ab1f32931c1048b97085f71e2ff49128e53134f20bf39fd051a641b5d53ef",
+    "results/self_only_reference_160/self_only_20260925_cell4537.pt": "da7487156b62639de855e29710afa72f97f2c522abbab4ec82be424ec74967ca",
+    "results/self_only_reference_160/self_only_20260925_cell4537_history.json": "6f8cccce6de04e9164fb367d0f1a5772b30295a940f430ad71fcf9e538e5c4f0",
+    "results/self_only_reference_160/self_only_20260925_cell4545.npz": "6c17e82f6c7502dd9b0539d1c0cc9f09bcb97bf4275bcea209076a06d64a0537",
+    "results/self_only_reference_160/self_only_20260925_cell4545.pt": "d90526c65388b56ecac21abf6b404efd3efa19a97e027ef089a4213c2c7a685f",
+    "results/self_only_reference_160/self_only_20260925_cell4545_history.json": "7be091fdaba8a63603da87cf90a592934fd77dce93172629e7fa4fd54ce7a2db",
+    "results/self_only_reference_160/self_only_20260925_cell4553.npz": "223bfbaf7f9d78646553f280cb56d565961d4845b8cc3ffcd2e6352b0a597b2c",
+    "results/self_only_reference_160/self_only_20260925_cell4553.pt": "bbd9c18a0d12184dc58d940f2e9e14ce52c36400aa4b724917e7ac2cbd318575",
+    "results/self_only_reference_160/self_only_20260925_cell4553_history.json": "8ae03f5b16ed77d40165411be567dc96fdc9f44770c83591dd75251500a89596",
+    "results/self_only_reference_160/self_only_20260925_cell4565.npz": "31e93f3c4818219461f5b39b5bb2bf7a05745f2df42f54244168e1ecfb9d388b",
+    "results/self_only_reference_160/self_only_20260925_cell4565.pt": "b8503ce525481ca0e14bf4e64d319bf7caa01cf3a055d02f8ac4c866acdeae49",
+    "results/self_only_reference_160/self_only_20260925_cell4565_history.json": "52979d45fb4b8c929320f0ebd5a12aede82aadfaeda161b1d65d9ce6bbeab09a",
+    "results/self_only_reference_160/self_only_20260925_cell5337.npz": "954735a888ce47e1e1405aec8d62204b3e11e45eb84f6545ca7394724577e756",
+    "results/self_only_reference_160/self_only_20260925_cell5337.pt": "ae2a4c230706e2dad71c0483723655f560660879aeb5dda87614ca94b6d9dc39",
+    "results/self_only_reference_160/self_only_20260925_cell5337_history.json": "b9c86f461fcb1816456981d13d8765db3751923321c89ef60a223ab69b4c739e",
+    "results/self_only_reference_160/self_only_20260925_cell5345.npz": "587ec202860981874b9de8296ffb465eaf2627c7245fb657d14a3590657bed72",
+    "results/self_only_reference_160/self_only_20260925_cell5345.pt": "b97a482d34071ce3b3c6c4a4f250c75fa3e2e3288b84b86d5ffecab5fa79e031",
+    "results/self_only_reference_160/self_only_20260925_cell5345_history.json": "8f5e19ca5f9f174e9f8f6ce26eeee6b47a943ef2a9d6100488e6495adfdde513",
+    "results/self_only_reference_160/self_only_20260925_cell5353.npz": "7fb5b5e28534f93b7fd3ec7dc7382270f4551447936d812877e9ff405b618360",
+    "results/self_only_reference_160/self_only_20260925_cell5353.pt": "1723681d8bf361e2b91fc859f5e56c1fb74dbef068612ffa547c813a8ecbb8a4",
+    "results/self_only_reference_160/self_only_20260925_cell5353_history.json": "6034a33fe28604ae63b3fa6f4d3f29c23ddaa88d07b83a79f2c7871479760784",
+    "results/self_only_reference_160/self_only_20260925_cell5365.npz": "14b1fb58e26cf4792314cdb536b8f762219789123d95968fcfd73e96924add9e",
+    "results/self_only_reference_160/self_only_20260925_cell5365.pt": "448a1b5e486fd38d2d30a70e95f0392a543c31d14acf0c8f01b4a304569a5a50",
+    "results/self_only_reference_160/self_only_20260925_cell5365_history.json": "48f5e2f724441f2d91345c07077d15a15d3d1d15fbd15b5889e7dc42ec160dc0",
+    "results/self_only_reference_160/self_only_20260925_cell6137.npz": "ff1bc55c0970a17201d20c2dc8f2c78b5ce60633c41af369024ef15aab4f0105",
+    "results/self_only_reference_160/self_only_20260925_cell6137.pt": "4abf8f89c37509ffcc6590a80eb4977ed1bd73872479eac40170b21769a37ecf",
+    "results/self_only_reference_160/self_only_20260925_cell6137_history.json": "5144750ef84c4971014e4bb23a8f434ffe27556fd453f3381275b82f9be0c69d",
+    "results/self_only_reference_160/self_only_20260925_cell6145.npz": "1deaad1bea3ab059bd0f4a55c42f624c80a16b742d5f16204bf921ab72bce55b",
+    "results/self_only_reference_160/self_only_20260925_cell6145.pt": "ba4e943fee824cdd6cc51935e0d1b52fa2b92d8fea99c90748976d4875032973",
+    "results/self_only_reference_160/self_only_20260925_cell6145_history.json": "5bddd656e3977a25ab821ce0e81d3961eb1681e0be16bfa3cc313c2d90a5d862",
+    "results/self_only_reference_160/self_only_20260925_cell6153.npz": "d77475a4c3b0c8498d3bb57ddb0f4d0d75dd7ae79ac69502bc595eb1e316ab5f",
+    "results/self_only_reference_160/self_only_20260925_cell6153.pt": "595707f0d52ac6c29473cb45379456c3eea6eeb6cb1925aea035d93340a52b25",
+    "results/self_only_reference_160/self_only_20260925_cell6153_history.json": "8c9ee16c4befa659c9704dfa3135a912390ce57093787ded0a167c75d54856b6",
+    "results/self_only_reference_160/self_only_20260925_cell6165.npz": "2d5ebe5a1fe9e16c23b497ddca2bb6bbef65ce1f6eb9c0dee65ba92137c60eb2",
+    "results/self_only_reference_160/self_only_20260925_cell6165.pt": "0d4b423494a1909505b8801cc2c580ef205c518ea0da16c5358b2dd7e765b359",
+    "results/self_only_reference_160/self_only_20260925_cell6165_history.json": "de78ec77f0dbd8dde311d0c251affed816f55f9ffe83a075eb71ab3d27aaae4c",
+    "results/frozen_profile_rctl_contract_305/contract.json": "9c919c91529d406583b38f9c39c5a7d9ca03df67a63b3f6987de12f0cf29e236",
+    "frozen_profile_rctl_306.py": "d557711957f9e31ef52a6d2b700d5094fd6f97970bddfaa3a56f558b427bdb9b",
+    "306_frozen_profile_RCTL_plan.md": "19d96ca1646513b7cd89798bea2ac02de8e3490f987df3cfdbfa05985d715db4",
+    "results/rctl_pilot/evaluation_data.npz": "d451810ecccf0b1d9d083132816510ef889c089cd5693d9ab061c1badbf7ff7b"
+  },
+  "Tab_calls": 0,
+  "RCTL_results_used_for_clustering": false,
+  "data_status": "all previously used development periods",
+  "selection_rule": "Report both frozen partitions; do not edit memberships using the result.",
+  "primary_metric": "mean-cell scaled MAE over480 hours; D minus U",
+  "secondary_metrics": [
+    "first240hours",
+    "last240hours",
+    "per_cell_MAE",
+    "epochs",
+    "fit_wall_seconds"
+  ],
+  "cost_basis": {
+    "reference_stage": 118,
+    "reference_wall_seconds": 209.89308330000495,
+    "reference_epochs": 409,
+    "reference_optimizer_batches": 4499,
+    "reserved_max_batches": 5200,
+    "linear_scaled_seconds": 242.59702893087925,
+    "headroom": "twice batch-scaled estimate +30seconds, rounded upward to30seconds"
+  },
+  "data_preparation_reused": true,
+  "no_models_started": true,
+  "stage": "frozen_profile_rctl_306",
+  "verification_seconds_cap": 5,
+  "contract_sha256": "9c919c91529d406583b38f9c39c5a7d9ca03df67a63b3f6987de12f0cf29e236",
+  "outcome_driven_membership_changes": false
+}

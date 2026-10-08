@@ -1,0 +1,154 @@
+"""Cached-only precision audit: no model import, fitting, or new forecasts."""
+import bounded_relation_graph_635 as m
+import copy,hashlib,json,math,os,shutil,subprocess,sys,time,traceback
+from pathlib import Path
+from datetime import datetime,timezone
+from recovery_io_271 import write
+B=Path(__file__).resolve().parent;ROOT=B.parent.parent;KEY='bounded_relation_precision_638';O=B/'results'/KEY
+P=B/'results/bounded_relation_cache_resume_637';C=B/'results/bounded_relation_storage_recovery_636'
+L=B/'cumulative_execution_budget.json';S=B/'research_state.json';CAP=12.
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+read=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+now=lambda:datetime.now(timezone.utc).isoformat()
+rel=lambda p:p.relative_to(ROOT).as_posix()
+
+def reserve():
+    assert not O.exists()
+    s,l=read(S),read(L);z=read(P/'settled.json');r=read(P/'result.json')
+    assert s['latest_research_stage']==636 and s['next_action']['id']=='637_bounded_relation_cache_resume' and s['in_flight_execution'] is None
+    assert z['success'] and read(P/'verification.json')['success'] and read(P/'run_finished.json')['worker_reaped']
+    assert sha(L)==z['ledger_sha256']
+    assert all(v['status'] in ('settled','cancelled','completed','released') for f in ['numeric_reservations','plan_reservations'] for v in l[f].values())
+    paths=[Path(__file__),B/'bounded_relation_graph_635.py',B/'638_bounded_relation_precision_plan.md',B/'recovery_io_271.py',P/'frozen_settings.json',P/'result.json',P/'settled.json',P/'verification.json',
+        C/'retrieval_sealed.json',B/'results/fixed_reference_vs_joint_pool_616/errors_0.npz']
+    paths+=sorted((P/'cells').glob('c*.npz'))+sorted((C/'edges').glob('p_*.npz'))+sorted((P/'edges').glob('Tab_*.npz'))+sorted((P/'edges').glob('HGB_*.npz'))
+    O.mkdir();(O/'before').mkdir();(O/'edges').mkdir()
+    for p in [S,L,B/'research_focus.md',B/'progress.md',B/'candidate_decision_index.md']:shutil.copy2(p,O/'before'/p.name)
+    cfg=read(P/'frozen_settings.json');cfg['source_hashes']={p.relative_to(B).as_posix():sha(p) for p in paths};cfg['new_models']=0;cfg['seconds_cap']=CAP;cfg['dtype']='float64';write(O/'frozen_settings.json',cfg)
+    at=now();record=B/'637_bounded_relation_cache_resume_findings.md'
+    record.write_text('''# 637. 예측 완성과 수치 유효성 검수의 구분
+
+누락9cell의Tab9context/1856query와HGB81fit을완료했고,5cell1856행·HGB45fit·p분류79fit은byte재사용했습니다. 실제111.5746071초(Tab103.5868039·기타7.9878032),214검사/최대차5.55e−17,source불변·worker/미정산0으로정산했습니다.635·636실패를포함한실행합196.3071837초를보존합니다.
+
+저장실행은공통유효2edge에서Tab/HGB모두UPC를유지했습니다. 다만Tab의float32 knot에서48회bisection뒤에도1e−7 root잔차조건을충족못한입력이많고,HGBfloat64에서는128행모두유효였습니다. 기존worker의bounded값/집계검수는이정밀도비대칭까지검수한것이아닙니다. 이결과를곧바로Tab의소속효용기각으로쓰지않습니다.
+
+다음[638](638_bounded_relation_precision_plan.md)은저장출력만으로동일식의float64해와독립piecewise-linear해를대조합니다. 모델·threshold·자료를바꾸지않으며새forward0입니다. 모든완료예측과정산을보존하고과학적판정만638검수후확정합니다.
+''',encoding='utf-8')
+    entry='\n\n## 637 — 모든예측완료,정밀도비대칭검수대기\n\n[637상세](637_bounded_relation_cache_resume_findings.md). 실제9context1856query/81HGBfit·111.5746071초정산. 5cell1856행/45HGB/79p결과재사용·214검사/source불변. 공통2edge·모두UPC유지이나Tabfloat32/HGBfloat64의root허용오차가비대칭이어서과학적판정은[638캐시검수](638_bounded_relation_precision_plan.md)후확정합니다. 모델재실행0·지원threshold변경0·원래실패비용보존.\n'
+    for p in [B/'progress.md',B/'candidate_decision_index.md']:
+        with p.open('a',encoding='utf-8') as f:f.write(entry)
+    f=B/'research_focus.md';f.write_text('# 최신 실행 — 637 예측 완료,638 수치 정밀도 검수\n'+entry+'\n'+f.read_text(encoding='utf-8-sig'),encoding='utf-8')
+    s.update(updated_at=at,latest_research_stage=637,latest_research_record=rel(record));s['active_problem']['status']='all_forecasts_complete_numeric_precision_check_pending'
+    s['next_action']=dict(id='638_bounded_relation_precision',plan=rel(B/'638_bounded_relation_precision_plan.md'),status='reserved',problem_id=s['active_problem']['id'],budget_reserved=True,
+        action='저장된모든출력으로같은threshold의float64혼합중앙값/독립선형해를비교하고원635소속규칙을확정한다.추가모델0;정밀도결함이면수치구현만수정,없으면637판정유지.원635결과분기적용.')
+    s['research_focus_application'].update(latest_delta_at=at,latest_delta_stage=637,latest_delta_record=s['latest_research_record'],next_action_id=s['next_action']['id'],next_action=s['next_action']['id'],application_status='guidance_applied_completed_forecasts_precision_audit_required')
+    s['in_flight_execution']=dict(id=KEY,output=rel(O));write(S,s)
+    before=sha(L);used=copy.deepcopy(l['used']);oldcaps=copy.deepcopy(l['caps']);cheap=math.fsum(l['new_cheap_diagnostic_seconds'].values())
+    total=cheap+math.fsum(used.get(k,0) for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'])
+    assert l['caps']['cheap_numeric_seconds']>=cheap+CAP and l['caps']['total_local_modeling_seconds']>=total+CAP
+    l['numeric_reservations'][KEY]=dict(status='reserved',seconds_cap=CAP,new_models=0,settings_sha256=sha(O/'frozen_settings.json'));write(L,l)
+    write(O/'authorization.json',dict(at=at,ledger_before_sha256=before,ledger_reserved_sha256=sha(L),settings_sha256=sha(O/'frozen_settings.json'),cap_changes={}))
+    write(P/'archive_complete.json',dict(at=at,success=True,numerical_precision_not_yet_verified=True,next_action=s['next_action']['id'],ledger_sha256=z['ledger_sha256']))
+    print(json.dumps(dict(reserved=True,models=0,seconds_cap=CAP)))
+
+def worker():
+    import numpy as np,psutil
+    pp=psutil.Process();pp.cpu_affinity(pp.cpu_affinity()[:4]);cfg=read(O/'frozen_settings.json');ids=cfg['cell_ids'];checks=[];maxroot=0.
+    def check(name,ok):
+        assert bool(ok),name
+        checks.append(name)
+    with np.load(B/'results/fixed_reference_vs_joint_pool_616/errors_0.npz',allow_pickle=False) as z:truth=z['truth'].copy();qt=z['query_times'].copy();check('truth_ids',z['cell_ids'].tolist()==ids)
+    pred={};dtypes={}
+    for p in sorted((P/'cells').glob('c*.npz')):
+        i=int(p.stem[1:])
+        with np.load(p,allow_pickle=False) as z:
+            check('cell_id',int(z['cell_id'])==ids[i]);check('cell_times',np.array_equal(qt,z['query_times']))
+            pred[i]=dict(targets=z['target_indices'].tolist(),Tab=z['Tab'].astype(np.float64),HGB=z['HGB'].astype(np.float64))
+            dtypes[str(i)]=dict(Tab=str(z['Tab'].dtype),HGB=str(z['HGB'].dtype))
+    def enough(mask):
+        return all(mask[off+lo:off+hi].sum()>=8 and len(np.unique(qt[lo:hi][mask[off+lo:off+hi]]//24))>=2 for off in [0,64] for lo,hi in [(0,32),(32,64)])
+    def oracle(k1,k0,p):
+        knots=np.unique(np.r_[k1,k0]);f=p*np.interp(knots,k1,np.arange(1,10)/10,left=.1,right=.9)+(1-p)*np.interp(knots,k0,np.arange(1,10)/10,left=.1,right=.9)
+        h=int(np.searchsorted(f,.5,side='left'))
+        if h==0:return float(knots[0])
+        check('oracle_crossing',h<len(knots) and f[h]>f[h-1])
+        return float(knots[h-1]+(.5-f[h-1])/(f[h]-f[h-1])*(knots[h]-knots[h-1]))
+    records=[];edges=[];cost={'Tab':[],'HGB':[]};recovered={'Tab':0,'HGB':0}
+    for rec in read(C/'retrieval_sealed.json')['records']:
+        if not rec['retained']:continue
+        i,j=rec['i'],rec['j'];y=np.r_[truth[i],truth[j]];d=np.r_[np.ones(64),np.zeros(64)]
+        with np.load(C/'edges'/f'p_{i}_{j}.npz',allow_pickle=False) as z:p=z['p'].copy();support=z['mask'].copy()
+        allr={};oldr={}
+        for model in ['Tab','HGB']:
+            a,b=pred[i],pred[j];k1=np.concatenate([a[model][a['targets'].index(t)] for t in [i,j]]);k0=np.concatenate([b[model][b['targets'].index(t)] for t in [i,j]])
+            r=m.relationship(k1,k0,p,y,d);allr[model]=r
+            with np.load(P/'edges'/f'{model}_{i}_{j}.npz',allow_pickle=False) as z:oldr[model]={k:z[k].copy() for k in ['valid','mixture','q']}
+            recovered[model]+=int(np.sum(r['valid']&~oldr[model]['valid']))
+            for t in np.flatnonzero(r['valid']):
+                root=oracle(k1[t],k0[t],float(p[t]));diff=abs(root-float(r['q'][t]));maxroot=max(maxroot,diff)
+                check('independent_linear_root',diff<1e-8)
+                q=float(r['q'][t]);f1=float(np.interp(q,k1[t],np.arange(1,10)/10,left=.1,right=.9));f0=float(np.interp(q,k0[t],np.arange(1,10)/10,left=.1,right=.9))
+                check('independent_CDF',max(abs(f1-r['F1'][t]),abs(f0-r['F0'][t]))<1e-10)
+                check('bounded_score',abs(float(r['score'][t]))<=.5+1e-12)
+        mask=support&allr['Tab']['valid']&allr['HGB']['valid'];ok=enough(mask);stats={}
+        for model,r in allr.items():
+            vals=[]
+            if ok:
+                for lo,hi in [(0,32),(32,64)]:
+                    av=[]
+                    for off in [0,64]:
+                        ix=[t for t in range(off+lo,off+hi) if mask[t]]
+                        score=[float(r['w'][t])*(float(d[t])-float(r['a'][t]))*(.5-int(float(y[t])<=float(r['q'][t]))) for t in ix]
+                        av.append(math.fsum(score)/len(score))
+                    vals.append(max(0.,math.fsum(av)/2))
+                cost[model].append(vals)
+            stats[model]=dict(valid_rows=int(r['valid'].sum()),old_valid_rows=int(oldr[model]['valid'].sum()),cost=vals)
+            tmp=O/'edges'/f'{model}_{i}_{j}.npz'
+            with tmp.open('wb') as f:np.savez_compressed(f,**r,p=p,mask=mask,y=y,d=d)
+        if ok:edges.append((i,j))
+        records.append(dict(cell_ids=[ids[i],ids[j]],common_supported=ok,common_rows=int(mask.sum()),stats=stats))
+    assignments={name:m.assign(ids,cfg['initial_labels'],edges,cost[name],cfg,check) for name in ['Tab','HGB']}
+    same=sorted(assignments['Tab']['groups'])==sorted(assignments['HGB']['groups'])
+    branch=('no_common_supported_edges' if not edges else 'Tab_keeps_UPC' if not assignments['Tab']['changed_cell_ids'] else 'same_changed_assignment' if same else 'distinct_Tab_assignment')
+    check('source_unchanged',all(sha(B/p)==h for p,h in cfg['source_hashes'].items()))
+    write(O/'assignment_sealed.json',dict(at=now(),branch=branch,assignments=assignments,RCTL_read=False,all_periods_development=True))
+    with (O/'graph_scores.npz').open('wb') as f:np.savez_compressed(f,edges=np.asarray(edges,int).reshape(-1,2),Tab=np.asarray(cost['Tab']).reshape(-1,2),HGB=np.asarray(cost['HGB']).reshape(-1,2),cell_ids=ids,initial_labels=cfg['initial_labels'])
+    write(O/'verification.json',dict(at=now(),success=True,checks=len(checks),maximum_independent_root_difference=maxroot,source_hashes_unchanged=True,new_model_runs=0))
+    write(O/'result.json',dict(at=now(),success=True,branch=branch,common_valid_edges=len(edges),previous_edges=2,recovered_rows=recovered,original_dtypes=dtypes,
+        assignments=assignments,edge_records=records,new_models=0,RCTL_read=False,all_periods_development=True))
+
+def run():
+    import psutil
+    from run_joint_ID_decision_558 import terminate_tree
+    a=read(O/'authorization.json');cfg=read(O/'frozen_settings.json')
+    assert sha(L)==a['ledger_reserved_sha256'] and sha(O/'frozen_settings.json')==a['settings_sha256'] and not (O/'run_started.json').exists()
+    assert all(sha(B/p)==h for p,h in cfg['source_hashes'].items())
+    start=time.perf_counter();proc=None;peak=0;failure=None;success=False
+    write(O/'run_started.json',dict(at=now(),controller_pid=os.getpid()))
+    try:
+        with (O/'stdout.log').open('w') as out,(O/'stderr.log').open('w') as err:
+            proc=subprocess.Popen([sys.executable,'-X','utf8',str(Path(__file__).resolve()),'worker'],stdout=out,stderr=err,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+            while proc.poll() is None:
+                try:peak=max(peak,psutil.Process(proc.pid).memory_info().rss)
+                except psutil.NoSuchProcess:pass
+                if time.perf_counter()-start>CAP-.3 or peak>2*1024**3:failure='resource_cap';break
+                time.sleep(.05)
+            if failure:terminate_tree(proc)
+            code=proc.wait(timeout=3)
+        success=code==0 and (O/'result.json').exists() and read(O/'result.json')['success']
+    except BaseException:failure=traceback.format_exc()
+    finally:
+        cleanup=terminate_tree(proc);seconds=time.perf_counter()-start;success=bool(success and not failure and seconds<=CAP and cleanup['reaped'])
+        f=dict(at=now(),success=success,seconds=seconds,failure=failure,worker_reaped=cleanup['reaped'],peak_RSS=peak,new_models=0);write(O/'run_finished.json',f)
+        if cleanup['reaped']:
+            l=read(L);assert sha(L)==a['ledger_reserved_sha256'];l['new_cheap_diagnostic_seconds'][KEY]=seconds
+            l['cheap_stage_details'].append(dict(stage=KEY,seconds=seconds,new_models=0,complete=success))
+            l['numeric_reservations'][KEY].update(status='settled',seconds_used=seconds,complete=success,limit_overrun=seconds>CAP);write(L,l)
+            s=read(S);assert s['in_flight_execution']['id']==KEY;s['in_flight_execution']=None;s['next_action'].update(status='executed_settled_pending_findings',budget_reserved=False);s['updated_at']=now();write(S,s)
+            write(O/'settled.json',dict(at=now(),success=success,seconds=seconds,new_models=0,ledger_sha256=sha(L),cap_changes={},all_prior_costs_preserved=True))
+    print(json.dumps(dict(success=success,seconds=seconds,failure=failure)))
+    if not success:raise SystemExit(1)
+
+if __name__=='__main__':
+    if sys.argv[1]=='worker':worker()
+    else:{'reserve':reserve,'run':run}[sys.argv[1]]()

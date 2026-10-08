@@ -1,0 +1,407 @@
+{
+  "cell_ids": [
+    3737,
+    3745,
+    3753,
+    3765,
+    4537,
+    4545,
+    4553,
+    4565,
+    5337,
+    5345,
+    5353,
+    5365,
+    6137,
+    6145,
+    6153,
+    6165
+  ],
+  "max_epochs": 80,
+  "steps": 8,
+  "channels": 9,
+  "batch_size": 256,
+  "patience": 10,
+  "learning_rate": 0.001,
+  "adam_eps": 1e-07,
+  "seed": 20260925,
+  "train_targets": [
+    168,
+    839
+  ],
+  "validation_targets": [
+    840,
+    1007
+  ],
+  "test_targets": [
+    1008,
+    1487
+  ],
+  "prepared_arrays": "results/self_only_reference_160/prepared_arrays.npz",
+  "at": "2026-09-30T01:43:23.268685+00:00",
+  "stage": "frozen_adaptive_paths_rctl_367",
+  "partitions": {
+    "U": [
+      3,
+      1,
+      0,
+      2,
+      2,
+      2,
+      3,
+      2,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      0
+    ],
+    "Tab_path": [
+      3,
+      3,
+      0,
+      2,
+      2,
+      2,
+      3,
+      2,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      0
+    ],
+    "RBF_path": [
+      3,
+      3,
+      0,
+      2,
+      2,
+      2,
+      3,
+      1,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      0
+    ]
+  },
+  "tasks": [
+    {
+      "method": "Tab_path",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        0,
+        1,
+        6
+      ],
+      "reuse": null
+    },
+    {
+      "method": "RBF_path",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        7,
+        9,
+        14
+      ],
+      "reuse": null
+    }
+  ],
+  "group_sources": {
+    "2,8,15": {
+      "members": [
+        2,
+        8,
+        15
+      ],
+      "reused": true,
+      "record": {
+        "method": "U_small_UPC",
+        "seed": 20260925,
+        "cluster": 0,
+        "members": [
+          2,
+          8,
+          15
+        ],
+        "reused": false,
+        "epochs_run": 41,
+        "best_epoch": 31,
+        "best_val_mae": 0.09372659772634506,
+        "stop_reason": "validation_patience",
+        "fit_seconds": 114.35330609999983
+      },
+      "paths": {
+        ".npz": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.npz",
+        ".pt": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.pt",
+        "_history.json": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0_history.json"
+      },
+      "math_threads": 4
+    },
+    "1,9,14": {
+      "members": [
+        1,
+        9,
+        14
+      ],
+      "reused": true,
+      "record": {
+        "method": "U_small_UPC",
+        "seed": 20260925,
+        "cluster": 1,
+        "members": [
+          1,
+          9,
+          14
+        ],
+        "reused": false,
+        "epochs_run": 53,
+        "best_epoch": 43,
+        "best_val_mae": 0.08362028747797012,
+        "stop_reason": "validation_patience",
+        "fit_seconds": 152.67161340000075
+      },
+      "paths": {
+        ".npz": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1.npz",
+        ".pt": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1.pt",
+        "_history.json": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1_history.json"
+      },
+      "math_threads": 4
+    },
+    "3,4,5,7,10,11,12,13": {
+      "members": [
+        3,
+        4,
+        5,
+        7,
+        10,
+        11,
+        12,
+        13
+      ],
+      "reused": true,
+      "record": {
+        "method": "U_small_UPC",
+        "seed": 20260925,
+        "cluster": 2,
+        "members": [
+          3,
+          4,
+          5,
+          7,
+          10,
+          11,
+          12,
+          13
+        ],
+        "reused": false,
+        "epochs_run": 50,
+        "best_epoch": 40,
+        "best_val_mae": 0.07364386320114136,
+        "stop_reason": "validation_patience",
+        "fit_seconds": 158.38309149999986
+      },
+      "paths": {
+        ".npz": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.npz",
+        ".pt": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.pt",
+        "_history.json": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2_history.json"
+      },
+      "math_threads": 4
+    },
+    "0,6": {
+      "members": [
+        0,
+        6
+      ],
+      "reused": true,
+      "record": {
+        "method": "U_small_UPC",
+        "seed": 20260925,
+        "cluster": 3,
+        "members": [
+          0,
+          6
+        ],
+        "reused": false,
+        "epochs_run": 64,
+        "best_epoch": 54,
+        "best_val_mae": 0.06555058062076569,
+        "stop_reason": "validation_patience",
+        "fit_seconds": 28.35590880000018
+      },
+      "paths": {
+        ".npz": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3.npz",
+        ".pt": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3.pt",
+        "_history.json": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3_history.json"
+      },
+      "math_threads": 4
+    },
+    "9,14": {
+      "members": [
+        9,
+        14
+      ],
+      "reused": true,
+      "record": {
+        "method": "T_fixed_predictive",
+        "seed": 20260925,
+        "cluster": 1,
+        "members": [
+          9,
+          14
+        ],
+        "reused": false,
+        "epochs_run": 49,
+        "best_epoch": 39,
+        "best_val_mae": 0.09301911294460297,
+        "stop_reason": "validation_patience",
+        "fit_seconds": 25.29719340000156
+      },
+      "paths": {
+        ".npz": "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster1.npz",
+        ".pt": "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster1.pt",
+        "_history.json": "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster1_history.json"
+      },
+      "math_threads": 1
+    },
+    "0,1,6": {
+      "members": [
+        0,
+        1,
+        6
+      ],
+      "reused": false,
+      "stem": "Tab_path_20260925_cluster3",
+      "paths": {
+        ".npz": "results/frozen_adaptive_paths_rctl_367/Tab_path_20260925_cluster3.npz"
+      },
+      "math_threads": 1
+    },
+    "7,9,14": {
+      "members": [
+        7,
+        9,
+        14
+      ],
+      "reused": false,
+      "stem": "RBF_path_20260925_cluster1",
+      "paths": {
+        ".npz": "results/frozen_adaptive_paths_rctl_367/RBF_path_20260925_cluster1.npz"
+      },
+      "math_threads": 1
+    },
+    "3,4,5,10,11,12,13": {
+      "members": [
+        3,
+        4,
+        5,
+        10,
+        11,
+        12,
+        13
+      ],
+      "reused": true,
+      "record": {
+        "method": "T_fixed_predictive",
+        "seed": 20260925,
+        "cluster": 2,
+        "members": [
+          3,
+          4,
+          5,
+          10,
+          11,
+          12,
+          13
+        ],
+        "reused": false,
+        "epochs_run": 53,
+        "best_epoch": 43,
+        "best_val_mae": 0.0769893005490303,
+        "stop_reason": "validation_patience",
+        "fit_seconds": 89.83778179999717
+      },
+      "paths": {
+        ".npz": "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster2.npz",
+        ".pt": "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster2.pt",
+        "_history.json": "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster2_history.json"
+      },
+      "math_threads": 1
+    }
+  },
+  "source_hashes": {
+    "results/frozen_profile_rctl_306/fit_results.json": "8e4ce45d9fd0d5a75e5961a329317282fbb5b7a2a5450dff7ac3d6e12872e8a6",
+    "results/frozen_profile_rctl_306/frozen_settings.json": "ba67c14fdf221c651dd7ee5275b4393aa65ae2d18ee8f764d6f00591d76e75ae",
+    "results/frozen_profile_rctl_306/run_finished.json": "fba0d1cf68c8c8cec95efe50f88b01c6b01902de8aa8d76bac47dc33bb11bf3d",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.npz": "22f5e7c4dcfe91635f8fbb8cbdb5f2d0bae8bf7c95d7aca4dff49966117e6c03",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.pt": "f7ff65b3c071d560ea744c8c7487c44b4aef396e72ca27c3e811d083fa063679",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0_history.json": "cef30454927ed80031d0a67da5cfcd44942cd1e02b04e1c8209ce0a814861e9d",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1.npz": "e2c87eb651e83467140f6547425e8a7deb35bdae9e2a5b1f94fba32c96ead5e9",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1.pt": "5d0f045ede4f2254e579cc08520297d55aea7ac01268bc53af65dddbcd7f985a",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1_history.json": "58f7046aa37c2fcaab23937e70a9a999dd937826dcb3f1fff358c74ef7224fcf",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.npz": "76e7dcc323d36c8493eea6b8b0b34f73feedd4426770dcd220b8bb7970a034fd",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.pt": "2544a8e4469186f3868839fe184dd4ba0bf4b7c696054da9f13f642a9399da1d",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2_history.json": "e9c2248bfe12a7e82e0b17c0205e3535740a2a48fb0b1d404a0abc12e1587edb",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3.npz": "223d30d3adb910d70efb2a4b95431c8d0ac2d50ff507abdf67c9229084212776",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3.pt": "c5314c66a6bfe1ae9334c33ea190039dff9bf9013637fe702e6486b51dc1391a",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3_history.json": "ee1b625573fff6342f7f7d53d25b4964c83afba12023dc6453067aac5abc305a",
+    "results/frozen_T_rctl_recovery_325/fit_results.json": "8ab783c474457941c57feed69ff253e0535cd0f3ffdba22cbe5f7035b2c6b090",
+    "results/frozen_T_rctl_recovery_325/frozen_settings.json": "4638e8a5f9250af1ad848f1416aba2fba9d6a495de8cc4416eaf2323cd529fd9",
+    "results/frozen_T_rctl_recovery_325/run_finished.json": "e3d47615f61b6d0a8d0f4656b0ed0179c2dfd30c9c5dd83b19fb3b333cdbae46",
+    "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster0.npz": "22f5e7c4dcfe91635f8fbb8cbdb5f2d0bae8bf7c95d7aca4dff49966117e6c03",
+    "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster1.npz": "21b3108441e88f2b109e09dbba374b32f325c68c70ff57656718ca822517f2aa",
+    "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster1.pt": "e9f4f3f73f34b0b6ba4b8f66d1322a05cf5dd49056eec51eeb06250e88e97f67",
+    "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster1_history.json": "89287e99832d3b949a7b6333e3df3806a2fc76131ab9c41d3179c1fed307da7d",
+    "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster2.npz": "9a0f6c4d6a3d8030b8b91fe5e00120ddaf3df9ef3df690f9b68bd60ff903db5e",
+    "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster2.pt": "836c4b66f72d8d7530a115498d1489f34cf244a872c8995239e14695b796c8e3",
+    "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster2_history.json": "49271fd9848fac69d2fb25d8f0973be4a227e4d62f5df7f8ebc4a2cd14e741df",
+    "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster3.npz": "eeecb7ba7788254aab7eda39d54ff4eb9e938d46a019bf8e0f2209020b3b3ea6",
+    "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster3.pt": "3c83be934ec8a74469bfeb7afb3408a6fc48ebef5749e76a6132396c2c796c1b",
+    "results/frozen_T_rctl_recovery_325/T_fixed_predictive_20260925_cluster3_history.json": "c8392770ba03311e0fcb341dd9a551c7ead3c66228b5d6d40d7d56047ced725d",
+    "results/fixed_budget_Tab_path_close_366/result.json": "ad819491163d21060bf254f6678d3826e1949afc9049fd7f14dbac9caf80d3fd",
+    "results/fixed_budget_baseline_close_287/result.json": "35efc7017081c323ca40772db1059a7bcd7636f96ef7007429e67bb49a54767a",
+    "367_frozen_adaptive_paths_RCTL_plan.md": "cfce4731262260e0c85008ec1269aed9f280f92d3527ae984b4e376c39bee538",
+    "frozen_adaptive_paths_rctl_367.py": "6be01922dd0c29f94f56a1d37abeac1e90cc03aaf3a89b4d696332acfd73f6a4",
+    "fixed32_downstream_reference_336.py": "630c86424d2e5caedb9bc22e4c2edc56a3022449fb1b0787e2a01edee4f7a2d1",
+    "rctl_torch.py": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+    "recovery_io_271.py": "c1dc7d7de6d83f2a2b4b18c8468376d60be10efce3cad6c5a613e6df21bfda3b",
+    "results/self_only_reference_160/prepared_arrays.npz": "ff4a1e355afc4fca4587ce3fd322b6c7732e32532600c4af10d4cd29917cd563",
+    "results/rctl_pilot/evaluation_data.npz": "d451810ecccf0b1d9d083132816510ef889c089cd5693d9ab061c1badbf7ff7b",
+    "results/RCTL_runtime_probe_324/result.json": "a912bfe6c2bbb480e3e2a6177bf0098c2eb38b4748ac857c2426370faef9837b"
+  },
+  "max_new_fits": 2,
+  "max_new_epochs": 160,
+  "wall_cap_seconds": 270,
+  "ram_cap_bytes": 2147483648,
+  "threads": 1,
+  "verification_seconds_cap": 10,
+  "source_reuse_protocol_check": true,
+  "completed_unique_groups_reused": 6,
+  "training_function": "fixed32_downstream_reference_336.train unchanged; only output/settings globals replaced",
+  "one_seed_development": true,
+  "RCTL_used_for_membership": false,
+  "membership_frozen_before_new_RCTL": true,
+  "same_membership_simple_alternative": "RBF first accepted move only; post-hoc identified rule, shares Tab_path outcome",
+  "cost_basis": {
+    "reference": 324,
+    "batch256_seconds": 0.08322910000060801,
+    "training_batches": 1280,
+    "validation_batches512": 160,
+    "prediction_batches512": 6,
+    "equivalent_batches256": 1612,
+    "headroom": "1.5*1612*.0832291+60, rounded upward30seconds"
+  }
+}

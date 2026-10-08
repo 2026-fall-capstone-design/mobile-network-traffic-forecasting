@@ -1,0 +1,328 @@
+"""One frozen sparse relation assignment. No RCTL result access."""
+import os
+for k in ('OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS','NUMEXPR_NUM_THREADS','BLIS_NUM_THREADS'):
+    os.environ[k]='1'
+import copy, gc, hashlib, json, math, shutil, subprocess, sys, time, traceback
+from pathlib import Path
+from datetime import datetime, timezone
+from recovery_io_271 import write
+B=Path(__file__).resolve().parent; KEY='bounded_relation_cache_resume_637'; O=B/'results'/KEY
+D=B/'results/fixed_reference_vs_joint_pool_616'; L=B/'cumulative_execution_budget.json'; S=B/'research_state.json'
+LIMITS=dict(contexts=9,query_rows=1856,Tab_seconds=180,other_seconds=35,stage_seconds=215,rss_bytes=4*1024**3,HGB_quantile_fits=81,propensity_fits=0)
+CACHE=B/'results/bounded_relation_storage_recovery_636'
+CACHED_CELLS={0,1,2,3,5}
+def read(p):
+    until=time.perf_counter()+1
+    while True:
+        try:return json.loads(p.read_text(encoding='utf-8-sig'))
+        except PermissionError:
+            if time.perf_counter()>until:raise
+            time.sleep(.005)
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+now=lambda:datetime.now(timezone.utc).isoformat()
+
+def save(path,**kw):
+    import numpy as np
+    temp=path.with_name(path.name+'.tmp')
+    with temp.open('wb') as f:np.savez_compressed(f,**kw)
+    temp.replace(path)
+
+def reserve():
+    assert not O.exists(),'Existing execution must be reviewed, not replayed'
+    s,l=read(S),read(L)
+    assert s['latest_research_stage']==636 and s['next_action']['id']=='637_bounded_relation_cache_resume'
+    assert s['in_flight_execution'] is None
+    assert sha(L)==read(CACHE/'settled.json')['ledger_sha256']
+    assert read(CACHE/'run_finished.json')['worker_reaped'] and not read(CACHE/'settled.json')['success']
+    old=read(CACHE/'frozen_settings.json')
+    assert all(sha(B/p)==h for p,h in old['source_hashes'].items())
+    assert all(v['status'] in ('settled','cancelled','completed','released') for family in ['numeric_reservations','plan_reservations'] for v in l[family].values())
+    co=read(B/'633_same_data_joint_Tab_groups.json')['cohorts'][0]
+    paths=[Path(__file__),B/'635_bounded_relation_graph_plan.md',B/'634_overlap_residual_relation_findings.md',B/'recovery_io_271.py',
+        B/'run_joint_ID_decision_558.py',B/'633_same_data_joint_Tab_groups.json',D/'inputs_0.npz',D/'errors_0.npz',D/'frozen_settings.json',
+        D/'verification.json',D/'settled.json',B/'assets/tabicl-regressor-v2-20260212.ckpt']
+    paths+=sorted((B/'runtime/Lib/site-packages/tabicl').rglob('*.py'))
+    paths += [B/'637_bounded_relation_cache_resume_plan.md', B/'bounded_relation_graph_635.py', CACHE/'frozen_settings.json', CACHE/'settled.json', CACHE/'retrieval_sealed.json', CACHE/'profile_graph.npz']
+    paths += sorted((CACHE/'edges').glob('p_*.npz')) + sorted((CACHE/'cells').glob('c*.npz'))
+    hashes={p.relative_to(B).as_posix():sha(p) for p in paths}
+    assert hashes['assets/tabicl-regressor-v2-20260212.ckpt']=='0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a'
+    assert read(D/'verification.json')['success'] and read(D/'settled.json')['success']
+    cfg=dict(at=now(),cohort=0,cell_ids=co['cell_ids'],initial_labels=co['labels']['UPC'],limits=LIMITS,
+        seed=20260925,neighbors=8,sweeps=3,levels=[i/10 for i in range(1,10)],support_p=[.1,.9],min_each_half=8,min_days=2,
+        quantile_params=dict(max_iter=32,max_leaf_nodes=15,min_samples_leaf=16,l2_regularization=1,learning_rate=.1,early_stopping=False,random_state=20260925),
+        propensity_params=dict(max_iter=24,max_leaf_nodes=7,min_samples_leaf=24,l2_regularization=1,early_stopping=False,random_state=20260925),
+        source_hashes=hashes,all_periods_development=True,RCTL_access=False,full_goal_complete=False)
+    O.mkdir();(O/'before').mkdir();(O/'cells').mkdir();(O/'edges').mkdir()
+    for p in [L,S]:shutil.copy2(p,O/'before'/p.name)
+    write(O/'frozen_settings.json',cfg)
+    used=copy.deepcopy(l['used']);oldcaps=copy.deepcopy(l['caps']);before=sha(L)
+    cheap=math.fsum(l['new_cheap_diagnostic_seconds'].values())
+    total=cheap+math.fsum(used.get(k,0) for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'])
+    needs=dict(TabICL_contexts=used['TabICL_contexts']+9,TabICL_query_rows=used['TabICL_query_rows']+1856,
+        TabICL_fit_predict_seconds=used['TabICL_fit_predict_seconds']+180,cheap_numeric_seconds=cheap+35,total_local_modeling_seconds=total+215)
+    for k,v in needs.items():l['caps'][k]=max(l['caps'][k],v)
+    changes={k:l['caps'][k]-v for k,v in oldcaps.items() if l['caps'][k]!=v}
+    l['autonomous_cap_adjustments'].append(dict(id=KEY,at=now(),authorization='2026-09-28 사용자 위임 / 목표9.1',
+        plan='tmp/redesign_20260925/637_bounded_relation_cache_resume_plan.md',previous_caps=oldcaps,new_caps=copy.deepcopy(l['caps']),change=changes,
+        used_preserved=used,automatic_recharge=False,settings_sha256=sha(O/'frozen_settings.json'),
+        purpose='complete same635 with cached79 propensity and5 cells; bounded retry of metadata reads only',
+        cost_basis='9 remaining cells/1856rows/81fits; prior84.7325766s retained,215s remaining original300s, Tab time reallocated before recovery',stop_limits=LIMITS))
+    l['plan_reservations'][KEY]=dict(status='reserved',Tab_contexts_cap=9,Tab_query_rows_cap=1856,Tab_seconds_cap=180,
+        cheap_seconds_cap=35,HGB_fits_cap=81,RCTL_fits_cap=0,settings_sha256=sha(O/'frozen_settings.json'))
+    for k,n in [('TabICL_contexts',9),('TabICL_query_rows',1856)]:l['remaining_count_budgets'][k]=l['caps'][k]-l['used'][k]-n
+    write(L,l);write(O/'authorization.json',dict(at=now(),ledger_before_sha256=before,ledger_reserved_sha256=sha(L),settings_sha256=sha(O/'frozen_settings.json'),cap_changes=changes))
+    s.update(updated_at=now(),in_flight_execution=dict(id=KEY,output='tmp/redesign_20260925/results/'+KEY))
+    s['next_action'].update(status='reserved',budget_reserved=True);write(S,s)
+    print(json.dumps(dict(reserved=True,cap_changes=changes)))
+
+def cdf_pdf(knots,y):
+    import numpy as np
+    n=len(y);pos=np.sum(y[:,None]>=knots,axis=1)-1;ix=np.clip(pos,0,7);row=np.arange(n)
+    gaps=knots[row,ix+1]-knots[row,ix]
+    safe=np.maximum(gaps,1e-300)
+    F=(ix+1)/10+.1*(y-knots[row,ix])/safe
+    f=.1/safe
+    lower=y<knots[:,0];upper=y>=knots[:,-1]
+    F=np.where(lower,.1,np.where(upper,.9,F));f=np.where(lower|upper,0.,f)
+    return F,f
+
+def relationship(k1,k0,p,y,d):
+    import numpy as np
+    span=np.maximum(1.,np.maximum(np.max(np.abs(k1),axis=1),np.max(np.abs(k0),axis=1)))
+    valid=np.all(np.diff(k1,axis=1)>1e-10*span[:,None],axis=1)&np.all(np.diff(k0,axis=1)>1e-10*span[:,None],axis=1)
+    lo=np.minimum(k1[:,0],k0[:,0]).copy();hi=np.maximum(k1[:,-1],k0[:,-1]).copy()
+    # Equal operations for the matched estimators. No query labels in q/a/w.
+    for _ in range(48):
+        mid=(lo+hi)/2;F1,_=cdf_pdf(k1,mid);F0,_=cdf_pdf(k0,mid);left=(p*F1+(1-p)*F0)<.5
+        lo=np.where(left,mid,lo);hi=np.where(left,hi,mid)
+    q=(lo+hi)/2;F1,f1=cdf_pdf(k1,q);F0,f0=cdf_pdf(k0,q);fm=p*f1+(1-p)*f0
+    valid &= np.isfinite(fm)&(fm>0)&(np.abs(p*F1+(1-p)*F0-.5)<1e-7)
+    a=np.divide(p*f1,fm,out=np.zeros_like(p),where=fm>0);w=np.sign(F0-F1)
+    score=w*(d-a)*(.5-(y<=q))
+    return dict(q=q,a=a,w=w,score=score,valid=valid,F1=F1,F0=F0,f1=f1,f0=f0,mixture=p*F1+(1-p)*F0)
+
+def assign(ids,initial,edges,costs,cfg,check):
+    import numpy as np
+    lab=np.asarray(initial,int).copy();e=np.asarray(edges,int).reshape(-1,2);c=np.asarray(costs,float).reshape(-1,2)
+    def J(labels):return np.sum(c[labels[e[:,0]]==labels[e[:,1]]],axis=0)
+    steps=[];base=J(lab); stop='three_sweeps'
+    for sweep in range(cfg['sweeps']):
+        moved=0
+        for i in range(len(ids)):
+            src=int(lab[i])
+            if np.sum(lab==src)<=1:continue
+            choices=[];before=J(lab)
+            for dest in range(4):
+                if dest==src:continue
+                neighbors=[int(b if a==i else a) for a,b in e if a==i or b==i]
+                if sum(lab[j]==dest for j in neighbors)<2:continue
+                proposal=lab.copy();proposal[i]=dest;delta=J(proposal)-before
+                # Independent scalar sum over only incident edges.
+                ref=[]
+                for h in range(2):
+                    ref.append(math.fsum(float(c[k,h])*(int(proposal[a]==proposal[b])-int(lab[a]==lab[b])) for k,(a,b) in enumerate(e) if a==i or b==i))
+                check('move_delta_scalar',np.max(np.abs(delta-np.asarray(ref)))<1e-12)
+                if np.all(delta < -1e-12):choices.append((float(delta.mean()),dest,delta))
+            if not choices:continue
+            _,dest,delta=min(choices,key=lambda z:(z[0],z[1]));lab[i]=dest;moved+=1
+            check('nonempty_K',set(lab.tolist())==set(range(4)))
+            check('both_decrease',np.all(J(lab)<before-1e-12))
+            steps.append(dict(sweep=sweep,cell_id=ids[i],source=src,destination=dest,change=delta.tolist(),objective_after=J(lab).tolist()))
+        if moved==0:stop='no_admissible_move';break
+    return dict(labels=lab.tolist(),groups=[sorted(ids[i] for i in range(len(ids)) if lab[i]==g) for g in range(4)],
+        changed_cell_ids=[ids[i] for i in range(len(ids)) if lab[i]!=initial[i]],initial_objective=base.tolist(),final_objective=J(lab).tolist(),moves=steps,stop=stop)
+
+def worker():
+    import numpy as np, psutil, torch
+    from scipy.spatial import cKDTree
+    from sklearn.ensemble import HistGradientBoostingClassifier, HistGradientBoostingRegressor
+    from threadpoolctl import threadpool_limits
+    from tabicl import TabICLRegressor
+    pp=psutil.Process();pp.cpu_affinity(pp.cpu_affinity()[:4]);threadpool_limits(limits=1)
+    torch.set_num_threads(4);torch.set_num_interop_threads(2)
+    cfg=read(O/'frozen_settings.json');meter=read(O/'meter.json');ids=cfg['cell_ids'];checks=[];maxdiff=0.
+    def check(name,ok):
+        assert bool(ok),name
+        checks.append(name)
+    def tabop(phase,fn,counts):
+        for k,v in counts.items():meter[k+'_attempted']+=v
+        check('context_cap',meter['contexts_attempted']<=LIMITS['contexts']);check('query_cap',meter['query_rows_attempted']<=LIMITS['query_rows'])
+        meter.update(phase=phase,phase_started_perf=time.perf_counter());write(O/'meter.json',meter)
+        try:val=fn()
+        finally:
+            meter['Tab_seconds']+=time.perf_counter()-meter['phase_started_perf'];meter.update(phase='between',phase_started_perf=None);write(O/'meter.json',meter)
+        for k,v in counts.items():meter[k+'_completed']+=v
+        write(O/'meter.json',meter);return val
+    def fitcheap(kind,model,x,y):
+        meter[kind+'_attempted']+=1;write(O/'meter.json',meter)
+        model.fit(x,y);meter[kind+'_completed']+=1;write(O/'meter.json',meter);return model
+    with np.load(D/'inputs_0.npz',allow_pickle=False) as z:
+        X=z['train_X'].copy();Y=z['train_y'].copy();Q=z['query_X'].copy().reshape(16,64,16);qt=z['query_times'].copy();check('ids',z['cell_ids'].tolist()==ids)
+    check('data_shape',X.shape==(16,504,16) and Y.shape==(16,504))
+    check('finite',np.isfinite(X).all() and np.isfinite(Y).all() and np.isfinite(Q).all())
+    check('query_bounds',len(qt)==64 and qt[0]==672 and qt[-1]==839 and np.all(np.diff(qt)>0))
+    with np.load(CACHE/'profile_graph.npz',allow_pickle=False) as z:
+        profile=z['profile'].copy();edges=[tuple(x) for x in z['edges'].tolist()]
+        check('cached_profile_ids',z['cell_ids'].tolist()==ids);check('cached_profile_times',np.array_equal(qt,z['query_times']))
+    check('cached79edges',len(edges)==79)
+    shutil.copy2(CACHE/'profile_graph.npz',O/'profile_graph.npz')
+    def enough(mask):
+        for off in [0,64]:
+            for lo,hi in [(0,32),(32,64)]:
+                keep=mask[off+lo:off+hi]
+                if keep.sum()<8 or len(np.unique(qt[lo:hi][keep]//24))<2:return False
+        return True
+    retained=[];probs={};supports={};retrieval=[]
+    for i,j in edges:
+        with np.load(CACHE/'edges'/f'p_{i}_{j}.npz',allow_pickle=False) as z:
+            p=z['p'].copy();mask=z['mask'].copy()
+        check('cached_support',np.array_equal(mask,(p>=.1)&(p<=.9)) and p.shape==(128,))
+        ok=enough(mask)
+        retrieval.append(dict(i=i,j=j,cell_ids=[ids[i],ids[j]],retained=ok,support_counts=[int(mask[o+a:o+b].sum()) for o in [0,64] for a,b in [(0,32),(32,64)]]))
+        save(O/'edges'/f'p_{i}_{j}.npz',p=p,mask=mask)
+        if ok:retained.append((i,j));probs[i,j]=p;supports[i,j]=mask
+    write(O/'retrieval_sealed.json',dict(at=now(),initial_edges=len(edges),retained_edges=len(retained),records=retrieval,query_targets_read=False))
+    neighbor={i:set() for i in range(16)}
+    for i,j in retained:neighbor[i].add(j);neighbor[j].add(i)
+    active=[i for i in range(16) if neighbor[i]];prediction={};crossing={}
+    total_rows=sum(64*(1+len(neighbor[i])) for i in active)
+    check('same_rows',total_rows==3712 and len(active)==14 and len(retained)==22)
+    new_rows=sum(64*(1+len(neighbor[i])) for i in active if i not in CACHED_CELLS)
+    check('remaining_rows',new_rows==1856 and set(CACHED_CELLS).issubset(active))
+    for i in active:
+        targets=sorted(neighbor[i]|{i});qx=Q[targets].reshape(-1,16)
+        if i in CACHED_CELLS:
+            path=CACHE/'cells'/f'c{i}.npz'
+            with np.load(path,allow_pickle=False) as z:
+                check('cached_cell_and_order',int(z['cell_id'])==ids[i] and z['target_indices'].tolist()==targets and np.array_equal(z['query_times'],qt))
+                tp=z['Tab'].copy();hp=z['HGB'].copy()
+            check('cached_shapes',tp.shape==hp.shape==(len(targets),64,9) and np.isfinite(tp).all() and np.isfinite(hp).all())
+            prediction[i]=dict(targets=targets,Tab=tp,HGB=hp)
+            shutil.copy2(path,O/'cells'/f'c{i}.npz');check('cached_byte_identity',sha(path)==sha(O/'cells'/f'c{i}.npz'))
+            continue
+        def fit():
+            model=TabICLRegressor(n_estimators=1,batch_size=1,kv_cache=True,model_path=str(B/'assets/tabicl-regressor-v2-20260212.ckpt'),
+                allow_auto_download=False,device='cpu',use_amp=False,use_fa3=False,offload_mode=False,random_state=cfg['seed'],n_jobs=1)
+            model.fit(X[i],Y[i]);return model
+        model=tabop('Tab_fit',fit,dict(contexts=1));parts=[]
+        for start in range(0,len(qx),512):
+            part=tabop('Tab_predict',lambda:model.predict(qx[start:start+512],output_type='quantiles',alphas=cfg['levels']),dict(query_rows=min(512,len(qx)-start)))
+            parts.append(part);save(O/'cells'/f'Tab_{i}_partial.npz',quantiles=np.concatenate(parts),target_indices=targets)
+        tp=np.concatenate(parts).reshape(len(targets),64,9);del model;gc.collect()
+        check('finite_Tab',np.isfinite(tp).all());crossing['Tab_'+str(i)]=int(np.any(np.diff(tp,axis=-1)<0,axis=-1).sum());tp=np.sort(tp,axis=-1)
+        hp=[]
+        for level in cfg['levels']:
+            model=fitcheap('quantile',HistGradientBoostingRegressor(loss='quantile',quantile=level,**cfg['quantile_params']),X[i],Y[i])
+            hp.append(model.predict(qx));meter['HGB_quantile_query_rows']+=len(qx)
+        hp=np.stack(hp,axis=-1).reshape(len(targets),64,9)
+        check('finite_HGB',np.isfinite(hp).all());crossing['HGB_'+str(i)]=int(np.any(np.diff(hp,axis=-1)<0,axis=-1).sum());hp=np.sort(hp,axis=-1)
+        prediction[i]=dict(targets=targets,Tab=tp,HGB=hp)
+        save(O/'cells'/f'c{i}.npz',Tab=tp,HGB=hp,target_indices=targets,cell_id=ids[i],query_times=qt)
+        write(O/'meter.json',meter);print(json.dumps(dict(cell=ids[i],targets=len(targets),Tab_seconds=meter['Tab_seconds'],quantile_fits=meter['quantile_completed'])),flush=True)
+    write(O/'forecasts_sealed.json',dict(at=now(),active_cells=[ids[i] for i in active],query_rows=total_rows,levels=cfg['levels'],crossing_rows=crossing,query_targets_read=False,RCTL_read=False))
+    with np.load(D/'errors_0.npz',allow_pickle=False) as z:
+        truth=z['truth'].copy();check('truth_ids',z['cell_ids'].tolist()==ids);check('truth_times',np.array_equal(qt,z['query_times']))
+    edge_records=[];accepted=[];cost={'Tab':[],'HGB':[]};raw={}
+    for i,j in retained:
+        allr={};y=np.r_[truth[i],truth[j]];d=np.r_[np.ones(64),np.zeros(64)]
+        for m in ['Tab','HGB']:
+            pi=prediction[i];pj=prediction[j]
+            k1=np.concatenate([pi[m][pi['targets'].index(t)] for t in [i,j]])
+            k0=np.concatenate([pj[m][pj['targets'].index(t)] for t in [i,j]])
+            allr[m]=relationship(k1,k0,probs[i,j],y,d)
+        mask=supports[i,j]&allr['Tab']['valid']&allr['HGB']['valid'];ok=enough(mask);stats={}
+        for m in ['Tab','HGB']:
+            rr=allr[m];check('bounded_score',np.max(np.abs(rr['score']))<=.5+1e-10)
+            vals=[]
+            if ok:
+                for lo,hi in [(0,32),(32,64)]:
+                    src=[];ref=[]
+                    for off in [0,64]:
+                        ix=np.arange(off+lo,off+hi)[mask[off+lo:off+hi]]
+                        src.append(float(rr['score'][ix].mean()))
+                        terms=[float(rr['w'][t])*(float(d[t])-float(rr['a'][t]))*(.5-int(float(y[t])<=float(rr['q'][t]))) for t in ix]
+                        ref.append(math.fsum(terms)/len(terms))
+                    value=max(0.,sum(src)/2);scalar=max(0.,math.fsum(ref)/2);diff=abs(value-scalar);maxdiff=max(maxdiff,diff)
+                    check('score_scalar',diff<1e-12);vals.append(value)
+                cost[m].append(vals)
+            stats[m]=dict(cost=vals,valid_rows=int(rr['valid'].sum()))
+            save(O/'edges'/f'{m}_{i}_{j}.npz',**rr,mask=mask,y=y,d=d,p=probs[i,j],query_times=qt)
+        if ok:accepted.append((i,j))
+        edge_records.append(dict(i=i,j=j,cell_ids=[ids[i],ids[j]],common_supported=ok,stats=stats,common_rows=int(mask.sum())))
+    assignments={m:assign(ids,cfg['initial_labels'],accepted,cost[m],cfg,check) for m in ['Tab','HGB']}
+    same=lambda a,b:sorted([sorted(g) for g in a])==sorted([sorted(g) for g in b])
+    tabchanged=bool(assignments['Tab']['changed_cell_ids']);hgbchanged=bool(assignments['HGB']['changed_cell_ids'])
+    equal=same(assignments['Tab']['groups'],assignments['HGB']['groups'])
+    branch=('no_common_supported_edges' if not accepted else 'Tab_keeps_UPC' if not tabchanged else 'same_changed_assignment' if equal else 'distinct_Tab_assignment')
+    write(O/'assignment_sealed.json',dict(at=now(),assignments=assignments,branch=branch,RCTL_read=False,all_periods_development=True))
+    save(O/'graph_scores.npz',edges=np.asarray(accepted,int).reshape(-1,2),Tab=np.asarray(cost['Tab']).reshape(-1,2),HGB=np.asarray(cost['HGB']).reshape(-1,2),cell_ids=ids,initial_labels=cfg['initial_labels'])
+    check('all_source_hashes',all(sha(B/p)==h for p,h in cfg['source_hashes'].items()))
+    check('no_model_retries',meter['contexts_attempted']==meter['contexts_completed']==len(active)-5 and meter['query_rows_attempted']==meter['query_rows_completed']==new_rows)
+    check('simple_fits',meter['quantile_completed']==9*(len(active)-5) and meter['propensity_completed']==0)
+    write(O/'verification.json',dict(at=now(),success=True,checks=len(checks),check_names=checks,max_difference=maxdiff,source_hashes_unchanged=True,RCTL_read=False))
+    write(O/'result.json',dict(at=now(),success=True,branch=branch,cell_ids=ids,initial_labels=cfg['initial_labels'],assignments=assignments,
+        initial_edges=len(edges),propensity_retained=len(retained),common_valid_edges=len(accepted),edge_records=edge_records,
+        new_Tab_contexts=len(active)-5,new_Tab_query_rows=new_rows,reused_Tab_contexts=5,reused_Tab_query_rows=1856,reused_HGB_quantile_fits=45,reused_propensity_fits=79,quantile_fits=meter['quantile_completed'],propensity_fits=meter['propensity_completed'],
+        HGB_query_rows=meter['HGB_quantile_query_rows']+meter['propensity_query_rows'],RCTL_fits=0,new_algorithm_adopted=False,all_periods_development=True))
+
+def run():
+    import psutil
+    from run_joint_ID_decision_558 import terminate_tree
+    cfg,a=read(O/'frozen_settings.json'),read(O/'authorization.json')
+    assert sha(L)==a['ledger_reserved_sha256'] and sha(O/'frozen_settings.json')==a['settings_sha256']
+    assert all(sha(B/p)==h for p,h in cfg['source_hashes'].items()) and not (O/'run_started.json').exists()
+    meter={k:0 for name in ['contexts','query_rows','quantile','propensity'] for k in [name+'_attempted',name+'_completed']}
+    meter.update(Tab_seconds=0,HGB_quantile_query_rows=0,propensity_query_rows=0,phase='import',phase_started_perf=None);write(O/'meter.json',meter)
+    start=time.perf_counter();proc=None;peak=0;failure=None;success=False;code=None
+    write(O/'run_started.json',dict(at=now(),controller_pid=os.getpid()))
+    try:
+        with (O/'stdout.log').open('w',encoding='utf-8') as out,(O/'stderr.log').open('w',encoding='utf-8') as err:
+            proc=subprocess.Popen([sys.executable,'-X','utf8',str(Path(__file__).resolve()),'worker'],stdout=out,stderr=err,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+            write(O/'worker_handle.json',dict(pid=proc.pid,create_time=psutil.Process(proc.pid).create_time()))
+            while proc.poll() is None:
+                meter=read(O/'meter.json');elapsed=time.perf_counter()-start
+                pending=max(0,time.perf_counter()-meter['phase_started_perf']) if meter['phase'].startswith('Tab_') and meter['phase_started_perf'] is not None else 0
+                tab=meter['Tab_seconds']+pending
+                try:
+                    pp=psutil.Process(proc.pid);peak=max(peak,pp.memory_info().rss+sum(ch.memory_info().rss for ch in pp.children(recursive=True)))
+                except psutil.NoSuchProcess:pass
+                if tab>LIMITS['Tab_seconds']-.5 or elapsed-tab>LIMITS['other_seconds']-.5 or elapsed>LIMITS['stage_seconds']-.5 or peak>LIMITS['rss_bytes']:
+                    failure=dict(reason='resource_cap',Tab_seconds=tab,other_seconds=elapsed-tab,RSS=peak);break
+                time.sleep(.1)
+            if failure:terminate_tree(proc)
+            code=proc.wait(timeout=5)
+        success=code==0 and (O/'worker_finished.json').exists() and read(O/'worker_finished.json')['success']
+    except BaseException:failure=dict(reason='controller_exception',trace=traceback.format_exc())
+    finally:
+        cleanup=terminate_tree(proc);elapsed=time.perf_counter()-start;meter=read(O/'meter.json')
+        pending=max(0,time.perf_counter()-meter['phase_started_perf']) if meter['phase'].startswith('Tab_') and meter['phase_started_perf'] is not None else 0
+        tab=min(elapsed,meter['Tab_seconds']+pending);other=elapsed-tab
+        good=tab<=LIMITS['Tab_seconds'] and other<=LIMITS['other_seconds'] and elapsed<=LIMITS['stage_seconds'] and peak<=LIMITS['rss_bytes']
+        success=bool(success and failure is None and cleanup['reaped'] and good)
+        write(O/'run_finished.json',dict(at=now(),success=success,seconds=elapsed,Tab_seconds=tab,other_seconds=other,peak_process_tree_RSS_bytes=peak,cap_satisfied=good,
+            failure=failure,returncode=code,worker_reaped=cleanup['reaped'],meter=meter))
+        if cleanup['reaped']:settle()
+    print(json.dumps(dict(success=success,seconds=elapsed,failure=failure)))
+    if not success:raise SystemExit(1)
+
+def settle():
+    assert not (O/'settled.json').exists()
+    f,a,l=read(O/'run_finished.json'),read(O/'authorization.json'),read(L)
+    assert f['worker_reaped'] and sha(L)==a['ledger_reserved_sha256'] and KEY not in l['new_cheap_diagnostic_seconds']
+    m=f['meter'];l['used']['TabICL_contexts']+=m['contexts_attempted'];l['used']['TabICL_query_rows']+=m['query_rows_attempted'];l['used']['TabICL_fit_predict_seconds']+=f['Tab_seconds']
+    l['new_cheap_diagnostic_seconds'][KEY]=f['other_seconds']
+    l['cheap_stage_details'].append(dict(stage=KEY,seconds=f['other_seconds'],HGB_fits=m['quantile_attempted']+m['propensity_attempted'],RCTL_fits=0,complete=f['success']))
+    l['plan_reservations'][KEY].update(status='settled',Tab_contexts_used=m['contexts_attempted'],Tab_query_rows_used=m['query_rows_attempted'],Tab_seconds_used=f['Tab_seconds'],
+        cheap_seconds_used=f['other_seconds'],complete=f['success'],limit_overrun=not f['cap_satisfied'])
+    for k in ['TabICL_contexts','TabICL_query_rows']:l['remaining_count_budgets'][k]=l['caps'][k]-l['used'][k]
+    l['as_of_date']=now();write(L,l)
+    s=read(S);assert s['in_flight_execution']['id']==KEY;s['in_flight_execution']=None;s['next_action'].update(status='executed_settled_pending_findings',budget_reserved=False);s['updated_at']=now();write(S,s)
+    write(O/'settled.json',dict(at=now(),success=f['success'],seconds=f['seconds'],Tab_seconds=f['Tab_seconds'],other_seconds=f['other_seconds'],
+        new_Tab_contexts=m['contexts_attempted'],new_Tab_query_rows=m['query_rows_attempted'],HGB_new_fits=m['quantile_attempted']+m['propensity_attempted'],RCTL_new_fits=0,
+        ledger_sha256=sha(L),all_prior_costs_preserved=True,cap_changes=a['cap_changes']))
+
+if __name__=='__main__':
+    if sys.argv[1]=='worker':
+        try:worker();write(O/'worker_finished.json',dict(at=now(),success=True))
+        except BaseException:write(O/'worker_finished.json',dict(at=now(),success=False,trace=traceback.format_exc()));raise
+    else:{'reserve':reserve,'run':run,'settle':settle}[sys.argv[1]]()

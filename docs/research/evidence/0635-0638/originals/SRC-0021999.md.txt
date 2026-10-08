@@ -1,0 +1,9 @@
+# 636. 입력 지원과 부분 예측 완료, 상태 파일 읽기 오류
+
+입력profile로79쌍을검색했고동일한분류/지원규칙에서22쌍이남았습니다. 해당14cell중5cell의Tab/HGB9분위수1856행을완료했습니다. 여섯번째cell의Tab준비뒤128행예측중controller가상태파일을읽다가PermissionError로중단했습니다. worker회수·정산은완료됐습니다. 파일은이후읽을수있으며완료물은보존돼있습니다.
+
+실제80.81354970000393초중Tab73.71690230001695초,기타7.096647399986978초입니다. Tab6context/1984attempted query중1856행이완료저장됐습니다. HGB는p분류79fit과분위수45fit입니다. 분위수전체·최종graph·이동·RCTL효용은아직확인하지않았습니다.
+
+다음[637계획](637_bounded_relation_cache_resume_plan.md)은완료79분류와5cell출력을byte재사용하고누락9cell/1856행만계산합니다. 모델대신상태파일읽기에만짧은재시도를적용합니다. 이미쓰인84.7325766초(635포함)를보존하고원래300초전체안에서215초를배정하며부족한누적항목만최소조정합니다. 같은조건의완료실험을다시실행하거나과학적판정을꾸미지않습니다.
+
+[실행](results/bounded_relation_storage_recovery_636/run_finished.json),[부분검색](results/bounded_relation_storage_recovery_636/retrieval_sealed.json),[정산](results/bounded_relation_storage_recovery_636/settled.json). 최종소속·신규성·goal·Word는미완료입니다.

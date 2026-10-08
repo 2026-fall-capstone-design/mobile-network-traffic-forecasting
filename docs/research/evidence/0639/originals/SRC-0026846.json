@@ -1,0 +1,685 @@
+{
+  "cell_ids": [
+    3737,
+    3745,
+    3753,
+    3765,
+    4537,
+    4545,
+    4553,
+    4565,
+    5337,
+    5345,
+    5353,
+    5365,
+    6137,
+    6145,
+    6153,
+    6165
+  ],
+  "max_epochs": 80,
+  "steps": 8,
+  "channels": 9,
+  "batch_size": 256,
+  "patience": 10,
+  "learning_rate": 0.001,
+  "adam_eps": 1e-07,
+  "seed": 20260925,
+  "train_targets": [
+    168,
+    839
+  ],
+  "validation_targets": [
+    840,
+    1007
+  ],
+  "test_targets": [
+    1008,
+    1487
+  ],
+  "prepared_arrays": "results/self_only_reference_160/prepared_arrays.npz",
+  "loss": "MAE",
+  "architecture": "unchanged rctl_torch.RCTL",
+  "at": "2026-10-02T20:46:39.372974+00:00",
+  "stage": "fixed_pool_RCTL_bridge_563",
+  "partitions": {
+    "U_small_UPC": [
+      3,
+      1,
+      0,
+      2,
+      2,
+      2,
+      3,
+      2,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      0
+    ],
+    "Tab_fixed_pool": [
+      1,
+      3,
+      2,
+      2,
+      2,
+      2,
+      3,
+      2,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      3,
+      0
+    ],
+    "HGB_fixed_pool": [
+      3,
+      1,
+      2,
+      2,
+      2,
+      2,
+      3,
+      0,
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      3,
+      0
+    ]
+  },
+  "tasks": [
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        2,
+        8,
+        15
+      ],
+      "cell_ids": [
+        3753,
+        5337,
+        6165
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_rctl_306",
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.npz",
+              "sha256": "22f5e7c4dcfe91635f8fbb8cbdb5f2d0bae8bf7c95d7aca4dff49966117e6c03",
+              "bytes": 11050
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.pt",
+              "sha256": "f7ff65b3c071d560ea744c8c7487c44b4aef396e72ca27c3e811d083fa063679",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0_history.json",
+              "sha256": "cef30454927ed80031d0a67da5cfcd44942cd1e02b04e1c8209ce0a814861e9d",
+              "bytes": 6299
+            }
+          },
+          "fit_metadata": {
+            "method": "U_small_UPC",
+            "seed": 20260925,
+            "cluster": 0,
+            "members": [
+              2,
+              8,
+              15
+            ],
+            "reused": false,
+            "epochs_run": 41,
+            "best_epoch": 31,
+            "best_val_mae": 0.09372659772634506,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 114.35330609999983
+          }
+        }
+      }
+    },
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        1,
+        9,
+        14
+      ],
+      "cell_ids": [
+        3745,
+        5345,
+        6153
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_rctl_306",
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1.npz",
+              "sha256": "e2c87eb651e83467140f6547425e8a7deb35bdae9e2a5b1f94fba32c96ead5e9",
+              "bytes": 10814
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1.pt",
+              "sha256": "5d0f045ede4f2254e579cc08520297d55aea7ac01268bc53af65dddbcd7f985a",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1_history.json",
+              "sha256": "58f7046aa37c2fcaab23937e70a9a999dd937826dcb3f1fff358c74ef7224fcf",
+              "bytes": 8143
+            }
+          },
+          "fit_metadata": {
+            "method": "U_small_UPC",
+            "seed": 20260925,
+            "cluster": 1,
+            "members": [
+              1,
+              9,
+              14
+            ],
+            "reused": false,
+            "epochs_run": 53,
+            "best_epoch": 43,
+            "best_val_mae": 0.08362028747797012,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 152.67161340000075
+          }
+        }
+      }
+    },
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        3,
+        4,
+        5,
+        7,
+        10,
+        11,
+        12,
+        13
+      ],
+      "cell_ids": [
+        3765,
+        4537,
+        4545,
+        4565,
+        5353,
+        5365,
+        6137,
+        6145
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_rctl_306",
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.npz",
+              "sha256": "76e7dcc323d36c8493eea6b8b0b34f73feedd4426770dcd220b8bb7970a034fd",
+              "bytes": 28039
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.pt",
+              "sha256": "2544a8e4469186f3868839fe184dd4ba0bf4b7c696054da9f13f642a9399da1d",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2_history.json",
+              "sha256": "e9c2248bfe12a7e82e0b17c0205e3535740a2a48fb0b1d404a0abc12e1587edb",
+              "bytes": 7697
+            }
+          },
+          "fit_metadata": {
+            "method": "U_small_UPC",
+            "seed": 20260925,
+            "cluster": 2,
+            "members": [
+              3,
+              4,
+              5,
+              7,
+              10,
+              11,
+              12,
+              13
+            ],
+            "reused": false,
+            "epochs_run": 50,
+            "best_epoch": 40,
+            "best_val_mae": 0.07364386320114136,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 158.38309149999986
+          }
+        }
+      }
+    },
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        0,
+        6
+      ],
+      "cell_ids": [
+        3737,
+        4553
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_rctl_306",
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3.npz",
+              "sha256": "223d30d3adb910d70efb2a4b95431c8d0ac2d50ff507abdf67c9229084212776",
+              "bytes": 7599
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3.pt",
+              "sha256": "c5314c66a6bfe1ae9334c33ea190039dff9bf9013637fe702e6486b51dc1391a",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3_history.json",
+              "sha256": "ee1b625573fff6342f7f7d53d25b4964c83afba12023dc6453067aac5abc305a",
+              "bytes": 9829
+            }
+          },
+          "fit_metadata": {
+            "method": "U_small_UPC",
+            "seed": 20260925,
+            "cluster": 3,
+            "members": [
+              0,
+              6
+            ],
+            "reused": false,
+            "epochs_run": 64,
+            "best_epoch": 54,
+            "best_val_mae": 0.06555058062076569,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 28.35590880000018
+          }
+        }
+      }
+    },
+    {
+      "method": "Tab_fixed_pool",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        8,
+        15
+      ],
+      "cell_ids": [
+        5337,
+        6165
+      ],
+      "reuse": null
+    },
+    {
+      "method": "Tab_fixed_pool",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        0,
+        9
+      ],
+      "cell_ids": [
+        3737,
+        5345
+      ],
+      "reuse": null
+    },
+    {
+      "method": "Tab_fixed_pool",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        10,
+        11,
+        12,
+        13
+      ],
+      "cell_ids": [
+        3753,
+        3765,
+        4537,
+        4545,
+        4565,
+        5353,
+        5365,
+        6137,
+        6145
+      ],
+      "reuse": null
+    },
+    {
+      "method": "Tab_fixed_pool",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        1,
+        6,
+        14
+      ],
+      "cell_ids": [
+        3745,
+        4553,
+        6153
+      ],
+      "reuse": null
+    },
+    {
+      "method": "HGB_fixed_pool",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        7,
+        8,
+        11,
+        12,
+        13,
+        15
+      ],
+      "cell_ids": [
+        4565,
+        5337,
+        5365,
+        6137,
+        6145,
+        6165
+      ],
+      "reuse": null
+    },
+    {
+      "method": "HGB_fixed_pool",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        1,
+        9
+      ],
+      "cell_ids": [
+        3745,
+        5345
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_single_RCTL_388",
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster1.npz",
+              "sha256": "866aad296651387ddfc77d4748575adda517cebe5a7e1e1dc6911d9a0513c26d",
+              "bytes": 7521
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster1.pt",
+              "sha256": "6624b1e66bf834ebb17544107060190f9590f8205700073c8fe52b63b8a1f5fe",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster1_history.json",
+              "sha256": "a3c38d41c614f4558f17759c7f0b03f57d2cf6ac487603b9fde407a3ae3a28a4",
+              "bytes": 9084
+            }
+          },
+          "fit_metadata": {
+            "method": "P_profile_single_move",
+            "seed": 20260925,
+            "cluster": 1,
+            "members": [
+              1,
+              9
+            ],
+            "reused": false,
+            "epochs_run": 59,
+            "best_epoch": 49,
+            "best_val_mae": 0.0831218734383583,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 28.650953800000025
+          }
+        }
+      }
+    },
+    {
+      "method": "HGB_fixed_pool",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        2,
+        3,
+        4,
+        5,
+        10
+      ],
+      "cell_ids": [
+        3753,
+        3765,
+        4537,
+        4545,
+        5353
+      ],
+      "reuse": null
+    },
+    {
+      "method": "HGB_fixed_pool",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        0,
+        6,
+        14
+      ],
+      "cell_ids": [
+        3737,
+        4553,
+        6153
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_single_RCTL_388",
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster3.npz",
+              "sha256": "52f4987380c76a758f3c9a267a0e28433971666d85ac477ede1f7590fbe75266",
+              "bytes": 10896
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster3.pt",
+              "sha256": "c295f657f3c3d86950adc798a169f242ac610f863a8b8140a2f5947b186c76e7",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster3_history.json",
+              "sha256": "64bae6cc07af1354e020bc9ba386a86602bad7edd88a419d6bfe33f208bc39de",
+              "bytes": 9998
+            }
+          },
+          "fit_metadata": {
+            "method": "P_profile_single_move",
+            "seed": 20260925,
+            "cluster": 3,
+            "members": [
+              0,
+              6,
+              14
+            ],
+            "reused": false,
+            "epochs_run": 65,
+            "best_epoch": 55,
+            "best_val_mae": 0.07307685166597366,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 44.77309490000016
+          }
+        }
+      }
+    }
+  ],
+  "source_hashes": {
+    "563_fixed_pool_RCTL_bridge_plan.md": "dee0d2e799a7829a5b0049f9e3422bad93448f022f6666a2e7658ce879cdddb9",
+    "563_fixed_pool_RCTL_cache_review.json": "7b277771a60993e00737a17a481f304cb287a79807f2821104ef3d301ca4d73f",
+    "results/fixed_UPC_pool_assignment_recovery_562/partitions_frozen.json": "693a173217a257efc4aeead847d92c4cbe892a1df07b8bd214bb6b1b49f677f9",
+    "fixed_pool_RCTL_bridge_563.py": "da018e38e092a97dfe897eb4ea2bac91fe0eb6943444520de2aac512cbca2460",
+    "verify_fixed_pool_RCTL_bridge_563.py": "e288485d408cc9a92383306d30a66d00b92af6b35c3453674524c4d3f98a5b21",
+    "fixed32_downstream_reference_336.py": "630c86424d2e5caedb9bc22e4c2edc56a3022449fb1b0787e2a01edee4f7a2d1",
+    "fixed32_single_move_recovery_331.py": "85f9fa8a33b89c39ebbbd6b24ca6a7205a60be23efa4ca7abb785f60d8163c44",
+    "rctl_torch.py": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+    "recovery_io_271.py": "c1dc7d7de6d83f2a2b4b18c8468376d60be10efce3cad6c5a613e6df21bfda3b",
+    "results/self_only_reference_160/prepared_arrays.npz": "ff4a1e355afc4fca4587ce3fd322b6c7732e32532600c4af10d4cd29917cd563",
+    "results/rctl_pilot/evaluation_data.npz": "d451810ecccf0b1d9d083132816510ef889c089cd5693d9ab061c1badbf7ff7b",
+    "results/frozen_profile_rctl_recovery_307/frozen_settings.json": "d3a73612d8a2fa9c695fca0ed83b23340ac71269c3a89d0c4e996143744d7c8a",
+    "results/frozen_profile_single_RCTL_388/frozen_settings.json": "4093fdb2a5a836e511311dfd9bce2dd25c98d8a86c1c11234806fc87bc8defec",
+    "results/frozen_profile_single_RCTL_388/fit_results.json": "1645240e5376bcb539c6b0f50f47d350308b0111cfe7b457efa6d44c00c6c56e",
+    "results/fixed_UPC_pool_assignment_recovery_562/result.json": "5e7948d567abb143a697e39279ebafeb861ab47b40e1e57bbaf32647615a110c",
+    "results/fixed_UPC_pool_assignment_recovery_562/verification.json": "d07a67d287e15ff00f9e2c43886b3b5e481a3a3f90f7039b37bb05393bc98cac",
+    "results/fixed_UPC_pool_assignment_recovery_562/settled.json": "8b1de92f9d21b64f791b5c1e5561365c201925fc383c1a6634970d26247a315d",
+    "results/saved_RCTL_reference_reconciliation_501/RCTL_cache_register.json": "745e4706b4782f74e3534f0ab8f6f3ba372f42b1627cf8e098405acbebbdb932",
+    "results/saved_RCTL_reference_reconciliation_501/RCTL_cache_register_supplement.json": "31b52b0ea3f0b04543493b72d7a7247a0811d66aef6b9cb59897bf6a13d0a447",
+    "results/corrected_partition_118/frozen_settings.json": "10e1c5624d7b38d4c85f155605ee2530de0fac39e7987ee8e2c15a6cc335b740",
+    "results/corrected_partition_118/fit_results.json": "1c69ec3e48512b11e8072426934ee08151c14658e0472515946a7fb07eede3b5",
+    "results/frozen_T_rctl_recovery_325/frozen_settings.json": "4638e8a5f9250af1ad848f1416aba2fba9d6a495de8cc4416eaf2323cd529fd9",
+    "results/frozen_T_rctl_recovery_325/fit_results.json": "8ab783c474457941c57feed69ff253e0535cd0f3ffdba22cbe5f7035b2c6b090",
+    "results/fixed32_downstream_reference_336/frozen_settings.json": "6b5d2cf9e2bc7237ab3bae4874cfec6e0f2444963dd0eef6d3b0f09ebb57f2ba",
+    "results/fixed32_downstream_reference_336/fit_results.json": "9fcd5b8fd318cbc38a4d3230761865a6867606b1897ab767225e258b860ed835",
+    "results/frozen_T_rctl_323/frozen_settings.json": "43c106780471ddcba153233a05a4de0d5e67e95cc729dc2cfa454b0ee809c882",
+    "results/frozen_T_rctl_323/fit_results.json": "569fca684421be4a0bd6d9a1bbbc179d983d77f5d0bb3b52fa972924ee3e6e57",
+    "results/frozen_profile_rctl_recovery_307/fit_results.json": "8fa964046b0d421912c7397e11cb999c401821644a39459bd9314696188f7c44",
+    "results/fixed32_RCTL_bridge_500/frozen_settings.json": "1c59153a38779fb25284ac7cca024b6def74a93fdb0d84b56c38075771140f54",
+    "results/fixed32_RCTL_bridge_500/fit_results.json": "b83d2b8ce8ad031876645847cfbcff9b4bd9cc8103ce35ea9e8032447e03d634",
+    "results/frozen_profile_rctl_306/frozen_settings.json": "ba67c14fdf221c651dd7ee5275b4393aa65ae2d18ee8f764d6f00591d76e75ae",
+    "results/frozen_profile_rctl_306/fit_results.json": "8e4ce45d9fd0d5a75e5961a329317282fbb5b7a2a5450dff7ac3d6e12872e8a6",
+    "results/rctl_pilot/frozen_settings.json": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+    "results/rctl_pilot/fit_results.json": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+    "results/self_only_reference_160/frozen_settings.json": "93552c3b39749a0de80e6150b43ccf09bd7d56348071fd050fcd80e737c8967f",
+    "results/self_only_reference_160/fit_results.json": "dbcf11c0a63fabb51b318a156bca1870a61bd473b70c643d150a76fdb3d0bfac",
+    "results/self_exposure_control_164/frozen_settings.json": "eae2c28a006052260e94b92383d15c1657f4112e967053e490e57c24ee25ebf7",
+    "results/frozen_adaptive_paths_rctl_367/frozen_settings.json": "c0925f7417a32d9aee0b9a98882d522de73067cb7c4401e27066e5b9a5bce52d",
+    "results/frozen_adaptive_paths_rctl_367/fit_results.json": "3ed499fdf6fa57d44cb93313ba104ab581a7a8612bff7d00c4e52d2d6e7bad9f",
+    "results/training_exposure_evidence_368/frozen_settings.json": "1f00cfb34377669c8de8472abce3f3ce06b376336682d6d185148d05775f2e1c",
+    "results/frozen_linear_membership_bridge_539/frozen_settings.json": "a8e3ba8125b52fe8385efd6ddc97c4c45aab673232bd51feb63cd0c22434a43a",
+    "results/frozen_linear_membership_bridge_539/fit_results.json": "6771ff25bf9f7a56a91e4aa7294ad7d8ad27c92b6135b3d8104ac5549174c696",
+    "results/fixed_risk_optimum_bridge_544/frozen_settings.json": "c2cb49016f40599f110a3b75a25b47f03f9ececf27c733c9b64b3017efe0355e",
+    "results/fixed_risk_optimum_bridge_544/fit_results.json": "d7f981b2846800f21df1c7763e41090c8095f7167d5d25a8a261ab5080368535",
+    "results/empirical_risk_optimum_bridge_551/frozen_settings.json": "a48e6d297f6f0cd5062f443107db5c7e153ba204640bf2ba9d0271ece2d5edc1",
+    "results/empirical_risk_optimum_bridge_551/fit_results.json": "16e1c0ff6c72b85c992b931d4d98061ad46284d2af74dc93c825c6eb9d468532",
+    "results/joint_ID_RCTL_bridge_559/frozen_settings.json": "b8088907dca30cd681bde91dad36d792969469472ec781d601f92bdb4e5e5ff5",
+    "results/joint_ID_RCTL_bridge_559/fit_results.json": "3f88136906f4e957e4c9857ece36f03b471de1f6c9c8bd523b24232ec895db87",
+    "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster1.npz": "866aad296651387ddfc77d4748575adda517cebe5a7e1e1dc6911d9a0513c26d",
+    "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster1.pt": "6624b1e66bf834ebb17544107060190f9590f8205700073c8fe52b63b8a1f5fe",
+    "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster1_history.json": "a3c38d41c614f4558f17759c7f0b03f57d2cf6ac487603b9fde407a3ae3a28a4",
+    "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster3.npz": "52f4987380c76a758f3c9a267a0e28433971666d85ac477ede1f7590fbe75266",
+    "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster3.pt": "c295f657f3c3d86950adc798a169f242ac610f863a8b8140a2f5947b186c76e7",
+    "results/frozen_profile_single_RCTL_388/P_profile_single_move_20260925_cluster3_history.json": "64bae6cc07af1354e020bc9ba386a86602bad7edd88a419d6bfe33f208bc39de",
+    "results/frozen_profile_single_RCTL_388/run_finished.json": "33cb64ed836eabbd2fffa9e8861dce5f0efc9ad63484cdd15c8dffb650c85efe",
+    "results/frozen_profile_single_RCTL_388/verification.json": "0a0b5461ae6cfc83f45a8bb222fbe00b3572144b70c0c891969db3dc0957f468",
+    "results/frozen_profile_single_RCTL_388/settled.json": "70e4db352d9ea82970b88d430bd731c5d951ade04bb27d7c501b763c1d170ca3",
+    "frozen_profile_single_RCTL_388.py": "f6334e9d775909a868efa402377ef5880c7ed347c8027245017d9bf392dcd3d0",
+    "frozen_T_RCTL_recovery_325.py": "4dbd0c838337a64fa51cb34701a899cfd181962d35112f987c68286ec450f702",
+    "self_only_reference_160.py": "007dd090c00f0197de6787a9a60d7d6b5f132ab4e8205fbf3768e9666877a512",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.npz": "22f5e7c4dcfe91635f8fbb8cbdb5f2d0bae8bf7c95d7aca4dff49966117e6c03",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.pt": "f7ff65b3c071d560ea744c8c7487c44b4aef396e72ca27c3e811d083fa063679",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0_history.json": "cef30454927ed80031d0a67da5cfcd44942cd1e02b04e1c8209ce0a814861e9d",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1.npz": "e2c87eb651e83467140f6547425e8a7deb35bdae9e2a5b1f94fba32c96ead5e9",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1.pt": "5d0f045ede4f2254e579cc08520297d55aea7ac01268bc53af65dddbcd7f985a",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1_history.json": "58f7046aa37c2fcaab23937e70a9a999dd937826dcb3f1fff358c74ef7224fcf",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.npz": "76e7dcc323d36c8493eea6b8b0b34f73feedd4426770dcd220b8bb7970a034fd",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.pt": "2544a8e4469186f3868839fe184dd4ba0bf4b7c696054da9f13f642a9399da1d",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2_history.json": "e9c2248bfe12a7e82e0b17c0205e3535740a2a48fb0b1d404a0abc12e1587edb",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3.npz": "223d30d3adb910d70efb2a4b95431c8d0ac2d50ff507abdf67c9229084212776",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3.pt": "c5314c66a6bfe1ae9334c33ea190039dff9bf9013637fe702e6486b51dc1391a",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3_history.json": "ee1b625573fff6342f7f7d53d25b4964c83afba12023dc6453067aac5abc305a"
+  },
+  "max_new_fits": 6,
+  "max_new_epochs": 480,
+  "wall_cap_seconds": 900,
+  "verification_seconds_cap": 15,
+  "ram_cap_bytes": 2147483648,
+  "threads": 1,
+  "torch_interop_threads": 2,
+  "reused_fits": 6,
+  "cache_review": "563_fixed_pool_RCTL_cache_review.json",
+  "membership_source": "results/fixed_UPC_pool_assignment_recovery_562/partitions_frozen.json",
+  "membership_rule": "203_fixed_initial_UPC_pool_anchored_single_assignment",
+  "membership_source_sha256": "693a173217a257efc4aeead847d92c4cbe892a1df07b8bd214bb6b1b49f677f9",
+  "membership_context_targets": [
+    168,
+    671
+  ],
+  "membership_query_inputs": [
+    672,
+    839
+  ],
+  "membership_selected_using_query": true,
+  "membership_query_targets_used": true,
+  "membership_RCTL_evaluation_targets_used": false,
+  "RCTL_results_used_for_clustering": false,
+  "Tab_calls": 0,
+  "new_algorithm_or_Tab_novelty": false,
+  "training_function": "fixed32_downstream_reference_336.train unchanged; output and ledger globals replaced",
+  "thread_difference": "재사용 UPC math4/interop2;388 HGB2와 새6fit math1/interop2. 전체 학습 bitwise 동일성은 주장하지 않음.",
+  "data_status": "전체 이미 사용한 개발 자료, 단일 seed의 한정 연결 확인",
+  "primary_metric": "16cell 동일 비중 정규화 MAE",
+  "comparison_pairs": [
+    [
+      "Tab_minus_UPC",
+      "Tab_fixed_pool",
+      "U_small_UPC"
+    ],
+    [
+      "HGB_minus_UPC",
+      "HGB_fixed_pool",
+      "U_small_UPC"
+    ],
+    [
+      "Tab_minus_HGB",
+      "Tab_fixed_pool",
+      "HGB_fixed_pool"
+    ]
+  ],
+  "decision_rule": "각대비 전체1%이상과양절반같은방향이면stable_gain/harm;나머지mixed_or_small",
+  "cost_basis": {
+    "reference": "559 actual6group288epochs289.8650138seconds",
+    "maximum_cell_epochs": 2160,
+    "wall_cap_seconds": 900,
+    "verification_cap_seconds": 15,
+    "new_group_sizes": [
+      2,
+      2,
+      9,
+      3,
+      6,
+      5
+    ],
+    "completed_UPC_groups_reused": 4,
+    "completed_HGB_groups_reused": 2,
+    "no_runtime_guarantee": true
+  },
+  "actual_request_kind": "actual_user_handoff_application_and_research_continuation",
+  "per_epoch_recovery_checkpoint": true
+}

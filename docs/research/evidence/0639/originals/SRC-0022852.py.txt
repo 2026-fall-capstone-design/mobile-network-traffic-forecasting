@@ -1,0 +1,249 @@
+"""Frozen-membership downstream utility check; one exact group reused."""
+import os
+for key in ('OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS'):
+    os.environ[key]='1'
+import copy, hashlib, json, random, sys, threading, time
+from pathlib import Path
+from datetime import datetime, timezone
+B=Path(__file__).resolve().parent
+sys.path.insert(0,str(B/'runtime/Lib/site-packages'))
+from recovery_io_271 import write
+KEY='frozen_T_rctl_recovery_325'
+O=B/'results'/KEY
+L=B/'cumulative_execution_budget.json'
+S=B/'research_state.json'
+load=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+now=lambda:datetime.now(timezone.utc).isoformat()
+
+def prepare():
+    assert not O.exists()
+    state=load(S)
+    assert state['in_flight_execution'] is None and state['next_action']['id']=='325_frozen_T_RCTL_recovery'
+    cp=B/'results/frozen_T_contract_322/contract.json'
+    c=load(cp)
+    assert load(cp.with_name('verification.json'))['success']
+    assert c['max_new_fits']==3 and c['max_new_epochs']==240
+    assert all(sha(B/n)==h for n,h in c['source_hashes'].items())
+    settings=copy.deepcopy(c)
+    for n in ('frozen_T_RCTL_recovery_325.py','325_frozen_T_RCTL_recovery_plan.md','results/frozen_T_contract_322/contract.json',
+              'results/rctl_pilot/evaluation_data.npz'):
+        settings['source_hashes'][n]=sha(B/n)
+    settings['source_hashes']['results/RCTL_runtime_probe_324/result.json']=sha(B/'results/RCTL_runtime_probe_324/result.json')
+    settings.update(wall_cap_seconds=570,threads=1,runtime_baseline_math_threads=4,
+        runtime_probe='results/RCTL_runtime_probe_324/result.json',
+        cost_basis=dict(reference_stage=324,measured_single_thread_batch_seconds=.08322910000060801,
+            training_batches=2880,validation_batches512=480,final_prediction_batches512=13,
+            equivalent_batches256=3866,estimated_seconds=3866*.08322910000060801,
+            headroom='1.5times measured estimate plus60seconds for preparation/checkpoints; round upward30seconds'),
+        per_epoch_recovery_checkpoint=True)
+    settings.update(at=now(),stage=KEY,contract_only=False,
+        outcome_driven_membership_changes=False,verification_seconds_cap=5,
+        training_function_provenance='306 learning operations unchanged; math threads1, final counts from settings, per-epoch resumable checkpoint added')
+    O.mkdir()
+    write(O/'frozen_settings.json',settings)
+    print(json.dumps(dict(prepared=True,new_fits=3,reused_fits=1,baseline_groups=8)))
+
+def reserve():
+    assert not (O/'budget_authorization.json').exists()
+    state=load(S);cfg=load(O/'frozen_settings.json');l=load(L)
+    assert state['in_flight_execution'] is None and state['next_action']['id']=='325_frozen_T_RCTL_recovery'
+    assert all(v['status']=='settled' for family in ('numeric_reservations','plan_reservations') for v in l[family].values())
+    assert all(v['status']=='settled' for r in l['additional_rounds'].values() for v in r.get('reservations',{}).values())
+    before=sha(L);caps=copy.deepcopy(l['caps']);used=copy.deepcopy(l['used'])
+    assert used['RCTL_fit_or_adaptation_runs']==used['RCTL_fits']+used['RCTL_statistics_adaptations']
+    l['caps']['RCTL_fits']=l['caps']['RCTL_fit_or_adaptation_runs']=max(caps['RCTL_fit_or_adaptation_runs'],used['RCTL_fit_or_adaptation_runs']+3)
+    l['caps']['RCTL_epochs']=max(caps['RCTL_epochs'],used['RCTL_epochs']+240)
+    l['caps']['RCTL_wall_seconds']=max(caps['RCTL_wall_seconds'],used['RCTL_wall_seconds']+570)
+    cheap=sum(l['new_cheap_diagnostic_seconds'].values())
+    assert cheap+5<=caps['cheap_numeric_seconds']
+    total=used['TabICL_fit_predict_seconds']+used['RCTL_wall_seconds']+used['RCTL_frozen_inference_seconds']+used['RCTL_frozen_gradient_seconds']+cheap
+    assert total+575<=caps['total_local_modeling_seconds']
+    (O/'ledger_before.json').write_bytes(L.read_bytes())
+    l['autonomous_cap_adjustments'].append(dict(id=KEY,at=now(),authorization='2026-09-28 user delegation; goal9.1',
+        plan='tmp/redesign_20260925/325_frozen_T_RCTL_recovery_plan.md',settings_sha256=sha(O/'frozen_settings.json'),
+        purpose='One downstream utility check for T fixed before RCTL; no membership feedback.',
+        previous_caps=caps,new_caps=copy.deepcopy(l['caps']),
+        change={k:l['caps'][k]-caps[k] for k in caps if l['caps'][k]!=caps[k]},
+        used_preserved=used,unsettled_prior_reservations=0,
+        requested=dict(optimizer_fits=3,epochs=240,RCTL_seconds=570,cheap_seconds=5),
+        cost_basis=cfg['cost_basis'],automatic_recharge=False))
+    l['plan_reservations'][KEY]=dict(status='reserved',optimizer_fits=3,max_epochs=240,RCTL_seconds_cap=570,cheap_seconds_cap=5,
+        settings_sha256=sha(O/'frozen_settings.json'),cap_adjustment_id=KEY)
+    l['remaining_count_budgets']['RCTL_fits']=l['caps']['RCTL_fits']-used['RCTL_fit_or_adaptation_runs']-3
+    l['remaining_count_budgets']['RCTL_fit_or_adaptation_runs_including_reservation']=l['remaining_count_budgets']['RCTL_fits']
+    l['new_RCTL_fits_permitted_under_current_cap']=l['remaining_count_budgets']['RCTL_fits']>0
+    l['as_of_date']=now()
+    assert sha(L)==before
+    write(L,l)
+    write(O/'budget_authorization.json',dict(at=now(),settings_sha256=sha(O/'frozen_settings.json'),
+        ledger_before_sha256=before,ledger_reserved_sha256=sha(L),new_fits=3,max_epochs=240,wall_seconds=570,cheap_seconds=5))
+    state['in_flight_execution']=dict(id=KEY,status='reserved_not_started',output='tmp/redesign_20260925/results/'+KEY)
+    state['next_action']['status']='reserved';state['updated_at']=now();write(S,state)
+    print(json.dumps(dict(reserved=True,change=l['autonomous_cap_adjustments'][-1]['change'])))
+
+# The verified306 training function is appended by the one-time build script.
+
+def train():
+    import numpy as np
+    import psutil
+    import torch
+    from rctl_torch import RCTL
+    assert not (O / 'run_started.json').exists(), 'Never rerun a started training process.'
+    settings = load(O / 'frozen_settings.json')
+    auth = load(O / 'budget_authorization.json')
+    assert sha(O / 'frozen_settings.json') == auth['settings_sha256']
+    assert sha(L) == auth['ledger_reserved_sha256']
+    assert all(sha(B / p) == h for p, h in settings['source_hashes'].items())
+    torch.set_num_threads(1)
+    torch.set_num_interop_threads(2)
+    proc = psutil.Process()
+    available_cpus = proc.cpu_affinity()
+    proc.cpu_affinity(available_cpus[:4])
+    state = {'fits_started': 0, 'fits_completed': 0, 'epochs_started': 0,
+             'epochs_completed': 0, 'optimizer_batches': 0, 'results': [],
+             'active_task': None, 'peak_rss_bytes': 0}
+    write(O / 'run_started.json', {'at': now(), 'pid': os.getpid(),
+          'settings_sha256': auth['settings_sha256'], 'torch': torch.__version__,
+          'numpy': np.__version__, 'math_threads': torch.get_num_threads(),
+          'interop_threads': torch.get_num_interop_threads(), 'cpu_affinity': proc.cpu_affinity()})
+    start = time.perf_counter()
+    stop = threading.Event()
+
+    def guard():
+        while not stop.wait(.2):
+            elapsed = time.perf_counter() - start
+            state['peak_rss_bytes'] = max(state['peak_rss_bytes'], proc.memory_info().rss)
+            if elapsed > settings['wall_cap_seconds'] or state['peak_rss_bytes'] > settings['ram_cap_bytes']:
+                write(O / 'run_finished.json', {'at': now(), 'success': False,
+                      'wall_seconds': elapsed, 'state': copy.deepcopy(state),
+                      'reason': 'precommitted wall or RAM limit'})
+                os._exit(72)
+    threading.Thread(target=guard, daemon=True).start()
+
+    def predict(model, x):
+        model.eval()
+        with torch.no_grad():
+            return torch.cat([model(x[i:i+512]) for i in range(0, len(x), 512)]).cpu().numpy()
+
+    try:
+        with np.load(B / settings['prepared_arrays']) as d:
+            seq, y, times, ids, scales = (d[k] for k in ['seq', 'y', 'times', 'cell_ids', 'scales'])
+        assert np.array_equal(ids, settings['cell_ids'])
+        assert np.isfinite(seq).all() and np.isfinite(y).all()
+        tr, va, te = times < 840, (times >= 840) & (times < 1008), times >= 1008
+        assert (tr.sum(), va.sum(), te.sum()) == (672, 168, 480)
+        with np.load(B / 'results/rctl_pilot/evaluation_data.npz') as prior:
+            for key, actual in [('cell_ids', ids), ('test_y', y[:, te]), ('scales', scales), ('test_times', times[te])]:
+                assert np.array_equal(prior[key], actual), key
+        np.savez_compressed(O / 'evaluation_data.npz', cell_ids=ids, scales=scales,
+                            test_times=times[te], test_y=y[:, te])
+        for task in settings['tasks']:
+            method, seed, cluster, members = (task[k] for k in ['method', 'seed', 'cluster', 'members'])
+            key = f'{method}_{seed}_cluster{cluster}'
+            if task['reuse']:
+                src = task['reuse']['record']['artifacts']['.npz']
+                assert sha(B / src['relative_path']) == src['sha256']
+                with np.load(B / src['relative_path']) as data:
+                    assert np.array_equal(data['members'], members)
+                    assert np.array_equal(data['cell_ids'], ids[members])
+                    assert np.array_equal(data['y'], y[members][:, te])
+                # Keep the original prediction bytes, with the original provenance.
+                (O / (key + '.npz')).write_bytes((B / src['relative_path']).read_bytes())
+                state['results'].append({'method': method, 'seed': seed, 'cluster': cluster,
+                      'members': members, 'reused': True, 'source': src})
+                write(O / 'fit_results.json', state['results'])
+                continue
+            assert state['fits_started'] < settings['max_new_fits']
+            state['fits_started'] += 1
+            state['active_task'] = task
+            write(O / 'attempt_progress.json', state)
+            random.seed(seed)
+            np.random.seed(seed)
+            torch.manual_seed(seed)
+            gen = torch.Generator().manual_seed(seed)
+            trainx = torch.from_numpy(seq[members][:, tr].reshape(-1, 8, 9))
+            trainy = torch.from_numpy(y[members][:, tr].reshape(-1))
+            valx = torch.from_numpy(seq[members][:, va].reshape(-1, 8, 9))
+            valy = y[members][:, va].reshape(-1)
+            testx = torch.from_numpy(seq[members][:, te].reshape(-1, 8, 9))
+            model = RCTL(steps=8, channels=9)
+            optimizer = torch.optim.Adam((p for p in model.parameters() if p.requires_grad), lr=.001, eps=1e-7)
+            best, best_state, best_epoch, stale = float('inf'), None, 0, 0
+            hist, fit_start, reason = [], time.perf_counter(), 'epoch_cap'
+            print(json.dumps({'event': 'fit_start', 'method': method, 'cluster': cluster}), flush=True)
+            for epoch in range(1, 81):
+                state['epochs_started'] += 1
+                assert state['epochs_started'] <= settings['max_new_epochs']
+                write(O / 'attempt_progress.json', state)
+                model.train()
+                order = torch.randperm(len(trainx), generator=gen)
+                total = 0.
+                for i in range(0, len(order), 256):
+                    ix = order[i:i+256]
+                    optimizer.zero_grad(set_to_none=True)
+                    loss = torch.abs(model(trainx[ix]) - trainy[ix]).mean()
+                    if not torch.isfinite(loss):
+                        raise RuntimeError('Nonfinite loss')
+                    loss.backward()
+                    optimizer.step()
+                    state['optimizer_batches'] += 1
+                    total += float(loss.detach()) * len(ix)
+                val = float(np.abs(predict(model, valx) - valy).mean())
+                if not np.isfinite(val):
+                    raise RuntimeError('Nonfinite validation loss')
+                state['epochs_completed'] += 1
+                hist.append({'epoch': epoch, 'train_mae': total/len(trainx), 'val_mae': val,
+                             'seconds_from_fit_start': time.perf_counter()-fit_start})
+                if val < best:
+                    best, best_epoch, best_state, stale = val, epoch, copy.deepcopy(model.state_dict()), 0
+                else:
+                    stale += 1
+                payload = dict(task=task, epoch=epoch, next_epoch=epoch+1,
+                    model_state=copy.deepcopy(model.state_dict()), optimizer_state=optimizer.state_dict(),
+                    best_state=best_state, best=best, best_epoch=best_epoch, stale=stale, history=hist,
+                    random_state=random.getstate(), numpy_state=np.random.get_state(),
+                    torch_rng=torch.get_rng_state(), permutation_rng=gen.get_state(),
+                    settings_sha256=auth['settings_sha256'], run_key=KEY)
+                temporary = O / (key+'_resume.pending.pt')
+                torch.save(payload,temporary)
+                for retry in range(8):
+                    try:
+                        os.replace(temporary,O / (key+'_resume.pt'))
+                        break
+                    except PermissionError:
+                        if retry==7:raise
+                        time.sleep(.05*(retry+1))
+                write(O / (key + '_history.json'), hist)
+                write(O / 'attempt_progress.json', state)
+                if stale >= 10:
+                    reason = 'validation_patience'
+                    break
+            assert best_state is not None
+            model.load_state_dict(best_state)
+            pred = predict(model, testx).reshape(len(members), 480)
+            assert np.isfinite(pred).all()
+            np.savez_compressed(O / (key + '.npz'), prediction=pred, y=y[members][:, te],
+                                cell_ids=ids[members], members=members)
+            torch.save(best_state, O / (key + '.pt'))
+            rec = {'method': method, 'seed': seed, 'cluster': cluster, 'members': members,
+                   'reused': False, 'epochs_run': len(hist), 'best_epoch': best_epoch,
+                   'best_val_mae': best, 'stop_reason': reason, 'fit_seconds': time.perf_counter()-fit_start}
+            state['results'].append(rec)
+            state['fits_completed'] += 1
+            state['active_task'] = None
+            write(O / 'fit_results.json', state['results'])
+            write(O / 'attempt_progress.json', state)
+            print(json.dumps({'event': 'fit_done', **rec}), flush=True)
+        assert len(state['results']) == len(settings['tasks']) and state['fits_completed'] == settings['max_new_fits']
+        write(O / 'run_finished.json', {'at': now(), 'success': True,
+              'wall_seconds': time.perf_counter()-start, 'state': state})
+    except BaseException as exc:
+        write(O / 'run_finished.json', {'at': now(), 'success': False,
+              'wall_seconds': time.perf_counter()-start, 'state': state, 'reason': repr(exc)})
+        raise
+    finally:
+        stop.set()
+
+if __name__ == '__main__':
+    {'prepare':prepare,'reserve':reserve,'train':train}[sys.argv[1]]()

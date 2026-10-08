@@ -1,0 +1,52 @@
+"""Only storage parameter naming changes; keep frozen635 and its failed cost."""
+import bounded_relation_graph_635 as b
+import copy,json,math,shutil,sys,traceback
+from pathlib import Path
+from recovery_io_271 import write
+OLD=b.O;b.KEY='bounded_relation_storage_recovery_636';b.O=b.B/'results'/b.KEY;b.__file__=str(Path(__file__).resolve())
+
+def save(path,**kw):
+    import numpy as np
+    temp=path.with_name(path.name+'.tmp')
+    with temp.open('wb') as f:np.savez_compressed(f,**kw)
+    temp.replace(path)
+b.save=save
+
+def reserve():
+    assert not b.O.exists(),'Review actual recovery before replaying'
+    s,l=b.read(b.S),b.read(b.L);old=b.read(OLD/'frozen_settings.json');failure=b.read(OLD/'run_finished.json');settled=b.read(OLD/'settled.json')
+    assert s['latest_research_stage']==635 and s['next_action']['id']=='636_bounded_relation_storage_recovery'
+    assert s['in_flight_execution'] is None and failure['worker_reaped'] and not failure['success']
+    assert b.sha(b.L)==settled['ledger_sha256']
+    assert failure['meter']['contexts_attempted']==0 and failure['meter']['quantile_attempted']==0 and failure['meter']['propensity_completed']==1
+    assert 'multiple values for argument' in b.read(OLD/'worker_finished.json')['trace']
+    assert all(v['status'] in ('settled','cancelled','completed','released') for f in ['numeric_reservations','plan_reservations'] for v in l[f].values())
+    assert all(b.sha(b.B/p)==h for p,h in old['source_hashes'].items())
+    cfg=copy.deepcopy(old);cfg['at']=b.now();cfg['recovery_from']=OLD.relative_to(b.B).as_posix();cfg['failed_probability_rows_not_saved']=128
+    for p in [Path(__file__),b.B/'636_bounded_relation_storage_recovery_plan.md',OLD/'frozen_settings.json',OLD/'worker_finished.json',OLD/'settled.json']:
+        cfg['source_hashes'][p.relative_to(b.B).as_posix()]=b.sha(p)
+    b.O.mkdir();(b.O/'before').mkdir();(b.O/'cells').mkdir();(b.O/'edges').mkdir()
+    for p in [b.L,b.S]:shutil.copy2(p,b.O/'before'/p.name)
+    write(b.O/'frozen_settings.json',cfg)
+    before=b.sha(b.L);oldcaps=copy.deepcopy(l['caps']);used=copy.deepcopy(l['used']);cheap=math.fsum(l['new_cheap_diagnostic_seconds'].values())
+    total=cheap+math.fsum(used.get(k,0) for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'])
+    needs=dict(TabICL_contexts=used['TabICL_contexts']+16,TabICL_query_rows=used['TabICL_query_rows']+16384,
+        TabICL_fit_predict_seconds=used['TabICL_fit_predict_seconds']+180,cheap_numeric_seconds=cheap+120,total_local_modeling_seconds=total+300)
+    for k,v in needs.items():l['caps'][k]=max(l['caps'][k],v)
+    changes={k:l['caps'][k]-v for k,v in oldcaps.items() if l['caps'][k]!=v}
+    l['autonomous_cap_adjustments'].append(dict(id=b.KEY,at=b.now(),authorization='2026-09-28 사용자 위임 / 목표9.1',
+        plan='tmp/redesign_20260925/636_bounded_relation_storage_recovery_plan.md',previous_caps=oldcaps,new_caps=copy.deepcopy(l['caps']),change=changes,
+        used_preserved=used,automatic_recharge=False,settings_sha256=b.sha(b.O/'frozen_settings.json'),
+        purpose='recover output-helper argument conflict; same635 rule and original first classifier unsaved',cost_basis='original fixed16context/16384query caps, failed3.9190269seconds preserved',stop_limits=b.LIMITS))
+    l['plan_reservations'][b.KEY]=dict(status='reserved',Tab_contexts_cap=16,Tab_query_rows_cap=16384,Tab_seconds_cap=180,cheap_seconds_cap=120,
+        HGB_fits_cap=264,RCTL_fits_cap=0,settings_sha256=b.sha(b.O/'frozen_settings.json'))
+    for k,n in [('TabICL_contexts',16),('TabICL_query_rows',16384)]:l['remaining_count_budgets'][k]=l['caps'][k]-l['used'][k]-n
+    write(b.L,l);write(b.O/'authorization.json',dict(at=b.now(),ledger_before_sha256=before,ledger_reserved_sha256=b.sha(b.L),settings_sha256=b.sha(b.O/'frozen_settings.json'),cap_changes=changes))
+    s.update(updated_at=b.now(),in_flight_execution=dict(id=b.KEY,output='tmp/redesign_20260925/results/'+b.KEY));s['next_action'].update(status='reserved',budget_reserved=True);write(b.S,s)
+    print(json.dumps(dict(reserved=True,failed_cost_preserved=True,cap_changes=changes)))
+
+if __name__=='__main__':
+    if sys.argv[1]=='worker':
+        try:b.worker();write(b.O/'worker_finished.json',dict(at=b.now(),success=True))
+        except BaseException:write(b.O/'worker_finished.json',dict(at=b.now(),success=False,trace=traceback.format_exc()));raise
+    else:{'reserve':reserve,'run':b.run,'settle':b.settle}[sys.argv[1]]()

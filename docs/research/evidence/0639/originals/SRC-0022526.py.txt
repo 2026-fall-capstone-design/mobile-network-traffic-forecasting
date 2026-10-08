@@ -1,0 +1,196 @@
+"""639: frozen conditional-relation A partition, thirteen reused tasks, three original RCTL fits."""
+import os
+for envname in ('OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS'):os.environ[envname]='1'
+import copy,hashlib,json,sys,time
+from datetime import datetime,timezone
+from pathlib import Path
+from recovery_io_271 import write
+B=Path(__file__).resolve().parent
+KEY='bounded_relation_RCTL_bridge_639';ACTION='639_bounded_relation_RCTL_bridge'
+O=B/'results'/KEY;S=B/'research_state.json';L=B/'cumulative_execution_budget.json'
+PLAN='639_bounded_relation_RCTL_bridge_plan.md';AUDIT='639_execution_contract.json'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+now=lambda:datetime.now(timezone.utc).isoformat()
+
+
+def read(p):
+    deadline=time.perf_counter()+1
+    while True:
+        try:return json.loads(p.read_text(encoding='utf-8-sig'))
+        except PermissionError:
+            if time.perf_counter()>=deadline:raise
+            time.sleep(.005)
+
+def prepare():
+    assert not O.exists(), 'Recover rather than rebuild'
+    s=read(S);cfg=read(B/AUDIT)
+    assert s['next_action']['id']==ACTION and s['in_flight_execution'] is None
+    cfg=copy.deepcopy(cfg)
+    for name in [AUDIT,PLAN,'build_bounded_relation_RCTL_639.py','bounded_relation_RCTL_bridge_639.py','verify_bounded_relation_RCTL_639.py','recovery_io_271.py']:
+        cfg['source_hashes'][name]=sha(B/name)
+    assert all(sha(B/p)==h for p,h in cfg['source_hashes'].items())
+    cfg.update(stage=KEY,at=now(),actual_request_kind='user_handoff_application_and_research_continuation')
+    O.mkdir();write(O/'frozen_settings.json',cfg)
+    print(json.dumps(dict(prepared=True,new_fits=3,reused_tasks=13)))
+
+
+def reserve():
+    assert not (O/'budget_authorization.json').exists()
+    cfg,state,l=read(O/'frozen_settings.json'),read(S),read(L)
+    assert state['next_action']['id']==ACTION and state['in_flight_execution'] is None
+    assert sha(L)==state['evidence_checkpoint']['ledger_sha256_at_handoff']
+    assert all(v['status']=='settled' or (v['status']=='cancelled' and v.get('seconds_used')==0) for f in ('numeric_reservations','plan_reservations') for v in l[f].values())
+    assert all(v['status']=='settled' for r in l['additional_rounds'].values() for v in r.get('reservations',{}).values())
+    assert all(sha(B/p)==h for p,h in cfg['source_hashes'].items())
+    before,caps,used=sha(L),copy.deepcopy(l['caps']),copy.deepcopy(l['used'])
+    assert used['RCTL_fit_or_adaptation_runs']==used['RCTL_fits']+used['RCTL_statistics_adaptations']
+    cheap=sum(l['new_cheap_diagnostic_seconds'].values())
+    total=cheap+sum(used[k] for k in ('TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'))
+    requested=dict(RCTL_fit_or_adaptation_runs=used['RCTL_fit_or_adaptation_runs']+cfg['max_new_fits'],RCTL_epochs=used['RCTL_epochs']+cfg['max_new_epochs'],RCTL_wall_seconds=used['RCTL_wall_seconds']+cfg['wall_cap_seconds'],cheap_numeric_seconds=cheap+cfg['verification_seconds_cap'],total_local_modeling_seconds=total+cfg['wall_cap_seconds']+cfg['verification_seconds_cap'])
+    for k,v in requested.items():l['caps'][k]=max(caps[k],v)
+    l['caps']['RCTL_fits']=l['caps']['RCTL_fit_or_adaptation_runs']
+    (O/'ledger_before.json').write_bytes(L.read_bytes());(O/'state_before.json').write_bytes(S.read_bytes())
+    l['autonomous_cap_adjustments'].append(dict(id=KEY,at=now(),authorization='2026-09-28 사용자 위임 및 목표9.1',plan='tmp/redesign_20260925/'+PLAN,settings_sha256=sha(O/'frozen_settings.json'),purpose='638에서 봉인한 관계 graph 소속. 완료13task 재사용/누락3group만 동일 RCTL로 확인. 소속 선택에 RCTL 사용 없음.',previous_caps=caps,new_caps=copy.deepcopy(l['caps']),change={k:l['caps'][k]-v for k,v in caps.items() if l['caps'][k]!=v},used_preserved=used,unsettled_prior_reservations=0,requested=dict(optimizer_fits=cfg['max_new_fits'],epochs=cfg['max_new_epochs'],RCTL_seconds=cfg['wall_cap_seconds'],cheap_seconds=cfg['verification_seconds_cap']),cost_basis=cfg['cost_basis'],automatic_recharge=False))
+    l['plan_reservations'][KEY]=dict(status='reserved',optimizer_fits=cfg['max_new_fits'],max_epochs=cfg['max_new_epochs'],RCTL_seconds_cap=cfg['wall_cap_seconds'],cheap_seconds_cap=cfg['verification_seconds_cap'],settings_sha256=sha(O/'frozen_settings.json'))
+    remain=l['caps']['RCTL_fit_or_adaptation_runs']-used['RCTL_fit_or_adaptation_runs']-cfg['max_new_fits']
+    l['remaining_count_budgets']['RCTL_fits']=remain;l['remaining_count_budgets']['RCTL_fit_or_adaptation_runs_including_reservation']=remain
+    l['new_RCTL_fits_permitted_under_current_cap']=remain>0;l['as_of_date']=now()
+    assert sha(L)==before;write(L,l)
+    write(O/'budget_authorization.json',dict(at=now(),settings_sha256=sha(O/'frozen_settings.json'),ledger_before_sha256=before,ledger_reserved_sha256=sha(L),new_fits=cfg['max_new_fits'],max_epochs=cfg['max_new_epochs'],wall_seconds=cfg['wall_cap_seconds'],cheap_seconds=cfg['verification_seconds_cap']))
+    state['in_flight_execution']=dict(id=KEY,status='reserved_not_started',output='tmp/redesign_20260925/results/'+KEY)
+    state['next_action'].update(status='reserved',budget_reserved=True,new_models_reserved=True);state['current_request_kind']='user_handoff_application_and_research_continuation';state['updated_at']=now();write(S,state)
+    print(json.dumps(dict(reserved=True,changes=l['autonomous_cap_adjustments'][-1]['change'])))
+
+def train():
+    assert (O/'budget_authorization.json').exists()
+    import nonempty_RCTL_worker_581 as runner
+    runner.O=O;runner.KEY=KEY
+    runner.train()
+
+
+def run_training():
+    # 실행 전 실패도 완료 fit을 다시 돌리지 않고 별도 정산한다.
+    assert not (O/'process_started.json').exists(), '이미 시작한 실행은 재실행하지 않는다.'
+    assert (O/'budget_authorization.json').exists()
+    start=time.perf_counter()
+    write(O/'process_started.json',dict(at=now(),pid=os.getpid()))
+    try:
+        train()
+    except BaseException as exc:
+        if not (O/'run_finished.json').exists():
+            assert not (O/'run_started.json').exists(), '시작 후 비정상 종료는 저장된 진행 표시로 별도 복구한다.'
+            counts=dict(fits_started=0,fits_completed=0,epochs_started=0,epochs_completed=0,optimizer_batches=0,results=[],active_task=None,peak_rss_bytes=0)
+            write(O/'run_finished.json',dict(at=now(),success=False,wall_seconds=0.0,state=counts,reason='startup_failure: '+repr(exc)))
+            write(O/'startup_failure.json',dict(at=now(),reason=repr(exc),new_fits=0))
+        raise
+    finally:
+        elapsed=time.perf_counter()-start
+        finish=read(O/'run_finished.json') if (O/'run_finished.json').exists() else None
+        write(O/'process_finished.json',dict(at=now(),pid=os.getpid(),elapsed_seconds=elapsed,training_seconds=None if finish is None else finish['wall_seconds'],startup_cleanup_seconds=None if finish is None else max(0.0,elapsed-finish['wall_seconds'])))
+
+def execute():
+    import subprocess,psutil
+    cfg=read(O/'frozen_settings.json')
+    assert not (O/'supervisor_started.json').exists() and not (O/'process_started.json').exists()
+    assert (O/'budget_authorization.json').exists()
+    begin=time.perf_counter();started_at=now()
+    proc=subprocess.Popen([sys.executable,'-X','utf8',str(Path(__file__).resolve()),'train'])
+    write(O/'supervisor_started.json',dict(at=started_at,child_pid=proc.pid,parent_pid=os.getpid()))
+    interrupted=None
+    try:
+        code=proc.wait(timeout=cfg['wall_cap_seconds']+cfg['verification_seconds_cap'])
+    except BaseException as exc:
+        interrupted=repr(exc)
+        children=[]
+        try:children=psutil.Process(proc.pid).children(recursive=True)
+        except psutil.NoSuchProcess:pass
+        # Kill only the descendants of our recorded launcher, before the launcher itself.
+        for child in reversed(children):
+            try:child.kill()
+            except psutil.NoSuchProcess:pass
+        proc.kill();code=proc.wait()
+        _,alive=psutil.wait_procs(children,timeout=5)
+        write(O/'supervisor_interrupted.json',dict(at=now(),reason=interrupted,returncode=code,
+            known_descendants=[p.pid for p in children],still_alive=[p.pid for p in alive]))
+        if alive:raise RuntimeError('Own worker descendants not reaped')
+    finally:
+        elapsed=time.perf_counter()-begin
+        worker=read(O/'process_started.json') if (O/'process_started.json').exists() else None
+        if worker and psutil.pid_exists(worker['pid']):
+            actual=psutil.Process(worker['pid'])
+            assert actual.create_time()>datetime.fromisoformat(worker['at']).timestamp(), 'Recorded worker is still alive'
+        write(O/'supervisor_finished.json',dict(at=now(),child_pid=proc.pid,
+            worker_pid=None if worker is None else worker['pid'],returncode=proc.returncode,
+            child_reaped=proc.returncode is not None,worker_reaped=True,
+            elapsed_seconds=elapsed,automatic_model_retry=False))
+        if not (O/'run_finished.json').exists():
+            counts=dict(fits_started=0,fits_completed=0,epochs_started=0,epochs_completed=0,
+                optimizer_batches=0,results=[],active_task=None,peak_rss_bytes=0)
+            began=(O/'run_started.json').exists()
+            if (O/'attempt_progress.json').exists():counts=read(O/'attempt_progress.json')
+            if began:
+                counts['fits_started']=min(cfg['max_new_fits'],counts['fits_started']+1)
+                counts['epochs_started']=min(cfg['max_new_epochs'],counts['epochs_started']+1)
+            write(O/'run_finished.json',dict(at=now(),success=False,wall_seconds=elapsed if began else 0.0,
+                state=counts,reason='external termination without training receipt',
+                saved_progress_only=True,attempt_counts_conservative=began,worker_reaped=True))
+        if not (O/'process_finished.json').exists():
+            finish=read(O/'run_finished.json')
+            write(O/'process_finished.json',dict(at=now(),pid=None if worker is None else worker['pid'],
+                elapsed_seconds=elapsed,training_seconds=finish['wall_seconds'],
+                startup_cleanup_seconds=max(0.0,elapsed-finish['wall_seconds']),
+                recovered_from_external_receipt=True,reason='child hard exit bypassed finally'))
+    if code:raise SystemExit(code)
+
+def settle():
+    assert not (O/'settled.json').exists(), '중복 정산 금지'
+    cfg,auth,finish=read(O/'frozen_settings.json'),read(O/'budget_authorization.json'),read(O/'run_finished.json')
+    import psutil
+    process=read(O/'process_finished.json')
+    supervisor=read(O/'supervisor_finished.json')
+    supstart=read(O/'supervisor_started.json')
+    assert supervisor['child_reaped'] and supervisor['worker_reaped']
+    assert supervisor['child_pid']==supstart['child_pid']
+    assert supervisor['worker_pid']==process['pid']
+    if (O/'process_started.json').exists():
+        worker=read(O/'process_started.json')
+        assert worker['pid']==process['pid']
+        if (O/'run_started.json').exists():
+            begun=read(O/'run_started.json')
+            assert begun['pid']==worker['pid'] and begun['settings_sha256']==auth['settings_sha256']
+        if finish['success']:
+            assert datetime.fromisoformat(supstart['at'])<=datetime.fromisoformat(worker['at'])<datetime.fromisoformat(finish['at'])<=datetime.fromisoformat(process['at'])<=datetime.fromisoformat(supervisor['at'])
+    assert supervisor['elapsed_seconds']>=finish['wall_seconds']
+    for observed_pid in (supervisor['child_pid'],supstart['parent_pid']):
+        if psutil.pid_exists(observed_pid):assert psutil.Process(observed_pid).create_time()>datetime.fromisoformat(supervisor['at']).timestamp()
+    overhead=max(0.0,supervisor['elapsed_seconds']-finish['wall_seconds'])
+    pid=process['pid']
+    if pid is not None and psutil.pid_exists(pid):assert psutil.Process(pid).create_time()>datetime.fromisoformat(finish['at']).timestamp(), '학습 실행 중'
+    l=read(L);assert sha(L)==auth['ledger_reserved_sha256']
+    if (O/'verification.json').exists():v=read(O/'verification.json')
+    else:
+        from verify_bounded_relation_RCTL_639 import verify
+        v=verify(B,O,cfg,finish)
+    seconds=v['seconds']+overhead+cfg['static_preparation_seconds']
+    success=bool(v['success']) and bool(finish['success']) and seconds<=cfg['verification_seconds_cap']
+    counts=finish['state'];used=l['used']
+    assert sha(L)==auth['ledger_reserved_sha256']
+    used['RCTL_fits']+=counts['fits_started'];used['RCTL_fit_or_adaptation_runs']+=counts['fits_started']
+    used['RCTL_epochs']+=counts['epochs_started'];used['RCTL_wall_seconds']+=finish['wall_seconds']
+    l['new_cheap_diagnostic_seconds'][KEY+'_verification']=seconds
+    l['cheap_stage_details'].append(dict(stage=KEY+'_verification',seconds=seconds,new_models=0,complete=success))
+    l['optimizer_training_stages'].append(dict(stage=KEY,fits_started=counts['fits_started'],fits_completed=counts['fits_completed'],epochs_started=counts['epochs_started'],epochs_completed=counts['epochs_completed'],wall_seconds=finish['wall_seconds'],complete=finish['success'],reused_fits=sum(r['reused'] for r in counts['results']),within_run_alias_reuse=0,all_memberships_fixed_before_training=True))
+    l['plan_reservations'][KEY].update(status='settled',optimizer_fits_used=counts['fits_started'],optimizer_fits_completed=counts['fits_completed'],epochs_used=counts['epochs_started'],epochs_completed=counts['epochs_completed'],RCTL_seconds_used=finish['wall_seconds'],cheap_seconds_used=seconds,training_complete=finish['success'],verification_complete=v['success'],reason=v.get('reason'))
+    remain=l['caps']['RCTL_fit_or_adaptation_runs']-used['RCTL_fit_or_adaptation_runs']
+    l['remaining_count_budgets']['RCTL_fits']=remain;l['remaining_count_budgets']['RCTL_fit_or_adaptation_runs_including_reservation']=remain
+    l['new_RCTL_fits_permitted_under_current_cap']=remain>0;l['as_of_date']=now();write(L,l)
+    write(O/'settled.json',dict(at=now(),success=success,training_success=finish['success'],RCTL_fits=counts['fits_started'],RCTL_epochs=counts['epochs_started'],RCTL_seconds=finish['wall_seconds'],cheap_seconds=seconds,verification_seconds=v['seconds'],startup_cleanup_seconds=overhead,supervisor_elapsed_seconds=supervisor['elapsed_seconds'],ledger_sha256=sha(L),prior_failure_costs_preserved=True,no_live_training_process=True,reason=v.get('reason')))
+    state=read(S);assert state['in_flight_execution']['id']==KEY
+    state['in_flight_execution']=None
+    state['next_action'].update(status='completed_verified_needs_archive' if success else 'failed_settled_needs_review',budget_reserved=False,new_models_reserved=False)
+    state['updated_at']=now();write(S,state)
+    print(json.dumps(dict(success=success,RCTL_seconds=finish['wall_seconds'],cheap_seconds=seconds,reason=v.get('reason'))))
+    if not success:raise SystemExit(1)
+
+if __name__=='__main__':
+    {'prepare':prepare,'reserve':reserve,'train':run_training,'execute':execute,'settle':settle}[sys.argv[1]]()

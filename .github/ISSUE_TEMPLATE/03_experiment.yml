@@ -16,6 +16,18 @@ body:
     validations:
       required: false
   - type: textarea
+    id: prior_work
+    attributes:
+      label: 관련 과거 시도와 이번 실험의 차이
+      description: docs/research/prior-attempts.md와 관련 기록을 확인해 주세요. 아카이브는 정리 중이므로 검색 결과가 없다는 사실만으로 과거 시도가 없다고 판단하지 않습니다.
+      placeholder: |
+        - 관련 기록 / 기존 실험 링크:
+        - 같게 유지할 조건과 달라지는 질문 / 조건:
+        - 재사용할 예측값 / 설정 / 로그:
+        - 기존 실패나 한계를 다시 검토할 이유:
+    validations:
+      required: false
+  - type: textarea
     id: data
     attributes:
       label: 데이터와 평가 구간
@@ -57,4 +69,6 @@ body:
       placeholder: |
         - 결과 표 / 그래프 / 산출물 링크:
         - 가설에 대한 결론과 한계:
+        - 평균 결과와 기간별 / 셀별 손해:
+        - 새 실행과 저장 결과 재분석의 구분:
         - 후속 작업 또는 관련 PR:

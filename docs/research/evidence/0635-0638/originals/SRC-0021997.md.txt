@@ -1,0 +1,9 @@
+# 635. 첫 입력 분류 결과의 저장 오류와 보존한 실행 범위
+
+계획635는 입력 profile graph를 만든 뒤 첫 edge의 HGB 분류기를 적합했습니다. 확률128행을 계산했지만 저장 helper의 위치 인자와 배열 key가 모두 p여서 `TypeError: save() got multiple values for argument 'p'`로 종료됐습니다. 저장전문자열오류이며관계방법의실증기각이아닙니다.
+
+실제3.919026899995515초·HGB1fit을정산했고,Tab context/query0·분위수HGB0·RCTL0입니다. 확률계산뒤meter를파일에쓰기전에실패해저장meter의propensity query count는0입니다. traceback의실행위치로확인되는128행은미저장출력으로별도명시합니다. 모델과확률배열이남지않아첫fit의복구에는재계산이필요합니다.
+
+원source·frozen settings·profile graph·오류·실패비용은보존합니다. 다음[636복구계획](636_bounded_relation_storage_recovery_plan.md)은helper의첫인자이름만path로고칩니다. cell·시간·threshold·graph·분위수·유지/이동규칙은바꾸지않습니다. 새로운최소예약은실패비용에누적하며완료예측을반복하지않습니다. 새로운연구결과·소속·RCTL효용·신규성을확인한상태가아닙니다.
+
+[실행](results/bounded_relation_graph_635/run_finished.json),[오류](results/bounded_relation_graph_635/worker_finished.json),[정산](results/bounded_relation_graph_635/settled.json). 미정산예약과살아있는worker는없습니다. 연구상태와집중문제는동일하며다음행동만636의동일명세복구로연결합니다.
