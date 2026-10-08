@@ -1,0 +1,645 @@
+{
+  "schema_version": 1,
+  "batch_id": "history-006",
+  "created_at_utc": "2026-10-08T22:19:15.664574+00:00",
+  "inventory_version": "20261008T140216751179Z",
+  "source_root_alias": "Tab-ICL",
+  "original_bytes_preserved": true,
+  "sources": [
+    {
+      "source_id": "SRC-0020826",
+      "path": "tmp/redesign_20260925/05_literature_decision_audit.md",
+      "sha256": "32712471012db2732e9698513ce2579d254ba624143825e24d47ad3c53336562",
+      "size_bytes": 15708,
+      "exact_alias_source_ids": [
+        "SRC-0000179",
+        "SRC-0020826",
+        "SRC-0062543"
+      ],
+      "records": [
+        "0005"
+      ],
+      "archive_path": "../0005/originals/SRC-0020826.md.txt",
+      "preservation": "reused_existing_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "lines_read": [
+        [
+          1,
+          69
+        ]
+      ],
+      "automated_read_scope": [
+        "sha256_only"
+      ],
+      "claim_verification_scope": "05 lines41–47의 관련 문헌/대체 비교 주장과 적용 한계. 전체05의 모든 후속 실험 완료 아님."
+    }
+  ],
+  "primary_sources": [
+    {
+      "source_id": "SRC-0020608",
+      "path": "tmp/pdfs/03_Localized_TabICLv2_2026_arXiv_v1.txt",
+      "sha256": "fa67026f09af27798cdbadacc60419da57019bb200608ec7f24548e8b0071282",
+      "size_bytes": 40841,
+      "exact_alias_source_ids": [
+        "SRC-0020608"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P01",
+      "title": "Localized TabICLv2: Scaling Tabular In-Context Learning through k-NN",
+      "authors": [
+        "Beimnet Bekele Guta"
+      ],
+      "version": "2608.16429v1",
+      "version_date": "2026-08-17",
+      "url": "https://arxiv.org/abs/2608.16429v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            307
+          ],
+          [
+            381,
+            399
+          ],
+          [
+            482,
+            497
+          ]
+        ],
+        "visual_pages": [],
+        "visual_pages_scoped": {},
+        "sections": [
+          "§3 classifier/repr cache와 국소 Stage3",
+          "§4 분류·미세조정·비용 비교",
+          "§5 regression future work",
+          "AppendixA 지정 비용 논의"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0000074",
+      "path": "output/pdf/03_Localized_TabICLv2_2026_arXiv_v1.pdf",
+      "sha256": "05378788c3bf0c8e940cd1b2e6a1aae48b55944f67aec81b60385f9064402635",
+      "size_bytes": 230351,
+      "exact_alias_source_ids": [
+        "SRC-0000074",
+        "SRC-0073390"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P01",
+      "title": "Localized TabICLv2: Scaling Tabular In-Context Learning through k-NN",
+      "authors": [
+        "Beimnet Bekele Guta"
+      ],
+      "version": "2608.16429v1",
+      "version_date": "2026-08-17",
+      "url": "https://arxiv.org/abs/2608.16429v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [],
+        "visual_pages": [
+          3,
+          6
+        ],
+        "visual_pages_scoped": {
+          "3": "§4 설정, Table1 네 행 및 Table2 여섯 행",
+          "6": "AppendixA/A1 Stage3 비용과 end-to-end 제한"
+        },
+        "sections": [
+          "지정 물리 페이지의 명시한 표·식·그림·문단만 확인"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0064584",
+      "path": "tmp/review_20260925/14_TL_ANDI_2026.txt",
+      "sha256": "e57396106e55c16d063a4209da68bc0d5ec0c148eddf0aaf12535022177fbc8e",
+      "size_bytes": 77831,
+      "exact_alias_source_ids": [
+        "SRC-0064584"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P02",
+      "title": "Context-Constrained Transfer Learning for Tabular Foundation Models via Data Distillation",
+      "authors": [
+        "Yijun Lin",
+        "Sai Li"
+      ],
+      "version": "2607.04809v1",
+      "version_date": "2026-07-06",
+      "url": "https://arxiv.org/abs/2607.04809v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            115
+          ],
+          [
+            171,
+            603
+          ]
+        ],
+        "visual_pages": [],
+        "visual_pages_scoped": {},
+        "sections": [
+          "§1.1 정보와 service context budget",
+          "§2.1–2.2 source prediction/residual correction/anchor/distillation/validation",
+          "§3 정리의 명시 가정과 오차항",
+          "§4.1 시작부 refit 및 MSE 정의"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0002044",
+      "path": "output/research/related_work/14_TL_ANDI_2026.pdf",
+      "sha256": "40727f75bc8e26ad9b4df020988f665396a4e7556072cf6b29390ebf95867246",
+      "size_bytes": 714010,
+      "exact_alias_source_ids": [
+        "SRC-0002044",
+        "SRC-0073405"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P02",
+      "title": "Context-Constrained Transfer Learning for Tabular Foundation Models via Data Distillation",
+      "authors": [
+        "Yijun Lin",
+        "Sai Li"
+      ],
+      "version": "2607.04809v1",
+      "version_date": "2026-07-06",
+      "url": "https://arxiv.org/abs/2607.04809v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [],
+        "visual_pages": [
+          6,
+          7,
+          8,
+          10
+        ],
+        "visual_pages_scoped": {
+          "6": "식1–5 kernel label/conditional-mean discrepancy/anchor objective",
+          "7": "식6–7 greedy 및 distilled labels, calibration/validation",
+          "8": "Algorithm2, Assumption1",
+          "10": "Theorems3.1/3.2 및 validation allowance"
+        },
+        "sections": [
+          "지정 물리 페이지의 명시한 표·식·그림·문단만 확인"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0064596",
+      "path": "tmp/review_20260925/CRUMB.txt",
+      "sha256": "4752c28923a25cba41b603f8e962b71e55aa1e2f267f243de66995ca0555b6d2",
+      "size_bytes": 76743,
+      "exact_alias_source_ids": [
+        "SRC-0064596"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P03",
+      "title": "CRUMB: Efficient Prior Fitted Network Inference via Distributionally Matched Context Batching",
+      "authors": [
+        "Jamie Heredge",
+        "Mattia J. Villani",
+        "Pranav Deshpande",
+        "Akshay Seshadri",
+        "Niraj Kumar"
+      ],
+      "version": "2606.11473v1",
+      "version_date": "2026-06-09",
+      "url": "https://arxiv.org/abs/2606.11473v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            374
+          ]
+        ],
+        "visual_pages": [],
+        "visual_pages_scoped": {},
+        "sections": [
+          "§3 covariate shift 및 MICP 구분",
+          "§4 query clustering/MMD retrieval/batch prediction",
+          "§5.1–5.2 비교 범위"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0064597",
+      "path": "tmp/review_20260925/CRUMB_2606.11473v1.pdf",
+      "sha256": "577646246b3272b31c3d953f0a86ce491ee11805c58c344fe3d32bff5cb99250",
+      "size_bytes": 2151490,
+      "exact_alias_source_ids": [
+        "SRC-0063744",
+        "SRC-0064597"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P03",
+      "title": "CRUMB: Efficient Prior Fitted Network Inference via Distributionally Matched Context Batching",
+      "authors": [
+        "Jamie Heredge",
+        "Mattia J. Villani",
+        "Pranav Deshpande",
+        "Akshay Seshadri",
+        "Niraj Kumar"
+      ],
+      "version": "2606.11473v1",
+      "version_date": "2026-06-09",
+      "url": "https://arxiv.org/abs/2606.11473v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [],
+        "visual_pages": [
+          4,
+          5,
+          7
+        ],
+        "visual_pages_scoped": {
+          "4": "§4 식2–3 MMD·kernel herding, 중복 허용 context",
+          "5": "Algorithm1·근사/조기종료·배치 추론·비교군",
+          "7": "Tables1/2, §5.2의 분류 제한"
+        },
+        "sections": [
+          "지정 물리 페이지의 명시한 표·식·그림·문단만 확인"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0061688",
+      "path": "tmp/redesign_20260925/sources/Entangled_2026.txt",
+      "sha256": "12db5605412bec0d2d2eb170195d495886e4bb35bc34c98d8c20bf7805572b82",
+      "size_bytes": 79074,
+      "exact_alias_source_ids": [
+        "SRC-0000350",
+        "SRC-0061688"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P04",
+      "title": "Entangled by Design: Spurious Intra-Variable Signal Routing in Tabular In-Context Learners",
+      "authors": [
+        "Athanasios Vlontzos",
+        "Giorgos Papanastasiou",
+        "Bernhard Kainz",
+        "Sotirios Tsaftaris"
+      ],
+      "version": "2607.25532v1",
+      "version_date": "2026-07-28",
+      "url": "https://arxiv.org/abs/2607.25532v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            599
+          ],
+          [
+            861,
+            911
+          ]
+        ],
+        "visual_pages": [],
+        "visual_pages_scoped": {},
+        "sections": [
+          "§3 설정·CSR 추정",
+          "§4 ridge/orthogonal/confounding 가정",
+          "§5 지정 실험 서술",
+          "§6–7 context mitigation와 한계",
+          "AppendixE semi-synthetic 자료와 PCA"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0061687",
+      "path": "tmp/redesign_20260925/sources/Entangled_2026.pdf",
+      "sha256": "9438b8a3b6c440bd7a3300915e3eac7a5acd69f7283e8e4c2f1a30b8ef8e52f0",
+      "size_bytes": 430198,
+      "exact_alias_source_ids": [
+        "SRC-0000349",
+        "SRC-0061687"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P04",
+      "title": "Entangled by Design: Spurious Intra-Variable Signal Routing in Tabular In-Context Learners",
+      "authors": [
+        "Athanasios Vlontzos",
+        "Giorgos Papanastasiou",
+        "Bernhard Kainz",
+        "Sotirios Tsaftaris"
+      ],
+      "version": "2607.25532v1",
+      "version_date": "2026-07-28",
+      "url": "https://arxiv.org/abs/2607.25532v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [],
+        "visual_pages": [
+          8,
+          9
+        ],
+        "visual_pages_scoped": {
+          "8": "Tables4/5/6 및 §6 intervention/실용 조건",
+          "9": "Table7, §6.3 semi-synthetic 설정·오차 악화·한계"
+        },
+        "sections": [
+          "지정 물리 페이지의 명시한 표·식·그림·문단만 확인"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0063591",
+      "path": "tmp/redesign_20260925/sources/pretraining_objective_100/TabClustPFN_2601.21656v3.txt",
+      "sha256": "c062cd97706714e14c2230abe769a89042482b99b49b8e749751099876ca96eb",
+      "size_bytes": 118774,
+      "exact_alias_source_ids": [
+        "SRC-0001941",
+        "SRC-0063591"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P05",
+      "title": "TabClustPFN: A Prior-data Fitted Network for Tabular Data Clustering",
+      "authors": [
+        "Tianqi Zhao",
+        "Guanyang Wang",
+        "Yan Shuo Tan",
+        "Qiong Zhang"
+      ],
+      "version": "2601.21656v3",
+      "version_date": "2026-05-14",
+      "url": "https://arxiv.org/abs/2601.21656v3",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            405
+          ]
+        ],
+        "visual_pages": [],
+        "visual_pages_scoped": {},
+        "sections": [
+          "§3 PIN/CIN와 합성 cluster prior",
+          "§3.2–3.3 encoder·cardinality·loss",
+          "§3.4 초기화와 전체 가중치 학습",
+          "§4 지표 정의"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0063590",
+      "path": "tmp/redesign_20260925/sources/pretraining_objective_100/TabClustPFN_2601.21656v3.pdf",
+      "sha256": "09b4d13177d6e792ef2b516e4c28753557bc6895a8c141b485565ba7242ccd6a",
+      "size_bytes": 6831549,
+      "exact_alias_source_ids": [
+        "SRC-0000370",
+        "SRC-0001940",
+        "SRC-0061712",
+        "SRC-0063590"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P05",
+      "title": "TabClustPFN: A Prior-data Fitted Network for Tabular Data Clustering",
+      "authors": [
+        "Tianqi Zhao",
+        "Guanyang Wang",
+        "Yan Shuo Tan",
+        "Qiong Zhang"
+      ],
+      "version": "2601.21656v3",
+      "version_date": "2026-05-14",
+      "url": "https://arxiv.org/abs/2601.21656v3",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [],
+        "visual_pages": [
+          3,
+          4,
+          5
+        ],
+        "visual_pages_scoped": {
+          "3": "Figure2와 §3/3.1 hybrid prior",
+          "4": "§3.2 PIN/CIN/K 제외·§3.3 SoftARI/CE 식",
+          "5": "§3.4 pretraining·평가 지표. Table1 개별 수치 검산 제외"
+        },
+        "sections": [
+          "지정 물리 페이지의 명시한 표·식·그림·문단만 확인"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0061680",
+      "path": "tmp/redesign_20260925/sources/Amortized_TS_Clustering_2026.txt",
+      "sha256": "68892dd5791dabd4ae95e0f79f7c3c6360d6c879db2f9fde6eab663ead854f0f",
+      "size_bytes": 72874,
+      "exact_alias_source_ids": [
+        "SRC-0000346",
+        "SRC-0061680"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P06",
+      "title": "Amortized Neural Clustering of Time Series based on Statistical Features",
+      "authors": [
+        "Ángel López-Oriona",
+        "Ying Sun"
+      ],
+      "version": "2605.13128v1",
+      "version_date": "2026-05-13",
+      "url": "https://arxiv.org/abs/2605.13128v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            460
+          ],
+          [
+            507,
+            553
+          ],
+          [
+            637,
+            657
+          ],
+          [
+            885,
+            924
+          ]
+        ],
+        "visual_pages": [],
+        "visual_pages_scoped": {},
+        "sections": [
+          "§2.2 생성모형 및 feature 충분성",
+          "§3.1.1–3.1.2 pairwise affinity와 평가",
+          "§3.2 QAF 정의 및 선택 학습 조건",
+          "§5 논의/코드 위치"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    },
+    {
+      "source_id": "SRC-0061679",
+      "path": "tmp/redesign_20260925/sources/Amortized_TS_Clustering_2026.pdf",
+      "sha256": "a6dcadb41ddad19753218d5d6b6e651396d1b99282518843e7e70d8d8aefadb0",
+      "size_bytes": 4270982,
+      "exact_alias_source_ids": [
+        "SRC-0000345",
+        "SRC-0061679"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H006-P06",
+      "title": "Amortized Neural Clustering of Time Series based on Statistical Features",
+      "authors": [
+        "Ángel López-Oriona",
+        "Ying Sun"
+      ],
+      "version": "2605.13128v1",
+      "version_date": "2026-05-13",
+      "url": "https://arxiv.org/abs/2605.13128v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [],
+        "visual_pages": [
+          10,
+          11,
+          12
+        ],
+        "visual_pages_scoped": {
+          "10": "§3.1.1 feature/쌍별 shared embedding/MLP/BCE",
+          "11": "Figure1, spectral/Louvain, N200000",
+          "12": "10000평가 자료·알려진K와 Louvain·ARI; Figure2 수치화 제외"
+        },
+        "sections": [
+          "지정 물리 페이지의 명시한 표·식·그림·문단만 확인"
+        ],
+        "unreviewed": [
+          "지정 범위 밖 본문·부록·수치·그림·증명",
+          "저자 구현·원실험 출력·재현",
+          "다른 개정본의 고유 내용"
+        ],
+        "line_numbering": "1-based UTF-8 Python splitlines; PDF physical pages 1-based"
+      }
+    }
+  ],
+  "new_preserved_files": 0,
+  "new_preserved_bytes": 0,
+  "external_primary_review": "../../verification/history-006-primary-review.json",
+  "claim_verification_scope": "05의 관련 여섯 문헌에 대한 지정 방법·표·수식·적용 한계. 전체논문·개정본·후속 실행 전수검토 아님.",
+  "historical_record_fully_integrated": false
+}

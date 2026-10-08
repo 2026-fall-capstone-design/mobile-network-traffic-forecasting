@@ -25,4 +25,4 @@
 
 공식 코드 여섯 파일과 metadata의 현재 보관 상태를 확인했지만 당시 전체 프로세스의 설치환경·가중치 로드를 독립 재현하지 않았다. 사전학습 자료·모든 tensor·의존성·하위 dispatcher/transformer·지정 범위 밖 코드도 미검토다. `_align_covariates`의 설명을 실제 열 삭제까지 검증한 것으로 옮기지 않았다.
 
-회귀 TabPFN의 당시 미실행은05의 서술과 초기 구현에 한정했다. 이후 기록 전체에서의 미실행을 전수 증명하지 않았다. Localized TabICLv2·TL-ANDI·CRUMB·Entangled by Design·TabClustPFN·Amortized TS clustering은 다음 묶음으로 남겨 **05 전체 미완료**를 유지한다.
+회귀 TabPFN의 당시 미실행은05의 서술과 초기 구현에 한정했다. 이후 기록 전체에서의 미실행을 전수 증명하지 않았다. 이 묶음 당시 후속으로 남겼던 Localized TabICLv2·TL-ANDI·CRUMB·Entangled by Design·TabClustPFN·Amortized TS clustering의 지정 구간은 [history-006](history-006.md)에서 대조했다. 각 검수의 시점과 범위를 보존하며 **05 전체 미완료**를 유지한다.

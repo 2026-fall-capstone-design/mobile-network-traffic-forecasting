@@ -27,10 +27,12 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
             print(item)
 ```
 
-초기 B1·B2는 [history-001 목록](history-001-sources.jsonl)과 [열람 범위](../sources/history-001.md)에서 98개 경로를 추적한다. 본문 전체18개, 지정 필드79개, 해시만1개이며, 별도 H5 지정 열 검사도 연결했다. 기록03·04·06·07을 통합했다. 후속08·09는 [history-002 목록](history-002-sources.jsonl)과 [열람 범위](../sources/history-002.md)에 원문6경로(전구간3·지정필드3), 새 보존4개와 기존 배열2개 재사용을 연결했다. 05는 다음 세 묶음으로 부분 통합했다.
+초기 B1·B2는 [history-001 목록](history-001-sources.jsonl)과 [열람 범위](../sources/history-001.md)에서 98개 경로를 추적한다. 본문 전체18개, 지정 필드79개, 해시만1개이며, 별도 H5 지정 열 검사도 연결했다. 기록03·04·06·07을 통합했다. 후속08·09는 [history-002 목록](history-002-sources.jsonl)과 [열람 범위](../sources/history-002.md)에 원문6경로(전구간3·지정필드3), 새 보존4개와 기존 배열2개 재사용을 연결했다. 05는 다음 네 묶음으로 부분 통합했다.
 
 [history-003 목록](history-003-sources.jsonl)은05 원문1개와 외부 문헌 자료5개를 구분한다. [읽은 범위](../sources/history-003.md)의 네 논문·다섯 자료와 별도 웹 논문1편을 대조했다. [history-004 목록](history-004-sources.jsonl)은 기존 보존 원문9개 재사용과 새 일차자료11개(8편)를 연결하고, UPC의 기존 외부 검토를 [별도로 표시](../sources/history-004.md)한다. 새 원문 사본은0개다.
 
-[history-005 목록](history-005-sources.jsonl)은 기존 보존8개를 재사용하고 공식 코드6개·설치metadata·checkpoint config의 지정 검토와 ZIP 해시/선택 member를 연결한다. [읽은 범위](../sources/history-005.md)는 코드전체2·부분4·metadata부분1·checkpoint설정1을 구분한다. 새 원문 사본0이며 외부 identity 등록을 팀 저장소의 원문 보존 완료로 세지 않는다. 가까운 다섯 방법·network/시계열9개·공식 구현을 정리했지만 관련 여섯 연구와 회귀 TabPFN의 후속 비교는 남아 있다. 전체69행 열람을 전체 주장 검수 완료로 표시하지 않는다.
+[history-005 목록](history-005-sources.jsonl)은 기존 보존8개를 재사용하고 공식 코드6개·설치metadata·checkpoint config의 지정 검토와 ZIP 해시/선택 member를 연결한다. [읽은 범위](../sources/history-005.md)는 코드전체2·부분4·metadata부분1·checkpoint설정1을 구분한다. 새 원문 사본0이며 외부 identity 등록을 팀 저장소의 원문 보존 완료로 세지 않는다.
+
+[history-006 목록](history-006-sources.jsonl)은05 원문1개 재사용과 관련 여섯 논문의 텍스트6개·PDF6개를 연결한다. [읽은 범위](../sources/history-006.md)는 지정 줄과 PDF의 지정 내용17쪽이다. 전논문·다른 개정본 완료로 집계하지 않았다. 회귀 TabPFN 후속과05의 남은 판단 연결을 이어가며, 원문69행 열람을 전체 주장 검수 완료로 표시하지 않는다.
 
 목록과 근거 사본은 정리 시점의 스냅샷이다. 원본 변경 시 관련 주장과 검토 상태를 재확인한다. GitHub에는 검수된 묶음부터 반영하며, 전체 기록의 본문 정리는 진행 중이다.
