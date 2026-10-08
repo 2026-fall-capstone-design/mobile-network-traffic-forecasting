@@ -425,6 +425,13 @@ def verify(source: Path) -> dict:
             unique_artifacts.add(relative)
     check("four_unique_UPC_files", len(unique_artifacts) == 4 and alias["group_alias_checks"] == 16)
     check("Tab_metrics_reused", alias["Tab_score_metrics"] == rr["metrics"]["A_Tab_relation"])
+    if manifest:
+        # Compare the final union, including human-only sources whose automatic
+        # scope must remain empty. Catch both omitted and overstated field reads.
+        for key, entry in mapping.items():
+            actual = set(accessed.get(key, {}).get("read_scope", []))
+            declared = set(entry["automated_read_scope"])
+            check("declared_read_scope", actual == declared)
     return dict(
         success=True,
         checked_at_utc=datetime.now(UTC).isoformat(),

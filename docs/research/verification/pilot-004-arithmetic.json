@@ -1,6 +1,6 @@
 {
   "success": true,
-  "checked_at_utc": "2026-10-08T16:34:10.225902+00:00",
+  "checked_at_utc": "2026-10-08T16:53:52.663375+00:00",
   "scope": "Saved 641 control arithmetic and 639 metric aliases; no new research or full-corpus review",
   "checks": {
     "portable_source_identity": 87,
@@ -59,7 +59,8 @@
     "UPC_artifact_path": 16,
     "UPC_artifact_hash": 16,
     "four_unique_UPC_files": 1,
-    "Tab_metrics_reused": 1
+    "Tab_metrics_reused": 1,
+    "declared_read_scope": 90
   },
   "max_absolute_difference": 5.551115123125783e-17,
   "source_count": 87,
@@ -939,10 +940,27 @@
   "no_historical_scripts_imported": true,
   "new_model_executions": 0,
   "new_RCTL_MAE_computation": false,
-  "verification_scope_note": "Array read scope and source digests are in evidence/0641/manifest.json; no RCTL arrays or query labels were used by this verifier.",
+  "verification_scope_note": "Array read scope and source digests are in evidence/0641/manifest.json; actual access union must equal declared automated_read_scope. No RCTL arrays or query labels used by verifier.",
   "source_modes_verified": [
     "original_source_windows",
     "portable_windows",
     "portable_linux"
+  ],
+  "negative_read_scope_cases": [
+    {
+      "case": "missing_npz_field",
+      "source_id": "SRC-0024170",
+      "rejected": true
+    },
+    {
+      "case": "missing_json_scope",
+      "source_id": "SRC-0023939",
+      "rejected": true
+    },
+    {
+      "case": "overstated_query_Y",
+      "source_id": "SRC-0024170",
+      "rejected": true
+    }
   ]
 }
