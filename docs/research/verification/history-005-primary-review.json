@@ -1,0 +1,519 @@
+{
+  "batch_id": "history-005",
+  "checked_at_utc": "2026-10-08T21:41:26.994320+00:00",
+  "reviewer": "same_agent_source_comparison_not_independent_scientific_review",
+  "sources": [
+    {
+      "source_id": "SRC-0047585",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl/forecast/_engine.py",
+      "sha256": "8f902a6e117cf07cb42cbef7538daf081579d71e80a08b5b9cbec6f3857e3f99",
+      "size_bytes": 3885,
+      "exact_alias_source_ids": [
+        "SRC-0047585",
+        "SRC-0073490"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H005-SRC-0047585",
+      "title": "forecast/_engine.py",
+      "version": "official commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3",
+      "url": "https://raw.githubusercontent.com/soda-inria/tabicl/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/forecast/_engine.py",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_full_code_read",
+      "whole_source_reviewed": true,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            114
+          ]
+        ],
+        "line_numbering": "1-based UTF-8 splitlines",
+        "unreviewed": [
+          "실행·성능 재현 없음"
+        ]
+      },
+      "zip_member_source_id": "SRC-0073490",
+      "runtime_zip_official_byte_identical": true
+    },
+    {
+      "source_id": "SRC-0047586",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl/forecast/_forecaster.py",
+      "sha256": "48b579efa88997492ad27d7aa5371518bee216860d11ae7051c7e143779809f9",
+      "size_bytes": 13303,
+      "exact_alias_source_ids": [
+        "SRC-0047586",
+        "SRC-0073491"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H005-SRC-0047586",
+      "title": "forecast/_forecaster.py",
+      "version": "official commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3",
+      "url": "https://raw.githubusercontent.com/soda-inria/tabicl/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/forecast/_forecaster.py",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_full_code_read",
+      "whole_source_reviewed": true,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            346
+          ]
+        ],
+        "line_numbering": "1-based UTF-8 splitlines",
+        "unreviewed": [
+          "실행·성능 재현 없음"
+        ]
+      },
+      "zip_member_source_id": "SRC-0073491",
+      "runtime_zip_official_byte_identical": true
+    },
+    {
+      "source_id": "SRC-0047573",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl/_sklearn/regressor.py",
+      "sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+      "size_bytes": 34574,
+      "exact_alias_source_ids": [
+        "SRC-0001236",
+        "SRC-0001719",
+        "SRC-0001989",
+        "SRC-0031665",
+        "SRC-0047573",
+        "SRC-0061896",
+        "SRC-0061967",
+        "SRC-0062293",
+        "SRC-0062459",
+        "SRC-0062580",
+        "SRC-0062638",
+        "SRC-0062705",
+        "SRC-0062831",
+        "SRC-0062938",
+        "SRC-0063137",
+        "SRC-0063474",
+        "SRC-0063580",
+        "SRC-0063718",
+        "SRC-0063769",
+        "SRC-0063888",
+        "SRC-0064151",
+        "SRC-0064340",
+        "SRC-0073483"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H005-SRC-0047573",
+      "title": "_sklearn/regressor.py",
+      "version": "official commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3",
+      "url": "https://raw.githubusercontent.com/soda-inria/tabicl/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/_sklearn/regressor.py",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_code_read",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            230,
+            765
+          ]
+        ],
+        "line_numbering": "1-based UTF-8 splitlines",
+        "unreviewed": [
+          "지정 구간 밖 전체 코드",
+          "실행·성능 재현 없음"
+        ]
+      },
+      "zip_member_source_id": "SRC-0073483",
+      "runtime_zip_official_byte_identical": true
+    },
+    {
+      "source_id": "SRC-0047553",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl/_model/tabicl.py",
+      "sha256": "583786e5ffd70b9eb425bca8e52aed415dadcdf4254c908b3b6fa52026a56491",
+      "size_bytes": 36988,
+      "exact_alias_source_ids": [
+        "SRC-0001988",
+        "SRC-0020821",
+        "SRC-0047553",
+        "SRC-0061822",
+        "SRC-0061856",
+        "SRC-0062291",
+        "SRC-0062458",
+        "SRC-0062636",
+        "SRC-0062703",
+        "SRC-0062936",
+        "SRC-0063136",
+        "SRC-0063473",
+        "SRC-0063717",
+        "SRC-0063767",
+        "SRC-0064148",
+        "SRC-0064241",
+        "SRC-0064339",
+        "SRC-0073478"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H005-SRC-0047553",
+      "title": "_model/tabicl.py",
+      "version": "official commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3",
+      "url": "https://raw.githubusercontent.com/soda-inria/tabicl/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/_model/tabicl.py",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_code_read",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            83
+          ],
+          [
+            149,
+            227
+          ],
+          [
+            524,
+            614
+          ],
+          [
+            873,
+            913
+          ]
+        ],
+        "line_numbering": "1-based UTF-8 splitlines",
+        "unreviewed": [
+          "지정 구간 밖 전체 코드",
+          "실행·성능 재현 없음"
+        ]
+      },
+      "zip_member_source_id": "SRC-0073478",
+      "runtime_zip_official_byte_identical": true
+    },
+    {
+      "source_id": "SRC-0047542",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl/_model/embedding.py",
+      "sha256": "a0c562600fe22944f91b1b71b706198cb9a4c3d9d8aaba67a86f35a85493d322",
+      "size_bytes": 35782,
+      "exact_alias_source_ids": [
+        "SRC-0001986",
+        "SRC-0020810",
+        "SRC-0047542",
+        "SRC-0061820",
+        "SRC-0061893",
+        "SRC-0062284",
+        "SRC-0062632",
+        "SRC-0062696",
+        "SRC-0062927",
+        "SRC-0062931",
+        "SRC-0063135",
+        "SRC-0063471",
+        "SRC-0063758",
+        "SRC-0064142",
+        "SRC-0064236",
+        "SRC-0073467"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H005-SRC-0047542",
+      "title": "_model/embedding.py",
+      "version": "official commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3",
+      "url": "https://raw.githubusercontent.com/soda-inria/tabicl/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/_model/embedding.py",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_code_read",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            208,
+            245
+          ],
+          [
+            340,
+            400
+          ],
+          [
+            580,
+            666
+          ]
+        ],
+        "line_numbering": "1-based UTF-8 splitlines",
+        "unreviewed": [
+          "지정 구간 밖 전체 코드",
+          "실행·성능 재현 없음"
+        ]
+      },
+      "zip_member_source_id": "SRC-0073467",
+      "runtime_zip_official_byte_identical": true
+    },
+    {
+      "source_id": "SRC-0047550",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl/_model/quantile_dist.py",
+      "sha256": "7e09ac0c3ce0260dc07cef79b0a98ee63b0785efafbf415fd243fe2981499b99",
+      "size_bytes": 56335,
+      "exact_alias_source_ids": [
+        "SRC-0000588",
+        "SRC-0001718",
+        "SRC-0020818",
+        "SRC-0047550",
+        "SRC-0062289",
+        "SRC-0063579",
+        "SRC-0063716",
+        "SRC-0063764",
+        "SRC-0064338",
+        "SRC-0073475"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H005-SRC-0047550",
+      "title": "_model/quantile_dist.py",
+      "version": "official commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3",
+      "url": "https://raw.githubusercontent.com/soda-inria/tabicl/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/_model/quantile_dist.py",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_code_read",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            248,
+            282
+          ],
+          [
+            544,
+            593
+          ],
+          [
+            649,
+            722
+          ],
+          [
+            1478,
+            1543
+          ]
+        ],
+        "line_numbering": "1-based UTF-8 splitlines",
+        "unreviewed": [
+          "지정 구간 밖 전체 코드",
+          "실행·성능 재현 없음"
+        ]
+      },
+      "zip_member_source_id": "SRC-0073475",
+      "runtime_zip_official_byte_identical": true
+    },
+    {
+      "source_id": "SRC-0047644",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl-2.2.0.dist-info/METADATA",
+      "sha256": "e429edbe64f243241e6425854643b0d4128de550121b9feb1598ef710b9941a2",
+      "size_bytes": 38256,
+      "exact_alias_source_ids": [
+        "SRC-0047644"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H005-installed-metadata",
+      "title": "tabicl installed METADATA",
+      "version": "2.2.0",
+      "distribution": "metadata_local_identity_only",
+      "review_status": "agent_selected_metadata_read",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            35
+          ]
+        ],
+        "fields": [
+          "Name",
+          "Version"
+        ],
+        "unreviewed": [
+          "나머지 metadata·라이선스 전문"
+        ]
+      }
+    },
+    {
+      "source_id": "SRC-0023488",
+      "path": "tmp/redesign_20260925/assets/tabicl-regressor-v2-20260212.ckpt",
+      "sha256": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+      "size_bytes": 114324594,
+      "exact_alias_source_ids": [
+        "SRC-0023488"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H005-checkpoint-config",
+      "title": "tabicl-regressor-v2-20260212.ckpt config",
+      "version": "4dcd344ece2c00be9e831fdd35bed57b5ad83e19",
+      "url": "https://huggingface.co/jingang/TabICL/blob/4dcd344ece2c00be9e831fdd35bed57b5ad83e19/tabicl-regressor-v2-20260212.ckpt",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "selected_serialized_primitive_config_review",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "member": "refactored_model/data.pkl",
+        "byte_offsets": [
+          73791,
+          74475
+        ],
+        "fields": [
+          "config.max_classes",
+          "config.num_quantiles",
+          "config.embed_dim",
+          "config.col_num_blocks",
+          "config.col_nhead",
+          "config.col_num_inds",
+          "config.col_affine",
+          "config.col_feature_group",
+          "config.col_feature_group_size",
+          "config.col_target_aware",
+          "config.col_ssmax",
+          "config.row_num_blocks",
+          "config.row_nhead",
+          "config.row_num_cls",
+          "config.row_rope_base",
+          "config.row_rope_interleaved",
+          "config.icl_num_blocks",
+          "config.icl_nhead",
+          "config.icl_ssmax",
+          "config.ff_factor",
+          "config.dropout",
+          "config.activation",
+          "config.norm_first",
+          "config.bias_free_ln",
+          "config.recompute"
+        ],
+        "method": "pickletools opcode inspection of primitive config entries; no unpickling, torch import, tensor loading, inference, or training",
+        "unreviewed": [
+          "가중치 tensor의 내용·훈련 자료·실행 재현"
+        ]
+      }
+    }
+  ],
+  "findings": [
+    {
+      "claim_id": "H005-C01",
+      "finding": "보관 설치metadata2.2.0과 고정commit의6코드/ZIP/runtime 바이트, 공식HF LFS와 checkpoint 해시·크기 일치. 당시 실행환경 전체의 독립 재현은 아님.",
+      "evidence": [
+        "SRC-0047644:1–35",
+        "SRC-0022507:1–41",
+        "SRC-0023488:SHA256/LFS",
+        "SRC-0023489:SHA256/selected6members"
+      ],
+      "boundary": "원본·공식 metadata의 연결 확인",
+      "verification": "source_compared_in_specified_scope"
+    },
+    {
+      "claim_id": "H005-C02",
+      "finding": "TabICLRegressor.fit은 checkpoint 로드·변환 준비·선택적cache이며 현재 자료로 foundation weights를 최적화하는 학습이 아니다.",
+      "evidence": [
+        "SRC-0047573:285–480",
+        "SRC-0047573:482–620"
+      ],
+      "boundary": "지정 코드 경로; 다른 fine-tuning 구현으로 일반화하지 않음",
+      "verification": "source_compared_in_specified_scope"
+    },
+    {
+      "claim_id": "H005-C03",
+      "finding": "실제checkpoint config의max_classes0/num_quantiles999, API 기본alpha9개, B1/B2 요청129midpoint를 구분한다.",
+      "evidence": [
+        "SRC-0023488:data.pkl73791–74475",
+        "SRC-0047553:149–227/524–614",
+        "SRC-0047550:1478–1543",
+        "SRC-0023116:63–92",
+        "SRC-0022942:20–30"
+      ],
+      "boundary": "설정·확률격자·저장 shape 대조",
+      "verification": "source_compared_in_specified_scope"
+    },
+    {
+      "claim_id": "H005-C04",
+      "finding": "median은0.5 ICDF, mean은단조보정된native quantiles 평균이며 서로 다르다. B1 저장median은129격자index64와정확일치.",
+      "evidence": [
+        "SRC-0047553:587–608",
+        "SRC-0047550:248–282/544–593/649–722",
+        "SRC-0047573:737–752",
+        "SRC-0023605:quantiles/median/mean"
+      ],
+      "boundary": "출력 해석과 저장값 대조; 분포 calibration 보장 아님",
+      "verification": "source_compared_in_specified_scope"
+    },
+    {
+      "claim_id": "H005-C05",
+      "finding": "B1/B2는각16context,504행/ensemble1. query1088/168, 저장129분위수. fit+predict100.3214832/31.5327033초는 저장로그합이며 전체 작업시간이 아니다.",
+      "evidence": [
+        "SRC-0023601:all16callrows",
+        "SRC-0023586:all16callrows",
+        "SRC-0023605:quantiles/median/mean",
+        "SRC-0023589:predicted_quantiles"
+      ],
+      "boundary": "새 추론0. 두 로그각16행을읽고별도합산",
+      "verification": "source_compared_in_specified_scope"
+    },
+    {
+      "claim_id": "H005-C06",
+      "finding": "초기B1/B2는kv_cache를지정하지않아고정공식constructor False 경로. cache 재사용기능의존재와 모든초기실험의활성화를구분한다.",
+      "evidence": [
+        "SRC-0023116:78–80",
+        "SRC-0022942:22–23",
+        "SRC-0047573:245–283/436–480/712–735"
+      ],
+      "boundary": "당시스크립트와보관공식코드연결;실행시별도monkeypatch전수부재증명아님",
+      "verification": "source_compared_in_specified_scope"
+    },
+    {
+      "claim_id": "H005-C07",
+      "finding": "실제config target-aware/grouping과context Y를포함하는embedding경로를확인. 다른context의cache/좌표동일성·attention의기여도나RCTL효용은보장되지않는다.",
+      "evidence": [
+        "SRC-0023488:config",
+        "SRC-0047542:208–245/340–400/580–666",
+        "SRC-0047573:417–480"
+      ],
+      "boundary": "같은가중치라는조건만으로추가해석을정당화하지않는적용한계",
+      "verification": "source_compared_in_specified_scope"
+    },
+    {
+      "claim_id": "H005-C08",
+      "finding": "고정commit에forecast pipeline이존재하며index/datetime/periodic,wrappercontext4096/mean기본을확인. 직접lag-regressor와다르며최초시계열적용주장을지지하지않는다.",
+      "evidence": [
+        "SRC-0047585:1–114",
+        "SRC-0047586:1–346",
+        "SRC-0020826:TabICL관련절"
+      ],
+      "boundary": "하위transformer/dispatcher전체와동작실험미검토;4096을모델보편한계로쓰지않음",
+      "verification": "source_compared_in_specified_scope"
+    },
+    {
+      "claim_id": "H005-C09",
+      "finding": "05는회귀TabPFN대체비교를같은정보또는실제비용조건으로제안하고당시예산내미실행이라고적는다.공식코드존재만으로TabICL독점성이나성능우위를확정하지않는다.",
+      "evidence": [
+        "SRC-0020826:TabICL관련절",
+        "SRC-0023116:78–80",
+        "SRC-0022942:22–23"
+      ],
+      "boundary": "05/초기구현의당시범위;이후전체기록TabPFN미실행의전수증명아님",
+      "verification": "source_compared_in_specified_scope"
+    }
+  ],
+  "official_code_full_files": 2,
+  "official_code_selected_files": 4,
+  "selected_metadata_files": 1,
+  "selected_checkpoint_config": 1,
+  "hash_only_archive": 1,
+  "reused_preserved_sources": 8,
+  "remaining_record05": [
+    "Localized TabICLv2/TL-ANDI/CRUMB/Entangled by Design/TabClustPFN/Amortized TS clustering의 해당 판본·주장·실제 연구 연결",
+    "회귀 TabPFN의 대체 비교 제안과 이후 연구 이력 연결",
+    "지정 구간 밖의 공식 코드·사전학습·실행환경 전체와 전체 연구기록 검토"
+  ],
+  "model_runs": 0,
+  "historical_code_executed": false,
+  "whole_record05_integrated": false,
+  "source_limitations": [
+    "현재보관6파일의byte일치는당시실행전체환경을완전히봉인한증거가아님",
+    "공식코드본문과함수명만으로새모델실험완료를주장하지않음"
+  ]
+}
