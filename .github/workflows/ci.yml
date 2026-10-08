@@ -84,6 +84,10 @@ jobs:
           uv run --locked --group archive python scripts/research_archive/verify_early_risk_history.py
           --source docs/research/evidence/0003-0007/manifest.json
           --output .research-archive/ci-0003-0007.json
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_finite_sample_history.py
+          --source docs/research/evidence/0008-0009/manifest.json
+          --output .research-archive/ci-0008-0009.json
 
   deploy:
     name: deploy-pages

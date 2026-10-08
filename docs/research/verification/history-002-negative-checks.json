@@ -1,0 +1,50 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-08T20:00:37.741595+00:00",
+  "cases": [
+    {
+      "case": "pair_correlation",
+      "expected_check": "pair_correlations_TabICL_median_residual",
+      "observed_failure": [
+        "pair_correlations_TabICL_median_residual",
+        1
+      ],
+      "detected": true,
+      "fixture_hash_updated": true
+    },
+    {
+      "case": "synthetic_aggregate",
+      "expected_check": "reported_toy_difference",
+      "observed_failure": [
+        "reported_toy_difference",
+        1
+      ],
+      "detected": true,
+      "fixture_hash_updated": true
+    },
+    {
+      "case": "duplicate_query_time",
+      "expected_check": "query_times",
+      "observed_failure": [
+        "query_times",
+        1
+      ],
+      "detected": true,
+      "fixture_hash_updated": true
+    },
+    {
+      "case": "unread_array_scope",
+      "expected_check": "declared_automated_scope",
+      "observed_failure": [
+        "declared_automated_scope",
+        3
+      ],
+      "detected": true,
+      "fixture_hash_updated": true
+    }
+  ],
+  "original_files_changed": false,
+  "model_executions": 0,
+  "Monte_Carlo_resimulations": 0,
+  "limits": "Checks demonstrate selected corruptions and overdeclared read scope. Synthetic means/SE are not validated against unsaved draws; novelty and causality are not tested."
+}
