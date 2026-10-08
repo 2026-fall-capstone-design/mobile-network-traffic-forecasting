@@ -1,0 +1,186 @@
+"""Fixed558 reservation, bounded child execution, failure-inclusive settlement."""
+import os
+for k in ('OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS','NUMEXPR_NUM_THREADS'):
+    os.environ[k]='4'
+from pathlib import Path
+from datetime import datetime,timezone
+import copy,hashlib,json,math,shutil,subprocess,sys,time,traceback
+from recovery_io_271 import write
+B=Path(__file__).resolve().parent; KEY='joint_ID_decision_558'; O=B/'results'/KEY
+L=B/'cumulative_execution_budget.json';S=B/'research_state.json'
+read=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+now=lambda:datetime.now(timezone.utc).isoformat()
+LIMITS=dict(Tab_seconds=125,other_seconds=25,stage_seconds=150,rss_bytes=2*1024**3,
+            threads=4,contexts=1,query_rows=9638,simple_fits=1)
+
+def reserve():
+    assert not O.exists(),'Inspect any prior558 attempt; never overwrite it'
+    l=read(L);s=read(S)
+    assert s['next_action']['id']=='558_joint_ID_decision' and not s.get('in_flight_execution')
+    assert sha(L)==read(B/'results/joint_ID_support_557/settled.json')['ledger_sha256']
+    assert read(B/'results/joint_ID_support_557/archive_complete.json')['complete']
+    assert all(v['status'] in ('settled','cancelled') for k in ('numeric_reservations','plan_reservations') for v in l[k].values())
+    assert all(v['status'] in ('settled','cancelled') for rnd in l['additional_rounds'].values() for v in rnd.get('reservations',{}).values())
+    cheap=math.fsum(l['new_cheap_diagnostic_seconds'].values())
+    total=cheap+sum(l['used'].get(k,0) for k in ('TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'))
+    assert l['used']['TabICL_fit_predict_seconds']+125<=l['caps']['TabICL_fit_predict_seconds']
+    assert cheap+25<=l['caps']['cheap_numeric_seconds'] and total+150<=l['caps']['total_local_modeling_seconds']
+    paths=['558_joint_ID_decision_plan.md',Path(__file__).name,'joint_ID_decision_558.py','recovery_io_271.py',
+           'results/design_data.npz','results/risk_table_predictions.npz','results/cell_identity/run_started.json',
+           'results/cell_identity/predictions.npz','results/joint_ID_support_557/support_frozen.npz',
+           'results/joint_ID_support_557/result.json','assets/tabicl-regressor-v2-20260212.ckpt',
+           'runtime/Lib/site-packages/tabicl/_sklearn/regressor.py','runtime/Lib/site-packages/tabicl/_sklearn/preprocessing.py',
+           'runtime/Lib/site-packages/tabicl/_model/tabicl.py','runtime/Lib/site-packages/tabicl/_model/embedding.py',
+           'runtime/Lib/site-packages/tabicl/_model/learning.py','runtime/Lib/site-packages/tabicl/_model/layers.py']
+    prior=read(B/'results/cell_interaction_223/settings.json')['input_sha256']
+    for p in paths:
+        if p in prior:assert sha(B/p)==prior[p]
+    assert sha(B/'assets/tabicl-regressor-v2-20260212.ckpt')=='0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a'
+    O.mkdir();(O/'before').mkdir()
+    for p in (S,L):shutil.copy2(p,O/'before'/p.name)
+    write(O/'frozen_settings.json',dict(at=now(),limits=LIMITS,source_hashes={p:sha(B/p) for p in paths},
+        input_kind='native_goal_continuation',seed=20260925,context_rows=2688,features=32,
+        query_rows=9638,missing_cross_ID_rows=8634,own_ID_reproduction_rows=1004,
+        same_information=True,new_RCTL_fits=0,query_truth_used=False,
+        primary_rule='original224_supported_symmetric_absolute_contrast_complete_linkage_K4',
+        tie='lexicographic_sorted_cell_id_tuples',known_comparison_not_new_algorithm=True))
+    caps_before=copy.deepcopy(l['caps']);used_before=copy.deepcopy(l['used']);before=sha(L)
+    for k,amount in (('TabICL_contexts',1),('TabICL_query_rows',9638)):
+        l['caps'][k]=max(l['caps'][k],l['used'][k]+amount)
+    changes={k:l['caps'][k]-caps_before[k] for k in caps_before if l['caps'][k]!=caps_before[k]}
+    if changes:l['autonomous_cap_adjustments'].append(dict(id=KEY,at=now(),authorization='2026-09-28 사용자 위임 / 목표9.1',
+        plan='tmp/redesign_20260925/558_joint_ID_decision_plan.md',settings_sha256=sha(O/'frozen_settings.json'),
+        purpose='557에서 확인된 고정 지원 범위의 미계산 ID 예측과 원224 소속 결정 비교',
+        previous_caps=caps_before,new_caps=copy.deepcopy(l['caps']),change=changes,used_preserved=used_before,
+        unsettled_prior_reservations=0,cost_basis='원14 동일32열/2688context/1024query 약9.83초; 고정query9638 cache와512batch; 시간 상한은 기존 잔여 내',
+        stop_limits=LIMITS,automatic_recharge=False))
+    l['plan_reservations'][KEY]=dict(status='reserved',Tab_contexts_cap=1,Tab_query_rows_cap=9638,Tab_seconds_cap=125,cheap_seconds_cap=25,simple_fits_cap=1,settings_sha256=sha(O/'frozen_settings.json'))
+    for k,v in (('TabICL_contexts',1),('TabICL_query_rows',9638)):
+        l['remaining_count_budgets'][k]=l['caps'][k]-l['used'][k]-v
+    write(L,l)
+    write(O/'authorization.json',dict(at=now(),ledger_before_sha256=before,ledger_reserved_sha256=sha(L),settings_sha256=sha(O/'frozen_settings.json'),cap_changes=changes))
+    s['in_flight_execution']=dict(id=KEY,output='tmp/redesign_20260925/results/'+KEY)
+    s['next_action'].update(status='reserved',budget_reserved=True);s['updated_at']=now();write(S,s)
+    print(json.dumps(dict(reserved=True,cap_changes=changes,limits=LIMITS),ensure_ascii=False))
+
+def terminate_tree(proc):
+    import psutil
+    errors=[];children=[]
+    if proc is None:return dict(reaped=True,errors=[],ended_perf=time.perf_counter())
+    try:
+        if proc.poll() is None:
+            try:
+                parent=psutil.Process(proc.pid);children=parent.children(recursive=True)
+            except psutil.NoSuchProcess:pass
+            for child in children:
+                try:child.kill()
+                except psutil.NoSuchProcess:pass
+                except Exception as e:errors.append(repr(e))
+            try:proc.kill()
+            except ProcessLookupError:pass
+        proc.wait(timeout=5)
+    except Exception as e:errors.append(repr(e))
+    live=[]
+    if children:
+        try:
+            _,live=psutil.wait_procs(children,timeout=3)
+        except Exception as e:errors.append(repr(e));live=children
+    return dict(reaped=proc.poll() is not None and not live,errors=errors,ended_perf=time.perf_counter())
+
+def run():
+    import psutil
+    a=read(O/'authorization.json');cfg=read(O/'frozen_settings.json')
+    assert sha(L)==a['ledger_reserved_sha256']
+    assert sha(O/'frozen_settings.json')==a['settings_sha256']
+    assert all(sha(B/p)==h for p,h in cfg['source_hashes'].items())
+    assert not (O/'run_started.json').exists(),'No duplicate attempt'
+    write(O/'meter.json',dict(Tab_seconds=0.,contexts_attempted=0,contexts_completed=0,
+        query_rows_attempted=0,query_rows_completed=0,simple_fits_attempted=0,simple_fits_completed=0,
+        phase='worker_import',phase_started_perf=None,simple_rows_completed=0))
+    start=time.perf_counter();proc=None;peak=0;failure=None;success=False;code=None;tab=0.;meter=read(O/'meter.json');ended_perf=None;stop_requested_perf=None
+    write(O/'run_started.json',dict(at=now(),controller_pid=os.getpid(),started_perf=start))
+    try:
+        with (O/'stdout.log').open('w',encoding='utf-8') as out,(O/'stderr.log').open('w',encoding='utf-8') as err:
+            proc=subprocess.Popen([sys.executable,'-X','utf8',str(Path(__file__).resolve()),'worker'],stdout=out,stderr=err,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+            write(O/'worker_handle.json',dict(at=now(),pid=proc.pid,create_time=psutil.Process(proc.pid).create_time()))
+            while proc.poll() is None:
+                meter=read(O/'meter.json');elapsed=time.perf_counter()-start
+                active=(time.perf_counter()-meter['phase_started_perf']) if meter.get('phase_started_perf') is not None and str(meter.get('phase','')).startswith('Tab_') else 0.
+                tab=meter.get('Tab_seconds',0.)+active;other=max(0.,elapsed-tab)
+                try:
+                    ps=psutil.Process(proc.pid);rss=ps.memory_info().rss+sum(c.memory_info().rss for c in ps.children(recursive=True));peak=max(peak,rss)
+                except psutil.NoSuchProcess:pass
+                if tab>125 or other>25 or elapsed>150 or peak>LIMITS['rss_bytes']:
+                    failure=dict(reason='time_or_RSS_cap',Tab_seconds=tab,other_seconds=other,seconds=elapsed,RSS=peak);break
+                time.sleep(.05)
+            if failure is not None:
+                stop_requested_perf=time.perf_counter()
+                cleanup=terminate_tree(proc)
+                if not cleanup['reaped']:raise RuntimeError('Worker could not be reaped: '+repr(cleanup))
+                ended_perf=cleanup['ended_perf']
+            code=proc.wait(timeout=5)
+            if ended_perf is None:ended_perf=time.perf_counter()
+        success=code==0 and (O/'worker_finished.json').exists() and read(O/'worker_finished.json').get('success',False)
+    except BaseException:
+        stop_requested_perf=time.perf_counter()
+        failure=dict(reason='controller_or_worker_observation_exception',trace=traceback.format_exc())
+    finally:
+        cleanup=terminate_tree(proc)
+        if ended_perf is None:ended_perf=cleanup['ended_perf']
+        elapsed=time.perf_counter()-start
+        meter_fallback=False
+        try:meter=read(O/'meter.json')
+        except Exception as e:
+            meter_fallback=True
+            failure=dict(reason='meter_read_failure',error=repr(e),previous_failure=failure)
+            # Unobservable last attempt is charged conservatively, not silently omitted.
+            meter.update(contexts_attempted=LIMITS['contexts'],query_rows_attempted=LIMITS['query_rows'],simple_fits_attempted=LIMITS['simple_fits'])
+        active=0.
+        if meter.get('phase_started_perf') is not None and str(meter.get('phase','')).startswith('Tab_'):
+            active=max(0.,(stop_requested_perf if stop_requested_perf is not None else ended_perf)-meter['phase_started_perf'])
+        tab=min(elapsed,meter.get('Tab_seconds',0.)+active);other=max(0.,elapsed-tab)
+        limits_met=tab<=125 and other<=25 and elapsed<=150 and peak<=LIMITS['rss_bytes']
+        success=bool(success and limits_met and failure is None and cleanup['reaped'])
+        if code is None and proc is not None:code=proc.returncode
+        write(O/'run_finished.json',dict(at=now(),success=success,seconds=elapsed,Tab_seconds=tab,other_seconds=other,
+            cap_satisfied=limits_met,peak_process_tree_RSS_bytes=peak,failure=failure,returncode=code,
+            worker_reaped=cleanup['reaped'],cleanup=cleanup,meter=meter,meter_fallback_conservative_counts=meter_fallback,
+            active_Tab_seconds_added_after_forced_stop=active,active_Tab_seconds_are_estimated=active>0,
+            cleanup_charged_to_other=True,new_RCTL_fits=0))
+        if cleanup['reaped']:settle()
+    print(json.dumps(dict(success=success,Tab_seconds=tab,other_seconds=other,seconds=elapsed,failure=failure),ensure_ascii=False))
+    if not success:raise SystemExit(1)
+
+def settle():
+    assert not (O/'settled.json').exists()
+    f=read(O/'run_finished.json');a=read(O/'authorization.json');l=read(L)
+    assert f['worker_reaped'] and sha(L)==a['ledger_reserved_sha256']
+    assert l['plan_reservations'][KEY]['status']=='reserved'
+    m=f['meter'];contexts=m.get('contexts_attempted',0);rows=m.get('query_rows_attempted',0)
+    counts_within_cap=contexts<=1 and rows<=9638 and m.get('simple_fits_attempted',0)<=1
+    if not counts_within_cap:
+        f.update(success=False,count_cap_overrun=True)
+        write(O/'run_finished.json',f)
+    assert KEY not in l['new_cheap_diagnostic_seconds']
+    l['used']['TabICL_contexts']+=contexts;l['used']['TabICL_query_rows']+=rows;l['used']['TabICL_fit_predict_seconds']+=f['Tab_seconds']
+    l['new_cheap_diagnostic_seconds'][KEY]=f['other_seconds']
+    l['model_calls_by_stage'].append(dict(stage=KEY,contexts=contexts,contexts_completed=m.get('contexts_completed',0),predicted_query_rows=rows,query_rows_completed=m.get('query_rows_completed',0),fit_predict_seconds=f['Tab_seconds'],all_calls_successful=f['success'],ensemble=1))
+    l['cheap_stage_details'].append(dict(stage=KEY,seconds=f['other_seconds'],simple_fits_attempted=m.get('simple_fits_attempted',0),simple_fits_completed=m.get('simple_fits_completed',0),simple_rows_completed=m.get('simple_rows_completed',0),complete=f['success']))
+    l['plan_reservations'][KEY].update(status='settled',contexts_used=contexts,query_rows_used=rows,Tab_seconds_used=f['Tab_seconds'],cheap_seconds_used=f['other_seconds'],complete=f['success'],limit_overrun=not f['cap_satisfied'] or not counts_within_cap)
+    for k in ('TabICL_contexts','TabICL_query_rows'):l['remaining_count_budgets'][k]=max(0,l['caps'][k]-l['used'][k])
+    l['as_of_date']=now();write(L,l)
+    s=read(S);assert s['in_flight_execution']['id']==KEY
+    s['in_flight_execution']=None;s['updated_at']=now();s['next_action'].update(status='executed_settled_pending_findings',budget_reserved=False);write(S,s)
+    write(O/'settled.json',dict(at=now(),success=f['success'],Tab_seconds=f['Tab_seconds'],other_seconds=f['other_seconds'],contexts=contexts,query_rows=rows,simple_fits=m.get('simple_fits_attempted',0),ledger_sha256=sha(L),all_prior_costs_preserved=True,cap_changes=a['cap_changes']))
+
+def worker():
+    try:
+        from joint_ID_decision_558 import calculate
+        r=calculate(O,read(O/'frozen_settings.json')['limits'])
+        write(O/'worker_finished.json',dict(at=now(),success=True,result=r))
+    except BaseException:
+        write(O/'worker_finished.json',dict(at=now(),success=False,traceback=traceback.format_exc()))
+        raise
+
+if __name__=='__main__':{'reserve':reserve,'run':run,'worker':worker,'settle':settle}[sys.argv[1]]()

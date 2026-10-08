@@ -1,0 +1,69 @@
+"""Archive the fixed controls and exact downstream aliases; preserve history and costs."""
+import json,hashlib,shutil,math
+from pathlib import Path
+from datetime import datetime,timezone
+from recovery_io_271 import write
+B=Path(__file__).resolve().parent;ROOT=B.parent.parent;O=B/'results/cached_relation_score_ablation_641'
+S=B/'research_state.json';L=B/'cumulative_execution_budget.json'
+read=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+rel=lambda p:p.relative_to(ROOT).as_posix()
+at=datetime.now(timezone.utc).isoformat();s=read(S);l=read(L);ledger=sha(L)
+assert not (O/'archive_complete.json').exists()
+assert s['next_action']['id']=='641_cached_relation_score_ablation' and s['in_flight_execution'] is None
+r=read(O/'result.json');v=read(O/'verification.json');z=read(O/'settled.json');alias=read(O/'frozen_utility_alias.json')
+assert all(x['success'] for x in [r,v,z,alias,read(O/'run_finished.json')]) and ledger==z['ledger_sha256']==alias['ledger_sha256']
+assert r['branch']=='both_Tab_controls_different_assignment' and all(not a['changed_cell_ids'] for a in r['assignments'].values())
+assert all(x['status'] in ('settled','cancelled','completed','released') for fam in ['numeric_reservations','plan_reservations'] for x in l[fam].values())
+(O/'before_archive').mkdir()
+for p in [S,B/'research_focus.md',B/'progress.md',B/'candidate_decision_index.md']:shutil.copy2(p,O/'before_archive'/p.name)
+manifest=dict(at=at,initial_integration_reused=[280,445],handoff_application_reused='maintenance_research_focus_20260928/application_latest633_20261004/application.json',
+ detailed_review=['640 primary-method boundary and fixed641 contract','637 complete forecast cache and638 sealed support graph','641 reserve/run/independent scalar assignment verification/settlement','639 frozen group/protocol metadata and prediction hashes after641 assignment sealing'],
+ additional_whole_primary_papers_reviewed=0,inventories_are_not_content_review=True,
+ actual_results='four prediction-only controls retain UPC; full score changes Tab3/HGB1 cells',
+ utility_alias='four controls byte-identical membership/protocol to639 UPC; prior metrics reused, not retrained or recalculated',
+ preserved_counterexample='HGB_free better first240 and six overall cell losses; one development cohort/seed, theta0 small UPC',
+ new_models=0,new_forecasts=0,traffic_numeric='cached forecast score and graph assignment only',seconds=z['seconds'],checks=v['checks'],scalar_max_difference=v['max_scalar_difference'],group_alias_checks=alias['group_alias_checks'],
+ ledger_sha256=ledger,next_action='642_bounded_relation_recommendation',research_complete=False)
+write(O/'review_manifest.json',manifest)
+focus='''# 현재 집중 문제 — 확인 정답을 이용한 소속 수정의 연구 가치와 추천 범위
+
+초기280·445 통합과633 인계 적용은 재사용했습니다. [640 원문 대조](640_relation_graph_contribution_boundary_findings.md),[641 실제 대조](641_cached_relation_score_ablation_findings.md),[검토 범위](results/cached_relation_score_ablation_641/review_manifest.json)를 연결했습니다. 기존 문서 확보와 내용 검토를 구분하고 원본을 유지했습니다.
+
+| 연결 | 최신 근거와 판단 |
+|---|---|
+| 문제·상태 | independent_UPC_membership_decision_information; 실제 score 추가 결정·고정 RCTL 연결 확인,추천 범위와 문서 통합 단계 |
+| 관측 근거 | 같은 Tab/HGB의 직접 중앙값 거리와 정답 없는 plug-in은 모두UPC유지. 실제 정답score는Tab3cell/HGB1cell이동. 같은예측·지원·배정식의 결정 차이 |
+| 원인 가설 | 실제 정답에 관계 추정을 대조하는 score가 추정 함수 거리와 다른 유용한 결정을 제공할 수 있음. 한 개발 조건의 근거이며 편향제거·일반화보장은 아님 |
+| 바뀐 결정 | Tab의3745·6153·3765이동은638에서봉인.641의두대조는UPC유지.641결과로기존threshold/K/소속을수정하지않음 |
+| Tab 역할 | 같은504sample·16입력의9분위수. 같은정보HGB보다실제RCTL결과가달랐으며새학습/추론없이두대조계산 |
+| 강한 대안 | 함수거리/plug-in,동일score HGB,강한 HGB_free 모두보존. HGB_free전반우위와6cell손해미해소 |
+| RCTL 자료와 효용 | 전체실제sample/target.대조는UPС와같아639결과를16group대조후재사용.현재Tabscore 전체MAE0.081396,UPC/두대조0.084757 |
+| 완료한 최소 확인 | 새모델0·0.3302418초·377수치검사·16groupalias·모든예약정산.완료실험재실행없음 |
+| 다음 행동 | [642](642_bounded_relation_recommendation_plan.md): 선행·실제변경·추정기/결정식기여·원UPC조건차이·비용·미해결을연결해추천안과보고서/검수Word로진행 |
+| 결과별 판단 | 핵심근거충분하면좁은추천범위와본실험실패조건을명시.새핵심모순이면그판단을바꿀최소확인만선정.새seed/기간/보정자동추가없음 |
+
+점수 공식과조건부clustering 자체는알려진구성입니다.현재차별화근거는동일정보의단순결정이못바꾼소속을바꾼결과이며,최초성·전구간우위·전체도시실행가능성의완료가아닙니다. 최종문서와목표완료조건은아직검수전입니다.
+
+## 이전 집중 기록 — 당시 판단 보존
+
+'''.replace('UPС','UPC')
+p=B/'research_focus.md';p.write_text(focus+p.read_text(encoding='utf-8-sig'),encoding='utf-8')
+entry=f'''\n\n## 641 — 같은 예측의 함수 거리와 정답 없는 충돌은 UPC를 유지 ({at})
+
+[641 상세](641_cached_relation_score_ablation_findings.md). Tab/HGB 각각의 직접 중앙값 거리·plugin 네대조가 모두UPC를유지했습니다. 기존실제정답score는Tab3cell/HGB1cell이동으로,같은예측·지원·배정식의추가결정근거입니다. 소속봉인후639의같은UPC자료/protocol/16groupartifacthash를연결했고새RCTL학습·MAE계산0입니다. 현재score의3.97%이득과강한HGB전반2.71%손해를함께보존합니다.
+
+새모델/forward0·377검사/최대1.3878e−17·0.3302418초정산·상한증액0·worker/미정산0. 초기통합/인계적용재사용·원장{ledger}·과거실패비용보존. 다음[642](642_bounded_relation_recommendation_plan.md)은구체적추천범위와기존근거를연구보고서/검수Word로연결합니다. 추가모듈/seed/기간을자동실행하지않고신규성과전체goal완료는아직미선언입니다.
+'''
+for n in ['progress.md','candidate_decision_index.md']:
+ with (B/n).open('a',encoding='utf-8') as f:f.write(entry)
+s.update(updated_at=at,latest_research_stage=641,latest_research_record=rel(B/'641_cached_relation_score_ablation_findings.md'))
+s['active_problem']=dict(id='independent_UPC_membership_decision_information',path=rel(B/'research_focus.md'),status='score_added_decision_and_fixed_utility_supported_recommendation_synthesis_pending')
+s['next_action']=dict(id='642_bounded_relation_recommendation',plan=rel(B/'642_bounded_relation_recommendation_plan.md'),status='specified_not_started',problem_id=s['active_problem']['id'],budget_reserved=False,new_models_reserved=False,action='640선행결정대조와641추가소속판단/639효용을연결해추천범위하나를정한다. 원UPC theta10과작은theta0차이,기존traffic/시계열/Tab원문반영,전체비용과강한단순대안반례를기재.근거충분시한국어보고서와전페이지검수Word작성,새핵심모순이면그한판단의최소확인만명세.새모델자동실행0.')
+s['research_focus_application'].update(latest_delta_at=at,latest_delta_stage=641,latest_delta_record=s['latest_research_record'],latest_review_manifest=rel(O/'review_manifest.json'),active_problem_id=s['active_problem']['id'],problem_id=s['active_problem']['id'],next_action_id=s['next_action']['id'],next_action=s['next_action']['id'],application_status='applied_cached_controls_verified_and_exact_RCTL_aliases_linked',hypothesis_review_status='extra_score_decision_supported_one_development_condition',latest_delta_new_model_runs=0,latest_delta_new_traffic_arithmetic=True,full_initial_integration_repeated=False,latest_output_and_settlement_checked=True)
+s['evidence_checkpoint'].update(latest_delta_review=rel(O/'review_manifest.json'),latest_actual_numeric=rel(O/'result.json'),latest_actual_execution=rel(O/'run_finished.json'),latest_numeric_verification=rel(O/'verification.json'),latest_settlement=rel(O/'settled.json'),latest_utility_alias=rel(O/'frozen_utility_alias.json'),ledger_sha256_at_handoff=ledger,final_Tab_membership_candidate_adopted=False)
+s.setdefault('problem_checkpoints',[]).append(dict(at=at,record=s['latest_research_record'],problem_id=s['active_problem']['id'],completed_scope='same forecast median/plugin controls plus exact completed RCTL utility alias',positive='full score changes assignments and improves aggregate utility versus controls here',counterexample='strong HGB_free earlier window better; known score/quantile clustering precedents',closed_scope='additional control retraining; standalone nonlinearity/no-refit novelty',remaining_question='bounded recommendation and complete evidence/cost/source/report synthesis',Tab_changed_decision='full observed-label score moves three cells while both prediction-only controls retain UPC',RCTL_data='all real samples and targets for sealed membership',next_action=s['next_action']['id'],new_candidate_adopted=False))
+s['research_deliverables_complete']=False;write(S,s)
+assert sha(L)==ledger and (ROOT/s['next_action']['plan']).exists()
+write(O/'archive_complete.json',dict(at=at,success=True,stage=641,ledger_sha256=ledger,state_sha256=sha(S),next_action=s['next_action']['id'],no_unsettled_reservations=True,research_complete=False))
+print(json.dumps(dict(stage=641,archived=True,next_action=s['next_action']['id'],new_models=0,seconds=z['seconds'],cheap_cumulative_seconds=math.fsum(l['new_cheap_diagnostic_seconds'].values()),ledger_sha256=ledger)))

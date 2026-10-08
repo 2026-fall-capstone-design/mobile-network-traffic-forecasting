@@ -1,0 +1,14 @@
+"""Bounded retry of atomic file replacement only; never retry a model call."""
+import json
+import time
+def write(p,obj):
+    temp=p.with_name(p.name+'.tmp')
+    temp.write_text(json.dumps(obj,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+    deadline=time.perf_counter()+1.0
+    while True:
+        try:
+            temp.replace(p)
+            return
+        except PermissionError:
+            if time.perf_counter()>=deadline: raise
+            time.sleep(.005)

@@ -1,0 +1,36 @@
+"""After assignment sealing, link identical groups to already verified RCTL results."""
+import json,hashlib
+from pathlib import Path
+from datetime import datetime,timezone
+from recovery_io_271 import write
+B=Path(__file__).resolve().parent;ROOT=B.parent.parent
+O=B/'results/cached_relation_score_ablation_641';R=B/'results/bounded_relation_RCTL_bridge_639'
+read=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+rel=lambda p:p.relative_to(ROOT).as_posix()
+assert not (O/'frozen_utility_alias.json').exists()
+assert all(read(O/n)['success'] for n in ['result.json','verification.json','settled.json','run_finished.json'])
+assert read(O/'settled.json')['ledger_sha256']==sha(B/'cumulative_execution_budget.json')
+assert read(R/'verification.json')['success'] and read(R/'result.json')['success']
+a=read(O/'assignment_sealed.json');cfg=read(R/'frozen_settings.json');h=read(R/'prediction_hashes.json')
+ids=cfg['cohorts']['A']['cell_ids'];control_cfg=read(O/'frozen_settings.json');assert ids==control_cfg['cell_ids']
+tasks=sorted([t for t in cfg['tasks'] if t['method']=='A_UPC'],key=lambda t:t['cluster']);assert len(tasks)==4
+checks=[];aliases={}
+for name,ass in a['assignments'].items():
+    assert ass['labels']==control_cfg['initial_labels']
+    evidence=[]
+    for g,t in enumerate(tasks):
+        assert t['seed']==20260925 and sorted(t['cell_ids'])==ass['groups'][g]
+        assert sorted(ids[i] for i in t['members'])==ass['groups'][g]
+        p=R/f'A_UPC_20260925_cluster{g}.npz'
+        assert sha(p)==h[p.name]
+        checks.append((name,g))
+        evidence.append(dict(cluster=g,cell_ids=ass['groups'][g],artifact=rel(p),sha256=h[p.name]))
+    aliases[name]=dict(same_partition_as='A_UPC',groups=evidence,metrics=read(R/'result.json')['metrics']['A_UPC'])
+write(O/'frozen_utility_alias.json',dict(at=datetime.now(timezone.utc).isoformat(),success=True,
+ assignments_were_sealed_before_RCTL_read=True,assignment_sha256=sha(O/'assignment_sealed.json'),RCTL_protocol=rel(R/'frozen_settings.json'),RCTL_protocol_sha256=sha(R/'frozen_settings.json'),
+ source_result=rel(R/'result.json'),source_result_sha256=sha(R/'result.json'),aliases=aliases,group_alias_checks=len(checks),
+ new_models=0,new_forward=0,raw_prediction_arrays_loaded=False,new_MAE_computation=False,all_periods_development=True,
+ Tab_score_metrics=read(R/'result.json')['metrics']['A_Tab_relation'],known_counterexample='HGB_free better on first240; six overall cell losses',
+ ledger_sha256=sha(B/'cumulative_execution_budget.json')))
+print(json.dumps(dict(aliases=len(aliases),group_checks=len(checks),new_models=0,new_MAE_computation=False)))
