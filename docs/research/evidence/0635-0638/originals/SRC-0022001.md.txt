@@ -1,0 +1,7 @@
+# 637. 예측 완성과 수치 유효성 검수의 구분
+
+누락9cell의Tab9context/1856query와HGB81fit을완료했고,5cell1856행·HGB45fit·p분류79fit은byte재사용했습니다. 실제111.5746071초(Tab103.5868039·기타7.9878032),214검사/최대차5.55e−17,source불변·worker/미정산0으로정산했습니다.635·636실패를포함한실행합196.3071837초를보존합니다.
+
+저장실행은공통유효2edge에서Tab/HGB모두UPC를유지했습니다. 다만Tab의float32 knot에서48회bisection뒤에도1e−7 root잔차조건을충족못한입력이많고,HGBfloat64에서는128행모두유효였습니다. 기존worker의bounded값/집계검수는이정밀도비대칭까지검수한것이아닙니다. 이결과를곧바로Tab의소속효용기각으로쓰지않습니다.
+
+다음[638](638_bounded_relation_precision_plan.md)은저장출력만으로동일식의float64해와독립piecewise-linear해를대조합니다. 모델·threshold·자료를바꾸지않으며새forward0입니다. 모든완료예측과정산을보존하고과학적판정만638검수후확정합니다.

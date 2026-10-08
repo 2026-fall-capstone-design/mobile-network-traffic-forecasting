@@ -1,0 +1,116 @@
+"""Audit frozen partition, original training, and cached forecasts without model calls."""
+import ast,json,hashlib,math,time
+from pathlib import Path
+from datetime import datetime,timezone
+from recovery_io_271 import write
+read=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+
+def verify(B,O,cfg,finish):
+    st=time.perf_counter();B,O=Path(B),Path(O)
+    assert not (O/'verification.json').exists()
+    checks=[];diffs=[];success=False;reason=None
+    def ck(n,ok):
+        checks.append(dict(name=n,passed=bool(ok)))
+        assert ok,n
+    def eq(n,a,b):
+        d=abs(float(a)-float(b));diffs.append(d);ck(n,math.isfinite(d) and d<1e-12)
+    try:
+        import numpy as np
+        ck('folder',O==B/'results/bounded_relation_RCTL_bridge_639')
+        ck('completed',finish['success'] and not (O/'result.json').exists())
+        ck('source_hashes',all(sha(B/p)==h for p,h in cfg['source_hashes'].items()))
+        auth,begun=read(O/'budget_authorization.json'),read(O/'run_started.json')
+        ck('settings',sha(O/'frozen_settings.json')==auth['settings_sha256']==begun['settings_sha256'])
+        contract=read(B/'639_execution_contract.json')
+        ck('contract',all(cfg[k]==contract[k] for k in ['tasks','cohorts','partitions','comparison_pairs']))
+        fixed=dict(seed=20260925,steps=8,channels=9,max_epochs=80,batch_size=256,patience=10,learning_rate=.001,adam_eps=1e-7,loss='MAE',train_targets=[168,839],validation_targets=[840,1007],test_targets=[1008,1487])
+        ck('protocol',all(cfg[k]==v for k,v in fixed.items()))
+        ck('caps',cfg['max_new_fits']==3 and cfg['max_new_epochs']==240 and cfg['wall_cap_seconds']==360 and cfg['verification_seconds_cap']==20 and cfg['ram_cap_bytes']==2147483648)
+        ck('independence',not cfg['RCTL_results_used_for_clustering'] and cfg['new_Tab_calls']==0 and not cfg['new_candidate_adopted'] and cfg['all_periods_development'])
+        ck('architecture',cfg['source_hashes']['rctl_torch.py']=='f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c')
+        cores=[]
+        for name in ['fixed32_downstream_reference_336.py','nonempty_RCTL_worker_581.py']:
+            t=(B/name).read_text(encoding='utf-8-sig');node=next(n for n in ast.parse(t).body if isinstance(n,ast.FunctionDef) and n.name=='train')
+            f=ast.get_source_segment(t,node);cores.append(f[f.index('            method, seed, cluster, members ='):])
+        ck('unchanged_training_core',cores[0]==cores[1] and hashlib.sha256(cores[0].encode()).hexdigest()==cfg['training_core_sha256'])
+        ck('threads',begun['math_threads']==1 and begun['interop_threads']==2 and len(begun['cpu_affinity'])<=4)
+        co=cfg['cohorts']['A']
+        with np.load(B/co['prepared_arrays'],allow_pickle=False) as d:ids,y,times,scales=(d[k] for k in ['cell_ids','y','times','scales'])
+        ck('data',ids.tolist()==co['cell_ids'] and y.shape==(16,1320) and y.dtype==np.float32 and times.tolist()==list(range(168,1488)) and np.isfinite(y).all())
+        ck('scales',scales.shape==(16,) and np.isfinite(scales).all() and (scales>0).all())
+        truth=y[:,times>=1008]
+        for p in [O/'evaluation_A.npz',B/co['evaluation_reference']]:
+            with np.load(p,allow_pickle=False) as d:
+                ck('evaluation:'+p.name,np.array_equal(d['test_y'],truth) and np.array_equal(d['cell_ids'],ids) and np.array_equal(d['scales'],scales) and np.array_equal(d['test_times'],times[times>=1008]))
+        prior=B/'results/nonempty_assignment_RCTL_581';pcfg=read(prior/'frozen_settings.json')
+        for m in ['A_UPC','A_HGB_free']:ck('baseline_frozen:'+m,cfg['partitions'][m]==pcfg['partitions'][m])
+        select=read(B/'results/bounded_relation_precision_638/result.json')
+        for name in ['Tab','HGB']:
+            ck('new_partition_frozen:'+name,cfg['partitions']['A_'+name+'_relation']==select['assignments'][name]['labels'])
+            ck('group_cell_ids:'+name,[[int(ids[i]) for i,v in enumerate(cfg['partitions']['A_'+name+'_relation']) if v==g] for g in range(4)]==select['assignments'][name]['groups'])
+        ck('selected_before_RCTL',datetime.fromisoformat(select['at'])<datetime.fromisoformat(begun['at']))
+        tasks=cfg['tasks'];records=read(O/'fit_results.json');state=finish['state'];methods=list(cfg['partitions'])
+        ck('counts',len(tasks)==len(records)==16 and records==state['results'] and state['fits_started']==state['fits_completed']==3 and state['active_task'] is None and sum(r['reused'] for r in records)==13)
+        ck('resources',0<finish['wall_seconds']<=360 and 0<state['peak_rss_bytes']<=cfg['ram_cap_bytes'])
+        ck('method_task_order',len(methods)==4 and [(t['method'],t['cluster']) for t in tasks]==[(m,g) for m in methods for g in range(4)])
+        preds={m:np.empty_like(truth) for m in methods};seen={m:[] for m in methods};epochs=0;batches=0;newgroups=[];histories=[];hashes={}
+        for t,r in zip(tasks,records):
+            m,g,members=t['method'],t['cluster'],t['members'];stem=f'{m}_20260925_cluster{g}';p=O/(stem+'.npz')
+            ck(stem+':members',t['cohort']=='A' and members==[i for i,a in enumerate(cfg['partitions'][m]) if a==g] and t['cell_ids']==ids[members].tolist() and all(r[k]==t[k] for k in ['method','seed','cluster','members']))
+            with np.load(p,allow_pickle=False) as d:
+                pred=d['prediction'];ck(stem+':values',d['members'].tolist()==members and d['cell_ids'].tolist()==ids[members].tolist() and pred.shape==(len(members),480) and pred.dtype==np.float32 and np.isfinite(pred).all() and np.array_equal(d['y'],truth[members]))
+                preds[m][members]=pred
+            seen[m]+=members;hashes[p.name]=sha(p)
+            if t['reuse']:
+                rec=t['reuse']['record'];a=rec['artifacts'];meta=rec['fit_metadata']
+                ck(stem+':byte_reuse',r['reused'] and p.read_bytes()==(B/a['.npz']['relative_path']).read_bytes() and p.read_bytes()==(B/rec['completed_bridge_npz']).read_bytes())
+                ck(stem+':no_new_fit',all(not (O/(stem+s)).exists() for s in ['.pt','_history.json','_resume.pt']))
+                for ext,f in a.items():ck(stem+':source'+ext,sha(B/f['relative_path'])==f['sha256']==cfg['source_hashes'][f['relative_path']])
+                ck(stem+':source_settings',sha(B/rec['source_settings'])==rec['source_settings_sha256'])
+                old=read(B/rec['source_settings']);ck(stem+':same_protocol',all(old[k]==v for k,v in fixed.items() if k in old))
+                hist=read(B/a['_history.json']['relative_path'])
+            else:
+                ck(stem+':new_only',m=='A_Tab_relation' and g in [1,2,3] and not r['reused'])
+                newgroups.append(tuple(t['cell_ids']));meta=r;hist=read(O/(stem+'_history.json'))
+                for ext in ['.pt','_history.json','_resume.pt']:
+                    f=O/(stem+ext);ck(stem+':saved'+ext,f.stat().st_size>0);hashes[f.name]=sha(f)
+                epochs+=len(hist);batches+=math.ceil(len(members)*672/256)*len(hist)
+            ck(stem+':epochs',1<=len(hist)==meta['epochs_run']<=80 and [h['epoch'] for h in hist]==list(range(1,len(hist)+1)))
+            best=math.inf;bestepoch=0;stale=0
+            for i,h in enumerate(hist):
+                ck(stem+':finite'+str(i),math.isfinite(h['train_mae']) and math.isfinite(h['val_mae']))
+                if h['val_mae']<best:best,bestepoch,stale=h['val_mae'],h['epoch'],0
+                else:stale+=1
+                ck(stem+':patience'+str(i),stale<10 or i==len(hist)-1)
+            eq(stem+':best',best,meta['best_val_mae'])
+            ck(stem+':stop',bestepoch==meta['best_epoch'] and (stale>=10 or len(hist)==80) and meta['stop_reason']==('validation_patience' if stale>=10 else 'epoch_cap'))
+            histories.append(dict(method=m,cluster=g,reused=bool(t['reuse']),epochs=len(hist),original_fit_seconds=meta['fit_seconds']))
+        ck('unique_new',len(newgroups)==len(set(newgroups))==3)
+        ck('coverage',all(sorted(v)==list(range(16)) for v in seen.values()))
+        ck('epoch_accounting',epochs==state['epochs_started']==state['epochs_completed']<=240 and batches==state['optimizer_batches'])
+        metrics={};changes={};branches={}
+        for m in methods:
+            metrics[m]={}
+            for tag,lo,hi in [('first240',0,240),('last240',240,480),('all480',0,480)]:
+                per=[math.fsum(abs(float(a)-float(b)) for a,b in zip(preds[m][i,lo:hi],truth[i,lo:hi]))/(hi-lo) for i in range(16)]
+                mean=math.fsum(per)/16;eq(m+':'+tag,mean,np.abs(preds[m][:,lo:hi].astype(np.float64)-truth[:,lo:hi].astype(np.float64)).mean())
+                metrics[m][tag]=dict(mean_cell_MAE=mean,per_cell_MAE=per,mean_cell_raw_MAE=math.fsum(float(scales[i])*per[i] for i in range(16))/16)
+        ck('comparison_count',len(cfg['comparison_pairs'])==4)
+        for key,a,b in cfg['comparison_pairs']:
+            changes[key]={}
+            for tag in ['first240','last240','all480']:
+                x,y=metrics[a][tag],metrics[b][tag];den=y['mean_cell_MAE'];delta=x['mean_cell_MAE']-den
+                per=[u-v for u,v in zip(x['per_cell_MAE'],y['per_cell_MAE'])];eq(key+':'+tag,delta,math.fsum(per)/16)
+                changes[key][tag]=dict(delta_MAE=delta,relative_delta=delta/den,per_cell_delta_MAE=per,improved_cells=sum(v<0 for v in per),worsened_cells=sum(v>0 for v in per),equal_cells=sum(v==0 for v in per))
+            rel=changes[key]['all480']['relative_delta'];front=changes[key]['first240']['delta_MAE'];back=changes[key]['last240']['delta_MAE']
+            branches[key]='stable_gain' if rel<=-.01 and front<0 and back<0 else 'stable_harm' if rel>=.01 and front>0 and back>0 else 'mixed_or_small'
+        old_result=read(prior/'result.json')
+        for m in ['A_UPC','A_HGB_free']:
+            for tag in ['first240','last240','all480']:eq('old_metric:'+m+tag,metrics[m][tag]['mean_cell_MAE'],old_result['metrics'][m][tag]['mean_cell_MAE'])
+        write(O/'result.json',dict(at=datetime.now(timezone.utc).isoformat(),success=True,metrics=metrics,changes=changes,branches=branches,partitions=cfg['partitions'],cohorts=cfg['cohorts'],histories=histories,new_fits=3,reused_tasks=13,new_epochs=epochs,all_periods_development=True,new_Tab_calls=0,new_candidate_adopted=False,model_forward_calls_for_verification=0))
+        write(O/'prediction_hashes.json',hashes);success=True
+    except Exception as exc:reason=repr(exc)
+    seconds=time.perf_counter()-st
+    write(O/'verification.json',dict(at=datetime.now(timezone.utc).isoformat(),success=success,reason=reason,seconds=seconds,checks=checks,independent_max_difference=max(diffs,default=0),new_models=0,new_predictions=0))
+    return dict(success=success,reason=reason,seconds=seconds)

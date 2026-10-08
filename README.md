@@ -88,6 +88,7 @@ docs/              # 실험 규약과 팀 기록
 | 브랜치 생성, 검사, PR 작성·병합 | [협업 안내](CONTRIBUTING.md) |
 | 입력 데이터 준비, 예제 재생성 | [데이터 안내](data/README.md) |
 | 실험 조건 설정, 모델 비교, 지표 해석 | [공통 실험 규약](docs/research-protocol.md) |
+| TabICL의 과거 시도·실패·정정과 재사용 근거 확인 | [연구기록 아카이브](docs/research/README.md) |
 | 예측 결과를 웹에 연결 | [웹 데이터 규약](docs/web-data-contract.md) |
 | 화면 수정, 로컬 확인, 배포 | [웹 개발 안내](web/README.md) |
 | 역할 분담, 실험·회의 결과 기록 | [진행 기록 안내](docs/progress/README.md) |

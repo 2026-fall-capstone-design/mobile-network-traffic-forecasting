@@ -1,0 +1,60 @@
+"""Torch port of GECOS public main.py RCTL, preserving its layer/skip semantics.
+
+Public code uses dilation=1,2,4,6,8,10. Intermediate Conv1D projections whose
+outputs are disconnected from the public Keras final output are not parameters.
+The extra Torch recurrent bias is fixed at zero to match Keras' single bias.
+"""
+import torch
+from torch import nn
+import torch.nn.functional as F
+
+class CausalConv(nn.Conv1d):
+    def forward(self,x):
+        return super().forward(F.pad(x,((self.kernel_size[0]-1)*self.dilation[0],0)))
+
+class Block(nn.Module):
+    def __init__(self,inc,c,dilation):
+        super().__init__()
+        self.c1=CausalConv(inc,c,3,dilation=dilation)
+        self.b1=nn.BatchNorm1d(c,eps=.001,momentum=.01)
+        self.c2=CausalConv(c,c,3,dilation=dilation)
+        self.b2=nn.BatchNorm1d(c,eps=.001,momentum=.01)
+        self.drop=nn.Dropout(.05)
+        self.s1=nn.Conv1d(inc,c,1);self.s2=nn.Conv1d(inc,c,1)
+        self.lstm=nn.LSTM(c,c,batch_first=True)
+        self.lstm.bias_hh_l0.requires_grad_(False)
+    def forward(self,x):
+        z=self.drop(torch.relu(self.b1(self.c1(x))))
+        z=self.drop(torch.relu(self.b2(self.c2(z))))+self.s1(x)
+        z=self.lstm(z.transpose(1,2))[0].transpose(1,2)
+        return z+self.s2(x)
+
+class RCTL(nn.Module):
+    def __init__(self,steps=8,channels=1):
+        super().__init__();self.steps=steps;self.channels=channels
+        fs=[16,32,64,64,32,16];incs=[channels]+fs[:-1]
+        self.blocks=nn.ModuleList([Block(a,b,1 if i==0 else 2*i) for i,(a,b) in enumerate(zip(incs,fs))])
+        self.projections=nn.ModuleList([nn.Conv1d(c,c,1) for c in fs[:3]])
+        self.final_shortcut=nn.Conv1d(channels,16,1)
+        self.dense=nn.Linear(steps*16,1)
+        self.initialize()
+    def initialize(self):
+        for m in self.modules():
+            if isinstance(m,(nn.Conv1d,nn.Linear)):
+                nn.init.xavier_uniform_(m.weight);nn.init.zeros_(m.bias)
+            if isinstance(m,nn.LSTM):
+                nn.init.xavier_uniform_(m.weight_ih_l0);nn.init.orthogonal_(m.weight_hh_l0)
+                nn.init.zeros_(m.bias_ih_l0);nn.init.zeros_(m.bias_hh_l0)
+                with torch.no_grad():m.bias_ih_l0[m.hidden_size:2*m.hidden_size]=1
+    def forward(self,inputs):
+        x=inputs.transpose(1,2);root=x;stored=[]
+        for i,block in enumerate(self.blocks):
+            b=block(x)
+            if i<3:stored.append(self.projections[i](b))
+            if i==2:x=stored[2]+b
+            elif i==3:x=stored[2]+b
+            elif i==4:x=stored[1]+b
+            elif i==5:x=stored[0]+b
+            else:x=b
+        x=x+self.final_shortcut(root)
+        return self.dense(x.transpose(1,2).reshape(len(x),-1)).squeeze(-1)

@@ -1,0 +1,474 @@
+{
+  "cell_ids": [
+    3737,
+    3745,
+    3753,
+    3765,
+    4537,
+    4545,
+    4553,
+    4565,
+    5337,
+    5345,
+    5353,
+    5365,
+    6137,
+    6145,
+    6153,
+    6165
+  ],
+  "max_epochs": 80,
+  "batch_size": 256,
+  "patience": 10,
+  "learning_rate": 0.001,
+  "adam_eps": 1e-07,
+  "loss": "MAE",
+  "train_targets": [
+    168,
+    839
+  ],
+  "validation_targets": [
+    840,
+    1007
+  ],
+  "test_targets": [
+    1008,
+    1487
+  ],
+  "seed": 20260925,
+  "steps": 8,
+  "channels": 9,
+  "ram_cap_bytes": 2147483648,
+  "torch_interop_threads": 2,
+  "architecture": "unchanged rctl_torch.RCTL",
+  "prepared_arrays": "results/self_only_reference_160/prepared_arrays.npz",
+  "at": "2026-09-30T11:04:12.153394+00:00",
+  "max_new_fits": 2,
+  "max_new_epochs": 160,
+  "wall_cap_seconds": 270,
+  "threads": 1,
+  "verification_seconds_cap": 5,
+  "partitions": {
+    "P_profile_single_move": [
+      3,
+      1,
+      0,
+      2,
+      2,
+      2,
+      3,
+      2,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      3,
+      0
+    ],
+    "U_small_UPC": [
+      3,
+      1,
+      0,
+      2,
+      2,
+      2,
+      3,
+      2,
+      0,
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      0
+    ]
+  },
+  "tasks": [
+    {
+      "method": "P_profile_single_move",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        2,
+        8,
+        15
+      ],
+      "cell_ids": [
+        3753,
+        5337,
+        6165
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_rctl_306",
+          "members": [
+            2,
+            8,
+            15
+          ],
+          "cell_ids": [
+            3753,
+            5337,
+            6165
+          ],
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_rctl_recovery_307/U_small_UPC_20260925_cluster0.npz",
+              "sha256": "22f5e7c4dcfe91635f8fbb8cbdb5f2d0bae8bf7c95d7aca4dff49966117e6c03"
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.pt",
+              "sha256": "f7ff65b3c071d560ea744c8c7487c44b4aef396e72ca27c3e811d083fa063679"
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0_history.json",
+              "sha256": "cef30454927ed80031d0a67da5cfcd44942cd1e02b04e1c8209ce0a814861e9d"
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "P_profile_single_move",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        1,
+        9
+      ],
+      "cell_ids": [
+        3745,
+        5345
+      ],
+      "reuse": null
+    },
+    {
+      "method": "P_profile_single_move",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        3,
+        4,
+        5,
+        7,
+        10,
+        11,
+        12,
+        13
+      ],
+      "cell_ids": [
+        3765,
+        4537,
+        4545,
+        4565,
+        5353,
+        5365,
+        6137,
+        6145
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_rctl_306",
+          "members": [
+            3,
+            4,
+            5,
+            7,
+            10,
+            11,
+            12,
+            13
+          ],
+          "cell_ids": [
+            3765,
+            4537,
+            4545,
+            4565,
+            5353,
+            5365,
+            6137,
+            6145
+          ],
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_rctl_recovery_307/U_small_UPC_20260925_cluster2.npz",
+              "sha256": "76e7dcc323d36c8493eea6b8b0b34f73feedd4426770dcd220b8bb7970a034fd"
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.pt",
+              "sha256": "2544a8e4469186f3868839fe184dd4ba0bf4b7c696054da9f13f642a9399da1d"
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2_history.json",
+              "sha256": "e9c2248bfe12a7e82e0b17c0205e3535740a2a48fb0b1d404a0abc12e1587edb"
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "P_profile_single_move",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        0,
+        6,
+        14
+      ],
+      "cell_ids": [
+        3737,
+        4553,
+        6153
+      ],
+      "reuse": null
+    },
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        2,
+        8,
+        15
+      ],
+      "cell_ids": [
+        3753,
+        5337,
+        6165
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_rctl_306",
+          "members": [
+            2,
+            8,
+            15
+          ],
+          "cell_ids": [
+            3753,
+            5337,
+            6165
+          ],
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_rctl_recovery_307/U_small_UPC_20260925_cluster0.npz",
+              "sha256": "22f5e7c4dcfe91635f8fbb8cbdb5f2d0bae8bf7c95d7aca4dff49966117e6c03"
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.pt",
+              "sha256": "f7ff65b3c071d560ea744c8c7487c44b4aef396e72ca27c3e811d083fa063679"
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0_history.json",
+              "sha256": "cef30454927ed80031d0a67da5cfcd44942cd1e02b04e1c8209ce0a814861e9d"
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        1,
+        9,
+        14
+      ],
+      "cell_ids": [
+        3745,
+        5345,
+        6153
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_rctl_306",
+          "members": [
+            1,
+            9,
+            14
+          ],
+          "cell_ids": [
+            3745,
+            5345,
+            6153
+          ],
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_rctl_recovery_307/U_small_UPC_20260925_cluster1.npz",
+              "sha256": "e2c87eb651e83467140f6547425e8a7deb35bdae9e2a5b1f94fba32c96ead5e9"
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1.pt",
+              "sha256": "5d0f045ede4f2254e579cc08520297d55aea7ac01268bc53af65dddbcd7f985a"
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1_history.json",
+              "sha256": "58f7046aa37c2fcaab23937e70a9a999dd937826dcb3f1fff358c74ef7224fcf"
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        3,
+        4,
+        5,
+        7,
+        10,
+        11,
+        12,
+        13
+      ],
+      "cell_ids": [
+        3765,
+        4537,
+        4545,
+        4565,
+        5353,
+        5365,
+        6137,
+        6145
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_rctl_306",
+          "members": [
+            3,
+            4,
+            5,
+            7,
+            10,
+            11,
+            12,
+            13
+          ],
+          "cell_ids": [
+            3765,
+            4537,
+            4545,
+            4565,
+            5353,
+            5365,
+            6137,
+            6145
+          ],
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_rctl_recovery_307/U_small_UPC_20260925_cluster2.npz",
+              "sha256": "76e7dcc323d36c8493eea6b8b0b34f73feedd4426770dcd220b8bb7970a034fd"
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.pt",
+              "sha256": "2544a8e4469186f3868839fe184dd4ba0bf4b7c696054da9f13f642a9399da1d"
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2_history.json",
+              "sha256": "e9c2248bfe12a7e82e0b17c0205e3535740a2a48fb0b1d404a0abc12e1587edb"
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "U_small_UPC",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        0,
+        6
+      ],
+      "cell_ids": [
+        3737,
+        4553
+      ],
+      "reuse": {
+        "record": {
+          "stage": "frozen_profile_rctl_306",
+          "members": [
+            0,
+            6
+          ],
+          "cell_ids": [
+            3737,
+            4553
+          ],
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/frozen_profile_rctl_recovery_307/U_small_UPC_20260925_cluster3.npz",
+              "sha256": "223d30d3adb910d70efb2a4b95431c8d0ac2d50ff507abdf67c9229084212776"
+            },
+            ".pt": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3.pt",
+              "sha256": "c5314c66a6bfe1ae9334c33ea190039dff9bf9013637fe702e6486b51dc1391a"
+            },
+            "_history.json": {
+              "relative_path": "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3_history.json",
+              "sha256": "ee1b625573fff6342f7f7d53d25b4964c83afba12023dc6453067aac5abc305a"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "Tab_calls": 0,
+  "RCTL_results_used_for_clustering": false,
+  "data_status": "all previously used development periods",
+  "selection_rule": "265 fixed profile-only single move; no outcome-driven membership/seed/period changes",
+  "primary_metric": "P minus U equal-cell normalized480-hour MAE",
+  "cost_basis": {
+    "train_batches": 1120,
+    "validation512_batches": 160,
+    "final512_batches": 5,
+    "equivalent256_batches": 1450,
+    "seconds_per256_batch": 0.08322910000060801,
+    "estimated_seconds": 120.6821950008816,
+    "multiplier": 1.5,
+    "preparation_seconds": 60,
+    "rounded_wall_cap": 270
+  },
+  "source_hashes": {
+    "387_frozen_profile_comparator_contract_plan.md": "3f03b2753ae2bdbf4850ead26c1859abe8b78340b1c80cb0d2a54d55ab3b63d2",
+    "388_frozen_profile_single_move_RCTL_plan.md": "a677139985d034ed2f6fac587d7a13c26c354a07a3145c44fc136d0c7c1bada0",
+    "profile_comparator_contract_387.py": "401ca78a474aead12a1478a0d1c93cc7bdb246898a6914adbadf4a631909b3ed",
+    "265_profile_move_control_findings.md": "7a3eaf1995989b7801256725c9bf6ed9a86910bcc608e3dd994fda84bccef1a5",
+    "378_frozen_selection_RCTL_reuse_findings.md": "d5dfb4d04e9314b748f1ba64320b250995eec40ad068b678fac78abeddc935f3",
+    "results/profile_move_control_265/result.json": "4ddfdd1f36f232ee86d6400412bb436a405091c7d84c5bfeba5e9ca7e5010dd8",
+    "results/frozen_T_contract_322/contract.json": "b6079710b961868ad91b1f14f84722b42e7b8c718ef17bec1318642c6ff75cac",
+    "results/training_exposure_evidence_368/result.json": "619433624301fef24628f267aae2fc71e5a98758dd3d0e057f9108193b8b1997",
+    "results/training_exposure_evidence_368/verification.json": "6301b47e750258ac959ac34e4c2d9627bf8c8baf95e87c0659d5d31afca93835",
+    "results/paired_day_rank_variation_386/archive_complete.json": "078b5344b23cd36b74fe30f7f29a6fd8e59b6e1a05f927bdfba911d845d8726d",
+    "frozen_T_RCTL_recovery_325.py": "4dbd0c838337a64fa51cb34701a899cfd181962d35112f987c68286ec450f702",
+    "results/frozen_profile_rctl_306/frozen_settings.json": "ba67c14fdf221c651dd7ee5275b4393aa65ae2d18ee8f764d6f00591d76e75ae",
+    "results/frozen_profile_rctl_306/fit_results.json": "8e4ce45d9fd0d5a75e5961a329317282fbb5b7a2a5450dff7ac3d6e12872e8a6",
+    "results/frozen_T_rctl_recovery_325/verification.json": "de0c5bfa07a8092a86e78c5d73a6e519a5d1d7054f78c02d87729d7368e9d03a",
+    "results/frozen_adaptive_paths_rctl_367/verification.json": "c6bd599d3441af2933140e5659142abc7407e379563a07d74731789925221990",
+    "results/self_only_reference_160/prepared_arrays.npz": "ff4a1e355afc4fca4587ce3fd322b6c7732e32532600c4af10d4cd29917cd563",
+    "rctl_torch.py": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+    "results/rctl_pilot/evaluation_data.npz": "d451810ecccf0b1d9d083132816510ef889c089cd5693d9ab061c1badbf7ff7b",
+    "results/RCTL_runtime_probe_324/result.json": "a912bfe6c2bbb480e3e2a6177bf0098c2eb38b4748ac857c2426370faef9837b",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0.pt": "f7ff65b3c071d560ea744c8c7487c44b4aef396e72ca27c3e811d083fa063679",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster0_history.json": "cef30454927ed80031d0a67da5cfcd44942cd1e02b04e1c8209ce0a814861e9d",
+    "results/frozen_profile_rctl_recovery_307/U_small_UPC_20260925_cluster0.npz": "22f5e7c4dcfe91635f8fbb8cbdb5f2d0bae8bf7c95d7aca4dff49966117e6c03",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2.pt": "2544a8e4469186f3868839fe184dd4ba0bf4b7c696054da9f13f642a9399da1d",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster2_history.json": "e9c2248bfe12a7e82e0b17c0205e3535740a2a48fb0b1d404a0abc12e1587edb",
+    "results/frozen_profile_rctl_recovery_307/U_small_UPC_20260925_cluster2.npz": "76e7dcc323d36c8493eea6b8b0b34f73feedd4426770dcd220b8bb7970a034fd",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1.pt": "5d0f045ede4f2254e579cc08520297d55aea7ac01268bc53af65dddbcd7f985a",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster1_history.json": "58f7046aa37c2fcaab23937e70a9a999dd937826dcb3f1fff358c74ef7224fcf",
+    "results/frozen_profile_rctl_recovery_307/U_small_UPC_20260925_cluster1.npz": "e2c87eb651e83467140f6547425e8a7deb35bdae9e2a5b1f94fba32c96ead5e9",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3.pt": "c5314c66a6bfe1ae9334c33ea190039dff9bf9013637fe702e6486b51dc1391a",
+    "results/frozen_profile_rctl_306/U_small_UPC_20260925_cluster3_history.json": "ee1b625573fff6342f7f7d53d25b4964c83afba12023dc6453067aac5abc305a",
+    "results/frozen_profile_rctl_recovery_307/U_small_UPC_20260925_cluster3.npz": "223d30d3adb910d70efb2a4b95431c8d0ac2d50ff507abdf67c9229084212776",
+    "frozen_profile_single_RCTL_388.py": "f6334e9d775909a868efa402377ef5880c7ed347c8027245017d9bf392dcd3d0",
+    "verify_profile_single_RCTL_388.py": "66ecc51dc69288532407f7f627b7817061727b4c0dc5f03b98d7dfadaa61a532",
+    "results/frozen_profile_comparator_contract_387/contract.json": "37b878a4727e6c20f0de427565dfb6a72c71b099eeadb43b2d5917d56b9e8b4a"
+  },
+  "stage": "frozen_profile_single_RCTL_388"
+}

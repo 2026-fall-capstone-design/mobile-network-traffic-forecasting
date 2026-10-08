@@ -1,0 +1,89 @@
+"""Freeze639 metadata, exact group provenance, and unchanged RCTL training core."""
+import ast,copy,hashlib,json,time
+from pathlib import Path
+from datetime import datetime,timezone
+from recovery_io_271 import write
+B=Path(__file__).resolve().parent;O=B/'results/bounded_relation_RCTL_bridge_639'
+read=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+now=lambda:datetime.now(timezone.utc).isoformat()
+assert not O.exists() and not (B/'639_execution_contract.json').exists()
+st=time.perf_counter();checked={}
+def reg(p):checked[p.relative_to(B).as_posix()]=sha(p);return sha(p)
+def artifact(p):return dict(relative_path=p.relative_to(B).as_posix(),sha256=reg(p),bytes=p.stat().st_size)
+s=read(B/'research_state.json');assert s['next_action']['id']=='639_bounded_relation_RCTL_bridge' and s['in_flight_execution'] is None
+old=B/'results/nonempty_assignment_RCTL_581';cfg=read(old/'frozen_settings.json');fits=read(old/'fit_results.json')
+sel=B/'results/bounded_relation_precision_638';r=read(sel/'result.json')
+assert r['success'] and r['branch']=='distinct_Tab_assignment' and read(sel/'settled.json')['success']
+assert read(old/'settled.json')['success']
+for p in [old/n for n in ['frozen_settings.json','fit_results.json','verification.json','settled.json','result.json']]+[sel/n for n in ['result.json','assignment_sealed.json','verification.json','settled.json']]:reg(p)
+pk=['max_epochs','steps','channels','batch_size','patience','learning_rate','adam_eps','seed','train_targets','validation_targets','test_targets','loss','architecture']
+protocol={k:cfg[k] for k in pk};co=cfg['cohorts']['A'];ids=co['cell_ids']
+parts={m:cfg['partitions'][m] for m in ['A_UPC','A_HGB_free']}
+parts.update(A_HGB_relation=r['assignments']['HGB']['labels'],A_Tab_relation=r['assignments']['Tab']['labels'])
+special={(9,14):('frozen_T_rctl_recovery_325','T_fixed_predictive',1),(0,1,6):('frozen_adaptive_paths_rctl_367','Tab_path',3)}
+tasks=[]
+def core(p):
+ txt=p.read_text(encoding='utf-8-sig');node=next(n for n in ast.parse(txt).body if isinstance(n,ast.FunctionDef) and n.name=='train');f=ast.get_source_segment(txt,node)
+ return f[f.index('            method, seed, cluster, members ='):]
+expected=core(B/'fixed32_downstream_reference_336.py')
+assert core(B/'nonempty_RCTL_worker_581.py')==core(B/'frozen_T_RCTL_recovery_325.py')==expected
+assert hashlib.sha256(expected.encode()).hexdigest()==cfg['training_core_sha256']
+for method,labels in parts.items():
+ assert len(labels)==16 and set(labels)=={0,1,2,3}
+ for group in range(4):
+  members=[i for i,x in enumerate(labels) if x==group];rec=None
+  matches=[(t,f) for t,f in zip(cfg['tasks'],fits) if t['cohort']=='A' and t['members']==members and t['seed']==protocol['seed']]
+  if matches:
+   t,f=matches[0];stem=f"{t['method']}_{t['seed']}_cluster{t['cluster']}";copied=old/(stem+'.npz');reg(copied)
+   if t['reuse']:rec=copy.deepcopy(t['reuse']['record'])
+   else:rec=dict(stage=old.name,fit_metadata=f,artifacts={e:artifact(old/(stem+e)) for e in ['.npz','.pt','_history.json']},source_settings='results/'+old.name+'/frozen_settings.json',source_settings_sha256=sha(old/'frozen_settings.json'))
+   rec['completed_bridge_npz']=copied.relative_to(B).as_posix()
+  elif tuple(members) in special:
+   stage,m,g=special[tuple(members)];d=B/'results'/stage;sc=read(d/'frozen_settings.json')
+   assert read(d/'run_finished.json')['success']
+   assert sc['cell_ids']==ids and sc['prepared_arrays']==co['prepared_arrays'] and sc['source_hashes'][co['prepared_arrays']]==sha(B/co['prepared_arrays'])
+   assert sc['source_hashes']['rctl_torch.py']==sha(B/'rctl_torch.py')
+   reg(d/'run_finished.json');reg(d/'fit_results.json')
+   f=next(x for x in read(d/'fit_results.json') if x['method']==m and x['cluster']==g and x['seed']==protocol['seed'])
+   stem=f'{m}_20260925_cluster{g}';p=d/(stem+'.npz')
+   rec=dict(stage=stage,fit_metadata=f,artifacts={e:artifact(d/(stem+e)) for e in ['.npz','.pt','_history.json']},source_settings='results/'+stage+'/frozen_settings.json',source_settings_sha256=reg(d/'frozen_settings.json'),completed_bridge_npz=p.relative_to(B).as_posix())
+  if rec:
+   source=B/rec['source_settings'];sc=read(source);reg(source)
+   assert all(sc[k]==v for k,v in protocol.items() if k in sc)
+   assert rec['fit_metadata']['members']==members and rec['fit_metadata']['seed']==protocol['seed']
+   for a in rec['artifacts'].values():
+    p=B/a['relative_path'];assert reg(p)==a['sha256'] and p.stat().st_size==a['bytes']
+   assert sha(B/rec['completed_bridge_npz'])==rec['artifacts']['.npz']['sha256']
+  tasks.append(dict(cohort='A',method=method,seed=protocol['seed'],cluster=group,members=members,cell_ids=[ids[i] for i in members],reuse=None if rec is None else dict(record=rec)))
+new=[t for t in tasks if not t['reuse']]
+assert len(tasks)==16 and len(new)==3
+assert [t['cell_ids'] for t in new]==[[5345],[4537,4545,4565,5353,5365,6137,6145],[3737,3745,3765,4553,6153]]
+for name in [co['prepared_arrays'],co['evaluation_reference'],'rctl_torch.py','fixed32_downstream_reference_336.py','nonempty_RCTL_worker_581.py','frozen_T_RCTL_recovery_325.py','frozen_adaptive_paths_rctl_367.py','refreshed_HGB_RCTL_bridge_632.py','verify_refreshed_HGB_RCTL_632.py']:reg(B/name)
+
+runner=(B/'refreshed_HGB_RCTL_bridge_632.py').read_text(encoding='utf-8-sig')
+for a,b in [('refreshed_HGB_RCTL_bridge_632','bounded_relation_RCTL_bridge_639'),('632_refreshed_HGB_RCTL_bridge','639_bounded_relation_RCTL_bridge'),('632_execution_contract','639_execution_contract'),('build_refreshed_HGB_RCTL_632','build_bounded_relation_RCTL_639'),('verify_refreshed_HGB_RCTL_632','verify_bounded_relation_RCTL_639'),('632: one frozen B partition','639: frozen conditional-relation A partition'),('631에서 소속을 먼저 고정한 B의 한 번 갱신. 완료13task 재사용/누락3group만 동일 RCTL로 확인. 소속 선택에 RCTL 사용 없음.','638에서 봉인한 관계 graph 소속. 완료13task 재사용/누락3group만 동일 RCTL로 확인. 소속 선택에 RCTL 사용 없음.'),('native_goal_continuation','user_handoff_application_and_research_continuation')]:
+ assert a in runner,a;runner=runner.replace(a,b)
+ast.parse(runner);(B/'bounded_relation_RCTL_bridge_639.py').write_text(runner,encoding='utf-8')
+
+ver=(B/'verify_refreshed_HGB_RCTL_632.py').read_text(encoding='utf-8-sig')
+replacements=[('refreshed_HGB_RCTL_bridge_632','bounded_relation_RCTL_bridge_639'),('632_execution_contract','639_execution_contract'),("co=cfg['cohorts']['B']","co=cfg['cohorts']['A']"),('evaluation_B.npz','evaluation_A.npz'),("t['cohort']=='B'","t['cohort']=='A'"),('B_UPC','A_UPC'),('B_Tab_free','A_unused'),('B_HGB_free','A_HGB_free'),('B_HGB_refreshed','A_Tab_relation'),("['A_UPC','A_unused','A_HGB_free']","['A_UPC','A_HGB_free']"),("cfg['wall_cap_seconds']==480","cfg['wall_cap_seconds']==360"),("finish['wall_seconds']<=480","finish['wall_seconds']<=360"),("g in [0,1,3]","g in [1,2,3]"),("len(cfg['comparison_pairs'])==3","len(cfg['comparison_pairs'])==4")]
+for a,b in replacements:
+ assert a in ver,a;ver=ver.replace(a,b)
+start=ver.index("        select=read(B/'results/refreshed_HGB_assignment_631/result.json')")
+end=ver.index("        tasks=cfg['tasks']",start)
+ver=ver[:start]+'''        select=read(B/'results/bounded_relation_precision_638/result.json')
+        for name in ['Tab','HGB']:
+            ck('new_partition_frozen:'+name,cfg['partitions']['A_'+name+'_relation']==select['assignments'][name]['labels'])
+            ck('group_cell_ids:'+name,[[int(ids[i]) for i,v in enumerate(cfg['partitions']['A_'+name+'_relation']) if v==g] for g in range(4)]==select['assignments'][name]['groups'])
+        ck('selected_before_RCTL',datetime.fromisoformat(select['at'])<datetime.fromisoformat(begun['at']))
+'''+ver[end:]
+assert 'A_unused' not in ver and 'refreshed_HGB_assignment_631' not in ver
+ast.parse(ver);(B/'verify_bounded_relation_RCTL_639.py').write_text(ver,encoding='utf-8')
+contract=dict(**protocol,success=True,cohorts={'A':co},tasks=tasks,partitions=parts,
+ comparison_pairs=[[f'A_Tab_relation_minus_{m}','A_Tab_relation',m] for m in ['A_UPC','A_HGB_relation','A_HGB_free']]+[['A_HGB_relation_minus_UPC','A_HGB_relation','A_UPC']],
+ source_hashes=checked,max_new_fits=3,max_new_epochs=240,wall_cap_seconds=360,verification_seconds_cap=20,ram_cap_bytes=2147483648,threads=1,torch_interop_threads=2,reused_fits=13,
+ RCTL_results_used_for_clustering=False,new_Tab_calls=0,new_candidate_adopted=False,all_periods_development=True,training_core_unchanged=True,training_core_sha256=cfg['training_core_sha256'],
+ cost_basis='639 plan:3 missing groups/13cell;581 7cell40epochs54.713s and11cell61epoch128.328s -> roughly199s at80epoch;360RCTL+20QA cap',previous_turn_classification='progress:638 sealed distinct assignments and numeric verification/settlement',static_preparation_seconds=time.perf_counter()-st)
+write(B/'639_execution_contract.json',contract)
+print(json.dumps(dict(contract=True,new_fits=3,reused_tasks=13,training_core_unchanged=True,static_seconds=contract['static_preparation_seconds'])))
