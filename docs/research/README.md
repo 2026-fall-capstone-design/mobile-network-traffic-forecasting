@@ -11,6 +11,7 @@
 | [04·06·07 B2 손실표와 RCTL](records/0004-0007-b2-observed-risk.md) | 실제 query의 위험함수, 600쌍 진단, 29fit 결과와 empirical 대비 악화 |
 | [05 가까운 다섯 방법 비교](records/0005-closest-methods-audit.md) | HCP·Population-HCP·RMB-CLE·ETAP·posterior projection의 정보·결정 차이와 인용 정정 |
 | [05 네트워크·시계열 비교](records/0005-network-timeseries-audit.md) | UPC·ST-AR·TabPFN-TS·ISP TTM·MobiGPT·CoT·다변량 TabPFN·Traffic Matrix·global/local과 실제 초기 입력·random/global 대조 연결 |
+| [05 공식 TabICL·초기 호출](records/0005-official-tabicl-audit.md) | 고정 코드·checkpoint,999/9/129분위수,fit·cache·mean/median과 기존 B1/B2 출력 대조 |
 | [08·09 유한표본 공유 효과](records/0008-0009-finite-sample-pooling.md) | 합성 반례·같은 주간의 잔차 안정성·공분산 및 예측 보정 경로의 기각 |
 | [633 공동 MAE 선택의 부정 결과](records/0633-joint-selection-negative.md) | 같은 전체 자료에서 Tab 직접 정확도의 우위와 선택 소속의 RCTL 악화가 함께 관측됨 |
 | [635–637 실행·복구](records/0635-0637-execution-recovery.md) | 저장 오류와 부분 예측 복구를 방법의 실패와 구분 |
@@ -32,8 +33,9 @@
 | [08·09 검수](verification/history-002.md) | MC 보고값과 독립 산술을 구분하고 상관·coverage·상태 점유 및 세 일차문헌 대조 |
 | [05 부분 문헌 검수](verification/history-003.md) | 지정 일차문헌·실제 fitting·보고값·세 인용 위치와 원문 불일치 대조 |
 | [05 네트워크 문헌 검수](verification/history-004.md) | 아홉 문헌의 지정 구간·논문 보고표·초기 소속 재사용과 서지·분할 설명의 공백 |
+| [05 공식 구현 검수](verification/history-005.md) | 코드6개 바이트·checkpoint 설정·저장129분위수/median·호출 로그 연결 |
 | [앞으로의 팀 진행 기록](../progress/README.md) | 실험·회의 기록 양식 |
 
 색인은 현재 정리한 범위만 담습니다. 검색 결과가 없다고 과거 시도가 없다고 판단하면 안 됩니다. 파일·기록 번호·실험·재분석을 구분하며, 초기·부정·문헌·캐시 재분석·미실행 사례를 이어서 확인합니다. 이 아카이브는 팀의 최종 모델 선정 결과가 아닙니다.
 
-전체 목록은 48,149항목이고 포함된 고유 파일 내용은 16,326개입니다. 이는 연구 시도 수가 아닙니다. 현재 열세 기록 페이지에는 05의 부분 정리 두 페이지가 포함됩니다. 05 전체 완료는 아직 집계하지 않았고, 공식 TabICL·회귀 TabPFN 및 관련 여섯 연구와 10 이후 나머지 기록의 근거 검토를 이어갑니다. 전체 고유 연구 내용의 수와 본문 검토율도 미확정입니다. 검수가 끝난 묶음부터 PR로 반영하고, 원격 반영과 전체 정리 완료를 구분합니다.
+전체 목록은 48,149항목이고 포함된 고유 파일 내용은 16,326개입니다. 이는 연구 시도 수가 아닙니다. 현재 열네 기록 페이지에는 05의 부분 정리 세 페이지가 포함됩니다. 05 전체 완료는 아직 집계하지 않았고, 관련 여섯 연구·회귀 TabPFN의 후속 비교와 10 이후 나머지 기록의 근거 검토를 이어갑니다. 전체 고유 연구 내용의 수와 본문 검토율도 미확정입니다. 검수가 끝난 묶음부터 PR로 반영하고, 원격 반영과 전체 정리 완료를 구분합니다.

@@ -28,7 +28,7 @@
 
 ## 남은 범위와 해결하지 않은 공백
 
-- 05의 공식 TabICL commit/checkpoint/forecast pipeline 및 분위수·표현 해석, 회귀 TabPFN과 여섯 관련 연구는 후속 묶음이다. 05 전체를 완료로 세지 않는다.
+- 이 묶음 검수 당시 남겼던 공식 TabICL commit/checkpoint/forecast pipeline 및 분위수·표현 해석은 [history-005](history-005.md)에서 지정 범위를 이어서 확인했다. 관련 여섯 연구와 회귀 TabPFN의 후속 비교는 계속 남아 있다. 05 전체를 완료로 세지 않는다.
 - CoT의 ‘동일 분할’과 ‘첫200초 평가/나머지 훈련’ 문장을 보존했다. 정확한 split 코드 미복원 상태에서 forward split 또는 정보 유출을 단정하지 않는다.
 - ISP의 minmax fit 기간, Traffic Matrix의 자세한 random/선택 K 절차, MobiGPT의 checkpoint·자료 접근은 미확인이다. 문헌의 모든 그래프·표·증명·원저자 코드 재현도 포함하지 않는다.
 - UPC는 기존 지정 구간 검토 재사용이다. 초기16cell의 PCC를 원 UPC로 세지 않으며,44cell의 필요조건을 충분조건으로 바꾸지 않는다.
