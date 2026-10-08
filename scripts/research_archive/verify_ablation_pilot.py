@@ -7,6 +7,7 @@ import hashlib
 import json
 import math
 from collections import Counter
+from collections.abc import Mapping
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -19,6 +20,32 @@ STAGE = "results/cached_relation_score_ablation_641/"
 RCTL = "results/bounded_relation_RCTL_bridge_639/"
 MODELS = ["Tab", "HGB"]
 CONTROLS = ["median_distance", "plugin_conflict"]
+
+
+class TrackedJsonFields(Mapping):
+    """Track retrieved top-level JSON values; each value includes its whole subtree.
+
+    Mapping's get/items/values also retrieve through __getitem__. Nested dicts and
+    lists are ordinary decoded values, so this does not claim recursive key tracing.
+    """
+
+    def __init__(self, values, on_access):
+        """Keep decoded fields and the callback that records actual value access."""
+        self._values, self._on_access = values, on_access
+
+    def __getitem__(self, key):
+        """Record a successfully retrieved top-level field."""
+        value = self._values[key]
+        self._on_access(key)
+        return value
+
+    def __iter__(self):
+        """Iterate key names without claiming that their values were retrieved."""
+        return iter(self._values)
+
+    def __len__(self):
+        """Return the number of decoded top-level fields."""
+        return len(self._values)
 
 
 def verify(source: Path) -> dict:
@@ -57,10 +84,9 @@ def verify(source: Path) -> dict:
         return p
 
     def read(relative):
-        """Decode a historical JSON document without executing its instructions."""
-        return json.loads(
-            path(relative, ["json_loaded_selected_fields_checked"]).read_text(encoding="utf-8-sig")
-        )
+        """Decode JSON and trace top-level value retrieval, never historical instructions."""
+        values = json.loads(path(relative, ["json_parsed"]).read_text(encoding="utf-8-sig"))
+        return TrackedJsonFields(values, lambda key: path(relative, [f"json_top_level:{key}"]))
 
     def digest(relative):
         """Return the digest of the actual file, not a claimed digest in a result."""
@@ -425,14 +451,7 @@ def verify(source: Path) -> dict:
             unique_artifacts.add(relative)
     check("four_unique_UPC_files", len(unique_artifacts) == 4 and alias["group_alias_checks"] == 16)
     check("Tab_metrics_reused", alias["Tab_score_metrics"] == rr["metrics"]["A_Tab_relation"])
-    if manifest:
-        # Compare the final union, including human-only sources whose automatic
-        # scope must remain empty. Catch both omitted and overstated field reads.
-        for key, entry in mapping.items():
-            actual = set(accessed.get(key, {}).get("read_scope", []))
-            declared = set(entry["automated_read_scope"])
-            check("declared_read_scope", actual == declared)
-    return dict(
+    report = dict(
         success=True,
         checked_at_utc=datetime.now(UTC).isoformat(),
         scope=(
@@ -481,6 +500,15 @@ def verify(source: Path) -> dict:
         new_model_executions=0,
         new_RCTL_MAE_computation=False,
     )
+    if manifest:
+        # Validate after report construction: reporting also retrieves JSON values.
+        # Include human-only sources whose automatic scope must remain empty.
+        for key, entry in mapping.items():
+            actual = set(accessed.get(key, {}).get("read_scope", []))
+            declared = set(entry["automated_read_scope"])
+            check("declared_read_scope", actual == declared)
+    report["checks"] = dict(counts)
+    return report
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "batch_id": "pilot-004",
-  "created_at_utc": "2026-10-08T16:35:25.898499+00:00",
+  "created_at_utc": "2026-10-08T17:10:58.327543+00:00",
   "inventory_version": "20261008T140216751179Z",
   "source_root_alias": "Tab-ICL",
   "original_bytes_preserved": true,
@@ -314,7 +314,9 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked",
+        "json_parsed",
+        "json_top_level:cohorts",
+        "json_top_level:tasks",
         "sha256_only"
       ],
       "review_status": "selected_fields_checked"
@@ -334,7 +336,11 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked"
+        "json_parsed",
+        "json_top_level:A_UPC_20260925_cluster0.npz",
+        "json_top_level:A_UPC_20260925_cluster1.npz",
+        "json_top_level:A_UPC_20260925_cluster2.npz",
+        "json_top_level:A_UPC_20260925_cluster3.npz"
       ],
       "review_status": "selected_fields_checked"
     },
@@ -353,7 +359,8 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked",
+        "json_parsed",
+        "json_top_level:metrics",
         "sha256_only"
       ],
       "review_status": "selected_fields_checked"
@@ -714,7 +721,18 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked",
+        "json_parsed",
+        "json_top_level:at",
+        "json_top_level:cell_ids",
+        "json_top_level:initial_labels",
+        "json_top_level:levels",
+        "json_top_level:limits",
+        "json_top_level:min_days",
+        "json_top_level:min_each_half",
+        "json_top_level:neighbors",
+        "json_top_level:seed",
+        "json_top_level:support_p",
+        "json_top_level:sweeps",
         "sha256_only"
       ],
       "review_status": "selected_fields_checked"
@@ -734,7 +752,8 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked",
+        "json_parsed",
+        "json_top_level:assignments",
         "sha256_only"
       ],
       "review_status": "selected_fields_checked"
@@ -1870,7 +1889,10 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked"
+        "json_parsed",
+        "json_top_level:at",
+        "json_top_level:ledger_sha256",
+        "json_top_level:success"
       ],
       "lines_read": [
         1,
@@ -1893,7 +1915,16 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked",
+        "json_parsed",
+        "json_top_level:RCTL_read",
+        "json_top_level:all_periods_development",
+        "json_top_level:assignments",
+        "json_top_level:at",
+        "json_top_level:branch",
+        "json_top_level:new_models",
+        "json_top_level:original_assignments",
+        "json_top_level:query_y_read",
+        "json_top_level:same_as_original",
         "sha256_only"
       ],
       "lines_read": [
@@ -1917,7 +1948,10 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked"
+        "json_parsed",
+        "json_top_level:at",
+        "json_top_level:cap_changes",
+        "json_top_level:settings_sha256"
       ],
       "lines_read": [
         1,
@@ -1940,7 +1974,26 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked",
+        "json_parsed",
+        "json_top_level:all_periods_development",
+        "json_top_level:at",
+        "json_top_level:cell_ids",
+        "json_top_level:controls",
+        "json_top_level:initial_labels",
+        "json_top_level:levels",
+        "json_top_level:limits",
+        "json_top_level:min_days",
+        "json_top_level:min_each_half",
+        "json_top_level:models",
+        "json_top_level:neighbors",
+        "json_top_level:new_models",
+        "json_top_level:read_RCTL",
+        "json_top_level:read_query_y",
+        "json_top_level:seconds_cap",
+        "json_top_level:seed",
+        "json_top_level:source_hashes",
+        "json_top_level:support_p",
+        "json_top_level:sweeps",
         "sha256_only"
       ],
       "lines_read": [
@@ -1964,7 +2017,23 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked"
+        "json_parsed",
+        "json_top_level:RCTL_protocol",
+        "json_top_level:RCTL_protocol_sha256",
+        "json_top_level:Tab_score_metrics",
+        "json_top_level:aliases",
+        "json_top_level:all_periods_development",
+        "json_top_level:assignment_sha256",
+        "json_top_level:at",
+        "json_top_level:group_alias_checks",
+        "json_top_level:ledger_sha256",
+        "json_top_level:new_MAE_computation",
+        "json_top_level:new_forward",
+        "json_top_level:new_models",
+        "json_top_level:raw_prediction_arrays_loaded",
+        "json_top_level:source_result",
+        "json_top_level:source_result_sha256",
+        "json_top_level:success"
       ],
       "lines_read": [
         1,
@@ -2010,7 +2079,18 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked"
+        "json_parsed",
+        "json_top_level:RCTL_read",
+        "json_top_level:all_periods_development",
+        "json_top_level:assignments",
+        "json_top_level:at",
+        "json_top_level:branch",
+        "json_top_level:edge_records",
+        "json_top_level:new_forecasts",
+        "json_top_level:new_models",
+        "json_top_level:query_y_read",
+        "json_top_level:same_as_original",
+        "json_top_level:success"
       ],
       "lines_read": [
         1,
@@ -2033,7 +2113,7 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked"
+        "json_parsed"
       ],
       "lines_read": [
         1,
@@ -2056,7 +2136,13 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked"
+        "json_parsed",
+        "json_top_level:at",
+        "json_top_level:failure",
+        "json_top_level:new_models",
+        "json_top_level:seconds",
+        "json_top_level:success",
+        "json_top_level:worker_reaped"
       ],
       "lines_read": [
         1,
@@ -2079,7 +2165,8 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked"
+        "json_parsed",
+        "json_top_level:at"
       ],
       "lines_read": [
         1,
@@ -2102,7 +2189,13 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked"
+        "json_parsed",
+        "json_top_level:at",
+        "json_top_level:cap_changes",
+        "json_top_level:ledger_sha256",
+        "json_top_level:new_models",
+        "json_top_level:seconds",
+        "json_top_level:success"
       ],
       "lines_read": [
         1,
@@ -2125,7 +2218,14 @@
       ],
       "claim_verification_scope": "641 controls and 639 aliases only; dependency research records are not completed by this audit",
       "automated_read_scope": [
-        "json_loaded_selected_fields_checked"
+        "json_parsed",
+        "json_top_level:RCTL_read",
+        "json_top_level:at",
+        "json_top_level:checks",
+        "json_top_level:max_scalar_difference",
+        "json_top_level:new_models",
+        "json_top_level:query_y_read",
+        "json_top_level:success"
       ],
       "lines_read": [
         1,

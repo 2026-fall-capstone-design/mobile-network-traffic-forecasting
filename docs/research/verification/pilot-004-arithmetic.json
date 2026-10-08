@@ -1,6 +1,6 @@
 {
   "success": true,
-  "checked_at_utc": "2026-10-08T16:53:52.663375+00:00",
+  "checked_at_utc": "2026-10-08T17:11:01.570633+00:00",
   "scope": "Saved 641 control arithmetic and 639 metric aliases; no new research or full-corpus review",
   "checks": {
     "portable_source_identity": 87,
@@ -940,7 +940,7 @@
   "no_historical_scripts_imported": true,
   "new_model_executions": 0,
   "new_RCTL_MAE_computation": false,
-  "verification_scope_note": "Array read scope and source digests are in evidence/0641/manifest.json; actual access union must equal declared automated_read_scope. No RCTL arrays or query labels used by verifier.",
+  "verification_scope_note": "NPZ fields and retrieved JSON top-level values (whole subtrees, not recursive key tracing) are recorded in the manifest. Whole JSON parsing is separate. Compare actual scope after report construction. No RCTL arrays or query labels used.",
   "source_modes_verified": [
     "original_source_windows",
     "portable_windows",
@@ -950,16 +950,25 @@
     {
       "case": "missing_npz_field",
       "source_id": "SRC-0024170",
+      "field": "array:F0",
       "rejected": true
     },
     {
-      "case": "missing_json_scope",
-      "source_id": "SRC-0023939",
+      "case": "missing_json_field",
+      "source_id": "SRC-0024475",
+      "field": "json_top_level:cell_ids",
       "rejected": true
     },
     {
       "case": "overstated_query_Y",
       "source_id": "SRC-0024170",
+      "field": "array:y",
+      "rejected": true
+    },
+    {
+      "case": "missing_report_only_json_field",
+      "source_id": "SRC-0024485",
+      "field": "json_top_level:max_scalar_difference",
       "rejected": true
     }
   ]

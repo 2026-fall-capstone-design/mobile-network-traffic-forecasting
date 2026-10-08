@@ -43,6 +43,6 @@
 
 해시만 확인한 9경로는 635 배정 코드, `recovery_io_271.py`(SRC-0023078), `run_joint_ID_decision_558.py`(SRC-0023124), 638 settled/verification, 639 UPC 예측 4개다. 이 가운데 두 helper 코드는 이번에 바이트 사본을 새로 보존했지만 본문 검토 완료가 아니다. UPC 예측의 실제 배열·MAE는 pilot-002에서 검산했으며 여기서는 파일 해시만 확인한다. 635 코드·638 로그도 이전 읽기 상태를 유지하되 이번 해시 확인을 별도 본문 검토로 더하지 않는다.
 
-87경로 밖의 결과 문서·archiver·linker 3개를 포함하여 보존 참조가 90개다. 각 경로의 구체적 필드는 manifest의 `automated_read_scope`, 인간식 내용 검토 범위는 `review_status`와 `lines_read`에 있다. 동일 SHA 사본 연결은 내용 중복 관계이며 다른 과거 시도 전체를 완료했다는 뜻이 아니다.
+87경로 밖의 결과 문서·archiver·linker 3개를 포함하여 보존 참조가 90개다. manifest의 `automated_read_scope`는 NPZ의 개별 배열과 JSON의 실제 접근한 최상위 키를 기록한다. JSON 키 하나는 그 하위 객체 전체를 읽은 단위이며 중첩 키까지 재귀적으로 추적한 것은 아니다. JSON 전체 파싱은 `json_parsed`로 별도 표시한다. 검산 코드에서 최상위 값을 가져올 때 기록하므로 새로운 키 접근을 기존 선언이 빠뜨리면 검사가 실패한다. 내용 검토 범위는 `review_status`와 `lines_read`에 있다. 동일 SHA 사본 연결은 내용 중복 관계이며 다른 과거 시도 전체를 완료했다는 뜻이 아니다.
 
 641의 before/before_archive 상태 사본 전체, 상위 helper 코드 전체 의미, 원자료 생성 전체는 남아 있다. stdout/stderr는 길이 0이라는 메타데이터를 확인했으며 새로운 본문 읽기나 실행 증거로 세지 않는다. 다음 642 기록의 실제 실행 여부도 아직 여기서 판정하지 않는다.
