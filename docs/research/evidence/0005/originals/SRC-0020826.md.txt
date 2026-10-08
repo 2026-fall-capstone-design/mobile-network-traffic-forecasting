@@ -1,0 +1,69 @@
+# 원리·결정 수준의 선행연구 검토
+
+검색·확인일: 2026-09-25. 이 파일은 추천안 확정 전의 근거 기록이다. 현재 후보의 성능이나 신규성이 확인되었다는 보고서가 아니다.
+
+## 가까운 방법들과 현재 후보의 실질적인 차이
+
+| 연구 | 묶는 대상과 제공되는 정보 | 실제 결정 | 비용과 가정 | 현재 설계에 반영한 점 |
+|---|---|---|---|---|
+| HCP, López-Oriona·Sun·Vilar, 2025 | 출처가 알려진 데이터 집단. 각 집단의 train/validation 입력·정답 | 분리 모델과 합친 모델을 실제 학습하여 validation 손실 감소가 가장 큰 쌍을 병합. 개선이 없으면 종료 | 일반 예측기와 결합 가능하나 병합 후보마다 학습·예측 필요. Theorem 2의 O(N³p²t)는 OLS와 특정 병합 순서의 최악 조건이다. 모든 구현에 무조건 적용되는 비용이 아니다 | pooled prediction을 직접 확인하는 강한 기준으로 인정한다. 현재 후보는 그 계산을 그대로 빠르게 수행하는 방법이 아니다. 공유 규칙의 제한된 함수군에 대한 예상 손실로 문제를 바꾸므로 RCTL 사후 연결을 확인해야 한다 |
+| Population-level prediction-guided clustering, Sadeghkhani, 2026 | 여러 population의 회귀·패널 자료. 집단별 입력과 target, cluster에 따른 회귀/GLMM | §2.3 식 2.9–2.13의 posterior predictive loss로 pooling gain을 계산. §3에서 후보 소속의 posterior 추정과 병합을 연결 | 완전한 Bayesian 서술과 실제 검증 구현을 구분해야 한다. §4의 Gaussian·mixed 실험은 OLS/logistic plug-in prediction을 이용한다. 기존 population별 모델을 안정적으로 크게 이긴다는 결과는 아니다 | 예측 분포·Bayes loss·집단 공유 자체를 신규성으로 세지 않는다. 이 연구의 과대 pooling 방지는 실제 모델 재적합 후의 결과이며 현재 risk table이 같은 보장을 주지 않는다 |
+| RMB-CLE, arXiv:2602.14231v1 | task별 입력·target. task별 boosting predictor와 다른 task에 대한 교차 오차 | 식 5–9: cross-error → inverse affinity profile → cosine similarity → average-linkage. 최종 cluster별 boosting은 task ID도 입력에 넣는다 | 모든 task의 교차 예측은 N² query 규모로 커진다. 원문의 MSE 분해에는 입력별 관계 차이뿐 아니라 target noise도 포함된다 | cell 간 교차 예측·별도 최종 모델이라는 구조는 이미 존재한다. 후보에서는 cell 자신의 실제 query에만 추론하고 group 비용을 합산하므로 N² TFM query를 피한다. 이는 결과가 다른 만큼 동등한 정확도를 보장하지 않는다 |
+| ETAP, arXiv:2602.18591v1, ICLR 2026 | 공동 모델의 task gradient 및 실제 학습한 subset의 gain | §3.1 gradient affinity, §3.2 spline 및 residual surrogate로 실제 gain과 affinity 차이 보정, §3.3 예산 내 grouping | proxy만으로 실제 gain을 설명하기 어렵다는 문제를 직접 다룬다. 최종 learner의 gradient와 결과가 필요하다 | RCTL 독립 조건 때문에 그대로 도입하지 않는다. 독립성을 유지하면서 같은 정도의 gain 정보를 갖는다고 주장할 수 없음을 명시한다 |
+| Lower-dimensional posterior density and cluster summaries, Bolfarine 외, 2026 | 한 데이터 분포를 추정한 유연한 Bayesian reference model과 그 predictive sample | §2 식 3–5의 posterior expected loss 최소화로 단순 surrogate 추정. §4 식 22–28은 predictive sample의 k-means summary와 소속 불확실성 | posterior projection과 손실에 따른 cluster 요약은 선행 원리다. 원 관측값을 grouping하며 cell별 회귀 자료 공유 및 RCTL 학습 문제와 다르다 | 분포를 단순 규칙으로 압축한다는 표현만으로 신규성을 주장하지 않는다. 실제 cell의 시간·입력을 보존한 조건부 손실 표와 model budget 결정의 차이를 별도로 증명해야 한다 |
+
+HCP 2025의 원문 §2 (A2),(A3)는 집단 내 i.i.d. 및 집단 간 독립을 둔다. 시계열과 동시 network cell에 그대로 옮길 수 없다. Population-HCP 2026의 소개는 2025 HCP를 관측치 clustering처럼 설명하지만, 2025 원문은 출처가 알려진 population 자료를 묶는다. 후속 논문의 설명을 그대로 재인용하지 않고 원문을 기준으로 구분했다.
+
+RMB-CLE의 journal 표시가 2026년 10월 권호를 가리키더라도 현재 확인일에는 확보한 2026년 2월 arXiv 원문을 분석 근거로 사용한다. 미래 권호를 이미 발표된 실험 증거로 덧붙이지 않는다.
+
+## 네트워크 및 시계열 선행연구가 바꾼 설계
+
+| 선행연구 | 실제 의미 | 반영한 변경과 남는 한계 |
+|---|---|---|
+| Urban Mobile Data Prediction With Geospatial Clustering and Dual Residual Learning | UPC는 weekday의 modal peak hour로 cell을 나눈 뒤, peak group의 평균 트래픽 파형 간 PCC로 seed와 소속을 정한다. 단지 피크 한 시점만 비교하는 방법이 아니다 | 비교는 UPC 전체를 대상으로 해야 한다. 후보는 cell의 최근 이력과 이후 결과 관계를 이용하지만 UPC보다 세부 흐름을 항상 더 잘 반영한다고 선결하지 않는다. 16 cell pilot에서 원문 group-size 조건을 임의 변경한 방법을 원본 UPC로 표시하지 않는다 |
+| Architectural Bias vs. Feature Engineering (TabPFN-ST-AR), SMBD 2025, DOI 10.1145/3768740.3768798 | METR-LA의 도로 속도 예측. 시간·lag·공간 특징을 표 모델에 주어 전용 신경망과 비교 | 최근 8시간뿐 아니라 일·주 lag와 달력 정보를 모든 비교에 동일하게 제공한다. 데이터에 없는 RSRP·handover 등을 만들어 넣지 않는다. 도로 속도에서 유효한 이웃 특징의 효과를 network activity로 그대로 옮기지 않는다 |
+| From Tables to Time: Extending TabPFN-v2 to Time Series Forecasting, arXiv:2501.02945v4 | non-autoregressive 예측을 위해 시간·달력·자동 주기 특징을 구성한다. §3은 미래 lag의 부재 때문에 lag feature를 쓰지 않는다고 설명한다. §5의 특정 선형·지수 추세에서 범위 밖 외삽이 약하다 | ‘이 논문이 lag를 추천했다’고 쓰지 않는다. 현재는 다음 1시간 예측이므로 실제 관측된 lag를 사용할 수 있다. 원문의 외삽 한계를 모든 TabICLv2 prediction의 수학적 불가능성으로 확대하지 않는다 |
+| Time-Series Foundation Models for ISP Traffic Forecasting, arXiv:2511.17529v2 | CESNET 계층별 ISP bytes/packets에 TTM 등 적용. 관측 수준, context length, horizon, tuning 효과를 비교 | cell 수 외에 시간 기간·단위·주기·희소성·CPU 비용을 기록한다. ISP context의 연속 시점 수와 TabICL context의 표 행 수를 같은 개념으로 비교하지 않는다. 특정 dataset의 적은 fine-tuning 이득을 전체 회귀 TFM의 우열로 바꾸지 않는다 |
+| MobiGPT, arXiv:2509.18166v1 | 모바일 네트워크에 특화한 foundation model과 도시 간 전이 | domain-specific model은 가능하면 비교 기준으로 고려하되 공개 checkpoint·자료 접근성이 확인되지 않으면 실행 완료로 표시하지 않는다. 기존 cell 연구를 새 도시 zero-shot 연구로 대체하지 않는다 |
+| Chain-of-Thought Reasoning Enhances In-Context Learning for LLM-Based Mobile Traffic Prediction, arXiv:2605.09260v1 | 실제 5G downlink throughput과 uplink·RSRP·network mode·handover를 활용하는 LLM 기반 ICL | throughput과 grid 인터넷 activity를 구분한다. 숫자 table의 TabICL에는 자연어 CoT 모듈을 붙이지 않는다. 알려진 공변량이 있으면 입력으로 반영한다는 원칙만 옮긴다 |
+| Zero-shot Multivariate Time Series Forecasting Using Tabular Prior Fitted Networks, arXiv:2604.08400v1 | 다변량 문제의 table 구성과 채널 관계 활용 | 같은 시각 cell 간 정보와 시간 특징을 행/열에서 명시해야 한다는 근거다. cell을 한 context에 넣었다고 공간 관계가 자동 입력된다고 쓰지 않는다. 이번 pilot에는 이웃 feature가 없고 전 조건이 동일하다 |
+| On the Role of Time Series Clustering in Traffic Matrix Prediction, arXiv:2604.26081v1 | Abilene/GÉANT OD flow를 histogram/ACF/PSD 등으로 나누고 global forecasting과 비교. random grouping도 비교한다 | 같은 K의 무작위 balanced partition과 global RCTL을 필수 비교로 넣었다. grouping 의미보다 분할 자체의 이득일 수 있음을 분리한다. OD flow 결과를 Milan cell의 직접 증거로 사용하지 않는다 |
+| Global and local forecasting models: properties and comparative performance, Montero-Manso·Hyndman, 2021 | 충분한 함수 용량의 global 모델과 local 모델 관계, 복잡도·sample 수의 일반화 논의 | 서로 다른 cell 관계가 존재한다는 사실만으로 pooling 손해를 선언하지 않는다. 시간·이력으로 cell 상태를 구별할 수 있는지와 실제 RCTL 용량을 별도로 본다. §3.3의 독립 series 가정을 그대로 network cell에 적용하지 않는다 |
+
+## TabICL 관련 연구의 역할과 제외한 기능
+
+회귀용 TabICLv2의 checkpoint는 공식 저장소에서 내려받은 `tabicl-regressor-v2-20260212.ckpt`이다. 실제 실행은 공식 코드 commit `0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3`을 설치한 TabICL 2.2.0에서 수행했다. 합성 표 문제로 사전학습한 가중치를 고정하고 cell별 context로 예측 준비와 추론을 수행한다. 이 준비 비용은 cell당 호출에 포함한다.
+
+열·행·context의 계층 처리, repeated feature grouping 및 target-aware embedding은 입력 관계 추정의 기반이다. 이 내부 표현을 서로 다른 context 사이에서 같은 좌표의 거리라고 가정하지 않는다. attention weight를 sample의 기여도나 RCTL 공유 효과로 해석하지 않는다. native 999개 분위수, API 기본 반환 분위수, 이번 실행의 129개 midpoint 분위수를 구분한다. MAE의 점예측은 median을 사용하며 mean과 섞지 않는다.
+
+공식 `src/tabicl/forecast/_forecaster.py` 및 `_engine.py`에는 이미 time-series forecasting pipeline이 있다. 따라서 ‘TabICL을 처음 시계열에 적용한다’는 주장은 하지 않는다. 이번 실험은 clustering에 필요한 실제 lag 입력과 conditional distribution을 명시하기 위해 `TabICLRegressor`를 직접 사용했다.
+
+- **회귀용 TabPFN:** 같은 context 비교·조건부 예측 역할을 할 수 있다. TabICLv2만 가능한 방법이 아니다. 같은 M·Q·정보·ensemble 또는 실제 비용에서 대체 비교해야 한다. 이번 누적 예산 내에서는 실행하지 않았다.
+- **Localized TabICLv2 (arXiv:2608.16429v1):** 앞 단계의 표현을 공유하고 뒤 단계 context를 국소화하는 구조다. 일부 fine-tuning도 포함한다. 전체 context가 다른 cell의 앞 단계 cache를 안전하게 재사용할 수 있다는 근거가 아니다.
+- **TL-ANDI (arXiv:2607.04809v1):** 입력 분포와 예측 관계 차이를 함께 이용해 anchor/context와 증류 target을 구성한다. 현재와 달리 실제 정답을 최종 RCTL로 넘기는 원칙을 유지한다. 조건부 관계 비교 자체는 새 발상이 아니다.
+- **CRUMB (arXiv:2606.11473v1):** query clustering과 MMD로 관련성·다양성을 고려해 context를 선택한다. 실제 sample 공유와 context cache가 이미 연구되고 있으므로 그 조합을 핵심 신규성으로 세지 않는다.
+- **Entangled by Design (arXiv:2607.25532v1):** 표 모델의 spurious routing과 환경별 context 구성을 분석한다. context를 시간·환경별로 나누는 것만으로 새 방법이라고 하지 않는다.
+- **TabClustPFN (arXiv:2601.21656):** 별도 unsupervised clustering 사전학습을 한 모델이다. TabICL encoder의 활용과 frozen regression TabICLv2로 cell의 자료 공유를 결정하는 것은 구별한다.
+- **Amortized Neural Clustering of Time Series (arXiv:2605.13128v1):** §3.1.1에서 ACF/QAF 등의 통계 feature로 모든 series 쌍의 co-membership probability를 학습한 후 spectral/Louvain clustering을 수행한다. §3.1.2는 200,000개의 합성 collection으로 학습한다. 사전학습 기반 clustering·비선형 통계 feature 자체는 신규성이 아니다. 추가 대규모 사전학습과 pairwise inference가 필요한 이 구조를 이번 현실적 구현으로 채택하지 않는다.
+
+## 현재 후보에서 주장 가능한 차이와 아직 부족한 근거
+
+현재 후보는 cell마다 자신의 실제 입력에서 조건부 absolute-loss 곡선을 먼저 계산한다. 그 곡선을 같은 상태에서 공유 가능한 예측 수정값의 비용으로 합산하고, 병합 때는 덧셈과 최소값 계산만 수행한다. 전체 cell 쌍에 대한 TFM 추론이나 병합 후 TFM 재준비는 하지 않는다.
+
+이 방식은 HCP의 실제 pooled learner를 계산한 결과도, RMB-CLE의 교차 오차 행렬을 저렴하게 정확히 재현한 결과도 아니다. 계산 대상을 바꿔 반복 학습과 교차 추론을 줄이는 대신, 제한된 공유 함수군과 실제 RCTL 사이에 차이가 생긴다. 이 차이를 작은 RCTL 확인으로 좁혀야 한다.
+
+예측 분포의 조건부 기대 손실을 정확히 안다면 단일 target의 손실보다 조건부 변동을 줄일 수 있다. 실제 TabICL의 추정 분포에는 오차가 있으므로 이것을 통계 효율 보장으로 부르지 않는다. 현재 다음 주 surrogate MAE에서 full 분포는 실제 target 대안보다 약간 작았지만 median/IQR 또는 PCC partition보다 좋지 않았다. 따라서 full distribution이 꼭 필요하다는 근거는 아직 없다.
+
+추가 pair 진단에서도 예상 병합 손해와 다음 주 실제 surrogate 손해의 순위 상관이 약했다. 이는 작은 sample에서 pooling이 줄이는 추정 변동, 기간 변화, 함수군 오차를 risk table 하나가 충분히 설명하지 못할 수 있음을 보여 준다. 현재 후보는 검토 중이며, 이 상태로 신규성과 개선이 확정되었다고 추천하지 않는다.
+
+## 직접 확인한 출처 위치
+
+- HCP 2025: `tmp/preflight_20260925/sources/HCP_2025.txt`, §2 (A2),(A3), §2.3 식 7–8, Algorithm 1, Theorem 1–2 및 complexity 논의.
+- Population HCP 2026: [원문](https://link.springer.com/article/10.1007/s41060-026-01197-4), §2.3 식 2.9–2.13, §3, §4의 실제 fitting과 결과, §5 limitations.
+- RMB-CLE: [원문](https://arxiv.org/abs/2602.14231), §3.1–3.3, 식 5–13, Appendix A.1.
+- ETAP: [원문](https://arxiv.org/abs/2602.18591), §3.1–3.3.
+- Posterior projection: [원문](https://link.springer.com/article/10.1007/s11222-026-10859-z), §2 식 3–5, §4 식 22–28.
+- Amortized TS clustering: [원문](https://arxiv.org/abs/2605.13128), §3.1.1–3.1.2, §3.2, §4–5.
+- 공식 TabICL: [코드](https://github.com/soda-inria/tabicl/tree/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3), asset_manifest의 checkpoint URL·SHA-256.
+
+2026-09-25 추가 검색어: `amortized clustering predictive risk`, `task grouping posterior predictive clustering`, `loss profiles clustering regression`, `TabICL traffic forecasting clustering`, `Amortized Neural Clustering of Time Series based on Statistical Features`, `clustering Rao-Blackwell prediction`. 검색 결과는 발견의 수단으로만 사용했고 기술적 주장은 원문 또는 공식 코드로 다시 확인했다. 찾지 못한 조합을 세계 최초라고 주장하지 않는다.

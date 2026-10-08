@@ -57,7 +57,7 @@
 
 ## 02에서 고른 초기 후보와 보류한 주장
 
-02는 세 방향을 비교했다. 잔차의 동시 상관만으로 grouping하는 안은 상관과 negative transfer를 혼동할 수 있어 핵심 추천에서 제외했다. 교차 예측 오차 profile clustering은 RMB-CLE와 겹친다고 판단해 비교군으로 남겼다. 이는 **당시 문헌 판단**이며 이 묶음에서 RMB-CLE 전체를 새로 검증한 결과는 아니다. 이후의 선행 비교는 [640과 문헌 연결](0640-contribution-boundary.md)에서 별도 확인했다.
+02는 세 방향을 비교했다. 잔차의 동시 상관만으로 grouping하는 안은 상관과 negative transfer를 혼동할 수 있어 핵심 추천에서 제외했다. 교차 예측 오차 profile clustering은 RMB-CLE와 겹친다고 판단해 비교군으로 남겼다. 이는 **당시 문헌 판단**이며 이 묶음에서 RMB-CLE 전체를 새로 검증한 결과는 아니다. 해당 원리의 지정 절은 [05의 가까운 방법 비교](0005-closest-methods-audit.md)에서, 뒤의 관계 점수에 관한 비교는 [640과 문헌 연결](0640-contribution-boundary.md)에서 별도 확인했다.
 
 선택한 후보는 cell별 고정 context에서 추정한 조건부 분포로 다음 비용표를 만드는 것이다.
 

@@ -1,0 +1,534 @@
+{
+  "batch_id": "history-003",
+  "reviewed_at_utc": "2026-10-08T20:28:13.299785+00:00",
+  "historical_record": "0005",
+  "scope": "Closest five methods only; record05 read in full but not wholly integrated",
+  "reviewer": "same archive agent; selected primary review, not independent scientific replication",
+  "whole_papers_reviewed": false,
+  "historical_code_executed": false,
+  "new_models": 0,
+  "new_simulations": 0,
+  "primary_sources": [
+    {
+      "source_id": "SRC-0020785",
+      "path": "tmp/preflight_20260925/sources/HCP_2025.txt",
+      "sha256": "945f7087bd7606a27980f2b06b6eae8fdc1e051e3cd0857bca0a4b451edc646e",
+      "size_bytes": 115102,
+      "exact_alias_source_ids": [
+        "SRC-0020785"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H003-P01",
+      "title": "Improving the prediction accuracy of statistical models: A new hierarchical clustering approach",
+      "authors": [
+        "Ángel López-Oriona",
+        "Ying Sun",
+        "José A. Vilar"
+      ],
+      "version": "Statistics and Computing35:168, 2025-08-11",
+      "url": "https://link.springer.com/article/10.1007/s11222-025-10683-x",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            42
+          ],
+          [
+            63,
+            168
+          ],
+          [
+            639,
+            803
+          ]
+        ],
+        "sections": [
+          "§1.1 A2/A3 and known-origin units",
+          "§2.3 equations7/8,S0–S2,Theorems1/2 and evaluation protocol"
+        ],
+        "unreviewed": [
+          "Algorithm1 image: official image fetch timed out",
+          "Full theorem proofs",
+          "Other experiments"
+        ],
+        "supplementary_access": "같은 공식 HTML의 해당 절을 대조했다. S0–S2 본문을 읽은 것과 Algorithm1 이미지 읽기를 구분한다."
+      },
+      "whole_source_reviewed": false
+    },
+    {
+      "source_id": "SRC-0020787",
+      "path": "tmp/preflight_20260925/sources/HCP_population_2026.txt",
+      "sha256": "3d3d2c8c1219737569cc92d49d72bf0d95f67a0efc90b5c65ad7dd2520fda3e4",
+      "size_bytes": 83490,
+      "exact_alias_source_ids": [
+        "SRC-0020787"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H003-P02",
+      "title": "Prediction-guided hierarchical clustering for population-level regression",
+      "authors": [
+        "Abdolnasser Sadeghkhani"
+      ],
+      "version": "International Journal of Data Science and Analytics22:223, 2026-07-06",
+      "url": "https://link.springer.com/article/10.1007/s41060-026-01197-4",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "read_scope": {
+        "lines": [
+          [
+            386,
+            1382
+          ]
+        ],
+        "sections": [
+          "§2.3 equations2.9–2.13",
+          "§3.1–3.3 algorithm and posterior approximation",
+          "§4 Gaussian/mixed fitting and result narrative",
+          "§5 Gapminder setup and narrative",
+          "§6 limitations"
+        ],
+        "supplementary_access": "공식 HTML의 소개·§4.5.2·§6도 대조. 표 전체는 HTML/txt에 없으며 다음 PDF의 지정 쪽에서 확인.",
+        "unreviewed": [
+          "§2.1–2.2 complete formal hierarchy",
+          "Full data/author-code reproduction",
+          "All figures/tables"
+        ]
+      },
+      "whole_source_reviewed": false
+    },
+    {
+      "source_id": "SRC-0063481",
+      "path": "tmp/redesign_20260925/sources/population_prediction_guided_267/paper.pdf",
+      "sha256": "41068deeb5b9d1494844216297e4efcee4378a8a1ec39f046fc89c7eb6c9575a",
+      "size_bytes": 714050,
+      "exact_alias_source_ids": [
+        "SRC-0063481"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H003-P02",
+      "title": "Prediction-guided hierarchical clustering for population-level regression",
+      "authors": [
+        "Abdolnasser Sadeghkhani"
+      ],
+      "version": "Published PDF, 17 physical pages, DOI10.1007/s41060-026-01197-4",
+      "url": "https://link.springer.com/article/10.1007/s41060-026-01197-4",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "read_scope": {
+        "pdf_pages_full_text": [
+          10,
+          13,
+          15
+        ],
+        "visual_pages_scoped": {
+          "15": "Table6/Figure2 RMSE alignment; not Figure3 country-membership analysis"
+        },
+        "sections": [
+          "Tables1/2,4,6 and adjacent text"
+        ],
+        "prior_separate_review": "pilot-003 already registered physical pp7–8 and title; this batch extends, not independently reproduces, that same PDF",
+        "unreviewed": [
+          "Tables3/5/7 full bodies",
+          "Author code and raw simulation outputs"
+        ]
+      },
+      "whole_source_reviewed": false
+    },
+    {
+      "source_id": "SRC-0061704",
+      "path": "tmp/redesign_20260925/sources/RMB_CLE.txt",
+      "sha256": "d5c5f568d8d4e1de1bc16add14cd7a6fe169b8bc36ebd96fc245f54f22508519",
+      "size_bytes": 118407,
+      "exact_alias_source_ids": [
+        "SRC-0000362",
+        "SRC-0061704"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H003-P03",
+      "title": "Robust multi-task boosting using clustering and local ensembling",
+      "authors": [
+        "Seyedsaman Emami",
+        "Daniel Hernández-Lobato",
+        "Gonzalo Martínez-Muñoz"
+      ],
+      "version": "arXiv2602.14231v1, 2026-02-15; archived PDF text",
+      "url": "https://arxiv.org/html/2602.14231v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            30
+          ],
+          [
+            277,
+            593
+          ],
+          [
+            1502,
+            1529
+          ]
+        ],
+        "sections": [
+          "§3.1–3.2 equations1–14/Algorithm1",
+          "§3.3.1 regression risk decomposition",
+          "AppendixA.1 separate residual alternative"
+        ],
+        "supplementary_access": "공식 arXiv v1 HTML의 같은 방법·회귀 수식·A.1과 abs 판본 metadata 대조.",
+        "unreviewed": [
+          "§3.3.2 classification derivation",
+          "All performance/complexity tables",
+          "Journal version comparison",
+          "Author code"
+        ]
+      },
+      "whole_source_reviewed": false
+    },
+    {
+      "source_id": "SRC-0061684",
+      "path": "tmp/redesign_20260925/sources/ETAP_2026.txt",
+      "sha256": "bdb29736c42f585e5fec61013ffcca7f5a0288d7b1729b4ebef8c0880615c2a4",
+      "size_bytes": 81272,
+      "exact_alias_source_ids": [
+        "SRC-0000348",
+        "SRC-0061684"
+      ],
+      "records": [
+        "0005"
+      ],
+      "reference_id": "H003-P04",
+      "title": "Ensemble Prediction of Task Affinity for Efficient Multi-Task Learning",
+      "authors": [
+        "Afiya Ayman",
+        "Ayan Mukhopadhyay",
+        "Aron Laszka"
+      ],
+      "version": "arXiv2602.18591v1, 2026-02-20; archived PDF states ICLR2026",
+      "url": "https://arxiv.org/html/2602.18591v1",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_sections_review",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            35
+          ],
+          [
+            96,
+            120
+          ],
+          [
+            163,
+            433
+          ]
+        ],
+        "sections": [
+          "§2 MTL-gain/group objective",
+          "§3.1 shared gradient affinity",
+          "§3.2.1 spline mapping",
+          "§3.2.2 ridge residual",
+          "§3.2.3 group selection"
+        ],
+        "supplementary_access": "원 txt 수식의 제어문자·줄 분리를 공식 v1 HTML §3.1/§3.2와 대조. 본문 번호는3.2.3이며05의3.3은 정정.",
+        "unreviewed": [
+          "All empirical results/appendices",
+          "Author code",
+          "Exact optimization guarantee"
+        ]
+      },
+      "whole_source_reviewed": false
+    }
+  ],
+  "external_primary_sources": [
+    {
+      "reference_id": "EXT-H003-05",
+      "title": "Lower-dimensional posterior density and cluster summaries for overparameterized Bayesian models",
+      "authors": [
+        "Henrique Bolfarine",
+        "Hedibert F. Lopes",
+        "Carlos M. Carvalho"
+      ],
+      "version": "Statistics and Computing36:107, published2026-03-15; official HTML accessed2026-10-09 KST",
+      "url": "https://link.springer.com/article/10.1007/s11222-026-10859-z",
+      "read_scope": [
+        "Title/authors/abstract",
+        "§2.1 equations2–5 and §2.2 equations7/8",
+        "§3 equations13–15 and point-estimate/posterior distinction",
+        "§4.1 equations16–21",
+        "§4.2 equations22–28 and label-switching caveat"
+      ],
+      "whole_source_reviewed": false,
+      "distribution": "official_link_and_review_only",
+      "access_note": "웹 원문의 지정 절을 읽음. 로컬 판본을 이번 경로명 탐색에서 특정하지 않았으며 원문이 폴더에 없다는 뜻은 아님. 파일 해시 확보로 표시하지 않음.",
+      "unreviewed": [
+        "Full numerical studies",
+        "Algorithm images",
+        "Supplementary material",
+        "Author code"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "claim_id": "H003-C01",
+      "sources": [
+        "SRC-0020826",
+        "SRC-0020785"
+      ],
+      "finding": "HCP는 알려진 출처의 데이터 집단을 실제 분리/공동 적합한 검증 손실로 병합한다. A2/A3는§1.1이다.",
+      "limitation": "시간/cell 의존성 적용·전체 증명·전역 최적성 확인 아님."
+    },
+    {
+      "claim_id": "H003-C02",
+      "sources": [
+        "SRC-0020826",
+        "SRC-0020785"
+      ],
+      "finding": "HCP Theorem2의 O(N³p²t)는 OLS/RMSE·동일 train t·validation v<t·N−1회 단일 성장 pool 병합이라는 조건의 복잡도다.",
+      "limitation": "모든 learner의 실행시간 또는 현 후보의 가속률이 아님."
+    },
+    {
+      "claim_id": "H003-C03",
+      "sources": [
+        "SRC-0020826",
+        "SRC-0020787",
+        "SRC-0063481"
+      ],
+      "finding": "Population-HCP의 posterior 수식/greedy 공동 적합과 실제 OLS/logistic plug-in 실험을 구분한다. 한계는§6.",
+      "limitation": "논문 표의 보고값 대조이며 MCMC/모델 재현이나 traffic 보장 아님."
+    },
+    {
+      "claim_id": "H003-C04",
+      "sources": [
+        "SRC-0020826",
+        "SRC-0020785",
+        "SRC-0020787",
+        "SRC-0063481"
+      ],
+      "finding": "후속 논문의 HCP2025 observation-level 서술은2025원문과 다르다. Gapminder random split의 local최저 문구도 Table6 mixed-effects2.73/local2.91과 다르다.",
+      "limitation": "불일치를 원문별로 보존하며 임의로 합치지 않는다."
+    },
+    {
+      "claim_id": "H003-C05",
+      "sources": [
+        "SRC-0020826",
+        "SRC-0061704"
+      ],
+      "finding": "RMB-CLE는 교차오차 역수 profile의 cosine/average linkage/silhouette 및 taskID 포함 후속 모델을 쓴다. 제곱손실 분해에는 noise가 남는다.",
+      "limitation": "N²는 쌍별 평가 규모 설명. wall-time 보장·Tab MAE 실험·잡음 제거 보장 아님."
+    },
+    {
+      "claim_id": "H003-C06",
+      "sources": [
+        "SRC-0020826",
+        "SRC-0061684"
+      ],
+      "finding": "ETAP는 학습 gradient와 실제 group별 MTL gain으로 spline/ridge 잔차를 학습한다. group 선택은§3.2.3.",
+      "limitation": "최종 learner 정보가 필요한 방법. RCTL 독립 규칙이 같은 정보를 확보했다는 근거 아님."
+    },
+    {
+      "claim_id": "H003-C07",
+      "sources": [
+        "SRC-0020826",
+        "EXT-H003-05"
+      ],
+      "finding": "Bolfarine외는 reference posterior predictive를 저차원 밀도와 개별 관측의 cluster 요약으로 투영한다.",
+      "limitation": "cell별 조건부 회귀자료 공유 또는 RCTL을 직접 최적화한 실험 아님."
+    },
+    {
+      "claim_id": "H003-C08",
+      "sources": [
+        "SRC-0020826"
+      ],
+      "finding": "05의 후보 검토 문구를 당시 기록으로 보존하고04/06/07및08/09의 검수된 기각/후속 진단에 연결한다. 나머지05비교는 미통합.",
+      "limitation": "정리된 다섯 문헌은 전수 신규성 조사/전체05완료/새실험이 아님."
+    }
+  ],
+  "locator_corrections": [
+    {
+      "subject": "HCP2025 A2/A3",
+      "original_locator": "§2",
+      "verified_locator": "§1.1",
+      "type": "historical_locator_correction"
+    },
+    {
+      "subject": "Population-HCP limitations",
+      "original_locator": "§5",
+      "verified_locator": "§6",
+      "type": "historical_locator_correction"
+    },
+    {
+      "subject": "ETAP group selection",
+      "original_locator": "§3.3",
+      "verified_locator": "§3.2.3",
+      "type": "historical_locator_correction"
+    }
+  ],
+  "reported_tables": {
+    "source_id": "SRC-0063481",
+    "independent_simulations_reproduced": false,
+    "gaussian": {
+      "table": 1,
+      "physical_page": 10,
+      "J": 12,
+      "true_K": 3,
+      "N_per_population": 100,
+      "p": 4,
+      "replications": 500,
+      "train_validation_test": [
+        0.5,
+        0.25,
+        0.25
+      ],
+      "columns": [
+        "mean_RMSE",
+        "SD_RMSE",
+        "relative_to_local_percent"
+      ],
+      "rows": {
+        "global": [
+          2.139,
+          0.068,
+          206.8
+        ],
+        "local": [
+          1.034,
+          0.042,
+          100.0
+        ],
+        "proposed": [
+          1.018,
+          0.042,
+          98.4
+        ]
+      }
+    },
+    "mixed": {
+      "table": 4,
+      "physical_page": 13,
+      "J": 12,
+      "true_K": 3,
+      "N_per_population": 150,
+      "p": 3,
+      "replications": 20,
+      "train_validation_test": [
+        0.5,
+        0.25,
+        0.25
+      ],
+      "columns": [
+        "continuous_RMSE",
+        "continuous_SD",
+        "binary_misclassification",
+        "binary_SD"
+      ],
+      "rows": {
+        "global": [
+          1.949,
+          0.062,
+          0.48,
+          0.016
+        ],
+        "local": [
+          1.025,
+          0.04,
+          0.252,
+          0.023
+        ],
+        "proposed": [
+          1.018,
+          0.042,
+          0.253,
+          0.02
+        ]
+      }
+    },
+    "gapminder": {
+      "table": 6,
+      "physical_page": 15,
+      "visually_checked": true,
+      "countries": 142,
+      "times_per_country": 12,
+      "years": [
+        1952,
+        2007
+      ],
+      "step_years": 5,
+      "unit": "life_expectancy_years_RMSE",
+      "inputs": [
+        "intercept",
+        "(year-1980)/10",
+        "logGDPpc"
+      ],
+      "random_split": [
+        0.5,
+        0.25,
+        0.25
+      ],
+      "forward_split": [
+        6,
+        3,
+        3
+      ],
+      "columns": [
+        "random_RMSE",
+        "random_relative_percent",
+        "forward_RMSE",
+        "forward_relative_percent"
+      ],
+      "rows": {
+        "global": [
+          6.79,
+          233.2,
+          7.32,
+          153.4
+        ],
+        "local": [
+          2.91,
+          100.0,
+          4.77,
+          100.0
+        ],
+        "mixed_effects": [
+          2.73,
+          93.8,
+          4.79,
+          100.4
+        ],
+        "proposed": [
+          3.31,
+          113.7,
+          5.21,
+          109.3
+        ]
+      },
+      "internal_discrepancy": "§5.3/§6의 local최저 서술과 random split Table6의 mixed-effects2.73<local2.91이 불일치. proposed가 local보다 높은 방향은 두 split 모두 일치."
+    }
+  },
+  "access_gaps": [
+    "HCP2025 Algorithm1 official image fetch timed out;S0–S2 text reviewed.",
+    "Springer full-table URLs failed in web tool; archived population-HCP PDF tables1/4/6 substituted.",
+    "Population-HCP archived HTML contains no table elements; HTML extraction is not full-table review."
+  ],
+  "remaining_record05": [
+    "Network/time-series nine references",
+    "Official TabICL/checkpoint/forecast pipeline statements and related six methods",
+    "Integrate remainder with historical design and verified implementations"
+  ],
+  "global_limits": [
+    "전논문 증명·원저자 코드·모든 결과의 재현 아님.",
+    "기여·최초·전체 성능 우위를 확정하지 않음.",
+    "05의 나머지 비교는 완료 집계에 넣지 않음."
+  ]
+}
