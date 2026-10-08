@@ -2,7 +2,7 @@
 
 예측 결과 JSON을 읽어 차트와 평가 지표를 보여 주는 정적 웹입니다.
 
-[배포된 데모](https://2026-fall-capstone-design.github.io/tabicl-traffic-forecasting/) ·
+[배포된 데모](https://2026-fall-capstone-design.github.io/mobile-network-traffic-forecasting/) ·
 [결과 JSON 규약](../docs/web-data-contract.md)
 
 ## 파일별 역할
@@ -63,7 +63,7 @@ uv run --locked python -m traffic_forecasting check-data --site web
 - 데이터 로딩 실패 시 안내가 표시되고, 복구 후 다시 불러오기가 동작하는지
 
 리소스 경로는 `./assets/...`처럼 현재 페이지 기준으로 작성합니다.
-GitHub Pages의 프로젝트 주소는 `/tabicl-traffic-forecasting/` 하위에 있으므로
+GitHub Pages의 프로젝트 주소는 `/mobile-network-traffic-forecasting/` 하위에 있으므로
 `/assets/...`처럼 도메인 루트부터 시작하는 경로는 맞지 않습니다.
 
 ## GitHub Pages 배포
@@ -75,7 +75,7 @@ GitHub Pages의 프로젝트 주소는 `/tabicl-traffic-forecasting/` 하위에 
 3. 두 검사가 성공하면 `deploy-pages`가 `web/`를 배포합니다.
 
 배포 상태는
-[GitHub Actions](https://github.com/2026-fall-capstone-design/tabicl-traffic-forecasting/actions)에서
+[GitHub Actions](https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting/actions)에서
 병합 커밋에 해당하는 실행을 확인합니다.
 `deploy-pages`가 성공한 뒤 배포된 데모에서 변경 결과를 확인합니다.
 

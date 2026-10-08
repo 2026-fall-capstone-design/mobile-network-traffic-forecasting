@@ -1,11 +1,13 @@
-# TabICLv2 Traffic Forecasting
+# 모바일 네트워크 트래픽 예측 연구
 
-모바일 트래픽 예측 모델을 비교하고, 실험 결과를 웹에서 확인하는 4인 캡스톤 프로젝트입니다.
+모바일 네트워크 트래픽 데이터를 이용해 미래 트래픽을 예측하고,
+모델과 입력 구성에 따른 성능을 비교하는 4인 캡스톤 연구 프로젝트입니다.
+동일한 데이터와 평가 조건에서 예측 정확도와 계산 비용을 분석합니다.
 
 Python으로 데이터를 처리하고 예측·평가한 결과를 JSON으로 저장합니다.
 정적 웹은 이 결과를 읽어 시계열 차트와 모델별 지표를 보여 줍니다.
 
-[데모 보기](https://2026-fall-capstone-design.github.io/tabicl-traffic-forecasting/) ·
+[데모 보기](https://2026-fall-capstone-design.github.io/mobile-network-traffic-forecasting/) ·
 [팀 작업 보드](https://github.com/orgs/2026-fall-capstone-design/projects/1) ·
 [협업 안내](CONTRIBUTING.md)
 
@@ -20,8 +22,9 @@ Python으로 데이터를 처리하고 예측·평가한 결과를 JSON으로 �
 | 자동화 | PR 검사, 예제 결과 재현성 확인, GitHub Pages 배포 |
 
 현재 데모는 데이터부터 웹까지 연결한 합성 예제입니다.
-연구 모델은 **TabICLv2 직접 예측**과 **TabICLv2 기반 군집화 후 RCTL 예측**을 검토 중이며,
-구현·비교 실험은 이후 진행합니다.
+연구에 사용할 모델과 구조는 아직 정하지 않았습니다.
+데이터 특성, 기준 모델 대비 예측 오차, 실행 시간과 메모리 사용량을 비교해 선정합니다.
+선정 기준과 실험 조건은 [공통 실험 규약](docs/research-protocol.md)에 기록합니다.
 
 ## 빠른 시작
 
@@ -32,8 +35,8 @@ CI는 uv **0.11.28**을 사용합니다.
 ### 1. 저장소와 실행 환경 준비
 
 ```bash
-git clone https://github.com/2026-fall-capstone-design/tabicl-traffic-forecasting.git
-cd tabicl-traffic-forecasting
+git clone https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting.git
+cd mobile-network-traffic-forecasting
 uv sync --locked
 ```
 
