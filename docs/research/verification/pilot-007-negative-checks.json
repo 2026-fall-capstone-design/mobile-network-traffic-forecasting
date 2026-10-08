@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "model_executions": 0,
+  "scope": "Only isolated local copies modified; manifest hash updated to reach semantic assertions.",
+  "cases": [
+    {
+      "case": "changed_RCTL_prediction",
+      "rejected": true,
+      "actual": "('RCTL_recomputed_mean_cell_MAE', 16)",
+      "expected": "RCTL_recomputed_mean_cell_MAE"
+    },
+    {
+      "case": "duplicate_query_time",
+      "rejected": true,
+      "actual": "('input_times', 2)",
+      "expected": "input_times"
+    },
+    {
+      "case": "changed_RCTL_seed",
+      "rejected": true,
+      "actual": "('RCTL_fixed_protocol', 2)",
+      "expected": "RCTL_fixed_protocol"
+    },
+    {
+      "case": "unread_field_claim",
+      "rejected": true,
+      "actual": "('declared_automated_scope', 66)",
+      "expected": "declared_automated_scope"
+    }
+  ]
+}

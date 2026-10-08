@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-02T21:43:36.991185+00:00",
+  "limits": {
+    "Tab_seconds": 120,
+    "other_seconds": 30,
+    "stage_seconds": 150,
+    "rss_bytes": 2147483648,
+    "threads": 4,
+    "contexts": 4,
+    "query_rows": 4096,
+    "simple_fits": 4
+  },
+  "source_hashes": {
+    "567_fixed_cohort_application_plan.md": "e549ff9ab58a256465b70693cb07d261893acef3b14cafed8409a3acc807879e",
+    "run_fixed_cohort_application_567.py": "935bb40531e8d10af55f6f95842185243c40d8c84ce7006f2696d4b95cf9be3a",
+    "fixed_cohort_application_567.py": "2c88fbead0cf6c3698d9f4df83c4eeac0fbdc5b15a863f6cb9e4312430632a35",
+    "recovery_io_271.py": "c1dc7d7de6d83f2a2b4b18c8468376d60be10efce3cad6c5a613e6df21bfda3b",
+    "small_upc_core_235.py": "b8407b7fc59cce84a0a6b465929e3271e99450d46ac28ae05749d0a31d6110b0",
+    "results/cell_identity/run_started.json": "c1c466f8f1cb7dade569499d5f7f5a9bcdf94a7c0f45373b721e2ab5a94c5fae",
+    "results/fixed_rule_scope_565/h5_metadata.json": "76cc9dbf6bed5456e1b21a57a78423b880adaa49ef3d9aded927a5a76a7f5db7",
+    "results/fixed_rule_scope_565/cohort_metadata_review.json": "012a0a6a3272110d373bf52dbaa2c35d636edb8776f36f3e6d27895edc974d12",
+    "results/fixed_cohort_contract_566/archive_complete.json": "637d75c13d9a576ba6f14b388734a621d36d31f6a0f6b465d2d35dc9197a6416",
+    "assets/tabicl-regressor-v2-20260212.ckpt": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+    "runtime/Lib/site-packages/tabicl/_sklearn/regressor.py": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+    "runtime/Lib/site-packages/tabicl/_sklearn/preprocessing.py": "2163a3bf6754127365a7aedac854d99a6f565545cc1ea7e63c68a596081b2976",
+    "runtime/Lib/site-packages/tabicl/_model/tabicl.py": "583786e5ffd70b9eb425bca8e52aed415dadcdf4254c908b3b6fa52026a56491",
+    "runtime/Lib/site-packages/tabicl/_model/embedding.py": "a0c562600fe22944f91b1b71b706198cb9a4c3d9d8aaba67a86f35a85493d322",
+    "runtime/Lib/site-packages/tabicl/_model/learning.py": "7549dff09c3796a3cb0b55ea03e249342392fa601a681526f7b1efb6a6f1eef2",
+    "runtime/Lib/site-packages/tabicl/_model/layers.py": "96cce2e84db33e176d872c7bb7c0df8c305de3eb7a02fcad9f1128f33d319d95"
+  },
+  "input_kind": "actual_user_handoff_application_and_research_continuation",
+  "seed": 20260925,
+  "contexts": 4,
+  "context_rows_each": 504,
+  "features": 16,
+  "query_rows_each_context": 1024,
+  "total_query_rows": 4096,
+  "same_information": true,
+  "new_RCTL_fits": 0,
+  "query_truth_used_for_assignment_only": true,
+  "primary_rule": "203_fixed_initial_UPC_pool_one_pass_cellwise_MAE_argmin",
+  "tie": "exact minimum ties: own group first, then numeric group ID",
+  "anchor": "first672 raw PCC to initial group mean, then smallest cell ID",
+  "known_comparison_not_new_algorithm": true,
+  "small_UPC_not_original_theta10": true,
+  "cell_ids": [
+    5737,
+    5745,
+    5753,
+    5765,
+    6537,
+    6545,
+    6553,
+    6565,
+    7337,
+    7345,
+    7353,
+    7365,
+    8137,
+    8145,
+    8153,
+    8165
+  ],
+  "application_scope": "same_city_same_time_development_not_independent_holdout",
+  "known_spatial_input_exposure": [
+    5753
+  ],
+  "data_file_identity": {
+    "bytes": 357150320,
+    "mtime_ns": 1556073322000000000
+  }
+}

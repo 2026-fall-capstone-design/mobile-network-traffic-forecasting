@@ -1,0 +1,232 @@
+{
+  "at": "2026-10-02T21:43:56.172859+00:00",
+  "context_groups": 4,
+  "context_rows_each": 504,
+  "input_columns": 16,
+  "input_dtype": "float32",
+  "target_dtype": "float32",
+  "query_rows_each": 1024,
+  "context_target_times": [
+    168,
+    671
+  ],
+  "query_times": [
+    672,
+    675,
+    677,
+    680,
+    683,
+    685,
+    688,
+    691,
+    693,
+    696,
+    699,
+    701,
+    704,
+    706,
+    709,
+    712,
+    714,
+    717,
+    720,
+    722,
+    725,
+    728,
+    730,
+    733,
+    736,
+    738,
+    741,
+    744,
+    746,
+    749,
+    752,
+    754,
+    757,
+    759,
+    762,
+    765,
+    767,
+    770,
+    773,
+    775,
+    778,
+    781,
+    783,
+    786,
+    789,
+    791,
+    794,
+    797,
+    799,
+    802,
+    805,
+    807,
+    810,
+    812,
+    815,
+    818,
+    820,
+    823,
+    826,
+    828,
+    831,
+    834,
+    836,
+    839
+  ],
+  "raw_anchor_times": [
+    0,
+    671
+  ],
+  "query_targets_passed_to_model": false,
+  "query_targets_used_for_assignment": true,
+  "query_target_read_schedule": "Separate assignment truth matrix after all Tab/HGB predictions frozen; earlier query values may occur only as later lag history",
+  "UPC_normalization": "cell minmax raw0..671",
+  "anchor_normalization": "unscaled raw0..671 PCC to raw group mean",
+  "regression_normalization": "cell mean raw0..671; traffic X and Y float32 after normalization",
+  "source_cell_mapping": "H5 data column = one-based cell ID minus one; channel2",
+  "feature_source": "data_and_smoke.py identical16-column formula; std ddof0",
+  "feature_latest_traffic_time_rule": "t-1",
+  "pre_model_traffic_read_max": 838,
+  "query839_value_read_only_after_predictions": true,
+  "calendar_metadata_read_max": 839,
+  "UPC_primary_source": "small_upc_core_235.py summarize then cluster daily_profile ascending",
+  "UPC_preflight_sha256": "39505881bd3ca9ba227f74934695aba25eae6dd7ba13aea7d72b539ff76a9290",
+  "feature_inputs_sha256": "a6ca56a64798cfbea37329d0addbafa339139574dd714b3ce6406adc92145c6d",
+  "RCTL_results_used": false,
+  "fixed_external_reference": true,
+  "context_refresh": false,
+  "kv_cache": true,
+  "ensemble": 1,
+  "seed": 20260925,
+  "n_jobs": 1,
+  "batch_query_cap": 512,
+  "torch_initial_threads": 4,
+  "torch_interop_threads": 2,
+  "n_jobs_note": "Installed Tab predict with n_jobs=1 may set intra-op threads to 1.",
+  "group_hashes": [
+    {
+      "group": 0,
+      "members": [
+        7337
+      ],
+      "allocation": [
+        {
+          "cell_id": 7337,
+          "count": 504
+        }
+      ],
+      "context_rows": 504,
+      "X_sha256": "f8f453bd655e2762cbadf139671e0ed81380458caefc8f1bfadf7d22ee608cab",
+      "Y_sha256": "bff65d640ba45606d599e1932094cc9ca07d29128d6df45b3c1e1216bf09ea66"
+    },
+    {
+      "group": 1,
+      "members": [
+        5737,
+        6545,
+        7345,
+        8145,
+        8153,
+        8165
+      ],
+      "allocation": [
+        {
+          "cell_id": 5737,
+          "count": 84
+        },
+        {
+          "cell_id": 6545,
+          "count": 84
+        },
+        {
+          "cell_id": 7345,
+          "count": 84
+        },
+        {
+          "cell_id": 8145,
+          "count": 84
+        },
+        {
+          "cell_id": 8153,
+          "count": 84
+        },
+        {
+          "cell_id": 8165,
+          "count": 84
+        }
+      ],
+      "context_rows": 504,
+      "X_sha256": "d4a3c20cd0adcf8425a26b5b8ad0a66941cd2c0f8ffbb5ae9ce234b7d5620c65",
+      "Y_sha256": "319a7992c1d3ca472c0d5777af626629c11f19b8eb32e471120f655ef29f7d6f"
+    },
+    {
+      "group": 2,
+      "members": [
+        6565
+      ],
+      "allocation": [
+        {
+          "cell_id": 6565,
+          "count": 504
+        }
+      ],
+      "context_rows": 504,
+      "X_sha256": "418d434eb24c3dfd75711f5ae9adc6953ae69f0173e652fc969ec269e697ce48",
+      "Y_sha256": "d5c6b5aa1ec612e42a7bde7b42ef77174fa2395a80cb215a9f481eb7ede59edf"
+    },
+    {
+      "group": 3,
+      "members": [
+        5745,
+        5753,
+        5765,
+        6537,
+        6553,
+        7353,
+        7365,
+        8137
+      ],
+      "allocation": [
+        {
+          "cell_id": 5745,
+          "count": 63
+        },
+        {
+          "cell_id": 5753,
+          "count": 63
+        },
+        {
+          "cell_id": 5765,
+          "count": 63
+        },
+        {
+          "cell_id": 6537,
+          "count": 63
+        },
+        {
+          "cell_id": 6553,
+          "count": 63
+        },
+        {
+          "cell_id": 7353,
+          "count": 63
+        },
+        {
+          "cell_id": 7365,
+          "count": 63
+        },
+        {
+          "cell_id": 8137,
+          "count": 63
+        }
+      ],
+      "context_rows": 504,
+      "X_sha256": "7913086f3e745ac0066bacea2f5f08937ff30f09ece50152a9737175027d170d",
+      "Y_sha256": "616ddf18c1f97d155dff4a96afd5805957d14551882e2e30ee4e4b1ca1aff860"
+    }
+  ],
+  "query_X_sha256": "05360415cac2617a6eaee8855399a241552c7878e7eaced15b5372e6b8572ee8"
+}

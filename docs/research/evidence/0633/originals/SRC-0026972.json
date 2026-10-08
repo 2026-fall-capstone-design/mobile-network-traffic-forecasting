@@ -1,0 +1,344 @@
+{
+  "at": "2026-10-03T10:35:58.960390+00:00",
+  "cohorts": [
+    {
+      "source": "fixed_UPC_pool_assignment_recovery_562",
+      "cell_ids": [
+        3737,
+        3745,
+        3753,
+        3765,
+        4537,
+        4545,
+        4553,
+        4565,
+        5337,
+        5345,
+        5353,
+        5365,
+        6137,
+        6145,
+        6153,
+        6165
+      ],
+      "labels": {
+        "UPC": [
+          3,
+          1,
+          0,
+          2,
+          2,
+          2,
+          3,
+          2,
+          0,
+          1,
+          2,
+          2,
+          2,
+          2,
+          1,
+          0
+        ],
+        "Tab": [
+          1,
+          3,
+          2,
+          2,
+          2,
+          2,
+          3,
+          2,
+          0,
+          1,
+          2,
+          2,
+          2,
+          2,
+          3,
+          0
+        ],
+        "HGB": [
+          3,
+          1,
+          2,
+          2,
+          2,
+          2,
+          0,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0,
+          3,
+          0
+        ]
+      },
+      "groups": [
+        [
+          3737,
+          4553
+        ],
+        [
+          3737,
+          5345
+        ],
+        [
+          3737,
+          6153
+        ],
+        [
+          3745,
+          4553,
+          6153
+        ],
+        [
+          3745,
+          5345
+        ],
+        [
+          3745,
+          5345,
+          6153
+        ],
+        [
+          3753,
+          3765,
+          4537,
+          4545,
+          4565,
+          5353,
+          5365,
+          6137,
+          6145
+        ],
+        [
+          3753,
+          3765,
+          4537,
+          4545,
+          5353
+        ],
+        [
+          3753,
+          5337,
+          6165
+        ],
+        [
+          3765,
+          4537,
+          4545,
+          4565,
+          5353,
+          5365,
+          6137,
+          6145
+        ],
+        [
+          4553,
+          4565,
+          5337,
+          5365,
+          6137,
+          6145,
+          6165
+        ],
+        [
+          5337,
+          6165
+        ]
+      ]
+    },
+    {
+      "source": "fixed_cohort_application_567",
+      "cell_ids": [
+        5737,
+        5745,
+        5753,
+        5765,
+        6537,
+        6545,
+        6553,
+        6565,
+        7337,
+        7345,
+        7353,
+        7365,
+        8137,
+        8145,
+        8153,
+        8165
+      ],
+      "labels": {
+        "UPC": [
+          1,
+          3,
+          3,
+          3,
+          3,
+          1,
+          3,
+          2,
+          0,
+          1,
+          3,
+          3,
+          3,
+          1,
+          1,
+          1
+        ],
+        "Tab": [
+          3,
+          3,
+          3,
+          1,
+          3,
+          3,
+          3,
+          2,
+          0,
+          1,
+          3,
+          3,
+          1,
+          1,
+          1,
+          3
+        ],
+        "HGB": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          1,
+          0,
+          2,
+          3,
+          3,
+          1,
+          1,
+          3,
+          3
+        ]
+      },
+      "groups": [
+        [
+          5737,
+          5745,
+          5753,
+          5765,
+          6537,
+          6545,
+          6553,
+          7353,
+          7365,
+          8153,
+          8165
+        ],
+        [
+          5737,
+          5745,
+          5753,
+          6537,
+          6545,
+          6553,
+          7353,
+          7365,
+          8165
+        ],
+        [
+          5737,
+          6545,
+          7345,
+          8145,
+          8153,
+          8165
+        ],
+        [
+          5745,
+          5753,
+          5765,
+          6537,
+          6553,
+          7353,
+          7365,
+          8137
+        ],
+        [
+          5765,
+          7345,
+          8137,
+          8145,
+          8153
+        ],
+        [
+          6565
+        ],
+        [
+          6565,
+          8137,
+          8145
+        ],
+        [
+          7337
+        ],
+        [
+          7345
+        ]
+      ]
+    }
+  ],
+  "params": {
+    "loss": "absolute_error",
+    "max_iter": 100,
+    "learning_rate": 0.1,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 20,
+    "l2_regularization": 1,
+    "early_stopping": false,
+    "random_state": 20260925
+  },
+  "source_hashes": {
+    "616_fixed_reference_vs_joint_pool_plan.md": "b35614e701778a65d723a1fd837a192884d8c06fb7f0f2a7b622f3145ad76091",
+    "fixed_reference_vs_joint_pool_616.py": "7317591aee374ff55965141b78f9cb60a50ce29900a983a006be46928124425c",
+    "recovery_io_271.py": "c1dc7d7de6d83f2a2b4b18c8468376d60be10efce3cad6c5a613e6df21bfda3b",
+    "results/nonempty_reference_assignment_579/result.json": "8689e5a617ae167e8663e621cc6cb977e3136a2f887ee322ee3a9b29e1fc365f",
+    "results/nonempty_reference_assignment_579/verification.json": "74e1d775bd10dd236c9a75a120c153014d9ac13589d1dac98122bcf30ecda3cc",
+    "results/design_data.npz": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+    "results/fixed_cohort_application_567/feature_inputs_frozen.npz": "a6ca56a64798cfbea37329d0addbafa339139574dd714b3ce6406adc92145c6d",
+    "results/prospective_pooling_gain_603_recovery/frozen_settings.json": "25ac23d93f226a5d646b49a47f29bbac4746d40f6c842ff33ac3c56ef20934f8",
+    "results/fixed_query_training_prefix_462/settings.json": "b7a24fafde99425993ac46ce803cdb2863eee86afb41785701cef7e929d5c37a",
+    "results/fixed_size_composition_464/settings.json": "eecc94c1841df38119df616b8b90c2011767b0a7f854a0dc6a8c1faabe8d9001",
+    "results/fixed_UPC_pool_assignment_recovery_562/sample_provenance.npz": "2ecab68afee8a1024094805e7c6eed0b9786a02992f01cbed440b29094e85bf0",
+    "results/fixed_UPC_pool_assignment_recovery_562/assignment_query_truth.npz": "0cc15bb9f632b26952c8ede18e1a259a5353b350cd41273ed222fe20edf13eab",
+    "results/fixed_UPC_pool_assignment_recovery_562/partitions_frozen.json": "693a173217a257efc4aeead847d92c4cbe892a1df07b8bd214bb6b1b49f677f9",
+    "results/fixed_UPC_pool_assignment_recovery_562/input_contract.json": "96fbc5f6e65c90703ddcefaa14a3373ddd6a0e6a65d528a20403cbc24dfbc0aa",
+    "results/fixed_UPC_pool_assignment_recovery_562/settled.json": "8b1de92f9d21b64f791b5c1e5561365c201925fc383c1a6634970d26247a315d",
+    "results/fixed_UPC_pool_assignment_recovery_562/verification.json": "d07a67d287e15ff00f9e2c43886b3b5e481a3a3f90f7039b37bb05393bc98cac",
+    "results/fixed_cohort_application_567/sample_provenance.npz": "60a38995e88d14a498f41e711f3e9b13d456016f903d34a7c69a2807c71933ca",
+    "results/fixed_cohort_application_567/assignment_query_truth.npz": "9f30f5145a0a2d4dce29fd1622cc64ceb0ae9f8990f2b6901d9b7cf4664ca812",
+    "results/fixed_cohort_application_567/partitions_frozen.json": "cb95777963ff987e60f82915e14f2c0496d70be83c7f81cf578a1f1d9c64dfda",
+    "results/fixed_cohort_application_567/input_contract.json": "73acbc5d26eb7ef94442c81298d9c1d3b9334330d5d564e40d505c4514ccf9e6",
+    "results/fixed_cohort_application_567/settled.json": "8a05b25b2aad5dd336061c55e8a024b03e9b4ea60e1273f5a481236ba5c303e7",
+    "results/fixed_cohort_application_567/verification.json": "5e32c0ab22b93786db23f89d7a1b1e35a0b5888910abefb49822d219838c3330"
+  },
+  "seconds_cap": 120,
+  "RSS_cap": 536870912,
+  "fit_cap": 21,
+  "row_cap": 12288,
+  "tie_order": [
+    "UPC",
+    "HGB",
+    "Tab"
+  ],
+  "all_development": true,
+  "Tab_calls": 0,
+  "RCTL_access": false
+}

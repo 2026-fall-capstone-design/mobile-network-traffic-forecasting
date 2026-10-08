@@ -1,0 +1,571 @@
+{
+  "max_epochs": 80,
+  "steps": 8,
+  "channels": 9,
+  "batch_size": 256,
+  "patience": 10,
+  "learning_rate": 0.001,
+  "adam_eps": 1e-07,
+  "train_targets": [
+    168,
+    839
+  ],
+  "validation_targets": [
+    840,
+    1007
+  ],
+  "test_targets": [
+    1008,
+    1487
+  ],
+  "loss": "MAE",
+  "architecture": "unchanged rctl_torch.RCTL",
+  "at": "2026-10-02T21:56:22.219874+00:00",
+  "stage": "fixed_cohort_RCTL_bridge_569",
+  "cell_ids": [
+    5737,
+    5745,
+    5753,
+    5765,
+    6537,
+    6545,
+    6553,
+    6565,
+    7337,
+    7345,
+    7353,
+    7365,
+    8137,
+    8145,
+    8153,
+    8165
+  ],
+  "seed": 20260925,
+  "tasks": [
+    {
+      "method": "Unique",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        9,
+        10,
+        11,
+        14,
+        15
+      ],
+      "cell_ids": [
+        5737,
+        5745,
+        5753,
+        5765,
+        6537,
+        6553,
+        7345,
+        7353,
+        7365,
+        8153,
+        8165
+      ],
+      "reuse": null
+    },
+    {
+      "method": "Unique",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        10,
+        11,
+        15
+      ],
+      "cell_ids": [
+        5737,
+        5745,
+        5753,
+        5765,
+        6537,
+        6553,
+        7353,
+        7365,
+        8165
+      ],
+      "reuse": null
+    },
+    {
+      "method": "Unique",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        0,
+        5,
+        9,
+        13,
+        14,
+        15
+      ],
+      "cell_ids": [
+        5737,
+        6545,
+        7345,
+        8145,
+        8153,
+        8165
+      ],
+      "reuse": null
+    },
+    {
+      "method": "Unique",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        10,
+        11,
+        12
+      ],
+      "cell_ids": [
+        5745,
+        5753,
+        5765,
+        6537,
+        6553,
+        7353,
+        7365,
+        8137
+      ],
+      "reuse": null
+    },
+    {
+      "method": "Unique",
+      "seed": 20260925,
+      "cluster": 4,
+      "members": [
+        5,
+        9,
+        12,
+        13,
+        14
+      ],
+      "cell_ids": [
+        6545,
+        7345,
+        8137,
+        8145,
+        8153
+      ],
+      "reuse": null
+    },
+    {
+      "method": "Unique",
+      "seed": 20260925,
+      "cluster": 5,
+      "members": [
+        5,
+        12,
+        13
+      ],
+      "cell_ids": [
+        6545,
+        8137,
+        8145
+      ],
+      "reuse": null
+    },
+    {
+      "method": "Unique",
+      "seed": 20260925,
+      "cluster": 6,
+      "members": [
+        7
+      ],
+      "cell_ids": [
+        6565
+      ],
+      "reuse": null
+    },
+    {
+      "method": "Unique",
+      "seed": 20260925,
+      "cluster": 7,
+      "members": [
+        8
+      ],
+      "cell_ids": [
+        7337
+      ],
+      "reuse": null
+    }
+  ],
+  "aliases": [
+    {
+      "method": "U_small_UPC",
+      "cluster": 0,
+      "members": [
+        8
+      ],
+      "cell_ids": [
+        7337
+      ],
+      "unique_cluster": 7
+    },
+    {
+      "method": "U_small_UPC",
+      "cluster": 1,
+      "members": [
+        0,
+        5,
+        9,
+        13,
+        14,
+        15
+      ],
+      "cell_ids": [
+        5737,
+        6545,
+        7345,
+        8145,
+        8153,
+        8165
+      ],
+      "unique_cluster": 2
+    },
+    {
+      "method": "U_small_UPC",
+      "cluster": 2,
+      "members": [
+        7
+      ],
+      "cell_ids": [
+        6565
+      ],
+      "unique_cluster": 6
+    },
+    {
+      "method": "U_small_UPC",
+      "cluster": 3,
+      "members": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        10,
+        11,
+        12
+      ],
+      "cell_ids": [
+        5745,
+        5753,
+        5765,
+        6537,
+        6553,
+        7353,
+        7365,
+        8137
+      ],
+      "unique_cluster": 3
+    },
+    {
+      "method": "Tab_fixed_pool",
+      "cluster": 0,
+      "members": [
+        8
+      ],
+      "cell_ids": [
+        7337
+      ],
+      "unique_cluster": 7
+    },
+    {
+      "method": "Tab_fixed_pool",
+      "cluster": 1,
+      "members": [
+        5,
+        9,
+        12,
+        13,
+        14
+      ],
+      "cell_ids": [
+        6545,
+        7345,
+        8137,
+        8145,
+        8153
+      ],
+      "unique_cluster": 4
+    },
+    {
+      "method": "Tab_fixed_pool",
+      "cluster": 2,
+      "members": [
+        7
+      ],
+      "cell_ids": [
+        6565
+      ],
+      "unique_cluster": 6
+    },
+    {
+      "method": "Tab_fixed_pool",
+      "cluster": 3,
+      "members": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        10,
+        11,
+        15
+      ],
+      "cell_ids": [
+        5737,
+        5745,
+        5753,
+        5765,
+        6537,
+        6553,
+        7353,
+        7365,
+        8165
+      ],
+      "unique_cluster": 1
+    },
+    {
+      "method": "HGB_fixed_pool",
+      "cluster": 0,
+      "members": [
+        8
+      ],
+      "cell_ids": [
+        7337
+      ],
+      "unique_cluster": 7
+    },
+    {
+      "method": "HGB_fixed_pool",
+      "cluster": 1,
+      "members": [
+        5,
+        12,
+        13
+      ],
+      "cell_ids": [
+        6545,
+        8137,
+        8145
+      ],
+      "unique_cluster": 5
+    },
+    {
+      "method": "HGB_fixed_pool",
+      "cluster": 2,
+      "members": [
+        7
+      ],
+      "cell_ids": [
+        6565
+      ],
+      "unique_cluster": 6
+    },
+    {
+      "method": "HGB_fixed_pool",
+      "cluster": 3,
+      "members": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        9,
+        10,
+        11,
+        14,
+        15
+      ],
+      "cell_ids": [
+        5737,
+        5745,
+        5753,
+        5765,
+        6537,
+        6553,
+        7345,
+        7353,
+        7365,
+        8153,
+        8165
+      ],
+      "unique_cluster": 0
+    }
+  ],
+  "partitions": {
+    "U_small_UPC": [
+      1,
+      3,
+      3,
+      3,
+      3,
+      1,
+      3,
+      2,
+      0,
+      1,
+      3,
+      3,
+      3,
+      1,
+      1,
+      1
+    ],
+    "Tab_fixed_pool": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      1,
+      3,
+      2,
+      0,
+      1,
+      3,
+      3,
+      1,
+      1,
+      1,
+      3
+    ],
+    "HGB_fixed_pool": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      1,
+      3,
+      2,
+      0,
+      3,
+      3,
+      3,
+      1,
+      1,
+      3,
+      3
+    ]
+  },
+  "membership_source": "results/fixed_cohort_application_567/partitions_frozen.json",
+  "membership_sha256": "cb95777963ff987e60f82915e14f2c0496d70be83c7f81cf578a1f1d9c64dfda",
+  "membership_source_sha256": "cb95777963ff987e60f82915e14f2c0496d70be83c7f81cf578a1f1d9c64dfda",
+  "prepared_arrays": "results/fixed_cohort_RCTL_bridge_569/prepared_arrays.npz",
+  "source_hashes": {
+    "569_fixed_cohort_RCTL_bridge_plan.md": "c4f51591cbc9801ed0bbe34ef34637c9f7a5154257a5959c200c585282ff6485",
+    "results/fixed_cohort_RCTL_contract_568/review_manifest.json": "d631cb6f6e38a61ba2f01082fbb7e4e1786552f15ca5a175d79c9d0e7a67e1f6",
+    "568_fixed_cohort_RCTL_contract_plan.md": "981b11f464ff1dca05f74a557a106b41315c6fee269f8dfdcf8c2e2dc05e17e4",
+    "568_fixed_cohort_RCTL_contract_findings.md": "4e6e205edbadeb76a6bb91384492d57b50d2bda71f6bbdfc6f085c27e089ede3",
+    "fixed_cohort_RCTL_bridge_569.py": "67c194e8187ba77864e668a490266fbb8d1718edf7397c3f66753f749ec3fbd4",
+    "fixed_cohort_RCTL_worker_569.py": "255906372ab0d2ff2a02b02d27b168b49b2ba7f0dfa90017cce5fc8a8cefa020",
+    "verify_fixed_cohort_RCTL_bridge_569.py": "6b78cbe7187e1a66c10580244c5c617fe1c6c8febcc32f1361084721b8935b3b",
+    "fixed32_downstream_reference_336.py": "630c86424d2e5caedb9bc22e4c2edc56a3022449fb1b0787e2a01edee4f7a2d1",
+    "fixed32_single_move_recovery_331.py": "85f9fa8a33b89c39ebbbd6b24ca6a7205a60be23efa4ca7abb785f60d8163c44",
+    "rctl_torch.py": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+    "recovery_io_271.py": "c1dc7d7de6d83f2a2b4b18c8468376d60be10efce3cad6c5a613e6df21bfda3b",
+    "self_only_reference_160.py": "007dd090c00f0197de6787a9a60d7d6b5f132ab4e8205fbf3768e9666877a512",
+    "fixed_pool_seed_confirmation_564.py": "4aafc85fda28b40af40d8576654d80bde1c300236c5a4bc76162b3550fe044c7",
+    "verify_fixed_pool_seed_confirmation_564.py": "ba63d9d01b9ba0979317b2504d42168c1c5744a06884272287d242f7d0e8ec01",
+    "results/cell_identity/run_started.json": "c1c466f8f1cb7dade569499d5f7f5a9bcdf94a7c0f45373b721e2ab5a94c5fae",
+    "results/fixed_pool_seed_confirmation_564/frozen_settings.json": "68bd2cb22db76ef08e3e84394dd59dbf7a1bc3c9a3215ebbb4e80ecf06c1f0d1",
+    "results/fixed_pool_seed_confirmation_564/settled.json": "cba5ebe939820d0194c51e96a255364cec1df703ff1e6827463e8dbf63c411e2",
+    "assets/data_git_version.h5": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+    "results/fixed_cohort_application_567/partitions_frozen.json": "cb95777963ff987e60f82915e14f2c0496d70be83c7f81cf578a1f1d9c64dfda",
+    "results/fixed_cohort_application_567/result.json": "0ae25cfe4261a4abeba86caf50647f8494f6e7646086bc9421befffecbe89a4a",
+    "results/fixed_cohort_application_567/verification.json": "5e32c0ab22b93786db23f89d7a1b1e35a0b5888910abefb49822d219838c3330",
+    "results/fixed_cohort_application_567/settled.json": "8a05b25b2aad5dd336061c55e8a024b03e9b4ea60e1273f5a481236ba5c303e7",
+    "results/fixed_cohort_application_567/archive_complete.json": "3ce1632bfb76379e69c1bdfda8adcace39e70ec827110d0cd97811445006248d",
+    "results/fixed_cohort_application_567/frozen_settings.json": "524e915c30b0a06ac1a1e50956d125946dd8b165a7bfc6f039fb2c5b7c69a177",
+    "results/fixed_cohort_application_567/feature_inputs_frozen.npz": "a6ca56a64798cfbea37329d0addbafa339139574dd714b3ce6406adc92145c6d",
+    "results/fixed_cohort_application_567/assignment_query_truth.npz": "9f30f5145a0a2d4dce29fd1622cc64ceb0ae9f8990f2b6901d9b7cf4664ca812",
+    "results/fixed_cohort_application_567/UPC_inputs_frozen.npz": "358983fa20185be36edb4b42ed829bfff8fa6b0d0fe520b9bc7c41bce60038b0",
+    "results/fixed_cohort_application_567/sample_provenance.json": "e5b46c2ac1c091cde203696b540ed036c490eea354d227a844184de17ed58f12"
+  },
+  "threads": 1,
+  "torch_interop_threads": 2,
+  "ram_cap_bytes": 2147483648,
+  "max_new_fits": 8,
+  "max_new_epochs": 640,
+  "wall_cap_seconds": 1100,
+  "verification_seconds_cap": 30,
+  "preparation_seconds_cap": 15,
+  "reused_fits": 0,
+  "within_run_alias_reuse": 4,
+  "cache_review": "results/fixed_cohort_RCTL_contract_568/review_manifest.json",
+  "known_rule": "203_fixed_initial_UPC_pool_anchored_single_assignment",
+  "actual_request_kind": "research_continuation_under_existing_goal",
+  "input_contract": "160:16flat ->8x9, recent8 channel0; remaining8 replicated across steps",
+  "no_RCTL_membership_feedback": true,
+  "original_theta10_replication": false,
+  "Tab_calls": 0,
+  "RCTL_results_used_for_clustering": false,
+  "new_algorithm_or_Tab_novelty": false,
+  "comparison_pairs": [
+    [
+      "Tab_minus_UPC",
+      "Tab_fixed_pool",
+      "U_small_UPC"
+    ],
+    [
+      "HGB_minus_UPC",
+      "HGB_fixed_pool",
+      "U_small_UPC"
+    ],
+    [
+      "Tab_minus_HGB",
+      "Tab_fixed_pool",
+      "HGB_fixed_pool"
+    ]
+  ],
+  "data_status": "same-city same-period development; fixed geographic cohort; 5753 prior covariate exposure retained",
+  "cost_basis": {
+    "reference": "563:1583cell-epochs349.1703883seconds;564:12fits718epochs592.7880545seconds",
+    "maximum_cell_epochs": 3520,
+    "maximum_optimizer_batches": 9440,
+    "new_group_sizes": [
+      11,
+      9,
+      6,
+      8,
+      5,
+      3,
+      1,
+      1
+    ],
+    "maximum_observed_seconds_per_cell_epoch": 0.23453046625,
+    "margin_multiplier": 1.2,
+    "fixed_overhead_seconds": 40,
+    "RCTL_seconds_cap": 1100,
+    "verification_and_preparation_seconds_cap": 30,
+    "no_runtime_guarantee": true
+  },
+  "primary": "equal-cell normalized MAE over all480; first240/last240 prespecified",
+  "branch_rule": "whole_relative<=-0.01 and both halves delta<0 ->stable_gain; whole_relative>=0.01 and both halves delta>0 ->stable_harm;else mixed_or_small",
+  "no_more_cohort_or_seed_search": true
+}

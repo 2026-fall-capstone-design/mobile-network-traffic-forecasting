@@ -1,0 +1,121 @@
+"""Post-seal verification and cached RCTL linkage within the fixed633 plan."""
+import os
+for k in ['OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS']:os.environ[k]='1'
+import json,hashlib,math,sys,time,subprocess
+from pathlib import Path
+from datetime import datetime,timezone
+from recovery_io_271 import write
+B=Path(__file__).resolve().parent; O=B/'results/same_data_joint_Tab_633'; KEY='same_data_joint_Tab_633_cached_bridge'
+L=B/'cumulative_execution_budget.json';S=B/'research_state.json'
+read=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+now=lambda:datetime.now(timezone.utc).isoformat()
+
+def reserve():
+    assert not (O/'bridge_authorization.json').exists() and read(O/'settled.json')['success']
+    s,l=read(S),read(L)
+    assert s['latest_research_stage']==632 and s['next_action']['id']=='633_same_data_joint_Tab_contrast' and s['in_flight_execution'] is None
+    assert sha(L)==read(O/'settled.json')['ledger_sha256']
+    assert not any(v.get('status') in ['reserved','running'] for fam in ['plan_reservations','numeric_reservations'] for v in l[fam].values())
+    paths=[Path(__file__),B/'633_same_data_joint_Tab_contrast_plan.md',O/'frozen_settings.json',O/'result.json',O/'verification.json',O/'settled.json']
+    paths+=list((O/'groups').glob('c*_g[0-9].npz'))+list((O/'groups').glob('c*_g[0-9][0-9].npz'))
+    for i in range(2):paths.extend([O/f'errors_{i}.npz',O/f'selection_sealed_{i}.json',O/f'group_manifest_{i}.json'])
+    for name in ['nonempty_assignment_RCTL_581','refreshed_HGB_RCTL_bridge_632']:
+        for f in ['result.json','verification.json','settled.json','frozen_settings.json']:paths.append(B/'results'/name/f)
+    hashes={p.relative_to(B).as_posix():sha(p) for p in paths}
+    cheap=math.fsum(l['new_cheap_diagnostic_seconds'].values())
+    total=cheap+math.fsum(l['used'].get(k,0) for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'])
+    assert cheap+8<=l['caps']['cheap_numeric_seconds'] and total+8<=l['caps']['total_local_modeling_seconds']
+    plan=dict(at=now(),source_hashes=hashes,seconds_cap=8,new_models=0,new_predictions=0,query_policy='reconstruct saved native arrays, then compare sealed choices to cached seed20260925 RCTL only',
+              branch='separate native estimator accuracy from fixed downstream utility; no choice revision',
+              bound_to_original_plan=True,all_development=True)
+    write(O/'bridge_plan.json',plan)
+    before=sha(L);l['numeric_reservations'][KEY]=dict(status='reserved',seconds_cap=8,settings_sha256=sha(O/'bridge_plan.json'),budget_increase=False)
+    write(L,l);write(O/'bridge_authorization.json',dict(at=now(),ledger_before_sha256=before,ledger_reserved_sha256=sha(L),settings_sha256=sha(O/'bridge_plan.json')))
+    s['in_flight_execution']=dict(id=KEY,output='tmp/redesign_20260925/results/same_data_joint_Tab_633')
+    s['next_action'].update(status='native_completed_bridge_reserved',budget_reserved=True);write(S,s)
+    print('633 bridge reserved: 8s; models0; cap increase0')
+
+def worker():
+    import numpy as np
+    cfg=read(O/'frozen_settings.json'); result=read(O/'result.json');plan=read(O/'bridge_plan.json')
+    checks=[];diffs=[];records=[]
+    def check(n,ok):
+        assert bool(ok),n
+        checks.append(n)
+    sources=[B/'results/nonempty_assignment_RCTL_581',B/'results/refreshed_HGB_RCTL_bridge_632']
+    results=[read(p/'result.json') for p in sources];settings=[read(p/'frozen_settings.json') for p in sources]
+    for p in sources:check('completed_RCTL',read(p/'verification.json')['success'] and read(p/'settled.json')['success'])
+    protocol=['max_epochs','steps','channels','batch_size','patience','learning_rate','adam_eps','seed','train_targets','validation_targets','test_targets','loss','architecture','training_core_sha256']
+    for key in protocol:check('same_RCTL_'+key,settings[0][key]==settings[1][key])
+    check('seed25',settings[0]['seed']==20260925)
+    for ci,co in enumerate(cfg['cohorts']):
+        ids=co['cell_ids'];seal=read(O/f'selection_sealed_{ci}.json');manifest=read(O/f'group_manifest_{ci}.json')
+        with np.load(O/f'errors_{ci}.npz',allow_pickle=False) as z:truth=z['truth'].copy()
+        bank={}
+        for item in manifest:
+            p=B/item['path'];check('saved_prediction_hash',sha(p)==item['sha256'])
+            with np.load(p,allow_pickle=False) as z:
+                check('members',z['group_cell_ids'].tolist()==item['group'])
+                bank[tuple(item['group'])]={model:z[model].copy() for model in ['Tab','HGB']}
+        for model in ['Tab','HGB']:
+            scores={}
+            for label,labels in co['labels'].items():
+                # Independently locate the group containing each individual cell.
+                rows=[]
+                for j,cell in enumerate(ids):
+                    members=[i for i,k in enumerate(labels) if k==labels[j]];g=tuple(ids[i] for i in members)
+                    rows.append(bank[g][model][members.index(j)])
+                pred=np.stack(rows);err=np.abs(pred-truth);scores[label]=float(err.mean())
+                for lo,hi,tag in [(0,64,'MAE'),(0,32,'first32'),(32,64,'last32')]:
+                    scalar=math.fsum(abs(float(pred[j,t])-float(truth[j,t])) for j in range(16) for t in range(lo,hi))/(16*(hi-lo))
+                    want=result['records'][ci]['risks'][model]['scores'][label][tag]
+                    diffs.append(abs(scalar-want));check('saved_native_risk',diffs[-1]<1e-12)
+            pick=min(cfg['tie_order'],key=lambda n:(scores[n],cfg['tie_order'].index(n)))
+            check('sealed_native_selection',pick==seal[model])
+        rr=results[ci];cc=settings[ci];tag='A' if ci==0 else 'B'
+        mapping=dict(UPC=tag+'_UPC',Tab=tag+'_Tab_free',HGB=tag+('_HGB_free' if ci==0 else '_HGB_refreshed'))
+        check('RCTL_ids',rr['cohorts'][tag]['cell_ids']==ids)
+        for label,key in mapping.items():
+            check('RCTL_partition_exact',rr['partitions'][key]==co['labels'][label])
+            check('RCTL_seed',all(t['seed']==20260925 for t in cc['tasks'] if t['method']==key))
+        selected={m:mapping[seal[m]] for m in ['Tab','HGB']}
+        out={}
+        for window in ['first240','last240','all480']:
+            tm=rr['metrics'][selected['Tab']][window];hm=rr['metrics'][selected['HGB']][window];up=rr['metrics'][mapping['UPC']][window]
+            cell_deltas=[a-b for a,b in zip(tm['per_cell_MAE'],hm['per_cell_MAE'])]
+            delta=tm['mean_cell_MAE']-hm['mean_cell_MAE'];ind=math.fsum(cell_deltas)/16
+            diffs.append(abs(delta-ind));check('cached_RCTL_cell_aggregation',abs(delta-ind)<1e-12)
+            out[window]=dict(Tab_choice_MAE=tm['mean_cell_MAE'],HGB_choice_MAE=hm['mean_cell_MAE'],UPC_MAE=up['mean_cell_MAE'],
+                Tab_minus_HGB=delta,relative_percent=100*delta/hm['mean_cell_MAE'],Tab_minus_UPC=tm['mean_cell_MAE']-up['mean_cell_MAE'],per_cell_deltas=cell_deltas)
+        branch='stable_harm' if out['all480']['relative_percent']>=1 and all(out[w]['Tab_minus_HGB']>0 for w in ['first240','last240']) else (
+            'stable_gain' if out['all480']['relative_percent']<=-1 and all(out[w]['Tab_minus_HGB']<0 for w in ['first240','last240']) else 'mixed_or_small')
+        records.append(dict(cohort=ci,Tab_native_choice=seal['Tab'],HGB_native_choice=seal['HGB'],selected_RCTL=selected,metrics=out,branch=branch,
+            native_Tab_lower_MAE_on_all_candidates=all(result['records'][ci]['risks']['Tab']['scores'][label]['MAE']<result['records'][ci]['risks']['HGB']['scores'][label]['MAE'] for label in co['labels'])))
+    check('source_hashes',all(sha(B/p)==h for p,h in plan['source_hashes'].items()))
+    write(O/'bridge_verification.json',dict(at=now(),success=True,checks=len(checks),check_names=checks,max_difference=max(diffs),new_models=0,new_predictions=0))
+    write(O/'bridge_result.json',dict(at=now(),success=True,records=records,source_hashes=plan['source_hashes'],same_protocol_checked=protocol,
+        native_choices_modified=False,new_memberships=False,new_models=0,new_predictions=0,all_periods_development=True,
+        scope='primary matched seed25 for both cohorts; earlier A seed26 results preserved, not retuned or refitted'))
+
+def run():
+    a=read(O/'bridge_authorization.json');plan=read(O/'bridge_plan.json')
+    assert sha(L)==a['ledger_reserved_sha256'] and not (O/'bridge_run_started.json').exists()
+    assert all(sha(B/p)==h for p,h in plan['source_hashes'].items())
+    start=time.perf_counter();write(O/'bridge_run_started.json',dict(at=now(),pid=os.getpid()));timedout=False
+    with (O/'bridge_stdout.log').open('w',encoding='utf-8') as out,(O/'bridge_stderr.log').open('w',encoding='utf-8') as err:
+        p=subprocess.Popen([sys.executable,'-X','utf8',str(Path(__file__)),'worker'],stdout=out,stderr=err,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+        try:code=p.wait(timeout=7)
+        except subprocess.TimeoutExpired:p.kill();code=p.wait();timedout=True
+    elapsed=time.perf_counter()-start;ok=code==0 and not timedout and (O/'bridge_result.json').exists() and elapsed<=8
+    l=read(L);assert sha(L)==a['ledger_reserved_sha256']
+    l['new_cheap_diagnostic_seconds'][KEY]=elapsed
+    l['cheap_stage_details'].append(dict(stage=KEY,seconds=elapsed,new_models=0,new_predictions=0,complete=ok))
+    l['numeric_reservations'][KEY].update(status='settled',used_seconds=elapsed,complete=ok,limit_overrun=elapsed>8)
+    l['as_of_date']=now();write(L,l)
+    s=read(S);assert s['in_flight_execution']['id']==KEY;s['in_flight_execution']=None;s['next_action'].update(status='completed_verified_needs_archive',budget_reserved=False);s['updated_at']=now();write(S,s)
+    write(O/'bridge_settled.json',dict(at=now(),success=ok,seconds=elapsed,new_models=0,new_predictions=0,returncode=code,timed_out=timedout,child_reaped=True,ledger_sha256=sha(L)))
+    print(json.dumps(dict(success=ok,seconds=elapsed,error=(O/'bridge_stderr.log').read_text(encoding='utf-8') if not ok else None)))
+    if not ok:raise SystemExit(1)
+
+if __name__=='__main__':{'reserve':reserve,'run':run,'worker':worker}[sys.argv[1]]()
