@@ -12,6 +12,10 @@ from urllib.parse import unquote, urlsplit
 
 
 def verify(repository: Path) -> dict:
+    """Validate archived bytes, source mappings, and local document links.
+
+    External reference checks cover registered metadata only.
+    """
     repository = repository.resolve()
     archive = repository / "docs/research"
     errors, catalog, digests = [], {}, {}
