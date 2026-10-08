@@ -23,6 +23,7 @@ def verify(repository: Path) -> dict:
                 errors.append(f"Duplicate catalog ID: {source_id}")
             catalog[source_id] = record
     source_paths, source_references = set(), 0
+    reference_metadata_checks = 0
     for manifest in sorted((archive / "evidence").glob("*/manifest.json")):
         data = json.loads(manifest.read_text(encoding="utf-8"))
         for source in data["sources"]:
@@ -48,6 +49,21 @@ def verify(repository: Path) -> dict:
                 or preserved.stat().st_size != source["size_bytes"]
             ):
                 errors.append(f"Evidence hash/size mismatch: {source['source_id']}")
+
+        # Papers are linked, not republished. Validate their catalog identity without
+        # claiming that CI downloaded, hashed, or semantically reviewed a remote paper.
+        for field in ["primary_sources", "hash_only_sources"]:
+            for source in data.get(field, []):
+                reference_metadata_checks += 1
+                original = catalog.get(source["source_id"])
+                if not original or any(
+                    original.get(key) != source.get(key) for key in ["path", "sha256", "size_bytes"]
+                ):
+                    errors.append(f"Reference catalog mismatch: {source['source_id']}")
+                if not source.get("distribution", "").startswith("metadata_"):
+                    errors.append(f"Missing reference access scope: {source['source_id']}")
+                if field == "primary_sources" and not source.get("read_scope"):
+                    errors.append(f"Missing reference read scope: {source['source_id']}")
 
     # Historical .md.txt files intentionally retain old links and are not navigation pages.
     documents = sorted(archive.rglob("*.md")) + [
@@ -77,6 +93,7 @@ def verify(repository: Path) -> dict:
         evidence_source_references=source_references,
         evidence_unique_source_paths=len(source_paths),
         evidence_unique_preserved_files=len(digests),
+        external_reference_metadata_checks=reference_metadata_checks,
         markdown_documents=len(documents),
         local_file_links_checked=checked_links,
         errors=errors,
