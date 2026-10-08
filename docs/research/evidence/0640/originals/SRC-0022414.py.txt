@@ -1,0 +1,73 @@
+"""Record the bounded primary-method review without replaying research or budgets."""
+import json,hashlib,shutil
+from pathlib import Path
+from datetime import datetime,timezone
+from recovery_io_271 import write
+B=Path(__file__).resolve().parent; ROOT=B.parent.parent
+O=B/'results/relation_contribution_640'; S=B/'research_state.json'; L=B/'cumulative_execution_budget.json'
+read=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+rel=lambda p:p.relative_to(ROOT).as_posix()
+at=datetime.now(timezone.utc).isoformat(); s=read(S); ledger=sha(L)
+assert not O.exists()
+assert s['next_action']['id']=='640_relation_graph_contribution_boundary' and s['latest_research_stage']==639
+assert s['in_flight_execution'] is None
+prev=B/'results/bounded_relation_RCTL_bridge_639'
+assert all(read(prev/n)['success'] for n in ['result.json','verification.json','settled.json','run_finished.json','archive_complete.json'])
+assert read(prev/'settled.json')['ledger_sha256']==ledger
+paths=[B/'640_relation_graph_contribution_boundary_plan.md',B/'640_relation_graph_contribution_boundary_findings.md',B/'641_cached_relation_score_ablation_plan.md',
+ B/'116_estimation_error_grouping_findings.md',B/'267_population_prediction_guided_prior_findings.md',B/'473_conditional_median_membership_boundary_findings.md',
+ B/'512_conditional_median_comparison_reentry_findings.md',B/'634_overlap_residual_relation_findings.md',B/'bounded_relation_graph_635.py',B/'bounded_relation_precision_638.py',
+ B/'sources/relation_contribution_640/Yang_etal_2303.13218v1.html',B/'sources/relation_contribution_640/manifest.json']
+assert all(p.exists() for p in paths)
+O.mkdir(); (O/'before').mkdir()
+for p in [S,B/'research_focus.md',B/'progress.md',B/'candidate_decision_index.md']:shutil.copy2(p,O/'before'/p.name)
+manifest=dict(at=at,initial_integration_reused=[280,445],handoff_application_reused='maintenance_research_focus_20260928/application_latest633_20261004/application.json',
+ detailed_review=['267 original Algorithm1 and detailed findings','473 Zhang Eq1-5 and algorithm; detailed boundary findings','116 existing findings and original2201.01793v2 sections2/3 boundaries','512/634 exact score equivalence and target','635 source cdf_pdf/relationship/assign','638 frozen masks and scalar verification implementation','639 results/settlement/archive'],
+ new_primary_review=dict(title='Functional-Coefficient Quantile Regression for Panel Data with Latent Group Structure',version='arXiv2303.13218v1',url='https://arxiv.org/html/2303.13218v1',scope='sections2,3.1,3.3,4.1 assumptions1-5',unreviewed='full proofs/supplement/experimental reproduction'),
+ search_scope='conditional/quantile regression grouping, nonlinear coefficient/function clustering, covariance-weighted spectral panel; bounded question, not exhaustive novelty search',
+ new_facts='functional-coefficient quantile curve clustering and frozen-membership post-grouping estimation already precede current design',
+ remaining_claim='held-out observed-label relation score versus same-estimator direct function distance and plugin score',
+ limits=['known reweighted orthogonal score','no proof of unconditional noise/input-frequency removal','evaluation source reweighting need not match training propensity','sparse unknown edges not compatibility','one development cohort and temporal counterexample'],
+ sources={rel(p):sha(p) for p in paths},new_models=0,new_traffic_arithmetic=False,new_reservations=0,ledger_unchanged=ledger,next_action='641_cached_relation_score_ablation',research_complete=False)
+write(O/'review_manifest.json',manifest)
+focus='''# 현재 집중 문제 — 실제 정답을 쓰는 관계 score가 추가 소속 판단을 만드는가
+
+초기280·445 통합과633 인계 적용,639의 결과·검수·정산을 재사용했습니다. [640 원문·구현 대조](640_relation_graph_contribution_boundary_findings.md)의 실제 검토 범위는 [등록부](results/relation_contribution_640/review_manifest.json)에 있습니다. 문서 확보와 내용 검토를 구별합니다.
+
+| 연결 | 현재 판단 |
+|---|---|
+| 문제·상태 | independent_UPC_membership_decision_information; 가까운 선행의 실제 결정 검토 완료, score 추가 판단 확인 예정 |
+| 관측 근거 | 633의 낮은 예측 MAE와 약한 소속 선택,639의 UPC/같은 HGB 대비 평균 이득 및 강한 대안 대비 전반 손해를 함께 보존 |
+| 원인 가설 | 추정 함수의 거리와 별도 실제 정답에 대조한 충돌 score는 다른 소속을 만들 수 있음. 어떤 연산이639 이득에 필요한지는 아직 모름 |
+| 바뀔 결정 | 같은22edge·지원 mask·UPC 초기화·K4·이동식에서 직접 중앙값 거리와 정답 없는 plug-in의 소속을 계산하여 기존 봉인 소속과 비교 |
+| Tab 역할 | 완료된 cell별9분위수 재사용. 새 학습·예측·fine-tuning 없이 같은 추정 정보를 사용하는 결정식의 차이를 구별 |
+| 강한 대안 | 같은 정보 HGB 및 알려진 함수 거리. 기존 HGB_free 효용도 유지. 양 대조를 미리 고정하고 유리한 것만 선택하지 않음 |
+| 최소 확인 | [641](641_cached_relation_score_ablation_plan.md): 새 모델0·저장 출력만·최대12초, 예약 후 실행·scalar 검수·정산 |
+| 결과별 판단 | 동일 소속이면 score의 추가 결정 기여 축소. 다르면 모두 봉인 후 필요한 최소 실제 효용 연결. 원 score·threshold를 결과로 수정하지 않음 |
+| RCTL 자료 | 소속별 전체 실제 sample·target. 동일 소속은 완료 결과 재사용, 새로운 고유 소속은 필요한 연결 계획을 먼저 고정 |
+
+비선형 관계·분위수·개별 추정 재사용·소속 확정 후 공동 학습은 선행에 있습니다.634 score도 기존 재가중 계열입니다.640은 최종 신규성 채택이 아니라 남은 한 기여를 실제로 구별할 명세입니다. 새 모델·traffic 수치0·누적 비용 보존·최종 연구 산출물 미완료.
+
+## 이전 집중 기록 — 당시 판단 보존
+
+'''
+p=B/'research_focus.md';p.write_text(focus+p.read_text(encoding='utf-8-sig'),encoding='utf-8')
+entry=f'''\n\n## 640 — 조건부 함수 clustering 선행과 score의 추가 판단 범위 ({at})
+
+[640 상세](640_relation_graph_contribution_boundary_findings.md). 기존267/473/116/512/634를 재사용하고 Yang 등의2303.13218v1 §2·3.1·3.3·4.1을 추가 확인했습니다. 비선형 조건부 분위수 clustering,개별 추정 재사용,소속 확정 후 공동 학습을 신규성에서 제외합니다. 현재 score의 확인Y 사용이 같은 예측의 직접 거리와 다른 유용한 소속을 만드는지만 남깁니다. 분포 재가중·잡음 크기·sparse graph의 해석 한계도 보존합니다.
+
+새 모델/traffic 수치/예약0·원장{ledger} 불변. 최초통합·639 실측/반례·실패 비용을 유지했습니다. 다음[641](641_cached_relation_score_ablation_plan.md)은 저장 출력의 두 고정 대조를 계산하는12초 이내 확인이며,새 구조/seed/기간 구제가 아닙니다. 실제 효용/신규성/검수Word 미완료.
+'''
+for n in ['progress.md','candidate_decision_index.md']:
+ with (B/n).open('a',encoding='utf-8') as f:f.write(entry)
+s.update(updated_at=at,latest_research_stage=640,latest_research_record=rel(B/'640_relation_graph_contribution_boundary_findings.md'))
+s['active_problem']=dict(id='independent_UPC_membership_decision_information',path=rel(B/'research_focus.md'),status='closest_method_review_complete_score_added_decision_check_pending')
+s['next_action']=dict(id='641_cached_relation_score_ablation',plan=rel(B/'641_cached_relation_score_ablation_plan.md'),status='specified_not_started',problem_id=s['active_problem']['id'],budget_reserved=False,new_models_reserved=False,action='같은 저장Tab/HGB예측·22지원edge·UPC초기화·K4이동식에서 직접중앙값거리와정답없는plugin의소속을계산·봉인한다. 새모델0·cheap12초예약후실행. 동일결정이면score기여축소,다르면전부보존하고최소RCTL연결계획.실제RCTL손실로소속을고르지않음.')
+s['research_focus_application'].update(latest_delta_at=at,latest_delta_stage=640,latest_delta_record=s['latest_research_record'],latest_review_manifest=rel(O/'review_manifest.json'),active_problem_id=s['active_problem']['id'],problem_id=s['active_problem']['id'],next_action_id=s['next_action']['id'],next_action=s['next_action']['id'],application_status='applied_primary_decision_comparison_and_specific_cached_ablation',hypothesis_review_status='extra_score_information_unverified',latest_delta_new_model_runs=0,latest_delta_new_traffic_arithmetic=False,full_initial_integration_repeated=False,latest_output_and_settlement_checked=True)
+s['evidence_checkpoint'].update(latest_delta_review=rel(O/'review_manifest.json'),latest_source_review=rel(O/'review_manifest.json'),ledger_sha256_at_handoff=ledger,final_Tab_membership_candidate_adopted=False)
+s.setdefault('problem_checkpoints',[]).append(dict(at=at,record=s['latest_research_record'],problem_id=s['active_problem']['id'],completed_scope='closest conditional regression grouping decision and cost comparison',closed_scope='nonlinearity/quantiles/no_refit/post_grouping as standalone novelty',preserved='639 utility and temporal counterexample',remaining_question='heldout score adds membership decision beyond same estimated functions',next_action=s['next_action']['id'],new_candidate_adopted=False))
+s['research_deliverables_complete']=False;write(S,s)
+assert sha(L)==ledger and (ROOT/s['next_action']['plan']).exists()
+write(O/'archive_complete.json',dict(at=at,success=True,stage=640,ledger_sha256=ledger,state_sha256=sha(S),next_action=s['next_action']['id'],new_models=0,new_traffic_arithmetic=False,research_complete=False))
+print(json.dumps(dict(stage=640,archived=True,next_action=s['next_action']['id'],ledger_unchanged=True)))
