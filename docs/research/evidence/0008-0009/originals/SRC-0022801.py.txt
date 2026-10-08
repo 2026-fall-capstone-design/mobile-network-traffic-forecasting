@@ -1,0 +1,118 @@
+"""Bounded diagnosis; no TFM or RCTL fitting, no new clustering selection."""
+import os
+for k in ['OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS']:
+    os.environ[k] = '4'
+import pathlib, json, time, hashlib
+import numpy as np
+from scipy.special import ndtr
+from scipy.stats import spearmanr
+
+base = pathlib.Path(__file__).resolve().parent
+out = base / 'results'
+start = time.perf_counter()
+plan = base / '08_finite_sample_information_plan.md'
+plan_hash = hashlib.sha256(plan.read_bytes()).hexdigest()
+rng = np.random.default_rng(20260925)
+reps, n_cells, m = 20000, 3, 31
+train = rng.standard_normal((reps, n_cells, m))
+
+def normal_mae(a):
+    return 2 * np.exp(-a*a/2) / np.sqrt(2*np.pi) + a*(2*ndtr(a)-1)
+
+local_median = np.median(train, axis=2)
+pooled_median = np.median(train.reshape(reps, -1), axis=1)
+ind_local = normal_mae(local_median).mean(axis=1)
+ind_pooled = normal_mae(pooled_median)
+shared_train = np.repeat(train[:, 0:1, :], n_cells, axis=1)
+shared_local_median = np.median(shared_train[:, 0], axis=1)
+shared_pooled_median = np.median(shared_train.reshape(reps, -1), axis=1)
+assert np.array_equal(shared_local_median, shared_pooled_median)
+shared_risk = normal_mae(shared_local_median)
+delta = ind_pooled - ind_local
+bayes_risk = float(np.sqrt(2/np.pi))
+synthetic = {
+    'seed': 20260925, 'replicates': reps, 'cells': n_cells,
+    'samples_per_cell': m, 'loss': 'absolute error',
+    'learner': 'sample median minimizes empirical absolute loss',
+    'marginal_distribution_both_worlds': 'Y|X ~ N(0,1); constant X',
+    'same_oracle_population_Bayes_risk': bayes_risk,
+    'independent': {'local_MAE': float(ind_local.mean()),
+                    'pooled_MAE': float(ind_pooled.mean()),
+                    'pooled_minus_local': float(delta.mean()),
+                    'paired_Monte_Carlo_SE': float(delta.std(ddof=1)/np.sqrt(reps)),
+                    'local_excess_over_Bayes': float(ind_local.mean()-bayes_risk),
+                    'pooled_excess_over_Bayes': float(ind_pooled.mean()-bayes_risk)},
+    'shared': {'local_MAE': float(shared_risk.mean()),
+               'pooled_MAE': float(shared_risk.mean()),
+               'pooled_minus_local_exact': 0.0,
+               'identical_medians_verified': True},
+    'scope': 'Two joint data-generating processes, not row permutations. Not an RCTL or network-effect validation.'
+}
+
+d = np.load(out / 'design_data.npz')
+rt = np.load(out / 'observed_risk_tables.npz')
+sel = rt['selected_cells']
+time_mask = (d['times'] >= 672) & (d['times'] < 840)
+y = d['Y'][sel][:, time_mask]
+p = rt['predicted_quantiles']
+assert p.shape == (16, 168, 129)
+assert y.shape == (16, 168)
+levels = (np.arange(129)+0.5)/129
+median = p[:, :, 64]
+
+def quantile_at(q):
+    return np.apply_along_axis(lambda v: np.interp(q, levels, v), 2, p)
+
+pair_indices = np.triu_indices(16, 1)
+def pair_corr(v):
+    return np.corrcoef(v)[pair_indices]
+def describe(v):
+    v = np.asarray(v)
+    return {'min': float(np.nanmin(v)), 'median': float(np.nanmedian(v)),
+            'max': float(np.nanmax(v)), 'finite_count': int(np.isfinite(v).sum())}
+
+streams = {'raw': y, 'ridge_residual': y-rt['base_query'],
+           'TabICL_median_residual': y-median,
+           'TabICL_median_exceedance': (y > median).astype(float)}
+correlation_results = {}
+for name, v in streams.items():
+    full = pair_corr(v)
+    first = pair_corr(v[:, :84]); second = pair_corr(v[:, 84:])
+    ok = np.isfinite(first) & np.isfinite(second)
+    correlation_results[name] = {
+        'all_168h_pair_correlations': describe(full),
+        'first84h_vs_last84h_pair_rank_correlation': float(spearmanr(first[ok], second[ok]).statistic),
+        'pair_abs_difference_between_halves': describe(abs(first-second)),
+        'pair_values': full.tolist(),
+        'interpretation': 'Descriptive. Pairs share cells; residuals are not established innovations.'
+    }
+
+calibration = {'per_cell_fraction_Y_le_median': (y <= median).mean(axis=1).tolist()}
+for coverage, lo, hi in [(0.5, .25, .75), (0.8, .10, .90)]:
+    inside = (y >= quantile_at(lo)) & (y <= quantile_at(hi))
+    calibration[str(coverage)] = {'per_cell_coverage': inside.mean(axis=1).tolist(),
+                                  'overall_coverage': float(inside.mean())}
+counts = np.stack([np.bincount(b, minlength=64) for b in rt['query_bins']])
+real = {
+    'cell_ids': rt['cell_ids'].tolist(), 'query_target_indices': [672, 839],
+    'observations_per_cell': 168, 'correlations': correlation_results,
+    'calibration': calibration,
+    'state_occupancy': {
+        'occupied_states_per_cell': (counts > 0).sum(axis=1).tolist(),
+        'fraction_occupied_cell_states_with_at_most_2_samples': float((counts[(counts > 0)] <= 2).mean()),
+        'nonempty_cell_state_counts': describe(counts[counts > 0]),
+        'fraction_queries_in_states_with_at_most_2_samples': float(counts[(counts > 0) & (counts <= 2)].sum()/counts.sum())
+    },
+    'RCTL_outputs_used': False,
+    'scope': 'Previously used design week; exploratory data diagnosis, not independent validation.'
+}
+elapsed = time.perf_counter()-start
+assert elapsed < 30, 'Declared cheap-diagnostic time cap exceeded'
+result = {'plan_sha256': plan_hash, 'synthetic': synthetic, 'real_data': real,
+          'new_model_contexts': 0, 'new_model_query_rows': 0,
+          'new_RCTL_fits': 0, 'elapsed_seconds': elapsed}
+(out / 'finite_sample_information.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
+print(json.dumps({'synthetic': synthetic,
+                  'real_correlations': {k: {kk: vv for kk, vv in v.items() if kk != 'pair_values'} for k, v in correlation_results.items()},
+                  'calibration': calibration, 'state_occupancy': real['state_occupancy'],
+                  'elapsed_seconds': elapsed}, indent=2))

@@ -1,0 +1,82 @@
+{
+  "reviewed_at_utc": "2026-10-08T19:59:52.068795+00:00",
+  "reviewer": "same archive agent; selected primary sections, not independent scientific review",
+  "historical_record": "0009",
+  "whole_papers_reviewed": false,
+  "references": [
+    {
+      "reference_id": "EXT-H002-01",
+      "title": "Forecasting Time Series from Clusters",
+      "authors": [
+        "Elizabeth A. Maharaj",
+        "Brett A. Inder"
+      ],
+      "version": "Monash Working Paper 9/99, June 1999",
+      "url": "https://www.monash.edu/business/ebs/research/publications/ebs/forecasting_time_series_from_clusters.pdf",
+      "read_scope": [
+        "Title/abstract",
+        "Section 2, printed p4",
+        "Section 3 opening/theorem conditions, printed pp4–5",
+        "Equation 3.7 and following disturbance covariance/GLS construction, printed pp7–9"
+      ],
+      "access": "Official university PDF text through web tool; local direct download HTTP403, no local PDF hash",
+      "finding": "AR 계수 차이에 대한 pair test와 계열 간 disturbance covariance를 고려한 GLS pooling을 확인했다.",
+      "limits": "동일 stationary AR(1)/AR(2)·분산·MSFE의 논의. 비선형 MAE RCTL 소속 기준이나 임의 유한 표본의 보장으로 옮기지 않는다. 전 증명 검증 아님."
+    },
+    {
+      "reference_id": "EXT-H002-02",
+      "title": "Two-way Clustering Robust Variance Estimator in Quantile Regression Models",
+      "authors": [
+        "Ulrich Hounyo",
+        "Jiahao Lin"
+      ],
+      "version": "arXiv:2602.16376v1, 18 February 2026",
+      "url": "https://arxiv.org/html/2602.16376v1",
+      "read_scope": [
+        "Abstract/introduction",
+        "Section 2.1 equations2.1/2.2 and Assumptions1/2",
+        "Section2.2 covariance decomposition and Assumption3",
+        "Section3.1 opening and Section3.2 covariance construction"
+      ],
+      "access": "Official arXiv HTML; local review copy hash recorded separately",
+      "finding": "주어진 두 군집 차원의 quantile score 의존성과 목표 분위수의 조건부 밀도를 사용하는 분산 추정이다.",
+      "limits": "소속 발견 알고리즘 아님. 선형 quantile restriction은2.1식이며 Assumption2만의 내용으로 좁히지 않는다. AHK/iid latent/density/non-singularity와 Gaussian regime 조건이 자동으로 교통 시계열에 성립하지 않는다. 전 정리 증명 검증 아님.",
+      "retrieved_review_copy": {
+        "sha256": "e8e9aac1b47ab5a7b4df2a67655d3a3de013af8bd75febeda11a28fb10698b05",
+        "size_bytes": 1221479,
+        "fetched_at_utc": "2026-10-08T19:54:29.593387+00:00"
+      }
+    },
+    {
+      "reference_id": "EXT-H002-03",
+      "title": "Prediction-Powered Conditional Inference",
+      "authors": [
+        "Yang Sui",
+        "Jin Zhou",
+        "Hua Zhou",
+        "Xiaowu Dai"
+      ],
+      "version": "arXiv:2603.05575v1, 5 March 2026",
+      "url": "https://arxiv.org/pdf/2603.05575v1",
+      "historical_url": "https://arxiv.org/html/2603.05575v1",
+      "read_scope": [
+        "Title/abstract",
+        "Section2.3/2.4, printed pp6–8",
+        "Section5.1, printed pp18–19; p19 formula visually checked"
+      ],
+      "access": "Official arXiv PDF; HTML tool repeated internal error; local PDF rendered for formula review",
+      "finding": "label이 있는 자료의 moment 보정과 별도 unlabeled 입력의 예측 moment를 결합하며 omega0에서 labeled-only localized estimator로 돌아간다.",
+      "limits": "같은 query·같은 예측·같은 가중치/정규화의 가감이 empirical로 상쇄된다는 것은 원09의 적용 판단과 대수 항등식이며 이 논문 전체를 기각하지 않는다. iid·표본분리 조건 확인; 정리 전체 재증명/실험 재현 아님.",
+      "retrieved_review_copy": {
+        "sha256": "79ca71ac15508d8be547378808e70df34614bf8e6b4cb67d42eeff6ca655a596",
+        "size_bytes": 1396112,
+        "fetched_at_utc": "2026-10-08T19:54:28.804749+00:00"
+      }
+    }
+  ],
+  "verification_limits": [
+    "문헌의 지정 주장/조건 대조이며 전수 신규성 검색이나 peer review 대체 아님.",
+    "새 clustering 후보나 모델 실행을 수행하지 않았다.",
+    "05의 별도 문헌 검토는 이 묶음에 포함하지 않았다."
+  ]
+}

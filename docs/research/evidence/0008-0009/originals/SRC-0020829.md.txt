@@ -1,0 +1,32 @@
+# 조건부 관계와 유한 sample 공유 효과를 분리하는 확인 — 실행 전 계획
+
+2026-09-25. B2의 RCTL 확인 실패 후 실시하는 설계 진단이다. 새 알고리즘의 효과 검증이나 미관측 test는 아니다.
+
+## 확인할 주장과 분기
+
+동일한 입력·조건부 target 분포를 가진 cell이라도, 동시 sample의 의존성이 다르면 유한 자료로 학습한 공통 예측기의 오차가 달라질 수 있다. 그 경우 marginal conditional-risk table만으로 실제 pooling 이득을 식별할 수 없다.
+
+이는 학습 원리의 불충분성을 확인하는 주장이다. 높은 residual correlation을 줄이면 RCTL이 좋아진다는 주장이 아니다. 반례가 성립해도 covariance 기반 clustering을 자동으로 추천하지 않는다. 이미 알려진 quantile/cluster-robust inference 및 dependent-data pooling 원리와의 차이를 별도로 검토한다.
+
+## 1. MAE와 학습 목적이 일치하는 합성 확인
+
+- 동일한 상수 입력과 Y~N(0,1)의 3개 cell. 각 cell에 m=31개의 관측. learner는 absolute loss를 최소화하는 sample median이다.
+- 독립 조건: cell과 시점 간 독립 Gaussian 관측을 생성한다.
+- 공유 조건: 같은 시점에는 3 cell이 같은 Gaussian 관측을 갖는다. 각 cell의 주변분포와 개별 sample 수는 독립 조건과 같다.
+- seed=20260925, 20,000 반복. local median과 pooled median을 비교한다. 새로운 독립 test Y의 기대 absolute loss는 정규분포의 닫힌 식으로 계산하여 test Monte Carlo 변동을 없앤다.
+- 공유 조건에서 pooled median은 한 cell의 median과 정확히 같아야 한다. 독립 조건에서는 93개의 실제 독립 관측을 사용한다. oracle population median과 marginal Bayes risk는 두 조건에서 같다.
+- 두 조건의 위험 차이와 Monte Carlo 표준오차를 기록한다. 이것은 동일한 원자료의 행을 재배열하는 실험이 아니다. 서로 다른 공동 데이터 생성 과정을 비교한다.
+
+## 2. 이미 추론한 실제 자료에서 살필 정보
+
+- B2의 고정 16 cell, query target 672~839인 한 주, 이미 계산한 TabICL 129 분위수만 사용한다. RCTL 예측·loss는 읽지 않는다.
+- raw traffic, 공통 Ridge residual, TabICL median residual, median exceedance indicator의 동시 pair correlation을 비교한다. 전체 PCC, 앞 84시간과 뒤 84시간의 pair 순위 일치 정도, indicator 평균을 보고한다.
+- 개별 median calibration과 중앙 50%·80% 구간의 empirical coverage를 확인한다. 한 주의 주변 calibration이 입력별 calibration이나 innovation 추정을 증명하지 않음을 명시한다.
+- 양자화한 64상태에 query가 몇 개씩 들어가는지, state별 손실을 논하기에 얼마나 희소한지 기록한다.
+- residual은 예측오차이며 true innovation이 아니다. 높은 상관은 빠진 공변량·공통 잘못된 예측·자료 보충에서도 생길 수 있다. 실제 정보를 제거한 개입으로 해석하지 않는다.
+
+## 예산과 해석
+
+모델의 fit/predict를 새로 호출하지 않는다. RCTL 학습 0회. 저비용 수치 계산 wall time 30초 상한, 메모리 1 GiB. 전체 goal의 숫자 진단 10분 한도 내에서 합산한다.
+
+합성 반례가 성립하고 실제 자료의 예측오차 동조가 관측되어도 충분한 연구 신규성이나 RCTL 개선을 입증한 것은 아니다. 다음 설계에서는 (a) 공유 관계와 추정 이득을 구분하는 기존 방법, (b) 동일 정보로 가능한 간단한 기준, (c) TabICL이 추가로 안정적으로 제공하는 정보가 무엇인지 확인해야 한다. 안정성 또는 calibration이 부족하면 미세한 covariance 규칙을 추가하는 방향은 보류한다.
