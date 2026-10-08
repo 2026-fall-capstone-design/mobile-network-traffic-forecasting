@@ -76,6 +76,10 @@ jobs:
           uv run --locked --group archive python scripts/research_archive/verify_initial_pilot.py
           --source docs/research/evidence/0001-0002/manifest.json
           --output .research-archive/ci-0001-0002.json
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_joint_selection_pilot.py
+          --source docs/research/evidence/0633/manifest.json
+          --output .research-archive/ci-0633.json
 
   deploy:
     name: deploy-pages

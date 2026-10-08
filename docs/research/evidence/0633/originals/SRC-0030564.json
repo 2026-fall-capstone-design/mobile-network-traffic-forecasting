@@ -1,0 +1,1055 @@
+{
+  "max_epochs": 80,
+  "steps": 8,
+  "channels": 9,
+  "batch_size": 256,
+  "patience": 10,
+  "learning_rate": 0.001,
+  "adam_eps": 1e-07,
+  "seed": 20260925,
+  "train_targets": [
+    168,
+    839
+  ],
+  "validation_targets": [
+    840,
+    1007
+  ],
+  "test_targets": [
+    1008,
+    1487
+  ],
+  "loss": "MAE",
+  "architecture": "unchanged rctl_torch.RCTL",
+  "success": true,
+  "cohorts": {
+    "B": {
+      "cell_ids": [
+        5737,
+        5745,
+        5753,
+        5765,
+        6537,
+        6545,
+        6553,
+        6565,
+        7337,
+        7345,
+        7353,
+        7365,
+        8137,
+        8145,
+        8153,
+        8165
+      ],
+      "prepared_arrays": "results/fixed_cohort_RCTL_bridge_569/prepared_arrays.npz",
+      "evaluation_reference": "results/fixed_cohort_RCTL_bridge_569/evaluation_data.npz",
+      "baseline_stage": "fixed_cohort_RCTL_bridge_569",
+      "assignment_source": "fixed_cohort_application_567",
+      "source_settings": "results/fixed_cohort_RCTL_bridge_569/frozen_settings.json"
+    }
+  },
+  "tasks": [
+    {
+      "cohort": "B",
+      "method": "B_UPC",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        8
+      ],
+      "cell_ids": [
+        7337
+      ],
+      "reuse": {
+        "record": {
+          "stage": "fixed_cohort_RCTL_bridge_569",
+          "fit_metadata": {
+            "method": "Unique",
+            "seed": 20260925,
+            "cluster": 7,
+            "members": [
+              8
+            ],
+            "reused": false,
+            "epochs_run": 80,
+            "best_epoch": 78,
+            "best_val_mae": 0.10122067481279373,
+            "stop_reason": "epoch_cap",
+            "fit_seconds": 20.234897700000147
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7.npz",
+              "sha256": "bf7df41d370f29d43a20537454b9fa83574bb21defaf95c4e74091f17c1720db",
+              "bytes": 4282
+            },
+            ".pt": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7.pt",
+              "sha256": "5a61245df883c5604c9f0e022e40da9209a7613b38bfa73b2d34d8a390880ec7",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7_history.json",
+              "sha256": "34869ab641fea8b3e616c1f3b2850ca631ca8da0ee10dc5e4c943698e6cab022",
+              "bytes": 12294
+            }
+          },
+          "source_settings": "results/fixed_cohort_RCTL_bridge_569/frozen_settings.json",
+          "source_settings_sha256": "8e46ac3b615511fad48c197c1c5234864b1d2dd18f4b31287f13bdbbf7a2fd25",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster0.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_UPC",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        0,
+        5,
+        9,
+        13,
+        14,
+        15
+      ],
+      "cell_ids": [
+        5737,
+        6545,
+        7345,
+        8145,
+        8153,
+        8165
+      ],
+      "reuse": {
+        "record": {
+          "stage": "fixed_cohort_RCTL_bridge_569",
+          "fit_metadata": {
+            "method": "Unique",
+            "seed": 20260925,
+            "cluster": 2,
+            "members": [
+              0,
+              5,
+              9,
+              13,
+              14,
+              15
+            ],
+            "reused": false,
+            "epochs_run": 72,
+            "best_epoch": 62,
+            "best_val_mae": 0.0815623477101326,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 93.10933189999923
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster2.npz",
+              "sha256": "ae53250203032d055563092f1c89ffeafa655b89656c91f4a5bbf19916f4ceb8",
+              "bytes": 21064
+            },
+            ".pt": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster2.pt",
+              "sha256": "69fa08f4687ef06701ed625e0cbca3ea5d339117d2273595332e9b38ddcede6a",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster2_history.json",
+              "sha256": "110e3c7b1009cc4a34bb630e2756abdb83dee5c36b22afc6ed04ec6ffd6fc55c",
+              "bytes": 11073
+            }
+          },
+          "source_settings": "results/fixed_cohort_RCTL_bridge_569/frozen_settings.json",
+          "source_settings_sha256": "8e46ac3b615511fad48c197c1c5234864b1d2dd18f4b31287f13bdbbf7a2fd25",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster1.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_UPC",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        7
+      ],
+      "cell_ids": [
+        6565
+      ],
+      "reuse": {
+        "record": {
+          "stage": "fixed_cohort_RCTL_bridge_569",
+          "fit_metadata": {
+            "method": "Unique",
+            "seed": 20260925,
+            "cluster": 6,
+            "members": [
+              7
+            ],
+            "reused": false,
+            "epochs_run": 24,
+            "best_epoch": 14,
+            "best_val_mae": 0.2644200921058655,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 6.051757200002612
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster6.npz",
+              "sha256": "9b92e066beab5277329ceccdd3f2dd258a802c3e34f8b65c23baa574989ef46e",
+              "bytes": 4230
+            },
+            ".pt": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster6.pt",
+              "sha256": "4382aac873c4d5a183408430dc1a4e22ef018df00446535a3c1ffb0cf6e38357",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster6_history.json",
+              "sha256": "d5d805872b99093818c22ca0af3a9325f43edd9de78aead84f4f0012110719a0",
+              "bytes": 3668
+            }
+          },
+          "source_settings": "results/fixed_cohort_RCTL_bridge_569/frozen_settings.json",
+          "source_settings_sha256": "8e46ac3b615511fad48c197c1c5234864b1d2dd18f4b31287f13bdbbf7a2fd25",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster2.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_UPC",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        10,
+        11,
+        12
+      ],
+      "cell_ids": [
+        5745,
+        5753,
+        5765,
+        6537,
+        6553,
+        7353,
+        7365,
+        8137
+      ],
+      "reuse": {
+        "record": {
+          "stage": "fixed_cohort_RCTL_bridge_569",
+          "fit_metadata": {
+            "method": "Unique",
+            "seed": 20260925,
+            "cluster": 3,
+            "members": [
+              1,
+              2,
+              3,
+              4,
+              6,
+              10,
+              11,
+              12
+            ],
+            "reused": false,
+            "epochs_run": 45,
+            "best_epoch": 35,
+            "best_val_mae": 0.07321150600910187,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 76.82753849999426
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster3.npz",
+              "sha256": "6411477c426496dca5c3fef35f8e443cabb734ba77207a9a01742d6f89dd86aa",
+              "bytes": 28019
+            },
+            ".pt": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster3.pt",
+              "sha256": "55cb794dd8d3dd223eb4e19214a6eacbb36f55b2d3bef50e149872c09044f6ac",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster3_history.json",
+              "sha256": "39cf74737cec8c3737f66b716f2feb8a9334b5024c5783ebddd56cb5de74ead3",
+              "bytes": 6925
+            }
+          },
+          "source_settings": "results/fixed_cohort_RCTL_bridge_569/frozen_settings.json",
+          "source_settings_sha256": "8e46ac3b615511fad48c197c1c5234864b1d2dd18f4b31287f13bdbbf7a2fd25",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster3.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_Tab_free",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        8
+      ],
+      "cell_ids": [
+        7337
+      ],
+      "reuse": {
+        "record": {
+          "stage": "fixed_cohort_RCTL_bridge_569",
+          "fit_metadata": {
+            "method": "Unique",
+            "seed": 20260925,
+            "cluster": 7,
+            "members": [
+              8
+            ],
+            "reused": false,
+            "epochs_run": 80,
+            "best_epoch": 78,
+            "best_val_mae": 0.10122067481279373,
+            "stop_reason": "epoch_cap",
+            "fit_seconds": 20.234897700000147
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7.npz",
+              "sha256": "bf7df41d370f29d43a20537454b9fa83574bb21defaf95c4e74091f17c1720db",
+              "bytes": 4282
+            },
+            ".pt": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7.pt",
+              "sha256": "5a61245df883c5604c9f0e022e40da9209a7613b38bfa73b2d34d8a390880ec7",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7_history.json",
+              "sha256": "34869ab641fea8b3e616c1f3b2850ca631ca8da0ee10dc5e4c943698e6cab022",
+              "bytes": 12294
+            }
+          },
+          "source_settings": "results/fixed_cohort_RCTL_bridge_569/frozen_settings.json",
+          "source_settings_sha256": "8e46ac3b615511fad48c197c1c5234864b1d2dd18f4b31287f13bdbbf7a2fd25",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster0.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_Tab_free",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        3,
+        9,
+        12,
+        13,
+        14
+      ],
+      "cell_ids": [
+        5765,
+        7345,
+        8137,
+        8145,
+        8153
+      ],
+      "reuse": {
+        "record": {
+          "stage": "nonempty_assignment_RCTL_581",
+          "fit_metadata": {
+            "method": "B_Tab_free",
+            "seed": 20260925,
+            "cluster": 1,
+            "members": [
+              3,
+              9,
+              12,
+              13,
+              14
+            ],
+            "reused": false,
+            "epochs_run": 37,
+            "best_epoch": 27,
+            "best_val_mae": 0.08750205487012863,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 36.39370809999673
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster1.npz",
+              "sha256": "212974d1ee5d9a3739c836c09e67ba2d78f56c45f4d229cc8080a7fe634c2747",
+              "bytes": 17616
+            },
+            ".pt": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster1.pt",
+              "sha256": "589fbacd684015de4915f7976f52c3927715021ff13070c404a33617295deacd",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster1_history.json",
+              "sha256": "56b8081d51e9dcccec6dd9587066117fbe2edf8f6116c266f6ded81f41562928",
+              "bytes": 5695
+            }
+          },
+          "source_settings": "results/nonempty_assignment_RCTL_581/frozen_settings.json",
+          "source_settings_sha256": "d11d4b21ba0924f43c50c51b1106040131445db717b0d4f6fc57dbcb3266f474",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster1.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_Tab_free",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        7
+      ],
+      "cell_ids": [
+        6565
+      ],
+      "reuse": {
+        "record": {
+          "stage": "fixed_cohort_RCTL_bridge_569",
+          "fit_metadata": {
+            "method": "Unique",
+            "seed": 20260925,
+            "cluster": 6,
+            "members": [
+              7
+            ],
+            "reused": false,
+            "epochs_run": 24,
+            "best_epoch": 14,
+            "best_val_mae": 0.2644200921058655,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 6.051757200002612
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster6.npz",
+              "sha256": "9b92e066beab5277329ceccdd3f2dd258a802c3e34f8b65c23baa574989ef46e",
+              "bytes": 4230
+            },
+            ".pt": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster6.pt",
+              "sha256": "4382aac873c4d5a183408430dc1a4e22ef018df00446535a3c1ffb0cf6e38357",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster6_history.json",
+              "sha256": "d5d805872b99093818c22ca0af3a9325f43edd9de78aead84f4f0012110719a0",
+              "bytes": 3668
+            }
+          },
+          "source_settings": "results/fixed_cohort_RCTL_bridge_569/frozen_settings.json",
+          "source_settings_sha256": "8e46ac3b615511fad48c197c1c5234864b1d2dd18f4b31287f13bdbbf7a2fd25",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster2.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_Tab_free",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        10,
+        11,
+        15
+      ],
+      "cell_ids": [
+        5737,
+        5745,
+        5753,
+        6537,
+        6545,
+        6553,
+        7353,
+        7365,
+        8165
+      ],
+      "reuse": {
+        "record": {
+          "stage": "nonempty_assignment_RCTL_581",
+          "fit_metadata": {
+            "method": "B_Tab_free",
+            "seed": 20260925,
+            "cluster": 3,
+            "members": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6,
+              10,
+              11,
+              15
+            ],
+            "reused": false,
+            "epochs_run": 32,
+            "best_epoch": 22,
+            "best_val_mae": 0.07557803392410278,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 55.194384999995236
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster3.npz",
+              "sha256": "6b73b143a63155912210c845920b77f4b6c7a111181fe93768869d4c03cc769b",
+              "bytes": 31429
+            },
+            ".pt": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster3.pt",
+              "sha256": "12279fb93f25000a8b571f377d5d13cbf54e62ffceea67c9ba67b9c134e2f515",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster3_history.json",
+              "sha256": "183caf5592f96ec683ecb3b66b93f9e141407883306891eb05ff01bea71a3e4c",
+              "bytes": 4919
+            }
+          },
+          "source_settings": "results/nonempty_assignment_RCTL_581/frozen_settings.json",
+          "source_settings_sha256": "d11d4b21ba0924f43c50c51b1106040131445db717b0d4f6fc57dbcb3266f474",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster3.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_HGB_free",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        8
+      ],
+      "cell_ids": [
+        7337
+      ],
+      "reuse": {
+        "record": {
+          "stage": "fixed_cohort_RCTL_bridge_569",
+          "fit_metadata": {
+            "method": "Unique",
+            "seed": 20260925,
+            "cluster": 7,
+            "members": [
+              8
+            ],
+            "reused": false,
+            "epochs_run": 80,
+            "best_epoch": 78,
+            "best_val_mae": 0.10122067481279373,
+            "stop_reason": "epoch_cap",
+            "fit_seconds": 20.234897700000147
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7.npz",
+              "sha256": "bf7df41d370f29d43a20537454b9fa83574bb21defaf95c4e74091f17c1720db",
+              "bytes": 4282
+            },
+            ".pt": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7.pt",
+              "sha256": "5a61245df883c5604c9f0e022e40da9209a7613b38bfa73b2d34d8a390880ec7",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7_history.json",
+              "sha256": "34869ab641fea8b3e616c1f3b2850ca631ca8da0ee10dc5e4c943698e6cab022",
+              "bytes": 12294
+            }
+          },
+          "source_settings": "results/fixed_cohort_RCTL_bridge_569/frozen_settings.json",
+          "source_settings_sha256": "8e46ac3b615511fad48c197c1c5234864b1d2dd18f4b31287f13bdbbf7a2fd25",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster0.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_HGB_free",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        7,
+        12,
+        13
+      ],
+      "cell_ids": [
+        6565,
+        8137,
+        8145
+      ],
+      "reuse": {
+        "record": {
+          "stage": "nonempty_assignment_RCTL_581",
+          "fit_metadata": {
+            "method": "B_HGB_free",
+            "seed": 20260925,
+            "cluster": 1,
+            "members": [
+              7,
+              12,
+              13
+            ],
+            "reused": false,
+            "epochs_run": 55,
+            "best_epoch": 45,
+            "best_val_mae": 0.09008543938398361,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 32.70078199999989
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster1.npz",
+              "sha256": "6de6fb014001a345b8203fcbc8b2b5af246b76e0dfbee590019603be3bfaaa57",
+              "bytes": 10834
+            },
+            ".pt": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster1.pt",
+              "sha256": "64ddaa46a547e8cfe181def6c4875b8d8b600d5cf64dde2228b0cf2e54b61435",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster1_history.json",
+              "sha256": "4ba7699e3de315681c06343722e7209075006b1b82c9b04da9802beb85216db6",
+              "bytes": 8464
+            }
+          },
+          "source_settings": "results/nonempty_assignment_RCTL_581/frozen_settings.json",
+          "source_settings_sha256": "d11d4b21ba0924f43c50c51b1106040131445db717b0d4f6fc57dbcb3266f474",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster1.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_HGB_free",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        9
+      ],
+      "cell_ids": [
+        7345
+      ],
+      "reuse": {
+        "record": {
+          "stage": "nonempty_assignment_RCTL_581",
+          "fit_metadata": {
+            "method": "B_HGB_free",
+            "seed": 20260925,
+            "cluster": 2,
+            "members": [
+              9
+            ],
+            "reused": false,
+            "epochs_run": 80,
+            "best_epoch": 77,
+            "best_val_mae": 0.09711911529302597,
+            "stop_reason": "epoch_cap",
+            "fit_seconds": 17.580156900003203
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2.npz",
+              "sha256": "ccc8df9c4a5e0333aa2d4d400592a4a7129a3a80ec001fdcfe2d6705081b6443",
+              "bytes": 4174
+            },
+            ".pt": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2.pt",
+              "sha256": "6ff45f4bf61aef29566ef23af5357717e8632eb85bc2048d711a3620bff5fbfc",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2_history.json",
+              "sha256": "ea3d042a4c7aeede293e447b7c6986c511c02e18a9c0ba7a494db6503de5973a",
+              "bytes": 12291
+            }
+          },
+          "source_settings": "results/nonempty_assignment_RCTL_581/frozen_settings.json",
+          "source_settings_sha256": "d11d4b21ba0924f43c50c51b1106040131445db717b0d4f6fc57dbcb3266f474",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_HGB_free",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11,
+        14,
+        15
+      ],
+      "cell_ids": [
+        5737,
+        5745,
+        5753,
+        5765,
+        6537,
+        6545,
+        6553,
+        7353,
+        7365,
+        8153,
+        8165
+      ],
+      "reuse": {
+        "record": {
+          "stage": "nonempty_assignment_RCTL_581",
+          "fit_metadata": {
+            "method": "B_HGB_free",
+            "seed": 20260925,
+            "cluster": 3,
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              10,
+              11,
+              14,
+              15
+            ],
+            "reused": false,
+            "epochs_run": 61,
+            "best_epoch": 51,
+            "best_val_mae": 0.06729277223348618,
+            "stop_reason": "validation_patience",
+            "fit_seconds": 128.32819030000246
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster3.npz",
+              "sha256": "34f966890181092e55d4a0bb68a157343637e7a2fce081017d58582df7def95d",
+              "bytes": 38199
+            },
+            ".pt": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster3.pt",
+              "sha256": "38f617b06f4888cde9ad9596e4a4516eb6fadcfdacc3f96f07fb48dbea7d20aa",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster3_history.json",
+              "sha256": "f59ff4358e02e8d5135abc1b086aa51325cea5516254a571c08a0b0d7f269ae4",
+              "bytes": 9393
+            }
+          },
+          "source_settings": "results/nonempty_assignment_RCTL_581/frozen_settings.json",
+          "source_settings_sha256": "d11d4b21ba0924f43c50c51b1106040131445db717b0d4f6fc57dbcb3266f474",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster3.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_HGB_refreshed",
+      "seed": 20260925,
+      "cluster": 0,
+      "members": [
+        6
+      ],
+      "cell_ids": [
+        6553
+      ],
+      "reuse": null
+    },
+    {
+      "cohort": "B",
+      "method": "B_HGB_refreshed",
+      "seed": 20260925,
+      "cluster": 1,
+      "members": [
+        13,
+        14
+      ],
+      "cell_ids": [
+        8145,
+        8153
+      ],
+      "reuse": null
+    },
+    {
+      "cohort": "B",
+      "method": "B_HGB_refreshed",
+      "seed": 20260925,
+      "cluster": 2,
+      "members": [
+        9
+      ],
+      "cell_ids": [
+        7345
+      ],
+      "reuse": {
+        "record": {
+          "stage": "nonempty_assignment_RCTL_581",
+          "fit_metadata": {
+            "method": "B_HGB_free",
+            "seed": 20260925,
+            "cluster": 2,
+            "members": [
+              9
+            ],
+            "reused": false,
+            "epochs_run": 80,
+            "best_epoch": 77,
+            "best_val_mae": 0.09711911529302597,
+            "stop_reason": "epoch_cap",
+            "fit_seconds": 17.580156900003203
+          },
+          "artifacts": {
+            ".npz": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2.npz",
+              "sha256": "ccc8df9c4a5e0333aa2d4d400592a4a7129a3a80ec001fdcfe2d6705081b6443",
+              "bytes": 4174
+            },
+            ".pt": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2.pt",
+              "sha256": "6ff45f4bf61aef29566ef23af5357717e8632eb85bc2048d711a3620bff5fbfc",
+              "bytes": 745123
+            },
+            "_history.json": {
+              "relative_path": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2_history.json",
+              "sha256": "ea3d042a4c7aeede293e447b7c6986c511c02e18a9c0ba7a494db6503de5973a",
+              "bytes": 12291
+            }
+          },
+          "source_settings": "results/nonempty_assignment_RCTL_581/frozen_settings.json",
+          "source_settings_sha256": "d11d4b21ba0924f43c50c51b1106040131445db717b0d4f6fc57dbcb3266f474",
+          "completed_bridge_npz": "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2.npz"
+        }
+      }
+    },
+    {
+      "cohort": "B",
+      "method": "B_HGB_refreshed",
+      "seed": 20260925,
+      "cluster": 3,
+      "members": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        12,
+        15
+      ],
+      "cell_ids": [
+        5737,
+        5745,
+        5753,
+        5765,
+        6537,
+        6545,
+        6565,
+        7337,
+        7353,
+        7365,
+        8137,
+        8165
+      ],
+      "reuse": null
+    }
+  ],
+  "partitions": {
+    "B_UPC": [
+      1,
+      3,
+      3,
+      3,
+      3,
+      1,
+      3,
+      2,
+      0,
+      1,
+      3,
+      3,
+      3,
+      1,
+      1,
+      1
+    ],
+    "B_Tab_free": [
+      3,
+      3,
+      3,
+      1,
+      3,
+      3,
+      3,
+      2,
+      0,
+      1,
+      3,
+      3,
+      1,
+      1,
+      1,
+      3
+    ],
+    "B_HGB_free": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      1,
+      0,
+      2,
+      3,
+      3,
+      1,
+      1,
+      3,
+      3
+    ],
+    "B_HGB_refreshed": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      0,
+      3,
+      3,
+      2,
+      3,
+      3,
+      3,
+      1,
+      1,
+      3
+    ]
+  },
+  "comparison_pairs": [
+    [
+      "B_refreshed_minus_B_HGB_free",
+      "B_HGB_refreshed",
+      "B_HGB_free"
+    ],
+    [
+      "B_refreshed_minus_B_UPC",
+      "B_HGB_refreshed",
+      "B_UPC"
+    ],
+    [
+      "B_refreshed_minus_B_Tab_free",
+      "B_HGB_refreshed",
+      "B_Tab_free"
+    ]
+  ],
+  "source_hashes": {
+    "results/nonempty_assignment_RCTL_581/frozen_settings.json": "d11d4b21ba0924f43c50c51b1106040131445db717b0d4f6fc57dbcb3266f474",
+    "results/nonempty_assignment_RCTL_581/fit_results.json": "906aae010226dcfc26e667568fbcdcd1e902f9885eb68e7ed74e4501ac4aaa03",
+    "results/nonempty_assignment_RCTL_581/verification.json": "29b870c817d5ef28f6a5277ea4ae1c1283683560a130b1bc95a14d1f75e00f51",
+    "results/nonempty_assignment_RCTL_581/settled.json": "aabd98ca328a7d7137e259a799da5b93354efc6d2f9d7a91ec870836bfcbe35d",
+    "results/nonempty_assignment_RCTL_581/result.json": "e4fcab204af63aa7e0442a5b151428414b3f0a02200d294c81e4b7a9eeb58db8",
+    "results/refreshed_HGB_assignment_631/result.json": "2c8a2e98d8cc8f55c4fbf411583571a0ab5e9ce57cebe407b2f8fe09005bca39",
+    "results/refreshed_HGB_assignment_631/proposed_partition_1.json": "22a57b60f2c30a3892692ee6acdebcab6259d5d150e093d428424ab9f923115d",
+    "results/refreshed_HGB_assignment_631/verification.json": "6689090c1315ba89228b1e362c23d673330a5d0f0cfb5feb859182aea65cb568",
+    "results/refreshed_HGB_assignment_631/settled.json": "27deba29dc6b4f38bc5c27689c17f5402d76bfb8428714a2fb5a10d6d5120ce8",
+    "results/refreshed_HGB_assignment_631/rctl_cache_scope.json": "b675770a9903149ee509a36bdc97e975471ee5bdf4fd1366a2b358b01de368a2",
+    "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster0.npz": "bf7df41d370f29d43a20537454b9fa83574bb21defaf95c4e74091f17c1720db",
+    "results/fixed_cohort_RCTL_bridge_569/frozen_settings.json": "8e46ac3b615511fad48c197c1c5234864b1d2dd18f4b31287f13bdbbf7a2fd25",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7.npz": "bf7df41d370f29d43a20537454b9fa83574bb21defaf95c4e74091f17c1720db",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7.pt": "5a61245df883c5604c9f0e022e40da9209a7613b38bfa73b2d34d8a390880ec7",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster7_history.json": "34869ab641fea8b3e616c1f3b2850ca631ca8da0ee10dc5e4c943698e6cab022",
+    "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster1.npz": "ae53250203032d055563092f1c89ffeafa655b89656c91f4a5bbf19916f4ceb8",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster2.npz": "ae53250203032d055563092f1c89ffeafa655b89656c91f4a5bbf19916f4ceb8",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster2.pt": "69fa08f4687ef06701ed625e0cbca3ea5d339117d2273595332e9b38ddcede6a",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster2_history.json": "110e3c7b1009cc4a34bb630e2756abdb83dee5c36b22afc6ed04ec6ffd6fc55c",
+    "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster2.npz": "9b92e066beab5277329ceccdd3f2dd258a802c3e34f8b65c23baa574989ef46e",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster6.npz": "9b92e066beab5277329ceccdd3f2dd258a802c3e34f8b65c23baa574989ef46e",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster6.pt": "4382aac873c4d5a183408430dc1a4e22ef018df00446535a3c1ffb0cf6e38357",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster6_history.json": "d5d805872b99093818c22ca0af3a9325f43edd9de78aead84f4f0012110719a0",
+    "results/nonempty_assignment_RCTL_581/B_UPC_20260925_cluster3.npz": "6411477c426496dca5c3fef35f8e443cabb734ba77207a9a01742d6f89dd86aa",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster3.npz": "6411477c426496dca5c3fef35f8e443cabb734ba77207a9a01742d6f89dd86aa",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster3.pt": "55cb794dd8d3dd223eb4e19214a6eacbb36f55b2d3bef50e149872c09044f6ac",
+    "results/fixed_cohort_RCTL_bridge_569/Unique_20260925_cluster3_history.json": "39cf74737cec8c3737f66b716f2feb8a9334b5024c5783ebddd56cb5de74ead3",
+    "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster1.npz": "212974d1ee5d9a3739c836c09e67ba2d78f56c45f4d229cc8080a7fe634c2747",
+    "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster1.pt": "589fbacd684015de4915f7976f52c3927715021ff13070c404a33617295deacd",
+    "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster1_history.json": "56b8081d51e9dcccec6dd9587066117fbe2edf8f6116c266f6ded81f41562928",
+    "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster3.npz": "6b73b143a63155912210c845920b77f4b6c7a111181fe93768869d4c03cc769b",
+    "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster3.pt": "12279fb93f25000a8b571f377d5d13cbf54e62ffceea67c9ba67b9c134e2f515",
+    "results/nonempty_assignment_RCTL_581/B_Tab_free_20260925_cluster3_history.json": "183caf5592f96ec683ecb3b66b93f9e141407883306891eb05ff01bea71a3e4c",
+    "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster1.npz": "6de6fb014001a345b8203fcbc8b2b5af246b76e0dfbee590019603be3bfaaa57",
+    "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster1.pt": "64ddaa46a547e8cfe181def6c4875b8d8b600d5cf64dde2228b0cf2e54b61435",
+    "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster1_history.json": "4ba7699e3de315681c06343722e7209075006b1b82c9b04da9802beb85216db6",
+    "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2.npz": "ccc8df9c4a5e0333aa2d4d400592a4a7129a3a80ec001fdcfe2d6705081b6443",
+    "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2.pt": "6ff45f4bf61aef29566ef23af5357717e8632eb85bc2048d711a3620bff5fbfc",
+    "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster2_history.json": "ea3d042a4c7aeede293e447b7c6986c511c02e18a9c0ba7a494db6503de5973a",
+    "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster3.npz": "34f966890181092e55d4a0bb68a157343637e7a2fce081017d58582df7def95d",
+    "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster3.pt": "38f617b06f4888cde9ad9596e4a4516eb6fadcfdacc3f96f07fb48dbea7d20aa",
+    "results/nonempty_assignment_RCTL_581/B_HGB_free_20260925_cluster3_history.json": "f59ff4358e02e8d5135abc1b086aa51325cea5516254a571c08a0b0d7f269ae4",
+    "results/fixed_cohort_RCTL_bridge_569/prepared_arrays.npz": "0bafec64c0e1cfc1ead4a363788485a09aa92e0d9162d1a3dea0e3cb4dbfaafe",
+    "results/fixed_cohort_RCTL_bridge_569/evaluation_data.npz": "f7ee6c7a7faa30441274c64852023731886fbd74aca34a38b4d8a53f47d44ab1",
+    "rctl_torch.py": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+    "fixed32_downstream_reference_336.py": "630c86424d2e5caedb9bc22e4c2edc56a3022449fb1b0787e2a01edee4f7a2d1",
+    "nonempty_RCTL_worker_581.py": "a241dbe2112e3bc620622c4537b4d801743829aecbafcab7a87890d1b453b014",
+    "nonempty_assignment_RCTL_581.py": "aca55173cdc5c30860776deabf12710ed010d48ecbda7b158d671dbcc73365c8",
+    "632_execution_contract.json": "e4277aeed01f95ffe27d091b1737df537ef2496648a5b4186ac29eb83586c253",
+    "632_refreshed_HGB_RCTL_bridge_plan.md": "15929d840cf345d7e70b12564b462f714655a0c51cd98e10814ad1a28c337b89",
+    "build_refreshed_HGB_RCTL_632.py": "d3895e5e93ede2192fd28a466ca3072563f347cc4e45b6c335e260a23c7dab11",
+    "refreshed_HGB_RCTL_bridge_632.py": "c902d1681b0bf3efead675766f4efc2990e8fd2308c37136eda2d903a9abf70c",
+    "verify_refreshed_HGB_RCTL_632.py": "0ce250278a5287977a513427953969a374af6458d7b1b754b22884a5c19b8cf9",
+    "recovery_io_271.py": "c1dc7d7de6d83f2a2b4b18c8468376d60be10efce3cad6c5a613e6df21bfda3b"
+  },
+  "max_new_fits": 3,
+  "max_new_epochs": 240,
+  "wall_cap_seconds": 480,
+  "verification_seconds_cap": 20,
+  "ram_cap_bytes": 2147483648,
+  "threads": 1,
+  "torch_interop_threads": 2,
+  "reused_fits": 13,
+  "RCTL_results_used_for_clustering": false,
+  "new_Tab_calls": 0,
+  "new_candidate_adopted": false,
+  "all_periods_development": true,
+  "training_core_unchanged": true,
+  "training_core_sha256": "232f3304ac3f0cdf868fcd4cf63a0ea7b9fa70e41498756d90c7732aeb916920",
+  "cost_basis": "631 plan: 3 missing groups; 581 11-cell61epoch128.328s/single80epoch17.580s and2cell70epoch28.872s; reserve480RCTL+20QA, not performance guarantee",
+  "previous_turn_classification": "progress: 631 actual5HGB/6400prediction and verification/settlement",
+  "static_preparation_seconds": 0.45062469999538735,
+  "stage": "refreshed_HGB_RCTL_bridge_632",
+  "at": "2026-10-03T14:35:51.010540+00:00",
+  "actual_request_kind": "native_goal_continuation"
+}

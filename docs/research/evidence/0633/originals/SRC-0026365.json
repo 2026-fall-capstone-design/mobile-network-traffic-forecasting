@@ -1,0 +1,220 @@
+{
+  "at": "2026-10-02T20:33:07.751314+00:00",
+  "context_groups": 4,
+  "context_rows_each": 504,
+  "input_columns": 16,
+  "input_dtype": "float32",
+  "target_dtype": "float32",
+  "query_rows_each": 1024,
+  "context_target_times": [
+    168,
+    671
+  ],
+  "query_times": [
+    672,
+    675,
+    677,
+    680,
+    683,
+    685,
+    688,
+    691,
+    693,
+    696,
+    699,
+    701,
+    704,
+    706,
+    709,
+    712,
+    714,
+    717,
+    720,
+    722,
+    725,
+    728,
+    730,
+    733,
+    736,
+    738,
+    741,
+    744,
+    746,
+    749,
+    752,
+    754,
+    757,
+    759,
+    762,
+    765,
+    767,
+    770,
+    773,
+    775,
+    778,
+    781,
+    783,
+    786,
+    789,
+    791,
+    794,
+    797,
+    799,
+    802,
+    805,
+    807,
+    810,
+    812,
+    815,
+    818,
+    820,
+    823,
+    826,
+    828,
+    831,
+    834,
+    836,
+    839
+  ],
+  "raw_anchor_times": [
+    0,
+    671
+  ],
+  "query_targets_passed_to_model": false,
+  "query_targets_used_for_assignment": true,
+  "query_target_read_schedule": "after all Tab/HGB predictions have been frozen",
+  "RCTL_results_used": false,
+  "fixed_external_reference": true,
+  "context_refresh": false,
+  "kv_cache": true,
+  "ensemble": 1,
+  "seed": 20260925,
+  "n_jobs": 1,
+  "batch_query_cap": 512,
+  "torch_initial_threads": 4,
+  "torch_interop_threads": 2,
+  "n_jobs_note": "Installed Tab predict with n_jobs=1 may set intra-op threads to 1.",
+  "group_hashes": [
+    {
+      "group": 0,
+      "members": [
+        3753,
+        5337,
+        6165
+      ],
+      "allocation": [
+        {
+          "cell_id": 3753,
+          "count": 168
+        },
+        {
+          "cell_id": 5337,
+          "count": 168
+        },
+        {
+          "cell_id": 6165,
+          "count": 168
+        }
+      ],
+      "context_rows": 504,
+      "X_sha256": "159ecb7190f8c89d320b144e03bffa54d67f099aa46f197980758fff2775d18d",
+      "Y_sha256": "41e6b35c7e1892f3deeeffb353b2a7ad30db75777ea2af64d930d515bcdc204c"
+    },
+    {
+      "group": 1,
+      "members": [
+        3745,
+        5345,
+        6153
+      ],
+      "allocation": [
+        {
+          "cell_id": 3745,
+          "count": 168
+        },
+        {
+          "cell_id": 5345,
+          "count": 168
+        },
+        {
+          "cell_id": 6153,
+          "count": 168
+        }
+      ],
+      "context_rows": 504,
+      "X_sha256": "d107bf9c34110410040f3cfb1838bc06ecb8db926b703f92e95aa92f35132bb2",
+      "Y_sha256": "6f006997cf49ec3bd9ed4b9fe70743ffd8c202d4ee3cea93f2f2bbd765345c48"
+    },
+    {
+      "group": 2,
+      "members": [
+        3765,
+        4537,
+        4545,
+        4565,
+        5353,
+        5365,
+        6137,
+        6145
+      ],
+      "allocation": [
+        {
+          "cell_id": 3765,
+          "count": 63
+        },
+        {
+          "cell_id": 4537,
+          "count": 63
+        },
+        {
+          "cell_id": 4545,
+          "count": 63
+        },
+        {
+          "cell_id": 4565,
+          "count": 63
+        },
+        {
+          "cell_id": 5353,
+          "count": 63
+        },
+        {
+          "cell_id": 5365,
+          "count": 63
+        },
+        {
+          "cell_id": 6137,
+          "count": 63
+        },
+        {
+          "cell_id": 6145,
+          "count": 63
+        }
+      ],
+      "context_rows": 504,
+      "X_sha256": "5bc3c1a4b3d9b6b697ee84e9e46323ae62ed884907a39e97fdcef0fab2af5e9c",
+      "Y_sha256": "7521c1973b0a4ad204f1bbf9c3c21a71b01294c62f6be84a69a2c5aca7c7404a"
+    },
+    {
+      "group": 3,
+      "members": [
+        3737,
+        4553
+      ],
+      "allocation": [
+        {
+          "cell_id": 3737,
+          "count": 252
+        },
+        {
+          "cell_id": 4553,
+          "count": 252
+        }
+      ],
+      "context_rows": 504,
+      "X_sha256": "307ac8fda6239cc1e0056f9589bffb34568250ce82f964c58ca377abed88a3fd",
+      "Y_sha256": "1e0a6ec2a00d6189a76b15820341b75ec98504171bca3484504c3685cdaf52e9"
+    }
+  ],
+  "query_X_sha256": "5a06617cba1474d2bfbe170ecf89a577189c7b75a00188dd5b78b4bdfc8041f1"
+}

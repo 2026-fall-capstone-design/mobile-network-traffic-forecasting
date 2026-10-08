@@ -1,0 +1,118 @@
+"""Archive real633 execution and scoped rejection; keep the full goal open."""
+import json,hashlib
+from pathlib import Path
+from datetime import datetime,timezone
+from recovery_io_271 import write
+B=Path(__file__).resolve().parent;ROOT=B.parent.parent;O=B/'results/same_data_joint_Tab_633'
+S=B/'research_state.json';L=B/'cumulative_execution_budget.json'
+read=lambda p:json.loads(p.read_text(encoding='utf-8-sig'))
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+rel=lambda p:p.relative_to(ROOT).as_posix()
+if (O/'archive_complete.json').exists():print('633 already archived');raise SystemExit(0)
+s,l=read(S),read(L);r,v,z=[read(O/p) for p in ['result.json','verification.json','settled.json']]
+bv,br,bz=[read(O/p) for p in ['bridge_verification.json','bridge_result.json','bridge_settled.json']]
+assert s['latest_research_stage']==632 and s['next_action']['id']=='633_same_data_joint_Tab_contrast'
+assert s['next_action']['status']=='completed_verified_needs_archive' and s['in_flight_execution'] is None
+assert all(x['success'] for x in [r,v,z,bv,br,bz]) and sha(L)==bz['ledger_sha256']
+assert read(O/'run_finished.json')['worker_reaped'] and bz['child_reaped']
+assert all(v['status'] in ['settled','completed','cancelled','released'] for f in ['numeric_reservations','plan_reservations'] for v in l[f].values())
+assert r['new_Tab_contexts']==20 and r['new_Tab_query_rows']==5888
+assert [c['branch'] for c in r['records']]==['different_selection','different_selection']
+assert [c['branch'] for c in br['records']]==['stable_harm','stable_harm']
+assert all(c['native_Tab_lower_MAE_on_all_candidates'] for c in br['records'])
+at=datetime.now(timezone.utc).isoformat();(O/'before_archive').mkdir()
+paths=[S,B/'research_focus.md',B/'progress.md',B/'candidate_decision_index.md',B/'521_independent_membership_decision_design_plan.md']
+for p in paths:(O/'before_archive'/p.name).write_bytes(p.read_bytes())
+plan=B/'521_independent_membership_decision_design_plan.md'
+with plan.open('a',encoding='utf-8') as f:f.write('''
+
+## 633 이후의 미완료 범위 — 예측 정확도와 소속 선택 정보의 구별
+
+[633 확인](633_same_data_joint_Tab_contrast_findings.md)은 같은 전체 실제 자료와 같은 고정 메뉴에서 Tab의 공동 중앙값 예측을 실제로 완료했습니다. Tab은 모든 후보에서 HGB보다 확인 MAE가 낮았으나 A에서UPC, B에서기존Tab 소속을 골랐고, 이 선택의 RCTL은 HGB 선택보다 각각2.12%·19.20% 나빴습니다. 고정소속·완료RCTL·개발자료의범위이며 일반적인 모든 예측기/도시의 기각이 아닙니다.
+
+현재 메뉴의 raw공동MAE 선택을 더 큰context·새기간·seed·보정기로 자동 확장하지 않습니다. 631–633의 강한 HGB와 같은전체자료 비교는 완료됐으므로 그 확인을 다시 실행하지 않습니다. 낮은 point예측오차를 좋은소속판단의근거로 직접 대체하지 않습니다. 반대로 이 결과를 Tab의 예측능력 부재로 해석하지 않습니다.
+
+다음 실제 산출물은 이 계획의 미완료인 **Tab 추정 정보를 소속 결정으로 연결하는 규칙 하나**입니다. 최근입력–정답관계의 어떤 정보를 사용할지, 후보를 어떤 입력요약으로 몇 개까지 좁힐지, 유지/이동을 어떤 식으로 정할지, 같은정보의 단순대안은 무엇인지, 최종RCTL에 어떤 실제자료를 넘길지를 정합니다. 현재 그 규칙은 미선정입니다. 새로운 소속정보 또는 구별되는 결정이 명세되면 작은 확인으로 진행하며, 향상·신규성·원인완전규명의 사전증명을 요구하지 않습니다. 기존 raw공동오차나 이미 종료한 표현·손실벡터·고정reference배정을 이름만 바꾼 경우에는 새후보로 표시하지 않습니다.
+
+구체적 규칙이 없는 상태를 새 빈 실험계획, 추가 원인 진단 또는 RCTL 재학습으로 대신하지 않습니다. 이 미완료 설계 자체는633의새실험성과가 아니며, 성과는633의실제동일정보비교와사전고정선택의판정입니다.
+''')
+manifest=dict(at=at,stage=633,actual_request_kind='native_goal_continuation',previous_goal_turn='progress',
+    previous_progress_evidence='632 real3 RCTL fits,verified,settled,archived',
+    initial_integration_reused=[280,445],inventory_is_not_content_review=True,
+    detailed_scope=['633 fixed plan and group metadata','632 actual final/settled/archive records',
+                    '616 exact whole-data source and stored HGB predictions','631 updated group source and stored HGB predictions',
+                    '562/567 model parameters/source/provenance and singleton cache','608 reserve/monitor/settlement pattern',
+                    '581/632 cached RCTL settings,labels,metrics after native seals'],
+    partial_or_reused_scope=['AGENTS and goal9.1/9.2 current rules','candidate index latest and connected established principles',
+                             '497 completion/cost and previous full-context scope','older literature conclusions reused, no new primary search'],
+    new_Tab_contexts=20,new_Tab_query_rows=5888,reused_Tab_contexts=2,reused_Tab_query_rows=128,
+    HGB_new_fits=0,RCTL_new_fits=0,models_replayed=0,source_review_does_not_claim_all_files_read=True,
+    native_result=rel(O/'result.json'),native_verification=rel(O/'verification.json'),native_settlement=rel(O/'settled.json'),
+    sealed_choice_RCTL_link=rel(O/'bridge_result.json'),bridge_verification=rel(O/'bridge_verification.json'),bridge_settlement=rel(O/'bridge_settled.json'),
+    cost=dict(Tab_seconds=z['Tab_seconds'],other_seconds=z['other_seconds']+bz['seconds'],total_seconds=z['seconds']+bz['seconds']),
+    ledger_sha256=sha(L),new_algorithm_adopted=False,research_deliverables_complete=False,
+    next_action='521_independent_membership_decision_design',next_rule_status='not_selected_not_a_new_experiment')
+write(O/'review_manifest.json',manifest)
+focus='''# 현재 집중 문제 — Tab의 관계 추정 정보를 소속 결정으로 연결하는 규칙
+
+초기 문제 통합280·445와 지침 적용을 재사용합니다. [633 결과](633_same_data_joint_Tab_contrast_findings.md)에서 같은 전체 자료의 native 예측·선택·완료RCTL 연결을 마쳤습니다. [검토 등록부](results/same_data_joint_Tab_633/review_manifest.json)에 실제 source·cache·수치 검수와 재사용 범위를 구분했습니다.
+
+| 연결 | 최신 판단 |
+|---|---|
+| 문제 ID·상태 | `independent_UPC_membership_decision_information`; 같은 전체 자료 비교 완료, 구체적 새 소속 규칙은 미선정 |
+| 관측 근거 | 두 집합의 모든 후보에서 Tab의 확인 MAE는 낮았으나 Tab 선택의 RCTL은 HGB 선택보다2.12%·19.20% 높았습니다. 621의 제한된 Tab 소속 이득도 보존합니다. |
+| 종료한 범위 | 현재 고정 메뉴의 raw공동Tab MAE 선택을 큰context·기간·seed·보정으로 구제하는 확장입니다. 모든 예측 기반 clustering의 기각은 아닙니다. |
+| 원인 가설·미확인 | 예측기 자체의 적합성과 다른 최종모델이 학습하기 좋은 소속은 다를 수 있습니다. 전체 원인 규명을 설계의 관문으로 삼지 않습니다. |
+| 바꿀 소속 결정 | 최근입력–정답관계 중 어떤 추정정보로 후보·유지/이동을 결정할지 아직 미정입니다. 낮은 Tab 예측오차만으로 선택하지 않고 RCTL결과로 역선택하지 않습니다. |
+| Tab의 역할·단순 대안 | 같은자료의 조건부 예측 정확도 이점은 실제로 확인했습니다. 이 정보를 어떤 소속판단에 쓸지 미선정이며, 같은정보 HGB·profile/Ridge의 강한 근거를 유지합니다. |
+| 최종자료 | 소속과 규칙을 먼저 고정하고 각cluster의 전체 실제sample·target을 기존RCTL에 전달합니다. 현재 메뉴의RCTL은 모두완료해 재학습하지 않습니다. |
+| 다음 행동 | [기존521](521_independent_membership_decision_design_plan.md)의 미완료 결정규칙 하나를 구체화합니다. 추정량·입력·후보검색·배정·종료·같은정보대안·최소확인을 연결합니다. 새 빈 점검 계획을 만들지 않습니다. |
+| 결과별 판단 | 구별되는 정보/결정과 검증명세가 있으면 작은확인. 같은 종료연산이면 미선정으로 남기고 이름만 바꾸어 실행하지 않음. 다른문제로 전환할 때는 직접근거와 바뀔결정을 제시함. |
+
+633 실제20context·5888query, 완료Tab2context와모든HGB/RCTL재사용, native52.11275초+추가검수0.22045초, 검사350+122개·최대차1.3878e−17·미정산0입니다. 신규성·최종연구산출물은 미완료입니다. 현재 규칙 미선정을 새로운 연구 주제의 발견으로 세지 않습니다.
+
+## 이전 집중 기록 — 당시 판단 보존
+
+'''
+p=B/'research_focus.md';p.write_text(focus+p.read_text(encoding='utf-8-sig'),encoding='utf-8')
+entry=f'''
+
+## 633 — 동일 전체 자료의 Tab 예측 정확도와 소속 선택 효용을 구별했습니다 ({at})
+
+[633 결과](633_same_data_joint_Tab_contrast_findings.md). A/B각각UPC·Tab·수락HGB 세 고정소속, 같은cell당504행·64query·16열을실제로비교했습니다. Tab은6후보모두HGB보다nativeMAE가낮았으나선택은A:UPC/B:Tab이었고HGB는둘다HGB였습니다. 선택봉인후완료RCTL을연결하니Tab선택의전체MAE는각각+2.12%/+19.20%,앞뒤도악화했습니다. 같은전체자료미확인을해소했으며현재raw공동Tab위험선택확장을닫습니다. 일반예측clustering/모든Tab기여를기각하지않습니다.
+
+실제20Tabcontext/5888query,전체504행이동일한singleton2context/128query재사용,HGB/RCTL추가0. Tab46.6879295초+기타5.4248241초+독립저장검수/연결0.2204469초,350+122검사/최대차1.3878e−17,진행worker/미정산0. 필요한최소상한증액과실제사용량·실패비용보존,원장{sha(L)}. 초기통합재실행0,목록과상세검토범위구분.
+
+현재집중문제는기존independent_UPC_membership_decision_information으로연결합니다. 다음은[기존521의미완료규칙명세](521_independent_membership_decision_design_plan.md). Tab의예측정확도우위가실제소속판단으로바뀌는추정량·후보검색·유지/이동·같은정보대안·자료전달·최소확인을하나로작성합니다. 규칙은아직미선정이며새빈계획/추가RCTL/FT/전체원인규명관문을붙이지않습니다. 최종주제·Word·goal미완료입니다.
+'''
+for p in [B/'progress.md',B/'candidate_decision_index.md']:
+    with p.open('a',encoding='utf-8') as f:f.write(entry)
+previous=s['active_problem']['id']
+s.update(updated_at=at,latest_research_stage=633,latest_research_record=rel(B/'633_same_data_joint_Tab_contrast_findings.md'),current_request_kind='native_goal_continuation')
+s['active_problem']=dict(id='independent_UPC_membership_decision_information',path=rel(B/'research_focus.md'),status='same_data_native_contrast_complete_new_decision_rule_unselected')
+s['next_action']=dict(id='521_independent_membership_decision_design',plan=rel(plan),status='incomplete_rule_not_selected',problem_id=s['active_problem']['id'],budget_reserved=False,new_models_reserved=False,
+    action='633의같은전체자료확인을반복하지않고기존521의미완료규칙하나를작성한다.최근입력–정답관계에서Tab이추정할정보와후보검색·유지/이동·종료·같은정보HGB등대안·실제RCTL자료전달·최소검증을연결한다.현재raw공동TabMAE메뉴확장은종료한다.구별되는명세가갖춰지면작은확인,동일종료연산이면미선정으로보존하며새빈점검/추가RCTL원인진단/자동FT로대신하지않는다.')
+s['research_focus_application'].update(latest_delta_at=at,latest_delta_stage=633,latest_delta_record=s['latest_research_record'],latest_review_manifest=rel(O/'review_manifest.json'),
+    latest_actual_input_kind='native_goal_continuation',active_problem_id=s['active_problem']['id'],problem_id=s['active_problem']['id'],next_action_id=s['next_action']['id'],next_action=s['next_action']['id'],
+    application_status='guidance_applied_completed633_decision_design_remaining',latest_delta_new_model_runs=20,latest_delta_new_traffic_arithmetic=True,latest_delta_is_research_experiment=True,
+    handoff_application_complete=True,full_initial_integration_repeated=False,latest_output_and_settlement_checked=True)
+s['evidence_checkpoint'].update(latest_delta_review=rel(O/'review_manifest.json'),latest_actual_Tab_model=rel(O/'result.json'),latest_actual_model=rel(O/'result.json'),
+    latest_actual_execution=rel(O/'run_finished.json'),latest_actual_numeric=rel(O/'bridge_result.json'),latest_numeric_verification=rel(O/'bridge_verification.json'),
+    latest_settlement=rel(O/'bridge_settled.json'),ledger_sha256_at_handoff=sha(L),same_data_joint_Tab_branch='more_accurate_native_predictions_but_worse_fixed_RCTL_selections_both_cohorts',
+    final_Tab_membership_candidate_adopted=False)
+s['continuation_audit']=dict(at=at,actual_request_kind='native_goal_continuation',previous_goal_turn='progress',previous_evidence='632 completed3fits/settled/archive',
+    goal_status_observed='active via get_goal',goal_status_changed=False,current_turn='progress',new_Tab_contexts=20,new_Tab_query_rows=5888,new_HGB_fits=0,new_RCTL_fits=0,
+    current_evidence=[rel(O/p) for p in ['result.json','verification.json','settled.json','bridge_result.json','bridge_verification.json','bridge_settled.json']],next_rule_adopted=False)
+s.setdefault('problem_checkpoints',[]).append(dict(at=at,record=s['latest_research_record'],previous_problem=previous,problem_id=s['active_problem']['id'],
+    completed_scope='same whole-data/three-menu Tab-HGB native comparison plus cached seed25 RCTL utility',
+    closed_scope='automatic enlargement or calibration rescue of this raw joint Tab risk selection',
+    reason='Tab native MAE lower on every candidate but sealed choices worse on both fixed RCTL cohorts',
+    new_candidate_adopted=False,all_clustering_rejected=False,next_action=s['next_action']['id']))
+s['research_deliverables_complete']=False;write(S,s)
+checks=dict(stage=read(S)['latest_research_stage']==633,problem_link=s['next_action']['problem_id']==s['active_problem']['id'],
+    ledger_preserved=sha(L)==bz['ledger_sha256'],no_inflight=s['in_flight_execution'] is None,
+    next_plan_exists=(ROOT/s['next_action']['plan']).exists(),no_false_completion=not s['research_deliverables_complete'])
+assert all(checks.values())
+write(O/'archive_complete.json',dict(at=at,success=True,stage=633,checks=checks,ledger_sha256=sha(L),state_sha256=sha(S),
+    next_action=s['next_action']['id'],next_rule_adopted=False,new_Tab_contexts=20,new_Tab_query_rows=5888,new_RCTL=0))
+print(json.dumps(dict(archived=633,next_action=s['next_action']['id'],new_rule_adopted=False,checks=checks)))
