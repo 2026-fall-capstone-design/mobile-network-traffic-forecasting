@@ -1,0 +1,56 @@
+# 후보 검토와 제한 실행 계획 — 결과 확인 전 고정
+
+2026-09-25. 앞선 turn은 자료·checkpoint 확보 및 4 cell 실제 추론 증거를 생성했으므로 progress로 분류한다. 외부 blocker는 없다.
+
+## 후보 비교와 이번에 확인할 원리
+
+1. **잔차의 동시 상관을 낮추는 grouping**: 공유 자료의 중복이 실제 문제일 수 있지만, 상관이 높다는 사실은 negative transfer를 뜻하지 않는다. 평균 추정의 분산식으로 MAE 기반 RCTL을 설명할 수 없고, 현재 공개 자료는 결측 보충의 영향도 있다. 핵심 추천 후보로 채택하지 않는다.
+2. **교차 예측 오차 profile clustering**: RMB-CLE §3.2와 실질적으로 겹친다. TabICL로 추정기만 바꾸는 안은 비교 기준으로 사용한다.
+3. **cell별 조건부 MAE 곡선의 합산으로 model budget을 배분**: 예측 분포가 얼마나 다른지가 아니라, 제한된 수의 예측 규칙을 공유할 때 실제로 증가하는 이상적 MAE를 계산한다. 개별 cell의 고정 context에서 필요한 예측을 먼저 끝내고, 이후 clustering은 risk table의 덧셈과 최소값 계산만 사용한다. 새로운 목표 함수라는 주장은 하지 않는다. 확인할 기여는 고정 model budget 하에서, 시간 상태의 빈도와 비대칭 분포를 유지한 채 여러 cell의 공동 예측 비용을 재추론 없이 계산하는 추정·구현 방식이다.
+
+## 후보 3의 의미와 한계
+
+- 실제 문제: 파형·분포 거리 또는 pairwise transfer만으로 group을 구성하면 최종 MAE에서 중요하지 않은 분포 차이에 모델을 배분할 수 있다. 반대로 여러 cell을 합친 뒤 선택되는 공통 예측값은 pairwise 평균만으로 표현되지 않을 수 있다.
+- 같은 시간 상태 x에 대해 cell i의 분포로부터 `L_i(x,a)=E[abs(Y-a)|x,i]`라는 후보 예측값 a별 MAE 곡선을 얻는다. cell의 관측 상태 빈도 p_i(x)를 곱한다.
+- cluster C의 이상적 비용은 `sum_x min_a sum_{i in C} p_i(x)*L_i(x,a)`이다. 병합비용은 합친 cluster 비용에서 각 cluster 비용을 뺀 값이다. 같은 K에서 이 증가가 적은 partition을 찾는다.
+- 이는 고정 가중치 TabICL을 pooled context로 실행한 결과가 아니다. 추정한 조건부 분포 아래에서 공통 예측 함수가 갖는 이상적 손실이다. RCTL의 추정 오차·함수 용량·학습 경로는 따로 남는다. 개별 cell 보호나 전체 성능 보장을 주장하지 않는다.
+- squared error와 점예측만 쓰면 Ward 계열로 환원되는 경우가 있다. absolute risk도 알려진 Bayes decision 원리이다. 수학적 목적식의 최초성으로 novelty를 만들지 않는다.
+- 기존 interval 반례는 허용값의 존재를 주장하지 않고 실제 가중 합의 최소점을 계산하여 처리한다. 희소 상태는 실제 빈도를 반영한다. 상태 양자화·분포 추정 오류는 별도로 측정하며 finite probes를 전체 공간 보장으로 해석하지 않는다.
+
+## 자료와 모든 비교에서 고정할 설정
+
+- 기존 32개 cell 중 각 행의 column 인덱스 [0,2,4,7], 즉 총 16개를 선택한다. 성능과 무관한 사전 공간 배치다.
+- 동일한 입력 16열: 최근 8시간, 24시간·168시간 lag, 최근 24시간 평균·표준편차, 예측 시각과 요일의 sin/cos. h=1. mean scale은 처음 672시간으로 고정한다.
+- TabICL context: target 시점 168~671 전체 504개. 고정된 100개 context로 자료를 줄이는 기존안은 사용하지 않는다.
+- 상태 대표 64개: 위 context 입력만으로 StandardScaler + KMeans(random_state=20260925, n_init=5). 중심에 가장 가까운 실제 입력을 공통 query로 정한다. 각 cell의 p_i는 이 64개 상태에 배정된 context 입력 빈도이다. 미래 target은 사용하지 않는다.
+- 확인 query: 672~839에서 일정 간격으로 고른 64개, 모든 비교에서 고정. 각 cell query를 모든 개별 context에서 예측한 값은 RMB-CLE 방식의 cross-error profile 비교에만 쓴다. 이 N^2 query 비교는 소규모 기준선이며 제안 방법의 확장 비용에 숨기지 않는다.
+- 공식 TabICLv2, ensemble 1, CPU 4 threads. median과 129개 midpoint quantile을 같은 predict 호출에서 반환한다. 이는 native 999 출력 전체와 다르다.
+- 후보 action grid: 각 상태에서 cell들의 129 분위수 최소~최대 사이 257개. absolute loss가 1-Lipschitz이므로 action grid만의 최소값 근사 오차는 grid 반간격으로 제한된다. 이 사실은 조건부 분포 추정이나 상태 양자화 오차를 보장하지 않는다.
+- K=4로 고정한다. 작은 prototype에서는 모든 cluster 쌍을 score하되 한 round에서 cluster는 최대 한 번 병합한다. 낮은 비용부터 서로 겹치지 않는 pair를 선택하여 16→8→4로 병합한다. 원래의 unrestricted agglomeration과 구별한다.
+- 대규모 설계: context 모델 호출은 cell당 한 번. 후보 graph는 입력 분포 요약의 k=16 nearest neighbors로 생성하고, round별로 edge 중복을 없앤다. 선택되지 않은 singleton cluster는 고정 ID 순으로 둘씩 병합해 round별 반감을 확보한다. fallback 비율과 비용을 반드시 기록한다. 근사 탐색이며 최적 partition 보장은 없다. fallback이 잦으면 k를 사후 최적화하지 않고 계산 절감과 품질 손실을 함께 보고한다.
+
+## 비교 및 사전 판정
+
+- 같은 risk-table 알고리즘에 KNN 조건부 경험분포(k=32, context 표준화 거리)를 사용하여 TabICL의 기여를 분리한다.
+- median만 쓰는 곡선, median+IQR로 맞춘 uniform 곡선, 전체 129 분위수 곡선의 서로 다른 결정과 비용을 기록한다. 다른 결정을 한다는 것만으로 우수하다고 판정하지 않는다.
+- PCC에 의한 같은 round의 balanced clustering, 고정 seed random balanced partition, TabICL 교차오차 profile + cosine + average-linkage(K=4)를 비교한다. 마지막은 RMB-CLE 아이디어의 통제된 비교이며 boosting 원 논문 전체의 재현이 아니다.
+- UPC는 원문처럼 weekday modal peak와 peak-group PCC를 사용한다. 16개 cell에서는 원문의 `|G|>10` 조건으로 seed를 만들기 어려우므로, 이것을 임의 수정한 방법을 원본 UPC라고 부르지 않는다. 본 소규모 핵심 확인에서는 PCC 대안을 사용하고, 원본 UPC 비교는 충분한 cell 규모의 본 실험에 남긴다.
+- 첫 검사는 (a) 알려진 분포의 합성 예에서 정확한 loss와 계산값이 일치하는지, (b) 실제 자료에서 상태 양자화 때문에 TabICL의 예측 차이가 압도적으로 커지는지, (c) KNN/median+scale로 사실상 같은 결정을 하는지이다. (a)가 틀리면 구현 수정, (b)가 핵심을 무너뜨리거나 (c)에서 별도 정보가 없으면 추천을 보류하고 다른 원리를 탐색한다.
+- synthetic 결과는 실제 우수성의 증거가 아니다. 최종 RCTL 비교 전까지 모든 partition과 hyperparameter를 파일/hash로 고정한다.
+
+## 후속 RCTL의 제한 확인
+
+- 16개 cell, train targets 168~839(첫 35일), validation 840~1007(다음 7일), test 1008~1487(마지막 20일). test는 partition·학습 설정 고정 후 처음 읽는다. 모든 날과 cell을 유지한다.
+- RCTL의 6 TCN-LSTM block, public code의 dilation, 두 residual 구조를 유지한다. 최근 8시간을 8-step sequence로 주며 나머지 8열은 각 step에 반복하여 모든 모델에 같은 정보를 준다. 입력 채널 수 변화 외 핵심 구조를 고정한다. 공식 Keras 구현의 Torch port임을 구분한다.
+- 원래 목적 MAE, Adam lr=0.001, batch 256, 최대 80epoch, validation patience=10, seed=20260925. 원문의 1000epoch/별도 데이터 재현을 주장하지 않는다. 수렴 부족은 후보 실패와 구분한다.
+- 5개 partition(full risk, KNN risk, PCC, random, cross-error profile) × 4 models + global 1 = 최대 21 fits. full risk와 PCC만 두 번째 사전 seed 20260926으로 반복하여 최대 8 fits 추가: 총 29 fits. 성능에 따라 반복 대상을 바꾸지 않는다.
+- 최대 29 fits/2320epochs, 전체 RCTL CPU wall time 50분. 일찍 시간 한도에 도달하면 중단된 조건과 불완전 비교를 기록한다. 유료·GPU 자원은 쓰지 않는다.
+- primary metric은 cell별 mean-scaled MAE의 균등 평균. 원단위 MAE, cell별 변화, 95% 초과 peak query MAE도 보고하되 성공 정의를 바꾸지 않는다. test의 48시간 paired blocks(10개), 96시간 민감도로 변동을 확인한다. 별도 seed·기간에서 이득 방향이 유지되는지 살핀다. 0을 가르는 evidence가 없으면 유의한 개선으로 부르지 않는다.
+- RCTL 결과에 맞춰 본 partition/threshold를 수정하지 않는다. 핵심이 실패하면 이 데이터의 test는 이후 개발 자료가 되었음을 표시하고 독립 평가로 재사용하지 않는다.
+
+## 이번 goal의 누적 실행 상한
+
+- 완료한 최초 smoke 포함 TabICL fit/predict preparation 최대 80 contexts, 모델로 예측하는 총 행 60,000. ensemble=1은 고정한다. 각 call과 실제 시간·메모리·행 수를 JSON으로 기록한다.
+- 합성·Ridge·KNN 진단은 CPU 10분 이내, 메모리 8 GiB 이내. TabICL 실제 추론 CPU 합계 40분 이내, 프로세스 메모리 20 GiB 이내.
+- RCTL 최대 29 fits, 50분. 전체 local modeling 합계 100분 이내. 경과가 cap에 가까우면 새 비싼 실행을 시작하지 않는다.
+- 비용이나 자료만으로 추천 방향을 확정하지 않는다. 조건부 risk-table 아이디어가 알려진 prior work와 동등하거나 실제 개선 원리가 약하면 이 후보는 폐기한다. 이 후보의 실패가 goal 완료를 뜻하지 않는다.

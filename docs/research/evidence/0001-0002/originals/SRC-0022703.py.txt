@@ -1,0 +1,61 @@
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']: os.environ[key]='4'
+import pathlib,json,time,sys,gc,threading,platform
+import numpy as np, pandas as pd, h5py, psutil, torch
+from sklearn.linear_model import Ridge
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from tabicl import TabICLRegressor
+sys.stdout.reconfigure(encoding='utf-8')
+torch.set_num_threads(4); torch.set_num_interop_threads(2)
+base=pathlib.Path(__file__).resolve().parent
+out=base/'results'; out.mkdir(exist_ok=True)
+ids=np.array([r*100+c for r in [37,45,53,61] for c in [36,40,44,48,52,56,60,64]])
+with h5py.File(base/'assets/data_git_version.h5','r') as h:
+    values=h['data'][:1008,ids,2]
+    dates=pd.to_datetime(h['idx'][:].astype(str))
+scales=np.mean(values[:672],axis=0)
+assert np.all(np.isfinite(values)) and np.all(scales>0)
+z=values/scales
+times=np.arange(168,1008)
+cal=dates[times]
+calendar=np.column_stack([np.sin(2*np.pi*cal.hour/24),np.cos(2*np.pi*cal.hour/24),np.sin(2*np.pi*cal.dayofweek/7),np.cos(2*np.pi*cal.dayofweek/7)])
+features=[]
+for j in range(len(ids)):
+    a=z[:,j]
+    x=np.array([np.r_[a[t-8:t],a[t-24],a[t-168],a[t-24:t].mean(),a[t-24:t].std(),calendar[k]] for k,t in enumerate(times)])
+    features.append(x)
+X=np.stack(features).astype(np.float32); Y=z[times].T.astype(np.float32)
+np.savez_compressed(out/'design_data.npz',X=X,Y=Y,raw=values,scales=scales,cell_indices=ids,times=times,dates=np.array(dates[:1008].astype(str)))
+mae=lambda p,y:float(np.mean(np.abs(np.asarray(p).reshape(-1)-y)))
+train=times<672; query=times>=672
+ridgeres=[]; errors=[]
+for j,c in enumerate(ids):
+    model=make_pipeline(StandardScaler(),Ridge(alpha=1.0))
+    model.fit(X[j,train],Y[j,train]); p=model.predict(X[j,query])
+    ridgeres.append({'cell_id':int(c+1),'ridge_mae':mae(p,Y[j,query]),'last_mae':mae(X[j,query,7],Y[j,query]),'daily_mae':mae(X[j,query,8],Y[j,query]),'weekly_mae':mae(X[j,query,9],Y[j,query])})
+    errors.append(Y[j,query]-p)
+raw_corr=np.corrcoef(Y[:,query]); innovation_corr=np.corrcoef(errors)
+tri=np.triu_indices(len(ids),1)
+diag={'data_shape':list(values.shape),'timestamps_unique':len(set(dates))==len(dates),'hourly_increments':bool(np.all(np.diff(dates.values)==np.timedelta64(1,'h'))),'negative_count':int(np.sum(values<0)),'zero_fraction':float(np.mean(values==0)),'cell_ids':(ids+1).tolist(),'ridge_results':ridgeres,'raw_correlation_quantiles':np.quantile(raw_corr[tri],[0,.25,.5,.75,1]).tolist(),'ridge_residual_correlation_quantiles':np.quantile(innovation_corr[tri],[0,.25,.5,.75,1]).tolist(),'scope':'Exploratory first 42 days; no final-period target read; processed hourly activity, not original GECOS replication.'}
+(out/'data_diagnostic.json').write_text(json.dumps(diag,indent=2),encoding='utf-8')
+np.savez_compressed(out/'diagnostic_correlations.npz',raw_corr=raw_corr,residual_corr=innovation_corr,ridge_errors=np.array(errors))
+print(json.dumps({k:v for k,v in diag.items() if k!='ridge_results'}),flush=True)
+context=np.rint(np.linspace(0,np.sum(train)-1,256)).astype(int)
+qidx=np.flatnonzero(query)[:64]
+assert len(np.unique(context))==256
+smoke=[]
+for j in [0,7,24,31]:
+    c=int(ids[j]+1); mem=[psutil.Process().memory_info().rss]; stop=threading.Event()
+    def monitor():
+        while not stop.wait(.2):mem.append(psutil.Process().memory_info().rss)
+    tmon=threading.Thread(target=monitor,daemon=True);tmon.start()
+    model=TabICLRegressor(n_estimators=1,batch_size=1,model_path=str(base/'assets/tabicl-regressor-v2-20260212.ckpt'),allow_auto_download=False,device='cpu',use_amp=False,use_fa3=False,offload_mode=False,random_state=20260925,n_jobs=1)
+    start=time.perf_counter();model.fit(X[j,context],Y[j,context]); fitted=time.perf_counter()
+    pred=model.predict(X[j,qidx],output_type='median'); end=time.perf_counter();stop.set();tmon.join()
+    simple=make_pipeline(StandardScaler(),Ridge(alpha=1.0)).fit(X[j,context],Y[j,context])
+    rec={'cell_id':c,'context_rows':256,'query_rows':64,'fit_seconds':fitted-start,'predict_seconds':end-fitted,'rss_peak_bytes':max(mem),'n_estimators':1,'device':'cpu','median_mae':mae(pred,Y[j,qidx]),'ridge_mae':mae(simple.predict(X[j,qidx]),Y[j,qidx]),'last_mae':mae(X[j,qidx,7],Y[j,qidx]),'daily_mae':mae(X[j,qidx,8],Y[j,qidx]),'finite_prediction':bool(np.all(np.isfinite(pred)))}
+    smoke.append(rec); print(json.dumps(rec),flush=True)
+    np.savez_compressed(out/f'smoke_cell_{c}.npz',pred=pred,y=Y[j,qidx],context_indices=times[context],query_indices=times[qidx])
+    (out/'smoke.json').write_text(json.dumps({'python':platform.python_version(),'torch':torch.__version__,'runs':smoke,'interpretation':'API and CPU cost pilot; no algorithm efficacy claim'},indent=2),encoding='utf-8')
+    del model;gc.collect()
