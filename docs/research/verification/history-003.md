@@ -2,6 +2,8 @@
 
 검수 범위는 [05 부분 기록](../records/0005-closest-methods-audit.md)과 [다섯 방법 비교](../references/closest-pooling-methods.md)다. 전체05·전체 논문·전체 연구 아카이브의 완료를 의미하지 않는다. [출처별 구간](../sources/history-003.md), [일차문헌 검토 장부](history-003-primary-review.json).
 
+아래의 미완료 목록은 이 묶음 검수 당시 범위다. 이후 네트워크·시계열9항목은 [history-004](history-004.md)에서 이어서 확인했다. 공식 TabICL·회귀 TabPFN 및 관련 여섯 연구는 계속 미완료다.
+
 ## 확인한 핵심 주장
 
 | claim_id | 원문 대조 내용 |
