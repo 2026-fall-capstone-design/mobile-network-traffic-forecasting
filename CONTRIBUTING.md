@@ -140,7 +140,7 @@ git pull --ff-only
 | `docs` | 문서 작성과 수정 |
 | `experiment` | 실험 수행과 결과 비교 |
 | `data` | 데이터 수집과 전처리 |
-| `model` | 예측·군집화 모델 |
+| `model` | 모델 설계·구현·비교 |
 | `evaluation` | 평가 지표와 재현성 |
 | `web` | 정적 웹과 시각화 |
 | `infra` | 개발 환경과 CI·배포 |
