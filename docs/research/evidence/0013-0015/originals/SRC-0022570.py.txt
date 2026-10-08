@@ -1,0 +1,76 @@
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:
+    os.environ[key]='4'
+import pathlib,time,json,hashlib,sys
+import numpy as np
+import psutil,torch
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor
+from tabicl import TabICLRegressor
+sys.stdout.reconfigure(encoding='utf-8')
+torch.set_num_threads(4);torch.set_num_interop_threads(2)
+base=pathlib.Path(__file__).resolve().parent;out=base/'results';stage=out/'cell_identity'
+stage.mkdir(exist_ok=True)
+if (stage/'run_started.json').exists():
+    raise RuntimeError('Stage already started. Inspect existing state; do not rerun or reset costs.')
+seed=20260925;rng=np.random.default_rng(seed)
+d=np.load(out/'design_data.npz');p=np.load(out/'risk_table_predictions.npz');sel=p['selected_cells']
+X=d['X'][sel];Y=d['Y'][sel];ids=p['cell_ids'];times=d['times'];n=len(sel)
+ctimes=np.sort(168+np.arange(168)+168*rng.integers(0,3,168));qtime=p['query_times']
+ci=np.searchsorted(times,ctimes);qi=np.searchsorted(times,qtime)
+assert np.array_equal(times[ci],ctimes) and len(np.unique(ctimes))==168 and ctimes.max()<qtime.min()
+cx=X[:,ci].reshape(-1,X.shape[-1]);cy=Y[:,ci].ravel()
+qx=X[:,qi].reshape(-1,X.shape[-1]);qy=Y[:,qi].ravel()
+eye=np.eye(n,dtype=np.float32);cid=np.repeat(eye,len(ci),axis=0);qid=np.repeat(eye,len(qi),axis=0)
+perm=np.random.default_rng(20260926).permutation(n)
+contexts={'no_ID':cx,'cell_ID':np.c_[cx,cid],'cell_ID_permuted':np.c_[cx,cid[:,perm]]}
+queries={'no_ID':qx,'cell_ID':np.c_[qx,qid],'cell_ID_permuted':np.c_[qx,qid[:,perm]]}
+settings={'seed':seed,'cell_ids':ids.tolist(),'context_times':ctimes.tolist(),'query_times':qtime.tolist(),
+          'context_rows':len(cy),'query_rows':len(qy),'ID_column_permutation':perm.tolist(),
+          'plan_sha256':hashlib.sha256((base/'14_cell_identity_diagnostic_plan.md').read_bytes()).hexdigest(),
+          'input_sha256':hashlib.sha256((out/'design_data.npz').read_bytes()).hexdigest(),
+          'new_RCTL_fits':0,'ensemble':1}
+(stage/'run_started.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+allpred={};logs=[];tstage=time.perf_counter()
+for name in contexts:
+    if time.perf_counter()-tstage>=480:raise RuntimeError('Stage time cap; no next context started')
+    model=TabICLRegressor(n_estimators=1,batch_size=1,model_path=str(base/'assets/tabicl-regressor-v2-20260212.ckpt'),allow_auto_download=False,device='cpu',use_amp=False,use_fa3=False,offload_mode=False,random_state=seed,n_jobs=1)
+    t=time.perf_counter();model.fit(contexts[name],cy);tf=time.perf_counter()
+    pr=model.predict(queries[name],output_type='median');end=time.perf_counter()
+    assert np.isfinite(pr).all();allpred['TabICL_'+name]=np.asarray(pr)
+    logs.append({'condition':name,'context_rows':len(cy),'query_rows':len(qy),'features':contexts[name].shape[1],
+                 'fit_seconds':tf-t,'predict_seconds':end-tf,'RSS_bytes':psutil.Process().memory_info().rss,'ensemble':1})
+    assert logs[-1]['RSS_bytes']<8*1024**3
+    (stage/'calls.json').write_text(json.dumps(logs,indent=2),encoding='utf-8')
+    np.savez_compressed(stage/'predictions_partial.npz',**allpred)
+    print(json.dumps(logs[-1]),flush=True)
+    del model
+simple_start=time.perf_counter()
+for label,constructor in [('Ridge',lambda:make_pipeline(StandardScaler(),Ridge(alpha=1))),
+ ('HGB',lambda:HistGradientBoostingRegressor(loss='absolute_error',max_iter=100,learning_rate=.1,max_leaf_nodes=15,min_samples_leaf=20,l2_regularization=1,early_stopping=False,random_state=seed))]:
+    for name in ['no_ID','cell_ID']:
+        model=constructor();model.fit(contexts[name],cy)
+        allpred[label+'_'+name]=model.predict(queries[name])
+simple_elapsed=time.perf_counter()-simple_start
+results={}
+for name,pr in allpred.items():
+    err=np.abs(pr-qy).reshape(n,len(qi))
+    results[name]={'mean_cell_MAE':float(err.mean()),'cell_MAE':err.mean(1).tolist(),
+       'day_MAE':{str(int(day)):float(err[:,qtime//24==day].mean()) for day in np.unique(qtime//24)}}
+deltas={}
+for label in ['TabICL','Ridge','HGB']:
+    for suffix in (['cell_ID','cell_ID_permuted'] if label=='TabICL' else ['cell_ID']):
+        a=results[label+'_'+suffix];b=results[label+'_no_ID']
+        deltas[label+'_'+suffix]={'MAE_change_ID_minus_no_ID':a['mean_cell_MAE']-b['mean_cell_MAE'],
+             'day_changes':{k:a['day_MAE'][k]-b['day_MAE'][k] for k in b['day_MAE']},
+             'cell_changes':(np.array(a['cell_MAE'])-np.array(b['cell_MAE'])).tolist()}
+report={'settings':settings,'calls':logs,'results':results,'ID_deltas':deltas,
+        'TabICL_seconds':float(sum(z['fit_seconds']+z['predict_seconds'] for z in logs)),
+        'simple_model_seconds':simple_elapsed,'stage_seconds':time.perf_counter()-tstage,
+        'RCTL_results_used_for_clustering':False,'scope':'Information diagnostic, not a new clustering algorithm or final RCTL validation.'}
+(stage/'summary.json').write_text(json.dumps(report,indent=2,allow_nan=False),encoding='utf-8')
+np.savez_compressed(stage/'predictions.npz',**allpred,actual=qy,cell_ids=ids,context_times=ctimes,query_times=qtime)
+(stage/'run_finished.json').write_text(json.dumps({'status':'completed','contexts':3,'query_rows':3072,'RCTL_fits':0,'stage_seconds':report['stage_seconds']}),encoding='utf-8')
+print(json.dumps({'MAE':{k:v['mean_cell_MAE'] for k,v in results.items()},'ID_deltas':deltas,'seconds':report['stage_seconds']},indent=2),flush=True)

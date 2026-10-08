@@ -1,0 +1,62 @@
+# 교차 예측과 cell 식별 정보: 추가 판단
+
+확인일 2026-09-25. 13·14 계획을 먼저 저장하고 실행한 결과다. 추천 알고리즘 확정이나 목표 완료를 뜻하지 않는다.
+
+## 1. 교차 예측 오차가 커지는 이유를 구분해야 한다
+
+16 cell의 같은 실제 query에 대해 자신의 504개 context를 참고한 평균 MAE는 0.072614, 다른 cell의 504개 context를 참고한 평균은 0.176067이었다. 하지만 양방향 교차 손해의 pair 순위와 입력 거리 초과 비율의 상관은 0.7475로, raw PCC 차이와의 상관 0.4158 및 weekday profile PCC 차이와의 상관 0.3557보다 컸다. 이 결과는 관측 범위 차이와의 연관성이며 원인을 분리한 실험은 아니다.
+
+입력 지원은 context의 같은 날을 제외한 8번째 이웃 거리의 95% 분위수를 참고선으로 계산했다. 이를 참 support의 경계나 통계적으로 보장된 판정이라고 해석하지 않는다. 다른 cell query가 이 참고선 안에 있는 비율의 중앙값은 56.25%였다. 모든 cell과 query를 결과에 포함했다.
+
+따라서 다른 cell로 단독 예측을 옮겼을 때 생기는 외삽 문제와 두 cell의 실제 자료를 함께 학습하는 문제를 구분해야 한다. 후자의 학습 자료에는 두 cell의 관측 범위가 모두 들어간다. 높은 교차 손해를 곧 공동 학습 손해로 사용할 수 없다.
+
+주 UPC 해석 K=3을 16 cell에 제한했을 때 앞 기간의 실제 cluster 크기는 8·1·7, 뒤 기간은 11·5였다. 원래 도시 전체에서는 3개였지만 부분집합에서 실제 비어 있지 않은 cluster 수가 달랐다. 이 결과를 같은 K의 성능 비교로 부르지 않는다. 내부 교차 손해는 각각 0.09917, 0.09496이고, 크기를 보존한 무작위 소속의 95% 중앙 범위 안이었다. 16 cell의 기술적 비교이며 유의성 검정이나 UPC 기각이 아니다.
+
+앞뒤 모두 같은 그룹인 pair의 평균 교차 손해 0.09882와 같은 그룹에서 다른 그룹으로 이동한 pair의 0.09974도 가까웠다. 소속 변동 자체를 중요한 예측 충돌이라고 설명할 근거는 이번 결과에서 얻지 못했다.
+
+## 2. 같은 자료에서 식별 정보만 바꾼 확인
+
+context는 cell당 168개, 총 2,688개로 고정했다. 각 주간 시각마다 과거 3주 중 하나를 골랐으며 모든 cell에 같은 시각을 적용했다. query 1,024개도 전 조건이 같다. 최근 8시간, 일·주 lag, 24시간 요약, 시간·요일 입력에 cell one-hot을 추가한 차이만 비교했다.
+
+| 모델 | 식별 정보 없음 | cell 식별 정보 추가 | MAE 변화 |
+|---|---:|---:|---:|
+| TabICLv2 | 0.073959 | 0.073385 | −0.000573 |
+| TabICLv2, ID 열 순서 변경 | 같은 0.073959 | 0.073209 | −0.000750 |
+| Ridge | 0.091373 | 0.095354 | +0.003981 |
+| HGB, absolute loss | 0.080651 | 0.081010 | +0.000359 |
+
+TabICL의 평균 개선은 약 0.78%, 1.01%였다. 두 ID 표현 모두 7일 중 5일에서 MAE가 줄었지만 전 날짜·cell에서 이득이 나지는 않았다. 단일 ensemble과 한 주의 자료이며 반복된 시간 의존 관측을 1,024개의 독립 표본으로 취급하지 않는다. 이 정도의 개선을 작은지 큰지 정하는 업무상 기준은 없으므로 임의 합격선을 만들지 않는다.
+
+TabICL의 전체 예측 정확도는 같은 자료를 받은 두 단순 비교보다 좋았다. 그러나 예측기 자체의 정확도와 그 모델로 정한 clustering의 가치는 별개다. 이 결과는 TabICL을 사용한 clustering의 우위를 입증하지 않는다. 또한 13의 자기 context MAE와 이번 pooled MAE는 context 수·행 구성이 다르므로 두 숫자를 빼서 공유 효과라고 부르지 않는다.
+
+**주의할 논리:** 실제 최적 예측기를 안다면 cell ID를 완전히 사용하는 경우는 cluster ID만 사용하는 경우보다 더 많은 정보를 갖는다. 하지만 유한 context를 받은 TabICL 두 조건의 관측 MAE 차이가 모든 가능한 clustering 이득의 상한은 아니다. full-ID 추정기가 필요한 관계를 놓쳤거나 추정 변동이 클 수도 있다. 이 진단으로 'clustering을 절대로 하지 않아도 된다'는 인증 규칙을 만들지 않는다.
+
+## 3. 새로 검토한 방법과 채택 여부
+
+### 효과가 같은 범주를 묶는 방법
+
+[Effect fusion](https://arxiv.org/abs/1703.07603v1)의 §2 식 1–6은 선형 회귀의 범주별 효과에 sparse normal mixture prior를 주고, §3의 MCMC에서 효과와 그룹을 함께 추정한다. [Tree-Structured Modelling](https://arxiv.org/abs/1504.04700v1)의 §2–3은 다른 변수의 선형·가법 효과를 조정하면서 범주를 나누고, deviance 또는 validation으로 분할을 선택한다. 후자는 각 단계에 전체 자료를 유지한다고 명시한다. 그러므로 '전체 자료는 같게 두고 cell ID를 합친다'는 설명만으로 신규성이 생기지 않는다. 비선형 TabICL로 바꾼다는 것 외에 다른 추정 또는 결정 개선이 필요하다. 현재 추천하지 않는다.
+
+Tree-Structured 문서의 arXiv watermark는 1504.04700v1/18 Apr 2015이고 표지의 typeset date는 March 12, 2018이다. 두 날짜를 혼동하지 않도록 원본과 hash를 보존했다.
+
+### 비교를 일부만 계산하는 방법
+
+[BanditPAM++](https://arxiv.org/html/2310.18844v1#S4)은 §4.1에서 하나의 계산으로 여러 swap 후보를 갱신하고 §4.2에서 순열에 따른 reference 재사용으로 반복 사이 계산을 줄인다. §5의 같은 해 복원 및 비용 주장은 sub-Gaussian 크기, 후보 gap 등 조건이 필요하다. 따라서 후보를 순서대로 탈락시키고 cache하는 것 자체를 새 기여로 세지 않는다. TFM context 준비와 query 추론을 서로 다른 비용으로 다뤄야 하지만, 그 차이를 지적한 것만으로 새 알고리즘이 되지는 않는다.
+
+[Active Clustering](https://proceedings.mlr.press/v15/eriksson11a.html)의 §2 Definition 2 및 §3 Theorem 3.1은 tight clustering 조건 아래 적은 similarity 관측으로 tree를 복원한다. §4는 오염된 비교를 다룬다. 실제 교차 예측 점수가 이 조건을 만족한다고 확인하지 않았으므로 그 계산량 보장을 옮기지 않는다. 두 논문은 향후 비용 개선안의 필수 비교 기준이다.
+
+### 시간에 따라 context를 바꾸는 방법
+
+[CURE](https://arxiv.org/html/2606.18677v1#S4)는 분류 stream을 대상으로 short FIFO와 long bank를 유지한다. 식 7–9는 예측 entropy를 저장해 admission에 쓰고, 가장 많은 class의 가까운 입력 쌍 중 최근 centroid에서 먼 sample을 제거한다. Appendix B.3의 시간에는 context 준비·예측·eviction이 포함된다. 회귀의 넓은 예측 분포를 곧 유용한 sample로 간주하면 조건부 noise를 정보량으로 오해할 수 있다. 이 논문은 회귀 cell clustering 또는 RCTL의 공유 이득을 검증하지 않았으므로 그대로 적용하지 않는다.
+
+[NOMADD](https://arxiv.org/html/2608.02845v1#S3)은 §3.3에서 과거 전체 기준 모델과 기간별 모델의 차이를 공통 좌표로 만든다. TFM에는 고정 query의 class log-probability를 사용한다. §3.4의 낮은 차원 시간 궤적을 미래로 외삽하고, forward validation에서 변화량 0도 선택할 수 있다. 시간별 예측장을 비교하거나 저차원으로 압축하는 것 자체는 새 기여가 아니다. 이를 회귀 traffic이나 cell 병합의 보장으로 확대하지 않는다.
+
+## 4. 판단과 다음 탐색 조건
+
+현재 추가로 확인된 것은 '교차 예측 오차가 큰데도 cell 식별 정보의 추가 예측 이득은 작을 수 있다'는 관찰이다. 원래의 대리 점수로 복귀하지 않는다. 정적인 관계 차이가 크다는 가정을 더 강하게 만드는 대신, 기존 cell에서 시간에 따라 자료의 유효성이 달라지는 문제가 실제로 남는지 확인할 수 있다. 다만 이는 아직 추천 후보가 아니며 변화 빈도·단순 시간 특징으로 해결되는지·기존 streaming 방법과 다른 결정 원리가 먼저 필요하다. 새 모델 호출이나 재학습 전에 계획을 고정한다.
+
+이번 TabICL 실행은 3 context/3,072 query, 준비·추론 27.520초다. 저비용 모델 네 fit은 0.276초, 13 진단은 0.335초였다. 누적 TabICL 39 context/23,424 query, RCTL 29 fit으로 상한을 유지했다. 이 turn은 실제 진단과 문헌에 따른 배제 이유가 추가된 progress이며 외부 blocker는 없다. 추천 방향·최종 Word는 아직 미완료다.
+
+검색어 기록: `BanditPAM++ virtual arms algorithm paper`, `hierarchical clustering adaptive sampling expensive distance exact average linkage paper`, `task clustering disjoint input support negative transfer predictive overlap`, `clustering categorical levels predictive performance grouping categories regression conditional covariates`, `conditional information bottleneck clustering tasks`, `network traffic forecasting concept drift clustering`, `TabICL concept drift`, `TabPFN concept drift clustering`.
+
+접근 기록: BanditPAM++ OpenReview는 verification 화면, PDF 다운로드는 HTTP 406이었으나 arXiv v1 HTML 본문을 확인했다. arXiv v2는 존재 확인에 실패했고 abstract history상 v1만 있다. MDPI Entropy 28(8)884는 전체 페이지 HTTP 429로 방법 수준의 근거에서 제외했다. 추가 primary PDF 5편은 `additional_primary_manifest_13_14.json`에 URL·페이지 수·hash를 기록했다.

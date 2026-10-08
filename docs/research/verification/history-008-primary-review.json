@@ -1,0 +1,142 @@
+{
+  "batch_id": "history-008",
+  "reviewed_at_utc": "2026-10-08T23:12:09.975090+00:00",
+  "reviewer": "same_archive_agent_not_independent_scientific_review",
+  "primary_sources": [],
+  "findings": [
+    {
+      "claim_id": "H008-C01",
+      "sources": [
+        "SRC-0020929",
+        "SRC-0023210",
+        "SRC-0023614",
+        "SRC-0023615",
+        "SRC-0023577",
+        "SRC-0023605"
+      ],
+      "finding": "13은16cell의저장 B1실제 query를 재사용한교차예측이며 자기.07261397/타cell.17606688 MAE와방향별 excess를 검산했다.",
+      "locator": "13plan1–17;code16–27;JSON own/other;NPZmedian[:,64:]",
+      "limitation": "504행단일context의이동이며pooled/RCTL손해나새모델호출아님.첫672h평균정규화."
+    },
+    {
+      "claim_id": "H008-C02",
+      "sources": [
+        "SRC-0023210",
+        "SRC-0023614",
+        "SRC-0023615",
+        "SRC-0023577"
+      ],
+      "finding": "120쌍의rank상관은rawPCC .41580665/profile .35569831/input-distance-exceedance .74753123.타cell지원분율중앙값.5625를 확인했다.",
+      "locator": "code28–43/70–76;JSONpair_rank_correlations;NPZ raw/profile_PCC/input_support",
+      "limitation": "거리threshold·8th-neighbor query거리는미재계산.지원matrix요약/rank만확인하며참support/인과검증아님."
+    },
+    {
+      "claim_id": "H008-C03",
+      "sources": [
+        "SRC-0023612",
+        "SRC-0023614",
+        "SRC-0023615"
+      ],
+      "finding": "도시UPC24소속을16cell에제한하면모두배정되며주조건첫8/1/7,뒤11/5그룹이다.24조건은10개서로다른pair소속이다.",
+      "locator": "partition_records all24; labels[ids-1] and equality masks",
+      "limitation": "도시K와pilot의비어있지않은K가다름.24독립실험·같은K최종성능비교아님."
+    },
+    {
+      "claim_id": "H008-C04",
+      "sources": [
+        "SRC-0023210",
+        "SRC-0023614",
+        "SRC-0023615"
+      ],
+      "finding": "주조건두inside손해는저장무작위중앙범위안이다.네민감도행은저장하한보다작고그네행은서로다른소속두개에해당한다.",
+      "locator": "code44–59;partition_records inside/outside and reported null quantiles",
+      "limitation": "1000순열의개별값미보존;분위수미재현.유의성검정/UPC기각/독립재현으로확대하지않는다."
+    },
+    {
+      "claim_id": "H008-C05",
+      "sources": [
+        "SRC-0023612",
+        "SRC-0023614",
+        "SRC-0023615"
+      ],
+      "finding": "주조건네pair전이36/35/19/30과평균.12073892/.09166313/.09974033/.09881577을확인했다.",
+      "locator": "primary_pair_changes four masks;code60–65",
+      "limitation": "입력/target같은120쌍의기술적관계이며소속변경이예측손해원인이라는증거아님."
+    },
+    {
+      "claim_id": "H008-C06",
+      "sources": [
+        "SRC-0020950",
+        "SRC-0022570",
+        "SRC-0024840",
+        "SRC-0024837",
+        "SRC-0023577",
+        "SRC-0023605"
+      ],
+      "finding": "14의168시간위상당하나를과거세주에서뽑은같은context시간,총2688행과1024query를검증했다.각주69/49/50,query날짜별9/9/9/10/9/9/9개다.",
+      "locator": "14plan;code19–34;run_started and final NPZ metadata",
+      "limitation": "난수선택재생성없음.13의cell당504행과14의168행이달라자기vs공동MAE를pooling효과로빼지않는다."
+    },
+    {
+      "claim_id": "H008-C07",
+      "sources": [
+        "SRC-0024837",
+        "SRC-0024838",
+        "SRC-0024841"
+      ],
+      "finding": "저장7예측조건과4ID차이의평균/cell16개/day7개값을재계산했다.부분3Tab예측은최종과같다.",
+      "locator": "summary.results and ID_deltas all keys;final/partial predictions",
+      "limitation": "고정한주·ensemble1의관측이며독립1024표본,모델추론재현,clustering최종평가아님."
+    },
+    {
+      "claim_id": "H008-C08",
+      "sources": [
+        "SRC-0020972",
+        "SRC-0024837",
+        "SRC-0024841"
+      ],
+      "finding": "TabID평균감소.775335%,열순서변경1.013756%;각각5/7cell손해와두날손해를보존했다.Ridge/HGB평균악화에도8cell씩이득이다.",
+      "locator": "15lines21–32;all saved per-cell/day deltas",
+      "limitation": "같은정보의ID열표현차이이며관측full-ID이득이모든clustering이득의상한은아니다.업무합격선미기록."
+    },
+    {
+      "claim_id": "H008-C09",
+      "sources": [
+        "SRC-0022570",
+        "SRC-0024836",
+        "SRC-0024839",
+        "SRC-0024840",
+        "SRC-0024841"
+      ],
+      "finding": "역사적Tab3context3072query·simple4fit·RCTL0과Tab시간합27.520083초를로그/결과와연결했다.",
+      "locator": "code35–76;calls;run_finished;summary cost fields",
+      "limitation": "경과시간/RSS는보고값이며독립측정아님.별도가중치재실행0;15의누적39/23424/29는이번검수외."
+    },
+    {
+      "claim_id": "H008-C10",
+      "sources": [
+        "SRC-0020972"
+      ],
+      "finding": "당시판단은기존대리점수복귀를하지않고시간유효성질문을후속후보로남겼다.TabPFN은검색어기록이며이번비교모델에없다.",
+      "locator": "15lines28–32/54–62",
+      "limitation": "과거다음실험지시는현지시가아니다.15§3여섯문헌은일차방법검수미완료;신규성/채택검수완료로표시하지않는다."
+    },
+    {
+      "claim_id": "H008-C11",
+      "sources": [
+        "SRC-0023614",
+        "SRC-0023615",
+        "SRC-0024837",
+        "SRC-0024841"
+      ],
+      "finding": "동일원본해시/행/정답/저장오차와소속비교의지정산술을검증하고본문·표에연결한다.",
+      "locator": "scoped saved-array arithmetic and source-to-prose review",
+      "limitation": "원코드/모델/새순열을실행하지않은내부일치검수.미확인threshold/무작위분위수/문헌을완료로세지않는다."
+    }
+  ],
+  "whole_primary_papers_reviewed": 0,
+  "claim_scope": "Original13/14research evidence;15literature interpretations not yet primary-verified",
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "new_simulations": 0
+}

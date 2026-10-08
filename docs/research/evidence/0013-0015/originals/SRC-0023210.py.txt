@@ -1,0 +1,85 @@
+"""Reuse actual-query predictions. No model fitting and no partition selection."""
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:
+    os.environ[key]='4'
+import pathlib, json, time, hashlib
+import numpy as np
+import pandas as pd
+import psutil
+from scipy.stats import spearmanr
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import pairwise_distances
+from sklearn.neighbors import NearestNeighbors
+
+base=pathlib.Path(__file__).resolve().parent; out=base/'results'; start=time.perf_counter()
+d=np.load(out/'design_data.npz'); p=np.load(out/'risk_table_predictions.npz')
+sel=p['selected_cells']; ids=p['cell_ids']; times=d['times']
+assert np.array_equal(ids,d['cell_indices'][sel]+1)
+qidx=np.searchsorted(times,p['query_times']); train=np.isin(times,p['context_times'])
+assert np.array_equal(times[qidx],p['query_times']) and int(train.sum())==504
+X=d['X'][sel]; Y=d['Y'][sel]; n=len(sel); raw=d['raw'][:672,sel]
+pred=p['median'][:,64:].reshape(n,n,len(qidx))
+loss=np.abs(pred-Y[:,qidx][None,:,:])
+mae=loss.mean(2).T  # target, source
+excess=mae-np.diag(mae)[:,None]; symmetric=(excess+excess.T)/2
+upper=np.triu_indices(n,1)
+raw_corr=np.corrcoef(raw.T)
+weekday=pd.date_range('2013-11-01',periods=28,freq='D').dayofweek<5
+profiles=raw.reshape(28,24,n)[weekday].mean(0).T
+profile_corr=np.corrcoef(profiles)
+scaler=StandardScaler().fit(X[:,train].reshape(-1,X.shape[-1]))
+sx=scaler.transform(X.reshape(-1,X.shape[-1])).reshape(X.shape)
+support=np.empty((n,n)); ref=[]; day=p['context_times']//24
+for source in range(n):
+    a=sx[source,train]; dist=pairwise_distances(a)
+    dist[day[:,None]==day[None,:]]=np.inf
+    threshold=float(np.quantile(np.partition(dist,7,axis=1)[:,7],.95)); ref.append(threshold)
+    nn=NearestNeighbors(n_neighbors=8).fit(a)
+    distances=nn.kneighbors(sx[:,qidx].reshape(-1,X.shape[-1]))[0][:,-1].reshape(n,-1)
+    support[:,source]=(distances<=threshold).mean(1)
+sym_support=(support+support.T)/2
+rng=np.random.default_rng(20260925)
+u=np.load(out/'upc_core_labels.npz'); records=[]
+for name in sorted(u.files):
+    labels=u[name][ids-1]; valid=labels>=0
+    pairs=valid[upper[0]]&valid[upper[1]]
+    inside=(labels[upper[0]]==labels[upper[1]])&pairs
+    outside=(labels[upper[0]]!=labels[upper[1]])&pairs
+    values=symmetric[upper]; null=[]
+    if inside.any() and outside.any():
+        for _ in range(1000):
+            shuffled=labels.copy(); shuffled[valid]=rng.permutation(labels[valid])
+            mask=(shuffled[upper[0]]==shuffled[upper[1]])&pairs
+            null.append(float(values[mask].mean()))
+    records.append({'name':name,'labels':labels.tolist(),'included_cells':int(valid.sum()),
+       'cluster_sizes':{str(int(z)):int(np.sum(labels==z)) for z in np.unique(labels[valid])},
+       'inside_pairs':int(inside.sum()),'outside_pairs':int(outside.sum()),
+       'inside_mean_cross_excess':float(values[inside].mean()) if inside.any() else None,
+       'outside_mean_cross_excess':float(values[outside].mean()) if outside.any() else None,
+       'size_preserving_random_inside_mean_quantiles':np.quantile(null,[.025,.5,.975]).tolist() if null else None})
+a=u['daily_profile_K3_ascending_first'][ids-1]; b=u['daily_profile_K3_ascending_second'][ids-1]
+pair_changes=[]
+for old in [False,True]:
+    for new in [False,True]:
+        mask=((a[upper[0]]==a[upper[1]])==old)&((b[upper[0]]==b[upper[1]])==new)
+        pair_changes.append({'same_group_first':old,'same_group_second':new,'pairs':int(mask.sum()),
+                            'mean_cross_excess':float(symmetric[upper][mask].mean()) if mask.any() else None})
+elapsed=time.perf_counter()-start; rss=psutil.Process().memory_info().rss
+assert elapsed<60 and rss<2*1024**3
+result={'plan_sha256':hashlib.sha256((base/'13_upc_transfer_diagnostic_plan.md').read_bytes()).hexdigest(),
+ 'prediction_sha256':hashlib.sha256((out/'risk_table_predictions.npz').read_bytes()).hexdigest(),
+ 'cell_ids':ids.tolist(),'query_times':p['query_times'].tolist(),'own_context_mean_MAE':float(np.diag(mae).mean()),
+ 'other_context_mean_MAE':float(mae[~np.eye(n,dtype=bool)].mean()),
+ 'symmetric_cross_excess_quantiles':np.quantile(symmetric[upper],[0,.25,.5,.75,1]).tolist(),
+ 'pair_rank_correlations':{'raw_PCC_dissimilarity':float(spearmanr(1-raw_corr[upper],symmetric[upper]).statistic),
+                         'weekday_profile_PCC_dissimilarity':float(spearmanr(1-profile_corr[upper],symmetric[upper]).statistic),
+                         'input_distance_exceedance_fraction':float(spearmanr(1-sym_support[upper],symmetric[upper]).statistic)},
+ 'input_support_fraction_quantiles':np.quantile(support[~np.eye(n,dtype=bool)],[0,.25,.5,.75,1]).tolist(),
+ 'own_input_support_fraction':np.diag(support).tolist(),'reference_input_distance_q95':ref,
+ 'partition_records':records,'primary_pair_changes':pair_changes,'elapsed_seconds':elapsed,'RSS_bytes':rss,
+ 'new_model_contexts':0,'new_model_query_rows':0,'new_RCTL_fits':0,
+ 'scope':'Descriptive transfer of frozen individual TabICL contexts; not pooled learning, RCTL damage, or causal support diagnosis.'}
+(out/'upc_transfer_diagnostic.json').write_text(json.dumps(result,indent=2,allow_nan=False),encoding='utf-8')
+np.savez_compressed(out/'upc_transfer_values.npz',cell_ids=ids,cross_MAE=mae,cross_excess=excess,
+    symmetric_excess=symmetric,raw_PCC=raw_corr,profile_PCC=profile_corr,input_support=support)
+print(json.dumps({k:v for k,v in result.items() if k not in ['partition_records','query_times','own_input_support_fraction','reference_input_distance_q95']},indent=2))

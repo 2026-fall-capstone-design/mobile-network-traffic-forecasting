@@ -1,0 +1,1035 @@
+{
+  "plan_sha256": "ecfce742591d2d2f9b86534594fac74da03174192f63009c14dc846f181e0365",
+  "prediction_sha256": "8ad2825e7b6861540975be3948778a4028cc275a53c4ad6991077c330d43f85e",
+  "cell_ids": [
+    3737,
+    3745,
+    3753,
+    3765,
+    4537,
+    4545,
+    4553,
+    4565,
+    5337,
+    5345,
+    5353,
+    5365,
+    6137,
+    6145,
+    6153,
+    6165
+  ],
+  "query_times": [
+    672,
+    675,
+    677,
+    680,
+    683,
+    685,
+    688,
+    691,
+    693,
+    696,
+    699,
+    701,
+    704,
+    706,
+    709,
+    712,
+    714,
+    717,
+    720,
+    722,
+    725,
+    728,
+    730,
+    733,
+    736,
+    738,
+    741,
+    744,
+    746,
+    749,
+    752,
+    754,
+    757,
+    759,
+    762,
+    765,
+    767,
+    770,
+    773,
+    775,
+    778,
+    781,
+    783,
+    786,
+    789,
+    791,
+    794,
+    797,
+    799,
+    802,
+    805,
+    807,
+    810,
+    812,
+    815,
+    818,
+    820,
+    823,
+    826,
+    828,
+    831,
+    834,
+    836,
+    839
+  ],
+  "own_context_mean_MAE": 0.07261396944522858,
+  "other_context_mean_MAE": 0.17606687545776367,
+  "symmetric_cross_excess_quantiles": [
+    -0.004818767309188843,
+    0.05538644175976515,
+    0.09273679181933403,
+    0.140115424990654,
+    0.28591907024383545
+  ],
+  "pair_rank_correlations": {
+    "raw_PCC_dissimilarity": 0.41580665323980825,
+    "weekday_profile_PCC_dissimilarity": 0.3556983123828043,
+    "input_distance_exceedance_fraction": 0.7475312304776186
+  },
+  "input_support_fraction_quantiles": [
+    0.0,
+    0.26171875,
+    0.5625,
+    0.859375,
+    1.0
+  ],
+  "own_input_support_fraction": [
+    1.0,
+    0.671875,
+    0.96875,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.984375,
+    0.984375,
+    0.90625,
+    1.0,
+    0.9375,
+    1.0,
+    1.0
+  ],
+  "reference_input_distance_q95": [
+    2.3021960258483887,
+    2.0930960178375244,
+    1.9530330896377563,
+    2.6092050075531006,
+    4.46033239364624,
+    2.0746588706970215,
+    2.6936564445495605,
+    2.3093841075897217,
+    4.023406505584717,
+    1.7207000255584717,
+    2.1687097549438477,
+    2.3805315494537354,
+    3.189584732055664,
+    2.0718798637390137,
+    4.911787986755371,
+    2.507214307785034
+  ],
+  "partition_records": [
+    {
+      "name": "daily_profile_K3_ascending_first",
+      "labels": [
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        1,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "1": 1,
+        "2": 7
+      },
+      "inside_pairs": 49,
+      "outside_pairs": 71,
+      "inside_mean_cross_excess": 0.09917427599430084,
+      "outside_mean_cross_excess": 0.10640577971935272,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.0888117728754878,
+        0.1049778014421463,
+        0.11207723375409842
+      ]
+    },
+    {
+      "name": "daily_profile_K3_ascending_second",
+      "labels": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 11,
+        "1": 5
+      },
+      "inside_pairs": 65,
+      "outside_pairs": 55,
+      "inside_mean_cross_excess": 0.09496434032917023,
+      "outside_mean_cross_excess": 0.11348486691713333,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.0878318315371871,
+        0.10493142530322075,
+        0.11143083106726408
+      ]
+    },
+    {
+      "name": "daily_profile_K3_descending_first",
+      "labels": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 7,
+        "1": 8,
+        "2": 1
+      },
+      "inside_pairs": 49,
+      "outside_pairs": 71,
+      "inside_mean_cross_excess": 0.09514838457107544,
+      "outside_mean_cross_excess": 0.10918419808149338,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08833360504359007,
+        0.10490430518984795,
+        0.11249392293393612
+      ]
+    },
+    {
+      "name": "daily_profile_K3_descending_second",
+      "labels": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 10,
+        "1": 6
+      },
+      "inside_pairs": 60,
+      "outside_pairs": 60,
+      "inside_mean_cross_excess": 0.08973167836666107,
+      "outside_mean_cross_excess": 0.11717414855957031,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.0887826194986701,
+        0.10401090979576111,
+        0.11133722625672818
+      ]
+    },
+    {
+      "name": "daily_profile_K4_ascending_first",
+      "labels": [
+        1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        1,
+        0,
+        0,
+        0,
+        2,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "1": 3,
+        "2": 5
+      },
+      "inside_pairs": 41,
+      "outside_pairs": 79,
+      "inside_mean_cross_excess": 0.09913252294063568,
+      "outside_mean_cross_excess": 0.10569513589143753,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08422823194414378,
+        0.10460454970598221,
+        0.11566845383495092
+      ]
+    },
+    {
+      "name": "daily_profile_K4_ascending_second",
+      "labels": [
+        1,
+        1,
+        0,
+        3,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        3,
+        3,
+        0,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "1": 5,
+        "3": 3
+      },
+      "inside_pairs": 41,
+      "outside_pairs": 79,
+      "inside_mean_cross_excess": 0.09193019568920135,
+      "outside_mean_cross_excess": 0.10943307727575302,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08463746700435877,
+        0.10461324825882912,
+        0.11515262573957442
+      ]
+    },
+    {
+      "name": "daily_profile_K4_descending_first",
+      "labels": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 7,
+        "1": 8,
+        "2": 1
+      },
+      "inside_pairs": 49,
+      "outside_pairs": 71,
+      "inside_mean_cross_excess": 0.09514838457107544,
+      "outside_mean_cross_excess": 0.10918419808149338,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.0883516538888216,
+        0.10493160039186478,
+        0.11225299220532178
+      ]
+    },
+    {
+      "name": "daily_profile_K4_descending_second",
+      "labels": [
+        1,
+        1,
+        1,
+        3,
+        0,
+        0,
+        3,
+        1,
+        3,
+        1,
+        3,
+        3,
+        3,
+        0,
+        1,
+        3
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 3,
+        "1": 6,
+        "3": 7
+      },
+      "inside_pairs": 39,
+      "outside_pairs": 81,
+      "inside_mean_cross_excess": 0.08138035982847214,
+      "outside_mean_cross_excess": 0.11408044397830963,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.0845702975988388,
+        0.10471570864319801,
+        0.11445484645664691
+      ]
+    },
+    {
+      "name": "daily_profile_K5_ascending_first",
+      "labels": [
+        4,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        4,
+        0,
+        0,
+        0,
+        2,
+        4,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "2": 5,
+        "4": 3
+      },
+      "inside_pairs": 41,
+      "outside_pairs": 79,
+      "inside_mean_cross_excess": 0.09913252294063568,
+      "outside_mean_cross_excess": 0.10569513589143753,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08343543056398631,
+        0.10475350543856621,
+        0.11541590727865696
+      ]
+    },
+    {
+      "name": "daily_profile_K5_ascending_second",
+      "labels": [
+        4,
+        4,
+        0,
+        3,
+        0,
+        0,
+        0,
+        4,
+        0,
+        4,
+        0,
+        3,
+        3,
+        0,
+        4,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "3": 3,
+        "4": 5
+      },
+      "inside_pairs": 41,
+      "outside_pairs": 79,
+      "inside_mean_cross_excess": 0.09193019568920135,
+      "outside_mean_cross_excess": 0.10943307727575302,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08341558147221803,
+        0.10470385104417801,
+        0.1157171068713069
+      ]
+    },
+    {
+      "name": "daily_profile_K5_descending_first",
+      "labels": [
+        4,
+        4,
+        4,
+        0,
+        0,
+        0,
+        4,
+        0,
+        4,
+        4,
+        0,
+        0,
+        0,
+        4,
+        4,
+        2
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 7,
+        "2": 1,
+        "4": 8
+      },
+      "inside_pairs": 49,
+      "outside_pairs": 71,
+      "inside_mean_cross_excess": 0.09514838457107544,
+      "outside_mean_cross_excess": 0.10918419808149338,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08876728285104037,
+        0.1048913523554802,
+        0.11296300813555718
+      ]
+    },
+    {
+      "name": "daily_profile_K5_descending_second",
+      "labels": [
+        4,
+        4,
+        4,
+        3,
+        0,
+        0,
+        3,
+        4,
+        3,
+        4,
+        3,
+        3,
+        3,
+        0,
+        4,
+        3
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 3,
+        "3": 7,
+        "4": 6
+      },
+      "inside_pairs": 39,
+      "outside_pairs": 81,
+      "inside_mean_cross_excess": 0.08138035982847214,
+      "outside_mean_cross_excess": 0.11408044397830963,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08300586808472872,
+        0.10504788160324097,
+        0.11500660870224237
+      ]
+    },
+    {
+      "name": "weekday_sequence_K3_ascending_first",
+      "labels": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "1": 8
+      },
+      "inside_pairs": 56,
+      "outside_pairs": 64,
+      "inside_mean_cross_excess": 0.09683280438184738,
+      "outside_mean_cross_excess": 0.10924551635980606,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.0897424966096878,
+        0.10459701716899872,
+        0.10910490099340678
+      ]
+    },
+    {
+      "name": "weekday_sequence_K3_ascending_second",
+      "labels": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 11,
+        "1": 5
+      },
+      "inside_pairs": 65,
+      "outside_pairs": 55,
+      "inside_mean_cross_excess": 0.09496434032917023,
+      "outside_mean_cross_excess": 0.11348486691713333,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08943103309720754,
+        0.10458287969231606,
+        0.1116966113448143
+      ]
+    },
+    {
+      "name": "weekday_sequence_K3_descending_first",
+      "labels": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "1": 8
+      },
+      "inside_pairs": 56,
+      "outside_pairs": 64,
+      "inside_mean_cross_excess": 0.09683280438184738,
+      "outside_mean_cross_excess": 0.10924551635980606,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.09038639869540929,
+        0.10448397696018219,
+        0.10906960293650628
+      ]
+    },
+    {
+      "name": "weekday_sequence_K3_descending_second",
+      "labels": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 10,
+        "1": 6
+      },
+      "inside_pairs": 60,
+      "outside_pairs": 60,
+      "inside_mean_cross_excess": 0.08973167836666107,
+      "outside_mean_cross_excess": 0.11717414855957031,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08973094765096903,
+        0.10463348776102066,
+        0.11143811065703631
+      ]
+    },
+    {
+      "name": "weekday_sequence_K4_ascending_first",
+      "labels": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "1": 8
+      },
+      "inside_pairs": 56,
+      "outside_pairs": 64,
+      "inside_mean_cross_excess": 0.09683280438184738,
+      "outside_mean_cross_excess": 0.10924551635980606,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08978324867784977,
+        0.10469881445169449,
+        0.10919660031795501
+      ]
+    },
+    {
+      "name": "weekday_sequence_K4_ascending_second",
+      "labels": [
+        1,
+        1,
+        0,
+        3,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        3,
+        3,
+        0,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "1": 5,
+        "3": 3
+      },
+      "inside_pairs": 41,
+      "outside_pairs": 79,
+      "inside_mean_cross_excess": 0.09193019568920135,
+      "outside_mean_cross_excess": 0.10943307727575302,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08425773829221725,
+        0.10435464978218079,
+        0.11517108641564845
+      ]
+    },
+    {
+      "name": "weekday_sequence_K4_descending_first",
+      "labels": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "1": 8
+      },
+      "inside_pairs": 56,
+      "outside_pairs": 64,
+      "inside_mean_cross_excess": 0.09683280438184738,
+      "outside_mean_cross_excess": 0.10924551635980606,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.09040122032165528,
+        0.10451283678412437,
+        0.10956291407346726
+      ]
+    },
+    {
+      "name": "weekday_sequence_K4_descending_second",
+      "labels": [
+        1,
+        1,
+        1,
+        3,
+        0,
+        0,
+        3,
+        1,
+        3,
+        1,
+        0,
+        3,
+        3,
+        0,
+        1,
+        3
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 4,
+        "1": 6,
+        "3": 6
+      },
+      "inside_pairs": 36,
+      "outside_pairs": 84,
+      "inside_mean_cross_excess": 0.0818108320236206,
+      "outside_mean_cross_excess": 0.11272810399532318,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08421072121709586,
+        0.10486022382974625,
+        0.114100412838161
+      ]
+    },
+    {
+      "name": "weekday_sequence_K5_ascending_first",
+      "labels": [
+        1,
+        4,
+        4,
+        0,
+        0,
+        0,
+        4,
+        0,
+        4,
+        1,
+        0,
+        0,
+        0,
+        4,
+        1,
+        0
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 8,
+        "1": 3,
+        "4": 5
+      },
+      "inside_pairs": 41,
+      "outside_pairs": 79,
+      "inside_mean_cross_excess": 0.09913252294063568,
+      "outside_mean_cross_excess": 0.10569513589143753,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.0840760350227356,
+        0.10440149530768394,
+        0.11579334810376167
+      ]
+    },
+    {
+      "name": "weekday_sequence_K5_ascending_second",
+      "labels": [
+        1,
+        1,
+        0,
+        3,
+        3,
+        0,
+        3,
+        1,
+        3,
+        1,
+        3,
+        3,
+        3,
+        3,
+        1,
+        3
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 2,
+        "1": 5,
+        "3": 9
+      },
+      "inside_pairs": 47,
+      "outside_pairs": 73,
+      "inside_mean_cross_excess": 0.08728353679180145,
+      "outside_mean_cross_excess": 0.11386333405971527,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08549008406698703,
+        0.10524304211139679,
+        0.1150307098403573
+      ]
+    },
+    {
+      "name": "weekday_sequence_K5_descending_first",
+      "labels": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        4
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 7,
+        "1": 8,
+        "4": 1
+      },
+      "inside_pairs": 49,
+      "outside_pairs": 71,
+      "inside_mean_cross_excess": 0.09514838457107544,
+      "outside_mean_cross_excess": 0.10918419808149338,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08816871661692857,
+        0.10491916537284851,
+        0.11176385022699832
+      ]
+    },
+    {
+      "name": "weekday_sequence_K5_descending_second",
+      "labels": [
+        1,
+        1,
+        1,
+        3,
+        0,
+        0,
+        3,
+        1,
+        3,
+        1,
+        0,
+        3,
+        3,
+        0,
+        1,
+        3
+      ],
+      "included_cells": 16,
+      "cluster_sizes": {
+        "0": 4,
+        "1": 6,
+        "3": 6
+      },
+      "inside_pairs": 36,
+      "outside_pairs": 84,
+      "inside_mean_cross_excess": 0.0818108320236206,
+      "outside_mean_cross_excess": 0.11272810399532318,
+      "size_preserving_random_inside_mean_quantiles": [
+        0.08628674559295177,
+        0.10437693446874619,
+        0.11429596692323685
+      ]
+    }
+  ],
+  "primary_pair_changes": [
+    {
+      "same_group_first": false,
+      "same_group_second": false,
+      "pairs": 36,
+      "mean_cross_excess": 0.1207389160990715
+    },
+    {
+      "same_group_first": false,
+      "same_group_second": true,
+      "pairs": 35,
+      "mean_cross_excess": 0.09166312962770462
+    },
+    {
+      "same_group_first": true,
+      "same_group_second": false,
+      "pairs": 19,
+      "mean_cross_excess": 0.09974033385515213
+    },
+    {
+      "same_group_first": true,
+      "same_group_second": true,
+      "pairs": 30,
+      "mean_cross_excess": 0.09881576895713806
+    }
+  ],
+  "elapsed_seconds": 0.33516769999914686,
+  "RSS_bytes": 156524544,
+  "new_model_contexts": 0,
+  "new_model_query_rows": 0,
+  "new_RCTL_fits": 0,
+  "scope": "Descriptive transfer of frozen individual TabICL contexts; not pooled learning, RCTL damage, or causal support diagnosis."
+}
