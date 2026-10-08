@@ -1,0 +1,90 @@
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:os.environ[key]='4'
+import pathlib,json,time,sys,hashlib
+import numpy as np,torch
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+from sklearn.pipeline import make_pipeline
+from sklearn.linear_model import Ridge
+from sklearn.neighbors import NearestNeighbors
+from sklearn.metrics import adjusted_rand_score
+from tabicl import TabICLRegressor
+sys.stdout.reconfigure(encoding='utf-8');torch.set_num_threads(4);torch.set_num_interop_threads(2)
+base=pathlib.Path(__file__).resolve().parent;out=base/'results'
+d=np.load(out/'design_data.npz');pr=np.load(out/'risk_table_predictions.npz');sel=pr['selected_cells']
+X=d['X'][sel];Y=d['Y'][sel];ids=d['cell_indices'][sel]+1;times=d['times'];tr=times<672;qu=(times>=672)&(times<840);va=times>=840
+allx=X[:,tr].reshape(-1,16);scaler=StandardScaler().fit(allx);km=KMeans(n_clusters=64,n_init=5,random_state=20260925).fit(scaler.transform(allx))
+bquery=np.stack([km.predict(scaler.transform(x[qu])) for x in X]);bval=np.stack([km.predict(scaler.transform(x[va])) for x in X])
+f0=make_pipeline(StandardScaler(),Ridge(alpha=1.0)).fit(allx,Y[:,tr].reshape(-1))
+baseq=f0.predict(X[:,qu].reshape(-1,16)).reshape(len(X),-1);basev=f0.predict(X[:,va].reshape(-1,16)).reshape(len(X),-1)
+alpha=(np.arange(129)+.5)/129;preds=[];knns=[];logs=[];start=time.perf_counter()
+for i in range(len(X)):
+    m=TabICLRegressor(n_estimators=1,batch_size=1,model_path=str(base/'assets/tabicl-regressor-v2-20260212.ckpt'),allow_auto_download=False,device='cpu',use_amp=False,use_fa3=False,offload_mode=False,random_state=20260925,n_jobs=1)
+    t0=time.perf_counter();m.fit(X[i,tr],Y[i,tr]);t1=time.perf_counter();p=m.predict(X[i,qu],output_type='quantiles',alphas=alpha.tolist());t2=time.perf_counter();preds.append(p)
+    sc=StandardScaler().fit(X[i,tr]);nn=NearestNeighbors(n_neighbors=32).fit(sc.transform(X[i,tr]));nei=nn.kneighbors(sc.transform(X[i,qu]),return_distance=False);knns.append(np.quantile(Y[i,tr][nei],alpha,axis=1).T)
+    rec={'cell_id':int(ids[i]),'context_rows':int(tr.sum()),'query_rows':int(qu.sum()),'fit_seconds':t1-t0,'predict_seconds':t2-t1,'ensemble':1};logs.append(rec);print(json.dumps(rec),flush=True)
+    (out/'observed_risk_calls.json').write_text(json.dumps(logs,indent=2),encoding='utf-8')
+p=np.stack(preds);kq=np.stack(knns);res=p-baseq[:,:,None];kres=kq-baseq[:,:,None];target_res=Y[:,qu]-baseq
+median=res[:,:,64:65];iqr=np.apply_along_axis(lambda v:np.interp(.75,alpha,v)-np.interp(.25,alpha,v),2,res)
+uniform=median+iqr[:,:,None]*(2*alpha-1)[None,None,:]
+sources={'tabicl_risk':res,'empirical_risk':target_res[:,:,None],'knn_risk':kres,'median_only':median,'median_iqr':uniform}
+actions=np.zeros((64,257))
+for b in range(64):
+    mask=bquery==b
+    if np.any(mask):
+        low=min(float(v[mask].min()) for v in sources.values());high=max(float(v[mask].max()) for v in sources.values());actions[b]=np.linspace(low,high,257)
+tables={}
+for name,v in sources.items():
+    tab=np.zeros((len(X),64,257))
+    for i in range(len(X)):
+        for b in range(64):
+            vv=v[i,bquery[i]==b]
+            if len(vv):tab[i,b]=np.mean(np.abs(vv[:,:,None]-actions[b]),axis=1).sum(axis=0)/qu.sum()
+    tables[name]=tab
+
+def partition(tab):
+    groups=[[i] for i in range(len(X))];hist=[];nscore=0
+    def risk(g):return float(np.min(tab[g].sum(axis=0),axis=1).sum())
+    while len(groups)>4:
+        edges=[]
+        for a in range(len(groups)):
+            for b in range(a+1,len(groups)):edges.append((risk(groups[a]+groups[b])-risk(groups[a])-risk(groups[b]),min(groups[a]),min(groups[b]),a,b));nscore+=1
+        used=set();new=[]
+        for cost,_,__,a,b in sorted(edges):
+            if a in used or b in used:continue
+            used.update([a,b]);new.append(sorted(groups[a]+groups[b]));hist.append({'left':groups[a],'right':groups[b],'delta':cost})
+        new.extend(groups[j] for j in range(len(groups)) if j not in used);groups=sorted(new,key=min)
+    labels=np.zeros(len(X),int)
+    for c,g in enumerate(groups):labels[g]=c
+    return labels,hist,nscore
+
+parts={};records={};history={}
+for name,tab in tables.items():
+    lab,h,n=partition(tab);parts[name]=lab.tolist();history[name]=h
+    learned={}
+    for c in range(4):
+        total=tab[lab==c].sum(0);idx=np.argmin(total,axis=1);a=actions[np.arange(64),idx];a[np.sum(total,axis=1)==0]=0;learned[c]=a
+    pv=np.stack([basev[i]+learned[lab[i]][bval[i]] for i in range(len(X))])
+    # All variants are evaluated with actual next-week targets; these are design-period diagnostics.
+    mae=np.abs(pv-Y[:,va]).mean(axis=1)
+    records[name]={'mae_design_following_week':float(mae.mean()),'per_cell_mae':mae.tolist(),'predicted_objective':float(sum(np.min(tab[lab==c].sum(0),axis=1).sum() for c in range(4))),'pair_scores':n,'group_sizes':np.bincount(lab).tolist()}
+    np.savez_compressed(out/f'observed_surrogate_{name}.npz',prediction=pv,y=Y[:,va],cell_ids=ids)
+old=json.loads((out/'risk_table_pilot.json').read_text(encoding='utf-8'))
+for k in ['pcc_balanced','random_balanced','cross_error_profile']:parts[k]=old['partitions'][k]
+# Evaluate all fixed partitions under the same TabICL cost estimate and actual per-bin query labels.
+fixed=[]
+for name,lab0 in parts.items():
+    lab=np.array(lab0);rec={'partition':name}
+    for rule in ['tabicl_risk','empirical_risk']:
+        tab=tables[rule];acts={}
+        for c in range(4):
+            sums=tab[lab==c].sum(0);a=actions[np.arange(64),np.argmin(sums,axis=1)];a[np.sum(sums,axis=1)==0]=0;acts[c]=a
+        pv=np.stack([basev[i]+acts[lab[i]][bval[i]] for i in range(len(X))]);rec[rule+'_followweek_mae']=float(np.abs(pv-Y[:,va]).mean())
+    fixed.append(rec)
+summary={'cell_ids':ids.tolist(),'partitions':parts,'surrogate_validation':records,'fixed_partition_validation':fixed,'global_ridge_followweek_mae':float(np.abs(basev-Y[:,va]).mean()),'ARI_vs_tabicl':{k:float(adjusted_rand_score(parts['tabicl_risk'],v)) for k,v in parts.items()},'function_class':'f0(x) + delta_cluster,state(x); this is not RCTL','input_boundary':{'context':[168,671],'clustering_query':[672,839],'design_followweek':[840,1007],'final_sealed':[1008,1487]},'seconds':time.perf_counter()-start,'RCTL_used_for_clustering':False}
+(out/'observed_risk_pilot.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+(out/'observed_risk_history.json').write_text(json.dumps(history,indent=2),encoding='utf-8')
+np.savez_compressed(out/'observed_risk_tables.npz',**tables,actions=actions,predicted_quantiles=p,knn_quantiles=kq,base_query=baseq,base_followweek=basev,query_bins=bquery,followweek_bins=bval,cell_ids=ids,selected_cells=sel)
+hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [out/'observed_risk_pilot.json',base/'04_observed_query_risk_plan.md',pathlib.Path(__file__)]}
+(out/'observed_pre_RCTL_hashes.json').write_text(json.dumps(hashes,indent=2),encoding='utf-8')
+print(json.dumps({'records':records,'fixed':fixed,'global_ridge':summary['global_ridge_followweek_mae'],'ARI':summary['ARI_vs_tabicl'],'seconds':summary['seconds']},indent=2),flush=True)

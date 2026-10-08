@@ -1,0 +1,58 @@
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:os.environ[key]='1'
+import pathlib,json,time
+import numpy as np
+from scipy.stats import spearmanr
+base=pathlib.Path(__file__).resolve().parent;out=base/'results'
+d=np.load(out/'design_data.npz');r=np.load(out/'observed_risk_tables.npz')
+sel=r['selected_cells'];y=d['Y'][sel];times=d['times'];qu=(times>=672)&(times<840);va=times>=840
+actions=r['actions'];bins=r['query_bins'];bval=r['followweek_bins'];basev=r['base_followweek']
+res=r['predicted_quantiles']-r['base_query'][:,:,None]
+start=time.perf_counter();fast=np.zeros_like(r['tabicl_risk'])
+for i in range(len(res)):
+    for b in range(64):
+        vals=np.sort(res[i,bins[i]==b].reshape(-1).astype(np.float64))
+        if not len(vals):continue
+        prefix=np.r_[0,np.cumsum(vals)];idx=np.searchsorted(vals,actions[b],side='right')
+        fast[i,b]=(prefix[-1]-2*prefix[idx]+actions[b]*(2*idx-len(vals)))/(168*129)
+fast_seconds=time.perf_counter()-start
+max_difference=float(np.max(np.abs(fast-r['tabicl_risk'])))
+assert max_difference<1e-10
+methods=['tabicl_risk','empirical_risk','knn_risk','median_only','median_iqr']
+results=[];pairs=[]
+for method in methods:
+    tab=r[method];scores=[];actual=[]
+    def action(g):
+        total=tab[g].sum(0);a=actions[np.arange(64),np.argmin(total,axis=1)]
+        a[np.sum(total,axis=1)==0]=0
+        return a
+    def risk(g):return np.min(tab[g].sum(0),axis=1).sum()
+    own=np.array([np.mean(np.abs(basev[i]+action([i])[bval[i]]-y[i,va])) for i in range(len(y))])
+    for i in range(len(y)):
+        for j in range(i+1,len(y)):
+            a=action([i,j]);pv=np.stack([basev[c]+a[bval[c]] for c in [i,j]])
+            actualdelta=float(np.abs(pv-y[[i,j]][:,va]).mean(1).sum()-own[i]-own[j])
+            estimate=float(risk([i,j])-risk([i])-risk([j]))
+            scores.append(estimate);actual.append(actualdelta)
+            pairs.append({'method':method,'i':i,'j':j,'estimated_sum_mae_delta':estimate,'actual_sum_mae_delta':actualdelta})
+    corr=spearmanr(scores,actual)
+    results.append({'method':method,'pair_count':len(scores),'spearman_rank_correlation':float(corr.statistic),
+        'positive_actual_delta_fraction':float(np.mean(np.array(actual)>0)),
+        'mean_actual_pair_delta':float(np.mean(actual)),
+        'note':'Design-period surrogate, pairs dependent; no p-value treated as independent evidence.'})
+calls=json.loads((out/'observed_risk_calls.json').read_text(encoding='utf-8'))
+percell=np.mean([x['fit_seconds']+x['predict_seconds'] for x in calls])
+scale=[]
+for n in [128,1024,10000]:
+    scale.append({'cells':n,'TabICL_context_preparations':n,'own_query_rows':n*168,
+      'cross_query_rows_if_all_cells':n*n*168,'all_cell_pairs':n*(n-1)//2,
+      'cell_knn_directed_edges_upper':n*16,'table_float64_bytes':n*64*257*8,
+      'quantile_float64_bytes':n*168*129*8,'inference_minutes_linear_estimate':float(n*percell/60),
+      'inference_estimate_scope':'Same CPU/settings per cell, excludes features, graph, merging, RCTL; extrapolation, not measured.'})
+summary={'fast_curve_max_abs_difference':max_difference,'fast_curve_seconds':fast_seconds,
+    'prefix_formula':'(sum(v)-2*prefix[count(v<=a)]+a*(2*count(v<=a)-len(v)))/(Q*S)',
+    'benchmark_parallel_RCTL_cpu_contention':True,'surrogate_pair_diagnostic':results,
+    'cost_extrapolation':scale,'new_model_calls':0,'total_seconds':time.perf_counter()-start}
+(out/'loss_table_diagnostic.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+(out/'loss_table_pair_diagnostic.json').write_text(json.dumps(pairs,indent=2),encoding='utf-8')
+print(json.dumps(summary,indent=2))

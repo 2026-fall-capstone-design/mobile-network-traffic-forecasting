@@ -1,0 +1,122 @@
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:os.environ[key]='4'
+import sys,pathlib,json,time,hashlib
+import numpy as np
+from sklearn.cluster import KMeans,AgglomerativeClustering
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import NearestNeighbors
+from sklearn.metrics import adjusted_rand_score
+import torch
+from tabicl import TabICLRegressor
+sys.stdout.reconfigure(encoding='utf-8')
+torch.set_num_threads(4);torch.set_num_interop_threads(2)
+base=pathlib.Path(__file__).resolve().parent;out=base/'results';out.mkdir(exist_ok=True)
+seed=20260925
+
+def balanced_merge(scores, n, K=4):
+    groups=[[i] for i in range(n)];history=[];scount=0
+    while len(groups)>K:
+        edges=[]
+        for a in range(len(groups)):
+            for b in range(a+1,len(groups)):
+                s=float(scores(groups[a],groups[b]));edges.append((s,min(groups[a]),min(groups[b]),a,b));scount+=1
+        edges.sort();used=set();new=[]
+        for score,_,__,a,b in edges:
+            if a in used or b in used:continue
+            if len(groups)-len(new)<=K:break
+            used.update([a,b]);new.append(sorted(groups[a]+groups[b]))
+            history.append({'left':groups[a],'right':groups[b],'cost':score})
+        new.extend(groups[i] for i in range(len(groups)) if i not in used)
+        assert len(new)<len(groups)
+        groups=sorted(new,key=min)
+    labels=np.empty(n,dtype=int)
+    for k,g in enumerate(groups):labels[g]=k
+    return labels,history,scount
+
+def curve_table(q,w,actions):
+    return np.stack([np.mean(np.abs(q[i,:,:,None]-actions[:,None,:]),axis=1)*w[i,:,None] for i in range(len(q))])
+
+def risk_partition(table):
+    def cost(g):return float(np.min(table[g].sum(axis=0),axis=1).sum())
+    return balanced_merge(lambda a,b:cost(a+b)-cost(a)-cost(b),len(table))
+
+def synthetic_checks():
+    # Exact discrete distributions, common state; all calculations are arithmetic, not fitted models.
+    atoms=np.array([[0,0,0,0,0,0,0,0,0],[1,1,1,1,1,1,1,1,1],[0,0,0,0,2,4,4,4,4]],float)[:,None,:]
+    action=np.linspace(0,4,401)[None,:];w=np.ones((3,1))
+    table=curve_table(atoms,w,action)
+    costs={}
+    for g in [[0],[1],[2],[0,1],[0,2],[1,2],[0,1,2]]:
+        risk=table[g].sum(0);arg=int(np.argmin(risk[0]));a=action[0,arg]
+        direct=np.abs(atoms[g,0]-a).mean(1).sum()
+        assert np.isclose(direct,risk.min(axis=1).sum())
+        costs[str(g)]={'optimal_action':float(a),'exact_sum_mae':float(direct)}
+    # Same medians, different spread incur no extra median-risk when pooled.
+    a=np.linspace(-1,1,101);b=np.linspace(-4,4,101)
+    separate=np.abs(a).mean()+np.abs(b).mean()
+    pooled=min(np.abs(a-x).mean()+np.abs(b-x).mean() for x in np.linspace(-4,4,801))
+    assert abs(separate-pooled)<1e-10
+    # The previous [1,1,1.015] feasible-intersection example chooses the actual pooled median 1.
+    old=np.array([1,1,1.015]);opt=float(np.median(old));assert opt==1
+    return {'discrete_exact_checks':costs,'same_median_extra_loss':pooled-separate,'previous_counterexample':{'chosen_actual_median':opt,'third_cell_error':float(abs(old[2]-opt))},'scope':'Arithmetic consistency only. Does not establish actual RCTL benefit.'}
+
+(out/'risk_table_synthetic.json').write_text(json.dumps(synthetic_checks(),indent=2),encoding='utf-8')
+d=np.load(out/'design_data.npz');sel=np.array([r*8+c for r in range(4) for c in [0,2,4,7]])
+X=d['X'][sel];Y=d['Y'][sel];ids=d['cell_indices'][sel]+1;times=d['times'];raw=d['raw'][:,sel]
+train=times<672;qidx=np.rint(np.linspace(np.flatnonzero(times>=672)[0],np.flatnonzero(times<840)[-1],64)).astype(int)
+assert len(np.unique(qidx))==64
+allx=X[:,train].reshape(-1,X.shape[-1]);scale=StandardScaler().fit(allx);sx=scale.transform(allx)
+km=KMeans(n_clusters=64,n_init=5,random_state=seed).fit(sx)
+medoid=NearestNeighbors(n_neighbors=1).fit(sx).kneighbors(km.cluster_centers_,return_distance=False)[:,0]
+anchors=allx[medoid];groups=km.predict(sx).reshape(len(X),-1)
+w=np.stack([np.bincount(g,minlength=64)/len(g) for g in groups])
+alpha=(np.arange(129)+.5)/129
+queries=np.concatenate([anchors,X[:,qidx].reshape(-1,X.shape[-1])])
+logs=[];allq=[];allmed=[];allmean=[];knnq=[]
+startall=time.perf_counter()
+for i in range(len(X)):
+    model=TabICLRegressor(n_estimators=1,batch_size=1,model_path=str(base/'assets/tabicl-regressor-v2-20260212.ckpt'),allow_auto_download=False,device='cpu',use_amp=False,use_fa3=False,offload_mode=False,random_state=seed,n_jobs=1)
+    t0=time.perf_counter();model.fit(X[i,train],Y[i,train]);t1=time.perf_counter()
+    p=model.predict(queries,output_type=['median','mean','quantiles'],alphas=alpha.tolist());t2=time.perf_counter()
+    assert np.all(np.isfinite(p['quantiles']))
+    assert np.min(np.diff(p['quantiles'],axis=1))>=-1e-5
+    allq.append(p['quantiles']);allmed.append(p['median']);allmean.append(p['mean'])
+    scaler=StandardScaler().fit(X[i,train]);nn=NearestNeighbors(n_neighbors=32).fit(scaler.transform(X[i,train]))
+    ix=nn.kneighbors(scaler.transform(anchors),return_distance=False)
+    knnq.append(np.quantile(Y[i,train][ix],alpha,axis=1).T)
+    rec={'cell_id':int(ids[i]),'context_rows':int(train.sum()),'query_rows':len(queries),'fit_seconds':t1-t0,'predict_seconds':t2-t1,'ensemble':1,'quantiles_returned':129};logs.append(rec)
+    print(json.dumps(rec),flush=True)
+    (out/'risk_table_calls.json').write_text(json.dumps(logs,indent=2),encoding='utf-8')
+    np.savez_compressed(out/'risk_table_partial_predictions.npz',quantiles=np.array(allq),median=np.array(allmed),mean=np.array(allmean))
+    if time.perf_counter()-startall>1800:raise RuntimeError('Stage runtime cap reached; no additional calls started')
+q=np.array(allq);med=np.array(allmed);means=np.array(allmean);knnq=np.array(knnq)
+anchorq=q[:,:64];lo=np.minimum(anchorq.min(axis=(0,2)),knnq.min(axis=(0,2)));hi=np.maximum(anchorq.max(axis=(0,2)),knnq.max(axis=(0,2)))
+actions=lo[:,None]+(hi-lo)[:,None]*np.linspace(0,1,257)
+table=curve_table(anchorq,w,actions);ktable=curve_table(knnq,w,actions)
+medianq=anchorq[:,:,64:65];mq25=np.apply_along_axis(lambda a:np.interp(.25,alpha,a),2,anchorq);mq75=np.apply_along_axis(lambda a:np.interp(.75,alpha,a),2,anchorq)
+uq=medianq+(mq75-mq25)[:,:,None]*(2*alpha-1)[None,None,:]
+tables={'tabicl_risk':table,'knn_risk':ktable,'median_only':curve_table(medianq,w,actions),'median_iqr':curve_table(uq,w,actions)}
+partitions={};histories={};comparisons={}
+for name,t in tables.items():
+    labels,h,n=risk_partition(t);partitions[name]=labels.tolist();histories[name]=h
+    comparisons[name]={'pair_score_evaluations':n,'full_table_objective':float(sum(np.min(table[np.array(labels)==k].sum(0),axis=1).sum() for k in range(4))),'own_table_objective':float(sum(np.min(t[np.array(labels)==k].sum(0),axis=1).sum() for k in range(4)))}
+corr=np.corrcoef(raw[:672].T)
+labels,h,n=balanced_merge(lambda a,b:1-float(corr[np.ix_(a,b)].mean()),len(X));partitions['pcc_balanced']=labels.tolist();histories['pcc_balanced']=h
+rng=np.random.default_rng(seed);labels=np.empty(len(X),int);labels[rng.permutation(len(X))]=np.repeat(np.arange(4),4);partitions['random_balanced']=labels.tolist()
+cross=med[:,64:].reshape(len(X),len(X),64)
+cross_mae=np.mean(np.abs(cross-Y[:,qidx][None,:,:]),axis=2).T
+S=1/(cross_mae+1e-8);Sn=S/np.linalg.norm(S,axis=1,keepdims=True);dist=np.clip(1-Sn@Sn.T,0,2);np.fill_diagonal(dist,0)
+labels=AgglomerativeClustering(n_clusters=4,metric='precomputed',linkage='average').fit_predict(dist);partitions['cross_error_profile']=labels.tolist()
+diagnostics=[]
+for i in range(len(X)):
+    bins=km.predict(scale.transform(X[i,qidx]));pown=cross[i,i]
+    approx=med[i,bins]
+    diag={'cell_id':int(ids[i]),'tabicl_direct_mae':float(np.abs(pown-Y[i,qidx]).mean()),'anchor_representative_mae':float(np.abs(approx-Y[i,qidx]).mean()),'projection_mean_abs_change':float(np.abs(approx-pown).mean()),'quantile_transport_change':float(np.abs(q[i,bins]-q[i,64+i*64:64+(i+1)*64]).mean()),'own_query_80pct_coverage':float(np.mean((Y[i,qidx]>=q[i,64+i*64:64+(i+1)*64,12])&(Y[i,qidx]<=q[i,64+i*64:64+(i+1)*64,116])))}
+    diagnostics.append(diag)
+summary={'cell_ids':ids.tolist(),'K':4,'state_count':64,'alphas':alpha.tolist(),'partitions':partitions,'comparisons':comparisons,'diagnostics':diagnostics,'ARI_vs_tabicl':{k:float(adjusted_rand_score(partitions['tabicl_risk'],v)) for k,v in partitions.items()},'total_seconds':time.perf_counter()-startall,'finite_state_and_estimated_distribution_scope':True,'RCTL_used_for_clustering':False}
+(out/'risk_table_pilot.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+(out/'risk_table_merge_history.json').write_text(json.dumps(histories,indent=2),encoding='utf-8')
+np.savez_compressed(out/'risk_table_predictions.npz',quantiles=q,median=med,mean=means,knn_quantiles=knnq,actions=actions,weights=w,anchors=anchors,cell_ids=ids,query_times=times[qidx],context_times=times[train],selected_cells=sel,table=table)
+hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [out/'risk_table_pilot.json',base/'02_candidate_and_pilot_plan.md',pathlib.Path(__file__)]}
+(out/'pre_RCTL_freeze_hashes.json').write_text(json.dumps(hashes,indent=2),encoding='utf-8')
+print(json.dumps({'partitions':partitions,'ARI':summary['ARI_vs_tabicl'],'mean_direct_mae':float(np.mean([r['tabicl_direct_mae'] for r in diagnostics])),'mean_anchor_mae':float(np.mean([r['anchor_representative_mae'] for r in diagnostics])),'seconds':summary['total_seconds']},indent=2),flush=True)

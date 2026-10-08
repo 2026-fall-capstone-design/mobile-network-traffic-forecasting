@@ -1,0 +1,41 @@
+# B2 후보의 RCTL 사후 확인과 기각 판단
+
+2026-09-25. 소속과 설정을 고정한 뒤 실행한 결과다. B2는 cell별 실제 query에서 TabICLv2 조건부 absolute-loss 곡선을 추정하고 이를 합산하여 clustering하는 후보다.
+
+## 핵심 결과
+
+primary 지표는 cell별 처음 28일 평균으로 나눈 트래픽의 MAE를 cell에 같은 비중으로 평균한 값이다. 마지막 20일을 모두 사용했다. K=4인 조건은 각 cluster에 4개 cell이 들어간다.
+
+| 같은 K=4의 clustering 기준 | seed 20260925 | seed 20260926 |
+|---|---:|---:|
+| TabICLv2 risk table | 0.08732813 | 0.08776006 |
+| 실제 관측 target의 risk table | 0.08160040 | 0.08351629 |
+| KNN 조건부 분포 risk table | 0.08407308 | 미실행 |
+| PCC balanced partition | 0.08987710 | 미실행 |
+| random balanced partition | 0.08559771 | 미실행 |
+
+실제 관측값을 사용한 대안보다 TabICLv2 후보의 오차가 각각 7.02%, 5.08% 크다. 첫 seed에서 PCC보다 2.84% 작다는 결과만 선택하면 더 강한 대안과의 비교를 누락하게 된다. 두 seed를 별개의 독립 데이터셋처럼 합산하지 않는다.
+
+TabICL minus empirical의 48시간 paired block 재추출 범위는 각각 [0.001864, 0.009725], [0.000188, 0.008806]이다. 96시간 블록에서도 방향은 같았다. 한 도시의 제한된 기간에 대한 기술적 변동 확인이며 일반적인 유의성 보장이 아니다. PCC와의 차이는 두 블록 길이 모두 0을 포함했다.
+
+보조 비교인 global RCTL(K=1)은 0.07106777이다. K가 다르므로 제안과 같은 조건의 1차 비교는 아니지만, 현재 자료에서는 분할이 반드시 필요하다는 전제도 지지하지 않는다. 이 결과를 이용해 primary 목표를 사후에 모델 수 또는 비용으로 바꾸지 않는다.
+
+## 실행 및 해석 범위
+
+- 29/29 fits, 총 1,565 epochs, 전체 wall time 1,658.14초. 모든 fit은 validation patience로 종료했고 80-epoch 상한에 닿지 않았다. 전체 학습 경로의 최적 수렴을 증명한 것은 아니다.
+- 모든 조건의 예측은 유한하며 16 cell × 480 test query를 각각 한 번씩 평가했다. partition hash와 설정 hash가 실행 전 기록과 일치했다.
+- public RCTL의 TCN·LSTM·dual residual 계산을 유지한 Torch port다. 달력·일주간 lag 등을 모든 비교에 동일하게 제공하기 위해 입력 채널은 확장했다. 원 논문의 10분 자료·학습 조건·UPC 전체 재현이 아니다.
+- clustering에는 RCTL의 weights, predictions, losses를 사용하지 않았다. 두 번째 seed 비교 대상은 RCTL 실행 전 04 계획에서 고정했다.
+- 이번 결과를 참조하여 새 연구를 설계하는 경우 마지막 20일은 이후 개발 자료이며, 새 후보의 독립 최종 검증 구간으로 다시 부르지 않는다.
+
+## 판단
+
+**B2를 추천 방향에서 제외한다.** 이 결과는 모든 TabICL clustering의 실패를 뜻하지 않는다. 현재 함수군과 자료에서 full conditional distribution을 넣어야 할 이점, 이를 통해 RCTL 소속을 더 잘 정한다는 근거가 부족하다는 판단이다.
+
+확인된 사실은 다음 세 가지다. 첫째, 공통 anchor로 query를 대신한 B1에서는 입력 압축 오차가 컸다. 둘째, 실제 query를 보존한 B2도 미래 surrogate 손해 순위를 잘 설명하지 못했다. 셋째, RCTL 사후 확인에서 강한 단순 대안보다 불리했다. 발생 가능한 원인은 제한된 공유 함수군, 조건부 분포 추정 오차, 유한 자료의 pooling 효과 누락, 기간 변화다. 현재 결과만으로 그중 하나가 원인이라고 확정하지 않는다.
+
+다음 확인은 oracle 조건부 분포를 알더라도 유한 sample의 공유 효과를 판정하기에 정보가 충분한지 살피는 것이다. MAE에 맞춘 sample-median learner로 논리적 반례를 구성한다. 기존의 평균 추정 분산식을 RCTL에 적용하지 않는다. 단순한 공분산 항을 추가하는 안을 미리 채택하지도 않는다.
+
+RCTL의 누적 학습 횟수 상한 29회를 모두 사용했다. 다음 확인은 기존 자료와 저비용 계산 안에서 수행하며 상한을 초기화하지 않는다. 이 후보 기각은 전체 goal의 완료가 아니다.
+
+근거: `results/rctl_pilot/summary.json`, `fit_results.json`, `frozen_settings.json`, `observed_pre_RCTL_hashes.json`, `06_loss_table_diagnostic_plan.md`와 대응 결과.

@@ -1,0 +1,41 @@
+# 실제 query 입력을 보존하는 risk table 후보 — 실행 전 고정
+
+## 앞선 후보에서 변경되는 핵심
+
+공통 anchor의 예측을 그대로 가져오거나 최근값만 복원하는 방식은 충분하지 않았다. 직접 MAE 0.072614에 비해 복원 후에도 0.125104였다. 해당 anchor 후보를 기각하고 RCTL을 학습하지 않았다.
+
+새 후보에서는 TabICL이 **각 cell의 실제 query 입력**에 대해 분포를 예측한다. 다른 cell의 query나 대표 입력을 이 cell에 억지로 넣지 않는다. 그 분포로 ‘현재 입력에서 예측값을 얼마만큼 수정할 때 손해가 생기는가’를 계산한다. 같은 상태에서 수정값을 공유하는 surrogate 함수군을 명시하고, 그 함수군의 loss를 정확히 합산한다. 이후 실제 학습기는 여전히 전체 실제 자료로 학습한 RCTL이다.
+
+## 고정할 계산
+
+1. 동일한 16 cell, context 504개, feature 16열을 사용한다. 이번 query는 시간 672~839의 **전체 168개**이며 공통 시간 구간을 유지한다. 마지막 20일은 계속 봉인한다. TabICL 16 fit/predict, query 2688행, 129 midpoint 분위수, ensemble=1.
+2. 전체 context에서 StandardScaler+Ridge(alpha=1)로 공통 기준 예측 f0(x)를 한 번 구한다. cell ID는 쓰지 않는다. 이 값은 risk 비교의 좌표이며 RCTL의 입력·정답 또는 최종 예측에 전달하지 않는다.
+3. 상태 64개는 이전과 동일하게 context 입력만으로 정한 KMeans이다. 각 실제 query를 한 상태에 배정한다. 대표 입력에서의 TabICL 예측을 가져오는 연산은 제거한다.
+4. query x에 대한 129개 예측 분위수에서 f0(x)를 뺀다. 해당 query의 risk 곡선은 `mean_u abs(Q_i(u|x)-f0(x)-a)`이다. a는 그 상태에서 공유할 예측 수정값이다.
+5. cell i의 상태 b 곡선은 해당 상태에 속하는 실제 query의 risk를 합한 뒤 cell의 전체 query 수 168로 나눈다. 따라서 관측 상태 빈도가 자동 반영된다. 관측이 없는 상태의 곡선은 0이며 다른 상태나 cell을 추측해 채우지 않는다.
+6. cluster의 상태별 곡선은 소속 cell 곡선의 합이다. 상태별 최소값을 합친 것을 cluster 비용으로 쓴다. 이는 `f_C(x)=f0(x)+a_C,state(x)`라는 명시적인 함수군에 대한 **TabICL 추정분포 아래의 empirical expected MAE**이다. 모든 가능한 RCTL 함수의 risk나 pooled-context TabICL의 posterior라고 부르지 않는다.
+7. 상태별 수정값 후보는 해당 상태의 모든 query residual-quantile의 최소~최대 범위에서 257개다. 예측이나 target을 truncate하지 않는다. action 격자의 근사 오차만 별도 계산할 수 있다.
+8. K=4, balanced 16→8→4 merging, 낮은 증가 비용 순으로 disjoint pairs 선택. 합친 곡선은 덧셈으로 갱신한다. TabICL을 다시 호출하지 않는다.
+
+## 반드시 나란히 비교할 대안
+
+- 동일 query·state·기준 예측·같은 병합 알고리즘에 **실제 query target**을 넣어 만든 empirical MAE 곡선. 가장 강한 단순 대안이며 Label 접근을 숨기지 않는다. TabICL은 context target을 이용하고 이 대안은 확인 구간 target까지 직접 쓰므로, 실제 labels를 이미 보유한 clustering 상황에서의 유용성을 검토한다.
+- 동일 알고리즘에서 KNN(k=32)의 query 조건부 경험분포로 만든 곡선.
+- TabICL median만 넣은 곡선 및 median/IQR의 uniform 분포 곡선. 분포 전체의 추가 정보가 있는지 확인한다.
+- 같은 K·입력의 PCC-balanced, random-balanced, MAE cross-error-profile 방식. 개별 cell의 입력 규격과 정답 접근 시점은 같게 유지한다.
+
+## 근거·신규성 판정
+
+이 후보의 Bayes loss·residualization·Rao-Blackwell 원리는 기존 이론이다. 새 수학 정리로 주장하지 않는다. 검토할 차이는 **관측된 query에서 conditional loss를 미리 만들고, query의 입력과 시간대를 보존한 상태로 group에 합산 가능한 risk table을 구성하여, 공동 모델 반복 학습과 전체 cell 쌍 추론을 제거하는 설계**이다. 원래 관심이었던 ‘다른 cell이 같은 입력에서 대신 답할 수 있는가’와 비교 대상이 달라졌다. 어떤 cell들이 공통 수정 규칙을 공유할 때 손실이 작아지는지 본다.
+
+TabICL 분포로 계산한 기대 손실은 실제 conditional law를 알면 단일 noisy target의 손실보다 조건부 분산이 작다. 추정된 분포에서는 bias가 생길 수 있으므로, 이 점을 성능 보장으로 쓰지 않는다. empirical-target 대안과의 비교가 핵심이다. 이 비교에서 정보·실제 group quality의 이득을 보이지 못하면 TabICL의 선택 근거가 부족하다.
+
+RCTL과 surrogate 함수군 사이의 차이는 작은 사후 확인으로 평가한다. 함수군의 비용이 감소했다고 RCTL의 오차 감소를 선언하지 않는다. 현재 모델 수 K=4에서의 순위·분할 차이와 비용을 먼저 확인한다. RCTL 확인은 이번 소속을 hash로 고정한 다음 수행한다.
+
+## 비용 및 RCTL 확인 수정
+
+앞선 02 계획의 전체 cap(80 contexts, 60000 query rows, RCTL 29 fits·50분)을 그대로 유지한다. 이번 단계까지 총 TabICL 36 contexts/20352 query rows가 된다.
+
+RCTL 비교는 이번 후보(full risk), **empirical-target risk**, KNN risk, PCC-balanced, random-balanced의 5 partition × 4 models + global 1 = 21 fits로 고정한다. 두 번째 seed 반복은 full risk와 empirical-target risk 8 fits로 정한다. 변경 이유는 후보의 개선 근거가 ‘단일 noisy label을 이용한 risk 추정’과의 차이에 있으므로 가장 결정적인 비교를 우선하기 때문이다. 아직 RCTL은 한 번도 학습하지 않았으며 그 결과를 보고 비교 대상을 고른 것이 아니다. 02 계획의 train/validation/test 경계와 학습 설정은 유지한다.
+
+과거 cross-error-profile은 구체적인 선행 비교 및 단순 surrogate 진단으로 남기고, 이번 제한 RCTL 실행에서는 비용 때문에 제외한다. 본 연구 비교에서 제외한다는 뜻은 아니다. 기존 UPC는 여전히 원래 규모의 비교가 미실행임을 유지한다.
