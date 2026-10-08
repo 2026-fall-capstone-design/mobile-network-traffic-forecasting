@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-03T17:23:27.839312+00:00",
+  "docx_pages": 7,
+  "all_pages_visually_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "render_route": "packaged render_docx.py main with existing native Word PDF adapter; bundled Python and Poppler",
+  "initial_renderer_failure": "LibreOffice soffice.exe absent on Windows PATH; logged, then existing Word conversion adapter reused",
+  "layout_changes": "Removed inherited Title paragraph border and grid snapping; page breaks before headings eliminate overflow/blank pages",
+  "final_layout": "No clipping, overlap, blank pages, broken tables or missing Korean/math glyphs observed on all seven full-resolution PNGs",
+  "evidence_checks": [
+    "12 rounded table cells equal saved639 scalar values",
+    "correct Zhang et al. paper title from local primary first page",
+    "theta0 and theta10 distinction",
+    "common Tab/HGB support dependency and costs stated",
+    "strong HGB earlier-period counterexample included",
+    "no sample terminology regression"
+  ],
+  "page_hashes": {
+    "page-1.png": "6d4056a2b16e0c27d34faf2059d75f657ae46015c331353f2b041187bfdff2be",
+    "page-2.png": "2f8c4a4475326405b3fdfa6c80c90839a279e570bfe5770c8ac80b4ace9a1d91",
+    "page-3.png": "1461cfe1b3ae3653b9a92afc2ee47583a2c905d3618a405da7822850e9dd135c",
+    "page-4.png": "d15d2431ad5c27a39b83183c202c359547bb64b65b968ef786ef751d95f25af3",
+    "page-5.png": "ee5ffb6638fe0b9400b11238e2ccba82c5945ed93df2b4f4184d346cf3506ba2",
+    "page-6.png": "2f634d0f52338bd122a46456ca98c6302def766bd760b7473099894cb7d01cc3",
+    "page-7.png": "6c0a578cb420c9d5d36b00b85eccc7b60ca274f9d482e2e065d303d60e070e23"
+  },
+  "report_sha256": "b4546e34324ee2df93d609521304b298f5d7beb1a996dbb183caa4f3a2f25bf0",
+  "docx_sha256": "3527a2eede07502e7b79e6272b201ed16b44d04454bbc965f16441f37b6caca7",
+  "pdf_sha256": "040b237ce08db79934c014297cd15d6e9bbb75ac436b97cdc0729e48da0a00e5",
+  "research_models_executed": 0,
+  "new_traffic_analysis": 0,
+  "ledger_unchanged": true
+}

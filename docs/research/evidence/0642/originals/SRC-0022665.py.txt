@@ -1,0 +1,47 @@
+"""Read bounded official metadata and reuse the saved code if HEAD is unchanged."""
+import hashlib
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.request import Request, urlopen
+
+ROOT = Path(__file__).resolve().parent
+OUT = ROOT / 'sources' / 'upc_baseline_166'
+OLD = 'a7519dde9d6f5deb3006689df047d99ea0dac7b7'
+CAP = 1024**2
+OUT.mkdir(parents=True, exist_ok=True)
+assert not (OUT / 'manifest.json').exists(), 'Do not refetch completed sources.'
+manifest = []
+used = 0
+
+def fetch(name, url):
+    global used
+    req = Request(url, headers={'User-Agent': 'Codex-Research-Source-Check', 'Accept': 'application/vnd.github+json'})
+    with urlopen(req, timeout=35) as response:
+        raw = response.read(CAP-used+1)
+        assert len(raw) <= CAP-used, 'Metadata budget exceeded'
+        resolved = response.url
+        content_type = response.headers.get('Content-Type')
+    used += len(raw)
+    (OUT / name).write_bytes(raw)
+    manifest.append({'file': name, 'url': url, 'resolved_url': resolved,
+                     'utc': datetime.now(timezone.utc).isoformat(), 'bytes': len(raw),
+                     'sha256': hashlib.sha256(raw).hexdigest(), 'content_type': content_type})
+    (OUT / 'manifest.json').write_text(json.dumps(manifest, indent=2, ensure_ascii=False)+'\n', encoding='utf-8')
+    return json.loads(raw)
+
+repo = fetch('repository.json', 'https://api.github.com/repos/Superint-Lab/GECOS')
+branch = repo['default_branch']
+head = fetch('head_commit.json', 'https://api.github.com/repos/Superint-Lab/GECOS/commits/'+branch)
+same = head['sha'] == OLD
+if same:
+    tree = json.loads((ROOT / 'sources/Superint-Lab__GECOS_tree.json').read_text(encoding='utf-8'))
+else:
+    tree = fetch('tree.json', 'https://api.github.com/repos/Superint-Lab/GECOS/git/trees/'+head['sha']+'?recursive=1')
+result = {'default_branch': branch, 'old_commit': OLD, 'head_commit': head['sha'],
+          'commit_unchanged': same, 'metadata_bytes': used,
+          'tree_sha': tree['sha'], 'tree_paths': [r['path'] for r in tree['tree']],
+          'new_code_fetched': False, 'external_code_executed': False,
+          'reused_local_code': 'sources/GECOS_main.txt' if same else None}
+(OUT / 'check.json').write_text(json.dumps(result, indent=2, ensure_ascii=False)+'\n', encoding='utf-8')
+print(json.dumps(result, ensure_ascii=False))

@@ -1,0 +1,184 @@
+from pathlib import Path
+import json, hashlib, datetime, shutil
+from docx import Document
+from pypdf import PdfReader
+
+B=Path(__file__).resolve().parent
+ROOT=B.parent.parent
+O=B/'results/bounded_relation_recommendation_642'
+def now(): return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def read(p): return json.loads(Path(p).read_text(encoding='utf-8-sig'))
+def write(p,obj): Path(p).write_text(json.dumps(obj,ensure_ascii=False,indent=2),encoding='utf-8')
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
+state_path=B/'research_state.json'
+ledger=B/'cumulative_execution_budget.json'
+state=read(state_path)
+assert state['latest_research_stage']==641, 'Do not overwrite newer work'
+assert state['in_flight_execution'] is None
+assert sha(ledger)=='17a549fcf926e534eaecd4efd278fe4e13f7c7a13e74805c21059a2d6fc59243'
+assert not (O/'archive_complete.json').exists(), 'Do not archive twice'
+manifest=read(O/'evidence_manifest.json')
+report=ROOT/manifest['documents']['report']
+word=ROOT/manifest['documents']['word']
+doc=Document(word)
+pdf=next((O/'render_final').glob('*.pdf'))
+pages=PdfReader(pdf).pages
+text='\n'.join(p.text for p in doc.paragraphs)+'\n'+'\n'.join(c.text for t in doc.tables for row in t.rows for c in row.cells)
+assert len(pages)==7
+assert '사례' not in text
+assert '0.081396' in text and '0.084757' in text and '2.71%' in text
+assert 'θ=0' in text and 'θ=10' in text
+assert '공통 지원' in text and '비용' in text
+assert doc.paragraphs[0].style.name=='Title'
+assert not doc.styles.element.xpath('.//w:pBdr')
+assert not doc.element.xpath('.//w:pBdr')
+assert all(len(p.extract_text())>1000 for p in pages)
+results=read(B/'results/bounded_relation_RCTL_bridge_639/result.json')
+methods=['A_UPC','A_HGB_free','A_HGB_relation','A_Tab_relation']
+windows=['first240','last240','all480']
+# Published-table verification from already computed scalar results, not new traffic analysis.
+for ri,m in enumerate(methods,1):
+    for ci,w in enumerate(windows,1):
+        assert doc.tables[2].rows[ri].cells[ci].text==f"{results['metrics'][m][w]['mean_cell_MAE']:.6f}"
+checks={
+ 'at':now(),'docx_pages':7,'all_pages_visually_inspected':[1,2,3,4,5,6,7],
+ 'render_route':'packaged render_docx.py main with existing native Word PDF adapter; bundled Python and Poppler',
+ 'initial_renderer_failure':'LibreOffice soffice.exe absent on Windows PATH; logged, then existing Word conversion adapter reused',
+ 'layout_changes':'Removed inherited Title paragraph border and grid snapping; page breaks before headings eliminate overflow/blank pages',
+ 'final_layout':'No clipping, overlap, blank pages, broken tables or missing Korean/math glyphs observed on all seven full-resolution PNGs',
+ 'evidence_checks':['12 rounded table cells equal saved639 scalar values','correct Zhang et al. paper title from local primary first page','theta0 and theta10 distinction','common Tab/HGB support dependency and costs stated','strong HGB earlier-period counterexample included','no sample terminology regression'],
+ 'page_hashes':{f'page-{n}.png':sha(O/'render_final'/f'page-{n}.png') for n in range(1,8)},
+ 'report_sha256':sha(report),'docx_sha256':sha(word),'pdf_sha256':sha(pdf),
+ 'research_models_executed':0,'new_traffic_analysis':0,'ledger_unchanged':True
+}
+write(O/'document_review.json',checks)
+
+audit={
+ 'at':now(),'scope':'research direction selection with directly supported small prototype, not full-city/independent-future validation',
+ 'criteria':[
+  {'criterion':'실재 문제와 중요성','judgment':'satisfied','evidence':'166 UPC decision;633 lower native MAE but worse selected RCTL;639 fixed-membership improvement','limit':'not proof that every UPC cluster has conditional conflict'},
+  {'criterion':'가장 가까운 선행과 원리·결정 차이','judgment':'satisfied_for_bounded_contribution','evidence':'640 conditional-quantile/predictive population decision comparison;641 same-function controls; report5','limit':'no new orthogonal formula or first-ever conditional clustering claim'},
+  {'criterion':'Tab 역할과 강한 대안','judgment':'satisfied_for_candidate_selection','evidence':'same504 rows,16features,9quantiles,support and assignment;Tab3moves versus HGB1;639 RCTL comparison;TabPFN alternative explicit','limit':'strong HGB first240 better;no unique-to-Tab or universal superiority'},
+  {'criterion':'동일 정보·비용의 개선 원리와 반례','judgment':'satisfied_as_evidence_for_research_start_not_efficiency_ranking','evidence':'same information and fixed common experimental limits;635-638 whole costs include both estimators and failures;641 cached controls no model cost;639 sameK utility','limit':'not equal actual wall-time reallocation across optimally tuned competitors;no speed advantage claimed. Unsupported equality,noise-invariance and robustness claims removed'},
+  {'criterion':'clustering→RCTL 핵심 연결','judgment':'satisfied_in_one_development_condition','evidence':'638 sealed memberships before639;3 actual new groups plus13 byte-provenance reuses;641 identical control memberships exact RCTL aliases','limit':'one cohort/seed, used periods all development;theta0 pilot not originaltheta10'},
+  {'criterion':'구현·누적 비용·최소 확인','judgment':'satisfied','evidence':'635 fixed plans/code;638639641 verified results;report4/7;unchanged ledger hash','limit':'no10000-cell speed projection;graph support/size and p reweighting limitations stated'},
+  {'criterion':'추천 하나·남은 본 실험·실패 행동','judgment':'satisfied','evidence':'report1/8 and Word1/6 select observed-label relation UPC refinement;future frozenUPC and simple alternatives;remove Tab or revertUPC when no benefit','limit':'no automatic fine-tuning, threshold search, extra seed rescue;new independent main experiment not claimed completed'}
+ ],
+ 'required_outputs':{'report':str(report.relative_to(ROOT)).replace('\\','/'),'word':str(word.relative_to(ROOT)).replace('\\','/'),'evidence':'tmp/redesign_20260925/results/bounded_relation_recommendation_642/evidence_manifest.json'},
+ 'all_word_pages_reviewed':True,
+ 'direction_design_deliverables_complete':True,
+ 'full_scientific_validation_complete':False,
+ 'not_completed_main_study':['original theta10 setting on sufficient cells','independent unseen period or city','strict equal wall-time alternative allocation','TabPFN same-condition comparison','graph-size controlled comparison','full-city runtime and robust statistical generalization'],
+ 'native_goal_status_not_changed_by_this_script':True
+}
+write(O/'completion_audit.json',audit)
+
+findings='''# 642 관측 정답을 이용한 UPC 소속 수정 방향을 추천합니다
+
+634–641의 고정 알고리즘·추정기 대조·동일 예측의 결정 대조·실제 RCTL을 연결하여, **관측 정답으로 확인한 조건부 관계를 이용해 UPC 소속을 수정하는 TabICLv2 연구**를 본 실험에 착수할 방향으로 선정했습니다. 알고리즘과 소속·기간·threshold는641 결과로 바꾸지 않았습니다.
+
+이번의 추가 판단은 미래 우위의 확정이 아니라 추천 범위입니다. 낮은 Tab native MAE만으로 좋은 소속을 고르지 못한633을 보존하고,같은 예측의 직접 거리/plugin이 못 바꾼 소속을 실제 정답score가 바꾼641,그 소속의 실제 자료 공유 이득639를 연결했습니다. 같은K·자료의 UPC대비3.97% 평균 개선과 강한HGB대비 전반2.71% 손해·6cell 악화를 함께 명시했습니다. 원 θ10과 작은 θ0,한 개발cohort/seed,과거 thread 차이를 유지합니다.
+
+가장 가까운 Zhang/Yu/Yang/population 예측 clustering의 결정·가정·비용과 비교했습니다. 비선형·분위수·추정 재사용·clustering 후 학습 자체는 기존 내용이며 새로운 직교 score 또는 전 세계 최초라고 쓰지 않았습니다. 구별해 확인한 기여는 별도 관측 정답을 쓰는 관계 score의 추가 소속 결정과 한 조건의 고정 RCTL 효용입니다.
+
+**이번 내용 검토에서 더 명확히 한 구현 의존성은 Tab/HGB의 공통 유효 지원입니다.** 현재 코드는 HGB분포도 계산하여 양 추정기가 모두 유효한query·edge만 비교합니다. HGB를 무료 외부대조로 분리하지 않고197.086초의 전체 비용에 포함했습니다. Tab단독 지원 버전·동일 wall-time 최적대안·전체도시 효율은 검증된 것으로 쓰지 않았습니다. 이는 봉인 소속을 변경할 이유가 아니라 현재 prototype의 정확한 적용 범위입니다.
+
+보고서는 목표10의 세 표, 원문/실제관찰/가정 구분, 실행 가능한 입력·검색·지원·score·이동·종료·RCTL 자료 흐름, 실패 포함비용을 제공합니다. Word는7쪽을 최종 렌더링하고 모두 원해상도로 시각 검수했습니다. 기본LibreOffice 실행은실행파일부재로 실패했으며, 기존Word변환 adapter와동일packaged renderer·bundled Poppler로 완료했습니다. 잘못된Zhang논문 제목과 inherited title border, 넘침/빈페이지를 수정했습니다.
+
+초기280/445통합 및633시점 인계적용을 재사용했습니다. 인덱스목록을전문검토로승격하지않고 current634–641·원UPC·구현·누적원장의판단관련부분을확인했습니다. 기존문서·실험·원장 사용량과실패비용을보존했습니다. 새모델·forward·traffic수치실험0, 연구원장hash불변입니다. Word서식/표시검수는연구모델실험비용과구별합니다.
+
+연구방향 선정과산출물은완료입니다. 본실험은미사용기간·충분한cell에서원UPC설정가능여부를먼저확인하고,현재규칙과단순대안을고정해소속봉인후RCTL을평가하도록명세했습니다.같은정보/비용의단순대안이유리하면Tab기여를축소하거나UPC/HGB로단순화합니다. 추가FT/새threshold로자동구제하지않습니다. 다음 본실험은이미실행한것으로기록하지않습니다.
+
+근거: results/bounded_relation_recommendation_642/evidence_manifest.json, document_review.json, completion_audit.json. 원문보고서와Word는output/research와output/docx의20261004명칭으로기존문서와구분합니다. 앱goal의실제상태는파일완료와별도로해당도구로처리합니다.
+'''
+(B/'642_bounded_relation_recommendation_findings.md').write_text(findings,encoding='utf-8')
+review_scope={
+ 'at':now(),'previous_turn_classification':'actual641 progress:377 checks,exact16-group aliases,settled0.3302418sec;not status-only',
+ 'current_work':'source/code/cost synthesis,recommendation,report and visually inspected Word',
+ 'initial_integration_reused':[280,445], 'application_reused':633,
+ 'new_detailed_review':['634-641 decision/limits/results/settlement','635 code: common input and quantile-valid masks','166 theta interpretation','512 relation to known scores','Zhang primary first-page bibliographic title'],
+ 'reused_primary_scope':['640 Yang sections2,3.1,3.3,4.1','05 traffic/TS/Tab source decision audit','267 predictive population method','original Urban title and UPC/RCTL portion','TabICLv2 architecture/inference sections'],
+ 'not_claimed':['full new read of every historical document','all cited paper proofs or implementations independently verified','all primary sources freshly downloaded','all city/model comparisons run'],
+ 'new_web_checks':['TabICLv2 v2,Yang v1,Yu v2 primary pages reachable','Zhang NSF and Sadeghkhani DOI web fetch unavailable;previous primary text reused'],
+ 'new_numerical_traffic_analysis':False
+}
+write(O/'review_manifest.json',review_scope)
+manifest['render_review_complete']=True
+manifest['document_review']='tmp/redesign_20260925/results/bounded_relation_recommendation_642/document_review.json'
+manifest['completion_audit']='tmp/redesign_20260925/results/bounded_relation_recommendation_642/completion_audit.json'
+manifest['source_dependencies']=['HGB quantile validity contributes to common support;included in whole cost','source classifier estimated from earlier X;not certified evaluation-distribution probability']
+manifest['docx_sha256']=sha(word);manifest['report_sha256']=sha(report)
+write(O/'evidence_manifest.json',manifest)
+
+shutil.copy2(state_path,O/'state_before.json')
+focus_path=B/'research_focus.md'
+focus='''# 현재 집중 문제와 연구 방향 선정 완료
+
+문제 ID는 `independent_UPC_membership_decision_information`입니다.초기280·445의관측문제통합과633시점지침적용을재사용하고,이후634–642변경분을연결했습니다.자료목록과상세검토범위는 [642 검토등록부](results/bounded_relation_recommendation_642/review_manifest.json)에서구분합니다.
+
+| 연결 | 최신 판단과 근거 |
+|---|---|
+| 관측 문제 | 633은 낮은Tab 자체MAE가좋은소속을보장하지못함.641은같은예측의직접거리/plugin보다실제정답score가추가결정을제공함 |
+| 원인 가설 | 추정관계를별도관측정답에대조하는판단이유용할수있음.잡음불변·평가분포보정·인과기전의완전규명은주장하지않음 |
+| 바뀐 소속 | 638의Tab3cell이동을유지.641대조는UPC유지.642에서소속·k·threshold변경0 |
+| Tab 역할 | 전체504sample·16열의9분위수를cell별준비해이웃에서재사용.가중치fine-tuning없음 |
+| 실제 구현 의존성 | HGB분포와Tab분포의공통유효지원22edge. HGB계산도전체비용포함.독립Tab-only지원은미검증 |
+| 강한 단순 대안 | 동일score HGB와강한HGB_free·직접거리/plugin유지.강한HGB의전반우위·6cell손해보존 |
+| 실제 RCTL 전달과효용 | 봉인cluster전체실제입력/정답.639의UPC대비평균3.97%개선,강한HGB대비전체1.93%개선과전반2.71%손해 |
+| 추천 범위 | 별도관측정답의관계score로UPC소속을수정하는본실험후보.공식자체/조건부clustering/단순재사용을새발명으로부르지않음 |
+| 지침적용·검토상태 | 인계적용633과초기통합유지.642내용검토·보고서·Word7쪽전페이지검수완료.원장/이전실험보존 |
+| 다음 연구행동 | 보고서8절의본실험:미사용기간·충분한cell의원θ10적용가능성을입력만으로확인→현재규칙/강한대안/예산고정→소속봉인후RCTL.이번에실행하지않음 |
+| 결과별 판단 | 원설정미지원이면그대로기록.단순대안이같은효용이면Tab기여축소.새기간악화면현재연결가설종료.유리하면그확인범위의주장확장 |
+
+연구방향선정및검수산출물은완료이며전체도시/새미래일반화는미완료입니다.[642상세](642_bounded_relation_recommendation_findings.md)와[완료기준대조](results/bounded_relation_recommendation_642/completion_audit.json)에범위를명시했습니다.파일기록은native goal의상태를변경하지않습니다.
+
+## 이전 집중 기록 당시 판단 보존
+
+'''
+oldfocus=focus_path.read_text(encoding='utf-8-sig')
+focus_path.write_text(focus+oldfocus,encoding='utf-8')
+state['updated_at']=now()
+state['latest_research_stage']=642
+state['latest_research_record']='tmp/redesign_20260925/642_bounded_relation_recommendation_findings.md'
+state['research_deliverables_complete']=True
+state['active_problem']={'id':'independent_UPC_membership_decision_information','path':'tmp/redesign_20260925/research_focus.md','status':'bounded_research_direction_recommended_and_documents_verified'}
+state['in_flight_execution']=None
+state['next_action']={
+ 'id':'main_study_frozen_scope_preflight',
+ 'plan':manifest['documents']['report']+'#8-강한-반론과-본-실험의-판단-기준',
+ 'status':'specified_beyond_completed_direction_design_not_executed',
+ 'problem_id':state['active_problem']['id'],
+ 'action':'미사용기간과충분한cell의원UPC theta10/K4적용가능성및시간예산을입력만으로확인한뒤현재규칙·강한단순대안·동일정보/비용비교를고정한다.소속봉인후RCTL실험하며,미지원이면설정불가,단순대안우세이면Tab기여축소,고정새기간개선이면범위를확장한다.',
+ 'budget_reserved':False,'new_models_reserved':False,
+ 'auto_restart_completed_direction_design':False
+}
+state['recommended_candidate_642']={
+ 'name':'관측 정답을 이용한 TabICLv2 조건부 관계 기반 UPC 소속 수정',
+ 'scope':'research candidate supported by one development prototype',
+ 'algorithm_frozen_stage':638,'RCTL_evidence_stage':639,'decision_ablation_stage':641,
+ 'universal_superiority':False,'original_theta10_reproduction':False,'new_score_formula':False,
+ 'source_cost_support_limitations_recorded':True
+}
+state['completed_direction_outputs_642']=manifest['documents']
+state['evidence_checkpoint']['latest_static_review']='tmp/redesign_20260925/results/bounded_relation_recommendation_642/review_manifest.json'
+state['evidence_checkpoint']['latest_report_completion_audit']='tmp/redesign_20260925/results/bounded_relation_recommendation_642/completion_audit.json'
+state['evidence_checkpoint']['ledger_sha256_at_handoff']=sha(ledger)
+state.setdefault('problem_checkpoints',[]).append({'at':now(),'record':state['latest_research_record'],'problem_id':state['active_problem']['id'],'completed_scope':'bounded recommendation and fully reviewed research report/Word','new_candidate_recommended':True,'full_scientific_validation_complete':False,'next_action':state['next_action']['id']})
+write(state_path,state)
+entry='''
+
+## 642 관측 정답의 관계 점수를 이용한 UPC 소속 수정 방향 선정
+
+[642 상세](642_bounded_relation_recommendation_findings.md).634–641의실제소속결정·같은정보HGB·동일예측대조·고정RCTL을연결해착수할후보하나를선정했습니다.별도한국어보고서와Word7쪽전페이지검수완료.기존직교score·분위수clustering은신규성에서제외하며,확인정답의추가결정에기여를한정했습니다.
+
+현재공통지원은Tab/HGB분포둘을필요로하므로HGB를무료외부대조로분리하지않고197.086초전체비용에포함합니다.전체평균이득과강한HGB전반2.71%손해·6cell악화·theta0/10차이·한개발집합/seed를보존했습니다.동일wall-time최적대안,새미래/도시,graph크기효과,전체도시비용은미실행입니다.
+
+새모델·forward·traffic수치실험0.원장17a549fcf926e534eaecd4efd278fe4e13f7c7a13e74805c21059a2d6fc59243불변·과거실패비용보존.초기280/445통합·633지침적용을재사용하고새로운판단관련부분만갱신했습니다.앱goal상태변경과파일완료는구분합니다.다음연구는보고서8절의원설정·미사용자료본실험이며완료된설계연구를자동재실행하지않습니다.
+'''
+for p in [B/'progress.md',B/'candidate_decision_index.md']:
+    with p.open('a',encoding='utf-8') as f:f.write(entry)
+assert sha(ledger)==manifest['ledger_sha256_before']
+write(O/'settled.json',{'at':now(),'success':True,'research_models':0,'new_traffic_numeric_seconds':0,'document_render_outside_research_model_ledger':True,'cap_changes':{},'ledger_sha256':sha(ledger),'all_prior_costs_preserved':True})
+write(O/'archive_complete.json',{'at':now(),'stage':642,'research_stage_complete':True,'direction_design_deliverables_complete':True,'full_scientific_validation_complete':False,'state_sha256':sha(state_path),'ledger_sha256':sha(ledger),'report_sha256':sha(report),'docx_sha256':sha(word),'all_word_pages_reviewed':7,'native_goal_completion_must_be_separate_tool':True})
+print(json.dumps({'stage':642,'pages':7,'new_models':0,'ledger_unchanged':True,'direction_outputs_complete':True,'main_study_unexecuted':True},ensure_ascii=False))

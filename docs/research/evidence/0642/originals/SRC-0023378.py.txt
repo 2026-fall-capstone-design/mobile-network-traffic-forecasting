@@ -1,0 +1,86 @@
+"""Check source identity and exact count/denominator implications; no traffic/model run."""
+import ast
+import hashlib
+import json
+from fractions import Fraction
+from pathlib import Path
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parent
+SRC = ROOT / 'sources/upc_baseline_166'
+OUT = ROOT / 'results/upc_baseline_166'
+LEDGER = ROOT / 'cumulative_execution_budget.json'
+EXPECTED = '3eb960be6c4a8eb7df8f1696880639bf4b70d55536aa8baca7b2acf0e15c5aab'
+PAPER = Path('C:/Users/jungj/OneDrive/Desktop/연구실/논문/추천논문/Urban Mobile Data Prediction With Geospatial Clustering and Dual Residual Learning/Urban Mobile Data Prediction With Geospatial Clustering and Dual Residual Learning.pdf')
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+load = lambda p: json.loads(p.read_text(encoding='utf-8'))
+assert not (OUT / 'verification.json').exists()
+assert sha(LEDGER) == EXPECTED
+records = load(SRC / 'manifest.json')
+assert len(records) == 2 and sum(x['bytes'] for x in records) <= 1024**2
+for row in records:
+    assert (SRC / row['file']).stat().st_size == row['bytes']
+    assert sha(SRC / row['file']) == row['sha256']
+check = load(SRC / 'check.json')
+assert check['commit_unchanged'] and check['head_commit'] == 'a7519dde9d6f5deb3006689df047d99ea0dac7b7'
+tree = load(ROOT / 'sources/Superint-Lab__GECOS_tree.json')
+code_path = ROOT / 'sources/GECOS_main.txt'
+code_raw = code_path.read_bytes()
+tree_blob = next(x['sha'] for x in tree['tree'] if x['path'] == 'main.py')
+local_blob = hashlib.sha1(b'blob '+str(len(code_raw)).encode()+b'\0'+code_raw).hexdigest()
+assert local_blob == tree_blob
+code = code_raw.decode('utf-8')
+parsed = ast.parse(code)
+cls = next(x for x in parsed.body if isinstance(x, ast.ClassDef) and x.name == 'CorrelationCluster')
+avg = next(x for x in cls.body if isinstance(x, ast.FunctionDef) and x.name == 'avg_corr')
+returned = next(x for x in avg.body if isinstance(x, ast.Return))
+assert ast.unparse(returned.value) == 'np.triu(sub_matrix, k=1).mean()'
+reader = PdfReader(PAPER)
+assert len(reader.pages) == 14
+page4 = reader.pages[3].extract_text()
+page5 = reader.pages[4].extract_text()
+assert 'θ= 10' in page4 and 'None' in page5 and 'Urbanﬂow Peak Clustering' in page5
+# Necessary condition for distinct nonempty seed groups with defined PCC.
+min_cells_per_valid_group = 11
+cases = []
+for cells, k in [(16, 4), (32, 4), (44, 4), (32, 2)]:
+    max_groups = min(24, cells // min_cells_per_valid_group)
+    cases.append({'cells': cells, 'requested_K': k, 'max_possible_valid_seed_groups': max_groups,
+                  'necessary_count_condition_met': max_groups >= k,
+                  'sufficiency_not_asserted': True})
+assert [x['max_possible_valid_seed_groups'] for x in cases] == [1, 2, 4, 2]
+def code_score(size, rho=Fraction(1)):
+    return rho * Fraction(size * (size-1), 2 * size * size)
+balanced = sum(map(code_score, [3, 3]))/2
+unequal = sum(map(code_score, [2, 4]))/2
+assert balanced == Fraction(1, 3) and unequal == Fraction(5, 16)
+assert balanced > unequal
+def actual_pair_mean(sizes):
+    scores = []
+    for n in sizes:
+        distinct_pairs = [(i, j) for i in range(n) for j in range(i+1, n)]
+        scores.append(sum(Fraction(1) for _ in distinct_pairs) / len(distinct_pairs))
+    return sum(scores) / len(scores)
+assert actual_pair_mean([3, 3]) == actual_pair_mean([2, 4]) == 1
+OUT.mkdir(parents=True, exist_ok=True)
+result = {
+    'verified': True, 'original_paper_page_count': len(reader.pages),
+    'original_paper_pages_checked': [4, 5], 'original_paper_sha256': sha(PAPER),
+    'official_head_commit': check['head_commit'], 'local_code_matches_git_blob': True,
+    'git_blob_sha1': local_blob, 'local_code_sha256': sha(code_path),
+    'plan_sha256': sha(ROOT / '166_upc_baseline_feasibility_plan.md'),
+    'metadata_bytes': sum(x['bytes'] for x in records),
+    'necessary_seed_count_cases': cases,
+    'theta_in_paper_setup': 10, 'minimum_cells_for_four_defined_seeds': 44,
+    'public_average_formula': '(n-1)/(2*n) * mean_distinct_unordered_pair_correlation, n>=2',
+    'equal_pair_correlation_example': {'rho': 1, 'sizes_3_3_code_score': str(balanced),
+                                      'sizes_2_4_code_score': str(unequal), 'both_actual_pair_means': 1},
+    'external_code_executed': False, 'traffic_calculations': 0, 'model_calls': 0,
+    'ledger_sha256_unchanged': EXPECTED, 'caps_changed': False,
+    'fits_164_authorized': False, 'fits_164_started': False,
+}
+assert sha(LEDGER) == EXPECTED
+assert not (ROOT / 'results/self_exposure_control_164/budget_authorization.json').exists()
+assert not (ROOT / 'results/self_exposure_control_164/run_started.json').exists()
+(OUT / 'verification.json').write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+print(json.dumps(result, ensure_ascii=False))
