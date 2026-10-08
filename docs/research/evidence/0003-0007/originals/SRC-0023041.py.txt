@@ -1,0 +1,13 @@
+import pathlib,json,numpy as np
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+base=pathlib.Path(__file__).resolve().parent;out=base/'results'
+d=np.load(out/'design_data.npz');p=np.load(out/'risk_table_predictions.npz')
+sel=p['selected_cells'];X=d['X'][sel];Y=d['Y'][sel];tt=d['times'];qi=np.searchsorted(tt,p['query_times']);tr=tt<672
+sx=StandardScaler().fit(X[:,tr].reshape(-1,16));km=KMeans(n_clusters=64,n_init=5,random_state=20260925).fit(sx.transform(X[:,tr].reshape(-1,16)))
+records=[]
+for i in range(len(X)):
+    bins=km.predict(sx.transform(X[i,qi]));direct=p['quantiles'][i,64+i*64:64+(i+1)*64];aq=p['quantiles'][i,bins];shift=X[i,qi,7]-p['anchors'][bins,7];corrected=aq+shift[:,None]
+    rec={'cell_id':int(p['cell_ids'][i]),'direct_mae':float(np.abs(direct[:,64]-Y[i,qi]).mean()),'anchor_mae':float(np.abs(aq[:,64]-Y[i,qi]).mean()),'level_restored_mae':float(np.abs(corrected[:,64]-Y[i,qi]).mean()),'uncorrected_quantile_W1':float(np.abs(aq-direct).mean()),'restored_quantile_W1':float(np.abs(corrected-direct).mean())};records.append(rec)
+summary={'cells':records,'averages':{k:float(np.mean([r[k] for r in records])) for k in records[0] if k!='cell_id'},'interpretation':'Input-level restoration diagnostic, not a new clustering result.'}
+(out/'projection_diagnostic.json').write_text(json.dumps(summary,indent=2),encoding='utf-8');print(json.dumps(summary['averages'],indent=2))

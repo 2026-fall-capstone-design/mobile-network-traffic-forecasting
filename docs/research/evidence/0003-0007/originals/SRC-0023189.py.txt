@@ -1,0 +1,56 @@
+"""Post-run audit. Does not train, tune, or modify any partition."""
+import pathlib,json,hashlib
+import numpy as np
+base=pathlib.Path(__file__).resolve().parent;out=base/'results/rctl_pilot'
+finished=json.loads((out/'run_finished.json').read_text())
+assert finished['all_fits_complete'],finished
+cfg=json.loads((out/'frozen_settings.json').read_text());fits=json.loads((out/'fit_results.json').read_text())
+data=np.load(out/'evaluation_data.npz');y=data['test_y'];ids=data['cell_ids'];scale=data['scales'];peak=data['peak_threshold']
+assert len(fits)==29 and finished['epochs_total']<=2320 and finished['wall_seconds']<=3000
+assert hashlib.sha256((base/'results/observed_risk_pilot.json').read_bytes()).hexdigest()==cfg['source_hashes']['observed_risk_pilot.json']
+preds={};metrics=[]
+for method,seed in sorted(set((a['method'],a['seed']) for a in fits)):
+    pred=np.full_like(y,np.nan);seen=[];selected=[a for a in fits if a['method']==method and a['seed']==seed]
+    for row in selected:
+        f=np.load(out/f'{method}_{seed}_cluster{row["cluster"]}.npz')
+        members=f['members'];assert np.array_equal(f['y'],y[members])
+        pred[members]=f['prediction'];seen+=members.tolist()
+    assert sorted(seen)==list(range(16)) and np.isfinite(pred).all()
+    key=f'{method}_{seed}';preds[key]=pred
+    err=np.abs(pred-y);mask=y>peak[:,None]
+    pm=np.array([np.mean(err[i,mask[i]]) if mask[i].any() else np.nan for i in range(16)])
+    rec={'method':method,'seed':seed,'models':len(selected),'mean_scaled_mae':float(err.mean()),
+        'per_cell_mae':err.mean(1).tolist(),'raw_activity_mae':float(np.mean(err*scale[:,None])),
+        'peak_mean_scaled_mae':float(np.nanmean(pm)),'peak_per_cell_mae':[float(v) if np.isfinite(v) else None for v in pm],
+        'peak_query_counts':mask.sum(1).tolist(),'fit_seconds':sum(a['fit_seconds'] for a in selected),
+        'epochs_total':sum(a['epochs_run'] for a in selected),
+        'epoch_cap_fits':sum(a['stop_reason']=='epoch_cap' for a in selected),
+        'validation_patience_fits':sum(a['stop_reason']=='validation_patience' for a in selected)}
+    metrics.append(rec)
+comparisons=[];rng=np.random.default_rng(20260925)
+for seed in [20260925,20260926]:
+    candidate=f'tabicl_risk_{seed}'
+    for key in preds:
+        if not key.endswith(str(seed)) or key==candidate:continue
+        diff=np.abs(preds[candidate]-y)-np.abs(preds[key]-y)
+        rec={'candidate':candidate,'comparison':key,'mean_delta':float(diff.mean()),
+            'relative_mae_change_percent':float(100*diff.mean()/np.abs(preds[key]-y).mean()),
+            'cell_improvements':int(np.sum(diff.mean(1)<0)),'cell_count':16,'block_resampling':{}}
+        for width in [48,96]:
+            blocks=diff.reshape(16,480//width,width).mean(axis=(0,2))
+            means=blocks[rng.integers(0,len(blocks),size=(10000,len(blocks)))].mean(1)
+            rec['block_resampling'][str(width)]={'blocks':len(blocks),'observed_block_deltas':blocks.tolist(),
+                'percentile_2_5_97_5':np.quantile(means,[.025,.975]).tolist(),
+                'scope':'Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee.'}
+        comparisons.append(rec)
+result={'data':'16 fixed Milan cells, hourly processed internet activity',
+    'metrics':metrics,'paired_comparisons':comparisons,'execution':finished,
+    'partition_sha256':cfg['source_hashes']['observed_risk_pilot.json'],
+    'all_predictions_finite':True,'all_test_rows_covered_once_per_condition':True,
+    'test_period_becomes_development_if_used_for_new_design':True,
+    'interpretation':'Frozen post-clustering RCTL pilot. Same K comparisons primary; K=1 global is auxiliary. No original UPC or full original-paper reproduction.'}
+(out/'summary.json').write_text(json.dumps(result,indent=2,allow_nan=False),encoding='utf-8')
+np.savez_compressed(out/'all_predictions.npz',**preds,y=y,cell_ids=ids,scales=scale)
+print(json.dumps({'metrics':[{k:v for k,v in a.items() if not isinstance(v,list)} for a in metrics],
+    'comparisons':[{k:v for k,v in a.items() if k!='block_resampling'} for a in comparisons],
+    'execution':finished},indent=2))

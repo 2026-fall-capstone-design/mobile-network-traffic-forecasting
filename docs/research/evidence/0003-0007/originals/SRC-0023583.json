@@ -1,0 +1,88 @@
+{
+  "fast_curve_max_abs_difference": 9.43689570931383e-16,
+  "fast_curve_seconds": 0.029573200000413635,
+  "prefix_formula": "(sum(v)-2*prefix[count(v<=a)]+a*(2*count(v<=a)-len(v)))/(Q*S)",
+  "benchmark_parallel_RCTL_cpu_contention": true,
+  "surrogate_pair_diagnostic": [
+    {
+      "method": "tabicl_risk",
+      "pair_count": 120,
+      "spearman_rank_correlation": -0.09695706578087215,
+      "positive_actual_delta_fraction": 0.44166666666666665,
+      "mean_actual_pair_delta": 0.0004314531822068827,
+      "note": "Design-period surrogate, pairs dependent; no p-value treated as independent evidence."
+    },
+    {
+      "method": "empirical_risk",
+      "pair_count": 120,
+      "spearman_rank_correlation": -0.16982688417891023,
+      "positive_actual_delta_fraction": 0.325,
+      "mean_actual_pair_delta": -0.002293654548466715,
+      "note": "Design-period surrogate, pairs dependent; no p-value treated as independent evidence."
+    },
+    {
+      "method": "knn_risk",
+      "pair_count": 120,
+      "spearman_rank_correlation": -0.5045314817762758,
+      "positive_actual_delta_fraction": 0.18333333333333332,
+      "mean_actual_pair_delta": -0.0040005575451206804,
+      "note": "Design-period surrogate, pairs dependent; no p-value treated as independent evidence."
+    },
+    {
+      "method": "median_only",
+      "pair_count": 120,
+      "spearman_rank_correlation": -0.19350687245092624,
+      "positive_actual_delta_fraction": 0.4,
+      "mean_actual_pair_delta": -0.0006122923120348102,
+      "note": "Design-period surrogate, pairs dependent; no p-value treated as independent evidence."
+    },
+    {
+      "method": "median_iqr",
+      "pair_count": 120,
+      "spearman_rank_correlation": -0.03148387843302994,
+      "positive_actual_delta_fraction": 0.49166666666666664,
+      "mean_actual_pair_delta": 0.0005058337225179721,
+      "note": "Design-period surrogate, pairs dependent; no p-value treated as independent evidence."
+    }
+  ],
+  "cost_extrapolation": [
+    {
+      "cells": 128,
+      "TabICL_context_preparations": 128,
+      "own_query_rows": 21504,
+      "cross_query_rows_if_all_cells": 2752512,
+      "all_cell_pairs": 8128,
+      "cell_knn_directed_edges_upper": 2048,
+      "table_float64_bytes": 16842752,
+      "quantile_float64_bytes": 22192128,
+      "inference_minutes_linear_estimate": 4.204360439999861,
+      "inference_estimate_scope": "Same CPU/settings per cell, excludes features, graph, merging, RCTL; extrapolation, not measured."
+    },
+    {
+      "cells": 1024,
+      "TabICL_context_preparations": 1024,
+      "own_query_rows": 172032,
+      "cross_query_rows_if_all_cells": 176160768,
+      "all_cell_pairs": 523776,
+      "cell_knn_directed_edges_upper": 16384,
+      "table_float64_bytes": 134742016,
+      "quantile_float64_bytes": 177537024,
+      "inference_minutes_linear_estimate": 33.63488351999889,
+      "inference_estimate_scope": "Same CPU/settings per cell, excludes features, graph, merging, RCTL; extrapolation, not measured."
+    },
+    {
+      "cells": 10000,
+      "TabICL_context_preparations": 10000,
+      "own_query_rows": 1680000,
+      "cross_query_rows_if_all_cells": 16800000000,
+      "all_cell_pairs": 49995000,
+      "cell_knn_directed_edges_upper": 160000,
+      "table_float64_bytes": 1315840000,
+      "quantile_float64_bytes": 1733760000,
+      "inference_minutes_linear_estimate": 328.4656593749891,
+      "inference_estimate_scope": "Same CPU/settings per cell, excludes features, graph, merging, RCTL; extrapolation, not measured."
+    }
+  ],
+  "new_model_calls": 0,
+  "total_seconds": 0.1837626000005912
+}

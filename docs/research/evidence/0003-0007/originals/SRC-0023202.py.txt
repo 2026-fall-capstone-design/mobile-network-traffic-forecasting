@@ -1,0 +1,143 @@
+"""Frozen post-clustering RCTL check; no result is fed into clustering."""
+import os
+for key in ['OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS']:
+    os.environ[key] = '4'
+import pathlib, json, time, sys, hashlib, random, copy
+import numpy as np
+import pandas as pd
+import h5py
+import torch
+import psutil
+from rctl_torch import RCTL
+
+sys.stdout.reconfigure(encoding='utf-8')
+torch.set_num_threads(4)
+torch.set_num_interop_threads(2)
+base = pathlib.Path(__file__).resolve().parent
+out = base / 'results' / 'rctl_pilot'
+out.mkdir(exist_ok=True)
+if (out / 'run_started.json').exists():
+    raise RuntimeError('A run already exists. Inspect its process and results instead of restarting.')
+frozen = json.loads((base/'results/observed_pre_RCTL_hashes.json').read_text(encoding='utf-8'))
+for name, expected in frozen.items():
+    path = base/'results'/name if name.endswith('.json') else base/name
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == expected, name
+proposal = json.loads((base/'results/observed_risk_pilot.json').read_text(encoding='utf-8'))
+methods = ['tabicl_risk', 'empirical_risk', 'knn_risk', 'pcc_balanced', 'random_balanced']
+tasks = [('global',20260925,0,list(range(16)))]
+for seed, names in [(20260925,methods),(20260926,methods[:2])]:
+    for name in names:
+        lab = np.array(proposal['partitions'][name])
+        for c in range(4):
+            tasks.append((name,seed,c,np.flatnonzero(lab==c).tolist()))
+settings = {'seed_primary':20260925,'seed_secondary':20260926,'max_epochs':80,
+    'batch_size':256,'patience':10,'learning_rate':.001,'adam_eps':1e-7,
+    'loss':'MAE','threads':4,'max_fits':29,'max_total_epochs':2320,
+    'wall_cap_seconds':3000,'ram_cap_bytes':20*1024**3,
+    'train_targets':[168,839],'validation_targets':[840,1007],
+    'test_targets':[1008,1487],'selection_uses_test':False,
+    'RCTL_results_used_for_clustering':False,'tasks':tasks,
+    'source_hashes':frozen,'training_code_sha256':hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),
+    'model_code_sha256':hashlib.sha256((base/'rctl_torch.py').read_bytes()).hexdigest()}
+(out/'frozen_settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+started=time.perf_counter()
+(out/'run_started.json').write_text(json.dumps({'unix':time.time(),'pid':os.getpid(),
+    'settings_sha256':hashlib.sha256((out/'frozen_settings.json').read_bytes()).hexdigest()}),encoding='utf-8')
+ids=np.array(proposal['cell_ids'])-1
+design=np.load(base/'results/design_data.npz')
+sel=np.array([int(np.flatnonzero(design['cell_indices']==c)[0]) for c in ids])
+scales=design['scales'][sel]
+# First access to the held-out 20-day target occurs only after all settings/partitions are frozen.
+with h5py.File(base/'assets/data_git_version.h5','r') as h:
+    raw=h['data'][:,ids,2]
+    dates=pd.to_datetime(h['idx'][:].astype(str))
+assert np.isfinite(raw).all()
+z=raw/scales
+times=np.arange(168,len(raw)); cal=dates[times]
+calendar=np.column_stack([np.sin(2*np.pi*cal.hour/24),np.cos(2*np.pi*cal.hour/24),
+    np.sin(2*np.pi*cal.dayofweek/7),np.cos(2*np.pi*cal.dayofweek/7)])
+flat=np.stack([np.array([np.r_[z[t-8:t,j],z[t-24,j],z[t-168,j],
+    z[t-24:t,j].mean(),z[t-24:t,j].std(),calendar[k]] for k,t in enumerate(times)])
+    for j in range(len(ids))]).astype(np.float32)
+assert np.allclose(flat[:,:840],design['X'][sel],rtol=1e-6,atol=1e-6)
+seq=np.empty((len(ids),len(times),8,9),np.float32)
+seq[:,:,:,0]=flat[:,:,:8]
+seq[:,:,:,1:]=flat[:,:,None,8:]
+target=z[times].T.astype(np.float32)
+tr=times<840; va=(times>=840)&(times<1008); te=times>=1008
+peak_threshold=np.quantile(target[:,tr],.95,axis=1)
+np.savez_compressed(out/'evaluation_data.npz',cell_ids=ids+1,scales=scales,
+    test_times=times[te],test_y=target[:,te],peak_threshold=peak_threshold)
+results=[]; epochs_total=0
+
+def predict(model,x):
+    model.eval()
+    with torch.no_grad():
+        return torch.cat([model(x[s:s+512]) for s in range(0,len(x),512)]).cpu().numpy()
+
+try:
+    for method,seed,cluster,members in tasks:
+        if time.perf_counter()-started>=settings['wall_cap_seconds']:
+            break
+        random.seed(seed);np.random.seed(seed);torch.manual_seed(seed)
+        gen=torch.Generator().manual_seed(seed)
+        trainx=torch.from_numpy(seq[members][:,tr].reshape(-1,8,9))
+        trainy=torch.from_numpy(target[members][:,tr].reshape(-1))
+        valx=torch.from_numpy(seq[members][:,va].reshape(-1,8,9))
+        valy=target[members][:,va].reshape(-1)
+        testx=torch.from_numpy(seq[members][:,te].reshape(-1,8,9))
+        model=RCTL(steps=8,channels=9)
+        optimizer=torch.optim.Adam((p for p in model.parameters() if p.requires_grad),lr=.001,eps=1e-7)
+        best=float('inf');best_state=None;best_epoch=0;stale=0;history=[]
+        fit_start=time.perf_counter();stopped='epoch_cap'
+        print(json.dumps({'event':'fit_start','method':method,'seed':seed,'cluster':cluster,
+            'cell_ids':(ids[members]+1).tolist(),'train_rows':len(trainx)}),flush=True)
+        for epoch in range(1,81):
+            if time.perf_counter()-started>=settings['wall_cap_seconds']:
+                stopped='wall_cap';break
+            if psutil.Process().memory_info().rss>settings['ram_cap_bytes']:
+                stopped='ram_cap';break
+            model.train(); order=torch.randperm(len(trainx),generator=gen); total=0.0
+            for start in range(0,len(order),256):
+                idx=order[start:start+256]
+                optimizer.zero_grad(set_to_none=True)
+                pred=model(trainx[idx]);loss=torch.abs(pred-trainy[idx]).mean()
+                if not torch.isfinite(loss):raise RuntimeError('Nonfinite training loss')
+                loss.backward();optimizer.step();total+=float(loss.detach())*len(idx)
+            val=float(np.abs(predict(model,valx)-valy).mean())
+            epochs_total+=1
+            history.append({'epoch':epoch,'train_mae':total/len(trainx),'val_mae':val,
+                'seconds_from_fit_start':time.perf_counter()-fit_start})
+            if val<best:
+                best=val;best_epoch=epoch;best_state=copy.deepcopy(model.state_dict());stale=0
+            else:stale+=1
+            if epoch==1 or epoch%10==0:
+                print(json.dumps({'event':'epoch','method':method,'seed':seed,'cluster':cluster,
+                    'epoch':epoch,'val_mae':val,'best_val_mae':best,
+                    'wall_seconds':time.perf_counter()-started}),flush=True)
+            if stale>=10:stopped='validation_patience';break
+        key=f'{method}_{seed}_cluster{cluster}'
+        if best_state is None:break
+        model.load_state_dict(best_state)
+        pt=predict(model,testx).reshape(len(members),te.sum())
+        np.savez_compressed(out/f'{key}.npz',prediction=pt,cell_ids=ids[members]+1,
+            y=target[members][:,te],members=members)
+        # The validation-selected checkpoint is saved for reproducibility, not used for grouping.
+        torch.save(best_state,out/f'{key}.pt')
+        (out/f'{key}_history.json').write_text(json.dumps(history,indent=2),encoding='utf-8')
+        err=np.abs(pt-target[members][:,te])
+        rec={'method':method,'seed':seed,'cluster':cluster,'members':members,
+            'epochs_run':len(history),'best_epoch':best_epoch,'best_val_mae':best,
+            'test_mean_scaled_mae':float(err.mean()),'test_per_cell_mae':err.mean(1).tolist(),
+            'fit_seconds':time.perf_counter()-fit_start,'stop_reason':stopped,
+            'rss_bytes':psutil.Process().memory_info().rss}
+        results.append(rec)
+        (out/'fit_results.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
+        print(json.dumps({'event':'fit_done',**rec}),flush=True)
+        if stopped in ['wall_cap','ram_cap']:break
+finally:
+    status={'fits_completed':len(results),'fits_planned':len(tasks),'epochs_total':epochs_total,
+        'wall_seconds':time.perf_counter()-started,'all_fits_complete':len(results)==len(tasks),
+        'test_period_now_accessed':True,'RCTL_outputs_not_used_for_clustering':True}
+    (out/'run_finished.json').write_text(json.dumps(status,indent=2),encoding='utf-8')
+    print(json.dumps(status),flush=True)

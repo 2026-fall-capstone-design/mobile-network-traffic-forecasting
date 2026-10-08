@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-08T19:29:17.020069+00:00",
+  "cases": [
+    {
+      "case": "group_prediction",
+      "rejected": true,
+      "guard": "group_assembled_predictions",
+      "failure": "('group_assembled_predictions', 3)",
+      "manifest_hash_updated": true
+    },
+    {
+      "case": "duplicate_test_time",
+      "rejected": true,
+      "guard": "RCTL_times_id",
+      "failure": "('RCTL_times_id', 1)",
+      "manifest_hash_updated": true
+    },
+    {
+      "case": "secondary_seed",
+      "rejected": true,
+      "guard": "RCTL_protocol",
+      "failure": "('RCTL_protocol', 1)",
+      "manifest_hash_updated": true
+    },
+    {
+      "case": "unread_object_dates",
+      "rejected": true,
+      "guard": "declared_automated_scope",
+      "failure": "('declared_automated_scope', 1)",
+      "manifest_hash_updated": false
+    }
+  ],
+  "originals_modified": false,
+  "model_executions": 0,
+  "scope": "Disposable copies; source hashes deliberately updated so arithmetic/scope guards, not byte identity alone, must reject."
+}

@@ -1,0 +1,38 @@
+{
+  "discrete_exact_checks": {
+    "[0]": {
+      "optimal_action": 0.0,
+      "exact_sum_mae": 0.0
+    },
+    "[1]": {
+      "optimal_action": 1.0,
+      "exact_sum_mae": 0.0
+    },
+    "[2]": {
+      "optimal_action": 2.0,
+      "exact_sum_mae": 1.7777777777777777
+    },
+    "[0, 1]": {
+      "optimal_action": 0.06,
+      "exact_sum_mae": 1.0
+    },
+    "[0, 2]": {
+      "optimal_action": 0.0,
+      "exact_sum_mae": 2.0
+    },
+    "[1, 2]": {
+      "optimal_action": 1.0,
+      "exact_sum_mae": 1.8888888888888888
+    },
+    "[0, 1, 2]": {
+      "optimal_action": 1.0,
+      "exact_sum_mae": 2.888888888888889
+    }
+  },
+  "same_median_extra_loss": 0.0,
+  "previous_counterexample": {
+    "chosen_actual_median": 1.0,
+    "third_cell_error": 0.014999999999999902
+  },
+  "scope": "Arithmetic consistency only. Does not establish actual RCTL benefit."
+}

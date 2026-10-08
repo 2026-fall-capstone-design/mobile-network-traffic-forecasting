@@ -1,0 +1,2234 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-08T19:39:40.094314+00:00",
+  "checks": {
+    "portable_source_identity": 98,
+    "identity": 1,
+    "context_times": 1,
+    "projection_cell": 16,
+    "projection_direct_mae_shape": 16,
+    "projection_direct_mae": 16,
+    "projection_anchor_mae_shape": 16,
+    "projection_anchor_mae": 16,
+    "projection_level_restored_mae_shape": 16,
+    "projection_level_restored_mae": 16,
+    "projection_uncorrected_quantile_W1_shape": 16,
+    "projection_uncorrected_quantile_W1": 16,
+    "projection_restored_quantile_W1_shape": 16,
+    "projection_restored_quantile_W1": 16,
+    "projection_mean_direct_mae_shape": 1,
+    "projection_mean_direct_mae": 1,
+    "projection_mean_anchor_mae_shape": 1,
+    "projection_mean_anchor_mae": 1,
+    "projection_mean_level_restored_mae_shape": 1,
+    "projection_mean_level_restored_mae": 1,
+    "projection_mean_uncorrected_quantile_W1_shape": 1,
+    "projection_mean_uncorrected_quantile_W1": 1,
+    "projection_mean_restored_quantile_W1_shape": 1,
+    "projection_mean_restored_quantile_W1": 1,
+    "actual_action_grid_all5sources_shape": 64,
+    "actual_action_grid_all5sources": 64,
+    "risk_table_tabicl_risk_shape": 1,
+    "risk_table_tabicl_risk": 1,
+    "surrogate_id": 5,
+    "surrogate_truth_shape": 5,
+    "surrogate_truth": 5,
+    "risk_table_empirical_risk_shape": 1,
+    "risk_table_empirical_risk": 1,
+    "risk_table_knn_risk_shape": 1,
+    "risk_table_knn_risk": 1,
+    "risk_table_median_only_shape": 1,
+    "risk_table_median_only": 1,
+    "risk_table_median_iqr_shape": 1,
+    "risk_table_median_iqr": 1,
+    "RCTL_times_id": 1,
+    "RCTL_scale_shape": 1,
+    "RCTL_scale": 1,
+    "RCTL_joint_ids": 1,
+    "RCTL_joint_truth_shape": 1,
+    "RCTL_joint_truth": 1,
+    "RCTL_joint_scales_shape": 1,
+    "RCTL_joint_scales": 1,
+    "RCTL_shape_finite": 8,
+    "RCTL_stored_MAE_shape": 8,
+    "RCTL_stored_MAE": 8,
+    "RCTL_percell_MAE_shape": 8,
+    "RCTL_percell_MAE": 8,
+    "RCTL_raw_MAE_shape": 8,
+    "RCTL_raw_MAE": 8,
+    "RCTL_protocol": 1,
+    "29_tasks_fits": 1,
+    "task_labels": 29,
+    "group_ids": 29,
+    "group_truth_shape": 29,
+    "group_truth": 29,
+    "validation_patience": 29,
+    "best_validation_shape": 29,
+    "best_validation": 29,
+    "group_assembled_predictions_shape": 8,
+    "group_assembled_predictions": 8,
+    "epoch_total": 1,
+    "peak_threshold_shape": 1,
+    "peak_threshold": 1,
+    "frozen_hash": 3,
+    "implementation_hash": 2,
+    "paired_mean_delta_shape": 6,
+    "paired_mean_delta": 6,
+    "paired_relative_percent_shape": 6,
+    "paired_relative_percent": 6,
+    "paired_cell_count": 6,
+    "paired_saved_blocks_shape": 12,
+    "paired_saved_blocks": 12,
+    "paired_interval_shape": 12,
+    "paired_interval": 12,
+    "B1_settings": 1,
+    "quantile_grid_shape": 1,
+    "quantile_grid": 1,
+    "B1_query_times": 1,
+    "B1_shapes": 1,
+    "B1_quantiles_finite_ordered": 1,
+    "B1_median_quantile_shape": 1,
+    "B1_median_quantile": 1,
+    "B1_state_mass_shape": 1,
+    "B1_state_mass": 1,
+    "B1_state_frequency_integer_shape": 1,
+    "B1_state_frequency_integer": 1,
+    "B1_real_anchors": 1,
+    "B1_action_grid_shape": 1,
+    "B1_action_grid": 1,
+    "B1_stored_table_shape": 1,
+    "B1_stored_table": 1,
+    "balanced_round": 20,
+    "partition_labels": 9,
+    "merge_members": 108,
+    "merge_cost_shape": 108,
+    "merge_cost": 108,
+    "B1_pair_count": 4,
+    "B1_own_objective_shape": 4,
+    "B1_own_objective": 4,
+    "B1_full_objective_shape": 4,
+    "B1_full_objective": 4,
+    "B1_PCC_labels": 1,
+    "PCC_merge_members": 12,
+    "PCC_merge_cost_shape": 12,
+    "PCC_merge_cost": 12,
+    "B1_random_labels": 1,
+    "B1_ARI_shape": 7,
+    "B1_ARI": 7,
+    "B1_diagnostic_ID": 16,
+    "B1_diagnostic_tabicl_direct_mae_shape": 16,
+    "B1_diagnostic_tabicl_direct_mae": 16,
+    "B1_diagnostic_anchor_representative_mae_shape": 16,
+    "B1_diagnostic_anchor_representative_mae": 16,
+    "B1_diagnostic_projection_mean_abs_change_shape": 16,
+    "B1_diagnostic_projection_mean_abs_change": 16,
+    "B1_diagnostic_quantile_transport_change_shape": 16,
+    "B1_diagnostic_quantile_transport_change": 16,
+    "B1_diagnostic_own_query_80pct_coverage_shape": 16,
+    "B1_diagnostic_own_query_80pct_coverage": 16,
+    "B2_boundary": 1,
+    "B2_shapes": 1,
+    "B2_bins_range": 1,
+    "B2_surrogate_prediction_shape": 5,
+    "B2_surrogate_prediction": 5,
+    "B2_surrogate_MAE_shape": 5,
+    "B2_surrogate_MAE": 5,
+    "B2_surrogate_percell_shape": 5,
+    "B2_surrogate_percell": 5,
+    "B2_objective_shape": 5,
+    "B2_objective": 5,
+    "B2_size_scores": 5,
+    "B2_fixed_partition_MAE_shape": 16,
+    "B2_fixed_partition_MAE": 16,
+    "B2_global_ridge_MAE_shape": 1,
+    "B2_global_ridge_MAE": 1,
+    "B2_ARI_shape": 8,
+    "B2_ARI": 8,
+    "B2_fixed_reuse": 3,
+    "pair_count": 5,
+    "pair_identity": 600,
+    "pair_estimate_shape": 600,
+    "pair_estimate": 600,
+    "pair_actual_shape": 600,
+    "pair_actual": 600,
+    "pair_rank_correlation_shape": 5,
+    "pair_rank_correlation": 5,
+    "pair_mean_delta_shape": 5,
+    "pair_mean_delta": 5,
+    "pair_positive_fraction_shape": 5,
+    "pair_positive_fraction": 5,
+    "pair_diagnostic_total": 1,
+    "Tab_call_count": 2,
+    "Tab_call_identity": 32,
+    "extrapolation_counts": 3,
+    "extrapolation_minutes_shape": 3,
+    "extrapolation_minutes": 3,
+    "peak_mask_counts": 8,
+    "peak_mean_shape": 8,
+    "peak_mean": 8,
+    "peak_no_query": 32,
+    "peak_percell_shape": 96,
+    "peak_percell": 96,
+    "RCTL_metric_fit_counts": 8,
+    "RCTL_fit_seconds_shape": 8,
+    "RCTL_fit_seconds": 8,
+    "RCTL_started_settings": 1,
+    "RCTL_completion": 1,
+    "RCTL_fit_report_MAE_shape": 29,
+    "RCTL_fit_report_MAE": 29,
+    "RCTL_fit_report_percell_shape": 29,
+    "RCTL_fit_report_percell": 29,
+    "RCTL_sampled_RSS_within_cap": 29,
+    "B1_frozen_hash": 3,
+    "B1_partial_matches_final_shape": 3,
+    "B1_partial_matches_final": 3,
+    "synthetic_recorded_loss_shape": 7,
+    "synthetic_recorded_loss": 7,
+    "synthetic_minimum_shape": 7,
+    "synthetic_minimum": 7,
+    "synthetic_same_median_shape": 1,
+    "synthetic_same_median": 1,
+    "synthetic_old_median_shape": 1,
+    "synthetic_old_median": 1,
+    "synthetic_old_error_shape": 1,
+    "synthetic_old_error": 1,
+    "declared_automated_scope": 98
+  },
+  "max_difference": 3.814697265625e-06,
+  "max_by_check": {
+    "projection_direct_mae": 0,
+    "projection_anchor_mae": 0,
+    "projection_level_restored_mae": 0,
+    "projection_uncorrected_quantile_W1": 0,
+    "projection_restored_quantile_W1": 0,
+    "projection_mean_direct_mae": 0,
+    "projection_mean_anchor_mae": 0,
+    "projection_mean_level_restored_mae": 0,
+    "projection_mean_uncorrected_quantile_W1": 0,
+    "projection_mean_restored_quantile_W1": 0,
+    "actual_action_grid_all5sources": 0,
+    "risk_table_tabicl_risk": 9.43689570931383e-16,
+    "surrogate_truth": 0,
+    "risk_table_empirical_risk": 2.7755575615628914e-16,
+    "risk_table_knn_risk": 1.6653345369377348e-16,
+    "risk_table_median_only": 2.7755575615628914e-16,
+    "risk_table_median_iqr": 2.220446049250313e-16,
+    "RCTL_scale": 0,
+    "RCTL_joint_truth": 0,
+    "RCTL_joint_scales": 0,
+    "RCTL_stored_MAE": 7.450580596923828e-09,
+    "RCTL_percell_MAE": 9.685754776000977e-08,
+    "RCTL_raw_MAE": 1.4210854715202004e-14,
+    "group_truth": 0,
+    "best_validation": 0,
+    "group_assembled_predictions": 0,
+    "peak_threshold": 0,
+    "paired_mean_delta": 1.862645149230957e-09,
+    "paired_relative_percent": 3.814697265625e-06,
+    "paired_saved_blocks": 3.725290298461914e-09,
+    "paired_interval": 3.6321580396125874e-09,
+    "quantile_grid": 0,
+    "B1_median_quantile": 0,
+    "B1_state_mass": 2.220446049250313e-16,
+    "B1_state_frequency_integer": 0,
+    "B1_action_grid": 0,
+    "B1_stored_table": 4.996003610813204e-16,
+    "merge_cost": 1.942890293094024e-16,
+    "B1_own_objective": 4.440892098500626e-16,
+    "B1_full_objective": 2.220446049250313e-16,
+    "PCC_merge_cost": 3.3306690738754696e-16,
+    "B1_ARI": 5.551115123125783e-17,
+    "B1_diagnostic_tabicl_direct_mae": 0,
+    "B1_diagnostic_anchor_representative_mae": 0,
+    "B1_diagnostic_projection_mean_abs_change": 0,
+    "B1_diagnostic_quantile_transport_change": 0,
+    "B1_diagnostic_own_query_80pct_coverage": 0,
+    "B2_surrogate_prediction": 0,
+    "B2_surrogate_MAE": 1.3877787807814457e-17,
+    "B2_surrogate_percell": 0,
+    "B2_objective": 1.1102230246251565e-16,
+    "B2_fixed_partition_MAE": 0,
+    "B2_global_ridge_MAE": 0,
+    "B2_ARI": 2.7755575615628914e-17,
+    "pair_estimate": 0,
+    "pair_actual": 0,
+    "pair_rank_correlation": 0,
+    "pair_mean_delta": 0,
+    "pair_positive_fraction": 0,
+    "extrapolation_minutes": 0,
+    "peak_mean": 0,
+    "peak_percell": 0,
+    "RCTL_fit_seconds": 0,
+    "RCTL_fit_report_MAE": 0,
+    "RCTL_fit_report_percell": 0,
+    "B1_partial_matches_final": 0,
+    "synthetic_recorded_loss": 0,
+    "synthetic_minimum": 2.220446049250313e-16,
+    "synthetic_same_median": 0,
+    "synthetic_old_median": 0,
+    "synthetic_old_error": 0
+  },
+  "model_executions": 0,
+  "historical_code_executed": false,
+  "accessed": [
+    {
+      "path": "tmp/redesign_20260925/results/design_data.npz",
+      "sha256": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+      "size_bytes": 739949,
+      "read_scope": [
+        "array:X",
+        "array:Y",
+        "array:cell_indices",
+        "array:raw",
+        "array:scales",
+        "array:times"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/risk_table_predictions.npz",
+      "sha256": "8ad2825e7b6861540975be3948778a4028cc275a53c4ad6991077c330d43f85e",
+      "size_bytes": 9824722,
+      "read_scope": [
+        "array:actions",
+        "array:anchors",
+        "array:cell_ids",
+        "array:context_times",
+        "array:knn_quantiles",
+        "array:mean",
+        "array:median",
+        "array:quantiles",
+        "array:query_times",
+        "array:selected_cells",
+        "array:table",
+        "array:weights"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/observed_risk_tables.npz",
+      "sha256": "40837fdeef5632f688d91b526c499af0384a4226058fa94d56845fa1f0e5da5c",
+      "size_bytes": 7259978,
+      "read_scope": [
+        "array:actions",
+        "array:base_followweek",
+        "array:base_query",
+        "array:cell_ids",
+        "array:empirical_risk",
+        "array:followweek_bins",
+        "array:knn_quantiles",
+        "array:knn_risk",
+        "array:median_iqr",
+        "array:median_only",
+        "array:predicted_quantiles",
+        "array:query_bins",
+        "array:selected_cells",
+        "array:tabicl_risk"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/projection_diagnostic.json",
+      "sha256": "7b8857c411a3a66ea481581bf4f65438f0e2235d4939093f96ad080c010f02fb",
+      "size_bytes": 4810,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:averages",
+        "json_top_level:cells",
+        "json_top_level:interpretation"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/observed_surrogate_tabicl_risk.npz",
+      "sha256": "a95208f887c13c35b7fa9ef5ceafee607048245ad43295c36fa96f9d08d2dbd3",
+      "size_bytes": 24174,
+      "read_scope": [
+        "array:cell_ids",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/observed_surrogate_empirical_risk.npz",
+      "sha256": "bd7d328af3fe0a1f974053936f03809753f49a6c9a756404a2a0f9c5c4e2c5e3",
+      "size_bytes": 24281,
+      "read_scope": [
+        "array:cell_ids",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/observed_surrogate_knn_risk.npz",
+      "sha256": "55f00598d739997e60ab8f9f59d2e2f53f177707371933563292792dd8ec5f62",
+      "size_bytes": 24199,
+      "read_scope": [
+        "array:cell_ids",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/observed_surrogate_median_only.npz",
+      "sha256": "9f578436462a606ce71726555b24e34353d3a7aa7857f6764c91556fcf4c3f42",
+      "size_bytes": 24186,
+      "read_scope": [
+        "array:cell_ids",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/observed_surrogate_median_iqr.npz",
+      "sha256": "79879d51f0235c30ef5a3e081f6d10f1aff7858a12d3cc33cfcb5038540499a7",
+      "size_bytes": 24171,
+      "read_scope": [
+        "array:cell_ids",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/summary.json",
+      "sha256": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab",
+      "size_bytes": 22857,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:execution",
+        "json_top_level:metrics",
+        "json_top_level:paired_comparisons",
+        "json_top_level:partition_sha256",
+        "json_top_level:test_period_becomes_development_if_used_for_new_design"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/evaluation_data.npz",
+      "sha256": "d451810ecccf0b1d9d083132816510ef889c089cd5693d9ab061c1badbf7ff7b",
+      "size_bytes": 29071,
+      "read_scope": [
+        "array:cell_ids",
+        "array:peak_threshold",
+        "array:scales",
+        "array:test_times",
+        "array:test_y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/all_predictions.npz",
+      "sha256": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096",
+      "size_bytes": 246032,
+      "read_scope": [
+        "array:cell_ids",
+        "array:empirical_risk_20260925",
+        "array:empirical_risk_20260926",
+        "array:global_20260925",
+        "array:knn_risk_20260925",
+        "array:pcc_balanced_20260925",
+        "array:random_balanced_20260925",
+        "array:scales",
+        "array:tabicl_risk_20260925",
+        "array:tabicl_risk_20260926",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/frozen_settings.json",
+      "sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+      "size_bytes": 5046,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:RCTL_results_used_for_clustering",
+        "json_top_level:adam_eps",
+        "json_top_level:batch_size",
+        "json_top_level:learning_rate",
+        "json_top_level:loss",
+        "json_top_level:max_epochs",
+        "json_top_level:max_fits",
+        "json_top_level:max_total_epochs",
+        "json_top_level:model_code_sha256",
+        "json_top_level:patience",
+        "json_top_level:ram_cap_bytes",
+        "json_top_level:seed_primary",
+        "json_top_level:seed_secondary",
+        "json_top_level:selection_uses_test",
+        "json_top_level:source_hashes",
+        "json_top_level:tasks",
+        "json_top_level:test_targets",
+        "json_top_level:threads",
+        "json_top_level:train_targets",
+        "json_top_level:training_code_sha256",
+        "json_top_level:validation_targets",
+        "json_top_level:wall_cap_seconds",
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/observed_risk_pilot.json",
+      "sha256": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+      "size_bytes": 7724,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:ARI_vs_tabicl",
+        "json_top_level:RCTL_used_for_clustering",
+        "json_top_level:cell_ids",
+        "json_top_level:fixed_partition_validation",
+        "json_top_level:function_class",
+        "json_top_level:global_ridge_followweek_mae",
+        "json_top_level:input_boundary",
+        "json_top_level:partitions",
+        "json_top_level:seconds",
+        "json_top_level:surrogate_validation",
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/fit_results.json",
+      "sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+      "size_bytes": 16258,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/global_20260925_cluster0.npz",
+      "sha256": "b9ff015ee3f484a5b106be5ed7cf28df2fd1aadb29e500693a2c06e592f2146e",
+      "size_bytes": 55034,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/global_20260925_cluster0_history.json",
+      "sha256": "9feb83ff3c2dbe248f2da48a5c3fa1eea449719c2b21c1ba083abfb5decc9be0",
+      "size_bytes": 6937,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster0.npz",
+      "sha256": "8da3b067a176ee4a280312eea7da1397796d42e3eb4a794ee0696ca197bb04a0",
+      "size_bytes": 14307,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster0_history.json",
+      "sha256": "50c1df1d0deafff345a4b48e50bc362e3c552ceec73e8e33057c43f7d9d82b64",
+      "size_bytes": 10006,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster1.npz",
+      "sha256": "1b8527e1dc48f75184ca3a36ce44d44de9eaa645855104ef0f61e6d9f5d76bd0",
+      "size_bytes": 14310,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster1_history.json",
+      "sha256": "4b8b1902e0d684fb972d13e87388ddb55b8b5b796d90ff5bb5669fd359807c90",
+      "size_bytes": 6458,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster2.npz",
+      "sha256": "6f9949beefb7d471073bd9520c48f111b07d618b5c5c1e06616157f5a3d8a345",
+      "size_bytes": 14444,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster2_history.json",
+      "sha256": "2256c5f0a4e6341665de56df64288abda8fb53243545b18ae7f23e54980fb50d",
+      "size_bytes": 8453,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster3.npz",
+      "sha256": "f3726be3ac9685d26bfdb9fe4f9ea8ea494f08b9ef55210f54670ef9d538dcf9",
+      "size_bytes": 14412,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster3_history.json",
+      "sha256": "3c593c78b6d5fa24a651d77e76e1172b5a56c6034c5b6af69fc68f3fe2994b9c",
+      "size_bytes": 9072,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster0.npz",
+      "sha256": "cfaa54e656441f7f9dc406f5be35733c3e050bb77f5d275179372d11874b9863",
+      "size_bytes": 14390,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster0_history.json",
+      "sha256": "f3028c07659755c166142537942c92d84a7f592270ecb4861ab81849a1efe760",
+      "size_bytes": 10618,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster1.npz",
+      "sha256": "c8abf4b32dc7ceda8963eed91fff12a9307c21e05e1ddc3f1a4ba510231b7306",
+      "size_bytes": 14274,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster1_history.json",
+      "sha256": "67759362dc6748f05e9ccb737b1ca2455a4cbf9339da69f3b20a32ea1f397b2b",
+      "size_bytes": 8460,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster2.npz",
+      "sha256": "66f0f91daec3ccfe635116a27827bc12c086b805827ea5c5aba74eae0153c014",
+      "size_bytes": 14438,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster2_history.json",
+      "sha256": "c0423cd825e6a635d621cbbbe186ef72ae4a6504a4e593e5370f3f250dc95f52",
+      "size_bytes": 7377,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster3.npz",
+      "sha256": "c864eaa8ba25c6ace14287b97fa3a560535ff9ffb65b96f299b4d5d2f5bbcb7e",
+      "size_bytes": 14460,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster3_history.json",
+      "sha256": "3491cf9b34652c13cb69151a55d1c1b49bc24c383841f4e60c70fbe18d2fe9e2",
+      "size_bytes": 7845,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster0.npz",
+      "sha256": "c3bb08e36d4687c037fb5d006134015e34f5b748f4a5d5447fac963f9e224fd9",
+      "size_bytes": 14348,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster0_history.json",
+      "sha256": "865f5dfb7bf900e424697ed2fd167d33ee0cb19ca4713be21baa2437caac19fd",
+      "size_bytes": 7836,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster1.npz",
+      "sha256": "38772f1200027f216577daafda91e3b73d92d4a93c0eaf0dce70c9bfeefb29e0",
+      "size_bytes": 14395,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster1_history.json",
+      "sha256": "5bd9913d247c5218f6ddd69e072a4b37fc217e79ac76f221147a0700846aaab8",
+      "size_bytes": 8926,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster2.npz",
+      "sha256": "f945e984fe1d858b7c3b3cb7fcf61cdbcab07ed33adc496e96401df340289824",
+      "size_bytes": 14442,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster2_history.json",
+      "sha256": "24491fd489d39d2c5acd57ba64a3c68479c0cc2fa594d15144185fee25f4fc28",
+      "size_bytes": 7851,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster3.npz",
+      "sha256": "bb1a947cbbab35a1f55915f4a5e2d9c4b9a1500d3ffb8b27fbe2d2fed8db5c29",
+      "size_bytes": 14390,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster3_history.json",
+      "sha256": "953a492db84962f1ccf902f270235a6ba20c8b3238f98e0c320b0d21b05ea35f",
+      "size_bytes": 6916,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster0.npz",
+      "sha256": "7c26bfed27e2fa8be756a8f763794cbcf75c42ea63c8820e21e67999b6fa414d",
+      "size_bytes": 14228,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster0_history.json",
+      "sha256": "11daa64e84420f539902200fb7fcd726bb443dde7cfd9b641ae3fd0b4bfafb96",
+      "size_bytes": 7231,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster1.npz",
+      "sha256": "ee27c4ea08aea8710bc3b82391b3352183b0f36d0ff0e906000cddee71172bf2",
+      "size_bytes": 14411,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster1_history.json",
+      "sha256": "5540e25416b640b0245a2716e82fb177d0ae6d132fae7fe604a02060f7a88234",
+      "size_bytes": 7236,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster2.npz",
+      "sha256": "54277cc5fd2b38d87be3505c4f109290179cdcf28fd893cac8fe02f5d5b55d33",
+      "size_bytes": 14442,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster2_history.json",
+      "sha256": "afa5045dd624a191bd1df1efe2286591a7795e7e17efb19e037632d95f972656",
+      "size_bytes": 9084,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster3.npz",
+      "sha256": "cf8f8a8f3494912114737fba9d28dc05a3beedb8f4bc08a570582eec17ed1f0c",
+      "size_bytes": 14455,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster3_history.json",
+      "sha256": "1951e98b69187f82d305d0ae1ca59f3b1cebe5a009a7c10c4ae55b5d72ba381c",
+      "size_bytes": 8921,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster0.npz",
+      "sha256": "6f3324740d783688bf347f59ca5cf2302ec945e03aef6f3378af5e61144f975e",
+      "size_bytes": 14446,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster0_history.json",
+      "sha256": "4dd8e90f11d7097a2002c638e5822f0fa93bd78ba5be61cc9edf0a21e4f3b302",
+      "size_bytes": 7843,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster1.npz",
+      "sha256": "89cfd21129595ef419ede498aebc64321b89437a4f4bed89aa45a9cbabffc704",
+      "size_bytes": 14378,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster1_history.json",
+      "sha256": "96378adb6650b343b015895705ee18924f814e4651a379aedf0ce3aa59b60ae4",
+      "size_bytes": 7996,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster2.npz",
+      "sha256": "8ac7613b27e4cfcb1f7ff84c0fcfc695846f9f8ccc963649b24c68aff9b99f49",
+      "size_bytes": 14221,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster2_history.json",
+      "sha256": "d366a21a78f743812d1331363e2cb42f29dd5765b6f91b8f0364e901283985cd",
+      "size_bytes": 8161,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster3.npz",
+      "sha256": "838de8639fcca277f2aede59138854c35c1ee5073d51bfc4e12e31556672fd90",
+      "size_bytes": 14474,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster3_history.json",
+      "sha256": "c411029fd23225ec3ef0e187535a2a0b4215f6fcfb0ab20eb60235501f8f2500",
+      "size_bytes": 8148,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260926_cluster0.npz",
+      "sha256": "15c692f9b9c8592d548adf436793382a33a89e1d3d69a4477848d2879187ea17",
+      "size_bytes": 14299,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260926_cluster0_history.json",
+      "sha256": "a3e0a1312f8178627f974b926473f7c531c5db5fd930ddbab892dc1dcf92e466",
+      "size_bytes": 10614,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260926_cluster1.npz",
+      "sha256": "d6db8b3672879aef5c6495d7cb4a8eeb4283bf4ff3e8561690ab8758ba9e70ac",
+      "size_bytes": 14291,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260926_cluster1_history.json",
+      "sha256": "0b523694b7b2de4b11339866eecf7ac7c78d0d3400ca70af059fe318030a7809",
+      "size_bytes": 8912,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260926_cluster2.npz",
+      "sha256": "654a926968d4a202688263315c8b2f10a9eaa503a8bed78417c8a10ea6fd71a4",
+      "size_bytes": 14452,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260926_cluster2_history.json",
+      "sha256": "0dade3db630cd368f0888583812b7ba9a8b8732463e667327242b5392b232597",
+      "size_bytes": 9227,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260926_cluster3.npz",
+      "sha256": "9b2b865af9648de4926600fb50cd1c95ac3f7d097bd02a068ca44e0ac459dc71",
+      "size_bytes": 14406,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260926_cluster3_history.json",
+      "sha256": "acdfdb474ddd1591a34f30be6b64889d3c4bc17c59599c5a1affb50d165a274b",
+      "size_bytes": 7382,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260926_cluster0.npz",
+      "sha256": "82544be740d5d46fa59784725ba0aec2be00ffb11240cb744855e0fcbfb04688",
+      "size_bytes": 14393,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260926_cluster0_history.json",
+      "sha256": "63b4b3a398fd719e9a6e02f6e814c1d6358216ff329b2ee92a7b095b668cf531",
+      "size_bytes": 7385,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260926_cluster1.npz",
+      "sha256": "fb4e925639e38abc90b648bdb04da283277e68a9cb2b55586ce29ae0c5a91574",
+      "size_bytes": 14282,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260926_cluster1_history.json",
+      "sha256": "ab9853fb6fc847cc3d0499b8623943c19fe8d8cc7780febd6b923b5c284a05c7",
+      "size_bytes": 8466,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260926_cluster2.npz",
+      "sha256": "a086019a89d2464599e30aa8fbcbc9f0ff031106ad49d245d248d8a9e5225046",
+      "size_bytes": 14436,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260926_cluster2_history.json",
+      "sha256": "6f29fe503920f742f11fe710cbed36f6a0102243ca5c7a67e4369d085ea9cbbc",
+      "size_bytes": 6617,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260926_cluster3.npz",
+      "sha256": "3140a59d62fabd94be8b966cb299c9e9de386164b440071dadadcac41072d742",
+      "size_bytes": 14442,
+      "read_scope": [
+        "array:cell_ids",
+        "array:members",
+        "array:prediction",
+        "array:y"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260926_cluster3_history.json",
+      "sha256": "171c0eba098b9de887ca379b1bff8b9dbba79cf0cfada54a54342293b4d64630",
+      "size_bytes": 10758,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/04_observed_query_risk_plan.md",
+      "sha256": "3826faa9527e0fc98bb121ffeb3274ab045e36f01aca14ff88c0a8bcc4068507",
+      "size_bytes": 6290,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/observed_risk_pilot.py",
+      "sha256": "4a88e89be8484b9b84aed7356e2ee1c8392df4fe0771536b633fcf6848f44e40",
+      "size_bytes": 7135,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/train_rctl_pilot.py",
+      "sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+      "size_bytes": 8142,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/rctl_torch.py",
+      "sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+      "size_bytes": 2701,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/risk_table_pilot.json",
+      "sha256": "0c37563e10cdac2eac559b1f3709b3fddf96f97515e4575d42dde0c65d4c348f",
+      "size_bytes": 10848,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:ARI_vs_tabicl",
+        "json_top_level:K",
+        "json_top_level:RCTL_used_for_clustering",
+        "json_top_level:alphas",
+        "json_top_level:cell_ids",
+        "json_top_level:comparisons",
+        "json_top_level:diagnostics",
+        "json_top_level:finite_state_and_estimated_distribution_scope",
+        "json_top_level:partitions",
+        "json_top_level:state_count",
+        "json_top_level:total_seconds",
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/risk_table_merge_history.json",
+      "sha256": "e0cb7d844f815232c8f8580ae1796406c07182ff4e10638cb593eb09e0fdf031",
+      "size_bytes": 8313,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:knn_risk",
+        "json_top_level:median_iqr",
+        "json_top_level:median_only",
+        "json_top_level:pcc_balanced",
+        "json_top_level:tabicl_risk"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/observed_risk_history.json",
+      "sha256": "eac078171842d1ca3922c991301db4112106195b181df75bf9a92c4027acdfc4",
+      "size_bytes": 8434,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:empirical_risk",
+        "json_top_level:knn_risk",
+        "json_top_level:median_iqr",
+        "json_top_level:median_only",
+        "json_top_level:tabicl_risk"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/loss_table_pair_diagnostic.json",
+      "sha256": "0d0b2c8c9dbf725f333e5e7cb325d129c0ad87da36f14b0aa719baa0a169288e",
+      "size_bytes": 102342,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/loss_table_diagnostic.json",
+      "sha256": "46fc8bce620ce91eb12f892930ad3c7b975b42ff750cc9aec0e7285192225ba1",
+      "size_bytes": 3695,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:benchmark_parallel_RCTL_cpu_contention",
+        "json_top_level:cost_extrapolation",
+        "json_top_level:fast_curve_max_abs_difference",
+        "json_top_level:fast_curve_seconds",
+        "json_top_level:new_model_calls",
+        "json_top_level:prefix_formula",
+        "json_top_level:surrogate_pair_diagnostic",
+        "json_top_level:total_seconds"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/risk_table_calls.json",
+      "sha256": "efa75bec7c40148881d82f97aff0afd264a2279cda9c3db04e12a549b07ded74",
+      "size_bytes": 3500,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/observed_risk_calls.json",
+      "sha256": "771064bdeb4bb05ee26c53be12cdd9a60f3177ef30ee2224d89a33c07b8fd367",
+      "size_bytes": 2978,
+      "read_scope": [
+        "json_full_list"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/run_started.json",
+      "sha256": "5244c22a5131bba61ba49263394b58e2012f2914d492a752094e589b92e4b945",
+      "size_bytes": 128,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:pid",
+        "json_top_level:settings_sha256",
+        "json_top_level:unix"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/run_finished.json",
+      "sha256": "38341c98462e0775c59a0f3a7d28ca430a45641e3db306e0212acafc22643e2f",
+      "size_bytes": 231,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:RCTL_outputs_not_used_for_clustering",
+        "json_top_level:all_fits_complete",
+        "json_top_level:epochs_total",
+        "json_top_level:fits_completed",
+        "json_top_level:fits_planned",
+        "json_top_level:test_period_now_accessed",
+        "json_top_level:wall_seconds"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/pre_RCTL_freeze_hashes.json",
+      "sha256": "3eca557d6f5dee751746eaba4e59127b16764b3936528a96a5af94e1c9ae357d",
+      "size_bytes": 298,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:02_candidate_and_pilot_plan.md",
+        "json_top_level:risk_table_pilot.json",
+        "json_top_level:risk_table_pilot.py"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/02_candidate_and_pilot_plan.md",
+      "sha256": "b6b234888352fc9fab1ee1cbccd6e25a41bb5ae843dbef6627f5e3d9abee2043",
+      "size_bytes": 9874,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/risk_table_pilot.py",
+      "sha256": "b4591d9311602d86abe4948cbf4cc43f750c583494138a12324302814359930f",
+      "size_bytes": 9469,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/risk_table_partial_predictions.npz",
+      "sha256": "d09e0d37a0190e281b19cdbdf7dbc6c674aaab11f813ba3fcbcb0908630a3e51",
+      "size_bytes": 7929660,
+      "read_scope": [
+        "array:mean",
+        "array:median",
+        "array:quantiles"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/risk_table_synthetic.json",
+      "sha256": "207a548869d401de42aa9191d46b5cabf3b0f94d1662f8667acb5b7c9beb8029",
+      "size_bytes": 894,
+      "read_scope": [
+        "json_parsed",
+        "json_top_level:discrete_exact_checks",
+        "json_top_level:previous_counterexample",
+        "json_top_level:same_median_extra_loss",
+        "json_top_level:scope"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/03_projection_diagnostic_plan.md",
+      "sha256": "1a9fee9496c4dcd03ed564266f06d3e25d1151dd74f6d7a832a96d9bcce59729",
+      "size_bytes": 2467,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/06_loss_table_diagnostic_plan.md",
+      "sha256": "fd544ac71273268de7ea554d406a390bd968561758a6948525c6c2c39e8a7885",
+      "size_bytes": 1802,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/07_rctl_candidate_decision.md",
+      "sha256": "1f5f362e21ff67f903270200aa6d5bdc9e879e95a54e4ce5f2f4b1a05a2e08ce",
+      "size_bytes": 4495,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/loss_table_diagnostic.py",
+      "sha256": "febe5786201a377fd5fb533387f584a0d5452680813b63c4364b2b9802733ed9",
+      "size_bytes": 3653,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/projection_diagnostic.py",
+      "sha256": "1f62fcd275b2cf4540157618f41322785a62d7b9281b506430044ee2ce11940d",
+      "size_bytes": 1431,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/results/observed_pre_RCTL_hashes.json",
+      "sha256": "1dba41f61cf950cbe2ab1ffeda15f8fd189d1faacfa0b9768caac31d0815f0d5",
+      "size_bytes": 304,
+      "read_scope": [
+        "sha256_only"
+      ]
+    },
+    {
+      "path": "tmp/redesign_20260925/summarize_rctl_pilot.py",
+      "sha256": "4c5713db96e740e028738c81a0feae876756e1d562c4021229b8bdcefed5018f",
+      "size_bytes": 4189,
+      "read_scope": [
+        "sha256_only"
+      ]
+    }
+  ],
+  "projection_averages": {
+    "direct_mae": 0.07261397247202694,
+    "anchor_mae": 0.14044433506205678,
+    "level_restored_mae": 0.12510426179505885,
+    "uncorrected_quantile_W1": 0.12462833616882563,
+    "restored_quantile_W1": 0.11914015095680952
+  },
+  "B1_partitions": {
+    "tabicl_risk": [
+      0,
+      1,
+      0,
+      1,
+      2,
+      0,
+      3,
+      3,
+      3,
+      2,
+      2,
+      1,
+      1,
+      2,
+      0,
+      3
+    ],
+    "knn_risk": [
+      0,
+      1,
+      0,
+      2,
+      2,
+      1,
+      3,
+      0,
+      3,
+      3,
+      2,
+      2,
+      1,
+      3,
+      0,
+      1
+    ],
+    "median_only": [
+      0,
+      1,
+      2,
+      2,
+      3,
+      2,
+      0,
+      1,
+      1,
+      3,
+      3,
+      0,
+      1,
+      3,
+      0,
+      2
+    ],
+    "median_iqr": [
+      0,
+      0,
+      1,
+      2,
+      3,
+      1,
+      2,
+      1,
+      1,
+      3,
+      3,
+      2,
+      0,
+      0,
+      3,
+      2
+    ],
+    "pcc_balanced": [
+      0,
+      0,
+      1,
+      2,
+      3,
+      1,
+      0,
+      3,
+      1,
+      0,
+      3,
+      2,
+      2,
+      1,
+      3,
+      2
+    ],
+    "random_balanced": [
+      2,
+      3,
+      1,
+      1,
+      3,
+      0,
+      0,
+      1,
+      3,
+      3,
+      2,
+      2,
+      0,
+      1,
+      2,
+      0
+    ],
+    "cross_error_profile": [
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2,
+      1,
+      2,
+      0,
+      2
+    ]
+  },
+  "B2_surrogate": {
+    "tabicl_risk": {
+      "mae_design_following_week": 0.0852568598694495,
+      "per_cell_mae": [
+        0.06883479399221568,
+        0.08305474714417696,
+        0.09082824469678351,
+        0.09314281014632712,
+        0.04008057623310503,
+        0.06992596916889468,
+        0.06715561492726627,
+        0.08454015978228936,
+        0.1185243432010327,
+        0.0828421308349973,
+        0.10847041645068738,
+        0.09867227336997583,
+        0.09389511991621081,
+        0.08568021025559545,
+        0.09315023195593976,
+        0.08531211583569408
+      ],
+      "predicted_objective": 1.533121846266442,
+      "pair_scores": 148,
+      "group_sizes": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "empirical_risk": {
+      "mae_design_following_week": 0.0862521226415163,
+      "per_cell_mae": [
+        0.06906787542821773,
+        0.0797517242375031,
+        0.09130982946831802,
+        0.089254078434403,
+        0.04142969784836853,
+        0.07379130279508044,
+        0.06955702495607802,
+        0.07927543270068096,
+        0.11986175355191991,
+        0.08512516462781654,
+        0.1024012898866612,
+        0.09329521473076526,
+        0.1031601898383674,
+        0.0965735265254522,
+        0.09752827737325731,
+        0.08865157986137107
+      ],
+      "predicted_objective": 1.2384055069737308,
+      "pair_scores": 148,
+      "group_sizes": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "knn_risk": {
+      "mae_design_following_week": 0.09049343808429344,
+      "per_cell_mae": [
+        0.06983389252793201,
+        0.09124595746815993,
+        0.0894646658479507,
+        0.09762284850625996,
+        0.03918358806092942,
+        0.07608055060518448,
+        0.08129414008011625,
+        0.08697918895027444,
+        0.12126867725049514,
+        0.08527605252080078,
+        0.10815956552625525,
+        0.1036931444600129,
+        0.1103361053839189,
+        0.10314119051339085,
+        0.09367229663578426,
+        0.09064314501122975
+      ],
+      "predicted_objective": 2.2950399196865763,
+      "pair_scores": 148,
+      "group_sizes": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "median_only": {
+      "mae_design_following_week": 0.08488832333975,
+      "per_cell_mae": [
+        0.06563600416225356,
+        0.08668425399494217,
+        0.09052251284948712,
+        0.09215615367384715,
+        0.04061303490960623,
+        0.07129443079706325,
+        0.07180292996265158,
+        0.08245189057073603,
+        0.11855853192022184,
+        0.08035533675467696,
+        0.10528341561911622,
+        0.09269097137805613,
+        0.0894974348276654,
+        0.09126671336537642,
+        0.09267405137063041,
+        0.08672550727966935
+      ],
+      "predicted_objective": 0.8450439628888826,
+      "pair_scores": 148,
+      "group_sizes": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "median_iqr": {
+      "mae_design_following_week": 0.08471216408823903,
+      "per_cell_mae": [
+        0.06606719383502718,
+        0.083599599675184,
+        0.08933118489792144,
+        0.09190294491603768,
+        0.03966187620362901,
+        0.06897221746181496,
+        0.06567923943339388,
+        0.08320309290218308,
+        0.11877549203469155,
+        0.08046262638761176,
+        0.10316546047033495,
+        0.09518289003662501,
+        0.09809544169238864,
+        0.09321931087600144,
+        0.09339443576875597,
+        0.08468161882022403
+      ],
+      "predicted_objective": 1.3069728324055432,
+      "pair_scores": 148,
+      "group_sizes": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  },
+  "pair_diagnostics": [
+    {
+      "method": "tabicl_risk",
+      "pair_count": 120,
+      "spearman_rank_correlation": -0.09695706578087215,
+      "positive_actual_delta_fraction": 0.44166666666666665,
+      "mean_actual_pair_delta": 0.0004314531822068827,
+      "note": "Design-period surrogate, pairs dependent; no p-value treated as independent evidence."
+    },
+    {
+      "method": "empirical_risk",
+      "pair_count": 120,
+      "spearman_rank_correlation": -0.16982688417891023,
+      "positive_actual_delta_fraction": 0.325,
+      "mean_actual_pair_delta": -0.002293654548466715,
+      "note": "Design-period surrogate, pairs dependent; no p-value treated as independent evidence."
+    },
+    {
+      "method": "knn_risk",
+      "pair_count": 120,
+      "spearman_rank_correlation": -0.5045314817762758,
+      "positive_actual_delta_fraction": 0.18333333333333332,
+      "mean_actual_pair_delta": -0.0040005575451206804,
+      "note": "Design-period surrogate, pairs dependent; no p-value treated as independent evidence."
+    },
+    {
+      "method": "median_only",
+      "pair_count": 120,
+      "spearman_rank_correlation": -0.19350687245092624,
+      "positive_actual_delta_fraction": 0.4,
+      "mean_actual_pair_delta": -0.0006122923120348102,
+      "note": "Design-period surrogate, pairs dependent; no p-value treated as independent evidence."
+    },
+    {
+      "method": "median_iqr",
+      "pair_count": 120,
+      "spearman_rank_correlation": -0.03148387843302994,
+      "positive_actual_delta_fraction": 0.49166666666666664,
+      "mean_actual_pair_delta": 0.0005058337225179721,
+      "note": "Design-period surrogate, pairs dependent; no p-value treated as independent evidence."
+    }
+  ],
+  "Tab_costs": {
+    "risk_table": {
+      "contexts": 16,
+      "query_rows": 17408,
+      "fit_seconds": 7.433411699999851,
+      "predict_seconds": 92.88807150000093
+    },
+    "observed_risk": {
+      "contexts": 16,
+      "query_rows": 2688,
+      "fit_seconds": 4.877236999998786,
+      "predict_seconds": 26.65546630000017
+    }
+  },
+  "RCTL_metrics": [
+    {
+      "method": "empirical_risk",
+      "seed": 20260925,
+      "reported_float32_mean": 0.08160039782524109,
+      "independent_float64_mean": 0.08160039687839647
+    },
+    {
+      "method": "empirical_risk",
+      "seed": 20260926,
+      "reported_float32_mean": 0.08351629227399826,
+      "independent_float64_mean": 0.08351629064127337
+    },
+    {
+      "method": "global",
+      "seed": 20260925,
+      "reported_float32_mean": 0.07106776535511017,
+      "independent_float64_mean": 0.07106776714402561
+    },
+    {
+      "method": "knn_risk",
+      "seed": 20260925,
+      "reported_float32_mean": 0.08407308161258698,
+      "independent_float64_mean": 0.08407308328799748
+    },
+    {
+      "method": "pcc_balanced",
+      "seed": 20260925,
+      "reported_float32_mean": 0.08987709879875183,
+      "independent_float64_mean": 0.08987710463949648
+    },
+    {
+      "method": "random_balanced",
+      "seed": 20260925,
+      "reported_float32_mean": 0.08559770882129669,
+      "independent_float64_mean": 0.08559771087908909
+    },
+    {
+      "method": "tabicl_risk",
+      "seed": 20260925,
+      "reported_float32_mean": 0.08732812851667404,
+      "independent_float64_mean": 0.08732813561315804
+    },
+    {
+      "method": "tabicl_risk",
+      "seed": 20260926,
+      "reported_float32_mean": 0.0877600610256195,
+      "independent_float64_mean": 0.0877600585333615
+    }
+  ],
+  "RCTL_resampling": [
+    {
+      "candidate": "tabicl_risk_20260925",
+      "comparison": "empirical_risk_20260925",
+      "relative_percent": 7.019254207611084,
+      "intervals": {
+        "48": {
+          "blocks": 10,
+          "observed_block_deltas": [
+            0.001460953033529222,
+            -0.0011232156539335847,
+            0.00781246880069375,
+            0.004863842856138945,
+            0.002963348990306258,
+            0.008634105324745178,
+            0.01834922283887863,
+            -0.004833835642784834,
+            0.01243748888373375,
+            0.006713008042424917
+          ],
+          "percentile_2_5_97_5": [
+            0.001863922327174805,
+            0.009724959218874571
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        },
+        "96": {
+          "blocks": 5,
+          "observed_block_deltas": [
+            0.00016886864614207298,
+            0.00633815536275506,
+            0.00579872727394104,
+            0.0067576938308775425,
+            0.009575248695909977
+          ],
+          "percentile_2_5_97_5": [
+            0.0027204910293221474,
+            0.00825643353164196
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        }
+      }
+    },
+    {
+      "candidate": "tabicl_risk_20260925",
+      "comparison": "global_20260925",
+      "relative_percent": 22.880090713500977,
+      "intervals": {
+        "48": {
+          "blocks": 10,
+          "observed_block_deltas": [
+            0.005693810060620308,
+            0.0010077344486489892,
+            0.005262904334813356,
+            0.010262209922075272,
+            0.008174722082912922,
+            0.013541522435843945,
+            0.047957390546798706,
+            0.013962436467409134,
+            0.02721373178064823,
+            0.029527219012379646
+          ],
+          "percentile_2_5_97_5": [
+            0.008621224248781801,
+            0.02584394537843764
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        },
+        "96": {
+          "blocks": 5,
+          "observed_block_deltas": [
+            0.0033507721964269876,
+            0.007762557361274958,
+            0.010858122259378433,
+            0.03095991350710392,
+            0.02837047539651394
+          ],
+          "percentile_2_5_97_5": [
+            0.00661695608869195,
+            0.02590378001332283
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        }
+      }
+    },
+    {
+      "candidate": "tabicl_risk_20260925",
+      "comparison": "knn_risk_20260925",
+      "relative_percent": 3.8716938495635986,
+      "intervals": {
+        "48": {
+          "blocks": 10,
+          "observed_block_deltas": [
+            0.0006344959256239235,
+            -0.0013675441732630134,
+            0.0064383880235254765,
+            -0.001225896761752665,
+            0.005968710407614708,
+            0.003294391557574272,
+            0.011030130088329315,
+            -0.005063390824943781,
+            0.003655402921140194,
+            0.009185836650431156
+          ],
+          "percentile_2_5_97_5": [
+            0.0003313638822874055,
+            0.0061857679160311815
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        },
+        "96": {
+          "blocks": 5,
+          "observed_block_deltas": [
+            -0.00036652409471571445,
+            0.0026062456890940666,
+            0.00463155098259449,
+            0.002983369631692767,
+            0.006420619785785675
+          ],
+          "percentile_2_5_97_5": [
+            0.0012276449706405401,
+            0.005299930926412344
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        }
+      }
+    },
+    {
+      "candidate": "tabicl_risk_20260925",
+      "comparison": "pcc_balanced_20260925",
+      "relative_percent": -2.8360610008239746,
+      "intervals": {
+        "48": {
+          "blocks": 10,
+          "observed_block_deltas": [
+            -0.003423725487664342,
+            -0.0023242472670972347,
+            0.007448261138051748,
+            0.00556600047275424,
+            0.0025932739954441786,
+            0.002115883631631732,
+            -0.02973105013370514,
+            -0.003399020293727517,
+            0.0021338278893381357,
+            -0.006468895357102156
+          ],
+          "percentile_2_5_97_5": [
+            -0.009531500958837568,
+            0.0024642982461955385
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        },
+        "96": {
+          "blocks": 5,
+          "observed_block_deltas": [
+            -0.0028739862609654665,
+            0.006507130805402994,
+            0.0023545788135379553,
+            -0.01656503416597843,
+            -0.002167533850297332
+          ],
+          "percentile_2_5_97_5": [
+            -0.010042901150882244,
+            0.003185089211910963
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        }
+      }
+    },
+    {
+      "candidate": "tabicl_risk_20260925",
+      "comparison": "random_balanced_20260925",
+      "relative_percent": 2.021578311920166,
+      "intervals": {
+        "48": {
+          "blocks": 10,
+          "observed_block_deltas": [
+            0.0001745433546602726,
+            -0.0033581776078790426,
+            0.0062499442137777805,
+            0.00420129531994462,
+            0.0051949517801404,
+            0.0018653770675882697,
+            -0.0014720441540703177,
+            -0.0018330616876482964,
+            0.007850519381463528,
+            -0.0015691010048612952
+          ],
+          "percentile_2_5_97_5": [
+            -0.0004859036154812202,
+            0.004111607058439404
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        },
+        "96": {
+          "blocks": 5,
+          "observed_block_deltas": [
+            -0.001591817126609385,
+            0.0052256197668612,
+            0.0035301644820719957,
+            -0.0016525528626516461,
+            0.0031407091300934553
+          ],
+          "percentile_2_5_97_5": [
+            -0.000669606146402657,
+            0.004130455665290356
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        }
+      }
+    },
+    {
+      "candidate": "tabicl_risk_20260926",
+      "comparison": "empirical_risk_20260926",
+      "relative_percent": 5.08136510848999,
+      "intervals": {
+        "48": {
+          "blocks": 10,
+          "observed_block_deltas": [
+            -0.00015055823314469308,
+            0.0008454749477095902,
+            0.003232228336855769,
+            -0.000598119746427983,
+            -0.0018871125066652894,
+            0.011532756499946117,
+            0.017994843423366547,
+            0.009062012657523155,
+            0.008062517270445824,
+            -0.005656365305185318
+          ],
+          "percentile_2_5_97_5": [
+            0.00018837782117771013,
+            0.008806463330984116
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        },
+        "96": {
+          "blocks": 5,
+          "observed_block_deltas": [
+            0.0003474583791103214,
+            0.0013170543825253844,
+            0.004822821822017431,
+            0.013528428040444851,
+            0.0012030759826302528
+          ],
+          "percentile_2_5_97_5": [
+            0.0008836245979182422,
+            0.009151113219559193
+          ],
+          "scope": "Descriptive paired block resampling; all cells kept together; limited dependent period, not a universal significance guarantee."
+        }
+      }
+    }
+  ],
+  "fit_count": 29,
+  "epochs": 1565,
+  "H5_target_proof": "history-001-H5-check.json (separate local audit; not rerun by this verifier)",
+  "archive_counterexamples": [
+    {
+      "seed": 20260925,
+      "period": "first240",
+      "Tab_MAE": 0.07460305691347457,
+      "empirical_MAE": 0.07140757747498962,
+      "relative_percent": 4.474986481097428,
+      "harm_cell_ids": [
+        3737,
+        3745,
+        3765,
+        4545,
+        5337,
+        5353,
+        5365,
+        6137,
+        6145,
+        6153
+      ],
+      "help_cell_ids": [
+        3753,
+        4537,
+        4553,
+        4565,
+        5345,
+        6165
+      ],
+      "per_cell_delta": [
+        0.001272443433602651,
+        0.013147232433160147,
+        -0.00240948386490345,
+        0.012344934046268463,
+        -0.004284805742402872,
+        0.006425620118776957,
+        -0.00024246436854203542,
+        -0.0007667272041241328,
+        0.0031480299929777782,
+        -0.003201686342557271,
+        4.318604866663615e-06,
+        0.010355659077564876,
+        0.0012739936510721842,
+        0.00799100287258625,
+        0.009318137913942337,
+        -0.0032485336065292358
+      ],
+      "raw_Tab_MAE": 85.27416560474576,
+      "raw_empirical_MAE": 83.63988164248836
+    },
+    {
+      "seed": 20260925,
+      "period": "last240",
+      "Tab_MAE": 0.10005321431284149,
+      "empirical_MAE": 0.09179321628180333,
+      "relative_percent": 8.99848416432009,
+      "harm_cell_ids": [
+        3737,
+        3745,
+        3765,
+        4545,
+        5337,
+        5353,
+        5365,
+        6145,
+        6153,
+        6165
+      ],
+      "help_cell_ids": [
+        3753,
+        4537,
+        4553,
+        4565,
+        5345,
+        6137
+      ],
+      "per_cell_delta": [
+        0.0043717718372742334,
+        0.0051321547478437425,
+        -0.011394841472307841,
+        0.04485636452833811,
+        -0.0015971820801496505,
+        0.02168517348666986,
+        -0.03888566478465994,
+        -0.022774370697637398,
+        0.028729562958081562,
+        -0.020740625262260438,
+        0.03326882794499397,
+        0.07474803142249584,
+        -0.015378992445766926,
+        0.00596564058214426,
+        0.019510973493258157,
+        0.004663144238293171
+      ],
+      "raw_Tab_MAE": 115.9507470108398,
+      "raw_empirical_MAE": 112.56935244430636
+    },
+    {
+      "seed": 20260925,
+      "period": "all480",
+      "Tab_MAE": 0.08732813561315804,
+      "empirical_MAE": 0.08160039687839647,
+      "relative_percent": 7.019253525564621,
+      "harm_cell_ids": [
+        3737,
+        3745,
+        3765,
+        4545,
+        5337,
+        5353,
+        5365,
+        6145,
+        6153,
+        6165
+      ],
+      "help_cell_ids": [
+        3753,
+        4537,
+        4553,
+        4565,
+        5345,
+        6137
+      ],
+      "per_cell_delta": [
+        0.0028221076354384422,
+        0.009139693590501945,
+        -0.0069021626686056456,
+        0.028600649287303288,
+        -0.002940993911276261,
+        0.014055396802723408,
+        -0.019564064576600988,
+        -0.011770548950880765,
+        0.01593879647552967,
+        -0.011971155802408854,
+        0.01663657327493032,
+        0.042551845250030355,
+        -0.0070524993973473706,
+        0.006978321727365256,
+        0.014414555703600248,
+        0.0007073053158819676
+      ],
+      "raw_Tab_MAE": 100.61245630779277,
+      "raw_empirical_MAE": 98.10461704339737
+    },
+    {
+      "seed": 20260926,
+      "period": "first240",
+      "Tab_MAE": 0.07382865186276225,
+      "empirical_MAE": 0.07354026926720204,
+      "relative_percent": 0.392142425413741,
+      "harm_cell_ids": [
+        3753,
+        3765,
+        4545,
+        5345,
+        5353,
+        6153,
+        6165
+      ],
+      "help_cell_ids": [
+        3737,
+        3745,
+        4537,
+        4553,
+        4565,
+        5337,
+        5365,
+        6137,
+        6145
+      ],
+      "per_cell_delta": [
+        -0.00936345358689626,
+        -0.00017706863582134247,
+        0.0013306133449077606,
+        0.0026498865336179733,
+        -0.011117798524598281,
+        0.0027536261826753617,
+        -0.0024523173769315084,
+        -0.001664092019200325,
+        -0.003049915221830209,
+        0.014102462554971378,
+        0.014811040709416072,
+        -0.004324443389972051,
+        -0.003564264625310898,
+        -0.004931144975125789,
+        0.003057689468065898,
+        0.006553301090995471
+      ],
+      "raw_Tab_MAE": 86.87990242822158,
+      "raw_empirical_MAE": 82.60270242817447
+    },
+    {
+      "seed": 20260926,
+      "period": "last240",
+      "Tab_MAE": 0.10169146520396073,
+      "empirical_MAE": 0.0934923120153447,
+      "relative_percent": 8.76986889282438,
+      "harm_cell_ids": [
+        3753,
+        3765,
+        4545,
+        5337,
+        5353,
+        5365,
+        6145,
+        6153,
+        6165
+      ],
+      "help_cell_ids": [
+        3737,
+        3745,
+        4537,
+        4553,
+        4565,
+        5345,
+        6137
+      ],
+      "per_cell_delta": [
+        -0.0011482479671637217,
+        -0.0021177890400091806,
+        0.0022857073694467545,
+        0.04422623726228873,
+        -0.004389006178826094,
+        0.0009715616703033447,
+        -0.03914376528312762,
+        -0.0204141387095054,
+        0.00027228686958551406,
+        -0.000615200400352478,
+        0.05057759843766689,
+        0.06680443473160266,
+        -0.004514868557453156,
+        0.01192890281478564,
+        0.0026075062652428944,
+        0.023855231733371816
+      ],
+      "raw_Tab_MAE": 121.14067912333309,
+      "raw_empirical_MAE": 111.92703043512908
+    },
+    {
+      "seed": 20260926,
+      "period": "all480",
+      "Tab_MAE": 0.0877600585333615,
+      "empirical_MAE": 0.08351629064127337,
+      "relative_percent": 5.081365395305129,
+      "harm_cell_ids": [
+        3753,
+        3765,
+        4545,
+        5345,
+        5353,
+        5365,
+        6145,
+        6153,
+        6165
+      ],
+      "help_cell_ids": [
+        3737,
+        3745,
+        4537,
+        4553,
+        4565,
+        5337,
+        6137
+      ],
+      "per_cell_delta": [
+        -0.005255850777029991,
+        -0.0011474288379152615,
+        0.0018081603571772575,
+        0.02343806189795335,
+        -0.0077534023517121875,
+        0.0018625939264893532,
+        -0.020798041330029566,
+        -0.011039115364352863,
+        -0.0013888141761223475,
+        0.00674363107730945,
+        0.032694319573541485,
+        0.03123999567081531,
+        -0.004039566591382026,
+        0.003498878919829925,
+        0.002832597866654396,
+        0.015204266412183642
+      ],
+      "raw_Tab_MAE": 104.01029077577734,
+      "raw_empirical_MAE": 97.26486643165177
+    }
+  ],
+  "numpy_version": "2.5.3",
+  "RCTL_costs": {
+    "wall_seconds": 1658.1391634000001,
+    "fit_seconds_sum": 1652.1772000999981,
+    "max_fit_end_sampled_RSS_bytes": 467939328
+  },
+  "limits": [
+    "B1 투영은 같은 시점의 B2 저장 query_bins를 사용한다. 원 코드 입력·설정은 일치하나 KMeans를 재학습해 bin을 독립 생성하지 않았다.",
+    "KMeans/Ridge/KNN/Tab/RCTL 및 교차오차 profile clustering은 재실행하지 않았다. 가중치·anchor는 저장 구조를 대조했다.",
+    "B2 action 범위는 실제 query target을 포함한 다섯 대안에서 구성됐다. 04 계획 문구와 실제 코드의 차이를 보존한다.",
+    "float32 MAE 허용오차1e-7, 상대변화율1e-5 percentage points, 손실표·병합·쌍별 진단1e-10. 전체 최대차는 서로 다른 단위다.",
+    "원 H5 target은 별도 로컬 검사 history-001-H5-check.json에서 대조했다. 이 검산은 H5나 원 CDR 처리·과거 환경을 다시 실행하지 않는다.",
+    "05/09 문헌과08 유한표본 자료는 별도 검수 대기다.",
+    "cell·전후반 반례는 보존 예측에 대한 아카이브 추가 산술이다. 새 모델 실험이 아니다."
+  ]
+}
