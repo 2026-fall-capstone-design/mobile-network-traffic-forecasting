@@ -16,6 +16,7 @@ PERIODS = {"first240": (0, 240), "last240": (240, 480), "all480": (0, 480)}
 
 
 def verify(source: Path) -> dict:
+    """Check saved artifacts from an original source tree or portable archive manifest."""
     archive_manifest = json.loads(source.read_text(encoding="utf-8")) if source.is_file() else None
     mapping_sources = (
         {r["path"]: r for r in archive_manifest["sources"]} if archive_manifest else {}
@@ -27,11 +28,13 @@ def verify(source: Path) -> dict:
     diffs = []
 
     def check(name, ok):
+        """Count an assertion and identify its occurrence when it fails."""
         checks[name] += 1
         if not ok:
             raise AssertionError((name, checks[name]))
 
     def close(name, a, b, tol=1e-10):
+        """Require equal array shapes and finite differences within the stated tolerance."""
         a, b = np.asarray(a), np.asarray(b)
         check(name + "_shape", a.shape == b.shape)
         d = float(np.max(np.abs(a.astype(float) - b.astype(float))))
@@ -39,6 +42,7 @@ def verify(source: Path) -> dict:
         check(name, np.isfinite(d) and d <= tol)
 
     def path(key, scopes):
+        """Resolve a source, verify portable identity, and record the accessed content scope."""
         key = base + key
         p = (
             source.parent / mapping_sources[key]["archive_path"]
@@ -60,6 +64,7 @@ def verify(source: Path) -> dict:
         return p
 
     def fields(key, keys):
+        """Read only the requested top-level JSON fields into the checked result."""
         data = json.loads(path(key, ["json_parsed"]).read_text(encoding="utf-8-sig"))
         out = {}
         for k in keys:
@@ -68,17 +73,21 @@ def verify(source: Path) -> dict:
         return out
 
     def sequence(key):
+        """Read a JSON list and register its full-list review scope."""
         return json.loads(path(key, ["json_full_list"]).read_text(encoding="utf-8-sig"))
 
     def arrays(key, keys):
+        """Copy named arrays without allowing pickle deserialization."""
         with np.load(path(key, ["array:" + k for k in keys]), allow_pickle=False) as data:
             return {k: data[k].copy() for k in keys}
 
     def sha(key):
+        """Return the source hash while recording a hash-only access."""
         path(key, ["sha256_only"])
         return accessed[base + key]["sha256"]
 
     def digest(a):
+        """Hash contiguous array bytes using the original input-contract convention."""
         return hashlib.sha256(np.ascontiguousarray(a).tobytes()).hexdigest()
 
     cfg = fields(
@@ -695,7 +704,6 @@ def verify(source: Path) -> dict:
                     == sha(rec["completed_bridge_npz"])
                     == origin["sha256"],
                 )
-                old = fields(rec["source_settings"], [])
                 # Read only the protocol/data fields actually present in older metadata.
                 all_old = json.loads(
                     path(rec["source_settings"], ["json_parsed"]).read_text(encoding="utf-8-sig")
