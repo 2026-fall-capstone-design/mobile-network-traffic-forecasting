@@ -1,0 +1,61 @@
+{
+  "verified": true,
+  "original_paper_page_count": 14,
+  "original_paper_pages_checked": [
+    4,
+    5
+  ],
+  "original_paper_sha256": "d8b720fe96f4d2da8ebcbe9dc779c0b4512dec0b2f4823295f908fcd639ae622",
+  "official_head_commit": "a7519dde9d6f5deb3006689df047d99ea0dac7b7",
+  "local_code_matches_git_blob": true,
+  "git_blob_sha1": "f2376b31484d68b0241bbf5b26e477aea242d97f",
+  "local_code_sha256": "ecdf4f95996eeef8955337c9f4d5a3f3dc073ba961b4a971bdc170eb7459f673",
+  "plan_sha256": "c020582dc6e4edd92b601c7912402ae40c768e0e33eaedc8ceb8b320a6a3e6cd",
+  "metadata_bytes": 12377,
+  "necessary_seed_count_cases": [
+    {
+      "cells": 16,
+      "requested_K": 4,
+      "max_possible_valid_seed_groups": 1,
+      "necessary_count_condition_met": false,
+      "sufficiency_not_asserted": true
+    },
+    {
+      "cells": 32,
+      "requested_K": 4,
+      "max_possible_valid_seed_groups": 2,
+      "necessary_count_condition_met": false,
+      "sufficiency_not_asserted": true
+    },
+    {
+      "cells": 44,
+      "requested_K": 4,
+      "max_possible_valid_seed_groups": 4,
+      "necessary_count_condition_met": true,
+      "sufficiency_not_asserted": true
+    },
+    {
+      "cells": 32,
+      "requested_K": 2,
+      "max_possible_valid_seed_groups": 2,
+      "necessary_count_condition_met": true,
+      "sufficiency_not_asserted": true
+    }
+  ],
+  "theta_in_paper_setup": 10,
+  "minimum_cells_for_four_defined_seeds": 44,
+  "public_average_formula": "(n-1)/(2*n) * mean_distinct_unordered_pair_correlation, n>=2",
+  "equal_pair_correlation_example": {
+    "rho": 1,
+    "sizes_3_3_code_score": "1/3",
+    "sizes_2_4_code_score": "5/16",
+    "both_actual_pair_means": 1
+  },
+  "external_code_executed": false,
+  "traffic_calculations": 0,
+  "model_calls": 0,
+  "ledger_sha256_unchanged": "3eb960be6c4a8eb7df8f1696880639bf4b70d55536aa8baca7b2acf0e15c5aab",
+  "caps_changed": false,
+  "fits_164_authorized": false,
+  "fits_164_started": false
+}

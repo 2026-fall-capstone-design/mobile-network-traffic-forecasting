@@ -68,6 +68,10 @@ jobs:
           uv run --locked --group archive python scripts/research_archive/verify_ablation_pilot.py
           --source docs/research/evidence/0641/manifest.json
           --output .research-archive/ci-0641.json
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_recommendation_pilot.py
+          --source docs/research/evidence/0642/manifest.json
+          --output .research-archive/ci-0642.json
 
   deploy:
     name: deploy-pages

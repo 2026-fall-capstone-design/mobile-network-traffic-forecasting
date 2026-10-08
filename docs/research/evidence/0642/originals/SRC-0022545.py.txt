@@ -1,0 +1,451 @@
+from pathlib import Path
+import json, hashlib, re, datetime
+from docx import Document
+from docx.shared import Cm, Pt, RGBColor
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+
+B = Path(__file__).resolve().parent
+ROOT = B.parent.parent
+OUT = B / 'results/bounded_relation_recommendation_642'
+OUT.mkdir(parents=True, exist_ok=True)
+REPORT = ROOT / 'output/research/TabICLv2_UPC소속수정_연구방향과근거_20261004.md'
+WORD = ROOT / 'output/docx/TabICLv2_UPC소속수정_연구방향_20261004.docx'
+REPORT.parent.mkdir(parents=True, exist_ok=True)
+WORD.parent.mkdir(parents=True, exist_ok=True)
+def read(p): return json.loads((B/p).read_text(encoding='utf-8-sig'))
+def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+ledger_path = B / 'cumulative_execution_budget.json'
+ledger = read('cumulative_execution_budget.json')
+ledger_hash = sha(ledger_path)
+assert ledger_hash == '17a549fcf926e534eaecd4efd278fe4e13f7c7a13e74805c21059a2d6fc59243'
+result = read('results/bounded_relation_RCTL_bridge_639/result.json')
+sealed = read('results/bounded_relation_precision_638/assignment_sealed.json')
+
+report = r'''# TabICLv2로 UPC의 cell 소속을 수정하는 연구 방향과 근거
+
+2026년 10월 4일 · 연구 방향 선정 보고서 · 개발 실험 634–641 기준
+
+## 1 추천하는 연구 방향
+
+**연구 주제는 ‘실제 관측값으로 확인한 조건부 예측 관계를 이용하는 TabICLv2 기반 UPC 소속 수정과 네트워크 트래픽 예측’으로 제안합니다.** UPC가 만든 초기 cluster와 cluster 수를 유지한 상태에서 출발하여, 함께 속한 cell 사이에 최근 입력과 다음 트래픽의 관계가 충돌하는지 비교합니다. 별도 확인 구간의 실제값을 이용한 관계 점수가 두 시간 구간에서 모두 줄어드는 이동만 허용합니다. 최종 소속을 고정한 뒤 기존 RCTL로 해당 cluster의 전체 실제 자료를 학습합니다.
+
+해결할 문제는 ‘TabICLv2 자체가 잘 예측하는가’가 아니라 **‘하루 파형만으로 정한 소속 중 무엇을 수정해야 실제 자료 공유가 유리해지는가’**입니다. 피크 시간과 PCC도 세부 변화를 반영하므로 UPC가 전체 흐름만 본다고 단정하지 않습니다. 다만 두 시계열의 동시 움직임이 유사하다는 기준과, 최근 이력·시간대가 주어졌을 때 이후 값의 관계가 유사하다는 기준은 다릅니다. 이 차이가 소속 결정에 추가 정보를 제공하는지 연구합니다.
+
+착수할 근거는 생겼습니다. 동일한 16개 cell·K=4의 개발 비교에서 제안한 관계 점수는 UPC의 세 cell 소속을 바꿨고, 고정 소속의 RCTL 평균 MAE는 UPC 대비 3.97% 낮았습니다. 같은 Tab 예측을 단순히 중앙값 거리로 비교하거나 실제 확인 정답을 사용하지 않는 점수로 비교하면 소속은 UPC에 머물렀습니다. 같은 입력·지원 구간·점수 규칙에 HGB 분위수를 사용했을 때도 다른 소속과 결과가 나왔습니다. 따라서 모델 이름 변경이나 입력 특징 추가만으로 설명되지 않는 결정 차이를 확인했습니다.
+
+이 결과는 **본 실험을 진행할 후보의 선정 근거**입니다. 강한 기존 HGB 소속보다 전체 MAE는 1.93% 낮지만 앞 절반에서는 2.71% 높았습니다. 한 개발 집합·한 seed이며 원 UPC의 전체 도시 설정도 아닙니다. 모든 기간의 우위, 최초성, 통계적 유의성, 전체 도시의 비용 우위를 확정한 결과로 제시하지 않습니다. 추가 fine-tuning이나 보정기를 붙이지 않고 현재 소속 규칙을 고정한 본 실험을 제안합니다.
+
+**기여 문장:** 하루 profile만으로 놓칠 수 있는 cell 간 예측 관계의 차이를, TabICLv2의 조건부 분위수와 별도 관측 정답을 결합한 제한된 관계 점수로 확인하여, RCTL을 소속 선택에 사용하지 않고 UPC의 고정 개수 cluster를 수정하는 방법을 연구합니다.
+
+## 2 과거 결과가 현재 문제로 이어지는 이유
+
+초기 통합 검토 280·445와 인계 적용 633을 재사용했습니다. 파일 목록 확보를 전문 검토 완료로 간주하지 않았으며, 현재 판단에 필요한 166·512·633–641의 방법·실행·반례·정산을 상세 연결했습니다. 이전 문서는 보존합니다.
+
+| 관측 문제와 근거 | 확인된 사실과 닫은 주장 | 현재 판단에 반영한 내용 |
+|---|---|---|
+| 피크 제약과 단순 대안 166·280·445 | 작은 θ=0 UPC와 원 θ=10 UPC는 다름. 하루 profile과 단순 회귀도 유용한 소속을 만들었음 | 피크 제약 해제 자체를 Tab의 기여로 세지 않음. 강한 HGB 소속을 비교에서 유지 |
+| 대표·부분 context와 실제 공동 학습 443·462·464·616·617 | 참고 자료 구성과 공동 자료가 달라지면 소속 선호도 달라짐. sample 수만으로 실패를 설명할 수 없음 | 대표 sample의 이득을 전체 cluster의 RCTL 이득으로 바꾸어 부르지 않음 |
+| 낮은 예측 오차와 좋은 소속의 구별 633 | 동일 자료의 후보마다 Tab 자체 MAE는 더 낮아도, 선택한 소속의 RCTL은 HGB 선택보다 두 집합에서 나빴음 | 원시 공동 MAE 재정렬을 반복하지 않음. 다른 소속 결정 정보를 명세 |
+| 관계 점수와 실제 소속 634–639 | 별도 실제 정답을 쓰는 관계 점수가 세 cell을 이동시켰으며 고정 RCTL의 평균 이득을 확인 | 원인 완전 규명보다 먼저 소속을 봉인한 작은 연결 확인을 수행 |
+| 같은 예측을 사용하는 단순 결정 640·641 | 직접 중앙값 거리와 정답 없는 plug-in은 UPC 유지. 현재 관계 점수만 다른 소속 | 후보의 기여를 ‘비선형 추정’보다 ‘추정 관계를 관측 정답에 대조하는 결정’에 둠 |
+
+이 중 633의 실패와 641의 차이는 함께 읽어야 합니다. 좋은 예측기가 자동으로 좋은 clustering을 만드는 것은 아니지만, 그렇다고 Tab의 정보를 이용한 모든 소속 결정이 실패한 것은 아닙니다. 현재 후보는 다른 원리의 점수와 실제 이동 규칙을 구현한 뒤, 작은 RCTL 확인까지 마친 상태입니다. 과거 실패를 새 이름으로 다시 제시한 것이 아닙니다.
+
+## 3 TabICLv2가 맡는 역할
+
+회귀용 TabICLv2는 입력과 실제 정답이 짝지어진 표의 여러 행을 context로 참고하여 새로운 입력을 예측하는 사전학습 Transformer입니다. 열 정보, 한 행의 특징, context와 query 사이의 관계를 처리하며, target-aware embedding과 repeated feature grouping을 포함합니다. 현재 연구에서는 공식 회귀 checkpoint의 가중치를 고정하고 **cell별 조건부 분위수**를 구하는 데 사용합니다. 사전학습을 다시 하거나 cell마다 신경망을 최적화하지 않습니다. 다만 context 준비·전처리·추론 비용은 발생합니다. [TabICLv2 v2](https://arxiv.org/html/2602.11139v2), [공식 구현](https://github.com/soda-inria/tabicl)
+
+한 sample은 ‘현재까지 관측한 입력 → 다음 시점 실제 트래픽’입니다. 한 cell의 앞 구간 sample 전체로 context를 만들고 뒤 구간의 같은 query를 여러 이웃 cell의 조건부분포로 평가합니다. 네트워크의 고정 가중치는 같아도 context가 다르면 예측 분포가 달라집니다. 이 분포 차이를 실제 관측값과 대조합니다. attention이나 내부 표현 자체를 cell 유사도나 RCTL의 학습 효과로 해석하지 않습니다.
+
+현재 구현은 native 999개 분위수 중 API로 0.1부터 0.9까지 9수준을 요청합니다. MAE와 맞추기 위해 중앙값 주변의 관계를 다룹니다. 분포를 사용하는 이유는 점예측 하나만으로는 같은 기준값 주변에서 두 cell의 결과가 어느 쪽으로 치우치는지와 그 밀도를 구할 수 없기 때문입니다. 공식 분포의 모든 기능을 사용한 구현은 아니며, 아래의 9점 선형 보간과 꼬리 제한은 이 연구에서 고정한 근사입니다.
+
+HGB 분위수 회귀와 회귀용 TabPFN도 같은 역할을 할 수 있습니다. TabICLv2를 선택한 이유는 공개 회귀 가중치, 고정된 context로 조건부분포를 여러 이웃에 재사용할 수 있는 구현, 그리고 현재 같은 정보 HGB와 실제로 다른 유용한 소속을 만든 관측입니다. TabPFN은 이번 비교에서 실행하지 않았으므로 TabICLv2만 가능하거나 더 빠르다고 주장하지 않습니다. 최종 예측기는 계속 RCTL입니다.
+
+## 4 구현한 알고리즘
+
+### 4.1 입력과 시간 경계를 고정합니다
+
+현재 작은 확인은 기존 cell 16개의 시간 단위 연속 트래픽을 사용합니다. 입력은 최근 8개 lag, 전일·전주 lag, 최근 24시간 평균·표준편차, 시각·요일의 sin/cos인 16열입니다. 각 열은 예측 시점 전에 알 수 있는 값으로 구성합니다. 시각순으로 행을 나열하는 것만으로 하루 흐름이 전달된다고 가정하지 않습니다. 정규화는 cell별 첫 672시간의 평균 척도로 고정합니다.
+
+| 용도 | target의 시간 인덱스 | 사용 방식 |
+|---|---|---|
+| Tab/HGB context | 168–671 | cell당 전체 504개 입력·실제 정답 |
+| clustering 확인 query | 672–839에서 미리 정한 64개 | 입력은 예측에 사용하고 실제 정답은 관계 점수에 사용. 앞 32개·뒤 32개로 구분 |
+| 소속 확정 후 RCTL 학습 | 168–839 | cluster 구성원 전체의 실제 입력·정답 |
+| RCTL validation | 840–1007 | 학습 종료와 checkpoint 선택 |
+| RCTL 연결 확인 | 1008–1487 | 전체 480시점과 앞·뒤 240시점의 오차 보고 |
+
+이 기간들은 모두 개발 자료입니다. query를 반복 이용하여 소속을 선택했으므로 clustering 성능의 독립 test라고 부르지 않습니다. 과거 입력창의 일부 관측값이 이어서 등장하는 것은 시계열 예측에서 가능한 구성입니다. 중요한 것은 미래 target이 앞 단계의 입력·학습 정답으로 유입되지 않는 것입니다. 과거 설명의 ‘무조건 하루를 비워야 한다’는 규칙이나 context 100개는 현재 실행 명세가 아닙니다.
+
+### 4.2 하루 흐름으로 비교할 이웃을 먼저 제한합니다
+
+앞 504개 target을 시각별로 평균한 24차원 하루 profile을 만들고 L2 정규화합니다. cKDTree로 cell마다 가까운 8개 cell을 찾습니다. 동점은 cell 번호순으로 정하고 양방향 검색의 합집합을 무방향 이웃 목록으로 만듭니다. 실제로 79개 pair가 남았습니다. 모든 pair에 Tab을 먼저 실행한 뒤 일부를 버리는 방식이 아닙니다.
+
+각 pair의 앞 구간 입력만으로 작은 HGB 분류기를 학습하여, 입력이 주어졌을 때 어느 cell에서 나온 sample인지에 대한 확률 p를 구합니다. p가 0.1–0.9이고, query의 각 절반에서 각 cell에 8개 이상·2개 날짜 이상의 입력이 있어야 비교를 진행합니다. 입력 겹침이 부족한 pair는 관계가 같다고 처리하지 않고 미판정으로 남깁니다. 이웃 검색과 p 추정은 TabICLv2의 역할이 아닙니다.
+
+### 4.3 각 cell의 조건부분포를 준비하고 재사용합니다
+
+지원 pair에 등장하는 cell별로 자기 504개 sample을 context로 준비합니다. 해당 cell과 이웃의 query에서 9개 분위수를 얻습니다. 동일한 예측을 여러 pair 계산이 재사용하므로 소속 이동마다 context를 다시 준비하지 않습니다. HGB도 같은 sample·16열·9수준을 사용합니다. 현재 실행에서는 14개 cell의 분포와 3,712개 고유 query 예측 행을 확보했습니다.
+
+**완료된 비교의 실제 지원 규칙:** 입력 조건에 더해 Tab과 HGB에서 모두 분위수 보간·밀도 계산이 가능한 query와 pair의 교집합을 사용했습니다. 최종 비교 pair는 22개입니다. 따라서 HGB는 현재 실험에서 외부 비교기인 동시에 공통 평가 가능 범위를 정하는 데 관여합니다. 그 분포 준비 비용을 전체 비용에서 빼지 않습니다. Tab만으로 지원 범위를 정하는 독립 운용 버전은 이번에 검증하지 않았으며, 문서에서 이미 실행한 방식으로 바꾸어 쓰지 않습니다.
+
+### 4.4 실제 정답과 대조하여 관계 충돌 점수를 만듭니다
+
+직관적으로는, 같은 최근 입력·시간 조건에서 두 cell의 예측 관계가 다르다고 추정될 때 실제 다음 값도 그 방향 차이를 뒷받침하는지 확인합니다. 두 분포 사이의 공통 중앙 기준 q를 구하고, 실제값이 q보다 위인지 아래인지 이용합니다. 입력 분포와 q 주변 밀도에 따른 출처 비중을 보정하고, 앞 구간에서 정한 방향으로 부호를 맞춥니다. 서로 다른 입력에서 차이의 방향이 뒤집혀 단순 평균에서 상쇄되는 것을 줄이려는 계산입니다.
+
+정확한 구현식은 다음과 같습니다. 출처를 D=1 또는 0으로 표시하고, cell별 조건부 누적확률과 밀도를 F1·F0, f1·f0로 둡니다.
+
+`pF1(q)+(1−p)F0(q)=0.5`
+
+`a=pf1(q)/{pf1(q)+(1−p)f0(q)}`, `w=sign(F0(q)−F1(q))`
+
+`S=w(D−a){0.5−1[Y≤q]}`
+
+q·a·w는 앞 구간으로 추정한 모델과 query 입력에서 정합니다. query 정답 Y가 들어가는 곳은 마지막 위·아래 비교뿐입니다. S는 −0.5와 0.5 사이입니다. 각 시간 절반에서 cell별 S 평균을 먼저 구하고 양 cell 평균에 같은 비중을 준 뒤 양의 부분을 pair 비용으로 사용합니다. 정답이 큰 sample 하나의 절대 오차를 그대로 pair 손해로 삼는 방식과 다릅니다.
+
+CDF는 정렬한 9개 분위수 사이에서 선형 보간합니다. 양 꼬리는 0.1·0.9로 제한하고 바깥 밀도는 0으로 둡니다. 겹친 knot, 비유한 값, 0인 혼합 밀도는 미판정입니다. knot 최소 간격은 `1e−10×max(1,최대 분위수 절댓값)`, root 잔차 허용치는 `1e−7`이며 계산은 float64입니다. 현재 구현은 smoothing이나 값 벌리기를 하지 않습니다.
+
+이 점수는 미래 MAE 개선량이나 유의성 검정 통계가 아닙니다. 작은 값이 관계 동일성 또는 안전한 병합을 인증하지도 않습니다. 연속 밀도·올바른 p와 기준값 아래의 일차 민감도 소거는 기존 분위수 추정 이론과 연결되지만, 실제 시간 변화와 유한 추정 오류를 제거하는 보장은 아닙니다. 지원 구간 선택 뒤 cell별 평균을 다시 같은 비중으로 합치므로, 앞 구간에서 학습한 p가 평가 분포의 출처확률과 같다는 보장도 없습니다. 이론적 이상식과 현재의 실용적 점수를 구별합니다. [Belloni 등 v4](https://arxiv.org/abs/1312.7186v4), [Kallus와 Oprescu](https://proceedings.mlr.press/v206/kallus23a.html)
+
+### 4.5 UPC 소속을 제한적으로 수정합니다
+
+UPC의 초기 K=4 소속에서 시작합니다. 각 시간 절반의 목적값은 같은 cluster 안에 있는 유효 pair 비용의 합입니다. cell 번호순으로 최대 세 번 순회합니다. 출발 cluster가 비지 않고, 목적지에 유효 이웃이 두 개 이상이며, 이동으로 두 절반의 목적값이 각각 `1e−12`보다 크게 줄 때만 이동합니다. 여러 목적지가 가능하면 두 절반의 감소량 평균이 가장 큰 곳을 선택하고 동점은 cluster 번호순으로 정합니다. 이동 후에는 관련 합만 갱신합니다. 이동 없는 순회 또는 세 번째 순회에서 종료합니다.
+
+Tab 점수는 3745·6153·3765를 group 3으로 옮겼고, HGB 점수는 3745만 옮겼습니다. 이동 전후 K=4입니다. 최종 Tab 구성은 group 0 `[3753,5337,6165]`, group 1 `[5345]`, group 2 `[4537,4545,4565,5353,5365,6137,6145]`, group 3 `[3737,3745,3765,4553,6153]`입니다. 이 소속은 RCTL 결과 파일을 읽기 전에 저장·봉인했습니다.
+
+목표는 확인된 충돌을 줄이는 것이므로 graph 밖의 pair를 검사했다고 주장하지 않습니다. 비용 합은 group 크기·연결 수에 영향을 받고 singleton도 허용합니다. 따라서 단순히 목적값이 줄었다는 이유로 좋은 clustering이라고 결론내리지 않고, 고정 소속의 RCTL과 강한 대안을 실제로 비교했습니다.
+
+### 4.6 기존 RCTL에 전체 실제 자료를 전달합니다
+
+cluster별로 원 RCTL의 TCN·LSTM·이중 잔차 구조를 유지합니다. 현재 재현 구현은 8×9 입력, MAE, Adam(lr=0.001, eps=1e−7), batch 256, 최대 80epoch, validation patience 10, seed 20260925입니다. Tab의 16열 입력은 소속 판단용이며 RCTL 입력을 그대로 대체하지 않습니다. Tab 분위수나 일부 context로 RCTL 정답·학습 자료를 바꾸지 않습니다. RCTL의 손실·예측·가중치는 clustering에 되돌려 주지 않습니다.
+
+## 5 선행연구와 결정 수준에서 비교합니다
+
+| 가까운 연구와 대상 | 사용하는 정보와 결정 규칙 | 비용과 확인 범위 | 현재 방법의 차이와 유리해질 조건 |
+|---|---|---|---|
+| UPC와 RCTL 2025 [1] 도시 mobile cell | 평일 피크 시간으로 그룹화하고 평균 파형 PCC로 cluster 소속 결정. 이후 cluster별 RCTL | 피크 그룹은 최대 24개. 전체 도시 실험. θ=10은 피크 그룹 내 cell 수 조건 | 초기 UPC·K를 유지하되 관측 정답을 이용한 조건부 관계로 개별 cell 이동. 같은 파형 안에 추가 관계 차이가 있을 때 연구 가치 |
+| Zhang·Wang·Zhu 2019 [4] panel 분위수 그룹 | 개체별 절편과 group 기울기. 분위수 손실로 배정하고 group 모형 재적합 반복 | 선형 분위수 구조와 해당 조건의 이론·실험. 반복 적합 비용 | 관계로 묶는 발상은 기존 내용. 현재는 16입력의 비선형 분포를 한 번 준비하고 별도 구간 score로 이동 |
+| Yu·Gu·Volgushev 2024 [5] panel group | 개별 추정 파라미터의 차이를 추정 공분산으로 표준화하고 spectral clustering | 개별 추정 재사용과 이론. 분포 밀도와 파라미터 추정 분산은 다름 | 재적합 없음은 신규성이 아님. 현재는 파라미터 거리가 아니라 별도 관측 정답의 반응을 사용 |
+| Yang·Chen·Li·Li 2024 [6] 상태별 분위수 관계 | 상태변수에 따라 변하는 계수 함수를 추정하고 공통 상태의 함수 거리로 complete linkage. 이후 공동 추정 | 비선형 계수·시간 의존까지 고려. 정상성·mixing·분리 조건 아래 이론 | 비선형·clustering 후 공동 학습도 기존 내용. 실제 확인 정답이 함수 거리보다 나은 소속을 만드는지가 차별화 질문 |
+| HCP와 population predictive clustering [7] | 두 group을 합친 모델의 실제 validation 손실로 유리한 병합 결정 | 실제 공동 적합을 평가하지만 후보별 재학습이 필요. 모형에 따른 비용 | 현재는 개별 분포를 재사용해 이동 계산. 반복 공동 적합이 병목일 때 유리할 수 있으나 실제 공동 위험을 직접 계산하지 않음 |
+
+직접 중앙값 거리 대조는 [5]·[6] 원 알고리즘 전체의 재현이 아닙니다. 동일한 추정 정보를 사용했을 때 확인 정답을 넣는 연산의 추가 효과를 구분한 대조입니다. 현재 근거로 위 연구들보다 보편적으로 우수하다거나 새 직교화 공식을 만들었다고 주장하지 않습니다.
+
+네트워크·시계열·표 기반 모델 연구는 다음과 같이 실제 설계에 반영했습니다.
+
+- **TabPFN-ST-AR [8]:** 도로 교통의 최근 lag·시간·공간 특징을 표에 명시한 연구입니다. ‘traffic’이라는 이름만으로 통신 트래픽과 같은 문제로 취급하지 않습니다. 현재 16열에 최근·일·주 이력과 달력을 넣은 근거로 활용하고, 공간 입력은 원 RCTL 구조에서 별도로 유지합니다.
+- **TabPFN-TS [9]:** 표 기반 모델로 시계열을 구성할 수 있음을 보여주지만 해당 비자기회귀 구성은 미래 lag 부재 때문에 lag를 넣지 않는 설계입니다. 이를 lag 입력의 직접 근거로 인용하지 않습니다. 관측 범위를 넘는 추세 외삽의 약점은 현재의 ‘관측 입력이 겹치는 범위만 비교’와 미판정 처리에 연결합니다. 이것이 TabICLv2의 동일 한계를 증명한 것은 아닙니다.
+- **ISP 트래픽 foundation model 연구 [10]와 MobiGPT [11]:** 집계 수준, 간헐성, 도시 간 전이가 결과를 바꾼다는 점을 반영합니다. 현재 cell 결과를 개별 IP·새 도시로 일반화하지 않습니다. 최종 예측기가 RCTL인 지금은 이 모델들로 바꾸는 것이 소속 규칙 검증을 대신하지 못합니다.
+- **5G CoT·ICL 연구 [12]와 다변량 표 기반 예측 [13]:** throughput·RSRP·handover 같은 실제 공변량과 채널 구성의 중요성을 참고합니다. Milan에 없는 공변량을 가정하지 않으며, 여러 cell의 행을 섞는 것만으로 공간 관계가 입력됐다고 쓰지 않습니다.
+- **Traffic matrix clustering 연구 [14]와 TIDES [15]:** 시계열 clustering 후 별도 예측기를 쓰는 구조 자체는 기존 연구에 있습니다. random·global·profile 기준과 같은 K를 비교해야 소속 효과와 모델 수 효과를 분리할 수 있습니다. 현재 제안의 신규성을 clustering→RCTL이라는 순서에 두지 않습니다.
+- **TabICLv2와 context 선택 계열 [2·3]:** 공식 forecasting 기능과 기존 국소 context 연구를 고려하여 ‘처음 시계열에 적용’이나 ‘context를 바꾸는 것’만으로 신규성을 주장하지 않습니다. 고정된 자기 context에서 추정한 관계가 실제 소속 결정을 바꾸는 역할로 좁힙니다.
+
+## 6 실제 확인 결과와 주장별 근거
+
+아래는 639의 저장 결과를 그대로 인용한 cell별 정규화 MAE 평균입니다. 작은 값이 좋습니다. 자료량·실제 K·RCTL 구조와 학습 규칙을 맞췄으며, 동일 group의 완료 학습을 재사용했습니다.
+
+| 소속 결정 방법 | 앞 240시점 | 뒤 240시점 | 전체 480시점 |
+|---|---:|---:|---:|
+| 작은 UPC θ=0 | 0.073663 | 0.095851 | 0.084757 |
+| 강한 기존 HGB 소속 | **0.071623** | 0.094376 | 0.083000 |
+| 같은 관계 점수와 HGB 분위수 | 0.074461 | 0.096335 | 0.085398 |
+| 제안한 Tab 관계 소속 | 0.073563 | **0.089228** | **0.081396** |
+
+Tab 소속은 UPC 대비 전체 −3.97%, 동일 점수 HGB 대비 −4.69%입니다. 강한 HGB 소속 대비 전체 −1.93%이나 앞 절반 +2.71%, 뒤 절반 −5.46%입니다. UPC 대비 개선 cell 9개·악화 4개·동일 3개이며, 강한 HGB 대비 개선 10개·악화 6개입니다. 평균 이득과 개별 손해를 함께 보고합니다. 원 UPC의 θ=10을 16cell에서 K=4로 재현할 수 없으므로 이 값을 원 논문 전체 도시 개선율로 쓰지 않습니다.
+
+| 주장 | 증거 종류와 원천 | 지금 가능한 해석과 남은 범위 |
+|---|---|---|
+| 예측 MAE와 소속 선택 효용은 다름 | 실제 비교 633 | 동일 후보에서 더 낮은 Tab MAE만으로 더 좋은 RCTL 소속을 보장하지 못함 |
+| 관계 score가 같은 예측의 단순 거리보다 추가 결정을 만듦 | 실제 대조 641, 소속 봉인 638 | Tab/HGB 각 2개 대조는 UPC 유지. 같은 예측·지원·배정식을 고정한 결정 차이. 특정 통계 기전의 인과 증명은 아님 |
+| Tab 추정이 단순 추정기와 다른 소속을 만듦 | 같은 정보 HGB 비교 638 | 세 cell 대 한 cell 이동. Tab의 독점 기능 또는 모든 회귀 대안에 대한 우위는 아님 |
+| 고정 소속이 실제 자료 공유에도 유용할 수 있음 | 실제 원 구조 RCTL 639 | 한 조건의 평균 개선. 두 절반·cell별 반례 유지. 모든 구간의 우위나 통계적 유의성은 미확인 |
+| score의 보정 원리는 기존 이론과 연결됨 | 원문·대수 확인 512·634 | 알려진 식의 재가중 계열. 실제 평가 분포·밀도 추정의 보장으로 확대하지 않음 |
+| 후보별 반복 Tab 준비를 피함 | 코드와 실행 635–638 | cell별 분포 재사용. 전체 pipeline 및 비교용 HGB 비용 포함. 전체 도시 속도 우위 미측정 |
+
+최소 확인의 검수는 638의 22,600개 수치 검사, 639의 1,900개 자료·protocol·결과 검사, 641의 377개 대조 검사로 남아 있습니다. 추가 학습이 필요했던 RCTL group 세 개만 실행했고, 13개 task의 기존 결과는 구성원·시간·seed·protocol·artifact hash를 확인해 재사용했습니다. 641의 네 대조는 모두 UPC와 같은 소속이므로 16개 group 연결을 확인한 뒤 기존 결과를 재사용했습니다. 일부 과거 RCTL 학습은 math 4thread, 새 학습은 math 1thread여서 전체 학습의 bitwise 동일성까지 주장하지 않습니다.
+
+## 7 전체 비용과 규모 제한
+
+| 실제 작업 | 새 실행과 재사용 | 실패를 포함한 실측 |
+|---|---|---:|
+| 635–638 후보 검색·지원·두 추정기·score·소속 | 14개 cell의 완성 분포. Tab 준비 15회 시도, query 3,840행 시도 중 고유 완료 3,712행. HGB 분위수 126fit, 출처 분류 80회 시도 중 79개 완성 | 197.086초 |
+| 639 RCTL 연결 확인 | 새 3fit·165epoch, 완료 13task 재사용 | RCTL 158.336초 + 기타 2.737초 |
+| 641 저장 예측의 두 결정 대조 | 새 모델·forward 0, 기존 RCTL 정확한 소속 연결 | 0.330초 |
+
+197.086초는 두 추정기의 공통 지원을 준비한 전체 실행이며 Tab 단독 배포 시간도, 모든 방법의 처음부터 공정한 총시간도 아닙니다. 검색·HGB·저장 등의 일부 시간은 합산되어 있어 각 부분의 독립 실측으로 나누지 않습니다. 635 저장 실패, 636 중단·부분 결과와 그 비용을 포함합니다. 원래 RCTL 전체 비교의 과거 학습비는 누적 원장에 보존되어 있으므로 이번에 새로 쓴 158.336초만으로 전체 연구 비용을 설명하지 않습니다.
+
+N개의 cell에서 각 k개 이웃을 검색하면 무방향 pair E는 Nk 이하입니다. 각 cell의 context 준비는 최대 N회, cell당 Q개 query일 때 분포 예측 행 상한은 Q(N+2E), graph 저장은 O(E), 9분위수 저장은 O(9Q(N+2E)), 고정 세 번의 이동 계산은 O(3KE)로 정리할 수 있습니다. 이 외에 E개의 출처 분류, 입력 검색, 모델 준비 비용이 있습니다. KDTree의 최악 비용이 항상 NlogN이라는 보장은 없으며 16개 cell의 측정으로 1만 개 cell의 실행 시간을 추정하지 않습니다.
+
+최신 누적 원장에는 Tab context 466회·query 260,842행·2,427.164초, RCTL optimizer 173fit·9,249epoch·12,707.395초, 통계 적응 9회가 기록되어 있습니다. frozen inference 26.946초, frozen gradient 21.961초와 기존 cheap 수치 작업도 별도 보존합니다. 보고서 작성·렌더링은 새 traffic 모델 실험이 아니며 이 원장을 초기화하거나 다시 충전하지 않습니다. 전체 원장과 값의 기준 hash는 근거 등록부에 보관합니다.
+
+## 8 강한 반론과 본 실험의 판단 기준
+
+| 반론 | 현재 답변 | 다음 확인과 실패 시 행동 |
+|---|---|---|
+| 달력·하루 profile 추가로 충분하지 않은가 | 현재 입력에 이미 포함. 같은 예측의 거리 대조는 UPC 유지였음 | 같은 profile 검색·같은 16열 기준을 유지. 원 θ=10 UPC와 강한 profile 기준보다 이득이 사라지면 추가 관계 단계의 필요성 축소 |
+| HGB나 TabPFN으로도 가능한가 | 가능함. 동일 score HGB보다 나았지만 강한 HGB가 앞 기간에서는 우세 | 같은 자료·지원 조건 및 같은 실제 시간 상한으로 비교. 더 싼 대안이 같은 효용이면 Tab 중심 기여를 철회 |
+| 알려진 방법의 모델 교체 아닌가 | 조건부 clustering·직교화·재사용 자체는 기존 내용. 현재 차이는 확인 정답을 넣은 score가 실제로 바꾼 소속 | 가까운 함수 거리·실제 pooled 위험을 비교. 동일 결정을 재현하면 알고리즘 신규성 축소 |
+| Tab 점수가 RCTL에 유용하다는 보장이 있는가 | 보장을 가정하지 않고 소속 봉인 후 실제 확인함 | 새 미사용 기간에서 고정 소속 평가. 악화하면 현재 연결 가설을 닫고 RCTL로 score를 학습하지 않음 |
+| 더 많은 자료·모델 수·계산 때문 아닌가 | 같은 sample·입력·K=4·RCTL 학습. 두 추정기 공동 준비 비용을 포함 | 정확히 같은 wall-time을 다른 방식으로 쓰는 대안은 미확인. 비용 제한 비교를 별도 수행하며 무료 HGB 계산을 가정하지 않음 |
+| 확인 구간에 과적합한 것 아닌가 | 모든 사용 기간은 개발 자료. 두 절반 감소는 미래 유의성 검정이 아님 | 새로 봉인한 기간·cell 집합에서 설정 검색 없이 평가. 유리한 cell·날짜를 사후 제외하지 않음 |
+| graph 크기나 singleton 때문에 좋아진 것 아닌가 | 목적은 연결 수에 민감하고 singleton 허용. 현재 차이에서 이를 전부 분리하지 못함 | 원 크기와 이동 후 크기를 고정한 결정 대조를 사전 설계. 구조 효과만으로 설명되면 관계 score 기여를 줄임 |
+| 이득이 없으면 무엇을 단순화하는가 | fine-tuning·보정 모듈을 해법으로 고정하지 않음 | 같은 정보의 HGB 또는 원 UPC 소속으로 돌아감. 새 모듈로 현재 실패를 가리지 않음 |
+
+본 실험은 다음 순서로 진행하는 것이 적절합니다. **첫째**, 사용하지 않은 기간과 충분한 cell을 사전 고정하고 원 UPC θ=10에서 목표 K가 가능한지 입력 자료만으로 확인합니다. 피크 그룹당 cell이 10개를 넘어야 하므로 K=4에는 적어도 44개가 필요하지만, 이 수만으로 네 유효 그룹을 보장하지는 않습니다. 불가능하면 K나 θ를 성능을 보고 바꾸지 않고 해당 설정의 적용 불가로 기록합니다.
+
+**둘째**, 현재 score·k=8·지원·세 번 순회를 고정한 채 소속을 먼저 봉인합니다. UPC, profile 기준, 동일 score HGB, 강한 pooled-HGB 기준과 직접 함수 거리 대조를 함께 고정합니다. 자료량을 맞춘 비교와 실제 계산시간 상한을 맞춘 비교를 구별합니다. TabPFN 비교는 실행 자원·가중치·버전을 먼저 확인하고 별도 예산을 고정한 경우에 추가합니다. 현재 결과에서 실행한 것처럼 표기하지 않습니다.
+
+**셋째**, 같은 K·자료·RCTL 학습 규칙으로 아직 보지 않은 기간을 평가합니다. 주 지표는 cell 동일 가중 MAE이며, 일/주 단위 변화·개별 cell 손해·지원 비율·전체 clustering 비용도 함께 기록합니다. 고정한 단순 대안보다 이득이 없으면 Tab 단계의 필요성을 축소하거나 기각합니다. 한정 구간에서만 이득이 있으면 그 범위를 결과로 제시하고 threshold 검색으로 일반화 결과를 만들지 않습니다.
+
+새 도시의 향상, 전체 도시 실측, 동일 wall-time에서의 최선 대안, graph 크기 효과 및 분포 추정 오차의 통계적 보장은 아직 미실행입니다. 이를 모두 확보했다고 선언할 필요는 없지만, 본 실험의 결과가 바꿀 판단을 위와 같이 먼저 정해야 합니다. 현재 완료된 것은 **구체적 후보 하나의 착수 근거와 구현 명세, 작은 실제 소속·RCTL 확인**입니다.
+
+## 9 출처와 재현 자료
+
+원문 전수 검토나 최신 문헌 전체의 부재를 주장하지 않습니다. 기존 상세 검토 범위와 640의 지정 방법절, 642의 원문·구현 연결을 사용했습니다. 아래 논문은 현재 결정에 사용하는 부분만 인용합니다.
+
+1. H. Yang 등. Urban Mobile Data Prediction With Geospatial Clustering and Dual Residual Learning. IEEE TNSM 22(6), 2025. [DOI](https://doi.org/10.1109/TNSM.2025.3599168). UPC 방법·RCTL 구조 및 공식 [GECOS 구현](https://github.com/Superint-Lab/GECOS), 검토 commit a7519dde9d6f5deb3006689df047d99ea0dac7b7.
+2. J. Qu 등. TabICLv2 A Better Faster Scalable and Open Tabular Foundation Model. [arXiv:2602.11139v2](https://arxiv.org/html/2602.11139v2). 구조·회귀 출력·추론. 실제 TabICL 2.2.0, commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3, tabicl-regressor-v2-20260212.ckpt.
+3. Localized TabICLv2 [2608.16429v1](https://arxiv.org/abs/2608.16429v1), TL-ANDI [2607.04809v1](https://arxiv.org/abs/2607.04809v1), CRUMB [2606.11473v1](https://arxiv.org/abs/2606.11473v1). 기존 context·함수 비교의 범위 확인. 현재 알고리즘에 별도 fine-tuning·증류를 넣지 않음.
+4. Zhang, Wang, Zhu. 2019. Quantile-regression-based clustering for panel data. [공개 원문](https://par.nsf.gov/servlets/purl/10101135), [DOI](https://doi.org/10.1016/j.jeconom.2019.04.005). 473에서 읽은 방법·가정 재사용.
+5. Yu, Gu, Volgushev. Spectral clustering with variance information for group structure estimation in panel data. [2201.01793v2](https://arxiv.org/html/2201.01793v2), Journal of Econometrics 2024, [DOI](https://doi.org/10.1016/j.jeconom.2024.105709).
+6. Yang, Chen, Li, Li. Functional-Coefficient Quantile Regression for Panel Data with Latent Group Structure. [2303.13218v1](https://arxiv.org/html/2303.13218v1), JBES 42(3), 1026–1040, 2024. §2·3.1·3.3·4.1. [DOI](https://doi.org/10.1080/07350015.2023.2277172).
+7. López-Oriona, Sun, Vilar. Improving the prediction accuracy of statistical models A new hierarchical clustering approach. Statistics and Computing 35, 168, 2025. HCP 및 Sadeghkhani 2026의 predictive population clustering은 05·267의 실제 pooled 손실·병합 검토 범위를 재사용했습니다. [Sadeghkhani DOI](https://doi.org/10.1007/s41060-026-01197-4).
+8. Architectural Bias vs. Feature Engineering Deconstructing the Limits of Tabular Foundation Models in Traffic Forecasting. SMBD 2025. [DOI](https://doi.org/10.1145/3768740.3768798). TabPFN-ST-AR의 METR-LA 입력·기여 분석.
+9. From Tables to Time Extending TabPFN-v2 to Time Series Forecasting. [2501.02945v4](https://arxiv.org/abs/2501.02945v4). §3의 입력 구성과 §5 추세 외삽 한계.
+10. Time-Series Foundation Models for ISP Traffic Forecasting. [2511.17529v2](https://arxiv.org/abs/2511.17529v2).
+11. MobiGPT A Foundation Model for Mobile Wireless Networks. [2509.18166v1](https://arxiv.org/abs/2509.18166v1).
+12. Chain-of-Thought Reasoning Enhances In-Context Learning for LLM-Based Mobile Traffic Prediction. [2605.09260v1](https://arxiv.org/abs/2605.09260v1).
+13. Zero-shot Multivariate Time Series Forecasting Using Tabular Prior Fitted Networks. [2604.08400v1](https://arxiv.org/abs/2604.08400v1).
+14. On the Role of Time Series Clustering in Traffic Matrix Prediction. [2604.26081v1](https://arxiv.org/abs/2604.26081v1).
+15. TIDES. [2512.22178v1](https://arxiv.org/abs/2512.22178v1). 통신 트래픽의 clustering과 후속 예측 결합은 기존 구조임을 확인.
+16. Belloni, Chernozhukov, Kato. [1312.7186v4](https://arxiv.org/abs/1312.7186v4), §2 식2.7–2.9·부록1.1. Kallus와 Oprescu. [AISTATS 2023](https://proceedings.mlr.press/v206/kallus23a.html), 부록 B.1. score의 기존 이론적 연결이며 cell clustering 결과를 제공한 논문으로 인용하지 않음.
+
+실행 명세는 `tmp/redesign_20260925/635_bounded_relation_graph_plan.md`, 실제 코드는 `bounded_relation_graph_635.py`와 복구·정밀도 스크립트에 있습니다. 분포 cache와 실패는 635–637 결과 폴더, 최종 소속은 `results/bounded_relation_precision_638/assignment_sealed.json`, RCTL 수치는 `results/bounded_relation_RCTL_bridge_639/result.json`, 결정 대조는 `results/cached_relation_score_ablation_641/`에 보존되어 있습니다. 설정·원천·모델 hash 및 실제 정산은 각 폴더의 frozen_settings·verification·settled 기록으로 연결됩니다.
+
+이번 보고서의 근거 등록부는 `results/bounded_relation_recommendation_642/evidence_manifest.json`입니다. 현재 지침 적용은 633 인계를 재사용하고, research_focus·research_state·642 계획을 동일한 관측 문제에 연결했습니다. 기존 문서·실험·비용을 덮어쓰거나 새로운 goal을 생성하지 않았습니다.
+'''
+REPORT.write_text(report, encoding='utf-8')
+
+doc = Document()
+sec = doc.sections[0]
+sec.page_width, sec.page_height = Cm(21), Cm(29.7)
+sec.top_margin, sec.bottom_margin = Cm(1.8), Cm(1.8)
+sec.left_margin, sec.right_margin = Cm(2), Cm(2)
+sec.header_distance, sec.footer_distance = Cm(.7), Cm(.8)
+for name in ['Normal','Title','Subtitle','Heading 1','Heading 2','Heading 3']:
+    st = doc.styles[name]
+    st.font.name='맑은 고딕'; st.font.color.rgb=RGBColor(0,0,0)
+    st._element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'),'맑은 고딕')
+    st.paragraph_format.space_after=Pt(7)
+normal=doc.styles['Normal']; normal.font.size=Pt(10.5)
+normal.paragraph_format.line_spacing=Pt(14)
+normal.paragraph_format.space_after=Pt(6)
+for st in doc.styles:
+    for el in list(st._element.iter(qn('w:pBdr'))):
+        el.getparent().remove(el)
+    if st.type == 1:
+        pp=st._element.get_or_add_pPr()
+        snap=OxmlElement('w:snapToGrid');snap.set(qn('w:val'),'0');pp.append(snap)
+normal.paragraph_format.widow_control=True
+for name, size in [('Title',21),('Heading 1',15),('Heading 2',11.5)]:
+    doc.styles[name].font.size=Pt(size)
+    doc.styles[name].paragraph_format.space_before=Pt(10)
+    doc.styles[name].paragraph_format.keep_with_next=True
+doc.styles['Title'].paragraph_format.space_before=Pt(0)
+footer = sec.footer.paragraphs[0]; footer.alignment=2
+r=footer.add_run('TabICLv2 연구 방향  ·  '); r.font.size=Pt(8)
+fld=OxmlElement('w:fldSimple');fld.set(qn('w:instr'),'PAGE');footer._p.append(fld)
+def p(text, bold=False):
+    z=doc.add_paragraph();z.add_run(text).bold=bold;return z
+next_page=False
+def h(text):
+    global next_page
+    z=doc.add_heading(text,1)
+    if next_page:z.paragraph_format.page_break_before=True;next_page=False
+def sh(text): doc.add_heading(text,2)
+def page():
+    global next_page
+    next_page=True
+def table(headers, rows, widths):
+    t=doc.add_table(rows=1, cols=len(headers)); t.autofit=False
+    for i,w in enumerate(widths):
+        t.columns[i].width=Cm(w)
+    for i,v in enumerate(headers):t.rows[0].cells[i].text=v
+    for row in rows:
+        cells=t.add_row().cells
+        for i,v in enumerate(row):cells[i].text=str(v)
+    pr=t._tbl.tblPr
+    borders=OxmlElement('w:tblBorders')
+    for edge in ['top','left','bottom','right','insideH','insideV']:
+        x=OxmlElement('w:'+edge);x.set(qn('w:val'),'single');x.set(qn('w:sz'),'4');x.set(qn('w:color'),'D9D9D9');borders.append(x)
+    pr.append(borders)
+    for ri,row in enumerate(t.rows):
+        trpr=row._tr.get_or_add_trPr();cant=OxmlElement('w:cantSplit');trpr.append(cant)
+        if ri==0:repeat=OxmlElement('w:tblHeader');trpr.append(repeat)
+        for ci,c in enumerate(row.cells):
+            c.width=Cm(widths[ci]);c.vertical_alignment=1
+            cp=c._tc.get_or_add_tcPr();mar=OxmlElement('w:tcMar')
+            for side,v in [('top','90'),('bottom','90'),('left','100'),('right','100')]:
+                q=OxmlElement('w:'+side);q.set(qn('w:w'),v);q.set(qn('w:type'),'dxa');mar.append(q)
+            cp.append(mar)
+            if ri==0:
+                fill=OxmlElement('w:shd');fill.set(qn('w:fill'),'E8EDF2');cp.append(fill)
+            for pa in c.paragraphs:
+                pa.paragraph_format.space_after=Pt(0);pa.paragraph_format.line_spacing=1.08
+                for run in pa.runs:run.font.size=Pt(9);run.bold=ri==0
+    doc.add_paragraph().paragraph_format.space_after=Pt(0)
+    return t
+
+doc.add_paragraph('TabICLv2로 UPC의 cell 소속을\n수정하는 연구 방향', 'Title')
+p('예측 관계를 실제 관측값과 대조하는 clustering과 기존 RCTL의 결합',True)
+p('연구 방향 검토안  |  2026년 10월 4일')
+h('1 제안의 핵심과 연구할 이유')
+p('UPC가 만든 cluster를 출발점으로 삼고, 함께 속한 cell의 최근 입력과 다음 트래픽의 관계가 충돌하는지 확인하여 소속을 수정하는 연구를 제안드립니다. TabICLv2는 이 관계를 추정하고, 별도 확인 구간의 실제값은 관계 차이를 뒷받침하는지 판단하는 데 사용합니다. 소속을 확정한 뒤에는 기존 RCTL이 전체 실제 자료로 최종 예측을 학습합니다.')
+p('UPC의 피크 시간과 PCC는 하루 흐름의 유사성을 잘 요약합니다. PCC도 세부 변화에 반응하므로 UPC가 전체 흐름만 본다고 설명하는 것은 정확하지 않습니다. 다만 같은 시간에 비슷하게 움직이는 cell이라도, 같은 최근 이력과 시간대에서 이후 값이 달라질 수 있습니다. 이 차이가 UPC의 일부 소속을 수정할 추가 근거가 되는지 확인하는 것이 연구의 중심입니다.')
+sh('이번에 확인한 착수 근거')
+p('16개 cell·K=4의 개발 비교에서 Tab 관계 점수는 세 cell을 이동시켰습니다. 그 소속을 고정한 RCTL은 작은 UPC 기준보다 전체 MAE가 3.97% 낮았습니다. 같은 Tab 예측을 단순 중앙값 거리나 정답 없는 점수로 비교하면 UPC 소속이 유지됐습니다. 따라서 예측기를 바꾸는 것에 더해, 예측 관계를 관측값과 대조하는 결정 자체에 연구할 근거가 있습니다.')
+p('강한 기존 HGB 소속보다 전체 MAE는 1.93% 낮았지만 앞 절반에서는 2.71% 높았습니다. 현재 결과는 본 실험을 시작할 근거이며 모든 기간의 우위를 확정한 결과는 아닙니다. 추가 fine-tuning이나 보정 모듈 없이, 구현한 규칙을 고정하여 검증하는 방향을 제안드립니다.')
+sh('TabICLv2와 RCTL의 역할')
+p('TabICLv2는 cell별 입력과 실제 정답을 context로 참고하는 사전학습 회귀 모델입니다. 공개 가중치를 고정하고 조건부 분위수를 구하므로 cell마다 신경망을 다시 최적화하지 않습니다. context 준비와 추론에는 비용이 듭니다. RCTL에는 Tab의 예측값이나 가중치를 넘기지 않고, 확정된 cell 소속과 전체 실제 학습 자료만 전달합니다. [1·2]')
+
+page();h('2 알고리즘 흐름과 비교 자료')
+sh('첫째 하루와 주간 흐름을 입력에 명시합니다')
+p('한 sample은 현재까지 관측한 입력과 다음 시점의 실제 트래픽을 묶은 한 행입니다. 입력은 최근 8개 lag, 전일·전주 lag, 24시간 평균·표준편차, 시각·요일의 sin/cos인 16열입니다. 이 구성으로 최근 변화와 하루·요일 흐름을 함께 전달합니다. 여러 행을 날짜순으로 배치하는 것만으로 전체 흐름이 전달된다고 가정하지 않습니다.')
+table(['자료의 용도','현재 작은 확인의 구성'],[
+('cell별 context','target 168–671의 전체 504개 sample'),
+('clustering query','target 672–839 중 고정한 64개 입력과 실제 정답\n앞 32개와 뒤 32개로 구분'),
+('소속 확정 후 RCTL 학습','target 168–839의 전체 실제 자료'),
+('RCTL validation과 연결 확인','validation 840–1007\n연결 확인 1008–1487의 480시점')],[4.1,12.9])
+p('숫자는 시간 단위 인덱스이며 모든 기간은 개발 자료입니다. 정규화는 cell별 첫 672시간 평균 척도로 고정합니다. query 정답은 관계 점수에만 사용하고 분포 모델의 context에는 넣지 않습니다. RCTL 학습은 소속이 확정된 뒤 앞의 개발 자료 전체를 사용할 수 있습니다.')
+sh('둘째 하루 profile로 비교할 cell을 먼저 좁힙니다')
+p('앞 구간의 target을 시각별로 평균하여 24차원 profile을 만들고 L2 정규화합니다. cell마다 가까운 이웃 8개를 검색하고 양방향 결과를 합칩니다. 현재 16개 cell에서 79개 pair가 남았습니다. 모든 pair에 Tab을 실행한 뒤 후보를 줄이는 방식이 아닙니다.')
+p('각 pair의 앞 구간 입력으로 작은 HGB 분류기를 학습하여 sample의 출처 확률 p를 구합니다. p가 0.1–0.9인 입력이 각 cell·각 query 절반에 8개 이상, 2개 날짜 이상 있어야 비교합니다. 입력 겹침이 부족하면 미판정으로 남깁니다. 후보 검색과 출처 분류는 TabICLv2의 역할이 아닙니다.')
+sh('셋째 cell별 분포를 한 번 준비하고 이웃이 재사용합니다')
+p('지원 pair에 등장하는 cell별로 자기 504개 sample을 context로 준비합니다. 해당 cell과 이웃의 query에서 0.1–0.9의 9개 분위수를 구합니다. 동일한 예측을 여러 pair가 재사용하므로 소속 이동마다 Tab을 다시 준비하지 않습니다. 실제로 14개 cell의 분포와 3,712개 고유 query 예측 행을 확보했습니다.')
+
+page();h('3 관계 점수로 소속을 수정합니다')
+sh('넷째 추정한 관계를 실제 정답과 대조합니다')
+p('같은 입력에서 두 cell의 조건부분포를 비교하여 공통 중앙 기준 q를 정합니다. 실제 다음 값이 q보다 위인지 아래인지 확인하고, 두 cell의 결과가 서로 다른 방향으로 치우치는지 계산합니다. 입력 출처 비중과 기준 주변의 밀도를 반영하며, 차이의 방향은 앞 구간으로 만든 모델에서 정합니다. query 정답을 보고 방향을 뒤집지 않습니다.')
+p('구현식은 S = w(D − a){0.5 − 1[Y ≤ q]}입니다. D는 sample의 출처 cell, a는 q 주변 밀도로 보정한 출처 비중, w는 두 분포 차이의 방향입니다. S의 범위는 −0.5부터 0.5입니다. 각 query 절반에서 cell별 평균을 구하고 두 평균에 같은 비중을 준 뒤 양의 부분을 pair 비용으로 사용합니다. 정확한 q·a·w와 보간 규칙은 동봉 보고서 4.4절에 적었습니다.')
+p('이 값은 실제 RCTL의 MAE 증가량이나 통계적 검정 결과가 아닙니다. 낮은 점수가 두 cell의 동일성을 증명하지도 않습니다. 9분위수 사이의 선형 보간이 불가능하거나 혼합 밀도가 0이면 미판정입니다. 현재 비교는 Tab과 HGB 모두 계산 가능한 구간의 교집합을 사용하여 22개 pair를 남겼습니다. 따라서 HGB 분포 준비도 현재 구현의 지원 판단과 전체 비용에 포함됩니다.')
+sh('다섯째 두 시간 구간에서 모두 충돌이 줄 때 이동합니다')
+p('UPC의 초기 K=4에서 출발합니다. 목적값은 같은 cluster 내부의 유효 pair 비용 합입니다. cell 번호순으로 최대 세 번 순회하며 다음 조건을 모두 만족하는 이동만 허용합니다.')
+for s in ['이동 후 출발 cluster가 비지 않아야 합니다.', '목적지에 유효 pair로 연결된 cell이 두 개 이상 있어야 합니다.', '앞·뒤 query 절반의 목적값이 각각 1e−12보다 크게 감소해야 합니다.']:
+    doc.add_paragraph(s,style='List Bullet')
+p('목적지가 여러 곳이면 두 구간 감소량 평균이 가장 큰 곳을 선택하고, 동점은 cluster 번호순으로 정합니다. 이동 없는 순회 또는 세 번째 순회에서 종료합니다. 현재 Tab 점수는 3745·6153·3765를 group 3으로 옮겼고 HGB 점수는 3745만 옮겼습니다. K는 모두 4입니다.')
+sh('여섯째 소속을 고정한 뒤 기존 RCTL을 학습합니다')
+p('RCTL의 TCN·LSTM·이중 잔차 구조와 학습 규칙을 유지합니다. 현재 재현은 8×9 입력, MAE, Adam, batch 256, 최대 80epoch, validation patience 10입니다. cluster의 전체 실제 입력·정답을 사용하며 Tab 분포나 일부 context로 대체하지 않습니다. RCTL 결과는 앞의 소속 이동이나 임계값 조정에 사용하지 않습니다.')
+p('확인하지 않은 pair는 동일 관계로 인증하지 않습니다. 비용 합은 group 크기와 이웃 수에 영향을 받고 singleton도 허용됩니다. 이 한계 때문에 목적값 감소만으로 성공을 선언하지 않고 고정 소속의 RCTL을 실제로 확인했습니다.')
+
+page();h('4 선행연구에서 이어받은 것과 차별점')
+table(['가까운 연구','기존 소속 결정','현재 연구에서 확인할 차이'],[
+('UPC와 RCTL [1]','피크 시간 그룹과 평균 파형 PCC','초기 UPC를 유지하며 별도 관측 정답으로 관계를 확인해 cell 소속 수정'),
+('Zhang 등 2019 [4]','group 분위수 손실로 배정하고 공동 회귀 반복 적합','최근 입력과 다음 값의 관계로 묶는 발상 자체는 기존 내용'),
+('Yu 등 2024 [5]','개별 파라미터 차이를 추정 분산으로 보정하고 spectral clustering','개별 추정 재사용도 기존 내용. 현재는 관측 정답 반응으로 비교'),
+('Yang 등 2024 [6]','상태별 분위수 계수 함수의 거리로 clustering 후 공동 추정','비선형 관계와 단계 분리도 기존 내용. 실제 정답 score의 추가 결정이 핵심'),
+('Predictive population clustering [7]','실제 pooled 모델의 validation 손실로 병합','반복 공동 적합을 피하는 대신 공동 학습 효용은 소속 고정 후 별도 확인')],[3.6,5.5,7.9])
+p('신규성은 ‘예측 관계로 clustering한다’거나 ‘TabICLv2를 쓴다’는 데 두지 않습니다. 같은 분포 추정을 확보했을 때, 실제 정답을 사용하는 관계 점수가 단순 함수 거리와 다른 유용한 소속을 만드는지가 구체적인 차별화 질문입니다. score의 보정 원리는 알려진 분위수 추정 계열이며 새로운 직교화 공식이라고 주장하지 않습니다. [4–7·16]')
+sh('네트워크 트래픽과 시계열 연구를 반영한 부분')
+p('TabPFN-ST-AR는 도로 교통의 lag·시간·공간 정보를 표에 명시합니다. 이를 최근·일·주 이력과 달력을 포함한 입력 설계에 연결했습니다. TabPFN-TS는 해당 비자기회귀 설계에서 lag를 쓰지 않으므로 같은 근거로 묶지 않았습니다. 그 추세 외삽 한계는 관측 입력이 겹치는 범위만 비교하고 미지원 구간을 남기는 설계와 연결됩니다. [8·9]')
+p('ISP 트래픽·MobiGPT·5G ICL 연구는 집계 수준, 도시, 사용 가능한 공변량이 결과를 바꾼다는 점에 반영했습니다. Milan에 없는 RSRP나 handover를 가정하지 않고 cell 결과를 IP나 새 도시의 성능으로 확대하지 않습니다. Traffic matrix clustering과 TIDES에 이미 clustering 후 예측 구조가 있으므로 단계의 순서 자체는 신규성이 아닙니다. [10–15]')
+sh('TabICLv2를 선택한 근거')
+p('공개된 회귀 가중치와 분위수 출력, cell별 고정 context 재사용이 구현에 맞습니다. 같은 정보 HGB와 실제로 다른 소속 및 RCTL 결과를 얻었다는 근거도 있습니다. 회귀용 TabPFN으로 대체할 수 있으므로 Tab만 가능한 기능으로 설명하지 않습니다. 이번에 실행하지 않은 TabPFN의 성능이나 속도 우위는 판단하지 않습니다. [2·3]')
+
+page();h('5 확인한 결과와 실제 비용')
+p('다음은 같은 16개 cell·K=4의 cell별 정규화 MAE 평균입니다. 작은 값이 좋습니다. 소속을 먼저 고정하고 동일한 실제 자료와 RCTL 학습 규칙을 사용했습니다. 모든 기간은 개발 자료입니다.')
+table(['소속 결정','앞 240시점','뒤 240시점','전체'],[
+('작은 UPC θ=0','0.073663','0.095851','0.084757'),
+('강한 기존 HGB 소속','0.071623','0.094376','0.083000'),
+('같은 관계 점수와 HGB','0.074461','0.096335','0.085398'),
+('제안한 Tab 관계 소속','0.073563','0.089228','0.081396')],[7.1,3.3,3.3,3.3])
+p('Tab 소속은 UPC 대비 전체 3.97%, 동일 score의 HGB 대비 4.69% 낮은 MAE를 보였습니다. 강한 HGB 소속 대비 전체 1.93% 개선이지만 앞 절반은 2.71% 악화했습니다. UPC보다 개선된 cell은 9개, 악화 4개, 동일 3개입니다. 강한 HGB보다 개선 10개, 악화 6개로 평균 이득과 개별 손해를 함께 남깁니다.')
+sh('같은 예측의 단순 대조로 확인한 결정 기여')
+p('Tab/HGB 각각에서 직접 중앙값 거리와 정답 없는 plug-in 점수를 계산하면 모두 UPC 소속을 유지했습니다. 현재 실제 정답 score는 Tab에서 세 cell, HGB에서 한 cell을 이동시켰습니다. 대조는 같은 예측·지원·배정 규칙을 사용했습니다. 이 비교는 가까운 함수 clustering 논문 전체의 재현이 아니라 현재 결정식의 추가 효과를 구분한 확인입니다.')
+table(['작업','새 실행과 재사용','실측 시간'],[
+('검색부터 소속 결정','14개 cell 분포·3,712개 고유 query 행\nTab과 HGB 준비 및 실패 비용 포함','197.086초'),
+('고정 소속의 RCTL','새 3group·165epoch\n완료 13task 재사용','158.336초\n기타 2.737초'),
+('저장 예측의 결정 대조','새 모델·추론 0\n동일 소속의 완료 RCTL 연결','0.330초')],[4.1,9.6,3.3])
+p('후보 pair 수는 E≤Nk로 제한하고 Tab 준비 최대 N회, query 계산 Q(N+2E), 이동 계산 O(3KE)로 구성합니다. 검색·출처 분류·분포 저장 비용도 남습니다. 현재 197.086초는 두 추정기의 공통 지원을 준비한 전체 시간이며 Tab 단독 시간이나 1만 개 cell의 실행 시간으로 해석할 수 없습니다.')
+p('원 UPC의 θ=10은 피크 그룹 안의 cell 수 조건입니다. 16cell·K=4의 현재 θ=0 결과를 원 전체 도시 실험 개선으로 쓰지 않습니다. 한 seed이며 일부 재사용 학습의 thread 수 차이도 보존했습니다. 전체 연구의 과거 실행과 실패 비용은 누적 원장에 별도로 남아 있습니다.')
+
+page();h('6 추천 범위와 본 실험의 판단 기준')
+p('현재 후보는 구현과 작은 실제 확인까지 연결되어 있으므로 본 실험에 착수할 방향으로 추천드립니다. 추천 범위는 별도 관측 정답을 이용한 관계 점수의 소속 수정 가치입니다. 일반적인 성능 우위나 새로운 수학 공식을 확정한 것은 아닙니다.')
+table(['핵심 반론','현재 답변과 본 실험에서 바뀔 판단'],[
+('단순 시간 특징이면 충분한가','현재 입력에 이미 포함했습니다. 같은 profile·입력 조건에서도 원 UPC와 강한 대안보다 이득이 남는지 확인합니다.'),
+('모델 이름만 바꾼 것 아닌가','동일한 예측에 다른 점수를 적용한 대조에서 소속이 달랐습니다. 알려진 score·함수 clustering 자체는 신규성에서 제외합니다.'),
+('Tab이 RCTL에도 유용한가','소속 봉인 후 실제 RCTL 평균 이득이 있습니다. 새 기간에서 악화하면 현재 연결 가설을 닫습니다.'),
+('추가 정보나 계산량 효과 아닌가','sample·입력·K는 같습니다. HGB 공통 지원 비용을 포함합니다. 정확히 같은 wall-time으로 강한 대안에 자원을 배분한 비교는 남아 있습니다.'),
+('query나 graph에 과적합한 것 아닌가','사용 기간을 모두 개발 자료로 취급합니다. 새 기간과 크기 조건 대조를 고정하고, 유리한 날짜나 cell을 사후 제외하지 않습니다.'),
+('이득이 없으면 복잡성을 더하는가','HGB 또는 원 UPC 소속으로 단순화합니다. fine-tuning·보정기를 자동 추가하지 않습니다.')],[4.5,12.5])
+sh('본 실험은 고정한 비교로 진행합니다')
+p('첫 단계에서는 미사용 기간과 cell 집합을 정하고 원 θ=10 UPC의 목표 K가 가능한지 확인합니다. K=4에는 적어도 44개 cell이 필요하지만 피크 그룹의 분포 조건도 충족해야 합니다. 적용 불가를 낮은 θ나 유리한 K로 바꾸어 숨기지 않습니다.')
+p('다음으로 현재 k=8, 지원 조건, 점수, 세 번의 이동 규칙을 고정합니다. 원 UPC·profile 기준·동일 score HGB·강한 pooled-HGB·직접 함수 거리를 비교하고 RCTL 평가 전에 소속을 봉인합니다. 자료량을 맞춘 비교와 실제 시간 상한을 맞춘 비교를 구별합니다. TabPFN은 가중치·버전·자원을 확인한 별도 비교로 계획하며 현재 완료 결과에 포함하지 않습니다.')
+p('최종 판단은 같은 K와 RCTL 학습 조건의 미래 MAE, 기간별 변화, cell별 손해, 지원 비율, 전체 clustering 비용으로 내립니다. 강한 단순 대안이 같은 효용을 더 적은 비용으로 내면 Tab 중심 기여를 철회합니다. 일부 조건에서만 이득이 있으면 그 적용 범위를 결과로 남깁니다.')
+
+page();h('7 주요 원문과 재현 자료')
+p('번호는 동봉한 상세 보고서의 참고문헌과 같습니다. 각 원문의 결정 규칙과 실제 검토 범위는 근거 등록부에 연결했습니다. 목록 확보를 전체 내용 검토나 실험 재현으로 표시하지 않았습니다.')
+refs=[
+'[1] Yang 등 2025  Urban Mobile Data Prediction With Geospatial Clustering and Dual Residual Learning. DOI 10.1109/TNSM.2025.3599168. UPC·RCTL 원 연구와 GECOS 공개 구현.',
+'[2] Qu 등 2026  TabICLv2 A Better Faster Scalable and Open Tabular Foundation Model. arXiv:2602.11139v2. 구조·회귀 분위수·고정 가중치 추론.',
+'[3] Localized TabICLv2 2608.16429v1, TL-ANDI 2607.04809v1, CRUMB 2606.11473v1. 기존 context·관계 비교 범위 확인.',
+'[4] Zhang·Wang·Zhu 2019  Quantile-regression-based clustering for panel data. DOI 10.1016/j.jeconom.2019.04.005.',
+'[5] Yu·Gu·Volgushev 2024  Spectral clustering with variance information for group structure estimation in panel data. arXiv:2201.01793v2.',
+'[6] Yang·Chen·Li·Li 2024  Functional-Coefficient Quantile Regression for Panel Data with Latent Group Structure. arXiv:2303.13218v1, JBES 42(3), 1026–1040.',
+'[7] HCP 2025 및 Sadeghkhani 2026. 실제 pooled validation 위험으로 병합하는 선행. DOI 10.1007/s41060-026-01197-4.',
+'[8] Architectural Bias vs. Feature Engineering. SMBD 2025. DOI 10.1145/3768740.3768798. TabPFN-ST-AR의 도로 교통 입력.',
+'[9] From Tables to Time Extending TabPFN-v2 to Time Series Forecasting. arXiv:2501.02945v4. 입력 구성·추세 외삽.',
+'[10–13] ISP Traffic Forecasting 2511.17529v2; MobiGPT 2509.18166v1; CoT Mobile Traffic Prediction 2605.09260v1; Multivariate Tabular PFN 2604.08400v1.',
+'[14–15] Traffic Matrix Clustering 2604.26081v1; TIDES 2512.22178v1. clustering과 후속 예측의 기존 결합.',
+'[16] Belloni·Chernozhukov·Kato 1312.7186v4; Kallus·Oprescu AISTATS 2023. 분위수 score의 기존 보정 원리.'
+]
+for r in refs:
+    q=p(r);q.paragraph_format.space_after=Pt(6)
+    for run in q.runs:run.font.size=Pt(9)
+sh('실제 구현과 근거 파일')
+p('TabICL 2.2.0의 공식 commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3 및 tabicl-regressor-v2-20260212.ckpt를 사용했습니다. 알고리즘은 635 계획과 코드, 소속은 638의 봉인 기록, RCTL 결과는 639, 같은 예측의 대조는 641에 보존했습니다. 642 근거 등록부에는 출처·설정·결과·정산 hash를 연결했습니다.')
+p('동봉 보고서 4절은 구현 세부, 5절은 선행 결정 비교, 6절은 주장별 근거, 7절은 누적 비용, 8절은 반론과 미실행 항목을 제공합니다. 지금 완료된 것은 연구 방향 선정과 작은 확인입니다. 새 도시·원 UPC 전체 규모·동일 시간 예산의 일반적인 우위는 본 실험의 질문입니다.')
+
+assert '사례' not in '\n'.join(x.text for x in doc.paragraphs)
+doc.core_properties.title='TabICLv2로 UPC의 cell 소속을 수정하는 연구 방향'
+doc.core_properties.subject='관측 정답을 이용한 관계 점수와 독립적인 RCTL 연결'
+doc.core_properties.author='연구 검토'
+doc.save(WORD)
+
+files = [
+'AGENTS.md', 'output/research/TabICLv2_문제정의부터_신규성과개선근거_재설계_goal_prompt.md',
+'tmp/redesign_20260925/maintenance_research_focus_20260928/handoff.md',
+'tmp/redesign_20260925/maintenance_research_focus_20260928/application_latest633_20261004/application.json',
+'tmp/redesign_20260925/633_same_data_joint_Tab_contrast_findings.md',
+'tmp/redesign_20260925/634_overlap_residual_relation_findings.md',
+'tmp/redesign_20260925/635_bounded_relation_graph_plan.md',
+'tmp/redesign_20260925/bounded_relation_graph_635.py',
+'tmp/redesign_20260925/results/bounded_relation_precision_638/assignment_sealed.json',
+'tmp/redesign_20260925/results/bounded_relation_RCTL_bridge_639/result.json',
+'tmp/redesign_20260925/results/bounded_relation_RCTL_bridge_639/verification.json',
+'tmp/redesign_20260925/640_relation_graph_contribution_boundary_findings.md',
+'tmp/redesign_20260925/results/cached_relation_score_ablation_641/result.json',
+'tmp/redesign_20260925/results/cached_relation_score_ablation_641/verification.json',
+'tmp/redesign_20260925/results/cached_relation_score_ablation_641/settled.json',
+'tmp/redesign_20260925/cumulative_execution_budget.json'
+]
+manifest={
+'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+'stage':642,'problem_id':'independent_UPC_membership_decision_information',
+'classification':'recommendation_and_source_cost_report_synthesis',
+'new_models':0,'new_predictions':0,'new_traffic_numerical_experiments':0,
+'ledger_sha256_before':ledger_hash,'ledger_sha256_after':sha(ledger_path),
+'initial_integration_reused':[280,445], 'handoff_application_reused':633,
+'inventory_is_not_content_review':True,
+'review_scope':'634–641 current decision records, original UPC theta/architecture and previously reviewed traffic/TS/Tab primary method portions; whole proofs and all historical full texts not reviewed anew',
+'specific_delta':'Common Tab/HGB quantile-valid support is an operational dependency and its costs remain in whole pipeline. Recommendation is a fixed-scope research candidate, not an exclusive-Tab or general robustness claim.',
+'preserved_counterexamples':['strong HGB first240 superiority','six cell harms versus strong HGB','theta0 pilot differs from original theta10','source probability after support/reweighting not theoretically certified','graph size and sparse support limitations'],
+'sources':{p:sha(ROOT/p) for p in files if (ROOT/p).exists()},
+'documents':{'report':str(REPORT.relative_to(ROOT)).replace('\\','/'),'word':str(WORD.relative_to(ROOT)).replace('\\','/')},
+'budget_used_snapshot':ledger['used'],
+'cheap_seconds_sum_bookkeeping':sum(ledger['new_cheap_diagnostic_seconds'].values()),
+'render_review_complete':False
+}
+(OUT/'evidence_manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+(OUT/'build_result.json').write_text(json.dumps({'report':str(REPORT),'word':str(WORD),'paragraphs':len(doc.paragraphs),'tables':len(doc.tables),'ledger_unchanged':sha(ledger_path)==ledger_hash},ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'report':str(REPORT),'word':str(WORD),'paragraphs':len(doc.paragraphs),'tables':len(doc.tables),'ledger_unchanged':sha(ledger_path)==ledger_hash},ensure_ascii=False))

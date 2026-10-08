@@ -1,0 +1,168 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-08T17:37:47.198010+00:00",
+  "scope": "642 문서 인용·완료 범위·출처 및 원장 대조. 새 모델과 RCTL MAE 배열 재계산 없음.",
+  "normalized_table": [
+    {
+      "method": "A_UPC",
+      "normalized_MAE": [
+        "0.073663",
+        "0.095851",
+        "0.084757"
+      ]
+    },
+    {
+      "method": "A_HGB_free",
+      "normalized_MAE": [
+        "0.071623",
+        "0.094376",
+        "0.083000"
+      ]
+    },
+    {
+      "method": "A_HGB_relation",
+      "normalized_MAE": [
+        "0.074461",
+        "0.096335",
+        "0.085398"
+      ]
+    },
+    {
+      "method": "A_Tab_relation",
+      "normalized_MAE": [
+        "0.073563",
+        "0.089228",
+        "0.081396"
+      ]
+    }
+  ],
+  "comparisons_from_saved639_scalars": [
+    {
+      "baseline": "A_UPC",
+      "period": "first240",
+      "mean_cell_MAE_percent_change": -0.13520385557332926,
+      "mean_cell_raw_MAE_percent_change": -1.852951606576414
+    },
+    {
+      "baseline": "A_UPC",
+      "period": "last240",
+      "mean_cell_MAE_percent_change": -6.909760864922976,
+      "mean_cell_raw_MAE_percent_change": -11.582184948526919
+    },
+    {
+      "baseline": "A_UPC",
+      "period": "all480",
+      "mean_cell_MAE_percent_change": -3.965845103278687,
+      "mean_cell_raw_MAE_percent_change": -7.701403159244147
+    },
+    {
+      "baseline": "A_HGB_free",
+      "period": "first240",
+      "mean_cell_MAE_percent_change": 2.7086926040353454,
+      "mean_cell_raw_MAE_percent_change": 8.037592882932977
+    },
+    {
+      "baseline": "A_HGB_free",
+      "period": "last240",
+      "mean_cell_MAE_percent_change": -5.455458562981363,
+      "mean_cell_raw_MAE_percent_change": 5.539602428458346
+    },
+    {
+      "baseline": "A_HGB_free",
+      "period": "all480",
+      "mean_cell_MAE_percent_change": -1.932898948652484,
+      "mean_cell_raw_MAE_percent_change": 6.584886302108162
+    },
+    {
+      "baseline": "A_HGB_relation",
+      "period": "first240",
+      "mean_cell_MAE_percent_change": -1.205284945682994,
+      "mean_cell_raw_MAE_percent_change": -2.606045962596637
+    },
+    {
+      "baseline": "A_HGB_relation",
+      "period": "last240",
+      "mean_cell_MAE_percent_change": -7.377295671564232,
+      "mean_cell_raw_MAE_percent_change": -8.453081819124119
+    },
+    {
+      "baseline": "A_HGB_relation",
+      "period": "all480",
+      "mean_cell_MAE_percent_change": -4.686513809038562,
+      "mean_cell_raw_MAE_percent_change": -6.061020286416852
+    }
+  ],
+  "normalized_cell_counts": {
+    "A_UPC": {
+      "improved": 9,
+      "harmed": 4,
+      "equal": 3
+    },
+    "A_HGB_free": {
+      "improved": 10,
+      "harmed": 6,
+      "equal": 0
+    }
+  },
+  "budget_used": {
+    "TabICL_contexts": 466,
+    "TabICL_query_rows": 260842,
+    "TabICL_fit_predict_seconds": 2427.1640476993657,
+    "RCTL_fits": 173,
+    "RCTL_epochs": 9249,
+    "RCTL_wall_seconds": 12707.395362599997,
+    "RCTL_frozen_inference_seconds": 26.945810599998367,
+    "RCTL_frozen_gradient_seconds": 21.960536199996568,
+    "RCTL_statistics_adaptations": 9,
+    "RCTL_fit_or_adaptation_runs": 182,
+    "RCTL_statistics_adaptation_stage_seconds": 8.635802399992826
+  },
+  "cheap_seconds_sum": 1357.0210123004356,
+  "unexecuted_main_studies": [
+    "original theta10 setting on sufficient cells",
+    "independent unseen period or city",
+    "strict equal wall-time alternative allocation",
+    "TabPFN same-condition comparison",
+    "graph-size controlled comparison",
+    "full-city runtime and robust statistical generalization"
+  ],
+  "historic_goal_record_thread": "01a0bdbf-8190-77a0-9f80-da9be560b5af",
+  "historical_code_executed": false,
+  "new_model_executions": 0,
+  "visual_review_is_separate": true,
+  "read_scope_note": "JSON 조회 최상위 값은 하위 트리 단위이며 중첩 키 추적이 아니다. Word는 세 번째 표만 자동 검사했다. 전 페이지 판독은 별도 검토 기록을 따른다.",
+  "checks": {
+    "portable_source_identity": 32,
+    "historical_dependency_hash": 16,
+    "document_identity": 6,
+    "pdf_identity_only": 1,
+    "seven_pages": 1,
+    "render_page_identity": 7,
+    "direction_complete": 2,
+    "science_incomplete": 2,
+    "main_study_unexecuted": 1,
+    "historic_goal_scope": 1,
+    "no_new_research": 3,
+    "settled_success": 1,
+    "no_new_model_or_traffic": 2,
+    "render_cost_separate": 1,
+    "caps_unchanged": 1,
+    "ledger_unchanged": 4,
+    "budget_snapshot_exact": 1,
+    "cheap_sum": 1,
+    "report_table_shape": 1,
+    "five_word_tables": 1,
+    "word_result_table_shape": 1,
+    "method_row_identity": 4,
+    "report_rounded_values": 4,
+    "word_rounded_values": 4,
+    "reported_percent_change": 5,
+    "reported_cell_counts": 1,
+    "all_accesses_declared": 1,
+    "declared_read_scope": 42
+  },
+  "source_modes_verified": [
+    "original_source_windows",
+    "portable_linux"
+  ]
+}
