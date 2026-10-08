@@ -49,6 +49,6 @@ B1은 같은 호출의 median·mean·129quantiles를 모두 저장했고, **저�
 
 05는 회귀 TabPFN도 같은 역할의 대안으로 검토하고 같은 정보·context/query·ensemble 조건 또는 실제 비용 조건에서 비교해야 한다고 적었다. 당시 누적 예산에서는 실행하지 않았다는 **05의 범위에 한정한 기록**이다. 이후 전체 연구에서 한 번도 사용하지 않았음을 전수 확인한 결과나, 두 API가 완전히 같다는 보장은 아니다.
 
-팀원은 새 실험을 설계할 때 checkpoint·코드 revision, 출력 alpha·median/mean, 실제 context/query 수, cache와 준비 비용, 실제 label 접근 범위부터 기존 조건과 비교하면 된다. 같은 배열의 재분석은 재사용으로 기록한다. 달라진 정보·자료 기간·모델·비용 조건이 없으면 기존 호출을 새로운 방법 검증으로 세지 않는다.
+팀원은 새 실험을 설계할 때 checkpoint·코드 revision, 출력 alpha·median/mean, 실제 context/query 수, cache와 준비 비용, 실제 label 접근 범위부터 기존 조건과 비교하면 된다. 같은 배열의 재분석은 재사용으로 기록한다. 달라진 정보·자료 기간·모델·비용 조건이 없으면 기존 호출을 새로운 방법 검증으로 세지 않는다. [관련 여섯 연구의 후속 대조](0005-related-foundations-audit.md)는 같은 context의 국소화·배치 공유와 별도 clustering 사전학습을 이 고정 회귀 경로와 구분한다.
 
 [출처·실제 읽은 구간](../sources/history-005.md), [근거 목록](../evidence/0005-official/README.md), [과거 시도 색인](../prior-attempts.md).

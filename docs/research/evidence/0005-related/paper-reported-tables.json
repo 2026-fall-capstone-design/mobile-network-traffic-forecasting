@@ -1,0 +1,244 @@
+{
+  "batch_id": "history-006",
+  "tables": [
+    {
+      "reference_id": "H006-P01",
+      "table": "Table1",
+      "pdf_physical_page": 3,
+      "setup": "8 datasets; pretrained model without fine-tuning; 80/20 split; times reported by authors",
+      "columns": [
+        "k",
+        "accuracy_retention_percent",
+        "mean_prediction_seconds",
+        "mean_speedup",
+        "median_speedup"
+      ],
+      "rows": [
+        [
+          16,
+          96.93,
+          6.72,
+          2.77,
+          3.04
+        ],
+        [
+          32,
+          97.57,
+          9.19,
+          1.97,
+          2.14
+        ],
+        [
+          64,
+          98.4,
+          15.61,
+          1.14,
+          1.11
+        ],
+        [
+          128,
+          98.9,
+          27.22,
+          0.66,
+          0.66
+        ]
+      ],
+      "evidence_kind": "paper_reported_values_visually_compared_not_independent_reproduction"
+    },
+    {
+      "reference_id": "H006-P01",
+      "table": "Table2",
+      "pdf_physical_page": 3,
+      "setup": "38 classification datasets; accuracy across all38, AUC30binary and LogLoss8multiclass; k32; macro mean(sd)",
+      "columns": [
+        "method",
+        "auc_mean",
+        "auc_sd",
+        "logloss_mean",
+        "logloss_sd",
+        "accuracy_mean",
+        "accuracy_sd"
+      ],
+      "rows": [
+        [
+          "Full TabICLv2",
+          0.855,
+          0.09,
+          0.253,
+          0.198,
+          0.885,
+          0.086
+        ],
+        [
+          "Embed-PT",
+          0.809,
+          0.107,
+          0.339,
+          0.252,
+          0.861,
+          0.097
+        ],
+        [
+          "Embed-FT",
+          0.827,
+          0.096,
+          0.293,
+          0.223,
+          0.873,
+          0.09
+        ],
+        [
+          "Raw-PT",
+          0.798,
+          0.114,
+          0.365,
+          0.264,
+          0.857,
+          0.098
+        ],
+        [
+          "Raw-FT",
+          0.817,
+          0.105,
+          0.319,
+          0.21,
+          0.872,
+          0.09
+        ],
+        [
+          "XGBoost",
+          0.826,
+          0.105,
+          0.34,
+          0.261,
+          0.873,
+          0.093
+        ]
+      ],
+      "evidence_kind": "paper_reported_values_visually_compared_not_independent_reproduction"
+    },
+    {
+      "reference_id": "H006-P03",
+      "table": "Table1",
+      "pdf_physical_page": 7,
+      "setup": "51 datasets x10seeds; TabICLv2; mean rank based on accuracy or RMSE per dataset/seed; lower better; CRUMB K20; reduced methods n=0.1N, full uses N",
+      "columns": [
+        "method",
+        "mean_rank",
+        "reported_plusminus",
+        "p_adj_vs_CRUMB",
+        "passes"
+      ],
+      "rows": [
+        [
+          "Full Context",
+          2.202,
+          0.098,
+          "approximately 1e-19",
+          "1"
+        ],
+        [
+          "per-query kNN",
+          2.782,
+          0.107,
+          "0.106",
+          "T"
+        ],
+        [
+          "CRUMB",
+          2.975,
+          0.096,
+          "not applicable",
+          "K"
+        ],
+        [
+          "MICP",
+          3.304,
+          0.105,
+          "approximately 1e-4",
+          "K*"
+        ],
+        [
+          "Uniform",
+          3.737,
+          0.105,
+          "approximately 1e-18",
+          "1"
+        ]
+      ],
+      "evidence_kind": "paper_reported_values_visually_compared_not_independent_reproduction"
+    },
+    {
+      "reference_id": "H006-P04",
+      "table": "Table6",
+      "pdf_physical_page": 8,
+      "setup": "Synthetic high-spurious setting: rhoS0.7/rhoC0.3/alpha1.0; TabPFN; CSR and OOD RMSE are different metrics",
+      "columns": [
+        "method",
+        "csr",
+        "ood_rmse",
+        "context_r_S_Y"
+      ],
+      "rows": [
+        [
+          "Standard",
+          5.777,
+          3.486,
+          0.299
+        ],
+        [
+          "Env-stratified",
+          2.17,
+          3.176,
+          0.286
+        ],
+        [
+          "S-swap",
+          0.067,
+          3.539,
+          0.112
+        ]
+      ],
+      "evidence_kind": "paper_reported_values_visually_compared_not_independent_reproduction"
+    },
+    {
+      "reference_id": "H006-P04",
+      "table": "Table7",
+      "pdf_physical_page": 9,
+      "setup": "scIB pancreas semi-synthetic Y-confounding beta0.5/rhoS_over_rhoC9.09; estimated PCs; AppendixE nctx64/10seeds",
+      "columns": [
+        "method",
+        "csr_mean",
+        "csr_reported_plusminus",
+        "ood_rmse",
+        "context_r_estimatedS_Y"
+      ],
+      "rows": [
+        [
+          "Standard ICL",
+          3.416,
+          2.291,
+          1.74,
+          0.545
+        ],
+        [
+          "Env-stratified",
+          3.403,
+          1.81,
+          1.64,
+          0.586
+        ],
+        [
+          "S-swap estimated S",
+          0.379,
+          0.449,
+          9.12,
+          0.216
+        ]
+      ],
+      "evidence_kind": "paper_reported_values_visually_compared_not_independent_reproduction"
+    }
+  ],
+  "rows": 21,
+  "new_experiments": 0
+}
