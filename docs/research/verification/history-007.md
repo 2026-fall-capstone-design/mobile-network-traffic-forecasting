@@ -5,8 +5,9 @@
 ## 저장 결과와 문헌을 구분한 확인
 
 - 계획·판단3개와 코드2개를 전부 읽었다. 두 JSON은 전체 키를 확인했다. 결과의 계획 SHA는 일치하지만 실행 전 봉인의 독립 증거는 아니다.
-- [공유 가능한 검산 도구](../../../scripts/research_archive/verify_population_upc_history.py)의 [561개 검사](history-007-arithmetic.json)가 통과했다. population12배열의 지정 집계, pilot16ID, UPC24개 소속 벡터와12개 기간/12개 순서 비교를 검산한다. ARI는 분할표의 조합식, label 일치는 K≤5의 모든 순열로 확인했다. 원 코드의 sklearn/scipy 함수나 clustering을 실행하지 않았다.
+- [공유 가능한 검산 도구](../../../scripts/research_archive/verify_population_upc_history.py)의 [562개 검사](history-007-arithmetic.json)가 통과했다. population12배열의 지정 집계, pilot16ID, UPC24개 소속 벡터와12개 기간/12개 순서 비교를 검산하고, 필수 신규 보존 원문9개의 ID 목록을 확인한다. ARI는 분할표의 조합식, label 일치는 K≤5의 모든 순열로 확인했다. 원 코드의 sklearn/scipy 함수나 clustering을 실행하지 않았다.
 - 별도 로컬572개 확인에는 H5의 SHA·크기·shape·날짜와 원본 상태·예산6개 불변이 포함된다. 두 검사 수를 독립 연구 검증 횟수로 더하지 않는다. [로컬 자료 확인 범위](history-007-local-data-check.json).
+- 잘못된 입력을 거부하는지도 확인했다. 평균 오차·ARI를 바꾸고 해시를 갱신한2개 사본과, 필수 보존 원문을 하나씩 목록에서 뺀9개 사본 모두 검산기가 거부했다. 원본이나 게시 근거는 변경하지 않았다.
 - [주장·일차자료 대조](history-007-primary-review.json)는10개 핵심 주장과 적용 한계를 연결한다. 원 UPC PDF4·5쪽과 고정 GECOS 코드를 다시 확인했다. 공개 코드는 `idx % n_groups`로 초기화하며, 이 진단의 제한된 Algorithm1 해석과 동일하지 않다.
 - K3·K4/weekday_sequence/첫 기간의 순서 일치100% 반례를 보존했다. 항상 순서에 민감하다고 쓰지 않는다. 기간 차이와 최종 예측 손해도 구분했다.
 - 12의0.249초는 앞선08 진단이고,10/11은0.289·0.301초다. 모델/새 RCTL 세 번으로 중복 집계하지 않는다.

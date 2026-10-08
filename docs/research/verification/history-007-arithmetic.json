@@ -1,9 +1,13 @@
 {
   "batch_id": "history-007",
   "success": true,
-  "checked_at_utc": "2026-10-08T22:40:01.032436+00:00",
-  "checks_passed": 561,
+  "checked_at_utc": "2026-10-08T22:59:32.577346+00:00",
+  "checks_passed": 562,
   "checks": [
+    {
+      "check": "manifest:new_preserved_source_ids",
+      "passed": true
+    },
     {
       "check": "SRC-0023595:sha256",
       "passed": true
@@ -2805,6 +2809,6 @@
     "Stored aggregates checked against stored arrays; raw traffic tensor not loaded.",
     "No PCC matrix, seed selection or greedy partition independently regenerated.",
     "Dates/HDF5 identity were separately checked locally; not part of portable CI.",
-    "No complete UPC reproduction, forecasting benefit or independent scientific validation."
+    "No full UPC reproduction, forecasting benefit or independent scientific validation."
   ]
 }

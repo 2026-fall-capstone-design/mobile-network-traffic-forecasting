@@ -30,6 +30,29 @@ def verify(source: Path) -> dict:
         if not ok:
             raise AssertionError((name, actual, expected))
 
+    expected_new_source_ids = (
+        "SRC-0020863",
+        "SRC-0020887",
+        "SRC-0020908",
+        "SRC-0022978",
+        "SRC-0023208",
+        "SRC-0023595",
+        "SRC-0023596",
+        "SRC-0023612",
+        "SRC-0023613",
+    )
+    check(
+        "manifest:new_preserved_source_ids",
+        tuple(
+            sorted(
+                row["source_id"]
+                for row in manifest["sources"]
+                if row.get("preservation") == "new_byte_identical_archive"
+            )
+        ),
+        expected_new_source_ids,
+    )
+
     def access(sid, scope):
         """Hash each preserved file and record the fields used, retaining original identity."""
         row = catalog[sid]

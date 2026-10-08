@@ -28,6 +28,6 @@ uv run --locked --group archive python scripts/research_archive/verify_populatio
   --output .research-archive/recheck-0010-0012.json
 ```
 
-[검산 결과](../../verification/history-007-arithmetic.json)는561개 확인과24개 비교의 전체 값을 담는다. 원 계획·코드·결과의 실제 재실행 성공을 뜻하지 않는다. 동점 수·raw 품질·실행 시간/RSS는 저장 보고값으로 구분했다. H5의 별도 로컬 해시·날짜 확인은 [이 파일](../../verification/history-007-local-data-check.json)이며 위 명령이나 CI에서 수행되지 않는다.
+[검산 결과](../../verification/history-007-arithmetic.json)는562개 확인과24개 비교의 전체 값을 담는다. 필수 신규 보존 원문9개의 ID 목록도 검사한다. 원 계획·코드·결과의 실제 재실행 성공을 뜻하지 않는다. 동점 수·raw 품질·실행 시간/RSS는 저장 보고값으로 구분했다. H5의 별도 로컬 해시·날짜 확인은 [이 파일](../../verification/history-007-local-data-check.json)이며 위 명령이나 CI에서 수행되지 않는다.
 
 대용량 H5의 출처·해시와 고정 GECOS 코드 주소는 manifest의 `primary_sources`다. 원 UPC의 지정 쪽 검토는 [일차자료 검토](../../verification/history-007-primary-review.json)에 연결했고 논문 전체를 재게시하지 않았다. 모든 후속 UPC 연구의 완료나 본문 전체 문헌 검토를 뜻하지 않는다.
