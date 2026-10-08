@@ -1,0 +1,82 @@
+"""Explicit interpretation of UPC's defined large-group core; no RCTL or TFM."""
+import os
+for k in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:
+    os.environ[k]='4'
+import pathlib,time,json,hashlib
+import h5py,numpy as np,pandas as pd,psutil
+from scipy.optimize import linear_sum_assignment
+from sklearn.metrics import adjusted_rand_score
+
+base=pathlib.Path(__file__).resolve().parent;out=base/'results';start=time.perf_counter()
+rss=[psutil.Process().memory_info().rss]
+with h5py.File(base/'assets/data_git_version.h5','r') as h:
+    raw=h['data'][:672,:,2];dates=pd.to_datetime(h['idx'][:672].astype(str))
+rss.append(psutil.Process().memory_info().rss)
+
+def prepare(lo,hi,kind):
+    a=raw[lo:hi];span=np.ptp(a,axis=0);good=np.isfinite(a).all(0)&(span>0)
+    a=(a-a.min(0))/np.where(span>0,span,1)
+    daily=a.reshape(14,24,10000);week=np.asarray(dates[lo:hi:24].dayofweek)<5
+    daily=daily[week];peaks=daily.argmax(1)
+    counts=np.stack([(peaks==h).sum(0) for h in range(24)])
+    mode=counts.argmax(0);group_sizes=np.bincount(mode[good],minlength=24)
+    eligible_hours=np.flatnonzero(group_sizes>10)
+    curves=[]
+    for hour in eligible_hours:
+        series=daily[:,:,good&(mode==hour)].mean(axis=2)
+        curves.append(series.mean(0) if kind=='daily_profile' else series.ravel())
+    corr=np.corrcoef(curves)
+    assert np.isfinite(corr).all()
+    return mode,good,eligible_hours,corr,group_sizes
+
+def cluster(mode,good,hours,corr,K,reverse):
+    n=len(hours);assert n>=K
+    pairs=[(corr[a,b],int(hours[a]),int(hours[b]),a,b) for a in range(n) for b in range(a+1,n)]
+    *_,a,b=min(pairs);chosen=[a,b]
+    while len(chosen)<K:
+        chosen.append(min((float(corr[z,chosen].mean()),int(hours[z]),z) for z in range(n) if z not in chosen)[2])
+    groups=[[z] for z in chosen]
+    for z in sorted((z for z in range(n) if z not in chosen),key=lambda z:hours[z],reverse=reverse):
+        best=min((-float(corr[z,g].mean()),j) for j,g in enumerate(groups))[1]
+        groups[best].append(z)
+    labels=np.full(10000,-1,int)
+    for c,g in enumerate(groups):labels[good&np.isin(mode,hours[g])]=c
+    return labels,{'seed_hours':[int(hours[z]) for z in chosen],
+                   'cluster_peak_hours':[[int(hours[z]) for z in g] for g in groups],
+                   'assigned_cell_counts':np.bincount(labels[labels>=0],minlength=K).tolist(),
+                   'unassigned_cells':int(np.sum(labels<0))}
+
+def compare(a,b,K):
+    mask=(a>=0)&(b>=0);counts=np.zeros((K,K),int)
+    np.add.at(counts,(a[mask],b[mask]),1)
+    i,j=linear_sum_assignment(-counts)
+    return {'included_cells':int(mask.sum()),'included_fraction':float(mask.mean()),
+            'adjusted_Rand_index':float(adjusted_rand_score(a[mask],b[mask])),
+            'label_matched_agreement':float(counts[i,j].sum()/mask.sum())}
+
+records=[];stored={}
+for kind in ['daily_profile','weekday_sequence']:
+    first=prepare(0,336,kind);second=prepare(336,672,kind)
+    for K in [3,4,5]:
+        labels={}
+        for reverse in [False,True]:
+            name='descending' if reverse else 'ascending'
+            p,pr=cluster(*first[:4],K,reverse);q,qr=cluster(*second[:4],K,reverse)
+            labels[name]=(p,q)
+            stored[f'{kind}_K{K}_{name}_first']=p;stored[f'{kind}_K{K}_{name}_second']=q
+            records.append({'waveform':kind,'K':K,'order':name,
+                            'between_periods':compare(p,q,K),'first':pr,'second':qr,
+                            'group_sizes_first':first[4].tolist(),'group_sizes_second':second[4].tolist()})
+        records.append({'waveform':kind,'K':K,'order_sensitivity':{
+            'first_period':compare(labels['ascending'][0],labels['descending'][0],K),
+            'second_period':compare(labels['ascending'][1],labels['descending'][1],K)}})
+rss.append(psutil.Process().memory_info().rss);elapsed=time.perf_counter()-start
+assert elapsed<30 and max(rss)<1024**3
+result={'plan_sha256':hashlib.sha256((base/'11_upc_core_stability_plan.md').read_bytes()).hexdigest(),
+        'is_original_UPC_replication':False,'records':records,'elapsed_seconds':elapsed,
+        'observed_RSS_bytes':max(rss),'new_model_contexts':0,'new_model_query_rows':0,'new_RCTL_fits':0,
+        'scope':'Large peak groups only under explicitly fixed interpretation; not forecast performance.'}
+(out/'upc_core_stability.json').write_text(json.dumps(result,indent=2,allow_nan=False),encoding='utf-8')
+np.savez_compressed(out/'upc_core_labels.npz',**stored)
+print(json.dumps({'records':[{k:v for k,v in r.items() if k not in ['first','second','group_sizes_first','group_sizes_second']} for r in records],
+                  'seconds':elapsed,'RSS_bytes':max(rss)},indent=2))

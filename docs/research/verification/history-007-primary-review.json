@@ -1,0 +1,215 @@
+{
+  "batch_id": "history-007",
+  "reviewed_at_utc": "2026-10-08T22:38:37.900881+00:00",
+  "reviewer": "same_archive_agent_not_independent_scientific_review",
+  "primary_sources": [
+    {
+      "source_id": "SRC-0020622",
+      "path": "tmp/pdfs/gecos_main.py",
+      "sha256": "ecdf4f95996eeef8955337c9f4d5a3f3dc073ba961b4a971bdc170eb7459f673",
+      "size_bytes": 4800,
+      "exact_alias_source_ids": [
+        "SRC-0000353",
+        "SRC-0020622",
+        "SRC-0061693"
+      ],
+      "title": "GECOS main.py",
+      "url": "https://github.com/Superint-Lab/GECOS/blob/a7519dde9d6f5deb3006689df047d99ea0dac7b7/main.py",
+      "version": "a7519dde9d6f5deb3006689df047d99ea0dac7b7",
+      "read_scope": {
+        "lines": [
+          1,
+          134
+        ],
+        "commit_bytes_verified": true,
+        "executed": false,
+        "reread_for_this_batch": true
+      },
+      "review_status": "agent_full_text_review",
+      "distribution": "metadata_and_official_link_only",
+      "records": [
+        "0011",
+        "0012"
+      ],
+      "reused_prior_verification": "../../verification/pilot-005-primary-review.json"
+    },
+    {
+      "source_id": "SRC-0023485",
+      "path": "tmp/redesign_20260925/assets/data_git_version.h5",
+      "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+      "size_bytes": 357150320,
+      "exact_alias_source_ids": [
+        "SRC-0023485",
+        "SRC-0073719"
+      ],
+      "records": [
+        "0010",
+        "0011",
+        "0012"
+      ],
+      "distribution": "metadata_and_official_link_only",
+      "url": "https://media.githubusercontent.com/media/chuanting/STCNet/dc3ff65eb42b099ef8ec281c10282d6c47b533cb/Github_Version/data/data_git_version.7z",
+      "read_scope": [
+        "HDF5:data.shape",
+        "HDF5:idx[:840]"
+      ],
+      "review_status": "selected_fields_checked",
+      "archive_member_identity": {
+        "source_id": "SRC-0073719",
+        "path": "data_git_version.h5",
+        "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+        "size_bytes": 357150320,
+        "container_id": "SRC-0023486",
+        "container_path": "tmp/redesign_20260925/assets/milan_stcnet.7z",
+        "matched_physical_source_id": "SRC-0023485",
+        "method": "tar -xOf to SHA256 stream; no disk extraction or script execution"
+      },
+      "local_read_proof": "../../verification/history-007-local-data-check.json"
+    },
+    {
+      "source_id": "EXT-P005-UPC",
+      "source_root_alias": "provided-reference-outside-Tab-ICL",
+      "title": "Urban Mobile Data Prediction With Geospatial Clustering and Dual Residual Learning",
+      "sha256": "d8b720fe96f4d2da8ebcbe9dc779c0b4512dec0b2f4823295f908fcd639ae622",
+      "size_bytes": 7721301,
+      "version": "IEEE TNSM22(6),2025,pages6260–6273",
+      "url": "https://doi.org/10.1109/TNSM.2025.3599168",
+      "read_scope": {
+        "pdf_pages_full_text": [
+          4,
+          5
+        ],
+        "visual_pages": [
+          4,
+          5
+        ],
+        "key_sections": "§III.A and Algorithm1 only; other paper sections not newly reviewed"
+      },
+      "distribution": "metadata_and_official_link_only",
+      "reused_prior_verification": "verification/pilot-005-primary-review.json",
+      "records": [
+        "0011",
+        "0012"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "claim_id": "H007-C01",
+      "sources": [
+        "SRC-0020863",
+        "SRC-0022978",
+        "SRC-0023595",
+        "SRC-0023485"
+      ],
+      "finding": "처리된 hourly Milan 10000cell, 처음672h 기술과 다음168h 단순 시차 기준이다. B2 pilot의16ID와 날짜를 대조했다.",
+      "locator": "10 lines5–10; code19–29/53–56; saved JSON; HDF5 shape/idx",
+      "limitation": "원10분CDR 재현·RCTL test·새 모델 추론이 아니다. 35일 nonfinite/672h positive scale 필터 구현을 구분한다."
+    },
+    {
+      "claim_id": "H007-C02",
+      "sources": [
+        "SRC-0020908",
+        "SRC-0023595",
+        "SRC-0023596",
+        "SRC-0023589"
+      ],
+      "finding": "pilot 활동량 중앙값734.79와 전체204.86, 15/16의 높은 활동량 및 세 mean-scaled MAE 비교를 저장값에서 확인했다.",
+      "locator": "12 lines7–17; population JSON whole_grid/B2_pilot; NPZ scale/mae_lag_*",
+      "limitation": "공간 pilot 조건의 범위이며 전체 도시의 모든 clustering 기각이 아니다. 평균 차이의 독립 통계검정 없음."
+    },
+    {
+      "claim_id": "H007-C03",
+      "sources": [
+        "SRC-0020908",
+        "SRC-0023595",
+        "SRC-0023596",
+        "SRC-0022978"
+      ],
+      "finding": "평균 profile PCC 중앙값.98408과 mode일치38.23%,1h이내62.72%는 다른 통계다. 동점45.99%는 저장 보고값이다.",
+      "locator": "12 lines19–23; code34–52; JSON/NPZ profile_corr/peak_mode_first/last",
+      "limitation": "동점 수는 NPZ에 없어 독립 재계산하지 않았다. 넓은 peak는 가능한 설명이지 cell별 원인 검증이 아니다."
+    },
+    {
+      "claim_id": "H007-C04",
+      "sources": [
+        "SRC-0020887",
+        "SRC-0020622",
+        "EXT-P005-UPC"
+      ],
+      "finding": "원 UPC Algorithm1/§III.A와 고정 공개 main.py를 구분한다. 공개 코드는 주어진 CSV와 idx%n_groups 초기화의 재배정 예시다.",
+      "locator": "11 lines5–9; main.py1–59; paper physical4/5",
+      "limitation": "공개 clustering 초기화는 난수가 아니다. 논문 전 절차나 원 성능의 재현을 주장하지 않는다."
+    },
+    {
+      "claim_id": "H007-C05",
+      "sources": [
+        "SRC-0020887",
+        "SRC-0023208",
+        "SRC-0023613"
+      ],
+      "finding": "큰 group >10만 대상으로 두14일/두파형/K3·4·5/두순서의 고정 해석을 수행했다. 미배정5/11cell을 분모와 함께 남겼다.",
+      "locator": "11 lines13–18; code16–72; saved records",
+      "limitation": "min-max는 각14일, 상관은 초기 group PCC를 유지. 12조건은 모델 실험12회가 아니다. 원모든군집 처리의 정의로 바꾸지 않는다."
+    },
+    {
+      "claim_id": "H007-C06",
+      "sources": [
+        "SRC-0020908",
+        "SRC-0023613",
+        "SRC-0023612"
+      ],
+      "finding": "K3/daily/ascending 두 기간 일치56.6393%,ARI.215778을 포함한12개 기간 비교를 저장소속으로 재계산했다.",
+      "locator": "12 line29; records with order; 24 NPZ labels",
+      "limitation": "동시 배정9986cell만 비교. 실제 예측손해·TabICL 필요성·새 알고리즘 우위의 증거가 아니다."
+    },
+    {
+      "claim_id": "H007-C07",
+      "sources": [
+        "SRC-0023613",
+        "SRC-0023612"
+      ],
+      "finding": "같은 기간 순서 비교12개도 검산했다. weekday_sequence first의K3/K4는ARI와일치율1로 순서에 따른 차이가 없다.",
+      "locator": "records with order_sensitivity; NPZ labels",
+      "limitation": "항상 순서에 민감하다는 결론을 쓰지 않는다. 같은 자료의 민감도 조건은 독립 반복이 아니다."
+    },
+    {
+      "claim_id": "H007-C08",
+      "sources": [
+        "SRC-0020908",
+        "SRC-0023595",
+        "SRC-0023613",
+        "SRC-0023580"
+      ],
+      "finding": "10/11 저장 경과시간은.2892933/.3006076초다.12의세진단 중.2492086초는앞선08이다. 새Tab/RCTL실행0표기를 확인했다.",
+      "locator": "12 lines37–39; each JSON elapsed_seconds and zero model fields; 08 JSON elapsed_seconds",
+      "limitation": "실행시간·RSS는 원 보고값. monitor sampled max와 UPC 몇시점 관측값을 진짜 peak나 현재 성능으로 보장하지 않는다."
+    },
+    {
+      "claim_id": "H007-C09",
+      "sources": [
+        "SRC-0020908"
+      ],
+      "finding": "당시 판단은 소속 안정성만 최적화하지 말고 실제 예측관계와 단순 설명을 먼저 확인하자는 것이었다.",
+      "locator": "12 lines31–37",
+      "limitation": "과거 예산/다음실험은 현재 명령이 아니다. 13–15와 후속UPC/회귀TabPFN의 전체 연결은 미완료."
+    },
+    {
+      "claim_id": "H007-C10",
+      "sources": [
+        "SRC-0023595",
+        "SRC-0023596",
+        "SRC-0023613",
+        "SRC-0023612"
+      ],
+      "finding": "보존된 두JSON/36배열의 지정 집계와 소속 일치 검산을 원신호·PCC/seed/greedy 재생성의 독립 재현과 구분한다.",
+      "locator": "history007 saved-arithmetic and declared scopes",
+      "limitation": "원자료 품질·동점 비율·원실행 로그·환경 전체와 원 UPC 정확도는 저장 산출물만으로 검증하지 않는다."
+    }
+  ],
+  "reused_primary_assets": true,
+  "whole_primary_papers_reviewed": 0,
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "new_simulations": 0
+}

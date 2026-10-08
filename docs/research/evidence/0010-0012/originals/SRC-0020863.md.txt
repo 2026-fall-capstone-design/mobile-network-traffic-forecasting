@@ -1,0 +1,13 @@
+# 전체 grid에서 문제 범위 확인 — 실행 전 계획
+
+2026-09-25. 중앙 16 cell의 B2 실패를 전체 도시의 결론으로 확대하지 않기 위한 학습 없는 자료 진단이다.
+
+- 이미 확보한 processed hourly Milan internet activity의 10,000개 grid 모두 사용한다. model 실행은 없다. 제외는 non-finite 또는 처음 672시간 평균이 0인 경우만 별도로 표시한다.
+- 기간: 처음 672시간(28일)으로 활동량·변동·peak 요약, 바로 다음 168시간으로 last-value, daily-lag, weekly-lag MAE를 계산한다. RCTL test target 및 RCTL 출력은 사용하지 않는다.
+- 각 cell의 weekday별 일일 peak hour를 계산하고, weekday peak mode의 집중도, 앞 14일과 뒤 14일의 peak mode 일치율을 기록한다. 동점은 가장 이른 시각으로 정하되 동점 수와 모드 차이가 1시간 이내인지도 별도로 보고한다. 이 요약은 전체 UPC 구현이 아니다.
+- weekday 24시간 평균 profile의 앞·뒤 14일 PCC를 계산한다. profile이 일정하여 PCC를 계산할 수 없는 cell 수를 보고한다. mode 변동과 전체 파형 변화를 구분한다.
+- B2의 16 cell과 전체 grid를 처음 28일 평균 활동량, 변동계수, peak 집중도, 세 계절 기준의 다음 주 mean-scaled MAE 분포에서 비교한다. 특정 결과가 좋은 cell을 골라 후속 실험 대상을 바꾸지 않는다.
+- 전 cell 쌍의 거리, 모델 fit/predict, clustering, 새 RCTL 학습은 하지 않는다. 현재 raw 10분 원자료의 재현으로 부르지 않는다.
+- 새 수치 계산 wall time 60초, RAM 1 GiB 상한. 전체 goal의 저비용 계산 10분 한도에 합산한다. 메모리와 시간을 결과에 남긴다.
+
+판단: pilot이 대표하는 범위가 좁으면 그 결과의 범위를 축소한다. UPC 요약에 변동이 있어도 계절 feature·간단한 추정으로 해결될 수 있으므로 곧바로 새 algorithm의 필요성으로 바꾸지 않는다. 자료 보충이나 공간 해상도 문제가 보이면 raw 자료 확인이 필요한 항목으로 분리한다.

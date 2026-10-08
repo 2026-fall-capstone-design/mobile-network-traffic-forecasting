@@ -35,4 +35,6 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 
 [history-006 목록](history-006-sources.jsonl)은05 원문1개 재사용과 관련 여섯 논문의 텍스트6개·PDF6개를 연결한다. [읽은 범위](../sources/history-006.md)는 지정 줄과 PDF의 지정 내용17쪽이다. 전논문·다른 개정본 완료로 집계하지 않았다. 회귀 TabPFN 후속과05의 남은 판단 연결을 이어가며, 원문69행 열람을 전체 주장 검수 완료로 표시하지 않는다.
 
+[history-007 목록](history-007-sources.jsonl)은10–12의 원문9개 새 보존과 기존2개 재사용을 연결한다. [읽은 범위](../sources/history-007.md)는 본문전체5개·JSON전체키2개·배열2개 및 이전 자료의 지정 필드를 구분한다. 고정 GECOS 코드와 대용량 H5 metadata는 기존 자료를 재검토한2건이며 새 논문이나 팀 원자료 보존 완료로 세지 않는다. 원 UPC의 지정 두 쪽은 별도 외부 검토에 연결했다.
+
 목록과 근거 사본은 정리 시점의 스냅샷이다. 원본 변경 시 관련 주장과 검토 상태를 재확인한다. GitHub에는 검수된 묶음부터 반영하며, 전체 기록의 본문 정리는 진행 중이다.

@@ -1,0 +1,43 @@
+{
+  "checked_at_utc": "2026-10-08T22:36:05.310048+00:00",
+  "HDF5_date_scope": {
+    "start": "2013-11-01T00",
+    "first_half_end": "2013-11-14T23",
+    "second_half_start": "2013-11-15T00",
+    "description_end": "2013-11-28T23",
+    "query_start": "2013-11-29T00",
+    "query_end": "2013-12-05T23"
+  },
+  "source_control_files_unchanged": 6,
+  "prior_cost_reference": {
+    "source_id": "SRC-0023580",
+    "elapsed_seconds": 0.24920859999929235,
+    "note": "12 line39 mentions three diagnostics: earlier08 .249 seconds plus10 .289 and11 .301. Not three new model runs or three new10/11 diagnostics."
+  },
+  "success": true,
+  "reported_only_not_recomputed": [
+    "zero_fraction",
+    "nonfinite_cells",
+    "nonpositive_scale_cells",
+    "negative_value_count",
+    "weekday_peak_mode_tied_fraction",
+    "daily_weekday_peak_not_unique_fraction",
+    "half_period_either_peak_mode_tied_fraction",
+    "elapsed_seconds",
+    "peak_RSS_bytes",
+    "observed_RSS_bytes"
+  ],
+  "model_runs": 0,
+  "source_root_alias": "Tab-ICL",
+  "note": "Local HDF5 identity/shape/idx only; not executed in portable GitHub CI.",
+  "HDF5_source": {
+    "source_id": "SRC-0023485",
+    "path": "tmp/redesign_20260925/assets/data_git_version.h5",
+    "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+    "size_bytes": 357150320,
+    "read_scope": [
+      "HDF5:data.shape",
+      "HDF5:idx[:840]"
+    ]
+  }
+}
