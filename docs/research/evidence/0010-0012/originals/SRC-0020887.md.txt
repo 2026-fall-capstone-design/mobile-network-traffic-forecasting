@@ -1,0 +1,20 @@
+# UPC의 PCC 단계가 peak 요약의 변동을 보완하는지 확인 — 실행 전 계획
+
+2026-09-25. 10 진단에서 peak mode의 일치율은 38.23%였지만 평균 파형은 안정적이었다. 따라서 peak mode 변동만으로 UPC 전체 소속이 불안정하다고 판단하지 않는다.
+
+## 원문과 공개 코드의 범위
+
+원문 Algorithm 1은 weekday peak mode로 최대 24개 group을 만들고, 크기가 10보다 큰 group의 평균 트래픽 PCC로 가장 덜 유사한 seed를 고른 뒤 나머지 group을 배정한다. 반면 pinned public `main.py`는 사전에 만든 correlation CSV를 읽고 임의 초기 소속에서 group을 재배정한다. peak 생성부터 Algorithm 1 전체까지 공개 코드가 일치한다고 가정하지 않는다.
+
+원문에는 작은 group의 `None` 상관 처리와 greedy 배정 순서가 완전히 정해져 있지 않다. 이번에는 크기가 10보다 큰 group에서만 정의되는 부분을 계산한다. 나머지 cell을 성능 비교에서 제거하는 절차가 아니며, 자료가 부족한 group은 미배정으로 표시하고 비교 가능한 비율을 함께 보고한다. 이 구현은 UPC 전체의 충실 재현이라고 부르지 않는다.
+
+## 고정할 계산
+
+1. 기존 첫 28일을 앞 14일과 뒤 14일로 나누고 weekday 10일씩 사용한다. cell별 min-max는 각각의 해당 14일 내 실제 관측으로 계산한다. 동일 값 범위가 0인 cell은 별도 표시한다.
+2. daily peak hour와 weekday mode는 10 계획과 같이 동점에서 이른 시각을 선택한다.
+3. 큰 peak group의 평균 파형을 두 해석으로 계산한다. 주 분석은 cell과 weekday를 평균한 24시간 profile이며, 민감도 분석은 cell만 평균하고 weekday×24시간을 이어 붙인 파형이다. 두 해석의 결과를 섞어 유리한 결과를 선택하지 않는다.
+4. 원문 설명대로 PCC가 최소인 두 group에서 시작한다. 추가 seed는 이미 고른 seed와의 평균 PCC가 가장 작은 group이다. K=3을 주 분석, K=4·5를 민감도로 고정한다.
+5. 나머지 큰 group은 현재 cluster에 포함된 group들과 평균 PCC가 가장 높은 곳에 배정한다. 주 분석은 peak hour 오름차순, 민감도는 내림차순이다. 동점은 낮은 peak hour 또는 cluster 번호 순이다. 처음 계산한 group PCC를 유지한다.
+6. 두 기간에 모두 배정된 cell에 한해 adjusted Rand index, label 정렬 후 일치율, 포함 비율과 cluster 크기를 기록한다. 한 기간 안에서 오름·내림 배정 순서 차이도 기록한다. 새로운 clustering 성능이나 RCTL 정확도 지표가 아니다.
+
+모델 호출·RCTL 학습 0회. wall time 30초, RAM 1 GiB. 저비용 누적 예산 안에서 실행한다. 안정성이 낮더라도 TabICL 기반 새 방법을 채택하지 않는다. 그 변동이 최종 예측 손해로 이어진다는 별도의 연결이 있어야 한다.

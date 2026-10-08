@@ -1,0 +1,114 @@
+"""Training-free scope audit, first 35 days only; not an UPC implementation."""
+import os
+for k in ['OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS']:
+    os.environ[k] = '4'
+import pathlib, json, time, hashlib, threading
+import h5py, numpy as np, pandas as pd, psutil
+
+base = pathlib.Path(__file__).resolve().parent
+out = base / 'results'
+start = time.perf_counter()
+process = psutil.Process()
+memory = [process.memory_info().rss]
+stop = threading.Event()
+def monitor():
+    while not stop.wait(.05):
+        memory.append(process.memory_info().rss)
+thread = threading.Thread(target=monitor, daemon=True)
+thread.start()
+with h5py.File(base/'assets/data_git_version.h5', 'r') as h:
+    data = h['data'][:840, :, 2]
+    dates = pd.to_datetime(h['idx'][:840].astype(str))
+assert data.shape == (840, 10000)
+scales = data[:672].mean(axis=0)
+eligible = np.isfinite(data).all(axis=0) & (scales > 0)
+safe_scale = np.where(eligible, scales, np.nan)
+cv = data[:672].std(axis=0) / safe_scale
+daily = data[:672].reshape(28, 24, 10000)
+weekday = np.asarray(dates[::24][:28].dayofweek) < 5
+assert weekday.sum() == 20
+maxval = daily.max(axis=1)
+peaks = daily.argmax(axis=1)
+unique_daily_peak = np.sum(daily == maxval[:,None,:], axis=1) == 1
+
+def modes(day_indices):
+    v = peaks[day_indices]
+    counts = np.stack([(v == hour).sum(axis=0) for hour in range(24)])
+    return counts.argmax(axis=0), counts.max(axis=0)/len(v), (counts == counts.max(axis=0)).sum(axis=0)
+
+mode_all, concentration, ties_all = modes(np.flatnonzero(weekday))
+first_mask = weekday & (np.arange(28) < 14)
+last_mask = weekday & (np.arange(28) >= 14)
+mode_first, _, ties_first = modes(np.flatnonzero(first_mask))
+mode_last, _, ties_last = modes(np.flatnonzero(last_mask))
+profile_first = daily[first_mask].mean(axis=0)
+profile_last = daily[last_mask].mean(axis=0)
+u = profile_first-profile_first.mean(axis=0)
+v = profile_last-profile_last.mean(axis=0)
+denom = np.sqrt((u*u).sum(axis=0)*(v*v).sum(axis=0))
+with np.errstate(divide='ignore', invalid='ignore'):
+    profile_corr = (u*v).sum(axis=0)/denom
+hour_diff = np.abs(mode_first-mode_last)
+hour_diff = np.minimum(hour_diff, 24-hour_diff)
+qtime = np.arange(672,840)
+errors = {str(lag): np.abs(data[qtime]-data[qtime-lag]).mean(axis=0)/safe_scale for lag in [1,24,168]}
+pilot_ids = np.load(out/'observed_risk_tables.npz')['cell_ids']
+pilot_mask = np.isin(np.arange(10000)+1, pilot_ids)
+
+def describe(a):
+    a = np.asarray(a); a = a[np.isfinite(a)]
+    if not len(a):
+        return {'count':0, 'mean':None, 'quantiles':None}
+    return {'count':int(len(a)), 'mean':float(a.mean()),
+            'quantiles':dict(zip(['0','10','25','50','75','90','99','100'],
+                                 np.quantile(a,[0,.1,.25,.5,.75,.9,.99,1]).tolist()))}
+
+def summarize(mask):
+    mask = mask & eligible
+    return {
+        'cells':int(mask.sum()), 'first_28d_mean_activity':describe(scales[mask]),
+        'first_28d_coefficient_of_variation':describe(cv[mask]),
+        'weekday_peak_mode_concentration':describe(concentration[mask]),
+        'weekday_peak_mode_tied_fraction':float(np.mean(ties_all[mask]>1)),
+        'daily_weekday_peak_not_unique_fraction':float(np.mean(~unique_daily_peak[weekday][:,mask])),
+        'half_period_peak_mode_equal_fraction':float(np.mean(mode_first[mask]==mode_last[mask])),
+        'half_period_peak_mode_within_1h_fraction':float(np.mean(hour_diff[mask]<=1)),
+        'half_period_either_peak_mode_tied_fraction':float(np.mean((ties_first[mask]>1)|(ties_last[mask]>1))),
+        'weekday_profile_half_period_PCC':describe(profile_corr[mask]),
+        'profile_PCC_undefined_cells':int(np.sum(~np.isfinite(profile_corr[mask]))),
+        'next_week_mean_scaled_MAE':{k:describe(vals[mask]) for k,vals in errors.items()}
+    }
+
+result = {'plan_sha256':hashlib.sha256((base/'10_population_scope_plan.md').read_bytes()).hexdigest(),
+          'scope':'Processed Milan hourly internet activity, first 28d description and next 7d naive errors; no models or new clustering.',
+          'total_cells':10000, 'eligible_cells':int(eligible.sum()),
+          'nonfinite_cells':int(np.sum(~np.isfinite(data).all(axis=0))),
+          'nonpositive_scale_cells':int(np.sum(scales<=0)),
+          'negative_value_count':int(np.sum(data<0)),
+          'zero_fraction':float(np.mean(data==0)),
+          'whole_grid':summarize(np.ones(10000,bool)), 'B2_pilot':summarize(pilot_mask),
+          'B2_pilot_ids':pilot_ids.tolist(),
+          'pilot_cell_mean_activity_percentiles_in_whole_grid':[float(np.mean(scales[eligible] <= scales[i-1])) for i in pilot_ids],
+          'new_model_contexts':0,'new_model_query_rows':0,'new_RCTL_fits':0,
+          'RCTL_outputs_read':False, 'is_original_UPC_replication':False}
+np.savez_compressed(out/'population_scope_values.npz',cell_ids=np.arange(10000)+1,eligible=eligible,
+                    scale=scales,cv=cv,peak_concentration=concentration,peak_mode_all=mode_all,
+                    peak_mode_first=mode_first,peak_mode_last=mode_last,profile_corr=profile_corr,
+                    **{f'mae_lag_{k}':v for k,v in errors.items()})
+memory.append(process.memory_info().rss)
+stop.set();thread.join()
+elapsed = time.perf_counter()-start
+assert elapsed < 60, 'Declared diagnostic time cap exceeded'
+assert max(memory) < 1024**3, 'Declared memory cap exceeded'
+result['elapsed_seconds'] = elapsed;result['peak_RSS_bytes'] = max(memory)
+(out/'population_scope_diagnostic.json').write_text(json.dumps(result,indent=2,allow_nan=False),encoding='utf-8')
+print(json.dumps({'eligible':result['eligible_cells'],'all_mean_activity_median':result['whole_grid']['first_28d_mean_activity']['quantiles']['50'],
+                  'pilot_activity_median':result['B2_pilot']['first_28d_mean_activity']['quantiles']['50'],
+                  'pilot_activity_percentiles':result['pilot_cell_mean_activity_percentiles_in_whole_grid'],
+                  'peak_mode_equal_fraction_all':result['whole_grid']['half_period_peak_mode_equal_fraction'],
+                  'peak_within1h_fraction_all':result['whole_grid']['half_period_peak_mode_within_1h_fraction'],
+                  'peak_tie_fraction_all':result['whole_grid']['half_period_either_peak_mode_tied_fraction'],
+                  'profile_PCC_all':result['whole_grid']['weekday_profile_half_period_PCC'],
+                  'naive_errors_whole':{k:v['mean'] for k,v in result['whole_grid']['next_week_mean_scaled_MAE'].items()},
+                  'naive_errors_pilot':{k:v['mean'] for k,v in result['B2_pilot']['next_week_mean_scaled_MAE'].items()},
+                  'seconds':elapsed,'RSS_bytes':max(memory)},indent=2))
