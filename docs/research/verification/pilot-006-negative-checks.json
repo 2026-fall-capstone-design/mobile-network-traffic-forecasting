@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "cases": [
+    {
+      "case": "unread_dates_claim",
+      "failed_as_expected": true,
+      "check": "declared_automated_read_scope"
+    },
+    {
+      "case": "omitted_json_field",
+      "failed_as_expected": true,
+      "check": "declared_automated_read_scope"
+    },
+    {
+      "case": "changed_prediction",
+      "failed_as_expected": true,
+      "check": "smoke_Tab_MAE"
+    },
+    {
+      "case": "broken_timestamp",
+      "failed_as_expected": true,
+      "check": "timestamp_count"
+    }
+  ],
+  "mutated_copies_only": true,
+  "historical_code_executed": false
+}

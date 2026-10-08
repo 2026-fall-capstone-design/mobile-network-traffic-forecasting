@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-08T17:54:20.922513+00:00",
+  "source_id": "SRC-0023485",
+  "path": "tmp/redesign_20260925/assets/data_git_version.h5",
+  "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+  "size_bytes": 357150320,
+  "read_scope": [
+    "HDF5:data.shape",
+    "HDF5:idx[:]",
+    "HDF5:data[:1008,32fixedcellindices,2]"
+  ],
+  "h5py_version": "3.16.0",
+  "numpy_version": "2.5.3",
+  "shape": [
+    1488,
+    10000,
+    3
+  ],
+  "first_timestamp": "2013-11-01 00:00:00",
+  "last_timestamp": "2014-01-01 23:00:00",
+  "unique_hourly_timestamps": true,
+  "raw_matches_saved_design": true,
+  "calendar_columns12_15_max_difference": 0.0,
+  "NPZ_object_dates_loaded": false,
+  "pickle_deserialization_used": false,
+  "model_executions": 0,
+  "original_h5_modified": false,
+  "remaining": "H5 upstream publication/processing lineage not yet verified; saved object dates not deserialized",
+  "later_provenance_check": {
+    "proof": "pilot-006-assets-check.json",
+    "verified": "고정 commit의 LFS pointer와 실제 7z SHA, 7z 내부 H5와 로컬 H5 SHA 일치",
+    "remaining": "원 CDR에서 배포 H5까지 전처리 재실행/전체 계보 미검증. NPZ object dates는 역직렬화하지 않음."
+  }
+}
