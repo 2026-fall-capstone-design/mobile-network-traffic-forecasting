@@ -258,3 +258,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## Beijing 생성 자료를 미래 예측으로 재사용하기 전에 — 51·55 STK-Diff
 
 검색어: STK-Diff, Beijing, 960×168, UrbanKG, diffusion, CRPS, nsample, seed, induced subgraph. [STK-Diff 기록](records/0051-stkdiff-audit.md)은 이미 검수한 스키마와 station 생성 분할, 과거값 mask 없는 생성, 단일샘플 지표의 정답절댓값합 분모를 연결합니다. 새 제안은 실제 시간·단위·예측 때의 가용입력·시간holdout·단순비교군·최종RCTL 효용·비용의 차이를 밝혀야 합니다. 같은 NPZ 스키마 확인은 H031 결과를 재사용하고, 배치 구성·seed 초기화·샘플 수·환경과 그림/코드 차이를 재현 조건으로 남깁니다.
+
+## 미래 일정·합성 증강을 clustering의 새 기여로 제안하기 전에 — 51·55
+
+검색어: football, event context, future covariates, MWS, Past Learner, Future Priors Learner, STL, Bezier, synthetic augmentation, BHE, E-MAPE. [event 기록](records/0051-event-context.md)은 사전에 알려진 일정과 학습 자료 기반 합성, 전체/이벤트/주거/업무 오차의 다른 순위와 큰K 손해를 연결합니다. 새 제안은 일정의 asof 버전·같은 입력의 단순 비교군·지표 구현·train 안의 K 선택·추가 훈련비·소속 변경 행동과 최종 RCTL 효용의 차이를 명시해야 합니다. 원자료/코드 접근과 날짜·수식 불일치가 해소되기 전에는 재현 완료로 세지 않습니다.

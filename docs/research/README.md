@@ -113,3 +113,5 @@
 [Ciena 관측·전송·저장 비용](records/0053-ciena-telemetry.md)은 이전에 확보하지 못했던23쪽 원문을 검토한 후속 기록입니다. [36개 주장](verification/history-040.md)에 세 비용 단위, 압축·MAPE 표, 감소율과 비용 기간의 미확인 분모를 연결하며 이를 cell 선택·RCTL 미래 예측 성능으로 환산하지 않습니다.
 
 [51·55 STK-Diff 생성 코드](records/0051-stkdiff-audit.md)는 기존 Beijing 스키마 검토에 그림4개·의존텍스트647줄을 연결합니다. [34개 주장 검수](verification/history-041.md)에서 station 분할, 기본 단일샘플 지표의 분모, 그림/코드 차이와 재현 공백을 확인할 수 있습니다. 미래 예측·clustering 성능 검증으로 확대하지 않습니다.
+
+[51·55 event context와 합성 증강](records/0051-event-context.md)은 이전 접근 공백을 공식AAM44쪽 검토로 보완합니다. [40개 주장](verification/history-042.md)에 사전 일정·train 합성·MAPE식/날짜 불일치와 큰K·주거/업무별 반례를 연결했습니다. 전체 오차와 이벤트 오차를 구분하며 51·55 전체 종합은 계속 진행합니다.
