@@ -1,0 +1,152 @@
+"""Read-only checkpoint diagnostic. No optimizer, gradients, or clustering selection."""
+import os
+for name in ['OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS']:
+    os.environ[name] = '4'
+import hashlib, json, math, pathlib, sys, time
+import numpy as np
+import psutil
+import torch
+from rctl_torch import RCTL
+
+sys.stdout.reconfigure(encoding='utf-8')
+torch.set_num_threads(4)
+torch.set_num_interop_threads(2)
+base = pathlib.Path(__file__).resolve().parent
+src = base/'results/rctl_pilot'
+out = base/'results/frozen_fit_gap_34'
+out.mkdir(parents=True, exist_ok=True)
+if (out/'run_started.json').exists():
+    raise RuntimeError('An execution already exists; inspect it rather than restarting.')
+started = time.perf_counter()
+process = psutil.Process()
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+def state_digest(model):
+    h = hashlib.sha256()
+    for key, value in model.state_dict().items():
+        h.update(key.encode()); h.update(value.detach().cpu().numpy().tobytes())
+    return h.hexdigest()
+def save(name, obj):
+    (out/name).write_text(json.dumps(obj, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+
+settings = {'new_RCTL_fits': 0, 'new_TabICL_contexts': 0,
+    'checkpoint_count': 29, 'expected_predicted_rows': 107520, 'expected_forward_calls': 251,
+    'wall_cap_seconds': 300, 'rss_cap_bytes': 2*1024**3, 'batch': 512,
+    'train_target_indices': [168,839], 'validation_target_indices': [840,1007],
+    'test_forward_calls': 0, 'model_mode': 'eval/inference_mode',
+    'result_used_to_change_partitions': False, 'validation_tolerance': 1e-6,
+    'plan_sha256': digest(base/'34_frozen_fit_gap_plan.md'),
+    'code_sha256': digest(pathlib.Path(__file__)),
+    'model_code_sha256': digest(base/'rctl_torch.py'),
+    'fit_results_sha256': digest(src/'fit_results.json'),
+    'design_data_sha256': digest(base/'results/design_data.npz')}
+save('settings.json', settings)
+save('run_started.json', {'unix':time.time(), 'pid':os.getpid(), 'settings_sha256':digest(out/'settings.json')})
+frozen = json.loads((src/'frozen_settings.json').read_text(encoding='utf-8'))
+assert settings['model_code_sha256'] == frozen['model_code_sha256']
+fits = json.loads((src/'fit_results.json').read_text(encoding='utf-8'))
+assert len(fits) == 29
+proposal = json.loads((base/'results/observed_risk_pilot.json').read_text(encoding='utf-8'))
+ids = np.asarray(proposal['cell_ids'], dtype=np.int64)
+with np.load(base/'results/design_data.npz', allow_pickle=False) as archive:
+    sel = np.array([np.flatnonzero(archive['cell_indices'] == cell-1).item() for cell in ids])
+    flat, y, times = archive['X'][sel], archive['Y'][sel], archive['times']
+assert flat.shape == (16,840,16) and y.shape == (16,840)
+assert np.array_equal(times, np.arange(168,1008))
+seq = np.empty((16,840,8,9), dtype=np.float32)
+seq[:,:,:,0] = flat[:,:,:8]
+seq[:,:,:,1:] = flat[:,:,None,8:]
+assert np.isfinite(seq).all() and np.isfinite(y).all()
+masks = {'train': times < 840, 'validation': times >= 840}
+counter = {'forward_calls':0, 'predicted_rows':0, 'peak_rss_bytes':process.memory_info().rss}
+def bounds():
+    counter['peak_rss_bytes'] = max(counter['peak_rss_bytes'], process.memory_info().rss)
+    if time.perf_counter()-started > settings['wall_cap_seconds']:
+        raise RuntimeError('Frozen-inference wall cap exceeded')
+    if counter['peak_rss_bytes'] > settings['rss_cap_bytes']:
+        raise RuntimeError('Frozen-inference RSS cap exceeded')
+def predict(model, data):
+    outputs=[]
+    with torch.inference_mode():
+        for offset in range(0,len(data),settings['batch']):
+            bounds()
+            block=torch.from_numpy(data[offset:offset+settings['batch']])
+            outputs.append(model(block).cpu().numpy())
+            counter['forward_calls']+=1;counter['predicted_rows']+=len(block)
+    return np.concatenate(outputs)
+
+records=[]; arrays={}; groups={}; checkpoint_hashes={}
+for fit in fits:
+    key=f"{fit['method']}_{fit['seed']}_cluster{fit['cluster']}"
+    path=src/f'{key}.pt'; members=np.asarray(fit['members'])
+    before=digest(path); checkpoint_hashes[key]=before
+    load_started=time.perf_counter()
+    model=RCTL(steps=8,channels=9)
+    model.load_state_dict(torch.load(path, map_location='cpu', weights_only=True))
+    model.eval(); state_before=state_digest(model)
+    record={**{k:fit[k] for k in ['method','seed','cluster','members','epochs_run','best_epoch','fit_seconds']},
+        'checkpoint_sha256':before, 'checkpoint_load_seconds':time.perf_counter()-load_started,
+        'parameter_count':sum(p.numel() for p in model.parameters()),
+        'trainable_parameter_count':sum(p.numel() for p in model.parameters() if p.requires_grad),
+        'buffer_element_count':sum(b.numel() for b in model.buffers()),
+        'state_tensor_bytes':sum(v.numel()*v.element_size() for v in model.state_dict().values()),
+        'checkpoint_file_bytes':path.stat().st_size,
+        'training_rows_per_epoch':len(members)*int(masks['train'].sum()),
+        'original_optimizer_steps':fit['epochs_run']*math.ceil(len(members)*int(masks['train'].sum())/256),
+        'original_rows_seen':fit['epochs_run']*len(members)*int(masks['train'].sum()),
+        'saved_test_mae':fit['test_mean_scaled_mae']}
+    group_key=f"{fit['method']}_{fit['seed']}"
+    group=groups.setdefault(group_key, {'method':fit['method'],'seed':fit['seed'],'clusters':[],
+        'per_cell_train_mae':[None]*16,'per_cell_validation_mae':[None]*16,'per_cell_saved_test_mae':[None]*16})
+    group['clusters'].append(key)
+    for split, mask in masks.items():
+        pred_started=time.perf_counter()
+        pred=predict(model,np.ascontiguousarray(seq[members][:,mask].reshape(-1,8,9))).reshape(len(members),-1)
+        target=y[members][:,mask]
+        error=np.abs(pred-target)
+        record[f'{split}_predict_seconds']=time.perf_counter()-pred_started
+        record[f'{split}_mae']=float(error.mean())
+        record[f'{split}_per_cell_mae']=error.mean(1).astype(float).tolist()
+        arrays[f'{key}_{split}_prediction']=pred
+        for j, member in enumerate(members):
+            assert group[f'per_cell_{split}_mae'][member] is None
+            group[f'per_cell_{split}_mae'][member]=float(error[j].mean())
+    for j,member in enumerate(members):
+        group['per_cell_saved_test_mae'][member]=fit['test_per_cell_mae'][j]
+    record['validation_reproduction_abs_difference']=abs(record['validation_mae']-fit['best_val_mae'])
+    record['checkpoint_file_unchanged']=before==digest(path)
+    record['model_state_unchanged']=state_before==state_digest(model)
+    assert record['validation_reproduction_abs_difference']<=settings['validation_tolerance'], key
+    assert record['checkpoint_file_unchanged'] and record['model_state_unchanged']
+    records.append(record);save('partial.json', {'records':records,'counts':counter})
+    print(json.dumps({'checkpoint':key,'train_mae':record['train_mae'],'validation_mae':record['validation_mae']}),flush=True)
+    del model
+
+assert counter['predicted_rows']==107520 and counter['forward_calls']==251
+aggregates=[]
+for key, group in groups.items():
+    for split in ['train','validation','saved_test']:
+        assert all(x is not None for x in group[f'per_cell_{split}_mae'])
+        group[f'{split}_mae']=float(np.mean(group[f'per_cell_{split}_mae']))
+    group['validation_minus_train']=group['validation_mae']-group['train_mae']
+    selected=[r for r in records if r['method']==group['method'] and r['seed']==group['seed']]
+    for field in ['original_optimizer_steps','original_rows_seen','fit_seconds','epochs_run',
+                  'state_tensor_bytes','checkpoint_file_bytes','parameter_count','trainable_parameter_count']:
+        group[f'total_{field}']=sum(r[field] for r in selected)
+    group['cluster_count']=len(selected)
+    aggregates.append(group)
+global_group=next(g for g in aggregates if g['method']=='global')
+for group in aggregates:
+    for split in ['train','validation','saved_test']:
+        group[f'{split}_difference_vs_primary_global']=group[f'{split}_mae']-global_group[f'{split}_mae']
+arrays['cell_ids']=ids; arrays['train_y']=y[:,masks['train']]; arrays['validation_y']=y[:,masks['validation']]
+np.savez_compressed(out/'predictions.npz',**arrays)
+bounds()
+summary={'complete':True, 'settings':settings, 'records':records,'aggregates':aggregates,
+         'counts':counter,'entire_stage_seconds':time.perf_counter()-started,
+         'max_validation_reproduction_abs_difference':max(r['validation_reproduction_abs_difference'] for r in records),
+         'checkpoints_unchanged':all(r['checkpoint_file_unchanged'] and r['model_state_unchanged'] for r in records),
+         'new_RCTL_fits':0,'new_TabICL_contexts':0,'partitions_modified':False,
+         'interpretation':'Descriptive fixed-checkpoint train/validation fit audit; no causal attribution or independent test.'}
+save('summary.json',summary)
+print(json.dumps({k:summary[k] for k in ['complete','counts','entire_stage_seconds','max_validation_reproduction_abs_difference','checkpoints_unchanged']}),flush=True)

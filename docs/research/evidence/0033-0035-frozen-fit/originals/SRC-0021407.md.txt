@@ -1,0 +1,83 @@
+# 35 process 식별과 유한 학습의 구분
+
+2026-09-25. 원문 확인 33과 고정 checkpoint 진단 34의 결과다. 추천안 채택이나 독립 최종 평가가 아니다.
+
+## 1. 이번에 확인한 사실
+
+기존 16 cell에서 시행한 **7개 분할 조건 모두** 단일 global RCTL보다 훈련 구간의 평균 MAE는 작았고 validation MAE는 컸다. 이 비교는 저장된 동일 가중치에 훈련·validation 입력을 넣고 dropout을 끈 결과다. 예전 online training loss와 validation loss를 직접 비교한 것이 아니다.
+
+| 분할 방법 | seed | 고정 가중치 훈련 MAE | validation MAE | validation 차이: 분할 − global |
+|---|---:|---:|---:|---:|
+| global, K=1 | 20260925 | 0.079981 | 0.075371 | 0 |
+| TabICL risk, K=4 | 20260925 | 0.078401 | 0.081656 | +0.006285 |
+| empirical risk, K=4 | 20260925 | 0.075087 | 0.078883 | +0.003512 |
+| KNN risk, K=4 | 20260925 | 0.076485 | 0.078536 | +0.003165 |
+| PCC balanced, K=4 | 20260925 | 0.076402 | 0.078197 | +0.002825 |
+| random balanced, K=4 | 20260925 | 0.077315 | 0.080711 | +0.005339 |
+| TabICL risk, K=4 | 20260926 | 0.075341 | 0.079297 | +0.003925 |
+| empirical risk, K=4 | 20260926 | 0.076079 | 0.079135 | +0.003763 |
+
+cell별 비중은 동일하다. 평균은 cell별 float32 MAE를 float64로 합산했으므로 원본 전체 배열 평균과 약 1e-8 차이가 있을 수 있다. checkpoint 단위 validation은 저장된 `best_val_mae`와 정확히 일치했다.
+
+주 seed의 TabICL 분할은 16개 중 12개 cell에서 훈련 오차가 더 작았지만, validation 오차는 **16개 모두** 더 컸다. 비교 대상의 group 평균만 바뀌어서 나타난 현상은 아니다. 두 번째 seed에서도 분할 평균의 같은 방향을 관찰했으나, global의 두 번째 seed가 없으므로 완전한 반복 비교로 표현하지 않는다.
+
+### 해석의 범위
+
+현재 조건에서는 분리한 model의 훈련 적합 향상이 이후 구간의 이득으로 이어지지 않았다. 유한 자료에서의 일반화 문제가 중요하다는 설명과 일치한다. 하지만 시간 구간의 난이도·분포 변화, model의 학습 경로, early stopping, 자료 수가 함께 달라지므로 **과적합 하나로 원인을 확정한 실험은 아니다**. 전역 최적점에 수렴했다고 확인한 것도 아니다.
+
+이 결과는 현재 균형 K=4 분할과 hourly pilot의 결과다. 원 UPC의 10분 자료, 대규모 cell, 불균형 그룹, K=2의 정확한 재현이 아니다. 연구 전체에서 clustering이 불필요하다는 결론으로 확대하지 않는다.
+
+## 2. 모델 수와 계산량을 구분한다
+
+현재 port의 model 하나는 전체 parameter 174,433개, 학습 대상 parameter 173,537개, buffer 908개다. LSTM의 추가 recurrent bias 896개는 0으로 고정되어 있다. 저장 tensor는 701,412 bytes이고 파일 직렬화 크기는 별도다.
+
+| 주 seed 조건 | 총 학습 parameter | model당 훈련 행 | 실제 optimizer step 합 | 실제 학습에서 처리한 행 합 |
+|---|---:|---:|---:|---:|
+| global | 173,537 | 10,752 | 1,890 | 483,840 |
+| TabICL K=4 | 694,148 | 2,688 | 2,431 | 594,048 |
+| empirical K=4 | 694,148 | 2,688 | 2,453 | 599,424 |
+| KNN K=4 | 694,148 | 2,688 | 2,255 | 551,040 |
+| PCC K=4 | 694,148 | 2,688 | 2,321 | 567,168 |
+| random K=4 | 694,148 | 2,688 | 2,299 | 561,792 |
+
+한 번씩 모든 훈련 행을 사용하는 경우 총 행 수는 분할 전후 동일하다. 고정 batch 256에서 global 한 epoch는 42 step이고 각 작은 model은 11 step이다. 분할 model 모두의 한 epoch를 더하면 44 step이다. 실제 실행에서는 model별 early stopping epoch가 달라 위 표처럼 차이가 생겼다. 전체 parameter 수 4배와 optimizer step 4배를 같은 말로 쓰지 않는다.
+
+과거 기록의 fit 시간 합은 global 269.590초, TabICL K=4 177.553초였다. 실행 순서·warmup·시스템 상태를 통제한 속도 비교가 아니므로 분할이 원천적으로 더 빠르다는 근거로 사용하지 않는다. 이번에는 훈련을 다시 하지 않았다.
+
+## 3. 최신 원문이 바꾼 판단
+
+[Butera et al., arXiv:2606.01999v1](https://arxiv.org/html/2606.01999v1)의 §3.1은 예측을 process 식별과 조건부 예측으로 나눈다. §3.2의 Assumption 3.1과 Theorem 3.2는 정적인 process 모수, 정상 Markov 과정, 독립 가산 noise 및 최근 P개만으로 남는 조건부 평균 차이를 가정한다. 이때 W=P로 irreducible MSE에 도달할 수 없다는 **필요조건**이다. W>P면 충분하다는 정리도, 모든 cell에 긴 입력이 필요하다는 정리도 아니다.
+
+§4 식 8의 G는 긴 과거를 embedding으로 만들고 F는 최근 입력과 embedding으로 예측한다. F.1–F.2에서는 이를 함께 학습한다. G의 embedding을 재사용하여 계산을 줄인다. 이는 frozen TabICLv2가 input–target 행을 참고하는 방식과 다르다. 정리의 MSE를 현재 MAE 성능 보장으로 옮기지 않는다. 논문의 G/F 분리·embedding cache를 새 기여로 재제안하지 않는다. PDF 5쪽의 가정과 정리, Appendix B.1의 증명을 대조했다.
+
+**현재 연구에 대한 해석:** cluster 소속도 장기 이력으로 결정해 둘 수 있는 일종의 식별 정보다. 다만 cell의 관계를 잘 식별했다는 것과, 그 결과 여러 개의 유한 자료 RCTL을 학습하면 유리하다는 것은 다른 주장이다. 앞의 실제 결과는 두 번째 연결을 생략할 수 없음을 보여준다. 이 해석은 원 논문이 RCTL clustering을 증명했다는 뜻이 아니다.
+
+## 4. UPC 원문 그림을 다시 확인한 정정
+
+원본 PDF 8쪽 Fig. 7의 cluster 수는 **1, 2, 4, 6, 8, 12**다. 이전 요약의 ‘1~4 cluster 비교’는 범위를 잘못 축약한 표현이므로 이 기록으로 정정한다. 본문은 N=1을 UPC 없이 전체 cell을 한 model에 넣는 조건으로 설명하고, MLP·LSTM·RCTL의 두 지표에서 N=2가 가장 좋았다고 쓴다.
+
+9쪽 Table II에서 GECOS의 UPC 적용 MAE는 29.8520이며, UPC 미적용 GECOS 수치는 `—`다. 따라서 표만으로 정확한 RCTL의 UPC 적용 전후 개선율을 계산하지 않는다. Fig. 7의 선을 육안으로 읽은 값을 정밀 수치로 사용하지 않는다. 원 그림은 `sources/process_identification_33/upc_page08.png`, `upc_page09.png`에 보존했다.
+
+## 5. 다음 후보가 해결해야 할 문제
+
+문제 정의를 ‘관계가 비슷한 cell을 더 정확하게 구별한다’만으로 두면 현재의 실패를 반복한다. 다음 후보는 **분리로 줄일 수 있는 예측 혼란과, 분리로 늘어날 수 있는 유한 학습의 손해를 어떻게 구별하는가**에 답해야 한다.
+
+이 문제 정의 자체는 신규성이 아니다. HCP의 실제 pooled/separate 재학습, population-level posterior predictive loss, local/global forecasting의 복잡도 논의가 이미 가깝다. TabICL의 공통 입력 예측 차이에 단순한 보정항을 붙이는 것을 채택하지 않는다.
+
+구체적인 다음 검토는 다음 세 조건을 순서대로 만족하는지 확인하는 것이다.
+
+1. **정보:** 시간·lag·정규화 후에도, cell 정보를 제외하면 서로 다른 다음 값이 혼동되는 실제 상황이 남는가? 이미 수행한 입력 겹침·조건부 pooling cost 분석을 재사용한다.
+2. **유한 학습:** 그 혼란을 줄여 얻는 이득이 자료를 나눠 잃는 추정 안정성보다 큰지, 최종 RCTL을 호출하지 않고 구별할 수 있는 새로운 관측량이 있는가? TF 모델의 uncertainty를 곧바로 RCTL uncertainty로 취급하지 않는다.
+3. **추정기의 역할:** 같은 판단을 단순 회귀·KNN·empirical 추정과 같은 정보·비용으로 할 수 있다면 TabICL만 추가하지 않는다. TabICL을 사용해 실제 결정이 달라지는 이유가 있어야 한다.
+
+현재 2와 3을 만족한 새 알고리즘은 아직 없다. 새 RCTL 학습 예산도 늘리지 않는다. 이 문서는 일반화 손해와 원문 가정을 확인한 **진단 결과**이며, 최종 추천안이나 최종 Word 문서의 완성을 선언하지 않는다.
+
+## 6. 실행과 비용
+
+- 34 실행: exit 0. 29 checkpoint, 251 forward, 107,520행, 추가 fit 0, TabICL 호출 0, test forward 0.
+- 측정 계산 5.2934883초, RSS 최대 257,781,760 bytes. 실행 프로세스 전체 wall 8.546827초에는 import/startup 등이 포함된다.
+- validation 최대 재현 오차 0, 모든 checkpoint 파일·model state 불변 확인.
+- ledger에 한 번 반영: frozen RCTL 추론 누적 9.8678484초. 전체 기록된 모델링 비용 1,947.6645694초. 초기 미기록 preprocessing과 문헌 조사·다운로드 시간을 포함한 총 작업 시간이라고 쓰지 않는다.
+- 누적 TabICL 45 contexts/35,712행, 잔여 35/24,288. RCTL 29 fit/1,565 epochs, 추가 fit 0.
+- 원문은 v1, 공개 PDF 34쪽, 2,313,347 bytes, SHA-256 `9226e890eaf0c0306caec014475d6c123b4185d6727e08da42b26b453351a0c8`. HTML·abs·다운로드 기록을 같이 저장했다. 외부 code를 실행하지 않았다.
+- 제공 runtime에는 `pdftotext.exe`가 없어 첫 추출 명령이 실패했다. pypdf로 읽고 원문 핵심 페이지를 PNG로 확인했다. Poppler의 원 UPC font warning이 있었지만 Fig. 7과 Table II의 문자·축·값을 시각적으로 확인했다.

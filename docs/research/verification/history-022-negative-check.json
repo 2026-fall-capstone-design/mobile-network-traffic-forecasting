@@ -1,0 +1,76 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T07:17:07.548404+00:00",
+  "rejected_cases": 12,
+  "invariance_cases": 1,
+  "cases": [
+    {
+      "case": "missing_prediction",
+      "rejected": true,
+      "reason": "'global_20260925_cluster0_validation_prediction is not a file in the archive'"
+    },
+    {
+      "case": "changed_prediction",
+      "rejected": true,
+      "reason": "global_20260925_cluster0:validation_mae"
+    },
+    {
+      "case": "changed_truth",
+      "rejected": true,
+      "reason": "validation:truth"
+    },
+    {
+      "case": "nonfinite_prediction",
+      "rejected": true,
+      "reason": "global_20260925_cluster0_validation_prediction:shape_dtype"
+    },
+    {
+      "case": "cell_order",
+      "rejected": true,
+      "reason": "NPZ_ids"
+    },
+    {
+      "case": "validation_metric",
+      "rejected": true,
+      "reason": "global_20260925_cluster0:validation_mae"
+    },
+    {
+      "case": "optimizer_steps",
+      "rejected": true,
+      "reason": "global_20260925_cluster0:training_steps"
+    },
+    {
+      "case": "parameter_count",
+      "rejected": true,
+      "reason": "('global', 20260925):total_parameter_count"
+    },
+    {
+      "case": "state_flag",
+      "rejected": true,
+      "reason": "global_20260925_cluster0:saved_unchanged_reports"
+    },
+    {
+      "case": "duplicate_cost_stage",
+      "rejected": true,
+      "reason": "one_ledger_stage"
+    },
+    {
+      "case": "overlapping_cost_sum",
+      "rejected": true,
+      "reason": "ledger_stage_seconds"
+    },
+    {
+      "case": "checkpoint_metadata",
+      "rejected": true,
+      "reason": "global_20260925_cluster0:checkpoint_metadata"
+    },
+    {
+      "case": "later_ledger_totals_irrelevant",
+      "accepted": true,
+      "scope": "Later used totals do not change the bounded historical prefix."
+    }
+  ],
+  "mutated_manifest_hashes_refreshed": true,
+  "original_and_public_sources_unmodified": true,
+  "new_model_runs": 0
+}

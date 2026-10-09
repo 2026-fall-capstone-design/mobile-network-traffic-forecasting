@@ -121,4 +121,10 @@
 
 ## 시간 해상도만 바꾸면 공유 손해가 나타나는가
 
-[29–32](records/0029-0032-resolution-diagnostic.md)는 동일 세cell의10분값/시간합, S8/S+L16, Ridge/HGB global/local32fit을 비교했다. 최근lag는 두해상도 모두 이득이지만 공유효과는조건별로달랐다. S+L10분Ridge4556·시간HGB4159 손해와 시간Ridge전체손해를 보존한다. 같은cell·평균정규화·학습분할·global3배행 조건의 반복인지 먼저 확인한다. [저장근거](evidence/0029-0032-resolution/README.md)와 [출처](sources/history-021.md)를 재사용하고 새 설계의 cell선정/자료량/용량/정보 차이를 명시한다. 원 UPC Fig. 7은1·2·4·6·8·10·12축과single global을 포함한다.
+[29–32](records/0029-0032-resolution-diagnostic.md)는 동일 세cell의10분값/시간합, S8/S+L16, Ridge/HGB global/local32fit을 비교했다. 최근lag는 두해상도 모두 이득이지만 공유효과는조건별로달랐다. S+L10분Ridge4556·시간HGB4159 손해와 시간Ridge전체손해를 보존한다. 같은cell·평균정규화·학습분할·global3배행 조건의 반복인지 먼저 확인한다. [저장근거](evidence/0029-0032-resolution/README.md)와 [출처](sources/history-021.md)를 재사용하고 새 설계의 cell선정/자료량/용량/정보 차이를 명시한다. 원 UPC Fig. 7은1·2·4·6·8·12축과single global을 포함한다.
+
+## process 식별과 분리 학습의 일반화 손해
+
+[33–35](records/0033-0035-process-fit-gap.md): frozen fit gap, GPI/CF, G/F embedding cache, 유한 학습 손해. 고정16cell·기존29checkpoint의 일곱K=4 조건은 global보다 train평균이 좋고 validation평균은 나빴다. 주Tab의 validation은16cell모두 악화했다. 앞/뒤84시간에서도 평균손해가 남지만 과적합만을 원인으로 확정하지는 못한다. 같은 가중치·소속·자료의 질문은 보존 예측으로 확인할 수 있다. 새로운 데이터 크기·seed·시간 구간·소속을 묻는 경우 그 차이를 먼저 적는다.
+
+Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장이 아니다. G/F 분리와 embedding cache는 선행 구조다. 모델 수4배와 epoch/batch로 계산한 step4배를 혼동하지 않는다. [근거](evidence/0033-0035-frozen-fit/README.md)와 [읽기 범위](sources/history-022.md)를 함께 확인한다. UPC Fig7의10표기는 정리 오기였고1·2·4·6·8·12로 정정했다.

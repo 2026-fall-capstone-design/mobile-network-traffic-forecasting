@@ -1,0 +1,24 @@
+from pathlib import Path
+import json
+base=Path(__file__).resolve().parent
+path=base/'cumulative_execution_budget.json'
+ledger=json.loads(path.read_text(encoding='utf-8'))
+summary=json.loads((base/'results/frozen_fit_gap_34/summary.json').read_text(encoding='utf-8'))
+stage='frozen_fit_gap_34'
+assert summary['complete'] and summary['new_RCTL_fits']==0 and summary['checkpoints_unchanged']
+assert not any(x['stage']==stage for x in ledger['inference_only_stages'])
+record={'stage':stage,'RCTL_fits':0,'TabICL_contexts':0,
+    'forward_calls':summary['counts']['forward_calls'],
+    'predicted_rows':summary['counts']['predicted_rows'],
+    'wall_seconds':summary['entire_stage_seconds'],
+    'precommitted_stage_wall_cap_seconds':300,
+    'peak_rss_bytes':summary['counts']['peak_rss_bytes'],
+    'counts_toward_total_local_modeling':True}
+ledger['inference_only_stages'].append(record)
+ledger['used']['RCTL_frozen_inference_seconds']+=summary['entire_stage_seconds']
+assert ledger['used']['RCTL_fits']==29 and ledger['remaining_count_budgets']['RCTL_fits']==0
+assert ledger['used']['TabICL_contexts']==45
+model_time=ledger['used']['TabICL_fit_predict_seconds']+ledger['used']['RCTL_wall_seconds']+ledger['used']['RCTL_frozen_inference_seconds']+sum(ledger['new_cheap_diagnostic_seconds'].values())
+assert model_time<ledger['caps']['total_local_modeling_seconds']
+path.write_text(json.dumps(ledger,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+print(json.dumps({'added':record,'recorded_modeling_seconds':model_time,'used':ledger['used']},indent=2))

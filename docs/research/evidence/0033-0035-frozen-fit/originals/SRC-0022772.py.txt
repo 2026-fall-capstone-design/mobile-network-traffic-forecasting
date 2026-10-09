@@ -1,0 +1,35 @@
+"""Archive primary literature only; never execute downloaded content."""
+from pathlib import Path
+import hashlib, json, time, urllib.request
+
+base = Path(__file__).resolve().parent
+out = base / 'sources' / 'process_identification_33'
+out.mkdir(parents=True, exist_ok=True)
+marker = out / 'run_started.json'
+if marker.exists():
+    raise RuntimeError('Inspect the existing archive; do not restart.')
+marker.write_text(json.dumps({'unix': time.time(), 'max_bytes_per_file': 10*1024**2}), encoding='utf-8')
+files = [('abs.html', 'https://arxiv.org/abs/2606.01999'),
+         ('2606.01999v1.html', 'https://arxiv.org/html/2606.01999v1'),
+         ('2606.01999v1.pdf', 'https://arxiv.org/pdf/2606.01999v1')]
+records = []
+for name, url in files:
+    start = time.perf_counter()
+    try:
+        request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 research source verification'})
+        with urllib.request.urlopen(request, timeout=30) as response:
+            blob = response.read(10*1024**2+1)
+            if len(blob) > 10*1024**2:
+                raise RuntimeError('File exceeds preregistered download cap')
+            if name.endswith('.pdf') and not blob.startswith(b'%PDF-'):
+                raise RuntimeError('Response is not a PDF')
+            record = {'name': name, 'url': url, 'resolved_url': response.url,
+                      'status': response.status, 'bytes': len(blob),
+                      'sha256': hashlib.sha256(blob).hexdigest()}
+        (out/name).write_bytes(blob)
+    except Exception as error:
+        record = {'name': name, 'url': url, 'error': repr(error)}
+    record['seconds'] = time.perf_counter()-start
+    records.append(record)
+    (out/'manifest.json').write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')
+    print(json.dumps(record, ensure_ascii=False), flush=True)
