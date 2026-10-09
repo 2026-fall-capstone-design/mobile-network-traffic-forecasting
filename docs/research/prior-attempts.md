@@ -254,3 +254,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## 관측·전송·저장 감소를 같은 비용으로 계산하기 전에 — 53·55 Ciena
 
 검색어: Ciena, IPFIX, OD traffic matrix, link counts, telemetry pruning, denoising autoencoder, DNN compression, index memorization. [Ciena 기록](records/0053-ciena-telemetry.md)은 링크로 흐름을 추정하는 방법, 표본 전송을 줄이는 방법, 과거 이력을 가중치로 압축하는 방법을 구분합니다. 새 제안에는 가용 참값·관측 정책·시점 분리·강한 단순 비교군·최종 예측 효용·총비용의 차이가 필요합니다. 75/78%의 분모, 시뮬레이션 압축표, 2021년 비용 기간의 공백도 함께 확인합니다.
+
+## Beijing 생성 자료를 미래 예측으로 재사용하기 전에 — 51·55 STK-Diff
+
+검색어: STK-Diff, Beijing, 960×168, UrbanKG, diffusion, CRPS, nsample, seed, induced subgraph. [STK-Diff 기록](records/0051-stkdiff-audit.md)은 이미 검수한 스키마와 station 생성 분할, 과거값 mask 없는 생성, 단일샘플 지표의 정답절댓값합 분모를 연결합니다. 새 제안은 실제 시간·단위·예측 때의 가용입력·시간holdout·단순비교군·최종RCTL 효용·비용의 차이를 밝혀야 합니다. 같은 NPZ 스키마 확인은 H031 결과를 재사용하고, 배치 구성·seed 초기화·샘플 수·환경과 그림/코드 차이를 재현 조건으로 남깁니다.
