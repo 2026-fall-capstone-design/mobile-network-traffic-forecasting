@@ -1,0 +1,394 @@
+{
+  "batch_id": "history-011",
+  "reviewed_at_utc": "2026-10-09T01:02:36.781475+00:00",
+  "reviewer": "same_archive_agent_not_independent_scientific_review",
+  "findings": [
+    {
+      "claim_id": "H011-C01",
+      "sources": [
+        "SRC-0021004"
+      ],
+      "locator": "17lines18–22;26",
+      "finding": "세 문헌 인용의 지정 방법을 확인하고 수치 진단과 구분했다.",
+      "limitation": "당시 PDF 미보관 서술은 당시 상태다. 이번 공식 판본 확보와 모순되지 않는다."
+    },
+    {
+      "claim_id": "H011-C02",
+      "sources": [
+        "SRC-0021004",
+        "H011-MGSTC"
+      ],
+      "locator": "17line18;MGSTC§3.1–3.2/Definition3.3/Fig3",
+      "finding": "MGSTC는 labeled prediction loss를 사용하며 drift를 joint P(X,Y)의 변화로 정의한다.",
+      "limitation": "달력 차이가 포함된 예시는 같은 전체 X에서의 조건부 target 변화의 증명이 아니다."
+    },
+    {
+      "claim_id": "H011-C03",
+      "sources": [
+        "H011-MGSTC"
+      ],
+      "locator": "§4.3/Algorithm1/eq16–18;PDF11–13",
+      "finding": "B/H replay와 fine/aggressive update를 사용한다. monitor와 두 갱신은 학습 손실에 의존한다.",
+      "limitation": "B의 loss/sample 역할과 검정식 표기, Figure5식 번호에 공백이 있어 구현을 임의 복원하지 않는다."
+    },
+    {
+      "claim_id": "H011-C04",
+      "sources": [
+        "H011-MGSTC"
+      ],
+      "locator": "Table2/§5.1Milan;PDF13",
+      "finding": "Milan 조건은900series/8928samples/10min, 다섯activity 합과5/2/55일 분할이다.",
+      "limitation": "기록16–17의 hourly Internet-only 조건과 같지 않으며 MAE를 직접 비교하지 않는다."
+    },
+    {
+      "claim_id": "H011-C05",
+      "sources": [
+        "H011-PID"
+      ],
+      "locator": "§III.A/Fig1/Algorithm1;PDF2–3",
+      "finding": "고정 HiSTM 출력에 과거 관측 오차로 PID 보정을 더한다. 가중치 고정도 예측/오차 의존성을 없애지 않는다.",
+      "limitation": "본문과Algorithm1의 오차 부호가 반대다. Correct 연산의 정확한 구현을 확인하지 않았다."
+    },
+    {
+      "claim_id": "H011-C06",
+      "sources": [
+        "H011-PID"
+      ],
+      "locator": "§III.C/eq2–4;§IV.B–C;PDF3–5",
+      "finding": "Cell당200Optuna trials와 objective구간 min(|Tc|,200)을 구별한다. Backbone70/15/15시간 분할이 기재돼 있다.",
+      "limitation": "PID tuning과 최종 평가의 별도 시간 경계는 확인되지 않아 누수 여부를 단정하지 않는다."
+    },
+    {
+      "claim_id": "H011-C07",
+      "sources": [
+        "H011-PID"
+      ],
+      "locator": "TableIV/§IV.C;PDF5–6",
+      "finding": "다섯 시나리오는 인위적으로 주입한 drift이고 nominalseverity는.05/.15/.30이다.",
+      "limitation": "자연 발생 조건부 drift 입증이나 세 논문 간 성능 우위로 쓰지 않는다."
+    },
+    {
+      "claim_id": "H011-C08",
+      "sources": [
+        "H011-QoS"
+      ],
+      "locator": "§II/§IIIeq2/§IV.A–Beq3–11/Algorithm1;PDF4–8",
+      "finding": "예측 손실·분포 항·cluster수 벌점을 결합하고 A와 cluster별 마지막층을 교대 갱신한다.",
+      "limitation": "완화된 A를 argmax로 이산화한다. 전체 예측기의 학습 또는 모델 독립 소속 점수가 아니다."
+    },
+    {
+      "claim_id": "H011-C09",
+      "sources": [
+        "H011-QoS"
+      ],
+      "locator": "§IV.Cassumptions1–5/Propositions1–2;§V.A;PDF9/11",
+      "finding": "수렴 진술은 가정 아래 criticalpoint이며 실제 분포 항은 Hellinger-kernel의 graphLaplacian D를 쓴다.",
+      "limitation": "임의 거리행렬의PSD나 전역최적을 보장한다고 옮기지 않는다. 부록 증명 전체 검수0."
+    },
+    {
+      "claim_id": "H011-C10",
+      "sources": [
+        "H011-QoS"
+      ],
+      "locator": "§V.A/Fig2;PDF10–11;eq6/11/Algorithm1",
+      "finding": "ns3/Sionna12cells/30vehicles의 QoS분포 예측이다. beta계수와tau표기의 연결에는 재사용 전 확인할 공백이 있다.",
+      "limitation": "70/10/20분할의 시간 순서·seed숫자·저자 코드 미확인. 그림을 별도 분포적합 검정으로 읽지 않는다."
+    },
+    {
+      "claim_id": "H011-C11",
+      "sources": [
+        "SRC-0021004",
+        "H011-MGSTC",
+        "H011-PID",
+        "H011-QoS"
+      ],
+      "locator": "17lines18–26 and preceding cited primary sections",
+      "finding": "적응·재배정·모델수 축소라는 발상만으로 신규성을 주장할 수 없다는 당시의 제한적 판단을 유지한다.",
+      "limitation": "새 규칙의 성능/신규성 확정은 아니다.18이후 공간 정보와 회귀TabPFN·누적비용·전체기록 연결은 미완료다."
+    }
+  ],
+  "source_preservation": [
+    {
+      "source_id": "SRC-0021004",
+      "path": "tmp/redesign_20260925/17_temporal_validity_findings.md",
+      "sha256": "1e617fbf9c9469d111a3cbcd466fbcb1e185f7369fe9fb3652f80bd5c265d73d",
+      "size_bytes": 4043,
+      "exact_alias_source_ids": [
+        "SRC-0000413",
+        "SRC-0021004"
+      ],
+      "records": [
+        "0017"
+      ],
+      "archive_path": "../0016-0017/originals/SRC-0021004.md.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "lines_read": [
+        [
+          1,
+          26
+        ]
+      ],
+      "automated_read_scope": [
+        "sha256_only"
+      ],
+      "claim_verification_scope": "17 lines18–22: three cited primary methods; line26 future spatial question remains pending.",
+      "pending_claim_scope": "18 onward spatial-information linkage; historical exit0 handle not independently observed; paper scopes beyond this review"
+    }
+  ],
+  "external_web_sources": [
+    {
+      "reference_id": "H011-MGSTC",
+      "title": "Multi-grained spatial-temporal feature complementarity for accurate online cellular traffic prediction",
+      "authors": [
+        "Fu, Ningning",
+        "Liu, Shengheng",
+        "Xie, Weiliang",
+        "Huang, Yongming"
+      ],
+      "arxiv_version": "2508.08281v1",
+      "submitted_date": "2025/08/01",
+      "submission_history": "Submission history From: Shengheng Liu [view email] [v1] Fri, 1 Aug 2025 05:33:32 UTC (3,901 KB)",
+      "related_doi": [
+        "10.1145/3758099"
+      ],
+      "distribution": "metadata_and_official_versioned_links_only",
+      "catalog_status": "external_web_reference_no_catalog_source_id_assigned",
+      "acquisition": {
+        "html": {
+          "url": "https://arxiv.org/html/2508.08281v1",
+          "sha256": "8206b22151f8f65f5df28646c573c78433ca9481647f77e7872501e82c594279",
+          "size_bytes": 395206,
+          "acquired_at_utc": "2026-10-09T00:37:47.267763+00:00"
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2508.08281v1",
+          "sha256": "1abc01b0113384e5ce66f2cf3b53425ee877a684753d37b7b817a26dccd06897",
+          "size_bytes": 5154960,
+          "pages": 26,
+          "acquired_at_utc": "2026-10-09T00:39:12.820934+00:00"
+        },
+        "official_metadata": {
+          "url": "https://arxiv.org/abs/2508.08281v1",
+          "sha256": "83724e0266af6125fc0c47acb8e798a89956ae4dbac84a086553b3a092af357c",
+          "size_bytes": 45981,
+          "acquired_at_utc": "2026-10-09T00:54:13.655692+00:00"
+        },
+        "derived_text": {
+          "sha256": "0988c71f2fdfb55e532f93069fba413279f5401faa6c352079afd3d2aa75438f",
+          "method": "pypdf extraction; Python splitlines one-based locators"
+        },
+        "derived_sections": {
+          "sha256": "bae8290d68ed5f195ceb21742d7c9baf8f0df5cd5c163328186da336fca27541",
+          "method": "lxml static HTML parse; replace each MathML node by original alttext; collapse text whitespace; no HTML execution"
+        }
+      },
+      "read_scope": {
+        "text_ranges": [
+          [
+            292,
+            592
+          ],
+          [
+            839,
+            964
+          ]
+        ],
+        "physical_pdf_pages": [
+          6,
+          7,
+          8,
+          11,
+          12,
+          13
+        ],
+        "html_section_ids": [
+          "S3.SS2",
+          "S4.SS3"
+        ],
+        "sections": [
+          "§3.1–3.2 definitions/eq1–5/Fig2–3",
+          "§4.3/Algorithm1/eq16–18/Fig5",
+          "Table2 and §5.1 Milan paragraph"
+        ],
+        "unreviewed": [
+          "§4.1/4.2 architecture details",
+          "remaining datasets/settings/results and appendix proof"
+        ]
+      },
+      "whole_paper_reviewed": false,
+      "code_executed": false
+    },
+    {
+      "reference_id": "H011-PID",
+      "title": "Lightweight PID-Based Drift Mitigation for Cellular Traffic Forecasting",
+      "authors": [
+        "Sengendo, John",
+        "Bettouche, Zineddine",
+        "Ali, Khalid",
+        "Kassler, Andreas",
+        "Granelli, Fabrizio"
+      ],
+      "arxiv_version": "2608.08332v1",
+      "submitted_date": "2026/08/08",
+      "submission_history": "Submission history From: John Sengendo [view email] [v1] Sat, 8 Aug 2026 20:51:08 UTC (319 KB)",
+      "related_doi": [],
+      "distribution": "metadata_and_official_versioned_links_only",
+      "catalog_status": "external_web_reference_no_catalog_source_id_assigned",
+      "acquisition": {
+        "html": {
+          "url": "https://arxiv.org/html/2608.08332v1",
+          "sha256": "5352b0db6c2f7e3bc9d6942bd22044adc28a54ef63e66a7032e48a92438c037b",
+          "size_bytes": 912423,
+          "acquired_at_utc": "2026-10-09T00:37:47.572503+00:00"
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2608.08332v1",
+          "sha256": "c7d72c0bb1d6e5a9239a3d1c4aad901ad4e2eedc5c2aede5d87117eab7ccbd03",
+          "size_bytes": 563974,
+          "pages": 9,
+          "acquired_at_utc": "2026-10-09T00:39:11.618787+00:00"
+        },
+        "official_metadata": {
+          "url": "https://arxiv.org/abs/2608.08332v1",
+          "sha256": "119a7a25ea7b2f2f0e8805646780c5d504cc4180b5b15bcfe3a215763fe7d6f0",
+          "size_bytes": 41789,
+          "acquired_at_utc": "2026-10-09T00:54:13.979913+00:00"
+        },
+        "derived_text": {
+          "sha256": "a4cb39762ecbe7724217ac7fb17480d494a6166ca441e350d3825ed738d4f82e",
+          "method": "pypdf extraction; Python splitlines one-based locators"
+        },
+        "derived_sections": {
+          "sha256": "c1a66dc3c42c6e2d37704a016f06fdb7287c01c6122c8e209bfb459f6e245baa",
+          "method": "lxml static HTML parse; replace each MathML node by original alttext; collapse text whitespace; no HTML execution"
+        }
+      },
+      "read_scope": {
+        "text_ranges": [
+          [
+            165,
+            622
+          ]
+        ],
+        "physical_pdf_pages": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "html_section_ids": [
+          "S3.SS1",
+          "S3.SS3",
+          "S4.SS3"
+        ],
+        "sections": [
+          "§III.A–D/Fig1/Algorithm1/eq1–4",
+          "§IV.A–D/TableIV; TableIII displayed but no performance numeric audit"
+        ],
+        "unreviewed": [
+          "full performance tables/results/plots and author implementation",
+          "independent PID tuning and final evaluation dates not established"
+        ]
+      },
+      "whole_paper_reviewed": false,
+      "code_executed": false
+    },
+    {
+      "reference_id": "H011-QoS",
+      "title": "Joint Clustering and Prediction of the Quality of Service in Vehicular Cellular Networks",
+      "authors": [
+        "Stenhammar, Oscar",
+        "Fodor, Gábor",
+        "Fischione, Carlo"
+      ],
+      "arxiv_version": "2604.12903v1",
+      "submitted_date": "2026/04/14",
+      "submission_history": "Submission history From: Oscar Stenhammar [view email] [v1] Tue, 14 Apr 2026 15:49:58 UTC (258 KB)",
+      "related_doi": [],
+      "distribution": "metadata_and_official_versioned_links_only",
+      "catalog_status": "external_web_reference_no_catalog_source_id_assigned",
+      "acquisition": {
+        "html": {
+          "url": "https://arxiv.org/html/2604.12903v1",
+          "sha256": "6392b0e683f3ddca8d4382758ece603bd921b2129f3bf7ca0f27af373e6e7e3d",
+          "size_bytes": 564760,
+          "acquired_at_utc": "2026-10-09T00:37:47.509387+00:00"
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2604.12903v1",
+          "sha256": "d4d55adaa83b9c8c01f53f37fb552de7cd0c8ade9cbae8b68fa7563f7ed61a0a",
+          "size_bytes": 433571,
+          "pages": 18,
+          "acquired_at_utc": "2026-10-09T00:39:11.386082+00:00"
+        },
+        "official_metadata": {
+          "url": "https://arxiv.org/abs/2604.12903v1",
+          "sha256": "85e8487bb381d8d6fa42ef497dc7bd037527c901b3bdbdb3f27bae96e8f0f7f9",
+          "size_bytes": 43115,
+          "acquired_at_utc": "2026-10-09T00:54:14.283807+00:00"
+        },
+        "derived_text": {
+          "sha256": "d23825f20a1f21d49ad093d63cebdbe0597c80d9db3e6ade3cfe887ea3f66286",
+          "method": "pypdf extraction; Python splitlines one-based locators"
+        },
+        "derived_sections": {
+          "sha256": "20be5906e4796d8411c1a8e347a67da91459da49cad48e44bf79d1ef690bf9c2",
+          "method": "lxml static HTML parse; replace each MathML node by original alttext; collapse text whitespace; no HTML execution"
+        }
+      },
+      "read_scope": {
+        "text_ranges": [
+          [
+            115,
+            790
+          ]
+        ],
+        "physical_pdf_pages": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "html_section_ids": [
+          "S3",
+          "S4.SS1",
+          "S4.SS2",
+          "S4.SS3",
+          "S5.SS1"
+        ],
+        "sections": [
+          "§II/Fig1",
+          "§III/eq2",
+          "§IV.A–C/eq3–13/Algorithm1/assumptions and propositions",
+          "§IV.D communication illustration",
+          "§V.A/Fig2 and §V.B opening only"
+        ],
+        "unreviewed": [
+          "appendix proofs and complete performance/optimality-gap results",
+          "author simulation/code not inspected"
+        ]
+      },
+      "whole_paper_reviewed": false,
+      "code_executed": false
+    }
+  ],
+  "new_model_runs": 0,
+  "new_simulations": 0,
+  "original_scripts_executed": false,
+  "performance_results_reproduced": false,
+  "whole_papers_reviewed": 0,
+  "record17_fully_integrated": false,
+  "record17_completed_scope": "numeric scope inH010; three cited primary method scopes inH011",
+  "remaining": [
+    "18 onward spatial-information history",
+    "out-of-scope paper sections/proofs/results/implementations",
+    "15cumulative costs/05remaining/other whole archive"
+  ]
+}
