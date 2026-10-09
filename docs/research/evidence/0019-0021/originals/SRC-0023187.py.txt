@@ -1,0 +1,55 @@
+"""Read saved predictions only; no model fitting, filtering, or tuning."""
+from pathlib import Path
+import hashlib, json, time
+import numpy as np
+
+base = Path(__file__).resolve().parent
+tick = time.perf_counter()
+paths = {name: base / 'results' / name / 'predictions.npz' for name in
+         ['temporal_validity', 'broad_cell_information', 'target_parameterization']}
+d, p, r = [np.load(paths[name]) for name in paths]
+ids = p['cell_ids'].astype(int)
+assert np.array_equal(ids, d['cell_ids']) and np.array_equal(ids, r['cell_ids'])
+assert np.array_equal(p['query_times'], r['query_times'])
+assert np.allclose(p['actual'], r['actual'])
+ci = np.searchsorted(d['times'], p['context_times'])
+qi = np.searchsorted(d['times'], p['query_times'])
+nq = len(qi)
+y = p['actual'].reshape(len(ids), nq)
+raw = p['TabICL_no_ID'].reshape(y.shape)
+res = r['TabICL_no_ID'].reshape(y.shape)
+raw_cell = np.abs(raw-y).mean(1)
+res_cell = np.abs(res-y).mean(1)
+j = int(np.argmax(raw_cell))
+ctx = d['Y'][:, ci]
+examples = []
+for k in np.argsort(y[j])[-6:]:
+    examples.append({'target_time': int(p['query_times'][k]),
+        'actual': float(y[j,k]), 'latest_input': float(d['X'][j,qi[k],7]),
+        'raw_prediction': float(raw[j,k]), 'residual_prediction': float(res[j,k])})
+record = {'input_sha256': {name: hashlib.sha256(path.read_bytes()).hexdigest()
+                           for name,path in paths.items()},
+    'development_only': True, 'all_cells_retained': ids.tolist(),
+    'max_raw_loss_cell': int(ids[j]),
+    'max_raw_loss_fraction': float(raw_cell[j]/raw_cell.sum()),
+    'max_cell_scale': float(d['scales'][j]),
+    'max_cell_context_target_range': [float(ctx[j].min()),float(ctx[j].max())],
+    'all_context_target_range': [float(ctx.min()),float(ctx.max())],
+    'max_cell_query_target_range': [float(y[j].min()),float(y[j].max())],
+    'max_cell_query_latest_range': [float(d['X'][j,qi,7].min()),float(d['X'][j,qi,7].max())],
+    'max_cell_fraction_query_above_own_context_target_max': float((y[j]>ctx[j].max()).mean()),
+    'max_cell_raw_MAE': float(raw_cell[j]), 'max_cell_residual_MAE': float(res_cell[j]),
+    'raw_MAE': float(raw_cell.mean()), 'residual_MAE': float(res_cell.mean()),
+    'relative_mean_MAE_reduction': float(1-res_cell.mean()/raw_cell.mean()),
+    'cells_improved': int((res_cell<raw_cell).sum()),
+    'cells_worsened': int((res_cell>raw_cell).sum()),
+    'original16_raw_MAE': float(raw_cell[:16].mean()),
+    'original16_residual_MAE': float(res_cell[:16].mean()),
+    'cell_MAE_changes': {str(int(i)):float(v) for i,v in zip(ids,res_cell-raw_cell)},
+    'largest_target_examples': examples,
+    'new_model_calls': 0, 'elapsed_seconds': time.perf_counter()-tick,
+    'interpretation': 'Concentrated development finding, not general improvement or a new clustering method. No cell was removed. Observed saturation does not imply a mathematical output bound.'}
+dest = base/'results/error_concentration.json'
+dest.write_text(json.dumps(record,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+print(json.dumps({k:v for k,v in record.items() if k not in
+    ['input_sha256','all_cells_retained','cell_MAE_changes','largest_target_examples']},indent=2))

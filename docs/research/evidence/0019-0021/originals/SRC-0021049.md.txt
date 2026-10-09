@@ -1,0 +1,31 @@
+# 넓힌 cell 범위에서 구분 정보의 가치 확인
+
+2026-09-25, 실행 전 계획. 14의 16개 도심 cell 결과를 전체 도시의 결론으로 확대하지 않기 위한 진단이다. 새로운 clustering 알고리즘의 성능 확인이 아니다.
+
+## 핵심 질문
+
+활동량 범위를 넓힌 32 cell을 같은 context에 넣었을 때, 어느 cell의 입력인지 알려 주는 것이 예측을 실질적으로 바꾸는가? 그 차이를 간단한 관측 통계로 설명할 수 있는가? 다른 cell에 단독 이전한 오차가 아닌, 모든 cell의 자료가 들어 있는 동일한 조건에서 비교한다.
+
+## 조건
+
+- 16·18의 고정된 32 cell 전부를 사용한다. 시간·입력·target·정규화는 그대로다. 추가 이웃 입력은 쓰지 않는다.
+- 각 cell에서 target 시각 168..671 중 linspace로 고른 서로 다른 64개 sample을 context로 사용한다. 모든 cell의 시각 목록은 같다. 총 M=2,048이다.
+- 각 cell에서 target 시각 672..1007 중 같은 방식으로 고른 64개 query를 사용한다. Q=2,048이다. 모든 조건의 행·target·query를 고정한다. query target은 MAE 집계에만 사용한다. 이미 살펴본 개발 구간이므로 독립 성능 검증이라고 부르지 않는다.
+- TabICL 조건 4개: (a) 기존 16개 입력만, (b) 32열 one-hot cell ID 추가, (c) 같은 ID의 열 순서를 seed 20260926으로 바꿈, (d) ID 대신 4개 과거 관측 요약 추가.
+- 요약 4개는 첫 672시간의 log1p(mean raw activity), coefficient of variation, (75%-25% 분위수)/mean, lag-1 autocorrelation이다. 추정 시 query target을 사용하지 않는다. 같은 summary가 그 cell의 각 행에 들어간다. cell ID를 부분적으로 추정하는 강한 단순 대안이며 clustering 자체가 아니다.
+- 공식 pinned TabICL 2.2.0과 기존 regression checkpoint, CPU 4 threads, ensemble 1, 같은 seed 20260925, MAE에 맞춘 median을 사용한다. 전처리·context 준비는 조건마다 새로 수행한다. 다른 context의 cache를 섞지 않는다.
+- 동일 행에 Ridge(StandardScaler, alpha=1)와 HGB(absolute loss,100 iterations,15 leaves,min leaf20,l2=1,no early stopping)를 적용한다. (a),(b),(d)만 비교하여 작은 fit 6회다.
+
+## 기록과 판단
+
+전체 MAE, 원래 16/추가 16, 모든 cell별·날짜별 MAE와 paired 차이를 저장한다. 큰 오차 cell을 제외한 점수를 primary로 바꾸지 않는다. 평균을 지배하는 cell이 있으면 그 비중을 보조 진단으로 밝히되 제외하지 않는다.
+
+ID가 도움이 되어도 이를 clustering의 보장이나 모든 partition 이득의 상한으로 해석하지 않는다. ID가 충분히 많은 자료를 받은 함수 추정을 개선한다는 진단과 실제 RCTL을 여러 모델로 나누었을 때의 이득은 다르다. static 요약으로 같은 개선을 얻는다면 더 복잡한 ID/cluster 비교를 우선하지 않는다. 모델·날짜·ID 표현에 따라 결과가 달라지면 그 불안정성부터 다룬다.
+
+성능의 임의 합격선을 만들지 않는다. 개선 크기·범위·변동과 단순 대안의 차이를 그대로 기록한다. 이 결과만으로 추천 후보를 채택하거나 goal을 완료하지 않는다.
+
+## 비용
+
+추가 TabICL context 4개 × query 2,048개 = 8,192행. 완료 시 누적 43 context·31,616행이며 상한 80·60,000 이내다. fit/predict 300초, stage wall time 360초, RSS 8GiB. 초과하면 부분 결과를 저장하고 자동 재시작하지 않는다. 실제 fit/predict 누적 시간도 기존 2,400초 이내여야 한다.
+
+RCTL 추가 fit 0회. 회귀 TabPFN 대체는 이번 진단에 포함하지 않았다. 향후 채택안의 검증 항목으로 유지한다.

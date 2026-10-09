@@ -1,0 +1,25 @@
+# 기존 target 표현의 오류를 분리하는 작은 확인
+
+2026-09-25. 19 결과를 본 뒤 세운 후속 계획이다. 새로운 독립 test가 아니며, 차분 자체를 신규 연구 방법으로 주장하지 않는다.
+
+## 관찰과 질문
+
+19의 32 cell 중 cell 7524는 자기 context target 최대 3.256에서 query 최대 30.196으로 크게 벗어났다. 최근 실제 입력은 이미 높은 수준까지 올라가 있지만 TabICL의 예측은 대략 3.3 근처였다. 이 cell은 전체 TabICL MAE 합의 약 60%를 차지했다. 이를 cell 관계 차이나 clustering 실패라고 해석하기 전에 단순 target 표현의 영향을 확인한다. cell을 제외하지 않는다.
+
+## 고정 비교
+
+- 19와 정확히 같은 32 cell, context 2,048행, query 2,048행, 기존 입력 16개, 시간·정규화·seed·checkpoint를 유지한다.
+- 각 sample의 target을 `다음 실제값 − 최근 실제 입력값`으로 변환한다. query에서는 모델이 예측한 변화량에 최근 실제 입력값을 더해 원래 target 단위로 복원한다. query 정답은 변환을 결정하는 데 사용하지 않는다. clipping은 하지 않는다.
+- raw target 결과는 19에 저장된 값을 그대로 사용하여 재실행하지 않는다. residual target에서 no-ID와 one-hot cell ID를 각 한 번 수행한다. context 행 수나 사용할 수 있는 정보는 변하지 않는다.
+- Ridge/HGB도 두 조건을 같은 행으로 실행한다. 공식 TabICLForecaster나 TabPFN-TS 전체 방법의 재현이라고 부르지 않는다.
+- 전체·모든 cell·날짜별 MAE, 원래 16/추가 16, cell 7524, 최근값 그대로의 baseline을 보고한다. 어려운 cell 제거 또는 유리한 metric 변경은 없다.
+
+## 해석 기준
+
+target 표현만으로 큰 오차가 줄면 현재 raw-target 예측값의 일부 차이는 clustering의 관계 정보보다 추정기의 외삽 편향에 민감했다는 근거다. 변화량 target도 실패하면 단순 차분을 해결책으로 제시하지 않는다. 어느 쪽이든 이 확인만으로 새 clustering이 RCTL을 개선한다고 주장하지 않는다.
+
+차분·잔차 예측·baseline 보정은 알려진 방법이다. 효과가 있더라도 이후 clustering 알고리즘은 새 비교 원리와 RCTL 연결 근거를 별도로 확보해야 한다. 이 진단은 더 복잡한 모듈을 추가하기 전의 필수 단순 대안 확인이다.
+
+## 비용
+
+추가 TabICL 2 context/4,096 query. 완료 시 누적 45 contexts/35,712 queries. 이번 fit/predict 150초, stage wall 180초, RSS 8GiB. 누적 80 contexts/60,000 queries/2,400초 제한을 유지한다. 작은 비교 fit 4회, RCTL 추가 0회. 완료 실행은 재시작하지 않는다.

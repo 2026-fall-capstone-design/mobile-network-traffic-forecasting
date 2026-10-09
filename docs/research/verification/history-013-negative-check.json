@@ -1,0 +1,99 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T02:00:39.883318+00:00",
+  "negative_cases": 22,
+  "cases": [
+    {
+      "case": "missing-SRC-0022531",
+      "rejected_by": "manifest:ids"
+    },
+    {
+      "case": "missing-SRC-0024350",
+      "rejected_by": "manifest:ids"
+    },
+    {
+      "case": "missing-SRC-0032385",
+      "rejected_by": "manifest:ids"
+    },
+    {
+      "case": "duplicate",
+      "rejected_by": "manifest:ids"
+    },
+    {
+      "case": "short-prediction",
+      "rejected_by": "broad:shape:TabICL_no_ID"
+    },
+    {
+      "case": "nan-prediction",
+      "rejected_by": "SRC-0024350:finite:TabICL_no_ID"
+    },
+    {
+      "case": "cell-order",
+      "rejected_by": "ids:residual"
+    },
+    {
+      "case": "query-time",
+      "rejected_by": "query_times:selection"
+    },
+    {
+      "case": "target",
+      "rejected_by": "broad:target"
+    },
+    {
+      "case": "latest-input",
+      "rejected_by": "residual:latest_input"
+    },
+    {
+      "case": "plan-hash",
+      "rejected_by": "broad:settings:plan_sha256"
+    },
+    {
+      "case": "nonbijective-ID",
+      "rejected_by": "broad:permutation_bijection"
+    },
+    {
+      "case": "wrong-static-stat",
+      "rejected_by": "broad:statistics"
+    },
+    {
+      "case": "call-features",
+      "rejected_by": "broad:call:no_ID:features"
+    },
+    {
+      "case": "negative-time",
+      "rejected_by": "broad:cost_positive:no_ID:fit_seconds"
+    },
+    {
+      "case": "completion-count",
+      "rejected_by": "residual:finished:contexts"
+    },
+    {
+      "case": "partial-missing-field",
+      "rejected_by": "broad:partial:keys"
+    },
+    {
+      "case": "partial-value",
+      "rejected_by": "residual:partial:TabICL_no_ID"
+    },
+    {
+      "case": "wrong-improved-count",
+      "rejected_by": "residual:comparison.TabICL_no_ID.cells_improved"
+    },
+    {
+      "case": "unweighted-daily-mean",
+      "rejected_by": "broad:results.TabICL_no_ID.MAE"
+    },
+    {
+      "case": "concentration-example",
+      "rejected_by": "concentration:examples"
+    },
+    {
+      "case": "concentration-input-hash",
+      "rejected_by": "concentration:input_sha256.temporal_validity"
+    }
+  ],
+  "semantic_fault_hashes_refreshed": true,
+  "originals_modified": false,
+  "models_run": 0,
+  "scope": "Representative schema, identity, paired-input, metric, completion and adverse-case faults; not exhaustive proof."
+}

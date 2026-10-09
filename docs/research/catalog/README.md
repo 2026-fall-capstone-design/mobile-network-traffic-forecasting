@@ -47,4 +47,6 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 
 [history-012 목록](history-012-sources.jsonl)은 18계획·21종합·공간 코드·시작/완료/summary·NPZ의 원본 7개 새 보존과 기존 2개 재사용, H5 metadata 1건을 연결한다. [읽은 범위](../sources/history-012.md)는 텍스트 전체 3개·JSON 전체 키 3개·새 배열 1개이며, 기록21의 이번 주장 검수는 공간 부분 20–29행이다. 실제 확장 X 저장물은 없고, 19/20/22와 21의 나머지 부분은 후속 작업이다.
 
+[history-013 목록](history-013-sources.jsonl)은19/20계획·코드·저장결과·집중도의새원본18개495,076bytes와기존2개재사용,H5/설치metadata/checkpoint3건을연결한다. [열람범위](../sources/history-013.md)는새텍스트전체5개·JSON전체9개·수치배열파일4개다.21은ID/잔차/집중도및추가6호출만더검수했으며문헌과전체누적원장은남았다. 위H012의19/20대기상태는이후이묶음으로진행됐다.
+
 목록과 근거 사본은 정리 시점의 스냅샷이다. 원본 변경 시 관련 주장과 검토 상태를 재확인한다. GitHub에는 검수된 묶음부터 반영하며, 전체 기록의 본문 정리는 진행 중이다.

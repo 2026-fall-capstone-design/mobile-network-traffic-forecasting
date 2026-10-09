@@ -61,4 +61,13 @@
 | 격자 경계, self padding, PCC 동점, 방향 정렬 | [이웃 처리](records/0018-0021-spatial-information.md), NW/N/NE/W/E/SW/S/SE 고정 순서 | Cell79의 세 자기 padding은 평균/8방향에 포함, PCC에서는 제외. 정확한 동점은 첫 방향 선택. 물리 방위 미확인 | 이웃 ID·PCC·padding을 먼저 대조. 방향 순서·동점 규칙 변경은 조건 변경으로 기록 |
 | 공간·시간 진단 비교, 두 주 고정 모델 | [18·21 학습 조건](records/0018-0021-spatial-information.md), 첫 주 자기 예측은 16–17 expanding과 일치 | 공간 진단은 두 주 모델 고정, 시간 진단은 매주 적합. 매 query 실제 직전 관측 사용 | 전체 두 주를 같은 학습 조건으로 간주하지 않음. 고정 origin 다중 시점 예측과 구분 |
 
+셀 식별 정보와 target 표현은 다음 조건으로 찾는다.
+
+| 문제·별칭 | 확인한 기록·조건 | 결과·한계 | 재사용·다음 질문 |
+|---|---|---|---|
+| broad cell ID, one-hot, ID permutation, static summary | [19](records/0019-broad-cell-identity.md),32cell·각64context/query·동일pooled정보 | Tab세추가조건모두전체악화,단순모델의작은이득에도cell/day손해. 모든partition의상한아님 | 10조건예측과고정행/순열/과거통계재사용;정보추가와grouping분리 |
+| residual target, delta, 차분, 최근값baseline | [20·21](records/0020-0021-target-parameterization.md),같은행·Y−최근관측·복원 | Tab평균44.93%감소와28cell악화,7524에집중. 개발후속·RCTL변경아님 | raw19재실행없이6잔차예측재사용;독립기간과최종소속효용은별도 |
+| extrapolation, saturation, loss concentration, cell7524 | [집중도](records/0020-0021-target-parameterization.md),32cell모두유지 | 60.449%raw손실,26/64query가context최대초과. 수학적출력상한/물리원인미확인 | 6큰target예시와전체cell/day손해;실제병합오류의근거와구분 |
+
+
 새 실험은 관련 과거 기록, 같게 유지할 조건, 달라지는 질문·조건, 재사용할 파일을 먼저 적는다. 기존 부정 결과를 회피하기 위한 조건 변경과 새로운 가설 검증을 구분한다. [첫 묶음 검수](verification/pilot-001.md), [RCTL 검수](verification/pilot-002.md), [문헌 검수](verification/pilot-003.md), [캐시 대조 검수](verification/pilot-004.md), [전체 조사 현황](verification/inventory-2026-10-08.md).

@@ -20,6 +20,8 @@
 | [16–17 시간 유효성 진단](records/0016-0017-temporal-validity.md) | old/recent/expanding의 저장 예측, 첫 주 정책 선택과 후속 손해, 관측 이력 기반 1시간 예측 |
 | [17 적응 문헌의 판단](records/0017-adaptation-literature.md) | MGSTC·PID·Joint QoS의 사용 정보·갱신 대상, 독립 소속 조건과 표기 공백 |
 | [18·21 공간 정보 진단](records/0018-0021-spatial-information.md) | 자기 입력·이웃 평균·PCC 이웃·8방향의 저장 비교, 작은 평균 이득과 cell·주·날짜별 손해 |
+| [19 넓힌 cell ID 진단](records/0019-broad-cell-identity.md) | 고정32cell의ID/순열/과거통계,같은pooled자료의평균과cell/day손해 |
+| [20·21 잔차 target 진단](records/0020-0021-target-parameterization.md) | 평균44.93%감소와28cell악화,최근값baseline·집중도·추가6호출의근거 |
 | [633 공동 MAE 선택의 부정 결과](records/0633-joint-selection-negative.md) | 같은 전체 자료에서 Tab 직접 정확도의 우위와 선택 소속의 RCTL 악화가 함께 관측됨 |
 | [635–637 실행·복구](records/0635-0637-execution-recovery.md) | 저장 오류와 부분 예측 복구를 방법의 실패와 구분 |
 | [638 수치 정정](records/0638-numeric-precision.md) | 같은 예측에서 유효 관계가 2→22개로 바뀐 근거 |
@@ -48,6 +50,7 @@
 | [16–17 저장 진단 검수](verification/history-010.md) | 32cell·4주·768fit 보고와 저장 수치, H5 입력·정답, 평균 및 cell/day 반례. 문헌 검수는 다음 H011에 연결 |
 | [17 문헌 검수](verification/history-011.md) | 세 공식 v1의 지정 방법·20쪽 시각 대조·11개 주장. 공간 진단은 다음 H012에 연결하며 전체 논문·성능 재현은 미완료 |
 | [18·21 공간 진단 검수](verification/history-012.md) | 444개 저장값 검사·367개 H5 대조·14개 오류 자료 검사. 실제 확장 X 저장 공백과 기록21의 남은 범위 명시 |
+| [19·20·21 검수](verification/history-013.md) | 1,033개저장값·44개H5·22개오류자료검사,15개주장과미완료범위 |
 | [앞으로의 팀 진행 기록](../progress/README.md) | 실험·회의 기록 양식 |
 
 색인은 현재 정리한 범위만 담습니다. 검색 결과가 없다고 과거 시도가 없다고 판단하면 안 됩니다. 파일·기록 번호·실험·재분석을 구분하며, 초기·부정·문헌·캐시 재분석·미실행 사례를 이어서 확인합니다. 이 아카이브는 팀의 최종 모델 선정 결과가 아닙니다.
