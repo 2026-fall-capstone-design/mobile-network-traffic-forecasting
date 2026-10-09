@@ -1,0 +1,84 @@
+# 44 cell별 이득의 범위와 TabICLv2 역할 변경 검토
+
+2026-09-26. 41 계획을 먼저 고정한 후 42를 한 번 실행했다. 43에서는 추가 원문 두 편과 공개 코드 일부를 읽었다. 새 추천안이나 RCTL 성능 개선 결과는 아니다.
+
+## 1. 평균 오차가 cell별의 안정적인 이득을 가리는가
+
+16개 고정 cell, 이미 개발 자료가 된 480시간, 저장된 예측을 사용했다. 구간은 앞·뒤 240시간으로 고정했다. 모든 수치는 cell별 평균 활동량으로 정규화한 MAE다.
+
+| 기존 조건 | MAE | global보다 나은 cell | 앞·뒤 모두 나은 cell |
+|---|---:|---:|---:|
+| global RCTL, seed 20260925 | 0.071068 | 기준 | 기준 |
+| TabICL risk, seed 20260925 | 0.087328 | 2/16 | 0/16 |
+| TabICL risk, seed 20260926 | 0.087760 | 0/16 | 0/16 |
+| empirical risk, seed 20260925 | 0.081600 | 3/16 | 1/16 |
+| empirical risk, seed 20260926 | 0.083516 | 0/16 | 0/16 |
+| KNN risk, seed 20260925 | 0.084073 | 0/16 | 0/16 |
+| PCC balanced, seed 20260925 | 0.089877 | 1/16 | 0/16 |
+| random balanced, seed 20260925 | 0.085598 | 0/16 | 0/16 |
+| global Ridge | 0.073010 | 6/16 | 0/16 |
+| global HGB | 0.068411 | 13/16 | 3/16 |
+
+global RCTL의 두 번째 seed는 없으므로 seed 간 반복을 같은 강도의 독립 비교로 제시하지 않는다. PCC balanced는 원 UPC 전체 구현이 아니다. 작은 중앙부 표본의 결과를 전체 도시 또는 원 논문의 10분 예측에 확대하지 않는다.
+
+**결정:** 현재 관찰한 TabICL 분할에서 일부 cell의 안정적인 이득이 평균에 가려졌다고 설명할 근거는 약하다. 27에서 관찰한 empirical 분할의 빠른 증가 상태 이득은 별개이며 그대로 보존한다. 상태별 이득과 cell 전체에서의 이득을 서로 대체하지 않는다.
+
+## 2. 이미 학습한 모델 중 잘 고르기만 하면 해결되는가
+
+primary seed의 global과 다섯 K=4 조건, 총 여섯 예측 경로만 대상으로 했다.
+
+- 정답을 모두 보고 cell마다 MAE가 가장 작은 경로를 고르면 0.070410이다. global 대비 감소는 **0.9256%**다.
+- validation에서 cell마다 가장 좋았던 경로를 고르면 뒤 개발 구간의 MAE는 **0.077273**, global 대비 **8.7321% 증가**다. 16개 중 6개가 global을 선택했다.
+- 매 sample의 실제 정답까지 보고 경로를 바꾸는 oracle은 0.036067이다. 정답을 먼저 사용하는 값이므로 실현 가능한 routing 또는 clustering의 성능으로 제시하지 않는다.
+
+cell oracle은 **기존 여섯 예측 경로의 사후 선택 범위**를 보여 준다. 모든 미래 clustering 방법의 개선 상한이 아니다. 각 cell에서 서로 다른 기존 cluster 모델을 고르면 하나의 일관된 partition조차 아닐 수 있다. validation 선택은 RCTL 손실을 사용하므로 현재 목표의 독립 clustering 규칙으로 사용할 수 없다. 선택과 평가 구간도 이미 개발 자료이므로 독립적인 검증 결과가 아니다.
+
+**결정:** 기존 예측 경로를 재선택하거나 routing을 붙이는 것부터 시작하지 않는다. 현재 표본에서 단순 선택으로 얻을 수 있는 cell 단위 이득은 작으며, 실제로 선택할 수 있는 규칙과 사후 oracle을 구별해야 한다.
+
+## 3. TimeTic: Tab 모델로 ‘실제 학습 후 성능’을 예측하는 경로
+
+원문: Yao et al., *Estimating Time Series Foundation Model Transferability via In-Context Learning*, [2509.23695v1](https://arxiv.org/html/2509.23695v1). history에서 v1만 확인했다. §3.1–3.3, §4.1–4.4, Appendix A.1–A.2, B.3, D를 읽었다. PDF 6쪽을 렌더링하여 context 구성과 식 3을 대조했다.
+
+- §3.3은 데이터 특징 20개와 모델 entropy 특징 6개에 zero-shot 성능·fine-tuned 성능을 연결한다. **회귀 정답은 미래 트래픽이 아니라 실제 fine-tuning 후 성능**이다. 정답이 없을 때에도 소수 dataset에서 먼저 fine-tuning하라고 명시한다.
+- §3.2 entropy profile은 대상 모델의 layer별 activation을 읽는다. 모델 결과를 전혀 관찰하지 않는 방법이 아니다. A.1의 feature 선택은 표준화·PCA 2차원·100개 그룹의 성능 분산을 사용한다.
+- B.3의 label 수집은 전체 parameter를 1 epoch, batch 32, AdamW 1e-5, 최대 sequence 2560, H100에서 학습한 결과다. 온라인 TabPFN 추론 시간만 전체 비용으로 셀 수 없다.
+- Table 1의 standard weighted Kendall은 short/medium/long 0.305/0.429/0.319, zero-shot은 0.157/0.329/0.279다. 초록의 약 0.6은 같은 지표가 아니다. 모델 순위 연관성이 RCTL의 pooling gain 보장도 아니다.
+
+§3.3의 26개 특징 설명과 zero-shot 열 추가 후 표 크기 표기는 실제 구현 시 확인이 필요하다. 원문이 연결한 TabPFN 저장소와 TimeTic 자체의 코드는 구별했다. 이번 검색 및 원문에서 TimeTic 공식 구현을 확인하지 못했으며 ‘공개 코드가 없다’고 단정하지 않는다.
+
+**현재 설계로 옮길 부분:** 미래값을 잘 맞히는 능력과 다른 모델의 학습 결과를 예상하는 능력은 서로 다른 회귀 문제다. 후자를 원하면 그에 해당하는 context label이 필요하다.
+
+**채택하지 않는 부분:** RCTL 결과를 meta label로 넣거나 RCTL 내부 activation으로 entropy profile을 만드는 방법은 현재 독립 조건을 위반한다. Ridge/HGB 결과로 대신하면 cheap learner의 공유 효과를 예측하는 문제로 바뀐다. 이때 RCTL로의 이동 근거가 별도로 필요하며, TabPFN을 TabICLv2로 바꾸는 것만으로 새 기여가 생기지 않는다. 이 경로의 새 모델 실행은 하지 않았다.
+
+## 4. Local distillation: 입력 관계를 추정하고 subgroup을 찾는 경로
+
+원문: Craig, Huang, Panigrahi, *Interpretable AI with Local Distillation*, [2608.23538v2](https://arxiv.org/html/2608.23538v2), 2026-09-22. v1 요약 대신 최신 v2의 §2, §4.1–4.3, §5, Appendix D를 확인했다. PDF 7·13·16·38쪽을 렌더링했다.
+
+- Algorithm 1은 teacher의 out-of-fold 예측이 비슷한 실제 관측값에 큰 가중치를 주고, query의 teacher 예측을 pseudo-observation으로 추가해 local elastic-net을 적합한다. student/teacher CV 손실 비가 1 이하이면 global linear fit으로 돌아간다.
+- §4.3은 이미 local coefficient clustering을 제시한다. Auto MPG 예에서 157개 query의 계수 벡터를 만들고, 100회 무작위 재적합 후 공동 소속 빈도로 average linkage를 한다. ‘예측 관계의 계수를 clustering한다’는 구조 자체를 새 아이디어로 사용할 수 없다.
+- §5의 안정성 정리는 **고정한 locality·정규화 설정에서 response 변화에 대한 feature 선택 확률**을 다룬다. lasso, design의 general position·집중도·비특이성, teacher의 response에 대한 매끄러움과 유계 미분을 가정한다. cluster 학습의 미래 MAE나 시간 변화에서의 안정성 정리가 아니다.
+- Appendix D의 Table 2는 특정 interaction 계수와 참 gradient의 상관이 0.14–0.34에 머문다고 설명한다. 같은 예측값을 내는 입력들에도 서로 다른 interaction이 있기 때문이다.
+
+**가중치 고정과 정보 의존성:** TabICLv2의 parameter가 고정되어 있어도 context의 y가 바뀌면 예측은 바뀐다. 따라서 위 정리의 teacher response 미분을 0으로 둘 수 없다. context를 다시 뽑는 것과 teacher/locality를 고정한 채 student 목적함수만 무작위화하는 것도 다르다.
+
+**공식 코드 대조:** [erincr/local-distillation-benchmark](https://github.com/erincr/local-distillation-benchmark) commit `f8ea1e71f19afd3167ba7ca0984ed34294d40823`의 README와 `benchmark_methods/common.py`, `method_ld.py`, `method_ld_ablation.py`를 저장해 읽었다. common.py:269–275는 scalar teacher prediction 거리, 311–350은 loss-ratio gate·가중치·pseudo-observation 적합이다. method_ld.py:25–27은 shuffle=True 5-fold다. 시계열에 그대로 적용하지 않는다. 모델 호출·의존성 설치·외부 코드 실행은 하지 않았다.
+
+**결정:** local explanation clustering을 도입하는 안은 추천하지 않는다. 이미 선행연구의 중심 구조이며, 현재 RCTL 독립성은 유지할 수 있어도 공동 학습의 이득을 확인하는 정보가 새로 생기는 것은 아니다. RCTL을 teacher의 pseudo-label로 학습하는 경로도 현재 목표와 다르다.
+
+## 5. 두 대체 경로가 구체적으로 바꾼 판단
+
+| 경로 | Tab 모델에 필요한 정답·정보 | 실제로 얻는 것 | 이번 판단 |
+|---|---|---|---|
+| 기존 conditional traffic predictor | 최근 입력과 이후 실제 트래픽 | 추정한 예측 관계 | 기존 후보의 제한된 개선을 다시 확인. 점수 보정만으로 계속하지 않음 |
+| TimeTic형 meta predictor | 실제 모델의 학습 후 성능과 모델 특징 | 그 성능의 예상값 | RCTL 결과 없이 동일한 문제를 풀었다고 할 수 없음 |
+| local distillation의 teacher | 예측값, OOF 손실, 실제 sample | 국소 선형 설명과 선택 안정성 | 설명 구조와 pooling 이득을 구별. 이미 있는 구조로 판단 |
+
+이번 작업으로 새 추천안이 확정된 것은 아니다. 다만 ‘평균에 숨은 안정적인 cell 이득’, ‘사전학습 모델이면 실제 학습 효과도 알 수 있다’, ‘설명 관계가 안정적이면 좋은 공유 그룹이다’라는 세 경로의 적용 범위를 구체적으로 좁혔다. 같은 기각안을 명칭만 바꾸어 재시도하지 않는다.
+
+다음 검토에서는 후보의 거리식을 먼저 만들지 않는다. **RCTL을 관찰하지 않아도 얻을 수 있는 정보가 실제로 바꾸는 학습 행동**을 먼저 명시하고, 기존의 conditional prediction·성능 meta-regression·local explanation 중 무엇과 다른지 비교해야 한다. 원자료에서 중요한 손해가 확인되지 않거나, 그 행동이 기존 방법과 동일하면 추가 모델 실행 없이 제외한다. 실제 학습 결과를 모르는 문제를 새 이름의 surrogate 점수로 숨기지 않는다.
+
+## 6. 실행과 자료 보존
+
+42는 0.031521초, 종료 시 확인 RSS는 result.json에 기록했다. 새 fit·forward·Tab context 0. 입력 hash가 변하지 않았다. 비용은 ledger에 한 번 반영했으며 기록된 modeling 합은 1,947.6963812초다. Tab45 contexts/35,712 query rows, 잔여35/24,288, RCTL29 fits/추가0을 유지했다.
+
+원문 2 PDF는 각각 22쪽·3,416,814 bytes, 42쪽·1,646,969 bytes다. 전체 SHA-256·HTML·history·코드·렌더링은 `sources/predictor_role_43/`에 있다. 42 결과와 plan/code는 `results/cell_harm_envelope_42/`, `41_cell_harm_envelope_plan.md`, `cell_harm_envelope_42.py`다. 기존 실행을 반복하지 않는다.
