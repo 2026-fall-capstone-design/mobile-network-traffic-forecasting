@@ -203,7 +203,9 @@ def verify(manifest_path: Path) -> dict:
         numeric(f"RCTL:{index}:fit_seconds", row["fit_seconds"])
         check(
             f"RCTL:{index}:epochs",
-            type(row["epochs_run"]) is int and 1 <= row["best_epoch"] <= row["epochs_run"] <= 80,
+            type(row["epochs_run"]) is int
+            and type(row["best_epoch"]) is int
+            and 1 <= row["best_epoch"] <= row["epochs_run"] <= 80,
         )
         grouped[(row["method"], row["seed"])].append(row)
     epochs = sum(r["epochs_run"] for r in fits)

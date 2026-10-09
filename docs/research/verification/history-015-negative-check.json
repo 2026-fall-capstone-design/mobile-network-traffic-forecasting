@@ -1,6 +1,6 @@
 {
   "success": true,
-  "negative_cases": 12,
+  "negative_cases": 14,
   "cases": [
     {
       "case": "missing_completed_call",
@@ -33,6 +33,14 @@
     {
       "case": "wrong_RCTL_seed",
       "rejected_by": "RCTL:method_seed_group_identity"
+    },
+    {
+      "case": "boolean_best_epoch",
+      "rejected_by": "RCTL:0:epochs"
+    },
+    {
+      "case": "fractional_best_epoch",
+      "rejected_by": "RCTL:0:epochs"
     },
     {
       "case": "RCTL_epoch_total_disagrees",
