@@ -238,3 +238,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## 센서 선택과 복원을 함께 제안하기 전에 — 53·55 SRSSS
 
 검색어: SRSSS, streaming sensor selection, 공간 정보, 관측 비용, 주기적 전체 관측, C_xx, ADMM, 선형 복원. [SRSSS 기록](records/0053-srsss.md)에서 현재값 복원과 미래 예측을 구분하고 초기100개 관측·전체 갱신·합성 비용 c의 조건을 확인합니다. 같은 관측을 줄이는 제안에는 단순 선형 복원과 다른 추가 정보, 실제 예산·초기/반복 비용, 최종 RCTL 효용을 명시해야 합니다. 표의 비교 분모와 작은 차이, 식9 부호·λ=0·주기 표기의 미해결 조건도 보존했습니다.
+
+## 거친 관측에서 세밀한 이력을 복원하기 전에 — 53·55 Zoom2Net
+
+검색어: Zoom2Net, telemetry imputation, super-resolution, collision, KAL, CEM, ILP, target refinement, EMD. [Zoom2Net 기록](records/0053-zoom2net.md)에서 이미 있는 측정/운영 제약·모호한 정답 집합·출력 보정을 확인합니다. 정밀 학습 정답과 실제 가용 관측, 모델 단독/CEM 포함 비용, 최종 미래 예측에 필요한 정보가 새 제안의 차이여야 합니다. MSE·Meta position 반례와 zoom factor 문구 차이, 100회 uncertainty forward의 비용 공백도 보존했습니다.
