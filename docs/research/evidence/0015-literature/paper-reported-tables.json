@@ -1,0 +1,126 @@
+{
+  "batch_id": "history-009",
+  "tables": [
+    {
+      "reference_id": "H009-P04",
+      "table": "Table1",
+      "pdf_physical_page": 4,
+      "setup": "논문 보고 TC를 만족하는 합성 binary/Internet topology; 독립 재현 아님",
+      "columns": [
+        "N",
+        "n_agg",
+        "n_outlier",
+        "printed_percent"
+      ],
+      "rows": [
+        [
+          128,
+          8128,
+          876,
+          10.78
+        ],
+        [
+          256,
+          32640,
+          2206,
+          6.21
+        ],
+        [
+          512,
+          130816,
+          4561,
+          3.49
+        ],
+        [
+          768,
+          294528,
+          8490,
+          2.88
+        ]
+      ],
+      "evidence_kind": "paper_reported_values_visually_compared_not_independent_reproduction"
+    },
+    {
+      "reference_id": "H009-P05",
+      "table": "Table6",
+      "pdf_physical_page": 11,
+      "setup": "7stream 평균/seconds, fixed context budget, single NVIDIA H200; total=fit+prediction+eviction",
+      "columns": [
+        "method",
+        "total_seconds",
+        "fit_seconds",
+        "prediction_seconds",
+        "eviction_seconds"
+      ],
+      "rows": [
+        [
+          "CURE",
+          0.0283,
+          0.0044,
+          0.0226,
+          0.0013
+        ],
+        [
+          "DualFIFO",
+          0.0259,
+          0.004,
+          0.0214,
+          0.0005
+        ]
+      ],
+      "evidence_kind": "paper_reported_values_visually_compared_not_independent_reproduction"
+    }
+  ],
+  "rows": 6,
+  "arithmetic": {
+    "evidence_kind": "deterministic_arithmetic_on_reported_values_not_experiment",
+    "active_ratios": [
+      {
+        "N": 128,
+        "printed_percent": 10.78,
+        "ratio_percent": 10.777559055118111,
+        "round2_matches": true
+      },
+      {
+        "N": 256,
+        "printed_percent": 6.21,
+        "ratio_percent": 6.758578431372549,
+        "round2_matches": false
+      },
+      {
+        "N": 512,
+        "printed_percent": 3.49,
+        "ratio_percent": 3.48657656555773,
+        "round2_matches": true
+      },
+      {
+        "N": 768,
+        "printed_percent": 2.88,
+        "ratio_percent": 2.8825782268578877,
+        "round2_matches": true
+      }
+    ],
+    "cure_component_sums": [
+      {
+        "method": "CURE",
+        "component_sum": 0.0283,
+        "reported_total": 0.0283
+      },
+      {
+        "method": "DualFIFO",
+        "component_sum": 0.0259,
+        "reported_total": 0.0259
+      }
+    ],
+    "cure_minus_dualfifo_total_seconds": 0.0024,
+    "bandit_expression_example": {
+      "d_nearest": 1,
+      "d_second": 3,
+      "d_candidate": 2,
+      "equation7": -1,
+      "algorithm1_line11": 1,
+      "scope": "임의 상수의 결정적 식 대조. 모델 실행·난수 simulation·성능 반례 실험 아님."
+    }
+  },
+  "new_experiments": 0
+}

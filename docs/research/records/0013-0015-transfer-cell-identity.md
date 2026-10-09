@@ -147,4 +147,4 @@ Tab ID는 11cell에서 이득·5cell에서 손해, 열 순서 변경은 9cell에
 
 같은 조건의 실험을 다시 계획하기 전에 [보존 근거](../evidence/0013-0015/README.md)의 교차 MAE·지원 matrix·24소속·7예측·선택 시간·ID 순열을 재사용한다. 새 연구라면 기간/도시/cell 집합, 같은 자료량의 pooled 비교, 실제 제공 X/Y, seed/표현 반복, 최종 learner와 RCTL 평가 중 무엇이 달라지는지 명시한다. 평균 이득 외에 cell·기간별 손해와 준비/추론 비용도 함께 남긴다.
 
-15 §3의 Effect fusion·Tree-Structured·BanditPAM++·Active Clustering·CURE·NOMADD 해석과 신규성 판단은 원문 검수 대기다. 이후 시간 유효성 탐색·회귀 TabPFN·전체 후속 연구와의 연결도 미완료다. 이번 정리는 13/14 및 15의 위 지정 부분에 한정한다.
+15 §3의 Effect fusion·Tree-Structured·BanditPAM++·Active Clustering·CURE·NOMADD 해석과 신규성 판단은 [후속 문헌 검수](0015-category-cost-time-literature.md)에서 지정 구간의 방법·가정과 대조했다. 전논문 검토와 이후 시간 유효성 탐색·회귀 TabPFN·전체 후속 연구의 연결은 미완료다. 이 페이지의 수치 정리는 13/14 및 15의 위 지정 부분에 한정한다.

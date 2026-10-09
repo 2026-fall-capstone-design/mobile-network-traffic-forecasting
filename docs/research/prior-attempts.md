@@ -27,12 +27,15 @@
 | 같은 예측인데 다른 소속, 중앙값 거리, plug-in conflict, RCTL 재학습 필요 여부 | [641](records/0641-cached-score-controls.md), A16cell·14cache·64query·22edge·K4·같은 이동 규칙 | 네 대조 모두 UPC 유지. 기존 관측 Y 점수는 Tab3/HGB1cell 이동. 한 개발 조건의 사후 비교이며 HGB_free 반례 유지 | 16평가 자리는 기존 UPC4파일 재사용. 새 모델·MAE 계산0. 보존 산술 검산부터 확인하고 새 조건을 명시 |
 | 연구 완료 선언, 연구 방향 추천, 원 UPC θ=10, 최소44cell, 아직 안 한 본실험 | [642](records/0642-research-direction.md), 20261004 최종 보고서·7쪽 Word | 완료는 착수 근거와 문서 범위. 독립 기간/도시·같은 wall-time·TabPFN·graph 크기 통제는 미실행. 44cell은 네 유효 seed 그룹의 필요조건 | 기존635–641을 다시 실행하기 전에 저장 근거를 확인. 정규화 이득과 원척도 HGB_free 손해를 함께 기록하고 새 조건을 고정 |
 
-13–15의 추가 진단은 다음 조건으로 찾을 수 있다. 15의 여섯 문헌에 관한 신규성 판단은 아직 일차자료 검수 중이다.
+13–15의 추가 진단과 여섯 문헌의 지정 방법은 다음 조건으로 찾을 수 있다. 15의 후속 이력과 누적 비용 감사는 남아 있다.
 
 | 찾으려는 문제·별칭 | 확인한 기록과 조건 | 결과·주의할 해석 | 재사용·새 실험의 차이 |
 |---|---|---|---|
 | cross-context transfer, input support, 외삽, PCC와 교차 손해 | [13·15 일부](records/0013-0015-transfer-cell-identity.md), 16cell·504행 단독 context·고정 64query | 자기/타 context MAE0.07261397/0.17606688, 입력 거리 초과 비율과 pair 손해의 rank 상관0.74753123. 지원 matrix 요약만 검산, 인과·pooled 손해 아님 | B1 원예측·교차 MAE·PCC·지원 matrix 재사용. context 자료량·관측 범위·최종 learner의 차이를 명시 |
 | UPC 소속 변화의 예측 의미, 부분집합 K, size-preserving random | [13·15의 UPC 비교](records/0013-0015-transfer-cell-identity.md), 도시 24소속을 16cell에 제한 | 실제 고유 소속10개. 주 조건 크기8/1/7→11/5이며 내부 손해는 저장 무작위 중앙범위 안. 민감도 하한 미만4행은2소속, 유의성 판정 아님 | 소속·120pair·내/외 손해 재사용. 원 1,000순열 개별값 미보존이며 새로 뽑아 독립 재현으로 세지 않음 |
 | cell one-hot, full-ID, ID permutation, same-data pooled, clustering gain upper bound | [14·15 일부](records/0013-0015-transfer-cell-identity.md), 같은 2,688context행/1,024query·Tab3/Ridge2/HGB2조건 | Tab ID 평균0.775335%/열순서변경1.013756% 개선, 각각5/7cell과두날 손해. Ridge/HGB 평균 악화. 관측 ID 이득은 모든 clustering 이득의 상한 아님 | 7예측·부분3예측·168선택시간·ID순열·날짜/cell별 차이 재사용. 13의cell당504행과14의168행 차이를 pooled 효과로 해석하지 않음 |
+| Effect fusion, Tree-Structured, category pooling, cell ID 병합 | [15 문헌](records/0015-category-cost-time-literature.md), 회귀 효과의 mixture/MCMC와 전체 자료 GLM split | 같은 자료에서 범주를 묶는 원리 존재. Effect의 두 partition/K1 한계, Tree의 deviance 선택과 CV/p-value 중단 구분 | 추정 대상·공변량·결정 차이를 명시. 모든 비선형 cell 병합의 기각으로 확대하지 않음 |
+| BanditPAM++, virtual arms, permutation cache, Active Clustering, tight clustering | [계산 비용 선행](references/category-cost-time-methods.md), 지정 방법·정리 조건 | 고정 거리 재사용과 gap 조건, TC/오염/균형/최소 크기 필요. 같은 PAM 해는 전역 최적 보장 아님 | TFM context 준비·query 비용과 재사용 값의 동일성 확인. 식/알고리즘·보고비율 공백을 그대로 구현하지 않음 |
+| CURE, entropy admission, short FIFO, long bank, NOMADD, prediction-field drift | [15 시간 context](records/0015-category-cost-time-literature.md), 분류 stream/고정 query의 class log-probability | 정보량 하한의 가정·centroid fallback·earlier-only forward validation 유지. α0 후보는 미래 무손해 보장 아님 | 시간 유효성·label 시점·단순 시간 특징 대비 결정 차이를 명시. traffic 회귀/RCTL 이득으로 간주하지 않음 |
 
 새 실험은 관련 과거 기록, 같게 유지할 조건, 달라지는 질문·조건, 재사용할 파일을 먼저 적는다. 기존 부정 결과를 회피하기 위한 조건 변경과 새로운 가설 검증을 구분한다. [첫 묶음 검수](verification/pilot-001.md), [RCTL 검수](verification/pilot-002.md), [문헌 검수](verification/pilot-003.md), [캐시 대조 검수](verification/pilot-004.md), [전체 조사 현황](verification/inventory-2026-10-08.md).
