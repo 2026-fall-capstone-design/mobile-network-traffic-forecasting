@@ -1,0 +1,123 @@
+"""Development diagnostic only. No TabICL or RCTL calls or parameter tuning."""
+import os
+for key in ['OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS']:
+    os.environ[key] = '4'
+from pathlib import Path
+import json, time, hashlib, sys
+import numpy as np
+import pandas as pd
+import h5py, psutil
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor
+sys.stdout.reconfigure(encoding='utf-8')
+base = Path(__file__).resolve().parent
+out = base/'results/temporal_validity'
+out.mkdir(exist_ok=True)
+if (out/'run_started.json').exists():
+    raise SystemExit('Existing run marker; inspect it instead of restarting.')
+t0 = time.perf_counter()
+seed = 20260925
+origins = np.array([672, 840, 1008, 1176])
+policies = ['old', 'recent', 'expanding']
+model_names = ['Ridge', 'HGB']
+prior_ids = np.load(base/'results/observed_risk_tables.npz')['cell_ids'].astype(int)
+with h5py.File(base/'assets/data_git_version.h5', 'r') as f:
+    scale_all = f['data'][:672, :, 2].mean(axis=0)
+    rng = np.random.default_rng(seed)
+    ranks = np.argsort(scale_all, kind='stable')
+    chosen = list(prior_ids-1)
+    additions, strata = [], []
+    for quartile, rows in enumerate(np.array_split(ranks, 4)):
+        rows = rng.permutation(rows)
+        fresh = [int(v) for v in rows if v not in chosen][:4]
+        chosen.extend(fresh); additions.extend(fresh); strata.extend([quartile]*4)
+    cell_indices = np.array(chosen)
+    assert len(cell_indices)==32 and len(set(chosen))==32
+    # h5py expects sorted fancy indices; invert the sorting afterward.
+    order = np.argsort(cell_indices)
+    raw = f['data'][:1344, cell_indices[order], 2][:, np.argsort(order)]
+    dates = pd.to_datetime(f['idx'][:1344].astype(str))
+scales = scale_all[cell_indices]
+assert np.all(scales>0) and np.isfinite(raw).all()
+z = raw/scales
+times = np.arange(168, 1344)
+cal = dates[times]
+calendar = np.column_stack([np.sin(2*np.pi*cal.hour/24),np.cos(2*np.pi*cal.hour/24),
+                           np.sin(2*np.pi*cal.dayofweek/7),np.cos(2*np.pi*cal.dayofweek/7)])
+X = np.stack([np.array([np.r_[z[t-8:t,j],z[t-24,j],z[t-168,j],
+                         z[t-24:t,j].mean(),z[t-24:t,j].std(),calendar[k]]
+                        for k,t in enumerate(times)]) for j in range(32)]).astype(np.float64)
+Y = z[times].T
+settings = {'scope':'Previously inspected development data; not independent final validation.',
+            'plan_sha256':hashlib.sha256((base/'16_temporal_validity_diagnostic_plan.md').read_bytes()).hexdigest(),
+            'cell_ids':(cell_indices+1).tolist(), 'retained_prior_ids':prior_ids.tolist(),
+            'added_cell_ids':(np.array(additions)+1).tolist(), 'added_activity_quartiles':strata,
+            'origins':origins.tolist(), 'query_hours_per_origin':168,
+            'normalization':'Fixed first 672h mean per cell',
+            'model_names':model_names,'policies':policies,'seed':seed,
+            'planned_small_regression_fits':768,'new_TabICL_contexts':0,'new_RCTL_fits':0}
+(out/'run_started.json').write_text(json.dumps(settings,indent=2,allow_nan=False),encoding='utf-8')
+pred = np.full((2,3,4,32,168),np.nan)
+yquery = np.stack([Y[:,(times>=o)&(times<o+168)] for o in origins])
+naive = np.stack([np.stack([z[o-lag:o+168-lag].T for o in origins]) for lag in [1,24,168]])
+fits, model_secs, peak_rss = 0, 0.0, psutil.Process().memory_info().rss
+for w,o in enumerate(origins):
+    query = (times>=o)&(times<o+168)
+    for m,name in enumerate(model_names):
+        for p,policy in enumerate(policies):
+            lo,hi = (168,504) if policy=='old' else ((o-336,o) if policy=='recent' else (168,o))
+            tr = (times>=lo)&(times<hi)
+            for j in range(32):
+                model = (make_pipeline(StandardScaler(),Ridge(alpha=1.0)) if name=='Ridge'
+                         else HistGradientBoostingRegressor(loss='absolute_error',max_iter=100,
+                             max_leaf_nodes=15,min_samples_leaf=20,l2_regularization=1,
+                             early_stopping=False,random_state=seed))
+                tick=time.perf_counter()
+                model.fit(X[j,tr],Y[j,tr])
+                pred[m,p,w,j]=model.predict(X[j,query])
+                model_secs+=time.perf_counter()-tick;fits+=1
+                peak_rss=max(peak_rss,psutil.Process().memory_info().rss)
+                if time.perf_counter()-t0>120 or peak_rss>2*1024**3:
+                    np.savez_compressed(out/'partial_predictions.npz',pred=pred,y=yquery)
+                    (out/'run_stopped.json').write_text(json.dumps({'fits':fits,'seconds':time.perf_counter()-t0,
+                                                                  'reason':'Predeclared resource cap reached'}),encoding='utf-8')
+                    raise SystemExit('Resource cap; partial results saved, no automatic restart.')
+            print(json.dumps({'week':int(w),'model':name,'policy':policy,'fits':fits,
+                              'mae':float(np.abs(pred[m,p,w]-yquery[w]).mean())}),flush=True)
+    np.savez_compressed(out/'predictions_partial.npz',pred=pred,y=yquery,naive=naive)
+assert fits==768 and np.isfinite(pred).all()
+loss=np.abs(pred-yquery[None,None])
+summary={'settings':settings,'models':{},'naive_MAE':{str(lag):float(np.abs(naive[k]-yquery).mean()) for k,lag in enumerate([1,24,168])}}
+for m,name in enumerate(model_names):
+    by=loss[m].mean(axis=-1) # policy, week, cell
+    selected = 1+np.argmin(by[1:3,0],axis=0) # ties handled below
+    selected[np.isclose(by[1,0],by[2,0],rtol=0,atol=0)]=2
+    selected_loss=np.stack([by[selected,w,np.arange(32)] for w in range(1,4)])
+    entry={'all_MAE':dict(zip(policies,by.mean((1,2)).tolist())),
+           'MAE_by_week':{policy:by[p].mean(1).tolist() for p,policy in enumerate(policies)},
+           'MAE_by_cell':{policy:by[p].mean(0).tolist() for p,policy in enumerate(policies)},
+           'MAE_by_cell_week':{policy:by[p].tolist() for p,policy in enumerate(policies)},
+           'recent_minus_old':{'mean':float((by[1]-by[0]).mean()),'cell_week_fraction_negative':float(np.mean(by[1]<by[0])),
+                               'cell_mean_delta_quantiles':np.quantile((by[1]-by[0]).mean(0),[0,.25,.5,.75,1]).tolist()},
+           'recent_minus_expanding':{'mean':float((by[1]-by[2]).mean()),'cell_week_fraction_negative':float(np.mean(by[1]<by[2])),
+                                     'cell_mean_delta_quantiles':np.quantile((by[1]-by[2]).mean(0),[0,.25,.5,.75,1]).tolist()},
+           'fixed_first_week_policy':{'cell_choices':[policies[v] for v in selected],
+                                      'later3weeks_MAE':float(selected_loss.mean()),
+                                      'later3weeks_recent_MAE':float(by[1,1:].mean()),
+                                      'later3weeks_expanding_MAE':float(by[2,1:].mean()),
+                                      'recent_selected_count':int(np.sum(selected==1))},
+           'original16_MAE':dict(zip(policies,by[:,:,:16].mean((1,2)).tolist())),
+           'added16_MAE':dict(zip(policies,by[:,:,16:].mean((1,2)).tolist()))}
+    summary['models'][name]=entry
+elapsed=time.perf_counter()-t0
+summary.update({'elapsed_seconds':elapsed,'fit_predict_seconds':model_secs,'peak_RSS_bytes':peak_rss,
+                'small_regression_fits':fits,'new_TabICL_contexts':0,'new_RCTL_fits':0,
+                'is_final_validation':False,'actual_conditional_drift_established':False})
+np.savez_compressed(out/'predictions.npz',pred=pred,y=yquery,naive=naive,cell_ids=cell_indices+1,
+                    origins=origins,scales=scales,X=X,Y=Y,times=times)
+(out/'summary.json').write_text(json.dumps(summary,indent=2,allow_nan=False),encoding='utf-8')
+(out/'run_finished.json').write_text(json.dumps({'fits_completed':fits,'wall_seconds':elapsed,'fit_predict_seconds':model_secs},indent=2),encoding='utf-8')
+print(json.dumps({'models':{n:{k:v for k,v in e.items() if k in ['all_MAE','fixed_first_week_policy','recent_minus_old','recent_minus_expanding']} for n,e in summary['models'].items()},
+                  'elapsed_seconds':elapsed,'fits':fits},indent=2),flush=True)

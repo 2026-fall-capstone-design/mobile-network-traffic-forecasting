@@ -96,6 +96,10 @@ jobs:
           uv run --locked --group archive python scripts/research_archive/verify_transfer_identity_history.py
           --source docs/research/evidence/0013-0015/manifest.json
           --output .research-archive/ci-0013-0015.json
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_temporal_validity_history.py
+          --manifest docs/research/evidence/0016-0017/manifest.json
+          --output .research-archive/ci-0016-0017.json
 
   deploy:
     name: deploy-pages

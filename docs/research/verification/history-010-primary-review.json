@@ -1,0 +1,430 @@
+{
+  "batch_id": "history-010",
+  "reviewed_at_utc": "2026-10-09T00:21:59.570790+00:00",
+  "reviewer": "same_archive_agent_not_independent_scientific_review",
+  "findings": [
+    {
+      "claim_id": "H010-C01",
+      "sources": [
+        "SRC-0020972",
+        "SRC-0020991",
+        "SRC-0021004"
+      ],
+      "finding": "15후속의 시간 유효성 질문을16계획/17개발 진단으로 연결. 독립 최종 검증·조건부 drift 증거 아님.",
+      "locator": "15lines54–58;16lines3–25;17lines3/10/26",
+      "limitation": "이후 모든시간방법 기각이나 모델선정이 아니다."
+    },
+    {
+      "claim_id": "H010-C02",
+      "sources": [
+        "SRC-0020991",
+        "SRC-0032490",
+        "SRC-0032487",
+        "SRC-0023589",
+        "SRC-0023485",
+        "SRC-0023201"
+      ],
+      "finding": "기존16+사분위4개씩 추가한32cell의ID·순서·사분위 소속 확인.",
+      "locator": "16line12;code25–42;H5local-data-check",
+      "limitation": "역사적 난수 순열 재생성0; 도시 대표성 보장 아님."
+    },
+    {
+      "claim_id": "H010-C03",
+      "sources": [
+        "SRC-0020991",
+        "SRC-0023201",
+        "SRC-0032490",
+        "SRC-0032487",
+        "SRC-0023485"
+      ],
+      "finding": "first672h평균 고정 정규화,4query주/각168h;old/recent336행,expanding504/672/840/1008행.",
+      "locator": "code20–64/66–71;localH5;NPZmetadata",
+      "limitation": "자료량과최근성 효과 분리 불가; 개발 기간이다."
+    },
+    {
+      "claim_id": "H010-C04",
+      "sources": [
+        "SRC-0023201",
+        "SRC-0032487",
+        "SRC-0023485"
+      ],
+      "finding": "시간별 관측lag·calendar 입력과 Y를H5에 대조. 매주 모델고정/시간별입력갱신의1시간앞예측이다.",
+      "locator": "code45–64/67–79;H5selected32cells",
+      "limitation": "origin부터168시간앞을한꺼번에예측하는평가로읽지않는다."
+    },
+    {
+      "claim_id": "H010-C05",
+      "sources": [
+        "SRC-0032487",
+        "SRC-0032491",
+        "SRC-0021004"
+      ],
+      "finding": "6조건전체·주별MAE를 저장예측에서 재계산. 첫주recent는old보다두모델모두나쁘다.",
+      "locator": "17table;summary.models.*;risk-check",
+      "limitation": "전체평균과기간별순위구분; 모델재현아님."
+    },
+    {
+      "claim_id": "H010-C06",
+      "sources": [
+        "SRC-0032487",
+        "SRC-0032491"
+      ],
+      "finding": "recent-old평균이득에도10/8cell과13/11날짜손해. recent-expanding은24/31cell손해.",
+      "locator": "risk-check contrasts;summarycell/week;derived28day",
+      "limitation": "32cell/128cellweeks/28days 서로다른분모; 독립표본 검정아님."
+    },
+    {
+      "claim_id": "H010-C07",
+      "sources": [
+        "SRC-0032487",
+        "SRC-0032491"
+      ],
+      "finding": "expanding-old는32cell모두4주평균이득이나Ridge4/HGB1일손해.7524양쪽날짜반례보존.",
+      "locator": "risk-check expanding_minus_old;cell_day_deltas",
+      "limitation": "특정cell제외나평균이득의보편우위 일반화없음."
+    },
+    {
+      "claim_id": "H010-C08",
+      "sources": [
+        "SRC-0020991",
+        "SRC-0023201",
+        "SRC-0032487",
+        "SRC-0032491"
+      ],
+      "finding": "첫주선택 recent13/8cell을이후3주에고정하면항상expanding대비+.002308935/+.002265186 MAE손해.",
+      "locator": "16line17;code95–110;fixed_first_week_policy",
+      "limitation": "동점expanding/실제동점0. 이후3주정답선택없지만독립최종평가아님."
+    },
+    {
+      "claim_id": "H010-C09",
+      "sources": [
+        "SRC-0023201",
+        "SRC-0032487",
+        "SRC-0032488",
+        "SRC-0032490",
+        "SRC-0032489",
+        "SRC-0032491",
+        "SRC-0021004",
+        "SRC-0020991"
+      ],
+      "finding": "부분3배열=최종.768cheapfit/TabRCTL0과비용필드·계획hash연결.",
+      "locator": "code18–20/53–61/65–89/114–123;markers;17line14",
+      "limitation": "fit횟수/시간은저장보고. RSS샘플최대,elapsed최종쓰기제외;과거handleexit0독립확인아님."
+    },
+    {
+      "claim_id": "H010-C10",
+      "sources": [
+        "SRC-0032487",
+        "SRC-0032491"
+      ],
+      "finding": "기존/추가16집합과naive3종비교보존.1시간lag복사는HGBexpanding보다낮고Ridgeexpanding보다높다.",
+      "locator": "summaryoriginal16/added16/naive;storedarray",
+      "limitation": "정규화MAE의같은자료기술비교.집합차이의인과효과아님."
+    },
+    {
+      "claim_id": "H010-C11",
+      "sources": [
+        "SRC-0021004"
+      ],
+      "finding": "17당시context폐기구조미추천·주변정보질문으로이동.3문헌방법및18이후연결은아직미검수.",
+      "locator": "17lines16–26",
+      "limitation": "문헌원리/신규성검증완료로세지않음;원기록명령실행0."
+    }
+  ],
+  "primary_sources": [
+    {
+      "source_id": "SRC-0023485",
+      "path": "tmp/redesign_20260925/assets/data_git_version.h5",
+      "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+      "size_bytes": 357150320,
+      "exact_alias_source_ids": [
+        "SRC-0023485",
+        "SRC-0073719"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "distribution": "metadata_and_official_link_only",
+      "url": "https://media.githubusercontent.com/media/chuanting/STCNet/dc3ff65eb42b099ef8ec281c10282d6c47b533cb/Github_Version/data/data_git_version.7z",
+      "read_scope": [
+        "SHA256/size",
+        "HDF5:data.shape/idx[:1344]",
+        "HDF5:data[:672,:,2] means for strata",
+        "HDF5:data[:1344,32 selected cell indices,2]"
+      ],
+      "review_status": "selected_hdf5_fields_audited",
+      "archive_member_identity": {
+        "source_id": "SRC-0073719",
+        "path": "data_git_version.h5",
+        "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+        "size_bytes": 357150320,
+        "container_id": "SRC-0023486",
+        "container_path": "tmp/redesign_20260925/assets/milan_stcnet.7z",
+        "matched_physical_source_id": "SRC-0023485",
+        "method": "tar -xOf to SHA256 stream; no disk extraction or script execution"
+      },
+      "local_read_proof": "../../verification/history-010-local-data-check.json",
+      "whole_source_reviewed": false
+    }
+  ],
+  "numeric_scope": "16plan/17numeric findings and implementation, stored outputs; H5specifiedfields separately",
+  "record17_fully_integrated": false,
+  "record17_literature_pending": [
+    "MGSTC2508.08281v1",
+    "PID2608.08332v1",
+    "QoS2604.12903v1"
+  ],
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "new_simulations": 0,
+  "source_preservation": [
+    {
+      "source_id": "SRC-0020991",
+      "path": "tmp/redesign_20260925/16_temporal_validity_diagnostic_plan.md",
+      "sha256": "d74e9e655f015e4522d2bcd3ea06959a94d2dd0206105ef2decb2f18c841b411",
+      "size_bytes": 3752,
+      "exact_alias_source_ids": [
+        "SRC-0000412",
+        "SRC-0020991"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "archive_path": "originals/SRC-0020991.md.txt",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "lines_read": [
+        [
+          1,
+          32
+        ]
+      ],
+      "automated_read_scope": [
+        "sha256_only"
+      ],
+      "claim_verification_scope": "16plan/17numeric implementation and saved outputs. Literature17 lines16–22 and later spatial studies pending."
+    },
+    {
+      "source_id": "SRC-0021004",
+      "path": "tmp/redesign_20260925/17_temporal_validity_findings.md",
+      "sha256": "1e617fbf9c9469d111a3cbcd466fbcb1e185f7369fe9fb3652f80bd5c265d73d",
+      "size_bytes": 4043,
+      "exact_alias_source_ids": [
+        "SRC-0000413",
+        "SRC-0021004"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "archive_path": "originals/SRC-0021004.md.txt",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "lines_read": [
+        [
+          1,
+          26
+        ]
+      ],
+      "automated_read_scope": [
+        "sha256_only"
+      ],
+      "claim_verification_scope": "16plan/17numeric implementation and saved outputs. Literature17 lines16–22 and later spatial studies pending.",
+      "pending_claim_scope": "three primary methods lines18–22, historical exit0 handle not independently observed"
+    },
+    {
+      "source_id": "SRC-0023201",
+      "path": "tmp/redesign_20260925/temporal_validity_diagnostic.py",
+      "sha256": "ed258603cd5d3246e4cc62e43447d16c9866a4791528b613c3847c5bbd74a916",
+      "size_bytes": 8177,
+      "exact_alias_source_ids": [
+        "SRC-0000431",
+        "SRC-0023201"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "archive_path": "originals/SRC-0023201.py.txt",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "lines_read": [
+        [
+          1,
+          123
+        ]
+      ],
+      "automated_read_scope": [
+        "sha256_only"
+      ],
+      "claim_verification_scope": "16plan/17numeric implementation and saved outputs. Literature17 lines16–22 and later spatial studies pending."
+    },
+    {
+      "source_id": "SRC-0032490",
+      "path": "tmp/redesign_20260925/results/temporal_validity/run_started.json",
+      "sha256": "6b28bf2668d6a2830ac81c46ab002c14e1f055825cdeed2945b1ffd787a6b114",
+      "size_bytes": 1506,
+      "exact_alias_source_ids": [
+        "SRC-0000453",
+        "SRC-0032490"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "archive_path": "originals/SRC-0032490.json",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "structured_full_result_review",
+      "automated_read_scope": [
+        "JSON:all_keys"
+      ],
+      "claim_verification_scope": "16plan/17numeric implementation and saved outputs. Literature17 lines16–22 and later spatial studies pending.",
+      "agent_read_scope": {
+        "all_json_keys_read": true,
+        "presentation": "untruncated JSON: settings/markers and models.Ridge/models.HGB/other compact sections"
+      }
+    },
+    {
+      "source_id": "SRC-0032489",
+      "path": "tmp/redesign_20260925/results/temporal_validity/run_finished.json",
+      "sha256": "16e171cea3acf469712e47eac3f51f7a98aee92cb404f23b6f5c2f050c1f258c",
+      "size_bytes": 114,
+      "exact_alias_source_ids": [
+        "SRC-0000452",
+        "SRC-0032489"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "archive_path": "originals/SRC-0032489.json",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "structured_full_result_review",
+      "automated_read_scope": [
+        "JSON:all_keys"
+      ],
+      "claim_verification_scope": "16plan/17numeric implementation and saved outputs. Literature17 lines16–22 and later spatial studies pending.",
+      "agent_read_scope": {
+        "all_json_keys_read": true,
+        "presentation": "untruncated JSON: settings/markers and models.Ridge/models.HGB/other compact sections"
+      }
+    },
+    {
+      "source_id": "SRC-0032491",
+      "path": "tmp/redesign_20260925/results/temporal_validity/summary.json",
+      "sha256": "fc6985754fba5b64918c78d9532bdc4ab8e2bec3c1366229c7b97003588837a7",
+      "size_bytes": 40838,
+      "exact_alias_source_ids": [
+        "SRC-0000454",
+        "SRC-0032491"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "archive_path": "originals/SRC-0032491.json",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "structured_full_result_review",
+      "automated_read_scope": [
+        "JSON:all_keys"
+      ],
+      "claim_verification_scope": "16plan/17numeric implementation and saved outputs. Literature17 lines16–22 and later spatial studies pending.",
+      "agent_read_scope": {
+        "all_json_keys_read": true,
+        "presentation": "untruncated JSON: settings/markers and models.Ridge/models.HGB/other compact sections"
+      }
+    },
+    {
+      "source_id": "SRC-0032487",
+      "path": "tmp/redesign_20260925/results/temporal_validity/predictions.npz",
+      "sha256": "1c4276490fe50463415c724a4c8cfcae560654adb1e85d41233d204aea4ae797",
+      "size_bytes": 3142567,
+      "exact_alias_source_ids": [
+        "SRC-0000450",
+        "SRC-0032487"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "archive_path": "originals/SRC-0032487.npz",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "automated_read_scope": [
+        "NPZ:all_numeric_arrays"
+      ],
+      "claim_verification_scope": "16plan/17numeric implementation and saved outputs. Literature17 lines16–22 and later spatial studies pending."
+    },
+    {
+      "source_id": "SRC-0032488",
+      "path": "tmp/redesign_20260925/results/temporal_validity/predictions_partial.npz",
+      "sha256": "c5f5ce82c72ab964df665bd65031a42d78614b3449ad44f7b9d8dbf8ecb45fbf",
+      "size_bytes": 1620213,
+      "exact_alias_source_ids": [
+        "SRC-0000451",
+        "SRC-0032488"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "archive_path": "originals/SRC-0032488.npz",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "automated_read_scope": [
+        "NPZ:all_numeric_arrays"
+      ],
+      "claim_verification_scope": "16plan/17numeric implementation and saved outputs. Literature17 lines16–22 and later spatial studies pending."
+    },
+    {
+      "source_id": "SRC-0020972",
+      "path": "tmp/redesign_20260925/15_transfer_identity_and_literature_findings.md",
+      "sha256": "7f0ba093901c28189153df1b59c5affd8f11fecb576172301aa8ef863bf87918",
+      "size_bytes": 9631,
+      "exact_alias_source_ids": [
+        "SRC-0000381",
+        "SRC-0020972"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "archive_path": "../0013-0015/originals/SRC-0020972.md.txt",
+      "preservation": "reuse_existing_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "lines_read": [
+        [
+          1,
+          62
+        ]
+      ],
+      "automated_read_scope": [
+        "sha256_only"
+      ],
+      "claim_verification_scope": "16plan/17numeric implementation and saved outputs. Literature17 lines16–22 and later spatial studies pending."
+    },
+    {
+      "source_id": "SRC-0023589",
+      "path": "tmp/redesign_20260925/results/observed_risk_tables.npz",
+      "sha256": "40837fdeef5632f688d91b526c499af0384a4226058fa94d56845fa1f0e5da5c",
+      "size_bytes": 7259978,
+      "exact_alias_source_ids": [
+        "SRC-0000227",
+        "SRC-0023589"
+      ],
+      "records": [
+        "0016",
+        "0017"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0023589.npz",
+      "preservation": "reuse_existing_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "automated_read_scope": [
+        "NPZ:cell_ids"
+      ],
+      "claim_verification_scope": "16plan/17numeric implementation and saved outputs. Literature17 lines16–22 and later spatial studies pending."
+    }
+  ]
+}

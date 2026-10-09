@@ -1,0 +1,32 @@
+# 과거 자료의 시간적 유효성을 확인하는 사전 계획
+
+작성일 2026-09-25. 이 파일 저장 뒤 실행한다. 연구 알고리즘의 채택안이 아닌 문제 존재 진단이다.
+
+## 확인할 질문
+
+달력, 최근 8시간, 일·주 lag, 24시간 요약을 제공해도, 오래된 학습 자료만 사용한 예측보다 최근 자료 또는 누적 자료를 사용한 예측이 낫고 그 차이가 cell에 따라 달라지는가? 단순 최근 자료 사용으로 충분하다면 새로운 clustering 구조를 제안하지 않는다. 이 확인으로 참 조건부 분포 변화나 RCTL의 학습 이득을 증명하지 않는다.
+
+## 자료와 비교
+
+- 기존 가공 Milan hourly internet activity, 같은 1시간 후 target, 16개 입력 열을 사용한다. 원본 bytes/bps로 해석하지 않는다.
+- 기존 16 cell을 모두 유지한다. 첫 28일 평균 활동량의 사분위별 cell 목록에서 고정 seed 20260925로 4개씩 추가한다. 기존 cell과 중복이면 다음 순서의 cell을 선택한다. 총 32 cell이며 결과를 보고 cell을 선택하지 않는다.
+- 모든 cell의 정규화는 첫 672시간 평균으로 고정한다. query 시작 시점은 672, 840, 1008, 1176이고 각 168시간이다. 이미 이전 결과를 살펴본 자료이므로 전체를 개발 진단으로 표시한다.
+- old: 항상 시간 168..503의 336행. recent: 각 origin 직전 336행. expanding: 시간 168부터 origin 직전까지. old와 recent는 자료 수가 같고 expanding은 더 많다. 두 비교의 의미를 구분한다.
+- cell별 Ridge(StandardScaler, alpha=1), HistGradientBoosting(absolute_error, 100 iterations, max_leaf_nodes=15, min_samples_leaf=20, l2=1, early_stopping=False, seed 고정)를 각 정책으로 학습한다. 최근값·전날값·전주값도 계산한다. 추가 tuning이나 최종 RCTL 학습은 하지 않는다.
+- 각 정책의 시간별 예측을 저장하고 cell·주·날짜별 MAE와 차이를 모두 보고한다. 가장 좋았던 구간이나 cell만 보고하지 않는다.
+- 첫 query 주에서 recent와 expanding 중 MAE가 작은 정책을 cell별로 선택하고 동점은 expanding으로 한다. 나머지 3주에서 이 고정 선택을 평가한다. 이 규칙은 단순 대안일 뿐 제안 novelty가 아니다. 이후 주의 정답으로 선택하지 않는다.
+
+## 결과별 행동
+
+1. recent가 old보다 유리해도 expanding과의 차이가 작거나 일정하지 않으면 '시간에 따른 자료 유효성'을 독립적인 신규 연구 문제로 확정하지 않는다.
+2. 오래된 자료의 손해가 반복되고 simple recent/expanding 선택 후에도 의미 있는 cell 간 차이가 남으면, 그 차이가 표본 수·입력 범위·이질적 반응 중 무엇과 연결되는지 별도로 확인한다. 같은 문제를 다룬 adaptive/streaming forecasting 원문과 먼저 비교한다.
+3. 모델별 결과가 다르면 TabICL 검사를 자동으로 확대하지 않는다. 우선 어느 가정이 비교 결과에 영향을 주는지 기록한다.
+
+업무상 최소 개선량은 주어지지 않았다. 사후 임의의 합격선을 만들지 않고 절대·상대 크기와 전체 cell·주별 변동을 보고한다. 4주를 많은 독립 cell-hour 표본으로 바꾸어 유의성을 주장하지 않는다.
+
+## 비용 상한
+
+- 추가 TabICL/RCTL 호출 0회.
+- 32 cell × 4 origins × 3 policies × 2 estimators = 768개의 작은 회귀 fit. 새로운 RCTL fit에 해당하지 않는다.
+- 이번 cheap 진단 wall time 120초, RSS 2GiB. 전체 cheap 600초와 모델 실행 누적 상한은 유지한다.
+- started/result/finished와 실행 계획 hash를 저장한다. 완료된 실행을 자동 재시작하지 않는다.
