@@ -1,0 +1,120 @@
+import os
+for k in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:os.environ[k]='4'
+from pathlib import Path
+import time,json,hashlib,gc,sys
+import numpy as np,pandas as pd,h5py,torch,psutil
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor
+from tabicl import TabICLRegressor
+sys.stdout.reconfigure(encoding='utf-8')
+torch.set_num_threads(4);torch.set_num_interop_threads(2)
+base=Path(__file__).resolve().parent;out=base/'results/history_grouping_60';out.mkdir(exist_ok=True)
+assert not (out/'run_started.json').exists(),'Already started; inspect, do not rerun.'
+ledger=json.loads((base/'cumulative_execution_budget.json').read_text(encoding='utf-8'))
+assert ledger['remaining_count_budgets']['TabICL_contexts']>=16
+assert ledger['remaining_count_budgets']['TabICL_query_rows']>=2048
+ids=np.array([3737,3765,6137,6165]);ct=np.rint(np.linspace(168,839,256)).astype(int)
+hours=np.rint(np.linspace(0,23,16)).astype(int);days=np.array([43,47,51,55])
+qt=np.concatenate([d*24+hours for d in days])
+assert len(np.unique(ct))==256 and len(np.unique(qt))==64
+assert ct.max()<qt.min()-8
+paths={'plan':base/'60_history_grouping_pilot_plan.md','code':Path(__file__),
+ 'data':base/'assets/data_git_version.h5','checkpoint':base/'assets/tabicl-regressor-v2-20260212.ckpt'}
+hashes={k:hashlib.sha256(p.read_bytes()).hexdigest() for k,p in paths.items()}
+groups={'global':[[0,1,2,3]],'geo2':[[0,1],[2,3]],'local':[[0],[1],[2],[3]],'global_ID':[[0,1,2,3]]}
+settings={'cell_ids':ids.tolist(),'context_times':ct.tolist(),'query_times':qt.tolist(),'lengths':[2,8],
+ 'groups':groups,'context_per_cell':256,'query_per_cell':64,'contexts':16,'predicted_query_rows':2048,
+ 'seed':20260925,'ensemble':1,'median':True,'RCTL_fits':0,'RCTL_calls':0,
+ 'development_only':True,'feature_covariates':['day_lag','week_lag','past24mean','past24std','hour_sin','hour_cos','dow_sin','dow_cos'],
+ 'caps':{'Tab_seconds':240,'simple_seconds':30,'stage_seconds':300,'observed_rss_bytes':8*1024**3},
+ 'sha256':hashes}
+(out/'settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+(out/'run_started.json').write_text(json.dumps({'unix':time.time(),'pid':os.getpid(),
+ 'settings_sha256':hashlib.sha256((out/'settings.json').read_bytes()).hexdigest()}),encoding='utf-8')
+start=time.perf_counter();simple_seconds=0.;simple_fits=0;calls=[];rss=[];pred={}
+with h5py.File(paths['data'],'r') as f:
+ raw=f['data'][:,ids-1,2].astype(float);dates=pd.to_datetime(f['idx'][:].astype(str))
+scale=raw[:672].mean(0);z=raw/scale
+assert np.isfinite(z).all() and (scale>0).all()
+actual=z[qt].T
+
+def features(j,times,L,add_id):
+ c=dates[times]
+ history=z[times[:,None]-np.arange(L,0,-1)[None,:],j]
+ past24=z[times[:,None]-np.arange(24,0,-1)[None,:],j]
+ x=np.c_[history,z[times-24,j],z[times-168,j],past24.mean(1),past24.std(1),
+  np.sin(2*np.pi*c.hour/24),np.cos(2*np.pi*c.hour/24),np.sin(2*np.pi*c.dayofweek/7),np.cos(2*np.pi*c.dayofweek/7)]
+ if add_id:x=np.c_[x,np.tile(np.eye(4)[j],(len(times),1))]
+ return x
+
+def persist():
+ (out/'calls.json').write_text(json.dumps(calls,indent=2,allow_nan=False),encoding='utf-8')
+ np.savez_compressed(out/'predictions_partial.npz',**pred,actual=actual,cell_ids=ids,query_times=qt)
+
+def check():
+ rss.append(psutil.Process().memory_info().rss)
+ assert time.perf_counter()-start<300 and max(rss)<8*1024**3,'Stage resource cap'
+ assert sum(v.get('fit_seconds',0)+v.get('predict_seconds',0) for v in calls)<240,'Tab time cap'
+ assert simple_seconds<30,'Simple time cap'
+
+try:
+ for L in [2,8]:
+  for name,partition in groups.items():
+   tag=f'{name}_L{L}'
+   for learner in ['Ridge','HGB','TabICL']:pred[f'{learner}_{tag}']=np.full((4,64),np.nan)
+   for members in partition:
+    check();cx=np.concatenate([features(j,ct,L,name=='global_ID') for j in members]);cy=np.concatenate([z[ct,j] for j in members])
+    qx=np.concatenate([features(j,qt,L,name=='global_ID') for j in members])
+    assert cx.shape==(len(members)*256,L+8+(4 if name=='global_ID' else 0))
+    tick=time.perf_counter()
+    for learner,m in [('Ridge',make_pipeline(StandardScaler(),Ridge(alpha=1))),
+     ('HGB',HistGradientBoostingRegressor(loss='absolute_error',max_iter=100,max_leaf_nodes=15,min_samples_leaf=20,
+       l2_regularization=1,early_stopping=False,random_state=20260925))]:
+     m.fit(cx,cy);pred[f'{learner}_{tag}'][members]=np.maximum(0,m.predict(qx).reshape(len(members),64));simple_fits+=1
+    simple_seconds+=time.perf_counter()-tick
+    m=TabICLRegressor(n_estimators=1,batch_size=1,model_path=str(paths['checkpoint']),allow_auto_download=False,
+      device='cpu',use_amp=False,use_fa3=False,offload_mode=False,random_state=20260925,n_jobs=1)
+    call={'condition':tag,'cells':ids[members].tolist(),'context_rows':len(cx),'query_rows':len(qx),'features':cx.shape[1],
+      'ensemble':1,'status':'started'}
+    calls.append(call);persist()
+    tick=time.perf_counter();m.fit(cx,cy);mid=time.perf_counter();p=m.predict(qx,output_type='median');end=time.perf_counter()
+    call.update(status='complete',fit_seconds=mid-tick,predict_seconds=end-mid)
+    pred[f'TabICL_{tag}'][members]=np.maximum(0,p.reshape(len(members),64))
+    persist();del m;gc.collect();check()
+   assert all(np.isfinite(pred[f'{learner}_{tag}']).all() for learner in ['Ridge','HGB','TabICL'])
+   print(json.dumps({'condition':tag,'MAE':{learner:float(np.abs(pred[f'{learner}_{tag}']-actual).mean()) for learner in ['Ridge','HGB','TabICL']}}),flush=True)
+ report={}
+ for k,p in pred.items():
+  err=np.abs(p-actual)
+  report[k]={'MAE':float(err.mean()),'cell_MAE':err.mean(1).tolist(),'block_MAE':err.reshape(4,4,16).mean((0,2)).tolist(),
+   'half_MAE':err.reshape(4,2,32).mean((0,2)).tolist(),'raw_activity_MAE':float((err*scale[:,None]).mean())}
+ effects={};screen={}
+ for learner in ['Ridge','HGB','TabICL']:
+  def errors(name,L):return np.abs(pred[f'{learner}_{name}_L{L}']-actual)
+  for name in ['geo2','local']:
+   effect=errors('global',2)-errors('global',8)-errors(name,2)+errors(name,8)
+   effects[f'{learner}_{name}']={'interaction':float(effect.mean()),'half_interaction':effect.reshape(4,2,32).mean((0,2)).tolist(),
+    'block_interaction':effect.reshape(4,4,16).mean((0,2)).tolist()}
+   screen[f'{learner}_{name}']={}
+   for alt in ['global','global_ID']:
+    diff=errors(name,2)-errors(alt,2);half=diff.reshape(4,2,32).mean((0,2))
+    screen[f'{learner}_{name}'][alt]={'short_partition_minus_short_alternative':float(diff.mean()),'halves':half.tolist(),
+       'partition_worse_overall_and_both_halves':bool(diff.mean()>0 and (half>0).all())}
+ tab_sec=sum(v['fit_seconds']+v['predict_seconds'] for v in calls);elapsed=time.perf_counter()-start
+ result={'settings':settings,'results':report,'grouping_history_interactions':effects,'screening':screen,
+  'cost':{'TabICL_contexts':len(calls),'TabICL_query_rows':sum(v['query_rows'] for v in calls),'TabICL_seconds':tab_sec,
+   'simple_fits':simple_fits,'simple_fit_seconds':simple_seconds,'cheap_numeric_seconds_including_simple':elapsed-tab_sec,
+   'stage_seconds':elapsed,'observed_rss_bytes_max':max(rss),'rss_sampling':'between calls, not continuous peak',
+   'RCTL_fits':0,'RCTL_forward_calls':0},'independent_test':False,'RCTL_validated':False,'new_clustering_algorithm_validated':False}
+ assert len(calls)==16 and sum(v['query_rows'] for v in calls)==2048 and simple_fits==32
+ (out/'result.json').write_text(json.dumps(result,indent=2,allow_nan=False),encoding='utf-8')
+ np.savez_compressed(out/'predictions.npz',**pred,actual=actual,context_times=ct,query_times=qt,cell_ids=ids,scales=scale,
+  query_timestamps=np.array(dates[qt].astype(str)))
+ assert all(hashlib.sha256(p.read_bytes()).hexdigest()==hashes[k] for k,p in paths.items())
+ (out/'run_finished.json').write_text(json.dumps({'hashes_unchanged':True,'cost':result['cost']},indent=2),encoding='utf-8')
+ print(json.dumps({'cost':result['cost'],'interactions':effects,'screening':screen}),flush=True)
+except BaseException as exc:
+ (out/'run_stopped.json').write_text(json.dumps({'error':repr(exc),'seconds':time.perf_counter()-start,'simple_seconds':simple_seconds,'calls':calls},indent=2),encoding='utf-8')
+ raise

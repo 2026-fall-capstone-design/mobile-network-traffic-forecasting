@@ -1,0 +1,23 @@
+from pathlib import Path
+import json
+base=Path(__file__).resolve().parent;path=base/'cumulative_execution_budget.json';out=base/'results/history_grouping_60'
+ledger=json.loads(path.read_text(encoding='utf-8'));result=json.loads((out/'result.json').read_text(encoding='utf-8'))
+stage='history_grouping_60';cost=result['cost']
+assert not any(x['stage']==stage for x in ledger['model_calls_by_stage']),'Already accounted'
+assert not (out/'budget_before_accounting.json').exists(),'Already saved accounting input'
+assert ledger['used']['TabICL_contexts']==49 and ledger['used']['TabICL_query_rows']==35968
+assert cost['TabICL_contexts']==16 and cost['TabICL_query_rows']==2048 and cost['RCTL_fits']==0
+(out/'budget_before_accounting.json').write_bytes(path.read_bytes())
+ledger['model_calls_by_stage'].append({'stage':stage,'contexts':16,'predicted_query_rows':2048,
+ 'fit_predict_seconds':cost['TabICL_seconds'],'ensemble':1})
+ledger['used']['TabICL_contexts']+=16;ledger['used']['TabICL_query_rows']+=2048
+ledger['used']['TabICL_fit_predict_seconds']+=cost['TabICL_seconds']
+ledger['remaining_count_budgets']['TabICL_contexts']-=16;ledger['remaining_count_budgets']['TabICL_query_rows']-=2048
+ledger['new_cheap_diagnostic_seconds'][stage]=cost['cheap_numeric_seconds_including_simple']
+ledger['cheap_stage_details'].append({'stage':stage,'new_simple_fits':32,'methods':['Ridge','HGB'],
+ 'entire_stage_seconds':cost['stage_seconds'],'TabICL_seconds_accounted_separately':cost['TabICL_seconds'],
+ 'fit_predict_seconds_included_in_cheap_stage':cost['simple_fit_seconds'],'cost_not_counted_twice':True})
+path.write_text(json.dumps(ledger,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+cheap=sum(ledger['new_cheap_diagnostic_seconds'].values())
+total=cheap+ledger['used']['TabICL_fit_predict_seconds']+ledger['used']['RCTL_wall_seconds']+ledger['used']['RCTL_frozen_inference_seconds']
+print(json.dumps({'used':ledger['used'],'remaining':ledger['remaining_count_budgets'],'cheap':cheap,'recorded_modeling_seconds':total},indent=2))

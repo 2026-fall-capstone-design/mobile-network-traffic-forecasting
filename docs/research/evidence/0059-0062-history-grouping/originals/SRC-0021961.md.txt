@@ -1,0 +1,7 @@
+# 61: 입력 길이와 grouping의 논리 및 비용 산술
+
+2026-09-26. 모델 없이 Fraction으로 계산한다. 60의 실행 결과를 바꾸거나 신규성/실데이터 유용성을 통과시키기 위한 합성실험이 아니다.
+
+1. cell별 1차 Markov 잠재 상태의 지속확률을0.9/0.1로 두고, cell을 모르는 동일혼합을 비교한다. 상태0/1에2를 더하고 독립 Uniform(-0.05,0.05) 관측잡음을 더하여 연속값을 얻는다. 두 상태의 관측 구간이 겹치지 않으므로 최근 관측에서 상태는 식별되지만 cell은 식별되지 않는다. 한 관측과 두 관측으로 예측할 때 및 cell이 주어질 때의 Bayes MAE를 정확히 계산한다. process 식별과 process 내부 memory의 차이만 확인한다.
+2. 공개 RCTL port의6 block과 residual/projection/Dense 구조를 그대로 산술 계산한다. channels9, L2/L8의 conv+LSTM+dense MAC과 모든 parameter 수를 계산한다. 활성화·BatchNorm·bias 가산은 MAC에서 제외한다. 표준 dense 연산량이지 실측지연·학습시간이 아니다. 새로운 RCTL 생성/forward/학습은0이다.
+3. 상한300ms는 엄격한 성능 조건이 아니라 작은 산술 확인의 사후 기록용이므로 별도 hard cap은 cheap 누적600초 안에서 전체5초로 둔다. 모델0, 외부 코드0. 결과를 한 번만 저장하고 비용을 ledger에 한 번 반영한다.

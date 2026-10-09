@@ -1,0 +1,76 @@
+# 62: 입력 길이와 grouping 검토 결과
+
+2026-09-26. 59 원문 검토, 사전 계획60의 실제 추론, 사전 계획61의 정확 산술을 구분한다. 추천 방향은 아직 확정하지 않았다.
+
+## 판단
+
+이번4 cell에서는 **clustering으로 입력 길이를 줄여 이득을 얻는다는 중간 현상을 지지하지 않았다.** TabICLv2가 짧은 입력과 통합 context에서 단순 회귀보다 잘 예측한 긍정적인 결과는 보존한다. 이를 clustering→RCTL의 효과로 바꾸어 설명하지 않는다.
+
+## 1. 새 원문을 통해 달라진 판단
+
+### ALW, AAAI2026
+
+Suxin Tong, Jingling Yuan, *Efficiently Enhancing Long-term Series Forecasting via Adaptive Lookback with Wavelets*, AAAI40(31),25966–25974, DOI10.1609/aaai.v40i31.39797. 논문9쪽,2,932,005bytes. 공식 code commit `088493fef4e585aa5a01e52062afeffdd72fabd5`.
+
+Methods의식1–5, Experiments의Table1–4를 읽었다. DWT→scale별Q/K→채널 공통 중요도→역방향누적/soft-argmax→sigmoid mask→학습된 고정길이 투영→IDWT→forecast backbone이다. 입력512를256표현으로 압축하지만, mask가0에 가까워지는 것만으로 원래512시점의 모든 계산이 사라지지는 않는다. `layers/ALW.py`는 전체 scale행렬의 Q/K와 mask를 계산하고 `predictors`가 고정된 `red_len`으로 매핑한다. `models/iTransformer_ALW.py`, `models/DLinear_ALW.py`와 `exp/exp_long_term_forecasting.py`의 optimizer/backward를 대조하여 backbone과 함께 최적화함을 확인했다. 외부 코드를 실행하지 않았다.
+
+Table4의ETTh1/F720에서 CycleNet+lookback→+ALW는 MAC141.30M→166.82M,iteration4.3ms→13.5ms이며 MSE.473→.448이다. DLinear는 MAC165.27M→137.52M이지만 iteration4.2ms→15.8ms이다. 따라서 입력 표현 축소를 무조건 전체속도 향상으로 설명하지 않는다. 이 논문의 Traffic은통신트래픽 자료로 다루지 않았다.
+
+**적용:** 단순 attention/window선택·wavelet·입력압축을 신규성으로 세지 않는다. 짧은 입력 선택의 실제 연산과 전처리 비용을 함께 비교한다. RCTL과 독립적인 clustering이 필요하므로 ALW의공동학습을 그대로 적용하지 않는다.
+
+### Optimal Look-back Horizon, 최신v3
+
+Dahao Tang et al., arXiv2511.12791v3,2026-01-04. 처음 확보한v1 대신 실제 submission history에서 최신v3를 확인하고 별도로13쪽PDF334,099bytes와HTML을 확보했다. SHA/접근기록은source log에 있다.
+
+Preliminary, Loss Analysis(Theorems1–3), Optimal Horizon(Theorem4/Corollary1), Discussion, AppendixA/B를 읽었다. AR+seasonal+trend SDG,client정규화/PCA,고유차원/지평별오차,trimmed mean서버 horizon을 다룬다. 식10–13의제곱오차분해는유효하지만,client별Bayesmean과shared predictor의차이는순수finite-sample오차만이아니다. clientheterogeneity도포함한다. MAE/RCTL의동일분해로사용하지않는다.
+
+원문6–7쪽의Theorem4증명에는, H*이전의음수Bayes증분과비음수approximation증분을더해음수라고결론내리는부분이있다. 후자의상한이없으면그결론은따르지않는다. 또한증가하는오차상한이실제오차의증가를뜻하지않는다. 이를RCTL의최적길이보장으로사용하지않는다. 논문전체나실제성능을반박했다는주장이아니다. 부록A의검증은Jena2020기온52,696점에서SDG가원자료의통계를재현하는지에관한것이며,cellclustering이나실제federated horizon선택의비용절감실험이아니다.
+
+**적용:** 처음검출한성능평탄구간을전역최적입력길이로단정하지않고,학습오차의변동과모델별차이를직접비교한다.
+
+### 기존 GPI/CF 검토의 재사용
+
+*Why Do Time Series Models Need Long Context Windows?*, arXiv2606.01999v1은앞서33에서읽었다. 긴이력이발생과정을구별하는정보를제공한다는원리는이미있다. 그자체나cache를새기여로주장하지않는다. 이번61에서는이직관을연속관측의정확MAE예로확인했을뿐이다. 기존HCP/Vario의예측오차기반분할에길이후보만하나더넣는것도자동으로새기여가되지않는다.
+
+## 2. 실제 확인60
+
+`history_grouping_pilot_60.py`를한번실행했다.4cell3737/3765/6137/6165,cell당context256/query64,1시간자료1시점예측.2시점과8시점모두일/주간lag·직전24시간평균/표준편차·달력입력을동일하게제공했다. 입력차이는최근연속관측6개이다. 전체과거를2시간으로제한한실험이아니다.
+
+전체통합/global,공간상하2그룹/geo2,cell별/local,global에one-hotID를준대안을고정했다. 조건마다총1024개고유context row를사용했으며context당크기는1024/512/256으로다르다. 따라서동일context크기로소속만바꾼검사가아니라자료공유량이달라지는설정이다. 각길이에서8contexts,총16contexts/2048query행,단순모델32fits. Tab1ensemble/median/seed20260925. RCTLfit/forward0.
+
+| 고정 grouping / 최근 길이 | TabICLv2 MAE | Ridge MAE | HGB MAE |
+|---|---:|---:|---:|
+| global /2 |0.067327|0.090199|0.102476|
+| geo2 /2 |0.084254|0.090577|0.118711|
+| local /2 |0.095156|0.096073|0.122249|
+| global+ID /2 |0.069716|0.090250|0.102210|
+| global /8 |0.072282|0.088344|0.110615|
+| geo2 /8 |0.086142|0.090386|0.119553|
+| local /8 |0.097600|0.094176|0.126342|
+| global+ID /8 |0.073877|0.088219|0.107802|
+
+Tab global2는 동일 조건의 Ridge/HGB보다 양쪽 시간 절반 및 4개 날짜 블록 모두 낮은 MAE다. 4개 cell 중 3개에서도 두 단순 모델보다 낮다. 그러나 Tab geo2/local2는 global2보다 전체와 양쪽 시간 절반 모두 나쁘다. 특히 geo2−global2의 MAE 차이는 앞 절반 +0.000227, 뒤 절반 +0.033626이다. local2는 각각 +0.001942/+0.053715다.
+
+길이와grouping의상호작용 I=(global2−global8)−(split2−split8)는Tabgeo2의경우전체−0.003066,앞+0.000403,뒤−0.006536이다. 양수의I를‘분할하면긴이력필요성이줄어드는방향’으로사전에정했다. 부호가시간에따라바뀌므로안정적인특성으로확정하지않는다. Ridgegeo2는양쪽양수이나HGB와Tab에서유지되지않는다.
+
+이결과는다른지역·더긴이력·다른clustering의불가능성증명이아니다.4개centralcell,이미접근한개발기간,ensemble1,고정된일부query의초기확인이다. 공간2그룹은UPC전체알고리즘이아니다. RCTL의입력길이/성능은검증하지않았다.
+
+## 3. 논리·비용 확인61
+
+두cell의잠재2상태Markov과정지속확률을0.9와0.1로두고,상태별활동수준2/3에Uniform(-.05,.05)잡음을더했다. cellidentity를알면한관측의BayesMAE11/90=.122222이며,cellidentity를모르는반반혼합은한관측.5→두관측409/2050=.199512다. 정확Fraction계산이며,과정식별정보와짧은기억이구별됨을보일뿐실제트래픽자료의필요성증거가아니다.
+
+RCTL공개port구조에서channels9를고정하면표준conv/LSTM/Dense matrix MAC은sample당L8=1,364,864,L2=341,216으로1/4이다. parameter수는174,433→174,337로96개(약0.0550%)만줄어든다. cluster수가늘면거의같은크기의모델을더저장해야한다. 활성화/BN/bias가산/메모리이동/backprop을포함한실측시간이아니며4배속도향상으로보고하지않는다. 새로운모델생성/forward0.
+
+## 4. 판정과 다음 검토의 경계
+
+- 입력길이단축은실제core연산량을줄이는행동이지만,**그를위해clustering이필요하다는증거가부족하다.** 이후변형을늘려현재후보를살리지않는다.
+- Tab의예측력자체가긍정적으로관찰된조건은남긴다. 기존전체단계의실패를근거로Tab은트래픽을예측할수없다고결론내리지않는다.
+- RCTL추가fit상한0을유지한다. 이번Tab결과를RCTL검증으로대체하지않는다. 전체추천방향/최종Word는미완료이며goal완료를선언하지않는다.
+- 다음에는Tab예측을임의의거리로바꾸는변형을반복하기보다,Tab이RCTL의**실제입력이나학습target의표현**에어떤유용한정보를줄수있는지의원문/논리부터살펴본다. 실제정답을Tab의예측으로대체하는distillation은현재제약과다르다. 기존잔차학습/forecastcombination과같다면새방향으로채택하지않는다. 이는검토할질문이며추천안/실행계획이아니다.
+
+## 5. 실행 및 근거 보관
+
+-60:exit0,Tab19.109481초,simplefit2.006623초,전체22.312042초,call사이관측RSS최대492,646,400bytes(연속측정최대아님). 계획/코드/데이터/checkpointhash유지.
+-61:정확산술0.0000966초,모델0,exit0. 각실행시작guard와결과보존,재실행금지.
+-누적Tab65contexts/38,016query행/245.5397765초,잔여15/21,984. RCTL29fits/추가0. cheap64.0088449초,기록된modeling합1977.5556332초. 이전누락된전처리까지포함한완전한총시간이라고말하지않는다.
+-새공개PDF는ALW,v1비교용,v3최신총3개.새방법논문은2편이다. ALW4/7쪽,최신horizon6/7/9쪽총5쪽시각대조완료. `sources/history_grouping_59/`에URL·버전·hash·정적코드·render가있다.기존GPI자료는재사용하며다시다운로드/모델실행하지않았다.

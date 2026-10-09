@@ -292,3 +292,8 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 학습자료를 줄여 RCTL을 빠르게 하겠다는 제안 전에 — 56–58 종합
 
 검색어: training compression, sample importance, dataset condensation, context valuation, stratification, antithetic sampling, 학습량, 준비비, 재사용. [다섯 문헌 비교](records/0056-0058-compression-synthesis.md)에서 셀 소속·학습 창·PFN 문맥·합성 자료를 먼저 구분합니다. 원문별 유효 사례와 적용 한계, 비용의 분모, 당시 미채택 조건을 확인하고 새 제안에서 달라지는 학습기·목적·분할·직접 근거를 연결하세요.
+
+
+## cell을 나누어 입력 길이를 줄이겠다는 제안 전에 — 59–62
+
+검색어: grouping × history, lookback, 짧은 입력, process identification, global ID, context 공유량. [60번 pilot](records/0059-0062-history-grouping.md)은 4cell의 L2/L8와 일·주간 lag를 비교했습니다. Tab의 좋은 통합 예측을 clustering의 효과로 바꾸지 않고, 분할 뒤 손해와 기간별 상호작용 부호 변경을 보존했습니다. 새 기간·공유량·소속 기준·RCTL 평가에서 무엇이 달라지는지 먼저 연결하세요.
