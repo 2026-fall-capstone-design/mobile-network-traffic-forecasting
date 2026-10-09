@@ -93,3 +93,5 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 [원본 목록](history-032-sources.jsonl)은 34경로(새 정확 사본 23개·236,888 bytes, 재사용 1개, metadata 10개)를 연결합니다. [manifest](../evidence/0051-0055-gotsf-audit/manifest.json)의 별도 추가 참조 4개 중 3개·15,273 bytes를 보존했습니다. 추가 취득은 원래 원본 목록의 증가나 당시 입수 실적을 뜻하지 않습니다. [읽기 범위](../sources/history-032.md)의 텍스트 23쪽·시각 확인 14쪽·코드/노트북 검토와 696개 인쇄값 대조는 저자 성능 재현 및 51·55 전체 완료와 구분합니다.
 
 H033은 [15개 출처 행](history-033-sources.jsonl)과 [명세](../evidence/0051-0055-network-forecasting/manifest.json)에51·55의ITU/Cellular범위를 연결합니다.6기존사본 재사용·9외부metadata·5현재연결그림을 구분하고,28본문쪽/22시각쪽·인쇄표산술 검수는 원모델 재현과 별개로 기록합니다. 새원본복사0개이며전체51/55완료가아닙니다.
+
+H034는 [6개 원본 행](history-034-sources.jsonl)과 [명세](../evidence/0051-frontiers-beam-audit/manifest.json)에 Frontiers 범위를 연결합니다. 기존사본4개·원본외부metadata2개·원inventory밖의현재PDFmetadata1개, 새원문복사0개입니다. [읽은 범위](../sources/history-034.md)의805줄/MathML118항목·PDF17본문쪽/10시각쪽은독립재현과구분하며,51/53/55전체는미완료입니다.

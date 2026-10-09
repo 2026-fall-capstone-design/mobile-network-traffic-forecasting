@@ -226,3 +226,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## Beam 특징과 도로 정보로 예측 개선 — 51·55 후속
 
 검색어: ITU, LightGBM, CatBoost, beam forecasting, stratified CV, target encoding, Cellular Predictions, PeMS, flow, speed, 모의 통화, 입력 가용성. [기록](records/0051-0055-network-forecasting.md)에서 10-fold BS층화와 시간순검증, 실측도로입력과모의target, 24주개선과7주금요일손해를 구분합니다. 재검토하려면 같은target/척도와미래입력가용성·분할·정규화를고정하고 셀/기간별반례까지 비교해야 합니다. 소속수정효용은 최종RCTL에서 별도확인해야하며55전체신규성검토는남아있습니다.
+
+## Zero 판별과 공동 학습을 새 역할로 제안하기 전에 — 51 Frontiers
+
+검색어: sparse beam, zero inflation, GRU-MTL, multi-task learning, ensemble, 입력 길이, week5, 56%, regression head. [기록](records/0051-frontiers-beam-audit.md)에서0/nonzero분류+회귀의 기존 구조와 조건별 반례를 확인합니다. 긴 입력의 보편적 우위·MAE에서분산개선·주최측week6/11직접순위는 지지되지 않습니다. 새 제안에는 실제 추가정보·학습행동·입력가용성·같은test·계산비용·기간/beam별손해를 명시하고 최종RCTL효용을 별도로 확인해야 합니다.55의event문헌은 본문미검토 상태로 남깁니다.
