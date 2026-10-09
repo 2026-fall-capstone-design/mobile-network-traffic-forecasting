@@ -87,3 +87,7 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 [H030 목록](history-030-sources.jsonl)은 50 원문 판단·HiGP/ONDM/HTS-Cluster를 [열람 범위](../sources/history-030.md)에 연결한다. 새 사본 5개 8,808 bytes·재사용 2개·외부 metadata 14개다. 세 PDF의 내용 35쪽과 시각 21쪽을 읽고 선택 19행 128수치를 대조했다. 파생 TXT는 page header·CR/LF 차이까지 확인했지만 별도 새 논문·전체 텍스트 집계에 중복 가산하지 않았다. 50의 통합이 전체 관련 보고서·후속 판본 완료를 뜻하지 않는다.
 
 [H031 목록](history-031-sources.jsonl)은 52·54와 55의 수치·실패·비용을 [열람 범위](../sources/history-031.md)에 연결한다. 새 정확 사본30개158,421bytes·기존3개·바이너리metadata3개다. 저장 배열·H5고정16열·타임스탬프·원장과 수정 전후 코드를 대조했다. snapshot12의108개 항목은 metadata이며 전체 본문 읽기 수가 아니다. 51·53/55 문헌·팀 바이너리 접근·관련 전체 보고서는 미완료다.
+
+## H032: 51·55 GOTSF의 제한된 통합
+
+[원본 목록](history-032-sources.jsonl)은 34경로(새 정확 사본 23개·236,888 bytes, 재사용 1개, metadata 10개)를 연결합니다. [manifest](../evidence/0051-0055-gotsf-audit/manifest.json)의 별도 추가 참조 4개 중 3개·15,273 bytes를 보존했습니다. 추가 취득은 원래 원본 목록의 증가나 당시 입수 실적을 뜻하지 않습니다. [읽기 범위](../sources/history-032.md)의 텍스트 23쪽·시각 확인 14쪽·코드/노트북 검토와 696개 인쇄값 대조는 저자 성능 재현 및 51·55 전체 완료와 구분합니다.

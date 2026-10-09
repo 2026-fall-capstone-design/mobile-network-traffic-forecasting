@@ -89,3 +89,7 @@
 [50 합계·다중 출력·대표 예측 문헌](records/0050-aggregation-literature.md)은 HiGP·ONDM·HTS-Cluster의 실제 출력을 구분하고, 선행 대표 예측과 정확도·시간 절충을 당시 미채택 판단에 연결합니다. [H030 검수](verification/history-030.md)는35쪽 본문·21쪽 시각 열람과 선택128개 표 수치를 기록합니다.
 
 [52·54 자료 적합성과 부분 관측 복원](records/0052-0054-partial-observation.md)은 Beijing의 스키마 한계와 Milan 4-cell 복원의 확대 기준 미통과를 정리합니다. 앞 구간의 이득, 후반·셀별 손해, 최초 검사 오류와 실패 비용까지 [H031 검수](verification/history-031.md)에 연결했습니다.
+
+## 51·55 GOTSF의 목적과 재현 조건
+
+[GOTSF 검토 기록](records/0051-0055-gotsf-audit.md)은 값 구간별 예측·zero-mask MAE의 분모·논문/코드 설정 차이를 연결합니다. 두 판본의 인쇄표 비교, 정책별 반례, 미해결 평균값 차이, 공개 beam 자료의 시간 간격과 notebook 실행 증거의 한계를 함께 확인할 수 있습니다. 51·55 전체 검토는 계속 진행 중입니다.

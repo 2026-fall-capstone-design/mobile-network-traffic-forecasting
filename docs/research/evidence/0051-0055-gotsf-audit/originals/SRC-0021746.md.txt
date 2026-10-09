@@ -1,0 +1,25 @@
+# 51. 새로운 관측 조건에서 해결할 문제를 찾기 위한 자료 검토
+
+2026-09-26. 48–50까지 확인한 밀라노 hourly 개발 자료의 한계를 다른 데이터 전체의 결론으로 확대하지 않는다. 이번 단계는 새 알고리즘 성능 실험이 아니라, 기존 cell의 연속적 통신 트래픽량을 관측한 공개 자료와 원문의 실패 조건을 확인한다.
+
+## 사전 질문
+
+1. 이미 관측 중인 여러 cell의 실제 트래픽량인가? 도로 속도, 단말 링크 처리량, 생성된 자료와 구별한다.
+2. 기존 달력·lag·PCC와 단일 global 모델로도 남는 문제가 원문 또는 실제 자료에서 확인되는가?
+3. 부족한 정보는 단순한 새로운 입력 열인가, 아니면 clustering이 바꾸어야 하는 학습 관계인가?
+4. TabICLv2가 추가하는 정보가 구체적으로 무엇인가? 기존의 다른 예측기 성능 대리 문제를 되풀이하는가?
+
+## 검토할 자료
+
+- MobiGPT의 cell 데이터 원 출처와 공개 범위. 기존 PDF를 다시 내려받지 않는다.
+- ITU/Huawei의 공개 5G beam traffic 자료와 `netop/gotsf-ds` 데이터 카드. beam·cell·base station 단위, 실제 관측 여부, 합산 가능 여부, target/covariate의 시각, 공개 파일 크기와 license를 먼저 확인한다. beam 자료를 cell 자료라고 바꾸어 부르지 않는다.
+- Vesselinova와 Ilmonen의 Cellular Predictions on the Move: What about Data? (2606.25709)에서 mobility 입력의 실제 이득과 자료 공개 여부.
+- Pimpinella와 Redondi의 Generative-aided and Context-aware Forecasting of Mobile Network Traffic (Computer Networks 2026)에서 event 조건, 미래에 알 수 있는 정보, synthetic augmentation과 실제 자료의 구분.
+
+## 실행 한도와 판단
+
+- 먼저 원문과 공개 metadata/README만 확보한다. 원문 파일당20MB, metadata 파일당5MB를 초과하여 내려받지 않는다. 큰 원시 자료는 파일 크기·구조·최소 부분집합 방법을 확인한 뒤 별도 계획을 저장해야 한다.
+- 새 모델 fit/forward는 이 계획에서 모두0이다. Tab 잔여35 context/24288 query, RCTL 추가fit0, 기존누적예산을 유지한다.
+- 새 자료에서도 문제가 확인되지 않거나 TabICL 역할이 단순한 feature 추가에 그치면 그 후보를 추천하지 않는다. 단순히 공개 데이터가 바뀌었다는 이유로 신규성이라고 하지 않는다.
+- 실제값의 단위·기간·cell 수·공개 범위가 확인되지 않은 자료는 실행 가능한 근거로 표시하지 않는다. 사용할 수 없는 자료에 대해 존재하지 않는 다운로드 경로나 실험 결과를 만들지 않는다.
+- 원문에서 이득을 보인 조건을 현재 문제 정의에 반영하되, 다른 model/데이터에서의 성능 개선을 RCTL 보장으로 해석하지 않는다. 검토 후 구체적인 다음 결정과 필요한 최소 확인을 기록한다.
