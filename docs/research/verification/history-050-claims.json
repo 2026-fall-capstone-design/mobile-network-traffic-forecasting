@@ -1,0 +1,162 @@
+{
+  "batch_id": "history-050",
+  "claims": [
+    {
+      "claim_id": "H050-C01",
+      "claim": "56의 우선3편과 직접 인접2편의 계획",
+      "source_location": "SRC-0021848 질문/후속확인;SRC-0021898 §1",
+      "verification_method": "원 계획의3편과SCott/SGD-as추가 이유 대조",
+      "limit": "다섯 개의 실제 모델 실험이나 새 후보 채택으로 세지 않음"
+    },
+    {
+      "claim_id": "H050-C02",
+      "claim": "56계획·57산술·58판단의 실행 상태",
+      "source_location": "SRC-0021848;SRC-0021872;SRC-0021898;SRC-0028241",
+      "verification_method": "계획·저장 산술·후속 판단의 역할 분리",
+      "limit": "당시 미완료 Word/추천안을 완료로 바꾸거나 원 실행 지시를 재개하지 않음"
+    },
+    {
+      "claim_id": "H050-C03",
+      "claim": "표본·합성자료·PFN문맥·cell의 결정 단위",
+      "source_location": "SRC-0021898 §1/4;SRC-0064458 §3;SRC-0064438 §3;SRC-0064428 §3.4;SRC-0064426 §3/5;SRC-0064453 §3–4",
+      "verification_method": "각 방법의 입력·선택 단위·목표를 원문에 연결",
+      "limit": "sample이라는 이름만으로 동일 연구/동일 RCTL 효용을 주장하지 않음"
+    },
+    {
+      "claim_id": "H050-C04",
+      "claim": "57반례의 평균 보존과3.025분산비",
+      "source_location": "SRC-0021872;SRC-0028241 rows/gradient_variance_ratio",
+      "verification_method": "저장 분수의 평균·분산과121/40재검산",
+      "limit": "실제 RCTL gradient·시간·예측 오차·자료압축률 측정 아님"
+    },
+    {
+      "claim_id": "H050-C05",
+      "claim": "반례와 실제 학습기의 차이",
+      "source_location": "SRC-0021898 §3;SRC-0028241",
+      "verification_method": "고정 예측식과MAE부호·Jacobian·BN/dropout조건 구별",
+      "limit": "단순 고정결과를 모든 신경망·training-mode 분산과 동일시하지 않음"
+    },
+    {
+      "claim_id": "H050-C06",
+      "claim": "Importance sampling 평균과점수의 조건",
+      "source_location": "SRC-0064458 §3.1–3.2/식4–20",
+      "verification_method": "양의확률·역확률가중·현재학습기 norm상한 확인",
+      "limit": "불편성만으로 Tab loss확률의 효율성을 입증하지 않음"
+    },
+    {
+      "claim_id": "H050-C07",
+      "claim": "Importance sampling의 추가 forward와작동 조건",
+      "source_location": "SRC-0064458 §3.3/Algorithm1/§4",
+      "verification_method": "B재료의점수·b재추출·균등유지·비용조건 대조",
+      "limit": "부록상수/모든시간보장/다른학습기전이를독립인증하지않음"
+    },
+    {
+      "claim_id": "H050-C08",
+      "claim": "TimeDC 합성·expert·DDFM의 실제연산",
+      "source_location": "SRC-0064438 §3.1–3.5/Fig2",
+      "verification_method": "원자료expert/합성자료와moving-average분해 확인",
+      "limit": "실제X/y부분집합선택이나Fourier변환으로바꾸지않음"
+    },
+    {
+      "claim_id": "H050-C09",
+      "claim": "TimeDC 교차구조와재현코드의경계",
+      "source_location": "SRC-0064438 Table1–2;SRC-0064441;SRC-0064443;SRC-0021898 §2",
+      "verification_method": "주논문 비교열·고정코드의X/y/optimizer조건을기존H046대조에연결",
+      "limit": "다른구조전이불가·원자료보존율·저자실험무효·실행baseline검증으로확대하지않음"
+    },
+    {
+      "claim_id": "H050-C10",
+      "claim": "TimeDC 초/epoch와총비용",
+      "source_location": "SRC-0064438 §4.2.5/Table4",
+      "verification_method": "Weather22.39/4.31/35.26과expert/압축/후속학습단계 대조",
+      "limit": "준비비포함총비용88%절감·손익분기반복수확정아님"
+    },
+    {
+      "claim_id": "H050-C11",
+      "claim": "TabPFN IML의context가치와평가대상",
+      "source_location": "SRC-0064428 §3.4/§4.3",
+      "verification_method": "3072→512,M9216,validation512/test1024·분류AUC 확인",
+      "limit": "RCTL회귀·cell소속·모든coalition최적부분집합의검증아님"
+    },
+    {
+      "claim_id": "H050-C12",
+      "claim": "TabPFN IML의exact retraining·debug·선택비용",
+      "source_location": "SRC-0064428 §3.3–3.4/§4.1/§4.3;SRC-0064432;SRC-0064433",
+      "verification_method": "부분집합샘플/WLS근사와거의1만forward/기본debug분기 구별",
+      "limit": "모든Shapley정확열거나PD개선을DataShapley총비용개선으로대체하지않음"
+    },
+    {
+      "claim_id": "H050-C13",
+      "claim": "SCott 가중strata와conditional mean의조건",
+      "source_location": "SRC-0064426 §5/Algorithm1;SRC-0021898 §1",
+      "verification_method": "원문식과기존H048부록식56대조를연결",
+      "limit": "snapshot불편성을모든inner조건부불편성이나cell모델분할로확대하지않음"
+    },
+    {
+      "claim_id": "H050-C14",
+      "claim": "SCott smooth가정·시간예산·환율반례",
+      "source_location": "SRC-0064426 Assumption2/§7/Table3",
+      "verification_method": "MLP0.5h/NBEATS3h와기본SCott의일부ExchangeRate손해 재대조",
+      "limit": "전처리튜닝포함동일총예산·모든조건우위·MAE/ReLU수렴보장아님"
+    },
+    {
+      "claim_id": "H050-C15",
+      "claim": "SGD-as permutation과분산조건·이진모델경계",
+      "source_location": "SRC-0064453 §3–4/식14–15/Algorithm2;SRC-0021898 §1",
+      "verification_method": "불편성·음의공분산·greedy방향·hinge비미분사례 구별",
+      "limit": "Tabresidual대체·항상대칭/음의공분산·모든non-smooth불가 주장아님"
+    },
+    {
+      "claim_id": "H050-C16",
+      "claim": "SGD-as 조건부준비비와Epoch축",
+      "source_location": "SRC-0064453 Algorithm2/Table1/Fig2–3",
+      "verification_method": "직접스캔n(n+1)/2,n35000→612517500과축의단위대조",
+      "limit": "저자실측walltime·필수n²메모리·총비용이득으로바꾸지않음"
+    },
+    {
+      "claim_id": "H050-C17",
+      "claim": "원수집script의commit고정과제한선택",
+      "source_location": "SRC-0022785 lines1–39;SRC-0064456",
+      "verification_method": "main응답SHA로tree/rawURL고정,첫README+키워드최대6개코드 대조",
+      "limit": "현재script실행/모든repository다운로드로세지않음"
+    },
+    {
+      "claim_id": "H050-C18",
+      "claim": "202조회경로와15download receipt",
+      "source_location": "SRC-0064456;SRC-0064451;SRC-0064437",
+      "verification_method": "TimeDC114/109/9,IML112/93/6;226treeitems/202blobs/15receipts바이트대조",
+      "limit": "뒤의별도수집과보충자료까지포함한전체download수아님;모델실행증거아님"
+    },
+    {
+      "claim_id": "H050-C19",
+      "claim": "42저장파일과85동일경로의범위",
+      "source_location": "SRC-0064426–SRC-0064467;SRC-0064428 exact aliases",
+      "verification_method": "전체42live/inventory와해시대조·IMLrelated_work동일사본확인",
+      "limit": "85개독립연구·전체원본루트최종변경검수로표시하지않음"
+    },
+    {
+      "claim_id": "H050-C20",
+      "claim": "tree전체필드확장·HTML부분·외부연결 구별",
+      "source_location": "SRC-0064451;SRC-0064437;SRC-0064434;SRC-0064448;SRC-0064455",
+      "verification_method": "tree226항목URL포함전체독해와HTMLvisible기존범위 연결",
+      "limit": "연결본문전체·HTML전체소스·과학적재현·전체Goal완료로승격하지않음"
+    },
+    {
+      "claim_id": "H050-C21",
+      "claim": "당시네가지미채택과독립성제약",
+      "source_location": "SRC-0021848 경계;SRC-0021898 §4–5",
+      "verification_method": "Tabloss/context대체·이름변경·expert비용누락의판단보존",
+      "limit": "현재모든방법실패·보편금지·새모델선정결정으로확대하지않음"
+    },
+    {
+      "claim_id": "H050-C22",
+      "claim": "재사용·재검토조건과남은자료",
+      "source_location": "SRC-0021898 §4–5;SRC-0064458 §3.3;SRC-0064438 Table4;SRC-0064428 §4.3;SRC-0064426 Table3;SRC-0064453 §5",
+      "verification_method": "단위/목적/분할/준비비/재사용횟수·실제성능근거를구분",
+      "limit": "새실험수행아님;저장부분자료·관련후속원문·전체범위는계속관리"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_at_utc": "2026-10-09T21:06:09.693034+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 22개 주장·종합 기록·출처/검수 문서를 56/57/58 원문, 저장 산술, 문헌별 직접 독해 및 이번 재대조 절/표에 연결. SCott p5–7 추가 대조. 원 run·인용 증명 전체·독립 과학적 재현의 인증이 아님."
+}

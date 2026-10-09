@@ -288,3 +288,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 반대 방향 표본을 미리 짝지어 학습하겠다는 제안 전에 — 56·58 SGD-as
 
 검색어: SGD-as, antithetic sampling, permutation, negative covariance, signed inner product, gradient variance, 사전 짝짓기. [SGD-as 기록](records/0056-0058-sgd-as.md)에서 균등 주변분포와 음의 공분산, greedy permutation과 대칭 쌍, 이진 label과 MAE residual을 구분합니다. Tab median의 부호로 바꿨다는 사실만으로 RCTL의 분산·시간 개선이 확인되지는 않습니다. 새 제안은 실제 학습기의 근거, 시간 분할, 대응표 준비비와 재사용 횟수를 연결해야 합니다.
+
+## 학습자료를 줄여 RCTL을 빠르게 하겠다는 제안 전에 — 56–58 종합
+
+검색어: training compression, sample importance, dataset condensation, context valuation, stratification, antithetic sampling, 학습량, 준비비, 재사용. [다섯 문헌 비교](records/0056-0058-compression-synthesis.md)에서 셀 소속·학습 창·PFN 문맥·합성 자료를 먼저 구분합니다. 원문별 유효 사례와 적용 한계, 비용의 분모, 당시 미채택 조건을 확인하고 새 제안에서 달라지는 학습기·목적·분할·직접 근거를 연결하세요.

@@ -125,3 +125,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H048 출처 목록](history-048-sources.jsonl)은 SCott 3묶음·6원본 경로와 58 메모 재사용 2경로를 연결합니다. [열람 범위](../sources/history-048.md)에 본문/부록·파생물·시각 자료와 공식 URL·해시를 구분했습니다.
 
 [H049 출처 목록](history-049-sources.jsonl)은 SGD-as 4묶음·8원본 경로와 58 메모 재사용 2경로를 연결합니다. [열람 범위](../sources/history-049.md)에 PDF7쪽·TXT/preview 파생물·HTML visible text와 공식 URL·해시를 구분했습니다.
+
+[H050 출처 목록](history-050-sources.jsonl)은 수집 script/receipt와 전체 필드로 검토를 확장한 tree 2개, 기존 계획/결과와 다섯 주논문을 연결합니다. [42개 파일 범위표](../evidence/0056-0058-compression-synthesis/packet-scope.json)에 전체 메타데이터·HTML의 보이는 본문·파생물·연결 본문의 구분을 보존했습니다.

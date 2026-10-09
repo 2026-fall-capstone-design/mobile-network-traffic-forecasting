@@ -1,0 +1,39 @@
+from pathlib import Path
+import json, hashlib, urllib.request, concurrent.futures
+
+out = Path(__file__).resolve().parent / 'sources/training_compression_56'
+log = out / 'code_fetch_log.json'
+assert not log.exists()
+
+def fetch(url, path):
+ with urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent':'Research source verification/1.0'}), timeout=25) as r:
+  body = r.read(5_000_001)
+  assert len(body) <= 5_000_000
+  path.write_bytes(body)
+  return body, {'file':path.name, 'url':url, 'final_url':r.url, 'status':r.status,
+                'bytes':len(body), 'sha256':hashlib.sha256(body).hexdigest()}
+
+def one(spec):
+ tag, repo = spec
+ records = []
+ body, rec = fetch(f'https://api.github.com/repos/{repo}/commits/main', out/f'{tag}_commit.json')
+ records.append(rec); sha = json.loads(body)['sha']
+ body, rec = fetch(f'https://api.github.com/repos/{repo}/git/trees/{sha}?recursive=1', out/f'{tag}_tree.json')
+ records.append(rec); tree = json.loads(body)['tree']
+ paths = [r['path'] for r in tree if r['type']=='blob']
+ # Limit this step to documentation and plausible core implementation files.
+ chosen = [p for p in paths if p.lower().endswith('readme.md')][:1]
+ keys = ['data_shapley', 'data_valuation'] if tag=='TabPFN_IML' else ['timedc', 'buffer', 'distill']
+ chosen += [p for p in paths if p.endswith('.py') and any(k in p.lower() for k in keys)][:6]
+ for p in dict.fromkeys(chosen):
+  body, rec = fetch(f'https://raw.githubusercontent.com/{repo}/{sha}/{p}', out/f'{tag}__{p.replace("/","__")}')
+  rec['repository_path']=p; rec['commit']=sha; records.append(rec)
+ return {'tag':tag,'repo':repo,'commit':sha,'paths':paths,'records':records}
+
+records=[]
+with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+ for f in [pool.submit(one,s) for s in [('TimeDC','uestc-liuzq/STdistillation'),('TabPFN_IML','david-rundel/tabpfn_iml')]]:
+  try: records.append(f.result())
+  except Exception as exc: records.append({'error':str(exc)})
+log.write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+for rec in records: print(json.dumps(rec,ensure_ascii=False),flush=True)
