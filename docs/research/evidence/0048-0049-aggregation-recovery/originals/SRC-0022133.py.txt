@@ -1,0 +1,157 @@
+"""One-pass no-fit audit of scalar aggregate forecasting and causal allocation."""
+from pathlib import Path
+import hashlib, json, time
+from datetime import datetime, timezone
+import h5py, numpy as np, psutil
+
+base = Path(__file__).resolve().parent
+out = base / 'results/aggregation_recovery_49'
+out.mkdir(exist_ok=True)
+if (out/'run_started.json').exists():
+    raise SystemExit('Recorded run exists. Do not rerun.')
+
+def sha(path):
+    h=hashlib.sha256()
+    with open(path,'rb') as f:
+        for block in iter(lambda:f.read(1024*1024),b''): h.update(block)
+    return h.hexdigest()
+
+paths={'data':base/'assets/data_git_version.h5',
+       'cell_source':base/'results/spatial_information/predictions.npz',
+       'plan':base/'48_aggregation_review_plan.md', 'code':Path(__file__)}
+hashes={k:sha(v) for k,v in paths.items()}
+ids=np.load(paths['cell_source'])['cell_ids'].astype(int)
+assert len(ids)==32 and len(set(ids))==32
+settings={'date':'2026-09-26','cell_ids':ids.tolist(),'train_indices':[0,672],
+          'query_indices':[672,1008],'horizon_hours':1,'random_seed':20260926,
+          'group_size':4,'development_only':True,'new_model_fits':0,
+          'new_TabICL_contexts':0,'new_TabICL_query_rows':0,'new_RCTL_calls':0,
+          'wall_cap_seconds':30,'input_and_code_sha256':hashes,
+          'runtime_accounting':'numeric/data-read after preflight hashes through result computation; excludes imports and artifact serialization'}
+(out/'settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+(out/'run_started.json').write_text(json.dumps({'utc':datetime.now(timezone.utc).isoformat()}),encoding='utf-8')
+t0=time.perf_counter()
+with h5py.File(paths['data'],'r') as h:
+    # Read the same fixed cells, preserving their recorded order.
+    order=np.argsort(ids)
+    sorted_data=h['data'][:1008,np.sort(ids-1),2]
+    raw=sorted_data[:,np.argsort(order)].astype(float)
+assert raw.shape==(1008,32) and np.isfinite(raw).all() and np.all(raw>=0)
+scale=raw[:672].mean(0)
+assert np.all(scale>0)
+q=np.arange(672,1008); y=raw[q]
+coord=np.column_stack(((ids-1)//100,(ids-1)%100))
+corr=np.corrcoef(raw[:672].T)
+assert np.isfinite(corr).all()
+
+def greedy(kind):
+    remaining=set(range(32)); groups=[]
+    while remaining:
+        anchor=min(remaining,key=lambda i:int(ids[i]))
+        others=[i for i in remaining if i!=anchor]
+        def key(i):
+            score=(float(np.sum((coord[i]-coord[anchor])**2))
+                   if kind=='geography' else -float(corr[anchor,i]))
+            return score,int(ids[i])
+        g=[anchor]+sorted(others,key=key)[:3]
+        groups.append(g);remaining.difference_update(g)
+    return groups
+
+rng=np.random.default_rng(20260926)
+groupsets={'all32':[list(range(32))], 'geography_k8':greedy('geography'),
+           'PCC_k8':greedy('PCC'), 'random_k8':rng.permutation(32).reshape(8,4).tolist()}
+train_hour=np.stack([raw[h:672:24].mean(0) for h in range(24)])
+
+def normalize_rows(a):
+    s=a.sum(1,keepdims=True)
+    return np.divide(a,s,out=np.full_like(a,1/a.shape[1]),where=s>0)
+
+def metrics(pred):
+    e=np.abs(pred-y)
+    ne=e/scale
+    return {'normalized_MAE':float(ne.mean()),'raw_activity_MAE':float(e.mean()),
+            'normalized_MAE_by_week':ne.reshape(2,168,32).mean((1,2)).tolist(),
+            'normalized_MAE_by_cell':ne.mean(0).tolist()}
+
+def best_scalar(y_group,p,scales):
+    # min_{z>=0} sum_i |y_i-p_i*z|/scale_i: weighted median of y_i/p_i.
+    # p_i=0 contributes a constant and cannot determine the median.
+    ratios=np.divide(y_group,p,out=np.full_like(y_group,np.inf),where=p>0)
+    weights=p/scales
+    order=np.argsort(ratios,axis=1,kind='stable')
+    rr=np.take_along_axis(ratios,order,axis=1)
+    ww=np.take_along_axis(weights,order,axis=1)
+    cumulative=np.cumsum(ww,axis=1)
+    index=(cumulative>=.5*ww.sum(1,keepdims=True)).argmax(1)
+    z=rr[np.arange(len(rr)),index]
+    assert np.isfinite(z).all() and np.all(z>=0)
+    return z
+
+# Exact finite example: knowing the true total need not minimize cell-normalized MAE.
+toy_y=np.array([[90.,10.]])
+toy_p=np.array([[.8,.2]])
+toy_scale=np.ones(2)
+toy_z=best_scalar(toy_y,toy_p,toy_scale)
+toy_true_error=float(np.abs(toy_y-toy_p*100).sum())
+toy_min_error=float(np.abs(toy_y-toy_p*toy_z[:,None]).sum())
+assert np.isclose(toy_z[0],112.5) and np.isclose(toy_true_error,20) and np.isclose(toy_min_error,12.5)
+
+result={'settings':settings,'scale':scale.tolist(),
+        'baselines':{'cell_last_value':metrics(raw[q-1]),'cell_day_lag':metrics(raw[q-24])},
+        'groups':{},'toy_oracle_total_not_minimum':{'actual':[90,10],'shares':[.8,.2],
+        'true_total':100,'best_scalar':float(toy_z[0]),'sum_absolute_error_true_total':toy_true_error,
+        'sum_absolute_error_best_scalar':toy_min_error},
+        'evidence_limits':['Previously used development interval, not an independent test.',
+          'Oracle future total and best scalar use future targets and are not deployable.',
+          'No RCTL or TabICL forecasting performance established.',
+          '32 preselected cells do not represent all Milan cells.']}
+arrays={'actual':y,'cell_ids':ids,'query_times':q,'scale':scale}
+for groupname,groups in groupsets.items():
+    record={'cell_groups':[[int(ids[i]) for i in g] for g in groups],
+            'scalar_forecast_count_per_origin':len(groups),'allocation':{}}
+    for pname in ['last','day_lag','hour_profile']:
+        predictions={k:np.zeros_like(y) for k in ['true_total','best_scalar','last_total','day_total']}
+        total_errors={'last':[],'day':[]}
+        for g in groups:
+            yy=y[:,g]
+            x=(raw[q-1][:,g] if pname=='last' else raw[q-24][:,g]
+               if pname=='day_lag' else train_hour[q%24][:,g])
+            p=normalize_rows(x)
+            assert np.allclose(p.sum(1),1) and np.all(p>=0)
+            total=yy.sum(1)
+            zstar=best_scalar(yy,p,scale[g])
+            zs={'true_total':total,'best_scalar':zstar,
+                'last_total':raw[q-1][:,g].sum(1),'day_total':raw[q-24][:,g].sum(1)}
+            for k,z in zs.items(): predictions[k][:,g]=p*z[:,None]
+            oracle_loss=(np.abs(yy-p*total[:,None])/scale[g]).sum(1)
+            best_loss=(np.abs(yy-p*zstar[:,None])/scale[g]).sum(1)
+            assert np.all(best_loss<=oracle_loss+1e-9)
+            # Check the exact raw-L1 triangle bound using a deployable total.
+            recon=np.abs(yy-p*total[:,None]).sum(1)
+            total_err=np.abs(total-zs['last_total'])
+            combined=np.abs(yy-p*zs['last_total'][:,None]).sum(1)
+            assert np.all(combined<=recon+total_err+1e-8)
+            assert np.all(combined>=np.maximum(0,recon-total_err)-1e-8)
+            for lag in ['last','day']:
+                total_errors[lag].append(float(np.mean(np.abs(total-zs[lag+'_total']))/
+                                               raw[:672][:,g].sum(1).mean()))
+        record['allocation'][pname]={k:metrics(v) for k,v in predictions.items()}
+        record['allocation'][pname]['aggregate_normalized_MAE_by_group']=total_errors
+        # These two identities prevent attributing unchanged naive forecasts to clustering.
+        if pname=='last': assert np.allclose(predictions['last_total'],raw[q-1])
+        if pname=='day_lag': assert np.allclose(predictions['day_total'],raw[q-24])
+        for name,pred in predictions.items(): arrays[groupname+'__'+pname+'__'+name]=pred
+        if time.perf_counter()-t0>30: raise RuntimeError('Stage wall cap exceeded')
+    result['groups'][groupname]=record
+elapsed=time.perf_counter()-t0
+result.update(elapsed_seconds=elapsed, RSS_at_completion_bytes=psutil.Process().memory_info().rss,
+              all_finite_checks_passed=True,new_model_fits=0,new_TabICL_contexts=0,new_RCTL_calls=0)
+assert {k:sha(v) for k,v in paths.items()}==hashes
+np.savez_compressed(out/'predictions.npz',**arrays)
+(out/'result.json').write_text(json.dumps(result,indent=2,allow_nan=False),encoding='utf-8')
+(out/'run_finished.json').write_text(json.dumps({'utc':datetime.now(timezone.utc).isoformat(),
+    'elapsed_seconds':elapsed,'new_model_fits':0,'hashes_unchanged':True},indent=2),encoding='utf-8')
+print(json.dumps({'baselines':{k:v['normalized_MAE'] for k,v in result['baselines'].items()},
+    'groups':{gn:{pn:{kind:entry['normalized_MAE'] for kind,entry in pr.items()
+                     if kind!='aggregate_normalized_MAE_by_group'} for pn,pr in gr['allocation'].items()}
+              for gn,gr in result['groups'].items()},'elapsed_seconds':elapsed},indent=2))
