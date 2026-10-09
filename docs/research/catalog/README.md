@@ -111,3 +111,5 @@ H040은 [기존 원본4개](history-040-sources.jsonl)와 [명세](../evidence/0
 H041은 [로컬 원본10행](history-041-sources.jsonl)과 [명세](../evidence/0051-stkdiff-audit/manifest.json)에 STK-Diff 후속 검수를 연결합니다. 새사본/전체본문1개(28줄)·기존사본9개·기존NPZ metadata1개·추가공식metadata10개이며, [읽은 범위](../sources/history-041.md)는그림4개/의존텍스트6개647줄입니다. 외부의존텍스트를localfulltext로중복가산하지않고51/55전체는미완료로유지합니다.
 
 H042는 [기존 원본3행](history-042-sources.jsonl)과 [명세](../evidence/0051-event-context/manifest.json)에 event 후속을 연결합니다. 정확사본3재사용·새복사0·공식추가metadata2개이며 [범위](../sources/history-042.md)는AAM44본문쪽/26시각쪽입니다. 표5/6의72개 값을 검수했으며 외부PDF를 새 로컬fulltext/wholeJSON으로 가산하지 않습니다. 전체51/55는 미완료입니다.
+
+H043은 [기존 원본 7행](history-043-sources.jsonl)을 [명세](../evidence/0051-0055-gotsf-media/manifest.json)로 재사용하고 공식 미디어 7개를 고정 URL·해시로 연결합니다. [실제 범위](../sources/history-043.md)는 PNG 4개·GIF 3개 전 144프레임입니다. SRC-0063280 tree는 whole JSON +1/selected-only −1로 승격하며 신규 사본·로컬 본문은 0개입니다. 전체 51/55는 미완료입니다.

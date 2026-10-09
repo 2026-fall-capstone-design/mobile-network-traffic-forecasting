@@ -1,0 +1,173 @@
+{
+  "batch_id": "history-043",
+  "claims": [
+    {
+      "claim_id": "H043-C01",
+      "claim": "기존 H032의 연결 그림 미독해를 고정 버전 후속 검토로 보완",
+      "source_location": "SRC-0063278;SRC-0063279;H032 manifest read_scope",
+      "verification_method": "이전 명세·원문·후속 독해 대조",
+      "limit": "당시 상태를 소급 변경하지 않음"
+    },
+    {
+      "claim_id": "H043-C02",
+      "claim": "코드 그림 5개는 저장 commit의 blob·크기와 일치",
+      "source_location": "SRC-0063280;EXT-H043-01;EXT-H043-02;EXT-H043-03;EXT-H043-04;EXT-H043-05",
+      "verification_method": "Git blob SHA1 및 바이트 비교",
+      "limit": "전체 코드 저장소 독해 아님"
+    },
+    {
+      "claim_id": "H043-C03",
+      "claim": "HF 그림 2개는 저장 commit의 LFS 내용 해시·크기와 일치",
+      "source_location": "SRC-0063282;SRC-0063285;EXT-H043-06;EXT-H043-07",
+      "verification_method": "SHA256 및 LFS 내용 metadata 비교",
+      "limit": "pointer oid와 내용 해시 구분"
+    },
+    {
+      "claim_id": "H043-C04",
+      "claim": "미디어 7개 합계11757368bytes",
+      "source_location": "EXT-H043-01;EXT-H043-02;EXT-H043-03;EXT-H043-04;EXT-H043-05;EXT-H043-06;EXT-H043-07",
+      "verification_method": "각 파일 크기 합산",
+      "limit": "원inventory에 신규 원문으로 가산 안 함"
+    },
+    {
+      "claim_id": "H043-C05",
+      "claim": "GIF각48개 고유프레임·총144개 전체 시각 독해",
+      "source_location": "EXT-H043-01 frames0–47;EXT-H043-03 frames0–47;EXT-H043-04 frames0–47",
+      "verification_method": "디코딩/pixel hash와36장 실제 시각 독해",
+      "limit": "생성 코드 실행/수치 digitization 아님"
+    },
+    {
+      "claim_id": "H043-C06",
+      "claim": "각7200ms는 재생 길이이며48프레임은48실험이 아님",
+      "source_location": "EXT-H043-01;EXT-H043-03;EXT-H043-04 GIF duration metadata",
+      "verification_method": "48×150ms와 원파일 metadata",
+      "limit": "모델 runtime/seed별 반복 수 미확인"
+    },
+    {
+      "claim_id": "H043-C07",
+      "claim": "system 그림은 관측→예측→운영 목적 개념도",
+      "source_location": "EXT-H043-05 전체",
+      "verification_method": "그림/README abstract 대조",
+      "limit": "실측 절전/RCTL 성능 증거 아님"
+    },
+    {
+      "claim_id": "H043-C08",
+      "claim": "all_intervals의 곡선은 target 값 구간별 정책",
+      "source_location": "EXT-H043-01 frames0–47;SRC-0063279 Showcase",
+      "verification_method": "범례·축·README 대조",
+      "limit": "물리cell/군집/신뢰구간 아님"
+    },
+    {
+      "claim_id": "H043-C09",
+      "claim": "subset 범례 I12…I16과 네 선 모양의 정확 index 대응은 미확인",
+      "source_location": "EXT-H043-04 frame0",
+      "verification_method": "원해상도 범례/선 확인",
+      "limit": "다섯 정책으로 확정하거나 표기를 고치지 않음"
+    },
+    {
+      "claim_id": "H043-C10",
+      "claim": "분류를 설명하는 음영은 보정된 확률/신뢰구간 증거가 아님",
+      "source_location": "EXT-H043-04 frames0–47;EXT-H043-03 frames0–47;SRC-0063279 Showcase",
+      "verification_method": "음영/범례와 확률적 분류 설명 대조",
+      "limit": "별도 확률 축·보정지표 없음"
+    },
+    {
+      "claim_id": "H043-C11",
+      "claim": "patching은[0.75,1.0]초점이며 일부 시점 선이 끊긴다",
+      "source_location": "EXT-H043-03 frames0–47",
+      "verification_method": "초점 영역·범례·곡선 전체 확인",
+      "limit": "완전한 미래 예측 배열 복원 불가"
+    },
+    {
+      "claim_id": "H043-C12",
+      "claim": "일부 구간에서는B도 기준선과 가깝고4–24에서는D가높은부분을따름",
+      "source_location": "EXT-H043-01 frames0–3;EXT-H043-03 frames0–24",
+      "verification_method": "해당 전체 프레임 시각 비교",
+      "limit": "숫자 오차/평균 우열 아님"
+    },
+    {
+      "claim_id": "H043-C13",
+      "claim": "25–47프레임은B와가까움·보라선생략·재출현도 보임",
+      "source_location": "EXT-H043-03 frames25–47",
+      "verification_method": "하강/급락/재상승 전체 확인",
+      "limit": "D가항상우월하다는 결론 배제"
+    },
+    {
+      "claim_id": "H043-C14",
+      "claim": "GIF생성 backbone/seed/checkpoint/원예측배열 연결 미확인",
+      "source_location": "EXT-H043-01;EXT-H043-03;EXT-H043-04;SRC-0063279 Showcase",
+      "verification_method": "전프레임과설명에서실행metadata공백확인",
+      "limit": "다른논문/shell설정을자동대입안함"
+    },
+    {
+      "claim_id": "H043-C15",
+      "claim": "분할그림은4trace와떨어진2초록영역",
+      "source_location": "EXT-H043-06 전체",
+      "verification_method": "원본 518×149 그림 확인",
+      "limit": "작은눈금의정확값을추측하지않음"
+    },
+    {
+      "claim_id": "H043-C16",
+      "claim": "카드는5주840h와week6/11각168h를구분",
+      "source_location": "SRC-0063278 Dataset Overview/Dataset Splits/Data Format;EXT-H043-06",
+      "verification_method": "본문/분할그림 대조",
+      "limit": "두test주를달력상연속336h로연결안함"
+    },
+    {
+      "claim_id": "H043-C17",
+      "claim": "training0–839의weeks1–6표기는first5weeks와상충",
+      "source_location": "SRC-0063278 Data Format/Dataset Splits",
+      "verification_method": "동일카드원문 문구 대조",
+      "limit": "그림으로모순해소/CSV검증주장안함"
+    },
+    {
+      "claim_id": "H043-C18",
+      "claim": "network개념도는물리적beam합산/단위증거가아님",
+      "source_location": "EXT-H043-07;SRC-0063278 Dataset Overview",
+      "verification_method": "그림/카드정보의범위구분",
+      "limit": "2880beam을cell로재명명안함"
+    },
+    {
+      "claim_id": "H043-C19",
+      "claim": "로고는장식;badge의표시번호와논문링크차이보존",
+      "source_location": "EXT-H043-02;SRC-0063279 상단 badge URLs",
+      "verification_method": "로고전체/URL문자열 확인",
+      "limit": "badge이미지바이트미독해"
+    },
+    {
+      "claim_id": "H043-C20",
+      "claim": "추가patching_1_16와루트로고는treemetadata만확인",
+      "source_location": "SRC-0063280 tree entries;SRC-0063279 image references",
+      "verification_method": "전체tree와본문link집합대조",
+      "limit": "연결된7미디어완독과구분"
+    },
+    {
+      "claim_id": "H043-C21",
+      "claim": "181항목tree전체독해로selected1을wholeJSON1로승격",
+      "source_location": "SRC-0063280 root/tree;H032 selected credit",
+      "verification_method": "전체4chunk독해·과거집계대조",
+      "limit": "181파일본문이나새결과1건의재현아님"
+    },
+    {
+      "claim_id": "H043-C22",
+      "claim": "HFtree20항목/info재독은CSV본문완독이아님",
+      "source_location": "SRC-0063282;SRC-0063285",
+      "verification_method": "전체JSON재독·역할구분",
+      "limit": "신규wholeJSON중복가산0"
+    },
+    {
+      "claim_id": "H043-C23",
+      "claim": "READMEhorizon주석과target값구간정의를구분",
+      "source_location": "SRC-0063279 Usage Example/Showcase;EXT-H043-05",
+      "verification_method": "주석/설명/그림 대조",
+      "limit": "과거주석보존·시간구간으로실험정의안함"
+    },
+    {
+      "claim_id": "H043-C24",
+      "claim": "51/55판단은원래문제/신규성/Tab기여를구분하며그림만으로RCTL효과못주장",
+      "source_location": "SRC-0021746 사전질문;SRC-0021824 §2/5/6;EXT-H043-01;EXT-H043-03",
+      "verification_method": "원문전체재독·이번관찰과판단범위연결",
+      "limit": "전체종합미완료·새모델/연구실행없음"
+    }
+  ]
+}
