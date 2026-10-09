@@ -1,0 +1,142 @@
+"""Inference-only diagnostic of frozen one-step RCTL checkpoints; no clustering selection."""
+import os
+for _key in ['OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS']:
+    os.environ[_key] = '4'
+import pathlib, json, time, hashlib, sys
+import numpy as np
+import pandas as pd
+import h5py
+import torch
+import psutil
+from rctl_torch import RCTL
+
+sys.stdout.reconfigure(encoding='utf-8')
+torch.set_num_threads(4)
+torch.set_num_interop_threads(2)
+base = pathlib.Path(__file__).resolve().parent
+prior = base/'results/rctl_pilot'
+out = base/'results/frozen_recursive_horizon'
+out.mkdir(exist_ok=True)
+if (out/'run_started.json').exists():
+    raise RuntimeError('Existing run must not be restarted.')
+start = time.perf_counter()
+proc = psutil.Process()
+peak_rss = proc.memory_info().rss
+frozen = json.loads((prior/'frozen_settings.json').read_text(encoding='utf-8'))
+tasks = [x for x in frozen['tasks'] if x[1] == 20260925]
+assert len(tasks) == 21
+methods = list(dict.fromkeys(x[0] for x in tasks))
+origins = np.linspace(1008, 1464, 48, dtype=int)
+assert len(np.unique(origins)) == 48 and origins[-1]+23 == 1487
+ev = np.load(prior/'evaluation_data.npz')
+ids, scales = ev['cell_ids'], ev['scales']
+assert len(ids) == 16
+settings = dict(methods=methods, cell_ids=ids.tolist(), origins=origins.tolist(),
+    horizon=24, primary_horizon=6, seed=20260925, inference_only=True,
+    new_fits=0, new_TabICL_calls=0, changed_partitions=False,
+    future_actuals_used_in_recursive_inputs=False, independent_test=False,
+    wall_cap_seconds=300, ram_cap_bytes=2*1024**3,
+    max_forward_calls=504, max_predicted_rows=110592,
+    plan_sha256=hashlib.sha256((base/'24_frozen_recursive_horizon_plan.md').read_bytes()).hexdigest(),
+    code_sha256=hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),
+    frozen_settings_sha256=hashlib.sha256((prior/'frozen_settings.json').read_bytes()).hexdigest(),
+    checkpoints={f'{m}_{s}_cluster{c}.pt':hashlib.sha256((prior/f'{m}_{s}_cluster{c}.pt').read_bytes()).hexdigest()
+                 for m,s,c,_ in tasks})
+(out/'settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+(out/'run_started.json').write_text(json.dumps(dict(unix=time.time(),pid=os.getpid())),encoding='utf-8')
+with h5py.File(base/'assets/data_git_version.h5','r') as h:
+    raw = np.asarray(h['data'][:, ids-1, 2], dtype=np.float64)
+    dates = pd.to_datetime(h['idx'][:].astype(str))
+z = raw/scales
+target_times = origins[:,None]+np.arange(24)[None,:]
+y = z[target_times].transpose(2,0,1)
+assert np.isfinite(y).all()
+calendar = np.stack([np.sin(2*np.pi*dates.hour/24),np.cos(2*np.pi*dates.hour/24),
+    np.sin(2*np.pi*dates.dayofweek/7),np.cos(2*np.pi*dates.dayofweek/7)],axis=1)
+# Only these histories and known future calendar features feed a checkpoint.
+initial = np.stack([z[t-168:t].T for t in origins],axis=1)
+assert initial.shape == (16,48,168)
+predictions = np.full((len(methods),16,48,24),np.nan,dtype=np.float32)
+forward_calls=0; predicted_rows=0; checks=[]; finished=False; failure=None
+try:
+    for method,seed,cluster,members in tasks:
+        model = RCTL(steps=8,channels=9)
+        key=f'{method}_{seed}_cluster{cluster}'
+        model.load_state_dict(torch.load(prior/f'{key}.pt',map_location='cpu',weights_only=True))
+        model.eval()
+        history=np.zeros((len(members),48,192),dtype=np.float64)
+        history[:,:,:168]=initial[members]
+        for step in range(24):
+            peak_rss=max(peak_rss,proc.memory_info().rss)
+            if time.perf_counter()-start >= settings['wall_cap_seconds']:
+                raise RuntimeError('Inference wall cap reached')
+            if peak_rss > settings['ram_cap_bytes']:
+                raise RuntimeError('Inference RSS cap reached')
+            cursor=168+step
+            recent=history[:,:,cursor-8:cursor]
+            day=history[:,:,cursor-24:cursor]
+            future_cal=np.broadcast_to(calendar[origins+step],(len(members),48,4))
+            aux=np.concatenate([history[:,:,cursor-24,None],history[:,:,cursor-168,None],
+                day.mean(2,keepdims=True),day.std(2,keepdims=True),future_cal],axis=2)
+            seq=np.empty((len(members),48,8,9),dtype=np.float32)
+            seq[:,:,:,0]=recent
+            seq[:,:,:,1:]=aux[:,:,None,:]
+            with torch.inference_mode():
+                p=model(torch.from_numpy(seq.reshape(-1,8,9))).numpy().reshape(len(members),48)
+            assert np.isfinite(p).all()
+            history[:,:,cursor]=p
+            predictions[methods.index(method),members,:,step]=p
+            forward_calls+=1;predicted_rows+=p.size
+            if step == 0:
+                old=np.load(prior/f'{key}.npz')
+                assert old['cell_ids'].tolist() == ids[members].tolist()
+                discrepancy=float(np.max(np.abs(p-old['prediction'][:,origins-1008])))
+                checks.append(dict(checkpoint=key,max_abs_difference=discrepancy))
+                assert discrepancy<=2e-5, checks[-1]
+        print(json.dumps(dict(checkpoint=key,done=True,wall_seconds=time.perf_counter()-start)),flush=True)
+    assert np.isfinite(predictions).all()
+    assert forward_calls==504 and predicted_rows==110592
+    baselines=np.stack([np.broadcast_to(z[origins-1].T[:,:,None],(16,48,24)),
+        z[target_times-24].transpose(2,0,1),z[target_times-168].transpose(2,0,1)])
+    all_methods=methods+['persistence','daily_naive','weekly_naive']
+    all_predictions=np.concatenate([predictions.astype(np.float64),baselines],axis=0)
+    err=np.abs(all_predictions-y[None,:])
+    curves=err.mean(axis=(1,2))
+    metrics=[]
+    for i,name in enumerate(all_methods):
+        metrics.append(dict(method=name,
+            scaled_mae_by_horizon=curves[i].tolist(),
+            raw_activity_mae_by_horizon=(err[i]*scales[:,None,None]).mean((0,1)).tolist(),
+            per_cell_mae_by_horizon=err[i].mean(1).tolist(),
+            origin_mean_mae_by_horizon=err[i].mean(0).tolist(),
+            negative_prediction_count=int((all_predictions[i]<0).sum())))
+    global_i=methods.index('global')
+    comparisons=[]
+    for name in methods:
+        if name=='global':continue
+        i=methods.index(name)
+        for horizon in [1,6,12,24]:
+            dif=err[i,:,:,horizon-1]-err[global_i,:,:,horizon-1]
+            comparisons.append(dict(method=name,reference='global',horizon=horizon,
+                mean_mae_difference=float(dif.mean()),cells_with_lower_mae=int((dif.mean(1)<0).sum()),
+                origins_with_lower_mae=int((dif.mean(0)<0).sum()),
+                first_half_origin_difference=float(dif[:,:24].mean()),
+                second_half_origin_difference=float(dif[:,24:].mean())))
+    np.savez_compressed(out/'predictions.npz',prediction=all_predictions,y=y,
+        methods=np.array(all_methods),cell_ids=ids,scales=scales,origins=origins)
+    summary=dict(settings=settings,metrics=metrics,comparisons=comparisons,
+        first_step_reproduction=checks,forward_calls=forward_calls,predicted_rows=predicted_rows,
+        peak_rss_bytes=peak_rss,wall_seconds=time.perf_counter()-start,
+        no_new_RCTL_fits=True,no_new_TabICL_calls=True,
+        scope='Retrospective recursive deployment diagnostic, not independent validation of new partitions.')
+    (out/'summary.json').write_text(json.dumps(summary,indent=2,allow_nan=False),encoding='utf-8')
+    finished=True
+    print(json.dumps(dict(done=True,metrics={n:{str(h):float(curves[i,h-1]) for h in [1,6,12,24]}
+        for i,n in enumerate(all_methods)},wall_seconds=summary['wall_seconds'])),flush=True)
+except Exception as e:
+    failure=repr(e)
+    raise
+finally:
+    (out/'run_finished.json').write_text(json.dumps(dict(complete=finished,error=failure,
+        wall_seconds=time.perf_counter()-start,forward_calls=forward_calls,
+        predicted_rows=predicted_rows,peak_rss_bytes=peak_rss,new_fits=0)),encoding='utf-8')
