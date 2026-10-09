@@ -29,11 +29,13 @@ def verify(manifest_path: Path) -> dict:
     RAW = {}
 
     def check(name, condition):
+        """검사 실패 시 중단하고 성공한 검사 이름을 기록한다."""
         if not condition:
             raise ValueError(name)
         CHECKS.append(name)
 
     def same(name, got, want, atol=1e-12):
+        """두 유한 수치 배열의 형태와 값을 지정 허용오차로 비교한다."""
         a, b = np.asarray(got), np.asarray(want)
         check(
             name,
@@ -46,9 +48,11 @@ def verify(manifest_path: Path) -> dict:
         )
 
     def obj(sid):
+        """해시를 확인한 원본 사본의 바이트를 JSON으로 읽는다."""
         return json.loads(RAW[sid])
 
     def changes(a, b, path=""):
+        """중첩 JSON의 추가 및 변경 항목을 경로와 이전·이후 값으로 모은다."""
         if isinstance(a, dict) and isinstance(b, dict):
             out = []
             for k in sorted(a.keys() | b.keys()):
