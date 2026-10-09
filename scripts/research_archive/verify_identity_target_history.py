@@ -18,6 +18,7 @@ def verify(source: Path) -> dict:
     checks, accessed = [], {}
 
     def exact(name, actual, expected):
+        """Reject an exact scalar, collection or array mismatch and record the check."""
         ok = (
             bool(np.array_equal(actual, expected))
             if isinstance(actual, np.ndarray) or isinstance(expected, np.ndarray)
@@ -28,6 +29,7 @@ def verify(source: Path) -> dict:
         checks.append(name)
 
     def numeric(name, actual, expected):
+        """Compare finite arrays of equal shape with explicit numeric tolerances."""
         a, b = np.asarray(actual), np.asarray(expected)
         exact(
             name,
@@ -39,6 +41,7 @@ def verify(source: Path) -> dict:
         )
 
     def match(name, actual, expected):
+        """Check nested result schemas, exact discrete values and numeric fields."""
         if isinstance(actual, dict):
             exact(name + ":keys", set(actual), set(expected))
             for key, value in actual.items():
@@ -49,6 +52,7 @@ def verify(source: Path) -> dict:
             numeric(name, actual, expected)
 
     def access(sid, scope):
+        """Verify archived bytes before recording the bounded access scope."""
         row = registry[sid]
         path = source.parent / row["archive_path"]
         if sid not in accessed:
@@ -60,9 +64,11 @@ def verify(source: Path) -> dict:
         return path
 
     def saved(sid):
+        """Read historical JSON as inert evidence after checking byte identity."""
         return json.loads(access(sid, "JSON:all_keys").read_text(encoding="utf-8-sig"))
 
     def arrays(sid, keys=None):
+        """Read selected numeric NPZ arrays without pickle and reject nonfinite values."""
         with np.load(
             access(sid, "NPZ:all" if keys is None else "NPZ:" + ",".join(keys)), allow_pickle=False
         ) as d:
@@ -72,6 +78,7 @@ def verify(source: Path) -> dict:
         return a
 
     def schema(name, obj, keys):
+        """Require exactly the expected fields, including all partial-output fields."""
         exact(name + ":keys", set(obj), set(keys))
 
     text_ids = ["SRC-0021049", "SRC-0021073", "SRC-0022531", "SRC-0023197", "SRC-0023187"]
@@ -159,6 +166,7 @@ def verify(source: Path) -> dict:
     exact("day:sample_counts", weights, [5, 4, 5, 4, 5, 4, 5, 5, 4, 5, 4, 5, 4, 5])
 
     def describe(pred, median=False):
+        """Recompute normalized losses with explicit cell and sampled-day denominators."""
         loss = np.abs(pred - qy).reshape(32, 64)
         by = loss.mean(1)
         result = dict(
@@ -394,6 +402,7 @@ def verify(source: Path) -> dict:
     j = int(np.argmax(rawcell))
 
     def bounds(values):
+        """Return the observed target range without assuming a model output bound."""
         return [float(values.min()), float(values.max())]
 
     derived = dict(
@@ -477,6 +486,7 @@ def verify(source: Path) -> dict:
     day_labels = [dates[int(day) * 24][:10] for day in days]
 
     def contrast(pred, ref):
+        """Preserve all paired cell/day losses and distinguish weighted daily means."""
         delta = (np.abs(pred - qy) - np.abs(ref - qy)).reshape(32, 64)
         cells = delta.mean(1)
         cell_days = np.stack([delta[:, qt // 24 == day].mean(1) for day in days], axis=1)
