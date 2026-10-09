@@ -1,0 +1,124 @@
+{
+  "batch_id": "history-028",
+  "claims": [
+    {
+      "claim_id": "H028-C01",
+      "claim": "입력 열과 학습 행·구성원 연결과 상대 역할 구분",
+      "source_location": "47§1;45계획",
+      "verification_method": "역할과 설계 질문 대조",
+      "limit": "구체 입력 구현·RCTL 변경 없음"
+    },
+    {
+      "claim_id": "H028-C02",
+      "claim": "GECOS 단일 입력 채널과 UPC cell별 sliding sequence",
+      "source_location": "SRC0061693전체;UPC IV.A6–7쪽;pilot005공식identity",
+      "verification_method": "고정 코드 정적 독해·기존 검수 재사용",
+      "limit": "전체 loader/논문 전처리 재현 아님"
+    },
+    {
+      "claim_id": "H028-C03",
+      "claim": "DIC22기지국100일·IMF군집·3성분TE/GCN",
+      "source_location": "DIC6–12/14쪽§3–4",
+      "verification_method": "선택 본문과 알고리즘",
+      "limit": "UPC cell partition과 다른 대상"
+    },
+    {
+      "claim_id": "H028-C04",
+      "claim": "DIC Table2 세 조건의 RMSE/MAPE",
+      "source_location": "DIC16쪽Table2",
+      "verification_method": "PDF재추출3행18수치·시각 대조",
+      "limit": "논문 척도;원출력 재현0"
+    },
+    {
+      "claim_id": "H028-C05",
+      "claim": "DIC 방향/비율/값 자체 문턱·이름 차이",
+      "source_location": "DIC10식11/13;11Algorithm2;14/16비교군명",
+      "verification_method": "텍스트·렌더 2차 대조",
+      "limit": "abs 연산으로 바꾸지 않음;실행 명세 미해결"
+    },
+    {
+      "claim_id": "H028-C06",
+      "claim": "DIC 시간 절단·계산 규모·접근 범위",
+      "source_location": "DIC11/14/17쪽;47§3",
+      "verification_method": "선택 본문/당시 판단 대조",
+      "limit": "누출 확정·전사이트 코드 부재 결론 아님"
+    },
+    {
+      "claim_id": "H028-C07",
+      "claim": "Markov v2와3450합성SCM·6회귀기/n1000",
+      "source_location": "Markov1–3/10쪽;공식arXivmetadata",
+      "verification_method": "버전·실험 범위 독해",
+      "limit": "실제통신·모든설정일반화 아님"
+    },
+    {
+      "claim_id": "H028-C08",
+      "claim": "MSE Bayes충분성의 가정·모집단/추정 구분",
+      "source_location": "Markov2–3쪽Assumption2.1/Theorem2.2",
+      "verification_method": "원문 가정 포함",
+      "limit": "RCTL/MAE 보장 아님"
+    },
+    {
+      "claim_id": "H028-C09",
+      "claim": "OLS초과위험과누락/추가비용·상위집합충분성",
+      "source_location": "Markov4–6쪽Prop3.2/5.1/5.2",
+      "verification_method": "공식/증명 조건 재독",
+      "limit": "n>p+1 등 OLS조건;모든finite learner 아님"
+    },
+    {
+      "claim_id": "H028-C10",
+      "claim": "F200GS/HITON의회귀기별Win과복구지표",
+      "source_location": "Markov6쪽Table2",
+      "verification_method": "PDF재추출2행16수치·시각 대조",
+      "limit": "Win은task비율;TabICL열없음"
+    },
+    {
+      "claim_id": "H028-C11",
+      "claim": "boundary head/co-learning은후속제안",
+      "source_location": "Markov9–10쪽§7/한계",
+      "verification_method": "원문과47§3 대조",
+      "limit": "공개 frozenTabICLv2 API기능으로 확정 못함"
+    },
+    {
+      "claim_id": "H028-C12",
+      "claim": "양방향유용성과동일함수공유의비동등성",
+      "source_location": "47§4;history028logiccheck",
+      "verification_method": "정상공분산 유리수대수·조건부중앙값 논증",
+      "limit": "정상Gaussian/한시점/identityblind;유한표본실험아님"
+    },
+    {
+      "claim_id": "H028-C13",
+      "claim": "예측시점가용정보집합을먼저고정",
+      "source_location": "47§4;Markov정적boundary정의",
+      "verification_method": "시간/역할 조건 명시",
+      "limit": "미래target후관측을현재입력으로쓰지않음"
+    },
+    {
+      "claim_id": "H028-C14",
+      "claim": "N(k+1)특정비교의context/query산술",
+      "source_location": "47§5;logiccheckworkload",
+      "verification_method": "3행 정확한 정수산술",
+      "limit": "runtime/보편하한 아님;2N은다른질문"
+    },
+    {
+      "claim_id": "H028-C15",
+      "claim": "당시미추천3이유와재검토조건",
+      "source_location": "47§6;H027의46수치검수",
+      "verification_method": "원문종합과이전수치 연결",
+      "limit": "모든공간입력기각/새최종방향확정 아님"
+    },
+    {
+      "claim_id": "H028-C16",
+      "claim": "보존로그의403/200과429/challenge보고구분",
+      "source_location": "47§7;fetch/static/render/scopeJSON",
+      "verification_method": "전체로그키독해·identity대조",
+      "limit": "429와challenge는이로그로별도검증못함"
+    },
+    {
+      "claim_id": "H028-C17",
+      "claim": "실제열람범위·모델0·역사적Goal/예산의지위",
+      "source_location": "47전체;3로컬코드;4JSON;manifest/통제baseline",
+      "verification_method": "sourceidentity·범위·현재행동확인",
+      "limit": "전논문/패킷/전체Goal 미완료"
+    }
+  ]
+}

@@ -79,3 +79,5 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 [H026 목록](history-026-sources.jsonl)은 43–44의 새 원문 5개(17,623 bytes)·44 재사용 1개·일차자료 metadata 10개·identity만 확인한 9개를 연결한다. [열람 범위](../sources/history-026.md)는 논문 선택 텍스트 34쪽·시각 9쪽, 저자 코드 3개·README 1개 전체와 미열람 변환본을 구분한다. 44의 수치 검수(H025)와 문헌·역할 검수(H026)를 함께 찾을 수 있다.
 
 [H027 목록](history-027-sources.jsonl)은 새 원문10개(90,808 bytes), 기존 사본6개, HDF5 metadata1개를 연결한다. [열람 범위](../sources/history-027.md)는 텍스트3개·작은JSON5개·선택수치1개와 47의 부분 주장 검수를 구분한다. 스냅샷metadata32행을 연결파일32개 본문 완료로 세지 않는다.
+
+[H028 목록](history-028-sources.jsonl)은 새 원문7개(9,102 bytes)·기존사본3개·외부metadata13개와 별도 UPC 참조를 구분한다. [열람 범위](../sources/history-028.md)는 새 텍스트4개·JSON4개·선택논문20쪽/UPC재독2쪽/시각6쪽, 전논문완료0개를 명시한다. H027에서 대기였던47의 주요 주장을 연결했으며 전체 관련 패킷은 미완료다.

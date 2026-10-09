@@ -1,0 +1,17 @@
+from pathlib import Path
+import json, subprocess
+base=Path(__file__).resolve().parent
+out=base/'sources/input_sharing_45'
+exe=Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+specs=[('dic_st_publisher.pdf',[10,11,16]),('markov_boundary_v2.pdf',[2,6,9])]
+logs=[]
+for filename,pages in specs:
+    for page in pages:
+        prefix=out/(Path(filename).stem+f'_page{page:02d}')
+        if prefix.with_suffix('.png').exists():
+            raise SystemExit('Page already rendered')
+        proc=subprocess.run([str(exe),'-f',str(page),'-l',str(page),'-scale-to','1500','-png','-singlefile',str(out/filename),str(prefix)],capture_output=True,text=True,timeout=25)
+        assert proc.returncode==0 and prefix.with_suffix('.png').exists(),proc.stderr
+        logs.append({'file':filename,'page':page,'image':prefix.with_suffix('.png').name,'stderr':proc.stderr})
+(out/'render_log.json').write_text(json.dumps(logs,indent=2),encoding='utf-8')
+print(json.dumps(logs))

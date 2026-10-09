@@ -185,4 +185,16 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 | 공간 입력으로 RCTL 소속을 정하는가 | 46은 저장 단순 예측 재분석이며 새 Tab/RCTL/simple 실행0, 소속 변경false | RCTL의 입력 구성과 공동 학습 단위의 연결이 새 질문. 기존16cell/480시간 RCTL과 직접 순위 비교하지 않음 |
 | cheap 비용, peak_RSS | 당시46타이머0.030364초, RSS는 종료무렵 단일 관측 | 입력/계획hash와 결과 저장은 타이머 밖. 18의 기존 적합 비용을46새비용으로 중복 합산하지 않음 |
 
-[설정·예측·결과·당시 원장](evidence/0045-0046-input-stability/README.md)을 재사용할 수 있다. 47의 문헌·논리·규모·전체 판단과 후속75는 아직 검수 대기이며, 검색 결과가 없다는 이유로 새 연구라고 판단하지 않는다.
+[설정·예측·결과·당시 원장](evidence/0045-0046-input-stability/README.md)을 재사용할 수 있다. 47의 문헌·논리·규모·전체 판단은 아래 후속 기록에 연결했다. 후속75와 전수 범위는 남아 있으며 검색 결과가 없다는 이유로 새 연구라고 판단하지 않는다.
+
+## 예측 의존 graph를 RCTL 소속으로 바꾸려는가
+
+| 검색어·질문 | 먼저 볼 기록 | 같은 연구와 구별할 조건 |
+|---|---|---|
+| input sharing / sample pooling / GECOS 입력 채널 | [47](records/0047-input-sharing-roles.md): 행 공유·열 추가 구분, Input(steps,1), UPC cell별 sequence | 실제 cell/시간/열 역할과 공동 학습 함수의 연결을 명시 |
+| DIC-ST / IMF / TE / Granger / 예측 관계 graph | 같은 기록: IMF군집·성분별TE/GCN, Table2와 표기·시간 절단 공백 | cell partition과 구별하고 분해+graph 자체의 선행성을 인정 |
+| Markov boundary / feature mask / TabPFN / TabICL | MSE Bayes가정·OLS조건·추정mask의회귀기별Win·후속boundaryhead제안 | 합성/실제, 참/추정boundary, frozenAPI/새학습, Tab/RCTL을 구분 |
+| 양방향 의존이면 같은 모델인가 | 정상Gaussian 한시점 반례: 동일분포·반대조건부중앙값 | ID·역할·이력schema를 바꿀 때 전제와 유한표본비용을 함께 설명 |
+| N(k+1) / context / query 비용 | k8/query64의 특정 비교 산술; runtime아님 | 개별후보와2N묶음비교의 질문 차이, 반복·후보검색·전처리 비용 |
+
+47의 방향 미추천은 모든 공간 입력 기각이 아니다. [45–46의 일부 긍정·부정 결과](records/0045-0046-input-stability.md)와 함께 읽고, 새 연구는 정보 손실·입력 구성·RCTL 학습 단위·독립 기간 중 무엇을 새로 검증하는지 적는다.
