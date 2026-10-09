@@ -103,3 +103,5 @@ H036은 [9개 원본 행](history-036-sources.jsonl)과 [명세](../evidence/005
 H037은 [10개 원본 행](history-037-sources.jsonl)과 [명세](../evidence/0053-zoom2net/manifest.json)에 Zoom2Net을 연결합니다. 기존 사본5개 재사용·외부metadata5개·새 복사0개이며 [읽은 범위](../sources/history-037.md)는PDF14본문쪽/10시각쪽·과거미리보기3장과TXT14쪽 계보입니다. 파생본 재독을 새 전체본문/JSON 집계에 가산하지 않으며 전체53/55·다른 문헌은 미완료입니다.
 
 H038은 [8개 원본 행](history-038-sources.jsonl)과 [명세](../evidence/0053-netnomos/manifest.json)에 NETNOMOS를 연결합니다. 기존 사본5개 재사용·외부metadata3개·새 복사0개이며 [읽은 범위](../sources/history-038.md)는PDF24본문쪽/18시각쪽·과거미리보기1장과TXT24쪽입니다. 파생본·기존 근거 재독을 새 전체본문/JSON 집계에 가산하지 않으며 전체53/55와 나머지 기록은 미완료입니다.
+
+H039은 [원본 9개와 ZIP hash-only 1개](history-039-sources.jsonl)를 [명세](../evidence/0053-tabicl-imputation/manifest.json)에 연결합니다. 기존 정확 사본 4개·외부 원본 metadata 5개·container 1개·추가 웹 참조 9개이며 새 원문 복사는 없습니다. [읽은 범위](../sources/history-039.md)는 저장 HTML article, 코드 전체 3개/일부 1개, 현재 그림 5개와 Ciena PDF 표지입니다. 과거 그림 동일성·Ciena 전체 본문·전체 53/55는 미완료입니다.

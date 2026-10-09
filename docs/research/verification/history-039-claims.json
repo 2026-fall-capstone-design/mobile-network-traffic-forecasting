@@ -1,0 +1,229 @@
+{
+  "batch_id": "history-039",
+  "claims": [
+    {
+      "claim_id": "H039-C01",
+      "claim": "53의 관측 선택 질문과 55의 기존 API 판단을 연결한다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3–5",
+      "verification_method": "질문·판단·수행 상태 재독",
+      "limit": "전체 53/55 자료 완료·과거 Goal 재개 아님"
+    },
+    {
+      "claim_id": "H039-C02",
+      "claim": "저장 HTML과 고정 ZIP·설치 wrapper의 버전을 구분한다",
+      "source_location": "SRC-0064362 article375–661; SRC-0073573 전체292행; SRC-0047582 전체765행; SRC-0047581 전체3행",
+      "verification_method": "원본·container·대응 member 해시 대조",
+      "limit": "현행 latest 구현 전체와 동일함을 보장하지 않음"
+    },
+    {
+      "claim_id": "H039-C03",
+      "claim": "공식 문서는 비지도 구현을 큰 벤치마크에서 평가하지 않은 실험적 기능으로 소개한다",
+      "source_location": "SRC-0064362 article 도입 Note",
+      "verification_method": "저장 문구와 현재 페이지 대조",
+      "limit": "네트워크 성능 benchmark로 표시하지 않음"
+    },
+    {
+      "claim_id": "H039-C04",
+      "claim": "예제는 two-moons 200행·두 특성·noise 0.15·seed 42·ensemble 4·CPU를 쓴다",
+      "source_location": "SRC-0073573 fit 절; SRC-0064362 Fit the model",
+      "verification_method": "설정 코드 읽기",
+      "limit": "네트워크 cell·시계열·시간 분할 결과 아님"
+    },
+    {
+      "claim_id": "H039-C05",
+      "claim": "완전한 X로 먼저 fit하고 같은 X의 복사본을 가린다",
+      "source_location": "SRC-0073573 fit 절과 Missing-value imputation 절",
+      "verification_method": "호출 순서·변수 계보 대조",
+      "limit": "held-out 복원·운영 관측 생략·미래 예측 평가 아님"
+    },
+    {
+      "claim_id": "H039-C06",
+      "claim": "mask seed 0으로 100행의 원소 1개씩 가려 행 50%·스칼라 원소 25%가 된다",
+      "source_location": "SRC-0073573 masking 코드; SRC-0064362 출력 Rows/Cells",
+      "verification_method": "100/200과 100/400 산술",
+      "limit": "네트워크 cell 25%·실제 장애 발생률 아님"
+    },
+    {
+      "claim_id": "H039-C07",
+      "claim": "Missingness pattern은 원래 X 좌표에 결측을 적용한 행을 표시한다",
+      "source_location": "SRC-0073573 axes[1] scatter 두블록",
+      "verification_method": "X[is_partial]·X_masked·X_imputed 계보 대조",
+      "limit": "NaN 값의 위치에서 정확 복원을 검증한 그림 아님"
+    },
+    {
+      "claim_id": "H039-C08",
+      "claim": "impute는 training median/mode로 query 결측을 초기화하고 원래 결측 mask를 유지한다",
+      "source_location": "SRC-0047582 273–303행",
+      "verification_method": "초기값·training/query 역할·mask 흐름 읽기",
+      "limit": "context 전체의 완전 복원이나 새로운 관측 생성 아님"
+    },
+    {
+      "claim_id": "H039-C09",
+      "claim": "각 대체는 다른 모든 열의 현재 값에 조건을 건다",
+      "source_location": "SRC-0047582 305–327/453–502/626–675행",
+      "verification_method": "현재 query 값과 저장 context·조건부 estimator 연결",
+      "limit": "부분 관측 목표를 미래 예측·센서 선택으로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H039-C10",
+      "claim": "실제 열 순서는 결측 비율 오름차순이며 docstring의 left-to-right와 다르다",
+      "source_location": "SRC-0047582 251–255/277–283행",
+      "verification_method": "설명과 정렬 키 대조",
+      "limit": "현재 버전의 수정 여부는 미확인"
+    },
+    {
+      "claim_id": "H039-C11",
+      "claim": "원래 관측 위치는 대체하지 않지만 float32 변환의 정밀도는 별도다",
+      "source_location": "SRC-0047582 264–290/303/317/320행",
+      "verification_method": "변환·복사·할당 mask 읽기",
+      "limit": "모든 입력 dtype의 비트 단위 동일성 보장 아님"
+    },
+    {
+      "claim_id": "H039-C12",
+      "claim": "기본 2회이며 고정 반복 횟수를 쓰고 수렴에 따른 중단 분기는 없다",
+      "source_location": "SRC-0047582 230/305–329행",
+      "verification_method": "반복문과 반환 구간 대조",
+      "limit": "MICE 수렴·확률모형 일관성 인증 아님"
+    },
+    {
+      "claim_id": "H039-C13",
+      "claim": "training target이 5개 미만이면 범주형도 nanmean을 쓰며 0·2의 평균 1은 관측 범주 밖이다",
+      "source_location": "SRC-0047582 95/312–318행",
+      "verification_method": "범주 분기 이전 fallback과 작은 산술 대조",
+      "limit": "모델 실행·실제 발생 빈도·전체 성능 실패 판정 아님"
+    },
+    {
+      "claim_id": "H039-C14",
+      "claim": "training target이 전부 NaN이면 유효한 대체값이 나온다는 근거가 없다",
+      "source_location": "SRC-0047582 296–317행",
+      "verification_method": "초기 median/mode와 fallback 경로 읽기",
+      "limit": "새 NaN 모델 실험 결과 아님"
+    },
+    {
+      "claim_id": "H039-C15",
+      "claim": "수치형 온도 0.5는 중앙 분위수 [0.25, 0.75], 0은 median이며 clamp가 있다",
+      "source_location": "SRC-0047582 728–765행",
+      "verification_method": "인쇄 공식·Decimal 산술·코드식 대조",
+      "limit": "온도에 따른 정확도·calibration 성공 아님"
+    },
+    {
+      "claim_id": "H039-C16",
+      "claim": "범주형 온도 1e-8 이하는 mode이고 그 외에는 온도로 log 확률을 조절한다",
+      "source_location": "SRC-0047582 678–724행",
+      "verification_method": "범주형·수치형 분기 비교",
+      "limit": "일반 mode 문구를 수치형 최빈값으로 확대하지 않음"
+    },
+    {
+      "claim_id": "H039-C17",
+      "claim": "MICE-like라는 명칭이 통계적 다중 대체·수렴 검증을 뜻하지 않는다",
+      "source_location": "SRC-0064362 impute절; SRC-0047582 230–329행",
+      "verification_method": "반환 행렬·고정 반복·예제 평가 범위 확인",
+      "limit": "통계 추론이나 모든 의존성 검증 아님"
+    },
+    {
+      "claim_id": "H039-C18",
+      "claim": "score는 순서 내 log 합·순서 간 평균 뒤 exp이며 기하평균이다",
+      "source_location": "SRC-0047582 183–228/504–548행",
+      "verification_method": "연산 순서 읽기·H024 기존 검수 연결",
+      "limit": "반환 log score·정규화 joint density 보장 아님"
+    },
+    {
+      "claim_id": "H039-C19",
+      "claim": "연속 density의 0–1 범위와 정확한 density ratio를 보장하지 않는다",
+      "source_location": "SRC-0047582 194–196/228/593–624행",
+      "verification_method": "점수 정의와 H024의 수학 예제 구분",
+      "limit": "이상치 용도의 전체 실패·새 정리 아님"
+    },
+    {
+      "claim_id": "H039-C20",
+      "claim": "이상치 그림의 색상은 log1p(score)이며 제목의 log-density와 구별된다",
+      "source_location": "SRC-0073573 outlier scatter; EXT-H039-03 전체그림",
+      "verification_method": "색상 코드·colorbar 시각 대조",
+      "limit": "색상을 log density 실측으로 전사하지 않음"
+    },
+    {
+      "claim_id": "H039-C21",
+      "claim": "training 200개와 인공 이상치 5개의 저장 출력이며 ROC/AUC 평가는 없다",
+      "source_location": "SRC-0073573 outlier절; SRC-0064362 저장출력",
+      "verification_method": "샘플 구성·평가 범위 확인",
+      "limit": "새 분포 일반화·독립 이상치 benchmark 아님"
+    },
+    {
+      "claim_id": "H039-C22",
+      "claim": "두 특성·기본 Latin·요청 4에서는 순서 2개와 최대 조건부 처리 4회/호출이다",
+      "source_location": "SRC-0047582 222–228/528–546행; SRC-0047572 785–916행",
+      "verification_method": "Shuffler 재귀 크기와 호출 목록·산술 확인",
+      "limit": "RNG 실행·모델 forward 횟수·실측 시간 아님"
+    },
+    {
+      "claim_id": "H039-C23",
+      "claim": "EnsembleGenerator는 조합을 n_estimators로 자르므로 모든 ensemble로 일반화하지 않는다",
+      "source_location": "SRC-0047572 1090–1140행",
+      "verification_method": "다른 호출자의 1125–1126행과 비교",
+      "limit": "전체 전처리/모델 구현 검증 아님"
+    },
+    {
+      "claim_id": "H039-C24",
+      "claim": "가중치 공유와 별개로 조건부 fit/predict가 남고 충분한 target의 impute 경로는 mI다",
+      "source_location": "SRC-0047582 121–181/305–327/397–442/626–675행",
+      "verification_method": "kv_cache=False·est 생성·반복 경로 읽기",
+      "limit": "fit를 새 가중치 학습과 동일시하거나 시간을 선형 환산하지 않음"
+    },
+    {
+      "claim_id": "H039-C25",
+      "claim": "generate는 원래 열 순서·빈 조건의 random dummy를 쓰며 score와 impute의 순서와 다르다",
+      "source_location": "SRC-0047582 331–375/492–500행",
+      "verification_method": "세 API의 조건 열 구성 비교",
+      "limit": "정리에서 생성기·난수·원 코드를 실행하지 않음"
+    },
+    {
+      "claim_id": "H039-C26",
+      "claim": "과거 0.9228/17.021초와 현재 0.9231/9.021초가 달라 버전을 구별한다",
+      "source_location": "SRC-0064362 저장출력; EXT-H039-01 현재출력",
+      "verification_method": "저장 HTML·현재 HTTP 해시와 브라우저 관측 대조",
+      "limit": "전체 tutorial 시간을 impute 시간·속도 개선으로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H039-C27",
+      "claim": "두 HTML 코드 10블록과 ZIP tutorial의 AST는 같지만 의존성·가중치 동일성은 미확인이다",
+      "source_location": "SRC-0064362 코드10블록; SRC-0073573 전체; EXT-H039-01 코드10블록",
+      "verification_method": "모듈 docstring 제외 AST 대조",
+      "limit": "주석·문서·실행 환경·출력 원인의 동일성 아님"
+    },
+    {
+      "claim_id": "H039-C28",
+      "claim": "현재 그림 5개를 읽었으나 과거 그림 동일성은 미확인이며 005는 WebP 응답이다",
+      "source_location": "SRC-0064362 img 참조 5개; EXT-H039-02, EXT-H039-03, EXT-H039-04, EXT-H039-05, EXT-H039-06 전체",
+      "verification_method": "현재 자산 시각·형식 magic·해시 확인",
+      "limit": "과거 그림 완료·정량 성능값으로 대체하지 않음"
+    },
+    {
+      "claim_id": "H039-C29",
+      "claim": "Ciena 옛 다운로드는 과거 Not PDF이고 현재도 HTTP 200의 일반 HTML이다",
+      "source_location": "SRC-0064355 Ciena항목; SRC-0064359 Ciena범위; EXT-H039-07",
+      "verification_method": "과거 로그·현재 응답 형식·홈페이지 텍스트 대조",
+      "limit": "HTTP 성공을 PDF 확보·논문 독해로 표시하지 않음"
+    },
+    {
+      "claim_id": "H039-C30",
+      "claim": "새 공식 초록에서 2021 Ciena 논문을 찾고 917077 bytes/23쪽 PDF와 표지를 확인했다",
+      "source_location": "EXT-H039-08 공식초록; EXT-H039-09 PDFp1; SRC-0064355 과거Ciena항목",
+      "verification_method": "링크 계보·PDF magic·쪽수·표지 제목/저자 확인",
+      "limit": "p2–23 본문·모든 그림·정량 결과는 검토 대기"
+    },
+    {
+      "claim_id": "H039-C31",
+      "claim": "54는 직접 회귀 네 개를 비교했으며 공식 MICE 구현 실험이 아니다",
+      "source_location": "SRC-0021824 §3–5",
+      "verification_method": "당시 실행 설명과 H031 저장 결과 기록 연결",
+      "limit": "직접 회귀 부정 결과와 MICE 성능 결과를 혼동하지 않음"
+    },
+    {
+      "claim_id": "H039-C32",
+      "claim": "새 제안은 가용 관측·선택 규칙·단순 대안·최종 예측·전체 비용의 차이를 갖춰야 한다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3–6; SRC-0047582 230–329행",
+      "verification_method": "과거 질문·실행 경계·API 역할을 설계 조건으로 연결",
+      "limit": "새 실험 승인·전체 Goal 완료·확인되지 않은 이득 아님"
+    }
+  ]
+}
