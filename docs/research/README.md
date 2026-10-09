@@ -121,3 +121,5 @@ H044 통합 안내: [51–55 관측 비용·신규성·TabICL 기여](records/00
 [51·55 event context와 합성 증강](records/0051-event-context.md)은 이전 접근 공백을 공식AAM44쪽 검토로 보완합니다. [40개 주장](verification/history-042.md)에 사전 일정·train 합성·MAPE식/날짜 불일치와 큰K·주거/업무별 반례를 연결했습니다. 전체 오차와 이벤트 오차를 구분하며 51·55 전체 종합은 계속 진행합니다.
 
 H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-media.md)은 고정 미디어 7개와 144프레임의 실제 독해, 값 구간·확률 음영·분할 그림의 해석 한계를 연결합니다. [범위와 검수](verification/history-043.md)를 함께 확인하세요. 전체 51/55는 미완료입니다.
+
+[56·58 TimeDC 원문·코드 대조](records/0056-0058-timedc.md)는 합성 자료와 원 표본 선택을 구분하고, Table4의 epoch당 비용·cross-architecture 비교 범위·공개 코드 재현 조건을 연결합니다. 인쇄 지표의 모순과 원 자료 대비 손해·예외도 보존했습니다. [검수 범위](verification/history-046.md)는 주논문과 고정 코드이며 확장판·raw run·다른 세 문헌은 미완료입니다.
