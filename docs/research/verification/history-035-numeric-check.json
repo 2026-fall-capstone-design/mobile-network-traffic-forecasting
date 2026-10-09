@@ -1,0 +1,167 @@
+{
+  "batch_id": "history-035",
+  "success": true,
+  "checked_at_utc": "2026-10-09T14:27:17.563119+00:00",
+  "source_id": "SRC-0063287",
+  "source_sha256": "215ee813a4487877f02e4254b0597a59f376eb4371b28e8bdcbce7a4addede7c",
+  "checks": [
+    "Ch5_training_settings",
+    "Ch5_K_M_settings",
+    "Ch5_split_samples_models",
+    "Ch5_cost_values",
+    "Ch5_cost_hardware",
+    "Ch5_M2_vs_M4_minimum",
+    "Ch6_81_percent",
+    "Ch3_model_count",
+    "Ch3_extended_260",
+    "Ch3_foundational_4168",
+    "Ch3_conclusion_140",
+    "Ch4_selected_cost_ratios",
+    "Table3.1:AVG:four_printed_values",
+    "Table3.1:STD:four_printed_values",
+    "Table3.2:AVG:four_printed_values",
+    "Table3.2:STD:four_printed_values",
+    "printed_clustering_hours_rounding",
+    "upfront_plus_train_exceeds_per_BS_training",
+    "centroid_both_printed_times_exceed_global",
+    "441_region_conditional_fraction_below_17",
+    "distinct_17_and_81_complements",
+    "Ch3_1764_arithmetic",
+    "Ch3_260_arithmetic",
+    "Ch3_4096_not_printed_4168",
+    "Ch3_260_not_conclusion_140",
+    "Ch4_selected_cost_ratio_not_10"
+  ],
+  "check_count": 26,
+  "tables": {
+    "3.1": {
+      "columns": [
+        "Milan-CAP",
+        "Milan-TRA",
+        "EUMA-CAP",
+        "EUMA-TRA"
+      ],
+      "AVG": [
+        "-0.05",
+        "-0.04",
+        "0.01",
+        "-0.06"
+      ],
+      "STD": [
+        "0.16",
+        "0.15",
+        "0.22",
+        "0.15"
+      ]
+    },
+    "3.2": {
+      "columns": [
+        "Milan-CAP",
+        "Milan-TRA",
+        "EUMA-CAP",
+        "EUMA-TRA"
+      ],
+      "AVG": [
+        "7.8",
+        "8.5",
+        "4.9",
+        "12.2"
+      ],
+      "STD": [
+        "1.6",
+        "2.0",
+        "2.5",
+        "2.0"
+      ]
+    }
+  },
+  "printed_table_fields": 16,
+  "printed_cost_seconds": {
+    "clustering": "10415.90",
+    "centroid_train": "92.39",
+    "centroid_infer": "0.52",
+    "global_train": "23.89",
+    "global_infer": "0.33",
+    "per_BS_train": "1288.91",
+    "per_BS_infer": "62.06"
+  },
+  "printed_cost_fields": 7,
+  "derived_arithmetic": {
+    "clustering_hours": "2.893305555555555555555555556",
+    "centroid_train_plus_clustering_seconds": "10508.29",
+    "centroid_train_plus_clustering_over_per_BS_train": "8.152850082627956955877446835",
+    "per_BS_train_over_centroid_train_excluding_clustering": "13.95075224591405996319948046",
+    "centroid_train_over_global_train": "3.867308497279196316450397656",
+    "centroid_inference_over_global_inference": "1.575757575757575757575757576",
+    "retained_inputs_percent_if_both_K2_clusters_have_M36_of_441": "16.32653061224489795918367347",
+    "complement_of_author_17_percent_retained": "83",
+    "complement_of_author_81_percent_reduced": "19",
+    "Milan_test_days_at_10min": "12.36111111111111111111111111",
+    "EUMA_test_days_at_10min": "2.777777777777777777777777778",
+    "Ch4_traffic_cost_over_capacity_cost": "6.205131927557797698980147352"
+  },
+  "settings": {
+    "K": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      10,
+      15,
+      20
+    ],
+    "maximum_M": [
+      4,
+      9,
+      16,
+      25,
+      36,
+      49
+    ],
+    "learning_rate": "0.0005",
+    "epochs": 20,
+    "LSTM_units": 50,
+    "past_observations": 3,
+    "time_resolution_minutes": 10,
+    "train_test": "80:20 author report; chronological/validation/clustering fit window unverified",
+    "test_samples": {
+      "Milan": 1780,
+      "EUMA": 400
+    },
+    "trained_models_reported": 1092,
+    "trained_model_ledger_verified": false
+  },
+  "configuration_counts": {
+    "Ch3_models": {
+      "reported": 1764,
+      "arithmetic": 1764
+    },
+    "Ch3_extended": {
+      "method_reported": 260,
+      "arithmetic": 260,
+      "conclusion_reported": 140
+    },
+    "Ch3_foundational": {
+      "reported": 4168,
+      "listed_factor_product": 4096
+    },
+    "Ch5_models": {
+      "reported": 1092,
+      "full_run_ledger_verified": false
+    }
+  },
+  "limitations": [
+    "All costs are author-printed seconds for a stated configuration; batch/request scope, repetitions, LRP exact timings and variance are absent. Ratios do not establish per-request speed or measured energy/network-byte savings.",
+    "Upfront clustering plus training arithmetic excludes inference, selection and other unreported costs; it is not an amortized deployment estimate.",
+    "72/441 is conditional on the selected21x21 region and both clusters reaching36 inputs. Exact Ch5 membership/input count is unavailable; 3400 full-grid denominator is not substituted.",
+    "17percent retained and81percent reduced have no demonstrated identical configuration; preserve both without silently correcting source.",
+    "2.90hours is author approximation; 10415.90/3600=2.8933hours and rounds2.89 to nearest hundredth.",
+    "Table3.1 correlations do not establish statistical independence; graph points are not digitized.",
+    "Chapter3/4 are robustness background; no attack/model code executed."
+  ],
+  "document_check_completed": true,
+  "new_model_runs": 0,
+  "source_scripts_executed": false,
+  "random_draws": 0
+}
