@@ -1,0 +1,50 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import json, hashlib, urllib.request
+from pypdf import PdfReader
+
+out = Path(__file__).resolve().parent / 'sources/network_scope_51'
+log_path = out / 'methods_fetch_log.json'
+if log_path.exists():
+    raise SystemExit('Recorded fetch exists; inspect it rather than repeat it.')
+records = []
+
+def fetch(name, url, cap):
+    record = {'file': name, 'requested_url': url, 'max_bytes': cap,
+              'accessed_at': datetime.now(timezone.utc).isoformat()}
+    data = None
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'Research source audit/1.0'})
+        with urllib.request.urlopen(req, timeout=25) as response:
+            data = response.read(cap + 1)
+            record.update(status=response.status, final_url=response.url,
+                          content_type=response.headers.get('Content-Type'))
+        if len(data) > cap:
+            raise ValueError('Precommitted per-file download cap exceeded')
+        if name.endswith('.pdf') and not data.startswith(b'%PDF-'):
+            raise ValueError('Response is not a PDF')
+        path = out / name
+        path.write_bytes(data)
+        record.update(bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            reader = PdfReader(path)
+            record['pages'] = len(reader.pages)
+            path.with_suffix('.txt').write_text('\n\n'.join(
+                f'--- PAGE {i + 1} ---\n{page.extract_text()}'
+                for i, page in enumerate(reader.pages)), encoding='utf-8')
+    except Exception as exc:
+        record['error'] = str(exc)
+        data = None
+    records.append(record)
+    log_path.write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')
+    print(json.dumps(record, ensure_ascii=False), flush=True)
+    return data
+
+fetch('gotsf_AAAI_2026.pdf', 'https://ojs.aaai.org/index.php/AAAI/article/download/39249/43210', 20_000_000)
+fetch('itu_beam_forecast_2025.pdf', 'https://www.itu.int/dms_pub/itu-s/opb/jnl/S-JNL-VOL6.ISSUE4-2025-A27-PDF-E.pdf', 20_000_000)
+fetch('beam_multitask_frontiers_2025.html', 'https://www.frontiersin.org/journals/communications-and-networks/articles/10.3389/frcmn.2025.1658461/full', 5_000_000)
+commit_data = fetch('gotsf_commit.json', 'https://api.github.com/repos/netop-team/gotsf/commits/main', 5_000_000)
+if commit_data:
+    commit = json.loads(commit_data)['sha']
+    fetch('gotsf_code_tree.json', f'https://api.github.com/repos/netop-team/gotsf/git/trees/{commit}?recursive=1', 5_000_000)
+    fetch('gotsf_code_README.md', f'https://raw.githubusercontent.com/netop-team/gotsf/{commit}/README.md', 5_000_000)

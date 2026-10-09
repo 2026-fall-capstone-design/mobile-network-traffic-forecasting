@@ -1,0 +1,56 @@
+from pathlib import Path
+from html.parser import HTMLParser
+import urllib.request, urllib.parse, json, hashlib, subprocess
+from pypdf import PdfReader
+
+out=Path(__file__).resolve().parent/'sources/network_scope_51'
+log=out/'supplement_fetch_log.json'
+if log.exists(): raise SystemExit('Supplement already fetched')
+records=[]
+def fetch(name,url,cap=5_000_000):
+    rec={'file':name,'url':url,'cap':cap,'access_date':'2026-09-26'}
+    data=None
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Research source audit/1.0'}),timeout=25) as response:
+            data=response.read(cap+1); rec.update(status=response.status,final_url=response.url)
+        if len(data)>cap: raise ValueError('Size cap exceeded')
+        if name.endswith('.pdf') and not data.startswith(b'%PDF-'): raise ValueError('Not PDF')
+        path=out/name;path.write_bytes(data)
+        rec.update(bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            reader=PdfReader(path);rec['pages']=len(reader.pages)
+            path.with_suffix('.txt').write_text('\n\n'.join(f'--- PAGE {i+1} ---\n{page.extract_text()}' for i,page in enumerate(reader.pages)),encoding='utf-8')
+    except Exception as exc:
+        rec['error']=str(exc);data=None
+    records.append(rec)
+    log.write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps(rec,ensure_ascii=False),flush=True)
+    return data
+sha=json.loads((out/'gotsf_commit.json').read_text(encoding='utf-8'))['sha']
+for name in ['script_train.py','script_stats.py','utils/metrics.py']:
+    fetch('gotsf_'+name.replace('/','__'),f'https://raw.githubusercontent.com/netop-team/gotsf/{sha}/{name}')
+fetch('zindi_original_challenge.html','https://zindi.world/competitions/spatio-temporal-beam-level-traffic-forecasting-challenge')
+page_url='https://dspace.networks.imdea.org/handle/20.500.12761/2071'
+page=fetch('imdea_thesis_page.html',page_url)
+if page:
+    class Links(HTMLParser):
+        def __init__(self):super().__init__();self.urls=[]
+        def handle_starttag(self,tag,attrs):
+            a=dict(attrs)
+            if tag=='a' and 'Thesis_Serly_Moghadas.pdf' in a.get('href',''):
+                self.urls.append(urllib.parse.urljoin(page_url,a['href']))
+    parser=Links();parser.feed(page.decode('utf-8'))
+    if parser.urls:
+        fetch('imdea_Moghadas_thesis_2026.pdf',parser.urls[0],20_000_000)
+
+poppler=Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+previews=out/'previews';previews.mkdir(exist_ok=True)
+render_log=[]
+for stem,pages in [('gotsf_AAAI_2026',[4,7]),('gotsf_arxiv_v3',[5,9]),('itu_beam_forecast_2025',[5]),('cellular_move_v1',[4,10])]:
+    for page in pages:
+        prefix=previews/f'{stem}_p{page:02d}'
+        subprocess.run([str(poppler),'-f',str(page),'-l',str(page),'-r','125','-png','-singlefile',str(out/(stem+'.pdf')),str(prefix)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=25)
+        image=prefix.with_suffix('.png')
+        render_log.append({'pdf':stem+'.pdf','page':page,'image':str(image.relative_to(out)),'bytes':image.stat().st_size,'sha256':hashlib.sha256(image.read_bytes()).hexdigest()})
+(out/'render_log.json').write_text(json.dumps(render_log,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'rendered':len(render_log)}),flush=True)

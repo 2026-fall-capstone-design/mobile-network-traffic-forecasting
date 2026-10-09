@@ -1,0 +1,13 @@
+from pathlib import Path
+import subprocess, hashlib, json
+base=Path(__file__).resolve().parent/'sources/telemetry_53'
+log=base/'render_log.json';assert not log.exists()
+poppler='C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe'
+out=base/'previews';out.mkdir(exist_ok=True);records=[]
+for stem,pages in [('sensor_selection_AAAI2016',[3,6]),('zoom2net_SIGCOMM2024',[5,7,12]),('netnomos_NSDI2026',[12])]:
+ for page in pages:
+  prefix=out/f'{stem}_p{page:02d}'
+  subprocess.run([poppler,'-f',str(page),'-l',str(page),'-r','120','-png','-singlefile',str(base/(stem+'.pdf')),str(prefix)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=25)
+  p=prefix.with_suffix('.png');records.append({'pdf':stem+'.pdf','page':page,'image':str(p.relative_to(base)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+log.write_text(json.dumps(records,indent=2),encoding='utf-8')
+print(json.dumps({'rendered':len(records)}))

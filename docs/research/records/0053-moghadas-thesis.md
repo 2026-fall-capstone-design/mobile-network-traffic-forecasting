@@ -102,3 +102,5 @@ Cost-guided가 모든 강도에서 GMCA보다 크다는 본문과 달리 Fig4.7(
 이번에 읽은 학위논문 외의 SRSSS·Zoom2Net·NETNOMOS·TabICL imputation 문서는 다음 검수 대상으로 남긴다. 53 fetch log에서 Ciena는 HTTP 200이어도 `Not PDF`였으므로 본문 확보·완독으로 세지 않는다. 51의 event/STKDiff와 자료 버전, 53의 나머지 문헌, 55 전체 종합, 전체 과거기록 및 최종 팀 접근·검색 검수는 계속 진행한다.
 
 [39개 주장과 출처](../verification/history-035-claims.json) · [인쇄 수치](../verification/history-035-numeric-check.json) · [원본·파생본 검수](../verification/history-035-primary-check.json) · [자료 명세](../evidence/0053-moghadas-thesis/manifest.json).
+
+후속 H044 종합: [51–55의 문제·신규성·추가 기여 판단](0051-0055-synthesis.md)은 이 기록과 다른 문헌·54 실행·실패/비용을 연결합니다. 위의 당시 미완료 범위는 보존하고, 이후 검토와 여전히 남은 원자료·과거 그림·재현 공백을 구분합니다.
