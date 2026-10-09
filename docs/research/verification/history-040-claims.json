@@ -1,0 +1,257 @@
+{
+  "batch_id": "history-040",
+  "claims": [
+    {
+      "claim_id": "H040-C01",
+      "claim": "53의 질문은 관측을 줄여 복원하는 결정과 기존 방법의 차이이며 cell clustering 성능 검증과 구분한다",
+      "source_location": "SRC-0021782 전체;SRC-0021824 §3–5",
+      "verification_method": "역사적 질문과 현재 기록의 대상 대조",
+      "limit": "과거 실행·예산 지시를 재개하지 않음"
+    },
+    {
+      "claim_id": "H040-C02",
+      "claim": "과거 Ciena 취득은 HTTP200/Not PDF이고 열람 범위는 초록 후보였다",
+      "source_location": "SRC-0064355 Ciena 행;SRC-0064359 not_verified;EXT-H039-07",
+      "verification_method": "보존 JSON과 현재 옛 URL 응답 대조",
+      "limit": "현재 확보를 과거 성공으로 소급하지 않음"
+    },
+    {
+      "claim_id": "H040-C03",
+      "claim": "새 공식 PDF23쪽·그림11개·표4개를 읽었으며 직전 표지 읽기 범위를 확장했다",
+      "source_location": "EXT-H039-08 공식 서지;EXT-H039-09 pp1–23",
+      "verification_method": "PDF917077bytes/SHA와 추출23쪽·렌더14쪽 기록 대조",
+      "limit": "인용 문헌 전수 열람·저자 구현 검증 아님"
+    },
+    {
+      "claim_id": "H040-C04",
+      "claim": "링크 기반 OD 추정·출처별 표본 제거·이미 수집한 이력 압축은 다른 비용 단위다",
+      "source_location": "EXT-H039-09 §2/§4.1–4.3",
+      "verification_method": "입력·결정·출력과 실증 대상 구분",
+      "limit": "mobile cell 선택·RCTL 미래 예측 실험 아님"
+    },
+    {
+      "claim_id": "H040-C05",
+      "claim": "라우팅 행렬은 토폴로지·경로 정보로 얻는 지연된 근사다",
+      "source_location": "EXT-H039-09 p6 §2.1.1",
+      "verification_method": "행렬 가용성에 관한 본문 재독",
+      "limit": "정확한 실시간 참값·현재 프로토콜 표준 보장 아님"
+    },
+    {
+      "claim_id": "H040-C06",
+      "claim": "두 층 DNN과 다항식 Table1은 학습 설명용 예제다",
+      "source_location": "EXT-H039-09 pp9–10 Fig3/Table1",
+      "verification_method": "그림·수식·표와 2x²+3x 산술 대조",
+      "limit": "통신망 성능 benchmark가 아님"
+    },
+    {
+      "claim_id": "H040-C07",
+      "claim": "Table1 둘째 행은 표시값으로 11.428571%이므로 11.5%를 그대로 재계산할 수 없다",
+      "source_location": "EXT-H039-09 p10 Table1",
+      "verification_method": "인쇄값 |15.6−14|/14×100과 Decimal 계산·시각 대조",
+      "limit": "반올림 전 예측값이 없어 실제 실험 오류를 확정하지 않음"
+    },
+    {
+      "claim_id": "H040-C08",
+      "claim": "4router/12OD/4link 예의 75%는 12→4 같은 개수 분모의 66.666667%와 다르다",
+      "source_location": "EXT-H039-09 p11 Fig4/본문",
+      "verification_method": "그림 개수·원문75%·12→4 및 가정16→4 산술",
+      "limit": "16개 기준은 원문이 명시한 분모가 아니며 bytes/방향 계수 불명"
+    },
+    {
+      "claim_id": "H040-C09",
+      "claim": "OD 흐름은 링크 부하·라우팅 행렬과 관련되지만 역행렬로 일반 해결할 수 없다고 설명한다",
+      "source_location": "EXT-H039-09 p12 수식 y≈Rx 및 본문",
+      "verification_method": "행렬 관계·비가역성 문구와 시각 수식 대조",
+      "limit": "새로운 역문제 풀이 또는 저자 코드 실행 아님"
+    },
+    {
+      "claim_id": "H040-C10",
+      "claim": "관측 잔차 최소화와 참 OD 오차 최소화를 구분하고 MLE 조건 공백을 남긴다",
+      "source_location": "EXT-H039-09 p12 argmin 및 이어진 설명",
+      "verification_method": "R=[1,1],y=2의 두 해에 대한 정적 잔차0 계산",
+      "limit": "논문 전체 방법의 실패 증명·성능 실험 아님"
+    },
+    {
+      "claim_id": "H040-C11",
+      "claim": "반복 추정 뒤 기지 제약에 맞추며 확률적 결합 상세와 종료 기준이 부족하다",
+      "source_location": "EXT-H039-09 p13 Fig5/본문",
+      "verification_method": "그림 루프·ingress/egress 예·범위 밖 문구 재독",
+      "limit": "제약 준수만으로 숨은 흐름의 정답을 보장하지 않음"
+    },
+    {
+      "claim_id": "H040-C12",
+      "claim": "Abilene 설명은 11router/121OD/15link와 동시 직접 흐름 관측 평가다",
+      "source_location": "EXT-H039-09 p13 평가 절",
+      "verification_method": "원문 개수·평가 참값 역할 대조",
+      "limit": "physical cell 수나 독립 미래 예측 시간 분할로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H040-C13",
+      "claim": "Table2는 MAPE29.6→17/원문42%이며 표시값 차이는12.6%p·상대42.567568%다",
+      "source_location": "EXT-H039-09 pp13–14 Table2",
+      "verification_method": "세 인쇄값 시각 대조·퍼센트와 퍼센트포인트 재계산",
+      "limit": "원 비교군 구현·반올림 전 값과 원 결과 배열 미확인"
+    },
+    {
+      "claim_id": "H040-C14",
+      "claim": "p14의 수집량78%와 p20요약20–75%의 분모는 별도 미확인이다",
+      "source_location": "EXT-H039-09 p14 및 p20 Summary",
+      "verification_method": "상이한 위치의 주장과 측정 단위 구분",
+      "limit": "15/121을 임의 적용하지 않고 TE 허용성은 저자 판단으로 남김"
+    },
+    {
+      "claim_id": "H040-C15",
+      "claim": "표본 제거 예시는 상관된 A/B/C/D의 교차 전송이며 공간 cluster 구현과 다르다",
+      "source_location": "EXT-H039-09 pp14–16 Fig6/§4.2",
+      "verification_method": "두 장치·네 시계열·보고 시점 대조",
+      "limit": "상관만으로 결정적 복원 가능성을 보장하지 않음"
+    },
+    {
+      "claim_id": "H040-C16",
+      "claim": "품질 평가·제거 피드백 구조에 참값 공급과 그 비용의 상세가 없다",
+      "source_location": "EXT-H039-09 pp15–16 Fig7",
+      "verification_method": "raw/pruned/recovered 화살표와 모듈 설명 시각 대조",
+      "limit": "그림에서 생략된 상세를 전체 구조 작동 불가로 단정하지 않음"
+    },
+    {
+      "claim_id": "H040-C17",
+      "claim": "본문의 양 방향 inverse Fourier 문구는 그림8의 일반 변환 이름만으로 해소되지 않는다",
+      "source_location": "EXT-H039-09 p16 Fig8/본문",
+      "verification_method": "주파수/시간 이름·encoder2/bottleneck/decoder2와 본문 대조",
+      "limit": "wavelet 대안이 있으며 정확한 구현은 미확인"
+    },
+    {
+      "claim_id": "H040-C18",
+      "claim": "모든 제거 전략을 다룰 수 있다는 표현은 저자 주장이다",
+      "source_location": "EXT-H039-09 p16 Data reconstruction",
+      "verification_method": "결측 패턴 정보 불필요 문구와 실제 평가 범위 구분",
+      "limit": "모든 패턴 평가·오류 상한 증명으로 승격하지 않음"
+    },
+    {
+      "claim_id": "H040-C19",
+      "claim": "Table3는 전송량감소5/10/20%에서 MAPE4/5/9%를 보고한다",
+      "source_location": "EXT-H039-09 p17 Table3",
+      "verification_method": "6개 인쇄값과 Abilene 평가 본문 시각 대조",
+      "limit": "10% 오차 허용 예를 모든 작업의90% 정확도로 환산하지 않음"
+    },
+    {
+      "claim_id": "H040-C20",
+      "claim": "전송량을 줄이거나 흐름별 빈도를 바꾸는 용도이며 전체 운영 지연과 비용은 미기록이다",
+      "source_location": "EXT-H039-09 pp14–17 §4.2",
+      "verification_method": "두 용도와 복원·평가 피드백 모듈의 비용 역할 대조",
+      "limit": "평가표로 실시간 배치·새 관측 정책의 비용 개선을 확인하지 않음"
+    },
+    {
+      "claim_id": "H040-C21",
+      "claim": "저장 압축은 이미 수집한 index–구간 대응을 학습하고 근사 조회한다",
+      "source_location": "EXT-H039-09 pp17–19 §4.3/Fig9–11",
+      "verification_method": "수집→저장→학습→hosting 구조 재독",
+      "limit": "미래 예측·무학습 압축이 아니며 raw 삭제 설명은 실행 지시 아님"
+    },
+    {
+      "claim_id": "H040-C22",
+      "claim": "32bit index 특징에서 p개 값 구간으로 가는 세 층 식을 예시한다",
+      "source_location": "EXT-H039-09 p18 수식 및 p19 Fig10",
+      "verification_method": "본문 bit 특징과 i 축약 표기·두 ReLU/최종 선형 층 시각 대조",
+      "limit": "hidden 크기·구간 길이·실제 학습 설정이 확정된 모델 아님"
+    },
+    {
+      "claim_id": "H040-C23",
+      "claim": "index–기간 대응표가 남고 임의 근사 가능성은 고정 크기·비용 보장이 아니다",
+      "source_location": "EXT-H039-09 pp18–19 Fig11",
+      "verification_method": "조회 표와 근사 한계 설명 대조",
+      "limit": "metadata·모델 정밀도·serving 비용을0으로 두지 않음"
+    },
+    {
+      "claim_id": "H040-C24",
+      "claim": "압축률의 예는 원 데이터16MB/DNN4MB=4배다",
+      "source_location": "EXT-H039-09 p19 Achievable compression",
+      "verification_method": "원문 정의·표시값·나눗셈 대조",
+      "limit": "완전한 서비스 저장·운영 비용 분모 아님"
+    },
+    {
+      "claim_id": "H040-C25",
+      "claim": "91배 예에는 흐름별 bytes 가중치가 없으며 가정에 따라91.818182나99.108911이 나온다",
+      "source_location": "EXT-H039-09 pp19–20 이질 흐름 예·각주1",
+      "verification_method": "원문91과 동일 원 bytes 가정의 전체 크기 비율·압축률 산술 평균을 구분",
+      "limit": "계산 가정을 원 측정으로 표현하거나91을 자동 정정하지 않음"
+    },
+    {
+      "claim_id": "H040-C26",
+      "claim": "Table4는 XOR10배/0%와 DNN20/40/80/128/200배·MAPE.5/1/2/5/10%다",
+      "source_location": "EXT-H039-09 p20 Table4",
+      "verification_method": "12개 인쇄 수치와 무손실/손실 구분 시각 대조",
+      "limit": "DNN을 무손실 압축으로 표시하지 않음"
+    },
+    {
+      "claim_id": "H040-C27",
+      "claim": "Table4 자료는 IP 유사 시뮬레이션이며 실제 IP 자료의 별도 결과는 제시되지 않는다",
+      "source_location": "EXT-H039-09 p20 Table4 아래 평가 문단",
+      "verification_method": "simulation과 similar results 문구 구분",
+      "limit": "앞 절의 Abilene 자료로 모두 통합하지 않음"
+    },
+    {
+      "claim_id": "H040-C28",
+      "claim": "128배를 원본/DNN 크기 감소율로 환산하면99.21875%다",
+      "source_location": "EXT-H039-09 pp19–20 압축률 정의/Table4",
+      "verification_method": "1−1/128 정적 산술",
+      "limit": "전체 운영비·전력의 같은 비율 절감 아님"
+    },
+    {
+      "claim_id": "H040-C29",
+      "claim": "46Gb/day·16Tb/year는 소문자b 표기와 근사값이며 실제 byte/청구 단위는 미확인이다",
+      "source_location": "EXT-H039-09 p17 비용 예",
+      "verification_method": "인쇄 단위와 십진/365일 가정46×365/1000=16.790 대조",
+      "limit": "가정 계산을 측정량 또는 실제 bytes 단위로 확정하지 않음"
+    },
+    {
+      "claim_id": "H040-C30",
+      "claim": "2021년 비용 예는5000/25000/2.50/150–250/24000달러와96%를 제시한다",
+      "source_location": "EXT-H039-09 p17 비용 단락",
+      "verification_method": "각 값의 저장 연도·압축·연간 보관·절감 역할 대조",
+      "limit": "현재 AWS 견적·원 비용 실측 재현 아님"
+    },
+    {
+      "claim_id": "H040-C31",
+      "claim": "24000/25000=96%이지만 5년째와 5년 누적 비용 기준은 불명확하다",
+      "source_location": "EXT-H039-09 p17 비용 단락",
+      "verification_method": "비율 및 일정 연간 cohort를 가정한5000..25000 합75000 계산",
+      "limit": "조건부75000은 원 청구서 정정이 아니며 total cost 검증 아님"
+    },
+    {
+      "claim_id": "H040-C32",
+      "claim": "15분 값을 하루 평균으로 바꾸는 개수 비율은96배다",
+      "source_location": "EXT-H039-09 p17 averaging 예",
+      "verification_method": "24×60/15 산술",
+      "limit": "동일 값 크기 기준이며 두 압축기의 오차·조회 효용이 같다는 뜻 아님"
+    },
+    {
+      "claim_id": "H040-C33",
+      "claim": "MAPE의0처리·분할·seed·신뢰구간·원 코드/배열·총비용 공백이 남는다",
+      "source_location": "EXT-H039-09 전체, 특히pp13–20 평가 절",
+      "verification_method": "전체 읽기와 수치표의 명시된 설정 범위 대조",
+      "limit": "자료 미제공과 모델 성능 실패를 구분;평균MAPE로 downstream 효용 보장 안함"
+    },
+    {
+      "claim_id": "H040-C34",
+      "claim": "후속 Ciena 독해가55의 과거 비교 범위나54 실행을 바꾸지 않는다",
+      "source_location": "SRC-0021824 §3–6;SRC-0064359;EXT-H039-09",
+      "verification_method": "55에 없는Ciena행과54 직접 회귀의 실제 상태 구분",
+      "limit": "새 Ciena 재현·과거판단 철회·전체55완료로 집계하지 않음"
+    },
+    {
+      "claim_id": "H040-C35",
+      "claim": "재검토는 비용 단위·가용 참값·시점 분리·단순 비교군·최종 효용의 차이를 요구한다",
+      "source_location": "SRC-0021782 전체;SRC-0021824 §5;EXT-H039-09 §4",
+      "verification_method": "기존 질문에 세 방법과 근거 공백을 연결한 설계 기준",
+      "limit": "제안/검토 조건이며 새 연구 실행 명령이나 신규성 입증 아님"
+    },
+    {
+      "claim_id": "H040-C36",
+      "claim": "원본4개와 기존 외부참조3개를 재사용했으며 새 모델·원 코드·난수 실행은0이다",
+      "source_location": "SRC-0021782;SRC-0021824;SRC-0064355;SRC-0064359;EXT-H039-07;EXT-H039-08;EXT-H039-09",
+      "verification_method": "원본/보존사본/응답 해시·작업 범위 확인",
+      "limit": "전체53/55·나머지 연구·팀접근 미완료;재독을 새 localfulltext로 집계하지 않음"
+    }
+  ]
+}

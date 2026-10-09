@@ -250,3 +250,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## 조건부 대체 API를 새 관측 정책으로 제안하기 전에 — 53·55
 
 검색어: TabICLUnsupervised, impute, MICE, missingness, temperature, Shuffler, n_permutations, Ciena. [imputation 기록](records/0053-tabicl-imputation.md)은 이미 있는 대체 기능, 먼저 완전한 X로 fit한 공식 예제, [54의 직접 회귀 실험](records/0052-0054-partial-observation.md)을 구분합니다. 새 실험에는 가용 입력·시간 분리·강한 단순 대안·관측 선택 규칙·최종 RCTL 효용·반복 복원 비용의 차이가 필요합니다. 저장 코드의 범주 fallback과 요청 순열 수/실제 순서 수 차이도 재사용 조건입니다.
+
+## 관측·전송·저장 감소를 같은 비용으로 계산하기 전에 — 53·55 Ciena
+
+검색어: Ciena, IPFIX, OD traffic matrix, link counts, telemetry pruning, denoising autoencoder, DNN compression, index memorization. [Ciena 기록](records/0053-ciena-telemetry.md)은 링크로 흐름을 추정하는 방법, 표본 전송을 줄이는 방법, 과거 이력을 가중치로 압축하는 방법을 구분합니다. 새 제안에는 가용 참값·관측 정책·시점 분리·강한 단순 비교군·최종 예측 효용·총비용의 차이가 필요합니다. 75/78%의 분모, 시뮬레이션 압축표, 2021년 비용 기간의 공백도 함께 확인합니다.
