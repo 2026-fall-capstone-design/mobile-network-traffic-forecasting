@@ -1,4 +1,4 @@
-"""Verify stored grouping/history predictions and accounting without model execution."""
+"""모델 실행 없이 저장된 grouping·입력 길이 예측과 회계를 검수한다."""
 
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ import numpy as np
 
 
 def read_arrays(path: Path) -> tuple[dict, list[str]]:
-    """Read primitive NPY arrays and inspect timestamp literals without unpickling."""
+    """기본 자료형의 NPY 배열을 읽고 역직렬화 없이 날짜 문자열을 확인한다."""
     arrays = {}
     dates = []
     with zipfile.ZipFile(path) as archive, np.load(path, allow_pickle=False) as saved:
@@ -25,11 +25,11 @@ def read_arrays(path: Path) -> tuple[dict, list[str]]:
             stream = io.BytesIO(archive.read(key + ".npy"))
             version = np.lib.format.read_magic(stream)
             if version != (1, 0):
-                raise ValueError("Unexpected NPY header version")
+                raise ValueError("예상하지 않은 NPY 헤더 버전")
             shape, fortran, dtype = np.lib.format.read_array_header_1_0(stream)
             if dtype.hasobject:
                 if key != "query_timestamps" or shape != (64,) or fortran:
-                    raise ValueError("Unexpected object array")
+                    raise ValueError("예상하지 않은 object 배열")
                 dates = [
                     value
                     for op, value, _ in pickletools.genops(stream.read())
@@ -43,27 +43,27 @@ def read_arrays(path: Path) -> tuple[dict, list[str]]:
 
 
 def verify(manifest_path: Path) -> dict:
-    """Recompute saved metrics, execution counts, input slices and one ledger delta."""
+    """저장 지표·실행 수·입력 발췌와 원장 한 번의 변화를 다시 계산한다."""
     manifest_path = manifest_path.resolve()
     archive_root = manifest_path.parents[2]
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     checks, errors = [], []
 
     def check(name: str, condition: bool) -> None:
-        """Record a domain check without interpreting success as model reproduction."""
+        """개별 검사 결과를 기록하며 성공을 모델 재현으로 해석하지 않는다."""
         checks.append(name)
         if not condition:
             errors.append(name)
 
     def numeric(name: str, actual: object, expected: object) -> None:
-        """Compare stored arithmetic with a small, explicit floating-point tolerance."""
+        """명시한 작은 부동소수점 허용 오차로 저장 산술을 대조한다."""
         check(name, np.allclose(actual, expected, rtol=1e-12, atol=1e-12))
 
     paths = {}
     for source in manifest["sources"]:
         path = (manifest_path.parent / source["archive_path"]).resolve()
         if not path.is_relative_to(archive_root):
-            raise ValueError("Evidence path leaves the research archive")
+            raise ValueError("근거 경로가 연구 아카이브 밖을 가리킴")
         raw = path.read_bytes()
         check(
             source["source_id"] + ":bytes",
@@ -73,7 +73,7 @@ def verify(manifest_path: Path) -> dict:
         paths[source["source_id"]] = path
 
     def data(sid: str) -> dict | list:
-        """Decode saved JSON only; never import the historical code files."""
+        """저장 JSON만 해석하며 과거 코드 파일은 import하지 않는다."""
         return json.loads(paths[sid].read_text(encoding="utf-8"))
 
     settings, saved = data("SRC-0027868"), data("SRC-0027865")
@@ -157,7 +157,7 @@ def verify(manifest_path: Path) -> dict:
     slice_entry = manifest["derived_files"][0]
     slice_path = (manifest_path.parent / slice_entry["archive_path"]).resolve()
     if not slice_path.is_relative_to(archive_root):
-        raise ValueError("Input slice leaves archive")
+        raise ValueError("입력 발췌 경로가 아카이브 밖을 가리킴")
     check(
         "derived_slice_bytes",
         hashlib.sha256(slice_path.read_bytes()).hexdigest() == slice_entry["sha256"],
@@ -364,14 +364,14 @@ def verify(manifest_path: Path) -> dict:
         pickle_loaded=False,
         independent_reproduction=False,
         scope=(
-            "Preserved output arithmetic and one historical ledger transition. "
-            "Raw HDF5 identity is checked separately; original model execution is not reproduced."
+            "보존한 출력의 산술과 과거 원장 한 번의 변화를 검수했다. "
+            "원 HDF5의 동일성은 별도로 확인하며, 당시 모델 실행을 재현한 검사가 아니다."
         ),
     )
 
 
 def main() -> None:
-    """Save verifiable evidence and fail on any inconsistent result."""
+    """검수 근거를 저장하고 일치하지 않는 결과가 있으면 실패로 종료한다."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
