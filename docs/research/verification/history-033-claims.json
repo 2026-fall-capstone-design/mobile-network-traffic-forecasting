@@ -1,0 +1,173 @@
+{
+  "batch_id": "history-033",
+  "claims": [
+    {
+      "claim_id": "H033-C01",
+      "claim": "51/55의 ITU·Cellular 부분을 연결하고 전체 문헌·새 실험 완료로 확대하지 않는다",
+      "source_location": "SRC-0021746 전체; SRC-0021824 §1–2",
+      "verification_method": "계획·당시 판단과 범위 대조",
+      "limit": "55 나머지·전체 corpus 미완료"
+    },
+    {
+      "claim_id": "H033-C02",
+      "claim": "두 논문28쪽 텍스트와22쪽 시각 자료를 읽었다",
+      "source_location": "SRC-0063290 p1–16; SRC-0063265 p1–12; primary-check primary_read",
+      "verification_method": "페이지·그림·표 읽기 상태와 해시 확인",
+      "limit": "증명 전체 인증이나 독립 재현 아님"
+    },
+    {
+      "claim_id": "H033-C03",
+      "claim": "ITU 단위는2880beam이며5주에서week6/11을 예측한다",
+      "source_location": "SRC-0063290 §4.1 p5; SRC-0063304; EXT-H033-04",
+      "verification_method": "본문·challenge 설명/그림 대조",
+      "limit": "물리 단위·beam 합산·rawmapping 미확인"
+    },
+    {
+      "claim_id": "H033-C04",
+      "claim": "Zindi MAE와GOTSF 구간지표,public/private와시간순검증을 구분한다",
+      "source_location": "SRC-0063304 Evaluation/Rules; EXT-H033-03; EXT-H033-05",
+      "verification_method": "표준MAE식·baseline10개 값 시각 대조",
+      "limit": "원 논문의 LB public/private 지정 미확인"
+    },
+    {
+      "claim_id": "H033-C05",
+      "claim": "lag1–4h·rolling168/336h·shift168h·expanding t−1과먼horizon특징을 구분한다",
+      "source_location": "SRC-0063290 식6–9 p4; §4.3 p7; §5.2.1 p8",
+      "verification_method": "수식·본문·그림 단위 재대조",
+      "limit": "원 feature builder/미래 가용성 미확인"
+    },
+    {
+      "claim_id": "H033-C06",
+      "claim": "BS층화10fold는 모든30BS를포함하며forward-time CV가 아니다",
+      "source_location": "SRC-0063290 §4.3 p7; §5.2.3 p8",
+      "verification_method": "fold통계와훈련/평가 설명 독해",
+      "limit": "자기행제외만으로시간누출안전단정불가"
+    },
+    {
+      "claim_id": "H033-C07",
+      "claim": "sqrt역변환과Table2 설정·비용기록의 한계를 구분한다",
+      "source_location": "SRC-0063290 §5.2.2–4 p8–9; Figure8–9 p11",
+      "verification_method": "설정34인쇄항목과곡선범위 시각독해",
+      "limit": "seed/실제탐색수/전체시간·환경 미확인"
+    },
+    {
+      "claim_id": "H033-C08",
+      "claim": "W6단일CatBoost.1918는dual/ensemble.1919보다낮다",
+      "source_location": "SRC-0063290 Table3/4 p10; Figure7 p11",
+      "verification_method": "인쇄값/8delta 계산·시각 대조",
+      "limit": "Table3/4 기준이며원예측미검증"
+    },
+    {
+      "claim_id": "H033-C09",
+      "claim": "11.40%·2.44%·3.00%의기준모델이다르고Table5 30값은재계산과일치",
+      "source_location": "SRC-0063290 Table1 p2/Table4 p10/Table5 p12; numeric-check ITU",
+      "verification_method": "66인쇄값연결·30백분율 계산",
+      "limit": "기준들은주최측수치인용;새동일환경학습증거아님"
+    },
+    {
+      "claim_id": "H033-C10",
+      "claim": "Figure6와Table4의4개개별모델값이충돌한다",
+      "source_location": "SRC-0063290 p10 Figure6/Table4",
+      "verification_method": "같은페이지의그림/표시각대조",
+      "limit": "어느원예측이맞는지확정하지않음"
+    },
+    {
+      "claim_id": "H033-C11",
+      "claim": "ITU delta·참고번호·feature명 단위의불일치를보존한다",
+      "source_location": "SRC-0063290 p2/11/13/15; Table4 p10",
+      "verification_method": "본문과표·참고목록/특징라벨 대조",
+      "limit": "서로다른관측/예측profile순위를오류로단정하지않음"
+    },
+    {
+      "claim_id": "H033-C12",
+      "claim": "Cellular는실제도로입력으로만든모의통화target이다",
+      "source_location": "SRC-0063265 §III/IV p3–6; TableII/Figure2 p4",
+      "verification_method": "자료생성·범위·로드/입력 구분",
+      "limit": "실제통신bytes나MilanInternet결과아님"
+    },
+    {
+      "claim_id": "H033-C13",
+      "claim": "통화Poisson과두지속시간분포는논문가정이다",
+      "source_location": "SRC-0063265 §IV-A2 p5–6",
+      "verification_method": "입력파라미터 원문대조",
+      "limit": "시뮬레이터/RNG실행0;차량도착과통화발생구분"
+    },
+    {
+      "claim_id": "H033-C14",
+      "claim": "24주12:6:6·LSTM16·이력6/다음5분 조건을보존한다",
+      "source_location": "SRC-0063265 §IV-B/C p6; §IV-A2 p5",
+      "verification_method": "구현/평가단락 대조",
+      "limit": "정규화fit범위·seed·epochs·원코드미확인"
+    },
+    {
+      "claim_id": "H033-C15",
+      "claim": "기본24주64개중앙값쌍은모두추가입력우세이며약60%는일부MSE다",
+      "source_location": "SRC-0063265 TableIII/IV p7; numeric-check Cellular",
+      "verification_method": "128개중앙값수동전사와PDF굵은열추출 일치/64비교",
+      "limit": "평균이나독립실험횟수로세지않음"
+    },
+    {
+      "claim_id": "H033-C16",
+      "claim": "exponential MAE최대35.74%와0.162→0.103에서계산한36.42%는반올림만으로맞지않는다",
+      "source_location": "SRC-0063265 TableIV/본문 p7; numeric-check reported_range_rounding_checks",
+      "verification_method": "표와개선율양쪽의표시정밀도구간계산",
+      "limit": "원출력없어정정값확정불가"
+    },
+    {
+      "claim_id": "H033-C17",
+      "claim": "BS320287의 7주3:2:2의금요일추가입력에서MAE/MSE방향이달라진다",
+      "source_location": "SRC-0063265 TableVI/VIII p10; Figure9 p11; SRC-0063265 §V-B3 p9",
+      "verification_method": "금요일64중앙값수동전사/정적산술",
+      "limit": "4:1:2효과의원인별독립ablation미재현"
+    },
+    {
+      "claim_id": "H033-C18",
+      "claim": "BS320287의 단기160쌍은개선148/악화11/동률1이며4:1:2 MAPE반례도있다",
+      "source_location": "SRC-0063265 TableVI–IX p10; numeric-check short_period_summary; SRC-0063265 §V-B3 p9",
+      "verification_method": "320중앙값을행/열로추출하여160방향계산",
+      "limit": "서로독립인학습160회가아님"
+    },
+    {
+      "claim_id": "H033-C19",
+      "claim": "노이즈input과true-flow target을구분하고Calls대비64중앙값이득을확인했다",
+      "source_location": "SRC-0063265 §V-A2/TableV p8; numeric-check noisy_comparisons",
+      "verification_method": "표중앙값64필드추출·기준64비교",
+      "limit": "5% sigma정의/원난수미확인;모든지표가noise로악화한다는뜻아님"
+    },
+    {
+      "claim_id": "H033-C20",
+      "claim": "55의강한특징기준/실측대모의구분을clustering·Tab추가기여로확대하지않는다",
+      "source_location": "SRC-0021824 §1–2; 두논문실험/결론",
+      "verification_method": "당시판단과primary의실제결정단위대조",
+      "limit": "55전체신규성판단은미완료"
+    },
+    {
+      "claim_id": "H033-C21",
+      "claim": "15원문과6control을보존하고파생TXT를중복독해로세지않는다",
+      "source_location": "manifest15sources; SRC-0063266; SRC-0063291; source-preservation-baseline",
+      "verification_method": "해시·저장metadata·PAGEwrapper포함텍스트일치",
+      "limit": "바이트다른PDF/TXT를동일사본이라하지않음"
+    },
+    {
+      "claim_id": "H033-C22",
+      "claim": "운영·에너지효과와실제계측비용을구분한다",
+      "source_location": "SRC-0063290 §5.1/결론 p8/14; SRC-0063265 §VI-B/C/결론 p11",
+      "verification_method": "전체본문·시각자료의주장/실행범위 대조",
+      "limit": "비용미기록을비용0으로해석하지않음"
+    },
+    {
+      "claim_id": "H033-C23",
+      "claim": "Cellular 발표연도·6주/7주·BS ID·반복행과내부메모정정을명시한다",
+      "source_location": "SRC-0063264; SRC-0063265 p4/5/9/10; primary-check corrections",
+      "verification_method": "서지·caption·요일순서·median열 재대조",
+      "limit": "TableVII동일인쇄값은실제실험중복/오류확정아님"
+    },
+    {
+      "claim_id": "H033-C24",
+      "claim": "재검토에입력가용성·분할·척도·기준·셀별손해·최종RCTL효용확인이필요하다",
+      "source_location": "51계획/55판단 및이기록의조건비교",
+      "verification_method": "원문범위에서팀설계용조건을분리",
+      "limit": "후속설계제안이며실행/최종모델선정아님"
+    }
+  ]
+}

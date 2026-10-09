@@ -1,0 +1,6945 @@
+{
+  "batch_id": "history-033",
+  "success": true,
+  "checked_at_utc": "2026-10-09T12:56:05.898805+00:00",
+  "check_count": 147,
+  "checks": [
+    "SRC-0063265:original_hash",
+    "SRC-0063290:original_hash",
+    "SRC-0063266:original_hash",
+    "SRC-0063291:original_hash",
+    "ITU_Table1_ordered10values",
+    "ITU_Table3_12values",
+    "ITU_Table4_14values",
+    "ITU_delta:LightGBM,W6:single",
+    "ITU_delta:LightGBM,W11:single",
+    "ITU_delta:CatBoost,W6:single",
+    "ITU_delta:CatBoost,W11:single",
+    "ITU_delta:LightGBM,W6:dual",
+    "ITU_delta:CatBoost,W6:dual",
+    "ITU_delta:LightGBM,W11:dual",
+    "ITU_delta:CatBoost,W11:dual",
+    "ITU_Table5_ordered30percentages",
+    "ITU_Table5:Hist.Avg.:LightGBM:W6",
+    "ITU_Table5:Hist.Avg.:LightGBM:W11",
+    "ITU_Table5:Hist.Avg.:CatBoost:W6",
+    "ITU_Table5:Hist.Avg.:CatBoost:W11",
+    "ITU_Table5:Hist.Avg.:Ensemble:W6",
+    "ITU_Table5:Hist.Avg.:Ensemble:W11",
+    "ITU_Table5:iTransformer:LightGBM:W6",
+    "ITU_Table5:iTransformer:LightGBM:W11",
+    "ITU_Table5:iTransformer:CatBoost:W6",
+    "ITU_Table5:iTransformer:CatBoost:W11",
+    "ITU_Table5:iTransformer:Ensemble:W6",
+    "ITU_Table5:iTransformer:Ensemble:W11",
+    "ITU_Table5:PatchTST:LightGBM:W6",
+    "ITU_Table5:PatchTST:LightGBM:W11",
+    "ITU_Table5:PatchTST:CatBoost:W6",
+    "ITU_Table5:PatchTST:CatBoost:W11",
+    "ITU_Table5:PatchTST:Ensemble:W6",
+    "ITU_Table5:PatchTST:Ensemble:W11",
+    "ITU_Table5:DLinear:LightGBM:W6",
+    "ITU_Table5:DLinear:LightGBM:W11",
+    "ITU_Table5:DLinear:CatBoost:W6",
+    "ITU_Table5:DLinear:CatBoost:W11",
+    "ITU_Table5:DLinear:Ensemble:W6",
+    "ITU_Table5:DLinear:Ensemble:W11",
+    "ITU_Table5:Transformer:LightGBM:W6",
+    "ITU_Table5:Transformer:LightGBM:W11",
+    "ITU_Table5:Transformer:CatBoost:W6",
+    "ITU_Table5:Transformer:CatBoost:W11",
+    "ITU_Table5:Transformer:Ensemble:W6",
+    "ITU_Table5:Transformer:Ensemble:W11",
+    "ITU_Fig6_four_numeric_label_discrepancies",
+    "ITU_CatBoost_single_W6_better_than_dual",
+    "Cellular_p7_median_count",
+    "Cellular_p7_y658.788_eight_columns",
+    "Cellular_p7_y650.818_eight_columns",
+    "Cellular_p7_y642.847_eight_columns",
+    "Cellular_p7_y634.877_eight_columns",
+    "Cellular_p7_y626.907_eight_columns",
+    "Cellular_p7_y618.937_eight_columns",
+    "Cellular_p7_y610.967_eight_columns",
+    "Cellular_p7_y602.997_eight_columns",
+    "Cellular_p7_y495.368_eight_columns",
+    "Cellular_p7_y487.398_eight_columns",
+    "Cellular_p7_y479.428_eight_columns",
+    "Cellular_p7_y471.458_eight_columns",
+    "Cellular_p7_y463.488_eight_columns",
+    "Cellular_p7_y455.518_eight_columns",
+    "Cellular_p7_y447.548_eight_columns",
+    "Cellular_p7_y439.578_eight_columns",
+    "Cellular_p8_median_count",
+    "Cellular_p8_y649.821_eight_columns",
+    "Cellular_p8_y641.851_eight_columns",
+    "Cellular_p8_y633.881_eight_columns",
+    "Cellular_p8_y625.911_eight_columns",
+    "Cellular_p8_y617.941_eight_columns",
+    "Cellular_p8_y609.971_eight_columns",
+    "Cellular_p8_y602.001_eight_columns",
+    "Cellular_p8_y594.03_eight_columns",
+    "Cellular_p10_median_count",
+    "Cellular_p10_y658.031_eight_columns",
+    "Cellular_p10_y650.061_eight_columns",
+    "Cellular_p10_y642.091_eight_columns",
+    "Cellular_p10_y634.121_eight_columns",
+    "Cellular_p10_y626.151_eight_columns",
+    "Cellular_p10_y617.782_eight_columns",
+    "Cellular_p10_y609.812_eight_columns",
+    "Cellular_p10_y601.842_eight_columns",
+    "Cellular_p10_y593.872_eight_columns",
+    "Cellular_p10_y585.902_eight_columns",
+    "Cellular_p10_y477.957_eight_columns",
+    "Cellular_p10_y469.987_eight_columns",
+    "Cellular_p10_y462.016_eight_columns",
+    "Cellular_p10_y454.046_eight_columns",
+    "Cellular_p10_y446.076_eight_columns",
+    "Cellular_p10_y437.708_eight_columns",
+    "Cellular_p10_y429.738_eight_columns",
+    "Cellular_p10_y421.767_eight_columns",
+    "Cellular_p10_y413.797_eight_columns",
+    "Cellular_p10_y405.827_eight_columns",
+    "Cellular_p10_y306.848_eight_columns",
+    "Cellular_p10_y298.878_eight_columns",
+    "Cellular_p10_y290.908_eight_columns",
+    "Cellular_p10_y282.938_eight_columns",
+    "Cellular_p10_y274.968_eight_columns",
+    "Cellular_p10_y266.599_eight_columns",
+    "Cellular_p10_y258.629_eight_columns",
+    "Cellular_p10_y250.659_eight_columns",
+    "Cellular_p10_y242.689_eight_columns",
+    "Cellular_p10_y234.719_eight_columns",
+    "Cellular_p10_y135.74_eight_columns",
+    "Cellular_p10_y127.77_eight_columns",
+    "Cellular_p10_y119.8_eight_columns",
+    "Cellular_p10_y111.83_eight_columns",
+    "Cellular_p10_y103.86_eight_columns",
+    "Cellular_p10_y95.491_eight_columns",
+    "Cellular_p10_y87.521_eight_columns",
+    "Cellular_p10_y79.551_eight_columns",
+    "Cellular_p10_y71.581_eight_columns",
+    "Cellular_p10_y63.611_eight_columns",
+    "Cellular_III:3086071:visual8medians",
+    "Cellular_III:3086081:visual8medians",
+    "Cellular_III:320287:visual8medians",
+    "Cellular_III:320280:visual8medians",
+    "Cellular_III:317706:visual8medians",
+    "Cellular_III:3054051:visual8medians",
+    "Cellular_III:3410061:visual8medians",
+    "Cellular_III:317715:visual8medians",
+    "Cellular_IV:3086071:visual8medians",
+    "Cellular_IV:3086081:visual8medians",
+    "Cellular_IV:320287:visual8medians",
+    "Cellular_IV:320280:visual8medians",
+    "Cellular_IV:317706:visual8medians",
+    "Cellular_IV:3054051:visual8medians",
+    "Cellular_IV:3410061:visual8medians",
+    "Cellular_IV:317715:visual8medians",
+    "Cellular_VI:W32_Friday:visual8medians",
+    "Cellular_VI:W33_Friday:visual8medians",
+    "Cellular_VII:W32_Friday:visual8medians",
+    "Cellular_VII:W33_Friday:visual8medians",
+    "Cellular_VIII:W32_Friday:visual8medians",
+    "Cellular_VIII:W33_Friday:visual8medians",
+    "Cellular_IX:W32_Friday:visual8medians",
+    "Cellular_IX:W33_Friday:visual8medians",
+    "Cellular_III_IV_64median_comparisons_positive",
+    "Cellular_8metric_ranges_evaluated_with_both_rounding_intervals",
+    "Cellular_V_64noisy_median_comparisons_positive",
+    "Cellular_short160comparisons",
+    "Cellular_VII_W32_TuesdayWednesday_same4medians",
+    "Cellular_VI_W32_Friday_MSE_median_is100_not101",
+    "SRC-0063266:exact_text_with_page_wrapper_and_universal_newlines",
+    "SRC-0063291:exact_text_with_page_wrapper_and_universal_newlines"
+  ],
+  "ITU": {
+    "source_id": "SRC-0063290",
+    "Table1": {
+      "Hist.Avg.": [
+        "0.2108",
+        "0.2431"
+      ],
+      "iTransformer": [
+        "0.1967",
+        "0.2348"
+      ],
+      "PatchTST": [
+        "0.1973",
+        "0.2343"
+      ],
+      "DLinear": [
+        "0.2005",
+        "0.2352"
+      ],
+      "Transformer": [
+        "0.2166",
+        "0.2331"
+      ]
+    },
+    "Table3": [
+      [
+        "LightGBM",
+        "W6",
+        ".1923",
+        ".1926",
+        ".0003"
+      ],
+      [
+        "LightGBM",
+        "W11",
+        ".1923",
+        ".2302",
+        ".0379"
+      ],
+      [
+        "CatBoost",
+        "W6",
+        ".1917",
+        ".1918",
+        ".0001"
+      ],
+      [
+        "CatBoost",
+        "W11",
+        ".1917",
+        ".2356",
+        ".0439"
+      ]
+    ],
+    "Table4": [
+      [
+        "LightGBM",
+        "W6",
+        ".1913",
+        ".1925",
+        ".0012"
+      ],
+      [
+        "CatBoost",
+        "W6",
+        ".1918",
+        ".1919",
+        ".0001"
+      ],
+      [
+        "Ensemble",
+        "W6",
+        null,
+        ".1919",
+        null
+      ],
+      [
+        "LightGBM",
+        "W11",
+        ".1971",
+        ".2262",
+        ".0291"
+      ],
+      [
+        "CatBoost",
+        "W11",
+        ".1972",
+        ".2262",
+        ".0290"
+      ],
+      [
+        "Ensemble",
+        "W11",
+        null,
+        ".2261",
+        null
+      ]
+    ],
+    "Table5_percentage_checks": [
+      {
+        "baseline": "Hist.Avg.",
+        "model": "LightGBM",
+        "horizon": 6,
+        "baseline_MAE": "0.2108",
+        "model_MAE": ".1925",
+        "computed_percent": "8.681214421252371916508538899",
+        "printed_percent": "8.68",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Hist.Avg.",
+        "model": "LightGBM",
+        "horizon": 11,
+        "baseline_MAE": "0.2431",
+        "model_MAE": ".2262",
+        "computed_percent": "6.951871657754010695187165775",
+        "printed_percent": "6.95",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Hist.Avg.",
+        "model": "CatBoost",
+        "horizon": 6,
+        "baseline_MAE": "0.2108",
+        "model_MAE": ".1919",
+        "computed_percent": "8.965844402277039848197343454",
+        "printed_percent": "8.97",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Hist.Avg.",
+        "model": "CatBoost",
+        "horizon": 11,
+        "baseline_MAE": "0.2431",
+        "model_MAE": ".2262",
+        "computed_percent": "6.951871657754010695187165775",
+        "printed_percent": "6.95",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Hist.Avg.",
+        "model": "Ensemble",
+        "horizon": 6,
+        "baseline_MAE": "0.2108",
+        "model_MAE": ".1919",
+        "computed_percent": "8.965844402277039848197343454",
+        "printed_percent": "8.97",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Hist.Avg.",
+        "model": "Ensemble",
+        "horizon": 11,
+        "baseline_MAE": "0.2431",
+        "model_MAE": ".2261",
+        "computed_percent": "6.993006993006993006993006993",
+        "printed_percent": "6.99",
+        "rounded_match": true
+      },
+      {
+        "baseline": "iTransformer",
+        "model": "LightGBM",
+        "horizon": 6,
+        "baseline_MAE": "0.1967",
+        "model_MAE": ".1925",
+        "computed_percent": "2.135231316725978647686832740",
+        "printed_percent": "2.14",
+        "rounded_match": true
+      },
+      {
+        "baseline": "iTransformer",
+        "model": "LightGBM",
+        "horizon": 11,
+        "baseline_MAE": "0.2348",
+        "model_MAE": ".2262",
+        "computed_percent": "3.662691652470187393526405451",
+        "printed_percent": "3.66",
+        "rounded_match": true
+      },
+      {
+        "baseline": "iTransformer",
+        "model": "CatBoost",
+        "horizon": 6,
+        "baseline_MAE": "0.1967",
+        "model_MAE": ".1919",
+        "computed_percent": "2.440264361972547025927808846",
+        "printed_percent": "2.44",
+        "rounded_match": true
+      },
+      {
+        "baseline": "iTransformer",
+        "model": "CatBoost",
+        "horizon": 11,
+        "baseline_MAE": "0.2348",
+        "model_MAE": ".2262",
+        "computed_percent": "3.662691652470187393526405451",
+        "printed_percent": "3.66",
+        "rounded_match": true
+      },
+      {
+        "baseline": "iTransformer",
+        "model": "Ensemble",
+        "horizon": 6,
+        "baseline_MAE": "0.1967",
+        "model_MAE": ".1919",
+        "computed_percent": "2.440264361972547025927808846",
+        "printed_percent": "2.44",
+        "rounded_match": true
+      },
+      {
+        "baseline": "iTransformer",
+        "model": "Ensemble",
+        "horizon": 11,
+        "baseline_MAE": "0.2348",
+        "model_MAE": ".2261",
+        "computed_percent": "3.705281090289608177172061329",
+        "printed_percent": "3.71",
+        "rounded_match": true
+      },
+      {
+        "baseline": "PatchTST",
+        "model": "LightGBM",
+        "horizon": 6,
+        "baseline_MAE": "0.1973",
+        "model_MAE": ".1925",
+        "computed_percent": "2.432843385707045108971109985",
+        "printed_percent": "2.43",
+        "rounded_match": true
+      },
+      {
+        "baseline": "PatchTST",
+        "model": "LightGBM",
+        "horizon": 11,
+        "baseline_MAE": "0.2343",
+        "model_MAE": ".2262",
+        "computed_percent": "3.457106274007682458386683739",
+        "printed_percent": "3.46",
+        "rounded_match": true
+      },
+      {
+        "baseline": "PatchTST",
+        "model": "CatBoost",
+        "horizon": 6,
+        "baseline_MAE": "0.1973",
+        "model_MAE": ".1919",
+        "computed_percent": "2.736948808920425747592498733",
+        "printed_percent": "2.74",
+        "rounded_match": true
+      },
+      {
+        "baseline": "PatchTST",
+        "model": "CatBoost",
+        "horizon": 11,
+        "baseline_MAE": "0.2343",
+        "model_MAE": ".2262",
+        "computed_percent": "3.457106274007682458386683739",
+        "printed_percent": "3.46",
+        "rounded_match": true
+      },
+      {
+        "baseline": "PatchTST",
+        "model": "Ensemble",
+        "horizon": 6,
+        "baseline_MAE": "0.1973",
+        "model_MAE": ".1919",
+        "computed_percent": "2.736948808920425747592498733",
+        "printed_percent": "2.74",
+        "rounded_match": true
+      },
+      {
+        "baseline": "PatchTST",
+        "model": "Ensemble",
+        "horizon": 11,
+        "baseline_MAE": "0.2343",
+        "model_MAE": ".2261",
+        "computed_percent": "3.499786598378147673922321810",
+        "printed_percent": "3.50",
+        "rounded_match": true
+      },
+      {
+        "baseline": "DLinear",
+        "model": "LightGBM",
+        "horizon": 6,
+        "baseline_MAE": "0.2005",
+        "model_MAE": ".1925",
+        "computed_percent": "3.990024937655860349127182045",
+        "printed_percent": "3.99",
+        "rounded_match": true
+      },
+      {
+        "baseline": "DLinear",
+        "model": "LightGBM",
+        "horizon": 11,
+        "baseline_MAE": "0.2352",
+        "model_MAE": ".2262",
+        "computed_percent": "3.826530612244897959183673469",
+        "printed_percent": "3.83",
+        "rounded_match": true
+      },
+      {
+        "baseline": "DLinear",
+        "model": "CatBoost",
+        "horizon": 6,
+        "baseline_MAE": "0.2005",
+        "model_MAE": ".1919",
+        "computed_percent": "4.289276807980049875311720698",
+        "printed_percent": "4.29",
+        "rounded_match": true
+      },
+      {
+        "baseline": "DLinear",
+        "model": "CatBoost",
+        "horizon": 11,
+        "baseline_MAE": "0.2352",
+        "model_MAE": ".2262",
+        "computed_percent": "3.826530612244897959183673469",
+        "printed_percent": "3.83",
+        "rounded_match": true
+      },
+      {
+        "baseline": "DLinear",
+        "model": "Ensemble",
+        "horizon": 6,
+        "baseline_MAE": "0.2005",
+        "model_MAE": ".1919",
+        "computed_percent": "4.289276807980049875311720698",
+        "printed_percent": "4.29",
+        "rounded_match": true
+      },
+      {
+        "baseline": "DLinear",
+        "model": "Ensemble",
+        "horizon": 11,
+        "baseline_MAE": "0.2352",
+        "model_MAE": ".2261",
+        "computed_percent": "3.869047619047619047619047619",
+        "printed_percent": "3.87",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Transformer",
+        "model": "LightGBM",
+        "horizon": 6,
+        "baseline_MAE": "0.2166",
+        "model_MAE": ".1925",
+        "computed_percent": "11.12650046168051708217913204",
+        "printed_percent": "11.13",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Transformer",
+        "model": "LightGBM",
+        "horizon": 11,
+        "baseline_MAE": "0.2331",
+        "model_MAE": ".2262",
+        "computed_percent": "2.960102960102960102960102960",
+        "printed_percent": "2.96",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Transformer",
+        "model": "CatBoost",
+        "horizon": 6,
+        "baseline_MAE": "0.2166",
+        "model_MAE": ".1919",
+        "computed_percent": "11.40350877192982456140350877",
+        "printed_percent": "11.40",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Transformer",
+        "model": "CatBoost",
+        "horizon": 11,
+        "baseline_MAE": "0.2331",
+        "model_MAE": ".2262",
+        "computed_percent": "2.960102960102960102960102960",
+        "printed_percent": "2.96",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Transformer",
+        "model": "Ensemble",
+        "horizon": 6,
+        "baseline_MAE": "0.2166",
+        "model_MAE": ".1919",
+        "computed_percent": "11.40350877192982456140350877",
+        "printed_percent": "11.40",
+        "rounded_match": true
+      },
+      {
+        "baseline": "Transformer",
+        "model": "Ensemble",
+        "horizon": 11,
+        "baseline_MAE": "0.2331",
+        "model_MAE": ".2261",
+        "computed_percent": "3.003003003003003003003003003",
+        "printed_percent": "3.00",
+        "rounded_match": true
+      }
+    ],
+    "Figure6_discrepancies": [
+      {
+        "model": "LightGBM",
+        "horizon": "W6",
+        "figure": ".1919",
+        "table": ".1925"
+      },
+      {
+        "model": "CatBoost",
+        "horizon": "W6",
+        "figure": ".1925",
+        "table": ".1919"
+      },
+      {
+        "model": "LightGBM",
+        "horizon": "W11",
+        "figure": ".2261",
+        "table": ".2262"
+      },
+      {
+        "model": "CatBoost",
+        "horizon": "W11",
+        "figure": ".2261",
+        "table": ".2262"
+      }
+    ],
+    "printed_Table1_3_4_5_numeric_values": 66,
+    "formula": "100*(baseline-model)/baseline; original-scale paper MAE, not a local experiment"
+  },
+  "Cellular": {
+    "source_id": "SRC-0063265",
+    "tables": {
+      "III": [
+        {
+          "y": 658.788,
+          "values": [
+            ".283",
+            ".155",
+            "837.2",
+            ".393",
+            ".187",
+            ".067",
+            "515.6",
+            ".259"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3086071"
+        },
+        {
+          "y": 650.818,
+          "values": [
+            ".396",
+            ".318",
+            "347.4",
+            ".564",
+            ".340",
+            ".238",
+            "298.3",
+            ".487"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3086081"
+        },
+        {
+          "y": 642.847,
+          "values": [
+            ".067",
+            ".009",
+            "87.0",
+            ".094",
+            ".052",
+            ".006",
+            "66.60",
+            ".075"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "320287"
+        },
+        {
+          "y": 634.877,
+          "values": [
+            ".081",
+            ".013",
+            "54.60",
+            ".114",
+            ".066",
+            ".008",
+            "47.7",
+            ".091"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "320280"
+        },
+        {
+          "y": 626.907,
+          "values": [
+            ".156",
+            ".059",
+            "128.4",
+            ".242",
+            ".13",
+            ".039",
+            "110.8",
+            ".198"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "317706"
+        },
+        {
+          "y": 618.937,
+          "values": [
+            ".434",
+            ".492",
+            "118.0",
+            ".702",
+            ".369",
+            ".347",
+            "90.10",
+            ".589"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3054051"
+        },
+        {
+          "y": 610.967,
+          "values": [
+            ".404",
+            ".391",
+            "725.7",
+            ".626",
+            ".356",
+            ".31",
+            "494.5",
+            ".557"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3410061"
+        },
+        {
+          "y": 602.997,
+          "values": [
+            ".324",
+            ".243",
+            "109.3",
+            ".493",
+            ".297",
+            ".210",
+            "92.40",
+            ".459"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "317715"
+        }
+      ],
+      "IV": [
+        {
+          "y": 495.368,
+          "values": [
+            ".283",
+            ".152",
+            "2108",
+            ".389",
+            ".187",
+            ".066",
+            "1377",
+            ".257"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3086071"
+        },
+        {
+          "y": 487.398,
+          "values": [
+            ".398",
+            ".315",
+            "105.0",
+            ".561",
+            ".331",
+            ".218",
+            "88.0",
+            ".467"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3086081"
+        },
+        {
+          "y": 479.428,
+          "values": [
+            ".058",
+            ".007",
+            "56.3",
+            ".082",
+            ".041",
+            ".003",
+            "43.0",
+            ".059"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "320287"
+        },
+        {
+          "y": 471.458,
+          "values": [
+            ".082",
+            ".012",
+            "38.6",
+            ".109",
+            ".053",
+            ".005",
+            "27.1",
+            ".070"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "320280"
+        },
+        {
+          "y": 463.488,
+          "values": [
+            ".162",
+            ".066",
+            "132.2",
+            ".258",
+            ".103",
+            ".027",
+            "82.10",
+            ".164"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "317706"
+        },
+        {
+          "y": 455.518,
+          "values": [
+            ".493",
+            ".600",
+            "135.9",
+            ".775",
+            ".319",
+            ".234",
+            "85.30",
+            ".484"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3054051"
+        },
+        {
+          "y": 447.548,
+          "values": [
+            ".402",
+            ".343",
+            "109.7",
+            ".586",
+            ".297",
+            ".188",
+            "73.0",
+            ".433"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3410061"
+        },
+        {
+          "y": 439.578,
+          "values": [
+            ".274",
+            ".151",
+            "110.1",
+            ".388",
+            ".207",
+            ".087",
+            "77.60",
+            ".295"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "317715"
+        }
+      ],
+      "V": [
+        {
+          "y": 649.821,
+          "values": [
+            ".205",
+            ".077",
+            "599.4",
+            ".278",
+            ".204",
+            ".075",
+            "1483",
+            ".274"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3086071"
+        },
+        {
+          "y": 641.851,
+          "values": [
+            ".349",
+            ".245",
+            "315.5",
+            ".495",
+            ".338",
+            ".225",
+            "88.60",
+            ".475"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3086081"
+        },
+        {
+          "y": 633.881,
+          "values": [
+            ".057",
+            ".006",
+            "72.90",
+            ".080",
+            ".047",
+            ".004",
+            "45.10",
+            ".065"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "320287"
+        },
+        {
+          "y": 625.911,
+          "values": [
+            ".072",
+            ".009",
+            "50.90",
+            ".097",
+            ".061",
+            ".007",
+            "31.50",
+            ".081"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "320280"
+        },
+        {
+          "y": 617.941,
+          "values": [
+            ".136",
+            ".042",
+            "111.3",
+            ".205",
+            ".109",
+            ".027",
+            "87.60",
+            ".165"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "317706"
+        },
+        {
+          "y": 609.971,
+          "values": [
+            ".371",
+            ".354",
+            "85.9",
+            ".595",
+            ".324",
+            ".237",
+            "86.40",
+            ".487"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3054051"
+        },
+        {
+          "y": 602.001,
+          "values": [
+            ".361",
+            ".318",
+            "495.0",
+            ".564",
+            ".307",
+            ".195",
+            "74.10",
+            ".442"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "3410061"
+        },
+        {
+          "y": 594.03,
+          "values": [
+            ".303",
+            ".214",
+            "91.0",
+            ".463",
+            ".216",
+            ".093",
+            "80.00",
+            ".305"
+          ],
+          "x_coordinates": [
+            106.66,
+            157.614,
+            208.569,
+            269.79,
+            320.745,
+            371.7,
+            422.654,
+            483.875
+          ],
+          "BS": "317715"
+        }
+      ],
+      "VI": [
+        {
+          "y": 658.031,
+          "values": [
+            ".177",
+            ".057",
+            "83.48",
+            ".239",
+            ".133",
+            ".035",
+            "68.63",
+            ".187"
+          ],
+          "x_coordinates": [
+            102.008,
+            152.963,
+            203.918,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            479.223
+          ],
+          "week": 32,
+          "weekday": "Monday",
+          "BS": "320287"
+        },
+        {
+          "y": 650.061,
+          "values": [
+            ".149",
+            ".042",
+            "108.6",
+            ".204",
+            ".112",
+            ".024",
+            "93.29",
+            ".156"
+          ],
+          "x_coordinates": [
+            102.008,
+            152.963,
+            203.918,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            479.223
+          ],
+          "week": 32,
+          "weekday": "Tuesday",
+          "BS": "320287"
+        },
+        {
+          "y": 642.091,
+          "values": [
+            ".155",
+            ".046",
+            "94.61",
+            ".215",
+            ".124",
+            ".028",
+            "68.8",
+            ".168"
+          ],
+          "x_coordinates": [
+            102.008,
+            152.963,
+            203.918,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            479.223
+          ],
+          "week": 32,
+          "weekday": "Wednesday",
+          "BS": "320287"
+        },
+        {
+          "y": 634.121,
+          "values": [
+            ".17",
+            ".052",
+            "94.71",
+            ".229",
+            ".134",
+            ".035",
+            "79.30",
+            ".188"
+          ],
+          "x_coordinates": [
+            102.008,
+            152.963,
+            203.918,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            479.223
+          ],
+          "week": 32,
+          "weekday": "Thursday",
+          "BS": "320287"
+        },
+        {
+          "y": 626.151,
+          "values": [
+            ".235",
+            ".100",
+            "68.57",
+            ".317",
+            ".363",
+            ".522",
+            "44.4",
+            ".723"
+          ],
+          "x_coordinates": [
+            102.008,
+            152.963,
+            203.918,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            479.223
+          ],
+          "week": 32,
+          "weekday": "Friday",
+          "BS": "320287"
+        },
+        {
+          "y": 617.782,
+          "values": [
+            ".149",
+            ".041",
+            "68.85",
+            ".203",
+            ".114",
+            ".025",
+            "68.58",
+            ".157"
+          ],
+          "x_coordinates": [
+            102.008,
+            152.963,
+            203.918,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            479.223
+          ],
+          "week": 33,
+          "weekday": "Monday",
+          "BS": "320287"
+        },
+        {
+          "y": 609.812,
+          "values": [
+            ".158",
+            ".047",
+            "84.03",
+            ".216",
+            ".122",
+            ".027",
+            "45.03",
+            ".164"
+          ],
+          "x_coordinates": [
+            102.008,
+            152.963,
+            203.918,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            479.223
+          ],
+          "week": 33,
+          "weekday": "Tuesday",
+          "BS": "320287"
+        },
+        {
+          "y": 601.842,
+          "values": [
+            ".144",
+            ".040",
+            "110.0",
+            ".199",
+            ".121",
+            ".029",
+            "104.3",
+            ".170"
+          ],
+          "x_coordinates": [
+            102.008,
+            152.963,
+            203.918,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            479.223
+          ],
+          "week": 33,
+          "weekday": "Wednesday",
+          "BS": "320287"
+        },
+        {
+          "y": 593.872,
+          "values": [
+            ".182",
+            ".062",
+            "80.00",
+            ".249",
+            ".147",
+            ".039",
+            "76.04",
+            ".197"
+          ],
+          "x_coordinates": [
+            102.008,
+            152.963,
+            203.918,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            479.223
+          ],
+          "week": 33,
+          "weekday": "Thursday",
+          "BS": "320287"
+        },
+        {
+          "y": 585.902,
+          "values": [
+            ".219",
+            ".087",
+            "46.07",
+            ".295",
+            ".209",
+            ".114",
+            "34.83",
+            ".337"
+          ],
+          "x_coordinates": [
+            102.008,
+            152.963,
+            203.918,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            479.223
+          ],
+          "week": 33,
+          "weekday": "Friday",
+          "BS": "320287"
+        }
+      ],
+      "VII": [
+        {
+          "y": 477.957,
+          "values": [
+            ".174",
+            ".056",
+            "94.76",
+            ".236",
+            ".131",
+            ".033",
+            "82.80",
+            ".182"
+          ],
+          "x_coordinates": [
+            100.264,
+            151.219,
+            202.174,
+            266.882,
+            317.837,
+            368.791,
+            419.746,
+            480.967
+          ],
+          "week": 32,
+          "weekday": "Monday",
+          "BS": "320287"
+        },
+        {
+          "y": 469.987,
+          "values": [
+            ".147",
+            ".040",
+            "87.32",
+            ".201",
+            ".110",
+            ".024",
+            "75.18",
+            ".154"
+          ],
+          "x_coordinates": [
+            100.264,
+            151.219,
+            202.174,
+            266.882,
+            317.837,
+            368.791,
+            419.746,
+            480.967
+          ],
+          "week": 32,
+          "weekday": "Tuesday",
+          "BS": "320287"
+        },
+        {
+          "y": 462.016,
+          "values": [
+            ".153",
+            ".045",
+            "94.76",
+            ".212",
+            ".110",
+            ".024",
+            "75.18",
+            ".154"
+          ],
+          "x_coordinates": [
+            100.264,
+            151.219,
+            202.174,
+            266.882,
+            317.837,
+            368.791,
+            419.746,
+            480.967
+          ],
+          "week": 32,
+          "weekday": "Wednesday",
+          "BS": "320287"
+        },
+        {
+          "y": 454.046,
+          "values": [
+            ".167",
+            ".051",
+            "95.6",
+            ".226",
+            ".121",
+            ".027",
+            "68.86",
+            ".164"
+          ],
+          "x_coordinates": [
+            100.264,
+            151.219,
+            202.174,
+            266.882,
+            317.837,
+            368.791,
+            419.746,
+            480.967
+          ],
+          "week": 32,
+          "weekday": "Thursday",
+          "BS": "320287"
+        },
+        {
+          "y": 446.076,
+          "values": [
+            ".231",
+            ".097",
+            "76.70",
+            ".312",
+            ".179",
+            ".064",
+            "38.60",
+            ".254"
+          ],
+          "x_coordinates": [
+            100.264,
+            151.219,
+            202.174,
+            266.882,
+            317.837,
+            368.791,
+            419.746,
+            480.967
+          ],
+          "week": 32,
+          "weekday": "Friday",
+          "BS": "320287"
+        },
+        {
+          "y": 437.708,
+          "values": [
+            ".147",
+            ".040",
+            "80.98",
+            ".200",
+            ".112",
+            ".024",
+            "82.96",
+            ".154"
+          ],
+          "x_coordinates": [
+            100.264,
+            151.219,
+            202.174,
+            266.882,
+            317.837,
+            368.791,
+            419.746,
+            480.967
+          ],
+          "week": 33,
+          "weekday": "Monday",
+          "BS": "320287"
+        },
+        {
+          "y": 429.738,
+          "values": [
+            ".156",
+            ".045",
+            "95.97",
+            ".212",
+            ".119",
+            ".026",
+            "46.94",
+            ".16"
+          ],
+          "x_coordinates": [
+            100.264,
+            151.219,
+            202.174,
+            266.882,
+            317.837,
+            368.791,
+            419.746,
+            480.967
+          ],
+          "week": 33,
+          "weekday": "Tuesday",
+          "BS": "320287"
+        },
+        {
+          "y": 421.767,
+          "values": [
+            ".141",
+            ".038",
+            "119.5",
+            ".196",
+            ".117",
+            ".027",
+            "119.5",
+            ".165"
+          ],
+          "x_coordinates": [
+            100.264,
+            151.219,
+            202.174,
+            266.882,
+            317.837,
+            368.791,
+            419.746,
+            480.967
+          ],
+          "week": 33,
+          "weekday": "Wednesday",
+          "BS": "320287"
+        },
+        {
+          "y": 413.797,
+          "values": [
+            ".179",
+            ".061",
+            "89.39",
+            ".247",
+            ".144",
+            ".037",
+            "81.77",
+            ".194"
+          ],
+          "x_coordinates": [
+            100.264,
+            151.219,
+            202.174,
+            266.882,
+            317.837,
+            368.791,
+            419.746,
+            480.967
+          ],
+          "week": 33,
+          "weekday": "Thursday",
+          "BS": "320287"
+        },
+        {
+          "y": 405.827,
+          "values": [
+            ".216",
+            ".085",
+            "44.82",
+            ".292",
+            ".172",
+            ".055",
+            "32.67",
+            ".235"
+          ],
+          "x_coordinates": [
+            100.264,
+            151.219,
+            202.174,
+            266.882,
+            317.837,
+            368.791,
+            419.746,
+            480.967
+          ],
+          "week": 33,
+          "weekday": "Friday",
+          "BS": "320287"
+        }
+      ],
+      "VIII": [
+        {
+          "y": 306.848,
+          "values": [
+            ".181",
+            ".059",
+            "79.47",
+            ".242",
+            ".129",
+            ".031",
+            "43.75",
+            ".175"
+          ],
+          "x_coordinates": [
+            99.044,
+            149.999,
+            200.954,
+            265.661,
+            316.616,
+            370.012,
+            420.967,
+            482.187
+          ],
+          "week": 32,
+          "weekday": "Monday",
+          "BS": "320287"
+        },
+        {
+          "y": 298.878,
+          "values": [
+            ".154",
+            ".043",
+            "85.64",
+            ".207",
+            ".103",
+            ".019",
+            "51.45",
+            ".137"
+          ],
+          "x_coordinates": [
+            99.044,
+            149.999,
+            200.954,
+            265.661,
+            316.616,
+            370.012,
+            420.967,
+            482.187
+          ],
+          "week": 32,
+          "weekday": "Tuesday",
+          "BS": "320287"
+        },
+        {
+          "y": 290.908,
+          "values": [
+            ".150",
+            ".041",
+            "110.3",
+            ".201",
+            ".108",
+            ".021",
+            "77.62",
+            ".143"
+          ],
+          "x_coordinates": [
+            99.044,
+            149.999,
+            200.954,
+            265.661,
+            316.616,
+            370.012,
+            420.967,
+            482.187
+          ],
+          "week": 32,
+          "weekday": "Wednesday",
+          "BS": "320287"
+        },
+        {
+          "y": 282.938,
+          "values": [
+            ".184",
+            ".063",
+            "79.23",
+            ".252",
+            ".131",
+            ".032",
+            "56.89",
+            ".179"
+          ],
+          "x_coordinates": [
+            99.044,
+            149.999,
+            200.954,
+            265.661,
+            316.616,
+            370.012,
+            420.967,
+            482.187
+          ],
+          "week": 32,
+          "weekday": "Thursday",
+          "BS": "320287"
+        },
+        {
+          "y": 274.968,
+          "values": [
+            ".232",
+            ".105",
+            "49.02",
+            ".323",
+            ".348",
+            ".518",
+            "36.49",
+            ".718"
+          ],
+          "x_coordinates": [
+            99.044,
+            149.999,
+            200.954,
+            265.661,
+            316.616,
+            370.012,
+            420.967,
+            482.187
+          ],
+          "week": 32,
+          "weekday": "Friday",
+          "BS": "320287"
+        },
+        {
+          "y": 266.599,
+          "values": [
+            ".151",
+            ".042",
+            "43.76",
+            ".205",
+            ".105",
+            ".022",
+            "30.64",
+            ".149"
+          ],
+          "x_coordinates": [
+            99.044,
+            149.999,
+            200.954,
+            265.661,
+            316.616,
+            370.012,
+            420.967,
+            482.187
+          ],
+          "week": 33,
+          "weekday": "Monday",
+          "BS": "320287"
+        },
+        {
+          "y": 258.629,
+          "values": [
+            ".162",
+            ".051",
+            "70.58",
+            ".225",
+            ".115",
+            ".024",
+            "51.55",
+            ".154"
+          ],
+          "x_coordinates": [
+            99.044,
+            149.999,
+            200.954,
+            265.661,
+            316.616,
+            370.012,
+            420.967,
+            482.187
+          ],
+          "week": 33,
+          "weekday": "Tuesday",
+          "BS": "320287"
+        },
+        {
+          "y": 250.659,
+          "values": [
+            ".156",
+            ".050",
+            "127.9",
+            ".224",
+            ".106",
+            ".022",
+            "71.67",
+            ".148"
+          ],
+          "x_coordinates": [
+            99.044,
+            149.999,
+            200.954,
+            265.661,
+            316.616,
+            370.012,
+            420.967,
+            482.187
+          ],
+          "week": 33,
+          "weekday": "Wednesday",
+          "BS": "320287"
+        },
+        {
+          "y": 242.689,
+          "values": [
+            ".189",
+            ".070",
+            "128.6",
+            ".265",
+            ".130",
+            ".032",
+            "73.35",
+            ".180"
+          ],
+          "x_coordinates": [
+            99.044,
+            149.999,
+            200.954,
+            265.661,
+            316.616,
+            370.012,
+            420.967,
+            482.187
+          ],
+          "week": 33,
+          "weekday": "Thursday",
+          "BS": "320287"
+        },
+        {
+          "y": 234.719,
+          "values": [
+            ".230",
+            ".099",
+            "48.63",
+            ".315",
+            ".200",
+            ".123",
+            "38.96",
+            ".351"
+          ],
+          "x_coordinates": [
+            99.044,
+            149.999,
+            200.954,
+            265.661,
+            316.616,
+            370.012,
+            420.967,
+            482.187
+          ],
+          "week": 33,
+          "weekday": "Friday",
+          "BS": "320287"
+        }
+      ],
+      "IX": [
+        {
+          "y": 135.74,
+          "values": [
+            ".178",
+            ".057",
+            "128.5",
+            ".239",
+            ".125",
+            ".029",
+            "76.12",
+            ".171"
+          ],
+          "x_coordinates": [
+            98.521,
+            149.476,
+            200.431,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            482.71
+          ],
+          "week": 32,
+          "weekday": "Monday",
+          "BS": "320287"
+        },
+        {
+          "y": 127.77,
+          "values": [
+            ".153",
+            ".042",
+            "75.73",
+            ".204",
+            ".099",
+            ".018",
+            "46.04",
+            ".133"
+          ],
+          "x_coordinates": [
+            98.521,
+            149.476,
+            200.431,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            482.71
+          ],
+          "week": 32,
+          "weekday": "Tuesday",
+          "BS": "320287"
+        },
+        {
+          "y": 119.8,
+          "values": [
+            ".148",
+            ".039",
+            "180.5",
+            ".198",
+            ".106",
+            ".020",
+            "126.3",
+            ".141"
+          ],
+          "x_coordinates": [
+            98.521,
+            149.476,
+            200.431,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            482.71
+          ],
+          "week": 32,
+          "weekday": "Wednesday",
+          "BS": "320287"
+        },
+        {
+          "y": 111.83,
+          "values": [
+            ".181",
+            ".061",
+            "91.97",
+            ".248",
+            ".130",
+            ".031",
+            "57.68",
+            ".176"
+          ],
+          "x_coordinates": [
+            98.521,
+            149.476,
+            200.431,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            482.71
+          ],
+          "week": 32,
+          "weekday": "Thursday",
+          "BS": "320287"
+        },
+        {
+          "y": 103.86,
+          "values": [
+            ".230",
+            ".102",
+            "45.82",
+            ".320",
+            ".165",
+            ".054",
+            "28.32",
+            ".233"
+          ],
+          "x_coordinates": [
+            98.521,
+            149.476,
+            200.431,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            482.71
+          ],
+          "week": 32,
+          "weekday": "Friday",
+          "BS": "320287"
+        },
+        {
+          "y": 95.491,
+          "values": [
+            ".149",
+            ".041",
+            "43.14",
+            ".202",
+            ".103",
+            ".021",
+            "30.21",
+            ".147"
+          ],
+          "x_coordinates": [
+            98.521,
+            149.476,
+            200.431,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            482.71
+          ],
+          "week": 33,
+          "weekday": "Monday",
+          "BS": "320287"
+        },
+        {
+          "y": 87.521,
+          "values": [
+            ".159",
+            ".048",
+            "65.36",
+            ".220",
+            ".114",
+            ".023",
+            "50.60",
+            ".153"
+          ],
+          "x_coordinates": [
+            98.521,
+            149.476,
+            200.431,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            482.71
+          ],
+          "week": 33,
+          "weekday": "Tuesday",
+          "BS": "320287"
+        },
+        {
+          "y": 79.551,
+          "values": [
+            ".155",
+            ".049",
+            "351.7",
+            ".221",
+            ".103",
+            ".021",
+            "170.9",
+            ".144"
+          ],
+          "x_coordinates": [
+            98.521,
+            149.476,
+            200.431,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            482.71
+          ],
+          "week": 33,
+          "weekday": "Wednesday",
+          "BS": "320287"
+        },
+        {
+          "y": 71.581,
+          "values": [
+            ".186",
+            ".068",
+            "257.5",
+            ".260",
+            ".126",
+            ".030",
+            "119.4",
+            ".174"
+          ],
+          "x_coordinates": [
+            98.521,
+            149.476,
+            200.431,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            482.71
+          ],
+          "week": 33,
+          "weekday": "Thursday",
+          "BS": "320287"
+        },
+        {
+          "y": 63.611,
+          "values": [
+            ".228",
+            ".097",
+            "77.98",
+            ".312",
+            ".167",
+            ".055",
+            "66.08",
+            ".234"
+          ],
+          "x_coordinates": [
+            98.521,
+            149.476,
+            200.431,
+            265.138,
+            316.093,
+            367.048,
+            418.003,
+            482.71
+          ],
+          "week": 33,
+          "weekday": "Friday",
+          "BS": "320287"
+        }
+      ]
+    },
+    "median_fields_extracted": 512,
+    "visually_transcribed_median_fields_checked": 192,
+    "extraction": "pypdf numeric Medi-font runs, grouped by PDF y then x;8columns per row; visual header/table association",
+    "full_median_comparisons": [
+      {
+        "table": "III",
+        "BS": "3086071",
+        "metric": "MAE",
+        "Calls": ".283",
+        "FlowSpeedCalls": ".187",
+        "computed_percent": "33.92226148409893992932862191",
+        "rounding_bounds_percent": [
+          "33.62831858407079646017699115",
+          "34.21516754850088183421516755"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3086071",
+        "metric": "MSE",
+        "Calls": ".155",
+        "FlowSpeedCalls": ".067",
+        "computed_percent": "56.77419354838709677419354839",
+        "rounding_bounds_percent": [
+          "56.31067961165048543689320388",
+          "57.23472668810289389067524116"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3086071",
+        "metric": "MAPE",
+        "Calls": "837.2",
+        "FlowSpeedCalls": "515.6",
+        "computed_percent": "38.41376015289058767319636885",
+        "rounding_bounds_percent": [
+          "38.40410917995580242489398555",
+          "38.42340997312630636010749477"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3086071",
+        "metric": "RMSE",
+        "Calls": ".393",
+        "FlowSpeedCalls": ".259",
+        "computed_percent": "34.09669211195928753180661578",
+        "rounding_bounds_percent": [
+          "33.88535031847133757961783439",
+          "34.30749682337992376111817027"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3086081",
+        "metric": "MAE",
+        "Calls": ".396",
+        "FlowSpeedCalls": ".340",
+        "computed_percent": "14.14141414141414141414141414",
+        "rounding_bounds_percent": [
+          "13.90644753476611883691529709",
+          "14.37578814627994955863808323"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3086081",
+        "metric": "MSE",
+        "Calls": ".318",
+        "FlowSpeedCalls": ".238",
+        "computed_percent": "25.15723270440251572327044025",
+        "rounding_bounds_percent": [
+          "24.88188976377952755905511811",
+          "25.43171114599686028257456829"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3086081",
+        "metric": "MAPE",
+        "Calls": "347.4",
+        "FlowSpeedCalls": "298.3",
+        "computed_percent": "14.13356361542890040299366724",
+        "rounding_bounds_percent": [
+          "14.10680869440046063048798042",
+          "14.16031083609152396028205497"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3086081",
+        "metric": "RMSE",
+        "Calls": ".564",
+        "FlowSpeedCalls": ".487",
+        "computed_percent": "13.65248226950354609929078014",
+        "rounding_bounds_percent": [
+          "13.48713398402839396628216504",
+          "13.81753764393268379096545616"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "320287",
+        "metric": "MAE",
+        "Calls": ".067",
+        "FlowSpeedCalls": ".052",
+        "computed_percent": "22.38805970149253731343283582",
+        "rounding_bounds_percent": [
+          "21.05263157894736842105263158",
+          "23.70370370370370370370370370"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "320287",
+        "metric": "MSE",
+        "Calls": ".009",
+        "FlowSpeedCalls": ".006",
+        "computed_percent": "33.33333333333333333333333333",
+        "rounding_bounds_percent": [
+          "23.52941176470588235294117647",
+          "42.10526315789473684210526316"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "320287",
+        "metric": "MAPE",
+        "Calls": "87.0",
+        "FlowSpeedCalls": "66.60",
+        "computed_percent": "23.44827586206896551724137931",
+        "rounding_bounds_percent": [
+          "23.39850488786658999424956872",
+          "23.49798966111430212521539345"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "320287",
+        "metric": "RMSE",
+        "Calls": ".094",
+        "FlowSpeedCalls": ".075",
+        "computed_percent": "20.21276595744680851063829787",
+        "rounding_bounds_percent": [
+          "19.25133689839572192513368984",
+          "21.16402116402116402116402116"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "320280",
+        "metric": "MAE",
+        "Calls": ".081",
+        "FlowSpeedCalls": ".066",
+        "computed_percent": "18.51851851851851851851851852",
+        "rounding_bounds_percent": [
+          "17.39130434782608695652173913",
+          "19.63190184049079754601226994"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "320280",
+        "metric": "MSE",
+        "Calls": ".013",
+        "FlowSpeedCalls": ".008",
+        "computed_percent": "38.46153846153846153846153846",
+        "rounding_bounds_percent": [
+          "32.00",
+          "44.44444444444444444444444444"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "320280",
+        "metric": "MAPE",
+        "Calls": "54.60",
+        "FlowSpeedCalls": "47.7",
+        "computed_percent": "12.63736263736263736263736264",
+        "rounding_bounds_percent": [
+          "12.53777818481545929114387764",
+          "12.73692885266916948997344566"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "320280",
+        "metric": "RMSE",
+        "Calls": ".114",
+        "FlowSpeedCalls": ".091",
+        "computed_percent": "20.17543859649122807017543860",
+        "rounding_bounds_percent": [
+          "19.38325991189427312775330396",
+          "20.96069868995633187772925764"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "317706",
+        "metric": "MAE",
+        "Calls": ".156",
+        "FlowSpeedCalls": ".13",
+        "computed_percent": "16.66666666666666666666666667",
+        "rounding_bounds_percent": [
+          "13.18327974276527331189710611",
+          "20.12779552715654952076677316"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "317706",
+        "metric": "MSE",
+        "Calls": ".059",
+        "FlowSpeedCalls": ".039",
+        "computed_percent": "33.89830508474576271186440678",
+        "rounding_bounds_percent": [
+          "32.47863247863247863247863248",
+          "35.29411764705882352941176471"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "317706",
+        "metric": "MAPE",
+        "Calls": "128.4",
+        "FlowSpeedCalls": "110.8",
+        "computed_percent": "13.70716510903426791277258567",
+        "rounding_bounds_percent": [
+          "13.63459291001168679392286716",
+          "13.77968080965356169715842740"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "317706",
+        "metric": "RMSE",
+        "Calls": ".242",
+        "FlowSpeedCalls": ".198",
+        "computed_percent": "18.18181818181818181818181818",
+        "rounding_bounds_percent": [
+          "17.80538302277432712215320911",
+          "18.55670103092783505154639175"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3054051",
+        "metric": "MAE",
+        "Calls": ".434",
+        "FlowSpeedCalls": ".369",
+        "computed_percent": "14.97695852534562211981566820",
+        "rounding_bounds_percent": [
+          "14.76355247981545559400230681",
+          "15.18987341772151898734177215"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3054051",
+        "metric": "MSE",
+        "Calls": ".492",
+        "FlowSpeedCalls": ".347",
+        "computed_percent": "29.47154471544715447154471545",
+        "rounding_bounds_percent": [
+          "29.29806714140386571719226857",
+          "29.64467005076142131979695431"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3054051",
+        "metric": "MAPE",
+        "Calls": "118.0",
+        "FlowSpeedCalls": "90.10",
+        "computed_percent": "23.64406779661016949152542373",
+        "rounding_bounds_percent": [
+          "23.60746078846969054684188215",
+          "23.68064379500211774671749259"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3054051",
+        "metric": "RMSE",
+        "Calls": ".702",
+        "FlowSpeedCalls": ".589",
+        "computed_percent": "16.09686609686609686609686610",
+        "rounding_bounds_percent": [
+          "15.96578759800427655024946543",
+          "16.22775800711743772241992883"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3410061",
+        "metric": "MAE",
+        "Calls": ".404",
+        "FlowSpeedCalls": ".356",
+        "computed_percent": "11.88118811881188118811881188",
+        "rounding_bounds_percent": [
+          "11.64807930607187112763320942",
+          "12.11372064276885043263288010"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3410061",
+        "metric": "MSE",
+        "Calls": ".391",
+        "FlowSpeedCalls": ".31",
+        "computed_percent": "20.71611253196930946291560102",
+        "rounding_bounds_percent": [
+          "19.33418693982074263764404609",
+          "22.09450830140485312899106003"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3410061",
+        "metric": "MAPE",
+        "Calls": "725.7",
+        "FlowSpeedCalls": "494.5",
+        "computed_percent": "31.85889486013504202838638556",
+        "rounding_bounds_percent": [
+          "31.84730930889547302418521326",
+          "31.87047881501894591801584568"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "3410061",
+        "metric": "RMSE",
+        "Calls": ".626",
+        "FlowSpeedCalls": ".557",
+        "computed_percent": "11.02236421725239616613418530",
+        "rounding_bounds_percent": [
+          "10.87130295763389288569144684",
+          "11.17318435754189944134078212"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "317715",
+        "metric": "MAE",
+        "Calls": ".324",
+        "FlowSpeedCalls": ".297",
+        "computed_percent": "8.333333333333333333333333333",
+        "rounding_bounds_percent": [
+          "8.037094281298299845440494590",
+          "8.628659476117103235747303540"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "317715",
+        "metric": "MSE",
+        "Calls": ".243",
+        "FlowSpeedCalls": ".210",
+        "computed_percent": "13.58024691358024691358024691",
+        "rounding_bounds_percent": [
+          "13.19587628865979381443298969",
+          "13.96303901437371663244353183"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "317715",
+        "metric": "MAPE",
+        "Calls": "109.3",
+        "FlowSpeedCalls": "92.40",
+        "computed_percent": "15.46203110704483074107959744",
+        "rounding_bounds_percent": [
+          "15.41876430205949656750572082",
+          "15.50525834476451760402377686"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "III",
+        "BS": "317715",
+        "metric": "RMSE",
+        "Calls": ".493",
+        "FlowSpeedCalls": ".459",
+        "computed_percent": "6.896551724137931034482758621",
+        "rounding_bounds_percent": [
+          "6.700507614213197969543147210",
+          "7.092198581560283687943262410"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3086071",
+        "metric": "MAE",
+        "Calls": ".283",
+        "FlowSpeedCalls": ".187",
+        "computed_percent": "33.92226148409893992932862191",
+        "rounding_bounds_percent": [
+          "33.62831858407079646017699115",
+          "34.21516754850088183421516755"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3086071",
+        "metric": "MSE",
+        "Calls": ".152",
+        "FlowSpeedCalls": ".066",
+        "computed_percent": "56.57894736842105263157894737",
+        "rounding_bounds_percent": [
+          "56.10561056105610561056105611",
+          "57.04918032786885245901639344"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3086071",
+        "metric": "MAPE",
+        "Calls": "2108",
+        "FlowSpeedCalls": "1377",
+        "computed_percent": "34.67741935483870967741935484",
+        "rounding_bounds_percent": [
+          "34.63819691577698695136417556",
+          "34.71662319184254209153426607"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3086071",
+        "metric": "RMSE",
+        "Calls": ".389",
+        "FlowSpeedCalls": ".257",
+        "computed_percent": "33.93316195372750642673521851",
+        "rounding_bounds_percent": [
+          "33.71943371943371943371943372",
+          "34.14634146341463414634146341"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3086081",
+        "metric": "MAE",
+        "Calls": ".398",
+        "FlowSpeedCalls": ".331",
+        "computed_percent": "16.83417085427135678391959799",
+        "rounding_bounds_percent": [
+          "16.60377358490566037735849057",
+          "17.06398996235884567126725220"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3086081",
+        "metric": "MSE",
+        "Calls": ".315",
+        "FlowSpeedCalls": ".218",
+        "computed_percent": "30.79365079365079365079365079",
+        "rounding_bounds_percent": [
+          "30.52464228934817170111287758",
+          "31.06180665610142630744849445"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3086081",
+        "metric": "MAPE",
+        "Calls": "105.0",
+        "FlowSpeedCalls": "88.0",
+        "computed_percent": "16.19047619047619047619047619",
+        "rounding_bounds_percent": [
+          "16.10290614578370652691757980",
+          "16.27796287482151356496906235"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3086081",
+        "metric": "RMSE",
+        "Calls": ".561",
+        "FlowSpeedCalls": ".467",
+        "computed_percent": "16.75579322638146167557932264",
+        "rounding_bounds_percent": [
+          "16.59232827832292595896520963",
+          "16.91896705253784505788067676"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "320287",
+        "metric": "MAE",
+        "Calls": ".058",
+        "FlowSpeedCalls": ".041",
+        "computed_percent": "29.31034482758620689655172414",
+        "rounding_bounds_percent": [
+          "27.82608695652173913043478261",
+          "30.76923076923076923076923077"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "320287",
+        "metric": "MSE",
+        "Calls": ".007",
+        "FlowSpeedCalls": ".003",
+        "computed_percent": "57.14285714285714285714285714",
+        "rounding_bounds_percent": [
+          "46.15384615384615384615384615",
+          "66.66666666666666666666666667"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "320287",
+        "metric": "MAPE",
+        "Calls": "56.3",
+        "FlowSpeedCalls": "43.0",
+        "computed_percent": "23.62344582593250444049733570",
+        "rounding_bounds_percent": [
+          "23.46666666666666666666666667",
+          "23.77994676131322094055013310"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "320287",
+        "metric": "RMSE",
+        "Calls": ".082",
+        "FlowSpeedCalls": ".059",
+        "computed_percent": "28.04878048780487804878048780",
+        "rounding_bounds_percent": [
+          "26.99386503067484662576687117",
+          "29.09090909090909090909090909"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "320280",
+        "metric": "MAE",
+        "Calls": ".082",
+        "FlowSpeedCalls": ".053",
+        "computed_percent": "35.36585365853658536585365854",
+        "rounding_bounds_percent": [
+          "34.35582822085889570552147239",
+          "36.36363636363636363636363636"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "320280",
+        "metric": "MSE",
+        "Calls": ".012",
+        "FlowSpeedCalls": ".005",
+        "computed_percent": "58.33333333333333333333333333",
+        "rounding_bounds_percent": [
+          "52.17391304347826086956521739",
+          "64.00"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "320280",
+        "metric": "MAPE",
+        "Calls": "38.6",
+        "FlowSpeedCalls": "27.1",
+        "computed_percent": "29.79274611398963730569948187",
+        "rounding_bounds_percent": [
+          "29.57198443579766536964980545",
+          "30.01293661060802069857697283"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "320280",
+        "metric": "RMSE",
+        "Calls": ".109",
+        "FlowSpeedCalls": ".070",
+        "computed_percent": "35.77981651376146788990825688",
+        "rounding_bounds_percent": [
+          "35.02304147465437788018433180",
+          "36.52968036529680365296803653"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "317706",
+        "metric": "MAE",
+        "Calls": ".162",
+        "FlowSpeedCalls": ".103",
+        "computed_percent": "36.41975308641975308641975309",
+        "rounding_bounds_percent": [
+          "35.91331269349845201238390093",
+          "36.92307692307692307692307692"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "317706",
+        "metric": "MSE",
+        "Calls": ".066",
+        "FlowSpeedCalls": ".027",
+        "computed_percent": "59.09090909090909090909090909",
+        "rounding_bounds_percent": [
+          "58.01526717557251908396946565",
+          "60.15037593984962406015037594"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "317706",
+        "metric": "MAPE",
+        "Calls": "132.2",
+        "FlowSpeedCalls": "82.10",
+        "computed_percent": "37.89712556732223903177004539",
+        "rounding_bounds_percent": [
+          "37.86984487325009458948164964",
+          "37.92438563327032136105860113"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "317706",
+        "metric": "RMSE",
+        "Calls": ".258",
+        "FlowSpeedCalls": ".164",
+        "computed_percent": "36.43410852713178294573643411",
+        "rounding_bounds_percent": [
+          "36.11650485436893203883495146",
+          "36.75048355899419729206963250"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3054051",
+        "metric": "MAE",
+        "Calls": ".493",
+        "FlowSpeedCalls": ".319",
+        "computed_percent": "35.29411764705882352941176471",
+        "rounding_bounds_percent": [
+          "35.12690355329949238578680203",
+          "35.46099290780141843971631206"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3054051",
+        "metric": "MSE",
+        "Calls": ".600",
+        "FlowSpeedCalls": ".234",
+        "computed_percent": "61.00",
+        "rounding_bounds_percent": [
+          "60.88407005838198498748957465",
+          "61.11573688592839300582847627"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3054051",
+        "metric": "MAPE",
+        "Calls": "135.9",
+        "FlowSpeedCalls": "85.30",
+        "computed_percent": "37.23325974981604120676968359",
+        "rounding_bounds_percent": [
+          "37.20647773279352226720647773",
+          "37.26002206693637366678926076"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3054051",
+        "metric": "RMSE",
+        "Calls": ".775",
+        "FlowSpeedCalls": ".484",
+        "computed_percent": "37.54838709677419354838709677",
+        "rounding_bounds_percent": [
+          "37.44351194318915429309231762",
+          "37.65312701482914248871695680"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3410061",
+        "metric": "MAE",
+        "Calls": ".402",
+        "FlowSpeedCalls": ".297",
+        "computed_percent": "26.11940298507462686567164179",
+        "rounding_bounds_percent": [
+          "25.90286425902864259028642590",
+          "26.33540372670807453416149068"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3410061",
+        "metric": "MSE",
+        "Calls": ".343",
+        "FlowSpeedCalls": ".188",
+        "computed_percent": "45.18950437317784256559766764",
+        "rounding_bounds_percent": [
+          "44.96350364963503649635036496",
+          "45.41484716157205240174672489"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3410061",
+        "metric": "MAPE",
+        "Calls": "109.7",
+        "FlowSpeedCalls": "73.0",
+        "computed_percent": "33.45487693710118505013673655",
+        "rounding_bounds_percent": [
+          "33.37893296853625170998632011",
+          "33.53075170842824601366742597"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "3410061",
+        "metric": "RMSE",
+        "Calls": ".586",
+        "FlowSpeedCalls": ".433",
+        "computed_percent": "26.10921501706484641638225256",
+        "rounding_bounds_percent": [
+          "25.96071733561058923996584116",
+          "26.25745950554134697357203751"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "317715",
+        "metric": "MAE",
+        "Calls": ".274",
+        "FlowSpeedCalls": ".207",
+        "computed_percent": "24.45255474452554744525547445",
+        "rounding_bounds_percent": [
+          "24.13162705667276051188299817",
+          "24.77231329690346083788706740"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "317715",
+        "metric": "MSE",
+        "Calls": ".151",
+        "FlowSpeedCalls": ".087",
+        "computed_percent": "42.38410596026490066225165563",
+        "rounding_bounds_percent": [
+          "41.86046511627906976744186047",
+          "42.90429042904290429042904290"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "317715",
+        "metric": "MAPE",
+        "Calls": "110.1",
+        "FlowSpeedCalls": "77.60",
+        "computed_percent": "29.51861943687556766575840145",
+        "rounding_bounds_percent": [
+          "29.48205361199454793275783735",
+          "29.55515206536541080344984113"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "IV",
+        "BS": "317715",
+        "metric": "RMSE",
+        "Calls": ".388",
+        "FlowSpeedCalls": ".295",
+        "computed_percent": "23.96907216494845360824742268",
+        "rounding_bounds_percent": [
+          "23.74193548387096774193548387",
+          "24.19562419562419562419562420"
+        ],
+        "direction": "improved"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MAE",
+        "Calls": ".177",
+        "FlowSpeedCalls": ".133",
+        "computed_percent": "24.85875706214689265536723164",
+        "rounding_bounds_percent": [
+          "24.36260623229461756373937677",
+          "25.35211267605633802816901408"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MSE",
+        "Calls": ".057",
+        "FlowSpeedCalls": ".035",
+        "computed_percent": "38.59649122807017543859649123",
+        "rounding_bounds_percent": [
+          "37.16814159292035398230088496",
+          "40.0"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MAPE",
+        "Calls": "83.48",
+        "FlowSpeedCalls": "68.63",
+        "computed_percent": "17.78869190225203641590800192",
+        "rounding_bounds_percent": [
+          "17.77777777777777777777777778",
+          "17.79960471941067257591184045"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "RMSE",
+        "Calls": ".239",
+        "FlowSpeedCalls": ".187",
+        "computed_percent": "21.75732217573221757322175732",
+        "rounding_bounds_percent": [
+          "21.38364779874213836477987421",
+          "22.12943632567849686847599165"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MAE",
+        "Calls": ".149",
+        "FlowSpeedCalls": ".112",
+        "computed_percent": "24.83221476510067114093959732",
+        "rounding_bounds_percent": [
+          "24.24242424242424242424242424",
+          "25.41806020066889632107023411"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MSE",
+        "Calls": ".042",
+        "FlowSpeedCalls": ".024",
+        "computed_percent": "42.85714285714285714285714286",
+        "rounding_bounds_percent": [
+          "40.96385542168674698795180723",
+          "44.70588235294117647058823529"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MAPE",
+        "Calls": "108.6",
+        "FlowSpeedCalls": "93.29",
+        "computed_percent": "14.09760589318600368324125230",
+        "rounding_bounds_percent": [
+          "14.05343159834177798249654537",
+          "14.14173953060285319834330419"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "RMSE",
+        "Calls": ".204",
+        "FlowSpeedCalls": ".156",
+        "computed_percent": "23.52941176470588235294117647",
+        "rounding_bounds_percent": [
+          "23.09582309582309582309582310",
+          "23.96088019559902200488997555"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MAE",
+        "Calls": ".155",
+        "FlowSpeedCalls": ".124",
+        "computed_percent": "20.0",
+        "rounding_bounds_percent": [
+          "19.41747572815533980582524272",
+          "20.57877813504823151125401929"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MSE",
+        "Calls": ".046",
+        "FlowSpeedCalls": ".028",
+        "computed_percent": "39.13043478260869565217391304",
+        "rounding_bounds_percent": [
+          "37.36263736263736263736263736",
+          "40.86021505376344086021505376"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MAPE",
+        "Calls": "94.61",
+        "FlowSpeedCalls": "68.8",
+        "computed_percent": "27.28041433252298911320156432",
+        "rounding_bounds_percent": [
+          "27.22371967654986522911051213",
+          "27.33710299635364371399883739"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "RMSE",
+        "Calls": ".215",
+        "FlowSpeedCalls": ".168",
+        "computed_percent": "21.86046511627906976744186047",
+        "rounding_bounds_percent": [
+          "21.44522144522144522144522145",
+          "22.27378190255220417633410673"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MAE",
+        "Calls": ".17",
+        "FlowSpeedCalls": ".134",
+        "computed_percent": "21.17647058823529411764705882",
+        "rounding_bounds_percent": [
+          "18.48484848484848484848484848",
+          "23.71428571428571428571428571"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MSE",
+        "Calls": ".052",
+        "FlowSpeedCalls": ".035",
+        "computed_percent": "32.69230769230769230769230769",
+        "rounding_bounds_percent": [
+          "31.06796116504854368932038835",
+          "34.28571428571428571428571429"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MAPE",
+        "Calls": "94.71",
+        "FlowSpeedCalls": "79.30",
+        "computed_percent": "16.27072114876992925773413578",
+        "rounding_bounds_percent": [
+          "16.26102106541365292223219471",
+          "16.28042020799239824737370005"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "RMSE",
+        "Calls": ".229",
+        "FlowSpeedCalls": ".188",
+        "computed_percent": "17.90393013100436681222707424",
+        "rounding_bounds_percent": [
+          "17.50547045951859956236323851",
+          "18.30065359477124183006535948"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MAE",
+        "Calls": ".235",
+        "FlowSpeedCalls": ".363",
+        "computed_percent": "-54.46808510638297872340425532",
+        "rounding_bounds_percent": [
+          "-55.01066098081023454157782520",
+          "-53.92781316348195329087048830"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".100",
+        "FlowSpeedCalls": ".522",
+        "computed_percent": "-422.00",
+        "rounding_bounds_percent": [
+          "-425.1256281407035175879396985",
+          "-418.9054726368159203980099502"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MAPE",
+        "Calls": "68.57",
+        "FlowSpeedCalls": "44.4",
+        "computed_percent": "35.24865101356278255796995771",
+        "rounding_bounds_percent": [
+          "35.17100561510974987238386932",
+          "35.32628508931826467371491068"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".317",
+        "FlowSpeedCalls": ".723",
+        "computed_percent": "-128.0757097791798107255520505",
+        "rounding_bounds_percent": [
+          "-128.5939968404423380726698262",
+          "-127.5590551181102362204724409"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MAE",
+        "Calls": ".149",
+        "FlowSpeedCalls": ".114",
+        "computed_percent": "23.48993288590604026845637584",
+        "rounding_bounds_percent": [
+          "22.89562289562289562289562290",
+          "24.08026755852842809364548495"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MSE",
+        "Calls": ".041",
+        "FlowSpeedCalls": ".025",
+        "computed_percent": "39.02439024390243902439024390",
+        "rounding_bounds_percent": [
+          "37.03703703703703703703703704",
+          "40.96385542168674698795180723"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MAPE",
+        "Calls": "68.85",
+        "FlowSpeedCalls": "68.58",
+        "computed_percent": "0.3921568627450980392156862745",
+        "rounding_bounds_percent": [
+          "0.3776599607814656111554942300",
+          "0.4066516592840026141892382500"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "RMSE",
+        "Calls": ".203",
+        "FlowSpeedCalls": ".157",
+        "computed_percent": "22.66009852216748768472906404",
+        "rounding_bounds_percent": [
+          "22.22222222222222222222222222",
+          "23.09582309582309582309582310"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MAE",
+        "Calls": ".158",
+        "FlowSpeedCalls": ".122",
+        "computed_percent": "22.78481012658227848101265823",
+        "rounding_bounds_percent": [
+          "22.22222222222222222222222222",
+          "23.34384858044164037854889590"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MSE",
+        "Calls": ".047",
+        "FlowSpeedCalls": ".027",
+        "computed_percent": "42.55319148936170212765957447",
+        "rounding_bounds_percent": [
+          "40.86021505376344086021505376",
+          "44.21052631578947368421052632"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MAPE",
+        "Calls": "84.03",
+        "FlowSpeedCalls": "45.03",
+        "computed_percent": "46.41199571581578007854337737",
+        "rounding_bounds_percent": [
+          "46.40285629277000892591490628",
+          "46.42113405128815374546319986"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "RMSE",
+        "Calls": ".216",
+        "FlowSpeedCalls": ".164",
+        "computed_percent": "24.07407407407407407407407407",
+        "rounding_bounds_percent": [
+          "23.66589327146171693735498840",
+          "24.48036951501154734411085450"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MAE",
+        "Calls": ".144",
+        "FlowSpeedCalls": ".121",
+        "computed_percent": "15.97222222222222222222222222",
+        "rounding_bounds_percent": [
+          "15.33101045296167247386759582",
+          "16.60899653979238754325259516"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MSE",
+        "Calls": ".040",
+        "FlowSpeedCalls": ".029",
+        "computed_percent": "27.500",
+        "rounding_bounds_percent": [
+          "25.31645569620253164556962025",
+          "29.62962962962962962962962963"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MAPE",
+        "Calls": "110.0",
+        "FlowSpeedCalls": "104.3",
+        "computed_percent": "5.181818181818181818181818182",
+        "rounding_bounds_percent": [
+          "5.093224192814915870850386540",
+          "5.270331667423898228078146300"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "RMSE",
+        "Calls": ".199",
+        "FlowSpeedCalls": ".170",
+        "computed_percent": "14.57286432160804020100502513",
+        "rounding_bounds_percent": [
+          "14.10579345088161209068010076",
+          "15.03759398496240601503759398"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MAE",
+        "Calls": ".182",
+        "FlowSpeedCalls": ".147",
+        "computed_percent": "19.23076923076923076923076923",
+        "rounding_bounds_percent": [
+          "18.73278236914600550964187328",
+          "19.72602739726027397260273973"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MSE",
+        "Calls": ".062",
+        "FlowSpeedCalls": ".039",
+        "computed_percent": "37.09677419354838709677419355",
+        "rounding_bounds_percent": [
+          "35.77235772357723577235772358",
+          "38.400"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MAPE",
+        "Calls": "80.00",
+        "FlowSpeedCalls": "76.04",
+        "computed_percent": "4.9500",
+        "rounding_bounds_percent": [
+          "4.937808613038314894680917560",
+          "4.962189863133554152865445910"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "RMSE",
+        "Calls": ".249",
+        "FlowSpeedCalls": ".197",
+        "computed_percent": "20.88353413654618473895582329",
+        "rounding_bounds_percent": [
+          "20.52313883299798792756539235",
+          "21.24248496993987975951903808"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MAE",
+        "Calls": ".219",
+        "FlowSpeedCalls": ".209",
+        "computed_percent": "4.566210045662100456621004566",
+        "rounding_bounds_percent": [
+          "4.118993135011441647597254000",
+          "5.011389521640091116173120730"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".087",
+        "FlowSpeedCalls": ".114",
+        "computed_percent": "-31.03448275862068965517241379",
+        "rounding_bounds_percent": [
+          "-32.36994219653179190751445090",
+          "-29.71428571428571428571428570"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MAPE",
+        "Calls": "46.07",
+        "FlowSpeedCalls": "34.83",
+        "computed_percent": "24.39765574126329498589103538",
+        "rounding_bounds_percent": [
+          "24.37859546293281233040269185",
+          "24.41671188279978296256104178"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".295",
+        "FlowSpeedCalls": ".337",
+        "computed_percent": "-14.23728813559322033898305085",
+        "rounding_bounds_percent": [
+          "-14.60101867572156196943972840",
+          "-13.87478849407783417935702200"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MAE",
+        "Calls": ".174",
+        "FlowSpeedCalls": ".131",
+        "computed_percent": "24.71264367816091954022988506",
+        "rounding_bounds_percent": [
+          "24.20749279538904899135446686",
+          "25.21489971346704871060171920"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MSE",
+        "Calls": ".056",
+        "FlowSpeedCalls": ".033",
+        "computed_percent": "41.07142857142857142857142857",
+        "rounding_bounds_percent": [
+          "39.63963963963963963963963964",
+          "42.47787610619469026548672566"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MAPE",
+        "Calls": "94.76",
+        "FlowSpeedCalls": "82.80",
+        "computed_percent": "12.62135922330097087378640777",
+        "rounding_bounds_percent": [
+          "12.61147169014827713577119941",
+          "12.63124571307972352661847729"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "RMSE",
+        "Calls": ".236",
+        "FlowSpeedCalls": ".182",
+        "computed_percent": "22.88135593220338983050847458",
+        "rounding_bounds_percent": [
+          "22.50530785562632696390658174",
+          "23.25581395348837209302325581"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MAE",
+        "Calls": ".147",
+        "FlowSpeedCalls": ".110",
+        "computed_percent": "25.17006802721088435374149660",
+        "rounding_bounds_percent": [
+          "24.57337883959044368600682594",
+          "25.76271186440677966101694915"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MSE",
+        "Calls": ".040",
+        "FlowSpeedCalls": ".024",
+        "computed_percent": "40.0",
+        "rounding_bounds_percent": [
+          "37.97468354430379746835443038",
+          "41.97530864197530864197530864"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MAPE",
+        "Calls": "87.32",
+        "FlowSpeedCalls": "75.18",
+        "computed_percent": "13.90288593678424186898763170",
+        "rounding_bounds_percent": [
+          "13.89222928477352115902193208",
+          "13.91354136845118809046664758"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "RMSE",
+        "Calls": ".201",
+        "FlowSpeedCalls": ".154",
+        "computed_percent": "23.38308457711442786069651741",
+        "rounding_bounds_percent": [
+          "22.94264339152119700748129676",
+          "23.82133995037220843672456576"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MAE",
+        "Calls": ".153",
+        "FlowSpeedCalls": ".110",
+        "computed_percent": "28.10457516339869281045751634",
+        "rounding_bounds_percent": [
+          "27.54098360655737704918032787",
+          "28.66449511400651465798045603"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MSE",
+        "Calls": ".045",
+        "FlowSpeedCalls": ".024",
+        "computed_percent": "46.66666666666666666666666667",
+        "rounding_bounds_percent": [
+          "44.94382022471910112359550562",
+          "48.35164835164835164835164835"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MAPE",
+        "Calls": "94.76",
+        "FlowSpeedCalls": "75.18",
+        "computed_percent": "20.66272688898269311945968763",
+        "rounding_bounds_percent": [
+          "20.65326368001688565247216506",
+          "20.67218909935102622276156809"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "RMSE",
+        "Calls": ".212",
+        "FlowSpeedCalls": ".154",
+        "computed_percent": "27.35849056603773584905660377",
+        "rounding_bounds_percent": [
+          "26.95035460992907801418439716",
+          "27.76470588235294117647058824"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MAE",
+        "Calls": ".167",
+        "FlowSpeedCalls": ".121",
+        "computed_percent": "27.54491017964071856287425150",
+        "rounding_bounds_percent": [
+          "27.02702702702702702702702703",
+          "28.05970149253731343283582090"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MSE",
+        "Calls": ".051",
+        "FlowSpeedCalls": ".027",
+        "computed_percent": "47.05882352941176470588235294",
+        "rounding_bounds_percent": [
+          "45.54455445544554455445544554",
+          "48.54368932038834951456310680"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MAPE",
+        "Calls": "95.6",
+        "FlowSpeedCalls": "68.86",
+        "computed_percent": "27.97071129707112970711297071",
+        "rounding_bounds_percent": [
+          "27.92778649921507064364207221",
+          "28.01359121798222686879247256"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "RMSE",
+        "Calls": ".226",
+        "FlowSpeedCalls": ".164",
+        "computed_percent": "27.43362831858407079646017699",
+        "rounding_bounds_percent": [
+          "27.05099778270509977827050998",
+          "27.81456953642384105960264901"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MAE",
+        "Calls": ".231",
+        "FlowSpeedCalls": ".179",
+        "computed_percent": "22.51082251082251082251082251",
+        "rounding_bounds_percent": [
+          "22.12581344902386117136659436",
+          "22.89416846652267818574514039"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".097",
+        "FlowSpeedCalls": ".064",
+        "computed_percent": "34.02061855670103092783505155",
+        "rounding_bounds_percent": [
+          "33.16062176165803108808290155",
+          "34.87179487179487179487179487"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MAPE",
+        "Calls": "76.70",
+        "FlowSpeedCalls": "38.60",
+        "computed_percent": "49.67405475880052151238591917",
+        "rounding_bounds_percent": [
+          "49.66425451463589542994980116",
+          "49.68385372531125741477087543"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".312",
+        "FlowSpeedCalls": ".254",
+        "computed_percent": "18.58974358974358974358974359",
+        "rounding_bounds_percent": [
+          "18.29855537720706260032102729",
+          "18.8800"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MAE",
+        "Calls": ".147",
+        "FlowSpeedCalls": ".112",
+        "computed_percent": "23.80952380952380952380952381",
+        "rounding_bounds_percent": [
+          "23.20819112627986348122866894",
+          "24.40677966101694915254237288"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MSE",
+        "Calls": ".040",
+        "FlowSpeedCalls": ".024",
+        "computed_percent": "40.0",
+        "rounding_bounds_percent": [
+          "37.97468354430379746835443038",
+          "41.97530864197530864197530864"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MAPE",
+        "Calls": "80.98",
+        "FlowSpeedCalls": "82.96",
+        "computed_percent": "-2.445048160039515929859224500",
+        "rounding_bounds_percent": [
+          "-2.457548626119172584130904600",
+          "-2.432549237513119713527196400"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "RMSE",
+        "Calls": ".200",
+        "FlowSpeedCalls": ".154",
+        "computed_percent": "23.00",
+        "rounding_bounds_percent": [
+          "22.55639097744360902255639098",
+          "23.44139650872817955112219451"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MAE",
+        "Calls": ".156",
+        "FlowSpeedCalls": ".119",
+        "computed_percent": "23.71794871794871794871794872",
+        "rounding_bounds_percent": [
+          "23.15112540192926045016077170",
+          "24.28115015974440894568690096"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MSE",
+        "Calls": ".045",
+        "FlowSpeedCalls": ".026",
+        "computed_percent": "42.22222222222222222222222222",
+        "rounding_bounds_percent": [
+          "40.44943820224719101123595506",
+          "43.95604395604395604395604396"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MAPE",
+        "Calls": "95.97",
+        "FlowSpeedCalls": "46.94",
+        "computed_percent": "51.08888194227362717515890382",
+        "rounding_bounds_percent": [
+          "51.08112332621268170687229719",
+          "51.09663974993487887470695494"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "RMSE",
+        "Calls": ".212",
+        "FlowSpeedCalls": ".16",
+        "computed_percent": "24.52830188679245283018867925",
+        "rounding_bounds_percent": [
+          "21.98581560283687943262411348",
+          "27.05882352941176470588235294"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MAE",
+        "Calls": ".141",
+        "FlowSpeedCalls": ".117",
+        "computed_percent": "17.02127659574468085106382979",
+        "rounding_bounds_percent": [
+          "16.37010676156583629893238434",
+          "17.66784452296819787985865724"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MSE",
+        "Calls": ".038",
+        "FlowSpeedCalls": ".027",
+        "computed_percent": "28.94736842105263157894736842",
+        "rounding_bounds_percent": [
+          "26.66666666666666666666666667",
+          "31.16883116883116883116883117"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MAPE",
+        "Calls": "119.5",
+        "FlowSpeedCalls": "119.5",
+        "computed_percent": "0",
+        "rounding_bounds_percent": [
+          "-0.083717036416910841356216000",
+          "0.0836470096194061062317022200"
+        ],
+        "direction": "tied",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "RMSE",
+        "Calls": ".196",
+        "FlowSpeedCalls": ".165",
+        "computed_percent": "15.81632653061224489795918367",
+        "rounding_bounds_percent": [
+          "15.34526854219948849104859335",
+          "16.28498727735368956743002545"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MAE",
+        "Calls": ".179",
+        "FlowSpeedCalls": ".144",
+        "computed_percent": "19.55307262569832402234636872",
+        "rounding_bounds_percent": [
+          "19.04761904761904761904761905",
+          "20.05571030640668523676880223"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MSE",
+        "Calls": ".061",
+        "FlowSpeedCalls": ".037",
+        "computed_percent": "39.34426229508196721311475410",
+        "rounding_bounds_percent": [
+          "38.01652892561983471074380165",
+          "40.65040650406504065040650407"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MAPE",
+        "Calls": "89.39",
+        "FlowSpeedCalls": "81.77",
+        "computed_percent": "8.524443450050341201476675243",
+        "rounding_bounds_percent": [
+          "8.513732729205123902220730550",
+          "8.535152972761340119693495160"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "RMSE",
+        "Calls": ".247",
+        "FlowSpeedCalls": ".194",
+        "computed_percent": "21.45748987854251012145748988",
+        "rounding_bounds_percent": [
+          "21.09533468559837728194726166",
+          "21.81818181818181818181818182"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MAE",
+        "Calls": ".216",
+        "FlowSpeedCalls": ".172",
+        "computed_percent": "20.37037037037037037037037037",
+        "rounding_bounds_percent": [
+          "19.95359628770301624129930394",
+          "20.78521939953810623556581986"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".085",
+        "FlowSpeedCalls": ".055",
+        "computed_percent": "35.29411764705882352941176471",
+        "rounding_bounds_percent": [
+          "34.31952662721893491124260355",
+          "36.25730994152046783625730994"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MAPE",
+        "Calls": "44.82",
+        "FlowSpeedCalls": "32.67",
+        "computed_percent": "27.10843373493975903614457831",
+        "rounding_bounds_percent": [
+          "27.08914425973446390717393730",
+          "27.12771890686001115448968210"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".292",
+        "FlowSpeedCalls": ".235",
+        "computed_percent": "19.52054794520547945205479452",
+        "rounding_bounds_percent": [
+          "19.21097770154373927958833619",
+          "19.82905982905982905982905983"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MAE",
+        "Calls": ".181",
+        "FlowSpeedCalls": ".129",
+        "computed_percent": "28.72928176795580110497237569",
+        "rounding_bounds_percent": [
+          "28.25484764542936288088642659",
+          "29.20110192837465564738292011"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MSE",
+        "Calls": ".059",
+        "FlowSpeedCalls": ".031",
+        "computed_percent": "47.45762711864406779661016949",
+        "rounding_bounds_percent": [
+          "46.15384615384615384615384615",
+          "48.73949579831932773109243697"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MAPE",
+        "Calls": "79.47",
+        "FlowSpeedCalls": "43.75",
+        "computed_percent": "44.94777903611425695230904744",
+        "rounding_bounds_percent": [
+          "44.93802302900648084062165733",
+          "44.95753381566530355457691098"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "RMSE",
+        "Calls": ".242",
+        "FlowSpeedCalls": ".175",
+        "computed_percent": "27.68595041322314049586776860",
+        "rounding_bounds_percent": [
+          "27.32919254658385093167701863",
+          "28.04123711340206185567010309"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MAE",
+        "Calls": ".154",
+        "FlowSpeedCalls": ".103",
+        "computed_percent": "33.11688311688311688311688312",
+        "rounding_bounds_percent": [
+          "32.57328990228013029315960912",
+          "33.65695792880258899676375405"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MSE",
+        "Calls": ".043",
+        "FlowSpeedCalls": ".019",
+        "computed_percent": "55.81395348837209302325581395",
+        "rounding_bounds_percent": [
+          "54.11764705882352941176470588",
+          "57.47126436781609195402298851"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MAPE",
+        "Calls": "85.64",
+        "FlowSpeedCalls": "51.45",
+        "computed_percent": "39.92293320878094348435310603",
+        "rounding_bounds_percent": [
+          "39.91358673439598295089624569",
+          "39.93227859186175491855916866"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "RMSE",
+        "Calls": ".207",
+        "FlowSpeedCalls": ".137",
+        "computed_percent": "33.81642512077294685990338164",
+        "rounding_bounds_percent": [
+          "33.41404358353510895883777240",
+          "34.21686746987951807228915663"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MAE",
+        "Calls": ".150",
+        "FlowSpeedCalls": ".108",
+        "computed_percent": "28.00",
+        "rounding_bounds_percent": [
+          "27.42474916387959866220735786",
+          "28.57142857142857142857142857"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MSE",
+        "Calls": ".041",
+        "FlowSpeedCalls": ".021",
+        "computed_percent": "48.78048780487804878048780488",
+        "rounding_bounds_percent": [
+          "46.91358024691358024691358025",
+          "50.60240963855421686746987952"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MAPE",
+        "Calls": "110.3",
+        "FlowSpeedCalls": "77.62",
+        "computed_percent": "29.62828649138712601994560290",
+        "rounding_bounds_percent": [
+          "29.59183673469387755102040816",
+          "29.66470321703670140462165836"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "RMSE",
+        "Calls": ".201",
+        "FlowSpeedCalls": ".143",
+        "computed_percent": "28.85572139303482587064676617",
+        "rounding_bounds_percent": [
+          "28.42892768079800498753117207",
+          "29.28039702233250620347394541"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MAE",
+        "Calls": ".184",
+        "FlowSpeedCalls": ".131",
+        "computed_percent": "28.80434782608695652173913043",
+        "rounding_bounds_percent": [
+          "28.33787465940054495912806540",
+          "29.26829268292682926829268293"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MSE",
+        "Calls": ".063",
+        "FlowSpeedCalls": ".032",
+        "computed_percent": "49.20634920634920634920634921",
+        "rounding_bounds_percent": [
+          "48.00",
+          "50.39370078740157480314960630"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MAPE",
+        "Calls": "79.23",
+        "FlowSpeedCalls": "56.89",
+        "computed_percent": "28.19639025621607976776473558",
+        "rounding_bounds_percent": [
+          "28.18554749132218365414957400",
+          "28.20723165267874045560673945"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "RMSE",
+        "Calls": ".252",
+        "FlowSpeedCalls": ".179",
+        "computed_percent": "28.96825396825396825396825397",
+        "rounding_bounds_percent": [
+          "28.62823061630218687872763419",
+          "29.30693069306930693069306931"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MAE",
+        "Calls": ".232",
+        "FlowSpeedCalls": ".348",
+        "computed_percent": "-50.0",
+        "rounding_bounds_percent": [
+          "-50.53995680345572354211663070",
+          "-49.46236559139784946236559140"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".105",
+        "FlowSpeedCalls": ".518",
+        "computed_percent": "-393.3333333333333333333333333",
+        "rounding_bounds_percent": [
+          "-396.1722488038277511961722488",
+          "-390.5213270142180094786729858"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MAPE",
+        "Calls": "49.02",
+        "FlowSpeedCalls": "36.49",
+        "computed_percent": "25.56099551203590371277029784",
+        "rounding_bounds_percent": [
+          "25.54320106089972457410996634",
+          "25.57878633350331463539010709"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".323",
+        "FlowSpeedCalls": ".718",
+        "computed_percent": "-122.2910216718266253869969040",
+        "rounding_bounds_percent": [
+          "-122.7906976744186046511627907",
+          "-121.7928902627511591962905719"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MAE",
+        "Calls": ".151",
+        "FlowSpeedCalls": ".105",
+        "computed_percent": "30.46357615894039735099337748",
+        "rounding_bounds_percent": [
+          "29.90033222591362126245847176",
+          "31.02310231023102310231023102"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MSE",
+        "Calls": ".042",
+        "FlowSpeedCalls": ".022",
+        "computed_percent": "47.61904761904761904761904762",
+        "rounding_bounds_percent": [
+          "45.78313253012048192771084337",
+          "49.41176470588235294117647059"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MAPE",
+        "Calls": "43.76",
+        "FlowSpeedCalls": "30.64",
+        "computed_percent": "29.98171846435100548446069470",
+        "rounding_bounds_percent": [
+          "29.96229002399725745629070963",
+          "30.00114246544042042728207472"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "RMSE",
+        "Calls": ".205",
+        "FlowSpeedCalls": ".149",
+        "computed_percent": "27.31707317073170731707317073",
+        "rounding_bounds_percent": [
+          "26.89486552567237163814180929",
+          "27.73722627737226277372262774"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MAE",
+        "Calls": ".162",
+        "FlowSpeedCalls": ".115",
+        "computed_percent": "29.01234567901234567901234568",
+        "rounding_bounds_percent": [
+          "28.48297213622291021671826625",
+          "29.53846153846153846153846154"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MSE",
+        "Calls": ".051",
+        "FlowSpeedCalls": ".024",
+        "computed_percent": "52.94117647058823529411764706",
+        "rounding_bounds_percent": [
+          "51.48514851485148514851485149",
+          "54.36893203883495145631067961"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MAPE",
+        "Calls": "70.58",
+        "FlowSpeedCalls": "51.55",
+        "computed_percent": "26.96231226976480589402096911",
+        "rounding_bounds_percent": [
+          "26.95005313496280552603613177",
+          "26.97456966777643975348870157"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "RMSE",
+        "Calls": ".225",
+        "FlowSpeedCalls": ".154",
+        "computed_percent": "31.55555555555555555555555556",
+        "rounding_bounds_percent": [
+          "31.18040089086859688195991091",
+          "31.92904656319290465631929047"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MAE",
+        "Calls": ".156",
+        "FlowSpeedCalls": ".106",
+        "computed_percent": "32.05128205128205128205128205",
+        "rounding_bounds_percent": [
+          "31.51125401929260450160771704",
+          "32.58785942492012779552715655"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MSE",
+        "Calls": ".050",
+        "FlowSpeedCalls": ".022",
+        "computed_percent": "56.00",
+        "rounding_bounds_percent": [
+          "54.54545454545454545454545455",
+          "57.42574257425742574257425743"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MAPE",
+        "Calls": "127.9",
+        "FlowSpeedCalls": "71.67",
+        "computed_percent": "43.96403440187646598905394840",
+        "rounding_bounds_percent": [
+          "43.93820883848259679311693391",
+          "43.98983978116451738960531458"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "RMSE",
+        "Calls": ".224",
+        "FlowSpeedCalls": ".148",
+        "computed_percent": "33.92857142857142857142857143",
+        "rounding_bounds_percent": [
+          "33.55704697986577181208053691",
+          "34.29844097995545657015590200"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MAE",
+        "Calls": ".189",
+        "FlowSpeedCalls": ".130",
+        "computed_percent": "31.21693121693121693121693122",
+        "rounding_bounds_percent": [
+          "30.76923076923076923076923077",
+          "31.66226912928759894459102902"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MSE",
+        "Calls": ".070",
+        "FlowSpeedCalls": ".032",
+        "computed_percent": "54.28571428571428571428571429",
+        "rounding_bounds_percent": [
+          "53.23741007194244604316546763",
+          "55.31914893617021276595744681"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MAPE",
+        "Calls": "128.6",
+        "FlowSpeedCalls": "73.35",
+        "computed_percent": "42.96267496111975116640746501",
+        "rounding_bounds_percent": [
+          "42.93660054453520031116297161",
+          "42.98872910998834045860862806"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "RMSE",
+        "Calls": ".265",
+        "FlowSpeedCalls": ".180",
+        "computed_percent": "32.07547169811320754716981132",
+        "rounding_bounds_percent": [
+          "31.75803402646502835538752363",
+          "32.39171374764595103578154426"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MAE",
+        "Calls": ".230",
+        "FlowSpeedCalls": ".200",
+        "computed_percent": "13.04347826086956521739130435",
+        "rounding_bounds_percent": [
+          "12.63616557734204793028322440",
+          "13.44902386117136659436008677"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".099",
+        "FlowSpeedCalls": ".123",
+        "computed_percent": "-24.24242424242424242424242424",
+        "rounding_bounds_percent": [
+          "-25.38071065989847715736040610",
+          "-23.11557788944723618090452260"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MAPE",
+        "Calls": "48.63",
+        "FlowSpeedCalls": "38.96",
+        "computed_percent": "19.88484474604153814517787374",
+        "rounding_bounds_percent": [
+          "19.86632390745501285347043702",
+          "19.90336177649840649737843117"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".315",
+        "FlowSpeedCalls": ".351",
+        "computed_percent": "-11.42857142857142857142857143",
+        "rounding_bounds_percent": [
+          "-11.76470588235294117647058820",
+          "-11.09350237717908082408874800"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MAE",
+        "Calls": ".178",
+        "FlowSpeedCalls": ".125",
+        "computed_percent": "29.77528089887640449438202247",
+        "rounding_bounds_percent": [
+          "29.29577464788732394366197183",
+          "30.25210084033613445378151261"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MSE",
+        "Calls": ".057",
+        "FlowSpeedCalls": ".029",
+        "computed_percent": "49.12280701754385964912280702",
+        "rounding_bounds_percent": [
+          "47.78761061946902654867256637",
+          "50.43478260869565217391304348"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "MAPE",
+        "Calls": "128.5",
+        "FlowSpeedCalls": "76.12",
+        "computed_percent": "40.76264591439688715953307393",
+        "rounding_bounds_percent": [
+          "40.73569482288828337874659401",
+          "40.78957604045118630882924932"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Monday",
+        "metric": "RMSE",
+        "Calls": ".239",
+        "FlowSpeedCalls": ".171",
+        "computed_percent": "28.45188284518828451882845188",
+        "rounding_bounds_percent": [
+          "28.09224318658280922431865828",
+          "28.81002087682672233820459290"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MAE",
+        "Calls": ".153",
+        "FlowSpeedCalls": ".099",
+        "computed_percent": "35.29411764705882352941176471",
+        "rounding_bounds_percent": [
+          "34.75409836065573770491803279",
+          "35.83061889250814332247557003"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MSE",
+        "Calls": ".042",
+        "FlowSpeedCalls": ".018",
+        "computed_percent": "57.14285714285714285714285714",
+        "rounding_bounds_percent": [
+          "55.42168674698795180722891566",
+          "58.82352941176470588235294118"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "MAPE",
+        "Calls": "75.73",
+        "FlowSpeedCalls": "46.04",
+        "computed_percent": "39.20507064571504027465997623",
+        "rounding_bounds_percent": [
+          "39.19445361505447342357213602",
+          "39.21568627450980392156862745"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Tuesday",
+        "metric": "RMSE",
+        "Calls": ".204",
+        "FlowSpeedCalls": ".133",
+        "computed_percent": "34.80392156862745098039215686",
+        "rounding_bounds_percent": [
+          "34.39803439803439803439803440",
+          "35.20782396088019559902200489"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MAE",
+        "Calls": ".148",
+        "FlowSpeedCalls": ".106",
+        "computed_percent": "28.37837837837837837837837838",
+        "rounding_bounds_percent": [
+          "27.79661016949152542372881356",
+          "28.95622895622895622895622896"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MSE",
+        "Calls": ".039",
+        "FlowSpeedCalls": ".020",
+        "computed_percent": "48.71794871794871794871794872",
+        "rounding_bounds_percent": [
+          "46.75324675324675324675324675",
+          "50.63291139240506329113924051"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "MAPE",
+        "Calls": "180.5",
+        "FlowSpeedCalls": "126.3",
+        "computed_percent": "30.02770083102493074792243767",
+        "rounding_bounds_percent": [
+          "29.98060404544195067885840953",
+          "30.07477153143173636111880366"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Wednesday",
+        "metric": "RMSE",
+        "Calls": ".198",
+        "FlowSpeedCalls": ".141",
+        "computed_percent": "28.78787878787878787878787879",
+        "rounding_bounds_percent": [
+          "28.35443037974683544303797468",
+          "29.21914357682619647355163728"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MAE",
+        "Calls": ".181",
+        "FlowSpeedCalls": ".130",
+        "computed_percent": "28.17679558011049723756906077",
+        "rounding_bounds_percent": [
+          "27.70083102493074792243767313",
+          "28.65013774104683195592286501"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MSE",
+        "Calls": ".061",
+        "FlowSpeedCalls": ".031",
+        "computed_percent": "49.18032786885245901639344262",
+        "rounding_bounds_percent": [
+          "47.93388429752066115702479339",
+          "50.40650406504065040650406504"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "MAPE",
+        "Calls": "91.97",
+        "FlowSpeedCalls": "57.68",
+        "computed_percent": "37.28389692290964444927693813",
+        "rounding_bounds_percent": [
+          "37.27505029087152721143913445",
+          "37.29274259309594998640935037"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Thursday",
+        "metric": "RMSE",
+        "Calls": ".248",
+        "FlowSpeedCalls": ".176",
+        "computed_percent": "29.03225806451612903225806452",
+        "rounding_bounds_percent": [
+          "28.68686868686868686868686869",
+          "29.37625754527162977867203219"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MAE",
+        "Calls": ".230",
+        "FlowSpeedCalls": ".165",
+        "computed_percent": "28.26086956521739130434782609",
+        "rounding_bounds_percent": [
+          "27.88671023965141612200435730",
+          "28.63340563991323210412147505"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".102",
+        "FlowSpeedCalls": ".054",
+        "computed_percent": "47.05882352941176470588235294",
+        "rounding_bounds_percent": [
+          "46.30541871921182266009852217",
+          "47.80487804878048780487804878"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MAPE",
+        "Calls": "45.82",
+        "FlowSpeedCalls": "28.32",
+        "computed_percent": "38.19292885202968136185072021",
+        "rounding_bounds_percent": [
+          "38.17527010804321728691476591",
+          "38.21058374249863611565739225"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".320",
+        "FlowSpeedCalls": ".233",
+        "computed_percent": "27.187500",
+        "rounding_bounds_percent": [
+          "26.91705790297339593114241002",
+          "27.45709828393135725429017161"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MAE",
+        "Calls": ".149",
+        "FlowSpeedCalls": ".103",
+        "computed_percent": "30.87248322147651006711409396",
+        "rounding_bounds_percent": [
+          "30.30303030303030303030303030",
+          "31.43812709030100334448160535"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MSE",
+        "Calls": ".041",
+        "FlowSpeedCalls": ".021",
+        "computed_percent": "48.78048780487804878048780488",
+        "rounding_bounds_percent": [
+          "46.91358024691358024691358025",
+          "50.60240963855421686746987952"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MAPE",
+        "Calls": "43.14",
+        "FlowSpeedCalls": "30.21",
+        "computed_percent": "29.97218358831710709318497914",
+        "rounding_bounds_percent": [
+          "29.95247478845485104903210850",
+          "29.99188782014138370610731255"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "RMSE",
+        "Calls": ".202",
+        "FlowSpeedCalls": ".147",
+        "computed_percent": "27.22772277227722772277227723",
+        "rounding_bounds_percent": [
+          "26.79900744416873449131513648",
+          "27.65432098765432098765432099"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MAE",
+        "Calls": ".159",
+        "FlowSpeedCalls": ".114",
+        "computed_percent": "28.30188679245283018867924528",
+        "rounding_bounds_percent": [
+          "27.76025236593059936908517350",
+          "28.84012539184952978056426332"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MSE",
+        "Calls": ".048",
+        "FlowSpeedCalls": ".023",
+        "computed_percent": "52.08333333333333333333333333",
+        "rounding_bounds_percent": [
+          "50.52631578947368421052631579",
+          "53.60824742268041237113402062"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "MAPE",
+        "Calls": "65.36",
+        "FlowSpeedCalls": "50.60",
+        "computed_percent": "22.58261933904528763769889841",
+        "rounding_bounds_percent": [
+          "22.56904597964960599801086374",
+          "22.59619062189245008796756674"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Tuesday",
+        "metric": "RMSE",
+        "Calls": ".220",
+        "FlowSpeedCalls": ".153",
+        "computed_percent": "30.45454545454545454545454545",
+        "rounding_bounds_percent": [
+          "30.06833712984054669703872437",
+          "30.83900226757369614512471655"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MAE",
+        "Calls": ".155",
+        "FlowSpeedCalls": ".103",
+        "computed_percent": "33.54838709677419354838709677",
+        "rounding_bounds_percent": [
+          "33.00970873786407766990291262",
+          "34.08360128617363344051446945"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MSE",
+        "Calls": ".049",
+        "FlowSpeedCalls": ".021",
+        "computed_percent": "57.14285714285714285714285714",
+        "rounding_bounds_percent": [
+          "55.67010309278350515463917526",
+          "58.58585858585858585858585859"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MAPE",
+        "Calls": "351.7",
+        "FlowSpeedCalls": "170.9",
+        "computed_percent": "51.40744953085015638328120557",
+        "rounding_bounds_percent": [
+          "51.38632162661737523105360444",
+          "51.42857142857142857142857143"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "RMSE",
+        "Calls": ".221",
+        "FlowSpeedCalls": ".144",
+        "computed_percent": "34.84162895927601809954751131",
+        "rounding_bounds_percent": [
+          "34.46712018140589569160997732",
+          "35.21444695259593679458239278"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MAE",
+        "Calls": ".186",
+        "FlowSpeedCalls": ".126",
+        "computed_percent": "32.25806451612903225806451613",
+        "rounding_bounds_percent": [
+          "31.80592991913746630727762803",
+          "32.70777479892761394101876676"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MSE",
+        "Calls": ".068",
+        "FlowSpeedCalls": ".030",
+        "computed_percent": "55.88235294117647058823529412",
+        "rounding_bounds_percent": [
+          "54.81481481481481481481481481",
+          "56.93430656934306569343065693"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "MAPE",
+        "Calls": "257.5",
+        "FlowSpeedCalls": "119.4",
+        "computed_percent": "53.63106796116504854368932039",
+        "rounding_bounds_percent": [
+          "53.60264128957079044474655273",
+          "53.65948359541836536594835954"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Thursday",
+        "metric": "RMSE",
+        "Calls": ".260",
+        "FlowSpeedCalls": ".174",
+        "computed_percent": "33.07692307692307692307692308",
+        "rounding_bounds_percent": [
+          "32.75529865125240847784200385",
+          "33.39731285988483685220729367"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MAE",
+        "Calls": ".228",
+        "FlowSpeedCalls": ".167",
+        "computed_percent": "26.75438596491228070175438596",
+        "rounding_bounds_percent": [
+          "26.37362637362637362637362637",
+          "27.13347921225382932166301969"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".097",
+        "FlowSpeedCalls": ".055",
+        "computed_percent": "43.29896907216494845360824742",
+        "rounding_bounds_percent": [
+          "42.48704663212435233160621762",
+          "44.10256410256410256410256410"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MAPE",
+        "Calls": "77.98",
+        "FlowSpeedCalls": "66.08",
+        "computed_percent": "15.26032315978456014362657092",
+        "rounding_bounds_percent": [
+          "15.24847707598589291439563963",
+          "15.27216772456241584920176957"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      },
+      {
+        "table": "IX",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".312",
+        "FlowSpeedCalls": ".234",
+        "computed_percent": "25.00",
+        "rounding_bounds_percent": [
+          "24.71910112359550561797752809",
+          "25.2800"
+        ],
+        "direction": "improved",
+        "BS": "320287"
+      }
+    ],
+    "noisy_comparisons": [
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3086071",
+        "distribution": "lognormal_mixture",
+        "metric": "MAE",
+        "Calls": ".283",
+        "NoisyFlowSpeedCalls": ".205",
+        "computed_percent": "27.56183745583038869257950530",
+        "rounding_bounds_percent": [
+          "27.25663716814159292035398230",
+          "27.86596119929453262786596120"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3086071",
+        "distribution": "lognormal_mixture",
+        "metric": "MSE",
+        "Calls": ".155",
+        "NoisyFlowSpeedCalls": ".077",
+        "computed_percent": "50.32258064516129032258064516",
+        "rounding_bounds_percent": [
+          "49.83818770226537216828478964",
+          "50.80385852090032154340836013"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3086071",
+        "distribution": "lognormal_mixture",
+        "metric": "MAPE",
+        "Calls": "837.2",
+        "NoisyFlowSpeedCalls": "599.4",
+        "computed_percent": "28.40420449116101290014333493",
+        "rounding_bounds_percent": [
+          "28.39395568297198829361524219",
+          "28.41445207524634219169901463"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3086071",
+        "distribution": "lognormal_mixture",
+        "metric": "RMSE",
+        "Calls": ".393",
+        "NoisyFlowSpeedCalls": ".278",
+        "computed_percent": "29.26208651399491094147582697",
+        "rounding_bounds_percent": [
+          "29.04458598726114649681528662",
+          "29.47903430749682337992376112"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3086071",
+        "distribution": "exponential",
+        "metric": "MAE",
+        "Calls": ".283",
+        "NoisyFlowSpeedCalls": ".204",
+        "computed_percent": "27.91519434628975265017667845",
+        "rounding_bounds_percent": [
+          "27.61061946902654867256637168",
+          "28.21869488536155202821869489"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3086071",
+        "distribution": "exponential",
+        "metric": "MSE",
+        "Calls": ".152",
+        "NoisyFlowSpeedCalls": ".075",
+        "computed_percent": "50.65789473684210526315789474",
+        "rounding_bounds_percent": [
+          "50.16501650165016501650165017",
+          "51.14754098360655737704918033"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3086071",
+        "distribution": "exponential",
+        "metric": "MAPE",
+        "Calls": "2108",
+        "NoisyFlowSpeedCalls": "1483",
+        "computed_percent": "29.64895635673624288425047438",
+        "rounding_bounds_percent": [
+          "29.60854092526690391459074733",
+          "29.68935262034621769030116196"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3086071",
+        "distribution": "exponential",
+        "metric": "RMSE",
+        "Calls": ".389",
+        "NoisyFlowSpeedCalls": ".274",
+        "computed_percent": "29.56298200514138817480719794",
+        "rounding_bounds_percent": [
+          "29.34362934362934362934362934",
+          "29.78177150192554557124518614"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3086081",
+        "distribution": "lognormal_mixture",
+        "metric": "MAE",
+        "Calls": ".396",
+        "NoisyFlowSpeedCalls": ".349",
+        "computed_percent": "11.86868686868686868686868687",
+        "rounding_bounds_percent": [
+          "11.63084702907711757269279393",
+          "12.10592686002522068095838588"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3086081",
+        "distribution": "lognormal_mixture",
+        "metric": "MSE",
+        "Calls": ".318",
+        "NoisyFlowSpeedCalls": ".245",
+        "computed_percent": "22.95597484276729559748427673",
+        "rounding_bounds_percent": [
+          "22.67716535433070866141732283",
+          "23.23390894819466248037676609"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3086081",
+        "distribution": "lognormal_mixture",
+        "metric": "MAPE",
+        "Calls": "347.4",
+        "NoisyFlowSpeedCalls": "315.5",
+        "computed_percent": "9.182498560736902705814622913",
+        "rounding_bounds_percent": [
+          "9.155030948610911184684036270",
+          "9.209958267376600949776946320"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3086081",
+        "distribution": "lognormal_mixture",
+        "metric": "RMSE",
+        "Calls": ".564",
+        "NoisyFlowSpeedCalls": ".495",
+        "computed_percent": "12.23404255319148936170212766",
+        "rounding_bounds_percent": [
+          "12.06743566992014196983141083",
+          "12.40035429583702391496899911"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3086081",
+        "distribution": "exponential",
+        "metric": "MAE",
+        "Calls": ".398",
+        "NoisyFlowSpeedCalls": ".338",
+        "computed_percent": "15.07537688442211055276381910",
+        "rounding_bounds_percent": [
+          "14.84276729559748427672955975",
+          "15.30740276035131744040150565"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3086081",
+        "distribution": "exponential",
+        "metric": "MSE",
+        "Calls": ".315",
+        "NoisyFlowSpeedCalls": ".225",
+        "computed_percent": "28.57142857142857142857142857",
+        "rounding_bounds_percent": [
+          "28.29888712241653418124006359",
+          "28.84310618066561014263074485"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3086081",
+        "distribution": "exponential",
+        "metric": "MAPE",
+        "Calls": "105.0",
+        "NoisyFlowSpeedCalls": "88.60",
+        "computed_percent": "15.61904761904761904761904762",
+        "rounding_bounds_percent": [
+          "15.57408289661743687470223916",
+          "15.66396953831508805330794860"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3086081",
+        "distribution": "exponential",
+        "metric": "RMSE",
+        "Calls": ".561",
+        "NoisyFlowSpeedCalls": ".475",
+        "computed_percent": "15.32976827094474153297682709",
+        "rounding_bounds_percent": [
+          "15.16503122212310437109723461",
+          "15.49421193232413178984861977"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "320287",
+        "distribution": "lognormal_mixture",
+        "metric": "MAE",
+        "Calls": ".067",
+        "NoisyFlowSpeedCalls": ".057",
+        "computed_percent": "14.92537313432835820895522388",
+        "rounding_bounds_percent": [
+          "13.53383458646616541353383459",
+          "16.29629629629629629629629630"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "320287",
+        "distribution": "lognormal_mixture",
+        "metric": "MSE",
+        "Calls": ".009",
+        "NoisyFlowSpeedCalls": ".006",
+        "computed_percent": "33.33333333333333333333333333",
+        "rounding_bounds_percent": [
+          "23.52941176470588235294117647",
+          "42.10526315789473684210526316"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "320287",
+        "distribution": "lognormal_mixture",
+        "metric": "MAPE",
+        "Calls": "87.0",
+        "NoisyFlowSpeedCalls": "72.90",
+        "computed_percent": "16.20689655172413793103448276",
+        "rounding_bounds_percent": [
+          "16.15296147211040828062104658",
+          "16.26076967260195290063182079"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "320287",
+        "distribution": "lognormal_mixture",
+        "metric": "RMSE",
+        "Calls": ".094",
+        "NoisyFlowSpeedCalls": ".080",
+        "computed_percent": "14.89361702127659574468085106",
+        "rounding_bounds_percent": [
+          "13.90374331550802139037433155",
+          "15.87301587301587301587301587"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "320287",
+        "distribution": "exponential",
+        "metric": "MAE",
+        "Calls": ".058",
+        "NoisyFlowSpeedCalls": ".047",
+        "computed_percent": "18.96551724137931034482758621",
+        "rounding_bounds_percent": [
+          "17.39130434782608695652173913",
+          "20.51282051282051282051282051"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "320287",
+        "distribution": "exponential",
+        "metric": "MSE",
+        "Calls": ".007",
+        "NoisyFlowSpeedCalls": ".004",
+        "computed_percent": "42.85714285714285714285714286",
+        "rounding_bounds_percent": [
+          "30.76923076923076923076923077",
+          "53.33333333333333333333333333"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "320287",
+        "distribution": "exponential",
+        "metric": "MAPE",
+        "Calls": "56.3",
+        "NoisyFlowSpeedCalls": "45.10",
+        "computed_percent": "19.89342806394316163410301954",
+        "rounding_bounds_percent": [
+          "19.81333333333333333333333333",
+          "19.97338065661047027506654836"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "320287",
+        "distribution": "exponential",
+        "metric": "RMSE",
+        "Calls": ".082",
+        "NoisyFlowSpeedCalls": ".065",
+        "computed_percent": "20.73170731707317073170731707",
+        "rounding_bounds_percent": [
+          "19.63190184049079754601226994",
+          "21.81818181818181818181818182"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "320280",
+        "distribution": "lognormal_mixture",
+        "metric": "MAE",
+        "Calls": ".081",
+        "NoisyFlowSpeedCalls": ".072",
+        "computed_percent": "11.11111111111111111111111111",
+        "rounding_bounds_percent": [
+          "9.937888198757763975155279500",
+          "12.26993865030674846625766871"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "320280",
+        "distribution": "lognormal_mixture",
+        "metric": "MSE",
+        "Calls": ".013",
+        "NoisyFlowSpeedCalls": ".009",
+        "computed_percent": "30.76923076923076923076923077",
+        "rounding_bounds_percent": [
+          "24.00",
+          "37.03703703703703703703703704"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "320280",
+        "distribution": "lognormal_mixture",
+        "metric": "MAPE",
+        "Calls": "54.60",
+        "NoisyFlowSpeedCalls": "50.90",
+        "computed_percent": "6.776556776556776556776556777",
+        "rounding_bounds_percent": [
+          "6.758860701529444088286473120",
+          "6.794249610841498031315813570"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "320280",
+        "distribution": "lognormal_mixture",
+        "metric": "RMSE",
+        "Calls": ".114",
+        "NoisyFlowSpeedCalls": ".097",
+        "computed_percent": "14.91228070175438596491228070",
+        "rounding_bounds_percent": [
+          "14.09691629955947136563876652",
+          "15.72052401746724890829694323"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "320280",
+        "distribution": "exponential",
+        "metric": "MAE",
+        "Calls": ".082",
+        "NoisyFlowSpeedCalls": ".061",
+        "computed_percent": "25.60975609756097560975609756",
+        "rounding_bounds_percent": [
+          "24.53987730061349693251533742",
+          "26.66666666666666666666666667"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "320280",
+        "distribution": "exponential",
+        "metric": "MSE",
+        "Calls": ".012",
+        "NoisyFlowSpeedCalls": ".007",
+        "computed_percent": "41.66666666666666666666666667",
+        "rounding_bounds_percent": [
+          "34.78260869565217391304347826",
+          "48.00"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "320280",
+        "distribution": "exponential",
+        "metric": "MAPE",
+        "Calls": "38.6",
+        "NoisyFlowSpeedCalls": "31.50",
+        "computed_percent": "18.39378238341968911917098446",
+        "rounding_bounds_percent": [
+          "18.27496757457846952010376135",
+          "18.51228978007761966364812419"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "320280",
+        "distribution": "exponential",
+        "metric": "RMSE",
+        "Calls": ".109",
+        "NoisyFlowSpeedCalls": ".081",
+        "computed_percent": "25.68807339449541284403669725",
+        "rounding_bounds_percent": [
+          "24.88479262672811059907834101",
+          "26.48401826484018264840182648"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "317706",
+        "distribution": "lognormal_mixture",
+        "metric": "MAE",
+        "Calls": ".156",
+        "NoisyFlowSpeedCalls": ".136",
+        "computed_percent": "12.82051282051282051282051282",
+        "rounding_bounds_percent": [
+          "12.21864951768488745980707395",
+          "13.41853035143769968051118211"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "317706",
+        "distribution": "lognormal_mixture",
+        "metric": "MSE",
+        "Calls": ".059",
+        "NoisyFlowSpeedCalls": ".042",
+        "computed_percent": "28.81355932203389830508474576",
+        "rounding_bounds_percent": [
+          "27.35042735042735042735042735",
+          "30.25210084033613445378151261"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "317706",
+        "distribution": "lognormal_mixture",
+        "metric": "MAPE",
+        "Calls": "128.4",
+        "NoisyFlowSpeedCalls": "111.3",
+        "computed_percent": "13.31775700934579439252336449",
+        "rounding_bounds_percent": [
+          "13.24503311258278145695364238",
+          "13.39042428960685091475282211"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "317706",
+        "distribution": "lognormal_mixture",
+        "metric": "RMSE",
+        "Calls": ".242",
+        "NoisyFlowSpeedCalls": ".205",
+        "computed_percent": "15.28925619834710743801652893",
+        "rounding_bounds_percent": [
+          "14.90683229813664596273291925",
+          "15.67010309278350515463917526"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "317706",
+        "distribution": "exponential",
+        "metric": "MAE",
+        "Calls": ".162",
+        "NoisyFlowSpeedCalls": ".109",
+        "computed_percent": "32.71604938271604938271604938",
+        "rounding_bounds_percent": [
+          "32.19814241486068111455108359",
+          "33.23076923076923076923076923"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "317706",
+        "distribution": "exponential",
+        "metric": "MSE",
+        "Calls": ".066",
+        "NoisyFlowSpeedCalls": ".027",
+        "computed_percent": "59.09090909090909090909090909",
+        "rounding_bounds_percent": [
+          "58.01526717557251908396946565",
+          "60.15037593984962406015037594"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "317706",
+        "distribution": "exponential",
+        "metric": "MAPE",
+        "Calls": "132.2",
+        "NoisyFlowSpeedCalls": "87.60",
+        "computed_percent": "33.73676248108925869894099849",
+        "rounding_bounds_percent": [
+          "33.70790768066590995081346954",
+          "33.76559546313799621928166352"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "317706",
+        "distribution": "exponential",
+        "metric": "RMSE",
+        "Calls": ".258",
+        "NoisyFlowSpeedCalls": ".165",
+        "computed_percent": "36.04651162790697674418604651",
+        "rounding_bounds_percent": [
+          "35.72815533980582524271844660",
+          "36.36363636363636363636363636"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3054051",
+        "distribution": "lognormal_mixture",
+        "metric": "MAE",
+        "Calls": ".434",
+        "NoisyFlowSpeedCalls": ".371",
+        "computed_percent": "14.51612903225806451612903226",
+        "rounding_bounds_percent": [
+          "14.30219146482122260668973472",
+          "14.72957422324510932105868815"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3054051",
+        "distribution": "lognormal_mixture",
+        "metric": "MSE",
+        "Calls": ".492",
+        "NoisyFlowSpeedCalls": ".354",
+        "computed_percent": "28.04878048780487804878048780",
+        "rounding_bounds_percent": [
+          "27.87385554425228891149542218",
+          "28.22335025380710659898477157"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3054051",
+        "distribution": "lognormal_mixture",
+        "metric": "MAPE",
+        "Calls": "118.0",
+        "NoisyFlowSpeedCalls": "85.9",
+        "computed_percent": "27.20338983050847457627118644",
+        "rounding_bounds_percent": [
+          "27.13013988978380669775328529",
+          "27.27657772130453197797543414"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3054051",
+        "distribution": "lognormal_mixture",
+        "metric": "RMSE",
+        "Calls": ".702",
+        "NoisyFlowSpeedCalls": ".595",
+        "computed_percent": "15.24216524216524216524216524",
+        "rounding_bounds_percent": [
+          "15.11047754811119030648610121",
+          "15.37366548042704626334519573"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3054051",
+        "distribution": "exponential",
+        "metric": "MAE",
+        "Calls": ".493",
+        "NoisyFlowSpeedCalls": ".324",
+        "computed_percent": "34.27991886409736308316430020",
+        "rounding_bounds_percent": [
+          "34.11167512690355329949238579",
+          "34.44782168186423505572441743"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3054051",
+        "distribution": "exponential",
+        "metric": "MSE",
+        "Calls": ".600",
+        "NoisyFlowSpeedCalls": ".237",
+        "computed_percent": "60.500",
+        "rounding_bounds_percent": [
+          "60.38365304420350291909924937",
+          "60.61615320566194837635303913"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3054051",
+        "distribution": "exponential",
+        "metric": "MAPE",
+        "Calls": "135.9",
+        "NoisyFlowSpeedCalls": "86.40",
+        "computed_percent": "36.42384105960264900662251656",
+        "rounding_bounds_percent": [
+          "36.39676113360323886639676113",
+          "36.45090106656859139389481427"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3054051",
+        "distribution": "exponential",
+        "metric": "RMSE",
+        "Calls": ".775",
+        "NoisyFlowSpeedCalls": ".487",
+        "computed_percent": "37.16129032258064516129032258",
+        "rounding_bounds_percent": [
+          "37.05616526791478373143963848",
+          "37.26627981947130883301096067"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3410061",
+        "distribution": "lognormal_mixture",
+        "metric": "MAE",
+        "Calls": ".404",
+        "NoisyFlowSpeedCalls": ".361",
+        "computed_percent": "10.64356435643564356435643564",
+        "rounding_bounds_percent": [
+          "10.40892193308550185873605948",
+          "10.87762669962917181705809642"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3410061",
+        "distribution": "lognormal_mixture",
+        "metric": "MSE",
+        "Calls": ".391",
+        "NoisyFlowSpeedCalls": ".318",
+        "computed_percent": "18.67007672634271099744245524",
+        "rounding_bounds_percent": [
+          "18.43790012804097311139564661",
+          "18.90166028097062579821200511"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3410061",
+        "distribution": "lognormal_mixture",
+        "metric": "MAPE",
+        "Calls": "725.7",
+        "NoisyFlowSpeedCalls": "495.0",
+        "computed_percent": "31.78999586606035551880942538",
+        "rounding_bounds_percent": [
+          "31.77840556742231103148900985",
+          "31.80158456768859800206682742"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "3410061",
+        "distribution": "lognormal_mixture",
+        "metric": "RMSE",
+        "Calls": ".626",
+        "NoisyFlowSpeedCalls": ".564",
+        "computed_percent": "9.904153354632587859424920128",
+        "rounding_bounds_percent": [
+          "9.752198241406874500399680260",
+          "10.05586592178770949720670391"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3410061",
+        "distribution": "exponential",
+        "metric": "MAE",
+        "Calls": ".402",
+        "NoisyFlowSpeedCalls": ".307",
+        "computed_percent": "23.63184079601990049751243781",
+        "rounding_bounds_percent": [
+          "23.41220423412204234122042341",
+          "23.85093167701863354037267081"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3410061",
+        "distribution": "exponential",
+        "metric": "MSE",
+        "Calls": ".343",
+        "NoisyFlowSpeedCalls": ".195",
+        "computed_percent": "43.14868804664723032069970845",
+        "rounding_bounds_percent": [
+          "42.91970802919708029197080292",
+          "43.37700145560407569141193595"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3410061",
+        "distribution": "exponential",
+        "metric": "MAPE",
+        "Calls": "109.7",
+        "NoisyFlowSpeedCalls": "74.10",
+        "computed_percent": "32.45214220601640838650865998",
+        "rounding_bounds_percent": [
+          "32.41678066575467396260829913",
+          "32.48747152619589977220956720"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "3410061",
+        "distribution": "exponential",
+        "metric": "RMSE",
+        "Calls": ".586",
+        "NoisyFlowSpeedCalls": ".442",
+        "computed_percent": "24.57337883959044368600682594",
+        "rounding_bounds_percent": [
+          "24.42356959863364645602049530",
+          "24.72293265132139812446717818"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "317715",
+        "distribution": "lognormal_mixture",
+        "metric": "MAE",
+        "Calls": ".324",
+        "NoisyFlowSpeedCalls": ".303",
+        "computed_percent": "6.481481481481481481481481481",
+        "rounding_bounds_percent": [
+          "6.182380216383307573415765070",
+          "6.779661016949152542372881360"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "317715",
+        "distribution": "lognormal_mixture",
+        "metric": "MSE",
+        "Calls": ".243",
+        "NoisyFlowSpeedCalls": ".214",
+        "computed_percent": "11.93415637860082304526748971",
+        "rounding_bounds_percent": [
+          "11.54639175257731958762886598",
+          "12.32032854209445585215605749"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "317715",
+        "distribution": "lognormal_mixture",
+        "metric": "MAPE",
+        "Calls": "109.3",
+        "NoisyFlowSpeedCalls": "91.0",
+        "computed_percent": "16.74290942360475754803293687",
+        "rounding_bounds_percent": [
+          "16.65903890160183066361556064",
+          "16.82670324645633287608596251"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "III",
+        "BS": "317715",
+        "distribution": "lognormal_mixture",
+        "metric": "RMSE",
+        "Calls": ".493",
+        "NoisyFlowSpeedCalls": ".463",
+        "computed_percent": "6.085192697768762677484787018",
+        "rounding_bounds_percent": [
+          "5.888324873096446700507614210",
+          "6.281661600810536980749746710"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "317715",
+        "distribution": "exponential",
+        "metric": "MAE",
+        "Calls": ".274",
+        "NoisyFlowSpeedCalls": ".216",
+        "computed_percent": "21.16788321167883211678832117",
+        "rounding_bounds_percent": [
+          "20.84095063985374771480804388",
+          "21.49362477231329690346083789"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "317715",
+        "distribution": "exponential",
+        "metric": "MSE",
+        "Calls": ".151",
+        "NoisyFlowSpeedCalls": ".093",
+        "computed_percent": "38.41059602649006622516556291",
+        "rounding_bounds_percent": [
+          "37.87375415282392026578073090",
+          "38.94389438943894389438943894"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "317715",
+        "distribution": "exponential",
+        "metric": "MAPE",
+        "Calls": "110.1",
+        "NoisyFlowSpeedCalls": "80.00",
+        "computed_percent": "27.33878292461398728428701181",
+        "rounding_bounds_percent": [
+          "27.30122671512948659700136302",
+          "27.37630503858374943259192011"
+        ]
+      },
+      {
+        "table": "V",
+        "baseline_table": "IV",
+        "BS": "317715",
+        "distribution": "exponential",
+        "metric": "RMSE",
+        "Calls": ".388",
+        "NoisyFlowSpeedCalls": ".305",
+        "computed_percent": "21.39175257731958762886597938",
+        "rounding_bounds_percent": [
+          "21.16129032258064516129032258",
+          "21.62162162162162162162162162"
+        ]
+      }
+    ],
+    "reported_range_rounding_checks": [
+      {
+        "table": "III",
+        "metric": "MAE",
+        "computed_from_printed": [
+          "8.333333333333333333333333333",
+          "33.92226148409893992932862191"
+        ],
+        "author_reported": [
+          "8.4",
+          "33.9"
+        ],
+        "rounding_extrema_bounds": [
+          [
+            "8.037094281298299845440494590",
+            "8.628659476117103235747303540"
+          ],
+          [
+            "33.62831858407079646017699115",
+            "34.21516754850088183421516755"
+          ]
+        ],
+        "author_rounding_intervals": [
+          [
+            "8.35",
+            "8.45"
+          ],
+          [
+            "33.85",
+            "33.95"
+          ]
+        ],
+        "author_values_possible_given_displayed_precision": [
+          true,
+          true
+        ],
+        "unrounded_outputs_checked": false
+      },
+      {
+        "table": "III",
+        "metric": "MSE",
+        "computed_from_printed": [
+          "13.58024691358024691358024691",
+          "56.77419354838709677419354839"
+        ],
+        "author_reported": [
+          "13.3",
+          "56.5"
+        ],
+        "rounding_extrema_bounds": [
+          [
+            "13.19587628865979381443298969",
+            "13.96303901437371663244353183"
+          ],
+          [
+            "56.31067961165048543689320388",
+            "57.23472668810289389067524116"
+          ]
+        ],
+        "author_rounding_intervals": [
+          [
+            "13.25",
+            "13.35"
+          ],
+          [
+            "56.45",
+            "56.55"
+          ]
+        ],
+        "author_values_possible_given_displayed_precision": [
+          true,
+          true
+        ],
+        "unrounded_outputs_checked": false
+      },
+      {
+        "table": "III",
+        "metric": "MAPE",
+        "computed_from_printed": [
+          "12.63736263736263736263736264",
+          "38.41376015289058767319636885"
+        ],
+        "author_reported": [
+          "12.5",
+          "38.4"
+        ],
+        "rounding_extrema_bounds": [
+          [
+            "12.53777818481545929114387764",
+            "12.73692885266916948997344566"
+          ],
+          [
+            "38.40410917995580242489398555",
+            "38.42340997312630636010749477"
+          ]
+        ],
+        "author_rounding_intervals": [
+          [
+            "12.45",
+            "12.55"
+          ],
+          [
+            "38.35",
+            "38.45"
+          ]
+        ],
+        "author_values_possible_given_displayed_precision": [
+          true,
+          true
+        ],
+        "unrounded_outputs_checked": false
+      },
+      {
+        "table": "III",
+        "metric": "RMSE",
+        "computed_from_printed": [
+          "6.896551724137931034482758621",
+          "34.09669211195928753180661578"
+        ],
+        "author_reported": [
+          "6.9",
+          "34"
+        ],
+        "rounding_extrema_bounds": [
+          [
+            "6.700507614213197969543147210",
+            "7.092198581560283687943262410"
+          ],
+          [
+            "33.88535031847133757961783439",
+            "34.30749682337992376111817027"
+          ]
+        ],
+        "author_rounding_intervals": [
+          [
+            "6.85",
+            "6.95"
+          ],
+          [
+            "33.5",
+            "34.5"
+          ]
+        ],
+        "author_values_possible_given_displayed_precision": [
+          true,
+          true
+        ],
+        "unrounded_outputs_checked": false
+      },
+      {
+        "table": "IV",
+        "metric": "MAE",
+        "computed_from_printed": [
+          "16.83417085427135678391959799",
+          "36.41975308641975308641975309"
+        ],
+        "author_reported": [
+          "16.89",
+          "35.74"
+        ],
+        "rounding_extrema_bounds": [
+          [
+            "16.60377358490566037735849057",
+            "17.06398996235884567126725220"
+          ],
+          [
+            "35.91331269349845201238390093",
+            "36.92307692307692307692307692"
+          ]
+        ],
+        "author_rounding_intervals": [
+          [
+            "16.885",
+            "16.895"
+          ],
+          [
+            "35.735",
+            "35.745"
+          ]
+        ],
+        "author_values_possible_given_displayed_precision": [
+          true,
+          false
+        ],
+        "unrounded_outputs_checked": false
+      },
+      {
+        "table": "IV",
+        "metric": "MSE",
+        "computed_from_printed": [
+          "30.79365079365079365079365079",
+          "61.00"
+        ],
+        "author_reported": [
+          "30.67",
+          "61.02"
+        ],
+        "rounding_extrema_bounds": [
+          [
+            "30.52464228934817170111287758",
+            "31.06180665610142630744849445"
+          ],
+          [
+            "60.88407005838198498748957465",
+            "66.66666666666666666666666667"
+          ]
+        ],
+        "author_rounding_intervals": [
+          [
+            "30.665",
+            "30.675"
+          ],
+          [
+            "61.015",
+            "61.025"
+          ]
+        ],
+        "author_values_possible_given_displayed_precision": [
+          true,
+          true
+        ],
+        "unrounded_outputs_checked": false
+      },
+      {
+        "table": "IV",
+        "metric": "MAPE",
+        "computed_from_printed": [
+          "16.19047619047619047619047619",
+          "37.89712556732223903177004539"
+        ],
+        "author_reported": [
+          "16.16",
+          "37.92"
+        ],
+        "rounding_extrema_bounds": [
+          [
+            "16.10290614578370652691757980",
+            "16.27796287482151356496906235"
+          ],
+          [
+            "37.86984487325009458948164964",
+            "37.92438563327032136105860113"
+          ]
+        ],
+        "author_rounding_intervals": [
+          [
+            "16.155",
+            "16.165"
+          ],
+          [
+            "37.915",
+            "37.925"
+          ]
+        ],
+        "author_values_possible_given_displayed_precision": [
+          true,
+          true
+        ],
+        "unrounded_outputs_checked": false
+      },
+      {
+        "table": "IV",
+        "metric": "RMSE",
+        "computed_from_printed": [
+          "16.75579322638146167557932264",
+          "37.54838709677419354838709677"
+        ],
+        "author_reported": [
+          "16.73",
+          "37.57"
+        ],
+        "rounding_extrema_bounds": [
+          [
+            "16.59232827832292595896520963",
+            "16.91896705253784505788067676"
+          ],
+          [
+            "37.44351194318915429309231762",
+            "37.65312701482914248871695680"
+          ]
+        ],
+        "author_rounding_intervals": [
+          [
+            "16.725",
+            "16.735"
+          ],
+          [
+            "37.565",
+            "37.575"
+          ]
+        ],
+        "author_values_possible_given_displayed_precision": [
+          true,
+          true
+        ],
+        "unrounded_outputs_checked": false
+      }
+    ],
+    "unresolved_reported_range_discrepancies": [
+      {
+        "table": "IV",
+        "metric": "MAE",
+        "computed_from_printed": [
+          "16.83417085427135678391959799",
+          "36.41975308641975308641975309"
+        ],
+        "author_reported": [
+          "16.89",
+          "35.74"
+        ],
+        "rounding_extrema_bounds": [
+          [
+            "16.60377358490566037735849057",
+            "17.06398996235884567126725220"
+          ],
+          [
+            "35.91331269349845201238390093",
+            "36.92307692307692307692307692"
+          ]
+        ],
+        "author_rounding_intervals": [
+          [
+            "16.885",
+            "16.895"
+          ],
+          [
+            "35.735",
+            "35.745"
+          ]
+        ],
+        "author_values_possible_given_displayed_precision": [
+          true,
+          false
+        ],
+        "unrounded_outputs_checked": false
+      }
+    ],
+    "short_period_summary": {
+      "improved": 148,
+      "worsened": 11,
+      "tied": 1
+    },
+    "short_period_counterexamples": [
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MAE",
+        "Calls": ".235",
+        "FlowSpeedCalls": ".363",
+        "computed_percent": "-54.46808510638297872340425532",
+        "rounding_bounds_percent": [
+          "-55.01066098081023454157782520",
+          "-53.92781316348195329087048830"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".100",
+        "FlowSpeedCalls": ".522",
+        "computed_percent": "-422.00",
+        "rounding_bounds_percent": [
+          "-425.1256281407035175879396985",
+          "-418.9054726368159203980099502"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".317",
+        "FlowSpeedCalls": ".723",
+        "computed_percent": "-128.0757097791798107255520505",
+        "rounding_bounds_percent": [
+          "-128.5939968404423380726698262",
+          "-127.5590551181102362204724409"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".087",
+        "FlowSpeedCalls": ".114",
+        "computed_percent": "-31.03448275862068965517241379",
+        "rounding_bounds_percent": [
+          "-32.36994219653179190751445090",
+          "-29.71428571428571428571428570"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VI",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".295",
+        "FlowSpeedCalls": ".337",
+        "computed_percent": "-14.23728813559322033898305085",
+        "rounding_bounds_percent": [
+          "-14.60101867572156196943972840",
+          "-13.87478849407783417935702200"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Monday",
+        "metric": "MAPE",
+        "Calls": "80.98",
+        "FlowSpeedCalls": "82.96",
+        "computed_percent": "-2.445048160039515929859224500",
+        "rounding_bounds_percent": [
+          "-2.457548626119172584130904600",
+          "-2.432549237513119713527196400"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VII",
+        "week": 33,
+        "weekday": "Wednesday",
+        "metric": "MAPE",
+        "Calls": "119.5",
+        "FlowSpeedCalls": "119.5",
+        "computed_percent": "0",
+        "rounding_bounds_percent": [
+          "-0.083717036416910841356216000",
+          "0.0836470096194061062317022200"
+        ],
+        "direction": "tied",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MAE",
+        "Calls": ".232",
+        "FlowSpeedCalls": ".348",
+        "computed_percent": "-50.0",
+        "rounding_bounds_percent": [
+          "-50.53995680345572354211663070",
+          "-49.46236559139784946236559140"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".105",
+        "FlowSpeedCalls": ".518",
+        "computed_percent": "-393.3333333333333333333333333",
+        "rounding_bounds_percent": [
+          "-396.1722488038277511961722488",
+          "-390.5213270142180094786729858"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 32,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".323",
+        "FlowSpeedCalls": ".718",
+        "computed_percent": "-122.2910216718266253869969040",
+        "rounding_bounds_percent": [
+          "-122.7906976744186046511627907",
+          "-121.7928902627511591962905719"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "MSE",
+        "Calls": ".099",
+        "FlowSpeedCalls": ".123",
+        "computed_percent": "-24.24242424242424242424242424",
+        "rounding_bounds_percent": [
+          "-25.38071065989847715736040610",
+          "-23.11557788944723618090452260"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      },
+      {
+        "table": "VIII",
+        "week": 33,
+        "weekday": "Friday",
+        "metric": "RMSE",
+        "Calls": ".315",
+        "FlowSpeedCalls": ".351",
+        "computed_percent": "-11.42857142857142857142857143",
+        "rounding_bounds_percent": [
+          "-11.76470588235294117647058820",
+          "-11.09350237717908082408874800"
+        ],
+        "direction": "worsened",
+        "BS": "320287"
+      }
+    ],
+    "duplicate_printed_rows": {
+      "table": "VII",
+      "week": 32,
+      "days": [
+        "Tuesday",
+        "Wednesday"
+      ],
+      "FlowSpeedCalls_medians": [
+        ".110",
+        ".024",
+        "75.18",
+        ".154"
+      ],
+      "status": "same printed four median fields and visually identical12min/median/max fields; actual output provenance unknown"
+    },
+    "prior_note_correction": {
+      "table": "VI",
+      "week": 32,
+      "day": "Friday",
+      "metric": "Calls MSE",
+      "old_private_note": ".101",
+      "correct_median": ".100",
+      "max": ".101",
+      "public_claim_changed": false
+    },
+    "short_period_BS": "320287",
+    "short_period_BS_source": "PDF p9 sectionV-B3 and Figure9 caption p11",
+    "TableII_simulated_BS_ranges_miles": {
+      "3086071": "7.67",
+      "3086081": "1.62",
+      "320287": "13.27",
+      "320280": "13.41",
+      "317706": "3.89",
+      "3054051": "0.99",
+      "3410061": "3.22",
+      "317715": "1.46"
+    },
+    "TableII_range_scope": "Eight visually transcribed values from PDFp4/originalpreviewSRC0063305; assumed interdetector distances, not operatorBScoverage; separate from192medianfields"
+  },
+  "derived_text_comparisons": [
+    {
+      "source_id": "SRC-0063266",
+      "PDF_source_id": "SRC-0063265",
+      "equal_with_PAGE_wrappers_and_universal_newlines": true,
+      "saved_characters": 65904,
+      "rebuilt_characters": 65904,
+      "byte_alias": false,
+      "no_double_fulltext_credit": true
+    },
+    {
+      "source_id": "SRC-0063291",
+      "PDF_source_id": "SRC-0063290",
+      "equal_with_PAGE_wrappers_and_universal_newlines": true,
+      "saved_characters": 72845,
+      "rebuilt_characters": 72845,
+      "byte_alias": false,
+      "no_double_fulltext_credit": true
+    }
+  ],
+  "new_model_runs": 0,
+  "source_scripts_executed": false,
+  "random_draws": 0,
+  "limits": [
+    "Arithmetic from rounded printed values; underlying predictions, simulator and training not reproduced.",
+    "Rounding intervals assume nearest rounding to displayed final digit, conservatively retaining short decimal precision; consistency does not prove authors exact unrounded gains.",
+    "All512median fields extracted;192numeric fields manually transcribed and checked; every nonmedian field has not been independently transcribed.",
+    "Figures/table inconsistencies preserved; Table2 hyperparameters read but not independently executed."
+  ]
+}

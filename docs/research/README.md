@@ -93,3 +93,7 @@
 ## 51·55 GOTSF의 목적과 재현 조건
 
 [GOTSF 검토 기록](records/0051-0055-gotsf-audit.md)은 값 구간별 예측·zero-mask MAE의 분모·논문/코드 설정 차이를 연결합니다. 두 판본의 인쇄표 비교, 정책별 반례, 미해결 평균값 차이, 공개 beam 자료의 시간 간격과 notebook 실행 증거의 한계를 함께 확인할 수 있습니다. 51·55 전체 검토는 계속 진행 중입니다.
+
+## 51·55 ITU·Cellular 예측 조건
+
+[네트워크 예측 문헌 기록](records/0051-0055-network-forecasting.md)은 beam 단위·시간 분할·입력 가용성과 모의 통화 target을 구분합니다. ITU의 기준별 이득, Cellular의 금요일 악화 사례, 표/그림·개선율 불일치를 [H033 검수](verification/history-033.md)에 연결했습니다. 두 연구를 cell clustering이나 RCTL 이득의 증거로 확대하지 않습니다.

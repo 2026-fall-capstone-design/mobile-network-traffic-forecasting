@@ -222,3 +222,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## 목적 구간의 예측·sleep 정책을 다시 설계하기 전에 — 51·55
 
 [GOTSF 기록](records/0051-0055-gotsf-audit.md)을 먼저 봅니다. interval은 target 값 범위이며 zero-mask MAE는 구간 빈도를 포함합니다. BLW PatchTST I1의 D1_2L은 B보다 27.48% 악화하며, 표의 평균 55.8%는 다른 최선 정책의 이득입니다. 2,880 beam을 cell로 부르거나 week 6·11을 연속 기간으로 연결하지 않습니다. 논문·코드 설정, 1025·1026행의 차이, 정수 date의 시간축, notebook 출처 공백을 확인하고 새 정보·학습 행동·구간 빈도·기간/cell 손해·실측 비용을 명시해야 합니다. 운영 simulation을 RCTL 소속 개선이나 실측 전력 절감으로 옮기지 않습니다.
+
+## Beam 특징과 도로 정보로 예측 개선 — 51·55 후속
+
+검색어: ITU, LightGBM, CatBoost, beam forecasting, stratified CV, target encoding, Cellular Predictions, PeMS, flow, speed, 모의 통화, 입력 가용성. [기록](records/0051-0055-network-forecasting.md)에서 10-fold BS층화와 시간순검증, 실측도로입력과모의target, 24주개선과7주금요일손해를 구분합니다. 재검토하려면 같은target/척도와미래입력가용성·분할·정규화를고정하고 셀/기간별반례까지 비교해야 합니다. 소속수정효용은 최종RCTL에서 별도확인해야하며55전체신규성검토는남아있습니다.
