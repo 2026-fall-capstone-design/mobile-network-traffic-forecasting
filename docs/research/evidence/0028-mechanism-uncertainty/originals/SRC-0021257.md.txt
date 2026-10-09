@@ -1,0 +1,66 @@
+# 관계 차이와 추정 불확실성에 관한 원문·코드 확인
+
+확인일 2026-09-25. 아래는 후보를 검토하기 위한 근거이며 채택한 새 알고리즘이 아니다. 원문 PDF 세 편과 공식 코드, 추가 논문의 버전 고정 HTML을 `sources/method_audit_28/` 및 `sources/method_audit_28_clt/`에 보관했다. 파일 크기·페이지 수·SHA-256·URL은 각 manifest에 있다.
+
+## 1. 예측 폭을 관계 추정의 확실성으로 해석하지 않는다
+
+TabMGP, arXiv 2510.25154v3, ICML 2026, §2~3·Algorithm 1·§5.1·Appendix E.1을 확인했다. [원문](https://arxiv.org/html/2510.25154v3)
+
+이 방법의 대상은 다음 Y의 범위가 아니라, 예측 규칙이 암묵적으로 정하는 분포에서 계산한 통계량의 posterior다. 입력을 경험분포에서 뽑고, TabPFN이 생성한 Y를 context에 누적한 뒤 통계량을 계산한다. 기본 500회 생성×100개 경로이므로 초기 자료 한 묶음당 50,000회 예측이 필요하다. 회귀는 TabPFN v2, ensemble 8을 사용했다. 보고된 약 200초는 L40S에서 posterior sample 한 개의 비용이지 전체 100개 비용이 아니다.
+
+§3.2는 martingale 성질의 증명이 아니라 경로 안정성·coverage·수축의 실증 확인을 사용한다. 정형 자료의 결과를 트래픽의 겹치는 lag 행에 그대로 옮길 수 없다. 실제 연구에서 이 구조를 실행하지 않았다.
+
+공식 `tabmgp_minimal.py`의 commit은 `bf44db185f75e0d619967e99527dd41d83065868`이다. `forward_sampling`은 생성한 X·Y를 다음 context에 포함하고 adapter는 `fit`을 다시 호출한다. v2 알고리즘의 표기 대신 수정된 v3와 코드를 기준으로 판단했다. 현재 clustering에 이 전체 posterior 생성 단계를 추가하지 않는다.
+
+## 2. 더 최근의 예측 CLT도 비용과 적용 조건을 확인해야 한다
+
+Fortini 등, arXiv 2602.04596v2, 2026-07-19, §4~5·Appendix A/B/J.1을 확인했다. [원문](https://arxiv.org/html/2602.04596v2)
+
+고정 query의 CDF를 context 길이 1, 2, …, n에서 계산하고 변화량의 외적을 누적한다. 생성 경로 없이 epistemic covariance를 추정하지만, 각 prefix의 새 계산은 남는다. 논문은 TabPFN v2.5를 사용하며 ensemble은 coverage 실험 16, 그 외 기본 64다. 전체 coverage 실험의 700 GPU-hours를 단일 호출 비용으로 해석하지 않는다.
+
+저자 코드 commit `ccd10bd3aa4b2002a6867e8f854282948c8a6036`의 `tabicl_adapter.py`에는 이미 TabICLRegressor 지원이 있다. `raw_quantiles`로 QuantileDistribution을 만들고 CDF를 구한다. `posterior.py`의 `compute_g0_to_gn`은 prefix마다 호출하며 `compute_vn`은 k² 가중 외적을 평균한다. 따라서 ‘TabICL에 불확실성 분해를 추가했다’는 것만으로 신규성이 생기지 않는다. 코드를 실행하거나 성능을 확인한 것은 아니다.
+
+Theorem 5.2의 입력 과정 독립 조건과 Theorem 5.3의 drift·수렴 조건은 구별한다. 후자는 전자의 추가 조건을 요구하지 않는다. 해당 정리의 가정이 TabICLv2 트래픽 자료에서 확인됐다고 주장하지 않는다. 현재는 후보별 신뢰 구간으로 채택하지 않는다.
+
+## 3. 같은 예측 관계를 묶는 발상은 이미 구체화되어 있다
+
+Vario, Mameche·Kaltenpoth·Vreeken, KDD 2022, Assumption 4.1·Definition 4.2·§5 Algorithm 1·Appendix B Algorithm 3을 확인했다. [저자 원문](https://www.sarahmm.com/papers/2022-kdd-discovering.pdf)
+
+이 논문은 관측 환경별 회귀 관계를 묶고, MDL로 공통 설명과 환경별 차이의 비용을 비교한다. 여기서 context는 환경을 뜻한다. TabICL에 넣는 sample 묶음과 같은 개념이 아니다. 같은 DAG와 잡음 독립 조건 아래 인과적 해석을 제시한다. 구현 절차는 공변량 부분집합별 선형 회귀 계수를 추정하고 partition을 탐색한다. greedy top-down도 이미 제시되어 있다.
+
+따라서 ‘전체에서 시작해 필요할 때 나눈다’, ‘예측 규칙을 clustering한다’, ‘모델 설명 비용도 고려한다’를 새 원리로 내세우지 않는다. 비선형 추정기를 대입하려면 정확도 또는 비용에서 별도 개선 근거가 필요하다. 이 논문에는 우리의 network traffic·RCTL 확인이 없다. 공식 구현은 이번에 확인하지 않았으며 논문의 알고리즘 수준까지 읽었다.
+
+## 4. global 오차가 남았다고 모두 cell 이질성은 아니다
+
+Ren·Wu, Boosting Global Time Series Forecasting Models: A Two-Stage Modelling Framework, ECAI 2025, §3.1~3.2·Algorithm 1·Propositions 1~3·§4.2·Table 2를 확인했다. [저자 소속기관 원문](https://kar.kent.ac.uk/111229/1/FAIA-413-FAIA251157.pdf)
+
+global 예측기의 residual에 Ljung–Box 검사를 적용하고, 남은 residual 특징을 k-means로 묶는다. Type-II는 global 가중치를 복사·고정하고 추가 층을 학습한다. validation 손실로 분할을 선택하며 실험에서는 K≤10을 둔다. 원시 파형 대신 residual을 묶는 것 자체도 선행 방법이다.
+
+이 구조를 RCTL로 그대로 실행하면 clustering 판단에 학습된 RCTL을 사용하게 되므로 현재의 독립성 조건과 맞지 않는다. TabICL residual로 바꾼 뒤 RCTL 성능이 좋아진다는 결론도 별도로 필요하다. 원문의 유효 sample 수를 넣은 bound를 임의의 시계열 의존에 대한 보장으로 사용하지 않는다. 공식 코드 링크는 확인했지만 코드 내부·재현 실행은 이번 범위에 포함하지 않았다.
+
+## 5. 우리 설계에 직접 적용한 논리 확인
+
+아래는 논문 결과의 인용이 아닌 이번 검토의 추론이다.
+
+- **lag 입력의 의존성:** sample n의 정답을 Yₙ, 다음 sample의 최근 입력을 Xₙ₊₁,last라고 하면 Xₙ₊₁,last=Yₙ이다. 과거 입력만으로 Yₙ이 결정되지 않는 경우, 둘의 조건부 공분산은 Var(Yₙ|과거 입력)>0이다. 따라서 CLT 논문 Theorem 5.2의 추가 조건을 일반적인 겹치는 lag sample이 자동으로 만족하지 않는다. 이것만으로 Theorem 5.3 전체를 반박한 것은 아니다.
+- **잔여 자기상관과 이질성:** 모든 cell이 같은 AR(1) 관계를 가져도 reference predictor가 lag를 무시하면 residual에 자기상관이 남는다. residual 검사 실패는 reference가 놓친 정보의 근거이며, cell마다 다른 예측기가 필요하다는 충분조건이 아니다.
+- **손실 변환:** 실제값 1에 대한 예측을 0.5에서 1.9로 바꾸면 제곱 로그 오차는 약 0.4805→0.4120으로 줄지만 원래 제곱 오차는 0.25→0.81로 늘어난다. 로그 공간의 개선만으로 원래 단위 MSE 개선을 보장하지 않는다. 이는 모든 residual 방법의 무효를 뜻하지 않는다.
+- **예측 폭과 추정 불확실성:** 참 관계를 정확히 알아도 미래 잡음의 폭은 남는다. 넓은 예측 구간을 ‘함께 학습할 상대를 몰라서 생긴 불확실성’으로 직접 읽으면 안 된다.
+
+## 6. 후보 비교와 결정
+
+| 검토 방향 | 제공할 수 있는 정보 | 이번 판단 |
+|---|---|---|
+| TabMGP 방식의 posterior clustering | 관계 통계량의 추정 불확실성 | 대규모 context 갱신과 새로운 시계열 가정이 필요하다. 추가하지 않는다. |
+| predictive CLT를 이용한 병합 확신도 | 고정 query CDF의 prefix별 변화 | 이미 TabICL adapter가 있으며, prefix 계산·모델 오차·RCTL 연결 문제가 남는다. 새 추천안으로 채택하지 않는다. |
+| global residual 기반 분할 | global이 남긴 오차의 패턴 | 가까운 기존 구조가 있다. 공통 모델 오류와 cell 차이를 구별하지 못하면 문제를 잘못 정의한다. 단순 대입안을 추천하지 않는다. |
+
+cell당 context가 504개이면 predictive CLT의 전체 prefix 구성은 128·1,024·10,000 cell에서 각각 64,512·516,096·5,040,000개 prefix를 평가한다. 상수 target prefix는 코드가 직접 처리하므로 실제 모델 호출은 일부 줄 수 있다. 이 숫자는 호출 규모의 산술 계산이며 측정 시간이 아니다. TabICLv2의 전체 실행 시간은 별도 측정 없이 TabPFN의 점근식으로 확정하지 않는다.
+
+27의 긍정·부정 결과와 이 네 논문을 함께 보면, 지금 필요한 것은 불확실성 이름의 새 모듈이 아니라 **단순 방법이 남기는 손해, 이를 해결하는 TabICL 정보, 바뀌는 clustering 결정**을 연결하는 근거다. 이 연결을 이번 문헌만으로 완료했다고 선언하지 않는다.
+
+## 검색 범위·미확인 자료
+
+검색어: `TabICL clustering uncertainty`, `forecasting clustering effective sample size`, `time series task grouping uncertainty`, `FAIA251157`, `Bounded Context Management arxiv`. TabMGP의 참고문헌에서 2602.04596을 추가 확인했다. 초록·검색 결과만 확인한 Clustered Invariant Risk Minimization, CRT 논문 2603.06609, NTK task-affinity 연구, PreqTorch를 원리 검토 완료 목록으로 넣지 않았다. 이번에 새로 찾은 자료가 기존 방법을 모두 포괄한다거나 전 세계 최초성을 보장한다고 주장하지 않는다.
+
+추천안과 최종 Word는 아직 미완료다. 활성 연구 goal은 유지한다. 이번 분석으로 완료된 실행을 다시 시작하거나 누적 예산을 초기화하지 않는다.

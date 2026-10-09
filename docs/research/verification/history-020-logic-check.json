@@ -1,0 +1,36 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T05:47:38.964007+00:00",
+  "source_record": "SRC-0021257",
+  "log_squared_errors": [
+    0.4804530139182014,
+    0.41197641119460554
+  ],
+  "original_squared_errors": [
+    0.25,
+    0.81
+  ],
+  "prefix_evaluations": {
+    "128": 64512,
+    "1024": 516096,
+    "10000": 5040000
+  },
+  "tabmgp_prediction_steps_per_context": 50000,
+  "common_AR1_example": {
+    "status": "deterministic_specialization_of_record28_reasoning_not_new_experiment",
+    "shared_phi": "1/2",
+    "innovation_variance": "1",
+    "reference_predictor": "zero;ignores lag",
+    "residual_variance": "4/3",
+    "residual_lag1_covariance": "2/3",
+    "residual_autocorrelation": "1/2"
+  },
+  "symbolic_scope": [
+    "X_next_last=Y_n implies Cov(X_next_last,Y_n|X_past)=Var(Y_n|X_past), if finite positive variance;this addressesThm5.2(iv),notThm5.3.",
+    "Perfectly known conditional law can retain positive future-noise variance;predictive width is not itself posterior estimator uncertainty."
+  ],
+  "new_model_runs": 0,
+  "new_simulations": 0,
+  "actual_call_counts_measured": false,
+  "wall_time_measured": false
+}
