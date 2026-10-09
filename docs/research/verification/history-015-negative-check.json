@@ -1,0 +1,63 @@
+{
+  "success": true,
+  "negative_cases": 14,
+  "cases": [
+    {
+      "case": "missing_completed_call",
+      "rejected_by": "B1:call_count"
+    },
+    {
+      "case": "duplicate_completed_call",
+      "rejected_by": "B1:unique_calls"
+    },
+    {
+      "case": "unique_query_substituted_for_call_rows",
+      "rejected_by": "B1:0:query_rows"
+    },
+    {
+      "case": "nonfinite_recorded_time",
+      "rejected_by": "B2:0:fit_seconds:finite"
+    },
+    {
+      "case": "summary_disagrees_with_call_log",
+      "rejected_by": "cell_identity:summary_calls"
+    },
+    {
+      "case": "reported_model_time_inconsistent",
+      "rejected_by": "broad_cell_information:reported_call_seconds"
+    },
+    {
+      "case": "stage_smaller_than_its_calls",
+      "rejected_by": "target_parameterization:stage_includes_calls"
+    },
+    {
+      "case": "wrong_RCTL_seed",
+      "rejected_by": "RCTL:method_seed_group_identity"
+    },
+    {
+      "case": "boolean_best_epoch",
+      "rejected_by": "RCTL:0:epochs"
+    },
+    {
+      "case": "fractional_best_epoch",
+      "rejected_by": "RCTL:0:epochs"
+    },
+    {
+      "case": "RCTL_epoch_total_disagrees",
+      "rejected_by": "RCTL:total_epochs"
+    },
+    {
+      "case": "incomplete_RCTL_run",
+      "rejected_by": "RCTL:completion_flag"
+    },
+    {
+      "case": "wall_smaller_than_fit_intervals",
+      "rejected_by": "RCTL:wall_includes_fit_intervals"
+    },
+    {
+      "case": "changed_preserved_bytes",
+      "rejected_by": "SRC-0023607:size"
+    }
+  ],
+  "scope": "격리 사본에서 누락·중복 호출, query 단위, 비유한 시간, summary 불일치, 잘못된 RCTL seed·epoch·완료 상태·타이머 포함관계·원문 바이트 변경을 거부함. 모델 실행 없음."
+}

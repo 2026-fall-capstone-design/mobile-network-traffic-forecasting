@@ -39,7 +39,7 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 
 [history-008 목록](history-008-sources.jsonl)은 13/14와 15 수치·방법 부분의 16출처를 연결한다. 새 원문 13개와 기존 배열 3개 재사용이며, [읽은 범위](../sources/history-008.md)는 본문 전체 5개·JSON 전체 키 5개·신규 배열 3개의 지정 필드다. 15의 전체 62행을 읽은 것과 §3 여섯 문헌의 주장 검수는 별도 작업이다.
 
-[history-009 목록](history-009-sources.jsonl)은15 원문 재사용1개·새 입수 기록1개·문헌 텍스트6개/PDF6개의 메타데이터를 연결한다. [읽은 범위](../sources/history-009.md)는 지정 줄과 PDF29쪽의 지정 내용이며 전논문 완료0편이다. 당시 문헌 판단을 대조했고 원문 표현·비율 공백4건을 보존했다. 15의 후속 연결과 누적 실행 비용 재감사는 남아 있다.
+[history-009 목록](history-009-sources.jsonl)은15 원문 재사용1개·새 입수 기록1개·문헌 텍스트6개/PDF6개의 메타데이터를 연결한다. [읽은 범위](../sources/history-009.md)는 지정 줄과 PDF29쪽의 지정 내용이며 전논문 완료0편이다. 당시 문헌 판단을 대조했고 원문 표현·비율 공백4건을 보존했다. 15의 완료 호출 누적은 [H015 비용 원장](../records/0015-0021-cumulative-costs.md)에서 대조했으며, 나머지 후속 연결과 전체 실패 비용은 남아 있다.
 
 [history-010 목록](history-010-sources.jsonl)은16–17의 원문8개 새 보존과 기존2개 재사용, H5 metadata1건을 연결한다. [읽은 범위](../sources/history-010.md)는 텍스트 전체3개·JSON 전체키3개·새 배열2개 및 재사용 자료의 지정 범위다. 저장 성능과 H5 지정 구간의 입력·정답을 대조했으며,H010 시점에서 세 문헌 방법과 후속 공간 정보 기록은 미완료였다. 지정 방법은 아래 H011에 연결했다.
 
@@ -49,6 +49,8 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 
 [history-013 목록](history-013-sources.jsonl)은19/20계획·코드·저장결과·집중도의새원본18개495,076bytes와기존2개재사용,H5/설치metadata/checkpoint3건을연결한다. [열람범위](../sources/history-013.md)는새텍스트전체5개·JSON전체9개·수치배열파일4개다.21은ID/잔차/집중도및추가6호출만더검수했으며문헌과전체누적원장은남았다. 위H012의19/20대기상태는이후이묶음으로진행됐다.
 
-[history-014 목록](history-014-sources.jsonl)은21/22와 초기/현재 지침4건(새2·재사용2),외부 설치 코드·metadata4건을 연결한다. [열람 범위](../sources/history-014.md)와 별도 웹 metadata는FSA/CDE/TabularMath 세 논문,TabPFN-TS 세 commit,현재 공식 지침의 지정 구간을 구분한다.21의 문헌57–62행을 더 연결했고22의 미완료 문헌·운영 증거 공백을 남겼다. 논문 전체와21 누적 비용은 미완료다.
+[history-014 목록](history-014-sources.jsonl)은21/22와 초기/현재 지침4건(새2·재사용2),외부 설치 코드·metadata4건을 연결한다. [열람 범위](../sources/history-014.md)와 별도 웹 metadata는FSA/CDE/TabularMath 세 논문,TabPFN-TS 세 commit,현재 공식 지침의 지정 구간을 구분한다.21의 문헌57–62행을 더 연결했고22의 미완료 문헌·운영 증거 공백을 남겼다. 21의 완료 호출 누적은 [H015](../records/0015-0021-cumulative-costs.md)에서 이어서 대조했다. 논문 전체와 실패·후속 비용의 전수 감사는 미완료다.
 
 목록과 근거 사본은 정리 시점의 스냅샷이다. 원본 변경 시 관련 주장과 검토 상태를 재확인한다. GitHub에는 검수된 묶음부터 반영하며, 전체 기록의 본문 정리는 진행 중이다.
+
+[15·21 초기 누적 비용 출처](history-015-sources.jsonl)는 기존28개 원본을 재사용하고 이번 타이머·비용 필드 대조 범위를 구분한다. 전체 실패·후속 비용 원장의 완료를 뜻하지 않는다.
