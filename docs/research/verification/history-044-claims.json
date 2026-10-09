@@ -1,0 +1,257 @@
+{
+  "batch_id": "history-044",
+  "claims": [
+    {
+      "claim_id": "H044-C01",
+      "claim": "103고유 바이트 묶음·207경로 범위와 원본 보존",
+      "source_location": "scope-matrix.json;SRC-0021746;SRC-0021824",
+      "verification_method": "inventory와 SHA256, 모든207경로 및6controls 재대조",
+      "limit": "전체 원본 corpus나 upstream dependency 전체 범위 아님"
+    },
+    {
+      "claim_id": "H044-C02",
+      "claim": "신규 정적 코드5개209줄;98그룹 기존 판독 연결",
+      "source_location": "SRC-0022754:1–46;SRC-0022764:1–50;SRC-0022782:1–44;SRC-0022797:1–56;SRC-0023101:1–13",
+      "verification_method": "전체 정적 독해·기존manifest hash검색·사본 비교",
+      "limit": "실행 횟수/독립 실험 수 아님"
+    },
+    {
+      "claim_id": "H044-C03",
+      "claim": "26취득 항목 중25성공, Ciena는200이지만Not PDF",
+      "source_location": "SRC-0063292;SRC-0063267;SRC-0063302;SRC-0064355",
+      "verification_method": "4로그 전항목과 성공파일 크기/hash, 실패파일 부재 대조",
+      "limit": "후속H040 취득 성공을 과거성공으로 소급하지 않음"
+    },
+    {
+      "claim_id": "H044-C04",
+      "claim": "16저장 미리보기는125dpi7개와120dpi9개 코드/로그에 연결",
+      "source_location": "SRC-0022797;SRC-0022782;SRC-0023101;SRC-0063293;SRC-0064363;SRC-0064358",
+      "verification_method": "정적page목록/DPI와16이미지hash 대조",
+      "limit": "새 시각 독해나 새 독립 연구결과로 가산0"
+    },
+    {
+      "claim_id": "H044-C05",
+      "claim": "취득 경로의 guard·25초 timeout·크기 상한·PDF signature/개별 error와 렌더 경로의 guard·timeout을 구분",
+      "source_location": "SRC-0022754;SRC-0022764;SRC-0022782;SRC-0022797;SRC-0023101",
+      "verification_method": "수집/렌더 함수 순서와 원문전체 판독",
+      "limit": "guard 존재가 과거 실행 횟수나성공 보증은 아님"
+    },
+    {
+      "claim_id": "H044-C06",
+      "claim": "코드·receipt·출력계보 일치와 유일한 생성자 증명은 다름",
+      "source_location": "SRC-0022754;SRC-0022797;SRC-0063261;SRC-0063262;SRC-0064359",
+      "verification_method": "33cell source추출 재구성 및 수집/렌더로그 대조",
+      "limit": "과거 process trace 미확보;review_scope는역사적범위신고"
+    },
+    {
+      "claim_id": "H044-C07",
+      "claim": "문제 존재·방법 신규성·Tab추가기여의 세 판단을 구분",
+      "source_location": "SRC-0021824:5–9,70–86;SRC-0021782 전체",
+      "verification_method": "원55전문과53질문,개별H031–H043근거 통합",
+      "limit": "보편적비신규성/Tab무용성 증명 아님"
+    },
+    {
+      "claim_id": "H044-C08",
+      "claim": "2880은30BS×3cell×32beam;물리cell/단위합산 미확인",
+      "source_location": "SRC-0021824:15;SRC-0063278;SRC-0063290;H033-C03",
+      "verification_method": "기존1차문헌/카드 검수와 원55 대조",
+      "limit": "미래 PRB/MR 실제가용성·원CSV검증미완료"
+    },
+    {
+      "claim_id": "H044-C09",
+      "claim": "840h와분리된week6/11각168h;336index를연속calendar로읽지않음",
+      "source_location": "SRC-0021824:16;SRC-0063278;H043 검수",
+      "verification_method": "원카드와고정그림 후속 범위 재사용",
+      "limit": "그림바이트검증은원CSV계보검증아님"
+    },
+    {
+      "claim_id": "H044-C10",
+      "claim": "Beijing960×168/960×32와생성series분할은미래평가아님",
+      "source_location": "SRC-0021824:17,21;SRC-0023905;SRC-0063298;H031/H041",
+      "verification_method": "스키마·loader기존검수 재사용",
+      "limit": "실제timestamp·station/cell ID·단위미기록"
+    },
+    {
+      "claim_id": "H044-C11",
+      "claim": "Cellular의실제PeMS입력과모의call target 구분",
+      "source_location": "SRC-0021824:18;SRC-0063265;H033",
+      "verification_method": "논문조건과원55대조",
+      "limit": "실측cell traffic volume개선으로전이금지"
+    },
+    {
+      "claim_id": "H044-C12",
+      "claim": "event과거미접근은후속AAM독해와구분",
+      "source_location": "SRC-0021824:19,84;SRC-0063272;H042-C01–40",
+      "verification_method": "원실패로그와H042공식AAM범위/반례연결",
+      "limit": "원자료·저자코드·publishedversion일치재현아님"
+    },
+    {
+      "claim_id": "H044-C13",
+      "claim": "GOTSF는값범위목표와frequency×conditional MAE",
+      "source_location": "SRC-0021824:27–29;SRC-0063271;SRC-0063283;H032",
+      "verification_method": "원식·activecode기존검수와55대조",
+      "limit": "다른interval의평균을한모델전체MAE로변환안함"
+    },
+    {
+      "claim_id": "H044-C14",
+      "claim": "에너지simulation·144frame은실측절전/독립모델실험아님",
+      "source_location": "SRC-0021824:31;SRC-0063276;H032;H043",
+      "verification_method": "가정·미디어해석과실행범위대조",
+      "limit": "GIF생성설정/완전예측배열미확인"
+    },
+    {
+      "claim_id": "H044-C15",
+      "claim": "ITU의BS10fold와순방향시간평가를구분",
+      "source_location": "SRC-0021824:33;SRC-0063290 §5.2.3;H033",
+      "verification_method": "기존원문검수재사용",
+      "limit": "달력lag강한비교근거이며우리clustering검증아님"
+    },
+    {
+      "claim_id": "H044-C16",
+      "claim": "Moghadas입력선택/다중출력과RCTLpooling구분·초기clustering비용유지",
+      "source_location": "SRC-0021824:39;SRC-0063287 ch5;H035",
+      "verification_method": "기존원문표/그림/비용검수와55대조",
+      "limit": "17%입력과10415.90/92.39/23.89초를전체비용절감한값으로섞지않음"
+    },
+    {
+      "claim_id": "H044-C17",
+      "claim": "SRSSS의선택/현재복원원리는기존이며52온도센서범위",
+      "source_location": "SRC-0021824:40;SRC-0064360;H036",
+      "verification_method": "기존식/Alg1/Table2독해재사용",
+      "limit": "온도결과로mobile/RCTL효용확정안함"
+    },
+    {
+      "claim_id": "H044-C18",
+      "claim": "Zoom2Net의모호한이력·정밀정답·CEM전체0.145–0.532초구분",
+      "source_location": "SRC-0021824:41;SRC-0064364 Table1/§3–7;H037",
+      "verification_method": "기존표/모호성검수와55대조",
+      "limit": "1ms미만모델만의비용을실시간전체복원비로쓰지않음"
+    },
+    {
+      "claim_id": "H044-C19",
+      "claim": "NETNOMOS규칙준수·복원·50ms예측과약5배비용구분",
+      "source_location": "SRC-0021824:42;SRC-0064356 §3–4/8;H038",
+      "verification_method": "원문기존검수재사용",
+      "limit": "scalarquantile에token규칙을그대로이식한구현은없음"
+    },
+    {
+      "claim_id": "H044-C20",
+      "claim": "공식impute예제와54직접회귀는다른경로",
+      "source_location": "SRC-0021824:46;SRC-0064362;SRC-0022964;H039",
+      "verification_method": "고정코드/완전context예제검수와54구현대조",
+      "limit": "MICE성능을54로측정했다고하지않음"
+    },
+    {
+      "claim_id": "H044-C21",
+      "claim": "Ciena세비용문제는55당시후보에대한후속근거",
+      "source_location": "SRC-0064355;SRC-0064359;SRC-0021824:35–46;H040",
+      "verification_method": "당시비교표부재/접근실패와후속23쪽독해연결",
+      "limit": "55당시전문을읽었다거나cell/RCTL실험이라고소급안함"
+    },
+    {
+      "claim_id": "H044-C22",
+      "claim": "54고정probe/target4개·256context/64query·개발범위·12열정보",
+      "source_location": "SRC-0021802;SRC-0022964;SRC-0029394;SRC-0021824:48–64;H031",
+      "verification_method": "계획/설정/코드/H5부분대조의기존검수재사용",
+      "limit": "무학습기준은12열중일부소비;실제X별도보존없음"
+    },
+    {
+      "claim_id": "H044-C23",
+      "claim": "7방법의 전체·앞/뒤 두 블록·원척도 MAE 표는 저장값",
+      "source_location": "SRC-0029391 results;SRC-0029388;H031 saved-check152",
+      "verification_method": "원JSON전체결과필드와인쇄반올림재대조;배열검수재사용",
+      "limit": "새모델추론/성능실험없음"
+    },
+    {
+      "claim_id": "H044-C24",
+      "claim": "Tab은Ridge4cell모두손해,HGB1cell승리도Ridge에는손해",
+      "source_location": "SRC-0029391 results.*.MAE_by_cell",
+      "verification_method": "네paired비교와screening대조",
+      "limit": "모든자료/설정에일반화안함"
+    },
+    {
+      "claim_id": "H044-C25",
+      "claim": "앞두블록Tab0.069936이득,뒤0.147138손해를함께보존",
+      "source_location": "SRC-0029391 results.*.MAE_by_half;SRC-0021824:62",
+      "verification_method": "저장수치및집계산술재대조",
+      "limit": "앞구간만고른성공또는전체무이득으로왜곡안함"
+    },
+    {
+      "claim_id": "H044-C26",
+      "claim": "정규화전체Ridge우위,원activity는HGB우위",
+      "source_location": "SRC-0029391 results.*.MAE/raw_activity_MAE",
+      "verification_method": "최솟값과정규화원단위순위대조",
+      "limit": "activity는bytes/Mbps아님"
+    },
+    {
+      "claim_id": "H044-C27",
+      "claim": "사전확대조건세개동시충족실패false/false/0",
+      "source_location": "SRC-0021802;SRC-0029391 screening",
+      "verification_method": "원계획과저장판정대조",
+      "limit": "유의성/업무허용오차검정아님"
+    },
+    {
+      "claim_id": "H044-C28",
+      "claim": "첫assert중단은모델호출전;수정후완료실행과partial사본구분",
+      "source_location": "SRC-0022965;SRC-0022964;SRC-0029390;SRC-0029387;SRC-0029389;H031",
+      "verification_method": "기존code diff/marker/NPZ공유10배열검수재사용",
+      "limit": "외부stderr/process로그및사람의당시행동독립검증아님"
+    },
+    {
+      "claim_id": "H044-C29",
+      "claim": "Tab2.5434092+cheap0.7142799=stage3.2576891;simple중복가산안함",
+      "source_location": "SRC-0029391 cost;SRC-0029390;SRC-0023222;H031",
+      "verification_method": "저장타이머/산술/원장기존검수대조",
+      "limit": "RSS480579584은호출사이표본;전체시스템latency아님"
+    },
+    {
+      "claim_id": "H044-C30",
+      "claim": "55시점누적49contexts35968행29RCTLfit와실패비용/미계측범위보존",
+      "source_location": "SRC-0021824:66–83;SRC-0029386;SRC-0023222;H031 lineage-check",
+      "verification_method": "기존snapshot12/현재prefix검수재사용",
+      "limit": "226.430296인쇄값마지막자리차이·옛잔여예산≠새실행승인"
+    },
+    {
+      "claim_id": "H044-C31",
+      "claim": "관측선택→현재복원→미래RCTL과원소속질문은다르며확대미실행",
+      "source_location": "SRC-0021824:70–83;SRC-0029391 flags",
+      "verification_method": "계획/완료범위/원55판단대조",
+      "limit": "새clustering/RCTL/독립평가증거없음"
+    },
+    {
+      "claim_id": "H044-C32",
+      "claim": "N−m복원비와cell당k대안의Nk는설계조건부규모",
+      "source_location": "SRC-0021824:74;SRC-0022964;H031",
+      "verification_method": "구조와측정경계대조",
+      "limit": "모든구현의하한·10000cell실측지연으로일반화안함"
+    },
+    {
+      "claim_id": "H044-C33",
+      "claim": "같은조건은계획·예측·오류·비용재사용,새설계는관측/행동/평가/총비용차이를기록",
+      "source_location": "SRC-0021824:74–95;SRC-0021782;SRC-0021802;H031–H043",
+      "verification_method": "원질문과기존검수의조건을종합한설계질문",
+      "limit": "새실행지시/현재최종모델선정아님"
+    },
+    {
+      "claim_id": "H044-C34",
+      "claim": "후반손해와신규성부족은해당구성범위판단",
+      "source_location": "SRC-0021824:7–9,72–86",
+      "verification_method": "원55긍정구간과한계함께대조",
+      "limit": "연구전체중단/모든Tab방법실패/세계전수신규성결론아님"
+    },
+    {
+      "claim_id": "H044-C35",
+      "claim": "103자료범위표와55통합이관련packet전수검증은아님",
+      "source_location": "scope-matrix.json;SRC-0063263;SRC-0063304;SRC-0064362;SRC-0023487;SRC-0021824",
+      "verification_method": "모든기존read_scope와새script판독수준대조",
+      "limit": "과거그림동일성/원자료/실행계보/전체corpus·팀접근남음"
+    },
+    {
+      "claim_id": "H044-C36",
+      "claim": "과거다음행동·예산은역사자료,이번fit/inference/originalcode/RNG0",
+      "source_location": "SRC-0021782;SRC-0021802;SRC-0021824:78–97;history-044-primary-check.json",
+      "verification_method": "정리작업범위·실제수행도구와보호파일hash대조",
+      "limit": "과거완료/잔여예산을현재연구지시로사용안함"
+    }
+  ]
+}

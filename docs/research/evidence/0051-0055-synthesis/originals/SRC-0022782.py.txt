@@ -1,0 +1,44 @@
+from pathlib import Path
+import urllib.request, concurrent.futures, json, hashlib, subprocess
+from pypdf import PdfReader
+
+base=Path(__file__).resolve().parent
+out=base/'sources/telemetry_53'
+out.mkdir(exist_ok=True)
+log=out/'fetch_log.json'
+assert not log.exists(), 'Already fetched; inspect existing records.'
+items=[
+ ('zoom2net_SIGCOMM2024.pdf','https://cs.stanford.edu/~keithw/sigcomm2024/sigcomm24-final114-acmpaginated.pdf'),
+ ('sensor_selection_AAAI2016.pdf','https://ojs.aaai.org/index.php/AAAI/article/download/9895/9754'),
+ ('netnomos_NSDI2026.pdf','https://hhy.ee.princeton.edu/papers/2026_nsdi_netnomos.pdf'),
+ ('ciena_telemetry_2021.pdf','https://www.nctatechnicalpapers.com/Paper/2021/2021-reducing-the-cost-of-network-traffic-monitoring-with-ai/download'),
+ ('tabicl_imputation_docs.html','https://tabicl.readthedocs.io/en/latest/tutorials/unsupervised_learning.html')]
+def fetch(item):
+ name,url=item;cap=20_000_000 if name.endswith('.pdf') else 5_000_000
+ rec={'file':name,'url':url,'access_date':'2026-09-26','cap':cap}
+ try:
+  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Research source audit/1.0'}),timeout=25) as r:
+   b=r.read(cap+1);rec.update(status=r.status,final_url=r.url)
+  if len(b)>cap: raise ValueError('Size cap exceeded')
+  if name.endswith('.pdf') and not b.startswith(b'%PDF-'): raise ValueError('Not PDF')
+  p=out/name;p.write_bytes(b)
+  rec.update(bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+  if name.endswith('.pdf'):
+   reader=PdfReader(p);rec['pages']=len(reader.pages)
+   p.with_suffix('.txt').write_text('\n\n'.join(f'--- PAGE {i+1} ---\n{page.extract_text()}' for i,page in enumerate(reader.pages)),encoding='utf-8')
+ except Exception as e: rec['error']=str(e)
+ return rec
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+ records=list(pool.map(fetch,items))
+log.write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+for r in records: print(json.dumps(r,ensure_ascii=False),flush=True)
+
+poppler='C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe'
+source=base/'sources/network_scope_51/imdea_Moghadas_thesis_2026.pdf'
+previews=out/'previews';previews.mkdir(exist_ok=True)
+renders=[]
+for page in [109,113,115]:
+ prefix=previews/f'imdea_thesis_p{page}'
+ subprocess.run([poppler,'-f',str(page),'-l',str(page),'-r','120','-png','-singlefile',str(source),str(prefix)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=25)
+ p=prefix.with_suffix('.png');renders.append({'source':str(source.relative_to(base)),'page':page,'image':str(p.relative_to(out)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+(out/'thesis_render_log.json').write_text(json.dumps(renders,indent=2),encoding='utf-8')

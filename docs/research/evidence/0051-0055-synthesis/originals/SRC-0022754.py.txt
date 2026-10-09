@@ -1,0 +1,46 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import json, hashlib, urllib.request
+from pypdf import PdfReader
+
+out = Path(__file__).resolve().parent / 'sources/network_scope_51'
+log = out / 'code_fetch_log.json'
+if log.exists():
+    raise SystemExit('Source fetch already recorded')
+commit = json.loads((out / 'gotsf_commit.json').read_text(encoding='utf-8'))['sha']
+paths = ['data_provider/data_loader.py', 'data_provider/data_factory.py',
+         'experiments/exp_long_term_forecasting_discrete.py',
+         'experiments/exp.py', 'utils/delta_specific_utils.py',
+         'scripts/multivariate_forecasting/Wireless/train.sh',
+         'Viz_Wireless.ipynb']
+records = []
+sources = [(p.replace('/', '__'), f'https://raw.githubusercontent.com/netop-team/gotsf/{commit}/{p}', 5_000_000) for p in paths]
+sources += [('gotsf_arxiv_abs.html', 'https://arxiv.org/abs/2504.17493', 5_000_000),
+            ('gotsf_arxiv_v3.pdf', 'https://arxiv.org/pdf/2504.17493v3', 20_000_000)]
+for name, url, cap in sources:
+    rec = {'file':name, 'url':url, 'accessed_at':datetime.now(timezone.utc).isoformat(),
+           'commit':commit if 'githubusercontent' in url else None, 'max_bytes':cap}
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent':'Research source audit/1.0'})
+        with urllib.request.urlopen(req, timeout=25) as response:
+            data = response.read(cap + 1)
+            rec.update(status=response.status, final_url=response.url)
+        if len(data) > cap: raise ValueError('Download cap exceeded')
+        if name.endswith('.pdf') and not data.startswith(b'%PDF-'): raise ValueError('Not PDF')
+        path = out/name
+        path.write_bytes(data)
+        rec.update(bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            reader = PdfReader(path)
+            rec['pages'] = len(reader.pages)
+            path.with_suffix('.txt').write_text('\n\n'.join(f'--- PAGE {i+1} ---\n{page.extract_text()}' for i, page in enumerate(reader.pages)), encoding='utf-8')
+        if name.endswith('.ipynb'):
+            notebook=json.loads(data)
+            path.with_suffix('.source.txt').write_text('\n\n'.join(
+                f"--- CELL {i} {cell['cell_type']} ---\n" + ''.join(cell.get('source', []))
+                for i, cell in enumerate(notebook['cells'])), encoding='utf-8')
+    except Exception as exc:
+        rec['error']=str(exc)
+    records.append(rec)
+    log.write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps(rec,ensure_ascii=False),flush=True)
