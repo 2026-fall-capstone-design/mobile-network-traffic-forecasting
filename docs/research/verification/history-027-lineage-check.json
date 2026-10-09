@@ -1,0 +1,147 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T10:11:37.720019+00:00",
+  "checks": [
+    "snapshot_last_stage",
+    "snapshot_46_seconds",
+    "live_ledger_same_prefix",
+    "model_calls_same_prefix",
+    "tab_elapsed_sum",
+    "tab_context_sum",
+    "tab_rows_sum",
+    "frozen_elapsed_sum",
+    "TabICL_contexts_remaining",
+    "TabICL_query_rows_remaining",
+    "RCTL_fits_remaining",
+    "29_fits_zero_remaining",
+    "47_cheap_report",
+    "47_modeling_report",
+    "snapshot_file_count",
+    "snapshot_total_bytes",
+    "SRC-0021616_snapshot_entry",
+    "SRC-0021660_snapshot_entry",
+    "SRC-0022883_snapshot_entry",
+    "SRC-0023219_snapshot_entry",
+    "SRC-0027916_snapshot_entry",
+    "SRC-0027917_snapshot_entry",
+    "SRC-0027918_snapshot_entry",
+    "SRC-0027919_snapshot_entry",
+    "SRC-0000661_snapshot_entry",
+    "code_hash_preservation_not_pre_run",
+    "temporal_cell_order",
+    "temporal_query_times",
+    "temporal_targets_exact",
+    "spatial_metadata_cells",
+    "spatial_metadata_neighbors",
+    "train_query_widths_seed",
+    "history-012-local-data-check.json_success",
+    "H5_identity_same_as_H012",
+    "history-012-risk-check.json_success",
+    "SRC-0023177_H012_identity",
+    "SRC-0031961_H012_identity",
+    "SRC-0031962_H012_identity",
+    "SRC-0031959_H012_identity",
+    "SRC-0032487_H012_identity",
+    "control:AGENTS.md",
+    "control:tmp/redesign_20260925/research_state.json",
+    "control:tmp/redesign_20260925/research_focus.md",
+    "control:tmp/redesign_20260925/progress.md",
+    "control:tmp/redesign_20260925/candidate_decision_index.md",
+    "control:tmp/redesign_20260925/cumulative_execution_budget.json"
+  ],
+  "check_count": 46,
+  "sources": [
+    {
+      "source_id": "SRC-0021616",
+      "sha256": "eca83327f6b3450e1f7e883439e27696c730c5509a1c67904396cfa636564fea"
+    },
+    {
+      "source_id": "SRC-0021660",
+      "sha256": "7f0c2dcae4e427782f3c83c9f74a5be611ed3ffe13835a823ce81256b09eb53e"
+    },
+    {
+      "source_id": "SRC-0022883",
+      "sha256": "2451377aa15f0bc8c5ca54ca6f8c44a1796c8c48ccb2f803cfe2ed6c88dcd738"
+    },
+    {
+      "source_id": "SRC-0023219",
+      "sha256": "2d0c3d52fb604436cbc185555d3b54898bdab110a48bb068720548fe7e422ea7"
+    },
+    {
+      "source_id": "SRC-0027916",
+      "sha256": "2b4bafa19054ce1d2ecfa9b48ff4406e9ecf54763721cf58be7ce8018211c85a"
+    },
+    {
+      "source_id": "SRC-0027917",
+      "sha256": "7b395944326c8b3307e64da8750e9e210e601687830ac4e4b3a289c6e7ffd544"
+    },
+    {
+      "source_id": "SRC-0027918",
+      "sha256": "d9136c10df387b3c514381ac55b077efa1b307f706568b775e454eb6e703ffc6"
+    },
+    {
+      "source_id": "SRC-0027919",
+      "sha256": "e168f9dfba0e74f9e4de47f0e794b8418fe85d30895da366c3f58bc043df72ef"
+    },
+    {
+      "source_id": "SRC-0000661",
+      "sha256": "7499b810a3fec7bbbe3713a75a2aa2fc4fa38658d14acd8eca287e4231a95a78"
+    },
+    {
+      "source_id": "SRC-0000657",
+      "sha256": "5913fcb354b9ad9d9d798b2279c8f2d6d6b5dc631068c0d803b2b30c3a6f6d00"
+    },
+    {
+      "source_id": "SRC-0031959",
+      "sha256": "c9223c16497db6fd9d7659d371140660ff42b02ae4a29cd3a0a845c9c86e4c6f"
+    },
+    {
+      "source_id": "SRC-0031962",
+      "sha256": "a3d0742c3b97828579012f5399f29d15b5aaf2b6e244f2be0e756c52addcb069"
+    },
+    {
+      "source_id": "SRC-0023177",
+      "sha256": "9bc38d948d92029c3b191f725c70e99112863ffe279abeee592a3899d6bfb6c6"
+    },
+    {
+      "source_id": "SRC-0031961",
+      "sha256": "593555c5bbdda0f042dc0dfe121bb433a4e8f8750274a51e37837abe69a57087"
+    },
+    {
+      "source_id": "SRC-0032487",
+      "sha256": "1c4276490fe50463415c724a4c8cfcae560654adb1e85d41233d204aea4ae797"
+    },
+    {
+      "source_id": "SRC-0022700",
+      "sha256": "17a549fcf926e534eaecd4efd278fe4e13f7c7a13e74805c21059a2d6fc59243"
+    },
+    {
+      "source_id": "SRC-0023485",
+      "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e"
+    }
+  ],
+  "prior_audits": [
+    {
+      "path": "docs/research/verification/history-012-local-data-check.json",
+      "sha256": "6ec5a0f84986f071224b658de8d57428f6a799f88fef345481f2ccce0032c516",
+      "scope": "previous verified audit reused, not rerun"
+    },
+    {
+      "path": "docs/research/verification/history-012-risk-check.json",
+      "sha256": "50ab5e2c155b0971a1e0290c6b977cb8e542ff3ee5047f1a0a73f035b070e02a",
+      "scope": "previous verified audit reused, not rerun"
+    }
+  ],
+  "ledger_snapshot_id": "SRC-0000661",
+  "package_manifest_id": "SRC-0000657",
+  "cheap_seconds": 55.83284709999753,
+  "recorded_modeling_seconds": 1947.7267451999999,
+  "current_model_runs": 0,
+  "random_draws": 0,
+  "historical_code_imported_or_executed": false,
+  "limits": [
+    "Stored ledger is consistent with one 46 entry; filesystem history cannot prove no unlogged execution.",
+    "Expanded historical spatial X and fitted models are not saved; H012 reconstructed recipe is not a capture of actual historical X.",
+    "Full ledger audit, initial preprocessing total, whole snapshot content and 47 literature are not verified here."
+  ]
+}
