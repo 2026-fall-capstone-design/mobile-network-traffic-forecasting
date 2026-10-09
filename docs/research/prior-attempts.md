@@ -174,3 +174,15 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 | OOF, shuffled KFold, shared ablation runtime | [고정 저자 코드](evidence/0043-0044-predictor-roles/README.md), commit f8ea1e71… | 시간 분할을 별도로 설계. global CV 추가 호출과 ablation의 공유 시간을 구별하고 같은 시간을 두 번 합산하지 않음 |
 
 두 경로는 당시 목표에서 문헌 검토 후 미채택됐다. 새 모델 실행으로 성능 실패를 확인한 기록이 아니다. [43–44 출처](sources/history-026.md)를 재사용하고 새 정보·실제 학습 행동·이전 시도와 다른 검증 조건을 설계에 적는다.
+
+## 다른 cell의 과거를 입력 열로 추가하려는가
+
+| 문제·별칭 | 기존 근거 | 같은 연구의 반복을 피하려면 |
+|---|---|---|
+| input sharing, spatial input, 이웃 평균, PCC 이웃, 8방향 | [45–46 저장 예측](records/0045-0046-input-stability.md): 32cell·336시간, Ridge/HGB, 두 모델/두 주 교집합2/2/1개 | sample 행 공유와 입력 열 추가를 구별. 전체 평균과 기존/추가16cell·주별 손해를 함께 확인 |
+| 첫 주 입력 선택, next-week selection | 같은 기록에서 Ridge 다음 주 차이+0.000147, HGB−0.000509; 둘 다15cell 개선 | 같은 개발 기간에서 선택/평가한 결과를 독립 검증으로 재인용하지 않음. 새 기간·가용 입력·선택 단위의 차이를 적음 |
+| future-label oracle, 성공 cell 목록 | 사후 oracle Ridge0.145866/HGB0.231390; 소수 cell 교집합 | 미래 정답과 결과를 본 cell 선정은 실행 가능한 정책의 증거가 아님 |
+| 공간 입력으로 RCTL 소속을 정하는가 | 46은 저장 단순 예측 재분석이며 새 Tab/RCTL/simple 실행0, 소속 변경false | RCTL의 입력 구성과 공동 학습 단위의 연결이 새 질문. 기존16cell/480시간 RCTL과 직접 순위 비교하지 않음 |
+| cheap 비용, peak_RSS | 당시46타이머0.030364초, RSS는 종료무렵 단일 관측 | 입력/계획hash와 결과 저장은 타이머 밖. 18의 기존 적합 비용을46새비용으로 중복 합산하지 않음 |
+
+[설정·예측·결과·당시 원장](evidence/0045-0046-input-stability/README.md)을 재사용할 수 있다. 47의 문헌·논리·규모·전체 판단과 후속75는 아직 검수 대기이며, 검색 결과가 없다는 이유로 새 연구라고 판단하지 않는다.

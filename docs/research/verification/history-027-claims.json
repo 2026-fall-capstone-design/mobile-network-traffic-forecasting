@@ -1,0 +1,103 @@
+{
+  "batch_id": "history-027",
+  "claims": [
+    {
+      "claim_id": "H027-C01",
+      "claim": "45의 입력 공유 질문과 46의 저장 재분석; 새 모델 0",
+      "source_location": "45 전체;46 코드1–34/87–91;settings/start/finish",
+      "verification_method": "관측/실행 범위",
+      "limit": "과거 계획은 현재 실행 지시가 아님"
+    },
+    {
+      "claim_id": "H027-C02",
+      "claim": "32개 cell·336시간·float64·앞뒤168시간 동일성",
+      "source_location": "46 settings/result;18 NPZ;temporal NPZ의 cell_ids/times/Y",
+      "verification_method": "저장 산술/identity",
+      "limit": "개발 구간이며 새 독립 시험이 아님"
+    },
+    {
+      "claim_id": "H027-C03",
+      "claim": "첫672시간 cell별 정규화와 학습/평가 시간",
+      "source_location": "18 코드17–46;H012 local-data/risk check",
+      "verification_method": "정적 독해와 기존 검수 재사용",
+      "limit": "실제 과거 확장 X는 저장되지 않음"
+    },
+    {
+      "claim_id": "H027-C04",
+      "claim": "16/24/24/80열·경계/PCC·Ridge/HGB 설정",
+      "source_location": "18 코드24–65;18 run_started",
+      "verification_method": "정적 독해/metadata",
+      "limit": "방향의 실제 지리 매핑·전체 환경 재현 아님"
+    },
+    {
+      "claim_id": "H027-C05",
+      "claim": "8조건 전체/기존16/추가16/주별 MAE와 두 주 개선 수",
+      "source_location": "46 result.models.*.variants;18 NPZ",
+      "verification_method": "146필드 저장 산술 대조",
+      "limit": "반올림 전 <0로 개선 판정"
+    },
+    {
+      "claim_id": "H027-C06",
+      "claim": "교집합2/2/1개와 cell목록",
+      "source_location": "46 result.cross_model_stability;18 NPZ",
+      "verification_method": "저장 산술",
+      "limit": "사후 개발 집합을 성공 cell 선정 기준으로 사용하지 않음"
+    },
+    {
+      "claim_id": "H027-C07",
+      "claim": "평균과 부분집합·기간별 손해가 함께 존재",
+      "source_location": "46 variants MAE_original16/MAE_additional16/MAE_by_week",
+      "verification_method": "관측 해석",
+      "limit": "모든 공간 신호의 무용성이나 일반 성능 우위로 확대하지 않음"
+    },
+    {
+      "claim_id": "H027-C08",
+      "claim": "첫 주 cell·회귀기별 argmin과 동률 순서",
+      "source_location": "45 계획;46 코드55–69;selected_variant_index_by_cell",
+      "verification_method": "정적 독해/저장 산술",
+      "limit": "두 번째 주 labels는 첫 주 선택에 들어가지 않음"
+    },
+    {
+      "claim_id": "H027-C09",
+      "claim": "선택 MAE·차이·선택 수·개선 수·oracle 일치",
+      "source_location": "46 first_week_selection;18 NPZ",
+      "verification_method": "저장 산술",
+      "limit": "모델 재적합 없이 저장 출력만 선택"
+    },
+    {
+      "claim_id": "H027-C10",
+      "claim": "oracle 미래 정답 사용과 직접 순위 비교 한계",
+      "source_location": "46 second_week_label_oracle;47§2",
+      "verification_method": "수치/범위 해석",
+      "limit": "Tab 우위·RCTL grouping 개선이나 다른16cell/480h순위가 아님"
+    },
+    {
+      "claim_id": "H027-C11",
+      "claim": "0.030364초와 RSS35,512,320의 측정 경계",
+      "source_location": "46 코드25/76–87;result/finish;47§7",
+      "verification_method": "정적 독해/로그",
+      "limit": "실제 연속 peak·전체 preprocessing wall 아님"
+    },
+    {
+      "claim_id": "H027-C12",
+      "claim": "당시 cheap/modeling·호출·잔여와 단일 반영",
+      "source_location": "snapshot10 ledger;currentledger prefix;update_budget code",
+      "verification_method": "46개 계보/원장 검사",
+      "limit": "저장 원장의 일관성; 미기록 실행 부재 증명 아님"
+    },
+    {
+      "claim_id": "H027-C13",
+      "claim": "원본/계획/설정 identity와 보존 시 코드 해시",
+      "source_location": "settings/start;스냅샷manifest의 지정9행/코드hash",
+      "verification_method": "identity 대조",
+      "limit": "코드 해시는 실행 전 필드가 아님;전32파일본문검수아님"
+    },
+    {
+      "claim_id": "H027-C14",
+      "claim": "소속·추천 변경 없음과 재검토 범위",
+      "source_location": "46 result의두false;45판단기준;47§2",
+      "verification_method": "당시 판단의 제한된 연결",
+      "limit": "47문헌·논리·규모·종합은후속검수;전체Goal미완료"
+    }
+  ]
+}

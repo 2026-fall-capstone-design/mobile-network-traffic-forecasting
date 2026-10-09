@@ -1,0 +1,20 @@
+from pathlib import Path
+import json
+base=Path(__file__).resolve().parent
+p=base/'cumulative_execution_budget.json'
+ledger=json.loads(p.read_text(encoding='utf-8'))
+r=json.loads((base/'results/input_sharing_stability_46/result.json').read_text(encoding='utf-8'))
+finish=json.loads((base/'results/input_sharing_stability_46/run_finished.json').read_text(encoding='utf-8'))
+key='input_sharing_stability_46'
+assert key not in ledger['new_cheap_diagnostic_seconds']
+assert finish['completed'] and r['source_unchanged']
+assert all(r['settings'][k]==0 for k in ['new_TabICL_contexts','new_TabICL_queries','new_RCTL_fits','new_RCTL_forward_calls','new_simple_fits'])
+ledger['new_cheap_diagnostic_seconds'][key]=r['seconds']
+ledger['as_of_date']='2026-09-26'
+cheap=sum(ledger['new_cheap_diagnostic_seconds'].values())
+total=cheap+sum(ledger['used'][k] for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds'])
+assert cheap<ledger['caps']['cheap_numeric_seconds']
+assert total<ledger['caps']['total_local_modeling_seconds']
+assert ledger['used']['RCTL_fits']==29 and ledger['remaining_count_budgets']['RCTL_fits']==0
+p.write_text(json.dumps(ledger,indent=2,allow_nan=False,ensure_ascii=False)+'\n',encoding='utf-8')
+print(json.dumps({'added':key,'seconds':r['seconds'],'cheap_total':cheap,'recorded_modeling_seconds':total,'remaining':ledger['remaining_count_budgets']}))

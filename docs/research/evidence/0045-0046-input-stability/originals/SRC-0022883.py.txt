@@ -1,0 +1,91 @@
+"""New stability diagnostic on existing forecasts. No model fit or forward call."""
+from pathlib import Path
+import hashlib, json, time
+import numpy as np
+import psutil
+
+base=Path(__file__).resolve().parent
+out=base/'results/input_sharing_stability_46'
+out.mkdir(parents=True,exist_ok=True)
+if (out/'run_started.json').exists():
+    raise SystemExit('Already started. Do not rerun.')
+source=base/'results/spatial_information/predictions.npz'
+plan=base/'45_input_sharing_review_plan.md'
+digest=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+hash_before=digest(source)
+settings={'date':'2026-09-26','source':str(source.relative_to(base)),
+          'source_sha256':hash_before,'plan_sha256':digest(plan),
+          'cell_count':32,'hours':336,'block_hours':168,
+          'models':['Ridge','HGB'],
+          'variants':['own','neighbor_mean','PCC_neighbor','all_neighbor_directions'],
+          'new_TabICL_contexts':0,'new_TabICL_queries':0,'new_RCTL_fits':0,
+          'new_RCTL_forward_calls':0,'new_simple_fits':0,
+          'development_diagnostic_only':True,'time_cap_seconds':10,'rss_cap_bytes':1024**3}
+(out/'settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+(out/'run_started.json').write_text(json.dumps({'started':True,'settings_sha256':digest(out/'settings.json')}),encoding='utf-8')
+t0=time.perf_counter()
+with np.load(source,allow_pickle=False) as data:
+    p=data['pred'];y=data['y'];ids=data['cell_ids'];times=data['query_times']
+assert p.shape==(2,4,32,336) and y.shape==(32,336)
+assert np.isfinite(p).all() and np.isfinite(y).all() and len(ids)==32
+assert np.array_equal(times,np.arange(672,1008))
+loss=np.abs(p-y[None,None])
+mae=loss.mean(axis=-1)
+block=loss.reshape(2,4,32,2,168).mean(axis=-1)
+rows={}
+for mi,model in enumerate(settings['models']):
+    variants={}
+    for vi,variant in enumerate(settings['variants']):
+        delta=mae[mi,vi]-mae[mi,0]
+        delta_block=block[mi,vi]-block[mi,0]
+        stable=np.all(delta_block<0,axis=-1)
+        variants[variant]={
+            'MAE':float(mae[mi,vi].mean()),'MAE_by_cell':mae[mi,vi].tolist(),
+            'MAE_by_week':block[mi,vi].mean(axis=0).tolist(),
+            'delta_vs_own':float(delta.mean()),
+            'delta_by_cell':delta.tolist(),'delta_by_cell_and_week':delta_block.tolist(),
+            'improved_cells':int(np.sum(delta<0)),
+            'improved_both_weeks_cell_ids':ids[stable].tolist(),
+            'improved_both_weeks_count':int(np.sum(stable)),
+            'MAE_original16':float(mae[mi,vi,:16].mean()),
+            'MAE_additional16':float(mae[mi,vi,16:].mean()),
+            'positive_and_negative_delta_sums':{
+                'positive':float(delta[delta>0].sum()),'negative':float(delta[delta<0].sum())}}
+    selected=block[mi,:,:,0].argmin(axis=0)
+    sel_loss=loss[mi,selected,np.arange(32),168:]
+    oracle=block[mi,:,:,1].argmin(axis=0)
+    oracle_loss=loss[mi,oracle,np.arange(32),168:]
+    rows[model]={'variants':variants,
+        'first_week_selection':{
+            'selected_variant_index_by_cell':selected.tolist(),
+            'second_week_MAE':float(sel_loss.mean()),
+            'own_second_week_MAE':float(loss[mi,0,:,168:].mean()),
+            'delta_vs_own':float(sel_loss.mean()-loss[mi,0,:,168:].mean()),
+            'selected_counts':dict(zip(settings['variants'],np.bincount(selected,minlength=4).tolist())),
+            'cells_improved_next_week':int(np.sum(sel_loss.mean(-1)<block[mi,0,:,1])),
+            'agreement_with_second_week_oracle':int(np.sum(selected==oracle))},
+        'second_week_label_oracle':{'MAE':float(oracle_loss.mean()),
+            'uses_future_labels':True,'deployable':False,
+            'best_variant_index_by_cell':oracle.tolist()}}
+joint={}
+for vi,name in enumerate(settings['variants'][1:],1):
+    mask=np.all(block[:,vi]-block[:,0]<0,axis=(0,2))
+    joint[name]={'both_models_both_weeks_count':int(mask.sum()),'cell_ids':ids[mask].tolist()}
+# Verify that the existing stage's reported means are exactly the same evidence.
+old=json.loads((base/'results/spatial_information/summary.json').read_text(encoding='utf-8'))
+for model in settings['models']:
+    for name in settings['variants']:
+        assert abs(rows[model]['variants'][name]['MAE']-old['models'][model]['MAE'][name])<1e-12
+elapsed=time.perf_counter()-t0
+rss=psutil.Process().memory_info().rss
+assert elapsed<settings['time_cap_seconds'] and rss<settings['rss_cap_bytes']
+assert digest(source)==hash_before
+result={'settings':settings,'cell_ids':ids.tolist(),'models':rows,'cross_model_stability':joint,
+        'seconds':elapsed,'peak_RSS_bytes':rss,'source_unchanged':True,
+        'selection_changes_RCTL_clustering':False,'accepted_research_direction':False}
+(out/'result.json').write_text(json.dumps(result,indent=2,allow_nan=False),encoding='utf-8')
+(out/'run_finished.json').write_text(json.dumps({'completed':True,'seconds':elapsed,'model_calls':0}),encoding='utf-8')
+print(json.dumps({'seconds':elapsed,'joint':joint,'models':{
+    m:{'variants':{v:{k:r[k] for k in ['MAE','delta_vs_own','improved_cells','improved_both_weeks_count']} for v,r in e['variants'].items()},
+       'first_week_selection':e['first_week_selection'],
+       'second_week_oracle_MAE':e['second_week_label_oracle']['MAE']} for m,e in rows.items()}},indent=2))
