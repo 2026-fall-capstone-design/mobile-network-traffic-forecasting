@@ -83,3 +83,5 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 [H028 목록](history-028-sources.jsonl)은 새 원문7개(9,102 bytes)·기존사본3개·외부metadata13개와 별도 UPC 참조를 구분한다. [열람 범위](../sources/history-028.md)는 새 텍스트4개·JSON4개·선택논문20쪽/UPC재독2쪽/시각6쪽, 전논문완료0개를 명시한다. H027에서 대기였던47의 주요 주장을 연결했으며 전체 관련 패킷은 미완료다.
 
 [H029 목록](history-029-sources.jsonl)은 새 원문11개(3,725,352 bytes)·기존사본3개·HDF5 metadata1개를 연결한다. [실제 열람](../sources/history-029.md)은 새 전체텍스트3개·작은JSON5개·선택수치1개와50부분검수를구분한다. snapshot11의33metadata행을연결파일33개본문완료로세지않는다.
+
+[H030 목록](history-030-sources.jsonl)은 50 원문 판단·HiGP/ONDM/HTS-Cluster를 [열람 범위](../sources/history-030.md)에 연결한다. 새 사본 5개 8,808 bytes·재사용 2개·외부 metadata 14개다. 세 PDF의 내용 35쪽과 시각 21쪽을 읽고 선택 19행 128수치를 대조했다. 파생 TXT는 page header·CR/LF 차이까지 확인했지만 별도 새 논문·전체 텍스트 집계에 중복 가산하지 않았다. 50의 통합이 전체 관련 보고서·후속 판본 완료를 뜻하지 않는다.

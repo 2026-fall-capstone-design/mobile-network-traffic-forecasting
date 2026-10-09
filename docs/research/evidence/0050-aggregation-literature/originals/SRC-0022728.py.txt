@@ -1,0 +1,41 @@
+"""Save public primary papers and page-separated text; no external code execution."""
+from pathlib import Path
+import hashlib, json, urllib.request
+from pypdf import PdfReader
+
+out = Path(__file__).resolve().parent / 'sources/aggregation_48'
+out.mkdir(parents=True, exist_ok=True)
+if (out / 'fetch_log.json').exists():
+    raise SystemExit('Already recorded; inspect before any retry.')
+sources = [
+    ('higp_icml2024.pdf', 'https://raw.githubusercontent.com/mlresearch/v235/main/assets/cini24a/cini24a.pdf'),
+    ('ondm2023.pdf', 'https://dl.ifip.org/db/conf/ondm/ondm2023/1570874472.pdf'),
+    ('multilevel_clustering_v1.pdf', 'https://arxiv.org/pdf/2205.14104v1'),
+    ('multilevel_clustering_abs.html', 'https://arxiv.org/abs/2205.14104'),
+]
+records = []
+for name, url in sources:
+    rec = {'file': name, 'requested_url': url, 'access_date': '2026-09-26'}
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'Research literature reader/1.0'})
+        with urllib.request.urlopen(req, timeout=25) as response:
+            data = response.read(20_000_001)
+            rec.update(status=response.status, final_url=response.url,
+                       content_type=response.headers.get('Content-Type'))
+        if len(data) > 20_000_000:
+            raise ValueError('Response exceeds the preflight document size limit')
+        if name.endswith('.pdf') and not data.startswith(b'%PDF-'):
+            raise ValueError('Response is not a PDF')
+        path = out / name
+        path.write_bytes(data)
+        rec.update(bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            reader = PdfReader(path)
+            rec['pages'] = len(reader.pages)
+            path.with_suffix('.txt').write_text('\n\n'.join(
+                f'--- PAGE {i+1} ---\n{p.extract_text()}' for i,p in enumerate(reader.pages)), encoding='utf-8')
+    except Exception as exc:
+        rec['error'] = str(exc)
+    records.append(rec)
+    (out / 'fetch_log.json').write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')
+    print(json.dumps(rec, ensure_ascii=False), flush=True)
