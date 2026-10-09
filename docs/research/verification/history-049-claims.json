@@ -1,0 +1,183 @@
+{
+  "batch_id": "history-049",
+  "claims": [
+    {
+      "claim_id": "H049-C01",
+      "claim": "58의 기존 판단과 이번 정적 검수 범위",
+      "source_location": "SRC-0021898 §1/3–5;SRC-0064453 §3–5",
+      "verification_method": "당시 미채택 판단과 현재 원문 검수를 구별",
+      "limit": "새 RCTL 실험·재현 성공·전체 Goal 완료가 아님"
+    },
+    {
+      "claim_id": "H049-C02",
+      "claim": "저장 SGD-as의 판본·동일 바이트와 파생물",
+      "source_location": "SRC-0064453;SRC-0064454;SRC-0064455;SRC-0064466;EXT-H049-01;EXT-H049-02",
+      "verification_method": "PDF 바이트·TXT 공백 제외 내용·HTML137줄·preview 대조",
+      "limit": "파생물/사본을 독립 연구로 가산하지 않음;별도 코드/출판의 부재 전수검색 아님"
+    },
+    {
+      "claim_id": "H049-C03",
+      "claim": "표본 단위와 전체 이진분류 평균 목적",
+      "source_location": "SRC-0064453 §3.1/식1–4",
+      "verification_method": "전체 ERM·개별 표본·한 gradient update 확인",
+      "limit": "cell 소속 변경이나 표본의 영구 제거로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H049-C04",
+      "claim": "독립 복원 균등 추출과 batch2 비교군",
+      "source_location": "SRC-0064453 §3.1/3.3/식3/12–13/§5",
+      "verification_method": "iid with replacement와 두 gradient 평균 대조",
+      "limit": "비복원 sampler·다른 batch budget과 동일한 비교라 하지 않음"
+    },
+    {
+      "claim_id": "H049-C05",
+      "claim": "분산 감소에 필요한 공분산 조건",
+      "source_location": "SRC-0064453 식12–15",
+      "verification_method": "Var=(V+C)/2,독립 C=0,음의 C 조건 재전개",
+      "limit": "불편성만으로 분산 감소 보장 아님;모든 내적 음수는 강한 충분조건"
+    },
+    {
+      "claim_id": "H049-C06",
+      "claim": "permutation이 주변 균등분포를 보존",
+      "source_location": "SRC-0064453 §3.3–4/Algorithm1–2",
+      "verification_method": "uniform i와 bijective S에서 j도 uniform 확인",
+      "limit": "다대일 최근접 mapping에는 자동 적용되지 않음"
+    },
+    {
+      "claim_id": "H049-C07",
+      "claim": "greedy 대응표의 비대칭·순서·자기 짝 경계",
+      "source_location": "SRC-0064453 Algorithm2",
+      "verification_method": "목적지 j만 삭제하며 S[j]=i 설정 없음 확인",
+      "limit": "서로 대칭인 서로소 쌍이나 self-pair 배제·전역 최적해 보장 아님"
+    },
+    {
+      "claim_id": "H049-C08",
+      "claim": "실제 gradient assignment와 고정 proxy의 차이",
+      "source_location": "SRC-0064453 §4.1/식16–20",
+      "verification_method": "현재 n개 gradient/내적 최적화 대신 bound proxy 사용 확인",
+      "limit": "고정 proxy 최소화를 매 update 실제 내적 최적화로 부르지 않음"
+    },
+    {
+      "claim_id": "H049-C09",
+      "claim": "logistic 내적의 부호·계수·0 경계",
+      "source_location": "SRC-0064453 §4.2/식22–27",
+      "verification_method": "0<계수<1과 q 부호, q=0이면 내적0 대조",
+      "limit": "계수는 w 의존;proxy의 순위가 실제 gradient 순위와 같다는 보장 없음"
+    },
+    {
+      "claim_id": "H049-C10",
+      "claim": "SVM의 활동 indicator와 non-smooth 범위",
+      "source_location": "SRC-0064453 식28–31",
+      "verification_method": "hinge subgradient·indicator 곱·비엄격 부등식 확인",
+      "limit": "q<0도 inactive면0;선형 hinge 논의를 모든 RCTL 수렴 보장으로 확대하지 않음"
+    },
+    {
+      "claim_id": "H049-C11",
+      "claim": "공통 정규화항과 고정 파라미터 분산",
+      "source_location": "SRC-0064453 §4.1/식21",
+      "verification_method": "공통 deterministic gradient 이동이 sampling variance를 유지함 확인",
+      "limit": "정규화의 최적화 효과·계산이 없어지는 것은 아님"
+    },
+    {
+      "claim_id": "H049-C12",
+      "claim": "0/1 변환과 식32의 loss 부호",
+      "source_location": "SRC-0064453 식32–35",
+      "verification_method": "z=2y−1과 인쇄된 positive loglikelihood 최소화 표기 대조",
+      "limit": "내적은 양쪽 부호 전환에 불변;저자 실제 코드의 잘못을 확정하지 않음"
+    },
+    {
+      "claim_id": "H049-C13",
+      "claim": "bound 완화와 음수 permutation의 존재 조건",
+      "source_location": "SRC-0064453 §4.1–4.2/식18–27/Algorithm2",
+      "verification_method": "더 낮은 lower bound가 실제값 감소를 보장하지 않음;후보 충돌 확인",
+      "limit": "각 i에 음수 후보가 존재한다는 것만으로 전역 permutation/greedy 성공을 보장하지 않음"
+    },
+    {
+      "claim_id": "H049-C14",
+      "claim": "signed inner-product 검색과 조건부 사전 비용",
+      "source_location": "SRC-0064453 Algorithm2/Table1",
+      "verification_method": "일반 거리와 다른 q;직접 스캔 n(n+1)/2 산술 검산",
+      "limit": "612517500 내적은 n35000의 조건부 계산이지 실제 wall time 아님;O(n²)행렬 필수 아님"
+    },
+    {
+      "claim_id": "H049-C15",
+      "claim": "여러 짝을 통한 큰 batch 확장",
+      "source_location": "SRC-0064453 §3.3 p4",
+      "verification_method": "여러 antithetic pairs를 뽑는다는 원문 확인",
+      "limit": "2m개 구성은 설명됨;홀수 batch의 추가 표본 프로토콜 미기록"
+    },
+    {
+      "claim_id": "H049-C16",
+      "claim": "분산과 2차 모멘트 비교의 고정 w 조건",
+      "source_location": "SRC-0064453 §3.2/식6;§5/Fig2–3",
+      "verification_method": "같은 기대 gradient에서의 차이 공식 확인",
+      "limit": "서로 다른 학습 경로의 모든 곡선을 고정 w의 직접 분산 비교로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H049-C17",
+      "claim": "smooth·subgradient·prox 분석의 조건",
+      "source_location": "SRC-0064453 §3.2/식7–11",
+      "verification_method": "smooth descent·거리식·bounded second moment·stepsize·prox 논의 독해",
+      "limit": "인용 수렴 정리 전체 독립 인증이나 비볼록 MAE/ReLU 일반 보장 아님"
+    },
+    {
+      "claim_id": "H049-C18",
+      "claim": "그림1의 설명용 선형 예시",
+      "source_location": "SRC-0064453 Fig1/p4",
+      "verification_method": "A/B/C/D와 current/real model 선의 의미 시각 대조",
+      "limit": "RCTL 실험·일반 회귀 transfer 검증으로 세지 않음"
+    },
+    {
+      "claim_id": "H049-C19",
+      "claim": "Table1 여섯 자료의 설정18개",
+      "source_location": "SRC-0064453 Table1/p6",
+      "verification_method": "표본수/feature/λ 18개 시각·추출 대조",
+      "limit": "실제 데이터 파일·분할·scaling까지 검증했다는 뜻 아님"
+    },
+    {
+      "claim_id": "H049-C20",
+      "claim": "동일 batch·초기값·학습률 형태와 미기록 값",
+      "source_location": "SRC-0064453 §5/p6",
+      "verification_method": "batch2·w0·ηt schedule 대조;초기 x/w 표기 확인",
+      "limit": "η0/η 수치·seed·반복수·정확한 설정은 미확인"
+    },
+    {
+      "claim_id": "H049-C21",
+      "claim": "7개 모델자료 조합14패널의 축·지표",
+      "source_location": "SRC-0064453 Fig2–3/§5/p6",
+      "verification_method": "logistic4와SVM3,Epoch/Variance/train objective 확인",
+      "limit": "12조합·7고유자료·test MAE/AUC·wall time 결과로 변환하지 않음"
+    },
+    {
+      "claim_id": "H049-C22",
+      "claim": "보고된 개선과 통계·원run·비용 공백",
+      "source_location": "SRC-0064453 §5–6/Fig2–3",
+      "verification_method": "초기 분산/목적 감소 경향과 후반 교차·진동 시각 대조",
+      "limit": "모든 epoch 우위·유의성·전체시간 절감·독립 재현으로 확대하지 않음"
+    },
+    {
+      "claim_id": "H049-C23",
+      "claim": "식5·8의 gradient 표기 누락",
+      "source_location": "SRC-0064453 식5/7–8",
+      "verification_method": "평균 gradient 및 smooth 전개와 인쇄 식 대조",
+      "limit": "원문을 조용히 치환하지 않음;논문 전체/실험 무효 결론 아님"
+    },
+    {
+      "claim_id": "H049-C24",
+      "claim": "MAE residual과 RCTL의 학습기 의존성",
+      "source_location": "SRC-0021898 §1/3–4;SRC-0064453 §4.2",
+      "verification_method": "MAE 부호/Jacobian과 binary fixed label의 구별;58 BN/dropout 관찰 연결",
+      "limit": "Tab median 부호를 RCTL gradient 부호·분산/시간 개선으로 대체하지 않음"
+    },
+    {
+      "claim_id": "H049-C25",
+      "claim": "기존 판단·재검토 조건과 남은 범위",
+      "source_location": "SRC-0021898 §4–5;SRC-0064453 §3–6",
+      "verification_method": "선택단위·평균목적·공분산·batch·시간분할·총비용 구별",
+      "limit": "저자 코드/원run과56/58종합·전체역사 미완료;새 학습을 실행하지 않음"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_at_utc": "2026-10-09T20:40:46.974835+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 전체 팀 기록·25개 주장/출처/검수 문서를 원문 본문·수식·Table1·Fig1–3과 재대조. p5/p6 시각 재확인,gradient 벡터와 logistic 스칼라 계수 표기를 분리했다. 인용정리 전체 인증·저자 코드/원run·독립 과학적 재현 아님."
+}

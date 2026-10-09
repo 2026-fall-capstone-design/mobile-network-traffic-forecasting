@@ -284,3 +284,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 시간대 층화로 학습을 줄이겠다는 제안 전에 — 56·58 SCott
 
 검색어: SCott, stratified sampling, control variate, gradient variance, timestamp, strata, SCSG, SVRG, S-Adam, S-Adagrad. [SCott 기록](records/0056-0058-scott.md)에서 학습 창과 cell cluster, snapshot과 inner update, smooth 이론과 MAE/ReLU·BatchNorm/dropout 조건을 확인합니다. 같은 strata·시간 규칙에 Tab 이름만 붙이는 것은 새 clustering 결정이 아닙니다. 새 제안은 다른 선택 대상·목적·직접 근거와 준비/튜닝까지 포함한 총비용을 연결해야 합니다.
+
+## 반대 방향 표본을 미리 짝지어 학습하겠다는 제안 전에 — 56·58 SGD-as
+
+검색어: SGD-as, antithetic sampling, permutation, negative covariance, signed inner product, gradient variance, 사전 짝짓기. [SGD-as 기록](records/0056-0058-sgd-as.md)에서 균등 주변분포와 음의 공분산, greedy permutation과 대칭 쌍, 이진 label과 MAE residual을 구분합니다. Tab median의 부호로 바꿨다는 사실만으로 RCTL의 분산·시간 개선이 확인되지는 않습니다. 새 제안은 실제 학습기의 근거, 시간 분할, 대응표 준비비와 재사용 횟수를 연결해야 합니다.

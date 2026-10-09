@@ -1,0 +1,90 @@
+{
+  "batch_id": "history-049",
+  "source": "SRC-0064453 Table1/Fig2–3/Algorithm2",
+  "table1": [
+    {
+      "dataset": "Sonar",
+      "samples": 208,
+      "features": 60,
+      "lambda_printed": "10^-2",
+      "lambda_exact": "1/100"
+    },
+    {
+      "dataset": "breast-cancer",
+      "samples": 683,
+      "features": 10,
+      "lambda_printed": "10^-2",
+      "lambda_exact": "1/100"
+    },
+    {
+      "dataset": "splice",
+      "samples": 1000,
+      "features": 60,
+      "lambda_printed": "10^-3",
+      "lambda_exact": "1/1000"
+    },
+    {
+      "dataset": "ijcnn",
+      "samples": 35000,
+      "features": 22,
+      "lambda_printed": "10^-4",
+      "lambda_exact": "1/10000"
+    },
+    {
+      "dataset": "fourclass",
+      "samples": 862,
+      "features": 2,
+      "lambda_printed": "10^-2",
+      "lambda_exact": "1/100"
+    },
+    {
+      "dataset": "diabetes",
+      "samples": 768,
+      "features": 8,
+      "lambda_printed": "10^-2",
+      "lambda_exact": "1/100"
+    }
+  ],
+  "printed_numeric_values_checked": 18,
+  "figures": [
+    {
+      "figure": 2,
+      "model": "l2-regularized logistic regression",
+      "datasets": [
+        "Sonar",
+        "breast-cancer",
+        "splice",
+        "ijcnn"
+      ],
+      "panels": 8
+    },
+    {
+      "figure": 3,
+      "model": "SVM",
+      "datasets": [
+        "fourclass",
+        "diabetes",
+        "splice"
+      ],
+      "panels": 6
+    }
+  ],
+  "model_dataset_comparisons": 7,
+  "panels_visually_read": 14,
+  "precise_curve_values_digitized": false,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0,
+  "conditional_naive_preprocessing": {
+    "assumption": "Algorithm2에서 각 query를 남은 모든 후보와 직접 내적 비교할 경우. 저자 실제 구현 측정 아님.",
+    "formula": "n+(n-1)+...+1=n(n+1)/2",
+    "n": 35000,
+    "inner_products": 612517500,
+    "dimension": 22,
+    "time_order": "O(n^2 d)",
+    "mapping_storage_order": "O(n)",
+    "all_pair_matrix_required": false,
+    "measured_wall_time_available": false
+  },
+  "scope": "Table1의 표본수/feature/λ 18개 값과 직접탐색 조건부 연산수만 대조. 그래프의 정확한 성능값·원run·seed·통계검정 미확인."
+}
