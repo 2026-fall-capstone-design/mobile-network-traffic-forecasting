@@ -198,3 +198,15 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 | N(k+1) / context / query 비용 | k8/query64의 특정 비교 산술; runtime아님 | 개별후보와2N묶음비교의 질문 차이, 반복·후보검색·전처리 비용 |
 
 47의 방향 미추천은 모든 공간 입력 기각이 아니다. [45–46의 일부 긍정·부정 결과](records/0045-0046-input-stability.md)와 함께 읽고, 새 연구는 정보 손실·입력 구성·RCTL 학습 단위·독립 기간 중 무엇을 새로 검증하는지 적는다.
+
+## 군집 합계 하나로 예측량을 줄이려는가
+
+| 검색어·질문 | 먼저 볼 기록 | 같은 연구와 구별할 조건 |
+|---|---|---|
+| aggregation / top-down / scalar / 비중 배분 / 복원 | [48–49](records/0048-0049-aggregation-recovery.md):32cell·336시간·4partition·3비중 | 합계 예측과 개별 복원, 출력 수와 모델 수·호출 수를 분리 |
+| 완벽한 합계 / oracle total / 최저 오차 / weighted median | 고정비중의 미래합계와사후최적scalar는다름. weightedmedian가중치p/scale | 어떤 비중·척도·비음수scalar 제약의 하한인지 명시. 미래oracle을성능으로보고하지않음 |
+| PCC clustering / 평균 이득 / cell 손해 | 실제미래합계·직전비중에서PCC평균은낮지만16cell악화 | 저장cell별차이·두주·원단위손해를함께확인. 새Tab/RCTL기여와구별 |
+| 직전 비중 / 전날 비중 / hour profile | 같은시점비중×합계는기존직전값/전날값과동일 | 계산경로를바꾼것과새예측구조를구별 |
+| N/4 / 압축 / 추론 비용 | 4개당scalar1개출력수;실제지연시간절감미측정 | 자료읽기·비중·복원·후보PCC 비용, 실제cell정확도와절충을기록 |
+
+[저장 NPZ/JSON](evidence/0048-0049-aggregation-recovery/README.md)으로 같은 조건의 진단을 재사용할 수 있다. 50의 상세 선행연구·신규성 종합과 후속 기록은 남아 있으므로 이 색인만으로 새 기여라고 결론내리지 않는다.

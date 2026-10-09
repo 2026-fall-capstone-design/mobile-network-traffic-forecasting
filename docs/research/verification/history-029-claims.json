@@ -1,0 +1,117 @@
+{
+  "batch_id": "history-029",
+  "claims": [
+    {
+      "claim_id": "H029-C01",
+      "claim": "합계압축 질문과49의실제산술·모델0범위",
+      "source_location": "48계획;49코드/설정/start/finish/result",
+      "verification_method": "계획·실행표시·저장배열 연결",
+      "limit": "새RCTL/Tab실험·최종채택 아님"
+    },
+    {
+      "claim_id": "H029-C02",
+      "claim": "같은32cell과원자료·정답·scale·query연결",
+      "source_location": "49settings/NPZ;18NPZ;H5지정구간",
+      "verification_method": "identity/정확값·산술 대조",
+      "limit": "초기design_data수정의전체이력은계획보고"
+    },
+    {
+      "claim_id": "H029-C03",
+      "claim": "672시간척도/PCC와336시간개발구간·1시간가용성",
+      "source_location": "48계획;49코드35–61;H027시간검수",
+      "verification_method": "코드정적재독·고정구간 확인",
+      "limit": "독립시험/336시간재귀 아님"
+    },
+    {
+      "claim_id": "H029-C04",
+      "claim": "partition규칙과무작위seed의검수한계",
+      "source_location": "49greedy/groupsets;result.cell_groups",
+      "verification_method": "탐욕규칙·저장partition검산",
+      "limit": "seed난수재생0;1그룹/8그룹비용차이"
+    },
+    {
+      "claim_id": "H029-C05",
+      "claim": "세비중·네scalar와가용과거/미래구별",
+      "source_location": "49normalize_rows/loop;48계획",
+      "verification_method": "정의별저장배열 대조",
+      "limit": "zero참조합계분기는정적확인만"
+    },
+    {
+      "claim_id": "H029-C06",
+      "claim": "true_total과best_scalar의비동등성·toy",
+      "source_location": "49best_scalar/toy;50수치절",
+      "verification_method": "유리수toy/convexL1median조건",
+      "limit": "고정비중·비음수scalar의사후하한"
+    },
+    {
+      "claim_id": "H029-C07",
+      "claim": "normalized/raw·주별/cell별/그룹총량지표",
+      "source_location": "49metrics/total_errors;result",
+      "verification_method": "231저장수치필드",
+      "limit": "배열비교는필드1개;척도·분모혼동금지"
+    },
+    {
+      "claim_id": "H029-C08",
+      "claim": "직전비중4partition결과와원단위손해",
+      "source_location": "result.groups.*.allocation.last",
+      "verification_method": "저장NPZ/JSON 전체지표 대조",
+      "limit": "정규화최적이원단위최적아님"
+    },
+    {
+      "claim_id": "H029-C09",
+      "claim": "PCC대무작위평균·주별이득과16cell손해",
+      "source_location": "저장true_total last cell/week metrics",
+      "verification_method": "mean/cell델타재계산·양음보존",
+      "limit": "사후개발진단·모든cell개선아님"
+    },
+    {
+      "claim_id": "H029-C10",
+      "claim": "세비중복원결과와두과거기준값",
+      "source_location": "12allocation의true_total;baselines",
+      "verification_method": "표수치/배열검산",
+      "limit": "모든도시·horizon으로확대안함"
+    },
+    {
+      "claim_id": "H029-C11",
+      "claim": "직전/전날비중×동일합계의항등식",
+      "source_location": "49loop assertions;저장NPZ",
+      "verification_method": "대수·배열확인",
+      "limit": "다른새예측의독립성과로세지않음"
+    },
+    {
+      "claim_id": "H029-C12",
+      "claim": "원단위삼각부등식과정규화계수·RCTL범위",
+      "source_location": "49rawL1checks;50RCTL절",
+      "verification_method": "상하한저장산술·동일대수설명",
+      "limit": "RCTL학습가능성/이득보장아님"
+    },
+    {
+      "claim_id": "H029-C13",
+      "claim": "numeric타이머/RSS와UTC표시간격",
+      "source_location": "49코드timer/serialization;start/finish/result",
+      "verification_method": "측정경계정적대조·시간차산술",
+      "limit": "전체wall/연속peak아님;시간중복합산금지"
+    },
+    {
+      "claim_id": "H029-C14",
+      "claim": "snapshot10→11한cheap항목과모델·잔여일관성",
+      "source_location": "snapshot10/11/currentprefix;manifestledger행",
+      "verification_method": "64계보검사",
+      "limit": "미기록실행부재·전체비용증명아님"
+    },
+    {
+      "claim_id": "H029-C15",
+      "claim": "N/4출력수와계산단위·미측정속도",
+      "source_location": "50비용절;49PCC정적코드",
+      "verification_method": "정수산술·복잡도조건",
+      "limit": "모델수/출력수/호출수/지연시간구별"
+    },
+    {
+      "claim_id": "H029-C16",
+      "claim": "당시미채택의수치적범위·재사용·50잔여",
+      "source_location": "48판정;50수치/비용절;저장근거",
+      "verification_method": "당시판단범위연결",
+      "limit": "문헌·신규성종합은후속;전체Goal미완료"
+    }
+  ]
+}
