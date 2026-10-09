@@ -1,0 +1,99 @@
+"""Saved-prediction audit only: no fitting, inference, or partition selection."""
+from pathlib import Path
+import hashlib, json, os, sys, time
+import numpy as np
+import psutil
+
+sys.stdout.reconfigure(encoding='utf-8')
+base = Path(__file__).resolve().parent
+out = base / 'results/cell_harm_envelope_42'
+out.mkdir(parents=True, exist_ok=True)
+if (out / 'run_started.json').exists():
+    raise RuntimeError('Existing execution; do not restart.')
+started = time.perf_counter()
+process = psutil.Process()
+
+def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def save(name, obj):
+    (out / name).write_text(json.dumps(obj, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+
+inputs = [base/'results/rctl_pilot/all_predictions.npz',
+          base/'results/frozen_fit_gap_34/summary.json',
+          base/'results/observable_state_loss/arrays.npz']
+primary = ['global_20260925', 'tabicl_risk_20260925', 'empirical_risk_20260925',
+           'knn_risk_20260925', 'pcc_balanced_20260925', 'random_balanced_20260925']
+settings = dict(wall_cap_seconds=30, rss_cap_bytes=1024**3,
+    new_RCTL_fits=0, new_RCTL_forward=0, new_TabICL_contexts=0, new_simple_fits=0,
+    primary_order=primary, code_sha256=digest(Path(__file__)),
+    plan_sha256=digest(base/'41_cell_harm_envelope_plan.md'),
+    inputs={str(p.relative_to(base)): digest(p) for p in inputs},
+    change_partitions=False, independent_test=False)
+save('settings.json', settings)
+save('run_started.json', dict(pid=os.getpid(), unix=time.time()))
+complete = False
+failure = None
+try:
+    src = np.load(inputs[0], allow_pickle=False)
+    aux = np.load(inputs[2], allow_pickle=False)
+    fit = json.loads(inputs[1].read_text(encoding='utf-8'))
+    y = src['y'].astype(np.float64)
+    assert y.shape == (16,480) and np.array_equal(y, aux['y'])
+    assert np.array_equal(src['cell_ids'], aux['cell_ids'])
+    methods = [k for k in src.files if k not in ['y','scales','cell_ids']]
+    # Names must match the precommitted primary conditions; fail instead of silently substituting.
+    assert all(k in methods for k in primary), (methods, primary)
+    loss = {k: np.abs(src[k].astype(np.float64)-y) for k in methods}
+    for k in ['global_Ridge','global_HGB','persistence','daily_naive','weekly_naive']:
+        loss[k] = np.abs(aux[k].astype(np.float64)-y)
+    glob = loss[primary[0]]
+    rows = []
+    for name,e in loss.items():
+        diff = e-glob
+        halves = np.stack([diff[:,:240].mean(1), diff[:,240:].mean(1)], axis=1)
+        rows.append(dict(method=name, overall_mae=float(e.mean()), per_cell_mae=e.mean(1).tolist(),
+            overall_delta_vs_global=float(diff.mean()), per_cell_delta_vs_global=diff.mean(1).tolist(),
+            per_cell_half_deltas=halves.tolist(), better_cells=int((diff.mean(1)<0).sum()),
+            both_halves_better_cells=int((halves<0).all(1).sum()),
+            both_halves_better_cell_ids=src['cell_ids'][(halves<0).all(1)].tolist()))
+    stack = np.stack([loss[k] for k in primary])
+    cell_mean = stack.mean(2)
+    cell_choice = cell_mean.argmin(0)
+    cell_oracle = stack[cell_choice,np.arange(16)]
+    sample_oracle = stack.min(0)
+    validation = []
+    for name in primary:
+        match = [g for g in fit['aggregates'] if f"{g['method']}_{g['seed']}" == name]
+        assert len(match) == 1
+        validation.append(match[0]['per_cell_validation_mae'])
+    val = np.asarray(validation)
+    val_choice = val.argmin(0)
+    chosen = stack[val_choice,np.arange(16)]
+    oracle = dict(scope='Only the six already-fitted primary conditions; unattainable hindsight diagnostics, not a bound on arbitrary clustering.',
+        global_mae=float(glob.mean()),
+        cell_hindsight_oracle_mae=float(cell_oracle.mean()),
+        cell_hindsight_oracle_relative_gain_percent=float(100*(glob.mean()-cell_oracle.mean())/glob.mean()),
+        cell_hindsight_choices=[primary[i] for i in cell_choice],
+        sample_hindsight_oracle_mae=float(sample_oracle.mean()),
+        validation_chosen_development_mae=float(chosen.mean()),
+        validation_chosen_relative_change_percent=float(100*(chosen.mean()-glob.mean())/glob.mean()),
+        validation_choices=[primary[i] for i in val_choice],
+        validation_global_count=int((val_choice==0).sum()),
+        validation_hindsight_same_choice_count=int((val_choice==cell_choice).sum()),
+        no_valid_clustering_method_derived=True)
+    elapsed = time.perf_counter()-started
+    peak = process.memory_info().rss
+    assert elapsed < settings['wall_cap_seconds'] and peak < settings['rss_cap_bytes']
+    assert all(np.isfinite(e).all() for e in loss.values())
+    assert all(digest(p)==settings['inputs'][str(p.relative_to(base))] for p in inputs)
+    result = dict(complete=True, settings=settings, cell_ids=src['cell_ids'].tolist(),
+        methods=rows, oracle=oracle, numeric_wall_seconds=elapsed, observed_rss_bytes=peak,
+        input_files_unchanged=True, research_recommendation_selected=False)
+    save('result.json', result)
+    complete = True
+    print(json.dumps(dict(rows=[{k:r[k] for k in ['method','overall_mae','better_cells','both_halves_better_cells']} for r in rows],
+                          oracle=oracle, seconds=elapsed), ensure_ascii=False, indent=2))
+except Exception as exc:
+    failure = repr(exc)
+    raise
+finally:
+    save('run_finished.json', dict(complete=complete, error=failure, elapsed_seconds=time.perf_counter()-started))

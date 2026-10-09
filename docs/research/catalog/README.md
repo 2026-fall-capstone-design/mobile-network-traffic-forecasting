@@ -73,3 +73,5 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 [history-021 출처 행](history-021-sources.jsonl):29–32의24새사본·기존비용원장·외부출처6개를 연결한다. metadata목록·지정코드독해·전체원notebook검토를 구분한다. [사람이 읽은 범위](../sources/history-021.md)를 참조한다.
 
 [history-022 목록](history-022-sources.jsonl)은33–35의13새사본(578,461 bytes)·기존7참조·일차문헌metadata5·해시만확인31개를 구분한다. [읽은 범위](../sources/history-022.md)의56참조를56개전체본문완료로세지 않는다.29가중치팀접근과논문전체는미완료다.
+
+[H025 목록](history-025-sources.jsonl)은 41/42 및 44 수치 절의 새 원본 7개(59,195 bytes)와 기존 참조 9개를 연결한다. [열람 범위](../sources/history-025.md)는 계획·정적 코드 전체 2개, 44의 부분 검수 1개, 작은 JSON 전체 3개, 결과 JSON 선택 수치 1개를 구분한다. 44 전체 보존과 문헌 전체 검수는 같지 않다.

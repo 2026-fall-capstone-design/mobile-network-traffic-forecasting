@@ -1,0 +1,159 @@
+{
+  "batch_id": "history-025",
+  "reviewer": "same_archive_agent",
+  "review_type": "saved_numeric_and_bounded_manual_source_comparison",
+  "status": "post_draft_original_comparison_completed_for_numeric_scope",
+  "claims": [
+    {
+      "claim_id": "H025-C01",
+      "claim": "41계획/42저장 재집계/44수치판단이며 새 후보 채택이 아니다.",
+      "sources": [
+        "SRC-0021529:1–31",
+        "SRC-0021588:1–36",
+        "SRC-0024832:complete/research_recommendation_selected"
+      ],
+      "status": "bounded_checked",
+      "limits": "42라는 번호를 새 모델 실험 수로 세지 않음."
+    },
+    {
+      "claim_id": "H025-C02",
+      "claim": "고정16cell·480개발시간·240+240·첫672시간 scale과 validation840–1007을 연결했다.",
+      "sources": [
+        "SRC-0030211:cell_ids/y/scales",
+        "SRC-0029142:times/cell_ids/y/scales",
+        "SRC-0023577:numeric_arrays",
+        "SRC-0027514:cell_ids/validation_y",
+        "SRC-0027517:settings"
+      ],
+      "status": "bounded_checked",
+      "limits": "정규화 활동량 MAE. 원 H5의 이전 검수는 H019/H022에 연결; 이번 전체 H5 재감사 아님."
+    },
+    {
+      "claim_id": "H025-C03",
+      "claim": "주6경로와보조Tab/empirical2·단순5를 구분하고 global 두번째seed 부재를 보존했다.",
+      "sources": [
+        "SRC-0021529:14–19",
+        "SRC-0024835:primary_order",
+        "SRC-0030211:prediction_keys",
+        "SRC-0029142:prediction_keys"
+      ],
+      "status": "bounded_checked",
+      "limits": "PCC는원UPC전체재현아님. 각seed의global독립반복이아님."
+    },
+    {
+      "claim_id": "H025-C04",
+      "claim": "13조건의 전체/cell/half수치를 재계산;주Tab2/0,주empirical3/1(cell3765)이다.",
+      "sources": [
+        "SRC-0024832:methods",
+        "SRC-0030211:predictions",
+        "SRC-0029142:predictions",
+        "SRC-0021588:section1"
+      ],
+      "status": "bounded_checked",
+      "limits": "엄격음수 기준의 기술통계;유의성·전체도시일반화아님."
+    },
+    {
+      "claim_id": "H025-C05",
+      "claim": "HGB13cell개선/두절반3cell,앞기간평균악화·뒤개선이며Ridge6/0이다.",
+      "sources": [
+        "SRC-0024832:methods[global_HGB/global_Ridge]",
+        "SRC-0029142:global_HGB/global_Ridge/y"
+      ],
+      "status": "bounded_checked",
+      "limits": "단순모델이득을Tab독자역할로옮기지않음."
+    },
+    {
+      "claim_id": "H025-C06",
+      "claim": "여섯primary경로의 cell사후oracle.070409939/이득.925635307%,sample.036067265이다.",
+      "sources": [
+        "SRC-0024832:oracle",
+        "SRC-0022569:59–84",
+        "SRC-0021588:section2"
+      ],
+      "status": "bounded_checked",
+      "limits": "정답사용·partition불일치가능;임의clustering상한/실현가능성보장아님."
+    },
+    {
+      "claim_id": "H025-C07",
+      "claim": "validation선택개발MAE.077273462/+8.732081404%,global6/samechoice5;21저장validationcheckpoint로 선택입력확인.",
+      "sources": [
+        "SRC-0027517:records/aggregates",
+        "SRC-0027514:primary_validation_predictions",
+        "SRC-0022860:45–60/77–136",
+        "SRC-0024832:oracle"
+      ],
+      "status": "bounded_checked",
+      "limits": "검증자료가checkpoint선택에이미사용됨;인과분해/독립최종test아님."
+    },
+    {
+      "claim_id": "H025-C08",
+      "claim": "cell전체 손해와27의관측급증상태이득은 별개이며 소속/threshold를바꾸지않았다.",
+      "sources": [
+        "SRC-0021529:3–10/29–31",
+        "SRC-0021588:section1/2",
+        "SRC-0024835:change_partitions"
+      ],
+      "status": "bounded_checked",
+      "limits": "기존H019상태진단을대체/반박하는전체무익주장금지."
+    },
+    {
+      "claim_id": "H025-C09",
+      "claim": "42새모델0,타이머.031521vsfinish.03562909999891417,종료RSS35389440이며peak아니다.",
+      "sources": [
+        "SRC-0022569:13–32/83–99",
+        "SRC-0024832:numeric_wall_seconds/observed_rss_bytes",
+        "SRC-0024833:all_keys",
+        "SRC-0024834:all_keys",
+        "SRC-0024835:all_keys"
+      ],
+      "status": "bounded_checked",
+      "limits": "당시계측보고와현재바이트대조;당시실행내부상태독립재현아님."
+    },
+    {
+      "claim_id": "H025-C10",
+      "claim": "지정37/42비용을한번씩합산하면당시modeling1947.6963812초;Tab45/35712/RCTL29를재사용.",
+      "sources": [
+        "SRC-0022700:model_calls_by_stage/inference_only_stages/new_cheap_diagnostic_seconds(selected_prefix)",
+        "SRC-0030280:execution",
+        "SRC-0021588:section6_numeric"
+      ],
+      "status": "bounded_checked",
+      "limits": "현재전체used·전체실패·문헌비용·새예산으로해석금지."
+    },
+    {
+      "claim_id": "H025-C11",
+      "claim": "7새원본59195bytes·기존9참조와저장수치의재사용경로를제공한다.",
+      "sources": [
+        "history-025:manifest/all_source_hashes",
+        "SRC-0024835:inputs"
+      ],
+      "status": "bounded_checked",
+      "limits": "기존실제X/fit객체/가중치팀접근공백미해결;모델재현성완료아님."
+    },
+    {
+      "claim_id": "H025-C12",
+      "claim": "44전체보존과수치절검수를구분하고43/44문헌·역할종합을미완료로남긴다.",
+      "sources": [
+        "SRC-0021588:1–84"
+      ],
+      "status": "bounded_checked",
+      "limits": "전체본문초독을전문헌검수나44전체통합완료로세지않음."
+    }
+  ],
+  "original_script_read": [
+    "SRC-0022569:1–99 static only",
+    "SRC-0022860:45–158 rechecked static only"
+  ],
+  "full_new_texts_counted": 2,
+  "partial_text_sources": [
+    "SRC-0021588"
+  ],
+  "new_full_JSON_sources": 3,
+  "new_selected_numeric_sources": [
+    "SRC-0024832"
+  ],
+  "whole_papers_reviewed": 0,
+  "current_model_runs": 0,
+  "result_schema_and_all_numeric_fields_programmatically_checked": true,
+  "all_result_cells_individually_human_read": false
+}

@@ -1,0 +1,91 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T09:08:01.367549+00:00",
+  "negative_count": 15,
+  "invariance_count": 1,
+  "cases": [
+    {
+      "case": "method_overall",
+      "detected": true,
+      "error": "empirical_risk_20260925:overall_mae"
+    },
+    {
+      "case": "cell_half",
+      "detected": true,
+      "error": "empirical_risk_20260925:per_cell_half_deltas"
+    },
+    {
+      "case": "nonfinite",
+      "detected": true,
+      "error": "empirical_risk_20260925:per_cell_mae"
+    },
+    {
+      "case": "boolean_count",
+      "detected": true,
+      "error": "empirical_risk_20260925:better_cells"
+    },
+    {
+      "case": "cell_order",
+      "detected": true,
+      "error": "result:cell_order"
+    },
+    {
+      "case": "method_order_for_ties",
+      "detected": true,
+      "error": "primary_order"
+    },
+    {
+      "case": "missing_method",
+      "detected": true,
+      "error": "13_methods"
+    },
+    {
+      "case": "hindsight_route",
+      "detected": true,
+      "error": "hindsight_choices"
+    },
+    {
+      "case": "validation_route",
+      "detected": true,
+      "error": "validation_choices"
+    },
+    {
+      "case": "rebound_validation_loss",
+      "detected": true,
+      "error": "global_20260925:validation_cell_lineage"
+    },
+    {
+      "case": "ledger_timer",
+      "detected": true,
+      "error": "one_42_ledger_value"
+    },
+    {
+      "case": "boolean_execution_count",
+      "detected": true,
+      "error": "new_RCTL_fits"
+    },
+    {
+      "case": "RSS_over_cap",
+      "detected": true,
+      "error": "end_observed_RSS"
+    },
+    {
+      "case": "duplicate_result_key",
+      "detected": true,
+      "error": "duplicate JSON key: complete"
+    },
+    {
+      "case": "scalar_oracle",
+      "detected": true,
+      "error": "oracle:cell_hindsight_oracle_relative_gain_percent"
+    },
+    {
+      "case": "result_row_permutation",
+      "preserved": true,
+      "checks": 294
+    }
+  ],
+  "originals_modified": false,
+  "new_model_runs": 0,
+  "limitation": "Private copied evidence only; repinned JSON challenges numerical and lineage checks beyond byte hashes."
+}

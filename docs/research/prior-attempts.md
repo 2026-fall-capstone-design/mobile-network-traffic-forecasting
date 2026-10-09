@@ -136,7 +136,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 | XOR, conditional TC, synergy, capacity/redundancy, joint-predictive gap | [36–38 네 유한 사례](records/0036-0038-finite-information.md) | 주변 정보 합0/joint1, TC0→1, 중복 label 실제0/축약−1. S4.38 포화 조건과 유효한 전체식을 먼저 확인 |
 | pooling uncertainty, heterogeneity, half-jackknife, empirical Bayes | [선형 panel 비교](records/0036-0038-finite-information.md) | 관계 차이 Δ와 T⁻¹h를 함께 고려. 선형성·외생성·의존 조건·MSFE를 MAE/RCTL에 그대로 옮기지 않음 |
 | spectrum/context value, fixed memory, oracle, analog gain, Δnl | [context 정보집합](records/0036-0038-finite-information.md) | 같은 정보의 최적 선형 기준과 실제 학습 오차 구별. 60/40 AR·k4 추정, population 한계와 finite 값 구별 |
-| 담당 cell 소속과 학습 sample 범위 분리, pretraining/reweighting | [당시 다음 질문](records/0036-0038-finite-information.md) | 공유 자체의 신규성 주장 금지. Tab의 추가 정보·단순 기준 대비 차이·기존33–35와 바뀐 조건을 기록. 39–40은 아래 자료 공유 검토로 연결; 41이후 미완료 |
+| 담당 cell 소속과 학습 sample 범위 분리, pretraining/reweighting | [당시 다음 질문](records/0036-0038-finite-information.md) | 공유 자체의 신규성 주장 금지. Tab의 추가 정보·단순 기준 대비 차이·기존33–35와 바뀐 조건을 기록. 39–40은 아래 자료 공유 검토,41–42는 아래 cell 진단으로 연결;43/44문헌·이후 미완료 |
 
 같은 네 수학 반례는 [모델 없는 검산](evidence/0036-0038-finite-information/README.md)으로 확인한다. 문헌 상세 방법과 성능 검증, 초록 발견과 전체 논문 검토를 구분한다.
 
@@ -151,3 +151,14 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 | n_permutations, Latin square, 68G, 289G, sample-sharing cost | [정적 비용 정정](records/0039-0040-sample-reuse.md) | pinned2.2.0 D17/요청4→실제17순서·최대289열별처리. 실제 forward/time과 구분하고 donor 포함 RCTL 비용을 계산 |
 
 당시 추천안 미채택은 문헌·정보·비용 근거가 부족하다는 판단이다. 같은 자료에서 새 모델을 학습해 성능 실패를 관측한 기록이 아니다. [보존 원문과 검산](evidence/0039-0040-sample-reuse/README.md)을 재사용하고, 후속 연구에서 바뀔 질문과 조건을 명시한다.
+
+## 평균에 가려진 cell 이득이나 기존 예측 경로 선택을 검토하는가
+
+| 문제·별칭 | 확인한 기록·조건 | 결과와 재사용·재검토 조건 |
+| --- | --- | --- |
+| cell harm, persistent cell gain, 앞뒤 기간, 평균에 가려진 이득 | [41–42 및 44 수치 절](records/0041-0042-cell-harm.md), 16cell·480시간·240+240 | 주 Tab 전체 2cell 개선/두 절반 0, empirical 3/1, HGB 13/3. [27의 관측 급증 상태](records/0026-0027-observable-states.md) 이득과 다른 질문. 같은 예측 재집계에 새 fit 불필요 |
+| cell oracle, sample oracle, routing, best-of-six | [사후 선택 범위](records/0041-0042-cell-harm.md), 같은 primary 6경로 | cell 사후 MAE 0.070409939/이득 0.925635307%, sample 사후 0.036067265. 정답 사용·partition 불일치 가능. 임의 clustering의 상한이나 구현 가능한 성능으로 쓰지 않음 |
+| validation selector, 선택 편향, 시간 이동 | [validation→개발 연결](records/0041-0042-cell-harm.md), 840–1007에서 선택/1008–1487 평가 | 0.077273462로 global보다 8.732081404% 악화. global 선택 6개/사후 선택과 일치 5개. 저장 checkpoint 21개로 선택 입력 확인. 이미 사용한 validation·개발 자료이며 RCTL 손실 독립 조건을 충족하지 않음 |
+| numeric_wall_seconds, end RSS, 비용 재사용 | [실행·원장](records/0041-0042-cell-harm.md) | 0.031521초는 저장 산술, 35,389,440 bytes는 종료 관측 RSS. 42 추가 모델 0, 지정 누적 1947.6963812초. finish 시간 중복 합산·현재 원장 전체를 당시 값으로 사용 금지 |
+
+44 원문은 보존했지만 43과 44 §3–5의 문헌·역할 종합 및 §6 문헌 입수는 아직 검수 대기다. 새 실험은 어떤 새 정보로 어떤 학습 행동을 바꾸는지, 기존 경로 재선택과 무엇이 다른지, 독립 평가 자료를 먼저 명시한다.
