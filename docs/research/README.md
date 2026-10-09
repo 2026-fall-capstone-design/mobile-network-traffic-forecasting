@@ -129,3 +129,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [56·58 SCott 학습 표본 층화](records/0056-0058-scott.md)는 한 예측기의 gradient 추정과 cell 소속 변경을 구분합니다. 수렴 가정·실용 종료·표의 반례·튜닝과 총비용을 원문에 연결했습니다. [28개 주장 검수](verification/history-048.md)와 미확인 재현 조건을 함께 확인하세요.
 
 [56·58 SGD-as 사전 짝짓기](records/0056-0058-sgd-as.md)는 permutation의 불편성과 분산 감소 조건을 구분합니다. 이진분류 proxy·greedy 대응표·수식 보완·총비용과 MAE/RCTL 적용 경계를 [25개 주장](verification/history-049.md)에 연결했습니다.
+
+[56–58 학습량 감소 문헌 종합](records/0056-0058-compression-synthesis.md)은 다섯 방법의 선택 단위·학습기·비용·재검토 조건을 비교합니다. 42개 저장 파일의 범위와 조회 경로/실제 다운로드를 구분해, 기존 아이디어를 다른 이름으로 반복하기 전에 확인할 수 있습니다.
