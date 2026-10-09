@@ -1,0 +1,27 @@
+# 주변 cell 정보가 남기는 개선 여지: 사전 진단 계획
+
+2026-09-25, 실행 전에 저장. 알고리즘 추천 이전의 문제 존재 확인이다.
+
+## 질문과 단순 대안
+
+최근 8시간·일주기 및 주간 lag·달력을 사용한 뒤에도 주변 cell의 과거 정보가 도움이 되는가? 도움이 된다면 방향별 정보를 유지해야 하는가, 아니면 주변 평균 또는 PCC로 고른 한 이웃으로 충분한가?
+
+공간 정보 추가 자체는 이미 TabPFN-ST-AR, MGSTC, handover clustering, spatial-temporal cellular 모델에서 사용되었다. 이를 신규성으로 세지 않는다. 방향 정렬, feature clustering, TabICL로 공간 관계를 추정하는 안은 이 진단만으로 채택하지 않는다.
+
+## 고정 구성
+
+- 16 계획으로 선택한 32 cell을 그대로 사용한다. 기존 16개를 유지하며 활동량 사분위별 4개를 추가한 목록이다. cell 제외나 재선택은 없다.
+- 자료는 같은 processed Milan internet activity. 각 cell과 이웃의 첫 672시간 평균으로 정규화한다. 원본 missingness가 없으므로 imputation의 영향과 실제 물리적 전파를 구분할 수 없다는 한계를 유지한다.
+- context/train target 시각 168..671, query target 시각 672..1007, 총 504/336개. 336 query는 두 주로 나누어 모두 보고한다. 이전에 본 개발 자료이며 새로운 독립 검증이 아니다.
+- 자기 입력 16개는 기존과 동일하다. 예측은 t 시점 target을 t-1까지의 값으로 수행한다.
+- 고정 8방향은 NW, N, NE, W, E, SW, S, SE이다. 경계 밖 이웃 위치는 자기 cell로 padding하며 별도 기록한다. 행/열 축은 H5 cell 번호 기준으로 부르며 원시 위경도 방향을 확인하지 않은 상태에서 북쪽·동쪽의 물리적 전파라고 해석하지 않는다.
+- 비교 4개: (1) 자기 입력만, (2) 주변 정규화값의 평균 최근 8시간 추가, (3) train에서 자기 cell과 동시 raw PCC가 가장 큰 유효 이웃의 최근 8시간 추가, (4) 유효/패딩된 8방향의 각 최근 8시간 추가. PCC 동점은 고정 방향 순서다. query target은 이웃 선택에 사용하지 않는다.
+- Ridge(StandardScaler, alpha=1)와 HGB(absolute loss, 100 iterations, 15 leaves, min leaf 20, l2=1, early_stopping=False, seed=20260925)를 사용한다. 추가 tuning은 없다.
+- cell별·전체·두 주별 MAE, baseline 대비 paired loss, 추가 16개/기존 16개 결과를 저장한다. 최고 이득 cell만 발췌하지 않는다.
+
+## 판정과 비용
+
+- 이웃 평균/PCC 선택이 full 방향 입력과 비슷하거나 더 좋다면, 방향별 역할을 정렬하는 복잡한 구조를 제안하지 않는다.
+- full 정보에 추가 가치가 보여도 그것이 feature 수/모델 용량의 효과인지 구분해야 한다. 공간 기여와 grouping 기여를 별도로 확인한다.
+- 모델별 결과가 다르면 범용 결론을 내리지 않는다. TabICL 추론은 이 계획에 포함하지 않는다.
+- 32 cell × 4 입력 구성 × 2 작은 예측기 = 256 fit, wall time 60초, RSS 2GiB. 전체 cheap 600초, TabICL 80 contexts/60,000 queries, RCTL 29 fit 상한을 유지한다. 추가 RCTL/TabICL 호출 0회.

@@ -101,6 +101,11 @@ jobs:
           --manifest docs/research/evidence/0016-0017/manifest.json
           --output .research-archive/ci-0016-0017.json
 
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_spatial_history.py
+          --manifest docs/research/evidence/0018-0021/manifest.json
+          --output .research-archive/ci-0018-0021.json
+
   deploy:
     name: deploy-pages
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

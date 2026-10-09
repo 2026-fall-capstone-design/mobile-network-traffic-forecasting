@@ -1,0 +1,67 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T01:25:30.989527+00:00",
+  "negative_cases": 14,
+  "cases": [
+    {
+      "case": "missing-SRC-0023177",
+      "rejected_by": "manifest:ids"
+    },
+    {
+      "case": "missing-SRC-0031959",
+      "rejected_by": "manifest:ids"
+    },
+    {
+      "case": "missing-SRC-0031962",
+      "rejected_by": "manifest:ids"
+    },
+    {
+      "case": "duplicate-source",
+      "rejected_by": "manifest:ids"
+    },
+    {
+      "case": "wrong-overall-mean",
+      "rejected_by": "Ridge:MAE:neighbor_mean"
+    },
+    {
+      "case": "wrong-cell-result",
+      "rejected_by": "HGB:MAE_by_cell:PCC_neighbor"
+    },
+    {
+      "case": "query-time",
+      "rejected_by": "times:query"
+    },
+    {
+      "case": "prediction-shape",
+      "rejected_by": "shape:pred"
+    },
+    {
+      "case": "target-mismatch",
+      "rejected_by": "target:prior"
+    },
+    {
+      "case": "PCC-tie-not-first",
+      "rejected_by": "PCC:first_max:3745"
+    },
+    {
+      "case": "boundary-padding",
+      "rejected_by": "padding:matches"
+    },
+    {
+      "case": "neighbor-grid-map",
+      "rejected_by": "neighbors:grid_and_padding"
+    },
+    {
+      "case": "finished-fit-count",
+      "rejected_by": "finished:fits"
+    },
+    {
+      "case": "nonfinite-prediction",
+      "rejected_by": "SRC-0031959:finite:pred"
+    }
+  ],
+  "semantic_fault_hashes_refreshed": true,
+  "originals_modified": false,
+  "model_runs": 0,
+  "scope": "Representative identity, mapping, missing-source, corruption and metric faults; not exhaustive mathematical correctness proof"
+}

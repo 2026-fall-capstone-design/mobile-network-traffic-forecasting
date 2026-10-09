@@ -43,6 +43,8 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 
 [history-010 목록](history-010-sources.jsonl)은16–17의 원문8개 새 보존과 기존2개 재사용, H5 metadata1건을 연결한다. [읽은 범위](../sources/history-010.md)는 텍스트 전체3개·JSON 전체키3개·새 배열2개 및 재사용 자료의 지정 범위다. 저장 성능과 H5 지정 구간의 입력·정답을 대조했으며,H010 시점에서 세 문헌 방법과 후속 공간 정보 기록은 미완료였다. 지정 방법은 아래 H011에 연결했다.
 
-[history-011 목록](history-011-sources.jsonl)은17 원문1개를 재사용한다. [별도 웹 metadata](../evidence/0017-literature/manifest.json)는MGSTC·PID·Joint QoS의 공식v1 세 편과 [지정 열람 범위](../sources/history-011.md)를 연결한다. 새 원본 보존0개이며 원 inventory에 웹 문헌을 추가하지 않았다. 전체 논문·18이후 공간 정보 이력은 미완료다.
+[history-011 목록](history-011-sources.jsonl)은17 원문1개를 재사용한다. [별도 웹 metadata](../evidence/0017-literature/manifest.json)는MGSTC·PID·Joint QoS의 공식v1 세 편과 [지정 열람 범위](../sources/history-011.md)를 연결한다. 새 원본 보존0개이며 원 inventory에 웹 문헌을 추가하지 않았다. 전체 논문 검토는 미완료이며, 공간 진단은 아래 H012에 연결했다.
+
+[history-012 목록](history-012-sources.jsonl)은 18계획·21종합·공간 코드·시작/완료/summary·NPZ의 원본 7개 새 보존과 기존 2개 재사용, H5 metadata 1건을 연결한다. [읽은 범위](../sources/history-012.md)는 텍스트 전체 3개·JSON 전체 키 3개·새 배열 1개이며, 기록21의 이번 주장 검수는 공간 부분 20–29행이다. 실제 확장 X 저장물은 없고, 19/20/22와 21의 나머지 부분은 후속 작업이다.
 
 목록과 근거 사본은 정리 시점의 스냅샷이다. 원본 변경 시 관련 주장과 검토 상태를 재확인한다. GitHub에는 검수된 묶음부터 반영하며, 전체 기록의 본문 정리는 진행 중이다.

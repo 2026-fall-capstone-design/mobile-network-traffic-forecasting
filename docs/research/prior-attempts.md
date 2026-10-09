@@ -53,4 +53,12 @@
 | PID, frozen backbone, cell별 Optuna, 출력 보정 | [PID 비교](references/temporal-adaptation-methods.md) | 이전 관측 오차 필요.200trials와200표본 한도 구분, 부호·튜닝/평가 경계 미해결 | 독립 소속 조건을 유지할지, offline 탐색과 online 비용을 어떻게 분리할지 명시 |
 | Joint QoS, BCD, 재배정, nuclear norm, cluster수 축소 | [QoS 비교](references/temporal-adaptation-methods.md) | 모델 손실과 소속 공동 갱신. simulation분포 예측·가정 아래 criticalpoint | activity회귀·최종learner와 다른 점, penalty/threshold·분할을 확인 |
 
+주변 관측 입력의 추가 가치는 다음 조건으로 찾을 수 있다.
+
+| 찾으려는 문제·별칭 | 확인한 기록과 조건 | 결과·주의할 해석 | 재사용·새 실험의 차이 |
+|---|---|---|---|
+| spatial information, 이웃 평균, PCC 이웃, 8방향 | [18·21 공간 진단](records/0018-0021-spatial-information.md), 고정 32cell·Ridge/HGB·504행 학습·336시간 query | Ridge 세 추가 입력 모두 전체 평균 악화. HGB 이웃 평균의 −0.000030870 이득에도 20cell·두 번째 주 손해 | 5개 저장 배열과 전체 cell·날짜 차이를 재사용. 실제 확장 X는 미보존. 입력 추가와 grouping 효과를 분리 |
+| 격자 경계, self padding, PCC 동점, 방향 정렬 | [이웃 처리](records/0018-0021-spatial-information.md), NW/N/NE/W/E/SW/S/SE 고정 순서 | Cell79의 세 자기 padding은 평균/8방향에 포함, PCC에서는 제외. 정확한 동점은 첫 방향 선택. 물리 방위 미확인 | 이웃 ID·PCC·padding을 먼저 대조. 방향 순서·동점 규칙 변경은 조건 변경으로 기록 |
+| 공간·시간 진단 비교, 두 주 고정 모델 | [18·21 학습 조건](records/0018-0021-spatial-information.md), 첫 주 자기 예측은 16–17 expanding과 일치 | 공간 진단은 두 주 모델 고정, 시간 진단은 매주 적합. 매 query 실제 직전 관측 사용 | 전체 두 주를 같은 학습 조건으로 간주하지 않음. 고정 origin 다중 시점 예측과 구분 |
+
 새 실험은 관련 과거 기록, 같게 유지할 조건, 달라지는 질문·조건, 재사용할 파일을 먼저 적는다. 기존 부정 결과를 회피하기 위한 조건 변경과 새로운 가설 검증을 구분한다. [첫 묶음 검수](verification/pilot-001.md), [RCTL 검수](verification/pilot-002.md), [문헌 검수](verification/pilot-003.md), [캐시 대조 검수](verification/pilot-004.md), [전체 조사 현황](verification/inventory-2026-10-08.md).
