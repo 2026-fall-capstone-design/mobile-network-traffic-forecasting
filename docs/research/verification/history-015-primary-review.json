@@ -1,0 +1,1034 @@
+{
+  "batch_id": "history-015",
+  "status": "bounded_primary_comparison_verified",
+  "independent_scientific_review": false,
+  "findings": [
+    {
+      "claim_id": "H015-C01",
+      "title": "완료 호출 단위",
+      "sources": [
+        "SRC-0023607",
+        "SRC-0023601",
+        "SRC-0023586",
+        "SRC-0024836",
+        "SRC-0024349",
+        "SRC-0032380"
+      ],
+      "locator": "각 호출 배열 전체의 식별·context_rows/query_rows/시간 필드",
+      "finding": "45개 로그 행은 완료 fit/predict 쌍이며 고유 cell·새 가중치 학습 횟수가 아니다.",
+      "limitation": "원 로그에 기록되지 않은 실패·시작 시도 전수 개수는 미확인이다."
+    },
+    {
+      "claim_id": "H015-C02",
+      "title": "고정 가중치 준비와 경과시간",
+      "sources": [
+        "SRC-0022703",
+        "SRC-0023116",
+        "SRC-0022942",
+        "SRC-0022570",
+        "SRC-0022531",
+        "SRC-0023197"
+      ],
+      "locator": "각 estimator 생성·perf_counter 경계; H005 기존 공식 코드 검수 재사용",
+      "finding": "공통 CPU/ensemble1 경로의 fit/predict 구간이며 고정 회귀 모델의 준비와 가중치 최적화를 구분한다.",
+      "limitation": "개별 실행 환경/가중치 전체 동일성·코어별 CPU시간·속도 우위는 증명하지 않는다."
+    },
+    {
+      "claim_id": "H015-C03",
+      "title": "query 반복 집계",
+      "sources": [
+        "SRC-0023116",
+        "SRC-0023601",
+        "SRC-0022570",
+        "SRC-0024836"
+      ],
+      "locator": "B1 코드64–89행;14 코드33–47행;모든 호출 행 수",
+      "finding": "B1은64anchor+16×64query를16context에서 반복한다.35,712는 호출별 예측 행 합계다.",
+      "limitation": "고유 관측·독립 표본 수나 전체 데이터 크기로 사용하지 않는다."
+    },
+    {
+      "claim_id": "H015-C04",
+      "title": "누적 경계",
+      "sources": [
+        "SRC-0020824",
+        "SRC-0020825",
+        "SRC-0020972",
+        "SRC-0021095",
+        "SRC-0023607",
+        "SRC-0023601",
+        "SRC-0023586",
+        "SRC-0024836",
+        "SRC-0024349",
+        "SRC-0032380"
+      ],
+      "locator": "03의13행,04의37행,15의58행,21의70행 및 여섯 호출 로그",
+      "finding": "20→36→39→45회와17,664→20,352→23,424→35,712행이 저장 합계와 일치한다.",
+      "limitation": "15의164.214452초는 이번 재합산 값이며 원문에 직접 적힌 시간으로 취급하지 않는다."
+    },
+    {
+      "claim_id": "H015-C05",
+      "title": "예측 재사용도 계산비용 있음",
+      "sources": [
+        "SRC-0023614",
+        "SRC-0023210"
+      ],
+      "locator": "결과 elapsed_seconds/new_model_*;코드14–17/64–82행의 선택 구간",
+      "finding": "13은새모델0이지만 저장 예측 재분석0.33516769999914686초를 기록한다.",
+      "limitation": "후속 모든 재분석의 총시간이나 실행시간 재현이 아니다."
+    },
+    {
+      "claim_id": "H015-C06",
+      "title": "TabICL 타이머 경계",
+      "sources": [
+        "SRC-0022703",
+        "SRC-0023116",
+        "SRC-0022942",
+        "SRC-0022570",
+        "SRC-0022531",
+        "SRC-0023197"
+      ],
+      "locator": "출처 목록에 적은 fit/predict 타이머 선택 구간",
+      "finding": "모델 생성/저장/비교 모델은 호출합계 밖이며19배열변환·20최근값복원은 predict 안이다.",
+      "limitation": "각 프로세스 전체 시간이나 순수 신경망 계산 시간으로 확장하지 않는다."
+    },
+    {
+      "claim_id": "H015-C07",
+      "title": "단순 모델과 stage 중복",
+      "sources": [
+        "SRC-0024841",
+        "SRC-0024354",
+        "SRC-0032385",
+        "SRC-0022570",
+        "SRC-0022531",
+        "SRC-0023197"
+      ],
+      "locator": "summary 비용·results 조건 수,원코드 단순모델 루프",
+      "finding": "14/19/20은Ridge/HGB4/6/4fit 및 예측 구간을 별도로 기록했고 stage 안에 포함한다.",
+      "limitation": "B1/B2의 단순 모델 비용 필드 미기록을0으로 해석하지 않는다."
+    },
+    {
+      "claim_id": "H015-C08",
+      "title": "stage도 전체 프로세스 아님",
+      "sources": [
+        "SRC-0023116",
+        "SRC-0022942",
+        "SRC-0022570",
+        "SRC-0022531",
+        "SRC-0023197",
+        "SRC-0023210"
+      ],
+      "locator": "각 시작 타이머·summary 작성·최종 저장 위치",
+      "finding": "단계마다 제외한 준비/저장 구간이 달라 전체 작업시간으로 합산하지 않는다.",
+      "limitation": "시간 경계의 정적 의미 검토이며 당시 clock 값을 독립 측정하지 않았다."
+    },
+    {
+      "claim_id": "H015-C09",
+      "title": "RCTL 누적 fit·epoch·시간",
+      "sources": [
+        "SRC-0030237",
+        "SRC-0030278",
+        "SRC-0020825"
+      ],
+      "locator": "29fit 식별·epochs_run·fit_seconds와 종료 JSON;04의39행",
+      "finding": "완료29/epoch1565/fit합1652.1772000999981/wall1658.1391634000001을 대조했다.",
+      "limitation": "method/seed가 반복된 동일 자료이며 실패 시도 전체나 독립 데이터셋 반복 수가 아니다."
+    },
+    {
+      "claim_id": "H015-C10",
+      "title": "RCTL fit 타이머의 의미",
+      "sources": [
+        "SRC-0023202",
+        "SRC-0030279"
+      ],
+      "locator": "학습 코드28–143행 및 시작 marker 전문",
+      "finding": "fit 구간에는 validation/test추론/일부 저장이 포함되고 전체 타이머도 초기 설정/마지막 저장을 제외한다.",
+      "limitation": "fit 시간과 순수 학습 시간, wall−fit 차이와 순수 I/O 시간을 동일시하지 않는다."
+    },
+    {
+      "claim_id": "H015-C11",
+      "title": "상한과 사용량·공백 구별",
+      "sources": [
+        "SRC-0020823",
+        "SRC-0020825",
+        "SRC-0020972",
+        "SRC-0021095"
+      ],
+      "locator": "02의43–56행;04의35–41행;15의58행;21의68–72행",
+      "finding": "예산 상한·완료 호출·측정 밖 비용과 후속 전체 비용을 분리한다.",
+      "limitation": "초기 실패·재시도 전수 비용/전체연구시간/상한준수 전수감사는 미확인이고 현재 실행권한으로 사용하지 않는다."
+    }
+  ],
+  "reused_proofs": [
+    "pilot-006.md",
+    "history-001-risk-check.json",
+    "history-005-primary-review.json",
+    "history-008-arithmetic.json",
+    "history-013-risk-check.json"
+  ],
+  "sources": [
+    {
+      "source_id": "SRC-0023607",
+      "path": "tmp/redesign_20260925/results/smoke.json",
+      "sha256": "4bcc27ed0c757d5ef3544ffc1dd13c3f7161f95669dd42ff292faac9dad6939a",
+      "size_bytes": 1991,
+      "exact_alias_source_ids": [
+        "SRC-0000244",
+        "SRC-0023607"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0001-0002/originals/SRC-0023607.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "entries": "저장된 모든 호출 행",
+        "fields": [
+          "context_rows",
+          "query_rows",
+          "fit_seconds",
+          "predict_seconds"
+        ],
+        "scope": "호출 식별·비용 필드를 재대조하고 기존 전문 검수를 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0023601",
+      "path": "tmp/redesign_20260925/results/risk_table_calls.json",
+      "sha256": "efa75bec7c40148881d82f97aff0afd264a2279cda9c3db04e12a549b07ded74",
+      "size_bytes": 3500,
+      "exact_alias_source_ids": [
+        "SRC-0000238",
+        "SRC-0023601",
+        "SRC-0062555"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0023601.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "selected_fields_checked",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "entries": "저장된 모든 호출 행",
+        "fields": [
+          "context_rows",
+          "query_rows",
+          "fit_seconds",
+          "predict_seconds"
+        ],
+        "scope": "호출 식별·비용 필드를 재대조하고 기존 전문 검수를 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0023586",
+      "path": "tmp/redesign_20260925/results/observed_risk_calls.json",
+      "sha256": "771064bdeb4bb05ee26c53be12cdd9a60f3177ef30ee2224d89a33c07b8fd367",
+      "size_bytes": 2978,
+      "exact_alias_source_ids": [
+        "SRC-0000224",
+        "SRC-0023586",
+        "SRC-0062552"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0023586.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "selected_fields_checked",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "entries": "저장된 모든 호출 행",
+        "fields": [
+          "context_rows",
+          "query_rows",
+          "fit_seconds",
+          "predict_seconds"
+        ],
+        "scope": "호출 식별·비용 필드를 재대조하고 기존 전문 검수를 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0024836",
+      "path": "tmp/redesign_20260925/results/cell_identity/calls.json",
+      "sha256": "49385f8e18bad8830ad46bf41d51997fa1c41c5407f842d8a419d31d17a8feef",
+      "size_bytes": 744,
+      "exact_alias_source_ids": [
+        "SRC-0000395",
+        "SRC-0024836"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0013-0015/originals/SRC-0024836.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "structured_full_result_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "entries": "저장된 모든 호출 행",
+        "fields": [
+          "context_rows",
+          "query_rows",
+          "fit_seconds",
+          "predict_seconds"
+        ],
+        "scope": "호출 식별·비용 필드를 재대조하고 기존 전문 검수를 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0024349",
+      "path": "tmp/redesign_20260925/results/broad_cell_information/calls.json",
+      "sha256": "754a105927891002851f031f0e8b74b932de30ddc389ae2211d4a70e03a0d812",
+      "size_bytes": 1024,
+      "exact_alias_source_ids": [
+        "SRC-0000434",
+        "SRC-0024349"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0019-0021/originals/SRC-0024349.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "structured_full_result_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "entries": "저장된 모든 호출 행",
+        "fields": [
+          "context_rows",
+          "query_rows",
+          "fit_seconds",
+          "predict_seconds"
+        ],
+        "scope": "호출 식별·비용 필드를 재대조하고 기존 전문 검수를 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0032380",
+      "path": "tmp/redesign_20260925/results/target_parameterization/calls.json",
+      "sha256": "ca6f14943736a3cad9960d82c34c7fb4429fcb0174a9c15ad62522d0607d5155",
+      "size_bytes": 514,
+      "exact_alias_source_ids": [
+        "SRC-0000444",
+        "SRC-0032380"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0019-0021/originals/SRC-0032380.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "structured_full_result_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "entries": "저장된 모든 호출 행",
+        "fields": [
+          "context_rows",
+          "query_rows",
+          "fit_seconds",
+          "predict_seconds"
+        ],
+        "scope": "호출 식별·비용 필드를 재대조하고 기존 전문 검수를 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0022703",
+      "path": "tmp/redesign_20260925/data_and_smoke.py",
+      "sha256": "ce4014f2ab6bcc82e738ac8d6c8144662e954bc7bb67ddac6c8d73be7a9af9a2",
+      "size_bytes": 4774,
+      "exact_alias_source_ids": [
+        "SRC-0000191",
+        "SRC-0022703",
+        "SRC-0061897",
+        "SRC-0064152"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0001-0002/originals/SRC-0022703.py.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            61
+          ]
+        ],
+        "scope": "과거 코드의 타이머 경계 정적 재검토; 실행·import 없음"
+      }
+    },
+    {
+      "source_id": "SRC-0023116",
+      "path": "tmp/redesign_20260925/risk_table_pilot.py",
+      "sha256": "b4591d9311602d86abe4948cbf4cc43f750c583494138a12324302814359930f",
+      "size_bytes": 9469,
+      "exact_alias_source_ids": [
+        "SRC-0000211",
+        "SRC-0023116",
+        "SRC-0061898",
+        "SRC-0062549"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0023116.py.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            60,
+            96
+          ],
+          [
+            110,
+            122
+          ]
+        ],
+        "scope": "과거 코드의 타이머 경계 정적 재검토; 실행·import 없음"
+      }
+    },
+    {
+      "source_id": "SRC-0022942",
+      "path": "tmp/redesign_20260925/observed_risk_pilot.py",
+      "sha256": "4a88e89be8484b9b84aed7356e2ee1c8392df4fe0771536b633fcf6848f44e40",
+      "size_bytes": 7135,
+      "exact_alias_source_ids": [
+        "SRC-0000203",
+        "SRC-0022942",
+        "SRC-0062547"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0022942.py.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            31
+          ],
+          [
+            80,
+            90
+          ]
+        ],
+        "scope": "과거 코드의 타이머 경계 정적 재검토; 실행·import 없음"
+      }
+    },
+    {
+      "source_id": "SRC-0023202",
+      "path": "tmp/redesign_20260925/train_rctl_pilot.py",
+      "sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+      "size_bytes": 8142,
+      "exact_alias_source_ids": [
+        "SRC-0000215",
+        "SRC-0001736",
+        "SRC-0001834",
+        "SRC-0023202",
+        "SRC-0064154"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0023202.py.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            28,
+            143
+          ]
+        ],
+        "scope": "과거 코드의 타이머 경계 정적 재검토; 실행·import 없음"
+      }
+    },
+    {
+      "source_id": "SRC-0022570",
+      "path": "tmp/redesign_20260925/cell_identity_diagnostic.py",
+      "sha256": "b6c1b06179057514870787c5a60f2df25a9940ebebb651cbbca4840852404ec7",
+      "size_bytes": 5527,
+      "exact_alias_source_ids": [
+        "SRC-0000384",
+        "SRC-0022570"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0013-0015/originals/SRC-0022570.py.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            33,
+            59
+          ],
+          [
+            67,
+            76
+          ]
+        ],
+        "scope": "타이머와 비용 필드의 앞뒤3행을 포함한 선택 구간을 실제 출력하여 재열람; 전문 재독으로 세지 않음"
+      }
+    },
+    {
+      "source_id": "SRC-0023210",
+      "path": "tmp/redesign_20260925/upc_transfer_diagnostic.py",
+      "sha256": "fa0914447e9916bc8677bf3e8feea837ef61e7105f2b74ef4fdfb45e9b0c2838",
+      "size_bytes": 5562,
+      "exact_alias_source_ids": [
+        "SRC-0000391",
+        "SRC-0023210",
+        "SRC-0062550"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0013-0015/originals/SRC-0023210.py.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            11,
+            17
+          ],
+          [
+            64,
+            82
+          ]
+        ],
+        "scope": "타이머·비용 필드와 두 번째 대조에서 실제 열람한 선택 구간; 전문 재독으로 세지 않음"
+      }
+    },
+    {
+      "source_id": "SRC-0022531",
+      "path": "tmp/redesign_20260925/broad_cell_information_diagnostic.py",
+      "sha256": "847d9a32fc29ebc845958573b74eba8ee69d07ffab94e6a1ffc27ed632f0a836",
+      "size_bytes": 7409,
+      "exact_alias_source_ids": [
+        "SRC-0000421",
+        "SRC-0022531"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0019-0021/originals/SRC-0022531.py.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            46,
+            83
+          ],
+          [
+            97,
+            110
+          ]
+        ],
+        "scope": "타이머와 비용 필드의 앞뒤3행을 포함한 선택 구간을 실제 출력하여 재열람; 전문 재독으로 세지 않음"
+      }
+    },
+    {
+      "source_id": "SRC-0023197",
+      "path": "tmp/redesign_20260925/target_parameterization_diagnostic.py",
+      "sha256": "d1035b0a3fa8611d5f2d454d4a2871efc9b194b925e7db83393cf0e2e5902444",
+      "size_bytes": 6107,
+      "exact_alias_source_ids": [
+        "SRC-0000430",
+        "SRC-0023197"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0019-0021/originals/SRC-0023197.py.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            32,
+            62
+          ],
+          [
+            71,
+            83
+          ]
+        ],
+        "scope": "타이머와 비용 필드의 앞뒤3행을 포함한 선택 구간을 실제 출력하여 재열람; 전문 재독으로 세지 않음"
+      }
+    },
+    {
+      "source_id": "SRC-0030237",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/fit_results.json",
+      "sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+      "size_bytes": 16258,
+      "exact_alias_source_ids": [
+        "SRC-0000277",
+        "SRC-0001101",
+        "SRC-0001749",
+        "SRC-0030237"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030237.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "selected_fields_checked",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "entries": "29개 fit 모두",
+        "fields": [
+          "method",
+          "seed",
+          "cluster",
+          "epochs_run",
+          "best_epoch",
+          "fit_seconds"
+        ],
+        "scope": "이번 재열람은 식별·비용·epoch 필드이며 다른 성능 필드 전문 재검토는 기존 H001 근거를 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0030278",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/run_finished.json",
+      "sha256": "38341c98462e0775c59a0f3a7d28ca430a45641e3db306e0212acafc22643e2f",
+      "size_bytes": 231,
+      "exact_alias_source_ids": [
+        "SRC-0000318",
+        "SRC-0001764",
+        "SRC-0030278"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030278.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            9
+          ]
+        ],
+        "scope": "전문"
+      }
+    },
+    {
+      "source_id": "SRC-0030279",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/run_started.json",
+      "sha256": "5244c22a5131bba61ba49263394b58e2012f2914d492a752094e589b92e4b945",
+      "size_bytes": 128,
+      "exact_alias_source_ids": [
+        "SRC-0000319",
+        "SRC-0030279"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030279.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "selected_fields_checked",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            1
+          ]
+        ],
+        "scope": "전문"
+      }
+    },
+    {
+      "source_id": "SRC-0020823",
+      "path": "tmp/redesign_20260925/02_candidate_and_pilot_plan.md",
+      "sha256": "b6b234888352fc9fab1ee1cbccd6e25a41bb5ae843dbef6627f5e3d9abee2043",
+      "size_bytes": 9874,
+      "exact_alias_source_ids": [
+        "SRC-0000176",
+        "SRC-0020823",
+        "SRC-0062540"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0001-0002/originals/SRC-0020823.md.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            43,
+            56
+          ]
+        ],
+        "scope": "이번 비용 문장 재대조 범위; 이전 전문 검토는 기존 묶음을 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0020824",
+      "path": "tmp/redesign_20260925/03_projection_diagnostic_plan.md",
+      "sha256": "1a9fee9496c4dcd03ed564266f06d3e25d1151dd74f6d7a832a96d9bcce59729",
+      "size_bytes": 2467,
+      "exact_alias_source_ids": [
+        "SRC-0000177",
+        "SRC-0020824",
+        "SRC-0062541"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0020824.md.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            13
+          ]
+        ],
+        "scope": "이번 비용 문장 재대조 범위; 이전 전문 검토는 기존 묶음을 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0020825",
+      "path": "tmp/redesign_20260925/04_observed_query_risk_plan.md",
+      "sha256": "3826faa9527e0fc98bb121ffeb3274ab045e36f01aca14ff88c0a8bcc4068507",
+      "size_bytes": 6290,
+      "exact_alias_source_ids": [
+        "SRC-0000178",
+        "SRC-0020825",
+        "SRC-0062542"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0020825.md.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            35,
+            41
+          ]
+        ],
+        "scope": "이번 비용 문장 재대조 범위; 이전 전문 검토는 기존 묶음을 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0020972",
+      "path": "tmp/redesign_20260925/15_transfer_identity_and_literature_findings.md",
+      "sha256": "7f0ba093901c28189153df1b59c5affd8f11fecb576172301aa8ef863bf87918",
+      "size_bytes": 9631,
+      "exact_alias_source_ids": [
+        "SRC-0000381",
+        "SRC-0020972"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0013-0015/originals/SRC-0020972.md.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            54,
+            62
+          ]
+        ],
+        "scope": "이번 비용 문장 재대조 범위; 이전 전문 검토는 기존 묶음을 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0021095",
+      "path": "tmp/redesign_20260925/21_diagnostic_synthesis.md",
+      "sha256": "e196e6410e7f8bed498c5242694e199f5c6b15e1d6837609efb745f78310e1d2",
+      "size_bytes": 7710,
+      "exact_alias_source_ids": [
+        "SRC-0000417",
+        "SRC-0021095"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0018-0021/originals/SRC-0021095.md.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "lines": [
+          [
+            64,
+            72
+          ]
+        ],
+        "scope": "이번 비용 문장 재대조 범위; 이전 전문 검토는 기존 묶음을 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0023604",
+      "path": "tmp/redesign_20260925/results/risk_table_pilot.json",
+      "sha256": "0c37563e10cdac2eac559b1f3709b3fddf96f97515e4575d42dde0c65d4c348f",
+      "size_bytes": 10848,
+      "exact_alias_source_ids": [
+        "SRC-0000241",
+        "SRC-0023604",
+        "SRC-0062556"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0023604.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "agent_full_text_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "fields": [
+          "total_seconds"
+        ],
+        "scope": "비용·호출 상태의 선택 필드; 나머지 성능 본문은 이전 검수 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0023588",
+      "path": "tmp/redesign_20260925/results/observed_risk_pilot.json",
+      "sha256": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+      "size_bytes": 7724,
+      "exact_alias_source_ids": [
+        "SRC-0000226",
+        "SRC-0023588",
+        "SRC-0062553"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0023588.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "selected_fields_checked",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "fields": [
+          "seconds"
+        ],
+        "scope": "비용·호출 상태의 선택 필드; 나머지 성능 본문은 이전 검수 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0023614",
+      "path": "tmp/redesign_20260925/results/upc_transfer_diagnostic.json",
+      "sha256": "99b518d10c8a65c76e0bff5bbf60b610d63c959eaae25b79ab4ef3efcbd1ed88",
+      "size_bytes": 20547,
+      "exact_alias_source_ids": [
+        "SRC-0000393",
+        "SRC-0023614",
+        "SRC-0062557"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0013-0015/originals/SRC-0023614.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "structured_full_result_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "fields": [
+          "elapsed_seconds",
+          "new_model_contexts",
+          "new_model_query_rows",
+          "new_RCTL_fits"
+        ],
+        "scope": "비용·호출 상태의 선택 필드; 나머지 성능 본문은 이전 검수 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0024841",
+      "path": "tmp/redesign_20260925/results/cell_identity/summary.json",
+      "sha256": "e66cf5da51b1d98ff4fa5f7c35adcb00158a14f0843af39cff9093e126d33f7f",
+      "size_bytes": 14571,
+      "exact_alias_source_ids": [
+        "SRC-0000400",
+        "SRC-0024841"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0013-0015/originals/SRC-0024841.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "structured_full_result_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "fields": [
+          "TabICL_seconds",
+          "simple_model_seconds",
+          "stage_seconds"
+        ],
+        "scope": "비용·호출 상태의 선택 필드; 나머지 성능 본문은 이전 검수 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0024354",
+      "path": "tmp/redesign_20260925/results/broad_cell_information/summary.json",
+      "sha256": "30c73fba934f49e1cdcff64ed4ee86ba1f08a3f592e6f26a804827cfa7eaec15",
+      "size_bytes": 38961,
+      "exact_alias_source_ids": [
+        "SRC-0000439",
+        "SRC-0024354"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0019-0021/originals/SRC-0024354.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "structured_full_result_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "fields": [
+          "TabICL_seconds",
+          "simple_model_seconds",
+          "stage_seconds",
+          "new_RCTL_fits"
+        ],
+        "scope": "비용·호출 상태의 선택 필드; 나머지 성능 본문은 이전 검수 재사용"
+      }
+    },
+    {
+      "source_id": "SRC-0032385",
+      "path": "tmp/redesign_20260925/results/target_parameterization/summary.json",
+      "sha256": "0744859ae6343fdffdd1f575f5fd43d07079bbe302438443abf5b27e22686b9b",
+      "size_bytes": 26266,
+      "exact_alias_source_ids": [
+        "SRC-0000449",
+        "SRC-0032385"
+      ],
+      "records": [
+        "0015",
+        "0021"
+      ],
+      "archive_path": "../0019-0021/originals/SRC-0032385.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_source_recheck",
+      "previous_review_status": "structured_full_result_review",
+      "original_script_executed": false,
+      "claim_verification_scope": "기록21까지 저장된 완료 호출·fit의 누적 비용과 해당 타이머 경계; 전체 연구시간·실패 시도 전수 검증 아님",
+      "read_scope": {
+        "fields": [
+          "TabICL_seconds",
+          "simple_model_seconds",
+          "stage_seconds",
+          "new_RCTL_fits"
+        ],
+        "scope": "비용·호출 상태의 선택 필드; 나머지 성능 본문은 이전 검수 재사용"
+      }
+    }
+  ],
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "entire_cost_history_verified": false,
+  "whole_records15_21_integrated": false,
+  "second_pass_at_utc": "2026-10-09T03:21:10.333224+00:00",
+  "second_pass_scope": "03/04/15/21 비용 문장·여섯 호출 로그·RCTL29개 비용 행·타이머의 생성/적합/추론/저장 위치와24개 표 행을 대조함. 같은 정리 에이전트의 재검토이며 독립 과학검수·과거 runtime 재현 아님."
+}

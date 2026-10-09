@@ -27,7 +27,7 @@
 | 같은 예측인데 다른 소속, 중앙값 거리, plug-in conflict, RCTL 재학습 필요 여부 | [641](records/0641-cached-score-controls.md), A16cell·14cache·64query·22edge·K4·같은 이동 규칙 | 네 대조 모두 UPC 유지. 기존 관측 Y 점수는 Tab3/HGB1cell 이동. 한 개발 조건의 사후 비교이며 HGB_free 반례 유지 | 16평가 자리는 기존 UPC4파일 재사용. 새 모델·MAE 계산0. 보존 산술 검산부터 확인하고 새 조건을 명시 |
 | 연구 완료 선언, 연구 방향 추천, 원 UPC θ=10, 최소44cell, 아직 안 한 본실험 | [642](records/0642-research-direction.md), 20261004 최종 보고서·7쪽 Word | 완료는 착수 근거와 문서 범위. 독립 기간/도시·같은 wall-time·TabPFN·graph 크기 통제는 미실행. 44cell은 네 유효 seed 그룹의 필요조건 | 기존635–641을 다시 실행하기 전에 저장 근거를 확인. 정규화 이득과 원척도 HGB_free 손해를 함께 기록하고 새 조건을 고정 |
 
-13–15의 추가 진단과 여섯 문헌의 지정 방법은 다음 조건으로 찾을 수 있다. 15의 후속 이력과 누적 비용 감사는 남아 있다.
+13–15의 추가 진단과 여섯 문헌의 지정 방법은 다음 조건으로 찾을 수 있다. 15의 후속 이력은 남아 있으며, 초기 누적 호출 비용은 [15·21 원장](records/0015-0021-cumulative-costs.md)에서 대조했다.
 
 | 찾으려는 문제·별칭 | 확인한 기록과 조건 | 결과·주의할 해석 | 재사용·새 실험의 차이 |
 |---|---|---|---|
@@ -79,5 +79,13 @@
 | TabPFN-TS-3, TabPFN-3.5, known-future, static, v1.3.0 | [세 commit 비교](references/forecasting-version-boundaries.md) | 날짜·의존성·모델·입력 설명을 고정. 원22의 실제 접근 commit과3.5 checkpoint는 미확인 |
 | CDE, calibration, TabularMath, computational extrapolation | [발견 범위](records/0021-0022-literature-scope.md) | 초록/지정 절 열람을 전체 방법 검토로 세지 않음. 트래픽/RCTL 직접 성능과 구분 |
 | 반복 Goal 안내, AGENTS, 자동 재개 | [운영 기록](records/0021-0022-literature-scope.md) | 초기/후속 판본과 실제 앱 동작을 구분. 과거 명령을 현재 실행 지시로 사용하지 않음 |
+
+초기 계산 비용은 다음 조건으로 찾는다.
+
+| 문제·별칭 | 확인한 기록 | 재사용 범위·주의 |
+|---|---|---|
+| 45contexts,35712query,223.887초,중복 호출 집계 | [15·21 비용](records/0015-0021-cumulative-costs.md) | 여섯 완료 호출군의 합계. 고유 관측 수·전체 연구시간과 구분 |
+| fit_seconds,stage_seconds,순수 학습시간,29RCTL | [타이머 경계](records/0015-0021-cumulative-costs.md) | RCTL fit에validation/test추론/일부저장 포함. stage+fit 합산 금지 |
+| 캐시 재분석 비용,상한과 소비량,실패 비용 | [재사용·남은 공백](records/0015-0021-cumulative-costs.md) | 모델0회도 재분석 시간이 있음. 미확인 비용은0으로 채우지 않음 |
 
 새 실험은 관련 과거 기록, 같게 유지할 조건, 달라지는 질문·조건, 재사용할 파일을 먼저 적는다. 기존 부정 결과를 회피하기 위한 조건 변경과 새로운 가설 검증을 구분한다. [첫 묶음 검수](verification/pilot-001.md), [RCTL 검수](verification/pilot-002.md), [문헌 검수](verification/pilot-003.md), [캐시 대조 검수](verification/pilot-004.md), [전체 조사 현황](verification/inventory-2026-10-08.md).

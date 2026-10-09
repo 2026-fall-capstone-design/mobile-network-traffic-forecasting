@@ -2,7 +2,7 @@
 
 2026년 9월 25일의 13·14 계획과 저장 산출물, 15의 수치·방법 판단을 연결했다. [10–12](0010-0012-population-upc-stability.md)에서 확인한 소속 차이가 실제 예측 관계와 연결되는지, 같은 pooled 자료에 cell ID를 더하면 무엇이 달라지는지를 물었다. 13은 기존 예측의 재분석이고, 14는 당시 새 TabICL 3조건과 단순모델 4조건의 실행이다. 이 아카이브에서는 저장값만 검산했다.
 
-15의 §3, 여섯 선행연구의 방법 해석은 다음 묶음에서 일차자료와 대조한다. 원문 전체 62행을 읽고 보존한 것과 전체 주장 검수 완료를 구분한다. [출처·실제 읽은 범위](../sources/history-008.md), [핵심 주장 11개](../verification/history-008-primary-review.json), [검수](../verification/history-008.md)를 함께 본다.
+15의 §3, 여섯 선행연구의 지정 방법·가정은 [후속 문헌 검수](0015-category-cost-time-literature.md)에서 대조했다. 누적 호출·비용은 [15·21 비용 원장](0015-0021-cumulative-costs.md)에 연결한다. 원문 전체 62행을 읽고 보존한 것과 전체 주장 검수 완료를 구분한다. [출처·실제 읽은 범위](../sources/history-008.md), [핵심 주장 11개](../verification/history-008-primary-review.json), [검수](../verification/history-008.md)를 함께 본다.
 
 ## 질문과 비교 조건
 
