@@ -1,0 +1,46 @@
+from pathlib import Path
+from fractions import Fraction as F
+import json, hashlib, time, datetime
+
+base = Path(__file__).resolve().parent
+out = base / 'results/mae_sampling_57'
+out.mkdir(exist_ok=True)
+assert not (out/'run_started.json').exists(), 'Already attempted. Do not rerun.'
+plan = base/'57_mae_sampling_plan.md'
+settings = {
+ 'prediction':0, 'targets':[-1,-1,10], 'loss':'MAE',
+ 'model':'f_theta(x)=theta; identical inputs', 'numeric_cap_seconds':1,
+ 'TabICL_contexts':0,'RCTL_fits':0,'RCTL_forward':0,
+ 'code_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+ 'plan_sha256':hashlib.sha256(plan.read_bytes()).hexdigest(),
+}
+(out/'settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+(out/'run_started.json').write_text(json.dumps({'utc':datetime.datetime.now(datetime.timezone.utc).isoformat()}),encoding='utf-8')
+t0=time.perf_counter()
+loss=[F(1),F(1),F(10)]
+grad=[F(1),F(1),F(-1)]
+
+def moments(values,prob):
+ mean=sum(p*v for p,v in zip(prob,values))
+ var=sum(p*(v-mean)**2 for p,v in zip(prob,values))
+ return {'mean_fraction':str(mean),'mean':float(mean),'variance_fraction':str(var),'variance':float(var)}
+
+rows={}
+for name,prob in [('uniform',[F(1,3)]*3),('loss_proportional',[F(1,12),F(1,12),F(10,12)])]:
+ weight=[1/(3*p) for p in prob]
+ rows[name]={'probability':[str(p) for p in prob], 'weight':[str(w) for w in weight],
+             'loss':moments([w*l for w,l in zip(weight,loss)],prob),
+             'gradient':moments([w*g for w,g in zip(weight,grad)],prob)}
+result={'rows':rows,'empirical_MAE':4.0,'empirical_gradient_fraction':'1/3',
+        'gradient_variance_ratio': rows['loss_proportional']['gradient']['variance']/rows['uniform']['gradient']['variance'],
+        'claims':{'unbiased_loss_both': all(r['loss']['mean_fraction']=='4' for r in rows.values()),
+                  'unbiased_gradient_both':all(r['gradient']['mean_fraction']=='1/3' for r in rows.values()),
+                  'loss_variance_zero_proportional':rows['loss_proportional']['loss']['variance']==0,
+                  'gradient_variance_larger_proportional':rows['loss_proportional']['gradient']['variance']>rows['uniform']['gradient']['variance']}}
+elapsed=time.perf_counter()-t0
+result['numeric_seconds']=elapsed
+assert elapsed<1
+assert all(result['claims'].values())
+(out/'result.json').write_text(json.dumps(result,indent=2,allow_nan=False),encoding='utf-8')
+(out/'run_finished.json').write_text(json.dumps({'status':'completed','numeric_seconds':elapsed,'model_calls':0},indent=2),encoding='utf-8')
+print(json.dumps(result,indent=2))

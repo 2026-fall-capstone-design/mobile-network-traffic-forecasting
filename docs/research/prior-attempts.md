@@ -268,3 +268,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 관측 절감을 TabICL clustering으로 다시 제안하기 전에 — 51–55 종합
 
 검색어: partial observation, telemetry, sensor selection, reconstruction, imputation, 관측 비용, 신규성, 입력 선택, 직접 회귀, sample pooling. [51–55 종합](records/0051-0055-synthesis.md)은 문제 존재·기존 원리·Tab 추가 기여를 나눕니다. 같은 네 cell·네 블록·같은 입력의 재실험보다 [저장 예측·오류·비용](evidence/0052-0054-partial-observation/README.md)을 먼저 확인합니다. 새 제안은 관측/전송/저장 단위, 가용 추가 정보, 실제 선택 행동, 시간 분리, 강한 단순 비교군, 기간·cell별 손해, 최종 RCTL 효용과 전체 비용에서 달라지는 조건을 적어야 합니다. 앞 기간 이득을 지우거나 후반 손해를 숨기지 않으며, 54를 MICE/clustering/RCTL 실험으로 재명명하지 않습니다.
+
+## 큰 loss를 중요한 학습 표본으로 바꾸기 전에 — MAE 표본추출 반례 — 56–58
+
+검색어: importance sampling, loss-proportional, gradient variance, unbiased, inverse probability, coreset, sample compression, 큰 오차, strata, 학습량. [56–58 기록](records/0056-0058-mae-sampling.md)은 손실분산18→0이어도 기울기분산3.025배인 정확 반례와 당시 기각 범위를 연결합니다. [보존 결과·원장과 산술 검산](evidence/0056-0058-mae-sampling/README.md)을 먼저 재사용합니다. 표본 추출용 층화와 최종 cell cluster, 모델 수와 처리 행·계산 step·fit 시간을 분리하고, 새 제안은 학습기·모드·확률·가중·정보·전체 비용에서 달라지는 조건을 명시해야 합니다. 다른 네 압축/표본추출 문헌은 아직 현재 원문 대조가 남아 있습니다.

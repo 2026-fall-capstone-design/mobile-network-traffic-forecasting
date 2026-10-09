@@ -115,3 +115,5 @@ H042는 [기존 원본3행](history-042-sources.jsonl)과 [명세](../evidence/0
 H043은 [기존 원본 7행](history-043-sources.jsonl)을 [명세](../evidence/0051-0055-gotsf-media/manifest.json)로 재사용하고 공식 미디어 7개를 고정 URL·해시로 연결합니다. [실제 범위](../sources/history-043.md)는 PNG 4개·GIF 3개 전 144프레임입니다. SRC-0063280 tree는 whole JSON +1/selected-only −1로 승격하며 신규 사본·로컬 본문은 0개입니다. 전체 51/55는 미완료입니다.
 
 H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수준](../evidence/0051-0055-synthesis/scope-matrix.json)을 [51–55 종합](../records/0051-0055-synthesis.md)에 연결합니다. 신규수집/렌더code5개209줄·기존사본58개·metadata40개이며, 새localfulltext5/wholeJSON0/selected0입니다. PDF추출문·PNG·재독을독립내용으로중복가산하지않고,103자료를전체corpus나전자료검증완료의분모로쓰지않습니다.
+
+[history-045 목록](history-045-sources.jsonl)은 56–58 MAE 반례의 새 사본16개·재사용5개·읽은외부metadata3개·해시전용15개를 연결합니다. [출처 범위](../sources/history-045.md)는 본문 독해와 사본/receipt 해시 대조를 구분합니다. 56/58의 다른 네 문헌과 전체 연관자료 정리는 미완료입니다.

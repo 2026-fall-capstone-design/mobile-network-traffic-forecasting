@@ -1,0 +1,176 @@
+{
+  "batch_id": "history-045",
+  "claims": [
+    {
+      "claim_id": "H045-C01",
+      "claim": "56 계획·57 정확 산술·58 판단과 이번 제한 범위",
+      "source_location": "SRC-0021848 전체;SRC-0021872 전체;SRC-0021898 서두/§3–5",
+      "verification_method": "원문3건과 실제 저장 결과를 분리",
+      "limit": "56/58의 관련 전체 자료·최종 추천은 미완료"
+    },
+    {
+      "claim_id": "H045-C02",
+      "claim": "손실 추정·실제 학습·미래 오차와 strata/cell cluster 분리",
+      "source_location": "SRC-0021848 질문/경계;SRC-0021898 판단/§4",
+      "verification_method": "기록 당시 질문과 독립성 제약 대조",
+      "limit": "당시 제약이며 모든 표본추출의 불가능성 아님"
+    },
+    {
+      "claim_id": "H045-C03",
+      "claim": "같은 입력·고정 θ0·정답3개와 MAE 도함수",
+      "source_location": "SRC-0021872 3–7줄;SRC-0022906 9–21줄;SRC-0028244",
+      "verification_method": "정답에서 residual·loss·부호 직접 계산",
+      "limit": "비영 residual의 한 점;RCTL Jacobian/시간 의존성 미계산"
+    },
+    {
+      "claim_id": "H045-C04",
+      "claim": "양의 추출 확률과 역확률 가중",
+      "source_location": "SRC-0028241 rows;SRC-0022906 23–33줄",
+      "verification_method": "Fraction으로 확률·가중·합 대조",
+      "limit": "θ0의 고정 확률;가중 자체를 미분하는 학습 아님"
+    },
+    {
+      "claim_id": "H045-C05",
+      "claim": "평균4/1/3 보존,loss 분산18→0/gradient8/9→121/45",
+      "source_location": "SRC-0028241 rows;SRC-0021872",
+      "verification_method": "E[Z²]−E[Z]² 정확 분수 검산",
+      "limit": "세 결과 단일 draw 열거;Monte Carlo 아님"
+    },
+    {
+      "claim_id": "H045-C06",
+      "claim": "gradient 분산비121/40=3.025와 기각 범위",
+      "source_location": "SRC-0028241 gradient_variance_ratio;SRC-0021898 §3",
+      "verification_method": "분수 비율과 float 반올림 대조/판단 문장 검수",
+      "limit": "보편적 연결의 반례;RCTL 속도/정확도·모든 방법 실패 아님"
+    },
+    {
+      "claim_id": "H045-C07",
+      "claim": "원 코드 정적 열람·모델/난수 실행0",
+      "source_location": "SRC-0022906 전체;SRC-0028244;SRC-0028242",
+      "verification_method": "의존성·Fraction 열거·설정/결과 대조",
+      "limit": "코드만으로 독립 실행 trace를 주장하지 않음"
+    },
+    {
+      "claim_id": "H045-C08",
+      "claim": "코드/계획 해시·UTC 시작·완료 표식",
+      "source_location": "SRC-0028244 code_sha256/plan_sha256;SRC-0028243;SRC-0028242;SRC-0021898 §5",
+      "verification_method": "보존 바이트 해시와 시간대 대조",
+      "limit": "exit0/한 번 실행은58보고;독립 console/종료 시각 없음"
+    },
+    {
+      "claim_id": "H045-C09",
+      "claim": "numeric 타이머 범위와0.00016200000027311035초",
+      "source_location": "SRC-0022906 17–46줄;SRC-0028241 numeric_seconds;SRC-0028242",
+      "verification_method": "타이머 앞뒤 문장과 저장값 대조",
+      "limit": "파일 쓰기/출력·전체process·문헌 비용 제외"
+    },
+    {
+      "claim_id": "H045-C10",
+      "claim": "전후 원장의57 비용 한 번 추가와 합계",
+      "source_location": "SRC-0028240;SRC-0000838;SRC-0023220",
+      "verification_method": "전체 JSON 차이와 비용 합 검산",
+      "limit": "before는H031읽은바이트재사용;전체연구시간 아님"
+    },
+    {
+      "claim_id": "H045-C11",
+      "claim": "Tab49ctx/35968행·RCTL29fit/잔여0 유지",
+      "source_location": "SRC-0000838 used/remaining_count_budgets;SRC-0028240",
+      "verification_method": "전후 모든 used/cap/remaining 필드 비교",
+      "limit": "과거 상한이며 새 실행 승인 아님"
+    },
+    {
+      "claim_id": "H045-C12",
+      "claim": "1890/2431step은 완료epoch와batch로 계산",
+      "source_location": "SRC-0022860 89–97줄;SRC-0030237;SRC-0027517 records/aggregates",
+      "verification_method": "주seed20260925의5fit epoch·cell수·672행·batch256 산술",
+      "limit": "독립 step계측 아님;모델 수와 처리량 구별"
+    },
+    {
+      "claim_id": "H045-C13",
+      "claim": "fit시간269.5897296/177.5529198과epochs45/221",
+      "source_location": "SRC-0030237;SRC-0027517 주seedglobal/tabicl_risk;SRC-0021898 판단",
+      "verification_method": "동일5fit 저장 초 합과aggregate 대조",
+      "limit": "실행순서·warmup통제 아님;step순위와시간순위 다름"
+    },
+    {
+      "claim_id": "H045-C14",
+      "claim": "RCTL BatchNorm/Dropout와 train/eval 경계",
+      "source_location": "SRC-0023048 Block/forward;SRC-0022860 model.eval;EXT-H045-05;EXT-H045-06",
+      "verification_method": "구조 전체 정적 확인 및공식API의모드설명 대조",
+      "limit": "당시 설치버전/실제기울기 실험 미확인"
+    },
+    {
+      "claim_id": "H045-C15",
+      "claim": "중요도 논문 서지·10쪽·공식/저장 PDF와TXT일치",
+      "source_location": "SRC-0064458;SRC-0064459;SRC-0064467;EXT-H045-01;EXT-H045-02",
+      "verification_method": "공식응답547433B·SHA/PDF재추출·전체텍스트/6쪽시각",
+      "limit": "주논문독해;부록/구현/실험재현 완료 아님"
+    },
+    {
+      "claim_id": "H045-C16",
+      "claim": "기울기 평균의 불편성이 효율성 보장은 아님",
+      "source_location": "SRC-0064458 §3.1 식4–6;SRC-0021848 경계;SRC-0028241",
+      "verification_method": "식의평균보존조건과57반례 연결",
+      "limit": "양의확률·역확률가중 및고정경험목적 조건"
+    },
+    {
+      "claim_id": "H045-C17",
+      "claim": "상한 점수는 현재 학습기 출력기울기·활성값에 의존",
+      "source_location": "SRC-0064458 §3.2 식18–20/PDF3–4;SRC-0021898 §1",
+      "verification_method": "수식·본문 시각대조",
+      "limit": "다른모델Tabloss와같다는증거 없음"
+    },
+    {
+      "claim_id": "H045-C18",
+      "claim": "B개 사전추출·추가forward·b개재추출의 비용",
+      "source_location": "SRC-0064458 §3.3/Algorithm1 PDF4–5",
+      "verification_method": "알고리즘7–10행의점수/가중과비용범위 대조",
+      "limit": "전체RCTL속도보장/정적영구점수로확장 안함"
+    },
+    {
+      "claim_id": "H045-C19",
+      "claim": "Fig1 L2거리 지표와 실제norm 전제 분리",
+      "source_location": "SRC-0064458 Fig1/§4.1/식21–26 PDF4–6",
+      "verification_method": "축·caption10회평균과수식전제 대조",
+      "limit": "covariance trace/57분산비와동일시안함;식24–26부록/구현미대조"
+    },
+    {
+      "claim_id": "H045-C20",
+      "claim": "논문 유효사례와loss비례 불리사례의 실험범위",
+      "source_location": "SRC-0064458 §4.1–4.4/Fig1–5 PDF5–8",
+      "verification_method": "주논문10쪽텍스트/그림5개와목적대조",
+      "limit": "분류사례를통신RCTL이득으로옮기지않음;rawrun미확인"
+    },
+    {
+      "claim_id": "H045-C21",
+      "claim": "수집11건/렌더6건과실제본문독해 구분",
+      "source_location": "SRC-0022784;SRC-0022800;SRC-0064457;SRC-0064452;SRC-0064460;SRC-0064461",
+      "verification_method": "HTTP200·size·SHA·6PNG해시와코드대조",
+      "limit": "수집/렌더성공≠모든원문독해·연구실행"
+    },
+    {
+      "claim_id": "H045-C22",
+      "claim": "다른4문헌의58보고와현재미완료범위 보존",
+      "source_location": "SRC-0021898 §1–2/출처;SRC-0064461",
+      "verification_method": "역사적검토scope와현재manifest범위 분리",
+      "limit": "TimeDC/TabPFNIML/SCott/SGD-as방법검증 아직미완료"
+    },
+    {
+      "claim_id": "H045-C23",
+      "claim": "동일조건재실행 대신 저장근거재사용과재검토조건",
+      "source_location": "SRC-0021872;SRC-0021898 §3–5;SRC-0021848 경계",
+      "verification_method": "반례가배제한주장과새질문에필요한차이 연결",
+      "limit": "미래설계조건이며새실험진행 아님"
+    },
+    {
+      "claim_id": "H045-C24",
+      "claim": "16새사본/5재사용/3읽은metadata/15해시전용과전체미완료",
+      "source_location": "SRC-0021848;SRC-0021898;SRC-0064461",
+      "verification_method": "manifest39개와94사본경로·40572새바이트 대조",
+      "limit": "ZIP동일사본도독립연구횟수로세지않음;56/58전체완료 아님"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_at_utc": "2026-10-09T19:07:56.941413+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 전체 팀 기록·출처39행·24개 주장과 실제 열람 원문/저장 산술을 재대조. Algorithm1의 중요도 추출 활성 단계와 균등 단계 구별을 명확히 보완. 독립 과학 검증 아님."
+}

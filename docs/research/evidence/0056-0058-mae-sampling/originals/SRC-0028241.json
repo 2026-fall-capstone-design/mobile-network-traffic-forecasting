@@ -1,0 +1,62 @@
+{
+  "rows": {
+    "uniform": {
+      "probability": [
+        "1/3",
+        "1/3",
+        "1/3"
+      ],
+      "weight": [
+        "1",
+        "1",
+        "1"
+      ],
+      "loss": {
+        "mean_fraction": "4",
+        "mean": 4.0,
+        "variance_fraction": "18",
+        "variance": 18.0
+      },
+      "gradient": {
+        "mean_fraction": "1/3",
+        "mean": 0.3333333333333333,
+        "variance_fraction": "8/9",
+        "variance": 0.8888888888888888
+      }
+    },
+    "loss_proportional": {
+      "probability": [
+        "1/12",
+        "1/12",
+        "5/6"
+      ],
+      "weight": [
+        "4",
+        "4",
+        "2/5"
+      ],
+      "loss": {
+        "mean_fraction": "4",
+        "mean": 4.0,
+        "variance_fraction": "0",
+        "variance": 0.0
+      },
+      "gradient": {
+        "mean_fraction": "1/3",
+        "mean": 0.3333333333333333,
+        "variance_fraction": "121/45",
+        "variance": 2.688888888888889
+      }
+    }
+  },
+  "empirical_MAE": 4.0,
+  "empirical_gradient_fraction": "1/3",
+  "gradient_variance_ratio": 3.0250000000000004,
+  "claims": {
+    "unbiased_loss_both": true,
+    "unbiased_gradient_both": true,
+    "loss_variance_zero_proportional": true,
+    "gradient_variance_larger_proportional": true
+  },
+  "numeric_seconds": 0.00016200000027311035
+}

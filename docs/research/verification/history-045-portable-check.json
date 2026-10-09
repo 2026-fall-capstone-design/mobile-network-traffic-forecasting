@@ -1,0 +1,99 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T19:04:13.316191+00:00",
+  "checks": 48,
+  "check_names": [
+    "SRC-0021848:preserved_bytes",
+    "SRC-0021872:preserved_bytes",
+    "SRC-0021898:preserved_bytes",
+    "SRC-0022784:preserved_bytes",
+    "SRC-0022800:preserved_bytes",
+    "SRC-0022906:preserved_bytes",
+    "SRC-0023220:preserved_bytes",
+    "SRC-0000838:preserved_bytes",
+    "SRC-0028241:preserved_bytes",
+    "SRC-0028242:preserved_bytes",
+    "SRC-0028243:preserved_bytes",
+    "SRC-0028244:preserved_bytes",
+    "SRC-0064452:preserved_bytes",
+    "SRC-0064457:preserved_bytes",
+    "SRC-0064460:preserved_bytes",
+    "SRC-0064461:preserved_bytes",
+    "SRC-0028240:preserved_bytes",
+    "SRC-0023048:preserved_bytes",
+    "SRC-0022860:preserved_bytes",
+    "SRC-0027517:preserved_bytes",
+    "SRC-0030237:preserved_bytes",
+    "code_sha256",
+    "plan_sha256",
+    "fixed_intercept_MAE_case",
+    "no_recorded_model_calls",
+    "nonzero_residuals",
+    "uniform:probability",
+    "uniform:weight",
+    "uniform:loss",
+    "uniform:gradient",
+    "loss_proportional:probability",
+    "loss_proportional:weight",
+    "loss_proportional:loss",
+    "loss_proportional:gradient",
+    "gradient_variance_ratio",
+    "empirical_means",
+    "four_claim_flags",
+    "UTC_start",
+    "completion_and_arithmetic_timer",
+    "no_prior_57_charge",
+    "only_one_ledger_delta",
+    "historical_budgets_unchanged",
+    "global:derived_steps",
+    "global:derived_rows",
+    "global:recorded_seconds",
+    "tabicl_risk:derived_steps",
+    "tabicl_risk:derived_rows",
+    "tabicl_risk:recorded_seconds"
+  ],
+  "errors": [],
+  "exact_moments": {
+    "uniform": {
+      "loss": {
+        "mean": "4",
+        "variance": "18"
+      },
+      "gradient": {
+        "mean": "1/3",
+        "variance": "8/9"
+      }
+    },
+    "loss_proportional": {
+      "loss": {
+        "mean": "4",
+        "variance": "0"
+      },
+      "gradient": {
+        "mean": "1/3",
+        "variance": "121/45"
+      }
+    }
+  },
+  "gradient_variance_ratio": "121/40",
+  "cheap_after_seconds": 60.80618780000309,
+  "recorded_modeling_after_seconds": 1955.2434951000014,
+  "historical_fit_cost": [
+    {
+      "method": "global",
+      "calculated_steps": 1890,
+      "calculated_rows": 483840,
+      "recorded_fit_seconds": 269.5897295999994
+    },
+    {
+      "method": "tabicl_risk",
+      "calculated_steps": 2431,
+      "calculated_rows": 594048,
+      "recorded_fit_seconds": 177.5529198000013
+    }
+  ],
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0,
+  "scope": "보존 바이트·세 고정 결과의 정확 산술·원장 차이·과거 epoch 기반 비용만 검수"
+}
