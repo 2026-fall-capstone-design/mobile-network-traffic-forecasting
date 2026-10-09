@@ -18,11 +18,13 @@ def verify(manifest_path: Path) -> dict:
     checks, raw = [], {}
 
     def check(name, condition):
+        """조건을 확인하고 통과한 검사 이름을 기록한다."""
         if not condition:
             raise ValueError(name)
         checks.append(name)
 
     def same(name, a, b, atol=1e-12):
+        """모양·유한성을 확인한 뒤 수치가 허용 오차 안에서 같은지 대조한다."""
         aa, bb = np.asarray(a), np.asarray(b)
         check(
             name,
@@ -35,6 +37,7 @@ def verify(manifest_path: Path) -> dict:
         )
 
     def scalar(name, got, want):
+        """빈 상태의 null과 실제 수치를 구분하여 저장된 스칼라를 검사한다."""
         if want is None:
             check(name, got is None)
         else:
@@ -42,6 +45,7 @@ def verify(manifest_path: Path) -> dict:
             same(name, got, want)
 
     def arrays(sid):
+        """해시를 확인한 NPZ 바이트를 pickle 없이 읽고 파일 핸들을 닫는다."""
         with np.load(io.BytesIO(raw[sid]), allow_pickle=False) as bank:
             return {k: bank[k] for k in bank.files}
 
