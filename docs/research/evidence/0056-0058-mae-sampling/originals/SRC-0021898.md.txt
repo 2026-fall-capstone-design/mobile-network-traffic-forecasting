@@ -1,0 +1,68 @@
+# 58. 학습 sample 압축 방향의 원문·계산 검토
+
+2026-09-26. 56 계획, 57 정확 산술 확인에 따른 기록이다. 새 추천안과 최종 Word는 아직 미완료다.
+
+## 판단
+
+**TabICLv2의 큰 예측 오차를 sample 중요도로 사용하여 RCTL 학습량을 줄이는 안은 채택하지 않는다.** 같은 경험 손실을 추정한다는 성질과 실제 학습이 빨라진다는 성질은 다르다. 더 근본적으로, sample 추출용 strata와 최종 RCTL을 나누는 cell cluster도 다른 결정이다. 전자를 잘 만들었다고 후자가 정해지지 않는다.
+
+학습 비용을 줄일 문제 자체는 남는다. 기존 34 결과에서 global의 optimizer step은1,890, Tab K=4는2,431이었다. cell clustering만으로 처리량 감소가 보장되지 않음을 직접 확인했다. 그러나 비용 문제의 존재가 특정 Tab 기반 해결책의 타당성을 대신하지는 않는다.
+
+## 1. 원문에서 확인한 가장 가까운 방법
+
+| 원문 | 실제 계산과 결과가 바꾸는 결정 | 비용·가정·현재 적용 한계 |
+|---|---|---|
+| TimeDC, PVLDB18(2):226–238,2024 | §3.2–3.5, 식10–16, Algorithm2. 전체 자료로 학습한 TSOperator의 parameter trajectory를 buffer에 저장하고, 합성 시계열의 학습 경로·주파수 표현을 맞춘다. 이후 작은 자료로 다른 예측기를 학습한다. | 전체 자료 expert 학습이 선행한다. Table4는 **초/epoch**이며 expert 사전학습부터 포함한 총 비용이 아니다. Table2는 합성 자료로 학습한 서로 다른 architecture 비교다. 모든 architecture의 원자료 대비 오차 보존율 표로 읽지 않는다. 실제 입력·정답 쌍을 그대로 쓰는 현재 목표에 직접 대입할 수 없다. |
+| Katharopoulos–Fleuret, ICML2018 | §3.1 식1–6의 역확률 가중은 gradient 평균을 유지한다. §3.2 식18–19는 현재 학습기의 output-gradient와 활성값에 근거한 norm 상한을 사용한다. §3.3은 비용을 회수할 만큼 분산이 줄 때 추출을 적용한다. | 임의의 양수 확률도 불편성은 만족한다. TabICL 오차가 크다는 이유만으로 해당 확률이 좋은 것은 아니다. 실제 RCTL gradient를 사용해 clustering을 정하면 독립성 제약에 어긋난다. |
+| Rundel et al., TabPFN IML, arXiv2403.10923v2 | §3.4에서 무작위 context별 validation risk를 계산하고 weighted linear surrogate의 계수로512개 sample을 고른다. §4.3: 원자료3,072개, context256–512, M=9,216, validation512, test1,024;5반복. | TabPFN 자체의 context 최적화다. 다른 최종 학습기의 자료 가치를 검증한 결과가 아니다. 약1만 forward를 필요로 한다. OpenML 세 classification 문제의 ROC AUC 결과이며 회귀·시계열·RCTL 결과로 옮기지 않는다. v2가 확인된 최신 원문이다. |
+| Lu et al., SCott, ICML2021 | §5.1에서 시간대·주기 등의 strata를 만들고 §5.2 식7/Lemma1로 가중 gradient를 만든다. Algorithm1/식8–10은 이를 control variate로 사용하여 반복 계산량을 줄인다. | 기존 모델을 나누는 cell clustering이 아니라 한 학습기의 gradient를 추정하는 방법이다. §6 Assumption2의 smooth loss, Assumption3의 strata 내부 분산 상한이 필요하다. RCTL의 MAE·ReLU에 수렴 정리를 그대로 붙이지 않는다. Traffic은 통신 트래픽이 아니라 도로 점유율이다. |
+| Liu–Xu, SGD-as, arXiv1810.03124v1 | §3/Algorithm1은 서로 보완되는 gradient의 sample을 함께 뽑는다. §4.2/Algorithm2는 binary logistic/SVM에서 학습 parameter에 무관한 label·입력 내적 기준으로 미리 permutation을 만든다. | “반대 방향 sample을 섞는다”와 “한 번 계산해 재사용한다”도 기존 원리다. MAE 회귀에서는 residual 부호가 현재 예측값에 따라 바뀐다. Tab median으로 부호를 추정했다고 RCTL gradient 부호가 같아지는 것은 아니다. |
+
+TimeDC Table4의 Weather는 condensation22.39, condensed 학습4.31, original 학습35.26초/epoch다. 이 값만으로 총비용88% 절감 등으로 보고하지 않는다. 이득을 판단하려면 expert 준비, 압축 epoch 수, 이후 재학습 횟수가 필요하다. 원문은 cross-architecture 실증도 제시하므로 “특정 학습기에서만 작동한다고 증명됐다”는 반대 방향의 단정도 하지 않는다.
+
+## 2. 확인한 코드와 논문 해석의 경계
+
+- TimeDC 공식 repository commit `60169680447a12ad77b050831ee71da8be7f48f7`. `buffer_ts.py`는 expert를 사전학습하여 저장한다. `distill_ts.py`는 buffer를 읽고 inner gradient를 계산한다. 공개 snapshot의 `get_ts_dataset`은 입력과 target 인덱스를 별도로 뽑고 작은 noise를 더한다. `distill_ts.py`에서도 두 인덱스를 별도로 추출하며 `optimizer_ts` 생성 이후 `x_sys`를 재대입한다. 이 구현을 **검증된 재현 baseline으로 실행했다고 표시하지 않는다.** 이 코드 관찰만으로 출판 논문의 실험 결과가 틀렸다고 결론 내리지 않는다.
+- TabPFN IML commit `7bd39bc2e6b2f7a16602983c01086e962db45c37`. `data_shapley.py`의 `.fit`·`predict_proba`·WLS·계수 선택을 대조했다. 공개 실험 entrypoint는 기본 `debug=True`; 논문 규모 설정은 else branch다. 구현은 `CrossEntropyLoss`에 `predict_proba` 결과를 전달하므로 실제 재현 시 logits/probability 의미를 다시 확인해야 한다. 이를 RCTL 회귀 가치 계산 코드로 사용할 수 없다.
+- 외부 repository는 읽기만 했다. 설치·학습·실험 실행0.
+
+## 3. MAE에서 ‘큰 오차 sample’이 중요한 학습 sample인가
+
+57에서 예측식 fθ(x)=θ, θ=0, 동일 입력 세 개와 실제값 [-1,-1,10]을 고정했다. 절대오차는 [1,1,10], θ 방향 gradient는 [1,1,-1]이다. 큰 오차10은 gradient의 크기가10이라는 뜻이 아니다.
+
+선택 확률 p로 뽑은 sample에는 1/(3p)를 곱했다. 결과를 추정하는 반복 실험 대신 가능한 세 결과를 유리수로 정확히 계산했다.
+
+| 선택법 | 확률 | 가중 loss 평균 | 가중 loss 분산 | 가중 gradient 평균 | 가중 gradient 분산 |
+|---|---|---:|---:|---:|---:|
+| uniform | 1/3,1/3,1/3 | 4 | 18 | 1/3 | 8/9≈0.888889 |
+| loss 비례 | 1/12,1/12,10/12 | 4 | 0 | 1/3 | 121/45≈2.688889 |
+
+loss 비례 선택은 전체 오차를 **변동 없이** 추정하지만 gradient 분산은 **3.025배**다. 따라서 loss 추정 효율을 학습 효율이라고 부를 수 없다. 심지어 이 예는 다른 예측기인 TabICL의 오차가 아니라 현재 학습기 자신의 정확한 오차를 알고 뽑는다.
+
+이 결과는 실제 RCTL의 학습 시간이나 네트워크 트래픽 예측 오차를 측정한 것이 아니다. 모든 압축법이 실패한다는 뜻도 아니다. “오차를 잘 재현하므로 RCTL 학습이 빨라진다”는 일반적 연결만 반박한다.
+
+현재 RCTL에는 training-mode BatchNorm과 dropout도 있다. 개별 gradient를 고정한 단순 목적과 달리 BatchNorm 계산은 batch 구성에 영향을 받는다. 따라서 고정 checkpoint를 eval 모드로 읽어 계산한 분산을 실제 training-mode 분산과 같다고 보고하면 안 된다. 현재 `rctl_torch.py`에서 각 block의 `BatchNorm1d`·`Dropout`을 확인했다.
+
+## 4. 수정 가능한 부분과 이번에 수정하지 않는 부분
+
+**반영할 원칙:** cluster 수, 처리한 sample 수, optimizer step 수, 총 실행 시간을 분리한다. 샘플링/압축의 사전 비용을 이후 재학습 횟수에 걸쳐 회수하는지 본다. 실제 정답을 유지해도 선택 확률과 가중에 따라 학습 목적이 달라질 수 있으므로 이를 명시한다.
+
+**채택하지 않는 안:** (a) TabICL loss 순으로 중요한 sample 선택, (b) Tab context Shapley 값을 RCTL 학습 가치로 사용, (c) 기존 시간대 stratification이나 antithetic sampling에 Tab 이름만 추가, (d) 전체 자료 expert 학습비를 제외한 압축 비용 주장. 이들은 현재 제약의 새 clustering 결정을 제공하지 못하거나, 이전의 학습기 간 효과 대체 가정을 되풀이한다.
+
+**이번 검토로 확인하지 않은 것:** 실제 RCTL 자료 압축의 최적 비율, 학습 시간 절감, 압축 후 예측 정확도, TabICLv2의 sample 선택 우위. 새 RCTL fit0, Tab context0, 단순 회귀 fit0이다. 기존29개 RCTL 상한은 유지한다.
+
+## 5. 실행 기록과 다음 탐색 경계
+
+`57_mae_sampling_plan.md` 고정 뒤 `mae_sampling_audit_57.py`를 한 번 실행했다. exit0, numeric0.000162초, 네 성질을 확인했다. 결과는 `results/mae_sampling_57/`에 저장했다. 재실행하지 않는다.
+
+다음에는 sample 선택 점수를 다른 이름으로 바꾸지 않는다. **실제로 RCTL이 처리하는 입력·학습 단위를 줄이면서, 줄인 정보가 불필요하다는 직접 확인이 가능한 문제**가 남는지 검토한다. 예를 들어 필요한 과거 길이의 차이는 입력 연산량과 연결되지만, adaptive lookback 연구와 구별되고 현재8시점 RCTL에서도 의미 있는 차이가 있는지부터 확인해야 한다. 이는 아직 추천안이 아니다. 이미 확인한 GPI/CF 분리·long-context caching을 새 방법이라고 다시 제안하지 않는다.
+
+## 출처
+
+- [TimeDC 원문](https://www.vldb.org/pvldb/vol18/p226-miao.pdf), [공식 구현](https://github.com/uestc-liuzq/STdistillation/tree/60169680447a12ad77b050831ee71da8be7f48f7).
+- [Importance sampling 원문](https://proceedings.mlr.press/v80/katharopoulos18a/katharopoulos18a.pdf).
+- [TabPFN IML v2](https://arxiv.org/abs/2403.10923v2), [공식 구현](https://github.com/david-rundel/tabpfn_iml/tree/7bd39bc2e6b2f7a16602983c01086e962db45c37).
+- [SCott 원문](https://proceedings.mlr.press/v139/lu21d/lu21d.pdf).
+- [SGD-as v1](https://arxiv.org/abs/1810.03124v1).
+
+PDF·원문 텍스트·history·commit·download hash·관련6쪽 렌더는 `sources/training_compression_56/`에 보존했다. 5편의 전체 내용 전부를 검증했다는 뜻은 아니며 위 절·식·표·코드가 실제 검토 범위다. A Study of Gradient Variance, Optimal Look-back Horizon, wavelet adaptive lookback은 검색으로 발견했으나 이번 단계에서 방법 전체를 검토한 연구에 포함하지 않는다.

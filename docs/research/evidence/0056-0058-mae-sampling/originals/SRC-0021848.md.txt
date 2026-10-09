@@ -1,0 +1,35 @@
+# 56. 학습 sample 압축 방향의 한정 검토
+
+작성: 2026-09-26. 이전 단계의 실패를 설명만 바꾸어 추천하지 않는다.
+
+## 질문과 확인 범위
+
+기존 확인에서 K=4 RCTL은 global보다 모델 수가 많고 optimizer step도 많았다. cell을 묶는 것과 실제 학습 sample 처리량을 줄이는 것은 다른 결정이다. 실제 관측 sample을 유지하면서 처리량을 줄이는 방법이 clustering→RCTL의 독립성을 지키며 별도의 연구 기여가 될 수 있는지 검토한다.
+
+이번 검토에서 먼저 구분할 대상은 (a) 같은 경험 손실을 적은 sample로 추정하는 분산, (b) 실제 RCTL gradient의 분산과 수렴 시간, (c) 미래 예측 오차다. (a)의 성립을 (b)·(c)의 개선으로 사용하지 않는다.
+
+가장 가까운 자료 세 편을 우선 확인한다.
+
+1. TimeDC, Less is More: Efficient Time Series Dataset Condensation via Two-fold Modal Matching, PVLDB 18(2), 2024. 실제 sample 선택과 합성 시계열 생성, expert trajectory 사전학습 비용, 시계열 모형 교차 비교를 확인한다.
+2. Katharopoulos–Fleuret, Not All Samples Are Created Equal, ICML 2018. 중요도 가중의 불편성, gradient norm 기준, 추가 forward 비용이 회수되는 조건을 확인한다.
+3. Rundel et al., Interpretable Machine Learning for TabPFN, arXiv:2403.10923 최신 버전. context 가치 추정이 최종 학습기의 가치와 같은지, 평가 호출 수와 classification 실험의 범위를 확인한다.
+
+추가 문헌은 이 세 편에서 확인된 직접적인 공백이 있을 때만 확장한다. 검색 날짜·검색어·버전·PDF/코드 hash와 실제 읽은 위치를 기록한다. PDF 1개 최대20MB, HTML/코드/metadata 최대5MB. 공개 원문만 내려받고 외부 코드를 실행하지 않는다.
+
+## 이번 단계의 경계
+
+- 새 RCTL fit 0. 누적 허용29개를 이미 사용했다.
+- 새 Tab 호출 및 단순 모델 학습은 이 원문 검토 단계에서 0.
+- 필요한 산술 확인은 별도 실행 전 계획으로 고정하고 값·예상 성질·시간 상한을 기록한다.
+- 기존 checkpoint를 사용한다면 후보와 선택 규칙을 먼저 고정한 뒤 사후 확인으로만 사용한다. RCTL 손실을 보며 clustering 또는 sample 선택을 바꾸지 않는다.
+- 중요도 가중 자체, Tab loss로 sample 순서를 매기는 것, synthetic condensation을 Tab으로 대체한 것만으로 신규성이라고 하지 않는다.
+- gradient 불편성은 임의의 양수 선택 확률과 역확률 가중만으로 성립한다. 따라서 TabICLv2의 추가 기여는 별도로 확인해야 한다.
+- 기본 MAE에서 residual 크기와 gradient 크기를 구별한다. 관측 noise가 큰 sample을 많이 고르는 것이 유용한 학습 정보 증가라는 근거가 되지 않는다.
+
+## 산출물과 다음 결정
+
+원문 비교와 필요 조건을 한 파일로 남긴다. 직접적인 추가 정보와 실제 clustering 결정이 특정되지 않으면 모델 실험을 시작하지 않는다. 이 검토만으로 전체 goal을 완료하지 않으며, 확인된 이득이 없는데도 새 Word 추천안을 작성하지 않는다.
+
+## 후속 확인 범위 — 같은 후보의 직접 인접 연구
+
+MAE gradient의 크기와 방향을 구분한 뒤, 단순 loss 중요도 대신 gradient를 균형 있게 뽑는 대안이 이미 있는지 확인한다. 2026-09-26 검색에서 SCott(ICML2021, Variance Reduced Training with Stratified Sampling for Forecasting Models)와 SGD-as(arXiv1810.03124v1)를 찾았다. 두 원문의 식·가정·알고리즘까지만 추가로 읽는다. 모델 호출은 늘리지 않는다. 이들은 별도 추천 후보가 아니라 sample 압축/추출 방향의 신규성 확인에 필요한 직접 인접 연구다.

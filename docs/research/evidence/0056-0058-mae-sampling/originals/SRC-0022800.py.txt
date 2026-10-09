@@ -1,0 +1,41 @@
+from pathlib import Path
+import urllib.request, json, hashlib, subprocess, concurrent.futures
+from pypdf import PdfReader
+
+out=Path(__file__).resolve().parent/'sources/training_compression_56'
+log=out/'adjacent_fetch_log.json'
+assert not log.exists()
+items=[
+ ('SCott_ICML2021.pdf','https://proceedings.mlr.press/v139/lu21d/lu21d.pdf'),
+ ('antithetic_1810_03124v1.pdf','https://arxiv.org/pdf/1810.03124v1'),
+ ('antithetic_history.html','https://arxiv.org/abs/1810.03124'),
+ ('TimeDC__process__tools.py','https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/process/tools.py')]
+
+def fetch(spec):
+ name,url=spec;cap=20_000_000 if name.endswith('.pdf') else 5_000_000
+ rec={'file':name,'url':url,'access_date':'2026-09-26','cap_bytes':cap}
+ try:
+  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Research source verification/1.0'}),timeout=25) as r:
+   data=r.read(cap+1);rec.update(status=r.status,final_url=r.url)
+  assert len(data)<=cap
+  if name.endswith('.pdf'): assert data.startswith(b'%PDF-')
+  p=out/name;p.write_bytes(data)
+  rec.update(bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+  if name.endswith('.pdf'):
+   pdf=PdfReader(p);rec['pages']=len(pdf.pages)
+   p.with_suffix('.txt').write_text('\n\n'.join(f'--- PAGE {i+1} ---\n{v.extract_text()}' for i,v in enumerate(pdf.pages)),encoding='utf-8')
+ except Exception as exc: rec['error']=str(exc)
+ return rec
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool: records=list(pool.map(fetch,items))
+log.write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+for rec in records: print(json.dumps(rec,ensure_ascii=False),flush=True)
+
+poppler='C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe'
+previews=out/'previews';previews.mkdir(exist_ok=True)
+renders=[]
+for source,page in [('TimeDC_PVLDB_2024.pdf',6),('TimeDC_PVLDB_2024.pdf',10),('importance_sampling_ICML2018.pdf',3),('TabPFN_IML_2403_10923v2.pdf',11),('SCott_ICML2021.pdf',5),('antithetic_1810_03124v1.pdf',5)]:
+ prefix=previews/f'{Path(source).stem}_p{page}'
+ subprocess.run([poppler,'-f',str(page),'-l',str(page),'-r','110','-png','-singlefile',str(out/source),str(prefix)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,timeout=25)
+ p=prefix.with_suffix('.png')
+ renders.append({'source':source,'page':page,'image':str(p.relative_to(out)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+(out/'render_log.json').write_text(json.dumps(renders,indent=2),encoding='utf-8')

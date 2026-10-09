@@ -1,0 +1,33 @@
+{
+  "date": "2026-09-26",
+  "primary_scope": "학습 sample 압축 및 샘플링이 cell clustering과 RCTL 비용 절감에 연결되는가",
+  "queries": [
+    "TabICL coreset",
+    "TabPFN data selection regression",
+    "time series forecasting coreset clustering training",
+    "tabular foundation data pruning",
+    "TabPFN data valuation",
+    "TabICL sample selection distillation",
+    "time series coreset forecasting model agnostic",
+    "Not All Samples Are Created Equal importance sampling training gradient",
+    "antithetic sampling stochastic gradient neural networks data",
+    "stratified sampling gradient clustering neural network training",
+    "regression antithetic mini-batch",
+    "time series batch gradient variance sampling",
+    "time series adaptive lookback length clustering forecasting conditional history selection",
+    "TabICL forecasting coreset sample selection time series"
+  ],
+  "sources_reviewed": [
+    {"paper": "TimeDC", "version": "PVLDB18(2):226-238,2024; arXiv2410.20905 history has v1 only", "read": ["Section3.2-3.5", "Equations10-16", "Algorithm2", "Section4.2.4-4.2.5", "Tables2-4"], "visual_pages": [6,10], "code_commit": "60169680447a12ad77b050831ee71da8be7f48f7", "code_read": ["readme.md", "buffer_ts.py expert loop", "distill_ts.py core loop", "process/tools.py get_ts_dataset"], "not_claimed": "실행 재현, 모든 부록/분류 구현 검토, 총비용 검증"},
+    {"paper": "Not All Samples Are Created Equal", "version": "PMLR80 ICML2018", "read": ["Section3.1-3.3", "Equations1-8", "Equations18-19"], "visual_pages": [3], "not_claimed": "실제 RCTL gradient를 이용한 샘플링 실험"},
+    {"paper": "Interpretable Machine Learning for TabPFN", "version": "arXiv2403.10923v2,2024-07-23", "read": ["Section3.4", "Section4.3"], "visual_pages": [11], "code_commit": "7bd39bc2e6b2f7a16602983c01086e962db45c37", "code_read": ["methods/data_shapley.py fit and performance comparison", "experiments/context_optimization/optimize_data_shapley.py"], "not_claimed": "회귀형 TabPFN 실험, 다른 학습기로의 가치 이전 확인"},
+    {"paper": "SCott", "version": "PMLR139 ICML2021", "read": ["Section4 AR motivation", "Section5.1-5.3", "Algorithm1", "Section6 Assumptions2-3/Theorem2", "Section7 data and strata"], "visual_pages": [5], "not_claimed": "RCTL MAE 수렴 정리, 통신 트래픽 실험, 공식 구현 실행"},
+    {"paper": "SGD-as", "version": "arXiv1810.03124v1,2018-10-07", "read": ["Section3", "Section4.2", "Algorithms1-2", "Section5 experimental scope"], "visual_pages": [5], "not_claimed": "MAE 회귀 및 RCTL에서 parameter-independent antithetic grouping 보장"}
+  ],
+  "discovered_but_not_method_reviewed": ["A Study of Gradient Variance in Deep Learning,2007.04532", "Optimal Look-back Horizon for Time Series Forecasting in Federated Learning,2511.12791", "Efficiently Enhancing Long-term Series Forecasting via Adaptive Lookback with Wavelets", "Forking-Sequences TMLR2026"],
+  "external_code_executed": false,
+  "new_TabICL_calls": 0,
+  "new_RCTL_fits": 0,
+  "new_RCTL_forwards": 0,
+  "lookup_issue_ko": "최초 Windows rg glob을 literal path로 전달하여 OS error123이 났다. -g filter로 수정하여 읽기에 성공했다. 논문 또는 모델 실행 실패가 아니다."
+}

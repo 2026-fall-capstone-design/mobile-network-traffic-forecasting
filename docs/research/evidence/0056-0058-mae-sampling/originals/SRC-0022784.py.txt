@@ -1,0 +1,47 @@
+from pathlib import Path
+import urllib.request, concurrent.futures, json, hashlib, datetime
+from pypdf import PdfReader
+
+base = Path(__file__).resolve().parent
+out = base / 'sources/training_compression_56'
+out.mkdir(exist_ok=True)
+log = out / 'fetch_log.json'
+assert not log.exists(), 'Fetch has already been recorded; inspect it instead of repeating.'
+items = [
+ ('TimeDC_PVLDB_2024.pdf', 'https://www.vldb.org/pvldb/vol18/p226-miao.pdf'),
+ ('TimeDC_arxiv_history.html', 'https://arxiv.org/abs/2410.20905'),
+ ('importance_sampling_ICML2018.pdf', 'https://proceedings.mlr.press/v80/katharopoulos18a/katharopoulos18a.pdf'),
+ ('TabPFN_IML_arxiv_history.html', 'https://arxiv.org/abs/2403.10923'),
+ ('TabPFN_IML_2403_10923v2.pdf', 'https://arxiv.org/pdf/2403.10923v2'),
+ ('TimeDC_repo.json', 'https://api.github.com/repos/uestc-liuzq/STdistillation'),
+ ('TabPFN_IML_repo.json', 'https://api.github.com/repos/david-rundel/tabpfn_iml'),
+]
+
+def fetch(item):
+ name, url = item
+ cap = 20_000_000 if name.endswith('.pdf') else 5_000_000
+ rec = dict(file=name, url=url, cap_bytes=cap,
+            accessed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
+ try:
+  req = urllib.request.Request(url, headers={'User-Agent': 'Research source verification/1.0'})
+  with urllib.request.urlopen(req, timeout=25) as response:
+   content = response.read(cap + 1)
+   rec.update(status=response.status, final_url=response.url)
+  if len(content) > cap: raise ValueError('Size cap exceeded')
+  if name.endswith('.pdf') and not content.startswith(b'%PDF-'): raise ValueError('Not a PDF')
+  path = out / name
+  path.write_bytes(content)
+  rec.update(bytes=len(content), sha256=hashlib.sha256(content).hexdigest())
+  if name.endswith('.pdf'):
+   reader = PdfReader(path)
+   rec['pages'] = len(reader.pages)
+   path.with_suffix('.txt').write_text('\n\n'.join(
+     f'--- PAGE {i+1} ---\n{page.extract_text()}' for i, page in enumerate(reader.pages)), encoding='utf-8')
+ except Exception as exc:
+  rec['error'] = str(exc)
+ return rec
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+ records = list(pool.map(fetch, items))
+log.write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')
+for rec in records: print(json.dumps(rec, ensure_ascii=False), flush=True)
