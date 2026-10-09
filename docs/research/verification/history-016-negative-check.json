@@ -1,0 +1,97 @@
+{
+  "success": true,
+  "negative_cases": 18,
+  "cases": [
+    {
+      "case": "missing_result_row",
+      "rejected_by": "54_unique_rows",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "duplicate_result_row",
+      "rejected_by": "54_unique_rows",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "changed_primary_k",
+      "rejected_by": "density_settings",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "integer_in_boolean_scope",
+      "rejected_by": "known_development_scope",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "boolean_model_call_count",
+      "rejected_by": "no_new_models_reported",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "wrong_repaired_code_hash",
+      "rejected_by": "revised_code_identity",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "reported_total_below_failed_time",
+      "rejected_by": "positive_resumed_time",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "changed_RCTL_outcome_rank",
+      "rejected_by": "TabICL_distribution:32:intrinsic_RCTL",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "changed_reported_rank",
+      "rejected_by": "TabICL_distribution:16:intrinsic_RCTL",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "density_mass_not_one",
+      "rejected_by": "density32:sum",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "nonfinite_prediction",
+      "rejected_by": "TabICL_distribution_k16_global:arrays",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "self_consistent_but_nonoptimal_prediction",
+      "rejected_by": "TabICL_distribution_k32_global:median_certificate:0",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "self_consistent_but_wrong_intrinsic_cost",
+      "rejected_by": "TabICL_distribution_k32_global:integrated_minimum_cost",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "changed_normalized_target",
+      "rejected_by": "normalized_Y",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "changed_lag_feature",
+      "rejected_by": "saved_X_feature_identity",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "missing_saved_cost_array",
+      "rejected_by": "'TabICL_distribution_k16_global_cost is not a file in the archive'",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "boolean_failure_exit_code",
+      "rejected_by": "reported_failure_marker",
+      "copied_hashes_updated": true
+    },
+    {
+      "case": "changed_preserved_bytes",
+      "rejected_by": "SRC-0021137:size",
+      "copied_hashes_updated": false
+    }
+  ],
+  "scope": "격리사본의해시도갱신한17개의미오류와원문바이트변경1개를거부함.복사본의평균/해시가일치해도혼합최적성·최소손실식이틀리면거부.모델실행·원본수정없음."
+}

@@ -88,4 +88,12 @@
 | fit_seconds,stage_seconds,순수 학습시간,29RCTL | [타이머 경계](records/0015-0021-cumulative-costs.md) | RCTL fit에validation/test추론/일부저장 포함. stage+fit 합산 금지 |
 | 캐시 재분석 비용,상한과 소비량,실패 비용 | [재사용·남은 공백](records/0015-0021-cumulative-costs.md) | 모델0회도 재분석 시간이 있음. 미확인 비용은0으로 채우지 않음 |
 
+조건부 공유 비용과 분할 선택은 다음 조건으로 찾는다.
+
+| 문제·별칭 | 확인한 기록 | 재사용 범위·주의 |
+|---|---|---|
+| conditional pooling cost, mixture median, input overlap, p_i(x) | [23·25](records/0023-0025-conditional-pooling.md) | 16cell·기존B1·고정6소속. 관계 충돌 비용과 유한표본 학습 이득 구분 |
+| Tab MAE는 우수하지만 소속 선택은 미확정, density k32 | [주 결과·반례](records/0023-0025-conditional-pooling.md) | K4다섯의 cost–RCTLρ.8/KNN.9. query는RCTLtrain내부;cell3737손해도 유지 |
+| float32 nonnegative assertion, float64 resume, zero group mass | [실패·비용 경계](records/0023-0025-conditional-pooling.md) | 실패보고3.8575초를포함한6.4339초;원콘솔미확인. 모델0회와계산비용구분 |
+
 새 실험은 관련 과거 기록, 같게 유지할 조건, 달라지는 질문·조건, 재사용할 파일을 먼저 적는다. 기존 부정 결과를 회피하기 위한 조건 변경과 새로운 가설 검증을 구분한다. [첫 묶음 검수](verification/pilot-001.md), [RCTL 검수](verification/pilot-002.md), [문헌 검수](verification/pilot-003.md), [캐시 대조 검수](verification/pilot-004.md), [전체 조사 현황](verification/inventory-2026-10-08.md).
