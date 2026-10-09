@@ -110,3 +110,7 @@
 ## 인접 구조를 새 소속 원리로 제안하기 전
 
 [25 인접 문헌·판단 경계](records/0025-adjacent-structures.md)는 Ma의 VAL routing, NeST의 지역 미래 guidance, Graph Coloring의 gradient update 스케줄을 구별한다. [지정 원문 비교](references/adjacent-structures.md)에 fallback·SNR 보장의 한계와 문서 불일치를 연결했다. NTK는 상세 검토 완료 문헌이 아니다. 실제 peak 표는16cell중4개에 표본이 없고 나머지도1–28개여서, 이 결과만으로 peak 연구 방향을 확정하지 않았다.
+
+## 관측 상태의 손해와 단순 예측기
+
+[26·27](records/0026-0027-observable-states.md)은 최근 수준·변화·하루 편차의 TRAIN 분위수 상태를 고정하고 기존 RCTL 8개 조건·계절 기준 3개·Ridge/HGB 2개를 대조했다. empirical의 급증 이득은 두 seed/기간에 남지만 전체 손해를 상쇄하지 못했다. Tab의 희소 high_high 이득과 HGB 전체 이득에도 seed·기간·cell 반례가 있다. actual target peak·입력 상태·micro/macro·빈도 기여를 바꾸어 결론을 선택하지 않는다.

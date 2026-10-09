@@ -1,0 +1,129 @@
+"""Analyze input-defined states using fixed RCTL predictions and two untuned simple baselines."""
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:
+    os.environ[key]='4'
+import pathlib,json,time,hashlib,sys
+import numpy as np
+import pandas as pd
+import h5py
+import psutil
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor
+from threadpoolctl import threadpool_limits
+
+sys.stdout.reconfigure(encoding='utf-8')
+base=pathlib.Path(__file__).resolve().parent
+out=base/'results/observable_state_loss'
+out.mkdir(exist_ok=True)
+if (out/'run_started.json').exists():raise RuntimeError('Run already exists; do not restart.')
+start=time.perf_counter(); proc=psutil.Process(); peak_rss=proc.memory_info().rss
+settings=dict(train_targets=[168,839],diagnostic_targets=[1008,1487],independent_test=False,
+    level_quantiles=[.1,.9],new_RCTL_fits=0,new_RCTL_forward=0,new_TabICL_contexts=0,
+    simple_fits_planned=2,wall_cap_seconds=60,ram_cap_bytes=2*1024**3,
+    code_sha256=hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),
+    plan_sha256=hashlib.sha256((base/'26_observable_state_loss_plan.md').read_bytes()).hexdigest(),
+    predictions_sha256=hashlib.sha256((base/'results/rctl_pilot/all_predictions.npz').read_bytes()).hexdigest())
+(out/'settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+(out/'run_started.json').write_text(json.dumps(dict(pid=os.getpid(),unix=time.time())),encoding='utf-8')
+finished=False; failure=None;fits=[]
+try:
+    saved=np.load(base/'results/rctl_pilot/all_predictions.npz')
+    ids=saved['cell_ids'];scales=saved['scales']
+    with h5py.File(base/'assets/data_git_version.h5','r') as h:
+        raw=np.asarray(h['data'][:,ids-1,2],dtype=np.float64)
+        dates=pd.to_datetime(h['idx'][:].astype(str))
+    z=raw/scales;tr=np.arange(168,840);te=np.arange(1008,1488)
+    y=saved['y'].astype(np.float64)
+    assert np.allclose(y,z[te].T,atol=1e-6,rtol=1e-6)
+    def features(times):
+        cal=dates[times]
+        calendar=np.stack([np.sin(2*np.pi*cal.hour/24),np.cos(2*np.pi*cal.hour/24),
+            np.sin(2*np.pi*cal.dayofweek/7),np.cos(2*np.pi*cal.dayofweek/7)],axis=1)
+        return np.stack([np.array([np.r_[z[t-8:t,i],z[t-24,i],z[t-168,i],
+            z[t-24:t,i].mean(),z[t-24:t,i].std(),calendar[k]] for k,t in enumerate(times)])
+            for i in range(16)])
+    xtr=features(tr);xte=features(te)
+    scaler=StandardScaler().fit(xtr.reshape(-1,16))
+    tx=scaler.transform(xtr.reshape(-1,16));qx=scaler.transform(xte.reshape(-1,16))
+    ty=z[tr].T.reshape(-1)
+    predictions={k:saved[k].astype(np.float64) for k in saved.files if k not in ['y','cell_ids','scales']}
+    predictions.update(persistence=z[te-1].T,daily_naive=z[te-24].T,weekly_naive=z[te-168].T)
+    for name,model in [('global_Ridge',Ridge(alpha=1)),('global_HGB',HistGradientBoostingRegressor(
+        max_iter=100,max_leaf_nodes=31,min_samples_leaf=20,l2_regularization=1,
+        learning_rate=.1,early_stopping=False,random_state=20260925))]:
+        if time.perf_counter()-start>settings['wall_cap_seconds']:raise RuntimeError('Wall cap')
+        fs=time.perf_counter()
+        with threadpool_limits(limits=4):
+            model.fit(tx,ty);predictions[name]=model.predict(qx).reshape(16,480)
+        fits.append(dict(name=name,seconds=time.perf_counter()-fs))
+        peak_rss=max(peak_rss,proc.memory_info().rss)
+        if peak_rss>settings['ram_cap_bytes']:raise RuntimeError('RSS cap')
+    train_summaries=np.stack([z[tr-1].T,(z[tr-1]-z[tr-2]).T,(z[tr-1]-z[tr-25]).T])
+    test_summaries=np.stack([z[te-1].T,(z[te-1]-z[te-2]).T,(z[te-1]-z[te-25]).T])
+    cuts=np.quantile(train_summaries,[.1,.9],axis=2).transpose(1,2,0)
+    states=np.where(test_summaries<=cuts[:,:,0,None],0,
+        np.where(test_summaries>cuts[:,:,1,None],2,1))
+    names=['recent_level','recent_change','daily_deviation']
+    masks={'all':np.ones_like(y,dtype=bool)}
+    for f,name in enumerate(names):
+        for s,sname in enumerate(['low','middle','high']):masks[f'{name}:{sname}']=states[f]==s
+    for a,an in enumerate(['low','middle','high']):
+        for b,bn in enumerate(['low','middle','high']):
+            masks[f'level_change:{an}_{bn}']=(states[0]==a)&(states[1]==b)
+    losses={name:np.abs(p-y) for name,p in predictions.items()}
+    global_loss=losses['global_20260925']
+    metrics=[]
+    for group,mask in masks.items():
+        counts=mask.sum(1)
+        episode_counts=(mask&~np.concatenate([np.zeros((16,1),bool),mask[:,:-1]],axis=1)).sum(1)
+        info=dict(state=group,total_rows=int(mask.sum()),rows_by_cell=counts.tolist(),
+            time_instants_with_any_cell=int(mask.any(0).sum()),episodes_by_cell=episode_counts.tolist(),
+            cells_with_any_rows=int((counts>0).sum()),cells_with_at_least_10_rows=int((counts>=10).sum()))
+        bymethod=[]
+        for method,p in predictions.items():
+            e=losses[method];d=e-global_loss;diff=p-y
+            per_cell=[float(e[i,mask[i]].mean()) if counts[i] else None for i in range(16)]
+            halves=[]
+            for section in [slice(0,240),slice(240,480)]:
+                m=mask[:,section];dd=d[:,section]
+                halves.append(float(dd[m].mean()) if m.any() else None)
+            bymethod.append(dict(method=method,
+                conditional_micro_mae=float(e[mask].mean()) if mask.any() else None,
+                conditional_macro_mae=float(np.mean([v for v in per_cell if v is not None])) if mask.any() else None,
+                per_cell_conditional_mae=per_cell,
+                mean_underprediction=float(np.maximum(-diff[mask],0).mean()) if mask.any() else None,
+                mean_overprediction=float(np.maximum(diff[mask],0).mean()) if mask.any() else None,
+                contribution_to_overall_mae=float((e*mask).mean()),
+                contribution_delta_vs_global=float((d*mask).mean()),
+                conditional_delta_vs_global=float(d[mask].mean()) if mask.any() else None,
+                conditional_delta_halves_vs_global=halves,
+                cells_with_lower_conditional_mae=int(sum(bool(d[i,mask[i]].mean()<0) for i in range(16) if counts[i])),
+                lower_mae_in_each_half=bool(all(v is not None and v<0 for v in halves))))
+        metrics.append(dict(**info,methods=bymethod))
+    # Three bins within a family and all nine cross states must exactly reconstruct the overall loss.
+    for name in predictions:
+        whole=losses[name].mean()
+        for family in names+['level_change']:
+            total=sum(x['contribution_to_overall_mae'] for g in metrics if g['state'].startswith(family+':')
+                for x in g['methods'] if x['method']==name)
+            assert np.isclose(whole,total,atol=1e-12)
+    assert all(np.isfinite(p).all() for p in predictions.values())
+    np.savez_compressed(out/'arrays.npz',**predictions,y=y,cell_ids=ids,scales=scales,
+        threshold=cuts,states=states,train_summaries=train_summaries,test_summaries=test_summaries,times=te)
+    report=dict(settings=settings,cell_ids=ids.tolist(),thresholds=cuts.tolist(),metrics=metrics,
+        simple_fits=fits,elapsed_seconds=time.perf_counter()-start,peak_rss_bytes=peak_rss,
+        new_clustering_recommended=False,partitions_changed=False)
+    assert report['elapsed_seconds']<settings['wall_cap_seconds']
+    (out/'summary.json').write_text(json.dumps(report,indent=2,allow_nan=False),encoding='utf-8')
+    finished=True
+    print(json.dumps(dict(done=True,elapsed_seconds=report['elapsed_seconds'],simple_fits=fits,
+        selected_summary=[dict(state=g['state'],rows=g['total_rows'],cells=g['cells_with_any_rows'],
+            mae={x['method']:x['conditional_micro_mae'] for x in g['methods']})
+            for g in metrics if g['state'] in ['all','recent_level:high','recent_change:high','daily_deviation:high','level_change:high_high']])),flush=True)
+except Exception as e:
+    failure=repr(e);raise
+finally:
+    (out/'run_finished.json').write_text(json.dumps(dict(complete=finished,error=failure,
+        elapsed_seconds=time.perf_counter()-start,simple_fits=fits,peak_rss_bytes=peak_rss,
+        new_RCTL_fits=0,new_TabICL_contexts=0)),encoding='utf-8')

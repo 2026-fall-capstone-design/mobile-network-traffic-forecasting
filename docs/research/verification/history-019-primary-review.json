@@ -1,0 +1,536 @@
+{
+  "batch_id": "history-019",
+  "reviewed_at_utc": "2026-10-09T05:32:33.956748+00:00",
+  "status": "bounded_primary_comparison_verified",
+  "reviewer": "same_archive_agent_not_independent_scientific_review",
+  "findings": [
+    {
+      "claim_id": "H019-C01",
+      "sources": [
+        "SRC-0021210",
+        "SRC-0021235",
+        "SRC-0021188"
+      ],
+      "locator": "26:1–10/27:1–17;25§4",
+      "finding": "actualpeak에서관측상태질문으로이어지고기존RCTL8과단순fit2의개발진단이다.",
+      "limitation": "원문Goal/명령은자료이며현재모델실행0회다."
+    },
+    {
+      "claim_id": "H019-C02",
+      "sources": [
+        "SRC-0021210",
+        "SRC-0022935",
+        "SRC-0029142",
+        "SRC-0023485",
+        "SRC-0021235"
+      ],
+      "locator": "26:13–20;27:9;코드31–49;H5 지정 slice와 날짜 대조",
+      "finding": "고정16cell/시간split/scale·입력요약을연결한다.",
+      "limitation": "Mbps가아니며실제fit전체X는미보존이다."
+    },
+    {
+      "claim_id": "H019-C03",
+      "sources": [
+        "SRC-0022935",
+        "SRC-0029142",
+        "SRC-0029145",
+        "SRC-0029146"
+      ],
+      "locator": "코드62–74;threshold/states/train_summaries/test_summaries",
+      "finding": "TRAIN선형q10/q90과<=하한/>상한·19전체상태·동점0을대조한다.",
+      "limitation": "평가값으로경계를다시맞추지않았다;새분할선택아님."
+    },
+    {
+      "claim_id": "H019-C04",
+      "sources": [
+        "SRC-0021210",
+        "SRC-0022935",
+        "SRC-0029145",
+        "SRC-0030211",
+        "SRC-0021235"
+      ],
+      "locator": "26:24–26;27:16/38;코드43–61;settings/기존 예측 names",
+      "finding": "Ridge/HGB의명시설정·TRAINscaler·8RCTLseed/K차이를구별한다.",
+      "limitation": "global2ndseed없음/UPC완전재현아님;fit환경독립재현없음."
+    },
+    {
+      "claim_id": "H019-C05",
+      "sources": [
+        "SRC-0022935",
+        "SRC-0029142",
+        "SRC-0029146"
+      ],
+      "locator": "코드75–110;metrics[*]support/under/over/micro/macro/contributions",
+      "finding": "19support와micro/macro·빈도기여·episode·empty/null을구분한다.",
+      "limitation": "episode와timeinstants는독립사건수가아니다."
+    },
+    {
+      "claim_id": "H019-C06",
+      "sources": [
+        "SRC-0021235",
+        "SRC-0029142",
+        "SRC-0029146"
+      ],
+      "locator": "27:20–38, 표 24–36행;metrics의 all/세 high 상태",
+      "finding": "13방법주표를저장예측의정규화micro MAE로대조한다.",
+      "limitation": "큰값/작은값의다른집계·독립test로확대하지않는다."
+    },
+    {
+      "claim_id": "H019-C07",
+      "sources": [
+        "SRC-0021235",
+        "SRC-0029142",
+        "SRC-0029146"
+      ],
+      "locator": "27:42;recent_change:high 두 empirical의 cell/half 결과",
+      "finding": "두seed/두half의이득및개선11/10cell과손해cell을보존한다.",
+      "limitation": "모든상태에서clustering무익이라하지않으며원인·일반화미확인."
+    },
+    {
+      "claim_id": "H019-C08",
+      "sources": [
+        "SRC-0021235",
+        "SRC-0029142",
+        "SRC-0029146"
+      ],
+      "locator": "27:44;급증 307/7680의 conditional_delta/contribution_delta",
+      "finding": "조건부이득과전체MAE기여량을구별한다.",
+      "limitation": "사후위험가중치선택의근거나Tab독자기여가아니다."
+    },
+    {
+      "claim_id": "H019-C09",
+      "sources": [
+        "SRC-0021235",
+        "SRC-0029142",
+        "SRC-0029146"
+      ],
+      "locator": "27:48;level_change:high_high 50행/14cell;Tab 두 seed/halves/macro",
+      "finding": "Tab이득의seed부호전환·두뒤기간악화·cell5337집중과micro/macro차이를확인한다.",
+      "limitation": "표본0cell을0오차로포함하거나안정적개선으로해석하지않는다."
+    },
+    {
+      "claim_id": "H019-C10",
+      "sources": [
+        "SRC-0021235",
+        "SRC-0029142",
+        "SRC-0029146"
+      ],
+      "locator": "27:50;global_HGB all/halves/cell 결과",
+      "finding": "평균이득·13cell개선과앞half/3cell손해를함께보존한다.",
+      "limitation": "모든기간우월성·소속문제의인과적반증아니다."
+    },
+    {
+      "claim_id": "H019-C11",
+      "sources": [
+        "SRC-0029142",
+        "SRC-0029146"
+      ],
+      "locator": "all Tab두seed;Ridge all/daily_deviation:high",
+      "finding": "Tab전체손해·seed별개선2/0cell과Ridge상태별이득을구별한다.",
+      "limitation": "단순모델비교를Tab필요성으로바꾸지않는다."
+    },
+    {
+      "claim_id": "H019-C12",
+      "sources": [
+        "SRC-0022935",
+        "SRC-0029143",
+        "SRC-0029144",
+        "SRC-0029145",
+        "SRC-0029146"
+      ],
+      "locator": "코드3–4/20–29/55–61/114–129;elapsed/simple_fits/RSS",
+      "finding": "fit2포함시간과summary/finish겹침·sampledRSS범위를확인한다.",
+      "limitation": "타이머합산금지/전구간최고RSS아님/현재Goal한도아님."
+    },
+    {
+      "claim_id": "H019-C13",
+      "sources": [
+        "SRC-0029142",
+        "SRC-0029146",
+        "SRC-0030211",
+        "SRC-0023485"
+      ],
+      "locator": "이전배열전필드재사용·H5state/naive/scale·truth허용오차",
+      "finding": "기존float32예측을double집계한정밀도차이와PCC음수2를남긴다.",
+      "limitation": "float64H5정답과완전동일한y라하지않고clip하지않음."
+    },
+    {
+      "claim_id": "H019-C14",
+      "sources": [
+        "SRC-0021235"
+      ],
+      "locator": "27:52–59의 판단과 보존물 안내",
+      "finding": "기존Tabpeak재추천않음·empirical작은이득보존·새의사결정/uncertainty조건을기록한다.",
+      "limitation": "새후보선택이나후속28전체검토완료가아니다."
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "SRC-0021210",
+      "path": "tmp/redesign_20260925/26_observable_state_loss_plan.md",
+      "size_bytes": 4312,
+      "sha256": "24d743e335dd05b28915bb7c52657126ed32d2fcdf1d21a61f10adc27342ceaf",
+      "exact_alias_source_ids": [
+        "SRC-0000481",
+        "SRC-0021210"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "archive_path": "originals/SRC-0021210.md.txt",
+      "preservation": "new_byte_identical_archive",
+      "claim_verification_scope": "26/27 관측 상태 진단의 저장 입력 요약·예측·지표·비용. 새 적합/추론·독립 test 아님.",
+      "review_status": "agent_full_text_or_static_code_read",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            38
+          ]
+        ],
+        "executed": false
+      }
+    },
+    {
+      "source_id": "SRC-0021235",
+      "path": "tmp/redesign_20260925/27_observable_state_findings.md",
+      "size_bytes": 5559,
+      "sha256": "220a590d0a88cc7cf759b58ee3d571dc6014c42ae462cbfe41035163cc169383",
+      "exact_alias_source_ids": [
+        "SRC-0000482",
+        "SRC-0021235"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "archive_path": "originals/SRC-0021235.md.txt",
+      "preservation": "new_byte_identical_archive",
+      "claim_verification_scope": "26/27 관측 상태 진단의 저장 입력 요약·예측·지표·비용. 새 적합/추론·독립 test 아님.",
+      "review_status": "agent_full_text_or_static_code_read",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            59
+          ]
+        ],
+        "executed": false
+      }
+    },
+    {
+      "source_id": "SRC-0022935",
+      "path": "tmp/redesign_20260925/observable_state_loss_diagnostic.py",
+      "size_bytes": 8261,
+      "sha256": "f3e73d89a93d127fe0d40b99e7cadc0f4e5acdc2e87fff1ded02b5730c8fafb7",
+      "exact_alias_source_ids": [
+        "SRC-0000488",
+        "SRC-0022935"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "archive_path": "originals/SRC-0022935.py.txt",
+      "preservation": "new_byte_identical_archive",
+      "claim_verification_scope": "26/27 관측 상태 진단의 저장 입력 요약·예측·지표·비용. 새 적합/추론·독립 test 아님.",
+      "review_status": "agent_full_text_or_static_code_read",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            129
+          ]
+        ],
+        "executed": false
+      }
+    },
+    {
+      "source_id": "SRC-0029142",
+      "path": "tmp/redesign_20260925/results/observable_state_loss/arrays.npz",
+      "size_bytes": 1001356,
+      "sha256": "38d2d1de4b8b87cee7550818d04b9db94ab942213af4671171419d39472836af",
+      "exact_alias_source_ids": [
+        "SRC-0000493",
+        "SRC-0029142"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "archive_path": "originals/SRC-0029142.npz",
+      "preservation": "new_byte_identical_archive",
+      "claim_verification_scope": "26/27 관측 상태 진단의 저장 입력 요약·예측·지표·비용. 새 적합/추론·독립 test 아님.",
+      "review_status": "selected_numeric_fields_verified",
+      "read_scope": {
+        "arrays": [
+          "13prediction arrays",
+          "y",
+          "cell_ids",
+          "scales",
+          "threshold",
+          "states",
+          "train_summaries",
+          "test_summaries",
+          "times"
+        ],
+        "automated_all_values_for_declared_checks": true,
+        "whole_values_manually_read": false,
+        "agent_view": "19상태support·13방법주표·8대상비교·threshold동점/음수예측수"
+      }
+    },
+    {
+      "source_id": "SRC-0029143",
+      "path": "tmp/redesign_20260925/results/observable_state_loss/run_finished.json",
+      "size_bytes": 276,
+      "sha256": "55685503fadbaae61fa2947567d71ee68362ade65cd0d409e4220d39a2aa2268",
+      "exact_alias_source_ids": [
+        "SRC-0000494",
+        "SRC-0029143"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "archive_path": "originals/SRC-0029143.json",
+      "preservation": "new_byte_identical_archive",
+      "claim_verification_scope": "26/27 관측 상태 진단의 저장 입력 요약·예측·지표·비용. 새 적합/추론·독립 test 아님.",
+      "review_status": "agent_full_JSON_keys_read",
+      "read_scope": {
+        "keys": [
+          "complete",
+          "error",
+          "elapsed_seconds",
+          "simple_fits",
+          "peak_rss_bytes",
+          "new_RCTL_fits",
+          "new_TabICL_contexts"
+        ],
+        "whole_keys_read": true
+      }
+    },
+    {
+      "source_id": "SRC-0029144",
+      "path": "tmp/redesign_20260925/results/observable_state_loss/run_started.json",
+      "size_bytes": 42,
+      "sha256": "f4526beda093797c42a9c47d405152379888170ff7ce86219b5deb08e3b2cc8b",
+      "exact_alias_source_ids": [
+        "SRC-0000495",
+        "SRC-0029144"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "archive_path": "originals/SRC-0029144.json",
+      "preservation": "new_byte_identical_archive",
+      "claim_verification_scope": "26/27 관측 상태 진단의 저장 입력 요약·예측·지표·비용. 새 적합/추론·독립 test 아님.",
+      "review_status": "agent_full_JSON_keys_read",
+      "read_scope": {
+        "keys": [
+          "pid",
+          "unix"
+        ],
+        "whole_keys_read": true
+      }
+    },
+    {
+      "source_id": "SRC-0029145",
+      "path": "tmp/redesign_20260925/results/observable_state_loss/settings.json",
+      "size_bytes": 614,
+      "sha256": "af009fc75ec90e1c476e43706cabaa8c0b3cfaec6da93bc2cdece0f610ac1191",
+      "exact_alias_source_ids": [
+        "SRC-0000496",
+        "SRC-0029145"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "archive_path": "originals/SRC-0029145.json",
+      "preservation": "new_byte_identical_archive",
+      "claim_verification_scope": "26/27 관측 상태 진단의 저장 입력 요약·예측·지표·비용. 새 적합/추론·독립 test 아님.",
+      "review_status": "agent_full_JSON_keys_read",
+      "read_scope": {
+        "keys": [
+          "train_targets",
+          "diagnostic_targets",
+          "independent_test",
+          "level_quantiles",
+          "new_RCTL_fits",
+          "new_RCTL_forward",
+          "new_TabICL_contexts",
+          "simple_fits_planned",
+          "wall_cap_seconds",
+          "ram_cap_bytes",
+          "code_sha256",
+          "plan_sha256",
+          "predictions_sha256"
+        ],
+        "whole_keys_read": true
+      }
+    },
+    {
+      "source_id": "SRC-0029146",
+      "path": "tmp/redesign_20260925/results/observable_state_loss/summary.json",
+      "size_bytes": 330391,
+      "sha256": "8761c45b3325f1bcc5ca144b787f2c8717d48775ab074dbfcf9c717b08d1298a",
+      "exact_alias_source_ids": [
+        "SRC-0000497",
+        "SRC-0029146"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "archive_path": "originals/SRC-0029146.json",
+      "preservation": "new_byte_identical_archive",
+      "claim_verification_scope": "26/27 관측 상태 진단의 저장 입력 요약·예측·지표·비용. 새 적합/추론·독립 test 아님.",
+      "review_status": "selected_JSON_numeric_fields_verified",
+      "read_scope": {
+        "keys": [
+          "settings",
+          "cell_ids",
+          "thresholds",
+          "metrics",
+          "simple_fits",
+          "elapsed_seconds",
+          "peak_rss_bytes",
+          "new_clustering_recommended",
+          "partitions_changed"
+        ],
+        "automated_all247_method_rows_and_support": true,
+        "whole_values_manually_read": false,
+        "agent_view": "전체top-level과19상태support/13방법의4주상태및high_high;6집중비교. 모든cell값산술검사와수동열람구분"
+      }
+    },
+    {
+      "source_id": "SRC-0030211",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/all_predictions.npz",
+      "size_bytes": 246032,
+      "sha256": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096",
+      "exact_alias_source_ids": [
+        "SRC-0000251",
+        "SRC-0001049",
+        "SRC-0001099",
+        "SRC-0030211"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030211.npz",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "reused_selected_scope",
+      "read_scope": {
+        "fields": [
+          "all8storedpredictions",
+          "y",
+          "cell_ids",
+          "scales"
+        ]
+      },
+      "claim_verification_scope": "기존8개RCTL예측의그대로재사용 및25의actualpeak에서관측상태질문으로이어짐"
+    },
+    {
+      "source_id": "SRC-0021188",
+      "path": "tmp/redesign_20260925/25_pooling_and_horizon_findings.md",
+      "size_bytes": 9060,
+      "sha256": "8857c78b32b265023638f9c573bf7b1106520afab45c97a7287323a44b35c036",
+      "exact_alias_source_ids": [
+        "SRC-0000460",
+        "SRC-0021188"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "archive_path": "../0023-0025-pooling/originals/SRC-0021188.md.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "reused_selected_scope",
+      "read_scope": {
+        "fields": [
+          "§4 55–61행;H018 reused source review"
+        ]
+      },
+      "claim_verification_scope": "기존8개RCTL예측의그대로재사용 및25의actualpeak에서관측상태질문으로이어짐"
+    }
+  ],
+  "primary_sources": [
+    {
+      "source_id": "SRC-0023485",
+      "path": "tmp/redesign_20260925/assets/data_git_version.h5",
+      "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+      "size_bytes": 357150320,
+      "exact_alias_source_ids": [
+        "SRC-0023485",
+        "SRC-0073719"
+      ],
+      "records": [
+        "0026",
+        "0027"
+      ],
+      "distribution": "metadata_and_official_link_only",
+      "url": "https://media.githubusercontent.com/media/chuanting/STCNet/dc3ff65eb42b099ef8ec281c10282d6c47b533cb/Github_Version/data/data_git_version.7z",
+      "read_scope": {
+        "fields": [
+          "data.shape",
+          "idx[:]",
+          "data[:,16fixedcellIDs-1,2]"
+        ],
+        "cell_ids": [
+          3737,
+          3745,
+          3753,
+          3765,
+          4537,
+          4545,
+          4553,
+          4565,
+          5337,
+          5345,
+          5353,
+          5365,
+          6137,
+          6145,
+          6153,
+          6165
+        ]
+      },
+      "review_status": "selected_hdf5_fields_audited",
+      "archive_member_identity": {
+        "source_id": "SRC-0073719",
+        "path": "data_git_version.h5",
+        "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+        "size_bytes": 357150320,
+        "container_id": "SRC-0023486",
+        "container_path": "tmp/redesign_20260925/assets/milan_stcnet.7z",
+        "matched_physical_source_id": "SRC-0023485",
+        "method": "tar -xOf to SHA256 stream; no disk extraction or script execution"
+      },
+      "local_read_proof": "../../verification/history-019-H5-check.json",
+      "whole_source_reviewed": false,
+      "claim_verification_scope": "H019에서state summary/scale/3naive exact 및storedfloat32truth tolerance를원H5선택slice와대조",
+      "verification": "../../verification/history-019-H5-check.json"
+    }
+  ],
+  "numeric_scope": {
+    "states": 19,
+    "methods": 13,
+    "method_rows": 247,
+    "automated_checks": 13525,
+    "negative_cases": 14,
+    "H5_checks": 28
+  },
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "actual_fit_inputs_verified": false,
+  "independent_scientific_review": false,
+  "remaining": [
+    "실제fit X/단순모델객체·당시runtime의독립재현",
+    "후속28과전체연구이력통합"
+  ],
+  "second_pass_at_utc": "2026-10-09T05:33:58.789896+00:00",
+  "second_pass_scope": "26/27/코드의 전체 텍스트와 14개 주장 위치를 재대조. 44개 표 행·상태 집계·긍정 결과/반례·정밀도·비용 및 실제 fit 미재현 경계를 확인. 같은 정리 에이전트의 검토."
+}
