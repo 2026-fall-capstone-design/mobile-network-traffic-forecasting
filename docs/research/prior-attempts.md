@@ -276,3 +276,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 합성 자료의 epoch 절감을 전체 학습비 절감으로 제안하기 전에 — 56·58 TimeDC
 
 검색어: TimeDC, dataset condensation, synthetic time series, trajectory matching, expert buffer, DDFM, CT2M, cross-architecture, coreset, 압축 비용. [TimeDC 기록](records/0056-0058-timedc.md)에서 합성자료 허용 여부, 원 X/y pairing, 원자료expert 비용, 예측기별 원자료 대조 유무를 확인합니다. 새 제안은 단순 표본선택·cell군집·lookback 축과 달라지는 행동, 시간분할·실제지표·반복학습횟수·최종 RCTL 효용을 밝혀야 합니다. [인쇄표와 정적 코드 검토](evidence/0056-0058-timedc/README.md)를 재사용하고 재현 완료로 표시된 baseline인지 먼저 확인합니다.
+
+## TabPFN context Shapley를 RCTL 표본 중요도로 제안하기 전에 — 56·58
+
+검색어: TabPFN IML, Data Shapley, Kernel SHAP, context optimization, validation risk, WLS, coreset, pp, 9216 forward, sample valuation. [문맥 선택 기록](records/0056-0058-tabpfn-iml.md)에서어떤예측기의손실을설명하는지,무엇을선택하는지,validation/test와사전비용을확인합니다. 논문의분류AUC우위를최종RCTL학습속도·회귀오차·cell소속근거로대체하지않습니다. 새제안은기존안과달라지는선택단위·목적·독립근거·전체비용을연결해야합니다.
