@@ -1,0 +1,173 @@
+{
+  "batch_id": "history-032",
+  "claims": [
+    {
+      "claim_id": "H032-C01",
+      "claim": "51의 질문과55의 GOTSF 범위만 연결했다",
+      "source_location": "SRC-0021746 전체; SRC-0021824 §1–2",
+      "verification_method": "계획·55 원문 재대조",
+      "limit": "51의 다른 문헌 및55 전체 신규성 판단 미완료"
+    },
+    {
+      "claim_id": "H032-C02",
+      "claim": "AAAI9쪽/v3 14쪽의 버전·출판 날짜를 구별한다",
+      "source_location": "SRC-0063273/76 전체; SRC-0063275 visible metadata; 공식 페이지",
+      "verification_method": "23쪽 텍스트·14쪽 그림/표 독해와 서지 대조",
+      "limit": "논문 내용 독해이며 전 증명/성능 재현 아님"
+    },
+    {
+      "claim_id": "H032-C03",
+      "claim": "GOTSF interval은 target 값 범위이고B/E2E/C/D/patching은 목적별 예측 구조다",
+      "source_location": "두 PDF §2 및 각 framework figure",
+      "verification_method": "수식·그림·설명 대조",
+      "limit": "시간 구간 또는 cell/RCTL 소속으로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H032-C04",
+      "claim": "논문 가중치 곱과 active 원소별 회귀 가중+unweighted BCE를 구분한다",
+      "source_location": "출판본 식5/§2; SRC-0063271 _select_criterion/vali",
+      "verification_method": "코드 정적 독해와 식 대조; MAE/제곱 분기 확인",
+      "limit": "원코드 실행·모든 모델 구현 검토 아님"
+    },
+    {
+      "claim_id": "H032-C05",
+      "claim": "2880은beam이고카드5주/6주/11주의시간간격과내부표현충돌을보존한다",
+      "source_location": "SRC-0063278 전체; SRC-0063282/85",
+      "verification_method": "카드·info·tree 대조",
+      "limit": "전체 HF CSV·연결 그림·물리 cell mapping 미확인"
+    },
+    {
+      "claim_id": "H032-C06",
+      "claim": "코드CSV는1026×100이며논문1025step및공개2880beam과구분한다",
+      "source_location": "EXT-H032-04; SRC-0063276 §3.1; history-032-primary-check supplemental_csv",
+      "verification_method": "모든 고정행 schema/finite/range와 pin blob 대조",
+      "limit": "정규화·선택 beam·공개 CSV 행 대응 미확인"
+    },
+    {
+      "claim_id": "H032-C07",
+      "claim": "정수date의현재pandas기본변환은1970년하루의ns값이다",
+      "source_location": "SRC-0063269 Dataset_Custom; EXT-H032-04",
+      "verification_method": "pandas3.0.1의 고정 저장값 read_csv/to_datetime만 검사",
+      "limit": "원 loader 실행이나 당시 runtime 재현 아님"
+    },
+    {
+      "claim_id": "H032-C08",
+      "claim": "논문분할/길이와Custom loader의기본스케일·context overlap을구분한다",
+      "source_location": "두 PDF dataset/setting; SRC-0063269 Dataset_Custom; SRC-0063268",
+      "verification_method": "설정 표·실제 caller 정적 대조",
+      "limit": "실제 학습 X·beam 선택·정규화 lineage 미확인"
+    },
+    {
+      "claim_id": "H032-C09",
+      "claim": "논문3/256/50/AdamW/1e-3/patience5와shell2/128/60/Adam/1e-4/patience25가다르다",
+      "source_location": "SRC-0063294 전체; SRC-0063284; SRC-0063271; EXT-H032-01; v3 §3.2",
+      "verification_method": "명시 인자와 default 추적; type3 cosine 동일 family 확인",
+      "limit": "논문실험이shell그대로실행됐다고추정하지않음"
+    },
+    {
+      "claim_id": "H032-C10",
+      "claim": "zero-mask MAE의분모는전체N이고조건부MAE에구간빈도를곱한값이다",
+      "source_location": "SRC-0063271 vali/_test; SRC-0063283; SRC-0063286 MAE",
+      "verification_method": "정적 식 유도·n_I>0/빈구간/양끝포함 조건 검토",
+      "limit": "서로다른조건예측의평균을단일globalMAE로해석하지않음"
+    },
+    {
+      "claim_id": "H032-C11",
+      "claim": "stats는bounds를명시하고실제tools helper는L개구간을반환한다",
+      "source_location": "SRC-0063283 imports/bounds/test; EXT-H032-01; SRC-0063303",
+      "verification_method": "호출부와두helper대조",
+      "limit": "기본test bounds나미사용helper만으로실행누출/오류단정금지"
+    },
+    {
+      "claim_id": "H032-C12",
+      "claim": "표의best열은특정정책이득이며다른정책의손해가공존한다",
+      "source_location": "두 PDF p7 Table1 선택3행; history-032-paper-table-check selected_interpretations",
+      "verification_method": "18개인쇄값·9정책대비고정계산/시각확인",
+      "limit": "원실험예측재현·Milan MAE비교아님"
+    },
+    {
+      "claim_id": "H032-C13",
+      "claim": "양버전29행24셀의696인쇄숫자순서가일치한다",
+      "source_location": "두 PDF p7; history-032-paper-table-check rows",
+      "verification_method": "추출순서비교와표헤더/배율시각확인",
+      "limit": "696개독립수동수치판정이나실험재현아님"
+    },
+    {
+      "claim_id": "H032-C14",
+      "claim": "BLW DLinear DL 평균54.0은8개인쇄행평균54.5와맞지않는다",
+      "source_location": "두 PDF p7 Table1; mean_rounding_anomalies",
+      "verification_method": "100개평균셀산술/반올림상한검사·해당이미지재확인",
+      "limit": "원실험/저자정정미확인;54.0을임의수정하지않음"
+    },
+    {
+      "claim_id": "H032-C15",
+      "claim": "16개shell명령과seed2023은실행완료횟수·비용증거가아니다",
+      "source_location": "SRC-0063294; SRC-0063284; v3 hardware description",
+      "verification_method": "명령정의·entry·하드웨어설명대조",
+      "limit": "원실행log/checkpoint별대응·완전walltime미확인"
+    },
+    {
+      "claim_id": "H032-C16",
+      "claim": "에너지예는2-tier가정simulation이며직접전력계측이아니다",
+      "source_location": "SRC-0063276 p9 Table2/Fig5 및식·문장",
+      "verification_method": "페이지전체·그림·수치·단위확인",
+      "limit": "Wh/W표기공백보존;cell clustering효과로확대금지"
+    },
+    {
+      "claim_id": "H032-C17",
+      "claim": "notebook33source셀과944행TXT가일치하고12개PNG를읽었다",
+      "source_location": "SRC-0063261/62; primary-check notebook",
+      "verification_method": "source해시·추출대조와저장text/PNG독해",
+      "limit": "cell0generatedruntimeJS제외;whole notebook read아님"
+    },
+    {
+      "claim_id": "H032-C18",
+      "claim": "notebook현재source/저장출력은하나의cleanrun을입증하지않는다",
+      "source_location": "SRC-0063261 cells0–6/11–14",
+      "verification_method": "MODEL목록·저장stdout/그림·execution count·literal값대조",
+      "limit": "저자 Table1의원출력재현으로사용하지않음"
+    },
+    {
+      "claim_id": "H032-C19",
+      "claim": "cell13 IndexError는0/37결과에서1을찾는시각화코드문제다",
+      "source_location": "SRC-0063261 cell13 source/error/PNG; SRC-0063262 대응source",
+      "verification_method": "저장예외·배열조건정적대조",
+      "limit": "예측방법성능실패나새관측실패로세지않음"
+    },
+    {
+      "claim_id": "H032-C20",
+      "claim": "Synth식·noise·길이와Traffic달력설명의판본공백을보존한다",
+      "source_location": "SRC-0063273 p5; SRC-0063276 p5–6",
+      "verification_method": "양판본수식/본문대조",
+      "limit": "추정공식·달력으로통일하지않음"
+    },
+    {
+      "claim_id": "H032-C21",
+      "claim": "framework/decayfigure caption과README표기의불일치를남긴다",
+      "source_location": "AAAI Fig3; v3 Fig4/Fig8; SRC-0063279",
+      "verification_method": "그림축·범례·본문·README대조",
+      "limit": "추정한정책이나실험설정을새정답으로부여하지않음"
+    },
+    {
+      "claim_id": "H032-C22",
+      "claim": "원본34경로와추가취득4개를구별하고정확바이트를보존한다",
+      "source_location": "manifest; catalog/history-032-sources.jsonl; supplemental receipt",
+      "verification_method": "34originalhash/size·23copies+reuse1·4supplementGitblob·control6",
+      "limit": "metadata참조는로컬/원격원문전부배포/접근완료의뜻아님"
+    },
+    {
+      "claim_id": "H032-C23",
+      "claim": "55의목적/지표해석은지지되지만Tab/RCTL소속개선근거는아니다",
+      "source_location": "SRC-0021824 §2; GOTSF method/table/energy; H031 연결",
+      "verification_method": "원기록주장과이번근거의범위대조",
+      "limit": "55 전체문헌/신규성판단완료로확대하지않음"
+    },
+    {
+      "claim_id": "H032-C24",
+      "claim": "재검토는목적·단위·가용시각·단순기준·구간빈도·cell기간손해·비용을명시한다",
+      "source_location": "51계획/55판단; 이번코드/표공백을종합한팀조건",
+      "verification_method": "역사적결과와아카이브의후속설계제안을구분",
+      "limit": "새실험실행/성능결론아님"
+    }
+  ]
+}

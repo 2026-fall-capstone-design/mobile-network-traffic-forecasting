@@ -1,0 +1,33 @@
+from pathlib import Path
+import json, hashlib, urllib.request
+from pypdf import PdfReader
+out=Path(__file__).resolve().parent/'sources/network_scope_51'
+out.mkdir(parents=True,exist_ok=True)
+if (out/'fetch_log.json').exists(): raise SystemExit('Recorded fetch exists; inspect before retry')
+sources=[
+ ('gotsf_card.md','https://huggingface.co/datasets/netop/gotsf-ds/raw/main/README.md',5_000_000),
+ ('gotsf_info.json','https://huggingface.co/api/datasets/netop/gotsf-ds',5_000_000),
+ ('gotsf_tree.json','https://huggingface.co/api/datasets/netop/gotsf-ds/tree/main?recursive=true&expand=false',5_000_000),
+ ('cellular_move_v1.pdf','https://arxiv.org/pdf/2606.25709v1',20_000_000),
+ ('cellular_move_abs.html','https://arxiv.org/abs/2606.25709',5_000_000),
+ ('event_author_page.html','https://re.public.polimi.it/handle/11311/1313047',5_000_000),
+]
+records=[]
+for name,url,cap in sources:
+ rec={'file':name,'requested_url':url,'access_date':'2026-09-26','max_bytes':cap}
+ try:
+  req=urllib.request.Request(url,headers={'User-Agent':'Research literature reader/1.0'})
+  with urllib.request.urlopen(req,timeout=25) as response:
+   data=response.read(cap+1)
+   rec.update(status=response.status,final_url=response.url,content_type=response.headers.get('Content-Type'))
+  if len(data)>cap: raise ValueError('Precommitted size cap exceeded')
+  if name.endswith('.pdf') and not data.startswith(b'%PDF-'): raise ValueError('Not a PDF')
+  p=out/name;p.write_bytes(data)
+  rec.update(bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+  if name.endswith('.pdf'):
+   pdf=PdfReader(p);rec['pages']=len(pdf.pages)
+   p.with_suffix('.txt').write_text('\n\n'.join(f'--- PAGE {i+1} ---\n{page.extract_text()}' for i,page in enumerate(pdf.pages)),encoding='utf-8')
+ except Exception as exc: rec['error']=str(exc)
+ records.append(rec)
+ (out/'fetch_log.json').write_text(json.dumps(records,indent=2,ensure_ascii=False),encoding='utf-8')
+ print(json.dumps(rec,ensure_ascii=False),flush=True)

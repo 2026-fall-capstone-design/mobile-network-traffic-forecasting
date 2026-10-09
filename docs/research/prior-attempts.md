@@ -218,3 +218,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## 부분 관측 복원·probe 선택을 다시 설계하기 전에 — 52·54
 
 [52·54 기록](records/0052-0054-partial-observation.md)을 확인한다. Beijing 부분집합은 두 배열의 identity와 스키마가 확인됐지만 시각·단위·물리 cell mapping이 부족하다. Milan에서는 probe4/target4·16시간 생략·cell당 context256/query64·ensemble1을 검사했다. TabICL 전체 정규화 MAE0.108537은 Ridge0.092963/HGB0.098836보다 컸고, 앞쪽 이득과 뒤쪽 손해가 공존했다. 세 확대 조건은 false/false/0이었다. 최초 context공동결측 assert 오류와 query만 검사한 수정, 실패4.1631648초도 남겼다. 현재값 복원과 미래 RCTL 성능·소속 판단은 별도 과제이며 51·53/55의 문헌 종합은 계속 검토한다.
+
+## 목적 구간의 예측·sleep 정책을 다시 설계하기 전에 — 51·55
+
+[GOTSF 기록](records/0051-0055-gotsf-audit.md)을 먼저 봅니다. interval은 target 값 범위이며 zero-mask MAE는 구간 빈도를 포함합니다. BLW PatchTST I1의 D1_2L은 B보다 27.48% 악화하며, 표의 평균 55.8%는 다른 최선 정책의 이득입니다. 2,880 beam을 cell로 부르거나 week 6·11을 연속 기간으로 연결하지 않습니다. 논문·코드 설정, 1025·1026행의 차이, 정수 date의 시간축, notebook 출처 공백을 확인하고 새 정보·학습 행동·구간 빈도·기간/cell 손해·실측 비용을 명시해야 합니다. 운영 simulation을 RCTL 소속 개선이나 실측 전력 절감으로 옮기지 않습니다.
