@@ -242,3 +242,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## 거친 관측에서 세밀한 이력을 복원하기 전에 — 53·55 Zoom2Net
 
 검색어: Zoom2Net, telemetry imputation, super-resolution, collision, KAL, CEM, ILP, target refinement, EMD. [Zoom2Net 기록](records/0053-zoom2net.md)에서 이미 있는 측정/운영 제약·모호한 정답 집합·출력 보정을 확인합니다. 정밀 학습 정답과 실제 가용 관측, 모델 단독/CEM 포함 비용, 최종 미래 예측에 필요한 정보가 새 제안의 차이여야 합니다. MSE·Meta position 반례와 zoom factor 문구 차이, 100회 uncertainty forward의 비용 공백도 보존했습니다.
+
+## 규칙으로 예측·복원 출력을 제한하기 전에 — 53·55 NETNOMOS
+
+검색어: NETNOMOS, neurosymbolic, logic enforcement, SMT, constrained generation, hitting set, rule mining, semantic filtering. [NETNOMOS 기록](records/0053-netnomos.md)에서 이미 있는 규칙 학습·선택·생성 제어와 초기 GPT-2 학습, 약5배 추론 비용을 확인합니다. 새 제안은 예측 시 가용 입력·학습 구간·잘못된 규칙 처리·단순 비교군·최종 미래 예측 지표의 차이를 설명해야 합니다. sMAPE와 Burst Position의 손해, MAWI 위반0.3%, 필터 recall·비용 공백은 같은 조건의 반복을 판단할 근거입니다.
