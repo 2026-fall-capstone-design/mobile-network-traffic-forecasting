@@ -1,0 +1,71 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T06:31:05.869025+00:00",
+  "cases": [
+    {
+      "case": "missing_array",
+      "rejected": true,
+      "check": "NPZ_exact_keys"
+    },
+    {
+      "case": "shifted_time",
+      "rejected": true,
+      "check": "minutes_10_times_exact"
+    },
+    {
+      "case": "changed_truth",
+      "rejected": true,
+      "check": "minutes_10_y_saved"
+    },
+    {
+      "case": "changed_scale",
+      "rejected": true,
+      "check": "minutes_10_scales_saved"
+    },
+    {
+      "case": "nonfinite_prediction",
+      "rejected": true,
+      "check": "minutes_10_dtypes"
+    },
+    {
+      "case": "changed_prediction",
+      "rejected": true,
+      "check": "minutes_60_S+L_Ridge_local:normalized_mae"
+    },
+    {
+      "case": "per_cell_raw_metric",
+      "rejected": true,
+      "check": "minutes_10_S_HGB_global:per_cell_raw_mae"
+    },
+    {
+      "case": "half_order",
+      "rejected": true,
+      "check": "minutes_10_S_HGB_global:normalized_mae_halves"
+    },
+    {
+      "case": "timestamp_unit",
+      "rejected": true,
+      "check": "SRC-0032494:interval_seconds"
+    },
+    {
+      "case": "fit_count",
+      "rejected": true,
+      "check": "fit_record_1"
+    },
+    {
+      "case": "double_counted_cost",
+      "rejected": true,
+      "check": "ledger_stage_cost"
+    },
+    {
+      "case": "CSV_row_order",
+      "rejected": true,
+      "check": "SRC-0032494:full_grid"
+    }
+  ],
+  "case_count": 12,
+  "modified_original_files": 0,
+  "modified_archive_files": 0,
+  "new_model_runs": 0,
+  "scope": "Disposable evidence copies; hashes refreshed so semantic checks, not only byte hashes, must reject corruption."
+}

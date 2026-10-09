@@ -65,3 +65,5 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 [26·27 출처 목록](history-019-sources.jsonl)은 새 원본 8개 1,350,811 bytes와 기존 2개, H5 metadata 1건을 연결한다. [열람 범위](../sources/history-019.md)는 텍스트/정적 코드 3개·작은 JSON 전체 3개·신규 수치 자료 2개의 선언한 검수 범위를 구별한다. 저장된 13개 예측·19개 상태를 검산했으며 실제 단순 모델 적합은 재현하지 않았다.
 
 [28 출처 목록](history-020-sources.jsonl)은 원문·manifest 사본 3개(12,092 bytes), 외부 문헌 4개·정적 코드 3개의 metadata, 미검토 추출 txt 3개를 구분합니다. [열람 범위](../sources/history-020.md)의 선택 페이지·절을 논문 전체 읽기로 집계하지 않습니다.
+
+[history-021 출처 행](history-021-sources.jsonl):29–32의24새사본·기존비용원장·외부출처6개를 연결한다. metadata목록·지정코드독해·전체원notebook검토를 구분한다. [사람이 읽은 범위](../sources/history-021.md)를 참조한다.

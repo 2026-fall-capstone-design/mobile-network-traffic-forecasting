@@ -1,0 +1,699 @@
+{
+  "settings": {
+    "cells": [
+      4159,
+      4556,
+      5161
+    ],
+    "fit_cap": 32,
+    "wall_seconds_cap": 60,
+    "rss_cap_bytes": 2147483648,
+    "threads": 4,
+    "train_targets": [
+      "2013-11-08",
+      "2013-11-21"
+    ],
+    "diagnostic_targets": [
+      "2013-11-21",
+      "2013-12-01"
+    ],
+    "plan_sha256": "7d05e1e84a9fdaf7f7fc170ec20dfc2b2dc716a5dc5e8a77e8f096851f1c6558",
+    "new_RCTL_fits": 0,
+    "new_RCTL_forward": 0,
+    "new_TabICL_calls": 0
+  },
+  "structure": {
+    "within_hour_variance_fraction": [
+      0.03768851950701921,
+      0.06326090489063059,
+      0.02666780050168754
+    ],
+    "within_hour_peak_to_mean_median": [
+      1.1221582579799256,
+      1.1265398069635915,
+      1.1724232298481687
+    ],
+    "within_hour_peak_to_mean_p95": [
+      1.3501560132965877,
+      1.3334883783736966,
+      1.536502945719913
+    ]
+  },
+  "resolutions": [
+    {
+      "minutes": 10,
+      "train_rows_per_cell": 1872,
+      "query_rows_per_cell": 1440,
+      "scales": [
+        316.28154925868057,
+        593.7170713125,
+        1450.3712716958335
+      ],
+      "methods": [
+        {
+          "method": "persistence",
+          "normalized_mae": 0.10540833000127234,
+          "per_cell_normalized_mae": [
+            0.1022695283310531,
+            0.10257222514502576,
+            0.11138323652773804
+          ],
+          "normalized_mae_halves": [
+            0.10884944608784416,
+            0.10196721391470052
+          ],
+          "per_cell_raw_mae": [
+            32.3459648625,
+            60.898881111111066,
+            161.54704640833324
+          ]
+        },
+        {
+          "method": "daily_naive",
+          "normalized_mae": 0.2244427436350179,
+          "per_cell_normalized_mae": [
+            0.2675233714817042,
+            0.1958595894910778,
+            0.20994526993227194
+          ],
+          "normalized_mae_halves": [
+            0.2656837172815406,
+            0.1832017699884952
+          ],
+          "per_cell_raw_mae": [
+            84.61270639513893,
+            116.28518186111121,
+            304.4985881381943
+          ]
+        },
+        {
+          "method": "weekly_naive",
+          "normalized_mae": 0.153929528604142,
+          "per_cell_normalized_mae": [
+            0.1519406576223969,
+            0.1534236037129575,
+            0.1564243244770717
+          ],
+          "normalized_mae_halves": [
+            0.1536036422695741,
+            0.15425541493870992
+          ],
+          "per_cell_raw_mae": [
+            48.05602658819444,
+            91.09021266666673,
+            226.87334641597215
+          ]
+        },
+        {
+          "method": "S_Ridge_global",
+          "normalized_mae": 0.1549542569540351,
+          "per_cell_normalized_mae": [
+            0.15676864713961172,
+            0.14780113934923647,
+            0.16029298437325715
+          ],
+          "normalized_mae_halves": [
+            0.15217495543392046,
+            0.15773355847414974
+          ],
+          "per_cell_raw_mae": [
+            49.58303059250382,
+            87.75205959107939,
+            232.48433958936133
+          ]
+        },
+        {
+          "method": "S_Ridge_local",
+          "normalized_mae": 0.15407140148272358,
+          "per_cell_normalized_mae": [
+            0.16399823259397725,
+            0.1363687955790294,
+            0.16184717627516443
+          ],
+          "normalized_mae_halves": [
+            0.1509213068879676,
+            0.1572214960774796
+          ],
+          "per_cell_raw_mae": [
+            51.86961508050857,
+            80.96448192959433,
+            234.73849487458995
+          ]
+        },
+        {
+          "method": "S_HGB_global",
+          "normalized_mae": 0.1424230098131138,
+          "per_cell_normalized_mae": [
+            0.13598703394553086,
+            0.13354755344585179,
+            0.15773444204795872
+          ],
+          "normalized_mae_halves": [
+            0.14155593727668306,
+            0.14329008234954452
+          ],
+          "per_cell_raw_mae": [
+            43.010189775385285,
+            79.28946231282069,
+            228.77350330333064
+          ]
+        },
+        {
+          "method": "S_HGB_local",
+          "normalized_mae": 0.147225878692205,
+          "per_cell_normalized_mae": [
+            0.14474396157334823,
+            0.13757803713317904,
+            0.15935563737008748
+          ],
+          "normalized_mae_halves": [
+            0.14373870812453624,
+            0.15071304925987375
+          ],
+          "per_cell_raw_mae": [
+            45.77984441225751,
+            81.68242928363344,
+            231.12483842435387
+          ]
+        },
+        {
+          "method": "S+L_Ridge_global",
+          "normalized_mae": 0.09453932085429781,
+          "per_cell_normalized_mae": [
+            0.09285806060178901,
+            0.09397348668922341,
+            0.09678641527188102
+          ],
+          "normalized_mae_halves": [
+            0.09634753324452679,
+            0.09273110846406885
+          ],
+          "per_cell_raw_mae": [
+            29.369291268290276,
+            55.79366329814993,
+            140.3762362007591
+          ]
+        },
+        {
+          "method": "S+L_Ridge_local",
+          "normalized_mae": 0.09502038666543235,
+          "per_cell_normalized_mae": [
+            0.09330019488791529,
+            0.09297870557780763,
+            0.09878225953057451
+          ],
+          "normalized_mae_halves": [
+            0.09676349767772216,
+            0.09327727565314253
+          ],
+          "per_cell_raw_mae": [
+            29.509130185286676,
+            55.20304477008315,
+            143.27095137634723
+          ]
+        },
+        {
+          "method": "S+L_HGB_global",
+          "normalized_mae": 0.09692382692470614,
+          "per_cell_normalized_mae": [
+            0.09467304484883361,
+            0.0913345868497455,
+            0.1047638490755393
+          ],
+          "normalized_mae_halves": [
+            0.09737209953708122,
+            0.09647555431233107
+          ],
+          "per_cell_raw_mae": [
+            29.943337297825643,
+            54.22690341396808,
+            151.9464770114403
+          ]
+        },
+        {
+          "method": "S+L_HGB_local",
+          "normalized_mae": 0.10225214820834488,
+          "per_cell_normalized_mae": [
+            0.09945907201087834,
+            0.09668196466292173,
+            0.11061540795123484
+          ],
+          "normalized_mae_halves": [
+            0.10277044660487583,
+            0.10173384981181394
+          ],
+          "per_cell_raw_mae": [
+            31.457069383431275,
+            57.401732908408505,
+            160.43340989938588
+          ]
+        }
+      ],
+      "raw_diagnostic_pcc": [
+        [
+          1.0,
+          0.1606294924852824,
+          0.5762789000963799
+        ],
+        [
+          0.1606294924852824,
+          1.0,
+          0.34543008921845625
+        ],
+        [
+          0.5762789000963799,
+          0.34543008921845625,
+          1.0
+        ]
+      ],
+      "daily_profile_residual_diagnostic_pcc": [
+        [
+          0.9999999999999999,
+          -0.2965511694914797,
+          -0.4489443678316106
+        ],
+        [
+          -0.29655116949147964,
+          0.9999999999999999,
+          0.24175706631218427
+        ],
+        [
+          -0.4489443678316106,
+          0.24175706631218427,
+          0.9999999999999999
+        ]
+      ]
+    },
+    {
+      "minutes": 60,
+      "train_rows_per_cell": 312,
+      "query_rows_per_cell": 240,
+      "scales": [
+        1897.6892955520836,
+        3562.3024278750004,
+        8702.227630175
+      ],
+      "methods": [
+        {
+          "method": "persistence",
+          "normalized_mae": 0.16216684156393915,
+          "per_cell_normalized_mae": [
+            0.13862166220601954,
+            0.13552567782816202,
+            0.21235318465763595
+          ],
+          "normalized_mae_halves": [
+            0.16382027845905806,
+            0.16051340466882025
+          ],
+          "per_cell_raw_mae": [
+            263.06084450000014,
+            482.7834511666667,
+            1847.9457508833336
+          ]
+        },
+        {
+          "method": "daily_naive",
+          "normalized_mae": 0.19333942212387695,
+          "per_cell_normalized_mae": [
+            0.2398954422691156,
+            0.16281900668925597,
+            0.17730381741325912
+          ],
+          "normalized_mae_halves": [
+            0.23718065746772082,
+            0.14949818678003304
+          ],
+          "per_cell_raw_mae": [
+            455.2470128458335,
+            580.0105428333325,
+            1542.9381788291669
+          ]
+        },
+        {
+          "method": "weekly_naive",
+          "normalized_mae": 0.11867731183589704,
+          "per_cell_normalized_mae": [
+            0.12020076317576131,
+            0.11720717673571172,
+            0.11862399559621818
+          ],
+          "normalized_mae_halves": [
+            0.11643818209657625,
+            0.12091644157521782
+          ],
+          "per_cell_raw_mae": [
+            228.10370159583331,
+            417.5274102500001,
+            1032.2930120791675
+          ]
+        },
+        {
+          "method": "S_Ridge_global",
+          "normalized_mae": 0.12471726409316904,
+          "per_cell_normalized_mae": [
+            0.12915093153161653,
+            0.11909956437135456,
+            0.12590129637653602
+          ],
+          "normalized_mae_halves": [
+            0.11971721298177691,
+            0.12971731520456117
+          ],
+          "per_cell_raw_mae": [
+            245.08834027812875,
+            424.26866731893125,
+            1095.6217400027435
+          ]
+        },
+        {
+          "method": "S_Ridge_local",
+          "normalized_mae": 0.12579415369587854,
+          "per_cell_normalized_mae": [
+            0.1397078200168158,
+            0.10679260136286658,
+            0.13088203970795312
+          ],
+          "normalized_mae_halves": [
+            0.1189377731908815,
+            0.13265053420087558
+          ],
+          "per_cell_raw_mae": [
+            265.12203455082846,
+            380.4275431140267,
+            1138.9653022402113
+          ]
+        },
+        {
+          "method": "S_HGB_global",
+          "normalized_mae": 0.12211690629130921,
+          "per_cell_normalized_mae": [
+            0.11903027379299637,
+            0.11486368928698303,
+            0.13245675579394825
+          ],
+          "normalized_mae_halves": [
+            0.11867023545972434,
+            0.1255635771228941
+          ],
+          "per_cell_raw_mae": [
+            225.88247642360292,
+            409.1791992216993,
+            1152.668840073439
+          ]
+        },
+        {
+          "method": "S_HGB_local",
+          "normalized_mae": 0.12058851706915631,
+          "per_cell_normalized_mae": [
+            0.10829659400001308,
+            0.12202319893723851,
+            0.13144575827021743
+          ],
+          "normalized_mae_halves": [
+            0.11991054588964489,
+            0.12126648824866773
+          ],
+          "per_cell_raw_mae": [
+            205.51328717857484,
+            434.6835378311989,
+            1143.8709094883902
+          ]
+        },
+        {
+          "method": "S+L_Ridge_global",
+          "normalized_mae": 0.09216983483644436,
+          "per_cell_normalized_mae": [
+            0.09256937078381085,
+            0.08759425147559649,
+            0.09634588224992582
+          ],
+          "normalized_mae_halves": [
+            0.08968257571340915,
+            0.09465709395947963
+          ],
+          "per_cell_raw_mae": [
+            175.66790403242965,
+            312.0372146994107,
+            838.4237985688917
+          ]
+        },
+        {
+          "method": "S+L_Ridge_local",
+          "normalized_mae": 0.09126789979161047,
+          "per_cell_normalized_mae": [
+            0.09721307702335862,
+            0.07999887332227935,
+            0.09659174902919337
+          ],
+          "normalized_mae_halves": [
+            0.08850096563656373,
+            0.0940348339466572
+          ],
+          "per_cell_raw_mae": [
+            184.48021565490785,
+            284.9801806632203,
+            840.5633872487759
+          ]
+        },
+        {
+          "method": "S+L_HGB_global",
+          "normalized_mae": 0.09321238739634742,
+          "per_cell_normalized_mae": [
+            0.09188694924459344,
+            0.08834091623205298,
+            0.09940929671239582
+          ],
+          "normalized_mae_halves": [
+            0.08611374951270202,
+            0.1003110252799928
+          ],
+          "per_cell_raw_mae": [
+            174.3728799824026,
+            314.69706037414437,
+            865.0823285468757
+          ]
+        },
+        {
+          "method": "S+L_HGB_local",
+          "normalized_mae": 0.10030828654888532,
+          "per_cell_normalized_mae": [
+            0.09183455637630204,
+            0.09582730537191003,
+            0.11326299789844398
+          ],
+          "normalized_mae_halves": [
+            0.09588373458116622,
+            0.10473283851660443
+          ],
+          "per_cell_raw_mae": [
+            174.27345459708275,
+            341.3658425830742,
+            985.6403897882922
+          ]
+        }
+      ],
+      "raw_diagnostic_pcc": [
+        [
+          0.9999999999999998,
+          0.16714726228365942,
+          0.5941833657543703
+        ],
+        [
+          0.1671472622836594,
+          0.9999999999999999,
+          0.3602060658145453
+        ],
+        [
+          0.5941833657543703,
+          0.36020606581454534,
+          1.0
+        ]
+      ],
+      "daily_profile_residual_diagnostic_pcc": [
+        [
+          1.0,
+          -0.3568513168598821,
+          -0.5052064051067768
+        ],
+        [
+          -0.3568513168598821,
+          1.0,
+          0.2865354793085151
+        ],
+        [
+          -0.5052064051067768,
+          0.28653547930851503,
+          0.9999999999999998
+        ]
+      ]
+    }
+  ],
+  "fit_records": [
+    {
+      "minutes": 10,
+      "features": "S",
+      "estimator": "Ridge",
+      "pooling": "global",
+      "fits": 1,
+      "fit_predict_seconds": 0.11514240000178688,
+      "train_rows_per_cell": 1872,
+      "query_rows": 4320
+    },
+    {
+      "minutes": 10,
+      "features": "S",
+      "estimator": "Ridge",
+      "pooling": "local",
+      "fits": 3,
+      "fit_predict_seconds": 0.0036451999985729344,
+      "train_rows_per_cell": 1872,
+      "query_rows": 4320
+    },
+    {
+      "minutes": 10,
+      "features": "S",
+      "estimator": "HGB",
+      "pooling": "global",
+      "fits": 1,
+      "fit_predict_seconds": 0.24958519999927375,
+      "train_rows_per_cell": 1872,
+      "query_rows": 4320
+    },
+    {
+      "minutes": 10,
+      "features": "S",
+      "estimator": "HGB",
+      "pooling": "local",
+      "fits": 3,
+      "fit_predict_seconds": 0.448511900001904,
+      "train_rows_per_cell": 1872,
+      "query_rows": 4320
+    },
+    {
+      "minutes": 10,
+      "features": "S+L",
+      "estimator": "Ridge",
+      "pooling": "global",
+      "fits": 1,
+      "fit_predict_seconds": 0.003655699998489581,
+      "train_rows_per_cell": 1872,
+      "query_rows": 4320
+    },
+    {
+      "minutes": 10,
+      "features": "S+L",
+      "estimator": "Ridge",
+      "pooling": "local",
+      "fits": 3,
+      "fit_predict_seconds": 0.004162700002780184,
+      "train_rows_per_cell": 1872,
+      "query_rows": 4320
+    },
+    {
+      "minutes": 10,
+      "features": "S+L",
+      "estimator": "HGB",
+      "pooling": "global",
+      "fits": 1,
+      "fit_predict_seconds": 0.17933840000114287,
+      "train_rows_per_cell": 1872,
+      "query_rows": 4320
+    },
+    {
+      "minutes": 10,
+      "features": "S+L",
+      "estimator": "HGB",
+      "pooling": "local",
+      "fits": 3,
+      "fit_predict_seconds": 0.5022256999982346,
+      "train_rows_per_cell": 1872,
+      "query_rows": 4320
+    },
+    {
+      "minutes": 60,
+      "features": "S",
+      "estimator": "Ridge",
+      "pooling": "global",
+      "fits": 1,
+      "fit_predict_seconds": 0.0021669000016117934,
+      "train_rows_per_cell": 312,
+      "query_rows": 720
+    },
+    {
+      "minutes": 60,
+      "features": "S",
+      "estimator": "Ridge",
+      "pooling": "local",
+      "fits": 3,
+      "fit_predict_seconds": 0.00458499999876949,
+      "train_rows_per_cell": 312,
+      "query_rows": 720
+    },
+    {
+      "minutes": 60,
+      "features": "S",
+      "estimator": "HGB",
+      "pooling": "global",
+      "fits": 1,
+      "fit_predict_seconds": 0.13784339999983786,
+      "train_rows_per_cell": 312,
+      "query_rows": 720
+    },
+    {
+      "minutes": 60,
+      "features": "S",
+      "estimator": "HGB",
+      "pooling": "local",
+      "fits": 3,
+      "fit_predict_seconds": 0.20371349999913946,
+      "train_rows_per_cell": 312,
+      "query_rows": 720
+    },
+    {
+      "minutes": 60,
+      "features": "S+L",
+      "estimator": "Ridge",
+      "pooling": "global",
+      "fits": 1,
+      "fit_predict_seconds": 0.00254779999886523,
+      "train_rows_per_cell": 312,
+      "query_rows": 720
+    },
+    {
+      "minutes": 60,
+      "features": "S+L",
+      "estimator": "Ridge",
+      "pooling": "local",
+      "fits": 3,
+      "fit_predict_seconds": 0.003292099998361664,
+      "train_rows_per_cell": 312,
+      "query_rows": 720
+    },
+    {
+      "minutes": 60,
+      "features": "S+L",
+      "estimator": "HGB",
+      "pooling": "global",
+      "fits": 1,
+      "fit_predict_seconds": 0.1494180999980017,
+      "train_rows_per_cell": 312,
+      "query_rows": 720
+    },
+    {
+      "minutes": 60,
+      "features": "S+L",
+      "estimator": "HGB",
+      "pooling": "local",
+      "fits": 3,
+      "fit_predict_seconds": 0.2055517000007967,
+      "train_rows_per_cell": 312,
+      "query_rows": 720
+    }
+  ],
+  "new_simple_fits": 32,
+  "elapsed_seconds": 2.314005800002633,
+  "peak_rss_bytes": 164704256,
+  "new_clustering_recommended": false,
+  "representative_sample": false
+}
