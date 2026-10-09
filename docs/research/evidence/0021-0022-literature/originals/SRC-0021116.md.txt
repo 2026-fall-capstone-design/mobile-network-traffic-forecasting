@@ -1,0 +1,22 @@
+# 이번 추가 원문 확인 범위
+
+확인일: 2026-09-25. 아래는 실제 읽은 범위를 구분한 기록이다. 새 예측 모델이나 유료 API는 실행하지 않았다.
+
+## TabPFN-TS 최신 구현
+
+공식 README: https://github.com/PriorLabs/tabpfn-time-series
+
+2026-09-15 v1.3.0부터 LOCAL/CLIENT 기본 모델은 TabPFN-3.5이며, TabPFN-TS-3 checkpoint도 별도로 남는다. README는 known-future covariate를 사용하지만 past-dynamic/static covariate는 현재 버린다고 구분한다. 원래 arXiv 2501.02945의 v2 기반 결과와 이 최신 기본 checkpoint를 구별해야 한다. README는 열었고 표·변경 내역·사용 범위를 읽었다. 이번에 v3.5 모델 구조 보고서나 실제 checkpoint를 검증하지 않았다. 이 기록만으로 외삽 문제가 해결되었다고 단정하지 않는다. 이 접근 시점의 main commit은 아직 별도로 고정하지 않았으므로 재현용 실행 버전으로 지정하지 않는다.
+
+## 추가 발견한 문헌: 아직 방법론 검토를 완료하지 않은 항목
+
+- Benchmarking Tabular Foundation Models for Conditional Density Estimation in Regression, arXiv:2603.26611v1. 공식 HTML의 초록·서론·관련 연구까지 확인했다. 39개 실제 표 데이터, 표본 크기 50~20,000에서 조건부 밀도 추정과 calibration을 구분하는 연구다. methods/appendix의 density 변환과 세부 평가 방식은 이번 기록에서 검토 완료로 표시하지 않는다. https://arxiv.org/html/2603.26611v1
+- TabularMath: Evaluating Computational Extrapolation in Tabular Learning via Program-Verified Synthesis, arXiv:2602.02523v1. 검색 초록과 공식 HTML 접근을 확인했다. 구조·실험 프로토콜은 아직 읽지 않았다. 트래픽의 증가 구간이나 RCTL 공유 손해에 대한 직접 근거로 사용하지 않는다. https://arxiv.org/html/2602.02523v1
+
+검색어: `forecasting clustering transferability extrapolation`, `prediction clustering target transformation invariant`, `TabICL TabPFN extrapolation residual detrend prediction clustering 2026`. 일치하는 연구가 검색되지 않았다는 사실을 신규성의 증거로 사용하지 않는다.
+
+## 진행 지침의 반복 안내 수정
+
+사용자의 goal 안내 반복 중단 요청에 따라 프로젝트 AGENTS.md를 추가했다. 공식 문서의 project-scope guidance를 확인하고 짧은 작업 지침만 저장했다. 현재 실행에서 지침을 직접 적용했으며, 앱의 스케줄러나 전역 설정을 변경한 것은 아니다. 자동 재개에 대한 미래 동작을 시험 실행했다고 주장하지 않는다.
+
+공식 문서: https://learn.chatgpt.com/docs/agent-configuration/agents-md

@@ -70,4 +70,14 @@
 | extrapolation, saturation, loss concentration, cell7524 | [집중도](records/0020-0021-target-parameterization.md),32cell모두유지 | 60.449%raw손실,26/64query가context최대초과. 수학적출력상한/물리원인미확인 | 6큰target예시와전체cell/day손해;실제병합오류의근거와구분 |
 
 
+문헌의 이름과 구현 버전은 다음 조건으로 구분한다.
+
+| 문제·별칭 | 먼저 볼 기록 | 재사용 범위와 확인할 차이 |
+|---|---|---|
+| FSA, Feature to Dynamics, ARMA, AR rollout, pseudo-observation | [21·22](records/0021-0022-literature-scope.md)·[방법 비교](references/forecasting-version-boundaries.md) | 계수 생성·결정적 재귀·생성값 갱신을 분리. 대형 checkpoint 우위나 실제 미래 관측 갱신 근거 아님 |
+| detrend, seasonality, delta target, 차분 | [고정 TabICL 코드](references/forecasting-version-boundaries.md) | FFT 전 신호 처리와20의 잔차 target 회귀 구분. Encoder/직접 함수의 기본값 확인 |
+| TabPFN-TS-3, TabPFN-3.5, known-future, static, v1.3.0 | [세 commit 비교](references/forecasting-version-boundaries.md) | 날짜·의존성·모델·입력 설명을 고정. 원22의 실제 접근 commit과3.5 checkpoint는 미확인 |
+| CDE, calibration, TabularMath, computational extrapolation | [발견 범위](records/0021-0022-literature-scope.md) | 초록/지정 절 열람을 전체 방법 검토로 세지 않음. 트래픽/RCTL 직접 성능과 구분 |
+| 반복 Goal 안내, AGENTS, 자동 재개 | [운영 기록](records/0021-0022-literature-scope.md) | 초기/후속 판본과 실제 앱 동작을 구분. 과거 명령을 현재 실행 지시로 사용하지 않음 |
+
 새 실험은 관련 과거 기록, 같게 유지할 조건, 달라지는 질문·조건, 재사용할 파일을 먼저 적는다. 기존 부정 결과를 회피하기 위한 조건 변경과 새로운 가설 검증을 구분한다. [첫 묶음 검수](verification/pilot-001.md), [RCTL 검수](verification/pilot-002.md), [문헌 검수](verification/pilot-003.md), [캐시 대조 검수](verification/pilot-004.md), [전체 조사 현황](verification/inventory-2026-10-08.md).
