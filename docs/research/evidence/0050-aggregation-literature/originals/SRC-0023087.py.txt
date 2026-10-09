@@ -1,0 +1,16 @@
+from pathlib import Path
+import subprocess, json
+base=Path(__file__).resolve().parent/'sources/aggregation_48'
+exe=Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+if (base/'render_log.json').exists(): raise SystemExit('Already rendered')
+jobs=[('higp_icml2024',4),('higp_icml2024',5),('ondm2023',2),('ondm2023',3),
+      ('multilevel_clustering_v1',7),('multilevel_clustering_v1',10),('multilevel_clustering_v1',11)]
+records=[]
+for name,page in jobs:
+    target=base/f'{name}_page{page:02d}'
+    run=subprocess.run([str(exe),'-f',str(page),'-singlefile','-scale-to','1600','-png',str(base/(name+'.pdf')),str(target)],capture_output=True,text=True,timeout=25)
+    rec={'paper':name,'page':page,'exit_code':run.returncode,'png':target.with_suffix('.png').name,'stderr':run.stderr}
+    records.append(rec)
+    if run.returncode!=0: break
+(base/'render_log.json').write_text(json.dumps(records,indent=2),encoding='utf-8')
+print(json.dumps(records))

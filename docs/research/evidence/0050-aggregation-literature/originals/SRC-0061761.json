@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-26",
+  "purpose": "Distinguish row pooling, multioutput forecasting, and scalar aggregate forecasting before assigning a TabICLv2 role.",
+  "search_queries": [
+    "Graph-based Time Series Clustering for End-to-End Hierarchical Forecasting",
+    "HSeq2Seq traffic prediction clustering",
+    "hierarchical forecasting TabPFN",
+    "forecasting clustering series representative forecast disaggregation forecast proportions reconstruction error clustering",
+    "hierarchical forecasting learn proportions clustering",
+    "network traffic forecasting aggregation clustering prediction",
+    "forecasting clustering growth rates representative",
+    "network traffic prediction common factor clustering"
+  ],
+  "reviewed": [
+    {
+      "paper": "Graph-based Time Series Clustering for End-to-End Hierarchical Forecasting",
+      "version": "ICML 2024 PMLR 235:8985–8999",
+      "sections": ["3.1 equations 4–8", "3.2 equations 9–10", "3.3 equations 11–12", "5.1 Tables 1–2"],
+      "visually_reviewed_pages": [4, 5],
+      "code_reviewed": false,
+      "scope_limit": "No reproduction or validation of official implementation; published inverse-cost space/time orders not adopted as a computational estimate."
+    },
+    {
+      "paper": "Data Aggregation and Clustering for Traffic Prediction in Backbone Optical Networks",
+      "version": "ONDM 2023, 3-page conference paper",
+      "sections": ["II proposed models", "III numerical experiments", "Table I"],
+      "visually_reviewed_pages": [2, 3],
+      "code_reviewed": false,
+      "scope_limit": "Semi-synthetic optical-network data; undirected-pair wording conflicts with 756=28*27 count; not resolved by assumption."
+    },
+    {
+      "paper": "Efficient Forecasting of Large Scale Hierarchical Time Series via Multilevel Clustering",
+      "version": "arXiv 2205.14104v1, 2022-05-27; only v1 shown in retrieved history",
+      "sections": ["3.1–3.2 equations 5–6 and Algorithm 1", "3.3", "3.4 equation 7", "4.2 Tables 3–4", "Appendix C experimental setup"],
+      "visually_reviewed_pages": [7, 10, 11],
+      "code_reviewed": false,
+      "scope_limit": "No full proof audit or code reproduction; objective monotonicity not treated as forecast-risk guarantee."
+    }
+  ],
+  "access": {
+    "openreview": "Browser verification page; no bypass attempted. PMLR official public PDF used instead.",
+    "ifip": "Web tool fetch timed out; direct public URL succeeded with HTTP 200.",
+    "external_code_executed": false
+  },
+  "discovered_but_not_method_reviewed": [
+    "HSeq2Seq",
+    "HierFedKD-Traffic, IFIP Networking 2026",
+    "Constructing hierarchical time series through clustering: Is there an optimal way for forecasting?",
+    "Pivot Clustering to Minimize Error in Forecasting Aggregated Demand Streams Each Following an Autoregressive Moving Average Model",
+    "Dynamic factor model for network traffic state forecast (road traffic)"
+  ],
+  "novelty_claim": false
+}

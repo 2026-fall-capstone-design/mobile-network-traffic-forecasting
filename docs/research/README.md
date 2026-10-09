@@ -85,3 +85,5 @@
 [47 입력 정보와 공동 학습의 구분](records/0047-input-sharing-roles.md)은 GECOS 입력 역할, DIC-ST·Markov boundary의 실제 근거 범위, 양방향 의존성의 논리 반례와 Tab 비교 작업량을 정리합니다. [검수](verification/history-028.md)는 당시 미추천 판단과 재검토 조건을 연결하며 전논문 완료나 새 성능 실험을 뜻하지 않습니다.
 
 [48–49 합계와 개별 cell 복원](records/0048-0049-aggregation-recovery.md)은 미래 실제 합계·사후 최적 scalar·실행 가능한 과거 기준을 구별합니다. 평균 이득과16개cell손해, 정규화와원단위의차이, 당시비용을 [검수](verification/history-029.md)와 연결했습니다. 50의 문헌·신규성 종합은 후속 검수 범위입니다.
+
+[50 합계·다중 출력·대표 예측 문헌](records/0050-aggregation-literature.md)은 HiGP·ONDM·HTS-Cluster의 실제 출력을 구분하고, 선행 대표 예측과 정확도·시간 절충을 당시 미채택 판단에 연결합니다. [H030 검수](verification/history-030.md)는35쪽 본문·21쪽 시각 열람과 선택128개 표 수치를 기록합니다.

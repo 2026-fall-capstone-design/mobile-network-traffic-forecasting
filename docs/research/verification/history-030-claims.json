@@ -1,0 +1,145 @@
+{
+  "batch_id": "history-030",
+  "claims": [
+    {
+      "claim_id": "H030-C01",
+      "claim": "학습 행 공유·다중 출력·합계 배분·대표 조합 구분",
+      "source_location": "50 첫 표/각 논문 방법",
+      "verification_method": "출력과 결정 대상 대조",
+      "limit": "모델 수/호출 수/지연을 동일시하지 않음"
+    },
+    {
+      "claim_id": "H030-C02",
+      "claim": "HiGP는 하위·상위 표현과 출력을 유지",
+      "source_location": "HiGP2–5쪽 식3–8",
+      "verification_method": "본문·수식·그림 시각 대조",
+      "limit": "합계 한 scalar만의 복원 아님"
+    },
+    {
+      "claim_id": "H030-C03",
+      "claim": "HiGP hard assignment·고정 hierarchy·고정 pooling 허용",
+      "source_location": "HiGP5/7/14쪽",
+      "verification_method": "일반 틀과 실제 설정 구분",
+      "limit": "RCTL 독립 소속 성능 증거 아님"
+    },
+    {
+      "claim_id": "H030-C04",
+      "claim": "HiGP 정합 projection의 역할과 비용 표기 한계",
+      "source_location": "HiGP5–6쪽 식12,3–4쪽 lift",
+      "verification_method": "수식 입력/출력 범위 대조",
+      "limit": "원문 복잡도/인덱스를 임의 실행 명세로 수정하지 않음"
+    },
+    {
+      "claim_id": "H030-C05",
+      "claim": "HiGP 데이터·분할·학습 범위",
+      "source_location": "HiGP6–8/13–15쪽",
+      "verification_method": "부록/본문과 표 대조",
+      "limit": "Milan 활동량·49 진단과 다른 과제"
+    },
+    {
+      "claim_id": "H030-C06",
+      "claim": "HiGP horizon별 이득과 손해·reconciliation 민감도",
+      "source_location": "HiGP7Table2/15Table5",
+      "verification_method": "선택7행36수치 재추출",
+      "limit": "평균·± 인쇄값;5회와4회 구분;유의성 주장 아님"
+    },
+    {
+      "claim_id": "H030-C07",
+      "claim": "ONDM 2k 입력·k 출력과 node별28모델",
+      "source_location": "ONDM1–3쪽§II–III",
+      "verification_method": "그림1/2와 본문 대조",
+      "limit": "총량 하나 예측 후 배분 아님"
+    },
+    {
+      "claim_id": "H030-C08",
+      "claim": "ONDM Seattle 생성자료·Euro28·pair 표기 충돌",
+      "source_location": "ONDM2–3쪽§III",
+      "verification_method": "본문·도표 독해",
+      "limit": "undirected/756 불일치 미해결"
+    },
+    {
+      "claim_id": "H030-C09",
+      "claim": "ONDM 평균 MAPE와 MLP 동률·비용 측정 공백",
+      "source_location": "ONDM3TableI,2쪽설정",
+      "verification_method": "3행27수치 재추출",
+      "limit": "pair별 전부 개선/모델수 감소의 인과효과 아님"
+    },
+    {
+      "claim_id": "H030-C10",
+      "claim": "HTS Soft-DTW divergence/Wasserstein/알려진 계층",
+      "source_location": "HTS3–6쪽 식2/5/6,Algorithm1",
+      "verification_method": "텍스트·수식·알고리즘 대조",
+      "limit": "49의 고정 합계 배분과 설정 다름"
+    },
+    {
+      "claim_id": "H030-C11",
+      "claim": "Proposition3.1은 clustering 목적함수 감소",
+      "source_location": "HTS7/15–16쪽 부록A",
+      "verification_method": "할당·중심 최적화 단계 독해",
+      "limit": "예측오차 정리·근사구현/전체증명 인증 아님"
+    },
+    {
+      "claim_id": "H030-C12",
+      "claim": "대표 예측의 거리 가중치 조합·정합",
+      "source_location": "HTS7/11쪽 식7",
+      "verification_method": "양의거리 대수와 고정 유리수 확인",
+      "limit": "거리0 처리/코드 미확인;새실험 아님"
+    },
+    {
+      "claim_id": "H030-C13",
+      "claim": "HTS Table3 최하위 손해와 일부 상위 이득",
+      "source_location": "HTS10Table3",
+      "verification_method": "4행40수치 재추출",
+      "limit": "MASE 그대로;모든level 악화 결론 아님"
+    },
+    {
+      "claim_id": "H030-C14",
+      "claim": "HTS Table4 상대시간 .16과 네 계층 오차 악화",
+      "source_location": "HTS11Table4/본문",
+      "verification_method": "5행25수치 재추출·반례 대조",
+      "limit": "시간범위 구현 미확인;무손실 가속으로 재인용 금지"
+    },
+    {
+      "claim_id": "H030-C15",
+      "claim": "HTS 부록 조건과 Wiki150·비공개 금융자료",
+      "source_location": "HTS16–17 부록C",
+      "verification_method": "설정/데이터 범위 독해",
+      "limit": "145k 전체 평가/현재 재현 아님"
+    },
+    {
+      "claim_id": "H030-C16",
+      "claim": "49 저장 진단·cell손해·비용 검수 재사용",
+      "source_location": "50진단/비용;H029 proofs",
+      "verification_method": "기존 evidence identity 연결",
+      "limit": "독립 실험·새 논문 출력 아님"
+    },
+    {
+      "claim_id": "H030-C17",
+      "claim": "대표 예측 선행·TabICL 추가정보 미입증·당시 미채택",
+      "source_location": "50 문헌/마지막 판단",
+      "verification_method": "선행 사례와 주장 강도 대조",
+      "limit": "모든 가능한 신규성/압축 연구 기각 아님"
+    },
+    {
+      "claim_id": "H030-C18",
+      "claim": "그룹당4cell 출력산술과 O(N) 복원·RCTL 변경",
+      "source_location": "50 RCTL/비용 문단",
+      "verification_method": "128/1024/10000→32/256/2500 정수 확인",
+      "limit": "실측속도/모든방법 하한 아님"
+    },
+    {
+      "claim_id": "H030-C19",
+      "claim": "접근·렌더 로그 및 PDF 파생 TXT/HTML 범위",
+      "source_location": "fetch/render/scopeJSON;2codes;TXT/HTML",
+      "verification_method": "원본identity·전체로그·추출차이 대조",
+      "limit": "OpenReview 보고 독립증거 없음;현재timeout 구분"
+    },
+    {
+      "claim_id": "H030-C20",
+      "claim": "읽은 내용·검증·재현·새 실행과 남은 범위 구분",
+      "source_location": "manifest/통제baseline/50전체",
+      "verification_method": "21출처·6통제파일 대조",
+      "limit": "전체Goal/공식구현/후속자료 미완료"
+    }
+  ]
+}
