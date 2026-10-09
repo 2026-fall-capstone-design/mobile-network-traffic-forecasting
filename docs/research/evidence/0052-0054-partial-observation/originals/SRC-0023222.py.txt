@@ -1,0 +1,31 @@
+from pathlib import Path
+import json
+base=Path(__file__).resolve().parent;out=base/'results/partial_observation_54'
+p=base/'cumulative_execution_budget.json';ledger=json.loads(p.read_text(encoding='utf-8'))
+r=json.loads((out/'result.json').read_text(encoding='utf-8'));c=r['cost']
+f=json.loads((out/'run_finished.json').read_text(encoding='utf-8'))
+error=json.loads((out/'preflight_correction.json').read_text(encoding='utf-8'))
+key='partial_observation_54'
+assert key not in ledger['new_cheap_diagnostic_seconds']
+assert not any(x['stage']==key for x in ledger['model_calls_by_stage'])
+assert f['hashes_unchanged'] and c['TabICL_contexts']==4 and c['TabICL_query_rows']==256
+assert c['RCTL_fits']==c['RCTL_forward_calls']==0
+backup=out/'budget_before_accounting.json';assert not backup.exists();backup.write_bytes(p.read_bytes())
+ledger['model_calls_by_stage'].append({'stage':key,'contexts':4,'predicted_query_rows':256,'fit_predict_seconds':c['TabICL_seconds'],'ensemble':1})
+ledger['used']['TabICL_contexts']+=4
+ledger['used']['TabICL_query_rows']+=256
+ledger['used']['TabICL_fit_predict_seconds']+=c['TabICL_seconds']
+ledger['new_cheap_diagnostic_seconds'][key]=c['cheap_numeric_seconds_including_simple']
+ledger['new_cheap_diagnostic_seconds']['partial_observation_54_failed_preflight_process']=error['first_process_wall_seconds']
+ledger['cheap_stage_details'].append({'stage':key,'new_simple_fits':8,'methods':['Ridge','HGB'],
+ 'entire_stage_seconds':c['stage_seconds'],'TabICL_seconds_accounted_separately':c['TabICL_seconds'],
+ 'fit_predict_seconds_included_in_cheap_stage':c['simple_fit_seconds'],'cost_not_counted_twice':True,
+ 'preflight_correction_no_model_calls':True})
+for k in ['TabICL_contexts','TabICL_query_rows','RCTL_fits']:
+ ledger['remaining_count_budgets'][k]=ledger['caps'][k]-ledger['used'][k]
+cheap=sum(ledger['new_cheap_diagnostic_seconds'].values())
+total=cheap+sum(ledger['used'][k] for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds'])
+assert cheap<ledger['caps']['cheap_numeric_seconds'] and total<ledger['caps']['total_local_modeling_seconds']
+assert ledger['remaining_count_budgets']['RCTL_fits']==0
+p.write_text(json.dumps(ledger,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+print(json.dumps({'added':key,'cheap_total':cheap,'recorded_modeling_seconds':total,'remaining':ledger['remaining_count_budgets']}))

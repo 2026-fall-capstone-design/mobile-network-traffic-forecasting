@@ -1,0 +1,35 @@
+# 54. 부분 관측에서 TabICLv2의 추가 정보 확인
+
+2026-09-26. 새 후보를 추천하기 위한 충분조건이 아니라, 불필요한 센서 선택 알고리즘 개발을 피하기 위한 첫 확인이다. 기존 자료는 이미 검토한 개발 자료이며 독립 test가 아니다.
+
+## 핵심 질문과 행동
+
+일부 cell의 16시간 관측을 생략하고 네 곳의 동시 관측과 전날·지난주 자료를 제공했을 때, 회귀용 TabICLv2가 같은 짧은 context를 쓴 단순 회귀보다 현재 cell 트래픽 복원에 도움이 되는가?
+
+TabICL의 전체 MAE가 모든 단순 대안보다 작고, 앞·뒤 두 시간 블록 묶음에서 각각 유리하며, 4개 cell 중 3개 이상에서 가장 좋은 단순 학습기보다 작을 때에만 다음 확대 검토로 진행한다. 이는 탐색 진행 규칙이며 통계적 유의성·업무상 허용오차 기준이 아니다. 한 가지라도 없으면 원인과 부분 이득을 기록하고, 이 결과만으로 telemetry clustering을 추천하지 않는다. 결과에 맞춰 context·cell·기준을 바꾸어 재실행하지 않는다.
+
+clustering과 RCTL 연결은 이번 실행에 포함하지 않는다. TabICL이 단순 복원에 추가하는 정보부터 확인한다. 이를 RCTL 검증의 통과로 쓰지 않는다.
+
+## 데이터와 사용 가능한 정보
+
+- 기존 Milan hourly 자료의 최초 16개 중앙지역 grid cell을 그대로 사용한다. 실제 기지국의 bytes나 Mbps로 표시하지 않는다. 기존 입력 파일의 Internet activity 채널과 첫672시간 평균 정규화를 사용한다.
+- 직접 관측하는 네 cell: 최초 16개 배치의 네 모서리, index 0·3·12·15, 즉 3737·3765·6137·6165.
+- 복원 대상 네 cell: index 1·5·9·13, 즉 3745·4545·5345·6145. 공간 배치에 따라 먼저 고정했으며 과거 예측 오차로 고르지 않는다. 이는 동작·비용 확인 범위일 뿐 대표 표본이라는 주장이 아니다.
+- context는 day index7부터34까지 28일 중 linspace로 정한16일, 각 날 첫16시간: cell당256행. day index는 원자료 첫 행부터24시간씩 센다. 입력의 실제 hour/day-of-week는 저장된 timestamp에서 얻는다.
+- query는 day index43·47·51·55의 각 첫16시간: cell당64행. 총256행. 각 블록 시작 직전까지만 대상 cell의 값이 보고되었다고 가정한다. 네 probe는 매시간 보고한다. query 구간을 원래 결측 구간으로 부르지 않는다.
+- 입력12개: 대상 cell의 마지막 보고값, 그 이후 경과시간, 해당 시각 전날값, 지난주값, 동시 네 probe 값, hour의sin/cos, weekday의sin/cos. 코드에서 열 수를 assert한다. 알려지지 않은 해당 시각 대상값을 입력에 넣지 않는다.
+- context에서도 같은16시간 생략 조건을 모사한다. context y는 당시 관측된 실제값이다. query y는 복원 오차 계산에만 사용한다.
+- query의 전날·지난주 입력 시각이 앞선 생략 블록과 겹치지 않는지 코드로 검사한다. context는 모두 실제로 관측해 둔 과거 자료이며 각 행에서 입력 생략을 모사하므로, 다른 context 행의 관측값도 과거 lag로 쓸 수 있다. 실제 시간축의 period 정보를 쓰며 가까운 sample만 임의로 모으지 않는다.
+
+## 비교·실행과 비용
+
+- TabICLRegressor v2 checkpoint 고정, n_estimators=1, median, seed20260925, CPU4threads. 한 cell당 context 준비1회·predict1회. 총4contexts·256query행; gradient update0.
+- 같은256행·같은12열의 StandardScaler+Ridge(alpha1), HGB(absolute_error,100iterations,15leaves,min_leaf20,l2=1,early_stoppingFalse).
+- 마지막 보고값 유지, 전날 같은 시각, 지난주 같은 시각, 전날 패턴을 마지막 보고 수준에 맞춘 예측을 포함한다. 음수는 모든 방법에서0으로 clip한다. 새 튜닝 없음.
+- 모든 방법의 전체/각cell/각16시간블록 MAE, 원래 단위 MAE, 4개 cell 상대 순위를 보존한다. TabICL fit·predict시간, 단순 학습시간, 계산 총시간, RSS 관측값을 기록한다.
+- 이번 실행: Tab≤4contexts·256query행·120초, 단순수치≤30초, stage≤180초, RSS≤8GB. RCTL fit·forward 모두0. 실패/초과 시 이미 실행한 비용을 보존하고 자동 재실행하지 않는다.
+- 기존 누적상한 유지: 이번 후 최대49contexts·35968query행. RCTL29fits로 추가0. 원자료·설정·코드 hash와 시작/완료 marker를 남긴다.
+
+## 해석 범위
+
+복원 성능의 긍정적 결과도 새로운 clustering 규칙, 관측 감소의 실제 운영 이득, 미래 RCTL 오차 감소를 자동으로 입증하지 않는다. 네 probe를 유지하는 비용, 전체 자료를 모으는 갱신 시점, 온라인 TabICL 추론 비용과 비교해야 한다. 단순 회귀로 충분하면 TabICL 기반 복원만을 연구 기여로 삼지 않는다.

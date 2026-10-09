@@ -214,3 +214,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## 합계 예측·다중 출력·대표 예측을 혼동하지 않기 — 50
 
 [50 문헌과 판단](records/0050-aggregation-literature.md)을 먼저 확인한다. ONDM은 2k 입력/k 출력의 다중 출력, HiGP는 하위·상위 출력과 정합, HTS-Cluster는 거리 기반 대표 예측 조합이다. 모델 수가 줄었다고 출력·호출·지연이 같은 비율로 줄지 않는다. HTS의 상대 시간 0.16과 네 계층 MASE 악화, ONDM MLP 동률, HiGP의 horizon별 손해를 함께 본다. [48–49 진단](records/0048-0049-aggregation-recovery.md)의 고정 비중 복원 오차를 이 세 방법 전체의 불가능성으로 확대하지 않는다. 기존 대표 예측과 다른 결정·TabICLv2의 추가 정보·개별 오차와 실측 비용이 재검토 조건이며 새 실험은 수행하지 않았다.
+
+## 부분 관측 복원·probe 선택을 다시 설계하기 전에 — 52·54
+
+[52·54 기록](records/0052-0054-partial-observation.md)을 확인한다. Beijing 부분집합은 두 배열의 identity와 스키마가 확인됐지만 시각·단위·물리 cell mapping이 부족하다. Milan에서는 probe4/target4·16시간 생략·cell당 context256/query64·ensemble1을 검사했다. TabICL 전체 정규화 MAE0.108537은 Ridge0.092963/HGB0.098836보다 컸고, 앞쪽 이득과 뒤쪽 손해가 공존했다. 세 확대 조건은 false/false/0이었다. 최초 context공동결측 assert 오류와 query만 검사한 수정, 실패4.1631648초도 남겼다. 현재값 복원과 미래 RCTL 성능·소속 판단은 별도 과제이며 51·53/55의 문헌 종합은 계속 검토한다.

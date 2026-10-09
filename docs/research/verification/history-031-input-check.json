@@ -1,0 +1,420 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T11:32:58.393050+00:00",
+  "checks": 36,
+  "check_names": [
+    "16_original_cell_ids",
+    "H5_shape",
+    "hourly_timestamps",
+    "scale_first672",
+    "actual_normalized_targets",
+    "last_report:H5_baseline",
+    "day_lag:H5_baseline",
+    "week_lag:H5_baseline",
+    "anchored_day_lag:H5_baseline",
+    "cell3745:context:feature_shape",
+    "cell3745:context:own_history_prior",
+    "cell3745:query:feature_shape",
+    "cell3745:query:own_history_prior",
+    "cell4545:context:feature_shape",
+    "cell4545:context:own_history_prior",
+    "cell4545:query:feature_shape",
+    "cell4545:query:own_history_prior",
+    "cell5345:context:feature_shape",
+    "cell5345:context:own_history_prior",
+    "cell5345:query:feature_shape",
+    "cell5345:query:own_history_prior",
+    "cell6145:context:feature_shape",
+    "cell6145:context:own_history_prior",
+    "cell6145:query:feature_shape",
+    "cell6145:query:own_history_prior",
+    "preflight_identity:plan",
+    "preflight_identity:code",
+    "preflight_identity:data",
+    "preflight_identity:cell_ids",
+    "preflight_identity:checkpoint",
+    "control:AGENTS.md",
+    "control:tmp/redesign_20260925/research_state.json",
+    "control:tmp/redesign_20260925/research_focus.md",
+    "control:tmp/redesign_20260925/progress.md",
+    "control:tmp/redesign_20260925/candidate_decision_index.md",
+    "control:tmp/redesign_20260925/cumulative_execution_budget.json"
+  ],
+  "H5_read_scope": "data[:,fixed original16 cell IDs minus1,channel2] and all1488 hourly timestamp labels; no other values read",
+  "H5_shape": [
+    1488,
+    10000,
+    3
+  ],
+  "input_identities": [
+    {
+      "role": "plan",
+      "source_id": "SRC-0021802",
+      "path": "tmp/redesign_20260925/54_partial_observation_pilot_plan.md",
+      "sha256": "c926cd9fbe13f3ed5bbb47b4648d058650ecf4f89674a73f50ba7c917d3c70d9",
+      "size_bytes": 4916
+    },
+    {
+      "role": "code",
+      "source_id": "SRC-0022964",
+      "path": "tmp/redesign_20260925/partial_observation_pilot_54.py",
+      "sha256": "446bd9e619f9e0503aa4bf7979b6c84c3067af43223f4c58a1e8a3cbbb2745a4",
+      "size_bytes": 8742
+    },
+    {
+      "role": "data",
+      "source_id": "SRC-0023485",
+      "path": "tmp/redesign_20260925/assets/data_git_version.h5",
+      "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+      "size_bytes": 357150320
+    },
+    {
+      "role": "cell_ids",
+      "source_id": "SRC-0023589",
+      "path": "tmp/redesign_20260925/results/observed_risk_tables.npz",
+      "sha256": "40837fdeef5632f688d91b526c499af0384a4226058fa94d56845fa1f0e5da5c",
+      "size_bytes": 7259978
+    },
+    {
+      "role": "checkpoint",
+      "source_id": "SRC-0023488",
+      "path": "tmp/redesign_20260925/assets/tabicl-regressor-v2-20260212.ckpt",
+      "sha256": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+      "size_bytes": 114324594
+    }
+  ],
+  "context_days": [
+    7,
+    9,
+    11,
+    12,
+    14,
+    16,
+    18,
+    20,
+    21,
+    23,
+    25,
+    27,
+    29,
+    30,
+    32,
+    34
+  ],
+  "context_date_min": "2013-11-08T00:00:00",
+  "context_date_max": "2013-12-05T15:00:00",
+  "query_dates": [
+    "2013-12-14T00:00:00",
+    "2013-12-18T00:00:00",
+    "2013-12-22T00:00:00",
+    "2013-12-26T00:00:00"
+  ],
+  "query_block_end_dates": [
+    "2013-12-14T15:00:00",
+    "2013-12-18T15:00:00",
+    "2013-12-22T15:00:00",
+    "2013-12-26T15:00:00"
+  ],
+  "feature_summaries": [
+    {
+      "cell_id": 3745,
+      "split": "context",
+      "shape": [
+        256,
+        12
+      ],
+      "column_min": [
+        0.8812715286352351,
+        1.0,
+        0.4395366614512424,
+        0.4999853097730519,
+        0.48353038453816083,
+        0.41389648014085845,
+        0.25734468258664356,
+        0.23802008929759202,
+        -0.7071067811865471,
+        -1.0,
+        -0.9749279121818236,
+        -0.9009688679024191
+      ],
+      "column_max": [
+        1.510657614632344,
+        16.0,
+        1.7890862910269887,
+        1.787836488498862,
+        2.196464100827737,
+        2.100693488700918,
+        2.875550339833778,
+        2.2447943431363857,
+        1.0,
+        1.0,
+        0.9749279121818236,
+        0.6234898018587336
+      ]
+    },
+    {
+      "cell_id": 3745,
+      "split": "query",
+      "shape": [
+        64,
+        12
+      ],
+      "column_min": [
+        0.853032421351805,
+        1.0,
+        0.49834569745319424,
+        0.42942170015447373,
+        0.5463280332360699,
+        0.338845604364438,
+        0.277386968161962,
+        0.19664378047094475,
+        -0.7071067811865471,
+        -1.0,
+        -0.9749279121818236,
+        -0.900968867902419
+      ],
+      "column_max": [
+        1.0354995718006654,
+        16.0,
+        1.3090616537851445,
+        1.1143737654326396,
+        1.316979659900196,
+        1.5818264902503405,
+        2.3787831050651445,
+        1.6109550885158783,
+        1.0,
+        1.0,
+        0.9749279121818236,
+        0.6234898018587334
+      ]
+    },
+    {
+      "cell_id": 4545,
+      "split": "context",
+      "shape": [
+        256,
+        12
+      ],
+      "column_min": [
+        0.8707685650954563,
+        1.0,
+        0.404716467679429,
+        0.35838916318254427,
+        0.48353038453816083,
+        0.41389648014085845,
+        0.25734468258664356,
+        0.23802008929759202,
+        -0.7071067811865471,
+        -1.0,
+        -0.9749279121818236,
+        -0.9009688679024191
+      ],
+      "column_max": [
+        1.1705533839123048,
+        16.0,
+        1.7512712491971594,
+        1.830610560362283,
+        2.196464100827737,
+        2.100693488700918,
+        2.875550339833778,
+        2.2447943431363857,
+        1.0,
+        1.0,
+        0.9749279121818236,
+        0.6234898018587336
+      ]
+    },
+    {
+      "cell_id": 4545,
+      "split": "query",
+      "shape": [
+        64,
+        12
+      ],
+      "column_min": [
+        0.6873839997756492,
+        1.0,
+        0.4252071915039302,
+        0.4717372807585953,
+        0.5463280332360699,
+        0.338845604364438,
+        0.277386968161962,
+        0.19664378047094475,
+        -0.7071067811865471,
+        -1.0,
+        -0.9749279121818236,
+        -0.900968867902419
+      ],
+      "column_max": [
+        1.02375884965357,
+        16.0,
+        1.5495743189842062,
+        1.7191226549642695,
+        1.316979659900196,
+        1.5818264902503405,
+        2.3787831050651445,
+        1.6109550885158783,
+        1.0,
+        1.0,
+        0.9749279121818236,
+        0.6234898018587334
+      ]
+    },
+    {
+      "cell_id": 5345,
+      "split": "context",
+      "shape": [
+        256,
+        12
+      ],
+      "column_min": [
+        1.03635541753307,
+        1.0,
+        0.48522317514984525,
+        0.45757055564942634,
+        0.48353038453816083,
+        0.41389648014085845,
+        0.25734468258664356,
+        0.23802008929759202,
+        -0.7071067811865471,
+        -1.0,
+        -0.9749279121818236,
+        -0.9009688679024191
+      ],
+      "column_max": [
+        1.6138360752505385,
+        16.0,
+        1.3973886810542644,
+        1.3973886810542644,
+        2.196464100827737,
+        2.100693488700918,
+        2.875550339833778,
+        2.2447943431363857,
+        1.0,
+        1.0,
+        0.9749279121818236,
+        0.6234898018587336
+      ]
+    },
+    {
+      "cell_id": 5345,
+      "split": "query",
+      "shape": [
+        64,
+        12
+      ],
+      "column_min": [
+        0.7188078869006107,
+        1.0,
+        0.5368059461410113,
+        0.5036266679727411,
+        0.5463280332360699,
+        0.338845604364438,
+        0.277386968161962,
+        0.19664378047094475,
+        -0.7071067811865471,
+        -1.0,
+        -0.9749279121818236,
+        -0.900968867902419
+      ],
+      "column_max": [
+        1.116166852312201,
+        16.0,
+        1.2950105242831558,
+        1.6118317653106464,
+        1.316979659900196,
+        1.5818264902503405,
+        2.3787831050651445,
+        1.6109550885158783,
+        1.0,
+        1.0,
+        0.9749279121818236,
+        0.6234898018587334
+      ]
+    },
+    {
+      "cell_id": 6145,
+      "split": "context",
+      "shape": [
+        256,
+        12
+      ],
+      "column_min": [
+        0.45099747446073324,
+        1.0,
+        0.2579305683110492,
+        0.2701444457978413,
+        0.48353038453816083,
+        0.41389648014085845,
+        0.25734468258664356,
+        0.23802008929759202,
+        -0.7071067811865471,
+        -1.0,
+        -0.9749279121818236,
+        -0.9009688679024191
+      ],
+      "column_max": [
+        0.7533155553358023,
+        16.0,
+        1.8879542729477254,
+        2.8102535625371354,
+        2.196464100827737,
+        2.100693488700918,
+        2.875550339833778,
+        2.2447943431363857,
+        1.0,
+        1.0,
+        0.9749279121818236,
+        0.6234898018587336
+      ]
+    },
+    {
+      "cell_id": 6145,
+      "split": "query",
+      "shape": [
+        64,
+        12
+      ],
+      "column_min": [
+        0.50121780365607,
+        1.0,
+        0.2576525853241521,
+        0.26328946255845476,
+        0.5463280332360699,
+        0.338845604364438,
+        0.277386968161962,
+        0.19664378047094475,
+        -0.7071067811865471,
+        -1.0,
+        -0.9749279121818236,
+        -0.900968867902419
+      ],
+      "column_max": [
+        0.561881799234139,
+        16.0,
+        1.750392268400537,
+        1.8520162849229322,
+        1.316979659900196,
+        1.5818264902503405,
+        2.3787831050651445,
+        1.6109550885158783,
+        1.0,
+        1.0,
+        0.9749279121818236,
+        0.6234898018587334
+      ]
+    }
+  ],
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0,
+  "actual_executed_feature_matrix_saved": false,
+  "limits": [
+    "Feature reconstruction from static code/inputs, not a saved X/model-state equality proof.",
+    "Simulated16hour omission; four probes assumed observed contemporaneously.",
+    "Historical context fully observed with rowwise omission simulation, not a jointly missing chronological process.",
+    "No official52dataset semantic/loader review or failed process external log/ledger audit yet."
+  ],
+  "source_manifest": "docs/research/evidence/0052-0054-partial-observation/manifest.json",
+  "followup_completed": "history-031-lineage-check.json; pending fields retained as historical audit state"
+}

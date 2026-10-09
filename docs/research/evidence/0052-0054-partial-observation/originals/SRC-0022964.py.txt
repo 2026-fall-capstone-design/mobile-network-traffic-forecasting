@@ -1,0 +1,120 @@
+import os
+for k in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']: os.environ[k]='4'
+from pathlib import Path
+import time, json, hashlib, sys, gc
+import numpy as np, pandas as pd, h5py, torch, psutil
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor
+from tabicl import TabICLRegressor
+sys.stdout.reconfigure(encoding='utf-8')
+torch.set_num_threads(4);torch.set_num_interop_threads(2)
+base=Path(__file__).resolve().parent;out=base/'results/partial_observation_54';out.mkdir(exist_ok=True)
+assert not (out/'run_started.json').exists(), 'Already started; do not rerun.'
+ledger=json.loads((base/'cumulative_execution_budget.json').read_text(encoding='utf-8'))
+assert ledger['remaining_count_budgets']['TabICL_contexts']>=4
+assert ledger['remaining_count_budgets']['TabICL_query_rows']>=256
+ids=np.load(base/'results/observed_risk_tables.npz')['cell_ids'].astype(int)
+assert len(ids)==16
+probe_indices=np.array([0,3,12,15]);target_indices=np.array([1,5,9,13])
+assert ids[probe_indices].tolist()==[3737,3765,6137,6165]
+assert ids[target_indices].tolist()==[3745,4545,5345,6145]
+ctdays=np.rint(np.linspace(7,34,16)).astype(int);qdays=np.array([43,47,51,55])
+ct=np.concatenate([np.arange(d*24,d*24+16) for d in ctdays])
+qt=np.concatenate([np.arange(d*24,d*24+16) for d in qdays])
+assert len(np.unique(ct))==256 and len(qt)==64 and ct.max()<qt.min()
+for times in [qt]:
+ omitted=set(times.tolist())
+ for t in times:
+  assert int(t-24) not in omitted and int(t-168) not in omitted
+ # Historical context rows come from fully observed data; omission is simulated per row.
+paths={'plan':base/'54_partial_observation_pilot_plan.md','code':Path(__file__),
+       'data':base/'assets/data_git_version.h5','cell_ids':base/'results/observed_risk_tables.npz',
+       'checkpoint':base/'assets/tabicl-regressor-v2-20260212.ckpt'}
+hashes={k:hashlib.sha256(p.read_bytes()).hexdigest() for k,p in paths.items()}
+settings={'date':'2026-09-26','cell_ids':ids.tolist(),'target_cell_ids':ids[target_indices].tolist(),
+ 'probe_cell_ids':ids[probe_indices].tolist(),'context_times':ct.tolist(),'query_times':qt.tolist(),
+ 'context_rows_per_target':256,'query_rows_per_target':64,'contexts':4,'query_rows':256,
+ 'seed':20260925,'ensemble':1,'input_features':['last_report','report_age','day_lag','week_lag',
+ 'probe_3737','probe_3765','probe_6137','probe_6165','hour_sin','hour_cos','weekday_sin','weekday_cos'],
+ 'all_methods_clip_negative_to_zero':True,'development_only':True,'RCTL_fits':0,'RCTL_calls':0,
+ 'input_and_code_sha256':hashes,'caps':{'Tab_seconds':120,'simple_seconds':30,'stage_seconds':180,'rss_bytes':8*1024**3}}
+(out/'settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+(out/'run_started.json').write_text(json.dumps({'unix':time.time(),'pid':os.getpid(),'settings_sha256':hashlib.sha256((out/'settings.json').read_bytes()).hexdigest()}),encoding='utf-8')
+start=time.perf_counter()
+with h5py.File(paths['data'],'r') as f:
+ order=np.argsort(ids);raw=f['data'][:,ids[order]-1,2][:,np.argsort(order)].astype(float)
+ dates=pd.to_datetime(f['idx'][:].astype(str))
+scale=raw[:672].mean(0);z=raw/scale
+assert np.isfinite(z).all() and (scale>0).all()
+def features(j,times):
+ last=(times//24)*24-1;c=dates[times]
+ return np.c_[z[last,j],times-last,z[times-24,j],z[times-168,j],z[times][:,probe_indices],
+              np.sin(2*np.pi*c.hour/24),np.cos(2*np.pi*c.hour/24),
+              np.sin(2*np.pi*c.dayofweek/7),np.cos(2*np.pi*c.dayofweek/7)]
+names=['last_report','day_lag','week_lag','anchored_day_lag','Ridge','HGB','TabICL']
+pred={name:np.full((4,64),np.nan) for name in names}
+actual=z[qt][:,target_indices].T
+calls=[];simple_seconds=0.;rss=[]
+def persist():
+ (out/'calls.json').write_text(json.dumps(calls,indent=2,allow_nan=False),encoding='utf-8')
+ np.savez_compressed(out/'predictions_partial.npz',**pred,actual=actual,query_times=qt,cell_ids=ids[target_indices])
+def check():
+ rss.append(psutil.Process().memory_info().rss)
+ assert time.perf_counter()-start<180 and max(rss)<8*1024**3, 'Stage resource cap reached'
+ assert sum(v.get('fit_seconds',0)+v.get('predict_seconds',0) for v in calls)<120, 'Tab resource cap'
+ assert simple_seconds<30, 'Simple resource cap'
+try:
+ for row,j in enumerate(target_indices):
+  check();cx=features(j,ct);qx=features(j,qt);cy=z[ct,j];last=(qt//24)*24-1
+  assert cx.shape==(256,12) and qx.shape==(64,12)
+  pred['last_report'][row]=z[last,j];pred['day_lag'][row]=z[qt-24,j];pred['week_lag'][row]=z[qt-168,j]
+  pred['anchored_day_lag'][row]=z[last,j]+z[qt-24,j]-z[last-24,j]
+  tick=time.perf_counter()
+  for name,m in [('Ridge',make_pipeline(StandardScaler(),Ridge(alpha=1))),
+      ('HGB',HistGradientBoostingRegressor(loss='absolute_error',max_iter=100,max_leaf_nodes=15,min_samples_leaf=20,l2_regularization=1,early_stopping=False,random_state=20260925))]:
+   m.fit(cx,cy);pred[name][row]=m.predict(qx)
+  simple_seconds+=time.perf_counter()-tick
+  model=TabICLRegressor(n_estimators=1,batch_size=1,model_path=str(paths['checkpoint']),allow_auto_download=False,
+          device='cpu',use_amp=False,use_fa3=False,offload_mode=False,random_state=20260925,n_jobs=1)
+  call={'cell_id':int(ids[j]),'context_rows':256,'query_rows':64,'features':12,'ensemble':1,'status':'started'}
+  calls.append(call);persist()
+  tick=time.perf_counter();model.fit(cx,cy);mid=time.perf_counter()
+  pred['TabICL'][row]=model.predict(qx,output_type='median');end=time.perf_counter()
+  call.update(fit_seconds=mid-tick,predict_seconds=end-mid,status='complete')
+  for name in names:pred[name][row]=np.maximum(0,pred[name][row])
+  assert all(np.isfinite(pred[name][row]).all() for name in names)
+  persist();print(json.dumps({'cell':int(ids[j]),'mae':{name:float(np.abs(v[row]-actual[row]).mean()) for name,v in pred.items()},'call':call}),flush=True)
+  del model;gc.collect();check()
+ report={}
+ for name,p in pred.items():
+  e=np.abs(p-actual);blocks=e.reshape(4,4,16).mean(2)
+  report[name]={'MAE':float(e.mean()),'MAE_by_cell':e.mean(1).tolist(),'MAE_by_block':blocks.mean(0).tolist(),
+    'MAE_by_cell_block':blocks.tolist(),'MAE_by_half':e.reshape(4,2,32).mean((0,2)).tolist(),
+    'raw_activity_MAE':float((e*scale[target_indices,None]).mean())}
+ strong=[v for v in names if v!='TabICL'];tab=report['TabICL']
+ paired={name:{'change':tab['MAE']-report[name]['MAE'],
+                'cell_changes':(np.array(tab['MAE_by_cell'])-report[name]['MAE_by_cell']).tolist(),
+                'half_changes':(np.array(tab['MAE_by_half'])-report[name]['MAE_by_half']).tolist()} for name in strong}
+ best_learn=np.minimum(report['Ridge']['MAE_by_cell'],report['HGB']['MAE_by_cell'])
+ gate={'overall_better_than_all_simple':all(tab['MAE']<report[name]['MAE'] for name in strong),
+       'both_halves_better_than_all_simple':all(all(np.array(tab['MAE_by_half'])<report[name]['MAE_by_half']) for name in strong),
+       'cells_better_than_better_simple_learner':int(np.sum(np.array(tab['MAE_by_cell'])<best_learn))}
+ gate['advance_to_expansion']=gate['overall_better_than_all_simple'] and gate['both_halves_better_than_all_simple'] and gate['cells_better_than_better_simple_learner']>=3
+ tab_seconds=sum(v['fit_seconds']+v['predict_seconds'] for v in calls)
+ stage=time.perf_counter()-start
+ result={'settings':settings,'results':report,'paired_changes':paired,'screening':gate,
+   'cost':{'TabICL_contexts':len(calls),'TabICL_query_rows':sum(v['query_rows'] for v in calls),
+    'TabICL_seconds':tab_seconds,'simple_fit_seconds':simple_seconds,'cheap_numeric_seconds_including_simple':stage-tab_seconds,
+    'stage_seconds':stage,'observed_rss_bytes_max':max(rss),'rss_sampling':'between calls; not continuous peak',
+    'RCTL_fits':0,'RCTL_forward_calls':0},
+   'clustering_validated':False,'RCTL_validated':False,'independent_test':False}
+ (out/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+ np.savez_compressed(out/'predictions.npz',**pred,actual=actual,query_times=qt,context_times=ct,cell_ids=ids[target_indices],scales=scale[target_indices])
+ assert all(hashlib.sha256(p.read_bytes()).hexdigest()==hashes[k] for k,p in paths.items())
+ (out/'run_finished.json').write_text(json.dumps({'hashes_unchanged':True,'cost':result['cost'],'screening':gate},indent=2),encoding='utf-8')
+ print(json.dumps({'screening':gate,'cost':result['cost'],'MAE':{k:v['MAE'] for k,v in report.items()}}),flush=True)
+except BaseException as exc:
+ (out/'run_stopped.json').write_text(json.dumps({'error':repr(exc),'seconds':time.perf_counter()-start,'calls':calls,'simple_seconds':simple_seconds},indent=2),encoding='utf-8')
+ raise
