@@ -146,6 +146,11 @@ jobs:
           --manifest docs/research/evidence/0036-0038-finite-information/manifest.json
           --output .research-archive/ci-information-claims.json
 
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_sample_reuse_history.py
+          --manifest docs/research/evidence/0039-0040-sample-reuse/manifest.json
+          --output .research-archive/ci-sample-reuse.json
+
   deploy:
     name: deploy-pages
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

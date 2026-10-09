@@ -1,5 +1,7 @@
 # 자료 목록과 출처 매핑
 
+[history-024 목록](history-024-sources.jsonl)은 39–40의 새 원문 5개(19,293 bytes), 일차자료 metadata 8개, 해시 전용 4개를 연결한다. [읽은 범위](../sources/history-024.md)는 메모·코드 3개와 작은 JSON 2개 전체, 세 논문 지정 텍스트 22쪽/시각 9쪽, 설치 코드 선택 구간이다. 원문의 68G 비용과 pinned 구현의 최대 289G 정정을 구별한다.
+
 [history-023 목록](history-023-sources.jsonl)은36–38의 새 원문10개·기존 원장1개·지정 일차자료 metadata11개·해시 전용4개를 연결한다. [실제 열람 범위](../sources/history-023.md)는 메모/코드5개·작은 JSON5개 전체와 세 논문의 지정45쪽/시각16쪽이다. 전체 논문 완료로 세지 않으며 원문의 fixed-k 표현을 일차문헌 범위로 좁힌 정정을 보존한다.
 
 [inventory.jsonl.gz](inventory.jsonl.gz)는 2026년 10월 8일 조사한 48,149개 메타데이터 항목의 UTF-8 JSONL을 gzip으로 압축한 파일이다. 원문 내용은 포함하지 않는다. [집계와 파일 해시](scope-summary.json), [조사 방법과 한계](../verification/inventory-2026-10-08.md)를 함께 읽는다.

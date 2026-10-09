@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "cases": [
+    {
+      "case": "target_mass",
+      "rejected_at": "fixed_original_integral_inputs"
+    },
+    {
+      "case": "wrong_target_MAE",
+      "rejected_at": "target_mae"
+    },
+    {
+      "case": "wrong_joint_weights",
+      "rejected_at": "joint_weights"
+    },
+    {
+      "case": "conditional_ratio",
+      "rejected_at": "equal_conditionals_ratio"
+    },
+    {
+      "case": "geometric_renormalization",
+      "rejected_at": "gaussian_mass:a=1"
+    },
+    {
+      "case": "Boolean_a",
+      "rejected_at": "gaussian_a_integer_values"
+    },
+    {
+      "case": "68_as_corrected",
+      "rejected_at": "corrected_column_visits"
+    },
+    {
+      "case": "Boolean_cost",
+      "rejected_at": "dimensions"
+    },
+    {
+      "case": "measured_time_claim",
+      "rejected_at": "cost_not_measured_runtime"
+    },
+    {
+      "case": "model_calls_identity_updated",
+      "rejected_at": "historical_model_calls"
+    },
+    {
+      "case": "code_binding",
+      "rejected_at": "SRC-0047572:code_metadata_binding"
+    },
+    {
+      "case": "duplicate_JSON_key",
+      "rejected_at": "duplicate JSON key: historical_model_calls"
+    }
+  ],
+  "count": 12,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "scope": "Isolated copies only; numerical/semantic rejections, including model-call change with matching updated identity. Originals untouched."
+}
