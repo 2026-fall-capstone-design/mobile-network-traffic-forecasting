@@ -1,0 +1,12 @@
+# 53. 관측 비용을 줄이는 clustering의 선행 방법 확인
+
+2026-09-26. 51–52에서 확인한 자료 범위를 유지한다. 현재까지 새 추천안은 확정하지 않았다.
+
+확인할 질문은 하나다. 일부 cell의 관측으로 다른 cell의 현재 이력을 복원하는 판단을 clustering에 반영할 때, 이미 알려진 sensor selection·imputation과 달라지는 결정이 있는가? 예측모델의 입력 선택과 동일 모델의 sample 공유를 혼동하지 않는다.
+
+- 가장 가까운 자료: IMDEA Moghadas 학위논문(2026) 5장, Zoom2Net(SIGCOMM 2024), Spatially Regularized Streaming Sensor Selection(AAAI 2016), NETNOMOS(NSDI 2026), Ciena의 telemetry 감소 기술 논문(2021).
+- 목적함수, 실제 이용 가능한 관측, 선택되는 단위, 재학습·복원 비용, 온라인 사용 가능 여부, 미래 정보를 쓰는 복원인지 확인한다.
+- TabICL 공식 imputation 기능을 그대로 사용하는 것을 신규성으로 세지 않는다. 회귀 conditional을 얻는 기능과 적은 입력으로 최종 예측을 유지한다는 주장을 분리한다.
+- 새 자료는 공개 원문 PDF당20MB, HTML/코드당5MB 이내다. 접근 통제를 우회하지 않는다. 외부 코드는 실행하지 않는다.
+- 이번 계획의 모델 fit/forward와 수치 실험은 모두0. 새로운 진단이 필요하면 별도 계획을 먼저 저장한다. RCTL 추가fit0, Tab 잔여35 contexts/24,288 query rows를 유지한다.
+- 단순히 다른 예측기의 오차로 RCTL 성능을 대변하는 후보는 그대로 채택하지 않는다. 실제로 바뀌는 입력, 비용 목표, 가장 강한 단순 대안, 실패 조건이 명확해진 경우에만 작은 확인으로 진행한다.

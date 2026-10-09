@@ -95,3 +95,5 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 H033은 [15개 출처 행](history-033-sources.jsonl)과 [명세](../evidence/0051-0055-network-forecasting/manifest.json)에51·55의ITU/Cellular범위를 연결합니다.6기존사본 재사용·9외부metadata·5현재연결그림을 구분하고,28본문쪽/22시각쪽·인쇄표산술 검수는 원모델 재현과 별개로 기록합니다. 새원본복사0개이며전체51/55완료가아닙니다.
 
 H034는 [6개 원본 행](history-034-sources.jsonl)과 [명세](../evidence/0051-frontiers-beam-audit/manifest.json)에 Frontiers 범위를 연결합니다. 기존사본4개·원본외부metadata2개·원inventory밖의현재PDFmetadata1개, 새원문복사0개입니다. [읽은 범위](../sources/history-034.md)의805줄/MathML118항목·PDF17본문쪽/10시각쪽은독립재현과구분하며,51/53/55전체는미완료입니다.
+
+H035는 [12개 원본 행](history-035-sources.jsonl)과 [명세](../evidence/0053-moghadas-thesis/manifest.json)에 학위논문 범위를 연결합니다. 새 원문 사본5개·기존 사본1개·외부metadata6개입니다. [읽은 범위](../sources/history-035.md)는PDF131본문쪽/62시각쪽·과거미리보기3장과TXT131쪽계보 대조입니다. 파생본의 독립 내용 집계와 전체53/55 완료를 주장하지 않습니다.

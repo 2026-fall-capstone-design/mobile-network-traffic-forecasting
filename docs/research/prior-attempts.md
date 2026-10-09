@@ -230,3 +230,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## Zero 판별과 공동 학습을 새 역할로 제안하기 전에 — 51 Frontiers
 
 검색어: sparse beam, zero inflation, GRU-MTL, multi-task learning, ensemble, 입력 길이, week5, 56%, regression head. [기록](records/0051-frontiers-beam-audit.md)에서0/nonzero분류+회귀의 기존 구조와 조건별 반례를 확인합니다. 긴 입력의 보편적 우위·MAE에서분산개선·주최측week6/11직접순위는 지지되지 않습니다. 새 제안에는 실제 추가정보·학습행동·입력가용성·같은test·계산비용·기간/beam별손해를 명시하고 최종RCTL효용을 별도로 확인해야 합니다.55의event문헌은 본문미검토 상태로 남깁니다.
+
+## 관측 입력을 줄이는 clustering을 제안하기 전에 — 53·55 Moghadas
+
+검색어: 부분 관측, probe selection, sensor selection, LRP, DTW, softDTW, centroid, input redundancy,17%,81%,10415.90,DeExp,SEA. [학위논문 기록](records/0053-moghadas-thesis.md)은 시간 군집→일부 입력 선택→전체 미래 출력의 기존 구조와 작은M의 손해·perBS 정확도·최초 비용을 보존합니다. 단변량 RCTL 표본 공유나 현재 이력 복원과 목적을 구분하고, 새 제안에는 관측/선택/출력의 차이·시간 분리·초기/반복 비용·최종 RCTL 효용을 적습니다. [54의 제한된 복원 진단](records/0052-0054-partial-observation.md)도 함께 확인해야 합니다.

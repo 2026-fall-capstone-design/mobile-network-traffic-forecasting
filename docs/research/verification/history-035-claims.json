@@ -1,0 +1,281 @@
+{
+  "batch_id": "history-035",
+  "claims": [
+    {
+      "claim_id": "H035-C01",
+      "claim": "53은 관측 선택·복원의 새로운 결정을 묻고55는 학위논문의17%입력과최초비용을 인용한다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3/5/6",
+      "verification_method": "당시계획과판단의해당문장재독",
+      "limit": "54결과재실행/독립실험재계상/현재실행허가아님"
+    },
+    {
+      "claim_id": "H035-C02",
+      "claim": "PDFJuly2026·항목발행7월23일·공개가능9월18일을 구분하고CC BY-NC-ND를 보존한다",
+      "source_location": "SRC-0063287 p1/4; SRC-0063289 citation/DCTERMS metadata",
+      "verification_method": "표지·license시각자료와저장metadata대조",
+      "limit": "현재원격버전동일성/배포조건변경을추정하지않음"
+    },
+    {
+      "claim_id": "H035-C03",
+      "claim": "TXT131쪽은경계공백제외추출문과같고과거그림3장은같은페이지내용의다른해상도다",
+      "source_location": "SRC-0063288 PAGE1–131; SRC-0064363 전체; SRC-0064366/67/68 p109/113/115",
+      "verification_method": "페이지별정확문자비교·원이미지시각열람·로그해시검사",
+      "limit": "PDF/TXT/PNG를바이트동일중복이나독립실험으로세지않음"
+    },
+    {
+      "claim_id": "H035-C04",
+      "claim": "학위논문에통합된기존논문과122개서지항목은새독립재현수가아니다",
+      "source_location": "SRC-0063287 p7/122–131",
+      "verification_method": "구성논문목록과전체서지읽기",
+      "limit": "122개원논문검토/독립재현확인아님"
+    },
+    {
+      "claim_id": "H035-C05",
+      "claim": "물리BS·grid cell·관측장비·activity와bytes를구분한다",
+      "source_location": "SRC-0063287 p69–71/92/110–111",
+      "verification_method": "dataset본문과Fig5.3·용어설명대조",
+      "limit": "Ch5실제membership미확인;Milan2014표기원자료버전추가대조필요"
+    },
+    {
+      "claim_id": "H035-C06",
+      "claim": "K8종·M6종과완전제곱수cap·20epochs·LSTM50units를기록한다",
+      "source_location": "SRC-0063287 p108/111",
+      "verification_method": "인쇄설정재독·수치anchor검사",
+      "limit": "모든cluster가최대M을쓰거나모든조합이실행됐다고추정하지않음"
+    },
+    {
+      "claim_id": "H035-C07",
+      "claim": "과거3관측·10분·80:20·test1780/400·1092모델은저자보고다",
+      "source_location": "SRC-0063287 p106/112",
+      "verification_method": "본문·인쇄수치·test기간산술대조",
+      "limit": "분할순서/seed/정규화/개별1092실행원장미확인"
+    },
+    {
+      "claim_id": "H035-C08",
+      "claim": "DTW/softDTW시간군집의일부입력으로군집전체다음값을출력한다",
+      "source_location": "SRC-0063287 p106–110 식5.1–4/Fig5.1–3",
+      "verification_method": "수식·구조·출력caption대조",
+      "limit": "RCTL단변량samplepooling이나현재결측복원과같은과제아님"
+    },
+    {
+      "claim_id": "H035-C09",
+      "claim": "Centroid선택은대표시계열과가까운입력을고른다",
+      "source_location": "SRC-0063287 p108–109",
+      "verification_method": "temporal centroid본문재독",
+      "limit": "지리중심과가까운BS선택으로바꾸지않음"
+    },
+    {
+      "claim_id": "H035-C10",
+      "claim": "LRP예비모델전체입력설명과Centroid위동작비용설명사이에공백이남는다",
+      "source_location": "SRC-0063287 p109 Fig5.1/caption; p115 비용문단",
+      "verification_method": "두쪽본문과원미리보기대조",
+      "limit": "어느입력이실제예비모델에사용됐는지코드없이확정불가"
+    },
+    {
+      "claim_id": "H035-C11",
+      "claim": "TotalMAE는cell별시간MAE의합이다",
+      "source_location": "SRC-0063287 p112 §5.4.4",
+      "verification_method": "지표정의와Fig5.4축대조",
+      "limit": "cell평균/전력/byte비용으로전환하지않음"
+    },
+    {
+      "claim_id": "H035-C12",
+      "claim": "LRP의군집내우위와perBS최저·작은M의Global열세를함께남긴다",
+      "source_location": "SRC-0063287 p112–114 Fig5.4/5.5",
+      "verification_method": "6패널과색별baseline시각대조",
+      "limit": "그래프정확값/유의성/모든조건우위미검증"
+    },
+    {
+      "claim_id": "H035-C13",
+      "claim": "34%는M4에서Centroid대비저자주장이며모든K의재계산결과가아니다",
+      "source_location": "SRC-0063287 p112 Fig5.4설명",
+      "verification_method": "인쇄주장과비교군·M조건대조",
+      "limit": "원결과없이막대정밀수치나보편개선율생성안함"
+    },
+    {
+      "claim_id": "H035-C14",
+      "claim": "Fig5.5는한예이며p113M2와p111최소M4가맞지않는다",
+      "source_location": "SRC-0063287 p111/113/114",
+      "verification_method": "M목록·예시문장·peak/plateau시각대조",
+      "limit": "미관측출력가능성을전체peak보존으로확대하지않음"
+    },
+    {
+      "claim_id": "H035-C15",
+      "claim": "17%유지·81%감소·조건부72/441은같은설정으로확정되지않는다",
+      "source_location": "SRC-0063287 p110/114–115/118; SRC-0063289 abstract",
+      "verification_method": "상대MAE축·영역·보수산술·소개페이지표현대조",
+      "limit": "81%전체계산비용/전력감소미측정;3400분모대체금지"
+    },
+    {
+      "claim_id": "H035-C16",
+      "claim": "p115의7개비용을분리하고최초클러스터링+학습10508.29초를계산한다",
+      "source_location": "SRC-0063287 p115; SRC-0064368 전체",
+      "verification_method": "인쇄초단위전사·Decimal산술·원그림대조",
+      "limit": "새측정/모든비용을포함한운영추정아님"
+    },
+    {
+      "claim_id": "H035-C17",
+      "claim": "Centroid는Global보다학습/추론시간이크며LRP두배는정확한측정행이아니다",
+      "source_location": "SRC-0063287 p115",
+      "verification_method": "비용7값비교·roughly doubling문장대조",
+      "limit": "query/batch범위·분산·재군집주기·미계측단계미확인"
+    },
+    {
+      "claim_id": "H035-C18",
+      "claim": "현재offline군집과MoE/실시간재할당등미래과제를구분한다",
+      "source_location": "SRC-0063287 p115–116/119–121",
+      "verification_method": "결론/futurework본문재독",
+      "limit": "제안기능을구현/배포완료로세지않음"
+    },
+    {
+      "claim_id": "H035-C19",
+      "claim": "p31개요의입력비율·centroid supervision·perBS3DCNN을5장실험과합치지않는다",
+      "source_location": "SRC-0063287 p31/108–115",
+      "verification_method": "도입부와실제설정·출력·기준대조",
+      "limit": "버전/설정차이를임의해소하지않음"
+    },
+    {
+      "claim_id": "H035-C20",
+      "claim": "다변량미래출력·현재이력복원·단변량학습표본공유는별도효용검증이필요하다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3/5; SRC-0063287 p106–109",
+      "verification_method": "문제별입력·출력·선택행동비교",
+      "limit": "TabICL점수교체만으로신규성/최종RCTL성능확정안함"
+    },
+    {
+      "claim_id": "H035-C21",
+      "claim": "55보류는54의제한된진단도근거이며관측절감문제전체의기각은아니다",
+      "source_location": "SRC-0021824 §4–6",
+      "verification_method": "H031보존원문조건과이번문헌검토범위대조",
+      "limit": "54새재현없음;TabICL전체순위로확대안함"
+    },
+    {
+      "claim_id": "H035-C22",
+      "claim": "Table3.1/3.2의16통계값은낮은rank상관과KL을기록한다",
+      "source_location": "SRC-0063287 p59 Table3.1/3.2",
+      "verification_method": "표시각확인·정확값전사·순서검사",
+      "limit": "통계적독립/최종예측개선의증명이아님"
+    },
+    {
+      "claim_id": "H035-C23",
+      "claim": "DEEXP relevance압축과5장M입력선택은다르며마지막시점과가중시간결합도구분한다",
+      "source_location": "SRC-0063287 p62–65/76 식3.14/109",
+      "verification_method": "두시간결합설명과LRP재학습구조대조",
+      "limit": "sigma0.3가중식을단순평균구현으로확정안함"
+    },
+    {
+      "claim_id": "H035-C24",
+      "claim": "ModifiedGradCAM과LRP식3.6표기를실제저자코드와동일시하지않는다",
+      "source_location": "SRC-0063287 p65–68",
+      "verification_method": "첫conv·회귀gradient·deconvolution과LRP합/첨자시각검토",
+      "limit": "식정확성독립증명/자동정정/원코드확인아님"
+    },
+    {
+      "claim_id": "H035-C25",
+      "claim": "3장1764모델·150epochs·4시간조건을5장비용과분리한다",
+      "source_location": "SRC-0063287 p69–71/108/115",
+      "verification_method": "441×2×2산술·학습/평가하드웨어·epochs대조",
+      "limit": "장별기존논문모델의독립실행중복여부미확인"
+    },
+    {
+      "claim_id": "H035-C26",
+      "claim": "CAPalpha는entiretestset1%/3%허용으로보정했다고기술된다",
+      "source_location": "SRC-0063287 p71",
+      "verification_method": "보정문구와SLA조건재독",
+      "limit": "보정/test분리미확인;실제누출이나누출부재확정안함"
+    },
+    {
+      "claim_id": "H035-C27",
+      "claim": "나열조건곱4096대보고4168,확장260대결론140차이를보존한다",
+      "source_location": "SRC-0063287 p72/77/89",
+      "verification_method": "인쇄구성수·인자목록·산술대조",
+      "limit": "존재미확인추가72실험으로차이를채우지않음"
+    },
+    {
+      "claim_id": "H035-C28",
+      "claim": "250%등큰피해주장은선택된상위10%예측기·주입량분모와함께읽는다",
+      "source_location": "SRC-0063287 p56/69/71/77/84–85",
+      "verification_method": "초록/설명·metric정의·선택조건대조",
+      "limit": "전체평균·운영현장피해수치로확대안함"
+    },
+    {
+      "claim_id": "H035-C29",
+      "claim": "목적별순위반례와기간350대Milan축1000을함께기록한다",
+      "source_location": "SRC-0063287 p77–79 Fig3.9–12",
+      "verification_method": "SLA/OVP/trafficMAE와본문always문구·축비교",
+      "limit": "공통최강전략확정/정확graphdigitization아님"
+    },
+    {
+      "claim_id": "H035-C30",
+      "claim": "Fig3.19는90thpercentile이고일부열대응이불명확하다",
+      "source_location": "SRC-0063287 p80–85 Fig3.13–19",
+      "verification_method": "caption·축·실제plot대조",
+      "limit": "평균변환/한예의위치일치일반화/미표기열추정금지"
+    },
+    {
+      "claim_id": "H035-C31",
+      "claim": "Brute는oracle이고전주입력치환은한완화예다",
+      "source_location": "SRC-0063287 p71–72/86–89 Fig3.20",
+      "verification_method": "oracle제약·25배주장·완화curve시각대조",
+      "limit": "온라인공격/모든방어배포완료/실제target일치주장아님"
+    },
+    {
+      "claim_id": "H035-C32",
+      "claim": "4장의자기포함Moore이웃·H3·가중치·discount와정보접근차이를남긴다",
+      "source_location": "SRC-0063287 p92–98 식4.1–13/Alg1–2",
+      "verification_method": "설정·이웃개수·알고리즘실제시각자료대조",
+      "limit": "movement비용이나알수없는futuretrue값을추가하지않음"
+    },
+    {
+      "claim_id": "H035-C33",
+      "claim": "quantile보정시점은미확인이고expectedmax는미래실측/최적경로증명이아니다",
+      "source_location": "SRC-0063287 p94–98/102",
+      "verification_method": "경험분포·lookahead근사·strictly문장대조",
+      "limit": "엄격증가에는분포조건필요;알고리즘독립성능재현아님"
+    },
+    {
+      "claim_id": "H035-C34",
+      "claim": "실제target분모·음수cost·log축의해석공백이있다",
+      "source_location": "SRC-0063287 p95 식4.7; p99–101 Fig4.4–7",
+      "verification_method": "수식·음수본문·로그축시각대조",
+      "limit": "0분모규칙미확인;없는막대를0/무해로판정안함"
+    },
+    {
+      "claim_id": "H035-C35",
+      "claim": "78/75/22/10%는epsilon0.1의GMCA대비과제별비율이다",
+      "source_location": "SRC-0063287 p99",
+      "verification_method": "Milan/EUMA·CAP/TRA·기준전략대조",
+      "limit": "이동무제약oracle대비로변환안함"
+    },
+    {
+      "claim_id": "H035-C36",
+      "claim": "Fig4.7EUMAtraffic에서CostGuided가GMCA보다낮은강도가있다",
+      "source_location": "SRC-0063287 p99/101–103 Fig4.7",
+      "verification_method": "epsilon0.05/0.1색상막대순서와항상우세문구대조",
+      "limit": "정성반례;정확bar값추출아님"
+    },
+    {
+      "claim_id": "H035-C37",
+      "claim": "Milanbrutecost의1367760/220424는약6.21배다",
+      "source_location": "SRC-0063287 p95/99",
+      "verification_method": "인쇄값산술·과제별cost정의대조",
+      "limit": "orderofmagnitude를10배실측으로확정하거나일반robustness순위로바꾸지않음"
+    },
+    {
+      "claim_id": "H035-C38",
+      "claim": "CienaHTTP200은PDF확보가아니며기타telemetry자료는다음범위다",
+      "source_location": "SRC-0064355 전체; SRC-0064358 전체; SRC-0064359 전체",
+      "verification_method": "취득error·당시선택열람·현재완료범위구분",
+      "limit": "메타데이터발견25개를25개논문완독으로세지않음"
+    },
+    {
+      "claim_id": "H035-C39",
+      "claim": "이번완료범위는학위논문검토이며53/55전체종합이나독립재현은아니다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3–6; SRC-0063287 p1–131",
+      "verification_method": "원본보존·실제읽기범위·주장/수치·남은범위대조",
+      "limit": "새fit/inference/원스크립트/RNG0;나머지전체Goal계속"
+    }
+  ],
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "whole_associated_packet_reviewed": false
+}
