@@ -1,0 +1,39 @@
+from pathlib import Path
+from fractions import Fraction as F
+import time,json,hashlib
+base=Path(__file__).resolve().parent;out=base/'results/history_logic_cost_61';out.mkdir(exist_ok=True)
+assert not (out/'run_started.json').exists(),'Already started; inspect saved result.'
+paths={'plan':base/'61_history_logic_and_cost_plan.md','code':Path(__file__),'rctl_structure':base/'rctl_torch.py'}
+hashes={k:hashlib.sha256(p.read_bytes()).hexdigest() for k,p in paths.items()}
+(out/'run_started.json').write_text(json.dumps({'unix':time.time(),'sha256':hashes},indent=2),encoding='utf-8')
+start=time.perf_counter()
+e=F(1,20)
+def bayes_mae(p):
+ assert F(1,2)<=p<=1
+ return 1-p+e*(2*p-1)/(2*p)
+pooled1=bayes_mae(F(1,2));pooled2=bayes_mae(F(9,10)**2+F(1,10)**2);known=bayes_mae(F(9,10))
+assert known<pooled2<pooled1
+channels=9;cs=[16,32,64,64,32,16];ins=[channels]+cs[:-1]
+blockmac=sum(5*a*c+11*c*c for a,c in zip(ins,cs))
+projectionmac=sum(c*c for c in cs[:3]);rootmac=channels*16
+mac_per_step=blockmac+projectionmac+rootmac+16
+params_without_dense=sum(5*a*c+11*c*c+16*c for a,c in zip(ins,cs))+sum(c*c+c for c in cs[:3])+channels*16+16
+metrics={str(L):{'matrix_MAC_per_sample':L*mac_per_step,'parameters':params_without_dense+16*L+1} for L in [2,8]}
+assert metrics['8']['parameters']==174433 and metrics['2']['parameters']==174337
+assert F(metrics['2']['matrix_MAC_per_sample'],metrics['8']['matrix_MAC_per_sample'])==F(1,4)
+duration=time.perf_counter()-start
+assert duration<5
+def val(v):return {'fraction':str(v),'decimal':float(v)}
+result={'sha256':hashes,'toy':{'observation_noise_half_width':str(e),'known_cell_any_length':val(known),
+ 'unknown_cell_length1':val(pooled1),'unknown_cell_length2':val(pooled2),
+ 'history_gain_pooled_minus_known':val(pooled1-pooled2),
+ 'interpretation':'Known process-identification effect, not novelty or empirical traffic evidence'},
+ 'rctl_arithmetic':{'channels':9,'metrics':metrics,'MAC_ratio_L2_L8':val(F(1,4)),
+ 'parameter_reduction_ratio':val(F(96,174433)),
+ 'exclusions':['activations','BatchNorm','bias adds','memory movement','training/backprop','actual runtime'],
+ 'RCTL_instantiations':0,'RCTL_forward_calls':0,'RCTL_fits':0},
+ 'cost':{'cheap_numeric_seconds':duration,'TabICL_contexts':0,'TabICL_query_rows':0,'RCTL_fits':0}}
+(out/'result.json').write_text(json.dumps(result,indent=2,allow_nan=False),encoding='utf-8')
+assert all(hashlib.sha256(p.read_bytes()).hexdigest()==hashes[k] for k,p in paths.items())
+(out/'run_finished.json').write_text(json.dumps({'hashes_unchanged':True,'seconds':duration}),encoding='utf-8')
+print(json.dumps(result,indent=2))

@@ -1,0 +1,85 @@
+{
+  "success": true,
+  "control_cases": 1,
+  "negative_cases": 10,
+  "scope": "임시 사본의 값과 해시를 함께 바꾼 뒤 분수·소수·지표·원장·완료·모델 호출·가정의 불일치를 검출했다. 원본과 보존 사본은 변경하지 않았다.",
+  "results": [
+    {
+      "case": "control",
+      "success": true,
+      "detected_errors": []
+    },
+    {
+      "case": "known_fraction",
+      "success": false,
+      "detected_errors": [
+        "known_cell_any_length:fraction"
+      ]
+    },
+    {
+      "case": "pooled_decimal",
+      "success": false,
+      "detected_errors": [
+        "unknown_cell_length2:decimal"
+      ]
+    },
+    {
+      "case": "gain_label",
+      "success": false,
+      "detected_errors": [
+        "history_gain_pooled_minus_known:fraction",
+        "history_gain_pooled_minus_known:decimal"
+      ]
+    },
+    {
+      "case": "MAC",
+      "success": false,
+      "detected_errors": [
+        "MAC:2"
+      ]
+    },
+    {
+      "case": "parameter_total",
+      "success": false,
+      "detected_errors": [
+        "parameters:8"
+      ]
+    },
+    {
+      "case": "ratio",
+      "success": false,
+      "detected_errors": [
+        "MAC_ratio:decimal"
+      ]
+    },
+    {
+      "case": "ledger",
+      "success": false,
+      "detected_errors": [
+        "whole_ledger_transition",
+        "unchanged_model_budgets"
+      ]
+    },
+    {
+      "case": "completion",
+      "success": false,
+      "detected_errors": [
+        "duration_and_finished"
+      ]
+    },
+    {
+      "case": "model_count",
+      "success": false,
+      "detected_errors": [
+        "historical_no_model_calls"
+      ]
+    },
+    {
+      "case": "noise",
+      "success": false,
+      "detected_errors": [
+        "noise_half_width"
+      ]
+    }
+  ]
+}

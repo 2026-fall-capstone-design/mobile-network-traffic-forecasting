@@ -166,6 +166,11 @@ jobs:
           --manifest docs/research/evidence/0059-0062-history-grouping/manifest.json
           --output .research-archive/ci-history-grouping.json
 
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_history_logic_cost.py
+          --manifest docs/research/evidence/0061-history-logic-cost/manifest.json
+          --output .research-archive/ci-history-logic-cost.json
+
   deploy:
     name: deploy-pages
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
