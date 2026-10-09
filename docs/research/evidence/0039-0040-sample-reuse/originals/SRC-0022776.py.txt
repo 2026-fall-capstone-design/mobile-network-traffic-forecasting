@@ -1,0 +1,49 @@
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import urllib.request
+from pypdf import PdfReader
+
+BASE = Path(__file__).resolve().parent
+OUT = BASE / 'sources' / 'sample_reuse_39'
+OUT.mkdir(parents=True, exist_ok=True)
+with (OUT / 'run_started.json').open('x', encoding='utf-8') as f:
+    json.dump({'utc': datetime.now(timezone.utc).isoformat(), 'model_calls': 0}, f)
+items = [
+ ('bickel2008.pdf', 'https://icml.cc/Conferences/2008/papers/520.pdf'),
+ ('kumagai2021.pdf', 'https://proceedings.neurips.cc/paper_files/paper/2021/file/ff49cc40a8890e6a60f40ff3026d2730-Paper.pdf'),
+ ('2510.16986v2.pdf', 'https://arxiv.org/pdf/2510.16986v2'),
+ ('2510.16986v2.html', 'https://arxiv.org/html/2510.16986v2'),
+ ('2510.16986_abs.html', 'https://arxiv.org/abs/2510.16986'),
+]
+def fetch(item):
+    name, url = item
+    record = {'name': name, 'url': url}
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (research source verification)'})
+        with urllib.request.urlopen(req, timeout=30) as response:
+            data = response.read(10 * 1024 * 1024 + 1)
+            record['final_url'] = response.url
+            record['http_status'] = response.status
+        if len(data) > 10 * 1024 * 1024:
+            raise ValueError('size cap exceeded')
+        if name.endswith('.pdf') and not data.startswith(b'%PDF-'):
+            raise ValueError('invalid PDF signature')
+        with (OUT / name).open('xb') as f:
+            f.write(data)
+        record.update(bytes=len(data), sha256=hashlib.sha256(data).hexdigest(), status='saved')
+        if name.endswith('.pdf'):
+            reader = PdfReader(OUT / name)
+            record['pages'] = len(reader.pages)
+            record['first_page_prefix'] = reader.pages[0].extract_text().replace(chr(0), '')[:400]
+            txt = '\n\n'.join(f'PAGE {i+1}\n{p.extract_text().replace(chr(0), "")}' for i, p in enumerate(reader.pages))
+            (OUT / name.replace('.pdf', '.txt')).write_text(txt, encoding='utf-8')
+    except Exception as exc:
+        record.update(status='failed', error=f'{type(exc).__name__}: {exc}')
+    return record
+with ThreadPoolExecutor(max_workers=3) as pool:
+    results = list(pool.map(fetch, items))
+(OUT / 'manifest.json').write_text(json.dumps(results, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+print(json.dumps(results, ensure_ascii=False, indent=2, allow_nan=False))

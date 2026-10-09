@@ -136,6 +136,18 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 | XOR, conditional TC, synergy, capacity/redundancy, joint-predictive gap | [36–38 네 유한 사례](records/0036-0038-finite-information.md) | 주변 정보 합0/joint1, TC0→1, 중복 label 실제0/축약−1. S4.38 포화 조건과 유효한 전체식을 먼저 확인 |
 | pooling uncertainty, heterogeneity, half-jackknife, empirical Bayes | [선형 panel 비교](records/0036-0038-finite-information.md) | 관계 차이 Δ와 T⁻¹h를 함께 고려. 선형성·외생성·의존 조건·MSFE를 MAE/RCTL에 그대로 옮기지 않음 |
 | spectrum/context value, fixed memory, oracle, analog gain, Δnl | [context 정보집합](records/0036-0038-finite-information.md) | 같은 정보의 최적 선형 기준과 실제 학습 오차 구별. 60/40 AR·k4 추정, population 한계와 finite 값 구별 |
-| 담당 cell 소속과 학습 sample 범위 분리, pretraining/reweighting | [당시 다음 질문](records/0036-0038-finite-information.md) | 공유 자체의 신규성 주장 금지. Tab의 추가 정보·단순 기준 대비 차이·기존33–35와 바뀐 조건을 기록. 39이후 연결 미완료 |
+| 담당 cell 소속과 학습 sample 범위 분리, pretraining/reweighting | [당시 다음 질문](records/0036-0038-finite-information.md) | 공유 자체의 신규성 주장 금지. Tab의 추가 정보·단순 기준 대비 차이·기존33–35와 바뀐 조건을 기록. 39–40은 아래 자료 공유 검토로 연결; 41이후 미완료 |
 
 같은 네 수학 반례는 [모델 없는 검산](evidence/0036-0038-finite-information/README.md)으로 확인한다. 문헌 상세 방법과 성능 검증, 초록 발견과 전체 논문 검토를 구분한다.
+
+## 담당 소속과 학습 sample 공유를 분리하려는가
+
+| 문제·별칭 | 확인한 기록 | 재사용 범위·재검토 조건 |
+| --- | --- | --- |
+| importance-weighted multi-task learning, task-origin classifier, joint ratio | [39–40 문헌·항등식](records/0039-0040-sample-reuse.md) | 참 ratio는 모집단 loss를 복원하지만 유한표본 성능 보장은 아님. 단순 source 분류기 대비 Tab의 추가 정보가 필요 |
+| conditional ratio, quantile log_prob, geometric outlier score | [정확한 예·설치 코드](records/0039-0040-sample-reuse.md) | MAE .145/.525와 joint weight1.8/.2 예를 재사용. density calibration·공통 기준 측도·정규화 상수를 확인 |
+| relative DRE, support adaptation, meta-learning | [Kumagai 비교](records/0039-0040-sample-reuse.md) | alpha>0의 참 ratio 상한과 clipped 추정값 구별. support/query 역할과 실제 포함 설정, meta-training 비용 확인 |
+| positive transfer, greedy source chunk, Cantelli, lower confidence bound | [Cherkaoui v2 비교](records/0039-0040-sample-reuse.md) | 선형·noise·bias/variance 조건, alpha.01≠1% 보장, Algorithm1 gate 공백과 저자 코드 미확인 상태 보존 |
+| n_permutations, Latin square, 68G, 289G, sample-sharing cost | [정적 비용 정정](records/0039-0040-sample-reuse.md) | pinned2.2.0 D17/요청4→실제17순서·최대289열별처리. 실제 forward/time과 구분하고 donor 포함 RCTL 비용을 계산 |
+
+당시 추천안 미채택은 문헌·정보·비용 근거가 부족하다는 판단이다. 같은 자료에서 새 모델을 학습해 성능 실패를 관측한 기록이 아니다. [보존 원문과 검산](evidence/0039-0040-sample-reuse/README.md)을 재사용하고, 후속 연구에서 바뀔 질문과 조건을 명시한다.

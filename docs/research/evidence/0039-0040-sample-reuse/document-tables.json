@@ -1,0 +1,56 @@
+{
+  "scope": "Archive-derived deterministic verification targets for equations reported in source40, not a historical model execution result.",
+  "source_id": "SRC-0021511",
+  "source_sha256": "ac3c5d2c0fca96a6d8227f593a76e35df1f6259ced9ecf58a9bc724e9a1cecb7",
+  "uniform_example": {
+    "target_x1": "1/10",
+    "donor_x1": "9/10",
+    "target_mixture_share": "1/2",
+    "noise_halfwidth": "1/10",
+    "prediction": 0,
+    "conditional_ratio": 1,
+    "conditional_absolute_errors": [
+      "1/20",
+      "1"
+    ],
+    "target_mae": "29/200",
+    "mixture_mae": "21/40",
+    "joint_weights": [
+      "9/5",
+      "1/5"
+    ],
+    "joint_weighted_mae": "29/200"
+  },
+  "gaussian_example": {
+    "unit_variance": true,
+    "means": "-a,+a",
+    "geometric_mass_formula": "exp(-a*a/2)",
+    "a_values": [
+      0,
+      1,
+      2
+    ],
+    "masses": [
+      1.0,
+      0.6065306597126334,
+      0.1353352832366127
+    ]
+  },
+  "cost_correction": {
+    "dimensions": 17,
+    "requested_orders": 4,
+    "actual_latin_orders": 17,
+    "reported_column_visits": 68,
+    "corrected_column_visits": 289,
+    "units": "maximum conditional-loop visits per group",
+    "measured_runtime": false
+  },
+  "downloads": {
+    "pdf_count": 3,
+    "pdf_pages": 44,
+    "pdf_bytes": 1673675,
+    "http200_saved_rows": 5,
+    "wall_seconds": null
+  },
+  "historical_model_calls": 0
+}

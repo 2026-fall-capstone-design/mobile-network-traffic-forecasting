@@ -1,0 +1,42 @@
+{
+  "success": true,
+  "mode": "static_ast_and_manual_induction_no_original_execution",
+  "source_ids": [
+    "SRC-0047582",
+    "SRC-0047572"
+  ],
+  "source_sha256": {
+    "SRC-0047550": "7e09ac0c3ce0260dc07cef79b0a98ee63b0785efafbf415fd243fe2981499b99",
+    "SRC-0047582": "a226992e3c959e5e665b5f79dfca0e74a76f927cb7a94a83c392a78939f8285c",
+    "SRC-0047572": "2163a3bf6754127365a7aedac854d99a6f565545cc1ea7e63c68a596081b2976"
+  },
+  "selected_lines": {
+    "SRC-0047582": [
+      [
+        183,
+        228
+      ],
+      [
+        504,
+        548
+      ]
+    ],
+    "SRC-0047572": [
+      [
+        785,
+        916
+      ]
+    ]
+  },
+  "requested_orders": 4,
+  "default_method": "latin",
+  "dimensions": 17,
+  "actual_order_count": 17,
+  "maximum_column_visits": 289,
+  "reported_column_visits": 68,
+  "recurrence": "L(1)=1; removing one symbol then appending one row gives L(n)=L(n-1)+1=n; transpose/shuffle preserve square dimensions",
+  "loop_skip": "fewer than five non-NaN training targets; no constant-column skip in this outer loop",
+  "scope": "Conditional-loop visits only; not measured forwards, training runs, model calls, wall time or total RCTL cost",
+  "whole_primary_code_read": false,
+  "new_model_runs": 0
+}

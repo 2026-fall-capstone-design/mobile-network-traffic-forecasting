@@ -1,0 +1,80 @@
+# 39 검토 결과: 예측 담당 cluster와 학습 sample 공유를 분리할 수 있는가
+
+2026-09-25. 원문·설치된 TabICL 2.2.0 코드 확인이며 새 모델 실행은 없다. 이 경로의 장점은 최종 예측기와의 연결을 ‘proxy의 순위가 옮겨간다’는 가정 대신 실제 학습 목적의 관계로 설명할 수 있다는 것이다. 그러나 기본 원리는 선행연구에 있고, 회귀용 TabICLv2를 넣을 이점은 아직 확보되지 않았다. 현재 형태는 추천안으로 채택하지 않는다.
+
+## 1. 기존 안과 무엇이 달라지는가
+
+기존 안은 cell A가 cluster C에 속하면 C의 자료만으로 담당 RCTL을 학습한다. 검토한 다른 안은 예측 담당 소속은 그대로 유지하면서 외부 cluster의 실제 sample도 가중치를 주어 학습에 사용한다. RCTL의 core와 실제 관측 target은 보존하고, sample의 loss 비중만 달라진다.
+
+이 안은 cluster가 작아질 때 학습 자료까지 줄어드는 문제를 직접 겨냥한다. 다만 모든 sample을 빌리면 각 RCTL이 처리하는 자료가 늘어난다. 소속을 정하는 일과 자료 공유량을 정하는 일은 서로 다른 최적화다. 추가 공유가 clustering의 필요성까지 증명하는 것은 아니다.
+
+## 2. 최종 RCTL 목적과 연결되는 정확한 부분
+
+cluster가 예측해야 할 (X,Y) 분포를 P, 실제 학습에 쓰는 자기 자료와 donor 자료의 혼합을 Q라고 하자. 참 가중치가 `w=dP/dQ`이면 모든 적분 가능한 loss에 대해 `E_Q[w loss(f(X),Y)] = E_P[loss(f(X),Y)]`이다. Q에 P가 양의 비율로 포함되면 필요한 support 포함 조건도 확보된다. 이 identity는 loss가 MAE이고 f가 RCTL인 경우에도 성립한다.
+
+따라서 참 가중치를 쓸 때는 ‘TabICL에서 좋았으니 RCTL도 좋을 것’이라는 순위 전이 가정이 필요 없다. 그러나 identity는 모집단 목적의 일치만 보인다. 추정한 가중치의 오차, 의존한 sample의 변동, 신경망 최적화, 실제 미래 변화는 별도다. 목적을 보존한다고 유한 sample에서 오차가 반드시 줄어드는 것은 아니다. 이 구별을 유지한다.
+
+이 원리는 이번 연구의 새로운 정리가 아니다.
+
+## 3. 가장 가까운 세 선행연구
+
+| 선행연구 | 원문에서 실제 확인한 절차 | 현재 안에 주는 판단 |
+|---|---|---|
+| Bickel et al., ICML 2008, *Multi-Task Learning for HIV Therapy Screening* | §4 식 1–8에서 joint density ratio로 target loss를 보존하고, task-origin 확률을 추정하여 ratio를 얻는다. §4.3은 각 task의 최종 모델을 가중된 실제 자료로 학습한다. | 담당 모델과 sample 공유를 분리하는 기본 구조, 최종 learner와 무관한 loss identity가 이미 있다. |
+| Kumagai et al., NeurIPS 2021, *Meta-Learning for Relative Density-Ratio Estimation* | §4 식 1–8에서 두 support 집합의 표현과 각 입력을 결합한다. 선형 head를 닫힌 형태로 적응시키고, 별도 source-task query loss로 신경망을 meta-train한다. | 사전학습과 작은 support로 상대 밀도비를 구한다는 설명도 단독 신규성이 아니다. 별도 meta-training이 필요한 점과 범용 frozen TabICL의 준비 비용은 구별한다. |
+| Cherkaoui et al., arXiv:2510.16986v2, 2026-05-13, *When to Transfer: Adaptive Source Selection for Positive Transfer in Linear Models* | §3–6, Appendix 16에서 ridge의 source·target 통계로 gain을 추정하고, 여러 source의 다음 chunk를 비교하여 공유량을 고른다. 역행렬을 rank-one으로 갱신한다. | ‘도움이 될 만큼만 가져온다’, source별 greedy 선택, 공유량 제한 역시 기존에 있다. 선형·noise 조건과 실제 추정 bias/variance를 RCTL에 그대로 옮기지 않는다. |
+
+공식 원문: [Bickel 2008](https://icml.cc/Conferences/2008/papers/520.pdf), [Kumagai 2021](https://proceedings.neurips.cc/paper_files/paper/2021/file/ff49cc40a8890e6a60f40ff3026d2730-Paper.pdf), [Cherkaoui v2](https://arxiv.org/html/2510.16986v2).
+
+세 번째 논문의 v1 제목은 *Adaptive Sample Sharing for Linear Regression*이다. 최신 v2는 multi-source 선택과 분류도 다루므로 옛 제목·범위로 비교하지 않았다. §5.3의 이론상 lower-confidence 규칙과 실제 `gain − α × estimated standard deviation` 규칙도 구별한다. 실험의 α=0.01을 1% 오류 보장으로 해석하지 않는다. 이론의 bias 항과 noise 정보까지 자동 추정되는 것이 아니며, 후보를 반복 선택하는 전체 과정의 보장은 개별 비교의 보장과 별개다.
+
+Appendix 16.2가 제시한 초기 ridge 통계 비용은 O(d³+nT d²), 후보 chunk 하나의 갱신은 O(c d²), 모든 active source의 greedy 비교는 source 수만큼 추가된다. 한 번의 빠른 갱신과 전체 후보 비교 비용을 구별해야 한다. 외부 코드를 실행하거나 주장된 성능을 재현한 것은 아니다.
+
+원본 3 PDF, v2 HTML·버전 이력과 hash는 `sources/sample_reuse_39/manifest.json`에 있다. 총 PDF 44쪽, 1,673,675 bytes다.
+
+## 4. 회귀용 TabICLv2를 넣을 때 생기는 구체적인 문제
+
+### 4.1 조건부 분포와 joint 분포는 다르다
+
+회귀 모델이 주는 것은 입력 X에 따른 Y의 분포다. 필요한 weight는 일반적으로 입력의 분포 차이까지 포함한다. 조건부 분포의 ratio만 쓰면 충분하다는 근거는 없다.
+
+다음은 실험이 아닌 정확한 적분 예다. X는 0 또는 1이고, 두 집단 모두 `Y=X+Uniform(-0.1,0.1)`이다. 예측 대상 P에서는 X=1의 비율이 0.1, donor에서는 0.9다. 두 집단을 반반 섞은 Q의 비율은 0.5다. 두 집단의 Y|X가 같으므로 조건부 ratio는 항상 1이다. 예측값이 항상 0인 f의 MAE는 P에서 0.145, Q에서 0.525다. 즉 조건부 ratio만으로는 평가 목적을 복원하지 못한다. Joint ratio는 X=0에서 1.8, X=1에서 0.2이며 이를 Q에 적용하면 0.145로 복원된다. 이 예는 모든 RCTL이 상수라는 주장도, 실제 자료의 성능 결과도 아니다.
+
+### 4.2 분위수 출력이 밀도비의 정확성을 보장하지 않는다
+
+설치된 2.2.0의 `_model/quantile_dist.py:1057`은 `log_prob`를 제공하며 CDF 위치에서 quantile 곡선의 기울기를 이용한다. API가 없는 것은 아니다. 하지만 중앙값·MAE·중앙 구간 coverage가 좋다는 사실과, 작은 구간의 기울기에서 계산한 밀도 및 그 비율이 정확하다는 것은 다른 조건이다. 이를 확인하지 않고 가중치로 넘기지 않는다.
+
+### 4.3 공식 unsupervised 점수를 그대로 ratio로 나눌 수 없다
+
+`_unsupervised/unsupervised.py:183`의 `score_samples`는 열 순서별 조건부 log density를 계산한 뒤 평균의 지수, 즉 geometric average를 반환한다. 서로 다른 순서의 밀도가 각각 정규화되어도 이 평균의 적분이 1이라는 보장은 없다. context마다 정규화 상수가 다를 수 있으므로 두 outlier score의 비율이 바로 필요한 확률 밀도비는 아니다.
+
+간단히 N(-a,1)와 N(a,1) 두 밀도의 geometric average는 `exp(-a²/2) × N(0,1)`이다. a에 따라 전체 적분이 달라진다. 이는 코드를 고쳐야 한다는 뜻이 아니라 outlier score의 용도를 확률 density ratio와 구별해야 한다는 뜻이다.
+
+또한 우리 입력에는 sin·cos 달력 열처럼 결정적으로 연결된 특징과 이산 시간 특징이 있다. 전체 열을 독립적인 연속 좌표로 간주한 density는 적절한 기준이 아닐 수 있다. 공통 기준 측도에서의 ratio나 직접 source 분류 방식은 별도로 구성해야 한다.
+
+### 4.4 동일 가중치 사용이 동일 준비 비용을 뜻하지 않는다
+
+위 코드의 `fit`은 모델 가중치를 공유하지만, `score_samples`는 순서·열별로 conditioning 집합을 바꾸어 계산한다. 16개 입력과 Y를 합친 D=17개 열, P=4개 순서라면 한 집합을 평가하는 열 단위 계산은 최대 68개다. G개 집합이면 최대 68G개이며, 이 중 일부가 상수 열 등으로 생략될 수 있다. 이 수는 모델 호출 시간의 측정치가 아니라 코드상 작업 규모다. 전체 query 행과 ensemble 비용도 추가된다.
+
+이용 가능한 코드의 SHA-256:
+
+- `quantile_dist.py`: `7e09ac0c3ce0260dc07cef79b0a98ee63b0785efafbf415fd243fe2981499b99`
+- `unsupervised.py`: `a226992e3c959e5e665b5f79dfca0e74a76f927cb7a94a83c392a78939f8285c`
+
+이번에 읽은 것은 설치된 pinned 2.2.0 소스다. 웹의 최신 문서와 모든 line·구현이 같다고 가정하지 않는다. 새로운 TabICL 모델 호출은 0이다.
+
+## 5. 현재 판정과 다음에 필요한 근거
+
+이 경로는 이전 proxy 방식보다 학습 목적의 연결을 명확하게 설명할 수 있다. 그러나 현재까지 제시한 가중 자료 공유는 기존 importance-weighted multi-task learning과 같고, 회귀 TabICLv2를 쓰면 joint 정보·정규화·추론 비용을 추가로 해결해야 한다. 지금 상태에서 추천하면 사용자가 피하려던 ‘복잡해졌지만 개선 근거는 약한 구조’가 된다.
+
+따라서 다음 세 가지를 새로운 후보의 필요조건으로 남긴다.
+
+1. **바뀌는 결정:** 비교 대상을 prediction similarity 하나에서 실제 training measure, 입력·정답 분포, 유한 자료 손해로 확장한다. 다만 이 확장 자체는 신규성이 아니다.
+2. **TabICL의 추가 가치:** 간단한 source 분류기 또는 기존 직접 ratio 추정이 놓치는 중요한 상황이 실제 자료에 있어야 한다. 회귀 분포 전체가 꼭 필요한지 먼저 설명한다.
+3. **비용:** donor를 고른 뒤의 추가 RCTL sample 처리까지 포함해 비교한다. cluster 수만 유지했다고 비용이 같은 비교가 아니다.
+
+현재 이 세 조건을 충족한 새로운 추천안을 확보하지 못했다. 막연히 성능 실험을 추가하지 않으며 RCTL 29-fit cap을 유지한다. 다음 탐색에서도 기존 방법과 같다는 이유를 수정 없이 반복 제출하지 않는다.
+
+검색어: `clustered multi-task importance weighting regression`; `time series forecasting data sharing importance weights clusters`; `TabICL density ratio`; `Bickel 2008 multi task learning adaptive sample sharing importance sampling`; `Meta-Learning for Relative Density-Ratio Estimation`; `Adaptive Sample Sharing for Linear Regression arxiv`.
+
+주제 발견에 쓰인 2차 요약·검색 snippet 대신 위 3편의 primary 원문을 판단 근거로 사용했다. 공식 코드 링크만 발견한 외부 구현을 실행 완료로 표시하지 않는다.

@@ -1,0 +1,364 @@
+{
+  "batch_id": "history-024",
+  "reviewer": "same_archive_agent",
+  "review_type": "bounded_manual_primary_and_static_code_comparison",
+  "claims": [
+    {
+      "claim_id": "H024-C01",
+      "claim": "39계획/40검토이며 가중 sample 공유를 당시 추천안으로 채택하지 않았다.",
+      "sources": [
+        "SRC-0021492:1–23",
+        "SRC-0021511:1–80"
+      ],
+      "status": "bounded_checked",
+      "limits": "성능실험의부정결과아님;41이후미확인"
+    },
+    {
+      "claim_id": "H024-C02",
+      "claim": "P<<Q·적분가능 loss·참w=dP/dQ에서 모집단 목적이 같다.",
+      "sources": [
+        "SRC-0021511:section2",
+        "SRC-0063933:PDF3 Eq1–8"
+      ],
+      "status": "bounded_checked",
+      "limits": "유한표본/추정weight/미래변화/최적화보장아님"
+    },
+    {
+      "claim_id": "H024-C03",
+      "claim": "Bickel은 joint task-origin ratio와 개별최종모델 가중학습 구조를 이미 제시했다.",
+      "sources": [
+        "SRC-0063933:PDF3–5"
+      ],
+      "status": "bounded_checked",
+      "limits": "binaryPhi를회귀에직접복사금지;PDF4Gaussianprior목적부호인쇄불일치;저자코드미확인"
+    },
+    {
+      "claim_id": "H024-C04",
+      "claim": "Kumagai 참relative ratio의1/alpha유한상한은alpha>0이며clipped추정head상한보장아님.",
+      "sources": [
+        "SRC-0063935:PDF3–4 Eq1–6"
+      ],
+      "status": "bounded_checked",
+      "limits": "비제약해후clipping과제약문제전역해구분"
+    },
+    {
+      "claim_id": "H024-C05",
+      "claim": "Kumagai f/g/h와lambda는support적응을거쳐queryloss로meta-train한다.",
+      "sources": [
+        "SRC-0063935:PDF4–6 Eq7/8 Algorithm1"
+      ],
+      "status": "bounded_checked",
+      "limits": "support/query역할별도이나실험은support포함query;frozenTab즉시재사용근거아님"
+    },
+    {
+      "claim_id": "H024-C06",
+      "claim": "Cherkaoui v2는선형ridge·조건부design/noise·독립validation을사용한다.",
+      "sources": [
+        "SRC-0063931:PDF1–6/16–17",
+        "SRC-0063929:selected_version_metadata"
+      ],
+      "status": "bounded_checked",
+      "limits": "PDF17Gaussian계수벡터분산유도는PDF3zeroMeanCov만으로일반화못함;원문전체증명미검증"
+    },
+    {
+      "claim_id": "H024-C07",
+      "claim": "alpha.01실무rule은1%확률보장아니며PDF18중간Cantelli방향과최종LCB공백이있다.",
+      "sources": [
+        "SRC-0063931:PDF5/6/18/19"
+      ],
+      "status": "bounded_checked",
+      "limits": "상측Cantelli라면정확한bias/variance아래LCB유도가능;전체방법반증아님"
+    },
+    {
+      "claim_id": "H024-C08",
+      "claim": "Algorithm1의최선chunk추가에는양수gate없고nmax단위표기도구별해야한다.",
+      "sources": [
+        "SRC-0063931:PDF20 Algorithm1/16.2"
+      ],
+      "status": "bounded_checked",
+      "limits": "실제저자코드미확인;active-source후보수/전체비용추가"
+    },
+    {
+      "claim_id": "H024-C09",
+      "claim": "조건부ratio1이어도정확한예에서P MAE.145와Q.525가다르고joint1.8/.2가복원한다.",
+      "sources": [
+        "SRC-0021511:section4.1",
+        "archive:document-tables.json",
+        "archive:portable-check"
+      ],
+      "status": "bounded_checked",
+      "limits": "유리수적분/상수예측수학예,트래픽실험아님"
+    },
+    {
+      "claim_id": "H024-C10",
+      "claim": "pinned log_prob는CDF에서quantile기울기역수밀도를사용한다.",
+      "sources": [
+        "SRC-0047550:816–1130",
+        "SRC-0047644:1–25"
+      ],
+      "status": "bounded_checked",
+      "limits": "clipping/tail/spline;중앙값정확도를densityratio검증으로세지않음"
+    },
+    {
+      "claim_id": "H024-C11",
+      "claim": "score_samples는순서별조건부합의기하평균이며정규화가자동보장되지않는다.",
+      "sources": [
+        "SRC-0047582:183–228/504–624",
+        "SRC-0021511:section4.3",
+        "archive:portable-check"
+      ],
+      "status": "bounded_checked",
+      "limits": "Gaussian적분exp(-a²/2),outlier용도자체실패주장아님"
+    },
+    {
+      "claim_id": "H024-C12",
+      "claim": "이산/결정적calendar열에는공통기준측도와joint정보조건확인이필요하다.",
+      "sources": [
+        "SRC-0021511:section4.3"
+      ],
+      "status": "bounded_checked",
+      "limits": "ratio추정실증성공아님;특징독립성가정아닌Lebesgue공간절대연속문제"
+    },
+    {
+      "claim_id": "H024-C13",
+      "claim": "기본latin은D17/P4에서17순서를반환하므로원40의68G를최대289G로정정한다.",
+      "sources": [
+        "SRC-0047582:222–228/528–548",
+        "SRC-0047572:785–916",
+        "SRC-0021511:section4.4",
+        "archive:code-check"
+      ],
+      "status": "bounded_checked",
+      "limits": "AST+재귀크기수동귀납,originalexecute/RNG없음;실행시간아님"
+    },
+    {
+      "claim_id": "H024-C14",
+      "claim": "공유weights와조건별fit/predict준비비용은다르며바깥skip은nonNaNtarget<5다.",
+      "sources": [
+        "SRC-0047582:122–228/377–624"
+      ],
+      "status": "bounded_checked",
+      "limits": "상수열자체skip분기없음;innerensemble/query/donorRCTL비용추가"
+    },
+    {
+      "claim_id": "H024-C15",
+      "claim": "입수manifest는HTTP200다섯항목/PDF3개44쪽1673675B를보고하고timer는미기록이다.",
+      "sources": [
+        "SRC-0063937:all",
+        "SRC-0063938:all",
+        "SRC-0022776:1–49"
+      ],
+      "status": "bounded_checked",
+      "limits": "marker0modelcalls와새모델실행0;3threads/30seconds/10MiB는설정이지실측시간아님"
+    },
+    {
+      "claim_id": "H024-C16",
+      "claim": "후속필요조건은Tab추가정보·단순ratio기준과차이·donor포함RCTL비용이다.",
+      "sources": [
+        "SRC-0021511:section5",
+        "SRC-0021492:candidatecriteria"
+      ],
+      "status": "bounded_checked",
+      "limits": "29cap은과거운영기록;41이후연결/전체비용/팀접근미완료"
+    }
+  ],
+  "primary_read": [
+    {
+      "source_id": "SRC-0063933",
+      "sha256": "2f413065a2ac219ec197199b78e05634ba550303a509e1091d80c7235442b3f2",
+      "pdf_pages": 8,
+      "text_pages": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "visual_pages": [
+        3,
+        4,
+        5
+      ],
+      "whole_paper_read": false,
+      "findings": [
+        "Bickel/Bogojeska/Lengauer/SchefferICML2008titleandmetadata. PDF2knownjointtasklabel z,allpoolmixture p(z)p(x,y|z);classificationHIV application notRCTL empirical.",
+        "PDF3Eq1–4 target expectedloss equals mixture-weighted loss,rt=p(x,y|t)/sumz p(z)p(x,y|z). Eq5–8 rt=p(t|x,y)/p(t),explicitp(t)>0 includingDt inpool.",
+        "PDF4Eq9softmaxjoint-taskorigin classifier;Phi(x,y)binary-labelspecific feature mapping,Gaussian task-kernel prior. Do not transfer binaryPhi formulaunchangedtoregression.",
+        "PDF5clinicaldataset/label details onlyreadaspriorapplication;notmedicalguidance/currentbenchmarktransfer,empiricalnumbersnotreproduced.",
+        "VisualPDF4confirms OptimizationProblem1 printed maximize loglikelihood+vT Sigma^-1v, despite surrounding GaussianMAP description. Preserve printed-sign inconsistency;do not silently use asvalidregularizedobjective or inferactualimplementationfailure. Eq1–8lossidentity separate."
+      ],
+      "remaining": [
+        "Pages6–8/authorcode/actualimplementation sign notchecked"
+      ]
+    },
+    {
+      "source_id": "SRC-0063935",
+      "sha256": "711334768319768cf3ad6a7dddc44880d1dd5932fa350037f73bfd1d7528ad71",
+      "pdf_pages": 13,
+      "text_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "visual_pages": [
+        4,
+        5
+      ],
+      "whole_paper_read": false,
+      "findings": [
+        "Kumagai/Iwata/FujiwaraNeurIPS2021. PDF3relative ralpha=pnu/(alpha*pnu+(1-alpha)*pde),finite1/alpha boundrequiresalpha>0;alpha0ordinaryunboundedratio.",
+        "PDF4Eq1meanpool f/gsetrepresentationsznu/zde;Eq2positiveh([x,znu,zde]) andnonnegativew. Eq3squaredrelativeDRErisk underqalpha.",
+        "PDF4Eq4dropsnonnegativeconstraints,lambda>0convexridgehead;Eq5(K+lambdaI)^-1k globaloptUNCONSTRAINED thenelementwisewhat=max(0,wtilde). Clippedheadisnotclaimedconstrainedglobalopt,ratioestimate positivitynotautomaticallyupperbound1/alpha.",
+        "PDF5Eq7/8/Algorithm1meta-trains f/g/h/lambda throughsupportadaptationusingqueryloss;differentroles doNOTmeanindependentsubsets. §5.1/PDF6explicit supportinstancesincludedinquery.",
+        "PDF5settingsT100softplus,hnetwork/alpha.5/Adamlr.001/NQ128each;PDF6max10000/earlystop. Readasreportedcost,notrun. DirectDRE requiresrelatedsourcedatasets/pretrainingnotfrozenofftheshelf.",
+        "PDF6benchmarks/syntheticexample results readasreported;notpartofownnetworkevidence;no model/no randomsamples.",
+        "VisualPDF4/5 confirmsunconstrainedclosedformthenclipping,query-trainingandPDF5lastlinesexplicitlysupportincludedquery."
+      ],
+      "remaining": [
+        "Pages7–13/supplement andauthorcode"
+      ]
+    },
+    {
+      "source_id": "SRC-0063931",
+      "sha256": "52f0d21ceeaf3534dc5c64948b7d00219ad2ec1d84e78f29cfd5ec605eebd44d",
+      "pdf_pages": 23,
+      "text_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "visual_pages": [
+        5,
+        18,
+        19,
+        20
+      ],
+      "whole_paper_read": false,
+      "findings": [
+        "PDF3linear target/sourcezeroMeannoiseCovsigma²I,independenttargetvalidation;conditiononobserveddesignsXt/Xval/Xs,takenoiseexpectation;target-onlyandpooledridgeλT/λc. GeneralMAElearnerindependent identity nothere.",
+        "PDF4gainξT−ξ(n) regressionvsprobitsurrogateclassification;plug-inunknownθT/θS/noise. classificationassumesπknowledge inPDF5. Not genericdatafreesharinggain.",
+        "PDF5Prop5.1Eestimatedgain=truegain+b(n),varianceformstillunknownθ;λT=λS0bias0. Prop5.3includesbias/varianceandδ;PDF6practicalgain−αsqrt(estimatedVar),α.01experimental tuning not1%probability.",
+        "PDF6§6evaluatesactivechunksgreedyoruniform,updatesinverseShermanMorrison. §7syntheticsettingsλS1/λcλT+λS/targetoraclegrid/nmax10000/repeated250 are reportednotrun.",
+        "VisualPDF20Algorithm1alwaysappendsbestchunkatline17, no explicit positivityreject/noactive-sourceguard;Require callsnmaxrounds whilecomplexityparagraphcallsnmaxadmittedsamples. Needpreserve gap against§5.3accepttest;notclaimactualcodehasguaranteedstop.",
+        "PDF20§16.2reported initialO(d³+nTd²),chunkO(cd²),greedyO(|Sact|cd²),totalupdateO(nmaxd²)underadmittedsamplecount. Noactualwholeexecutiontiming.",
+        "VisualPDF5showsunqualifiedprobabilityδ wording/Delta<LCBrare-event;PDF18statesLCB<=truegainwith>=1−δ. Do not identifyαwithδ orclaimfullproofvalidated.",
+        "VisualPDF18 confirmsCantelliintermediatelowertailversusfinalLCBdirectiongap. Upper-tailCantelliwouldsupportfinalLCBwithcorrectbias/variance;notdisproofofCantelliorwholemethod. PDF18alsoannouncesProperty5.3butreprints5.2.",
+        "TextPDF16–17 varianceproofcallsthestackedridgeestimatesGaussian;§3PDF3onlyexplicitzeroMeanCovsigma²I. ReusevarianceformonlywithGaussianindependentnoiseorsufficientmatchinghighermoments,notarbitrarynoise. Formulafullproofnotvalidated.",
+        "Visual/textPDF19 isseparateisotropicGaussiandesignasymptoticsection,notrepairforPDF18taildirection;avoidmixingfeatureassumptionswithnoiseassumptions.",
+        "Archivedabsselectedcitation/dateline/submissionhistoryconfirmv2May13;officialv1abstractqueried2026-10-09confirmsoldtitleAdaptiveSampleSharingforLinearRegression/date2025-10-19. v1wholepaperunread."
+      ],
+      "remaining": [
+        "PDF7–15/21–23 andfullproof/authorcodeunread",
+        "Noexternalperformance reproduction;Algorithm1acceptgateandproofpresentationgapsretained"
+      ]
+    }
+  ],
+  "installed_code_selected": [
+    {
+      "source_id": "SRC-0047550",
+      "sha256": "7e09ac0c3ce0260dc07cef79b0a98ee63b0785efafbf415fd243fe2981499b99",
+      "read_scope": {
+        "lines": [
+          [
+            816,
+            1130
+          ]
+        ],
+        "whole_text": false,
+        "executed": false,
+        "imported": false,
+        "total_lines": 1543
+      },
+      "official_url": "https://github.com/soda-inria/tabicl/blob/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/_model/quantile_dist.py"
+    },
+    {
+      "source_id": "SRC-0047582",
+      "sha256": "a226992e3c959e5e665b5f79dfca0e74a76f927cb7a94a83c392a78939f8285c",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            267
+          ],
+          [
+            377,
+            626
+          ]
+        ],
+        "whole_text": false,
+        "executed": false,
+        "imported": false,
+        "total_lines": 765
+      },
+      "official_url": "https://github.com/soda-inria/tabicl/blob/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/_unsupervised/unsupervised.py"
+    },
+    {
+      "source_id": "SRC-0047572",
+      "sha256": "2163a3bf6754127365a7aedac854d99a6f565545cc1ea7e63c68a596081b2976",
+      "read_scope": {
+        "lines": [
+          [
+            785,
+            916
+          ]
+        ],
+        "whole_text": false,
+        "executed": false,
+        "imported": false,
+        "total_lines": 1225
+      },
+      "official_url": "https://github.com/soda-inria/tabicl/blob/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/_sklearn/preprocessing.py"
+    },
+    {
+      "source_id": "SRC-0047644",
+      "sha256": "e429edbe64f243241e6425854643b0d4128de550121b9feb1598ef710b9941a2",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            25
+          ]
+        ],
+        "whole_text": false,
+        "executed": false,
+        "imported": false,
+        "total_lines": 763
+      },
+      "official_url": "https://pypi.org/project/tabicl/2.2.0/"
+    }
+  ],
+  "primary_metadata_selected": [
+    {
+      "source_id": "SRC-0063929",
+      "selection": "citation meta tags; title/dateline/submission-history matched lines only",
+      "whole_text": false
+    },
+    {
+      "url": "https://arxiv.org/abs/2510.16986v1",
+      "selection": "official version title/authors/date/abstract lines6–27",
+      "queried_at_utc": "2026-10-09T08:29:41.156163+00:00",
+      "whole_paper_read": false
+    }
+  ],
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "whole_papers_reviewed": 0,
+  "whole_primary_code_reviewed": 0,
+  "author_code_reviewed": false,
+  "remaining": [
+    "세 논문 나머지·저자 코드",
+    "다른 HTML/txt 고유 내용",
+    "41이후·전체 실패 비용·전체 연구 통합·팀 접근"
+  ]
+}

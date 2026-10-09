@@ -1,0 +1,23 @@
+# 39 cell 소속과 실제 학습 자료 공유 범위의 분리: 원문 확인
+
+2026-09-25. 38에서 확인한 자료 분할의 손해를 직접 다루는 다른 원리를 검토한다. 아직 추천안이 아니다. 모델 호출 전에 기존 방법과의 동등성을 먼저 확인한다.
+
+## 검토할 결정
+
+최종 예측 담당은 cell별로 한 cluster의 RCTL로 유지하되, RCTL의 실제 관측 sample을 자기 cluster 안으로만 제한하지 않는 방향이다. 외부 sample을 빌리더라도 해당 cluster가 풀어야 할 예측 목적을 바꾸지 않는 가중치가 필요하다. 실제 target을 TabICL 예측으로 교체하지 않는다. clustering 및 자료 공유 결정에 학습된 RCTL의 정보를 사용하지 않는다.
+
+## 세 원문과 질문
+
+1. Bickel et al., ICML 2008, *Multi-Task Learning for HIV Therapy Screening*, §4 및 Algorithm. Joint (X,Y) density ratio가 어떻게 target loss를 보존하는가? classification 응용과 일반 loss identity를 구분한다.
+2. Kumagai et al., NeurIPS 2021, *Meta-Learning for Relative Density-Ratio Estimation*. Bounded ratio, support adaptation, meta-training이 이미 무엇을 해결했는가? ‘사전학습으로 적은 sample에서 공유 가중치를 추정한다’ 자체를 신규성으로 세지 않는다.
+3. Cherkaoui et al., arXiv:2510.16986v2, 2026-05-13, *When to Transfer: Adaptive Source Selection for Positive Transfer in Linear Models*. v1의 제목으로 최신 범위를 축약하지 않는다. 어떤 source에서 몇 sample을 가져올지 정하는 실제 rule, 보호 조건과 비용, learner 의존성을 확인한다.
+
+## 후보를 진행시키기 위한 기준
+
+- 참 joint density ratio의 loss identity는 MAE와 RCTL을 포함한 모든 적분 가능한 loss에 적용될 수 있다. 그러나 추정 ratio의 오차·시계열 의존성·optimization 오차까지 없어지지는 않는다.
+- TabICL의 회귀 분포는 p(Y|X)를 추정한다. 이를 joint p(X,Y) 또는 직접 density ratio와 혼동하지 않는다. p(X)의 보정이나 정보 손실 없는 상쇄 근거가 필요하다.
+- conditional CDF/분위수에서 안정적인 가중치를 구하는 비용과, 간단한 source 분류기를 쓰는 비용을 비교한다. 후자가 같은 정보로 충분하면 회귀 TabICLv2를 추가하지 않는다.
+- 외부 sample을 그냥 추가하거나 relative ratio를 쓰는 일은 새 원리로 세지 않는다. 이미 알려진 구조로 환원되면 새 모델 실행 없이 그 이유를 기록한다.
+- 전체 RCTL fit 29회를 유지한다. 외부 코드를 실행하지 않는다. 공개 PDF/HTML을 파일당 10 MiB, timeout 30초 범위에서만 확보한다.
+
+이 검토는 실제 sample을 보존하는 학습 방식의 가능성을 찾기 위한 것이다. 사용자 동의 없이 새로운 cell·의료 분류·새 최종 예측 모델로 연구 대상을 바꾸는 것이 아니다.
