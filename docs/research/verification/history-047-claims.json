@@ -1,0 +1,183 @@
+{
+  "batch_id": "history-047",
+  "claims": [
+    {
+      "claim_id": "H047-C01",
+      "claim": "58의 채택 보류와 현재 정리의 범위",
+      "source_location": "SRC-0021898 §1–2/4–5;SRC-0064428 §3.4/4.3",
+      "verification_method": "당시 판단과 원문·현재 저장 결과 대조",
+      "limit": "TabPFN 문맥 가치의 RCTL 전이 근거 없음;전이 불가능 증명 아님"
+    },
+    {
+      "claim_id": "H047-C02",
+      "claim": "arXiv v2와 출판본 서지 구분",
+      "source_location": "SRC-0064428 p1–12;SRC-0064434 visible history;EXT-H047-13;EXT-H047-16",
+      "verification_method": "공식 PDF 바이트 동일·arXiv 이력·출판사 서지 대조",
+      "limit": "출판본 유료 본문 미독해;두 판본 내용 동일 주장 안함"
+    },
+    {
+      "claim_id": "H047-C03",
+      "claim": "4개 원본 텍스트의 고정 코드 계보",
+      "source_location": "SRC-0064430;SRC-0064431;SRC-0064432;SRC-0064433;SRC-0064435;SRC-0064436;SRC-0064437;EXT-H047-14;EXT-H047-15",
+      "verification_method": "Git blob 4개/root tree 재구성/112항목 자동 비교",
+      "limit": "전체 저장소·패키지 wheel·가중치 검수 아님"
+    },
+    {
+      "claim_id": "H047-C04",
+      "claim": "고정 PFN 파라미터와 문맥의 구분",
+      "source_location": "SRC-0064428 §2/3.3;EXT-H047-03 176–206/208–254줄",
+      "verification_method": "논문 정의와 classifier fit/predict 코드 독해",
+      "limit": "fit라는 이름이 새 신경망 학습을 뜻하지 않음"
+    },
+    {
+      "claim_id": "H047-C05",
+      "claim": "exact retraining과 Shapley 근사의 구별",
+      "source_location": "SRC-0064428 §3.3 식1–3/§3.4",
+      "verification_method": "기능 부분집합 예측과 M개 subset/WLS 구별",
+      "limit": "전수 Shapley·정확한 최적 context 보장 아님"
+    },
+    {
+      "claim_id": "H047-C06",
+      "claim": "데이터 가치 목적과 낮은 계수 선택",
+      "source_location": "SRC-0064428 §3.4;SRC-0064433 170–227/263–290줄",
+      "verification_method": "validation risk와 binary membership WLS/nsmallest 대조",
+      "limit": "RCTL gradient 가치·cell cluster·합성 자료가 아님"
+    },
+    {
+      "claim_id": "H047-C07",
+      "claim": "논문 조건과 기본 debug 조건",
+      "source_location": "SRC-0064428 §4.3;SRC-0064432 29–75줄;SRC-0064433 26–35줄",
+      "verification_method": "3072/512/1024/9216/5와32/8/8/64/2 구별",
+      "limit": "현재 소스 기본값이 논문 당시 실행 설정의 증거는 아님"
+    },
+    {
+      "claim_id": "H047-C08",
+      "claim": "OpenML 분할·입력 정규화의 실제 경로",
+      "source_location": "EXT-H047-02 137–199/222–318줄;EXT-H047-01 55–75줄;SRC-0064433 64–94줄;EXT-H047-03 208–248/340–390줄",
+      "verification_method": "shuffle/stratified split/val-test slice와 내부 전처리 구별",
+      "limit": "시간순 분할 아님;실제 row ID·checkpoint config 미확인"
+    },
+    {
+      "claim_id": "H047-C09",
+      "claim": "seed와 ensemble/device의 경계",
+      "source_location": "SRC-0064432 17–75줄;SRC-0064433 26–88줄;EXT-H047-01 55–75줄;EXT-H047-03 424–438/486–526줄;EXT-H047-07;EXT-H047-08;EXT-H047-09",
+      "verification_method": "저장 seeds와 np reset/classifier42/ensemble16/CPU 기본값 대조",
+      "limit": "모든 난수 독립·GPU 실행 확인 아님;ensemble 수를 forward 수에 단순 곱하지 않음"
+    },
+    {
+      "claim_id": "H047-C10",
+      "claim": "무작위 비교군은 6개 비중첩 문맥의 평균",
+      "source_location": "SRC-0064433 308–349/373–383줄",
+      "verification_method": "3072/512 바닥값과 연속 구간·mean/std 코드 대조",
+      "limit": "최선의 무작위 문맥 또는 전체3072자료 모델 비교가 아님"
+    },
+    {
+      "claim_id": "H047-C11",
+      "claim": "최종 결과 15행과 3평균의 저장 산술",
+      "source_location": "EXT-H047-07;EXT-H047-08;EXT-H047-09;EXT-H047-10;EXT-H047-11;EXT-H047-12",
+      "verification_method": "M9216의 seed/AUC 15행·총297평균값 Decimal 검산",
+      "limit": "새 모델 실행/유의성 검정/원예측 재구성 아님"
+    },
+    {
+      "claim_id": "H047-C12",
+      "claim": "본문 퍼센트 표기와 pp/상대 개선의 구분",
+      "source_location": "SRC-0064428 p11;EXT-H047-07;EXT-H047-08;EXT-H047-09;SRC-0064431 13–14/24–35/39–103줄",
+      "verification_method": "mean(OC−RC)와100배 차이·RC 분모 상대율 별도 계산",
+      "limit": "논문 표기는 보존;RCTL 개선율로 옮기지 않음"
+    },
+    {
+      "claim_id": "H047-C13",
+      "claim": "최종 15개 모두 이득이라는 제한된 범위",
+      "source_location": "SRC-0064428 Fig3;EXT-H047-07;EXT-H047-08;EXT-H047-09",
+      "verification_method": "15쌍 OC−RC 부호 확인과 그림10쪽 재대조",
+      "limit": "모든 M/데이터/미래 seed에서 항상 우수하다는 주장 아님"
+    },
+    {
+      "claim_id": "H047-C14",
+      "claim": "Fig3 실제 seed·세로축·표시 run",
+      "source_location": "SRC-0064431 56–89줄;EXT-H047-07;EXT-H047-08;EXT-H047-09;SRC-0064428 Fig3",
+      "verification_method": "run1–5 대체와 dataset별 ylim/CSV 행 순서 대조",
+      "limit": "막대높이만으로 공통 절대 크기 비교 금지"
+    },
+    {
+      "claim_id": "H047-C15",
+      "claim": "선택 사전 비용과 9233 논리 호출",
+      "source_location": "SRC-0064428 §4.3 p11;SRC-0064433 148–227/325–383줄;EXT-H047-03 424–526줄",
+      "verification_method": "9216+6+11 조건부 코드 산술",
+      "limit": "측정 시간·GPU비용·실제 실행 횟수 아님;WLS/전처리/모델 준비 별도"
+    },
+    {
+      "claim_id": "H047-C16",
+      "claim": "확률을 CE input에 넣는 손실 의미",
+      "source_location": "SRC-0064433 155/187–190/337–338/363–364줄;EXT-H047-03 520–526줄;EXT-H047-17",
+      "verification_method": "확률 출력과 공식 logits CE 식 대조",
+      "limit": "계산 불가능 오류 주장 아님;저장 ROC AUC 자체 무효 단정 안함"
+    },
+    {
+      "claim_id": "H047-C17",
+      "claim": "제한된 coalition과 kernel의 p 인자",
+      "source_location": "SRC-0064433 118–136/158–181/196–222줄;SRC-0064428 §3.4",
+      "verification_method": "Bernoulli reject sampling과p=tPFN_train_max,3072 design열 대조",
+      "limit": "모든3072인 coalition의 정확 Shapley라고 보장하지 않음"
+    },
+    {
+      "claim_id": "H047-C18",
+      "claim": "M이 작은 WLS와 rank 확인 공백",
+      "source_location": "SRC-0064433 148–155/204–224줄;SRC-0064428 §3.4",
+      "verification_method": "intercept+3072열에 M16부터 적합;명시 rank검사 없음",
+      "limit": "실제 행렬 rank/실패/계수 오류를 실행 확인한 것은 아님"
+    },
+    {
+      "claim_id": "H047-C19",
+      "claim": "단일 class coalition의 조건부 실패",
+      "source_location": "SRC-0064433 164–188줄;EXT-H047-03 162–185줄",
+      "verification_method": "크기 조건만 재추출·class 검사 ValueError 정적 추적",
+      "limit": "15개 저장 run에서 실제 실패했다는 증거 없음"
+    },
+    {
+      "claim_id": "H047-C20",
+      "claim": "보존 파일과 실제 재현 공백",
+      "source_location": "SRC-0064432 76–123줄;SRC-0064437 112entry metadata;EXT-H047-03 54–74줄;EXT-H047-04;EXT-H047-05",
+      "verification_method": "출력명/마지막test배열·unpinned checkpoint URL/환경 하한 대조",
+      "limit": "원예측/행 ID/모든 run의 실제환경·가중치 hash 미확인"
+    },
+    {
+      "claim_id": "H047-C21",
+      "claim": "ICE/PD/ALE와 LOCO/LOO의 별도 목적",
+      "source_location": "SRC-0064428 §3.1/3.2/3.4/4.1;SRC-0064430 18–35줄",
+      "verification_method": "Table1/그림1과 batching/열·행 제거 구별",
+      "limit": "PD 계산 시간 개선을 context 선택 비용 절감으로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H047-C22",
+      "claim": "Kernel SHAP 실험의 비용/예외 범위",
+      "source_location": "SRC-0064428 §3.3 식2–3/§4.2/Fig2",
+      "verification_method": "ntrain≈ninf,L≥2 가정·memory 하한·chscase 예외 보존",
+      "limit": "token connections는 실측 wall time/FLOPs가 아님"
+    },
+    {
+      "claim_id": "H047-C23",
+      "claim": "SA/SAGE/기타 해석 도구와 README 차이",
+      "source_location": "SRC-0064428 Table1/§3.5/3.6;SRC-0064430 18–55줄",
+      "verification_method": "gradient sensitivity와loss 기반 SAGE/래퍼·ALEglobal vsLocal",
+      "limit": "모든 IML 구현을 코드/실험으로 검수했다고 하지 않음"
+    },
+    {
+      "claim_id": "H047-C24",
+      "claim": "다른 helper의 test 선택을 본 경로와 구분",
+      "source_location": "EXT-H047-01 205–305/320–402줄;SRC-0064432 전체123줄;SRC-0064433 90–94/183–190줄",
+      "verification_method": "일반 helper는 X_test로 후보 선택,현재entry는 호출하지 않음",
+      "limit": "본 context 실험 test leakage로 단정하지 않음"
+    },
+    {
+      "claim_id": "H047-C25",
+      "claim": "현재 재검토 조건과 미완료 범위",
+      "source_location": "SRC-0021898 §4–5;SRC-0064428 §4.3;SRC-0064437 112entry metadata",
+      "verification_method": "당시 목표/보존 결과/직접 구현 한계 연결",
+      "limit": "56/58전체·SCott/SGD-as·59이후·전체Goal 미완료"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_at_utc": "2026-10-09T20:01:56.813452+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 저장된 전체 팀 기록·25개 주장과 원문/코드/그림을 재대조했다. exact retraining의 feature-imputation/context 구별,RC집계의고정코드범위,자료명/ID 표시를 명료화했다. 별도 Fraction으로15차이/3평균·상대율/297평균을 검산했다. 독립 과학적 재현 아님."
+}
