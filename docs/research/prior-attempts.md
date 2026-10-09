@@ -262,3 +262,5 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## 미래 일정·합성 증강을 clustering의 새 기여로 제안하기 전에 — 51·55
 
 검색어: football, event context, future covariates, MWS, Past Learner, Future Priors Learner, STL, Bezier, synthetic augmentation, BHE, E-MAPE. [event 기록](records/0051-event-context.md)은 사전에 알려진 일정과 학습 자료 기반 합성, 전체/이벤트/주거/업무 오차의 다른 순위와 큰K 손해를 연결합니다. 새 제안은 일정의 asof 버전·같은 입력의 단순 비교군·지표 구현·train 안의 K 선택·추가 훈련비·소속 변경 행동과 최종 RCTL 효용의 차이를 명시해야 합니다. 원자료/코드 접근과 날짜·수식 불일치가 해소되기 전에는 재현 완료로 세지 않습니다.
+
+H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책·patching·분할 그림 검토](records/0051-0055-gotsf-media.md). GIF 144프레임은 독립 실험 횟수가 아니며, 생략된 예측과 무표기 생성 조건을 보존합니다. target 값 범위의 목적 변경을 새 cell clustering/RCTL 개선으로 동일시하지 않습니다.
