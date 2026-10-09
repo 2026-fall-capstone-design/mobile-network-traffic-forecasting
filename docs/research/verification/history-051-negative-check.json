@@ -1,0 +1,122 @@
+{
+  "success": true,
+  "control_cases": 1,
+  "negative_cases": 10,
+  "results": [
+    {
+      "case": "control",
+      "success": true,
+      "detected_errors": []
+    },
+    {
+      "case": "MAE",
+      "success": false,
+      "detected_errors": [
+        "TabICL_global_L2:MAE"
+      ]
+    },
+    {
+      "case": "cell_metric",
+      "success": false,
+      "detected_errors": [
+        "TabICL_global_L2:cell_MAE"
+      ]
+    },
+    {
+      "case": "interaction",
+      "success": false,
+      "detected_errors": [
+        "TabICL_geo2:interaction"
+      ]
+    },
+    {
+      "case": "screen_flag",
+      "success": false,
+      "detected_errors": [
+        "TabICL_geo2:decision:global"
+      ]
+    },
+    {
+      "case": "ledger",
+      "success": false,
+      "detected_errors": [
+        "whole_ledger_transition",
+        "budget_transition"
+      ]
+    },
+    {
+      "case": "calls",
+      "success": false,
+      "detected_errors": [
+        "call:0",
+        "counts"
+      ]
+    },
+    {
+      "case": "seed",
+      "success": false,
+      "detected_errors": [
+        "declared_model_scope"
+      ]
+    },
+    {
+      "case": "prediction",
+      "success": false,
+      "detected_errors": [
+        "TabICL_global_L2:MAE",
+        "TabICL_global_L2:cell_MAE",
+        "TabICL_global_L2:block_MAE",
+        "TabICL_global_L2:half_MAE",
+        "TabICL_global_L2:raw_activity_MAE",
+        "TabICL_geo2:interaction",
+        "TabICL_geo2:half_interaction",
+        "TabICL_geo2:block_interaction",
+        "TabICL_geo2:screen:global",
+        "TabICL_geo2:decision:global",
+        "TabICL_local:interaction",
+        "TabICL_local:half_interaction",
+        "TabICL_local:block_interaction",
+        "TabICL_local:screen:global"
+      ]
+    },
+    {
+      "case": "timestamp",
+      "success": false,
+      "detected_errors": [
+        "timestamp_literals"
+      ]
+    },
+    {
+      "case": "raw_scale",
+      "success": false,
+      "detected_errors": [
+        "first672_scale",
+        "actual_from_input",
+        "HGB_geo2_L2:raw_activity_MAE",
+        "HGB_geo2_L8:raw_activity_MAE",
+        "HGB_global_ID_L2:raw_activity_MAE",
+        "HGB_global_ID_L8:raw_activity_MAE",
+        "HGB_global_L2:raw_activity_MAE",
+        "HGB_global_L8:raw_activity_MAE",
+        "HGB_local_L2:raw_activity_MAE",
+        "HGB_local_L8:raw_activity_MAE",
+        "Ridge_geo2_L2:raw_activity_MAE",
+        "Ridge_geo2_L8:raw_activity_MAE",
+        "Ridge_global_ID_L2:raw_activity_MAE",
+        "Ridge_global_ID_L8:raw_activity_MAE",
+        "Ridge_global_L2:raw_activity_MAE",
+        "Ridge_global_L8:raw_activity_MAE",
+        "Ridge_local_L2:raw_activity_MAE",
+        "Ridge_local_L8:raw_activity_MAE",
+        "TabICL_geo2_L2:raw_activity_MAE",
+        "TabICL_geo2_L8:raw_activity_MAE",
+        "TabICL_global_ID_L2:raw_activity_MAE",
+        "TabICL_global_ID_L8:raw_activity_MAE",
+        "TabICL_global_L2:raw_activity_MAE",
+        "TabICL_global_L8:raw_activity_MAE",
+        "TabICL_local_L2:raw_activity_MAE",
+        "TabICL_local_L8:raw_activity_MAE"
+      ]
+    }
+  ]
+}

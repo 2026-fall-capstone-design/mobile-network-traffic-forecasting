@@ -1,0 +1,806 @@
+{
+  "success": true,
+  "checks": 303,
+  "check_names": [
+    "SRC-0021920:bytes",
+    "SRC-0021940:bytes",
+    "SRC-0021961:bytes",
+    "SRC-0021984:bytes",
+    "SRC-0022879:bytes",
+    "SRC-0023214:bytes",
+    "SRC-0027861:bytes",
+    "SRC-0027862:bytes",
+    "SRC-0027863:bytes",
+    "SRC-0027864:bytes",
+    "SRC-0027865:bytes",
+    "SRC-0027866:bytes",
+    "SRC-0027867:bytes",
+    "SRC-0027868:bytes",
+    "SRC-0027869:bytes",
+    "same_settings",
+    "declared_model_scope",
+    "settings_start_hash",
+    "plan_hash",
+    "code_hash",
+    "data_recorded_identity",
+    "checkpoint_recorded_identity",
+    "partial_keys",
+    "partial:Ridge_global_L2",
+    "partial:HGB_global_L2",
+    "partial:TabICL_global_L2",
+    "partial:Ridge_geo2_L2",
+    "partial:HGB_geo2_L2",
+    "partial:TabICL_geo2_L2",
+    "partial:Ridge_local_L2",
+    "partial:HGB_local_L2",
+    "partial:TabICL_local_L2",
+    "partial:Ridge_global_ID_L2",
+    "partial:HGB_global_ID_L2",
+    "partial:TabICL_global_ID_L2",
+    "partial:Ridge_global_L8",
+    "partial:HGB_global_L8",
+    "partial:TabICL_global_L8",
+    "partial:Ridge_geo2_L8",
+    "partial:HGB_geo2_L8",
+    "partial:TabICL_geo2_L8",
+    "partial:Ridge_local_L8",
+    "partial:HGB_local_L8",
+    "partial:TabICL_local_L8",
+    "partial:Ridge_global_ID_L8",
+    "partial:HGB_global_ID_L8",
+    "partial:TabICL_global_ID_L8",
+    "partial:actual",
+    "partial:cell_ids",
+    "partial:query_times",
+    "24_conditions",
+    "fixed_cells_groups",
+    "context_times",
+    "query_times",
+    "cell_ids",
+    "target_time_boundary",
+    "longest_lag_time_boundary",
+    "derived_slice_bytes",
+    "input_shape",
+    "input_cell_order",
+    "hourly_index",
+    "first672_scale",
+    "actual_from_input",
+    "timestamp_literals",
+    "actual_valid",
+    "HGB_geo2_L2:shape_finite_clipped",
+    "HGB_geo2_L2:metric_keys",
+    "HGB_geo2_L2:MAE",
+    "HGB_geo2_L2:cell_MAE",
+    "HGB_geo2_L2:block_MAE",
+    "HGB_geo2_L2:half_MAE",
+    "HGB_geo2_L2:raw_activity_MAE",
+    "HGB_geo2_L8:shape_finite_clipped",
+    "HGB_geo2_L8:metric_keys",
+    "HGB_geo2_L8:MAE",
+    "HGB_geo2_L8:cell_MAE",
+    "HGB_geo2_L8:block_MAE",
+    "HGB_geo2_L8:half_MAE",
+    "HGB_geo2_L8:raw_activity_MAE",
+    "HGB_global_ID_L2:shape_finite_clipped",
+    "HGB_global_ID_L2:metric_keys",
+    "HGB_global_ID_L2:MAE",
+    "HGB_global_ID_L2:cell_MAE",
+    "HGB_global_ID_L2:block_MAE",
+    "HGB_global_ID_L2:half_MAE",
+    "HGB_global_ID_L2:raw_activity_MAE",
+    "HGB_global_ID_L8:shape_finite_clipped",
+    "HGB_global_ID_L8:metric_keys",
+    "HGB_global_ID_L8:MAE",
+    "HGB_global_ID_L8:cell_MAE",
+    "HGB_global_ID_L8:block_MAE",
+    "HGB_global_ID_L8:half_MAE",
+    "HGB_global_ID_L8:raw_activity_MAE",
+    "HGB_global_L2:shape_finite_clipped",
+    "HGB_global_L2:metric_keys",
+    "HGB_global_L2:MAE",
+    "HGB_global_L2:cell_MAE",
+    "HGB_global_L2:block_MAE",
+    "HGB_global_L2:half_MAE",
+    "HGB_global_L2:raw_activity_MAE",
+    "HGB_global_L8:shape_finite_clipped",
+    "HGB_global_L8:metric_keys",
+    "HGB_global_L8:MAE",
+    "HGB_global_L8:cell_MAE",
+    "HGB_global_L8:block_MAE",
+    "HGB_global_L8:half_MAE",
+    "HGB_global_L8:raw_activity_MAE",
+    "HGB_local_L2:shape_finite_clipped",
+    "HGB_local_L2:metric_keys",
+    "HGB_local_L2:MAE",
+    "HGB_local_L2:cell_MAE",
+    "HGB_local_L2:block_MAE",
+    "HGB_local_L2:half_MAE",
+    "HGB_local_L2:raw_activity_MAE",
+    "HGB_local_L8:shape_finite_clipped",
+    "HGB_local_L8:metric_keys",
+    "HGB_local_L8:MAE",
+    "HGB_local_L8:cell_MAE",
+    "HGB_local_L8:block_MAE",
+    "HGB_local_L8:half_MAE",
+    "HGB_local_L8:raw_activity_MAE",
+    "Ridge_geo2_L2:shape_finite_clipped",
+    "Ridge_geo2_L2:metric_keys",
+    "Ridge_geo2_L2:MAE",
+    "Ridge_geo2_L2:cell_MAE",
+    "Ridge_geo2_L2:block_MAE",
+    "Ridge_geo2_L2:half_MAE",
+    "Ridge_geo2_L2:raw_activity_MAE",
+    "Ridge_geo2_L8:shape_finite_clipped",
+    "Ridge_geo2_L8:metric_keys",
+    "Ridge_geo2_L8:MAE",
+    "Ridge_geo2_L8:cell_MAE",
+    "Ridge_geo2_L8:block_MAE",
+    "Ridge_geo2_L8:half_MAE",
+    "Ridge_geo2_L8:raw_activity_MAE",
+    "Ridge_global_ID_L2:shape_finite_clipped",
+    "Ridge_global_ID_L2:metric_keys",
+    "Ridge_global_ID_L2:MAE",
+    "Ridge_global_ID_L2:cell_MAE",
+    "Ridge_global_ID_L2:block_MAE",
+    "Ridge_global_ID_L2:half_MAE",
+    "Ridge_global_ID_L2:raw_activity_MAE",
+    "Ridge_global_ID_L8:shape_finite_clipped",
+    "Ridge_global_ID_L8:metric_keys",
+    "Ridge_global_ID_L8:MAE",
+    "Ridge_global_ID_L8:cell_MAE",
+    "Ridge_global_ID_L8:block_MAE",
+    "Ridge_global_ID_L8:half_MAE",
+    "Ridge_global_ID_L8:raw_activity_MAE",
+    "Ridge_global_L2:shape_finite_clipped",
+    "Ridge_global_L2:metric_keys",
+    "Ridge_global_L2:MAE",
+    "Ridge_global_L2:cell_MAE",
+    "Ridge_global_L2:block_MAE",
+    "Ridge_global_L2:half_MAE",
+    "Ridge_global_L2:raw_activity_MAE",
+    "Ridge_global_L8:shape_finite_clipped",
+    "Ridge_global_L8:metric_keys",
+    "Ridge_global_L8:MAE",
+    "Ridge_global_L8:cell_MAE",
+    "Ridge_global_L8:block_MAE",
+    "Ridge_global_L8:half_MAE",
+    "Ridge_global_L8:raw_activity_MAE",
+    "Ridge_local_L2:shape_finite_clipped",
+    "Ridge_local_L2:metric_keys",
+    "Ridge_local_L2:MAE",
+    "Ridge_local_L2:cell_MAE",
+    "Ridge_local_L2:block_MAE",
+    "Ridge_local_L2:half_MAE",
+    "Ridge_local_L2:raw_activity_MAE",
+    "Ridge_local_L8:shape_finite_clipped",
+    "Ridge_local_L8:metric_keys",
+    "Ridge_local_L8:MAE",
+    "Ridge_local_L8:cell_MAE",
+    "Ridge_local_L8:block_MAE",
+    "Ridge_local_L8:half_MAE",
+    "Ridge_local_L8:raw_activity_MAE",
+    "TabICL_geo2_L2:shape_finite_clipped",
+    "TabICL_geo2_L2:metric_keys",
+    "TabICL_geo2_L2:MAE",
+    "TabICL_geo2_L2:cell_MAE",
+    "TabICL_geo2_L2:block_MAE",
+    "TabICL_geo2_L2:half_MAE",
+    "TabICL_geo2_L2:raw_activity_MAE",
+    "TabICL_geo2_L8:shape_finite_clipped",
+    "TabICL_geo2_L8:metric_keys",
+    "TabICL_geo2_L8:MAE",
+    "TabICL_geo2_L8:cell_MAE",
+    "TabICL_geo2_L8:block_MAE",
+    "TabICL_geo2_L8:half_MAE",
+    "TabICL_geo2_L8:raw_activity_MAE",
+    "TabICL_global_ID_L2:shape_finite_clipped",
+    "TabICL_global_ID_L2:metric_keys",
+    "TabICL_global_ID_L2:MAE",
+    "TabICL_global_ID_L2:cell_MAE",
+    "TabICL_global_ID_L2:block_MAE",
+    "TabICL_global_ID_L2:half_MAE",
+    "TabICL_global_ID_L2:raw_activity_MAE",
+    "TabICL_global_ID_L8:shape_finite_clipped",
+    "TabICL_global_ID_L8:metric_keys",
+    "TabICL_global_ID_L8:MAE",
+    "TabICL_global_ID_L8:cell_MAE",
+    "TabICL_global_ID_L8:block_MAE",
+    "TabICL_global_ID_L8:half_MAE",
+    "TabICL_global_ID_L8:raw_activity_MAE",
+    "TabICL_global_L2:shape_finite_clipped",
+    "TabICL_global_L2:metric_keys",
+    "TabICL_global_L2:MAE",
+    "TabICL_global_L2:cell_MAE",
+    "TabICL_global_L2:block_MAE",
+    "TabICL_global_L2:half_MAE",
+    "TabICL_global_L2:raw_activity_MAE",
+    "TabICL_global_L8:shape_finite_clipped",
+    "TabICL_global_L8:metric_keys",
+    "TabICL_global_L8:MAE",
+    "TabICL_global_L8:cell_MAE",
+    "TabICL_global_L8:block_MAE",
+    "TabICL_global_L8:half_MAE",
+    "TabICL_global_L8:raw_activity_MAE",
+    "TabICL_local_L2:shape_finite_clipped",
+    "TabICL_local_L2:metric_keys",
+    "TabICL_local_L2:MAE",
+    "TabICL_local_L2:cell_MAE",
+    "TabICL_local_L2:block_MAE",
+    "TabICL_local_L2:half_MAE",
+    "TabICL_local_L2:raw_activity_MAE",
+    "TabICL_local_L8:shape_finite_clipped",
+    "TabICL_local_L8:metric_keys",
+    "TabICL_local_L8:MAE",
+    "TabICL_local_L8:cell_MAE",
+    "TabICL_local_L8:block_MAE",
+    "TabICL_local_L8:half_MAE",
+    "TabICL_local_L8:raw_activity_MAE",
+    "effect_keys",
+    "Ridge_geo2:interaction",
+    "Ridge_geo2:half_interaction",
+    "Ridge_geo2:block_interaction",
+    "Ridge_geo2:screen:global",
+    "Ridge_geo2:decision:global",
+    "Ridge_geo2:screen:global_ID",
+    "Ridge_geo2:decision:global_ID",
+    "Ridge_local:interaction",
+    "Ridge_local:half_interaction",
+    "Ridge_local:block_interaction",
+    "Ridge_local:screen:global",
+    "Ridge_local:decision:global",
+    "Ridge_local:screen:global_ID",
+    "Ridge_local:decision:global_ID",
+    "HGB_geo2:interaction",
+    "HGB_geo2:half_interaction",
+    "HGB_geo2:block_interaction",
+    "HGB_geo2:screen:global",
+    "HGB_geo2:decision:global",
+    "HGB_geo2:screen:global_ID",
+    "HGB_geo2:decision:global_ID",
+    "HGB_local:interaction",
+    "HGB_local:half_interaction",
+    "HGB_local:block_interaction",
+    "HGB_local:screen:global",
+    "HGB_local:decision:global",
+    "HGB_local:screen:global_ID",
+    "HGB_local:decision:global_ID",
+    "TabICL_geo2:interaction",
+    "TabICL_geo2:half_interaction",
+    "TabICL_geo2:block_interaction",
+    "TabICL_geo2:screen:global",
+    "TabICL_geo2:decision:global",
+    "TabICL_geo2:screen:global_ID",
+    "TabICL_geo2:decision:global_ID",
+    "TabICL_local:interaction",
+    "TabICL_local:half_interaction",
+    "TabICL_local:block_interaction",
+    "TabICL_local:screen:global",
+    "TabICL_local:decision:global",
+    "TabICL_local:screen:global_ID",
+    "TabICL_local:decision:global_ID",
+    "16_call_order",
+    "call:0",
+    "call:1",
+    "call:2",
+    "call:3",
+    "call:4",
+    "call:5",
+    "call:6",
+    "call:7",
+    "call:8",
+    "call:9",
+    "call:10",
+    "call:11",
+    "call:12",
+    "call:13",
+    "call:14",
+    "call:15",
+    "counts",
+    "Tab_timer_sum",
+    "nonduplicate_stage_partition",
+    "simple_in_cheap",
+    "recorded_completion",
+    "bounded_observation",
+    "no_RCTL_or_new_algorithm_validation",
+    "not_previously_accounted",
+    "whole_ledger_transition",
+    "budget_transition"
+  ],
+  "errors": [],
+  "checked_at_utc": "2026-10-09T21:21:13.293402+00:00",
+  "metric_values_checked": 288,
+  "interaction_values_checked": 42,
+  "screening_numeric_values_checked": 36,
+  "screening_flags_checked": 12,
+  "saved_prediction_values_checked": 6144,
+  "calculated_metrics": {
+    "HGB_geo2_L2": {
+      "MAE": 0.1187113988971871,
+      "cell_MAE": [
+        0.061362093313951704,
+        0.1080018677738168,
+        0.16966464817489174,
+        0.13581698632608807
+      ],
+      "block_MAE": [
+        0.05806616354354494,
+        0.06595900893008533,
+        0.06531830886019327,
+        0.2855021142549248
+      ],
+      "half_MAE": [
+        0.06201258623681514,
+        0.17541021155755904
+      ],
+      "raw_activity_MAE": 197.56075755969655
+    },
+    "HGB_geo2_L8": {
+      "MAE": 0.1195530117018157,
+      "cell_MAE": [
+        0.06219865807998619,
+        0.10766656079209577,
+        0.17236753055183585,
+        0.13597929738334502
+      ],
+      "block_MAE": [
+        0.0642367354538031,
+        0.06631106764700712,
+        0.06945845039389956,
+        0.2782057933125531
+      ],
+      "half_MAE": [
+        0.0652739015504051,
+        0.1738321218532263
+      ],
+      "raw_activity_MAE": 197.93002656162375
+    },
+    "HGB_global_ID_L2": {
+      "MAE": 0.10221015466604233,
+      "cell_MAE": [
+        0.05376300974792361,
+        0.11200449219615033,
+        0.13374836556657047,
+        0.10932475115352486
+      ],
+      "block_MAE": [
+        0.05495595548776257,
+        0.058347085866591736,
+        0.06255319807472166,
+        0.2329843792350933
+      ],
+      "half_MAE": [
+        0.056651520677177145,
+        0.14776878865490747
+      ],
+      "raw_activity_MAE": 164.09360143887318
+    },
+    "HGB_global_ID_L8": {
+      "MAE": 0.10780193143000587,
+      "cell_MAE": [
+        0.055362559506359266,
+        0.12257385237947625,
+        0.1470260438414832,
+        0.10624526999270474
+      ],
+      "block_MAE": [
+        0.05563832658890289,
+        0.06073984396525761,
+        0.06406837142362898,
+        0.250761183742234
+      ],
+      "half_MAE": [
+        0.05818908527708025,
+        0.1574147775829315
+      ],
+      "raw_activity_MAE": 163.10565519216925
+    },
+    "HGB_global_L2": {
+      "MAE": 0.10247648400859541,
+      "cell_MAE": [
+        0.05569233411035612,
+        0.11130913179206653,
+        0.13449386084993706,
+        0.10841060928202195
+      ],
+      "block_MAE": [
+        0.05791920267203596,
+        0.057703236480816836,
+        0.06278004044326026,
+        0.2315034564382686
+      ],
+      "half_MAE": [
+        0.05781121957642639,
+        0.14714174844076444
+      ],
+      "raw_activity_MAE": 163.2018052708137
+    },
+    "HGB_global_L8": {
+      "MAE": 0.11061544723209622,
+      "cell_MAE": [
+        0.0561050712691023,
+        0.1223160623839664,
+        0.14891154061154127,
+        0.11512911466377487
+      ],
+      "block_MAE": [
+        0.05853117360204117,
+        0.06334004595103396,
+        0.06547636853833104,
+        0.25511420083697867
+      ],
+      "half_MAE": [
+        0.060935609776537565,
+        0.16029528468765486
+      ],
+      "raw_activity_MAE": 173.83969016584228
+    },
+    "HGB_local_L2": {
+      "MAE": 0.12224943274592179,
+      "cell_MAE": [
+        0.06318476197358111,
+        0.11095356748838527,
+        0.15160157504936833,
+        0.1632578264723524
+      ],
+      "block_MAE": [
+        0.0653795596765113,
+        0.07031970164189863,
+        0.06494186569863823,
+        0.288356603966639
+      ],
+      "half_MAE": [
+        0.06784963065920496,
+        0.17664923483263859
+      ],
+      "raw_activity_MAE": 230.3571452307099
+    },
+    "HGB_local_L8": {
+      "MAE": 0.1263423160643099,
+      "cell_MAE": [
+        0.06594366989474852,
+        0.12241285610409908,
+        0.1507347264721457,
+        0.16627801178624624
+      ],
+      "block_MAE": [
+        0.0689662869071927,
+        0.06765378396360056,
+        0.06862756533878869,
+        0.3001216280476576
+      ],
+      "half_MAE": [
+        0.06831003543539664,
+        0.18437459669322312
+      ],
+      "raw_activity_MAE": 236.40763430118295
+    },
+    "Ridge_geo2_L2": {
+      "MAE": 0.09057669758983539,
+      "cell_MAE": [
+        0.053531499875034486,
+        0.1005220020727039,
+        0.120947470331138,
+        0.08730581808046516
+      ],
+      "block_MAE": [
+        0.06987876826052991,
+        0.0731725999270314,
+        0.06793556497551398,
+        0.15131985719626623
+      ],
+      "half_MAE": [
+        0.07152568409378066,
+        0.10962771108589012
+      ],
+      "raw_activity_MAE": 135.22116206747742
+    },
+    "Ridge_geo2_L8": {
+      "MAE": 0.09038601670685462,
+      "cell_MAE": [
+        0.05504302419189366,
+        0.09963658772642606,
+        0.11915943336095879,
+        0.08770502154813992
+      ],
+      "block_MAE": [
+        0.07117791417024384,
+        0.07676754978382642,
+        0.06692902431739395,
+        0.1466695785559542
+      ],
+      "half_MAE": [
+        0.07397273197703513,
+        0.10679930143667409
+      ],
+      "raw_activity_MAE": 135.69522983812038
+    },
+    "Ridge_global_ID_L2": {
+      "MAE": 0.09024976500630136,
+      "cell_MAE": [
+        0.05491478882478826,
+        0.09389113968248819,
+        0.12125102523417033,
+        0.09094210628375862
+      ],
+      "block_MAE": [
+        0.06234787759893387,
+        0.07603278812185202,
+        0.0695610010836402,
+        0.15305739322077933
+      ],
+      "half_MAE": [
+        0.06919033286039294,
+        0.11130919715220976
+      ],
+      "raw_activity_MAE": 138.58395511092567
+    },
+    "Ridge_global_ID_L8": {
+      "MAE": 0.08821936579076264,
+      "cell_MAE": [
+        0.05309118148004618,
+        0.089902588740596,
+        0.11767693205313631,
+        0.09220676088927207
+      ],
+      "block_MAE": [
+        0.06220930758932478,
+        0.07664680761993668,
+        0.0659499765976817,
+        0.14807137135610743
+      ],
+      "half_MAE": [
+        0.06942805760463074,
+        0.10701067397689457
+      ],
+      "raw_activity_MAE": 138.95149050463638
+    },
+    "Ridge_global_L2": {
+      "MAE": 0.09019911163931946,
+      "cell_MAE": [
+        0.0548879402147209,
+        0.09545514915127382,
+        0.12318693491955214,
+        0.08726642227173098
+      ],
+      "block_MAE": [
+        0.06224064968318621,
+        0.0757064561162667,
+        0.06895985263662315,
+        0.1538894881212018
+      ],
+      "half_MAE": [
+        0.06897355289972645,
+        0.11142467037891246
+      ],
+      "raw_activity_MAE": 134.55756179505786
+    },
+    "Ridge_global_L8": {
+      "MAE": 0.08834392681180414,
+      "cell_MAE": [
+        0.0526663048731795,
+        0.09182762764074814,
+        0.12026309152535401,
+        0.08861868320793492
+      ],
+      "block_MAE": [
+        0.062377149267361584,
+        0.07607884182954325,
+        0.06561533881160744,
+        0.1493043773387043
+      ],
+      "half_MAE": [
+        0.06922799554845241,
+        0.10745985807515587
+      ],
+      "raw_activity_MAE": 135.06031845301362
+    },
+    "Ridge_local_L2": {
+      "MAE": 0.09607310352697745,
+      "cell_MAE": [
+        0.05260972171640905,
+        0.11630837017239107,
+        0.12392648286697044,
+        0.09144783935213924
+      ],
+      "block_MAE": [
+        0.07458435868634103,
+        0.07305189583641375,
+        0.07268529744478522,
+        0.16397086214036977
+      ],
+      "half_MAE": [
+        0.0738181272613774,
+        0.11832807979257748
+      ],
+      "raw_activity_MAE": 142.98447725934665
+    },
+    "Ridge_local_L8": {
+      "MAE": 0.09417580616442969,
+      "cell_MAE": [
+        0.053141373652641107,
+        0.11127700427721458,
+        0.11834590864078565,
+        0.0939389380870774
+      ],
+      "block_MAE": [
+        0.07412021103302227,
+        0.07553652736295681,
+        0.0698929044658842,
+        0.15715358179585545
+      ],
+      "half_MAE": [
+        0.07482836919798955,
+        0.11352324313086982
+      ],
+      "raw_activity_MAE": 144.9034413914569
+    },
+    "TabICL_geo2_L2": {
+      "MAE": 0.0842537250390154,
+      "cell_MAE": [
+        0.059118045011196184,
+        0.07819815764827695,
+        0.11836164972089971,
+        0.0813370477756887
+      ],
+      "block_MAE": [
+        0.050566284401327835,
+        0.05851366859782711,
+        0.05628823889006116,
+        0.17164670826684547
+      ],
+      "half_MAE": [
+        0.05453997649957747,
+        0.11396747357845331
+      ],
+      "raw_activity_MAE": 124.82680104031665
+    },
+    "TabICL_geo2_L8": {
+      "MAE": 0.0861421815976274,
+      "cell_MAE": [
+        0.05561847768632119,
+        0.07815508724456455,
+        0.1201023838884882,
+        0.09069277757113572
+      ],
+      "block_MAE": [
+        0.051103301153583774,
+        0.05995096699551997,
+        0.054411150338232635,
+        0.17910330790317328
+      ],
+      "half_MAE": [
+        0.05552713407455187,
+        0.11675722912070297
+      ],
+      "raw_activity_MAE": 135.51134206585576
+    },
+    "TabICL_global_ID_L2": {
+      "MAE": 0.06971645420736351,
+      "cell_MAE": [
+        0.053506231563197865,
+        0.06533223233493163,
+        0.08787606790318217,
+        0.07215128502814239
+      ],
+      "block_MAE": [
+        0.04866315773931404,
+        0.057313491916021274,
+        0.05820239438897734,
+        0.11468677278514137
+      ],
+      "half_MAE": [
+        0.05298832482766765,
+        0.08644458358705936
+      ],
+      "raw_activity_MAE": 109.47392565433545
+    },
+    "TabICL_global_ID_L8": {
+      "MAE": 0.07387712713251854,
+      "cell_MAE": [
+        0.05088029398667107,
+        0.06805956930716432,
+        0.09848780066036154,
+        0.07808084457587722
+      ],
+      "block_MAE": [
+        0.05008072771650918,
+        0.05624200118899407,
+        0.05669570102790838,
+        0.13249007859666256
+      ],
+      "half_MAE": [
+        0.05316136445275162,
+        0.09459288981228547
+      ],
+      "raw_activity_MAE": 117.06355110486551
+    },
+    "TabICL_global_L2": {
+      "MAE": 0.0673273926088444,
+      "cell_MAE": [
+        0.05677525540510909,
+        0.06033304396258739,
+        0.08496669919166858,
+        0.06723457187601253
+      ],
+      "block_MAE": [
+        0.05237738663467886,
+        0.056249080787450424,
+        0.05720114475748397,
+        0.10348195825576437
+      ],
+      "half_MAE": [
+        0.05431323371106464,
+        0.08034155150662417
+      ],
+      "raw_activity_MAE": 103.09078839078124
+    },
+    "TabICL_global_L8": {
+      "MAE": 0.07228207127411841,
+      "cell_MAE": [
+        0.05235302747980583,
+        0.06614395835709211,
+        0.09720507238321473,
+        0.073426226876361
+      ],
+      "block_MAE": [
+        0.05271877214222952,
+        0.057075345834792277,
+        0.05428656596469013,
+        0.12504760115476174
+      ],
+      "half_MAE": [
+        0.0548970589885109,
+        0.08966708355972594
+      ],
+      "raw_activity_MAE": 111.34112455636475
+    },
+    "TabICL_local_L2": {
+      "MAE": 0.0951557948448715,
+      "cell_MAE": [
+        0.0540047836556193,
+        0.09429646410149273,
+        0.11259574493840796,
+        0.11972618668396597
+      ],
+      "block_MAE": [
+        0.05392002349270013,
+        0.05859103328270415,
+        0.06716758395016559,
+        0.2009445386539161
+      ],
+      "half_MAE": [
+        0.05625552838770213,
+        0.13405606130204084
+      ],
+      "raw_activity_MAE": 172.48679826598982
+    },
+    "TabICL_local_L8": {
+      "MAE": 0.09759955980834426,
+      "cell_MAE": [
+        0.052662353084797324,
+        0.10257920565406843,
+        0.11097897377172625,
+        0.12417770672278503
+      ],
+      "block_MAE": [
+        0.057708848213206834,
+        0.06123070281355856,
+        0.06733406541937123,
+        0.20412462278724042
+      ],
+      "half_MAE": [
+        0.0594697755133827,
+        0.1357293441033058
+      ],
+      "raw_activity_MAE": 179.01748036646956
+    }
+  },
+  "cheap_after60_seconds": 64.0087483000048,
+  "recorded_modeling_after60_seconds": 1977.5555366000026,
+  "source_groups": 15,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "pickle_loaded": false,
+  "independent_reproduction": false,
+  "scope": "Preserved output arithmetic and one historical ledger transition. Raw HDF5 identity is checked separately; original model execution is not reproduced."
+}

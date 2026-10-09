@@ -1,0 +1,29 @@
+# 59: cell 소속과 필요한 입력 길이의 관계 검토
+
+작성일: 2026-09-26. 기존 goal, 연구 범위, 누적 예산을 유지한다. 추천안이 아니라 검토 계획이다.
+
+## 확인할 질문
+
+cell을 합치면 서로 다른 발생 과정을 구별하기 위한 이력이 더 필요하고, 나누면 더 짧은 입력으로 예측할 수 있는가? 이 현상을 이용한 clustering이 단순 입력 길이 선택이나 기존 예측 기반 clustering보다 새로운 결정을 제공하는가?
+
+현재 RCTL은 8시점 입력이며 마지막 Dense의 크기가 steps×16에 의존한다. 8시점 모델의 입력을 잘라서 2시점으로 다시 학습한 모델의 성능처럼 보고하지 않는다. RCTL 추가 fit 상한은 0이다. 새 예측 결과를 얻기 전에 별도 실행 계획을 고정한다.
+
+## 원문 검토
+
+1. Efficiently Enhancing Long-term Series Forecasting via Adaptive Lookback with Wavelets, AAAI 2026. 실제 soft truncation/재구성, backbone과 공동 학습 여부, 연산 감소가 어디서 일어나는지 읽는다.
+2. Optimal Look-back Horizon for Time Series Forecasting in Federated Learning, arXiv:2511.12791의 최신 버전. squared-risk 분해의 범위와 horizon 최적성 가정, 실험을 읽는다. 증가하는 오차 상한을 실제 오차의 단조성으로 바꾸지 않는다.
+3. 이미 확보한 Why Do Time Series Models Need Long Context Windows?, arXiv:2606.01999v1. process identification과 conditional forecasting 구분을 재사용한다. 기존 메커니즘을 신규성으로 세지 않는다.
+4. 기존 HCP/Vario/UPC 문헌과 함께, 소속과 입력 길이를 공동 결정하는 직접 선행연구를 검색한다.
+
+새 공개 PDF는 개당 20 MB, metadata는 5 MB를 상한으로 확인한다. 공개 원문만 사용하고 외부 코드는 실행하지 않는다. 원문·버전·hash·읽은 절·검색 범위를 기록한다.
+
+## 판단 순서
+
+- 작은 논리 예: 개별 process의 짧은 기억과 process를 모르는 pooled predictor의 긴 기억이 다른 문제임을 확인한다. 이는 실제 트래픽 이득의 증거가 아니다.
+- 비용: RCTL core 연산, Dense 파라미터, cluster별 배치/모델 메모리를 분리해 계산한다. K개 모델이 N개 cell의 처리 sample 수를 자동으로 줄이지 않는다는 점을 유지한다.
+- 실제 자료 확인이 필요하면 같은 계절/달력 입력을 고정한 global/분할 × 짧은/기존 이력 비교를 사전 계획한다. Tab과 강한 단순 회귀를 같은 입력/정답/시간 분할로 비교한다. 전체 history를 없앤 것으로 설명하지 않는다.
+- 실질적인 grouping×history 상호작용이 없거나 simple predictor로 같은 결정을 얻으면 Tab 기반 신규 방향으로 채택하지 않는다. 반대로 실증 필요성과 불가능성을 혼동하지 않는다.
+
+## 이번 검토의 자원 한도
+
+원문/정적 코드 검토에는 새 model call이 없다. 현재 누적 Tab 49 contexts/35,968 query행, 잔여 31/24,032; RCTL 29 fits/잔여0. 새 모델 확인은 이 파일만으로 시작하지 않고 별도 계획에 정확한 호출 수·행 수·판정 기준을 고정한다.

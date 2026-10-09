@@ -1,0 +1,204 @@
+{
+  "batch_id": "history-051",
+  "claims": [
+    {
+      "claim_id": "H051-C01",
+      "claim": "계획59/60/61과62 판단의 역할",
+      "source_location": "SRC-0021920;SRC-0021940;SRC-0021961;SRC-0021984",
+      "verification_method": "전체 메모와 실제 결과 범위 연결",
+      "limit": "61·문헌 검수를 pilot 검수로 대체하지 않음"
+    },
+    {
+      "claim_id": "H051-C02",
+      "claim": "원자료 채널·크기·날짜·단위",
+      "source_location": "SRC-0023485;SRC-0022879 data block",
+      "verification_method": "HDF5 hash/shape·4열·날짜 확인",
+      "limit": "가공 이전 원자료·시간대·전체10000cell 품질 인증 아님"
+    },
+    {
+      "claim_id": "H051-C03",
+      "claim": "사전 네 cell과 개발 평가",
+      "source_location": "SRC-0021940 고정조건;SRC-0027868;SRC-0027865 flags",
+      "verification_method": "고정ID·사전 조건·test false 대조",
+      "limit": "독립 test·새 소속 알고리즘 아님"
+    },
+    {
+      "claim_id": "H051-C04",
+      "claim": "처음672 평균 정규화",
+      "source_location": "SRC-0022879 scale;SRC-0027863 scales;SRC-0023485",
+      "verification_method": "원자료 지정열 평균·저장scale/actual 대조",
+      "limit": "당시 fitted X/모델 객체 복원 아님"
+    },
+    {
+      "claim_id": "H051-C05",
+      "claim": "context/query 인덱스·실제 날짜",
+      "source_location": "SRC-0027868;SRC-0027863;SRC-0023485",
+      "verification_method": "256/64 선택·날짜64개·최장lag 경계 대조",
+      "limit": "전체개발자료가 미접근 test라는 의미 아님"
+    },
+    {
+      "claim_id": "H051-C06",
+      "claim": "L2/L8 공통 주기/요약 특징",
+      "source_location": "SRC-0021940;SRC-0022879 features;SRC-0027862 features",
+      "verification_method": "기본10/16와 ID14/20·lag/24h통계 코드 대조",
+      "limit": "전체history2시간·새요인 인과 분리 아님"
+    },
+    {
+      "claim_id": "H051-C07",
+      "claim": "group별 공유량과context크기",
+      "source_location": "SRC-0027868 groups;SRC-0027862",
+      "verification_method": "총1024와개별1024/512/256 검산",
+      "limit": "context크기 고정 소속효과 아님"
+    },
+    {
+      "claim_id": "H051-C08",
+      "claim": "global_ID 대안과고정 grouping",
+      "source_location": "SRC-0021940;SRC-0022879 groups/features",
+      "verification_method": "one-hot4열과고정partition 확인",
+      "limit": "UPC 전체·학습 clustering 결과 아님"
+    },
+    {
+      "claim_id": "H051-C09",
+      "claim": "Tab 설정과고정 checkpoint",
+      "source_location": "SRC-0022879 TabICLRegressor;SRC-0027868;SRC-0023488",
+      "verification_method": "seed/ensemble/CPU옵션과checkpointSHA",
+      "limit": "패키지환경/가중치객체를 독립 재현하지 않음"
+    },
+    {
+      "claim_id": "H051-C10",
+      "claim": "Ridge/HGB·clip 조건",
+      "source_location": "SRC-0022879 simple learner loop",
+      "verification_method": "alpha/Scaler/HGB/clip 정적 독해",
+      "limit": "저장되지 않은 fitted objects/clip전값 미확인"
+    },
+    {
+      "claim_id": "H051-C11",
+      "claim": "실제 X 미보존과입력 검수 경계",
+      "source_location": "SRC-0022879;SRC-0027863;SRC-0023485",
+      "verification_method": "저장 target/scale와원자료 및정적특징 구성 대조",
+      "limit": "실제 fit에 전달된모든배열 바이트 인증 아님"
+    },
+    {
+      "claim_id": "H051-C12",
+      "claim": "16contexts2048rows32simplefits",
+      "source_location": "SRC-0027862;SRC-0027866;SRC-0022879",
+      "verification_method": "호출16완료와루프/행/원장 대조",
+      "limit": "Tab context 제공을gradient학습16회로세지않음"
+    },
+    {
+      "claim_id": "H051-C13",
+      "claim": "partial/final 공통배열 동일",
+      "source_location": "SRC-0027863;SRC-0027864",
+      "verification_method": "공통27배열 전수비교",
+      "limit": "별도독립실험이나새예측으로세지않음"
+    },
+    {
+      "claim_id": "H051-C14",
+      "claim": "전체24조건288지표",
+      "source_location": "SRC-0027863;SRC-0027865 results",
+      "verification_method": "6144예측값의전체/cell/block/half/raw MAE 검산",
+      "limit": "normalized/raw척도 혼합 금지"
+    },
+    {
+      "claim_id": "H051-C15",
+      "claim": "Tabglobal2의긍정과3737반례",
+      "source_location": "SRC-0027865 results;SRC-0021984 §2",
+      "verification_method": "전체·반기·블록·cell 비교",
+      "limit": "모든cell·지역·모델에대한우위 아님"
+    },
+    {
+      "claim_id": "H051-C16",
+      "claim": "Tabglobal2와8의cell/날짜 손해",
+      "source_location": "SRC-0027865 TabICL_global_L2/8",
+      "verification_method": "전체개선과3737/12월22일 역전 대조",
+      "limit": "모든구간 짧은입력우위 아님"
+    },
+    {
+      "claim_id": "H051-C17",
+      "claim": "split2의전체/양반기 손해",
+      "source_location": "SRC-0027865 screening;SRC-0021984 §2",
+      "verification_method": "global/global_ID 대비분할MAE·날짜별예외 확인",
+      "limit": "전날짜 동일손해·다른분할 불가능성 아님"
+    },
+    {
+      "claim_id": "H051-C18",
+      "claim": "상호작용부호와추정기불일치",
+      "source_location": "SRC-0021940 I정의;SRC-0027865 grouping_history_interactions",
+      "verification_method": "6조합42값·양반기/날짜 부호 대조",
+      "limit": "인과효과·참정보량·안정적특성 추정 아님"
+    },
+    {
+      "claim_id": "H051-C19",
+      "claim": "한시점예측과부분query 평가",
+      "source_location": "SRC-0022879 features;SRC-0027868 query_times",
+      "verification_method": "과거실제값을활용한16시간×4날짜 확인",
+      "limit": "장기열린루프/연속전체기간평가 아님"
+    },
+    {
+      "claim_id": "H051-C20",
+      "claim": "시간합과타이머 경계",
+      "source_location": "SRC-0022879 timers;SRC-0027862;SRC-0027865 cost",
+      "verification_method": "16fit/predict합·simple에predict포함·stage저장제외 확인",
+      "limit": "모든전처리와최종저장 포함총시간 아님"
+    },
+    {
+      "claim_id": "H051-C21",
+      "claim": "RSS·자원상한의관측방식",
+      "source_location": "SRC-0021940 caps;SRC-0022879 check;SRC-0027865 cost",
+      "verification_method": "call사이검사·저장값 대조",
+      "limit": "연속peak·한call강제중단 아님"
+    },
+    {
+      "claim_id": "H051-C22",
+      "claim": "단일원장전환과회계시점",
+      "source_location": "SRC-0027861;SRC-0027869;SRC-0023214",
+      "verification_method": "전후전체JSON과한번delta·누적합 대조",
+      "limit": "62의61포함총계·완전한모든비용으로대체않음"
+    },
+    {
+      "claim_id": "H051-C23",
+      "claim": "완료근거와실행횟수 경계",
+      "source_location": "SRC-0027867;SRC-0027866;SRC-0027862;SRC-0021984 §5",
+      "verification_method": "시작/완료/출력·guard와현재중단파일부재 연결",
+      "limit": "원콘솔exit0/외부모든시도이력확보 아님"
+    },
+    {
+      "claim_id": "H051-C24",
+      "claim": "보존·사본·대형자산 범위",
+      "source_location": "SRC-0021920;SRC-0027861;SRC-0027863;SRC-0023485;SRC-0023488",
+      "verification_method": "15묶음31경로+2대형metadata,원본hash",
+      "limit": "새사본14와파생slice·서로다른자산범위구별"
+    },
+    {
+      "claim_id": "H051-C25",
+      "claim": "object날짜의정적읽기",
+      "source_location": "SRC-0027863 query_timestamps;SRC-0023485 idx",
+      "verification_method": "NPY header·직렬화64날짜문자열 대조",
+      "limit": "pickle/model객체 실행·전체수동원소독해 아님"
+    },
+    {
+      "claim_id": "H051-C26",
+      "claim": "검수기와오류검출 범위",
+      "source_location": "SRC-0027863;SRC-0027865;SRC-0027869",
+      "verification_method": "303검사와10개오염사본의실패검출",
+      "limit": "같은에이전트검수·모델독립재현 아님"
+    },
+    {
+      "claim_id": "H051-C27",
+      "claim": "62의다른절과후속연구 미완료",
+      "source_location": "SRC-0021920;SRC-0021961;SRC-0021984 §1/3/4",
+      "verification_method": "문헌/산술/새방향을미완료목록에보존",
+      "limit": "이묶음으로59–62전체·Goal완료 선언 아님"
+    },
+    {
+      "claim_id": "H051-C28",
+      "claim": "재사용·재검토 조건",
+      "source_location": "SRC-0021940 판정1–5;SRC-0021984 §4",
+      "verification_method": "공유량·새기간·계산비·최종RCTL 구별",
+      "limit": "좋은Tab직접예측을clustering→RCTL효과로대체않음"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_at_utc": "2026-10-09T21:31:24.555648+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 28개 주장과 기록/출처/검수 문서를 사전 계획60, 실행/회계 코드, 62의 pilot 절, 원자료 발췌와 저장 수치/전후 원장에 대조했다. 59의 일차문헌·61 산술은 미완료이며 모델 재현이나 독립 연구자 검수가 아니다."
+}

@@ -131,3 +131,6 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [56·58 SGD-as 사전 짝짓기](records/0056-0058-sgd-as.md)는 permutation의 불편성과 분산 감소 조건을 구분합니다. 이진분류 proxy·greedy 대응표·수식 보완·총비용과 MAE/RCTL 적용 경계를 [25개 주장](verification/history-049.md)에 연결했습니다.
 
 [56–58 학습량 감소 문헌 종합](records/0056-0058-compression-synthesis.md)은 다섯 방법의 선택 단위·학습기·비용·재검토 조건을 비교합니다. 42개 저장 파일의 범위와 조회 경로/실제 다운로드를 구분해, 기존 아이디어를 다른 이름으로 반복하기 전에 확인할 수 있습니다.
+
+
+[59–62 grouping과 최근 입력 길이](records/0059-0062-history-grouping.md)는 Tab의 global·L2 긍정 결과와 grouping 미지지를 함께 보존합니다. 24조건의 저장 예측·날짜별/셀별 반례·비용과 원장 시점을 검수했습니다.
