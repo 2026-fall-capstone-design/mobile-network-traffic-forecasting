@@ -1,0 +1,45 @@
+from pathlib import Path
+import concurrent.futures, datetime, hashlib, json, urllib.request
+from pypdf import PdfReader
+
+root = Path(__file__).resolve().parent
+out = root / 'sources/history_grouping_59'
+out.mkdir(exist_ok=True)
+log = out / 'fetch_log.json'
+assert not log.exists(), 'Inspect existing fetch log; do not repeat.'
+items = [
+ ('ALW_AAAI2026.pdf', 'https://ojs.aaai.org/index.php/AAAI/article/download/39797/43758'),
+ ('ALW_metadata.html', 'https://ojs.aaai.org/index.php/AAAI/article/view/39797'),
+ ('optimal_lookback_2511_12791v1.pdf', 'https://arxiv.org/pdf/2511.12791v1'),
+ ('optimal_lookback_history.html', 'https://arxiv.org/abs/2511.12791'),
+ ('optimal_lookback_2511_12791v1.html', 'https://arxiv.org/html/2511.12791v1'),
+]
+
+def fetch(item):
+ name, url = item
+ cap = 20_000_000 if name.endswith('.pdf') else 5_000_000
+ rec = dict(file=name, url=url, cap_bytes=cap,
+            accessed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
+ try:
+  req = urllib.request.Request(url, headers={'User-Agent':'Research source verification/1.0'})
+  with urllib.request.urlopen(req, timeout=25) as response:
+   data = response.read(cap+1)
+   rec.update(status=response.status, final_url=response.url)
+  if len(data)>cap: raise ValueError('Size cap exceeded')
+  if name.endswith('.pdf') and not data.startswith(b'%PDF-'): raise ValueError('Not PDF')
+  path=out/name
+  path.write_bytes(data)
+  rec.update(bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+  if name.endswith('.pdf'):
+   pdf=PdfReader(path)
+   rec['pages']=len(pdf.pages)
+   path.with_suffix('.txt').write_text('\n\n'.join(
+       f'--- PAGE {i+1} ---\n'+p.extract_text() for i,p in enumerate(pdf.pages)), encoding='utf-8')
+ except Exception as exc:
+  rec['error']=str(exc)
+ return rec
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+ records=list(pool.map(fetch,items))
+log.write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+for r in records: print(json.dumps(r,ensure_ascii=False),flush=True)

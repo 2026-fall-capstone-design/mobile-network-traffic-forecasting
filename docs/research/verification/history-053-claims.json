@@ -1,0 +1,239 @@
+{
+  "batch_id": "history-053",
+  "claims": [
+    {
+      "claim_id": "H053-C01",
+      "claim": "59의 연구 질문과 62의 ALW 판단",
+      "source_location": "SRC-0021920 전체;SRC-0021984 §1/4/5",
+      "verification_method": "계획과 당시 문헌·실증·정확 산술의 역할을 재대조",
+      "limit": "62의 horizon 및 전체 종합은 이번 완료 범위가 아님"
+    },
+    {
+      "claim_id": "H053-C02",
+      "claim": "서지·버전·저장 자료 식별",
+      "source_location": "SRC-0062775 p1/9;SRC-0062778 전체;SRC-0062777 commit",
+      "verification_method": "공식 서지, 저장 PDF SHA, gzip을 푼 metadata 및 고정 commit 대조",
+      "limit": "metadata의 다른 날짜 필드를 실제 제출일로 확정하지 않음"
+    },
+    {
+      "claim_id": "H053-C03",
+      "claim": "PDF 전체와 code10개의 실제 독해·원격 일치",
+      "source_location": "SRC-0062775–SRC-0062782;SRC-0062791–SRC-0062802",
+      "verification_method": "PDF9쪽·TXT·원 미리보기와 저장 code/README10개의 pinned raw byte 대조",
+      "limit": "tree에 존재하는 다른 코드·pyc·그림을 모두 읽었다고 하지 않음"
+    },
+    {
+      "claim_id": "H053-C04",
+      "claim": "다중 scale과 채널 공통 시간 중요도",
+      "source_location": "SRC-0062775 p3/4 식1/2;SRC-0062797 compute_adaptive_windows",
+      "verification_method": "Q/K 시간 선형층·채널 내적·sqrt(C)·시간 평균·channel broadcast 대조",
+      "limit": "cell별 clustering이나 소속 점수를 계산한 방법이 아님"
+    },
+    {
+      "claim_id": "H053-C05",
+      "claim": "soft 경계·mask·고정 H 투영과 남는 연산",
+      "source_location": "SRC-0062775 p4 식3–5;SRC-0062793/SRC-0062797 전체",
+      "verification_method": "역방향 누적·softargmax·sigmoid 및 전체 QK/mask/projection 경로 대조",
+      "limit": "가까운0을 실제 hard crop 또는 연산 생략으로 해석하지 않음"
+    },
+    {
+      "claim_id": "H053-C06",
+      "claim": "ALW와 예측기의 공동 학습",
+      "source_location": "SRC-0062792 _select_optimizer/train;SRC-0062796 _select_optimizer/train;SRC-0062794–SRC-0062800",
+      "verification_method": "submodule·전체 parameter Adam·MSE/backward/step·validation earlystop 전달 대조",
+      "limit": "epoch별 test loss 출력만으로 test 기반 선택을 확정하지 않음"
+    },
+    {
+      "claim_id": "H053-C07",
+      "claim": "8자료·4horizon·4모델과 표1의 비교 기준",
+      "source_location": "SRC-0062775 p4/5 Table1;SRC-0062798 전체",
+      "verification_method": "128쌍 및 검색 baseline L96/192/336/512와 ALW512→256을 구별",
+      "limit": "Autoformer 코드 존재를 이 표의 성능 결과로 추가하지 않음"
+    },
+    {
+      "claim_id": "H053-C08",
+      "claim": "Traffic 자료의 의미",
+      "source_location": "SRC-0062775 p4 Datasets;ALW-SUP-16 전체;ALW-SUP-18 p13 A.1",
+      "verification_method": "인용 논문의 도로점유율 정의와 862채널 custom 설정 대조",
+      "limit": "실제 같은 CSV의 hash·모바일 cell 성능은 미확인"
+    },
+    {
+      "claim_id": "H053-C09",
+      "claim": "시간 분할과 경계 입력",
+      "source_location": "ALW-SUP-07 ETT/Custom class;ALW-SUP-09 앞뒤 ETT/Custom class",
+      "verification_method": "12/4/4의30일 단위와 minute×4, custom 70/10/20, target 시작 및 앞 입력 중첩 대조",
+      "limit": "코드는 CSV행순서를 전제로 하며 실제 날짜·정렬·누락 미확인"
+    },
+    {
+      "claim_id": "H053-C10",
+      "claim": "정규화·metric·평가 window의 가중",
+      "source_location": "ALW-SUP-07/09 scaler와getitem;ALW-SUP-10/11 전체;SRC-0062792 test;SRC-0062796 test",
+      "verification_method": "train scaler 적합과 window concatenate 뒤 전체 평균 MSE/MAE 확인",
+      "limit": "원단위 MAE나 각timestamp 단한번의 평가로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H053-C11",
+      "claim": "두 data factory 및 중복 class의 차이",
+      "source_location": "ALW-SUP-06/08 전체;ALW-SUP-09 6개 class",
+      "verification_method": "validation shuffle/drop_last와 test 설정, 뒤 class binding 대조",
+      "limit": "다른 dataset loader 전체를 검토한 것은 아님"
+    },
+    {
+      "claim_id": "H053-C12",
+      "claim": "환경 설명의 불일치",
+      "source_location": "SRC-0062775 p5;SRC-0062791 README;ALW-SUP-05 전체",
+      "verification_method": "논문torch2.6.0/twoT4/Linux와 requirements2.1.2, README3.8.8 구별",
+      "limit": "호환 설치·실행 성공 또는 논문 환경 재현을 주장하지 않음"
+    },
+    {
+      "claim_id": "H053-C13",
+      "claim": "seed·반복과 실제 실행값의 공백",
+      "source_location": "SRC-0062775 p5;ALW-SUP-03/04 전체;ALW-SUP-12–ALW-SUP-15 전체",
+      "verification_method": "기본2021/2024, 선택 shell의 seed override 없음 및 itr1 대조",
+      "limit": "코드 기본값을 출판 표의 실제 seed로 확정하지 않음"
+    },
+    {
+      "claim_id": "H053-C14",
+      "claim": "학습 epoch 설명과 ETTh1 shell 차이",
+      "source_location": "SRC-0062775 p5;ALW-SUP-12–ALW-SUP-15 전체",
+      "verification_method": "논문10–100과 horizon별10/10/1/1,4/1/1/3,5/5/5/5,5/3/5/3 비교",
+      "limit": "저장 shell이 논문 전체 결과의 정확한 recipe라는 증거 없음"
+    },
+    {
+      "claim_id": "H053-C15",
+      "claim": "표1의 개선·표시 동률·악화 수",
+      "source_location": "SRC-0062775 p5 Table1",
+      "verification_method": "512인쇄값 전사 대조 및128쌍별 MSE120/8/0·MAE103/25/0 산술",
+      "limit": "인쇄 동률을 원 정밀값 동률이나 통계적 유의성으로 해석하지 않음"
+    },
+    {
+      "claim_id": "H053-C16",
+      "claim": "평균 감소율의 두 집계식",
+      "source_location": "SRC-0062775 p5/6 Table1/MainResults",
+      "verification_method": "Decimal45자리와 Fraction으로 행별 비율 평균 및 평균오차비를 따로 계산",
+      "limit": "전체3.2307%와3.4751%를 같은 정의로 비교하지 않음"
+    },
+    {
+      "claim_id": "H053-C17",
+      "claim": "논문 표시 비율과 반올림 한계",
+      "source_location": "SRC-0062775 p6 MainResults",
+      "verification_method": "모델·ETTh2·Weather의 재계산과 .001 최근접 반올림 조건부 범위 대조",
+      "limit": "일부 한자리 반올림 차이는 있으나 원 정밀값·집계식 없이 산술 오류로 확정하지 않음"
+    },
+    {
+      "claim_id": "H053-C18",
+      "claim": "표2 모듈 제거 결과와 baseline 평균",
+      "source_location": "SRC-0062775 p6 Table2",
+      "verification_method": "36인쇄값, baseline6값의 표1 평균, 제거변형30값의 양의 오차차이 확인",
+      "limit": "정확 ablation 코드·반복 배열·조건 분리의 실행 증거는 미확인"
+    },
+    {
+      "claim_id": "H053-C19",
+      "claim": "표3 wavelet과 단계의 표시 동률",
+      "source_location": "SRC-0062775 p7 Table3",
+      "verification_method": "20값 전사와 db6 최소, Weather J3/J5=.220 동률 확인",
+      "limit": "J3의 모든 자료에서 엄격한 우위로 확대하지 않음"
+    },
+    {
+      "claim_id": "H053-C20",
+      "claim": "그림4에서 남는 긴 입력의 손해",
+      "source_location": "SRC-0062775 p6/7 Figure4",
+      "verification_method": "ETT/F720/L512–4320 범위와 hourly자료의 증가, 저자의 세 원인 설명 구별",
+      "limit": "29.6/70.9%는 원 배열 미확보 저자 보고이며 새로운 정밀 재계산값이 아님"
+    },
+    {
+      "claim_id": "H053-C21",
+      "claim": "표4의 고정 L96·L512·ALW 비교 조건",
+      "source_location": "SRC-0062775 p7 Table4/효율 설명",
+      "verification_method": "48인쇄값과 ETTh1/F720, 시간 단위 iteration 및 입력 조건 대조",
+      "limit": "표1의 검색된 baseline이나 현재환경 프로파일과 혼합하지 않음"
+    },
+    {
+      "claim_id": "H053-C22",
+      "claim": "표4의 비용·오차 동시 변화",
+      "source_location": "SRC-0062775 p7 Table4",
+      "verification_method": "4모델의 parameter/MAC/시간/MSE 및 고정L512 대비 배율2.62/3.14/1.86/3.76 검산",
+      "limit": "MAC 감소는 DLinear만이며 모든 모델 iteration 증가를 보존"
+    },
+    {
+      "claim_id": "H053-C23",
+      "claim": "평균 추가 시간과 전체 비용의 공백",
+      "source_location": "SRC-0062775 p7 효율 설명",
+      "verification_method": "L512대비10.15ms 및 L96대비10.875ms를 구별",
+      "limit": "iteration 증가를 전체 학습비용·hyperparameter 탐색 총비용으로 대체하지 않음"
+    },
+    {
+      "claim_id": "H053-C24",
+      "claim": "alpha/beta 양수 가정과 자유 Parameter",
+      "source_location": "SRC-0062775 p4 식3/4;SRC-0062793/SRC-0062797 alpha/beta;SRC-0062792/0062796 train",
+      "verification_method": "초기10의 자유 Parameter 및 명시 양수 parameterization/clamp 부재 확인",
+      "limit": "실제로 음수가 되었다는 주장은 checkpoint 없이 하지 않음"
+    },
+    {
+      "claim_id": "H053-C25",
+      "claim": "PE의 실제 축",
+      "source_location": "SRC-0062775 p4 식5;SRC-0062793/SRC-0062797 forward;ALW-SUP-01/02 PE",
+      "verification_method": "d_model=Hj와PE(C)→[1,C,Hj], position 축이channel임을 정적으로 대조",
+      "limit": "시간축 PE라는 설명과 구현을 동일시하거나 실제 성능 영향을 추정하지 않음"
+    },
+    {
+      "claim_id": "H053-C26",
+      "claim": "use_pe=False의 결합 효과",
+      "source_location": "SRC-0062793/SRC-0062797 forward;SRC-0062775 p6 Table2",
+      "verification_method": "PE와importance_weights 곱이 같은 분기 안에 있음을 확인",
+      "limit": "표2 w/oPE의 실제 recipe와 동일하다고 확정하지 않음"
+    },
+    {
+      "claim_id": "H053-C27",
+      "claim": "TQNet의 기본 정규화·복원식 차이",
+      "source_location": "SRC-0062793 forward;SRC-0062795 forward;ALW-SUP-04 기본값;ALW-SUP-15 model_name",
+      "verification_method": "TQNet_ALW에서 표준편차로 나눈 후 wrapper에서 그 제곱근으로 곱하는 경로 연결",
+      "limit": "실제 논문 결과 실패·오류나 영향 크기를 모델 실행 없이 확정하지 않음"
+    },
+    {
+      "claim_id": "H053-C28",
+      "claim": "TQNet layer의 미정의 속성과 short circuit",
+      "source_location": "SRC-0062793 init/forward;ALW-SUP-15 model_name",
+      "verification_method": "self.use_revin 미정의와 model_name==TQNet의 앞 조건 false를 함께 확인",
+      "limit": "기본 TQNet_ALW 실행이 AttributeError라고 잘못 보고하지 않음"
+    },
+    {
+      "claim_id": "H053-C29",
+      "claim": "정규화 비활성화의 지원 조건",
+      "source_location": "SRC-0062798 forecast;SRC-0062800 forecast;SRC-0062797 forward",
+      "verification_method": "mean/std None 반환과 wrapper 복원 전제 확인",
+      "limit": "기본 norm1 경로의 실행 실패로 일반화하지 않음"
+    },
+    {
+      "claim_id": "H053-C30",
+      "claim": "wavelet의 boundary 인자와 의존 버전",
+      "source_location": "SRC-0062793/SRC-0062797 init;ALW-SUP-05;ALW-SUP-17 전체",
+      "verification_method": "PyPI1.3.0배포SHA 확인 후 transform1d 텍스트의 inverse default zero 확인",
+      "limit": "forward symmetric와인자차이만으로 수치 복원 오류를 확정하지 않음"
+    },
+    {
+      "claim_id": "H053-C31",
+      "claim": "CycleNet 주기와 축소 표현 위치",
+      "source_location": "SRC-0062794 forward;ALW-SUP-09 getitem",
+      "verification_method": "s_end의 cycle_index와red_len을 사용하는cycleQueue 대조",
+      "limit": "원 clock time과 압축 latent 위치의 동일성이나 실측 영향 미확인"
+    },
+    {
+      "claim_id": "H053-C32",
+      "claim": "당시 적용 판단과 새 설계의 차이",
+      "source_location": "SRC-0021920;SRC-0021984 §1/4;SRC-0062775 방법/효율",
+      "verification_method": "공동학습·전체비용·기존window선택과RCTL독립조건 연결",
+      "limit": "attention/wavelet 자체 신규성 또는 모든grouping불가능성으로 확대하지 않음"
+    },
+    {
+      "claim_id": "H053-C33",
+      "claim": "실제 보존·독해와 아직 남은 범위",
+      "source_location": "SRC-0022757;SRC-0062781/0062782;SRC-0062790;SRC-0062806",
+      "verification_method": "원본25묶음50경로,8새사본/2재사용/15외부메타·18보조참조와수집/렌더기록 대조",
+      "limit": "horizon자료의존재/취득과본문독해를구분하고새모델/원코드실행0을유지"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_at_utc": "2026-10-09T22:31:39.365927+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 33개 주장을 ALW 전체 논문·원 코드·선택 의존 구현·59 계획·62 ALW 판단과 다시 대조했다. 인쇄616값은 두 PDF 추출기의 행/열값을 대조했고 집계26개는 Decimal/Fraction으로 확인했다. 실행 설정·PE축·복원식·불확실성을 구별했다. 독립 연구자의 모델 재현은 아니다."
+}
