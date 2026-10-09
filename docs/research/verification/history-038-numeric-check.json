@@ -1,0 +1,321 @@
+{
+  "table2_columns": [
+    "total",
+    "deployment",
+    "protocol",
+    "principle"
+  ],
+  "table2": {
+    "CIDDS": [
+      72,
+      30,
+      42,
+      0
+    ],
+    "Netflix": [
+      33,
+      0,
+      33,
+      0
+    ],
+    "MAWI": [
+      32,
+      0,
+      32,
+      0
+    ],
+    "MetaDC": [
+      10,
+      0,
+      0,
+      10
+    ]
+  },
+  "table3_columns": [
+    "meaningful",
+    "meaningless"
+  ],
+  "table3": {
+    "CIDDS": [
+      72,
+      176
+    ],
+    "Netflix": [
+      33,
+      82
+    ],
+    "MAWI": [
+      35,
+      24
+    ],
+    "MetaDC": [
+      10,
+      18
+    ]
+  },
+  "table4_columns": [
+    "learned",
+    "filtered_out",
+    "printed_fraction"
+  ],
+  "table4": {
+    "CIDDS": [
+      1203,
+      1150,
+      "0.96"
+    ],
+    "Netflix": [
+      11479,
+      10098,
+      "0.88"
+    ],
+    "MAWI": [
+      50989,
+      44859,
+      "0.88"
+    ],
+    "MetaDC": [
+      5934,
+      5322,
+      "0.91"
+    ]
+  },
+  "table_numeric_fields": 36,
+  "derived_filtering": [
+    {
+      "dataset": "CIDDS",
+      "learned": 1203,
+      "filtered_out": 1150,
+      "kept": 53,
+      "computed_filtering_fraction": "0.9559434746467165419783873649",
+      "rounded_two_places": "0.96",
+      "printed_fraction": "0.96",
+      "rounded_matches_printed": true
+    },
+    {
+      "dataset": "Netflix",
+      "learned": 11479,
+      "filtered_out": 10098,
+      "kept": 1381,
+      "computed_filtering_fraction": "0.8796933530795365449952086419",
+      "rounded_two_places": "0.88",
+      "printed_fraction": "0.88",
+      "rounded_matches_printed": true
+    },
+    {
+      "dataset": "MAWI",
+      "learned": 50989,
+      "filtered_out": 44859,
+      "kept": 6130,
+      "computed_filtering_fraction": "0.8797779913314636490223381514",
+      "rounded_two_places": "0.88",
+      "printed_fraction": "0.88",
+      "rounded_matches_printed": true
+    },
+    {
+      "dataset": "MetaDC",
+      "learned": 5934,
+      "filtered_out": 5322,
+      "kept": 612,
+      "computed_filtering_fraction": "0.8968655207280080889787664307",
+      "rounded_two_places": "0.90",
+      "printed_fraction": "0.91",
+      "rounded_matches_printed": false
+    }
+  ],
+  "coverage_Fig11": {
+    "CIDDS": {
+      "NetNomos": "1.00",
+      "FastDC": "0.89",
+      "H-Mine": "0.86",
+      "FlowChronicle": "0.07",
+      "DT": "0.43",
+      "DT(NetShare)": "0.40",
+      "DT(CTGAN)": "0.36"
+    },
+    "Netflix": {
+      "NetNomos": "0.94",
+      "FastDC": "0.17",
+      "H-Mine": "OOM",
+      "FlowChronicle": "not supported",
+      "DT": "0.17",
+      "DT(NetShare)": "0.11",
+      "DT(CTGAN)": "0.11"
+    },
+    "MAWI": {
+      "NetNomos": "0.81",
+      "FastDC": "0.19",
+      "H-Mine": "OOM",
+      "FlowChronicle": "not supported",
+      "DT": "0.00",
+      "DT(NetShare)": "0.00",
+      "DT(CTGAN)": "0.00"
+    },
+    "MetaDC": {
+      "NetNomos": "1.00",
+      "FastDC": "0.50",
+      "H-Mine": "not supported",
+      "FlowChronicle": "not supported",
+      "DT": "0.50",
+      "DT(NetShare)": "0.30",
+      "DT(CTGAN)": "0.20"
+    }
+  },
+  "coverage_numeric_values": 22,
+  "OOM_entries": 2,
+  "unsupported_entries": 4,
+  "violation_percent_Fig16": {
+    "CIDDS": {
+      "CTGAN": "67.6",
+      "TVAE": "49.5",
+      "NetShare": "34.2",
+      "EWGAN-GP": "23.4",
+      "FlowChronicle": "22.5",
+      "GPT-2": "15.3",
+      "RealTabFormer": "10.8",
+      "NetNomos": "0.0"
+    },
+    "Netflix": {
+      "NetDiffusion": "57.7",
+      "CTGAN": "51.4",
+      "EWGAN-GP": "48.6",
+      "TVAE": "45.0",
+      "GPT-2": "20.7",
+      "NetShare": "16.2",
+      "RealTabFormer": "4.5",
+      "NetNomos": "0.0"
+    },
+    "MAWI": {
+      "CTGAN": "46.9",
+      "TVAE": "46.5",
+      "NetShare": "18.9",
+      "EWGAN-GP": "17.5",
+      "NetDiffusion": "12.8",
+      "GPT-2": "12.4",
+      "RealTabFormer": "3.4",
+      "NetNomos": "0.3"
+    },
+    "MetaDC": {
+      "EWGAN-GP": "90.5",
+      "CTGAN": "76.2",
+      "TVAE": "71.4",
+      "GPT-2": "38.1",
+      "RealTabFormer": "33.3",
+      "NetNomos": "0.0"
+    }
+  },
+  "violation_numeric_values": 30,
+  "figure_mapping_method": "렌더한 p18/p21의 그림에서 이름과 인쇄 수치를 직접 대응했다. 추출 텍스트는 값의 존재만 확인하며 대응 관계를 보증하지 않는다. 막대 높이를 정밀 수치화하지 않았다.",
+  "filter_arithmetic": {
+    "precision_increase_pp": "5.1",
+    "precision_increase_relative_percent": "5.902777777777777777777777778",
+    "fpr_decrease_pp": "6.08",
+    "fpr_decrease_relative_percent": "88.11594202898550724637681159"
+  },
+  "limited_finite_examples": {
+    "Fig3_evidence": {
+      "c0": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "c2": [
+        1,
+        2
+      ],
+      "c5": [
+        0,
+        3,
+        4
+      ]
+    },
+    "minimal_cardinalities": [
+      1,
+      2
+    ],
+    "union": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "intersection": [],
+    "consistency_example": {
+      "D": [
+        0
+      ],
+      "M1": [
+        0,
+        1
+      ],
+      "M2": [
+        0,
+        2
+      ]
+    },
+    "R1_sequence": [
+      20,
+      15,
+      25,
+      39,
+      1
+    ],
+    "sum_k0": 100,
+    "sum_k1": 80
+  },
+  "limitations": [
+    "인쇄 수치와 작은 유한집합 예를 대조했다. 저자 코드·모델 실행이나 전체 증명 인증이 아니다.",
+    "성능 평균·속도비의 원 배열과 학습 분할 근거를 확보하지 않아 독립 재현으로 표시하지 않는다.",
+    "그림의 이름·수치 대응은 같은 아카이브 에이전트가 시각 대조한 것이며 독립 검증이 아니다.",
+    "관측 자료에 맞는 규칙과 선택된 벤치마크의 준수는 미래의 모든 데이터에 대한 보장이 아니다."
+  ],
+  "batch_id": "history-038",
+  "success": true,
+  "checked_at_utc": "2026-10-09T15:38:55.513697+00:00",
+  "source_id": "SRC-0064356",
+  "source_sha256": "9b31e13ab742f31de6a69c7d534905ab2ac1f5cf2e97078839280f8641fbd3ec",
+  "checks": [
+    "table2:CIDDS",
+    "table2_total:CIDDS",
+    "table2:Netflix",
+    "table2_total:Netflix",
+    "table2:MAWI",
+    "table2_total:MAWI",
+    "table2:MetaDC",
+    "table2_total:MetaDC",
+    "table3:CIDDS",
+    "table3:Netflix",
+    "table3:MAWI",
+    "table3:MetaDC",
+    "table4:CIDDS",
+    "table4:Netflix",
+    "table4:MAWI",
+    "table4:MetaDC",
+    "table4_three_rounding_matches",
+    "table3_MAWI_differs_from_table2",
+    "Fig11_numeric_anchor_values_present",
+    "Fig11_22numeric_2OOM_4unsupported",
+    "Netflix31of33_rounded94",
+    "MAWI26of32_rounded81",
+    "Fig16_all30printed_anchor_values_present",
+    "Fig16_NetNomos_nonzero_only_MAWI",
+    "Fig16_NetNomos_lowest_in_each_dataset",
+    "filter_text_numeric_anchors",
+    "precision5_1pp_and5_9percent",
+    "FPR6_08pp_88_12percent_not633_6",
+    "forecast_horizon_text",
+    "Fig3_hitting_example_description_anchors_p7",
+    "minimal_cover_sizes1and2",
+    "disjunction_union_vs_conjunction_intersection",
+    "empirical_consistency_does_not_order_full_models",
+    "R1_index_bounds_change_sum"
+  ],
+  "check_count": 34,
+  "document_check_completed": true,
+  "new_model_runs": 0,
+  "source_scripts_executed": false,
+  "random_draws": 0
+}

@@ -1,0 +1,278 @@
+{
+  "batch_id": "history-038",
+  "claims": [
+    {
+      "claim_id": "H038-C01",
+      "claim": "53의 관측 비용 질문과55의 NETNOMOS 판단을 연결한다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3 NETNOMOS 행",
+      "verification_method": "계획·당시 판단과 문헌의 입력/목적을 재대조",
+      "limit": "전체53/55 완료·과거 실행 지시 재개 아님"
+    },
+    {
+      "claim_id": "H038-C02",
+      "claim": "2026-09-26 저장한 저자 PDF는24쪽·3530479bytes이고 취득 로그 해시와 같다",
+      "source_location": "SRC-0064356 p1–24; SRC-0064355 NETNOMOS 항목",
+      "verification_method": "전체 본문·시각 자료와 버전·해시 확인",
+      "limit": "현재 공식 행사 버전·저자 코드·성능 재현은 미확인"
+    },
+    {
+      "claim_id": "H038-C03",
+      "claim": "Fig1–17·Table1–7·식1·R0–4·정리/보조정리와 Appendix A·예시21행을 읽었다",
+      "source_location": "SRC-0064356 p3–12/p17–24",
+      "verification_method": "18쪽 시각 자료와 전체24쪽 추출문 대조",
+      "limit": "참고문헌89편·벤치마크 규칙 전체·전체 증명의 독립 인증 아님"
+    },
+    {
+      "claim_id": "H038-C04",
+      "claim": "저장 TXT24쪽과 과거 p12 미리보기는 같은 PDF의 파생 자료다",
+      "source_location": "SRC-0064357 PAGE1–24; SRC-0064369 전체; SRC-0064358/SRC-0064359 NETNOMOS 항목",
+      "verification_method": "쪽 경계 공백 제외 텍스트 비교·원 이미지·로그 해시 확인",
+      "limit": "해상도·바이트가 다른 PNG/TXT를 독립 연구나 새 고유 텍스트로 집계하지 않음"
+    },
+    {
+      "claim_id": "H038-C05",
+      "claim": "규칙 학습·의미 필터·SMT 생성 제어를 합성·미래 예측·관측 복원에 각각 적용한다",
+      "source_location": "SRC-0064356 p1–4/p11–12",
+      "verification_method": "Fig2와§8.1–8.3의 입출력 비교",
+      "limit": "복원과 미래 예측·RCTL 소속 선택을 같은 결과로 보지 않음"
+    },
+    {
+      "claim_id": "H038-C06",
+      "claim": "관측 데이터에 맞는 규칙이 보편적·미래의 모든 네트워크 규칙이라는 보장은 없다",
+      "source_location": "SRC-0064356 p3–6/p8 §5",
+      "verification_method": "관측 변수·의미 필터의 전제와 한계 읽기",
+      "limit": "측정하지 않은 변수의 규칙 또는 분포 이동의 타당성 인증 아님"
+    },
+    {
+      "claim_id": "H038-C07",
+      "claim": "Γ는 유한 영역·문맥K·타입·상수/집계·지역적 ∀/∃로 표현 범위를 제한한다",
+      "source_location": "SRC-0064356 p5 Table1/p6 §4.2",
+      "verification_method": "문법과 상위10값·quartiles/p90·제약 읽기",
+      "limit": "무제한 FOL학습 보장·프로파일링 적합 범위 검증 아님"
+    },
+    {
+      "claim_id": "H038-C08",
+      "claim": "evidence set과 branch-and-bound를 사용하며 formula size 상한12와24시간 평가를 기록한다",
+      "source_location": "SRC-0064356 p6–10/p18 Fig3/12",
+      "verification_method": "알고리즘 단계·상한·비용 역할 대조",
+      "limit": "O(|D||P|)를 전체 탐색의 다항시간으로 확대하지 않음"
+    },
+    {
+      "claim_id": "H038-C09",
+      "claim": "GPT-4.1 고정 프롬프트에 규칙 표현3종과 도구3종을 조합한다",
+      "source_location": "SRC-0064356 p8/p10/p19 Appendix M",
+      "verification_method": "Raw/Interpreted/English와 검색/RAG 설정 확인",
+      "limit": "현재 API 실행·문서 속 프롬프트 지시 수행 아님"
+    },
+    {
+      "claim_id": "H038-C10",
+      "claim": "무의미 규칙 평가집합은 함의의 전제·결론을 섞고 자료 일치를 유지한 후보로 구성한다",
+      "source_location": "SRC-0064356 p9–10 §7.1/p17 Table3",
+      "verification_method": "Semantic Fusion 평가집합 구성 읽기",
+      "limit": "음성 사례의 의미 정답을 독립 전문가가 인증한 것으로 표시하지 않음"
+    },
+    {
+      "claim_id": "H038-C11",
+      "claim": "필드별 토큰화와 solver 유효 범위로 다음 값을 제한한다",
+      "source_location": "SRC-0064356 p8–9 Fig4/5 §6",
+      "verification_method": "숫자 문자·범주 전체값·전이 구조의 생성 제어 읽기",
+      "limit": "선택 규칙·solver/토큰화·feasibility 전제 밖의 정확성 보장 아님"
+    },
+    {
+      "claim_id": "H038-C12",
+      "claim": "합성 과제로 먼저 학습한 GPT-2를 규칙을 바꿔 세 과제에 재사용한다고 보고한다",
+      "source_location": "SRC-0064356 p11 §8",
+      "verification_method": "초기 학습과 과제 전환의 추가 학습을 구분",
+      "limit": "초기 학습0·모든 데이터셋의 단일 checkpoint·TabICL token 제약 구현 아님"
+    },
+    {
+      "claim_id": "H038-C13",
+      "claim": "CIDDS/Netflix/MAWI/MetaDC의 관측 환경과 Table2의72/33/32/10 규칙을 기록한다",
+      "source_location": "SRC-0064356 p17 Table2",
+      "verification_method": "전체·유형별 규칙16수치와 자료 형식 대조",
+      "limit": "모바일cell 데이터·독립 원자료 재집계 아님"
+    },
+    {
+      "claim_id": "H038-C14",
+      "claim": "Table3의 MAWI 의미 있는 규칙35는 Table2의32와 다르다",
+      "source_location": "SRC-0064356 p17 Table2/3",
+      "verification_method": "두 평가표의 분모·8수치 비교",
+      "limit": "근거 없이 같은 평가집합으로 통일하지 않음"
+    },
+    {
+      "claim_id": "H038-C15",
+      "claim": "40 logical CPU·Xeon E5-2660v3·256GiB·A100 환경을 보고한다",
+      "source_location": "SRC-0064356 p19 Appendix N",
+      "verification_method": "시험 환경 읽기",
+      "limit": "정확한 분할/정규화/seed/GPT-2설정/학습원장·재현은 미확인"
+    },
+    {
+      "claim_id": "H038-C16",
+      "claim": "coverage는 학습 이론에서 벤치마크 규칙이 유도되는 비율이다",
+      "source_location": "SRC-0064356 p7 식1/p10 §7.2",
+      "verification_method": "분모·판정 방식 확인",
+      "limit": "학습 규칙 수 전체 또는 전 세계 네트워크 규칙의 포괄률 아님"
+    },
+    {
+      "claim_id": "H038-C17",
+      "claim": "DuoAI 후속 IVy 정제는 생략하고 OOM·미지원은0과 구분한다",
+      "source_location": "SRC-0064356 p17 Appendix E/p18 Fig11",
+      "verification_method": "비교 설정과 실패/비지원 항목 확인",
+      "limit": "모든 비교 방법에 동일 실행 기능이 제공된 것으로 일반화하지 않음"
+    },
+    {
+      "claim_id": "H038-C18",
+      "claim": "Fig11의22값과 OOM2건·미지원4건을 보존하며 NN coverage1/.94/.81/1을 확인한다",
+      "source_location": "SRC-0064356 p10/p18 Fig11",
+      "verification_method": "시각 전사·31/33과26/32 반올림 대조",
+      "limit": "원시 규칙 집합·성능 재현·전체 규칙 학습 인증 아님"
+    },
+    {
+      "claim_id": "H038-C19",
+      "claim": "1.6–6.5배 scalability와 시간별 coverage는 저자 보고이며 경계 문구 차이를 남긴다",
+      "source_location": "SRC-0064356 p1/p9–10/p18 Fig12",
+      "verification_method": "본문 배율·75%/60% 문구와 곡선의 정성적 비교",
+      "limit": "원 배열·정확한 시간/속도비의 독립 재계산 아님"
+    },
+    {
+      "claim_id": "H038-C20",
+      "claim": "precision/FPR 개선 설명과 낮은 recall 및 MetaDC 설정별 반례를 함께 남긴다",
+      "source_location": "SRC-0064356 p10–11/p19 Fig13",
+      "verification_method": "82.5/9.2와 다른 기준값·그림/본문의 적용 범위 읽기",
+      "limit": "98.1/.73 경계를 모든 데이터·설정의 보장으로 표시하지 않음"
+    },
+    {
+      "claim_id": "H038-C21",
+      "claim": "86.4→91.5% precision은5.1%p·5.90% 상대 증가이고 FPR6.9→.82%는6.08%p·88.12% 상대 감소다",
+      "source_location": "SRC-0064356 p10 §7.3",
+      "verification_method": "인쇄값 Decimal 산술",
+      "limit": "FPR633.6% 감소 표현과 차이를 보존하며 원 실행 결과를 정정한 것으로 표시하지 않음"
+    },
+    {
+      "claim_id": "H038-C22",
+      "claim": "Table4 제거량으로 남은 규칙53/1381/6130/612를 계산하며 MetaDC비율은.90으로 반올림된다",
+      "source_location": "SRC-0064356 p18 Table4",
+      "verification_method": "12인쇄값·제거/잔여 구분·비율 산술",
+      "limit": "인쇄.91을 조용히 덮어쓰지 않으며 필터 실제 실행 재현 아님"
+    },
+    {
+      "claim_id": "H038-C23",
+      "claim": "합성 평가는 데이터셋별10K samples·JSD/EMD와 여러 생성기를 사용한다",
+      "source_location": "SRC-0064356 p11–12 §8.1/p20 Fig14",
+      "verification_method": "비교군·지원 자료·평가 단위 확인",
+      "limit": "개인정보 보호·원 시계열의 정확 복원·실시간 성능 검증 아님"
+    },
+    {
+      "claim_id": "H038-C24",
+      "claim": "평균 JSD1.94배·EMD27.9배는 최대값 제외 조건의 저자 보고이며 모든 필드 우위는 아니다",
+      "source_location": "SRC-0064356 p11 Fig8/p12/p20 Fig14",
+      "verification_method": "집계/표시 절단 조건·일부 더 낮은 비교군 막대 대조",
+      "limit": "정규화/집계 원 배열 없이 배율 독립 재계산 불가"
+    },
+    {
+      "claim_id": "H038-C25",
+      "claim": "Fig16의30위반율을 이름과 직접 대응해 NN0/0/.3/0%를 보존한다",
+      "source_location": "SRC-0064356 p21 Fig16",
+      "verification_method": "그림의 이름·수치 대응과 추출문 순서 차이를 시각 대조",
+      "limit": "숫자 존재 검사만으로 이름 대응을 인증하지 않음"
+    },
+    {
+      "claim_id": "H038-C26",
+      "claim": "MAWI 예외와 선택 규칙의 준수·전체 벤치마크 평가를 구분한다",
+      "source_location": "SRC-0064356 p9 §6/p12 §8.1/p21 Fig16/17",
+      "verification_method": "보장 문장·0.3%·위반 분포의 범위 비교",
+      "limit": "모든 규칙의0위반·solver 실패·0.3%=30samples·독립 다양성 인증 아님"
+    },
+    {
+      "claim_id": "H038-C27",
+      "claim": "미래 예측은 과거5x50ms의 관측 신호로 다음50ms ingress/egress를 예측한다",
+      "source_location": "SRC-0064356 p12 §8.2",
+      "verification_method": "입력 변수·과거250ms·출력·9비교군 대조",
+      "limit": "관측 복원·모바일cell/RCTL 소속 실험 아님"
+    },
+    {
+      "claim_id": "H038-C28",
+      "claim": "Fig15 sMAPE의 NETNOMOS 막대가 GPT-2보다 높아 여섯 지표 모두 개선이라는 해석을 제한한다",
+      "source_location": "SRC-0064356 p11–12/p21 Fig15",
+      "verification_method": "축 방향·색상·두 방향의 막대와15.04–42.67% 설명 재대조",
+      "limit": "정확한 막대값·통계적 유의성·저자 코드 실패는 미확인"
+    },
+    {
+      "claim_id": "H038-C29",
+      "claim": "MAE/RMSE/NRMSE/sMAPE와 R2/PearsonR 방향을 구분하고 최고 모델 아님을 보존한다",
+      "source_location": "SRC-0064356 p12 §8.2/p21 Fig15",
+      "verification_method": "여섯 metric 설명과 비교군 성능 읽기",
+      "limit": "R2를 explained variance라고 부른 원문의 정확한 metric 구현은 미확인"
+    },
+    {
+      "claim_id": "H038-C30",
+      "claim": "복원은50ms집계→1ms ingress이며 manual C4–7과learned 규칙을 구분한다",
+      "source_location": "SRC-0064356 p12 §8.3/Fig10",
+      "verification_method": "입력/목표·5직접지표/6burst지표·비교군 대조",
+      "limit": "미래 구간 예측·최종RCTL효용과 동일하지 않음"
+    },
+    {
+      "claim_id": "H038-C31",
+      "claim": "learned규칙의 이득과 Zoom2Net의 MSE/autocorrelation/Burst Position 우위를 함께 남긴다",
+      "source_location": "SRC-0064356 p12 Fig10",
+      "verification_method": "색상·normalized error축·본문 반례 대조",
+      "limit": "rawp99accuracy 방향·원값·rejection의 인과 해석 독립 검증 아님"
+    },
+    {
+      "claim_id": "H038-C32",
+      "claim": "p11은 규칙 강제에 약5배 추론 비용을 인정한다",
+      "source_location": "SRC-0064356 p11 §8",
+      "verification_method": "비용 문장·인용[35]의 역할 읽기",
+      "limit": "현재환경 timing·모든 비용 포함 비율·실시간 인증 아님"
+    },
+    {
+      "claim_id": "H038-C33",
+      "claim": "규칙 학습·LLM/API/검색·초기GPT2학습·solver를 별도 비용 항목으로 본다",
+      "source_location": "SRC-0064356 p8–12/p19 Appendix N; SRC-0021824 §3",
+      "verification_method": "수행 단계와 비용 누락 범위 연결",
+      "limit": "총latency/GPU시간/CPU시간/API요금/에너지 합계를 추정하지 않음"
+    },
+    {
+      "claim_id": "H038-C34",
+      "claim": "p5에서 D로 제한한 모델집합 정의만으로 모든 consistent 규칙의 강도를 구분할 수 없다",
+      "source_location": "SRC-0064356 p5 §4.1",
+      "verification_method": "정의의 구간 재독·작은 유한집합 예 대조",
+      "limit": "전체 학습법·저자 구현·정리의 반증 또는 독립 증명 인증 아님"
+    },
+    {
+      "claim_id": "H038-C35",
+      "claim": "Fig3의 크기1과2인 inclusion-minimal집합은 minimum cardinality와 구분된다",
+      "source_location": "SRC-0064356 p7 Lemma2/p8 Fig3",
+      "verification_method": "인쇄 evidence set의 부분집합/합집합 확인",
+      "limit": "모든 의미적 강도의 순서·실제 구현 알고리즘 인증 아님"
+    },
+    {
+      "claim_id": "H038-C36",
+      "claim": "p7의 논리곱 표기와 Appendix A의 논리합 전제는 다르다",
+      "source_location": "SRC-0064356 p7/p8 Fig3/p17 Appendix A",
+      "verification_method": "E2와E5의 합집합/교집합 및 증명 전제 대조",
+      "limit": "본문 오류를 고쳐 원문으로 제시하거나 전체 증명 실패를 단정하지 않음"
+    },
+    {
+      "claim_id": "H038-C37",
+      "claim": "R1의 합 시작 인덱스와 일부 그림의 표기 차이를 보존한다",
+      "source_location": "SRC-0064356 p4 R1/Fig2/p7/p8 Fig3/4",
+      "verification_method": "0부터/1부터 합100/80과 그림 인덱스/M 확인",
+      "limit": "실제 코드의 합계·성능 오류 여부는 미확인"
+    },
+    {
+      "claim_id": "H038-C38",
+      "claim": "Table5–7의 형식 누락·설명/식 차이·조건부 임계값을 명시한다",
+      "source_location": "SRC-0064356 p22 Table5/p23 Table6/p24 Table7",
+      "verification_method": "예시21행의 수식·prose·값26700/206305/5357 대조",
+      "limit": "인용RFC 전체 검토·보편 네트워크 법칙의 인증 아님"
+    },
+    {
+      "claim_id": "H038-C39",
+      "claim": "새 제안은 가용 입력·규칙 학습 범위·단순 비교군·최종 미래예측·전체 비용 차이가 필요하다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3/§5; SRC-0064356 p3–12",
+      "verification_method": "과거 질문과 방법·결과·반례의 재검토 조건 연결",
+      "limit": "새 모델 실행 승인·TabICL/RCTL 이득·전체53/55 완료 아님"
+    }
+  ]
+}
