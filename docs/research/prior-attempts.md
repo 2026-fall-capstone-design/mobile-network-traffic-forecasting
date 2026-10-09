@@ -114,3 +114,7 @@
 ## 관측 상태의 손해와 단순 예측기
 
 [26·27](records/0026-0027-observable-states.md)은 최근 수준·변화·하루 편차의 TRAIN 분위수 상태를 고정하고 기존 RCTL 8개 조건·계절 기준 3개·Ridge/HGB 2개를 대조했다. empirical의 급증 이득은 두 seed/기간에 남지만 전체 손해를 상쇄하지 못했다. Tab의 희소 high_high 이득과 HGB 전체 이득에도 seed·기간·cell 반례가 있다. actual target peak·입력 상태·micro/macro·빈도 기여를 바꾸어 결론을 선택하지 않는다.
+
+## 관계 차이·불확실성·residual 분할
+
+[28](records/0028-mechanism-uncertainty.md)은 TabMGP posterior clustering, predictive CLT/UD 병합 확신도, Vario의 mechanism partition/MDL/top-down, two-stage global residual clustering을 비교한 문헌 검토다. 새 모델 실행 결과가 아니다. 예측 폭이 넓다는 사실이나 residual 자기상관만으로 cell별 다른 예측기가 필요하다고 결론 내리지 않는다. 재검토 시 기존 방법이 남긴 손해, TabICL의 추가 정보, 바뀔 소속, 고정 RCTL의 효용과 비용을 연결한다. 이미 존재하는 TabICL adapter·prefix 비용·겹치는 lag의 정리 조건을 먼저 확인한다. [문헌 비교와 공식 근거](references/mechanism-uncertainty.md)를 재사용하고 새로운 실행 조건의 차이를 남긴다.

@@ -63,3 +63,5 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 [25 인접 문헌 목록](history-018-sources.jsonl)은 기존 보존3개 재사용과 Ma PDF metadata1건을 연결한다. [읽은 범위](../sources/history-018.md)는 세 논문의 지정 방법·PDF에서 고른 총15개 페이지의 시각 대조이며, NeST·Graph Coloring·NTK의 별도 웹 metadata3건은 inventory 파일 수에 넣지 않았다. NTK는 검색/기관 초록 단계다.25 §3–4를 추가 연결했고 전체 후속 이력·25 전체 통합은 미완료다.
 
 [26·27 출처 목록](history-019-sources.jsonl)은 새 원본 8개 1,350,811 bytes와 기존 2개, H5 metadata 1건을 연결한다. [열람 범위](../sources/history-019.md)는 텍스트/정적 코드 3개·작은 JSON 전체 3개·신규 수치 자료 2개의 선언한 검수 범위를 구별한다. 저장된 13개 예측·19개 상태를 검산했으며 실제 단순 모델 적합은 재현하지 않았다.
+
+[28 출처 목록](history-020-sources.jsonl)은 원문·manifest 사본 3개(12,092 bytes), 외부 문헌 4개·정적 코드 3개의 metadata, 미검토 추출 txt 3개를 구분합니다. [열람 범위](../sources/history-020.md)의 선택 페이지·절을 논문 전체 읽기로 집계하지 않습니다.
