@@ -1,0 +1,42 @@
+"""Fetch two primary papers for the recorded input-sharing review; never execute their code."""
+from pathlib import Path
+import hashlib, json, re, time, urllib.request, urllib.error
+from pypdf import PdfReader
+
+base = Path(__file__).resolve().parent
+out = base / 'sources/input_sharing_45'
+out.mkdir(parents=True, exist_ok=True)
+if (out / 'fetch_log.json').exists():
+    raise SystemExit('Source fetch already recorded; inspect before retrying.')
+sources = [
+    ('markov_boundary_v2.pdf', 'https://arxiv.org/pdf/2605.29411v2'),
+    ('markov_boundary_v2.html', 'https://arxiv.org/html/2605.29411v2'),
+    ('markov_boundary_abs.html', 'https://arxiv.org/abs/2605.29411'),
+    ('dic_st.html', 'https://www.mdpi.com/2072-4292/14/6/1439'),
+    ('dic_st.pdf', 'https://www.mdpi.com/2072-4292/14/6/1439/pdf'),
+]
+records=[]
+for name,url in sources:
+    rec={'file':name,'requested_url':url,'access_date':'2026-09-26'}
+    try:
+        request=urllib.request.Request(url, headers={'User-Agent':'Research literature reader/1.0'})
+        with urllib.request.urlopen(request,timeout=25) as response:
+            content=response.read(25_000_001)
+            rec.update(status=response.status,final_url=response.url,content_type=response.headers.get('Content-Type'))
+        if len(content)>25_000_000:
+            raise ValueError('Unexpectedly large response')
+        if name.endswith('.pdf') and not content.startswith(b'%PDF-'):
+            rec['error']='Response is not a PDF'
+        else:
+            path=out/name
+            path.write_bytes(content)
+            rec.update(bytes=len(content),sha256=hashlib.sha256(content).hexdigest())
+            if name.endswith('.pdf'):
+                reader=PdfReader(path)
+                rec['pages']=len(reader.pages)
+                (out/(path.stem+'.txt')).write_text('\n\n'.join(f'--- PAGE {i+1} ---\n{p.extract_text()}' for i,p in enumerate(reader.pages)),encoding='utf-8')
+    except Exception as exc:
+        rec['error']=str(exc)
+    records.append(rec)
+    print(json.dumps(rec,ensure_ascii=False),flush=True)
+    (out/'fetch_log.json').write_text(json.dumps(records,indent=2,ensure_ascii=False),encoding='utf-8')

@@ -1,0 +1,71 @@
+{
+  "success": true,
+  "scope": "47 §4 exact AR identity and §5 fixed candidate workload arithmetic only",
+  "stationary_noise_variance_unit": 1,
+  "transition_matrix": [
+    [
+      "0",
+      "1/2"
+    ],
+    [
+      "-1/2",
+      "0"
+    ]
+  ],
+  "covariance": [
+    [
+      "4/3",
+      "0"
+    ],
+    [
+      "0",
+      "4/3"
+    ]
+  ],
+  "lyapunov_identity": true,
+  "AtA_equals_quarter_identity": true,
+  "argument": "A norm=1/2<1; independent equal-variance Gaussian innovations yield unique stationary Gaussian with diagonal equal covariance (4/3)*noise_variance. For one most-recent timestamp ordered own/other inputs have the same distribution, but conditional medians are +/-0.5*other. A single identity-blind function cannot equal both for nonzero other, which occurs almost surely. Additional identity/role features or different history schema are outside this counterexample.",
+  "workload": [
+    {
+      "N": 128,
+      "k": 8,
+      "context_rows": 256,
+      "query_rows": 64,
+      "ensemble": 1,
+      "contexts": 1152,
+      "predicted_rows": 73728
+    },
+    {
+      "N": 1024,
+      "k": 8,
+      "context_rows": 256,
+      "query_rows": 64,
+      "ensemble": 1,
+      "contexts": 9216,
+      "predicted_rows": 589824
+    },
+    {
+      "N": 10000,
+      "k": 8,
+      "context_rows": 256,
+      "query_rows": 64,
+      "ensemble": 1,
+      "contexts": 90000,
+      "predicted_rows": 5760000
+    }
+  ],
+  "limits": [
+    "Logical example, not actual traffic evidence; no random samples or new model.",
+    "N(k+1) assumes one own and k separate candidate comparisons per cell, not a universal lower bound on all algorithms.",
+    "Runtime, repeated time blocks, candidate discovery, preprocessing, combinations and cache validity are not measured."
+  ],
+  "random_draws": 0,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "explicit_assumptions": [
+    "Zero-mean Gaussian innovations with common variance sigma^2 > 0, independent across coordinates and time, independent of the past.",
+    "Stationary process, one most-recent timestamp only, ordered own/other inputs, a single function without cell identity or role distinction.",
+    "Unit-noise covariance is 4/3 I; general covariance is (4/3) sigma^2 I. Conditional medians differ in sign almost surely."
+  ],
+  "verified_at_utc": "2026-10-09T10:35:12.165784+00:00"
+}

@@ -1,0 +1,19 @@
+from pathlib import Path
+import hashlib, json, urllib.request
+from pypdf import PdfReader
+base=Path(__file__).resolve().parent
+out=base/'sources/input_sharing_45'
+assert (out/'fetch_log.json').exists()
+assert not (out/'dic_st_publisher_static.json').exists()
+url='https://mdpi-res.com/d_attachment/remotesensing/remotesensing-14-01439/article_deploy/remotesensing-14-01439.pdf'
+req=urllib.request.Request(url,headers={'User-Agent':'Research literature reader/1.0'})
+with urllib.request.urlopen(req,timeout=25) as r:
+    content=r.read(25_000_001)
+    metadata={'url':url,'final_url':r.url,'status':r.status,'date':'2026-09-26'}
+assert content.startswith(b'%PDF-') and len(content)<25_000_000
+p=out/'dic_st_publisher.pdf';p.write_bytes(content)
+reader=PdfReader(p)
+metadata.update(bytes=len(content),sha256=hashlib.sha256(content).hexdigest(),pages=len(reader.pages))
+(out/'dic_st_publisher.txt').write_text('\n\n'.join(f'--- PAGE {i+1} ---\n{x.extract_text()}' for i,x in enumerate(reader.pages)),encoding='utf-8')
+(out/'dic_st_publisher_static.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
+print(json.dumps(metadata))
