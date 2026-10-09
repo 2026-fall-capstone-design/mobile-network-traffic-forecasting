@@ -109,3 +109,5 @@ H039은 [원본 9개와 ZIP hash-only 1개](history-039-sources.jsonl)를 [명�
 H040은 [기존 원본4개](history-040-sources.jsonl)와 [명세](../evidence/0053-ciena-telemetry/manifest.json)에 Ciena 후속 독해를 연결합니다. 정확 사본4개와 기존 외부참조3개를 재사용했고 새 복사·고유 다운로드 집계는 없습니다. [읽은 범위](../sources/history-040.md)는PDF23본문쪽/14시각쪽·그림11개·표4개이며 외부 논문 독해를 localfulltext나 새 독립 실험으로 가산하지 않습니다.
 
 H041은 [로컬 원본10행](history-041-sources.jsonl)과 [명세](../evidence/0051-stkdiff-audit/manifest.json)에 STK-Diff 후속 검수를 연결합니다. 새사본/전체본문1개(28줄)·기존사본9개·기존NPZ metadata1개·추가공식metadata10개이며, [읽은 범위](../sources/history-041.md)는그림4개/의존텍스트6개647줄입니다. 외부의존텍스트를localfulltext로중복가산하지않고51/55전체는미완료로유지합니다.
+
+H042는 [기존 원본3행](history-042-sources.jsonl)과 [명세](../evidence/0051-event-context/manifest.json)에 event 후속을 연결합니다. 정확사본3재사용·새복사0·공식추가metadata2개이며 [범위](../sources/history-042.md)는AAM44본문쪽/26시각쪽입니다. 표5/6의72개 값을 검수했으며 외부PDF를 새 로컬fulltext/wholeJSON으로 가산하지 않습니다. 전체51/55는 미완료입니다.

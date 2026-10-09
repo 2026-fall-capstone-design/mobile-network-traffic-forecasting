@@ -101,3 +101,5 @@ p16에 공개 데이터 Drive 폴더가 연결돼 있지만 이번 검토에서 
 ## 55의 event 문헌 접근 공백
 
 Andrea Pimpinella·Alessandro E.C. Redondi의 *Generative-aided and context-aware forecasting of mobile network traffic*, Computer Networks282:112147(2026), DOI10.1016/j.comnet.2026.112147은 [저자 저장소](https://re.public.polimi.it/handle/11311/1313047)와 [출판사](https://www.sciencedirect.com/science/article/pii/S1389128626001593) metadata로 식별했다. 원55와 [당시 fetch log](../evidence/0051-0055-gotsf-audit/originals/SRC-0063272.json)의 TLS 검증 실패를 보존했다. 2026-10-09 재시도도 저자 저장소는 TLS 검증을 켠 상태에서403, 출판사 웹 접근은403이었다. 검색에 저자 postprint가 표시됐다는 사실을 원문 입수·방법 검토 완료로 세지 않는다. event·미래에 알려진 정보·augmentation의 실제 구현과 효과는 **본문 미검토**다.
+
+후속 H042에서는 [event AAM44쪽을 확보·검토](0051-event-context.md)했다. 위의 TLS/403·본문 미검토는 H034 당시 상태로 보존하며, 현재 방법·수식·표의 확인 범위와 미해결 사항은 후속 기록에서 확인한다.

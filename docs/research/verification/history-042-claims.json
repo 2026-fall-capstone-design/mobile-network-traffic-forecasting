@@ -1,0 +1,285 @@
+{
+  "batch_id": "history-042",
+  "claims": [
+    {
+      "claim_id": "H042-C01",
+      "claim": "51/55의 원래 event 범위는 계획·metadata·접근 실패다",
+      "source_location": "SRC-0021746 L3–25;SRC-0021824 L15–20,L84;SRC-0063272 entry6",
+      "verification_method": "보존 원문 전체 재독·TLS 로그 대조",
+      "limit": "과거 미검토를 소급 변경하지 않음"
+    },
+    {
+      "claim_id": "H042-C02",
+      "claim": "공식 AAM은44쪽2341022bytes,2026-04-20 footer다",
+      "source_location": "EXT-H042-01 p2;공식 저장소 metadata",
+      "verification_method": "PDF SHA256·크기·표지 시각 확인",
+      "limit": "publisher 본문 판본 동일성 미확인"
+    },
+    {
+      "claim_id": "H042-C03",
+      "claim": "44본문쪽과26시각쪽의16그림6표6번호식 검토",
+      "source_location": "EXT-H042-01 p1–44",
+      "verification_method": "page receipts·hash·실제 텍스트/이미지 독해",
+      "limit": "인용문헌 완독 또는 원자료 재현 아님"
+    },
+    {
+      "claim_id": "H042-C04",
+      "claim": "TLS/403 기록 뒤 공개 브라우저 AAM 입수 성공",
+      "source_location": "SRC-0063272 entry6;EXT-H042-01 official URL",
+      "verification_method": "과거 로그·현재 입수 receipt",
+      "limit": "시간별 접근 상태를 구분"
+    },
+    {
+      "claim_id": "H042-C05",
+      "claim": "출판사 캐시는 데이터 공유 권한 없음을 표시",
+      "source_location": "EXT-H042-02 publisher cached metadata",
+      "verification_method": "검색에서 availability 읽기",
+      "limit": "AAM 본문 문구 아님;raw/code 확보 아님"
+    },
+    {
+      "claim_id": "H042-C06",
+      "claim": "target은 시간당 eNodeB→도시 또는 cell집단 합계다",
+      "source_location": "EXT-H042-01 p9–12 Eq1,p37–39",
+      "verification_method": "집계 설명·표/그림 대조",
+      "limit": "개별cell/RCTL/Internet activity와 동일시 안 함"
+    },
+    {
+      "claim_id": "H042-C07",
+      "claim": "네 자료의 기간과 Table2 표본5712/1512/3864/3528",
+      "source_location": "EXT-H042-01 p9–12 Table2",
+      "verification_method": "본문·표 이미지 대조",
+      "limit": "날짜/표본 모순이 남음"
+    },
+    {
+      "claim_id": "H042-C08",
+      "claim": "Table4 A train 날짜29주와 인쇄27주가 다르다",
+      "source_location": "EXT-H042-01 p26 Table4",
+      "verification_method": "양끝 포함 date 계산",
+      "limit": "휴일/누락 원자료 복원 아님"
+    },
+    {
+      "claim_id": "H042-C09",
+      "claim": "C/D 표 날짜 시간수2856/3696과 표본3864/3528이 다르다",
+      "source_location": "EXT-H042-01 p12 Table2,p26 Table4",
+      "verification_method": "표본/날짜 산술",
+      "limit": "DST·휴일을 실제 재구성하거나 누수 입증 안 함"
+    },
+    {
+      "claim_id": "H042-C10",
+      "claim": "event 통계와 Fig1 정규화는 모델 전처리 보증이 아니다",
+      "source_location": "EXT-H042-01 p12 Table2/Fig1",
+      "verification_method": "표 네행·caption 대조",
+      "limit": "overhead는 인과효과 아님"
+    },
+    {
+      "claim_id": "H042-C11",
+      "claim": "calendar binary와 반올림·3bin 설명의 구현 공백",
+      "source_location": "EXT-H042-01 p11–13,p19",
+      "verification_method": "시각/본문·입력 정의 대조",
+      "limit": "종료시각/취소일정의 asof가 미확인"
+    },
+    {
+      "claim_id": "H042-C12",
+      "claim": "Fig2의2.4/4배는 표시값2.375/3.90625의 반올림",
+      "source_location": "EXT-H042-01 p13 Fig2",
+      "verification_method": "bar labels·유리수 비 계산",
+      "limit": "원 빈도 분모·인과효과 재현 아님"
+    },
+    {
+      "claim_id": "H042-C13",
+      "claim": "B1 MWS와 B2 MWS+관련팀 eventδ 비교",
+      "source_location": "EXT-H042-01 p19–21 Eq3/Fig6",
+      "verification_method": "본문·도식 읽기",
+      "limit": "2022b 상세 구현은 미독해"
+    },
+    {
+      "claim_id": "H042-C14",
+      "claim": "PL의 미래 예측과 미래calendar를 FL에 결합한다",
+      "source_location": "EXT-H042-01 p21–25 Fig7–9/Table3",
+      "verification_method": "입력 화살표·공동 학습 문장 대조",
+      "limit": "미래 정답 사용을 입증하지 않음"
+    },
+    {
+      "claim_id": "H042-C15",
+      "claim": "closed-loop는 실제 망 제어 실증을 뜻하지 않는다",
+      "source_location": "EXT-H042-01 p4–5,p23,p41",
+      "verification_method": "구조·future work 대비",
+      "limit": "전력·자원 절감 측정 아님"
+    },
+    {
+      "claim_id": "H042-C16",
+      "claim": "lookback4주,horizon1/4주,구조/loss/lr/200epochs",
+      "source_location": "EXT-H042-01 p23–26",
+      "verification_method": "그림8/9·설정 본문 대조",
+      "limit": "seed/batch/optimizer/FTepochs/검증 규칙 미확인"
+    },
+    {
+      "claim_id": "H042-C17",
+      "claim": "STL168·Bezier·event별Gaussian을 train에서 추정한다",
+      "source_location": "EXT-H042-01 p14–18",
+      "verification_method": "Eq2·Fig4/5·설명 대조",
+      "limit": "통계 보존·성분 독립의 별도 입증 아님"
+    },
+    {
+      "claim_id": "H042-C18",
+      "claim": "ξ%/(1−ξ)% 표기와 Bezier 개수 차이를 임의 정정 안 한다",
+      "source_location": "EXT-H042-01 p15–17",
+      "verification_method": "inline 식·Fig4 legend시각 대조",
+      "limit": "실제 코드 오류 또는 최종판 오류로 단정 안 함"
+    },
+    {
+      "claim_id": "H042-C19",
+      "claim": "MAPE/E-MAPE 식에 절댓값이 없고 Eq4의 합도M이다",
+      "source_location": "EXT-H042-01 p26 Eq4/5,p27",
+      "verification_method": "원 페이지 이미지·설명 비교",
+      "limit": "구현을 통상식 또는 인쇄식으로 확정 안 함"
+    },
+    {
+      "claim_id": "H042-C20",
+      "claim": "BHE는 signed daily busy-hour error의70th percentile",
+      "source_location": "EXT-H042-01 p26–29 Eq6",
+      "verification_method": "식·오차 방향·본문 대조",
+      "limit": "zero처리/peak정렬/최악 tail 보증 미확인"
+    },
+    {
+      "claim_id": "H042-C21",
+      "claim": "A의7.59/+0.1/약7 보고와 Fig12 FNN+FNN 반례",
+      "source_location": "EXT-H042-01 p28–30 Fig10–12",
+      "verification_method": "본문 숫자·bar 상대높이",
+      "limit": "정확 label 없는 bar 숫자 만들지 않음"
+    },
+    {
+      "claim_id": "H042-C22",
+      "claim": "B/C longitudinal은 재학습이며 B2 MAPE가 우세",
+      "source_location": "EXT-H042-01 p30–31 Fig13",
+      "verification_method": "retraining 문장·그래프 읽기",
+      "limit": "zero-shot transfer 아님;37.2/41.3 전체 재계산 안 함"
+    },
+    {
+      "claim_id": "H042-C23",
+      "claim": "K 실험의 예측기 합성-only와 생성기 real-train은 다르다",
+      "source_location": "EXT-H042-01 p17,p32–33 Fig14",
+      "verification_method": "학습 주체·caption 구분",
+      "limit": "원자료 없이 생성하지 않음"
+    },
+    {
+      "claim_id": "H042-C24",
+      "claim": "큰 K의 손해와 E-MAPE 비단조가 그림14에 보인다",
+      "source_location": "EXT-H042-01 p32–34 Fig14",
+      "verification_method": "K10→50/100→250/2000→5000 및 K5000MAPE 시각 대조",
+      "limit": "정성 확인이며 pixel digitization 없음"
+    },
+    {
+      "claim_id": "H042-C25",
+      "claim": "Fig15 개선율은 저자 보고, A BHE는0에서 멀어진다",
+      "source_location": "EXT-H042-01 p34–35 Fig15",
+      "verification_method": "보고 비율·부호/거리 시각 대조",
+      "limit": "allmetrics/allscenarios 이득으로 확대 안 함"
+    },
+    {
+      "claim_id": "H042-C26",
+      "claim": "Table5/6의72개 인쇄 지표를 보존·대조",
+      "source_location": "EXT-H042-01 p37–38 Table5/6",
+      "verification_method": "18개 행 전사·추출문·시각 검수",
+      "limit": "저자 모델 재평가 아님"
+    },
+    {
+      "claim_id": "H042-C27",
+      "claim": "4주 B2MAPE4.25가DL최선5.69보다1.44pp 낮다",
+      "source_location": "EXT-H042-01 p36–37 Table5",
+      "verification_method": "표 전체 MAPE 비교·차이 계산",
+      "limit": "시간창/실험조건 다른 표와 직접 합산 안 함"
+    },
+    {
+      "claim_id": "H042-C28",
+      "claim": "Table5 E-MAPE 최선 감소60.29%로70%초과 아님",
+      "source_location": "EXT-H042-01 p36–37 Table5",
+      "verification_method": "(9.57−3.80)/9.57",
+      "limit": "표시값 기반이며 미공개 원자료 비율 아님"
+    },
+    {
+      "claim_id": "H042-C29",
+      "claim": "BHE의 절댓값 거리93.19%와 signed차이106.81%는 다르다",
+      "source_location": "EXT-H042-01 p37 Table5",
+      "verification_method": "+5.58→−0.38 두 산술 명시",
+      "limit": "상충하는 부호를 숨긴 공통 개선율 금지"
+    },
+    {
+      "claim_id": "H042-C30",
+      "claim": "도시 B2는 전체MAPE우세,SYN event오차는4배 넘게 작다",
+      "source_location": "EXT-H042-01 p38 Table6",
+      "verification_method": "각 행 비교·27.02/E 비율",
+      "limit": "전체·event 지표를 섞지 않음"
+    },
+    {
+      "claim_id": "H042-C31",
+      "claim": "도시 네K 동등평균의Real대비 감소15.78/23.56%",
+      "source_location": "EXT-H042-01 p38 Table6",
+      "verification_method": "네 K 평균10.435/5.855 산술",
+      "limit": "저자 미공개 가중법을 복원한 값 아님"
+    },
+    {
+      "claim_id": "H042-C32",
+      "claim": "주거K100이득과 K250 MAPE손해를 함께 보존",
+      "source_location": "EXT-H042-01 p38–39 Table6",
+      "verification_method": "10.65/7.25,39.46/6.61 및14.79 비교",
+      "limit": "주거 모든 설정 이득 아님"
+    },
+    {
+      "claim_id": "H042-C33",
+      "claim": "업무K250은 MAPE이득/E-MAPE손해",
+      "source_location": "EXT-H042-01 p38–39 Table6",
+      "verification_method": "9.38<9.84,14.85>10.02;각 DL E열 비교",
+      "limit": "B2가 모든 모델 모든 지표 우세라고 쓰지 않음"
+    },
+    {
+      "claim_id": "H042-C34",
+      "claim": "Table6 BHE는 의도적으로 보고하지 않았다",
+      "source_location": "EXT-H042-01 p38",
+      "verification_method": "omitted 문장·표 열 대조",
+      "limit": "세 지표 전체 성능 확인 아님"
+    },
+    {
+      "claim_id": "H042-C35",
+      "claim": "두 집단 합계 예측은 소속 수정 기여 검증이 아니다",
+      "source_location": "EXT-H042-01 p37–39 Fig16/Table6",
+      "verification_method": "집단 선택/합계·군집 상세 부재 검토",
+      "limit": "개별cell·K탐색·RCTL로 전이 보증 안 함"
+    },
+    {
+      "claim_id": "H042-C36",
+      "claim": "Table1의2024망과 D의 집단비율 분모를 동일시 안 한다",
+      "source_location": "EXT-H042-01 p9 Table1,p38–39",
+      "verification_method": "연도·8000cells·1500/500 및 비율 대조",
+      "limit": "실제 망 변화 원인은 미확인"
+    },
+    {
+      "claim_id": "H042-C37",
+      "claim": "horizonC/D 및 Fig16A/Rome label 충돌 보존",
+      "source_location": "EXT-H042-01 p34,p36–39",
+      "verification_method": "본문/표caption/그림caption 대조",
+      "limit": "실제 데이터 또는 최종판 오류로 단정 안 함"
+    },
+    {
+      "claim_id": "H042-C38",
+      "claim": "가벼운 generator 설명은 총학습/운영비 측정이 아니다",
+      "source_location": "EXT-H042-01 p14–17,p25,p32–41",
+      "verification_method": "K·학습·FT·비용기록 범위 대조",
+      "limit": "walltime/장비/메모리/총fit 미확인"
+    },
+    {
+      "claim_id": "H042-C39",
+      "claim": "재사용에 asof·metric·train생성·단순비교·최종RCTL 차이가 필요",
+      "source_location": "SRC-0021746 L5–25;SRC-0021824 L64–87;EXT-H042-01 p19–41",
+      "verification_method": "원계획 질문과 본문 한계를 연결한 아카이브 해석",
+      "limit": "새 실행 지시·성능 보장 아님"
+    },
+    {
+      "claim_id": "H042-C40",
+      "claim": "새 원본 복사/고유로컬본문/JSON 가산0,새모델0",
+      "source_location": "SRC-0021746;SRC-0021824;SRC-0063272;EXT-H042-01",
+      "verification_method": "기존사본3재사용·원본/보호원장SHA·작업기록",
+      "limit": "외부44쪽을 로컬원문이나 독립실험으로 중복 집계 안 함"
+    }
+  ]
+}
