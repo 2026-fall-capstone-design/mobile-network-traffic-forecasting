@@ -45,7 +45,7 @@
 | SRC-0023485 | [data_git_version.h5](https://media.githubusercontent.com/media/chuanting/STCNet/dc3ff65eb42b099ef8ec281c10282d6c47b533cb/Github_Version/data/data_git_version.7z) | 전체 SHA, idx[:], data[:720, 세cell−1, 2]. 기타값 미열람 |
 | SRC-0061698 | [Milan_official_metadata.json](https://doi.org/10.7910/DVN/EGZHFV) | data.latestVersion.files[0].dataFile 객체만 추가 확인. 전체 metadata 독해 아님 |
 
-외부 원문 EXT-P005-UPC는 DOI [10.1109/TNSM.2025.3599168](https://doi.org/10.1109/TNSM.2025.3599168), SHA256 `d8b720fe96f4d2da8ebcbe9dc779c0b4512dec0b2f4823295f908fcd639ae622`, 7,721,301 bytes다. PDF 4·6·7·8쪽 본문과 6·7·8쪽 그림·표를 읽었고, 기존 4·5쪽 시각 검토도 참조했다. 전체 논문 검토는 아니다. Fig. 7 축의 1·2·4·6·8·10·12를 확인해 원문32의 1~4 표현을 정정했다.
+외부 원문 EXT-P005-UPC는 DOI [10.1109/TNSM.2025.3599168](https://doi.org/10.1109/TNSM.2025.3599168), SHA256 `d8b720fe96f4d2da8ebcbe9dc779c0b4512dec0b2f4823295f908fcd639ae622`, 7,721,301 bytes다. PDF 4·6·7·8쪽 본문과 6·7·8쪽 그림·표를 읽었고, 기존 4·5쪽 시각 검토도 참조했다. 전체 논문 검토는 아니다. Fig. 7 축의 1·2·4·6·8·12를 확인해 원문32의 1~4 표현을 정정했다.
 
 Dataverse API는 [6.7 Getting File Metadata](https://guides.dataverse.org/en/6.7/api/native-api.html#getting-file-metadata)의 해당 절만 확인했다. 응답 id의 객체 역할에 사용했으며 Harvard의 현재 배포 버전·다운로드 성공을 검증한 것은 아니다.
 
