@@ -1,0 +1,114 @@
+{
+  "success": true,
+  "negative_cases": 14,
+  "cases": [
+    {
+      "case": "atom_probability",
+      "source_id": "SRC-0027888",
+      "rejected": true,
+      "reason": "fixed_atoms_unit_probability",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "wrong_unit",
+      "source_id": "SRC-0027888",
+      "rejected": true,
+      "reason": "fixed_atoms_unit_probability",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "xor_joint",
+      "source_id": "SRC-0027888",
+      "rejected": true,
+      "reason": "xor_case:joint_information",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "nonfinite",
+      "source_id": "SRC-0027888",
+      "rejected": true,
+      "reason": "xor_case:input_information",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "dropped_joint_gain",
+      "source_id": "SRC-0027888",
+      "rejected": true,
+      "reason": "duplicate_labels_gain:joint_predictive_difference",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "wrong_capacity",
+      "source_id": "SRC-0027888",
+      "rejected": true,
+      "reason": "duplicate_labels_gain:global_capacity_budget",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "boolean_numeric",
+      "source_id": "SRC-0027888",
+      "rejected": true,
+      "reason": "xor_case:joint_information",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "wrong_judgment",
+      "source_id": "SRC-0027888",
+      "rejected": true,
+      "reason": "xor_upper_bound_holds",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "claimed_model_call",
+      "source_id": "SRC-0027888",
+      "rejected": true,
+      "reason": "historical_model_calls_zero",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "paper_binding",
+      "source_id": "SRC-0027888",
+      "rejected": true,
+      "reason": "bound_paper_hash",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "ledger_time",
+      "source_id": "SRC-0022700",
+      "rejected": true,
+      "reason": "ledger_exact_stage_time",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "duplicate_stage",
+      "source_id": "SRC-0022700",
+      "rejected": true,
+      "reason": "duplicate JSON key: information_claim_audit_37",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "download_hash",
+      "source_id": "SRC-0062607",
+      "rejected": true,
+      "reason": "khan26a.pdf:download_identity",
+      "changed_source_hash_updated": true
+    },
+    {
+      "case": "404_as_success",
+      "source_id": "SRC-0062607",
+      "rejected": true,
+      "reason": "author_manuscript_404",
+      "changed_source_hash_updated": true
+    }
+  ],
+  "invariance_cases": [
+    {
+      "case": "later_ledger_total_irrelevant",
+      "passed": true
+    }
+  ],
+  "original_sources_modified": false,
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "scope": "Changed isolated copies and updated their manifest hashes; failures reached scientific/identity/ledger checks, not only source hashes."
+}

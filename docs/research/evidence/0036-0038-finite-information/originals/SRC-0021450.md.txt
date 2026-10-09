@@ -1,0 +1,25 @@
+# 37 공유·분할 정보이론 주장에 대한 유한 반례 확인
+
+2026-09-25. 계산 전에 조건과 판정 규칙을 고정한다. 새 TabICL·RCTL 학습/추론은 하지 않는다.
+
+## 질문
+
+Khan, UAI 2026, PMLR 337:2934–2957의 Lemma 3.1 하한, §5 조건부 total correlation의 단조성, Theorem 5.3의 분할 이득식을 현재 설계의 보장으로 사용할 수 있는가? PDF 3·5·6·15·16쪽을 렌더링하여 원문 표기를 확인했다. Appendix S4는 S4.37의 추가 joint-predictive 항과 S4.38의 saturation 조건을 명시한다.
+
+## 미리 고정한 네 계산
+
+독립인 공정한 두 bit A,B의 네 경우를 각각 확률 1/4로 정확히 열거한다. 모든 정보량은 bit이다. 경험적 추정·난수·모델 fit을 쓰지 않는다.
+
+1. X=(A,B), Y1=A, Y2=B, Z=A XOR B. I(Z;Y1)+I(Z;Y2), I(Z;Y1,Y2), TC(Y1,Y2), TC(Y1,Y2|Z)를 계산한다. 예상값 0,1,0,1이면 일반적인 chain-rule 하한과 조건부 TC 감소 주장은 성립하지 않는다. 정확한 identity와 상한은 별도로 확인한다.
+2. X=(A,B), Y1=Y2=A. Global Zs=(A,B), C=2; singleton encoders Z1=Z2=A, C1=C2=1. 이들은 각 label을 완전히 보존하므로 예측 정보에 관해 최적이다. 실제 sum-rate 이득과 축약식, S4.37 전체 식을 비교한다. 예상값은 0,-1,0이다. 입력 정보 예산이 active여도 joint-label information이 그 예산에 도달한다는 뜻은 아니다.
+3. 위 XOR에서 shared representation은 상수, 추가 representation은 XOR로 둔다. 조건부 TC가 0에서 1로 증가하는지 계산한다. 조건부 entropy의 감소와 TC의 감소를 혼동하지 않는다.
+4. X=(A,B), 독립 label A,B; global Z=(A,B), singleton 각각 A,B. S4.38이 성립하는 경우로 전체 식과 축약식이 모두 실제 이득 0을 반환하는지 확인한다.
+
+## 판정과 비용
+
+- 알려진 반례가 확인되면 해당 일반화된 주장을 RCTL 독립 clustering의 근거로 채택하지 않는다. 논문의 유효한 정보 상한까지 부정하지 않는다.
+- 오류가 확인되지 않으면 입력/표현/정의의 해석을 다시 확인하며 성능 실험을 추가하지 않는다.
+- 네 경우는 논리 적용 범위의 확인이다. 네트워크 자료에서의 TabICL 유용성 또는 새 clustering의 실증으로 사용하지 않는다.
+- Python 표준 라이브러리만 사용, 실행 수 1, 계산 상한 5초, model call 0. 실제 시간을 누적 cheap 진단 항목에 한 번 반영한다. 중복 실행은 marker로 막는다.
+
+결과 파일: `results/information_claim_audit_37/result.json`. 이 확인 뒤에는 잘못된 보장 대신 실제 계산 가능한 관측량과 최종 RCTL 학습의 연결을 설계해야 한다.

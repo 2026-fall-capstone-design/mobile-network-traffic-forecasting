@@ -1,0 +1,93 @@
+{
+  "audit_scope": "exact finite mathematical counterexamples; no traffic-data or model performance claims",
+  "source_pdf_sha256": "c0d663923db74a90a9f4512e28b95f062e5c01a8b939212d2c2665346c08ff93",
+  "unit": "bits",
+  "atoms": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "atom_probability": 0.25,
+  "xor_case": {
+    "sum_marginal_information": 0.0,
+    "joint_information": 1.0,
+    "TC_unconditional": 0.0,
+    "TC_conditional_XOR": 1.0,
+    "input_information": 1.0
+  },
+  "duplicate_labels_gain": {
+    "global_sum_information": 2.0,
+    "cluster_sum_information": 2.0,
+    "actual_gain": 0.0,
+    "shared_conditional_TC": 0.0,
+    "sum_cluster_conditional_TC": 0.0,
+    "between_cluster_TC": 1.0,
+    "reduced_gain_without_joint_term": -1.0,
+    "joint_predictive_difference": 1.0,
+    "full_identity_gain": 0.0,
+    "global_input_information": 2.0,
+    "global_joint_label_information": 1.0,
+    "global_capacity_budget": 2,
+    "cluster_input_information": [
+      1.0,
+      1.0
+    ],
+    "cluster_capacity_budgets": [
+      1,
+      1
+    ]
+  },
+  "conditional_TC_monotonicity": {
+    "before_TC": 0.0,
+    "after_TC": 1.0
+  },
+  "saturated_independent_labels_gain": {
+    "global_sum_information": 2.0,
+    "cluster_sum_information": 2.0,
+    "actual_gain": 0.0,
+    "shared_conditional_TC": 0.0,
+    "sum_cluster_conditional_TC": 0.0,
+    "between_cluster_TC": 0.0,
+    "reduced_gain_without_joint_term": 0.0,
+    "joint_predictive_difference": 0.0,
+    "full_identity_gain": 0.0,
+    "global_input_information": 2.0,
+    "global_joint_label_information": 2.0,
+    "global_capacity_budget": 2,
+    "cluster_input_information": [
+      1.0,
+      1.0
+    ],
+    "cluster_capacity_budgets": [
+      1,
+      1
+    ]
+  },
+  "checks": {
+    "xor_lower_bound_violated": true,
+    "xor_upper_bound_holds": true,
+    "xor_exact_identity_holds": true,
+    "conditional_TC_can_increase": true,
+    "duplicate_labels_full_identity_holds": true,
+    "duplicate_labels_reduced_identity_fails": true,
+    "active_input_budget_not_predictive_saturation": true,
+    "saturated_example_reduced_identity_holds": true
+  },
+  "numeric_wall_seconds": 0.0002907999987655785,
+  "TabICL_contexts": 0,
+  "RCTL_fits": 0,
+  "RCTL_forward_calls": 0
+}

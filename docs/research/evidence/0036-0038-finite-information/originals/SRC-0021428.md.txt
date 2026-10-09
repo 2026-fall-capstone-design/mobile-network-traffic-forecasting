@@ -1,0 +1,21 @@
+# 36 유한 학습의 공유 이득: 원문 검토 범위
+
+2026-09-25. 직전 33–35는 원문 대조와 고정 checkpoint의 새로운 수치를 확보한 progress다. live process를 기다리는 단계가 아니다.
+
+검토할 질문은, 최종 RCTL을 학습하기 전에 분할 이득을 판단할 때 필요한 정보를 최신 이론과 예측 진단이 실제로 제공하는가이다. 어떤 식이 존재하는 것과 그 항을 사전 계산할 수 있는 것을 구분한다.
+
+## 우선 원문 세 편
+
+1. Khan, *Capacity and Redundancy Trade-offs in Multi-Task Learning*, UAI 2026, PMLR 337:2934–2957. 최종 proceedings PDF의 capacity–redundancy identity, clustering gap, Gaussian gradient 관계와 실제 residual 추정을 확인한다.
+2. Pesaran, Pick, Timmermann, *Forecasting with panel data: Estimation uncertainty versus parameter heterogeneity*, Quantitative Economics 17(2), 2026, DOI 10.3982/QE2589. publisher 원문과 repository의 published version을 우선 찾는다. author manuscript는 2025-08-15 버전임을 구별한다. 선형성·exogeneity·N/T 근사와 추정 가능한 pooling 비용의 범위를 확인한다.
+3. Cakiroglu, Dalkilic, Kurban, *The Spectrum Is Not Enough: When Context Helps Time-Series Forecasting*, arXiv:2607.13006v2, 2026-07-15. §3–4, A.8–A.9의 실제 정보집합, oracle와 유한 estimator, nonlinear gain과 context value의 차이를 확인한다.
+
+## 판정 기준
+
+- trained target model의 representation·gradient·residual을 요구하면 RCTL 독립성 조건을 만족하는 무료 사전 점수로 채택하지 않는다.
+- log-loss/information, MSFE와 현재 MAE를 구별한다. Gaussian·독립·정상성 등을 확보하지 않고 이론을 옮기지 않는다.
+- oracle linear/Bayes risk와 실제 유한 데이터·regularization·TabICL prior의 위험을 구별한다.
+- bias–variance, 측정오차 보정, 안정성 기반 clustering을 이름만 바꾸어 새 방법으로 제시하지 않는다.
+- 공개 primary 원문을 파일당 10 MiB·timeout 30초 이내에서 보존한다. PDF signature·제목·버전·hash를 확인하며 외부 코드는 실행하지 않는다. 모델 실행은 이 계획에 없다.
+
+검색으로 발견한 Sonnleitner ESWA 2025(10.1016/j.eswa.2024.125666), measurement-error clustering, CLOSE, Barnes·Dubrawski 2019의 초록은 탐색 자료다. 실제 본문을 읽기 전에는 방법 검토가 완료되었다고 기록하지 않는다. 08–09에서 검토한 correlated-error pooling·quantile robust covariance 반례는 그대로 유지한다.

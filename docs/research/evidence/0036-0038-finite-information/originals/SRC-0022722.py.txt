@@ -1,0 +1,15 @@
+from pathlib import Path
+from html.parser import HTMLParser
+from pypdf import PdfReader
+import json
+base=Path(__file__).resolve().parent/'sources/finite_learning_36'
+class Links(HTMLParser):
+ def handle_starttag(self,tag,attrs):
+  a=dict(attrs)
+  if tag=='a' and any(x in a.get('href','') for x in ['bitstream','download']): print(a['href'])
+Links().feed((base/'panel_repository.html').read_text(encoding='utf-8'))
+for path in base.glob('*.pdf'):
+ reader=PdfReader(path)
+ text='\n\n'.join('PAGE '+str(i+1)+'\n'+page.extract_text() for i,page in enumerate(reader.pages))
+ path.with_suffix('.txt').write_text(text.replace(chr(0),''),encoding='utf-8')
+ print(json.dumps({'pdf':path.name,'pages':len(reader.pages),'title':reader.metadata.title},ensure_ascii=False))
