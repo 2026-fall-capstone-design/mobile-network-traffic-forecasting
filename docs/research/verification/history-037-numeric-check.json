@@ -1,0 +1,141 @@
+{
+  "runtime_table_columns": [
+    "window_seconds",
+    "zoom_factor",
+    "transformer_seconds",
+    "transformer_plus_CEM_seconds"
+  ],
+  "runtime_table": [
+    [
+      "0.25",
+      "50",
+      "0.00054",
+      "0.145"
+    ],
+    [
+      "0.5",
+      "50",
+      "0.00056",
+      "0.215"
+    ],
+    [
+      "1",
+      "50",
+      "0.00094",
+      "0.394"
+    ],
+    [
+      "1",
+      "25",
+      "0.00070",
+      "0.532"
+    ],
+    [
+      "1",
+      "100",
+      "0.00052",
+      "0.285"
+    ]
+  ],
+  "runtime_table_fields": 20,
+  "runtime_time_fields": 10,
+  "illustrative_signal_tables": {
+    "Fig3b": [
+      [
+        "0.895",
+        "0.05",
+        "0.74"
+      ],
+      [
+        "0.87",
+        "0.69",
+        "0.98"
+      ]
+    ],
+    "Fig4b": [
+      [
+        "0.80",
+        "0.06",
+        "0.60"
+      ],
+      [
+        "0.92",
+        "0.086",
+        "0.64"
+      ]
+    ]
+  },
+  "illustrative_signal_fields": 12,
+  "derived_runtime": [
+    {
+      "window_seconds": "0.25",
+      "zoom_factor": "50",
+      "system_over_transformer": "268.5185185185185185185185185",
+      "system_minus_transformer_seconds": "0.14446",
+      "conditional_1ms_intervals": "5.00"
+    },
+    {
+      "window_seconds": "0.5",
+      "zoom_factor": "50",
+      "system_over_transformer": "383.9285714285714285714285714",
+      "system_minus_transformer_seconds": "0.21444",
+      "conditional_1ms_intervals": "10.0"
+    },
+    {
+      "window_seconds": "1",
+      "zoom_factor": "50",
+      "system_over_transformer": "419.1489361702127659574468085",
+      "system_minus_transformer_seconds": "0.39306",
+      "conditional_1ms_intervals": "20"
+    },
+    {
+      "window_seconds": "1",
+      "zoom_factor": "25",
+      "system_over_transformer": "7.6E+2",
+      "system_minus_transformer_seconds": "0.53130",
+      "conditional_1ms_intervals": "40"
+    },
+    {
+      "window_seconds": "1",
+      "zoom_factor": "100",
+      "system_over_transformer": "548.0769230769230769230769231",
+      "system_minus_transformer_seconds": "0.28448",
+      "conditional_1ms_intervals": "10"
+    }
+  ],
+  "limitations": [
+    "인쇄 runtime 표와 예시 신호의 산술 검수이며 저자 구현·성능 재현은 수행하지 않았다.",
+    "전체 경로와 모델 단독의 차이는 overhead를 포함할 수 있으며 순수 solver 시간을 별도 측정한 것이 아니다.",
+    "38%·33–53% 등 성능 평균은 저자 주장이다. 원 배열·정규화 계수는 확보하지 못했다.",
+    "그래프 정확 수치 추출이나 통계적 유의성 검증은 수행하지 않았다."
+  ],
+  "batch_id": "history-037",
+  "success": true,
+  "checked_at_utc": "2026-10-09T15:14:49.396175+00:00",
+  "source_id": "SRC-0064364",
+  "source_sha256": "dcf0b6807d91801ba9f4a7324441563eee0c17083af354e46c94f29e1a6947b9",
+  "checks": [
+    "runtime_row:1",
+    "runtime_bounds:1",
+    "runtime_row:2",
+    "runtime_bounds:2",
+    "runtime_row:3",
+    "runtime_bounds:3",
+    "runtime_row:4",
+    "runtime_bounds:4",
+    "runtime_row:5",
+    "runtime_bounds:5",
+    "Fig3b:row1",
+    "Fig3b:row2",
+    "Fig4b:row1",
+    "Fig4b:row2",
+    "Fig3_max_not_identical",
+    "same_window_more_intervals_slower",
+    "same_factor_larger_window_slower"
+  ],
+  "check_count": 17,
+  "document_check_completed": true,
+  "new_model_runs": 0,
+  "source_scripts_executed": false,
+  "random_draws": 0
+}

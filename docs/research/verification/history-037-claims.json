@@ -1,0 +1,229 @@
+{
+  "batch_id": "history-037",
+  "claims": [
+    {
+      "claim_id": "H037-C01",
+      "claim": "53의 관측 비용 질문과55의 Zoom2Net 판단을 연결한다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3 Zoom2Net 행",
+      "verification_method": "계획과 당시 판단 재독",
+      "limit": "전체53/55 완료·과거 실행 지시 재개 아님"
+    },
+    {
+      "claim_id": "H037-C02",
+      "claim": "PDF14쪽·1120010bytes·해시는2026-09-26 취득 로그와 같다",
+      "source_location": "SRC-0064364 p1–14; SRC-0064355 Zoom2Net 항목",
+      "verification_method": "텍스트 전체·시각10쪽·파일 해시·취득 기록 대조",
+      "limit": "참고문헌54편의 원문 검토나 독립 재현 아님"
+    },
+    {
+      "claim_id": "H037-C03",
+      "claim": "TXT14쪽은 경계 공백 제외 동일하고 과거 미리보기3장은 다른 해상도의 같은 쪽이다",
+      "source_location": "SRC-0064365 PAGE1–14; SRC-0064372/SRC-0064373/SRC-0064374 전체; SRC-0064358/SRC-0064359 Zoom2Net 항목",
+      "verification_method": "문자 비교·원 이미지 읽기·로그 대조",
+      "limit": "PDF/TXT/PNG를 바이트 중복이나 독립 결과로 세지 않음"
+    },
+    {
+      "claim_id": "H037-C04",
+      "claim": "복원 대상은 거친 관측의 세밀한 과거 시계열이다",
+      "source_location": "SRC-0064364 p3–4 §3.1/Fig1/2",
+      "verification_method": "측정 함수와 출력·사용 목적 읽기",
+      "limit": "미래 트래픽 예측·RCTL 표본 공유 성능 아님"
+    },
+    {
+      "claim_id": "H037-C05",
+      "claim": "학습에는 대상 네트워크의 정밀 관측과 알려진 coarsening 함수가 필요하다",
+      "source_location": "SRC-0064364 p1/p3–4/p12",
+      "verification_method": "자료 가용성·일반화 전제 대조",
+      "limit": "미관측 정답이나 모든 미지 분포의 복원 보장 아님"
+    },
+    {
+      "claim_id": "H037-C06",
+      "claim": "같은 window의 다른 관측을 보는 encoder이며 offline 분석을 목표로 한다",
+      "source_location": "SRC-0064364 p4 Non goals/p8 Implementation",
+      "verification_method": "비목표·decoder 제외 이유·입력 조건 확인",
+      "limit": "실시간·causal forecasting의 입력 조건과 혼동하지 않음"
+    },
+    {
+      "claim_id": "H037-C07",
+      "claim": "서로 다른 granularity·불완전 동기화를 허용하지만 시차가 운영 제약을 깨뜨릴 수 있다",
+      "source_location": "SRC-0064364 p4/p6 §4.1",
+      "verification_method": "시차에 대한 저자 설명 대조",
+      "limit": "모든 시차에서 제약이 성립한다고 보장하지 않음"
+    },
+    {
+      "claim_id": "H037-C08",
+      "claim": "min–max와80:20 분할을 보고한다",
+      "source_location": "SRC-0064364 p8 §5",
+      "verification_method": "정규화·분할 문장 읽기",
+      "limit": "시간순/적합 범위/window 겹침/seed/검증 분리 미기록"
+    },
+    {
+      "claim_id": "H037-C09",
+      "claim": "encoder1층·head4·Adam LR1e-4와 T4-16GB·평균20분 학습을 기록한다",
+      "source_location": "SRC-0064364 p8 §5",
+      "verification_method": "설정·LR0.1배/개선 없는10epochs·환경 대조",
+      "limit": "총epochs·모든 계수·추가 기본 모델 학습을 포함한 비용 범위 미확인"
+    },
+    {
+      "claim_id": "H037-C10",
+      "claim": "여러 관련 관측에도 모호성이 남으며 Fig3의 동일 최대값 표현과 값0.895/0.87이 다르다",
+      "source_location": "SRC-0064364 p4–5 Fig3/4",
+      "verification_method": "예시 표12값·차이0.025·collision 설명 대조",
+      "limit": "유사 입력의 예를 정확히 동일한 입력으로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H037-C11",
+      "claim": "KAL은 MSE+λEMD와 측정/운영 제약을 결합한다",
+      "source_location": "SRC-0064364 p6–7 §4.1/4.2",
+      "verification_method": "손실·측정 등식·운영 부등식 읽기",
+      "limit": "손실만으로 제약 충족·정확한 원신호 복원을 보장하지 않음"
+    },
+    {
+      "claim_id": "H037-C12",
+      "claim": "증강 Lagrangian의 μ1e-3·승수0·μ×1.5와 반복 갱신을 기록한다",
+      "source_location": "SRC-0064364 p7 §4.2.2",
+      "verification_method": "수식·갱신 시점·종료 설명 대조",
+      "limit": "EMD 가중치와 제약 승수를 구분;실행별 반복·허용치 미확인"
+    },
+    {
+      "claim_id": "H037-C13",
+      "claim": "CEM은 Gurobi ILP로 제약을 맞추며 sample 시점 제외 L1 수정량을 줄인다",
+      "source_location": "SRC-0064364 p7 §4.3",
+      "verification_method": "목적함수·보정 단계 시각 대조",
+      "limit": "정수화/선형화/tolerance/불가능 제약 처리·저자 구현 미확인"
+    },
+    {
+      "claim_id": "H037-C14",
+      "claim": "Target refinement는 기본 Transformer를 더 학습해 충돌 학습 사례와 정답 집합을 만든다",
+      "source_location": "SRC-0064364 p7–8 §4.4/Fig7",
+      "verification_method": "가까운 출력·먼 정답 기준과 집합 최소 손실 읽기",
+      "limit": "정확한 거리/threshold/정제 비율 미기록;RCTL 소속 공유 아님"
+    },
+    {
+      "claim_id": "H037-C15",
+      "claim": "C1–9와 VPN min/max 제약의 관측 단위·역할을 구분한다",
+      "source_location": "SRC-0064364 p9/p11",
+      "verification_method": "최대·직접 관측·합·packet/혼잡/재전송·TCP 제약 시각 대조",
+      "limit": "모든 packet 정보 또는 모든 네트워크 법칙으로 확대하지 않음"
+    },
+    {
+      "claim_id": "H037-C16",
+      "claim": "운영 제약은 서비스·단위·시각 대응과 도메인 조건이 필요하다",
+      "source_location": "SRC-0064364 p6 §4.1/p9 C3–7/p11 C8–9",
+      "verification_method": "가정과 변수 정의 검토",
+      "limit": "PCC 상관 발견을 논리 제약의 보편 증명으로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H037-C17",
+      "claim": "3개 사례·4개 자료의 학습량은8000/20000/5000/3300으로 보고됐다",
+      "source_location": "SRC-0064364 p9–11",
+      "verification_method": "자료 설명·간격·입출력·학습 data points 확인",
+      "limit": "원자료 재집계·독립 시계열 수·미기록 전체 표본 수 아님"
+    },
+    {
+      "claim_id": "H037-C18",
+      "claim": "Coarse/KNN/Plain Transformer/BRITS의 입력 배치가 다르고 VPN은 두 기준을 제외한다",
+      "source_location": "SRC-0064364 p8 §6.1/p11 §6.4",
+      "verification_method": "보간·max/sum 배치·K선택·제외 이유 대조",
+      "limit": "특정 전처리 비교를 모든 단순 복원 방법의 기각으로 일반화하지 않음"
+    },
+    {
+      "claim_id": "H037-C19",
+      "claim": "상대 오차와 그림용 정규화가 별개이며 막대 비율을 원 오차 감소율로 사용할 수 없다",
+      "source_location": "SRC-0064364 p8 Metrics/p9 첫 문단/p11 Fig11",
+      "verification_method": "분모·평균·[0.1,0.9] 설명과 그림 대조",
+      "limit": "0분모 처리·정규화 계수/구현 미확인"
+    },
+    {
+      "claim_id": "H037-C20",
+      "claim": "33–53%·38%·최대5배는 저자 보고 범위로 남긴다",
+      "source_location": "SRC-0064364 p8–10 Fig8/9",
+      "verification_method": "서로 다른 자료·지표·비교군 문장 연결",
+      "limit": "원 배열 없이 독립 산술 재현으로 승격하지 않음"
+    },
+    {
+      "claim_id": "H037-C21",
+      "claim": "Plain Transformer의 MSE가 더 낮은 반례를 보존한다",
+      "source_location": "SRC-0064364 p9–10 Fig8",
+      "verification_method": "그림과 손실 절충 본문 대조",
+      "limit": "Zoom2Net의 모든 지표 우위 아님"
+    },
+    {
+      "claim_id": "H037-C22",
+      "claim": "Meta position의 Plain Transformer 막대가 Zoom2Net보다 낮다",
+      "source_location": "SRC-0064364 p10 Fig9b",
+      "verification_method": "동일 지표의 시각적 비교",
+      "limit": "정확한 막대 수치·통계적 유의성 미확인;평균30%와 구분"
+    },
+    {
+      "claim_id": "H037-C23",
+      "claim": "지정한 미학습 합성 조합의 평균30% 개선은 제한된 일반화 결과다",
+      "source_location": "SRC-0064364 p10 learned correlations 단락",
+      "verification_method": "traffic/혼잡 제어 조합의 범위 읽기",
+      "limit": "새 실제 네트워크 전체의 일반화 보장 아님"
+    },
+    {
+      "claim_id": "H037-C24",
+      "claim": "M-Lab loading time43%·구조 지표44%와 작은 전송량의 어려움을 함께 기록한다",
+      "source_location": "SRC-0064364 p10–11 §6.3/Fig9c",
+      "verification_method": "10웹사이트·300KB–10MB·정규화 영향 확인",
+      "limit": "현재 웹사이트 크기나 실제 실시간 페이지 로딩 측정으로 확대하지 않음"
+    },
+    {
+      "claim_id": "H037-C25",
+      "claim": "VPN MLP는 원 특징과 복원된 추가 특징을 합치고 각 경우10회 비교한다",
+      "source_location": "SRC-0064364 p11 §6.4/Fig10",
+      "verification_method": "분류 입력·박스그림·기준 목록 읽기",
+      "limit": "모든 median 최고·유의성·trace 정확 복원 확인 아님"
+    },
+    {
+      "claim_id": "H037-C26",
+      "claim": "factor50→100의0.4%/7%를 p8은 악화,p12는 정확도 증가로 표현한다",
+      "source_location": "SRC-0064364 p8 §6/p11 Fig11/p12 §6.5",
+      "verification_method": "양쪽 문구와 상대 오차 축 대조",
+      "limit": "여러 오차가 증가하며 원 배열 없이 비율 재계산 불가;고배율 보편 개선 아님"
+    },
+    {
+      "claim_id": "H037-C27",
+      "claim": "Table1의20필드 중10시간은 모델 단독과 CEM 포함 경로를 구분한다",
+      "source_location": "SRC-0064364 p12 Table1",
+      "verification_method": "표 시각 전사·텍스트·범위 검사",
+      "limit": "저자 인쇄값이며 현재 환경의 timing 재현 아님"
+    },
+    {
+      "claim_id": "H037-C28",
+      "claim": "CEM 포함/모델 단독 비율은268.52/383.93/419.15/760.00/548.08배다",
+      "source_location": "SRC-0064364 p12 Table1",
+      "verification_method": "같은 행의 Decimal 산술과 window/factor 방향 대조",
+      "limit": "타 방법 대비 배율·고립된 solver 측정값 아님"
+    },
+    {
+      "claim_id": "H037-C29",
+      "claim": "병렬 CEM·초기 학습·기본 모델 학습·불확실성 추정의 비용을 분리한다",
+      "source_location": "SRC-0064364 p7–8/p12 §7",
+      "verification_method": "1000ms/factor50의20process·평균 학습 시간·전체 timing 읽기",
+      "limit": "총CPU작업량·실측 전력/수집/저장 비용과 포함 범위 미확인"
+    },
+    {
+      "claim_id": "H037-C30",
+      "claim": "불확실성은100회 dropout forward의 표준편차이고 낮은 분산이 정확한 복원 보장은 아니다",
+      "source_location": "SRC-0064364 p12 Model Confidence/Fig12",
+      "verification_method": "추정 방식·정제 전후 CDF 시각 대조",
+      "limit": "calibration/정답 정확도·Table1 포함 여부 미확인;새forward0회"
+    },
+    {
+      "claim_id": "H037-C31",
+      "claim": "Nyquist·enqueued/dequeued·합성 사례 절 참조의 원문 차이를 보존한다",
+      "source_location": "SRC-0064364 p4/p5–6/p9/p12",
+      "verification_method": "표기와 대응 문장 재대조",
+      "limit": "실제 구현 실패로 확정하거나 조용히 교정하지 않음"
+    },
+    {
+      "claim_id": "H037-C32",
+      "claim": "새 제안은 실제 관측·정밀 정답·최종 미래 예측 효용·비용의 차이를 명시해야 한다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3; SRC-0064364 p3–12",
+      "verification_method": "과거 질문과 문헌 조건을 연결한 후속 설계 기준",
+      "limit": "새 실행 승인·최종 RCTL 이득·전체53/55 완료 아님"
+    }
+  ]
+}
