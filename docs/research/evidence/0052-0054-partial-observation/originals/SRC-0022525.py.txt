@@ -1,0 +1,51 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import json, hashlib, urllib.request, time
+import numpy as np
+
+root=Path(__file__).resolve().parent
+out=root/'results/beijing_schema_52'
+out.mkdir(parents=True,exist_ok=True)
+if (out/'run_started.json').exists(): raise SystemExit('Recorded run exists; no rerun')
+settings={'date':'2026-09-26','commit':'e1faed12aa7abb33d801fe9483026769ffaeeed3',
+          'path':'traffic_data/beijing.npz','max_download_bytes':1_500_000,
+          'TabICL_contexts':0,'RCTL_fits':0,'RCTL_forward_calls':0,'simple_fits':0}
+(out/'settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+(out/'run_started.json').write_text(json.dumps({'at':datetime.now(timezone.utc).isoformat()}),encoding='utf-8')
+metadata=json.loads((root/'sources/network_scope_51/stkdiff_tree.json').read_text(encoding='utf-8'))
+expected=next(x for x in metadata['tree'] if x['path']==settings['path'])
+url=f"https://raw.githubusercontent.com/tsinghua-fib-lab/STK-Diff/{settings['commit']}/{settings['path']}"
+with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Research data schema audit/1.0'}),timeout=25) as response:
+    data=response.read(settings['max_download_bytes']+1)
+    status=response.status
+assert len(data)<=settings['max_download_bytes']
+assert len(data)==expected['size']
+blobhash=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+assert blobhash==expected['sha']
+asset=root/'assets/stkdiff_beijing_e1faed12.npz'
+assert not asset.exists()
+asset.write_bytes(data)
+t0=time.perf_counter()
+arrays=[]
+with np.load(asset,allow_pickle=False) as content:
+    for key in content.files:
+        a=content[key]
+        assert a.nbytes<=128*1024*1024
+        rec={'name':key,'shape':list(a.shape),'dtype':str(a.dtype),'bytes':a.nbytes}
+        if a.dtype.kind in 'fiu':
+            finite=np.isfinite(a)
+            rec.update(finite_count=int(finite.sum()),total_values=int(a.size))
+            if finite.any():
+                af=a[finite]
+                rec.update(min=float(af.min()),max=float(af.max()),zero_fraction=float((af==0).mean()),negative_fraction=float((af<0).mean()))
+        arrays.append(rec)
+elapsed=time.perf_counter()-t0
+assert elapsed<10
+result={'source_url':url,'http_status':status,'source_bytes':len(data),
+        'source_sha256':hashlib.sha256(data).hexdigest(),'source_git_blob_sha1':blobhash,
+        'arrays':arrays,'schema_diagnostic_seconds':elapsed,
+        'claims_not_verified':['physical cell-level mapping','traffic volume unit','calendar timestamps','upstream preprocessing','identity with complete MobiGPT data'],
+        'model_execution':settings}
+(out/'result.json').write_text(json.dumps(result,indent=2,ensure_ascii=False,allow_nan=False),encoding='utf-8')
+(out/'run_finished.json').write_text(json.dumps({'at':datetime.now(timezone.utc).isoformat(),'exit':'complete'}),encoding='utf-8')
+print(json.dumps(result,indent=2,ensure_ascii=False))

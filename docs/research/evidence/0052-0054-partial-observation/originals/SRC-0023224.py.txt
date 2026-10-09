@@ -1,0 +1,20 @@
+from pathlib import Path
+import json
+base=Path(__file__).resolve().parent
+p=base/'cumulative_execution_budget.json'
+ledger=json.loads(p.read_text(encoding='utf-8'))
+r=json.loads((base/'results/beijing_schema_52/result.json').read_text(encoding='utf-8'))
+key='beijing_schema_52'
+assert key not in ledger['new_cheap_diagnostic_seconds'], 'Already accounted'
+for k in ['TabICL_contexts','RCTL_fits','RCTL_forward_calls','simple_fits']:
+ assert r['model_execution'][k]==0
+backup=base/'results/beijing_schema_52/budget_before_accounting.json'
+assert not backup.exists()
+backup.write_bytes(p.read_bytes())
+ledger['new_cheap_diagnostic_seconds'][key]=r['schema_diagnostic_seconds']
+cheap=sum(ledger['new_cheap_diagnostic_seconds'].values())
+total=cheap+sum(ledger['used'][k] for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds'])
+assert cheap<ledger['caps']['cheap_numeric_seconds'] and total<ledger['caps']['total_local_modeling_seconds']
+assert ledger['remaining_count_budgets']['RCTL_fits']==0
+p.write_text(json.dumps(ledger,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+print(json.dumps({'added':key,'cheap_total':cheap,'recorded_modeling_seconds':total,'remaining':ledger['remaining_count_budgets']}))

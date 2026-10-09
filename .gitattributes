@@ -7,3 +7,6 @@
 # Evidence hashes refer to original bytes, including historical line endings.
 docs/research/evidence/**/originals/** -text whitespace=cr-at-eol,-blank-at-eof
 docs/research/catalog/inventory.jsonl.gz -text
+
+# The preserved upstream loader contains a whitespace-only line.
+docs/research/evidence/0052-0054-partial-observation/originals/SRC-0063298.py.txt whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol

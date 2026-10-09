@@ -1,0 +1,159 @@
+{
+  "batch_id": "history-031",
+  "claims": [
+    {
+      "claim_id": "H031-C01",
+      "claim": "STK 고정 commit·경로 불일치·크기/blob/SHA",
+      "source_location": "52계획,STK README/tree/loader,52 result",
+      "verification_method": "저장 파일/고정 tree/현재 공식 README·loader 대조",
+      "limit": "공개 부분집합만; MobiGPT 전체 동일성 아님"
+    },
+    {
+      "claim_id": "H031-C02",
+      "claim": "두 배열 shape/dtype/유한값/범위/0·음수 비율",
+      "source_location": "52 result와 NPZ",
+      "verification_method": "모든 배열 요약 재계산",
+      "limit": "embedding 음수는 트래픽 음수 아님"
+    },
+    {
+      "claim_id": "H031-C03",
+      "claim": "시각·단위·물리 cell mapping·전처리 공백",
+      "source_location": "52계획/result,STK README/NPZ",
+      "verification_method": "배열 키와 문서의 실제 정보 대조",
+      "limit": "168 길이로 날짜/단위 추정 금지"
+    },
+    {
+      "claim_id": "H031-C04",
+      "claim": "loader의 series 분할·validation=test·scaler·main",
+      "source_location": "STK loader/main 전체",
+      "verification_method": "정적 독해와 고정 blob 대조",
+      "limit": "전체 구현/그림/실행 검증 아님"
+    },
+    {
+      "claim_id": "H031-C05",
+      "claim": "고정 probe4/target4와 Milan16cell 범위",
+      "source_location": "54계획/code/settings,기존NPZ",
+      "verification_method": "cell ID와 입력 identity 대조",
+      "limit": "대표성·물리기지국 주장 아님"
+    },
+    {
+      "claim_id": "H031-C06",
+      "claim": "context256/query64와 실제 날짜·개발 자료",
+      "source_location": "54settings/code,H5 idx",
+      "verification_method": "인덱스와 시간표 재구성",
+      "limit": "불연속16일/4블록; 독립test 아님"
+    },
+    {
+      "claim_id": "H031-C07",
+      "claim": "672시간 정규화·12입력·동시probe·역사 context 가정",
+      "source_location": "54code/H5/NPZ",
+      "verification_method": "정답/척도/정적입력 재구성",
+      "limit": "실행 X 별도 저장 없음; per-context causal scaling 아님"
+    },
+    {
+      "claim_id": "H031-C08",
+      "claim": "네 무학습 기준과 clipping·정보 가용성",
+      "source_location": "54code/55§4",
+      "verification_method": "H5의 네 기준과 저장 예측 일치",
+      "limit": "학습기12열; 기준은 일부만 사용"
+    },
+    {
+      "claim_id": "H031-C09",
+      "claim": "Ridge/HGB/Tab 설정·횟수·seed·checkpoint",
+      "source_location": "54code/settings/calls",
+      "verification_method": "전체 정적 독해·완료 calls·hash",
+      "limit": "모든 라이브러리/모델 상태 재현 아님"
+    },
+    {
+      "claim_id": "H031-C10",
+      "claim": "정규화 MAE·activity MAE·half/block 정의",
+      "source_location": "54code/result/predictions",
+      "verification_method": "모든 지표 재계산",
+      "limit": "activity bytes/Mbps 아님"
+    },
+    {
+      "claim_id": "H031-C11",
+      "claim": "전체 MAE 및 원래 단위에서 Ridge/HGB 순위 차이",
+      "source_location": "54result/predictions,55표",
+      "verification_method": "저장 배열과 전체표 대조",
+      "limit": "전체 Tab 성능 순위 일반화 금지"
+    },
+    {
+      "claim_id": "H031-C12",
+      "claim": "네 cell의 Ridge 손해·HGB 일부 이득·gate0/4",
+      "source_location": "54result/paired_changes",
+      "verification_method": "cell별 수치와 더 좋은 learner 대조",
+      "limit": "cell5345 HGB보다 좋지만 Ridge보다 나쁨"
+    },
+    {
+      "claim_id": "H031-C13",
+      "claim": "앞 구간 이득·뒤 구간 손해·마지막 블록 악화",
+      "source_location": "54result 각half/block/55§4",
+      "verification_method": "부분기간/셀표 대조",
+      "limit": "긍정적 앞구간 삭제·선택적 성공 주장 금지"
+    },
+    {
+      "claim_id": "H031-C14",
+      "claim": "동시 확대 기준 false/false/0→false",
+      "source_location": "54계획/code/result",
+      "verification_method": "선언 기준과 저장 지표 대조",
+      "limit": "통계 유의성/운영 허용오차 기준 아님"
+    },
+    {
+      "claim_id": "H031-C15",
+      "claim": "최초 preflight 오류·query 한정 수정·code 동일범위",
+      "source_location": "원래/수정code,correction JSON",
+      "verification_method": "전체 diff와 lag충돌 산술",
+      "limit": "실제 외부 stderr 독립 대조 없음"
+    },
+    {
+      "claim_id": "H031-C16",
+      "claim": "실패 비용4.1631648과 모델 전 중단 보고",
+      "source_location": "correction JSON·code순서·원장",
+      "verification_method": "실패 위치/원장별도 항목 확인",
+      "limit": "시간·미열람 예측 보고는 자기 기록 근거"
+    },
+    {
+      "claim_id": "H031-C17",
+      "claim": "완료 calls4·partial/final공유배열·실행범위",
+      "source_location": "calls/markers/result/NPZ",
+      "verification_method": "10공유 배열 정확 일치",
+      "limit": "독립 재현·미기록 실행 부재 증명 아님"
+    },
+    {
+      "claim_id": "H031-C18",
+      "claim": "Tab/simple/stage/RSS 비용과 타이머 경계",
+      "source_location": "54code/calls/result",
+      "verification_method": "합계와 코드 타이머 순서 대조",
+      "limit": "연속peak/전체시스템지연 아님"
+    },
+    {
+      "claim_id": "H031-C19",
+      "claim": "52 timer·marker gap·모델0",
+      "source_location": "52code/settings/markers/result",
+      "verification_method": "스키마/marker/정적 timer 경계",
+      "limit": "다운로드/파일쓰기 제외"
+    },
+    {
+      "claim_id": "H031-C20",
+      "claim": "52전→54전→snapshot12 누적원장과 비용 정정",
+      "source_location": "before두원장/snapshot12/업데이트code/55§6",
+      "verification_method": "원장 전체 차이와 현재prefix 대조",
+      "limit": "0.5마이크로초 인쇄 차이 보존; 전처리 전체비용 아님"
+    },
+    {
+      "claim_id": "H031-C21",
+      "claim": "복원→clustering→미래RCTL 확대 미입증",
+      "source_location": "54계획/result,55§5–6 수치·운영 범위",
+      "verification_method": "문제/출력/실행 상태 구별",
+      "limit": "문헌 신규성 종합은 다음 묶음"
+    },
+    {
+      "claim_id": "H031-C22",
+      "claim": "원본보존/열람범위/팀 접근/남은 기록",
+      "source_location": "manifest·원본 통제baseline",
+      "verification_method": "36경로 및 사본 hash/metadata 검사",
+      "limit": "전체Goal·관련packet완료 아님"
+    }
+  ]
+}

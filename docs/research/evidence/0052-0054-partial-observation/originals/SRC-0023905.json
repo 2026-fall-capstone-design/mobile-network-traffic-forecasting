@@ -1,0 +1,57 @@
+{
+  "source_url": "https://raw.githubusercontent.com/tsinghua-fib-lab/STK-Diff/e1faed12aa7abb33d801fe9483026769ffaeeed3/traffic_data/beijing.npz",
+  "http_status": 200,
+  "source_bytes": 1413636,
+  "source_sha256": "59def18b603d5d2a293af279cf2fe2dd3b2634de3c0930bf0cbabf8142ecf64a",
+  "source_git_blob_sha1": "8ab4fee3eeb542ef25eb3a3c9bc51091189d2c3e",
+  "arrays": [
+    {
+      "name": "bs_record",
+      "shape": [
+        960,
+        168
+      ],
+      "dtype": "float64",
+      "bytes": 1290240,
+      "finite_count": 161280,
+      "total_values": 161280,
+      "min": 0.0,
+      "max": 30000000.0,
+      "zero_fraction": 0.00793030753968254,
+      "negative_fraction": 0.0
+    },
+    {
+      "name": "bs_kge",
+      "shape": [
+        960,
+        32
+      ],
+      "dtype": "float32",
+      "bytes": 122880,
+      "finite_count": 30720,
+      "total_values": 30720,
+      "min": -21.204139709472656,
+      "max": 18.954608917236328,
+      "zero_fraction": 0.0,
+      "negative_fraction": 0.45680338541666665
+    }
+  ],
+  "schema_diagnostic_seconds": 0.01390940000055707,
+  "claims_not_verified": [
+    "physical cell-level mapping",
+    "traffic volume unit",
+    "calendar timestamps",
+    "upstream preprocessing",
+    "identity with complete MobiGPT data"
+  ],
+  "model_execution": {
+    "date": "2026-09-26",
+    "commit": "e1faed12aa7abb33d801fe9483026769ffaeeed3",
+    "path": "traffic_data/beijing.npz",
+    "max_download_bytes": 1500000,
+    "TabICL_contexts": 0,
+    "RCTL_fits": 0,
+    "RCTL_forward_calls": 0,
+    "simple_fits": 0
+  }
+}
