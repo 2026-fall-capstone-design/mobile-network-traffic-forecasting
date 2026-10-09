@@ -109,3 +109,5 @@
 [53·55 NETNOMOS의 규칙·예측·복원](records/0053-netnomos.md)은 데이터에서 규칙을 찾고 생성에 적용하는 방법을 세 과제별로 구분합니다. [39개 주장 검수](verification/history-038.md)는 sMAPE 반례·MAWI 위반0.3%·약5배 추론 비용·인쇄 수치 차이를 보존하며, 규칙 준수를 RCTL의 예측 이득으로 바꾸지 않습니다.
 
 [53·55 TabICL imputation](records/0053-tabicl-imputation.md)은 공식 기능 예제와 실제 54 실험을 구별합니다. 완전한 context를 먼저 넣은 예제, 반복 대체·순열의 실제 비용, 과거/현재 문서 차이와 Ciena 원문 접근을 [32개 주장](verification/history-039.md)에 연결했습니다.
+
+[Ciena 관측·전송·저장 비용](records/0053-ciena-telemetry.md)은 이전에 확보하지 못했던23쪽 원문을 검토한 후속 기록입니다. [36개 주장](verification/history-040.md)에 세 비용 단위, 압축·MAPE 표, 감소율과 비용 기간의 미확인 분모를 연결하며 이를 cell 선택·RCTL 미래 예측 성능으로 환산하지 않습니다.
