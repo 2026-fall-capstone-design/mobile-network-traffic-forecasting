@@ -280,3 +280,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## TabPFN context Shapley를 RCTL 표본 중요도로 제안하기 전에 — 56·58
 
 검색어: TabPFN IML, Data Shapley, Kernel SHAP, context optimization, validation risk, WLS, coreset, pp, 9216 forward, sample valuation. [문맥 선택 기록](records/0056-0058-tabpfn-iml.md)에서어떤예측기의손실을설명하는지,무엇을선택하는지,validation/test와사전비용을확인합니다. 논문의분류AUC우위를최종RCTL학습속도·회귀오차·cell소속근거로대체하지않습니다. 새제안은기존안과달라지는선택단위·목적·독립근거·전체비용을연결해야합니다.
+
+## 시간대 층화로 학습을 줄이겠다는 제안 전에 — 56·58 SCott
+
+검색어: SCott, stratified sampling, control variate, gradient variance, timestamp, strata, SCSG, SVRG, S-Adam, S-Adagrad. [SCott 기록](records/0056-0058-scott.md)에서 학습 창과 cell cluster, snapshot과 inner update, smooth 이론과 MAE/ReLU·BatchNorm/dropout 조건을 확인합니다. 같은 strata·시간 규칙에 Tab 이름만 붙이는 것은 새 clustering 결정이 아닙니다. 새 제안은 다른 선택 대상·목적·직접 근거와 준비/튜닝까지 포함한 총비용을 연결해야 합니다.
