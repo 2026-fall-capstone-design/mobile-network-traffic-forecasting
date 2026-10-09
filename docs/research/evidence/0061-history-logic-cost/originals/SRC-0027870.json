@@ -1,0 +1,65 @@
+{
+  "sha256": {
+    "plan": "864923a00b83b9ff8faa3e96b7a37065f0d12b6d3c65b77023f8ede4fe449923",
+    "code": "20d830a575d6aec12c52f289fc604a19593328a7950d133ec592e6a03f21ba5a",
+    "rctl_structure": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c"
+  },
+  "toy": {
+    "observation_noise_half_width": "1/20",
+    "known_cell_any_length": {
+      "fraction": "11/90",
+      "decimal": 0.12222222222222222
+    },
+    "unknown_cell_length1": {
+      "fraction": "1/2",
+      "decimal": 0.5
+    },
+    "unknown_cell_length2": {
+      "fraction": "409/2050",
+      "decimal": 0.19951219512195123
+    },
+    "history_gain_pooled_minus_known": {
+      "fraction": "308/1025",
+      "decimal": 0.30048780487804877
+    },
+    "interpretation": "Known process-identification effect, not novelty or empirical traffic evidence"
+  },
+  "rctl_arithmetic": {
+    "channels": 9,
+    "metrics": {
+      "2": {
+        "matrix_MAC_per_sample": 341216,
+        "parameters": 174337
+      },
+      "8": {
+        "matrix_MAC_per_sample": 1364864,
+        "parameters": 174433
+      }
+    },
+    "MAC_ratio_L2_L8": {
+      "fraction": "1/4",
+      "decimal": 0.25
+    },
+    "parameter_reduction_ratio": {
+      "fraction": "96/174433",
+      "decimal": 0.0005503545774022117
+    },
+    "exclusions": [
+      "activations",
+      "BatchNorm",
+      "bias adds",
+      "memory movement",
+      "training/backprop",
+      "actual runtime"
+    ],
+    "RCTL_instantiations": 0,
+    "RCTL_forward_calls": 0,
+    "RCTL_fits": 0
+  },
+  "cost": {
+    "cheap_numeric_seconds": 9.660000068834051e-05,
+    "TabICL_contexts": 0,
+    "TabICL_query_rows": 0,
+    "RCTL_fits": 0
+  }
+}

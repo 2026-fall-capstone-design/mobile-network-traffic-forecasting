@@ -1,0 +1,11 @@
+from pathlib import Path
+import json
+base=Path(__file__).resolve().parent;path=base/'cumulative_execution_budget.json';out=base/'results/history_logic_cost_61'
+ledger=json.loads(path.read_text(encoding='utf-8'));result=json.loads((out/'result.json').read_text(encoding='utf-8'))
+key='history_logic_cost_61';assert key not in ledger['new_cheap_diagnostic_seconds']
+assert not (out/'budget_before_accounting.json').exists()
+(out/'budget_before_accounting.json').write_bytes(path.read_bytes())
+ledger['new_cheap_diagnostic_seconds'][key]=result['cost']['cheap_numeric_seconds']
+path.write_text(json.dumps(ledger,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+cheap=sum(ledger['new_cheap_diagnostic_seconds'].values())
+print(json.dumps({'cheap_seconds':cheap,'recorded_modeling_seconds':cheap+sum(ledger['used'][k] for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds'])}))

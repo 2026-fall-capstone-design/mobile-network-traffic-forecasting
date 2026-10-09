@@ -1,0 +1,336 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T21:51:15.606269+00:00",
+  "checks": 43,
+  "check_names": [
+    "SRC-0021961:bytes",
+    "SRC-0021984:bytes",
+    "SRC-0022880:bytes",
+    "SRC-0023215:bytes",
+    "SRC-0027870:bytes",
+    "SRC-0027871:bytes",
+    "SRC-0027872:bytes",
+    "SRC-0023048:bytes",
+    "SRC-0027869:bytes",
+    "SRC-0000901:bytes",
+    "recorded_identities",
+    "original_arithmetic_imports",
+    "noise_half_width",
+    "state_pair:00",
+    "state_pair:01",
+    "state_pair:10",
+    "state_pair:11",
+    "known_cell_any_length:fraction",
+    "known_cell_any_length:decimal",
+    "unknown_cell_length1:fraction",
+    "unknown_cell_length1:decimal",
+    "unknown_cell_length2:fraction",
+    "unknown_cell_length2:decimal",
+    "history_gain_pooled_minus_known:fraction",
+    "history_gain_pooled_minus_known:decimal",
+    "strict_order",
+    "stored_label_is_not_pooled_minus_known",
+    "fixed_channels_and_lengths",
+    "frozen_extra_recurrent_bias",
+    "MAC:2",
+    "parameters:2",
+    "MAC:8",
+    "parameters:8",
+    "MAC_ratio:fraction",
+    "MAC_ratio:decimal",
+    "parameter_reduction:fraction",
+    "parameter_reduction:decimal",
+    "cost_exclusions",
+    "historical_no_model_calls",
+    "duration_and_finished",
+    "not_previously_accounted",
+    "whole_ledger_transition",
+    "unchanged_model_budgets"
+  ],
+  "errors": [],
+  "risk_values": {
+    "known_cell_any_length": {
+      "fraction": "11/90",
+      "decimal": 0.12222222222222222
+    },
+    "unknown_cell_length1": {
+      "fraction": "1/2",
+      "decimal": 0.5
+    },
+    "unknown_cell_length2": {
+      "fraction": "409/2050",
+      "decimal": 0.19951219512195123
+    },
+    "history_gain_pooled_minus_known": {
+      "fraction": "308/1025",
+      "decimal": 0.30048780487804877
+    }
+  },
+  "two_observation_cases": [
+    {
+      "states": [
+        0,
+        0
+      ],
+      "event_probability": {
+        "fraction": "1/4",
+        "decimal": 0.25
+      },
+      "posterior_cell0": {
+        "fraction": "9/10",
+        "decimal": 0.9
+      },
+      "next_state1_probability": {
+        "fraction": "9/50",
+        "decimal": 0.18
+      },
+      "risk": {
+        "fraction": "409/2050",
+        "decimal": 0.19951219512195123
+      }
+    },
+    {
+      "states": [
+        0,
+        1
+      ],
+      "event_probability": {
+        "fraction": "1/4",
+        "decimal": 0.25
+      },
+      "posterior_cell0": {
+        "fraction": "1/10",
+        "decimal": 0.1
+      },
+      "next_state1_probability": {
+        "fraction": "9/50",
+        "decimal": 0.18
+      },
+      "risk": {
+        "fraction": "409/2050",
+        "decimal": 0.19951219512195123
+      }
+    },
+    {
+      "states": [
+        1,
+        0
+      ],
+      "event_probability": {
+        "fraction": "1/4",
+        "decimal": 0.25
+      },
+      "posterior_cell0": {
+        "fraction": "1/10",
+        "decimal": 0.1
+      },
+      "next_state1_probability": {
+        "fraction": "41/50",
+        "decimal": 0.82
+      },
+      "risk": {
+        "fraction": "409/2050",
+        "decimal": 0.19951219512195123
+      }
+    },
+    {
+      "states": [
+        1,
+        1
+      ],
+      "event_probability": {
+        "fraction": "1/4",
+        "decimal": 0.25
+      },
+      "posterior_cell0": {
+        "fraction": "9/10",
+        "decimal": 0.9
+      },
+      "next_state1_probability": {
+        "fraction": "41/50",
+        "decimal": 0.82
+      },
+      "risk": {
+        "fraction": "409/2050",
+        "decimal": 0.19951219512195123
+      }
+    }
+  ],
+  "label_correction": {
+    "stored_field": "history_gain_pooled_minus_known",
+    "actual_calculation": "unknown_cell_length1 - unknown_cell_length2",
+    "actual_value": {
+      "fraction": "308/1025",
+      "decimal": 0.30048780487804877
+    },
+    "pooled1_minus_known": {
+      "fraction": "17/45",
+      "decimal": 0.37777777777777777
+    },
+    "pooled2_minus_known": {
+      "fraction": "713/9225",
+      "decimal": 0.077289972899729
+    },
+    "original_preserved": true
+  },
+  "rctl_block_counts": [
+    {
+      "block": 1,
+      "input_channels": 9,
+      "output_channels": 16,
+      "matrix_components": {
+        "conv1": 432,
+        "conv2": 768,
+        "shortcut1": 144,
+        "shortcut2": 144,
+        "lstm_input": 1024,
+        "lstm_hidden": 1024
+      },
+      "bias_components": {
+        "conv_and_shortcut": 64,
+        "lstm_input": 64,
+        "lstm_hidden_frozen": 64
+      },
+      "batchnorm_affine": 64,
+      "matrix_MAC_per_step": 3536,
+      "total_parameters": 3792,
+      "frozen_parameters": 64
+    },
+    {
+      "block": 2,
+      "input_channels": 16,
+      "output_channels": 32,
+      "matrix_components": {
+        "conv1": 1536,
+        "conv2": 3072,
+        "shortcut1": 512,
+        "shortcut2": 512,
+        "lstm_input": 4096,
+        "lstm_hidden": 4096
+      },
+      "bias_components": {
+        "conv_and_shortcut": 128,
+        "lstm_input": 128,
+        "lstm_hidden_frozen": 128
+      },
+      "batchnorm_affine": 128,
+      "matrix_MAC_per_step": 13824,
+      "total_parameters": 14336,
+      "frozen_parameters": 128
+    },
+    {
+      "block": 3,
+      "input_channels": 32,
+      "output_channels": 64,
+      "matrix_components": {
+        "conv1": 6144,
+        "conv2": 12288,
+        "shortcut1": 2048,
+        "shortcut2": 2048,
+        "lstm_input": 16384,
+        "lstm_hidden": 16384
+      },
+      "bias_components": {
+        "conv_and_shortcut": 256,
+        "lstm_input": 256,
+        "lstm_hidden_frozen": 256
+      },
+      "batchnorm_affine": 256,
+      "matrix_MAC_per_step": 55296,
+      "total_parameters": 56320,
+      "frozen_parameters": 256
+    },
+    {
+      "block": 4,
+      "input_channels": 64,
+      "output_channels": 64,
+      "matrix_components": {
+        "conv1": 12288,
+        "conv2": 12288,
+        "shortcut1": 4096,
+        "shortcut2": 4096,
+        "lstm_input": 16384,
+        "lstm_hidden": 16384
+      },
+      "bias_components": {
+        "conv_and_shortcut": 256,
+        "lstm_input": 256,
+        "lstm_hidden_frozen": 256
+      },
+      "batchnorm_affine": 256,
+      "matrix_MAC_per_step": 65536,
+      "total_parameters": 66560,
+      "frozen_parameters": 256
+    },
+    {
+      "block": 5,
+      "input_channels": 64,
+      "output_channels": 32,
+      "matrix_components": {
+        "conv1": 6144,
+        "conv2": 3072,
+        "shortcut1": 2048,
+        "shortcut2": 2048,
+        "lstm_input": 4096,
+        "lstm_hidden": 4096
+      },
+      "bias_components": {
+        "conv_and_shortcut": 128,
+        "lstm_input": 128,
+        "lstm_hidden_frozen": 128
+      },
+      "batchnorm_affine": 128,
+      "matrix_MAC_per_step": 21504,
+      "total_parameters": 22016,
+      "frozen_parameters": 128
+    },
+    {
+      "block": 6,
+      "input_channels": 32,
+      "output_channels": 16,
+      "matrix_components": {
+        "conv1": 1536,
+        "conv2": 768,
+        "shortcut1": 512,
+        "shortcut2": 512,
+        "lstm_input": 1024,
+        "lstm_hidden": 1024
+      },
+      "bias_components": {
+        "conv_and_shortcut": 64,
+        "lstm_input": 64,
+        "lstm_hidden_frozen": 64
+      },
+      "batchnorm_affine": 64,
+      "matrix_MAC_per_step": 5376,
+      "total_parameters": 5632,
+      "frozen_parameters": 64
+    }
+  ],
+  "projection_weights": 5376,
+  "projection_biases": 112,
+  "root_weights": 144,
+  "root_biases": 16,
+  "matrix_MAC_per_step": 170608,
+  "metrics": {
+    "2": {
+      "matrix_MAC_per_sample": 341216,
+      "parameters": 174337,
+      "trainable_parameters": 173441,
+      "frozen_parameters": 896
+    },
+    "8": {
+      "matrix_MAC_per_sample": 1364864,
+      "parameters": 174433,
+      "trainable_parameters": 173537,
+      "frozen_parameters": 896
+    }
+  },
+  "after61_cheap_seconds": 64.00884490000549,
+  "after61_recorded_modeling_seconds": 1977.5556332000033,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0,
+  "independent_model_reproduction": false,
+  "scope": "동일한 cell 혼합과 cell에 독립인 잠재 상태 정상분포를 명시한 정확 적분·구조적 행렬 수·원장 대조다. 당시 모델 실행이나 실제 지연을 재현하지 않았다. RCTL 구조는 보존된 특정 코드 버전의 정적 독해를 전제로 한다."
+}

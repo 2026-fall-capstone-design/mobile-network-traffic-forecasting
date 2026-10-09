@@ -297,3 +297,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## cell을 나누어 입력 길이를 줄이겠다는 제안 전에 — 59–62
 
 검색어: grouping × history, lookback, 짧은 입력, process identification, global ID, context 공유량. [60번 pilot](records/0059-0062-history-grouping.md)은 4cell의 L2/L8와 일·주간 lag를 비교했습니다. Tab의 좋은 통합 예측을 clustering의 효과로 바꾸지 않고, 분할 뒤 손해와 기간별 상호작용 부호 변경을 보존했습니다. 새 기간·공유량·소속 기준·RCTL 평가에서 무엇이 달라지는지 먼저 연결하세요.
+
+## 긴 이력의 식별 정보나 짧은 모델의 비용을 주장하기 전에 — 61
+
+검색어: Bayes MAE, conditional median, Markov, process identification, history gain, MAC, trainable parameter, frozen bias. [61번 산술 기록](records/0061-history-logic-cost.md)에서 cell을 아는 조건과 찾는 절차, 관측 1개/2개, 전체/학습 가능한 parameter, 표준 연산 수/실제 시간을 구별합니다. 같은 식별 직관과 입력 후보만으로 신규성이나 실데이터 성능을 주장하지 말고, 달라진 가정·선택 규칙·평가·총비용 근거를 연결하세요.

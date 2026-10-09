@@ -134,3 +134,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 
 
 [59–62 grouping과 최근 입력 길이](records/0059-0062-history-grouping.md)는 Tab의 global·L2 긍정 결과와 grouping 미지지를 함께 보존합니다. 24조건의 저장 예측·날짜별/셀별 반례·비용과 원장 시점을 검수했습니다.
+
+[61번 과정 식별·구조적 비용](records/0061-history-logic-cost.md)은 정확 Bayes MAE와 짧은 입력의 MAC을 대조합니다. 차이값 이름의 불일치, 초기 상태 가정, 고정 parameter와 타이머 범위를 함께 보존했습니다.

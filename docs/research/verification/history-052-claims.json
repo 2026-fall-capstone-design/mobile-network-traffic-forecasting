@@ -1,0 +1,176 @@
+{
+  "batch_id": "history-052",
+  "claims": [
+    {
+      "claim_id": "H052-C01",
+      "claim": "61의 날짜·목적·산술 수행 지위",
+      "source_location": "SRC-0021961;SRC-0021984 §3/5;SRC-0027870",
+      "verification_method": "계획·코드·저장 결과·표지를 연결",
+      "limit": "실제 트래픽 성능 실험이나 새 모델 적합이 아님"
+    },
+    {
+      "claim_id": "H052-C02",
+      "claim": "두 cell·잠재 Markov·분리 Uniform 관측",
+      "source_location": "SRC-0021961 항목1;SRC-0022880 e/bayes_mae",
+      "verification_method": "정의된 상태·혼합·잡음과 계산 대조",
+      "limit": "실데이터의 단위·분할·cell ID를 만들어 붙이지 않음"
+    },
+    {
+      "claim_id": "H052-C03",
+      "claim": "초기 잠재 상태의 cell 독립 가정",
+      "source_location": "SRC-0021961 항목1;SRC-0022880 pooled1/pooled2",
+      "verification_method": "정상분포를 명시하고 네 사건의 사후확률을 열거",
+      "limit": "원 계획이 초기 분포를 수식으로 명시한 것으로 쓰지 않음"
+    },
+    {
+      "claim_id": "H052-C04",
+      "claim": "관측에서 상태는 식별되고 cell은 미식별",
+      "source_location": "SRC-0021961 항목1",
+      "verification_method": "관측 구간과 동일한 주변분포를 대조",
+      "limit": "다른 잡음·초기 분포의 일반 결론이 아님"
+    },
+    {
+      "claim_id": "H052-C05",
+      "claim": "MAE의 조건부 중앙값과 적분식",
+      "source_location": "SRC-0022880 bayes_mae;SRC-0027870 toy",
+      "verification_method": "별도 중앙값/절댓값 적분으로 저장 식을 도출",
+      "limit": "조건부 평균이나 제곱오차의 계산으로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H052-C06",
+      "claim": "known 위험 11/90과 관측1개 이상",
+      "source_location": "SRC-0022880 known;SRC-0027870 known_cell_any_length",
+      "verification_method": "확률9/10 적분과 Markov/상태 관측 조건 대조",
+      "limit": "관측0개 또는 상태 미식별 과정에는 자동 적용하지 않음"
+    },
+    {
+      "claim_id": "H052-C07",
+      "claim": "unknown 한 관측의 위험1/2",
+      "source_location": "SRC-0022880 pooled1;SRC-0027870 unknown_cell_length1",
+      "verification_method": "동일 사전·동일 주변분포·중앙값 위험 확인",
+      "limit": "cell 정보가 다른 경로로 주어진 경우와 구별"
+    },
+    {
+      "claim_id": "H052-C08",
+      "claim": "두 관측의 사후확률과409/2050",
+      "source_location": "SRC-0022880 pooled2;SRC-0027870 unknown_cell_length2",
+      "verification_method": "네 상태 사건의1/4확률·9/10 또는1/10 posterior·41/50 예측 확률 적분",
+      "limit": "두 관측으로 cell을 완전히 아는 결과가 아님"
+    },
+    {
+      "claim_id": "H052-C09",
+      "claim": "차이값 이름과 실제 계산의 불일치",
+      "source_location": "SRC-0022880 history_gain_pooled_minus_known;SRC-0027870 toy",
+      "verification_method": "pooled1−pooled2=308/1025와known차이17/45·713/9225를 구별",
+      "limit": "원 키/값은 보존하며 기본 위험 순서는 바뀌지 않음"
+    },
+    {
+      "claim_id": "H052-C10",
+      "claim": "과정 식별의 예와 실데이터/신규성의 경계",
+      "source_location": "SRC-0021961;SRC-0027870 interpretation;SRC-0021984 §3/4",
+      "verification_method": "정확 산술의 가정과 당시 해석을 연결",
+      "limit": "실제 clustering 필요성이나 RCTL 성능을 입증하지 않음"
+    },
+    {
+      "claim_id": "H052-C11",
+      "claim": "특정 RCTL port·채널9와 고정 구조",
+      "source_location": "SRC-0023048 RCTL/Block;SRC-0027870 sha256/rctl_arithmetic",
+      "verification_method": "보존 코드 전체 정적 독해와 SHA·층·입력 채널 확인",
+      "limit": "논문 모든 구현이나 실행 환경의 보편적 수치가 아님"
+    },
+    {
+      "claim_id": "H052-C12",
+      "claim": "6 block의 MAC 분해",
+      "source_location": "SRC-0023048 Block;SRC-0022880 blockmac",
+      "verification_method": "conv/shortcut/LSTM 행렬을 따로 세어5ac+11c²와대조",
+      "limit": "activation·bias 가산·BN 연산은 MAC에서 제외"
+    },
+    {
+      "claim_id": "H052-C13",
+      "claim": "170608 MAC/시점과길이2/8의비율",
+      "source_location": "SRC-0023048 projections/final_shortcut/dense;SRC-0027870 metrics",
+      "verification_method": "block합/projection/root/Dense를 합산",
+      "limit": "causal zero padding을 할인하지 않은 표준 dense 산술이며 실측 FLOPs가 아님"
+    },
+    {
+      "claim_id": "H052-C14",
+      "claim": "전체 parameter·BN affine·고정 bias896",
+      "source_location": "SRC-0023048 Block/initialize;SRC-0022880 params_without_dense",
+      "verification_method": "행렬/conv bias/LSTM 두 bias/BN scale와shift를 분해",
+      "limit": "BN running buffers는 parameter가 아니고 고정 bias도 전체 수에는 포함"
+    },
+    {
+      "claim_id": "H052-C15",
+      "claim": "전체·학습가능 수와96개 감소",
+      "source_location": "SRC-0023048 dense;SRC-0027870 metrics/parameter_reduction_ratio",
+      "verification_method": "전체174433/174337과trainable173537/173441·96/174433 검산",
+      "limit": "길이 감소를 큰 모델 저장량 감소로 해석하지 않음"
+    },
+    {
+      "claim_id": "H052-C16",
+      "claim": "MAC 감소와 실제 시간/모델 수의 경계",
+      "source_location": "SRC-0021961 항목2;SRC-0027870 exclusions;SRC-0021984 §3",
+      "verification_method": "제외 연산·실측 미수행과 여러 모델 보관 필요 연결",
+      "limit": "MAC1/4를실제4배속도나학습비용1/4로바꾸지 않음"
+    },
+    {
+      "claim_id": "H052-C17",
+      "claim": "시작·완료·hash와 실행 상태",
+      "source_location": "SRC-0022880 guard/hash;SRC-0027872;SRC-0027871;SRC-0021984 §5",
+      "verification_method": "plan/code/structure SHA와표지·결과 일치",
+      "limit": "원콘솔exit0·외부모든시도이력까지확보하지 않음"
+    },
+    {
+      "claim_id": "H052-C18",
+      "claim": "약96.6µs 타이머의 경계",
+      "source_location": "SRC-0022880 start/duration/result;SRC-0027870 cost",
+      "verification_method": "시작 전 hash/표지와 종료 뒤 보고·저장을 구별",
+      "limit": "프로그램 전체시간·모델속도·현재환경 재측정이 아님"
+    },
+    {
+      "claim_id": "H052-C19",
+      "claim": "300ms/5초와 중단 guard의 역할",
+      "source_location": "SRC-0021961 항목3;SRC-0022880 assertions",
+      "verification_method": "사후기록용300ms와계산뒤5초assertion 확인",
+      "limit": "실행중 강제중단·현재새실험승인으로 취급하지 않음"
+    },
+    {
+      "claim_id": "H052-C20",
+      "claim": "61의 단일 cheap 원장 전환과 누적합",
+      "source_location": "SRC-0027869;SRC-0000901;SRC-0023215;SRC-0021984 §5",
+      "verification_method": "전체JSONdelta한항목·cheap64.0088449/total1977.5556332 대조",
+      "limit": "타이머밖전처리포함완전한총비용은미확인"
+    },
+    {
+      "claim_id": "H052-C21",
+      "claim": "Tab/RCTL 기존 호출·잔여 예산 유지",
+      "source_location": "SRC-0027869;SRC-0000901;SRC-0027870 cost",
+      "verification_method": "used/remaining와모델호출0을전후대조",
+      "limit": "기존60비용을새모델비용으로재가산하지 않음"
+    },
+    {
+      "claim_id": "H052-C22",
+      "claim": "보존10묶음31경로와 새독해 집계",
+      "source_location": "SRC-0022880;SRC-0023215;SRC-0027870;SRC-0000901;SRC-0023048",
+      "verification_method": "원본hash/aliases와6사본/4재사용 대조",
+      "limit": "106직전원장독해와기존본문재독은이번새수량에포함하지 않음"
+    },
+    {
+      "claim_id": "H052-C23",
+      "claim": "43개 검수와10개 오류 사본",
+      "source_location": "SRC-0027870;SRC-0027871;SRC-0000901",
+      "verification_method": "해시를맞춘수치·상태·원장사본오류검출",
+      "limit": "같은에이전트의산술검수이며독립연구자의모델재현은아님"
+    },
+    {
+      "claim_id": "H052-C24",
+      "claim": "60과의 연결 및59/62의 남은 범위",
+      "source_location": "SRC-0021961;SRC-0021984 §3/4",
+      "verification_method": "pilot실증과논리/비용산술·문헌 판단을 분리",
+      "limit": "이번묶음으로59–62전체나전체Goal완료를선언하지 않음"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_at_utc": "2026-10-09T22:00:35.223540+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 24개 주장과 기록·출처·검수 문서를 61 계획·산술/회계 코드·결과·표지·전후 원장, 보존 RCTL 구조 및 62의 해당 절에 다시 대조했다. 초기 분포의 추가 가정, 차이값의 이름, 전체/학습가능 parameter와 타이머 경계를 검토했다. 독립 연구자의 모델 재현은 아니며 59의 일차문헌과 62 전체 종합은 미완료다."
+}
