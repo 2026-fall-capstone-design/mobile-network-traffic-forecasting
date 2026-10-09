@@ -101,3 +101,5 @@ RCTL은29/29fit,1565epoch, wall1658.1391634초, 개별 fit 시간 합1652.177200
 후속 [23·25 조건부 공유 비용](0023-0025-conditional-pooling.md)은 기존B1 분포와 고정 소속을 재사용했다. 직접 혼합 예측의 이득과 RCTL 소속 선택의 근거를 구분하고, 유한표본 반례·수치 실패·비용 한계를 연결했다. 새 Tab 추론이나 RCTL fit은0회다.
 
 [24·25 §2의 후속 진단](0024-0025-recursive-horizon.md)은 이 primary seed의21개 체크포인트와소속을고정한recursive24시간예측이다.6시간주지표에서도global이모든K4보다좋았다.48origin개발재사용·척도차이·24시간일부이득과cell손해를함께보며새모델학습과구분한다.
+
+후속 검수: [25의 peak 판단 경계](0025-adjacent-structures.md)에서 같은 저장 target/threshold의 support를 다시 대조했다.4개cell은0개, 나머지는1–28개이며 실제 target으로 정한 peak를 관측 당시 입력이 높은 조건과 구분했다. 추가 모델 실험은 아니다.

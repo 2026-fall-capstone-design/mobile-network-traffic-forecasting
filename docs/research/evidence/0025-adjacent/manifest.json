@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "batch_id": "history-018",
+  "created_at_utc": "2026-10-09T05:02:07.979178+00:00",
+  "inventory_version": "20261008T140216751179Z",
+  "source_root_alias": "Tab-ICL",
+  "original_bytes_preserved": true,
+  "status": "bounded_literature_and_peak_support_verified_record25_partial",
+  "sources": [
+    {
+      "source_id": "SRC-0021188",
+      "path": "tmp/redesign_20260925/25_pooling_and_horizon_findings.md",
+      "sha256": "8857c78b32b265023638f9c573bf7b1106520afab45c97a7287323a44b35c036",
+      "size_bytes": 9060,
+      "exact_alias_source_ids": [
+        "SRC-0000460",
+        "SRC-0021188"
+      ],
+      "records": [
+        "0025"
+      ],
+      "archive_path": "../0023-0025-pooling/originals/SRC-0021188.md.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_scope_review_reusing_previous_checks",
+      "read_scope": {
+        "lines": [
+          [
+            43,
+            61
+          ]
+        ],
+        "previous_full_text_read": "history-016;1–61행",
+        "claim_scope": "§3 문헌 판별과 §4 판단 경계"
+      },
+      "claim_verification_scope": "§3 문헌 판별과 §4 판단 경계"
+    },
+    {
+      "source_id": "SRC-0030236",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/evaluation_data.npz",
+      "sha256": "d451810ecccf0b1d9d083132816510ef889c089cd5693d9ab061c1badbf7ff7b",
+      "size_bytes": 29071,
+      "exact_alias_source_ids": [
+        "SRC-0000276",
+        "SRC-0001100",
+        "SRC-0030236"
+      ],
+      "records": [
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030236.npz",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_scope_review_reusing_previous_checks",
+      "read_scope": {
+        "fields": [
+          "cell_ids",
+          "test_times",
+          "test_y",
+          "peak_threshold"
+        ],
+        "claim_scope": "16cell의 실제 target 기준 peak 개수만;H001의 train-threshold/H5 검수 재사용"
+      },
+      "claim_verification_scope": "16cell의 실제 target 기준 peak 개수만;H001의 train-threshold/H5 검수 재사용"
+    },
+    {
+      "source_id": "SRC-0030280",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/summary.json",
+      "sha256": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab",
+      "size_bytes": 22857,
+      "exact_alias_source_ids": [
+        "SRC-0000320",
+        "SRC-0001102",
+        "SRC-0001515",
+        "SRC-0001765",
+        "SRC-0030280"
+      ],
+      "records": [
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030280.json",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_selected_scope_review_reusing_previous_checks",
+      "read_scope": {
+        "fields": [
+          "metrics[*].method",
+          "metrics[*].seed",
+          "metrics[*].peak_query_counts",
+          "metrics[*].peak_per_cell_mae",
+          "metrics[*].peak_mean_scaled_mae"
+        ],
+        "claim_scope": "8행의 support/결측 처리/평균 집계. 전체 결과 재검증 아님"
+      },
+      "claim_verification_scope": "8행의 support/결측 처리/평균 집계. 전체 결과 재검증 아님"
+    }
+  ],
+  "primary_sources": [
+    {
+      "source_id": "SRC-0062988",
+      "path": "tmp/redesign_20260925/sources/learning_unit_99/Ma_2026_2604.13748v1.pdf",
+      "sha256": "4507a6f8b0110431ffc22ecd8c5ce2819d7bb54e5ef3a500cc48431cd97e28c8",
+      "size_bytes": 2069228,
+      "reference_id": "H018-Ma",
+      "title": "Forecasting Multivariate Time Series under Predictive Heterogeneity: A Validation-Driven Clustering Framework",
+      "authors": "Ziling Ma; Ángel López Oriona; Hernando Ombao; Ying Sun",
+      "version": "2604.13748v1",
+      "url": "https://arxiv.org/pdf/2604.13748v1",
+      "pages": 43,
+      "read_scope": {
+        "html_ranges": [
+          [
+            0,
+            200
+          ]
+        ],
+        "pdf_visual_pages": [
+          8,
+          14,
+          37
+        ],
+        "pdf_text_pages": [
+          15
+        ],
+        "sections": "§2.1–2.5/§3.1、식2–6·11–14、Algorithm1、§3.3말미 및§4.1 도입",
+        "unreviewed": "나머지 논문/전체 성능표·증명/저자 코드"
+      },
+      "whole_paper_reviewed": false,
+      "performance_reproduced": false,
+      "distribution": "metadata_and_official_versioned_link_only",
+      "records": [
+        "0025"
+      ],
+      "exact_alias_source_ids": [
+        "SRC-0001914",
+        "SRC-0002040",
+        "SRC-0062988",
+        "SRC-0073401"
+      ],
+      "review_status": "agent_selected_pdf_and_html_review",
+      "downloaded_equals_local_original": true
+    }
+  ],
+  "web_primary_sources": [
+    {
+      "reference_id": "H018-NeST",
+      "title": "Nested Spatio-Temporal Time Series Forecasting",
+      "authors": "Yinghao Ai; Yukai Zhou; Ruoxi Jiang; Junyi An; Chao Qu; Zhijian Zhou; Shiyu Wang; Fenglei Cao; Zenglin Xu; Furao Shen; Yuan Qi",
+      "version": "2605.16447v2",
+      "url": "https://arxiv.org/pdf/2605.16447v2",
+      "sha256": "88468c57b6d42abb1659b21ecc57f3b52ade395a7d6e87e34acc51d095d34761",
+      "size_bytes": 1959127,
+      "pages": 20,
+      "read_scope": {
+        "html_ranges": [
+          [
+            105,
+            113
+          ],
+          [
+            139,
+            154
+          ],
+          [
+            318,
+            318
+          ]
+        ],
+        "pdf_visual_pages": [
+          3,
+          4,
+          5,
+          9,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "pdf_text_pages": [
+          3,
+          8,
+          9,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "sections": "§3–4.3의방법、limitations、AppendixA4/A7/A10/Algorithms1–2;다른표는부수열람",
+        "unreviewed": "전체성능표·다른부록/원실행코드;본문의전체효과검증"
+      },
+      "whole_paper_reviewed": false,
+      "performance_reproduced": false,
+      "distribution": "metadata_and_official_versioned_link_only"
+    },
+    {
+      "reference_id": "H018-GraphColoring",
+      "title": "Graph Coloring for Multi-Task Learning",
+      "authors": "Santosh Patapati",
+      "version": "2509.16959v3",
+      "url": "https://arxiv.org/pdf/2509.16959v3",
+      "sha256": "f493b8ab47b0f1186654226f1b604701f3ea2ad91999d91dc4066a64cf41a03f",
+      "size_bytes": 1218043,
+      "pages": 39,
+      "read_scope": {
+        "html_ranges": [
+          [
+            147,
+            356
+          ],
+          [
+            374,
+            383
+          ]
+        ],
+        "pdf_visual_pages": [
+          4,
+          5,
+          16
+        ],
+        "pdf_text_pages": [
+          3,
+          26,
+          27,
+          28
+        ],
+        "sections": "§3.1–4.5、Algorithm1、AppendixD비용지정구간",
+        "unreviewed": "전체이론증명·성능표·저자코드/더최근버전"
+      },
+      "whole_paper_reviewed": false,
+      "performance_reproduced": false,
+      "distribution": "metadata_and_official_versioned_link_only"
+    },
+    {
+      "reference_id": "H018-NTK",
+      "title": "Exploring Task Affinities through NTK Alignment and Early Training Dynamics in Multi-Task Learning",
+      "authors": "Yoann Morello; Emilie Grégoire; Sam Verboven",
+      "version": "VUB metadata:2024-12-02;M3L NeurIPS24 Workshop",
+      "url": "https://openreview.net/pdf?id=HxT9EuHdXW",
+      "institution_url": "https://researchportal.vub.be/en/publications/exploring-task-affinities-through-ntk-alignment-and-early-trainin/",
+      "distribution": "metadata_and_official_links_only",
+      "read_scope": {
+        "historical": "기록25:검색발췌·저자기관초록만",
+        "archive_review": "VUB 제목/저자/초록/일자·워크숍 필드 및 검색 PDF 발췌만;직접 PDF 열기는 verification challenge",
+        "whole_paper_reviewed": false
+      },
+      "pdf_sha256": null,
+      "performance_reproduced": false
+    }
+  ],
+  "new_preserved_files": 0,
+  "reused_preserved_sources": 3,
+  "new_preserved_bytes": 0,
+  "scope": "25 §3–4; 기존 inventory와 웹 일차자료를 구분",
+  "whole_record25_integrated": false,
+  "new_model_runs": 0,
+  "original_scripts_executed": false
+}

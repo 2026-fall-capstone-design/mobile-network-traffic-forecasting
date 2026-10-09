@@ -1,0 +1,139 @@
+{
+  "success": true,
+  "batch_id": "history-018",
+  "checked_at_utc": "2026-10-09T05:02:07.979178+00:00",
+  "input_sources": [
+    {
+      "source_id": "SRC-0030236",
+      "sha256": "d451810ecccf0b1d9d083132816510ef889c089cd5693d9ab061c1badbf7ff7b",
+      "size_bytes": 29071
+    },
+    {
+      "source_id": "SRC-0030280",
+      "sha256": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab",
+      "size_bytes": 22857
+    }
+  ],
+  "cell_ids": [
+    3737,
+    3745,
+    3753,
+    3765,
+    4537,
+    4545,
+    4553,
+    4565,
+    5337,
+    5345,
+    5353,
+    5365,
+    6137,
+    6145,
+    6153,
+    6165
+  ],
+  "counts": [
+    0,
+    3,
+    0,
+    1,
+    0,
+    5,
+    5,
+    10,
+    28,
+    2,
+    15,
+    13,
+    2,
+    5,
+    6,
+    0
+  ],
+  "total_peak_cell_time_pairs": 95,
+  "zero_peak_cell_ids": [
+    3737,
+    3753,
+    4537,
+    6165
+  ],
+  "positive_cell_count": 12,
+  "minimum_positive_count": 1,
+  "maximum_count": 28,
+  "test_target_indices": [
+    1008,
+    1487
+  ],
+  "threshold_operator": "strict >",
+  "threshold_origin": "RCTL train target168–839의cell별95%quantile;history-001 수치/H5 검수 재사용",
+  "rows": [
+    {
+      "method": "empirical_risk",
+      "seed": 20260925,
+      "counts_match": true,
+      "null_positions_match": true,
+      "mean_of_12_available_cells": 0.2903457507491112,
+      "reported_mean": 0.2903457507491112
+    },
+    {
+      "method": "empirical_risk",
+      "seed": 20260926,
+      "counts_match": true,
+      "null_positions_match": true,
+      "mean_of_12_available_cells": 0.29642726108431816,
+      "reported_mean": 0.29642726108431816
+    },
+    {
+      "method": "global",
+      "seed": 20260925,
+      "counts_match": true,
+      "null_positions_match": true,
+      "mean_of_12_available_cells": 0.27985792824377614,
+      "reported_mean": 0.27985792824377614
+    },
+    {
+      "method": "knn_risk",
+      "seed": 20260925,
+      "counts_match": true,
+      "null_positions_match": true,
+      "mean_of_12_available_cells": 0.28809368424117565,
+      "reported_mean": 0.28809368424117565
+    },
+    {
+      "method": "pcc_balanced",
+      "seed": 20260925,
+      "counts_match": true,
+      "null_positions_match": true,
+      "mean_of_12_available_cells": 0.2892545958360036,
+      "reported_mean": 0.2892545958360036
+    },
+    {
+      "method": "random_balanced",
+      "seed": 20260925,
+      "counts_match": true,
+      "null_positions_match": true,
+      "mean_of_12_available_cells": 0.2855886369943619,
+      "reported_mean": 0.2855886369943619
+    },
+    {
+      "method": "tabicl_risk",
+      "seed": 20260925,
+      "counts_match": true,
+      "null_positions_match": true,
+      "mean_of_12_available_cells": 0.2704200219983856,
+      "reported_mean": 0.2704200219983856
+    },
+    {
+      "method": "tabicl_risk",
+      "seed": 20260926,
+      "counts_match": true,
+      "null_positions_match": true,
+      "mean_of_12_available_cells": 0.26235568057745695,
+      "reported_mean": 0.26235568057745695
+    }
+  ],
+  "scope": "저장 target/threshold의 support와 summary 결측/집계만 재계산. 모델예측·새실험·통계유의성 검사 없음.",
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "independent_peak_events": false
+}
