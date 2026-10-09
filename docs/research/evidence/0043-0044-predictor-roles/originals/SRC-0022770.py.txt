@@ -1,0 +1,61 @@
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
+import hashlib, json
+from pathlib import Path
+import urllib.request
+from pypdf import PdfReader
+from html.parser import HTMLParser
+
+base = Path(__file__).resolve().parent
+out = base / 'sources/predictor_role_43'
+out.mkdir(parents=True, exist_ok=True)
+with (out/'run_started.json').open('x', encoding='utf-8') as f:
+    json.dump({'utc':datetime.now(timezone.utc).isoformat(), 'model_calls':0}, f)
+items = [(f'{a}{ext}',f'https://arxiv.org/{kind}/{a}')
+    for a in ['2509.23695v1','2608.23538v2']
+    for ext,kind in [('.pdf','pdf'),('.html','html')]]
+items += [(f'{a}_abs.html',f'https://arxiv.org/abs/{a}') for a in ['2509.23695','2608.23538']]
+
+class Parser(HTMLParser):
+    def __init__(self): super().__init__(); self.parts=[]; self.links=[]; self.skip=0
+    def handle_starttag(self,t,a):
+        if t in ['script','style']: self.skip+=1
+        if t in ['p','div','h1','h2','h3','h4','tr','section']: self.parts.append('\n')
+        if t=='a':
+            d=dict(a)
+            if 'href' in d and 'github.com' in d['href']: self.links.append(d['href'])
+    def handle_endtag(self,t):
+        if t in ['script','style']: self.skip-=1
+        if t in ['p','div','tr']: self.parts.append('\n')
+    def handle_data(self,d):
+        if not self.skip: self.parts.append(d)
+
+def fetch(item):
+    name,url=item
+    r={'name':name,'url':url}
+    try:
+        req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 (research source verification)'})
+        with urllib.request.urlopen(req,timeout=30) as response:
+            data=response.read(10*1024**2+1)
+            r.update(http_status=response.status,final_url=response.url)
+        assert len(data)<=10*1024**2
+        if name.endswith('.pdf'): assert data.startswith(b'%PDF-')
+        with (out/name).open('xb') as f: f.write(data)
+        r.update(status='saved',bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            reader=PdfReader(out/name)
+            r['pages']=len(reader.pages)
+            text='\n\n'.join(f'PAGE {i+1}\n'+p.extract_text().replace(chr(0),'') for i,p in enumerate(reader.pages))
+            (out/name.replace('.pdf','_pdf.txt')).write_text(text,encoding='utf-8')
+        elif not name.endswith('_abs.html'):
+            p=Parser(); p.feed(data.decode('utf-8'))
+            text='\n'.join(line.strip() for line in ''.join(p.parts).splitlines() if line.strip())
+            (out/name.replace('.html','_html.txt')).write_text(text,encoding='utf-8')
+            r['github_links']=sorted(set(p.links))
+    except Exception as exc:
+        r.update(status='failed',error=f'{type(exc).__name__}: {exc}')
+    return r
+
+with ThreadPoolExecutor(max_workers=3) as pool: records=list(pool.map(fetch,items))
+(out/'manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+print(json.dumps(records,ensure_ascii=False,indent=2,allow_nan=False))

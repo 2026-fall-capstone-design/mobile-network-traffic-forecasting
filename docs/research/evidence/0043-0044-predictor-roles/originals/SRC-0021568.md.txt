@@ -1,0 +1,12 @@
+# 43 TabICLv2의 역할 변경에 관한 원문 확인
+
+확인일 2026-09-26. 42의 cell별 진단을 바탕으로, 예측 관계 점수에 보정항을 붙이는 대신 두 가지 다른 정보를 검토한다. 아직 추천하거나 실행할 새 clustering 방법은 아니다.
+
+1. **학습 후 공유 효과를 직접 예측하는 meta table:** TimeTic, arXiv:2509.23695v1. 과거 성능 label과 대상 모델 내부 표현이 얼마나 필요한지, zero-shot 성능과 실제 fine-tuning 결과를 어떻게 연결했는지, RCTL 독립 조건과 양립하는지 확인한다. 실제 학습 효과를 예측한다는 주장에 필요한 관찰 비용을 생략하지 않는다.
+2. **예측값 대신 국소 입력 관계로 cell을 설명하는 경로:** Interpretable AI with Local Distillation, arXiv:2608.23538v2(2026-09-22). teacher의 역할, 실제 response와 pseudo-observation, locality 정의, subgroup 발견, 안정성 정리의 가정을 확인한다. 예측값 유사성과 관계 유사성의 차이를 원문 자체가 어떻게 다루는지 살핀다.
+
+각 논문의 최신 version history, 본문·부록·공식 코드 연결을 확인한다. PDF와 HTML을 원출처에서 보존하며 외부 코드는 읽기만 하고 실행하지 않는다. TimeTic의 공식 코드 연결이 발견되지 않으면 미확인으로 적는다. 발견하지 못한 사실을 코드가 없다는 단정으로 바꾸지 않는다.
+
+이번 확인에서 묻는 것은 ‘논문을 하나 더 적용할 수 있는가’가 아니라 **새 판단 정보를 실제로 확보할 수 있는가, 그 정보가 기존 RCTL 독립 조건 아래서 무엇을 바꾸는가**다. 예측 관계의 해석·안정성·모델 선택을 공동 학습 성능 보장으로 바꾸지 않는다.
+
+검색어: `Estimating Time Series Foundation Model Transferability via In-Context Learning`, `TimeTIC transferability github`, `Interpretable AI with Local Distillation 2608.23538`, `tabular foundation models learning curves transfer selection`, `TabICL data valuation`. 검색 결과로만 발견한 연구는 방법을 검토한 연구로 세지 않는다.

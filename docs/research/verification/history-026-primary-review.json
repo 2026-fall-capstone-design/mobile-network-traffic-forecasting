@@ -1,0 +1,187 @@
+{
+  "batch_id": "history-026",
+  "reviewer": "same_archive_agent",
+  "review_type": "bounded_manual_primary_and_static_code_comparison",
+  "claims": [
+    {
+      "claim_id": "H026-C01",
+      "claim": "43계획과44문헌검토는 두 대체 경로의 당시 미채택이며 새 성능 실험이 아니다.",
+      "sources": [
+        "SRC-0021568:1–12",
+        "SRC-0021588:38–84"
+      ],
+      "status": "bounded_checked",
+      "limits": "원문 다음 행동을 현재 실행하지 않음;44수치범위는H025"
+    },
+    {
+      "claim_id": "H026-C02",
+      "claim": "TimeTic v1/Local v2의 제출 이력과 표지 날짜를 구분했다.",
+      "sources": [
+        "SRC-0063549:citation/history",
+        "SRC-0063554:citation/history",
+        "SRC-0063551:PDF1",
+        "SRC-0063556:PDF1"
+      ],
+      "status": "bounded_checked",
+      "limits": "각 논문 전체 및 Local v1과의 전체 개정 대조는 미완료"
+    },
+    {
+      "claim_id": "H026-C03",
+      "claim": "TimeTic은 실제 fine-tuned 성능을 label로 쓰고 activation entropy를 읽는다.",
+      "sources": [
+        "SRC-0063551:PDF3–6",
+        "SRC-0021588:42–43"
+      ],
+      "status": "bounded_checked",
+      "limits": "미래트래픽 정답·RCTL pooling label과 구별"
+    },
+    {
+      "claim_id": "H026-C04",
+      "claim": "TimeTic cold-start fine-tuning과 B3의 label 수집 비용을 온라인 추론 비용에서 분리한다.",
+      "sources": [
+        "SRC-0063551:PDF6–7/18",
+        "SRC-0021588:44"
+      ],
+      "status": "bounded_checked",
+      "limits": "저자 원시 결과 재현·실행시간 전체 검산 아님"
+    },
+    {
+      "claim_id": "H026-C05",
+      "claim": "Table1 weightedKendall과 F/G Spearman은 별개이며 .6은 PDF8 medium-horizon 문맥이다.",
+      "sources": [
+        "SRC-0063551:PDF7–8/21",
+        "SRC-0021588:45"
+      ],
+      "status": "bounded_checked",
+      "limits": "세 구간 전체 평균이나 RCTL MAE 개선율 아님"
+    },
+    {
+      "claim_id": "H026-C06",
+      "claim": "26/28열과 FigureA의 query zero-shot 열은 실제 구현에서 확인할 공백이다.",
+      "sources": [
+        "SRC-0063551:PDF6/15",
+        "SRC-0021588:47"
+      ],
+      "status": "bounded_checked",
+      "limits": "TimeTic 자체 구현 미확인, 코드가 없다고 단정하지 않음"
+    },
+    {
+      "claim_id": "H026-C07",
+      "claim": "A1의 분산은 PCA2/K100 proxy이고 Algorithm1의 f와 f* 표기가 어긋난다.",
+      "sources": [
+        "SRC-0063551:PDF14–15"
+      ],
+      "status": "bounded_checked",
+      "limits": "실제 구현 오류·참 epistemic uncertainty 감소 정리로 확대하지 않음"
+    },
+    {
+      "claim_id": "H026-C08",
+      "claim": "AppendixD의 X조건 점별 하한은 반례가 있고 phi조건/평균 하한과 구별해야 한다.",
+      "sources": [
+        "SRC-0063551:PDF22",
+        "archive:exact_counterexample"
+      ],
+      "status": "bounded_checked",
+      "limits": "유한 이차 모멘트,phi가측예측;논문 실증 전체의 반증 아님"
+    },
+    {
+      "claim_id": "H026-C09",
+      "claim": "Local은 scalar teacher similarity·OOF loss ratio gate·mu/sqrt(neff) pseudo-observation을 사용한다.",
+      "sources": [
+        "SRC-0063556:PDF5–7",
+        "SRC-0063563:269–363",
+        "SRC-0021588:57"
+      ],
+      "status": "bounded_checked",
+      "limits": "global gate는 모든 query별 우위 정리가 아니며 solver 정규화 완전 검증 아님"
+    },
+    {
+      "claim_id": "H026-C10",
+      "claim": "Local §4.3에 157개8차원 계수·k3·100×157재적합·공동소속 average linkage가 이미 있다.",
+      "sources": [
+        "SRC-0063556:PDF13",
+        "SRC-0021588:58"
+      ],
+      "status": "bounded_checked",
+      "limits": "우리 데이터의 실행 결과·미래 pooling gain 아님"
+    },
+    {
+      "claim_id": "H026-C11",
+      "claim": "안정성은 고정 locality/mu/lambda와 lasso 및 design/teacher 조건 아래 특징 선택 확률을 다룬다.",
+      "sources": [
+        "SRC-0063556:PDF10–18",
+        "SRC-0021588:59/62"
+      ],
+      "status": "bounded_checked",
+      "limits": "5%성능허용은신뢰수준아님;cluster/시계열 MAE보장아님;전체증명미검증"
+    },
+    {
+      "claim_id": "H026-C12",
+      "claim": "LocalTable2 beta3상관.14–.34는 mu>1인 반복만 보고하며 sigma3에서는10반복이다.",
+      "sources": [
+        "SRC-0063556:PDF37–38",
+        "SRC-0021588:60"
+      ],
+      "status": "bounded_checked",
+      "limits": "50replicate/40query의보고자료;raw 재계산·신규모의없음"
+    },
+    {
+      "claim_id": "H026-C13",
+      "claim": "저장 저자코드4개가 pinned Git blob과 같고 OOF는 shuffled5fold이다.",
+      "sources": [
+        "SRC-0063559:all_tree_metadata",
+        "SRC-0063562:1–88",
+        "SRC-0063563:1–673",
+        "SRC-0063564:1–47",
+        "SRC-0063565:1–70"
+      ],
+      "status": "bounded_checked",
+      "limits": "정적독해와바이트일치,모델재현성공아님;전체저장소미검토"
+    },
+    {
+      "claim_id": "H026-C14",
+      "claim": "LocalglobalCV의추가호출 및 method/ablation 시간집계경계가 다르다.",
+      "sources": [
+        "SRC-0063563:302–309",
+        "SRC-0063564:23–47",
+        "SRC-0063565:38–70"
+      ],
+      "status": "bounded_checked",
+      "limits": "실측runtime아님;ablation두행공유시간독립합산금지"
+    },
+    {
+      "claim_id": "H026-C15",
+      "claim": "43입수6항목/2PDF64p5063783B,시간미기록,모델호출0의기록이다.",
+      "sources": [
+        "SRC-0022770:1–61",
+        "SRC-0063560:all_entries",
+        "SRC-0063561:all_keys",
+        "SRC-0021588:84"
+      ],
+      "status": "bounded_checked",
+      "limits": "42산술시간과구별;30s/10MiB/3threads는설정"
+    },
+    {
+      "claim_id": "H026-C16",
+      "claim": "당시 RCTL독립 조건과정보/학습행동차이를명시해야재검토의미가있다.",
+      "sources": [
+        "SRC-0021568:5–10",
+        "SRC-0021588:49–78"
+      ],
+      "status": "bounded_checked",
+      "limits": "미채택은직접실험의과학적기각이아님;팀의모든미래설계에금지규칙으로적용하지않음"
+    }
+  ],
+  "primary_text_pages": 34,
+  "primary_visual_pages": 9,
+  "whole_papers_read": 0,
+  "full_primary_code_files": 3,
+  "full_primary_readme_files": 1,
+  "evidence_limits": [
+    "Reported paper numbers, no raw empirical reproduction.",
+    "No original research code imported or executed.",
+    "Historical controls and goal/commands left unchanged.",
+    "Same agent second source pass is not independent scientific review."
+  ],
+  "new_model_runs": 0
+}

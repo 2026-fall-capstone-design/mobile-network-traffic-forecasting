@@ -136,7 +136,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 | XOR, conditional TC, synergy, capacity/redundancy, joint-predictive gap | [36–38 네 유한 사례](records/0036-0038-finite-information.md) | 주변 정보 합0/joint1, TC0→1, 중복 label 실제0/축약−1. S4.38 포화 조건과 유효한 전체식을 먼저 확인 |
 | pooling uncertainty, heterogeneity, half-jackknife, empirical Bayes | [선형 panel 비교](records/0036-0038-finite-information.md) | 관계 차이 Δ와 T⁻¹h를 함께 고려. 선형성·외생성·의존 조건·MSFE를 MAE/RCTL에 그대로 옮기지 않음 |
 | spectrum/context value, fixed memory, oracle, analog gain, Δnl | [context 정보집합](records/0036-0038-finite-information.md) | 같은 정보의 최적 선형 기준과 실제 학습 오차 구별. 60/40 AR·k4 추정, population 한계와 finite 값 구별 |
-| 담당 cell 소속과 학습 sample 범위 분리, pretraining/reweighting | [당시 다음 질문](records/0036-0038-finite-information.md) | 공유 자체의 신규성 주장 금지. Tab의 추가 정보·단순 기준 대비 차이·기존33–35와 바뀐 조건을 기록. 39–40은 아래 자료 공유 검토,41–42는 아래 cell 진단으로 연결;43/44문헌·이후 미완료 |
+| 담당 cell 소속과 학습 sample 범위 분리, pretraining/reweighting | [당시 다음 질문](records/0036-0038-finite-information.md) | 공유 자체의 신규성 주장 금지. Tab의 추가 정보·단순 기준 대비 차이·기존33–35와 바뀐 조건을 기록. 39–40은 아래 자료 공유 검토,41–42는 아래 cell 진단으로 연결;43–44 문헌·역할 검토는 아래에 연결; 45 이후 미완료 |
 
 같은 네 수학 반례는 [모델 없는 검산](evidence/0036-0038-finite-information/README.md)으로 확인한다. 문헌 상세 방법과 성능 검증, 초록 발견과 전체 논문 검토를 구분한다.
 
@@ -161,4 +161,16 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 | validation selector, 선택 편향, 시간 이동 | [validation→개발 연결](records/0041-0042-cell-harm.md), 840–1007에서 선택/1008–1487 평가 | 0.077273462로 global보다 8.732081404% 악화. global 선택 6개/사후 선택과 일치 5개. 저장 checkpoint 21개로 선택 입력 확인. 이미 사용한 validation·개발 자료이며 RCTL 손실 독립 조건을 충족하지 않음 |
 | numeric_wall_seconds, end RSS, 비용 재사용 | [실행·원장](records/0041-0042-cell-harm.md) | 0.031521초는 저장 산술, 35,389,440 bytes는 종료 관측 RSS. 42 추가 모델 0, 지정 누적 1947.6963812초. finish 시간 중복 합산·현재 원장 전체를 당시 값으로 사용 금지 |
 
-44 원문은 보존했지만 43과 44 §3–5의 문헌·역할 종합 및 §6 문헌 입수는 아직 검수 대기다. 새 실험은 어떤 새 정보로 어떤 학습 행동을 바꾸는지, 기존 경로 재선택과 무엇이 다른지, 독립 평가 자료를 먼저 명시한다.
+43과 44 §3–5의 문헌·역할 종합 및 §6 문헌 입수는 아래 기록으로 연결한다. 새 실험은 어떤 새 정보로 어떤 학습 행동을 바꾸는지, 기존 경로 재선택과 무엇이 다른지, 독립 평가 자료를 먼저 명시한다.
+
+## 학습 후 성능이나 국소 설명으로 공유 그룹을 정하려는가
+
+| 문제·별칭 | 확인한 기록·근거 | 같은 연구의 반복을 피하려면 |
+| --- | --- | --- |
+| TimeTic, transferability, fine-tuned performance, meta-regression | [43–44의 label·비용 비교](records/0043-0044-predictor-roles.md), 실제 학습 후 MASE·activation entropy·cold-start fine-tuning | RCTL 정보를 허용하는지 먼저 명시. cheap learner label은 다른 목표이며 RCTL로 옮기는 근거가 필요 |
+| rank correlation, 0.6, Kendall, Spearman | [원문의 두 지표 표](records/0043-0044-predictor-roles.md), weighted Kendall과 medium Spearman 0.600 | 세 예측 구간·두 지표를 구분. 모델 순위 상관을 RCTL pooling MAE 개선으로 사용하지 않음 |
+| local distillation, coefficient clustering, pseudo-observation, teacher locality | [기존 계수 군집화](records/0043-0044-predictor-roles.md), 157×8 계수·k3·100×157 재적합 | 구조 자체의 재제안과 새로운 관측·학습 행동을 구분. scalar 예측 유사성은 입력 관계 동일성의 보장이 아님 |
+| feature selection stability, frozen teacher, response derivative | [정리의 가정](records/0043-0044-predictor-roles.md), 고정 locality·lasso·design/teacher 조건 | parameter 고정과 context y 독립을 구분. 5% tuning 허용오차·선택 확률 정리를 미래 MAE·군집 소속 보장으로 쓰지 않음 |
+| OOF, shuffled KFold, shared ablation runtime | [고정 저자 코드](evidence/0043-0044-predictor-roles/README.md), commit f8ea1e71… | 시간 분할을 별도로 설계. global CV 추가 호출과 ablation의 공유 시간을 구별하고 같은 시간을 두 번 합산하지 않음 |
+
+두 경로는 당시 목표에서 문헌 검토 후 미채택됐다. 새 모델 실행으로 성능 실패를 확인한 기록이 아니다. [43–44 출처](sources/history-026.md)를 재사용하고 새 정보·실제 학습 행동·이전 시도와 다른 검증 조건을 설계에 적는다.

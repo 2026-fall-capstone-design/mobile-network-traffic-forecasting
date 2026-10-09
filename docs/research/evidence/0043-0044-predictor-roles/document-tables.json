@@ -1,0 +1,162 @@
+{
+  "scope": "Literal reported paper means checked against rendered PDF; not independent model reproduction.",
+  "timetic": {
+    "source_id": "SRC-0063551",
+    "pdf_pages": [
+      7,
+      21
+    ],
+    "rows": [
+      {
+        "setting": "standard",
+        "horizon": "short",
+        "kendall_timetic": 0.305,
+        "kendall_zero": 0.157,
+        "spearman_timetic": 0.353,
+        "spearman_zero": 0.257
+      },
+      {
+        "setting": "standard",
+        "horizon": "medium",
+        "kendall_timetic": 0.429,
+        "kendall_zero": 0.329,
+        "spearman_timetic": 0.6,
+        "spearman_zero": 0.467
+      },
+      {
+        "setting": "standard",
+        "horizon": "long",
+        "kendall_timetic": 0.319,
+        "kendall_zero": 0.279,
+        "spearman_timetic": 0.418,
+        "spearman_zero": 0.381
+      },
+      {
+        "setting": "fewshot",
+        "horizon": "short",
+        "kendall_timetic": 0.32,
+        "kendall_zero": 0.131,
+        "spearman_timetic": 0.399,
+        "spearman_zero": 0.236
+      },
+      {
+        "setting": "fewshot",
+        "horizon": "medium",
+        "kendall_timetic": 0.383,
+        "kendall_zero": 0.262,
+        "spearman_timetic": 0.469,
+        "spearman_zero": 0.379
+      },
+      {
+        "setting": "fewshot",
+        "horizon": "long",
+        "kendall_timetic": 0.323,
+        "kendall_zero": 0.32,
+        "spearman_timetic": 0.451,
+        "spearman_zero": 0.413
+      }
+    ],
+    "interpretation": "PDF8 explicitly reports .6 for medium-horizon Spearman. Not overall three-horizon mean or weighted Kendall.",
+    "raw_results_reproduced": false
+  },
+  "local_table2": {
+    "source_id": "SRC-0063556",
+    "pdf_pages": [
+      37,
+      38
+    ],
+    "replicates_per_row": 50,
+    "query_points": 40,
+    "correlations_condition": "Only runs with mu>1; fallback runs excluded from correlations.",
+    "rows": [
+      {
+        "n": 400,
+        "p": 100,
+        "sigma": 0.3,
+        "beta3_correlation_mean": 0.34,
+        "beta3_correlation_sd": 0.13,
+        "reverted": 0
+      },
+      {
+        "n": 400,
+        "p": 100,
+        "sigma": 1,
+        "beta3_correlation_mean": 0.3,
+        "beta3_correlation_sd": 0.13,
+        "reverted": 0
+      },
+      {
+        "n": 400,
+        "p": 100,
+        "sigma": 2,
+        "beta3_correlation_mean": 0.24,
+        "beta3_correlation_sd": 0.16,
+        "reverted": 11
+      },
+      {
+        "n": 400,
+        "p": 100,
+        "sigma": 3,
+        "beta3_correlation_mean": 0.14,
+        "beta3_correlation_sd": 0.14,
+        "reverted": 40
+      },
+      {
+        "n": 200,
+        "p": 100,
+        "sigma": 0.3,
+        "beta3_correlation_mean": 0.33,
+        "beta3_correlation_sd": 0.17,
+        "reverted": 0
+      },
+      {
+        "n": 400,
+        "p": 800,
+        "sigma": 0.3,
+        "beta3_correlation_mean": 0.34,
+        "beta3_correlation_sd": 0.15,
+        "reverted": 0
+      },
+      {
+        "n": 200,
+        "p": 500,
+        "sigma": 0.3,
+        "beta3_correlation_mean": 0.25,
+        "beta3_correlation_sd": 0.17,
+        "reverted": 0
+      }
+    ],
+    "raw_results_reproduced": false
+  },
+  "local_clustering": {
+    "query_count": 157,
+    "coefficient_dimensions": 8,
+    "clusters": 3,
+    "randomization_vectors": 100,
+    "randomized_query_fits": 15700,
+    "source_scope": "SRC-0063556 PDF13 section4.3"
+  },
+  "exact_counterexample": {
+    "success": true,
+    "source_id": "SRC-0063551",
+    "source_scope": "PDF22 AppendixD printed second inequality; visual confirmed",
+    "setup": "P(X=0)=P(X=1)=1/2, Y=X, phi(X)=0, g(phi)=0; exact finite expectation, not sampled data.",
+    "printed_pointwise_left_at_X0": "0",
+    "printed_right_Var_Y_given_phi": "1/4",
+    "actual_feature_conditional_MSE": "1/2",
+    "optimal_feature_conditional_MSE": "1/4",
+    "correct_scope": "For phi-measurable predictors g, E[(Y-g(phi(X)))^2 | phi(X)] >= Var(Y | phi(X)); after averaging, E Var(Y|phi(X)) >= E Var(Y|X). The conditional-feature variance ordering is not pointwise in X.",
+    "limits": "Refutes the printed pointwise bound in this generality; does not refute TimeTic empirical results or whole method.",
+    "original_code_executed": false,
+    "new_model_runs": 0,
+    "random_samples": 0
+  },
+  "downloads": {
+    "pdf_count": 2,
+    "pdf_pages": 64,
+    "pdf_bytes": 5063783,
+    "http200_saved_rows": 6,
+    "wall_seconds": null
+  },
+  "historical_model_calls": 0
+}
