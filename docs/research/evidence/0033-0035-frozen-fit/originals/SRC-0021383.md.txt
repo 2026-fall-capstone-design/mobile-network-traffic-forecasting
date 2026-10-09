@@ -1,0 +1,32 @@
+# 34 저장된 RCTL의 고정 가중치 오차·비용 진단
+
+2026-09-25. 추가 학습 0회. 이전 validation 기준으로 이미 선택된 29개 checkpoint만 사용한다. 이 결과로 clustering 소속이나 threshold를 변경하지 않는다.
+
+## 핵심 질문 하나
+
+현재 작은 pilot에서 cluster별 RCTL이 global보다 나쁜 결과를 낸 현상을, 훈련 구간의 적합 부족과 훈련 이후 일반화 악화 중 어느 설명이 더 잘 기술하는가? 인과적 분리나 새로운 후보의 성능 확인은 아니다.
+
+## 비교와 자료
+
+- 고정 global 1개 및 TabICL·empirical·KNN·PCC·random의 고정 K=4 분할. seed 20260925 전체, 20260926은 기존 TabICL·empirical만. global 두 번째 seed는 없다는 한계를 유지한다.
+- 기존 `results/design_data.npz`의 32개 중 기존 pilot 16개를 정확한 cell ID로 선택한다. 새 cell·새 기간·test forward는 없다.
+- 입력은 기존 순서의 16열을 8시점×9channel로 변환한다. 최근 8개는 첫 channel, 나머지 8개 특징은 시점마다 반복한다.
+- 훈련 target index 168–839: cell당 672개. validation 840–1007: cell당 168개. 정규화·label·설정은 모두 고정한다.
+- 각 model을 `eval()` 및 `inference_mode()`로 계산한다. 학습 기록의 online/dropout MAE와 달리 같은 가중치로 두 구간을 비교한다. 학습 MAE는 이미 본 정답에 대한 적합이며 독립 예측 성능이 아니다.
+
+## 실행량과 상한
+
+- 29개 checkpoint 로드, optimizer/backward/parameter update 0회.
+- 예측 행 수: global 16×840 + 나머지 28×4×840 = 107,520.
+- batch 512, 훈련/validation을 따로 예측: global 21+6=27회, 나머지 각 6+2=8회, 총 251 forward.
+- wall cap 300초, RSS cap 2 GiB, threads 4. 기존 누적 예산에 frozen inference 비용으로 한 번 추가한다. RCTL fit 상한 29와 잔여 0은 그대로다.
+- 초기 run marker가 있으면 재실행하지 않고 결과를 검사한다. checkpoint를 덮어쓰지 않는다. 전후 SHA-256과 tensor state 불변을 검사한다.
+
+## 검증과 해석
+
+1. validation MAE를 저장된 `best_val_mae`와 1e-6 이내로 재현해야 한다. 실패하면 비교 해석을 중단한다.
+2. cell 비중을 동일하게 주어 고정 method/seed별 train·validation 평균과 cell별 gap을 기록한다. 이미 저장된 test MAE는 참고로만 병기한다.
+3. cluster train MAE가 낮고 validation이 높다면 일반화 손해와 일치하는 현상이다. 시간 변화·표본 크기·최적화·모델 용량을 인과적으로 분리했다고 쓰지 않는다.
+4. train도 나쁘면 '과적합 때문'이라고 하지 않는다. 유한 학습의 적합 또는 정보 문제가 남으며 원인을 확정하지 않는다.
+5. parameter 수와 원래 batch 256의 optimizer step을 기록한다. model 수가 4배면 총 학습량·실행 시간이 반드시 4배라는 주장은 하지 않는다.
+6. 이것으로 새 TabICL clustering의 이득이 확인되었다고 하지 않는다. 추천 후보는 별도 원리와 증거가 필요하다.

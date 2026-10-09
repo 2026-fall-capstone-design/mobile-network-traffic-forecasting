@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "expected": {
+    "parameter_count": 174433,
+    "trainable_parameter_count": 173537,
+    "buffer_element_count": 908,
+    "state_tensor_bytes": 701412
+  },
+  "frozen_recurrent_bias_elements": 896,
+  "buffer_float32_elements": 896,
+  "buffer_int64_elements": 12,
+  "block_parameter_counts": [
+    3792,
+    14336,
+    56320,
+    66560,
+    22016,
+    5632
+  ],
+  "source": "tmp/redesign_20260925/rctl_torch.py",
+  "scope": "Static layer declarations plus standard PyTorch float32 parameter/BN buffer conventions; compared with all 29 saved count records. No torch import/model initialization/checkpoint deserialization; actual checkpoint tensor metadata not inspected.",
+  "new_model_runs": 0
+}

@@ -1,0 +1,24 @@
+# 33 원문 확인: 긴 이력, process 식별, model 용량
+
+2026-09-25. 신규 후보 채택이나 모델 실행 계획이 아닌 문헌 확인이다.
+
+## 확인할 질문
+
+현재 q=8의 짧은 입력을 사용하는 공유 예측기에서, 서로 다른 cell의 예측 관계를 구별하는 문제와 단순히 model 용량이 작은 문제를 혼동하고 있는가? 긴 과거를 별도로 참고하는 방법이 이미 어떤 범위까지 제안되었는가?
+
+## 출처와 범위
+
+- Butera et al., *Why Do Time Series Models Need Long Context Windows?*, arXiv:2606.01999v1, 2026-06-01. 실행일 arXiv submission history에 v1만 표시됨을 확인했다.
+- abs, HTML, 원본 PDF를 각각 보존한다. 파일당 다운로드 상한 10 MiB, 요청당 timeout 30초, 자동 재시도 없음. 외부 코드를 실행하지 않는다.
+- §2–4, Assumption 3.1, Theorem 3.2 및 Appendix B.1, F–G의 가정·구현·cache 조건을 확인한다. MSE 정리를 MAE나 RCTL 성능 보장으로 바꾸지 않는다.
+- 긴 이력으로 process 정보를 추정한 뒤 짧은 입력의 예측에 이용하는 구조 자체를 신규성으로 세지 않는다. 관련 method를 실제 실행한 것으로 기록하지 않는다.
+
+## 탐색 기록
+
+실행일 검색어: `global local forecasting model complexity clustering overfitting 2025 2026`, `forecasting clustering number of series capacity global local`, `F5ALCh3GWG`, `local embeddings co-adaptation forecasting regularization`, `generative process identification forecasting`, `Luca Butera conditional forecasting`, `generative process identification time series site:arxiv.org 2026`.
+
+검색에서 2410.14630 (embedding regularization), 2607.13006 (The Spectrum Is Not Enough)도 발견했으나 이 단계에서는 방법을 읽거나 채택한 연구로 세지 않는다. OpenReview F5ALCh3GWG PDF는 challenge 화면이었으며 통과하거나 우회하지 않았다.
+
+## 다음 판단
+
+process 불확실성이 실제 손해를 남기는 조건과 아닌 조건을 먼저 구별한다. 현재 작은 pilot에서 global이 유리한 사실을 삭제하지 않는다. 원 논문의 N=2 결과와 pilot을 동일 조건으로 비교하지 않는다.
