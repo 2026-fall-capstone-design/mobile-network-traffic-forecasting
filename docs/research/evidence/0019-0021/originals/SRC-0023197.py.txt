@@ -1,0 +1,83 @@
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:
+    os.environ[key]='4'
+from pathlib import Path
+import time,json,hashlib,sys,gc
+import numpy as np,torch,psutil
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor
+from tabicl import TabICLRegressor
+sys.stdout.reconfigure(encoding='utf-8')
+torch.set_num_threads(4);torch.set_num_interop_threads(2)
+base=Path(__file__).resolve().parent;out=base/'results/target_parameterization';out.mkdir(exist_ok=True)
+if (out/'run_started.json').exists():raise SystemExit('Existing run marker. Do not rerun.')
+d=np.load(base/'results/temporal_validity/predictions.npz')
+p=np.load(base/'results/broad_cell_information/predictions.npz')
+X=d['X'];Y=d['Y'];ids=d['cell_ids'].astype(int);times=d['times'];n=len(ids)
+ctimes=p['context_times'];qtimes=p['query_times']
+assert np.array_equal(ids,p['cell_ids'])
+ci=np.searchsorted(times,ctimes);qi=np.searchsorted(times,qtimes)
+cx=X[:,ci].reshape(n*len(ci),-1);qx=X[:,qi].reshape(n*len(qi),-1)
+cy=Y[:,ci].ravel();qy=Y[:,qi].ravel();dy=cy-cx[:,7]
+assert np.allclose(qy,p['actual'])
+ident=np.repeat(np.eye(n),len(ci),axis=0)
+qident=np.repeat(np.eye(n),len(qi),axis=0)
+contexts={'no_ID':cx,'cell_ID':np.c_[cx,ident]};queries={'no_ID':qx,'cell_ID':np.c_[qx,qident]}
+settings={'plan_sha256':hashlib.sha256((base/'20_target_parameterization_plan.md').read_bytes()).hexdigest(),
+          'cell_ids':ids.tolist(),'context_times':ctimes.tolist(),'query_times':qtimes.tolist(),
+          'context_rows':len(cy),'query_rows':len(qy),'seed':20260925,'ensemble':1,
+          'target':'Y minus latest observed input; add that same available input after prediction',
+          'raw_results_sha256':hashlib.sha256((base/'results/broad_cell_information/predictions.npz').read_bytes()).hexdigest(),
+          'new_RCTL_fits':0,'development_only':True}
+(out/'run_started.json').write_text(json.dumps(settings,indent=2,allow_nan=False),encoding='utf-8')
+tick0=time.perf_counter();calls=[];pred={};rss=[]
+for name in contexts:
+    if time.perf_counter()-tick0>180:raise SystemExit('Stage cap; no next call.')
+    model=TabICLRegressor(n_estimators=1,batch_size=1,model_path=str(base/'assets/tabicl-regressor-v2-20260212.ckpt'),
+          allow_auto_download=False,device='cpu',use_amp=False,use_fa3=False,offload_mode=False,random_state=20260925,n_jobs=1)
+    t=time.perf_counter();model.fit(contexts[name],dy);f=time.perf_counter()
+    value=model.predict(queries[name],output_type='median')+qx[:,7];end=time.perf_counter()
+    assert np.isfinite(value).all();pred['TabICL_'+name]=np.asarray(value)
+    rss.append(psutil.Process().memory_info().rss)
+    rec={'condition':name,'context_rows':len(cy),'query_rows':len(qy),'features':contexts[name].shape[1],
+         'fit_seconds':f-t,'predict_seconds':end-f,'RSS_bytes_after_call':rss[-1],'ensemble':1}
+    calls.append(rec)
+    (out/'calls.json').write_text(json.dumps(calls,indent=2,allow_nan=False),encoding='utf-8')
+    np.savez_compressed(out/'predictions_partial.npz',**pred,actual=qy,cell_ids=ids,query_times=qtimes)
+    print(json.dumps({**rec,'MAE':float(np.abs(value-qy).mean())}),flush=True)
+    if sum(c['fit_seconds']+c['predict_seconds'] for c in calls)>150 or max(rss)>8*1024**3:
+        raise SystemExit('Resource cap reached; partial results saved.')
+    del model;gc.collect()
+t=time.perf_counter()
+for label,constructor in [('Ridge',lambda:make_pipeline(StandardScaler(),Ridge(alpha=1))),
+     ('HGB',lambda:HistGradientBoostingRegressor(loss='absolute_error',max_iter=100,max_leaf_nodes=15,
+                  min_samples_leaf=20,l2_regularization=1,early_stopping=False,random_state=20260925))]:
+    for name in contexts:
+        m=constructor();m.fit(contexts[name],dy);pred[label+'_'+name]=m.predict(queries[name])+qx[:,7]
+simple_seconds=time.perf_counter()-t
+def describe(pr):
+    e=np.abs(pr-qy).reshape(n,len(qi));c=e.mean(1)
+    return {'MAE':float(e.mean()),'MAE_original16':float(e[:16].mean()),'MAE_added16':float(e[16:].mean()),
+            'MAE_by_cell':c.tolist(),'MAE_by_day':{str(int(v)):float(e[:,qtimes//24==v].mean()) for v in np.unique(qtimes//24)},
+            'max_cell_loss_fraction':float(c.max()/c.sum()),'max_loss_cell_id':int(ids[c.argmax()])}
+result={name:describe(value) for name,value in pred.items()}
+comparison={}
+for name in pred:
+    raw=p[name];base_res=describe(raw);res=result[name]
+    changes=np.array(res['MAE_by_cell'])-np.array(base_res['MAE_by_cell'])
+    comparison[name]={'raw_MAE':base_res['MAE'],'residual_MAE':res['MAE'],'change':res['MAE']-base_res['MAE'],
+                      'cell_changes':changes.tolist(),'cells_improved':int((changes<0).sum()),
+                      'day_changes':{v:res['MAE_by_day'][v]-base_res['MAE_by_day'][v] for v in res['MAE_by_day']}}
+report={'settings':settings,'calls':calls,'results':result,'raw_comparison':comparison,
+        'last_value_baseline':describe(qx[:,7]),'TabICL_seconds':sum(c['fit_seconds']+c['predict_seconds'] for c in calls),
+        'simple_model_seconds':simple_seconds,'stage_seconds':time.perf_counter()-tick0,'new_RCTL_fits':0,
+        'clustering_improvement_established':False,'novel_method_established':False}
+np.savez_compressed(out/'predictions.npz',**pred,actual=qy,cell_ids=ids,context_times=ctimes,query_times=qtimes,
+                    latest_input=qx[:,7],context_actual=cy,context_latest=cx[:,7])
+(out/'summary.json').write_text(json.dumps(report,indent=2,allow_nan=False),encoding='utf-8')
+(out/'run_finished.json').write_text(json.dumps({'contexts':2,'query_rows':4096,'stage_seconds':report['stage_seconds'],
+                          'TabICL_seconds':report['TabICL_seconds'],'new_RCTL_fits':0},indent=2),encoding='utf-8')
+print(json.dumps({'comparison':{k:{z:v for z,v in r.items() if z not in ['cell_changes','day_changes']} for k,r in comparison.items()},
+                  'last_value_MAE':report['last_value_baseline']['MAE'],'seconds':report['TabICL_seconds']},indent=2),flush=True)
