@@ -1,0 +1,28 @@
+from pathlib import Path
+import urllib.request, json, hashlib
+out=Path(__file__).resolve().parent/'sources/network_scope_51'
+log=out/'stkdiff_fetch_log.json'
+if log.exists(): raise SystemExit('Fetch already recorded')
+records=[]
+def fetch(name,url):
+    rec={'name':name,'url':url,'date':'2026-09-26','cap_bytes':5_000_000}
+    data=None
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Research source audit/1.0'}),timeout=25) as response:
+            data=response.read(5_000_001)
+            rec.update(status=response.status,final_url=response.url)
+        if len(data)>5_000_000: raise ValueError('Metadata cap exceeded')
+        (out/name).write_bytes(data)
+        rec.update(bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+    except Exception as exc:
+        rec['error']=str(exc);data=None
+    records.append(rec)
+    log.write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps(rec,ensure_ascii=False),flush=True)
+    return data
+data=fetch('stkdiff_commit.json','https://api.github.com/repos/tsinghua-fib-lab/STK-Diff/commits/main')
+if data:
+    sha=json.loads(data)['sha']
+    fetch('stkdiff_tree.json',f'https://api.github.com/repos/tsinghua-fib-lab/STK-Diff/git/trees/{sha}?recursive=1')
+    for name in ['README.md','dataset_loader.py','stkdiff_main.py','LICENSE']:
+        fetch('stkdiff_'+name,f'https://raw.githubusercontent.com/tsinghua-fib-lab/STK-Diff/{sha}/{name}')

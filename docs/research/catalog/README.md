@@ -107,3 +107,5 @@ H038은 [8개 원본 행](history-038-sources.jsonl)과 [명세](../evidence/005
 H039은 [원본 9개와 ZIP hash-only 1개](history-039-sources.jsonl)를 [명세](../evidence/0053-tabicl-imputation/manifest.json)에 연결합니다. 기존 정확 사본 4개·외부 원본 metadata 5개·container 1개·추가 웹 참조 9개이며 새 원문 복사는 없습니다. [읽은 범위](../sources/history-039.md)는 저장 HTML article, 코드 전체 3개/일부 1개, 현재 그림 5개와 Ciena PDF 표지입니다. 과거 그림 동일성·Ciena 전체 본문·전체 53/55는 미완료입니다.
 
 H040은 [기존 원본4개](history-040-sources.jsonl)와 [명세](../evidence/0053-ciena-telemetry/manifest.json)에 Ciena 후속 독해를 연결합니다. 정확 사본4개와 기존 외부참조3개를 재사용했고 새 복사·고유 다운로드 집계는 없습니다. [읽은 범위](../sources/history-040.md)는PDF23본문쪽/14시각쪽·그림11개·표4개이며 외부 논문 독해를 localfulltext나 새 독립 실험으로 가산하지 않습니다.
+
+H041은 [로컬 원본10행](history-041-sources.jsonl)과 [명세](../evidence/0051-stkdiff-audit/manifest.json)에 STK-Diff 후속 검수를 연결합니다. 새사본/전체본문1개(28줄)·기존사본9개·기존NPZ metadata1개·추가공식metadata10개이며, [읽은 범위](../sources/history-041.md)는그림4개/의존텍스트6개647줄입니다. 외부의존텍스트를localfulltext로중복가산하지않고51/55전체는미완료로유지합니다.
