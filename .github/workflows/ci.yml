@@ -126,6 +126,11 @@ jobs:
           --manifest docs/research/evidence/0024-0025-horizon/manifest.json
           --output .research-archive/ci-recursive-horizon.json
 
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_observable_state_history.py
+          --manifest docs/research/evidence/0026-0027-observable/manifest.json
+          --output .research-archive/ci-observable-states.json
+
   deploy:
     name: deploy-pages
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

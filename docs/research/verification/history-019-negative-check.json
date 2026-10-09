@@ -1,0 +1,78 @@
+{
+  "success": true,
+  "negative_cases": 14,
+  "cases": [
+    {
+      "case": "missing_state",
+      "rejected_by": "19_complete_unique_states",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "duplicate_method",
+      "rejected_by": "recent_level:high:13_unique_methods",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "wrong_training_quantile",
+      "rejected_by": "TRAIN_only_linear_quantiles",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "changed_state",
+      "rejected_by": "stored_states",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "changed_reused_RCTL",
+      "rejected_by": "global_20260925:unchanged_stored_values",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "nonfinite_HGB",
+      "rejected_by": "global_HGB:prediction_shape_finite",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "macro_as_micro",
+      "rejected_by": "recent_level:high:global_20260925:conditional_micro_mae",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "wrong_episode_count",
+      "rejected_by": "recent_level:high:episodes_by_cell",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "empty_state_MAE_zero",
+      "rejected_by": "level_change:low_high:empirical_risk_20260925:conditional_micro_mae",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "conditional_delta_as_total_contribution",
+      "rejected_by": "recent_change:high:empirical_risk_20260925:contribution_delta_vs_global",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "wrong_cell_error",
+      "rejected_by": "all:global_HGB:cell0",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "swapped_under_over",
+      "rejected_by": "recent_level:high:global_20260925:mean_underprediction",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "finish_before_summary",
+      "rejected_by": "nested_finite_timers",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "integer_complete_flag",
+      "rejected_by": "completed_without_error",
+      "manifest_hashes_updated": true
+    }
+  ],
+  "scope": "격리된 사본의해시를갱신한뒤의미오류를거부;원본·원연구코드비실행",
+  "new_model_runs": 0
+}
