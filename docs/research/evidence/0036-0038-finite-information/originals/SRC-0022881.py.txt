@@ -1,0 +1,111 @@
+"""Exact finite counterexamples, not a network-traffic performance experiment."""
+from collections import Counter
+from datetime import datetime, timezone
+import hashlib
+import itertools
+import json
+import math
+from pathlib import Path
+import time
+
+BASE = Path(__file__).resolve().parent
+OUT = BASE / "results" / "information_claim_audit_37"
+OUT.mkdir(parents=True, exist_ok=True)
+with (OUT / "run_started.json").open("x", encoding="utf-8") as fh:
+    json.dump({"utc": datetime.now(timezone.utc).isoformat(), "model_calls": 0}, fh)
+t0 = time.perf_counter()
+atoms = list(itertools.product((0, 1), repeat=2))
+A = [a for a, b in atoms]
+B = [b for a, b in atoms]
+X = atoms
+XOR = [a ^ b for a, b in atoms]
+CONST = [0] * 4
+
+def join(*vectors):
+    return list(zip(*vectors))
+
+def entropy(values):
+    count = Counter(values)
+    n = len(values)
+    return -sum((v / n) * math.log2(v / n) for v in count.values())
+
+def conditional_entropy(y, z):
+    return entropy(join(y, z)) - entropy(z)
+
+def mutual(x, y):
+    return entropy(x) + entropy(y) - entropy(join(x, y))
+
+def tc(ys, z=None):
+    if z is None:
+        return sum(entropy(y) for y in ys) - entropy(join(*ys))
+    return sum(conditional_entropy(y, z) for y in ys) - conditional_entropy(join(*ys), z)
+
+def gain_audit(ys, global_z, cluster_zs, budgets):
+    global_score = sum(mutual(global_z, y) for y in ys)
+    cluster_score = sum(mutual(z, y) for z, y in zip(cluster_zs, ys))
+    shared_slack = tc(ys, global_z)
+    # Here each cluster is a singleton, so its total correlation is exactly zero.
+    cluster_slack = sum(tc([y], z) for y, z in zip(ys, cluster_zs))
+    between = tc(ys) - sum(tc([y]) for y in ys)
+    predictive_difference = sum(mutual(z, y) for z, y in zip(cluster_zs, ys)) - mutual(global_z, join(*ys))
+    reduced = shared_slack - cluster_slack - between
+    return {
+        "global_sum_information": global_score,
+        "cluster_sum_information": cluster_score,
+        "actual_gain": cluster_score - global_score,
+        "shared_conditional_TC": shared_slack,
+        "sum_cluster_conditional_TC": cluster_slack,
+        "between_cluster_TC": between,
+        "reduced_gain_without_joint_term": reduced,
+        "joint_predictive_difference": predictive_difference,
+        "full_identity_gain": reduced + predictive_difference,
+        "global_input_information": mutual(global_z, X),
+        "global_joint_label_information": mutual(global_z, join(*ys)),
+        "global_capacity_budget": sum(budgets),
+        "cluster_input_information": [mutual(z, X) for z in cluster_zs],
+        "cluster_capacity_budgets": budgets,
+    }
+
+xor = {
+    "sum_marginal_information": mutual(XOR, A) + mutual(XOR, B),
+    "joint_information": mutual(XOR, join(A, B)),
+    "TC_unconditional": tc([A, B]),
+    "TC_conditional_XOR": tc([A, B], XOR),
+    "input_information": mutual(XOR, X),
+}
+duplicate = gain_audit([A, A], X, [A, A], [1, 1])
+saturated = gain_audit([A, B], X, [A, B], [1, 1])
+monotonicity = {"before_TC": tc([A, B], CONST), "after_TC": tc([A, B], join(CONST, XOR))}
+checks = {
+    "xor_lower_bound_violated": xor["joint_information"] > xor["sum_marginal_information"],
+    "xor_upper_bound_holds": xor["sum_marginal_information"] <= xor["joint_information"] + xor["TC_unconditional"],
+    "xor_exact_identity_holds": xor["sum_marginal_information"] == xor["joint_information"] + xor["TC_unconditional"] - xor["TC_conditional_XOR"],
+    "conditional_TC_can_increase": monotonicity["after_TC"] > monotonicity["before_TC"],
+    "duplicate_labels_full_identity_holds": duplicate["actual_gain"] == duplicate["full_identity_gain"],
+    "duplicate_labels_reduced_identity_fails": duplicate["actual_gain"] != duplicate["reduced_gain_without_joint_term"],
+    "active_input_budget_not_predictive_saturation": duplicate["global_input_information"] == duplicate["global_capacity_budget"] and duplicate["global_joint_label_information"] < duplicate["global_capacity_budget"],
+    "saturated_example_reduced_identity_holds": saturated["actual_gain"] == saturated["reduced_gain_without_joint_term"] == saturated["full_identity_gain"],
+}
+elapsed = time.perf_counter() - t0
+assert all(checks.values()), checks
+assert elapsed < 5, elapsed
+source = BASE / "sources" / "finite_learning_36" / "khan26a.pdf"
+result = {
+    "audit_scope": "exact finite mathematical counterexamples; no traffic-data or model performance claims",
+    "source_pdf_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+    "unit": "bits",
+    "atoms": atoms,
+    "atom_probability": 0.25,
+    "xor_case": xor,
+    "duplicate_labels_gain": duplicate,
+    "conditional_TC_monotonicity": monotonicity,
+    "saturated_independent_labels_gain": saturated,
+    "checks": checks,
+    "numeric_wall_seconds": elapsed,
+    "TabICL_contexts": 0,
+    "RCTL_fits": 0,
+    "RCTL_forward_calls": 0,
+}
+with (OUT / "result.json").open("x", encoding="utf-8") as fh:
+    json.dump(result, fh, ensure_ascii=False, indent=2, allow_nan=False)
+print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))

@@ -1,0 +1,367 @@
+{
+  "batch_id": "history-023",
+  "reviewer": "same_archive_agent",
+  "review_type": "bounded_manual_primary_and_saved_value_comparison",
+  "claims": [
+    {
+      "claim_id": "H023-C01",
+      "claim": "36은 분할 이득을 사전 계산할 수 있는지 묻고, 38은 새 후보 확정으로 기록하지 않는다.",
+      "sources": [
+        "SRC-0021428:1-21",
+        "SRC-0021471:1-68"
+      ],
+      "status": "bounded_checked",
+      "limits": "원문 전체·H022의 고정 fit 진단 연결;새 실행 아님"
+    },
+    {
+      "claim_id": "H023-C02",
+      "claim": "37은 공정한 두 bit의 네 상태·네 사례·8판정이며 네트워크 성능 실험이 아니다.",
+      "sources": [
+        "SRC-0021450:1-25",
+        "SRC-0022881:1-111",
+        "SRC-0027888:all",
+        "SRC-0027889:all"
+      ],
+      "status": "bounded_checked",
+      "limits": "정적 코드·저장 결과·103개 portable 검사;과거 코드 실행 안 함"
+    },
+    {
+      "claim_id": "H023-C03",
+      "claim": "XOR의 주변 정보 합0/joint1/TC0/조건부TC1은 일반 하한을 깨지만 항등식·상한은 보존한다.",
+      "sources": [
+        "SRC-0062605:PDF3",
+        "SRC-0027888:xor_case/checks"
+      ],
+      "status": "bounded_checked",
+      "limits": "직접 확률비 MI/CMI;논문 전체 무효로 확대하지 않음"
+    },
+    {
+      "claim_id": "H023-C04",
+      "claim": "상수 표현에 XOR 정보를 추가하면 조건부 TC가0에서1로 증가한다.",
+      "sources": [
+        "SRC-0062605:PDF5",
+        "SRC-0027888:conditional_TC_monotonicity"
+      ],
+      "status": "bounded_checked",
+      "limits": "conditional entropy와TC 구분"
+    },
+    {
+      "claim_id": "H023-C05",
+      "claim": "중복 label에서 실제0/축약−1/전체0이며 joint-predictive 차이+1이 필요하다.",
+      "sources": [
+        "SRC-0062605:PDF6/15/16",
+        "SRC-0027888:duplicate_labels_gain"
+      ],
+      "status": "bounded_checked",
+      "limits": "S4.37 전체식;S4.38 조건을 논문이 명시한 사실 보존"
+    },
+    {
+      "claim_id": "H023-C06",
+      "claim": "입력 정보2를 다 써도 joint-label 정보1일 수 있고, saturation 대조에서는 축약식도0이다.",
+      "sources": [
+        "SRC-0062605:PDF15/16",
+        "SRC-0027888:duplicate_labels_gain/saturated_independent_labels_gain"
+      ],
+      "status": "bounded_checked",
+      "limits": "입력 budget과predictive saturation 다름;조건 맞는 정리까지 기각하지 않음"
+    },
+    {
+      "claim_id": "H023-C07",
+      "claim": "Khan의 gradient/residual 방법은 trained 정보와 Gaussian/whitening/noise/power 조건이 필요하다.",
+      "sources": [
+        "SRC-0062605:PDF4/5/7/8/12/16/17/18"
+      ],
+      "status": "bounded_checked",
+      "limits": "rank1LoRA/head200step/사후잔차 확인;RCTL MAE 독립 점수 아님"
+    },
+    {
+      "claim_id": "H023-C08",
+      "claim": "Panel의 선형성·외생성·독립/약한 의존 조건과 correlated heterogeneity 의미를 구분한다.",
+      "sources": [
+        "SRC-0062608:PDF1/2/4/5/6/7/8"
+      ],
+      "status": "bounded_checked",
+      "limits": "Assumptions1–9 지정 대조;임의 cross-noise 상관 허용으로 확대하지 않음"
+    },
+    {
+      "claim_id": "H023-C09",
+      "claim": "Panel Eq24는 이질성Δ와 추정 비용T^-1h를 함께 비교한다.",
+      "sources": [
+        "SRC-0062608:PDF9/10/11/12"
+      ],
+      "status": "bounded_checked",
+      "limits": "Prop1/2;fixedT largeN,MSFE 전개;현재RCTL에서 추정한 값 아님"
+    },
+    {
+      "claim_id": "H023-C10",
+      "claim": "혼합 가중치에는 추정계수·잔차·half-jackknife가 필요하며 EB 행렬 가중치와 다르다.",
+      "sources": [
+        "SRC-0062608:PDF13/14/15/16/17/18/19"
+      ],
+      "status": "bounded_checked",
+      "limits": "Eq32/40–45;halfjackknife의largeT조건,부록증명전체미검토"
+    },
+    {
+      "claim_id": "H023-C11",
+      "claim": "Spectrum Theorem1은 같은 정보에서 최적 선형 MSE 대비 상한이다.",
+      "sources": [
+        "SRC-0062602:PDF3/5/6/18"
+      ],
+      "status": "bounded_checked",
+      "limits": "positive linearrisk/measurable/finiteMSE;유한Ridge/RCTL오차와 구분"
+    },
+    {
+      "claim_id": "H023-C12",
+      "claim": "fixed memory/window-key 정보집합과 Gaussian endpoint·조건(M)·유한 surrogate를 구분한다.",
+      "sources": [
+        "SRC-0062602:PDF6/7/17/18/19"
+      ],
+      "status": "bounded_checked",
+      "limits": "circularautocov/IAAFTresidual;finite학습 공유 이득 부정 아님"
+    },
+    {
+      "claim_id": "H023-C13",
+      "claim": "Δnl은 training60/40 AR(d)와k4analog추정이며 finite 확정하한/무학습 점수가 아니다.",
+      "sources": [
+        "SRC-0062602:PDF7/8/9/12/13/19/20/21",
+        "SRC-0021471:section4"
+      ],
+      "status": "bounded_checked",
+      "limits": "고정k 일관성 미주장과 비일관성 증명 구분;d=S=12와motif판본,LODOsign학습;보고표미재현"
+    },
+    {
+      "claim_id": "H023-C14",
+      "claim": "0.0002907999987655785초는 저장 계산과ledger일치;404와published200/parser timeout구분.",
+      "sources": [
+        "SRC-0027888:numeric_wall_seconds",
+        "SRC-0022700:new_cheap_diagnostic_seconds.information_claim_audit_37",
+        "SRC-0062607:all",
+        "SRC-0062610:all",
+        "SRC-0062612:all",
+        "SRC-0021471:search/access"
+      ],
+      "status": "bounded_checked",
+      "limits": "다운로드모델시간합산안함;원processruntime/timeoutconsole독립미확인"
+    },
+    {
+      "claim_id": "H023-C15",
+      "claim": "소속과sample공유범위 재검토는 당시 다음 질문이며 reweighting 자체 신규성/새fit허가가 아니다.",
+      "sources": [
+        "SRC-0021471:section5/end",
+        "SRC-0021428:last"
+      ],
+      "status": "bounded_checked",
+      "limits": "초록발견4항목 방법검토미완료;39이후후속연결미완료"
+    }
+  ],
+  "primary_read": [
+    {
+      "source_id": "SRC-0062605",
+      "sha256": "c0d663923db74a90a9f4512e28b95f062e5c01a8b939212d2c2665346c08ff93",
+      "pdf_pages": 24,
+      "text_pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        12,
+        15,
+        16,
+        17,
+        18
+      ],
+      "partial_text_pages": [
+        {
+          "page": 1,
+          "extracted_lines": [
+            1,
+            50
+          ],
+          "scope": "title/author/abstract and introduction start"
+        }
+      ],
+      "original_images_viewed": [
+        "SRC-0062616",
+        "SRC-0062617",
+        "SRC-0062618",
+        "SRC-0062614",
+        "SRC-0062615"
+      ],
+      "visual_pages": [
+        3,
+        5,
+        6,
+        15,
+        16
+      ],
+      "whole_paper_read": false,
+      "findings": [
+        "PDF3 Lemma3.1 explicit joint<=sum lower bound; exact CR identity and upper bound separatelypresent.",
+        "PDF5 explicit conditionalTC monotonicity from entropy;PDF5–6Theorem5.3capacityoptimalbudgets and reducedgain.",
+        "PDF15–16S4.33–37 correct full identity includes jointpredictive difference;S4.38explicit predictive saturation,not merely inputbudgetactive.",
+        "XOR Markov deterministicX example and duplicatelabel globalX/localA satisfy fixedinputbudgets;computed saved4cases54checks. This does not invalidateupperbound or wholepaper.",
+        "PDF4/5/16/17Theorem4.4matchednoise/equalsignalwhitenedgradient;rawanisotropicdiff. Parametercount andinformationbudgetdistinct.",
+        "PDF18 S6.3rank1probe/headwarmstart200steps/5similarityseeds/20GoEmotions or30GLUEgradientsteps;average linkage1-cos,Kgap2..6. Trainedprobe involved,nofreeRCTLscore.",
+        "PDF12S1.16conditionalidentity;S2Gaussianbeginning;PDF18S7beginning only. Wholeappendicesnotreviewed.",
+        "PDF7 defines validation residual e=y-yhat and Gaussian surrogate DeltaHat=-.5logdet(Re+epsilonI),epsilon1e-5;learned-predictorposthocnotpretrainingfree.",
+        "PDF8 describes GoEmotions12binarylabels/AUROC andGLUE8differentmetrics,gradientgrouping fixedonce/rankbudget;reportedcurves/table not independently reproduced.",
+        "Official archived khanHTMLselectedlines13/14/18/117/121/141/142/171/176/195/233/236:AsifKhan/PMLR3372934–2957,UAI42,publication2026-08-06. WholeHTMLnotread."
+      ],
+      "remaining": [
+        "OtherPDFpages/wholepaper/authorcode not reviewed;do not turn LoRA empiricalfigures intoRCTLguarantees"
+      ]
+    },
+    {
+      "source_id": "SRC-0062608",
+      "sha256": "26d16b00273774fd48254e7d3502d6a09e508fc53c1cce1ff36f3afa1bcaba1c",
+      "pdf_pages": 52,
+      "text_pages": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "visual_pages": [
+        10,
+        11,
+        12,
+        15,
+        17,
+        18
+      ],
+      "whole_paper_read": false,
+      "findings": [
+        "Published headerQE17(2026)342–393DOI10.3982/QE2589/authorsPesaranPickTimmermann confirmed;52pagesconvertednotfullyread.",
+        "Intro2individual/pooledtheoryfiniteT,N→infinity;weightestimationneedsT→infinityslowerthanN.",
+        "PDF5–8Assumptions1–9:serialindependentzeroMeanfinite4thnoise,covariancestationaryregressors,weakexogeneity/laggeddependentallowed,invertibilityandmoments;heterogeneitycanrelatetoregressorsbutetaindependentnoise.",
+        "Assumption9crossunitindependence notrequiredforindividualMSFE,butcrossunitaverage/pooled/BayesneedLLNorweakdependence possiblyconditionalcommonfactors. Correlatedheterogeneity≠arbitrarynoisecorrelation.",
+        "PDF8a-prioriknowngroupsrequirelargeenoughNandweakcrossdependence;pervasivemissingfactorsoutsidepaper analysis.",
+        "PDF4Eq1linear model;PDF9Eq11/12individual/pooledOLS. PDF10Prop1individualMSFE=meanNoiseSquared+T^-1hNT+Op(N^-1/2);PDF11Prop2pooled addsDeltaNT. PDF12Eq24relative difference sign Delta-T^-1hT forfixedTlargeN.",
+        "PDF14Eq30commonweight combination;PDF15Prop3Eq32omega=(Delta-T^-1psi)/(Delta+T^-1h-2T^-1psi). Strict exogeneity psi0;PDF16FEcombination distinct.",
+        "PDF17Eq40/41estimatedheterogeneity/residualnoise/leverage;naiveOLSresidual psi zero dueWiT-residual0;halfjackknife2full-.5(firsthalf+secondhalf).PDF18Eq43needslargeT andN,Tinfinity,notTabquantilewidth.",
+        "PDF18Eq44/45EBmatrix shrinkage;PDF19strict exog/uncorrelatedheterogeneity andwT1differentfromforecastweights;MCintroonly. Noestimatedpanel weights computed here.",
+        "VisualPDF10/11/12/15/17/18 confirms signs, denominators, assumption qualifications and half-jackknife notation.",
+        "Archived repository selected citation tags confirm2026-06-03,dateDOI,title,authorsandbitstream. WholeHTMLunread."
+      ],
+      "remaining": [
+        "Otherpages,appendixproofs,authorcode,empiricalreproduction remain unread/unrun;selected theory not RCTL/MAE guarantee."
+      ]
+    },
+    {
+      "source_id": "SRC-0062602",
+      "sha256": "2cc2d740733d2eede3b61354f97a4f0a227adce3af672ab64e4e9aa2fb76c5c7",
+      "pdf_pages": 21,
+      "text_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        13,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "visual_pages": [
+        5,
+        6,
+        18,
+        19,
+        20
+      ],
+      "whole_paper_read": false,
+      "findings": [
+        "PDF1v2header15Jul2026;authorsCakiroglu/Dalkilic/Kurban. Archivedabs selectedmetadata/dateline/history v2July15 15:43:13UTC.",
+        "PDF3Eq1empiricalpairedtestMSEvalue defined;PDF5Theorem1/A4PDF18ceilingrelativebestlinear SAMEinformation,positive linearrisk,finiteMSE,measurablepredictor. Randomized UindependentJensen. Not arbitrarylearnedbase gain ceiling.",
+        "PDF5assumptionsreal2ndorderstationaryfinitevariance;PDF6Lindeberg nofiniteconcentratedspectrum;PDF18A5fixeddegree momentconvergencevsfullBayesriskConditionMconditionalmeansL2. ImpossibilityusesGaussianendpoint,notfinitesurrogate exactGaussian.",
+        "PDF17A2finitecoordinates/covariance;A3circularautocovexact,ordinaryboundaryapprox;IAAFTmarginalexactperiodogramresidual. Not arbitrarycrosschannelcoherence exact.",
+        "PDF19A8fixedtrainingmemoryconditionedon/windowkeykappa sigma(kappa);notpopulationoracle expansion. Finite sample learned base may benefitestimationsharing;longerlinearspan changessecondorderfloor.",
+        "PDF19A9temporal60/40 AR(d)least-squares andkNNk4one-steptrainedestimator;populationlimit lower-bound qualification andno fixedkconsistencyclaim. Testlabelfree doesnotmean trainingtargetfree or nofits.",
+        "PDF20primaryE2/E4operatingwindowd=S=12 versusmotifembeddingclip(m,4,96). MainPDF8coverageDelta_nl*max(0,(m-S)/m),noveltytupleOODandADFgate;PDF9LODOthreshold/directiontrainedon6datasetssignoutcomes.",
+        "PDF12/13limitationsunivariate/exchangeablechannels,nominalCIcrossdependence,stationarity,embeddinglengthandmotifsensitive;empiricaltable12/20/21readasreported,notreproduced. Diagnosticpredictssignnotgainmagnitude.",
+        "Visual5/6/18/19/20 confirms formula scope/appendixfiniteestimate caveats;wholepaper andauthorcode0."
+      ],
+      "remaining": [
+        "PDF10/11/14/15/16 andauthorcode notreviewed;no surrogate generation/training/reproduction."
+      ]
+    }
+  ],
+  "primary_metadata_selected": [
+    {
+      "source_id": "SRC-0062604",
+      "lines": [
+        13,
+        14,
+        18,
+        117,
+        121,
+        141,
+        142,
+        171,
+        176,
+        195,
+        233,
+        236
+      ],
+      "whole_text_read": false
+    },
+    {
+      "source_id": "SRC-0062611",
+      "whole_text_read": false
+    },
+    {
+      "source_id": "SRC-0062613",
+      "whole_text_read": false
+    }
+  ],
+  "paper_versions": [
+    {
+      "source_id": "SRC-0062602",
+      "sha256": "2cc2d740733d2eede3b61354f97a4f0a227adce3af672ab64e4e9aa2fb76c5c7",
+      "official_url": "https://arxiv.org/abs/2607.13006v2"
+    },
+    {
+      "source_id": "SRC-0062605",
+      "sha256": "c0d663923db74a90a9f4512e28b95f062e5c01a8b939212d2c2665346c08ff93",
+      "official_url": "https://proceedings.mlr.press/v337/khan26a.html"
+    },
+    {
+      "source_id": "SRC-0062608",
+      "sha256": "26d16b00273774fd48254e7d3502d6a09e508fc53c1cce1ff36f3afa1bcaba1c",
+      "official_url": "https://doi.org/10.3982/QE2589"
+    }
+  ],
+  "new_model_runs": 0,
+  "whole_papers_reviewed": 0,
+  "author_code_reviewed": false,
+  "coverage_increment_applied": false,
+  "remaining": [
+    "논문 나머지와 저자코드",
+    "다른HTML/txt의고유내용",
+    "39이후후속판단",
+    "전체실패비용/실행입력독립재현/전체연구통합"
+  ]
+}

@@ -128,3 +128,14 @@
 [33–35](records/0033-0035-process-fit-gap.md): frozen fit gap, GPI/CF, G/F embedding cache, 유한 학습 손해. 고정16cell·기존29checkpoint의 일곱K=4 조건은 global보다 train평균이 좋고 validation평균은 나빴다. 주Tab의 validation은16cell모두 악화했다. 앞/뒤84시간에서도 평균손해가 남지만 과적합만을 원인으로 확정하지는 못한다. 같은 가중치·소속·자료의 질문은 보존 예측으로 확인할 수 있다. 새로운 데이터 크기·seed·시간 구간·소속을 묻는 경우 그 차이를 먼저 적는다.
 
 Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장이 아니다. G/F 분리와 embedding cache는 선행 구조다. 모델 수4배와 epoch/batch로 계산한 step4배를 혼동하지 않는다. [근거](evidence/0033-0035-frozen-fit/README.md)와 [읽기 범위](sources/history-022.md)를 함께 확인한다. UPC Fig7의10표기는 정리 오기였고1·2·4·6·8·12로 정정했다.
+
+## 정보이론 보장·유한 학습·sample 공유
+
+| 문제·별칭 | 확인한 기록 | 재사용 범위·재검토 조건 |
+| --- | --- | --- |
+| XOR, conditional TC, synergy, capacity/redundancy, joint-predictive gap | [36–38 네 유한 사례](records/0036-0038-finite-information.md) | 주변 정보 합0/joint1, TC0→1, 중복 label 실제0/축약−1. S4.38 포화 조건과 유효한 전체식을 먼저 확인 |
+| pooling uncertainty, heterogeneity, half-jackknife, empirical Bayes | [선형 panel 비교](records/0036-0038-finite-information.md) | 관계 차이 Δ와 T⁻¹h를 함께 고려. 선형성·외생성·의존 조건·MSFE를 MAE/RCTL에 그대로 옮기지 않음 |
+| spectrum/context value, fixed memory, oracle, analog gain, Δnl | [context 정보집합](records/0036-0038-finite-information.md) | 같은 정보의 최적 선형 기준과 실제 학습 오차 구별. 60/40 AR·k4 추정, population 한계와 finite 값 구별 |
+| 담당 cell 소속과 학습 sample 범위 분리, pretraining/reweighting | [당시 다음 질문](records/0036-0038-finite-information.md) | 공유 자체의 신규성 주장 금지. Tab의 추가 정보·단순 기준 대비 차이·기존33–35와 바뀐 조건을 기록. 39이후 연결 미완료 |
+
+같은 네 수학 반례는 [모델 없는 검산](evidence/0036-0038-finite-information/README.md)으로 확인한다. 문헌 상세 방법과 성능 검증, 초록 발견과 전체 논문 검토를 구분한다.

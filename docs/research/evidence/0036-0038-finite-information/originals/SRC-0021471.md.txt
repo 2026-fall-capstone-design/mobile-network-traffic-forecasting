@@ -1,0 +1,68 @@
+# 36–37 확인: 분할 이득을 사전에 판단하는 데 필요한 정보
+
+확인일 2026-09-25. 추천 알고리즘의 확정 보고서가 아니다. 새 원문 세 편을 실제 식·가정·알고리즘 수준에서 확인했고, 한 논문의 일반화된 주장 두 개와 생략 조건 하나를 유한 반례로 점검했다. 논문 수를 늘린 것을 연구 기여로 세지 않는다.
+
+## 1. 현재 문제를 다시 좁힌다
+
+34의 동일 checkpoint 진단에서 7개 K=4 조건은 모두 global보다 훈련 MAE가 작고 validation MAE가 컸다. 따라서 새 clustering 점수로 cell의 관계 차이를 더 잘 검출하더라도, 학습 자료를 분리하는 손해를 처리하지 못하면 기존 실패를 반복할 수 있다. 이 결과만으로 원인이 과적합 하나라고 확정하지 않는다.
+
+다음 세 연구를 읽은 이유는 ‘분할의 이득 − 자료 공유를 포기하는 손해’를 RCTL 학습 전에 계산할 수 있는지 확인하기 위해서다. 이 절충 자체는 이미 연구되어 있다.
+
+## 2. Capacity and Redundancy Trade-offs in Multi-Task Learning
+
+Khan, UAI 2026, PMLR 337:2934–2957. [공식 proceedings](https://proceedings.mlr.press/v337/khan26a.html). 원문 `sources/finite_learning_36/khan26a.pdf` 24쪽, SHA-256 `c0d663923db74a90a9f4512e28b95f062e5c01a8b939212d2c2665346c08ff93`. §3–8, Appendix S4–S6를 확인하고 PDF 3·5·6·15·16쪽의 식을 렌더링해 대조했다.
+
+### 실제 계산과 적용 범위
+
+공통 입력 X를 압축하는 표현 Z와 여러 task label을 다룬다. 정보량 예산과 label 사이 중복 정보, 표현을 알고도 남는 의존성을 구별한다. 실험에서는 rank-1 LoRA probe와 200-step task-head 준비 후 task gradient를 구하고 average-linkage를 수행한다. 예측 잔차 상관은 학습된 모델의 사후 지표다. 최종 RCTL을 호출하지 않는 clustering 점수로 그대로 사용할 수 없다.
+
+Gaussian 조건의 gradient–상관 순위 대응은 whitening, 같은 noise 수준, 같은 signal power에 의존한다. 파라미터 수와 정보량 예산은 같은 단위가 아니며, 해당 LoRA 결과는 MAE를 최소화하는 단일 출력 RCTL의 성능 정리가 아니다.
+
+### 식을 적용하기 전 확인한 문제
+
+아래는 원문의 결과가 아니라 이번 검토에서 정확히 열거한 반례다. A,B는 독립인 공정한 bit이며 네 경우의 확률은 모두 1/4이다. 단위는 bit이다.
+
+| 확인한 주장 | 미리 정한 반례 | 정확한 결과 | 판단 |
+|---|---|---|---|
+| Lemma 3.1의 일반 하한 | Y1=A, Y2=B, Z=A XOR B | I(Z;Y1)+I(Z;Y2)=0, I(Z;Y1,Y2)=1 | 표기된 일반 하한은 성립하지 않는다. |
+| §5의 조건부 TC 감소 | 상수 표현에 XOR 정보를 추가 | TC(Y)=0, TC(Y\|Z)=1 | 조건부 entropy 감소가 TC 감소를 뜻하지 않는다. |
+| Theorem 5.3 축약식의 무조건 적용 | Y1=Y2=A; global Z=(A,B), C=2; 두 singleton Z=A, 각 C=1 | 실제 이득 0, 축약식 −1, S4.37 전체 식 0 | 총 예산 일치만으로 추가 항을 지울 수 없다. |
+
+Appendix S4.37은 정확한 식에 joint-predictive difference 항이 남는다고 쓰고, S4.38은 이 항을 없애는 saturation 조건을 명시한다. 본 검토는 논문에 그 조건이 전혀 없다고 주장하지 않는다. 마지막 반례는 입력 정보 예산을 모두 사용해도 label의 예측 정보가 같은 예산에 도달하지 않을 수 있음을 보여준다. S4.38이 성립하는 독립 label 예에서는 축약식도 실제 이득과 일치했다.
+
+반면 `sum I(Z;Yt) = I(Z;Yjoint) + TC(Y) − TC(Y|Z)` identity와 그로부터 얻는 상한은 반례에서 그대로 성립한다. 논문 전체를 무효라고 결론 내리지 않는다. 현재 알고리즘의 합병·분할 보장으로 쓰려던 강한 해석만 채택하지 않는다.
+
+실행 근거: `37_information_claim_audit_plan.md`, `information_claim_audit_37.py`, `results/information_claim_audit_37/result.json`. 네 유한 경우, 8개 판정 모두 사전 예상대로 확인했다. 계산 0.0002908초, 새 모델 호출 0. 네트워크 성능 검증으로 세지 않는다.
+
+## 3. Forecasting with panel data: Estimation uncertainty versus parameter heterogeneity
+
+Pesaran, Pick, Timmermann, Quantitative Economics 17(2026), 342–393, DOI [10.3982/QE2589](https://doi.org/10.3982/QE2589). [Cambridge published version](https://www.repository.cam.ac.uk/items/65c4f666-0592-4781-8359-27a7010dc9b8). `panel_published_2026.pdf` 52쪽, SHA-256 `26d16b00273774fd48254e7d3502d6a09e508fc53c1cce1ff36f3afa1bcaba1c`. §2–4.4, 특히 Assumptions 1–9, Propositions 1–3, 식 23–24·40–44를 읽었다. 2025 author 링크는 404였지만 2026 출판본은 확보했다.
+
+선형 panel에서 pooled 예측의 이질성 손해와 individual 추정의 유한 자료 손해를 분리한다. 식 24의 비교에는 두 항이 모두 필요하다. 식 40–43은 실제 individual/pooled 계수와 residual로 항을 추정하며, lag처럼 약한 외생성을 허용하는 경우 half-jackknife로 추정 편향도 처리한다. 상관된 이질성이라는 말은 task 간 noise의 임의 상관까지 허용한다는 뜻이 아니다. Assumption 9와 그 뒤의 설명은 평균 MSFE 전개를 위한 단위 간 독립성과 공통 요인 조건화를 따로 다룬다.
+
+이 논문 때문에 설계에서 바뀌는 점은 분명하다. 관계 차이만으로 분할 이득을 판단하지 않는다. 그러나 선형 OLS의 variance 식에 TabICL의 분위수 폭을 대입하거나, MSFE의 혼합 가중치를 MAE/RCTL의 가중치로 그대로 사용하지 않는다. 관측 표본 수 T와 유효 정보량을 같은 숫자로 처리하지 않는다. 논문 자체의 코드는 실행하지 않았다.
+
+## 4. The Spectrum Is Not Enough: When Context Helps Time-Series Forecasting
+
+Cakiroglu, Dalkilic, Kurban, [arXiv:2607.13006v2](https://arxiv.org/html/2607.13006v2), 2026-07-15. `2607.13006v2.pdf` 21쪽, SHA-256 `2cc2d740733d2eede3b61354f97a4f0a227adce3af672ab64e4e9aa2fb76c5c7`. §2–4 및 Appendix A.4–A.10을 확인했다. 공식 코드 링크는 발견했지만 실행하지 않았다.
+
+Theorem 1은 같은 정보집합에서 최선의 선형 예측과 Bayes 예측 사이 MSE 차이로 추가 개선의 상한을 다룬다. 실제 유한 자료에서 학습한 Ridge의 오차와 같은 값이 아니다. A.8은 고정된 memory와 window로 검색한 결과가 어떤 정보를 추가하는지 구별한다. A.9의 analog 대비 선형 예측 오차는 실제 진단량이지만, oracle 조건 없이 유한 표본의 확정 하한으로 읽지 않는다. 원문도 population limit 조건과 fixed-k에서의 비일관성을 명시한다.
+
+따라서 주기성이 높다는 사실만으로 TabICL의 가치가 없다고 판단하지 않으며, 주기·PCC가 비슷하다는 사실만으로 복잡한 context 비교가 유리하다고 판단하지도 않는다. 최근 입력에서 남는 비선형 정보와, 유한 자료에서 사전학습이 주는 추정 이득을 나눠 살펴야 한다. 두 이득 모두 현재 clustering에서 확인됐다고 선언하지 않는다.
+
+## 5. 다음 후보에 적용할 결정
+
+1. **정보이론 점수만 추가하는 안은 보류한다.** 실제 계산에 학습된 표현이 필요한 데다, 강한 분할 보장의 적용 조건도 확보되지 않았다.
+2. **분할 후 자료를 전부 분리해야 한다는 설계를 재검토한다.** cell의 최종 담당 RCTL 소속과, 학습에 참고할 실제 sample의 범위가 반드시 같아야 하는 것은 아니다. 기존 범위가 허용하는 학습 단위·손실 변경 안에서 검토한다.
+3. 단, global 사전학습·가중치 공유·외부 sample reweighting 자체를 신규성으로 세지 않는다. 먼저 선행 방법의 정확한 조건과 비용을 확인한다. 회귀용 TabICLv2가 단순한 밀도비 추정기보다 어떤 정보를 더 주는지 없으면 이 경로도 실행하지 않는다.
+
+다음 단계는 partition score에 임의 penalty를 붙이는 일이 아니다. 자료를 나누면서 생긴 손해를 학습 자료 공유 방식으로 줄일 수 있는지, 그 방법이 이미 알려진 것인지 확인한다. 아직 추천 후보를 확정하거나 추가 RCTL 학습을 허용하지 않았다.
+
+## 검색·접근·실행 기록
+
+- 검색: `clustering time series forecasting pooling correlated innovations effective sample size predictive risk heterogeneity`; `multi task clustering correlated errors negative transfer covariance pooling risk estimation`; `Measuring time series heterogeneity for global learning`; `Forecasting with panel data Estimation uncertainty versus parameter heterogeneity`; `predictive clustering estimated functions measurement error debiased distance cross validation uncertainty`.
+- 초록만 확인한 Sonnleitner ESWA 2025, measurement-error clustering, CLOSE, Barnes–Dubrawski 2019는 방법 검토 완료로 세지 않는다.
+- 2026-09-25 재접근 시 Cambridge web parser는 timeout을 반환했다. 로컬에 이미 확보한 출판본 PDF와 repository HTML의 접근 성공 기록을 대체하지 않는다.
+- source 다운로드는 모델 실행 시간에 합치지 않는다. 새 모델 호출 0; RCTL 29-fit 상한은 그대로 소진 상태다. 37의 계산만 ledger에 한 번 반영한다.
+
+추천 방향·최종 Word는 미완료다. 이번 확인은 원문 적용 가능성과 구체적인 반례를 새로 확인한 연구 진행이며, 성공 또는 전체 연구의 불가능성을 뜻하지 않는다.

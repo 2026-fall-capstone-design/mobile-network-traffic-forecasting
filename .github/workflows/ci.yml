@@ -141,6 +141,11 @@ jobs:
           --manifest docs/research/evidence/0033-0035-frozen-fit/manifest.json
           --output .research-archive/ci-frozen-fit.json
 
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_information_claim_history.py
+          --manifest docs/research/evidence/0036-0038-finite-information/manifest.json
+          --output .research-archive/ci-information-claims.json
+
   deploy:
     name: deploy-pages
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

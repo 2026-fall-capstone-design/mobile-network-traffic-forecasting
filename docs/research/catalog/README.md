@@ -1,5 +1,7 @@
 # 자료 목록과 출처 매핑
 
+[history-023 목록](history-023-sources.jsonl)은36–38의 새 원문10개·기존 원장1개·지정 일차자료 metadata11개·해시 전용4개를 연결한다. [실제 열람 범위](../sources/history-023.md)는 메모/코드5개·작은 JSON5개 전체와 세 논문의 지정45쪽/시각16쪽이다. 전체 논문 완료로 세지 않으며 원문의 fixed-k 표현을 일차문헌 범위로 좁힌 정정을 보존한다.
+
 [inventory.jsonl.gz](inventory.jsonl.gz)는 2026년 10월 8일 조사한 48,149개 메타데이터 항목의 UTF-8 JSONL을 gzip으로 압축한 파일이다. 원문 내용은 포함하지 않는다. [집계와 파일 해시](scope-summary.json), [조사 방법과 한계](../verification/inventory-2026-10-08.md)를 함께 읽는다.
 
 각 줄은 `source_id`, `kind`, 원본 루트 기준 `path`, 확장자·크기·수정 시각, `sha256`, 포함·제외 상태와 이유를 담는다. 압축 내부 항목에는 `container_id`, `container_path`, `member_index`가 있다. `mtime_ns`는 물리 파일 수정 시각이며 압축 멤버의 시각 필드는 형식에 따라 다르다. 경로는 원본 루트 별칭 `Tab-ICL`을 기준으로 한다. 외부 공용 런타임의 개인 경로는 별칭으로 표시하고 로컬 매핑에만 보존한다.

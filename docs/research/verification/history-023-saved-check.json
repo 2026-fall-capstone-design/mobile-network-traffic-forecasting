@@ -1,0 +1,133 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T07:41:27.263111+00:00",
+  "checks": 54,
+  "check_names": [
+    "SRC-0027888:identity",
+    "SRC-0027889:identity",
+    "fixed_atoms",
+    "paper_identity",
+    "xor_case:keys",
+    "xor_case:sum_marginal_information",
+    "xor_case:joint_information",
+    "xor_case:TC_unconditional",
+    "xor_case:TC_conditional_XOR",
+    "xor_case:input_information",
+    "duplicate_labels_gain:keys",
+    "duplicate_labels_gain:global_sum_information",
+    "duplicate_labels_gain:cluster_sum_information",
+    "duplicate_labels_gain:actual_gain",
+    "duplicate_labels_gain:shared_conditional_TC",
+    "duplicate_labels_gain:sum_cluster_conditional_TC",
+    "duplicate_labels_gain:between_cluster_TC",
+    "duplicate_labels_gain:reduced_gain_without_joint_term",
+    "duplicate_labels_gain:joint_predictive_difference",
+    "duplicate_labels_gain:full_identity_gain",
+    "duplicate_labels_gain:global_input_information",
+    "duplicate_labels_gain:global_joint_label_information",
+    "duplicate_labels_gain:global_capacity_budget",
+    "duplicate_labels_gain:cluster_input_information",
+    "duplicate_labels_gain:cluster_capacity_budgets",
+    "conditional_TC_monotonicity:keys",
+    "conditional_TC_monotonicity:before_TC",
+    "conditional_TC_monotonicity:after_TC",
+    "saturated_independent_labels_gain:keys",
+    "saturated_independent_labels_gain:global_sum_information",
+    "saturated_independent_labels_gain:cluster_sum_information",
+    "saturated_independent_labels_gain:actual_gain",
+    "saturated_independent_labels_gain:shared_conditional_TC",
+    "saturated_independent_labels_gain:sum_cluster_conditional_TC",
+    "saturated_independent_labels_gain:between_cluster_TC",
+    "saturated_independent_labels_gain:reduced_gain_without_joint_term",
+    "saturated_independent_labels_gain:joint_predictive_difference",
+    "saturated_independent_labels_gain:full_identity_gain",
+    "saturated_independent_labels_gain:global_input_information",
+    "saturated_independent_labels_gain:global_joint_label_information",
+    "saturated_independent_labels_gain:global_capacity_budget",
+    "saturated_independent_labels_gain:cluster_input_information",
+    "saturated_independent_labels_gain:cluster_capacity_budgets",
+    "8check_keys",
+    "xor_lower_bound_violated",
+    "xor_upper_bound_holds",
+    "xor_exact_identity_holds",
+    "conditional_TC_can_increase",
+    "duplicate_labels_full_identity_holds",
+    "duplicate_labels_reduced_identity_fails",
+    "active_input_budget_not_predictive_saturation",
+    "saturated_example_reduced_identity_holds",
+    "historical_model_calls0",
+    "reported_time_not_remeasured"
+  ],
+  "computed": {
+    "xor_case": {
+      "sum_marginal_information": 0.0,
+      "joint_information": 1.0,
+      "TC_unconditional": 0.0,
+      "TC_conditional_XOR": 1.0,
+      "input_information": 1.0
+    },
+    "duplicate_labels_gain": {
+      "global_sum_information": 2.0,
+      "cluster_sum_information": 2.0,
+      "actual_gain": 0.0,
+      "shared_conditional_TC": 0.0,
+      "sum_cluster_conditional_TC": 0.0,
+      "between_cluster_TC": 1.0,
+      "reduced_gain_without_joint_term": -1.0,
+      "joint_predictive_difference": 1.0,
+      "full_identity_gain": 0.0,
+      "global_input_information": 2.0,
+      "global_joint_label_information": 1.0,
+      "global_capacity_budget": 2,
+      "cluster_input_information": [
+        1.0,
+        1.0
+      ],
+      "cluster_capacity_budgets": [
+        1,
+        1
+      ]
+    },
+    "conditional_TC_monotonicity": {
+      "before_TC": 0.0,
+      "after_TC": 1.0
+    },
+    "saturated_independent_labels_gain": {
+      "global_sum_information": 2.0,
+      "cluster_sum_information": 2.0,
+      "actual_gain": 0.0,
+      "shared_conditional_TC": 0.0,
+      "sum_cluster_conditional_TC": 0.0,
+      "between_cluster_TC": 0.0,
+      "reduced_gain_without_joint_term": 0.0,
+      "joint_predictive_difference": 0.0,
+      "full_identity_gain": 0.0,
+      "global_input_information": 2.0,
+      "global_joint_label_information": 2.0,
+      "global_capacity_budget": 2,
+      "cluster_input_information": [
+        1.0,
+        1.0
+      ],
+      "cluster_capacity_budgets": [
+        1,
+        1
+      ]
+    }
+  },
+  "historical_judgments": {
+    "xor_lower_bound_violated": true,
+    "xor_upper_bound_holds": true,
+    "xor_exact_identity_holds": true,
+    "conditional_TC_can_increase": true,
+    "duplicate_labels_full_identity_holds": true,
+    "duplicate_labels_reduced_identity_fails": true,
+    "active_input_budget_not_predictive_saturation": true,
+    "saturated_example_reduced_identity_holds": true
+  },
+  "original_time_reported_seconds": 0.0002907999987655785,
+  "original_source_executed": false,
+  "new_model_runs": 0,
+  "random_samples_generated": 0,
+  "scope": "Four saved equiprobable states evaluated by probability-ratio MI/CMI. Paper wording/assumptions and other primary papers still require bounded review; not a traffic experiment."
+}
