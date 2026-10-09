@@ -1,0 +1,761 @@
+{
+  "batch_id": "history-014",
+  "reviewed_at_utc": "2026-10-09T02:39:17.173416+00:00",
+  "reviewer": "same_archive_agent_not_independent_scientific_review",
+  "status": "bounded_primary_comparison_verified",
+  "findings": [
+    {
+      "claim_id": "H014-C01",
+      "sources": [
+        "SRC-0021095",
+        "SRC-0021116"
+      ],
+      "locator": "21 lines57–62;22 lines1–16; H011 claimsC03–C10",
+      "finding": "21의 문헌 판단과22의 접근 범위를 구분하고, MGSTC/PID/QoS의 기존 검수를 재사용한다.",
+      "limitation": "이 문헌 연결은 추가 예측·RCTL 실험이나 독립 재현이 아니다."
+    },
+    {
+      "claim_id": "H014-C02",
+      "sources": [
+        "SRC-0021095",
+        "H014-FSA"
+      ],
+      "locator": "21 line61; FSA§4.1–4.2/Eq3–6/PDF3–5",
+      "finding": "FSA의 특징→계수 생성과 결정적 AR rollout을 구분한다.",
+      "limitation": "ARMA 표기만으로 전체 확률적 ARIMA decoder라고 부르지 않는다."
+    },
+    {
+      "claim_id": "H014-C03",
+      "sources": [
+        "H014-FSA"
+      ],
+      "locator": "FSA§4.3–4.4/Eq7/Figure2/PDF4–6",
+      "finding": "손실식은 H 전체 평균이며 재추정 입력은 자체 생성 예측이다. 그림의 policy 기호는 본문과 다르다.",
+      "limitation": "실제 미래 관측 갱신이나 정상성 보장으로 해석하지 않으며 저자 구현은 미확인이다."
+    },
+    {
+      "claim_id": "H014-C04",
+      "sources": [
+        "H014-FSA"
+      ],
+      "locator": "FSA§5.1/Table1 caption/PDF6–7",
+      "finding": "동일 source의 축소 모델을 처음부터 학습한 비교이고 다변량 자료도 차원별 평가다.",
+      "limitation": "공개 대형 checkpoint 우위나 cross-series dependency 검증으로 확대하지 않는다."
+    },
+    {
+      "claim_id": "H014-C05",
+      "sources": [
+        "SRC-0021095",
+        "SRC-0047594",
+        "SRC-0047592",
+        "SRC-0047586",
+        "SRC-0047644"
+      ],
+      "locator": "21 line62;seasonality132–178/327–346/388–443;calendar149–190;H005 metadata1–35",
+      "finding": "공식 설치·ZIP·고정 코드에서 추세 제거는 FFT 전 신호 처리이며 주기 특징을 추가한다.",
+      "limitation": "이 경로를 변화량 target 회귀 기능이라고 부르지 않는다. 설치 버전과 개별 과거 실행 환경 증명은 다르다."
+    },
+    {
+      "claim_id": "H014-C06",
+      "sources": [
+        "SRC-0047594"
+      ],
+      "locator": "seasonality65–76/255–269/403–420",
+      "finding": "Encoder config와 독립 검출 함수의 기본값이 다르다.",
+      "limitation": "호출 경로를 명시하지 않은 default 설명을 재사용하지 않는다."
+    },
+    {
+      "claim_id": "H014-C07",
+      "sources": [
+        "SRC-0021116",
+        "H014-TabPFN-TS-tag_v1.3.0"
+      ],
+      "locator": "22 line9; pinned README11/21/39–52/69–71;CHANGELOG9–18",
+      "finding": "README의 모델·covariate 범위를 확인하고 기존 TS-3 선택 가능 안내를 보존한다.",
+      "limitation": "3.5 구조/checkpoint와 실제 covariate 구현은 검사하지 않았다. 예전 논문 결과를 새 기본 모델의 결과로 바꾸지 않는다."
+    },
+    {
+      "claim_id": "H014-C08",
+      "sources": [
+        "SRC-0021116",
+        "H014-TabPFN-TS-tag_v1.3.0",
+        "H014-TabPFN-TS-current_main",
+        "H014-TabPFN-TS-last_commit_before_date_UTC_end"
+      ],
+      "locator": "README11;CHANGELOG5;tag commit;pyproject dependencies",
+      "finding": "문서 날짜와 commit 날짜, 동일 README와 달라진 의존성을 각각 고정한다.",
+      "limitation": "UTC 날짜 이전 후보 commit은 당시 실제 읽은 commit의 증거가 아니며 package 게시 시각도 확인되지 않았다."
+    },
+    {
+      "claim_id": "H014-C09",
+      "sources": [
+        "SRC-0021116",
+        "H014-CDE"
+      ],
+      "locator": "22 line13;CDE abstract/§1/§1.1/§1.2/§2",
+      "finding": "39개 데이터와50–20,000표본을 다루는 밀도·calibration 문제의 발견 범위를 확인했다.",
+      "limitation": "methods/appendix·표 전체·시각 검수와 성능 재현은 미완료다."
+    },
+    {
+      "claim_id": "H014-C10",
+      "sources": [
+        "SRC-0021116",
+        "H014-TabularMath"
+      ],
+      "locator": "22 line14;TabularMath abstract only",
+      "finding": "계산적 외삽 벤치마크라는 초록 범위의 발견을 등록한다.",
+      "limitation": "구조·실험 프로토콜을 읽었다고 표시하지 않으며 traffic 증가나 RCTL 손해의 직접 증거로 쓰지 않는다."
+    },
+    {
+      "claim_id": "H014-C11",
+      "sources": [
+        "SRC-0021116",
+        "SRC-0000455",
+        "SRC-0000001",
+        "H014-AGENTS-guidance"
+      ],
+      "locator": "22 lines18–22;early9lines/current27lines;current official guidance selected sections",
+      "finding": "날짜가 적힌 초기 지침과 후속 개정본을 분리하고 반복 안내 수정의 내용을 연결한다.",
+      "limitation": "당시 생성 시각·실제 앱 지침 로딩·scheduler/global 미변경·미래 자동 재개 성공은 독립 확인하지 않았다."
+    },
+    {
+      "claim_id": "H014-C12",
+      "sources": [
+        "SRC-0021116",
+        "SRC-0021095"
+      ],
+      "locator": "22 line16;21 lines64–72",
+      "finding": "검색 비일치와 미완료 문헌을 신규성·효용의 증거로 승격하지 않는다.",
+      "limitation": "21의 전체 누적 비용과 후속393/회귀TabPFN·전체 기록은 남아 있다."
+    }
+  ],
+  "source_preservation": [
+    {
+      "source_id": "SRC-0021095",
+      "path": "tmp/redesign_20260925/21_diagnostic_synthesis.md",
+      "sha256": "e196e6410e7f8bed498c5242694e199f5c6b15e1d6837609efb745f78310e1d2",
+      "size_bytes": 7710,
+      "exact_alias_source_ids": [
+        "SRC-0000417",
+        "SRC-0021095"
+      ],
+      "records": [
+        "0021",
+        "0022"
+      ],
+      "archive_path": "../0018-0021/originals/SRC-0021095.md.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "lines_read": [
+        [
+          1,
+          72
+        ]
+      ],
+      "automated_read_scope": [
+        "sha256_only"
+      ],
+      "claim_verification_scope": "21 lines57–62 and22 source scope; dated early/current instruction versions as historical data",
+      "pending_claim_scope": "21 whole cumulative cost ledger and later research; historical app changes not independently reconstructed"
+    },
+    {
+      "source_id": "SRC-0021116",
+      "path": "tmp/redesign_20260925/22_recent_source_scope.md",
+      "sha256": "42c5c7cc7dbf565912771af1bfb0bcc3a0aaa9d9a7bfb8b8df7b2dc2e10811f0",
+      "size_bytes": 2726,
+      "exact_alias_source_ids": [
+        "SRC-0000418",
+        "SRC-0021116"
+      ],
+      "records": [
+        "0021",
+        "0022"
+      ],
+      "archive_path": "originals/SRC-0021116.md.txt",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "lines_read": [
+        [
+          1,
+          22
+        ]
+      ],
+      "automated_read_scope": [
+        "sha256_only"
+      ],
+      "claim_verification_scope": "21 lines57–62 and22 source scope; dated early/current instruction versions as historical data",
+      "pending_claim_scope": "21 whole cumulative cost ledger and later research; historical app changes not independently reconstructed"
+    },
+    {
+      "source_id": "SRC-0000455",
+      "path": "output/research/redesign_20260925_snapshot_04/AGENTS.md",
+      "sha256": "8bd485a607b15f10b0fd52a1ce9f9dda82bfbf0e87e26c2661ff437305338780",
+      "size_bytes": 1042,
+      "exact_alias_source_ids": [
+        "SRC-0000425",
+        "SRC-0000455",
+        "SRC-0000478",
+        "SRC-0000511",
+        "SRC-0000543",
+        "SRC-0000569",
+        "SRC-0000618",
+        "SRC-0000656",
+        "SRC-0000689",
+        "SRC-0000723",
+        "SRC-0000832",
+        "SRC-0000893",
+        "SRC-0000955",
+        "SRC-0001027",
+        "SRC-0001074"
+      ],
+      "records": [
+        "0021",
+        "0022"
+      ],
+      "archive_path": "originals/SRC-0000455.md.txt",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "lines_read": [
+        [
+          1,
+          9
+        ]
+      ],
+      "automated_read_scope": [
+        "sha256_only"
+      ],
+      "claim_verification_scope": "21 lines57–62 and22 source scope; dated early/current instruction versions as historical data",
+      "pending_claim_scope": "21 whole cumulative cost ledger and later research; historical app changes not independently reconstructed"
+    },
+    {
+      "source_id": "SRC-0000001",
+      "path": "AGENTS.md",
+      "sha256": "60e9aaee0d617591047639ba010c2bcb2f6b976b51f98b27c117926e9c220061",
+      "size_bytes": 8704,
+      "exact_alias_source_ids": [
+        "SRC-0000001"
+      ],
+      "records": [
+        "0021",
+        "0022"
+      ],
+      "archive_path": "../0642/originals/SRC-0000001.md.txt",
+      "preservation": "reused_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "lines_read": [
+        [
+          1,
+          27
+        ]
+      ],
+      "automated_read_scope": [
+        "sha256_only"
+      ],
+      "claim_verification_scope": "21 lines57–62 and22 source scope; dated early/current instruction versions as historical data",
+      "pending_claim_scope": "21 whole cumulative cost ledger and later research; historical app changes not independently reconstructed"
+    }
+  ],
+  "external_web_sources": [
+    {
+      "reference_id": "H014-FSA",
+      "title": "Feature to Dynamics: Feature-space to Autoregression strategy for Zero-shot Time Series Forecasting",
+      "authors": [
+        "Wu, Yifan",
+        "Wu, Junjie",
+        "Wu, Kai",
+        "Zhang, Xiaoyu",
+        "Lou, Jian"
+      ],
+      "arxiv_version": "2606.01289v1",
+      "submitted_date": "2026/05/31",
+      "related_doi": [],
+      "distribution": "metadata_and_official_versioned_links_only",
+      "catalog_status": "external_web_reference_no_catalog_source_id_assigned",
+      "acquisition": {
+        "html": {
+          "url": "https://arxiv.org/html/2606.01289v1",
+          "sha256": "56d1b7f73828edd956c92906428493cef181e005ea257de487c4182a5c4f56e8",
+          "size_bytes": 267516,
+          "acquired_at_utc": "2026-10-09T02:13:15.236349+00:00"
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2606.01289v1",
+          "sha256": "c89c9945d2b79b3264b804e9ab2c46fedd65a29922b88b29e3fea3ff6d1bd4b5",
+          "size_bytes": 3594602,
+          "pages": 13,
+          "acquired_at_utc": "2026-10-09T02:20:27.808783+00:00"
+        },
+        "official_metadata": {
+          "url": "https://arxiv.org/abs/2606.01289v1",
+          "sha256": "4bfe0eba39b756a0784b2fcd80d36838ebb93b8ae6d789bc3634e1cfac52d4d3",
+          "size_bytes": 42325,
+          "acquired_at_utc": "2026-10-09T02:14:12.615540+00:00"
+        },
+        "derived_sections": {
+          "sha256": "ce07397fc28c41d39da3e1ec41c9566c230a5ca15cf220c597a9fd5863e8017e",
+          "method": "lxml static HTML parse; replace each MathML node by original alttext; collapse text whitespace; no HTML execution"
+        }
+      },
+      "read_scope": {
+        "abstract": "full text",
+        "html_section_ids": [
+          "S3",
+          "S4",
+          "S5.SS1"
+        ],
+        "physical_pdf_pages": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "additional_visual_scope": "PDF6 section5.2; page7 partial5.3, not the continuation",
+        "unreviewed": [
+          "Remaining introduction/related work/results/appendices and author code",
+          "Tables1–3 numerical performance audit; no superiority claim added"
+        ]
+      },
+      "whole_paper_reviewed": false,
+      "code_executed": false
+    },
+    {
+      "reference_id": "H014-CDE",
+      "title": "Benchmarking Tabular Foundation Models for Conditional Density Estimation in Regression",
+      "authors": [
+        "Izbicki, Rafael",
+        "Rodrigues, Pedro L. C."
+      ],
+      "arxiv_version": "2603.26611v1",
+      "submitted_date": "2026/03/27",
+      "related_doi": [],
+      "distribution": "metadata_and_official_versioned_links_only",
+      "catalog_status": "external_web_reference_no_catalog_source_id_assigned",
+      "acquisition": {
+        "html": {
+          "url": "https://arxiv.org/html/2603.26611v1",
+          "sha256": "76fafd834496a716b1f8d2b31113754d0b37ff3ddbc4936fc7b31580bb6f718e",
+          "size_bytes": 342048,
+          "acquired_at_utc": "2026-10-09T02:13:15.220282+00:00"
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2603.26611v1",
+          "sha256": "839367976b45a2ce9872a09fbabde3914ed7e057df8138d6de00135f4be12f92",
+          "size_bytes": 15641247,
+          "pages": 64,
+          "acquired_at_utc": "2026-10-09T02:20:30.703176+00:00"
+        },
+        "official_metadata": {
+          "url": "https://arxiv.org/abs/2603.26611v1",
+          "sha256": "9cb4f9f21450d152a6456f1480063b5806b8a4fc79bbe072e6380f84ea96c336",
+          "size_bytes": 42885,
+          "acquired_at_utc": "2026-10-09T02:14:12.913227+00:00"
+        },
+        "derived_sections": {
+          "sha256": "894491ed96606012b94e4c37d68ae99fa612449f655974e8ce6f60440e685ec5",
+          "method": "lxml static HTML parse; replace each MathML node by original alttext; collapse text whitespace; no HTML execution"
+        }
+      },
+      "read_scope": {
+        "abstract": "full text",
+        "html_section_ids": [
+          "S1",
+          "S2"
+        ],
+        "physical_pdf_pages": [],
+        "additional_visual_scope": "None",
+        "unreviewed": [
+          "Methods3, setup4, full results and appendix density conversion",
+          "All PDF visual pages, including Figure1; no figure-based performance claim"
+        ]
+      },
+      "whole_paper_reviewed": false,
+      "code_executed": false
+    },
+    {
+      "reference_id": "H014-TabularMath",
+      "title": "TabularMath: Evaluating Computational Extrapolation in Tabular Learning via Program-Verified Synthesis",
+      "authors": [
+        "Cheng, Zerui",
+        "Liu, Jiashuo",
+        "Yao, Jianzhu",
+        "Viswanath, Pramod",
+        "Zhang, Ge",
+        "Huang, Wenhao"
+      ],
+      "arxiv_version": "2602.02523v1",
+      "submitted_date": "2026/01/25",
+      "related_doi": [],
+      "distribution": "metadata_and_official_versioned_links_only",
+      "catalog_status": "external_web_reference_no_catalog_source_id_assigned",
+      "acquisition": {
+        "html": {
+          "url": "https://arxiv.org/html/2602.02523v1",
+          "sha256": "d6905cb34db682fbf80d66e165d1166df9f4a9c154b6653c5a5cfa4088feefe9",
+          "size_bytes": 750874,
+          "acquired_at_utc": "2026-10-09T02:13:15.301740+00:00"
+        },
+        "pdf": {
+          "url": "https://arxiv.org/pdf/2602.02523v1",
+          "sha256": "a255494e71de056387805849c0a03b1044fca563defe69c92cb2862ce301603b",
+          "size_bytes": 1475305,
+          "pages": 30,
+          "acquired_at_utc": "2026-10-09T02:20:29.939469+00:00"
+        },
+        "official_metadata": {
+          "url": "https://arxiv.org/abs/2602.02523v1",
+          "sha256": "a2371e21b8b89ff672fc163e20b6650650f618048dee9f1b5c4b5bcf7bad8b3c",
+          "size_bytes": 43885,
+          "acquired_at_utc": "2026-10-09T02:14:13.365147+00:00"
+        },
+        "derived_sections": {
+          "sha256": "16155953d93cf51c7e8de3368b1cb50a93f1b32844b7cdf99b5483e2a2d8b16d",
+          "method": "lxml static HTML parse; replace each MathML node by original alttext; collapse text whitespace; no HTML execution"
+        }
+      },
+      "read_scope": {
+        "abstract": "full text",
+        "html_section_ids": [],
+        "physical_pdf_pages": [],
+        "additional_visual_scope": "None",
+        "unreviewed": [
+          "All method/protocol/results body, figures and author code",
+          "Abstract numbers are author reports, not verified result tables or traffic evidence"
+        ]
+      },
+      "whole_paper_reviewed": false,
+      "code_executed": false
+    }
+  ],
+  "external_git_sources": [
+    {
+      "reference_id": "H014-TabPFN-TS-current_main",
+      "label": "current_main",
+      "repository": "PriorLabs/tabpfn-time-series",
+      "commit": "2c04a34868596b3cbb88c173759418a09994881c",
+      "commit_date": "2026-10-02T10:00:11Z",
+      "commit_metadata_sha256": "f5f582ee16c6fef900eceb99b0a1d8c91be92efdc17fb05593fe04f896f4a029",
+      "files": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/PriorLabs/tabpfn-time-series/2c04a34868596b3cbb88c173759418a09994881c/README.md",
+          "sha256": "2881f3cb0e757f997ef5b0aa59ea3161806dd19c79ce24ae5428f252625e5974",
+          "size_bytes": 7500,
+          "lines": 133,
+          "lines_read": [
+            [
+              1,
+              133
+            ]
+          ],
+          "linked_images_reviewed": false,
+          "code_executed": false
+        },
+        {
+          "path": "pyproject.toml",
+          "url": "https://raw.githubusercontent.com/PriorLabs/tabpfn-time-series/2c04a34868596b3cbb88c173759418a09994881c/pyproject.toml",
+          "sha256": "77670d7eb7bb80b28e47c1556f5cbfdd774eab3f1327b705cc262df8c2df3a90",
+          "size_bytes": 3651,
+          "lines": 135,
+          "lines_read": [
+            [
+              1,
+              135
+            ]
+          ],
+          "linked_images_reviewed": false,
+          "code_executed": false
+        },
+        {
+          "path": "CHANGELOG.md",
+          "url": "https://raw.githubusercontent.com/PriorLabs/tabpfn-time-series/2c04a34868596b3cbb88c173759418a09994881c/CHANGELOG.md",
+          "sha256": "d9db33ef4ee8f278dd3760ef71298a55731526ae3f40692b19a8909899cfafe4",
+          "size_bytes": 1518,
+          "lines": 51,
+          "lines_read": [
+            [
+              1,
+              51
+            ]
+          ],
+          "linked_images_reviewed": false,
+          "code_executed": false
+        }
+      ],
+      "distribution": "metadata_and_official_versioned_links_only",
+      "historical_access_commit_proven": false
+    },
+    {
+      "reference_id": "H014-TabPFN-TS-tag_v1.3.0",
+      "label": "tag_v1.3.0",
+      "repository": "PriorLabs/tabpfn-time-series",
+      "commit": "4549578734ed9786dc201005396dd8bc20161681",
+      "commit_date": "2026-09-17T15:53:13Z",
+      "commit_metadata_sha256": "9719dc4d1ea092b2903af8deb679796ba9cbc6a7c1675339241fad60a56d39b0",
+      "files": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/PriorLabs/tabpfn-time-series/4549578734ed9786dc201005396dd8bc20161681/README.md",
+          "sha256": "2881f3cb0e757f997ef5b0aa59ea3161806dd19c79ce24ae5428f252625e5974",
+          "size_bytes": 7500,
+          "lines": 133,
+          "lines_read": [
+            [
+              1,
+              133
+            ]
+          ],
+          "linked_images_reviewed": false,
+          "code_executed": false
+        },
+        {
+          "path": "pyproject.toml",
+          "url": "https://raw.githubusercontent.com/PriorLabs/tabpfn-time-series/4549578734ed9786dc201005396dd8bc20161681/pyproject.toml",
+          "sha256": "e8535d01ed1db4a88519c1acf9cbc60534362a97a17b23c11ae57966b207eec6",
+          "size_bytes": 3712,
+          "lines": 134,
+          "lines_read": [
+            [
+              1,
+              134
+            ]
+          ],
+          "linked_images_reviewed": false,
+          "code_executed": false
+        },
+        {
+          "path": "CHANGELOG.md",
+          "url": "https://raw.githubusercontent.com/PriorLabs/tabpfn-time-series/4549578734ed9786dc201005396dd8bc20161681/CHANGELOG.md",
+          "sha256": "d9db33ef4ee8f278dd3760ef71298a55731526ae3f40692b19a8909899cfafe4",
+          "size_bytes": 1518,
+          "lines": 51,
+          "lines_read": [
+            [
+              1,
+              51
+            ]
+          ],
+          "linked_images_reviewed": false,
+          "code_executed": false
+        }
+      ],
+      "distribution": "metadata_and_official_versioned_links_only",
+      "historical_access_commit_proven": false
+    },
+    {
+      "reference_id": "H014-TabPFN-TS-last_commit_before_date_UTC_end",
+      "label": "last_commit_before_date_UTC_end",
+      "repository": "PriorLabs/tabpfn-time-series",
+      "commit": "23c5e238670a1228b454f1306e909f1ddc07841e",
+      "commit_date": "2026-09-18T12:03:09Z",
+      "commit_metadata_sha256": "4a79ea2b04d7debef850453c0ffe8fc8b75ef39774a7e078300ff35efb5efcf3",
+      "files": [
+        {
+          "path": "README.md",
+          "url": "https://raw.githubusercontent.com/PriorLabs/tabpfn-time-series/23c5e238670a1228b454f1306e909f1ddc07841e/README.md",
+          "sha256": "2881f3cb0e757f997ef5b0aa59ea3161806dd19c79ce24ae5428f252625e5974",
+          "size_bytes": 7500,
+          "lines": 133,
+          "lines_read": [
+            [
+              1,
+              133
+            ]
+          ],
+          "linked_images_reviewed": false,
+          "code_executed": false
+        },
+        {
+          "path": "pyproject.toml",
+          "url": "https://raw.githubusercontent.com/PriorLabs/tabpfn-time-series/23c5e238670a1228b454f1306e909f1ddc07841e/pyproject.toml",
+          "sha256": "e8535d01ed1db4a88519c1acf9cbc60534362a97a17b23c11ae57966b207eec6",
+          "size_bytes": 3712,
+          "lines": 134,
+          "lines_read": [
+            [
+              1,
+              134
+            ]
+          ],
+          "linked_images_reviewed": false,
+          "code_executed": false
+        },
+        {
+          "path": "CHANGELOG.md",
+          "url": "https://raw.githubusercontent.com/PriorLabs/tabpfn-time-series/23c5e238670a1228b454f1306e909f1ddc07841e/CHANGELOG.md",
+          "sha256": "d9db33ef4ee8f278dd3760ef71298a55731526ae3f40692b19a8909899cfafe4",
+          "size_bytes": 1518,
+          "lines": 51,
+          "lines_read": [
+            [
+              1,
+              51
+            ]
+          ],
+          "linked_images_reviewed": false,
+          "code_executed": false
+        }
+      ],
+      "distribution": "metadata_and_official_versioned_links_only",
+      "historical_access_commit_proven": false
+    }
+  ],
+  "source_links_metadata": [
+    {
+      "source_id": "SRC-0047594",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl/forecast/transforms/_seasonality.py",
+      "sha256": "4b2c8c21335bd525624841efb44ba10d380ffd5192b02dcc6c516939bfe54526",
+      "size_bytes": 14474,
+      "exact_alias_source_ids": [
+        "SRC-0047594",
+        "SRC-0073499"
+      ],
+      "records": [
+        "0021",
+        "0022"
+      ],
+      "reference_id": "H014-seasonality",
+      "title": "_seasonality.py",
+      "url": "https://raw.githubusercontent.com/soda-inria/tabicl/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/forecast/transforms/_seasonality.py",
+      "version": "official commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_full_code_read",
+      "whole_source_reviewed": true,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            443
+          ]
+        ],
+        "line_numbering": "1-based UTF-8 splitlines",
+        "unreviewed": [
+          "Runtime execution and other implementations"
+        ]
+      },
+      "zip_member_source_id": "SRC-0073499",
+      "runtime_zip_official_byte_identical": true
+    },
+    {
+      "source_id": "SRC-0047592",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl/forecast/transforms/_calendar.py",
+      "sha256": "15c138bb56325c8625383e2793b1d55982f0fbff71ceca6cd2b6bf75d5862aef",
+      "size_bytes": 6134,
+      "exact_alias_source_ids": [
+        "SRC-0047592",
+        "SRC-0073497"
+      ],
+      "records": [
+        "0021",
+        "0022"
+      ],
+      "reference_id": "H014-calendar",
+      "title": "_calendar.py",
+      "url": "https://raw.githubusercontent.com/soda-inria/tabicl/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/forecast/transforms/_calendar.py",
+      "version": "official commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_selected_code_read",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            149,
+            190
+          ]
+        ],
+        "line_numbering": "1-based UTF-8 splitlines",
+        "unreviewed": [
+          "Lines1–148; runtime execution"
+        ]
+      },
+      "zip_member_source_id": "SRC-0073497",
+      "runtime_zip_official_byte_identical": true
+    },
+    {
+      "source_id": "SRC-0047586",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl/forecast/_forecaster.py",
+      "sha256": "48b579efa88997492ad27d7aa5371518bee216860d11ae7051c7e143779809f9",
+      "size_bytes": 13303,
+      "exact_alias_source_ids": [
+        "SRC-0047586",
+        "SRC-0073491"
+      ],
+      "records": [
+        "0021",
+        "0022"
+      ],
+      "reference_id": "H005-SRC-0047586",
+      "title": "forecast/_forecaster.py",
+      "version": "official commit 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3",
+      "url": "https://raw.githubusercontent.com/soda-inria/tabicl/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3/src/tabicl/forecast/_forecaster.py",
+      "distribution": "metadata_and_official_link_only",
+      "review_status": "agent_full_code_read",
+      "whole_source_reviewed": true,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            346
+          ]
+        ],
+        "line_numbering": "1-based UTF-8 splitlines",
+        "unreviewed": [
+          "실행·성능 재현 없음"
+        ],
+        "rechecked_lines_in_H014": [
+          [
+            254,
+            266
+          ]
+        ]
+      },
+      "zip_member_source_id": "SRC-0073491",
+      "runtime_zip_official_byte_identical": true,
+      "previous_review": "verification/history-005-primary-review.json"
+    },
+    {
+      "source_id": "SRC-0047644",
+      "path": "tmp/redesign_20260925/runtime/Lib/site-packages/tabicl-2.2.0.dist-info/METADATA",
+      "sha256": "e429edbe64f243241e6425854643b0d4128de550121b9feb1598ef710b9941a2",
+      "size_bytes": 38256,
+      "exact_alias_source_ids": [
+        "SRC-0047644"
+      ],
+      "records": [
+        "0021",
+        "0022"
+      ],
+      "reference_id": "H005-installed-metadata",
+      "title": "tabicl installed METADATA",
+      "version": "2.2.0",
+      "distribution": "metadata_local_identity_only",
+      "review_status": "agent_selected_metadata_read",
+      "whole_source_reviewed": false,
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            35
+          ]
+        ],
+        "fields": [
+          "Name",
+          "Version"
+        ],
+        "unreviewed": [
+          "나머지 metadata·라이선스 전문"
+        ]
+      },
+      "previous_review": "verification/history-005-primary-review.json"
+    }
+  ],
+  "new_model_runs": 0,
+  "new_simulations": 0,
+  "original_scripts_executed": false,
+  "performance_results_reproduced": false,
+  "whole_papers_reviewed": 0,
+  "record21_fully_integrated": false,
+  "record22_scope": "full text and stated reading/operation boundaries; unverified historical operations explicitly retained",
+  "second_pass_at_utc": "2026-10-09T02:42:12.090333+00:00",
+  "second_pass_scope": "21/22 and AGENTS versions; FSA equations3/6/7/figure2/setup, static seasonality/defaults, pinned README/dates/dependencies, CDE and TabularMath explicit read limits; H005/H011 bounded proof reuse"
+}

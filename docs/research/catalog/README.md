@@ -49,4 +49,6 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 
 [history-013 목록](history-013-sources.jsonl)은19/20계획·코드·저장결과·집중도의새원본18개495,076bytes와기존2개재사용,H5/설치metadata/checkpoint3건을연결한다. [열람범위](../sources/history-013.md)는새텍스트전체5개·JSON전체9개·수치배열파일4개다.21은ID/잔차/집중도및추가6호출만더검수했으며문헌과전체누적원장은남았다. 위H012의19/20대기상태는이후이묶음으로진행됐다.
 
+[history-014 목록](history-014-sources.jsonl)은21/22와 초기/현재 지침4건(새2·재사용2),외부 설치 코드·metadata4건을 연결한다. [열람 범위](../sources/history-014.md)와 별도 웹 metadata는FSA/CDE/TabularMath 세 논문,TabPFN-TS 세 commit,현재 공식 지침의 지정 구간을 구분한다.21의 문헌57–62행을 더 연결했고22의 미완료 문헌·운영 증거 공백을 남겼다. 논문 전체와21 누적 비용은 미완료다.
+
 목록과 근거 사본은 정리 시점의 스냅샷이다. 원본 변경 시 관련 주장과 검토 상태를 재확인한다. GitHub에는 검수된 묶음부터 반영하며, 전체 기록의 본문 정리는 진행 중이다.
