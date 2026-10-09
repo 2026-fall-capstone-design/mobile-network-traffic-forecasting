@@ -1,0 +1,148 @@
+"""Preregistered cheap comparison; external notebooks and RCTL are never run."""
+import os
+for k in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS','NUMEXPR_NUM_THREADS']:
+    os.environ[k]='4'
+from pathlib import Path
+import time,json,hashlib
+import numpy as np
+import pandas as pd
+import psutil
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor
+from threadpoolctl import threadpool_limits
+
+base=Path(__file__).resolve().parent
+out=base/'results/resolution_diagnostic_31'
+if out.exists(): raise RuntimeError('Diagnostic already started; inspect result before further action.')
+out.mkdir(parents=True)
+start=time.perf_counter()
+process=psutil.Process()
+peak=0
+ids=[4159,4556,5161]
+records=[]
+fit_records=[]
+saved={}
+def checkpoint():
+    global peak
+    peak=max(peak,process.memory_info().rss)
+    if time.perf_counter()-start>60: raise RuntimeError('Wall-time cap reached')
+    if peak>2*1024**3: raise RuntimeError('Memory cap reached')
+
+def maker(name):
+    if name=='Ridge': return make_pipeline(StandardScaler(),Ridge(alpha=1.0))
+    return HistGradientBoostingRegressor(max_iter=100,max_leaf_nodes=31,min_samples_leaf=20,
+        learning_rate=.1,l2_regularization=1,early_stopping=False,random_state=20260925)
+
+def metrics(y,pred,scales):
+    error=np.abs(pred-y)
+    halfway=error.shape[1]//2
+    return dict(normalized_mae=float(error.mean()),per_cell_normalized_mae=error.mean(axis=1).tolist(),
+        normalized_mae_halves=[float(error[:,:halfway].mean()),float(error[:,halfway:].mean())],
+        per_cell_raw_mae=(error.mean(axis=1)*scales).tolist())
+
+settings=dict(cells=ids,fit_cap=32,wall_seconds_cap=60,rss_cap_bytes=2*1024**3,threads=4,
+    train_targets=['2013-11-08','2013-11-21'],diagnostic_targets=['2013-11-21','2013-12-01'],
+    plan_sha256=hashlib.sha256((base/'31_resolution_diagnostic_plan.md').read_bytes()).hexdigest(),
+    new_RCTL_fits=0,new_RCTL_forward=0,new_TabICL_calls=0)
+(out/'settings.json').write_text(json.dumps(settings,indent=2),encoding='utf-8')
+series=[]
+for sid in ids:
+    d=pd.read_csv(base/f'results/ten_minute_subset_30/ts_full_square_{sid}.csv')
+    times=pd.to_datetime(d.time_ms,unit='ms',utc=True)+pd.Timedelta(hours=1)
+    s=pd.Series(d.internet.to_numpy(float),index=pd.DatetimeIndex(times).tz_localize(None)).sort_index()
+    series.append(s.loc['2013-11-01':'2013-11-30 23:50:00'])
+fine=np.stack([s.to_numpy() for s in series])
+assert fine.shape==(3,4320) and np.isfinite(fine).all()
+hour_groups=fine.reshape(3,720,6)
+within=np.mean(np.var(hour_groups,axis=2),axis=1)
+total=np.var(fine,axis=1)
+peak_ratio=np.max(hour_groups,axis=2)/np.mean(hour_groups,axis=2)
+structure=dict(within_hour_variance_fraction=(within/total).tolist(),
+    within_hour_peak_to_mean_median=np.median(peak_ratio,axis=1).tolist(),
+    within_hour_peak_to_mean_p95=np.quantile(peak_ratio,.95,axis=1).tolist())
+with threadpool_limits(limits=4):
+    for step in [10,60]:
+        arr=fine if step==10 else hour_groups.sum(axis=2)
+        nday=1440//step
+        times=pd.date_range('2013-11-01',periods=arr.shape[1],freq=f'{step}min')
+        scales=arr[:,:20*nday].mean(axis=1)
+        z=arr/scales[:,None]
+        targets=np.arange(7*nday,30*nday)
+        train=targets<20*nday
+        diag=~train
+        hour=times[targets].hour.to_numpy()+times[targets].minute.to_numpy()/60.
+        week=times[targets].dayofweek.to_numpy()+hour/24.
+        calendar=np.stack([np.sin(2*np.pi*hour/24),np.cos(2*np.pi*hour/24),
+            np.sin(2*np.pi*week/7),np.cos(2*np.pi*week/7)],axis=1)
+        xs=[]
+        for i in range(3):
+            daymean=pd.Series(z[i]).rolling(nday).mean().shift(1).to_numpy()[targets]
+            daystd=pd.Series(z[i]).rolling(nday).std(ddof=0).shift(1).to_numpy()[targets]
+            seasonal=np.column_stack([z[i,targets-nday],z[i,targets-7*nday],daymean,daystd,calendar])
+            lags=np.stack([z[i,targets-j] for j in range(8,0,-1)],axis=1)
+            xs.append(np.column_stack([seasonal,lags]))
+        x=np.stack(xs)
+        y=z[:,targets]
+        assert np.isfinite(x).all() and np.isfinite(y).all()
+        yd=y[:,diag]
+        prefix=f'minutes_{step}'
+        saved[prefix+'_y']=yd
+        saved[prefix+'_scales']=scales
+        saved[prefix+'_times']=times[targets[diag]].to_numpy(dtype='datetime64[ns]').astype(np.int64)
+        methods=[]
+        for name,lag in [('persistence',1),('daily_naive',nday),('weekly_naive',7*nday)]:
+            pred=z[:,targets[diag]-lag]
+            methods.append(dict(method=name,**metrics(yd,pred,scales)))
+        for features,dims in [('S',8),('S+L',16)]:
+            xx=x[:,:,:dims]
+            for name in ['Ridge','HGB']:
+                preds={}
+                for pooling in ['global','local']:
+                    before=time.perf_counter()
+                    if pooling=='global':
+                        model=maker(name)
+                        model.fit(xx[:,train,:].reshape(-1,dims),y[:,train].reshape(-1))
+                        pred=model.predict(xx[:,diag,:].reshape(-1,dims)).reshape(3,-1)
+                        fits=1
+                    else:
+                        pred=np.empty_like(yd)
+                        for i in range(3):
+                            model=maker(name)
+                            model.fit(xx[i,train,:],y[i,train])
+                            pred[i]=model.predict(xx[i,diag,:])
+                            checkpoint()
+                        fits=3
+                    elapsed=time.perf_counter()-before
+                    assert np.isfinite(pred).all()
+                    key=f'{features}_{name}_{pooling}'
+                    saved[prefix+'_'+key]=pred
+                    preds[pooling]=pred
+                    methods.append(dict(method=key,**metrics(yd,pred,scales)))
+                    fit_records.append(dict(minutes=step,features=features,estimator=name,pooling=pooling,
+                        fits=fits,fit_predict_seconds=elapsed,train_rows_per_cell=int(train.sum()),
+                        query_rows=int(diag.sum())*3))
+                    checkpoint()
+                delta=np.abs(preds['global']-yd)-np.abs(preds['local']-yd)
+                half=delta.shape[1]//2
+                print(json.dumps(dict(minutes=step,features=features,estimator=name,
+                    global_minus_local_mae=float(delta.mean()),per_cell=delta.mean(axis=1).tolist(),
+                    halves=[float(delta[:,:half].mean()),float(delta[:,half:].mean())]),ensure_ascii=False),flush=True)
+        # Descriptive daily-profile residuals: profile is estimated on first 20 days only.
+        profile=z[:,:20*nday].reshape(3,20,nday).mean(axis=1)
+        residual=z[:,20*nday:]-np.tile(profile,(1,10))
+        records.append(dict(minutes=step,train_rows_per_cell=int(train.sum()),query_rows_per_cell=int(diag.sum()),
+            scales=scales.tolist(),methods=methods,
+            raw_diagnostic_pcc=np.corrcoef(z[:,20*nday:]).tolist(),
+            daily_profile_residual_diagnostic_pcc=np.corrcoef(residual).tolist()))
+        (out/'partial.json').write_text(json.dumps(records,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+checkpoint()
+assert sum(r['fits'] for r in fit_records)==32
+np.savez_compressed(out/'predictions.npz',**saved)
+summary=dict(settings=settings,structure=structure,resolutions=records,fit_records=fit_records,
+    new_simple_fits=32,elapsed_seconds=time.perf_counter()-start,peak_rss_bytes=peak,
+    new_clustering_recommended=False,representative_sample=False)
+(out/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+print(json.dumps(dict(completed=True,new_simple_fits=32,elapsed_seconds=summary['elapsed_seconds'],
+    peak_rss_bytes=peak,structure=structure),ensure_ascii=False),flush=True)

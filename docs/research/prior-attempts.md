@@ -118,3 +118,7 @@
 ## 관계 차이·불확실성·residual 분할
 
 [28](records/0028-mechanism-uncertainty.md)은 TabMGP posterior clustering, predictive CLT/UD 병합 확신도, Vario의 mechanism partition/MDL/top-down, two-stage global residual clustering을 비교한 문헌 검토다. 새 모델 실행 결과가 아니다. 예측 폭이 넓다는 사실이나 residual 자기상관만으로 cell별 다른 예측기가 필요하다고 결론 내리지 않는다. 재검토 시 기존 방법이 남긴 손해, TabICL의 추가 정보, 바뀔 소속, 고정 RCTL의 효용과 비용을 연결한다. 이미 존재하는 TabICL adapter·prefix 비용·겹치는 lag의 정리 조건을 먼저 확인한다. [문헌 비교와 공식 근거](references/mechanism-uncertainty.md)를 재사용하고 새로운 실행 조건의 차이를 남긴다.
+
+## 시간 해상도만 바꾸면 공유 손해가 나타나는가
+
+[29–32](records/0029-0032-resolution-diagnostic.md)는 동일 세cell의10분값/시간합, S8/S+L16, Ridge/HGB global/local32fit을 비교했다. 최근lag는 두해상도 모두 이득이지만 공유효과는조건별로달랐다. S+L10분Ridge4556·시간HGB4159 손해와 시간Ridge전체손해를 보존한다. 같은cell·평균정규화·학습분할·global3배행 조건의 반복인지 먼저 확인한다. [저장근거](evidence/0029-0032-resolution/README.md)와 [출처](sources/history-021.md)를 재사용하고 새 설계의 cell선정/자료량/용량/정보 차이를 명시한다. 원 UPC Fig. 7은1·2·4·6·8·10·12축과single global을 포함한다.

@@ -1,0 +1,65 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T06:22:22.683553+00:00",
+  "checks": 21,
+  "check_names": [
+    "SRC-0032492:identity",
+    "SRC-0023485:identity",
+    "H5_shape",
+    "H5_full_hourly_grid",
+    "november_times_exact",
+    "selected_finite",
+    "4159:aligned_hour_count",
+    "4159:hourly_mean_absolute_difference",
+    "4159:hourly_max_absolute_difference",
+    "4159:hourly_relative_absolute_difference",
+    "4159:hourly_pcc",
+    "4556:aligned_hour_count",
+    "4556:hourly_mean_absolute_difference",
+    "4556:hourly_max_absolute_difference",
+    "4556:hourly_relative_absolute_difference",
+    "4556:hourly_pcc",
+    "5161:aligned_hour_count",
+    "5161:hourly_mean_absolute_difference",
+    "5161:hourly_max_absolute_difference",
+    "5161:hourly_relative_absolute_difference",
+    "5161:hourly_pcc"
+  ],
+  "source_id": "SRC-0023485",
+  "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+  "size_bytes": 357150320,
+  "read_scope": [
+    "data.shape",
+    "idx[:]",
+    "data[:720,[4158,4555,5160],2]"
+  ],
+  "results": [
+    {
+      "cell_id": 4159,
+      "aligned_hour_count": 720,
+      "hourly_mean_absolute_difference": 0.0002426291666725749,
+      "hourly_max_absolute_difference": 0.000600000000304135,
+      "hourly_relative_absolute_difference": 1.2549185980651228e-07,
+      "hourly_pcc": 0.9999999999999675
+    },
+    {
+      "cell_id": 4556,
+      "aligned_hour_count": 720,
+      "hourly_mean_absolute_difference": 0.0002540833333373232,
+      "hourly_max_absolute_difference": 0.000699999999596912,
+      "hourly_relative_absolute_difference": 7.115751393985002e-08,
+      "hourly_pcc": 0.999999999999982
+    },
+    {
+      "cell_id": 5161,
+      "aligned_hour_count": 720,
+      "hourly_mean_absolute_difference": 0.0002756819444589572,
+      "hourly_max_absolute_difference": 0.0014999999984866008,
+      "hourly_relative_absolute_difference": 3.1361212268071614e-08,
+      "hourly_pcc": 0.9999999999999997
+    }
+  ],
+  "raw_CDR_reconstruction_verified": false,
+  "new_model_runs": 0,
+  "original_scripts_executed": false
+}

@@ -1,0 +1,64 @@
+"""Download and inspect three small public aggregates; execute no external code."""
+from pathlib import Path
+import urllib.request, json, hashlib, time
+import numpy as np
+import pandas as pd
+import h5py
+
+base=Path(__file__).resolve().parent
+out=base/'results/ten_minute_subset_30'
+if out.exists(): raise RuntimeError('Subset already fetched; inspect saved files.')
+out.mkdir(parents=True)
+repo='Yunis-konda001/Milan-mobile-traffic-forecasting'
+commit='6042fb01b0ae6c4ec2e2942d171186d5d6517349'
+tree=json.loads((base/'sources/ten_minute_access_30'/
+    'Yunis-konda001__Milan-mobile-traffic-forecasting_tree.json').read_text(encoding='utf-8'))
+entries={x['path']:x for x in tree['tree']}
+ids=[4159,4556,5161]
+expected=sum(entries[f'processed/ts_full_square_{sid}.csv']['size'] for sid in ids)
+assert expected<=1500000
+records=[]
+start=time.perf_counter()
+for sid in ids:
+    path=f'processed/ts_full_square_{sid}.csv'
+    url=f'https://raw.githubusercontent.com/{repo}/{commit}/{path}'
+    with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Research data verification'}),timeout=20) as r:
+        data=r.read(entries[path]['size']+1)
+    assert len(data)==entries[path]['size']
+    blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\x00'+data).hexdigest()
+    assert blob==entries[path]['sha']
+    dest=out/Path(path).name
+    dest.write_bytes(data)
+    df=pd.read_csv(dest)
+    assert {'square_id','time_ms','internet','time'}<=set(df.columns)
+    stamps=pd.to_datetime(df.time_ms,unit='ms',utc=True)
+    assert np.array_equal(stamps.dt.tz_localize(None).to_numpy(),pd.to_datetime(df.time).to_numpy())
+    assert set(df.square_id)=={sid}
+    local=(stamps+pd.Timedelta(hours=1)).dt.tz_localize(None)
+    series=pd.Series(df.internet.to_numpy(dtype=float),index=pd.DatetimeIndex(local)).sort_index()
+    nov=series[(series.index>=pd.Timestamp('2013-11-01'))&(series.index<pd.Timestamp('2013-12-01'))]
+    grid=pd.date_range('2013-11-01','2013-12-01',freq='10min',inclusive='left')
+    hourly=nov.resample('h').sum(min_count=6)
+    with h5py.File(base/'assets/data_git_version.h5','r') as f:
+        htimes=pd.to_datetime(f['idx'][:].astype(str))
+        select=np.flatnonzero((htimes>=pd.Timestamp('2013-11-01'))&(htimes<pd.Timestamp('2013-12-01')))
+        old=pd.Series(f['data'][select,sid-1,2],index=htimes[select])
+    paired=pd.concat([hourly.rename('new'),old.rename('old')],axis=1).dropna()
+    diff=paired['new'].to_numpy()-paired['old'].to_numpy()
+    rec=dict(cell_id=sid,bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),git_blob_sha=blob,
+        rows=len(series),first_local=str(series.index.min()),last_local=str(series.index.max()),
+        duplicate_timestamps=int(series.index.duplicated().sum()),
+        interval_seconds=sorted(set(np.diff(series.index.as_unit('ns').asi8).astype(float)/1e9)),
+        november_rows=len(nov),november_expected=4320,missing_november_timestamps=int(len(grid.difference(nov.index))),
+        november_nan=int(nov.isna().sum()),november_zero=int((nov==0).sum()),november_negative=int((nov<0).sum()),
+        aligned_hour_count=len(paired),hourly_mean_absolute_difference=float(np.mean(np.abs(diff))),
+        hourly_max_absolute_difference=float(np.max(np.abs(diff))),
+        hourly_relative_absolute_difference=float(np.sum(np.abs(diff))/np.sum(np.abs(paired['old'].to_numpy()))),
+        hourly_pcc=float(np.corrcoef(paired['new'],paired['old'])[0,1]))
+    records.append(rec)
+    print(json.dumps(rec,ensure_ascii=False),flush=True)
+summary=dict(repository=repo,commit=commit,records=records,bytes_downloaded=sum(x['bytes'] for x in records),
+    elapsed_seconds=time.perf_counter()-start,model_calls=0,external_notebook_executed=False,
+    provenance='third-party cell-timestamp internet sums, verified against pinned git blobs',
+    utc_to_local_hours=1,representative_sample=False)
+(out/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')

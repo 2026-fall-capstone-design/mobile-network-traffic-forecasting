@@ -1,0 +1,18 @@
+from pathlib import Path
+import json
+base=Path(__file__).resolve().parent
+p=base/'cumulative_execution_budget.json'
+s=json.loads(p.read_text(encoding='utf-8'))
+r=json.loads((base/'results/resolution_diagnostic_31/summary.json').read_text(encoding='utf-8'))
+assert 'resolution_diagnostic_31' not in s['new_cheap_diagnostic_seconds']
+assert s['used']['RCTL_fits']==29 and s['used']['TabICL_contexts']==45
+s['new_cheap_diagnostic_seconds']['resolution_diagnostic_31']=r['elapsed_seconds']
+s['cheap_stage_details'].append(dict(stage='resolution_diagnostic_31',new_simple_fits=r['new_simple_fits'],
+    methods=['Ridge','HGB'],resolutions_minutes=[10,60],entire_stage_seconds=r['elapsed_seconds'],
+    fit_predict_seconds_included_in_stage=sum(x['fit_predict_seconds'] for x in r['fit_records']),
+    peak_rss_bytes=r['peak_rss_bytes'],cost_not_counted_twice=True))
+assert sum(s['new_cheap_diagnostic_seconds'].values())<s['caps']['cheap_numeric_seconds']
+p.write_text(json.dumps(s,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+print(json.dumps(dict(new_simple_fits=32,stage_seconds=r['elapsed_seconds'],
+    TabICL_contexts=s['used']['TabICL_contexts'],RCTL_fits=s['used']['RCTL_fits'],
+    recorded_cheap_seconds=sum(s['new_cheap_diagnostic_seconds'].values())),ensure_ascii=False))
