@@ -1,0 +1,55 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T00:19:32.227383+00:00",
+  "negative_cases": 11,
+  "cases": [
+    {
+      "case": "missing-SRC-0023201",
+      "rejected_by": "manifest:all_ids"
+    },
+    {
+      "case": "missing-SRC-0032487",
+      "rejected_by": "manifest:all_ids"
+    },
+    {
+      "case": "missing-SRC-0032491",
+      "rejected_by": "manifest:all_ids"
+    },
+    {
+      "case": "duplicate-id",
+      "rejected_by": "manifest:all_ids"
+    },
+    {
+      "case": "mean",
+      "rejected_by": "Ridge:old:all_MAE"
+    },
+    {
+      "case": "first-week-policy",
+      "rejected_by": "Ridge:selection_choices"
+    },
+    {
+      "case": "finished-fits",
+      "rejected_by": "finished:fits"
+    },
+    {
+      "case": "input-shape",
+      "rejected_by": "shape:X"
+    },
+    {
+      "case": "input-lag",
+      "rejected_by": "X:lag_column:7"
+    },
+    {
+      "case": "query-origin",
+      "rejected_by": "origins"
+    },
+    {
+      "case": "partial-prediction-disagreement",
+      "rejected_by": "partial:matches_final:pred"
+    }
+  ],
+  "semantic_fault_hashes_refreshed": true,
+  "originals_modified": false,
+  "model_runs": 0,
+  "scope": "Representative fixture faults; not exhaustive verifier correctness proof"
+}

@@ -1,0 +1,109 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-09T00:16:00.528412+00:00",
+  "checks": 32,
+  "check_names": [
+    "SRC-0023485:identity",
+    "SRC-0032487:identity",
+    "SRC-0032490:identity",
+    "H5_shape",
+    "1344_distinct_hourly_dates",
+    "existing_date_extract_matches",
+    "scale_shape_positive",
+    "saved_scale_identity",
+    "times_identity",
+    "X_column0",
+    "X_column1",
+    "X_column2",
+    "X_column3",
+    "X_column4",
+    "X_column5",
+    "X_column6",
+    "X_column7",
+    "X_column8",
+    "X_column9",
+    "X_column10",
+    "X_column11",
+    "X_column12",
+    "X_column13",
+    "X_column14",
+    "X_column15",
+    "Y_from_H5",
+    "queryY_from_H5",
+    "naive_lag1",
+    "naive_lag24",
+    "naive_lag168",
+    "added_quartiles",
+    "added_4_per_quartile"
+  ],
+  "source_id": "SRC-0023485",
+  "source_sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+  "source_size_bytes": 357150320,
+  "source_path": "tmp/redesign_20260925/assets/data_git_version.h5",
+  "read_scope": [
+    "HDF5:data.shape",
+    "HDF5:idx[:1344]",
+    "HDF5:data[:672,:,2]",
+    "HDF5:data[:1344,32 saved cell indices,2]"
+  ],
+  "raw_shape": [
+    1344,
+    32
+  ],
+  "data_scale": "processed hourly internet activity; not original byte or bit-rate data",
+  "X_max_abs_difference_by_column": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.0,
+    "5": 0.0,
+    "6": 0.0,
+    "7": 0.0,
+    "8": 0.0,
+    "9": 0.0,
+    "10": 0.0,
+    "11": 0.0,
+    "12": 1.1102230246251565e-16,
+    "13": 0.0,
+    "14": 0.0,
+    "15": 0.0
+  },
+  "all_saved_labels_naive_scales_match": true,
+  "population_size": 10000,
+  "quartile_size": 2500,
+  "added_cell_quartile_membership_verified": true,
+  "random_permutation_reproduced": false,
+  "query_periods": [
+    {
+      "origin": 672,
+      "first": "2013-11-29 00:00:00",
+      "last": "2013-12-05 23:00:00",
+      "hours": 168
+    },
+    {
+      "origin": 840,
+      "first": "2013-12-06 00:00:00",
+      "last": "2013-12-12 23:00:00",
+      "hours": 168
+    },
+    {
+      "origin": 1008,
+      "first": "2013-12-13 00:00:00",
+      "last": "2013-12-19 23:00:00",
+      "hours": 168
+    },
+    {
+      "origin": 1176,
+      "first": "2013-12-20 00:00:00",
+      "last": "2013-12-26 23:00:00",
+      "hours": 168
+    }
+  ],
+  "timestamps_match_prior_archive_extract": true,
+  "h5py_version": "3.16.0",
+  "numpy_version": "2.5.3",
+  "model_executions": 0,
+  "random_draws": 0,
+  "scope_limit": "Selected H5 fields and fixed archived outputs only; no upstream CDR processing audit, model reproduction, or new scientific experiment."
+}

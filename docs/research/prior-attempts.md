@@ -38,4 +38,11 @@
 | BanditPAM++, virtual arms, permutation cache, Active Clustering, tight clustering | [계산 비용 선행](references/category-cost-time-methods.md), 지정 방법·정리 조건 | 고정 거리 재사용과 gap 조건, TC/오염/균형/최소 크기 필요. 같은 PAM 해는 전역 최적 보장 아님 | TFM context 준비·query 비용과 재사용 값의 동일성 확인. 식/알고리즘·보고비율 공백을 그대로 구현하지 않음 |
 | CURE, entropy admission, short FIFO, long bank, NOMADD, prediction-field drift | [15 시간 context](records/0015-category-cost-time-literature.md), 분류 stream/고정 query의 class log-probability | 정보량 하한의 가정·centroid fallback·earlier-only forward validation 유지. α0 후보는 미래 무손해 보장 아님 | 시간 유효성·label 시점·단순 시간 특징 대비 결정 차이를 명시. traffic 회귀/RCTL 이득으로 간주하지 않음 |
 
+16–17의 시간 유효성 진단은 다음 조건으로 찾을 수 있다.
+
+| 찾으려는 문제·별칭 | 확인한 기록과 조건 | 결과·주의할 해석 | 재사용·새 실험의 차이 |
+|---|---|---|---|
+| old/recent/expanding, 오래된 context, 시간 유효성 | [16–17](records/0016-0017-temporal-validity.md), 32cell·4주·Ridge/HGB·고정 첫672시간 정규화·관측 lag 입력 | expanding의 전체 평균 우위에도 날짜별 손해. recent는 첫 주에 old보다 악화. 참 drift·RCTL·다중 시점 예측의 증거 아님 | 9개 저장 배열과 cell/day/week 차이 재사용. 자료 수·정보 시점·고정 origin 예측 여부를 명시 |
+| 첫 주 정책 선택, 시간 구간 선택, 단순 adaptive 대조 | [고정 선택](records/0016-0017-temporal-validity.md), 첫 주 recent/expanding 선택 후 나머지3주에 고정 | always expanding 대비 후속 평균 MAE가 Ridge +0.002308935, HGB +0.002265186 악화. 모든 미래 선택 실패의 증명 아님 | 이후 정답으로 선택을 수정하지 않음. 독립 기간·선택 규칙·최종 learner가 달라지는지 확인. 17의 세 문헌은 별도 검수 예정 |
+
 새 실험은 관련 과거 기록, 같게 유지할 조건, 달라지는 질문·조건, 재사용할 파일을 먼저 적는다. 기존 부정 결과를 회피하기 위한 조건 변경과 새로운 가설 검증을 구분한다. [첫 묶음 검수](verification/pilot-001.md), [RCTL 검수](verification/pilot-002.md), [문헌 검수](verification/pilot-003.md), [캐시 대조 검수](verification/pilot-004.md), [전체 조사 현황](verification/inventory-2026-10-08.md).
