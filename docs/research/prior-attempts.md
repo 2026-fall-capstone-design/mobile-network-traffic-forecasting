@@ -272,3 +272,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 큰 loss를 중요한 학습 표본으로 바꾸기 전에 — MAE 표본추출 반례 — 56–58
 
 검색어: importance sampling, loss-proportional, gradient variance, unbiased, inverse probability, coreset, sample compression, 큰 오차, strata, 학습량. [56–58 기록](records/0056-0058-mae-sampling.md)은 손실분산18→0이어도 기울기분산3.025배인 정확 반례와 당시 기각 범위를 연결합니다. [보존 결과·원장과 산술 검산](evidence/0056-0058-mae-sampling/README.md)을 먼저 재사용합니다. 표본 추출용 층화와 최종 cell cluster, 모델 수와 처리 행·계산 step·fit 시간을 분리하고, 새 제안은 학습기·모드·확률·가중·정보·전체 비용에서 달라지는 조건을 명시해야 합니다. 다른 네 압축/표본추출 문헌은 아직 현재 원문 대조가 남아 있습니다.
+
+## 합성 자료의 epoch 절감을 전체 학습비 절감으로 제안하기 전에 — 56·58 TimeDC
+
+검색어: TimeDC, dataset condensation, synthetic time series, trajectory matching, expert buffer, DDFM, CT2M, cross-architecture, coreset, 압축 비용. [TimeDC 기록](records/0056-0058-timedc.md)에서 합성자료 허용 여부, 원 X/y pairing, 원자료expert 비용, 예측기별 원자료 대조 유무를 확인합니다. 새 제안은 단순 표본선택·cell군집·lookback 축과 달라지는 행동, 시간분할·실제지표·반복학습횟수·최종 RCTL 효용을 밝혀야 합니다. [인쇄표와 정적 코드 검토](evidence/0056-0058-timedc/README.md)를 재사용하고 재현 완료로 표시된 baseline인지 먼저 확인합니다.

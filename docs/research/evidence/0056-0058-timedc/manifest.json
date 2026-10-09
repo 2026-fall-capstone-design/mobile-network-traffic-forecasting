@@ -1,0 +1,1203 @@
+{
+  "batch_id": "history-046",
+  "record_ids": [
+    "0056",
+    "0058"
+  ],
+  "record_path": "../../records/0056-0058-timedc.md",
+  "created_at_utc": "2026-10-09T19:33:51.116752+00:00",
+  "sources": [
+    {
+      "source_id": "SRC-0021898",
+      "path": "tmp/redesign_20260925/58_training_compression_findings.md",
+      "kind": "physical_file",
+      "size_bytes": 10410,
+      "sha256": "3c1e957f4d9623521aa05dfe14e5bf861c910b66e3a13a9d19609e2c54103197",
+      "exact_alias_source_ids": [
+        "SRC-0000837",
+        "SRC-0021898"
+      ],
+      "record_ids": [
+        "0056",
+        "0057",
+        "0058"
+      ],
+      "archive_path": "../0056-0058-mae-sampling/originals/SRC-0021898.md.txt",
+      "distribution": "reused_exact_copy",
+      "read_scope": {
+        "previous_whole_text_read_reused": true,
+        "current_lines_read": [
+          [
+            1,
+            68
+          ]
+        ],
+        "new_fulltext_credit": false,
+        "scope": "58의 TimeDC 보고·판단과 현재 일차자료 대조"
+      }
+    }
+  ],
+  "primary_sources": [
+    {
+      "source_id": "SRC-0064438",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC_PVLDB_2024.pdf",
+      "size_bytes": 2909872,
+      "sha256": "f9c39ceabff680581bec7db5ff26b7b86a50ae337ada12b684b483fb0b177678",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000863",
+        "SRC-0064438"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://www.vldb.org/pvldb/vol18/p226-miao.pdf",
+      "read_scope": {
+        "text_pages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "visual_pages": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "figures": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "tables": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "equations": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "algorithms": [
+          1,
+          2
+        ],
+        "whole_main_PDF_content_read": true,
+        "second_visual_table_pass_pages": [
+          8,
+          10,
+          11
+        ],
+        "independent_reproduction": false
+      }
+    },
+    {
+      "source_id": "SRC-0064439",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC_PVLDB_2024.txt",
+      "size_bytes": 79593,
+      "sha256": "76d5a8307c580425127dd8c2af0146451d6fa3767d925f440b6856a2bbe27da3",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000864",
+        "SRC-0064439"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://www.vldb.org/pvldb/vol18/p226-miao.pdf",
+      "read_scope": {
+        "whole_derived_text_read": true,
+        "lines_read": [
+          [
+            1,
+            1575
+          ]
+        ],
+        "page_headers_removed_and_whitespace_equal": true,
+        "byte_identity_to_current_extraction": false,
+        "derivative_not_independent_content": true
+      }
+    },
+    {
+      "source_id": "SRC-0064440",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC__buffer_cls.py",
+      "size_bytes": 10626,
+      "sha256": "342e99bc755807efc8c9cc444e8b5f756b25f0bb379dd15d13745b082eb0c053",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000865",
+        "SRC-0064440"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/buffer_cls.py",
+      "git_blob": "9e1894cb91223210303fdaa20923a1741f485618",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            181
+          ]
+        ],
+        "source_executed": false,
+        "source_imported": false,
+        "scope": "고정 코드 전체 정적 독해"
+      }
+    },
+    {
+      "source_id": "SRC-0064441",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC__buffer_ts.py",
+      "size_bytes": 10238,
+      "sha256": "d8af755c00ee217e004c043c808078740a144e095ba6cc9be78b209c6afb1631",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000866",
+        "SRC-0064441"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/buffer_ts.py",
+      "git_blob": "4266d0c7b72367c8612aed8319b145881512a24d",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            171
+          ]
+        ],
+        "source_executed": false,
+        "source_imported": false,
+        "scope": "고정 코드 전체 정적 독해"
+      }
+    },
+    {
+      "source_id": "SRC-0064442",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC__distill_cls.py",
+      "size_bytes": 19215,
+      "sha256": "6abe5fd7c439f33219732e2a5b888b09d7bb1182d4456ee5f5cb24ce72bfa131",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000867",
+        "SRC-0064442"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/distill_cls.py",
+      "git_blob": "c273a4378a06cb38f1b9e16e697f568a5b0f345f",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            389
+          ]
+        ],
+        "source_executed": false,
+        "source_imported": false,
+        "scope": "고정 코드 전체 정적 독해"
+      }
+    },
+    {
+      "source_id": "SRC-0064443",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC__distill_ts.py",
+      "size_bytes": 18680,
+      "sha256": "f13f4365e3c0502b4a6f2c3fbfd9ba6d703ae078d677bb59025b0276c86c3772",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000868",
+        "SRC-0064443"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/distill_ts.py",
+      "git_blob": "317cd0270e7e9b57d7e3f4a16211c9b65f66cc42",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            373
+          ]
+        ],
+        "source_executed": false,
+        "source_imported": false,
+        "scope": "고정 코드 전체 정적 독해"
+      }
+    },
+    {
+      "source_id": "SRC-0064444",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC__layers__stdistillation_backbone.py",
+      "size_bytes": 17864,
+      "sha256": "a5a7da91de79b004786f333afe7ebfba76d2f8f03c712ef82947f502f7e602c5",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000869",
+        "SRC-0064444"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/layers/stdistillation_backbone.py",
+      "git_blob": "a2e2f30ea500e93d9a7d469521879c7b9210b63c",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            376
+          ]
+        ],
+        "source_executed": false,
+        "source_imported": false,
+        "scope": "고정 코드 전체 정적 독해"
+      }
+    },
+    {
+      "source_id": "SRC-0064445",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC__layers__stdistillation_layers.py",
+      "size_bytes": 4723,
+      "sha256": "848e46f73edc82691419e2268e78fbd88952c234c6ed9462794397aaf5732db2",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000870",
+        "SRC-0064445"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/layers/stdistillation_layers.py",
+      "git_blob": "41f169f2675021035f2b1ec05feb57fb86f5c4de",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            121
+          ]
+        ],
+        "source_executed": false,
+        "source_imported": false,
+        "scope": "고정 코드 전체 정적 독해"
+      }
+    },
+    {
+      "source_id": "SRC-0064446",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC__process__tools.py",
+      "size_bytes": 5133,
+      "sha256": "a433f925c8d2da5a22d9a8799bb69ee48c563744175ed8ab217c1bda9c96889e",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000871",
+        "SRC-0064446"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/process/tools.py",
+      "git_blob": "88b223d3c426494b9b60f69706b710763f09521c",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            150
+          ]
+        ],
+        "source_executed": false,
+        "source_imported": false,
+        "scope": "고정 코드 전체 정적 독해"
+      }
+    },
+    {
+      "source_id": "SRC-0064447",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC__readme.md",
+      "size_bytes": 3679,
+      "sha256": "b2a71b0d3f955308081239e02a80568c6a74efb478ac57d79bd06fc910cd533b",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000872",
+        "SRC-0064447"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/readme.md",
+      "git_blob": "6b04412a40d50624a4104e9d02aa574f62b201da",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            68
+          ]
+        ],
+        "source_executed": false,
+        "source_imported": false,
+        "scope": "고정 코드/README 정적 독해;숨긴 HTML 주석도 텍스트로 읽음"
+      }
+    },
+    {
+      "source_id": "SRC-0064448",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC_arxiv_history.html",
+      "size_bytes": 42605,
+      "sha256": "d91a76cb79b5064a798d346039810a8654de87eaefa66802bac88c3e1aa7c19d",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000873",
+        "SRC-0064448"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://arxiv.org/abs/2410.20905v1",
+      "read_scope": {
+        "visible_text_read": true,
+        "script_executed": false,
+        "extended_PDF_read": false,
+        "scope": "저장 HTML의 보이는 설명·저자·버전 이력;확장 PDF/스크립트 실행 제외"
+      }
+    },
+    {
+      "source_id": "SRC-0064449",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC_commit.json",
+      "size_bytes": 5986,
+      "sha256": "9bc7eef979b672c2896f80924319fa3c39cae917d4aabfad9c92baf8af6eb38f",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000874",
+        "SRC-0064449"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://api.github.com/repos/uestc-liuzq/STdistillation/commits/60169680447a12ad77b050831ee71da8be7f48f7",
+      "read_scope": {
+        "whole_JSON_keys_and_entries_read": true,
+        "signature_independently_verified": false,
+        "scope": "commit/parent/tree/일시/README patch와 전체 JSON 필드 열람;PGP 서명을 독립 인증한 것은 아님"
+      }
+    },
+    {
+      "source_id": "SRC-0064450",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC_repo.json",
+      "size_bytes": 5401,
+      "sha256": "f546fdc13d8aa292304336cc2eb38bf8b0557813b01b201b6c5c05f8da69a76f",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000875",
+        "SRC-0064450"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://api.github.com/repos/uestc-liuzq/STdistillation",
+      "read_scope": {
+        "whole_JSON_keys_and_entries_read": true,
+        "scope": "저장 시점 repo JSON 전체 필드;license null/공개 여부·기본 branch. 현재 통계의 재확인 아님"
+      }
+    },
+    {
+      "source_id": "SRC-0064451",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/TimeDC_tree.json",
+      "size_bytes": 27526,
+      "sha256": "ff65db01d95905743065176013339b8c1f5d5df2e0216a3517fd25d104838131",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000876",
+        "SRC-0064451"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://api.github.com/repos/uestc-liuzq/STdistillation/git/trees/60169680447a12ad77b050831ee71da8be7f48f7?recursive=1",
+      "read_scope": {
+        "all_114_entry_path_mode_type_size_sha_read": true,
+        "whole_JSON_new_read": false,
+        "whole_linked_repository_read": false,
+        "scope": "114 항목의 path/mode/type/size/SHA와 root/truncated 읽음. 각 URL 필드/연결된 모든 파일 본문은 읽지 않음;현재 root tree와 항목 자동 동일성 대조"
+      }
+    },
+    {
+      "source_id": "SRC-0064464",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/previews/TimeDC_PVLDB_2024_p10.png",
+      "size_bytes": 284968,
+      "sha256": "d4dfa85e2f4df2ba6b1a4c6b45eee1c963512d57ca234fd95eb1558ae08dd9ed",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000889",
+        "SRC-0064464"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://www.vldb.org/pvldb/vol18/p226-miao.pdf#page=10",
+      "read_scope": {
+        "whole_image_visually_read": true,
+        "PDF_page": 10,
+        "derivative_not_independent_content": true
+      }
+    },
+    {
+      "source_id": "SRC-0064465",
+      "path": "tmp/redesign_20260925/sources/training_compression_56/previews/TimeDC_PVLDB_2024_p6.png",
+      "size_bytes": 392702,
+      "sha256": "6bf3e82d7b641f1342fb66f9b326b4431cb2dd57d9d07fb3db106ba34d89f8d4",
+      "kind": "physical_file",
+      "exact_alias_source_ids": [
+        "SRC-0000890",
+        "SRC-0064465"
+      ],
+      "record_ids": [
+        "0056",
+        "0058"
+      ],
+      "distribution": "metadata_only_external_reference",
+      "official_url": "https://www.vldb.org/pvldb/vol18/p226-miao.pdf#page=6",
+      "read_scope": {
+        "whole_image_visually_read": true,
+        "PDF_page": 6,
+        "derivative_not_independent_content": true
+      }
+    }
+  ],
+  "hash_only_sources": [],
+  "supplemental_references": [
+    {
+      "reference_id": "EXT-H046-01",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/network_patch.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/network_patch.py",
+      "path_in_author_repository": "network_patch.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "25abba9c0e6b8816f0fa9a805d204a5dbfa11740",
+      "size_bytes": 5607,
+      "sha256": "db149e21f64b309ce5a906a03107ccc124fe10385be98b84f369d4203841a889",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            97
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-02",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/process/exp.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/process/exp.py",
+      "path_in_author_repository": "process/exp.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "bafb8bc4aa7f63b5d151206c70e6e0598de7ca9f",
+      "size_bytes": 11745,
+      "sha256": "d2d1819ca5dfc7d20dafaf903fd5feeb735815e3ef066514e3f0b9f42bfc3dda",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            296
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-03",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/process/data_factory.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/process/data_factory.py",
+      "path_in_author_repository": "process/data_factory.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "db048cd12d7e469f87f0e2300880d2e21c1164bc",
+      "size_bytes": 1505,
+      "sha256": "a7c3285f9e623ee19474a36a05299522fbd861d27418c7fd376f32e0367b2b74",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            57
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-04",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/process/data_loader.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/process/data_loader.py",
+      "path_in_author_repository": "process/data_loader.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "90179e2da66b4daf8e24d4fb1bcaad4791f299ea",
+      "size_bytes": 14717,
+      "sha256": "6213b36447a388fa77ab6e5c88fe1ce52267239e414da290f7df99d2473157e8",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            398
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-05",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/process/metrics.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/process/metrics.py",
+      "path_in_author_repository": "process/metrics.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "bb6544b629e2ec3dab9efc81e377b18e2fe873da",
+      "size_bytes": 951,
+      "sha256": "9d61cbf6239d2749f7640eff9fa80e66a17dbbea1881b919c4375b126195294d",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            44
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-06",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/reparam_module.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/reparam_module.py",
+      "path_in_author_repository": "reparam_module.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "ddd3bd9a9f4e7e0fcca293124298d24159423310",
+      "size_bytes": 6718,
+      "sha256": "f48c30c4d37f60e091c820f46cd9d37dcbda4220a7e9ed9f0f7cb1a050ee5406",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            159
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-07",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/process/data_loader_cls.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/process/data_loader_cls.py",
+      "path_in_author_repository": "process/data_loader_cls.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "c7917d6c00ddaaa7c6c00d429954e29e0f819595",
+      "size_bytes": 4433,
+      "sha256": "f3e1c52fd425d7018bb2da4335418faf8982d269caa9bff746a8cdc570590c7d",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            124
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-08",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/process/exp_cls.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/process/exp_cls.py",
+      "path_in_author_repository": "process/exp_cls.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "3ec102f0c9c9d4049eedd9426a835de0e02bc66c",
+      "size_bytes": 6902,
+      "sha256": "2bf8159141d4ee3989dfba229c2bfc73acac6fa9eef8e2a03d2e34ba8fe5cbe2",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            189
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-09",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/process/timefeatures.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/process/timefeatures.py",
+      "path_in_author_repository": "process/timefeatures.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "f5678f0e78c8e09728cca90061ddccd0679cba4c",
+      "size_bytes": 3743,
+      "sha256": "2ad031a425f6f02b88db1918333a30937e41b18f435df90e6bcbb6470427221b",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            134
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-10",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/electricity.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/electricity.sh",
+      "path_in_author_repository": "scripts_buffer/electricity.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "fb15a28baac2d89ea632584909d1bb1fa943bb27",
+      "size_bytes": 1094,
+      "sha256": "991f34943a2407ec842b1ba538cd3a08b91ee6823879f579bd2484be929d5e4a",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            46
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-11",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/etth1.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/etth1.sh",
+      "path_in_author_repository": "scripts_buffer/etth1.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "92ac4875cca5f8bf3c6883cef30b42932248ee2b",
+      "size_bytes": 1009,
+      "sha256": "4e63a23f29ece62587517667d4926baf25d3fcb621276dd9d27f5ef0690d3144",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            43
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-12",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/etth2.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/etth2.sh",
+      "path_in_author_repository": "scripts_buffer/etth2.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "c87fb090edf28ffcc5b9ee0dc24d0cabbf284600",
+      "size_bytes": 1009,
+      "sha256": "f35f29ad8ce0d57bb0405ffb28ee82055ffdd906c21b6737a392943ddc12e693",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            43
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-13",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/ettm1.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/ettm1.sh",
+      "path_in_author_repository": "scripts_buffer/ettm1.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "5174c59f2d803b3ba4fb7e23366f9c367d83e143",
+      "size_bytes": 1076,
+      "sha256": "d7f56e7d80cc9fe9e29b73baa970da5e47ab00a485ee80d2d8f501563d1ec8b7",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            46
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-14",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/ettm2.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/ettm2.sh",
+      "path_in_author_repository": "scripts_buffer/ettm2.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "18c6091118013380d3072e0235f7b9731bd9c40d",
+      "size_bytes": 1077,
+      "sha256": "50b0e9a66465ae3032f97f72c44b8bc73e9174434b5b93f58f54cd6670870e02",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            46
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-15",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/illness.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/illness.sh",
+      "path_in_author_repository": "scripts_buffer/illness.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "e19d90c2be38f4bc193f71e137093f94a86e53ee",
+      "size_bytes": 1055,
+      "sha256": "6908764e05b6295ae55ec8dcd1e4c8738b8eae58efbfb8a67b8cbfcc3606f1aa",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            44
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-16",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/traffic.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/traffic.sh",
+      "path_in_author_repository": "scripts_buffer/traffic.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "d17f2f8948a4cbe0f34e4fdbcc1ef75575541f0f",
+      "size_bytes": 1082,
+      "sha256": "aa6879de77f0a327bacc11f348de45e1b04756b3bebb73298d3c46b6e5062402",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            46
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-17",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/weather.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_buffer/weather.sh",
+      "path_in_author_repository": "scripts_buffer/weather.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "298b44e6e6d56db353366afa37416cc48d1bb659",
+      "size_bytes": 1038,
+      "sha256": "462978dfc8b99fa4dcd9c7b5687e146598427e00293fddea81fbd8f3fb82c9b0",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            44
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-18",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/electricity.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/electricity.sh",
+      "path_in_author_repository": "scripts_distill/electricity.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "4dd643e45b679d6907797668066c4ff2475cb7d9",
+      "size_bytes": 1021,
+      "sha256": "013f11c01d0dacc4e0dc11b272c57d0d38d63f91a64387bfbaba19c4af1abe77",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            39
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-19",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/etth1.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/etth1.sh",
+      "path_in_author_repository": "scripts_distill/etth1.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "9a2018f03b18d114b1e6cb0256de65a9bc8d8d8c",
+      "size_bytes": 936,
+      "sha256": "d756351a9c60612fd4b9e5d6a2fd55686ba610ffb8017a13475a8865c2d988a2",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            36
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-20",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/etth2.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/etth2.sh",
+      "path_in_author_repository": "scripts_distill/etth2.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "e38db0fcc346a636920d8c4898048f480bf4199b",
+      "size_bytes": 936,
+      "sha256": "eb3072a0d3a0823c57093445cc6f96b51c15a15074185d20b9a94056a89b3cbf",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            36
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-21",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/ettm1.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/ettm1.sh",
+      "path_in_author_repository": "scripts_distill/ettm1.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "869477e34dc305bb32cba14b5c49342d1584665f",
+      "size_bytes": 1003,
+      "sha256": "9ee6b47af951c885115a49ae4991ae40388b6b66ca375c71d1814491957d6422",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            39
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-22",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/ettm2.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/ettm2.sh",
+      "path_in_author_repository": "scripts_distill/ettm2.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "98542b8992373570b1bd10adfde95e860e787fab",
+      "size_bytes": 1004,
+      "sha256": "ff61065403522c72f08f0097159b9a732bbbdc9ae0c47f4ccb07ef7784fd1c36",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            39
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-23",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/illness.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/illness.sh",
+      "path_in_author_repository": "scripts_distill/illness.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "d6d6d2821e0cdedc05319476f19032993f41db9f",
+      "size_bytes": 982,
+      "sha256": "669feadf2afed6f40f59648f15933edefd59dc9df34c7ff4ea88c7e6998ca3ee",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            37
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-24",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/traffic.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/traffic.sh",
+      "path_in_author_repository": "scripts_distill/traffic.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "a10f24f860ffb5d07e8c31f2f19ed0c5a49ea4ae",
+      "size_bytes": 1009,
+      "sha256": "c658b8355f01ba0f0c5489f6c3d73d00924674e72518654d18696834c284e466",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            39
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-25",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/weather.sh",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/scripts_distill/weather.sh",
+      "path_in_author_repository": "scripts_distill/weather.sh",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "c8b5a9e4ded3358482781f6449824b4e286c617c",
+      "size_bytes": 965,
+      "sha256": "20361c82aac1a9b622c50c51f73e67645d3ecc30ce154e9d669ab3c637e4378d",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            37
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-26",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/layers/RevIN.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/layers/RevIN.py",
+      "path_in_author_repository": "layers/RevIN.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "f7fed8176617fd21063b30798e1d2931473c4b33",
+      "size_bytes": 2083,
+      "sha256": "e64c0ccded9228b347134e7368420d3fb10f70c75145b5ff2d8bdd8c3af59df6",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": true,
+        "lines_read": [
+          [
+            1,
+            63
+          ]
+        ],
+        "scope": "전체 정적 독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-27",
+      "official_url": "https://github.com/uestc-liuzq/STdistillation/blob/60169680447a12ad77b050831ee71da8be7f48f7/utils.py",
+      "raw_url": "https://raw.githubusercontent.com/uestc-liuzq/STdistillation/60169680447a12ad77b050831ee71da8be7f48f7/utils.py",
+      "path_in_author_repository": "utils.py",
+      "commit": "60169680447a12ad77b050831ee71da8be7f48f7",
+      "git_blob": "3822a56d9462b755937909a3fb7434fd165d76ba",
+      "size_bytes": 23568,
+      "sha256": "dd59ceb92f235f1a0d71c9522c3237028bcdce370996e610363336b8c81dbc5d",
+      "distribution": "metadata_only",
+      "read_scope": {
+        "whole_text_read": false,
+        "lines_read": [
+          [
+            1,
+            17
+          ],
+          [
+            223,
+            227
+          ],
+          [
+            605,
+            608
+          ]
+        ],
+        "scope": "imports/get_time/add_noise26줄 선택;다른 함수 미독해",
+        "source_executed": false
+      }
+    },
+    {
+      "reference_id": "EXT-H046-28",
+      "official_url": "https://www.vldb.org/pvldb/vol18/p226-miao.pdf",
+      "size_bytes": 2909872,
+      "sha256": "f9c39ceabff680581bec7db5ff26b7b86a50ae337ada12b684b483fb0b177678",
+      "distribution": "metadata_only",
+      "read_scope": "현재 공식 PDF와 저장본 바이트 동일"
+    },
+    {
+      "reference_id": "EXT-H046-29",
+      "official_url": "https://api.github.com/repos/uestc-liuzq/STdistillation/commits/60169680447a12ad77b050831ee71da8be7f48f7",
+      "size_bytes": 5986,
+      "sha256": "9bc7eef979b672c2896f80924319fa3c39cae917d4aabfad9c92baf8af6eb38f",
+      "distribution": "metadata_only",
+      "read_scope": "고정 commit/root tree 계보 필드·114항목 동일성 대조;연결 파일 전체 독해 아님"
+    },
+    {
+      "reference_id": "EXT-H046-30",
+      "official_url": "https://api.github.com/repos/uestc-liuzq/STdistillation/git/trees/6043d4d6db3cf88c307e5b1d32c3296550af2397?recursive=1",
+      "size_bytes": 27526,
+      "sha256": "aee3d3209da14d83552d25d670cfe41eeb3fd83d2a852e8cc9862c6778f7c16c",
+      "distribution": "metadata_only",
+      "read_scope": "고정 commit/root tree 계보 필드·114항목 동일성 대조;연결 파일 전체 독해 아님"
+    }
+  ],
+  "new_preserved_files": 0,
+  "new_preserved_bytes": 0,
+  "reused_references": 1,
+  "original_TimeDC_groups": 16,
+  "original_TimeDC_paths": 32,
+  "new_fulltext_source_ids": [
+    "SRC-0064440",
+    "SRC-0064441",
+    "SRC-0064442",
+    "SRC-0064443",
+    "SRC-0064444",
+    "SRC-0064445",
+    "SRC-0064446",
+    "SRC-0064447"
+  ],
+  "new_whole_JSON_source_ids": [
+    "SRC-0064449",
+    "SRC-0064450"
+  ],
+  "tree_metadata_scope": "114 entry path/mode/type/size/SHA selected fields;not whole linked repository",
+  "independent_reproduction": false,
+  "whole_associated_packet_reviewed": false,
+  "remaining": "확장arxiv/부록/저장소추가그림·원run은 현재 범위 밖 미독해.56/58의TabPFNIML/SCott/SGD-as및전체역사정리 미완료.",
+  "original_scripts_executed": false,
+  "new_model_runs": 0
+}

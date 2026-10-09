@@ -1,0 +1,204 @@
+{
+  "batch_id": "history-046",
+  "claims": [
+    {
+      "claim_id": "H046-C01",
+      "claim": "58의 판단과 현재 검토의 실행 범위",
+      "source_location": "SRC-0021898 §1–2/4–5;SRC-0064438 §3–4",
+      "verification_method": "당시 실제 X/y 보존 목표와 합성 자료 방법 대조",
+      "limit": "TimeDC 실패/전이 불가능 판정이 아니며 새 모델 실행 없음"
+    },
+    {
+      "claim_id": "H046-C02",
+      "claim": "출판 정보·13쪽 주논문·공식 바이트 동일성",
+      "source_location": "SRC-0064438 1–13쪽;EXT-H046-28",
+      "verification_method": "PDF SHA256/크기·전체 텍스트와11쪽 시각·표1–7 대조",
+      "limit": "독립 증명 인증·raw run 재현 아님"
+    },
+    {
+      "claim_id": "H046-C03",
+      "claim": "arxiv v1/2024출판/2025표기와 숨긴 README 주석",
+      "source_location": "SRC-0064448 visible text;SRC-0064447 전체68줄;SRC-0064449 README patch",
+      "verification_method": "저장 버전 이력·인용 정보와 주석 텍스트 구분",
+      "limit": "확장PDF/별도부록/README미디어 미독해"
+    },
+    {
+      "claim_id": "H046-C04",
+      "claim": "고정 commit의8텍스트와 직접 의존27텍스트",
+      "source_location": "SRC-0064440;SRC-0064441;SRC-0064442;SRC-0064443;SRC-0064444;SRC-0064445;SRC-0064446;SRC-0064447;SRC-0064449;SRC-0064450;SRC-0064451;EXT-H046-01;EXT-H046-27;EXT-H046-29;EXT-H046-30",
+      "verification_method": "원본32경로/SHA·8Gitblob·114tree 항목·27추가텍스트 Gitblob 검수",
+      "limit": "26보충본문 전체+utils26줄 선택;전체저장소·환경 검토 아님"
+    },
+    {
+      "claim_id": "H046-C05",
+      "claim": "합성 시계열 N축 압축과 전체자료 expert 준비",
+      "source_location": "SRC-0064438 §3.1/3.4/3.5;SRC-0064441 1–80줄;SRC-0021898 §1",
+      "verification_method": "논문 알고리즘/정의와 buffer 생성 코드 대조",
+      "limit": "원표본 선택·cell군집·lookback 감소와 구별"
+    },
+    {
+      "claim_id": "H046-C06",
+      "claim": "TSFE/DDFM/CT2M의 의미와 upper-bound 표현",
+      "source_location": "SRC-0064438 §3 식1–13/Fig2–4;SRC-0064444;SRC-0064445",
+      "verification_method": "수식·시각 구조와이동평균/patch 코드 독해",
+      "limit": "Fourier로 바꾸지 않음;성능 보장 정리로 확대 안함"
+    },
+    {
+      "claim_id": "H046-C07",
+      "claim": "cosine 거리/정렬 방향과 공개 curriculum 대응 공백",
+      "source_location": "SRC-0064438 식14–16/Algorithm2;SRC-0064443 80–240줄",
+      "verification_method": "음의cosine·정렬서술/무작위buffer순회 대조",
+      "limit": "해당 저장본의 관찰;모든 저자판본 부재 주장 아님"
+    },
+    {
+      "claim_id": "H046-C08",
+      "claim": "예측7데이터/도로Traffic과 분류UCR의 구별",
+      "source_location": "SRC-0064438 §4.1.1/Table1/§4.4",
+      "verification_method": "데이터 설명과표의7이름·Fig9 확인",
+      "limit": "통신RCTL 직접 검증 아님;본문six차이 보존"
+    },
+    {
+      "claim_id": "H046-C09",
+      "claim": "논문 기본 설정·분할·미확인 실행 정보",
+      "source_location": "SRC-0064438 §4.1.2–4.1.4/§4.4",
+      "verification_method": "500/50·96/192/336·분할·층/head/expert와인쇄장치명 대조",
+      "limit": "seed/반복/CSV시점/환경/실행로그 미확인"
+    },
+    {
+      "claim_id": "H046-C10",
+      "claim": "예측 loader의 학습통계·시간경계·테스트꼬리·척도",
+      "source_location": "EXT-H046-03 21–57줄;EXT-H046-04 43–99/131–189/221–290줄;EXT-H046-02 102–137줄;EXT-H046-26 전체63줄",
+      "verification_method": "train scaler fit/경계·drop_last와RevIN/외부역변환 구별",
+      "limit": "실제 CSV 날짜와원단위 성능 재현 아님;Pred별도모드"
+    },
+    {
+      "claim_id": "H046-C11",
+      "claim": "shell 설정·기본 expert 수와 실제 실행의 구별",
+      "source_location": "SRC-0064441 69–171줄;SRC-0064443 253–373줄;EXT-H046-10;EXT-H046-11;EXT-H046-12;EXT-H046-13;EXT-H046-14;EXT-H046-15;EXT-H046-16;EXT-H046-17;EXT-H046-18;EXT-H046-19;EXT-H046-20;EXT-H046-21;EXT-H046-22;EXT-H046-23;EXT-H046-24;EXT-H046-25",
+      "verification_method": "16shell전체·entrypoint 기본값 대조",
+      "limit": "설정 파일은실행로그가 아니며seed인자만으로고정확정 안함"
+    },
+    {
+      "claim_id": "H046-C12",
+      "claim": "Table1 다섯비교군 우위와원자료41손해/1이득",
+      "source_location": "SRC-0064438 Table1 PDF8쪽",
+      "verification_method": "21행×7방법×2지표 전사/시각대조·Decimal 42비교",
+      "limit": "반복실험 수/통계유의성 아님;Electricity96MSE예외 보존"
+    },
+    {
+      "claim_id": "H046-C13",
+      "claim": "최대MAE 본문13.49%와표17.1512% 차이",
+      "source_location": "SRC-0064438 Table1/§4.2.1 PDF8쪽",
+      "verification_method": "Weather192 .344→.285,ETTh2 336MSE .455→.334 분모 검산",
+      "limit": "원실행값을추정/본문을무단정정하지않음"
+    },
+    {
+      "claim_id": "H046-C14",
+      "claim": "Table2 crossarchitecture 범위와6예외조건",
+      "source_location": "SRC-0064438 §4.2.4/Table2 PDF9–10쪽",
+      "verification_method": "4구조×2길이×2지표×7자료·최솟값대조",
+      "limit": "각구조원자료대비보존율표 아님;타구조전이실증 존재"
+    },
+    {
+      "claim_id": "H046-C15",
+      "claim": "500→800 악화와ablation/tSNE/분류그림의 범위",
+      "source_location": "SRC-0064438 Fig5/6/8/9 PDF9/11/12쪽",
+      "verification_method": "그림·caption·본문 시각 독해",
+      "limit": "곡선좌표/반복분산재현 없음;tSNE가고차원분포동일성증명 아님"
+    },
+    {
+      "claim_id": "H046-C16",
+      "claim": "RMSE본문과MSE수식/표 차이",
+      "source_location": "SRC-0064438 §4.1.3/식17/Tables1–2;EXT-H046-05 전체44줄",
+      "verification_method": "제곱근없는식·표기와MSE/RMSE함수 구별",
+      "limit": "인쇄MSE를RMSE로자동변경하지않음"
+    },
+    {
+      "claim_id": "H046-C17",
+      "claim": "Table5 Weather I MAE.656/RMSE.512 일관성",
+      "source_location": "SRC-0064438 Table5 PDF11쪽;EXT-H046-05 15–24줄",
+      "verification_method": "같은관측/가중/척도에서RMSE≥MAE 조건 대조",
+      "limit": "실제집계/오탈자미해결;.512가MSE라고확정하지않음"
+    },
+    {
+      "claim_id": "H046-C18",
+      "claim": "Table4 세 단계의초/epoch 12값",
+      "source_location": "SRC-0064438 Table4 PDF10쪽;SRC-0021898 §1",
+      "verification_method": "12값·열제목·단위 전사/시각대조",
+      "limit": "expert준비포함 총비용 아님"
+    },
+    {
+      "claim_id": "H046-C19",
+      "claim": "87.78%/39.84%의분모와총비용식",
+      "source_location": "SRC-0064438 Table4/§4.2.5 PDF10–11쪽;SRC-0021898 §1",
+      "verification_method": "Weather4.31/35.26·Electricity314.56/522.85 Decimal 산술",
+      "limit": "epoch수·expert준비·재학습횟수 불명;손익분기미계산"
+    },
+    {
+      "claim_id": "H046-C20",
+      "claim": "동적tensor메모리/전처리저장/모델파라미터 구별",
+      "source_location": "SRC-0064438 Tables3/6/7 PDF10–11쪽",
+      "verification_method": "단위전사·ETTh1 12.8/313.1MB×100검산",
+      "limit": "전체buffer/원CSV/수집통신감소와혼합안함;GB단위추정안함"
+    },
+    {
+      "claim_id": "H046-C21",
+      "claim": "streaming 분할·B0/B1/I와비교의혼재요인",
+      "source_location": "SRC-0064438 §4.3/Table5 PDF11쪽",
+      "verification_method": "B:I7:3/각7:1:2·base합성replay와Autoformerfine-tuning 대조",
+      "limit": "구조/replay가함께달라압축단독효과나재현으로보지않음"
+    },
+    {
+      "claim_id": "H046-C22",
+      "claim": "독립X/y선택·optimizer초기tensor·detach",
+      "source_location": "SRC-0064446 121–149줄;SRC-0064443 61–68/198–248줄;EXT-H046-02 287–296줄;SRC-0021898 §2",
+      "verification_method": "연결된원문함수/객체재대입/정적역전파경계 독해",
+      "limit": "실행/gradient측정안함;고친baseline으로표시안함"
+    },
+    {
+      "claim_id": "H046-C23",
+      "claim": "예측초기49까지동일인덱스의0분모조건",
+      "source_location": "SRC-0064443 183–240줄",
+      "verification_method": "it=0..49 정수나눗셈과같은유한parameter거리0 추론",
+      "limit": "경로도달조건부;실제NaN/최초실패관측아님"
+    },
+    {
+      "claim_id": "H046-C24",
+      "claim": "outerparameterloss/innerMSE와주파수목적공백",
+      "source_location": "SRC-0064443 198–248줄;EXT-H046-01 50–97줄;EXT-H046-02 14–59줄",
+      "verification_method": "res/trend미사용·cosine주석/명시loss대조",
+      "limit": "고정검토경로만;출판논문실험무효단정안함"
+    },
+    {
+      "claim_id": "H046-C25",
+      "claim": "분류 ST_Model/head·첫batchreturn·지표모집단",
+      "source_location": "SRC-0064440 8줄;SRC-0064442 9/156줄;EXT-H046-01 전체97줄;EXT-H046-08 13–103줄;EXT-H046-07 95–120줄",
+      "verification_method": "정의/import/forward와return들여쓰기·[0]집계 대조",
+      "limit": "batch_size>1/경로도달조건;저자rawrun미확인"
+    },
+    {
+      "claim_id": "H046-C26",
+      "claim": "예측earlystop/test·모드복귀와분류scaler의재현조건",
+      "source_location": "EXT-H046-02 14–137/190–283줄;EXT-H046-07 21–60줄;EXT-H046-06 전체159줄",
+      "verification_method": "test_loader전달·use_amp train모드조건·split전fit·buffer상태 대조",
+      "limit": "정적코드와논문실제실행구별;evaluate_synset인자수는일치"
+    },
+    {
+      "claim_id": "H046-C27",
+      "claim": "shell --model과--model_id 축약 가능성",
+      "source_location": "SRC-0064441 85–171줄;SRC-0064443 253–373줄;EXT-H046-10;EXT-H046-18",
+      "verification_method": "AST option목록과16shellflag 접두사 대조",
+      "limit": "기본argparse축약을유지할경우;unrecognized단정/실행없음"
+    },
+    {
+      "claim_id": "H046-C28",
+      "claim": "재사용·재검토조건과전체미완료범위",
+      "source_location": "SRC-0021898 §1–5;SRC-0064438 §3–4;SRC-0064451 114entrymetadata",
+      "verification_method": "당시제약/현재증거/외부미독해범위·원자료목록 연결",
+      "limit": "56/58나머지문헌·확장판/원run·전체과거기록 미완료"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_at_utc": "2026-10-09T19:40:46.942472+00:00",
+  "semantic_second_pass_scope": "동일 에이전트가 전체 팀 기록과28개주장을 원문·고정코드·수치에 다시 대조했다. helper줄위치121–149로수정,평가호출인자일치/argparse축약조건을보존했다. 별도Fraction으로42차이·epoch비율·최대MAE·저장비율을검산했다. 독립연구자의재현아님."
+}
