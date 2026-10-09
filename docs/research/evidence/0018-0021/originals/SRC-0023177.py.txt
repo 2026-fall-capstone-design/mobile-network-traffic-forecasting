@@ -1,0 +1,101 @@
+"""Test the value of neighboring history before proposing spatial alignment."""
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:
+    os.environ[key]='4'
+from pathlib import Path
+import numpy as np, json, time, hashlib, h5py, psutil, sys
+from sklearn.linear_model import Ridge
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import HistGradientBoostingRegressor
+sys.stdout.reconfigure(encoding='utf-8')
+base=Path(__file__).resolve().parent
+out=base/'results/spatial_information';out.mkdir(exist_ok=True)
+if (out/'run_started.json').exists():
+    raise SystemExit('Existing marker: inspect before considering a new run.')
+t0=time.perf_counter()
+previous=np.load(base/'results/temporal_validity/predictions.npz')
+ids=previous['cell_ids'].astype(int);times=previous['times']
+keep=times<1008;times=times[keep]
+Xown=previous['X'][:,keep];Y=previous['Y'][:,keep]
+with h5py.File(base/'assets/data_git_version.h5','r') as h:
+    raw=h['data'][:1008,:,2]
+scale=raw[:672].mean(0)
+z=raw/scale
+offsets=[(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)]
+neighbors=[];padding=[];best=[];corrs=[];arrays=[]
+tr=times<672;qr=times>=672
+for j,c in enumerate(ids-1):
+    r,col=divmod(int(c),100)
+    row=[];pad=[]
+    for dr,dc in offsets:
+        rr,cc=r+dr,col+dc
+        valid=0<=rr<100 and 0<=cc<100
+        row.append(rr*100+cc if valid else int(c));pad.append(not valid)
+    row=np.array(row)
+    cc=np.array([np.corrcoef(raw[168:672,c],raw[168:672,b])[0,1] if not p else -np.inf
+                 for b,p in zip(row,pad)])
+    assert np.any(np.isfinite(cc))
+    chosen=int(np.nanargmax(cc))
+    window=np.stack([z[t-8:t,row].T for t in times]) # time, neighbor, lag
+    # Indexing above retains the fixed role of each neighborhood column.
+    assert window.shape==(840,8,8)
+    variants=[Xown[j],np.column_stack([Xown[j],window.mean(1)]),
+              np.column_stack([Xown[j],window[:,chosen]]),
+              np.column_stack([Xown[j],window.reshape(840,64)])]
+    arrays.append(variants);neighbors.append(row.tolist());padding.append(pad);best.append(chosen)
+    corrs.append([None if not np.isfinite(v) else float(v) for v in cc])
+names=['own','neighbor_mean','PCC_neighbor','all_neighbor_directions']
+models=['Ridge','HGB'];seed=20260925
+settings={'plan_sha256':hashlib.sha256((base/'18_spatial_information_plan.md').read_bytes()).hexdigest(),
+          'cell_ids':ids.tolist(),'neighbor_cell_ids':(np.array(neighbors)+1).tolist(),
+          'padded_directions':padding,'chosen_PCC_direction_index':best,'train_PCC':corrs,
+          'direction_offsets':offsets,'variants':names,'features':[16,24,24,80],
+          'train_rows_per_cell':504,'query_rows_per_cell':336,'seed':seed,
+          'development_only':True,'new_TabICL_contexts':0,'new_RCTL_fits':0}
+(out/'run_started.json').write_text(json.dumps(settings,indent=2,allow_nan=False),encoding='utf-8')
+pred=np.full((2,4,32,336),np.nan);fit_seconds=0.0;fits=0;peak_rss=psutil.Process().memory_info().rss
+for m,model_name in enumerate(models):
+    for v,name in enumerate(names):
+        for j in range(32):
+            model=(make_pipeline(StandardScaler(),Ridge(alpha=1)) if model_name=='Ridge'
+                   else HistGradientBoostingRegressor(loss='absolute_error',max_iter=100,max_leaf_nodes=15,
+                          min_samples_leaf=20,l2_regularization=1,early_stopping=False,random_state=seed))
+            xx=arrays[j][v]
+            tick=time.perf_counter();model.fit(xx[tr],Y[j,tr]);pred[m,v,j]=model.predict(xx[qr])
+            fit_seconds+=time.perf_counter()-tick;fits+=1
+            peak_rss=max(peak_rss,psutil.Process().memory_info().rss)
+            if time.perf_counter()-t0>60 or peak_rss>2*1024**3:
+                np.savez_compressed(out/'predictions_partial.npz',pred=pred,y=Y[:,qr])
+                (out/'run_stopped.json').write_text(json.dumps({'fits':fits,'seconds':time.perf_counter()-t0,
+                                                              'reason':'Resource cap'}),encoding='utf-8')
+                raise SystemExit('Stopped at resource cap.')
+        print(json.dumps({'model':model_name,'features':name,'fits':fits,
+                          'MAE':float(np.abs(pred[m,v]-Y[:,qr]).mean())}),flush=True)
+assert fits==256 and np.isfinite(pred).all()
+loss=np.abs(pred-Y[None,None,:,qr]);assert loss.shape==pred.shape
+results={}
+for m,model_name in enumerate(models):
+    bycell=loss[m].mean(-1)
+    results[model_name]={
+        'MAE':dict(zip(names,bycell.mean(1).tolist())),
+        'MAE_original16':dict(zip(names,bycell[:,:16].mean(1).tolist())),
+        'MAE_additional16':dict(zip(names,bycell[:,16:].mean(1).tolist())),
+        'MAE_by_cell':dict(zip(names,bycell.tolist())),
+        'MAE_by_week':{n:loss[m,v].reshape(32,2,168).mean((0,2)).tolist() for v,n in enumerate(names)},
+        'delta_vs_own_by_cell':{n:(bycell[v]-bycell[0]).tolist() for v,n in enumerate(names)},
+        'cells_improved_vs_own':{n:int(np.sum(bycell[v]<bycell[0])) for v,n in enumerate(names)},
+        'all_minus_mean_by_cell':(bycell[3]-bycell[1]).tolist(),
+        'all_minus_PCC_by_cell':(bycell[3]-bycell[2]).tolist()}
+elapsed=time.perf_counter()-t0
+summary={'settings':settings,'models':results,'elapsed_seconds':elapsed,
+         'fit_predict_seconds':fit_seconds,'small_regression_fits':fits,'peak_RSS_bytes':peak_rss,
+         'new_TabICL_contexts':0,'new_RCTL_fits':0,'physical_spatial_causality_established':False,
+         'clustering_improvement_established':False}
+np.savez_compressed(out/'predictions.npz',pred=pred,y=Y[:,qr],cell_ids=ids,
+                    query_times=times[qr],neighbor_cell_ids=np.array(neighbors)+1)
+(out/'summary.json').write_text(json.dumps(summary,indent=2,allow_nan=False),encoding='utf-8')
+(out/'run_finished.json').write_text(json.dumps({'fits_completed':fits,'wall_seconds':elapsed,
+                                               'fit_predict_seconds':fit_seconds},indent=2),encoding='utf-8')
+print(json.dumps({'models':{m:{k:v for k,v in e.items() if k in ['MAE','MAE_original16','MAE_additional16','cells_improved_vs_own']}
+                           for m,e in results.items()},'elapsed_seconds':elapsed,'fits':fits},indent=2))

@@ -103,6 +103,6 @@ HGB에서 recent를 골랐던8cell은 이후 세 주 평균에서 모두 expandi
 
 코드상 elapsed는 H5 읽기·입력 구성 전에 시작하고 최종 NPZ/summary/완료 marker 쓰기 전에 끝난다. RSS는 초기값과 각 fit/predict 뒤의 관측 최댓값이며 연속 감시한 process peak가 아니다. 이번 검수는 비용 필드의 일치와 측정 범위를 확인했으며 시간을 다시 측정하지 않았다. 기록17의 터미널 handle61848/exit0은 당시 보고이고 현재 그 과거 핸들을 독립 확인한 것은 아니다.
 
-기록17은 새 context 폐기 구조를 추천하지 않고 주변 cell 정보의 추가 가치로 질문을 옮겼다. H010 수치 검수 당시 미완료였던 MGSTC·PID cellular forecasting·Joint clustering and QoS prediction의 지정 방법은 후속 [17 문헌 검수](0017-adaptation-literature.md)에 연결했다. 그 검수도 새로운 방법의 신규성이나 성능을 확정한 결과는 아니다. 기록18 이후의 실제 공간 정보 실험 연결도 미완료다. **H010-C11**
+기록17은 새 context 폐기 구조를 추천하지 않고 주변 cell 정보의 추가 가치로 질문을 옮겼다. H010 수치 검수 당시 미완료였던 MGSTC·PID cellular forecasting·Joint clustering and QoS prediction의 지정 방법은 후속 [17 문헌 검수](0017-adaptation-literature.md)에 연결했다. 그 검수도 새로운 방법의 신규성이나 성능을 확정한 결과는 아니다. 후속 [18·21 공간 정보 진단](0018-0021-spatial-information.md)에서는 첫 주 자기 입력 예측의 일치와 두 번째 주부터 다른 학습 조건을 대조했다. **H010-C11**
 
 새 실험 전 저장 예측과 전체 cell/day 반례, 고정 선택 규칙을 먼저 재사용한다. 기간·cell 집합·동일 자료량 비교·실제 제공 입력·후속 learner 중 달라지는 조건을 명시한다. 이번 결과는 cell 소속을 정하지 않았고 RCTL을 평가하지 않았다. [문제별 색인](../prior-attempts.md)에서 같은 질문을 찾을 수 있다.
