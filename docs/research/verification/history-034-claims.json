@@ -1,0 +1,197 @@
+{
+  "batch_id": "history-034",
+  "claims": [
+    {
+      "claim_id": "H034-C01",
+      "claim": "Frontiers는51수집 묶음에 있지만55의 명시적 판단 근거로 소급할 수 없다",
+      "source_location": "SRC-0021746 전체; SRC-0021824 §1–2; SRC-0063292 Frontiers entry",
+      "verification_method": "원문 재독·파일 수집 이력 대조",
+      "limit": "51/55 전체 종합 미완료"
+    },
+    {
+      "claim_id": "H034-C02",
+      "claim": "발표일은2025-10-24이고08-25는수락일이다",
+      "source_location": "SRC-0063263 citation metadata; EXT-H034-01 p1",
+      "verification_method": "저장HTML metadata와PDF 발표/수락 표기 대조",
+      "limit": "동일DOI의현재PDF;과거이미지동일성미확인"
+    },
+    {
+      "claim_id": "H034-C03",
+      "claim": "30BS×3cell×32beam×840시간은지표별2419200값이다",
+      "source_location": "SRC-0063263 §1.1; EXT-H034-01 p2/13",
+      "verification_method": "본문 단위·그림caption·곱셈 대조",
+      "limit": "독립시간표본/2880cell로전환하지않음;원자료재계수아님"
+    },
+    {
+      "claim_id": "H034-C04",
+      "claim": "평균915zero/1965nonzero는약31.8%와부합한다",
+      "source_location": "SRC-0063263 Figure5설명; EXT-H034-01 p3–4",
+      "verification_method": "본문근삿값·시각자료와915/2880산술",
+      "limit": "근삿값이며원자료독립집계아님"
+    },
+    {
+      "claim_id": "H034-C05",
+      "claim": "실제분할은앞4주train/5주차test이며자기예측을재입력한다",
+      "source_location": "SRC-0063263 §4.1.1; EXT-H034-01 p5–6 Fig7–10/p13",
+      "verification_method": "분할그림·recursive본문재독",
+      "limit": "feedback채널/원코드미확인"
+    },
+    {
+      "claim_id": "H034-C06",
+      "claim": "8/24/168은입력이력길이이며다른forecastlead비교가아니다",
+      "source_location": "SRC-0063263 Table1–2/§4.1.1; EXT-H034-01 p6–7/13",
+      "verification_method": "표의sequence length와공통평가주대조",
+      "limit": "가로축의의미를예측horizon으로바꾸지않음"
+    },
+    {
+      "claim_id": "H034-C07",
+      "claim": "정렬·전처리·활성입력채널은가정과불일치가남는다",
+      "source_location": "SRC-0063263 §4.1.1/Algorithm1/§5; EXT-H034-01 p11–13/16",
+      "verification_method": "index alignment가정,no normalization과normalize,4지표와futurefeature확대대조",
+      "limit": "실제physicalunit/normalizer/featurecode미확인"
+    },
+    {
+      "claim_id": "H034-C08",
+      "claim": "Linear/DLinear/XGBoost는GRUhybrid로기술된다",
+      "source_location": "SRC-0063263 Table1/§3.2.1–3; EXT-H034-01 p6/10–11",
+      "verification_method": "구조표와방법본문대조",
+      "limit": "GRU없는단순기준아님;DLinear실제구조미확인"
+    },
+    {
+      "claim_id": "H034-C09",
+      "claim": "ESN의GRU입력여부가본문안에서다르다",
+      "source_location": "SRC-0063263 §3.2/§3.2.4; EXT-H034-01 p10–11/Table1p6",
+      "verification_method": "noGRU설명과GRUsequences설명재대조",
+      "limit": "어느설명이실행구현인지미확인"
+    },
+    {
+      "claim_id": "H034-C10",
+      "claim": "공유GRU의binaryactivityhead와회귀head를곱하고MSE+BCE로학습한다",
+      "source_location": "SRC-0063263 hydrated e1–e10; EXT-H034-01 Figure6p4/식1–10p12",
+      "verification_method": "groupedMathML과그림·수식시각대조",
+      "limit": "gradient구현/성능독립재현아님;cell소속학습아님"
+    },
+    {
+      "claim_id": "H034-C11",
+      "claim": "Algorithm1ensemble은MTL회귀head만사용한다고적는다",
+      "source_location": "SRC-0063263 Algorithm1/식7; EXT-H034-01 p11–12",
+      "verification_method": "regressionheadonly와maskproduct대조",
+      "limit": "두출력동일성단정불가"
+    },
+    {
+      "claim_id": "H034-C12",
+      "claim": "loss1+1과Table4balanced0.5+0.5를구분한다",
+      "source_location": "SRC-0063263 equ1/equ2/Table4; EXT-H034-01 p9/11/14",
+      "verification_method": "비율/전체배율과인쇄MAE0.213대0.213631반올림대조",
+      "limit": "동일fit혹은오기로확정하지않음"
+    },
+    {
+      "claim_id": "H034-C13",
+      "claim": "ensemble가중치는과거train에서만맞췄다는저자보고이며정확한값미확인이다",
+      "source_location": "SRC-0063263 Algorithm1/§3.2.8; EXT-H034-01 p11–12",
+      "verification_method": "합1가중식·test고정설명재독",
+      "limit": "누출부재독립검증/실제최적화절차확인아님"
+    },
+    {
+      "claim_id": "H034-C14",
+      "claim": "Table1설정과단일A100batch1seq8의2.7ms를별도로기록한다",
+      "source_location": "SRC-0063263 Table1/§4.1.2–3; EXT-H034-01 p6/13–14",
+      "verification_method": "6설정행·하드웨어·소프트웨어·측정범위대조",
+      "limit": "168/ensemble총비용·seed·탐색/실패횟수미확인"
+    },
+    {
+      "claim_id": "H034-C15",
+      "claim": "168시간에서MTL이여섯모델의세지표최저다",
+      "source_location": "SRC-0063263 Table2; EXT-H034-01 Table2p7",
+      "verification_method": "54인쇄값전사와길이별비교",
+      "limit": "동일표조건의순위;통계적유의성검증아님"
+    },
+    {
+      "claim_id": "H034-C16",
+      "claim": "모든모델에서긴입력이최선이라는일반화는표의반례와충돌한다",
+      "source_location": "SRC-0063263 Table2/§4.2.3; EXT-H034-01 p7/15",
+      "verification_method": "XGB/LSTM/ESN의길이별MAE/MSE/RMSE비교",
+      "limit": "MTL168의조건부이득까지부정하지않음"
+    },
+    {
+      "claim_id": "H034-C17",
+      "claim": "8에서168의MTLMAE감소24.27%,역방향증가32.05%는56%와다르다",
+      "source_location": "SRC-0063263 초록/Table2/§4.2.3; EXT-H034-01 p1/7/15",
+      "verification_method": "방향별분모를분리한Decimal산술·반올림범위검사",
+      "limit": "원출력없이원문수치임의정정안함"
+    },
+    {
+      "claim_id": "H034-C18",
+      "claim": "초록LSTM0.3223은Table2/p15의0.355919와다르다",
+      "source_location": "SRC-0063263 초록/Table2/§4.2.4; EXT-H034-01 p1/7/15",
+      "verification_method": "인쇄수치직접대조",
+      "limit": "서로다른fit인지오기인지미확인"
+    },
+    {
+      "claim_id": "H034-C19",
+      "claim": "Table5withoutMAE는Linear값,그MSE/RMSE는MTL값과같다",
+      "source_location": "SRC-0063263 Table2/5; EXT-H034-01 p7/9",
+      "verification_method": "값과모델행정확대조",
+      "limit": "기준혼합가능성;원저자행의미미확인"
+    },
+    {
+      "claim_id": "H034-C20",
+      "claim": "ensemble의MTL대비1.45625%와초록정밀도의1.45%를구별한다",
+      "source_location": "SRC-0063263 초록/Table2/5; EXT-H034-01 p1/7/9",
+      "verification_method": "6자리/4자리입력산술과반올림허용구간",
+      "limit": "Table5without기준은3.65%;기준을혼합하지않음"
+    },
+    {
+      "claim_id": "H034-C21",
+      "claim": "짧은창ensemble제외설명과8시간60%주장이충돌한다",
+      "source_location": "SRC-0063263 §4.2.1/5/Table5; EXT-H034-01 p9/14–15",
+      "verification_method": "168만있는표와본문두절재독",
+      "limit": "24/8실제ensemble숫자미확보"
+    },
+    {
+      "claim_id": "H034-C22",
+      "claim": "168ensemble의LSTM/ESN대비는각40.85/20.30%이며항상18–23%열세도지지되지않는다",
+      "source_location": "SRC-0063263 Table2/5/§4.2.4–5; EXT-H034-01 p7/9/15",
+      "verification_method": "같은길이기준산술과ESN24/8대MTL반례",
+      "limit": "저자비교의정확한의도미확인"
+    },
+    {
+      "claim_id": "H034-C23",
+      "claim": "MAE개선은ensemblevariance측정이아니며MAPE처리도미확인이다",
+      "source_location": "SRC-0063263 §4.1.4/§4.2.5/§5; EXT-H034-01 p14–16",
+      "verification_method": "variance문구와불확실성정량화미포함문구대조",
+      "limit": "유의성/분산/zero분모구현추정금지"
+    },
+    {
+      "claim_id": "H034-C24",
+      "claim": "Fig11–13은Sample111의앞100개공간차원이고ensemble에도peak반례가보인다",
+      "source_location": "SRC-0063263 Figure11–13/§4.2.1; EXT-H034-01 p7–8/14",
+      "verification_method": "그림축/본문/실제시각자료대조",
+      "limit": "정성관찰;100미래시점/전체peak오차계산아님"
+    },
+    {
+      "claim_id": "H034-C25",
+      "claim": "Table3의주최측10값일치가같은test주성능비교를보장하지않는다",
+      "source_location": "SRC-0063263 Table3/§4.1.1; SRC-0063304 challenge; EXT-H034-01 p7/13",
+      "verification_method": "H033주최측값과정확비교,week5대week6/11분할대조",
+      "limit": "H033CatBoost와Frontiers의직접순위금지"
+    },
+    {
+      "claim_id": "H034-C26",
+      "claim": "event문헌은과거TLS실패와현재403상태이며본문미독해다",
+      "source_location": "SRC-0021824 §1; SRC-0063272 evententry; 공식저장소/출판사metadata",
+      "verification_method": "원접근실패·현재TLS활성403·서지수준확인구분",
+      "limit": "검색postprint표시를입수/방법검토로세지않음"
+    },
+    {
+      "claim_id": "H034-C27",
+      "claim": "재사용은희소target/공동loss/앙상블과조건의확인이며RCTL/clustering검증이아니다",
+      "source_location": "SRC-0021746 사전질문/판단; SRC-0063263 방법/§5; EXT-H034-01 p10–16",
+      "verification_method": "기존문제정의와논문이실제로바꾸는행동대조",
+      "limit": "새모델실행0;원data/code접근과51/53/55전체종합미완료"
+    }
+  ],
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "whole_associated_packet_reviewed": false
+}

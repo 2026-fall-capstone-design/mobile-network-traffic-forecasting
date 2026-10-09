@@ -1,0 +1,567 @@
+{
+  "batch_id": "history-034",
+  "checked_at_utc": "2026-10-09T13:42:37.300549+00:00",
+  "success": true,
+  "checks": [
+    "Table2_54_values_PDF_exact_order",
+    "Table2_54_values_saved_HTML_exact_order",
+    "Table4_PDF_metrics_classification_only",
+    "Table4_HTML_metrics_classification_only",
+    "Table4_PDF_metrics_regression_only",
+    "Table4_HTML_metrics_regression_only",
+    "Table4_PDF_metrics_lambda_cls_0.1",
+    "Table4_HTML_metrics_lambda_cls_0.1",
+    "Table4_PDF_metrics_lambda_cls_0.5",
+    "Table4_HTML_metrics_lambda_cls_0.5",
+    "Table4_PDF_metrics_balanced",
+    "Table4_HTML_metrics_balanced",
+    "Table4_PDF_metrics_lambda_cls_2.0",
+    "Table4_HTML_metrics_lambda_cls_2.0",
+    "Table5_PDF_metrics_without_ensemble",
+    "Table5_HTML_metrics_without_ensemble",
+    "Table5_PDF_metrics_with_ensemble",
+    "Table5_HTML_metrics_with_ensemble",
+    "printed_56percent_not_supported_either_direction",
+    "Table5_MAE_matches_linear_not_MTL",
+    "Table5_other_metrics_match_MTL",
+    "Table1_learning_rates_order",
+    "Table1_epochs_order",
+    "Table1_hidden_dimensions",
+    "Table1_batch_sizes",
+    "Table1_Adam_all",
+    "Table1_architecture_order",
+    "Table3_PDF_10values_order",
+    "Table3_HTML_10values_order",
+    "Table3_same_provided_baselines_as_H033",
+    "1.45_not_sixdecimal_rounding",
+    "1.45_compatible_with_fourdecimal_abstract",
+    "fourdecimal_direct_rounds_1.45",
+    "Table4_balanced_not_Table2_normal_rounding",
+    "56_claim_far_from_rounding",
+    "MTL168_best_at_168",
+    "XGB24_MAE_better_than168",
+    "XGB8_MSE_best",
+    "LSTM24_all_metrics_best",
+    "ESN24_MSE_best",
+    "ESN24_and8_MAE_better_thanMTL"
+  ],
+  "check_count": 41,
+  "PDF_reference_id": "EXT-H034-01",
+  "original_HTML_source_id": "SRC-0063263",
+  "Table2": [
+    {
+      "metric": "MAE",
+      "length": 168,
+      "values": {
+        "GRU-Linear": "0.218503",
+        "GRU-DLinear": "0.238085",
+        "GRU-XGBoost": "0.230860",
+        "ESN": "0.264141",
+        "LSTM": "0.355919",
+        "GRU-MTL": "0.213631"
+      }
+    },
+    {
+      "metric": "MAE",
+      "length": 24,
+      "values": {
+        "GRU-Linear": "0.239661",
+        "GRU-DLinear": "0.286313",
+        "GRU-XGBoost": "0.225731",
+        "ESN": "0.264349",
+        "LSTM": "0.301782",
+        "GRU-MTL": "0.300096"
+      }
+    },
+    {
+      "metric": "MAE",
+      "length": 8,
+      "values": {
+        "GRU-Linear": "0.277397",
+        "GRU-DLinear": "0.274060",
+        "GRU-XGBoost": "0.227612",
+        "ESN": "0.268062",
+        "LSTM": "0.316045",
+        "GRU-MTL": "0.282097"
+      }
+    },
+    {
+      "metric": "MSE",
+      "length": 168,
+      "values": {
+        "GRU-Linear": "0.273377",
+        "GRU-DLinear": "0.324395",
+        "GRU-XGBoost": "0.299680",
+        "ESN": "0.389497",
+        "LSTM": "0.743190",
+        "GRU-MTL": "0.249026"
+      }
+    },
+    {
+      "metric": "MSE",
+      "length": 24,
+      "values": {
+        "GRU-Linear": "0.361508",
+        "GRU-DLinear": "0.550637",
+        "GRU-XGBoost": "0.291654",
+        "ESN": "0.367124",
+        "LSTM": "0.503964",
+        "GRU-MTL": "0.733608"
+      }
+    },
+    {
+      "metric": "MSE",
+      "length": 8,
+      "values": {
+        "GRU-Linear": "0.479330",
+        "GRU-DLinear": "0.398813",
+        "GRU-XGBoost": "0.270044",
+        "ESN": "0.383942",
+        "LSTM": "0.587777",
+        "GRU-MTL": "0.494261"
+      }
+    },
+    {
+      "metric": "RMSE",
+      "length": 168,
+      "values": {
+        "GRU-Linear": "0.522855",
+        "GRU-DLinear": "0.569557",
+        "GRU-XGBoost": "0.547430",
+        "ESN": "0.624097",
+        "LSTM": "0.862085",
+        "GRU-MTL": "0.499025"
+      }
+    },
+    {
+      "metric": "RMSE",
+      "length": 24,
+      "values": {
+        "GRU-Linear": "0.601255",
+        "GRU-DLinear": "0.742049",
+        "GRU-XGBoost": "0.540050",
+        "ESN": "0.605908",
+        "LSTM": "0.709904",
+        "GRU-MTL": "0.856509"
+      }
+    },
+    {
+      "metric": "RMSE",
+      "length": 8,
+      "values": {
+        "GRU-Linear": "0.692336",
+        "GRU-DLinear": "0.631516",
+        "GRU-XGBoost": "0.519658",
+        "ESN": "0.619631",
+        "LSTM": "0.766666",
+        "GRU-MTL": "0.703037"
+      }
+    }
+  ],
+  "Table4": [
+    {
+      "configuration": "classification_only",
+      "lambda_cls": "1",
+      "lambda_reg": "0",
+      "metrics": {
+        "MAE": "0.398",
+        "MSE": "0.667",
+        "RMSE": "0.816"
+      }
+    },
+    {
+      "configuration": "regression_only",
+      "lambda_cls": "0",
+      "lambda_reg": "1",
+      "metrics": {
+        "MAE": "0.257",
+        "MSE": "0.405",
+        "RMSE": "0.636"
+      }
+    },
+    {
+      "configuration": "lambda_cls_0.1",
+      "lambda_cls": "0.1",
+      "lambda_reg": "1",
+      "metrics": {
+        "MAE": "0.218",
+        "MSE": "0.272",
+        "RMSE": "0.521"
+      }
+    },
+    {
+      "configuration": "lambda_cls_0.5",
+      "lambda_cls": "0.5",
+      "lambda_reg": "1",
+      "metrics": {
+        "MAE": "0.219",
+        "MSE": "0.272",
+        "RMSE": "0.521"
+      }
+    },
+    {
+      "configuration": "balanced",
+      "lambda_cls": "0.5",
+      "lambda_reg": "0.5",
+      "metrics": {
+        "MAE": "0.213",
+        "MSE": "0.249",
+        "RMSE": "0.499"
+      }
+    },
+    {
+      "configuration": "lambda_cls_2.0",
+      "lambda_cls": "2.0",
+      "lambda_reg": "1",
+      "metrics": {
+        "MAE": "0.224",
+        "MSE": "0.281",
+        "RMSE": "0.531"
+      }
+    }
+  ],
+  "Table5": [
+    {
+      "configuration": "without_ensemble",
+      "length": 168,
+      "metrics": {
+        "MAE": "0.218503",
+        "MSE": "0.249026",
+        "RMSE": "0.499025"
+      }
+    },
+    {
+      "configuration": "with_ensemble",
+      "length": 168,
+      "metrics": {
+        "MAE": "0.210520",
+        "MSE": "0.246709",
+        "RMSE": "0.496698"
+      }
+    }
+  ],
+  "metric_fields_cross_checked": 88,
+  "calculations": {
+    "MTL_8_to_168_MAE_reduction_pct": "24.27037508374778888112954055",
+    "MTL_168_to_8_MAE_increase_pct": "32.04871952104329427845209731",
+    "MTL_24_to_168_MAE_reduction_pct": "28.81244668372787374706760503",
+    "MTL_168_to_24_MAE_increase_pct": "40.47399487902036689431777223",
+    "ensemble_vs_Table2_MTL_MAE_reduction_pct": "1.456249327110765759650986982",
+    "ensemble_vs_Table5_without_MAE_reduction_pct": "3.653496748328398237095142858",
+    "ensemble_vs_LSTM168_MAE_reduction_pct": "40.85171064202810189958951334",
+    "ensemble_vs_ESN168_MAE_reduction_pct": "20.30014272680121601720293328",
+    "displayed_mean_zero_fraction_pct": "31.77083333333333333333333333",
+    "beam_hour_values_per_metric": 2419200,
+    "comparison_basis": "printed values, not raw predictions; no independent model run"
+  },
+  "best_lengths": [
+    {
+      "metric": "MAE",
+      "model": "GRU-Linear",
+      "best_length": 168,
+      "values": {
+        "168": "0.218503",
+        "24": "0.239661",
+        "8": "0.277397"
+      }
+    },
+    {
+      "metric": "MAE",
+      "model": "GRU-DLinear",
+      "best_length": 168,
+      "values": {
+        "168": "0.238085",
+        "24": "0.286313",
+        "8": "0.274060"
+      }
+    },
+    {
+      "metric": "MAE",
+      "model": "GRU-XGBoost",
+      "best_length": 24,
+      "values": {
+        "168": "0.230860",
+        "24": "0.225731",
+        "8": "0.227612"
+      }
+    },
+    {
+      "metric": "MAE",
+      "model": "ESN",
+      "best_length": 168,
+      "values": {
+        "168": "0.264141",
+        "24": "0.264349",
+        "8": "0.268062"
+      }
+    },
+    {
+      "metric": "MAE",
+      "model": "LSTM",
+      "best_length": 24,
+      "values": {
+        "168": "0.355919",
+        "24": "0.301782",
+        "8": "0.316045"
+      }
+    },
+    {
+      "metric": "MAE",
+      "model": "GRU-MTL",
+      "best_length": 168,
+      "values": {
+        "168": "0.213631",
+        "24": "0.300096",
+        "8": "0.282097"
+      }
+    },
+    {
+      "metric": "MSE",
+      "model": "GRU-Linear",
+      "best_length": 168,
+      "values": {
+        "168": "0.273377",
+        "24": "0.361508",
+        "8": "0.479330"
+      }
+    },
+    {
+      "metric": "MSE",
+      "model": "GRU-DLinear",
+      "best_length": 168,
+      "values": {
+        "168": "0.324395",
+        "24": "0.550637",
+        "8": "0.398813"
+      }
+    },
+    {
+      "metric": "MSE",
+      "model": "GRU-XGBoost",
+      "best_length": 8,
+      "values": {
+        "168": "0.299680",
+        "24": "0.291654",
+        "8": "0.270044"
+      }
+    },
+    {
+      "metric": "MSE",
+      "model": "ESN",
+      "best_length": 24,
+      "values": {
+        "168": "0.389497",
+        "24": "0.367124",
+        "8": "0.383942"
+      }
+    },
+    {
+      "metric": "MSE",
+      "model": "LSTM",
+      "best_length": 24,
+      "values": {
+        "168": "0.743190",
+        "24": "0.503964",
+        "8": "0.587777"
+      }
+    },
+    {
+      "metric": "MSE",
+      "model": "GRU-MTL",
+      "best_length": 168,
+      "values": {
+        "168": "0.249026",
+        "24": "0.733608",
+        "8": "0.494261"
+      }
+    },
+    {
+      "metric": "RMSE",
+      "model": "GRU-Linear",
+      "best_length": 168,
+      "values": {
+        "168": "0.522855",
+        "24": "0.601255",
+        "8": "0.692336"
+      }
+    },
+    {
+      "metric": "RMSE",
+      "model": "GRU-DLinear",
+      "best_length": 168,
+      "values": {
+        "168": "0.569557",
+        "24": "0.742049",
+        "8": "0.631516"
+      }
+    },
+    {
+      "metric": "RMSE",
+      "model": "GRU-XGBoost",
+      "best_length": 8,
+      "values": {
+        "168": "0.547430",
+        "24": "0.540050",
+        "8": "0.519658"
+      }
+    },
+    {
+      "metric": "RMSE",
+      "model": "ESN",
+      "best_length": 24,
+      "values": {
+        "168": "0.624097",
+        "24": "0.605908",
+        "8": "0.619631"
+      }
+    },
+    {
+      "metric": "RMSE",
+      "model": "LSTM",
+      "best_length": 24,
+      "values": {
+        "168": "0.862085",
+        "24": "0.709904",
+        "8": "0.766666"
+      }
+    },
+    {
+      "metric": "RMSE",
+      "model": "GRU-MTL",
+      "best_length": 168,
+      "values": {
+        "168": "0.499025",
+        "24": "0.856509",
+        "8": "0.703037"
+      }
+    }
+  ],
+  "unresolved": [
+    "AbstractLSTM.3223 vsTable2.355919",
+    "56%neitherreductionnorincreasefromprinted8/168values",
+    "Table5withoutMAE.218503 vsTable2MTL.213631",
+    "Shortensemblesexcludedp14 vs60%at8hclaimp15",
+    "45%vsLSTM/ESNnotbothsupported",
+    "MetricMAEimprovementnotvariancemeasurement",
+    "18-23%allmodels/lengthsclaimnotgeneralized"
+  ],
+  "document_check_completed": true,
+  "source_scripts_executed": false,
+  "new_model_runs": 0,
+  "random_draws": 0,
+  "Table1": [
+    {
+      "model": "GRU-Linear",
+      "input_lengths": [
+        168,
+        24,
+        8
+      ],
+      "hidden_dimension": 1024,
+      "batch_size": 128,
+      "optimizer": "Adam",
+      "learning_rate": "0.01",
+      "epochs": 1500
+    },
+    {
+      "model": "GRU-DLinear",
+      "input_lengths": [
+        168,
+        24,
+        8
+      ],
+      "hidden_dimension": 1024,
+      "batch_size": 128,
+      "optimizer": "Adam",
+      "learning_rate": "0.0001",
+      "epochs": 500
+    },
+    {
+      "model": "GRU-XGBoost",
+      "input_lengths": [
+        168,
+        24,
+        8
+      ],
+      "hidden_dimension": 1024,
+      "batch_size": 128,
+      "optimizer": "Adam",
+      "learning_rate": "0.1",
+      "epochs": 1500
+    },
+    {
+      "model": "ESN",
+      "input_lengths": [
+        168,
+        24,
+        8
+      ],
+      "hidden_dimension": 1024,
+      "batch_size": 128,
+      "optimizer": "Adam",
+      "learning_rate": "0.000001",
+      "epochs": 5000
+    },
+    {
+      "model": "LSTM",
+      "input_lengths": [
+        168,
+        24,
+        8
+      ],
+      "hidden_dimension": 1024,
+      "batch_size": 128,
+      "optimizer": "Adam",
+      "learning_rate": "0.0001",
+      "epochs": 1500
+    },
+    {
+      "model": "GRU-MTL",
+      "input_lengths": [
+        168,
+        24,
+        8
+      ],
+      "hidden_dimension": 1024,
+      "batch_size": 128,
+      "optimizer": "Adam",
+      "learning_rate": "0.001",
+      "epochs": 1500
+    }
+  ],
+  "Table3": {
+    "Hist.Avg.": [
+      "0.2108",
+      "0.2431"
+    ],
+    "iTransformer": [
+      "0.1967",
+      "0.2348"
+    ],
+    "PatchTST": [
+      "0.1973",
+      "0.2343"
+    ],
+    "DLinear": [
+      "0.2005",
+      "0.2352"
+    ],
+    "Transformer": [
+      "0.2166",
+      "0.2331"
+    ]
+  },
+  "Table1_setting_rows_cross_checked": 6,
+  "rounding_audit": {
+    "six_decimal_MAE_improvement_bounds": [
+      "1.455784637493241835786556690",
+      "1.456714014553097272640036700"
+    ],
+    "four_decimal_abstract_bounds": [
+      "1.404823226410676656520721140",
+      "1.497776737655043295108822840"
+    ],
+    "four_decimal_direct": "1.451310861423220973782771536",
+    "conclusion": "1.45 percent is plausible from abstract four-decimal inputs; six-decimal Table2 calculation is1.45625 percent, normally1.46. Do not conflate with large56percent discrepancy."
+  }
+}
