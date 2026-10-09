@@ -301,3 +301,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 긴 이력의 식별 정보나 짧은 모델의 비용을 주장하기 전에 — 61
 
 검색어: Bayes MAE, conditional median, Markov, process identification, history gain, MAC, trainable parameter, frozen bias. [61번 산술 기록](records/0061-history-logic-cost.md)에서 cell을 아는 조건과 찾는 절차, 관측 1개/2개, 전체/학습 가능한 parameter, 표준 연산 수/실제 시간을 구별합니다. 같은 식별 직관과 입력 후보만으로 신규성이나 실데이터 성능을 주장하지 말고, 달라진 가정·선택 규칙·평가·총비용 근거를 연결하세요.
+
+## 입력 압축·wavelet·attention으로 비용 절감을 주장하기 전에 — 59 ALW
+
+검색어: ALW, adaptive lookback, wavelet, soft truncation, 입력 길이, 공동 학습, PE, 정규화, 비용. [59번 ALW 검토](records/0059-alw.md)에서 L512→H256과 전체 Q/K·mask 연산, 고정 L512 기준의 iteration 증가, seed/환경/epoch 및 복원식 차이를 확인하세요. 기존보다 달라지는 소속 결정·독립성·실제 총비용을 설명해야 같은 시도를 반복하지 않을 수 있습니다.

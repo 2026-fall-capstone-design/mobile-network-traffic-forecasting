@@ -28,4 +28,4 @@ settings 410줄, calls 226줄, 시작·종료, 전체 result와 두 전후 원�
 
 SRC-0023485 HDF5(357,150,320bytes)의 전체 해시와 지정 4열·날짜 1,488개를 확인했다. SRC-0023488 checkpoint(114,324,594bytes)는 바이트 해시만 확인하고 모델 객체를 읽지 않았다. 두 자산의 기존 부분 상태를 유지한다. [입력 대조](../evidence/0059-0062-history-grouping/input-audit.json)에는 raw slice·scale·정답·날짜 확인과 실제 범위가 있다.
 
-숫자 NPZ는 pickle 없이 읽었다. final의 object 날짜 배열은 NPY header와 직렬화의 64개 날짜 문자열을 정적으로 읽었으며 객체 실행/로딩은 하지 않았다. 현재 계산은 저장 출력 검산이다. 새 예측이나 독립 모델 재현이 아니다. 61 코드/결과는 [후속 H052](history-052.md)에 연결했다. ALW·horizon 자료와 이후 기록은 미완료다.
+숫자 NPZ는 pickle 없이 읽었다. final의 object 날짜 배열은 NPY header와 직렬화의 64개 날짜 문자열을 정적으로 읽었으며 객체 실행/로딩은 하지 않았다. 현재 계산은 저장 출력 검산이다. 새 예측이나 독립 모델 재현이 아니다. 61 코드/결과는 [후속 H052](history-052.md)에 연결했다. ALW는 [후속 H053](history-053.md)에 연결했다. horizon 자료와 이후 기록은 미완료다.
