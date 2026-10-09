@@ -1,0 +1,172 @@
+{
+  "batch_id": "history-033",
+  "success": true,
+  "checked_at_utc": "2026-10-09T13:00:49.331389+00:00",
+  "check_count": 42,
+  "checks": [
+    "SRC-0021746:original_identity",
+    "SRC-0021746:preserved_identity",
+    "SRC-0021824:original_identity",
+    "SRC-0021824:preserved_identity",
+    "SRC-0063272:original_identity",
+    "SRC-0063272:preserved_identity",
+    "SRC-0063292:original_identity",
+    "SRC-0063292:preserved_identity",
+    "SRC-0063293:original_identity",
+    "SRC-0063293:preserved_identity",
+    "SRC-0063302:original_identity",
+    "SRC-0063302:preserved_identity",
+    "SRC-0063264:original_identity",
+    "SRC-0063265:original_identity",
+    "SRC-0063266:original_identity",
+    "SRC-0063290:original_identity",
+    "SRC-0063291:original_identity",
+    "SRC-0063304:original_identity",
+    "SRC-0063305:original_identity",
+    "SRC-0063306:original_identity",
+    "SRC-0063311:original_identity",
+    "SRC-0063264:fetch_log_identity",
+    "SRC-0063265:fetch_log_identity",
+    "SRC-0063290:fetch_log_identity",
+    "SRC-0063304:fetch_log_identity",
+    "SRC-0063305:render_log_identity",
+    "SRC-0063306:render_log_identity",
+    "SRC-0063311:render_log_identity",
+    "control:AGENTS.md",
+    "control:tmp/redesign_20260925/research_state.json",
+    "control:tmp/redesign_20260925/research_focus.md",
+    "control:tmp/redesign_20260925/progress.md",
+    "control:tmp/redesign_20260925/candidate_decision_index.md",
+    "control:tmp/redesign_20260925/cumulative_execution_budget.json",
+    "EXT-H033-01:fetched_image_identity",
+    "EXT-H033-02:fetched_image_identity",
+    "EXT-H033-03:fetched_image_identity",
+    "EXT-H033-04:fetched_image_identity",
+    "EXT-H033-05:fetched_image_identity",
+    "Zindi_baseline_image_matches_ITU_Table1",
+    "Cellular_quantified_anomaly_retained",
+    "Cellular_160_comparison_directions"
+  ],
+  "source_files": 15,
+  "controls_unchanged": 6,
+  "primary_read": [
+    {
+      "source_id": "SRC-0063290",
+      "sha256": "f49f644b6d91e1e8ea38e443675746148848c90a23f0b8568d87ec84aed41305",
+      "text_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "visual_pages": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16
+      ],
+      "whole_content_read": true,
+      "whole_proof_certified": false,
+      "official_implementation_reviewed": false,
+      "remaining": "Independent execution/proof certification and exact original feature/data/code lineage not established"
+    },
+    {
+      "source_id": "SRC-0063265",
+      "sha256": "bc56f2a3294afcad68ce364c73996c05b2192bac7e15c353da23cf854cdb3847",
+      "text_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "visual_pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "whole_content_read": true,
+      "whole_proof_certified": false,
+      "official_implementation_reviewed": false,
+      "remaining": "Independent execution/proof certification and exact original feature/data/code lineage not established"
+    }
+  ],
+  "original_previews_read": 3,
+  "HTML_visible_text_read": [
+    "SRC-0063264",
+    "SRC-0063304"
+  ],
+  "current_supplemental_figures_read": 5,
+  "numeric_check_count": 147,
+  "ITU_printed_numeric_values": 66,
+  "ITU_percentage_checks": 30,
+  "Cellular_median_fields_extracted": 512,
+  "Cellular_median_fields_manually_transcribed_checked": 192,
+  "numeric_comparison_counts": {
+    "Cellular_main": 64,
+    "Cellular_noisy": 64,
+    "Cellular_short": 160
+  },
+  "corrections": [
+    {
+      "scope": "archive private first-pass note, before publication",
+      "old": "TableVI W32Friday Calls MSE median .101",
+      "correct": ".100; .101 is maximum",
+      "reason": "PDF bold-column extraction, original preview and full-page second reading"
+    },
+    {
+      "scope": "archive private first-pass note",
+      "old": "TableVII repeated Monday/Wednesday uncertain",
+      "correct": "Tuesday/Wednesday W32 FlowSpeedCalls 12 printed fields identical",
+      "reason": "row order caption and PDF picture/text cross-check"
+    }
+  ],
+  "archived_page_notes": [
+    "Saved Zindi page states daily2 and full rules daily5; not resolved and not used as current competition guidance. Public30/private70split is not proof of forward-time validation.",
+    "Zindi four research attachments plus logo read from current URLs referenced by saved HTML; bytes of historical September attachments not proven identical. Linked tutorial videos/tracking/header art not part of this research read.",
+    "Arxiv page default code-finder toggles are UI, not proof that author code was published. Implementation was not inspected for these two papers."
+  ],
+  "no_new_model_runs": true,
+  "source_scripts_executed": false,
+  "random_draws": 0,
+  "limits": [
+    "28 text pages and22 visual pages first content pass plus selected source/numeric second pass, not independent scientific reproduction.",
+    "Cellular uses actual road inputs and simulated call targets; exact metric normalization, code, seeds, costs and raw outputs not established.",
+    "ITU original provided-target scale after inverse square root, physical units/beam mapping and future feature availability not independently established.",
+    "51 Frontiers/event sources,53telemetry/thesis,55 complete synthesis and all remaining corpus stay pending."
+  ]
+}
