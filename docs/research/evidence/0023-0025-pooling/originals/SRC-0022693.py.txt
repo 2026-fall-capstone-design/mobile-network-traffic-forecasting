@@ -1,0 +1,163 @@
+"""Fixed-partition development audit. Uses saved TFM predictions; no new neural fits."""
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:
+    os.environ[key]='4'
+from pathlib import Path
+import hashlib,json,time,sys
+import numpy as np
+import psutil
+from scipy.stats import spearmanr
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import NearestNeighbors
+sys.stdout.reconfigure(encoding='utf-8')
+base=Path(__file__).resolve().parent
+out=base/'results/conditional_pooling_cost'
+out.mkdir(exist_ok=True)
+failed_elapsed=0.
+if (out/'run_started.json').exists():
+    if '--resume-after-numeric-fix' not in sys.argv or (out/'run_finished.json').exists() or (out/'numeric_fix_resumed.json').exists():
+        raise SystemExit('Existing run marker; do not rerun.')
+    # The original exec exited 1 (not a timeout); no neural models were called.
+    failed_elapsed=3.8575159
+    (out/'numeric_fix_resumed.json').write_text(json.dumps({
+        'prior_exec_exit_code':1,'prior_error':'Non-negative theoretical cost assertion with float32 empirical atoms',
+        'repair':'Use float64 consistently for every atom bank and local/group loss reduction.',
+        'prior_command_wall_seconds_charged':failed_elapsed,'new_model_calls_before_failure':0,
+        'plan_unchanged':True,'code_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},indent=2),encoding='utf-8')
+tick=time.perf_counter()
+
+def optimum(atoms,weights):
+    # atoms [cell, query, atom], weights [cell, query], unnormalised group mass.
+    n,q,b=atoms.shape
+    values=atoms.transpose(1,0,2).reshape(q,n*b)
+    w=np.repeat(weights.T/b,b,axis=1)
+    order=np.argsort(values,axis=1,kind='stable')
+    sorted_v=np.take_along_axis(values,order,axis=1)
+    sorted_w=np.take_along_axis(w,order,axis=1)
+    mass=weights.sum(0)
+    ix=(np.cumsum(sorted_w,axis=1)>=mass[:,None]/2).argmax(1)
+    action=sorted_v[np.arange(q),ix]
+    cost=(np.abs(atoms-action[None,:,None]).mean(2)*weights).sum(0)
+    return action,cost,mass
+
+def excess(atoms,weights,groups):
+    # Local median is an optimal absolute-loss action for each discrete approximation.
+    local=np.abs(atoms-np.median(atoms,axis=2,keepdims=True)).mean(2)
+    base_cost=(local*weights).sum(0)
+    total=np.zeros(atoms.shape[1]); outputs={}; zero={}
+    for k,g in enumerate(groups):
+        a,c,m=optimum(atoms[g],weights[g])
+        outputs[k]=a;zero[k]=m<=0;total+=c
+    delta=total-base_cost
+    assert delta.min()>-1e-8
+    return np.maximum(delta,0),outputs,zero
+
+toy={}
+for name,a,w in [
+    ('disjoint_support',np.array([[[0.],[0.]],[[2.],[2.]]]),np.array([[1.,0.],[0.,1.]])),
+    ('same_input_different_target',np.array([[[0.]],[[2.]]]),np.array([[.5],[.5]])),
+    ('same_median_different_spread',np.array([[[-1.,0.,1.]],[[-4.,0.,4.]]]),np.array([[.5],[.5]]))]:
+    val,_,_=excess(a,w,[[0,1]])
+    shifted,_,_=excess(a+np.arange(a.shape[1])[None,:,None]+7,w,[[0,1]])
+    assert np.allclose(val,shifted)
+    toy[name]={'cost':val.tolist(),'input_dependent_shift_error':float(np.max(np.abs(val-shifted)))}
+assert np.allclose(toy['disjoint_support']['cost'],0)
+assert np.allclose(toy['same_input_different_target']['cost'],1)
+assert np.allclose(toy['same_median_different_spread']['cost'],0)
+
+p=np.load(base/'results/risk_table_predictions.npz')
+d=np.load(base/'results/design_data.npz')
+sel=p['selected_cells'];ids=p['cell_ids'];times=d['times']
+X=d['X'][sel];Y=d['Y'][sel];train=np.isin(times,p['context_times'])
+qi=np.searchsorted(times,p['query_times']);query=X[:,qi].reshape(-1,X.shape[-1])
+actual=Y[:,qi].ravel();owner=np.repeat(np.arange(len(ids)),len(qi))
+atoms=p['quantiles'][:,64:].astype(float)
+assert atoms.shape==(16,1024,129)
+settings=json.loads((base/'results/rctl_pilot/frozen_settings.json').read_text(encoding='utf-8'))
+partitions={}
+for name,seed,k,group in settings['tasks']:
+    if seed==20260925: partitions.setdefault(name,[]).append(group)
+assert len(partitions)==6
+cfg={'plan_sha256':hashlib.sha256((base/'23_conditional_pooling_cost_plan.md').read_bytes()).hexdigest(),
+     'saved_predictions_sha256':hashlib.sha256((base/'results/risk_table_predictions.npz').read_bytes()).hexdigest(),
+     'cell_ids':ids.tolist(),'context_times':p['context_times'].tolist(),'query_times':p['query_times'].tolist(),
+     'density_k_primary':32,'density_k_sensitivity':[16,64],'distribution_KNN_k':32,
+     'partitions':partitions,'retrospective_development_only':True,
+     'RCTL_outcomes_previously_observed':True,'RCTL_used_to_change_score_or_partition':False,
+     'new_TabICL_contexts':0,'new_RCTL_fits':0,'cheap_wall_cap_seconds':60,'RSS_cap_bytes':2*1024**3}
+if (out/'run_started.json').exists():
+    assert json.loads((out/'run_started.json').read_text(encoding='utf-8'))==cfg
+else:
+    (out/'run_started.json').write_text(json.dumps(cfg,indent=2,allow_nan=False),encoding='utf-8')
+
+cx=X[:,train].reshape(-1,X.shape[-1])
+scaler=StandardScaler().fit(cx);sx=scaler.transform(cx);qx=scaler.transform(query)
+nearest=NearestNeighbors(n_neighbors=64,n_jobs=1).fit(sx).kneighbors(qx,return_distance=False)
+context_owner=np.repeat(np.arange(len(ids)),train.sum())
+density={}
+for k in [16,32,64]:
+    near_owner=context_owner[nearest[:,:k]]
+    density[k]=np.stack([(near_owner==i).mean(1) for i in range(len(ids))])
+    assert np.allclose(density[k].sum(0),1)
+knn=[]
+for i in range(len(ids)):
+    sx_i=scaler.transform(X[i,train])
+    ix=NearestNeighbors(n_neighbors=32,n_jobs=1).fit(sx_i).kneighbors(qx,return_distance=False)
+    knn.append(Y[i,train][ix])
+methods={'TabICL_distribution':atoms,'TabICL_median_only':p['median'][:,64:,None].astype(float),
+         'empirical_KNN_distribution':np.array(knn,dtype=float)}
+records=[];saved={};precheck_rss=[]
+for estimator,a in methods.items():
+    for k,w in density.items():
+        for name,groups in partitions.items():
+            if time.perf_counter()-tick+failed_elapsed>60 or psutil.Process().memory_info().rss>2*1024**3:
+                raise SystemExit('Predeclared resource cap reached, no automatic restart.')
+            cost,outs,zero=excess(a,w,groups)
+            prediction=np.empty(len(actual));fallback=0
+            for gnum,g in enumerate(groups):
+                rows=np.flatnonzero(np.isin(owner,g))
+                pred=outs[gnum][rows].copy();bad=zero[gnum][rows]
+                pred[bad]=np.median(a[owner[rows[bad]],rows[bad]],axis=1)
+                fallback+=int(bad.sum());prediction[rows]=pred
+            cm=cost.reshape(16,64)
+            label=f'{estimator}_k{k}_{name}'
+            saved[label+'_cost']=cost;saved[label+'_prediction']=prediction
+            records.append({'estimator':estimator,'density_k':k,'partition':name,'K':len(groups),
+              'mean_intrinsic_cost':float(cost.mean()),'first_half_cost':float(cm[:,:32].mean()),
+              'second_half_cost':float(cm[:,32:].mean()),'mixture_prediction_MAE':float(np.abs(prediction-actual).mean()),
+              'zero_group_mass_fallback_queries':fallback})
+            precheck_rss.append(psutil.Process().memory_info().rss)
+score_path=out/'scores_before_outcome_comparison.json'
+score_path.write_text(json.dumps({'settings':cfg,'records':records},indent=2,allow_nan=False),encoding='utf-8')
+frozen_score_hash=hashlib.sha256(score_path.read_bytes()).hexdigest()
+
+# Outcomes are now only used for this retrospective descriptive comparison.
+prior=json.loads((base/'results/rctl_pilot/summary.json').read_text(encoding='utf-8'))
+rctl={x['method']:x['mean_scaled_mae'] for x in prior['metrics'] if x['seed']==20260925}
+checks=[]
+for estimator in methods:
+    for k in density:
+        rr=[x for x in records if x['estimator']==estimator and x['density_k']==k and x['K']==4]
+        intrinsic=[x['mean_intrinsic_cost'] for x in rr]
+        mix=[x['mixture_prediction_MAE'] for x in rr]
+        observed=[rctl[x['partition']] for x in rr]
+        checks.append({'estimator':estimator,'density_k':k,'partition_count':len(rr),
+            'intrinsic_vs_saved_RCTL_spearman':float(spearmanr(intrinsic,observed).statistic),
+            'mixture_MAE_vs_saved_RCTL_spearman':float(spearmanr(mix,observed).statistic),
+            'intrinsic_first_vs_second_half_spearman':float(spearmanr(
+                [x['first_half_cost'] for x in rr],[x['second_half_cost'] for x in rr]).statistic),
+            'partition_order_by_intrinsic':[x['partition'] for x in sorted(rr,key=lambda z:z['mean_intrinsic_cost'])]})
+report={'settings':cfg,'toy_checks':toy,'records':records,'retrospective_checks':checks,
+        'frozen_score_sha256':frozen_score_hash,
+        'query_owner_zero_probability':{str(k):float((w[owner,np.arange(len(owner))]==0).mean()) for k,w in density.items()},
+        'elapsed_seconds':time.perf_counter()-tick+failed_elapsed,'failed_attempt_seconds_included':failed_elapsed,
+        'peak_sampled_RSS_bytes':max(precheck_rss),
+        'new_TabICL_contexts':0,'new_RCTL_fits':0,'new_partition_RCTL_validation':False,
+        'novelty_established':False}
+np.savez_compressed(out/'arrays.npz',**saved,**{f'density_k{k}':w for k,w in density.items()},
+                    actual=actual,cell_ids=ids,query_times=p['query_times'])
+(out/'summary.json').write_text(json.dumps(report,indent=2,allow_nan=False),encoding='utf-8')
+(out/'run_finished.json').write_text(json.dumps({'elapsed_seconds':report['elapsed_seconds'],'new_model_calls':0},indent=2),encoding='utf-8')
+print(json.dumps({'primary':[x for x in records if x['density_k']==32],
+  'retrospective_checks':checks,'query_owner_zero_probability':report['query_owner_zero_probability'],
+  'seconds':report['elapsed_seconds']},indent=2),flush=True)

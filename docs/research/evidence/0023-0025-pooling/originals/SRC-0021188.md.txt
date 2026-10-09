@@ -1,0 +1,61 @@
+# 조건부 공유 비용과 여러 시점 예측의 추가 판단
+
+2026-09-25. 23·24 계획을 고정한 후 얻은 결과다. 두 진단 모두 새로운 추천안을 확정하지 못했다. 기존 실패를 다른 지표로 성공 처리하지 않는다.
+
+## 1. 입력을 그대로 보존한 공유 비용도 TabICLv2의 필요성을 보여주지는 않았다
+
+23에서는 실제 query 입력마다 cell의 조건부 비중과 target 분포를 추정했다. 같은 cluster에서 한 예측값을 사용할 때의 최소 기대 MAE에서 cell별 최소 기대 MAE를 뺐다. 이때 합친 분포의 중앙값을 사용하므로, 앞선 B1의 anchor 대체나 B2의 상태별 상수 보정 제약은 없다. 입력이 겹치지 않는 경우, 같은 중앙값에 분산만 다른 경우, 공통 입력 함수의 가산 변화에 대한 기본 성질도 확인했다.
+
+그러나 이 값은 충분히 유연한 함수가 참 분포를 아는 경우의 **관계 충돌 비용**이다. 유한한 자료를 함께 학습할 때 생기는 추정 이득이나 RCTL의 실제 학습을 계산하지 않는다. 앞서 08에서 확인한, 조건부 분포가 같아도 독립 자료와 중복 자료의 pooling 이득이 다르다는 반례가 그대로 남는다.
+
+미리 고정한 density k=32에서 기존 K=4 분할 5개의 점수 순위와 저장된 RCTL MAE 순위의 Spearman 상관은 TabICLv2 분포 0.80, 중앙값만 사용하면 0.50, KNN 경험 분포 0.90이었다. k=16/64에서 TabICLv2는 0.50/0.80, KNN은 0.70/0.90이었다. 작은 5개 분할에 대한 사후 기술 통계이며 독립 검증·유의성·새 partition의 성능 확인이 아니다.
+
+TabICLv2 mixture의 실제 query MAE는 약 0.074~0.077, KNN mixture는 약 0.099~0.105로 전자가 더 작았다. **개별 예측을 더 잘하는 모델이 최종 RCTL에 유리한 분할도 더 잘 고르는 것은 아니다.** 여기서 모델 도입 이유가 충분해지지는 않았다. 또 서로 다른 분포 추정기의 intrinsic cost 절댓값을 직접 비교해 어느 추정기가 더 정확한지 판단하지 않는다.
+
+주 설정에서 query 소유 cell의 추정 비중이 0인 비율은 2.93%였다. 특정 cluster의 추정 비중이 0이면 자기 예측으로 돌아가는 처리를 기록했다. 입력 지원 추정의 오차까지 사라진 것은 아니다. 실제 query 값·조건부 비중·각 cell의 예측 모두를 포함한 결과는 `results/conditional_pooling_cost/`에 있다.
+
+첫 계산은 float32 기반 서로 다른 축약 연산의 수치 일관성 검사에서 실패했다. 분포 atom과 축약을 float64로 통일한 후 명시적으로 한 번 재개했다. 최초 실행 기록을 남기고 실패 command wall 3.8575초를 포함해 6.4339초를 비용으로 기록했다. 새 TabICL 추론과 RCTL fit은 각각 0회다.
+
+## 2. 예측 기간을 늘려도 기존 분할의 주된 문제가 해결되지 않았다
+
+24에서는 primary seed의 21개 RCTL checkpoint를 고정한 채 48개 origin에서 24시간 recursive 예측을 수행했다. origin 전에 알려진 관측값만 사용하고, 이후 최근 이력에는 각 모델의 예측을 차례로 넣었다. 하루·주간 lag 및 달력 입력은 기존 규격을 유지했다. 첫 시점 예측과 기존 저장 결과의 최대 차이는 0이었다.
+
+수치는 cell별 기존 척도로 정규화한 MAE이며 낮을수록 좋다. 주 지표는 실행 전에 고정한 6시간이다.
+
+| 기존 소속/단순 기준 | 1시간 | 6시간(주 지표) | 12시간 | 24시간 |
+|---|---:|---:|---:|---:|
+| global RCTL, K=1 | 0.071459 | 0.118291 | 0.129401 | 0.134179 |
+| TabICL risk 분할, K=4 | 0.085346 | 0.136188 | 0.134971 | 0.142919 |
+| 경험 분포 risk 분할, K=4 | 0.080687 | 0.128882 | 0.130497 | 0.130406 |
+| KNN risk 분할, K=4 | 0.082061 | 0.129346 | 0.133778 | 0.136690 |
+| PCC balanced 분할, K=4 | 0.087489 | 0.140043 | 0.138001 | 0.145864 |
+| random balanced 분할, K=4 | 0.082754 | 0.134695 | 0.134949 | 0.139598 |
+| persistence | 0.082584 | 0.306031 | 0.425411 | 0.136415 |
+| 하루 전 값 | 0.130470 | 0.130213 | 0.141099 | 0.136415 |
+| 일주일 전 값 | 0.201477 | 0.204170 | 0.204531 | 0.195755 |
+
+6시간에서 global이 모든 K=4보다 좋았다. TabICL 분할이 global보다 나은 cell은 2/16이었다. 앞뒤 origin 절반 모두 TabICL 분할의 평균 오차가 더 컸다. 경험 분포 분할은 24시간 전체 평균에서 global보다 0.003773 작았지만, 앞 절반 차이 -0.007646, 뒤 절반 +0.000100으로 이득이 고르게 반복되지 않았다. 따라서 24시간 결과만 골라 새로운 clustering 필요성을 주장하지 않는다.
+
+이는 이미 관찰한 개발 기간과 기존 1시간 학습 checkpoint의 recursive 사용에 관한 결과다. 직접 다중 horizon으로 학습한 RCTL 결과도 아니고, 새로운 partition의 독립 검증도 아니다. 전체 Milan이나 다른 도시에서 clustering이 불필요하다는 결론으로 확대하지 않는다. PCC balanced를 원문 UPC의 완전 재현으로 부르지 않는다.
+
+추가 RCTL fit 0회, TabICL 호출 0회다. RCTL forward 504회, 예측 행 110,592개, 측정 wall 4.5744초, 최고 측정 RSS 290,701,312 bytes였다. 실행·예측·첫 시점 재현 결과를 `results/frozen_recursive_horizon/`에 보존했다.
+
+## 3. 이번에 원문까지 확인한 인접 구조
+
+| 논문·읽은 위치 | 실제 결정/사용 정보 | 이번 설계와의 관계 |
+|---|---|---|
+| [Forecasting Multivariate Time Series under Predictive Heterogeneity: A Validation-Driven Clustering Framework, arXiv:2604.13748v1](https://arxiv.org/html/2604.13748v1), §2.1~2.5, §3.1 | TRAIN에서 global/cluster 모델을 학습하고 VAL 예측 손실로 재배정한다. one-step 학습과 recursive multi-step 평가를 구별한다. validation fallback도 포함한다. | 여러 horizon 예측으로 그룹을 정하거나 global과 비교하는 발상은 이미 다룬다. RCTL 결과를 선택에 쓰지 않는 현재 조건과는 다르다. TabICL로 prototype만 교체하는 것을 새로운 결정 원리라고 부르지 않는다. |
+| [Nested Spatio-Temporal Time Series Forecasting, arXiv:2605.16447v2](https://arxiv.org/html/2605.16447v2), §3~4.2, limitations | 주기 단위의 이력 유사도→spectral clustering→지역 평균→지역 미래와 개별 관측의 cross-attention으로 여러 시점 예측을 만든다. | 전체 흐름을 지역 평균으로 먼저 예측해 local을 안내하는 구조도 선행연구에 있다. 원문의 noise 독립성 가정, O(N²) affinity, 시간 불변 그룹, recursive 노출 편향을 구별한다. RCTL 유지 조건에서 단순히 이름만 바꿔 수용할 구조가 아니다. |
+| [Graph Coloring for Multi-Task Learning, arXiv:2509.16959v3](https://arxiv.org/html/2509.16959v3), §3.1~4.5 | 학습 중 gradient EMA의 음의 cosine으로 conflict graph를 만들고 Welsh–Powell coloring 후 그룹별 update를 순환한다. | conflict graph 자체는 신규성이 아니다. 한 shared 모델의 학습 스케줄이며 cluster별 독립 RCTL 배포와 다르다. RCTL 학습 gradient를 가져오면 현재 독립성 제약을 위반한다. 원문 비용은 refresh당 O(K²d)다. |
+
+위 표는 기술 내용을 읽은 위치를 명시한 것이다. 논문의 모든 성능 주장과 증명을 재현했다는 뜻은 아니다. 특히 validation fallback이 미래 성능까지 자동 보장한다는 표현은 채택하지 않는다.
+
+NTK 기반 task affinity 문헌도 검색에서 확인했다. `Exploring Task Affinities through NTK Alignment and Early Training Dynamics in Multi-Task Learning`([공식 OpenReview PDF](https://openreview.net/pdf?id=HxT9EuHdXW))는 이번에는 검색 발췌와 저자 기관의 초록만 읽었다. 상세 알고리즘 검토 완료 목록에 넣지 않는다. RCTL 학습을 하지 않는다는 이유만으로 초기 NTK나 보조 kernel이 실제 RCTL을 대변한다고 가정하지 않는다.
+
+## 4. 다음 검토를 위한 판단 경계
+
+조건부 관계를 더 유연하게 계산하는 것, 전체 분포를 쓰는 것, horizon을 늘리는 것 모두 현재 자료에서 추천할 근거를 충분히 만들지 못했다. 모듈 수를 늘리는 방식으로 이 결과를 덮지 않는다.
+
+다음 후보는 단순한 공유 모델이 실제로 남기는 손해를 먼저 특정해야 한다. 전체 평균, 관측 당시 높은 수준, 실제 peak, 예측 기간을 서로 바꾸어 유리한 결과를 선택해서는 안 된다. 기존 peak 표에는 16 cell 중 4개에 해당 query가 없고, 나머지도 cell당 1~28개에 불과하다. 그 표를 근거로 peak 중심 방향을 확정할 수 없다.
+
+입력의 관측 상태별로 손해가 반복되는지, 실제 위험을 반영하는지, 단순한 보정·계절 예측으로 충분한지를 확인한 뒤에만 새 후보를 구체화한다. 이 문서는 방향을 정한 최종 보고서가 아니다. 추천안과 최종 Word는 아직 미완료이며 goal은 active다.
