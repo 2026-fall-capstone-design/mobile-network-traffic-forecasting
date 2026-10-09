@@ -107,3 +107,5 @@
 [53·55 Zoom2Net 복원 조건](records/0053-zoom2net.md)은 정밀 학습 자료·측정 제약·모호한 이력과 추가 보정 비용을 연결합니다. [32개 주장 검수](verification/history-037.md)는14쪽 본문/10쪽 시각 자료·runtime 표와 지표별 반례를 확인했으며, 그럴듯한 복원을 실제 정답 이력·미래 예측 이득으로 확대하지 않습니다.
 
 [53·55 NETNOMOS의 규칙·예측·복원](records/0053-netnomos.md)은 데이터에서 규칙을 찾고 생성에 적용하는 방법을 세 과제별로 구분합니다. [39개 주장 검수](verification/history-038.md)는 sMAPE 반례·MAWI 위반0.3%·약5배 추론 비용·인쇄 수치 차이를 보존하며, 규칙 준수를 RCTL의 예측 이득으로 바꾸지 않습니다.
+
+[53·55 TabICL imputation](records/0053-tabicl-imputation.md)은 공식 기능 예제와 실제 54 실험을 구별합니다. 완전한 context를 먼저 넣은 예제, 반복 대체·순열의 실제 비용, 과거/현재 문서 차이와 Ciena 원문 접근을 [32개 주장](verification/history-039.md)에 연결했습니다.

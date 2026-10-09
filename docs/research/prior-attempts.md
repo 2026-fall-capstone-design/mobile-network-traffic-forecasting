@@ -246,3 +246,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 ## 규칙으로 예측·복원 출력을 제한하기 전에 — 53·55 NETNOMOS
 
 검색어: NETNOMOS, neurosymbolic, logic enforcement, SMT, constrained generation, hitting set, rule mining, semantic filtering. [NETNOMOS 기록](records/0053-netnomos.md)에서 이미 있는 규칙 학습·선택·생성 제어와 초기 GPT-2 학습, 약5배 추론 비용을 확인합니다. 새 제안은 예측 시 가용 입력·학습 구간·잘못된 규칙 처리·단순 비교군·최종 미래 예측 지표의 차이를 설명해야 합니다. sMAPE와 Burst Position의 손해, MAWI 위반0.3%, 필터 recall·비용 공백은 같은 조건의 반복을 판단할 근거입니다.
+
+## 조건부 대체 API를 새 관측 정책으로 제안하기 전에 — 53·55
+
+검색어: TabICLUnsupervised, impute, MICE, missingness, temperature, Shuffler, n_permutations, Ciena. [imputation 기록](records/0053-tabicl-imputation.md)은 이미 있는 대체 기능, 먼저 완전한 X로 fit한 공식 예제, [54의 직접 회귀 실험](records/0052-0054-partial-observation.md)을 구분합니다. 새 실험에는 가용 입력·시간 분리·강한 단순 대안·관측 선택 규칙·최종 RCTL 효용·반복 복원 비용의 차이가 필요합니다. 저장 코드의 범주 fallback과 요청 순열 수/실제 순서 수 차이도 재사용 조건입니다.
