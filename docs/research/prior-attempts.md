@@ -43,6 +43,14 @@
 | 찾으려는 문제·별칭 | 확인한 기록과 조건 | 결과·주의할 해석 | 재사용·새 실험의 차이 |
 |---|---|---|---|
 | old/recent/expanding, 오래된 context, 시간 유효성 | [16–17](records/0016-0017-temporal-validity.md), 32cell·4주·Ridge/HGB·고정 첫672시간 정규화·관측 lag 입력 | expanding의 전체 평균 우위에도 날짜별 손해. recent는 첫 주에 old보다 악화. 참 drift·RCTL·다중 시점 예측의 증거 아님 | 9개 저장 배열과 cell/day/week 차이 재사용. 자료 수·정보 시점·고정 origin 예측 여부를 명시 |
-| 첫 주 정책 선택, 시간 구간 선택, 단순 adaptive 대조 | [고정 선택](records/0016-0017-temporal-validity.md), 첫 주 recent/expanding 선택 후 나머지3주에 고정 | always expanding 대비 후속 평균 MAE가 Ridge +0.002308935, HGB +0.002265186 악화. 모든 미래 선택 실패의 증명 아님 | 이후 정답으로 선택을 수정하지 않음. 독립 기간·선택 규칙·최종 learner가 달라지는지 확인. 17의 세 문헌은 별도 검수 예정 |
+| 첫 주 정책 선택, 시간 구간 선택, 단순 adaptive 대조 | [고정 선택](records/0016-0017-temporal-validity.md), 첫 주 recent/expanding 선택 후 나머지3주에 고정 | always expanding 대비 후속 평균 MAE가 Ridge +0.002308935, HGB +0.002265186 악화. 모든 미래 선택 실패의 증명 아님 | 이후 정답으로 선택을 수정하지 않음. 독립 기간·선택 규칙·최종 learner가 달라지는지 확인. 17의 세 문헌은 [사용 정보·갱신 대상](records/0017-adaptation-literature.md)을 대조함 |
+
+시간 적응과 cell 재배정 문헌은 다음처럼 찾을 수 있다.
+
+| 찾으려는 문제·별칭 | 확인한 기록 | 적용 조건·공백 | 재검토 시 바꿔야 할 조건 |
+|---|---|---|---|
+| loss buffer, replay, fine/aggressive, MGSTC | [17](records/0017-adaptation-literature.md)·[방법 비교](references/temporal-adaptation-methods.md) | joint drift·예측 손실 의존 갱신. 감시 통계량 표기 미해결 | 같은 전체 입력의 조건부 변화와 정답 이용 시점을 별도로 확인 |
+| PID, frozen backbone, cell별 Optuna, 출력 보정 | [PID 비교](references/temporal-adaptation-methods.md) | 이전 관측 오차 필요.200trials와200표본 한도 구분, 부호·튜닝/평가 경계 미해결 | 독립 소속 조건을 유지할지, offline 탐색과 online 비용을 어떻게 분리할지 명시 |
+| Joint QoS, BCD, 재배정, nuclear norm, cluster수 축소 | [QoS 비교](references/temporal-adaptation-methods.md) | 모델 손실과 소속 공동 갱신. simulation분포 예측·가정 아래 criticalpoint | activity회귀·최종learner와 다른 점, penalty/threshold·분할을 확인 |
 
 새 실험은 관련 과거 기록, 같게 유지할 조건, 달라지는 질문·조건, 재사용할 파일을 먼저 적는다. 기존 부정 결과를 회피하기 위한 조건 변경과 새로운 가설 검증을 구분한다. [첫 묶음 검수](verification/pilot-001.md), [RCTL 검수](verification/pilot-002.md), [문헌 검수](verification/pilot-003.md), [캐시 대조 검수](verification/pilot-004.md), [전체 조사 현황](verification/inventory-2026-10-08.md).
