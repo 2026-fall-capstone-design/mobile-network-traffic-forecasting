@@ -96,4 +96,13 @@
 | Tab MAE는 우수하지만 소속 선택은 미확정, density k32 | [주 결과·반례](records/0023-0025-conditional-pooling.md) | K4다섯의 cost–RCTLρ.8/KNN.9. query는RCTLtrain내부;cell3737손해도 유지 |
 | float32 nonnegative assertion, float64 resume, zero group mass | [실패·비용 경계](records/0023-0025-conditional-pooling.md) | 실패보고3.8575초를포함한6.4339초;원콘솔미확인. 모델0회와계산비용구분 |
 
+고정 모델의 여러 시점 예측은 다음 조건으로 찾는다.
+
+| 문제·별칭 | 확인한 기록 | 재사용 범위·주의 |
+|---|---|---|
+| frozen recursive, rollout, horizon6, multi-step, 21checkpoint | [24·25 §2](records/0024-0025-recursive-horizon.md) | 같은16cell·48origin·1시간학습모델.6시간 global .118290980 < Tab .136188413;직접다중시점학습아님 |
+| 24시간 empirical 이득, 시간 절반·cell 손해 | [보조 결과](records/0024-0025-recursive-horizon.md) | 평균−.003772982지만뒤절반+.000100154;8cell악화.유리한horizon으로주지표변경금지 |
+| raw/scaled rank reversal, persistence=daily at24h | [척도·단순 기준](records/0024-0025-recursive-horizon.md) | 12/24h Tab은raw에서global보다좋고scaled에서나쁨.겹친origin독립표본아님 |
+| checkpoint hash, first-step reproduction, forward504 | [검산·공백](verification/history-017.md) | 이전21예측첫시점차0;저장산술·H5확인.새모델0,중간X미보존·가중치팀접근미확인 |
+
 새 실험은 관련 과거 기록, 같게 유지할 조건, 달라지는 질문·조건, 재사용할 파일을 먼저 적는다. 기존 부정 결과를 회피하기 위한 조건 변경과 새로운 가설 검증을 구분한다. [첫 묶음 검수](verification/pilot-001.md), [RCTL 검수](verification/pilot-002.md), [문헌 검수](verification/pilot-003.md), [캐시 대조 검수](verification/pilot-004.md), [전체 조사 현황](verification/inventory-2026-10-08.md).

@@ -1,0 +1,33 @@
+# 고정 RCTL의 여러 시점 예측 진단
+
+2026-09-25. 새 예측을 실행하기 전에 계획을 저장한다. 23의 후속 진단이며 새로운 clustering 알고리즘이나 추천안이 아니다.
+
+## 확인할 질문
+
+앞서 고정한 clustering의 1시간 예측 결과만으로는 보이지 않았던, 예측값을 다음 입력으로 사용하는 과정의 손해가 있는가? 특히 1시간 예측에서 가장 좋았던 global RCTL보다 기존 K=4 partition이 여러 시간 예측에서 일관되게 유리해지는지 확인한다.
+
+이 질문의 답이 긍정적이어도 새 clustering의 필요성이나 TabICLv2의 기여가 증명되는 것은 아니다. 원래 예측 문제를 바꾸어 기존 실패를 성공으로 처리하지 않는다. 한 시점 예측으로 학습한 고정 checkpoint의 recursive 사용을 진단하는 것이며, 6시간·24시간을 직접 학습한 모델과 구별한다.
+
+## 자료·입력·고정 조건
+
+- 이전 16개 cell과 primary seed 20260925만 사용한다. global 1개, tabicl_risk/empirical_risk/knn_risk/pcc_balanced/random_balanced 각 4개, 총 21개의 기존 checkpoint다. 추가 fit, optimizer step, BatchNorm 갱신, partition 변경은 하지 않는다.
+- 이미 관찰한 target 1008~1487 구간을 개발 진단으로 재사용한다. 독립 test라고 부르지 않는다.
+- 첫 예측 target 시점은 1008~1464의 균등 간격 48개 정수 시점(`numpy.linspace(..., dtype=int)`)으로 미리 고정한다. 각 origin에서 24개 미래 시점을 예측한다. 모든 cell·방법에 같은 origin을 사용한다.
+- 최근 8개 값, 하루·일주일 전 값, 최근 하루 평균·표준편차, 예측 target의 시간대·요일을 기존 8×9 RCTL 입력 규격으로 구성한다. 정규화 척도도 기존 파일의 고정 값을 사용한다.
+- origin 직전까지 실제 관측값을 읽는다. 이후 입력에 필요한 값은 해당 모델이 앞서 예측한 값으로 채운다. 예측 도중 관측 미래값으로 입력을 갱신하지 않는다. 시간대·요일만 알려진 미래 입력으로 사용한다.
+- 24시간 이내의 하루·일주일 lag는 모두 최초 origin 전에 실제로 관측한 값이다. 최근 8시점과 최근 하루 통계에는 예측 결과가 차례로 포함된다. 음수 예측을 임의로 자르거나 보정하지 않는다.
+- 첫 시점 예측은 기존 저장 결과의 같은 origin 값과 비교한다. 최대 절대차 2e-5보다 크면 입력 구성/추론 구현 오류로 처리하여 결론을 보류한다.
+
+## 비교와 결과 해석
+
+주 지표는 6시간 뒤 값의 cell 동등 가중 정규화 MAE다. 1시간은 재현 확인이며, 12시간·24시간과 horizon별 전체 곡선·cell별 차이는 보조 진단이다. 유리한 horizon을 보고 주 지표를 바꾸지 않는다. origin 간 구간이 겹치므로 행을 독립 sample로 취급하여 유의성을 주장하지 않는다.
+
+같은 origin에서 persistence, 하루 전 값, 일주일 전 값도 계산한다. 이 값들은 모두 origin 때 알려져 있다. 추가 학습이 없는 단순 대안이다. raw activity MAE도 함께 저장하되 cell 크기에 따른 가중치 변화와 구별한다.
+
+- global이 여전히 유리하거나 K=4의 이득이 방법·시간에 따라 일관되지 않으면, 여러 시점 예측을 이유로 새로운 TabICL clustering을 추천하지 않는다.
+- K=4가 유리한 경우에도 실제 어떤 cell·horizon에서 반복되는지 먼저 기록한다. 'recursive 예측에 맞춘 clustering'은 기존 multi-step/rollout 연구와의 차이 및 TabICL 정보의 가치가 확인되기 전까지 제안하지 않는다.
+- 모든 방법이 단순 기준보다 악화하면 checkpoint의 배포 방식 문제로 기록한다. 이를 partition 문제로 자동 해석하지 않는다.
+
+## 자원과 기록
+
+추가 TabICL 호출 0, RCTL fit 0. RCTL forward 504회(21 checkpoint×24 step), 예측 행 110,592개(6 방법×16 cell×48 origin×24 step) 상한. 재현 확인은 이미 계산한 첫 예측을 사용한다. 실행 wall 300초, RSS 2 GiB, CPU 4 thread 상한이다. 총 local modeling 6,000초 한도 안에 실제 inference 시간을 별도로 누적한다. 재시작 방지 기록, 계획·코드·checkpoint SHA-256, 예측 배열·설정·결과·종료 사유를 저장한다.

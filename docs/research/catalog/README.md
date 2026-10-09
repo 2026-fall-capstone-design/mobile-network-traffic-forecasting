@@ -57,3 +57,5 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 
 
 [23·25 조건부 공유 비용 목록](history-016-sources.jsonl)은 새 원본9개·기존6개를 연결한다. [읽은 범위](../sources/history-016.md)는 텍스트3개·JSON전체5개·신규 배열1개와 재사용 구간을 구분한다.25의 전체 열람을 §2/§3 검수 완료로 세지 않는다.
+
+[24·25 recursive 진단 목록](history-017-sources.jsonl)은 보존 참조32개(새7·기존25),H5 metadata1개,미게시체크포인트 metadata21개를 구분한다. [읽은 범위](../sources/history-017.md)는 새 텍스트2개·전체JSON3개·지정수치자료2개이며summary의큰행렬은모든값산술대조와수동열람을구분했다.25 §2를추가검수했고§3와전체후속연결은남았다. 체크포인트해시확인을팀가중치접근완료로세지않는다.

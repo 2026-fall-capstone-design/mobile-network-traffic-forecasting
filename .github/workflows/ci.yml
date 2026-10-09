@@ -121,6 +121,11 @@ jobs:
           --manifest docs/research/evidence/0023-0025-pooling/manifest.json
           --output .research-archive/ci-conditional-pooling.json
 
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_recursive_horizon_history.py
+          --manifest docs/research/evidence/0024-0025-horizon/manifest.json
+          --output .research-archive/ci-recursive-horizon.json
+
   deploy:
     name: deploy-pages
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

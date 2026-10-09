@@ -1,0 +1,129 @@
+{
+  "success": true,
+  "negative_cases": 20,
+  "cases": [
+    {
+      "case": "missing_metric",
+      "rejected": true,
+      "rejected_by": "9_unique_metrics",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "duplicate_comparison",
+      "rejected": true,
+      "rejected_by": "20_unique_comparisons",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "changed_primary_horizon",
+      "rejected": true,
+      "rejected_by": "declared_integer_settings",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "integer_complete_flag",
+      "rejected": true,
+      "rejected_by": "complete_without_error",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "boolean_new_fit_count",
+      "rejected": true,
+      "rejected_by": "no_new_fit_Tab_calls",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "nonfinite_wall",
+      "rejected": true,
+      "rejected_by": "finite_time_fields",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "finish_before_summary",
+      "rejected": true,
+      "rejected_by": "time_boundary",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "checkpoint_hash_changed",
+      "rejected": true,
+      "rejected_by": "global_20260925_cluster0.pt:checkpoint_hash_reference",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "missing_origins_array",
+      "rejected": true,
+      "rejected_by": "'origins'",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "nonfinite_prediction",
+      "rejected": true,
+      "rejected_by": "prediction_shape_finite",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "cell_metric_corrupted",
+      "rejected": true,
+      "rejected_by": "global:per_cell_mae_by_horizon",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "first_step_corrupted_with_metrics_updated",
+      "rejected": true,
+      "rejected_by": "global_20260925_cluster0:first_step",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "persistence_corrupted_with_metrics_updated",
+      "rejected": true,
+      "rejected_by": "persistence:saved_history_formula",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "repeated_target_disagrees_below_float32_precision",
+      "rejected": true,
+      "rejected_by": "truth_overlap:1017",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "changed_scale",
+      "rejected": true,
+      "rejected_by": "cell_scales",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "boolean_comparison_horizon",
+      "rejected": true,
+      "rejected_by": "20_unique_comparisons",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "boolean_reproduction_difference",
+      "rejected": true,
+      "rejected_by": "global_20260925_cluster0:first_step",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "wrong_forward_count",
+      "rejected": true,
+      "rejected_by": "forward_counts",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "wrong_plan_hash",
+      "rejected": true,
+      "rejected_by": "plan_sha256:identity",
+      "manifest_hashes_updated": true
+    },
+    {
+      "case": "preserved_byte_changed",
+      "rejected": true,
+      "rejected_by": "SRC-0021163:size",
+      "manifest_hashes_updated": false
+    }
+  ],
+  "originals_modified": false,
+  "new_model_runs": 0,
+  "scope": "격리사본의지정오류20개거부.실제과거실행/모델성능재현아님."
+}

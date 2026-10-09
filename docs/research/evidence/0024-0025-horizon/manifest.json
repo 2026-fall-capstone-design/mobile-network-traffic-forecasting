@@ -1,0 +1,1299 @@
+{
+  "schema_version": 1,
+  "batch_id": "history-017",
+  "created_at_utc": "2026-10-09T04:24:51.270985+00:00",
+  "inventory_version": "20261008T140216751179Z",
+  "source_root_alias": "Tab-ICL",
+  "original_bytes_preserved": true,
+  "sources": [
+    {
+      "source_id": "SRC-0021163",
+      "path": "tmp/redesign_20260925/24_frozen_recursive_horizon_plan.md",
+      "sha256": "b4801eacc44530801bf54da60d44e361dd497ae63d0d9054261052ca61240dc8",
+      "size_bytes": 4360,
+      "exact_alias_source_ids": [
+        "SRC-0000459",
+        "SRC-0021163"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "originals/SRC-0021163.md.txt",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            33
+          ]
+        ],
+        "scope": "계획 전체. 역사적 계획으로 읽고 현재 실행 지시로 사용하지 않음"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0022867",
+      "path": "tmp/redesign_20260925/frozen_recursive_horizon_diagnostic.py",
+      "sha256": "c397d1a417ee1985b5e6b997ad4568f1b8454d26d7d02fcb2df4128c2624326d",
+      "size_bytes": 7850,
+      "exact_alias_source_ids": [
+        "SRC-0000463",
+        "SRC-0022867"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "originals/SRC-0022867.py.txt",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "agent_full_text_review",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            142
+          ]
+        ],
+        "scope": "원 코드 전체 정적 열람;실행/import없음"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0027709",
+      "path": "tmp/redesign_20260925/results/frozen_recursive_horizon/predictions.npz",
+      "sha256": "3e1cd2747971927a70b633df8e1d3b1b729a7394485143e1a46304ef7dc7993a",
+      "size_bytes": 632861,
+      "exact_alias_source_ids": [
+        "SRC-0000473",
+        "SRC-0027709"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "originals/SRC-0027709.npz",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "prediction",
+          "y",
+          "methods",
+          "cell_ids",
+          "scales",
+          "origins"
+        ],
+        "scope": "전체 저장 배열의 형태·값 검산;모델 실행 없음"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0027710",
+      "path": "tmp/redesign_20260925/results/frozen_recursive_horizon/run_finished.json",
+      "sha256": "cf8322464bad5879ef6e1f497dcb89909fcd46407d459387dc93041ed9fa4800",
+      "size_bytes": 160,
+      "exact_alias_source_ids": [
+        "SRC-0000474",
+        "SRC-0027710"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "originals/SRC-0027710.json",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "agent_full_structured_review",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            1
+          ]
+        ],
+        "scope": "완료 JSON 전문"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0027711",
+      "path": "tmp/redesign_20260925/results/frozen_recursive_horizon/run_started.json",
+      "sha256": "b6000b61b9956a235a723d5bdbad8efaf90d3612888d5516ba5fa0ecd5dba6c1",
+      "size_bytes": 41,
+      "exact_alias_source_ids": [
+        "SRC-0000475",
+        "SRC-0027711"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "originals/SRC-0027711.json",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "agent_full_structured_review",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            1
+          ]
+        ],
+        "scope": "시작 JSON 전문;과거 pid를 현재 실행으로 취급하지 않음"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0027712",
+      "path": "tmp/redesign_20260925/results/frozen_recursive_horizon/settings.json",
+      "sha256": "e490edcf2fb279e0fc070d8171155a805f51a311056adc72f21513ff8994ccd1",
+      "size_bytes": 3861,
+      "exact_alias_source_ids": [
+        "SRC-0000476",
+        "SRC-0027712"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "originals/SRC-0027712.json",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "agent_full_structured_review",
+      "read_scope": {
+        "fields": "전체20필드,48origin과21checkpoint해시",
+        "scope": "전문 실제 출력·열람"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0027713",
+      "path": "tmp/redesign_20260925/results/frozen_recursive_horizon/summary.json",
+      "sha256": "105f2fe401b5ec193d06acf24aa2c5dbf24dd4bf4169c3e5ddfe717d21f27038",
+      "size_bytes": 480239,
+      "exact_alias_source_ids": [
+        "SRC-0000477",
+        "SRC-0027713"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "originals/SRC-0027713.json",
+      "preservation": "new_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "fields": [
+          "settings",
+          "metrics[].method",
+          "metrics[].scaled_mae_by_horizon[24]",
+          "metrics[].raw_activity_mae_by_horizon[24]",
+          "metrics[].negative_prediction_count",
+          "comparisons[20]",
+          "first_step_reproduction[21]",
+          "all remaining top-level fields"
+        ],
+        "numerically_checked_without_full_visual_listing": [
+          "metrics[].per_cell_mae_by_horizon[16,24]",
+          "metrics[].origin_mean_mae_by_horizon[48,24]"
+        ],
+        "scope": "지정 필드 실제 열람;나머지 수치 행렬은 형태/집계 의미와 모든 값의 산술 대조. 모든 숫자의 수동 열람으로 세지 않음"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0021188",
+      "path": "tmp/redesign_20260925/25_pooling_and_horizon_findings.md",
+      "sha256": "8857c78b32b265023638f9c573bf7b1106520afab45c97a7287323a44b35c036",
+      "size_bytes": 9060,
+      "exact_alias_source_ids": [
+        "SRC-0000460",
+        "SRC-0021188"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0023-0025-pooling/originals/SRC-0021188.md.txt",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "lines": [
+          [
+            1,
+            61
+          ]
+        ],
+        "scope": "H016 전체 열람 재사용;이번 주장은 §2 19–39행;§3문헌과후속전체연결대기"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030212",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster0.npz",
+      "sha256": "cfaa54e656441f7f9dc406f5be35733c3e050bb77f5d275179372d11874b9863",
+      "size_bytes": 14390,
+      "exact_alias_source_ids": [
+        "SRC-0000252",
+        "SRC-0030212"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030212.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030215",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster1.npz",
+      "sha256": "c8abf4b32dc7ceda8963eed91fff12a9307c21e05e1ddc3f1a4ba510231b7306",
+      "size_bytes": 14274,
+      "exact_alias_source_ids": [
+        "SRC-0000255",
+        "SRC-0030215"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030215.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030218",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster2.npz",
+      "sha256": "66f0f91daec3ccfe635116a27827bc12c086b805827ea5c5aba74eae0153c014",
+      "size_bytes": 14438,
+      "exact_alias_source_ids": [
+        "SRC-0000258",
+        "SRC-0030218"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030218.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030221",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster3.npz",
+      "sha256": "c864eaa8ba25c6ace14287b97fa3a560535ff9ffb65b96f299b4d5d2f5bbcb7e",
+      "size_bytes": 14460,
+      "exact_alias_source_ids": [
+        "SRC-0000261",
+        "SRC-0025724",
+        "SRC-0030221"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030221.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030236",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/evaluation_data.npz",
+      "sha256": "d451810ecccf0b1d9d083132816510ef889c089cd5693d9ab061c1badbf7ff7b",
+      "size_bytes": 29071,
+      "exact_alias_source_ids": [
+        "SRC-0000276",
+        "SRC-0001100",
+        "SRC-0030236"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030236.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "scales",
+          "test_times",
+          "test_y"
+        ],
+        "scope": "기존 평가자료와 target/척도/시점 연결;peak_threshold재검수아님"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030238",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/frozen_settings.json",
+      "sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+      "size_bytes": 5046,
+      "exact_alias_source_ids": [
+        "SRC-0000278",
+        "SRC-0001750",
+        "SRC-0001810",
+        "SRC-0030238",
+        "SRC-0062565"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030238.json",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "fields": [
+          "tasks[primary21]",
+          "seed_primary",
+          "train_targets",
+          "validation_targets",
+          "test_targets"
+        ],
+        "scope": "이전 전체 JSON 검수 재사용;이번 고정 소속과 기간 연결"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030239",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/global_20260925_cluster0.npz",
+      "sha256": "b9ff015ee3f484a5b106be5ed7cf28df2fd1aadb29e500693a2c06e592f2146e",
+      "size_bytes": 55034,
+      "exact_alias_source_ids": [
+        "SRC-0000279",
+        "SRC-0030239"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030239.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030242",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster0.npz",
+      "sha256": "c3bb08e36d4687c037fb5d006134015e34f5b748f4a5d5447fac963f9e224fd9",
+      "size_bytes": 14348,
+      "exact_alias_source_ids": [
+        "SRC-0000282",
+        "SRC-0030242"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030242.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030245",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster1.npz",
+      "sha256": "38772f1200027f216577daafda91e3b73d92d4a93c0eaf0dce70c9bfeefb29e0",
+      "size_bytes": 14395,
+      "exact_alias_source_ids": [
+        "SRC-0000285",
+        "SRC-0030245"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030245.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030248",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster2.npz",
+      "sha256": "f945e984fe1d858b7c3b3cb7fcf61cdbcab07ed33adc496e96401df340289824",
+      "size_bytes": 14442,
+      "exact_alias_source_ids": [
+        "SRC-0000288",
+        "SRC-0030248"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030248.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030251",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster3.npz",
+      "sha256": "bb1a947cbbab35a1f55915f4a5e2d9c4b9a1500d3ffb8b27fbe2d2fed8db5c29",
+      "size_bytes": 14390,
+      "exact_alias_source_ids": [
+        "SRC-0000291",
+        "SRC-0030251"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030251.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030254",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster0.npz",
+      "sha256": "7c26bfed27e2fa8be756a8f763794cbcf75c42ea63c8820e21e67999b6fa414d",
+      "size_bytes": 14228,
+      "exact_alias_source_ids": [
+        "SRC-0000294",
+        "SRC-0027597",
+        "SRC-0027639",
+        "SRC-0028768",
+        "SRC-0028772",
+        "SRC-0030254"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030254.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030257",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster1.npz",
+      "sha256": "ee27c4ea08aea8710bc3b82391b3352183b0f36d0ff0e906000cddee71172bf2",
+      "size_bytes": 14411,
+      "exact_alias_source_ids": [
+        "SRC-0000297",
+        "SRC-0030257"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030257.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030260",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster2.npz",
+      "sha256": "54277cc5fd2b38d87be3505c4f109290179cdcf28fd893cac8fe02f5d5b55d33",
+      "size_bytes": 14442,
+      "exact_alias_source_ids": [
+        "SRC-0000300",
+        "SRC-0030260"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030260.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030263",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster3.npz",
+      "sha256": "cf8f8a8f3494912114737fba9d28dc05a3beedb8f4bc08a570582eec17ed1f0c",
+      "size_bytes": 14455,
+      "exact_alias_source_ids": [
+        "SRC-0000303",
+        "SRC-0027644",
+        "SRC-0028771",
+        "SRC-0030263"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030263.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030266",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster0.npz",
+      "sha256": "6f3324740d783688bf347f59ca5cf2302ec945e03aef6f3378af5e61144f975e",
+      "size_bytes": 14446,
+      "exact_alias_source_ids": [
+        "SRC-0000306",
+        "SRC-0030266"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030266.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030269",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster1.npz",
+      "sha256": "89cfd21129595ef419ede498aebc64321b89437a4f4bed89aa45a9cbabffc704",
+      "size_bytes": 14378,
+      "exact_alias_source_ids": [
+        "SRC-0000309",
+        "SRC-0030269"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030269.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030272",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster2.npz",
+      "sha256": "8ac7613b27e4cfcb1f7ff84c0fcfc695846f9f8ccc963649b24c68aff9b99f49",
+      "size_bytes": 14221,
+      "exact_alias_source_ids": [
+        "SRC-0000312",
+        "SRC-0030272"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030272.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030275",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster3.npz",
+      "sha256": "838de8639fcca277f2aede59138854c35c1ee5073d51bfc4e12e31556672fd90",
+      "size_bytes": 14474,
+      "exact_alias_source_ids": [
+        "SRC-0000315",
+        "SRC-0030275"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030275.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030281",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster0.npz",
+      "sha256": "8da3b067a176ee4a280312eea7da1397796d42e3eb4a794ee0696ca197bb04a0",
+      "size_bytes": 14307,
+      "exact_alias_source_ids": [
+        "SRC-0000321",
+        "SRC-0030281"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030281.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030284",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster1.npz",
+      "sha256": "1b8527e1dc48f75184ca3a36ce44d44de9eaa645855104ef0f61e6d9f5d76bd0",
+      "size_bytes": 14310,
+      "exact_alias_source_ids": [
+        "SRC-0000324",
+        "SRC-0030284"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030284.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030287",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster2.npz",
+      "sha256": "6f9949beefb7d471073bd9520c48f111b07d618b5c5c1e06616157f5a3d8a345",
+      "size_bytes": 14444,
+      "exact_alias_source_ids": [
+        "SRC-0000327",
+        "SRC-0030287"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030287.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0030290",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster3.npz",
+      "sha256": "f3726be3ac9685d26bfdb9fe4f9ea8ea494f08b9ef55210f54670ef9d538dcf9",
+      "size_bytes": 14412,
+      "exact_alias_source_ids": [
+        "SRC-0000330",
+        "SRC-0030290"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0003-0007/originals/SRC-0030290.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "cell_ids",
+          "prediction"
+        ],
+        "scope": "21개 기존 group 예측의 지정 배열;현재48origin의첫시점대조;다른배열은기존H001검수재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    },
+    {
+      "source_id": "SRC-0023577",
+      "path": "tmp/redesign_20260925/results/design_data.npz",
+      "sha256": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+      "size_bytes": 739949,
+      "exact_alias_source_ids": [
+        "SRC-0000218",
+        "SRC-0023577"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "archive_path": "../0001-0002/originals/SRC-0023577.npz",
+      "preservation": "reused_prior_byte_identical_archive",
+      "review_status": "selected_fields_checked",
+      "read_scope": {
+        "arrays": [
+          "raw",
+          "scales",
+          "cell_indices"
+        ],
+        "scope": "초기 관측 이력과 고정 scale 연결;나머지 입력은 기존 H016 검수 재사용"
+      },
+      "claim_verification_scope": "24와25§2 frozen recursive 진단.25문헌/전체후속판단및모델재실행은범위밖"
+    }
+  ],
+  "primary_sources": [
+    {
+      "source_id": "SRC-0023485",
+      "path": "tmp/redesign_20260925/assets/data_git_version.h5",
+      "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+      "size_bytes": 357150320,
+      "exact_alias_source_ids": [
+        "SRC-0023485",
+        "SRC-0073719"
+      ],
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_and_official_link_only",
+      "url": "https://media.githubusercontent.com/media/chuanting/STCNet/dc3ff65eb42b099ef8ec281c10282d6c47b533cb/Github_Version/data/data_git_version.7z",
+      "read_scope": [
+        "SHA256/size",
+        "HDF5:data.shape",
+        "HDF5:idx[:]",
+        "HDF5:data[:,16fixedcellIDs-1,2]"
+      ],
+      "review_status": "selected_hdf5_fields_audited",
+      "archive_member_identity": {
+        "source_id": "SRC-0073719",
+        "path": "data_git_version.h5",
+        "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+        "size_bytes": 357150320,
+        "container_id": "SRC-0023486",
+        "container_path": "tmp/redesign_20260925/assets/milan_stcnet.7z",
+        "matched_physical_source_id": "SRC-0023485",
+        "method": "tar -xOf to SHA256 stream; no disk extraction or script execution"
+      },
+      "local_read_proof": "../../verification/history-017-H5-check.json",
+      "whole_source_reviewed": false
+    }
+  ],
+  "hash_only_sources": [
+    {
+      "source_id": "SRC-0030213",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster0.pt",
+      "sha256": "95a274b8e4b7825756b5d9bb79ed6ed7d780db57d4a4993d4d3e54fe46b155b8",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030216",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster1.pt",
+      "sha256": "aec1ff6c877631699da297e766b46057322e98e32c9663f4a6c1918d4817a38a",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030219",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster2.pt",
+      "sha256": "a6f4418c7cf5ce97f4a6a9f1abfb9686d3134aa1f4785b1af7748fde006ac6da",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030222",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster3.pt",
+      "sha256": "d2b926912cfc95129d4c6d646fcaf581a07b47939d63136c6bc3d753e0caad28",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030240",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/global_20260925_cluster0.pt",
+      "sha256": "822808952e35b22921569f915db4b693f0929362e564ff4deae7cafbd6bc8476",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030243",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster0.pt",
+      "sha256": "b587f2dc11da117bd07988dae0a164803433d3bc8a2935eebc86c2c2d01b8d8b",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030246",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster1.pt",
+      "sha256": "5a8f5721e8554601b61c06be2cce043b702ac62bb6e89ca4244bf01abb7f0a6a",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030249",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster2.pt",
+      "sha256": "8cc1bfa889056faaf2eafb45bab08ccc9cd8811bb4c6618984587bf2ce29457f",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030252",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/knn_risk_20260925_cluster3.pt",
+      "sha256": "a1b5269a0deb639279c2fb61fb0489582bec01c293c8a7443bc2172844143553",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030255",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster0.pt",
+      "sha256": "1a4fde1b22a667f042d65d84fdab5831faf9545675b846fe579fa35951170b25",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030258",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster1.pt",
+      "sha256": "f1a3e436ef959c3e241efe2af78d911eef8f2f4d926f2ee458932fd4a464f7de",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030261",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster2.pt",
+      "sha256": "7f6ac992db0e4822147ff6696c6d155696c6ef01ecea13a5617f2f7b9d54ecd7",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030264",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/pcc_balanced_20260925_cluster3.pt",
+      "sha256": "978b17168e9bbf8a4855b04d93bd631ca29995f6d29618c47b39f408ab6439ec",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030267",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster0.pt",
+      "sha256": "8c6ac3f12b1281d631002285b5ebdb0684e373b00b09c3629f77e31073980d8e",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030270",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster1.pt",
+      "sha256": "29bca0346f52ddc064d10c5eb3b9b21646a8b801023f63c91a9ab3354700a70b",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030273",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster2.pt",
+      "sha256": "734e7e3b6188e565b972e602faa6d41645b38bc4d774fac3a484c48e0808e1b6",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030276",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/random_balanced_20260925_cluster3.pt",
+      "sha256": "c5068eb7d7c86565b75a7be1311d80e22ba32542194a5a96c83e9d5cd622812d",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030282",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster0.pt",
+      "sha256": "081bcc8b369f3f3cb275cfb839677c004be3e2b55837b2fddb921aecbba82e69",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030285",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster1.pt",
+      "sha256": "ae92219d6aff933933f726d783275f136dd6e05eb0aaa329d1ccedc3426424c2",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030288",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster2.pt",
+      "sha256": "c165bbe9b891a9b2ad9f77058f387b72d9cfd1bb11d35254a45ef05fe3023ff9",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    },
+    {
+      "source_id": "SRC-0030291",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster3.pt",
+      "sha256": "29381448c41cb1f0ec0b111215817875b8586fba74ea2df365974ddc4cf5f7d7",
+      "size_bytes": 745123,
+      "records": [
+        "0024",
+        "0025"
+      ],
+      "distribution": "metadata_only_checkpoint_not_published",
+      "review_status": "hash_and_recorded_checkpoint_identity_checked",
+      "read_scope": "바이트 SHA/크기만 읽음;가중치 역직렬화/추론 없음",
+      "team_access_verified": false,
+      "team_location": null,
+      "generation_source": "../0003-0007/originals/SRC-0023202.py.txt",
+      "architecture_source": "../0639/originals/SRC-0023048.py.txt",
+      "generation_settings": "../0003-0007/originals/SRC-0030238.json",
+      "generation_scope": "기존1시간RCTL학습의출처;재실행/동일checkpoint재생성보장아님"
+    }
+  ],
+  "new_preserved_files": 7,
+  "new_preserved_bytes": 1129372,
+  "reused_preserved_sources": 25,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "status": "bounded_recursive_horizon_stored_results_and_sources_verified",
+  "checkpoint_team_access_verified": false,
+  "whole_record25_integrated": false,
+  "pending_scope": [
+    "실제recursive중간X와역사적runtime독립재현",
+    "21checkpoint의별도팀공유위치",
+    "25§3일차문헌과후속판단전체연결"
+  ]
+}
