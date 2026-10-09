@@ -1,0 +1,218 @@
+{
+  "table_columns": [
+    "LS",
+    "JELSR",
+    "TED",
+    "RRSS",
+    "PMRL",
+    "SRSSS"
+  ],
+  "tables": {
+    "synthetic": {
+      "5": [
+        "0.754",
+        "0.378",
+        "0.400",
+        "0.305",
+        "0.506",
+        "0.263"
+      ],
+      "7": [
+        "0.825",
+        "0.512",
+        "0.372",
+        "0.320",
+        "0.547",
+        "0.311"
+      ],
+      "10": [
+        "1.733",
+        "0.825",
+        "0.969",
+        "0.730",
+        "1.182",
+        "0.599"
+      ]
+    },
+    "real": {
+      "5": [
+        "0.061",
+        "0.048",
+        "0.061",
+        "0.052",
+        "0.055",
+        "0.042"
+      ],
+      "7": [
+        "0.066",
+        "0.053",
+        "0.074",
+        "0.061",
+        "0.072",
+        "0.052"
+      ],
+      "10": [
+        "0.085",
+        "0.067",
+        "0.088",
+        "0.077",
+        "0.079",
+        "0.062"
+      ]
+    }
+  },
+  "printed_metric_fields": 36,
+  "comparisons": [
+    {
+      "dataset": "synthetic",
+      "L": 5,
+      "PMRL_reduction_pct": "48.02371541501976284584980237",
+      "best_other_model": "RRSS",
+      "best_other_reduction_pct": "13.77049180327868852459016393"
+    },
+    {
+      "dataset": "synthetic",
+      "L": 7,
+      "PMRL_reduction_pct": "43.14442413162705667276051188",
+      "best_other_model": "RRSS",
+      "best_other_reduction_pct": "2.812500"
+    },
+    {
+      "dataset": "synthetic",
+      "L": 10,
+      "PMRL_reduction_pct": "49.32318104906937394247038917",
+      "best_other_model": "RRSS",
+      "best_other_reduction_pct": "17.94520547945205479452054795"
+    },
+    {
+      "dataset": "real",
+      "L": 5,
+      "PMRL_reduction_pct": "23.63636363636363636363636364",
+      "best_other_model": "JELSR",
+      "best_other_reduction_pct": "12.500"
+    },
+    {
+      "dataset": "real",
+      "L": 7,
+      "PMRL_reduction_pct": "27.77777777777777777777777778",
+      "best_other_model": "JELSR",
+      "best_other_reduction_pct": "1.886792452830188679245283019"
+    },
+    {
+      "dataset": "real",
+      "L": 10,
+      "PMRL_reduction_pct": "21.51898734177215189873417722",
+      "best_other_model": "JELSR",
+      "best_other_reduction_pct": "7.462686567164179104477611940"
+    }
+  ],
+  "source_claims_real_PM_reduction_pct": [
+    "23.6",
+    "27.8",
+    "21.5"
+  ],
+  "dataset_timepoint_arithmetic": {
+    "sensors": 52,
+    "days": 5,
+    "interval_seconds": 30,
+    "timepoints_per_channel": 14400,
+    "conditional_total_scalar_measurements": 748800
+  },
+  "mathematical_boundary_audit": {
+    "not_full_proof_certification": true,
+    "Eq8_stationarity": "For symmetric invertible H,2Hz+b=0 => z=-0.5 H^-1 b. Printed Eq9 has positive sign. Does not identify actual implementation.",
+    "lambda_zero": {
+      "X": [
+        1,
+        1
+      ],
+      "z": [
+        1,
+        0
+      ],
+      "W": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "W_projected": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "alpha": 0,
+      "beta": 0,
+      "lambda_value": 0,
+      "c": [
+        1,
+        1
+      ],
+      "P": 1,
+      "original_W_losses": {
+        "J": 0,
+        "Jtilde": 1
+      },
+      "projected_W_losses": {
+        "J": 0,
+        "Jtilde": 0
+      },
+      "conclusion": "Both minima can be0 while argmin sets differ under allowedlambda0; does not refute equality of minima or positive-lambda result. No model was fitted."
+    },
+    "appendix_selected_columns": "W(I-Dz) zeros selected output columns; p8 says notselected,p9 says selected.",
+    "other_open_conditions": [
+      "H positive-definiteness/invertibility",
+      "L predictionticks vsL-1formalschedule",
+      "finite ADMM v/z equality and active-set budget feasibility",
+      "lambda/rho/gamma/transpose notation and omittedCxxupdate inAlg1"
+    ]
+  },
+  "batch_id": "history-036",
+  "success": true,
+  "checked_at_utc": "2026-10-09T14:47:25.398795+00:00",
+  "source_id": "SRC-0064360",
+  "source_sha256": "323052046448ca6ce1113f5f2f530feaffdf85916105fb44a4a326346df454af",
+  "checks": [
+    "synthetic:L5:six_values",
+    "synthetic:L5:SRSSS_lowest",
+    "synthetic:L7:six_values",
+    "synthetic:L7:SRSSS_lowest",
+    "synthetic:L10:six_values",
+    "synthetic:L10:SRSSS_lowest",
+    "real:L5:six_values",
+    "real:L5:SRSSS_lowest",
+    "real:L7:six_values",
+    "real:L7:SRSSS_lowest",
+    "real:L10:six_values",
+    "real:L10:SRSSS_lowest",
+    "real_claim_rounding:5",
+    "real_claim_rounding:7",
+    "real_claim_rounding:10",
+    "synthetic:all_L10_worse_than_L5",
+    "real:all_L10_worse_than_L5",
+    "5days30seconds14400",
+    "52sensor_scalar_measurements748800",
+    "lambda0_feasible",
+    "lambda0_argmin_sets_can_differ",
+    "Eq9_positive_sign_not_stationary_H1_b2"
+  ],
+  "check_count": 22,
+  "document_check_completed": true,
+  "new_model_runs": 0,
+  "source_scripts_executed": false,
+  "random_draws": 0,
+  "limitations": [
+    "Author-printed MAE values and deterministic algebra; no source implementation execution, model fit/inference or new performance data.",
+    "Exact runtime/energy/telemetry-byte savings, seeds/repeats, error bars and data normalization are unverified.",
+    "The lambda0 example distinguishes minimizer sets; it does not refute equality of minima or certify/refute the entire positive-lambda proof."
+  ]
+}

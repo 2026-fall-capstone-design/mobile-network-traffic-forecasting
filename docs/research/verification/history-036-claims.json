@@ -1,0 +1,215 @@
+{
+  "batch_id": "history-036",
+  "claims": [
+    {
+      "claim_id": "H036-C01",
+      "claim": "53의 관측 선택·복원 질문과55의 SRSSS 판단을 연결한다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3 SRSSS 행/복원 해석",
+      "verification_method": "당시 계획·판단 재독",
+      "limit": "과거 실행 지시는 현재 허가가 아니며 전체53/55 완료 아님"
+    },
+    {
+      "claim_id": "H036-C02",
+      "claim": "검토 PDF는9쪽·728427bytes이며2026-09-26 취득 로그와 일치한다",
+      "source_location": "SRC-0064360 p1–9; SRC-0064355 SRSSS 항목",
+      "verification_method": "전체 텍스트와 지정7쪽 시각 독해·해시/로그 대조",
+      "limit": "참고문헌 각각의 원논문 검토나 독립 재현 아님"
+    },
+    {
+      "claim_id": "H036-C03",
+      "claim": "저장 TXT9쪽은 쪽 경계 공백 제외 동일하고 과거 PNG2장은 같은 쪽의 다른 해상도다",
+      "source_location": "SRC-0064361 PAGE1–9; SRC-0064370/SRC-0064371 전체; SRC-0064358/SRC-0064359 SRSSS 항목",
+      "verification_method": "쪽별 문자 비교·원 이미지 직접 읽기·로그 해시 대조",
+      "limit": "PDF/TXT/PNG를 바이트 중복이나 별도 연구 실적으로 세지 않음"
+    },
+    {
+      "claim_id": "H036-C04",
+      "claim": "활성 센서의 동시값으로 비활성 센서 현재값을 복원한다",
+      "source_location": "SRC-0064360 p2 Fig1/p3/p5 Alg1",
+      "verification_method": "자료 흐름과 출력 시점 대조",
+      "limit": "미래 트래픽 예측·RCTL 표본 공유와 다른 과제"
+    },
+    {
+      "claim_id": "H036-C05",
+      "claim": "주기적으로 모든 센서를 관측하고 mini-batch ADMM으로 초기화한다",
+      "source_location": "SRC-0064360 p2–5",
+      "verification_method": "전체 관측과 초기화 본문·Alg1 읽기",
+      "limit": "영구 부분 관측만으로 작동하거나 갱신 비용이 없다는 뜻 아님"
+    },
+    {
+      "claim_id": "H036-C06",
+      "claim": "예측 L단위라는 설명과 kL+1부터(k+1)L−1까지의 L−1시점 시간표가 다르다",
+      "source_location": "SRC-0064360 p2 Fig1/p3/p5 Alg1",
+      "verification_method": "본문 시간표·그림·알고리즘 대조",
+      "limit": "정확한 구현 없이 실제 관측 비율·1초 실행으로 환산하지 않음"
+    },
+    {
+      "claim_id": "H036-C07",
+      "claim": "식1은 비활성 출력 SSE이며 보고 성능은 MAE다",
+      "source_location": "SRC-0064360 p3 식1/p5 Experimental protocol",
+      "verification_method": "출력 mask와 손실·지표 구분",
+      "limit": "최종 미래 예측 손실이나 다른 척도와 합치지 않음"
+    },
+    {
+      "claim_id": "H036-C08",
+      "claim": "양의 α는 가까운 입력 계수를 선호하고 음의 β항은 선택 센서 간 거리를 늘린다",
+      "source_location": "SRC-0064360 p3 식1/p4 식4",
+      "verification_method": "Euclidean 거리·벌점 부호 확인",
+      "limit": "거리 제곱·최적 공간 배치 보장·보편적 상관 법칙 아님"
+    },
+    {
+      "claim_id": "H036-C09",
+      "claim": "α·β·λ는0이상이며 cᵀz≤P는 가중 활성 비용 제약이다",
+      "source_location": "SRC-0064360 p3 식1/p5 Parameter setting",
+      "verification_method": "제약·허용 범위 확인",
+      "limit": "P=10을 센서10개 또는 측정 전력으로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H036-C10",
+      "claim": "C_xx는 평균을 빼지 않은 시간 가중 교차곱이다",
+      "source_location": "SRC-0064360 p3 식3/p4; SRC-0021824 §3 SRSSS 행",
+      "verification_method": "수식의 항과 공분산이라는 과거 표현 대조",
+      "limit": "평균 제거 covariance로 추정하지 않음"
+    },
+    {
+      "claim_id": "H036-C11",
+      "claim": "정보 보존과 O(n²) 메모리는 고정 이차 목적·갱신 시점 자료·스트림 길이에 관한 설명이다",
+      "source_location": "SRC-0064360 p3–4 식3/4/6/9",
+      "verification_method": "통계 갱신·행렬 크기·역행렬 대조",
+      "limit": "센서 수에 일정하거나 비선형 학습 정보 전체 보존·실제 대규모 비용 측정 아님"
+    },
+    {
+      "claim_id": "H036-C12",
+      "claim": "W와 이산 z의 공동 문제는 비볼록이고 ADMM 형태 해법은 전역 최적 보장이 아니다",
+      "source_location": "SRC-0064360 p4 §2.3",
+      "verification_method": "저자 한계 문장과 식5 읽기",
+      "limit": "선택 집합의 전역 최적성을 주장하지 않음"
+    },
+    {
+      "claim_id": "H036-C13",
+      "claim": "식8의 대칭·가역 H 정상점은 −½H⁻¹b인데 식9는 양수로 인쇄됐다",
+      "source_location": "SRC-0064360 p4 식8/9",
+      "verification_method": "시각 부호 확인·정적 미분/스칼라 예 대조",
+      "limit": "실제 코드 부호와 H 곡률·가역 조건 미확인; 성능 기각 아님"
+    },
+    {
+      "claim_id": "H036-C14",
+      "claim": "식7의 ρ/ρ1·W 부분문제 transpose k·Alg1 γ/λ와 C_xx 갱신 단계에 표기 공백이 있다",
+      "source_location": "SRC-0064360 p4 식6/7 앞뒤/p5 Alg1",
+      "verification_method": "식·알고리즘 원 인쇄 대조",
+      "limit": "실제 구현을 조용히 교정하거나 코드 오류로 확정하지 않음"
+    },
+    {
+      "claim_id": "H036-C15",
+      "claim": "v는 z+Λ₂/ρ₂의0.5 threshold로 결정하고 활성 집합은 v=1 위치다",
+      "source_location": "SRC-0064360 p4 식5/p5 식11/Alg1",
+      "verification_method": "제약 z와 이산 v·유한 갱신 순서 비교",
+      "limit": "수렴 전 실제 출력의 비용 위반을 확인한 것은 아님"
+    },
+    {
+      "claim_id": "H036-C16",
+      "claim": "W(I−D_z)는 선택된 출력 열을0으로 하지만 부록 p8/p9 문구가 반대다",
+      "source_location": "SRC-0064360 p8–9",
+      "verification_method": "투영·selected/not selected 문장 대조",
+      "limit": "저자 코드의 열 처리 미확인"
+    },
+    {
+      "claim_id": "H036-C17",
+      "claim": "λ=0에서는 부록의 유계성·엄격한 norm 논증에 추가 조건이 필요하다",
+      "source_location": "SRC-0064360 p3 λ범위/p8–9 증명",
+      "verification_method": "허용 경계와 엄격 부등식 조건 대조",
+      "limit": "전체 양의 λ 증명의 인증이나 반박 아님"
+    },
+    {
+      "claim_id": "H036-C18",
+      "claim": "정적 두 센서 예에서 최소값은 모두0이지만 두 argmin 집합은 다를 수 있다",
+      "source_location": "SRC-0064360 p3 식1/2/p8–9",
+      "verification_method": "X=(1,1), z=(1,0), α=β=λ=0의 W와 투영 W′ 손실 검산",
+      "limit": "제한된 대수 예; 최소값 동일성 반박·모델 성능 실험 아님"
+    },
+    {
+      "claim_id": "H036-C19",
+      "claim": "여섯 비교 방법이 고른 활성 센서에 multivariate interpolation을 적용한다고 설명한다",
+      "source_location": "SRC-0064360 p5 Compared methods",
+      "verification_method": "LS/JELSR/TED/RRSS/PMRL/SRSSS와 비교 문장 확인",
+      "limit": "동일한 구현의 공정성까지 검증한 것은 아님"
+    },
+    {
+      "claim_id": "H036-C20",
+      "claim": "window10·PMRL maxlap5·μ0.9·P10·L5 기본값과 첫100개 교차 검증을 기록한다",
+      "source_location": "SRC-0064360 p5 Parameter setting/Experiments protocol",
+      "verification_method": "설정·MATLAB R2014b/2.8GHz i5/12GB/single thread 읽기",
+      "limit": "seed·계수 탐색값·반복·100개 평가 제외·정규화 미확인"
+    },
+    {
+      "claim_id": "H036-C21",
+      "claim": "센서별 비용은 Uniform[0,1]의 합성값이다",
+      "source_location": "SRC-0064360 p5 Parameter setting",
+      "verification_method": "power requirement 생성 문장 읽기",
+      "limit": "실측 전력·통신 바이트 절감의 증거 아님"
+    },
+    {
+      "claim_id": "H036-C22",
+      "claim": "합성 자료는200개 온도 센서·1000시점·열원20개·위치50회 변경이다",
+      "source_location": "SRC-0064360 p5 §3.2/p6 Fig2",
+      "verification_method": "단위·경계 온도0·변경 간격20 확인",
+      "limit": "mobile traffic 관측 자료나 실제 환경 재현 아님"
+    },
+    {
+      "claim_id": "H036-C23",
+      "claim": "실제 자료는 Intel 연구실 온도54센서 중5/15 제외52개·5일·30초 간격이다",
+      "source_location": "SRC-0064360 p6 §3.3",
+      "verification_method": "자료 단위·제외 번호·간격 확인",
+      "limit": "cell/beam·bytes/Mbps로 재명명하지 않음"
+    },
+    {
+      "claim_id": "H036-C24",
+      "claim": "5일/30초는 채널당14400시점이며52채널 완전 관측 가정에서748800스칼라값이다",
+      "source_location": "SRC-0064360 p6 §3.3",
+      "verification_method": "인쇄 조건의 결정적 산술",
+      "limit": "원 데이터 재집계·실제 완전 관측 입증 아님"
+    },
+    {
+      "claim_id": "H036-C25",
+      "claim": "표1·2의36개 MAE와 여섯 행의 SRSSS 최소값을 확인했다",
+      "source_location": "SRC-0064360 p6 Table1/2",
+      "verification_method": "시각 전사·추출문·Decimal 비교",
+      "limit": "저자 인쇄 결과이며 독립 성능 재현 아님"
+    },
+    {
+      "claim_id": "H036-C26",
+      "claim": "실제 PMRL 대비23.6/27.8/21.5%와 최선 다른 방법 JELSR 대비12.50/1.89/7.46%는 다르다",
+      "source_location": "SRC-0064360 p6 Table1/2/§3.3",
+      "verification_method": "동일 행에서 분모를 구분해 산술·반올림 확인",
+      "limit": "합성 L7도 PMRL43.14%와 RRSS2.81%를 구분; 모든 기준 대비 큰 이득 아님"
+    },
+    {
+      "claim_id": "H036-C27",
+      "claim": "모든 방법은 두 자료에서 L10이 L5보다 나쁘며 실제 L7의 JELSR와 차이는0.001이다",
+      "source_location": "SRC-0064360 p6 Table1/2",
+      "verification_method": "조건별 인쇄값 차이 비교",
+      "limit": "반복·오차막대·통계적 안정성 검증 없음"
+    },
+    {
+      "claim_id": "H036-C28",
+      "claim": "Fig2는 t100 예이며 Fig3은 α0/β0보다 전체 방법과 비교한 μ 중0.9가 낮은 오차다",
+      "source_location": "SRC-0064360 p6 Fig2/3",
+      "verification_method": "시각 자료·caption·본문 대조",
+      "limit": "정확한 막대 수치 복원·보편 최선·공간 최적성 증명 아님"
+    },
+    {
+      "claim_id": "H036-C29",
+      "claim": "Fig4는 네 방법 runtime이며 저자는 PMRL 대비 합성30배/실제10배 이상을 보고한다",
+      "source_location": "SRC-0064360 p6 Fig4/§3.4",
+      "verification_method": "그림 범례·저자 배율·누락 LS/TED 확인",
+      "limit": "정확한 시간 배열·초기/반복/관측/전송 비용 범위·실측 에너지 미확인"
+    },
+    {
+      "claim_id": "H036-C30",
+      "claim": "새 제안은 관측 단위·전체 갱신 가능성·추가 정보·최종 미래 예측 효용과 비용을 명시해야 한다",
+      "source_location": "SRC-0021782 전체; SRC-0021824 §3; SRC-0064360 p2–6",
+      "verification_method": "과거 질문과 원문 운영 조건을 종합한 재검토 기준",
+      "limit": "후속 설계 조건이며 새 실행 승인·TabICL/RCTL 이득·전체 문헌 종합 완료 아님"
+    }
+  ]
+}
