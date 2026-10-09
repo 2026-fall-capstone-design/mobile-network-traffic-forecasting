@@ -125,3 +125,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [56·58 TimeDC 원문·코드 대조](records/0056-0058-timedc.md)는 합성 자료와 원 표본 선택을 구분하고, Table4의 epoch당 비용·cross-architecture 비교 범위·공개 코드 재현 조건을 연결합니다. 인쇄 지표의 모순과 원 자료 대비 손해·예외도 보존했습니다. [검수 범위](verification/history-046.md)는 주논문과 고정 코드이며 확장판·raw run·다른 세 문헌은 미완료입니다.
 
 [56·58 TabPFN IML 문맥 선택 검토](records/0056-0058-tabpfn-iml.md)는 validation 기반 자료 가치와 RCTL 학습 가치를 구분합니다. 논문·고정 코드·저장15개AUC비교,pp와상대개선율,선택사전비용과debug/손실정의조건을연결했습니다. [검수 범위](verification/history-047.md) 밖의원실험재현과전체기록은미완료입니다.
+
+[56·58 SCott 학습 표본 층화](records/0056-0058-scott.md)는 한 예측기의 gradient 추정과 cell 소속 변경을 구분합니다. 수렴 가정·실용 종료·표의 반례·튜닝과 총비용을 원문에 연결했습니다. [28개 주장 검수](verification/history-048.md)와 미확인 재현 조건을 함께 확인하세요.

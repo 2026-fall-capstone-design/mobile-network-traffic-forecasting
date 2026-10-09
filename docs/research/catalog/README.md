@@ -121,3 +121,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H046 출처 목록](history-046-sources.jsonl)은 TimeDC16묶음32원본경로와58메모재사용을연결합니다. [출처 안내](../sources/history-046.md)의원본/보충자료·전체/선택독해범위를함께보세요. 논문·저자코드는공식URL/고정commit·hash로접근하며원본사본새복제는0개입니다.
 
 [H047 출처 목록](history-047-sources.jsonl)은TabPFN IML11묶음22원본경로와58메모재사용을연결합니다. [실제열람범위](../sources/history-047.md)에서전체텍스트·선택CSV·자동산술을구분하고공식URL/고정commit·해시를확인할수있습니다.
+
+[H048 출처 목록](history-048-sources.jsonl)은 SCott 3묶음·6원본 경로와 58 메모 재사용 2경로를 연결합니다. [열람 범위](../sources/history-048.md)에 본문/부록·파생물·시각 자료와 공식 URL·해시를 구분했습니다.

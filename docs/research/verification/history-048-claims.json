@@ -1,0 +1,204 @@
+{
+  "batch_id": "history-048",
+  "claims": [
+    {
+      "claim_id": "H048-C01",
+      "claim": "58의 기존 판단과 이번 정적 검수 범위",
+      "source_location": "SRC-0021898 §1/4–5;SRC-0064426 §2/5",
+      "verification_method": "원문 대상·당시 판단·현재 수행 범위 대조",
+      "limit": "새 RCTL 성능/속도 실험과 전체 Goal 완료가 아님"
+    },
+    {
+      "claim_id": "H048-C02",
+      "claim": "저장 SCott의 공식 판본 및 파생물",
+      "source_location": "SRC-0064426;SRC-0064427;SRC-0064462;EXT-H048-01;EXT-H048-02;EXT-H048-03",
+      "verification_method": "공식 PDF 바이트/SHA 동일·TXT 내용 동일·preview 시각 확인",
+      "limit": "TXT/preview/alias를 독립 연구로 세지 않음;부록은 원 inventory 외 보충"
+    },
+    {
+      "claim_id": "H048-C03",
+      "claim": "표본 단위와 한 예측기의 평균 목적",
+      "source_location": "SRC-0064426 §2–3/식1/Table1",
+      "verification_method": "창(i,t)와 전체 ERM 정의 독해",
+      "limit": "cell 소속 변경·다중 예측기 분할 방법으로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H048-C04",
+      "claim": "timestamp 층화의 동기와 다른 clustering",
+      "source_location": "SRC-0064426 §5.1/Fig1",
+      "verification_method": "mod8 예시·달/계절·feature/K-means 대안 대조",
+      "limit": "Tab 오차와 RCTL gradient 정렬·실측 전처리 총비용을 보장하지 않음"
+    },
+    {
+      "claim_id": "H048-C05",
+      "claim": "가중 strata gradient와 Lemma1",
+      "source_location": "SRC-0064426 §5.2/식7/Lemma1;EXT-H048-02 Lemma5",
+      "verification_method": "서로 겹치지 않는 strata·균등 추출·크기 가중·독립성 확인",
+      "limit": "층 크기가 다를 때 무가중 평균은 다른 목적일 수 있음"
+    },
+    {
+      "claim_id": "H048-C06",
+      "claim": "snapshot과 동일 표본의 gradient 차이",
+      "source_location": "SRC-0064426 Algorithm1/식8–10",
+      "verification_method": "같은 ξ에서 현재점/기준점 gradient를 빼는 순서 대조",
+      "limit": "서로 다른 표본의 두 gradient와 동일하다고 하지 않음"
+    },
+    {
+      "claim_id": "H048-C07",
+      "claim": "snapshot 불편성과 inner 조건부 편향",
+      "source_location": "EXT-H048-02 p8/식56;SRC-0064426 Lemma1",
+      "verification_method": "고정 snapshot 오차 ζ_t가 inner 기대값에 남음을 확인",
+      "limit": "모든 update가 조건부 불편하다는 주장을 배제"
+    },
+    {
+      "claim_id": "H048-C08",
+      "claim": "표본 균등과 시계열 균등의 표기 차이",
+      "source_location": "SRC-0064426 p3/식1–2",
+      "verification_method": "1/(N T_i)와1/|D| 조건부 산술 비교",
+      "limit": "길이가 다를 때의 확인 항목;실제 저자 구현 편향을 확정하지 않음"
+    },
+    {
+      "claim_id": "H048-C09",
+      "claim": "AR 하한은 자료의 존재 구성",
+      "source_location": "SRC-0064426 Assumption1/Theorem1/p4각주2;EXT-H048-02 B.2",
+      "verification_method": "zero-respecting·AR(p)/MSE·scaling 범위 독해",
+      "limit": "모든 현실 자료/현재 RCTL의 필연적 지연 증명 아님"
+    },
+    {
+      "claim_id": "H048-C10",
+      "claim": "smooth loss 가정과 MAE/ReLU 경계",
+      "source_location": "SRC-0064426 Assumption2;SRC-0021898 §1",
+      "verification_method": "개별 손실의 모든 θ에서 L-smooth 조건 대조",
+      "limit": "비볼록 허용을 비미분 MAE/ReLU 보장으로 확대하지 않음"
+    },
+    {
+      "claim_id": "H048-C11",
+      "claim": "stratum 분산 상한과 ε 조건",
+      "source_location": "SRC-0064426 Assumption3/Theorem2/Corollary1",
+      "verification_method": "S=Σwi²σi²=O(ε²)·동일 크기>1 가정 확인",
+      "limit": "작은 loss 분산이나 달력 이름만으로 충족되는 조건 아님"
+    },
+    {
+      "claim_id": "H048-C12",
+      "claim": "geometric 반복 수의 정확한 관례",
+      "source_location": "SRC-0064426 p6각주4/Theorem2",
+      "verification_method": "P(K=k)=p^k(1−p),p=B/(B+1)에서 E[K]=B 대조",
+      "limit": "다른 geometric 분포 관례·실용 K와 혼동하지 않음"
+    },
+    {
+      "claim_id": "H048-C13",
+      "claim": "이론 학습률과 출력의 범위",
+      "source_location": "SRC-0064426 Algorithm1/Theorem2;EXT-H048-02 B.3 식57–71",
+      "verification_method": "αL=cB^(-2/3)·outer snapshot 선택·기대 gradient norm 확인",
+      "limit": "임의 lr/마지막 iterate/Adam·test 오차로 정리를 확장하지 않음"
+    },
+    {
+      "claim_id": "H048-C14",
+      "claim": "점근 복잡도와 singleton 비용",
+      "source_location": "SRC-0064426 Theorem2/식11/Table2/Remark1–4;EXT-H048-02 Lemma5/식79–85",
+      "verification_method": "S/Δ/indicator·equal strata·SCSG/SVRG 대조;식84의 교차항 가중/중심화 재검토 항목",
+      "limit": "정리의 모든 상수·증명 독립 인증이나 wall time 배수 아님;인쇄 전개 공백을 실험 무효로 확대하지 않음"
+    },
+    {
+      "claim_id": "H048-C15",
+      "claim": "실용 조기 종료와 이론 반복의 차이",
+      "source_location": "EXT-H048-02 A.1/Algorithm2/A.3.2/Fig5",
+      "verification_method": "K 상한·γ 종료·SCSG/SVRG에도 종료 적용한 비교 확인",
+      "limit": "geometric 증명을 실용 변형 모두에 직접 적용하지 않음"
+    },
+    {
+      "claim_id": "H048-C16",
+      "claim": "현재 RCTL의 batch 의존·확률 연산 경계",
+      "source_location": "SRC-0021898 §3;SRC-0064426 식9/Assumption2",
+      "verification_method": "58의 BatchNorm/dropout 관찰과 고정 표본 목적 구별",
+      "limit": "이번에 RCTL gradient나 실제 training-mode 분산을 계산하지 않음"
+    },
+    {
+      "claim_id": "H048-C17",
+      "claim": "논문의 모델·손실·보고 장치",
+      "source_location": "SRC-0064426 §7 p6–7",
+      "verification_method": "VAR/LSTM MSE·MLP NLL·N-BEATS MAPE와hidden/depth/stacks 독해",
+      "limit": "저자 code commit/실제 설치 환경·원run 검증 아님"
+    },
+    {
+      "claim_id": "H048-C18",
+      "claim": "합성/세 실제 자료의 관측 단위",
+      "source_location": "SRC-0064426 §7.1–7.2;EXT-H048-02 A.2",
+      "verification_method": "도로 점유율·전력·환율·context/prediction·합성16 strata 확인",
+      "limit": "Traffic을 통신 트래픽으로 바꾸지 않음;32K 원문 보고값"
+    },
+    {
+      "claim_id": "H048-C19",
+      "claim": "49/70/32 strata의 재구성 공백",
+      "source_location": "SRC-0064426 §7.2 p7–8",
+      "verification_method": "인쇄 개수·weekday/season·6구간/8시계열 설명 비교",
+      "limit": "임의의28/48로 정정하거나 실제 코드 오류라고 단정하지 않음"
+    },
+    {
+      "claim_id": "H048-C20",
+      "claim": "분할·정규화·seed 등 미확인 조건",
+      "source_location": "SRC-0064426 §7/Table3/Fig2;EXT-H048-02 A",
+      "verification_method": "본문/부록 읽은 범위에서 실제split/seed/batch/K·튜닝 시간 공백 확인",
+      "limit": "test/validation 용어만으로 독립 validation 존재를 확정하지 않음"
+    },
+    {
+      "claim_id": "H048-C21",
+      "claim": "고정 시간과 5반복 평균/표준편차",
+      "source_location": "SRC-0064426 Table3 p7",
+      "verification_method": "MLP0.5h/N-BEATS3h·5run·tuning 표시 확인",
+      "limit": "전처리·전체 grid 비용까지 동일하다고 확대하지 않음"
+    },
+    {
+      "claim_id": "H048-C22",
+      "claim": "표3 모든 수치와 범위별 평균 우위",
+      "source_location": "SRC-0064426 Table3",
+      "verification_method": "84평균/SD쌍168값 독해·PDF추출대조·48차이 Decimal/Fraction 검산",
+      "limit": "표의 평균 비교이며 원run 재현/seed별 승률 아님"
+    },
+    {
+      "claim_id": "H048-C23",
+      "claim": "기본 SCott의 Exchange Rate 반례",
+      "source_location": "SRC-0064426 Table3/§7.2",
+      "verification_method": "MLPtest−1.685 vs−1.715/−1.732,NBEATS1.077/1.222 vs1.034/1.182 확인",
+      "limit": "기본 SCott의 전 조건 우위 표현을 제한;모든 층화 실패 아님"
+    },
+    {
+      "claim_id": "H048-C24",
+      "claim": "SD·음수 NLL·변형 optimizer 비교 경계",
+      "source_location": "SRC-0064426 Table3/§7.3",
+      "verification_method": "SAdam/Adam와SAdagrad/Adagrad 각12낮음;NLL 원척도 차이 사용",
+      "limit": "유의성/서로에 대한 우위·모든 seed 우위·NLL 상대율 주장 없음"
+    },
+    {
+      "claim_id": "H048-C25",
+      "claim": "곡선의 축·지표·선택된 실험 범위",
+      "source_location": "SRC-0064426 Fig1–3;EXT-H048-02 Fig4–5",
+      "verification_method": "초/분·iteration·train/test·gradient variance 시각 대조",
+      "limit": "그래프에서 정밀 수치/speedup을 임의 복원하지 않음"
+    },
+    {
+      "claim_id": "H048-C26",
+      "claim": "튜닝된 learning rate와 gamma",
+      "source_location": "EXT-H048-02 A.4/Table4",
+      "verification_method": "42lr+18γ=60값 전사·추출대조,β/weight decay/grid 독해",
+      "limit": "동일 lr 통제 비교 아님;전체 튜닝비는 미확인"
+    },
+    {
+      "claim_id": "H048-C27",
+      "claim": "gradient 계산량과 총비용의 구별",
+      "source_location": "SRC-0064426 §5.3/Algorithm1;EXT-H048-02 식72",
+      "verification_method": "snapshot·inner 두 gradient·O(BM)·B+E[K]의 점근 셈 분리",
+      "limit": "2B를 backward 상수/메모리/전처리 포함 실측 비용으로 바꾸지 않음"
+    },
+    {
+      "claim_id": "H048-C28",
+      "claim": "재검토 조건과 전체 미완료 범위",
+      "source_location": "SRC-0021898 §4–5;SRC-0064426 §5–8;EXT-H048-02 A/B",
+      "verification_method": "기존 안과 새 제안의 단위·목적·분할·가정·총비용 연결",
+      "limit": "저자코드/원run·증명전체·SGD-as·전체 역사 미완료"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_at_utc": "2026-10-09T20:22:30.544728+00:00",
+  "semantic_second_pass_scope": "같은 에이전트의 전체 팀 기록·28개 주장/출처/검수 문서와 본문·부록·표·그림 재대조. 표 안의 cardinality 표기를 수정하고 부록 식84의 교차항 가중·중심화 공백을 명시했다. 228인쇄 숫자와48평균차 재검산. 증명 전체 인증·독립 과학적 재현 아님."
+}
