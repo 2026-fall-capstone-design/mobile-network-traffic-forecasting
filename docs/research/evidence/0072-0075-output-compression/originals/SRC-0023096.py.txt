@@ -1,0 +1,15 @@
+from pathlib import Path
+import json,hashlib,subprocess
+from pypdf import PdfReader
+b=Path(__file__).resolve().parent/'sources/output_compression_73';d=b/'rendered';d.mkdir(exist_ok=True)
+records=[]
+for fn,pages in [('ForeCA_ICML2013.pdf',[5,8]),('MBRDR_CRAN_manual.pdf',[2])]:
+    doc=PdfReader(b/fn)
+    if fn.startswith('MBRDR'):
+        (b/'MBRDR_CRAN_manual.txt').write_text('\n'.join(f'\n=== PAGE {i+1} ===\n'+p.extract_text() for i,p in enumerate(doc.pages)),encoding='utf-8')
+    for p in pages:
+        out=d/(Path(fn).stem+f'_p{p}.png')
+        subprocess.run(['C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe','-f',str(p),'-l',str(p),'-r','105','-png','-singlefile',str(b/fn),str(out.with_suffix(''))],check=True,capture_output=True)
+        records.append({'pdf':fn,'page_count':len(doc.pages),'page':p,'png':str(out),'sha256':hashlib.sha256(out.read_bytes()).hexdigest()})
+(b/'render_manifest.json').write_text(json.dumps(records,indent=2),encoding='utf-8')
+print(json.dumps(records))

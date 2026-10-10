@@ -67,3 +67,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 ## SIU의 실제 손실식과 검색 후보의 접근 근거
 
 [H069 검수](verification/history-069.md)에서 기관 HTML과 현재 응답이 같음을 확인했지만 DOI의 일반 응답은202·빈 본문이었습니다. SIU 손실 계수·단위·전처리 fit 구간·분할·seed·수치표·코드는 미확인입니다. TSUL/Digital Twin 등의 저장 초록과 원논문 검수를 구분하고, 첫 질의 묶음 원문과 Rolling-Origin Conformal 후보의 정확한 서지를 추정 복원하지 않습니다. 원검색 전체의 팀 공용 보관 위치도 별도로 확인해야 합니다.
+
+## 72–75 뒤 남은 근거
+
+[기록과 범위](records/0072-0075-output-compression.md): Globalization/ForeCA/mbrdr/GNN의 실제 일차본문·그림·외부코드, 저장 검색11개의 검수가 남았다. isotropic noise 계획은 저장 실행에 없으며 own-only Tab의 동일 조건 비교도 없다. 이 공백을 새 실험 수행으로 임의 채우지 않는다. 등록 루트 HDF별칭이 없어진 시점과 대용량 팀 접근도 확인 대상이다.

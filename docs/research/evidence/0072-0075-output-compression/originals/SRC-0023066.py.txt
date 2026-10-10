@@ -1,0 +1,15 @@
+from pathlib import Path
+import json,hashlib
+b=Path(__file__).resolve().parent;o=b/'results/output_compression_74';p=b/'cumulative_execution_budget.json'
+before=p.read_bytes();a=json.loads(before);r=json.loads((o/'result.json').read_text(encoding='utf-8'));c=r['cost'];key='output_compression_74'
+assert all(x['stage']!=key for x in a['model_calls_by_stage']) and key not in a['new_cheap_diagnostic_seconds']
+assert (o/'run_finished.json').exists() and c['TabICL_contexts']==4 and c['TabICL_query_rows']==1344 and c['RCTL_fits']==0
+(o/'budget_before.json').write_bytes(before)
+a['model_calls_by_stage'].append({'stage':key,'contexts':4,'predicted_query_rows':1344,'fit_predict_seconds':c['TabICL_seconds'],'ensemble':1})
+for k,d in [('TabICL_contexts',4),('TabICL_query_rows',1344),('TabICL_fit_predict_seconds',c['TabICL_seconds'])]:a['used'][k]+=d
+a['remaining_count_budgets']['TabICL_contexts']-=4;a['remaining_count_budgets']['TabICL_query_rows']-=1344
+a['new_cheap_diagnostic_seconds'][key]=c['cheap_numeric_seconds']
+a['cheap_stage_details'].append({'stage':key,'new_simple_fits':26,'methods':['Ridge','HGB'],'entire_stage_seconds':c['stage_seconds'],'TabICL_seconds_accounted_separately':c['TabICL_seconds'],'fit_predict_seconds_included_in_cheap_stage':c['simple_fit_seconds'],'cost_not_counted_twice':True})
+after=json.dumps(a,indent=2,ensure_ascii=False,allow_nan=False).encode('utf-8');p.write_bytes(after);(o/'budget_after.json').write_bytes(after)
+(o/'budget_update.json').write_text(json.dumps({'stage':key,'sha256_before':hashlib.sha256(before).hexdigest(),'sha256_after':hashlib.sha256(after).hexdigest(),'cap_changes':0,'RCTL_fit_changes':0,'accounted_once':True},indent=2),encoding='utf-8')
+print(json.dumps({'used':a['used'],'remaining':a['remaining_count_budgets'],'cheap_seconds':sum(a['new_cheap_diagnostic_seconds'].values())}))

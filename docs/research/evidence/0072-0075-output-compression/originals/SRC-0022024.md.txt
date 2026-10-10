@@ -1,0 +1,31 @@
+# 72. 예측모델의 작동 방식과 clustering의 연결 검토
+
+2026-09-26. 새 모델·수치 진단 전에 저장한다. 이전 69–71 및 기존 기각안을 재실행하지 않는다.
+
+## 확인할 질문
+
+TabICLv2의 조건부 예측 차이를 최종 RCTL의 공유 이득으로 바꾸어 설명했던 문제를 피하면서, clustering이 바꿀 수 있는 실제 학습 결정을 찾는다. 단순 성능 지표 변경·context 선택·기존 손실 기반 clustering의 명칭 변경을 후보로 채택하지 않는다.
+
+## 원문 범위
+
+1. Ahmadi et al., Globalization for Scalable Short-term Load Forecasting, arXiv:2507.11729v1 (2025-07-15). 검색으로 처음 확인했다. §3–4, §5.2–5.5, Table 1–2와 데이터/코드 접근성을 읽는다. 전력 부하의 근거를 통신 cell의 직접 결과로 쓰지 않는다.
+2. López-Oriona et al., Time series clustering based on prediction accuracy of global forecasting models. arXiv:2305.00473v1은 이전에 검토한 원문이다. KBS 2025 DOI 10.1016/j.knosys.2025.113649와의 버전·저자 차이만 확인하고 같은 연구를 새 발견으로 세지 않는다. 새 공개본에 접근할 수 없다면 그 차이를 미확인으로 남긴다.
+3. 필요하면 위 원문의 직접 연결 연구 1편까지 추가하며, 분석할 질문을 먼저 이 파일에 추가한다.
+
+초록과 방법 읽기를 구별한다. 각 파일의 URL·버전·hash·실제 읽은 절·확인한 식/표·코드 여부를 보존한다. 새 PDF 최대 3개, 합계 20 MB 이내. 공개 접근만 사용한다. 관련 표/알고리즘 페이지는 렌더링하여 텍스트 추출 결과와 대조한다.
+
+## 판단 기준
+
+- 대상 모델의 학습 결과를 clustering에 넣는 방법은 RCTL 독립성 조건과 양립하는지 구분한다.
+- feature-transforming/target-transforming이라는 분류 자체가 통계적 성능 보장은 아니다. TabICLv2와 RCTL을 그 명칭만으로 같은 군에 놓지 않는다.
+- coefficient similarity와 예측함수 similarity, 입력 겹침, 유한 sample 수 증가의 효과를 구별한다.
+- 논문에서 관측한 이득이 clustering 때문인지, 특징·정규화·모델 수·개별 최적화 차이 때문인지 확인한다.
+- 신규 후보가 나오면 기존 근접 연구와 달라지는 결정, TabICLv2가 추가하는 정보, 단순 대안, 최소 확인을 별도로 구체화한다. 원문 검토만으로 성능 향상을 선언하지 않는다.
+
+## 비용과 산출물
+
+이번 계획은 문헌·정적 코드 검토만 허용한다. TabICL/RCTL/simple model 학습·추론 및 새 데이터 진단 0회. 새 진단이 필요하면 별도 사전 계획을 저장한다.
+
+현재 원장: TabICL 65 contexts/38,016 query rows, 잔여 15/21,984. RCTL 29 fits, 잔여 0. cheap 64.07695530000142초. 상한 변경·초기화 금지. 모든 기존 Milan 확인 구간은 개발 자료다.
+
+출처와 판단을 sources/model_mechanism_72 및 후속 검토 기록에 저장한다. 최종 추천안과 Word 완료 여부는 별도로 판단한다.

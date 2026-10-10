@@ -1,0 +1,13 @@
+# H070: 출력 압축·중복 중단 검수
+
+[기록](../records/0072-0075-output-compression.md) · [출처](../sources/history-070.md) · [수치 검사](history-070-numeric-check.json) · [주장별 대조](history-070-claims.json)
+
+40개 핵심 주장을 작성 후 원문·저장 수치와 다시 대조했다. 같은 에이전트의 별도 확인이며 독립 심사는 아니다. 현재660개 정적·해시·산술 검사와 오류 주입을 포함한 검사기 테스트3개를 통과했다. 이 수치는 의미 대조나 독립 심사를 대체하지 않는다.
+
+검사는 저장39배열·32지표군, HDF 선택값과 정규화/center/실제 target/raw_all 모멘트, 일곱 partition·기저·고유값·목적값, 정답을 쓰는 reconstruction과 실제 회귀 예측의 차이, 행별 SSE, 유리수toy, 정적 RCTL 가정 MAC, 원장 한 번 추가와 기존 상한 불변을 포함한다. CI에서도 동일 저장 검사기를 실행한다.
+
+원문45참조·metadata36·별칭197중196현재일치, snapshot18의71파일과 보호 원본6개를 대조했다. 루트 HDF 누락은 명세에 남긴다. 과거 계획의 isotropic noise 비교는 저장 실행에 없고, 결정 색인은13행이나 progress는14가지로 보고한다. 이런 경계를 정리본에 유지한다.
+
+코드는 역사 연구 모듈을 import·실행하지 않고 AST·JSON·`allow_pickle=False` NPZ만 읽는다. 정리용 HDF reader는 read-only 선택 추출에만 사용했다. 새 학습/추론·난수0, checkpoint 역직렬화0이다. 현재 기준의 모델성능 실험이나 독립 test 검증을 수행한 것이 아니다.
+
+전체 논문/외부코드/검색11개·대용량 팀 접근·76이후 및 이전 partial·실패비용 통합·최종 원본변화·대표 질문 검수는 미완료다. 전체 Goal은 계속 진행 중이다.

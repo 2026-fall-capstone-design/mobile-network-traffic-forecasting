@@ -1,0 +1,17 @@
+from pathlib import Path
+import subprocess,json,hashlib
+base=Path(__file__).resolve().parent/'sources/model_mechanism_72'
+pdf=base/'Globalization_arxiv_current.pdf'
+out=base/'rendered'
+out.mkdir(exist_ok=True)
+poppler=Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+records=[]
+for page in (16,18,35,42):
+    prefix=out/f'Globalization_p{page:02d}'
+    path=prefix.with_suffix('.png')
+    assert not path.exists()
+    subprocess.run([str(poppler),'-f',str(page),'-l',str(page),'-singlefile','-scale-to','1800','-png',str(pdf),str(prefix)],check=True,capture_output=True)
+    data=path.read_bytes()
+    records.append({'page':page,'file':str(path.relative_to(base)),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+(base/'render_manifest.json').write_text(json.dumps(records,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(records,indent=2))

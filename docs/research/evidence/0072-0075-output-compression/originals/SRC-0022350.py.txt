@@ -1,0 +1,48 @@
+from pathlib import Path
+import hashlib,json,math,re,shutil
+import numpy as np
+from pypdf import PdfReader
+b=Path(__file__).resolve().parent;w=b.parents[1];dest=w/'output/research/redesign_20260925_snapshot_18'
+assert not dest.exists(),'Do not overwrite existing archive'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+def finite(v):
+    if isinstance(v,float):assert math.isfinite(v)
+    elif isinstance(v,dict):
+        for x in v.values():finite(x)
+    elif isinstance(v,list):
+        for x in v:finite(x)
+s72=b/'sources/model_mechanism_72';s73=b/'sources/output_compression_73';d=b/'results/output_compression_74'
+valid=[];source_count=0
+for folder,mfile in [(s72,'manifest.json'),(s73,'manifest.json'),(s73,'followup_manifest.json')]:
+    for r in read(folder/mfile):
+        if not r.get('saved'):continue
+        p=folder/r.get('name',r.get('file'));assert sha(p)==r['sha256'] and p.stat().st_size==r['bytes'];source_count+=1
+        if p.suffix=='.pdf':valid.append(p)
+rp=s72/'Globalization_arxiv_current.pdf';r=read(s72/'pdf_retrieval_followup.json');assert sha(rp)==r['sha256'];valid.append(rp)
+assert len(valid)==3
+pdf_records=[{'file':str(p.relative_to(b)),'pages':len(PdfReader(p).pages),'sha256':sha(p)} for p in valid];assert sum(x['pages'] for x in pdf_records)==84
+result=read(d/'result.json');sett=read(d/'settings.json');assert read(d/'run_finished.json')['hashes_unchanged'];assert len(read(d/'calls.json'))==4
+for key,rel in [('plan','74_output_compression_pilot_plan.md'),('code','output_compression_pilot_74.py'),('data','assets/data_git_version.h5'),('checkpoint','assets/tabicl-regressor-v2-20260212.ckpt'),('RCTL_structure','rctl_torch.py')]:assert sha(b/rel)==sett['hashes'][key]
+a=np.load(d/'arrays.npz');y=a['actual'][168:]
+for key in ['Ridge','HGB','TabICL']:
+    e=a['teacher_'+key][168:]-y;assert abs(float((e*e).mean())-result['teacher'][key]['MSE'])<1e-12
+for key,m in result['actual_target_HGB_latent'].items():assert abs(float(((a['HGB_latent_'+key]-y)**2).mean())-m['MSE'])<1e-12
+before=read(d/'budget_before.json');after=read(d/'budget_after.json');assert after==read(b/'cumulative_execution_budget.json');assert before['caps']==after['caps'] and before['used']['RCTL_fits']==after['used']['RCTL_fits']==29
+assert after['used']['TabICL_contexts']-before['used']['TabICL_contexts']==4 and after['used']['TabICL_query_rows']-before['used']['TabICL_query_rows']==1344
+assert after['remaining_count_budgets']=={'TabICL_contexts':11,'TabICL_query_rows':20640,'RCTL_fits':0}
+public=w/'output/research/TabICLv2_재설계_출력압축과모델역할_추가검토.md'
+report=public.read_text(encoding='utf-8').replace('](</C:/','](<C:/');public.write_text(report,encoding='utf-8')
+for url in re.findall(r'\]\(<(C:/[^>]+)>\)',report):assert Path(url).is_file()
+for x in result['teacher'].values():assert f"{x['MSE']:.6f}" in report and f"{x['MAE']:.6f}" in report
+files=[public,w/'AGENTS.md',b/'progress.md',b/'candidate_decision_index.md',b/'cumulative_execution_budget.json']
+for folder in [s72,s73,b/'sources/review_72_75_logs',d]:files.extend(p for p in folder.rglob('*') if p.is_file())
+files.extend(b/f for f in ['72_model_mechanism_review_plan.md','73_predictive_output_compression_review_plan.md','72_73_source_findings.md','74_output_compression_pilot_plan.md','74_output_compression_findings.md','75_conditional_input_sharing_review_plan.md','75_input_sharing_reentry_findings.md','collect_model_mechanism_72.py','complete_model_source_72.py','render_model_mechanism_72.py','collect_output_compression_73.py','complete_output_sources_73.py','render_output_sources_73.py','output_compression_pilot_74.py','record_output_compression_74.py','archive_output_review_74.py'])
+files=sorted(set(files));assert all(p.is_file() for p in files)
+for p in files:
+    if p.suffix=='.json':finite(read(p))
+records=[]
+for p in files:
+    rel=p.relative_to(w);to=dest/rel;to.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,to);assert sha(p)==sha(to);records.append({'file':str(rel),'bytes':p.stat().st_size,'sha256':sha(p)})
+qa={'source_records_verified':source_count,'valid_pdfs':pdf_records,'known_truncated_pdf_excluded':'Globalization_2507_11729v1.pdf','visual_review_pages':7,'array_metrics_reproduced':True,'plan_code_data_checkpoint_hashes_verified':True,'single_budget_update':True,'caps_unchanged':True,'finite_json':True,'copies_hash_verified':True,'files':len(records),'bytes':sum(x['bytes'] for x in records),'final_goal_complete':False,'new_RCTL_fit':0}
+(dest/'manifest.json').write_text(json.dumps(records,indent=2,ensure_ascii=False),encoding='utf-8');(dest/'verification.json').write_text(json.dumps(qa,indent=2,ensure_ascii=False),encoding='utf-8');print(json.dumps(qa,ensure_ascii=False))

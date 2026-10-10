@@ -1,0 +1,112 @@
+{
+  "success": true,
+  "source_id": "SRC-0023485",
+  "source_sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+  "dataset": "data",
+  "time_range_inclusive": [
+    0,
+    1007
+  ],
+  "cell_ids": [
+    3737,
+    3765,
+    6137,
+    6165
+  ],
+  "stored_cell_indices": [
+    3736,
+    3764,
+    6136,
+    6164
+  ],
+  "activity_channel_index": 2,
+  "source_values_cast": "float64",
+  "timestamps_dataset": "idx",
+  "dates": {
+    "0": "2013-11-01 00:00:00",
+    "168": "2013-11-08 00:00:00",
+    "671": "2013-11-28 23:00:00",
+    "672": "2013-11-29 00:00:00",
+    "839": "2013-12-05 23:00:00",
+    "840": "2013-12-06 00:00:00",
+    "1007": "2013-12-12 23:00:00"
+  },
+  "scales": [
+    608.1437886904755,
+    720.8976502976186,
+    161.30894791666674,
+    4768.912587797625
+  ],
+  "center": [
+    0.9798193034588047,
+    1.0214472817445,
+    1.0155155327906933,
+    1.02624900636891
+  ],
+  "selected_data_sha256": "e97b92b43a6c476e1a16d4e73d17460fee867849cc870c86b65f5a7a29922ed7",
+  "identities": [
+    {
+      "role": "data",
+      "relative_path": "assets/data_git_version.h5",
+      "sha256": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+      "size_bytes": 357150320
+    },
+    {
+      "role": "checkpoint",
+      "relative_path": "assets/tabicl-regressor-v2-20260212.ckpt",
+      "sha256": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+      "size_bytes": 114324594
+    },
+    {
+      "role": "RCTL_structure",
+      "relative_path": "rctl_torch.py",
+      "sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+      "size_bytes": 2701
+    }
+  ],
+  "HDF_schema": [
+    {
+      "dataset": "data",
+      "shape": [
+        1488,
+        10000,
+        3
+      ],
+      "dtype": "float64"
+    },
+    {
+      "dataset": "idx",
+      "shape": [
+        1488
+      ],
+      "dtype": "|S19"
+    }
+  ],
+  "comparisons": [
+    {
+      "array": "scales",
+      "max_abs_difference": 0.0,
+      "match": true
+    },
+    {
+      "array": "center",
+      "max_abs_difference": 0.0,
+      "match": true
+    },
+    {
+      "array": "actual",
+      "max_abs_difference": 0.0,
+      "match": true
+    },
+    {
+      "array": "S_raw_all",
+      "max_abs_difference": 5.551115123125783e-17,
+      "match": true
+    }
+  ],
+  "source_read_only": true,
+  "model_loaded": false,
+  "original_script_executed": false,
+  "new_model_runs": 0,
+  "reader_h5py": "3.14.0"
+}

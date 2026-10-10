@@ -1,0 +1,22 @@
+--- snapshot17/progress.md
++++ snapshot18/progress.md
+@@ -7,2 +7,17 @@
+-## 최신 상태 — 69 피크 평가 원문, 70 저장 예측 진단, 71 판단
+-
++## 최신 상태 — 72–73 출력 표현 원문, 74 실제 확인, 75 중복 경로 정리
++
++- 2026-09-26. 활성 goal/AGENTS/기존 상한을 유지했다. 추천안·최종 Word는 아직 미완료다. goal 완료/blocked 변경없음. 사용자에게 goal 입력 방법을 다시 안내하지 않는다.
++- 72 계획 이후 Globalization arXiv2507.11729v1의 실제 Algorithm1–2/Table1–3를 읽었다. 유효 PDF65쪽 확보·관련4쪽 시각 대조. 처음 잘린PDF는 실패로 보존하고 사용하지 않는다. Table1의 LightGBM 수치와 본문 문장 불일치를 기록했다. RCTL 계수/importance로 clustering하는 방식은 독립성 조건과 다르다. KBS2025 출판본은 metadata만 새로 확인했으며 기존 arXiv와 내용이 같다고 주장하지 않는다.
++- 73 계획 이후 ForeCA ICML2013 공식9쪽·mbrdr CRAN manual10쪽을 확보했다. ForeCA의 entropy/eigenvector 알고리즘과 output-DR의 conditional-mean 목적을 읽었다. 관련3쪽 시각 대조. TMLR2025 GNN의 PDF는 verification 화면으로 미확보; 공식 GitHub commit303c8cc6c5142aa1a4eab06677ce44104bd95355의 core/학습 코드를 정적으로 확인했다. pooling→latentforecast→lift와 공동학습은 기존 구조다. source/접근 실패/버전/hash는 각폴더, 상세72_73_source_findings.md.
++- `74_output_compression_pilot_plan.md` 고정 뒤 단일 실행 exit0. 기존4cell3737/3765/6137/6165, 동일28열, cell당context256, calibration168+개발168query. Tab4contexts/1344행(mean),simple26fits,RCTLfit/forward0. actual target 기반latent회귀이며teacherpseudo-target학습아님.
++- **긍정:** Tab직접개발MSE .0095798159 vsHGB .0119248073/Ridge .0143598472, 양쪽절반·7일별구간 모두같은우열. MAE .0668277261. 이전60과다른시기/context라공간입력효과비교로쓰지않는다.
++- **압축 후보 판정:** K2각rank1의7partition중Tab/Ridge/HGB/전체PCA가같은소속3737단독/나머지3개를택했다. actual-target HGB MSE: full .0124458567, PCA .0198714056, Tabplugin .0197991680, Tabcorrected .0200536405. 교정추가이득없고작은plugin차이로착수추천안함. 현재출력압축후보를모듈추가로확대안함. RCTL확인통과로세지않는다.
++- MAC산술: 같은입력L2/c24에서4scalar1,376,384,2clusterrank1+복원688,196,같은2clusterfull-output688,256,1corefull-output344,192. rank절감보다core호출수가큰요인이다. full-output강한대안을빼지않는다. 실제속도측정아님.
++- 74 비용: Tab5.2815415초,cheap2.6676498초(단순fit포함),전체7.9491913초. 원장한번반영·전후hash보존. 누적Tab69/39360/250.821318초,잔여11/20640;RCTL29fit/잔여0;cheap66.7446051초. 상한변경0·재실행0.
++- 75에서는입력공유/Granger경로를추가검색했으나47과대조해본질적으로이미검토한경로임을확인하고새모델실행전중단했다. 일부새검색은metadata/초록범위뿐이다. `75_input_sharing_reentry_findings.md`에기록. 같은조건own-onlyTab비교는미실행이며현재신규결정없이추가실행하지않는다.
++- `candidate_decision_index.md`를만들어기존14가지결정/기각원리/긍정증거/재진입조건을연결했다. AGENTS에새후보전대조지침추가. 다음에는이인덱스와상세기록을먼저읽고기존실패의원인을실제로바꾸는결정부터정한다. 아직구체적인새추천후보는없다.
++- 공개보고서 `output/research/TabICLv2_재설계_출력압축과모델역할_추가검토.md`, 내부74상세/예측/기저/소속/수치표보존. 현재liveprocess없음. 이번turn은새원문·실제Tab확인으로진전했으며외부차단감사turn이아니다.
++
++## 이전 상태 — 69 피크 평가 원문, 70 저장 예측 진단, 71 판단
++
++- 증분 snapshot17 보관 완료:56파일/14,152,614bytes. PDF2개/38쪽·시각검수6쪽·원문hash·plan/code/inputhash·원래metric/표수치·local링크·finiteJSON·원장단일증분·복사hash검증. 초기검색원문2개의.json이실제로plain text라첫QA가복사전중단됐고,원문.txt보존후JSONencoding수정하여검증완료. 모델/진단재실행0. 이전01–17불변. 이줄만보관후추가.

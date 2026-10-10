@@ -1,0 +1,52 @@
+# 72–73. 학습 구조와 출력 압축 원문 검토
+
+2026-09-26. 새 모델 학습·추론 및 수치 진단은 이 문서 작성까지 0회다. 추천안은 아직 확정하지 않았다.
+
+## 72. Globalization for Scalable Short-term Load Forecasting
+
+Ahmadi, Zareipour, Leung, arXiv:2507.11729v1(2025-07-15). 공식 HTML §3–4, §5.2–5.5와 PDF의 방법·표를 읽었다. 유효 PDF `Globalization_arxiv_current.pdf`는 65쪽이며 제목 앞 graphical abstract/highlights가 있다. 처음 받은 6,291,456 bytes 파일은 잘려 있어 사용하지 않는다. URL·hash·실패는 sources/model_mechanism_72의 manifest에 남겼다. PDF 16·18·35·42쪽을 렌더링하여 확인했다.
+
+- Alberta 전력 부하 42개 지역, 2011–2023의 시간별 MW를 다룬다. 통신 activity나 전송속도와 구별한다. 2011–2021 train, 2022 validation, 2023 test다.
+- Algorithm 1은 각 지역 예측모델의 학습된 계수/중요도를 k-means한 뒤 cluster별 global model을 학습한다. RCTL 계수를 그대로 대입하면 현재의 독립성 조건을 위반한다.
+- Algorithm 2는 global 모델 중요도로 전체 sample 거리행렬을 가중한 다음 sample을 묶는다. 원문의 M×M 거리행렬은 큰 cell 집합에서 비용이 저절로 작아지는 구조가 아니다. cell clustering과 sample clustering도 다르다.
+- lag·평균·달력·기상정보를 사용한다. 다음 시점 기상 예보가 알려진다고 가정하는 구성까지 Milan에 옮길 수 없다. 지역 모델/글로벌 모델의 tree 수가 다르므로 완전히 같은 계산량 비교로 읽지 않는다.
+- Table 1 nMAE(%), local/global/coefficient-cluster: Ridge 2.1417/2.1925/2.1509, XGBoost 2.3524/2.2837/2.2605, LightGBM 2.3538/2.2764/2.2685. clustering은 global 대비 세 방법 모두 개선하지만 Ridge local보다 나쁘다. LightGBM이 조금 악화했다는 §5.5 문장은 이 표와 맞지 않아 그대로 인용하지 않는다.
+- Table 3 global/unweighted-instance/weighted-instance: Ridge 2.1925/2.1856/2.1925, XGBoost 2.2837/2.2659/2.2305, LightGBM 2.2764/2.2427/2.2243. 중요도 가중이 모든 학습기에서 같은 효과를 내지 않는다.
+- 저자의 feature-transformer/target-transformer 구분은 해석틀이다. boosting의 출력이 언제나 관측 target 범위 안이라는 일반 정리로 취급하지 않는다. 공개 코드는 확인하지 못했다.
+
+KBS 2025 DOI 10.1016/j.knosys.2025.113649의 Crossref metadata도 확인했다. 제목은 Time series clustering based on prediction accuracy of global forecasting models, 저자는 López-Oriona/Montero-Manso/Vilar다. 기존에 읽은 arXiv:2305.00473v1과 저자·버전 차이가 있으므로 최신 출판본 방법까지 읽었다고 표시하지 않는다. 이번 publisher 본문 접근은 실패했다.
+
+## 73. 예측 가능한 출력을 찾는 기존 방법
+
+### ForeCA, ICML 2013
+
+Goerg, Forecastable Component Analysis, PMLR 28(2):64–72. 공식 PDF 9쪽, §1–6과 Discussion, 식(16)–(27)을 읽고 PDF 5·8쪽을 시각 대조했다. 스펙트럼 entropy를 줄이는 선형 성분을 찾고 whitening 후 반복 고유벡터 계산을 한다. 정규화된 주파수 분포의 집중도를 예측 가능성으로 삼으며 특정 예측 horizon·손실·관측 입력에 맞춘 조건부 평균 목적은 아니다. Gaussian이면 스펙트럼이 시간 의존 전체를 표현한다는 조건이 있고, 일반 비Gaussian에서는 관리 가능한 지표로 제안한다. 고분산과 예측 가능성을 구분하는 발상 자체는 이미 있다. §5는 금융/지역 경제 표현의 유용성을 보이며 현재 통신 RCTL 압축의 직접 성능 증거가 아니다.
+
+### On Time Series Clustering with Graph Neural Networks, TMLR 2025
+
+Hansen/Cini/Bianchi. OpenReview MHQXfiXsr3는 현재 browser verification 화면이어서 PDF 본문을 확보하지 못했다. 검색에 노출된 공식 본문 일부와 공식 GitHub를 구분하여 읽었다. commit 303c8cc6c5142aa1a4eab06677ce44104bd95355의 model.py/predictor.py/pooling_functions.py를 정적으로 확인했다. 외부 코드 실행은 하지 않았다.
+
+model.py는 시간별 node encoding→temporal aggregation→GNN→static-assignment pooling→latent temporal decoder→assignment 행렬로 lift하는 순서다. predictor.py training_step은 실제 target의 예측 loss와 auxiliary loss를 합한다. 따라서 latent 출력·cluster·최종 예측을 공동학습하는 구조가 이미 있다. current 연구에서 이를 RCTL로 그대로 교체하면 학습 결과가 clustering을 결정하여 독립성이 사라진다. 또한 encoder는 pooling 이전 모든 node에 적용되므로 latent output 수와 전체 encoder 실행비를 혼동하지 않는다. 실제 CER 데이터는 별도 신청이 필요하며 README가 다운로드를 제공하지 않는다.
+
+### Response dimension reduction와 공식 mbrdr
+
+Yoo/Cook(2008), DOI 10.1016/j.csda.2008.07.029, 조건부 평균을 보존하는 response subspace는 기존 개념이다. 2008 전체 PDF는 확보하지 못했다. Ahn/Yoo(2024), CSAM 31(2):179–189는 publisher 검색에서 method 일부를 확인했으나 직접 TLS hostname 오류로 전체 본문 접근을 완료하지 못했다. 인증서 검증을 끄지 않았다.
+
+CRAN 공식 mbrdr 1.1.1 manual 10쪽을 확보했다. 표지 렌더 날짜 2026-05-08과 실제 package Date/Publication 2022-01-24를 구분한다. 1–6쪽의 함수·목적·예제를 읽었다. 조건부 평균 보존, 출력 방향/차원 추정, OLS 방식 yc 및 prr/pfrr/upfrr를 제공한다. choose.fx는 중심화 X, 제곱항, 지수항, X의 k-means dummy까지 지원한다. 따라서 기존 output DR가 비선형 입력을 전혀 다룰 수 없다고 주장하지 않는다. manual 참고문헌 일부의 journal 표기는 DOI metadata와 달라 DOI로 식별한다.
+
+## 남는 검토 대상
+
+새 기여를 ‘예측 가능한 성분을 찾는다’ 또는 ‘cluster 출력을 압축한다’로 정하지 않는다. 검토할 차이는 제한된 학습자료에서 (1) 최종 RCTL을 호출하지 않고 (2) 동일한 과거 정보로 설명되는 cell 출력의 공통 방향을 추정하고 (3) 추정기의 오류가 압축 결정을 바꾸는 영향을 관측 target으로 보정하여 (4) 고정된 계산량에서 cell 묶음과 출력 표현을 결정하는 절차다.
+
+보정은 만능이 아니다. 조건부 평균 추정 오차의 1차 항을 없애는 익숙한 모멘트 구조이며, 오차 제곱만큼 하향 편향이 남고 finite matrix가 indefinite일 수 있다. 이를 신규 정리·안전성 보장으로 부르지 않는다. RCTL의 latent 출력은 실제 관측 target의 선형 변환으로 학습하며 Tab 예측을 정답으로 사용하지 않는다. 직접 MSE 분해가 성립해도 유한 RCTL의 학습 난이도가 같다는 보장은 없다. 다음 작은 확인은 별도 계획에 따라 수행한다.
+
+## 출처
+
+- https://arxiv.org/abs/2507.11729
+- https://doi.org/10.1016/j.knosys.2025.113649
+- https://proceedings.mlr.press/v28/goerg13.html
+- https://openreview.net/forum?id=MHQXfiXsr3
+- https://github.com/NGMLGroup/Time-Series-Clustering-with-GNNs/tree/303c8cc6c5142aa1a4eab06677ce44104bd95355
+- https://doi.org/10.1016/j.csda.2008.07.029
+- https://doi.org/10.29220/CSAM.2024.31.2.179
+- https://cran.r-project.org/web/packages/mbrdr/mbrdr.pdf
