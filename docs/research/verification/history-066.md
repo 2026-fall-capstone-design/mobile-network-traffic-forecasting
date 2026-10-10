@@ -29,3 +29,5 @@ uv run --locked --group archive python scripts/research_archive/verify_peak_obje
 새 검사기 자체도 [8개 경계 검사](history-066-verifier-check.json)로 확인했다. 손으로 계산한 불균등 피크 개수의 macro/micro·전체 분모와 경험 분위수를 대조하고, private 사본의 수치 변조·비교행 누락·NPZ 변경을 거절하는지 확인했다. 원자료는 변경하지 않았다.
 
 후속 [H067 검수](history-067.md)는 Forecaster’s Dilemma의 저널 본문과 표현·판본을 추가 대조했다. 위 H066의 당시 범위 수치는 그대로 유지한다. 이 문헌 대조는 H066의 저장 예측 계산을 독립 재현으로 다시 세는 작업이 아니다.
+
+[H068 검수](history-068.md)에서 DeepCog 저자본과 별도 공개 코드의 판본·비용·비교군을 추가 대조했습니다. H066의 저장 예측을 새 실험이나 독립 재현으로 다시 가산하지 않습니다.

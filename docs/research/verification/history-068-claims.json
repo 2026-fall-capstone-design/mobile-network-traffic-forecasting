@@ -1,0 +1,364 @@
+{
+  "batch_id": "history-068",
+  "claims": [
+    {
+      "claim_id": "H068-C01",
+      "claim": "용량 결정·예측 오차·clustering 기여를 구분한다.",
+      "source_location": "SRC-0063442 PDF2–5; SRC-0022020:18–22; SRC-0000152:75–90",
+      "verification_method": "PDF2 목적·4 구조·5 행동을 다시 읽고 원69:18–22 및 당시 보고서75–90과 대조했다. 용량·점예측·clustering 기여를 분리했다.",
+      "limit": "DeepCog 비용 이득을 Tab 분할 성능으로 옮기지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C02",
+      "claim": "원69/71과당시scope는 선택독해였고현재전체저자본독해와구분한다.",
+      "source_location": "SRC-0022020:9–14; SRC-0022022:9–12; SRC-0063462:31–59",
+      "verification_method": "원69 전체26행·71 전체43행, scope31–59를 다시 읽어 당시 selected와현재16쪽독해의 시점을 구분했다.",
+      "limit": "과거기록의not_read를소급변경하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C03",
+      "claim": "JSAC서지2020-02/38(2)/361–376과2019저자본표지+15본문을구분한다.",
+      "source_location": "SRC-0063442 PDF1–2; SRC-0063444 meta citation_*; current-acquisitions",
+      "verification_method": "PDF1–2 텍스트를 다시 읽고 cover연도·수락일·placeholder와기관HTML 메타44개를 대조했다. 저장소 dateAccepted값을 논문수락일로 쓰지 않는 표현으로 한정했다.",
+      "limit": "최종출판PDF대조는미완료;copyright2009를발행연도로채택하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C04",
+      "claim": "PDF전체16쪽·파생TXT/HTML/PNG실제범위를기록한다.",
+      "source_location": "SRC-0063442 PDF1–16; SRC-0063443:1969행대응; SRC-0063444:458행정적; SRC-0063464–0063466; format-audit",
+      "verification_method": "first-pass16쪽/PNG3범위 및 TXT16대응·HTML정적scope를 감사와 대조했다. second-pass는PDF1–2텍스트·4–15시각12쪽이라는 별도범위다.",
+      "limit": "참고문헌43항목은43편본문독해가아니다;raw태그/행전수별도독해아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C05",
+      "claim": "과거Tp기지국수요에서미래기간고정datacenter용량을결정한다.",
+      "source_location": "SRC-0063442 PDF5 §III",
+      "verification_method": "PDF5 N/M/fs/d 집계·과거Tp·미래상수capacity 표현을 시각 재대조했다. 미래수요관측을 입력조건으로 넣지 않았다.",
+      "limit": "미래수요를예측시알고있다는설정아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C06",
+      "claim": "식2의0..Th와실험1..96lookahead의인덱스경계가미확인이다.",
+      "source_location": "SRC-0063442 PDF5,8 Eq2,10 §V",
+      "verification_method": "PDF5 기간표기·8 식2의0..Th·10 1슬롯/96슬롯설명을 시각 대조했다. Th+1포함과실제타깃구현을 구분했다.",
+      "limit": "표기차이를실행버그로확정하거나조용히교정하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C07",
+      "claim": "datacenter소속fs와CNN입력격자는다른매핑이다.",
+      "source_location": "SRC-0063442 PDF5 foot1; PDF6–7 §III.B",
+      "verification_method": "PDF5 fs전사함수와각주1,6–7 입력grid배치를 다시 읽었다. datacenter소속과입력위치를 구분했다.",
+      "limit": "임의분할지원주장은UPC소속수정의효과증거가아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C08",
+      "claim": "그림2구조128/64/32와CNN32/32/16·dropout.3·마지막linear를확인한다.",
+      "source_location": "SRC-0063442 PDF4 Fig2,5–6 §III.A",
+      "verification_method": "PDF4 Fig2의FC1=128,FC2=64,FC3=32 및필터32/32/16,PDF6 dropout/linear를 시각 대조했다.",
+      "limit": "cluster출력은datacenter집계;비음수강제나새clustering목적아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C09",
+      "claim": "Adam5e−4와encoder재사용을읽되모든학습/시간감소확정으로확대하지않는다.",
+      "source_location": "SRC-0063442 PDF5 foot2,6 §III.A",
+      "verification_method": "PDF5 각주2·6 Adam5e−4/encoder재사용 설명을 대조했다. 비용실측·seed/batch/버전확정으로확대하지 않았다.",
+      "limit": "본문만으로seed/batch/버전/구조탐색전체미확인.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C10",
+      "claim": "SBD→MDS→Hungarian은CNN입력재배열이다.",
+      "source_location": "SRC-0063442 PDF6–7 §III.B",
+      "verification_method": "PDF6 전체서비스합/SBD·7 MDS와Hungarian Ncells를 다시 읽었다. 입력재배열을UPC소속수정으로바꾸지 않았다.",
+      "limit": "RCTL오차로학습문제소속을수정하는절차로읽지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C11",
+      "claim": "N기지국설명대M행렬및CNNdecoder표기불일치를보존한다.",
+      "source_location": "SRC-0063442 PDF6 §III.B,7 첫MDS식",
+      "verification_method": "PDF6의D M×M/decoder와7 M좌표최적화식을 시각확인했다. N기지국설명과불일치를보존하고실행오류를확정하지 않았다.",
+      "limit": "실제코드버그나저자확인정정으로단정하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C12",
+      "claim": "전처리fit시점이모두확인된것은아니다.",
+      "source_location": "SRC-0063442 PDF6–7 §III.B,10 §V; external notebook cells1–10",
+      "verification_method": "PDF6–7 historical입력·10 split설명과notebook10셀을 재독해했다. 전처리fit경계미확인을 누출발견으로표시하지 않았다.",
+      "limit": "데이터누출발견이라는단정아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C13",
+      "claim": "470eNodeB/5분bytes와3서비스·datacenter사례를구분한다.",
+      "source_location": "SRC-0063442 PDF9 §V/foot4",
+      "verification_method": "PDF9의470 eNodeB/GTP+DPI/sector5min bytes·3case·각주4추론을 시각 재대조했다.",
+      "limit": "실제NFV배치나금전청구자료전체관측아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C14",
+      "claim": "47×10·6슬롯30분·2개월/2주/2주·15시나리오를확인한다.",
+      "source_location": "SRC-0063442 PDF10 §V,12 §V.C",
+      "verification_method": "PDF10의47×10/Tp6/30min/2개월2주2주와12의5service×3case를 다시 읽었다. 반복/날짜/원배열미확인을보존했다.",
+      "limit": "날짜·반복별원배열·seed전체미확인.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C15",
+      "claim": "이상비용은부족사건고정β와초과량선형γ다.",
+      "source_location": "SRC-0063442 PDF7 Fig3,8 §IV.A",
+      "verification_method": "PDF7 Fig3와8 β위반사건·γ초과량·일치0 설명을 대조했다. 이상비용과학습surrogate·Milan척도를분리했다.",
+      "limit": "부족량선형pinball/Milan금액/CPU절감과같지않다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C16",
+      "claim": "α=β/γ는비용단위를유지하면용량단위이고quantileτ가아니다.",
+      "source_location": "SRC-0063442 PDF8 §IV.A; 단위해석",
+      "verification_method": "PDF8 α=β/γ와동등초과capacity단위 설명을 다시 읽고단위논리를 확인했다. quantileτ와동일시하지 않았다.",
+      "limit": "정규화/단위변경시동일α가동일정책아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C17",
+      "claim": "식1세구간을이상적비용과별도로전사했다.",
+      "source_location": "SRC-0063442 PDF8 Eq1; SRC-0063466",
+      "verification_method": "PDF8 Eq1의세분기와경계≤/>,δ정의를기록표·수치checker전사와대조했다.",
+      "limit": "학습surrogate를정확한실제운영비용으로동일시하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C18",
+      "claim": "식1의최소점·연속성·미분/볼록성경계를작게대조한다.",
+      "source_location": "SRC-0063442 PDF8 Eq1/본문; numeric-check formula_examples",
+      "verification_method": "PDF8 수식의0/εα양쪽값·기울기와본문미분가능성문장을 대조했다. ε=.1예시와일반양수조건·비볼록조건을분리했다.",
+      "limit": "양αε·0<ε<1범위를명시;신경망학습불가나전체논문기각아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C19",
+      "claim": "식2는같은용량을유지하는기간전체와datacenter의손실합이다.",
+      "source_location": "SRC-0063442 PDF5,8 Eq2",
+      "verification_method": "PDF8 Eq2의같은capacity·j/τ합,5상수유지기간을재대조했다. mean-demand/next-step손실과분리했다.",
+      "limit": "다음값MAE·평균수요만의손실과다름;Th경계미확인.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C20",
+      "claim": "공통βγ의실험가정과이질적비용지원주장을구분한다.",
+      "source_location": "SRC-0063442 PDF8 Eq2뒤,10 좌상단",
+      "verification_method": "PDF8식뒤공통βγ및10좌측실험설명을재대조했다. 이질적실제비용현장검증이라고쓰지않았다.",
+      "limit": "실제이질적비용체계현장시험완료아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C21",
+      "claim": "Fig4의offset확인은전역최적증명이아니다.",
+      "source_location": "SRC-0063442 PDF8–9 §IV.B,10 Fig4; foot3",
+      "verification_method": "PDF8–9 correctness설명·10 Fig4/9각주3를 대조했다. 고정offset가족의비교를전역최적성으로바꾸지않았다.",
+      "limit": "시험한offset/case범위밖정책·모든모수최적성아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C22",
+      "claim": "Fig5의20epoch이전비용감소는보고된곡선의범위다.",
+      "source_location": "SRC-0063442 PDF9 §IV.B,10 Fig5",
+      "verification_method": "PDF9 convergence문단과10 Fig5를 다시 읽었다.20epoch이전저자보고와3곡선·벽시계/반복미확인을구분했다.",
+      "limit": "seed/반복/벽시계비용·수렴보장미확인.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C23",
+      "claim": "Fig6비교군과비용비15–27%/64%의분모를구분한다.",
+      "source_location": "SRC-0063442 PDF10–11 §V.A/Fig6/foot5",
+      "verification_method": "PDF10–11 비교군·Fig6·15–27/64본문을재대조했다. 비용비율과감소율을분리하고원배열재현을주장하지않았다.",
+      "limit": "원비용배열재현아님;감소율로잘못인용하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C24",
+      "claim": "MAE-post는5%peakoffset이고MAE-pre인쇄O+MAE는상수다.",
+      "source_location": "SRC-0063442 PDF11 §V.B; SRC-0063464; numeric-check constant_added_MAE",
+      "verification_method": "PDF11 MAE-post5%와O+MAE인쇄식을 다시 읽고별도상수산술검사코드를검토했다. 저자구현을임의교정하지않았다.",
+      "limit": "최소점불변의수식해석;저자실제구현을추측교정하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C25",
+      "claim": "두best비교군은미래정보를쓰는oracle이다.",
+      "source_location": "SRC-0063442 PDF11–12 §V.B",
+      "verification_method": "PDF11의post-best가최소화하는대상이논문손실ℓ라는점을초안에보완했다. pre-best의test평균과oracle명시도재대조했다.",
+      "limit": "validation-onlybaseline과같은정보조건아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C26",
+      "claim": "Fig7의24인쇄값은DeepCog대비상대비용차이로읽는다.",
+      "source_location": "SRC-0063442 PDF12 Fig7; SRC-0063465; numeric-check figure7",
+      "verification_method": "PDF12 Fig7 여섯group·4method의24label을초안표/decimalreport와하나씩대조했다.0기준·음수·본문higher/lower로차이율해석을한정했다.",
+      "limit": "위쪽초과량/위반원배열복원아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C27",
+      "claim": "Facebook45oracle두개이득과feasible인쇄범위예외를보존한다.",
+      "source_location": "SRC-0063442 PDF11–12 §V.B/Fig7; numeric-check figure7_ranges",
+      "verification_method": "PDF11–12 문장범위와24값을대조했다. 음수두개Facebook45·69.2/80.4변환·5분139.5–443.3/45분158–236범위를확인했다.",
+      "limit": "모든oracle항상우월/열등으로확대하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C28",
+      "claim": "Fig8초과량%와위반%분모는다르다.",
+      "source_location": "SRC-0063442 PDF12–13 §V.C/Fig8",
+      "verification_method": "PDF12–13 Fig8 α6값/15case/2horizon과양축분모를대조했다. 부족사건시간비율과초과량수요비율을구분했다.",
+      "limit": "같은분모로합치지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C29",
+      "claim": "finiteperiod단조위반과집계규모해석의경계를보존한다.",
+      "source_location": "SRC-0063442 PDF13 §V.C/foot7",
+      "verification_method": "PDF13 각주7의finiteperiod단조예외와본문중앙집계설명을재대조했다. 모든점단조성/분리된clustering효과를주장하지않았다.",
+      "limit": "모든점단조성이나새clustering의인과효과아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C30",
+      "claim": "Fig9준선형/대략2배는특정실험범위다.",
+      "source_location": "SRC-0063442 PDF13–14 §V.D/Fig9",
+      "verification_method": "PDF13–14 Fig9/준선형·대략2배·8h설명을시각재대조했다. 경험적범위와전역bound를구분했다.",
+      "limit": "모든horizon상한/정확히2배/이론보장아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C31",
+      "claim": "Fig10slots축과본문minutes의불일치를남긴다.",
+      "source_location": "SRC-0063442 PDF10 §V,14 Fig9,15 Fig10",
+      "verification_method": "PDF15 Fig10 slots축/5…480눈금과14 minutes축·10의5–480min설명을시각재대조했다.",
+      "limit": "Th실구현의단위를임의확정하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C32",
+      "claim": "Fig11부캡션α와전체캡션α가다르다.",
+      "source_location": "SRC-0063442 PDF15 Fig11",
+      "verification_method": "PDF15 Fig11의6horizon·부캡션.5/2/5반복·전체α2를대조했다. 실제α와horizon통제조건을추측하지않았다.",
+      "limit": "horizon만바꾼통제비교·실제bytes복원아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C33",
+      "claim": "고정공개commit두파일과INFOCOM2019README를구분한다.",
+      "source_location": "external GitHub tree b607e2c370ad222046dfe92ef4f5a7f7f94284e5; README; notebook10cells",
+      "verification_method": "고정commit tree두파일/README전체와notebook10셀을두번째로읽었다. INFOCOM인용과JSAC목표버전을분리했다.",
+      "limit": "JSAC장기실험전체배포본확정아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C34",
+      "claim": "notebookDense128누락과전역factory호출명차이를확인한다.",
+      "source_location": "external notebook cell6,cell8; SRC-0063442 PDF4 Fig2",
+      "verification_method": "notebook cell6 nested cost_func와전역factory,cell8 Dense/compile을정적으로재대조했다. PDF4의128층차이를연결했다.",
+      "limit": "확인10셀의정적범위;JSAC실제실험버그확정아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C35",
+      "claim": "notebook양초과분기와ε값이저자본식과다르다.",
+      "source_location": "external notebook cell6; SRC-0063442 PDF8 Eq1; numeric-check formula_examples",
+      "verification_method": "notebook cell6세분기와ε.1을PDF8 Eq1에재대조했다. α2/δ1의.8대2·분모0산술과실제TF실행을구분했다.",
+      "limit": "독립전사산술이며TensorFlow실행아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C36",
+      "claim": "notebook의미정의입력·미사용delay·예시설정과저장출력을구분한다.",
+      "source_location": "external notebook cells2,4,8,10 and metadata",
+      "verification_method": "notebook전10셀의source/메타/출력재독해. cell4 delay미사용·(n,1),cell10미정의입력·batch변수/fit호출을확인했다.",
+      "limit": "batch_size실적용및현재재현성확정아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C37",
+      "claim": "원실험배열·설정·전체시간메모리는미확인이다.",
+      "source_location": "SRC-0063442 PDF9–15; external repository two-file tree/notebook",
+      "verification_method": "저자본실험설명과두파일tree/notebook범위를대조했다. 도구시간을원학습비용으로바꾸지않았다.",
+      "limit": "아카이브도구시간을논문학습비용으로세지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C38",
+      "claim": "H066의U/O선형비용과DeepCog고정위반비용은다르다.",
+      "source_location": "SRC-0022022:17–29; SRC-0000152:42–77; SRC-0063442 PDF8; H066-C18–C20/C26",
+      "verification_method": "원71:17–29/보고서42–58/75–77과H066 claims를다시읽었다. 잘못된H066-C22참조를C18–20/C26으로수정해U/O·빈도·pinball의실제근거로연결했다.",
+      "limit": "모든αOMC열세·새비대칭학습기각으로확대하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C39",
+      "claim": "결과선택피크평가와전체기간결정비용은다른질문이다.",
+      "source_location": "SRC-0000152:32–38/73–77; H067-C01/C10/C12; SRC-0063442 PDF5/8",
+      "verification_method": "당시보고서32–38/73–77과H067-C01/C10/C12,PDF5/8를다시대조했다. 결과조건부선택과전체기간행동비용을구분했다.",
+      "limit": "proper분포점수·quantile점손실·용량행동비용동일시금지.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C40",
+      "claim": "후속실험은단위·행동·기간·손해·정보시점·단순비교를사전명시해야한다.",
+      "source_location": "SRC-0022020:18–22; SRC-0022022:25–39; SRC-0063442 PDF5/8/11–12",
+      "verification_method": "원69/71의범위와PDF5/8/11–12에비춰설계조건을검토했다. 새실험실행이나독립test성공으로표현하지않았다.",
+      "limit": "후속설계요건이며새실행/독립test결과아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C41",
+      "claim": "입력배치·편향·비용변경만으로UPC기여를확정하지않는다.",
+      "source_location": "SRC-0022022:27–37; SRC-0000152:81–90; SRC-0063442 PDF6–7",
+      "verification_method": "원71:27–37/보고서81–90을다시읽고PDF6–7입력배치와대조했다. 신규clustering기여와기존긍정적직접예측을분리했다.",
+      "limit": "과거긍정적직접예측결과보존;Tab전체무가치주장아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C42",
+      "claim": "최종IEEE/UC3M본문을확보하지못했다.",
+      "source_location": "external-version-check requests DOI/UC3M; 웹열람결과",
+      "verification_method": "저장요청결과의DOI202/빈본문·UC3M500,웹로봇확인/403을대조했다. 본문획득/최종판검수로가산하지않았다.",
+      "limit": "검색snippet/저자본/INFOCOM코드를최종판검수로세지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C43",
+      "claim": "10그룹20경로·보호6·사본4재사용/외부6·24값83검사범위를명시한다.",
+      "source_location": "manifest/provenance-check/format-audit/numeric-check; source-preservation-baseline",
+      "verification_method": "명세10그룹20경로/사본4/외부6/보호6과83검사24label리포트·읽기scope를대조했다. 성능재현횟수로세지않았다.",
+      "limit": "가산은기록과검수주장만;학습·원코드실행·난수0.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H068-C44",
+      "claim": "SIU/검색원문·후속기록·비용·접근등전체Goal잔여를보존한다.",
+      "source_location": "state/queue; manifest remaining; SRC-0022022:33–39",
+      "verification_method": "현재state/queue와remaining을대조해SIU·검색·뒤기록·비용·접근을미완료로유지했다. 전체Goal은active다.",
+      "limit": "문헌검수완료를전체연구추천/Goal완료로바꾸지않는다.",
+      "semantic_second_pass_complete": true
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "created_at_utc": "2026-10-10T11:32:15.223382+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 초안 작성 후 지정 원문·그림·코드·기존기록을 별도로 재대조했다. 자동 검사는 의미 검수를 대신하지 않는다.",
+  "independent_reviewer": false,
+  "draft_record_sha256": "d49cccabc76a1bd6e3ac7f32f0bd02dc446ab82f412548ea00e46fff5d92ce6e",
+  "reviewed_at_utc": "2026-10-10T11:35:13.406156+00:00",
+  "reviewed_record_sha256": "4295ff33b167be2ecda52a870aef3403e53d1aa9f00b971345e034d7fe4ef41d"
+}
