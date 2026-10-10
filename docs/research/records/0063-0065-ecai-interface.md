@@ -151,3 +151,7 @@ Heatload, KDD residual, PLOS copula, GP-Copula, TACTiS-2, conditional normalizat
 ## 후속 범위: Heatload 전체 검수
 
 [H056 Heatload 기록](0063-0065-heatload-residual.md)에서 위의 미완료 여섯 문헌 중 Heatload의 전체 33쪽·저장 3코드 1,868줄·직접 의존 89줄·표/그림 933개 수치를 추가 검수했습니다. 현재 남은 다른 문헌은 KDD residual, PLOS copula, GP-Copula, TACTiS-2, conditional normalization의 다섯 가지이며 65 전체 종합은 아직 미완료입니다. 위 H055의 범위 표기는 당시 검수 상태이고 기존 검수 JSON은 당시 snapshot으로 유지합니다.
+
+## 후속 범위: KDD 전체 검수
+
+[H057 KDD 기록](0063-0065-kdd-residual.md)에서20쪽본문·시각/18표314행3191인쇄값과판본을추가검수했습니다. 위 미완료문헌수는각작성당시범위이며현재는PLOS·GP-Copula·TACTiS-2·conditional normalization의네문헌과65전체종합이남습니다. 기존검수JSON은당시snapshot으로보존합니다.

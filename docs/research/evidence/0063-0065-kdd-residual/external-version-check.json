@@ -1,0 +1,52 @@
+{
+  "batch_id": "history-057",
+  "requests": [
+    {
+      "url": "https://arxiv.org/abs/2606.10678v2",
+      "checked_at_utc": "2026-10-10T04:03:50.927475+00:00",
+      "status": 200,
+      "final_url": "https://arxiv.org/abs/2606.10678v2",
+      "size_bytes": 44969,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "71498a1969c61f349b00817f2b69cb9802b2c0d20c409991bb34e82c7263740d",
+      "saved_as": "arxiv-version-abstract.html"
+    },
+    {
+      "url": "https://api.crossref.org/works/10.1145/3770855.3817960",
+      "checked_at_utc": "2026-10-10T04:03:50.927475+00:00",
+      "status": 200,
+      "final_url": "https://api.crossref.org/works/10.1145/3770855.3817960",
+      "size_bytes": 17215,
+      "content_type": "application/json",
+      "sha256": "69cd795607b880ee42e7483ef3714b440f0017221bece130b9365fb7be6a4523",
+      "saved_as": "crossref-doi.json"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2606.10678v2",
+      "checked_at_utc": "2026-10-10T04:03:50.927475+00:00",
+      "status": 200,
+      "final_url": "https://arxiv.org/pdf/2606.10678v2",
+      "size_bytes": 6615803,
+      "content_type": "application/pdf",
+      "sha256": "29ab09dabdbf874c2a6fb215dd687f3f717c5ff10ca62be198d9ace016bb1b7e",
+      "saved_as": "arxiv-version.pdf",
+      "same_as_original_PDF": true
+    },
+    {
+      "url": "https://dl.acm.org/doi/pdf/10.1145/3770855.3817960",
+      "checked_at_utc": "2026-10-10T04:06:33.556593+00:00",
+      "status": 403,
+      "error": "HTTPError"
+    }
+  ],
+  "web_tool_checks": {
+    "arxiv_abs": "접근 성공: v1 2026-06-09, v2 2026-06-10 22:31:01UTC; KDD26 accepted표시",
+    "doi_resolver": "web도구에서접근오류",
+    "ACM_landing": "web도구에서접근오류",
+    "code_search": "정확제목+github 검색과검토한PDF/HTML/초록에서공식구현링크식별실패. 비공개/부재의증명아님."
+  },
+  "new_inventory_source_ids": 0,
+  "source_code_executed": false,
+  "access_restrictions_bypassed": false,
+  "scope": "arxiv v2PDF바이트 확인·초록/서지 읽기. Crossref는선택metadata만읽었고 reference JSON전체독해아님. ACM VoR403로원문미독해. 원본inventoryID추가/wholeJSON가산0."
+}

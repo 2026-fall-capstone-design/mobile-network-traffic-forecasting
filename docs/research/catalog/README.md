@@ -140,3 +140,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H055 출처 목록](history-055-sources.jsonl)은 ECAI와63–65 관련23그룹47경로를 연결합니다. [실제 열람 범위](../sources/history-055.md)에13새사본·1재사용·9외부metadata,9쪽논문·2공식코드·다른6문헌의미완료를구분했습니다.
 
 [H056 출처 목록](history-056-sources.jsonl)은 Heatload와 63·65의 15그룹 30원본 경로를 연결합니다. [실제 읽은 범위](../sources/history-056.md)에 기존 사본 2개·외부 metadata 13개와 새 보충 텍스트 8개를 구분했습니다.
+
+[H057 출처 목록](history-057-sources.jsonl)은 KDD 문헌과63·65의8그룹16경로를연결합니다. [실제 읽은 범위](../sources/history-057.md)에서 기존2사본과외부6참조,공식v2와미독해출판본을구분했습니다.

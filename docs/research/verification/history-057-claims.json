@@ -1,0 +1,218 @@
+{
+  "batch_id": "history-057",
+  "claims": [
+    {
+      "claim_id": "H057-C01",
+      "claim": "63은 잔차 target 등을 구분한 계획이며65는 단순 치환안 미채택·새 모델 실행0을 보고한다.",
+      "source_location": "SRC-0022008:전체본문; SRC-0022016:전체/바뀐판단/실행절",
+      "verification_method": "기존 전체독해 재사용·원문 재대조",
+      "limit": "계획과 실행 구분."
+    },
+    {
+      "claim_id": "H057-C02",
+      "claim": "저장20쪽PDF는공식arxiv2606.10678v2와바이트동일하며출판사VoR본문은미검토다.",
+      "source_location": "SRC-0063835:1–20쪽; EXT-H057:공식v2/Crossref선택서지/ACMPDF접근",
+      "verification_method": "SHA256/크기·판본metadata 대조",
+      "limit": "출판본162–173쪽의내용까지판정을확대하지않음."
+    },
+    {
+      "claim_id": "H057-C03",
+      "claim": "별도학습 iTransformer base MSE와 meta Huber가 prediction−actual잔차를예측해base−alpha*residual로합성한다.",
+      "source_location": "SRC-0063835:3–6쪽§3/Fig2/Alg1; SRC-0063861:전체",
+      "verification_method": "수식·그림·학습/결합설명 대조",
+      "limit": "Heatload ICL이나TabICL/RCTL실증으로세지않음."
+    },
+    {
+      "claim_id": "H057-C04",
+      "claim": "겹침예측평균·초기2L이력·stride1·창사이재귀를설명한다.",
+      "source_location": "SRC-0063835:4–6쪽Eq4/§3.2.3–3.2.4; SRC-0063837:해당절",
+      "verification_method": "timestamp/입력과출력창 설명 대조",
+      "limit": "초기residual생성시간포함및실제구현미확인."
+    },
+    {
+      "claim_id": "H057-C05",
+      "claim": "첫추론R1은actual−prediction으로학습부호와반대이며일부그림/shape표기도다르다.",
+      "source_location": "SRC-0063835:4–5쪽Fig2/Eq4/§3.2.4; SRC-0063837:해당절",
+      "verification_method": "PDF시각·텍스트·HTML부호와구간 대조",
+      "limit": "실제구현결함이나성능표의원인으로확정하지않음."
+    },
+    {
+      "claim_id": "H057-C06",
+      "claim": "train residual OOF·scalerfit범위는확인못했고가중치동결은모든시간누수배제증거가아니다.",
+      "source_location": "SRC-0063835:5–6/12–14쪽§3.3/C.2/D.2; SRC-0022016:§3",
+      "verification_method": "학습·전처리·동결설명 및65기존판단 대조",
+      "limit": "실제누수관측주장아님;65에서이미지적한한계."
+    },
+    {
+      "claim_id": "H057-C07",
+      "claim": "alpha.05의32조건grid선택은설명하지만선택분할을명시하지않아65의validation단정을확인하지못했다.",
+      "source_location": "SRC-0063835:13쪽C.4/14쪽D.2; SRC-0063837:C.4; SRC-0022016:§3",
+      "verification_method": "C.4전체와validation본문검색·시간분할문장 대조",
+      "limit": "test선택으로도단정하지않음."
+    },
+    {
+      "claim_id": "H057-C08",
+      "claim": "8벤치마크,L96/H4종/epochs10/earlystop3/Adam/RTX4090및데이터셋별Table7설정을구분한다.",
+      "source_location": "SRC-0063835:6/14쪽Table6/7/D.3",
+      "verification_method": "조건·표18개전사중설정행과본문 대조",
+      "limit": "전체튜닝비용·실제실행환경미검증."
+    },
+    {
+      "claim_id": "H057-C09",
+      "claim": "D.1단일target+exo와multivariate평가대상이불명확하되ETT6입력+target1은features7과양립한다.",
+      "source_location": "SRC-0063835:3/13–14쪽D.1/Table6; SRC-0063837:D.1",
+      "verification_method": "정의·시각·텍스트대조로이전작업메모입력수오기를제거",
+      "limit": "동일target/가중치의비교군평가미확인."
+    },
+    {
+      "claim_id": "H057-C10",
+      "claim": "ETThhourly대Table6 15min, D.2SolarEnergy, F.1train범위대Table6차이를보존한다.",
+      "source_location": "SRC-0063835:13–14쪽D.1/D.2/Table6;16쪽F.1",
+      "verification_method": "빈도/자료목록/훈련크기 서술대조",
+      "limit": "추정한재현설정으로조용히고치지않음."
+    },
+    {
+      "claim_id": "H057-C11",
+      "claim": "Table1 Ours는MSE24/32·MAE32/32최저이며ETTh1/ETTm1 MSE8조건에서1위가아니다.",
+      "source_location": "SRC-0063835:7쪽Table1; SRC-0063837:Table1",
+      "verification_method": "768필드전사·winner/rounding조건 검사",
+      "limit": "56은지표조건수이고독립실험수·유의성아님."
+    },
+    {
+      "claim_id": "H057-C12",
+      "claim": "Table1 TimeBridgefooter3대가능1위2의차이와TimeBase strict2/tie1을구분한다.",
+      "source_location": "SRC-0063835:7쪽Table1",
+      "verification_method": "인쇄winner·동률·입력반올림가능1위 검사",
+      "limit": "동률제외가능한TimeBase2를같은오류로단정하지않음."
+    },
+    {
+      "claim_id": "H057-C13",
+      "claim": "Table2의23baseline쌍이다른Table1모델열과같아모델정체성이미확인이다.",
+      "source_location": "SRC-0063835:7–8쪽Table1/2",
+      "verification_method": "TimeBridge12→TimeFilter/TimeBase11→DUET 쌍별대조",
+      "limit": "단순오탈자나실제잘못된모델이라고확정하지않음."
+    },
+    {
+      "claim_id": "H057-C14",
+      "claim": "Table2라벨기준iTransformer48/GPHT48/TimeBridge40개선,TimeBase31개선17악화다.",
+      "source_location": "SRC-0063835:8쪽Table2",
+      "verification_method": "184개지표비교·미기록dash구분",
+      "limit": "모델열의정체성한계유지;모든모델조건개선아님."
+    },
+    {
+      "claim_id": "H057-C15",
+      "claim": "Table8 Huber는55개선8악화1인쇄동률이며Table14단일stage는15개선33악화다.",
+      "source_location": "SRC-0063835:6쪽§4.2.1/15쪽Table8/17쪽Table14",
+      "verification_method": "64잔차·48단일stage 지표비교와척도대조",
+      "limit": "원척도잔차와정규화최종지표를섞지않음."
+    },
+    {
+      "claim_id": "H057-C16",
+      "claim": "Table5 alpha없음은45개선3악화,.7/.05는각48개선이나T1과6쌍이다르다.",
+      "source_location": "SRC-0063835:7/9쪽Table1/5",
+      "verification_method": "base대144비교·T5.05대T1쌍대조",
+      "limit": "alpha사이보편우위나동일실행으로확정하지않음."
+    },
+    {
+      "claim_id": "H057-C17",
+      "claim": "Table12/15/18 Ours는Table1의32쌍을재인용한다.",
+      "source_location": "SRC-0063835:7/17/19쪽Table1/12/15/18",
+      "verification_method": "각dataset-horizon의MSE/MAE쌍 일치대조",
+      "limit": "독립재현으로세지않음."
+    },
+    {
+      "claim_id": "H057-C18",
+      "claim": "본문DUET8개개선율은horizon별상대MAE감소율평균과맞는다.",
+      "source_location": "SRC-0063835:7쪽§4.2.3/Table1",
+      "verification_method": "meanofratios와ratioofmeans를따로산술검사",
+      "limit": "평균MAE상대변화와산식을섞지않음."
+    },
+    {
+      "claim_id": "H057-C19",
+      "claim": "GPHT6비율은meanofratios의반올림범위밖이고TimeBridgeExchange기준값이없다.",
+      "source_location": "SRC-0063835:7–8쪽§4.2.3/Table1/2",
+      "verification_method": "24본문주장의두산식·입력표시정밀도·missing검사",
+      "limit": "산식미명시;Traffic/Weather는ratioofmeans로양립가능하므로6개전부산식무관오류아님."
+    },
+    {
+      "claim_id": "H057-C20",
+      "claim": "GPHT보정15.79%는Electricity336 MAE비교이며같은MSE28.95%및ETTh1192 MAE악화를구분한다.",
+      "source_location": "SRC-0063835:8쪽§4.2.4/Table2",
+      "verification_method": "48지표비교와분모 .019/.038/.337 대조",
+      "limit": "모든지표최대나조건전체개선으로확장하지않음."
+    },
+    {
+      "claim_id": "H057-C21",
+      "claim": "Table3 ETTm2합9.58대total5.98와2.00x,Electricity비율2.0444대2.00x가맞지않는다.",
+      "source_location": "SRC-0063835:8쪽Table3",
+      "verification_method": "훈련5행의합계/비율/표시정밀도 검사",
+      "limit": "정확한실행시간을어느인쇄값으로대체할지확정하지않음."
+    },
+    {
+      "claim_id": "H057-C22",
+      "claim": "5개추론complete=max(base,meta)는병렬벽시계보고이며전체work/CPU/초기잔차비용과다르다.",
+      "source_location": "SRC-0063835:8쪽Table3/16쪽F.2/17쪽Table13; SRC-0022016:§3",
+      "verification_method": "타이밍경계·GPU통계·65기존한계 대조",
+      "limit": "활용률감소를총비용0증거로쓰지않음."
+    },
+    {
+      "claim_id": "H057-C23",
+      "claim": "Table4 10.9M은5.47M두개반올림과양립하고약7배는GPHT두개75.96M과의비교다.",
+      "source_location": "SRC-0063835:8쪽Table4/14쪽Table7",
+      "verification_method": "합계/비율·datasetdependent설정·ms/step단위 대조",
+      "limit": "모든설정의정확파라미터수나전체test시간으로일반화하지않음."
+    },
+    {
+      "claim_id": "H057-C24",
+      "claim": "오차조건재표현·잔차상관검정은유한모델학습가능성/Tab→RCTL보장이아니다.",
+      "source_location": "SRC-0063835:11쪽A.1/A.2/15–16쪽Table9/10; SRC-0063860:전체; SRC-0022016:§3",
+      "verification_method": "노름제곱·식11–12·p표시정밀도·기존판단 대조; A.2시간shuffle/Gaussian음성대조의잔차지표와합성성능을구분",
+      "limit": "인쇄p0.0000을정확0또는p<1e−6별도검증으로읽지않음."
+    },
+    {
+      "claim_id": "H057-C25",
+      "claim": "같은관측/가중치/단위가정하에T11/12의29쌍은MSE>=MAE²와반올림상양립하지않는다.",
+      "source_location": "SRC-0063835:16–17쪽Table11/12",
+      "verification_method": "T11Random16/T12Random12+Shuffled1의정밀도구간 검사",
+      "limit": "실제집계미확인;실행결함·부정행위판정아님."
+    },
+    {
+      "claim_id": "H057-C26",
+      "claim": "Table16/17의48평균중1개는닫힌반올림경계에서만접하고±정의별SD도조건부불일치가있다.",
+      "source_location": "SRC-0063835:17쪽H절/18쪽Table16/17",
+      "verification_method": "3seed평균·boundedbox SD범위의같은에이전트검수",
+      "limit": "±정의/mean·SD공동가능성미확인;단순표준편차오류로확정하지않음."
+    },
+    {
+      "claim_id": "H057-C27",
+      "claim": "Table15 confidence33zero/31nonzero의수치관계를통계적신뢰구간으로부르지않는다.",
+      "source_location": "SRC-0063835:17쪽Table15",
+      "verification_method": "인쇄100*(1−spread/mean)와31개반올림·zero33개99.99대조",
+      "limit": "관찰된수치관계이며논문정의나확률보장아님."
+    },
+    {
+      "claim_id": "H057-C28",
+      "claim": "C.3선형항은PDF/HTML이다르고반대부호라도2|x|>delta조건이필요하다.",
+      "source_location": "SRC-0063835:6/13쪽Eq8/13/C.3; SRC-0063837:A3.SS3.p5.m7",
+      "verification_method": "수식alttext·시각·본문의half항 대조",
+      "limit": "PDF/HTML전체의수학적동등성주장아님."
+    },
+    {
+      "claim_id": "H057-C29",
+      "claim": "Figure3축은H이며Figure4/5정성사례·재귀평가설명을raw재현이나동일정보비교확인으로쓰지않는다.",
+      "source_location": "SRC-0063835:9/12/19–20쪽Figure3–5/§4.3/AppendixB",
+      "verification_method": "그림제목/축·ACF음수구간·한horizon출력대창사이재귀 대조",
+      "limit": "정확원값복원·선택사례대표성·baseline입력공정성미확인."
+    },
+    {
+      "claim_id": "H057-C30",
+      "claim": "8그룹16경로와기존2사본/외부6참조를연결했으며20쪽/401수식/3191인쇄값검수는원실험재현이아니다.",
+      "source_location": "SRC-0022008/SRC-0022016; SRC-0063835/SRC-0063836/SRC-0063837/SRC-0063838/SRC-0063860/SRC-0063861:각전체범위",
+      "verification_method": "원본aliases/보호6해시·LF정규화·HTML287단위/47서지·표314행 대조",
+      "limit": "다른4문헌/65종합·VoR·raw구현·HTMLasset바이트미완료;모델/원코드/RNG0."
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_scope": "동일에이전트가작성본문과30주장을원문독해checkpoint/인쇄전사/조건부산술에다시대조했다. 작성뒤63·65원문,PDF5/6/8/9/11/13/14/15/16/17/18쪽관련본문·표를재독해했고13쪽시각및HTMLD.1로ETT입력은6개임을확인했다. 이전작업메모의5개표현을제거하고63행범위·F.1/F.2/H절쪽수를정정했다. 숫자계산helper의분모·단위·반올림box/mean·SD조건을정적으로확인했다. 출력잘림구간을새완료로세지않았으며독립연구자의검증/원실험재현과구분한다.",
+  "semantic_second_pass_at_utc": "2026-10-10T04:22:44.308339+00:00"
+}
