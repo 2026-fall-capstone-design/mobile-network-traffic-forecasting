@@ -73,3 +73,7 @@ result JSON의 모든 필드·일곱 choice와21 projected metric을 읽었고 s
 `selected-source-data.npz`는 HDF의1008시간×4cell×channel2와 timestamp를 추출한 파생물이다. 추출 근거·원본 해시·선택 index·날짜·비교 오차를 별도 provenance JSON에 저장했다. 원 HDF 또는 학습 데이터 전체 공개본으로 표시하지 않는다.
 
 snapshot18의71개 실제 파일·19,148,054바이트를 원 manifest에 대조했고 보호 원본6개는 바뀌지 않았다. final/partial NPZ·누적 원장 등 byte동일 사본은 대표 하나로 연결한다. 원본의 경로·줄바꿈·오탈자는 정확사본에 남기고 팀용 문서의 탐색 링크만 보정한다. 원 검색·대용량 원자료·checkpoint 전체의 팀 공용 위치는 아직 미확인이다.
+
+## Globalization의 후속 범위
+
+[H071 출처·판본](history-071.md)에서 정상PDF65쪽·TXT65본문·HTML·원PNG4개와 불완전PDF의 정확prefix를 대조했다. KBS의 전체Crossref/현재서지·미리보기와 출판본 본문 접근 실패도 구분했다. 위 H070의 당시 metadata·미독해 명세는 보존하며, ForeCA/mbrdr/GNN·검색11개는 후속 범위다.

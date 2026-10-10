@@ -1,0 +1,974 @@
+{
+  "source_id": "SRC-0063074",
+  "source_sha256": "d5da2f19f6bace2f1ff0b6ef612f69d454c6f4e92d5e781a36bc2dc2110998d4",
+  "created_at_utc": "2026-10-10T13:12:16.479139+00:00",
+  "status": "PDF_second_visual_pass_and_HTML_390_strings_equal_membership126_second_visual_pass_complete",
+  "printed_values_preserve_precision": true,
+  "numeric_fields": 390,
+  "tables": {
+    "1": {
+      "PDF_page": 35,
+      "columns": [
+        "local_min",
+        "local_mean",
+        "local_max",
+        "global_min",
+        "global_mean",
+        "global_max",
+        "model_cluster_min",
+        "model_cluster_mean",
+        "model_cluster_max"
+      ],
+      "rows": [
+        {
+          "metric": "FB",
+          "model": "Ridge",
+          "printed_values": [
+            "-0.0015",
+            "0.0005",
+            "0.0043",
+            "-0.0009",
+            "0.0002",
+            "0.0008",
+            "-0.0006",
+            "0.0003",
+            "0.0023"
+          ]
+        },
+        {
+          "metric": "FB",
+          "model": "XGBoost",
+          "printed_values": [
+            "-0.0022",
+            "0.0013",
+            "0.0218",
+            "-0.0024",
+            "0.0010",
+            "0.0212",
+            "-0.0027",
+            "0.0011",
+            "0.0201"
+          ]
+        },
+        {
+          "metric": "FB",
+          "model": "LightGBM",
+          "printed_values": [
+            "-0.0024",
+            "0.0013",
+            "0.0220",
+            "-0.0025",
+            "0.0009",
+            "0.0179",
+            "-0.0022",
+            "0.0011",
+            "0.0202"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "Ridge",
+          "printed_values": [
+            "0.8712",
+            "2.1417",
+            "6.5403",
+            "0.9318",
+            "2.1925",
+            "6.6524",
+            "0.9146",
+            "2.1509",
+            "6.4238"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "XGBoost",
+          "printed_values": [
+            "1.0115",
+            "2.3524",
+            "6.6742",
+            "1.0418",
+            "2.2837",
+            "6.3816",
+            "0.9483",
+            "2.2605",
+            "6.5652"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "LightGBM",
+          "printed_values": [
+            "1.0017",
+            "2.3538",
+            "6.6859",
+            "1.0452",
+            "2.2764",
+            "6.3967",
+            "0.9328",
+            "2.2685",
+            "6.4934"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "Ridge",
+          "printed_values": [
+            "1.173e-05",
+            "0.0008",
+            "0.0052",
+            "1.038e-05",
+            "0.0008",
+            "0.0055",
+            "9.871e-06",
+            "0.0008",
+            "0.0052"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "XGBoost",
+          "printed_values": [
+            "1.074e-05",
+            "0.0011",
+            "0.0087",
+            "1.485e-05",
+            "0.0010",
+            "0.0092",
+            "1.557e-05",
+            "0.0010",
+            "0.0082"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "LightGBM",
+          "printed_values": [
+            "1.133e-05",
+            "0.0011",
+            "0.0088",
+            "1.439e-05",
+            "0.0009",
+            "0.0066",
+            "1.362e-05",
+            "0.0010",
+            "0.0086"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "Ridge",
+          "printed_values": [
+            "1.3832",
+            "7.0102",
+            "47.4379",
+            "1.5618",
+            "6.8582",
+            "35.7171",
+            "1.4982",
+            "6.7647",
+            "36.1005"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "XGBoost",
+          "printed_values": [
+            "1.8123",
+            "12.8588",
+            "149.9138",
+            "1.6860",
+            "13.1145",
+            "253.532",
+            "1.8345",
+            "11.8836",
+            "180.257"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "LightGBM",
+          "printed_values": [
+            "1.7654",
+            "12.7966",
+            "148.0044",
+            "1.6836",
+            "11.5732",
+            "196.498",
+            "1.6405",
+            "11.8409",
+            "166.165"
+          ]
+        }
+      ]
+    },
+    "2": {
+      "PDF_page": 41,
+      "columns": [
+        "stable_local",
+        "stable_global",
+        "stable_change_pct",
+        "drift_local",
+        "drift_global",
+        "drift_change_pct"
+      ],
+      "rows": [
+        {
+          "metric": "nMAE_pct",
+          "model": "Ridge",
+          "printed_values": [
+            "2.00",
+            "2.05",
+            "-2.5917",
+            "2.33",
+            "2.38",
+            "-2.1540"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "XGBoost",
+          "printed_values": [
+            "2.11",
+            "2.01",
+            "4.7362",
+            "2.66",
+            "2.64",
+            "0.4432"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "LightGBM",
+          "printed_values": [
+            "2.11",
+            "2.01",
+            "4.8692",
+            "2.67",
+            "2.61",
+            "2.0948"
+          ]
+        }
+      ]
+    },
+    "3": {
+      "PDF_page": 42,
+      "columns": [
+        "global_min",
+        "global_mean",
+        "global_max",
+        "instance_min",
+        "instance_mean",
+        "instance_max",
+        "weighted_instance_min",
+        "weighted_instance_mean",
+        "weighted_instance_max"
+      ],
+      "rows": [
+        {
+          "metric": "FB",
+          "model": "Ridge",
+          "printed_values": [
+            "-0.00096",
+            "0.00026",
+            "0.00080",
+            "-0.00126",
+            "-0.00010",
+            "0.00159",
+            "-0.00071",
+            "-0.00010",
+            "0.00166"
+          ]
+        },
+        {
+          "metric": "FB",
+          "model": "XGBoost",
+          "printed_values": [
+            "-0.00247",
+            "0.00100",
+            "0.02118",
+            "-0.00197",
+            "0.00244",
+            "0.02043",
+            "-0.00579",
+            "0.00015",
+            "0.01816"
+          ]
+        },
+        {
+          "metric": "FB",
+          "model": "LightGBM",
+          "printed_values": [
+            "-0.00250",
+            "0.00089",
+            "0.01792",
+            "-0.01024",
+            "-0.00403",
+            "0.01239",
+            "-0.00514",
+            "-0.00209",
+            "0.01452"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "Ridge",
+          "printed_values": [
+            "0.9318",
+            "2.1925",
+            "6.6524",
+            "0.9228",
+            "2.1856",
+            "6.5603",
+            "0.9318",
+            "2.1925",
+            "6.6524"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "XGBoost",
+          "printed_values": [
+            "1.0418",
+            "2.2837",
+            "6.3816",
+            "1.0902",
+            "2.2659",
+            "6.4137",
+            "0.9892",
+            "2.2305",
+            "6.3816"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "LightGBM",
+          "printed_values": [
+            "1.0452",
+            "2.2764",
+            "6.3967",
+            "1.0843",
+            "2.2427",
+            "6.3814",
+            "0.9892",
+            "2.2243",
+            "6.3704"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "Ridge",
+          "printed_values": [
+            "1.038e-05",
+            "0.0008",
+            "0.0055",
+            "9.833e-06",
+            "0.0008",
+            "0.0054",
+            "1.023e-05",
+            "0.0009",
+            "0.0054"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "XGBoost",
+          "printed_values": [
+            "1.485e-05",
+            "0.0010",
+            "0.0092",
+            "1.311e-05",
+            "0.0010",
+            "0.0082",
+            "1.232e-05",
+            "0.0010",
+            "0.0066"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "LightGBM",
+          "printed_values": [
+            "1.439e-05",
+            "0.0009",
+            "0.0066",
+            "1.286e-05",
+            "0.0010",
+            "0.0066",
+            "1.255e-05",
+            "0.0010",
+            "0.0073"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "Ridge",
+          "printed_values": [
+            "1.5618",
+            "6.8582",
+            "35.7171",
+            "1.5501",
+            "6.7839",
+            "35.4291",
+            "1.5488",
+            "6.7871",
+            "35.4141"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "XGBoost",
+          "printed_values": [
+            "1.6860",
+            "13.1145",
+            "253.528",
+            "1.6384",
+            "11.9628",
+            "211.3958",
+            "1.5417",
+            "11.9655",
+            "215.0616"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "LightGBM",
+          "printed_values": [
+            "1.6836",
+            "11.5732",
+            "196.498",
+            "1.6439",
+            "11.2803",
+            "186.2934",
+            "1.5326",
+            "10.5628",
+            "160.4748"
+          ]
+        }
+      ]
+    },
+    "4": {
+      "PDF_page": 45,
+      "columns": [
+        "Calgary",
+        "Central",
+        "Edmonton",
+        "Northeast",
+        "Northwest",
+        "South",
+        "System"
+      ],
+      "rows": [
+        {
+          "metric": "FB",
+          "model": "Ridge",
+          "printed_values": [
+            "0.0000",
+            "0.0005",
+            "0.0001",
+            "0.0007",
+            "0.0004",
+            "0.0003",
+            "0.0004"
+          ]
+        },
+        {
+          "metric": "FB",
+          "model": "XGBoost",
+          "printed_values": [
+            "-0.0002",
+            "0.0000",
+            "-0.0002",
+            "-0.0001",
+            "0.0014",
+            "0.0004",
+            "0.0000"
+          ]
+        },
+        {
+          "metric": "FB",
+          "model": "LightGBM",
+          "printed_values": [
+            "-0.0002",
+            "0.0000",
+            "-0.0002",
+            "-0.0002",
+            "0.0014",
+            "0.0004",
+            "0.0000"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "Ridge",
+          "printed_values": [
+            "1.2814",
+            "1.6327",
+            "1.6327",
+            "2.0342",
+            "3.9712",
+            "1.8416",
+            "1.3208"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "XGBoost",
+          "printed_values": [
+            "1.0418",
+            "1.7329",
+            "1.4726",
+            "2.1725",
+            "3.9462",
+            "1.9603",
+            "1.3827"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "LightGBM",
+          "printed_values": [
+            "1.0452",
+            "1.7324",
+            "1.4728",
+            "2.1743",
+            "3.9532",
+            "1.9718",
+            "1.3924"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "Ridge",
+          "printed_values": [
+            "0.0003",
+            "0.0001",
+            "0.0003",
+            "0.00004",
+            "0.0011",
+            "0.0003",
+            "0.0001"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "XGBoost",
+          "printed_values": [
+            "0.0002",
+            "0.0001",
+            "0.0003",
+            "0.00005",
+            "0.0011",
+            "0.0003",
+            "0.0001"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "LightGBM",
+          "printed_values": [
+            "0.0002",
+            "0.0001",
+            "0.0003",
+            "0.00005",
+            "0.0011",
+            "0.0003",
+            "0.0001"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "Ridge",
+          "printed_values": [
+            "3.5217",
+            "3.3926",
+            "4.1576",
+            "3.7529",
+            "9.0018",
+            "5.6282",
+            "3.3711"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "XGBoost",
+          "printed_values": [
+            "2.7843",
+            "3.6235",
+            "3.7419",
+            "3.9890",
+            "9.0432",
+            "6.0764",
+            "3.5236"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "LightGBM",
+          "printed_values": [
+            "2.7849",
+            "3.6237",
+            "3.7287",
+            "3.9892",
+            "9.0512",
+            "6.0865",
+            "3.5240"
+          ]
+        }
+      ]
+    },
+    "A5": {
+      "PDF_page": 58,
+      "columns": [
+        "local_min",
+        "local_mean",
+        "local_max",
+        "global_min",
+        "global_mean",
+        "global_max"
+      ],
+      "rows": [
+        {
+          "metric": "FB",
+          "model": "Ridge",
+          "printed_values": [
+            "0.0001",
+            "0.0002",
+            "0.0004",
+            "-0.0007",
+            "0.0002",
+            "0.0007"
+          ]
+        },
+        {
+          "metric": "FB",
+          "model": "XGBoost",
+          "printed_values": [
+            "-0.0015",
+            "-0.0003",
+            "0.0001",
+            "0.0000",
+            "0.0001",
+            "0.0004"
+          ]
+        },
+        {
+          "metric": "FB",
+          "model": "LightGBM",
+          "printed_values": [
+            "-0.0015",
+            "-0.0003",
+            "0.0002",
+            "0.0000",
+            "0.0002",
+            "0.0004"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "Ridge",
+          "printed_values": [
+            "0.63",
+            "0.82",
+            "1.49",
+            "0.60",
+            "0.77",
+            "1.34"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "XGBoost",
+          "printed_values": [
+            "0.90",
+            "1.19",
+            "2.03",
+            "0.83",
+            "1.08",
+            "1.77"
+          ]
+        },
+        {
+          "metric": "nMAE_pct",
+          "model": "LightGBM",
+          "printed_values": [
+            "0.89",
+            "1.19",
+            "2.06",
+            "0.83",
+            "1.08",
+            "1.78"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "Ridge",
+          "printed_values": [
+            "0.0001",
+            "0.0001",
+            "0.0003",
+            "0.0001",
+            "0.0001",
+            "0.0002"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "XGBoost",
+          "printed_values": [
+            "0.0001",
+            "0.0002",
+            "0.0005",
+            "0.0001",
+            "0.0002",
+            "0.0004"
+          ]
+        },
+        {
+          "metric": "MSE",
+          "model": "LightGBM",
+          "printed_values": [
+            "0.0001",
+            "0.0002",
+            "0.0005",
+            "0.0001",
+            "0.0002",
+            "0.0004"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "Ridge",
+          "printed_values": [
+            "1.66",
+            "2.59",
+            "3.92",
+            "1.52",
+            "2.38",
+            "3.43"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "XGBoost",
+          "printed_values": [
+            "2.39",
+            "3.97",
+            "7.18",
+            "2.03",
+            "3.53",
+            "6.56"
+          ]
+        },
+        {
+          "metric": "MAPE_pct",
+          "model": "LightGBM",
+          "printed_values": [
+            "2.35",
+            "3.96",
+            "7.20",
+            "2.05",
+            "3.50",
+            "6.44"
+          ]
+        }
+      ]
+    }
+  },
+  "figure11": {
+    "PDF_page": 41,
+    "cluster_order": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "membership": {
+      "Ridge": [
+        [
+          13,
+          17,
+          25,
+          27,
+          28,
+          30,
+          31,
+          33,
+          36,
+          38,
+          39,
+          40,
+          42,
+          53,
+          54,
+          56,
+          57
+        ],
+        [
+          18,
+          23,
+          29,
+          32,
+          44,
+          46,
+          48,
+          52,
+          55
+        ],
+        [
+          21,
+          26
+        ],
+        [
+          19,
+          20,
+          22,
+          24,
+          34,
+          35,
+          37,
+          4,
+          43,
+          45,
+          47,
+          49
+        ],
+        [
+          6,
+          60
+        ]
+      ],
+      "LightGBM": [
+        [
+          13,
+          27,
+          30,
+          31,
+          35,
+          38,
+          44,
+          54,
+          6,
+          60
+        ],
+        [
+          40,
+          46,
+          57
+        ],
+        [
+          21,
+          32,
+          34,
+          36,
+          37,
+          43
+        ],
+        [
+          17,
+          19,
+          25,
+          28,
+          33,
+          39,
+          4
+        ],
+        [
+          18,
+          20,
+          22,
+          23,
+          24,
+          26,
+          29,
+          42,
+          45,
+          47,
+          48,
+          49,
+          52,
+          53,
+          55,
+          56
+        ]
+      ],
+      "XGBoost": [
+        [
+          31,
+          46,
+          57,
+          6,
+          60
+        ],
+        [
+          13,
+          18,
+          21,
+          34,
+          36,
+          42,
+          43,
+          49,
+          53,
+          56
+        ],
+        [
+          17,
+          19,
+          22,
+          25,
+          26,
+          28,
+          32,
+          33,
+          37,
+          4
+        ],
+        [
+          20,
+          23,
+          24,
+          27,
+          29,
+          30,
+          35,
+          38,
+          39,
+          40,
+          44,
+          45,
+          47,
+          52,
+          54,
+          55
+        ],
+        [
+          48
+        ]
+      ]
+    },
+    "labels": 126
+  },
+  "viewed_images": {
+    "globalization-35.png": "9eb9acab6518370027ac35156555573a7a98ba6664c5c78039c4fb361e237ab1",
+    "globalization-41.png": "453236073f9308d8ca1638c2a433d9b5d4b650e93de54fde699134cef8423f2f",
+    "globalization-42.png": "6654b66b75f0bddaef6f83df828e1ed52eec464418710efbf59d578ec99fd8a3",
+    "globalization-45.png": "174bfa51c14343fff07c7c37ed28107e882e2bcfd3e1def1af630dae18211cf8",
+    "globalization-58.png": "6ad43a96ec10da11ebb6ef29fed54f8c355ad68c7911ef1aadf22cc36bb5d554",
+    "fig11-detail-41.png": "21ca3d3179bb9602ba9ce33858d5b9f02da3714f8996947c981d2dfcfb346ade",
+    "fig11-xgb-41.png": "336f9b66ebaf251663ac95c310ff95a0aea89de2b76d9d73194d76b8d7ec6444"
+  },
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "notes": [
+    "Numeric cells were manually transcribed after source text and rendered-table inspection; source-check second pass remains pending.",
+    "Membership labels were read from enlarged Figure 11, with a second crop to include all XGBoost labels.",
+    "Rounded table values do not recover raw data, precise aggregation, or experiment replication.",
+    "Second source pass: all five PDF tables viewed again; all 390 printed strings equal archived HTML table cells; all 126 memberships checked against native Figure11. Post-draft claim review is separate."
+  ],
+  "semantic_second_pass_complete": true,
+  "updated_at_utc": "2026-10-10T13:35:27.763973+00:00",
+  "postdraft_checked_at_utc": "2026-10-10T13:47:05.576152+00:00",
+  "independent_reviewer": false
+}
