@@ -1,0 +1,382 @@
+{
+  "source_id": "SRC-0063879",
+  "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+  "scope": "27 saved result CSVs → 27 saved rank CSVs → saved summary. stdlib arithmetic; no original script import/model execution.",
+  "tasks": [
+    {
+      "task": "210_cloud",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "229_pwLinear",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "230_machine_cpu",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "527_analcatdata_election2000",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "542_pollution",
+      "raw_rows": 6,
+      "valid_rank_rows": 5
+    },
+    {
+      "task": "560_bodyfat",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "561_cpu",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "579_fri_c0_250_5",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "591_fri_c1_100_10",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "594_fri_c2_100_5",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "596_fri_c2_250_5",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "601_fri_c1_250_5",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "602_fri_c3_250_10",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "611_fri_c3_100_5",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "613_fri_c3_250_5",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "615_fri_c4_250_10",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "621_fri_c0_100_10",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "624_fri_c0_100_5",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "634_fri_c2_100_10",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "635_fri_c0_250_10",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "656_fri_c1_100_5",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "657_fri_c2_250_10",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "659_sleuth_ex1714",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "665_sleuth_case2002",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "687_sleuth_ex1605",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "695_chatfield_4",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    },
+    {
+      "task": "706_sleuth_case1202",
+      "raw_rows": 6,
+      "valid_rank_rows": 6
+    }
+  ],
+  "result_rows": 162,
+  "valid_rank_rows": 161,
+  "recorded_failures": [
+    {
+      "task": "542_pollution",
+      "method": "PyGAM_FBII",
+      "error": "LinAlgError('SVD did not converge')",
+      "metrics": {
+        "MSE": "",
+        "RMSE": "",
+        "MAE": "",
+        "R2": ""
+      }
+    }
+  ],
+  "rmse_sqrt_checks": 161,
+  "rank_cell_checks": 805,
+  "summary_cell_checks": 60,
+  "recalculated_summary": [
+    {
+      "Method": "TabPFN",
+      "n_tasks": 27,
+      "MSE_rank_mean": 1.6296296296296295,
+      "MSE_rank_se": 0.27293982591447263,
+      "RMSE_rank_mean": 1.6296296296296295,
+      "RMSE_rank_se": 0.27293982591447263,
+      "MAE_rank_mean": 1.6296296296296295,
+      "MAE_rank_se": 0.2511974067824173,
+      "R2_rank_mean": 1.6296296296296295,
+      "R2_rank_se": 0.27293982591447263,
+      "avg_rank_mean": 1.6296296296296295,
+      "avg_rank_se": 0.2666701289740412
+    },
+    {
+      "Method": "EBM_FBII",
+      "n_tasks": 27,
+      "MSE_rank_mean": 2.3703703703703702,
+      "MSE_rank_se": 0.1523617317050819,
+      "RMSE_rank_mean": 2.3703703703703702,
+      "RMSE_rank_se": 0.1523617317050819,
+      "MAE_rank_mean": 2.259259259259259,
+      "MAE_rank_se": 0.16531582993052998,
+      "R2_rank_mean": 2.3703703703703702,
+      "R2_rank_se": 0.1523617317050819,
+      "avg_rank_mean": 2.3425925925925926,
+      "avg_rank_se": 0.1498742042244319
+    },
+    {
+      "Method": "XGBoost",
+      "n_tasks": 27,
+      "MSE_rank_mean": 3.2962962962962963,
+      "MSE_rank_se": 0.1755318723732121,
+      "RMSE_rank_mean": 3.2962962962962963,
+      "RMSE_rank_se": 0.1755318723732121,
+      "MAE_rank_mean": 3.2962962962962963,
+      "MAE_rank_se": 0.1755318723732121,
+      "R2_rank_mean": 3.2962962962962963,
+      "R2_rank_se": 0.1755318723732121,
+      "avg_rank_mean": 3.2962962962962963,
+      "avg_rank_se": 0.17246177011288488
+    },
+    {
+      "Method": "LinearRegression",
+      "n_tasks": 27,
+      "MSE_rank_mean": 4.185185185185185,
+      "MSE_rank_se": 0.35420565210081345,
+      "RMSE_rank_mean": 4.185185185185185,
+      "RMSE_rank_se": 0.35420565210081345,
+      "MAE_rank_mean": 4.333333333333333,
+      "MAE_rank_se": 0.3333333333333333,
+      "R2_rank_mean": 4.185185185185185,
+      "R2_rank_se": 0.35420565210081345,
+      "avg_rank_mean": 4.222222222222222,
+      "avg_rank_se": 0.34702986124596147
+    },
+    {
+      "Method": "PyGAM_FBII",
+      "n_tasks": 26,
+      "MSE_rank_mean": 4.6923076923076925,
+      "MSE_rank_se": 0.24663414679817539,
+      "RMSE_rank_mean": 4.6923076923076925,
+      "RMSE_rank_se": 0.24663414679817539,
+      "MAE_rank_mean": 4.653846153846154,
+      "MAE_rank_se": 0.2477114182785326,
+      "R2_rank_mean": 4.6923076923076925,
+      "R2_rank_se": 0.24663414679817539,
+      "avg_rank_mean": 4.6826923076923075,
+      "avg_rank_se": 0.24516779666324462
+    },
+    {
+      "Method": "DecisionTree",
+      "n_tasks": 27,
+      "MSE_rank_mean": 4.777777777777778,
+      "MSE_rank_se": 0.18745053161932743,
+      "RMSE_rank_mean": 4.777777777777778,
+      "RMSE_rank_se": 0.18745053161932743,
+      "MAE_rank_mean": 4.777777777777778,
+      "MAE_rank_se": 0.20207846867584425,
+      "R2_rank_mean": 4.777777777777778,
+      "R2_rank_se": 0.18745053161932743,
+      "avg_rank_mean": 4.777777777777778,
+      "avg_rank_se": 0.1869749692507149
+    }
+  ],
+  "table1_first_transcription_rounding_comparisons": [
+    {
+      "method": "EBM_FBII",
+      "metric": "MAE",
+      "stored_mean": 2.259259259259259,
+      "printed": 2.26,
+      "rounded_match": true
+    },
+    {
+      "method": "EBM_FBII",
+      "metric": "MSE",
+      "stored_mean": 2.3703703703703702,
+      "printed": 2.37,
+      "rounded_match": true
+    },
+    {
+      "method": "EBM_FBII",
+      "metric": "R2",
+      "stored_mean": 2.3703703703703702,
+      "printed": 2.37,
+      "rounded_match": true
+    },
+    {
+      "method": "PyGAM_FBII",
+      "metric": "MAE",
+      "stored_mean": 4.653846153846154,
+      "printed": 4.65,
+      "rounded_match": true
+    },
+    {
+      "method": "PyGAM_FBII",
+      "metric": "MSE",
+      "stored_mean": 4.6923076923076925,
+      "printed": 4.69,
+      "rounded_match": true
+    },
+    {
+      "method": "PyGAM_FBII",
+      "metric": "R2",
+      "stored_mean": 4.6923076923076925,
+      "printed": 4.69,
+      "rounded_match": true
+    },
+    {
+      "method": "LinearRegression",
+      "metric": "MAE",
+      "stored_mean": 4.333333333333333,
+      "printed": 4.33,
+      "rounded_match": true
+    },
+    {
+      "method": "LinearRegression",
+      "metric": "MSE",
+      "stored_mean": 4.185185185185185,
+      "printed": 4.19,
+      "rounded_match": true
+    },
+    {
+      "method": "LinearRegression",
+      "metric": "R2",
+      "stored_mean": 4.185185185185185,
+      "printed": 4.19,
+      "rounded_match": true
+    },
+    {
+      "method": "DecisionTree",
+      "metric": "MAE",
+      "stored_mean": 4.777777777777778,
+      "printed": 4.78,
+      "rounded_match": true
+    },
+    {
+      "method": "DecisionTree",
+      "metric": "MSE",
+      "stored_mean": 4.777777777777778,
+      "printed": 4.78,
+      "rounded_match": true
+    },
+    {
+      "method": "DecisionTree",
+      "metric": "R2",
+      "stored_mean": 4.777777777777778,
+      "printed": 4.78,
+      "rounded_match": true
+    },
+    {
+      "method": "XGBoost",
+      "metric": "MAE",
+      "stored_mean": 3.2962962962962963,
+      "printed": 3.3,
+      "rounded_match": true
+    },
+    {
+      "method": "XGBoost",
+      "metric": "MSE",
+      "stored_mean": 3.2962962962962963,
+      "printed": 3.3,
+      "rounded_match": true
+    },
+    {
+      "method": "XGBoost",
+      "metric": "R2",
+      "stored_mean": 3.2962962962962963,
+      "printed": 3.3,
+      "rounded_match": true
+    },
+    {
+      "method": "TabPFN",
+      "metric": "MAE",
+      "stored_mean": 1.6296296296296295,
+      "printed": 1.63,
+      "rounded_match": true
+    },
+    {
+      "method": "TabPFN",
+      "metric": "MSE",
+      "stored_mean": 1.6296296296296295,
+      "printed": 1.63,
+      "rounded_match": true
+    },
+    {
+      "method": "TabPFN",
+      "metric": "R2",
+      "stored_mean": 1.6296296296296295,
+      "printed": 1.63,
+      "rounded_match": true
+    }
+  ],
+  "problems": [],
+  "passed": true,
+  "limitations": [
+    "No new training/inference or independent reproduction.",
+    "Unknown historical TabPFN generation for stored unversioned results.",
+    "27 interaction CSV patches not yet fully read."
+  ],
+  "paper_table1_postdraft_visual_verified": true
+}
