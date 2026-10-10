@@ -223,3 +223,7 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 ### H086 Toso2그룹
 
 [출처](../sources/history-086.md) · [목록](history-086-sources.jsonl) · [기록](../records/0086-toso-gradient-heterogeneity.md). 저장HTML 전체와 파생TXT를 대응했고 독립본문은1개다. 새PDF30쪽 중9쪽 보충시각대조는 원목록 가산0이며 원79 외부21그룹 중20개 연결/검색1개가 남는다.
+
+## H087: 원79 검색1그룹
+
+[출처](../sources/history-087.md) · [목록](history-087-sources.jsonl) · [21그룹 연결](../evidence/0087-distributed-search/packet-coverage.json). 9개 값 전체를 읽은 JSON1개를 추가하며 독립 논문·이미지 가산은0이다. H0744·H0835·H0842·H0857·H0862·H0871은 소장 파일의 검수 연결이며 모든 외부문헌 확보를 뜻하지 않는다.

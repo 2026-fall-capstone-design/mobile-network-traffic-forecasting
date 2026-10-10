@@ -120,3 +120,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 ### H086 · 회귀 gradient 근거를 인용하기 전
 
 [가정과 표기 검토](records/0086-toso-gradient-heterogeneity.md)의 학습률η·matrix norm·복원 오차 바닥·population/empirical hat·residual vector 구분을 확인해야 한다. 고정 시계열 재사용·cell별 다른 입력분포·RCTL의Jacobian/PL·TabICL 추정오차를 아직 검증하지 않았다. 이 조건 없이 일반적인 RCTL 수렴 또는 성능 이득을 주장하지 않는다.
+
+[H087](verification/history-087.md)은 앞서 H083–H086에서 남긴 원79 검색1개를 보완해 소장21그룹을 연결한다. FedCAP·CoLEDS·CLoVE 등의 전문, 전체 후보의 판본·실험조건, 미소장 코드/환경/원시결과와 실제 RCTL 이득은 별도 미확인이다. 원80 이후·이전 부분 기록·실패비용 통합·장기 팀 접근을 계속 검수한다.
