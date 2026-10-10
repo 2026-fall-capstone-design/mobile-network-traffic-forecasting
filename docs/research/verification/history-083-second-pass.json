@@ -1,0 +1,111 @@
+{
+  "batch_id": "history-083",
+  "status": "source_checked",
+  "completed_at_utc": "2026-10-10T20:51:07.919726+00:00",
+  "claims_checked": 29,
+  "checks": [
+    {
+      "check_id": "H083-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        29
+      ],
+      "sources": [
+        "원79 findings1–51/plan1–24 전체 재독해",
+        "PDFp1 이미지의판본/여백",
+        "원79소장21목록과기존실독해4",
+        "사본10/보호원본6hash"
+      ],
+      "result": "FMCL5+기존명세/Crossref4+잔여12=21. 실제16쪽·arXiv메타14쪽·새실험0·미확정분산조건·후속80계획을구분. 사본/재참조/추출을새본문으로중복가산하지않음."
+    },
+    {
+      "check_id": "H083-SP02",
+      "claims": [
+        4,
+        5,
+        6,
+        13,
+        25,
+        26,
+        28
+      ],
+      "sources": [
+        "PDFpp1–7 text 재독해",
+        "p1/3/6 이미지와Figure1",
+        "원PNG7 전체재대조",
+        "원79 findings/plan"
+      ],
+      "result": "frozen encoder/class별평균·비율→server pairdistance→사전군집→독립FL. classlabel/정보요약과연속target공유조건구분. 초기추론·전송·거리와후속FL비용을학습중군집통신없음과분리. rawdata미공유를정형privacy보장으로바꾸지않음."
+    },
+    {
+      "check_id": "H083-SP03",
+      "claims": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sources": [
+        "PDFpp8–10 확대이미지/Algorithms3–5",
+        "원PNG7/8/12 전체재대조",
+        "p7기본값/p12CVwindow"
+      ],
+      "result": "eps위치/minclassweight/Omega역수상한/Dbig=min(2P95,P99)/diag0·average linkage·CV3window확인. 유한집합empty/mean0/K1silhouette/fallback/종료순서는인쇄명세공백이며코드실패아님. C09의Algorithm3와후속CV계산을분리하도록문장수정."
+    },
+    {
+      "check_id": "H083-SP04",
+      "claims": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        27
+      ],
+      "sources": [
+        "PDFp10/11 확대이미지",
+        "pp11–12 text 및 원PNG12",
+        "pp15–16 참고문헌text",
+        "소장5그룹metadata"
+      ],
+      "result": "780/700/10class·20/30client·5/3seed·alpha.1·ResNet9/18·CHIEF/USFM/ViTTiny·100round1epoch100%·LR.0001/.01확인. validation metric vs loss, fixedK3/5와AutoK행구분. 실제seedids/checkpoint/선택K/원시결과연결미완료,참고문헌16편의전문독해아님."
+    },
+    {
+      "check_id": "H083-SP05",
+      "claims": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "sources": [
+        "PDFp14 Table1전체이미지 재대조",
+        "p14추출30행과전사180값 일치",
+        "p12/p13 본문과표 산술"
+      ],
+      "result": "AutoK9평균최고/차이9값확인, std7증가2감소. BUSIAUC nooverlap94.44>fixed93.93반례,나머지8평균fixed우세. PACFL/FECFL각FM9평균상승. mean/std는seed원시값·CI·유의성·재현성증거아님."
+    },
+    {
+      "check_id": "H083-SP06",
+      "claims": [
+        24,
+        27
+      ],
+      "sources": [
+        "PDFp13 Figure2전체확대이미지",
+        "p12곡선설명/p13결론",
+        "pp15–16 참고문헌text"
+      ],
+      "result": "legend8/100round/AutoK·ablation곡선미표시/Accuracy(%)label과0.x눈금구분. round축수렴과walltime구분. 소장16쪽의정량시간·GPU·메모리·전송실측표없음,실행재현과16참고문헌전문검수는미완료."
+    }
+  ],
+  "scope": "전체 첫 독해 후 주장29개의 관련원문을6묶음으로재대조. 같은에이전트의작성후검수이며모든출처의전체두번째독해나독립검수가아니다.",
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "new_model_runs": 0
+}

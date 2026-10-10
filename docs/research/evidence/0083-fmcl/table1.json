@@ -1,0 +1,734 @@
+{
+  "source_id": "SRC-0062493",
+  "source_sha256": "e35166b7006be4f447d3c83af4ea4c7ba747df28b09bc8a6e20e25761ed16802",
+  "locator": "PDF p14 Table1",
+  "rows": [
+    {
+      "dataset": "BUSI",
+      "strategy": "FedAvg",
+      "metrics": {
+        "accuracy": {
+          "mean": 56.34,
+          "std": 0.9,
+          "display": "56.34±0.90"
+        },
+        "macro_F1": {
+          "mean": 24.82,
+          "std": 1.38,
+          "display": "24.82±1.38"
+        },
+        "AUC_ROC": {
+          "mean": 59.58,
+          "std": 2.79,
+          "display": "59.58±2.79"
+        }
+      }
+    },
+    {
+      "dataset": "BUSI",
+      "strategy": "FedProx",
+      "metrics": {
+        "accuracy": {
+          "mean": 56.18,
+          "std": 0.71,
+          "display": "56.18±0.71"
+        },
+        "macro_F1": {
+          "mean": 24.39,
+          "std": 0.68,
+          "display": "24.39±0.68"
+        },
+        "AUC_ROC": {
+          "mean": 58.55,
+          "std": 2.19,
+          "display": "58.55±2.19"
+        }
+      }
+    },
+    {
+      "dataset": "BUSI",
+      "strategy": "CFL",
+      "metrics": {
+        "accuracy": {
+          "mean": 56.18,
+          "std": 0.71,
+          "display": "56.18±0.71"
+        },
+        "macro_F1": {
+          "mean": 24.38,
+          "std": 0.96,
+          "display": "24.38±0.96"
+        },
+        "AUC_ROC": {
+          "mean": 61.06,
+          "std": 3.2,
+          "display": "61.06±3.20"
+        }
+      }
+    },
+    {
+      "dataset": "BUSI",
+      "strategy": "PACFL",
+      "metrics": {
+        "accuracy": {
+          "mean": 57.25,
+          "std": 0.67,
+          "display": "57.25±0.67"
+        },
+        "macro_F1": {
+          "mean": 27.87,
+          "std": 2.03,
+          "display": "27.87±2.03"
+        },
+        "AUC_ROC": {
+          "mean": 61.89,
+          "std": 3.86,
+          "display": "61.89±3.86"
+        }
+      }
+    },
+    {
+      "dataset": "BUSI",
+      "strategy": "PACFL (FM)",
+      "metrics": {
+        "accuracy": {
+          "mean": 69.86,
+          "std": 8.8,
+          "display": "69.86±8.80"
+        },
+        "macro_F1": {
+          "mean": 51.69,
+          "std": 13.45,
+          "display": "51.69±13.45"
+        },
+        "AUC_ROC": {
+          "mean": 72.87,
+          "std": 10.27,
+          "display": "72.87±10.27"
+        }
+      }
+    },
+    {
+      "dataset": "BUSI",
+      "strategy": "FECFL",
+      "metrics": {
+        "accuracy": {
+          "mean": 61.04,
+          "std": 4.21,
+          "display": "61.04±4.21"
+        },
+        "macro_F1": {
+          "mean": 44.08,
+          "std": 9.22,
+          "display": "44.08±9.22"
+        },
+        "AUC_ROC": {
+          "mean": 72.11,
+          "std": 6.52,
+          "display": "72.11±6.52"
+        }
+      }
+    },
+    {
+      "dataset": "BUSI",
+      "strategy": "FECFL (FM)",
+      "metrics": {
+        "accuracy": {
+          "mean": 73.15,
+          "std": 6.07,
+          "display": "73.15±6.07"
+        },
+        "macro_F1": {
+          "mean": 56.27,
+          "std": 8.89,
+          "display": "56.27±8.89"
+        },
+        "AUC_ROC": {
+          "mean": 75.09,
+          "std": 4.16,
+          "display": "75.09±4.16"
+        }
+      }
+    },
+    {
+      "dataset": "BUSI",
+      "strategy": "FMCL (no overlap)",
+      "metrics": {
+        "accuracy": {
+          "mean": 90.12,
+          "std": 5.21,
+          "display": "90.12±5.21"
+        },
+        "macro_F1": {
+          "mean": 84.34,
+          "std": 13.3,
+          "display": "84.34±13.30"
+        },
+        "AUC_ROC": {
+          "mean": 94.44,
+          "std": 1.62,
+          "display": "94.44±1.62"
+        }
+      }
+    },
+    {
+      "dataset": "BUSI",
+      "strategy": "FMCL",
+      "metrics": {
+        "accuracy": {
+          "mean": 91.43,
+          "std": 2.59,
+          "display": "91.43±2.59"
+        },
+        "macro_F1": {
+          "mean": 88.41,
+          "std": 5.52,
+          "display": "88.41±5.52"
+        },
+        "AUC_ROC": {
+          "mean": 93.93,
+          "std": 1.36,
+          "display": "93.93±1.36"
+        }
+      }
+    },
+    {
+      "dataset": "BUSI",
+      "strategy": "FMCL (Auto-K)",
+      "metrics": {
+        "accuracy": {
+          "mean": 91.68,
+          "std": 2.52,
+          "display": "91.68±2.52"
+        },
+        "macro_F1": {
+          "mean": 88.72,
+          "std": 5.61,
+          "display": "88.72±5.61"
+        },
+        "AUC_ROC": {
+          "mean": 95.87,
+          "std": 2.03,
+          "display": "95.87±2.03"
+        }
+      }
+    },
+    {
+      "dataset": "LungHist700",
+      "strategy": "FedAvg",
+      "metrics": {
+        "accuracy": {
+          "mean": 48.38,
+          "std": 6.34,
+          "display": "48.38±6.34"
+        },
+        "macro_F1": {
+          "mean": 32.03,
+          "std": 9.21,
+          "display": "32.03±9.21"
+        },
+        "AUC_ROC": {
+          "mean": 73.88,
+          "std": 4.09,
+          "display": "73.88±4.09"
+        }
+      }
+    },
+    {
+      "dataset": "LungHist700",
+      "strategy": "FedProx",
+      "metrics": {
+        "accuracy": {
+          "mean": 48.1,
+          "std": 4.67,
+          "display": "48.10±4.67"
+        },
+        "macro_F1": {
+          "mean": 32.81,
+          "std": 7.59,
+          "display": "32.81±7.59"
+        },
+        "AUC_ROC": {
+          "mean": 74.72,
+          "std": 4.15,
+          "display": "74.72±4.15"
+        }
+      }
+    },
+    {
+      "dataset": "LungHist700",
+      "strategy": "CFL",
+      "metrics": {
+        "accuracy": {
+          "mean": 48.66,
+          "std": 6.18,
+          "display": "48.66±6.18"
+        },
+        "macro_F1": {
+          "mean": 32.42,
+          "std": 8.73,
+          "display": "32.42±8.73"
+        },
+        "AUC_ROC": {
+          "mean": 73.96,
+          "std": 4.96,
+          "display": "73.96±4.96"
+        }
+      }
+    },
+    {
+      "dataset": "LungHist700",
+      "strategy": "PACFL",
+      "metrics": {
+        "accuracy": {
+          "mean": 51.51,
+          "std": 4.21,
+          "display": "51.51±4.21"
+        },
+        "macro_F1": {
+          "mean": 38.25,
+          "std": 4.7,
+          "display": "38.25±4.70"
+        },
+        "AUC_ROC": {
+          "mean": 74.46,
+          "std": 3.6,
+          "display": "74.46±3.60"
+        }
+      }
+    },
+    {
+      "dataset": "LungHist700",
+      "strategy": "PACFL (FM)",
+      "metrics": {
+        "accuracy": {
+          "mean": 65.07,
+          "std": 8.56,
+          "display": "65.07±8.56"
+        },
+        "macro_F1": {
+          "mean": 62.8,
+          "std": 12.67,
+          "display": "62.80±12.67"
+        },
+        "AUC_ROC": {
+          "mean": 82.34,
+          "std": 6.13,
+          "display": "82.34±6.13"
+        }
+      }
+    },
+    {
+      "dataset": "LungHist700",
+      "strategy": "FECFL",
+      "metrics": {
+        "accuracy": {
+          "mean": 53.45,
+          "std": 3.74,
+          "display": "53.45±3.74"
+        },
+        "macro_F1": {
+          "mean": 42.4,
+          "std": 4.15,
+          "display": "42.40±4.15"
+        },
+        "AUC_ROC": {
+          "mean": 75.9,
+          "std": 4.72,
+          "display": "75.90±4.72"
+        }
+      }
+    },
+    {
+      "dataset": "LungHist700",
+      "strategy": "FECFL (FM)",
+      "metrics": {
+        "accuracy": {
+          "mean": 81.09,
+          "std": 8.41,
+          "display": "81.09±8.41"
+        },
+        "macro_F1": {
+          "mean": 81.06,
+          "std": 7.22,
+          "display": "81.06±7.22"
+        },
+        "AUC_ROC": {
+          "mean": 91.04,
+          "std": 5.38,
+          "display": "91.04±5.38"
+        }
+      }
+    },
+    {
+      "dataset": "LungHist700",
+      "strategy": "FMCL (no overlap)",
+      "metrics": {
+        "accuracy": {
+          "mean": 87.65,
+          "std": 5.2,
+          "display": "87.65±5.20"
+        },
+        "macro_F1": {
+          "mean": 84.48,
+          "std": 8.36,
+          "display": "84.48±8.36"
+        },
+        "AUC_ROC": {
+          "mean": 94.92,
+          "std": 1.51,
+          "display": "94.92±1.51"
+        }
+      }
+    },
+    {
+      "dataset": "LungHist700",
+      "strategy": "FMCL",
+      "metrics": {
+        "accuracy": {
+          "mean": 90.97,
+          "std": 2.12,
+          "display": "90.97±2.12"
+        },
+        "macro_F1": {
+          "mean": 90.01,
+          "std": 2.75,
+          "display": "90.01±2.75"
+        },
+        "AUC_ROC": {
+          "mean": 96.27,
+          "std": 1.26,
+          "display": "96.27±1.26"
+        }
+      }
+    },
+    {
+      "dataset": "LungHist700",
+      "strategy": "FMCL (Auto-K)",
+      "metrics": {
+        "accuracy": {
+          "mean": 91.71,
+          "std": 2.66,
+          "display": "91.71±2.66"
+        },
+        "macro_F1": {
+          "mean": 90.94,
+          "std": 3.3,
+          "display": "90.94±3.30"
+        },
+        "AUC_ROC": {
+          "mean": 96.51,
+          "std": 1.0,
+          "display": "96.51±1.00"
+        }
+      }
+    },
+    {
+      "dataset": "Imagenette",
+      "strategy": "FedAvg",
+      "metrics": {
+        "accuracy": {
+          "mean": 57.62,
+          "std": 3.13,
+          "display": "57.62±3.13"
+        },
+        "macro_F1": {
+          "mean": 55.61,
+          "std": 3.44,
+          "display": "55.61±3.44"
+        },
+        "AUC_ROC": {
+          "mean": 91.0,
+          "std": 0.65,
+          "display": "91.00±0.65"
+        }
+      }
+    },
+    {
+      "dataset": "Imagenette",
+      "strategy": "FedProx",
+      "metrics": {
+        "accuracy": {
+          "mean": 55.84,
+          "std": 3.95,
+          "display": "55.84±3.95"
+        },
+        "macro_F1": {
+          "mean": 53.24,
+          "std": 4.81,
+          "display": "53.24±4.81"
+        },
+        "AUC_ROC": {
+          "mean": 90.54,
+          "std": 1.07,
+          "display": "90.54±1.07"
+        }
+      }
+    },
+    {
+      "dataset": "Imagenette",
+      "strategy": "CFL",
+      "metrics": {
+        "accuracy": {
+          "mean": 56.79,
+          "std": 4.07,
+          "display": "56.79±4.07"
+        },
+        "macro_F1": {
+          "mean": 54.49,
+          "std": 5.16,
+          "display": "54.49±5.16"
+        },
+        "AUC_ROC": {
+          "mean": 90.8,
+          "std": 1.12,
+          "display": "90.80±1.12"
+        }
+      }
+    },
+    {
+      "dataset": "Imagenette",
+      "strategy": "PACFL",
+      "metrics": {
+        "accuracy": {
+          "mean": 64.79,
+          "std": 4.81,
+          "display": "64.79±4.81"
+        },
+        "macro_F1": {
+          "mean": 63.44,
+          "std": 4.95,
+          "display": "63.44±4.95"
+        },
+        "AUC_ROC": {
+          "mean": 93.0,
+          "std": 1.32,
+          "display": "93.00±1.32"
+        }
+      }
+    },
+    {
+      "dataset": "Imagenette",
+      "strategy": "PACFL (FM)",
+      "metrics": {
+        "accuracy": {
+          "mean": 68.38,
+          "std": 4.19,
+          "display": "68.38±4.19"
+        },
+        "macro_F1": {
+          "mean": 68.0,
+          "std": 4.91,
+          "display": "68.00±4.91"
+        },
+        "AUC_ROC": {
+          "mean": 94.23,
+          "std": 1.37,
+          "display": "94.23±1.37"
+        }
+      }
+    },
+    {
+      "dataset": "Imagenette",
+      "strategy": "FECFL",
+      "metrics": {
+        "accuracy": {
+          "mean": 54.91,
+          "std": 3.72,
+          "display": "54.91±3.72"
+        },
+        "macro_F1": {
+          "mean": 54.22,
+          "std": 3.37,
+          "display": "54.22±3.37"
+        },
+        "AUC_ROC": {
+          "mean": 89.22,
+          "std": 1.08,
+          "display": "89.22±1.08"
+        }
+      }
+    },
+    {
+      "dataset": "Imagenette",
+      "strategy": "FECFL (FM)",
+      "metrics": {
+        "accuracy": {
+          "mean": 69.99,
+          "std": 0.48,
+          "display": "69.99±0.48"
+        },
+        "macro_F1": {
+          "mean": 68.55,
+          "std": 0.15,
+          "display": "68.55±0.15"
+        },
+        "AUC_ROC": {
+          "mean": 94.37,
+          "std": 0.36,
+          "display": "94.37±0.36"
+        }
+      }
+    },
+    {
+      "dataset": "Imagenette",
+      "strategy": "FMCL (no overlap)",
+      "metrics": {
+        "accuracy": {
+          "mean": 71.48,
+          "std": 2.39,
+          "display": "71.48±2.39"
+        },
+        "macro_F1": {
+          "mean": 70.47,
+          "std": 2.15,
+          "display": "70.47±2.15"
+        },
+        "AUC_ROC": {
+          "mean": 95.26,
+          "std": 0.67,
+          "display": "95.26±0.67"
+        }
+      }
+    },
+    {
+      "dataset": "Imagenette",
+      "strategy": "FMCL",
+      "metrics": {
+        "accuracy": {
+          "mean": 73.23,
+          "std": 0.98,
+          "display": "73.23±0.98"
+        },
+        "macro_F1": {
+          "mean": 72.93,
+          "std": 1.12,
+          "display": "72.93±1.12"
+        },
+        "AUC_ROC": {
+          "mean": 95.78,
+          "std": 0.09,
+          "display": "95.78±0.09"
+        }
+      }
+    },
+    {
+      "dataset": "Imagenette",
+      "strategy": "FMCL (Auto-K)",
+      "metrics": {
+        "accuracy": {
+          "mean": 83.1,
+          "std": 1.77,
+          "display": "83.10±1.77"
+        },
+        "macro_F1": {
+          "mean": 82.82,
+          "std": 1.91,
+          "display": "82.82±1.91"
+        },
+        "AUC_ROC": {
+          "mean": 97.58,
+          "std": 0.51,
+          "display": "97.58±0.51"
+        }
+      }
+    }
+  ],
+  "row_count": 30,
+  "metric_cells": 90,
+  "numeric_display_values": 180,
+  "unit": "원표의 0–100 성능 척도, mean±standard deviation; 평균 차이는 percentage points",
+  "scope": "저자 표시 요약값 전체 전사. seed별 원시 결과·새 실험·독립 재현이 아니다.",
+  "semantic_second_pass_complete": true,
+  "derived_checks": {
+    "success": true,
+    "rows_compared_to_PDF_text": 30,
+    "numeric_values_compared": 180,
+    "comparisons": [
+      {
+        "dataset": "BUSI",
+        "metric": "accuracy",
+        "auto_minus_fixed_mean_pp": "0.25",
+        "std_increases": false,
+        "std_decreases": true,
+        "auto_is_highest_mean": true,
+        "fixed_above_no_overlap": true
+      },
+      {
+        "dataset": "BUSI",
+        "metric": "macro_F1",
+        "auto_minus_fixed_mean_pp": "0.31",
+        "std_increases": true,
+        "std_decreases": false,
+        "auto_is_highest_mean": true,
+        "fixed_above_no_overlap": true
+      },
+      {
+        "dataset": "BUSI",
+        "metric": "AUC_ROC",
+        "auto_minus_fixed_mean_pp": "1.94",
+        "std_increases": true,
+        "std_decreases": false,
+        "auto_is_highest_mean": true,
+        "fixed_above_no_overlap": false
+      },
+      {
+        "dataset": "LungHist700",
+        "metric": "accuracy",
+        "auto_minus_fixed_mean_pp": "0.74",
+        "std_increases": true,
+        "std_decreases": false,
+        "auto_is_highest_mean": true,
+        "fixed_above_no_overlap": true
+      },
+      {
+        "dataset": "LungHist700",
+        "metric": "macro_F1",
+        "auto_minus_fixed_mean_pp": "0.93",
+        "std_increases": true,
+        "std_decreases": false,
+        "auto_is_highest_mean": true,
+        "fixed_above_no_overlap": true
+      },
+      {
+        "dataset": "LungHist700",
+        "metric": "AUC_ROC",
+        "auto_minus_fixed_mean_pp": "0.24",
+        "std_increases": false,
+        "std_decreases": true,
+        "auto_is_highest_mean": true,
+        "fixed_above_no_overlap": true
+      },
+      {
+        "dataset": "Imagenette",
+        "metric": "accuracy",
+        "auto_minus_fixed_mean_pp": "9.87",
+        "std_increases": true,
+        "std_decreases": false,
+        "auto_is_highest_mean": true,
+        "fixed_above_no_overlap": true
+      },
+      {
+        "dataset": "Imagenette",
+        "metric": "macro_F1",
+        "auto_minus_fixed_mean_pp": "9.89",
+        "std_increases": true,
+        "std_decreases": false,
+        "auto_is_highest_mean": true,
+        "fixed_above_no_overlap": true
+      },
+      {
+        "dataset": "Imagenette",
+        "metric": "AUC_ROC",
+        "auto_minus_fixed_mean_pp": "1.80",
+        "std_increases": true,
+        "std_decreases": false,
+        "auto_is_highest_mean": true,
+        "fixed_above_no_overlap": true
+      }
+    ],
+    "FM_variants_improve_each_of_9_means_for_PACFL_and_FECFL": true,
+    "source_code_executed": false,
+    "new_model_runs": 0
+  }
+}

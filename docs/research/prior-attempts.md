@@ -421,3 +421,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 [NTKMTL·NTKMTL-SR·gradient norm weighting·GO4ALIGN](records/0081-ntkmtl-training-balance.md)은 학습 중 균형 조절을 소속 결정에 옮기기 전에 확인한다. RCTL gradient를 직접 쓰는지, 별도 probe를 쓰는지, clustering 이후 loss만 조절하는지에 따라 질문이 달라진다. 재검토 시 공유할 출력·head, 최종 모델 독립성, 같은 global multi-head 대안과 실제 RCTL 공유 효과의 근거를 명시한다.
 
 [M3L·early training affinity·NTK alignment와 원78 검색 이력](records/0082-search-and-access-provenance.md)을 추가 탐색의 출발점으로 쓸 수 있다. 저장 snippet만으로 전문 검토가 끝났다고 가정하지 말고, 전문·고정 판본·실험 조건을 확보한 뒤 최종 예측기 독립성과 실제 출력 공유 조건을 다시 확인한다.
+
+## FMCL과 같은 사전 군집 구조의 재제안 방지
+
+[H083](records/0083-fmcl-client-clustering.md): 고정 FM으로 client를 사전 군집화하고 별도 모델을 학습하는 구조는 이미 선행연구에 있다. 새 제안은 class 라벨 조건을 연속 target에서 어떻게 바꾸는지, 관측 가능한 정보와 총비용, 실제 출력 공유의 이득을 구체화해야 한다. 평균 성능과 편차·ablation 예외를 함께 보존한다.
