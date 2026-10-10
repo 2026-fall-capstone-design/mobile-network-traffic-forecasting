@@ -54,7 +54,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 
 ## 피크 목표의 일차근거와 실제 결정
 
-[69–71 진단](records/0069-0071-peak-objective.md)의 저장 예측·보정·비용과 [Forecaster’s Dilemma 저널 본문](records/0069-0071-forecaster-dilemma.md)은 대조했습니다. Forecaster의 별도 온라인 부록·원실험 구현, DeepCog의 최종 출판 본문·JSAC 실험 구현, 저장 검색 원문, SIU2026 메타데이터는 후속 범위입니다. 실제 capacity·SLA·허용 행동을 정하기 전에는 activity의 부족량을 운영 비용으로 부르지 않습니다. 계획의 cell별 피크 U/O가 저장되지 않은 점과 이미 사용한 개발 구간이라는 제한도 남습니다.
+[69–71 진단](records/0069-0071-peak-objective.md)의 저장 예측·보정·비용과 [Forecaster’s Dilemma 저널 본문](records/0069-0071-forecaster-dilemma.md)은 대조했습니다. Forecaster의 별도 온라인 부록·원실험 구현, DeepCog의 최종 출판 본문·JSAC 실험 구현, SIU2026 논문 본문은 후속 범위입니다. 저장 검색8내용과 SIU 기관 메타·초록은 [H069](records/0069-0071-siu-search.md)에서 확인했습니다. 실제 capacity·SLA·허용 행동을 정하기 전에는 activity의 부족량을 운영 비용으로 부르지 않습니다. 계획의 cell별 피크 U/O가 저장되지 않은 점과 이미 사용한 개발 구간이라는 제한도 남습니다.
 
 ## 피크 문헌의 판본 차이와 실행 근거
 
@@ -63,3 +63,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 ## DeepCog의 출판 판본·실제 구현·비용 단위
 
 [H068 검수](verification/history-068.md)는 저자본16쪽·24개 인쇄값과 공개 notebook10셀을 대조했습니다. 최종 출판 PDF, JSAC의 실제 target 경계와 MAE-pre 구현, 전처리 fit 구간·원데이터·seed·원비용 배열·시간/메모리는 미확인입니다. 비용 계수의 단위, Th 포함 경계, 그림10의 slots/minutes 및 그림11의 α 불일치를 임의로 보정하지 않습니다. INFOCOM2019 코드를 같은 실험으로 합치지 않습니다.
+
+## SIU의 실제 손실식과 검색 후보의 접근 근거
+
+[H069 검수](verification/history-069.md)에서 기관 HTML과 현재 응답이 같음을 확인했지만 DOI의 일반 응답은202·빈 본문이었습니다. SIU 손실 계수·단위·전처리 fit 구간·분할·seed·수치표·코드는 미확인입니다. TSUL/Digital Twin 등의 저장 초록과 원논문 검수를 구분하고, 첫 질의 묶음 원문과 Rolling-Origin Conformal 후보의 정확한 서지를 추정 복원하지 않습니다. 원검색 전체의 팀 공용 보관 위치도 별도로 확인해야 합니다.

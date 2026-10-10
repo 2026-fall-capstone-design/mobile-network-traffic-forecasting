@@ -43,3 +43,5 @@ Table2–6의 결과는 대조한 값에서 같지만 Table7의32항목 중17개
 [판본 감사](../evidence/0069-0071-forecaster-dilemma/external-version-check.json)는 요청 결과·파일 해시·차이·실제 읽은 구간을, [형식 감사](../evidence/0069-0071-forecaster-dilemma/format-audit.json)는 PDF·TXT·HTML·원PNG의 범위를 구분한다. source 묶음에는 실험 실행 코드가 없지만, 전 세계에 코드가 공개되지 않았다는 주장은 아니다. 원표본·MCMC·DM검정 구현과 전체 비용은 미확인이다.
 
 H067 시점에 남겨 둔 DeepCog는 후속 [H068 출처·판본](history-068.md)에서 저자본16쪽과 파생표현·공개 notebook을 대조했습니다. 위 H067 범위와 Forecaster의 미확인 별도 부록은 그대로 보존합니다.
+
+후속 [H069의 출처와 읽은 범위](../sources/history-069.md)에서 SIU 기관 HTML·저장 검색8내용을 검수했다. 이 문서의 앞선 대기 표시는 당시 범위로 보존한다. SIU 논문 본문·실행 자료, 첫 검색 묶음 원문과 검색전용 후보의 본문은 계속 미확인이다.

@@ -32,3 +32,5 @@ snapshot17의 56파일·14,152,614 bytes는 [보존 검사](../evidence/0069-007
 위의 논문 본문 독해 0과 대기 표시는 H066 시점이다. [H067 출처·판본](history-067.md)에서 Forecaster’s Dilemma 저널 22쪽·TXT/HTML·원PNG와 공식 TeX 지정범위를 대조했다. 기존 정확사본과 원기록의 당시 scope는 변경하지 않는다. DeepCog·SIU2026·저장 검색자료는 후속 범위다.
 
 후속 [H068 출처](history-068.md)는 DeepCog 저자본16쪽·TXT/HTML·원PNG 및 별도 INFOCOM2019 연결 notebook의 범위를 검수했습니다. 위 대기 표시는 H066/H067 시점이며 원기록의 당시 scope는 그대로 보존합니다.
+
+후속 [H069의 출처와 읽은 범위](../sources/history-069.md)에서 SIU 기관 HTML·저장 검색8내용을 검수했다. 이 문서의 앞선 대기 표시는 당시 범위로 보존한다. SIU 논문 본문·실행 자료, 첫 검색 묶음 원문과 검색전용 후보의 본문은 계속 미확인이다.
