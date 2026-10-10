@@ -154,3 +154,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [64·65 GP-Copula 검수](records/0064-0065-gp-copula.md)는 경험 CDF와 공유 예측의 선행, Electricity·Taxi의 손해 조건, 원논문과 공개 GluonTS 재구현의 차이를 연결합니다. 본문11쪽·보충12쪽·선택구현을 확인했으며 TACTiS-2·conditional normalization과65전체종합은 남아 있습니다.
 
 [64·65 TACTiS-2 검수](records/0064-0065-tactis2.md)는 조건부 주변분포·copula 분리와 두 단계 학습, Traffic의 지표별 예외, 공식 코드 재사용 조건을 연결합니다. 논문28쪽·고정코드16파일을 읽었으며 conditional normalization과65전체종합은 남아 있습니다.
+
+[64·65 조건부 정규화 검수](records/0064-0065-conditional-normalization.md)는 평균·분산 제거와 PIT의 차이, 보간 평가의 범위, 공개 패키지의 구현 차이를 정리합니다. 논문35쪽과 고정 코드18파일을 읽었으며,65 전체 종합과 후속 이력 연결은 남아 있습니다.

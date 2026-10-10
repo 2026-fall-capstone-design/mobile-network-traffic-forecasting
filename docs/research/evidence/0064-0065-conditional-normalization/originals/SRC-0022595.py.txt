@@ -1,0 +1,36 @@
+from pathlib import Path
+import urllib.request, json, hashlib
+from pypdf import PdfReader
+
+out = Path(__file__).resolve().parent / 'sources' / 'conditional_transform_64'
+manifest = out / 'conditional_normalization_manifest.json'
+assert not manifest.exists(), 'Already collected.'
+items = [
+    ('Conditional_normalization_Monash2023.pdf', 'https://www.monash.edu/business/ebs/research/publications/ebs/2023/wp10-2023.pdf'),
+    ('Conditional_normalization_abs.html', 'https://arxiv.org/abs/2305.12651'),
+    ('Conditional_normalization_author.html', 'https://robjhyndman.com/publications/condnormts.html'),
+]
+records = []
+for name, url in items:
+    record = {'name': name, 'url': url, 'accessed_date': '2026-09-26'}
+    try:
+        with urllib.request.urlopen(url, timeout=30) as response:
+            data = response.read(20_000_001)
+            assert len(data) <= 20_000_000
+            record.update(status=response.status, resolved_url=response.url)
+        if name.endswith('.pdf'):
+            assert data.startswith(b'%PDF-')
+        path = out / name
+        assert not path.exists()
+        path.write_bytes(data)
+        record.update(saved=True, bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            reader = PdfReader(path)
+            text = '\n'.join(f'\n=== PDF PAGE {i+1} ===\n{p.extract_text()}' for i,p in enumerate(reader.pages))
+            path.with_suffix('.txt').write_text(text, encoding='utf-8')
+            record['pages'] = len(reader.pages)
+    except Exception as exc:
+        record.update(saved=False, error=f'{type(exc).__name__}: {exc}')
+    records.append(record)
+manifest.write_text(json.dumps(records, indent=2), encoding='utf-8')
+print(json.dumps(records, indent=2))

@@ -1,0 +1,288 @@
+{
+  "batch_id": "history-061",
+  "claims": [
+    {
+      "claim_id": "H061-C01",
+      "claim": "공식 v1 PDF는 저장본과 바이트동일한35쪽이며 arXiv comment의36쪽과 구분한다.",
+      "source_location": "SRC-0062139:전체35쪽; SRC-0062140:35쪽; SRC-0062141:선택서지",
+      "verification_method": "PDF SHA·TXT 페이지·v1 history·실제페이지수 대조",
+      "limit": "HTML 전체 독해나 comment의 Journal Article을 정식 학술지 출판으로 확정하지 않는다."
+    },
+    {
+      "claim_id": "H061-C02",
+      "claim": "저자는6명이며 arXiv제출 May22/PDF표지 May23/저자페이지 May26을 구분한다.",
+      "source_location": "SRC-0062139:1쪽; SRC-0062141/SRC-0062142:선택서지",
+      "verification_method": "중복 author 메타키를 리스트로 보존하고 판본·날짜·working paper 표기 대조",
+      "limit": "저자 HTML은 현재CSS/분류링크만 변경; 논문본문 변경이라고 하지 않는다."
+    },
+    {
+      "claim_id": "H061-C03",
+      "claim": "원64·65 전체를 재대조하고 당시 부분독해/코드미검토와 이번 검수를 구분한다.",
+      "source_location": "SRC-0022015:전체; SRC-0022016:전체/§7",
+      "verification_method": "기존정확사본·전체텍스트·원65 실행범위 대조",
+      "limit": "새 실험이나 후보 채택으로 소급하지 않는다."
+    },
+    {
+      "claim_id": "H061-C04",
+      "claim": "평균 GAM 후 제곱잔차 Gamma log-link로 분산을 맞추고 평균단계는 이분산·자기상관을 무시한다.",
+      "source_location": "SRC-0062139:4–5쪽§2.1",
+      "verification_method": "식1–3·분포와 link·적합 순서 대조",
+      "limit": "양수응답의 다른 분포 가능성과 특정응용Bayesian설정을 구분한다."
+    },
+    {
+      "claim_id": "H061-C05",
+      "claim": "조건부 평균·분산 정규화는 PIT나 Gaussian 주변분포·독립성 보장이 아니다.",
+      "source_location": "SRC-0062139:3–6쪽§2/32쪽Fig25; SRC-0022016:§7/연결논리",
+      "verification_method": "정규화식과 CDF 정의·잔존모멘트/의존 비교",
+      "limit": "정확한 모멘트를 알아도 전체분포 형태가 고정된다는 결론은 없다."
+    },
+    {
+      "claim_id": "H061-C06",
+      "claim": "정규화 후 남은 의존을 ARIMA로 맞추고 Kalman smoother 보간을 역변환한다.",
+      "source_location": "SRC-0062139:5쪽§2.2/26,29,31–33쪽B.4",
+      "verification_method": "정규화·상태공간 보간·원단위 복원 흐름 대조",
+      "limit": "미래 관측을 허용한 보간을 chronological forecast 성능으로 치환하지 않는다."
+    },
+    {
+      "claim_id": "H061-C07",
+      "claim": "ACF/CCF는 lag곱의 조건부 GAM과 식5 유계 inverse link를 사용한다.",
+      "source_location": "SRC-0062139:6쪽식5–6; SRC-0063856:5쪽모멘트·보간식",
+      "verification_method": "원PNG/식/정규화 조건집합 대조",
+      "limit": "출력범위만으로 상관 추정의 정확성이나 lag별 모멘트 동일성 보장 없음."
+    },
+    {
+      "claim_id": "H061-C08",
+      "claim": "42지점5년 원1825를 매5번째 취해 지점365/전체15330으로 분석한다.",
+      "source_location": "SRC-0062139:7–8쪽§3.1–3.3",
+      "verification_method": "인쇄설정·73/year·5년·42배 산술 대조",
+      "limit": "본문T1825와 분석길이를 임의 통일하지 않는다."
+    },
+    {
+      "claim_id": "H061-C09",
+      "claim": "1654결측 뒤 관측의80:20 보간holdout이며 실제 분할수·seed는 미확인이다.",
+      "source_location": "SRC-0062139:8쪽§3.4",
+      "verification_method": "15330−1654=13676 및20%=2735.2 산술",
+      "limit": "임의 반올림 분할수나 시간순 forecasting split으로 쓰지 않는다."
+    },
+    {
+      "claim_id": "H061-C10",
+      "claim": "평균식 Fourier5쌍과 결과·Fig5의3쌍,Fig4 문구와2·3패널 차이를 보존한다.",
+      "source_location": "SRC-0062139:8–11쪽§3.2–3.4/Figs4–5",
+      "verification_method": "식의 beta/함수범위·결과문장·시각패널 대조",
+      "limit": "실제 실행설정이나 원인 미확인으로 임의 교정하지 않는다."
+    },
+    {
+      "claim_id": "H061-C11",
+      "claim": "HMC3chains×6000에서각4000제거는 문구대로 총18000/잔여6000이다.",
+      "source_location": "SRC-0062139:8쪽§3.4",
+      "verification_method": "인쇄chain/iteration/burnin과 조건부 산술 대조",
+      "limit": "실제Stan코드/posterior배열·수렴진단 재현 아님."
+    },
+    {
+      "claim_id": "H061-C12",
+      "claim": "AR8 최적 RMSPE 보고와 mean95%HPD 관측포함.946/여름SD약3배를 구분한다.",
+      "source_location": "SRC-0062139:8–12쪽§3.4/Figs3–6",
+      "verification_method": "결과문장·구간 의미·설정 대조",
+      "limit": "RMSPE수치/선택분할 미확인; .946을 미래예측 정확도로 쓰지 않는다."
+    },
+    {
+      "claim_id": "H061-C13",
+      "claim": "PringleCreek Q4/5분/약200m 두센서에서K24=120분 지연을 탐색한다.",
+      "source_location": "SRC-0062139:14–15쪽§4.5–4.6",
+      "verification_method": "기간·공변량·관측주기·45–60분전문가지식 대조",
+      "limit": "독립적으로 측정한 실제 도달시간 정답으로 검증한 연구라 하지 않는다."
+    },
+    {
+      "claim_id": "H061-C14",
+      "claim": "CCF 시각화는 다른공변량중앙값251.6m/9.926C 고정이며 고수위반전은 단일사건이다.",
+      "source_location": "SRC-0062139:15–20쪽Figs7–11",
+      "verification_method": "조건부단면·lag단위·251.6–251.8/단일11월사건 대조",
+      "limit": "수위·지연의 보편적 단조법칙이나 실제모든시각경로가 아니다."
+    },
+    {
+      "claim_id": "H061-C15",
+      "claim": "Fig11의최대CCF가 음수인구간에도 단순argmax lag가 존재한다.",
+      "source_location": "SRC-0062139:18–20쪽Fig11; EXT-H061:R/estimate_dt.R71–95",
+      "verification_method": "그림과양의상관필터없는max.col 대조",
+      "limit": "유의한 인과도달시간이라는 뜻이 아니다."
+    },
+    {
+      "claim_id": "H061-C16",
+      "claim": "약96%는 선택lag로 재적합한 estimatedCCF와고정24lag estimatedCCF 비교다.",
+      "source_location": "SRC-0062139:18쪽§4.8/20쪽Fig12",
+      "verification_method": "추정량·재적합·비율의 대상 대조",
+      "limit": "정답lag 정확도/새 out-of-time forecast 성능 아님."
+    },
+    {
+      "claim_id": "H061-C17",
+      "claim": "논문 sieve bootstrap은 AR재귀 생성/CCFGAM재적합/1000회 percentile구간이다.",
+      "source_location": "SRC-0062139:13–14쪽§4.4/16쪽§4.7",
+      "verification_method": "알고리즘의2단계 새잔차재귀·AICc·1000·80/95구간 대조",
+      "limit": "첫단계모멘트·lag간의존을 보존한 공동 재표집까지 검증한 것은 아니다."
+    },
+    {
+      "claim_id": "H061-C18",
+      "claim": "범위·와이퍼 기술이상치를 다루되 실제유입의 급변을 일괄 spike/step 제거하지 않는다.",
+      "source_location": "SRC-0062139:22–26쪽B.1–B.2/Figs14–17",
+      "verification_method": "전처리목적·주기와그림범례 대조",
+      "limit": "원배열의 실제 제거집합 재구성 아님."
+    },
+    {
+      "claim_id": "H061-C19",
+      "claim": "산점도·비선형 관계로 level/temperature를 선택했으며Fig20상관15개를 시각전사했다.",
+      "source_location": "SRC-0062139:26–29쪽B.3/Figs18–20",
+      "verification_method": "15Pearson 숫자/변수쌍·공변량선택문장 대조",
+      "limit": "raw 재계산/독립선택holdout 확인 아님; Pearson순위만으로 선정판단을 바꾸지 않는다."
+    },
+    {
+      "claim_id": "H061-C20",
+      "claim": "Fig21 변수별반올림5/2/1/1%와 전체결측2.1/존재97.9%는구분한다.",
+      "source_location": "SRC-0062139:30쪽Fig21",
+      "verification_method": "인쇄값/반올림단위·전체100%산술 대조",
+      "limit": "정수반올림비율 평균과전체비율 정확일치를 요구하지 않는다."
+    },
+    {
+      "claim_id": "H061-C21",
+      "claim": "상류수위linear/수온ARIMA-Kalman 뒤 탁도thinplate모멘트·ARIMA보간을 수행한다.",
+      "source_location": "SRC-0062139:26쪽B.3–B.4/29–33쪽Figs22–26",
+      "verification_method": "변수별순서·spline종류·잔존의존/역변환 대조",
+      "limit": "CCF단계 natural cubic spline과 동일설정으로 합치지 않는다."
+    },
+    {
+      "claim_id": "H061-C22",
+      "claim": "음수 역변환 탁도는 후속분석에서 제거하며Figs25/26캡션·패널차이를 보존한다.",
+      "source_location": "SRC-0062139:32–33쪽Figs25–26",
+      "verification_method": "음수제거문장·전체시각·축과캡션 대조",
+      "limit": "0clip/양수보장/그림에 없는수온·하류결과를 만들지 않는다."
+    },
+    {
+      "claim_id": "H061-C23",
+      "claim": "35쪽/26그림/8번호식/알고리즘1/번호표0/참고문헌30항목을읽었다.",
+      "source_location": "SRC-0062139:전체; SRC-0063856:전체; EXT-H061:형식감사",
+      "verification_method": "페이지·그림·참고문헌33–35쪽과독해원장 대조",
+      "limit": "인용논문30편본문·모든곡선좌표/원배열 복원이 아니다."
+    },
+    {
+      "claim_id": "H061-C24",
+      "claim": "전체 분석repo는404지만공개conduits commit고정18파일2423줄을읽었다.",
+      "source_location": "SRC-0062139:21쪽재현링크; SRC-0062142:패키지링크; EXT-H061:repo접근/코드SHA",
+      "verification_method": "웹/API404·공개목록·고정commit/tree/blob/줄범위 대조",
+      "limit": "404원인이나비공개여부를단정하지 않고 전체repo/논문실행판 검증으로세지 않는다."
+    },
+    {
+      "claim_id": "H061-C25",
+      "claim": "conduits1.0.0/MIT/R>=4.1이며의존버전미고정·논문실행commit동일성미확인이다.",
+      "source_location": "EXT-H061:DESCRIPTION1–37/LICENSE1–2/LICENSE.md1–21/NAMESPACE1–49",
+      "verification_method": "패키지/라이선스/날짜와API NOASSERTION구분",
+      "limit": "완전재현환경이나실제Stan코드 확인이 아니다."
+    },
+    {
+      "claim_id": "H061-C26",
+      "claim": "기본Gamma정규화경로에0분산floor·물리적양수출력제약을확인하지못했다.",
+      "source_location": "EXT-H061:R/conditional_mean.R35–71/conditional_var.R45–88/normalize.R38–49,106–118",
+      "verification_method": "예측response→sqrt·표준화/역변환 대조",
+      "limit": "실제데이터 수치오류나논문결과영향 재현 아님."
+    },
+    {
+      "claim_id": "H061-C27",
+      "claim": "선택lognormal경로는log제곱잔차예측을exp없이분산으로sqrt하는정적경로다.",
+      "source_location": "EXT-H061:R/conditional_var.R55–56,76–81/normalize.R40–44,108–113",
+      "verification_method": "분기·모형link·호출순서 대조",
+      "limit": "논문주Gamma경로와구분; R실행중오류발생 검증 아님."
+    },
+    {
+      "claim_id": "H061-C28",
+      "claim": "ACF는identity적합후lag별예측minmax재조정으로논문식5와다르다.",
+      "source_location": "EXT-H061:R/conditional_acf.R96–102/augment.R209–222; SRC-0062139:6쪽식5",
+      "verification_method": "코드정적경로·.2/.3→−1/1 결정적예 대조",
+      "limit": "논문실제실행이같았다는증거나상관정확성 검증 아님."
+    },
+    {
+      "claim_id": "H061-C29",
+      "claim": "CCF는기존모멘트fit재사용이고행lag는물리시각간격을검사하지않는다.",
+      "source_location": "EXT-H061:R/conditional_ccf.R97–174/conditional_acf.R140–145/README.md241–251",
+      "verification_method": "response이동/current공변량·drop_na·5분중간삭제예 대조",
+      "limit": "lag별conditional moment동일성/실제time gap 영향은미확인."
+    },
+    {
+      "claim_id": "H061-C30",
+      "claim": "지연p값은response예측/SE와1−pnorm(max)^K로논문link/t설명과다르다.",
+      "source_location": "EXT-H061:R/estimate_dt.R71–95; SRC-0062139:20쪽",
+      "verification_method": "함수type=response·max/정규CDF와R공식문서 대조",
+      "limit": "lag의존하calibration·유의한실제lag보장 미검증."
+    },
+    {
+      "claim_id": "H061-C31",
+      "claim": "bootstrap코드는originalARfitted+innovation이며paper의새잔차재귀와다르다.",
+      "source_location": "EXT-H061:R/estimate_dt.R184–239; SRC-0062139:13쪽",
+      "verification_method": "AR적합/표집/line236과phi.5의결정적두시점예 대조",
+      "limit": "원코드RNG실행이나논문CI오류발생 재현 아님."
+    },
+    {
+      "claim_id": "H061-C32",
+      "claim": "bootstrap은CCF만재적합하며m필수·문서예100·seed없음을확인했다.",
+      "source_location": "EXT-H061:R/estimate_dt.R241–330/man/calc_dt_CI.Rd1–89",
+      "verification_method": "모멘트고정·분위수.025/.975/.1/.9·예제입력 대조",
+      "limit": "논문1000회와실제실행환경/표본집합은미확인."
+    },
+    {
+      "claim_id": "H061-C33",
+      "claim": "base pipe안의.[cnames]는별도점바인딩없을때이름해결실패가예상된다.",
+      "source_location": "EXT-H061:R/estimate_dt.R288–298/conduits.R1–11/NAMESPACE1–49/Rpipe공식문서",
+      "verification_method": "basepipe첫인자삽입·globalVariables와변수정의 차이 대조",
+      "limit": "외부환경바인딩·당시R판본·실제런타임실패 재현 아님."
+    },
+    {
+      "claim_id": "H061-C34",
+      "claim": "augment는broom내부함수의분산fitted를response로바꾼뒤기존SE로대칭구간을만든다.",
+      "source_location": "EXT-H061:R/augment.R33–67,141–157,225",
+      "verification_method": "내부함수호출·fitted/SE갱신순서 대조",
+      "limit": "broom버전/SE척도 미확인; 검증된BayesianHPD로치환하지 않는다."
+    },
+    {
+      "claim_id": "H061-C35",
+      "claim": "README의Jul–Dec/3정규화공변량/K10과저장출력은paperQ4/2변수/K24와다르다.",
+      "source_location": "EXT-H061:README.md1–293/README.Rmd1–215/R/data.R1–25/reexports.R1–11",
+      "verification_method": "n49796/GCV29.604·4.9694·k8/7/nsdf5와설정 대조",
+      "limit": "새실행·논문재현/링크된README이미지전체읽기 아님."
+    },
+    {
+      "claim_id": "H061-C36",
+      "claim": "수집코드EOS필터와주석·fDOM NA경로를구분하고15분집계는주석임을확인했다.",
+      "source_location": "EXT-H061:data-raw/NEON_PRIN.R1–265,312–519",
+      "verification_method": "EOS필터110/132 대 주석131/132, 별도TSW101/102·flag258/347–367·집계393–519 대조",
+      "limit": "NEON_TOKEN조회/다운로드/use_data실행·.rda역직렬화 안함; fDOM을주결과오류로일반화안함."
+    },
+    {
+      "claim_id": "H061-C37",
+      "claim": "와이퍼코드는5행rollmax==현재값flag로연속상승·동률에서도연속flag가능하다.",
+      "source_location": "EXT-H061:data-raw/NEON_PRIN.R267–302; SRC-0062139:25쪽",
+      "verification_method": "rightaligned창·직접작성1..8산술flag5..8 대조",
+      "limit": "매5번째시각선택과다름; 실제원자료제거집합 미확인."
+    },
+    {
+      "claim_id": "H061-C38",
+      "claim": "원65의정확full-history CDF중앙값논리를평균분산정규화에그대로적용할수없다.",
+      "source_location": "SRC-0022015:논리검사; SRC-0022016:§7/연결논리; SRC-0062139:§2",
+      "verification_method": "CDF대모멘트/달력Z대전체H·잔존의존 비교",
+      "limit": "단일PIT중앙값·joint copula학습·Tab효용을같은결론으로합치지 않는다."
+    },
+    {
+      "claim_id": "H061-C39",
+      "claim": "시각별양수척도가다르면정규화MAE순위와원척도MAE순위가바뀔수있다.",
+      "source_location": "SRC-0062139:5쪽역변환; SRC-0022016:유한평가지표논리; EXT-H061:결정적산술",
+      "verification_method": "s=(1,10),A오차(0,2)/B(3,0)의MAE1/1.5대10/1.5 직접검산",
+      "limit": "같은가용척도·변환의조건부항등식이며실제모델성능시험아님."
+    },
+    {
+      "claim_id": "H061-C40",
+      "claim": "11그룹22경로·새사본3/3178bytes·재사용3/외부5를연결하고65종합은남는다.",
+      "source_location": "SRC-0022015/SRC-0022016/SRC-0062139/SRC-0062140/SRC-0062141/SRC-0062142/SRC-0063856/SRC-0062150/SRC-0062151/SRC-0063866/SRC-0022595:명세",
+      "verification_method": "기존catalog SHA 중복·원본aliases/보호6·사본bytes·새fulltext1/JSON2 대조",
+      "limit": "향후VAR/공간확장·실행판/config/raw/전체비용과전체Goal 미완료. 새연구실행지시로취급하지 않는다."
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_scope": "작성된 팀기록/40주장/출처·검수 문서를 원문에 다시 대조했다. 논문3–9,13–21,25–26,29–33쪽 텍스트, 원PNG5쪽 및PDF11·29·32쪽 전체시각, Fig20상관15값을 재확인했다. 고정R코드의Gamma/lognormal,ACF/CCF,augment,estimate_dt,README와NEON전처리·행lag·bootstrap경로, 원64전체와원65§6–7/연결논리·실행경계도 재대조했다. §2/식/보간·bootstrap의쪽과절번호, PNG5쪽의실제내용, 수집스크립트에없는렌더동작설명, EOS와TSW제품매핑의표현을바로잡았다. 초기독해단계의미독해/대기문구는공개최종감사에서해소하고이전private checkpoint는원형보존했다. 같은에이전트의두번째검수이며독립연구자검증·원실험재현은아니다.",
+  "semantic_second_pass_at_utc": "2026-10-10T07:01:11.648918+00:00"
+}
