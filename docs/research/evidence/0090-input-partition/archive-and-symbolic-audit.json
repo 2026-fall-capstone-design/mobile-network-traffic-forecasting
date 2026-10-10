@@ -1,0 +1,96 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-10T22:53:34.252741+00:00",
+  "archive_items": 42,
+  "archive_bytes": 3524587,
+  "all_archived_bytes_match": true,
+  "verification_equals_manifest_without_items": true,
+  "collection_entries": 12,
+  "collection_HTML": 8,
+  "collection_JSON": 4,
+  "code_entries": 8,
+  "code_commits": {
+    "duet": "dcc6e6780a9138731b64b9b5398a94a1d97033f0",
+    "ccm": "e4769baa7f8457358eb9b4614af2de1fbfba2257"
+  },
+  "source_SHA": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+  "MAC": {
+    "blocks": [
+      {
+        "block": 0,
+        "width": 16,
+        "constant_per_step": 2816,
+        "input_coefficient": 80
+      },
+      {
+        "block": 1,
+        "input_width": 16,
+        "width": 32,
+        "constant_per_step": 13824
+      },
+      {
+        "block": 2,
+        "input_width": 32,
+        "width": 64,
+        "constant_per_step": 55296
+      },
+      {
+        "block": 3,
+        "input_width": 64,
+        "width": 64,
+        "constant_per_step": 65536
+      },
+      {
+        "block": 4,
+        "input_width": 64,
+        "width": 32,
+        "constant_per_step": 21504
+      },
+      {
+        "block": 5,
+        "input_width": 32,
+        "width": 16,
+        "constant_per_step": 5376
+      }
+    ],
+    "intermediate_projection_per_step": 5376,
+    "core_constant_per_step": 169728,
+    "input_coefficient_per_step": 96,
+    "output_coefficient_per_step": 16,
+    "stored_dense_out_features": 1,
+    "multioutput_is_symbolic_extension": true,
+    "formula": "L*(169728+96*F+16*s)",
+    "partition_formula": "L*((96*q+16)*N+(169728+96*c)*K)",
+    "versus_global_difference": "L*(K-1)*(169728+96*c)",
+    "excludes": [
+      "bias additions",
+      "activations",
+      "BatchNorm",
+      "memory transfer",
+      "optimizer",
+      "communication",
+      "wall time"
+    ]
+  },
+  "toy": {
+    "assumptions": "U and V independent, each equally likely -1 or +1; extra symmetry needed for the stated means",
+    "conditional_mean_U": 2,
+    "conditional_mean_V": 2,
+    "optimal_MSE_subset": 1,
+    "optimal_MSE_full": 0,
+    "scientific_experiment": false
+  },
+  "historical_budget": {
+    "sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+    "remaining": {
+      "TabICL_contexts": 11,
+      "TabICL_query_rows": 20640,
+      "RCTL_fits": 0
+    },
+    "current_execution_authorization": false
+  },
+  "scope": "원81 보존파일 해시와 기호 연산 대조. 문헌/외부코드 전체 독해는 아직 하지 않았다. 원 archiver/collector/model 실행0.",
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "new_numeric_research_pilots": 0
+}

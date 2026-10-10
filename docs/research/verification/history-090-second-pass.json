@@ -1,0 +1,116 @@
+{
+  "batch_id": "history-090",
+  "status": "source_checked",
+  "claims_checked": 28,
+  "checks": [
+    {
+      "check_id": "H090-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        28
+      ],
+      "sources": [
+        "원81 계획22행·판단103행·공개요약50행 전체 작성 후 재독해"
+      ],
+      "result": "행별 scalar 공유와 cell별 입력/출력 좌표를 구별. 진입 보류를 모든 다변량 방법 실패로 확대하지 않으며 모델 실행0과 당시 재진입 조건을 보존."
+    },
+    {
+      "check_id": "H090-SP02",
+      "claims": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        14
+      ],
+      "sources": [
+        "원81 판단 §2·§3·확인 범위와 보존 자료, 계획 전체, source_manifest12·code_manifest8 전체"
+      ],
+      "result": "문헌 방법·코드 관찰은 당시 보고에 귀속. 네 문헌의 방법/증명/그림·외부 코드29그룹은 미완료로 유지. 현재 웹 존재·재현·신규성을 확정하지 않음. subset context/query와 캐시의 범위를 구별."
+    },
+    {
+      "check_id": "H090-SP03",
+      "claims": [
+        11,
+        12,
+        13
+      ],
+      "sources": [
+        "원81 판단 §3 전체 재독해",
+        "직교성 전개와 4상태의 Fraction 산술 보고서"
+      ],
+      "result": "X_S가 X_U의 일부·유한 제곱평균·같은 분포 조건에서 교차항0을 확인. 최적 MSE와 유한 학습기/MAE를 구별. 독립±1에 동일 확률1/2를 명시해 예시의 빠진 대칭 조건 보완."
+    },
+    {
+      "check_id": "H090-SP04",
+      "claims": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "sources": [
+        "저장 RCTL60행·보존/기호 검사 코드56행 전체 정적 재독해",
+        "원81 판단 §4, archive-and-symbolic-audit의 항별 정수 산술"
+      ],
+      "result": "causal convolution은 왼쪽 pad 후 길이L을 유지. block5ab+11b², projection5376, 상수169728, 입력96F, 가상 출력16s를 대조. 저장 dense출력1과 다중 출력 가정을 구별. K개 대비 global1개와 scalarN회 비교 조건·용량/시간 미측정을 보존."
+    },
+    {
+      "check_id": "H090-SP05",
+      "claims": [
+        21,
+        22,
+        26
+      ],
+      "sources": [
+        "원74 코드106행 전체 작성 후 정적 재독해·결과/settings의 관련 필드 및/teacher/MSE,MAE",
+        "원80 판단44행 전체 재독해·종료원장/used,/caps,/remaining_count_budgets 선택 재참조",
+        "snapshot manifest의 원장 SHA와 보존 파일"
+      ],
+      "result": "원74는 query336 중 뒤168시간840–1007의 mean-normalized teacher MSE임을 보완. context256과 actual-target 학습672를 혼동하지 않음. 원80 소속 동일·기간 반전은 이미 검수된 결과 재인용. 과거 예산은 현 실행 권한이 아님."
+    },
+    {
+      "check_id": "H090-SP06",
+      "claims": [
+        23,
+        24,
+        25,
+        27
+      ],
+      "sources": [
+        "collector53행·fetcher27행·archiver56행 전체 정적 재독해",
+        "verification21행·source_manifest98행·code_manifest82행·snapshot manifest233행 전체 작성 후 재독해",
+        "원본/보존 해시와 원자료 범위 목록"
+      ],
+      "result": "12수집항목(HTML8/JSON4)·TXT파생8·고정commit 코드8·snapshot42/3524587B를 구별. manifest 읽기와 연결 본문 독해는 별개. 새6본문/4JSON만 대상, 기존5그룹 재참조·미완료29그룹 추가가산0."
+    }
+  ],
+  "checked_at_utc": "2026-10-10T23:11:18.348678+00:00",
+  "wording_corrections": [
+    {
+      "before": "원81이 인용한 MSE는 원74의 네 cell3737·3765·6137·6165, 공통28입력, context256, seed20260925의 직접 teacher 개발 assessment 결과다. H070에서 검수한 값은 Tab0.009579815874350413, HGB0.011924807253712862, Ridge0.014359847237104397이며 원81 반올림과 일치한다. 같은 조건의 own-only Tab과 비교하지 않았으므로 공간 입력 효과·새 다중 출력 RCTL 이득으로 바꾸지 않는다.",
+      "after": "원81이 인용한 MSE는 원74의 네 cell 3737·3765·6137·6165, 공통28입력, context256, seed20260925의 직접 teacher 개발 assessment 결과다. context는168–671에서256시점을 뽑았고 query672–1007 중 뒤168시간인840–1007에서 평가했다. 각 cell의 raw0–671 평균으로 나눈 무차원 target의 제곱오차이며 관측 이력으로 다음1시간을 예측했다. Tab 출력은 ensemble1의 mean이다. H070에서 검수한 값은 Tab0.009579815874350413, HGB0.011924807253712862, Ridge0.014359847237104397이며 원81 반올림과 일치한다. 독립 test나168시간 재귀 예측 결과가 아니다. 같은 조건의 own-only Tab과 비교하지 않았으므로 공간 입력 효과·새 다중 출력 RCTL 이득으로 바꾸지 않는다."
+    },
+    {
+      "before": "원74 결과·원80 판단·원장3개도 중복 가산하지 않는다.",
+      "after": "원74 결과·코드와 원80 판단·원장4개도 중복 가산하지 않는다."
+    },
+    {
+      "before": "조건부 기대값의 직교성과 tower property로 R*(S)−R*(U)=E[(m_U−m_S)²]가 성립한다.",
+      "after": "R*(A)=E[(Y−E[Y|X_A])²]로 두면 조건부 기대값의 직교성과 tower property로 R*(S)−R*(U)=E[(m_U−m_S)²]가 성립한다."
+    }
+  ],
+  "all_11_core_sources_reread_after_draft": true,
+  "full_second_read_all_sources": false,
+  "external_papers_and_code_full_review": false,
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "new_model_runs": 0
+}

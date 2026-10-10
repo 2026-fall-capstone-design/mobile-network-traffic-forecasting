@@ -1,0 +1,103 @@
+# 81. 입력 공유와 예측 단위를 바꾸는 방향의 검토
+
+2026-09-26. 검토 계획: `81_input_partition_scope_plan.md`. 새 TabICLv2 추론, 단순 회귀 적합, RCTL 학습·forward·gradient 계산은 모두 0회다. 기존 비용 원장은 변경하지 않았다.
+
+## 판단
+
+**cell별 sample 공유를 cluster의 공동 입력·다중 출력 학습으로 바꾸는 것만으로는 추천안을 확보하지 못했다.** 입력이 실제 예측에 전달된다는 점에서 기존 교체 검사보다 연결은 명확해진다. 그러나 관련 입력을 clustering한 후 예측하는 구조와, pairwise 거리 대신 집합의 예측 정보를 비교하는 원리는 이미 선행연구에 있다. 현재 자료에서 그 방법들보다 나은 별도 결정의 근거도 아직 없다.
+
+또한 다중 출력으로 바꾸면 단일 global 다중 출력 RCTL이 더 강한 비용 비교 대상이 된다. 같은 hidden 폭에서는 cluster 수를 늘릴수록 core 계산이 반복된다. 따라서 Transformer의 channel attention을 줄인 결과를 RCTL의 비용 절감 근거로 옮길 수 없다.
+
+이는 모든 다변량 clustering이 무용하다는 결론이 아니다. 47의 scalar 공유 반례도 다중 출력에 그대로 적용하지 않는다. 이번 형태의 후보에는 추가 추론을 하지 않으며, 이미 확인한 TabICLv2의 직접 예측 이득은 그대로 남긴다.
+
+## 1. 실제로 달라지는 학습 행동
+
+| 구성 | 한 sample의 입력 | 한 sample의 정답 | clustering이 바꾸는 것 |
+|---|---|---|---|
+| 기존 cell별 scalar RCTL 공유 | 특정 cell의 과거 이력 | 해당 cell의 다음 값 하나 | 같은 가중치를 학습하는 cell별 sample 묶음 |
+| 검토한 cluster별 다중 출력 | 같은 시각에 관측한 소속 cell들의 이력 | 각 소속 cell의 다음 값을 고정된 열 순서로 배치 | 사용 가능한 입력 cell과 공유 core의 범위 |
+| 단일 global 다중 출력 | 모든 대상 cell의 같은 시각 이력 | 모든 cell의 다음 값 | 전체를 하나의 core로 처리 |
+
+단순히 context의 행에 여러 cell의 sample을 섞는 것은 두 번째 행의 구현이 아니다. 두 번째 행에서는 열이 서로 다른 cell을 나타내며, 원래의 scalar 출력층도 바뀐다. 실제 관측 target을 사용하는 원칙과 TCN·LSTM·이중 잔차 core를 유지해도 입력·출력 규격 및 학습 단위가 변경된다.
+
+47의 예시처럼 두 cell의 함수 부호가 반대여도 출력 좌표가 구별되면 서로 다른 함수를 출력할 수 있다. 따라서 그 반례만으로 다중 출력 후보를 기각하지 않았다. 대신 새 구조의 필요성, 가장 가까운 방법, 비용 및 현재 자료의 증거를 검토했다.
+
+## 2. 가장 가까운 원문과 실제 반영
+
+### DGCformer — 분리된 channel clustering과 예측은 이미 존재
+
+[arXiv 2405.08440v1](https://arxiv.org/html/2405.08440v1), §3.2–3.3, Appendix C 및 결론을 읽었다. GRU 기반 autoencoder로 이력을 복원하고, 상관계수에서 만든 graph와 GCN으로 cluster 정보를 학습한다. 잠재 표현을 K-means로 묶은 뒤 같은 cluster 사이에만 channel attention을 허용한다. clustering의 복원·KL 손실과 예측 MSE를 구분해 제시하며, 결론에서 end-to-end 통합을 후속 과제로 적는다. 따라서 분리된 clustering → forecasting을 새 구조라고 할 수 없다.
+
+다만 이 방법은 RCTL과 같지 않다. Transformer의 channel mask를 사용하며, cluster 수는 grid search로 정한다. 그 선택이 예측 성능과 완전히 독립적인지는 읽은 범위만으로 확정하지 않는다. 이번 검색에서 저자 공식 실행 코드는 확인하지 못했다. 도로 교통 등을 포함한 여덟 자료의 결과를 통신 트래픽 실증으로 옮기지 않는다.
+
+**설계에 반영:** 비교 대상에 ‘입력만으로 미리 정한 channel 분할’을 반드시 둬야 한다. TabICL을 쓰지 않는 분리형 clustering보다 무엇을 더 보존하는지 설명해야 한다.
+
+### DUET — 유용한 channel 선택도 이미 예측 목적과 연결
+
+[arXiv 2412.10859v3](https://arxiv.org/html/2412.10859v3), KDD 2025. §4.2–4.4와 실험 설정 부분을 확인했다. TCM은 이력별로 temporal expert를 배정하고, CCM은 FFT 진폭의 학습 가능한 Mahalanobis 거리에서 channel mask를 만든다. 이를 masked attention으로 결합해 예측한다. 서로소의 고정 partition과 동일하지 않으며, 최종 예측 과정에서 관계를 학습한다.
+
+[공식 코드](https://github.com/decisionintelligence/DUET/tree/dcc6e6780a9138731b64b9b5398a94a1d97033f0)의 `duet_model.py:50`, `masked_attention.py:141`을 정적으로 확인했다. 입력이 batch×시간×channel이며, channel 쌍의 주파수 차이 텐서와 거리 행렬을 만든다. `masked_attention.py:88`에서 attention score도 먼저 전체 계산한다. mask가 희소하다는 사실을 전체 쌍 계산이 없다는 뜻으로 쓰지 않는다. 현재 코드의 일부 확률 처리와 논문 Eq.18은 세부가 달라 논문의 정확한 재현으로 주장하지 않는다.
+
+**설계에 반영:** 입력 정보 선택이라는 목적 자체도 차별점이 아니다. RCTL 독립성을 유지하면서 얻는 별도 이점과, 사전 계산부터 합친 실제 비용이 필요하다.
+
+### CCM — cluster별 예측 규칙과 모델 수 사이의 절충도 선행연구
+
+[From Similarity to Superiority, arXiv 2404.01340v2](https://arxiv.org/html/2404.01340v2), NeurIPS 2024. §4.1–4.3, Appendix A.1–A.2와 B의 Algorithm 1–2를 읽었다. 정규화한 시계열의 RBF 유사도, channel·cluster 표현, prototype cross-attention을 이용한다. cluster별 선형 출력층을 두고 소속 확률에 따라 출력을 결합한다. 학습 목적은 예측 손실과 cluster 손실의 합이다. 고정된 서로소 cluster마다 완전한 RCTL을 따로 학습하는 구조와는 다르다.
+
+[공식 코드](https://github.com/Graph-and-Geometric-Learning/TimeSeriesCCM/tree/e4769baa7f8457358eb9b4614af2de1fbfba2257)의 `models/Dlinear.py`, `models/layers.py:262`, `exp/exp_ccm.py:154–178`을 확인했다. 현재 구현은 batch 내 소속 점수를 평균하고 Sinkhorn 처리를 하며, 예측·유사도 손실로 역전파한다. Appendix A.2가 설명하듯 CI가 항상 cell별 별도 가중치를 뜻하는 것은 아니다. shared scalar global과 individual 모델을 혼동하면 비교가 달라진다.
+
+**설계에 반영:** cell별 출력 좌표 또는 cluster별 head를 추가했다는 것만으로 기여를 주장하지 않는다. 공유 core·출력층·입력 공유를 각각 비교해야 한다.
+
+### Fuchs–Wang — pairwise 값으로는 놓치는 집합 관계도 이미 다룸
+
+[Hierarchical variable clustering, arXiv 2312.16544v1](https://arxiv.org/html/2312.16544v1), IJAR 170 (2024), 109185. §2.1–2.3, Example 2.11, §4를 확인했다. 조건부 분포의 변화로 방향별 예측 의존도를 정의하고 양방향 값을 결합한다. 각 cluster를 변수 집합으로 직접 비교하므로 단순 pairwise 거리의 linkage와 구별된다. Example 2.11은 두 변수의 합으로 정해지는 세 번째 변수에서 pairwise linkage가 완전 의존을 놓칠 수 있음을 이미 보여준다.
+
+§4의 일치성은 i.i.d. sample을 전제로 한다. 명시한 O(n log n)은 sample 수 n에 대한 비용이며 모든 cluster 차원·순열·병합 탐색이 공짜라는 뜻이 아니다. [CRAN didec 1.1.0 문서](https://cran.r-project.org/web/packages/didec/refman/didec.html)에서 집합 clustering과 feature selection API, 순열 sample/full 옵션을 확인했다. 설치나 실행은 하지 않았다.
+
+**설계에 반영:** ‘두 cell이 아니라 여러 cell의 공동 효과를 본다’도 단독 신규성이 아니다. 이 논문은 미래 horizon·원 단위 MSE·RCTL 학습을 직접 최적화하지 않으므로 완전히 같은 방법이라고도 하지 않는다.
+
+## 3. 정보를 잃는 양과 실제 예측 오차의 구분
+
+다음은 새로운 정리가 아니라 조건부 기대값의 직교성에 따른 성질이다. 미래 target Y의 제곱 적분 가능성, 관측 가능한 전체 입력 X_U와 그 일부 X_S, 같은 평가 분포가 필요하다.
+
+전체 입력의 최적 평균 예측을 m_U, 일부 입력의 최적 평균 예측을 m_S라고 하면:
+
+`최적 MSE(S) − 최적 MSE(U) = E[(m_U − m_S)²]`.
+
+이 식은 입력을 제한하여 잃는 정보에 대한 정확한 연결을 제공한다. 하지만 실제 TabICL 예측을 m으로 대입하면 추정 오차가 섞이고, 실제 RCTL 학습은 최적 조건부 평균에 도달한다고 보장되지 않는다. 유한 자료에서 관련 없는 열을 제거하여 예측이 좋아질 수도 있지만, 그 이득은 위 식의 음수가 아니라 추정·학습 과정의 변화다. MAE에서는 평균을 사용하는 이 식이 그대로 성립하지 않는다.
+
+예를 들어 독립인 U,V가 각각 ±1이고 Y=2+UV라면 U 또는 V 하나만으로는 평균 예측이 2이고, 둘을 함께 알면 정확히 예측한다. 이는 pair별 입력 추가만으로 공동 효과를 놓칠 수 있다는 기호 예시다. 통신 트래픽에 이런 효과가 자주 있다는 증거가 아니며, 간단한 곱 특징 회귀도 해결할 수 있다. TabICLv2만의 장점으로 주장하지 않는다.
+
+이미 추론한 전체 입력의 query 열을 삭제하거나 임의의 값으로 바꾸는 것도 조건부 평균 m_S 계산과 같지 않다. TabICL의 해당 입력 규격으로 context와 query를 함께 구성해야 하며, 서로 다른 context·열 집합 사이의 cache 재사용을 별도 확인 없이 가정할 수 없다. 모든 subset을 평가하면 후보 집합 크기에 따라 지수적으로 비용이 커진다.
+
+## 4. RCTL의 계산 구조에서 확인한 비용 조건
+
+아래는 저장된 `rctl_torch.py`의 선형 연산을 세는 기호식이다. 네트워크를 실행하지 않았다. 입력 길이 L, 입력 channel 수 F, scalar horizon에서 출력 cell 수 s, block 폭 16·32·64·64·32·16을 유지한다. bias 덧셈, 활성화, BatchNorm, 메모리 이동은 제외한 MAC이며 측정 시간이 아니다.
+
+- 입력 폭에 비례하는 부분: 첫 Conv(k=3), 두 shortcut, 마지막 root shortcut을 합하면 `96 L F`.
+- 나머지 Conv·LSTM·중간 projection: `169728 L`.
+- 최종 다중 출력 선형층: `16 L s`.
+
+따라서 `C(F,s)=L(169728+96F+16s)`이다. 시간당 각 cell에서 q개 특징을 입력하고 모든 cluster에 공통으로 c개 특징을 넣는다면 F_g=q s_g+c이며, 서로소 cluster의 총 cell 수는 N이다.
+
+`cluster K개의 총 MAC = L[(96q+16)N+(169728+96c)K]`.
+
+같은 폭의 단일 global 다중 출력 모델은 위 식에서 K=1이다. 두 조건의 차이는 `L(K−1)(169728+96c)`로 양수다. 반면 cell별 scalar 처리를 N번 하는 것보다는 K개 다중 출력 모델의 core 반복이 줄어든다. **어느 비교 대상을 택하는지가 비용 결론을 바꾼다.**
+
+같은 폭은 같은 전체 parameter 수가 아니다. 여러 core의 용량 증가로 정확도가 좋아질 가능성, global의 출력 표현 병목, 학습 batch 및 wall time은 별도로 평가해야 한다. 이 계산은 global의 정확도가 더 좋다는 증거도 아니고, cluster의 병렬 latency가 반드시 느리다는 주장도 아니다. 현재까지 확인하지 않은 메모리·분산 통신 제약을 새 문제로 만들지 않는다.
+
+## 5. 기존 실제 관찰과 합친 결정
+
+- 18·46: 32개 cell의 이웃 입력 추가 효과가 방법·기간에 따라 약하거나 불안정했다. 네트워크 트래픽 전체에서 공간 정보가 불필요하다는 결론은 아니다.
+- 74: 네 cell에 같은 28개 입력 열을 제공했을 때 TabICL의 개발 MSE는 0.0095798로 HGB 0.0119248과 Ridge 0.0143598보다 작았다. 같은 조건의 own-only Tab 비교가 없으므로 이 차이를 공간 입력 효과라고 할 수 없다.
+- 80: 16개 cell의 직접 예측은 Tab이 좋았으나, input-only·실제 target·Tab·Ridge·HGB 기반 다섯 분할이 모두 같았다. 좋은 예측이 다른 clustering 결정으로 이어졌다고 할 수 없다.
+
+**현재 남은 요건은 새로운 architecture 이름이 아니라 실제 손해의 특정이다.** 어떤 관측 가능한 조건에서 입력 집합을 잘못 나누는 것이 강한 단순 대안의 오차를 유의미하게 늘리고, TabICL이 그 선택을 어떻게 바로잡는지 필요하다. 이 손해가 없는 상태에서 subset 검사나 hypergraph를 추가하면 비용만 늘어날 수 있다. 해당 근거가 없는 현재 형태로는 새 모델 실행에 진입하지 않는다.
+
+이번 검토로 최종 연구 방향이나 전체 goal을 완료 처리하지 않는다. 남은 TabICL 11 context·20,640 query행, RCTL 추가 fit 0회 조건을 유지한다. 다음 탐색은 이 입력 분할 후보를 다른 이름으로 반복하지 않고, 기존 방법의 실제 손해가 확인되는 문제 선정부터 시작해야 한다.
+
+## 확인 범위와 보존 자료
+
+공식 HTML 원문·arXiv 서지 8개, 두 공식 저장소의 commit/tree와 관련 code 8파일을 보존했다. 논문의 모든 증명·전체 실험을 검증한 것은 아니다. PDF 신규 다운로드 0, 외부 코드 실행 0. CRAN 문서는 도구 출력으로 보존했으며 패키지 내부 source는 검토하지 않았다. 최신 SCPaT·ADTime 등은 검색 후보일 뿐 이 단계의 방법 검토 목록에 포함하지 않는다.
+
+`sources/input_partition_81/`의 source_manifest.json, code_manifest.json, web_search_record.json에 URL·버전·수집 시각·SHA-256·검색 범위를 기록했다. 원장 SHA-256은 `f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9`로 이전 단계와 같다.

@@ -128,3 +128,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [원80 진단](records/0088-conditional-graph-diagnostic.md)의 고정gradient와 실제 FedAvg 수렴·통신·최종 성능을 잇는 증거는 없다. 원80 문헌 검색JSON·파생pyc, 원81이후와이전부분기록, 전체 실패비용 통합·장기 원자료 접근·최종 원본 변경/검색 검수는 계속 진행한다. 현재 개발 구간의 weight/K 변경을 새 독립 검증으로 취급하지 않는다.
 
 원80의 검색JSON·파생캐시 확인은 [H089](records/0089-conditional-search-provenance.md)로 연결됐다. CLoVE 등 미소장 전문의 가정·판본 관계와 장기 팀 접근, 원81이후·이전 부분 기록의 검수는 남는다.
+
+[원81 검토](records/0090-input-partition-decision.md)의 핵심 판단·기호MAC는 정리했지만 문헌·외부코드·Git명세·검색29그룹의본문과snapshot연혁변경분은 남는다. 다중출력 RCTL의실제성능·walltime을 검증했다고 보지 않는다.

@@ -134,3 +134,5 @@
 [2026-09-26 원80](records/0088-conditional-graph-diagnostic.md)은 기존16cell에서 input/raw/Tab/Ridge/HGB 소속이 같고 gradient 이득도 기간별로 뒤집혀 후보를 추천하지 않았다.5텍스트·9JSON·2NPZ 근거를 연결했고 실행 전 비용 원장은 H070과 같은 내용이라 중복 가산하지 않았다.
 
 [H089](records/0089-conditional-search-provenance.md)는 원80 검색42응답과 소스에 대응하는 캐시를 연결한다. 검색 전체JSON1개와 파생 관계를 정리하며 새 실험이나42편의 전문 독해로 세지 않는다.
+
+[H090](records/0090-input-partition-decision.md)은 원81의 미실행 방향 검토다. 저장scalar코드에 다중출력층을 가정한 기호MAC를 확인했으며 실제속도·새RCTL성능과 구별한다.
