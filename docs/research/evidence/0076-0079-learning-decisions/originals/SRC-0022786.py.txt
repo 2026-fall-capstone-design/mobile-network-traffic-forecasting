@@ -1,0 +1,46 @@
+"""Pinned source and bounded supplements; never import or execute external code."""
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib,json,urllib.request
+from pypdf import PdfReader
+out=Path(__file__).resolve().parent/'sources/transferability_78'
+assert not (out/'details_manifest.json').exists()
+log=[]
+def fetch(url,path,limit=2000000,method='GET'):
+    rec={'url':url,'accessed_utc':datetime.now(timezone.utc).isoformat(),'method':method}
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url,method=method,headers={'User-Agent':'Research-source-verification/1.0'}),timeout=25) as r:
+            rec.update(status=r.status,content_length=r.headers.get('Content-Length'),content_type=r.headers.get('Content-Type'))
+            b=r.read(limit+1)
+        if len(b)>limit:raise ValueError('size cap')
+        if method=='HEAD':return rec
+        assert not path.exists();path.parent.mkdir(parents=True,exist_ok=True)
+        if path.suffix=='.pdf':assert b.startswith(b'%PDF-')
+        path.write_bytes(b)
+        rec.update(path=str(path),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+        if path.suffix=='.pdf':
+            pdf=PdfReader(path);rec['pages']=len(pdf.pages)
+            path.with_suffix('.txt').write_text('\n\n'.join(f'=== PDF PAGE {i+1} ===\n{p.extract_text()}' for i,p in enumerate(pdf.pages)),encoding='utf-8')
+    except Exception as e:rec['error']=repr(e)
+    return rec
+
+repos=[('awslabs/aws-cv-task2vec','c5795e55ba773f9845498091a90eee2fcba5da31',['README.md','task2vec.py','task_similarity.py']),('CuongNN218/regression_transferability','b494b4e56be86229883b039230f708236364b772',['README.md','reg_score.py']),('jianke0604/NTKMTL','abbf1f00c2b0bc207a950149cf4bf3a03cd69c8f',['README.md','methods/weight_methods.py','methods/cluster_methods.py'])]
+for repo,sha,files in repos:
+    for file in files:
+        rec=fetch(f'https://raw.githubusercontent.com/{repo}/{sha}/{file}',out/'code'/repo.split('/')[-1]/file)
+        rec.update(repo=repo,commit=sha,source_file=file);log.append(rec)
+        print(json.dumps({k:v for k,v in rec.items() if k in ['repo','source_file','bytes','error']},ensure_ascii=False),flush=True)
+
+total=sum(p.stat().st_size for p in out.glob('*.pdf'))
+url='https://proceedings.mlr.press/v216/nguyen23a/nguyen23a-supp.pdf'
+rec=fetch(url,out/'RegressionTransferability_UAI2023_supp.pdf',limit=15000000-total);log.append(rec)
+total=sum(p.stat().st_size for p in out.glob('*.pdf'))
+url='https://openaccess.thecvf.com/content_ICCV_2019/supplemental/Achille_Task2Vec_Task_Embedding_ICCV_2019_supplemental.pdf'
+rec=fetch(url,out/'unused',method='HEAD');log.append(rec)
+length=int(rec.get('content_length') or 15000001)
+if length<=15000000-total:
+    rec=fetch(url,out/'Task2Vec_ICCV2019_supp.pdf',limit=15000000-total);log.append(rec)
+else:
+    log.append({'url':url,'not_downloaded':'remaining PDF byte cap','bytes_reported_by_HEAD':length,'remaining_bytes':15000000-total})
+(out/'details_manifest.json').write_text(json.dumps(log,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(log[-3:],ensure_ascii=False),flush=True)

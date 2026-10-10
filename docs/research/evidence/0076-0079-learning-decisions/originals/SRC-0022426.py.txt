@@ -1,0 +1,64 @@
+"""Verify and preserve stage76. Does not run models or update research budgets."""
+from pathlib import Path
+import hashlib, json, math, re, shutil
+from pypdf import PdfReader
+
+BASE = Path(__file__).resolve().parent
+WORK = BASE.parents[1]
+SRC = BASE / 'sources/response_transfer_76'
+DEST = WORK / 'output/research/redesign_20260925_snapshot_19'
+assert not DEST.exists(), 'Do not overwrite an existing archive'
+
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def read(p): return json.loads(p.read_text(encoding='utf-8-sig'))
+def check_finite(v):
+    if isinstance(v, float): assert math.isfinite(v)
+    elif isinstance(v, dict):
+        for x in v.values(): check_finite(x)
+    elif isinstance(v, list):
+        for x in v: check_finite(x)
+
+budget = BASE / 'cumulative_execution_budget.json'
+old_budget = WORK / 'output/research/redesign_20260925_snapshot_18/tmp/redesign_20260925/cumulative_execution_budget.json'
+assert budget.read_bytes() == old_budget.read_bytes()
+assert read(budget)['remaining_count_budgets'] == {'TabICL_contexts':11, 'TabICL_query_rows':20640, 'RCTL_fits':0}
+pdf_records = read(SRC / 'manifest.json')
+assert len(pdf_records) == 3
+for rec in pdf_records:
+    p = Path(rec['path'])
+    assert rec['valid_pdf'] and p.read_bytes().startswith(b'%PDF-')
+    assert p.stat().st_size == rec['bytes'] and sha(p) == rec['sha256']
+    assert len(PdfReader(p).pages) == rec['pages']
+assert sum(r['pages'] for r in pdf_records) == 39
+assert sum(r['bytes'] for r in pdf_records) == 4411271
+code = read(SRC / 'code_manifest.json')
+assert code['commit'] == '64214da0edf7eef6e8bf645332471d78b30345e8'
+for rec in code['records']:
+    p = SRC / rec['path'] if 'source' in rec else SRC / 'TabDistill_code' / rec['path']
+    assert p.stat().st_size == rec['bytes'] and sha(p) == rec['sha256']
+    if 'source' in rec: assert sha(Path(rec['source'])) == rec['sha256']
+png = sorted((SRC/'render').glob('*.png'))
+assert len(png) == 6 and all(p.read_bytes().startswith(b'\x89PNG\r\n\x1a\n') for p in png)
+report = WORK / 'output/research/TabICLv2_재설계_관계전달과학습연결_추가검토.md'
+for target in re.findall(r'\]\(<(C:/[^>]+)>\)', report.read_text(encoding='utf-8')):
+    assert Path(target).is_file(), target
+files = [WORK/'AGENTS.md', budget, BASE/'progress.md', BASE/'candidate_decision_index.md', report]
+files += [BASE/name for name in ['76_response_constraint_review_plan.md','76_response_transfer_findings.md','collect_response_sources_76.py','collect_response_code_76.py','archive_response_review_76.py']]
+files += [p for p in SRC.rglob('*') if p.is_file()]
+records=[]
+for p in sorted(set(files)):
+    assert p.is_file()
+    if p.suffix == '.json': check_finite(read(p))
+    rel = p.relative_to(WORK)
+    dest = DEST / rel
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(p, dest)
+    assert sha(dest) == sha(p)
+    records.append(dict(file=str(rel), bytes=p.stat().st_size, sha256=sha(p)))
+qa=dict(files=len(records), bytes=sum(r['bytes'] for r in records), pdf_count=3, pdf_pages=39, visually_reviewed_pages=6,
+        code_records=len(code['records']), code_commit=code['commit'], source_hashes_verified=True,
+        budget_byte_identical_to_snapshot18=True, budget_sha256=sha(budget), new_model_calls=0, new_numeric_pilots=0,
+        finite_json=True, local_links_verified=True, archive_hashes_verified=True, final_goal_complete=False)
+(DEST/'manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+(DEST/'verification.json').write_text(json.dumps(qa,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(qa,ensure_ascii=False))

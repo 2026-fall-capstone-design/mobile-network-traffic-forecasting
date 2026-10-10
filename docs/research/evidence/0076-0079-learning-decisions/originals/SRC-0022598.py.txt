@@ -1,0 +1,31 @@
+"""Primary source retrieval only; no model calls or numerical research."""
+from pathlib import Path
+from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor
+import hashlib, json, urllib.request
+from pypdf import PdfReader
+
+ROOT=Path(__file__).resolve().parent
+OUT=ROOT/'sources/conditional_membership_77'
+OUT.mkdir(parents=True,exist_ok=True)
+assert not (OUT/'manifest.json').exists()
+items=[('DynamicClustering_2002.01890v1','https://arxiv.org/pdf/2002.01890v1'),
+       ('DynaSTar_IJCAI2026','https://www.ijcai.org/proceedings/2026/0296.pdf')]
+def get(item):
+    name,url=item
+    rec=dict(name=name,url=url,accessed_utc=datetime.now(timezone.utc).isoformat())
+    try:
+        req=urllib.request.Request(url,headers={'User-Agent':'Research-source-verification/1.0'})
+        with urllib.request.urlopen(req,timeout=40) as res:
+            data=res.read(5000001)
+            rec.update(final_url=res.url,content_type=res.headers.get('Content-Type'))
+        assert len(data)<=5000000 and data.startswith(b'%PDF-')
+        path=OUT/(name+'.pdf');path.write_bytes(data)
+        pdf=PdfReader(path)
+        (OUT/(name+'.txt')).write_text('\n\n'.join(f'=== PDF PAGE {j+1} ===\n{p.extract_text(extraction_mode="layout")}' for j,p in enumerate(pdf.pages)),encoding='utf-8')
+        rec.update(path=str(path),bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),pages=len(pdf.pages),valid_pdf=True)
+    except Exception as e:rec.update(valid_pdf=False,error=repr(e))
+    return rec
+with ThreadPoolExecutor(max_workers=2) as pool:records=list(pool.map(get,items))
+(OUT/'manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(records,ensure_ascii=False))

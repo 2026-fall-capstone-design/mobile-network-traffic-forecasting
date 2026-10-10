@@ -40,3 +40,7 @@
 ## 저장 검색에서 비슷한 이름으로 발견된 다른 역할
 
 [H073](../records/0072-0075-saved-search-audit.md)은 context 선택·입력 변수 축소·cell 소속·출력 복원·설명 지표를 구분한다. GFSM의 입력 중복 조절, ScaleMoR의 공유 expert, COSA의 출력 adapter, SHAP/fippy의 특징 기여는 같은 소속 수정 알고리즘이 아니다. TabICL을 참고문헌에 넣었거나 패키지 모델 목록과 군집 기능을 한 페이지에 실었다는 사실도 직접 구현 근거가 되지 않는다. 세부 단서는 [159응답의 출처·역할](../evidence/0072-0075-saved-search/response-ledger.json)에 연결했다.
+
+## 76–79에서 검토한 학습 연결의 차이
+
+[판단 기록](../records/0076-0079-learning-decisions.md): Sobolev/Jacobian/TabDistill은 반응·상호작용 전달, DLM은 소속과 모델의 공동 추정, DynaSTar는 graph와 forecast의 공동학습, Liu는 예측 후 자원 배분을 다룬다. Task2Vec/회귀 전이는 task head를 허용하며 NTKMTL은 학습 중 균형을 조절한다. FMCL/EMD는 표현·통신·local 학습 조건을 비교해야 한다. 이는 당시 검토 기록의 분류이며 저장 일차본문의 후속 검수를 마친 것으로 표시하지 않는다. FedCAP 학술지 정정과 전문 미확보 범위도 함께 본다.

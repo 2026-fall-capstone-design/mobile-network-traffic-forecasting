@@ -1,0 +1,63 @@
+"""Verify and preserve stage78 sources. No model calls or research diagnostics."""
+from pathlib import Path
+import hashlib,json,math,re,shutil
+from pypdf import PdfReader
+BASE=Path(__file__).resolve().parent
+WORK=BASE.parents[1]
+SRC=BASE/'sources/transferability_78'
+DEST=WORK/'output/research/redesign_20260925_snapshot_21'
+assert not DEST.exists()
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+def finite(x):
+    if isinstance(x,float):assert math.isfinite(x)
+    elif isinstance(x,dict):
+        for v in x.values():finite(v)
+    elif isinstance(x,list):
+        for v in x:finite(v)
+budget=BASE/'cumulative_execution_budget.json'
+old=WORK/'output/research/redesign_20260925_snapshot_20/tmp/redesign_20260925/cumulative_execution_budget.json'
+assert budget.read_bytes()==old.read_bytes()
+assert read(budget)['remaining_count_budgets']=={'TabICL_contexts':11,'TabICL_query_rows':20640,'RCTL_fits':0}
+records=read(SRC/'manifest.json')+read(SRC/'details_manifest.json')+read(SRC/'metadata/access_log.json')
+for rec in records:
+    if rec.get('error') or 'sha256' not in rec:continue
+    p=Path(rec.get('path') or rec['file'])
+    assert sha(p)==rec['sha256'] and p.stat().st_size==rec['bytes'],p
+pdfs=sorted(SRC.glob('*.pdf'))
+assert len(pdfs)==5 and sum(p.stat().st_size for p in pdfs)==13854334
+assert sum(len(PdfReader(p).pages) for p in pdfs)==68
+assert all(p.read_bytes().startswith(b'%PDF-') for p in pdfs)
+pngs=sorted((SRC/'render').glob('*.png'));assert len(pngs)==8
+render=[]
+for p in pngs:
+    assert p.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
+    name,page=p.stem.rsplit('_p',1)
+    render.append({'file':str(p),'source':name+'.pdf','page_1based':int(page),'sha256':sha(p),'visually_reviewed':True})
+(SRC/'render_manifest.json').write_text(json.dumps(render,ensure_ascii=False,indent=2),encoding='utf-8')
+scope={
+ 'Task2Vec':{'paper':'ICCV2019 main + official supplement','read':'main sections3.1–3.4,4.1–4.2 and Table1; supplement1.1','code_commit':'c5795e55ba773f9845498091a90eee2fcba5da31','static_review':'task2vec.py embed/classifier/Fisher paths; task_similarity.py variance/Hessian/cosine paths; README','not_claimed':'all appendix proofs or reimplementation'},
+ 'RegressionTransferability':{'paper':'UAI2023 main + official supplement','read':'main3–5,6.1–6.3 and6.6; supplementA.1,A.2 and A.3 setup','code_commit':'b494b4e56be86229883b039230f708236364b772','static_review':'reg_score.py complete; README','not_claimed':'full supplementary proof audit; experiments rerun'},
+ 'NTKMTL':{'paper':'NeurIPS2025 official29-page paper','read':'3.1–3.4,4.1, AppendixB.1–B.3, C.3–C.4 relevant passages','code_commit':'abbf1f00c2b0bc207a950149cf4bf3a03cd69c8f','static_review':'weight_methods.py NTKMTL class; README; cluster_methods.py class names identify different method','not_claimed':'all experiments, all trainer code, or runtime reproduction'},
+ 'corrections':['UAI risk is squared L2 error, visually checked','Ridge score returned by code excludes explicit penalty term','NTK source-output Jacobian differs from implemented loss gradients','weighted-output coordinates in NTK AppendixB.3 cannot be silently read as unchanged output'],
+ 'new_model_calls':0,'new_numeric_pilots':0,'analytical_example':'symbolic comparison only; no sampled or numerical experiment',
+ 'access_failures':'initial Task2Vec author URL TLS error; initial UAI supplement exceeded individual5MB read limit, subsequently retrieved within total15MB; OpenReview M3L challenge not bypassed'
+}
+(SRC/'read_scope.json').write_text(json.dumps(scope,ensure_ascii=False,indent=2),encoding='utf-8')
+report=WORK/'output/research/TabICLv2_재설계_전이가능성과공동학습_추가검토.md'
+for target in re.findall(r'\]\((C:/[^)]+)\)',report.read_text(encoding='utf-8')):assert Path(target).is_file(),target
+assert '사례' not in report.read_text(encoding='utf-8')
+files=[WORK/'AGENTS.md',budget,BASE/'progress.md',BASE/'candidate_decision_index.md',report]
+files+=[BASE/n for n in ['78_transferability_mechanism_review_plan.md','78_transferability_mechanism_findings.md','collect_transferability_78.py','inspect_transfer_sources_78.py','fetch_transfer_details_78.py','archive_transfer_review_78.py']]
+files+=[p for p in SRC.rglob('*') if p.is_file()]
+for p in files:
+    if p.suffix=='.json':finite(read(p))
+archived=[]
+for p in sorted(set(files)):
+    rel=p.relative_to(WORK);target=DEST/rel;target.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(p,target);assert sha(target)==sha(p)
+    archived.append({'file':str(rel),'bytes':p.stat().st_size,'sha256':sha(p)})
+qa={'files':len(archived),'bytes':sum(r['bytes'] for r in archived),'pdf_count':5,'distinct_papers':3,'pdf_pages':68,'pdf_bytes':13854334,'visually_reviewed_pages':8,'source_and_code_hashes_verified':True,'downloaded_code_files':8,'repositories':3,'budget_byte_identical_to_snapshot20':True,'budget_sha256':sha(budget),'new_model_calls':0,'new_numeric_pilots':0,'finite_json':True,'local_links_verified':True,'archive_hashes_verified':True,'final_goal_complete':False}
+(DEST/'manifest.json').write_text(json.dumps(archived,ensure_ascii=False,indent=2),encoding='utf-8')
+(DEST/'verification.json').write_text(json.dumps(qa,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(qa,ensure_ascii=False))

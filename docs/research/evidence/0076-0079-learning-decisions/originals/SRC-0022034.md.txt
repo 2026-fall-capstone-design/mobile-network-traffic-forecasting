@@ -1,0 +1,80 @@
+# 78. 전이 가능성과 같은 예측 모델을 공유하는 효과의 구분
+
+2026-09-26. 78 사전 계획에 따른 원문·공식 코드 검토다. 새 모델 호출, 수치 pilot, 외부 코드 실행은 없다. 기존 비용 원장과 상한을 유지했다.
+
+## 판정과 달라진 설계
+
+**공통 probe의 task embedding 또는 regression transferability 점수를 그대로 cell 병합 점수로 바꾸는 후보는 채택하지 않는다.** 이번에 확인한 핵심은 정리의 부재가 아니라 선행 방법이 허용하는 행동과 현재 연구가 허용하는 행동의 차이다. source의 특징을 재사용하면서 target의 출력층을 다시 맞출 수 있다는 결과는, 두 cell의 실제 target을 한 예측 함수로 학습시키는 결과와 다르다.
+
+이 판정은 모든 transferability 방법, multi-head RCTL 또는 앞으로의 pooling 연구를 불가능하다고 선언하는 것이 아니다. 출력 변환·task별 head를 허용하면 일부 충돌이 없어질 수 있다. 그러나 그때는 무엇을 공유하는지, 동일한 global multi-head 모델보다 clustering이 필요한 이유, 해당 변환의 기존 연구 대비 차이를 새로 밝혀야 한다. 기존 63–65의 조건부 변환, 72–74의 공통 입력·출력 압축 검토를 이름만 바꾸어 재개하지 않는다.
+
+## 1. Task2Vec: 필요한 특징을 나타내지만 최종 출력을 공유하는지는 다른 문제다
+
+원문: Achille et al., *Task2Vec: Task Embedding for Meta-Learning*, ICCV 2019, pp.6429–6438. 공식 CVF main 10쪽과 supplement 6쪽을 확보했다.
+
+- §3.1은 같은 ImageNet 사전학습 probe를 사용하되 각 task의 classifier를 다시 학습한 뒤 feature extractor 파라미터의 Fisher 정보를 계산한다. 전체 행렬 대신 대각 성분과 filter별 평균을 사용한다. robust Fisher는 별도의 변분 최적화다. 따라서 “probe가 고정되어 있으므로 task별 추가 학습이 없다”는 설명은 맞지 않는다.
+- §3.2는 label permutation 불변성을 명시한다. 이는 label 공간이 달라도 필요한 특징을 비교하는 데 적합하다. label의 의미가 다른 두 task에 같은 scalar 출력을 강제해도 된다는 성질은 아니다.
+- §3.4 MODEL2VEC은 model/task별 성능을 이용해 model bias를 학습한다. RCTL 결과로 그 bias를 맞추는 변형은 현재 clustering 독립성 조건과 맞지 않는다. TASK2VEC과 MODEL2VEC의 요구 정보를 구분한다.
+- §4.2/Table 1의 목적은 expert feature extractor 선택이다. 일반 probe보다 좋은 expert를 찾는 결과를 cell별 실제 target pooling 결과로 바꾸어 읽지 않는다. 원문의 O(1) 설명은 expert마다 새로 적합하는 비교와 구별해야 한다. N개 cell의 모든 거리 계산까지 O(1)이 된다는 뜻은 아니다.
+- supplement §1.1은 Taskonomy의 depth 등 회귀 task도 다룬다. task별 decoder를 학습한 뒤 고정 backbone에 대한 Fisher로 표현한다. 약 5 GPU시간은 해당 Taskonomy 거리 행렬 실험의 저자 보고이며, TabICL이나 RCTL의 비용 측정이 아니다. “분류 연구라 회귀에는 관련이 없다”는 이유로 제외하지 않는다.
+
+공식 코드 commit `c5795e55ba773f9845498091a90eee2fcba5da31`: `task2vec.py`의 `embed`는 feature cache→`_fit_classifier`→`compute_fisher` 순서다. Monte Carlo 경로는 model distribution에서 label을 뽑아 backward하며, variational 경로는 잡음 변수와 classifier를 최적화한다. `task_similarity.py`의 거리 정의를 정적으로 확인했다. 제공 파일을 import하거나 실행하지 않았다.
+
+## 2. 회귀 전이 점수: source 예측을 변환할 수 있다는 조건이 들어 있다
+
+원문: Nguyen et al., *Simple Transferability Estimation for Regression Tasks*, UAI 2023, PMLR216:1510–1521. main12쪽, supplement11쪽.
+
+- §3.1의 이론 설정은 source의 최적 feature extractor를 고정하고 target의 회귀 head를 다시 적합하는 것이다. target sample의 iid 가정과 최적화 가정이 있으며, 논문도 실제 최적화가 local minimum일 수 있음을 주석으로 구분한다.
+- §3.2 Definition 3.1은 **기대 음의 제곱오차**다. PDF p3와 supplement p2를 시각 대조해 norm 위의 제곱을 확인했다. 텍스트 추출에서 `∥·∥2`로 붙어 나오는 것을 제곱 없는 L2 norm으로 읽지 않는다. Definition 3.2는 원하는 순위 성질의 정의이며, 모든 task 쌍의 정확한 순위를 보장했다는 정리가 아니다.
+- §4.1 Linear MSE는 고정된 source 특징에 Ridge head를 적합한다. §4.2 Label MSE는 source 예측값을 target 실제값으로 선형 변환한다. 두 방식 모두 그 추가 적합·변환을 허용한다.
+- shared-input 특례는 **완전히 같은 입력 벡터 x**에 source/target label이 함께 있는 상황이다. 같은 시각이라는 이유만으로 각 cell의 서로 다른 최근 lag 벡터를 동일 입력으로 취급할 수 없다.
+- Lemma5.1 및 supplement A.1의 proof는 `k(·)=A*h*(·)+b*`를 선택한다. 이 합성이 허용되는 head 함수집합이라는 조건을 지켜야 한다. Theorem5.2의 하한은 그 target learner와 feed-forward ReLU·bounded input/output·iid 설정에 관한 것이다. 하한값이 높다는 사실만으로 실제 error 순위가 항상 같아지거나 MAE·BN·LSTM RCTL의 공동학습이 보장되지 않는다.
+- Table1–4/§6은 CUB 및 OpenMonkey keypoint 회귀의 전이 점수와 실제 전이 성능의 관계를 검사한다. head retraining/half/full fine-tuning을 구별하며, §6.6의 CUB full fine-tuning 조건에서는 유의한 상관을 관찰하지 못했다고 보고한다. 효과가 전혀 없다고 일반화하지 않는다.
+
+공식 코드 commit `b494b4e56be86229883b039230f708236364b772`: `reg_score.py`는 LinearRegression 또는 `Ridge(alpha=n*alpha)`를 **fit한 같은 입력**에서 예측하여 음의 MSE를 반환한다. Ridge 반환값에는 논문 Definition4.1/4.2의 별도 penalty 값이 합산되지 않는다. 최적화에서 penalty를 사용한 것과 반환한 score를 구별해야 한다. 따라서 코드를 그대로 복사한 점수를 원문의 regularized objective와 동일하다고 부르지 않는다. 같은 데이터에서의 적합 점수를 독립 query 평가라고 부르지도 않는다.
+
+## 3. 왜 전이 점수를 병합 점수로 바로 바꿀 수 없는가
+
+다음은 해석을 확인하는 기호 예시이며 새 트래픽 실험·원문 결과·신규 정리가 아니다. x는 −1과1 사이의 같은 대칭 분포에서 관측되고 c>1이라고 하자. 두 cell의 실제 관계는 A: y=c+x, B: y=c−x다. 입력 전체에 cell을 구별하는 정보가 없고 두 cell의 비중은 같다.
+
+**출력 변환을 허용하는 전이:** A의 정확한 예측 z=c+x를 얻으면 B는 `y=−z+2c`로 정확히 복원된다. 같은 관계로의 전이는 `y=z`다. 두 경우 모두 λ=0 Label MSE의 잔차는0이다. 즉 높은 전이 가능성이 A와 B의 예측 관계가 같다는 뜻은 아니다.
+
+**같은 scalar 출력을 공유하는 pooling:** 동일한 x에서 하나의 g(x)가 A와 B를 모두 예측해야 한다. 제곱오차의 최적 공통 함수는 c이고 평균 손해는 E[x²]다. 각각의 관계를 따로 표현하면 noise-free 조건에서0이다. MAE도 최적 공통 손해가 E[|x|]로 남는다. cell ID 또는 구별 가능한 다른 입력이 주어지면 하나의 모델이 두 관계를 나누어 표현할 수 있으므로 이 반례의 전제가 달라진다.
+
+**특징 중요도도 같을 수 있음:** 이를 Gaussian working likelihood와 공통 feature `φθ(x)`의 간단한 probe로 표현하면, head 기울기 a에 대한 feature Fisher는 `a² E[Jθφ Jθφᵀ]/σ²`다. +a와−a는 같은 Fisher를 낼 수 있다. 이는 조건을 명시한 회귀 확장 설명이며 공식 Task2Vec의 모든 estimator가 모든 자료에서 정확히 같은 값을 반환한다는 주장이 아니다. 위의 실제 y는 noise-free 예시이고 Gaussian은 Fisher 계산용 working model이다.
+
+**현재 설계에 반영한 점:** 앞선 연구의 task representation을 활용하더라도, 유지되는 head·target 좌표·허용되는 추가 적합부터 명시한다. 이 조건을 숨긴 채 “학습하기 좋은 cell을 찾는다”고 쓰지 않는다. 단순한 함수 거리도 이미 검토했으므로, 이를 다시 제안하지 않는다.
+
+## 4. NTKMTL: 최종 모델의 학습 중 균형을 맞추는 방법이다
+
+원문: Qin et al., *NTKMTL: Mitigating Task Imbalance in Multi-Task Learning from Neural Tangent Kernel Perspective*, NeurIPS2025, 공식 PDF29쪽. §3–4, Appendix B, C.3–C.4의 관련 부분을 읽었다.
+
+- §3.2는 같은 학습 network의 출력 Jacobian으로 task 사이 NTK block을 구성한다. §3.3–3.4/Algorithm1–2는 매 iteration의 task weight를 조정한다. clustering에 앞서 어떤 final model도 보지 않는 전이 점수가 아니다.
+- NTKMTL-SR은 shared representation에 대한 미분으로 shared backbone의 반복 backward를 줄인다. task head 쪽 미분과 학습 자체가 없어지지는 않는다. 원문 §4.1은 일반안 n=1에서 task 수 k만큼 backward, SR은 기본 n=4로 구분한다. Appendix C.4는 QM9에서 n=6일 때 약1.7배의 epoch 시간이 들었다고 설명한다. 측정 대상 밖의 RCTL 비용으로 일반화하지 않는다.
+- 이론의 gradient-flow 등식과 고정 NTK 근사, 실제 MAE 학습을 구별한다. 특히 Eq12/13와 Appendix B.3 p25는 가중 loss에서 출발한 뒤 출력 `ω_j f_j`로 좌표를 바꾸므로, 같은 원래 O의 dynamics로 그대로 대입하지 않는다. 고정 ω에서 원래 출력은 `dO/dt=−K Dω(O−y)`다. 논문 p25의 출력 재정의와 잔차 표기를 확인하지 않은 채 `Dω K Dω`를 현재 연구의 보장으로 인용하지 않는다. 이 점은 별도의 성능 반박이나 재현 결과가 아니다.
+
+공식 코드 commit `abbf1f00c2b0bc207a950149cf4bf3a03cd69c8f`: `methods/weight_methods.py:1568–1725`를 정적으로 확인했다. 기본 활성 경로는 `losses[i].backward()`의 gradient Gram에서 diagonal norm을 이용한다. 출력 f의 Jacobian과 loss의 gradient는 다르다. SR 경로는 주석 상태이며 README는 이를 활성화하려면 코드와 trainer를 수정하라고 설명한다. 기본 API 호출만으로 논문의 SR을 그대로 재현했다는 주장을 하지 않는다. `cluster_methods.py`는 다른 알고리즘인 GO4ALIGN이므로 NTK의 clustering 구현으로 오인하지 않는다.
+
+RCTL의 학습 중 gradient를 병합 결정에 사용하면 현재 독립성 조건에 어긋난다. 별도 probe의 gradient를 사용하면 독립성은 유지할 수 있지만, 그 probe의 학습 균형이 RCTL의 공동학습과 연결되는지는 남는다. clustering 이후 RCTL loss를 조절하는 방식은 가능하나 알려진 다중 task 가중법을 추가했다는 것만으로 새 clustering 기여가 생기지 않는다.
+
+## 5. 현재 증거와 다음 진입 조건
+
+60·74의 작은 실제 확인에서 TabICLv2 직접 예측이 동일조건 Ridge/HGB보다 좋았다는 긍정적 증거는 유지한다. 16cell의 RCTL에서는 한 global 모델이 검토한 K4 분할보다 전체 error가 낮았다. 이번에 raw-unit 누락 여부도 확인했지만 기존 `summary.json`에 이미 raw activity MAE가 있었고 우열도 달라지지 않았다. 새 계산·발견으로 세지 않는다.
+
+새 후보는 **특징·출력 변환의 전이 가능성**과 **같은 실제 target을 한 모델로 학습하는 효과** 중 무엇을 바꾸는지 먼저 고정해야 한다. cell별 출력층을 추가한다면 같은 구조의 global multi-head 모델을 대안으로 포함해야 한다. 이 추가 출력층만을 신규성으로 삼지 않는다. 원문의 다른 목적을 가져와 빈 연결을 메우는 구조는 더 만들지 않는다.
+
+이번 turn은 새 원문3편과 공식 코드, 명시한 기호 반례로 후보의 적용 범위를 좁힌 검토다. 최종 추천 방향·최종 Word는 아직 미완료다. goal을 완료로 표시하지 않는다. RCTL fit 예산0을 확대하거나 새 학습으로 우회하지 않았다.
+
+## 확보·열람 범위
+
+PDF3편의 main/supplement5파일,68쪽,13,854,334bytes. 지정한8쪽을 렌더링해 수식·알고리즘·표기와 대조했다. 전 페이지의 proof나 전 실험을 재현한 것은 아니다. 모델 호출·새 수치 진단0. 누적 Tab69contexts/39360query, 잔여11/20640; RCTL29fits, 잔여0.
+
+초기 저자 서버 TLS 오류는 우회하지 않았다. UAI supplement의 최초 실패는 5MB 개별 다운로드 제한 때문이었으며, HEAD로8,940,178bytes를 확인한 뒤 총15MB 범위 안에서 정상 확보했다. Task2Vec supplement도 공식 CVF 링크로 확보했다. M3L2024 OpenReview는 verification 화면으로 전문 접근에 실패했고, 원문 검토3편에 포함하지 않았다. 출판 연도·워크숍 여부는 별도 기록과 구별한다.
+
+출처·원문·공식 코드·commit·hash는 `sources/transferability_78/`의 manifest와 metadata, code 폴더에 보존했다. Poppler의 Symbol/ArialUnicode font 경고가 있었으나 지정된8PNG 생성과 해당 수식의 가독성을 직접 확인했다.
+
+## 일차 출처
+
+- [Task2Vec 공식 논문](https://openaccess.thecvf.com/content_ICCV_2019/html/Achille_Task2Vec_Task_Embedding_for_Meta-Learning_ICCV_2019_paper.html), [공식 구현](https://github.com/awslabs/aws-cv-task2vec/tree/c5795e55ba773f9845498091a90eee2fcba5da31)
+- [회귀 전이 점수 공식 논문·보충자료](https://proceedings.mlr.press/v216/nguyen23a.html), [공식 score 구현](https://github.com/CuongNN218/regression_transferability/blob/b494b4e56be86229883b039230f708236364b772/reg_score.py)
+- [NTKMTL 공식 논문](https://proceedings.neurips.cc/paper_files/paper/2025/file/4522de4178bddb36b49aa26efad537cf-Paper-Conference.pdf), [공식 구현](https://github.com/jianke0604/NTKMTL/tree/abbf1f00c2b0bc207a950149cf4bf3a03cd69c8f)

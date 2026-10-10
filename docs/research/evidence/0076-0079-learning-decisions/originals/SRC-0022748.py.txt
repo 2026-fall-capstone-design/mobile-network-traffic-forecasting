@@ -1,0 +1,21 @@
+"""Pin the paper-linked public repository. Read-only, no third-party execution."""
+from pathlib import Path
+from datetime import datetime, timezone
+import urllib.request, json, hashlib
+OUT=Path(__file__).resolve().parent/'sources/conditional_membership_77/dynmix_code'
+OUT.mkdir(exist_ok=True)
+assert not (OUT/'manifest.json').exists()
+records=[]
+def fetch(url,name):
+ req=urllib.request.Request(url,headers={'User-Agent':'Research-source-verification/1.0'})
+ with urllib.request.urlopen(req,timeout=25) as response: data=response.read(1000001)
+ assert len(data)<=1000000
+ path=OUT/name;path.parent.mkdir(exist_ok=True,parents=True);assert not path.exists();path.write_bytes(data)
+ records.append({'url':url,'path':str(path),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'accessed_utc':datetime.now(timezone.utc).isoformat()})
+ return data
+commit=json.loads(fetch('https://api.github.com/repos/victhorio/dynmix/commits/master','commit.json'))
+sha=commit['sha']
+tree=json.loads(fetch(f'https://api.github.com/repos/victhorio/dynmix/git/trees/{sha}?recursive=1','tree.json'))
+paths=[x['path'] for x in tree['tree'] if x['type']=='blob']
+print(json.dumps({'commit':sha,'paths':paths},ensure_ascii=False))
+(OUT/'manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')

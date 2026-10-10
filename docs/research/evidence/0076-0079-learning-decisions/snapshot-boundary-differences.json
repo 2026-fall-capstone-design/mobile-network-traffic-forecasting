@@ -1,0 +1,436 @@
+{
+  "snapshot_checks": [
+    {
+      "snapshot": 19,
+      "files": 36,
+      "bytes": 8126631,
+      "all_hashes_match": true
+    },
+    {
+      "snapshot": 20,
+      "files": 39,
+      "bytes": 10249555,
+      "all_hashes_match": true
+    },
+    {
+      "snapshot": 21,
+      "files": 54,
+      "bytes": 16852103,
+      "all_hashes_match": true
+    },
+    {
+      "snapshot": 22,
+      "files": 49,
+      "bytes": 5272991,
+      "all_hashes_match": true
+    }
+  ],
+  "selected": [
+    {
+      "source_id": "SRC-0001216",
+      "path": "output/research/redesign_20260925_snapshot_19/tmp/redesign_20260925/progress.md",
+      "sha256": "ee9e02480e13b21aa98b909073811c29021b64e909371b6ffb07e1dbee33457c",
+      "previous_source_id": "SRC-0001151",
+      "changes": [
+        {
+          "type": "replace",
+          "previous_range": [
+            7,
+            7
+          ],
+          "current_range": [
+            7,
+            7
+          ],
+          "removed": [
+            "## 최신 상태 — 72–73 출력 표현 원문, 74 실제 확인, 75 중복 경로 정리"
+          ],
+          "added": [
+            "## 최신 상태 — 76 관계 전달과 RCTL 학습 목적의 연결 검토"
+          ]
+        },
+        {
+          "type": "insert",
+          "previous_range": [
+            9,
+            8
+          ],
+          "current_range": [
+            9,
+            20
+          ],
+          "removed": [],
+          "added": [
+            "- 2026-09-26. 활성 goal/AGENTS/상한을 유지했다. `76_response_constraint_review_plan.md` 후 Sobolev Training NIPS2017, Jacobian Matching ICML2018, TabDistill arXiv2604.13332v1의 공식 PDF3개39쪽을 확보하고 지정한 방법·정리 진술·실험 절을 읽었다. 관련6쪽을 시각 대조했다. 모든 proof/appendix 검토나 재현 실행은 아니다.",
+            "- 새로 검토한 행동은 clustering 후 실제 관측 target loss를 유지하며 TabICLv2의 입력 반응을 보조 loss로 전달하는 것이다. cell 소속만 전달했던 기존 연결 문제를 줄이지만, Sobolev/Jacobian 증류·TFM의 interaction 전달이 이미 있다. 이들보다 나은 별도 공유 결정이 아직 없어 **이번 형태의 후보는 채택하지 않는다.** 이론 보장 부재만으로 자동 기각한 것이 아니다.",
+            "- Jacobian Table1은 적은자료/전체자료에서 미분 추가 효과가 다르다. 일반 매끄러운 함수의 잡음 전개에는 잔차×Laplacian 항도 있으므로 논문의 국소 선형 설명을 Tab/RCTL 전체에 정확한 등식으로 사용하지 않는다. 실제 트래픽에 대한 새 수치 반례를 실행한 것은 아니다.",
+            "- TabDistill Algorithm1은 TFM→SPEX/FBII interaction→실제 y로 EBM fit이다. TabICL ablation은42개 분류자료이며 회귀 트래픽 검증이 아니다. 동일 interaction의 후속 학습기별 차이를 확인했다. 기존 Local Distillation v2 §4.3의 계수 clustering을 재사용해 중복을 확인했다. App.D의.14–.34는 세 번째 계수이며 첫 두 계수.63–.79와 구별한다.",
+            "- 공식 TabDistill commit64214da0edf7eef6e8bf645332471d78b30345e8 정적검토: 현재 defaultv3와 논문v2 구별, train mean/mode masking 및 실제 y_train EBM fit 확인. 임의 열 교체가 lag·파생값·calendar의 실제 입력 관계를 보존하지 않음을 기록했다. 외부코드 실행/import0.",
+            "- 설치 TabICL2.2 predict와 inference manager의 no_grad 경로를 복사·hash로 보존했다. 기본API로 입력 autograd를 바로 얻을 수 없지만 finite-difference 구현은 가능하다. 이를 불가능/무료계산으로 어느쪽도 확대하지 않는다. 최종RCTL의미분loss는혼합2차미분,관측쌍차이loss는추가forward/역전파비용을고려해야한다.",
+            "- **새 모델·수치pilot0,원장변경0.** Tab69contexts/39360query,잔여11/20640;RCTL29fits/잔여0. 60·74의좋은Tab직접예측증거는유지하며미분정확도로이전하지않는다. 추천방향·Word는미완료,goal완료/blocked변경없음. 이번turn은새원문·코드로진전했고외부차단turn이아니다.",
+            "- 상세 `76_response_transfer_findings.md`, 공개 `output/research/TabICLv2_재설계_관계전달과학습연결_추가검토.md`, 출처 `sources/response_transfer_76/`. 새후보/수치계획은아직없다. 다음에는global distillation과같은강한대안을넘어실제로cell소속이바꾸는결정부터정해야한다. 알려진loss를더붙이거나74의직접성능을재사용하여신규성통과로세지않는다.",
+            "",
+            "## 이전 상태 — 72–73 출력 표현 원문, 74 실제 확인, 75 중복 경로 정리",
+            "",
+            "- 증분 snapshot18 보관 완료:71파일/19,148,054bytes, 유효PDF3개84쪽·관련7쪽시각검수. 알려진잘린PDF는실패자료로보존·정상PDF집계제외. 원문hash/저장예측수치/계획·코드·data·checkpoint hash/원장단일증분/상한불변/유한JSON/복사hash/local링크검증. 기존01–18불변. 이줄만보관후추가했다."
+          ]
+        }
+      ],
+      "actual_selected_read_ranges": [
+        [
+          7,
+          7
+        ],
+        [
+          9,
+          20
+        ]
+      ],
+      "full_content_read": false,
+      "first_pass_complete": true,
+      "semantic_second_pass_complete": false
+    },
+    {
+      "source_id": "SRC-0001212",
+      "path": "output/research/redesign_20260925_snapshot_19/tmp/redesign_20260925/candidate_decision_index.md",
+      "sha256": "1448a4365901e50dad48752539994a402bbf1c03407fbf9b4a8ede10e7c08f65",
+      "previous_source_id": "SRC-0001144",
+      "changes": [
+        {
+          "type": "insert",
+          "previous_range": [
+            20,
+            19
+          ],
+          "current_range": [
+            20,
+            20
+          ],
+          "removed": [],
+          "added": [
+            "| 관계를 최종 학습 loss에 전달 | Sobolev/Jacobian matching, TabDistill, Local Distillation | 76: 실제 target 유지+반응 보조 loss는 알려진 증류다. 직접 연결은 생기지만 gradient 정확성·clustering 필요성은 별도다. 실제 관측 입력에서 무엇을 공유/분리하는 새 결정과 global distillation 대비 이득 근거가 없으면 새 실행하지 않는다. | 43–44,76 |"
+          ]
+        }
+      ],
+      "actual_selected_read_ranges": [
+        [
+          20,
+          20
+        ]
+      ],
+      "full_content_read": false,
+      "first_pass_complete": true,
+      "semantic_second_pass_complete": false
+    },
+    {
+      "source_id": "SRC-0001255",
+      "path": "output/research/redesign_20260925_snapshot_20/tmp/redesign_20260925/progress.md",
+      "sha256": "daa564ea837d09938718a42c2b163b0794f1c1fe6e53e0f8471fa3eb07b25cbc",
+      "previous_source_id": "SRC-0001216",
+      "changes": [
+        {
+          "type": "replace",
+          "previous_range": [
+            7,
+            7
+          ],
+          "current_range": [
+            7,
+            7
+          ],
+          "removed": [
+            "## 최신 상태 — 76 관계 전달과 RCTL 학습 목적의 연결 검토"
+          ],
+          "added": [
+            "## 최신 상태 — 77 시간 조건별 소속과 예측 시점 검토"
+          ]
+        },
+        {
+          "type": "insert",
+          "previous_range": [
+            9,
+            8
+          ],
+          "current_range": [
+            9,
+            21
+          ],
+          "removed": [],
+          "added": [
+            "- 2026-09-26. 기존 goal/AGENTS/실행 상한을 유지했다. 이전 goal 입력 방법을 반복하지 않는다. `77_conditional_membership_review_plan.md` 후 동적 소속 후보를 원문·코드로 검토했다. 새 모델/수치 pilot0, 원장 변경0.",
+            "- 새 PDF3개/52쪽/6,865,106bytes: Dynamic clustering arXiv2002.01890v1, DynaSTar IJCAI2026, Liu et al. Information Fusion2024. 명시한 방법·표·알고리즘 절을 읽고 관련6쪽을 시각 대조했다. 모든 proof/모델 구현/실험을 검증한 것은 아니다.",
+            "- 공식 dynmix commitbf866cefcd1f2754ee4b2ede31ff14aed79d0a7e의4파일 정적 검토. DLM likelihood 기반 시간별 소속·EDP forward/backward·cluster DLM 반복 적합 확인. 학습 구간 smoothing은 가능하지만 평가 미래까지 본 소속을 origin-available 배정으로 사용할 수 없다. DLM을 쓴다는 사실 자체가 RCTL 독립성 위반은 아니다.",
+            "- DynaSTar는 graph와 forecast를 공동학습한다. Eq4 전체 node 쌍 계산과 sparse aggregation을 구별했다. 도로 센서 결과이며 cell clustering 이득으로 옮기지 않는다. 공식 저장소 API404, 코드 검증 미실행. Liu Fig3/Alg1은 예측→부하 분산 cell clustering→RL 자원 조정으로 현재 연구와 목적·순서가 다르다.",
+            "- 2025 dynamic 출판본/2026 fuzzy/FedCAP은 서지·초록 또는 검색 노출 본문 범위다. 출판사 timeout/403/429 기록, full-method 검토로 세지 않는다. 새 PDF 수·크기 상한 준수.",
+            "- **판정:** 동적 소속을 새 핵심 구조로 추가하지 않는다. 시간별 값 변화만으로 학습 상대 변경의 필요성을 주장할 수 없고, 기존17·27·32도 직접 필요성을 뒷받침하지 않는다. 시간 조건별 SK모델, 고정 Kbank routing, partition 갱신+재학습의 입력·자료·비용을 구별했다. 60·74 Tab 직접 예측 우위는 유지한다.",
+            "- 렌더 스크립트 첫 실행은 dotted filename의 with_suffix 경로 오류로 manifest 생성 전 중단. 다운로드·생성5PNG 유지, 빠진p9만 렌더링. 코드 수정·오류 기록 보존, 모델 재실행 없음.",
+            "- 상세 `77_conditional_membership_findings.md`, 공개 `output/research/TabICLv2_재설계_동적소속과예측시점_추가검토.md`, 원문/코드/검색 `sources/conditional_membership_77/`. 최종 추천/Word 미완료, goal완료/blocked변경없음. 이번 turn은 새 원문·코드로 진전했으며 외부 차단 turn이 아니다.",
+            "- 누적 Tab69contexts/39360query,잔여11/20640; RCTL29fit/잔여0. 다음 설계는 시간별 관계 변화라는 설명만 반복하지 말고, 실제로 남은 학습 결정과 단순 대안의 손해부터 특정해야 한다. 새 수치 계획은 아직 없다.",
+            "",
+            "## 이전 상태 — 76 관계 전달과 RCTL 학습 목적의 연결 검토",
+            "",
+            "- 증분 snapshot19 보관·검증 완료:36파일/8,126,631bytes,PDF3개39쪽·관련6쪽시각검토,원문·코드hash·유한JSON·local링크·복사hash확인. 비용원장은snapshot18과byte동일하다. 새모델/수치pilot0,이전snapshot01–19불변. 이줄만보관후추가했다."
+          ]
+        }
+      ],
+      "actual_selected_read_ranges": [
+        [
+          7,
+          7
+        ],
+        [
+          9,
+          21
+        ]
+      ],
+      "full_content_read": false,
+      "first_pass_complete": true,
+      "semantic_second_pass_complete": false
+    },
+    {
+      "source_id": "SRC-0001250",
+      "path": "output/research/redesign_20260925_snapshot_20/tmp/redesign_20260925/candidate_decision_index.md",
+      "sha256": "0493e2334de58d99be77a85da775ed9f919cc6920faddc1d170bb5d0aa9574a6",
+      "previous_source_id": "SRC-0001212",
+      "changes": [
+        {
+          "type": "insert",
+          "previous_range": [
+            21,
+            20
+          ],
+          "current_range": [
+            21,
+            21
+          ],
+          "removed": [],
+          "added": [
+            "| 시간 조건별 cell 소속·모델 배정 | Dynamic clustering DLM/EDP, DynaSTar, 통신 load balancing | 77: 소속 안정화·동적 관계는 기존 방법이며 smoothed 소속과 예측 시점 배정을 구별해야 한다. cell partition, sample routing, 자원 배분을 혼동하지 않는다. 같은 calendar/global 모델 대비 실제 공유 상대 변경의 필요성이 먼저다. | 17,27,32,77 |"
+          ]
+        }
+      ],
+      "actual_selected_read_ranges": [
+        [
+          21,
+          21
+        ]
+      ],
+      "full_content_read": false,
+      "first_pass_complete": true,
+      "semantic_second_pass_complete": false
+    },
+    {
+      "source_id": "SRC-0001296",
+      "path": "output/research/redesign_20260925_snapshot_21/tmp/redesign_20260925/progress.md",
+      "sha256": "2e26b8466e02f5182bc016aad1532f77a9d6b904244304c3b4a06b0dac57e1c2",
+      "previous_source_id": "SRC-0001255",
+      "changes": [
+        {
+          "type": "replace",
+          "previous_range": [
+            7,
+            7
+          ],
+          "current_range": [
+            7,
+            7
+          ],
+          "removed": [
+            "## 최신 상태 — 77 시간 조건별 소속과 예측 시점 검토"
+          ],
+          "added": [
+            "## 최신 상태 — 78 전이 가능성과 공동학습 효과 검토"
+          ]
+        },
+        {
+          "type": "insert",
+          "previous_range": [
+            9,
+            8
+          ],
+          "current_range": [
+            9,
+            20
+          ],
+          "removed": [],
+          "added": [
+            "- 2026-09-26. 기존 goal/AGENTS/상한을 유지했다. 사용자에게 goal 입력 방법을 반복하지 않는다. 78 계획 후 원문·공식 코드·기호 반례를 검토했다. 새 모델/수치 pilot0, 원장 변경0.",
+            "- Task2Vec ICCV2019, 회귀 transferability UAI2023, NTKMTL NeurIPS2025의 main/supplement5PDF68쪽/13,854,334bytes 확보. 방법·지정 proof·실험 범위를 읽고 관련8쪽 시각 대조. 모든 proof/전 실험을 검증한 것은 아니다.",
+            "- 공식 코드3repo8파일 commit 고정·보존, 관련 실행 경로 정적 검토. Task2Vec은 공통 backbone 외에 task별 classifier/decoder 적합·Fisher 계산이 필요하다. 회귀 전이 score는 source 특징/예측값→target 선형 적합을 허용한다. NTK는 최종 모델의 학습 중 미분 정보에 의존한다. 원문의 목적과 같은 실제 target pooling을 구별했다.",
+            "- **판정:** 공통 probe embedding/전이 점수를 그대로 cell 병합 점수로 바꾸는 후보는 채택하지 않는다. 반대 부호 함수도 변환 뒤 잘 전이될 수 있지만, cell 구별 입력이 없는 공통 scalar 함수는 충돌한다는 기호 예시를 정리했다. 실제 RCTL에 구별 정보가 있는 경우나 모든 transferability 방법의 불가능성으로 일반화하지 않는다. 별도 head 추가만으로 신규성 주장 안 함.",
+            "- 코드·식 차이도 기록했다. UAI score 코드는 Ridge 적합 후 penalty를 더하지 않은 in-sample 음의MSE를 반환한다. UAI risk의 2는 제곱임을 시각 확인하여 추출문자 오독을 바로잡았다. NTK 기본코드는 loss gradient이며 SR은 주석 경로다. Eq13/AppendixB.3의 출력 좌표 변경을 동일 O의 dynamics로 바로 옮기지 않는다.",
+            "- Task2Vec 저자 서버 TLS 오류 우회0. UAI supp 최초 개별5MB cap 실패는 HEAD크기 확인 후 총15MB 안에서 해결. M3L2024 workshop 전문은 verification으로 미검토. 원문·검색·metadata·commit·hash·렌더를 sources/transferability_78에 보존했다.",
+            "- 상세 `78_transferability_mechanism_findings.md`, 공개 `output/research/TabICLv2_재설계_전이가능성과공동학습_추가검토.md`. 인덱스16개 결정으로 갱신. 60·74의 Tab 직접 예측 긍정 증거 유지, 추천 방향/최종 Word 미완료. goal 완료/blocked 변경없음.",
+            "- 누적 Tab69contexts/39360query, 잔여11/20640;RCTL29fits/잔여0. 새로운 numeric/model 계획 없음. 다음 후보는 특징/출력층의 전이와 같은 실제 target을 학습하는 행동을 구별하고, 허용되는 공유 단위와 같은 global 대안을 먼저 명시해야 한다. 이번 turn은 새 원문·공식 코드로 후보 범위를 구체화한 진전이며 외부 제약으로 모든 작업이 막힌 turn이 아니다.",
+            "",
+            "## 이전 상태 — 77 시간 조건별 소속과 예측 시점 검토",
+            "",
+            "- 증분 snapshot20 보관·검증 완료:39파일/10,249,555bytes, 새PDF3개52쪽·관련6쪽시각검토,원문·코드hash·유한JSON·local링크·복사hash검증. 비용원장은snapshot19와byte동일하며 이전01–20은불변이다. 이줄만보관후추가했다."
+          ]
+        }
+      ],
+      "actual_selected_read_ranges": [
+        [
+          7,
+          7
+        ],
+        [
+          9,
+          20
+        ]
+      ],
+      "full_content_read": false,
+      "first_pass_complete": true,
+      "semantic_second_pass_complete": false
+    },
+    {
+      "source_id": "SRC-0001291",
+      "path": "output/research/redesign_20260925_snapshot_21/tmp/redesign_20260925/candidate_decision_index.md",
+      "sha256": "bfb1bb6849ecd9704c93874e3307cedb8781a1a99c809d247f56f695a7c8b158",
+      "previous_source_id": "SRC-0001250",
+      "changes": [
+        {
+          "type": "insert",
+          "previous_range": [
+            22,
+            21
+          ],
+          "current_range": [
+            22,
+            22
+          ],
+          "removed": [],
+          "added": [
+            "| 공통 probe의 task 표현·전이 점수 | Task2Vec, 회귀 Linear/Label MSE, NTKMTL | 78: task별 head를 다시 맞추는 전이와 같은 실제 target의 pooling은 다르다. 부호가 반대인 관계도 출력 변환 뒤 전이 점수가 좋을 수 있다. NTK의 최종 학습 gradient를 clustering에 넣으면 독립성 조건이 달라진다. 허용되는 head/변환·공유 단위·global 대안을 명시하지 않은 embedding 교체안은 재실행하지 않는다. | 28,35–38,63–65,72–74,78 |"
+          ]
+        }
+      ],
+      "actual_selected_read_ranges": [
+        [
+          22,
+          22
+        ]
+      ],
+      "full_content_read": false,
+      "first_pass_complete": true,
+      "semantic_second_pass_complete": false
+    },
+    {
+      "source_id": "SRC-0001356",
+      "path": "output/research/redesign_20260925_snapshot_22/tmp/redesign_20260925/progress.md",
+      "sha256": "b13d58d3825b5369a2ec3e14df71af29695b35bf04af0abdd65335e49ad8f2a8",
+      "previous_source_id": "SRC-0001296",
+      "changes": [
+        {
+          "type": "replace",
+          "previous_range": [
+            7,
+            7
+          ],
+          "current_range": [
+            7,
+            7
+          ],
+          "removed": [
+            "## 최신 상태 — 78 전이 가능성과 공동학습 효과 검토"
+          ],
+          "added": [
+            "## 최신 상태 — 79 분산 학습 원문 검토와 80 조건부 평균 graph 실제 진단"
+          ]
+        },
+        {
+          "type": "insert",
+          "previous_range": [
+            9,
+            8
+          ],
+          "current_range": [
+            9,
+            22
+          ],
+          "removed": [],
+          "added": [
+            "- 2026-09-26. 사용자 요청대로 goal 입력 방법 반복을 중단하는 AGENTS 지침을 유지하고 연구를 이어갔다. 현재 goal은 active/미완료이며 새 goal을 생성하지 않았다.",
+            "- 79 계획 후 FMCL2604.27510v1, EMD-CFL2506.07769v1, Toso et al.2609.25705v1을 지정 범위에서 읽었다. FMCL PDF16쪽·2,262,852bytes 및p7·8·12시각검수, EMD/Toso공식HTML 확보. EMD공식commitf48a2cfe53079cc6bc1d89f4771cb7a5a62804c5의5파일정적검토. 외부code실행0. FMCL의일회foundationclustering과별도학습은이미존재한다.",
+            "- EMD는local학습encoder·pairwiseembeddingOT·모델교환비용이있으며코드는겹칠수있는neighborhood를평균한다. RCTL독립성·서로소partition과그대로같지않다. Toso는MSE·freshiid·nonlinear공통입력분포등의가정이있다. 시계열RCTL수렴보장으로옮기지않았다. FedCAP학술지는Telecom7(4)104로정정;검색본문/Crossref범위,PDF전문미검토.",
+            "- 80에서관측입력과추정conditionalmean의쌍의분포로clustering하는후보를사전계획·기호연결후한번실행했다(exit0). 기존16cell의Tab129분위수출력재사용. Tab새호출0,RCTLfit0,optimizer0. 동일context단순Ridge/HGB32fits와5×120쌍W2². K4·각4cell소속hash를먼저고정한뒤초기RCTL/기존globalcheckpoint의실제y MSEgradient를뒤7일에사후확인했다. parameter·BNbufferupdate없음.",
+            "- **긍정:** query직접MSE Tab0.0130434764 vsRidge0.0158390254/HGB0.0158616659, MAE0.0774403728/0.0900110079/0.0877404634. 이구간은개발자료이며조건부mean진실오차또는RCTL최종성능으로쓰지않는다.",
+            "- **기각:** input-only/rawjoint/Tab/Ridge/HGB의소속이완전히동일(ARI1). Tab의좋은예측이새결정을만들지못했다. 전체7일의고정gradient불일치비율Tab0.457014/0.743252 vsPCC0.411922/0.701094(초기/저장상태). 앞3일유리·뒤4일불리로일관되지않음. K4가K1보다분산작은것은분산분해상성질이므로성과로세지않는다. 새weight/K튜닝으로재실행안함.",
+            "- 80비용:cheap2.4464091초(simplefit1.4865054포함),고정RCTL224forward/backward·5376행4.5957178초,단계7.0421269초,RSS572,198,912bytes. 원장한번반영:Tab69contexts39360행잔여11/20640,RCTL29fit잔여0,cheap69.1910142초,기록된localmodeling1992.6150618초. 상한변경/초기화없음. 새used항RCTL_frozen_gradient_seconds로그래디언트비용숨기지않음.",
+            "- 파일:79_distributed_training_scope_findings.md,80_conditional_graph_diagnostic_plan.md,80_conditional_graph_mechanism.md,80_conditional_graph_findings.md,results/conditional_graph_80/. 공개보고서`output/research/TabICLv2_재설계_분산학습과군집판단_진행검토.md`. 추천방향·최종Word아직미완료,완료/blocked선언없음.",
+            "- source collector첫실행은bs4import에서종료·다운로드/모델0;표준parser로해결. EMD PDF406/다른주소16MB초과미수집,OpenReviewCLoVEverification우회0. 80OTtransfer문헌은검색/방법부분확인,CLoVE전문미확인·재현주장안함.",
+            "- 다음재진입조건:단순입력clustering이실제상이한예측관계를잘못묶는직접문제증거가필요하다. 분산이란이름·teacher교체·거리weight추가만으로재실행하지않는다. 실제문제선정을우선하며Tab직접예측이점은유지한다. 이번turn은새원문과실제계산으로판단을바꾼progress이며외부조건으로모든작업이막힌turn이아니다.",
+            "",
+            "## 이전 상태 — 78 전이 가능성과 공동학습 효과 검토",
+            "",
+            "- 증분 snapshot21 보관·검증 완료:54파일/16,852,103bytes, PDF5개68쪽·관련8쪽시각검토, 원문·코드hash·유한JSON·local링크·복사hash확인. 비용원장은snapshot20과byte동일하며 이전01–21은불변이다. 이줄만보관후추가했다."
+          ]
+        }
+      ],
+      "actual_selected_read_ranges": [
+        [
+          7,
+          7
+        ],
+        [
+          9,
+          22
+        ]
+      ],
+      "full_content_read": false,
+      "first_pass_complete": true,
+      "semantic_second_pass_complete": false
+    },
+    {
+      "source_id": "SRC-0001350",
+      "path": "output/research/redesign_20260925_snapshot_22/tmp/redesign_20260925/candidate_decision_index.md",
+      "sha256": "4139c3fb07af908e44d86780f6b878028cd3f8c53c3c1d053b99ef80c75d1a86",
+      "previous_source_id": "SRC-0001291",
+      "changes": [
+        {
+          "type": "insert",
+          "previous_range": [
+            23,
+            22
+          ],
+          "current_range": [
+            23,
+            23
+          ],
+          "removed": [],
+          "added": [
+            "| 분산 학습의 local gradient 불일치 | 79–80: one-shot foundation, observed-input conditional-mean graph OT | FMCL에 독립 backbone으로 일회 clustering하는 구조가 있다. 80의16cell에서 input-only/raw/Tab/Ridge/HGB의K4소속이완전히같고 고정RCTL gradient도PCC보다일관되게작지않다. 단순grouping이실제함수차이를놓친다는직접근거없이가중치·명칭만바꾸어재진입하지않는다. 분산학습전체의불가능성은아니다. | 79–80 |"
+          ]
+        },
+        {
+          "type": "insert",
+          "previous_range": [
+            28,
+            27
+          ],
+          "current_range": [
+            29,
+            29
+          ],
+          "removed": [],
+          "added": [
+            "- 80의기존16cell에서는저장129분위수평균의queryMSE0.01304348vs동일contextRidge0.01583903/HGB0.01586167이다. 새Tab호출없고이구간은개발자료다. 좋은직접예측이이번소속을바꾸지못했다는관찰과함께보존한다."
+          ]
+        }
+      ],
+      "actual_selected_read_ranges": [
+        [
+          23,
+          23
+        ],
+        [
+          29,
+          29
+        ]
+      ],
+      "full_content_read": false,
+      "first_pass_complete": true,
+      "semantic_second_pass_complete": false
+    }
+  ]
+}

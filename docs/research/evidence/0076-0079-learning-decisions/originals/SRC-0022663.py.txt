@@ -1,0 +1,32 @@
+"""Bounded primary paper download; no models, external code import or installation."""
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib, json, urllib.request
+from pypdf import PdfReader
+OUT=Path(__file__).resolve().parent/'sources/transferability_78';OUT.mkdir(exist_ok=True)
+assert not (OUT/'manifest.json').exists()
+items=[
+ ('Task2Vec_ICCV2019','https://openaccess.thecvf.com/content_ICCV_2019/papers/Achille_Task2Vec_Task_Embedding_for_Meta-Learning_ICCV_2019_paper.pdf'),
+ ('Task2Vec_author_copy','https://people.cs.umass.edu/~smaji/papers/task2vec-iccv19.pdf'),
+ ('RegressionTransferability_UAI2023','https://proceedings.mlr.press/v216/nguyen23a/nguyen23a.pdf'),
+ ('RegressionTransferability_UAI2023_supp','https://proceedings.mlr.press/v216/nguyen23a/nguyen23a-supp.pdf'),
+ ('NTKMTL_NeurIPS2025','https://proceedings.neurips.cc/paper_files/paper/2025/file/4522de4178bddb36b49aa26efad537cf-Paper-Conference.pdf')
+]
+records=[];total=0
+for name,url in items:
+ rec={'name':name,'url':url,'accessed_utc':datetime.now(timezone.utc).isoformat()}
+ try:
+  limit=min(5000000,15000000-total)
+  req=urllib.request.Request(url,headers={'User-Agent':'Research-source-verification/1.0'})
+  with urllib.request.urlopen(req,timeout=35) as res:
+   data=res.read(limit+1);rec.update(final_url=res.url,content_type=res.headers.get('Content-Type'))
+  assert len(data)<=limit and data.startswith(b'%PDF-')
+  p=OUT/(name+'.pdf');assert not p.exists();p.write_bytes(data);total+=len(data)
+  pdf=PdfReader(p)
+  (OUT/(name+'.txt')).write_text('\n\n'.join(f'=== PDF PAGE {i+1} ===\n{page.extract_text(extraction_mode="layout")}' for i,page in enumerate(pdf.pages)),encoding='utf-8')
+  rec.update(path=str(p),sha256=hashlib.sha256(data).hexdigest(),bytes=len(data),pages=len(pdf.pages),valid_pdf=True)
+ except Exception as e:rec.update(valid_pdf=False,error=repr(e))
+ records.append(rec)
+ (OUT/'manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+ print(json.dumps(rec,ensure_ascii=False),flush=True)
+print(json.dumps({'total_pdf_bytes':total,'new_model_calls':0}),flush=True)

@@ -1,0 +1,40 @@
+# 재설계 후보의 결정·실패 원리 인덱스
+
+2026-09-26 갱신. 새 후보를 만들기 전에 이 표와 해당 상세 기록을 읽는다. 이전 모델 실행과 상한을 초기화하지 않는다. 일부 실패가 해당 분야 전체의 불가능성을 의미하지 않는다.
+
+| 실제 바꾸는 결정 | 이미 검토한 것 | 현재 결론과 다시 열려면 필요한 차이 | 기록 |
+|---|---|---|---|
+| 공유할 함수/모델 소속 | 공통입력 conditional prediction, observed-query loss, empirical/KNN/Tab risk, UPC/PCC | 같은K에서 Tab의 실익이 확인되지 않았고 global K1이 강했다. 다른 loss 이름·불확실성 penalty만 추가하지 않는다. | 02–09,23–28 |
+| subgroup의 유한학습 손해 | 학습/validation gap, process 식별, capacity/정보·panel 이론 | 관계 차이만으로 finite RCTL의 분리 이득을 추정할 수 없다. 분산폭을 추정오차로 대입하지 않는다. | 33–38 |
+| cell 정보·target 좌표 | cell ID, broad32, level/delta, calendar/day/week 입력 | Tabdelta의 큰 평균 이득은 특정 큰cell 영향. 시간·변환 사용 자체는 기본설계다. | 14–22 |
+| 입력 cell 선택·공유 | 주변/조건부정보/Granger graph/Markov boundary | 공간 정보 이득과 같은 함수를 공유하는 이득은 다르다. 새 정보 집합·실제 RCTL 입력·기존feature-selection 대비 기여가 먼저 필요하다. 75의 단순 재진입 중단. | 18,45–47,75 |
+| 학습 sample 재사용 | density-ratio, external-task borrowing, inverse weights | joint input-target 비가 필요. Tab 분위수만으로 안정적 joint비를 추정한 증거가 없다. 기존MTL reweighting에 이름만 붙이지 않는다. | 39–40 |
+| 학습 sample 압축 | TimeDC, Shapley, importance/stratified SGD | loss 중요도는 gradient효율과 다름. BN의batch의존성도 있다. | 56–58 |
+| 그룹 보호·피크 목적 | worst-cell/top-k, relative regret, pinball, under/over provision | 기존K4를 새metric으로 선택해도 전체·뒤기간 이득을 확보하지 못했다. 실제networkcost없이 목적을 바꾸지 않는다. | 41–44,66–71 |
+| 관측 자료·해상도 | 10분원자료, telemetry/imputation, partial observation | 공개데이터단위와label가용성을 구별. 일부Tab복원은단순모델보다불리. 원자료를임의가려문제존재를만들지않는다. | 29–32,51–55 |
+| 합계·대표예측으로cell복원 | HTS-Cluster/HiGP, true aggregate vs lagshare | true future 합계 성능은실행가능예측아님. 같은비용의lastvalue항등식·기존대표예측과중복을확인한다. | 48–50 |
+| 필요한 입력길이 | ALW, optimal lookback, process-ID | 실제4cell의Tabglobal우위는있으나clustering으로짧게입력하는이득은확인안됨. | 59–62 |
+| baseline·residual·조건부분포변환 | ECAIglobalforecast→clusterLSTM, heatload residual, copula/conditional norm | 자체기존구조이며변환MAE와원단위MAE는같지않다. 피팅하기쉬운target이남는직접근거필요. | 63–65 |
+| 학습기 계수/중요도로clustering | Globalization2025 | 원문방법은학습된최종모델의정보를쓰며RCTL독립성위반. tree모델별효과도다름. | 72–73 |
+| 예측 가능한 출력공간 압축 | ForeCA, response DR, GNNpooling, Tab교정moment | 74: Tab직접예측은좋지만소속선택이PCA와같고출력압축실익없음. full-output head도거의같은core비용. 단순rank탐색추가로다시추천하지않는다. | 73–74 |
+| 관계를 최종 학습 loss에 전달 | Sobolev/Jacobian matching, TabDistill, Local Distillation | 76: 실제 target 유지+반응 보조 loss는 알려진 증류다. 직접 연결은 생기지만 gradient 정확성·clustering 필요성은 별도다. 실제 관측 입력에서 무엇을 공유/분리하는 새 결정과 global distillation 대비 이득 근거가 없으면 새 실행하지 않는다. | 43–44,76 |
+| 시간 조건별 cell 소속·모델 배정 | Dynamic clustering DLM/EDP, DynaSTar, 통신 load balancing | 77: 소속 안정화·동적 관계는 기존 방법이며 smoothed 소속과 예측 시점 배정을 구별해야 한다. cell partition, sample routing, 자원 배분을 혼동하지 않는다. 같은 calendar/global 모델 대비 실제 공유 상대 변경의 필요성이 먼저다. | 17,27,32,77 |
+| 공통 probe의 task 표현·전이 점수 | Task2Vec, 회귀 Linear/Label MSE, NTKMTL | 78: task별 head를 다시 맞추는 전이와 같은 실제 target의 pooling은 다르다. 부호가 반대인 관계도 출력 변환 뒤 전이 점수가 좋을 수 있다. NTK의 최종 학습 gradient를 clustering에 넣으면 독립성 조건이 달라진다. 허용되는 head/변환·공유 단위·global 대안을 명시하지 않은 embedding 교체안은 재실행하지 않는다. | 28,35–38,63–65,72–74,78 |
+
+## 유지해야 할 긍정 증거
+
+- 60의4cell에서 Tab의 global L2 직접 예측은 동일조건 Ridge/HGB보다 MAE가 작았다. grouping/history 변경의 성공과 구분한다.
+- 74의4cell에서는 동일common28열·context256개로 Tab mean MSE0.00957982, HGB0.01192481, Ridge0.01435985다. 양쪽시간절반·7일별구간 모두같은우열. outputcompression성공과구분한다.
+- 46의32cell에서는일부cell의공간입력이양쪽주에서이득이있었다. 평균효과/모델간일치가제한적이다. 유리한cell만골라다음검증의성공사례로사용하지않는다.
+- 기존K4의일부앞기간/피크·cell이득도원기록에보존했다. 전체실패라는이유로지우지않는다.
+
+## 새 후보의 진입 조건
+
+다음 네 문장을 자료·원문에 연결해 작성한 다음에만 별도 pilot 계획을 만든다.
+
+1. 위 표에서 아직 다루지 않았거나 기존 실패의 원인을 실제로 바꾸는 **결정**은 무엇인가?
+2. TabICLv2가 계산한 어떤 값이 그 결정을 바꾸는가? 동일한단순대안보다나을근거는무엇인가?
+3. 최종RCTL에추가정보/다른target/다른학습단위가전달되는정확한지점은어디인가? RCTL의학습결과를clustering에쓰지않는가?
+4. 과거확인구간을개발자료로유지하면서도, 남은예산으로핵심원리를판단할수있는가?
+
+완전한보장이없다는이유만으로실증후보를기각하지않는다. 반대로Tab의좋은직접예측만으로다른모델의clustering개선을통과시키지않는다. 현재최종추천방향/Word는미완료다.

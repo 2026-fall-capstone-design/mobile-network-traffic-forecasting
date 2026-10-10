@@ -1,0 +1,56 @@
+"""Verify sources and archive stage77. No models, research diagnostics or budget updates."""
+from pathlib import Path
+import hashlib, json, math, re, shutil
+from pypdf import PdfReader
+BASE=Path(__file__).resolve().parent
+WORK=BASE.parents[1]
+SRC=BASE/'sources/conditional_membership_77'
+DEST=WORK/'output/research/redesign_20260925_snapshot_20'
+assert not DEST.exists()
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+def finite(v):
+ if isinstance(v,float):assert math.isfinite(v)
+ elif isinstance(v,dict):
+  for x in v.values():finite(x)
+ elif isinstance(v,list):
+  for x in v:finite(x)
+budget=BASE/'cumulative_execution_budget.json'
+old=WORK/'output/research/redesign_20260925_snapshot_19/tmp/redesign_20260925/cumulative_execution_budget.json'
+assert budget.read_bytes()==old.read_bytes()
+assert read(budget)['remaining_count_budgets']=={'TabICL_contexts':11,'TabICL_query_rows':20640,'RCTL_fits':0}
+records=read(SRC/'manifest.json')+read(SRC/'extra_manifest.json')+read(SRC/'dynmix_code/manifest.json')+read(SRC/'dynmix_code/selected_files_manifest.json')
+for rec in records:
+ if 'error' in rec:continue
+ p=Path(rec['path']);assert sha(p)==rec['sha256'] and p.stat().st_size==rec['bytes']
+pdf_records=[r for r in records if r.get('valid_pdf')]
+assert len(pdf_records)==3 and sum(r['bytes'] for r in pdf_records)==6865106
+for r in pdf_records:
+ p=Path(r['path']);assert p.read_bytes().startswith(b'%PDF-') and len(PdfReader(p).pages)==r['pages']
+assert sum(r['pages'] for r in pdf_records)==52
+assert read(SRC/'dynmix_code/commit.json')['sha']=='bf866cefcd1f2754ee4b2ede31ff14aed79d0a7e'
+png=sorted((SRC/'rendered').glob('*.png'))
+assert len(png)==6
+render=[]
+for p in png:
+ assert p.read_bytes().startswith(b'\x89PNG\r\n\x1a\n')
+ name,page=p.stem.rsplit('_p',1)
+ render.append({'source':name+'.pdf','page_1based':int(page),'path':str(p),'sha256':sha(p),'visually_reviewed':True})
+assert not (SRC/'render_manifest.json').exists()
+(SRC/'render_manifest.json').write_text(json.dumps(render,ensure_ascii=False,indent=2),encoding='utf-8')
+report=WORK/'output/research/TabICLv2_재설계_동적소속과예측시점_추가검토.md'
+for target in re.findall(r'\]\(<(C:/[^>]+)>\)',report.read_text(encoding='utf-8')):assert Path(target).is_file(),target
+files=[WORK/'AGENTS.md',budget,BASE/'progress.md',BASE/'candidate_decision_index.md',report]
+files +=[BASE/n for n in ['77_conditional_membership_review_plan.md','77_conditional_membership_findings.md','collect_conditional_sources_77.py','collect_conditional_extra_77.py','fetch_dynmix_code_77.py','read_conditional_code_render_77.py','archive_conditional_review_77.py']]
+files +=[p for p in SRC.rglob('*') if p.is_file()]
+for p in files:
+ if p.suffix=='.json':finite(read(p))
+archived=[]
+for p in sorted(set(files)):
+ rel=p.relative_to(WORK);target=DEST/rel;target.parent.mkdir(parents=True,exist_ok=True)
+ shutil.copy2(p,target);assert sha(target)==sha(p)
+ archived.append({'file':str(rel),'bytes':p.stat().st_size,'sha256':sha(p)})
+qa={'files':len(archived),'bytes':sum(r['bytes'] for r in archived),'pdf_count':3,'pdf_pages':52,'visually_reviewed_pages':6,'source_and_code_hashes_verified':True,'static_code_files':4,'code_commit':'bf866cefcd1f2754ee4b2ede31ff14aed79d0a7e','budget_byte_identical_to_snapshot19':True,'budget_sha256':sha(budget),'new_model_calls':0,'new_numeric_pilots':0,'finite_json':True,'local_links_verified':True,'archive_hashes_verified':True,'final_goal_complete':False}
+(DEST/'manifest.json').write_text(json.dumps(archived,ensure_ascii=False,indent=2),encoding='utf-8')
+(DEST/'verification.json').write_text(json.dumps(qa,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(qa,ensure_ascii=False))

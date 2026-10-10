@@ -1,0 +1,31 @@
+"""Bounded primary-source collection, without executing downloaded code."""
+from pathlib import Path
+from datetime import datetime,timezone
+import json,hashlib,urllib.request
+from pypdf import PdfReader
+OUT=Path(__file__).resolve().parent/'sources/distributed_clustering_79';OUT.mkdir(exist_ok=True)
+assert not (OUT/'manifest.json').exists()
+records=[];total=0
+items=[('FMCL_2604.27510v1','https://arxiv.org/pdf/2604.27510v1','pdf'),('EMD_CFL_2506.07769v1','https://arxiv.org/pdf/2506.07769v1','pdf'),('FedCAP_crossref','https://api.crossref.org/works/10.3390/telecom7040104','json')]
+for name,url,ext in items:
+    rec={'name':name,'url':url,'accessed_utc':datetime.now(timezone.utc).isoformat()}
+    try:
+        limit=15000000-total if ext=='pdf' else 1500000
+        with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Research-source-verification/1.0'}),timeout=30) as r:
+            rec.update(final_url=r.url,content_type=r.headers.get('Content-Type'),content_length=r.headers.get('Content-Length'))
+            if int(rec['content_length'] or 0)>limit:raise ValueError('declared size exceeds cap')
+            b=r.read(limit+1)
+        if len(b)>limit:raise ValueError('source exceeds cap')
+        if ext=='pdf':assert b.startswith(b'%PDF-')
+        p=OUT/(name+'.'+ext);assert not p.exists();p.write_bytes(b)
+        rec.update(path=str(p),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+        if ext=='pdf':
+            total+=len(b);pdf=PdfReader(p);rec['pages']=len(pdf.pages)
+            (OUT/(name+'.txt')).write_text('\n\n'.join(f'=== PDF PAGE {i+1} ===\n{x.extract_text()}' for i,x in enumerate(pdf.pages)),encoding='utf-8')
+        else:
+            m=json.loads(b)['message'];print(json.dumps({'title':m.get('title'),'container-title':m.get('container-title'),'link':m.get('link')},ensure_ascii=False),flush=True)
+    except Exception as e:rec['error']=repr(e)
+    records.append(rec)
+    (OUT/'manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps(rec,ensure_ascii=False),flush=True)
+print(json.dumps({'new_pdf_bytes':total,'new_model_calls':0}),flush=True)

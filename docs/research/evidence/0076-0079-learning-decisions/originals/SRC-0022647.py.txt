@@ -1,0 +1,45 @@
+"""Bounded primary-source collection; no research model or numeric pilot."""
+import concurrent.futures as cf
+import hashlib
+import json
+from pathlib import Path
+import urllib.request
+from datetime import datetime, timezone
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parent
+OUT = ROOT / 'sources' / 'response_transfer_76'
+OUT.mkdir(parents=True, exist_ok=True)
+MANIFEST = OUT / 'manifest.json'
+assert not MANIFEST.exists(), 'Collection already recorded; do not overwrite.'
+SOURCES = [
+    ('Sobolev_NIPS2017', 'https://proceedings.neurips.cc/paper/2017/file/758a06618c69880a6cee5314ee42d52f-Paper.pdf'),
+    ('Jacobian_ICML2018', 'https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf'),
+    ('TabDistill_2604.13332v1', 'https://arxiv.org/pdf/2604.13332v1'),
+]
+
+def fetch(item):
+    name, url = item
+    rec = {'name': name, 'requested_url': url, 'accessed_utc': datetime.now(timezone.utc).isoformat()}
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'Research-source-verification/1.0'})
+        with urllib.request.urlopen(req, timeout=45) as response:
+            data = response.read(5_000_001)
+            rec.update(final_url=response.url, content_type=response.headers.get('Content-Type'))
+        assert len(data) <= 5_000_000, 'Single-source byte cap exceeded'
+        assert data.startswith(b'%PDF-'), 'Not a PDF response'
+        path = OUT / (name + '.pdf')
+        path.write_bytes(data)
+        pdf = PdfReader(path)
+        text_path = path.with_suffix('.txt')
+        text_path.write_text('\n\n'.join(f'=== PDF PAGE {n + 1} ===\n{page.extract_text(extraction_mode="layout")}' for n, page in enumerate(pdf.pages)), encoding='utf-8')
+        rec.update(valid_pdf=True, bytes=len(data), sha256=hashlib.sha256(data).hexdigest(), pages=len(pdf.pages), path=str(path), text_path=str(text_path))
+    except Exception as exc:
+        rec.update(valid_pdf=False, error=repr(exc))
+    return rec
+
+with cf.ThreadPoolExecutor(max_workers=3) as pool:
+    records = list(pool.map(fetch, SOURCES))
+assert sum(r.get('bytes', 0) for r in records) <= 15_000_000
+MANIFEST.write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps(records, ensure_ascii=False, indent=2))
