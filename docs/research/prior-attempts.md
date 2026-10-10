@@ -372,3 +372,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 용량 결정·SLA 사건 비용·DeepCog 구현을 검토할 때
 
 검색어: DeepCog, α-OMC, capacity, SLA, 사건 비용, pinball, SBD, MDS, Hungarian, MAE-pre, MAE-post, oracle. [69–71 DeepCog](records/0069-0071-deepcog.md)에서 먼저 용량 유지 기간과 비용의 분모를 확인하세요. INFOCOM2019 notebook과 JSAC 저자본은 손실의 양초과 기울기와 Dense 구조가 다르고, 고정 상수+MAE 인쇄식만으로 학습이 바뀌지는 않습니다. 미래 oracle의 이득을 배치 가능한 보정으로 제시하거나 입력 격자 배치를 UPC 소속 수정의 기여로 재명명하지 않습니다.
+
+## SIU2026·비대칭 예측·검색에만 등장한 후보
+
+검색어: NeuralProphet, PELT, rolling Z-score, SIU2026, TSUL, SVAE, Digital Twin, quantile GRU, 검색 오류, 중복 초록. [69–71 검색 기록](records/0069-0071-siu-search.md)에서 먼저 본문 검수 여부와 실제 연구 대상을 확인하세요. SIU 손실 계수·단위·시간 분할은 미확인입니다. TSUL 주변 추천문의76.4%·10%, Digital Twin의 통신량5.41–7.01%를 UPC/RCTL 성능으로 옮기지 않습니다. 새 설계에는 실제 논문/실행 자료와 정보 시점·행동·비교군의 차이가 필요합니다.

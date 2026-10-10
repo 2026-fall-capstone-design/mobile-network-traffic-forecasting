@@ -38,3 +38,5 @@ notebook 안의 Python3.5.6 메타데이터·execution_count·TensorFlow 안내 
 원데이터·모든 전처리 구간·패키지 버전·seed·그림 원배열·JSAC 비교군 전체 구현·실제 시간/메모리는 미확인이다. 다른 논문이나 INFOCOM 예시를 같은 실험으로 합치지 않는다. SIU2026과 보존 검색 원문도 후속 범위다.
 
 [판본 감사](../evidence/0069-0071-deepcog/external-version-check.json)에 요청 결과·고정 commit·해시·차이를, [형식 감사](../evidence/0069-0071-deepcog/format-audit.json)에 실제 읽은 범위를 남겼다. 목록의 파생표현 수와 외부 원논문·코드의 독해 범위를 별도로 센다.
+
+후속 [H069의 출처와 읽은 범위](../sources/history-069.md)에서 SIU 기관 HTML·저장 검색8내용을 검수했다. 이 문서의 앞선 대기 표시는 당시 범위로 보존한다. SIU 논문 본문·실행 자료, 첫 검색 묶음 원문과 검색전용 후보의 본문은 계속 미확인이다.

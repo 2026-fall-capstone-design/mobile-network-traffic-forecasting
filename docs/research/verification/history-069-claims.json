@@ -1,0 +1,251 @@
+{
+  "batch_id": "history-069",
+  "claims": [
+    {
+      "claim_id": "H069-C01",
+      "claim": "SIU2026은 기관 서지·초록을 확인한 용량 계획 후보이며 전체 방법·실험·코드 검수가 아니다.",
+      "source_location": "SRC-0063449 raw266/501–568; 현재판 대조",
+      "verification_method": "초안 뒤 SIU 원HTML258–305/501–568행의 서지와 초록을 다시 읽었다. 목적은 과소 예측 벌점을 둔 용량 계획이며 저장물이 논문 본문·코드가 아님을 현재 접근 기록과 대조했다.",
+      "limit": "초록의 의미를 TabICL·UPC·RCTL 적용 또는 성능으로 옮기지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C02",
+      "claim": "검색8내용의 디코딩 범위는3222행/200430문자/100결과 블록이다.",
+      "source_location": "SRC-0063452–0063458/0063460 전체 decoded 내용; format-audit.logs",
+      "verification_method": "이미 전부 읽은 8개 디코딩 내용의 원바이트를 다시 파싱해 3222행·200430문자·100블록을 계산했다. 100행 결과 색인을 다시 읽고 원로그 순번·행 구간을 일대일 연결했다. 열람/오류도 블록 수에 포함됨을 확인했다.",
+      "limit": "논문100편·실험100회·독립검증100건이 아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C03",
+      "claim": "JSON6문자열+JSON2raw_text+TXT2표현은8내용이며2TXT는 JSONraw_text와 byte동일하다.",
+      "source_location": "SRC-0063450:1–18; SRC-0022803:1–14; SRC-0063452–0063461",
+      "verification_method": "복구 명세18행과 search_scope38행을 다시 읽고 복구 코드14행을 AST로만 확인했다. 실제 JSON6문자열/2객체 및 두 raw_text의 UTF-8 바이트와 TXT를 다시 비교했다. 복구의 models_rerun=false도 확인했다.",
+      "limit": "형식복구·표현동일성은 검색주장 검증이 아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C04",
+      "claim": "16질의·8로그 명세는 첫질의 묶음의 원문 미보존을 명시한다.",
+      "source_location": "SRC-0063463:3–32",
+      "verification_method": "search_scope38행 전체를 다시 읽고 16질의·8로그 목록, first_query_batch_raw_not_saved와 search_does_not_establish_absence_or_novelty 두 true 값을 재검사했다. 누락 질의 결과는 추정 복원하지 않았다.",
+      "limit": "결과/질의의 완전 대응·전수검색·신규성·부재를 입증하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C05",
+      "claim": "20출처그룹40경로·기존사본9·메타11의 범위를 검수하고 새로운 source독해 수는 중복 가산하지 않는다.",
+      "source_location": "manifest.sources/primary_sources; provenance-check; 원목록; 보호원본 baseline",
+      "verification_method": "명세20그룹의 원본 바이트·원목록·별칭40경로·기존 정확사본9개·보호 원본6개를 다시 검사했다. catalog와 manifest의 항목 동일성 및 새 복사/본문/JSON/selected 가산0을 확인했다.",
+      "limit": "외부 초록·검색 내용을 로컬 독립 연구본문/실험으로 세지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C06",
+      "claim": "검색f의 오류와 별도 수집 명세의 PDF 성공을 구분한다.",
+      "source_location": "SRC-0063457 decoded1–8; SRC-0063451:24–35; H067 보존검수",
+      "verification_method": "서명 query를 가린 f의8행과 당시 수집 명세24–35행을 다시 읽었다. 저장 웹 도구의 PDF 접근 오류와 별도 urllib 수집 성공의 해시·크기를 서로 다른 접근 기록으로 분리했다.",
+      "limit": "특정 접근오류로 논문부재·영구접근불가를 단정하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C07",
+      "claim": "SIU기관의 저자는4명이며 Satilmis의 tooltip/full meta 표기를 구분한다.",
+      "source_location": "SRC-0063449 raw261–264/294–298/511",
+      "verification_method": "원HTML261–264/294–298/511행에서 네 저자와 DOI를 다시 대조했다. tooltip Mustafa Mert Satilmis와 citation_author의 Satilmis, Mustafa를 직접 비교했으며 저자 수4도 재계산했다.",
+      "limit": "Mustafa와Mustafa Mert의 표기차이를 다른저자로 세지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C08",
+      "claim": "SIU행사는2026-07-07–10이나 출판일메타 두값은 비어 있고 부제물음표는 원문에 있다.",
+      "source_location": "SRC-0063449 raw260/265/267/292–293/502/514",
+      "verification_method": "원HTML258–305/501–568행에서 행사 장소·7월7–10일과 빈 DC.date/citation_publication_date를 재대조했다. 원문 부제 물음표와 현재 동일바이트 확인을 근거로 날짜·문자를 임의 보정하지 않았다.",
+      "limit": "행사일을출판일로확정하거나터키어문자추측복원하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C09",
+      "claim": "FullText는 발표유형이며 실제페이지의 PDF첨부획득 증거가 아니다.",
+      "source_location": "SRC-0063449 raw291/524–568 및 전체링크; inline script2 UI문자열",
+      "verification_method": "원HTML291/524–568행과 전체 anchor를 대조하고 script2의 password/download/downloadFileMessage/documentDownload 문구를 다시 추출해 읽었다. UI 번역과 실제 PDF 첨부를 구분했으며 PDF href가 없음을 검사했다.",
+      "limit": "일반download문구와실제논문파일은다르다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C10",
+      "claim": "SIU초록은rolling Z-score·PELT·NeuralProphet의 단계를 설명한다.",
+      "source_location": "SRC-0063449 raw266/567",
+      "verification_method": "원HTML266/567행 초록을 다시 읽어 rolling Z-score→PELT→NeuralProphet 설명 순서를 확인했다. 초록에 없는 세부 구현이나 현재 팀의 실행 이력으로 확대하지 않았다.",
+      "limit": "구현상세·선택기준·팀의실행완료로확대하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C11",
+      "claim": "SIU과소예측 벌점의 수식·계수·단위는 미확인이다.",
+      "source_location": "SRC-0063449 raw266/567 및 전체가시본문",
+      "verification_method": "동일 초록과 가시 본문을 재대조해 손실 계수·단위·수식이 제시되지 않았음을 확인했다. H06843–51행의 사건 비용/α와 H066의 정규화 activity 조건을 함께 읽어 같은 목적함수라는 추정을 제거했다.",
+      "limit": "특정quantile/DeepCogα-OMC/H066선형비용과동일시하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C12",
+      "claim": "초록의 성공률·낮은오차 보고에는 데이터량·분할·seed·수치표가 없다.",
+      "source_location": "SRC-0063449 raw266/554–568",
+      "verification_method": "원HTML266/554–568행의 성공률·낮은 오차라는 정성적 보고를 다시 읽었다. 본문에 없는 수량·분할·seed·정량표는 미확인으로 남기고 개선율을 만들어 넣지 않았다.",
+      "limit": "정량개선율·실행설정을추정하거나재현으로세지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C13",
+      "claim": "전처리·변화점·모델선택의 시간적합 경계는 초록으로 확인되지 않는다.",
+      "source_location": "SRC-0063449 raw266/567",
+      "verification_method": "초록의 세 단계 설명과 미기록 항목을 다시 비교했다. preprocessing/변화점/선택의 fit 기간을 확인할 정보가 없어 누수 유무를 어느 쪽으로도 확정하지 않았다.",
+      "limit": "누수없음도누수있음도단정하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C14",
+      "claim": "현재 기관HTML은63000바이트/원해시와 동일하고 DOI의일반응답은202/0바이트다.",
+      "source_location": "SRC-0063449; current-acquisitions; external-version-check.requests",
+      "verification_method": "현재 접근 명세의 두 요청을 다시 읽고 저장 응답의 실제 바이트·SHA-256를 원HTML과 재검사했다. 기관200/63000바이트 동일과 DOI202/0바이트/IEEE11636729 경로만 확인 범위로 삼았다.",
+      "limit": "특정접근경로의결과이며세계모든공개본부재가아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C15",
+      "claim": "SIUHTML의 메타44·inline7/외부참조6/주석2 및 supportingmarkup426행을 읽었다.",
+      "source_location": "SRC-0063449; siu-inline-scripts-comments-static1–523; supportingmarkup1–426; format-audit.HTML",
+      "verification_method": "첫 독해한 script/주석523행·markup426행을 저장 범위와 대조하고 13script/7inline/6src/2주석/44meta를 원HTML에서 다시 셌다. 저자 표시 GET·다운로드 UI를 재독해했다. CRLF1015개를 LF로 정규화한 문자 수와 원바이트 해시의 구분을 추가했다.",
+      "limit": "외부script실행·로고픽셀·논문표/그림검수가아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C16",
+      "claim": "이묶음의 모델/난수/역사적코드 실행은0이며정리용디코딩·정적검사만했다.",
+      "source_location": "H069 도구기록; manifest.execution fields; SRC-0022803/0022630 정적읽기",
+      "verification_method": "이 묶음의 도구 실행과 새 정리 스크립트를 점검했다. 역사 코드 두 개는 정적 읽기/AST에 한정하고 모델 실행·원모듈 import·난수 추출은 하지 않았다. manifest의 실행·가산 경계와 일치한다.",
+      "limit": "코드존재나수집스크립트AST는모델재현이아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C17",
+      "claim": "초록·언어경로·기관목록·재게시의 반복을 독립실험으로 세지 않는다.",
+      "source_location": "H069-R019–R024/R044/R047/R060–R062/R068/R070–R071/R074/R081–R089",
+      "verification_method": "전체 결과 색인100행을 재검토하고 primary의 동일 SIU초록3회, search67–77/101–111행의 HITS 출처/재게시를 다시 대조했다. 언어·기관목록·재게시·판본의 반복과 독립 연구를 나눴다.",
+      "limit": "결과블록수와고유논문수·독립연구수는다르다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C18",
+      "claim": "동일IMDEA목록URL의 검색발췌와열람본문이 다르며 DeepCog판본도 구분한다.",
+      "source_location": "SRC-0063452 decoded47–101/384–460; SRC-0063453 decoded193–256; H068판본검수",
+      "verification_method": "a47–101/384–407행과 b223–236행을 다시 읽었다. 같은 IMDEA page15 URL에서 DeepCog 검색 발췌와 VNC2015 Temporal Connectivity 열람 본문이 다름을 확인하고 JSAC/INFOCOM/워크숍 항목을 별도로 유지했다.",
+      "limit": "변하는페이지번호를영구식별자로사용하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C19",
+      "claim": "DeepCog검색의JADES문장과TSUL검색뒤prior-knowledgeLSTM수치를 해당논문검증치로 채택하지 않는다.",
+      "source_location": "SRC-0063454 decoded368–411; SRC-0063458 decoded127–159; H069-R035/R067",
+      "verification_method": "c368–385행의 JADES/submodularity와 primary127–160행의 TSUL 뒤 prior-knowledge LSTM 문장을 다시 읽었다. 76.4%·10%를 TSUL 결과로 채택하지 않도록 대상과 주변 추천문 경계를 확인했다.",
+      "limit": "검색컨테이너의추천·주변발췌와원논문의방법/결과를구분한다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C20",
+      "claim": "primary라는파일명이나집계서비스References표제를 일차출처/원참고문헌의 보증으로쓰지않는다.",
+      "source_location": "SRC-0063458 decoded1–79/161–204/205–289; 결과출처100행",
+      "verification_method": "primary55–71/185–219행의 Eurekamag References와 100행 색인의 출처 종류를 다시 읽었다. 도로 교통·고분자·데이터베이스 항목의 혼합과 파일명 primary를 원논문 권위의 보증으로 삼지 않았다.",
+      "limit": "관련없어보이는항목만으로해당논문자체의품질을단정하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C21",
+      "claim": "TSUL저장요약의SVAE/수개월목적·TFT정확도열세/계산시간우세는원문검수전후보다.",
+      "source_location": "SRC-0063458 decoded1–19/80–159/205–230/319–398/451–529",
+      "verification_method": "primary1–19/127–160/205–219/380–398행을 다시 읽어 SVAE·수개월 목적, Linear/LSTM 대비 주장과 TFT 정확도 열세/계산시간 우세를 대조했다. 조기2025/권호2026/2021후보를 합치지 않고 본문 미검수로 유지했다.",
+      "limit": "서지2025/2026·2021선행후보를구분하며검증된실험으로채택하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C22",
+      "claim": "DigitalTwin저장초록의동기화·5.41–7.01%통신량보고는UPC/RCTL연구의성능이아니다.",
+      "source_location": "SRC-0063460 decoded349–406; H069-R092",
+      "verification_method": "search349–378행을 다시 읽어 Digital Twin의 quantile GRU·동기화 통신량5.41–7.01% 대상과 비용/오차 주장을 확인했다. 해당 초록의 수치를 UPC/RCTL 성능으로 옮기지 않았다.",
+      "limit": "해당본문/원데이터/코드/수치재계산은미확인이다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C23",
+      "claim": "제3자PDF검색Table2의12점수는H067저널표와같지만미러전체판본동일성은미확인이다.",
+      "source_location": "SRC-0063460 decoded112–185; H067기록19–27 및 H067인쇄표검수",
+      "verification_method": "search112–151행과 H06719–27행의 표를 나란히 읽고 12개 점수를 Decimal로 일대일 비교했다. 모두 같아 판본 수치가 다른 것처럼 읽힐 초안을 정정했다. 미러 전체 동일성은 미확인으로 남겼다.",
+      "limit": "부분일치·검색표열람을전체PDF독해로세지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C24",
+      "claim": "발표·교육·다른응용의문헌은탐색후보이고TabICL비교군/기각근거로직접채택하지않는다.",
+      "source_location": "H069-R040–R041/R045/R087/R093–R096/R099–R100 및 각원로그",
+      "verification_method": "d29–42/93–107행의 교육 예시, search406–409/451–483행의 NFV·홍수·공간기상·UQ·CPU 후보를 다시 읽었다. 다른 응용 성능과 발표 예시를 팀 실험이나 직접 기각 근거로 사용하지 않았다.",
+      "limit": "타분야성능·인용사실·교육예시를팀실험으로옮기지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C25",
+      "claim": "Rolling-OriginConformal후보는당시검색전용scope에있으나이번8로그의원발췌는미확인이다.",
+      "source_location": "SRC-0063463:31–37; SRC-0063452–0063458/0063460 전체decoded본문",
+      "verification_method": "search_scope31–37행의 Rolling-Origin Conformal 항목을 재독해하고 첫 독해한 8내용 전체에서 conformal 문자열의 부재를 재검사했다. scope상의 흔적과 존재/정확한 서지 확인을 구분했다.",
+      "limit": "문헌존재·정확한서지·방법독해를완료처리하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C26",
+      "claim": "원69/71의선택독해·코드미검토상태를후속검수로소급수정하지않는다.",
+      "source_location": "SRC-0022020; SRC-0022022; SRC-0063462; H067/H068 현재보충기록",
+      "verification_method": "원69 전체26행·원71 전체43행·review_scope 전체93행을 초안 뒤 다시 읽었다. 당시 선택 독해·코드 미검토 상태를 후속 H067/H068/H069의 실제 범위로 소급 변경하지 않았다.",
+      "limit": "당시상태와후속상태를별도시점으로보존한다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C27",
+      "claim": "Forecaster평가조건·DeepCog결정비용·SIU과소벌점초록을분리해해석한다.",
+      "source_location": "H067 기록도입/평가조건; H068 기록용량/손실; SRC-0063449 raw266/567; SRC-0000152:75–90",
+      "verification_method": "H0671–18/30–58행, H0681–42/43–51행과 보고서75–90행, SIU초록을 다시 대조했다. 결과 조건부 점수·용량 결정 비용·초록의 과소 벌점을 분리하고 Tab 분할/특정 목적 개선의 보장으로 일반화하지 않았다.",
+      "limit": "문헌묶음만으로Tab분할의유효성·특정목적개선을결론내리지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C28",
+      "claim": "70저장진단/71판단과문헌독해는기존H066연결이며새모델실험이아니다.",
+      "source_location": "SRC-0022022; SRC-0000152; H066기록실행범위/후처리/비용",
+      "verification_method": "원71 전체와 보고서75–100행, H0667–23행을 다시 읽었다. 저장 예측의 재집계/보정과 모델 학습·재추론을 분리하고 H069에서 새 팀 실험을 추가하지 않았다.",
+      "limit": "저장예측재집계와학습·재추론을분리한다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C29",
+      "claim": "기존사본9개와메타/결과색인을제공하며원검색전문·서명query는재게시하지않는다.",
+      "source_location": "manifest.archive_path/distribution; search-result-index; H069 git변경목록",
+      "verification_method": "명세의 기존 archive_path9개, 100행 접근 색인과 실제 git 변경 목록을 대조했다. 새 검색 전문 사본 없이 메타/요약만 추가하고 AWS 서명 query가 공개물에 없는지 검사했다. 전체 원로그의 팀 공용 위치는 미확인으로 남겼다.",
+      "limit": "관련기관링크는로그바이트다운로드가아니다. 전체원로그팀공용보관은미확인이다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H069-C30",
+      "claim": "새설계는SIU실본문의손실단위·시간분할·실행자료와팀행동/비교군의대응이선행돼야한다.",
+      "source_location": "SRC-0063449 미확인범위; manifest.remaining; H066/H067/H068 한계",
+      "verification_method": "SIU초록의 실제 확인 범위와 manifest.remaining, H066–H068의 실행 근거 공백을 다시 대조했다. 손실 단위·정보 시점·행동·비교군·실행 자료 확보는 후속 설계 조건이며 완료된 실험이나 전체 Goal 완료가 아님을 확인했다.",
+      "limit": "후속연구제안이며실행승인·실행완료·전체Goal완료가아니다.",
+      "semantic_second_pass_complete": true
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "created_at_utc": "2026-10-10T12:01:36.924472+00:00",
+  "independent_reviewer": false,
+  "draft_record_sha256": "43bd312c328e39536eab3d4b18f02eaf49c9a64062cd60fd50c1b98f83a8a93c",
+  "checked_at_utc": "2026-10-10T12:10:28.886248+00:00",
+  "reviewed_record_sha256": "a6ddecacd0ac3bbf8c662d52d817de563095de9a96ff95ac90bb712c48b88dbc"
+}

@@ -31,3 +31,5 @@ uv run --locked --group archive python scripts/research_archive/verify_peak_obje
 후속 [H067 검수](history-067.md)는 Forecaster’s Dilemma의 저널 본문과 표현·판본을 추가 대조했다. 위 H066의 당시 범위 수치는 그대로 유지한다. 이 문헌 대조는 H066의 저장 예측 계산을 독립 재현으로 다시 세는 작업이 아니다.
 
 [H068 검수](history-068.md)에서 DeepCog 저자본과 별도 공개 코드의 판본·비용·비교군을 추가 대조했습니다. H066의 저장 예측을 새 실험이나 독립 재현으로 다시 가산하지 않습니다.
+
+후속 [H069의 출처와 읽은 범위](../sources/history-069.md)에서 SIU 기관 HTML·저장 검색8내용을 검수했다. 이 문서의 앞선 대기 표시는 당시 범위로 보존한다. SIU 논문 본문·실행 자료, 첫 검색 묶음 원문과 검색전용 후보의 본문은 계속 미확인이다.
