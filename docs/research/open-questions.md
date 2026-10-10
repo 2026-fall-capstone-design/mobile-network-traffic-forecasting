@@ -94,3 +94,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 ## 77의 동적 소속 근거
 
 [77 DLM 검수](verification/history-077.md) 이후에도 논문 그림과 실제 실행 코드·환경의 연결, 정적 구현 차이의 영향, 예측 origin 배정과 RCTL 공유 이득은 미확인이다. [H078 검수](verification/history-078.md)에서 원77의 남은 두 PDF 25쪽과 TXT·원PNG·PyPI/repository·검색 14개 그룹을 다뤘다. 2025 DLM 저널 전문, Fuzzy의 방법·결과 전체, FedCAP 전문, 논문 실행 코드·원시 결과는 아직 확인이 필요하다. 원78–79 외부·원80 결과·이후 기록과 원자료 팀 접근도 이어서 검수한다.
+
+## 원78 회귀 전이 검수 후 남은 범위
+
+[H079](verification/history-079.md)에서 회귀 전이 논문23쪽·score/README·metadata3개·TXT2·원PNG3을 대조했다. Task2Vec·NTKMTL와 검색/접근 자료는 계속 검수한다. 논문표·그림 차이의 원인, 실제 환경과 결과 생성 경로·원시 점·특징 pickle 접근, shared head 설계와 RCTL 효과의 연결은 미확인이다. 출력 변환이 가능하다는 이유만으로 같은 cell pooling을 다시 제안하지 않는다.
