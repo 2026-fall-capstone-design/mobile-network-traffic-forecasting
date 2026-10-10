@@ -1,0 +1,160 @@
+{
+  "batch_id": "history-088",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-10T22:31:45.632321+00:00",
+  "claims_checked": 36,
+  "checks": [
+    {
+      "check_id": "H088-SP01",
+      "claims": [
+        1,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        34
+      ],
+      "source_ranges": [
+        "SRC-0022038 3–47행",
+        "SRC-0022692 14–27,33–54,56–92행",
+        "SRC-0025160 전체",
+        "SRC-0025153 labels/members/scaler/flags",
+        "입력8hash와55사본"
+      ],
+      "result": "자료·정보 접근·129분위수·simple32·600매칭·병합·동일사본 계수 대조. probe의 수식 z는 코드 tx이며 transport z와 다름을 수정."
+    },
+    {
+      "check_id": "H088-SP02",
+      "claims": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        24
+      ],
+      "source_ranges": [
+        "SRC-0022692 14–27,46–54,88–134행",
+        "SRC-0022038 28–36행",
+        "SRC-0025154 전체",
+        "SRC-0025158 전체",
+        "SRC-0025159 전체",
+        "SRC-0025157 flags/state hashes"
+      ],
+      "result": "freeze의 실제 저장 내용과 모델 파일 접근 순서, eval/autograd/state hash assert,224batch, gradient 평균 후 Gram 집계 대조. exit0과 실제 runtime무변경은 당시 기록 근거로 제한."
+    },
+    {
+      "check_id": "H088-SP03",
+      "claims": [
+        3,
+        4,
+        5,
+        21,
+        22,
+        23,
+        24,
+        33
+      ],
+      "source_ranges": [
+        "SRC-0025157 teacher/partitions/ARI/20기간 relative/contrast 전체",
+        "SRC-0025153 partitions/members/scaler",
+        "SRC-0025149 20Gram·mean_*·query_actual",
+        "SRC-0022039 13–29행"
+      ],
+      "result": "작성 후 centering matrix trace 식으로20Gram·180within 재대조, 최대절대차3.183231456205249e-12. teacher MSE/MAE/cellMSE 전값 일치. 기간 표6행·6153반례·날짜별random/PCC부호 대조.",
+      "postdraft_max_absolute_variance_error": 3.183231456205249e-12
+    },
+    {
+      "check_id": "H088-SP04",
+      "claims": [
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "source_ranges": [
+        "SRC-0022040 3–30행",
+        "SRC-0022038 47행"
+      ],
+      "result": "population MSE·교환조건·Lipschitz상계와순위/실익차이·잡음분산·MAE CDF·기호예시 확인. ±1동일확률 조건과 θ에 따른 차이 가능성을 명확히 수정. 독립 논문 증명심사 아님."
+    },
+    {
+      "check_id": "H088-SP05",
+      "claims": [
+        30,
+        31,
+        32
+      ],
+      "source_ranges": [
+        "SRC-0023062 1–20행",
+        "SRC-0022692 27–32,109–128행",
+        "SRC-0025150/SRC-0025151 변경used·cheap·stage 전체와불변caps/remaining/note",
+        "SRC-0025152 전체",
+        "SRC-0025154/SRC-0025158 전체",
+        "SRC-0022039 40–42행"
+      ],
+      "result": "cheap+gradient=total·과거원장 합계·기존항목 불변·이중합산 방지·계측 종료범위를 대조. 600은 서로다른cell쌍 수가 아니라5방법의 매칭 수로 수정."
+    },
+    {
+      "check_id": "H088-SP06",
+      "claims": [
+        1,
+        2,
+        34,
+        35,
+        36
+      ],
+      "source_ranges": [
+        "SRC-0022039 1–44행",
+        "SRC-0022038 40–45행",
+        "history088 selection55aliases rehash",
+        "settings8inputs/hash와H070 동일원장",
+        "원80 검색/pyc 메타데이터 목록"
+      ],
+      "result": "당시 추천기각과 재진입조건·원본역할·검토계수·미포함파일을 대조. 새로운 실행/독립test/FedAvg통신/전수완료 주장 없음."
+    }
+  ],
+  "wording_corrections": [
+    {
+      "claim": 13,
+      "before": "코드의 z는 공통 scaler로 표준화한 context 입력이며 transport의 입력/4와 구분한다.",
+      "after": "이 식의 z는 코드의 tx에 해당하는 공통 scaler로 표준화한 context 입력이다. 코드에서 별도로 z라 이름 붙인 transport query 입력/4와 구분한다."
+    },
+    {
+      "claim": 15,
+      "before": "소속·거리·설정을 고정한 JSON의 SHA는",
+      "after": "소속·거리·scaler·output weight를 담은 freeze JSON의 SHA는"
+    },
+    {
+      "claim": 19,
+      "before": "원 gradient 벡터 자체는 보존돼 있지 않다.",
+      "after": "원 gradient 벡터 자체는 이 두 NPZ에 보존돼 있지 않다."
+    },
+    {
+      "claim": 28,
+      "before": "x=±1에서 y=3+x와",
+      "after": "x가 ±1에 같은 확률을 가질 때 y=3+x와"
+    },
+    {
+      "claim": 28,
+      "before": "같은 m이라도 E[X²]가 다르면2(θ−1)E[X²]가 달라진다.",
+      "after": "입력분포가 다른 추가 예에서는 같은 m이라도 E[X²]가 다르면2(θ−1)E[X²]가 달라질 수 있다."
+    },
+    {
+      "claim": 30,
+      "before": "다섯 방법의600쌍 매칭",
+      "after": "다섯 방법에 걸친600개 매칭"
+    }
+  ],
+  "source_code_executed": false,
+  "new_model_runs": 0,
+  "independent_reviewer": false,
+  "scope": "동일 에이전트가 초안 작성 뒤 위 원문/필드/저장배열을 대조했다. 모든 원문 전체를 두 번 읽었거나 원실험을 재현한 것으로 세지 않는다."
+}

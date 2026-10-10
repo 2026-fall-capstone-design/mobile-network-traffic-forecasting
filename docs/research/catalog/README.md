@@ -227,3 +227,7 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 ## H087: 원79 검색1그룹
 
 [출처](../sources/history-087.md) · [목록](history-087-sources.jsonl) · [21그룹 연결](../evidence/0087-distributed-search/packet-coverage.json). 9개 값 전체를 읽은 JSON1개를 추가하며 독립 논문·이미지 가산은0이다. H0744·H0835·H0842·H0857·H0862·H0871은 소장 파일의 검수 연결이며 모든 외부문헌 확보를 뜻하지 않는다.
+
+## H088: 원80 진단과 실행 기록
+
+[출처](../sources/history-088.md) · [목록](history-088-sources.jsonl) · [검수](../verification/history-088.md).16그룹55경로, 신규본문5·전체JSON8·선택NPZ2이며 budget_before는 H070과 같아 추가 가산0이다. 검색JSON과pyc는 다음 범위로 남긴다.

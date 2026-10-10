@@ -1,0 +1,47 @@
+# 80. 조건부 평균과 실제 학습 방향의 연결: 최소 확인 계획
+
+2026-09-26. **수치 계산·gradient 확인 전에 고정한다.** 79 결과와 기존 후보 인덱스를 검토했다. 본 확인은 새 최종 성능 실험이 아니라 분산 학습 후보의 핵심 연결을 기각하거나 추가 검토하는 진단이다. 문헌 신규성·최종 RCTL 성능 통과와 구분한다.
+
+## 진입 이유와 반론
+
+이전 B2는 같은 입력 상태에서 공유 수정값의 MAE risk를 추정해 중앙집중 RCTL의 예측 이득을 기대했다. 이번 후보는 **기존 cell 자료를 분산해 학습할 때 같은 cluster 안의 local gradient 불일치를 줄이는 결정**이다. 입력 주변분포와 조건부 평균을 함께 비교하고 관측된 입력만 사용한다. RCTL을 점수 계산에 사용하지 않는다. 최종 학습은 실제 y의 MSE를 사용하는 cluster RCTL FedAvg를 가정한다. 기존 MAE 학습과 목적이 달라지므로 본 실험에서는 모든 방법에 동일 MSE를 적용하고 MAE도 함께 보고해야 한다.
+
+TabICL 대신 Ridge/HGB가 같은 판단을 더 싸게 한다면 TabICL 역할을 인정하지 않는다. 단순 raw (x,y) transport, x-only transport, 일별 profile/PCC도 비교한다. random probe의 중심화 loss signature는 알려진 방식의 단순 대안으로 넣되, 원문 접근이 제한된 CLoVE의 재현이라고 부르지 않는다. 조건부 평균 graph를 쓰는 것만으로 최초성은 주장하지 않는다.
+
+## 사용할 자료·추론
+
+- 기존 B2의16 cell 전부를 사용한다. cell 추가·선별 제외 없음. `observed_risk_tables.npz`의129개 중간분위수 평균을 조건부 평균의 근삿값으로 쓴다. 정확한999분위수 평균 API 출력과 같다고 쓰지 않는다.
+- 기존 context: target index168–671, cell당504 sample. 기존 query:672–839,168 sample. 뒤 확인:840–1007,168 sample. 모두 기존에 읽은 **개발 구간**이다. 새로운 독립 test가 아니다.
+- 입력16열: 최근8개,24h·168h lag,24h평균·표준편차,시간·요일sin/cos. 정규화는 기존 cell scale을 유지한다. RCTL에는 동일16열 정보를8×9로 넣는다. 이웃·cell ID를 추가하지 않는다.
+- TabICL 새 context0/query0. Ridge(alpha1,StandardScaler), HGB(제곱손실,max_iter100,max_leaf_nodes15,min_samples_leaf20,l2=1,early_stoppingFalse,seed20260925)를 같은504 sample로 각16개 적합해 query168개에 예측한다. simple fit총32. query y를 입력 매칭/mean 추정에 넣지 않는다.
+
+## 고정할 거리와 소속
+
+공통 입력 scaler는 모든 cell의 context 입력으로만 정한다. 표준화16열을 sqrt(16)로 나누어 입력 block의 차원 수 때문에 output 한 열이 묻히는 것을 줄인다. 예측 target은 기존 평균정규화 단위다. output 좌표의 추가 가중치는1로 고정한다. 이 값은 최적값·이론적 Lipschitz 비율이 아니라 pilot 초기값이다. 결과를 보고 조정하지 않는다.
+
+동일한168 query sample에 대해 `(x,Tab 평균)`, `(x,Ridge)`, `(x,HGB)`, `(x,실제y)`, `x만`의 균등 경험분포를 만든다. 두 cell 간 제곱 Euclidean cost의 최적1대1 매칭 평균으로 W2²를 계산한다. 이때 입력은 각각 자기 cell에서 관측된 입력이다. 동일 시각을 동일 x로 취급하지 않는다. 16cell의120쌍×5개를 계산한다. 전쌍 계산이므로 대규모에 선형이라고 주장하지 않는다.
+
+단순 probe 기준은 seed20260925의128개 Gaussian 선형방향과 bias를 사용하는 `1+ReLU(zW+b)/sqrt(16)` 예측 함수다. 각cell의 context MSE128차원 벡터에서 그 벡터의 평균을 뺀다. 중심화로 모든 probe에 공통인 y² 항을 제거한다. signature 제곱 Euclidean 거리를 쓴다. 이는 최종 RCTL 호출 없이 actual input-target cross moment를 쓰는 강한 비교다.
+
+각 거리에서16→8→4로 두 차례 같은 크기 cluster를 병합한다. round마다 평균 cross-cell 거리가 작은 edge부터 겹치지 않는 두 cluster를 고른다. 동점은 작은 cell 번호 순이다. 따라서 모두 K4·cluster당4cell이다. 기존 PCC balanced 소속도 재사용한다. global K1 및 deterministic random balanced K4(seed20260925)도 표시한다. 새 모델의 성능을 보고 소속을 고르지 않는다.
+
+모든 소속·거리·settings/hash를 저장한 후에만 RCTL을 읽고 사후 gradient를 계산한다. 해당 결과를 거리·가중치·candidate에 되먹임하지 않는다.
+
+## RCTL을 새로 학습하지 않는 사후 확인
+
+- 상태2개를 사전에 정한다: seed20260925 초기 RCTL과 기존 global RCTL checkpoint. 후자는 MAE 학습·validation 선택 상태이므로 MSE 최적 상태라고 쓰지 않는다.
+- `eval()`로 dropout을 끄고 BN running statistics를 고정한다. 실제 y의 MSE로 gradient만 계산한다. optimizer를 만들지 않으며 parameter·BN buffer를 한 번도 update하지 않는다. 1-step fit으로29-fit 상한을 우회하지 않는다.
+- 뒤7일에 대해 cell별 하루24sample의 loss gradient를 계산한다:2상태×16cell×7일=224 forward/backward,총5,376행. 하루 gradient를 가중평균해 앞84h/뒤84h는 정확히 구성할 수 없으므로 **앞3일72h/뒤4일96h**와 전체7일로 집계한다.
+- primary 중간 지표는 같은 K4에서 cell gradient와 소속 cluster 평균 gradient의 차이 제곱norm의 cell 평균이다. 각 날짜의 부가값, 두 시간 구간·두 모델 상태를 모두 공개한다. vectornorm scale이 다른 모델 상태끼리는 raw값을 합치지 않고 각global K1값 대비비율을 쓴다.
+- 이 값은 그 지점의 deterministic expected-gradient 근사다. training-mode BN/dropout, Adam, 여러 local epoch, 미래 MSE 개선을 검증한 것으로 쓰지 않는다. 정해진 공통 함수의 MSE gradient라는 연결만 확인한다. RCTL 파라미터는 grouping이 끝난 뒤의 평가에만 쓰며, 원래 연구에서 clustering에 요구되지 않는다.
+
+## 판단과 실행 한도
+
+1. Tab 거리와 강한 단순 대안의 소속이 같으면 Tab에 의한 새로운 결정은 확인되지 않은 것으로 판정한다.
+2. Tab 소속이 입력/PCC/raw/Ridge/HGB/probe 대비 두 모델 상태·앞뒤 구간에서 일관되게 낮은 불일치를 보일 때만 핵심 연결의 긍정 신호로 기록한다. 차이가 작거나 방향이 뒤집히면 불확실/부정이다. 임의의 사후 개선%기준이나 iid 신뢰구간을 만들지 않는다.
+3. Tab의 직접 예측 MSE, raw잡음 감소만 좋아져도 소속·gradient가 나아지지 않으면 이 후보를 추천하지 않는다. 새 penalty를 붙여 같은 자료로 재실행하지 않는다.
+4. raw target/단순추정기만으로 충분하면 foundation을 쓰는 이 후보의 실익은 없는 것으로 본다. 본 실험 규모를 키우지 않는다.
+
+누적 상한 그대로 유지: Tab69/80contexts,39360/60000query; RCTL29/29fits. 이번새fit RCTL0,Tab0. simple32fits 포함 cheap numeric≤60초,고정RCTL gradient≤180초,전체단계≤240초,RAM≤8GiB. 기존총localmodeling6000초 안에서 계산한다. 실패 전 사용량도 기록하며 재실행하지 않는다. 새 누적항 `RCTL_frozen_gradient_seconds`로 gradient의 forward/backward 비용을 숨기지 않고 계상한다. 읽기·문헌·렌더는 모델 실행 비용과 구별한다.
+
+실행전 확인할 기호 예: 같은 x·m에 다른 zero-mean label noise는 population gradient 같음; 같은 x에 m 부호 반대는 달라질 수 있음; m만 같고 x분포가 다른 경우도 parameter 위치에 따라 gradient 다름. W2 graph가 작다는 것은 bounded Lipschitz gradient map에서 기대gradient 차이의 상계가 작다는 뜻이며 역이나순위일치보장이 아니다. 미지상수를작게대입하지않는다.

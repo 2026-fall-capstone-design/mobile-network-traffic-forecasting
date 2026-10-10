@@ -215,3 +215,7 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 - [원79 Toso 회귀 gradient 이론](records/0086-toso-gradient-heterogeneity.md): 새 iid 표본·공통 입력·PL 가정과 수렴/복원·RCTL 적용 범위를 구분한다.
 
 [원79 검색 이력](records/0087-distributed-search-provenance.md)에서 문헌별 실제 확인 범위·접근 오류·후속 후보와 소장21그룹의 연결을 찾을 수 있다.
+
+## 원80 조건부 평균 graph의 부정 결과
+
+[원80 진단](records/0088-conditional-graph-diagnostic.md)에서 Tab의 작은 직접 예측 오차가 새 소속으로 이어지지 않은 이유, PCC 대비 앞3일/뒤4일 반례와 비용을 확인할 수 있다. 저장16그룹을 대조했으며 실제 FedAvg 학습·최종 RCTL 성능 검증과 구분한다.

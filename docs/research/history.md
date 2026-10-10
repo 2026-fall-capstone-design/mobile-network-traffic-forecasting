@@ -128,3 +128,7 @@
 [저장v1 전문과 부록](records/0086-toso-gradient-heterogeneity.md)을 읽고 원79의 선택 독해 판단과 연결했다. Q_T 수렴·client별 복원 오차·추정 조건부 평균을 구분하고 본문/부록의 표기 확인사항을 남겼다. 과거 연구나 원80의 모델 실행을 재개한 기록은 아니다.
 
 [H087 검색 이력](records/0087-distributed-search-provenance.md)은 원79의 마지막 검색JSON을 검수한다. 검색118·open12·find7 응답과 오류3·본문 없는 open4를 구분하고, 당시 선택 독해를 이후 전문 검수로 소급하지 않는다.
+
+## 원80: 예측 이득과 소속 결정의 차이
+
+[2026-09-26 원80](records/0088-conditional-graph-diagnostic.md)은 기존16cell에서 input/raw/Tab/Ridge/HGB 소속이 같고 gradient 이득도 기간별로 뒤집혀 후보를 추천하지 않았다.5텍스트·9JSON·2NPZ 근거를 연결했고 실행 전 비용 원장은 H070과 같은 내용이라 중복 가산하지 않았다.

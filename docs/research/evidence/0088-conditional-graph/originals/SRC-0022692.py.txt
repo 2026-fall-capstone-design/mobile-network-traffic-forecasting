@@ -1,0 +1,134 @@
+"""Frozen-partition, no-optimizer diagnostic. No TabICL call, no RCTL fit."""
+import os
+for k in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:os.environ[k]='4'
+from pathlib import Path
+import sys,time,json,hashlib,gc,itertools
+import numpy as np,torch,psutil
+from scipy.optimize import linear_sum_assignment
+from scipy.spatial.distance import cdist
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor
+from sklearn.metrics import adjusted_rand_score
+from rctl_torch import RCTL
+sys.stdout.reconfigure(encoding='utf-8');torch.set_num_threads(4);torch.set_num_interop_threads(2)
+B=Path(__file__).resolve().parent;O=B/'results/conditional_graph_80';O.mkdir(exist_ok=True)
+assert not (O/'run_started.json').exists(),'No repeat of started diagnostic'
+def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def save(n,x):(O/n).write_text(json.dumps(x,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+paths={'plan':B/'80_conditional_graph_diagnostic_plan.md','code':Path(__file__),'data':B/'results/design_data.npz','Tab_saved':B/'results/observed_risk_tables.npz','old_partitions':B/'results/observed_risk_pilot.json','RCTL_code':B/'rctl_torch.py','RCTL_checkpoint':B/'results/rctl_pilot/global_20260925_cluster0.pt','ledger':B/'cumulative_execution_budget.json'}
+hashes={k:digest(v) for k,v in paths.items()};ledger=json.loads(paths['ledger'].read_text(encoding='utf-8'))
+assert ledger['used']['RCTL_fits']==29 and ledger['remaining_count_budgets']['RCTL_fits']==0
+known_total=sum(ledger['new_cheap_diagnostic_seconds'].values())+sum(ledger['used'].get(k,0) for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'])
+assert known_total+240<ledger['caps']['total_local_modeling_seconds']
+assert sum(ledger['new_cheap_diagnostic_seconds'].values())+60<ledger['caps']['cheap_numeric_seconds']
+settings={'source_hashes':hashes,'new_Tab_contexts':0,'new_Tab_queries':0,'new_RCTL_fits':0,'optimizer_steps':0,'simple_fits_cap':32,'gradient_batches_cap':224,'gradient_rows_cap':5376,'seed':20260925,'loss':'MSE','RCTL_mode':'eval/frozen BN/dropout disabled','time_splits':{'context':[168,671],'partition':[672,839],'posthoc_development':[840,1007]},'K':4,'cluster_size':4,'distance':'empirical uniform W2 squared on 16-d scaled input and mean-normalized target','Tab_mean':'average of saved 129 midpoint quantiles, not exact API mean','limits':{'cheap_seconds':60,'gradient_seconds':180,'total_seconds':240,'ram_bytes':8*1024**3},'independent_test':False}
+save('settings.json',settings);save('run_started.json',{'unix':time.time(),'pid':os.getpid(),'settings_sha256':digest(O/'settings.json')})
+start=time.perf_counter();gradient_seconds=0.;simple_fits=0;forward_backward=0;rows=0;rss=0;phase='prepare';frozen_hash=None
+def check():
+    global rss
+    rss=max(rss,psutil.Process().memory_info().rss)
+    assert rss<8*1024**3 and time.perf_counter()-start<240
+def balanced(D):
+    gs=[[i] for i in range(16)]
+    for _ in range(2):
+        edges=sorted((float(D[np.ix_(a,b)].mean()),min(a),min(b),i,j) for i,a in enumerate(gs) for j,b in enumerate(gs) if i<j)
+        used=set();new=[]
+        for _,__,___,i,j in edges:
+            if i in used or j in used:continue
+            used.update([i,j]);new.append(sorted(gs[i]+gs[j]))
+        assert len(used)==len(gs);gs=sorted(new,key=min)
+    lab=np.zeros(16,int)
+    for k,g in enumerate(gs):lab[g]=k
+    assert np.array_equal(np.bincount(lab),[4]*4)
+    return lab
+def within(K,lab):
+    total=float(np.trace(K))
+    for c in np.unique(lab):
+        ix=np.flatnonzero(lab==c);total-=float(K[np.ix_(ix,ix)].sum())/len(ix)
+    return max(0.,total/16)
+def statehash(m):
+    h=hashlib.sha256()
+    for k,v in m.state_dict().items():h.update(k.encode());h.update(v.detach().cpu().numpy().tobytes())
+    return h.hexdigest()
+try:
+    d=np.load(paths['data']);p=np.load(paths['Tab_saved']);sel=p['selected_cells'];ids=p['cell_ids'];times=d['times']
+    X=d['X'][sel].astype(float);Y=d['Y'][sel].astype(float)
+    tr=(times>=168)&(times<672);qu=(times>=672)&(times<840);ev=(times>=840)&(times<1008)
+    assert X.shape[0]==16 and X.shape[2]==16 and (tr.sum(),qu.sum(),ev.sum())==(504,168,168)
+    means={'TabICL':p['predicted_quantiles'].mean(-1)}
+    scaler=StandardScaler().fit(X[:,tr].reshape(-1,16));z=scaler.transform(X[:,qu].reshape(-1,16)).reshape(16,168,16)/4
+    simple_start=time.perf_counter()
+    for name in ['Ridge','HGB']:
+        pred=[]
+        for i in range(16):
+            check()
+            model=make_pipeline(StandardScaler(),Ridge(alpha=1)) if name=='Ridge' else HistGradientBoostingRegressor(loss='squared_error',max_iter=100,max_leaf_nodes=15,min_samples_leaf=20,l2_regularization=1,early_stopping=False,random_state=20260925)
+            model.fit(X[i,tr],Y[i,tr]);simple_fits+=1;pred.append(model.predict(X[i,qu]))
+        means[name]=np.stack(pred)
+    simple_seconds=time.perf_counter()-simple_start
+    D={};transport_seconds={};partitions={};arrays={'cell_ids':ids,'query_times':times[qu],'assessment_times':times[ev],'query_actual':Y[:,qu]}
+    phase='distances'
+    for name,output in [('input_only',None),('raw_joint',Y[:,qu])]+list(means.items()):
+        tick=time.perf_counter();vec=z if output is None else np.concatenate([z,output[:,:,None]],axis=2)
+        dd=np.zeros((16,16))
+        for i,j in itertools.combinations(range(16),2):
+            C=cdist(vec[i],vec[j],metric='sqeuclidean');a,b=linear_sum_assignment(C);dd[i,j]=dd[j,i]=C[a,b].mean()
+        D[name]=dd;partitions[name]=balanced(dd);arrays['distance_'+name]=dd;transport_seconds[name]=time.perf_counter()-tick;check()
+    rng=np.random.default_rng(20260925);W=rng.normal(size=(16,128));bias=rng.normal(size=128)
+    tx=scaler.transform(X[:,tr].reshape(-1,16));probe=1+np.maximum(tx@W+bias,0)/4
+    ls=((probe.reshape(16,504,128)-Y[:,tr,None])**2).mean(1);ls-=ls.mean(1,keepdims=True)
+    D['untrained_probe']=cdist(ls,ls,'sqeuclidean');partitions['untrained_probe']=balanced(D['untrained_probe']);arrays['probe_signature']=ls
+    old=json.loads(paths['old_partitions'].read_text(encoding='utf-8'))
+    assert old['cell_ids']==ids.tolist();partitions['PCC']=np.array(old['partitions']['pcc_balanced'])
+    rng=np.random.default_rng(20260925);rand=np.empty(16,int);rand[rng.permutation(16)]=np.repeat(np.arange(4),4);partitions['random']=rand;partitions['global']=np.zeros(16,int)
+    for name,lab in partitions.items():arrays['partition_'+name]=lab
+    for name,v in means.items():arrays['mean_'+name]=v
+    partition_record={'partitions':{k:v.tolist() for k,v in partitions.items()},'members':{k:[ids[v==j].tolist() for j in np.unique(v)] for k,v in partitions.items()},'distances':{k:v.tolist() for k,v in D.items()},'input_scaler_mean':scaler.mean_.tolist(),'input_scaler_scale':scaler.scale_.tolist(),'output_weight':1.0,'RCTL_used':False,'model_result_feedback':False}
+    save('frozen_partitions.json',partition_record);frozen_hash=digest(O/'frozen_partitions.json')
+    np.savez_compressed(O/'pre_RCTL_arrays.npz',**arrays)
+    cheap_before=time.perf_counter()-start;assert cheap_before<60
+    print(json.dumps({'phase':'partitions_frozen','sha256':frozen_hash,'simple_fits':simple_fits,'seconds':cheap_before,'partitions':partition_record['members']},ensure_ascii=False),flush=True)
+    phase='posthoc_gradient';gtick=time.perf_counter();metrics={};ggrams={};state_hashes={}
+    xx=X[:,ev].astype(np.float32);yy=Y[:,ev].astype(np.float32)
+    seq=np.empty((16,168,8,9),np.float32);seq[:,:,:,0]=xx[:,:,:8];seq[:,:,:,1:]=xx[:,:,None,8:]
+    for state in ['initial','stored_global_MAE']:
+        assert digest(O/'frozen_partitions.json')==frozen_hash
+        torch.manual_seed(20260925);model=RCTL(steps=8,channels=9)
+        if state=='stored_global_MAE':model.load_state_dict(torch.load(paths['RCTL_checkpoint'],map_location='cpu',weights_only=True))
+        model.eval();original=statehash(model);params=tuple(v for v in model.parameters() if v.requires_grad)
+        grads=np.zeros((7,16,sum(v.numel() for v in params)),np.float32);losses=np.zeros((7,16))
+        for day in range(7):
+            for i in range(16):
+                check();assert time.perf_counter()-gtick<180
+                x=torch.from_numpy(seq[i,day*24:(day+1)*24]);y=torch.from_numpy(yy[i,day*24:(day+1)*24])
+                pred=model(x);loss=((pred-y)**2).mean();g=torch.autograd.grad(loss,params)
+                grads[day,i]=torch.cat([v.detach().reshape(-1) for v in g]).cpu().numpy();losses[day,i]=float(loss.detach())
+                forward_backward+=1;rows+=24
+            save('gradient_progress.json',{'state':state,'day':day,'forward_backward_batches':forward_backward,'rows':rows,'gradient_seconds':time.perf_counter()-gtick,'frozen_partition_sha256':frozen_hash})
+            print(json.dumps({'phase':'gradient','state':state,'day':day+1,'seconds':time.perf_counter()-gtick}),flush=True)
+        assert statehash(model)==original;state_hashes[state]=original
+        state_metrics={}
+        intervals=[('first3days',grads[:3].mean(0)),('last4days',grads[3:].mean(0)),('all7days',grads.mean(0))]+[(f'day{j+1}',grads[j]) for j in range(7)]
+        for label,g in intervals:
+            v=g.astype(np.float64);K=v@v.T;ggrams[state+'_'+label]=K;globalv=within(K,partitions['global'])
+            values={k:within(K,lab) for k,lab in partitions.items()};state_metrics[label]={'global_variance':globalv,'within_variance':values,'relative_to_global':{k:v/globalv for k,v in values.items()}}
+        metrics[state]=state_metrics;arrays['MSE_'+state]=losses
+        del grads,model;gc.collect()
+    gradient_seconds=time.perf_counter()-gtick
+    assert forward_backward==224 and rows==5376 and simple_fits==32 and gradient_seconds<180
+    elapsed=time.perf_counter()-start;cheap=elapsed-gradient_seconds;assert cheap<60;check()
+    mean_metrics={k:{'MSE':float(((v-Y[:,qu])**2).mean()),'MAE':float(np.abs(v-Y[:,qu]).mean()),'cell_MSE':((v-Y[:,qu])**2).mean(1).tolist()} for k,v in means.items()}
+    aris={k:float(adjusted_rand_score(partitions['TabICL'],v)) for k,v in partitions.items()}
+    contrasts={state:{block:{k:values['relative_to_global']['TabICL']-v for k,v in values['relative_to_global'].items()} for block,values in table.items()} for state,table in metrics.items()}
+    cost={'TabICL_contexts':0,'TabICL_query_rows':0,'RCTL_fits':0,'RCTL_optimizer_steps':0,'RCTL_frozen_gradient_seconds':gradient_seconds,'RCTL_forward_backward_batches':forward_backward,'RCTL_forward_backward_rows':rows,'cheap_numeric_seconds':cheap,'simple_fits':simple_fits,'simple_fit_predict_seconds':simple_seconds,'transport_seconds':transport_seconds,'total_stage_seconds':elapsed,'peak_rss_bytes':rss}
+    assert all(digest(v)==hashes[k] for k,v in paths.items()) and digest(O/'frozen_partitions.json')==frozen_hash
+    result={'settings':settings,'partition_sha256':frozen_hash,'cell_ids':ids.tolist(),'partitions':partition_record['members'],'teacher_query_metrics':mean_metrics,'ARI_vs_TabICL':aris,'metrics':metrics,'Tab_minus_other_relative_variance':contrasts,'unchanged_RCTL_state_hashes':state_hashes,'cost':cost,'final_RCTL_performance_validated':False,'independent_test':False,'weights_or_buffers_updated':False,'clustering_uses_RCTL':False}
+    save('result.json',result);np.savez_compressed(O/'arrays.npz',**arrays,**ggrams);save('run_finished.json',{'cost':cost,'source_hashes_unchanged':True,'frozen_partition_sha256':frozen_hash})
+    print(json.dumps({'ARI_vs_Tab':aris,'mean_metrics':mean_metrics,'all7days':{k:v['all7days'] for k,v in metrics.items()},'halves':{k:{t:v[t] for t in ['first3days','last4days']} for k,v in metrics.items()},'cost':cost},ensure_ascii=False),flush=True)
+except BaseException as e:
+    elapsed=time.perf_counter()-start
+    if phase=='posthoc_gradient':gradient_seconds=time.perf_counter()-gtick
+    save('run_stopped.json',{'error':repr(e),'phase':phase,'seconds':elapsed,'gradient_seconds':gradient_seconds,'cheap_numeric_seconds':elapsed-gradient_seconds,'simple_fits':simple_fits,'forward_backward':forward_backward,'rows':rows,'frozen_partition_sha256':frozen_hash})
+    raise

@@ -1,0 +1,30 @@
+# 80. 계산 전에 확인한 연결과 한계
+
+고정된 scalar 예측함수 fθ(x), 유한2차 moment, 미분과 기대값 교환 조건을 두고 제곱손실을 고려한다. m_i(x)=E_i[Y|x]일 때
+
+`g_i(θ)=E_i[2(fθ(X)-Y)∇θfθ(X)]=E_{X∼p_i}[2(fθ(X)-m_i(X))∇θfθ(X)]`.
+
+조건부 mean-zero 잡음은 이 population gradient에는 남지 않는다. 그러나 유한 sample gradient의 분산에는 남는다. 따라서 분산이 큰 cell을 함께 묶으면 무조건 학습에 이롭다는 주장이 아니다.
+
+ν_i를 `(X,m_i(X))`의 분포라고 하자. Gθ(x,m)=2(fθ(x)-m)∇θfθ(x)가 현재 정한 좌표계에서 Lθ-Lipschitz라면 임의의 coupling에 기대값을 취하고 triangle inequality를 적용하여
+
+`||g_i(θ)-g_j(θ)|| ≤ Lθ W1(ν_i,ν_j) ≤ Lθ W2(ν_i,ν_j)`.
+
+이는 널리 쓰이는 Wasserstein coupling 부등식의 적용이며 새 정리라고 주장하지 않는다. Lθ는 RCTL의 학습 중 커질 수 있고 수치가 확인되지 않았다. 작은 거리의 pair가 모든 모델 상태에서 작은 gradient 차이의 pair보다 반드시 먼저 온다는 순위 보장도 없다. 상계만으로 실익을 확정하지 않고 별도 사후 확인을 한다.
+
+||∇θfθ(x)||≤Bθ이면 추정 mean을 넣은 gradient와 참 gradient 차이는 `2Bθ E|m_hat_i(X)-m_i(X)|` 이하이다. 따라서 좋은 m 추정이 필요하다. 단순히 잘 평활화했다거나 내부 quantile이 많다는 사실로 이 오차가 작다고 결론내리지 않는다. 실측 y에 대한 예측 MSE에는 irreducible noise도 포함되므로 mean 추정오차 자체와 구별한다.
+
+## 세 가지 기호 확인
+
+1. x가 ±1에 동일 확률, A는 y=3+x, B는 y=3+x+ε이고 E[ε|x]=0이다. fθ=3+θx라면 A/B 기대gradient는 모두2(θ−1). raw(x,y) 분포는 ε에 따라 다르나 참 mean graph는 같다.
+2. C는 y=3−x이고 입력은 같다. input-only 거리는0이지만 C gradient는2(θ+1), A와4 차이가 난다. 평균 output의 주변분포만 보아도 A/C는 동일한{2,4}이므로 **x와m의 쌍**을 유지해야 한다.
+3. 동일m(x)=3+x를 공유해도 cell마다 E[x²]가 다르면 gradient가2(θ−1)E[x²]로 달라진다. conditionalmean만 공통query에서 비교하는 방식으로는 이 차이를 측정하지 못한다. 그래서입력의분포도남긴다.
+
+이 예시는 논리의 직접 확인이며 네트워크 데이터에서 그 상황이 자주 발생한다는 증거로 쓰지 않는다. 실제자료의 필요성은 뒤구간의 고정RCTL gradient와의 연결로 진단한다. MAE에서는 gradient가 conditionalCDF에 의존하므로 이 mean 등식을 그대로 사용할 수 없다. 현재80은 MSE 목적을 명시적으로 검토하며 기존 MAE결과를 성공 근거로 옮기지 않는다.
+
+## 실험 해석에 필요한 구분
+
+- raw-joint 기준은 과거 query의 실제 y도 사용한다. Tab/Ridge/HGB mean은 context y와query x만 사용한다. 같은 평가 입력·sample수의 graph를 비교하지만 label을 쓰는 방식이 같다고 주장하지 않는다. raw 기준은 더 최근 실제target을 참조할 수 있는 대안이다.
+- 최종 RCTL의 BN을 frozen eval로 확인한다. 이는 pointwise함수Gθ를 비교하기 위함이다. training-mode BN, dropout, 여러localstep을 포함한FedAvg를검증하지않았다.
+- gradient규칙을보고clustering을바꾸는행위는하지않는다. 결과가불리해도distance의가중치·K·cell목록·시간구간을다시고르지않는다.
+- 분산환경은제안의적용조건이며사용자데이터의확인된운영요건이아니다. 현재실제학습을분산형으로수행한결과는없다.

@@ -1,0 +1,20 @@
+from pathlib import Path
+import json,hashlib,math
+B=Path(__file__).resolve().parent;O=B/'results/conditional_graph_80';p=B/'cumulative_execution_budget.json'
+assert not (O/'budget_update.json').exists(),'Do not account twice'
+r=json.loads((O/'result.json').read_text(encoding='utf-8'));raw=p.read_bytes()
+assert hashlib.sha256(raw).hexdigest()==r['settings']['source_hashes']['ledger']
+l=json.loads(raw);caps=l['caps'].copy();cost=r['cost'];before=raw
+assert cost['RCTL_fits']==cost['TabICL_contexts']==cost['TabICL_query_rows']==cost['RCTL_optimizer_steps']==0
+l['used']['RCTL_frozen_gradient_seconds']=l['used'].get('RCTL_frozen_gradient_seconds',0)+cost['RCTL_frozen_gradient_seconds']
+l['new_cheap_diagnostic_seconds']['conditional_graph_80']=cost['cheap_numeric_seconds']
+l['cheap_stage_details'].append({'stage':'conditional_graph_80','new_simple_fits':32,'methods':['Ridge','HGB'],'entire_stage_seconds':cost['total_stage_seconds'],'RCTL_gradient_seconds_accounted_separately':cost['RCTL_frozen_gradient_seconds'],'simple_fit_predict_seconds_included_in_cheap_stage':cost['simple_fit_predict_seconds'],'cost_not_counted_twice':True,'new_TabICL_calls':0,'new_RCTL_fits':0})
+l.setdefault('frozen_gradient_stages',[]).append({'stage':'conditional_graph_80','forward_backward_batches':224,'rows':5376,'optimizer_steps':0,'RCTL_fits':0,'wall_seconds':cost['RCTL_frozen_gradient_seconds'],'precommitted_stage_wall_cap_seconds':180,'partition_frozen_before_RCTL':True,'parameters_and_buffers_unchanged':True})
+assert l['caps']==caps and l['used']['RCTL_fits']==29 and l['remaining_count_budgets']['RCTL_fits']==0
+cheap=sum(l['new_cheap_diagnostic_seconds'].values());total=cheap+sum(l['used'].get(k,0) for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'])
+assert cheap<caps['cheap_numeric_seconds'] and total<caps['total_local_modeling_seconds']
+after=json.dumps(l,ensure_ascii=False,indent=2,allow_nan=False).encode('utf-8')
+(O/'budget_before.json').write_bytes(before);(O/'budget_after.json').write_bytes(after)
+p.write_bytes(after)
+rec={'before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(after).hexdigest(),'delta_cost':cost,'caps_unchanged':True,'no_budget_reset':True,'new_cheap_total_seconds':cheap,'recorded_total_modeling_seconds':total,'remaining':l['remaining_count_budgets']}
+(O/'budget_update.json').write_text(json.dumps(rec,ensure_ascii=False,indent=2),encoding='utf-8');print(json.dumps(rec,ensure_ascii=False))
