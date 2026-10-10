@@ -152,3 +152,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [64·65 PLOS copula 군집화](records/0064-0065-plos-copula.md)는 lag copula 거리·정리 가정·Lance–Williams 선행과 실제 사례의 범위를 연결합니다. 인구 본문과 그림의 WA 차이, Sim 검산, STMA 표기를 확인했습니다. 남은 문헌은 GP-Copula·TACTiS-2·conditional normalization이며 65 전체 종합은 진행 중입니다.
 
 [64·65 GP-Copula 검수](records/0064-0065-gp-copula.md)는 경험 CDF와 공유 예측의 선행, Electricity·Taxi의 손해 조건, 원논문과 공개 GluonTS 재구현의 차이를 연결합니다. 본문11쪽·보충12쪽·선택구현을 확인했으며 TACTiS-2·conditional normalization과65전체종합은 남아 있습니다.
+
+[64·65 TACTiS-2 검수](records/0064-0065-tactis2.md)는 조건부 주변분포·copula 분리와 두 단계 학습, Traffic의 지표별 예외, 공식 코드 재사용 조건을 연결합니다. 논문28쪽·고정코드16파일을 읽었으며 conditional normalization과65전체종합은 남아 있습니다.

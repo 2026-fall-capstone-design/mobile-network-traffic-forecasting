@@ -25,3 +25,7 @@
 ## GP-Copula로 연결한 64·65의 공유 예측 검토
 
 [GP-Copula 기록](records/0064-0065-gp-copula.md)은65§5의경험CDF·공유RNN·Jacobian·두자료예외를전체본문과보충자료에대조했습니다. 당시미검토였던공개코드의선택범위를읽고B20→2/미분항제거/Taxi57→56/지표설정차이를추가했습니다. TACTiS-2·conditional normalization의두문헌과65전체종합·후속이력은남습니다.
+
+## TACTiS-2로 연결한 64·65의 조건부 분포 검토
+
+[TACTiS-2 기록](records/0064-0065-tactis2.md)은65§6을논문28쪽전체·고정공식코드16파일에대조했습니다. 당시의코드미검토상태는보존하고이번정적검수를추가했습니다. NLL/FLOPs5자료개선과Traffic의CRPS-sum/CRPS/ES손해를함께남겼습니다. Conditional normalization과65전체종합·후속연구통합은남습니다.
