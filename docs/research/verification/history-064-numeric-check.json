@@ -1,0 +1,909 @@
+{
+  "batch_id": "history-064",
+  "checked_at_utc": "2026-10-10T08:41:43.363992+00:00",
+  "status": "passed",
+  "inputs": {
+    "current-mri-pdf.pdf": {
+      "bytes": 2524215,
+      "sha256": "a4521ecee5ce59e1e7e4d3bb05bdb2d6da1c47ba3c3b019ccc208a20107c23d0"
+    },
+    "mri-source.tar": {
+      "bytes": 3333580,
+      "sha256": "bbed4ff1c1adea761d5d64f0450ceb45515463d030e312c93c1ae0cff30a7376"
+    },
+    "source-draft.tex": {
+      "bytes": 93051,
+      "sha256": "d2e4acb98d04bfbe98a3479aca3ad477c941d6dbc5164603b3dc3ba050ce2bd7"
+    },
+    "source-appendix.tex": {
+      "bytes": 90396,
+      "sha256": "ce2a7a511bbb5b73228c2a54b5dfaee14569c26b62b8ae47cb177315d9f3aec1"
+    }
+  },
+  "checks": [
+    {
+      "name": "table2_printed_row_1",
+      "passed": true,
+      "details": "sex AGEP 0.58 1.32 2.02 1/50 (2%) 19/50 (38%)"
+    },
+    {
+      "name": "table2_tex_row_1",
+      "passed": true,
+      "details": {
+        "source_line": "sex & AGEP  & 0.58 & 1.32 & 2.02 & 1/50 (2\\%)   & 19/50 (38\\%) \\\\"
+      }
+    },
+    {
+      "name": "table2_percent_row_1",
+      "passed": true,
+      "details": {
+        "extreme_percent": 2,
+        "symmetric_percent": 38
+      }
+    },
+    {
+      "name": "table2_printed_row_2",
+      "passed": true,
+      "details": "SCHL 0.33 0.88 1.31 2/50 (4%) 33/50 (66%)"
+    },
+    {
+      "name": "table2_tex_row_2",
+      "passed": true,
+      "details": {
+        "source_line": "& SCHL  & 0.33 & 0.88 & 1.31 & 2/50 (4\\%)   & 33/50 (66\\%) \\\\"
+      }
+    },
+    {
+      "name": "table2_percent_row_2",
+      "passed": true,
+      "details": {
+        "extreme_percent": 4,
+        "symmetric_percent": 66
+      }
+    },
+    {
+      "name": "table2_printed_row_3",
+      "passed": true,
+      "details": "MARC 0.71 1.62 2.18 7/50 (14%) 4/50 (8%)"
+    },
+    {
+      "name": "table2_tex_row_3",
+      "passed": true,
+      "details": {
+        "source_line": "& MARC  & 0.71 & 1.62 & 2.18 & 7/50 (14\\%)  & 4/50 (8\\%)   \\\\"
+      }
+    },
+    {
+      "name": "table2_percent_row_3",
+      "passed": true,
+      "details": {
+        "extreme_percent": 14,
+        "symmetric_percent": 8
+      }
+    },
+    {
+      "name": "table2_printed_row_4",
+      "passed": true,
+      "details": "RELPC 0.37 1.01 1.81 3/50 (6%) 26/50 (52%)"
+    },
+    {
+      "name": "table2_tex_row_4",
+      "passed": true,
+      "details": {
+        "source_line": "& RELPC & 0.37 & 1.01 & 1.81 & 3/50 (6\\%)   & 26/50 (52\\%) \\\\"
+      }
+    },
+    {
+      "name": "table2_percent_row_4",
+      "passed": true,
+      "details": {
+        "extreme_percent": 6,
+        "symmetric_percent": 52
+      }
+    },
+    {
+      "name": "table2_printed_row_5",
+      "passed": true,
+      "details": "race AGEP 0.10 0.61 3.48 17/50 (34%) 10/50 (20%)"
+    },
+    {
+      "name": "table2_tex_row_5",
+      "passed": true,
+      "details": {
+        "source_line": "race & AGEP  & 0.10 & 0.61 & 3.48 & 17/50 (34\\%) & 10/50 (20\\%) \\\\"
+      }
+    },
+    {
+      "name": "table2_percent_row_5",
+      "passed": true,
+      "details": {
+        "extreme_percent": 34,
+        "symmetric_percent": 20
+      }
+    },
+    {
+      "name": "table2_printed_row_6",
+      "passed": true,
+      "details": "SCHL 0.15 0.69 1.84 6/50 (12%) 12/50 (24%)"
+    },
+    {
+      "name": "table2_tex_row_6",
+      "passed": true,
+      "details": {
+        "source_line": "& SCHL  & 0.15 & 0.69 & 1.84 & 6/50 (12\\%)  & 12/50 (24\\%) \\\\"
+      }
+    },
+    {
+      "name": "table2_percent_row_6",
+      "passed": true,
+      "details": {
+        "extreme_percent": 12,
+        "symmetric_percent": 24
+      }
+    },
+    {
+      "name": "table2_printed_row_7",
+      "passed": true,
+      "details": "MARC 0.18 0.53 2.96 25/50 (50%) 4/50 (8%)"
+    },
+    {
+      "name": "table2_tex_row_7",
+      "passed": true,
+      "details": {
+        "source_line": "& MARC  & 0.18 & 0.53 & 2.96 & 25/50 (50\\%) & 4/50 (8\\%)   \\\\"
+      }
+    },
+    {
+      "name": "table2_percent_row_7",
+      "passed": true,
+      "details": {
+        "extreme_percent": 50,
+        "symmetric_percent": 8
+      }
+    },
+    {
+      "name": "table2_printed_row_8",
+      "passed": true,
+      "details": "RELPC 0.04 0.30 2.85 43/50 (86%) 0/50 (0%)"
+    },
+    {
+      "name": "table2_tex_row_8",
+      "passed": true,
+      "details": {
+        "source_line": "& RELPC & 0.04 & 0.30 & 2.85 & 43/50 (86\\%) & 0/50 (0\\%)   \\\\"
+      }
+    },
+    {
+      "name": "table2_percent_row_8",
+      "passed": true,
+      "details": {
+        "extreme_percent": 86,
+        "symmetric_percent": 0
+      }
+    },
+    {
+      "name": "400_configurations",
+      "passed": true,
+      "details": "50 states × 2 partitions × 4 single features"
+    },
+    {
+      "name": "extreme_total",
+      "passed": true,
+      "details": {
+        "count": 104,
+        "denominator": 400,
+        "percent": 26
+      }
+    },
+    {
+      "name": "symmetric_total",
+      "passed": true,
+      "details": {
+        "count": 108,
+        "denominator": 400,
+        "percent": 27
+      }
+    },
+    {
+      "name": "outside_symmetric",
+      "passed": true,
+      "details": {
+        "count": 292,
+        "denominator": 400,
+        "percent": 73
+      }
+    },
+    {
+      "name": "global_extrema",
+      "passed": true,
+      "details": {
+        "min": 0.04,
+        "max": 3.48,
+        "median_0_80": "reported only; not recoverable from eight row medians"
+      }
+    },
+    {
+      "name": "lambda_grid_spacing",
+      "passed": true,
+      "details": "10001 equally spaced points including 0 and 1; finite grid, not a continuous frontier"
+    },
+    {
+      "name": "figure9_labels_CA_sex_MARC",
+      "passed": true,
+      "details": [
+        "R0(f0)=0.857",
+        "R1(f0)=0.788",
+        "MMR=0.171",
+        "MMRI=0.162"
+      ]
+    },
+    {
+      "name": "figure9_RI_CA_sex_MARC",
+      "passed": true,
+      "details": {
+        "MMR_group0_group1_MMRI_equal_percent": [
+          81,
+          64,
+          74
+        ]
+      }
+    },
+    {
+      "name": "figure8_ratio_CA_sex_MARC",
+      "passed": true,
+      "details": "CA / sex / MARC (ratio≈1.90)"
+    },
+    {
+      "name": "figure10_ratio_CA_sex_MARC",
+      "passed": true,
+      "details": "CA / sex (ratio≈1.22)"
+    },
+    {
+      "name": "figure9_labels_CA_race_binary_AGEP",
+      "passed": true,
+      "details": [
+        "R0(f0)=0.840",
+        "R1(f0)=0.809",
+        "MMR=0.183",
+        "MMRI=0.173"
+      ]
+    },
+    {
+      "name": "figure9_RI_CA_race_binary_AGEP",
+      "passed": true,
+      "details": {
+        "MMR_group0_group1_MMRI_equal_percent": [
+          85,
+          67,
+          78
+        ]
+      }
+    },
+    {
+      "name": "figure8_ratio_CA_race_binary_AGEP",
+      "passed": true,
+      "details": "CA / race / AGEP (ratio≈2.14)"
+    },
+    {
+      "name": "figure10_ratio_CA_race_binary_AGEP",
+      "passed": true,
+      "details": "CA / race (ratio≈1.14)"
+    },
+    {
+      "name": "figure9_labels_HI_sex_MARC",
+      "passed": true,
+      "details": [
+        "R0(f0)=0.727",
+        "R1(f0)=0.655",
+        "MMR=0.131",
+        "MMRI=0.119"
+      ]
+    },
+    {
+      "name": "figure9_RI_HI_sex_MARC",
+      "passed": true,
+      "details": {
+        "MMR_group0_group1_MMRI_equal_percent": [
+          66,
+          27,
+          53
+        ]
+      }
+    },
+    {
+      "name": "figure8_ratio_HI_sex_MARC",
+      "passed": true,
+      "details": "HI / sex / MARC (ratio≈2.17)"
+    },
+    {
+      "name": "figure10_ratio_HI_sex_MARC",
+      "passed": true,
+      "details": "HI / sex (ratio≈1.40)"
+    },
+    {
+      "name": "figure9_labels_HI_race_binary_AGEP",
+      "passed": true,
+      "details": [
+        "R0(f0)=0.806",
+        "R1(f0)=0.659",
+        "MMR=0.196",
+        "MMRI=0.183"
+      ]
+    },
+    {
+      "name": "figure9_RI_HI_race_binary_AGEP",
+      "passed": true,
+      "details": {
+        "MMR_group0_group1_MMRI_equal_percent": [
+          78,
+          24,
+          63
+        ]
+      }
+    },
+    {
+      "name": "figure8_ratio_HI_race_binary_AGEP",
+      "passed": true,
+      "details": "HI / race / AGEP (ratio≈3.48)"
+    },
+    {
+      "name": "figure10_ratio_HI_race_binary_AGEP",
+      "passed": true,
+      "details": "HI / race (ratio≈1.71)"
+    },
+    {
+      "name": "figure9_labels_ND_sex_SCHL",
+      "passed": true,
+      "details": [
+        "R0(f0)=0.795",
+        "R1(f0)=0.647",
+        "MMR=0.144",
+        "MMRI=0.132"
+      ]
+    },
+    {
+      "name": "figure9_RI_ND_sex_SCHL",
+      "passed": true,
+      "details": {
+        "MMR_group0_group1_MMRI_equal_percent": [
+          -28,
+          58,
+          31
+        ]
+      }
+    },
+    {
+      "name": "figure8_ratio_ND_sex_SCHL",
+      "passed": true,
+      "details": "ND / sex / SCHL (ratio≈0.33)"
+    },
+    {
+      "name": "figure10_ratio_ND_sex_SCHL",
+      "passed": true,
+      "details": "ND / sex (ratio≈0.53)"
+    },
+    {
+      "name": "figure9_labels_ND_race_binary_AGEP",
+      "passed": true,
+      "details": [
+        "R0(f0)=0.744",
+        "R1(f0)=0.696",
+        "MMR=0.144",
+        "MMRI=0.128"
+      ]
+    },
+    {
+      "name": "figure9_RI_ND_race_binary_AGEP",
+      "passed": true,
+      "details": {
+        "MMR_group0_group1_MMRI_equal_percent": [
+          -74,
+          82,
+          57
+        ]
+      }
+    },
+    {
+      "name": "figure8_ratio_ND_race_binary_AGEP",
+      "passed": true,
+      "details": "ND / race / AGEP (ratio≈0.10)"
+    },
+    {
+      "name": "figure10_ratio_ND_race_binary_AGEP",
+      "passed": true,
+      "details": "ND / race (ratio≈0.32)"
+    },
+    {
+      "name": "positive_affine_invariance",
+      "passed": true,
+      "details": {
+        "original": {
+          "fraction": "1/2",
+          "decimal": 0.5
+        },
+        "transformed": {
+          "fraction": "1/2",
+          "decimal": 0.5
+        }
+      }
+    },
+    {
+      "name": "small_gap_sensitivity",
+      "passed": true,
+      "details": "Same .001 numerator error gives .1 vs .01 RI error at gaps .01 vs .1, holding denominator exact"
+    },
+    {
+      "name": "E8_baseline_noharm",
+      "passed": true,
+      "details": {
+        "source": "PDF p27 Remark E.8; appendix.tex:907",
+        "domain": "theta in [-1,1]",
+        "risks": [
+          "(theta+1)^2",
+          "(theta-1)^2"
+        ],
+        "baseline_theta": 0,
+        "baseline_risks": [
+          1,
+          1
+        ],
+        "group_optima": [
+          0,
+          0
+        ],
+        "gaps": [
+          1,
+          1
+        ],
+        "exact_identity": "max(R1,R2)=(1+abs(theta))^2 >= 1",
+        "strict_improvement_intervals": [
+          "-2 < theta < 0",
+          "0 < theta < 2"
+        ],
+        "conclusion": "The intervals do not intersect. Feasible baseline gives no-harm (Theorem 4.1), not strict improvement for every group (Eq30)."
+      }
+    },
+    {
+      "name": "B3_centered_envelope_step_fails",
+      "passed": true,
+      "details": {
+        "source": "PDF p20, first empirical-deviation inequality; appendix.tex:583-587",
+        "probabilities": [
+          0.5,
+          0.5
+        ],
+        "losses": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "tau": 1,
+        "observed_outcome": 0,
+        "tail_functions": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "Z": [
+          2,
+          2
+        ],
+        "left_sup_centered_tail": {
+          "fraction": "1/2",
+          "decimal": 0.5
+        },
+        "right_abs_centered_Z": {
+          "fraction": "0",
+          "decimal": 0.0
+        },
+        "scope": "Refutes this displayed intermediate inequality. Does not refute the final concentration theorem by itself."
+      }
+    },
+    {
+      "name": "B3_tail_moment_boundary",
+      "passed": true,
+      "details": {
+        "source": "PDF p20 E[Z^2] display; appendix.tex:591-595",
+        "F_constant": 2,
+        "tau": 1,
+        "left_E_F2_indicator": 4,
+        "displayed_integral_1_to_2_2t_dt": 3,
+        "missing_tau2_probability": 1
+      }
+    },
+    {
+      "name": "B3_negative_gain_needs_absolute_value",
+      "passed": true,
+      "details": {
+        "source": "PDF p21 first inequality; appendix.tex:659",
+        "A": -1,
+        "Ahat": -1,
+        "Astar": 1,
+        "Ahatstar": 0.9,
+        "population_risks_baseline_f_optimum": [
+          1,
+          2,
+          0
+        ],
+        "empirical_risks_same_predictors": [
+          1,
+          2,
+          0.1
+        ],
+        "uniform_difference": 0.1,
+        "Delta": 1,
+        "Delta_over_4": 0.25,
+        "left": {
+          "fraction": "1/9",
+          "decimal": 0.1111111111111111
+        },
+        "printed_rhs": {
+          "fraction": "-1/9",
+          "decimal": -0.1111111111111111
+        },
+        "scope": "An algebra counterexample to the arbitrary-f intermediate bound, not a full statistical counterexample to Theorem 5.4."
+      }
+    },
+    {
+      "name": "Gaussian_threshold_pointwise_mismatch",
+      "passed": true,
+      "details": {
+        "source": "PDF p2 binary example, p23; draft.tex:229",
+        "condition": "For independent standard Gaussian epsilon and beta=1, the conditional probability at x is Phi(x).",
+        "Phi_1": 0.8413447460685428,
+        "sigmoid_1": 0.7310585786300049,
+        "scope": "Conditional probability mismatch; the constrained logistic optimum must be derived separately. This pointwise check alone is not a proof of its parameter value."
+      }
+    }
+  ],
+  "check_count": 61,
+  "printed_table_rows": [
+    [
+      "sex",
+      "AGEP",
+      ".58",
+      "1.32",
+      "2.02",
+      1,
+      2,
+      19,
+      38
+    ],
+    [
+      "sex",
+      "SCHL",
+      ".33",
+      ".88",
+      "1.31",
+      2,
+      4,
+      33,
+      66
+    ],
+    [
+      "sex",
+      "MARC",
+      ".71",
+      "1.62",
+      "2.18",
+      7,
+      14,
+      4,
+      8
+    ],
+    [
+      "sex",
+      "RELPC",
+      ".37",
+      "1.01",
+      "1.81",
+      3,
+      6,
+      26,
+      52
+    ],
+    [
+      "race",
+      "AGEP",
+      ".10",
+      ".61",
+      "3.48",
+      17,
+      34,
+      10,
+      20
+    ],
+    [
+      "race",
+      "SCHL",
+      ".15",
+      ".69",
+      "1.84",
+      6,
+      12,
+      12,
+      24
+    ],
+    [
+      "race",
+      "MARC",
+      ".18",
+      ".53",
+      "2.96",
+      25,
+      50,
+      4,
+      8
+    ],
+    [
+      "race",
+      "RELPC",
+      ".04",
+      ".30",
+      "2.85",
+      43,
+      86,
+      0,
+      0
+    ]
+  ],
+  "printed_figure_values": [
+    {
+      "member": "plots/fig1_analog_CA_sex_MARC_employed.pdf",
+      "sha256": "205ea742b756e4c9ece9b4fc4d838ac679413beb090ac408ce838ef2c65fdf73",
+      "printed_values": [
+        "CA",
+        "sex",
+        "MARC",
+        ".857",
+        ".788",
+        ".171",
+        ".162",
+        [
+          81,
+          64,
+          74
+        ],
+        "1.90",
+        "1.22"
+      ]
+    },
+    {
+      "member": "plots/fig1_analog_CA_race_binary_AGEP_employed.pdf",
+      "sha256": "e2549dcd22a463d9c33c5ee81f93974f2c4d2a73e43f527bf12fbfaccc7d162b",
+      "printed_values": [
+        "CA",
+        "race_binary",
+        "AGEP",
+        ".840",
+        ".809",
+        ".183",
+        ".173",
+        [
+          85,
+          67,
+          78
+        ],
+        "2.14",
+        "1.14"
+      ]
+    },
+    {
+      "member": "plots/fig1_analog_HI_sex_MARC_employed.pdf",
+      "sha256": "ccc4bc10b24cc9e164f43ad0c9e94711cb5ebbb5c3f167d8fb52545134b526d0",
+      "printed_values": [
+        "HI",
+        "sex",
+        "MARC",
+        ".727",
+        ".655",
+        ".131",
+        ".119",
+        [
+          66,
+          27,
+          53
+        ],
+        "2.17",
+        "1.40"
+      ]
+    },
+    {
+      "member": "plots/fig1_analog_HI_race_binary_AGEP_employed.pdf",
+      "sha256": "c660e4a1e7a2c3375dc69b6890844732b7c1d0d3747f8f7aec7ccbf0fa821d81",
+      "printed_values": [
+        "HI",
+        "race_binary",
+        "AGEP",
+        ".806",
+        ".659",
+        ".196",
+        ".183",
+        [
+          78,
+          24,
+          63
+        ],
+        "3.48",
+        "1.71"
+      ]
+    },
+    {
+      "member": "plots/fig1_analog_ND_sex_SCHL_employed.pdf",
+      "sha256": "35f11f37b4a8230c9945d897de2036a1acbe3bf7b3a77f00e5e900a9a7817d6f",
+      "printed_values": [
+        "ND",
+        "sex",
+        "SCHL",
+        ".795",
+        ".647",
+        ".144",
+        ".132",
+        [
+          -28,
+          58,
+          31
+        ],
+        ".33",
+        ".53"
+      ]
+    },
+    {
+      "member": "plots/fig1_analog_ND_race_binary_AGEP_employed.pdf",
+      "sha256": "e154ba63b3a566bf1c2df9e6c387dd16c0a2a2521c16af634e28a0b5d7517145",
+      "printed_values": [
+        "ND",
+        "race_binary",
+        "AGEP",
+        ".744",
+        ".696",
+        ".144",
+        ".128",
+        [
+          -74,
+          82,
+          57
+        ],
+        ".10",
+        ".32"
+      ]
+    }
+  ],
+  "printed_scalar_count": 110,
+  "printed_scalar_count_definition": "Table2 seven scalar fields per row; Figure9 seven per case plus Figure8/10 gap ratios. Excludes repeated axis ticks and values repeated in prose.",
+  "exact_examples": {
+    "baseline_feasible_not_strict_improvement": {
+      "source": "PDF p27 Remark E.8; appendix.tex:907",
+      "domain": "theta in [-1,1]",
+      "risks": [
+        "(theta+1)^2",
+        "(theta-1)^2"
+      ],
+      "baseline_theta": 0,
+      "baseline_risks": [
+        1,
+        1
+      ],
+      "group_optima": [
+        0,
+        0
+      ],
+      "gaps": [
+        1,
+        1
+      ],
+      "exact_identity": "max(R1,R2)=(1+abs(theta))^2 >= 1",
+      "strict_improvement_intervals": [
+        "-2 < theta < 0",
+        "0 < theta < 2"
+      ],
+      "conclusion": "The intervals do not intersect. Feasible baseline gives no-harm (Theorem 4.1), not strict improvement for every group (Eq30)."
+    },
+    "centered_envelope_step": {
+      "source": "PDF p20, first empirical-deviation inequality; appendix.tex:583-587",
+      "probabilities": [
+        0.5,
+        0.5
+      ],
+      "losses": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "tau": 1,
+      "observed_outcome": 0,
+      "tail_functions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "Z": [
+        2,
+        2
+      ],
+      "left_sup_centered_tail": {
+        "fraction": "1/2",
+        "decimal": 0.5
+      },
+      "right_abs_centered_Z": {
+        "fraction": "0",
+        "decimal": 0.0
+      },
+      "scope": "Refutes this displayed intermediate inequality. Does not refute the final concentration theorem by itself."
+    },
+    "tail_moment_missing_boundary": {
+      "source": "PDF p20 E[Z^2] display; appendix.tex:591-595",
+      "F_constant": 2,
+      "tau": 1,
+      "left_E_F2_indicator": 4,
+      "displayed_integral_1_to_2_2t_dt": 3,
+      "missing_tau2_probability": 1
+    },
+    "negative_gain_triangle_step": {
+      "source": "PDF p21 first inequality; appendix.tex:659",
+      "A": -1,
+      "Ahat": -1,
+      "Astar": 1,
+      "Ahatstar": 0.9,
+      "population_risks_baseline_f_optimum": [
+        1,
+        2,
+        0
+      ],
+      "empirical_risks_same_predictors": [
+        1,
+        2,
+        0.1
+      ],
+      "uniform_difference": 0.1,
+      "Delta": 1,
+      "Delta_over_4": 0.25,
+      "left": {
+        "fraction": "1/9",
+        "decimal": 0.1111111111111111
+      },
+      "printed_rhs": {
+        "fraction": "-1/9",
+        "decimal": -0.1111111111111111
+      },
+      "scope": "An algebra counterexample to the arbitrary-f intermediate bound, not a full statistical counterexample to Theorem 5.4."
+    },
+    "Gaussian_threshold_vs_sigmoid": {
+      "source": "PDF p2 binary example, p23; draft.tex:229",
+      "condition": "For independent standard Gaussian epsilon and beta=1, the conditional probability at x is Phi(x).",
+      "Phi_1": 0.8413447460685428,
+      "sigmoid_1": 0.7310585786300049,
+      "scope": "Conditional probability mismatch; the constrained logistic optimum must be derived separately. This pointwise check alone is not a proof of its parameter value."
+    }
+  },
+  "limits": [
+    "Printed values are not independently rerun ACS results.",
+    "Whole-sample median .80, full distributions, sample counts, split, runtime, and nonlinear implementation remain unverified.",
+    "This is a same-agent arithmetic audit, not independent peer review or a theorem formalization."
+  ],
+  "research_code_executed": false,
+  "model_runs": 0,
+  "random_draws": 0,
+  "semantic_second_pass_pending": false,
+  "semantic_second_pass_at_utc": "2026-10-10T08:58:20.027215+00:00"
+}

@@ -1,0 +1,330 @@
+{
+  "batch_id": "history-064",
+  "claims": [
+    {
+      "claim_id": "H064-C01",
+      "claim": "arXiv v2와 원PDF는 바이트동일하며 PMLR출판32쪽 텍스트는표지stamp외같다.",
+      "source_location": "SRC-0062712:1–32; official requests/PMLR comparison",
+      "verification_method": "해시·페이지별 정규화와 출판본1쪽시각",
+      "limit": "PMLR전체32쪽별도시각독해아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C02",
+      "claim": "32쪽 본문/부록·10그림2표30서지항목을읽고 파생TXT32본문 대응·HTML가시내용/메타·PNG8쪽을확인했다.",
+      "source_location": "SRC-0062712:1–32;SRC-0062713:32본문;SRC-0062714:가시/메타/주석/inline scripts;SRC-0062728:전체",
+      "verification_method": "실제독해범위와형식감사 대조",
+      "limit": "TXT raw3009행/HTML raw633태그모든행 별도전수독해로세지않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C03",
+      "claim": "원66·68은2026-09-26의보호목적검토이며 당시MRI선택독해와이번확장을구분한다.",
+      "source_location": "SRC-0022017:1–34;SRC-0022019:1–32,73–91",
+      "verification_method": "과거계획/판단/실행범위재대조",
+      "limit": "과거예산과지시를재실행승인으로쓰지않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C04",
+      "claim": "MRI는기준위험의감소를동일F의집단별가능감소로정규화해최소비율을최대화한다.",
+      "source_location": "SRC-0062712:1–2 Eq1–3;12 A.8",
+      "verification_method": "정의·분모양수·단위확인",
+      "limit": "계절MAE로단순나누는것과다름",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C05",
+      "claim": "집단별최적위험은F제약최적값이며teacher/유한RCTL위험/Bayesrisk와자동동일하지않다.",
+      "source_location": "SRC-0062712:2 §2; SRC-0022019:28–32",
+      "verification_method": "함수공간과기준역할대조",
+      "limit": "집단이주어지는문제이며clustering자체아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C06",
+      "claim": "baseline은사전에정한해석가능한출발점이며바꾸면다른bargaining문제가된다.",
+      "source_location": "SRC-0062712:22 AppendixC",
+      "verification_method": "평균/중심화0/lesscovariate운영모델/pooledERM논의",
+      "limit": "baseline선택을최적risk와혼동하지않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C07",
+      "claim": "이진분류baseline의식은상수확률π0이다.",
+      "source_location": "SRC-0062712:2,22;draft.tex229;appendix.tex727",
+      "verification_method": "명칭과수식대조",
+      "limit": "majorityclass명칭만보고hardlabel로바꾸지않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C08",
+      "claim": "f0∈F이면정확한population maximin해는모든집단에서baseline보다위험이높지않다.",
+      "source_location": "SRC-0062712:6 Thm4.1;17 proof",
+      "verification_method": "feasible0개선후최솟값최적화논증",
+      "limit": "finite sample/불완전최적화/미래기간의실제보장아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C09",
+      "claim": "m2 KS개별단조성은같은baseline과다른집단최적risk고정을요구한다.",
+      "source_location": "SRC-0062712:6 Prop4.2;13–14 B.1",
+      "verification_method": "공리의양화·조건재대조",
+      "limit": "임의F확장이모든집단을항상개선한다는주장아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C10",
+      "claim": "상대개선은각집단위험의양의affine변환에불변이다.",
+      "source_location": "SRC-0062712:6 Prop4.2(3);12 A.8;numeric affine example",
+      "verification_method": "정의대입·결정적유리수",
+      "limit": "sqrt같은비선형변환불변성은아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C11",
+      "claim": "다집단leximin은최소비율이후두번째이후순서도차례로최대화하며수정공리를쓴다.",
+      "source_location": "SRC-0062712:6–7 Eq16/Prop4.4;26 Eq28",
+      "verification_method": "정의와closure/IIIA/IMprime조건",
+      "limit": "단순maximin과항상동일하지않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C12",
+      "claim": "엄격볼록집단위험과식별·공간조건에서unique maximin과leximin이일치한다.",
+      "source_location": "SRC-0062712:14–17 B.3/Thm3.4;23 D",
+      "verification_method": "증명의riskstrictness/positiveprobability구분",
+      "limit": "nonconvex/과매개변수/이산grouping에자동적용않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C13",
+      "claim": "위험집합은항상볼록한것이아니며convexhull외부Pareto점이없다는결론을쓴다.",
+      "source_location": "SRC-0062712:5–6 Thm3.4;16–17 proof;28 F.3",
+      "verification_method": "정확정리와축약설명구분",
+      "limit": "compact/convexF·envelope·loss가정필요",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C14",
+      "claim": "RKHS경우에도유한EY²/EkXX등정규성조건과적절한위상에서compact성이필요하다.",
+      "source_location": "SRC-0062712:5 Ass3.3;15–16 B.4;23–24 D",
+      "verification_method": "boundedRKHSball/evaluation/모멘트조건",
+      "limit": "모든커널/모든함수집합에무조건보장아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C15",
+      "claim": "Table1은공리/해의정의비교이고MRI보편성능우월주장이아니다.",
+      "source_location": "SRC-0062712:7 Remark4.5;8 Table1;24–26 E",
+      "verification_method": "EQUAL/maximin/leximin과수정기호",
+      "limit": "평균/최악cell실증순위로바꾸지않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C16",
+      "claim": "Eq17은경험집단최적모델의위험으로분모를추정한다.",
+      "source_location": "SRC-0062712:7–8 Eq17–18;draft.tex647–664",
+      "verification_method": "population/empirical최적모델구분",
+      "limit": "같은기호가쓰인증명중간표기는별도검토",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C17",
+      "claim": "Ass5.1은F전체균등위험집중이며Lemma5.2는Lipschitz/entropy p<2/bounded또는subGaussianenvelope를둔다.",
+      "source_location": "SRC-0062712:8 Ass5.1/Lemma5.2;18–20 proof",
+      "verification_method": "가정과증명조건대조",
+      "limit": "시계열독립성·선택된cluster에성립확인아님;증명일부문제남음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C18",
+      "claim": "Theorem5.4오차는C/Δ maxr(log(2m/δ))이며maxerror<Δ/4조건을둔다.",
+      "source_location": "SRC-0062712:8 Eq19;20–22 proof;draft.tex717–733",
+      "verification_method": "양의gap/분모/확률범위",
+      "limit": "최종정리독립증명완료로표시않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C19",
+      "claim": "작은gap은같은분자오차의비율영향을키우며epsilonclipping은원래목적과다르다.",
+      "source_location": "SRC-0022019:30;SRC-0062712:8 Eq19;numeric small_gap_sensitivity",
+      "verification_method": "정의에대한작은유리수산술",
+      "limit": "예시는분모정확고정;전체통계오차계산아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C20",
+      "claim": "ACS2018PINCPlog·전일제연중필터/sex와race·4특징50주로400단일특징조건이다.",
+      "source_location": "SRC-0062712:8–9 §6;28 G;appendix.tex971–976",
+      "verification_method": "관측단위·필터·구분·특징",
+      "limit": "400cell동시학습/통신데이터아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C21",
+      "claim": "절편OLS·집단평균MSE가중·10001λ·pooledmeanbaseline·별도grouporacle을쓴다.",
+      "source_location": "SRC-0062712:28 Eq31/G;appendix.tex978–995",
+      "verification_method": "입력/적합/선택절차와grid간격",
+      "limit": "유한grid를연속frontier의전수열거라하지않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C22",
+      "claim": "적합식31은MSE이며그림위험축/F.1은RMSE라고명시한다.",
+      "source_location": "SRC-0062712:9 Fig5;27 F.1;28 Eq31;30–32 captions",
+      "verification_method": "수식·축·캡션대조",
+      "limit": "상대개선까지MSE/RMSE동일하다고가정않음;실제선택구현미확인",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C23",
+      "claim": "G에는ERMwarmstart와groupweight EG를쓰는비선형절차및일관성주장이있다.",
+      "source_location": "SRC-0062712:28 G;appendix.tex997–998",
+      "verification_method": "실제본문설명/수식재대조",
+      "limit": "구체모델/설정/코드/실행비용검증아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C24",
+      "claim": "분할·집단표본수·전처리세부·seed·비선형설정/시간/메모리는확보자료로재구성되지않는다.",
+      "source_location": "SRC-0062712:28–32 G;35sourcefile inventory",
+      "verification_method": "보고된설정과누락항목구분",
+      "limit": "원래저자에게기록이없다는존재부정아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C25",
+      "claim": "Table2의8행min/median/max와extreme/symmetric수치를인쇄와TeX로대조했다.",
+      "source_location": "SRC-0062712:29 Table2;appendix.tex1018–1026;numeric audit",
+      "verification_method": "56인쇄scalar·행별백분율",
+      "limit": "원자료재집계아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C26",
+      "claim": "extreme104/400=26%,symmetric108/400=27%,outside292/400=73%다.",
+      "source_location": "SRC-0062712:9,29;numeric aggregate checks",
+      "verification_method": "인쇄건수의정확산술",
+      "limit": "MRI승률이나cell보호율아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C27",
+      "claim": "전체r중앙값.80은저자보고값이며8개행중앙값으로재계산할수없다.",
+      "source_location": "SRC-0062712:9,29",
+      "verification_method": "전체중앙값/부분중앙값구분",
+      "limit": "원400값미확인",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C28",
+      "claim": "CA/HI/ND여섯단일특징사례는비대칭이두드러진것으로선택되었다.",
+      "source_location": "SRC-0062712:29 Results;30–31 Fig8–9;appendix.tex1031–1052",
+      "verification_method": "사례선택기준과모집단범위",
+      "limit": "모든주/특징성능대표표아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C29",
+      "claim": "그림9여섯사례의baseline/기울기/MMR2개RI/MMRI동일RI와그림8ratio를대조했다.",
+      "source_location": "SRC-0062712:30–31;source six fig1_analog PDFs;numeric audit",
+      "verification_method": "그림전체·240dpi확대/embeddedtext대조",
+      "limit": "반올림값이며원배열계산/유의성검정아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C30",
+      "claim": "−74%는개선가능폭대비손해비율이고baseline위험대비74%증가가아니다.",
+      "source_location": "SRC-0062712:1–2 Eq1/Fig1;27 F.1;31 Fig9f",
+      "verification_method": "정의와인쇄위험/분모의단위",
+      "limit": "전체모델capacity분배를직접측정한결과로쓰지않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C31",
+      "claim": "네특징모델의6gap ratios는1.22/1.14/1.40/1.71/.53/.32이며400단일특징조건과별도다.",
+      "source_location": "SRC-0062712:29,32 Fig10;appendix.tex1152–1193",
+      "verification_method": "6캡션수치·특징조건대조",
+      "limit": "평균/집단별성능일반화아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C32",
+      "claim": "Gaussianthreshold와sigmoid β의최적모델표기는추가모형유도가필요하다.",
+      "source_location": "SRC-0062712:2,23;draft.tex229;numeric Gaussian_threshold_vs_sigmoid",
+      "verification_method": "독립Gaussian허용예에서조건부확률의차이",
+      "limit": "점별확률차이만으로제약logistic최적계수값을증명한것아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C33",
+      "claim": "LR생성계수βg를F최적모델로쓰려면Θ에서달성가능해야한다.",
+      "source_location": "SRC-0062712:2,22–23,28;draft.tex224",
+      "verification_method": "정의상제약공간최적값범위",
+      "limit": "그림4의지정β는unitball내에있음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C34",
+      "claim": "f0∈F는strictallgroupimprovement존재까지보장하지않는다.",
+      "source_location": "SRC-0062712:26–27 E.8;appendix.tex907;numeric baseline example",
+      "verification_method": "θ±1제곱위험과max=(1+absθ)^2항등식",
+      "limit": "Thm4.1noharm와양립;최종정리전체반례아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C35",
+      "claim": "p20점별envelope에서centered편차상계로넘어가는중간부등식은일반적으로성립않는다.",
+      "source_location": "SRC-0062712:20;appendix.tex583–587;numeric centered_envelope_step",
+      "verification_method": "동일확률2점/2loss에서좌.5대우0",
+      "limit": "최종Lemma/정리의모든가능한증명반박아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C36",
+      "claim": "p20꼬리제곱모멘트적분등식에는경계항이빠져있다.",
+      "source_location": "SRC-0062712:20;appendix.tex591–595;numeric tail_moment_missing_boundary",
+      "verification_method": "F=2상수/τ1에서4대3의산술",
+      "limit": "이표시식의문제범위",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C37",
+      "claim": "p21rhohat분모기호와음수gain삼각식에구분/절댓값이필요하다.",
+      "source_location": "SRC-0062712:7 Eq17;21;appendix.tex650–705;numeric negative_gain_triangle_step",
+      "verification_method": "fstar/empiricalfstar·Anegative시1/9대−1/9",
+      "limit": "통계적Thm5.4전체반례가아닌중간대수식검사",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C38",
+      "claim": "p19 tprime대입과후속sqrt(t/n)항및일부convexity축약표현을그대로보장으로옮기지않는다.",
+      "source_location": "SRC-0062712:19,9,28;appendix.tex561–567;draft.tex766",
+      "verification_method": "source표기대조",
+      "limit": "표기차이/정리적용범위로보존;임의원문교정없음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C39",
+      "claim": "source35파일지정독해범위에서실행구현/원배열없음;OpenReview는challenge/403으로내용미확인이다.",
+      "source_location": "source-members-hashes;draft/appendix selected ranges;official acquisition receipts",
+      "verification_method": "파일목록/해시·지정source독해·응답대조",
+      "limit": "세상어디에도공식코드없다는주장아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H064-C40",
+      "claim": "검토와작은결정적산술만수행했으며새모델실험/기존연구재개/전체Goal완료가아니다.",
+      "source_location": "H064 manifests/check reports;SRC-0022017/19",
+      "verification_method": "실제수행·누적가산·남은범위검수",
+      "limit": "과거연구방법채택과아카이브작업을구분",
+      "semantic_second_pass_complete": true
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "created_at_utc": "2026-10-10T08:51:35.298209+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 초안 작성 후 별도 원문 재대조. 스크립트 실행만으로 의미 검수를 완료 처리하지 않음.",
+  "reviewed_at_utc": "2026-10-10T08:58:20.027215+00:00",
+  "independent_reviewer": false
+}

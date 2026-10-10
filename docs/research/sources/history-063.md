@@ -33,3 +33,5 @@
 [Weijing Tang 연구 페이지](https://sites.google.com/andrew.cmu.edu/weijingtang/research)의 MMR 항목은 arXiv 링크만 담았고, [Weibin Mo 연구 페이지](https://sites.google.com/view/weibin-mo/research)의 확인한 목록에는 MMR 항목이 없었다. 두 페이지는 보이는 목록/해당 항목과 링크만 읽었으며 rawHTML 전체를 읽었다고 하지 않는다. 다른 저자 페이지나 외부 동적 code finder를 전수 확인한 것은 아니다. 검색의 구판 초록을 v2 본문으로 치환하지 않았으며 공식 실행 코드가 전혀 없다고 단정하지 않는다.
 
 실제 실행판·config·seed·원예측/반복 배열·전체비용, 보충자료 증명, MRI/qFFL과 나머지 기록 검수는 남아 있다.
+
+후속 [H064 출처·판본](history-064.md)에서 MRI32쪽과 지정 표현·공식 자료를 확인했습니다. 위 H063 당시의 남은 범위 중 MRI 본문 검토만 갱신하며 실행 근거·q-FFL·전체 종합의 공백은 유지합니다.
