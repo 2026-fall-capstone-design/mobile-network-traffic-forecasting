@@ -122,3 +122,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [가정과 표기 검토](records/0086-toso-gradient-heterogeneity.md)의 학습률η·matrix norm·복원 오차 바닥·population/empirical hat·residual vector 구분을 확인해야 한다. 고정 시계열 재사용·cell별 다른 입력분포·RCTL의Jacobian/PL·TabICL 추정오차를 아직 검증하지 않았다. 이 조건 없이 일반적인 RCTL 수렴 또는 성능 이득을 주장하지 않는다.
 
 [H087](verification/history-087.md)은 앞서 H083–H086에서 남긴 원79 검색1개를 보완해 소장21그룹을 연결한다. FedCAP·CoLEDS·CLoVE 등의 전문, 전체 후보의 판본·실험조건, 미소장 코드/환경/원시결과와 실제 RCTL 이득은 별도 미확인이다. 원80 이후·이전 부분 기록·실패비용 통합·장기 팀 접근을 계속 검수한다.
+
+## 원80 이후 남은 범위
+
+[원80 진단](records/0088-conditional-graph-diagnostic.md)의 고정gradient와 실제 FedAvg 수렴·통신·최종 성능을 잇는 증거는 없다. 원80 문헌 검색JSON·파생pyc, 원81이후와이전부분기록, 전체 실패비용 통합·장기 원자료 접근·최종 원본 변경/검색 검수는 계속 진행한다. 현재 개발 구간의 weight/K 변경을 새 독립 검증으로 취급하지 않는다.

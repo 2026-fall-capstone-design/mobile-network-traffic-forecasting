@@ -1,0 +1,47 @@
+{
+  "source_hashes": {
+    "plan": "f9b441d2ce8dd9aaf4e74fa67257814ed74635d18711fcfc28a4bfb4acc7a8ba",
+    "code": "e9534fed0f0d3867cc2530bcb9ae1fd7aa8f8a1c7079c1abc048c8d00a595d32",
+    "data": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+    "Tab_saved": "40837fdeef5632f688d91b526c499af0384a4226058fa94d56845fa1f0e5da5c",
+    "old_partitions": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+    "RCTL_code": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+    "RCTL_checkpoint": "822808952e35b22921569f915db4b693f0929362e564ff4deae7cafbd6bc8476",
+    "ledger": "dfbd7c38fb3a9dae7163decaede7641ae0cd376b1c37aabf5df9adea0213f6d1"
+  },
+  "new_Tab_contexts": 0,
+  "new_Tab_queries": 0,
+  "new_RCTL_fits": 0,
+  "optimizer_steps": 0,
+  "simple_fits_cap": 32,
+  "gradient_batches_cap": 224,
+  "gradient_rows_cap": 5376,
+  "seed": 20260925,
+  "loss": "MSE",
+  "RCTL_mode": "eval/frozen BN/dropout disabled",
+  "time_splits": {
+    "context": [
+      168,
+      671
+    ],
+    "partition": [
+      672,
+      839
+    ],
+    "posthoc_development": [
+      840,
+      1007
+    ]
+  },
+  "K": 4,
+  "cluster_size": 4,
+  "distance": "empirical uniform W2 squared on 16-d scaled input and mean-normalized target",
+  "Tab_mean": "average of saved 129 midpoint quantiles, not exact API mean",
+  "limits": {
+    "cheap_seconds": 60,
+    "gradient_seconds": 180,
+    "total_seconds": 240,
+    "ram_bytes": 8589934592
+  },
+  "independent_test": false
+}

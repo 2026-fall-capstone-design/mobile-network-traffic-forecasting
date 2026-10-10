@@ -439,3 +439,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 [H086 회귀 이론](records/0086-toso-gradient-heterogeneity.md)의 Γ는 참 함수의 공통 입력 분포상 차이이며, 새 iid 표본·Jacobian·PL 조건이 붙는다. TabICL 추정값의 유사성만으로 유한 batch 학습 경로나 최종 test 성능을 보장하지 않는다. 입력 support·추정 오차·고정 최종 함수·시간 분할·기대 gradient와 SGD 변동의 차이를 먼저 명시한다.
 
 [원79 검색 후보와 판단](records/0087-distributed-search-provenance.md)을 확인해 FedCAP 약칭의 다른 논문, OCFL의 다른 arXiv ID, OTDD의 class 조건부 분포와 회귀 조건부 평균을 구분한다. 후보를 다시 제안하려면 미확인 전문·정보 조건·최종 모델 독립성과 총비용의 차이를 먼저 명시한다.
+
+## 조건부 평균을 운송 거리에 더하면 clustering이 달라지는가
+
+[원80](records/0088-conditional-graph-diagnostic.md)을 먼저 확인한다. 당시 output weight1·K4·기존16cell/개발 구간에서는5transport 소속 ARI1, PCC 대비 전체7일 gradient 비율은 두 모델 상태 모두 불리했다. 입력 clustering의 실제 손해와 새 자료·조건의 차이를 제시한 뒤 재검토하며 직접 예측 MSE 이득을 clustering 효용으로 대신하지 않는다.
