@@ -231,3 +231,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 ## H088: 원80 진단과 실행 기록
 
 [출처](../sources/history-088.md) · [목록](history-088-sources.jsonl) · [검수](../verification/history-088.md).16그룹55경로, 신규본문5·전체JSON8·선택NPZ2이며 budget_before는 H070과 같아 추가 가산0이다. 검색JSON과pyc는 다음 범위로 남긴다.
+
+[H089 출처](history-089-sources.jsonl)는 새 검색·캐시2그룹과 H088 재참조4개를 연결한다. 검색은 전체JSON1개, 캐시는 검토된 소스의 파생 관계이며 새 독립 본문 가산0이다.
