@@ -10,7 +10,7 @@
 | SRC-0022015 | [64_conditional_transform_review_plan.md](../evidence/0063-0065-ecai-interface/originals/SRC-0022015.md.txt) | 본문·표·실행 경계·후속 질문 전체 독해 |
 | SRC-0022016 | [65_residual_and_transform_findings.md](../evidence/0063-0065-ecai-interface/originals/SRC-0022016.md.txt) | 본문·표·실행 경계·후속 질문 전체 독해 |
 | SRC-0063848 | [implementation_manifest.json](../evidence/0063-0065-ecai-interface/originals/SRC-0063848.json) | implementation_manifest JSON 전체6항목. ECAI2개 byte/commit과 대조; Heatload4개는 수집 메타데이터만 읽음. |
-| SRC-0063840 | [code_discovery_manifest.json](../evidence/0063-0065-ecai-interface/originals/SRC-0063840.json) | code_discovery_manifest JSON 전체5항목. arXiv PDF406/html200 및 repo commit/tree 수집 경로 기록. 참조 대상 전체 독해 아님. |
+| SRC-0063840 | [code_discovery_manifest.json](../evidence/0063-0065-ecai-interface/originals/SRC-0063840.json) | code_discovery_manifest JSON 전체6항목. arXiv PDF406/html200 및 repo commit/tree 수집 경로 기록. 참조 대상 전체 독해 아님. |
 | SRC-0022641 | [collect_residual_code_63.py](../evidence/0063-0065-ecai-interface/originals/SRC-0022641.py.txt) | collect_residual_code_63.py 전체46줄 정적독해. repo.default_branch commit→recursive tree 수집, 406 실패도 manifest에 보존. 실행하지 않음. |
 | SRC-0022642 | [collect_residual_implementation_63.py](../evidence/0063-0065-ecai-interface/originals/SRC-0022642.py.txt) | collect_residual_implementation_63.py 전체37줄 정적독해. 고정commit의 selected raw code 수집 및 HTML plain text. 미선택tree내용을 읽었다고 세지 않음. 실행하지 않음. |
 | SRC-0022643 | [collect_residual_sources_63.py](../evidence/0063-0065-ecai-interface/originals/SRC-0022643.py.txt) | collect_residual_sources_63.py 전체47줄 정적독해.6공개대상,용량상한·PDFsignature·본문추출/metadata저장; 실행하지 않음. |
