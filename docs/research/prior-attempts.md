@@ -409,3 +409,5 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 77의 동적 소속 근거
 
 [동적 소속 DLM·EDP·soft membership](records/0077-dynamic-membership-dlm.md)을 먼저 확인한다. 별칭이나 시간별 배정만 바꾼 설계보다 origin에서 가능한 규칙, 상태별 공유 이득, 같은 정보의 global·달력 대안, RCTL bank/재학습의 연결을 제시해야 한다. 저장 구현에는 η 사용·역방향 mean·다변량 index 등 재사용 전 확인 항목이 있다.
+
+[그래프 갱신·참여 셀 군집의 비교](records/0078-dynamic-graphs-load-balancing.md)를 함께 찾는다. DynaSTar의 momentum 제거 비교와 Liu의 최대 12% 복합 보상은 고정 UPC 대비 동적 소속의 독립 이득이 아니다. 새 설계에서는 입력 이웃, 참여 여부, 함께 학습할 자료 중 무엇을 바꾸는지 먼저 명시한다.

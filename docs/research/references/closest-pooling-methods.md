@@ -54,4 +54,4 @@
 
 ## 77의 동적 소속 근거
 
-[77 DLM의 직접 대조](../records/0077-dynamic-membership-dlm.md)에서 시간별 확률·EDP·전체구간 smoothing을 확인했다. 이는 시간적 안정화의 선행 사례이며 RCTL 학습 자료 partition의 우위까지 입증하지 않는다. 같은 고정코드의 정적 차이는 별도 조건으로 보존하고 원77의 나머지 두 논문은 후속 검수 대상으로 남긴다.
+[77 DLM의 직접 대조](../records/0077-dynamic-membership-dlm.md)에서 시간별 확률·EDP·전체구간 smoothing을 확인했다. 이는 시간적 안정화의 선행 사례이며 RCTL 학습 자료 partition의 우위까지 입증하지 않는다. 같은 고정코드의 정적 차이는 별도 조건으로 보존한다. [H078의 두 논문 대조](../records/0078-dynamic-graphs-load-balancing.md)에서 DynaSTar의 예측기 내부 관계와 Liu의 예측 후 참여 셀 군집을 보완했다. 도로 MAE, 통신 예측 오차, RL 복합 보상과 UPC 공유 이득을 서로 대체하지 않는다.
