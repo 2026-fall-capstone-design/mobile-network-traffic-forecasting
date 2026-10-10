@@ -1,0 +1,887 @@
+{
+  "batch_id": "history-078",
+  "status": "source_checked",
+  "record_path": "../records/0078-dynamic-graphs-load-balancing.md",
+  "record_sha256": "546ef6176823bf16f4c5b19b297230da7d3dbd4992c4cd6099607bee69e55397",
+  "claims": [
+    {
+      "claim_id": "H078-C01",
+      "claim": "DynaSTar PDF 9쪽과 Liu PDF 16쪽을 본문·수식·표·그림·참고문헌까지 읽었다. 저장 TXT 3개는 이미 읽은 세 PDF의 총 52쪽 추출문과 쪽별로 대응 검사했고, 원 PNG 6개를 직접 열었다. dynmix의 PyPI/repository JSON과 검색 응답 JSON도 전필드를 읽었다. 이는 원77 외부 21개 자료 그룹 중 H077에서 남긴 14개에 대한 내용 검토다. 검색 응답에 등장하는 모든 논문의 전문, 실제 실행 환경, 결과 재현까지 완료했다는 뜻은 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "PDF1–9쪽 전체"
+        },
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "PDF1–16쪽 전체"
+        },
+        {
+          "source_id": "SRC-0062031",
+          "source_sha256": "d5380b9b3d2e8d381aa4d3f651f7319f99f51babc536afe11ab1fe5afca99dd8",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062032",
+          "source_sha256": "5ce5de9ac0bde50edf6da60a03178264325c06eb7ed05a398e1928cd31b1e0c8",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062037",
+          "source_sha256": "ecbe3474b56a9edbd89ef74d19fd32515e25bb206f0e94410f0dbfa44ef04f99",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062026",
+          "source_sha256": "039b24749d518250f1b3b0525e16603c7e84ebf42bbf006a9f1e4dc4348de041",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062028",
+          "source_sha256": "2e457ab98581406f2edf305b7980f9f94de942b23bc324b8a92f37519f051915",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062030",
+          "source_sha256": "6421a0988cb4986e8eb8d46815389e0e66b246787e78bd1b4002996c99e3bd14",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062046",
+          "source_sha256": "c7e162f4a2dd0bb38305b273cfe1dd7cc90df58ee609814032a8d57b1c730f54",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062047",
+          "source_sha256": "663181f752f2edf721e2c54394577760013e99b83dcb04f347187b64bcb0713d",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062048",
+          "source_sha256": "cb7a5d60df224ed54c12a840a4fb1e2b26f31ff8d993af7de027a3191ae7c0d0",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062049",
+          "source_sha256": "d03018a2af8eb10ce2ded696d1dfe186cf7a9baf417bc0ad5140a754794b4dd0",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062050",
+          "source_sha256": "4ac916e677620faa54dd573110e161f18feb4c78a86abce071d60b1ad241bb29",
+          "locator": "전체 내용/쪽별 대응 범위"
+        },
+        {
+          "source_id": "SRC-0062051",
+          "source_sha256": "98164ef27799a50f0a4e67be616cbf200e2a712cb337df0b9f1e44e6fe4bc9f8",
+          "locator": "전체 내용/쪽별 대응 범위"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        0
+      ]
+    },
+    {
+      "claim_id": "H078-C02",
+      "claim": "검토한 판본은 Hao 등의 *Tracking Topological Shifts: How Can Dynamic Graph Invariant Learning Enable Reliable Out-of-Time Spatio-Temporal Prediction?*, IJCAI 2026, 2662–2670쪽이다. 논문의 ‘최초’라는 표현은 저자의 신규성 주장으로 취급한다. 이번 검토만으로 관련 분야 전체의 최초성을 판정하지 않는다. [공식 논문 페이지](https://www.ijcai.org/proceedings/2026/296)",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "1–2쪽 저자/제목/도입부; 인쇄2662–2670"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H078-C03",
+      "claim": "Eq.1–4의 입력은 최근 시계열과 원래 인접 그래프다. 시공간 attention 인코더의 표현을 memory bank와 결합한 뒤 **모든 노드 쌍**의 점수를 계산한다. 여기서 얻는 관계는 고정 UPC별 RCTL 학습 자료 분할과 동일하지 않다. 이후 희소 그래프에서 집계한다고 해서 앞선 모든 쌍의 점수 계산이 사라지는 것도 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "3쪽 Eq1–4"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H078-C04",
+      "claim": "Eq.5는 과거 prototype과 현재 그래프를 momentum 계수로 섞는다. 논문은 순차적인 데이터 partition에서 batch마다 prototype을 갱신하고 마지막 partition 뒤에만 초기화한다고 설명한다. 추론 시에는 **각 예측 뒤** prototype을 갱신한다. 이것을 매 예측마다 신경망 전체를 재학습하는 절차로 읽으면 안 된다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "3쪽 Eq5 앞뒤 training/inference 설명"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H078-C05",
+      "claim": "학습 중에는 sigmoid 확률과 straight-through Gumbel-Softmax로 그래프를 표본화하고 예측 손실의 gradient를 전달한다(Eq.6–9). 추론 중에는 확률이 0.5보다 큰 연결을 선택한다(Eq.10). 학습의 확률 표본화와 추론의 결정적 threshold를 구분해야 같은 방법을 비교할 수 있다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "3쪽 Eq6–10"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H078-C06",
+      "claim": "노드별로 들어오는 이웃과 나가는 이웃 환경을 구성하고, 동적 표현과 시간대 embedding에서 만든 조건으로 FiLM 변조를 적용한다(Eq.11–15). 공유 예측기와 노드별 조건을 결합하는 구조이며, 여러 UPC별 RCTL을 미리 훈련해 선택하는 모델 묶음으로 설명할 근거는 없다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "4–5쪽 Eq11–15/Fig2"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H078-C07",
+      "claim": "전체 학습 목표는 예측 오차, 같은 노드의 다른 시간 표현을 가깝게 하는 대비 손실, 노드의 표본 이웃 환경별 위험 분산을 결합한다(Eq.16–20). 그래프 추정과 예측은 함께 학습된다. 따라서 그래프만 떼어 우리 RCTL의 소속으로 사용해도 같은 이득이 난다는 결론은 별도 검증이 필요하다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "5쪽 Eq16–20"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H078-C08",
+      "claim": "PDF 5쪽 Eq.16을 확대해 확인하면 개별 대비 손실의 음수 기호가 `log` 안 분자 앞에 인쇄되어 있다. 이를 그대로 실수 로그의 식으로 옮길 수 없으므로 **인쇄식 확인 필요**로 남긴다. 공식 실행 코드의 손실도 이와 같거나 실행에 실패한다고 판단한 것은 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "5쪽 Eq16 개별 손실식; 240dpi 확대"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H078-C09",
+      "claim": "데이터는 LargeST의 도로 교통 흐름으로 SD 716개 센서와 SGBA 1,278개 센서, 2019–2020년의 5분 간격 자료다. 2019년을 train:validation 7:3으로 나누고, 2020년 상반기와 하반기를 각각 near-term/long-term 시험으로 쓴다. Z-score 전처리가 기재되어 있으나 정규화 추정 범위와 역변환을 코드로 확인하지는 못했다. 이 대상과 Milan 인터넷 활동량을 같은 데이터로 취급하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "5쪽 Datasets/Task Settings"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H078-C10",
+      "claim": "12개 시점에서 다음 12개 시점을 예측하며, MAE/MAPE는 3·6·12 horizon에 걸친 평균으로 보고된다. 표의 15·30·60분 열을 마지막 한 시점의 오차로 임의 해석하지 않는다. Table 1은 독립 5회 평균이다. attention 3개 block, 각 시간·공간 hidden 32, memory 32×32, 환경 표본 2개 등의 설정은 확인했지만 seed별 원시 결과와 완전한 재현 설정은 확보하지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "5–6쪽 Implementation Details/5.2"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H078-C11",
+      "claim": "Table 1의 2개 데이터셋 × 11개 방법 × 12개 지표, 총 264개 수치를 전사·대조한다. 논문 표에서 DynaSTar는 24개 조건 모두 가장 작은 값이다. 예를 들어 SD long-term의 60분 MAE는 STONE 36.06, DynaSTar 26.87이고 SGBA에서는 34.25와 29.23이다. 이는 해당 논문의 비교 조건에서 보고된 성능이며, 우리 UPC 소속 수정이나 RCTL의 개선 수치가 아니다. [전체 수치](../evidence/0078-dynamic-graphs-load-balancing/reported-tables.json)",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "6쪽 Table1 전체264값"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H078-C12",
+      "claim": "Table 2의 60분 MAE에서 momentum graph를 뺀 `w/o MG`와 전체 모형은 SD long-term 28.49→26.87, SGBA long-term 31.27→29.23이다. 모든 제거 조건은 전체 모형보다 나쁘지만, `w/o MG`가 모든 제거 조건 중 항상 최악은 아니다. 메모리·momentum·희소 그래프 구성요소끼리의 비교와 노드 변조/환경 제거까지 포함한 비교를 구분한다. 이 ablation도 고정 UPC 대비 동적 소속의 독립 효과를 측정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "6쪽 Impact of Components,7쪽 Table2 전체24값"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H078-C13",
+      "claim": "Fig.3은 표본 수에 따른 실행 시간과 노드 수에 따른 batch 처리량을 STEVE·STONE과 비교한다. 정확한 원시 좌표·비용 집계 범위·실행 환경을 이 그림만으로 복원하지 않는다. 희소 집계의 효율성 주장과 모든 쌍의 관계 점수 계산을 함께 읽어야 하며, RCTL 여러 개의 학습·저장·갱신 비용을 이 그림으로 대신할 수 없다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "3쪽 Eq4,7쪽 Fig3/Efficiency Study"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H078-C14",
+      "claim": "Fig.4는 SGBA만으로 학습한 모델을 나머지 GBA의 NEGBA/NWGBA에 적용하는 zero-shot 비교다. Fig.5는 SD의 두 노드에 대한 40일 흐름과 연결 확률 예시다. 새 그래프에서의 예측 결과와 한 노드 쌍의 설명 그림을, 특정 소속 변경이 공유 이득을 일으켰다는 인과 증명으로 확대하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "7쪽 Fig4–5 및 대응본문"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H078-C15",
+      "claim": "검토한 판본은 Liu 등의 *Spatial–temporal graph neural network traffic prediction based load balancing with reinforcement learning in cellular networks*, Information Fusion 103(2024), 102079이다. 온라인 공개일은 2023-10-19다. Fig.3과 결론의 순서는 트래픽 예측→부하 분산 참여 셀 군집→강화학습에 의한 handover/CIO 조절이다. 군집을 먼저 만들어 예측기별 훈련 자료를 분할하는 실험으로 옮겨 쓰지 않는다. [DOI](https://doi.org/10.1016/j.inffus.2023.102079)",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "1쪽 서지·온라인일;4쪽 Fig3;15쪽 결론"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H078-C16",
+      "claim": "§4.2는 직전 구간의 평균 부하로 소형 셀을 정렬하고 양끝 셀을 초기 중심으로 선택한 뒤, 부하·매크로 셀까지 거리·이동 가능한 사용자 수의 세 특징으로 K=2 k-means를 수행한다. 목적은 부하 분산 참여/비참여 구분이다. Eq.15/28의 과거 부하와 Eq.17의 RL 입력인 예측 부하는 서로 다른 위치에 나온다. 세 특징의 scale, 빈 군집 처리, 두 출력 군집을 참여 여부로 매핑하는 실행 세부는 확보한 코드로 확인하지 못했다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "5쪽 Eq14–15;9쪽 Eq28/§4.2/Algorithm1;7쪽 Eq17"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H078-C17",
+      "claim": "STECA-GCN은 공간·시간·event 표현 사이의 cross attention과 GCN/Conv를 결합한다. 실제 실험의 event는 평일/비평일이다. 기상·콘서트·재난 등은 확장 가능성으로 논의되며, 해당 사건 자료를 모두 사용해 효과를 검증했다는 뜻은 아니다. 그림의 시공간 관계 변화와 참여 셀 k-means는 별개의 구성이다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "5쪽 §3.4.1;7–9쪽 §4.1/Fig6–7;14쪽 §7.1"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H078-C18",
+      "claim": "예측 실험은 Trentino의 유효 셀 5,931개 중 17×17=289개를 골라, 62일의 10분 간격 Internet 자료를 사용한다. 첫 43일 학습/마지막 19일 시험의 시간 분할이고 event 차원은 2다. 정확한 셀 ID 목록, 정규화·누락 처리, 입력 창과 모든 학습 설정을 이 서술만으로 복원하지 않는다. 공개 grid 활동 자료만으로 이후 시뮬레이터의 실제 handover·무선 채널·용량 자료까지 확보한 것으로 볼 수도 없다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "9–10쪽 §5.1.1–5.1.2"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H078-C19",
+      "claim": "Table 2는 10회 실행 결과라고 기재하며 9개 방법의 RMSE/MAE와 괄호 값을 제시한다. STECA-GCN의 표기값은 RMSE 25.35(3.14), MAE 13.82(2.27), MVSTGN은 29.18(4.38), 17.32(3.33)이다. 괄호 수치의 정확한 정의와 run별 결과는 해당 표/본문만으로 확정하지 않는다. 표 전사는 논문의 보고값 보존이며 우리 데이터에서의 재현 성공이 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "10쪽 Table2 전체18평균+18괄호값"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H078-C20",
+      "claim": "같은 표의 ARIMA·SVR·LSTM·STGCN 네 행은 RMSE가 MAE보다 작다. Eq.32–33처럼 같은 오차 집합과 가중치로 계산하면 RMSE≥MAE이므로, 기재된 정의와 수치 사이에 해결되지 않은 불일치가 있다. 표 전체의 열 이름을 교환하거나 수치를 고치지 않고 원문 그대로 남긴다. 다른 집계·단위였는지, 표기 오류였는지는 원시 결과 없이는 판정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "10쪽 Table2 및Eq32–33"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H078-C21",
+      "claim": "Fig.12는 Basic→첫 FC→event→cross attention→GCN/Conv를 누적 추가하는 비교다. 표시된 RMSE는 29.18, 28.72, 28.15, 26.5, 25.35이고 MAE는 17.32, 16.94, 16.3, 14.91, 13.82다. 10회 독립 실행의 변동을 표시한다고 설명하지만, 이 누적 구성 비교가 동적 참여 군집 자체의 독립 효과를 입증하지는 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "11–12쪽 §5.1.6/Fig12의10값"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H078-C22",
+      "claim": "부하 분산은 별도의 시뮬레이션이다. 기본 시나리오는 300m×300m, 매크로 셀 3개와 소형 셀 12개, 사용자 200명, 이동 속도 1–10m/s, CBR 수요다. 트래픽 수집 간격 10분과 관측·결정 창 M=6을 둔다. 논문이 보고하는 DRL 한 모델 약 20분/5,000 time steps는 당시 장비·설정의 설명이며 우리 코드나 RCTL의 비용 측정값이 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "12쪽 §5.2.1"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H078-C23",
+      "claim": "RL 상태는 예측한 셀 부하와 edge 사용자 비율을 포함하고, 행동은 CIO, 보상은 에너지 효율과 부하율의 결합이다. CIO 집합은 {-6,-3,0,3,6}dB이고 기존 DQN·DDPG·PPO·A3C·SAC를 비교한다. 이 논문은 새로운 RL 알고리즘을 제안했다고 주장하지 않는다. 높은 복합 보상은 예측 MAE 자체나 UPC의 학습 자료 공유 이득과 같은 지표가 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "7쪽 Eq17–23;9쪽 §4.3;12쪽 §5.2"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H078-C24",
+      "claim": "‘최대 12%’는 Fig.13의 소형 셀 12개 조건에서 No MLB의 보상 100과 DDPG 112를 비교한 문맥이다. Table 3의 전송 데이터는 4516.26→4941.23Gb, 에너지 효율은 0.0629→0.0824Mb/J이며 두 개별 변화율은 12%와 같지 않다. 복합 보상, 전송량, 에너지 효율, 예측 오차를 하나의 개선율로 합치지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "12쪽 §5.2.2;13쪽 Fig13/Table3"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H078-C25",
+      "claim": "재사용 전에 확인할 표기 차이를 보존한다. §5.2.1에는 소형 셀 전송 전력 46dBm과 1.5W가 함께 나오며 동등한 값이 아니다. Fig.13의 소형 셀 3개에서는 PPO 111이 DDPG 110보다 높고, Table 3의 에너지 효율은 A3C 0.0764가 PPO 0.0731보다 높다. 따라서 본문의 일반적인 알고리즘 우열 문장을 모든 열·상황에 적용하지 않는다. 이것만으로 미확보 실행 코드의 원인을 단정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "12쪽 smallcell46dBm/1.5W;13쪽Fig13/Table3"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H078-C26",
+      "claim": "PDF 15쪽 Data availability는 사용 자료가 confidential이라고 명시한다. Trentino 자료의 서술, 논문 PDF 확보, 통합 실험의 원자료·전처리·시뮬레이터·실행 결과 확보는 각각 다른 상태다. 이번에는 논문 본문과 저장 검색 근거를 검수했으며 통합 시스템의 재현 가능성을 확인하지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "9–10쪽 자료설명;15쪽Data availability"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H078-C27",
+      "claim": "논문 자체도 다차원 융합의 큰 계산량, 환경 변화에 따라 갱신해야 하는 RL, 잦은 handover의 ping-pong, 실제 배포 전 반복 검증을 제약으로 남긴다. 다중 에이전트·공중 기지국·추가 event·자율 task는 미래 방향이다. 이를 이미 실행된 우리 연구의 후속 계획이나 확정된 성과로 기록하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "13–15쪽 §6–8"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H078-C28",
+      "claim": "세 TXT의 모든 쪽 본문은 해당 PDF를 다시 추출한 layout text와 일치한다. 비교에서 제외한 것은 CRLF/LF, 끝 개행, `PDF PAGE` 표지뿐이다. 회전 글자 등이 추출에서 빠질 수 있어 PDF의 직접 시각 검토를 별도로 유지한다. 원 PNG 6개는 Liu 4/9쪽, DynaSTar 3/7쪽, DLM 10/11쪽의 저장 화면이며 모두 열어 대응 내용을 확인했다. 변환본을 새로운 독립 연구 결과로 늘리지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062026",
+          "source_sha256": "039b24749d518250f1b3b0525e16603c7e84ebf42bbf006a9f1e4dc4348de041",
+          "locator": "각 쪽의 layout text 대응 또는 저장 그림 전체"
+        },
+        {
+          "source_id": "SRC-0062028",
+          "source_sha256": "2e457ab98581406f2edf305b7980f9f94de942b23bc324b8a92f37519f051915",
+          "locator": "각 쪽의 layout text 대응 또는 저장 그림 전체"
+        },
+        {
+          "source_id": "SRC-0062030",
+          "source_sha256": "6421a0988cb4986e8eb8d46815389e0e66b246787e78bd1b4002996c99e3bd14",
+          "locator": "각 쪽의 layout text 대응 또는 저장 그림 전체"
+        },
+        {
+          "source_id": "SRC-0062046",
+          "source_sha256": "c7e162f4a2dd0bb38305b273cfe1dd7cc90df58ee609814032a8d57b1c730f54",
+          "locator": "각 쪽의 layout text 대응 또는 저장 그림 전체"
+        },
+        {
+          "source_id": "SRC-0062047",
+          "source_sha256": "663181f752f2edf721e2c54394577760013e99b83dcb04f347187b64bcb0713d",
+          "locator": "각 쪽의 layout text 대응 또는 저장 그림 전체"
+        },
+        {
+          "source_id": "SRC-0062048",
+          "source_sha256": "cb7a5d60df224ed54c12a840a4fb1e2b26f31ff8d993af7de027a3191ae7c0d0",
+          "locator": "각 쪽의 layout text 대응 또는 저장 그림 전체"
+        },
+        {
+          "source_id": "SRC-0062049",
+          "source_sha256": "d03018a2af8eb10ce2ded696d1dfe186cf7a9baf417bc0ad5140a754794b4dd0",
+          "locator": "각 쪽의 layout text 대응 또는 저장 그림 전체"
+        },
+        {
+          "source_id": "SRC-0062050",
+          "source_sha256": "4ac916e677620faa54dd573110e161f18feb4c78a86abce071d60b1ad241bb29",
+          "locator": "각 쪽의 layout text 대응 또는 저장 그림 전체"
+        },
+        {
+          "source_id": "SRC-0062051",
+          "source_sha256": "98164ef27799a50f0a4e67be616cbf200e2a712cb337df0b9f1e44e6fe4bc9f8",
+          "locator": "각 쪽의 layout text 대응 또는 저장 그림 전체"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        0
+      ]
+    },
+    {
+      "claim_id": "H078-C29",
+      "claim": "저장 PyPI 응답의 dynmix 1.1.2 배포는 2019-10-05의 sdist이며, 저장 Git commit은 2020-04-10 판본이다. PyPI의 7개 release 파일과 중복 URL 항목, repository 응답 전체를 읽었지만 sdist 내부 코드를 확보·설치하지 않았다. 패키지 이름이 같다는 이유로 H077에서 읽은 고정 Git 코드와 동등하다고 볼 수 없다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062031",
+          "source_sha256": "d5380b9b3d2e8d381aa4d3f651f7319f99f51babc536afe11ab1fe5afca99dd8",
+          "locator": "info.version/releases/urls 전체7release와중복URL"
+        },
+        {
+          "source_id": "SRC-0062032",
+          "source_sha256": "5ce5de9ac0bde50edf6da60a03178264325c06eb7ed05a398e1928cd31b1e0c8",
+          "locator": "전필드"
+        },
+        {
+          "source_id": "SRC-0062039",
+          "source_sha256": "c7701d7f734a620856af20f3916e01ff2e512b23d2d1146324e82c1286cb5391",
+          "locator": "commit.author.date"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H078-C30",
+      "claim": "PyPI classifier의 MIT/Planning과 설명의 MPL 2.0/개발 중 표기가 다르고, 저장 repository 응답은 MPL 2.0·archived=true를 표시한다. 홈페이지 사용자명 표기도 다르다. 이는 저장된 metadata의 차이로 남기며 법적 사용 조건을 확정하거나 현재 저장소 상태라고 표현하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062031",
+          "source_sha256": "d5380b9b3d2e8d381aa4d3f651f7319f99f51babc536afe11ab1fe5afca99dd8",
+          "locator": "info.classifiers/description/home_page/project_urls"
+        },
+        {
+          "source_id": "SRC-0062032",
+          "source_sha256": "5ce5de9ac0bde50edf6da60a03178264325c06eb7ed05a398e1928cd31b1e0c8",
+          "locator": "full_name/archived/license/default_branch"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H078-C31",
+      "claim": "검색 응답의 11개 항목에는 초록, 부분 본문, 검색 snippet, 수집 결과, 접근 실패가 섞여 있다. 전체 JSON을 읽었다는 것은 이 **저장 응답의 내용 범위**를 확인했다는 뜻이다. Wiley timeout, Fuzzy 문헌의 403, MDPI 429, dynmix API의 해당 도구 접근 실패는 당시 응답이며 현재의 영구적 비공개를 증명하지 않는다. 문서 안의 지시형 문구와 연락 권유도 이번 작업의 지시로 사용하지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062037",
+          "source_sha256": "ecbe3474b56a9edbd89ef74d19fd32515e25bb206f0e94410f0dbfa44ef04f99",
+          "locator": "11개 key/value 전부;77_dynamic_meta/77_fuzzy_page/77_collect_1/77_code_lookup_final"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H078-C32",
+      "claim": "검색 응답에 남은 2025년 DLM 저널 초록은 78개국, 1960–2007년, 수명·GDP·출생률의 3변량 자료를 설명한다. H077의 2020 arXiv v1은 82개국, 1952–2007년, 수명·GDP의 2변량 사례를 포함한다. 2025 초록을 2020 PDF의 동일 판본이나 2025 전문 검토로 처리하지 않는다. [저널 DOI](https://doi.org/10.1002/sam.70044)",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062037",
+          "source_sha256": "ecbe3474b56a9edbd89ef74d19fd32515e25bb206f0e94410f0dbfa44ef04f99",
+          "locator": "77_search_b/77_search_e: Wiley 초록"
+        },
+        {
+          "source_id": "SRC-0062029",
+          "source_sha256": "5bcc46dee1125dda1225c18ed16580bb9658eff376f4f7ea5f43d9779587b42b",
+          "locator": "16–20쪽 Gapminder 사례"
+        },
+        {
+          "source_id": "SRC-0022032",
+          "source_sha256": "2202917cdd6d0e2dc1be486258776dd88138e07fbc6dd6b40c033526391d57b4",
+          "locator": "53행 판본 구별"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H078-C33",
+      "claim": "*Forecasting time series collections via fuzzy clustering*는 직접 열기에서 403이 있었지만 저장 검색 결과에는 초록·도입부가 있다. 그 범위에서는 global 모델별 검증 오차로 소속을 평가하는 CPAGM 설명과 fuzzy 소속에 따른 예측의 가중 결합을 확인할 수 있다. 방법 전체·결과표·실행 코드는 미확보다. 원77의 ‘전문 미확보’를 유지하면서 이미 읽을 수 있던 부분까지 없었다고 쓰지 않는다. [DOI](https://doi.org/10.1016/j.fss.2025.109748)",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062037",
+          "source_sha256": "ecbe3474b56a9edbd89ef74d19fd32515e25bb206f0e94410f0dbfa44ef04f99",
+          "locator": "77_search_c/77_search_d/77_fuzzy_page/77_search_e: fuzzy 문헌"
+        },
+        {
+          "source_id": "SRC-0022032",
+          "source_sha256": "2202917cdd6d0e2dc1be486258776dd88138e07fbc6dd6b40c033526391d57b4",
+          "locator": "54행 전문미확보"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H078-C34",
+      "claim": "FedCAP의 저장 검색 부분문은 training-only 일별 profile로 고정 군집을 만들고, 군집별 LSTM backbone을 학습한 뒤 동결하여 각 client의 residual adapter를 학습하는 절차를 설명한다. 검색에 나타난 adapter 크기·seed별 통계 주장은 전문과 원시 결과 검수로 승격하지 않는다. 원79에서 정정한 서지와 연결해 후속 검토하며, 이를 예측 시점마다 UPC 소속을 갱신한 증거로 쓰지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062037",
+          "source_sha256": "ecbe3474b56a9edbd89ef74d19fd32515e25bb206f0e94410f0dbfa44ef04f99",
+          "locator": "77_search_c/77_search_e: FedCAP 부분문"
+        },
+        {
+          "source_id": "SRC-0022032",
+          "source_sha256": "2202917cdd6d0e2dc1be486258776dd88138e07fbc6dd6b40c033526391d57b4",
+          "locator": "55행 서지정정안내"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H078-C35",
+      "claim": "원77의 당시 판단은 시간 조건부 소속을 새 핵심 후보로 추가하지 않는 것이었다. 이유는 우리 연구에서 고정 소속의 한계와 조건부 공유 이득이 충분히 입증되지 않았고, DLM·동적 그래프·부하 분산 문헌의 목적과 실행 구조를 RCTL에 바로 옮길 수 없다는 점이다. 동적 방법 전반의 실패 판정이 아니다. 이번에 찾은 논문 표기 불일치를 과거 판단의 이유였던 것처럼 소급하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022032",
+          "source_sha256": "2202917cdd6d0e2dc1be486258776dd88138e07fbc6dd6b40c033526391d57b4",
+          "locator": "69–77행 당시판단"
+        },
+        {
+          "source_id": "SRC-0062027",
+          "source_sha256": "19b22e86aaf9f0649e494bea513efb0efd636d0c1e059b467a43de42ddbde1c3",
+          "locator": "3–7쪽"
+        },
+        {
+          "source_id": "SRC-0062025",
+          "source_sha256": "6ba0c210f6948317f7e8a97ffc47feb827f2ee2b5e711871aa530cca7d5e3cce",
+          "locator": "4–13쪽"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    },
+    {
+      "claim_id": "H078-C36",
+      "claim": "재검토하려면 예측 시점에 사용할 수 있는 입력, 실제 상태별 공유 이득, 같은 정보를 쓰는 global/calendar 비교군으로 설명되지 않는 잔여 손실, Tab이 바꾸는 결정, 그 결정에서 준비된 RCTL의 유효한 입력·채널 범위를 함께 명시해야 한다. 상태별 모델을 따로 준비하는 방식, 고정 전문가 묶음으로 sample을 보내는 방식, 소속 변경 뒤 재학습하는 방식의 비용을 구분한다. 이번 기록은 그 설계를 위한 과거 근거이며 새로운 실험을 실행하지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022032",
+          "source_sha256": "2202917cdd6d0e2dc1be486258776dd88138e07fbc6dd6b40c033526391d57b4",
+          "locator": "57–77행 RCTL설계/재진입조건"
+        }
+      ],
+      "claim_type": "문헌 보고·관찰·미해결 표기 또는 당시 판단의 범위; 새 실험 아님",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "verified_at_utc": "2026-10-10T18:46:01.319517+00:00",
+  "second_pass": {
+    "status": "source_checked",
+    "completed_at_utc": "2026-10-10T18:46:01.319517+00:00",
+    "claims": 36,
+    "checks": [
+      {
+        "claim_ids": [
+          1,
+          28
+        ],
+        "source_ids": [
+          "SRC-0062025",
+          "SRC-0062026",
+          "SRC-0062027",
+          "SRC-0062028",
+          "SRC-0062030",
+          "SRC-0062046",
+          "SRC-0062047",
+          "SRC-0062048",
+          "SRC-0062049",
+          "SRC-0062050",
+          "SRC-0062051",
+          "SRC-0062031",
+          "SRC-0062032",
+          "SRC-0062037"
+        ],
+        "locations": "두 PDF 25쪽의 첫 text/visual 독해 기록, TXT 52쪽의 전쪽 대응 결과, 원 PNG 6개 실제 열람, JSON 3개 전필드 독해 기록",
+        "result": "14개 저장 그룹의 내용 검토와 인용 문헌 전문 검토를 구분. TXT/PNG를 독립 연구 내용으로 중복 가산하지 않음"
+      },
+      {
+        "claim_ids": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "source_ids": [
+          "SRC-0062027"
+        ],
+        "locations": "PDF 3–5쪽 작성 후 재독해, Eq.1–20 및 Eq.16 확대 시각 대조; 1쪽 서지와 5쪽 설정",
+        "result": "전체 노드 쌍, prototype 순차 갱신/예측 후 갱신, 표본화/추론 threshold, joint loss와 UPC 소속의 범위, 데이터/분할/평균 horizon 대조. Eq.16 인쇄 문제와 실행 코드를 구분"
+      },
+      {
+        "claim_ids": [
+          11,
+          12,
+          13,
+          14
+        ],
+        "source_ids": [
+          "SRC-0062027"
+        ],
+        "locations": "PDF 6–7쪽 작성 후 텍스트·시각 재대조, Table1 264개/Table2 24개 표시값 및 Fig.3–5",
+        "result": "24개 조건의 최솟값과 MG 제거 수치, 비용/zero-shot/한 쌍 예시의 해석 범위 확인"
+      },
+      {
+        "claim_ids": [
+          15,
+          16,
+          17,
+          18,
+          22,
+          23
+        ],
+        "source_ids": [
+          "SRC-0062025"
+        ],
+        "locations": "PDF 9–10쪽 작성 후 재독해; 4/5/7/8/12쪽 시각 재대조, Fig.3/Algorithm1/Eq.14–19/§5.1–5.2",
+        "result": "예측→참여 군집→RL 순서, K=2 초기화·세 특징, 실제 event, Trentino 분할과 시뮬레이션 분리, CIO/보상·당시 비용 대조"
+      },
+      {
+        "claim_ids": [
+          19,
+          20,
+          21,
+          24,
+          25
+        ],
+        "source_ids": [
+          "SRC-0062025"
+        ],
+        "locations": "PDF 10/12/13쪽 작성 후 시각 재대조, Eq.32–33/Table2·3/Fig.12·13 및 전력·실행시간 서술",
+        "result": "표와 그림 82개 표시값 대조. RMSE<MAE 네 행, 복합보상12%와 개별 지표 변화율, 전력·알고리즘 우열 차이를 원문 그대로 보존"
+      },
+      {
+        "claim_ids": [
+          26,
+          27
+        ],
+        "source_ids": [
+          "SRC-0062025"
+        ],
+        "locations": "PDF 13/15쪽 작성 후 시각 재대조 및 14쪽 전체 재독해",
+        "result": "자료 confidential, 계산·갱신·handover 제약과 미래 방향을 실제 수행 결과와 구분"
+      },
+      {
+        "claim_ids": [
+          29,
+          30
+        ],
+        "source_ids": [
+          "SRC-0062031",
+          "SRC-0062032",
+          "SRC-0062039"
+        ],
+        "locations": "저장 PyPI info/release 전항목과 repository 상태/license 작성 후 재대조; H077 고정 commit 검증 결과 재참조",
+        "result": "2019 sdist/2020 Git 판본, 7개 배포 파일·중복 urls, license/classifier·사용자명 차이. sdist 내용과 현재 저장소 상태는 미확인"
+      },
+      {
+        "claim_ids": [
+          31,
+          32,
+          33,
+          34
+        ],
+        "source_ids": [
+          "SRC-0062037",
+          "SRC-0062029",
+          "SRC-0022032"
+        ],
+        "locations": "11개 저장 응답 첫 독해 후 search_b/d/e의 주장 부분, fuzzy_page/collect_1/code_lookup_final 재대조; DLM 16쪽 및 원77 51–55행 재독해",
+        "result": "2020/2025의 82/78국·2/3변량·기간 구별. Fuzzy 도입부의 CPAGM은 인용 선행 방법 설명임을 명시. FedCAP 고정 군집과 부분 접근 범위, 당시 접근 실패를 구분"
+      },
+      {
+        "claim_ids": [
+          35,
+          36
+        ],
+        "source_ids": [
+          "SRC-0022032"
+        ],
+        "locations": "원77 1–83행 작성 후 전부 재독해, 특히 57–77행",
+        "result": "당시 미채택 이유, 재진입 5조건, 모델 bank/routing/재학습 비용 구분. 이번 표기 관찰을 과거 판단 이유로 소급하지 않음"
+      }
+    ],
+    "independent_reviewer": false,
+    "independent_reproduction": false,
+    "scope": "같은 에이전트가 초안 작성 후 주장 관련 원문·수식·표·그림·저장 응답과 다시 대조했다. 모든 원본의 두 번째 전수 독해나 독립 실행 재현은 아니다.",
+    "corrections": [
+      "Fuzzy 도입부의 CPAGM 설명과 해당 논문의 전체 방법을 구분",
+      "TXT 대응 비교 범위의 문장부호 보정",
+      "현재 색인의 원77 미독해 범위를 H078 완료 범위와 연결"
+    ]
+  }
+}

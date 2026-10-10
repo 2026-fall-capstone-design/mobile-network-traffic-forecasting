@@ -93,4 +93,4 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 
 ## 77의 동적 소속 근거
 
-[77 DLM 검수](verification/history-077.md) 이후에도 논문 그림과 실제 실행 코드·환경의 연결, 정적 구현 차이의 영향, 예측 origin 배정과 RCTL 공유 이득은 미확인이다. 원77의 DynaSTar/Liu25PDF쪽과 TXT·원PNG·PyPI/repository·검색14그룹, 78–79외부·80결과·이후 기록과 원자료 팀 접근을 이어서 검수한다.
+[77 DLM 검수](verification/history-077.md) 이후에도 논문 그림과 실제 실행 코드·환경의 연결, 정적 구현 차이의 영향, 예측 origin 배정과 RCTL 공유 이득은 미확인이다. [H078 검수](verification/history-078.md)에서 원77의 남은 두 PDF 25쪽과 TXT·원PNG·PyPI/repository·검색 14개 그룹을 다뤘다. 2025 DLM 저널 전문, Fuzzy의 방법·결과 전체, FedCAP 전문, 논문 실행 코드·원시 결과는 아직 확인이 필요하다. 원78–79 외부·원80 결과·이후 기록과 원자료 팀 접근도 이어서 검수한다.
