@@ -1,0 +1,1179 @@
+{
+  "batch_id": "history-076",
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "record_sha256": "610910aad69d55f40213b34bec4474fa33779c517d73c201174fd2e7d78cd72d",
+  "claims": [
+    {
+      "claim_id": "H076-C01",
+      "claim": "`SRC-0063879`의 삭제 patch에 남은 PMLB 상호작용 CSV 27개, 데이터 2,253행을 모두 읽었다. H075에서 읽었던 나머지 61개 patch와 합치면 커밋 응답의 88개 patch를 읽은 범위가 된다. 이번에는 최상위 메타데이터와 파일별 메타데이터도 확인했다. 이 범위는 저장된 커밋 JSON이며 외부 저장소 전체나 연결된 모든 논문의 검토가 아니다. [명세](../evidence/0076-tabdistill-interactions/source-manifest.json)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "전체 JSON 메타데이터와 /files/1..27/patch; H075의 나머지 61 patch 읽기 범위",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H076-C02",
+      "claim": "저장 커밋은 `64214da0edf7eef6e8bf645332471d78b30345e8`, 부모는 `58bd71068a879c8ee90e62f405d8fb8f6db5e81e`다. 커밋 설명은 비핵심 자료·스크립트의 추적 중단이고, 88개 파일 항목 중 86개가 삭제됐다. `.gitignore`에는 해당 디렉터리가 추가됐다. 이 삭제를 실험 실패나 논문 철회의 증거로 해석하지 않는다. CSV는 삭제 patch로 복원했으며 Git blob SHA-1이 원 응답의 값과 일치한다. [고정 커밋](https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "/sha, /parents, /commit/message, /stats, /files/*/status, /files/0/patch",
+          "patch_indices": [
+            0
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H076-C03",
+      "claim": "표의 방법명은 BII·FBII·FOURIER·FSII·MOBIUS·SII·STII의 SPEX-EBM 7종과 `Baseline-EBM`, `RuleFit-Support-EBM`이다. 열에는 모델명, 명목 항 수, 항 목록, 시간, MSE·RMSE·MAE·R2, 지수 이름, 방법명이 있다. 시간·MSE·RMSE·MAE·R2의 5열, 11,265칸은 유한값이고 2,253행의 RMSE는 저장 MSE의 제곱근과 허용오차 안에서 일치한다. 이 산술 일치는 데이터 누수 부재나 모델의 재현 성공을 증명하지 않는다. [산술 검수](../evidence/0076-tabdistill-interactions/interaction-audit.json)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "/files/1..27/patch의 전체 CSV 헤더와 2,253행; 수치 5열",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H076-C04",
+      "claim": "27개 데이터셋 × 9개 방법 × 1–10항의 2,430칸 중 177칸은 행이 없다. 예를 들어 pollution에는 FOURIER 행이 전혀 없고, election2000의 FOURIER는 3항까지, chatfield의 FOURIER는 2항까지다. 빈칸을 0점이나 실행 실패로 채우지 않는다. 두 baseline은 각각 270행이지만 FBII는 254행, FOURIER는 200행이므로 모든 저장 행을 한꺼번에 평균 내면 비교 조건과 표본 수가 달라진다. [전체 범위표](../evidence/0076-tabdistill-interactions/dataset-coverage.csv)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "/files/1..27/patch의 방법·예산별 행 존재 여부",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H076-C05",
+      "claim": "명목 항 수는 모든 행에서 목록 길이와 같지만, RuleFit의 12행은 같은 항을 반복한다. cloud의 6–10항은 고유 항 5개, bodyfat의 7–10항은 6개, sleuth_case1202의 8–10항은 7개다. 각 구간의 오차 지표는 마지막 고유 항을 추가한 행과 같고 시간만 달라진다. 원본을 고쳐 쓰지 않고 명목 항 수와 고유 항 수를 별도 열로 제공한다. [중복 항 12행](../evidence/0076-tabdistill-interactions/repeated-terms.csv)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "cloud CSV 71–81, bodyfat CSV 83–91, sleuth_case1202 CSV 74–80",
+          "patch_indices": [
+            1,
+            6,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        0,
+        2
+      ]
+    },
+    {
+      "claim_id": "H076-C06",
+      "claim": "같은 데이터셋 안에서 순서까지 같은 항 목록을 가진 복수 행 묶음은 287개다. 각 묶음의 MSE·RMSE·MAE·R2는 모두 같으며, 목록 하나당 한 행만 남기는 방식으로 계산하면 추가 행은 700개다. 시간은 이 비교에서 제외했다. 이 700행을 삭제해야 한다는 뜻도, 각각 독립적인 재현 실험이라는 뜻도 아니다. 방법별 선택이 같은 목록에 도달한 사실과 실제 실행의 독립성을 구분한다. [집계 방법과 데이터별 결과](../evidence/0076-tabdistill-interactions/interaction-audit.json)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "/files/1..27/patch의 데이터셋별 순서 있는 항 목록·오차 4열",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H076-C07",
+      "claim": "중복 횟수를 유지한 채 항의 순서만 무시하면, 순서가 다르고 오차 지표도 다른 묶음이 207개다. 순서가 달라도 지표가 같은 묶음도 1개 있다. 예를 들어 sleuth_case1202의 2항은 SPEX의 `[(2,4),(0,4)]`와 Baseline의 반대 순서가 같은 지표를 낸다. 따라서 정렬해서 같은 목록으로 만들거나 순서 차이만으로 다른 수치의 원인을 확정하지 않는다. [산술 검수](../evidence/0076-tabdistill-interactions/interaction-audit.json)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "동일 multiset별 순서·지표 비교; patch27 CSV 3·8·63행의 같은 지표 반례",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        0,
+        2
+      ]
+    },
+    {
+      "claim_id": "H076-C08",
+      "claim": "항의 정수 인덱스를 0부터 시작하는 입력 열 번호로 읽으면, 적어도 10개 입력 좌표가 사용된 데이터셋은 12개다. election2000·bodyfat은 적어도 14개, pollution은 15개, chatfield는 12개다. 최대 선택 인덱스로 구한 값은 선택 가능한 입력 좌표 수의 하한이며, 전처리 전 원자료의 정확한 변수 수는 아니다. 이 CSV 묶음 전체를 4월 논문의 ‘변수 10개 미만’ 선별 집합과 동일시하지 않는다. [범위표](../evidence/0076-tabdistill-interactions/dataset-coverage.csv) · [논문의 조건](../records/0076-response-transfer-audit.md#c22)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "/files/1..27/patch의 실제 선택 인덱스; H075-C22의 논문 4쪽 선별 조건",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        },
+        {
+          "source_id": "SRC-0063877",
+          "source_sha256": "5c12607bbe9c3218e2aac327c130f1f09b2bc46c770a733db8d3b8a71a8ee4ea",
+          "locator": "PDF 4쪽, H075-C22의 조건 재참조",
+          "pages": [
+            4
+          ]
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        2,
+        6
+      ]
+    },
+    {
+      "claim_id": "H076-C09",
+      "claim": "명목 4항으로 고정하면 9방법의 저장 행은 238개다. FBII와 두 baseline은 27개 데이터셋 모두에 4항 행이 있어 쌍별 비교가 가능하다. FBII의 MAE는 Baseline보다 작은 경우 12개, 큰 경우 15개다. MSE도 개수는 12개·15개지만 유리한 데이터셋 집합까지 같지는 않다. 이 개수는 저장 표의 기술적 집계이며 통계적 유의성이나 논문 전체 평균 순위가 아니다. [4항 원수치](../evidence/0076-tabdistill-interactions/budget-four.csv)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "/files/1..27/patch, Num_Interactions=4; FBII/Baseline 쌍별 MAE·MSE",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H076-C10",
+      "claim": "같은 4항 조건에서 FBII의 MAE는 RuleFit보다 작은 경우 16개, 큰 경우 11개다. MSE는 작은 경우 14개, 큰 경우 13개다. 이 비교에서는 정확히 같은 수치인 동률이 없다. Baseline과 RuleFit을 하나의 대조군으로 합치거나 MAE의 비교 결과를 MSE에 그대로 적용하지 않는다. [쌍별 집계](../evidence/0076-tabdistill-interactions/interaction-audit.json)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "/files/1..27/patch, Num_Interactions=4; FBII/RuleFit 쌍별 MAE·MSE",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H076-C11",
+      "claim": "FBII가 두 대조군보다 좋은 사례와 나쁜 사례를 함께 남긴다. `613_fri_c3_250_5`의 4항 MAE/MSE는 FBII `0.1882286775509591/0.0558094980377644`, Baseline `0.1942512331617009/0.0637779120494739`이며 RuleFit보다도 작다. 반대로 `656_fri_c1_100_5`에서는 FBII `0.2148972237992618/0.0695125704050468`, Baseline `0.2107634842930085/0.0660137110576304`, RuleFit `0.1904931399728834/0.0589121075074057`이다. 모든 사례의 정확한 값은 4항 표에 보존한다. [4항 표](../evidence/0076-tabdistill-interactions/budget-four.csv)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "patch15 CSV 15·77·78행, patch21 CSV 15·78·79행",
+          "patch_indices": [
+            15,
+            21
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        0,
+        2
+      ]
+    },
+    {
+      "claim_id": "H076-C12",
+      "claim": "`706_sleuth_case1202`의 4항에서 FBII의 MAE `25.055834507002068`은 Baseline의 `26.73257218575734`보다 작지만, MSE `1373.0059755241828`은 Baseline의 `1303.3534664350923`보다 크다. RuleFit 대비로는 두 오차 모두 작다. 이 사례를 단일한 ‘개선’ 또는 ‘악화’로 줄이지 않는다. [4항 표](../evidence/0076-tabdistill-interactions/budget-four.csv)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "patch27 CSV 10·67·68행",
+          "patch_indices": [
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        0,
+        2
+      ]
+    },
+    {
+      "claim_id": "H076-C13",
+      "claim": "같은 방법에서 기존 순서를 그대로 유지하고 마지막에 한 항을 붙인 인접 예산 쌍은 1,833개다. MSE와 MAE가 모두 작아진 쌍은 715개, 모두 커진 쌍은 798개, 서로 반대 방향인 쌍은 308개, 적어도 한 지표가 같은 쌍은 12개다. 이 집계는 다른 목록으로 교체된 예산 쌍을 포함하지 않는다. 항 수 증가가 항상 좋은 결과를 만들지는 않으며, 이 비율을 향후 실험의 성공 확률로 쓰지도 않는다. [집계 정의](../evidence/0076-tabdistill-interactions/interaction-audit.json)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "/files/1..27/patch, 같은 방법의 n·n+1행 중 prefix를 유지하는 목록",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H076-C14",
+      "claim": "세 변수 항의 효과도 양쪽 사례가 있다. `635_fri_c0_250_10`에서 FBII의 3→4항은 `(0,2,3)`을 추가하고 MAE `0.2717326673459848→0.2775257572793239`, MSE `0.1190375063368769→0.1290457363797988`로 나빠진다. 같은 데이터의 FOURIER 7→8항은 `(0,1,2)`를 추가하고 MAE `0.2744517533785089→0.2658855096667167`, MSE `0.1254174670698874→0.1174581919300975`로 좋아진다. 같은 명목 항 수도 두 변수 항과 세 변수 항의 구성에 따라 다르다. [원 CSV 위치](../evidence/0076-tabdistill-interactions/source-manifest.json)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "patch20 CSV14·15행의 FBII3·4항, CSV28·29행의 FOURIER7·8항",
+          "patch_indices": [
+            20
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H076-C15",
+      "claim": "저장된 `Train_Time_s`의 범위는 pwLinear의 SII 1항 `0.190408956259489`초부터 `635_fri_c0_250_10`의 STII 10항 `7930.269992701709`초까지다. 같은 목록·지표에도 시간이 다르고, 항을 추가한 뒤 시간이 줄어드는 행도 있다. 원 표 자체에는 측정 구간·하드웨어·교사 질의 횟수·전체 파이프라인 시간이 없어 이 값을 총 비용이나 방법 자체의 속도 순위로 해석하지 않는다. [최솟값·최댓값의 행 위치](../evidence/0076-tabdistill-interactions/interaction-audit.json)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "/files/1..27/patch의 Train_Time_s; patch2 CSV36행, patch20 CSV69행; patch1 CSV2·3행의 시간 감소",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "claim_id": "H076-C16",
+      "claim": "삭제된 `compare_pmlb_regression_table1.py`는 이 CSV를 만드는 코드가 아니라 읽는 코드다. `Index=fbii`, `Num_Interactions=4`의 첫 행에서 항 목록을 가져오고, PMLB 자료를 불러와 EBM·PyGAM 등을 다시 학습한다. 일반 모델의 시간은 `fit` 호출만 감싸며 예측은 그 밖에 있다. 전체 X의 범주 인코딩 후 seed 42·test 20%로 나누는 조건도 이 후속 코드에 속한다. 이를 원 상호작용 표의 분할·생성 시간 조건으로 소급하지 않는다. [부모 커밋의 소비 코드](https://github.com/Clouddelta/tab-distill/blob/58bd71068a879c8ee90e62f405d8fb8f6db5e81e/experiments/EBM_comparison/compare_pmlb_regression_table1.py)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "patch29 복원 코드 56–65,84–119,194–200,203–244행",
+          "patch_indices": [
+            29
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H076-C17",
+      "claim": "상호작용 표의 FBII 4항과 저장 모델 비교표의 `EBM_FBII`는 27개 데이터셋 모두에서 순서 있는 항 목록이 같다. 그러나 엄격한 수치 일치는 MSE 3개, RMSE 6개, MAE 3개, R2 6개이고 시간은 0개다. 일부는 출력 자릿수 수준의 차이지만 machine_cpu의 MAE `32.58984273356018` 대 `33.365936596454105`, pollution의 MAE `44.79908887340702` 대 `43.672431123599274`처럼 더 큰 차이도 있다. 정확한 원인을 확정할 실행 메타데이터는 아직 연결되지 않았으며, 두 표를 동일 실행의 복사본으로 합치지 않는다. [27개 연결표](../evidence/0076-tabdistill-interactions/model-table-bridge.csv)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "상호작용 patch1–27의 FBII4와 모델 결과 patch31–57의 EBM_FBII",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        2,
+        3
+      ]
+    },
+    {
+      "claim_id": "H076-C18",
+      "claim": "저장된 다른 `compare_index_performance.py`에는 목록의 앞부분으로 EBM을 학습하고 `fit` 시간을 재는 구현이 있다. 하지만 이 파일이 해당 PMLB CSV 27개를 만들었다는 실행 연결은 확인되지 않았다. 또한 후속 PMLB 코드의 기본 TabPFN 판본은 v3이고 출력 파일명·열에 판본을 넣지만, 삭제된 모델 결과는 판본 없는 이름과 `TabPFN` 방법명을 쓴다. 코드의 기본값을 근거로 원 표의 교사 판본을 확정하지 않는다. [이전 구현 검토](../records/0076-response-transfer-audit.md#c35) · [코드와 결과의 범위](../sources/history-075.md)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "patch29 복원코드315–350,386–444행의 판본과출력; patch31–57 헤더/Method",
+          "patch_indices": [
+            29,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        },
+        {
+          "source_id": "SRC-0063884",
+          "source_sha256": "5346bdf19f10021d847a7401d0d76b07c6eb7f72cda8afe79db1ce4e44da4a89",
+          "locator": "compare_index_performance.py 189–261행",
+          "lines": [
+            [
+              189,
+              261
+            ]
+          ]
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        4,
+        5
+      ]
+    },
+    {
+      "claim_id": "H076-C19",
+      "claim": "이 표의 데이터셋은 PMLB 회귀 과제이며 우리 연구의 cell·기간·UPC 소속·RCTL 성능을 측정한 결과가 아니다. CSV에 seed·train/test 표본 식별자·입력 정규화·교사 판본·패키지 판본·하드웨어는 미기록이다. 원 생성기의 위치와 실행 조건은 아직 미확인으로 남긴다. 후속 코드에서 확인한 조건과 원 표에 적히지 않은 조건을 구분하면, 겉보기에 같은 실험을 다시 설계하거나 다른 실행의 결과를 혼합하는 일을 줄일 수 있다. [조건표](../evidence/0076-tabdistill-interactions/README.md)",
+      "claim_type": "저장 근거와 적용 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "/files/1..27/patch의 열 범위와 patch29의 소비 경로",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            29
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        4,
+        7
+      ]
+    },
+    {
+      "claim_id": "H076-C20",
+      "claim": "재검토 시에는 데이터셋·방법·명목 예산을 정하고, 행의 존재 여부와 고유 항 수를 확인한 뒤 원 순서를 보존해 목록을 읽는다. MAE·MSE를 함께 보고, 원 상호작용 표와 후속 모델 결과를 구별한다. 실제 재현을 계획한다면 생성 코드 판본, 분할, teacher·EBM 설정, 시간 범위와 반복 조건을 추가로 확보해야 한다. 이 기록은 그 확인을 돕는 저장 근거이며 새 실험이나 트래픽 적용의 성공 보고가 아니다. [재사용 자료](../evidence/0076-tabdistill-interactions/README.md)",
+      "claim_type": "확인한 공백에 근거한 재사용 제안",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063879",
+          "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+          "locator": "C04–C19에서 확인한 범위·불일치에 근거한 재사용 지침",
+          "patch_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            29
+          ],
+          "official_url": "https://github.com/Clouddelta/tab-distill/commit/64214da0edf7eef6e8bf645332471d78b30345e8"
+        }
+      ],
+      "additional_evidence": [
+        "../evidence/0076-tabdistill-interactions/interaction-audit.json"
+      ],
+      "semantic_second_pass_complete": true,
+      "limitation": "저장 수치·구현의 정적 대조이며 새 실험·독립 재현이 아님. 원 생성 조건의 공백을 유지한다.",
+      "verification_method": "작성 후 원문과 의미·수치·실행 범위 대조. 같은 에이전트의 두 번째 검토.",
+      "second_pass_check_indices": [
+        7
+      ]
+    }
+  ],
+  "verified_at_utc": "2026-10-10T17:43:50.737504+00:00",
+  "second_pass": {
+    "batch_id": "history-076",
+    "status": "source_checked",
+    "created_at_utc": "2026-10-10T17:34:33.215529+00:00",
+    "independent_reviewer": false,
+    "completed_claims": [
+      "H076-C01",
+      "H076-C02",
+      "H076-C03",
+      "H076-C04",
+      "H076-C05",
+      "H076-C06",
+      "H076-C07",
+      "H076-C08",
+      "H076-C09",
+      "H076-C10",
+      "H076-C11",
+      "H076-C12",
+      "H076-C13",
+      "H076-C14",
+      "H076-C15",
+      "H076-C16",
+      "H076-C17",
+      "H076-C18",
+      "H076-C19",
+      "H076-C20"
+    ],
+    "checks": [
+      {
+        "source_id": "SRC-0063879",
+        "mode": "작성 후 원 JSON의 선택 patch 행을 직접 다시 읽음",
+        "claim_ids": [
+          "H076-C05",
+          "H076-C07",
+          "H076-C11",
+          "H076-C12",
+          "H076-C15"
+        ],
+        "patch_indices": [
+          1,
+          6,
+          15,
+          21,
+          27,
+          20,
+          2
+        ],
+        "result": "중복 항의 원 행, 반대 순서와 같은 수치의 예, 유리·불리·지표 상충 사례, 시간의 최솟값·최댓값을 대조했다. 집계 전체와 코드 경계의 추가 대조는 남아 있다."
+      },
+      {
+        "source_id": "SRC-0063879",
+        "mode": "메타데이터·읽기 범위·원본 및 사본 해시의 작성 후 대조",
+        "claim_ids": [
+          "H076-C01",
+          "H076-C02"
+        ],
+        "locator": "/sha,/parents,/commit/message,/stats,/files/*/status,/files/0/patch 및 88항목 URL264개",
+        "result": "커밋의 추적 중단 설명과 삭제86개를 확인했다. H07561patch와 H07627patch가 겹치지 않고 모든88patch를 덮는다. 같은 바이트의2경로와 보호6파일 해시 일치. 삭제를 성능 실패로 해석하지 않았다."
+      },
+      {
+        "source_id": "SRC-0063879",
+        "mode": "초안 생성기와 분리한 원 JSON 재파싱·Decimal 계산 및 공개 필드 전수 대조",
+        "claim_ids": [
+          "H076-C03",
+          "H076-C04",
+          "H076-C05",
+          "H076-C06",
+          "H076-C07",
+          "H076-C08",
+          "H076-C09",
+          "H076-C10",
+          "H076-C11",
+          "H076-C12",
+          "H076-C13",
+          "H076-C15",
+          "H076-C17"
+        ],
+        "locator": "/files/1..27/patch 및 연결 결과 /files/31..57/patch",
+        "result": "2,253행의5수치열과RMSE,250행의원필드2,500개,27개데이터별집계,반올림162칸,연결27쌍을 대조했다. 행부재≠실패, 명목항수≠고유항수, 같은목록≠독립재현, 지표별비교방향과 인접예산분모를 별도로 확인했다. 최대인덱스+1은 0기반 입력좌표라는 해석 아래의 하한으로 한정했다."
+      },
+      {
+        "source_id": "SRC-0063879",
+        "mode": "작성 후 선택 원 patch 행 직접 재독해",
+        "claim_ids": [
+          "H076-C14",
+          "H076-C15",
+          "H076-C17"
+        ],
+        "locations": [
+          {
+            "patch_index": 20,
+            "csv_lines": [
+              14,
+              15,
+              28,
+              29,
+              69
+            ]
+          },
+          {
+            "patch_index": 1,
+            "csv_lines": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "patch_index": 3,
+            "csv_lines": [
+              1,
+              15
+            ]
+          },
+          {
+            "patch_index": 5,
+            "csv_lines": [
+              1,
+              8
+            ]
+          },
+          {
+            "patch_index": 33,
+            "csv_lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "patch_index": 35,
+            "csv_lines": [
+              1,
+              2
+            ]
+          }
+        ],
+        "result": "3변수항 추가의 양쪽 사례와 시간 감소 사례를 원문에서 확인했다. FBII4와EBM_FBII의 항목 일치 및 machine_cpu/pollution 수치차이를 원행으로 확인했다. 자릿수 차이와 큰 차이의 원인을 하나로 확정하지 않았다."
+      },
+      {
+        "source_id": "SRC-0063879",
+        "mode": "작성 후 소비 코드의 번호 있는 원문 재독해",
+        "claim_ids": [
+          "H076-C16",
+          "H076-C18",
+          "H076-C19"
+        ],
+        "patch_index": 29,
+        "recovered_code_lines": [
+          [
+            41,
+            44
+          ],
+          [
+            56,
+            65
+          ],
+          [
+            84,
+            119
+          ],
+          [
+            194,
+            244
+          ],
+          [
+            315,
+            350
+          ],
+          [
+            386,
+            444
+          ]
+        ],
+        "result": "첫 fbii4 목록 선택, 전체X 인코딩 뒤80:20 split, seed42/EBM 설정, 일반fit만 측정, TabPFN생성+fit측정과predict제외, v3기본값/판본열/파일명을 대조했다. 입력CSV의 생성조건과 구분했다."
+      },
+      {
+        "source_id": "SRC-0063884",
+        "mode": "작성 후 저장 코드 선택 구간 재독해",
+        "claim_ids": [
+          "H076-C18"
+        ],
+        "lines": [
+          [
+            189,
+            261
+          ]
+        ],
+        "result": "목록prefix로 EBM을 실제target에 적합하는 코드와 fit시간을 확인했다. 이 코드와 PMLB27CSV의 실제 생성 연결은 확정하지 않았다."
+      },
+      {
+        "source_id": "SRC-0063877",
+        "mode": "H075에서 PDF와 대응을 확인한 텍스트 표현의 조건 재독해",
+        "claim_ids": [
+          "H076-C08"
+        ],
+        "pages": [
+          4
+        ],
+        "text_lines": [
+          [
+            244,
+            252
+          ]
+        ],
+        "result": "§4.1의2000표본미만/10특징미만 및35회귀44분류 조건을 대조했다. 원CSV의 선택좌표 하한을 전처리 전 원자료 차원이나 논문 필터 위반 증명으로 승격하지 않았다."
+      },
+      {
+        "source_id": "SRC-0063879",
+        "mode": "전체 초안의 의미·실행 범위·재사용 지침 재검토",
+        "claim_ids": [
+          "H076-C19",
+          "H076-C20"
+        ],
+        "locator": "27CSV 헤더 및 앞서 대조한 소비 코드·C04–C18",
+        "result": "PMLB회귀 과제와 트래픽UPC/RCTL을 구분하고, CSV 미기록/생성조건 미확인/트래픽 해당없음을 나눴다. 재진입 지침은 확인된 공백에 근거한 제안이며 새로운 실험 수행 결과로 쓰지 않았다."
+      }
+    ],
+    "corrections": [
+      {
+        "claim_id": "H076-C11",
+        "source": "/files/15/patch CSV77행",
+        "before": [
+          "0.1942512252157708",
+          "0.0637779102486972"
+        ],
+        "after": [
+          "0.1942512331617009",
+          "0.0637779120494739"
+        ],
+        "reason": "초안의 수치 전사 오류를 원 patch의 정확한 문자열로 정정. 비교 방향은 변하지 않았다."
+      },
+      {
+        "claim_id": "H076-C03",
+        "reason": "11,265칸의 분모를 시간·MSE·RMSE·MAE·R2의5열로 명시했다. 명목항수열은 이 유한값 집계에 포함되지 않는다."
+      },
+      {
+        "claim_id": "H076-C08",
+        "reason": "최대선택인덱스+1을0기반 입력좌표의 하한으로 한정하고 전처리 전 원자료의 변수 수를 확정하지 않도록 수정했다."
+      }
+    ],
+    "completed_at_utc": "2026-10-10T17:43:50.737504+00:00",
+    "scope": "같은 에이전트가 초안 작성 후 주장 관련 원문·수치·코드의 조건을 다시 대조했다. 전체 원본의 두 번째 전수 독해 또는 독립 연구자의 재현 검증은 아니다."
+  }
+}

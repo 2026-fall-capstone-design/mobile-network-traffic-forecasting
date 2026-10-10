@@ -91,4 +91,4 @@
 
 <a id="c34"></a>**C34.** 다시 설계할 팀원은 기존 [72–75](0072-0075-output-compression.md), 이 기록의 정확사본, 수정된 FedCAP 서지, 변경행을 재사용할 수 있다. 재진입 질문은 ‘기존 방법의 어느 결정·정보·가정을 바꾸며 단순 대안의 어떤 손해를 해결하는가’다. 외부 일차자료·80 결과·원자료 팀 접근·전체 실패/비용 통합·이후 기록과 최종 검색 검수는 남아 있다. 이 묶음은 전체 연구기록 정리 완료가 아니다. [원문](../evidence/0076-0079-learning-decisions/originals/SRC-0022031.md.txt)
 
-후속 검수: 이 페이지에서 후속 범위로 남긴 76의 Sobolev·Jacobian·TabDistill 및 저장 runtime은 [H075의 44개 주장](0076-response-transfer-audit.md)에서 대조했다. 77–79 외부 자료, 80 결과와 76의 남은 interaction CSV·보충자료는 아직 후속 범위다.
+후속 검수: 이 페이지에서 후속 범위로 남긴 76의 Sobolev·Jacobian·TabDistill 및 저장 runtime은 [H075의 44개 주장](0076-response-transfer-audit.md)에서 대조했다. 이어 [H076의 20개 주장](0076-tabdistill-interaction-audit.md)에서 남은 interaction CSV 27개·2,253행과 커밋 메타데이터를 검토했다. 77–79 외부 자료, 80 결과, 별도 보충자료와 실제 생성·실행 조건의 공백은 후속 범위다.

@@ -185,4 +185,6 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 
 ## 76의 반응 전달 근거를 재사용할 때
 
-[Sobolev·Jacobian·TabDistill 검수](records/0076-response-transfer-audit.md)는 44개 주장과 원문 위치를 연결한다. 자료량별 이득 반전, 순위와 실제 오차의 차이, 저장 PMLB 결과의 PyGAM 실패, 마스킹·미분 API의 조건을 확인할 수 있다. 논문 3개·39쪽과 저장 구현을 읽었으며, interaction CSV 27개와 별도 보충자료·실행 판본의 공백은 남아 있다.
+[Sobolev·Jacobian·TabDistill 검수](records/0076-response-transfer-audit.md)는 44개 주장과 원문 위치를 연결한다. 자료량별 이득 반전, 순위와 실제 오차의 차이, 저장 PMLB 결과의 PyGAM 실패, 마스킹·미분 API의 조건을 확인할 수 있다. 논문 3개·39쪽과 저장 구현을 읽었다. 이어 [상호작용 CSV 검수](records/0076-tabdistill-interaction-audit.md)에서 남아 있던 27개 표·2,253행을 대조했다. 별도 보충자료와 실제 생성·실행 판본의 공백은 남아 있다.
+
+같은 항 수로 실험을 다시 설계하기 전 [데이터셋별 4항 비교](evidence/0076-tabdistill-interactions/dataset-comparison.md)와 [중복 항 목록](evidence/0076-tabdistill-interactions/repeated-terms.csv)을 확인한다. 명목 항 수와 고유 항 수, MAE와 MSE, 원 상호작용 표와 후속 모델 결과를 구별해 재사용한다.
