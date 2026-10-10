@@ -176,3 +176,7 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H073 목록](history-073-sources.jsonl)은 기존 findings2개와 저장 검색11개, 총13그룹·26경로를 연결합니다. [159개 응답 색인](../evidence/0072-0075-saved-search/response-ledger.json)은 원본 좌표·URL·해시·연구 역할을 제공합니다. TXT8개와 JSON3개를 전구간 읽었으며, 이를 외부 논문159편의 독해나 새 실험으로 가산하지 않습니다. 새 원본 복사는0개이고 원검색 전체의 팀 접근은 미완료입니다.
 
 [H074 출처](../sources/history-074.md)와 [161그룹 catalogue](history-074-sources.jsonl)는 원76–79의 전체 텍스트27·JSON24·변경행8, 정확사본59참조와 metadata102를 구분한다. 등록338경로 중336개는 현재 일치하며 라이브러리2경로는 없다. snapshot19–22의178파일 해시 검사는178본문 독해가 아니다.
+
+## H075: 원76 외부 자료와 저장 결과
+
+[출처](../sources/history-075.md)와 [25그룹 목록](history-075-sources.jsonl)은 PDF 3개·39쪽, 코드·README 6개, 검색 4개, 별도 TXT 2개, 원 PNG 6개, tree JSON과 부분 commit JSON을 구분한다. TabDistill TXT의 가역적인 표현 대응은 새 독립 독해로 가산하지 않는다. 등록76경로 중74개 해시 일치, 기존 누락2경로는 보관사본과 분리해 기록했다. commit의61patch 독해와27patch 미독해도 명세에 남긴다.

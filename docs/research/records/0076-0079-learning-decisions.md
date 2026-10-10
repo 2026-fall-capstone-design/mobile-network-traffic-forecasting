@@ -90,3 +90,5 @@
 <a id="c33"></a>**C33.** 스냅샷 22의 분산 진행 보고서·progress·candidate index는 **79의 문헌 검토와 80의 실제 진단을 함께** 담는다. `model_reruns: 0`, 새 Tab 호출 0, 새 RCTL fit 0이라는 표현은 80의 단순 모델 적합·고정 RCTL gradient 계산까지 0이라는 뜻이 아니다. 80의 수치·배열·설정·소속·비용은 후속 원결과 대조 대상이며 여기서 검증된 성능 주장으로 승격하지 않는다. 보고서 판본이 나중에 바뀌었다는 증거는 발견되지 않았다. [원문](../evidence/0076-0079-learning-decisions/originals/SRC-0000129.md.txt)
 
 <a id="c34"></a>**C34.** 다시 설계할 팀원은 기존 [72–75](0072-0075-output-compression.md), 이 기록의 정확사본, 수정된 FedCAP 서지, 변경행을 재사용할 수 있다. 재진입 질문은 ‘기존 방법의 어느 결정·정보·가정을 바꾸며 단순 대안의 어떤 손해를 해결하는가’다. 외부 일차자료·80 결과·원자료 팀 접근·전체 실패/비용 통합·이후 기록과 최종 검색 검수는 남아 있다. 이 묶음은 전체 연구기록 정리 완료가 아니다. [원문](../evidence/0076-0079-learning-decisions/originals/SRC-0022031.md.txt)
+
+후속 검수: 이 페이지에서 후속 범위로 남긴 76의 Sobolev·Jacobian·TabDistill 및 저장 runtime은 [H075의 44개 주장](0076-response-transfer-audit.md)에서 대조했다. 77–79 외부 자료, 80 결과와 76의 남은 interaction CSV·보충자료는 아직 후속 범위다.

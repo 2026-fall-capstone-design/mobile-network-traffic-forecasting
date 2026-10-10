@@ -1,0 +1,336 @@
+{
+  "source_id": "SRC-0063873",
+  "source_sha256": "74738c195cc463c0ee566ad22f4a6cd90544ea9b8e772ba1470d5308deea98c4",
+  "page": 8,
+  "status": "printed_values_postdraft_text_and_visual_checked",
+  "metric": "test_accuracy_percent",
+  "new_model_runs": 0,
+  "table1": {
+    "dataset": "CIFAR100",
+    "teacher": "VGG9",
+    "teacher_accuracy": 64.78,
+    "student": "VGG4",
+    "data_per_class": [
+      1,
+      5,
+      10,
+      50,
+      100,
+      500
+    ],
+    "rows": [
+      [
+        "CE",
+        [
+          5.69,
+          13.9,
+          20.03,
+          37.6,
+          44.92,
+          54.28
+        ]
+      ],
+      [
+        "CE+activation",
+        [
+          12.13,
+          26.97,
+          33.92,
+          46.47,
+          50.92,
+          56.65
+        ]
+      ],
+      [
+        "CE+Jacobian",
+        [
+          6.78,
+          23.94,
+          32.03,
+          45.71,
+          51.47,
+          53.44
+        ]
+      ],
+      [
+        "CE+activation+Jacobian",
+        [
+          13.78,
+          33.39,
+          39.55,
+          49.49,
+          52.43,
+          54.57
+        ]
+      ],
+      [
+        "activation",
+        [
+          10.73,
+          28.56,
+          33.6,
+          45.73,
+          50.15,
+          56.59
+        ]
+      ],
+      [
+        "activation+Jacobian",
+        [
+          13.09,
+          33.31,
+          38.16,
+          47.79,
+          50.06,
+          51.33
+        ]
+      ]
+    ]
+  },
+  "table2": {
+    "dataset": "CIFAR100",
+    "model": "VGG9",
+    "noise_std": [
+      0,
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "uncertainty_label": "printed ±; definition pending supplementary material",
+    "rows": [
+      [
+        "lambda0",
+        [
+          64.78,
+          61.9,
+          47.53,
+          29.63,
+          17.69
+        ],
+        [
+          null,
+          0.07,
+          0.23,
+          0.16,
+          0.17
+        ]
+      ],
+      [
+        "lambda0.1",
+        [
+          65.62,
+          63.36,
+          53.57,
+          37.38,
+          23.99
+        ],
+        [
+          null,
+          0.18,
+          0.23,
+          0.18,
+          0.19
+        ]
+      ],
+      [
+        "lambda1",
+        [
+          63.59,
+          62.66,
+          57.53,
+          47.48,
+          35.43
+        ],
+        [
+          null,
+          0.13,
+          0.17,
+          0.14,
+          0.11
+        ]
+      ],
+      [
+        "lambda10",
+        [
+          61.37,
+          60.78,
+          58.28,
+          52.82,
+          44.96
+        ],
+        [
+          null,
+          0.05,
+          0.13,
+          0.1,
+          0.19
+        ]
+      ],
+      [
+        "l2_gamma1e-3",
+        [
+          66.92,
+          60.41,
+          39.93,
+          23.32,
+          13.76
+        ],
+        [
+          null,
+          0.27,
+          0.28,
+          0.25,
+          0.16
+        ]
+      ],
+      [
+        "dropout0.25",
+        [
+          66.8,
+          61.53,
+          44.34,
+          26.7,
+          15.77
+        ],
+        [
+          null,
+          0.1,
+          0.19,
+          0.24,
+          0.11
+        ]
+      ]
+    ]
+  },
+  "table3": {
+    "dataset": "MITScenes",
+    "teacher": "ImageNet-pretrained ResNet34",
+    "student": "VGG9",
+    "data_per_class": [
+      5,
+      10,
+      25,
+      50,
+      "Full"
+    ],
+    "aggregation": "two random-subset runs mean",
+    "rows": [
+      [
+        "scratchCE",
+        [
+          11.64,
+          20.3,
+          35.19,
+          46.38,
+          59.33
+        ]
+      ],
+      [
+        "pretrainedCE_oracle",
+        [
+          25.93,
+          43.81,
+          57.65,
+          64.18,
+          71.42
+        ]
+      ],
+      [
+        "CE+activation",
+        [
+          17.08,
+          27.13,
+          45.08,
+          55.22,
+          65.22
+        ]
+      ],
+      [
+        "CE+activation+Jacobian",
+        [
+          17.88,
+          28.25,
+          45.26,
+          56.49,
+          66.04
+        ]
+      ],
+      [
+        "CE+activation+attention",
+        [
+          16.53,
+          28.35,
+          46.01,
+          57.8,
+          67.24
+        ]
+      ],
+      [
+        "CE+activation+attention+Jacobian",
+        [
+          18.02,
+          29.25,
+          47.31,
+          58.35,
+          67.31
+        ]
+      ]
+    ]
+  },
+  "table4": {
+    "dataset": "MITScenes",
+    "data_per_class": 10,
+    "runs": 2,
+    "teacher_student_depths": [
+      [
+        7,
+        2
+      ],
+      [
+        15,
+        4
+      ],
+      [
+        27,
+        6
+      ],
+      [
+        33,
+        8
+      ]
+    ],
+    "accuracy": [
+      22.39,
+      21.98,
+      20.45,
+      20.03
+    ],
+    "Jacobian_loss_reduction_percent": [
+      25.88,
+      15.59,
+      11.55,
+      1.25
+    ]
+  },
+  "table5": {
+    "dataset": "MITScenes",
+    "data_per_class": 10,
+    "runs": 2,
+    "pooling_window": [
+      "Full",
+      "s/3",
+      "s/5",
+      "s/7",
+      "None"
+    ],
+    "accuracy": [
+      20.0,
+      21.2,
+      21.87,
+      21.09,
+      19.74
+    ]
+  },
+  "verified_at_utc": "2026-10-10T16:55:56.220956+00:00"
+}

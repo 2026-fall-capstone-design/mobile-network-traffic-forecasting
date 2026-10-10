@@ -396,3 +396,9 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 반응 증류·동적 routing·task 표현·분산 학습을 제안하려는 경우
 
 [76–79](records/0076-0079-learning-decisions.md)를 먼저 확인한다. 반응 loss는 global distillation과, 동적 소속은 calendar/global 대안 및 예측 시점 정보와 비교한다. task 전이는 허용 head와 동일 target을, 분산 학습은 실제 배치·통신 조건과 독립적인 소속 판단을 확인한다. 모델명·거리·embedding 교체만으로 과거 시도와 다른 연구가 되지는 않는다. 77 FedCAP의 IoT 표기는 79에서 Telecom으로 정정됐고, 80은 별도 원결과 검수가 남았다.
+
+## 입력 반응·상호작용 증류를 다시 설계하기 전
+
+[76의 문헌·구현 대조](records/0076-response-transfer-audit.md)에서 입력 미분, 파라미터 gradient, 시간 변화, 마스킹 예측 차이를 먼저 구분한다. Sobolev·Jacobian의 반응 loss와 TabDistill의 변수 조합 전달은 선행 사례이며, teacher의 좋은 점 예측만으로 미분 정확도나 별도 clustering 필요성이 보장되지 않는다. 같은 정보를 받는 global 대안, 실제로 가능한 입력 변화, teacher 버전과 질의 비용을 명시해야 한다.
+
+[저장 결과](evidence/0076-response-transfer/README.md)는 PMLB 27개 task의 결과·순위·요약과 PyGAM 1개 실패를 제공한다. 논문의 평균 순위를 원단위 오차로 해석하거나 코드 기본 v3를 버전 없는 과거 결과에 소급하지 않는다.

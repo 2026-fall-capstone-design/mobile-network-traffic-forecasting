@@ -44,3 +44,7 @@
 ## 76–79에서 검토한 학습 연결의 차이
 
 [판단 기록](../records/0076-0079-learning-decisions.md): Sobolev/Jacobian/TabDistill은 반응·상호작용 전달, DLM은 소속과 모델의 공동 추정, DynaSTar는 graph와 forecast의 공동학습, Liu는 예측 후 자원 배분을 다룬다. Task2Vec/회귀 전이는 task head를 허용하며 NTKMTL은 학습 중 균형을 조절한다. FMCL/EMD는 표현·통신·local 학습 조건을 비교해야 한다. 이는 당시 검토 기록의 분류이며 저장 일차본문의 후속 검수를 마친 것으로 표시하지 않는다. FedCAP 학술지 정정과 전문 미확보 범위도 함께 본다.
+
+## 반응 전달의 직접 원문 대조
+
+[세 논문 비교](0076-response-transfer.md)와 [76의 상세 검수](../records/0076-response-transfer-audit.md)에서 Sobolev·Jacobian·TabDistill의 저장 원문을 확인했다. Jacobian의 자료량별 결과 반전과 TabDistill의 F1·variance 예외, 자기 기준 overlap, Fiat 표의 설명 차이를 함께 읽는다. 위의 77–79 문헌까지 검수를 완료했다는 의미는 아니다.

@@ -1,0 +1,113 @@
+# 76: 입력 반응·상호작용 증류의 근거와 구현 경계
+
+[당시 판단](0076-0079-learning-decisions.md#c04) · [출처와 범위](../sources/history-075.md) · [문헌 비교](../references/0076-response-transfer.md) · [수치와 재사용 자료](../evidence/0076-response-transfer/README.md) · [주장 검수](../verification/history-075.md)
+
+76번은 TabICLv2가 파악한 관계를 최종 RCTL의 학습에 전달하려던 검토다. 당시에는 기존 증류와 다른 공유 결정, 신뢰할 수 있는 교사 반응, 같은 정보를 받는 global 모델 대비 필요성을 확보하지 못해 현재 형태를 채택하지 않았다. 이번 기록은 그 판단에 쓰인 논문과 저장 구현을 대조하고, 유리한 결과와 예외를 함께 찾을 수 있도록 보완한다.
+
+**44개 핵심 주장의 작성 후 원문 대조 완료.** 새 학습·추론은 하지 않았다.
+
+| 방법 | 실제 전달하는 정보 | 이 연구에 바로 옮길 수 없는 부분 |
+|---|---|---|
+| Sobolev Training | 함수값과 입력 미분 | 추정 teacher의 미분이 실제 트래픽의 정답 미분이라는 보장은 없음 |
+| Jacobian Matching | 활성값·입력 Jacobian, 또는 중간 attention map의 반응 | 국소 전개·입출력 의미·자료량·계산 경로 조건이 필요 |
+| TabDistill | 마스킹 질의에서 추출한 변수 상호작용 조합 | 입력 기울기 loss가 아니며, 선택된 조합 자체가 cell 소속은 아님 |
+
+## 범위와 당시 연구 질문
+
+<a id="c01"></a>**C01.** 저장 PDF 3개를 텍스트와 그림으로 모두 읽었다. Sobolev 10쪽, Jacobian 9쪽, TabDistill v1의 부록 포함 20쪽이다. 저장 코드·README 6개, 검색 응답 4개, 원 PNG 6개, repository tree도 읽었다. 커밋 JSON은 88개 파일의 목록과 61개 patch를 읽었으며, interaction CSV 27개 patch는 아직 남아 있다. 이 범위를 모든 참고문헌·보충자료·저장소 전체의 검수로 확대하지 않는다. [근거](../sources/history-075.md)
+
+<a id="c02"></a>**C02.** 원76은 소속을 고정한 뒤 실제 관측 target loss를 유지하면서 teacher와 student의 입력 반응을 보조 loss로 맞추는 안이었다. 실제 target을 남겨도 teacher 오차의 영향이 없어지는 것은 아니다. 당시 새 모델·수치 pilot·RCTL 학습은 0으로 기록됐고, 이번 아카이브 역시 원 연구 모듈을 실행하거나 import하지 않았다. 이 기록의 논문 속 실험은 우리 트래픽 실험이 아니다. [근거](../evidence/0076-0079-learning-decisions/originals/SRC-0022031.md.txt)
+
+<a id="c03"></a>**C03.** 비교할 양을 먼저 구분해야 한다. 입력에 대한 예측 미분, 파라미터에 대한 loss gradient, 시간에 따른 관측값 변화, 마스킹 후 예측값의 차이는 같은 값이 아니다. 76의 작은 진폭·높은 주파수 예시는 좋은 점 예측이 좋은 미분을 보장하지 않는다는 기호 설명이다. TabICLv2가 실제로 그런 오류를 보였다는 측정이나, 모든 반응 전달이 실패한다는 증거로 쓰지 않는다. [근거](../evidence/0076-0079-learning-decisions/originals/SRC-0022031.md.txt)
+
+## Sobolev Training: 어떤 추가 정보를 알고 있어야 하는가
+
+<a id="c04"></a>**C04.** Sobolev의 Eq. (1)은 함수값 오차에 입력 미분의 오차를 더한다. Eq. (2)는 큰 Jacobian·고차 미분 전체 대신 무작위 단위 벡터에 대한 투영을 맞춘다. 따라서 ‘예측 반응을 학습에 넣는다’거나 ‘일부 방향만 전달한다’는 원리 자체는 기존 방법에 포함된다. teacher 미분을 구하는 일과 그 미분을 맞추도록 student를 최적화하는 비용도 구분해야 한다. [근거](https://proceedings.neurips.cc/paper/2017/file/758a06618c69880a6cee5314ee42d52f-Paper.pdf#page=3)
+
+<a id="c05"></a>**C05.** 주 정리들은 compact 집합의 C1 함수, ReLU 근사, 유한 표본에서 값·미분을 맞추는 표현 가능성 등 명시된 조건을 둔다. 유한 표본을 정확히 맞출 수 있다는 명제는 미관측 입력에서 올바른 미분을 배웠다는 보장이 아니다. 증명은 별도 supplementary에 있다고 적혀 있으며, 이번에 읽은 10쪽에는 그 증명 전체가 없다. [근거](https://proceedings.neurips.cc/paper/2017/file/758a06618c69880a6cee5314ee42d52f-Paper.pdf#page=4)
+
+<a id="c06"></a>**C06.** 논문의 Kreg/Ksob는 함수족을 정확히 식별하는 데 필요한 관측 수의 정의다. 이를 잡음이 있는 트래픽에서 필요한 학습량의 보편적 비율로 바꾸지 않는다. p4에는 n차 다항식의 값·미분 관측에 `ceil(n/2)`개 점이 충분하다는 문장이 인쇄돼 있다. 계수 수와 짝수 차수의 경계 조건을 보충 증명과 함께 확인하기 전에는 이 문장을 실험 예산 산정에 쓰지 않는다. 인쇄식을 임의로 고쳐 인용하지도 않는다. [근거](https://proceedings.neurips.cc/paper/2017/file/758a06618c69880a6cee5314ee42d52f-Paper.pdf#page=4)
+
+<a id="c07"></a>**C07.** 인공 함수 비교는 두 개의 은닉층, 층당 ReLU 256개, 1차 미분의 제곱 오차를 사용한다. Fig. 2의 일곱 문제는 Ackley·Beale·Booth·Bukin·McCormick·Rosenbrock·Styblinski–Tang이며, 20/100/10,000개 학습점의 test MSE를 비교한다. 저자료·고주파 Ackley에서는 일반 회귀가 더 좋은 구간이 있고, 자료가 늘면 Sobolev의 결과가 좋아진다고 설명한다. 긍정적인 여섯 문제만으로 모든 반응 전달의 우위를 주장하지 않는다. [근거](https://proceedings.neurips.cc/paper/2017/file/758a06618c69880a6cee5314ee42d52f-Paper.pdf#page=4)
+
+<a id="c08"></a>**C08.** Atari 실험은 Pong·Breakout·Space Invaders의 A3C teacher 정책을 작은 네트워크로 모방한다. 100,000개 저장 상태의 10/20/50% 학습 조건과 별도 episode의 test를 사용하며, 비교값은 가장 가능성 높은 행동의 예측 오류와 정책 간 KL이다. 무작위 투영도 log-policy의 입력 미분에 적용한다. 이 결과를 게임 보상 증가, 실제 트래픽 오차 감소, 정답 인과 효과로 바꾸지 않는다. [근거](https://proceedings.neurips.cc/paper/2017/file/758a06618c69880a6cee5314ee42d52f-Paper.pdf#page=6)
+
+<a id="c09"></a>**C09.** synthetic-gradient Table 1에서 CIFAR-10의 Sobolev 정확도는 93.5%, critic은 93.2%, 전체 backpropagation 기준은 94.3%다. ImageNet의 모듈 1개에서는 Sobolev top-1/top-5가 72.0/90.8%, 모듈 3개에서는 66.5/87.4%이며 전체 backpropagation의 75.0/92.3%보다 낮다. Direct SG의 ImageNet 빈칸은 0점이 아니다. 학습률·annealing 설정이 backpropagation 기준에 맞춰졌다는 각주도 함께 보존한다. [근거](https://proceedings.neurips.cc/paper/2017/file/758a06618c69880a6cee5314ee42d52f-Paper.pdf#page=7)
+
+<a id="c10"></a>**C10.** synthetic gradient 절은 scalar loss 예측기의 미분을 이용해 유효한 gradient vector field를 구성하는 문제다. Proposition 4의 대칭 Jacobian은 해당 조건에서 필요한 성질이며, 이를 조건 없는 역명제나 임의 cell 간 공유 가능성 판정으로 사용하지 않는다. 미래 연구로 제시한 curvature·불확실성·유한 차분·내부 미분의 활용도 이미 검증된 네트워크 트래픽 결과와 구분한다. [근거](https://proceedings.neurips.cc/paper/2017/file/758a06618c69880a6cee5314ee42d52f-Paper.pdf#page=8)
+
+## Jacobian Matching: 국소 설명과 자료량별 결과
+
+<a id="c11"></a>**C11.** Jacobian의 D×k 크기는 입력·출력 차원이 같으면 내부 아키텍처와 무관하다. 그러나 두 모델의 입력 좌표, 정규화, 출력의 의미까지 자동으로 같아지는 것은 아니다. 논문은 동일 dataset의 다른 아키텍처로 전달하는 distillation과, 관련된 다른 dataset으로 옮기는 transfer learning을 구분한다. 서로 다른 cell의 반응을 비교할 때도 같은 좌표와 target을 먼저 정해야 한다. [근거](https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf#page=1)
+
+<a id="c12"></a>**C12.** 입력 Gaussian 잡음을 넣은 증류 loss와 Jacobian penalty의 연결은 국소 Taylor 설명에 기초한다. 일반적인 매끄러운 잔차 `r=T−S`에서는 2차 전개에 gradient norm뿐 아니라 `r·Δr` 항도 생긴다는 원76의 주석을 유지한다. 조각 선형 함수에서도 같은 선형 영역을 벗어나는 잡음은 별도로 봐야 한다. 논문에 적힌 식을 TabICL/RCTL의 모든 입력에서 성립하는 정확한 등식으로 인용하지 않는다. [근거](https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf#page=2)
+
+<a id="c13"></a>**C13.** 전체 Jacobian 계산을 줄이는 방법으로 정답 class 또는 출력값의 크기가 가장 큰 한 출력을 고르는 heuristic을 쓴다. 이것은 실제 Jacobian norm이 최대인 출력을 계산해서 선택했다는 뜻이 아니다. 중간 attention map에서는 teacher의 최대 위치를 찾고 student의 같은 위치를 비교한다. 이런 계산 절약과 무작위 투영, 여러 입력에서의 유한 차분은 서로 다른 근사 방식이다. [근거](https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf#page=4)
+
+<a id="c14"></a>**C14.** LwF 설명의 student는 target 정답용 출력과 source label 공간용 출력을 함께 가진다. target 자료에서 정답 loss와 teacher 활성값을 맞추며 source 원자료는 사용하지 않는다. teacher가 target에서 잘못되거나 잡음이 있는 출력을 낼 수 있다는 한계가 본문에 명시돼 있다. teacher를 더 잘 모방했다는 사실만으로 target 정답에 대한 성능이 좋아졌다고 결론내리지 않는다. [근거](https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf#page=4)
+
+<a id="c15"></a>**C15.** Proposition 3은 loss의 Lipschitz 조건하에서 source의 평균 matching loss를 target의 **최대** matching loss와 방향성 Hausdorff 항으로 제한한다. 실제 LwF의 target 평균 loss와 같지 않다. target 집합을 넓히면 거리 항이 커지지 않는다는 성질, source를 일부로 제한한 경계, 실제 정답 오차의 감소는 구분한다. 상한을 줄였다는 이유만으로 실제 오차 감소가 보장되지는 않는다. [근거](https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf#page=5)
+
+<a id="c16"></a>**C16.** 깊은 네트워크에 직접 적용했을 때 optimizer가 Jacobian loss를 줄이지 못했다는 실패가 보고돼 있다. 저자들은 2차 gradient 전달의 약화 등을 가능한 이유로 들고, 중간 attention map을 맞추는 방법을 사용한다. 이는 확인된 구현·최적화 현상과 원인 추측의 구분이다. 모든 아키텍처에서 반응 전달이 불가능하다는 결론이 아니다. [근거](https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf#page=5)
+
+<a id="c17"></a>**C17.** CIFAR-100의 VGG-9 teacher(64.78%)→VGG-4 student 실험에서 class당 100개일 때 CE+활성값의 50.92%가 Jacobian 추가 후 52.43%로 오른다. 500개 전체 조건에서는 56.65%에서 54.57%로 내려간다. 또한 100개 조건의 52.43%는 전체 자료로 CE만 학습한 54.28%보다 낮다. ‘적은 자료로 비슷해졌다’와 ‘전체 자료보다 좋다’를 바꾸어 쓰지 않는다. [근거](https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf#page=6)
+
+<a id="c18"></a>**C18.** 별도의 VGG-9 잡음 강건성 실험은 teacher–student matching이 아니라 한 모델의 Jacobian norm을 제한한다. λ=10에서 깨끗한 입력 정확도 61.37%는 λ=0의 64.78%보다 낮지만, 잡음 표준편차 0.4에서는 44.96%와 17.69%로 반대다. 깨끗한 입력과 잡음 입력, 모델 간 기울기 맞춤과 기울기 크기 제한을 한 성능 주장으로 합치지 않는다. [근거](https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf#page=7)
+
+<a id="c19"></a>**C19.** ImageNet ResNet-34→MIT Scenes 67개 class의 VGG-9 전이는 두 run 평균이다. 전체 자료에서 활성값+attention의 67.24%가 Jacobian 추가로 67.31%가 되지만, pretrained VGG-9를 쓰는 oracle의 71.42%에는 못 미친다. class당 10개에서도 28.35→29.25%와 oracle 43.81%의 격차가 남는다. 이 작은 차이를 통계적으로 유의한 보편적 개선으로 표시하지 않는다. [근거](https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf#page=7)
+
+<a id="c20"></a>**C20.** 중간 층 선택과 pooling에 따른 결과 차이도 남긴다. MIT의 class당 10개 조건에서 가장 얕은 (teacher 7, student 2) 층의 정확도/Jacobian loss 감소는 22.39/25.88%, 가장 깊은 (33, 8)은 20.03/1.25%다. pooling 실험은 s/5에서 21.87%, 없을 때 19.74%다. 이 별도 ablation을 Table 3과 동일 설정의 독립 재현이나 RCTL의 권장 층·window 값으로 사용하지 않는다. [근거](https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf#page=7)
+
+## TabDistill: 기울기 대신 상호작용 구조를 전달
+
+<a id="c21"></a>**C21.** TabDistill은 TFM의 마스킹된 입력에 질의하고 SPEX의 sparse Fourier 표현과 interaction index로 변수 조합을 추출한다. 자주 선택되는 조합을 GAM에 넣은 뒤 실제 target으로 학습한다. 따라서 후속 모델에 실제 정답을 유지하면서 teacher가 찾은 구조를 전달하는 선행 사례다. 입력 Jacobian을 보조 loss로 맞추거나 cell clustering을 수행한 논문으로 분류하지 않는다. [근거](https://arxiv.org/pdf/2604.13332v1#page=3)
+
+<a id="c22"></a>**C22.** 읽은 판본은 2026-04-14 arXiv v1이다. 주 interaction 비교는 2,000행·10개 특징 미만의 35개 회귀/44개 분류 task, TabPFN-2, SPEX budget 500, 최대 interaction order 3, EBM outer bags 4/max bins 256을 설명한다. interaction 수 1–8과 일곱 index·FAST·RuleFit을 비교한 **순위**를 원단위 MAE/F1처럼 읽지 않는다. 아래 PMLB 모델 비교의 저장 범위는 별도로 확인해야 한다. [근거](https://arxiv.org/pdf/2604.13332v1#page=4)
+
+<a id="c23"></a>**C23.** Table 1의 EBM MAE 평균 순위 2.26은 XGBoost 3.30보다 좋지만 teacher TabPFN 1.63보다 나쁘다. 같은 조합을 받는 PyGAM은 4.65다. 저장 커밋의 PMLB 요약에서는 이 네 값과 Linear 4.33/DecisionTree 4.78을 포함한 6방법×3지표의 18개 인쇄 순위가 반올림 수준에서 모두 일치한다. 이 연결은 저장 수치의 추적 근거이며 모델 재실행 성공을 의미하지 않는다. [근거](https://arxiv.org/pdf/2604.13332v1#page=6)
+
+<a id="c24"></a>**C24.** 그 저장 PMLB 결과는 27개 task×6방법의 162행이다. `542_pollution`의 PyGAM은 `SVD did not converge`로 지표가 비어 있고 순위에서 제외된다. 따라서 PyGAM 평균은 26개 task, 다른 다섯 방법은 27개 task다. 실패를 0점으로 바꾸거나 같은 task 집합의 평균이라고 쓰지 않는다. 이 묶음과 논문 전체의 35개 회귀 task가 같은 집합이라는 가정도 두지 않는다. [근거](../evidence/0076-response-transfer/pmlb-saved-results.json)
+
+<a id="c25"></a>**C25.** Table 2의 FBII는 MAE 평균 순위 3.52지만, F1 순위는 FBII 3.05보다 STII 2.96이 좋고 BII 3.05와는 같다. MAE 순위의 variance도 FAST 0.20이 FBII 0.60보다 작다. 따라서 FBII가 모든 지표에서 가장 정확하고 안정적이라고 요약하지 않는다. 여기의 variance는 원래 예측 오차의 분산이나 우리 실험의 seed 표준편차가 아니다. [근거](https://arxiv.org/pdf/2604.13332v1#page=7)
+
+<a id="c26"></a>**C26.** Table 3은 선택한 8개 interaction이 각 방법 자체의 budget 500 결과와 얼마나 겹치는지를 비교한다. FBII의 budget 100/200/300/400/500 값은 0.60/0.82/0.88/0.75/1.00으로 단조 증가하지 않는다. 마지막 1.00은 자기 기준과의 비교다. 이를 정답 interaction의 복원율이나 예측 정확도로 바꾸지 않는다. [근거](https://arxiv.org/pdf/2604.13332v1#page=7)
+
+<a id="c27"></a>**C27.** 다른 TFM을 쓴 확인은 42개 PMLB **분류** 자료의 TabICL 비교다. 이 결과가 회귀 TabICLv2, 네트워크 시계열, 시간 분할, 최종 RCTL의 검증을 대신하지 않는다. teacher 교체에 대한 해당 자료의 관측과 여러 분야에 통하는 일반적 주장도 구분한다. [근거](https://arxiv.org/pdf/2604.13332v1#page=6)
+
+<a id="c28"></a>**C28.** Fourier 인공 자료에서는 희소 항·잡음·표본 수를 조절해 R²를 비교한다. 최대 order 3과 상수항 포함 조건을 보존해야 하며, 설명된 극희소 k=1 조건은 상수항만 남는 경우다. n=15의 전체 Boolean Fourier 기저 32,768개와 order 제한을 둔 활성 후보 수는 다르다. 예측 R²가 좋다는 것과 모든 실제 interaction을 정확히 회복했다는 것도 구분한다. [근거](https://arxiv.org/pdf/2604.13332v1#page=8)
+
+<a id="c29"></a>**C29.** 결정트리 비교는 10,000행·15개 특징의 인공 이진 분류 자료, 7:3 분할, depth 1–10과 20개 seed를 사용한다. teacher 결정트리는 원래 target으로 적합하지만 이후 근사 모델의 train/test 평가는 teacher의 pseudo-label을 사용한다. teacher 함수의 모방 오차를 원래 정답 예측이나 실측 트래픽의 개선으로 바꾸지 않는다. [근거](https://arxiv.org/pdf/2604.13332v1#page=9)
+
+<a id="c30"></a>**C30.** Fiat 500 사례는 1,538행·7개 특징, OpenML task 363615의 공식 2:1 분할, 상위 10개 interaction을 사용하는 EBM이다. Table A5의 TabDistill MAE 536.1, R² 0.8595는 이 사례의 값이다. 위도·경도·model type의 관계와 지역별 가격 표는 해당 자료의 연관을 설명하며, 지역의 인과 효과나 통신 cell을 나눌 근거로 직접 옮길 수 없다. [근거](https://arxiv.org/pdf/2604.13332v1#page=9)
+
+<a id="c31"></a>**C31.** Fiat p19에는 RuleFit이 seller location interaction을 포착하지 못했다는 설명이 있으나 Table A6에는 longitude/latitude를 포함하는 항들이 있다. 특정 `latitude×longitude×model type`의 3변수 조합이 없다는 주장과 위치 변수가 전혀 없다는 주장은 다르다. 또한 RuleFit 목록의 6–10행은 같은 `(model type, age, mileage)` 조합을 반복한다. 표의 10행을 10개의 고유 변수 조합으로 세지 않는다. [근거](https://arxiv.org/pdf/2604.13332v1#page=19)
+
+<a id="c32"></a>**C32.** Table A6의 TabDistill 5행은 model type·age·latitude·longitude의 4변수 조합이며, 본문의 최대 order 3 설명과 적용 범위를 확인할 필요가 있다. 9월 저장 코드가 order 4를 허용한다는 사실만으로 4월 논문 표가 그 코드에서 생성됐다고 설명할 수는 없다. 실제 실행 판본과 설정은 미확인이다. [근거](https://arxiv.org/pdf/2604.13332v1#page=4)
+
+<a id="c33"></a>**C33.** Table A5의 RuleFit은 MSE 523,756과 RMSE 724.7을 함께 적는다. 인쇄 MSE의 제곱근은 약 723.7099여서 보통의 소수 첫째 자리 반올림으로는 724.7이 되지 않는다. 원수치·집계 과정·오기의 가능성은 남겨두고 표를 임의 수정하지 않는다. TabDistill의 509,888→714.1과 FAST의 540,500→735.2는 같은 제곱근 반올림과 양립한다. [근거](https://arxiv.org/pdf/2604.13332v1#page=19)
+
+<a id="c34"></a>**C34.** Table A1/A3의 FBII MAE 순위 8개를 단순 평균하면 3.3125로 Table 2의 3.52와 다르고, A2/A4의 F1 순위 평균 2.96도 Table 2의 3.05와 다르다. 동일 가중·동일 task 집합의 집계인지 확인되지 않아 원인을 단정하지 않는다. A2의 AUROC에서도 interaction 5/6개일 때 FAST 4.00/3.66이 FBII 4.11/4.00보다 좋다. 본문 요약과 모든 세부 조건의 일치 여부를 함께 확인해야 한다. [근거](https://arxiv.org/pdf/2604.13332v1#page=7)
+
+## 저장 코드와 삭제 이력에서 확인한 실행 경계
+
+<a id="c35"></a>**C35.** 저장 TabDistill 코드는 9월 25일 커밋 `64214da0edf7eef6e8bf645332471d78b30345e8`이다. 읽은 README·interaction search·downstream comparison·interaction 변환 파일 4개는 Git tree의 blob SHA와 맞는다. README는 TabPFN v3 기본값과 TabArena binary task 30개를 설명하므로 4월 논문의 설정과 그대로 같지 않다. 저장 파일과 현재 최신 버전의 상태도 구분한다. [근거](https://github.com/Clouddelta/tab-distill/blob/64214da0edf7eef6e8bf645332471d78b30345e8/readme.md)
+
+<a id="c36"></a>**C36.** `tabarena_single_mulindex.py`는 설명할 행 수와 각 행의 SPEX 마스킹 질의 budget을 별도 인자로 둔다. 함수 기본값은 설명 2행·budget 1,000·상위 10개 조합·order 2–4이고, CLI의 설명 행 수 0은 최대 1,000행을 뜻한다. 실제 budget은 SPEX 최소 조건에 맞춰 요청값보다 커질 수 있다. 요청 budget 하나를 전체 teacher 호출 수나 실행 비용의 상한으로 삼지 않는다. [근거](https://github.com/Clouddelta/tab-distill/blob/64214da0edf7eef6e8bf645332471d78b30345e8/experiments/interaction_search/tabarena_single_mulindex.py)
+
+<a id="c37"></a>**C37.** 이 구현의 기준 입력은 train 수치형 평균·범주형 최빈값이며, 선택한 열만 원래 관측값을 유지한다. binary 출력은 고정 positive class의 clipped logit, multiclass 출력은 마스킹 입력마다 최대 class 확률, 회귀는 예측값이다. multiclass의 선택 class는 마스크마다 바뀔 수 있다. 이런 반응을 같은 target에 대한 미분 또는 개별 특징의 인과 효과와 동일시하지 않는다. [근거](https://github.com/Clouddelta/tab-distill/blob/64214da0edf7eef6e8bf645332471d78b30345e8/experiments/interaction_search/tabarena_single_mulindex.py)
+
+<a id="c38"></a>**C38.** 각 행에서 절댓값이 큰 조합을 고른 뒤 전역 Counter로 **선택 빈도**를 합친다. 계수의 평균·합과는 다르다. downstream 파일은 지정 조합의 prefix를 EBM에 주고 실제 y로 적합하며, 분류 결과는 Accuracy/LogLoss를 계산한다. 이 파일만으로 논문의 F1/AUROC 순위, FAST/RuleFit 전체 비교와 Fiat 결과 생성 과정을 확인한 것은 아니다. [근거](https://github.com/Clouddelta/tab-distill/blob/64214da0edf7eef6e8bf645332471d78b30345e8/experiments/interaction_search/tabarena_single_mulindex.py)
+
+<a id="c39"></a>**C39.** 같은 커밋은 EBM 비교 폴더의 86개 파일을 tracking에서 제거하고 README의 PMLB 실행 안내를 삭제했다. 저장 검색 응답에는 삭제 전 안내가 남아 있다. 커밋 JSON의 삭제 patch 덕분에 4개 Python과 결과·순위·요약 CSV의 내용을 확인할 수 있었다. 추출한 86개 삭제 파일의 Git blob SHA가 맞는 것과, 아직 읽지 않은 interaction CSV 27개의 본문 검토는 별개다. [근거](../evidence/0076-response-transfer/commit-read-scope.json)
+
+<a id="c40"></a>**C40.** 삭제된 PMLB 비교 코드는 기존 FBII·interaction 4개 행을 가져와 EBM/PyGAM에 같은 조합을 주며, random split 80:20/seed 42를 사용한다. categorical encoder는 split 전에 전체 X에서 맞추므로 별도 TabArena search의 train-only encoding과 다르다. 파일 이름의 `3way`와 달리 조합 검사는 order 2–4를 허용한다. 이 코드의 존재를 시간 분할 실험이나 정확한 과거 실행 설정의 증거로 삼지 않는다. [근거](../evidence/0076-response-transfer/commit-read-scope.json)
+
+<a id="c41"></a>**C41.** 저장 27개 결과→27개 순위→요약에 대해 제곱근 161개, 순위 셀 805개, 평균/표준오차 셀 60개를 원 모델 없이 재계산했고 모두 일치했다. rank는 실패·결측 행을 제외하고 동률에 평균 순위를 쓴다. 요약의 표준오차는 task 간 표본 표준편차를 √n으로 나눈 값이다. CSV의 모델명은 버전 없는 `TabPFN`이며 새 코드의 version 열도 없으므로 기본 v3 설정을 거꾸로 적용해 저장 실행의 버전을 확정하지 않는다. [근거](../evidence/0076-response-transfer/pmlb-saved-results.json)
+
+<a id="c42"></a>**C42.** 저장 TabICL 2.2 regressor는 fit에서 checkpoint·전처리·ensemble/cache를 준비하고, 예측 경로에서 `no_grad`와 NumPy 변환을 쓴다. 내부 inference manager의 공통 forward wrapper에도 `no_grad`가 있다. 따라서 기본 sklearn predict 반환값에 바로 입력 autograd를 연결한다는 전제는 맞지 않는다. 별도 low-level 경로·전처리 미분·유한 차분의 가능성까지 불가능하다고 단정하지는 않는다. [근거](../sources/history-075.md#tabicl-runtime)
+
+## 팀이 재사용할 내용과 재검토 조건
+
+<a id="c43"></a>**C43.** 새 설계에는 반응의 대상·입력 좌표·전처리·teacher 판본·질의 예산·동일 정보를 받는 global 대안을 적어야 한다. 시간 sin/cos, lag, 파생 평균을 독립적으로 마스킹하면 실제 이력에서 만들 수 없는 입력이 될 수 있다는 76의 주석도 재사용한다. 미분·차분의 정확성과 공유 결정의 필요성을 별도로 확인해야 하며, 학습 모드의 dropout/BatchNorm과 inference 반응을 같은 것으로 취급하지 않는다. [근거](../evidence/0076-0079-learning-decisions/originals/SRC-0022031.md.txt)
+
+<a id="c44"></a>**C44.** 팀용 증거에는 원문 위치, 작은 인쇄 수치, 보관된 PMLB 결과와 산술 검사, 커밋의 읽은/안 읽은 patch 목록을 남긴다. 원 PDF·검색·외부 라이브러리 전체를 재게시하거나 재현 성공으로 표시하지 않는다. 별도 supplementary, interaction CSV 27개, 논문 설명 차이의 원인, 정확한 실행 판본, 외부 원자료의 팀 공용 접근과 이후 기록은 후속 범위다. 두 라이브러리 원목록 경로는 없어졌지만 같은 해시의 보관사본은 존재한다. 이 묶음으로 전체 Goal이 완료된 것은 아니다. [근거](../evidence/0076-response-transfer/commit-read-scope.json)

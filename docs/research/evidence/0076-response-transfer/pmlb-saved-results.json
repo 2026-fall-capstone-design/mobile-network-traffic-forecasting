@@ -1,0 +1,3573 @@
+{
+  "source_id": "SRC-0063879",
+  "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+  "commit": "64214da0edf7eef6e8bf645332471d78b30345e8",
+  "parent": "58bd71068a879c8ee90e62f405d8fb8f6db5e81e",
+  "source_role": "당시 저장 외부 repository commit의 삭제 patch. 숫자/문자열을 그대로 옮긴 파생 증거이며 모델 실행 로그의 독립 인증이 아님.",
+  "raw_tasks": [
+    {
+      "result_JSON_pointer": "/files/31/patch",
+      "rank_JSON_pointer": "/files/58/patch",
+      "original_filename": "experiments/EBM_comparison/result/210_cloud_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "210_cloud",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(2, 3), (3, 4), (1, 2), (2, 4)]",
+          "Train_Time_s": "3.8825172999640927",
+          "MSE": "0.07549641226238245",
+          "RMSE": "0.27476610464608336",
+          "MAE": "0.21271009556333115",
+          "R2": "0.9513230865333526",
+          "Error": ""
+        },
+        {
+          "Task": "210_cloud",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0005430000019259751",
+          "MSE": "0.09565462540188344",
+          "RMSE": "0.3092808196475873",
+          "MAE": "0.2412691037833824",
+          "R2": "0.9383259179629642",
+          "Error": ""
+        },
+        {
+          "Task": "210_cloud",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0047648000181652606",
+          "MSE": "0.30360904744294914",
+          "RMSE": "0.5510073025314176",
+          "MAE": "0.3563636297529394",
+          "R2": "0.8042456470817556",
+          "Error": ""
+        },
+        {
+          "Task": "210_cloud",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.16232310002669692",
+          "MSE": "0.09497300005956313",
+          "RMSE": "0.3081768973488492",
+          "MAE": "0.22501025281169199",
+          "R2": "0.9387654013345644",
+          "Error": ""
+        },
+        {
+          "Task": "210_cloud",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "1.2803139999741688",
+          "MSE": "0.07564932274323732",
+          "RMSE": "0.2750442196142964",
+          "MAE": "0.21887061033736577",
+          "R2": "0.9512244962822178",
+          "Error": ""
+        },
+        {
+          "Task": "210_cloud",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(2, 3), (3, 4), (1, 2), (2, 4)]",
+          "Train_Time_s": "0.21543139999266714",
+          "MSE": "1.2588258322910006",
+          "RMSE": "1.121974078261615",
+          "MAE": "0.6550738913535161",
+          "R2": "0.18836201255431984",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/32/patch",
+      "rank_JSON_pointer": "/files/59/patch",
+      "original_filename": "experiments/EBM_comparison/result/229_pwLinear_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "229_pwLinear",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 4), (0, 5), (0, 2), (0, 1)]",
+          "Train_Time_s": "2.3807742000208236",
+          "MSE": "2.5903007997335017",
+          "RMSE": "1.6094411451598662",
+          "MAE": "1.2839605096392233",
+          "R2": "0.8131739999548016",
+          "Error": ""
+        },
+        {
+          "Task": "229_pwLinear",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00037210003938525915",
+          "MSE": "3.372534488052062",
+          "RMSE": "1.8364461571339525",
+          "MAE": "1.4590093384210576",
+          "R2": "0.7567552276237293",
+          "Error": ""
+        },
+        {
+          "Task": "229_pwLinear",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0008013999904505908",
+          "MSE": "5.826860149729427",
+          "RMSE": "2.4138890094056578",
+          "MAE": "1.8440000290051102",
+          "R2": "0.5797364635378583",
+          "Error": ""
+        },
+        {
+          "Task": "229_pwLinear",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.03873560001375154",
+          "MSE": "3.407868930311589",
+          "RMSE": "1.8460414216131742",
+          "MAE": "1.5118244286626576",
+          "R2": "0.7542067234068233",
+          "Error": ""
+        },
+        {
+          "Task": "229_pwLinear",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.1574345999979414",
+          "MSE": "2.4265157642639563",
+          "RMSE": "1.5577277567867744",
+          "MAE": "1.2422876052558423",
+          "R2": "0.8249870307221874",
+          "Error": ""
+        },
+        {
+          "Task": "229_pwLinear",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 4), (0, 5), (0, 2), (0, 1)]",
+          "Train_Time_s": "0.2777998999808915",
+          "MSE": "2.4108732658572065",
+          "RMSE": "1.5526987041461735",
+          "MAE": "1.2177464476637365",
+          "R2": "0.8261152492705301",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/33/patch",
+      "rank_JSON_pointer": "/files/60/patch",
+      "original_filename": "experiments/EBM_comparison/result/230_machine_cpu_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "230_machine_cpu",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(3, 4), (2, 3), (1, 2), (2, 4)]",
+          "Train_Time_s": "7.431392400001641",
+          "MSE": "4806.55538786384",
+          "RMSE": "69.32932559793035",
+          "MAE": "33.365936596454105",
+          "R2": "0.9055813689489302",
+          "Error": ""
+        },
+        {
+          "Task": "230_machine_cpu",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0004613000201061368",
+          "MSE": "5633.068155793257",
+          "RMSE": "75.05376843166009",
+          "MAE": "48.06880134700475",
+          "R2": "0.8893455830696775",
+          "Error": ""
+        },
+        {
+          "Task": "230_machine_cpu",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0009419000125490129",
+          "MSE": "9295.458333333334",
+          "RMSE": "96.41295728963682",
+          "MAE": "45.17857142857143",
+          "R2": "0.8174026137217469",
+          "Error": ""
+        },
+        {
+          "Task": "230_machine_cpu",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.05483690003165975",
+          "MSE": "9661.337524220326",
+          "RMSE": "98.29210306133614",
+          "MAE": "46.8124449026017",
+          "R2": "0.8102153851253912",
+          "Error": ""
+        },
+        {
+          "Task": "230_machine_cpu",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.17187069996725768",
+          "MSE": "41867.295708232894",
+          "RMSE": "204.61499384999354",
+          "MAE": "56.310438428606304",
+          "R2": "0.17757054114827953",
+          "Error": ""
+        },
+        {
+          "Task": "230_machine_cpu",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(3, 4), (2, 3), (1, 2), (2, 4)]",
+          "Train_Time_s": "0.2510582000249997",
+          "MSE": "22809.868363359168",
+          "RMSE": "151.02936258674725",
+          "MAE": "61.04441012534628",
+          "R2": "0.5519293191208539",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.5"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "3.0",
+          "avg_rank": "2.75"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "4.0",
+          "avg_rank": "3.75"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.25"
+        },
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "6.0",
+          "avg_rank": "5.75"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/34/patch",
+      "rank_JSON_pointer": "/files/61/patch",
+      "original_filename": "experiments/EBM_comparison/result/527_analcatdata_election2000_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "527_analcatdata_election2000",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 9, 11), (0, 11), (9, 10), (0, 9)]",
+          "Train_Time_s": "351.0609490000061",
+          "MSE": "4696034420.954606",
+          "RMSE": "68527.61794309362",
+          "MAE": "32527.585038738653",
+          "R2": "0.667157942875807",
+          "Error": ""
+        },
+        {
+          "Task": "527_analcatdata_election2000",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0003184000379405916",
+          "MSE": "2.3290827018511977e-19",
+          "RMSE": "4.826057088194458e-10",
+          "MAE": "3.2027206283860975e-10",
+          "R2": "1.0",
+          "Error": ""
+        },
+        {
+          "Task": "527_analcatdata_election2000",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0006530999671667814",
+          "MSE": "7835088845.857142",
+          "RMSE": "88516.0372240937",
+          "MAE": "47167.42857142857",
+          "R2": "0.4446703632389921",
+          "Error": ""
+        },
+        {
+          "Task": "527_analcatdata_election2000",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.04200329998275265",
+          "MSE": "3906087378.855523",
+          "RMSE": "62498.699017303734",
+          "MAE": "30501.090454101562",
+          "R2": "0.7231472255220748",
+          "Error": ""
+        },
+        {
+          "Task": "527_analcatdata_election2000",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "1.2273135000141338",
+          "MSE": "7330650918.324972",
+          "RMSE": "85619.22049589666",
+          "MAE": "33012.89479282924",
+          "R2": "0.48042354186606495",
+          "Error": ""
+        },
+        {
+          "Task": "527_analcatdata_election2000",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 9, 11), (0, 11), (9, 10), (0, 9)]",
+          "Train_Time_s": "1.4211767999804579",
+          "MSE": "13588760782.735714",
+          "RMSE": "116570.84019057131",
+          "MAE": "57207.45269584302",
+          "R2": "0.03686585589913516",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/35/patch",
+      "rank_JSON_pointer": "/files/62/patch",
+      "original_filename": "experiments/EBM_comparison/result/542_pollution_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "542_pollution",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(12, 13), (8, 13), (8, 12, 13), (5, 13)]",
+          "Train_Time_s": "28.58392050000839",
+          "MSE": "3447.458900530235",
+          "RMSE": "58.715065362564616",
+          "MAE": "43.672431123599274",
+          "R2": "0.5112891880092811",
+          "Error": ""
+        },
+        {
+          "Task": "542_pollution",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0003301000106148422",
+          "MSE": "2595.2717826499315",
+          "RMSE": "50.943810052350145",
+          "MAE": "41.38443307794978",
+          "R2": "0.6320949961026736",
+          "Error": ""
+        },
+        {
+          "Task": "542_pollution",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0006338999955914915",
+          "MSE": "5546.514295796235",
+          "RMSE": "74.47492393951292",
+          "MAE": "61.60783386230464",
+          "R2": "0.2137276807564552",
+          "Error": ""
+        },
+        {
+          "Task": "542_pollution",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.03075669996906072",
+          "MSE": "3906.8038079493363",
+          "RMSE": "62.50443030657376",
+          "MAE": "49.573013305664055",
+          "R2": "0.4461725820784421",
+          "Error": ""
+        },
+        {
+          "Task": "542_pollution",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.15137540001887828",
+          "MSE": "1912.0484424137194",
+          "RMSE": "43.72697614075",
+          "MAE": "30.809239705403638",
+          "R2": "0.7289485462135961",
+          "Error": ""
+        },
+        {
+          "Task": "542_pollution",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(12, 13), (8, 13), (8, 12, 13), (5, 13)]",
+          "Train_Time_s": "",
+          "MSE": "",
+          "RMSE": "",
+          "MAE": "",
+          "R2": "",
+          "Error": "LinAlgError('SVD did not converge')"
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/36/patch",
+      "rank_JSON_pointer": "/files/63/patch",
+      "original_filename": "experiments/EBM_comparison/result/560_bodyfat_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "560_bodyfat",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 5), (0, 6), (0, 10)]",
+          "Train_Time_s": "2.249169000016991",
+          "MSE": "1.8480750320615704",
+          "RMSE": "1.3594392344130615",
+          "MAE": "1.1289311478117432",
+          "R2": "0.9602718899509075",
+          "Error": ""
+        },
+        {
+          "Task": "560_bodyfat",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0003825000021606684",
+          "MSE": "0.380309837327884",
+          "RMSE": "0.6166926603486408",
+          "MAE": "0.45952949263179155",
+          "R2": "0.9918244709722309",
+          "Error": ""
+        },
+        {
+          "Task": "560_bodyfat",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0013939000200480223",
+          "MSE": "0.46058844136292093",
+          "RMSE": "0.678666664396389",
+          "MAE": "0.40588252217161874",
+          "R2": "0.9900987200366027",
+          "Error": ""
+        },
+        {
+          "Task": "560_bodyfat",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.03508609998971224",
+          "MSE": "0.22851000333442198",
+          "RMSE": "0.4780271993667536",
+          "MAE": "0.3422076982610362",
+          "R2": "0.9950877153782759",
+          "Error": ""
+        },
+        {
+          "Task": "560_bodyfat",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.1515596000244841",
+          "MSE": "0.010906084160262302",
+          "RMSE": "0.10443219886731439",
+          "MAE": "0.05639122514163754",
+          "R2": "0.9997655516663518",
+          "Error": ""
+        },
+        {
+          "Task": "560_bodyfat",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 5), (0, 6), (0, 10)]",
+          "Train_Time_s": "0.2721832999959588",
+          "MSE": "24.931504208628315",
+          "RMSE": "4.993145722751171",
+          "MAE": "1.879720915551453",
+          "R2": "0.4640468997706805",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.25"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "4.0",
+          "avg_rank": "3.75"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/37/patch",
+      "rank_JSON_pointer": "/files/64/patch",
+      "original_filename": "experiments/EBM_comparison/result/561_cpu_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "561_cpu",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(3, 4), (2, 3), (1, 6), (1, 3)]",
+          "Train_Time_s": "10.047665200021584",
+          "MSE": "6521.022530181603",
+          "RMSE": "80.75284843385775",
+          "MAE": "18.708595184186557",
+          "R2": "0.8786943564292583",
+          "Error": ""
+        },
+        {
+          "Task": "561_cpu",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0003294000052846968",
+          "MSE": "6534.566764674541",
+          "RMSE": "80.83666720415026",
+          "MAE": "38.55284754928838",
+          "R2": "0.8784424032924252",
+          "Error": ""
+        },
+        {
+          "Task": "561_cpu",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0007637999951839447",
+          "MSE": "6473.833333333333",
+          "RMSE": "80.46013505664362",
+          "MAE": "21.69047619047619",
+          "R2": "0.8795721813204884",
+          "Error": ""
+        },
+        {
+          "Task": "561_cpu",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.044584899966139346",
+          "MSE": "6206.95606733126",
+          "RMSE": "78.78423742939485",
+          "MAE": "21.39982114519392",
+          "R2": "0.884536696986083",
+          "Error": ""
+        },
+        {
+          "Task": "561_cpu",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.14522459998261184",
+          "MSE": "174020.30847032854",
+          "RMSE": "417.1574144976073",
+          "MAE": "66.61374273754302",
+          "R2": "-2.237168007880555",
+          "Error": ""
+        },
+        {
+          "Task": "561_cpu",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(3, 4), (2, 3), (1, 6), (1, 3)]",
+          "Train_Time_s": "0.22459979995619506",
+          "MSE": "26200.24601235707",
+          "RMSE": "161.86490049531142",
+          "MAE": "52.65486447386832",
+          "R2": "0.5126166656332312",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.25"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.25"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "3.0",
+          "avg_rank": "2.5"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/38/patch",
+      "rank_JSON_pointer": "/files/65/patch",
+      "original_filename": "experiments/EBM_comparison/result/579_fri_c0_250_5_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "579_fri_c0_250_5",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (1, 2), (0, 3), (1, 3)]",
+          "Train_Time_s": "3.3356693999958225",
+          "MSE": "0.08009788231425605",
+          "RMSE": "0.2830156926996382",
+          "MAE": "0.23022320692949727",
+          "R2": "0.8990901571513129",
+          "Error": ""
+        },
+        {
+          "Task": "579_fri_c0_250_5",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00030020001577213407",
+          "MSE": "0.3856801683737646",
+          "RMSE": "0.6210315357320952",
+          "MAE": "0.46712635689597826",
+          "R2": "0.5141079382379017",
+          "Error": ""
+        },
+        {
+          "Task": "579_fri_c0_250_5",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0008956000092439353",
+          "MSE": "0.44914724625446356",
+          "RMSE": "0.6701844867306789",
+          "MAE": "0.5057164794951677",
+          "R2": "0.4341501082683218",
+          "Error": ""
+        },
+        {
+          "Task": "579_fri_c0_250_5",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.03511729999445379",
+          "MSE": "0.21706733469026648",
+          "RMSE": "0.4659048558346076",
+          "MAE": "0.37601004004478455",
+          "R2": "0.7265317134697882",
+          "Error": ""
+        },
+        {
+          "Task": "579_fri_c0_250_5",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.14387879997957498",
+          "MSE": "0.04929552423399315",
+          "RMSE": "0.22202595396483077",
+          "MAE": "0.1732539290189743",
+          "R2": "0.9378959410677137",
+          "Error": ""
+        },
+        {
+          "Task": "579_fri_c0_250_5",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (1, 2), (0, 3), (1, 3)]",
+          "Train_Time_s": "0.21383839996997267",
+          "MSE": "0.15624979556942548",
+          "RMSE": "0.3952844489344673",
+          "MAE": "0.30562811507928145",
+          "R2": "0.8031515707969731",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/39/patch",
+      "rank_JSON_pointer": "/files/66/patch",
+      "original_filename": "experiments/EBM_comparison/result/591_fri_c1_100_10_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "591_fri_c1_100_10",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 2), (0, 2), (0, 3)]",
+          "Train_Time_s": "310.26440650003497",
+          "MSE": "0.0769162472213524",
+          "RMSE": "0.2773377854194275",
+          "MAE": "0.23678254926205483",
+          "R2": "0.857343911364145",
+          "Error": ""
+        },
+        {
+          "Task": "591_fri_c1_100_10",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00030990003142505884",
+          "MSE": "0.4577179005230677",
+          "RMSE": "0.6765485204499879",
+          "MAE": "0.5255648274998624",
+          "R2": "0.15107343706818788",
+          "Error": ""
+        },
+        {
+          "Task": "591_fri_c1_100_10",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0006929000373929739",
+          "MSE": "0.8441740228583401",
+          "RMSE": "0.9187894333623674",
+          "MAE": "0.6918924621306359",
+          "R2": "-0.5656843460185688",
+          "Error": ""
+        },
+        {
+          "Task": "591_fri_c1_100_10",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.022922699979972094",
+          "MSE": "0.3709608129409512",
+          "RMSE": "0.6090655243411428",
+          "MAE": "0.4130382024217397",
+          "R2": "0.311981271537617",
+          "Error": ""
+        },
+        {
+          "Task": "591_fri_c1_100_10",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "1.0400679999729618",
+          "MSE": "0.04944072568149069",
+          "RMSE": "0.22235270558617157",
+          "MAE": "0.193645978346467",
+          "R2": "0.9083025914571431",
+          "Error": ""
+        },
+        {
+          "Task": "591_fri_c1_100_10",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 2), (0, 2), (0, 3)]",
+          "Train_Time_s": "1.4069400999578647",
+          "MSE": "0.24304216911481094",
+          "RMSE": "0.4929930720758771",
+          "MAE": "0.4017290612994281",
+          "R2": "0.5492311901318563",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/40/patch",
+      "rank_JSON_pointer": "/files/67/patch",
+      "original_filename": "experiments/EBM_comparison/result/594_fri_c2_100_5_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "594_fri_c2_100_5",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 2), (0, 1, 2), (1, 4)]",
+          "Train_Time_s": "1847.7453913000063",
+          "MSE": "0.15097685926610685",
+          "RMSE": "0.38855740794135796",
+          "MAE": "0.2859654251237211",
+          "R2": "0.8693743314437234",
+          "Error": ""
+        },
+        {
+          "Task": "594_fri_c2_100_5",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00035579997347667813",
+          "MSE": "1.2717283236453454",
+          "RMSE": "1.1277093258660875",
+          "MAE": "0.964837309499812",
+          "R2": "-0.10030347237074166",
+          "Error": ""
+        },
+        {
+          "Task": "594_fri_c2_100_5",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0006309999735094607",
+          "MSE": "0.26622774358457824",
+          "RMSE": "0.5159726190260276",
+          "MAE": "0.4416542628663591",
+          "R2": "0.7696588923427718",
+          "Error": ""
+        },
+        {
+          "Task": "594_fri_c2_100_5",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.021829299977980554",
+          "MSE": "0.15174429339320744",
+          "RMSE": "0.3895436989520013",
+          "MAE": "0.28042107964865864",
+          "R2": "0.8687103449466356",
+          "Error": ""
+        },
+        {
+          "Task": "594_fri_c2_100_5",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "1.1807986000203528",
+          "MSE": "0.0682729179240696",
+          "RMSE": "0.26129086842840415",
+          "MAE": "0.21151671740226446",
+          "R2": "0.9409300498667781",
+          "Error": ""
+        },
+        {
+          "Task": "594_fri_c2_100_5",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 2), (0, 1, 2), (1, 4)]",
+          "Train_Time_s": "1.637718699988909",
+          "MSE": "0.9470685602216642",
+          "RMSE": "0.9731744757347801",
+          "MAE": "0.8046418947198152",
+          "R2": "0.1805932084629246",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.25"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "3.0",
+          "avg_rank": "2.75"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/41/patch",
+      "rank_JSON_pointer": "/files/68/patch",
+      "original_filename": "experiments/EBM_comparison/result/596_fri_c2_250_5_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "596_fri_c2_250_5",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 2), (0, 1, 3), (0, 2)]",
+          "Train_Time_s": "4028.035429499985",
+          "MSE": "0.09077397211667236",
+          "RMSE": "0.3012871920886654",
+          "MAE": "0.22878788161897684",
+          "R2": "0.9069534200214234",
+          "Error": ""
+        },
+        {
+          "Task": "596_fri_c2_250_5",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00031510001281276345",
+          "MSE": "0.78700475803781",
+          "RMSE": "0.8871328863466904",
+          "MAE": "0.7270226271584457",
+          "R2": "0.19329187150513982",
+          "Error": ""
+        },
+        {
+          "Task": "596_fri_c2_250_5",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.000965600018389523",
+          "MSE": "0.41406091465879946",
+          "RMSE": "0.6434756519549123",
+          "MAE": "0.508165528923273",
+          "R2": "0.5755726987215718",
+          "Error": ""
+        },
+        {
+          "Task": "596_fri_c2_250_5",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.03180539997993037",
+          "MSE": "0.16550365481690663",
+          "RMSE": "0.40682140407912",
+          "MAE": "0.3484140834212303",
+          "R2": "0.8303528126446325",
+          "Error": ""
+        },
+        {
+          "Task": "596_fri_c2_250_5",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "1.2597492999630049",
+          "MSE": "0.03756600189425757",
+          "RMSE": "0.19381950854921073",
+          "MAE": "0.15811558820307256",
+          "R2": "0.9614934995326991",
+          "Error": ""
+        },
+        {
+          "Task": "596_fri_c2_250_5",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 2), (0, 1, 3), (0, 2)]",
+          "Train_Time_s": "4.97571590001462",
+          "MSE": "0.30673693188749634",
+          "RMSE": "0.5538383626000427",
+          "MAE": "0.45189988789391156",
+          "R2": "0.6855836337252113",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/42/patch",
+      "rank_JSON_pointer": "/files/69/patch",
+      "original_filename": "experiments/EBM_comparison/result/601_fri_c1_250_5_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "601_fri_c1_250_5",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 2), (1, 2), (0, 1, 3)]",
+          "Train_Time_s": "2554.683778800012",
+          "MSE": "0.05552322592364965",
+          "RMSE": "0.2356336689092831",
+          "MAE": "0.18270226016041458",
+          "R2": "0.9520569950935893",
+          "Error": ""
+        },
+        {
+          "Task": "601_fri_c1_250_5",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00030940002761781216",
+          "MSE": "0.8521485722052412",
+          "RMSE": "0.9231189371934915",
+          "MAE": "0.8122318463584537",
+          "R2": "0.2641896702038514",
+          "Error": ""
+        },
+        {
+          "Task": "601_fri_c1_250_5",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0009006999898701906",
+          "MSE": "0.5021745206534102",
+          "RMSE": "0.7086427313205225",
+          "MAE": "0.5602163371630013",
+          "R2": "0.5663840652798597",
+          "Error": ""
+        },
+        {
+          "Task": "601_fri_c1_250_5",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.030357400013599545",
+          "MSE": "0.2507110441892221",
+          "RMSE": "0.5007105393230924",
+          "MAE": "0.374037925535813",
+          "R2": "0.7835168864614643",
+          "Error": ""
+        },
+        {
+          "Task": "601_fri_c1_250_5",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "1.1824148000450805",
+          "MSE": "0.029258068450057184",
+          "RMSE": "0.1710499004678377",
+          "MAE": "0.1381414921116084",
+          "R2": "0.974736343288445",
+          "Error": ""
+        },
+        {
+          "Task": "601_fri_c1_250_5",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 2), (1, 2), (0, 1, 3)]",
+          "Train_Time_s": "1.8733778999885544",
+          "MSE": "0.214250745790994",
+          "RMSE": "0.4628722780541021",
+          "MAE": "0.3561240838264886",
+          "R2": "0.8149995000149195",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/43/patch",
+      "rank_JSON_pointer": "/files/70/patch",
+      "original_filename": "experiments/EBM_comparison/result/602_fri_c3_250_10_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "602_fri_c3_250_10",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (1, 3), (1, 2), (1, 4)]",
+          "Train_Time_s": "47.31776449998142",
+          "MSE": "0.07940502911372413",
+          "RMSE": "0.2817889797591881",
+          "MAE": "0.22028267317736266",
+          "R2": "0.9356427899781254",
+          "Error": ""
+        },
+        {
+          "Task": "602_fri_c3_250_10",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0003828000044450164",
+          "MSE": "0.8657646934659411",
+          "RMSE": "0.9304647728237437",
+          "MAE": "0.7865338132551978",
+          "R2": "0.2983038879425174",
+          "Error": ""
+        },
+        {
+          "Task": "602_fri_c3_250_10",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0017373000155203044",
+          "MSE": "0.1837964656930703",
+          "RMSE": "0.4287149002461546",
+          "MAE": "0.3569930822774768",
+          "R2": "0.8510342748323133",
+          "Error": ""
+        },
+        {
+          "Task": "602_fri_c3_250_10",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.03488029999425635",
+          "MSE": "0.16253040100507232",
+          "RMSE": "0.40315059345742293",
+          "MAE": "0.3044774182140827",
+          "R2": "0.8682702686571391",
+          "Error": ""
+        },
+        {
+          "Task": "602_fri_c3_250_10",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.15586500003701076",
+          "MSE": "0.029372387674684974",
+          "RMSE": "0.17138374390438835",
+          "MAE": "0.13420124376192688",
+          "R2": "0.976193889184068",
+          "Error": ""
+        },
+        {
+          "Task": "602_fri_c3_250_10",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (1, 3), (1, 2), (1, 4)]",
+          "Train_Time_s": "0.2938926999922842",
+          "MSE": "0.2016831182724755",
+          "RMSE": "0.44909143642745575",
+          "MAE": "0.32562598024547446",
+          "R2": "0.8365372704298286",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.25"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "5.0",
+          "avg_rank": "4.75"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/44/patch",
+      "rank_JSON_pointer": "/files/71/patch",
+      "original_filename": "experiments/EBM_comparison/result/611_fri_c3_100_5_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "611_fri_c3_100_5",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 3), (1, 4), (0, 2)]",
+          "Train_Time_s": "2483.5872395000188",
+          "MSE": "0.12312614110812445",
+          "RMSE": "0.3508933471984393",
+          "MAE": "0.2777520089771877",
+          "R2": "0.7740440284387694",
+          "Error": ""
+        },
+        {
+          "Task": "611_fri_c3_100_5",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00041850004345178604",
+          "MSE": "0.7197753398395269",
+          "RMSE": "0.8483957448263911",
+          "MAE": "0.7338231124608866",
+          "R2": "-0.3209017577870281",
+          "Error": ""
+        },
+        {
+          "Task": "611_fri_c3_100_5",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.000784299976658076",
+          "MSE": "0.41562027238338234",
+          "RMSE": "0.6446861813187734",
+          "MAE": "0.5501314448192716",
+          "R2": "0.23727096779179646",
+          "Error": ""
+        },
+        {
+          "Task": "611_fri_c3_100_5",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0266880999552086",
+          "MSE": "0.31704489101597344",
+          "RMSE": "0.563067394737054",
+          "MAE": "0.5044332498684525",
+          "R2": "0.41817240649872256",
+          "Error": ""
+        },
+        {
+          "Task": "611_fri_c3_100_5",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.9732129999902099",
+          "MSE": "0.05458234470560595",
+          "RMSE": "0.23362864701402938",
+          "MAE": "0.1870305603370071",
+          "R2": "0.8998327518669276",
+          "Error": ""
+        },
+        {
+          "Task": "611_fri_c3_100_5",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 3), (1, 4), (0, 2)]",
+          "Train_Time_s": "1.7494741000118665",
+          "MSE": "0.4383257780382263",
+          "RMSE": "0.6620617630087289",
+          "MAE": "0.5893368323890837",
+          "R2": "0.1956027684650269",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/45/patch",
+      "rank_JSON_pointer": "/files/72/patch",
+      "original_filename": "experiments/EBM_comparison/result/613_fri_c3_250_5_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "613_fri_c3_250_5",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 3), (0, 1, 2), (0, 4)]",
+          "Train_Time_s": "2857.2908122999943",
+          "MSE": "0.055778847323023385",
+          "RMSE": "0.23617545876534968",
+          "MAE": "0.18816583970681555",
+          "R2": "0.9426899944070776",
+          "Error": ""
+        },
+        {
+          "Task": "613_fri_c3_250_5",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0002931999624706805",
+          "MSE": "0.6572275587819202",
+          "RMSE": "0.8106957251533525",
+          "MAE": "0.6880594860175748",
+          "R2": "0.32473120408015976",
+          "Error": ""
+        },
+        {
+          "Task": "613_fri_c3_250_5",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.000928299967199564",
+          "MSE": "0.28122617670220895",
+          "RMSE": "0.5303076245936965",
+          "MAE": "0.4628078378085047",
+          "R2": "0.711054018984231",
+          "Error": ""
+        },
+        {
+          "Task": "613_fri_c3_250_5",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.03239960002247244",
+          "MSE": "0.1839572694872217",
+          "RMSE": "0.42890240088768644",
+          "MAE": "0.3437691109254956",
+          "R2": "0.8109930081179746",
+          "Error": ""
+        },
+        {
+          "Task": "613_fri_c3_250_5",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.5620456999749877",
+          "MSE": "0.03571707106098116",
+          "RMSE": "0.1889896056956074",
+          "MAE": "0.13946034196764232",
+          "R2": "0.9633024768257852",
+          "Error": ""
+        },
+        {
+          "Task": "613_fri_c3_250_5",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 3), (0, 1, 2), (0, 4)]",
+          "Train_Time_s": "4.590580400021281",
+          "MSE": "0.2776699666693808",
+          "RMSE": "0.526943988170831",
+          "MAE": "0.43679756383861174",
+          "R2": "0.714707848825689",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/46/patch",
+      "rank_JSON_pointer": "/files/73/patch",
+      "original_filename": "experiments/EBM_comparison/result/615_fri_c4_250_10_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "615_fri_c4_250_10",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 2), (0, 1, 3), (0, 4)]",
+          "Train_Time_s": "1370.5849248000304",
+          "MSE": "0.09586949131773417",
+          "RMSE": "0.3096279885891038",
+          "MAE": "0.2475463032835534",
+          "R2": "0.8654276800667708",
+          "Error": ""
+        },
+        {
+          "Task": "615_fri_c4_250_10",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0003127000527456403",
+          "MSE": "0.5619270643942863",
+          "RMSE": "0.7496179456191576",
+          "MAE": "0.6490937740557208",
+          "R2": "0.21122113354929395",
+          "Error": ""
+        },
+        {
+          "Task": "615_fri_c4_250_10",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0016550999716855586",
+          "MSE": "0.2745754066004836",
+          "RMSE": "0.5239994337787814",
+          "MAE": "0.43337033098563554",
+          "R2": "0.6145775996622858",
+          "Error": ""
+        },
+        {
+          "Task": "615_fri_c4_250_10",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.03398760000709444",
+          "MSE": "0.20737521144730742",
+          "RMSE": "0.4553846851260014",
+          "MAE": "0.3597310412675142",
+          "R2": "0.7089067343789504",
+          "Error": ""
+        },
+        {
+          "Task": "615_fri_c4_250_10",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.44775859999936074",
+          "MSE": "0.045246396863247246",
+          "RMSE": "0.21271200451137506",
+          "MAE": "0.1692250706627965",
+          "R2": "0.9364874840701233",
+          "Error": ""
+        },
+        {
+          "Task": "615_fri_c4_250_10",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 2), (0, 1, 3), (0, 4)]",
+          "Train_Time_s": "5.035504699975718",
+          "MSE": "0.22387019996516158",
+          "RMSE": "0.47314923646262136",
+          "MAE": "0.377208678097756",
+          "R2": "0.6857526648036485",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/47/patch",
+      "rank_JSON_pointer": "/files/74/patch",
+      "original_filename": "experiments/EBM_comparison/result/621_fri_c0_100_10_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "621_fri_c0_100_10",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 3), (1, 4), (1, 3)]",
+          "Train_Time_s": "5.467629400023725",
+          "MSE": "0.30154118106592065",
+          "RMSE": "0.549127654617686",
+          "MAE": "0.42856914568942794",
+          "R2": "0.7280984987721282",
+          "Error": ""
+        },
+        {
+          "Task": "621_fri_c0_100_10",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00044739997247233987",
+          "MSE": "0.2831489534522537",
+          "RMSE": "0.5321174244959976",
+          "MAE": "0.4335970917613368",
+          "R2": "0.7446828813145163",
+          "Error": ""
+        },
+        {
+          "Task": "621_fri_c0_100_10",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0008813999593257904",
+          "MSE": "0.9853245117565981",
+          "RMSE": "0.9926351352619944",
+          "MAE": "0.704769990593195",
+          "R2": "0.11152694634876359",
+          "Error": ""
+        },
+        {
+          "Task": "621_fri_c0_100_10",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.025668499991297722",
+          "MSE": "0.41621825525210066",
+          "RMSE": "0.6451497928792201",
+          "MAE": "0.45952426791191103",
+          "R2": "0.6246934894880867",
+          "Error": ""
+        },
+        {
+          "Task": "621_fri_c0_100_10",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.15542899997672066",
+          "MSE": "0.10965643797642052",
+          "RMSE": "0.3311441347456127",
+          "MAE": "0.24280248919967562",
+          "R2": "0.9011221286601923",
+          "Error": ""
+        },
+        {
+          "Task": "621_fri_c0_100_10",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 3), (1, 4), (1, 3)]",
+          "Train_Time_s": "0.2555379999685101",
+          "MSE": "0.6344125019380427",
+          "RMSE": "0.7965001581531812",
+          "MAE": "0.6063103563053075",
+          "R2": "0.4279464215636476",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.25"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "3.0",
+          "avg_rank": "2.75"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/48/patch",
+      "rank_JSON_pointer": "/files/75/patch",
+      "original_filename": "experiments/EBM_comparison/result/624_fri_c0_100_5_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "624_fri_c0_100_5",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 2), (1, 2), (1, 3)]",
+          "Train_Time_s": "4.598716599983163",
+          "MSE": "0.07334142388674211",
+          "RMSE": "0.2708162179167675",
+          "MAE": "0.22240247734362528",
+          "R2": "0.9145676358199601",
+          "Error": ""
+        },
+        {
+          "Task": "624_fri_c0_100_5",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00035550002939999104",
+          "MSE": "0.3218930487670533",
+          "RMSE": "0.567356192146568",
+          "MAE": "0.4976479102479381",
+          "R2": "0.6250402199477696",
+          "Error": ""
+        },
+        {
+          "Task": "624_fri_c0_100_5",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.000744100019801408",
+          "MSE": "0.47449313094768647",
+          "RMSE": "0.6888346179945419",
+          "MAE": "0.5290284402668476",
+          "R2": "0.4472827521504127",
+          "Error": ""
+        },
+        {
+          "Task": "624_fri_c0_100_5",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.025130100024398416",
+          "MSE": "0.19541142609669326",
+          "RMSE": "0.4420536461750918",
+          "MAE": "0.36067521683871745",
+          "R2": "0.7723733841735313",
+          "Error": ""
+        },
+        {
+          "Task": "624_fri_c0_100_5",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.15558469999814406",
+          "MSE": "0.03617344944122629",
+          "RMSE": "0.19019318978666477",
+          "MAE": "0.12979487627744674",
+          "R2": "0.9578630582481812",
+          "Error": ""
+        },
+        {
+          "Task": "624_fri_c0_100_5",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 2), (1, 2), (1, 3)]",
+          "Train_Time_s": "0.21477600000798702",
+          "MSE": "0.5001905622519301",
+          "RMSE": "0.7072415162106437",
+          "MAE": "0.572657124162845",
+          "R2": "0.4173488867666979",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/49/patch",
+      "rank_JSON_pointer": "/files/76/patch",
+      "original_filename": "experiments/EBM_comparison/result/634_fri_c2_100_10_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "634_fri_c2_100_10",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 3), (0, 3), (1, 3)]",
+          "Train_Time_s": "243.6331076999777",
+          "MSE": "0.2782145786639678",
+          "RMSE": "0.5274604996243489",
+          "MAE": "0.43001191106886055",
+          "R2": "0.7789160407543542",
+          "Error": ""
+        },
+        {
+          "Task": "634_fri_c2_100_10",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00029960001120343804",
+          "MSE": "0.8433526548664749",
+          "RMSE": "0.9183423407784675",
+          "MAE": "0.7744859900543208",
+          "R2": "0.3298275565803239",
+          "Error": ""
+        },
+        {
+          "Task": "634_fri_c2_100_10",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0007409999961964786",
+          "MSE": "0.7114394072590435",
+          "RMSE": "0.8434686759204775",
+          "MAE": "0.6562087596859782",
+          "R2": "0.43465277170043737",
+          "Error": ""
+        },
+        {
+          "Task": "634_fri_c2_100_10",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.021226299984846264",
+          "MSE": "0.5653579417933315",
+          "RMSE": "0.7519028805592725",
+          "MAE": "0.6332572062965482",
+          "R2": "0.5507367990460126",
+          "Error": ""
+        },
+        {
+          "Task": "634_fri_c2_100_10",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.1619652999797836",
+          "MSE": "0.08161919929325087",
+          "RMSE": "0.2856907406501843",
+          "MAE": "0.21626248774118723",
+          "R2": "0.9351410849249349",
+          "Error": ""
+        },
+        {
+          "Task": "634_fri_c2_100_10",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 1, 3), (0, 3), (1, 3)]",
+          "Train_Time_s": "1.8372123999870382",
+          "MSE": "0.765636593373",
+          "RMSE": "0.8750066247594929",
+          "MAE": "0.7319865179145644",
+          "R2": "0.39158483276069234",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/50/patch",
+      "rank_JSON_pointer": "/files/77/patch",
+      "original_filename": "experiments/EBM_comparison/result/635_fri_c0_250_10_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "635_fri_c0_250_10",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 3), (0, 2), (0, 2, 3)]",
+          "Train_Time_s": "7468.369127199985",
+          "MSE": "0.1289216142114885",
+          "RMSE": "0.3590565612984791",
+          "MAE": "0.27730264600759374",
+          "R2": "0.8628903336674905",
+          "Error": ""
+        },
+        {
+          "Task": "635_fri_c0_250_10",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00035710004158318043",
+          "MSE": "0.4645142327584004",
+          "RMSE": "0.6815528099556192",
+          "MAE": "0.5213612128687929",
+          "R2": "0.5059836021310813",
+          "Error": ""
+        },
+        {
+          "Task": "635_fri_c0_250_10",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0015362999984063208",
+          "MSE": "0.7885311087948126",
+          "RMSE": "0.8879927414088544",
+          "MAE": "0.6988817946985364",
+          "R2": "0.1613878100975087",
+          "Error": ""
+        },
+        {
+          "Task": "635_fri_c0_250_10",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.04149859998142347",
+          "MSE": "0.2849912124684393",
+          "RMSE": "0.533845682260744",
+          "MAE": "0.42291145598515867",
+          "R2": "0.696908464199458",
+          "Error": ""
+        },
+        {
+          "Task": "635_fri_c0_250_10",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.9983687999774702",
+          "MSE": "0.0590218853464977",
+          "RMSE": "0.24294420212570972",
+          "MAE": "0.19202416334301234",
+          "R2": "0.9372295246559766",
+          "Error": ""
+        },
+        {
+          "Task": "635_fri_c0_250_10",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (0, 3), (0, 2), (0, 2, 3)]",
+          "Train_Time_s": "1.9664550999877974",
+          "MSE": "0.3475805202856223",
+          "RMSE": "0.5895595985866249",
+          "MAE": "0.46074855055841246",
+          "R2": "0.6303439927313993",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/51/patch",
+      "rank_JSON_pointer": "/files/78/patch",
+      "original_filename": "experiments/EBM_comparison/result/656_fri_c1_100_5_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "656_fri_c1_100_5",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (1, 2), (0, 1, 2), (1, 3)]",
+          "Train_Time_s": "263.6603983999812",
+          "MSE": "0.06951257040504687",
+          "RMSE": "0.26365236658343666",
+          "MAE": "0.21489722379926182",
+          "R2": "0.897689236300176",
+          "Error": ""
+        },
+        {
+          "Task": "656_fri_c1_100_5",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0003215000033378601",
+          "MSE": "0.7160414329010225",
+          "RMSE": "0.8461923143712796",
+          "MAE": "0.7164488293480378",
+          "R2": "-0.053892057421329964",
+          "Error": ""
+        },
+        {
+          "Task": "656_fri_c1_100_5",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0006414999952539802",
+          "MSE": "0.34334774717034683",
+          "RMSE": "0.5859588271972245",
+          "MAE": "0.4819413642399013",
+          "R2": "0.4946501039607387",
+          "Error": ""
+        },
+        {
+          "Task": "656_fri_c1_100_5",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.021481100004166365",
+          "MSE": "0.27241099158032084",
+          "RMSE": "0.5219300638786013",
+          "MAE": "0.4241931519471109",
+          "R2": "0.5990570277230687",
+          "Error": ""
+        },
+        {
+          "Task": "656_fri_c1_100_5",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.157663699996192",
+          "MSE": "0.0642359806087479",
+          "RMSE": "0.2534481813088188",
+          "MAE": "0.2044217369519174",
+          "R2": "0.905455485320236",
+          "Error": ""
+        },
+        {
+          "Task": "656_fri_c1_100_5",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (1, 2), (0, 1, 2), (1, 3)]",
+          "Train_Time_s": "1.6530467999982648",
+          "MSE": "0.4716930646292611",
+          "RMSE": "0.6867991443131398",
+          "MAE": "0.5586812560257621",
+          "R2": "0.3057474728250542",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/52/patch",
+      "rank_JSON_pointer": "/files/79/patch",
+      "original_filename": "experiments/EBM_comparison/result/657_fri_c2_250_10_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "657_fri_c2_250_10",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (1, 2), (0, 1, 3), (2, 3)]",
+          "Train_Time_s": "415.36126640002476",
+          "MSE": "0.09931627903946262",
+          "RMSE": "0.3151448540583562",
+          "MAE": "0.2576478646177469",
+          "R2": "0.8949679382140325",
+          "Error": ""
+        },
+        {
+          "Task": "657_fri_c2_250_10",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00034680002136155963",
+          "MSE": "0.6852317565121504",
+          "RMSE": "0.8277872652512542",
+          "MAE": "0.6746250125502959",
+          "R2": "0.2753322528415111",
+          "Error": ""
+        },
+        {
+          "Task": "657_fri_c2_250_10",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0014958999818190932",
+          "MSE": "0.2264398009715515",
+          "RMSE": "0.47585691228724575",
+          "MAE": "0.3869353102892637",
+          "R2": "0.760528290060122",
+          "Error": ""
+        },
+        {
+          "Task": "657_fri_c2_250_10",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.03362180001568049",
+          "MSE": "0.15939982752161483",
+          "RMSE": "0.39924907955011596",
+          "MAE": "0.3073417773470283",
+          "R2": "0.8314265023333137",
+          "Error": ""
+        },
+        {
+          "Task": "657_fri_c2_250_10",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.7227660000207834",
+          "MSE": "0.027889496794468397",
+          "RMSE": "0.16700148740196416",
+          "MAE": "0.13383082130923868",
+          "R2": "0.9705054259097623",
+          "Error": ""
+        },
+        {
+          "Task": "657_fri_c2_250_10",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(0, 1), (1, 2), (0, 1, 3), (2, 3)]",
+          "Train_Time_s": "1.9229288999922574",
+          "MSE": "0.18468677548386356",
+          "RMSE": "0.42975199299580163",
+          "MAE": "0.3493822632741123",
+          "R2": "0.8046842571904592",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/53/patch",
+      "rank_JSON_pointer": "/files/80/patch",
+      "original_filename": "experiments/EBM_comparison/result/659_sleuth_ex1714_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "659_sleuth_ex1714",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(4, 5), (1, 4, 5), (3, 5), (5, 6)]",
+          "Train_Time_s": "278.4214569000178",
+          "MSE": "1889668.0792648639",
+          "RMSE": "1374.651984781917",
+          "MAE": "965.7296146488194",
+          "R2": "0.69487686809919",
+          "Error": ""
+        },
+        {
+          "Task": "659_sleuth_ex1714",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.000443900004029274",
+          "MSE": "2385625.2588046286",
+          "RMSE": "1544.546942894462",
+          "MAE": "1163.0435079853607",
+          "R2": "0.6147950751269892",
+          "Error": ""
+        },
+        {
+          "Task": "659_sleuth_ex1714",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0006031999946571887",
+          "MSE": "2172019.1",
+          "RMSE": "1473.7771541179488",
+          "MAE": "1108.5",
+          "R2": "0.6492858837948932",
+          "Error": ""
+        },
+        {
+          "Task": "659_sleuth_ex1714",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.03981650003697723",
+          "MSE": "1677212.4911446571",
+          "RMSE": "1295.0723883801465",
+          "MAE": "915.80869140625",
+          "R2": "0.7291818950763536",
+          "Error": ""
+        },
+        {
+          "Task": "659_sleuth_ex1714",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.15227730001788586",
+          "MSE": "1502593.516318798",
+          "RMSE": "1225.8032127216823",
+          "MAE": "786.86767578125",
+          "R2": "0.7573774755980409",
+          "Error": ""
+        },
+        {
+          "Task": "659_sleuth_ex1714",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(4, 5), (1, 4, 5), (3, 5), (5, 6)]",
+          "Train_Time_s": "1.6609287000028417",
+          "MSE": "2956530.691468884",
+          "RMSE": "1719.4565104907085",
+          "MAE": "1318.1458142291763",
+          "R2": "0.5226114501056722",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/54/patch",
+      "rank_JSON_pointer": "/files/81/patch",
+      "original_filename": "experiments/EBM_comparison/result/665_sleuth_case2002_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "665_sleuth_case2002",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(2, 5), (1, 5), (0, 1, 2), (0, 5)]",
+          "Train_Time_s": "2.3689128999831155",
+          "MSE": "64.97290032088328",
+          "RMSE": "8.06057692233523",
+          "MAE": "6.202000411437756",
+          "R2": "0.3476325328127655",
+          "Error": ""
+        },
+        {
+          "Task": "665_sleuth_case2002",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0003790999762713909",
+          "MSE": "64.60115758473808",
+          "RMSE": "8.037484530917498",
+          "MAE": "6.122123384351939",
+          "R2": "0.351365056157523",
+          "Error": ""
+        },
+        {
+          "Task": "665_sleuth_case2002",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0007189999450929463",
+          "MSE": "199.06666666666666",
+          "RMSE": "14.109098719148104",
+          "MAE": "10.533333333333333",
+          "R2": "-0.9987505020304341",
+          "Error": ""
+        },
+        {
+          "Task": "665_sleuth_case2002",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.04408620001049712",
+          "MSE": "118.47983807057605",
+          "RMSE": "10.88484442105518",
+          "MAE": "8.461938277880352",
+          "R2": "-0.1896096910116296",
+          "Error": ""
+        },
+        {
+          "Task": "665_sleuth_case2002",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.16951979999430478",
+          "MSE": "62.644703866722494",
+          "RMSE": "7.914840735398439",
+          "MAE": "5.976775436848402",
+          "R2": "0.37100904234849563",
+          "Error": ""
+        },
+        {
+          "Task": "665_sleuth_case2002",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(2, 5), (1, 5), (0, 1, 2), (0, 5)]",
+          "Train_Time_s": "1.7325352000189014",
+          "MSE": "85.11978746299611",
+          "RMSE": "9.226038557419761",
+          "MAE": "7.387873291436394",
+          "R2": "0.14534552281788005",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/55/patch",
+      "rank_JSON_pointer": "/files/82/patch",
+      "original_filename": "experiments/EBM_comparison/result/687_sleuth_ex1605_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "687_sleuth_ex1605",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(3, 4), (0, 1, 4), (0, 3, 4), (0, 2, 3)]",
+          "Train_Time_s": "102.36958820000291",
+          "MSE": "111.92356578737324",
+          "RMSE": "10.579393450825677",
+          "MAE": "8.704844173242849",
+          "R2": "0.6822916786806961",
+          "Error": ""
+        },
+        {
+          "Task": "687_sleuth_ex1605",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0003863999736495316",
+          "MSE": "102.14101214295046",
+          "RMSE": "10.10648366856398",
+          "MAE": "8.223947615366638",
+          "R2": "0.7100606179091873",
+          "Error": ""
+        },
+        {
+          "Task": "687_sleuth_ex1605",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0006900000153109431",
+          "MSE": "150.69230769230768",
+          "RMSE": "12.275679520593053",
+          "MAE": "9.615384615384615",
+          "R2": "0.5722420048374093",
+          "Error": ""
+        },
+        {
+          "Task": "687_sleuth_ex1605",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.027376700018066913",
+          "MSE": "147.35337283515122",
+          "RMSE": "12.138919755692893",
+          "MAE": "10.34407747708834",
+          "R2": "0.5817199675970748",
+          "Error": ""
+        },
+        {
+          "Task": "687_sleuth_ex1605",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "1.1242660999996588",
+          "MSE": "102.90947267131952",
+          "RMSE": "10.14443062331837",
+          "MAE": "8.520221416766827",
+          "R2": "0.7078792515208782",
+          "Error": ""
+        },
+        {
+          "Task": "687_sleuth_ex1605",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(3, 4), (0, 1, 4), (0, 3, 4), (0, 2, 3)]",
+          "Train_Time_s": "9.753775999997742",
+          "MSE": "330.7415465923798",
+          "RMSE": "18.186301069551767",
+          "MAE": "16.21340806616042",
+          "R2": "0.06115087721526169",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.25"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "5.0",
+          "avg_rank": "4.75"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/56/patch",
+      "rank_JSON_pointer": "/files/83/patch",
+      "original_filename": "experiments/EBM_comparison/result/695_chatfield_4_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "695_chatfield_4",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(10, 11), (8, 11), (9, 10, 11), (6, 11)]",
+          "Train_Time_s": "138.30059369996889",
+          "MSE": "273.28685893022737",
+          "RMSE": "16.53139010882713",
+          "MAE": "12.4176645370674",
+          "R2": "0.878123210369126",
+          "Error": ""
+        },
+        {
+          "Task": "695_chatfield_4",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.00034470000537112355",
+          "MSE": "189.60809676454133",
+          "RMSE": "13.769825589474303",
+          "MAE": "10.378016930765105",
+          "R2": "0.915441136788863",
+          "Error": ""
+        },
+        {
+          "Task": "695_chatfield_4",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0017238000291399658",
+          "MSE": "562.8961798785626",
+          "RMSE": "23.725433186320597",
+          "MAE": "18.40851090816741",
+          "R2": "0.748967149142735",
+          "Error": ""
+        },
+        {
+          "Task": "695_chatfield_4",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.052760599995963275",
+          "MSE": "452.8722468772109",
+          "RMSE": "21.280795259510647",
+          "MAE": "14.671122883228545",
+          "R2": "0.7980341397373711",
+          "Error": ""
+        },
+        {
+          "Task": "695_chatfield_4",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.16540019999956712",
+          "MSE": "223.58594879048047",
+          "RMSE": "14.952790668984852",
+          "MAE": "11.257928589557077",
+          "R2": "0.9002881523399048",
+          "Error": ""
+        },
+        {
+          "Task": "695_chatfield_4",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(10, 11), (8, 11), (9, 10, 11), (6, 11)]",
+          "Train_Time_s": "1.9076719000004232",
+          "MSE": "640.6767755999681",
+          "RMSE": "25.311593699330118",
+          "MAE": "17.089741478169508",
+          "R2": "0.714279607490679",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.0"
+        },
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "2.0",
+          "avg_rank": "2.0"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.25"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "6.0",
+          "avg_rank": "5.75"
+        }
+      ]
+    },
+    {
+      "result_JSON_pointer": "/files/57/patch",
+      "rank_JSON_pointer": "/files/84/patch",
+      "original_filename": "experiments/EBM_comparison/result/706_sleuth_case1202_regression_method_compare.csv",
+      "recorded_result_strings": [
+        {
+          "Task": "706_sleuth_case1202",
+          "Method": "EBM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(2, 4), (0, 4), (1, 4), (1, 3, 5)]",
+          "Train_Time_s": "55.64407989999745",
+          "MSE": "1373.798398811885",
+          "RMSE": "37.064786507032316",
+          "MAE": "25.050228232411794",
+          "R2": "0.8322296540912771",
+          "Error": ""
+        },
+        {
+          "Task": "706_sleuth_case1202",
+          "Method": "LinearRegression",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0003157999599352479",
+          "MSE": "1780.1223927755138",
+          "RMSE": "42.19149668802369",
+          "MAE": "34.407980962465125",
+          "R2": "0.7826087511427461",
+          "Error": ""
+        },
+        {
+          "Task": "706_sleuth_case1202",
+          "Method": "DecisionTree",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.0005760000203736126",
+          "MSE": "4191.394736842105",
+          "RMSE": "64.7409818958757",
+          "MAE": "45.63157894736842",
+          "R2": "0.48814051213908205",
+          "Error": ""
+        },
+        {
+          "Task": "706_sleuth_case1202",
+          "Method": "XGBoost",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.030038799974136055",
+          "MSE": "3641.744036015883",
+          "RMSE": "60.34686434286278",
+          "MAE": "44.6286227577611",
+          "R2": "0.5552646901016844",
+          "Error": ""
+        },
+        {
+          "Task": "706_sleuth_case1202",
+          "Method": "TabPFN",
+          "Num_Interactions": "",
+          "Interactions": "",
+          "Train_Time_s": "0.1487362000043504",
+          "MSE": "1261.8675110074953",
+          "RMSE": "35.5227745398286",
+          "MAE": "27.57674167030736",
+          "R2": "0.8458988240226538",
+          "Error": ""
+        },
+        {
+          "Task": "706_sleuth_case1202",
+          "Method": "PyGAM_FBII",
+          "Num_Interactions": "4",
+          "Interactions": "[(2, 4), (0, 4), (1, 4), (1, 3, 5)]",
+          "Train_Time_s": "1.6888504000380635",
+          "MSE": "5554.408396241371",
+          "RMSE": "74.52790347407722",
+          "MAE": "57.93362516520068",
+          "R2": "0.32168721497881847",
+          "Error": ""
+        }
+      ],
+      "recorded_rank_strings": [
+        {
+          "Method": "TabPFN",
+          "MSE_rank": "1.0",
+          "RMSE_rank": "1.0",
+          "MAE_rank": "2.0",
+          "R2_rank": "1.0",
+          "avg_rank": "1.25"
+        },
+        {
+          "Method": "EBM_FBII",
+          "MSE_rank": "2.0",
+          "RMSE_rank": "2.0",
+          "MAE_rank": "1.0",
+          "R2_rank": "2.0",
+          "avg_rank": "1.75"
+        },
+        {
+          "Method": "LinearRegression",
+          "MSE_rank": "3.0",
+          "RMSE_rank": "3.0",
+          "MAE_rank": "3.0",
+          "R2_rank": "3.0",
+          "avg_rank": "3.0"
+        },
+        {
+          "Method": "XGBoost",
+          "MSE_rank": "4.0",
+          "RMSE_rank": "4.0",
+          "MAE_rank": "4.0",
+          "R2_rank": "4.0",
+          "avg_rank": "4.0"
+        },
+        {
+          "Method": "DecisionTree",
+          "MSE_rank": "5.0",
+          "RMSE_rank": "5.0",
+          "MAE_rank": "5.0",
+          "R2_rank": "5.0",
+          "avg_rank": "5.0"
+        },
+        {
+          "Method": "PyGAM_FBII",
+          "MSE_rank": "6.0",
+          "RMSE_rank": "6.0",
+          "MAE_rank": "6.0",
+          "R2_rank": "6.0",
+          "avg_rank": "6.0"
+        }
+      ]
+    }
+  ],
+  "summary_JSON_pointer": "/files/85/patch",
+  "recorded_summary_strings": [
+    {
+      "Method": "TabPFN",
+      "n_tasks": "27",
+      "MSE_rank_mean": "1.6296296296296295",
+      "MSE_rank_se": "0.27293982591447263",
+      "RMSE_rank_mean": "1.6296296296296295",
+      "RMSE_rank_se": "0.27293982591447263",
+      "MAE_rank_mean": "1.6296296296296295",
+      "MAE_rank_se": "0.2511974067824173",
+      "R2_rank_mean": "1.6296296296296295",
+      "R2_rank_se": "0.27293982591447263",
+      "avg_rank_mean": "1.6296296296296295",
+      "avg_rank_se": "0.2666701289740412"
+    },
+    {
+      "Method": "EBM_FBII",
+      "n_tasks": "27",
+      "MSE_rank_mean": "2.3703703703703702",
+      "MSE_rank_se": "0.1523617317050819",
+      "RMSE_rank_mean": "2.3703703703703702",
+      "RMSE_rank_se": "0.1523617317050819",
+      "MAE_rank_mean": "2.259259259259259",
+      "MAE_rank_se": "0.16531582993052998",
+      "R2_rank_mean": "2.3703703703703702",
+      "R2_rank_se": "0.1523617317050819",
+      "avg_rank_mean": "2.3425925925925926",
+      "avg_rank_se": "0.1498742042244319"
+    },
+    {
+      "Method": "XGBoost",
+      "n_tasks": "27",
+      "MSE_rank_mean": "3.2962962962962963",
+      "MSE_rank_se": "0.17553187237321213",
+      "RMSE_rank_mean": "3.2962962962962963",
+      "RMSE_rank_se": "0.17553187237321213",
+      "MAE_rank_mean": "3.2962962962962963",
+      "MAE_rank_se": "0.17553187237321213",
+      "R2_rank_mean": "3.2962962962962963",
+      "R2_rank_se": "0.17553187237321213",
+      "avg_rank_mean": "3.2962962962962963",
+      "avg_rank_se": "0.1724617701128849"
+    },
+    {
+      "Method": "LinearRegression",
+      "n_tasks": "27",
+      "MSE_rank_mean": "4.185185185185185",
+      "MSE_rank_se": "0.3542056521008135",
+      "RMSE_rank_mean": "4.185185185185185",
+      "RMSE_rank_se": "0.3542056521008135",
+      "MAE_rank_mean": "4.333333333333333",
+      "MAE_rank_se": "0.3333333333333333",
+      "R2_rank_mean": "4.185185185185185",
+      "R2_rank_se": "0.3542056521008135",
+      "avg_rank_mean": "4.222222222222222",
+      "avg_rank_se": "0.34702986124596147"
+    },
+    {
+      "Method": "PyGAM_FBII",
+      "n_tasks": "26",
+      "MSE_rank_mean": "4.6923076923076925",
+      "MSE_rank_se": "0.24663414679817539",
+      "RMSE_rank_mean": "4.6923076923076925",
+      "RMSE_rank_se": "0.24663414679817539",
+      "MAE_rank_mean": "4.653846153846154",
+      "MAE_rank_se": "0.2477114182785326",
+      "R2_rank_mean": "4.6923076923076925",
+      "R2_rank_se": "0.24663414679817539",
+      "avg_rank_mean": "4.6826923076923075",
+      "avg_rank_se": "0.24516779666324462"
+    },
+    {
+      "Method": "DecisionTree",
+      "n_tasks": "27",
+      "MSE_rank_mean": "4.777777777777778",
+      "MSE_rank_se": "0.18745053161932743",
+      "RMSE_rank_mean": "4.777777777777778",
+      "RMSE_rank_se": "0.18745053161932743",
+      "MAE_rank_mean": "4.777777777777778",
+      "MAE_rank_se": "0.20207846867584423",
+      "R2_rank_mean": "4.777777777777778",
+      "R2_rank_se": "0.18745053161932743",
+      "avg_rank_mean": "4.777777777777778",
+      "avg_rank_se": "0.18697496925071494"
+    }
+  ],
+  "independent_reproduction": false,
+  "new_model_runs": 0
+}
