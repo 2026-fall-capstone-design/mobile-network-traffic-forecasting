@@ -64,7 +64,7 @@
 
 | 대상 | 저장 당시 탐색 주소와 근거 |
 |---|---|
-| CLoVE | [OpenReview PDF](https://openreview.net/pdf?id=eZcJZliYws), R001·R003 |
+| CLoVE | [R001 PDF](https://openreview.net/pdf?id=eZcJZliYws), [R003 PDF](https://openreview.net/pdf/2544b2e42fd71ce2d8d7d251775e0bb24bd52424.pdf) |
 | RCC-PFL | [저자 PDF](https://webpages.charlotte.edu/aarafa/icc25.pdf), R002 |
 | DQC | [arXiv2608.25467](https://arxiv.org/abs/2608.25467), R021 |
 | OTCP/VQR 발췌 | [OpenReview PDF](https://openreview.net/pdf?id=LrXAq63eT7), R023 |
