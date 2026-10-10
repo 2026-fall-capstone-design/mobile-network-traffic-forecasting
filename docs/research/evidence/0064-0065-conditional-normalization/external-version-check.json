@@ -438,9 +438,26 @@
       "tree_entries": 57,
       "license": "NOASSERTION",
       "checked_at_utc": "2026-10-10T06:36:58.698174+00:00",
-      "tree_request_sha": "80a48697c05463afa641a318d8ab1f457bc79cc4",
-      "tree_response_sha": "80a48697c05463afa641a318d8ab1f457bc79cc4",
-      "commit_tree_sha": "0f4b8dabad94b5a4fc3c0d407077f1d2350449da"
+      "tree_request_sha": "0f4b8dabad94b5a4fc3c0d407077f1d2350449da",
+      "tree_response_sha": "0f4b8dabad94b5a4fc3c0d407077f1d2350449da",
+      "commit_tree_sha": "0f4b8dabad94b5a4fc3c0d407077f1d2350449da",
+      "initial_commit_as_tree_response": {
+        "request_sha": "80a48697c05463afa641a318d8ab1f457bc79cc4",
+        "response_sha": "80a48697c05463afa641a318d8ab1f457bc79cc4",
+        "preserved_response_sha256": "2395384fead79aa09417fcbaa8965c07c148b99eeabd0a096ebb321870c65e15",
+        "note": "커밋 SHA로 tree endpoint를 호출했을 때 저장된 응답의 top-level sha. 현재 재확인에서도 같은 응답을 받았다. 실제 Git tree object SHA와 구분하며 초기 수집값을 보존한다."
+      },
+      "canonical_tree_verification": {
+        "endpoint": "repos/PuwasalaG/conduits/git/trees/0f4b8dabad94b5a4fc3c0d407077f1d2350449da?recursive=1",
+        "checked_at_utc": "2026-10-10T07:10:06.165602+00:00",
+        "response_bytes": 13270,
+        "response_sha256": "4c6c35ad36d4a7e755fa164d20ee061b739d961897b97fcaeb836c9e298ce9ef",
+        "commit_tree_sha": "0f4b8dabad94b5a4fc3c0d407077f1d2350449da",
+        "current_commit_as_tree_response_sha": "80a48697c05463afa641a318d8ab1f457bc79cc4",
+        "entry_lists_equal": true,
+        "tree_entries": 57,
+        "note": "commit 객체의 tree.sha와 실제 tree SHA로 요청한 응답 sha가 같다. 초기/현재 commit-as-tree 응답과 canonical tree의57항목 내용도 같다."
+      }
     }
   ],
   "owner_public_repository_names_checked": 12,
