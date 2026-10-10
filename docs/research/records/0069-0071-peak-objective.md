@@ -145,3 +145,13 @@ snapshot17의 첫 보관 검사는 두 검색 로그가 .json 확장자와 달�
 같은 연구를 반복하기 전에는 피크 정의가 학습 임계값인지, 예측 전에 아는 상태인지, 실제 target으로 고른 부분집합인지부터 확인한다. 이어 척도·cell 가중치·평가 기간·같은 τ의 보정 비교·허용 비용을 고정한다. 기존 예측에서 얻은 예외를 삭제하거나 새 독립 실험으로 다시 세지 않는다. 이 결과는 [60의 4cell Tab 직접 예측 이득](0059-0062-history-grouping.md)을 취소하지 않으며, Tab 소속 점수·군집별 RCTL·Tab 직접 예측은 서로 다른 역할이다. [C39]
 
 [보존 명세](../evidence/0069-0071-peak-objective/manifest.json)와 [수치 검수](../verification/history-066-saved-check.json)에서 정확한 원값과 입력을 찾을 수 있다. 모델 없이 저장 지표를 확인하는 명령은 [검수 안내](../verification/history-066.md)에 있다. 새 연구에서 달라져야 할 것은 실제 목표·허용 행동·데이터·평가 경계·모델 또는 소속의 설계다. 이름만 바꾼 지표로 같은 결과를 재선택하는 것은 새로운 성능 근거가 아니다. 일차논문 검수, 후속 과거기록, 전체 비용·팀 접근 통합은 계속 남아 있다. [C40]
+
+원문 공개 보고서의 마지막 다섯 링크는 작성자 PC의 경로를 가리킨다. 정확사본의 내용을 바꾸지 않고 아래 저장소 경로로 대응한다. 누적 원장은 **보고서 작성 당시의 after70 사본**이며 현재 원본 폴더의 최신 원장이 아니다. snapshot17에 보관된 동시점 원장과 해시가 같다.
+
+| 원문이 가리킨 자료 | 팀이 열 수 있는 보관본 |
+|---|---|
+| 70_peak_diagnostic_plan.md | [사전 진단 계획](../evidence/0069-0071-peak-objective/originals/SRC-0022021.md.txt) |
+| peak_diagnostic_70.py | [실행 코드의 정적 열람본](../evidence/0069-0071-peak-objective/originals/SRC-0022971.py.txt) |
+| results/peak_diagnostic_70/result.json | [전체 결과와 cell별 수치](../evidence/0069-0071-peak-objective/originals/SRC-0029497.json) |
+| sources/peak_objective_69/review_scope.json | [당시 원문 판본·읽은 범위](../evidence/0069-0071-peak-objective/originals/SRC-0063462.json) |
+| cumulative_execution_budget.json | [당시 누적 실행 비용: after70](../evidence/0069-0071-peak-objective/originals/SRC-0029493.json) |

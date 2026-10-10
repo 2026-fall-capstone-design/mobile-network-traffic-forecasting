@@ -98,6 +98,7 @@ def verify(manifest_path: Path) -> dict:
     max_abs_error = 0.0
 
     def check(name: str, good: bool) -> None:
+        """검사 이름을 남기고 실패를 누적해 마지막에 함께 보고한다."""
         checks.append(name)
         if not good:
             errors.append(name)
@@ -136,6 +137,7 @@ def verify(manifest_path: Path) -> dict:
         paths[row["source_id"]] = path
 
     def data(sid: str):
+        """해시를 확인한 JSON만 읽으며 보존 코드는 실행하지 않는다."""
         return json.loads(paths[sid].read_text(encoding="utf-8"))
 
     result, settings, frozen = (data(sid) for sid in ["SRC-0029497", "SRC-0029500", "SRC-0029496"])
@@ -538,6 +540,7 @@ def verify(manifest_path: Path) -> dict:
 
 
 def main() -> None:
+    """검수 결과를 파일로 저장하고 불일치가 있으면 실패로 종료한다."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
