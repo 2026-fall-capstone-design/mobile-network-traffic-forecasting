@@ -1,0 +1,18 @@
+from pathlib import Path
+import subprocess,json,hashlib
+base=Path(__file__).resolve().parent/'sources/group_protection_66'
+out=base/'review_pages'
+out.mkdir(exist_ok=True)
+assert not (out/'render_log.json').exists()
+exe=Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+items=[('MMR_2405.01709v2.pdf',[5,11]),('MRI_2602.04155v2.pdf',[8]),('Fair_network_2502.06743v2.pdf',[3,4,5,6])]
+log=[]
+for name,pages in items:
+    pdf=base/name
+    for page in pages:
+        dst=out/f'{pdf.stem}_p{page}'
+        res=subprocess.run([str(exe),'-f',str(page),'-l',str(page),'-singlefile','-scale-to','1800','-png',str(pdf),str(dst)],capture_output=True,check=True,timeout=30)
+        png=Path(str(dst)+'.png')
+        log.append(dict(pdf=name,page=page,png=png.name,bytes=png.stat().st_size,sha256=hashlib.sha256(png.read_bytes()).hexdigest(),stderr=res.stderr.decode(errors='replace')))
+(out/'render_log.json').write_text(json.dumps(log,indent=2),encoding='utf-8')
+print(json.dumps(dict(rendered=len(log),folder=str(out)),ensure_ascii=False))

@@ -1,0 +1,34 @@
+# 66. cell 보호 목표와 clustering–학습 목적의 연결 검토
+
+2026-09-26. 직전63–65 turn은 원문6편 추가 확보·공식 코드 검토·이론 구분·보고서/snapshot15 생성으로 다음 판단을 바꾼 progress다. live process를 기다리는 상태가 아니다.
+
+## 이번 질문
+
+같은 입력에서 cell별 정답 관계가 다를 때 평균 오차와 일부 cell의 손해는 서로 다른 목표다. 목표만 바꾸거나 Tab 분포에 보정항을 더하는 것으로 신규성을 주장하지 않는다. 기존 학습 목적을 유지한 채 보호 가능한 예측값의 존재만 계산했던 한계와 구별하여, 실제 RCTL의 학습 목적도 보호 목표에 맞추는 방향에 독립적인 기여가 남는지 확인한다.
+
+아직 평균 오차 목표를 버리거나 worst-cell 목표를 최종 선택한 것이 아니다. 기존 개발 결과를 보고 유리한 지표만 고르지 않는다. 데이터의 잡음 차이, 단위, 학습 가능성이 서로 다른 cell에 절대 오차·초과 오차·상대 개선율을 적용할 때 결정이 어떻게 달라지는지 원문부터 읽는다.
+
+## 비교할 최대 세 후보
+
+1. 가장 큰 cell 오차를 줄이도록 grouping/학습을 맞춘다. 불가피한 잡음이 큰 cell 하나에 지배되는지 확인한다.
+2. 각 cell에서 달성 가능한 기준 대비 초과 손해를 줄인다. 이 기준을 Tab 예측 오차로 바꿀 때 RCTL 함수집합/추정오차와 혼동되는지 확인한다.
+3. 계절 기준 대비 각 cell의 개선 비율을 맞춘다. 기준과 이상적 risk의 차이가 작거나 음수일 때 불안정성, 기존 MMR/MRI와의 중복을 확인한다.
+
+## 읽을 직접 선행연구
+
+- Minimax Regret Learning for Data with Heterogeneous Subgroups, arXiv2405.01709: 실행일 최신 버전/history, 목적함수의 benchmark 범위, 일반화 가정, 실제 알고리즘/계산 비용.
+- Maximin Relative Improvement: Fair Learning as a Bargaining Problem, arXiv2602.04155: 최신 버전, baseline/oracle 분모, 불변성 가정, 추정오차 및 최적화.
+- A Fair Federated Learning Framework for Collaborative Network Traffic Prediction and Resource Allocation, arXiv2502.06743: 통신량 단위·관측 단위, 공정성 지표, 실제 training/resource-allocation 연결과 목적. 침입탐지/도로교통 논문으로 대체하지 않는다.
+
+논문당20MB 이하 공개 PDF를 확보하고 URL/version/hash/읽은 절을 기록한다. 외부 코드는 정적으로만 확인하며 실행하지 않는다. search 결과만으로 원문 검토 완료로 처리하지 않는다.
+
+## 다음 행동 기준
+
+- 논문이 이미 같은 목표·정보·결정을 다루면 Tab 대입만으로 새 후보로 채택하지 않는다.
+- cell별 기준 risk를 RCTL 없이 얻을 수 없거나 Tab의 Bayes risk를 RCTL의 최적 risk로 바꿔야만 성립하면 그 간극을 숨기지 않는다.
+- 실제 관측 목표와 일치하는 loss로 변경하는 것은 허용되지만 RCTL 학습 결과로 clustering을 조정하지 않는다. grouping/설정은 먼저 고정해야 한다.
+- 필요성이 남으면 **새 학습 없이 저장된 예측**에서 손해의 위치와 기준 민감도를 확인하는 계획을 별도로 고정한다. 후속 수치 확인은 본 계획에서 아직 시작하지 않는다.
+
+## 자원
+
+Tab65contexts/38,016행, 잔여15/21,984. RCTL29fits/잔여0. 이번 원문 검토는 model/data calculation0이며 예산을 초기화하거나 늘리지 않는다. 기존 horizon24 확인을 다시 실행하지 않는다. 최종 추천과 Word는 아직 미완료다.

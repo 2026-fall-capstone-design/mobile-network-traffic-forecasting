@@ -1,0 +1,55 @@
+{
+  "batch_id": "history-062",
+  "success": true,
+  "checks": 8,
+  "details": [
+    {
+      "name": "residual_absolute_identity",
+      "passed": true,
+      "detail": "항등식은 r의 학습 가능성을 증명하지 않는다. 수치 예시와 일반 대수식 구분."
+    },
+    {
+      "name": "nonlinear_rank_reversal",
+      "passed": true,
+      "detail": "y100/예측90,102 및 CDF .48,.50,.90의 원65 설명값을 exact rational로 대조. 엄격 증가 CDF와 양립하며 실제 모델 실험 아님."
+    },
+    {
+      "name": "cdf_values_increasing",
+      "passed": true,
+      "detail": "CDF 값 순서·범위 확인, CDF 적합이나 샘플 생성 없음."
+    },
+    {
+      "name": "positive_scale_rank_reversal",
+      "passed": true,
+      "detail": "H061 s=(1,10), A=(0,2), B=(3,0) 예시 재사용. 원척도와 정규화 척도의 관측 가중치 차이."
+    },
+    {
+      "name": "correct_regret_minimum",
+      "passed": true,
+      "detail": "max(theta²,(theta−2)²)≥1: 두 중심0,2에서 모두 거리가1 미만일 수 없다. theta1에서 달성."
+    },
+    {
+      "name": "wrong_regret_minimum",
+      "passed": true,
+      "detail": "잘못된 max는 theta² 때문에≥0, theta0에서0. 이때 진짜 최대regret4."
+    },
+    {
+      "name": "wrong_reference_true_harm",
+      "passed": true,
+      "detail": "B 기준1→5 치환은 최대를 정하는 집단과 최적해를 바꾼다."
+    },
+    {
+      "name": "mean_reference_constant",
+      "passed": true,
+      "detail": "(RA+RB)/2=(theta−1)²+2. 고정 기준평균 차감은 최적theta1을 바꾸지 않는다."
+    }
+  ],
+  "analytic_review": [
+    "연속인 정확 F(Y|H) 조건부 PIT는 uniform, 단일값 MAE의 중앙값 .5를 역변환한다. 이는 추정 F·유한 RCTL 정확성 보장이 아니다.",
+    "Z만 조건화한 PIT는 추가 이력H에 대해 uniform일 필요가 없고 개별 미래PIT uniform은 공동 독립을 뜻하지 않는다.",
+    "조건부 평균·분산 표준화는 PIT가 아니다. 기존 H060/H061 검수의 적용 조건을 그대로 유지한다."
+  ],
+  "new_model_runs": 0,
+  "random_draws": 0,
+  "original_scripts_executed": false
+}

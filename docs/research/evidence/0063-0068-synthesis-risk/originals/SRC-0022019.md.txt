@@ -1,0 +1,91 @@
+# 68. cell 보호 목적을 추가하면 기존 제안의 문제가 해결되는가
+
+2026-09-26. 66 원문 계획과 67 저장 예측 진단을 완료했다. 신규 추천 방향을 채택한 결과는 아니다. 이번 turn은 새로운 원문 3편의 방법 검토와 새로운 위험 분포 집계를 수행했으므로 실질적인 progress에 해당한다.
+
+## 판단
+
+평균 오차, 최악 cell 오차, 각 cell의 최적 성능 대비 초과 오차, 계절 기준 대비 상대 개선은 서로 다른 목표다. 이들을 바꿔 쓰면 같은 보호 효과를 측정하는 것이 아니다. 기존 clustering의 결과가 평균에서 좋지 않았다는 이유로 보호 목표를 사후 선택하지 않는다.
+
+보호 목적을 실제 RCTL loss에도 반영하면 ‘clustering에서 보호 가능한 예측값을 찾았으니 RCTL도 그것을 선택할 것’이라는 문제는 일부 해소된다. 그러나 **어떤 cell의 어느 손해를 보호할 것인지 정하는 기준**이 남는다. Tab의 예측 오차를 RCTL의 최적 risk로 대신 쓰는 것은 MMR/MRI의 정의와 다르다. 현재 자료에서도 이 변경을 필요하게 하는 지속적인 이득을 확인하지 못했다.
+
+## 1. 직접 선행연구 검토
+
+### MMR: 최악의 오차와 최악의 초과 손해를 구별한다
+
+- Mo et al., *Minimax Regret Learning for Data with Heterogeneous Subgroups*. [2405.01709v2](https://arxiv.org/abs/2405.01709v2), 2025-09-27, 본문35쪽. 최신 history와 첫 페이지 버전 표기를 대조했다.
+- §2, 식2–10, Algorithm1/Assumption1, §5의 Conditions1–4/Theorems7–8, §7/Table7.1을 읽었다. §3–4의 모든 증명과 별도 보충자료를 검토했다고 하지 않는다.
+- 주어진 집단별 관측 `(X,Y)`로 하나의 모델을 학습한다. 집단은 입력으로 주어지며 cell의 소속을 새로 clustering하는 알고리즘이 아니다.
+- 식2의 기준은 **동일한 parameter/function class에서 해당 집단에 달성 가능한 최소 risk**다. 함수집합을 모든 가측 함수로 확장한 특수 경우에만 Bayes risk로 부를 수 있다. 사전학습 모델의 확인 오차나 실제 유한 학습기의 도달 오차와 자동으로 같지 않다.
+- Algorithm1은 먼저 집단마다 같은 함수집합의 ERM을 풀어 기준을 구한다. 이후 각 집단의 regret와 gradient를 계산하고, 집단 수 차원의 QP로 가중치를 정해 모델을 갱신한다. 집단별 사전 최적화, 반복 gradient, QP 비용이 필요하다. 고정 teacher의 forward 한 번과 같은 작업이 아니다.
+- 최적화 결과는 매끄러움·강한 볼록성에 의존한다. 본문의 표본 모형은 집단 내 iid이며, 미관측 집단에 관한 결과에는 meta-distribution의 support 및 추가 concentration 조건이 있다. 비볼록 RCTL의 MAE 학습과 의존 시계열에 그대로 옮기지 않는다.
+- 최신 본문의 실제 확인은 CelebA의 12개 집단, 201,688개 이미지, 사전학습 ResNet-18의128차원 특징과 logistic regression이다. leave-one-group-out 및30회 split에서 MMR AuROC .890/Brier .061, pooled ERM .877/.076이다. telecom/RCTL 근거가 아니다. post-transplant 응용은 보충J에 언급되지만 이번에 읽지 않았다.
+- 가져올 내용: 잡음이 큰 cell의 큰 오차와 공유 때문에 추가된 손해를 구분해야 한다. 가져오지 않을 내용: Tab 오차를 빼면 RCTL의 진정한 regret를 얻는다는 주장. 공식 코드·실행 재현은 이번 범위에서 확인하지 않았다.
+
+### MRI: 개선 비율은 분모와 baseline을 함께 정의해야 한다
+
+- Han et al., *Maximin Relative Improvement: Fair Learning as a Bargaining Problem*. [2602.04155v2](https://arxiv.org/abs/2602.04155v2), 2026-06-16, 본문표기 ICML2026, 전체32쪽. 검색에 잡힌 v1 설명 대신 v2를 읽었다.
+- §1–3의 정의/비교, §5의 식17–19/Assumptions5.1·5.3, §6, AppendixC를 읽었다. Appendix 전체 증명이나 G의 모든 결과를 읽었다고 하지 않는다.
+- 분자는 baseline에서 얻은 risk 감소, 분모는 baseline과 **같은 예측 함수집합의 집단별 최적 risk** 차이다. 가장 낮은 개선 비율을 최대화한다. 주어진 집단 사이의 compromise이며 clustering 자체가 아니다.
+- 집단별 empirical optimum을 구해야 한다. §6은 미국 ACS의50개 주×집단 구분2개×특징4개=400조건에서 선형모델의 집단 가중치를10,001개 값으로 훑어 frontier를 그린다. 1만 cell용 신경망 grouping 비용이 검증된 것은 아니다. §7도 다집단 leximin 계산 문제를 남긴다.
+- 각 집단의 개선 여지가 양수이고 최솟값 Δ가0에서 떨어져 있어야 한다. 식19의 오차항은1/Δ에 의존하며, 표본오차가 Δ/4보다 작다는 조건을 쓴다. 계절 기준과 이미 비슷한 cell에서 작은 분모를 임의 epsilon으로 대체하면 원래 보장을 유지한다고 할 수 없다.
+- baseline이 함수집합에 포함되면 baseline보다 해롭지 않은 선택이 가능하다는 성질과, 추정/최적화 오차가 있는 RCTL의 실제 결과는 구분한다. AppendixC는 baseline을 사전에 정한 해석 가능한 출발점으로 두며, 이미 집단 타협을 포함하는 pooled ERM을 baseline으로 삼는 해석상의 문제도 설명한다.
+- 가져올 내용: cell 간 같은 절대 오차 감소가 같은 의미인지 정의해야 한다. 가져오지 않을 내용: 계절 MAE로 나누거나 Tab 예측을 기준으로 삼기만 하면 새로운 보호 원리가 생긴다는 주장. 공식 코드·실행 재현은 확인하지 않았다.
+
+### 통신 트래픽 q-FFL: 공정성의 개선과 운영 손해의 감소는 다르다
+
+- Panda et al., *A Fair Federated Learning Framework for Collaborative Network Traffic Prediction and Resource Allocation*. [2502.06743v2](https://arxiv.org/abs/2502.06743v2), 2025-02-17, ICC2025, DOI10.1109/ICC52391.2025.11161740, 7쪽.
+- §II–V, 식1–5, TableI/II, 결론을 읽고 3–6쪽을 직접 렌더링해 대조했다. 최종 출판본과 arXiv 본문의 식 차이는 검증하지 않았다.
+- Abilene의12-node/30-link 기반5분 수요 행렬을 각 node로 들어오는 Gbps로 합산한다. 실제 확인은5개 operator/node이며 기존 mobile cell 실험이 아니다. sample은 κ=70의 과거 및 현재71값→다음값이다. dataset 크기는3,000/2,000/8,000/5,000/7,500으로 다르게 설정하고 일부 node에 Gaussian/log-normal/exponential/Gamma 잡음을 인위적으로 더했다.
+- 마지막100개 sample을 test, 나머지를80/20 train/validation으로 둔다. StandardScaler를 사용하지만 scaler의 정확한 fit 경계와 train/validation 시간 처리까지 이 본문으로 재현할 수는 없다. LSTM2층, MSE, batch256, lr1e-4, global100rounds, q별 여러 시간 비용이다. 단순한 통계 점수만으로 공정성이 생긴 방식이 아니라 실제 학습 update를 바꾼다.
+- q=0→10에서 TableI의 첫 node MSE는.2776→.2313이나 두 번째는.0558→.0673이다. CV 감소는 모든 node의 개선과 다르다. TableII의 평균 부족 할당은62.4→71.6으로 늘고 과잉 할당은75.8→74.4로 줄었다. 부족/과잉이 비슷해졌다는 것을 서비스 부족이 줄었다고 바꿔 말하지 않는다.
+- **원문 내부 정합성:** 렌더링한 식5는 `100 sqrt(((u+o)-(u+o)/2)^2/((u+o)^2/4))`로 인쇄되어 있다. 합이0이 아니면100으로 약분되어 Fig.4의 감소 곡선을 이 식 그대로 재현할 수 없다. under-provisioning의 본문 합은 음수 정의인데 TableII는 양수 크기다. TableI의 f_q 열도 식2의 q별 목적을 재계산해 검증한 값으로 취급하지 않는다. 이 문제로 논문 전체를 무효라고 하지 않되, 보고한 ‘80%’를 개선 근거로 가져오지 않는다. 공식 코드 검토/실행0.
+- 가져올 내용: 보호 목표는 실제 운영 손해와 연결해야 한다. 가져오지 않을 내용: 주입 잡음으로 만든 이질성을 Milan cell의 관측된 문제로 대체하거나, 공정성 지표 개선을 평균 정확도/부족 할당 감소로 해석하는 것.
+
+## 2. 저장된 RCTL 결과에서 확인한 것
+
+67 계획을 먼저 고정하고 단일 실행했다. 기존16개 cell·480시점·8조건을 그대로 사용했다. 새로운 학습/forward/Tab추론/partition 생성0. 42의 원본 per-cell MAE와 오차1e-12 이내 일치함도 확인했다.
+
+아래는 primary seed20260925다. MAE는 cell별 학습 평균으로 정규화한 internet activity이며 Mbps가 아니다. 원 UPC의 완전 재현이나 새 보호 loss로 학습한 결과도 아니다.
+
+| 기존 조건 | 모델 수 | 전체 평균 MAE | 최악 cell MAE | 오차가 큰4개 cell의 평균 |
+|---|---:|---:|---:|---:|
+| global RCTL | 1 | .071068 | .120684 | .090489 |
+| Tab risk clustering | 4 | .087328 | .145600 | .119843 |
+| empirical risk clustering | 4 | .081600 | .129662 | .107183 |
+| KNN risk clustering | 4 | .084073 | .133846 | .108826 |
+| PCC clustering | 4 | .089877 | .136886 | .122001 |
+| random balanced | 4 | .085598 | .125169 | .107462 |
+
+전체 기간에서 k=1..16의 모든 상위k cell 평균은 global이 낮았다. 뒤240시점에서도 같다. cell identity를 고정한 모든 개별 오차에서 global이 좋았다는 뜻은 아니다. 표의 분할만으로는 **어느 크기의 오차 상위 집단을 강조해도** global보다 유리한 총기간 절충을 얻지 못했다는 뜻이다.
+
+앞240시점에서는 일부 이득이 있다. Tab의 최악 cell 오차.113709는 global .115649보다 작지만, 뒤에서는.177492 대.125719로 역전된다. empirical은 앞의상위1–3, KNN은상위1–2에서 이득이며, 이 역시 뒤에서는 유지되지 않는다. 보조seed20260926의 Tab/empirical도 전체/뒤 모든상위k에서 global보다 불리했다. global의두번째seed는 없으며, 이 비교가 seedrobustness 확인을 대신하지 않는다.
+
+따라서 새 fairness 학습을 반박한 것이 아니라, 기존 후보를 **평균에서 나쁜 대신 일부 cell 보호에는 안정적으로 좋다**고 재해석할 근거가 없음을 확인했다. 모든 기간은 개발 자료다.
+
+## 3. teacher 기준 오차가 단순한 상수가 아닌 이유
+
+같은 함수집합의 두 집단 risk를 R_A(theta)=theta²+1, R_B(theta)=(theta−2)²+1로 둔다. 각 집단의 최적 risk는1이다. 올바른 최악 regret는 theta=1에서1이다.
+
+그런데 B의 기준을5로 잘못 추정하여 빼면, 새로운 목적은 max(theta²,(theta−2)²−4)가 된다. theta=0이면 목적이0이라 최적이지만, 원래 정의한 최악 regret는4다. teacher가 B를 잘 예측하지 못해 기준이 높아졌다면, 그 cell을 보호할 필요가 작다고 잘못 판단할 수 있다. 이는 연속 회귀 위험함수의 정확 산술 예이며, Tab이나 RCTL의 실제 수치가 아니다.
+
+평균 목적에서 고정된 cell별 상수를 빼면 최적해는 달라지지 않는다. 반면 최악 목적에서는 어떤 cell이 최대값을 결정하는지가 달라져 최적해도 달라진다. gradient에서 상수가 사라진다는 이유만으로 기준 추정오차를 무시할 수 없다.
+
+## 4. 세 후보의 판정과 다음 설계에 남기는 기준
+
+| 검토 후보 | 실제 학습과 연결되는 부분 | 현재 채택하지 않는 이유 |
+|---|---|---|
+| 절대 worst-cell risk를 줄이는 clustering·RCTL | RCTL도 해당 loss로 학습하면 목적의 연결은 명시적 | 기존 GDRO/q-FFL 원리와 겹침. 실제 자료에서 지속적인 보호 절충 미확인. 불가피한 큰 risk와 공유 손해 혼동 |
+| Tab 오차를 뺀 최악 초과 손해 | 정해진 reference에 대한 목표로 구현 가능 | 그 reference가 RCTL의 최적 risk라는 근거가 없음. MMR의 benchmark와 다른 목적이며 위 반례가 있음 |
+| 계절 기준 대비 개선 비율 | baseline과 분모가 고정되면 가중 minimax로 학습 가능 | MRI의 직접 선행 원리. 분모 추정·양수성·작은 gap 문제와 RCTL benchmark가 미해결 |
+
+보호 지표를 덧붙여 이전 후보를 살리지 않는다. 다음 후보는 먼저 **발생한 운영상 손해와 허용되는 행동**을 고정해야 한다. mean MAE 대신 peak/분위수/fairness라는 이름을 붙이는 것만으로는 충분하지 않다. 기존 원문들의 네트워크 단위와 운영 행동을 재사용하되, 실제로 없는 capacity·QoS label을 Milan activity에서 만들어내지 않는다.
+
+RCTL29fits 상한은 소진되어 새 학습을 시작하지 않는다. 남아 있는 Tab15contexts/21,984rows는 원문·논리·저장 자료에서 필요한 판단이 좁혀진 경우에만 사용한다. 현재는 새 보호 알고리즘의 실행 계획이나 추천이 아니다. 최종 추천 방향/Word는 미완료이며 goal 완료를 선언하지 않는다.
+
+## 5. 실행·재개 기록
+
+- 새 원문3PDF/74쪽 확보, 해당7쪽을 렌더링해 시각 검토. 원문 전체를 읽었다는 뜻은 아니다. source/version/hash/review_scope는 `sources/group_protection_66`에 남긴다.
+- 67 numeric wall .020347199999378063초, observedRSS는 result.json. 시간은 순수 진단이고 문헌 검색·렌더링 시간은 모델링 비용이 아니다.
+- Tab65contexts/38,016rows, RCTL29fits 변경0. 누적 cheap 비용에67을 한 번만 합산한다. 모델/partition/기존 결과는 변경하지 않았다.
+- `results/group_risk_67/result.json`에 전체24행 프로파일, 상위k 오차·차이, 유리수 검산을 남겼다. 결과를 본 뒤 k, 기간, seed 또는 cell을 바꿔 다시 실행하지 않는다.
+- 이번 탐색의 실패는 외부 접근 차단이나 사용자 입력 부재가 아니다. 새 정보로 판단을 좁혔으므로 blocked로 표시하지 않는다. 다음 진행에서 이 세 목적함수 후보를 이름만 바꿔 반복하지 않는다.

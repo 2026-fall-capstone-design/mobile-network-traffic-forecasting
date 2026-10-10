@@ -1,0 +1,31 @@
+# 67. 저장 예측의 cell 위험 분포와 기준 오차 민감도
+
+2026-09-26. 66의 최신 원문 3편을 읽은 뒤, 새 학습 없이 남은 질문을 확인한다. 새로운 clustering이나 학습 목적을 채택한 계획이 아니다.
+
+## 구별할 질문
+
+42는 개별 cell의 개선 지속성과 사후 선택 oracle을 확인했다. 이를 반복하지 않는다. 이번에는 **cell 오차를 큰 순서대로 보았을 때 clustering이 전체 평균보다 유리한 다른 절충을 남기는가**를 확인한다. 최악 cell 하나, 오차가 큰 4개 cell의 평균, 그리고 상위 k개 평균(k=1..16)을 함께 계산한다. k를 사후 선택하여 목표를 바꾸지 않는다.
+
+또한 기준 risk를 빼는 행위가 실제 결정을 바꾸는 조건을 정확 산술로 확인한다. 평균 목적에서 cell별 상수를 빼는 것과 max 목적에서 빼는 것은 다르다. Tab 오차를 같은 함수집합의 최적 risk와 동일시하지 않는다.
+
+## 고정 자료·출력
+
+- 기존 `results/rctl_pilot/all_predictions.npz`의 모든 16 cell, 모든 480개 시점, 모든 8개 저장 조건. 새 예측/partition/임계값을 만들지 않는다.
+- primary seed 20260925의 global 및 다섯 K4를 비교한다. seed 20260926 Tab/empirical은 보조로 분리한다. global의 두 번째 seed가 없음을 유지한다.
+- 전체, 앞240, 뒤240의 cell별 MAE 벡터를 각각 구하고 mean/max/상위4 평균/상위k 평균을 기록한다. 모든 값은 기존 mean-normalized activity 단위다.
+- 각 K4의 상위k 평균이 global보다 어느 k에서 작은지 전부 기록한다. 어느 k에서도 작지 않으면, 해당 구간의 대칭적 상위꼬리 평균 기준에서 이득이 없다는 범위로만 해석한다. 미학습 clustering 전체나 특정 cell 우선순위에 대한 불가능성으로 확대하지 않는다.
+- 같은 cell identity에서 모두 더 나쁜지 여부도 분리한다. 순위별 지배와 cell별 지배는 다르다.
+- q-FFL의 CV만 따로 낮아졌다는 이유로 좋다고 판정하지 않는다. 잘 예측하던 cell의 악화로 CV가 줄 수 있다.
+- persistence/daily/Tab 기준으로 상대 개선율을 추가 탐색하지 않는다. 기준 선택으로 결론을 바꾸는 연구를 피한다.
+
+## 정확 산술 점검
+
+두 집단의 제곱 risk를 `R_A(theta)=theta²+1`, `R_B(theta)=(theta-2)²+1`로 둔다. 같은 상수 예측 함수집합에서 최적 risk는 각각1이다. 올바른 minimax regret의 해theta=1과, B의 기준 risk를5로 잘못 대체한 해theta=0을 비교한다. 평균 목적은 상수 기준을 빼도 theta=1이 유지된다. 이는 회귀 위험함수의 설명 예이며 실제 트래픽/RCTL 결과로 쓰지 않는다. uniform 지점 그리드 탐색 없이 유리수와 완전제곱/교차점으로 확인한다.
+
+## 비용·판정
+
+- 새 RCTL fit/forward0, Tab context/query0, 단순 모델 fit0. 외부 코드 실행0.
+- 단일 실행, wall30초/RSS1GiB 이하. plan/code/input SHA256, 시작/종료 marker, 유한 JSON, 원본 불변을 확인한다. 완료 실행을 다시 실행하지 않는다.
+- measured numeric wall을 기존 cheap ledger에 한 번만 더한다. RCTL29fits 상한과 잔여0, Tab65contexts/38,016rows/잔여15/21,984를 유지한다.
+- 상위 cell 위험에서 이득이 있으면 **관측한 절충**만 기록한다. 새 보호 목적 또는 Tab의 신규성을 통과 처리하지 않는다. 이득이 없으면 기존 후보의 평가 목표만 바꾸어 추천하지 않는다.
+- 이 자료는 모두 개발 자료다. 독립 평가, group-DRO/MMR/MRI로 재학습한 성능, 또는 RCTL 최적 risk를 확인한 결과가 아니다.
