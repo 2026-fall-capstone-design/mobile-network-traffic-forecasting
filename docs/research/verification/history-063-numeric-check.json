@@ -1,0 +1,243 @@
+{
+  "batch_id": "history-063",
+  "checked_at_utc": "2026-10-10T08:11:12.945238+00:00",
+  "success": true,
+  "checks": 31,
+  "check_names": [
+    "fig6.2 original Pool printed value in page29",
+    "fig6.2 original MMV printed value in page29",
+    "fig6.2 original GDRO printed value in page29",
+    "fig6.2 original MMR printed value in page29",
+    "fig6.2 plus_uninformative Pool printed value in page29",
+    "fig6.2 plus_uninformative MMV printed value in page29",
+    "fig6.2 plus_uninformative GDRO printed value in page29",
+    "fig6.2 plus_uninformative MMR printed value in page29",
+    "table7.1 auroc Within-Population printed value in page31",
+    "table7.1 auroc Pooled ERM printed value in page31",
+    "table7.1 auroc MMV printed value in page31",
+    "table7.1 auroc GDRO printed value in page31",
+    "table7.1 auroc MMR printed value in page31",
+    "table7.1 brier Within-Population printed value in page31",
+    "table7.1 brier Pooled ERM printed value in page31",
+    "table7.1 brier MMV printed value in page31",
+    "table7.1 brier GDRO printed value in page31",
+    "table7.1 brier MMR printed value in page31",
+    "fig7.1 count total",
+    "fig7.1 sample range",
+    "fig7.1 all retained groups >=500",
+    "fig7.1 groups and attributes",
+    "fig7.1 printed AuROC range differs from body",
+    "fig6.2 four deltas",
+    "table7.1 MMR minus pool AuROC",
+    "table7.1 MMR minus pool Brier",
+    "table7.1 MMR best printed averages",
+    "three beta example squared identity",
+    "theta zero equals central beta with heterogeneous betas",
+    "central group not active at theta zero",
+    "all nonzero checked theta have larger max regret"
+  ],
+  "printed_values": {
+    "fig6_2_right": {
+      "methods": [
+        "Pool",
+        "MMV",
+        "GDRO",
+        "MMR"
+      ],
+      "original": [
+        0.221,
+        0.25,
+        0.253,
+        0.217
+      ],
+      "plus_uninformative": [
+        0.281,
+        0.419,
+        0.517,
+        0.23
+      ],
+      "pi": 0.3,
+      "original_populations": 100,
+      "replications": 30,
+      "error_bars": "standard_errors"
+    },
+    "table7_1": {
+      "methods": [
+        "Within-Population",
+        "Pooled ERM",
+        "MMV",
+        "GDRO",
+        "MMR"
+      ],
+      "auroc": [
+        0.847,
+        0.877,
+        0.83,
+        0.831,
+        0.89
+      ],
+      "brier": [
+        0.081,
+        0.076,
+        0.092,
+        0.105,
+        0.061
+      ],
+      "scope": "mean across all heldout groups and 30 splits"
+    },
+    "fig7_1": {
+      "group_sizes": [
+        93961,
+        48306,
+        21942,
+        12826,
+        6854,
+        5226,
+        3838,
+        2526,
+        2499,
+        1747,
+        1290,
+        673
+      ],
+      "within_test_auroc": [
+        0.96,
+        0.93,
+        0.9,
+        0.93,
+        0.81,
+        0.92,
+        0.91,
+        0.79,
+        0.69,
+        0.8,
+        0.87,
+        0.79
+      ],
+      "group_attributes_order": [
+        "Male",
+        "Young",
+        "Receding_Hairline",
+        "Blurry"
+      ],
+      "group_binary_attributes": [
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "labels_visually_read_at_dpi": 220,
+      "raw_labels_cosine_values_prevalences_unavailable": true
+    }
+  },
+  "printed_scalar_values": 42,
+  "printed_value_scope": "Fig6.2 8+Table7.1 10+Fig7.1 group sizes12/diagonalAuROC12. Fig7.1 and attribute bits are manual visual transcriptions, rechecked against the full page31 render after drafting. Not raw-data recomputation.",
+  "derived": {
+    "fig6_2_deltas": [
+      "0.060",
+      "0.169",
+      "0.264",
+      "0.013"
+    ],
+    "group_total": 201688,
+    "auroc_diagonal_range": [
+      0.69,
+      0.96
+    ],
+    "table7_1_MMR_minus_pool": {
+      "auroc": "0.013",
+      "brier": "-0.015"
+    }
+  },
+  "deterministic_logic": {
+    "three_beta": [
+      -1,
+      0,
+      1
+    ],
+    "Sigma": 1,
+    "objective": "max((theta+1)^2,theta^2,(theta-1)^2)=(abs(theta)+1)^2",
+    "unique_minimizer": 0,
+    "supporting_groups": [
+      1,
+      3
+    ],
+    "coincident_non_supporting_group": 2,
+    "proof": "For theta>=0 the first term is maximal; for theta<=0 the last is maximal. (abs(theta)+1)^2 has unique minimum1 at0. Finite evaluations above only guard arithmetic; proof is this case split.",
+    "limitation": "Table3.1 literal solution equality is not equivalent to a single dominating group. SupplementC proposition/proof not read; no claim to refute unavailable proposition."
+  },
+  "semantic_second_pass_pending": false,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0,
+  "semantic_second_pass_at_utc": "2026-10-10T08:16:28.133498+00:00",
+  "second_pass_scope": "작성후32주장과팀기록/출처/검수문서를원문에다시대조했다. PDF1,4–13,15,17–19,22–28,30,32쪽텍스트및16/29/31쪽전체시각(31쪽220dpi렌더)을재확인했다. 원66전체34행/68전체91행을재독해했고,공식model.tex450–505행의Table3.1과주변설명을추가독해했다. Fig6.2인쇄8값/Table7.1의10값/Fig7.1의집단크기12·AuROC12및4bit속성표를재대조했다. LR의E[Y]=0설명분산가정,GLM위험의집단상수와regret1/2배율,logisticMMV의별도제곱손실기준을보완하고원작성일/Markdown수식표기를명확히했다. Table3.1의단순해일치대지배구분은직접증명으로남긴다. 같은에이전트2차검수이며독립재현아님."
+}

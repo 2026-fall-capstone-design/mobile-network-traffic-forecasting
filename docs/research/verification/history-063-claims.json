@@ -1,0 +1,232 @@
+{
+  "batch_id": "history-063",
+  "claims": [
+    {
+      "claim_id": "H063-C01",
+      "claim": "v2 PDF35쪽은현재공식응답과바이트동일하고TXT35쪽·원HTML627행·preview2개를읽었다.",
+      "source_location": "SRC-0062709:1–35;SRC-0062710:1–1791;SRC-0062711:1–627;SRC-0062726/27:전체",
+      "verification_method": "해시/크기·페이지정규화·실제읽은범위확인",
+      "limit": "여러표현을독립연구로세지않음"
+    },
+    {
+      "claim_id": "H063-C02",
+      "claim": "abs제목Subgroups와PDF제목Sub-populations,저자5명·공동제1저자2명·v1/v2날짜를구분한다.",
+      "source_location": "SRC-0062709:1쪽;SRC-0062711:4/41/120–168행",
+      "verification_method": "표지·서지·version history대조",
+      "limit": "정식학술지출판이나다른판본의결과를추정하지않음"
+    },
+    {
+      "claim_id": "H063-C03",
+      "claim": "원66계획/67저장진단/68부분문헌검토를구분하고MMR실험으로소급하지않는다.",
+      "source_location": "SRC-0022017:전체34행;SRC-0022019:전체91행;H062기록",
+      "verification_method": "원문전체와이번검토범위대조",
+      "limit": "MRI/qFFL전체대조및종합미완료"
+    },
+    {
+      "claim_id": "H063-C04",
+      "claim": "MMR은공통Θ의집단최소위험을뺀regret을줄이며집단이알려진설정이다.",
+      "source_location": "SRC-0062709:4–8쪽식2–6",
+      "verification_method": "Θ/inf/집단정보·정의대조",
+      "limit": "제한Θ의최적위험은항상Bayesrisk가아니며clustering알고리즘이아님"
+    },
+    {
+      "claim_id": "H063-C05",
+      "claim": "경험기준은같은집단표본에서같은모델공간의ERM이고finiteRCTL/local/global위험과자동동일하지않다.",
+      "source_location": "SRC-0062709:7–8쪽식5–6;SRC-0022019:MMR판단",
+      "verification_method": "경험분포·기준공간·원68조건비교",
+      "limit": "실제최적값의계산가능성/추정정확성미확인"
+    },
+    {
+      "claim_id": "H063-C06",
+      "claim": "pooled표본가중평균/GDRO절대최악위험/MMR최악regret을구분한다.",
+      "source_location": "SRC-0062709:8–10쪽식7–9",
+      "verification_method": "각목적의집단가중/상수기준대조",
+      "limit": "모든목적의성능순위가일반적으로같다는뜻아님"
+    },
+    {
+      "claim_id": "H063-C07",
+      "claim": "집단마다다른기준상수는active집단과최적해를바꿀수있다.",
+      "source_location": "SRC-0062709:식5/8–9;SRC-0022019:기준값반례;H062logic",
+      "verification_method": "max안의기준상수와원68반례대조",
+      "limit": "모든집단에동일한상수이동과구분"
+    },
+    {
+      "claim_id": "H063-C08",
+      "claim": "집단내IID/조건부독립·집단분포IID와시험메타support제한을둔다.",
+      "source_location": "SRC-0062709:4–7쪽§2.1–2.2/Fig2.1",
+      "verification_method": "계층모형·학습/시험·support대조",
+      "limit": "의존시계열/추정cluster/임의support이동에자동적용불가"
+    },
+    {
+      "claim_id": "H063-C09",
+      "claim": "공통Θ/손실의혼합분포regret은원집단최악regret이하이다.",
+      "source_location": "SRC-0062709:7쪽LemmaH.1인용;EXT-H063:오목성직접논리",
+      "verification_method": "inf의오목성으로b(Q)>=가중b와regret부등식확인",
+      "limit": "보충자료H.1원문증명을읽거나독립모델시험한것아님"
+    },
+    {
+      "claim_id": "H063-C10",
+      "claim": "minimaxregret자체를처음제안한것으로기록하지않는다.",
+      "source_location": "SRC-0062709:2–4쪽/9–10쪽·참고문헌1",
+      "verification_method": "Agarwal–Zhang관련연구와논문의차별화범위대조",
+      "limit": "전분야신규성전수검토아님"
+    },
+    {
+      "claim_id": "H063-C11",
+      "claim": "Algorithm1은KERM뒤반복별Kregret/gradient와QP,마지막QP를요구한다.",
+      "source_location": "SRC-0062709:11–12쪽Algorithm1/식10;EXT-H063:model.tex280–371",
+      "verification_method": "초기기준·반복·종료순서와계산비용대조",
+      "limit": "전체fit/time/hardware/seed/QP설정미확인"
+    },
+    {
+      "claim_id": "H063-C12",
+      "claim": "지수반복수상계는매끄러움·강한볼록성·compactHessian경계에조건부다.",
+      "source_location": "SRC-0062709:11–12쪽Assumption1/Proposition1",
+      "verification_method": "가정·L·kappa·상계의척도대조",
+      "limit": "벽시계우위/nonconvexRCTL수렴보장아님"
+    },
+    {
+      "claim_id": "H063-C13",
+      "claim": "Algorithmq의p차원표기와성분K가다르고Proposition1mu는해당구간에서정의되지않는다.",
+      "source_location": "SRC-0062709:11–12쪽;EXT-H063:model.tex326/356",
+      "verification_method": "PDF/TeX수식및행렬곱차원대조",
+      "limit": "원문임의교정·mu를Hessian하한으로확정하지않음"
+    },
+    {
+      "claim_id": "H063-C14",
+      "claim": "LR위험은Σ양의정부호하regret+WUV이며MMV는regret−WEV다. 설명분산해석에E[Y]=0가정이있다.",
+      "source_location": "SRC-0062709:12–15쪽식11–15/Table3.1",
+      "verification_method": "최소제곱기준·nullθ0·WUV/WEV분해대조",
+      "limit": "well-specified선형생성모형필수라는뜻아님"
+    },
+    {
+      "claim_id": "H063-C15",
+      "claim": "공통Σ에서MMR최소타원체중심과MMV원점최근접볼록결합을구분한다.",
+      "source_location": "SRC-0062709:15–17쪽Theorems2–3/식16–18",
+      "verification_method": "commonΣ·dual·경계지원집합대조",
+      "limit": "서로다른Σ로기하를일반화하지않음"
+    },
+    {
+      "claim_id": "H063-C16",
+      "claim": "Fig3.1오른쪽captionβ1β2와그림양끝β1β3의불일치를보존한다.",
+      "source_location": "SRC-0062709:16쪽Fig3.1;EXT-H063:model.tex520–575",
+      "verification_method": "전체그림·레이블·TeXcaption대조",
+      "limit": "원배열/저자의수정판미확인"
+    },
+    {
+      "claim_id": "H063-C17",
+      "claim": "Table3.1의θ*=βk표기는우연한일치와단일집단지배를구분해야한다.",
+      "source_location": "SRC-0062709:14–15쪽Table3.1;EXT-H063:model.tex450–505·직접β(-1,0,1)논리",
+      "verification_method": "max제곱=(absθ+1)^2/유일해0·지지집단1/3확인",
+      "limit": "미확보SupplementC정리의반박이나원실험재현아님"
+    },
+    {
+      "claim_id": "H063-C18",
+      "claim": "GLM손실은dispersion/logh를제외한다. LR위험=MSE/2−E[Y²]/2이고regret은fullMSE기준의1/2다.",
+      "source_location": "SRC-0062709:18–20쪽식19/각주10/Proposition4",
+      "verification_method": "canonical손실/선형경우1/2계수대조",
+      "limit": "상이한척도의절대수치를같은표에합치지않음"
+    },
+    {
+      "claim_id": "H063-C19",
+      "claim": "GLM은최적계수존재·적분가능성등Assumption2와정의된Bregman순서를요구한다.",
+      "source_location": "SRC-0062709:19–20쪽Assumption2/Proposition4/각주11",
+      "verification_method": "compactsublevel·선형분리배제·발산정의대조",
+      "limit": "임의logistic데이터에유한최적해가항상존재하지않음"
+    },
+    {
+      "claim_id": "H063-C20",
+      "claim": "공통공변량분포하GLM집계는conjugate공간의mu평균후역변환이다.",
+      "source_location": "SRC-0062709:20–22쪽Theorem6/Fig4.1/식20–22",
+      "verification_method": "공통A·gradient/conjugate·기하대조",
+      "limit": "원θ의산술평균이나이질공변량일반보장아님"
+    },
+    {
+      "claim_id": "H063-C21",
+      "claim": "Theorem7은집중조건1또는2·nmin/logK를필요로하며동질성하fast rate다.",
+      "source_location": "SRC-0062709:23–24쪽Conditions1–2/Theorem7",
+      "verification_method": "일반조건·rate·최소표본수·공통minimizer대조",
+      "limit": "실제RCTL/MAE에서조건검증없음"
+    },
+    {
+      "claim_id": "H063-C22",
+      "claim": "Theorem8은추가Condition3/4와K에관한오차항을요구한다.",
+      "source_location": "SRC-0062709:24–26쪽Conditions3–4/Theorem8",
+      "verification_method": "유한esssup/localtail/bracketing·K조건대조",
+      "limit": "support포함만으로유한표본보장아님"
+    },
+    {
+      "claim_id": "H063-C23",
+      "claim": "LR시뮬레이션K100/n1000/p5/pi.2/sigma2.5와3종변화·30회SE를보존한다.",
+      "source_location": "SRC-0062709:26–28쪽§6.1/Fig6.1",
+      "verification_method": "분포·공의중심/반지름·변수집합·평가sup대조",
+      "limit": "미인쇄평균/SE정밀복원이나실행재현아님"
+    },
+    {
+      "claim_id": "H063-C24",
+      "claim": "logistic은큰B0/작은B1로이름이바뀌며MMV는별도제곱손실기준이다. pi.2그림의Pool이MMR보다약간낮다.",
+      "source_location": "SRC-0062709:28–29쪽§6.2/Fig6.2왼쪽",
+      "verification_method": "B명칭·X평균.5·πgrid·그림점위치대조",
+      "limit": "모든조건엄격우위/통계적유의성주장불가"
+    },
+    {
+      "claim_id": "H063-C25",
+      "claim": "무정보집단추가의인쇄regret8값과4차이는K100에집단하나를더한30회비교다.",
+      "source_location": "SRC-0062709:29–30쪽Fig6.2오른쪽",
+      "verification_method": "인쇄수치8·조건·차이.060/.169/.264/.013대조",
+      "limit": "관측한행추가나새로수행한실험아님"
+    },
+    {
+      "claim_id": "H063-C26",
+      "claim": "CelebA는4속성집단에서500미만제외후12집단201688·ResNet18특징128차원이다.",
+      "source_location": "SRC-0062709:30–31쪽§7/Fig7.1;EXT-H063:real-data-image.tex1–57",
+      "verification_method": "집단정의·전처리·입력·12크기합대조",
+      "limit": "실제featurelayer/config/원자료미확인"
+    },
+    {
+      "claim_id": "H063-C27",
+      "claim": "LOGO11집단fit/heldout1:1baseline과공통test에서30split·모든집단평균을보고한다.",
+      "source_location": "SRC-0062709:31–32쪽Table7.1/평가본문",
+      "verification_method": "평가단계·기준모델의target학습절반·평균범위대조",
+      "limit": "worstgroup보호나시계열holdout성능아님"
+    },
+    {
+      "claim_id": "H063-C28",
+      "claim": "Table7.1인쇄10값에서MMR평균AuROC.890/Brier.061이며Pool대비+.013/−.015다.",
+      "source_location": "SRC-0062709:31쪽Table7.1;EXT-H063:real-data-image.tex표",
+      "verification_method": "표10값·방법매핑·Decimal차이대조",
+      "limit": "유의성/모든집단개선/최악regret/TabRCTL효과입증아님"
+    },
+    {
+      "claim_id": "H063-C29",
+      "claim": "Fig7.1대각선AuROC12값범위.69–.96과본문.69–.98이다르다.",
+      "source_location": "SRC-0062709:31쪽Fig7.1/본문;EXT-H063:real-data-image.tex",
+      "verification_method": "원그림12값·본문/TeX범위대조",
+      "limit": "원배열없어일방교정하지않고색에서정확prevalence추정않음"
+    },
+    {
+      "claim_id": "H063-C30",
+      "claim": "AuROC변동은logisticWMR자체가아니며저자의열세원인설명과독립검증을구분한다.",
+      "source_location": "SRC-0062709:31–32쪽§7;EXT-H063:지표정의비교",
+      "verification_method": "rank기반metric과logisticloss기준의역할대조",
+      "limit": "GDRO/MMV열세원인과실행을재현한것아님"
+    },
+    {
+      "claim_id": "H063-C31",
+      "claim": "공식source16파일·저자페이지선택범위에서별도supplement/실행구현을찾지못했다.",
+      "source_location": "EXT-H063:source manifest16files/main.tex570–615/저자2페이지;SRC-0062709:보충자료인용",
+      "verification_method": "파일명/해시·input closure·선택TeX·연결범위대조",
+      "limit": "전체TeX/code독해·전웹부재주장아님;신장이식은SupplementJ"
+    },
+    {
+      "claim_id": "H063-C32",
+      "claim": "7원본그룹14경로/기존사본2재사용·외부5를연결하며새실험없이재검토조건을남긴다.",
+      "source_location": "SRC-0022017/19,SRC-0062709/10/11/26/27:manifest;H063감사",
+      "verification_method": "SHA/aliases·보호6·baseline/시간분할/척도/비용경계대조",
+      "limit": "새가산localfulltext/JSON0;MRI/qFFL·보충자료·나머지전체Goal미완료"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_scope": "작성후32주장과팀기록/출처/검수문서를원문에다시대조했다. PDF1,4–13,15,17–19,22–28,30,32쪽텍스트및16/29/31쪽전체시각(31쪽220dpi렌더)을재확인했다. 원66전체34행/68전체91행을재독해했고,공식model.tex450–505행의Table3.1과주변설명을추가독해했다. Fig6.2인쇄8값/Table7.1의10값/Fig7.1의집단크기12·AuROC12및4bit속성표를재대조했다. LR의E[Y]=0설명분산가정,GLM위험의집단상수와regret1/2배율,logisticMMV의별도제곱손실기준을보완하고원작성일/Markdown수식표기를명확히했다. Table3.1의단순해일치대지배구분은직접증명으로남긴다. 같은에이전트2차검수이며독립재현아님.",
+  "semantic_second_pass_at_utc": "2026-10-10T08:16:28.133498+00:00"
+}
