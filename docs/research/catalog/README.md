@@ -207,3 +207,7 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 ## H082: 원78 검색·접근 3개 그룹
 
 [출처](../sources/history-082.md)와 [4개 목록](history-082-sources.jsonl)은 새3개와 기존 판단1개를 연결한다. 전체JSON2·빈HEAD1을 구분하고 독립 본문·이미지 추가 가산은 없다. [43개 소장그룹 연결](../evidence/0082-transferability-access/packet-coverage.json)은 H0744·H07912·H08013·H08111·H0823으로 검수 책임을 나눈다. 검색에 나온 모든 논문/저장소 의존 파일을 확보한 목록은 아니다.
+
+## H083: 원79 FMCL 5개 그룹
+
+[출처](../sources/history-083.md)와 [7개 목록](history-083-sources.jsonl)은 새5개와 기존 findings·plan2개를 연결한다. 독립 PDF1개·16쪽, 파생TXT16쪽 대응·원PNG3개·사본10경로를 구분한다. 새 JSON 독해 가산은 없고 원79 외부21그룹 중 잔여12그룹은 후속 검수 대상이다.

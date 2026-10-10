@@ -1,0 +1,78 @@
+{
+  "source_id": "SRC-0062493",
+  "source_sha256": "e35166b7006be4f447d3c83af4ea4c7ba747df28b09bc8a6e20e25761ed16802",
+  "locator": "PDF pp6–10,12",
+  "signature": {
+    "encoder": "frozen phi",
+    "class_mean": "mu_i,c = mean of phi(x) over local class c",
+    "class_proportion": "w_i,c = n_i,c / n_i",
+    "requires_observed_class_labels": true
+  },
+  "pair_distance": {
+    "common_classes": "C_i intersection C_j",
+    "weight": "min(w_i,c,w_j,c)",
+    "overlap": "Omega_ij = sum of weights",
+    "cosine": "1 - dot(mu_i,c,mu_j,c)/(norm(mu_i,c)*norm(mu_j,c)+epsilon)",
+    "averaged_distance": "sum(weight*cosine)/(sum(weight)+epsilon)",
+    "multiplier": "min(max(Omega_ij,epsilon)^(-alpha),beta)",
+    "D_ij": "averaged_distance*multiplier",
+    "alpha": 1,
+    "beta": 100,
+    "epsilon": 0.001,
+    "no_common_class": "infinity initially; replace by min(2*P95,P99) of finite off-diagonal D",
+    "diagonal": 0
+  },
+  "clustering": {
+    "reported_linkage": "average",
+    "CV": "std(off-diagonal D)/mean(off-diagonal D)",
+    "candidate_windows": [
+      {
+        "condition": "CV < 0.35",
+        "K": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "condition": "0.35 <= CV < 0.70",
+        "K": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      {
+        "condition": "otherwise",
+        "K": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    ],
+    "selection": "largest local maximum of silhouette in window; absent peaks: printed argmax K=1..Kmax",
+    "fixed_comparison_K": {
+      "BUSI": 3,
+      "LungHist700": 3,
+      "Imagenette": 5
+    }
+  },
+  "unresolved_printed_specification": [
+    "empty finite-distance set",
+    "zero mean distance in CV",
+    "single-cluster silhouette",
+    "meaning of largest local maximum",
+    "score computation outside window in fallback",
+    "pair selection before stop with one remaining cluster"
+  ],
+  "scope": "인쇄 수식·의사코드의 정적 해석. 실행 코드의 동작/오류 또는 성능 실패를 확인한 것이 아니다.",
+  "semantic_second_pass_complete": true
+}
