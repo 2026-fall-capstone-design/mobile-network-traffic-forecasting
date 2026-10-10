@@ -1,0 +1,218 @@
+{
+  "batch_id": "history-054",
+  "claims": [
+    {
+      "claim_id": "H054-C01",
+      "claim": "59의 질문·62 당시 판단",
+      "source_location": "SRC-0021920 전체;SRC-0021984 전체",
+      "verification_method": "이력 정보·grouping·당시 추가실험 제한과 당시 판단을 재대조",
+      "limit": "과거 다음 행동을 현재 실행 지시로 사용하지 않음"
+    },
+    {
+      "claim_id": "H054-C02",
+      "claim": "문헌 식별·두 저장 판본·공식 출판",
+      "source_location": "SRC-0062784 p1;SRC-0062787 p1;SRC-0062789;HL-SUP-01",
+      "verification_method": "제목·저자·버전 날짜와 공식 DOI/권호/쪽/발행일을 대조",
+      "limit": "저장하지 않은 v2 본문과 출판본 전체 독해를 주장하지 않음"
+    },
+    {
+      "claim_id": "H054-C03",
+      "claim": "PDF·HTML·TXT·원 미리보기 전체 범위",
+      "source_location": "SRC-0062783 전체;SRC-0062784 전체;SRC-0062785 전체;SRC-0062786 전체;SRC-0062787 전체;SRC-0062788 전체;SRC-0062803;SRC-0062804;SRC-0062805",
+      "verification_method": "두 버전13쪽·HTML 전체 수식·26쪽 TXT 동일성·원PNG3개의 읽은 범위를 연결",
+      "limit": "같은 파생내용과 pixel동일2쪽을 독립 내용으로 재가산하지 않음"
+    },
+    {
+      "claim_id": "H054-C04",
+      "claim": "버전의 수식 분리와 그림 차이",
+      "source_location": "SRC-0062783;SRC-0062784;SRC-0062786;SRC-0062787",
+      "verification_method": "canonical 전체 차이와 76→83 display식의6분리묶음 및 그림1 시각 대조",
+      "limit": "외부 SVG는 미보유이므로 동일 원곡선·동일 필터라고 단정하지 않음"
+    },
+    {
+      "claim_id": "H054-C05",
+      "claim": "정식 출판본의 정리4 단계",
+      "source_location": "HL-SUP-02 PDF6/7쪽;SRC-0062787 p6/7",
+      "verification_method": "인쇄25828/25829쪽 본문·시각과 저장v3의 정리4 증명 대조",
+      "limit": "나머지 출판본6쪽은 미독해"
+    },
+    {
+      "claim_id": "H054-C06",
+      "claim": "SDG와 연합학습 입력/목표",
+      "source_location": "SRC-0062787 pp3–5 Eq1–3",
+      "verification_method": "client·feature·H/S 정의, 사인·AR·추세·잡음·affine 변환 대조",
+      "limit": "통신 cell 발생 과정의 실증적 타당성으로 확대하지 않음"
+    },
+    {
+      "claim_id": "H054-C07",
+      "claim": "정규화·PCA·차원 proxy",
+      "source_location": "SRC-0062787 pp3/4/10/11 Eq6–8/40–50",
+      "verification_method": "window 정규화와 차원/주기 에너지식·PCA 기준 대조",
+      "limit": "PCA 분산 보존과 엄밀한 정보 보존·biLipschitz 가정을 동일시하지 않음"
+    },
+    {
+      "claim_id": "H054-C08",
+      "claim": "분석 가정과 유효 표본",
+      "source_location": "SRC-0062787 pp4/7/10/11/13",
+      "verification_method": "여섯 가정과 Dk/H 및 저자 한계의 조건을 재대조",
+      "limit": "겹치는 모든 window의 보편 유효 표본 수로 사용하지 않음"
+    },
+    {
+      "claim_id": "H054-C09",
+      "claim": "제곱오차의 Bayes 분해와 이질성",
+      "source_location": "SRC-0062787 pp4/5/11 Eq10–16/59–65;SRC-0021984 §1",
+      "verification_method": "조건부 기대 직교와 shared predictor 대 client Bayes 차이 확인",
+      "limit": "순수 표본부족 또는 MAE/RCTL의 동일 분해로 해석하지 않음"
+    },
+    {
+      "claim_id": "H054-C10",
+      "claim": "기대 Bayes 위험 비증가",
+      "source_location": "SRC-0062787 p6 Bayesian Loss Behavior",
+      "verification_method": "중첩 정보 아래 조건부 기대의 L2 투영과 기대 위험을 구분",
+      "limit": "점별 조건부분산 비증가와 동일한 명제로 쓰지 않음"
+    },
+    {
+      "claim_id": "H054-C11",
+      "claim": "정리4 포화 전 증분의 공백",
+      "source_location": "SRC-0062784 pp6/7;SRC-0062787 pp6/7;SRC-0021984 §1;HL-SUP-02 PDF6/7",
+      "verification_method": "원 부등호 단계를 읽고 T4-before 정확 수열의 조건·최솟값 대조",
+      "limit": "전체 SDG 조건을 실현한 학습 반례가 아닌 인쇄 조건의 충분성 검수"
+    },
+    {
+      "claim_id": "H054-C12",
+      "claim": "최초 허용 변화와 지속 포화",
+      "source_location": "SRC-0062787 p6 Eq26",
+      "verification_method": "first-tolerance 사례의 연속 증분 −1/2,−5/2,0 검산",
+      "limit": "처음 허용치 안의 변화가 이후 전부를 제한하지 않음"
+    },
+    {
+      "claim_id": "H054-C13",
+      "claim": "증가 상계와 실제 손실",
+      "source_location": "SRC-0062787 p6 Eq25/29;SRC-0021984 §1",
+      "verification_method": "1/H≤H 예 및 고정 차원의 sublinear 상계 증분 대조",
+      "limit": "실제 모델 오차의 증가 또는 H독립 η를 도출하지 않음"
+    },
+    {
+      "claim_id": "H054-C14",
+      "claim": "조건부분산의 점별 반례",
+      "source_location": "SRC-0062787 p6 Bayesian Loss Behavior",
+      "verification_method": "유한 확률표의 전체분산2·G1분산4·기대조건부분산2를 정확 계산",
+      "limit": "유효한 기대 Bayes 위험 비증가를 반박하지 않음"
+    },
+    {
+      "claim_id": "H054-C15",
+      "claim": "볼록 투영과 직교 등식",
+      "source_location": "SRC-0062787 pp12/13 Eq75–77;HL-SUP-03 Projections",
+      "verification_method": "구간[0,1] 예의 교차항1·거리4·두제곱합2 대조",
+      "limit": "닫힌 선형/아핀 부분공간 등 추가 직교 조건을 구분"
+    },
+    {
+      "claim_id": "H054-C16",
+      "claim": "Taylor 잔차의 선형항",
+      "source_location": "SRC-0062787 p13 Eq79/80",
+      "verification_method": "f(u)=u의 Hessian0과 값차이1/2·affine잔차0 검산",
+      "limit": "piecewise-constant와affine의 오차를 같은 것으로 취급하지 않음"
+    },
+    {
+      "claim_id": "H054-C17",
+      "claim": "resolution 균형률의 곱 형태",
+      "source_location": "SRC-0062787 p13 Eq82/83",
+      "verification_method": "미분한 최적N과 차원별상수·곱률, d4 A16 B1의8대5 검산",
+      "limit": "숨은상수가있는모든느슨한상계자체를 단일예로 전면반박하지 않음"
+    },
+    {
+      "claim_id": "H054-C18",
+      "claim": "AR 마지막 한 점과 전체 미래 블록",
+      "source_location": "SRC-0062787 pp5/12 Eq15/68",
+      "verification_method": "AR1계수1/2에서1·5/4·전체9/4·평균9/8 산술",
+      "limit": "known계수 가정의 공식 비교이며 자료생성·학습·예측 없음"
+    },
+    {
+      "claim_id": "H054-C19",
+      "claim": "H 선택과 server trimmed mean",
+      "source_location": "SRC-0062787 p7 Eq30–32",
+      "verification_method": "AR기억·계절coverage 길이와 가중 α-trimmedmean 제안 대조",
+      "limit": "실제 최적위험·α·정수화·통신 절감의 실증으로 세지 않음"
+    },
+    {
+      "claim_id": "H054-C20",
+      "claim": "Jena SDG 비교 설정",
+      "source_location": "SRC-0062784 p9;SRC-0062787 p9;SRC-0062783 AppendixA;SRC-0062786 AppendixA",
+      "verification_method": "2020/10분/N52696/온도1개/OLS/T144/AR30/RF50window 본문·시각 대조",
+      "limit": "실제 FL최적H 비교나 통신clustering 실험이 아님"
+    },
+    {
+      "claim_id": "H054-C21",
+      "claim": "인쇄 수치 다섯 개",
+      "source_location": "SRC-0062784 p9;SRC-0062787 p9;SRC-0062783 AppendixA;SRC-0062786 AppendixA",
+      "verification_method": "두 PDF추출과MathML을 두버전에서30회 전사 대조",
+      "limit": "독립 실험30회나 원자료 재계산이 아님"
+    },
+    {
+      "claim_id": "H054-C22",
+      "claim": "RF 정확도와 누락된 실행 조건",
+      "source_location": "SRC-0062787 p9 AppendixA",
+      "verification_method": "accuracy0.892·미기록 classbalance/split/seed/반복/variancegap을 구별",
+      "limit": "구별 불가능성 또는 임의 classbalance의 통계적 유의성으로 변환하지 않음"
+    },
+    {
+      "claim_id": "H054-C23",
+      "claim": "성능·비용 실증의 범위",
+      "source_location": "SRC-0062787 전체;SRC-0021984 §1",
+      "verification_method": "SDG 분포/상관 검증과 FL예측성능·clustering·RCTL·runtime표 부재를 구별",
+      "limit": "FedAvg/FedProx 관련언급을 실행된비교결과로 세지 않음"
+    },
+    {
+      "claim_id": "H054-C24",
+      "claim": "ALW의 판단과 horizon의 역할 분리",
+      "source_location": "SRC-0021984 §1/4;SRC-0021920",
+      "verification_method": "H053의 공동학습·전체연산/비용 검수와 이론조건을 연결",
+      "limit": "압축길이만으로 독립소속선택의 이득을 확정하지 않음"
+    },
+    {
+      "claim_id": "H054-C25",
+      "claim": "60 실증의 긍정·부정 결과 동시 보존",
+      "source_location": "SRC-0021984 §2;SRC-0021920",
+      "verification_method": "H051의 저장예측 검수와 동일입력·4cell·pooling량·기간손해를 재대조",
+      "limit": "Tab직접 예측의 이득과 grouping/RCTL 성능을 혼합하지 않음"
+    },
+    {
+      "claim_id": "H054-C26",
+      "claim": "61 정확 산술과 구조 비용 연결",
+      "source_location": "SRC-0021984 §3;SRC-0021920",
+      "verification_method": "H052의 조건부 BayesMAE·구조MAC/parameter 검수를 연결",
+      "limit": "알려진 과정의 산술을 실제 추정 성능·MAC를4배runtime으로 전환하지 않음"
+    },
+    {
+      "claim_id": "H054-C27",
+      "claim": "62의 GPI 재사용·후속 질문",
+      "source_location": "SRC-0021984 §1/4",
+      "verification_method": "33기록 재인용과 새기여 판단, 실제입력/target 표현 질문·distillation 제약 재대조",
+      "limit": "후속 질문을 현재 새실험 계획으로 실행하지 않음"
+    },
+    {
+      "claim_id": "H054-C28",
+      "claim": "실행·회계의 시점",
+      "source_location": "SRC-0021984 §5",
+      "verification_method": "H051/H052의16contexts/2048query/32simplefits/61산술과 이후누적원장 연결",
+      "limit": "동일결과 재인용을 새호출로 더하거나 전체전처리 포함총시간으로 표시하지 않음"
+    },
+    {
+      "claim_id": "H054-C29",
+      "claim": "저장 폴더 전수 연결",
+      "source_location": "SRC-0062781;SRC-0062782;SRC-0062790;SRC-0062806",
+      "verification_method": "inventory에서32고유그룹64경로와H053/H054 manifest의hash/범위를 전수 연결",
+      "limit": "tree의미열람파일·미보유SVG·새외부자료를 저장원문완료수에 포함하지 않음"
+    },
+    {
+      "claim_id": "H054-C30",
+      "claim": "보존과 미완료 범위",
+      "source_location": "SRC-0021920;SRC-0021984;SRC-0062789",
+      "verification_method": "원본16그룹32경로·재사용6/외부메타10·보호6개와 팀문서 연결 대조",
+      "limit": "원 실행 재현/이후기록/전체통합·팀접근·최종delta·검색검수 미완료 유지"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_at_utc": "2026-10-10T01:56:10.235340+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 30개 주요 주장을 저장 v1/v3의 전체 독해 기록과 해당 본문·수식·그림, 59 계획·62 전체 판단에 다시 대조했다. 추가 공식 출판본은 정리4 두쪽만이다. 60/61은 기존 H051/H052 검수를 재사용했다. CF를 conditional forecasting으로 바로잡았다. 독립 연구자의 실험 재현은 아니다."
+}

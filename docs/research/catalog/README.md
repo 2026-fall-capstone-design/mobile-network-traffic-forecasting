@@ -134,3 +134,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H052 출처 목록](history-052-sources.jsonl)은 61번 산술의 10묶음·31경로와 6개 새 정확 사본·4개 재사용을 연결합니다. [실제 독해 범위](../sources/history-052.md)에 기존 자료 재독과 다음 묶음의 대기 독해를 구별했습니다.
 
 [H053 출처 목록](history-053-sources.jsonl)은 59 ALW의25묶음·50원본 경로를 연결합니다. [실제 읽은 범위](../sources/history-053.md)에서 논문·고정 코드·추가 의존 자료와 아직 읽지 않은 horizon을 구별합니다.
+
+[H054 출처 목록](history-054-sources.jsonl)은 horizon 두판본의16묶음·32원경로를 연결합니다. [32묶음·64경로의 문헌 폴더 대조](../verification/history-054-packet-scope.json)에서 ALW와horizon의 완료범위 및 미보유 외부자료를 구분합니다.

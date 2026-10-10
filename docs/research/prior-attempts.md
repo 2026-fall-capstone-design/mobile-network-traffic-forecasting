@@ -305,3 +305,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 입력 압축·wavelet·attention으로 비용 절감을 주장하기 전에 — 59 ALW
 
 검색어: ALW, adaptive lookback, wavelet, soft truncation, 입력 길이, 공동 학습, PE, 정규화, 비용. [59번 ALW 검토](records/0059-alw.md)에서 L512→H256과 전체 Q/K·mask 연산, 고정 L512 기준의 iteration 증가, seed/환경/epoch 및 복원식 차이를 확인하세요. 기존보다 달라지는 소속 결정·독립성·실제 총비용을 설명해야 같은 시도를 반복하지 않을 수 있습니다.
+
+## 최적 입력 길이·첫 평탄구간·cell 분할 — 59–62
+
+검색어: Optimal Look-back, horizon, Bayes 위험, approximation loss, 이력 길이, 최초 포화, GPI, process identification, grouping, trimmed mean. [문헌과62 종합](records/0059-optimal-lookback.md)을 먼저 읽으세요. 기대 Bayes 위험 비증가, 실제 공유 예측기 오차, 최적성 증명 조건은 다릅니다. [60 파일럿](records/0059-0062-history-grouping.md)과 [61 산술·비용](records/0061-history-logic-cost.md)의 조건을 재사용하고, 새 정보집합·기간·공유량·지표·선택 비용이 무엇인지 적어야 합니다.
