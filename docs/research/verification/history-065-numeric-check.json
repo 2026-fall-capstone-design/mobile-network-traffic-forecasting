@@ -151,13 +151,13 @@
     ]
   ],
   "printed_scalars": 120,
-  "printed_scalar_counting": "42 TableI cells + 78 TableII cells, including 12 repeated q labels; 108 outcome cells.",
+  "printed_scalar_counting": "TableI의42개 칸과 TableII의78개 칸을 합산한다. q열의 반복값12개를 포함하며 결과값은108개다.",
   "check_count": 79,
   "checks": [
     {
       "check": "TableI_q0_PDF",
       "passed": true,
-      "detail": "7 cells including q match extracted row; page visually inspected separately."
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
     },
     {
       "check": "TableI_q0_TeX",
@@ -167,7 +167,7 @@
     {
       "check": "TableII_q0_PDF",
       "passed": true,
-      "detail": "13 cells including q match extracted row."
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
     },
     {
       "check": "TableII_q0_TeX",
@@ -177,42 +177,42 @@
     {
       "check": "q0_mean_rounding_compatible",
       "passed": true,
-      "detail": "Each loss and printed f_q may differ from its unrounded value by 0.00005; this does not identify implementation."
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
     },
     {
       "check": "q0_under_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q0_over_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q0_Eq3_is_sample_CV",
       "passed": true,
-      "detail": "Independent algebraic expression vs statistics.stdev."
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
     },
     {
       "check": "q0_Eq4_positive_is_sample_CV",
       "passed": true,
-      "detail": "10 positive table magnitudes, sample denominator 9."
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
     },
     {
       "check": "q0_Eq5_constant",
       "passed": true,
-      "detail": "As printed, squared ratio=1; outer 100 sqrt gives 100."
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
     },
     {
       "check": "q0_candidate_two_mean_sample_CV",
       "passed": true,
-      "detail": "Candidate interpretation only; not a correction verified with authors or plotting code."
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
     },
     {
       "check": "TableI_q2_PDF",
       "passed": true,
-      "detail": "7 cells including q match extracted row; page visually inspected separately."
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
     },
     {
       "check": "TableI_q2_TeX",
@@ -222,7 +222,7 @@
     {
       "check": "TableII_q2_PDF",
       "passed": true,
-      "detail": "13 cells including q match extracted row."
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
     },
     {
       "check": "TableII_q2_TeX",
@@ -232,47 +232,47 @@
     {
       "check": "q2_mean_rounding_compatible",
       "passed": true,
-      "detail": "Each loss and printed f_q may differ from its unrounded value by 0.00005; this does not identify implementation."
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
     },
     {
       "check": "q2_Eq2_below_report_for_all_weights",
       "passed": true,
-      "detail": "For any p_k>=0 summing to one, Eq2<=max(F_k+0.00005)^(q+1)/(q+1)."
+      "detail": "합이1인 모든 p_k>=0에 대해 식2<=max(F_k+0.00005)^(q+1)/(q+1)이다."
     },
     {
       "check": "q2_under_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q2_over_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q2_Eq3_is_sample_CV",
       "passed": true,
-      "detail": "Independent algebraic expression vs statistics.stdev."
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
     },
     {
       "check": "q2_Eq4_positive_is_sample_CV",
       "passed": true,
-      "detail": "10 positive table magnitudes, sample denominator 9."
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
     },
     {
       "check": "q2_Eq5_constant",
       "passed": true,
-      "detail": "As printed, squared ratio=1; outer 100 sqrt gives 100."
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
     },
     {
       "check": "q2_candidate_two_mean_sample_CV",
       "passed": true,
-      "detail": "Candidate interpretation only; not a correction verified with authors or plotting code."
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
     },
     {
       "check": "TableI_q4_PDF",
       "passed": true,
-      "detail": "7 cells including q match extracted row; page visually inspected separately."
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
     },
     {
       "check": "TableI_q4_TeX",
@@ -282,7 +282,7 @@
     {
       "check": "TableII_q4_PDF",
       "passed": true,
-      "detail": "13 cells including q match extracted row."
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
     },
     {
       "check": "TableII_q4_TeX",
@@ -292,47 +292,47 @@
     {
       "check": "q4_mean_rounding_compatible",
       "passed": true,
-      "detail": "Each loss and printed f_q may differ from its unrounded value by 0.00005; this does not identify implementation."
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
     },
     {
       "check": "q4_Eq2_below_report_for_all_weights",
       "passed": true,
-      "detail": "For any p_k>=0 summing to one, Eq2<=max(F_k+0.00005)^(q+1)/(q+1)."
+      "detail": "합이1인 모든 p_k>=0에 대해 식2<=max(F_k+0.00005)^(q+1)/(q+1)이다."
     },
     {
       "check": "q4_under_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q4_over_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q4_Eq3_is_sample_CV",
       "passed": true,
-      "detail": "Independent algebraic expression vs statistics.stdev."
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
     },
     {
       "check": "q4_Eq4_positive_is_sample_CV",
       "passed": true,
-      "detail": "10 positive table magnitudes, sample denominator 9."
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
     },
     {
       "check": "q4_Eq5_constant",
       "passed": true,
-      "detail": "As printed, squared ratio=1; outer 100 sqrt gives 100."
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
     },
     {
       "check": "q4_candidate_two_mean_sample_CV",
       "passed": true,
-      "detail": "Candidate interpretation only; not a correction verified with authors or plotting code."
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
     },
     {
       "check": "TableI_q6_PDF",
       "passed": true,
-      "detail": "7 cells including q match extracted row; page visually inspected separately."
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
     },
     {
       "check": "TableI_q6_TeX",
@@ -342,7 +342,7 @@
     {
       "check": "TableII_q6_PDF",
       "passed": true,
-      "detail": "13 cells including q match extracted row."
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
     },
     {
       "check": "TableII_q6_TeX",
@@ -352,47 +352,47 @@
     {
       "check": "q6_mean_rounding_compatible",
       "passed": true,
-      "detail": "Each loss and printed f_q may differ from its unrounded value by 0.00005; this does not identify implementation."
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
     },
     {
       "check": "q6_Eq2_below_report_for_all_weights",
       "passed": true,
-      "detail": "For any p_k>=0 summing to one, Eq2<=max(F_k+0.00005)^(q+1)/(q+1)."
+      "detail": "합이1인 모든 p_k>=0에 대해 식2<=max(F_k+0.00005)^(q+1)/(q+1)이다."
     },
     {
       "check": "q6_under_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q6_over_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q6_Eq3_is_sample_CV",
       "passed": true,
-      "detail": "Independent algebraic expression vs statistics.stdev."
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
     },
     {
       "check": "q6_Eq4_positive_is_sample_CV",
       "passed": true,
-      "detail": "10 positive table magnitudes, sample denominator 9."
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
     },
     {
       "check": "q6_Eq5_constant",
       "passed": true,
-      "detail": "As printed, squared ratio=1; outer 100 sqrt gives 100."
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
     },
     {
       "check": "q6_candidate_two_mean_sample_CV",
       "passed": true,
-      "detail": "Candidate interpretation only; not a correction verified with authors or plotting code."
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
     },
     {
       "check": "TableI_q8_PDF",
       "passed": true,
-      "detail": "7 cells including q match extracted row; page visually inspected separately."
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
     },
     {
       "check": "TableI_q8_TeX",
@@ -402,7 +402,7 @@
     {
       "check": "TableII_q8_PDF",
       "passed": true,
-      "detail": "13 cells including q match extracted row."
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
     },
     {
       "check": "TableII_q8_TeX",
@@ -412,47 +412,47 @@
     {
       "check": "q8_mean_rounding_compatible",
       "passed": true,
-      "detail": "Each loss and printed f_q may differ from its unrounded value by 0.00005; this does not identify implementation."
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
     },
     {
       "check": "q8_Eq2_below_report_for_all_weights",
       "passed": true,
-      "detail": "For any p_k>=0 summing to one, Eq2<=max(F_k+0.00005)^(q+1)/(q+1)."
+      "detail": "합이1인 모든 p_k>=0에 대해 식2<=max(F_k+0.00005)^(q+1)/(q+1)이다."
     },
     {
       "check": "q8_under_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q8_over_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q8_Eq3_is_sample_CV",
       "passed": true,
-      "detail": "Independent algebraic expression vs statistics.stdev."
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
     },
     {
       "check": "q8_Eq4_positive_is_sample_CV",
       "passed": true,
-      "detail": "10 positive table magnitudes, sample denominator 9."
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
     },
     {
       "check": "q8_Eq5_constant",
       "passed": true,
-      "detail": "As printed, squared ratio=1; outer 100 sqrt gives 100."
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
     },
     {
       "check": "q8_candidate_two_mean_sample_CV",
       "passed": true,
-      "detail": "Candidate interpretation only; not a correction verified with authors or plotting code."
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
     },
     {
       "check": "TableI_q10_PDF",
       "passed": true,
-      "detail": "7 cells including q match extracted row; page visually inspected separately."
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
     },
     {
       "check": "TableI_q10_TeX",
@@ -462,7 +462,7 @@
     {
       "check": "TableII_q10_PDF",
       "passed": true,
-      "detail": "13 cells including q match extracted row."
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
     },
     {
       "check": "TableII_q10_TeX",
@@ -472,47 +472,47 @@
     {
       "check": "q10_mean_rounding_compatible",
       "passed": true,
-      "detail": "Each loss and printed f_q may differ from its unrounded value by 0.00005; this does not identify implementation."
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
     },
     {
       "check": "q10_Eq2_below_report_for_all_weights",
       "passed": true,
-      "detail": "For any p_k>=0 summing to one, Eq2<=max(F_k+0.00005)^(q+1)/(q+1)."
+      "detail": "합이1인 모든 p_k>=0에 대해 식2<=max(F_k+0.00005)^(q+1)/(q+1)이다."
     },
     {
       "check": "q10_under_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q10_over_mean",
       "passed": true,
-      "detail": "Exact rational mean of printed magnitudes."
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
     },
     {
       "check": "q10_Eq3_is_sample_CV",
       "passed": true,
-      "detail": "Independent algebraic expression vs statistics.stdev."
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
     },
     {
       "check": "q10_Eq4_positive_is_sample_CV",
       "passed": true,
-      "detail": "10 positive table magnitudes, sample denominator 9."
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
     },
     {
       "check": "q10_Eq5_constant",
       "passed": true,
-      "detail": "As printed, squared ratio=1; outer 100 sqrt gives 100."
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
     },
     {
       "check": "q10_candidate_two_mean_sample_CV",
       "passed": true,
-      "detail": "Candidate interpretation only; not a correction verified with authors or plotting code."
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
     },
     {
       "check": "q0_to_q10_four_losses_increase",
       "passed": true,
-      "detail": "A smaller cross-client CV does not mean every client improves."
+      "detail": "클라이언트 간 CV 감소는 모든 클라이언트의 개선을 뜻하지 않는다."
     },
     {
       "check": "q0_to_q10_all_five_under_counts_increase",
@@ -527,27 +527,27 @@
     {
       "check": "mean_under_increase_9_2",
       "passed": true,
-      "detail": "Not reduced shortfall."
+      "detail": "부족량이 감소한 것이 아니다."
     },
     {
       "check": "mean_over_decrease_1_4",
       "passed": true,
-      "detail": "Aggregate over-provisioning changes modestly."
+      "detail": "평균 과잉 할당량의 변화는 작다."
     },
     {
       "check": "Eq4_not_monotone_every_step",
       "passed": true,
-      "detail": "q6 to q8 increases."
+      "detail": "q=6에서 q=8로 바뀔 때 증가한다."
     },
     {
       "check": "upstream_q0_simple_selected_mean",
       "passed": true,
-      "detail": "q=0 gives h_k=1/eta and Delta_k=g_k; no execution of the upstream implementation."
+      "detail": "q=0이면 h_k=1/eta, Delta_k=g_k로 약분된다. 원알고리즘 구현을 실행하지 않았다."
     },
     {
       "check": "upstream_q0_not_automatically_sample_weighted",
       "passed": true,
-      "detail": "Different client sample sizes do not enter aggregate2 itself; sampling mode must be specified."
+      "detail": "클라이언트별 표본 수는 aggregate2 자체에 반영되지 않으므로 추출 방식을 명시해야 한다."
     }
   ],
   "derived": [
@@ -691,11 +691,11 @@
     "upstream/flearn/trainers/fedbase.py": "4c6ca4cdbcb8cf886930c62f9e13b8b9905f68beccf59fce71ee37cc0d07b34f"
   },
   "limits": [
-    "Printed rounded values only; no raw prediction arrays, model rerun or seed replication.",
-    "Eq2 bound checks the printed definition against TableI, not which objective actually generated the experiments.",
-    "Candidate two-mean CV is not an author-confirmed correction to Eq5.",
-    "The scalar upstream example is algebra, not execution or validation of the telecom implementation.",
-    "Finite q and flat CV do not establish exact minimax optimality."
+    "반올림된 인쇄값만 사용했다. 원예측 배열·모델 재실행·seed 반복 검증은 아니다.",
+    "식2의 상한 검사는 인쇄 정의와 TableI를 대조한다. 실제 실험을 생성한 목적함수를 확인한 것은 아니다.",
+    "두 평균 CV는 해석 후보이며 저자가 확인한 식5의 교정이 아니다.",
+    "원알고리즘의 scalar 예는 대수 검사다. 통신 구현을 실행하거나 검증한 것이 아니다.",
+    "유한 q와 CV의 평탄화는 정확한 minimax 최적성을 입증하지 않는다."
   ],
   "semantic_second_pass_pending": false,
   "new_model_runs": 0,
