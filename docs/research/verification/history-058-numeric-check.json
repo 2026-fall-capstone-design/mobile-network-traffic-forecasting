@@ -1,0 +1,376 @@
+{
+  "batch_id": "history-058",
+  "status": "printed_memberships_and_small_deterministic_arithmetic_checked",
+  "source_id": "SRC-0062143",
+  "table_count": 0,
+  "figures": [
+    {
+      "figure": 1,
+      "page": 8,
+      "scope": "T100/200 각각12개비교거리와5개K설정의boxplot. T200 copula중심값은1부근이나하위outlier도존재.",
+      "exact_result_values_transcribed": false
+    },
+    {
+      "figure": 2,
+      "page": 9,
+      "scope": "T200 MDS의TAR/EXPAR/MA/NLMA각4개label. MA/NLMA가상대적으로가깝다. 좌표에서원거리/새성능을복원하지않음.",
+      "exact_result_values_transcribed": false
+    },
+    {
+      "figure": 3,
+      "page": 11,
+      "scope": "이질성증가Example2의17개거리설정boxplot. copula가높은중심값을보이나하위outlier도존재.",
+      "exact_result_values_transcribed": false
+    },
+    {
+      "figure": 4,
+      "page": 12,
+      "scope": "alpha0/.2/.4/.6/.8/1의6패널과17개거리설정. 선형일때의경쟁방법성능과비선형강도변화를함께보존.",
+      "exact_result_values_transcribed": false
+    },
+    {
+      "figure": 5,
+      "page": 13,
+      "scope": "K2 GDP최상위두군집의23개leaflabel을전사.",
+      "top_split_groups": [
+        [
+          "Germany",
+          "Spain",
+          "Ireland",
+          "Switzerland",
+          "Portugal",
+          "Greece",
+          "Netherlands",
+          "Italy",
+          "France",
+          "Japan"
+        ],
+        [
+          "United Kingdom",
+          "Iceland",
+          "Canada",
+          "United States",
+          "Sweden",
+          "Norway",
+          "Australia",
+          "Belgium",
+          "Austria",
+          "New Zealand",
+          "Luxembourg",
+          "Finland",
+          "Denmark"
+        ]
+      ],
+      "exact_merge_heights_transcribed": false
+    },
+    {
+      "figure": 6,
+      "page": 14,
+      "scope": "GDP silhouette, 인쇄J2–8중최대J2. y좌표는점별정확값이인쇄되지않음.",
+      "tested_cluster_counts": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "argmax_cluster_count": 2,
+      "exact_silhouette_values_transcribed": false
+    },
+    {
+      "figure": 7,
+      "page": 15,
+      "scope": "GDP두군집의지도. 유럽이확대되어있고색/지리설명은정성해석이며정답라벨/예측성능아님.",
+      "exact_result_values_transcribed": false
+    },
+    {
+      "figure": 8,
+      "page": 16,
+      "scope": "K2 인구최상위두군집20개leaflabel을전사. WA는CA/FL/MD와같이상단13개군집.",
+      "top_split_groups": [
+        [
+          "OK",
+          "FL",
+          "SD",
+          "NY",
+          "ND",
+          "WA",
+          "PA",
+          "MA",
+          "MD",
+          "NJ",
+          "IL",
+          "MI",
+          "CA"
+        ],
+        [
+          "TN",
+          "NC",
+          "TX",
+          "SC",
+          "VA",
+          "GA",
+          "CO"
+        ]
+      ],
+      "exact_merge_heights_transcribed": false
+    },
+    {
+      "figure": 9,
+      "page": 17,
+      "scope": "인구 silhouette, 인쇄J2–6중최대J2. 정확silhouette값은전사하지않음.",
+      "tested_cluster_counts": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "argmax_cluster_count": 2,
+      "exact_silhouette_values_transcribed": false
+    }
+  ],
+  "population": {
+    "true_groups_from_page15": [
+      [
+        "CA",
+        "CO",
+        "FL",
+        "GA",
+        "MD",
+        "NC",
+        "SC",
+        "TN",
+        "TX",
+        "VA",
+        "WA"
+      ],
+      [
+        "IL",
+        "MA",
+        "MI",
+        "NJ",
+        "NY",
+        "OK",
+        "PA",
+        "ND",
+        "SD"
+      ]
+    ],
+    "estimated_top_split_from_figure8": [
+      [
+        "OK",
+        "FL",
+        "SD",
+        "NY",
+        "ND",
+        "WA",
+        "PA",
+        "MA",
+        "MD",
+        "NJ",
+        "IL",
+        "MI",
+        "CA"
+      ],
+      [
+        "TN",
+        "NC",
+        "TX",
+        "SC",
+        "VA",
+        "GA",
+        "CO"
+      ]
+    ],
+    "group_sizes": {
+      "true": [
+        11,
+        9
+      ],
+      "estimated": [
+        13,
+        7
+      ]
+    },
+    "best_match_Dice": [
+      {
+        "true_group": "G1",
+        "candidates": [
+          {
+            "estimated_group": "A1",
+            "intersection": [
+              "CO",
+              "GA",
+              "NC",
+              "SC",
+              "TN",
+              "TX",
+              "VA"
+            ],
+            "intersection_count": 7,
+            "true_size": 11,
+            "estimated_size": 7,
+            "Dice_fraction": "7/9",
+            "Dice": 0.7777777777777778
+          },
+          {
+            "estimated_group": "A2",
+            "intersection": [
+              "CA",
+              "FL",
+              "MD",
+              "WA"
+            ],
+            "intersection_count": 4,
+            "true_size": 11,
+            "estimated_size": 13,
+            "Dice_fraction": "1/3",
+            "Dice": 0.3333333333333333
+          }
+        ],
+        "best_group": "A1",
+        "best_Dice_fraction": "7/9"
+      },
+      {
+        "true_group": "G2",
+        "candidates": [
+          {
+            "estimated_group": "A1",
+            "intersection": [],
+            "intersection_count": 0,
+            "true_size": 9,
+            "estimated_size": 7,
+            "Dice_fraction": "0",
+            "Dice": 0.0
+          },
+          {
+            "estimated_group": "A2",
+            "intersection": [
+              "IL",
+              "MA",
+              "MI",
+              "ND",
+              "NJ",
+              "NY",
+              "OK",
+              "PA",
+              "SD"
+            ],
+            "intersection_count": 9,
+            "true_size": 9,
+            "estimated_size": 13,
+            "Dice_fraction": "9/11",
+            "Dice": 0.8181818181818182
+          }
+        ],
+        "best_group": "A2",
+        "best_Dice_fraction": "9/11"
+      }
+    ],
+    "similarity_fraction": "79/99",
+    "similarity_decimal": 0.797979797979798,
+    "similarity_rounded_one_decimal": 0.8,
+    "paper_reported_similarity": "0.8",
+    "paper_prose_mismatched_states": [
+      "CA",
+      "FL",
+      "MD"
+    ],
+    "figure_mismatched_states": [
+      "CA",
+      "FL",
+      "MD",
+      "WA"
+    ],
+    "correct_state_count_under_best_matching": 16,
+    "total_states": 20,
+    "classification_accuracy_as_diagnostic_only": 0.8,
+    "interpretation": "본문의3주와Figure8의4주는불일치. 79/99는인쇄군집전사에조건을둔산술이며원자료군집재현이아님. Sim지표를accuracy로대체하지않음."
+  },
+  "simulation_settings": {
+    "Example1": {
+      "models": [
+        "TAR",
+        "EXPAR",
+        "MA",
+        "NLMA"
+      ],
+      "series_per_model": 4,
+      "total_series": 16,
+      "T": [
+        100,
+        200
+      ],
+      "reported_repeats": 100,
+      "lag_K": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "weights": "w_h=1",
+      "errors": "iid N(0,1)"
+    },
+    "Example2": {
+      "T": 200,
+      "models": [
+        "STAR",
+        "EXPAR",
+        "STMA",
+        "NLMA"
+      ],
+      "a2": [
+        0.2,
+        0.6
+      ],
+      "b2": [
+        6,
+        12
+      ],
+      "a4": [
+        0.3,
+        0.7
+      ],
+      "b4": [
+        0.2,
+        0.9
+      ],
+      "STMA_as_printed": "X_t = epsilon_t - 0.4 epsilon_(t-1) + 0.8 epsilon_(t-1) F(X_(t-1)) + epsilon_t",
+      "F_as_printed": "F(X_(t-1)) = 1 - exp(-X_(t-1)^2)",
+      "uncertainty": "epsilon_t가두번이며F의인자는X. PDF10쪽과공식XML M38/M39가같음. 실제구현/의도미확인,임의수정없음."
+    },
+    "Example3": {
+      "T": 200,
+      "alpha": [
+        0,
+        0.2,
+        0.4,
+        0.6,
+        0.8,
+        1
+      ],
+      "parameters": "(b1,b2,b4)=(2.5alpha-0.5,10alpha,0.8alpha)",
+      "alpha0": [
+        -0.5,
+        0,
+        0
+      ],
+      "alpha1": [
+        2,
+        10,
+        0.8
+      ]
+    }
+  },
+  "printed_state_memberships": 20,
+  "printed_country_memberships": 23,
+  "plot_raw_samples_available": false,
+  "raw_experiment_reproduced": false,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0
+}

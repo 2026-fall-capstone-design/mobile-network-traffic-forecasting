@@ -142,3 +142,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H056 출처 목록](history-056-sources.jsonl)은 Heatload와 63·65의 15그룹 30원본 경로를 연결합니다. [실제 읽은 범위](../sources/history-056.md)에 기존 사본 2개·외부 metadata 13개와 새 보충 텍스트 8개를 구분했습니다.
 
 [H057 출처 목록](history-057-sources.jsonl)은 KDD 문헌과63·65의8그룹16경로를연결합니다. [실제 읽은 범위](../sources/history-057.md)에서 기존2사본과외부6참조,공식v2와미독해출판본을구분했습니다.
+
+[H058 출처 목록](history-058-sources.jsonl)은 PLOS 문헌과64·65의7그룹14경로를연결합니다. [읽은 범위](../sources/history-058.md)에서 새사본2·재사용2·외부3참조와공식판본대조를구분합니다.

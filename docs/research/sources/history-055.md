@@ -39,3 +39,5 @@ ECAI PDF는 표지 포함9쪽 전체를 읽었다. 시각은1·2·3·5·7·8·9�
 [H056 후속 범위](history-056.md)에서 Heatload를 추가 검수했습니다. 위 다른 여섯 문헌 미완료 표기는 H055 당시 범위이며 현재는 Heatload를 제외한 다른 다섯 문헌·65 전체 종합이 남습니다. 기존 검수 JSON은 당시 snapshot으로 보존합니다.
 
 [H057 후속 범위](history-057.md)는KDD전체본문·표·수식·판본검수를추가합니다. 현재남은다른문헌은PLOS·GP-Copula·TACTiS-2·conditional normalization의네가지이며65전체종합은미완료입니다. 기존범위와해시는당시snapshot으로보존합니다.
+
+[H058 후속 범위](history-058.md)는PLOS copula의전체PDF·원파생물검수를추가합니다. 현재다른세문헌·65전체종합은남아있으며기존범위·해시는당시snapshot으로보존합니다.
