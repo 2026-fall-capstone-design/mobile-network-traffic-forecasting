@@ -1,0 +1,41 @@
+from pathlib import Path
+import urllib.request, urllib.parse, json, hashlib
+from pypdf import PdfReader
+
+base=Path(__file__).resolve().parent/'sources/peak_objective_69'
+base.mkdir(parents=True,exist_ok=True)
+manifest=base/'manifest.json'
+assert not manifest.exists(), 'Already collected; inspect outputs.'
+items=[
+ ('forecaster_arxiv_abs.html','https://arxiv.org/abs/1512.09244'),
+ ('forecaster_journal_metadata.html','https://bia.unibz.it/esploro/outputs/journalArticle/Forecasters-Dilemma-Extreme-Events-and-Forecast/991005773027901241'),
+ ('Forecasters_Dilemma_Statistical_Science_2017.pdf','https://bia.unibz.it/view/pdfCoverPage?download=true&filePid=13235236700001241&instCode=39UBZ_INST'),
+ ('DeepCog_metadata.html','https://dspace.networks.imdea.org/handle/20.500.12761/770'),
+ ('DeepCog_JSAC_2020_author_version.pdf','https://dspace.networks.imdea.org/bitstream/handle/20.500.12761/770/bega_jsac19.pdf?isAllowed=y&sequence=1'),
+ ('limit_management_2026_metadata.html','https://avesis.metu.edu.tr/publication/details/35df2d7a-e64d-4ab1-b343-82ad5b850e60/limit-management-in-network-traffic-forecasting-via-asymmetric-loss-function-ag-trafigi-tahminlemesinde-asimetrik-kayip-fonksiyonu-ile-limit-yonetimi')]
+records=[]
+for name,url in items:
+    r=dict(name=name,url=url,access_date='2026-09-26')
+    try:
+        with urllib.request.urlopen(url,timeout=30) as resp:
+            data=resp.read(20_000_001)
+            resolved=urllib.parse.urlsplit(resp.url)
+            r.update(status=resp.status,resolved_host=resolved.hostname,
+                     content_type=resp.headers.get('Content-Type'))
+        assert len(data)<=20_000_000
+        path=base/name
+        assert not path.exists()
+        if name.endswith('.pdf'): assert data.startswith(b'%PDF-'), 'Not PDF'
+        path.write_bytes(data)
+        r.update(saved=True,bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            reader=PdfReader(path)
+            texts=[p.extract_text() or '' for p in reader.pages]
+            path.with_suffix('.txt').write_text('\n'.join(f'\n=== PDF PAGE {i+1} ===\n{t}' for i,t in enumerate(texts)),encoding='utf-8')
+            r['pages']=len(reader.pages)
+            r['first_page_excerpt']=texts[0][:700]
+    except Exception as exc:
+        r.update(saved=False,error=f'{type(exc).__name__}: {exc}')
+    records.append(r)
+    manifest.write_text(json.dumps(records,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    print(json.dumps(r,ensure_ascii=False),flush=True)

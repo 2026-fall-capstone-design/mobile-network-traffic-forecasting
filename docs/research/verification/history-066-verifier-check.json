@@ -1,0 +1,79 @@
+{
+  "batch_id": "history-066",
+  "success": true,
+  "checks": 8,
+  "details": [
+    {
+      "name": "inverted_cdf_discrete_ranks",
+      "passed": true,
+      "detail": "중앙 두 값 사이를 보간하지 않는 경험 분위수: 순위2/3/4를 각각 선택한다."
+    },
+    {
+      "name": "unequal_peak_counts_macro_micro",
+      "passed": true,
+      "detail": "피크4개와1개인 두cell의 손실 합은4/10. cell평균5.5와관측치평균2.8을구분한다."
+    },
+    {
+      "name": "all_time_denominator",
+      "passed": true,
+      "detail": "전체8관측치의 부족14·과잉3, 피크기여14를각각전체분모로계산한다."
+    },
+    {
+      "name": "portable_private_copy",
+      "passed": true,
+      "detail": "31개 보존/재사용 사본을 원본 폴더 없이 private 복제해 대조했다."
+    },
+    {
+      "name": "altered_original_mae",
+      "passed": true,
+      "detail": "private 보존본과 manifest hash를 함께 바꿔도 산술/행 대조에서 거절했다."
+    },
+    {
+      "name": "altered_frozen_offset",
+      "passed": true,
+      "detail": "private 보존본과 manifest hash를 함께 바꿔도 산술/행 대조에서 거절했다."
+    },
+    {
+      "name": "missing_comparison",
+      "passed": true,
+      "detail": "private 보존본과 manifest hash를 함께 바꿔도 산술/행 대조에서 거절했다."
+    },
+    {
+      "name": "changed_npz_before_parsing",
+      "passed": true,
+      "detail": "변경된 NPZ는 allow_pickle=False 읽기 이전의 해시 검사에서 거절한다."
+    }
+  ],
+  "rejected_cases": [
+    {
+      "case": "altered_original_mae",
+      "errors": [
+        "originals/('all', 'empirical_risk_20260925')/mae"
+      ]
+    },
+    {
+      "case": "altered_frozen_offset",
+      "errors": [
+        "98_frozen_offsets/empirical_risk_20260925_pooled_tau0.5/offset"
+      ]
+    },
+    {
+      "case": "missing_comparison",
+      "errors": [
+        "calibrated_comparisons:keys"
+      ]
+    }
+  ],
+  "verifier_sha256": "2e580f2d520d922710dc1cce168f397b49ba0fa8d0260683efafd5e7ad1b6076",
+  "source_files_modified": false,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0,
+  "scope": "새 아카이브 검사기 자체의 경계 검수. 원연구 실행과 무관하며 private 사본만 변경했다.",
+  "tested_version_sha256": "408b1f3f48415e6a47ce76afef342aad6eda731490c12f2bdf84de4035994820",
+  "docstring_only_revision": {
+    "verified_at_utc": "2026-10-10T10:32:25.726323+00:00",
+    "AST_without_docstrings_unchanged": true,
+    "scope": "실제로 경계검사를 수행한 판본과 함수 설명만 다르며 산술·분기·입출력 구현은 같다."
+  }
+}

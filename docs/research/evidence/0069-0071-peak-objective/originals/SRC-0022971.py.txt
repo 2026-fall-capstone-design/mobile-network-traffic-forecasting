@@ -1,0 +1,160 @@
+"""Post-hoc descriptive audit of saved predictions; no model calls or clustering."""
+from pathlib import Path
+from fractions import Fraction as F
+import hashlib,json,time,os,sys
+import numpy as np
+import psutil
+
+sys.stdout.reconfigure(encoding='utf-8')
+b=Path(__file__).resolve().parent
+out=b/'results/peak_diagnostic_70'
+out.mkdir(parents=True,exist_ok=True)
+assert not (out/'run_started.json').exists(), 'Already started; do not repeat.'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def save(name,v):
+    (out/name).write_text(json.dumps(v,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+files=['results/rctl_pilot/all_predictions.npz','results/rctl_pilot/evaluation_data.npz',
+       'results/rctl_pilot/summary.json','results/rctl_pilot/fit_results.json',
+       'results/frozen_fit_gap_34/predictions.npz','results/frozen_fit_gap_34/summary.json']
+settings=dict(wall_cap_seconds=30,rss_cap_bytes=1024**3,new_RCTL_fits=0,new_RCTL_forward=0,
+    new_Tab_contexts=0,new_Tab_rows=0,new_simple_fits=0,offset_parameters=98,
+    taus=[.5,.75,.9,.95],quantile_method='inverted_cdf',
+    plan_sha256=sha(b/'70_peak_diagnostic_plan.md'),code_sha256=sha(Path(__file__)),
+    input_sha256={f:sha(b/f) for f in files},independent_test=False,changed_partitions=False)
+save('settings.json',settings)
+save('run_started.json',dict(pid=os.getpid(),unix=time.time()))
+start=time.perf_counter(); complete=False;failure=None
+try:
+    src=np.load(b/files[0],allow_pickle=False)
+    ed=np.load(b/files[1],allow_pickle=False)
+    old=json.loads((b/files[2]).read_text(encoding='utf-8'))
+    fits=json.loads((b/files[3]).read_text(encoding='utf-8'))
+    va=np.load(b/files[4],allow_pickle=False)
+    audit=json.loads((b/files[5]).read_text(encoding='utf-8'))
+    ids=src['cell_ids']; y=src['y'].astype(np.float64)
+    vy=va['validation_y'].astype(np.float64)
+    threshold=ed['peak_threshold'].astype(np.float64)
+    assert y.shape==(16,480) and vy.shape==(16,168)
+    assert np.array_equal(ids,va['cell_ids']) and np.array_equal(ids,ed['cell_ids'])
+    assert np.array_equal(y,ed['test_y']) and np.array_equal(ed['test_times'],np.arange(1008,1488))
+    assert np.allclose(threshold,np.quantile(va['train_y'],.95,axis=1),atol=1e-6,rtol=0)
+    names=[k for k in src.files if k not in ['y','cell_ids','scales']]
+    assert len(names)==8
+    g='global_20260925'
+    tab=['tabicl_risk_20260925','tabicl_risk_20260926']
+    preds={k:src[k].astype(np.float64) for k in names}
+    vpreds={k:np.full((16,168),np.nan) for k in names}
+    for fit in fits:
+        key=f"{fit['method']}_{fit['seed']}"; members=fit['members']
+        pp=va[f"{key}_cluster{fit['cluster']}_validation_prediction"]
+        assert np.isnan(vpreds[key][members]).all()
+        vpreds[key][members]=pp
+    for k,p in vpreds.items():
+        assert np.isfinite(p).all()
+        row=next(r for r in audit['aggregates'] if k==f"{r['method']}_{r['seed']}")
+        assert abs(np.abs(p-vy).mean()-row['validation_mae'])<1e-6
+
+    # Freeze every offset before evaluating the development targets.
+    offsets={};cal={};parameter_count=0
+    for k in names:
+        resid=vy-vpreds[k]
+        for tau in settings['taus']:
+            key=f'{k}_pooled_tau{tau}'
+            d=float(np.quantile(resid,tau,method='inverted_cdf'))
+            offsets[key]=dict(source=k,type='pooled_validation_residual_quantile',tau=tau,offset=d,parameters=1)
+            cal[key]=preds[k]+d;parameter_count+=1
+    for tau in settings['taus']:
+        key=f'{g}_cell_tau{tau}'
+        d=np.quantile(vy-vpreds[g],tau,axis=1,method='inverted_cdf')
+        offsets[key]=dict(source=g,type='per_cell_validation_residual_quantile',tau=tau,offset=d.tolist(),parameters=16)
+        cal[key]=preds[g]+d[:,None];parameter_count+=16
+    for k in tab:
+        key=f'{g}_bias_matched_{k}'
+        d=float((vpreds[k]-vpreds[g]).mean())
+        offsets[key]=dict(source=g,type='mean_height_match_to_Tab_validation',tau=None,offset=d,parameters=1)
+        cal[key]=preds[g]+d;parameter_count+=1
+    assert parameter_count==98 and len(cal)==38
+    save('frozen_offsets.json',dict(settings=settings,offsets=offsets,
+        confirmation_targets_not_used=True,RCTL_results_not_used_for_clustering=True))
+
+    periods={'all':slice(None),'first_240':slice(0,240),'last_240':slice(240,480)}
+    def metrics(p,t,sel,details=False):
+        yy=y[:,sel];pp=p[:,sel];err=pp-yy;ae=np.abs(err)
+        u=np.maximum(-err,0);o=np.maximum(err,0)
+        peak=yy>threshold[:,None]; n=peak.sum(1)
+        cp=[float(ae[j,peak[j]].mean()) if n[j] else None for j in range(16)]
+        macro=float(np.mean([v for v in cp if v is not None])) if any(n) else None
+        mean=float(ae.mean());U=float(u.mean());O=float(o.mean())
+        assert abs(mean-U-O)<1e-12
+        r=dict(mae=mean,under_amount=U,over_amount=O,bias=float(err.mean()),
+            under_frequency=float((err<0).mean()),peak_query_count=int(peak.sum()),
+            cells_with_peak=int((n>0).sum()),peak_macro_mae=macro,
+            peak_micro_mae=float(ae[peak].mean()) if peak.any() else None,
+            nonpeak_micro_mae=float(ae[~peak].mean()) if (~peak).any() else None,
+            peak_loss_contribution=float((ae*peak).mean()),
+            nonpeak_loss_contribution=float((ae*(~peak)).mean()),
+            pinball={str(tau):float(tau*U+(1-tau)*O) for tau in settings['taus']})
+        if t is not None:r['target_tau_pinball']=r['pinball'][str(t)]
+        if details:
+            r.update(cell_mae=ae.mean(1).tolist(),cell_under=u.mean(1).tolist(),cell_over=o.mean(1).tolist(),
+                cell_peak_counts=n.tolist(),cell_peak_mae=cp,
+                peak_under_amount=float(u[peak].mean()) if peak.any() else None,
+                peak_over_amount=float(o[peak].mean()) if peak.any() else None)
+        return r
+    original=[];calibrated=[];shifts=[]
+    for period,sel in periods.items():
+        for k,p in preds.items():
+            m=metrics(p,None,sel,True)
+            original.append(dict(period=period,method=k,**m))
+            if period=='all':
+                z=next(v for v in old['metrics'] if k==f"{v['method']}_{v['seed']}")
+                assert abs(m['mae']-z['mean_scaled_mae'])<1e-6
+                assert abs(m['peak_macro_mae']-z['peak_mean_scaled_mae'])<1e-6
+                assert m['cell_peak_counts']==z['peak_query_counts']
+        for k,p in cal.items():
+            calibrated.append(dict(period=period,method=k,**offsets[k],**metrics(p,offsets[k]['tau'],sel)))
+        for k in tab:
+            peak=y[:,sel]>threshold[:,None];shift=preds[k][:,sel]-preds[g][:,sel]
+            a=next(r for r in original if r['period']==period and r['method']==k)
+            gg=next(r for r in original if r['period']==period and r['method']==g)
+            gained=[int(ids[j]) for j,(aa,bb) in enumerate(zip(a['cell_peak_mae'],gg['cell_peak_mae']))
+                    if aa is not None and bb is not None and aa<bb]
+            shifts.append(dict(period=period,method=k,mean_prediction_shift=float(shift.mean()),
+                mean_shift_on_peak=float(shift[peak].mean()) if peak.any() else None,
+                mean_shift_on_nonpeak=float(shift[~peak].mean()),peak_improved_cell_ids=gained,
+                peak_macro_delta=a['peak_macro_mae']-gg['peak_macro_mae'],
+                total_mae_delta=a['mae']-gg['mae'],
+                all_time_under_delta=a['under_amount']-gg['under_amount'],
+                all_time_over_delta=a['over_amount']-gg['over_amount'],
+                global_no_worse_for_all_nonnegative_linear_costs=gg['under_amount']<=a['under_amount'] and gg['over_amount']<=a['over_amount']))
+    comparison=[]
+    for period in periods:
+        for tau in settings['taus']:
+            for k in tab:
+                a=next(r for r in calibrated if r['period']==period and r['method']==f'{k}_pooled_tau{tau}')
+                for typ in ['pooled','cell']:
+                    gg=next(r for r in calibrated if r['period']==period and r['method']==f'{g}_{typ}_tau{tau}')
+                    comparison.append(dict(period=period,tau=tau,Tab_method=k,global_offset=typ,
+                        Tab_pinball=a['target_tau_pinball'],global_pinball=gg['target_tau_pinball'],
+                        difference=a['target_tau_pinball']-gg['target_tau_pinball'],
+                        Tab_peak_mae=a['peak_macro_mae'],global_peak_mae=gg['peak_macro_mae']))
+    toy=[]
+    for p in [F(0),F(10)]:
+        u=F(9,10)*max(-p,F(0))+F(1,10)*max(10-p,F(0))
+        o=F(9,10)*max(p,F(0))+F(1,10)*max(p-10,F(0))
+        toy.append(dict(prediction=str(p),mae=str(u+o),peak_only_mae=str(abs(p-10)),under=str(u),over=str(o)))
+    elapsed=time.perf_counter()-start;rss=psutil.Process().memory_info().rss
+    assert elapsed<30 and rss<1024**3
+    assert all(sha(b/f)==h for f,h in settings['input_sha256'].items())
+    save('result.json',dict(complete=True,settings=settings,cell_ids=ids.tolist(),peak_threshold=threshold.tolist(),
+        originals=original,calibrated=calibrated,Tab_vs_global=shifts,calibrated_comparisons=comparison,
+        exact_toy=toy,toy_equal_linear_cost_ratio='9',numeric_wall_seconds=elapsed,observed_rss_bytes=rss,
+        original_metrics_reproduced=True,inputs_unchanged=True,new_objective_selected=False,new_partition_selected=False))
+    complete=True
+    print(json.dumps(dict(seconds=elapsed,originals=[{x:r[x] for x in ['period','method','mae','peak_macro_mae',
+        'peak_query_count','under_amount','over_amount','bias']} for r in original if r['method'] in [g]+tab],
+        calibrated_comparisons=[r for r in comparison if r['period']=='all'],exact_toy=toy),ensure_ascii=False,indent=2))
+except Exception as exc:
+    failure=repr(exc);raise
+finally:
+    save('run_finished.json',dict(complete=complete,error=failure,elapsed_seconds=time.perf_counter()-start))
