@@ -333,3 +333,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 조건부 PIT와 공동 의존 — 64·65 TACTiS-2
 
 검색어: TACTiS-2, conditional marginal, PIT, copula validity, DSF, two-stage curriculum, NLL, Newey-West, interpolation. [TACTiS-2 기록](records/0064-0065-tactis2.md)은 개별 미래값의 정확조건부PIT가균등해도 공동의존은남을수있음을구분합니다. Tab CDF로바꾸는것만으로새알고리즘이되지는않습니다. 새실험은제거할정보·남길정보,단일중앙값대공동분포,원척도목표와비용을명시하고공개코드의샘플범위·단계설정·보간시각경로부터확인하세요.
+
+## 공변량 정규화 뒤 잔존 의존 — 64·65 Conditional normalization
+
+검색어: conditional normalization, GAM, Gamma variance, ARIMA, Kalman smoother, sieve bootstrap, conduits, lag, PIT. [조건부 정규화 기록](records/0064-0065-conditional-normalization.md)은 공변량으로 평균·분산을 제거하고 남은 의존을 모델링하는 기존 방법을 정리합니다. 약96%를 지연 정답률로, .946을 미래예측 정확도로 인용하지 마세요. Tab 적용은 남길 정보·예측 시점의 가용 공변량·원척도 손실·기존 회귀 대비 추가 기여와 비용을 먼저 정의해야 합니다. 코드 재사용 때는 ACF 변환·행lag·bootstrap 구현과 논문 조건의 차이를 확인하세요.

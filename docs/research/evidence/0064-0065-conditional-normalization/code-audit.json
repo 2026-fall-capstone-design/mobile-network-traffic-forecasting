@@ -1,0 +1,666 @@
+{
+  "repository": "PuwasalaG/conduits",
+  "commit_sha": "80a48697c05463afa641a318d8ab1f457bc79cc4",
+  "commit_date": "2023-04-18T09:13:28Z",
+  "tree_sha": "0f4b8dabad94b5a4fc3c0d407077f1d2350449da",
+  "tree_entries": 57,
+  "blob_entries": 50,
+  "selected_files": 18,
+  "checked_at_utc": "2026-10-10T06:38:14.783592+00:00",
+  "whole_repository_reviewed": false,
+  "paper_analysis_repository_available": false,
+  "paper_execution_commit_identity_verified": false,
+  "source_executed": false,
+  "source_imported": false,
+  "new_model_runs": 0,
+  "random_draws": 0,
+  "full_file_reads": 18,
+  "selected_file_reads": 0,
+  "read_completed_at_utc": "2026-10-10T06:42:40.623859+00:00",
+  "semantic_second_pass_pending": false,
+  "files": [
+    {
+      "path": "DESCRIPTION",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/DESCRIPTION",
+      "size_bytes": 872,
+      "sha256": "521d58b7f1c8202d78fcaa85806db548f40a868c0c776678f5d6c4c914fce8fc",
+      "git_blob_sha": "9ad4bd37aeccd0f3235305893f83c55649ee54a0",
+      "lines": 37,
+      "read_ranges": [
+        [
+          1,
+          37
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "NAMESPACE",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/NAMESPACE",
+      "size_bytes": 1233,
+      "sha256": "1fedb91f71402e56c494dcbe9e66c5b2ed56001fd906de8ae784e1290b00fbe3",
+      "git_blob_sha": "98bda9c510fa0f80a2e54085b8e414a375bda42f",
+      "lines": 49,
+      "read_ranges": [
+        [
+          1,
+          49
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/LICENSE",
+      "size_bytes": 49,
+      "sha256": "cea15b35dcd85bcdc8550f9c8b42ce9c8a4395c59f83b037b75d527ccac432cf",
+      "git_blob_sha": "ea913dd45c2434775f5fb09a880509ade113481e",
+      "lines": 2,
+      "read_ranges": [
+        [
+          1,
+          2
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "LICENSE.md",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/LICENSE.md",
+      "size_bytes": 1078,
+      "sha256": "88d2aa534f92fbcbe1fd2eecf6d728217895252ec0442d1830ff54d42e27fafd",
+      "git_blob_sha": "75bd124d37bdb2ddfb65870c4f7f199f3bd3e089",
+      "lines": 21,
+      "read_ranges": [
+        [
+          1,
+          21
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/README.md",
+      "size_bytes": 9052,
+      "sha256": "ac68da6d4b0c3661be8fbd3a8d5db0bd9c197d5f346a1f5b533e1d791ba1ea46",
+      "git_blob_sha": "93bbc35ad99131f338a45bb980d89539de4fc299",
+      "lines": 293,
+      "read_ranges": [
+        [
+          1,
+          293
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "README.Rmd",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/README.Rmd",
+      "size_bytes": 6975,
+      "sha256": "9202c7ccdebbbdc7d526b60b328e4e8442bb6bb973f9eee57c4b945ba73d1d77",
+      "git_blob_sha": "3c32a4a087fe8874a36b0ded2aa88ec74a97136e",
+      "lines": 215,
+      "read_ranges": [
+        [
+          1,
+          215
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "R/augment.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/R/augment.R",
+      "size_bytes": 7014,
+      "sha256": "6f65f8c91b156d930de79b75f39d54db71f8be37c1280902856c2fcb35a48bac",
+      "git_blob_sha": "55b72f8c7db1d7884acff4913423950da4d7e981",
+      "lines": 225,
+      "read_ranges": [
+        [
+          1,
+          225
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "R/conditional_acf.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/R/conditional_acf.R",
+      "size_bytes": 4948,
+      "sha256": "a53b947dec8c1bfb025d0de43b680b315aef8d6e7cff15035797397fc023fc83",
+      "git_blob_sha": "1dc7d7648aba5e7b2f54ee344a05a9556c82a71b",
+      "lines": 145,
+      "read_ranges": [
+        [
+          1,
+          145
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "R/conditional_ccf.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/R/conditional_ccf.R",
+      "size_bytes": 5931,
+      "sha256": "411eae0a2c69de57a180e661d19f187b460a894753c65bcf050e9464f2f7613e",
+      "git_blob_sha": "f8991a778f8f1d259c9fbf3b8fc0a4c6d2fb0ebf",
+      "lines": 174,
+      "read_ranges": [
+        [
+          1,
+          174
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "R/conditional_mean.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/R/conditional_mean.R",
+      "size_bytes": 2435,
+      "sha256": "348a892f79aa4cdfb4a3298df12c7065e9914ef705824c524c72f908d307246f",
+      "git_blob_sha": "b9fa3a4dca1bd67d344b7d716874e4b07f9b096c",
+      "lines": 71,
+      "read_ranges": [
+        [
+          1,
+          71
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "R/conditional_var.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/R/conditional_var.R",
+      "size_bytes": 2945,
+      "sha256": "ed7f61d7bfac4f9d4dddea14beebb452afc1760c8df1e09edb9951c551045834",
+      "git_blob_sha": "3e8ed95f8852ebdc541d4dca8378c09c7ad5352a",
+      "lines": 88,
+      "read_ranges": [
+        [
+          1,
+          88
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "R/conduits.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/R/conduits.R",
+      "size_bytes": 623,
+      "sha256": "150693fe598982fdecabddbee0008374e82e4f354f4c82c94bddae8075a8858e",
+      "git_blob_sha": "c73707d685587db997cd30a2da7fc36604fac4af",
+      "lines": 11,
+      "read_ranges": [
+        [
+          1,
+          11
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "R/data.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/R/data.R",
+      "size_bytes": 945,
+      "sha256": "d02de5e4008f24b91765e4dc3e6ee7751a1ed4cb03605575869dbd276f44b998",
+      "git_blob_sha": "1213e2c4086fd82f4c3850b8c488ae75254ad5ad",
+      "lines": 25,
+      "read_ranges": [
+        [
+          1,
+          25
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "R/estimate_dt.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/R/estimate_dt.R",
+      "size_bytes": 10279,
+      "sha256": "f0489d4dd233d0815fc43e5b7fdc80b8ef36cccb029defea1fd67b5de2e5bf6d",
+      "git_blob_sha": "9785b1ea6777d5681963caa1cd0677daf6390a8a",
+      "lines": 330,
+      "read_ranges": [
+        [
+          1,
+          330
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "R/normalize.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/R/normalize.R",
+      "size_bytes": 4227,
+      "sha256": "5c77fde593323b413d8eea0b0a3fd5a754d982bd4f8e7894014395d6f1371eca",
+      "git_blob_sha": "a9aa17133a09a31717f38ffc1fb0efa841a89919",
+      "lines": 118,
+      "read_ranges": [
+        [
+          1,
+          118
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "R/reexports.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/R/reexports.R",
+      "size_bytes": 155,
+      "sha256": "745ddf14e6b9195b1c6cf41ccd5a9ec2c34e36ca883b649c7d61196eb2e7790e",
+      "git_blob_sha": "69b7deb488d2264d48f482db15285ccd08e988fb",
+      "lines": 11,
+      "read_ranges": [
+        [
+          1,
+          11
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "data-raw/NEON_PRIN.R",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/data-raw/NEON_PRIN.R",
+      "size_bytes": 15516,
+      "sha256": "839edd09b95735b0fe51342909a56e007907a12245ad4f0819daad0263525079",
+      "git_blob_sha": "21fb3f1aca3591b620f4c34d5287547967429dba",
+      "lines": 519,
+      "read_ranges": [
+        [
+          1,
+          519
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    },
+    {
+      "path": "man/calc_dt_CI.Rd",
+      "url": "https://raw.githubusercontent.com/PuwasalaG/conduits/80a48697c05463afa641a318d8ab1f457bc79cc4/man/calc_dt_CI.Rd",
+      "size_bytes": 2570,
+      "sha256": "4ee94b5cf689c3f3bcb57b775cb94308aa63867d7429872a7bf27090efdbfc8c",
+      "git_blob_sha": "50336ca534522850f61bb133192be2c560cfa024",
+      "lines": 89,
+      "read_ranges": [
+        [
+          1,
+          89
+        ]
+      ],
+      "content_read": true,
+      "executed": false,
+      "imported": false,
+      "read_scope": "whole saved file text, including comments/examples; linked images and dependencies not included"
+    }
+  ],
+  "observations": [
+    {
+      "files": {
+        "DESCRIPTION": [
+          [
+            1,
+            37
+          ]
+        ],
+        "LICENSE": [
+          [
+            1,
+            2
+          ]
+        ],
+        "LICENSE.md": [
+          [
+            1,
+            21
+          ]
+        ],
+        "NAMESPACE": [
+          [
+            1,
+            49
+          ]
+        ]
+      },
+      "finding": "패키지1.0.0/MIT+LICENSE/R>=4.1,mgcv·forecast·broom등버전미고정. API license NOASSERTION과파일MIT표기를구분. 공개master고정80a48697c05463afa641a318d8ab1f457bc79cc4(2023-04-18)는논문실행커밋검증아님. 분석repo별도링크404;선택18텍스트에Stan분석없음."
+    },
+    {
+      "files": {
+        "R/conditional_mean.R": [
+          [
+            35,
+            71
+          ]
+        ],
+        "R/conditional_var.R": [
+          [
+            45,
+            88
+          ]
+        ],
+        "R/normalize.R": [
+          [
+            38,
+            49
+          ],
+          [
+            106,
+            118
+          ]
+        ]
+      },
+      "finding": "평균mgcv::gam기본Gaussian identity,제곱잔차Gamma(log),response척도예측으로표준화·역변환. 소스에는0분산floor/양수출력제약을확인하지못함. 실제데이터에서의수치오류발생/논문실행영향미검증."
+    },
+    {
+      "files": {
+        "R/conditional_var.R": [
+          [
+            45,
+            57
+          ],
+          [
+            76,
+            86
+          ]
+        ],
+        "R/normalize.R": [
+          [
+            38,
+            49
+          ],
+          [
+            106,
+            118
+          ]
+        ]
+      },
+      "finding": "선택 lognormal 경로는 log(Y_Ey2)에Gaussian identity를적합하지만normalize/unnormalize는predict(type=response)결과를그대로분산으로sqrt한다. 코드에지수역변환·lognormal기대보정분기가없어log제곱잔차척도를분산으로쓰는정적경로. 논문주Gamma경로와구별;R실행오류재현아님."
+    },
+    {
+      "files": {
+        "R/conditional_acf.R": [
+          [
+            75,
+            110
+          ]
+        ],
+        "R/augment.R": [
+          [
+            209,
+            222
+          ]
+        ]
+      },
+      "finding": "ACF적합에서는corrlink주석처리/gaussian identity사용. augment에서각lag예측벡터를scales::rescale(-1,1)로변환한다. 논문§2.3의고정inverse link Eq5와다르며범위제약동일성/상관추정량보장을주장하지않는다."
+    },
+    {
+      "files": {
+        "R/conditional_ccf.R": [
+          [
+            97,
+            174
+          ]
+        ],
+        "R/conditional_acf.R": [
+          [
+            140,
+            145
+          ]
+        ]
+      },
+      "finding": "CCF는custom bounded corrlink를사용한다. lead/lag에서response열만이동하고공변량은현재행에둔뒤기존fit_mean/fit_var를재사용한다. lag마다새조건부moment모델을적합하지않음. contemporaneous fit을 y_(t+k)|z_t의moment로동일시할수있는지는추가가정/검증필요."
+    },
+    {
+      "files": {
+        "R/conditional_ccf.R": [
+          [
+            169,
+            174
+          ]
+        ],
+        "R/conditional_acf.R": [
+          [
+            140,
+            145
+          ]
+        ],
+        "README.md": [
+          [
+            241,
+            251
+          ]
+        ]
+      },
+      "finding": "lag/lead는Timestamp간격을검사하지않는행이동이며README는호출전drop_na를한다. 결측행제거후의lag1이물리적5분이라는보장은이코드만으로없음. 정렬/규칙격자·누락처리와실제데이터영향은재사용전확인해야한다."
+    },
+    {
+      "files": {
+        "R/estimate_dt.R": [
+          [
+            71,
+            95
+          ]
+        ]
+      },
+      "finding": "dt=max.col(CCF,ties=first),max_ccf별도,양의상관/유의성으로dt를걸러내지않는다. pval은type=response 예측/SE의lag별max에서1-pnorm(max)^K. 논문20쪽link공간t통계설명과척도·함수차이,lag간의존하최대통계calibration미검증. 독립최대정규CDF형식을사용하지만선택보정을검증했다고표시하지않는다."
+    },
+    {
+      "files": {
+        "R/estimate_dt.R": [
+          [
+            180,
+            239
+          ]
+        ]
+      },
+      "finding": "bootstrap반복마다기존CCF잔차AR을auto.arima(approximationFALSE,stepwiseFALSE,max.q0,d0,max.order20)로다시적합하고lag별innovations를독립sample한다. ARbootstrap생성은원래ARfitted+표집innovation이며새bootstrap잔차를재귀에넣지않는다. 논문13쪽알고리즘의2단계재귀식과구분."
+    },
+    {
+      "files": {
+        "R/estimate_dt.R": [
+          [
+            241,
+            330
+          ]
+        ],
+        "man/calc_dt_CI.Rd": [
+          [
+            1,
+            89
+          ]
+        ]
+      },
+      "finding": "CCF응답재생성후GAM재적합/각시각argmax/0.025·0.975·0.1·0.9분위수;mean/variance정규화모델재적합없음. m은필수입력/문서예100으로논문1000과구분. seed없고원코드sample실행안함. 입력Timestamp중복·결측/서로다른lag행집합의영향은미검증."
+    },
+    {
+      "files": {
+        "R/estimate_dt.R": [
+          [
+            288,
+            298
+          ]
+        ],
+        "R/conduits.R": [
+          [
+            1,
+            11
+          ]
+        ],
+        "NAMESPACE": [
+          [
+            1,
+            49
+          ]
+        ]
+      },
+      "finding": "base |> mutate 경로내max.col(.[cnames])는magrittr식점이름을사용한다. basepipe는첫인자삽입이며점placeholder를만들지않으므로외부에별도 . 바인딩이없으면이름해결실패가예상되는정적경로. globalVariables는정의가아님. 실제R실행/의존판본오류재현아님."
+    },
+    {
+      "files": {
+        "R/augment.R": [
+          [
+            33,
+            67
+          ],
+          [
+            141,
+            157
+          ],
+          [
+            225,
+            225
+          ]
+        ]
+      },
+      "finding": "augment.moment는broom내부augment.gam을getFromNamespace로받는다. 조건부분산에서.fitted를response로바꾼후원.se.fit를사용한대칭구간을만들며broom버전/SE척도는미고정이다. 이외부의존경로는검증된BayesianHPD/variance구간으로대체인용하지않는다."
+    },
+    {
+      "files": {
+        "README.md": [
+          [
+            1,
+            293
+          ]
+        ],
+        "README.Rmd": [
+          [
+            1,
+            215
+          ]
+        ],
+        "R/data.R": [
+          [
+            1,
+            25
+          ]
+        ],
+        "R/reexports.R": [
+          [
+            1,
+            11
+          ]
+        ]
+      },
+      "finding": "README는2019-07–12 자료/normalization3공변량(level,conductance,temp),k8/7,CCF2공변량nsdf5·K10이다. 논문2019Q4/2공변량/K24와다른예제. README인쇄n49796,meanGCV29.604,varGCV4.9694는저장예제결과이지본검수새실험/논문재현아님. Rmd의실행TRUE설정/설치지시는역사적코드로만읽음."
+    },
+    {
+      "files": {
+        "data-raw/NEON_PRIN.R": [
+          [
+            1,
+            122
+          ],
+          [
+            128,
+            265
+          ],
+          [
+            312,
+            441
+          ],
+          [
+            443,
+            519
+          ]
+        ]
+      },
+      "finding": "수집스크립트는NEON2017-04~2020-04를요청한후2019-07~12선택,range/manualtimestampflag/5분평균집계·로컬데이터덮어쓰기를포함한다. 읽기만했고NEON_TOKEN조회·네트워크수집·use_data를실행하지않음.15분집계는주석. EOS주석은상류131/하류132지만필터는110/132다. 별도TSW수온제품은101/102를사용하며제품간결합의실제메타데이터확인이필요하다."
+    },
+    {
+      "files": {
+        "data-raw/NEON_PRIN.R": [
+          [
+            267,
+            302
+          ]
+        ]
+      },
+      "finding": "wiper제거는정확히매5번째시각선택이아니라right-aligned5행rollmax와현재값이같으면flag. 연속상승/동률값도여러연속행에서flag될수있는정적차이. 원데이터실제제거집합/논문결과영향미확인."
+    },
+    {
+      "files": {
+        "data-raw/NEON_PRIN.R": [
+          [
+            258,
+            258
+          ],
+          [
+            347,
+            367
+          ]
+        ]
+      },
+      "finding": "upstream fDOMAnomalyFlag를전부NA로정의하고if_else(flag==1,NA,fDOM)를통해결측분기를보존하는경로. 이것을fDOM의실제양호함/가용자료로가정하면안됨. 논문과README의선택핵심변수는fDOM을사용하지않으므로주결과오류로단정하지않음."
+    }
+  ],
+  "primary_R_documentation": [
+    {
+      "url": "https://stat.ethz.ch/R-manual/R-devel/library/base/html/pipeOp.html",
+      "read_scope": "syntax transformation/first argument; currently R4.6.0 documentation, not paper environment"
+    },
+    {
+      "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/predict.glm.html",
+      "read_scope": "link versus response prediction and se.fit; currently R4.6.0 documentation, not paper environment"
+    }
+  ],
+  "limits": [
+    "Paper analysis repository returned404 from web and authenticated public API; no matching owner public repo found",
+    "No Stan source/real execution config/seed/split arrays/NEON data validation",
+    "Packaged .rda not downloaded/deserialized; other32blobs/embeddedREADMEimages/dependency internals not reviewed",
+    "No R/Stan execution/import/installation/model/RNG; static paths are not confirmed runtime incidents"
+  ],
+  "total_lines_read": 2423,
+  "original_dataset_files_read": false,
+  "published_experiment_reproduced": false,
+  "semantic_second_pass_at_utc": "2026-10-10T07:01:11.648918+00:00"
+}
