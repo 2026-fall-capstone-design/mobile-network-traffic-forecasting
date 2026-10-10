@@ -1,0 +1,288 @@
+{
+  "batch_id": "history-056",
+  "claims": [
+    {
+      "claim_id": "H056-C01",
+      "claim": "63은 예측 입력·실제−기본 잔차 target·다중 해상도 연결을 구분한 계획이다.",
+      "source_location": "SRC-0022008:7–18/25–27행",
+      "verification_method": "H055 전체 독해를 재사용하고 해당 원문 재대조",
+      "limit": "계획을 실행·성능 검증으로 세지 않음."
+    },
+    {
+      "claim_id": "H056-C02",
+      "claim": "65는 Heatload 구조와 잔차 단계 시간의 한계를 검토했으나 새 추천을 채택하지 않았고 새 모델 실행도 0으로 보고한다.",
+      "source_location": "SRC-0022016:7–15/27–33/67/74–78행",
+      "verification_method": "해당 절과 당시 범위 및 실행 보고 대조",
+      "limit": "역사적 보고와 이번 정적 검수 범위를 구분."
+    },
+    {
+      "claim_id": "H056-C03",
+      "claim": "이 논문은 TabPFN-TS/Chronos-2의 난방 부하 연구이며 TabICL/RCTL/통신 cell 군집 실증이 아니다.",
+      "source_location": "SRC-0063832:1–6/25쪽; SRC-0063834:서지·초록 전체",
+      "verification_method": "전체 33쪽 본문과 저장 초록·서지 대조",
+      "limit": "서론의 TabICL 인용을 사용 모델이나 통신 성능 증거로 바꾸지 않음."
+    },
+    {
+      "claim_id": "H056-C04",
+      "claim": "PFN의 사후 예측 근사 설명은 합성 prior를 기준으로 한다.",
+      "source_location": "SRC-0063832:3–4쪽",
+      "verification_method": "수식과 Bayesian 설명의 전제 대조",
+      "limit": "실제 시스템의 정확한 posterior나 우리 자료의 적합성 증명 아님."
+    },
+    {
+      "claim_id": "H056-C05",
+      "claim": "주 실험의 Tab 12주·Chronos 최대 8192 steps·AutoGluon 2023 학습/2024 평가 조건은 같지 않다.",
+      "source_location": "SRC-0063832:5–6쪽",
+      "verification_method": "모델별 context·학습·이력 전달 서술 대조",
+      "limit": "동일 context/동일 학습 예산의 비교로 표현하지 않음."
+    },
+    {
+      "claim_id": "H056-C06",
+      "claim": "Munich 15분 비공개, Flensburg hourly 공개이며 Munich 설정 선택 주는 평가년 2024 안에 있다.",
+      "source_location": "SRC-0063832:9–10/30쪽 Table S1; SRC-0063841:전체",
+      "verification_method": "자료 주기·선택 주·평가 연도와 이상 신호 처리 대조",
+      "limit": "개발 주와 완전히 분리된 새 연도 평가 아님."
+    },
+    {
+      "claim_id": "H056-C07",
+      "claim": "Flensburg 대표 주 CSV는 여름 9/2·겨울 1/15·변동 4/22로 Munich 여름 8/12와 다르다.",
+      "source_location": "SRC-0063832:30쪽 Table S1; EXT-H056-12:1–4행",
+      "verification_method": "작은 대표 주 CSV 전체와 원 논문의 날짜 비교",
+      "limit": "원 weather 전체로 대표 주 선택을 재현하지 않음."
+    },
+    {
+      "claim_id": "H056-C08",
+      "claim": "Flensburg 본문 2014–2024와 고정 metadata의 2020–2024 기간이 다르며 heat는 5행 삽입을 보고한다.",
+      "source_location": "SRC-0063832:10/29쪽 참고문헌46; SRC-0063841:전체; EXT-H056-10:1–20행; EXT-H056-11:1–36행",
+      "verification_method": "본문/README/heat·weather metadata 기간·행 수 대조",
+      "limit": "실제 CSV/XLSX 전체 검수나 전처리 재현 아님. 고정 tree의 전처리 두 스크립트 미포함."
+    },
+    {
+      "claim_id": "H056-C09",
+      "claim": "주 실험은 실제 미래 기온이고 민감도는 1/20–12/30 공통구간의 fixed24h-lead 연결이다.",
+      "source_location": "SRC-0063832:5–6/10–11쪽; SRC-0063844:277–327행; SRC-0063845:307–345행",
+      "verification_method": "논문 날씨 조건·코드 covariate 경로 대조",
+      "limit": "단일 origin의 coherent weather run·실제 운영 도착 시각 보장과 구분."
+    },
+    {
+      "claim_id": "H056-C10",
+      "claim": "Base hourly12주/24h/12h갱신, HFHR15분12주/13h/1h갱신, MRRC잔차15분7일/2h/1h갱신이다.",
+      "source_location": "SRC-0063832:11–12/21–24쪽; SRC-0063845:29–47/75–138행",
+      "verification_method": "설정·수식·기본 인수·forecast start 경로 대조",
+      "limit": "표의 context는 선택 설정이다. Chronos-2 최대8192 steps의 실제 입력 제한은 별도이며 모든 비교군의 horizon/context가 동일하다고 하지 않음."
+    },
+    {
+      "claim_id": "H056-C11",
+      "claim": "MRRC는 실제−Base를 context target으로 주고 Base+예측잔차로 합성하며 covariate에 기온·Base를 넣는다.",
+      "source_location": "SRC-0063845:89–138/237–269/307–372행; SRC-0063832:11–12쪽",
+      "verification_method": "target 생성·future frame·predict_df·최종 합산 추적",
+      "limit": "명시적 fit 없이 predict_df 호출. 라이브러리 내부 미검수. ECAI의 군집 actual target과 구분."
+    },
+    {
+      "claim_id": "H056-C12",
+      "claim": "README와 저장3코드는 고정 raw와 같고 총12파일의 blob/크기 검수가 됐다.",
+      "source_location": "SRC-0063841/SRC-0063844/SRC-0063845/SRC-0063846:전체; SRC-0063842/SRC-0063847:전체; EXT-H056-01–12",
+      "verification_method": "SHA256·Git blob SHA1·크기·HTTP200·저장 원본 대응 확인",
+      "limit": "commit.tree와 저장tree root SHA는 별도 필드 그대로 보존. 설치·실행 검증 아님."
+    },
+    {
+      "claim_id": "H056-C13",
+      "claim": "잔차 origin에서 forecast_start<=origin으로 기본 예측을 제한하고 target별 최신 것을 고른다.",
+      "source_location": "SRC-0063845:272–345행",
+      "verification_method": "available_base/collapse_latest와 호출 위치 재대조",
+      "limit": "데이터 지연·실제 추론 완료 시각까지 모델링한 운영 보장 아님."
+    },
+    {
+      "claim_id": "H056-C14",
+      "claim": "future_raw에 평가용 실제잔차가 있지만 미래 모델 frame에는 target을 제외한다.",
+      "source_location": "SRC-0063845:89–138/307–345행; SRC-0063844:565–626행",
+      "verification_method": "context/future 경계와 include_target=False의 반환 열 확인",
+      "limit": "평가 배열이 있다는 이유만으로 target leakage라고 판정하지 않음."
+    },
+    {
+      "claim_id": "H056-C15",
+      "claim": "현재 origin에서 사용할 수 있는 Base로 과거 context도 보간한다.",
+      "source_location": "SRC-0063845:283–345행",
+      "verification_method": "time interpolation/ffill/bfill의 입력·경계 추적",
+      "limit": "각 과거 origin에 고정한 residual과 항상 같지 않음. 알려진 정보 사용과 미래 실제값 유출을 구분."
+    },
+    {
+      "claim_id": "H056-C16",
+      "claim": "dry-run fake_base는 검증 후 반환 경로이며 정상 성능 예측의 Base가 아니다.",
+      "source_location": "SRC-0063845:494–522/576–582/584–615행",
+      "verification_method": "분기·조기 반환·정상 base 생성 경로 재대조",
+      "limit": "fake_base를 실제 성능 결과의 정답 입력으로 오해하지 않음."
+    },
+    {
+      "claim_id": "H056-C17",
+      "claim": "완전한 cadence 묶음을 집계하고 hourly 공개 target을15분 관측으로 만들지 않는다. 더 미세한 입력의 안내와 실제 제한은 다르다.",
+      "source_location": "SRC-0063844:65–124/152–236/308–327행",
+      "verification_method": "시간·결측 검증/expected_count==1·load_residual 경로 확인",
+      "limit": "논문 자료에서 오류 발생을 관측한 것이 아님."
+    },
+    {
+      "claim_id": "H056-C18",
+      "claim": "모델에는2000-01-01부터 synthetic clock, 스케줄/출력에는 실제 Europe/Berlin 시각을 사용한다.",
+      "source_location": "SRC-0063844:350–360행; SRC-0063845:537–567행",
+      "verification_method": "두 시각 열 생성과 모델 frame/스케줄 사용 경로 대조",
+      "limit": "calendar feature 영향의 ablation 미확인."
+    },
+    {
+      "claim_id": "H056-C19",
+      "claim": "단일 예제365일 context와 target/q50처리는 공통 함수·논문12주 설정과 다르다.",
+      "source_location": "SRC-0063846:22–36/139–226/239–298행; SRC-0063844:639–660행",
+      "verification_method": "기본 인수와 predicted_heat/q50 열 선택 비교",
+      "limit": "내부 target 열의 라이브러리 의미와 실제 수치 영향 미검증."
+    },
+    {
+      "claim_id": "H056-C20",
+      "claim": "requirements12핀/Python3.12.3을 읽었으나 실제 환경·명시되지 않은 seed/가중치 revision은 미확인이다.",
+      "source_location": "SRC-0063841:전체; SRC-0063844/SRC-0063845/SRC-0063846:전체; EXT-H056-05:1–89행; EXT-H056-06:1–13행; EXT-H056-07:1행",
+      "verification_method": "세코드 전체/직접 의존·버전 파일 정적 독해",
+      "limit": "환경 파일의 버전 선언은 설치·실행·결정성 보장이 아님."
+    },
+    {
+      "claim_id": "H056-C21",
+      "claim": "MAE±는 블록MAE 표준편차, CVRMSE는 실제 testmean 분모, 에너지는12h anchor 집계다.",
+      "source_location": "SRC-0063832:7–8쪽; SRC-0063845:375–431행; SRC-0063844:680–722행",
+      "verification_method": "논문 정의·q50/최신 target 선택·per_start 집계 대조",
+      "limit": "seed반복 오차막대나 중복 제거 point 지표와 혼합하지 않음."
+    },
+    {
+      "claim_id": "H056-C22",
+      "claim": "Tab HFHR→MRRC의 E오차·RTF는 감소하나 MRRC RTF는 Base12.6배다.",
+      "source_location": "SRC-0063832:21–22쪽 Table7; SRC-0063859:Table7",
+      "verification_method": "표3행21개인쇄값·RTF비/변화율·Base분모 확인",
+      "limit": "통계적 개선·우리 CPU 실측 비용·두 단계 계측 완전성 주장 아님."
+    },
+    {
+      "claim_id": "H056-C23",
+      "claim": "Chronos HFHR→MRRC는 단기CV/MAE 악화, 에너지/RTF 개선이며 Base대비10.8배다.",
+      "source_location": "SRC-0063832:33쪽 TableS4",
+      "verification_method": "S4두부분3행21개값과변화율·비교분모 대조",
+      "limit": "보편적인 성능·비용 우위로 합치지 않음."
+    },
+    {
+      "claim_id": "H056-C24",
+      "claim": "표6의3변화율은 인쇄값 재계산과 소수 한 자리 차이가 나지만 원값 반올림 범위와 양립한다.",
+      "source_location": "SRC-0063832:21쪽 Table6; SRC-0063859:Table6",
+      "verification_method": "18개본문변화율과2비용비의Decimal 산술/표시정밀도구간 대조",
+      "limit": "반올림 전 원값이 없어3차이를 오류로 확정하지 않음."
+    },
+    {
+      "claim_id": "H056-C25",
+      "claim": "MRRC predict timer는predict_df만,stacked summary는잔차시간만 합산한다.",
+      "source_location": "SRC-0063845:165–174/237–240/348–349/396–416행; SRC-0022016:33행",
+      "verification_method": "timer 경계·timing_source raw_residual·별도Base행 확인",
+      "limit": "원65가 이미 지적한 한계. stacked 행 하나를 두 단계 총비용으로 쓰지 않음."
+    },
+    {
+      "claim_id": "H056-C26",
+      "claim": "total_seconds는앞단데이터/clock/start후부터CSV저장까지,metadata쓰기전이며Basewarm-up192h가있다.",
+      "source_location": "SRC-0063845:525–627행; SRC-0063846:418–474행",
+      "verification_method": "main 순서/타이머시작끝/평가전기본start/단일예제초기화 경계 대조",
+      "limit": "단일예제의같은필드이름도타이머경계다름. 실제 run 시간이나논문RTF재현아님."
+    },
+    {
+      "claim_id": "H056-C27",
+      "claim": "논문RTF·GPU환경보고와원코드부분시간을구별하며raw후처리·전체비용연결은미확인이다.",
+      "source_location": "SRC-0063832:6–8/21–24쪽; SRC-0063844/SRC-0063845/SRC-0063846:전체",
+      "verification_method": "본문RTF정의·환경·전체3코드의최종지표생성범위 대조",
+      "limit": "setup/cache/tuning/failure와warm-up합산포함을확정하지않음. CPU비용환산아님."
+    },
+    {
+      "claim_id": "H056-C28",
+      "claim": "longcontext항상우위가아니며24h를4h갱신14.17와최선4h14.04는context도다르다.",
+      "source_location": "SRC-0063832:13–17쪽 Figure3/4 및update-frequency설명",
+      "verification_method": "그림·본문 horizon/context/발행간격 대조",
+      "limit": "0.13pp를0.13%로쓰지않고순수갱신효과만의동일조건비교로쓰지않음."
+    },
+    {
+      "claim_id": "H056-C29",
+      "claim": "allweather최고/공동최고본문에는Chronos MAE95.6 vs94.2/95.3의예외가있다.",
+      "source_location": "SRC-0063832:16쪽 Table1; SRC-0063830:S5.SS1.p10.1",
+      "verification_method": "표7행56필드와본문의모든지표범위 대조",
+      "limit": "CVRMSE/R2의결과와MAE예외를구분."
+    },
+    {
+      "claim_id": "H056-C30",
+      "claim": "전년6주+최근6주의MAE113.0은최근12주102.6/자동특징제외106.9보다크다.",
+      "source_location": "SRC-0063832:16쪽 Table2",
+      "verification_method": "표3행12필드와자동특징on/off조건 대조",
+      "limit": "이력추가의보편효과나우리telecom결과로확장하지않음."
+    },
+    {
+      "claim_id": "H056-C31",
+      "claim": "전체집계두지역에서Chronos가Tab보다좋고주간168h전체연도TableS2도선택주이득과다르다.",
+      "source_location": "SRC-0063832:19쪽 Table4;31쪽 TableS2",
+      "verification_method": "전체aggregate표와주간2행6값·본문조건 대조",
+      "limit": "Table4의동일인쇄행을raw예측동일증거로삼지않음. Tab은AutoGluon계열보다좋은집계 유지."
+    },
+    {
+      "claim_id": "H056-C32",
+      "claim": "CD그림의연결을통계적동등성증명으로쓸수없다.",
+      "source_location": "SRC-0063832:18쪽 설명/19쪽 Figure7",
+      "verification_method": "확대그림과검정설명·미기록범위 대조",
+      "limit": "검정명/α/의존성전제·rawdaily배열 미검증."
+    },
+    {
+      "claim_id": "H056-C33",
+      "claim": "S3평균coverage오차는Tab이작아도Flensburg95%구간은Chronos오차가더작다.",
+      "source_location": "SRC-0063832:20–21쪽 Figure8/Table5;32쪽 TableS3",
+      "verification_method": "12행84필드에서6구간MACE산술·Table5재인용4행·단위 대조",
+      "limit": "그림8정확한값라벨없어원값복원아님. CRPS와MACE·kW와MW 구분."
+    },
+    {
+      "claim_id": "H056-C34",
+      "claim": "S2의420승률·210역방향쌍·30평균순위는인쇄정밀도범위내표4와양립한다.",
+      "source_location": "SRC-0063832:19쪽 Table4;31쪽 FigureS2",
+      "verification_method": "확대그림/PDF텍스트 전사·network별모델순서·합100·midrank산술 대조",
+      "limit": "동일날/같은가중치/tie-half가정이며rawdaily동일성·유의성재현이아님."
+    },
+    {
+      "claim_id": "H056-C35",
+      "claim": "잔차MAE항등식은유한RCTL의학습용이성/최종cell성과/비용개선보장이아니다.",
+      "source_location": "SRC-0022008:25–27행; SRC-0022016:67행; SRC-0063832:11–12/21–24쪽",
+      "verification_method": "원63/65논리와보정정의·조건별손해/비용 대조",
+      "limit": "논리적해석과실증구분.60의직접Tab성능을새RCTL성능으로세지않음."
+    },
+    {
+      "claim_id": "H056-C36",
+      "claim": "MIT코드고지와자료별조건을구분하며비공개Munich/공개hourly로MRRC전체재현을확보했다고하지않는다.",
+      "source_location": "SRC-0063832:25쪽; SRC-0063841:전체; EXT-H056-08:1–21행; EXT-H056-09:1–84행",
+      "verification_method": "논문dataavailability/README/LICENSE/thirdparty고지전체 대조",
+      "limit": "외부자료·가중치의포괄재배포허용또는법률판단아님."
+    },
+    {
+      "claim_id": "H056-C37",
+      "claim": "PDFTXT33쪽·HTMLdata텍스트가저장파생본과문자동일이며과학본문/수식대조범위를구분한다.",
+      "source_location": "SRC-0063830/SRC-0063831/SRC-0063832/SRC-0063833:전체",
+      "verification_method": "PDFwrapper제외동일·HTMLParserdata동일·245단위/147mathalt/표12부분 검수",
+      "limit": "정규화문자일치만으로수학기호등가성을가정하지않음. UI/JS/CSS비실행."
+    },
+    {
+      "claim_id": "H056-C38",
+      "claim": "HTML/PDF인용번호가다르며Flensburg자료PDF46/HTML14는제목·저자·DOI로연결한다.",
+      "source_location": "SRC-0063832:26–29쪽; SRC-0063830:52서지항목; SRC-0063834:전체서지/초록",
+      "verification_method": "전체참고문헌·초록 metadata와논문판본 대조",
+      "limit": "원논문재게시근거로arXivnonexclusive표기를쓰지않음."
+    },
+    {
+      "claim_id": "H056-C39",
+      "claim": "HTML외부SVG10/PNG1은저장PDF그림으로내용확인했으나asset바이트동일성은미검증이다.",
+      "source_location": "SRC-0063830:figure object/img참조; SRC-0063832:Figure1–8/S1/S2; SRC-0063859:전체",
+      "verification_method": "저장HTMLasset경로·PDF33쪽중시각19쪽·원PNG 확인",
+      "limit": "HTML내그림바이트완전보존이나픽셀동일성아님. S1 GWh5값은인쇄전사이며raw재적분아님."
+    },
+    {
+      "claim_id": "H056-C40",
+      "claim": "15원본그룹30경로/기존사본2/외부metadata13을연결하고보충8텍스트와미완료전체범위를분리한다.",
+      "source_location": "SRC-0022008/SRC-0022016; SRC-0063830/SRC-0063831/SRC-0063832/SRC-0063833/SRC-0063834/SRC-0063841/SRC-0063842/SRC-0063843/SRC-0063844/SRC-0063845/SRC-0063846/SRC-0063847/SRC-0063859:각명세; EXT-H056-01–12",
+      "verification_method": "원본/aliases해시·보호6개·고정12참조·독해checkpoint와현재문서 대조",
+      "limit": "다른5문헌/65종합·원실행/raw배열/다른코드/데이터·전체Goal미완료. 원연구코드/모델/RNG실행0."
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_scope": "같은 에이전트가40개주장과작성본문을전체독해checkpoint/확정수치검수와재대조했다. 작성뒤63·65전체원문,PDF1/5–8/11–12/15/17/19–20/22/33쪽,stacked89–174/272–431/525–627행,공통178–236/308–360/639–722행,단일예제239–298/435–460행,requirements전체를다시읽었다. Table6/7/S4의표시값과비율을확인하고Figure7위치18–19쪽으로정정했다. 잔차context예측을새fit으로오해하지않도록표현을고쳤고Chronos실효context제한을덧붙였다. 자동파일검사·독립연구자검증·원실험재현과구분한다.",
+  "semantic_second_pass_at_utc": "2026-10-10T03:34:42.658684+00:00"
+}

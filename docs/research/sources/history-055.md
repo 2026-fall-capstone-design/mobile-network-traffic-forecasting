@@ -35,3 +35,5 @@ ECAI PDF는 표지 포함9쪽 전체를 읽었다. 시각은1·2·3·5·7·8·9�
 외부 공식 코드 두 개는 고정commit `a53e223a4c01259eafe54ea8b0ea40a4ec98dff2`의 raw 응답과 byte identity를 확인했다. API commit/repo/tree는 전체 저장 JSON을 읽었으며 tree의 CSV 목록 확인은 CSV 본문 열람이 아니다. 과거 tree의 sha 필드와 commit.tree.sha는 서로 다르게 기록돼 있어 동일한 tree object라고 표기를 바꾸지 않았다. 현재 repo API URL은 과거 스냅샷을 보장하지 않는다.
 
 23고유 바이트 그룹·47물리 경로를 연결한다. 새 정확 사본13개44,090B,28번 기존사본1개,외부자료metadata9개다. 로컬 텍스트7개와 전체 JSON9개의 독해 증분은 이전catalog와 해시를 대조하며, 논문/외부코드·파생물의 범위와 분리한다. 같은 에이전트의 원문 대조이며 독립 연구자의 실험 재현이 아니다.
+
+[H056 후속 범위](history-056.md)에서 Heatload를 추가 검수했습니다. 위 다른 여섯 문헌 미완료 표기는 H055 당시 범위이며 현재는 Heatload를 제외한 다른 다섯 문헌·65 전체 종합이 남습니다. 기존 검수 JSON은 당시 snapshot으로 보존합니다.

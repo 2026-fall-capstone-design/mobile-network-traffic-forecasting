@@ -313,3 +313,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 예측값 입력·잔차 target·잔차 군집 — 63–65 ECAI
 
 검색어: forecast column, stacking, residual target, addback, ratio residual, heterogeneity, Ljung–Box, cumulative MAE, frozen layer. [63–65 ECAI 기록](records/0063-0065-ecai-interface.md)에서 세 연결 방식과 실제 학습 목표를 먼저 확인하세요. Fig.3(d)의 예측 입력 선행, 공개 TypeII의 실제값 target, 전후 잔차 정의 차이, 악화 조건·전체 비용 공백을 보존했습니다. 새 시도는 정보 가용 시점·최종 합성·비교군·지표·탐색 예산과 기존 방식에서 달라진 질문을 적어야 합니다.
+
+## 다중 해상도 잔차 보정과 총비용 — 63·65 Heatload
+
+검색어: MRRC, HFHR, residual target, addback, multi-resolution, forecast origin, perfect weather, RTF, stacked timing. [Heatload 검토](records/0063-0065-heatload-residual.md)에서 Base+예측잔차의 직접 선행을 확인하세요. HFHR 대비 비용 이득과 Base 대비 추가 비용, Chronos 단기 악화·에너지 개선을 함께 보존했습니다. 새 설계에는 해상도·context·horizon·발행 간격·잔차 생성 시점·최종 합성·동일 정보 비교군·두 단계 전체 비용과 기존 질문에서 달라진 점을 적어야 합니다.
