@@ -1,0 +1,114 @@
+{
+  "batch_id": "history-080",
+  "status": "source_checked",
+  "figures": [
+    {
+      "source": {
+        "source_id": "SRC-0064474",
+        "source_sha256": "3c1e0a151bbca09ea7f55b77d269d4a268574257124982f118780ec599c821ee",
+        "locator": "p3 Figure1"
+      },
+      "scope": "task/domain t-SNE 전체와 입력 예시 확인",
+      "raw_coordinates_recovered": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064474",
+        "source_sha256": "3c1e0a151bbca09ea7f55b77d269d4a268574257124982f118780ec599c821ee",
+        "locator": "p5 Figure2"
+      },
+      "scope": "taxonomy 거리와 Fisher norm/test error 관계 확인",
+      "raw_coordinates_recovered": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064474",
+        "source_sha256": "3c1e0a151bbca09ea7f55b77d269d4a268574257124982f118780ec599c821ee",
+        "locator": "p7 Figure3"
+      },
+      "scope": "expert별 error 분포와 선택/Imagenet 표시 확인. CUB caption과 iNat 축 표기 차이 보존.",
+      "raw_coordinates_recovered": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064474",
+        "source_sha256": "3c1e0a151bbca09ea7f55b77d269d4a268574257124982f118780ec599c821ee",
+        "locator": "p8 Figure4"
+      },
+      "scope": "4개 과제의 sample size에 따른 fixed/fine-tuned/generic/expert, optimal fixed 대비 상대 error 확인",
+      "raw_coordinates_recovered": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064476",
+        "source_sha256": "47d81b69a41e4dda0bf56d8323505911aa169cce130f8951fb90d9e73c96f6af",
+        "locator": "p1 Figure1"
+      },
+      "scope": "Taskonomy11 과제/2D·3D·semantic labels·heatmap 확인",
+      "distance_values_recovered": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064476",
+        "source_sha256": "47d81b69a41e4dda0bf56d8323505911aa169cce130f8951fb90d9e73c96f6af",
+        "locator": "p2 Figure2"
+      },
+      "scope": "5개 표본수-norm 곡선, Short sleeves 감소 반례 확인",
+      "raw_coordinates_recovered": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064476",
+        "source_sha256": "47d81b69a41e4dda0bf56d8323505911aa169cce130f8951fb90d9e73c96f6af",
+        "locator": "p2 Figure3"
+      },
+      "scope": "600dpi 전체 행렬·라벨·색/3500정수 추출 및 90선택·43별도최적 표시",
+      "raw_precision_recovered": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064476",
+        "source_sha256": "47d81b69a41e4dda0bf56d8323505911aa169cce130f8951fb90d9e73c96f6af",
+        "locator": "p5 Figure4"
+      },
+      "scope": "64개 toy binary task와 ReLU/polynomial embedding 배치 확인",
+      "raw_coordinates_recovered": false
+    }
+  ],
+  "displayed_formula_notes": [
+    {
+      "source": {
+        "source_id": "SRC-0064476",
+        "source_sha256": "47d81b69a41e4dda0bf56d8323505911aa169cce130f8951fb90d9e73c96f6af",
+        "locator": "p4 MODEL2VEC Training"
+      },
+      "observation": "supp p4 cross-entropy 표시식은 E[p(y|d)]이며 -log가 없지만 main p6 §3.4에는 -log가 있다. 인쇄 차이를 실행 실패로 판정하지 않음.",
+      "executed_code_failure_proven": false,
+      "comparison_source": {
+        "source_id": "SRC-0064474",
+        "source_sha256": "3c1e0a151bbca09ea7f55b77d269d4a268574257124982f118780ec599c821ee",
+        "locator": "p6 §3.4 표시 loss"
+      }
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064476",
+        "source_sha256": "47d81b69a41e4dda0bf56d8323505911aa169cce130f8951fb90d9e73c96f6af",
+        "locator": "p5 혼합 U/w Fisher block"
+      },
+      "observation": "앞의 grad U에 있는 w_k 인자와 혼합 block 인쇄식을 대조할 필요",
+      "executed_code_failure_proven": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064476",
+        "source_sha256": "47d81b69a41e4dda0bf56d8323505911aa169cce130f8951fb90d9e73c96f6af",
+        "locator": "p6 robust Fisher 전개"
+      },
+      "observation": "0.5 tr(Sigma H) 전개와 2/beta precision 계수 및 본문 p4 정규화의 정의를 구분해야 함",
+      "executed_code_failure_proven": false
+    }
+  ],
+  "independent_reproduction": false,
+  "semantic_second_pass_complete": true
+}
