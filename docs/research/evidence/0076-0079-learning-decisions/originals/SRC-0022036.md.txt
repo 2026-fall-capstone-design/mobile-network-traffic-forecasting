@@ -1,0 +1,51 @@
+# 79. 분산 학습 방향에서 바꿀 수 있는 결정
+
+2026-09-26. 새 모델·수치 pilot 0. 누적 비용 원장 변경 0. 분산 배치를 실제 사용자 환경으로 가정하지 않았다. 이 문서는 최종 추천이 아닌 후보 구체화 기록이다.
+
+## 확인 결과
+
+**사전학습 모델로 한 번 clustering한 뒤 별도 모델을 학습한다는 구조만으로는 신규성이 없다.** FMCL이 이미 이 순서를 명시한다. 입력 분포만 비교하는 방법, 원래 target까지 비교하는 방법, 예측 가능한 target 성분을 비교하는 방법이 서로 다른 결정을 내리는 조건을 좁혀야 한다.
+
+| 선행연구 | 실제 확인한 계산 | 현재 설계에 주는 변경 |
+|---|---|---|
+| FMCL, arXiv2604.27510v1 | 고정 foundation encoder의 class별 평균 표현과 class 비율을 전송한다. 공통 class의 cosine 거리와 겹침 penalty로 전 cell 쌍을 계산한 뒤 average-link clustering, 별도 ResNet 학습을 수행한다. | 한 번의 추론, 모델 독립성, foundation 활용 자체는 기여에서 제외한다. 연속 회귀의 예측 관계를 class bin으로 대체하지 않고 무엇을 추정하는지 명시한다. |
+| EMD-CFL, arXiv2506.07769v1 | 초기 local 학습 후 두 client의 encoder로 자료를 변환한다. embedding OT에서 자체 train-validation OT를 뺀 뒤 양방향 threshold를 적용한다. pairwise 계산은 1회지만 local 학습과 모델 교환이 있다. | 최종 RCTL encoder를 쓰면 현재 독립성 조건을 충족하지 않는다. 공통 고정 TabICL을 사용하려면 입력과 target 관계가 어떤 통계로 남는지, 전체 pair 비용을 어떻게 줄일지 별도로 설명한다. |
+| Toso et al., arXiv2609.25705v1 | 제곱손실의 gradient 차이를 참 함수 차이, 유한 sample 잡음, 현재 parameter 위치의 영향으로 분해한다. 매 round 새 iid sample, nonlinear 경우 동일 입력 주변분포와 bounded Jacobian·PL 등의 가정이 있다. | 예측값 유사성을 최종 학습 효과와 동일시하지 않는다. 조건부 평균뿐 아니라 입력 분포가 필요하며, 시계열·RCTL에 원문의 수렴 보장을 그대로 가져오지 않는다. |
+
+FedCAP의 학술지명은 **Telecom 7(4), 104 (2026)**이다. 앞선 기록의 IoT 표기는 정정한다. Crossref DOI 10.3390/telecom7040104와 출판사 검색 본문으로 확인했다. 일별 profile K-means→cluster LSTM FedAvg→local adapter가 가장 가까운 통신 대안이다. 원문 PDF는 접근하지 못했고, 전문 검토로 세지 않는다. 따라서 실제 통신 수요의 문헌 근거는 있으나 사용자의 자료 분산 조건이 확인되었다고 쓰지 않는다.
+
+## 코드로 확인한 범위
+
+EMD-CFL 공식 commit `f48a2cfe53079cc6bc1d89f4771cb7a5a62804c5`의 5개 파일을 정적으로 읽었다. 외부 코드 실행·import 없음.
+
+- `run_emdcfl.py`와 `src/trainer.py:381`의 full-participation 경로는 local training 뒤 epoch0에서 clustering한다.
+- `get_wd:1874` 부근은 최대512 sample, random projection, cosine cost와 `ot.emd2`를 사용한다. 이 수치가 곧 Euclidean W1 이론의 동일 metric이라는 주장은 하지 않는다. 자체 기준 거리와 상대 거리의 random projection 설정도 호출마다 같다 할 수 없다.
+- 실제 비교는 own train vs own validation, own train vs other validation이다. 논문 의사코드의 표기와 구현의 자료 구분을 구별한다.
+- `find_neighborhoods`, `cluster_neighborhoods`, `average_weights_clusterwise`는 동일 이웃집합을 같은 model index로 연결하고 해당 이웃들의 가중치를 평균한다. 서로 다른 이웃집합이 겹칠 수 있으므로 일반적인 서로소 cell partition과 같다고 쓰지 않는다.
+- 논문 §2의 gradient bound에는 loss/gradient 표기와 update 식의 확인이 필요한 부분이 있다. 이 문서에서는 그 식을 RCTL 보장으로 인용하지 않는다. 후속 제안에 필요한 관계는 별도로 직접 유도한다.
+
+## 다음 후보의 실제 차이
+
+추가 모듈을 붙이는 대신, 비교 대상의 통계를 바꾸는 후보를 검토한다. 각 cell에서 실제로 관측된 입력 x와 TabICL이 추정한 조건부 평균 m(x)의 쌍을 만든다. 두 cell의 이 쌍들의 분포를 비교한다. 다른 cell이 관측하지 않은 공통 query로 함수를 외삽하지 않는다.
+
+제곱손실에서 예상 gradient는 `E[2(f(x)-m(x))·∇f(x)]`이다. 같은 입력 분포와 조건부 평균을 가진 두 cell은 target 잡음 분산이 달라도 이 기대값이 같다. 반대로 같은 입력 분포여도 이후 값의 평균 관계가 다르면 기대값이 달라질 수 있다. 이 등식은 고정된 함수와 미분·기대값 교환 조건에 대한 관계이지, 유한 batch SGD의 분산이나 최종 test 오차가 같다는 말이 아니다.
+
+이 후보는 입력만 보는 거리의 누락과 raw target 거리의 잡음 혼입을 동시에 줄일 수 있는지 묻는다. 다만 **조건부 평균 추정 후 거리 계산 자체는 알려진 수단의 결합**이다. 최종 모델을 호출하지 않는 실제 관계 판단, 단순 추정기 대비 추정 이득, 뒤 구간의 최종 모델 gradient 차이와의 연결을 함께 보여야 기여 후보가 된다. 목표는 같은 cluster 수에서 local 학습 방향의 불일치를 줄이는 것이다. 분산 RCTL의 최종 정확도 향상은 아직 확인하지 않았다.
+
+79에서는 이 후보의 새 수치 계산을 하지 않았다. 다음 80에서 기존 16 cell TabICL 출력을 재사용할 수 있는지와 RCTL의 가중치를 바꾸지 않는 사후 gradient 확인을 사전 계획한다. 새 RCTL fit은 허용하지 않는다. 29-fit 상한을 우회한 1-step update도 하지 않는다.
+
+## 읽은 범위와 접근 기록
+
+- FMCL PDF 실제16쪽/2,262,852bytes. §3, Algorithms1–5, §4.3–4.6, §5 및 결론의 해당 내용을 읽고 p7·8·12를 시각 대조했다. arXiv 메타의14쪽과 실제 PDF16쪽을 구분한다. 저자 공식 code는 확인하지 못했다.
+- EMD-CFL은 HTML §2–4, 비용절 및 지정 공식 code를 확인했다. 전체 appendix proof/실험을 검증하지 않았다. PDF 첫 URL406, 다른 PDF16,010,450bytes는15MB 수집 상한을 넘어 받지 않았다.
+- Toso 논문은 HTML §2–4 및 Appendix B.1의 모델·gradient 식, 가정과 정리 진술을 읽었다. 전체 proof 재검증·구현 재현은 아니다. nonlinear의 공통 입력분포 가정을 명시적으로 확인했다.
+- FedCAP 출판사429, PDF 미확보. 확인 범위는 검색에 노출된 출판사 본문과 Crossref이다.
+- 첫 HTML 수집기는 bs4 미설치로 import에서 종료되어 다운로드가 없었다. 표준 HTMLParser로 바꿔 한 번 수집했다. 모델 실행에는 영향 없다.
+- `sources/distributed_clustering_79/`에 PDF/HTML/검색/서지/공식 commit·code/hash/렌더를 보존했다. 80 후보 중복 확인용 OT 회귀·CLoVE 검색은 별도 범위이며 CLoVE는 verification 때문에 전문 미확인이다.
+
+## 원문
+
+- [FMCL](https://arxiv.org/abs/2604.27510)
+- [EMD-CFL](https://arxiv.org/html/2506.07769v1), [공식 코드](https://github.com/dkaizhang/emdcfl/tree/f48a2cfe53079cc6bc1d89f4771cb7a5a62804c5)
+- [회귀 gradient heterogeneity](https://arxiv.org/html/2609.25705v1)
+- [FedCAP](https://www.mdpi.com/2673-4001/7/4/104)

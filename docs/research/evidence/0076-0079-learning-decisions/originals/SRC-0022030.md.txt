@@ -1,0 +1,34 @@
+# 76. 예측 반응을 실제 학습에 전달하는 경로의 사전 검토
+
+2026-09-26. 직전72–75는 새 원문·실제 모델 확인으로 진전한 turn이다. 활성 goal과 누적 상한을 유지한다. 이 계획은 문헌·코드·논리 검토이며 새 모델/수치 계산을 허용하지 않는다.
+
+## 해결하려는 기존 연결 문제
+
+기존 연구는 TabICLv2의 추정 관계로 cell 소속을 고른 뒤, 그 추정 관계를 최종 RCTL 학습에 전달하지 않았다. 따라서 좋은 teacher의 판단이 다른 학습기의 이득으로 이어지는지는 별도 가정으로 남는다. 이 문제를 새로운 유사도 점수로 다시 포장하지 않는다.
+
+검토할 다른 행동은 **clustering 후 실제 관측 target의 loss를 유지하면서, 같은 입력 변화에 대한 예측 반응을 보조 제약으로 전달하는 것**이다. 예를 들면 input 두 점에서의 예측 차이 또는 방향 미분을 RCTL 학습에서 참고한다. teacher 예측값을 실제 target 대신 넣는 방식은 검토 범위에서 제외한다. 보조 제약도 본질적으로 teacher 지식을 이전하는 방식이므로 지식 증류라고 정확히 부른다.
+
+clustering의 입력과 판단에는 RCTL의 학습 결과·예측·gradient·loss를 사용하지 않는다. RCTL의 gradient는 소속을 고정한 후의 학습 loss 계산에서만 필요할 수 있다. 이 시점 구분이 독립성을 유지하는지 명시한다. 현재 RCTL 추가fit은0회만 허용된다.
+
+## 기존 검토와 다른 점, 동일한 점
+
+- 43–44의 local distillation은 이미 coefficient clustering을 포함한다. 예측의 국소 기울기를 clustering했다는 주장 자체는 신규성이 아니다.
+- 63–65의 teacher 예측 입력 추가/잔차 학습과 다르지만, derivative distillation/Sobolev training 자체도 기존 원리다.
+- 지금 후보의 성립 여부는 제한된 관측 자료에서 **어떤 반응만 공유해야 하는지, 어떤 반응은 전달하지 않아야 하는지**를 최종 학습 목적과 연결한 별도 결정을 만들 수 있는가에 달렸다. 임의 confidence cutoff·weight penalty를 붙인 것만으로 통과시키지 않는다.
+
+## 원문 조사 범위
+
+Sobolev training, Jacobian matching distillation, time-series/TFM의 derivative 또는 relational distillation에서 가장 가까운3편의 방법·가정·비용을 우선 읽는다. 최대3개 PDF/총15MB. 기존 local-distillation v2 원문·코드는 재사용한다. 논문에 없는 gradient API를 있다고 가정하지 않고, TabICL의 실제 query 미분 또는 제한된 finite-difference 계산 가능성을 공식 코드에서 확인한다.
+
+## 결정해야 할 질문
+
+1. noisy 실제 target으로 학습하면서 잘못된 teacher 반응을 전달하는 손해는 무엇인가? 단순한 label-value distillation과 대수적으로 같은가?
+2. 최근lag·calendar·day/week가 함께 변하는 실제 입력 manifold를 벗어난 perturbation을 사용하지 않고 비교 가능한가?
+3. cell별 context가 다른 teacher의 반응을 동일한 좌표/스케일에서 비교할 수 있는가? 평균높이와경향을혼동하지않는가?
+4. 적은자료에서도실제도움이되는반응을찾을근거가있는가? Tab의pointaccuracy를derivativeaccuracy로곧바로옮기지않는다.
+5. 이기존기술들을적용한것을넘어서는새결정과기존보다좋아질조건이있는가? 없다면후보를폐기한다.
+6. RCTL core를보존하면서보조loss를계산하는시간/메모리/학습비용이현실적인가? 역전파중2차미분이필요한경우이를생략하지않는다.
+
+## 예산
+
+현재Tab69contexts/39360query행,잔여11/20640;RCTL29fits/잔여0. cheap66.7446051초. 기존상한변경0. 문헌검토가끝나기전에모델실행을시작하지않는다. 결과가긍정적이더라도새수치계획을별도로고정한다.

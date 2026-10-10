@@ -1,0 +1,33 @@
+{
+  "Task2Vec": {
+    "paper": "ICCV2019 main + official supplement",
+    "read": "main sections3.1–3.4,4.1–4.2 and Table1; supplement1.1",
+    "code_commit": "c5795e55ba773f9845498091a90eee2fcba5da31",
+    "static_review": "task2vec.py embed/classifier/Fisher paths; task_similarity.py variance/Hessian/cosine paths; README",
+    "not_claimed": "all appendix proofs or reimplementation"
+  },
+  "RegressionTransferability": {
+    "paper": "UAI2023 main + official supplement",
+    "read": "main3–5,6.1–6.3 and6.6; supplementA.1,A.2 and A.3 setup",
+    "code_commit": "b494b4e56be86229883b039230f708236364b772",
+    "static_review": "reg_score.py complete; README",
+    "not_claimed": "full supplementary proof audit; experiments rerun"
+  },
+  "NTKMTL": {
+    "paper": "NeurIPS2025 official29-page paper",
+    "read": "3.1–3.4,4.1, AppendixB.1–B.3, C.3–C.4 relevant passages",
+    "code_commit": "abbf1f00c2b0bc207a950149cf4bf3a03cd69c8f",
+    "static_review": "weight_methods.py NTKMTL class; README; cluster_methods.py class names identify different method",
+    "not_claimed": "all experiments, all trainer code, or runtime reproduction"
+  },
+  "corrections": [
+    "UAI risk is squared L2 error, visually checked",
+    "Ridge score returned by code excludes explicit penalty term",
+    "NTK source-output Jacobian differs from implemented loss gradients",
+    "weighted-output coordinates in NTK AppendixB.3 cannot be silently read as unchanged output"
+  ],
+  "new_model_calls": 0,
+  "new_numeric_pilots": 0,
+  "analytical_example": "symbolic comparison only; no sampled or numerical experiment",
+  "access_failures": "initial Task2Vec author URL TLS error; initial UAI supplement exceeded individual5MB read limit, subsequently retrieved within total15MB; OpenReview M3L challenge not bypassed"
+}

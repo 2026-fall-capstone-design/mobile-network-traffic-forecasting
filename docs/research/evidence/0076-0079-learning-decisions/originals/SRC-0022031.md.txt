@@ -1,0 +1,122 @@
+# 76. TabICLv2의 예측 반응을 RCTL에 전달하는 후보 검토
+
+2026-09-26. `76_response_constraint_review_plan.md`에 따른 원문·공식 코드·논리 검토다. 새 모델 실행, 수치 pilot, RCTL 학습, 예산 변경은 없다. 현재 추천 방향이나 연구 완료 보고서가 아니다.
+
+## 판단
+
+**TabICLv2가 파악한 관계를 RCTL의 학습 목적에 전달하면, clustering 소속만 넘겼던 기존 설계의 연결 문제를 줄일 수 있다. 그러나 이번에 검토한 ‘기울기/예측 차이 전달’ 자체는 채택하지 않는다.** 기존 distillation과 구분되는 공유 결정이 아직 없고, 실제 트래픽에서 신뢰할 수 있는 반응을 골라낼 직접 근거도 없다. 단순히 보장 정리가 없어서 배제하는 판단은 아니다.
+
+이는 TabICLv2의 정보가 다른 모델에 도움이 되지 않는다는 결론이 아니다. 관계를 전달하는 경로가 생기는 것과, 그 관계가 정확하여 실제 관측값에 대한 오차를 줄이는 것은 별개다. 이미 확인한 60·74의 직접 예측 이점은 유지한다.
+
+## 1. 이번 후보가 바꾸려던 것
+
+기존안은 TabICLv2로 cell 관계를 판단하고 소속만 RCTL에 전달한다. 이번 후보는 소속을 정한 뒤 RCTL을 실제 관측값으로 학습하되, 같은 입력 변화에 대해 TabICLv2와 비슷하게 반응하도록 보조 loss를 두는 것이다.
+
+예를 들어 관측된 두 입력 x_a, x_b에 대해 RCTL의 예측 차이 `s(x_b)−s(x_a)`가 TabICLv2의 차이 `t(x_b)−t(x_a)`와 맞도록 한다. 실제 target의 학습 loss는 남는다. teacher 결과를 실제 target 대신 넣지는 않지만, 이 보조 loss 역시 지식 증류다. ‘실제 정답을 유지한다’는 표현으로 teacher 오차의 영향을 없다고 설명할 수 없다.
+
+clustering에서는 RCTL을 호출하지 않고, 소속을 고정한 후에만 이 보조 loss를 계산하면 기존 독립성 조건에는 맞는다. 대신 최종 RCTL의 학습 목적이 달라지므로 원형 RCTL과 증류한 RCTL을 구별해야 한다.
+
+## 2. 가장 가까운 원문에서 확인한 내용
+
+### Sobolev Training for Neural Networks — NIPS 2017
+
+- 공식 10쪽 PDF, §2–3의 목적식·정리 진술과 §4.1–4.2를 읽었다. p4·p6을 시각 대조했다. 보충 증명 전체를 검증한 것은 아니다.
+- Eq.(1)은 값의 오차와 입력 미분의 오차를 함께 최소화한다. Eq.(2)는 큰 Jacobian을 모두 계산하는 대신 무작위 투영을 맞춘다. 따라서 ‘반응을 학습에 전달한다’거나 ‘일부 방향만 계산한다’는 기본 원리는 이미 있다.
+- 이론의 데이터 효율 논의는 대상 함수의 값·미분 정보에 접근하는 조건이다. 추정한 teacher의 미분이 실제 트래픽 관계와 맞는다는 결과가 아니다.
+- §4.1–4.2는 유리한 결과뿐 아니라, 적은 자료에서 고주파 Ackley 함수를 다룰 때의 실패도 설명한다. Atari 결과는 held-out episode에서 teacher 정책을 얼마나 잘 모방하는지에 관한 것이다.
+
+출처: https://proceedings.neurips.cc/paper/2017/file/758a06618c69880a6cee5314ee42d52f-Paper.pdf
+
+### Knowledge Transfer with Jacobian Matching — ICML 2018
+
+- 공식 9쪽 PDF, §3–5의 비교·가정, §6.1·6.3 및 Table1–5를 읽었다. p3·p8을 시각 대조했다. 별도 supplementary는 이번에 확보하지 않았다.
+- 학습 정답에 대한 loss를 유지하며 teacher 활성값/입력 Jacobian을 추가로 맞춘다. RCTL의 실제 target을 유지하고 반응만 보조적으로 전달하는 구상과 직접 겹친다.
+- Table1의 CIFAR100 100개/class에서는 CE+활성값 50.92%, CE+활성값+Jacobian 52.43%다. 500개/class에서는 56.65%와54.57%로 반대다. 작은 자료에서의 도움을 모든 조건의 이득으로 옮길 수 없다.
+- 입력 잡음 증류와 Jacobian penalty의 연결은 국소 Taylor 전개에 기대고 있다. 이를 매끄러운 TabICL/RCTL 전체 구간에 대한 정확한 등식으로 사용하지 않는다. §6.3은 Jacobian 계산 부담과 깊은 층에서 2차 gradient가 약해지는 현상도 보고한다.
+
+출처: https://proceedings.mlr.press/v80/srinivas18a/srinivas18a.pdf
+
+### Selecting Feature Interactions for Generalized Additive Models by Distilling Foundation Models — TabDistill, 2026
+
+- arXiv2604.13332는 2026-04-14 v1만 확인했다. 20쪽 PDF의 §3–5, Algorithm1, Table1–3, Fig.3을 읽었으며 p4·p7을 시각 대조했다. appendix 전체 재현은 하지 않았다.
+- Algorithm1은 TFM의 예측에 SPEX/FBII를 적용하여 변수 조합을 추출하고, 자주 선택된 조합을 GAM에 넣는다. 후속 GAM은 실제 target으로 학습한다. TFM의 관계 정보를 다른 실제-target 모델에 전달하는 방식 자체도 이미 있다.
+- 주 실험은 2,000행·10열 미만을 선택한35회귀/44분류 task다. TabICL 확인은42개 **분류** 자료다. 회귀 TabICLv2·네트워크 시계열의 검증으로 표시하지 않는다.
+- Table1은 PMLB의 평균 MAE 순위로 EBM2.26, XGBoost3.30, TabPFN1.63을 보고한다. 오차가2.26이라는 뜻이 아니다. 같은 interaction을 받은 PyGAM의 순위4.65는 downstream 학습기의 영향도 보여준다. §5는 잘못된 관계 전달과 설명 계산 비용을 한계로 명시한다.
+
+출처: https://arxiv.org/abs/2604.13332v1
+
+### 이미 검토한 Local Distillation과의 연결
+
+`Interpretable AI with Local Distillation`, arXiv2608.23538v2, §4.3은 국소 계수를 추정하여 clustering하고,100번 교란 후 공동 소속 빈도를 다시 clustering한다. 따라서 관계의 계수화·안정성 검사·clustering을 결합했다는 설명도 차별점이 되지 않는다. 기존43의 PDF·코드 기록을 재사용했다.
+
+App.D/Table2의 낮은 상관 .14–.34는 **세 번째 계수**에 대한 값이다. 첫 두 계수의 .63–.79와 구별한다. 이 결과는 scalar 예측값이 비슷한 입력들을 모으면 상호작용 방향의 차이를 놓칠 수 있음을 보여준다. 모든 계수가 부정확하다는 뜻은 아니다.
+
+## 3. 공식 구현 확인이 바꾼 판단
+
+TabDistill 공식 저장소의 commit은 `64214da0edf7eef6e8bf645332471d78b30345e8`이다. 2026-09-25 코드이며 논문의 실험 시점 코드와 동일하다고 주장하지 않는다. 내려받은 코드의 실행·설치·import는 하지 않았다.
+
+| 코드 위치 | 확인 내용 | 연구로 옮길 때의 의미 |
+|---|---|---|
+| `experiments/interaction_search/tabarena_single_mulindex.py:137` | 수치형 train 평균·범주형 최빈값을 masking 기준으로 사용 | 트래픽 lag·주기·파생 특징 사이의 관계를 보존하는 대체값이 자동으로 생기는 것은 아니다. |
+| 같은 파일:567 | 선택한 열은 관측값, 가린 열은 위 기준값으로 교체하여 predict | 개별 열 교체로 만들어진 입력이 실제로 관측 가능한 조합인지 따로 다뤄야 한다. |
+| 같은 파일:181 | 현재 기본 모델은 TabPFN v3 | 원문의 TabPFN-2 결과와 최신 기본 실행을 구별한다. |
+| `experiments/TabDistill_downstream_comparison/compare_index_performance.py:154,189,225` | 빈도 상위 interaction을 EBM에 지정하고 실제 y_train으로 fit | 관계만 추출한 뒤 실제 정답을 사용하는 경로가 확인된다. clustering 필요성은 이 코드에서 제공되지 않는다. |
+| 설치된 TabICL2.2 `_sklearn/regressor.py:529` | NumPy→Torch 변환, `no_grad`, NumPy 출력 | 기본 predict 결과에 바로 autograd를 걸 수 있다는 전제는 틀리다. |
+| 설치된 TabICL2.2 `_model/inference.py:1227` | 내부 inference manager도 `no_grad` 사용 | gradient 접근은 별도 low-level 경로와 전처리까지 검토해야 한다. 구현 불가능이라는 뜻은 아니다. |
+
+정적인 코드·hash는 `sources/response_transfer_76/code_manifest.json`에 보존했다. 스칼라 예측을 여러 입력에서 구하는 유한 차분은 일반 predict로 가능하지만, 이것을 미분 API가 이미 제공되는 것과 혼동하지 않는다.
+
+## 4. 논리적으로 확정할 수 있는 부분
+
+### 좋은 점 예측과 좋은 반응은 다른 조건이다
+
+teacher 함수와 실제 평균 함수가 관측 지점에서 가깝더라도, 사이의 기울기가 가까워야 하는 것은 아니다. 예를 들어 실제 함수 f에 작은 진폭·높은 주파수의 항을 더하면 값의 차이는 작게 유지하면서 미분 차이를 크게 만들 수 있다. 이는 미분 추정에 대한 논리적 반례다. TabICLv2가 실제로 그런 함수를 만든다는 실험 결과가 아니다.
+
+따라서 74에서 관찰한 TabICLv2의 낮은 예측 MSE를 정확한 기울기의 증거로 사용하지 않는다. 반대로 미분이 항상 나쁘다는 결론도 내리지 않는다. 현재 자료에는 실제 트래픽의 정답 미분이 없다.
+
+### 입력을 독립적으로 바꾸면 다른 문제가 된다
+
+최근 lag, 과거24시간 평균, 시간 sin/cos가 입력에 함께 있다면 각 열을 독립적으로 교체한 벡터는 실제 한 시점의 트래픽 이력과 맞지 않을 수 있다. 예를 들어 시간 sin/cos는 원 위의 한 점을 함께 표현한다. 한 열을 평균으로 바꾸고 다른 열을 유지하는 연산은 유효한 시간 변환이 아니다.
+
+파생값을 원시 이력에서 다시 계산하면 이런 불일치를 줄일 수 있다. 다만 그것은 올바른 입력 생성의 기본 조건이며, 그 자체가 cell을 나눌 이유나 신규성을 제공하지 않는다. 관측된 완전한 두 입력만 비교하는 방법도 가능하지만, 두 시점의 차이는 여러 요인이 함께 변한 차이이므로 특정 lag의 인과 효과라고 부를 수 없다.
+
+### sample 간 예측 차이 보조 loss의 의미
+
+sample j의 student–teacher 차이를 e_j라 두면, 두 sample의 반응을 맞추는 제곱 penalty는 `(e_b−e_a)^2`이다. 여러 쌍에 적용하면 graph Laplacian 형태의 관계 증류가 된다. 모든 쌍을 같은 비중으로 쓰면 teacher와 student의 예측 차이에서 상수 차이를 뺀 부분을 맞추는 것으로 정리된다. 이는 새 실행 결과가 아니라 목적식의 대수적 해석이다.
+
+그러므로 이를 ‘값을 모방하지 않으므로 증류와 다르다’고 주장할 수 없다. 어떤 쌍만 선택하는지에 기여를 두려면, 기존 관계 증류보다 그 선택이 타당한 이유와 실제 이득을 제시해야 한다.
+
+### Jacobian 논문의 등식 적용 범위
+
+일반적으로 매끄러운 r(x)=T(x)−S(x)에 작은 등방 Gaussian 잡음을 넣어 제곱 오차를 전개하면, 2차에는 `||∇r||²`뿐 아니라 `r·Δr`도 들어간다. r이 국소 선형이거나 잔차가0인 등의 조건에서는 후자가 사라진다. 논문의 국소 선형 설명을 넘어 매끄러운 두 모델에 해당항 없이 정확히 적용하지 않는다. Gaussian이 조각 선형 경계를 넘는 경우도 구별해야 한다. 이 주석은 후보의 자동 기각 사유나 새로운 정리 주장으로 사용하지 않는다.
+
+## 5. 실행 가능성과 비용
+
+| 선택 | 실제 필요한 계산 | 남는 한계 |
+|---|---|---|
+| 전체 입력 미분 | teacher의 전처리 포함 gradient 경로; student 입력 미분을 학습 가중치로 다시 미분 | 기본 TabICL API 변경과 RCTL의 혼합 2차 미분 비용이 필요하다. |
+| P개 방향의 중앙 차분 | context당 Q개 기준 입력이면2PQ개의 teacher query 평가 | context 고정 시 재사용 여지는 있으나, 늘어난 query 수와 실제 예측시간은 별도다. |
+| 관측된 쌍의 예측 차이 | 선택 입력의 teacher 예측을 미리 저장; RCTL에서 두 입력의 출력 차이로 loss 계산 | teacher를 매 epoch 실행하지 않아도 되지만, 쌍 구성·추가 forward/역전파·메모리 비용이 생긴다. |
+| 반응 특징으로 cell clustering | cell마다 반응을 계산한 뒤 후보 탐색 | 특징 추출을 한 번 한다고 모든 cell 쌍 비교 비용까지 없어지는 것은 아니다. |
+
+위 표는 계산 절차이며 이번 turn의 시간 측정 결과가 아니다. dropout과 BatchNorm이 있는 RCTL에서는 비교할 두 출력의 학습 모드·batch 구성도 고정해야 한다. inference 모드의 함수 반응과 training batch의 반응을 같은 값으로 취급하지 않는다.
+
+## 6. 채택하지 않는 이유와 재진입 조건
+
+현재 후보가 해결하려는 연결 문제는 분명하다. 하지만 알려진 distillation을 추가하는 것으로 그 문제를 처리할 수 있으며, 별도의 clustering이 왜 필요한지는 아직 설명하지 못한다. 단일 global RCTL에 같은 teacher 보조 정보를 주는 대안도 반드시 비교 대상이다. clustering을 넣은 모델과 teacher 없는 global 모델만 비교해서는 어느 부분의 이득인지 알 수 없다.
+
+다음 조건이 없는 동안 이 후보에 모델 예산을 쓰지 않는다.
+
+1. 실제 관측 입력에서, 공유하면 도움이 되는 반응과 해가 되는 반응을 구별할 판단 정보가 있다.
+2. 그 정보로 정한 cell 소속이 단순한 기존 계수 clustering이나 global distillation과 다른 학습 결정을 만든다.
+3. 그 차이가 같은 정보·비용의 대안보다 유리할 근거가 있다. teacher의 좋은 점 예측만을 근거로 대신하지 않는다.
+
+현재는 위 조건을 만족하는 구체적인 새 결정이 없다. 이에 따라 이번 후보는 추천안에서 제외한다. 새로운 미확인 성능 향상을 문서에 덧붙이지 않는다. 남은 연구는 ‘예측이 잘되는 teacher를 어디에 더 넣을까’가 아니라 **기존 clustering→RCTL에서 어떤 실제 손해를 바꾸는가**부터 다시 연결해야 한다.
+
+## 기록과 검토 범위
+
+- 새 공식 PDF3개,39쪽,총4,411,271bytes. 관련6쪽 시각 검토. 문서 전체·보충자료 전체를 읽었다고 표시하지 않는다.
+- 원문 수집은 `collect_response_sources_76.py`, 정적 코드 수집은 `collect_response_code_76.py`로 각1회 수행했다. 원문·검색·버전·commit·hash는 `sources/response_transfer_76/`에 있다.
+- 렌더 명령의 출력 문자열에서 점이 포함된 파일명의 suffix 처리 때문에 TabDistill PNG 이름이 짧게 인쇄되었다. 실제 생성된 `TabDistill_2604.13332v1_p4.png`와 `_p7.png`를 열어 확인했으며, PDF나 이미지의 내용 손상·재렌더는 없다.
+- 새 모델·수치 pilot0. 누적 TabICL69contexts/39,360query, 잔여11/20,640. RCTL29fits/잔여0. 기존 예산 상한·모델 결과·snapshot01–18은 변경하지 않는다.
+- 최종 추천과 Word는 미완료이며 goal 완료로 처리하지 않는다. 이번에는 새 원문과 코드로 후보 판단을 진행했으므로 외부 제약으로 작업할 수 없는 상태가 아니다.

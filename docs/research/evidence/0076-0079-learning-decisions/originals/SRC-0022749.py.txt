@@ -1,0 +1,20 @@
+from pathlib import Path
+import urllib.request,json,hashlib,subprocess
+B=Path(__file__).resolve().parent/'sources/distributed_clustering_79'
+sha=json.loads((B/'emdcfl_commit.json').read_bytes())['sha'];records=[]
+assert not (B/'code_manifest.json').exists()
+for name in ['README.md','run_emdcfl.py','src/center.py','src/trainer.py','src/utils.py']:
+    url=f'https://raw.githubusercontent.com/dkaizhang/emdcfl/{sha}/{name}'
+    p=B/('emdcfl_'+name.replace('/','_'));assert not p.exists()
+    try:
+        with urllib.request.urlopen(url,timeout=20) as r:data=r.read(500001)
+        assert len(data)<=500000;p.write_bytes(data)
+        rec={'path':p.name,'url':url,'commit':sha,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+    except Exception as e:rec={'url':url,'error':repr(e)}
+    records.append(rec);print(json.dumps(rec),flush=True)
+    (B/'code_manifest.json').write_text(json.dumps(records,indent=2),encoding='utf-8')
+exe=Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+for page in [7,8,12]:
+    prefix=B/f'FMCL_v1_p{page}'
+    assert not Path(str(prefix)+'.png').exists()
+    subprocess.run([str(exe),'-f',str(page),'-l',str(page),'-r','110','-singlefile','-png',str(B/'FMCL_2604.27510v1.pdf'),str(prefix)],check=True,capture_output=True)

@@ -1,0 +1,48 @@
+"""Read-only source retrieval: metadata, repository trees and official supplement links."""
+from pathlib import Path
+import json, urllib.request, hashlib
+from datetime import datetime, timezone
+from html.parser import HTMLParser
+
+out=Path(__file__).resolve().parent/'sources/transferability_78'
+dest=out/'metadata';dest.mkdir(exist_ok=True)
+log=[]
+def get(url, name, method='GET', limit=2000000):
+    rec={'url':url,'method':method,'accessed_utc':datetime.now(timezone.utc).isoformat()}
+    try:
+        req=urllib.request.Request(url,method=method,headers={'User-Agent':'Research-source-verification/1.0'})
+        with urllib.request.urlopen(req, timeout=25) as r:
+            rec.update(status=r.status,final_url=r.url,headers=dict(r.headers))
+            b=r.read(limit+1)
+        if len(b)>limit:raise ValueError('source exceeds retrieval limit')
+        p=dest/name;assert not p.exists();p.write_bytes(b)
+        rec.update(file=str(p),bytes=len(b),sha256=hashlib.sha256(b).hexdigest())
+        log.append(rec)
+        return b
+    except Exception as e:
+        rec['error']=repr(e);log.append(rec);return None
+
+for slug in ('awslabs/aws-cv-task2vec','CuongNN218/regression_transferability','jianke0604/NTKMTL'):
+    name=slug.split('/')[-1]
+    b=get('https://api.github.com/repos/'+slug,name+'_repo.json')
+    if not b:continue
+    branch=json.loads(b)['default_branch']
+    b=get('https://api.github.com/repos/'+slug+'/commits/'+branch,name+'_commit.json')
+    if not b:continue
+    sha=json.loads(b)['sha']
+    b=get('https://api.github.com/repos/'+slug+'/git/trees/'+sha+'?recursive=1',name+'_tree.json')
+    if b:
+        paths=[n['path'] for n in json.loads(b)['tree'] if n['path'].endswith(('.py','.md'))]
+        print(json.dumps({'repo':slug,'commit':sha,'paths':paths[:100]},ensure_ascii=False),flush=True)
+
+get('https://proceedings.mlr.press/v216/nguyen23a/nguyen23a-supp.pdf','regression_supp_head.bin',method='HEAD')
+b=get('https://openaccess.thecvf.com/content_ICCV_2019/html/Achille_Task2Vec_Task_Embedding_for_Meta-Learning_ICCV_2019_paper.html','task2vec_official.html')
+if b:
+    class Links(HTMLParser):
+        def handle_starttag(self,tag,attrs):
+            if tag=='a':
+                for k,v in attrs:
+                    if k=='href' and any(s in v.lower() for s in ['supp','github','pdf']):print(v,flush=True)
+    Links().feed(b.decode())
+(dest/'access_log.json').write_text(json.dumps(log,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps([{'url':r['url'],'error':r.get('error'),'bytes':r.get('bytes'),'content_length':r.get('headers',{}).get('Content-Length')} for r in log],ensure_ascii=False),flush=True)
