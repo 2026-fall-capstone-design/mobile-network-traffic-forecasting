@@ -1,0 +1,160 @@
+{
+  "batch_id": "history-085",
+  "status": "source_checked",
+  "claims_checked": 36,
+  "checks": [
+    {
+      "check_id": "H085-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        28,
+        34,
+        36
+      ],
+      "sources": [
+        "README1–11 재독해",
+        "commit sha/date/tree/parents/stats/files/verification 선택 재독해",
+        "tree35항목 전목록 재대조",
+        "Gitblob5/root/src tree 재계산 및 원자료7/aliases14/보호6 rehash",
+        "trainer AST fit18개와 원79 packet21그룹 대응"
+      ],
+      "result": "5개 코드/README와2JSON의 소장 범위,35entries/34blob,새독해5+2와재사용2,누락29blob의 구분. 서명/최신판본/실행재현으로 확대하지 않음. source 안내의 저장코드 외의34blob을 목록의34blob으로 수정."
+    },
+    {
+      "check_id": "H085-SP02",
+      "claims": [
+        5,
+        6,
+        7,
+        24,
+        25,
+        26,
+        27
+      ],
+      "sources": [
+        "runner1–89 전행 재독해",
+        "Center1–76",
+        "Trainer74–100/1835–1863/381–479",
+        "utils13–37",
+        "논문§3/§4.4 재독해"
+      ],
+      "result": "config seed호출과 실제seed값·분산시뮬레이션과통신구현 분리. SGD 고정/optimizer reset·fit전후timer/옵션RNG·CSV/checkpoint정의·batch평균loss와sampleaccuracy 확인. C01 원연구코드0 범위를 명확화, C26파일명 inline code로 표기."
+    },
+    {
+      "check_id": "H085-SP03",
+      "claims": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "sources": [
+        "Trainer381–479/482–593/1865–1901 재독해",
+        "Center60–76",
+        "논문§3/Algorithm1/τ/비용절 전체 재독해",
+        "AST get_wd4호출/defaults/round위치 확인"
+      ],
+      "result": "epoch0/full과매round/partial,owntrain/ownval/otherval·R매호출/ratio1 randomsquare·cosine/emd2·추출eval/no_grad없음·round4차이 확인. C11은함수항상512가아니라호출이512를설정하며helper기본None임을수정. 논문의τ는R없이표기,동일projection가정임의추가안함."
+    },
+    {
+      "check_id": "H085-SP04",
+      "claims": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "sources": [
+        "utils73–100 전행 재독해",
+        "Trainer39–71/103–128/460–470",
+        "AST num_clusters 참조458과진단return없음"
+      ],
+      "result": "대칭곱/동일frozenset/중첩이웃집계·membershipID분리. full자기edge강제없음·빈집합조건은미발생정적위험. K는CSV진단이며min/max열의nanmax/nanmin대응 및PACS진단한계를확인."
+    },
+    {
+      "check_id": "H085-SP05",
+      "claims": [
+        21,
+        22,
+        23
+      ],
+      "sources": [
+        "Trainer482–593/1579–1646",
+        "utils132–167",
+        "논문§3 Algorithm1과E.4Table6 전4행"
+      ],
+      "result": "현재참가자만학습/누적참가자모든pair매round거리·과거모델집계,Oracle누적참여singleton·PACS[4,4,3,7]확인. ARI.93의실제원인과도메인순서는미확인."
+    },
+    {
+      "check_id": "H085-SP06",
+      "claims": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "sources": [
+        "Trainer1373–1646 전행 재독해",
+        "Trainer244–256/298–303/710–780/808–842/868–877/1014–1021/1130–1147/1269–1281/1756–1788",
+        "Center94–174/213–289",
+        "AST fit18/FedClust집계/graph loop/FedCE증가문 포함관계"
+      ],
+      "result": "FedClust첫집계이후갱신없음/graph순차취득/FedCEserverloop내누적/FeSEM집계후local훈련·저장순서확인. 비교군source조건을논문전체성능오류로확정안함. C32 SVD는차원에따라최대3성분으로수정."
+    },
+    {
+      "check_id": "H085-SP07",
+      "claims": [
+        34,
+        35,
+        36
+      ],
+      "sources": [
+        "원79findings51행 전체 재독해",
+        "논문§4전체/§5.1 ResNet768와D.2Table5 전7행",
+        "원79 packet21목록 및기존검수11+구현7 대응"
+      ],
+      "result": "C34 이미지분류에트래픽시간분할은해당없음으로정정. C35독립성판단을최종RCTLencoder를쓰는경우라는원래조건으로좁힘. 모델차원/실제config/최종test/성능영향미확인과잔여3그룹,과거지시비실행유지."
+    }
+  ],
+  "checked_at_utc": "2026-10-10T21:33:41.313174+00:00",
+  "wording_corrections": [
+    {
+      "before": "코드 실행·import·학습·추론·성능 재현은0이며",
+      "after": "원연구 코드 실행·import·학습·추론·성능 재현은0이며"
+    },
+    {
+      "before": "get_wd는 source와 target 각각512개를 초과하면 각자 새 randperm으로512개를 선택한다.",
+      "after": "검토한 EMD 전체/부분 참여 호출은 max_sample=512를 전달한다. 이때 get_wd는 source와 target 각각이 상한을 초과하면 각자 새 randperm으로512개를 선택한다. 함수 자체의 기본 max_sample은 None이다."
+    },
+    {
+      "before": "PACFL 경로는 validation class label별 SVD에서 K=3개의 성분을 취한다.",
+      "after": "PACFL 경로는 validation class label별 SVD에서 K=3으로 정하고 앞쪽 최대3개 성분을 취한다."
+    },
+    {
+      "before": "학습/평가 데이터의 전처리와 시간 분할, model.feature_extraction",
+      "after": "원 논문은 이미지 분류 실험이므로 트래픽 시계열의 시간 분할은 해당 없음이다. 저장 자료만으로 학습/평가 전처리, model.feature_extraction"
+    },
+    {
+      "before": "원79는 초기 local encoder를 사용하는 EMD-CFL이 당시의 최종 RCTL 모델 독립성 조건을 충족하지 않는다고 판단했다.",
+      "after": "원79는 EMD-CFL을 본떠 최종 RCTL encoder를 쓰면 당시의 model-independent 조건을 충족하지 못한다고 판단했다."
+    },
+    {
+      "before": "wd_<dataset>.txt는",
+      "after": "`wd_<dataset>.txt`는"
+    }
+  ],
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "scope": "같은 에이전트의 작성 후 관련 구간 재독해와 바이트/AST 보조검사. 별도의 연구자·전체2회독·실행성능검증 아님."
+}

@@ -112,3 +112,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 ## EMD-CFL 논문 검수 후의 구현·이론 질문
 
 [H084](verification/history-084.md)에서 전체 HTML/TXT대응·보충PDF24쪽을 확인했다. loss/gradient 조건·M/κ·인덱스 표기, ResNet18 dimension768/512, ±정의와 실제seed·비용 측정조건은 구분해 남겼다. 원79 EMD코드7·Toso2·검색1은 후속 검수하며 논문상의 확인 항목을 코드의 확정 실패로 바꾸지 않는다.
+
+### H085 · 공식 구현 재사용 전에 남는 확인
+
+[원79 구현](records/0085-emd-cfl-code.md)의 실제 config/model/data/test와 seed별 산출물을 연결해야 한다. τ의정사각randomprojection과cross비율·표본cap512·추출trainmode·자기edge/빈이웃·부분참가stale집계·일부baseline 갱신순서가 실제 결과에 미치는 영향은 미확인이다. 이 확인 없이 논문 수치의 오류나 RCTL 효과를 확정하지 않는다.

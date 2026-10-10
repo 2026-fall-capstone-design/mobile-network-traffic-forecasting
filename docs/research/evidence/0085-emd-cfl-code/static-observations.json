@@ -1,0 +1,620 @@
+{
+  "batch_id": "history-085",
+  "observations": [
+    {
+      "claim_id": "H085-C07",
+      "observation": "runner와 trainer는 한 프로세스에서 모든 client/server 모델 사본과 각 client train/validation 객체를 사용한다. 이 코드의 계산 흐름은 논문을 이해하는 근거지만, 실제 네트워크 encoder 교환·비밀 projection 공유·서버 접근 통제·통신량 측정을 구현하거나 검증했다는 근거는 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062505",
+          "source_sha256": "f378fea4c09b3097f06f5a05c73263bc32e021eb85e7daac2c5090fbf6682e59",
+          "locator": "30–54"
+        },
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "381–479,1865–1901"
+        },
+        {
+          "source_id": "SRC-0062491",
+          "source_sha256": "1a027daee6ccaad801b263d7cac1db73adcfa54725d30b4bb29f5b7a628acac9",
+          "locator": "§3 Figure1/Client Embeddings"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C09",
+      "observation": "기준 τ는 자신의 train 대 자신의 validation이며, 상대 거리는 자신의 train 대 각 상대 validation을 자신의 encoder로 비교한다. 모든 c와 상대 client를 순회하므로 역방향은 상대 encoder의 별도 호출에서 계산된다. 논문 Algorithm1의 c′ loop 누락·역방향 인자 표기를 그대로 실행한 코드라고 단정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "421–452,1877–1901"
+        },
+        {
+          "source_id": "SRC-0062491",
+          "source_sha256": "1a027daee6ccaad801b263d7cac1db73adcfa54725d30b4bb29f5b7a628acac9",
+          "locator": "§3 Algorithm1 lines10–16"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C10",
+      "observation": "자기 기준 거리 호출은 proj_ratio를 전달하지 않아 기본1을 쓰고, 상대 거리 호출은 config의 proj_ratio를 전달한다. get_wd는 ratio1에서도 새 정사각 random projection을 만들므로 identity 연산이 아니다. 논문의 τ 식은 R이 없는 Z끼리의 거리로 표기되어 있다. 이 차이를 남기되 논문이 τ와 상대 거리에 같은 R을 쓴다고 임의로 가정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "425,440,546,558,1877–1901"
+        },
+        {
+          "source_id": "SRC-0062491",
+          "source_sha256": "1a027daee6ccaad801b263d7cac1db73adcfa54725d30b4bb29f5b7a628acac9",
+          "locator": "§3 Client Embeddings의 τ 식/Algorithm1"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C11",
+      "observation": "검토한 EMD 전체/부분 참여 호출은 max_sample=512를 전달한다. 이때 get_wd는 source와 target 각각이 상한을 초과하면 각자 새 randperm으로512개를 선택한다. 함수 자체의 기본 max_sample은 None이다. 이 함수에는10%를 계산하는 분기가 없다. 논문§3.1의 min(10%,512) 설명과 구분해야 하며 data.py의 사전 분할이나 별도 설정을 확인하지 않고 모든 실행 표본 수가 논문과 달랐다고 확정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "425,440,1877–1885"
+        },
+        {
+          "source_id": "SRC-0062491",
+          "source_sha256": "1a027daee6ccaad801b263d7cac1db73adcfa54725d30b4bb29f5b7a628acac9",
+          "locator": "§3.1 sample 제한"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C12",
+      "observation": "각 get_wd 호출은 d×int(proj_ratio·d)의 randn 행렬을 만든 뒤 각 행을 L2 정규화하며 source와 target에 같은 행렬을 적용한다. 호출 사이에는 R을 저장·재사용하지 않는다. τ·자기쌍·상대쌍·역방향의 표본과 projection이 같다는 보장이 이 경로에는 없다. 비율과 출력 차원이 유효한지도 실제 config와 함께 확인해야 한다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "1877–1901"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C14",
+      "observation": "get_embeddings에는 model.eval()이나 no_grad 문맥이 없고 forward 결과를 detach해 CPU로 옮긴다. Center의 validation 호출은 끝에서 train()으로 돌아가므로 복사한 encoder가 학습 모드를 유지할 수 있다. BatchNorm·dropout 등이 있다면 추출 결과/상태에 영향이 생길 수 있으나 model.py와 실행을 확인하지 않아 실제 영향은 미확인이다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "418–423,1865–1875"
+        },
+        {
+          "source_id": "SRC-0062506",
+          "source_sha256": "400ae0d093789093b41642b4b5502b84a3d902e440c96df87cec79a38df1cb11",
+          "locator": "60–76"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C15",
+      "observation": "전체 참여는 other_wd−τ를 소수4자리로 반올림한 값에 strict < tolerance를 적용한다. 부분 참여는 표시용 값만 반올림하고 판정은 원래 mean_distance로 한다. 따라서 두 경로의 경계 판정이 완전히 같다고 가정하지 않으며 tolerance의 실제 값도 config 없이는 확정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "440–461,558–562"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C16",
+      "observation": "find_neighborhoods는 adjacency와 transpose의 원소별 곱으로 양방향 edge만 남기고, Graph의 각 이웃집합을 frozenset으로 만든다. cluster_neighborhoods는 이웃집합이 정확히 같은 client에 같은 model ID를 준다. 연결요소를 구하거나 서로소 UPC partition을 직접 만드는 절차와는 다르다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062508",
+          "source_sha256": "7605c965d0015b4f82eb672f5232fd117b093560c26161ed3080875da2c7cdd0",
+          "locator": "73–100"
+        },
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "460–470"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C17",
+      "observation": "average_weights_clusterwise는 모델 ID를 받은 client 목록 자체가 아니라 해당 이웃집합에 들어 있는 client들의 weights와 자료 수를 취한다. 서로 다른 이웃집합이 겹치면 같은 client의 weights가 여러 집계에 들어갈 수 있다. 저장 membership의 모델 ID와 집계 구성원을 구분해서 읽어야 한다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "39–71,466–470"
+        },
+        {
+          "source_id": "SRC-0062508",
+          "source_sha256": "7605c965d0015b4f82eb672f5232fd117b093560c26161ed3080875da2c7cdd0",
+          "locator": "89–100"
+        },
+        {
+          "source_id": "SRC-0022036",
+          "source_sha256": "b6af91ed1272eac5c7bcea5b171d50a89de9ac58a18dee59f3d52b488842a330",
+          "locator": "코드로 확인한 범위"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C18",
+      "observation": "전체 참여의 자기쌍도 새로운 표본·projection으로 다시 계산되며 대각 원소를 항상 True로 강제하는 문장은 없다. 만약 어떤 이웃집합이 비게 되면 average_weights의 weights[0]에 빈 목록이 전달되는 경로가 있다. 이는 입력 조건을 검토할 정적 위험이며 논문 실험에서 실제 발생한 오류나 실패로 기록하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "425–461,39–71"
+        },
+        {
+          "source_id": "SRC-0062508",
+          "source_sha256": "7605c965d0015b4f82eb672f5232fd117b093560c26161ed3080875da2c7cdd0",
+          "locator": "74–100"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C19",
+      "observation": "fit_emdcfl의 num_clusters는 find_distance_threshold가 연속 client ID를 같은 크기 블록으로 나누어 거리 진단 CSV를 쓰는 데 사용한다. 이 함수는 threshold를 반환하지 않고, 군집 판정에는 입력 tolerance와 이웃집합을 쓴다. 따라서 runner에 K 인자가 있다는 이유만으로 정답 K로 군집 수를 강제했다고 해석하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "103–128,381–470"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C20",
+      "observation": "진단 CSV의 min_cluster_iidness에는 nanmax, max_cluster_iidness에는 nanmin이 들어간다. 코멘트의 가장 먼/가까운 거리와 열 이름을 함께 확인해야 한다. 이 진단은 PACS의 불균등 domain 전용 분기를 포함하지 않는다. 진단 표기를 실제 군집 판정 로직이나 논문 ARI의 직접 원자료로 간주하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "103–128,458,574"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C21",
+      "observation": "fit_emdcfl_partial은 매 round p_num개 client를 비복원 추출해 선택된 client만 학습한다. 그러나 거리 계산은 한 번이라도 참여한 모든 client 사이에서 매 round 다시 한다. 이는 논문 Algorithm1의 W가 비어 있을 때 쌍별 한 번 계산한다는 절차 및 전체 참여 코드의 첫 round 고정과 구분된다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "482–593"
+        },
+        {
+          "source_id": "SRC-0062491",
+          "source_sha256": "1a027daee6ccaad801b263d7cac1db73adcfa54725d30b4bb29f5b7a628acac9",
+          "locator": "§3 Algorithm1 lines11–18/Client Embeddings"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C22",
+      "observation": "부분 참여는 미참가 client를 초기 singleton으로 두고 누적 참여 집합을 확장한다. 이웃별 집계에서는 현재 round 참가자만 추리는 필터 없이 해당 이웃들의 보유 weights와 전체 train 크기를 사용한다. 과거에 참가했지만 이번 round에는 학습하지 않은 client도 포함될 수 있다. 이 동작만으로 논문 Table6의 ARI0.93 원인을 확정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "499–511,516–558,576–593,39–71"
+        },
+        {
+          "source_id": "SRC-0062491",
+          "source_sha256": "1a027daee6ccaad801b263d7cac1db73adcfa54725d30b4bb29f5b7a628acac9",
+          "locator": "AppendixE.4/Table6 ARI10participants"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C24",
+      "observation": "runner의 elapsed_time은 fit_emdcfl 호출 전후의 time.time 차이다. 앞선 모델 생성·자료 적재·writer 준비는 이 구간 밖이며 fit 안의 validation·거리·집계·저장·선택적 embedding 출력은 안에 있다. 측정 위치를 논문 Table4의 모든 환경·통신·준비 비용이나 현재 실행 시간으로 바꾸지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062505",
+          "source_sha256": "f378fea4c09b3097f06f5a05c73263bc32e021eb85e7daac2c5090fbf6682e59",
+          "locator": "30–58"
+        },
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "381–479"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C25",
+      "observation": "--get_embs는 추가 randperm과 encoder forward 및 npy 저장을 fit 안에서 수행한다. 따라서 같은 seed만으로 해당 옵션을 켠 실행과 끈 실행의 거리 표본·projection·시간이 동일하다고 보장할 수 없다. 실제 옵션값·저장 embedding은 이 묶음에서 확인되지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062505",
+          "source_sha256": "f378fea4c09b3097f06f5a05c73263bc32e021eb85e7daac2c5090fbf6682e59",
+          "locator": "21,47–54"
+        },
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "427–450,1879–1893"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C26",
+      "observation": "`wd_<dataset>.txt`는 w 모드여서 같은 dataset의 후속 실행이 덮어쓴다. runner는 기존 run_record CSV를 읽어 config와 log_dir를 덧붙이며, save_models는 membership CSV와 center/cluster checkpoint 경로를 정의한다. 경로와 저장 코드가 있다는 사실을 결과 파일이 실제 생성되었거나 논문 수치를 재현했다는 증거로 세지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062505",
+          "source_sha256": "f378fea4c09b3097f06f5a05c73263bc32e021eb85e7daac2c5090fbf6682e59",
+          "locator": "57–58,62–89"
+        },
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "74–100,475–479"
+        },
+        {
+          "source_id": "SRC-0062508",
+          "source_sha256": "7605c965d0015b4f82eb672f5232fd117b093560c26161ed3080875da2c7cdd0",
+          "locator": "13–37"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C27",
+      "observation": "Trainer.test는 batch별 평균 loss를 batch 수로 나누고 accuracy는 전체 hits를 전체 sample 수로 나눈다. 마지막 batch의 크기가 다를 때 loss는 전체 sample의 가중 평균과 달라질 수 있다. test.py가 이 묶음에 없어 이 함수가 논문 최종 표 전체의 산식이라고 단정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "1835–1853"
+        },
+        {
+          "source_id": "SRC-0062506",
+          "source_sha256": "400ae0d093789093b41642b4b5502b84a3d902e440c96df87cec79a38df1cb11",
+          "locator": "60–76"
+        },
+        {
+          "source_id": "SRC-0062509",
+          "source_sha256": "b248bc0a2e229a8029e4fc94e54f4adbe847320d6cf80af4ec4fcbae3f91dbe3",
+          "locator": "test.py 항목"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C29",
+      "observation": "이 스냅샷의 fit_fedclust는 초기 local 학습 뒤 cluster server를 집계한다. 이후 range(1, epochs) 안에는 local 학습·membership·checkpoint 저장이 있지만 server weights를 다시 집계하는 호출은 보이지 않는다. 이 정적 흐름은 재사용 전 확인할 항목이며 저자가 보고한 FedClust 수치의 원인이나 모든 판본의 오류라고 일반화하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "1373–1499"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C30",
+      "observation": "pFedGraph와 FedSAC는 client별 업데이트 loop 안에서 all_weights를 다시 취하고 곧바로 해당 client를 갱신한다. 그래서 뒤 client의 집계는 같은 round 앞 client의 갱신값을 포함할 수 있다. 모든 client가 동일한 사전 snapshot으로 동시에 집계한다고 가정하면 안 된다. 실제 성능 영향과 원논문 일치는 별도 확인 대상이다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "1014–1021,1269–1276"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C31",
+      "observation": "FedCE의 best_cluster 선택과 hist_assoc 증가가 server 후보를 순회하는 loop 안에 있다. 모든 후보를 평가한 뒤 선택된 하나에 한 번만 가산하는 흐름으로 설명하면 코드와 달라진다. 이 위치와 후속 softmax 집계를 보존하며 실행 결과나 baseline 원논문의 의도를 이번 독해로 확정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "808–842,868–872"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C32",
+      "observation": "IFCA는 validation loss로 model을 고르고, FedSoft는 validation batch의 최소 loss 모델에 sample 수를 배정한다. PACFL 경로는 validation class label별 SVD에서 K=3으로 정하고 앞쪽 최대3개 성분을 취한다. CFL의 EPS1/2는0.4/1.6, FlexCFL의 intergroup_lr는5로 적혀 있다. 이는 저장 경로의 설정이며 모든 논문 실험의 최종 config나 최적값으로 확정하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "231–295,300–302,710–780,1135–1140,1756–1788"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C33",
+      "observation": "CenterFedProx는 parameter별 L2 norm의 합을 proximal 항으로 쓰며 제곱 norm으로 인쇄된 코드가 아니다. FeSEM은 round 시작의 server 집계 후 local 학습을 하고 마지막에 server를 저장하는 순서다. EM/RC는 sample posterior를 가중한 CE 경로다. 모델·runner·config가 빠진 상태에서 이 코드를 그대로 공정한 비교군 구현으로 채택하지 않고 해당 선택을 먼저 확인한다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062506",
+          "source_sha256": "400ae0d093789093b41642b4b5502b84a3d902e440c96df87cec79a38df1cb11",
+          "locator": "94–174,213–289"
+        },
+        {
+          "source_id": "SRC-0062507",
+          "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+          "locator": "880–940,1284–1370,1502–1576"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    },
+    {
+      "claim_id": "H085-C34",
+      "observation": "원 논문은 이미지 분류 실험이므로 트래픽 시계열의 시간 분할은 해당 없음이다. 저장 자료만으로 학습/평가 전처리, model.feature_extraction 동작·native 차원, 실제 seed·tolerance·projection·epoch 설정, 최종 test 산식과 seed별 결과·오차 정의·하드웨어별 비용은 이 묶음으로 모두 복원되지 않는다. 논문의 ResNet18 차원512/768 차이도 model.py를 읽기 전에는 해소된 것으로 표시하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062505",
+          "source_sha256": "f378fea4c09b3097f06f5a05c73263bc32e021eb85e7daac2c5090fbf6682e59",
+          "locator": "31–54"
+        },
+        {
+          "source_id": "SRC-0062509",
+          "source_sha256": "b248bc0a2e229a8029e4fc94e54f4adbe847320d6cf80af4ec4fcbae3f91dbe3",
+          "locator": "config/src/data/src/model/test 관련 항목"
+        },
+        {
+          "source_id": "SRC-0062491",
+          "source_sha256": "1a027daee6ccaad801b263d7cac1db73adcfa54725d30b4bb29f5b7a628acac9",
+          "locator": "§4.1/§5.1 ResNet18 dimension768/AppendixD.2Table5 dimension512"
+        }
+      ],
+      "classification": "static_observation_or_conditional_risk_not_observed_run_failure"
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "scope": "저장 코드의 정적 문장과 연결한 조건부 해석. 실제 실패/논문 결과 원인/공정성 위반 확정이나 코드 수정이 아니다.",
+  "structural_check": {
+    "success": true,
+    "checked_at_utc": "2026-10-10T21:32:28.164175+00:00",
+    "new_source_groups_rehashed": 7,
+    "alias_paths_rehashed": 14,
+    "protected_originals_unchanged": 6,
+    "trainer_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+    "get_wd_defaults": {
+      "proj_ratio": 1.0,
+      "max_sample": null,
+      "metric": "cosine"
+    },
+    "get_wd_call_sites": [
+      {
+        "function": "fit_emdcfl",
+        "line": 425,
+        "args": [
+          "feature_extractor",
+          "center_trains[c_id]",
+          "center_vals[c_id]"
+        ],
+        "keywords": {
+          "device": "center.device",
+          "max_sample": "512",
+          "metric": "'cosine'"
+        }
+      },
+      {
+        "function": "fit_emdcfl",
+        "line": 440,
+        "args": [
+          "feature_extractor",
+          "center_trains[c_id]",
+          "other_val"
+        ],
+        "keywords": {
+          "device": "center.device",
+          "max_sample": "512",
+          "metric": "'cosine'",
+          "proj_ratio": "proj_ratio"
+        }
+      },
+      {
+        "function": "fit_emdcfl_partial",
+        "line": 546,
+        "args": [
+          "feature_extractor",
+          "center_trains[c_id]",
+          "center_vals[c_id]"
+        ],
+        "keywords": {
+          "device": "center.device",
+          "max_sample": "512",
+          "metric": "'cosine'"
+        }
+      },
+      {
+        "function": "fit_emdcfl_partial",
+        "line": 558,
+        "args": [
+          "feature_extractor",
+          "center_trains[c_id]",
+          "other_val"
+        ],
+        "keywords": {
+          "device": "center.device",
+          "max_sample": "512",
+          "metric": "'cosine'",
+          "proj_ratio": "proj_ratio"
+        }
+      }
+    ],
+    "EMD_num_clusters_name_references": [
+      458
+    ],
+    "full_round_calls": [
+      442,
+      444
+    ],
+    "partial_round_calls": [
+      561
+    ],
+    "FedClust_average_calls": [
+      1467
+    ],
+    "FedClust_update_calls": [
+      {
+        "line": 1437,
+        "receiver": "center"
+      },
+      {
+        "line": 1470,
+        "receiver": "new_server"
+      },
+      {
+        "line": 1480,
+        "receiver": "center"
+      }
+    ],
+    "graph_updates": [
+      {
+        "function": "fit_pfedgraph",
+        "loop_lines": [
+          1015,
+          1021
+        ],
+        "all_weights_read_inside_update_loop": true
+      },
+      {
+        "function": "fit_fedsac",
+        "loop_lines": [
+          1270,
+          1276
+        ],
+        "all_weights_read_inside_update_loop": true
+      }
+    ],
+    "FedCE_increment_inside_server_loop": {
+      "loop_start": 812,
+      "increment_line": 822
+    },
+    "fit_paths": [
+      {
+        "name": "fit_fedavg",
+        "start": 140,
+        "end": 182
+      },
+      {
+        "name": "fit_fedprox",
+        "start": 185,
+        "end": 228
+      },
+      {
+        "name": "fit_ifca",
+        "start": 231,
+        "end": 295
+      },
+      {
+        "name": "fit_cfl",
+        "start": 298,
+        "end": 378
+      },
+      {
+        "name": "fit_emdcfl",
+        "start": 381,
+        "end": 479
+      },
+      {
+        "name": "fit_emdcfl_partial",
+        "start": 482,
+        "end": 593
+      },
+      {
+        "name": "fit_cflgp",
+        "start": 596,
+        "end": 707
+      },
+      {
+        "name": "fit_fedsoft",
+        "start": 710,
+        "end": 780
+      },
+      {
+        "name": "fit_fedce",
+        "start": 783,
+        "end": 877
+      },
+      {
+        "name": "fit_fedem",
+        "start": 880,
+        "end": 940
+      },
+      {
+        "name": "fit_pfedgraph",
+        "start": 943,
+        "end": 1026
+      },
+      {
+        "name": "fit_flexcfl",
+        "start": 1029,
+        "end": 1147
+      },
+      {
+        "name": "fit_fedsac",
+        "start": 1150,
+        "end": 1281
+      },
+      {
+        "name": "fit_fedrc",
+        "start": 1284,
+        "end": 1370
+      },
+      {
+        "name": "fit_fedclust",
+        "start": 1373,
+        "end": 1499
+      },
+      {
+        "name": "fit_fesem",
+        "start": 1502,
+        "end": 1576
+      },
+      {
+        "name": "fit_gt",
+        "start": 1579,
+        "end": 1646
+      },
+      {
+        "name": "fit_pacfl",
+        "start": 1649,
+        "end": 1833
+      }
+    ],
+    "git_blob_checks": 5,
+    "root_and_src_tree_reconstructed": true,
+    "source_code_executed": false,
+    "source_code_imported": false,
+    "new_model_runs": 0,
+    "scope": "원문 바이트·AST 문장/포함관계 확인. 실제 모델 실행·성능 재현·전체 정적 분석이나 독립 연구 검증은 아니다."
+  }
+}

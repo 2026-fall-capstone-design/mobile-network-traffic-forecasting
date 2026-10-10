@@ -1,0 +1,57 @@
+{
+  "batch_id": "history-085",
+  "source_ids": [
+    "SRC-0062505",
+    "SRC-0062506",
+    "SRC-0062507",
+    "SRC-0062508"
+  ],
+  "commit": "f48a2cfe53079cc6bc1d89f4771cb7a5a62804c5",
+  "full_participation": {
+    "locator": "trainer381–479",
+    "clustering_round_indices": [
+      0
+    ],
+    "threshold": "round(other_wd - own_wd, 4) < tolerance",
+    "cluster_count_argument": "distance diagnostics only",
+    "aggregation": "dataset-size weighted by neighborhood members"
+  },
+  "partial_participation": {
+    "locator": "trainer482–593",
+    "training_clients": "current sampled p_num",
+    "distance_clients": "all clients that have ever participated",
+    "distance_rounds": "every round",
+    "threshold": "other_wd - own_wd < tolerance",
+    "aggregation": "all neighborhood models, including non-current participants"
+  },
+  "distance": {
+    "locator": "trainer1877–1901",
+    "sample_cap_per_distribution": 512,
+    "sample_fraction_implemented": false,
+    "own_ratio_default": 1.0,
+    "cross_ratio": "config.proj_ratio",
+    "projection_shape": "d by int(proj_ratio*d)",
+    "projection_random_per_call": true,
+    "projection_row_normalization": "L2",
+    "metric": "cosine",
+    "solver": "ot.emd2",
+    "mass": "uniform",
+    "sinkhorn_branch": false
+  },
+  "optimizer": {
+    "locator": "center16–44",
+    "name": "SGD",
+    "momentum": 0.9,
+    "weight_decay": 1e-06,
+    "reset_on_update_weights": true
+  },
+  "embedding": {
+    "locator": "trainer1865–1875",
+    "explicit_eval": false,
+    "explicit_no_grad": false,
+    "output_detached": true
+  },
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "semantic_second_pass_complete": true
+}

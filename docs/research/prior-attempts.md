@@ -429,3 +429,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## EMD-CFL과 embedding 분포 군집의 재제안 방지
 
 [H084](records/0084-emd-cfl-embedding-distributions.md): encoder로 자료를 변환해 OT로 군집을 정하는 구조에는 선행연구가 있다. 고정 TabICL을 쓴다는 차이를 주장하려면 초기 local 학습·encoder 교환·관측 입력/target 정보·threshold/K 선택·총비용·최종 출력 공유 조건을 명시해야 한다. 군집ARI가 같아도 downstream accuracy가 다른 반례를 먼저 확인한다.
+
+### EMD-CFL 코드를 그대로 UPC 소속 결정으로 옮기는 제안
+
+[H085 구현](records/0085-emd-cfl-code.md)은 학습한 encoder·분류 loss·own train/other validation·겹칠 수 있는 이웃집계에 의존한다. K 입력은 군집 수 강제가 아니라 진단에 사용된다. 고정 TabICL의 관측 x/조건부 평균을 쓰려는 후보는 별도 정보와 비용 조건이 필요하다. 부분 참여의 거리 재계산도 one-shot 비용 설명과 구분한다.
