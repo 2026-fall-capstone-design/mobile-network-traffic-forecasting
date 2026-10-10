@@ -348,3 +348,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 | Tab 오차를 빼면 RCTL 초과손해가 되는가 | [66–68 기준 risk 예](records/0066-0068-group-risk.md) | teacher 오차와 같은 함수집합의 최적risk를 구분한다. baseline·분모·운영손해와 허용행동을 먼저 정의한다. |
 
 MMR/MRI/q-FFL의 원68 상세 주장은 아직 후속 일차문헌 대조가 남아 있다. 검색결과52블록·논문74쪽 보관과 본문 검증 완료를 구분한다.
+
+## 집단별 최적 위험을 뺀 보호 — MMR / minimax regret
+
+검색어: MMR, minimax regret, WMR, GDRO, MMV, worst group, 집단별 기준, 단일 집단 지배. [66·68 MMR](records/0066-0068-mmr.md)은 절대 위험이 큰 cell과 최적 위험 대비 손해를 구분할 때 확인할 기록입니다. 같은Θ의집단최적값과 유한 RCTL baseline을 같다고 놓지 마세요. IID/support·집중·볼록성 조건, K개 기준적합 비용, 평균과 개별 집단 결과를 먼저 구분해야 합니다. 원67의 저장 위험을 MMR 학습 결과로 재사용할 수는 없습니다.
