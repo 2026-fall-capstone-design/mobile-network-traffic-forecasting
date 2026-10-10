@@ -1,0 +1,215 @@
+{
+  "as_of_date": "2026-09-26",
+  "model_calls_by_stage": [
+    {
+      "stage": "smoke",
+      "contexts": 4,
+      "predicted_query_rows": 256,
+      "fit_predict_seconds": 4.840182299999924,
+      "ensemble": 1
+    },
+    {
+      "stage": "B1_anchor_and_cross_query",
+      "contexts": 16,
+      "predicted_query_rows": 17408,
+      "fit_predict_seconds": 100.32148320000078,
+      "ensemble": 1
+    },
+    {
+      "stage": "B2_observed_query",
+      "contexts": 16,
+      "predicted_query_rows": 2688,
+      "fit_predict_seconds": 31.532703299998957,
+      "ensemble": 1
+    },
+    {
+      "stage": "cell_identity_information_diagnostic",
+      "contexts": 3,
+      "predicted_query_rows": 3072,
+      "fit_predict_seconds": 27.52008300000125,
+      "ensemble": 1
+    },
+    {
+      "stage": "broad_cell_information",
+      "contexts": 4,
+      "predicted_query_rows": 8192,
+      "fit_predict_seconds": 40.164919400000144,
+      "ensemble": 1
+    },
+    {
+      "stage": "target_parameterization",
+      "contexts": 2,
+      "predicted_query_rows": 4096,
+      "fit_predict_seconds": 19.50751510000009,
+      "ensemble": 1
+    },
+    {
+      "stage": "partial_observation_54",
+      "contexts": 4,
+      "predicted_query_rows": 256,
+      "fit_predict_seconds": 2.543409199995949,
+      "ensemble": 1
+    },
+    {
+      "stage": "history_grouping_60",
+      "contexts": 16,
+      "predicted_query_rows": 2048,
+      "fit_predict_seconds": 19.109480999999505,
+      "ensemble": 1
+    },
+    {
+      "stage": "output_compression_74",
+      "contexts": 4,
+      "predicted_query_rows": 1344,
+      "fit_predict_seconds": 5.281541500000458,
+      "ensemble": 1
+    }
+  ],
+  "used": {
+    "TabICL_contexts": 69,
+    "TabICL_query_rows": 39360,
+    "TabICL_fit_predict_seconds": 250.82131799999706,
+    "RCTL_fits": 29,
+    "RCTL_epochs": 1565,
+    "RCTL_wall_seconds": 1658.1391634000001,
+    "RCTL_frozen_inference_seconds": 9.867848400001094
+  },
+  "caps": {
+    "TabICL_contexts": 80,
+    "TabICL_query_rows": 60000,
+    "TabICL_fit_predict_seconds": 2400,
+    "RCTL_fits": 29,
+    "RCTL_epochs": 2320,
+    "RCTL_wall_seconds": 3000,
+    "cheap_numeric_seconds": 600,
+    "total_local_modeling_seconds": 6000
+  },
+  "remaining_count_budgets": {
+    "TabICL_contexts": 11,
+    "TabICL_query_rows": 20640,
+    "RCTL_fits": 0
+  },
+  "new_cheap_diagnostic_seconds": {
+    "finite_sample_information.json": 0.24920859999929235,
+    "population_scope_diagnostic.json": 0.2892932999993718,
+    "upc_core_stability.json": 0.3006076000001485,
+    "upc_transfer_diagnostic.json": 0.33516769999914686,
+    "cell_identity_simple_Ridge_and_HGB": 0.27645530000154395,
+    "broad_cell_information_simple_Ridge_and_HGB": 0.37565600000016275,
+    "target_parameterization_simple_Ridge_and_HGB": 0.28845060000094236,
+    "temporal_validity": 30.648936099998537,
+    "spatial_information": 13.466453199998796,
+    "error_concentration": 0.12889259999974456,
+    "conditional_pooling_cost": 6.4339365999992895,
+    "observable_state_loss": 0.6636078999999881,
+    "resolution_diagnostic_31": 2.314005800002633,
+    "information_claim_audit_37": 0.0002907999987655785,
+    "cell_harm_envelope_42": 0.03152100000079372,
+    "input_sharing_stability_46": 0.030363999998371582,
+    "aggregation_recovery_49": 0.08182460000170977,
+    "beijing_schema_52": 0.01390940000055707,
+    "partial_observation_54": 0.7142799000030209,
+    "partial_observation_54_failed_preflight_process": 4.1631648,
+    "mae_sampling_audit_57": 0.00016200000027311035,
+    "history_grouping_60": 3.2025605000017094,
+    "history_logic_cost_61": 9.660000068834051e-05,
+    "group_risk_diagnostic_67": 0.020347199999378063,
+    "peak_diagnostic_70": 0.04776319999655243,
+    "output_compression_74": 2.667649800001527
+  },
+  "accounting_note": "Model fit/predict and RCTL totals are measured. New numeric diagnostics are measured. Initial preprocessing and some earlier numeric wall times were not separately logged; no exact full preprocessing total is claimed.",
+  "budget_resets": 0,
+  "new_RCTL_fits_permitted_under_current_cap": false,
+  "research_goal_complete": false,
+  "external_blocker": null,
+  "inference_only_stages": [
+    {
+      "stage": "frozen_recursive_horizon",
+      "RCTL_fits": 0,
+      "TabICL_contexts": 0,
+      "forward_calls": 504,
+      "predicted_rows": 110592,
+      "wall_seconds": 4.574360099999467,
+      "precommitted_stage_wall_cap_seconds": 300,
+      "counts_toward_total_local_modeling": true
+    },
+    {
+      "stage": "frozen_fit_gap_34",
+      "RCTL_fits": 0,
+      "TabICL_contexts": 0,
+      "forward_calls": 251,
+      "predicted_rows": 107520,
+      "wall_seconds": 5.293488300001627,
+      "precommitted_stage_wall_cap_seconds": 300,
+      "peak_rss_bytes": 257781760,
+      "counts_toward_total_local_modeling": true
+    }
+  ],
+  "cheap_stage_details": [
+    {
+      "stage": "observable_state_loss",
+      "new_simple_fits": 2,
+      "methods": [
+        "global_Ridge",
+        "global_HGB"
+      ],
+      "entire_stage_seconds": 0.6636078999999881,
+      "fit_predict_seconds_included_in_stage": 0.24943749999874854,
+      "peak_rss_bytes": 171868160,
+      "cost_not_counted_twice": true
+    },
+    {
+      "stage": "resolution_diagnostic_31",
+      "new_simple_fits": 32,
+      "methods": [
+        "Ridge",
+        "HGB"
+      ],
+      "resolutions_minutes": [
+        10,
+        60
+      ],
+      "entire_stage_seconds": 2.314005800002633,
+      "fit_predict_seconds_included_in_stage": 2.2153856999975687,
+      "peak_rss_bytes": 164704256,
+      "cost_not_counted_twice": true
+    },
+    {
+      "stage": "partial_observation_54",
+      "new_simple_fits": 8,
+      "methods": [
+        "Ridge",
+        "HGB"
+      ],
+      "entire_stage_seconds": 3.25768909999897,
+      "TabICL_seconds_accounted_separately": 2.543409199995949,
+      "fit_predict_seconds_included_in_cheap_stage": 0.4162254999973811,
+      "cost_not_counted_twice": true,
+      "preflight_correction_no_model_calls": true
+    },
+    {
+      "stage": "history_grouping_60",
+      "new_simple_fits": 32,
+      "methods": [
+        "Ridge",
+        "HGB"
+      ],
+      "entire_stage_seconds": 22.312041500001214,
+      "TabICL_seconds_accounted_separately": 19.109480999999505,
+      "fit_predict_seconds_included_in_cheap_stage": 2.006623100001889,
+      "cost_not_counted_twice": true
+    },
+    {
+      "stage": "output_compression_74",
+      "new_simple_fits": 26,
+      "methods": [
+        "Ridge",
+        "HGB"
+      ],
+      "entire_stage_seconds": 7.949191300001985,
+      "TabICL_seconds_accounted_separately": 5.281541500000458,
+      "fit_predict_seconds_included_in_cheap_stage": 2.3038000999949872,
+      "cost_not_counted_twice": true
+    }
+  ]
+}

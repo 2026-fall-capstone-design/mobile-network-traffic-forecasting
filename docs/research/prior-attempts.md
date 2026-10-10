@@ -376,3 +376,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## SIU2026·비대칭 예측·검색에만 등장한 후보
 
 검색어: NeuralProphet, PELT, rolling Z-score, SIU2026, TSUL, SVAE, Digital Twin, quantile GRU, 검색 오류, 중복 초록. [69–71 검색 기록](records/0069-0071-siu-search.md)에서 먼저 본문 검수 여부와 실제 연구 대상을 확인하세요. SIU 손실 계수·단위·시간 분할은 미확인입니다. TSUL 주변 추천문의76.4%·10%, Digital Twin의 통신량5.41–7.01%를 UPC/RCTL 성능으로 옮기지 않습니다. 새 설계에는 실제 논문/실행 자료와 정보 시점·행동·비교군의 차이가 필요합니다.
+
+## 예측 가능한 출력 공간으로 압축하려는 경우
+
+[72–75](records/0072-0075-output-compression.md)를 먼저 확인한다. 좋은 직접 Tab 예측은 압축 성공과 다르며, 실제 target의 rank2 압축7조건은 비압축 HGB보다 전체·양쪽 절반 MSE가 나빴다. 국소 이득은 남긴다. 같은 비용의 multioutput 대안·복원 손실·실제 RCTL 연결을 명시해야 한다. 75의 입력 공유 재진입은47중복으로 새 모델 실행 전에 중단됐다.

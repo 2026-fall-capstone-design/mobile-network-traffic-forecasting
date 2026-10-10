@@ -1,0 +1,46 @@
+# 74. 출력 압축 후보의 제한된 확인 계획
+
+2026-09-26. 이 파일을 결과 계산 전에 고정한다. 73의 문헌/논리 검토를 잇는다. 신규 추천안 확정 또는 RCTL 검증을 의미하지 않는다.
+
+## 하나의 질문
+
+동일한 관측 입력을 사용하면서 cell을 두 cluster의 공통 출력 두 개로 표현할 때, TabICLv2의 평균 예측과 별도 시점의 실제 target을 함께 이용한 기준이 원시값 PCA·선형 예측 기반 기준보다 유용한 출력 표현을 찾는가?
+
+원시 변동을 잘 복원하는 것과 예측 가능한 출력을 보존하는 것을 구분한다. 알려진 output dimension reduction 자체를 신규성으로 삼지 않는다. 실제 분할/방향이 달라지는지, 동일한 자료로 실제 target을 학습하는 단순 예측기에도 표현 효과가 남는지 본다. 이 단순 예측기 검사는 RCTL 검증을 대신하지 않는다.
+
+## 논리 확인과 한계
+
+고정 중심 mu, 직교기저 U, P=UU^T에 대해 제곱오차는 누락 방향의 제곱합과 보존한 출력의 예측 오차로 정확히 분해된다. m(X)=E[Y|X]라면 가장 좋은 압축 예측의 추가 MSE는 E|| (I-P)(m-mu) ||²다. 같은 정보 X, square-integrability와 고정된 P가 필요하다. MAE나 실제 학습기의 최적 도달을 보장하지 않는다.
+
+별도 학습한 g에 대해 S=E[g Y^T+Y g^T-g g^T]는 E[m m^T]-E[(g-m)(g-m)^T]다(모두 mu 중심). 조건부 잔차 평균이 0이어야 하며 시계열 시간 분리만으로 독립성이 보장되지는 않는다. 추정 bias는 0이 아니고 행렬은 유한 표본에서 indefinite일 수 있다. 음의 eigenvalue를 임의로 수정하지 않고 rank가 고정된 비교에 그대로 쓴다.
+
+Fraction toy: m의 독립 두 방향 에너지 4와1, noise 에너지 0과9. raw PCA는 noise 방향, true conditional-mean 기준은 첫 방향을 택한다. teacher scaling (.4,1)일 때 plugin 에너지는(.64,1)로 틀리고 corrected는(2.56,1)로 바로잡힌다. scaling (.1,1)일 때 corrected(.76,1)도 틀린다. 효과가 없는 isotropic noise 조건도 비교한다. 이것은 실제 트래픽 증거가 아니다.
+
+## 실제 자료·입력·분할
+
+- 기존 자료 assets/data_git_version.h5의 internet activity. 기존 smoke 4cell 3737/3765/6137/6165를 그대로 사용한다. 좋은 cell로 다시 고르지 않는다.
+- one-hour ahead: target 시각 t, 입력은 t보다 이른 관측값이다. 각 cell의 t-2,t-1,t-24,t-168,직전24시간 mean/std를 모아 24개 열, target 시각의 hour/dow sin/cos 4개 열, 총28개. 4개의 출력 회귀가 모두 동일한 28열을 받는다. 미래 target/미래 기상/이웃 미관측값은 없다.
+- 정규화: 시각0..671의 cell 평균으로 나눔. mu는 context target의 평균으로 고정. teacher context는168..671에서 linspace 반올림256시각. 네 출력별로 X는 같고 y만 다르다.
+- calibration query672..839(168개), 개발 확인 query840..1007(168개). 각 출력은 두 구간을 합쳐 한 번 호출한다. Tab4contexts,1,344query행,ensemble1. 모든 날짜는 이미 다른 설계에 사용한 개발 자료이며 독립 test가 아니다.
+- 최근lag는 경계에서 겹칠 수 있다. 이는 예측 시점에 알려진 과거다. query target이 context에 들어가는 누출은 없다. 두 구간은 각각7일이며 앞/뒤 절반 및 일별 변동을 함께 표시한다. 블록을 독립 표본으로 간주한 유의성 검정은 하지 않는다.
+
+## 고정 비교 규칙
+
+- TabICL v2 기존 checkpoint, CPU4thread, n_estimators=1, no amp/no fa3, seed20260925. predict output_type='mean'. 기존 median 값을 재사용하지 않는다. mean은 mean estimate로 해석하되 참 조건부 평균이라고 단정하지 않는다. 반환값을 먼저 clipping하지 않는다.
+- 같은 context의 StandardScaler+Ridge(alpha1), HGB(squared_error,max_iter100,max_leaf_nodes15,min_samples_leaf20,l2=1,no early stop,seed동일)도 mean 추정 대안으로 저장한다.
+- projection/partition 후보: 4cell을 K2로 나누는 모든7가지 비어 있지 않은 partition. 각 cluster rank1, 총rank2 고정. 각 기준 행렬의 cluster submatrix 최대 eigenvector로 방향을 정하고 최대 eigenvalue 합이 가장 큰 partition을 고른다. 동점은 사전식 순서. 부호는 절대값 최대 좌표가 양수가 되게 한다.
+- 기준: (a) 모든 사용 가능한 실제 train target168..839의 second moment(raw PCA), (b) calibration 실제 target만의 second moment, (c) Ridge plugin, (d) Ridge corrected, (e) HGB plugin, (f) Tab plugin, (g) Tab corrected. 교정은 calibration target으로만 계산한다. 단순 PCA에 teacher context보다 더 많은 과거 target을 허용하는 강한 대안이며 자료량으로 teacher를 유리하게 만들지 않는다.
+- 별도로 각 행렬의 전체4cell rank2 기저를 기록하여 clustering 제약의 비용을 확인한다. clustering이 없는 전체rank2가 항상 더 좋은 기하학 목적값을 얻을 수 있음을 인정한다. 그래프 학습/ForeCA/MBRDR 전체 구현을 재현한 것으로 쓰지 않는다.
+- 미래 실제값을 직접 projection한 reconstruction MSE는 예측 결과가 아니다. 모멘트 목적과 기저 진단에만 사용한다. teacher를 projection한 실제 MSE·MAE와 비압축 teacher도 함께 기록한다.
+- 별도 실제 target 학습: 모든 train168..839에서 공통28열로 HGB 4출력별 독립모델을 학습한 비압축 기준(4fits). 7개 partition/basis의 실제 latent target U^T(Y-mu)를 학습(각2fits=14), 총18fits. 이는 출력 표현의 중간 확인이며 RCTL 성능 주장이 아니다. 출력 음수 clipping 전후 MSE를 구별한다. 입력 축소는 하지 않는다.
+- Ridge teacher 4fits+HGB teacher4fits+latent/reference HGB18fits = simple26fits. 하이퍼파라미터 튜닝·추가 seed·후보를 유리하게 만드는 재분할은 하지 않는다.
+
+## 판단
+
+개선량 합격선을 사후로 만들지 않는다. Tab corrected의 선택이 기존과 같은지, 개발 MSE 차이의 방향이 양쪽 절반/일별에서 유지되는지, 원시 PCA·Ridge·HGB·비압축과 어느 부분에서 우열이 달라지는지 원수치로 기록한다. 동일하거나 불리하면 ‘Tab 추가 역할을 확인하지 못함’으로 판정하고 더 큰 학습을 하지 않는다. 일부 이득이면 그 범위만 다음 판단 자료로 쓴다. core RCTL 연결은 미검증으로 남긴다.
+
+출력 rank 감소는 head 계산만 줄일 수도 있다. 비용은 공유 core 호출 감소와 입력 채널 증가를 따로 센다. 동일cluster의 full-output head가 거의 같은 비용이라면 rank 축소를 큰 속도 이득으로 포장하지 않는다. 원 RCTL 구조의 산술 MAC만 계산하며 forward/학습 0회다.
+
+## 실행 상한·기록
+
+누적 원장: Tab65contexts/38,016query행, RCTL29fits(잔여0), cheap64.0769553초. 기존 상한을 바꾸지 않는다. 이번 Tab4contexts/1,344행/180초, simple26fits와 산술 포함cheap30초, 전체240초, 관측RSS8GiB. 이미 성공한 실행은 반복하지 않는다. 오류시 완료호출을 보존하고 비용을 기록한다. 계획/코드/data/checkpoint hash, 호출·예측·기저·partition·평가·시간을 저장하고 원장에 한 번만 추가한다.

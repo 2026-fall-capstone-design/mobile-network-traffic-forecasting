@@ -1,0 +1,312 @@
+# 재설계 진행 기록
+
+## 사용자 진행 지시 — 2026-09-25
+
+활성 goal 중에 이전의 goal 입력 방법 질문을 반복 답변하지 않는다. 사용자가 명시적으로 해결을 요청했다. 앞으로 자동 continuation은 이 연구의 실행·증거·산출물 작업을 이어가는 것으로 해석한다. goal 사용법 안내·재등록 제안은 요청이 다시 있을 때만 한다. 작업 폴더의 `AGENTS.md`에도 이 지침을 남겼다. 아래의 최신 상태부터 이어간다.
+
+## 최신 상태 — 69 피크 평가 원문, 70 저장 예측 진단, 71 판단
+
+- 2026-09-26. 기존16cell 분할의 피크MAE 이득을 새로 검토했다. 기존 goal/AGENTS/비용 상한을 유지했다. 새 모델 학습·추론0, 기존 실험 재실행0. 최종 추천/Word 미완료이며 goal 완료·blocked 변경없음.
+- `69_peak_objective_review_plan.md` 후 Forecaster’s Dilemma의2017 저널 원문22쪽과 DeepCog JSAC 저자 공개본16쪽을 확보했다. 방법·평가 관련 절을 읽고6쪽을 시각 대조. SIU2026 asymmetric 논문은 기관초록만확인, method-reviewed 아님. 출처·버전·검색·readscope·접근제한·hash를 sources/peak_objective_69에 저장.
+- Forecaster’s Dilemma Table2/§2.2–2.4는 관측극단값만 골라 기존점수로 예측기를 고르는 문제를 설명한다. DeepCog §III–V는 일정시간 유지할capacity와 부족발생fixedfee/초과량linearcost를 구분한다. pinball과같은목적으로사용안함. 저자본p10 MAE-pre는상수O+MAE로인쇄되어그식만으로학습변화를설명할수없다. finalpublisher/code미검증,그baseline복제안함.
+- `70_peak_diagnostic_plan.md` 고정 후 `peak_diagnostic_70.py` 한 번 성공. 저장 validation 예측으로offset98개,8원예측×3기간과38보정×3기간 진단. 새RCTL fit/forward0,Tabcontext/query0,simplefit0. numeric0.04776319999655243초. 기존MAE/peakcounts재현·입력hash불변. 재실행금지.
+- 원래peak는train95%threshold이며확인7680query중95개/12cell,앞84개·뒤11개/2cell. equal-cell peakMAE global.279858 vsTab.270420/.262356이나 sample평균 .277176 vs.277775/.276810으로primaryseed개선부호가바뀐다. 서로다른평균목적을구별한다.
+- 전체U/O global.026260/.044808 vsTab1.028981/.058347,Tab2.027178/.060582. 동일cell/time비중·공통비음수상수linearcost에서global이더낮다. cell별비용/발생횟수/비선형SLA까지일반화안함. 뒤기간peakMAE도global.371719 vsTab.387789/.401658로나빠짐. 실제peak일부이득은삭제안함.
+- 동일validationτ(.5/.75/.9/.95) offset을각방법에적용해도전체·뒤기간pinball은global이낮았다. cell별globaloffset비교도전체같음. 앞기간Tab2τ.9/.95의미세이득은보존. meanheightmatch만으로Tab전체이득을설명했다고주장안함. 실제SLA비용없고모든기간은개발자료.
+- **판정:** 기존B2를피크보호/quantileclustering으로재포장하지않는다. 단순asymmetricloss도신규성아님. 60의4cell Tab직접예측우위는유지한다. 상세 `71_peak_objective_findings.md`, 공개 `output/research/TabICLv2_재설계_피크오차와예측목적_추가검토.md`.
+- 70cheap을원장에1회기록,before/afterhash보존. cheap64.07695530000142초,기록modeling1977.6237435999992초. Tab65contexts/38016rows/잔여15/21984, RCTL29fits/잔여0. 상한불변,처음전처리일부미기록제한유지.
+- 다음에는동일16cell예측의평가목적만더바꾸는루프를반복하지않는다. 다른실제학습·예측결정에연결된문제를원문/자료로찾는다. 새로운후보/실행계획은아직없음. 69–71은새원문·진단으로실제진전한turn이며외부차단없음. liveprocess없음.
+
+## 이전 상태 — 66 cell 보호 원문, 67 위험 분포 진단, 68 판단
+
+- 증분 snapshot16 보관 완료:45파일/8,626,942bytes,source6기록·새PDF3개/74쪽·시각검수7쪽·plan/code/input hash·표수치·local링크·유한JSON·원장단일증분·복사hash 검증. 이전01–16을덮어쓰지않는다. 이줄만보관후추가했다.
+- 2026-09-26. 기존 goal/AGENTS/누적 비용을 유지했다. 이전 goal 입력 방법을 다시 설명하거나 goal을 재등록하지 않았다. 63–65의 원문 검토는 progress였고 이번에도 새 원문·저장 예측 진단으로 판단을 구체화했다.
+- `66_group_protection_review_plan.md` 후 MMR2405.01709v2(2025-09-27), MRI2602.04155v2(2026-06-16), 통신 q-FFL2502.06743v2(2025-02-17)를 확보했다. PDF3개/74쪽 중 명시한 방법·가정·실험 절을 읽고 관련7쪽을 시각 검토했다. 전체 proof/보충자료/공식코드를 검토한 것은 아니다. source/version/hash/read_scope와 원 검색 결과를 `sources/group_protection_66/`에 보존했다.
+- **중요한 구분:** MMR/MRI의 집단별 benchmark는 동일한 최종 함수집합의 최적 risk다. Tab의 확인 오차나 Bayes risk를 유한 RCTL의 기준으로 자동 대입할 수 없다. MMR의 집단별 ERM·gradient·QP, MRI의 positive denominator/concentration/10,001가중치 선형실험을 읽었다. 주어진 group fairness를 cell clustering 신규성으로 사용하지 않는다.
+- 통신 q-FFL은5개 Abilene node의5분 Gbps이며 일부 trace에 잡음을 더한다. 원문의 기존 mobile cell 결과가 아니다. TableII의 평균 underprovisioning62.4→71.6 증가와 CV 개선을 구별했다. 렌더링한 Eq5는 인쇄대로면100으로 약분되어 Fig4를 재현하지 않는다. sign/table 및 f_q 집계 차이를 검증된 코드 결과처럼 처리하지 않는다. 최종출판본 비교/코드실행0.
+- `67_group_risk_diagnostic_plan.md` 고정 후 `group_risk_diagnostic_67.py` 단일실행 exit0. 기존16cell×480시점×8조건에서 mean/max/top4/top-k(k1..16)를 전체/앞240/뒤240으로 집계했다. 원본 per-cell MAE와1e-12이내 일치, 입력불변. 새RCTL fit/forward0, Tabcontext/query0, simplefit0. numeric .020347199999378063초.
+- 전체기간과뒤절반에서 모든K4조건은 모든top-k 기준에서global보다불리했다. primary global worst.120684/top4.090489 vsTab .145600/.119843. 앞절반에는Tab worst .113709<global .115649로작은이득이있으나뒤.177492>.125719로역전된다. 긍정적앞구간과실패범위를모두기록했다. 모든개별cell의지배또는새fairloss학습의반박으로확대하지않는다.
+- 정확유리수예 R_A=theta²+1,R_B=(theta−2)²+1에서 올바른MMR theta1/worstregret1; Bbenchmark를5로바꾸면theta0/표시regret0/진짜worstregret4. 평균에서는상수를빼도최적해불변, max에서는영향있음. 이는트래픽결과나신규정리가아니다.
+- **판정:** 기존 후보를 worst-cell/초과손해/상대개선으로이름만바꿔채택하지않는다. 실제RCTLloss와목적연결은필요하지만Tabbenchmark와운영상손해가추가로정의돼야한다. source와기존자료만으로보호목표를선택할근거는부족하다. 상세 `68_group_protection_findings.md`, 공개 `output/research/TabICLv2_재설계_cell보호목표와학습기준_추가검토.md`.
+- 67cheap비용을원장에1회반영하고before/after/hash보존:cheap64.0291921초,기록modeling1977.5759804초. Tab65contexts/38,016rows/잔여15/21,984, RCTL29fits/잔여0;상한변경0. 자료는전부개발자료. 최초전처리일부시간미기록제한유지.
+- 최종추천방향/Word는미완료다. goal완료/blocked변경없음. liveprocess없음. 다음에는평가목적만바꿔같은proxy안을반복하지않는다. 실제로발생한네트워크손해와허용되는행동부터좁혀야하며, 없는capacity/QoSlabel을Milanactivity에붙이지않는다. 새모델실행계획은아직없고새수치계산은별도사전계획이필요하다.
+
+## 이전 상태 — 63 잔차 연결, 64 조건부 분포 변환, 65 원문·논리 판단
+
+- 증분 snapshot15 보관 완료:71개 파일·28,579,740bytes,source record25개 hash검증,새PDF6개+재사용1개,관련10쪽시각검수. PDFsignature/pagecount·renderhash·유한JSON·budget의snapshot14와byte동일성·local링크·복사hash를검증했다. 기존01–15를덮어쓰지않는다. 이줄만보관후추가했다.
+- 2026-09-26. 기존 goal과 AGENTS 지시를 유지하고 원문/공식 코드 검토를 진행했다. 새 모델·수치 진단·외부 코드 실행0, 누적 예산 변경0. 최종 추천 방향과 Word는 미완료다.
+- `63_residual_interface_review_plan.md` 후 기존 ECAI2025 PDF를 재사용해 §5/Fig.3/Table5–6를 읽었다. **Fig.3(d)에 global forecast를 cluster별 LSTM 입력에 넣는 방법이 이미 있다.** 공식 commit a53e223a4c01259eafe54ea8b0ea40a4ec98dff2의 residual/검정/cluster/frozen-layer 코드를 확인했다. Type-II residual은 비율이며 Ljung–Box는 자기상관 검사다. Fig3c/d의 코드 재현까지 확인한 것은 아니다.
+- Heatload2608.20024v1, KDD residual2606.10678v2를 확보했다. Heatload Table7의 고빈도 직접 예측MAE114.2 vsMRRC114.0, RTF4.21e-4 vs2.16e-4를 함께 해석한다. Munich15분 자료는 비공개다. 공식 commit b86ec88019f850eadb544c95ed257cce486be111의 origin-available base/잔차/future_df/summary를 읽었으나 공개 summary만으로 논문 전체 RTF 집계를 검증하지 않았다. KDD AppendixA는 residual 보정 성공 조건의 재표현이며 임의 residual 학습 가능성 보장이 아니다.
+- `64_conditional_transform_review_plan.md` 후 PLOS2018 copula clustering, NeurIPS2019 GP-Copula, TACTiS-2 v2의 수식·알고리즘·표를 읽었다. 각 series 내부 lag copula와 cell 간 동시 상관을 구별한다. CDF변환→sharedRNN→역변환 및 marginal동결→copula학습도 이미 있다. 조건부 PIT uniform 논리는 단일 미래값 중앙값에 해당하며 여러 미래변수의 joint dependence 제거로 확대하지 않는다.
+- 후속 검색에서 Conditional normalization2305.12651v1을 추가했다. §2의 공변량별 평균·분산 제거→남은serialdependence학습은 달력만 제거하는 발상과 직접 겹친다. 20% 누락값복원/칼만smoother 확인을 미래 예측 검증으로 쓰지 않는다. 저자 페이지는 working paper, arXiv는v1이며 공식코드 링크만 확인했다.
+- 이번에 새 PDF6개(6논문)를 확보했고 ECAI1개를 재사용했다. 관련10쪽을 렌더링하여 직접 확인했다. URL/version/commit/hash/접근 실패/review_scope를 두 source 폴더와 `residual_transform_review_65`에 기록했다. OpenReview403/버전PDF406/Monash403은 공개arXiv대체본으로 처리했으며 제한 우회0.
+- **판단:** Tab 예측 입력 추가, 단순 residual 보정, conditional CDF로 바꾼 기존 clustering을 그대로 신규 후보로 채택하지 않는다. 실제학습과 연결된다는 장점은 있으나 기존원리와중복되고, 변환공간MAE가원단위MAE를항상보존하지도않는다. 60의Tab직접예측 긍정적결과는 유지한다. 상세 `65_residual_and_transform_findings.md`, 공개 `output/research/TabICLv2_재설계_잔차학습과분포변환_추가검토.md`.
+- Tab65contexts/38,016query행/245.5397765초,잔여15/21,984;RCTL29fits/잔여0. cheap64.0088449초,기록modeling1977.5556332초. 이번에는 ledger에 추가할 모델·수치 실행이 없다. 렌더링 첫 파일명 오류는 PNG이미지3개를 재사용하여 수정했으며 모델오류/비용이 아니다.
+- 다음 단계에서 이 세 기각안을 이름만 바꿔 반복하지 않는다. 실제로 분리해야 할 변동, 단순 계절 정규화 뒤에 남는 손해, Tab이 추가하는 정보가 연결되는 **다른 clustering 결정**이 필요하다. 없는 근거를 모듈 추가로 대체하지 않는다. 새 수치 실행은 별도 사전 계획으로만 허용한다. live process없음, goal 완료·blocked로 변경하지 않았다.
+
+## 이전 상태 — 59 입력길이 원문, 60 grouping pilot, 61 논리/비용, 62 판단
+
+- 증분 snapshot14 보관 완료:61개 파일·8,085,331bytes,source record20개 hash검증. PDF3개 signature·관련5쪽시각검수·계획/코드/데이터/checkpoint hash·저장예측MAE재현·정확산술·유한JSON·ledger단일반영/상한불변·보고서표/링크·복사hash를확인했다. snapshot01–14를덮어쓰지않는다. 이줄은보관후추가했다.
+- 2026-09-26. 활성 goal과 AGENTS 지시를 유지하며 연구를 이어갔다. 이전 안내를 반복하지 않았고 기존 실험 재실행·새 goal·상한 변경0. 이번 turn은 실제 새 원문과 모델 확인으로 진전한 turn이다.
+- `59_history_grouping_review_plan.md`를 고정한 뒤 ALW AAAI2026과 Optimal Look-back Horizon을 검토했다. ALW 공식 commit088493fef4e585aa5a01e52062afeffdd72fabd5의 핵심 module/두 backbone/optimizer를 정적으로 읽었다. soft mask 자체의 삭제가 아니라 고정 red_len 투영이며, 공동학습 비용이 추가된다. Table4의 비용·오차 절충을 보존했다. 외부코드 실행0.
+- Horizon은 첫v1 대신 submission history의 최신 **2511.12791v3(2026-01-04)**를 별도 확보했다. Theorem1의MSE분해와 Theorem4의 부호 추론/증가상한→실제증가의 간극을 구별했다. 최적 horizon 보장으로 사용하지 않는다. AppendixA는 Jena 기온의 SDG 점검이지 cell clustering 비용실험이 아니다. 새PDF3개(새논문2편),관련5쪽시각검수 완료.
+- `60_history_grouping_pilot_plan.md` 고정 뒤 `history_grouping_pilot_60.py`를 한 번 실행: 기존smoke4cell3737/3765/6137/6165,cell당context256/query64,최근L2/L8,day/week/24hsummary/calendar고정. global/geo2/local/global+ID조건. 총Tab16contexts/2048query행,단순32fits,RCTLfit/forward0. 전체22.3120415초,Tab19.109481초,simplefit2.0066231초,exit0. 재실행금지.
+- **긍정적 결과:** global2의TabMAE0.06732739 vsRidge0.09019911/HGB0.10247648. 두시간절반과네날짜블록모두Tab이더낮고,4cell중3cell도그렇다. Tab예측력을일괄부정하지않는다.
+- **후보 판단:** Tabgeo2_L2 0.08425373/local_L2 0.09515579로 global2보다 전체·양쪽시간절반에서 모두 나쁘다. grouping×history 상호작용의Tabgeo2 앞+0.000403/뒤−0.006536 부호가달라진다. 이번조건에서clustering으로입력길이를줄이는안을채택하지않는다. 모든clustering반박이나RCTL확인으로확대하지않는다.
+- `61_history_logic_and_cost_plan.md` 후 `history_logic_cost_61.py` 한 번 실행: cell발생과정이주어진경우와숨은혼합의필요이력이달라지는연속관측정확MAE예. known11/90,unknownL1=1/2,L2=409/2050. 기존processidentification원리이며신규성/실제문제근거아니다. 0.0000966초,model0. RCTL9channels의L8/L2 matrixMAC1,364,864/341,216,params174,433/174,337. 실제4배속도나정확도유지를검증한것아니다.
+- 60/61 비용 ledger에각한번반영: Tab65contexts/38,016rows/245.5397765초,잔여15/21,984;RCTL29fits/추가0. cheap64.0088449초,기록modeling1977.5556332초. 원래상한과이미사용한기간유지. live process없음.
+- 상세 `62_history_grouping_findings.md`; 공개 `output/research/TabICLv2_재설계_입력길이와clustering_추가검토.md`. 전체추천방향과최종Word는미완료,goal완료선언안함.
+- 다음에는Tab의예측을또다른유사도거리로바꾸는방향을반복하지않는다. RCTL이실제로학습하는입력/target표현에Tab정보를전달하는방향을원문/논리부터검토할수있다. 기존residuallearning/forecastcombination과다르지않거나실제정답을Tab정답으로바꾸어야하면채택하지않는다. 아직추천안아니며새모델실행은별도계획없이는시작하지않는다. 60의global우위를4cell밖에일반화하지않는다.
+
+## 이전 상태 — 56 학습 압축 원문, 57 MAE 산술 확인, 58 판단
+
+- 증분 snapshot13 보관 완료:60개 파일·7,972,719bytes,26개 source hash검증. PDF5개 signature,관련6쪽시각검수,계획/코드hash,유리수결과,유한JSON,ledger단일반영,local링크,복사hash를확인했다. 이전01–13을덮어쓰지않는다. 이줄은보관본생성뒤추가했다.
+- 2026-09-26. 활성 goal/AGENTS.md/원 goal prompt/누적 budget을 확인하고 재설계를 이어갔다. 기존 실험 재실행·새 goal·상한 변경0. 이전 turn은 실제54 pilot을 수행한 progress였고, 이번에도 새 원문/정확 산술 확인으로 진행했다.
+- `56_training_compression_review_plan.md`를 먼저 저장했다. TimeDC PVLDB2024, importance sampling ICML2018, TabPFN IML2403.10923v2를 확보해 실제 식·알고리즘·비용을 읽었다. 직접 인접한 SCott ICML2021/SGD-as1810.03124v1을 계획에 추가하고 읽었다. 공개 PDF5개, 관련6쪽 직접 시각 대조. `sources/training_compression_56/`에 원문·버전·hash·scope 보존.
+- TimeDC 공식 commit60169680447a12ad77b050831ee71da8be7f48f7, TabPFN IML commit7bd39bc2e6b2f7a16602983c01086e962db45c37의 핵심 코드를 확인했다. 전자는 expert 사전학습과 합성입력 최적화, 후자는 TabPFN 자신의 context 가치 계산이다. TimeDC Table4는초/epoch, 모든 준비를 포함한 총시간이 아니다. 코드 재현상 확인할 문제도 기록했으며 외부 코드 실행0.
+- `57_mae_sampling_plan.md` 고정 뒤 `mae_sampling_audit_57.py`를 한 번 실행했다. fθ=θ,θ0,y[-1,-1,10],동일입력. uniform과loss비례 역확률 가중 모두 loss평균4/gradient평균1/3이나 loss분산18→0,gradient분산8/9→121/45(3.025배). 실제트래픽/RCTL 성능 수치가 아닌 정확 산술 반례다. 0.000162초,exit0,model0. 재실행하지 않는다.
+- **판단:** Tab loss importance·context Shapley를 RCTL 학습가치로 대입하는 안, 기존 stratified/antithetic sampling에 Tab 이름만 붙이는 안은 채택하지 않았다. 추출용 strata와 RCTL cell partition의 결정 차이, 원RCTL BatchNorm의batch의존성을 명시했다. 고정eval모드gradient 검사를 실제 학습분산의 증거로 사용하지 않는다.
+- 상세 `58_training_compression_findings.md`; 공개 `output/research/TabICLv2_재설계_학습sample압축과계산비용_추가검토.md`. 추천 방향/최종Word는 미완료이며 완료 선언하지 않았다.
+- 57 비용을 ledger에 한 번 반영: cheap60.8061878초,기록modeling1955.2434951초. Tab49/35968,잔여31/24032;RCTL29fits/추가0,기존forward9.8678484초 유지. live process없음. 새 학습이나 상한 확장을 하지 않는다.
+- 다음 후보는 **실제 RCTL의 처리 단위/입력량을 바꾸는 결정**에서 검토한다. 필요한 과거 길이의 차이(adaptive lookback)라면 입력연산 감소와 연결될 수 있으나, 현재8시점에서 실익이 있는지·기존 GPI/CF/long-context caching/최신adaptive lookback과 구별되는지부터 확인한다. 아직 추천안 아니다. 2511.12791 및 wavelet adaptive lookback, Forking-Sequences는 검색 발견 단계이며 방법을 읽은 연구로 세지 않는다. RCTL의 dense layer는steps×16을 받으므로길이만바꿔기존checkpoint를동등평가할수없다.
+
+## 이전 상태 — 51–53 자료/관측비용 원문, 54 실제 TabICL 복원 확인, 55 판단
+
+- 증분 snapshot12 보관 완료:108개 파일·28,764,603bytes,36개 source hash 검증. 저장 예측과 MAE 표·설정/코드/입력hash·PDF signature·유한JSON·비용원장 단일반영·복사hash·보고서local링크를 확인했다. 이전01–12는 덮어쓰지 않는다. 이 줄은 보관본 생성 뒤 추가했다.
+- 2026-09-26. 활성 goal과 기존 지시를 유지했다. 기존 작업 재실행/예산 초기화/새 goal0. 자동 재개 때 입력 방법을 다시 답하지 않는다.
+- 51에서 GOTSF 출판본과arXivv3, ITU2025 beam forecasting, Cellular Predictions2606.25709v1, IMDEA Moghadas2026 thesis5장을 읽었다. PDF·text·metadata·코드 commit·hash를 `sources/network_scope_51/`에 보존했다. GOTSF active entrypoint/회귀 가중/BCE/범위별 MAE 분모를 대조했고 전체 예측 MAE로 오독하지 않는다. beam2,880≠cell2,880, simulated call load≠실제cellbytes를 구분했다.
+- 52별도 계획 후 STK-Diff `beijing.npz`1,413,636B를 확보·검사했다. commit e1faed12, bs_record960×168,bs_kge960×32; timestamp·unit·physicalcell대응 미확인. 생성 코드의 station80/20shuffle split을 미래예측에 복사하지 않는다. numeric0.0139094초,model0, 비용원장반영완료. 반복실행금지.
+- 53 source audit: SRSSS AAAI2016 §2–3은 선형 복원과 활성센서선택을 공동최적화한다. Zoom2Net SIGCOMM2024은 복원collision·MSE/EMD·CEM시간을 이미 다룬다. NETNOMOS NSDI2026의규칙강제/50ms미래예측/1ms복원을구별했다. 3새PDF확보, thesis3쪽포함관련9쪽시각대조완료. CienaPDF는HTML반환하여미확보. 외부코드실행0.
+- thesis5장은 DTWcluster→선택입력으로전체BS출력이며, centroid또는선학습LRP→재학습을쓴다. EUMA약17%입력의긍정적결과를보존하지만 clustering10415.90초/globaltrain23.89초를함께본다. 원RCTL의samplepooling과다른학습단위다. 단순Tab복원대입의신규성은없다.
+- 54실행전계획을고정했다. 관측probe3737/3765/6137/6165,복원target3745/4545/5345/6145. cell당context256/query64,16시간생략×4일. knownlastreport·day/weeklag·동시probe·달력·age12열을모든모델에동일하게제공했다. 이전자료개발구간이며실제결측아니다.
+- 54최초preflight는fullyobservedhistoricalcontext시각도공동생략으로간주한assert에서모델호출전실패했다. 원코드v0와오류를보존하고query만누출검사하도록수정했다. context/query/seed/판정규칙변경0,이전예측결과0. 실패process4.1631648초를보수적으로cheap비용에추가했다. 실제모델실행한번exit0. 재실행하지않는다.
+- 54전체MAE: Ridge0.092963,HGB0.098836,TabICL0.108537,daylag0.108815,lastreport0.278152. Tab은Ridge보다4/4cell전체오차악화. 앞두블록Tab0.069936으로Ridge/HGB보다좋지만뒤두블록0.147138으로악화. 긍정적부분은보존한다. 사전확대조건불통과,새clustering/RCTL확인으로진행하지않았다.
+- 새Tab4contexts/256query/2.543409초,단순8fits0.416225초;stage3.257689초. 새RCTLfit/forward0. memory호출사이관측RSS최대480579584B이며진짜peak라고하지않는다.
+- 55상세및공개 `output/research/TabICLv2_재설계_관측비용과입력복원_추가검토.md` 작성. 새추천안·최종Word는미완료다. 문제/방법중복/Tab추가기여를구분했다. 이번새실제확인이있었으므로외부impasse로상태변경하지않는다.
+- 누적Tab49contexts/35968query/226.4302955초;잔여31/24032. RCTL29fits/추가0. cheap60.8060258초,기록된modeling1955.2433331초. 52/54와54preflight비용각한번반영했다. liveprocess없음.
+- 다음탐색에서 ‘관측복원+Tab’에penalty나clustering단계를붙여살리지않는다. 이미있는센서선택·복원과구별되는실제정보/행동변화가필요하다. beam합산이나짧은STK데이터를검증된cell자료라고사용하지않는다. 기존구조의새문제를찾되RCTLlossproxy·추가입력만으로신규성주장을되풀이하지않는다.
+
+## 이전 상태 — 48 합계 예측 원문, 49 복원 오차 진단, 50 판단
+
+- 증분 snapshot11 보관 완료: 33개 파일·10,199,249 bytes. 원본/계획/설정/코드 hash·PDF signature·유한 JSON·ledger 단일 반영·복사 hash를 검증했다. 이전01–11을 덮어쓰지 않는다. 이 줄은 보관본 생성 후 추가했다.
+- 2026-09-26. 이전 진행 지시와 활성 goal을 유지하고 연구를 이어갔다. 새로운 goal·예산·완료 처리를 하지 않았다. 새 추천 방향과 최종 Word는 아직 미완료다.
+- `48_aggregation_review_plan.md` 저장 후 `aggregation_recovery_diagnostic_49.py`를 한 번 실행했다. 46과 같은 32개 cell, 첫672시간 통계, 뒤336시간 개발 구간, 위치/PCC/무작위 K8과 전체K1, 직전/전날/시간대평균 비중. 새 model fit·Tab·RCTL forward 모두0. 0.0818246초, exit0. 결과·계획·설정·코드·입력 hash 기록, 재실행하지 않는다.
+- 실행 전 source 생성 코드를 확인하여 cell 식별 경로를 바로잡았다. `design_data.npz`는 초기 중앙지역32개이고, 46의32개는 `spatial_information/predictions.npz`에 있다. 결과를 보고 cell을 바꾼 것이 아니며 최종 계획hash는 수정 후 파일이다.
+- 직전 비중에서 실제 미래 합계를 알려주는 복원 MAE: 전체32 0.130482, 위치K8 0.104548, PCC K8 0.099702, 무작위K8 0.116032. 같은 비중을 고정한 모든 scalar 출력의 사후 MAE 하한은 각각0.122352/0.086065/0.084782/0.089983이다. 앞 두 수치를 실행 가능한 예측 성능으로 표시하지 않는다. 정확한 합계가 개별 MAE 최적 scalar와 다를 수 있음을 weighted-median 산술로 확인했다.
+- PCC의 oracle-total 복원은 두 주 모두 무작위보다 좋았다(0.101408/0.097995 vs0.119305/0.112758). 이 긍정적 결과를 보존한다. 단순 PCC의 결과이며 TabICL/RCTL 개선 증거가 아니다. 직전 비중×직전 합계는 모든 partition에서 cell persistence와 정확히 같아 MAE0.156030이다. 새로운 연산을 기존 예측 개선으로 오인하지 않는다.
+- 공개 원문3개 확보: HiGP ICML2024 PMLR15쪽944789B; ONDM2023 optical traffic3쪽946341B; HTS-Cluster arXiv2205.14104v1 17쪽962684B. 관련7쪽 렌더링을 직접 확인했다. source/hash/review_scope 보존. 외부코드실행0. OpenReview verification은 우회하지 않고 공식PMLR파일사용. IFIP web timeout 후 동일공개URL직접200.
+- HiGP는 하위/상위 모든 출력과 학습된assignment/reconciliation을 유지한다. ONDM의aggregation은2k입력/k출력multioutput이며 합계배분이 아니다. HTS-Cluster 식7은 대표예측의distance-weighted복원이다. Table3 M5최하위LSTNet82.36→98.78악화, Table4시간0.16이나모든levelMASE악화. 대표예측/압축 자체는 신규성으로 채택하지 않는다.
+- **판단:** 단순 합계예측/고정비중복원을 새 추천안으로 채택하지 않았다. 모델수/출력수/예측행수/API호출수를 구별했다. 자료만으로 계산되는 복원손실을 Tab으로 재추정하는 안은 추가정보근거가 없다. aggregate Tab성능으로 RCTL을 대변하면 기존proxy문제가 남는다. 상세 `50_aggregation_findings.md`, 공개 `output/research/TabICLv2_재설계_합계예측과cell복원_추가검토.md`.
+- ledger에49비용한번반영: cheap55.9146717초, 기록된modeling1947.8085698초. Tab45/35712·잔여35/24288, RCTL29·추가0. RSS는종료시1회값이다. 이번turn은 실제 새진단/원문분석을 했으므로 외부impasse가 아니다. liveprocess없음.
+- 다음에는 sum이매끄럽다는 주장이나 multioutput용어를 바꿔 재제안하지 않는다. 압축 방향을 더 검토한다면 실제 cell 복원정보, Tab이단순통계보다추가하는정보, 실제속도·정확도절충이 먼저다. HTS-Cluster/Table3의손해와PCC의부분긍정결과를 함께 반영한다. 다른 방향도 Tab의점수만고치는대신 clustering 후 실제학습행동과 필요정보가 바뀌는 후보로 한정한다. 아직본실험착수추천이나 최종문서완료가 아니다.
+
+## 이전 상태 — 45 입력 공유 원문, 46 공간 입력 유지 진단, 47 판단
+
+- 증분 snapshot10 보관 완료: 32개 파일·10,926,594 bytes. SHA-256 복사·원본/계획/설정 hash·PDF signature·유한 JSON·기존 MAE 재현·공개 보고서 수치와 local 링크·ledger 단일 반영을 검증했다. 01–10을 덮어쓰지 않는다. 이 줄은 보관본 생성 후 추가했다. live process 없음.
+- 2026-09-26. 이전 사용자 지시와 AGENTS.md를 유지하고 실제 연구만 이어갔다. 새 goal 생성·완료·중지 처리 없음. 이번 작업에서 goal 입력 방법을 안내하지 않았다.
+- `45_input_sharing_review_plan.md`를 저장한 뒤 `input_sharing_stability_46.py`를 한 번 실행했다. 기존 18의 32 cell×336시간 저장 예측을 읽었으며 새 Tab context/query·RCTL fit/forward·simple fit 모두 0. 계산 0.030364초, exit0, 원본 hash 불변. 재실행하지 않는다.
+- 공간 입력의 전체 평균이 약해도 부분 이득은 존재했다. 두 주 모두 개선된 cell: Ridge 이웃평균13/PCC14/8방향3, HGB9/4/6(모두 /32). 같은 입력에서 두 모델 모두 두 주 개선된 교집합은2/2/1. 이웃평균6145·8847, PCC4537·1520, 8방향1520. 이 cell만 뽑아 새 성공률을 만들지 않는다.
+- 첫 주 cell별 입력 선택의 다음 주 MAE: Ridge0.148305 vs 자기입력0.148158(악화), HGB0.233553 vs0.234062(작은 개선). 다음 주 정답을 아는 oracle0.145866/0.231390은 실행 불가능. 이 진단은 개발 자료의 simple 모델 결과이며 RCTL clustering 통과 증거가 아니다.
+- GECOS 보존 소스 tree `a7519dde9d6f5deb3006689df047d99ea0dac7b7`, `GECOS_main.txt`의 Input(steps,1)/Dense(1)를 대조했다. 같은 cluster라는 사실만으로 다른 cell의 이력이 입력 채널로 들어가는 것은 아니다. 전체 loader가 공개 코드에 없다는 제한도 유지한다.
+- DIC-ST Remote Sensing2022 DOI10.3390/rs14061439 §3.1–3.2, Algorithms1–2, §4.3/Table2를 읽었다. 22기지국/hourly downlink GB, IMF 성분 clustering·성분별 transfer-entropy graph·T×22 GCN 입력. cell partition 연구로 오독하지 않는다. 식11 화살표와 예측 대상, 식13 ratio와Alg2절대threshold 차이를 원문10·11쪽 렌더로 확인. 이를 고치는 것 자체를 신규성으로 세지 않는다. PDF19쪽7,390,233B 확보, 출판사 공개 정적 URL은200; 본 사이트403/web후속429는 기록했다.
+- Markov boundary 논문 최신2605.29411v2(2026-08-19) §2–7을 읽었다. Table2 F200 Grow-Shrink win Ridge98.9% vsTabPFN37.4%. population sufficient set과 유한 모델별 입력 선택 이득은 다르다. MSE/graph/product support 가정·OLS 예를 RCTL/MAE에 자동 적용하지 않는다. §7의mask head pretraining은 후속 제안이며 현재TabICLv2기능이 아니다. PDF12쪽911,687B, HTML/history 보존. DIC10·11·16쪽, Markov2·6·9쪽 시각 대조 완료. 외부코드 실행0.
+- **판단:** 예측 의존 graph를 곧바로 RCTL sample-pooling cluster로 쓰는 방향은 추천하지 않는다. 정보 제공과 함수 공유가 다른 결정을 요구함을 안정된 2변수 선형과정의 논리 예로 설명했다. 이는 실제 트래픽의 반례 실험이 아니다. 입력 열·시각·cell 역할을 실제 학습 단위에 연결하는 규칙이 먼저 필요하다. 단순 module 추가로 이전 proxy 문제가 해결됐다고 하지 않는다.
+- 구체적 비용: k8개를 개별로 검사할 때한 차례N(k+1) contexts, Q64이면 N128/1024/10000에서1152/9216/90000contexts·73728/589824/5760000query행. 시간 추정치가 아니며 반복·병합 갱신 전이다. 현재 적용하거나 실행한 방법이 아니다.
+- ledger에46비용을 한 번 반영했다. cheap55.8328471초, 기록된 modeling1,947.7267452초. Tab45/35,712·잔여35/24,288, RCTL29/추가0. RSS필드명peak는종료1회관측이며 실제최대값이라고 보고하지 않는다.
+- 상세 `47_input_sharing_findings.md`, 공개 `output/research/TabICLv2_재설계_공간입력과sample공유_추가검토.md`. 새로운 추천 방향과 최종 Word는 미완료다. 원문과 새 시간·모델 교차 진단으로 진행한 turn이며 외부 impasse로 처리하지 않는다.
+- 다음에는 전체 평균 실패를 공간 정보 부재로 확대하지 않되, 일부 cell의 이득만으로 graph module을 추가하지 않는다. **같이 학습할 cell의 소속**과 **예측 때 가져올 입력의 범위**를 구분한 상태에서, 현재까지 미확인인 이득을 먼저 제시하는 후보만 더 검토한다. 이미 읽은 graph/feature-selection 구조를 TabICL 이름으로 재포장하거나 46의 사후 cell선택을 독립 검증으로 쓰지 않는다.
+
+## 이전 상태 — 41 계획, 42 cell별 진단, 43–44 역할 변경 원문 검토
+
+- 증분 snapshot 09 저장 완료: 37개 파일, 8,136,041 bytes. 복사 SHA-256·유한 JSON·원본 PDF hash/signature·public 보고서 수치/local 링크·기존 fit 기록과 cell별 MAE 일치·ledger 단일 반영을 검증했다. 기존 01–09를 덮어쓰지 않는다. 이 줄은 보관본 생성 후 추가했다. live process 없음.
+- 2026-09-26로 날짜가 넘어갔다. 기존 run 디렉터리·seed·비용은 유지한다. goal 입력 안내 없이 연구를 이어갔으며 새 goal·중지·완료 처리를 하지 않았다.
+- 41 계획을 먼저 저장한 뒤 42를 한 번 실행했다. 기존 16 cell×480시간의 저장 예측만 읽었다. 새 Tab context·RCTL fit/forward·simple fit 모두 0, 계산 0.031521초, exit 0. `results/cell_harm_envelope_42/result.json`; 재실행하지 않는다.
+- cell 전체 MAE 기준 Tab partition seed1은 global보다 2/16 cell에서 낫지만 앞·뒤 240시간 모두 좋은 cell은 0이다. seed2는 0/16이다. empirical seed1 3/16, 양쪽 모두 1/16; seed2 0/16. 27의 급증 상태 이득을 지우지 않으며 cell 전체 이득과 구별한다. global 2nd seed는 없고 PCC balanced는 UPC 전체가 아니다.
+- 기존 primary 여섯 경로의 **사후 cell oracle** MAE 0.07040994 vs global 0.07106777, 이득 0.9256%. 모든 clustering의 상한이 아니다. 서로 다른 기존 cluster 모델을 고르는 조합은 일관된 partition도 아닐 수 있다. sample oracle 0.03606726은 정답을 미리 알고 고르는 비실행 가능한 값이다.
+- validation cell별 최소 경로를 선택한 개발 MAE는 0.07727346, global 대비 +8.7321%. 이 선택은 RCTL loss를 사용하므로 허용 clustering으로 채택하지 않았다. 실제 소속·모델·입력 파일 변경 0.
+- 43에서 TimeTic 2509.23695v1 §3–4/A.1–A.2/B.3/D, Local Distillation **2608.23538v2(2026-09-22)** §2/4/5/Appendix D를 원문으로 읽었다. 2 PDF22/42쪽·HTML·history·hash를 `sources/predictor_role_43/`에 보존했다. TimeTic6쪽, LD7·13·16·38쪽 렌더링을 직접 확인했다.
+- TimeTic의 target은 실제 fine-tuned performance이며 이미 수행한 학습 결과와 모델 layer entropy가 필요하다. Table1 weighted Kendall short/medium/long .305/.429/.319를 초록의 Spearman 약.6과 구별한다. 원문에서 발견한 TabPFN repo를 TimeTic 공식 구현으로 부르지 않는다. TimeTic 자체 코드는 이번 검색에서 미확인이다.
+- Local Distillation은 teacher scalar prediction으로 locality·pseudo-observation을 만들고 local coefficients를 clustering하는 구조를 이미 제시한다. feature 선택 확률 안정성 정리는 고정 locality/설정·lasso·design/smoothness 가정 아래며 RCTL pooling MAE 보장이 아니다. fixed parameter와 context y 독립은 다르므로 teacher response derivative를 0으로 놓지 않는다. 같은 예측값에도 interaction이 다른 한계를 Appendix D가 직접 설명한다.
+- LD 공식 repo commit `f8ea1e71f19afd3167ba7ca0984ed34294d40823`의 README/common.py/method_ld.py/method_ld_ablation.py를 저장·읽었다. scalar prediction distance, OOF loss-ratio gate, real y+pseudo-observation, shuffled5fold 확인. 네트워크 시계열에 그대로 옮기지 않는다. 외부 코드 실행·설치 0.
+- **판단:** 기존 경로 재선택, 실제 RCTL 학습 결과가 없는 TimeTic 단순 대입, local explanation clustering을 새 추천안으로 채택하지 않는다. 이미 있는 구조와 핵심 정보의 누락을 구체적으로 구별했다. 세부 `44_cell_harm_and_predictor_role_findings.md`, 공개 `output/research/TabICLv2_재설계_cell별이득과모델역할_추가검토.md`.
+- 비용을 ledger에 한 번 반영했다. 기록된 modeling 합 1,947.6963812초, Tab45/35,712, 잔여35/24,288, RCTL29/추가0. 아직 추천 방향·최종 Word는 미완료다. 새로운 cell별 진단과 실제 원문/코드 해석으로 진행한 turn이며 외부 impasse가 아니다.
+- 다음 작업에서 기존 scores에 임의 penalty를 붙이거나 RCTL loss를 meta label로 몰래 사용하지 않는다. RCTL 없이 실제로 얻을 수 있는 정보가 달라지게 할 **자료 공유 또는 학습 행동**과, 그 행동의 새로운 이득 근거를 먼저 찾는다. 지금 자료에서 이미 약한 cell 선택 효과를 성공 조건으로 축소하지 않는다.
+
+## 이전 상태 — 36 원문, 37 반례, 38 판단, 39–40 자료 공유 경로 검토
+
+- 증분 snapshot 08 저장 완료: 48개 파일, 10,468,500 bytes. 복사 SHA-256·JSON 유한값·PDF signature·새 반례 결과·ledger 단일 반영·공개 보고서 local 링크 검사를 통과했다. 01–08을 덮어쓰지 않는다. 이 한 줄은 보관본 생성 후 추가했다.
+- 반복 goal 입력 안내를 하지 않고 연구를 이어갔다. 사용자 진행 지시와 AGENTS.md는 유지된다. 새 goal을 만들거나 기존 목표를 완료·중지 처리하지 않았다.
+- 36에서 Khan UAI 2026, Pesaran–Pick–Timmermann QE 2026 출판본, The Spectrum Is Not Enough 2607.13006v2를 실제 수식·가정·알고리즘 수준에서 읽었다. PDF·텍스트·버전·SHA-256을 `sources/finite_learning_36/`에 보존했다. Khan PDF 3·5·6·15·16쪽 렌더링을 직접 확인했다.
+- 37 계획 후 정확한 네 유한 예를 한 번 계산했다. XOR는 Lemma 3.1의 일반적인 하한과 §5의 조건부 TC 단조성 주장에 반례다. 중복 label 예는 총 정보 예산이 같아도 분할 이득 식에서 joint-predictive 항을 지우면 안 됨을 보인다. Appendix S4.37–38은 이 항과 saturation 조건을 명시하므로 원문에 조건이 없다고 말하지 않는다. 유효한 상한과 전체 identity는 보존한다. RCTL·트래픽 성능의 반례로 확대하지 않는다.
+- `information_claim_audit_37.py` exit 0, 8개 사전 판정 확인. 계산 0.0002908초, 모델 호출 0. 재실행하지 않는다. 비용 ledger에 정확히 한 번 반영했다. 현재 기록된 모델링 합 1,947.6648602초, Tab45 contexts/35,712 rows, 잔여35/24,288, RCTL29 fits/잔여0.
+- Panel 식 24는 이질성과 추정 손해 양쪽을 요구한다. 식 40–43의 실제 선형 계수·noise·jackknife를 TabICL 분위수 폭으로 대체하지 않는다. Spectrum 논문의 oracle linear/Bayes MSE와 유한 Ridge의 오차를 구분한다. 구조 비선형성·긴 입력·사전학습의 유한 추정 이득을 같은 것으로 보지 않는다. 상세 `38_finite_learning_findings.md`.
+- 39에서 별도의 원리로 예측 담당 cluster와 학습 sample 공유 범위의 분리를 검토했다. Bickel ICML2008 §4, Kumagai NeurIPS2021 §4, Cherkaoui 2510.16986v2 §3–6/Appendix16을 실제 읽었다. 마지막 논문 최신 제목은 When to Transfer: Adaptive Source Selection for Positive Transfer in Linear Models, 2026-05-13이다. v1 제목으로 최신 범위를 축소하지 않는다. 3 PDF·HTML·버전·hash를 `sources/sample_reuse_39/`에 저장했다.
+- 참 joint ratio의 가중 risk identity는 RCTL/MAE에도 성립하지만 이미 알려진 원리다. finite-data·estimated-weight·optimization 개선까지 보장하지 않는다. conditional Y|X ratio만 쓰는 안은 X 빈도 변화에서 목표 loss를 보존하지 않는다. 정확한 적분 예: target MAE 0.145 vs 반반 혼합 0.525, joint weights 1.8/0.2는 0.145로 복원. 새 모델 결과가 아니다.
+- 설치된 TabICL2.2.0 quantile_dist.py의 log_prob와 unsupervised.py의 score_samples 구현을 읽었다. 후자는 geometric average density score이며 context별 정규화 상수가 다를 수 있다. 점수 비율을 참 density ratio로 쓰지 않는다. 17열×4순서이면 집합당 최대68개 열 단위 계산. 새 모델을 호출하지 않았다. 코드 hash와 상세 판단은 `40_sample_reuse_findings.md`.
+- **후보 판정:** 정보이론 점수 추가, 일반적인 가중 sample 공유, 기존 pretrained density-ratio 구조의 단순 대입을 추천하지 않는다. 실제 학습 목적을 보존하는 연결은 유용하지만 TabICLv2의 추가 정보·비용상 이점과 새 결정이 미확인이다. 단순 source 분류기와 같은 판단이라면 실행을 늘릴 이유가 없다.
+- 공개 설명 `output/research/TabICLv2_재설계_분할이득과자료공유_원문검토.md`. 추천 방향·최종 Word는 아직 미완료다. 새 원문/반례/구체적인 코드 조건을 확인한 progress이며 외부 impasse가 아니다. 모델 상한을 초기화하거나 늘리지 않는다.
+- 다음 작업은 이 기록의 기각안을 재포장하지 말고, 실제로 남는 문제와 TabICLv2가 추가로 제공할 정보의 연결부터 찾는다. 원문 식을 붙여 학습 결과를 보장하거나, 더 복잡한 density 모듈을 추가하여 신규성을 대체하지 않는다. 새 실행은 새로운 가설·결정·근거를 먼저 기록한 뒤 남은 예산 안에서만 한다.
+
+## 이전 상태 — 33 원문, 34 고정 가중치 진단, 35 판단
+
+- 증분 snapshot 07 저장 완료: 25개 파일, 5,699,641 bytes. 복사 SHA-256, JSON 유한값, 공개 보고서 수치·local 링크, ledger 단일 반영 검사를 통과했다. 01~07은 덮어쓰지 않는다. 이 기록만 보관본 생성 후 추가했다.
+- 33에서 Butera et al., arXiv:2606.01999v1 (2026-06-01), Why Do Time Series Models Need Long Context Windows?의 §2–4, Assumption 3.1/Theorem 3.2, Appendix B.1/F/G를 확인했다. abs history는 v1만 표시. 원본 PDF 34쪽·2,313,347 bytes와 HTML·abs를 보존했고 5쪽의 가정·정리를 렌더링하여 대조했다. 외부 코드는 실행하지 않았다.
+- 이 논문의 GPI/CF 분리와 긴 이력 embedding cache는 이미 제안된 방법이다. MSE·정상 Markov·time-invariant process·독립 noise·조건부 평균 차이 가정을 현재 MAE/RCTL로 자동 확장하지 않는다. W>P는 필요조건이지 충분조건이 아니다. 새 알고리즘으로 채택하지 않았다.
+- 원 UPC PDF 8~9쪽을 직접 렌더링했다. Fig. 7은 N=1,2,4,6,8,12를 비교한다. 이전 요약의 ‘1~4 cluster’는 부정확하므로 이 기록으로 정정한다. Table II의 GECOS w/o UPC 값은 대시이므로 여기서 정확한 전후 개선율을 계산할 수 없다. N=1 포함 및 N=2가 좋았다는 본문은 확인했다.
+- 34 계획을 저장한 뒤 기존 RCTL 29개 checkpoint를 eval/inference_mode에서 train/validation에 재적용했다. 새 fit/Tab 호출/test forward 0, 251 forward, 107,520행, 계산 5.2934883초, 최대 RSS 257,781,760 bytes. exit 0, live handle 없음. 다시 실행하지 않는다.
+- 저장된 best validation MAE를 checkpoint별 정확히 재현했다. 파일 hash와 tensor state도 전후 동일하다. 고정 가중치 train MAE를 계산했으며 online/dropout training loss와 혼동하지 않는다.
+- 확인한 7개 K=4 조건은 global보다 훈련 평균 오차가 작고 validation은 컸다. 주 seed: global train/val 0.079981/0.075371, Tab 0.078401/0.081656, empirical 0.075087/0.078883. Tab은 12/16 cell에서 train이 좋지만 16/16 모두 validation이 나빴다. 두 번째 seed의 global은 없다는 제한을 유지한다. 인과적 과적합 진단이나 모든 clustering의 불필요성으로 확대하지 않는다.
+- RCTL 하나의 parameter 174,433개, 학습 parameter 173,537개, tensor state 701,412 bytes. K=4는 전체 학습 parameter 694,148개. 주 seed optimizer step은 global 1,890 vs Tab 2,431이다. model 수 4배가 자료량·시간 4배라는 주장을 하지 않는다.
+- ledger에 34 비용을 정확히 한 번 반영했다. frozen inference 누적 9.8678484초, 기록된 modeling 합 1,947.6645694초. Tab45 contexts/35,712행, 잔여35/24,288, RCTL29 fits/추가0은 그대로다.
+- 상세 `35_process_and_fit_gap_findings.md`, 공개 보고서 `output/research/TabICLv2_재설계_모델분할과일반화손해_추가확인.md`. 아직 추천 후보·최종 Word 미완료다. 새 방향은 실제 혼란을 분리하는 이득과 자료 분할의 유한 학습 손해를 구별하는 관측량을 요구한다. 이 문제 정의 자체도 HCP/local-global 연구가 이미 다루므로 신규성이라고 하지 않는다.
+- 다음 탐색은 기존 23의 oracle 공유 비용에 임의 penalty를 더하거나 GPI/CF 구조를 그대로 복제하지 않는다. HCP의 실제 재학습을 쓰지 않으면서 새로 얻을 수 있는 정보를 먼저 확인하고, 그런 정보가 없는 후보는 추가 실행하지 않는다. RCTL fit 상한을 늘리지 않는다.
+- 검색에서 2410.14630 및 2607.13006을 발견했지만 방법을 읽은 연구로 세지 않는다. OpenReview challenge는 우회하지 않았다. pdftotext 바이너리는 없어 pypdf로 추출했다. 원 UPC 렌더링 font warning은 있었으나 Fig. 7/Table II는 시각 검수했다.
+
+## 이전 상태 — 30 자료 확보, 31 진단 완료, 32 판단
+
+- 증분 snapshot 06 저장 완료: 31개 파일, 5,068,700 bytes. 복사 hash, JSON 유한값, 공개 보고서 주요 수치 및 링크를 검증했다. 01~06은 덮어쓰지 않는다. 이 항목만 보관본 생성 후 추가했다.
+- 반복 goal 입력 안내를 중단하는 AGENTS.md 지침을 확인하고 실제 연구를 이어갔다. goal을 새로 생성하지 않았다.
+- Harvard 첫날 API의 오류 원인을 확인했다. HTTP 400 메시지는 guestbookID 96 응답 요구였다. 정보를 대신 제출하거나 제한을 우회하지 않았다. 29 당시에는 상태 코드가 미기록이었으므로 소급하여 확정하지 않는다.
+- 공개 GitHub Yunis-konda001/Milan-mobile-traffic-forecasting commit 6042fb01에서 4159·4556·5161의 10분 CSV를 확보했다. 총 1,302,989 bytes, 각 8,928개, 첫 30일 누락·중복 없음. 5161은 전체 기간의 최대 활동량으로 배포자가 선정한 cell이므로 대표 표본으로 취급하지 않는다.
+- 자료 변환 코드와 Git blob hash 확인 완료. 국가별 internet 합계를 저장한 제3자 부분집합이며 원시 CDR 자체는 아니다. 외부 notebook은 실행하지 않았다. UTC+1로 합산한 첫 30일 720시간의 값은 기존 STCNet hourly와 최대 0.0015 이내로 일치했다.
+- 30 최초 metadata의 interval_seconds가 pandas datetime unit을 잘못 가정해 0.6으로 표시됐다. 명시적 ns 변환으로 600초임을 수정했고 최초 JSON을 보존했다. 시간 정렬·활동량 비교는 변경 없으며 다운로드 재실행도 없다.
+- 31 계획 고정 뒤 같은 세 cell의 10분/1시간, S/S+L, Ridge/HGB, global/local 조건을 실행했다. 저비용 fit 32개, 계산 2.3140058초, 그 안의 fit+predict 2.2153857초, RSS 164,704,256 bytes. exit 0 완료, live process 없음. 다시 실행하지 않는다.
+- 10분 S+L의 global/local MAE는 Ridge 0.094539/0.095020, HGB 0.096924/0.102252. HGB global 이득은 세 cell·앞뒤 5일 모두에서 관찰했다. Ridge는 한 cell에서 local이 좋다. 1시간 Ridge는 local 평균 이득, HGB는 global 평균 이득이다. 모든 방법에 같은 결론으로 확대하지 않는다.
+- 10분 raw pair PCC는 0.161~0.576인데도 global 학습이 유리한 조건이 있었다. cell 쌍 PCC를 원 UPC의 그룹 평균 PCC와 같다고 하지 않는다. 큰 시간 내 변동이나 낮은 PCC만으로 공동 학습 손해를 결론 내리지 않는다.
+- 원 논문 Fig. 7은 single global을 포함해 1~4 cluster를 비교하고 2 cluster가 가장 좋았다고 명시한다. 이번 세 cell 단순 모델 진단은 이를 반박하는 동일 조건 실험이 아니다. ‘원 논문은 global을 비교하지 않았다’는 주장을 하지 않는다.
+- 비용 ledger에 31을 한 번 반영했다. TabICL45 contexts/35,712 rows, 잔여35/24,288, RCTL29 fits, 추가fit0은 그대로다. 10분 자료에서 새 TabICL 또는 RCTL을 실행하지 않았다. 총 cheap 기록 55.7706713초이며 초기 미기록 preprocessing은 포함하지 않는다.
+- 상세 `32_resolution_findings.md`, 사용자 보고서 `output/research/TabICLv2_재설계_10분자료와공동학습_추가확인.md`. 추천 방향·최종 Word는 아직 미완료다. 시간 해상도를 바꾸면 앞선 후보가 나아질 것이라고 채택하지 않는다.
+- 다음에는 원 논문의 큰 규모 결과와 작은 pilot의 차이가 자료량·모델 용량·선정 범위 중 무엇 때문인지 원문과 기존 증거로 먼저 좁혀야 한다. 작은 표본을 더 잘게 나눈 결과나 단순 모듈 추가로 신규성을 만들지 않는다. 이 차이를 설명하는 새 후보는 아직 설계·채택하지 않았다.
+- 추가 regime/task grouping 검색은 탐색만 수행했으며 해당 원문·공식 코드를 읽은 것으로 세지 않는다. 이번 turn은 원자료 접근 경로 확보와 새 실제 진단의 progress이며, 전체 goal의 외부 impasse 또는 완료가 아니다.
+
+## 이전 상태 — 26 완료, 27·28 해석, 29 접근 확인
+
+- 증분 snapshot 05 저장 완료: 32개 파일, 7,602,198 bytes. 복사 SHA-256, JSON 유한값, 보고서 수치와 원본 결과 일치 및 링크 검사를 통과했다. 01~05를 덮어쓰지 않는다. 이 기록은 보관본 생성 후 추가했다.
+- 26 observable state loss: 기존 16 cell×480시간의 저장된 RCTL 예측을 재사용하고, 같은 자료·입력의 Ridge/HGB 두 모델만 추가했다. RCTL 새 fit/forward 및 TabICL 호출 0. 계산 0.6636079초, RSS 171,868,160 bytes. exit 0 완료이며 재실행하지 않는다. ledger 반영 완료.
+- 입력만으로 정한 빠른 증가 상태 307개에서 empirical 분할의 이득이 두 seed와 시간 양 절반에 있었다. 조건부 MAE 차이 −0.007456/−0.003062, 전체 MAE 기여 −0.000298/−0.000122. 긍정적인 결과를 삭제하지 않지만 전체 오차 증가를 상쇄하지 못했고 TabICL의 이득은 아니다.
+- TabICL 분할은 높은 수준·급증·큰 하루 편차에서 global보다 좋은 결과를 보여주지 못했다. 수준×급증 50개 sample의 seed 1 이득은 seed 2와 뒤 절반에서 뒤집혔다. sparse한 조건만 골라 성공으로 만들지 않는다.
+- global HGB 전체 MAE 0.068411 vs global RCTL 0.071068, 앞 절반 HGB는 악화하고 뒤 절반 개선. 원래 UPC 전체 재현도 독립 test도 아니다. `27_observable_state_findings.md`에 전 방법 표와 해석을 보존했다.
+- 새 원문 확인: TabMGP는 v3(2026-05-28)가 최신. §2~3/Algorithm 1/§5.1/E.1, 공식 코드 bf44db1 확인. 기본 500×100 forward와 커지는 context. 채택하지 않았다. PDF 36쪽 확보.
+- predictive CLT는 2602.04596v2(2026-07-19), §4~5/A/B/J.1 확인. 저자 ud4pfn commit ccd10bd3에는 이미 TabICLRegressor adapter가 있다. 전체 prefix별 호출이 필요하다. Theorem 5.2의 covariate 조건과 이를 요구하지 않는 5.3을 구별한다. 트래픽에서 CLT 가정 충족·효용은 확인하지 않았다. 실행·설치하지 않았다.
+- Vario KDD2022(공통 조건부 관계+MDL+top-down) 및 ECAI2025 Two-stage global forecasting(global residual clustering+학습된 가중치 복사) 원리 확인. 이것들을 새 이름으로 재제안하지 않는다. 상세 `28_mechanism_and_uncertainty_audit.md`, 원문·코드는 `sources/method_audit_28*`.
+- 29에서 원 UPC·RCTL §IV.A의 10분·q=8과 현재 hourly·q=8의 차이를 다시 명시했다. 현재 결과로 원래 10분 예측의 clustering 불필요성을 확정하지 않는다. Harvard 원본 첫날 322,874,887 bytes의 제한적 Range 접근을 시험했지만 첫 요청 HTTPError로 중지했다. 큰 다운로드·후속 요청·새 모델 실행 없음. `results/raw_range_probe/summary.json`; 실패 원인 상태코드는 미기록이므로 403/404로 단정하지 않는다.
+- TabICL 누적45 contexts/35,712 rows, 잔여35/24,288. RCTL29 fits, 잔여0. 초기화 금지. source 다운로드/문헌 검토 시간은 모델 계산 시간으로 섞지 않는다.
+- 공개 추가 보고서 `output/research/TabICLv2_재설계_상태별손해와추정불확실성_추가확인.md` 작성. 추천안·최종 Word는 아직 미완료. 다음 작업은 현재 hourly pilot의 적용 범위를 넘어선 근거가 필요한지 판단하고, 원본 10분 데이터의 작은 부분집합을 합법적인 공개 경로로 확보할 수 있는지 확인하는 것부터 시작할 수 있다. 원본 해상도 변경 자체를 신규성으로 내세우지 않는다. 새 실행 전 계획·비용을 고정하며 RCTL 상한은 유지한다.
+- 이번은 새 자료와 판단 범위를 확인한 progress다. HTTP 오류 한 번으로 전체 goal을 blocked/complete로 바꾸지 않는다. goal 입력 방법을 반복 안내하지 않는다.
+
+## 이전 상태 — 23·24 완료, 25 추가 판단
+
+- 23: 같은 실제 입력에서 조건부 비중과 각 cell의 분포를 반영한 intrinsic pooling cost를 계산했다. 기존 5개 K=4 분할과 RCTL 결과의 Spearman은 TabICL 0.80, KNN 0.90이었다. 예측 자체는 TabICL이 더 좋았지만 partition 순위 추정의 우위는 확인하지 못했다. 사후 기술 통계이며 독립 검증이 아니다.
+- 23의 최초 float32 수치 검사 실패를 float64 일관 계산으로 수정해 한 번 재개했다. 최초 run marker와 실패 command wall을 보존했다. 실패 비용 포함 6.4339초, 새 Tab/RCTL 호출 0. `results/conditional_pooling_cost/`는 완료된 실행이며 다시 실행하지 않는다.
+- 24: 고정된 기존 RCTL 21개로 48 origin×24시간 recursive 추론. 추가 fit 0, 504 forward, 110,592 predicted rows, 4.5744초. 첫 시점 결과는 기존 파일과 정확히 같았다. 실행 exit 0, live process 없음.
+- 사전 고정한 6시간 주 지표는 global MAE 0.118291, Tab partition 0.136188, empirical 0.128882, KNN 0.129346, PCC 0.140043, random 0.134695. global이 가장 작았다. empirical의 24시간 작은 이득은 주로 앞 절반 origin에서 나타났다. horizon 변경으로 기존 방향을 추천하지 않는다.
+- 새 문헌 확인: 2604.13748v1 §2~3.1에서 validation 기반 multi-step clustering; 2605.16447v2 §3~4.2에서 spectral 지역화와 미래 macro guidance; 2509.16959v3 §3~4.5에서 gradient conflict graph/coloring. 원문에 있는 구조를 신규성으로 포장하지 않는다. 상세 `25_pooling_and_horizon_findings.md`.
+- TabICL 45 contexts/35,712 rows와 RCTL 29 fits의 count는 그대로다. 새 cheap 계산과 frozen inference 비용을 ledger에 별도 추가 완료했다. RCTL 새 fit 허용 0을 유지한다.
+- `output/research/TabICLv2_재설계_조건부공유비용과다시간예측_추가확인.md`와 증분 snapshot 04를 작성했다. snapshot은 22개 파일, 1,815,627 bytes이며 모든 복사 SHA-256과 JSON 유한값 검사를 통과했다. 01~04를 덮어쓰지 않는다. 이 진행 기록 두 줄은 복사 후 갱신했다.
+- 추천안과 최종 Word는 미완료다. 다음 탐색은 단순 공유 모델이 실제로 남기는 손해의 재현성과 원인부터 좁혀야 한다. sparse한 peak 표나 단일 horizon만 골라 성공 기준을 바꾸지 않는다. 오래된 goal 입력 질문을 다시 답하지 않는다.
+
+## 이전 상태 — 16·18·19·20 완료, 21 종합 기록
+
+- 16 temporal validity: 고정 32 cell, 4주, Ridge/HGB와 old/recent/expanding 비교. expanding 평균 MAE가 더 작았다. 최근 자료만 고르거나 새 drift 모듈을 만들 근거로 사용하지 않는다. 768 small fits, 30.649초.
+- 18 spatial information: 동일 32 cell에 이웃 평균/PCC 한 이웃/8개 개별 이력을 추가했다. Ridge는 악화, HGB는 사실상 동일하거나 악화였다. 공간 정렬 구조를 채택하지 않는다. 256 small fits, 13.466초.
+- 19 broad cell information: M=2048, Q=2048, TabICL no-ID/ID/ID 열 순서 변경/과거 요약값 4 contexts. MAE 0.240992/0.242169/0.242254/0.244203. cell ID가 개선하지 않았다. 모든 clustering 이득의 상한으로 해석하지 않는다.
+- 20 target parameterization: 같은 자료에서 다음 값 대신 다음 값−최근값을 추정했다. TabICL 평균 0.240992→0.132710이지만 개선은 4/32 cell뿐이고 기존 16 평균은 악화했다. cell 7524의 raw 오차가 전체의 60.45%를 차지했다. 보편적인 44.93% 개선, 새로운 알고리즘, RCTL 이득으로 주장하지 않는다.
+- `21_diagnostic_synthesis.md`와 `results/error_concentration.json`에 해석·근거를 정리했다. 저장된 예측만으로 집중도를 다시 계산하는 코드도 보존했다.
+- 모든 해당 실행은 exit 0으로 끝났다. 61848/87937/5043/56212는 완료된 handle이다. 현재 live process 없음. 이 진단들을 다시 실행하지 않는다.
+- ledger 갱신 완료: TabICL 45 contexts / 35,712 query rows / 223.887초; 잔여 35 contexts / 24,288 rows. RCTL 29 fits / 1,565 epochs, 추가 fit 허용 0. 전체 cap과 예산 초기화 금지를 유지한다.
+- 다음 판단은 예측기의 외삽 오류와 cell 간 공유 손해를 구별할 수 있는지다. 현재 확인한 것은 전자이며, 잘못된 clustering 결정까지 입증한 것은 아니다. 차분·지원 범위 필터·추가 보정항만 붙인 것을 신규성으로 내세우지 않는다. 추천 방향과 최종 Word는 미완료다.
+- 공식 TabPFN-TS README에서 2026-09-15 v1.3.0의 기본 모델이 TabPFN-3.5로 바뀐 사실을 확인했다. 원래 v2 기반 논문의 한계를 최신 구현 전체의 한계로 옮기지 않는다. 새 모델 다운로드나 API 호출은 하지 않았다.
+- `output/research/TabICLv2_재설계_시간공간정보와외삽오류_추가확인.md`를 작성했다. 증분 보관본 `redesign_20260925_snapshot_03/`의 40개 파일·6,153,922 bytes 복사 hash와 JSON 유효성을 확인했다. snapshot 01·02·03을 덮어쓰지 않는다. 마지막 복사 뒤 이 진행 항목만 추가했다.
+- 다음 방향을 정할 때 TabICLv2 도입 때문에 생긴 외삽 문제를 UPC·RCTL 자체의 미해결 문제로 바꾸어 말하지 않는다. 외삽 진단은 잘못된 공유 점수를 피하기 위한 확인이지 독립적인 연구 신규성의 근거가 아니다. 같은 실패를 더 복잡한 보정으로 포장하지 않는다.
+- 외부 blocker가 반복 확인된 상태가 아니므로 goal을 blocked나 complete로 바꾸지 않는다. 사용자에게 goal 입력법을 다시 설명하지 않는다.
+
+## 이전 상태 — 13·14 실제 실행 완료
+
+- 13 계획을 저장한 뒤 기존 B1의 실제 query 교차 예측을 재분석했다. 자기 MAE 0.072614, 다른 context MAE 0.176067. 교차 손해와 입력 거리 초과 비율의 pair 순위 상관은 0.7475이며 raw PCC 차이 0.4158보다 크다. 인과관계나 RCTL 공동 학습 손해로 해석하지 않는다.
+- 14 계획을 저장한 뒤 같은 pooled context 2,688행·query 1,024행에서 no-ID, one-hot ID, ID 열 순서 변경 조건을 실제 TabICL로 실행했다. MAE는 각각 0.073959/0.073385/0.073209. 평균 이득은 작고 날짜·cell별로 달랐다. 같은 정보의 Ridge/HGB도 비교했다. ID 효과를 모든 clustering 이득의 상한으로 간주하지 않는다.
+- 실행 handle 99509는 exit 0으로 종료했다. 현재 확인된 live process는 없다. 재시작하지 않는다.
+- 누적 ledger는 TabICL 39 contexts/23,424 query rows/164.214초, RCTL 29 fits/1,565 epochs/1,658.139초. 남은 TabICL 41 contexts/36,576 rows, RCTL fit 0. 이미 관찰한 final 기간을 개발 후 독립 test로 재사용하지 않는다.
+- Effect fusion, tree-structured categorical clustering, BanditPAM++, Active Clustering을 원리 수준에서 확인했다. 범주 병합·전체 자료 유지·적응적 계산·cache 자체를 신규성으로 세지 않는다. CURE와 NOMADD는 최신 streaming/temporal 후속 연구로 추가했으며 분류 setting과 regression cell grouping을 구별한다.
+- `15_transfer_identity_and_literature_findings.md`와 `output/research/TabICLv2_재설계_교차오차와cell식별정보_추가확인.md`에 결과·판단을 작성했다. 추천 방향과 최종 Word는 미완료다.
+- 다음에는 정적 관계 차이 가정을 강화하는 대신, 기존 cell에서 과거 자료의 시간적 유효성 문제가 단순 lag·달력·최근 자료 사용 후에도 남는지 검토할 수 있다. 아직 새 알고리즘을 채택하거나 실행하지 않았다. 데이터 진단 계획과 근접 streaming/forecasting 방법의 구체적 차이부터 고정해야 한다.
+- 이 turn은 새로운 실행 증거와 설계 배제 이유를 추가한 progress다. 외부 blocker는 없고 goal은 active로 유지한다.
+
+시작일 2026-09-25. 목적은 기존 cell의 clustering 이후 RCTL 구조에서 독립적인 연구 문제와 새 결정 원리를 확보하는 것이다.
+
+## 초기 확인
+
+- 기존 interval 검사는 실제 TabICL/RCTL 실행이 아니었음을 결과 JSON에서 재확인했다.
+- workspace에는 원문과 코드가 있으나 원시 트래픽 데이터는 없다.
+- CPU Intel 플랫폼, 메모리 약 32 GiB, Intel Arc GPU이며 CUDA GPU는 확인되지 않았다. 두 Python 환경에 torch/tabicl/tensorflow가 없다.
+- 공식 STCNet 저장소의 공개 가공 Milan 자료는 105,531,494 bytes이다. 3자리 반올림 및 SMS/call 채널 결합이 명시되어 있다. 자료 단위와 전처리는 파일 확인 후 결정한다.
+- 공식 회귀 TabICLv2 checkpoint는 114,324,594 bytes이다. 자료와 모델은 각각 LFS SHA-256으로 검증할 예정이다.
+- GECOS 공식 main.py는 MAE로 compile하며, 논문과 공개 코드의 clustering 부분이 일치하는지는 별도 확인한다. 원문의 손실 미기재와 코드에 명시된 손실을 구분한다.
+
+## 현재 탐색 중인 원리
+
+1. 주기와 장기 흐름을 제거한 잔차 관계의 비교: 단순 보강 또는 알려진 residual clustering으로 환원될 가능성이 높다. 단독 신규성으로 추천하지 않는다.
+2. 공유 시 실제 sample 수 증가에 따른 이득과 관계 차이의 손해를 분리: HCP 및 RMB-CLE, task surrogate와 차별성을 검토 중이다.
+3. 같은 시각의 여러 cell이 같은 변동을 관측해 생기는 중복 정보와 자료 공유 이득의 관계: 시간·cell 간 의존성을 조건부 관계와 구분하는 방향을 검토 중이다. 아직 채택하지 않았다.
+
+## 초기 비용 제한
+
+- 공개 자료 archive 106 MB, 회귀 checkpoint 115 MB, 공식 코드와 논문 합계 40 MB 이내. 전체 원시 Milan 자료는 다운로드하지 않는다.
+- 최초 TabICL 기능 확인 최대 4 cell, context 256개, query 64개, 각 1 fit/1 predict. 학습 성능 결론으로 사용하지 않는다.
+- 기능 확인 이전에는 모델 준비만 한다. 후속 실제 실행 예산과 가설·판정 규칙을 결과 관찰 전에 따로 고정한다.
+- RCTL 실행 0회. 후속 검사는 소속과 설계 고정 이후로 제한한다.
+
+## 실제 확보·실행 결과
+
+- 자료 archive, 공식 regression checkpoint, 공식 TabICL source ZIP 다운로드 및 SHA-256 검증 완료. 상세: `asset_manifest.json`.
+- 별도 `runtime/` venv에 CPU PyTorch 및 pinned TabICL 설치. 기존 사용자 Python 환경은 수정하지 않았다.
+- H5에는 1488시간 × 10000 cell × 3채널이 있으며 2013-11-01~2014-01-01이다. 인터넷 활동량을 사용하며 원 논문의 10분 데이터 재현으로 부르지 않는다.
+- 실행 전 계획 `01_data_and_smoke_plan.md`를 고정한 후 32개 고정 cell, 최초 42일만 진단했다. 최종 20일의 target은 읽지 않았다. 시간 누락·중복 없음, 선택 자료 음수·0 없음.
+- 32 cell의 설계 확인 구간에서 raw PCC 중앙값 0.654, 달력·lag를 사용한 Ridge 잔차 PCC 중앙값 0.160. 최대 잔차 PCC 0.885. 공통 일주기와 잔차 동조가 구분될 수 있다는 탐색 관찰이다. 공유 이득이나 실제 innovation 공분산을 확인한 것은 아니다.
+- 최초 TabICL 4 cell 기능 확인 완료: 각 context 256, query 64, ensemble 1, CPU 4 threads. fit+predict 약 0.98~1.61초, 프로세스 RSS 최고 약 575 MB. 4개 모두 유한한 median 예측을 반환했다.
+- 해당 4 cell의 같은 context/입력 Ridge와의 MAE 비교는 TabICL이 모두 작았으나, 이는 기능 확인이며 선택 편향·기간 제한 때문에 알고리즘 효과의 근거로 사용하지 않는다. `results/smoke.json`, `results/data_diagnostic.json` 및 실행 코드 보존.
+- 누적 모델 실행: TabICL fit 4회, predict 4회, query 256행. RCTL 0회. 이후 확대 전 누적 상한과 가설을 별도로 고정해야 한다.
+
+## 새로 확인한 근접 연구와 설계상의 판단
+
+- RMB-CLE (arXiv 2602.14231, 2026): task별 예측 교차 오차를 inverse-similarity profile로 바꾸어 cosine/average-linkage clustering, cluster별 최종 boosting. 교차 예측 오차로 task를 묶고 별도 최종 모델을 학습한다는 구조 자체는 신규성이 아니다.
+- ETAP (arXiv 2602.18591, ICLR 2026): 공동 모델의 gradient affinity와 실제 subset MTL gain을 학습한 보정기를 결합한다. affinity와 실제 gain의 차이를 명시적으로 다룬다. RCTL 결과를 clustering에 넣을 수 없는 현재 조건에서는 그대로 채택할 수 없다.
+- Entangled by Design (arXiv 2607.25532): tabular ICL의 spurious feature routing과 environment-stratified context를 다룬다. context 조건을 나누는 발상만으로 신규성을 주장하지 않는다.
+- On the Role of Time Series Clustering in Traffic Matrix Prediction (arXiv 2604.26081): Abilene/GÉANT의 histogram/ACF/PSD 및 random clustering을 비교한다. grouping 의미보다 분할 자체가 이득일 수 있다는 직접 반론. 최종 비교에는 같은 K의 random/balanced partition이 필요하다. OD flow와 Milan grid 활동량은 구분한다.
+- TabClustPFN (arXiv 2601.21656): TabICL encoder 기반의 별도 사전학습 unsupervised sample clustering 모델이다. 회귀 TabICLv2 context를 이용한 cell grouping과 같은 모델·문제가 아니다.
+- Montero-Manso & Hyndman 2021 §3.3의 global 일반화 논의는 series 간 독립성과 effective sample size를 가정한다. 잔차 상관을 추가한 것만으로 그 정리를 RCTL 성능 보장으로 바꿀 수 없다.
+
+## 아직 채택하지 않은 다음 원리 검토
+
+함께 발생한 여러 cell의 변동이 공유 학습에서 독립적인 자료 증가를 의미하지 않을 수 있다는 문제를 살펴본다. 단, 높은 잔차 상관 자체는 곧 negative transfer가 아니며, 단순 모델의 미설명 구조·전처리 보충의 영향일 수 있다. 동시 의존성, 조건부 관계 차이, 실제 공유 이득을 구분해야 한다.
+
+주의: TabICL에 넣는 모든 행을 유지한 채 cell별 행의 순서나 대응 시각만 바꾸면 같은 표의 순열일 뿐이다. 이를 독립성 개입 실험으로 제안하지 않는다. covariance를 이용한 단순 평균 추정의 이득이나 평균제곱오차 분해를 MAE 기반 RCTL의 이득으로 바꾸어 설명하지 않는다.
+
+현재 추천 후보는 아직 확정하지 않았다. 추가 모델 실행 전에 가장 강한 기존 방법과 같아지는지, 데이터 의존성에 대한 새로운 결정이 실제 최종 학습에 영향을 주는지 좁혀야 한다. 자료·환경 접근성은 해결되었으며 외부 blocker는 없다.
+
+## 16 cell의 실제 추론과 후보 수정
+
+- 공통 64개 anchor의 예측으로 실제 query를 대신하는 첫 risk-table 후보를 실행했다. 실제 입력을 직접 예측한 MAE 0.072614에 비해 anchor 사용 MAE가 0.140444로 악화되었다. 최근값을 복원해도 0.125104여서 이 후보를 기각했다. 이 후보로 RCTL을 학습하지 않았다.
+- 다음 후보는 cell의 실제 query 입력 각각에 TabICL을 적용하고, 공통 기준 예측에서 벗어나는 정도에 대한 absolute-loss 곡선을 상태별로 합산한다. 직접 입력은 보존되지만 공유 규칙의 함수군은 `f0(x)+delta_cluster,state(x)`로 제한된다. RCTL risk의 정확한 대리물이 아니다.
+- 04 계획의 새 추론은 16 context × 504 sample, cell당 query 168개, 총 2688행이며 약 34.13초에 완료했다. 누적 TabICL 36 context, query 20352행. RCTL 학습은 이 기록 작성 시 0회.
+- 다음 주 설계 구간의 단순 surrogate MAE: full-risk 0.085257, 실제 target 기반 risk 0.086252, KNN-risk 0.090493, median-only 0.084888, median+IQR 0.084712, global Ridge 0.089022. 이는 새 후보가 input 양자화 때문에 붕괴하는 문제는 피했지만, full distribution이나 새 partition의 우위를 보인 결과는 아니다.
+- 같은 TabICL risk 추정으로 수정값을 정했을 때 PCC partition의 MAE가 0.084242로 full-risk partition보다 작았다. 따라서 현재 자료에서 clustering 개선이 입증되었다고 판단하지 않는다.
+- RCTL과 surrogate의 관계가 미확인인 상태를 더 이상 문장으로 넘기지 않고, 04 계획에서 이미 정한 5 partition 및 2 seed 비교를 소속/설정 hash 고정 뒤 실행한다. 이는 후보의 사후 확인이며 결과로 clustering을 조정하지 않는다. 작은 차이와 학습 seed 변동은 구분한다.
+- 공식 Keras RCTL과 Torch port의 복사된 가중치에서 forward 차이는 입력 1채널 최대 5.96e-7, 확장 9채널 최대 1.91e-6이었다. 학습 경로까지 동일하다는 뜻은 아니다. `rctl_port_check.json`.
+- 직전 goal turn은 완료된 실제 추론 handle의 결과를 회수하여 다음 행동을 바꾸었으므로 progress로 분류한다. 외부 blocker는 없다.
+
+## RCTL 완료와 B2 기각
+
+- 29/29 fits 완료, 1,565 epochs, wall time 1,658.14초. `summarize_rctl_pilot.py`로 hash, 예측의 유한성, 전 cell·query의 누락·중복 여부를 확인했다. 최종 20일은 이제 읽은 상태다.
+- TabICL risk clustering의 primary MAE는 두 seed에서 0.08732813, 0.08776006. empirical risk clustering은 0.08160040, 0.08351629. 각각 7.02%, 5.08% 불리했다. 첫 seed의 PCC 대비 2.84% 개선만으로 후보를 채택하지 않는다.
+- B2는 추천안에서 기각했다. `07_rctl_candidate_decision.md`에 범위·비교·해석을 정리했다. peak 보조 지표의 일부 이득을 primary 성공으로 바꾸지 않는다.
+- RCTL 29-fit 상한을 모두 사용했다. 추가 RCTL 학습은 시작하지 않는다. TabICL 누적 사용은 36 contexts, 20,352 query rows로 변하지 않았다. 기존 test를 새 설계에 참조하면 이후 개발 자료로 취급한다.
+
+## 후속 원리 확인과 전체 자료 진단
+
+- `08_finite_sample_information_plan.md`를 먼저 고정하고, MAE sample-median learner의 동일 조건부 분포/다른 공동 의존성 반례를 실제 계산했다. 독립 sample pooling은 MAE를 0.012957 줄였고 완전 중복 조건은 이득 0이었다. RCTL 확인으로 대체하지 않는다.
+- 한 주의 실제 TabICL residual/median indicator pair 순위는 앞뒤 기간에 불안정했다. 공분산 항을 추가하는 안은 추천하지 않았다. 기존 GLS pooling·quantile score inference, PPCI의 label 조건을 원문과 비교하여 `09_additional_path_audit.md`에 기록했다.
+- `10_population_scope_plan.md` 후 10,000 grid의 처음 35일만 학습 없이 진단했다. pilot은 비교적 높은 활동량 영역이며, 전체 자료의 일·주 기준 성능과 차이가 있다. B2 실패를 모든 도시 영역의 결론으로 확대하지 않는다.
+- 평균 weekday profile은 앞뒤 2주에서 PCC 중앙값 0.9841로 안정적이나 peak mode 일치율은 38.23%였다. 원문 UPC의 PCC 단계가 보완할 수 있으므로 peak 값만으로 실패를 선언하지 않았다.
+- `11_upc_core_stability_plan.md`의 공개된 해석을 고정한 뒤 큰 peak group의 단계 전체를 계산했다. 99.86% cell이 두 기간에 배정되었으며 주 해석 K=3에서 소속 일치율 56.64%, ARI 0.2158이었다. 배정 순서·파형 해석별 차이를 모두 보존했다. public clustering 코드와 원문 Algorithm 1이 다르고 작은 group 처리도 불명확하므로 원본 UPC 재현으로 부르지 않는다.
+- 세 신규 진단의 계산 시간은 총 0.839초이며 모델 호출은 없다. `12_population_and_upc_findings.md`에 해석을 정리했다. 소속 불안정이 예측 손해인지 확인하기 전에는 새로운 연구 주제로 추천하지 않는다.
+- 현재 goal은 미완료·active다. 외부 blocker는 없으며 이번 turn은 실제 RCTL 결과 회수·검증, 반례 확인, 새로운 자료 진단과 후속 판단을 만든 progress turn이다. 추천 후보가 없다는 이유만으로 완료 또는 blocked로 표시하지 않는다.

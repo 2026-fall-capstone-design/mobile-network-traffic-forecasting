@@ -1,0 +1,32 @@
+from pathlib import Path
+import urllib.request,json,hashlib
+from pypdf import PdfReader
+
+base=Path(__file__).resolve().parent/'sources/model_mechanism_72'
+path=base/'Globalization_arxiv_current.pdf'
+log=base/'pdf_retrieval_followup.json'
+assert not path.exists() and not log.exists()
+url='https://arxiv.org/pdf/2507.11729'
+r={'url':url,'date':'2026-09-26','reason':'Versioned response ended at 6,291,456 bytes without a valid EOF. One unversioned public source attempt; failed bytes retained.'}
+try:
+    with urllib.request.urlopen(url,timeout=25) as resp:
+        r.update(status=resp.status,headers=dict(resp.headers))
+        chunks=[]
+        total=0
+        while True:
+            chunk=resp.read(1024*1024)
+            if not chunk: break
+            total+=len(chunk)
+            assert total+6_291_456<=20_000_000
+            chunks.append(chunk)
+    data=b''.join(chunks)
+    assert data.startswith(b'%PDF-')
+    path.write_bytes(data)
+    reader=PdfReader(path)
+    pages=[p.extract_text() or '' for p in reader.pages]
+    path.with_suffix('.txt').write_text('\n'.join(f'\n=== PDF PAGE {i+1} ===\n{t}' for i,t in enumerate(pages)),encoding='utf-8')
+    r.update(saved=True,bytes=len(data),pages=len(pages),sha256=hashlib.sha256(data).hexdigest(),first_page_excerpt=pages[0][:600])
+except Exception as exc:
+    r.update(saved=False,error=f'{type(exc).__name__}: {exc}')
+log.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(r,ensure_ascii=False))

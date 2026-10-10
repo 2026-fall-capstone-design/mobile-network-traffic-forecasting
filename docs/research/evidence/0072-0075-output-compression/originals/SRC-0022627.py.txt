@@ -1,0 +1,41 @@
+from pathlib import Path
+from html.parser import HTMLParser
+import urllib.request,json,hashlib
+from pypdf import PdfReader
+
+base=Path(__file__).resolve().parent/'sources/output_compression_73'
+base.mkdir(parents=True,exist_ok=True)
+manifest=base/'manifest.json'
+assert not manifest.exists()
+items=[
+ ('ForeCA_ICML2013.pdf','https://proceedings.mlr.press/v28/goerg13.pdf'),
+ ('MBRDR_2024.html','https://www.csam.or.kr/journal/view.html?doi=10.29220/CSAM.2024.31.2.179'),
+ ('GNN_clustering_README.md','https://raw.githubusercontent.com/NGMLGroup/Time-Series-Clustering-with-GNNs/main/README.md'),
+ ('GNN_clustering_author.html','https://andreacini.github.io/publications/'),
+ ('YooCook_2008_metadata.html','https://pure.ewha.ac.kr/en/publications/response-dimension-reduction-for-the-conditional-mean-in-multivar/')]
+records=[]
+pdf_bytes=0
+for name,url in items:
+    r={'name':name,'url':url,'access_date':'2026-09-26'}
+    try:
+        with urllib.request.urlopen(url,timeout=20) as resp:
+            data=resp.read(15_000_001)
+            r.update(status=resp.status,content_type=resp.headers.get('Content-Type'),resolved_url=resp.url)
+        assert len(data)<=15_000_000
+        path=base/name
+        assert not path.exists()
+        if name.endswith('.pdf'):
+            assert data.startswith(b'%PDF-')
+            pdf_bytes+=len(data)
+            assert pdf_bytes<=15_000_000
+        path.write_bytes(data)
+        r.update(saved=True,bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            pages=[p.extract_text() or '' for p in PdfReader(path).pages]
+            path.with_suffix('.txt').write_text('\n'.join(f'\n=== PDF PAGE {i+1} ===\n{t}' for i,t in enumerate(pages)),encoding='utf-8')
+            r['pages']=len(pages)
+    except Exception as exc:
+        r.update(saved=False,error=f'{type(exc).__name__}: {exc}')
+    records.append(r)
+    manifest.write_text(json.dumps(records,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    print(json.dumps(r,ensure_ascii=False),flush=True)

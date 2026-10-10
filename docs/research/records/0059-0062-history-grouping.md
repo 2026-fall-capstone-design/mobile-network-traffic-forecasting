@@ -104,3 +104,5 @@ Tab의 두 grouping은 전반 양수·후반 음수다. Ridge geo2는 양쪽 절
 원본 예측 NPZ 두 개, 계획·코드·설정·호출·결과·전후 원장을 연결했다. partial과 final의 공통 숫자 배열은 모두 같으며, final에는 context 시점·scale·날짜가 추가돼 있다. final의 날짜는 object dtype으로 직렬화돼 있어 숫자 배열은 `allow_pickle=False`로 읽고 날짜 문자열은 정적으로 대조했다. 객체 역직렬화나 모델 로딩은 하지 않았다. [작은 근거와 검수 명령](../evidence/0059-0062-history-grouping/README.md)
 
 재검토하려면 grouping 단위·입력·공유량·새 평가 기간·선택 비용 가운데 무엇이 달라지는지 적어야 한다. 현재 결과로 Tab 예측을 전부 부정하거나, 반대로 global·L2의 좋은 점수만 골라 clustering→RCTL을 채택하면 안 된다. 입력 길이 선택 자체의 선행연구, 61의 논리/MAC 산술, 최종 RCTL의 짧은 모델 학습·성능은 이 묶음에서 검증하지 않았다. [출처별 범위](../sources/history-051.md) · [주장과 검수](../verification/history-051.md) · [과거 시도 색인](../prior-attempts.md)
+
+후속 [74의 Tab 직접 예측과 출력 압축](0072-0075-output-compression.md)은 mean·공통공간28열·다른 context/query 시점을 사용했다. 60과의 점수 차이를 공간 입력이나 출력 압축의 단독 효과로 해석하지 않는다.

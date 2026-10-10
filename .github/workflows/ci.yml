@@ -176,6 +176,11 @@ jobs:
           --manifest docs/research/evidence/0069-0071-peak-objective/manifest.json
           --output .research-archive/ci-peak-objective.json
 
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_output_compression_history.py
+          --manifest docs/research/evidence/0072-0075-output-compression/manifest.json
+          --output .research-archive/ci-output-compression.json
+
   deploy:
     name: deploy-pages
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
