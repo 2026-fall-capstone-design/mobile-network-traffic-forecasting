@@ -156,3 +156,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H063 출처 목록](history-063-sources.jsonl)은 MMR과 원66·68의7그룹14경로를 연결합니다. [실제 독해 범위](../sources/history-063.md)는35쪽 본문·시각과 파생TXT/HTML/preview이며 새복사·로컬본문/JSON 신규가산은0입니다.
 
 [H064 출처 목록](history-064-sources.jsonl)은 MRI와 원66·68의6그룹12경로를 연결합니다. [실제 범위](../sources/history-064.md)는32쪽 본문·시각, TXT32본문 대응검사, HTML 의미·메타 정적 독해, preview1개와 공식 TeX 지정 범위입니다. 새복사·로컬본문/JSON 신규가산은0이며 표현 네 개를 네 연구로 세지 않습니다.
+
+[H065 출처 목록](history-065-sources.jsonl)은 q-FFL과 원66·68의9그룹18경로를 연결합니다. [실제 범위](../sources/history-065.md)는 PDF7쪽·TXT7본문 대응·HTML 의미 독해·원preview4개·TeX 지정범위와 외부 원알고리즘8파일입니다. 새복사·로컬본문/JSON 신규가산은0이며 파생표현을 독립 연구로 세지 않습니다.

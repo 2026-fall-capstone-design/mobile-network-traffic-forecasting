@@ -1,0 +1,330 @@
+{
+  "batch_id": "history-065",
+  "claims": [
+    {
+      "claim_id": "H065-C01",
+      "claim": "공식 arXiv v2 PDF는 원본과 바이트동일하며 Crossref는 ICC2025 1438–1444쪽을 기록한다.",
+      "source_location": "SRC-0062706; primary-acquisition; Crossref title/author/page/date",
+      "verification_method": "해시·공식 메타데이터 대조",
+      "limit": "IEEE 최종 PDF 내용은 미확인",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C02",
+      "claim": "PDF7쪽 텍스트·시각, 그림4·표2·서지40항목을 읽었다.",
+      "source_location": "SRC-0062706:1–7; first-read",
+      "verification_method": "실제 독해 로그와 원preview4개 대조",
+      "limit": "인용40논문 전체 독해 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C03",
+      "claim": "TXT7본문은 PDF 대응검사, HTML은 가시/메타/주석/inline script와 diff의 정적 독해다.",
+      "source_location": "SRC-0062707/08; format-audit",
+      "verification_method": "7본문 정규화와 abs5hunk 비교",
+      "limit": "raw TXT682행/HTML650행 별도 전수 수동독해로 세지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C04",
+      "claim": "원66·68은 보호 목적을 검토한 과거 기록이며 현재 연구 재개 명령이 아니다.",
+      "source_location": "SRC-0022017:1–34;SRC-0022019:1–91",
+      "verification_method": "당시 질문·판단·실행 예산 대조",
+      "limit": "이번 모델·추론 실행 승인으로 사용하지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C05",
+      "claim": "q-FFL은 주어진 집단의 p_k F_k^(q+1)/(q+1)를 최소화하며 clustering 자체가 아니다.",
+      "source_location": "SRC-0062706:2 Eq1–2/§II",
+      "verification_method": "관측단위·목적 정의 대조",
+      "limit": "MMR benchmark나 MRI baseline 정규화와 다름",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C06",
+      "claim": "q0은 식1 목적과 같지만 finite q10/편차 평탄화는 정확한 minimax 해의 증명이 아니다.",
+      "source_location": "SRC-0062706:2,4;main_v3.tex96",
+      "verification_method": "정의와 실험적 표현의 논리 범위 대조",
+      "limit": "저자 관찰을 비볼록 최적성 보장으로 확대하지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C07",
+      "claim": "Abilene12node30link의6개월5분 수요행렬을 node 유입 Gbps로 합산한다.",
+      "source_location": "SRC-0062706:3 §III;TeX134",
+      "verification_method": "데이터·방향·단위 확인",
+      "limit": "Milan activity 또는 mobile cell 실험 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C08",
+      "claim": "κ70은 과거 및 현재71입력에서 다음1값 예측이다.",
+      "source_location": "SRC-0062706:3 §II.C/III",
+      "verification_method": "입력식/target식/시간 인덱스",
+      "limit": "기호 재사용만으로 구현의 target leakage 확정하지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C09",
+      "claim": "5개 데이터 크기3000/2000/8000/5000/7500 및 D1–4의 지정 잡음이 보고됐다.",
+      "source_location": "SRC-0062706:3;TeX136",
+      "verification_method": "원인/크기/분포별 파라미터 대조",
+      "limit": "D5 추가 잡음·seed·node ID·파라미터 관례 미확인",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C10",
+      "claim": "noise 전 q별 손실 불변성은 저자의 iid 해석이며 iid 검증 자체가 아니다.",
+      "source_location": "SRC-0062706:3 마지막 §III;TeX136",
+      "verification_method": "서술과 독립/동일분포 조건 구분",
+      "limit": "실제 자료가 non-iid임을 반대로 증명하는 것도 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C11",
+      "claim": "마지막100 test, 잔여80/20과 StandardScaler는 보고되나 fit/시간 경계는 재구성되지 않는다.",
+      "source_location": "SRC-0062706:3 §IV;TeX139",
+      "verification_method": "분할/전처리 명시·미명시 구분",
+      "limit": "실제 leakage가 확인됐다는 주장 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C12",
+      "claim": "LSTM2층/MSE/batch256/lr1e-4/global100과 CPU/TF환경 및 q당 여러 시간은 저자 보고다.",
+      "source_location": "SRC-0062706:3,5;TeX139–140,206",
+      "verification_method": "설정과 비용 서술 대조",
+      "limit": "hidden width/local epoch/seed/원로그 미확인;이번 측정 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C13",
+      "claim": "두 표의120개 인쇄값은 PDF와 TeX에 대응한다.",
+      "source_location": "SRC-0062706:4 TableI,6 TableII;TeX162–167,217–222",
+      "verification_method": "행별 원문·정확 유리수/문자 대조",
+      "limit": "q열12개 포함, 결과값108개;원예측 재현 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C14",
+      "claim": "식3은 sample CV이며 인쇄손실로54.6325→45.5245,상대16.6713% 감소한다.",
+      "source_location": "SRC-0062706:4 Eq3/Fig2;numeric audit",
+      "verification_method": "직접식과 statistics.stdev 산술 대조",
+      "limit": "정확도16% 향상이나 유의성 주장이 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C15",
+      "claim": "q0→10에서5개 중4개의 인쇄 MSE는 증가한다.",
+      "source_location": "SRC-0062706:4 TableI;numeric deltas",
+      "verification_method": "각client 같은열 차이",
+      "limit": "MSE 스케일/seed 유의성 미확인",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C16",
+      "claim": "q>0의 TableI f_q는 식2의 어떤 비음수 합1 가중치로도 표시 손실에서 얻을 수 없다.",
+      "source_location": "SRC-0062706:2 Eq2,4 TableI;numeric upper bounds",
+      "verification_method": "각입력±.00005를 허용한 max상한",
+      "limit": "실제로 어떤 계산이 결과를 생성했는지는 미확인",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C17",
+      "claim": "TableI f_q는 단순평균과 반올림 정밀도 내 양립하지만 q8/10의 인쇄값 직접 평균은 .0001 다르다.",
+      "source_location": "SRC-0062706:4;numeric mean checks",
+      "verification_method": "입력·출력 반올림 구간을 함께 비교",
+      "limit": "저자가 단순평균을 썼다고 확정하지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C18",
+      "claim": "그림1 global loss와 TableI 이름만으로 q별 목적값의 동일 MSE 척도 비교를 보장하지 않는다.",
+      "source_location": "SRC-0062706:3–4 Fig1;Eq2/TableI",
+      "verification_method": "곡선축·목적정의·표의 불일치",
+      "limit": "실제 훈련 목적이 잘못 구현됐다고 단정하지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C19",
+      "claim": "RSA는 shortest path/first-fit과 링크별 무한 spectrum capacity를 가정한다.",
+      "source_location": "SRC-0062706:5 §V;TeX191",
+      "verification_method": "운영 가정 원문 대조",
+      "limit": "유한 용량 blocking/지연 또는 실제 DT 배포 실증 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C20",
+      "claim": "node 유입 합계 예측을 random destination의 source-node 연결 요구량으로 쓰는 추상화다.",
+      "source_location": "SRC-0062706:3,5;TeX134,193",
+      "verification_method": "예측량과 행동단위 연결",
+      "limit": "실제 node-pair flow를 그대로 예측했다고 쓰지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C21",
+      "claim": "BPSK10Gbps/12.5GHz slot과 ceil(rate/10) 변환을 쓴다.",
+      "source_location": "SRC-0062706:5;TeX193",
+      "verification_method": "물리단위·ceiling 수식",
+      "limit": "이 변환을 단위 없는 Milan activity에 대입하지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C22",
+      "claim": "부족량 본문은 pred−true의 음수합인데 TableII는 양수다.",
+      "source_location": "SRC-0062706:5,6;TeX195",
+      "verification_method": "조건부 합의 부호와 표",
+      "limit": "저자 의도를 절댓값으로 임의 교정하지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C23",
+      "claim": "TableII 평균은 정확히 맞으며 Connection5 마지막 소제목은 원문에 u_k로 중복된다.",
+      "source_location": "SRC-0062706:6;TeX216–222",
+      "verification_method": "표/TeX시각·평균 산술",
+      "limit": "팀표 o5 표시의 해석을 공개;원문은 보존",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C24",
+      "claim": "평균부족62.4→71.6/과잉75.8→74.4이며5연결 모두 부족 증가,과잉은 혼합이다.",
+      "source_location": "SRC-0062706:6 TableII;5 discussion",
+      "verification_method": "열별/평균 차이 계산",
+      "limit": "균형 개선을 서비스 부족 감소로 바꾸지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C25",
+      "claim": "양수 table u/o의 식4 CV는69.2916→65.5597로상대5.3858% 감소하고 q6→8은 증가한다.",
+      "source_location": "SRC-0062706:5 Eq4,6 Fig3;numeric audit",
+      "verification_method": "10값 sample CV",
+      "limit": "QoS 손해가6% 줄었다는 뜻 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C26",
+      "claim": "본문 부호를 적용한 식4 값은 그림3 범위를 재현하지 않는다.",
+      "source_location": "SRC-0062706:5–6;numeric signed CV",
+      "verification_method": "음수 under/양수 over로 별도 대입",
+      "limit": "실제 저자 구현 확인 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C27",
+      "claim": "인쇄 식5는 합이0이 아닐 때100이며0이면 정의되지 않는다.",
+      "source_location": "SRC-0062706:5 Eq5;TeX229",
+      "verification_method": "유리수 약분과6행 대입",
+      "limit": "그림4 감소를 이 식으로 재현 불가;논문전체 무효 판단 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C28",
+      "claim": "두 평균의 sample CV는13.7123→2.7122로상대80.2208% 감소하는 해석 후보다.",
+      "source_location": "SRC-0062706:6 TableII/Fig4;numeric candidate",
+      "verification_method": "별도 정의를 명시한 산술",
+      "limit": "저자 확인/plot code 없는 후보이지 확정 교정 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C29",
+      "claim": "식2/부호/식5/표 소제목은 공식 TeX에도 같은 표기다.",
+      "source_location": "main_v3.tex92,195,216,229",
+      "verification_method": "인쇄 PDF와 TeX 대조",
+      "limit": "최종 IEEE판 수정 여부 미확인",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C30",
+      "claim": "공식 fair_flearn의8파일890행/그중5코드를 읽었으며 원 q-FFL ICLR2020 구현이다.",
+      "source_location": "pinned commit README/LICENSE/requirements/main/qffedavg/fedbase/client/tf_utils",
+      "verification_method": "파일 목록·해시·전체정적독해",
+      "limit": "Panda 통신 구현 확인이나 repo 전체독해 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C31",
+      "claim": "upstream q-FedAvg는 global model 갱신 전 전체 local training loss와 local model 차이를 쓴다.",
+      "source_location": "qffedavg.py48–59;client.py53–54,64–78",
+      "verification_method": "함수 호출·데이터 흐름 정적 추적",
+      "limit": "model-specific loss/optimizer 구현 전체는 미독해",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C32",
+      "claim": "upstream h에는loss^(q−1)||g||²와loss^q/eta가 있고 집계는 sumDelta/sumh이다.",
+      "source_location": "qffedavg.py59–65;fedbase.py170–187;tf_utils.py115–124",
+      "verification_method": "제곱norm·분모·epsilon 위치 확인",
+      "limit": "단순 loss^q 가중 local model 평균과 다름",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C33",
+      "claim": "upstream q0 집계는 선택된 local models의 단순평균으로 약분된다.",
+      "source_location": "같은 집계 함수;numeric scalar example",
+      "verification_method": "원코드 실행 없이 대수/작은정확산술",
+      "limit": "통신 논문의 q0 구현을 확인한 것이 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C34",
+      "claim": "sampling1 균등/2 표본수비례 비복원이며 aggregate2에 표본수가중은 직접 없다.",
+      "source_location": "fedbase.py116–149,170–187",
+      "verification_method": "분기와 집계 흐름 대조",
+      "limit": "전체참여시 q0이 표본수비례평균과 자동같지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C35",
+      "claim": "upstream Client는 합친자료를 seed비0이면 무작위80/10/10,seed0이면val=test로 둔다.",
+      "source_location": "client.py10–34",
+      "verification_method": "실제 분할 대입 정적독해",
+      "limit": "시계열 마지막100 test와 동일시하지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C36",
+      "claim": "upstream TF GPU1.10/분류 dataset목록은 통신TF2.10.1/Abilene회귀와 다르다.",
+      "source_location": "requirements.txt;main.py10–25;SRC-0062706:3",
+      "verification_method": "환경/입출력설정 구분",
+      "limit": "의존 설치나 실행성 검증 아님",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C37",
+      "claim": "확인한 논문·abs·TeX와 제목/저자검색에서 통신 구현 연결을 찾지 못했다.",
+      "source_location": "external-version-check;primary search;upstream identity",
+      "verification_method": "공개된 확인범위를 한정",
+      "limit": "전세계 공식코드 부재 주장 아님;OpenReview403내용미독해",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C38",
+      "claim": "원예측/seed반복/시간·메모리로그 미확인이며 이번 계산은 인쇄값의 결정적 산술이다.",
+      "source_location": "원문7쪽/source목록;numeric/format manifest",
+      "verification_method": "보고·미확인·현재수행 분리",
+      "limit": "새 모델·원코드 import/실행·난수0",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C39",
+      "claim": "fairness 지표를 기존 clustering에 붙이거나 Tab loss를 대입하는 것만으로 신규 보호 성과가 되지 않는다.",
+      "source_location": "SRC-0022017/19;기존 MMR/MRI/group-risk기록",
+      "verification_method": "기존 판단과 실제 단위/행동 범위 대조",
+      "limit": "실행하지 않은 새 fairness RCTL의 실패를 주장하지 않음",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H065-C40",
+      "claim": "H065는 제한된 문헌 묶음 검수이며66–68최종통합/남은기록/비용/접근/최종검수는 남는다.",
+      "source_location": "H065 manifest remaining;state",
+      "verification_method": "완료와 공백 구분",
+      "limit": "전체 Goal 완료 선언 아님",
+      "semantic_second_pass_complete": true
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "created_at_utc": "2026-10-10T09:27:11.605846+00:00",
+  "reviewed_at_utc": "2026-10-10T09:29:57.669896+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 초안 작성 후 별도 원문 재대조. 자동 검사 실행만으로 의미 검수를 대신하지 않음.",
+  "independent_reviewer": false
+}

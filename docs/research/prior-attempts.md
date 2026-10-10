@@ -347,7 +347,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 | 평균은 나빠도 최악cell 보호에는 유리한가 | [66–68 저장 위험](records/0066-0068-group-risk.md) | 기존24프로파일을 재사용한다. 전체/뒤 모든top-k손해와 앞기간·같은cell예외를 함께 남기며 새fairness학습 반박으로 확대하지 않는다. |
 | Tab 오차를 빼면 RCTL 초과손해가 되는가 | [66–68 기준 risk 예](records/0066-0068-group-risk.md) | teacher 오차와 같은 함수집합의 최적risk를 구분한다. baseline·분모·운영손해와 허용행동을 먼저 정의한다. |
 
-MMR·MRI의 후속 일차문헌 대조는 아래 기록에 연결한다. q-FFL과 세 목적의 최종 통합은 남아 있다. 검색결과52블록·논문74쪽 보관과 본문 검증 완료를 구분한다.
+MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 세 목적의 최종 통합과 실행 근거 공백은 남아 있다. 검색결과52블록·논문74쪽 보관과 본문 검증 완료를 구분한다.
 
 ## 집단별 최적 위험을 뺀 보호 — MMR / minimax regret
 
@@ -356,3 +356,7 @@ MMR·MRI의 후속 일차문헌 대조는 아래 기록에 연결한다. q-FFL�
 ## 기준 대비 개선 비율의 보호 — MRI / relative improvement
 
 검색어: MRI, MMRI, maximin relative improvement, Kalai–Smorodinsky, baseline, oracle gap, leximin, 손해 없음. [66·68 MRI](records/0066-0068-mri.md)에서 계절 MAE로 단순히 나누는 것과 같은 함수집합의 개선 가능 폭으로 정규화하는 것의 차이를 확인하세요. 작은 분모·기준 선택·집단 최적값 추정, 시간순 평가와 비용이 남습니다. ACS의 400조건 빈도와 선택6사례는 RCTL의 cell 보호율이 아닙니다.
+
+## 편차 감소와 부족 할당의 구분 — 통신 q-FFL / q-FedAvg
+
+검색어: q-FFL, q-FedAvg, Abilene, fairness, CV, under-provisioning, 과잉·부족, 식5, 80%. [66·68 q-FFL](records/0066-0068-qffl.md)에서 MSE 편차 감소와 개별 손실 증가, 부족/과잉 균형과 부족량 증가를 먼저 확인하세요. 원래 알고리즘의 공개 코드는 통신 실험 구현으로 확인되지 않았습니다. 지표 이름 변경이나 Tab loss 대입만으로 보호 효과와 신규성을 주장할 근거가 생기지 않습니다.
