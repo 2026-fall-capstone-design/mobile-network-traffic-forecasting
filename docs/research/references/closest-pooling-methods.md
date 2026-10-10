@@ -58,4 +58,4 @@
 
 ## 회귀 전이의 직접 원문·코드 대조
 
-[H079](../records/0079-regression-transferability.md)에서 Nguyen 등의 UAI2023 본문·보충자료23쪽과고정score를 확인했다. 이론은 target head 재적합과 iid·bounded ReLU 조건을 사용한다. 높은 전이 점수는 같은 scalar target pooling의 충분조건이 아니며, code의반환잔차와논문의regularized objective도구분한다. Task2Vec·NTKMTL의후속본문검수는별도로계속한다.
+[H079](../records/0079-regression-transferability.md)에서 Nguyen 등의 UAI 2023 본문·보충자료 23쪽과 고정 점수 함수를 확인했다. 이론은 target head 재적합과 iid·bounded ReLU 조건을 사용한다. 높은 전이 점수는 같은 scalar target pooling의 충분조건이 아니며, 코드가 반환하는 잔차 점수와 논문의 regularized objective도 구분한다. Task2Vec·NTKMTL의 후속 본문 검수는 별도로 계속한다.

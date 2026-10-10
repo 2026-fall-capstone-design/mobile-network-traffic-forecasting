@@ -194,4 +194,4 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 
 ## H079: 원78 회귀 전이 12개 그룹
 
-[출처](../sources/history-079.md)와 [13개 목록](history-079-sources.jsonl)은 새 검토12개와 재참조findings1개를 구분한다. 새 독립본문4개·전체JSON3개, TXT2의23쪽 대응·PNG3의 직접열람이다. 원78의43개 외부그룹 중 다른31개는 이번 범위 밖이며, 그중 H074에서 읽은 manifest도 있어 모두미독해로세지않는다.
+[출처](../sources/history-079.md)와 [13개 목록](history-079-sources.jsonl)은 새 검토 12개와 재참조 findings 1개를 구분한다. 새 독립 본문 4개·전체 JSON 3개, TXT 2개의 23쪽 대응·PNG 3개의 직접 열람이다. 원78의 외부 43개 그룹 중 다른 31개는 이번 범위 밖이며, 그중 H074에서 읽은 manifest도 있어 모두 미독해로 세지 않는다.
