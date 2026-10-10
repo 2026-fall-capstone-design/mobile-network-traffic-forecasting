@@ -23,6 +23,7 @@ report_path = root / "docs/research/verification/history-090-document-check.json
 report = json.loads(report_path.read_text(encoding="utf-8"))
 counts = {}
 
+
 def check_target(url, source):
     part = urlsplit(url.strip("<>"))
     if part.scheme or part.netloc:
@@ -34,6 +35,7 @@ def check_target(url, source):
         assert anchor in target.read_text(encoding="utf-8"), (source, url)
     key = source.relative_to(root).as_posix()
     counts[key] = counts.get(key, 0) + 1
+
 
 def scan(value, source, key=""):
     if isinstance(value, dict):
@@ -47,6 +49,7 @@ def scan(value, source, key=""):
             check_target(url, source)
         if key in {"archive_path", "record_path", "verification_path"}:
             check_target(value, source)
+
 
 for item in report["document_sha256"]:
     if "/originals/" in item["path"]:
