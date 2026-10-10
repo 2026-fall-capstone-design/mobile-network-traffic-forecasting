@@ -150,3 +150,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [63·65 KDD 잔차 보정](records/0063-0065-kdd-residual.md)은 별도 모델로 잔차를 학습하는 선행 구조와 α 선택·잔차 부호·비교표·시간 및 통계량의 확인 범위를 정리했습니다. 검수 판본은 arxiv v2이며 다른 네 문헌과 65 전체 종합은 남아 있습니다.
 
 [64·65 PLOS copula 군집화](records/0064-0065-plos-copula.md)는 lag copula 거리·정리 가정·Lance–Williams 선행과 실제 사례의 범위를 연결합니다. 인구 본문과 그림의 WA 차이, Sim 검산, STMA 표기를 확인했습니다. 남은 문헌은 GP-Copula·TACTiS-2·conditional normalization이며 65 전체 종합은 진행 중입니다.
+
+[64·65 GP-Copula 검수](records/0064-0065-gp-copula.md)는 경험 CDF와 공유 예측의 선행, Electricity·Taxi의 손해 조건, 원논문과 공개 GluonTS 재구현의 차이를 연결합니다. 본문11쪽·보충12쪽·선택구현을 확인했으며 TACTiS-2·conditional normalization과65전체종합은 남아 있습니다.

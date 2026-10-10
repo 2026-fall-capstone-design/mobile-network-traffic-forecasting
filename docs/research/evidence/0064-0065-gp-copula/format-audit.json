@@ -1,0 +1,155 @@
+{
+  "batch_id": "history-059",
+  "main_text_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "main_visual_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "main_page5_original_preview": "SRC-0063858",
+  "original_TXT_pages_equal": 11,
+  "supplemental_text_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "supplemental_visual_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "main_figures": 3,
+  "main_tables": 3,
+  "main_references": 37,
+  "supplemental_figures": 3,
+  "supplemental_tables": 10,
+  "supplemental_references": 24,
+  "references_scope": "서지 목록 독해이며 인용된 논문61편의 본문 독해가 아니다. 목록 간 중복을 제거한 문헌수도 아니다.",
+  "official_HTML_whole_read": false,
+  "supplement_observations": [
+    {
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "section": "A–B",
+      "finding": "표지 Preprint/Under review 표기를 보존한다. A는 Woodbury/행렬식 보조정리로 O(dr^2+r^3) Gaussian loglikelihood를 계산한다. B는 m점 경험CDF의 winsorization δm=1/(4*m^(1/4)*sqrt(pi*log(m))) 및 이산값 학습jitter. A의 latent 예 x~N(Vx,D)는 인쇄문을 임의 수정하지 않는다."
+    },
+    {
+      "pages": [
+        3
+      ],
+      "section": "C / Figure 1 / Table 1",
+      "finding": "rank1,2,4,8,16,32,64,128,256. 5회 mean/95%CI. 최소 인쇄 test mean은 rank32, train은 높은 rank일수록 감소. rank16 train CI는 4.로 인쇄되어 있다. 곡선을 digitize하지 않았고 다른 표의 3회 std/SE와 구분한다."
+    },
+    {
+      "pages": [
+        3,
+        4
+      ],
+      "section": "D–E / Table 2",
+      "finding": "GARCH/VAR 조건과 Adam/batch16/L2=1e-8/clip10/10000updates/patience500. 표 lr후보[1e-4,1e-4,1e-2]와 본문 best1e-3/12조합이 일치하지 않는다. 원문 중복을 수정하지 않고 공개 재구현 기본값과 구분한다. rank10/m100/B20/dropout.01/layers2/eval400."
+    },
+    {
+      "pages": [
+        5
+      ],
+      "section": "F / Table 3",
+      "finding": "6datasets의 frequency/horizon/N/T와 Taxi filter/bounding box/.001grid/30min/pickup+dropoff/80%nonzero/2015train–2016test를 확인했다. Traffic는 도로점유율로 mobile network 자료가 아니다. 원데이터 재처리/실측은 하지 않았다."
+    },
+    {
+      "pages": [
+        5,
+        6
+      ],
+      "section": "G / Table 4–5",
+      "finding": "CRPS는 pinball 적분,400samples/10quantiles, CRPS-sum은 차원 방향 합산 후 평가. 표4 caption은3회 standard error. GP-scaling Taxi .346±.348의 조건부 비음수SE상한은 다음 단계에서 검산한다. 표5 parameter ratios는 main Table1과 일부 다르다."
+    },
+    {
+      "pages": [
+        7,
+        8
+      ],
+      "section": "H–I / Figure 2 / Tables 6–8",
+      "finding": "H의 DeepAR/MQCNN은 주변CRPS. 별도2dataset의 WAPE는 GP.083/.168,TRMF.105/.210,DeepGLO.109/.221. Fig2는6data×4steps 추정상관 그림으로 참공분산 검증이 아니다. Table6/7은 MSE/MSE-sum의3회 mean/SE이며 복수SE>mean을 반올림 구간으로 검산할 예정이다."
+    },
+    {
+      "pages": [
+        8,
+        9
+      ],
+      "section": "J / Figure 3",
+      "finding": "예측 samples10/50/100/200/400/600,3회95%CI. caption은100→600에서 GP평균.272→.271,Vec.52→.50. 추론시간은 초기비용 이후 거의 선형이라는 범위. 곡선 전체 점이나 모든 조건의 단조 개선을 주장하지 않는다."
+    },
+    {
+      "pages": [
+        8,
+        10
+      ],
+      "section": "K",
+      "finding": "scalar calendar features, hourly[1,24,168]/daily[1,7,14]/30min[1,2,4,12,24,48]. AWS c5.4xlarge16core32GB,MXNet/Zoneout/residual, 각 보고setup의 train+eval<5h. 전체탐색 합계비용/실측환경/로그는 미확인."
+    },
+    {
+      "pages": [
+        10
+      ],
+      "section": "L / Tables 9–10",
+      "finding": "GluonTS는 명시적 reimplementation. B20→2와 piecewise constant derivatives 제거. 원결과/재구현결과를 구분한다. original CRPS-sum행은 main Table2와 같은 수치지만 main은std,supplement는standard error로 명명한다. 재구현Taxi CRPS .339±.001은 README .339±.003과 다르다."
+    },
+    {
+      "pages": [
+        10,
+        11,
+        12
+      ],
+      "section": "References",
+      "finding": "참고문헌24건 서지를 읽었다. 해당24논문 본문 독해로 세지 않는다."
+    }
+  ],
+  "figure_limits": "곡선·상관행렬의 원배열/정확 점별값을 복원하지 않았다. main Fig3 N8 하삼각 대각포함36/캡션28을 구분한다.",
+  "full_paper_and_supplement_content_read": true,
+  "source_claim_second_pass_pending": false,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0,
+  "source_claim_second_pass_at_utc": "2026-10-10T05:25:48.700188+00:00"
+}

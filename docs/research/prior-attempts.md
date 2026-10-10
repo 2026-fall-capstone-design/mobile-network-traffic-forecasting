@@ -325,3 +325,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 경험 순위와 lag copula로 군집화 — 64·65 PLOS
 
 검색어: empirical CDF, rank, lag copula, serial dependence, Cramér–von Mises, Lance–Williams, Ward, silhouette, STMA, WA. [PLOS 검토](records/0064-0065-plos-copula.md)는 각시계열내lag의존을비교하는선행과정리의가정을연결합니다. 단순주변변환·전체쌍거리·계층병합을새방법으로반복하기전에,조건부변환이남길정보와최종RCTL성과를확인할차이를명시하세요.
+
+## 경험 CDF와 공유 확률 예측 — 64·65 GP-Copula
+
+검색어: Gaussian copula, empirical CDF, marginal transform, shared RNN, low-rank covariance, Jacobian, CRPS-sum, GluonTS. [GP-Copula 검수](records/0064-0065-gp-copula.md)는분포변환→공유신경망→역변환이기존연결임을확인합니다. 새실험은Tab이추가하는정보·비용과RCTL이배울남은정보를명시해야합니다. Electricity/Taxi의예외,원본/재구현설정·구간·지표차이를먼저확인하세요.

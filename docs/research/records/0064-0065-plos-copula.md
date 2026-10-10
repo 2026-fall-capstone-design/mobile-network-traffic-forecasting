@@ -122,3 +122,7 @@ boxplot의 모든 반복값·정확 분위수는 확보하지 않았다. seed, �
 원 TXT 22쪽은 page wrapper·외곽 공백·개행을 정규화한 뒤 새 PDF 추출과 같다. 원 PNG 5쪽도 시각 확인했다. 공식 HTML/XML은 서지·링크와 명시한 선택 구간만 확인했으며 전체 독해로 올리지 않았다. 수집 manifest의 다른 논문 항목을 읽은 것 역시 그 논문 본문을 읽은 것은 아니다.
 
 **GP-Copula, TACTiS-2, conditional normalization의 세 문헌과 65번 전체 판단·후속 이력 통합은 남아 있다.** [ECAI](0063-0065-ecai-interface.md)·[Heatload](0063-0065-heatload-residual.md)·[KDD](0063-0065-kdd-residual.md)의 검수와 이번 기록을 연결하되, 개별 문헌 검수나 PR 병합을 전체 연구기록 정리 완료로 표시하지 않는다.
+
+## 후속 범위: GP-Copula 검수
+
+[H059 GP-Copula 기록](0064-0065-gp-copula.md)에서본문11쪽·공식보충12쪽·고정공개구현의선택범위를추가검수했습니다. 위세문헌미완료는작성당시범위이며현재는TACTiS-2·conditional normalization의두문헌과65전체종합이남습니다. 기존검수JSON은당시snapshot으로보존합니다.
