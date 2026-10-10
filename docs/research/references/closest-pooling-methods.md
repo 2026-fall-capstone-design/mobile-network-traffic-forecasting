@@ -50,3 +50,8 @@
 [세 논문 비교](0076-response-transfer.md)와 [76의 상세 검수](../records/0076-response-transfer-audit.md)에서 Sobolev·Jacobian·TabDistill의 저장 원문을 확인했다. Jacobian의 자료량별 결과 반전과 TabDistill의 F1·variance 예외, 자기 기준 overlap, Fiat 표의 설명 차이를 함께 읽는다. 위의 77–79 문헌까지 검수를 완료했다는 의미는 아니다.
 
 [TabDistill 상호작용 표](../records/0076-tabdistill-interaction-audit.md)는 삭제 patch에 남은 27개 PMLB CSV를 보완한다. 항 수 증가가 항상 유리하지 않고 MAE·MSE의 비교 방향이 달라질 수 있다. 원 상호작용 표의 조건과 그 목록을 읽어 다시 학습하는 후속 코드의 조건을 구별한다.
+
+
+## 77의 동적 소속 근거
+
+[77 DLM의 직접 대조](../records/0077-dynamic-membership-dlm.md)에서 시간별 확률·EDP·전체구간 smoothing을 확인했다. 이는 시간적 안정화의 선행 사례이며 RCTL 학습 자료 partition의 우위까지 입증하지 않는다. 같은 고정코드의 정적 차이는 별도 조건으로 보존하고 원77의 나머지 두 논문은 후속 검수 대상으로 남긴다.

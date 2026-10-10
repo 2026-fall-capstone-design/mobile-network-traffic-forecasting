@@ -404,3 +404,8 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 [저장 결과](evidence/0076-response-transfer/README.md)는 PMLB 27개 task의 결과·순위·요약과 PyGAM 1개 실패를 제공한다. 논문의 평균 순위를 원단위 오차로 해석하거나 코드 기본 v3를 버전 없는 과거 결과에 소급하지 않는다.
 
 [상호작용 목록·예산별 결과](records/0076-tabdistill-interaction-audit.md)는 SPEX의 FBII/BII/FOURIER/FSII/MOBIUS/SII/STII와 Baseline·RuleFit을 찾는 관문이다. 4항 FBII는 Baseline 대비 MAE가 작은 과제 12개·큰 과제 15개이며, RuleFit 대비는 16개·11개다. MAE와 MSE가 반대로 움직인 사례와 같은 항이 반복되는 12행도 함께 확인한다. 새 비교는 원 순서·고유 항 수·실제 행 존재 여부를 보존하고, 생성 코드·분할·판본·시간 범위의 공백을 채우는 조건으로 설계한다.
+
+
+## 77의 동적 소속 근거
+
+[동적 소속 DLM·EDP·soft membership](records/0077-dynamic-membership-dlm.md)을 먼저 확인한다. 별칭이나 시간별 배정만 바꾼 설계보다 origin에서 가능한 규칙, 상태별 공유 이득, 같은 정보의 global·달력 대안, RCTL bank/재학습의 연결을 제시해야 한다. 저장 구현에는 η 사용·역방향 mean·다변량 index 등 재사용 전 확인 항목이 있다.
