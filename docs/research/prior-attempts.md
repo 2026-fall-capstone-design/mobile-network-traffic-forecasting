@@ -384,3 +384,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 예측모형의 계수·중요도로 군집화 — Globalization
 
 검색어: model-based whole TSC, weighted instance TSC, local/global, feature-transformer, target-transformer, M×M, AESO, peak load. [72 문헌 대조](records/0072-globalization-audit.md)를 먼저 확인하세요. Algorithm1은 local계수로 series를 묶고 Algorithm2는 global중요도로 sample거리를 가중합니다. 최종 RCTL계수에 의존하면 독립 소속 조건과 충돌하며, cell과sample의 군집 단위도 다릅니다. 평균nMAE만으로 채택하지 말고 최대MAPE·월별피크 반례, local200/global1000 trees, t+1입력 입수 가정, θ처리/query배정/seed 공백을 함께 확인해야 합니다.
+
+## 예측 가능한 출력·response DR·GNN 공동학습
+
+검색어: ForeCA, forecastability, spectral entropy, mbrdr, yc, prr, pfrr, upfrr, MinCutPool, static assignment, output compression. [73의 문헌·구현 대조](records/0073-forecastable-output-audit.md)를 먼저 확인하세요. 스펙트럼 집중도는 특정 horizon의 예측 손실이 아니며 mbrdr의 통계량은 자동 차원 선택이나 누적 설명분산과 다릅니다. GNN의 S는 예측 손실과 공동학습하므로 최종 RCTL 독립 소속 조건을 다시 확인해야 합니다. 같은 문헌 요약을 반복하기보다 바뀐 입력 정보·전처리·최종 예측기·비용 또는 확보한 원자료를 명시하세요.

@@ -24,3 +24,15 @@
 | Weighted instance TSC | pooled global 예측기의 feature 중요도 | sample 간 가중거리의 M×M행렬로 군집화. cell소속으로 옮기는 정의·θ의 부호 처리·새 query배정·실제 비용은 별도 확인 |
 
 평균 nMAE의 개선과 최대 MAPE·월별 피크의 반례를 함께 읽어야 한다. 같은 논문의 local200/global1000 trees, 목표 시각 t+1의 예보 입력 가정도 비교 조건이다. [KBS 판본 확인](../sources/history-071.md)은 서지·미리보기 범위이며 출판본 전체 방법 대조와 구분한다.
+
+## 73에서 검토한 예측 가능한 출력 표현
+
+[H072의 원문·구현 대조](../records/0073-forecastable-output-audit.md)는 다음 세 계열의 목적과 정보 의존을 구분한다.
+
+| 계열 | 사용하는 정보·목적 | 현재 연구에 옮길 때 확인할 조건 |
+|---|---|---|
+| ForeCA | whitening한 다변량 시계열의 스펙트럼 엔트로피를 줄이는 선형 방향 | 특정 horizon·관측 X·최종 예측 손실을 직접 최적화하지 않는다. 연속 밀도와 이산 질량의 정규화·순차 추출·초기화를 구분 |
+| mbrdr response DR | 조건부 평균 보존을 위한 출력 부분공간; yc/prr/pfrr/upfrr의 가정·추정량이 다름 | choose.fx의 표준화/원 X 분기, rank 조건, stats·evalues·검정 자유도를 구분. 설명분산 비율이나 자동 차원 선택으로 재사용하지 않음 |
+| GNN의 static assignment | 공유 학습 파라미터 S로 pool/lift하며 예측 손실·군집 regularizer를 공동 최적화 | 최종 RCTL 독립 소속과 다름. 전체 N 인코더 비용·split 이전 adjacency·최소 CLI의 고정 MinCut·미실행 반환 경로를 확인 |
+
+2024 MBRDR 본문은 이번에 확보했으나 GNN/2008 원논문 전체와 원실험·비용은 미확인이다. 문헌의 오류 가능성과 정적 코드 차이를 해당 연구 전체의 과학적 실패로 확대하지 않는다.

@@ -77,3 +77,7 @@ snapshot18의71개 실제 파일·19,148,054바이트를 원 manifest에 대조�
 ## Globalization의 후속 범위
 
 [H071 출처·판본](history-071.md)에서 정상PDF65쪽·TXT65본문·HTML·원PNG4개와 불완전PDF의 정확prefix를 대조했다. KBS의 전체Crossref/현재서지·미리보기와 출판본 본문 접근 실패도 구분했다. 위 H070의 당시 metadata·미독해 명세는 보존하며, ForeCA/mbrdr/GNN·검색11개는 후속 범위다.
+
+## 원73 문헌·구현의 후속 범위
+
+[H072 출처](history-072.md)에서 ForeCA·보충 증명, mbrdr manual·공식 R 소스와 추가 MBRDR2024, 고정 GNN 구현을 대조했다. 원본 14그룹·28경로는 기존 H070의 findings/수집 이력 및 외부 메타데이터와 연결하며 새 원문 복사는 없다. 과거 접근 실패와 이번 본문 확보를 구분한다. GNN/2008 논문 전체와 저장 검색은 남는다.
