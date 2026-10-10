@@ -233,3 +233,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [출처](../sources/history-088.md) · [목록](history-088-sources.jsonl) · [검수](../verification/history-088.md).16그룹55경로, 신규본문5·전체JSON8·선택NPZ2이며 budget_before는 H070과 같아 추가 가산0이다. 검색JSON과pyc는 다음 범위로 남긴다.
 
 [H089 출처](history-089-sources.jsonl)는 새 검색·캐시2그룹과 H088 재참조4개를 연결한다. 검색은 전체JSON1개, 캐시는 검토된 소스의 파생 관계이며 새 독립 본문 가산0이다.
+
+[H090 출처](history-090-sources.jsonl)는 중심11그룹·기존3그룹과 본문미검토29그룹을 구별한다. 새가산은은 본문6·전체JSON4이며 보존42파일이나문헌후보수를 독해성과로세지 않는다.

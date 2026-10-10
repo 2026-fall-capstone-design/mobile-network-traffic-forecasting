@@ -1,0 +1,654 @@
+{
+  "batch_id": "history-090",
+  "status": "source_checked",
+  "record_path": "../records/0090-input-partition-decision.md",
+  "record_sha256": "9bee3fb74f7611aeb00b62a36a42b2fbb8414691ac1f355de76c7559c9046aa2",
+  "claims": [
+    {
+      "claim_id": "H090-C01",
+      "title": "질문과 위치",
+      "claim": "원81은2026-09-26의 입력 분할 진입 검토다. cell별 sample을 같은 scalar RCTL에 모으는 방식에서, 같은 시각의 여러 cell 이력을 공동 입력으로 쓰고 cell별 미래값을 별도 출력하는 방식으로 바꾸면 유효한 결정이 생기는지를 물었다. H090은 이 판단·기호 계산·자료 보존을 정리하는 묶음이다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022043",
+          "source_sha256": "ccd4627047efc6e50c61d33f9f549c97206fb3750e4bbbe83ef67151c10e6184",
+          "locator": "전체 계획22행"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "도입·§1 실제로 달라지는 학습 행동"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H090-C02",
+      "title": "실행 상태",
+      "claim": "계획은 원문·정적 코드·기호식 검토였고 판단문은 새 TabICLv2 추론, 단순 회귀 적합, RCTL 학습·forward·gradient 계산을 모두0회로 기록한다. 새 다중 출력 모델의 성능표·학습 seed·실행 환경은 이 기록의 결과로 제시되지 않았다. 문서 보존 검사를 모델 실행 검증으로 바꾸지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022043",
+          "source_sha256": "ccd4627047efc6e50c61d33f9f549c97206fb3750e4bbbe83ef67151c10e6184",
+          "locator": "전체 계획22행"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "도입·확인 범위와 보존 자료"
+        },
+        {
+          "source_id": "SRC-0022041",
+          "source_sha256": "499dfbb937962c40ca8de83ba9d72ed0d2d1f1b771d991757d923ff3f8f4e27f",
+          "locator": "검증 요약 JSON 전체21행"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H090-C03",
+      "title": "행과 열",
+      "claim": "scalar 공유에서는 각 sample이 한 cell의 이력을 받아 그 cell의 다음 값 하나를 예측한다. 공동 입력·다중 출력에서는 cell별 이력이 서로 다른 열이고 정답도 고정된 cell별 출력 좌표다. context 행에 여러 cell의 sample을 섞는 것만으로 후자의 구현이 되지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§1 비교표와설명"
+        },
+        {
+          "source_id": "SRC-0000140",
+          "source_sha256": "bbcafbf3b05625c54d8102dc87aeb6849b1e73ab7b7a5d545ff3558346cc9fc5",
+          "locator": "공개요약 전체50행"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H090-C04",
+      "title": "반대 부호 반례",
+      "claim": "원81은 출력 좌표가 구별되면 서로 반대 부호의 함수를 따로 출력할 수 있다고 판단했다. 따라서 원47의 식별되지 않는 scalar 함수 공유 반례를 다중 출력 후보 기각에 그대로 쓰지 않았다. TCN·LSTM·이중 잔차 core를 유지해도 입력·출력 폭과 학습 단위는 바뀐다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022043",
+          "source_sha256": "ccd4627047efc6e50c61d33f9f549c97206fb3750e4bbbe83ef67151c10e6184",
+          "locator": "전체 계획22행"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§1 마지막문단"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H090-C05",
+      "title": "당시 판단",
+      "claim": "당시 결론은 입력 공유로 바꾸는 것만으로 추천안을 확보하지 못했다는 진입 보류다. 이미 있는 방법보다 다른 유용한 선택을 한다는 근거와 단일 global 다중 출력 대비 이점이 부족하다고 보았다. 모든 다변량 clustering의 무용성이나 TabICLv2 직접 예측의 실패를 선언한 것은 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "판단·§5 기존 실제 관찰과 합친 결정"
+        },
+        {
+          "source_id": "SRC-0000140",
+          "source_sha256": "bbcafbf3b05625c54d8102dc87aeb6849b1e73ab7b7a5d545ff3558346cc9fc5",
+          "locator": "공개요약 전체50행"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H090-C06",
+      "title": "문헌 독해의 귀속",
+      "claim": "원81은 DGCformer2405.08440v1·DUET2412.10859v3·CCM2404.01340v2·Fuchs–Wang2312.16544v1의 지정 절과 두 저장소의 선택 코드를 읽었다고 보고했다. 아래 C07–C10은 그 보고서의 검토 경로와 당시 반영 사항이다. 이번 H090에서 네 논문의 모든 방법·증명·그림 또는 외부코드를 검수한 것으로 세지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§2·확인 범위와 보존 자료"
+        },
+        {
+          "source_id": "SRC-0062869",
+          "source_sha256": "2e610aade68874afe73d3cf671e449efebf43fed0101e863870b83ca065d4171",
+          "locator": "source_manifest 전체12항목"
+        },
+        {
+          "source_id": "SRC-0062862",
+          "source_sha256": "0d8b28dfab0eece3e688f6bc1ef77c1d84eaed8a445a6d8c31e9e239f7efb48e",
+          "locator": "code_manifest 전체8항목"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H090-C07",
+      "title": "DGCformer의 당시 역할",
+      "claim": "원81은 DGCformer를 복원·상관 graph·잠재 clustering 뒤 같은 cluster의 channel attention을 허용하는 분리형 비교 대상으로 정리했다. cluster 수의 grid search가 예측 성능과 완전히 독립적인지는 미확인으로 남겼고 공식 실행 코드를 찾지 못했다고 적었다. 이 기록의 검색 실패를 현재 코드가 존재하지 않는다는 주장으로 확대하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§2 DGCformer"
+        },
+        {
+          "source_id": "SRC-0022043",
+          "source_sha256": "ccd4627047efc6e50c61d33f9f549c97206fb3750e4bbbe83ef67151c10e6184",
+          "locator": "전체 계획22행"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H090-C08",
+      "title": "DUET의 당시 역할",
+      "claim": "원81은 DUET의 temporal expert와 FFT 진폭 기반 학습 거리·channel mask를 고정된 서로소 partition과 구별했다. 선택 코드에서 쌍별 차이와 전체 attention score를 먼저 계산한다고 보고했고 논문 Eq.18과 일부 확률 처리의 차이를 남겼다. 따라서 sparse mask만으로 전체 쌍 비용이 없거나 논문을 정확히 재현했다고 보지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§2 DUET"
+        },
+        {
+          "source_id": "SRC-0062862",
+          "source_sha256": "0d8b28dfab0eece3e688f6bc1ef77c1d84eaed8a445a6d8c31e9e239f7efb48e",
+          "locator": "code_manifest 전체8항목"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H090-C09",
+      "title": "CCM의 당시 역할",
+      "claim": "원81은 CCM의 cluster별 출력층과 소속 확률에 따른 결합, 예측·cluster 손실의 공동 학습을 고정 cluster별 독립 RCTL과 구별했다. shared channel-independent 모델과 cell별 개별 가중치 모델도 구별해야 한다고 적었다. cell별 출력 좌표나 cluster별 head의 추가만으로 기여가 성립한다는 판단은 하지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§2 CCM"
+        },
+        {
+          "source_id": "SRC-0062862",
+          "source_sha256": "0d8b28dfab0eece3e688f6bc1ef77c1d84eaed8a445a6d8c31e9e239f7efb48e",
+          "locator": "code_manifest 전체8항목"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H090-C10",
+      "title": "집합 관계의 당시 역할",
+      "claim": "원81은 Fuchs–Wang의 변수 집합별 예측 의존도와 Example2.11을 pairwise linkage만으로 놓치는 공동 효과의 선행 경로로 연결했다. i.i.d. 가정과 sample 수 n에 관한 O(n log n)의 범위를 남겼고 CRAN didec 문서는 확인했으나 설치·패키지 소스 검토는 하지 않았다고 보고했다. 이를 미래 트래픽 MSE나 RCTL 학습을 직접 최적화하는 동일 방법으로 쓰지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§2 Fuchs–Wang·확인 범위와보존자료"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H090-C11",
+      "title": "최적 MSE 항등식",
+      "claim": "제곱 적분 가능한 Y, 동일한 평가 분포, 전체 관측 입력 X_U와 그 일부 X_S를 두고 m_U=E[Y|X_U], m_S=E[Y|X_S]라 하자. R*(A)=E[(Y−E[Y|X_A])²]로 두면 조건부 기대값의 직교성과 tower property로 R*(S)−R*(U)=E[(m_U−m_S)²]가 성립한다. 이는 nested 정보에 대한 최적 제곱오차 관계이며 원81도 새 정리라고 주장하지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§3 정보를 잃는 양과 실제 예측 오차"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H090-C12",
+      "title": "추정 오차와 구별",
+      "claim": "실제 TabICL 예측을 위 m에 대입하면 추정 오차가 섞이며 RCTL이 최적 조건부 평균에 도달한다고 보장되지 않는다. 유한 자료에서 열을 제거해 실제 성능이 좋아져도 위 최적 위험 차이가 음수가 된 것은 아니다. 평균을 쓰는 같은 항등식을 MAE에 그대로 적용하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§3 항등식뒤해석"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H090-C13",
+      "title": "공동 효과 예시의 조건",
+      "claim": "원문의 Y=2+UV 예시를 확인할 때 U와 V가 독립이고 각각−1과+1을 동일 확률1/2로 갖는다고 명시한다. 그러면 하나만 알아도 조건부 평균은2, 둘을 알면Y를 정확히 알며 최적 MSE는1에서0으로 줄어든다. 원문의 독립·±1이라는 표현만으로 평균0까지 보장되지는 않아 이 대칭 조건을 보완했다. 이는 기호 확인이며 트래픽의 빈번한 현상이나 TabICL만의 이점이 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§3 Y=2+UV 예시"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H090-C14",
+      "title": "subset과 캐시",
+      "claim": "원81은 전체 입력으로 이미 추론한 query에서 열을 지우거나 값을 바꾸는 것이 m_S 계산과 같지 않다고 지적했다. 해당 열 집합으로 context와 query를 함께 구성해야 하며 캐시 재사용은 별도 확인이 필요하다. 모든 subset을 평가하는 설계는 후보 입력 수에 따라 지수적으로 커질 수 있다. 이 기록에서 subset 탐색을 실행하지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022043",
+          "source_sha256": "ccd4627047efc6e50c61d33f9f549c97206fb3750e4bbbe83ef67151c10e6184",
+          "locator": "전체 계획22행"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§3 마지막문단"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H090-C15",
+      "title": "저장 모델과 가상 확장",
+      "claim": "저장 rctl_torch.py의 실제 dense는 nn.Linear(steps*16,1)이다. 원81의 C(F,s)는 이 scalar 출력층을 s개 출력으로 확장하되 같은 core 폭을 유지한다고 가정한 선형 MAC 식이다. 저장 코드가 이미 다중 출력 RCTL을 구현하거나 학습했다는 뜻이 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023048",
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "locator": "Block와RCTL 전체60행"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§4 RCTL 계산구조"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H090-C16",
+      "title": "block 비용",
+      "claim": "입력 폭 a·출력 폭 b의 block은 길이 L에서 두 convolution과 두 shortcut이 L(5ab+3b²), LSTM 네 gate의 입력·순환 선형항이8Lb²다. 합계 L(5ab+11b²)이며 첫 block의 입력 계수는80F다. 마지막 root shortcut16F를 더해 전체 입력 계수는96F다. bias·활성화·BN 등은 이 선형 MAC에 포함하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023048",
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "locator": "Block와RCTL 전체60행"
+        },
+        {
+          "source_id": "SRC-0022293",
+          "source_sha256": "e18ab2b27b4ecc2403d8203b5f5b901668593d86917b5169d286bb2e924ae4e4",
+          "locator": "보존/기호MAC 검수 코드 전체56행"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§4 입력폭/나머지연산"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H090-C17",
+      "title": "전체 비용",
+      "claim": "폭16·32·64·64·32·16에서 block 상수항의 합과 중간 projection16²+32²+64²를 더하면169728이다. 마지막 선형층을 s개 출력으로 가정하면16Ls가 추가되어 C(F,s)=L(169728+96F+16s)가 된다. 소스를 정적으로 읽고 작은 정수 산술로 대조했으며 forward 실행은 없다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023048",
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "locator": "Block와RCTL 전체60행"
+        },
+        {
+          "source_id": "SRC-0022293",
+          "source_sha256": "e18ab2b27b4ecc2403d8203b5f5b901668593d86917b5169d286bb2e924ae4e4",
+          "locator": "보존/기호MAC 검수 코드 전체56행"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§4 C(F,s)"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H090-C18",
+      "title": "분할 비용",
+      "claim": "서로소 cluster K개에 cell 수 s_g를 배정하고 합계N, cell별 특징 q개와 공통 특징 c개를 가정하면 F_g=q s_g+c다. 이때 전체 선형 MAC은 L[(96q+16)N+(169728+96c)K]이다. 각 cluster가 같은 core 폭·입력 길이와 해당 출력 수를 사용한다는 비교 조건이 필요하다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§4 cluster총MAC"
+        },
+        {
+          "source_id": "SRC-0023048",
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "locator": "Block와RCTL 전체60행"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H090-C19",
+      "title": "비교 대상",
+      "claim": "같은 폭의 단일 global 다중 출력은 K=1이므로 K>1에서 추가 MAC은 L(K−1)(169728+96c)다. 반면 같은 scalar 모델을 cell별로 N번 처리하는 비교에서는 core 반복을 K번으로 줄일 수 있다. cluster 수만 세거나 한 비교 대상을 생략하면 비용 결론이 바뀐다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§4 global비교"
+        },
+        {
+          "source_id": "SRC-0000140",
+          "source_sha256": "bbcafbf3b05625c54d8102dc87aeb6849b1e73ab7b7a5d545ff3558346cc9fc5",
+          "locator": "공개요약 전체50행"
+        },
+        {
+          "source_id": "SRC-0023048",
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "locator": "Block와RCTL 전체60행"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H090-C20",
+      "title": "비용의 한계",
+      "claim": "같은 hidden 폭은 같은 총 parameter 수가 아니다. 여러 core의 용량·정확도, global 출력 병목, batch 구성, 병렬 latency와 메모리·통신은 이 MAC 식만으로 판정할 수 없다. bias 덧셈·활성화·BN·메모리 이동을 제외한 계산이며 실제 wall time이나 네트워크 성능 측정이 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§4 마지막문단"
+        },
+        {
+          "source_id": "SRC-0000140",
+          "source_sha256": "bbcafbf3b05625c54d8102dc87aeb6849b1e73ab7b7a5d545ff3558346cc9fc5",
+          "locator": "공개요약 전체50행"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H090-C21",
+      "title": "원74 재인용",
+      "claim": "원81이 인용한 MSE는 원74의 네 cell 3737·3765·6137·6165, 공통28입력, context256, seed20260925의 직접 teacher 개발 assessment 결과다. context는168–671에서256시점을 뽑았고 query672–1007 중 뒤168시간인840–1007에서 평가했다. 각 cell의 raw0–671 평균으로 나눈 무차원 target의 제곱오차이며 관측 이력으로 다음1시간을 예측했다. Tab 출력은 ensemble1의 mean이다. H070에서 검수한 값은 Tab0.009579815874350413, HGB0.011924807253712862, Ridge0.014359847237104397이며 원81 반올림과 일치한다. 독립 test나168시간 재귀 예측 결과가 아니다. 같은 조건의 own-only Tab과 비교하지 않았으므로 공간 입력 효과·새 다중 출력 RCTL 이득으로 바꾸지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§5 원74"
+        },
+        {
+          "source_id": "SRC-0000140",
+          "source_sha256": "bbcafbf3b05625c54d8102dc87aeb6849b1e73ab7b7a5d545ff3558346cc9fc5",
+          "locator": "공개요약 전체50행"
+        },
+        {
+          "source_id": "SRC-0029276",
+          "source_sha256": "17ff03927948011db346a9da925702dfa4257d88ba781abb66a78729455e1d48",
+          "locator": "/settings 및 /teacher/{Ridge,HGB,TabICL}/{MSE,MAE}"
+        },
+        {
+          "source_id": "SRC-0022943",
+          "source_sha256": "a1df5a2bfff6c5505dbeccf8e8b855ff322984528aecaf7ab31d11bd1f063734",
+          "locator": "전체106행 정적 재독해: ct/qt·scale=raw[:672].mean(0), z=raw/scale, teacher fit/predict, ya=qy[168:], teacher_eval=metrics(v[168:],ya)"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H090-C22",
+      "title": "원80 재인용",
+      "claim": "원80에서는16cell의 input-only·raw target·Tab·Ridge·HGB 기반 소속이 같았고 고정 gradient 지표의 PCC 대비 이득도 기간별로 뒤집혔다. 원81은 이를 좋은 직접 예측이 유용한 다른 clustering 선택으로 이어졌다는 증거가 부족한 사례로 재사용했다. 새 독립 실행이나 모든 조건부 평균 방법의 실패로 세지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§5 원80"
+        },
+        {
+          "source_id": "SRC-0022039",
+          "source_sha256": "9c65a007a6f08a589df19445e0d9abf78bf897de4f1f4902194daaa9468c9d98",
+          "locator": "원80 판단·소속과 실제 학습 방향·무엇이 확인되었는가"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H090-C23",
+      "title": "수집 명세",
+      "claim": "source_manifest는 HTML8개와 commit/tree JSON4개의12항목이다. HTML은 네 논문의 versioned 본문4개와 arXiv 서지4개이고, 수집 코드는 별도로TXT8개를 만든다. math alttext를 넣고 script/style/nav를 제외하는 추출 방식이므로 TXT가 원 HTML의 그림·모든 표현을 보존한다고 가정하지 않는다. 이번에는 수집 코드를 재실행하지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022608",
+          "source_sha256": "c5c365650802c6bb01b43cd358d4e10d177878fca6feaeeb2206e5054c50a93e",
+          "locator": "수집 코드 전체53행"
+        },
+        {
+          "source_id": "SRC-0062869",
+          "source_sha256": "2e610aade68874afe73d3cf671e449efebf43fed0101e863870b83ca065d4171",
+          "locator": "source_manifest 전체12항목"
+        },
+        {
+          "source_id": "SRC-0001392",
+          "source_sha256": "9e7838c881155a0da72c91bb39864dd4a3f543e6956396619d16a6a14d5e625b",
+          "locator": "snapshot23 manifest 전체233행·/items42개"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H090-C24",
+      "title": "공식 코드의 버전",
+      "claim": "code_manifest는 DUET의 dcc6e6780a9138731b64b9b5398a94a1d97033f0와 CCM의 e4769baa7f8457358eb9b4614af2de1fbfba2257에 고정된 선택8파일을 담았다. 최초 HEAD 조회와 이후 SHA별 tree/raw 파일 수집을 구별한다. 명세·파일 해시 일치는 전체 저장소 확보·의존성 완비·논문 재현 성공의 증거가 아니다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022759",
+          "source_sha256": "afa3f29cd0cd1b7c22e1558d3abebf3e20708ea590571ab88e43442b7b2852de",
+          "locator": "고정commit 코드수집 전체27행"
+        },
+        {
+          "source_id": "SRC-0062869",
+          "source_sha256": "2e610aade68874afe73d3cf671e449efebf43fed0101e863870b83ca065d4171",
+          "locator": "source_manifest 전체12항목"
+        },
+        {
+          "source_id": "SRC-0062862",
+          "source_sha256": "0d8b28dfab0eece3e688f6bc1ef77c1d84eaed8a445a6d8c31e9e239f7efb48e",
+          "locator": "code_manifest 전체8항목"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H090-C25",
+      "title": "snapshot의 확인 범위",
+      "claim": "snapshot23 manifest의42파일·3,524,587바이트를 실제 보존 파일과 대조했고 원81 검증 요약은 items를 제외한 manifest와 일치했다. 그 안에는 당시 progress·candidate index·원장·AGENTS도 있다. 보존42파일의 해시 확인을42개 고유 내용 전수 독해로 세지 않으며, 과거 지시를 실행하지 않는다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001392",
+          "source_sha256": "9e7838c881155a0da72c91bb39864dd4a3f543e6956396619d16a6a14d5e625b",
+          "locator": "snapshot23 manifest 전체233행·/items42개"
+        },
+        {
+          "source_id": "SRC-0022041",
+          "source_sha256": "499dfbb937962c40ca8de83ba9d72ed0d2d1f1b771d991757d923ff3f8f4e27f",
+          "locator": "검증 요약 JSON 전체21행"
+        },
+        {
+          "source_id": "SRC-0022293",
+          "source_sha256": "e18ab2b27b4ecc2403d8203b5f5b901668593d86917b5169d286bb2e924ae4e4",
+          "locator": "보존/기호MAC 검수 코드 전체56행"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H090-C26",
+      "title": "원장 보존",
+      "claim": "원81 snapshot의 예산 원장은 원80 종료원장과 SHA-256 f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9로 같다. 당시 잔량은 Tab11context·20640query행·RCTL추가fit0이었다. 이는 역사적 상태이며 현재 모델 실행 허가나 새 예산이 아니다. 정리 과정은 원장을 변경하지 않았다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0025150",
+          "source_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+          "locator": "/used·/caps·/remaining_count_budgets"
+        },
+        {
+          "source_id": "SRC-0001392",
+          "source_sha256": "9e7838c881155a0da72c91bb39864dd4a3f543e6956396619d16a6a14d5e625b",
+          "locator": "snapshot23 manifest 전체233행·/items42개"
+        },
+        {
+          "source_id": "SRC-0022041",
+          "source_sha256": "499dfbb937962c40ca8de83ba9d72ed0d2d1f1b771d991757d923ff3f8f4e27f",
+          "locator": "검증 요약 JSON 전체21행"
+        },
+        {
+          "source_id": "SRC-0022293",
+          "source_sha256": "e18ab2b27b4ecc2403d8203b5f5b901668593d86917b5169d286bb2e924ae4e4",
+          "locator": "보존/기호MAC 검수 코드 전체56행"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H090-C27",
+      "title": "읽은 자료와 남은 자료",
+      "claim": "H090의 중심11그룹 중 새 내용은 본문6개·전체JSON4개이고 RCTL1개는 재참조다. 원74 결과·코드와 원80 판단·원장4개도 중복 가산하지 않는다. 문헌 폴더의 HTML/TXT16·선택 외부코드8·commit/tree4·검색1, 합계29그룹의 본문과 snapshot 연혁 변경분은 후속 검수로 남긴다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062869",
+          "source_sha256": "2e610aade68874afe73d3cf671e449efebf43fed0101e863870b83ca065d4171",
+          "locator": "source_manifest 전체12항목"
+        },
+        {
+          "source_id": "SRC-0062862",
+          "source_sha256": "0d8b28dfab0eece3e688f6bc1ef77c1d84eaed8a445a6d8c31e9e239f7efb48e",
+          "locator": "code_manifest 전체8항목"
+        },
+        {
+          "source_id": "SRC-0001392",
+          "source_sha256": "9e7838c881155a0da72c91bb39864dd4a3f543e6956396619d16a6a14d5e625b",
+          "locator": "snapshot23 manifest 전체233행·/items42개"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "확인 범위와 보존자료"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H090-C28",
+      "title": "재진입 조건",
+      "claim": "같은 입력 공유 후보를 다시 검토할 때는 관측 가능한 조건에서 강한 단순 대안이 잘못 고른 입력 집합 때문에 생기는 실제 손해와 TabICL이 바꾸는 선택을 먼저 특정한다. 원81은 그 근거 없이 subset·hypergraph나 architecture 이름만 추가하지 않기로 했다. 전체 연구 방향 확정·최종 문서·현재 Goal 완료는 별개의 작업이다.",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022043",
+          "source_sha256": "ccd4627047efc6e50c61d33f9f549c97206fb3750e4bbbe83ef67151c10e6184",
+          "locator": "전체 계획22행"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "locator": "§5 결론"
+        },
+        {
+          "source_id": "SRC-0000140",
+          "source_sha256": "bbcafbf3b05625c54d8102dc87aeb6849b1e73ab7b7a5d545ff3558346cc9fc5",
+          "locator": "공개요약 전체50행"
+        }
+      ],
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

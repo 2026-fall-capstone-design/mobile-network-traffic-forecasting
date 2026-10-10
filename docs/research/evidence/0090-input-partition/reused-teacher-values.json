@@ -1,0 +1,56 @@
+{
+  "source_id": "SRC-0029276",
+  "source_sha256": "17ff03927948011db346a9da925702dfa4257d88ba781abb66a78729455e1d48",
+  "record_path": "../../records/0072-0075-output-compression.md",
+  "settings": {
+    "cell_ids": [
+      3737,
+      3765,
+      6137,
+      6165
+    ],
+    "seed": 20260925,
+    "context_count": 256,
+    "query_count": 336,
+    "assessment_count": 168,
+    "independent_test": false,
+    "context_range": [
+      168,
+      671
+    ],
+    "context_selection": "rint(linspace(168,671,256))",
+    "query_range": [
+      672,
+      1007
+    ],
+    "assessment_range": [
+      840,
+      1007
+    ],
+    "normalization": "raw[:,cell_id-1,2] / mean(raw[0:672,cell_id-1,2]); MSE is dimensionless squared error",
+    "horizon": "one hour using observed history",
+    "Tab_output": "mean",
+    "Tab_n_estimators": 1
+  },
+  "teacher": {
+    "Ridge": {
+      "MSE": 0.014359847237104397,
+      "MAE": 0.08956492377539582
+    },
+    "HGB": {
+      "MSE": 0.011924807253712862,
+      "MAE": 0.07840027553742436
+    },
+    "TabICL": {
+      "MSE": 0.009579815874350413,
+      "MAE": 0.06682772606385984
+    }
+  },
+  "scope": "이미 H070에서 검수한 assessment 직접 teacher 오차를 원81의 재인용 수치와 대조한다. 새 실험·새 전체JSON가산0.",
+  "code_provenance": {
+    "source_id": "SRC-0022943",
+    "source_sha256": "a1df5a2bfff6c5505dbeccf8e8b855ff322984528aecaf7ab31d11bd1f063734",
+    "archive_path": "../0072-0075-output-compression/originals/SRC-0022943.py.txt",
+    "scope": "정규화·teacher context·query slicing·metrics의 정적 확인; 실행0"
+  }
+}

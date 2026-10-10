@@ -1,0 +1,27 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import urllib.request,json,hashlib
+B=Path(__file__).resolve().parent/'sources/input_partition_81'
+assert not (B/'code_manifest.json').exists()
+records=[]
+items={
+ 'duet':('decisionintelligence/DUET',[
+  'ts_benchmark/baselines/duet/models/duet_model.py',
+  'ts_benchmark/baselines/duet/utils/masked_attention.py',
+  'ts_benchmark/baselines/duet/layers/SelfAttention_Family.py',
+  'ts_benchmark/baselines/duet/duet.py']),
+ 'ccm':('Graph-and-Geometric-Learning/TimeSeriesCCM',[
+  'models/layers.py','models/Dlinear.py','exp/exp_ccm.py','models/attention.py'])}
+for name,(repo,paths) in items.items():
+    sha=json.loads((B/(name+'_commit.json')).read_text(encoding='utf-8'))['sha']
+    for path in paths:
+        url=f'https://raw.githubusercontent.com/{repo}/{sha}/{path}'
+        r={'repo':repo,'commit':sha,'source_path':path,'url':url,'accessed_utc':datetime.now(timezone.utc).isoformat()}
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Research-source-verification/1.0'}),timeout=20) as f: data=f.read(500001)
+            assert len(data)<=500000
+            fn=name+'__'+path.replace('/','__'); p=B/fn; assert not p.exists();p.write_bytes(data)
+            r.update(file=fn,bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        except Exception as e:r['error']=repr(e)
+        records.append(r); (B/'code_manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+        print(json.dumps(r,ensure_ascii=False),flush=True)

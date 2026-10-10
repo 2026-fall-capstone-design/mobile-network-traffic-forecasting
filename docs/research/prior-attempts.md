@@ -445,3 +445,5 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 [원80](records/0088-conditional-graph-diagnostic.md)을 먼저 확인한다. 당시 output weight1·K4·기존16cell/개발 구간에서는5transport 소속 ARI1, PCC 대비 전체7일 gradient 비율은 두 모델 상태 모두 불리했다. 입력 clustering의 실제 손해와 새 자료·조건의 차이를 제시한 뒤 재검토하며 직접 예측 MSE 이득을 clustering 효용으로 대신하지 않는다.
 
 조건부 평균으로 client를 묶는 제안은 [H089](records/0089-conditional-search-provenance.md)의 CLoVE·DQC·OTCP·인과 평균 후보와 [H088](records/0088-conditional-graph-diagnostic.md)의 같은 소속·기간별 반례를 먼저 확인한다. 출력 대상·평가 척도·독립 표본 조건의 차이를 새 설계에 적는다.
+
+공동 입력·다중 출력·subset·집합 관계 후보는 [원81](records/0090-input-partition-decision.md)에서 sample행과cell열, sharedcore와출력head, cluster별모델과global모델의 비교를 먼저 확인한다. 새 입력선택이 실제손해를 줄이는 조건을 명시해야 한다.

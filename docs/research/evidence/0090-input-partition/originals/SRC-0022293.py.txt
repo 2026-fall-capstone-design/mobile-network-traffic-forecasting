@@ -1,0 +1,56 @@
+"""Archive and verify the source-only review; no model/data experiment."""
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib,json,re,shutil
+
+W=Path(__file__).resolve().parents[2]
+B=W/'tmp/redesign_20260925'
+S=B/'sources/input_partition_81'
+OUT=W/'output/research/redesign_20260925_snapshot_23'
+assert not OUT.exists(), 'Immutable archive already exists'
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+budget=B/'cumulative_execution_budget.json'
+expected='f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+assert sha(budget)==expected
+ledger=json.loads(budget.read_text(encoding='utf-8'))
+assert ledger['used']['RCTL_fits']==29
+assert ledger['caps']['RCTL_fits']==29
+assert ledger['remaining_count_budgets']=={'TabICL_contexts':11,'TabICL_query_rows':20640,'RCTL_fits':0}
+for mf,file_key in [('source_manifest.json','name'),('code_manifest.json','file')]:
+    entries=json.loads((S/mf).read_text(encoding='utf-8'))
+    assert not any('error' in x for x in entries)
+    for r in entries:
+        p=S/r[file_key]
+        assert p.stat().st_size==r['bytes'] and sha(p)==r['sha256']
+assert len(json.loads((S/'code_manifest.json').read_text(encoding='utf-8')))==8
+assert len(list(S.glob('*.html')))==8
+assert not list(S.glob('*.pdf'))
+public=W/'output/research/TabICLv2_재설계_입력공유와예측단위_검토.md'
+for fn in [public,B/'81_input_partition_findings.md']:
+    txt=fn.read_text(encoding='utf-8')
+    assert '사례' not in txt
+    for target in re.findall(r'\]\((C:/[^)]+)\)',txt): assert Path(target).is_file(),target
+    assert '169728' in (B/'81_input_partition_findings.md').read_text(encoding='utf-8')
+# Arithmetic QA of the symbolic MAC decomposition; no forward call or tensor import.
+widths=[16,32,64,64,32,16]
+constant=11*widths[0]**2
+constant+=sum(5*a*b+11*b*b for a,b in zip(widths[:-1],widths[1:]))
+constant+=sum(c*c for c in widths[:3])
+assert constant==169728
+input_coeff=(3+1+1+1)*widths[0]
+assert input_coeff==96 and widths[-1]==16
+files=list(S.rglob('*'))+[B/'81_input_partition_scope_plan.md',B/'81_input_partition_findings.md',B/'collect_input_partition_81.py',B/'fetch_input_partition_code_81.py',Path(__file__),public,B/'progress.md',B/'candidate_decision_index.md',budget,B/'rctl_torch.py',W/'AGENTS.md']
+files=sorted(set(p for p in files if p.is_file()))
+for p in files:
+    if p.suffix=='.json': json.loads(p.read_text(encoding='utf-8'),parse_constant=lambda x: (_ for _ in ()).throw(ValueError(x)))
+OUT.mkdir()
+manifest=[]
+for p in files:
+    rel=p.relative_to(W);target=OUT/rel;target.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(p,target)
+    assert sha(target)==sha(p)
+    manifest.append({'path':str(rel).replace('\\','/'),'bytes':p.stat().st_size,'sha256':sha(p)})
+summary={'created_utc':datetime.now(timezone.utc).isoformat(),'files':len(manifest),'bytes':sum(x['bytes'] for x in manifest),'new_model_calls':0,'new_numeric_pilots':0,'external_code_execution':False,'budget_unchanged_sha256':expected,'source_html':8,'source_code_files':8,'pdfs':0,'checks':['source hashes and byte counts','finite JSON','Korean terminology','local links','symbolic MAC arithmetic','unchanged budget and caps','archive copy hashes'],'items':manifest}
+(OUT/'manifest.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+(B/'81_archive_verification.json').write_text(json.dumps({k:v for k,v in summary.items() if k!='items'},ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({k:v for k,v in summary.items() if k!='items'},ensure_ascii=False))
