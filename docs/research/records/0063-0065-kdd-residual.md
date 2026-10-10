@@ -1,5 +1,7 @@
 # 63·65 — KDD 잔차 보정의 원리와 검증 범위
 
+후속 H062에서 [65 전체 판단을 종합](0063-0065-synthesis.md)하고 [66–68의 cell 보호·저장 위험 진단](0066-0068-group-risk.md)에 연결했습니다. 아래 남은 문헌 수는 각 작성 당시의 범위입니다. 원실험·구현 공백과 새 세 논문의 본문 검수는 계속 남아 있습니다.
+
 [연구 안내](../README.md) · [과거 시도 색인](../prior-attempts.md) · [출처·판본](../sources/history-057.md) · [검수](../verification/history-057.md) · [인쇄값과 계산](../verification/history-057-numeric-check.json)
 
 기준 예측의 잔차를 다른 모델로 학습해 최종 예측을 보정하는 연결은 이미 선행연구에 있다. 63·65번에서 검토한 Biswas 등의 **One Step Closer to Ground Truth: A Multi-Scale Residual-Aware Representation Learning Pipeline for Predicting Time Series Data**는 그 직접적인 사례다. 따라서 iTransformer를 TabICL로, 잔차 모델을 RCTL로 바꾸는 것만으로 새로운 원리라고 할 수 없다. 반대로 이 논문의 성능표가 우리 통신 cell에서의 학습 이득이나 계산비용 절감을 입증하지도 않는다.

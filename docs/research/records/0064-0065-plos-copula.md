@@ -1,5 +1,7 @@
 # 64·65 — PLOS copula 군집화의 적용 범위와 인쇄 결과 검수
 
+후속 H062에서 [65 전체 판단을 종합](0063-0065-synthesis.md)하고 [66–68의 cell 보호·저장 위험 진단](0066-0068-group-risk.md)에 연결했습니다. 아래 남은 문헌 수는 각 작성 당시의 범위입니다. 원실험·구현 공백과 새 세 논문의 본문 검수는 계속 남아 있습니다.
+
 **경험 순위로 주변 분포를 제거한 뒤 시계열 내부의 lag 의존을 비교하고 계층 군집화하는 방법은 이미 존재한다.** Zhang·An의 *Clustering time series based on dependence structure*가 이 선행연구다. 전체 쌍의 거리를 저장하고 Lance–Williams 식으로 군집 거리를 갱신하는 절차도 포함한다. 이 부분을 TabICL로 바꾸거나 RCTL 앞에 붙이는 것만으로 새 원리라고 할 수 없다.
 
 반면 이 논문은 비정상 통신 cell에서의 예측 성능, 군집별 RCTL 학습의 이득, TabICL을 이용한 조건부 분포 추정의 비용을 검증하지 않았다. 기존 [64번 계획](../evidence/0063-0065-ecai-interface/originals/SRC-0022015.md.txt)과 [65번 검토 §4](../evidence/0063-0065-ecai-interface/originals/SRC-0022016.md.txt)도 이미 이 구분을 기록했다. 이번에는 저장된 **22쪽 전체 본문·증명·9개 그림·38개 참고문헌**을 읽어 그 판단의 근거와 미확인 부분을 보완했다.

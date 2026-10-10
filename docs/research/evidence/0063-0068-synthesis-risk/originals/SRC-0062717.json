@@ -1,0 +1,91 @@
+{
+  "date": "2026-09-26",
+  "sources": [
+    {
+      "id": "2405.01709v2",
+      "title": "Minimax Regret Learning for Data with Heterogeneous Subgroups",
+      "version_date": "2025-09-27",
+      "pdf": "MMR_2405.01709v2.pdf",
+      "pages": 35,
+      "read": [
+        "Section 2, Eq 2-10, Algorithm 1, Assumption 1",
+        "Section 5, Conditions 1-4, Theorems 7-8",
+        "Section 7, Table 7.1"
+      ],
+      "not_read": [
+        "Full Section 3-4 proofs",
+        "Separate supplementary material, including J"
+      ],
+      "relevant_limits": [
+        "Same function class defines WMR; not arbitrary teacher risk",
+        "Optimization assumes smooth strong convexity",
+        "Within-group iid and meta-level concentration assumptions",
+        "Existing observed group labels; not cell clustering"
+      ],
+      "code_reviewed": false,
+      "code_executed": false,
+      "url": "https://arxiv.org/abs/2405.01709v2",
+      "pdf_sha256": "7e59170bdf4b66d48f8e8a36f315d92d3672b42fc6e8cca42fd9934314f0c401"
+    },
+    {
+      "id": "2602.04155v2",
+      "title": "Maximin Relative Improvement: Fair Learning as a Bargaining Problem",
+      "version_date": "2026-06-16",
+      "pdf": "MRI_2602.04155v2.pdf",
+      "pages": 32,
+      "read": [
+        "Sections 1-3: definitions and comparison",
+        "Section 5: Eq 17-19, Assumptions 5.1 and 5.3",
+        "Section 6",
+        "Appendix C"
+      ],
+      "not_read": [
+        "All appendix proofs",
+        "All Appendix G results"
+      ],
+      "relevant_limits": [
+        "Improvable baseline and denominator bounded away from zero",
+        "Same-class group optimum",
+        "400 ACS settings, linear weighted fits over 10001 weights",
+        "Many-group algorithmic scaling left open; not cell grouping"
+      ],
+      "code_reviewed": false,
+      "code_executed": false,
+      "url": "https://arxiv.org/abs/2602.04155v2",
+      "pdf_sha256": "a4521ecee5ce59e1e7e4d3bb05bdb2d6da1c47ba3c3b019ccc208a20107c23d0"
+    },
+    {
+      "id": "2502.06743v2",
+      "title": "A Fair Federated Learning Framework for Collaborative Network Traffic Prediction and Resource Allocation",
+      "version_date": "2025-02-17",
+      "pdf": "Fair_network_2502.06743v2.pdf",
+      "pages": 7,
+      "read": [
+        "Sections II-V, equations 1-5, Tables I-II",
+        "Conclusion",
+        "Rendered pages 3-6"
+      ],
+      "not_read": [
+        "Publisher version comparison",
+        "Official code implementation"
+      ],
+      "relevant_limits": [
+        "5 Abilene nodes, 5-minute Gbps, unequal sample counts and injected noise",
+        "71 input values -> next value",
+        "StandardScaler fit boundary not fully specified in examined text",
+        "Printed Eq5 simplifies to constant 100 when u+o !=0; does not reproduce Fig4",
+        "Underprovisioning sign differs between displayed definition and positive TableII values",
+        "Fairness improvement can increase underprovisioning"
+      ],
+      "code_reviewed": false,
+      "code_executed": false,
+      "url": "https://arxiv.org/abs/2502.06743v2",
+      "pdf_sha256": "673c4e452ac3e017d65433fe0d62ebfd49ffcfbf45811cd58de36b3882108ff9"
+    }
+  ],
+  "rendered_pages_reviewed": 7,
+  "methods_only_read_as_listed": true,
+  "all_pdfs_read_cover_to_cover": false,
+  "no_new_model_execution": true,
+  "previous_v1_search_summaries_not_used_as_latest_methods": true
+}

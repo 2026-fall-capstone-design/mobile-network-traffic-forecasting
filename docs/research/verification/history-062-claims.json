@@ -1,0 +1,331 @@
+{
+  "batch_id": "history-062",
+  "claims": [
+    {
+      "claim_id": "H062-C01",
+      "record": "0063-0065-synthesis",
+      "claim": "63–65는 Tab 정보를 최종 입력·target에 연결하는 검토로 범위를 넓혔다.",
+      "source_location": "SRC-0022008:계획; SRC-0022015:계획; SRC-0022016:바뀐판단",
+      "verification_method": "원65 전체와 H055 질문·실행 범위 대조",
+      "limit": "계획은 실행 결과가 아니다."
+    },
+    {
+      "claim_id": "H062-C02",
+      "record": "0063-0065-synthesis",
+      "claim": "예측값 입력·잔차 target·가역 변환은 바꾸는 대상이 다르다.",
+      "source_location": "SRC-0022016:세 후보 표",
+      "verification_method": "세 행을 H055–61 대응 원리와 대조",
+      "limit": "같은 이름의 residual을 같은 학습으로 취급하지 않는다."
+    },
+    {
+      "claim_id": "H062-C03",
+      "record": "0063-0065-synthesis",
+      "claim": "당시 새 추천안 채택·모델 실행은 없었다.",
+      "source_location": "SRC-0022016:도입/실행·접근·보존",
+      "verification_method": "원문 수행·미완료 선언 확인",
+      "limit": "현재 정리 Goal 지시와 구분한다."
+    },
+    {
+      "claim_id": "H062-C04",
+      "record": "0063-0065-synthesis",
+      "claim": "60의 Tab 직접 예측 이득과 RCTL 소속 효과는 다르다.",
+      "source_location": "SRC-0022016:바뀐판단; H051:records/0059-0062-history-grouping.md",
+      "verification_method": "4cell global/L2의 .067327/.090199/.102476 연결 및 당시 과제 단위 재대조",
+      "limit": "재실행·새 RCTL 개선 증거가 아니다."
+    },
+    {
+      "claim_id": "H062-C05",
+      "record": "0063-0065-synthesis",
+      "claim": "ECAI의 forecast 입력·Type II 잔차 군집과 실제값 target을 구분한다.",
+      "source_location": "SRC-0022016:§1; H055:records/0063-0065-ecai-interface.md",
+      "verification_method": "Fig3(d)/정적 TS_X_II.py 경로의 기존 검수 재사용",
+      "limit": "전체 Fig3(c)/(d) 코드 재현으로 확대하지 않는다."
+    },
+    {
+      "claim_id": "H062-C06",
+      "record": "0063-0065-synthesis",
+      "claim": "Heatload의 기준·빠른 잔차와 시점 가용성 및 summary 비용 경계는 구분된다.",
+      "source_location": "SRC-0022016:§2; H056:records/0063-0065-heatload-residual.md",
+      "verification_method": "origin 필터·base+residual·residual-only time 기존 검수 연결",
+      "limit": "비공개 난방 결과나 GPU비용을 통신 cell로 이전하지 않는다."
+    },
+    {
+      "claim_id": "H062-C07",
+      "record": "0063-0065-synthesis",
+      "claim": "KDD는 별도 잔차 학습·차감이며 학습 가능성/시간 분리 보장이 별도다.",
+      "source_location": "SRC-0022016:§3; H057:records/0063-0065-kdd-residual.md",
+      "verification_method": "원65 및 전체논문 후속검수의 잔차 부호·항등식·split 경계 비교",
+      "limit": "α 선택분할 미기록, 공식코드·원실험 미확인."
+    },
+    {
+      "claim_id": "H062-C08",
+      "record": "0063-0065-synthesis",
+      "claim": "PLOS는 시계열 내부 lag copula를 비교한다.",
+      "source_location": "SRC-0022016:§4; H058:records/0064-0065-plos-copula.md",
+      "verification_method": "거리·고정 증가변환·정상성·군집 일치성 범위 재대조",
+      "limit": "cross-cell copula·시변조건부변환·RCTL 성능 보장 아님."
+    },
+    {
+      "claim_id": "H062-C09",
+      "record": "0063-0065-synthesis",
+      "claim": "GP-Copula는 경험 주변 CDF와 공유 결합 예측을 연결한다.",
+      "source_location": "SRC-0022016:§5; H059:records/0064-0065-gp-copula.md",
+      "verification_method": "경험 F/역변환·저랭크·Jacobian likelihood 연결",
+      "limit": "full-history exact F와 변환 MAE가 아니다."
+    },
+    {
+      "claim_id": "H062-C10",
+      "record": "0063-0065-synthesis",
+      "claim": "TACTiS-2의 주변분포·copula 분해는 이상적 조건과 공동 의존을 구분한다.",
+      "source_location": "SRC-0022016:§6; H060:records/0064-0065-tactis2.md",
+      "verification_method": "두 정리의 무한표현력·모집단 최적해 범위 재대조",
+      "limit": "유한 Tab 정확성·PIT 공동독립 보장 아님."
+    },
+    {
+      "claim_id": "H062-C11",
+      "record": "0063-0065-synthesis",
+      "claim": "조건부 모멘트 정규화와 PIT, 보간과 forecast는 구분된다.",
+      "source_location": "SRC-0022016:§7; H061:records/0064-0065-conditional-normalization.md",
+      "verification_method": "평균·분산 변환·남는 의존·smoother·논문/패키지 차이 연결",
+      "limit": "분포 형태나 독립성·미래 예측 우위 보장 아님."
+    },
+    {
+      "claim_id": "H062-C12",
+      "record": "0063-0065-synthesis",
+      "claim": "원65의 KDD validation 선택 문구는 확인 수준을 낮추고 기존 주의점을 소급하지 않는다.",
+      "source_location": "SRC-0022016:§2/3/6; H057:데이터·선택 조건; H056:비용 경계",
+      "verification_method": "KDD C.4 split 미기록과 원65의 이미 있던 경계 설명을 비교",
+      "limit": "validation/test 어느 쪽도 확정하지 않는다."
+    },
+    {
+      "claim_id": "H062-C13",
+      "record": "0063-0065-synthesis",
+      "claim": "잔차 절대오차 항등식과 유한 RCTL 학습 가능성은 다르다.",
+      "source_location": "SRC-0022016:연결논리1; EXT-H062:history-062-logic-check.json",
+      "verification_method": "일반대수와 작은 유리수 예를 검수하고 반대 잔차 부호의 합성식 연결",
+      "limit": "설명 산술은 실제 데이터 실험이 아니다."
+    },
+    {
+      "claim_id": "H062-C14",
+      "record": "0063-0065-synthesis",
+      "claim": "전체 H 조건부 정확 연속 CDF의 단일값 중앙값은 .5지만 공동 의존은 남을 수 있다.",
+      "source_location": "SRC-0022016:연결논리2/§6; H060:두 정리; EXT-H062:logic",
+      "verification_method": "조건부 PIT·중앙값의 적용조건과 다변량 범위 재대조",
+      "limit": "추정CDF·유한학습기의 정확성 보장 아님."
+    },
+    {
+      "claim_id": "H062-C15",
+      "record": "0063-0065-synthesis",
+      "claim": "달력 Z 조건부 CDF는 추가 이력 H의 정보를 제거할 필요가 없으며 모멘트 표준화와 다르다.",
+      "source_location": "SRC-0022016:연결논리3; H061:64·65판단",
+      "verification_method": "조건화 정보집합 차이와 평균/분산 변환 범위를 재대조",
+      "limit": "새로운 원리나 새로운 실증을 주장하지 않는다."
+    },
+    {
+      "claim_id": "H062-C16",
+      "record": "0063-0065-synthesis",
+      "claim": "증가 비선형 변환과 시변 양수 척도는 유한 후보의 MAE 순위를 바꿀 수 있다.",
+      "source_location": "SRC-0022016:연결논리4; H061-C39; EXT-H062:logic",
+      "verification_method": "100/90/102와 .48/.50/.90 및 s=(1,10) 설명값의 정확 산술",
+      "limit": "중앙값 역변환 성질과 경험적 후보 순위를 구분한다."
+    },
+    {
+      "claim_id": "H062-C17",
+      "record": "0063-0065-synthesis",
+      "claim": "63–65의 신규 모델0과 누적 비용 인용 범위를 유지한다.",
+      "source_location": "SRC-0022016:실행·접근·보존",
+      "verification_method": "Tab65/38016·RCTL29 및 예산 불변 진술을 기존 H052 before와 연결",
+      "limit": "문헌 검색·렌더 총시간 미기록, 외부GPU비용 환산 안 함."
+    },
+    {
+      "claim_id": "H062-C18",
+      "record": "0063-0065-synthesis",
+      "claim": "66의 보호 목표 질문은 65 성공이나 평균 목표 포기 선언이 아니다.",
+      "source_location": "SRC-0022017:이번질문/다음행동; SRC-0022016:다음설계",
+      "verification_method": "연속 원문 도입·질문·미채택 범위를 재독",
+      "limit": "후속실행 승인·최종모델 결정 아님."
+    },
+    {
+      "claim_id": "H062-C19",
+      "record": "0066-0068-group-risk",
+      "claim": "원66은 세 보호 목표를 구분하고 소속·설정을 먼저 고정하도록 계획했다.",
+      "source_location": "SRC-0022017:최대세후보/다음행동/자원",
+      "verification_method": "원문 조건과 미채택·예산 범위를 재독",
+      "limit": "과거 지시를 현재 작업 명령으로 실행하지 않는다."
+    },
+    {
+      "claim_id": "H062-C20",
+      "record": "0066-0068-group-risk",
+      "claim": "67은 기존16cell×480×8 저장 결과 진단이며 새모델/소속이 아니다.",
+      "source_location": "SRC-0022018:고정자료; SRC-0027844:settings; SRC-0027841:settings/cell_ids",
+      "verification_method": "입력해시·11NPZ배열·shape·finite·호출0을1512검사와 대조",
+      "limit": "독립 test/새 fairness 재학습 아님."
+    },
+    {
+      "claim_id": "H062-C21",
+      "record": "0066-0068-group-risk",
+      "claim": "primary6조건과 auxiliary2조건을 분리하고 global 두번째seed 부재를 유지한다.",
+      "source_location": "SRC-0022018:고정자료; SRC-0027841:risk_profiles",
+      "verification_method": "24행 method/primary/period를 전수 대조",
+      "limit": "전체 seed 안정성 검증으로 쓰지 않는다."
+    },
+    {
+      "claim_id": "H062-C22",
+      "record": "0066-0068-group-risk",
+      "claim": "진단 척도는 기존 mean-normalized internet activity이며42자료를 재사용한다.",
+      "source_location": "SRC-0022018:고정자료; SRC-0022019:§2; SRC-0030211:11arrays; SRC-0024832:methods/per_cell_mae",
+      "verification_method": "기존 B2/41–42 출처 연결과128숫자 대조",
+      "limit": "Mbps·운영손해·완전 UPC 재현 아님. 42 wholeJSON 재가산0."
+    },
+    {
+      "claim_id": "H062-C23",
+      "record": "0066-0068-group-risk",
+      "claim": "top-k는 각 방법 자체 정렬이며 동일 cell 우열과 구분된다.",
+      "source_location": "SRC-0022876:risks/tail/d/flags; SRC-0027841:24profiles",
+      "verification_method": "원코드 정적 독해와 독자 math.fsum 집계 대조",
+      "limit": "특정 cell 우선 목표까지 부정하지 않는다."
+    },
+    {
+      "claim_id": "H062-C24",
+      "record": "0066-0068-group-risk",
+      "claim": "primary 전체기간의6행 mean/worst/top4를 저장값과 대조했다.",
+      "source_location": "SRC-0027841:period=all/primary_seed=true; SRC-0030211",
+      "verification_method": "18표시값 반올림과24프로파일1512검사 연결",
+      "limit": "표시조건 수를 독립 실험 횟수로 세지 않는다."
+    },
+    {
+      "claim_id": "H062-C25",
+      "record": "0066-0068-group-risk",
+      "claim": "전체·뒤240의7비global조건에서모든top-k손해가 양수다.",
+      "source_location": "SRC-0027841:all/last_240 top_k_deltas; SRC-0030211",
+      "verification_method": "각14행×16차이·lower_k/flags 전수 대조",
+      "limit": "모든 미학습 소속·모든 보호 목적의 불가능성 아님."
+    },
+    {
+      "claim_id": "H062-C26",
+      "record": "0066-0068-group-risk",
+      "claim": "전체기간에도 Tab/empirical/PCC의 같은cell 이득 예외가 있다.",
+      "source_location": "SRC-0027841:all/cell_ids_better; SRC-0030211",
+      "verification_method": "Tab4553/4565,empirical3765/4545/5365,PCC5353 대조",
+      "limit": "순위별 지배를 개별cell 지배로 바꾸지 않는다."
+    },
+    {
+      "claim_id": "H062-C27",
+      "record": "0066-0068-group-risk",
+      "claim": "앞240에는empirical k1–3/KNN1–2/다른5조건1의 이득이 있다.",
+      "source_location": "SRC-0027841:first_240/k_with_lower_tail_mean; SRC-0030211",
+      "verification_method": "7행 모든 lower_k를 전수 대조",
+      "limit": "유리한 k·기간만 선택하지 않는다."
+    },
+    {
+      "claim_id": "H062-C28",
+      "record": "0066-0068-group-risk",
+      "claim": "Tab최악오차는앞에서낮지만뒤에서높고기간은중첩개발자료다.",
+      "source_location": "SRC-0027841:first_240/last_240 Tab/global; SRC-0022019:§2",
+      "verification_method": "4표시값 .113709/.115649/.177492/.125719 재대조",
+      "limit": "globalaux부재, 독립반복·일반화 보장 아님."
+    },
+    {
+      "claim_id": "H062-C29",
+      "record": "0066-0068-group-risk",
+      "claim": "같은함수집합의기준1/1과잘못된1/5는minimax최적해를바꾼다.",
+      "source_location": "SRC-0022018:정확산술; SRC-0027841:exact_arithmetic; EXT-H062:logic",
+      "verification_method": "θ1의risk2/2·regret1,θ0의risk1/5·잘못된목적0·진짜regret4 및 하한 대수 확인",
+      "limit": "설명용 제곱risk이며 실제 Tab/RCTL 성능이 아니다."
+    },
+    {
+      "claim_id": "H062-C30",
+      "record": "0066-0068-group-risk",
+      "claim": "평균에서고정상수차감은argmin불변이나max에서는아니다.",
+      "source_location": "SRC-0022019:§3; SRC-0022876:arithmetic comments; EXT-H062:logic",
+      "verification_method": "평균 완전제곱식과max활성집단의 차이를 재대조",
+      "limit": "gradient상수0만으로기준오차무시불가."
+    },
+    {
+      "claim_id": "H062-C31",
+      "record": "0066-0068-group-risk",
+      "claim": "원68§1의3논문내용은보고된검토이며현재H062본문검증0이다.",
+      "source_location": "SRC-0022019:§1; SRC-0062717:sources; SRC-0062706/0062709/0062712:header",
+      "verification_method": "읽기범위JSON전체 및PDF count/첫페이지 marker만 확인",
+      "limit": "논문수치·정리·식5를이번확정사실로승격하지 않는다."
+    },
+    {
+      "claim_id": "H062-C32",
+      "record": "0066-0068-group-risk",
+      "claim": "3논문35/32/7=74쪽과7PNG보관은전체독해가아니다.",
+      "source_location": "SRC-0062716:6downloads; SRC-0062729:7renders; SRC-0062717:scope",
+      "verification_method": "manifest6바이트/PDFheader·PNG7해시와 scope의미독해항목대조",
+      "limit": "현재공식응답·전본문·시각독해0."
+    },
+    {
+      "claim_id": "H062-C33",
+      "record": "0066-0068-group-risk",
+      "claim": "과거세논문의코드검토/실행은모두false다.",
+      "source_location": "SRC-0062717:sources[*].code_reviewed/code_executed",
+      "verification_method": "3행전체확인",
+      "limit": "링크존재나source수집을구현검토로세지않음."
+    },
+    {
+      "claim_id": "H062-C34",
+      "record": "0066-0068-group-risk",
+      "claim": "검색4개는문자열52블록이고판본/무관내용이혼재한다.",
+      "source_location": "SRC-0062715/0062718/0062719/0062720:전체JSON문자열; SRC-0062721:queries/filters",
+      "verification_method": "전문 분할 독해·3/9/18/22블록·15질의/9필터 및 MMR응용/MRIv1/혼합프로그램 대조",
+      "limit": "연결기사전체독해·질의전수실행·세계최초성입증아님."
+    },
+    {
+      "claim_id": "H062-C35",
+      "record": "0066-0068-group-risk",
+      "claim": "24프로파일1512검사는저장수치의결정적대조다.",
+      "source_location": "SRC-0027841:전체; SRC-0027844:전체; SRC-0030211; SRC-0024832:MAE128",
+      "verification_method": "384cell/384tail/384delta/128prior 및 설정·판정·비용 재계산 확인",
+      "limit": "원스크립트실행/import0·새모델0·과학독립재현아님."
+    },
+    {
+      "claim_id": "H062-C36",
+      "record": "0066-0068-group-risk",
+      "claim": "numericwall/finish/RSS는서로다른과거계측값이다.",
+      "source_location": "SRC-0027841:numeric_wall_seconds/observed_rss_bytes; SRC-0027842:elapsed_seconds; SRC-0022876:timer/RSS",
+      "verification_method": "저장 .020347199999378063/.024249100002634805/34324480과30초·1GiB 비교",
+      "limit": "종료RSS는peak아님,현재계측재현아님."
+    },
+    {
+      "claim_id": "H062-C37",
+      "record": "0066-0068-group-risk",
+      "claim": "비용원장은67cheap항목하나만추가했고모델횟수불변이다.",
+      "source_location": "SRC-0027839:전체; SRC-0027838:전체; SRC-0027840:receipt",
+      "verification_method": "before/after전체차이·SHA·cheap64.02919210000486/modeling1977.5759804000027 산술대조",
+      "limit": "before기존H052재가산0/초기전처리미기록."
+    },
+    {
+      "claim_id": "H062-C38",
+      "record": "0066-0068-group-risk",
+      "claim": "snapshot16의45사본8626942bytes일치는보관완료이며전체연구완료아니다.",
+      "source_location": "SRC-0001028:45rows; SRC-0001029:전체; SRC-0022281:정적코드",
+      "verification_method": "모든사본해시·크기와3완료false/동시점budgetafter대조",
+      "limit": "progress/AGENTS전본문이나원논문전수독해아님."
+    },
+    {
+      "claim_id": "H062-C39",
+      "record": "0066-0068-group-risk",
+      "claim": "기존예측재해석과새보호loss연구를구분하며관측운영손해·허용행동을정해야한다.",
+      "source_location": "SRC-0022019:§4/5; SRC-0000116:§4",
+      "verification_method": "원판단·예산·미추천경계재독및저장반례연결",
+      "limit": "activity를없는capacity/QoS관측으로바꾸지않는다."
+    },
+    {
+      "claim_id": "H062-C40",
+      "record": "0066-0068-group-risk",
+      "claim": "H062는47그룹100경로/새21/기존6/외부20을보존하고논문본문은대기다.",
+      "source_location": "SRC-0001028:목록; EXT-H062:evidence/0063-0068-synthesis-risk/manifest.json",
+      "verification_method": "목록·원본·사본·실제읽기범위및신규9본문12JSON/외부검색4별도대조",
+      "limit": "전체Goal·전관련packet완료아님."
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "semantic_second_pass_at_utc": "2026-10-10T07:39:28.190174+00:00",
+  "semantic_second_pass_scope": "두 팀기록의40주장을 원63/64/65/66/67/68·중간보고서, 기존H055–61의 관련 절, 저장67 settings/marker/receipt/24프로파일·exact arithmetic에 작성 후 다시 대조했다. 최초 읽기에서의 전체 결과 독해와1512검사를 재사용하면서 전체18표시숫자·앞/뒤4표시숫자·7개lower-k집합·같은cell예외·시간/RSS경계를 재확인했다. helper5정적경로와 snapshot45보존·공식본문미검수 범위를 구분했다. 검색필터는 원문9개로 정리하고, 검색문자열을 구조화 실험결과나 최신논문 독해로 가산하지 않았다. KDD validation선택 문구는H057의미확인으로 연결하고기존에있던주의점을소급하지않았다. 동일에이전트2차검수이며독립연구자검증/원실험재현아님."
+}

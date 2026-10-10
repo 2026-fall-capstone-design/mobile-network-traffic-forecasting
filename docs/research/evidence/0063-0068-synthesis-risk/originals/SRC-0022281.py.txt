@@ -1,0 +1,91 @@
+"""Verify and archive this completed increment; no model reruns."""
+from pathlib import Path
+import hashlib,json,math,re,shutil
+from pypdf import PdfReader
+
+base=Path(__file__).resolve().parent
+workspace=base.parents[1]
+target=workspace/'output/research/redesign_20260925_snapshot_16'
+assert not target.exists(), 'Do not overwrite an archived increment.'
+source=base/'sources/group_protection_66'
+diag=base/'results/group_risk_67'
+public=workspace/'output/research/TabICLv2_재설계_cell보호목표와학습기준_추가검토.md'
+
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def read(p): return json.loads(p.read_text(encoding='utf-8-sig'))
+def finite(x):
+    if isinstance(x,float): assert math.isfinite(x)
+    elif isinstance(x,dict):
+        for v in x.values(): finite(v)
+    elif isinstance(x,list):
+        for v in x: finite(v)
+
+manifest=read(source/'manifest.json')
+for r in manifest:
+    assert r['saved'] and r['status']==200
+    p=source/r['name']
+    assert p.stat().st_size==r['bytes'] and sha(p)==r['sha256']
+    if p.suffix=='.pdf':
+        assert p.read_bytes().startswith(b'%PDF')
+        pdf=PdfReader(p)
+        assert len(pdf.pages)==r['pages']
+        assert r['version_marker'] in pdf.pages[0].extract_text()
+render=read(source/'review_pages/render_log.json')
+assert len(render)==7
+for r in render:
+    p=source/'review_pages'/r['png']
+    assert p.stat().st_size==r['bytes'] and sha(p)==r['sha256']
+settings=read(diag/'settings.json')
+assert settings['plan_sha256']==sha(base/'67_group_risk_diagnostic_plan.md')
+assert settings['code_sha256']==sha(base/'group_risk_diagnostic_67.py')
+for p,h in settings['input_sha256'].items(): assert sha(base/p)==h
+assert read(diag/'run_finished.json')['complete']
+res=read(diag/'result.json')
+assert len(res['risk_profiles'])==24 and res['original_per_cell_metrics_reproduced']
+assert all(r['k_with_lower_tail_mean']==[] for r in res['risk_profiles'] if r['period'] in ['all','last_240'])
+before=read(diag/'budget_before_67.json')
+after=read(diag/'budget_after_67.json')
+assert after==read(base/'cumulative_execution_budget.json')
+assert after['caps']==before['caps'] and after['used']==before['used']
+assert after['remaining_count_budgets']==before['remaining_count_budgets']
+keys=set(after['new_cheap_diagnostic_seconds'])-set(before['new_cheap_diagnostic_seconds'])
+assert keys=={'group_risk_diagnostic_67'}
+assert after['new_cheap_diagnostic_seconds']['group_risk_diagnostic_67']==res['numeric_wall_seconds']
+report=public.read_text(encoding='utf-8')
+for r in res['risk_profiles']:
+    if r['period']=='all' and r['primary_seed']:
+        for key in ['mean','worst','top4_mean']: assert f'{r[key]:.6f}' in report
+for p in re.findall(r'\]\(<(C:/[^>]+)>\)',report): assert Path(p).is_file(),p
+assert '\uc0ac\ub840' not in report
+
+files=[workspace/'AGENTS.md',public,base/'progress.md',base/'cumulative_execution_budget.json',
+    base/'66_group_protection_review_plan.md',base/'collect_group_protection_66.py',
+    base/'render_group_protection_66.py',base/'67_group_risk_diagnostic_plan.md',
+    base/'group_risk_diagnostic_67.py',base/'68_group_protection_findings.md',
+    base/'record_group_protection_68.py',Path(__file__),
+    base/'results/rctl_pilot/all_predictions.npz',base/'results/cell_harm_envelope_42/result.json']
+files+=list(source.rglob('*'))+list(diag.rglob('*'))
+files=sorted(set(p for p in files if p.is_file()))
+for p in files:
+    if p.suffix=='.json': finite(read(p))
+target.mkdir()
+copies=[]
+for p in files:
+    rel=p.relative_to(workspace)
+    q=target/rel
+    q.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(p,q)
+    assert sha(p)==sha(q)
+    copies.append(dict(path=rel.as_posix(),bytes=q.stat().st_size,sha256=sha(q)))
+verification=dict(complete=True,date='2026-09-26',source_download_records_verified=len(manifest),
+    pdf_count=3,total_pdf_pages=74,rendered_pages_verified=7,rendered_pages_visually_reviewed=7,
+    plan_code_input_hashes_verified=True,original_per_cell_metrics_reproduced=True,
+    public_metric_table_verified=True,local_links_verified=True,finite_json=True,
+    budget_increment_recorded_once=True,budgets_not_reset=True,new_RCTL_fits=0,new_Tab_contexts=0,
+    copied_files=len(copies),copied_bytes=sum(r['bytes'] for r in copies),
+    research_goal_complete=False,final_recommendation_selected=False,final_word_written=False,
+    inputs_remain_development_data=True,copy_hashes_verified=True,
+    notes=['Snapshot16 is incremental; previous snapshots unchanged.','Source reading scope is explicit; 74 pages downloaded does not mean all proofs reviewed.'])
+(target/'manifest.json').write_text(json.dumps(copies,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(target/'verification.json').write_text(json.dumps(verification,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(dict(path=str(target),**verification),ensure_ascii=False))

@@ -1,0 +1,92 @@
+"""New aggregation of existing predictions; never trains or calls a model."""
+from pathlib import Path
+from fractions import Fraction as F
+import hashlib, json, os, sys, time
+import numpy as np
+import psutil
+
+sys.stdout.reconfigure(encoding='utf-8')
+base = Path(__file__).resolve().parent
+out = base / 'results/group_risk_67'
+out.mkdir(parents=True, exist_ok=True)
+assert not (out/'run_started.json').exists(), 'Already started; do not repeat.'
+
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def save(name, x):
+    (out/name).write_text(json.dumps(x, ensure_ascii=False, indent=2, allow_nan=False)+'\n', encoding='utf-8')
+
+src_path = base/'results/rctl_pilot/all_predictions.npz'
+audit_path = base/'results/cell_harm_envelope_42/result.json'
+settings = dict(wall_cap_seconds=30, rss_cap_bytes=1024**3,
+    new_RCTL_fits=0, new_RCTL_forward=0, new_Tab_contexts=0, new_Tab_rows=0, new_simple_fits=0,
+    plan_sha256=sha(base/'67_group_risk_diagnostic_plan.md'), code_sha256=sha(Path(__file__)),
+    input_sha256={str(p.relative_to(base)):sha(p) for p in [src_path,audit_path]},
+    independent_test=False, changed_partitions=False, k_values=list(range(1,17)))
+save('settings.json', settings)
+save('run_started.json', dict(pid=os.getpid(), unix=time.time()))
+start = time.perf_counter()
+done = False
+error = None
+try:
+    src = np.load(src_path, allow_pickle=False)
+    audit = json.loads(audit_path.read_text(encoding='utf-8'))
+    y = src['y'].astype(np.float64)
+    assert y.shape == (16,480)
+    names = [k for k in src.files if k not in ['y','cell_ids','scales']]
+    assert len(names) == 8
+    assert set(names) == {'global_20260925','tabicl_risk_20260925','empirical_risk_20260925',
+        'knn_risk_20260925','pcc_balanced_20260925','random_balanced_20260925',
+        'tabicl_risk_20260926','empirical_risk_20260926'}
+    periods = {'all':slice(None), 'first_240':slice(0,240), 'last_240':slice(240,480)}
+    result = []
+    for period,sel in periods.items():
+        risks = {k: np.abs(src[k].astype(np.float64)[:,sel]-y[:,sel]).mean(1) for k in names}
+        glob = risks['global_20260925']
+        gt = np.cumsum(np.sort(glob)[::-1])/np.arange(1,17)
+        for name,r in risks.items():
+            assert np.isfinite(r).all()
+            tail = np.cumsum(np.sort(r)[::-1])/np.arange(1,17)
+            d = tail-gt
+            result.append(dict(period=period,method=name,
+                primary_seed=name.endswith('20260925'), cell_mae=r.tolist(), mean=float(r.mean()),
+                worst=float(r.max()),top4_mean=float(tail[3]),top_k_means=tail.tolist(),
+                top_k_deltas_vs_global=d.tolist(),
+                k_with_lower_tail_mean=(np.flatnonzero(d < -1e-12)+1).tolist(),
+                cell_ids_better=src['cell_ids'][r < glob-1e-12].tolist(),
+                global_no_worse_at_every_cell=bool(np.all(glob <= r+1e-12)),
+                global_no_worse_at_every_top_k=bool(np.all(gt <= tail+1e-12))))
+            if period=='all':
+                old=next(a for a in audit['methods'] if a['method']==name)
+                assert np.max(np.abs(r-np.asarray(old['per_cell_mae']))) < 1e-12
+    def risks(theta): return [theta*theta+1,(theta-2)*(theta-2)+1]
+    true_bench=[F(1),F(1)]
+    wrong_bench=[F(1),F(5)]
+    arithmetic=[]
+    for name,theta,bench in [('correct_regret',F(1),true_bench),('wrong_B_benchmark',F(0),wrong_bench)]:
+        rr=risks(theta)
+        arithmetic.append(dict(condition=name,theta=str(theta),risk=list(map(str,rr)),
+            benchmark=list(map(str,bench)),measured_objective=str(max(r-b for r,b in zip(rr,bench))),
+            true_worst_regret=str(max(r-b for r,b in zip(rr,true_bench)))))
+    assert max(r-b for r,b in zip(risks(F(1)),true_bench)) == 1
+    assert max(r-b for r,b in zip(risks(F(0)),wrong_bench)) == 0
+    assert max(r-b for r,b in zip(risks(F(0)),true_bench)) == 4
+    # Correct max(theta²,(theta-2)²) minimized at intersection theta=1.
+    # Wrong max(theta²,(theta-2)²-4) is nonnegative and equals zero at theta=0.
+    # Mean adjusted risk = (theta-1)² + 2 - mean(bench): minimizer remains 1.
+    elapsed=time.perf_counter()-start
+    rss=psutil.Process().memory_info().rss
+    assert elapsed < 30 and rss < 1024**3
+    assert all(sha(base/rel)==h for rel,h in settings['input_sha256'].items())
+    save('result.json', dict(complete=True,settings=settings,cell_ids=src['cell_ids'].tolist(),
+        risk_profiles=result,exact_arithmetic=arithmetic,numeric_wall_seconds=elapsed,observed_rss_bytes=rss,
+        original_per_cell_metrics_reproduced=True,inputs_unchanged=True,
+        selected_new_objective=False,selected_new_partition=False))
+    done=True
+    print(json.dumps(dict(risk_profiles=[{k:r[k] for k in ['period','method','mean','worst','top4_mean',
+        'k_with_lower_tail_mean','global_no_worse_at_every_cell','global_no_worse_at_every_top_k']} for r in result],
+        exact_arithmetic=arithmetic,seconds=elapsed),ensure_ascii=False,indent=2))
+except Exception as exc:
+    error=repr(exc)
+    raise
+finally:
+    save('run_finished.json',dict(complete=done,error=error,elapsed_seconds=time.perf_counter()-start))
