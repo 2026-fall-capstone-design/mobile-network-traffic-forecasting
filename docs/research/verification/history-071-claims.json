@@ -1,0 +1,373 @@
+{
+  "batch_id": "history-071",
+  "semantic_second_pass_complete": true,
+  "reviewed_at_utc": "2026-10-10T13:47:05.576152+00:00",
+  "independent_reviewer": false,
+  "reviewed_record_sha256": "6d3c438f316bc49d0fd4b4217f74f7202d9f8e35126854d69518722114ecc5e7",
+  "semantic_second_pass_scope": "같은 에이전트의 초안 작성 후 별도 원문 재독해·주장별 대조. 수치/링크 검사로 의미 대조를 대체하지 않는다.",
+  "PDF_text_pages_reread": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    23,
+    27,
+    28,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65
+  ],
+  "PDF_visual_source_pages_reread": [
+    22,
+    31,
+    35,
+    37,
+    39,
+    40,
+    41,
+    42,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    53,
+    54,
+    58
+  ],
+  "postdraft_visual_scope": "표5/그림4·7·8·9·10·11/월평균120/연간전체배치·area축 및 반례3확대. 모든420막대의 확대2차전사는 초안 전 완료; 초안 후 전수 재전사 아님.",
+  "claims": [
+    {
+      "claim_id": "H071-C01",
+      "claim": "학습 구조 군집화는 당시 독립 소속 조건에 곧바로 채택되지 않았고 새 실험도 없다.",
+      "source_location": "SRC-0022023:1–18,37–44",
+      "verification_method": "52행 findings 전체 재독해와 PDF16–18 대조. 학습 계수 의존·sample 단위·비용·입력·용량 문제를 당시 판단과 연결.",
+      "limit": "현재 권한으로 과거 다음 행동을 실행하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C02",
+      "claim": "당시 선택독해와 이번 PDF65쪽 추가 독해는 다른 시점이다.",
+      "source_location": "SRC-0022023:5–7; SRC-0063077:전체5요청; format-audit",
+      "verification_method": "findings·수집 manifest 전체를 다시 읽고65쪽 첫독해/4원PNG/표그림 전사 범위와 대조.",
+      "limit": "과거를 전체 독해로 소급하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C03",
+      "claim": "v1 제출2025-07-15, PDF footer17일, 서지63쪽/파일65쪽을 구분한다.",
+      "source_location": "SRC-0063074:1,3; SRC-0063073:가시내용/citation메타; external-version-check",
+      "verification_method": "PDF1/3 및 arXiv 저장 가시내용 전체·citation메타를 재독해하고 현재판 확인 기록과 비교.",
+      "limit": "현재 PDF 재다운로드나 저널 출판 확인으로 확대하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C04",
+      "claim": "자료는 AESO42area·6region의2011-01–2023-10 시간별MW다.",
+      "source_location": "SRC-0063074:18,21",
+      "verification_method": "자료기간·단위·지역수·송전손실 제외 합계를 원문과 재대조.",
+      "limit": "Milan 통신 cell 결과가 아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C05",
+      "claim": "train2011–2021/val2022/test2023과 재학습2011–2022는 저자의 실행 보고다.",
+      "source_location": "SRC-0063074:19–20",
+      "verification_method": "분할 전처리 순서·Optuna 수백trial·재학습·누락한 설정/seed/로그의 경계를 대조.",
+      "limit": "저자 실험을 독립 재현한 것은 아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C06",
+      "claim": "168시간 창과 lag/변환/달력·날씨·시장 입력을 사용한다.",
+      "source_location": "SRC-0063074:32–34",
+      "verification_method": "lag예시·다항식·이동평균·EMA·COVID기간·WTIforwardfill·BTC·outage/LSSI를 다시 읽음.",
+      "limit": "최종 feature 배열·모든 scaler는 미확보.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C07",
+      "claim": "t+1 입력은 hour-ahead forecast가 예측 때 입수 가능하다는 가정이다.",
+      "source_location": "SRC-0063074:32–33",
+      "verification_method": "목표시각 정렬과 실제 입수가능시각을 분리해 원문 assumed availability를 대조.",
+      "limit": "운영 vintage 검증·누출 없음의 실증으로 세지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C08",
+      "claim": "global은 행을 pool해 공동 적합하며 다변량 인과모델이나 local계수 평균 구현을 뜻하지 않는다.",
+      "source_location": "SRC-0063074:5,11–15,33–34",
+      "verification_method": "식3–4와 data-centralized 설명을 중요도 평균에 관한 해석 문장과 구분.",
+      "limit": "서술만으로 구현을 새로 추정하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C09",
+      "claim": "Algorithm1은 local계수→Kmeans series군집→군집별 pooled적합이다.",
+      "source_location": "SRC-0063074:15–16 Eq7–8/Algorithm1; SRC-0022023:10",
+      "verification_method": "의사코드8단계와 계수벡터 설명을 재대조. RCTL계수 사용 시의 독립성 충돌을 조건부로 명시.",
+      "limit": "소속 정보원과 최종 예측기가 같은 경우를 구분.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C10",
+      "claim": "Fig11은 모델별 서로 다른 K5의42지역 분할이다.",
+      "source_location": "SRC-0063074:39,41 Fig11; tables-membership.figure11",
+      "verification_method": "Fig11 시각과 이미 재대조한126전사·군집크기·동일42지역 분할검사를 대조.",
+      "limit": "K선정·seed·UPC소속으로 확대하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C11",
+      "claim": "Algorithm2의 θ가중거리와 M×M행렬은 pooled sample단위다.",
+      "source_location": "SRC-0063074:17–18 Eq9–11/Algorithm2",
+      "verification_method": "식10의 θ 위치·sample 인덱스·거리행렬 차원과 의사코드8단계를 다시 읽음.",
+      "limit": "cell수만으로 실제 시간/메모리를 추정하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C12",
+      "claim": "θ의 비음수 처리·query배정·instance K/알고리즘은 충분히 특정되지 않는다.",
+      "source_location": "SRC-0063074:16–18,42–43",
+      "verification_method": "수식/방법/결과설명의 가중치 단위를 재대조하고 loss sample-weight 구현과 구분.",
+      "limit": "원코드 확인 전 공백을 임의 구현으로 채우지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C13",
+      "claim": "local200/global1000 trees는 자료 공유와 모형 용량이 함께 바뀌는 비교다.",
+      "source_location": "SRC-0063074:14,19–20",
+      "verification_method": "HPO와 best-setting 보고를 재독해하고 Fig1에서 서로 다른 중요도 척도를 구분.",
+      "limit": "동일 계산량의 pooling 단독 효과나 실제 비용값이 아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C14",
+      "claim": "feature/target-transformer 분류는 저자의 해석 틀이다.",
+      "source_location": "SRC-0063074:4–6,8–10,14–15,30,36",
+      "verification_method": "분류 및 출력범위 서술을 재독해. boosting 전체의 보편 정리·Tab 효과 증명으로 확장하지 않음.",
+      "limit": "이 분류로 모든 모델의 외삽 가능성을 확정하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C15",
+      "claim": "nMAE 분모와 area별 min/mean/max 및 FB부호·척도를 구분한다.",
+      "source_location": "SRC-0063074:21,35,42,45,58",
+      "verification_method": "지표 문장과 네 표 캡션·열을 텍스트/시각 재대조.",
+      "limit": "원시MW·다른 정규화 지표와 직접 비교하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C16",
+      "claim": "Table1/3 평균nMAE는 방법·모델별 다른 이득을 보인다.",
+      "source_location": "SRC-0063074:35,42; tables-membership.tables.1/3",
+      "verification_method": "두 표 시각/원문·15개 통합표 값을 전사와 대조. Ridge local/global과 tree weighted 비교군 유지.",
+      "limit": "같은 모델·지표·방법 조건을 유지한다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C17",
+      "claim": "global의 평균nMAE 감소에도 MAPE최대 악화와 지역 반례가 있다.",
+      "source_location": "SRC-0063074:35,37,39 Fig9",
+      "verification_method": "XGB/LGB의MAPE평균·최대 및 Fig9 area17의local/global6값을 시각 재대조.",
+      "limit": "평균 개선을 모든 지표·지역 개선으로 옮기지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C18",
+      "claim": "FB·최소MSE강조·LightGBMcluster 본문/표 차이를 보존한다.",
+      "source_location": "SRC-0063074:34–35,39–40",
+      "verification_method": "FB .0004/.0005, 최소MSE1.074e-5/1.133e-5 및nMAE2.2764/2.2685와MSE.0009/.0010을 재대조.",
+      "limit": "저자 정정을 대신하거나 모든 결과를 무효화하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C19",
+      "claim": "Table2의 변동률은 반올림된 평균만으로 마지막 자리 재현을 요구할 수 없다.",
+      "source_location": "SRC-0063074:28,38,41 Table2; numeric-check.rounded_change_*",
+      "verification_method": "안정/드리프트 서술과18인쇄값·6반올림 범위를 대조.",
+      "limit": "정확한 해당지역 목록·원지표·반복분산은 미확인.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C20",
+      "claim": "Ridge weighted와 LightGBM instance의 MSE는 일괄 개선이 아니다.",
+      "source_location": "SRC-0063074:42–43 Table3",
+      "verification_method": "nMAE동일값 및LGB MSE평균/최대 열을 표 시각·본문과 재대조.",
+      "limit": "평균nMAE 주장과 MSE 손해를 병기한다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C21",
+      "claim": "Table1/3 XGB최대MAPE와 Fig9/Table LGB nMAE 표기는 다르다.",
+      "source_location": "SRC-0063074:35,39,42; figures.figure9",
+      "verification_method": "253.532/253.528·6.38/6.3967·2.27/2.2764를 원표와 확대그림·legend에서 재확인.",
+      "limit": "다른 반올림값을 임의 통일하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C22",
+      "claim": "zero-shot은 area학습→상위지역 평가이며 합계일치 강제는 후속과제다.",
+      "source_location": "SRC-0063074:44–45,52",
+      "verification_method": "계층·coherence 설명과 결론을 다시 읽고 재조정 실행과 구분.",
+      "limit": "미래관측 없는 장기예측과 동일하게 부르지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C23",
+      "claim": "Table4의 지역 우위와 굵은 글씨에 예외가 있다.",
+      "source_location": "SRC-0063074:44–45 Table4",
+      "verification_method": "Calgary/Edmonton/Northwest 및 Northeast nMAE, systemMAPE 숫자·강조를 재대조.",
+      "limit": "강조만으로 우수모델을 정하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C24",
+      "claim": "월평균에서 Ridgeglobal은9개월 악화, LGBweighted는4개월만 단독 최소다.",
+      "source_location": "SRC-0063074:45–51 Figs12–17; figures.monthly",
+      "verification_method": "초안 후6쪽의 확대legend120값을 전사와 전부 재대조. 비교월목록도 다시 계산.",
+      "limit": "월별개별bar5040개 전사나 월단위선행예측이 아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C25",
+      "claim": "연간 캡션10평균은 signed평균과 다르고 절댓값평균의 반올림 범위와 양립한다.",
+      "source_location": "SRC-0063074:52–54 Figs18–19; figures.annual; numeric-check.annual_*",
+      "verification_method": "두 캡션과420전사 재계산·signed/absolute20검사를 대조. C25에 양쪽반올림 .01과2.85429/2.86 예시 추가.",
+      "limit": "양립성은 저자 집계코드 재현·정확한 단순반올림 일치가 아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C26",
+      "claim": "연간 피크 평균 개선에도 Ridge6/4·LGB24에서 절댓값오차가 커진다.",
+      "source_location": "SRC-0063074:53–54 Figs18–19",
+      "verification_method": "두 native전체그림의 area축과 확대quarter3개의 숫자를 재확인.",
+      "limit": "signed음수 자체를 개선으로 읽지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C27",
+      "claim": "피크 연산 정의·Nov/Dec와Oct종료·잘린 월별 라벨이 남는 공백이다.",
+      "source_location": "SRC-0063074:18–21,37,40,44–54",
+      "verification_method": "기간·축8000시간 이상·월평균legend·피크 캡션을 재대조. 첫전체시각에서 확인한 clipping 경계 유지.",
+      "limit": "데이터누출이나 정확한 피크연산을 추정하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C28",
+      "claim": "naive거동은 저자 해석이며 장기·확률·강건성은 후속이다.",
+      "source_location": "SRC-0063074:36–40,43,52–55",
+      "verification_method": "Fig8/10 시각의6지역과 본문·결론을 재대조.",
+      "limit": "별도naive손실검정·장기실험·강건성성공으로 세지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C29",
+      "claim": "Fig4 중심선/mean과 계절·회복 서술 및 area33/57 분류에 차이가 있다.",
+      "source_location": "SRC-0063074:21–23,27–28 Fig4",
+      "verification_method": "Fig4(a)/(f)/(g) 시각과 본문 재대조; C29에 보라색중심선과mean 구분. 지역문단도 재독해.",
+      "limit": "그림에서 정확한 원평균을 추정하거나 저자분류를 고치지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C30",
+      "claim": "가격사건 전후 연관과 인과 효과, 서로 다른 %기준을 구분한다.",
+      "source_location": "SRC-0063074:30–31 Fig7",
+      "verification_method": "95분위·lag범위·29/30 및6.15/5.28 문구와그림lag0주석을 재대조.",
+      "limit": "인과효과·공통분모가 검증됐다고 쓰지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C31",
+      "claim": "GEFCom부록은10zones·14년자료의 local/global 비교다.",
+      "source_location": "SRC-0063074:55–58 TableA5",
+      "verification_method": "기간/8하위2집계/날씨변수·표72숫자 중주장12평균을 원문·시각과 재대조.",
+      "limit": "AESO의 모든split/설정을 부록에도 추정 적용하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C32",
+      "claim": "비슷한 histogram/ratio는 조건부동질성 증명·cluster불필요 ablation이 아니다.",
+      "source_location": "SRC-0063074:55–58",
+      "verification_method": "부록의 동질성 해석·cluster열 없음·RidgeFB범위 예외를 재대조.",
+      "limit": "모든지표/설정의 우월성으로 확대하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C33",
+      "claim": "Y/Yhat·M표기·Fig참조·반복서지는 원문표기 문제로 보존한다.",
+      "source_location": "SRC-0063074:11–14,33,58–65",
+      "verification_method": "식1–4·M변동/곱·Fig2참조 및60서지 항목의4중복쌍과34누락을 재독해.",
+      "limit": "표기문제만으로 저장실험 전체를 무효라 하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C34",
+      "claim": "KBS는 서지/미리보기만 확인했으며3저자·동일Crossref와본문접근한계를 구분한다.",
+      "source_location": "SRC-0063070:전체JSON; SRC-0063071:가시내용/citation; SRC-0022023:18; external-version-check",
+      "verification_method": "저장arXiv전체 가시내용/3저자메타를 UTF8로 재독해, 현재Crossref서지·동일해시/403/429 및옛메모와 대조.",
+      "limit": "61서지항목은61논문본문이 아니며 출판본 전체방법 변경 대조는 미완료.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C35",
+      "claim": "964숫자·126소속·65TXT·HTML·prefix·4PNG는 별도 검수단위다.",
+      "source_location": "manifest; format-audit; tables-membership; figures; provenance-check; numeric-check",
+      "verification_method": "단위별합계·원문 위치·32전사수정 이력·HTML/PDF 매핑 및범위제한을 다시 읽고 대조.",
+      "limit": "60인용논문본문·5040월별bar·252Fig9전체수치·원실험까지확대하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H071-C36",
+      "claim": "재사용은 정보 의존·군집단위·비교군·반례·재검토 조건에 한정한다.",
+      "source_location": "SRC-0022023:9–18,37–44; SRC-0063074:16–20,32–35,41–54",
+      "verification_method": "원72의조건과 이번방법/수치/입력/비용공백을 종합대조. Tab직접·소속점수·RCTL효용을 분리.",
+      "limit": "새코드/판본/조건이 확보되면 관련주장만 재검토; 새모델실행은없다.",
+      "semantic_second_pass_complete": true
+    }
+  ]
+}

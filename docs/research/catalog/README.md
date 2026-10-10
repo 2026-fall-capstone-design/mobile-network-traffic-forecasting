@@ -168,3 +168,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H069 목록](history-069-sources.jsonl)은 SIU·검색 기록과 기존69–71의20그룹·40경로를 연결합니다. 기존 정확사본9개·메타데이터11개이며 새 사본과 source 독해 수 가산은0입니다. [실제 범위](../sources/history-069.md)는 검색8내용/10표현/100결과와 기관 HTML을 구분합니다. 검색 원문은 새로 재게시하지 않고 해시·원경로·결과별 접근 색인을 제공합니다.
 
 [H070 source별 범위](../sources/history-070.md)와 [81그룹 catalogue](history-070-sources.jsonl)는 원72–75에 대응한다. 등록197경로 중196현재일치·1누락, 정확사본45참조/metadata36을 분리한다. 원문19·전체JSON15·선택2의 새 검수 범위만 가산 대상으로 두며, 미열람 외부34자료는 후속 상태다.
+
+[H071 목록](history-071-sources.jsonl)은72 Globalization/KBS의13그룹·27경로를 연결합니다. 기존 정확사본2개·외부 참조11개이며 새 원본 복사는0입니다. [출처별 범위](../sources/history-071.md)에서 PDF65쪽, TXT65본문 대응, HTML 정적내용, 원PNG4개, KBS서지와 접근 실패를 구분합니다.

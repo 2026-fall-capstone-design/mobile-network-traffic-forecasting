@@ -70,4 +70,8 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 
 ## 72–75 뒤 남은 근거
 
-[기록과 범위](records/0072-0075-output-compression.md): Globalization/ForeCA/mbrdr/GNN의 실제 일차본문·그림·외부코드, 저장 검색11개의 검수가 남았다. isotropic noise 계획은 저장 실행에 없으며 own-only Tab의 동일 조건 비교도 없다. 이 공백을 새 실험 수행으로 임의 채우지 않는다. 등록 루트 HDF별칭이 없어진 시점과 대용량 팀 접근도 확인 대상이다.
+[기록과 범위](records/0072-0075-output-compression.md): Globalization의 후속 본문·그림 검수는 아래에 연결한다. KBS 출판본 전체와 ForeCA/mbrdr/GNN의 실제 일차본문·그림·외부코드, 저장 검색11개는 후속 범위다. isotropic noise 계획은 저장 실행에 없으며 own-only Tab의 동일 조건 비교도 없다. 이 공백을 새 실험 수행으로 임의 채우지 않는다. 등록 루트 HDF별칭이 없어진 시점과 대용량 팀 접근도 확인 대상이다.
+
+## Globalization의 재사용 전 확인 조건
+
+[H071](records/0072-globalization-audit.md)은 인쇄964숫자·126소속을 대조했으나 원예측·코드·실제 비용을 확보한 것은 아닙니다. θ의 부호/정규화, 새query 배정·군집수/seed, 예측 시점의 t+1외생 입력 vintage, 피크 연산식, 본문2023-10종료와11/12월 그림의 관계가 남습니다. 표·본문·그림의 다른 값을 임의 정정하지 않습니다. KBS의 서지3저자 확인과 출판본 전체 방법 검수도 구분합니다.

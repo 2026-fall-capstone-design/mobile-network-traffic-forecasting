@@ -380,3 +380,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 예측 가능한 출력 공간으로 압축하려는 경우
 
 [72–75](records/0072-0075-output-compression.md)를 먼저 확인한다. 좋은 직접 Tab 예측은 압축 성공과 다르며, 실제 target의 rank2 압축7조건은 비압축 HGB보다 전체·양쪽 절반 MSE가 나빴다. 국소 이득은 남긴다. 같은 비용의 multioutput 대안·복원 손실·실제 RCTL 연결을 명시해야 한다. 75의 입력 공유 재진입은47중복으로 새 모델 실행 전에 중단됐다.
+
+## 예측모형의 계수·중요도로 군집화 — Globalization
+
+검색어: model-based whole TSC, weighted instance TSC, local/global, feature-transformer, target-transformer, M×M, AESO, peak load. [72 문헌 대조](records/0072-globalization-audit.md)를 먼저 확인하세요. Algorithm1은 local계수로 series를 묶고 Algorithm2는 global중요도로 sample거리를 가중합니다. 최종 RCTL계수에 의존하면 독립 소속 조건과 충돌하며, cell과sample의 군집 단위도 다릅니다. 평균nMAE만으로 채택하지 말고 최대MAPE·월별피크 반례, local200/global1000 trees, t+1입력 입수 가정, θ처리/query배정/seed 공백을 함께 확인해야 합니다.

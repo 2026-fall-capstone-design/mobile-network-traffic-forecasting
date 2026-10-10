@@ -13,3 +13,14 @@
 05의 RMB-CLE 비교 근거는 확보한 arXiv v1이다. 현재 abs의 journal 관련 DOI가 있어도 출판본과의 동일성을 확인한 것으로 표시하지 않는다. 당시 미래 권호를 별도 실험 증거로 세지 않았다는 원문 판단도 유지한다.
 
 현재 후보는 cell별 비용표를 한 번 만든 뒤 덧셈·최소값으로 공유 보정을 비교한다. 이 계산 절약은 **문제를 바꾼 결과**다. pooled learner gain이나 cross-error matrix와의 동등 정확도, ETAP 수준의 실제 gain 정보, RCTL MAE 개선은 별도 검증 대상이다. [B2의 실제 기각 결과](../records/0004-0007-b2-observed-risk.md)와 [08·09의 유한 표본 한계](../records/0008-0009-finite-sample-pooling.md)를 함께 확인한다.
+
+## 72에서 추가 검토한 모델 기반 군집화
+
+[Globalization의 H071 대조](../records/0072-globalization-audit.md)는 위05의 다섯 방법과 별도로 확인한 후속 문헌이다. 이 논문의 두 방법은 소속에 사용하는 학습 정보와 군집 단위가 다르다.
+
+| 방법 | 먼저 필요한 정보 | 군집 단위·재사용 조건 |
+|---|---|---|
+| Model-based whole TSC | 각 series의 local 예측기 계수 | series를 K-means로 묶고 군집별 pooled model을 적합. 최종 RCTL계수를 쓰면 RCTL 독립 소속 조건과 충돌 |
+| Weighted instance TSC | pooled global 예측기의 feature 중요도 | sample 간 가중거리의 M×M행렬로 군집화. cell소속으로 옮기는 정의·θ의 부호 처리·새 query배정·실제 비용은 별도 확인 |
+
+평균 nMAE의 개선과 최대 MAPE·월별 피크의 반례를 함께 읽어야 한다. 같은 논문의 local200/global1000 trees, 목표 시각 t+1의 예보 입력 가정도 비교 조건이다. [KBS 판본 확인](../sources/history-071.md)은 서지·미리보기 범위이며 출판본 전체 방법 대조와 구분한다.
