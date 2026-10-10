@@ -27,3 +27,5 @@ uv run --locked --group archive python scripts/research_archive/verify_peak_obje
 정리 범위는 로컬 본문10·전체 JSON14의 신규 독해와 기존 자료 재사용이다. 원69·71의 기초논문 내용, 검색 원문, snapshot17의 과거 제어 문서 전체, 그 뒤 기록들은 대기 상태로 남긴다. 66–68 세 문헌의 목표 비교는 기존 검수에 기반한 통합이며 각 문헌의 실행 근거 공백을 해결한 것은 아니다. 전체 Goal은 미완료다.
 
 새 검사기 자체도 [8개 경계 검사](history-066-verifier-check.json)로 확인했다. 손으로 계산한 불균등 피크 개수의 macro/micro·전체 분모와 경험 분위수를 대조하고, private 사본의 수치 변조·비교행 누락·NPZ 변경을 거절하는지 확인했다. 원자료는 변경하지 않았다.
+
+후속 [H067 검수](history-067.md)는 Forecaster’s Dilemma의 저널 본문과 표현·판본을 추가 대조했다. 위 H066의 당시 범위 수치는 그대로 유지한다. 이 문헌 대조는 H066의 저장 예측 계산을 독립 재현으로 다시 세는 작업이 아니다.

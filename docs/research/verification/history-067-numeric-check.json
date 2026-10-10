@@ -1,0 +1,1329 @@
+{
+  "batch_id": "history-067",
+  "success": true,
+  "checked_at_utc": "2026-10-10T10:50:33.695278+00:00",
+  "checks": 66,
+  "check_names": [
+    "T2:row1:exact_printed_sequence",
+    "T2:row2:exact_printed_sequence",
+    "T2:row3:exact_printed_sequence",
+    "T3:row1:exact_printed_sequence",
+    "T3:row2:exact_printed_sequence",
+    "T3:row3:exact_printed_sequence",
+    "T4:row1:exact_printed_sequence",
+    "T4:row2:exact_printed_sequence",
+    "T4:row3:exact_printed_sequence",
+    "T4:row4:exact_printed_sequence",
+    "T4:row5:exact_printed_sequence",
+    "T4:row6:exact_printed_sequence",
+    "T5:row1:exact_printed_sequence",
+    "T5:row2:exact_printed_sequence",
+    "T5:row3:exact_printed_sequence",
+    "T5:row4:exact_printed_sequence",
+    "T5:row5:exact_printed_sequence",
+    "T5:row6:exact_printed_sequence",
+    "T5:row7:exact_printed_sequence",
+    "T5:row8:exact_printed_sequence",
+    "T6:row1:exact_printed_sequence",
+    "T6:row2:exact_printed_sequence",
+    "T6:row3:exact_printed_sequence",
+    "T6:row4:exact_printed_sequence",
+    "T6:row5:exact_printed_sequence",
+    "T6:row6:exact_printed_sequence",
+    "T6:row7:exact_printed_sequence",
+    "T6:row8:exact_printed_sequence",
+    "T7:row1:exact_printed_sequence",
+    "T7:row2:exact_printed_sequence",
+    "T7:row3:exact_printed_sequence",
+    "T7:row4:exact_printed_sequence",
+    "T7:row5:exact_printed_sequence",
+    "T7:row6:exact_printed_sequence",
+    "T7:row7:exact_printed_sequence",
+    "T7:row8:exact_printed_sequence",
+    "138_table_entries",
+    "one_inequality_not_zero",
+    "T4_CL_upper_bound_strictly_smaller",
+    "T2_full_MAE",
+    "T2_full_MSE",
+    "T2_restricted_rMAE",
+    "T2_restricted_rMSE",
+    "T5_all8_ARGaussianSV_min",
+    "T6_inflation_three_VAR_min",
+    "T6_inflation_LogSk4_AR",
+    "T7_GDP_indicator_k4_tie",
+    "T7_inflation_horizon_tie",
+    "T2:v1_row_count",
+    "T3:v1_row_count",
+    "T4:v1_row_count",
+    "T5:v1_row_count",
+    "T6:v1_row_count",
+    "T7:v1_row_count",
+    "table_version_difference17",
+    "only_T7_differs",
+    "all16_Gaussian_columns_differ",
+    "T7_inflation_VAR_indicator_027_to026",
+    "population_fullMSE_Perfect_best",
+    "population_restrictedMSE_Extremist_best",
+    "population_VarY_is1",
+    "1.64_rounded95th",
+    "CLq:printed_equals_integrated",
+    "CLq:negative",
+    "CSLq:printed_equals_integrated",
+    "CSLq:negative"
+  ],
+  "source_pdf_sha256": "7ca1c43720f1408ed4c4b8e8ec7f9d76466fe2c05b40ec74615b72f8b9287164",
+  "printed_entries": 138,
+  "decimal_printed_entries": 137,
+  "inequality_entries": 1,
+  "tables": [
+    {
+      "table": 2,
+      "page": 3,
+      "columns": [
+        "MAE",
+        "MSE",
+        "rMAE",
+        "rMSE"
+      ],
+      "rows": [
+        {
+          "group": "all_vs_Y>1.64",
+          "model": "Perfect",
+          "printed": [
+            "0.64",
+            "0.67",
+            "1.35",
+            "2.12"
+          ]
+        },
+        {
+          "group": "all_vs_Y>1.64",
+          "model": "Unconditional",
+          "printed": [
+            "0.80",
+            "0.99",
+            "2.04",
+            "4.30"
+          ]
+        },
+        {
+          "group": "all_vs_Y>1.64",
+          "model": "Extremist",
+          "printed": [
+            "2.51",
+            "6.96",
+            "1.16",
+            "1.61"
+          ]
+        }
+      ]
+    },
+    {
+      "table": 3,
+      "page": 8,
+      "columns": [
+        "CRPS",
+        "LogS",
+        "rCRPS",
+        "rLogS"
+      ],
+      "rows": [
+        {
+          "group": "all_vs_Y>1.64",
+          "model": "Perfect",
+          "printed": [
+            "0.46",
+            "1.22",
+            "0.96",
+            "2.30"
+          ]
+        },
+        {
+          "group": "all_vs_Y>1.64",
+          "model": "Unconditional",
+          "printed": [
+            "0.57",
+            "1.42",
+            "1.48",
+            "3.03"
+          ]
+        },
+        {
+          "group": "all_vs_Y>1.64",
+          "model": "Extremist",
+          "printed": [
+            "2.05",
+            "5.90",
+            "0.79",
+            "1.88"
+          ]
+        }
+      ]
+    },
+    {
+      "table": 4,
+      "page": 9,
+      "columns": [
+        "twCRPS",
+        "CL",
+        "CSL"
+      ],
+      "rows": [
+        {
+          "group": "indicator_r1.64",
+          "model": "Perfect",
+          "printed": [
+            "0.018",
+            "<0.001",
+            "0.164"
+          ]
+        },
+        {
+          "group": "indicator_r1.64",
+          "model": "Unconditional",
+          "printed": [
+            "0.019",
+            "0.002",
+            "0.204"
+          ]
+        },
+        {
+          "group": "indicator_r1.64",
+          "model": "Extremist",
+          "printed": [
+            "0.575",
+            "0.093",
+            "2.205"
+          ]
+        },
+        {
+          "group": "Gaussian_r1.64_variance1",
+          "model": "Perfect",
+          "printed": [
+            "0.053",
+            "-0.043",
+            "0.298"
+          ]
+        },
+        {
+          "group": "Gaussian_r1.64_variance1",
+          "model": "Unconditional",
+          "printed": [
+            "0.062",
+            "-0.028",
+            "0.345"
+          ]
+        },
+        {
+          "group": "Gaussian_r1.64_variance1",
+          "model": "Extremist",
+          "printed": [
+            "0.673",
+            "0.379",
+            "1.625"
+          ]
+        }
+      ]
+    },
+    {
+      "table": 5,
+      "page": 17,
+      "columns": [
+        "CRPS_k1",
+        "CRPS_k4",
+        "LogS_k1",
+        "LogS_k4"
+      ],
+      "rows": [
+        {
+          "group": "GDP",
+          "model": "AR",
+          "printed": [
+            "0.330",
+            "0.359",
+            "1.044",
+            "1.120"
+          ]
+        },
+        {
+          "group": "GDP",
+          "model": "AR-TVP-SV",
+          "printed": [
+            "0.292",
+            "0.329",
+            "0.833",
+            "1.019"
+          ]
+        },
+        {
+          "group": "GDP",
+          "model": "VAR",
+          "printed": [
+            "0.385",
+            "0.402",
+            "1.118",
+            "1.163"
+          ]
+        },
+        {
+          "group": "GDP",
+          "model": "VAR-TVP-SV",
+          "printed": [
+            "0.359",
+            "0.420",
+            "0.997",
+            "1.257"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "AR",
+          "printed": [
+            "0.167",
+            "0.187",
+            "0.224",
+            "0.374"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "AR-TVP-SV",
+          "printed": [
+            "0.143",
+            "0.156",
+            "0.047",
+            "0.175"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "VAR",
+          "printed": [
+            "0.170",
+            "0.198",
+            "0.235",
+            "0.428"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "VAR-TVP-SV",
+          "printed": [
+            "0.162",
+            "0.201",
+            "0.179",
+            "0.552"
+          ]
+        }
+      ]
+    },
+    {
+      "table": 6,
+      "page": 17,
+      "columns": [
+        "rCRPS_k1",
+        "rCRPS_k4",
+        "rLogS_k1",
+        "rLogS_k4"
+      ],
+      "rows": [
+        {
+          "group": "GDP",
+          "model": "AR",
+          "printed": [
+            "0.654",
+            "0.870",
+            "1.626",
+            "2.010"
+          ]
+        },
+        {
+          "group": "GDP",
+          "model": "AR-TVP-SV",
+          "printed": [
+            "0.659",
+            "0.970",
+            "2.016",
+            "3.323"
+          ]
+        },
+        {
+          "group": "GDP",
+          "model": "VAR",
+          "printed": [
+            "0.827",
+            "0.924",
+            "2.072",
+            "2.270"
+          ]
+        },
+        {
+          "group": "GDP",
+          "model": "VAR-TVP-SV",
+          "printed": [
+            "0.798",
+            "0.978",
+            "2.031",
+            "2.409"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "AR",
+          "printed": [
+            "0.214",
+            "0.157",
+            "0.484",
+            "0.296"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "AR-TVP-SV",
+          "printed": [
+            "0.236",
+            "0.179",
+            "0.619",
+            "0.327"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "VAR",
+          "printed": [
+            "0.203",
+            "0.147",
+            "0.424",
+            "0.317"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "VAR-TVP-SV",
+          "printed": [
+            "0.302",
+            "0.247",
+            "0.950",
+            "0.849"
+          ]
+        }
+      ]
+    },
+    {
+      "table": 7,
+      "page": 18,
+      "columns": [
+        "indicator_k1",
+        "indicator_k4",
+        "Gaussian_k1",
+        "Gaussian_k4"
+      ],
+      "rows": [
+        {
+          "group": "GDP",
+          "model": "AR",
+          "printed": [
+            "0.062",
+            "0.068",
+            "0.111",
+            "0.120"
+          ]
+        },
+        {
+          "group": "GDP",
+          "model": "AR-TVP-SV",
+          "printed": [
+            "0.052",
+            "0.062",
+            "0.101",
+            "0.115"
+          ]
+        },
+        {
+          "group": "GDP",
+          "model": "VAR",
+          "printed": [
+            "0.062",
+            "0.062",
+            "0.119",
+            "0.119"
+          ]
+        },
+        {
+          "group": "GDP",
+          "model": "VAR-TVP-SV",
+          "printed": [
+            "0.059",
+            "0.080",
+            "0.115",
+            "0.135"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "AR",
+          "printed": [
+            "0.026",
+            "0.032",
+            "0.027",
+            "0.031"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "AR-TVP-SV",
+          "printed": [
+            "0.018",
+            "0.018",
+            "0.021",
+            "0.022"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "VAR",
+          "printed": [
+            "0.026",
+            "0.033",
+            "0.025",
+            "0.031"
+          ]
+        },
+        {
+          "group": "inflation",
+          "model": "VAR-TVP-SV",
+          "printed": [
+            "0.022",
+            "0.037",
+            "0.024",
+            "0.034"
+          ]
+        }
+      ]
+    }
+  ],
+  "minima": [
+    {
+      "table": 2,
+      "group": "all_vs_Y>1.64",
+      "column": "MAE",
+      "printed_minimum": "0.64",
+      "models": [
+        "Perfect"
+      ]
+    },
+    {
+      "table": 2,
+      "group": "all_vs_Y>1.64",
+      "column": "MSE",
+      "printed_minimum": "0.67",
+      "models": [
+        "Perfect"
+      ]
+    },
+    {
+      "table": 2,
+      "group": "all_vs_Y>1.64",
+      "column": "rMAE",
+      "printed_minimum": "1.16",
+      "models": [
+        "Extremist"
+      ]
+    },
+    {
+      "table": 2,
+      "group": "all_vs_Y>1.64",
+      "column": "rMSE",
+      "printed_minimum": "1.61",
+      "models": [
+        "Extremist"
+      ]
+    },
+    {
+      "table": 3,
+      "group": "all_vs_Y>1.64",
+      "column": "CRPS",
+      "printed_minimum": "0.46",
+      "models": [
+        "Perfect"
+      ]
+    },
+    {
+      "table": 3,
+      "group": "all_vs_Y>1.64",
+      "column": "LogS",
+      "printed_minimum": "1.22",
+      "models": [
+        "Perfect"
+      ]
+    },
+    {
+      "table": 3,
+      "group": "all_vs_Y>1.64",
+      "column": "rCRPS",
+      "printed_minimum": "0.79",
+      "models": [
+        "Extremist"
+      ]
+    },
+    {
+      "table": 3,
+      "group": "all_vs_Y>1.64",
+      "column": "rLogS",
+      "printed_minimum": "1.88",
+      "models": [
+        "Extremist"
+      ]
+    },
+    {
+      "table": 4,
+      "group": "indicator_r1.64",
+      "column": "twCRPS",
+      "printed_minimum": "0.018",
+      "models": [
+        "Perfect"
+      ]
+    },
+    {
+      "table": 4,
+      "group": "indicator_r1.64",
+      "column": "CL",
+      "printed_minimum": "<0.001",
+      "models": [
+        "Perfect"
+      ]
+    },
+    {
+      "table": 4,
+      "group": "indicator_r1.64",
+      "column": "CSL",
+      "printed_minimum": "0.164",
+      "models": [
+        "Perfect"
+      ]
+    },
+    {
+      "table": 4,
+      "group": "Gaussian_r1.64_variance1",
+      "column": "twCRPS",
+      "printed_minimum": "0.053",
+      "models": [
+        "Perfect"
+      ]
+    },
+    {
+      "table": 4,
+      "group": "Gaussian_r1.64_variance1",
+      "column": "CL",
+      "printed_minimum": "-0.043",
+      "models": [
+        "Perfect"
+      ]
+    },
+    {
+      "table": 4,
+      "group": "Gaussian_r1.64_variance1",
+      "column": "CSL",
+      "printed_minimum": "0.298",
+      "models": [
+        "Perfect"
+      ]
+    },
+    {
+      "table": 5,
+      "group": "GDP",
+      "column": "CRPS_k1",
+      "printed_minimum": "0.292",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 5,
+      "group": "GDP",
+      "column": "CRPS_k4",
+      "printed_minimum": "0.329",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 5,
+      "group": "GDP",
+      "column": "LogS_k1",
+      "printed_minimum": "0.833",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 5,
+      "group": "GDP",
+      "column": "LogS_k4",
+      "printed_minimum": "1.019",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 5,
+      "group": "inflation",
+      "column": "CRPS_k1",
+      "printed_minimum": "0.143",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 5,
+      "group": "inflation",
+      "column": "CRPS_k4",
+      "printed_minimum": "0.156",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 5,
+      "group": "inflation",
+      "column": "LogS_k1",
+      "printed_minimum": "0.047",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 5,
+      "group": "inflation",
+      "column": "LogS_k4",
+      "printed_minimum": "0.175",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 6,
+      "group": "GDP",
+      "column": "rCRPS_k1",
+      "printed_minimum": "0.654",
+      "models": [
+        "AR"
+      ]
+    },
+    {
+      "table": 6,
+      "group": "GDP",
+      "column": "rCRPS_k4",
+      "printed_minimum": "0.870",
+      "models": [
+        "AR"
+      ]
+    },
+    {
+      "table": 6,
+      "group": "GDP",
+      "column": "rLogS_k1",
+      "printed_minimum": "1.626",
+      "models": [
+        "AR"
+      ]
+    },
+    {
+      "table": 6,
+      "group": "GDP",
+      "column": "rLogS_k4",
+      "printed_minimum": "2.010",
+      "models": [
+        "AR"
+      ]
+    },
+    {
+      "table": 6,
+      "group": "inflation",
+      "column": "rCRPS_k1",
+      "printed_minimum": "0.203",
+      "models": [
+        "VAR"
+      ]
+    },
+    {
+      "table": 6,
+      "group": "inflation",
+      "column": "rCRPS_k4",
+      "printed_minimum": "0.147",
+      "models": [
+        "VAR"
+      ]
+    },
+    {
+      "table": 6,
+      "group": "inflation",
+      "column": "rLogS_k1",
+      "printed_minimum": "0.424",
+      "models": [
+        "VAR"
+      ]
+    },
+    {
+      "table": 6,
+      "group": "inflation",
+      "column": "rLogS_k4",
+      "printed_minimum": "0.296",
+      "models": [
+        "AR"
+      ]
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "column": "indicator_k1",
+      "printed_minimum": "0.052",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "column": "indicator_k4",
+      "printed_minimum": "0.062",
+      "models": [
+        "AR-TVP-SV",
+        "VAR"
+      ]
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "column": "Gaussian_k1",
+      "printed_minimum": "0.101",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "column": "Gaussian_k4",
+      "printed_minimum": "0.115",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "column": "indicator_k1",
+      "printed_minimum": "0.018",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "column": "indicator_k4",
+      "printed_minimum": "0.018",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "column": "Gaussian_k1",
+      "printed_minimum": "0.021",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "column": "Gaussian_k4",
+      "printed_minimum": "0.022",
+      "models": [
+        "AR-TVP-SV"
+      ]
+    }
+  ],
+  "source_bindings": [
+    {
+      "table": 2,
+      "page": 3,
+      "extracted_text_sha256": "eb8c50ec378138785e3cbc9c5ccfadce4dde2fcc933ab7364c7d3429f9530b23"
+    },
+    {
+      "table": 3,
+      "page": 8,
+      "extracted_text_sha256": "13b595b68d922ce449d5c3c4802694977d7353e17c59a7dd726d8e94a36c0126"
+    },
+    {
+      "table": 4,
+      "page": 9,
+      "extracted_text_sha256": "bd6f5100709d9d14e6d6b058506473421435bd2cfcd47b29bea69206bfc45770"
+    },
+    {
+      "table": 5,
+      "page": 17,
+      "extracted_text_sha256": "cee1573c3076b9f967272d162b1f665803e5789b5a4a041e64a65d1e3f77291f"
+    },
+    {
+      "table": 6,
+      "page": 17,
+      "extracted_text_sha256": "cee1573c3076b9f967272d162b1f665803e5789b5a4a041e64a65d1e3f77291f"
+    },
+    {
+      "table": 7,
+      "page": 18,
+      "extracted_text_sha256": "f396e03f57e884c2283628c90baeebd671be00905d27c1aae9c495bfdebabc3f"
+    }
+  ],
+  "arxiv_source_sha256": "b0427f034877b86cf41070ae1021305f90e28f542aaa484b500acad6f4a117b2",
+  "arxiv_tables": [
+    {
+      "table": 2,
+      "tex_lines": [
+        298,
+        307
+      ],
+      "rows": [
+        [
+          "0.64",
+          "0.67",
+          "1.35",
+          "2.12"
+        ],
+        [
+          "0.80",
+          "0.99",
+          "2.04",
+          "4.30"
+        ],
+        [
+          "2.51",
+          "6.96",
+          "1.16",
+          "1.61"
+        ]
+      ]
+    },
+    {
+      "table": 3,
+      "tex_lines": [
+        804,
+        812
+      ],
+      "rows": [
+        [
+          "0.46",
+          "1.22",
+          "0.96",
+          "2.30"
+        ],
+        [
+          "0.57",
+          "1.42",
+          "1.48",
+          "3.03"
+        ],
+        [
+          "2.05",
+          "5.90",
+          "0.79",
+          "1.88"
+        ]
+      ]
+    },
+    {
+      "table": 4,
+      "tex_lines": [
+        822,
+        838
+      ],
+      "rows": [
+        [
+          "0.018",
+          "<0.001",
+          "0.164"
+        ],
+        [
+          "0.019",
+          "0.002",
+          "0.204"
+        ],
+        [
+          "0.575",
+          "0.093",
+          "2.205"
+        ],
+        [
+          "0.053",
+          "-0.043",
+          "0.298"
+        ],
+        [
+          "0.062",
+          "-0.028",
+          "0.345"
+        ],
+        [
+          "0.673",
+          "0.379",
+          "1.625"
+        ]
+      ]
+    },
+    {
+      "table": 5,
+      "tex_lines": [
+        1407,
+        1427
+      ],
+      "rows": [
+        [
+          "0.330",
+          "0.359",
+          "1.044",
+          "1.120"
+        ],
+        [
+          "0.292",
+          "0.329",
+          "0.833",
+          "1.019"
+        ],
+        [
+          "0.385",
+          "0.402",
+          "1.118",
+          "1.163"
+        ],
+        [
+          "0.359",
+          "0.420",
+          "0.997",
+          "1.257"
+        ],
+        [
+          "0.167",
+          "0.187",
+          "0.224",
+          "0.374"
+        ],
+        [
+          "0.143",
+          "0.156",
+          "0.047",
+          "0.175"
+        ],
+        [
+          "0.170",
+          "0.198",
+          "0.235",
+          "0.428"
+        ],
+        [
+          "0.162",
+          "0.201",
+          "0.179",
+          "0.552"
+        ]
+      ]
+    },
+    {
+      "table": 6,
+      "tex_lines": [
+        1443,
+        1463
+      ],
+      "rows": [
+        [
+          "0.654",
+          "0.870",
+          "1.626",
+          "2.010"
+        ],
+        [
+          "0.659",
+          "0.970",
+          "2.016",
+          "3.323"
+        ],
+        [
+          "0.827",
+          "0.924",
+          "2.072",
+          "2.270"
+        ],
+        [
+          "0.798",
+          "0.978",
+          "2.031",
+          "2.409"
+        ],
+        [
+          "0.214",
+          "0.157",
+          "0.484",
+          "0.296"
+        ],
+        [
+          "0.236",
+          "0.179",
+          "0.619",
+          "0.327"
+        ],
+        [
+          "0.203",
+          "0.147",
+          "0.424",
+          "0.317"
+        ],
+        [
+          "0.302",
+          "0.247",
+          "0.950",
+          "0.849"
+        ]
+      ]
+    },
+    {
+      "table": 7,
+      "tex_lines": [
+        1537,
+        1561
+      ],
+      "rows": [
+        [
+          "0.062",
+          "0.068",
+          "0.053",
+          "0.057"
+        ],
+        [
+          "0.052",
+          "0.062",
+          "0.048",
+          "0.055"
+        ],
+        [
+          "0.062",
+          "0.062",
+          "0.054",
+          "0.054"
+        ],
+        [
+          "0.059",
+          "0.080",
+          "0.053",
+          "0.065"
+        ],
+        [
+          "0.026",
+          "0.032",
+          "0.068",
+          "0.075"
+        ],
+        [
+          "0.018",
+          "0.018",
+          "0.059",
+          "0.065"
+        ],
+        [
+          "0.027",
+          "0.033",
+          "0.072",
+          "0.081"
+        ],
+        [
+          "0.022",
+          "0.037",
+          "0.067",
+          "0.081"
+        ]
+      ]
+    }
+  ],
+  "version_differences": [
+    {
+      "table": 7,
+      "group": "GDP",
+      "model": "AR",
+      "column": "Gaussian_k1",
+      "journal2017": "0.111",
+      "arxiv2015": "0.053"
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "model": "AR",
+      "column": "Gaussian_k4",
+      "journal2017": "0.120",
+      "arxiv2015": "0.057"
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "model": "AR-TVP-SV",
+      "column": "Gaussian_k1",
+      "journal2017": "0.101",
+      "arxiv2015": "0.048"
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "model": "AR-TVP-SV",
+      "column": "Gaussian_k4",
+      "journal2017": "0.115",
+      "arxiv2015": "0.055"
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "model": "VAR",
+      "column": "Gaussian_k1",
+      "journal2017": "0.119",
+      "arxiv2015": "0.054"
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "model": "VAR",
+      "column": "Gaussian_k4",
+      "journal2017": "0.119",
+      "arxiv2015": "0.054"
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "model": "VAR-TVP-SV",
+      "column": "Gaussian_k1",
+      "journal2017": "0.115",
+      "arxiv2015": "0.053"
+    },
+    {
+      "table": 7,
+      "group": "GDP",
+      "model": "VAR-TVP-SV",
+      "column": "Gaussian_k4",
+      "journal2017": "0.135",
+      "arxiv2015": "0.065"
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "model": "AR",
+      "column": "Gaussian_k1",
+      "journal2017": "0.027",
+      "arxiv2015": "0.068"
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "model": "AR",
+      "column": "Gaussian_k4",
+      "journal2017": "0.031",
+      "arxiv2015": "0.075"
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "model": "AR-TVP-SV",
+      "column": "Gaussian_k1",
+      "journal2017": "0.021",
+      "arxiv2015": "0.059"
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "model": "AR-TVP-SV",
+      "column": "Gaussian_k4",
+      "journal2017": "0.022",
+      "arxiv2015": "0.065"
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "model": "VAR",
+      "column": "indicator_k1",
+      "journal2017": "0.026",
+      "arxiv2015": "0.027"
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "model": "VAR",
+      "column": "Gaussian_k1",
+      "journal2017": "0.025",
+      "arxiv2015": "0.072"
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "model": "VAR",
+      "column": "Gaussian_k4",
+      "journal2017": "0.031",
+      "arxiv2015": "0.081"
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "model": "VAR-TVP-SV",
+      "column": "Gaussian_k1",
+      "journal2017": "0.024",
+      "arxiv2015": "0.067"
+    },
+    {
+      "table": 7,
+      "group": "inflation",
+      "model": "VAR-TVP-SV",
+      "column": "Gaussian_k4",
+      "journal2017": "0.034",
+      "arxiv2015": "0.081"
+    }
+  ],
+  "population_identity": {
+    "variance_error": 0.6666666666666666,
+    "threshold": 1.64,
+    "tail_probability": 0.050502583474103725,
+    "tail_mean": 2.0585302409741573,
+    "full_MSE": {
+      "Perfect": 0.6666666666666666,
+      "Unconditional": 1.0,
+      "Extremist": 6.916666666666667
+    },
+    "restricted_MSE": {
+      "Perfect": 2.1671064867544967,
+      "Unconditional": 4.375989595197618,
+      "Extremist": 1.55533901684064
+    },
+    "limitation": "생성식의 결정적 모집단 계산이다. 논문의 무작위 10000표본 재생성이나 인쇄값과의 완전 일치를 주장하지 않는다."
+  },
+  "appendix_counterexamples": [
+    {
+      "score": "CLq",
+      "mu": 1.314,
+      "sigma": 0.252,
+      "printed_formula_expected_difference": -0.049067292407452376,
+      "independent_polynomial_integral": -0.04906729240745272,
+      "absolute_difference": 3.469446951953614e-16
+    },
+    {
+      "score": "CSLq",
+      "mu": 0.54,
+      "sigma": 0.589,
+      "printed_formula_expected_difference": -0.035241345460212736,
+      "independent_polynomial_integral": -0.035241345460212695,
+      "absolute_difference": 4.163336342344337e-17
+    }
+  ],
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "random_draws": 0,
+  "limitations": [
+    "인쇄값 전사·순위·판본 차이와 작은 해석식을 검수했다. 원예측 배열·MCMC·DM검정·시뮬레이션을 재실행하지 않았다.",
+    "2017 공식 별도 부록 PDF는 아직 확보하지 못했다. 2015 TeX의 부록은 저널 부록의 대체본이 아니다."
+  ]
+}

@@ -364,3 +364,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 피크 보호·분위수 보정·부족 예측 비용
 
 검색어: peak, extreme, macro, micro, pinball, quantile, inverted_cdf, 여유분, underprediction, Forecaster’s Dilemma, DeepCog. [69–71](records/0069-0071-peak-objective.md)에서 기존 8조건과 38보정 조건을 먼저 확인하세요. 실제 target으로 고른 피크의 이득과 전체 U/O·발생 빈도·기간별 예외를 구분합니다. 평균 높이 맞춤은 Tab 검증 정보를 사용하며 새 독립 경쟁 모델이 아닙니다. [세 보호 목적 비교](records/0066-0068-objectives.md)는 baseline·최적 위험·손실 척도의 차이를 정리합니다.
+
+## 피크 subset 평가와 proper score — Forecaster’s Dilemma
+
+검색어: outcome conditioning, observed extreme, twCRPS, CL, CSL, calibration, DM, Neyman–Pearson, 점예측, 꼬리 가중치. [69–71 문헌 검수](records/0069-0071-forecaster-dilemma.md)에서 결과 y에 가중치를 곱하는 평가와 임계값 z에 가중하는 twCRPS를 먼저 구분하세요. 전체 MAE·관측 피크 손해·실제 운영 결정은 서로 다른 질문입니다. 논문의 점예측 반례는 실제 Tab 이득 전체의 원인이 상수 편향이라는 증명이 아니며, 모든 비대칭 학습 목적을 기각하지 않습니다. 판본 없는 Table 7 인용은 2015/2017의 17개 차이를 먼저 확인해야 합니다.
