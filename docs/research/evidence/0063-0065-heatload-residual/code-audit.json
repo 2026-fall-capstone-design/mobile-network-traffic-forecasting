@@ -1,0 +1,240 @@
+{
+  "batch_id": "history-056",
+  "commit": "b86ec88019f850eadb544c95ed257cce486be111",
+  "read_files": [
+    {
+      "path": "scripts/full_year_forecasting_utils.py",
+      "source_id": "SRC-0063844",
+      "lines_read": [
+        1,
+        722
+      ],
+      "sha256": "eb09b4a88f7e5c63b8929608488e051364088bdec259f58b3a820f4c691ac432",
+      "syntax_parse": "passed_not_executed",
+      "top_level_functions": [
+        "safe_name",
+        "sha256_file",
+        "run_command",
+        "git_metadata",
+        "parse_timestamp_series",
+        "validate_timeseries_frame",
+        "read_heat_csv",
+        "read_weather_csv",
+        "read_weather_comparison_csv",
+        "infer_native_step",
+        "cadence_name",
+        "require_source_cadence",
+        "expected_rows_per_target_step",
+        "aggregate_to_step",
+        "align_timeseries_frames",
+        "load_merged_data",
+        "load_residual_multiresolution_data",
+        "load_heat_weather_comparison_data",
+        "to_naive_datetime",
+        "add_synthetic_model_clock",
+        "validate_regular_rows",
+        "data_slice_by_year",
+        "validate_complete_year",
+        "validate_train_test_boundary",
+        "local_midnight",
+        "load_selected_weeks",
+        "forecast_starts_for_selected_weeks",
+        "forecast_starts_between",
+        "forecast_starts_from_rows",
+        "make_model_frame",
+        "build_tabpfn_window",
+        "find_column_by_numeric_value",
+        "flatten_tabpfn_prediction",
+        "quantile_column_name",
+        "add_error_columns",
+        "metric_values",
+        "calculate_summary"
+      ]
+    },
+    {
+      "path": "scripts/stacked_residual_full_year_2024.py",
+      "source_id": "SRC-0063845",
+      "lines_read": [
+        1,
+        640
+      ],
+      "sha256": "58a913ec31c73dc543ae905145fbac73fd8f189be26626b66aa0dcad64133572",
+      "syntax_parse": "passed_not_executed",
+      "top_level_functions": [
+        "parse_args",
+        "initialize_pipeline",
+        "make_model_frame",
+        "build_window",
+        "flatten_point_prediction",
+        "predict_point",
+        "year_bounds",
+        "hourly_start_rows",
+        "residual_start_rows",
+        "run_base_forecasts",
+        "collapse_latest",
+        "available_base",
+        "interpolate_hourly_to_quarter",
+        "build_residual_window",
+        "run_residual_forecasts",
+        "build_final_predictions",
+        "calculate_summary",
+        "calculate_per_start_metrics",
+        "build_metadata",
+        "validate_forecast_windows",
+        "main"
+      ]
+    },
+    {
+      "path": "scripts/tabpfn_ts_heat_forecast.py",
+      "source_id": "SRC-0063846",
+      "lines_read": [
+        1,
+        506
+      ],
+      "sha256": "79c7afedddde3ecadf6bfb75bf50fe3ce55965faa27ba780f1077482830e37fd",
+      "syntax_parse": "passed_not_executed",
+      "top_level_functions": [
+        "parse_args",
+        "interval_quantiles",
+        "format_quantile_label",
+        "prediction_steps",
+        "load_data",
+        "infer_step_size",
+        "make_tabpfn_frame",
+        "build_windows",
+        "validate_model_inputs",
+        "run_tabpfn_prediction",
+        "find_column_by_numeric_value",
+        "flatten_predictions",
+        "build_forecast_output",
+        "calculate_metrics",
+        "plot_forecast",
+        "main"
+      ]
+    },
+    {
+      "path": "scripts/utils.py",
+      "source_id": null,
+      "lines_read": [
+        1,
+        89
+      ],
+      "sha256": "63e0cf3620a90c33a96c02ecca3ed6f9e92ed8baa60a37961b63f328ef279ca1",
+      "syntax_parse": "passed_not_executed",
+      "top_level_functions": [
+        "parse_weather_columns",
+        "make_run_id",
+        "package_versions",
+        "metadata_envelope",
+        "write_metadata"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "H056-CODE-01",
+      "source": "SRC-0063845:29–47,75–138,237–269,348–372",
+      "observation": "기본은 hourly12주/24h/12h간격, 잔차는15분7일/2h/1h간격이다. 원단위 heat−base를 잔차 target으로 사용하고 base+predicted residual로 합산한다. 잔차 covariate는 temperature와 보간한 base prediction이다. 현재 코드에서 명시적 재학습 fit은 없고 pipeline.predict_df를 호출한다."
+    },
+    {
+      "id": "H056-CODE-02",
+      "source": "SRC-0063845:272–345",
+      "observation": "전체 base 예측을 먼저 생성하지만 residual origin마다 forecast_start<=origin으로 제한한 뒤 target timestamp별 최신 예측을 고른다. 이후 hourly base를 time interpolation+ffill+bfill로15분에 맞춘다. 이 정적 경로에서 origin 이후에 발행한 base는 제외된다. 데이터 지연과 실제 추론 완료시각까지 모델링한 운영 보장은 아니다."
+    },
+    {
+      "id": "H056-CODE-03",
+      "source": "SRC-0063845:89–138,307–345",
+      "observation": "context는 origin 미만, future는 origin부터 horizon 미만이다. future_raw에는 평가용 실제 heat와 실제 residual도 계산되지만 make_model_frame(include_target=False)가 item_id/timestamp/covariates만 반환하므로 미래 실제 target은 모델 입력에서 제외된다. 평가용 배열의 존재만으로 target leakage라고 판정하지 않는다."
+    },
+    {
+      "id": "H056-CODE-04",
+      "source": "SRC-0063845:283–345; SRC-0063844:209–236,277–327",
+      "observation": "현재 origin에서 사용 가능한 base를 과거 context와 future 모두에 보간한다. origin별 보간 경계점은 달라질 수 있어 각 과거 residual이 해당 과거시점에 발행된 예측으로만 고정됐다는 보장은 아니다. origin에서 이미 알려진 정보의 사용과 미래 실제값 유출을 구분한다. 날씨는 읽은 CSV의 관측값을 미래 covariate로 전달하는 perfect-weather 설정이다."
+    },
+    {
+      "id": "H056-CODE-05",
+      "source": "SRC-0063844:65–124,152–236,308–327",
+      "observation": "시간대·중복·결측·규칙 간격을 검증하고 hourly 집계는 완전한 하위시간 묶음의 평균만 남긴다. 잔차용 heat는 native15분 또는 더 미세한 cadence를 요구하지만 실제 aggregate_to_step(15분)은 expected_count==1도 요구하여 읽은 경로에서는15분보다 미세한 입력도 거절된다. hourly 공개 데이터에서15분 target을 보간해 새 관측처럼 생성하지 않는다."
+    },
+    {
+      "id": "H056-CODE-06",
+      "source": "SRC-0063844:350–360; SRC-0063845:537–567",
+      "observation": "MRRC의 기본/잔차 각각은2000-01-01에서 시작하는 연속 synthetic model clock을 받는다. Europe/Berlin 실제시각은 scheduling/interpolation/출력에 유지한다. DST 중복을 피하는 구현과 실제 날짜의 calendar feature 해석을 구분하며 날짜변환 효과의 ablation은 미확인이다."
+    },
+    {
+      "id": "H056-CODE-07",
+      "source": "SRC-0063845:141–174,375–431; SRC-0063844:680–722",
+      "observation": "MRRC는0.5 quantile을 요청하고 숫자0.5 열을 우선 사용하되 없으면 target열로 fallback한다. 최종 평가는 target별 최신 residual forecast 하나를 사용한다. per_start_metrics는각2h블록 전체여서 겹친 timestamp가 여러 블록에 포함된다. MAE±block variation과 전체 deduplicated point 지표를 구분한다."
+    },
+    {
+      "id": "H056-CODE-08",
+      "source": "SRC-0063845:165–174,237–240,348–349,396–416",
+      "observation": "prediction_seconds는 pipeline.predict_df 호출만 잰다. pipeline 초기화, window 구성, base interpolation, flatten/merge 등은 이 타이머 밖이다. summary의 stacked timing_source는raw_residual뿐이고 base 시간은 별도 hourly_base_interpolated 행이다. stacked 행만으로 두 단계 총시간을 확정할 수 없다."
+    },
+    {
+      "id": "H056-CODE-09",
+      "source": "SRC-0063845:525–627",
+      "observation": "별도 total_seconds는 데이터 로드·정렬·clock·start 구성 후 시작하여 pipeline 초기화, 모든base/residual 예측, 지표와 CSV저장까지 포함하지만 metadata생성/저장 전 종료한다. base는평가 시작192시간 전부터 warm-up용 예측도 수행한다. 원측정배열/논문후처리코드가 없어 RTF분모, warm-up포함과 두 단계 합산을 종단 검증할 수 없다."
+    },
+    {
+      "id": "H056-CODE-10",
+      "source": "SRC-0063845:434–491,494–522,576–582",
+      "observation": "metadata에는 입력해시/설정/시각축/버전과 total시간을 저장하도록 되어 있다. dry-run validation은 실제 heat를 fake_base로 쓰지만 예측·결과저장 전에 반환하는 검사 경로이며 main 정상예측은run_base_forecasts 출력을 사용한다. 이 fake_base를 실제 성능평가 입력으로 오해하지 않는다."
+    },
+    {
+      "id": "H056-CODE-11",
+      "source": "SRC-0063846:22–36,139–226,239–298,418–474",
+      "observation": "단일 backtest 예제는기본context365일/24h horizon이며 논문의선택12주 recipe와 같지 않다. 미래 target제거는확인했다. 이 예제는 prediction_seconds에 pipeline생성도 포함하므로 MRRC의 같은이름 필드와 타이머 경계가 다르다. 단일예제의predicted_heat는target열을유지하고q50는별도열인반면공통 flatten함수는q50으로predicted_heat를대체한다. target열의라이브러리의미·실제영향은 미검증이다."
+    },
+    {
+      "id": "H056-CODE-12",
+      "source": "SRC-0063844:639–700; SRC-0063846:301–341",
+      "observation": "MAE/RMSE/R2/CVRMSE/sMAPE 등 저장 산식과 실제값 평균분모를 확인했다. 읽은3코드에는 논문 E-CVRMSE/E-bias/CRPS/MACE/RTF 최종표 생성 경로가 없다. 그 지표가 전체repo에 없다고 확대하지 않으며 표의 인쇄값과 raw 실행 검증을 구분한다."
+    },
+    {
+      "id": "H056-CODE-13",
+      "source": "SRC-0063842 전체; SRC-0063843 전체; SRC-0063847 전체",
+      "observation": "저장된 공식metadata3개 전체를 읽었다. 고정commit은b86ec88019f850eadb544c95ed257cce486be111, commit.tree.sha는1ce4234e524dfe66a6ebeb80a42f4f2d141c06d5다. 저장tree JSON의root sha는commitsha와같다. 서로다른필드를임의보정하지않고개별blob SHA1로원격파일을대조했다. commit의날짜는2026-07-23이며논문v1은2026-08-20이다."
+    },
+    {
+      "id": "H056-CODE-14",
+      "source": "pinned-fetch.json; supplementary requirements.txt:1–13/.python-version:1; utils.py:32–38,55–89",
+      "observation": "저장README와3코드는고정raw의200응답바이트와동일했고총12개원격텍스트는저장tree의blobSHA1/크기와일치한다. requirements의12패키지버전과Python3.12.3을읽었다. 설치/실행을확인한것이아니며CUDA는requirements주석이다. 읽은코드에는명시적seed설정이없고TABPFN metadata목록에는torch가없다. 실제라이브러리내부seed/가중치revision은미확인이다."
+    },
+    {
+      "id": "H056-CODE-15",
+      "source": "supplementary utils.py:1–89; LICENSE:1–21; THIRD_PARTY_NOTICES.md:1–84",
+      "observation": "직접로컬의존utils89줄전체는버전·git·host·명령metadata를기록하며추가로컬import는이미읽은full_yearutils이다. license본문은MIT이고THIRD_PARTY_NOTICES는코드/자체문서/합성fixture와외부자료를구별한다. 데이터/가중치까지MIT로재배포가능하다고간주하지않는다."
+    },
+    {
+      "id": "H056-CODE-16",
+      "source": "supplementary heat_dh_metadata.json:1–20; weather_temperature_metadata.json:1–36; THIRD_PARTY_NOTICES.md:35–43",
+      "observation": "공식heat metadata는2020-01-01–2024-12-31,43843원행→43848출력행,5행삽입·보간을보고한다. weather metadata도같은기간43848행/결측0을보고한다. 이는본문2014–2024서술과다르며앞선README/자료제목차이를공식metadata로보강한다. 실제CSV전체값이나원XLSX를검수한것은아니다. 전처리스크립트2개는해당고정tree에없다."
+    },
+    {
+      "id": "H056-CODE-17",
+      "source": "supplementary representative_weeks_2024.csv:1–4; THIRD_PARTY_NOTICES.md:68–77",
+      "observation": "공개Flensburg대표주CSV4줄전체를읽었다. hottest9/2,W36; coldest1/15,W03; 변동최대4/22,W17이며각168행이다. hottest가Munich본문의8/12와다름을유지한다. 표의temperature_range는max-min과대조할수있으나원weather전체로주선택을재현하지않았다."
+    },
+    {
+      "id": "H056-CODE-18",
+      "source": "SRC-0063847 tree; code scope",
+      "observation": "3저장Python1868줄과직접의존utils89줄,metadata3개및보충텍스트8개를정적으로읽었다. Chronos/AutoGluon/다른Tab실험스크립트·tests·외부패키지내부와rawdata/실행결과는미독해이며모델/원연구코드/RNG실행0이다. 코드의가능한출력과원논문실행을동일시하지않는다."
+    }
+  ],
+  "fixed_references": "external-fixed-references.json",
+  "supplementary_whole_read": [
+    "scripts/utils.py",
+    "requirements.txt",
+    ".python-version",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "flensburg/demand/heat/heat_dh_metadata.json",
+    "flensburg/weather/flensburg_weather_temperature_metadata.json",
+    "flensburg/weather/representative_weeks_2024.csv"
+  ],
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "random_draws": 0,
+  "independent_reproduction": false
+}

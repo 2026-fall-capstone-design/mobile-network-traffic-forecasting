@@ -147,3 +147,7 @@ Type II는 전역 LSTM보다 모든 행에서 느리며 표시값의 비율은 �
 표 6개의 82행·530개 숫자를 전사 대조했으며, 실제 예측 배열을 다시 계산하지 않았다. 23개 고유 바이트 그룹·47개 원본 경로와 보호 상태·예산 원장 6개를 확인했다. 저장 ECAI 코드 두 개의 정적 검토와 실제 실행·전체 Fig. 3(c)/(d) 재현을 구분한다. [문서 검수](../verification/history-055.md) · [C28·C31–C32]
 
 Heatload, KDD residual, PLOS copula, GP-Copula, TACTiS-2, conditional normalization의 원문·코드·수치 검수와 65 전체의 판단 통합은 다음 범위다. 다른 고유 과거기록, 전역 실패·비용 통합, 대용량 팀 접근, 최종 원본 변경분과 검색 검수도 남아 있다. 이 묶음의 완료를 전체 Goal 완료로 표시하지 않는다.
+
+## 후속 범위: Heatload 전체 검수
+
+[H056 Heatload 기록](0063-0065-heatload-residual.md)에서 위의 미완료 여섯 문헌 중 Heatload의 전체 33쪽·저장 3코드 1,868줄·직접 의존 89줄·표/그림 933개 수치를 추가 검수했습니다. 현재 남은 다른 문헌은 KDD residual, PLOS copula, GP-Copula, TACTiS-2, conditional normalization의 다섯 가지이며 65 전체 종합은 아직 미완료입니다. 위 H055의 범위 표기는 당시 검수 상태이고 기존 검수 JSON은 당시 snapshot으로 유지합니다.

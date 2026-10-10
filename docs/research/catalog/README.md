@@ -138,3 +138,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H054 출처 목록](history-054-sources.jsonl)은 horizon 두판본의16묶음·32원경로를 연결합니다. [32묶음·64경로의 문헌 폴더 대조](../verification/history-054-packet-scope.json)에서 ALW와horizon의 완료범위 및 미보유 외부자료를 구분합니다.
 
 [H055 출처 목록](history-055-sources.jsonl)은 ECAI와63–65 관련23그룹47경로를 연결합니다. [실제 열람 범위](../sources/history-055.md)에13새사본·1재사용·9외부metadata,9쪽논문·2공식코드·다른6문헌의미완료를구분했습니다.
+
+[H056 출처 목록](history-056-sources.jsonl)은 Heatload와 63·65의 15그룹 30원본 경로를 연결합니다. [실제 읽은 범위](../sources/history-056.md)에 기존 사본 2개·외부 metadata 13개와 새 보충 텍스트 8개를 구분했습니다.

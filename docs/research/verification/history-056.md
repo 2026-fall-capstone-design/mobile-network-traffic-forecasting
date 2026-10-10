@@ -1,0 +1,13 @@
+# H056 검수 — Heatload의 잔차 목표·시점·비용
+
+[팀 기록](../records/0063-0065-heatload-residual.md) · [40개 주요 주장](history-056-claims.json) · [문서 검수](history-056-document-check.json) · [출처](../sources/history-056.md)
+
+논문 전체 33쪽과 시각 19쪽, 저장 코드 3개 1,868줄 및 직접 의존 89줄, 저장 JSON 3개와 보충 텍스트 8개를 읽었다. PDF/TXT 33쪽과 HTML/data text의 문자 동일성을 확인했다. HTML 과학 본문 245단위 중 149단위의 정규화 대응과 나머지 96단위의 직접 독해를 나누고, 수식 alttext 147개·서지 52개도 확인했다. 정규화만으로 수식 의미를 같다고 간주하지 않는다.
+
+[수치 검수](history-056-numeric-check.json)는 표 508개·S2 승률 420개·S1 GWh 5개를 보존한다. 11표 79자료행과 분할 표의 82개 PDF 행이 대응한다. 단기/에너지 손익, Base와 HFHR의 비용 분모, 18개 변화율의 반올림 가능 구간, 210승률쌍과 30평균순위를 대조했다. 숫자 수는 실험 횟수가 아니고 raw prediction/quantile/daily 배열은 재계산하지 않았다.
+
+[코드 검수](../evidence/0063-0065-heatload-residual/code-audit.json)는 residual의 실제 target·Base 합산, origin 이전 발행 제한, 미래 target 제외, 현재 origin 기준 보간과 과거 origin 고정 잔차의 차이, stacked 잔차 시간과 별도 total timer를 확인한다. dry-run의 fake_base와 정상 예측도 구분했다. 같은 이름의 시간 필드라도 단일 예제와 MRRC는 경계가 다르다. 내부 라이브러리·가중치·다른 저자 코드·전체 비용 후처리는 미검증이다.
+
+작성 후 40개 주장을 원문 위치·당시 판단·인쇄 수치·코드 경계에 다시 대조했다. Figure 7의 쪽수를 바로잡고, context로 제공하는 잔차 예측과 새 fit을 구분했으며 Chronos의 실제 context 제한을 추가했다. 완료 범위와 문서 해시는 주장 JSON과 문서 검사 JSON에 기록한다. 이 같은 에이전트의 재대조와 자동 파일 검사는 독립 연구자의 재현이 아니다.
+
+15원본 그룹·30경로/기존 보존본2/외부metadata13, 고정원격12파일/보충8텍스트와 보호 상태·예산 원장6개를 확인한다. 외부 보충을 과거 원본으로 등록하지 않는다. 새 모델·원 연구 코드·pickle·난수 실행은 없다. 다른 5문헌·65 전체 종합·전체 고유 기록 및 최종 통합은 미완료다.

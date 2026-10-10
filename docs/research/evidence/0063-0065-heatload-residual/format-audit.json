@@ -1,0 +1,85 @@
+{
+  "batch_id": "history-056",
+  "source_PDF": "SRC-0063832",
+  "source_HTML": "SRC-0063830",
+  "original_TXT_page_equality": 33,
+  "stored_HTML_text_extraction_exact": true,
+  "HTML_semantic_units": 245,
+  "normalized_prose_matches": 149,
+  "manually_read_unmatched_units": 96,
+  "math_alttext_read": 147,
+  "HTML_table_parts": 12,
+  "HTML_references_read": 52,
+  "HTML_abs_semantic_text_read": true,
+  "remote_HTML_figure_asset_bytes_verified": false,
+  "observations": [
+    {
+      "id": "H056-EV-01",
+      "source": "SRC-0063832/SRC-0063833 전체33쪽",
+      "finding": "기존PDF추출TXT의 --- PDF page n --- wrapper를제외한33개본문은이번pypdf추출과모두문자단위동일하다. 이전33쪽본문/19쪽시각독해를재사용하며원TXT를새독립논문으로세지않는다."
+    },
+    {
+      "id": "H056-EV-02",
+      "source": "SRC-0063830/SRC-0063831; html-semantic-units.json/html-math.json",
+      "finding": "rawHTML의HTMLParser data를strip후newlinejoin한결과는저장HTML.text와완전동일하다. 과학본문245단위중149는PDF의NFKC/줄끝하이픈/알파뉴메릭정규화문자에포함되고나머지96는모두실제로읽었다.147개MathML alttext와12표part를읽고대조했다. 정규화일치만으로기호등가성을주장하지않는다. UI/JS/CSS는과학본문과구분했고실행하지않았다."
+    },
+    {
+      "id": "H056-EV-03",
+      "source": "SRC-0063830 bibliography52개; PDF26–29; SRC-0063834",
+      "finding": "HTML은인용번호/참고문헌순서가PDF와다르다. 예컨대Flensburg데이터는PDF46/HTML14이며제목과저자,DOI를기준으로연결해야한다. HTML의52서지항목과abs의본문/메타정보를읽었다. HTML의저자affiliation표현은그룹화되어있으므로corresponding표시는PDF를따른다. 저장abs의license링크는arXiv nonexclusive-distrib이고논문원문일괄게시근거로쓰지않는다."
+    },
+    {
+      "id": "H056-EV-04",
+      "source": "SRC-0063830 figure objects; PDF Figure1–8/S1/S2",
+      "finding": "HTML은외부SVG object10개(Fig7a/b포함)와S2PNG1개를참조한다. 그림내용은동일제목의저장PDF10개그림으로읽었다. 이원격이미지asset의바이트와PDF의픽셀동일성은검증하지않았으며HTML파일안에그림바이트가보존됐다고하지않는다."
+    },
+    {
+      "id": "H056-EV-05",
+      "source": "PDF Table1–7/S1–S4; html-tables-extracted.json",
+      "finding": "11표79자료행/508숫자를대조했다. S4는HTML과PDF모두short/long두부분으로표현되어행문자비교는82개다. 모든행이공백·LaTeX표현만정규화한PDF인쇄행과맞는다. 원단위kW,FlensburgFigure8의MW,비율/pp,MAE±block표준편차,RTF지수를구별한다."
+    },
+    {
+      "id": "H056-EV-06",
+      "source": "PDF31 FigureS2; PDF19 Table4",
+      "finding": "S2 두network별15모델순서를따로전사하고off-diagonal420인쇄값을PDF텍스트및확대그림과대조했다.210반대방향쌍은100%가되며blank대각은숫자로채우지않았다. 동일날/동일가중치/midrank 가정하에 pairwise승률에서복원한30평균순위는표4와최대0.03차이로정수승률+2자리순위의보수적반올림상계0.075내다. rawdaily배열의실제동일성을증명한것은아니다."
+    },
+    {
+      "id": "H056-EV-07",
+      "source": "PDF21 Table6; numeric percentage_checks",
+      "finding": "표6의8변화율중TabMAE11.7,ChronosMAE12.6,ChronosCRPS12.1은인쇄앞뒤값으로재계산하면각각11.8/12.7/12.2%로반올림된다. 원값의표시단위반올림구간을고려하면세본문비율모두가능하므로오류로확정하지않는다.18개본문변화율전부이구간검사와양립한다."
+    },
+    {
+      "id": "H056-EV-08",
+      "source": "PDF21–22 Table7/본문; PDF33 S4",
+      "finding": "Tab HFHR→MRRC RTF48.7%감소와MRRC/Base12.6배,Chronos21.7%감소와10.8배를인쇄값으로재계산했다. TabMAE114.2→114.0과ChronosMAE107.7→109.0을구분한다. Chronos단기CVRMSE17.72→18.18은2.6%악화하고에너지CVRMSE7.12→6.68은6.2%개선한다. 서로다른목표의손익을보편우위로합치지않는다."
+    },
+    {
+      "id": "H056-EV-09",
+      "source": "PDF16 Table1; HTML S5.SS1.p10.1",
+      "finding": "모든날씨변수를쓴설정이두모델모든aggregate지표에서최고/공동최고라는본문은ChronosMAE에그대로성립하지않는다. all95.6,temperature+precipitation+wind94.2,temperature+solar95.3이다. CVRMSE/R2와다른MAE예외를보존한다."
+    },
+    {
+      "id": "H056-EV-10",
+      "source": "PDF21 Table5; PDF32 TableS3; PDF20 Figure8",
+      "finding": "Table5는S3의50/80%구간4행을그대로재인용한다. S3의6구간평균coverage오차를계산하면Tab/Chronos는Munich0.4067/1.6267pp,Flensburg0.4350/1.3067pp이다. 평균적으로Tab이작아도Flensburg95%구간은Chronos오차0.16pp가Tab0.75pp보다작다. 그림8에정확한숫자라벨이없어그림의원값을복원했다고하지않는다."
+    },
+    {
+      "id": "H056-EV-11",
+      "source": "PDF19 Table4; PDF31 S2",
+      "finding": "표4의15모델CVRMSE순서변화는인쇄화살표와일치한다. 두network모두전체집계에서Chronos가Tab보다낫고Tab이AutoGluon계열보다낫다. 선택주간의주간예측이점은전체연도168h표S2에서유지되지않는다:ChronosCV15.64/MAE109.7,Tab17.06/120.2. CD가겹친다는것은통계적동등성증명이아니다."
+    },
+    {
+      "id": "H056-EV-12",
+      "source": "PDF30 FigureS1/TableS1; supplementary representative_weeks_2024.csv",
+      "finding": "Munich2020–2024년인쇄GWh5값3.67/6.53/7.12/8.78/9.15를전사했다. 측정값재적분은하지않았다. Munichclean대표주선택은이상신호주를제외하고같은2024평가년안의주를선택하며공개Flensburg대표주와자료·여름날짜가다르다."
+    },
+    {
+      "id": "H056-EV-13",
+      "source": "SRC-0022008:7–18,25–27; SRC-0022016:7–15,27–33,67,74–78",
+      "finding": "원63은forecast입력열/실제−기본잔차target/다중해상도연결을구분하는문헌검토계획이고65는신규추천미채택/모델실행0을보고한다.65§2의부분독해를이번논문전체·3코드전체·표/그림검수로보강했다. 잔차MAE동치 |y−(b+r)|=|(y−b)−r|는유한RCTL의학습용이성이나통신cell효과·비용개선을보장하지않는다. ECAI와함께중복원리는기록하되다른5문헌과65전체종합은여전히미완료다."
+    }
+  ],
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "working_extraction_names_note": "관찰에 나오는 추출 작업 파일명은 검수 과정의 이름이다. 팀 접근은 출처 목록의 원문 및 공개 수치 검수를 사용한다."
+}
