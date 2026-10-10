@@ -62,3 +62,5 @@ ALW PDF9쪽과 참고문헌, 그림1–4·식1–5·표1–4를 전체 독해했
 두 Embed 파일은 PE class만, 두 loader는 ETT_hour·ETT_minute·Custom class만 읽었다. TQ/Cycle loader의 앞뒤 중복 정의6개를 모두 대조했다. 그 밖의 layer·dataset 및 실제 CSV·checkpoint·run 로그는 미확인이다. iTransformer 논문은 p13 Appendix A.1의 자료 정의만 확인했으며 전체 논문 검토로 가산하지 않는다.
 
 새 로컬 본문 집계는 수집 코드1개, 새 전체 JSON은7개다. 외부 코드·논문·파생 TXT/PNG/HTML은 별도 범위로 기록하고 로컬 본문/선택 필드 수에 중복 가산하지 않는다. 원 연구 코드 import/실행·새 모델 생성/학습/추론·무작위 생성은0회다.
+
+후속 확인: 위의 H053 당시 미완료로 남긴 Optimal Look-back 두판본·저장 파생자료 및 62 종합은 [H054](history-054.md)에서 검토했습니다. 이전 H053 검수의 당시 범위·해시는 유지하며 원 실행 재현·외부자료 공백과 이후 전체 기록은 남아 있습니다.

@@ -1,0 +1,419 @@
+{
+  "batch_id": "history-054",
+  "audit_completed": true,
+  "at_utc": "2026-10-09T22:53:48.253685+00:00",
+  "checks": 18,
+  "check_names": [
+    "정리4 예의 최초 허용 증분은 H2",
+    "H2 전의 Bayes 증분은 -delta보다 작다",
+    "H2 이후의 근사 증분은 delta 이상이다",
+    "허용 길이 H2가 전체 손실 최솟값이 아니다",
+    "최초 작은 변화가 뒤의 모든 변화를 제한하지 않는다",
+    "증가 상계 아래 감소 함수가 존재한다",
+    "유한 분포 확률 합1",
+    "조건부 분산의 점별 단조 반례",
+    "기대 조건부 분산의 비증가와 충돌하지 않음",
+    "볼록집합 투영의 교차항은 일반적으로0이 아니다",
+    "볼록집합 분해에 남는 교차항 확인",
+    "선형함수의 값 차이는 Hessian0이어도0이 아니다",
+    "Taylor 선형항을 빼면 이 예의 잔차는0",
+    "d4 최적화의 정지점",
+    "d4 최적값은 곱 형태 상수2와 일치",
+    "인쇄 AR식 S2값5/4",
+    "두 단계 전체 제곱오차 합9/4",
+    "검수 사례8개"
+  ],
+  "cases": [
+    {
+      "id": "T4-before",
+      "source": "v3 Theorem4 pp6–7; v1 같은 정리; AAAI pp25828–25829",
+      "B": [
+        {
+          "fraction": "3",
+          "decimal": 3.0
+        },
+        {
+          "fraction": "1",
+          "decimal": 1.0
+        },
+        {
+          "fraction": "1",
+          "decimal": 1.0
+        },
+        {
+          "fraction": "1",
+          "decimal": 1.0
+        }
+      ],
+      "A": [
+        {
+          "fraction": "0",
+          "decimal": 0.0
+        },
+        {
+          "fraction": "3",
+          "decimal": 3.0
+        },
+        {
+          "fraction": "6",
+          "decimal": 6.0
+        },
+        {
+          "fraction": "9",
+          "decimal": 9.0
+        }
+      ],
+      "total": [
+        {
+          "fraction": "3",
+          "decimal": 3.0
+        },
+        {
+          "fraction": "4",
+          "decimal": 4.0
+        },
+        {
+          "fraction": "7",
+          "decimal": 7.0
+        },
+        {
+          "fraction": "10",
+          "decimal": 10.0
+        }
+      ],
+      "delta": {
+        "fraction": "1",
+        "decimal": 1.0
+      },
+      "proposed_H": 2,
+      "smaller_loss_H": 1,
+      "all_H_extension": "B(1)=3, H≥2에서 B(H)=1; A(H)=3(H−1). H≥2에서 계속 증가하며 실제 최소는 H=1이다.",
+      "finding": "인쇄된 Δ조건만으로 H* 이전 전체 손실 감소를 결론낼 수 없다.",
+      "boundary": "SDG를 실행하거나 이 손실수열이 특정 학습기에서 발생함을 보인 것이 아니다. 정리 문장에 적힌 조건의 충분성 검수다."
+    },
+    {
+      "id": "first-tolerance",
+      "source": "v3 Eq26와 Theorem4",
+      "B": [
+        {
+          "fraction": "5",
+          "decimal": 5.0
+        },
+        {
+          "fraction": "9/2",
+          "decimal": 4.5
+        },
+        {
+          "fraction": "2",
+          "decimal": 2.0
+        },
+        {
+          "fraction": "2",
+          "decimal": 2.0
+        }
+      ],
+      "forward_differences": [
+        {
+          "fraction": "-1/2",
+          "decimal": -0.5
+        },
+        {
+          "fraction": "-5/2",
+          "decimal": -2.5
+        },
+        {
+          "fraction": "0",
+          "decimal": 0.0
+        }
+      ],
+      "delta": {
+        "fraction": "1",
+        "decimal": 1.0
+      },
+      "finding": "최초 한 단계의 |ΔB|≤δ와 그 뒤 모든 단계의 포화는 다른 조건이다."
+    },
+    {
+      "id": "bound-vs-loss",
+      "source": "v3 p6 Eq25–29",
+      "actual": [
+        {
+          "fraction": "1",
+          "decimal": 1.0
+        },
+        {
+          "fraction": "1/2",
+          "decimal": 0.5
+        },
+        {
+          "fraction": "1/3",
+          "decimal": 0.3333333333333333
+        },
+        {
+          "fraction": "1/4",
+          "decimal": 0.25
+        }
+      ],
+      "upper": [
+        {
+          "fraction": "1",
+          "decimal": 1.0
+        },
+        {
+          "fraction": "2",
+          "decimal": 2.0
+        },
+        {
+          "fraction": "3",
+          "decimal": 3.0
+        },
+        {
+          "fraction": "4",
+          "decimal": 4.0
+        }
+      ],
+      "all_H_extension": "H>=1에서1/H<=H이나1/(H+1)-1/H<0.",
+      "finding": "상계의 증가로 실제 손실 증가가 따라오지 않는다.",
+      "further_limit": "차원 d가 고정되면 제시된 H지수4/(d+4)는1미만이다. 상계의 증분조차 양의 H독립 하한η를 자동으로 주지 않는다."
+    },
+    {
+      "id": "conditional-variance",
+      "source": "v3 p6 Bayesian Loss Behavior",
+      "probability_table": [
+        [
+          {
+            "fraction": "1/2",
+            "decimal": 0.5
+          },
+          0,
+          {
+            "fraction": "0",
+            "decimal": 0.0
+          }
+        ],
+        [
+          {
+            "fraction": "1/4",
+            "decimal": 0.25
+          },
+          1,
+          {
+            "fraction": "-2",
+            "decimal": -2.0
+          }
+        ],
+        [
+          {
+            "fraction": "1/4",
+            "decimal": 0.25
+          },
+          1,
+          {
+            "fraction": "2",
+            "decimal": 2.0
+          }
+        ]
+      ],
+      "mean": {
+        "fraction": "0",
+        "decimal": 0.0
+      },
+      "unconditional_variance": {
+        "fraction": "2",
+        "decimal": 2.0
+      },
+      "conditional": [
+        {
+          "group": 0,
+          "probability": {
+            "fraction": "1/2",
+            "decimal": 0.5
+          },
+          "mean": {
+            "fraction": "0",
+            "decimal": 0.0
+          },
+          "variance": {
+            "fraction": "0",
+            "decimal": 0.0
+          }
+        },
+        {
+          "group": 1,
+          "probability": {
+            "fraction": "1/2",
+            "decimal": 0.5
+          },
+          "mean": {
+            "fraction": "0",
+            "decimal": 0.0
+          },
+          "variance": {
+            "fraction": "4",
+            "decimal": 4.0
+          }
+        }
+      ],
+      "expected_conditional_variance": {
+        "fraction": "2",
+        "decimal": 2.0
+      },
+      "finding": "G=1에서조건부분산4가무조건부분산2보다크다. 기대값에서는비증가가성립하며, 일반적인 Bayes위험 비증가 결론은 유지된다."
+    },
+    {
+      "id": "convex-projection",
+      "source": "v3 Eq75–77 pp12–13; v1 Eq68–70",
+      "set": "[0,1]",
+      "value": {
+        "fraction": "2",
+        "decimal": 2.0
+      },
+      "projection": {
+        "fraction": "1",
+        "decimal": 1.0
+      },
+      "other_element": {
+        "fraction": "0",
+        "decimal": 0.0
+      },
+      "cross": {
+        "fraction": "1",
+        "decimal": 1.0
+      },
+      "squared_distance": {
+        "fraction": "4",
+        "decimal": 4.0
+      },
+      "printed_two_terms": {
+        "fraction": "2",
+        "decimal": 2.0
+      },
+      "finding": "닫힌 볼록집합으로의 최소거리 투영은 일반적으로 직교등식이 아닌 투영 부등식을 준다. 닫힌 선형/아핀 부분공간 등 추가 조건이면 직교를 회복할 수 있다.",
+      "independent_reference": "https://math.ucla.edu/~njhu/notes/nla/lsq/leastsquares/#projections"
+    },
+    {
+      "id": "taylor-remainder",
+      "source": "v3 Eq79–80 p13; v1 Eq72–73",
+      "function": "f(u)=u",
+      "u": {
+        "fraction": "1/2",
+        "decimal": 0.5
+      },
+      "u0": {
+        "fraction": "0",
+        "decimal": 0.0
+      },
+      "hessian": {
+        "fraction": "0",
+        "decimal": 0.0
+      },
+      "value_difference": {
+        "fraction": "1/2",
+        "decimal": 0.5
+      },
+      "printed_upper": {
+        "fraction": "0",
+        "decimal": 0.0
+      },
+      "correct_affine_remainder": {
+        "fraction": "0",
+        "decimal": 0.0
+      },
+      "finding": "2차 잔차 경계에는 선형항을 뺀 차이를 써야 한다. piecewise-constant와piecewise-affine를 같은 곡률 경계로 설명할 수 없다."
+    },
+    {
+      "id": "resolution-balance",
+      "source": "v3 Eq82–83 p13; v1 Eq75–76",
+      "d": 4,
+      "A": {
+        "fraction": "16",
+        "decimal": 16.0
+      },
+      "B": {
+        "fraction": "1",
+        "decimal": 1.0
+      },
+      "N": {
+        "fraction": "4",
+        "decimal": 4.0
+      },
+      "objective_at_N": {
+        "fraction": "8",
+        "decimal": 8.0
+      },
+      "derivative_at_N": {
+        "fraction": "0",
+        "decimal": 0.0
+      },
+      "printed_additive_expression": {
+        "fraction": "5",
+        "decimal": 5.0
+      },
+      "derivation": "A*N^(-4/d)+B*N에서N*>0=(4A/(dB))^(d/(d+4));최적값은[(d/4)^(4/(d+4))+(4/d)^(d/(d+4))]*A^(d/(d+4))*B^(4/(d+4)). 정수N>=1이면경계/반올림을별도검토.",
+      "finding": "제시된 두 항의 균형에서 나오는 비율은 곱 형태다. 인쇄된 덧셈형으로 바꾸는 추가 범위/완화가 설명되지 않는다.",
+      "boundary": "숨은 상수가 있는 느슨한 상계까지 이 단일 예로 모두 반박하지 않는다. Eq82 자체가 실제 학습기의 손실 경계인지도 별도 문제다."
+    },
+    {
+      "id": "AR-block-metric",
+      "source": "v3 Eq15/68 pp5/12; v1 Eq13/61",
+      "assumption": "알려진AR(1)계수1/2,innovationvariance1,독립미래innovation,충분히관측한현재상태;데이터생성/추론없음",
+      "psi": [
+        {
+          "fraction": "1",
+          "decimal": 1.0
+        },
+        {
+          "fraction": "1/2",
+          "decimal": 0.5
+        }
+      ],
+      "first_step_variance": {
+        "fraction": "1",
+        "decimal": 1.0
+      },
+      "second_step_variance": {
+        "fraction": "5/4",
+        "decimal": 1.25
+      },
+      "block_squared_norm": {
+        "fraction": "9/4",
+        "decimal": 2.25
+      },
+      "block_per_step_mean": {
+        "fraction": "9/8",
+        "decimal": 1.125
+      },
+      "finding": "Eq68의 합은 S번째 한 점의 예측오차 분산이다. Eq15가정의한전체S블록norm에는각예측단계분산의추가합이필요하다."
+    }
+  ],
+  "source_anchors": [
+    {
+      "path": "v3-p06.txt",
+      "sha256": "0e6b7e2f3b5467c73123c24781900a8fa02bff720bdd0a7e997c5cf5660ca783"
+    },
+    {
+      "path": "v3-p07.txt",
+      "sha256": "6e3ca6c9cf79df124890b53f5be1ecbfae273ea284bb07f70c66834d3d93d33f"
+    },
+    {
+      "path": "v3-p12.txt",
+      "sha256": "d59cc8ee2954ee5c317623d5bd10040e98cc45440515a70ebabc1520ea05f18f"
+    },
+    {
+      "path": "v3-p13.txt",
+      "sha256": "4e33e1c169c1aa5a25f1b7f97383c54ba7dbb036410dd7aff6c341b71416c051"
+    },
+    {
+      "path": "v3-html-math.json",
+      "sha256": "a3baac052748607aa9b9e374f75403dca731d60c4fb2f1f6b1b451a3f006178a"
+    },
+    {
+      "path": "canonical-version-difference.json",
+      "sha256": "02b839f11a319091de13470f939e8ce962cacb3dfa5801541fc234ea811d5132"
+    }
+  ],
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0,
+  "not_empirical_reproduction": true,
+  "interpretation": "검수 성공은 위 논리적 구별과 정확 산술을 확인했다는 뜻이며 논문의 모든 정리가 성립한다는 뜻이 아니다."
+}
