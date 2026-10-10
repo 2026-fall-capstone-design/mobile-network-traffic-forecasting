@@ -417,3 +417,5 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 [원78 회귀 전이 검수](records/0079-regression-transferability.md)의 head·입력·출력 좌표 조건을 확인한다. 높은 상관과 최적 source 선택, Ridge 학습과 반환 점수, 같은 source의 전이와 실제 target pooling은 별개다. source별 정규화 손해와 global multi-head 비교 조건도 보존했다.
 
 [Task2Vec·Fisher task embedding·MODEL2VEC](records/0080-task2vec-task-and-output-sharing.md)을 같은 문제의 관련 시도로 찾을 수 있다. 공통 probe에도 과제별 head 적합이 필요하고, MODEL2VEC은 다른 과제의 모델 성능을 사용한다. 거리 코드의 `asymmetric_kl`과 논문의 비대칭 선택 점수는 식이 다르다. 재검토할 때는 허용할 head·출력 변환, 같은 구조의 global 대안, 최종 RCTL과 독립적인 선정 정보를 먼저 명시한다.
+
+[NTKMTL·NTKMTL-SR·gradient norm weighting·GO4ALIGN](records/0081-ntkmtl-training-balance.md)은 학습 중 균형 조절을 소속 결정에 옮기기 전에 확인한다. RCTL gradient를 직접 쓰는지, 별도 probe를 쓰는지, clustering 이후 loss만 조절하는지에 따라 질문이 달라진다. 재검토 시 공유할 출력·head, 최종 모델 독립성, 같은 global multi-head 대안과 실제 RCTL 공유 효과의 근거를 명시한다.

@@ -201,3 +201,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [회귀 전이 점수·코드 검수](records/0079-regression-transferability.md)는 40개 주장으로 target head 재적합과 cell pooling의 차이를 연결한다. 23쪽의 논문·보충자료, 공식 점수 함수, 상관·source 선택·정규화 손해를 함께 확인한다.
 
 [Task2Vec 과제 표현 검수](records/0080-task2vec-task-and-output-sharing.md)는 같은 원78의 task embedding·Fisher·expert 선택을 보완한다. 특징 유사성과 같은 scalar 출력 공유의 차이, 과제별 head 적합, MODEL2VEC이 요구하는 성능 정보, 선택 실패 사례와 코드 기본값을 함께 확인할 수 있다.
+
+[NTKMTL 학습 균형 검수](records/0081-ntkmtl-training-balance.md)는 원78의 최종 모델 독립성 조건을 보완한다. 학습 중 task weighting과 사전 cell 소속 결정, 출력 Jacobian과 loss gradient, 활성 기본 코드와 주석 SR을 구분한다. 평균 순위와 STL 대비 손해, 저자의 상대 epoch 비용도 함께 확인할 수 있다.

@@ -63,3 +63,7 @@
 ## Task2Vec의 직접 원문·코드 대조
 
 [H080](../records/0080-task2vec-task-and-output-sharing.md)은 Task2Vec 본문·보충 16쪽과 저장 구현을 연결한다. 과제별 classifier를 적합한 특징 Fisher의 유사성은 공동 scalar 예측의 충분조건이 아니다. expert 선택의 이득과 손해, MODEL2VEC의 다른 과제 성능 사용, Taskonomy 회귀 decoder, 고정 코드의 Monte Carlo 기본값을 분리해 비교한다. 같은 두 Python 파일의 `asymmetric_kl`을 논문의 비대칭 선택식으로 오인하지 않는다.
+
+## NTKMTL의 직접 원문·코드 대조
+
+[H081](../records/0081-ntkmtl-training-balance.md)은 현재 학습 모델의 task weight 조절과 최종 모델을 보지 않는 소속 결정을 구분한다. 논문 출력 Jacobian/weighted 출력과 코드의 loss-gradient Gram·trace scaling, 주석 SR·별도 GO4ALIGN을 연결했다. NYUv2의 이점과 일부 SR 지표 손해, CityScapes/QM9의 STL 대비 평균 손해, 저자의 비용·설정 범위도 함께 보존한다. 새 성능 재현이나 모든 gradient 방법의 기각은 아니다.

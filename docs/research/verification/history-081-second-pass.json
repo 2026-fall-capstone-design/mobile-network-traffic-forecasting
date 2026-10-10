@@ -1,0 +1,137 @@
+{
+  "batch_id": "history-081",
+  "status": "source_checked",
+  "completed_at_utc": "2026-10-10T20:16:56.125161+00:00",
+  "claims_checked": 42,
+  "checks": [
+    {
+      "check_id": "H081-SP01",
+      "claims": [
+        1,
+        22,
+        34,
+        40,
+        42
+      ],
+      "sources": [
+        "11개 자료 전체 첫 독해 기록; PDF29/TXT29 정확 대응; 원PNG5/6/25 재열람; commit/tree/blob·전체source hash; 원78 68–80행"
+      ],
+      "result": "새11+재참조1,22사본/보호6,3blob/7root/46tree 확인. 목록과 미확보 본문 구분. 독립 본문4/JSON3/이미지3."
+    },
+    {
+      "check_id": "H081-SP02",
+      "claims": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "sources": [
+        "PDF3/4/10/22/23 text 재독해; 원PNG5/25 수식·증명 재열람; 원78 54행"
+      ],
+      "result": "출력J/lossgradient·반제곱오차/CE좌표/초기출력·weighted출력/잔차·최대고유값/전체spectrum 구분. grouping은 후속 연구."
+    },
+    {
+      "check_id": "H081-SP03",
+      "claims": [
+        8,
+        9,
+        11
+      ],
+      "sources": [
+        "원PNG6 Algorithm1/2·Eq16–18; PDF7/26/27 확대 이미지·본문"
+      ],
+      "result": "SRhead미분 유지, n1/default4/NYU2 예외,200epochs/LR변화/batch2/8·CelebA 설정 확인."
+    },
+    {
+      "check_id": "H081-SP04",
+      "claims": [
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        21
+      ],
+      "sources": [
+        "PDF7/8/9/26/27 확대 이미지의 표·본문·caption; 원PNG25 C.1; 포함210값 PDF개별text토큰 보조대조"
+      ],
+      "result": "MR/Δ와STL손해·SRnormal악화·CelebA본문/표차이·QM9양의Δ·FAMOHOMO예외·변경된STL분모·MT10stderr·City비교군차이 확인."
+    },
+    {
+      "check_id": "H081-SP05",
+      "claims": [
+        19,
+        20,
+        21,
+        41
+      ],
+      "sources": [
+        "PDF8/28/29 Figure1–4 확대 이미지·caption; PDF18 compute; 참고문헌11–14 전체 첫독해"
+      ],
+      "result": "상대epoch시간15값·Fig3비단조/variance-stderr차이·비표시좌표미복구·저자자원/공정성서술의범위 확인."
+    },
+    {
+      "check_id": "H081-SP06",
+      "claims": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "sources": [
+        "README1–74 재독해; weight_methods64–83/1568–1773/1800–1823 재독해; 나머지class전체첫독해/AST목록"
+      ],
+      "result": "기본lossG/trace-diag/추가k/clip/미사용배열/zero guard없음·SR/n>1주석과미확보trainer범위 확인. README출처구간을7–18/35–59로보완."
+    },
+    {
+      "check_id": "H081-SP07",
+      "claims": [
+        24,
+        32,
+        33
+      ],
+      "sources": [
+        "cluster_methods106–153 재독해;155–424 전체주석 첫독해와AST active2 대조"
+      ],
+      "result": "GO4ALIGN detachedloss/robust_step.0001/adv_probs/KMeans42·주석변형/별도registry 확인. 실행실패/NTK사전clustering으로확대안함."
+    },
+    {
+      "check_id": "H081-SP08",
+      "claims": [
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "sources": [
+        "원78 48–80 및7/9/46행 재독해"
+      ],
+      "result": "과거부분독해를전수완료로소급하지않음. RCTL독립성/probe전용미확인/globalmulti-head대안/기존raw결과·역사적제안과현재지시구분."
+    }
+  ],
+  "first_read_scope": "PDF29쪽text/visual·README74·Python424/1823·JSON3전필드·TXT29대응·원PNG3전체",
+  "second_pass_scope": "작성 후 관련 원문 위치를 같은 에이전트가 별도 대조. 전페이지·전코드 전체를 독립적으로 다시 읽었다는 뜻이 아님.",
+  "corrections": [
+    "README seed/exponent의 source locator를 실제35–59행으로 보완",
+    "CityScapes Table2/7 MR차이는비교군차이로해결됨을명시",
+    "모든표전체가아닌선택결과210값임을명시",
+    "PDFlayout쪽번호혼입을원이미지로배제"
+  ],
+  "numeric_display_values": 210,
+  "raw_prediction_reproduction": false,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false
+}

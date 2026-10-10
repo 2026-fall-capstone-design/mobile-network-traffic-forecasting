@@ -1,0 +1,127 @@
+{
+  "batch_id": "history-081",
+  "status": "source_checked",
+  "formulas": [
+    {
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p3 Eq1–4; p22–23 B.1"
+      },
+      "observation": "출력Jacobians, 반제곱오차 gradientflow, 고정kernel 근사와 초기조건 구분; CE좌표/미분조건 생략확대금지"
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p5 Eq12–15; p24–25 B.3 Eq26/28/29"
+      },
+      "observation": "가중loss와출력ωf변환/잔차의차이. 고정ω원래출력−K Dω(O−y). 당시원78지적이며성능재현아님."
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p6 Algorithm1/2 Eq16–18"
+      },
+      "observation": "공유표현의출력미분과taskloss미분분리;taskhead학습유지"
+    }
+  ],
+  "figures": [
+    {
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p8 Figure1"
+      },
+      "scope": "10개상대epoch시간표시",
+      "raw_coordinates_recovered": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p28 Figure2"
+      },
+      "scope": "NYUv2LS학습/3과제최대eigenvalue곡선. y축눈금간격비균등; 선형축으로임의숫자복원하지않음.",
+      "raw_coordinates_recovered": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p28 Figure3"
+      },
+      "scope": "n=[1,2,3,4,6],3seed; n3의표시평균이n2보다나쁨; prose variance/captionstderr차이",
+      "exact_unprinted_values_recovered": false
+    },
+    {
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p29 Figure4"
+      },
+      "scope": "QM9SR5개시간비율과n4/6절충",
+      "raw_coordinates_recovered": false
+    }
+  ],
+  "static_code_observations": [
+    {
+      "claim": "H081-C23",
+      "observation": "README는 Python 3.9.7 환경, 별도 requirements, CUDA에 맞는 PyTorch 설치를 안내한다. 예시는 seed 0과 `ntk_exp=0.5`이며 일부 상황에 0.75를 권한다. 이를 논문 모든 run의 실제 seed·지수 설정으로 확정하지 않는다. README의 설치·clone·실행 명령은 역사적 자료로 읽었으며 수행하지 않았다."
+    },
+    {
+      "claim": "H081-C24",
+      "observation": "`weight_methods.py`에는 NTKMTL 외에 LS/SI·FAMO·Nash-MTL·MGDA·PCGrad·CAGrad·FairGrad·GradDrop·IMTLG·DWA·PIVRG·ConsMTL 등의 코드와 log 변형이 함께 있다. 파일 전체를 읽었지만 코드 존재는 논문 표에 그 구현으로 실행했다는 증거가 아니다. `cluster_methods.py`의 두 활성 class와 `weight_methods.py`의 22개 class를 구분했다. 별도 base `WeightMethod`들의 동작도 같다고 가정하지 않는다."
+    },
+    {
+      "claim": "H081-C25",
+      "observation": "활성 NTKMTL n=1 경로는 각 `losses[i].backward()` 뒤 공유 파라미터의 gradient를 모은 G를 사용한다. `GTG = GᵀG`이고 `weight = (trace(GTG)/diag(GTG))^ntk_exp`다. 논문의 출력 f Jacobian과 loss gradient는 다른 양이다. 이름이 NTK라는 이유로 출력 Jacobian kernel을 그대로 계산했다고 표시하지 않는다."
+    },
+    {
+      "claim": "H081-C26",
+      "observation": "논문 Eq.15는 고유값의 평균을, 활성 코드는 diagonal 값의 합인 trace를 사용한다. 같은 λ라는 가정 아래 이 차이만 비교하면 task 공통 `k^ntk_exp` 배율이며 코드의 `overwrite_grad`에는 추가 k 배율도 있다. 하지만 실제로는 출력 Jacobian과 loss gradient부터 다르고 clipping·optimizer·trainer 조건도 있으므로 두 전체 구현이 단지 학습률만 바꾸면 같다고 결론 내리지 않는다."
+    },
+    {
+      "claim": "H081-C27",
+      "observation": "활성 루프는 각 과제 뒤 공유부 `.grad`를 비우고 마지막에 가중합을 덮어쓴다. 과제별 파라미터 gradient는 이 경로 안에서 같은 weight로 다시 쓰지 않는다. 호출자의 초기화와 파라미터 공유 조건은 trainer 확인이 필요하다. NTKMTL의 override `backward`는 공유 gradient를 쓴 뒤 기본 max_norm=1.0으로 clip한다. base class의 backward 전 clip 위치와 혼동하지 않는다."
+    },
+    {
+      "claim": "H081-C28",
+      "observation": "함수 앞부분은 `batch_size = losses.shape[0]`을 정하고 공유 파라미터 수×과제 수×그 값 크기의 임시 배열 등을 만들지만 활성 n=1 경로에서는 그 배열을 사용하지 않는다. 활성 루프는 과제별 scalar loss를 기대한다. trainer 본문 없이 실제 loss tensor의 구성·mini-batch 분할·메모리 비용을 확정하거나 실행 오류라고 선언하지 않는다."
+    },
+    {
+      "claim": "H081-C29",
+      "observation": "`trace/diag` 계산에는 0 diagonal에 대한 epsilon이나 명시적 guard가 없다. 파일 위의 EPS 선언이 이 나눗셈에 적용된다고 설명하지 않는다. 재사용 시 영 gradient 조건과 수치 안정성을 확인할 이유가 되지만, 저장된 실험에서 실제 0이 발생했다는 관측은 없다."
+    },
+    {
+      "claim": "H081-C30",
+      "observation": "SR 부분은 1612–1637행의 주석이다. 그 안에서도 `autograd(losses[j][i], z)`로 loss의 표현 gradient를 구하고 n×n Gram의 최대 고유값을 사용한다. Eq.17의 `df/dz`와 구별한다. 주석은 override backward를 해제하라고 적고 README도 weight 파일과 trainer 수정이 필요하다고 안내한다. 기본 `ntkmtl` 호출을 SR 실행으로 분류하지 않는다."
+    },
+    {
+      "claim": "H081-C31",
+      "observation": "1660–1713행의 일반 n>1 경로도 전부 주석이며 실험에 사용하지 않은 참고용이라고 명시한다. 과제별 공유 gradient를 저장하고 고유값·평균 gradient를 계산하는 설명을 읽었으나 활성 경로나 검증된 재현 코드로 표시하지 않는다. 기본 선택 registry에는 `ntkmtl`과 `go4align`이 별도로 있다."
+    },
+    {
+      "claim": "H081-C32",
+      "observation": "`cluster_methods.py`에서 실행되는 GO4ALIGN은 현재 detached loss를 사용한다. loss 합/각 loss와 `exp(−0.0001×loss)`로 갱신한 정규화 adversarial probability를 곱한 weight를 만들고, 그룹 수가 2 이상이면 그 scalar weight에 KMeans(random_state=42)를 적용한다. 그룹 중심 weight로 loss를 합친다. 출력 Jacobian에 의한 NTK grouping이나 모델 학습 전 cell 소속 계산이 아니다."
+    },
+    {
+      "claim": "H081-C33",
+      "observation": "같은 파일의 GROUP·random·SpectralClustering·SDP 관련 변형은 155–424행에 주석으로 남아 있다. import 또는 함수 이름만 보고 모두 실행된 후보로 세지 않는다. GO4ALIGN의 입력 0 loss와 그룹 수 검증도 재사용할 때 확인할 부분이며, 여기서 실행해 실패를 재현한 것은 아니다."
+    },
+    {
+      "claim": "H081-C34",
+      "observation": "저장된 46-entry tree에는 trainer·utils·`min_norm_solvers.py`·requirements·LICENSE 경로가 있지만 해당 본문은 이 원78 NTKMTL packet에 없다. metadata의 master/MIT 표기는 당시 저장 응답이며 현재 상태나 LICENSE 전문 검토를 뜻하지 않는다. 저장 tree에는 MT10 경로도 없다. API·환경·실제 loss·seed별 결과까지 독립 재현했다고 표시하지 않는다."
+    }
+  ],
+  "extraction_caveats": [
+    "layout표와본문이다른열에서겹침",
+    "p7 SI4.39와page7붙음;p9STLcv.061과page9붙음;p26RLWG122.1과page26붙음",
+    "Symbol/ArialUnicode/SourceHanSerifSC-Heavy대체폰트경고; 실제이미지직접읽어작은수식/숫자확인"
+  ],
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "independent_reproduction": false,
+  "semantic_second_pass_complete": true
+}
