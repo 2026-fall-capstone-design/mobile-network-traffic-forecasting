@@ -1,0 +1,77 @@
+{
+  "batch_id": "history-082",
+  "status": "source_checked",
+  "completed_at_utc": "2026-10-10T20:34:05.202974+00:00",
+  "claims_checked": 18,
+  "checks": [
+    {
+      "check_id": "H082-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        12,
+        13,
+        14
+      ],
+      "sources": [
+        "JSON note/keys/5payload길이와끝",
+        "접근로그11건 method/time/status/file/bytes/hash;HEAD[9]",
+        "새6alias/packet43hash/보호6",
+        "H074/H079/H080/H081 catalog read_scope"
+      ],
+      "result": "3그룹/6사본,JSON2전필드와본문없는HEAD1구분. payload33595/25271/32407/27163/14856문자 확인. packet4+12+13+11+3=43,명세목록만으로외부본문완료처리안함. 11건GET10/HEAD1상태200·hash/크기일치,HEAD8,940,178헤더와0body는모순아님."
+    },
+    {
+      "check_id": "H082-SP02",
+      "claims": [
+        5,
+        6,
+        7,
+        18
+      ],
+      "sources": [
+        "78_task2vec_ntk_lookup[0:6500]",
+        "78_methods_lookup[0:3200]",
+        "78_search_followup[16137:20437]",
+        "원78findings1–80행"
+      ],
+      "result": "VUB M3L workshop/12-02표시/12-14행사와PDFfooter구분. 초기gradient/multirun/synthetic는부분발췌의저자설명,전문/증명/traffic성능검수아님. OpenReviewchallenge와검색발췌공존,원78도3편독해에M3L을포함안함. 후속재검토조건은당시모델독립성과head/출력조건을잇는제안."
+    },
+    {
+      "check_id": "H082-SP03",
+      "claims": [
+        8,
+        9,
+        10,
+        15,
+        17
+      ],
+      "sources": [
+        "78_access_0[0:3300]/끝2200/README명령구간",
+        "78_methods_lookup UAI L223–273",
+        "78_access_1 value메타와출력시작/끝",
+        "CVF InternalError마지막500문자/access_log[10]",
+        "원78findings1–80·H079/H080검수요약"
+      ],
+      "result": "UAI12–36%/27%는기존초록요약,head재적합/fine-tuning구분. CVF오류와별도GET200/5313byte구분. NTKweb메타271/실제끝L52,PDF3후반–6쪽도입과추출깨짐/exit0구분. 도구wall0.5760461를모델비용으로세지않음. README명령실행없음. regularized의번역을규제항으로명료화."
+    },
+    {
+      "check_id": "H082-SP04",
+      "claims": [
+        11,
+        16
+      ],
+      "sources": [
+        "78_search_followup KDD higher-order/OT/TaskEmb/Dataset2Vec 인접1550문자씩",
+        "78_task2vec_ntk_lookup ORCID[16512:18012] 및 특허/문학/TOIT제목 주변"
+      ],
+      "result": "다른문헌abstract/snippet은후속탐색포인터. DOI가이웃성과와섞이는결과/중복서지/무관검색을논문전문근거로승격안함. 검색식·완전결과집합미보존으로문헌부재·전수검색을보장하지않음."
+    }
+  ],
+  "scope": "JSON2 전체 첫독해 후 주요주장18개를 관련원문에대조. 모든검색발췌의전체두번째독해를뜻하지않는다.",
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "new_model_runs": 0
+}

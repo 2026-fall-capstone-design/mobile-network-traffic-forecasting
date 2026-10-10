@@ -1,0 +1,104 @@
+{
+  "source_id": "SRC-0064482",
+  "source_sha256": "df15b434dbee2832dd380fda6e4c99c887cd7485b3fb1ddef0cc2f460cddd8cc",
+  "all_JSON_fields_and_values_read": true,
+  "note": "기존 검색·조회 결과의 보존이며 새 검색·모델 실행이 아니다.",
+  "records": [
+    {
+      "key": "78_search_followup",
+      "payload_characters": 33595,
+      "read_scope": "보존 검색 문자열 전체",
+      "content": "UAI 공식 서지·본문/보충 일부, M3L 수식 일부, Task2Vec 보충 일부, 회귀 repo·NeurIPS 포인터, KDD higher-order abstract·OT/TaskEmb/Dataset2Vec 등 주변 검색",
+      "limits": "각 발췌는 원문 전체가 아니며 H079/H080/H081 검수의 별도 재현이 아니다.",
+      "actual_read_ranges": [
+        [
+          0,
+          12000
+        ],
+        [
+          12000,
+          24000
+        ],
+        [
+          24000,
+          33595
+        ]
+      ]
+    },
+    {
+      "key": "78_methods_lookup",
+      "payload_characters": 25271,
+      "read_scope": "보존 검색 문자열 전체",
+      "content": "M3L OpenReview forum/PDF challenge, Task2Vec arXiv 서지·초록, UAI PDF 웹추출 L0–285 일부",
+      "limits": "UAI PDF 메타의12쪽/1202줄은 이 문자열에 모두 저장됐다는 뜻이 아니다.",
+      "actual_read_ranges": [
+        [
+          0,
+          12000
+        ],
+        [
+          12000,
+          25271
+        ]
+      ]
+    },
+    {
+      "key": "78_task2vec_ntk_lookup",
+      "payload_characters": 32407,
+      "read_scope": "보존 검색 문자열 전체",
+      "content": "M3L PDF 초록/서론과 VUB workshop 서지, ORCID/성과 목록, 무관 결과, CVF 웹 도구 Internal Error",
+      "limits": "연구기관 목록의 중복이나 다른 논문의 DOI를 M3L 원문 근거로 합치지 않는다.",
+      "actual_read_ranges": [
+        [
+          0,
+          11000
+        ],
+        [
+          11000,
+          22000
+        ],
+        [
+          22000,
+          32407
+        ]
+      ]
+    },
+    {
+      "key": "78_access_0",
+      "payload_characters": 27163,
+      "read_scope": "status 및 value 전체",
+      "content": "PMLR52줄, 회귀 repo213줄, Task2Vec repo300줄, NTK repo 시작 L0–52",
+      "limits": "NTK repo 메타271줄 중 보존된 것은 앞부분뿐이다. fulfilled는 전체 페이지 저장 보증이 아니다.",
+      "actual_read_ranges": [
+        [
+          0,
+          14000
+        ],
+        [
+          14000,
+          27163
+        ]
+      ]
+    },
+    {
+      "key": "78_access_1",
+      "payload_characters": 14856,
+      "read_scope": "status 및 value의 실행 메타·output 전체",
+      "content": "기존 도구 출력: NTK PDF3쪽 후반–6쪽4.1 도입, Eq2–18/Algorithm1·2와 추출 깨짐",
+      "limits": "exit_code0은 텍스트 추출 프로세스 결과다. 논문 식·알고리즘의 참/재현 성공을 뜻하지 않는다.",
+      "actual_read_ranges": [
+        [
+          0,
+          9000
+        ],
+        [
+          9000,
+          14856
+        ]
+      ]
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "additional_papers_read_credit": 0,
+  "new_model_runs": 0
+}
