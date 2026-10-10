@@ -1,0 +1,2917 @@
+{
+  "batch_id": "history-060",
+  "checked_at_utc": "2026-10-10T05:52:19.264726+00:00",
+  "source_id": "SRC-0062147",
+  "source_sha256": "53eb86fed82fe520e55ea1587eed75abfe1dcc3d098e3f8403dc9e4cc9e6e37f",
+  "metric_tables": {
+    "1": [
+      {
+        "model": "Auto-ARIMA",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.077",
+            "Newey_West_SE": "0.016"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.043",
+            "Newey_West_SE": "0.005"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.625",
+            "Newey_West_SE": "0.066"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.994",
+            "Newey_West_SE": "0.216"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.222",
+            "Newey_West_SE": "0.005"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "6.2",
+            "Newey_West_SE": "0.3"
+          }
+        ]
+      },
+      {
+        "model": "ETS",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.059",
+            "Newey_West_SE": "0.011"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.037",
+            "Newey_West_SE": "0.010"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.408",
+            "Newey_West_SE": "0.030"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.678",
+            "Newey_West_SE": "0.097"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.353",
+            "Newey_West_SE": "0.011"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "6.0",
+            "Newey_West_SE": "0.2"
+          }
+        ]
+      },
+      {
+        "model": "TempFlow",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.075",
+            "Newey_West_SE": "0.024"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.095",
+            "Newey_West_SE": "0.004"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.250",
+            "Newey_West_SE": "0.010"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.507",
+            "Newey_West_SE": "0.034"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.242",
+            "Newey_West_SE": "0.020"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "5.4",
+            "Newey_West_SE": "0.2"
+          }
+        ]
+      },
+      {
+        "model": "SPD",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.062",
+            "Newey_West_SE": "0.016"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.048",
+            "Newey_West_SE": "0.011"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.319",
+            "Newey_West_SE": "0.013"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.568",
+            "Newey_West_SE": "0.061"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.228",
+            "Newey_West_SE": "0.013"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "5.2",
+            "Newey_West_SE": "0.3"
+          }
+        ]
+      },
+      {
+        "model": "TimeGrad",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.067",
+            "Newey_West_SE": "0.028"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.094",
+            "Newey_West_SE": "0.030"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.326",
+            "Newey_West_SE": "0.024"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.540",
+            "Newey_West_SE": "0.044"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.126",
+            "Newey_West_SE": "0.019"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "5.0",
+            "Newey_West_SE": "0.2"
+          }
+        ]
+      },
+      {
+        "model": "GPV ar",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.035",
+            "Newey_West_SE": "0.011"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.067",
+            "Newey_West_SE": "0.008"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.290",
+            "Newey_West_SE": "0.005"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.254",
+            "Newey_West_SE": "0.028"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.145",
+            "Newey_West_SE": "0.010"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "3.8",
+            "Newey_West_SE": "0.2"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.021",
+            "Newey_West_SE": "0.005"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.042",
+            "Newey_West_SE": "0.009"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.237",
+            "Newey_West_SE": "0.013"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.311",
+            "Newey_West_SE": "0.061"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.071",
+            "Newey_West_SE": "0.008"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "2.4",
+            "Newey_West_SE": "0.2"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS-2",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.020",
+            "Newey_West_SE": "0.005"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.035",
+            "Newey_West_SE": "0.005"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.234",
+            "Newey_West_SE": "0.011"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.240",
+            "Newey_West_SE": "0.027"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.078",
+            "Newey_West_SE": "0.008"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "1.9",
+            "Newey_West_SE": "0.2"
+          }
+        ]
+      }
+    ],
+    "2": [
+      {
+        "model": "TACTiS",
+        "metric": "NLL",
+        "unit": null,
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "11.028",
+            "Newey_West_SE": "3.616"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "1.364",
+            "Newey_West_SE": "0.253"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "2.281",
+            "Newey_West_SE": "0.770"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "-2.572",
+            "Newey_West_SE": "0.093"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "1.249",
+            "Newey_West_SE": "0.080"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS",
+        "metric": "FLOPs",
+        "unit": "1e16",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "1.931",
+            "Newey_West_SE": "0.182"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "1.956",
+            "Newey_West_SE": "0.192"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "1.952",
+            "Newey_West_SE": "0.208"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.174",
+            "Newey_West_SE": "0.018"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "1.207",
+            "Newey_West_SE": "0.517"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS-2",
+        "metric": "NLL",
+        "unit": null,
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "10.674",
+            "Newey_West_SE": "2.867"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.378",
+            "Newey_West_SE": "0.076"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "1.055",
+            "Newey_West_SE": "0.713"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "-4.333",
+            "Newey_West_SE": "0.181"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "-0.358",
+            "Newey_West_SE": "0.077"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS-2",
+        "metric": "FLOPs",
+        "unit": "1e16",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.623",
+            "Newey_West_SE": "0.018"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.738",
+            "Newey_West_SE": "0.022"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.324",
+            "Newey_West_SE": "0.014"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.078",
+            "Newey_West_SE": "0.005"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.289",
+            "Newey_West_SE": "0.061"
+          }
+        ]
+      }
+    ],
+    "3": [
+      {
+        "model": "TACTiS",
+        "metric": "interpolation NLL",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "-0.159",
+            "Newey_West_SE": "0.007"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "-0.119",
+            "Newey_West_SE": "0.021"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "1.050",
+            "Newey_West_SE": "0.045"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "-0.948",
+            "Newey_West_SE": "0.089"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.825",
+            "Newey_West_SE": "0.149"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS-2",
+        "metric": "interpolation NLL",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "-0.189",
+            "Newey_West_SE": "0.034"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "-0.250",
+            "Newey_West_SE": "0.017"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.138",
+            "Newey_West_SE": "0.043"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "-3.262",
+            "Newey_West_SE": "0.186"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "-0.431",
+            "Newey_West_SE": "0.063"
+          }
+        ]
+      }
+    ],
+    "4": [
+      {
+        "model": "ETS",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.094",
+            "printed_error": "0.014",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.050",
+            "printed_error": "0.011",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.560",
+            "printed_error": "0.028",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.844",
+            "printed_error": "0.119",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.437",
+            "printed_error": "0.012",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "6.5",
+            "printed_error": "0.2",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "Auto-ARIMA",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.129",
+            "printed_error": "0.015",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.052",
+            "printed_error": "0.005",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.477",
+            "printed_error": "0.015",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.636",
+            "printed_error": "0.060",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.310",
+            "printed_error": "0.004",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "5.7",
+            "printed_error": "0.2",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "TempFlow",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.109",
+            "printed_error": "0.024",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.110",
+            "printed_error": "0.003",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.451",
+            "printed_error": "0.005",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.547",
+            "printed_error": "0.036",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.320",
+            "printed_error": "0.015",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "5.6",
+            "printed_error": "0.2",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "TimeGrad",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.101",
+            "printed_error": "0.027",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.142",
+            "printed_error": "0.058",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.495",
+            "printed_error": "0.023",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.560",
+            "printed_error": "0.047",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.217",
+            "printed_error": "0.015",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "5.2",
+            "printed_error": "0.3",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "SPD",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.099",
+            "printed_error": "0.016",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.058",
+            "printed_error": "0.011",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.465",
+            "printed_error": "0.005",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.585",
+            "printed_error": "0.050",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.283",
+            "printed_error": "0.007",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "5.1",
+            "printed_error": "0.3",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "GPVar",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.067",
+            "printed_error": "0.010",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.086",
+            "printed_error": "0.009",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.459",
+            "printed_error": "0.009",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.298",
+            "printed_error": "0.034",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.213",
+            "printed_error": "0.009",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "4.1",
+            "printed_error": "0.1",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.052",
+            "printed_error": "0.006",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.048",
+            "printed_error": "0.010",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.420",
+            "printed_error": "0.007",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.326",
+            "printed_error": "0.049",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.161",
+            "printed_error": "0.009",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "2.2",
+            "printed_error": "0.1",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS-2",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "0.049",
+            "printed_error": "0.006",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "0.043",
+            "printed_error": "0.006",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.413",
+            "printed_error": "0.007",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.256",
+            "printed_error": "0.029",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "0.162",
+            "printed_error": "0.010",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "1.6",
+            "printed_error": "0.2",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      }
+    ],
+    "5": [
+      {
+        "model": "Auto-ARIMA",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "44.59",
+            "printed_error": "8.56",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "8.72",
+            "printed_error": "0.81",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "18.76",
+            "printed_error": "3.31",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "19.42",
+            "printed_error": "3.37",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "4.10",
+            "printed_error": "0.05",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "6.7",
+            "printed_error": "0.2",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "TempFlow",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "10.25",
+            "printed_error": "2.03",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "20.16",
+            "printed_error": "0.74",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "3.30",
+            "printed_error": "0.28",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "4.25",
+            "printed_error": "0.16",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "4.59",
+            "printed_error": "0.25",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "6.1",
+            "printed_error": "0.3",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "ETS",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "7.94",
+            "printed_error": "0.93",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "7.90",
+            "printed_error": "1.88",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "3.60",
+            "printed_error": "0.24",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "4.74",
+            "printed_error": "0.17",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "4.98",
+            "printed_error": "0.07",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "5.7",
+            "printed_error": "0.2",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "TimeGrad",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "9.69",
+            "printed_error": "2.62",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "19.87",
+            "printed_error": "7.23",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "3.30",
+            "printed_error": "0.19",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "4.31",
+            "printed_error": "0.23",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "3.38",
+            "printed_error": "0.11",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "4.7",
+            "printed_error": "0.3",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "SPD",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "8.90",
+            "printed_error": "1.18",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "8.94",
+            "printed_error": "1.82",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "3.13",
+            "printed_error": "0.24",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "3.68",
+            "printed_error": "0.31",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "3.94",
+            "printed_error": "0.10",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "4.4",
+            "printed_error": "0.3",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "GPVar",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "6.80",
+            "printed_error": "0.62",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "11.43",
+            "printed_error": "1.60",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "3.18",
+            "printed_error": "0.20",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "2.60",
+            "printed_error": "0.10",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "3.57",
+            "printed_error": "0.10",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "3.9",
+            "printed_error": "0.2",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "5.42",
+            "printed_error": "0.57",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "8.18",
+            "printed_error": "1.83",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "2.93",
+            "printed_error": "0.22",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "2.88",
+            "printed_error": "0.23",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "3.10",
+            "printed_error": "0.13",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "2.7",
+            "printed_error": "0.3",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS-2",
+        "values": [
+          {
+            "dataset": "electricity",
+            "mean": "4.91",
+            "printed_error": "0.52",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "fred-md",
+            "mean": "6.72",
+            "printed_error": "0.10",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "kdd-cup",
+            "mean": "2.81",
+            "printed_error": "0.19",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "2.37",
+            "printed_error": "0.14",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "traffic",
+            "mean": "3.36",
+            "printed_error": "0.27",
+            "error_semantics": "Newey-West SE across backtests"
+          },
+          {
+            "dataset": "average_rank",
+            "mean": "1.9",
+            "printed_error": "0.2",
+            "error_semantics": "Newey-West SE across backtests"
+          }
+        ]
+      }
+    ],
+    "11": [
+      {
+        "model": "TACTiS",
+        "values": [
+          {
+            "dataset": "kdd-cup",
+            "mean": "2.858",
+            "printed_error": "0.476",
+            "error_semantics": "over 5 seeds; precise error aggregation not specified in caption"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "1.001",
+            "printed_error": "0.783",
+            "error_semantics": "over 5 seeds; precise error aggregation not specified in caption"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS-2",
+        "values": [
+          {
+            "dataset": "kdd-cup",
+            "mean": "1.866",
+            "printed_error": "0.230",
+            "error_semantics": "over 5 seeds; precise error aggregation not specified in caption"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "0.261",
+            "printed_error": "0.011",
+            "error_semantics": "over 5 seeds; precise error aggregation not specified in caption"
+          }
+        ]
+      }
+    ],
+    "12": [
+      {
+        "model": "TACTiS",
+        "values": [
+          {
+            "dataset": "kdd-cup",
+            "mean": "1.527",
+            "printed_error": "0.072",
+            "error_semantics": "over 5 seeds; precise error aggregation not specified in caption"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "-0.038",
+            "printed_error": "0.220",
+            "error_semantics": "over 5 seeds; precise error aggregation not specified in caption"
+          }
+        ]
+      },
+      {
+        "model": "TACTiS-2",
+        "values": [
+          {
+            "dataset": "kdd-cup",
+            "mean": "0.722",
+            "printed_error": "0.163",
+            "error_semantics": "over 5 seeds; precise error aggregation not specified in caption"
+          },
+          {
+            "dataset": "solar-10min",
+            "mean": "-3.218",
+            "printed_error": "0.249",
+            "error_semantics": "over 5 seeds; precise error aggregation not specified in caption"
+          }
+        ]
+      }
+    ]
+  },
+  "printed_mean_error_pairs": 182,
+  "printed_mean_error_numeric_values": 364,
+  "table5_energy_score_units": {
+    "electricity": "1e4",
+    "fred-md": "1e5",
+    "kdd-cup": "1e3",
+    "solar-10min": "1e2",
+    "traffic": "1e0"
+  },
+  "table6_datasets": [
+    {
+      "dataset": "electricity",
+      "frequency": "1 hour",
+      "series": 321,
+      "prediction_length": 24
+    },
+    {
+      "dataset": "fred-md",
+      "frequency": "1 month",
+      "series": 107,
+      "prediction_length": 12
+    },
+    {
+      "dataset": "kdd-cup",
+      "frequency": "1 hour",
+      "series": 270,
+      "prediction_length": 48
+    },
+    {
+      "dataset": "solar-10min",
+      "frequency": "10 minutes",
+      "series": 137,
+      "prediction_length": 72
+    },
+    {
+      "dataset": "traffic",
+      "frequency": "1 hour",
+      "series": 862,
+      "prediction_length": 24
+    }
+  ],
+  "table6_numeric_fields": 15,
+  "table10_learning_rates": {
+    "TACTiS": [
+      "7.4e-5",
+      "2.7e-4",
+      "9.2e-5",
+      "8.0e-5",
+      "2.8e-3"
+    ],
+    "TACTiS-2 Phase 1": [
+      "5.0e-5",
+      "1.7e-3",
+      "2.3e-5",
+      "1.8e-3",
+      "2.5e-3"
+    ],
+    "TACTiS-2 Phase 2": [
+      "2.2e-4",
+      "1.9e-3",
+      "9.4e-4",
+      "7.0e-4",
+      "6.7e-4"
+    ],
+    "SPD": [
+      "8.9e-4",
+      "5.6e-3",
+      "2.7e-3",
+      "3.1e-3",
+      "4.4e-3"
+    ]
+  },
+  "table10_numeric_fields": 20,
+  "hyperparameter_rows": {
+    "7": [
+      {
+        "field": "encoder_embedding_per_head_and_ffn",
+        "printed_choices_with_dataset_superscripts": "4, 8, 16, 32et, 64fs, 128, 256k, 512",
+        "chosen_by_dataset_code": {
+          "e": [
+            "32"
+          ],
+          "f": [
+            "64"
+          ],
+          "k": [
+            "256"
+          ],
+          "s": [
+            "64"
+          ],
+          "t": [
+            "32"
+          ]
+        }
+      },
+      {
+        "field": "encoder_heads",
+        "printed_choices_with_dataset_superscripts": "1k, 2f, 3s, 4, 5, 6t, 7e",
+        "chosen_by_dataset_code": {
+          "e": [
+            "7"
+          ],
+          "f": [
+            "2"
+          ],
+          "k": [
+            "1"
+          ],
+          "s": [
+            "3"
+          ],
+          "t": [
+            "6"
+          ]
+        }
+      },
+      {
+        "field": "encoder_layer_pairs",
+        "printed_choices_with_dataset_superscripts": "1k, 2, 3s, 4, 5eft, 6, 7",
+        "chosen_by_dataset_code": {
+          "e": [
+            "5"
+          ],
+          "f": [
+            "5"
+          ],
+          "k": [
+            "1"
+          ],
+          "s": [
+            "3"
+          ],
+          "t": [
+            "5"
+          ]
+        }
+      },
+      {
+        "field": "encoder_input_embedding_dimensions",
+        "printed_choices_with_dataset_superscripts": "1t, 2e, 3, 4s, 5, 6, 7fk",
+        "chosen_by_dataset_code": {
+          "e": [
+            "2"
+          ],
+          "f": [
+            "7"
+          ],
+          "k": [
+            "7"
+          ],
+          "s": [
+            "4"
+          ],
+          "t": [
+            "1"
+          ]
+        }
+      },
+      {
+        "field": "series_embedding_dimensions",
+        "printed_choices_with_dataset_superscripts": "5t, 8, 16e, 32k, 48s, 64, 128, 256f, 512",
+        "chosen_by_dataset_code": {
+          "e": [
+            "16"
+          ],
+          "f": [
+            "256"
+          ],
+          "k": [
+            "32"
+          ],
+          "s": [
+            "48"
+          ],
+          "t": [
+            "5"
+          ]
+        }
+      },
+      {
+        "field": "DSF_layers",
+        "printed_choices_with_dataset_superscripts": "1t, 2, 3f, 4, 5es, 6, 7k",
+        "chosen_by_dataset_code": {
+          "e": [
+            "5"
+          ],
+          "f": [
+            "3"
+          ],
+          "k": [
+            "7"
+          ],
+          "s": [
+            "5"
+          ],
+          "t": [
+            "1"
+          ]
+        }
+      },
+      {
+        "field": "DSF_hidden",
+        "printed_choices_with_dataset_superscripts": "4, 8, 16fs, 32, 48e, 64, 128, 256, 512kt",
+        "chosen_by_dataset_code": {
+          "e": [
+            "48"
+          ],
+          "f": [
+            "16"
+          ],
+          "k": [
+            "512"
+          ],
+          "s": [
+            "16"
+          ],
+          "t": [
+            "512"
+          ]
+        }
+      },
+      {
+        "field": "MLP_layers",
+        "printed_choices_with_dataset_superscripts": "1e, 2ft, 3, 4, 5, 6, 7ks",
+        "chosen_by_dataset_code": {
+          "e": [
+            "1"
+          ],
+          "f": [
+            "2"
+          ],
+          "k": [
+            "7"
+          ],
+          "s": [
+            "7"
+          ],
+          "t": [
+            "2"
+          ]
+        }
+      },
+      {
+        "field": "MLP_hidden",
+        "printed_choices_with_dataset_superscripts": "4, 8k, 16, 32e, 48, 64f, 128t, 256, 512s",
+        "chosen_by_dataset_code": {
+          "e": [
+            "32"
+          ],
+          "f": [
+            "64"
+          ],
+          "k": [
+            "8"
+          ],
+          "s": [
+            "512"
+          ],
+          "t": [
+            "128"
+          ]
+        }
+      },
+      {
+        "field": "decoder_transformer_layers",
+        "printed_choices_with_dataset_superscripts": "1k, 2f, 3e, 4, 5, 6t, 7e",
+        "chosen_by_dataset_code": {
+          "e": [
+            "3",
+            "7"
+          ],
+          "f": [
+            "2"
+          ],
+          "k": [
+            "1"
+          ],
+          "s": [],
+          "t": [
+            "6"
+          ]
+        }
+      },
+      {
+        "field": "decoder_embedding_per_head",
+        "printed_choices_with_dataset_superscripts": "4s, 8, 16, 32, 48f, 64ek, 128t, 256, 512",
+        "chosen_by_dataset_code": {
+          "e": [
+            "64"
+          ],
+          "f": [
+            "48"
+          ],
+          "k": [
+            "64"
+          ],
+          "s": [
+            "4"
+          ],
+          "t": [
+            "128"
+          ]
+        }
+      },
+      {
+        "field": "decoder_heads",
+        "printed_choices_with_dataset_superscripts": "1e, 2, 3, 4ks, 5, 6ft, 7",
+        "chosen_by_dataset_code": {
+          "e": [
+            "1"
+          ],
+          "f": [
+            "6"
+          ],
+          "k": [
+            "4"
+          ],
+          "s": [
+            "4"
+          ],
+          "t": [
+            "6"
+          ]
+        }
+      },
+      {
+        "field": "decoder_bins",
+        "printed_choices_with_dataset_superscripts": "10, 20ft, 50s, 100e, 200k, 500",
+        "chosen_by_dataset_code": {
+          "e": [
+            "100"
+          ],
+          "f": [
+            "20"
+          ],
+          "k": [
+            "200"
+          ],
+          "s": [
+            "50"
+          ],
+          "t": [
+            "20"
+          ]
+        }
+      },
+      {
+        "field": "normalization",
+        "printed_choices_with_dataset_superscripts": "Standardization efkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "Standardization"
+          ],
+          "f": [
+            "Standardization"
+          ],
+          "k": [
+            "Standardization"
+          ],
+          "s": [
+            "Standardization"
+          ],
+          "t": [
+            "Standardization"
+          ]
+        }
+      },
+      {
+        "field": "history_factor",
+        "printed_choices_with_dataset_superscripts": "1, 2ks, 3eft",
+        "chosen_by_dataset_code": {
+          "e": [
+            "3"
+          ],
+          "f": [
+            "3"
+          ],
+          "k": [
+            "2"
+          ],
+          "s": [
+            "2"
+          ],
+          "t": [
+            "3"
+          ]
+        }
+      },
+      {
+        "field": "optimizer",
+        "printed_choices_with_dataset_superscripts": "Adam efkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "Adam"
+          ],
+          "f": [
+            "Adam"
+          ],
+          "k": [
+            "Adam"
+          ],
+          "s": [
+            "Adam"
+          ],
+          "t": [
+            "Adam"
+          ]
+        }
+      },
+      {
+        "field": "weight_decay",
+        "printed_choices_with_dataset_superscripts": "0efks, (10−5), (10−4), (10−3)t",
+        "chosen_by_dataset_code": {
+          "e": [
+            "0"
+          ],
+          "f": [
+            "0"
+          ],
+          "k": [
+            "0"
+          ],
+          "s": [
+            "0"
+          ],
+          "t": [
+            "(10−3)"
+          ]
+        }
+      },
+      {
+        "field": "gradient_clipping",
+        "printed_choices_with_dataset_superscripts": "(103)efkst, (104)",
+        "chosen_by_dataset_code": {
+          "e": [
+            "(103)"
+          ],
+          "f": [
+            "(103)"
+          ],
+          "k": [
+            "(103)"
+          ],
+          "s": [
+            "(103)"
+          ],
+          "t": [
+            "(103)"
+          ]
+        }
+      }
+    ],
+    "8": [
+      {
+        "field": "marginal_encoder_embedding_per_head_and_ffn",
+        "printed_choices_with_dataset_superscripts": "4, 8st, 16, 32k, 64, 128e, 256, 512f",
+        "chosen_by_dataset_code": {
+          "e": [
+            "128"
+          ],
+          "f": [
+            "512"
+          ],
+          "k": [
+            "32"
+          ],
+          "s": [
+            "8"
+          ],
+          "t": [
+            "8"
+          ]
+        }
+      },
+      {
+        "field": "marginal_encoder_heads",
+        "printed_choices_with_dataset_superscripts": "1, 2, 3e, 4ft, 5s, 6k, 7",
+        "chosen_by_dataset_code": {
+          "e": [
+            "3"
+          ],
+          "f": [
+            "4"
+          ],
+          "k": [
+            "6"
+          ],
+          "s": [
+            "5"
+          ],
+          "t": [
+            "4"
+          ]
+        }
+      },
+      {
+        "field": "marginal_encoder_layer_pairs",
+        "printed_choices_with_dataset_superscripts": "1f, 2s, 3e, 4kt, 5, 6, 7",
+        "chosen_by_dataset_code": {
+          "e": [
+            "3"
+          ],
+          "f": [
+            "1"
+          ],
+          "k": [
+            "4"
+          ],
+          "s": [
+            "2"
+          ],
+          "t": [
+            "4"
+          ]
+        }
+      },
+      {
+        "field": "marginal_input_encoder_layers",
+        "printed_choices_with_dataset_superscripts": "1, 2, 3, 4fk, 5, 6s, 7et",
+        "chosen_by_dataset_code": {
+          "e": [
+            "7"
+          ],
+          "f": [
+            "4"
+          ],
+          "k": [
+            "4"
+          ],
+          "s": [
+            "6"
+          ],
+          "t": [
+            "7"
+          ]
+        }
+      },
+      {
+        "field": "marginal_series_embedding",
+        "printed_choices_with_dataset_superscripts": "5fks, 8e, 16t, 32, 48, 64, 128, 256, 512",
+        "chosen_by_dataset_code": {
+          "e": [
+            "8"
+          ],
+          "f": [
+            "5"
+          ],
+          "k": [
+            "5"
+          ],
+          "s": [
+            "5"
+          ],
+          "t": [
+            "16"
+          ]
+        }
+      },
+      {
+        "field": "copula_encoder_embedding_per_head_and_ffn",
+        "printed_choices_with_dataset_superscripts": "4k, 8fst, 16e, 32, 64, 128, 256, 512",
+        "chosen_by_dataset_code": {
+          "e": [
+            "16"
+          ],
+          "f": [
+            "8"
+          ],
+          "k": [
+            "4"
+          ],
+          "s": [
+            "8"
+          ],
+          "t": [
+            "8"
+          ]
+        }
+      },
+      {
+        "field": "copula_encoder_heads",
+        "printed_choices_with_dataset_superscripts": "1, 2e, 3f, 4t, 5s, 6k, 7",
+        "chosen_by_dataset_code": {
+          "e": [
+            "2"
+          ],
+          "f": [
+            "3"
+          ],
+          "k": [
+            "6"
+          ],
+          "s": [
+            "5"
+          ],
+          "t": [
+            "4"
+          ]
+        }
+      },
+      {
+        "field": "copula_encoder_layer_pairs",
+        "printed_choices_with_dataset_superscripts": "1, 2s, 3k, 4t, 5ef, 6, 7",
+        "chosen_by_dataset_code": {
+          "e": [
+            "5"
+          ],
+          "f": [
+            "5"
+          ],
+          "k": [
+            "3"
+          ],
+          "s": [
+            "2"
+          ],
+          "t": [
+            "4"
+          ]
+        }
+      },
+      {
+        "field": "copula_input_encoder_layers",
+        "printed_choices_with_dataset_superscripts": "1s, 2k, 3, 4, 5t, 6, 7ef",
+        "chosen_by_dataset_code": {
+          "e": [
+            "7"
+          ],
+          "f": [
+            "7"
+          ],
+          "k": [
+            "2"
+          ],
+          "s": [
+            "1"
+          ],
+          "t": [
+            "5"
+          ]
+        }
+      },
+      {
+        "field": "copula_series_embedding",
+        "printed_choices_with_dataset_superscripts": "5, 8fk, 16, 32, 48s, 64t, 128, 256e, 512",
+        "chosen_by_dataset_code": {
+          "e": [
+            "256"
+          ],
+          "f": [
+            "8"
+          ],
+          "k": [
+            "8"
+          ],
+          "s": [
+            "48"
+          ],
+          "t": [
+            "64"
+          ]
+        }
+      },
+      {
+        "field": "DSF_layers",
+        "printed_choices_with_dataset_superscripts": "1, 2s, 3, 4kt, 5, 6f, 7e",
+        "chosen_by_dataset_code": {
+          "e": [
+            "7"
+          ],
+          "f": [
+            "6"
+          ],
+          "k": [
+            "4"
+          ],
+          "s": [
+            "2"
+          ],
+          "t": [
+            "4"
+          ]
+        }
+      },
+      {
+        "field": "DSF_hidden",
+        "printed_choices_with_dataset_superscripts": "4, 8, 16t, 32, 48ef, 64, 128k, 256s, 512",
+        "chosen_by_dataset_code": {
+          "e": [
+            "48"
+          ],
+          "f": [
+            "48"
+          ],
+          "k": [
+            "128"
+          ],
+          "s": [
+            "256"
+          ],
+          "t": [
+            "16"
+          ]
+        }
+      },
+      {
+        "field": "MLP_layers",
+        "printed_choices_with_dataset_superscripts": "1, 2ef, 3ks, 4, 5, 6t, 7",
+        "chosen_by_dataset_code": {
+          "e": [
+            "2"
+          ],
+          "f": [
+            "2"
+          ],
+          "k": [
+            "3"
+          ],
+          "s": [
+            "3"
+          ],
+          "t": [
+            "6"
+          ]
+        }
+      },
+      {
+        "field": "MLP_hidden",
+        "printed_choices_with_dataset_superscripts": "4, 8, 16kst, 32, 48f, 64, 128e, 256, 512",
+        "chosen_by_dataset_code": {
+          "e": [
+            "128"
+          ],
+          "f": [
+            "48"
+          ],
+          "k": [
+            "16"
+          ],
+          "s": [
+            "16"
+          ],
+          "t": [
+            "16"
+          ]
+        }
+      },
+      {
+        "field": "decoder_transformer_layers",
+        "printed_choices_with_dataset_superscripts": "1, 2t, 3s, 4k, 5, 6, 7ef",
+        "chosen_by_dataset_code": {
+          "e": [
+            "7"
+          ],
+          "f": [
+            "7"
+          ],
+          "k": [
+            "4"
+          ],
+          "s": [
+            "3"
+          ],
+          "t": [
+            "2"
+          ]
+        }
+      },
+      {
+        "field": "decoder_embedding_per_head",
+        "printed_choices_with_dataset_superscripts": "4, 8, 16s, 32e, 48kt, 64f, 128, 256, 512",
+        "chosen_by_dataset_code": {
+          "e": [
+            "32"
+          ],
+          "f": [
+            "64"
+          ],
+          "k": [
+            "48"
+          ],
+          "s": [
+            "16"
+          ],
+          "t": [
+            "48"
+          ]
+        }
+      },
+      {
+        "field": "decoder_heads",
+        "printed_choices_with_dataset_superscripts": "1k, 2, 3, 4tf, 5, 6s, 7e",
+        "chosen_by_dataset_code": {
+          "e": [
+            "7"
+          ],
+          "f": [
+            "4"
+          ],
+          "k": [
+            "1"
+          ],
+          "s": [
+            "6"
+          ],
+          "t": [
+            "4"
+          ]
+        }
+      },
+      {
+        "field": "decoder_bins",
+        "printed_choices_with_dataset_superscripts": "10, 20e, 50fks, 100t, 200, 500",
+        "chosen_by_dataset_code": {
+          "e": [
+            "20"
+          ],
+          "f": [
+            "50"
+          ],
+          "k": [
+            "50"
+          ],
+          "s": [
+            "50"
+          ],
+          "t": [
+            "100"
+          ]
+        }
+      },
+      {
+        "field": "normalization",
+        "printed_choices_with_dataset_superscripts": "Standardization efkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "Standardization"
+          ],
+          "f": [
+            "Standardization"
+          ],
+          "k": [
+            "Standardization"
+          ],
+          "s": [
+            "Standardization"
+          ],
+          "t": [
+            "Standardization"
+          ]
+        }
+      },
+      {
+        "field": "history_factor",
+        "printed_choices_with_dataset_superscripts": "1t, 2es, 3fk",
+        "chosen_by_dataset_code": {
+          "e": [
+            "2"
+          ],
+          "f": [
+            "3"
+          ],
+          "k": [
+            "3"
+          ],
+          "s": [
+            "2"
+          ],
+          "t": [
+            "1"
+          ]
+        }
+      },
+      {
+        "field": "phase1_optimizer",
+        "printed_choices_with_dataset_superscripts": "Adam efkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "Adam"
+          ],
+          "f": [
+            "Adam"
+          ],
+          "k": [
+            "Adam"
+          ],
+          "s": [
+            "Adam"
+          ],
+          "t": [
+            "Adam"
+          ]
+        }
+      },
+      {
+        "field": "phase1_weight_decay",
+        "printed_choices_with_dataset_superscripts": "0est, (10−5)k, (10−4), (10−3)f",
+        "chosen_by_dataset_code": {
+          "e": [
+            "0"
+          ],
+          "f": [
+            "(10−3)"
+          ],
+          "k": [
+            "(10−5)"
+          ],
+          "s": [
+            "0"
+          ],
+          "t": [
+            "0"
+          ]
+        }
+      },
+      {
+        "field": "phase1_gradient_clipping",
+        "printed_choices_with_dataset_superscripts": "(103)efst, (104)k",
+        "chosen_by_dataset_code": {
+          "e": [
+            "(103)"
+          ],
+          "f": [
+            "(103)"
+          ],
+          "k": [
+            "(104)"
+          ],
+          "s": [
+            "(103)"
+          ],
+          "t": [
+            "(103)"
+          ]
+        }
+      },
+      {
+        "field": "phase2_optimizer",
+        "printed_choices_with_dataset_superscripts": "Adam efkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "Adam"
+          ],
+          "f": [
+            "Adam"
+          ],
+          "k": [
+            "Adam"
+          ],
+          "s": [
+            "Adam"
+          ],
+          "t": [
+            "Adam"
+          ]
+        }
+      },
+      {
+        "field": "phase2_weight_decay",
+        "printed_choices_with_dataset_superscripts": "0skt, (10−5), (10−4)ef, (10−3)",
+        "chosen_by_dataset_code": {
+          "e": [
+            "(10−4)"
+          ],
+          "f": [
+            "(10−4)"
+          ],
+          "k": [
+            "0"
+          ],
+          "s": [
+            "0"
+          ],
+          "t": [
+            "0"
+          ]
+        }
+      },
+      {
+        "field": "phase2_gradient_clipping",
+        "printed_choices_with_dataset_superscripts": "(103)es, (104)fkt",
+        "chosen_by_dataset_code": {
+          "e": [
+            "(103)"
+          ],
+          "f": [
+            "(104)"
+          ],
+          "k": [
+            "(104)"
+          ],
+          "s": [
+            "(103)"
+          ],
+          "t": [
+            "(104)"
+          ]
+        }
+      }
+    ],
+    "9": [
+      {
+        "field": "type",
+        "printed_choices_with_dataset_superscripts": "'discrete'efkst, 'continuous'",
+        "chosen_by_dataset_code": {
+          "e": [
+            "'discrete'"
+          ],
+          "f": [
+            "'discrete'"
+          ],
+          "k": [
+            "'discrete'"
+          ],
+          "s": [
+            "'discrete'"
+          ],
+          "t": [
+            "'discrete'"
+          ]
+        }
+      },
+      {
+        "field": "noise",
+        "printed_choices_with_dataset_superscripts": "'normal'efks, 'ou', 'gp't",
+        "chosen_by_dataset_code": {
+          "e": [
+            "'normal'"
+          ],
+          "f": [
+            "'normal'"
+          ],
+          "k": [
+            "'normal'"
+          ],
+          "s": [
+            "'normal'"
+          ],
+          "t": [
+            "'gp'"
+          ]
+        }
+      },
+      {
+        "field": "num_layers",
+        "printed_choices_with_dataset_superscripts": "1, 2efs, 3kt",
+        "chosen_by_dataset_code": {
+          "e": [
+            "2"
+          ],
+          "f": [
+            "2"
+          ],
+          "k": [
+            "3"
+          ],
+          "s": [
+            "2"
+          ],
+          "t": [
+            "3"
+          ]
+        }
+      },
+      {
+        "field": "num_cells",
+        "printed_choices_with_dataset_superscripts": "20fkt, 40s, 60e",
+        "chosen_by_dataset_code": {
+          "e": [
+            "60"
+          ],
+          "f": [
+            "20"
+          ],
+          "k": [
+            "20"
+          ],
+          "s": [
+            "40"
+          ],
+          "t": [
+            "20"
+          ]
+        }
+      },
+      {
+        "field": "dropout_rate",
+        "printed_choices_with_dataset_superscripts": "0k, 0.001tf, 0.01es, 0.1",
+        "chosen_by_dataset_code": {
+          "e": [
+            "0.01"
+          ],
+          "f": [
+            "0.001"
+          ],
+          "k": [
+            "0"
+          ],
+          "s": [
+            "0.01"
+          ],
+          "t": [
+            "0.001"
+          ]
+        }
+      },
+      {
+        "field": "diff_steps",
+        "printed_choices_with_dataset_superscripts": "25, 50, 100efkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "100"
+          ],
+          "f": [
+            "100"
+          ],
+          "k": [
+            "100"
+          ],
+          "s": [
+            "100"
+          ],
+          "t": [
+            "100"
+          ]
+        }
+      },
+      {
+        "field": "beta_schedule",
+        "printed_choices_with_dataset_superscripts": "'linear', 'quad'efkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "'quad'"
+          ],
+          "f": [
+            "'quad'"
+          ],
+          "k": [
+            "'quad'"
+          ],
+          "s": [
+            "'quad'"
+          ],
+          "t": [
+            "'quad'"
+          ]
+        }
+      },
+      {
+        "field": "residual_layers",
+        "printed_choices_with_dataset_superscripts": "4, 8e, 16fkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "8"
+          ],
+          "f": [
+            "16"
+          ],
+          "k": [
+            "16"
+          ],
+          "s": [
+            "16"
+          ],
+          "t": [
+            "16"
+          ]
+        }
+      },
+      {
+        "field": "residual_channels",
+        "printed_choices_with_dataset_superscripts": "4, 8, 16efkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "16"
+          ],
+          "f": [
+            "16"
+          ],
+          "k": [
+            "16"
+          ],
+          "s": [
+            "16"
+          ],
+          "t": [
+            "16"
+          ]
+        }
+      },
+      {
+        "field": "scaling",
+        "printed_choices_with_dataset_superscripts": "False ks, Trueeft",
+        "chosen_by_dataset_code": {
+          "e": [
+            "True"
+          ],
+          "f": [
+            "True"
+          ],
+          "k": [
+            "False"
+          ],
+          "s": [
+            "False"
+          ],
+          "t": [
+            "True"
+          ]
+        }
+      },
+      {
+        "field": "history_factor",
+        "printed_choices_with_dataset_superscripts": "1efkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "1"
+          ],
+          "f": [
+            "1"
+          ],
+          "k": [
+            "1"
+          ],
+          "s": [
+            "1"
+          ],
+          "t": [
+            "1"
+          ]
+        }
+      },
+      {
+        "field": "optimizer",
+        "printed_choices_with_dataset_superscripts": "Adam efkst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "Adam"
+          ],
+          "f": [
+            "Adam"
+          ],
+          "k": [
+            "Adam"
+          ],
+          "s": [
+            "Adam"
+          ],
+          "t": [
+            "Adam"
+          ]
+        }
+      },
+      {
+        "field": "weight_decay",
+        "printed_choices_with_dataset_superscripts": "0s, (10−5)ek, (10−4)ft, (10−3)",
+        "chosen_by_dataset_code": {
+          "e": [
+            "(10−5)"
+          ],
+          "f": [
+            "(10−4)"
+          ],
+          "k": [
+            "(10−5)"
+          ],
+          "s": [
+            "0"
+          ],
+          "t": [
+            "(10−4)"
+          ]
+        }
+      },
+      {
+        "field": "gradient_clipping",
+        "printed_choices_with_dataset_superscripts": "(101), (102), (103)k, (104)efst",
+        "chosen_by_dataset_code": {
+          "e": [
+            "(104)"
+          ],
+          "f": [
+            "(104)"
+          ],
+          "k": [
+            "(103)"
+          ],
+          "s": [
+            "(104)"
+          ],
+          "t": [
+            "(104)"
+          ]
+        }
+      }
+    ]
+  },
+  "hyperparameter_row_count": 58,
+  "hyperparameter_cells": 290,
+  "unambiguous_selected_cells": 288,
+  "ambiguous_cells": 1,
+  "unmarked_cells": 1,
+  "notation_note": "(103)/(104)/(101)/(102)는 인쇄상 10의 거듭제곱을 텍스트 추출기가 평탄화한 표기. 실제 시각으로 10^3/10^4/10^1/10^2를 확인. 첨자의 efkst는 자료 선택값. 표7 중복e와누락s는보정하지않음.",
+  "anomalies": [
+    {
+      "table": 7,
+      "field": "decoder_transformer_layers",
+      "dataset_code": "e",
+      "printed_values": [
+        "3",
+        "7"
+      ]
+    },
+    {
+      "table": 7,
+      "field": "decoder_transformer_layers",
+      "dataset_code": "s",
+      "printed_values": []
+    }
+  ],
+  "comparisons": [
+    {
+      "table": 1,
+      "metric": null,
+      "rows": [
+        {
+          "dataset": "electricity",
+          "TACTiS": "0.021",
+          "TACTiS2": "0.020",
+          "delta_2_minus_1": "-0.001",
+          "direction": "lower"
+        },
+        {
+          "dataset": "fred-md",
+          "TACTiS": "0.042",
+          "TACTiS2": "0.035",
+          "delta_2_minus_1": "-0.007",
+          "direction": "lower"
+        },
+        {
+          "dataset": "kdd-cup",
+          "TACTiS": "0.237",
+          "TACTiS2": "0.234",
+          "delta_2_minus_1": "-0.003",
+          "direction": "lower"
+        },
+        {
+          "dataset": "solar-10min",
+          "TACTiS": "0.311",
+          "TACTiS2": "0.240",
+          "delta_2_minus_1": "-0.071",
+          "direction": "lower"
+        },
+        {
+          "dataset": "traffic",
+          "TACTiS": "0.071",
+          "TACTiS2": "0.078",
+          "delta_2_minus_1": "0.007",
+          "direction": "higher"
+        }
+      ]
+    },
+    {
+      "table": 2,
+      "metric": "NLL",
+      "rows": [
+        {
+          "dataset": "electricity",
+          "TACTiS": "11.028",
+          "TACTiS2": "10.674",
+          "delta_2_minus_1": "-0.354",
+          "direction": "lower"
+        },
+        {
+          "dataset": "fred-md",
+          "TACTiS": "1.364",
+          "TACTiS2": "0.378",
+          "delta_2_minus_1": "-0.986",
+          "direction": "lower"
+        },
+        {
+          "dataset": "kdd-cup",
+          "TACTiS": "2.281",
+          "TACTiS2": "1.055",
+          "delta_2_minus_1": "-1.226",
+          "direction": "lower"
+        },
+        {
+          "dataset": "solar-10min",
+          "TACTiS": "-2.572",
+          "TACTiS2": "-4.333",
+          "delta_2_minus_1": "-1.761",
+          "direction": "lower"
+        },
+        {
+          "dataset": "traffic",
+          "TACTiS": "1.249",
+          "TACTiS2": "-0.358",
+          "delta_2_minus_1": "-1.607",
+          "direction": "lower"
+        }
+      ]
+    },
+    {
+      "table": 2,
+      "metric": "FLOPs",
+      "rows": [
+        {
+          "dataset": "electricity",
+          "TACTiS": "1.931",
+          "TACTiS2": "0.623",
+          "delta_2_minus_1": "-1.308",
+          "direction": "lower",
+          "rounded_table_reduction_percent": "67.73692387364060072501294666"
+        },
+        {
+          "dataset": "fred-md",
+          "TACTiS": "1.956",
+          "TACTiS2": "0.738",
+          "delta_2_minus_1": "-1.218",
+          "direction": "lower",
+          "rounded_table_reduction_percent": "62.26993865030674846625766871"
+        },
+        {
+          "dataset": "kdd-cup",
+          "TACTiS": "1.952",
+          "TACTiS2": "0.324",
+          "delta_2_minus_1": "-1.628",
+          "direction": "lower",
+          "rounded_table_reduction_percent": "83.40163934426229508196721311"
+        },
+        {
+          "dataset": "solar-10min",
+          "TACTiS": "0.174",
+          "TACTiS2": "0.078",
+          "delta_2_minus_1": "-0.096",
+          "direction": "lower",
+          "rounded_table_reduction_percent": "55.17241379310344827586206897"
+        },
+        {
+          "dataset": "traffic",
+          "TACTiS": "1.207",
+          "TACTiS2": "0.289",
+          "delta_2_minus_1": "-0.918",
+          "direction": "lower",
+          "rounded_table_reduction_percent": "76.05633802816901408450704225"
+        }
+      ]
+    },
+    {
+      "table": 3,
+      "metric": null,
+      "rows": [
+        {
+          "dataset": "electricity",
+          "TACTiS": "-0.159",
+          "TACTiS2": "-0.189",
+          "delta_2_minus_1": "-0.030",
+          "direction": "lower"
+        },
+        {
+          "dataset": "fred-md",
+          "TACTiS": "-0.119",
+          "TACTiS2": "-0.250",
+          "delta_2_minus_1": "-0.131",
+          "direction": "lower"
+        },
+        {
+          "dataset": "kdd-cup",
+          "TACTiS": "1.050",
+          "TACTiS2": "0.138",
+          "delta_2_minus_1": "-0.912",
+          "direction": "lower"
+        },
+        {
+          "dataset": "solar-10min",
+          "TACTiS": "-0.948",
+          "TACTiS2": "-3.262",
+          "delta_2_minus_1": "-2.314",
+          "direction": "lower"
+        },
+        {
+          "dataset": "traffic",
+          "TACTiS": "0.825",
+          "TACTiS2": "-0.431",
+          "delta_2_minus_1": "-1.256",
+          "direction": "lower"
+        }
+      ]
+    },
+    {
+      "table": 4,
+      "metric": null,
+      "rows": [
+        {
+          "dataset": "electricity",
+          "TACTiS": "0.052",
+          "TACTiS2": "0.049",
+          "delta_2_minus_1": "-0.003",
+          "direction": "lower"
+        },
+        {
+          "dataset": "fred-md",
+          "TACTiS": "0.048",
+          "TACTiS2": "0.043",
+          "delta_2_minus_1": "-0.005",
+          "direction": "lower"
+        },
+        {
+          "dataset": "kdd-cup",
+          "TACTiS": "0.420",
+          "TACTiS2": "0.413",
+          "delta_2_minus_1": "-0.007",
+          "direction": "lower"
+        },
+        {
+          "dataset": "solar-10min",
+          "TACTiS": "0.326",
+          "TACTiS2": "0.256",
+          "delta_2_minus_1": "-0.070",
+          "direction": "lower"
+        },
+        {
+          "dataset": "traffic",
+          "TACTiS": "0.161",
+          "TACTiS2": "0.162",
+          "delta_2_minus_1": "0.001",
+          "direction": "higher"
+        }
+      ]
+    },
+    {
+      "table": 5,
+      "metric": null,
+      "rows": [
+        {
+          "dataset": "electricity",
+          "TACTiS": "5.42",
+          "TACTiS2": "4.91",
+          "delta_2_minus_1": "-0.51",
+          "direction": "lower"
+        },
+        {
+          "dataset": "fred-md",
+          "TACTiS": "8.18",
+          "TACTiS2": "6.72",
+          "delta_2_minus_1": "-1.46",
+          "direction": "lower"
+        },
+        {
+          "dataset": "kdd-cup",
+          "TACTiS": "2.93",
+          "TACTiS2": "2.81",
+          "delta_2_minus_1": "-0.12",
+          "direction": "lower"
+        },
+        {
+          "dataset": "solar-10min",
+          "TACTiS": "2.88",
+          "TACTiS2": "2.37",
+          "delta_2_minus_1": "-0.51",
+          "direction": "lower"
+        },
+        {
+          "dataset": "traffic",
+          "TACTiS": "3.10",
+          "TACTiS2": "3.36",
+          "delta_2_minus_1": "0.26",
+          "direction": "higher"
+        }
+      ]
+    },
+    {
+      "table": 11,
+      "metric": null,
+      "rows": [
+        {
+          "dataset": "kdd-cup",
+          "TACTiS": "2.858",
+          "TACTiS2": "1.866",
+          "delta_2_minus_1": "-0.992",
+          "direction": "lower"
+        },
+        {
+          "dataset": "solar-10min",
+          "TACTiS": "1.001",
+          "TACTiS2": "0.261",
+          "delta_2_minus_1": "-0.740",
+          "direction": "lower"
+        }
+      ]
+    },
+    {
+      "table": 12,
+      "metric": null,
+      "rows": [
+        {
+          "dataset": "kdd-cup",
+          "TACTiS": "1.527",
+          "TACTiS2": "0.722",
+          "delta_2_minus_1": "-0.805",
+          "direction": "lower"
+        },
+        {
+          "dataset": "solar-10min",
+          "TACTiS": "-0.038",
+          "TACTiS2": "-3.218",
+          "delta_2_minus_1": "-3.180",
+          "direction": "lower"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "Table1 ordered mean/SE pairs",
+    "Table2 ordered mean/SE pairs",
+    "Table3 ordered mean/SE pairs",
+    "Table4 ordered printed values",
+    "Table5 ordered printed values",
+    "Table11 ordered printed values",
+    "Table12 ordered printed values",
+    "Table10 20 learning rates",
+    "Table10 learning rates within search range",
+    "Table6 electricity",
+    "Table6 fred-md",
+    "Table6 kdd-cup",
+    "Table6 solar-10min",
+    "Table6 traffic",
+    "Table7 encoder_embedding_per_head_and_ffn printed choices",
+    "Table7 encoder_heads printed choices",
+    "Table7 encoder_layer_pairs printed choices",
+    "Table7 encoder_input_embedding_dimensions printed choices",
+    "Table7 series_embedding_dimensions printed choices",
+    "Table7 DSF_layers printed choices",
+    "Table7 DSF_hidden printed choices",
+    "Table7 MLP_layers printed choices",
+    "Table7 MLP_hidden printed choices",
+    "Table7 decoder_transformer_layers printed choices",
+    "Table7 decoder_embedding_per_head printed choices",
+    "Table7 decoder_heads printed choices",
+    "Table7 decoder_bins printed choices",
+    "Table7 normalization printed choices",
+    "Table7 history_factor printed choices",
+    "Table7 optimizer printed choices",
+    "Table7 weight_decay printed choices",
+    "Table7 gradient_clipping printed choices",
+    "Table8 marginal_encoder_embedding_per_head_and_ffn printed choices",
+    "Table8 marginal_encoder_heads printed choices",
+    "Table8 marginal_encoder_layer_pairs printed choices",
+    "Table8 marginal_input_encoder_layers printed choices",
+    "Table8 marginal_series_embedding printed choices",
+    "Table8 copula_encoder_embedding_per_head_and_ffn printed choices",
+    "Table8 copula_encoder_heads printed choices",
+    "Table8 copula_encoder_layer_pairs printed choices",
+    "Table8 copula_input_encoder_layers printed choices",
+    "Table8 copula_series_embedding printed choices",
+    "Table8 DSF_layers printed choices",
+    "Table8 DSF_hidden printed choices",
+    "Table8 MLP_layers printed choices",
+    "Table8 MLP_hidden printed choices",
+    "Table8 decoder_transformer_layers printed choices",
+    "Table8 decoder_embedding_per_head printed choices",
+    "Table8 decoder_heads printed choices",
+    "Table8 decoder_bins printed choices",
+    "Table8 normalization printed choices",
+    "Table8 history_factor printed choices",
+    "Table8 phase1_optimizer printed choices",
+    "Table8 phase1_weight_decay printed choices",
+    "Table8 phase1_gradient_clipping printed choices",
+    "Table8 phase2_optimizer printed choices",
+    "Table8 phase2_weight_decay printed choices",
+    "Table8 phase2_gradient_clipping printed choices",
+    "Table9 type printed choices",
+    "Table9 noise printed choices",
+    "Table9 num_layers printed choices",
+    "Table9 num_cells printed choices",
+    "Table9 dropout_rate printed choices",
+    "Table9 diff_steps printed choices",
+    "Table9 beta_schedule printed choices",
+    "Table9 residual_layers printed choices",
+    "Table9 residual_channels printed choices",
+    "Table9 scaling printed choices",
+    "Table9 history_factor printed choices",
+    "Table9 optimizer printed choices",
+    "Table9 weight_decay printed choices",
+    "Table9 gradient_clipping printed choices",
+    "Table7 ambiguous e and absent s preserved",
+    "182 mean/error pairs",
+    "58 hyperparameter rows"
+  ],
+  "checks_passed": 75,
+  "limitations": [
+    "원표mean/±와선택첨자대조 및 반올림값의산술. 원예측배열·표SE/순위집계·논문실행재현아님.",
+    "Table11·12의단일backtest/5seeds 오차를Table1–5의여러backtest Newey-West와동일축으로단정안함.",
+    "지표/NLL에서임의percentage reduction이나통계적유의성검정을만들지않음.",
+    "각Table의보고비교를독립새Tab/UPC/RCTL실험으로가산안함."
+  ],
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "random_draws": 0
+}

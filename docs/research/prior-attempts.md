@@ -329,3 +329,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 경험 CDF와 공유 확률 예측 — 64·65 GP-Copula
 
 검색어: Gaussian copula, empirical CDF, marginal transform, shared RNN, low-rank covariance, Jacobian, CRPS-sum, GluonTS. [GP-Copula 검수](records/0064-0065-gp-copula.md)는분포변환→공유신경망→역변환이기존연결임을확인합니다. 새실험은Tab이추가하는정보·비용과RCTL이배울남은정보를명시해야합니다. Electricity/Taxi의예외,원본/재구현설정·구간·지표차이를먼저확인하세요.
+
+## 조건부 PIT와 공동 의존 — 64·65 TACTiS-2
+
+검색어: TACTiS-2, conditional marginal, PIT, copula validity, DSF, two-stage curriculum, NLL, Newey-West, interpolation. [TACTiS-2 기록](records/0064-0065-tactis2.md)은 개별 미래값의 정확조건부PIT가균등해도 공동의존은남을수있음을구분합니다. Tab CDF로바꾸는것만으로새알고리즘이되지는않습니다. 새실험은제거할정보·남길정보,단일중앙값대공동분포,원척도목표와비용을명시하고공개코드의샘플범위·단계설정·보간시각경로부터확인하세요.

@@ -1,0 +1,217 @@
+{
+  "batch_id": "history-060",
+  "main_text_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "main_visual_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+  ],
+  "original_previews": [
+    "SRC-0063862",
+    "SRC-0063863"
+  ],
+  "original_TXT_pages_equal": 28,
+  "main_figures": 15,
+  "main_tables": 12,
+  "references_pages_read": [
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "references_scope": "서지목록 독해. 인용논문 각각의본문 독해가 아니다.",
+  "official_HTML_whole_read": false,
+  "paper_observations": [
+    {
+      "pages": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "topic": "서지",
+      "text": "참고문헌과 감사 문구를 텍스트·시각으로 전부 읽었다. 개별 인용 논문까지 전부 읽었다는 뜻은 아니다. GP-Copula2019, TACTiS2022, two-stage copula 추정/flow/Newey-West 문헌을 구분한다."
+    },
+    {
+      "pages": [
+        15,
+        16
+      ],
+      "topic": "지표",
+      "text": "Eq13 CRPS는 시계열별 실제값 평균절대값으로 정규화한 후 계열·시간 평균. CRPS-sum은 동일 표본에서 계열을 먼저 합한 분포에 적용. Eq14 Energy Score는 Euclidean norm beta=1. Eq15 NLL은 예측 차원수로 나눈 값. raw error/MAE/관계선정점수와 같지 않음."
+    },
+    {
+      "pages": [
+        16
+      ],
+      "topic": "불확실성",
+      "text": "A.1은 지표±에 R sandwich/Newey-West/Bartlett/3 lags/automatic bandwidth selection을 명시한다. 실제 호출 인자·배열·CI 신뢰수준은 미확인. Figs6·7은 별도로 5 seeds 사이 SE를 명시한다. Table11·12는 단일 backtest/5 seeds여서 A.1과 같은 backtest 축이라고 단정하지 않는다."
+    },
+    {
+      "pages": [
+        16
+      ],
+      "topic": "추가평가",
+      "text": "Table4 CRPS와 Table5 Energy Score도 TACTiS 대비2가 4/5 낮고 Traffic만 각각 .161→.162,3.10→3.36으로 높다. 평균순위는 window/dataset 기반이다. Energy Score의 자료별 x10^4,x10^5,x10^3,x10^2,x10^0 단위를 보존한다."
+    },
+    {
+      "pages": [
+        16,
+        17
+      ],
+      "topic": "ablation",
+      "text": "no-curriculum은 같은 TACTiS2 modular architecture를 joint NLL로 학습한 ablation. kdd/solar 두 사례의 Fig6/7은 curriculum의 수렴 FLOPs와 NLL 이점을 보인다. 좌표는 원배열로 역복원하지 않는다. Fig6 x10^15,Fig7 x10^16,5 seeds SE/최대3일/latest convergence. 모든 FLOP budget의 일반 정리가 아니다."
+    },
+    {
+      "pages": [
+        18,
+        19,
+        20
+      ],
+      "topic": "정성예시 선택",
+      "text": "Figs8·9 forecasting은 특히 잘 맞는 예시를 골랐다고 A.4가 명시한다(각8 panels). Figs10–13 interpolation은 무작위 선택이라고 A.5가 보고한다(각2사례×2모델). 원표본/선택 절차 검증은 아님. 후측 관측을 사용하는 보간과 시점 순서의 forecast를 구분."
+    },
+    {
+      "pages": [
+        21,
+        22
+      ],
+      "topic": "Proposition1",
+      "text": "임의의 invertible monotonic F와 C*=true copula를 합성 C(u)=C*(F*_i(F_i^-1(u_i)))해도 전체 P는 같을 수 있다. F!=F*이면 C의 univariate marginal이 identity가 아니어서 유효 copula가 아닐 수 있음을 보인다. 잘 맞는 joint PDF가 올바른 분해를 보장하지 않는다는 식별 문제."
+    },
+    {
+      "pages": [
+        21,
+        22
+      ],
+      "topic": "Proposition2",
+      "text": "population expected NLL의 strict propriety와 무한표현력으로 먼저 true marginals를 얻고, 고정한 true PIT의 uniform marginals에 copula NLL을 최적화하면 true copula를 얻는 증명. 유한표본·수치최적화·Tab 추정의 보장은 아니다. 원65§6의 조건부 개별PIT와 joint dependence 구분에 연결."
+    },
+    {
+      "pages": [
+        22,
+        23,
+        24
+      ],
+      "topic": "2차원예시",
+      "text": "B.3은 Clayton(theta9.75,−.99) equal mixture, Gamma(alpha1.99),Double Weibull(c3). 첫 변수 forced U[0,1]를 제거한 modified decoder라는 각주2를 보존한다. Fig14 정확한 분해와 Fig15 전체joint는 잘 맞지만 분해는 어긋나는 사례. 일반 architecture의 모든 유한학습 검증으로 확대하지 않는다."
+    },
+    {
+      "pages": [
+        6,
+        25
+      ],
+      "topic": "자료수표기",
+      "text": "본문 n∈[107,826]과 Table6 Traffic 862가 다르다. Table6는 electricity321/h24,f​​red107/h12,kdd270/h48,solar137/h72,traffic862/h24. 과거GP의963 Traffic와 동일자료/전처리로 합치지 않는다."
+    },
+    {
+      "pages": [
+        25
+      ],
+      "topic": "학습자원",
+      "text": "Docker/P100 12GB/CPU2/RAM32GB, 학습batch는1..256의2거듭제곱중메모리에맞는최대값. sampling/NLL은 bagging 없이 수행해 필요시 더 많은 메모리 자원을 썼다고 명시. 평가까지12GB로 가능했다고 주장하지 않는다."
+    },
+    {
+      "pages": [
+        25,
+        26
+      ],
+      "topic": "학습과탐색비용",
+      "text": "512batches/epoch,validation NLL best checkpoint,earlystop50epochs,비curriculum72h/단계별36h 상한. TACTiS/2는 각dataset/model당Optuna6일×50parallel훈련을 보고한다. 이는50개의총trial이나실측7200GPU-hours확정값이 아니다. 전체완료trial/정확한seed·자원합계 미기록/미확인."
+    },
+    {
+      "pages": [
+        25,
+        26
+      ],
+      "topic": "비교조건",
+      "text": "Auto-ARIMA/ETS/GPVar/TempFlow/TimeGrad의 지표는TACTiS2022에서 재인용(그쪽CRPS-sum최적화). TACTiS/2는NLL,SPD는noise MSE로탐색. 조기종료·HPO동일validation사용. 모두새동일조건실행으로세지않음. interpolation은forecast의선택설정재사용."
+    },
+    {
+      "pages": [
+        25
+      ],
+      "topic": "분할",
+      "text": "HPO는train끝7horizon을빼고가능한모든window로validation. backtest는7개nonoverlap(단fred는1horizon/1window). centeredinterpolation은앞뒤동일관측길이,마지막후측관측부족을피하려window를shift하고겹친train제거. 정확한전체backtest날짜/개수/주기는2022protocol로참조돼 이PDF만으로완전히고정안됨."
+    },
+    {
+      "pages": [
+        26,
+        27,
+        28
+      ],
+      "topic": "설정",
+      "text": "Tables7–9 후보값과 efkst superscript선택값을 시각대조했다. Table7 Decoder transformer number of layers에3e와7e가동시에있고s는없다. 추출누락이아닌인쇄표기이며정답임의보정안함. Table10선택LR20값과범위1e-6..1e-2. TACTiS2는두encoder·두optimizer설정구분."
+    },
+    {
+      "pages": [
+        28
+      ],
+      "topic": "불규칙자료",
+      "text": "D.1은규칙실자료를인위적으로누락/저주파화:간격delta∈{1,2,3},계열별freq{1,1/2,1/4}. kdd/solar 두자료·단일backtest·5seeds Table11/12에서2의NLL모두낮음. 자연발생결측/모든지표·전체rolling동일성과로확대안함."
+    }
+  ],
+  "full_paper_content_read": true,
+  "figure_limits": "정밀곡선/원예측배열을그림으로복원하지않음. Figs8/9 특히잘맞는선택예시와Figs10–13의보고된무작위선택을구분.",
+  "source_claim_second_pass_pending": false,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0,
+  "source_claim_second_pass_at_utc": "2026-10-10T06:10:49.892881+00:00"
+}

@@ -146,3 +146,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H058 출처 목록](history-058-sources.jsonl)은 PLOS 문헌과64·65의7그룹14경로를연결합니다. [읽은 범위](../sources/history-058.md)에서 새사본2·재사용2·외부3참조와공식판본대조를구분합니다.
 
 [H059 출처 목록](history-059-sources.jsonl)은5그룹10경로의GP-Copula와64·65를연결합니다. [읽은 범위](../sources/history-059.md)는기존사본2재사용/외부참조3,공식보충과고정코드의전체·부분독해를구분합니다.
+
+[H060 출처 목록](history-060-sources.jsonl)은7그룹14경로의TACTiS-2와64·65를연결합니다. [실제 범위](../sources/history-060.md)는 논문28쪽/15그림12표·공식코드16전체·기존사본2재사용/외부참조5입니다.

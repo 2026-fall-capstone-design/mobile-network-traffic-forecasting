@@ -1,0 +1,260 @@
+{
+  "batch_id": "history-060",
+  "claims": [
+    {
+      "claim_id": "H060-C01",
+      "claim": "공식v2 PDF는 저장본과 바이트동일이며 TXT28쪽도 wrapper·개행·외곽공백 정규화 뒤 같다.",
+      "source_location": "SRC-0062147:28쪽; SRC-0062148:28쪽; SRC-0062149:선택서지; EXT-H060:판본검수",
+      "verification_method": "PDF SHA/바이트·TXT별쪽·v1/v2 history 대조",
+      "limit": "HTML 전체 독해나 다른 판본 본문 독해로 세지 않는다."
+    },
+    {
+      "claim_id": "H060-C02",
+      "claim": "원65는 논문선택독해/코드링크 확인이었고 이번 전체독해·정적코드 검수를 당시 실행으로 소급하지 않는다.",
+      "source_location": "SRC-0022015:전체; SRC-0022016:§6/실행·보존",
+      "verification_method": "원64/65 전체와 기존 정확사본 대조",
+      "limit": "새 Tab/UPC/RCTL 실험과 최종후보 채택은 없다."
+    },
+    {
+      "claim_id": "H060-C03",
+      "claim": "관측mask를 조건으로 한 결합분포 문제는 forecasting/interpolation/backcasting을 포괄한다.",
+      "source_location": "SRC-0062147:2–3쪽§2/8쪽; SRC-0022016:§6",
+      "verification_method": "가용관측과 미지변수 정의 대조",
+      "limit": "보간 결과를 chronological forecast 결과로 합치지 않는다."
+    },
+    {
+      "claim_id": "H060-C04",
+      "claim": "주변분포/copula별 두encoder와 DSF CDF,mask/위치표현을 사용한다.",
+      "source_location": "SRC-0062147:4–6쪽§4/Fig2; SRC-0063862:전체; SRC-0063863:전체",
+      "verification_method": "원PNG와PDF텍스트·구조도 대조",
+      "limit": "경험m100 CDF·달력정규화·Tab추정과 동일하지 않다."
+    },
+    {
+      "claim_id": "H060-C05",
+      "claim": "독립copula 밀도1로 주변분포를 학습한 뒤 고정하고 copula를 학습한다.",
+      "source_location": "SRC-0062147:4–6쪽식7–12; EXT-H060:trainer88–175/tactis362–392",
+      "verification_method": "목적식과 실제 requires_grad/optimizer 선택 대조",
+      "limit": "동결은 모집단 최적해·유한학습 copula유효성의 실증 증명이 아니다."
+    },
+    {
+      "claim_id": "H060-C06",
+      "claim": "O(d!)→O(d)는 분포 파라미터phi의 문제 규모이며 전체attention 비용이 아니다.",
+      "source_location": "SRC-0062147:3–6쪽; EXT-H060:encoder/decoder",
+      "verification_method": "phi/theta와미지변수수·attention텐서구조 대조",
+      "limit": "series수만의선형시간/메모리로 확대하지 않는다."
+    },
+    {
+      "claim_id": "H060-C07",
+      "claim": "Prop1은 정확한 joint 분포가 가능해도 copula 분해가 유효하지 않을 수 있다는 식별 문제다.",
+      "source_location": "SRC-0062147:3쪽Prop1/21쪽B.1",
+      "verification_method": "임의가역단조F와trueCDF/copula합성·uniform주변조건 대조",
+      "limit": "연속주변분포/무한표현력 가정. joint PDF 자체가 항상틀리다는뜻아님."
+    },
+    {
+      "claim_id": "H060-C08",
+      "claim": "Prop2는 population expected NLL 최적성과 무한표현력으로 true marginals 후 true copula를 얻는 논증이다.",
+      "source_location": "SRC-0062147:4쪽Prop2/21–22쪽B.2",
+      "verification_method": "strict propriety의 두 단계와고정PIT uniform대조",
+      "limit": "finite network/SGD/Tab 정확성 보장 아님."
+    },
+    {
+      "claim_id": "H060-C09",
+      "claim": "개별미래값의 full-history PIT uniform과 여러 미래값 공동의존 잔존은 양립한다.",
+      "source_location": "SRC-0022015:논리검사; SRC-0022016:§6/연결논리; SRC-0062147:§2–4/B.2",
+      "verification_method": "조건정보H와단일중앙값/다변량copula 목적 비교",
+      "limit": "CDF공간 MAE나 UPC 소속 선택의효용을 증명한 것이 아니다."
+    },
+    {
+      "claim_id": "H060-C10",
+      "claim": "B.3의2변량예시는 first-variable forced uniform을 제거한수정decoder를사용한다.",
+      "source_location": "SRC-0062147:22–24쪽B.3/각주2/Figs14–15",
+      "verification_method": "Clayton9.75/−.99·Gamma1.99·DoubleWeibull3/각주·그림대조",
+      "limit": "모든finite학습이나공개기본decoder전체를검증한예시아님."
+    },
+    {
+      "claim_id": "H060-C11",
+      "claim": "Table6의5자료설정과본문826대Traffic862차이를보존한다.",
+      "source_location": "SRC-0062147:6/25쪽Table6",
+      "verification_method": "계열수/주기/horizon15숫자·코드train자료설정대조",
+      "limit": "코드862는실제자료배열검증아님. GP963/telecomcell과동일시안함."
+    },
+    {
+      "claim_id": "H060-C12",
+      "claim": "HPO validation은7horizon의모든창,backtest는7비중첩/fred1창이며보간은양쪽관측을사용한다.",
+      "source_location": "SRC-0062147:25쪽C.2",
+      "verification_method": "HPO/backtest/centeredinterpolation·shift·겹친train제거구분",
+      "limit": "전체시각/2022프로토콜·원배열완전고정아님."
+    },
+    {
+      "claim_id": "H060-C13",
+      "claim": "비교군일부는2022결과재인용이고탐색목표도CRPS-sum/NLL/noiseMSE로다르다.",
+      "source_location": "SRC-0062147:25–26쪽C.3",
+      "verification_method": "모델별재인용/HPO/같은validation·보간설정재사용대조",
+      "limit": "모든baseline새동일조건실행이라하지않음."
+    },
+    {
+      "claim_id": "H060-C14",
+      "claim": "Table1 CRPS-sum은TACTiS-2가4/5낮지만Traffic .071±.008→.078±.008로높다.",
+      "source_location": "SRC-0062147:7쪽Table1; SRC-0022016:§6",
+      "verification_method": "48mean±쌍전사/자료별인쇄평균비교",
+      "limit": "전체seed/지표우위나새유의성주장없음."
+    },
+    {
+      "claim_id": "H060-C15",
+      "claim": "Table2의NLL과수렴학습FLOPs는5자료모두TACTiS-2평균이낮다.",
+      "source_location": "SRC-0062147:7쪽Table2",
+      "verification_method": "NLL/FLOPs20mean±쌍및10^16단위대조",
+      "limit": "HPO전체/전체wall-clock/MAE개선으로전환하지않음."
+    },
+    {
+      "claim_id": "H060-C16",
+      "claim": "Tables4/5도4/5낮고Traffic CRPS .161→.162/ES3.10→3.36으로높다.",
+      "source_location": "SRC-0062147:16쪽Tables4–5",
+      "verification_method": "96mean±쌍·자료별ES단위·평균비교",
+      "limit": "상이한ES단위를그대로평균하지않고NLL과모든지표개선을구분."
+    },
+    {
+      "claim_id": "H060-C17",
+      "claim": "Table3의보간NLL은다섯자료모두낮다.",
+      "source_location": "SRC-0062147:8쪽Table3/25쪽C.2",
+      "verification_method": "10mean±쌍·가용정보조건대조",
+      "limit": "미래측관측을허용한보간이며forecast성능과다름."
+    },
+    {
+      "claim_id": "H060-C18",
+      "claim": "CRPS는정규화·계열시간평균,CRPS-sum은계열합을먼저,ES는beta1,NLL은차원수로나눈다.",
+      "source_location": "SRC-0062147:15–16쪽A.1식13–15",
+      "verification_method": "원지표정의·분모·합산순서대조",
+      "limit": "원단위MAE·소속점수·RCTL성과와치환안함."
+    },
+    {
+      "claim_id": "H060-C19",
+      "claim": "표오차는Newey-West로설명되며Figs6/7 seed SE와구분한다.",
+      "source_location": "SRC-0062147:16쪽A.1/17쪽/Figs6–7",
+      "verification_method": "sandwich/Bartlett/3lags/자동bandwidth문구·그림caption대조",
+      "limit": "정확호출/원배열/CI수준미확인. iid3회SD/SE검사이식안함."
+    },
+    {
+      "claim_id": "H060-C20",
+      "claim": "평균순위는전체평가창·자료의순위집계다.",
+      "source_location": "SRC-0062147:7/16쪽Tables1/4/5",
+      "verification_method": "평균순위캡션과인쇄mean비교",
+      "limit": "다섯인쇄mean순위평균으로재계산하거나원rank집계검증으로세지않음."
+    },
+    {
+      "claim_id": "H060-C21",
+      "claim": "no-curriculum ablation은같은TACTiS-2구조의joint NLL학습이며FLOPs그림축을구분한다.",
+      "source_location": "SRC-0062147:2/7/16–17쪽Figs1/4/6/7",
+      "verification_method": "x단위10^15/10^16·y축생략·5seeds/최대3일범위대조",
+      "limit": "원곡선복원·모든budget우위보장아님."
+    },
+    {
+      "claim_id": "H060-C22",
+      "claim": "Forecasting그림은특히잘맞는예시,보간그림은무작위선택이라고보고한다.",
+      "source_location": "SRC-0062147:18–20쪽A.4–A.5/Figs8–13",
+      "verification_method": "본문선택조건/모든패널시각대조",
+      "limit": "선택절차실제재현이나대표성검증아님."
+    },
+    {
+      "claim_id": "H060-C23",
+      "claim": "D.1은규칙실자료를불규칙/비동기로변형한두자료·단일backtest·5seeds실험이다.",
+      "source_location": "SRC-0062147:28쪽D.1/Tables11–12",
+      "verification_method": "delta1/2/3·freq1/1/2/1/4와8mean±쌍대조",
+      "limit": "자연발생결측/전체rolling/모든지표결과아님. ±정확집계미확인."
+    },
+    {
+      "claim_id": "H060-C24",
+      "claim": "학습P10012GB/CPU2/RAM32GB와평가시추가메모리사용을구분한다.",
+      "source_location": "SRC-0062147:25쪽C.2",
+      "verification_method": "학습batch선택/평가withoutbagging자원문장대조",
+      "limit": "전과정12GB가능·전체실측비용검증아님."
+    },
+    {
+      "claim_id": "H060-C25",
+      "claim": "512batches/50epochs/72h또는단계36h와HPO자료모델별6일×50병렬은서로다른조건이다.",
+      "source_location": "SRC-0062147:25–26쪽C.2–C.3",
+      "verification_method": "최상validation checkpoint/종료상한/병렬탐색구분",
+      "limit": "50총trial·7200GPUh실측값·seed목록확정아님."
+    },
+    {
+      "claim_id": "H060-C26",
+      "claim": "Tables7–9의58행290선택칸중Table7 e중복/s누락두칸은모호하다.",
+      "source_location": "SRC-0062147:26–28쪽Tables7–10",
+      "verification_method": "시각선택첨자와구조화전사/20LR대조",
+      "limit": "288명확선택/1모호/1미표기. 임의복원하지않음."
+    },
+    {
+      "claim_id": "H060-C27",
+      "claim": "고정공식코드16파일전체를읽고원논문실행판과동일성은미확인으로둔다.",
+      "source_location": "SRC-0062147:코드링크; EXT-H060:16파일SHA/줄범위",
+      "verification_method": "고정commit/Gitblob/SHA256·실제전체출력독해범위대조",
+      "limit": "전체repo/노트북/데이터/환경실행재현아님."
+    },
+    {
+      "claim_id": "H060-C28",
+      "claim": "공개DSF inverse는유한이분근사이고decoder순서는고정/bagging은series순서를바꾼다.",
+      "source_location": "SRC-0062147:§4; EXT-H060:marginal/flow/decoder/tactis",
+      "verification_method": "역변환한계/epsilon·logdet/arange/randperm경로정적대조",
+      "limit": "정확무한꼬리역변환·무작위decoder permutation항상생성주장없음."
+    },
+    {
+      "claim_id": "H060-C29",
+      "claim": "공개CLI .05+.9u샘플변환과data-normalization Jacobian생략을확인했다.",
+      "source_location": "SRC-0062147:6쪽sampling/16쪽NLL; EXT-H060:train137–138/decoder263/trainer549–550",
+      "verification_method": "범위설정→inverse 경로, trainer의 원척도 loss 환산 미구현 주석과 model loss/normalizer의 Jacobian 미포함을 구분하여 정적 대조",
+      "limit": "논문실제표본설정단정이나다른원척도NLL과직접비교금지."
+    },
+    {
+      "claim_id": "H060-C30",
+      "claim": "현재CLI는같은단계LR·19분위수·100표본·Energy생략기본값이며일반mask지원과구분한다.",
+      "source_location": "SRC-0062147:Tables8/10; EXT-H060:train/trainer/metrics/network/estimator",
+      "verification_method": "기본설정/실제호출·dropout0/정렬arange·batch공통mask대조",
+      "limit": "paper최적config및임의비동기·결측지원을기본CLI에확정하지않음."
+    },
+    {
+      "claim_id": "H060-C31",
+      "claim": "공개학습시간은training loop만합산하며전체wall-clock이아니다.",
+      "source_location": "SRC-0062147:25쪽C.2; EXT-H060:trainer315–354/475",
+      "verification_method": "timer시작/합산/validation순서·stage reset정적대조",
+      "limit": "전체실험·HPO비용이나논문집계동일성검증아님."
+    },
+    {
+      "claim_id": "H060-C32",
+      "claim": "공개trainer는batch탐색후batch_size와로드한진행카운터를다시설정하는경로가있다.",
+      "source_location": "SRC-0062147:학습조건; EXT-H060:trainer186–267",
+      "verification_method": "변수정의/대입순서·optimizer/weight load유지구분",
+      "limit": "실제OOM/재개실패를실행검증한것아님."
+    },
+    {
+      "claim_id": "H060-C33",
+      "claim": "공개solar pre-backtest는한주이며72×10분horizon에서14개로paper7개와다르다.",
+      "source_location": "SRC-0062147:25쪽C.2/Table6; EXT-H060:dataset30–44/93–104/생성함수",
+      "verification_method": "고정날짜차/주기/horizon의작은결정적산술",
+      "limit": "원데이터배열·논문실행커밋미확인. 모든분할누출주장아님."
+    },
+    {
+      "claim_id": "H060-C34",
+      "claim": "보간sampling시간배열은잘라낸history에서끝h를다시취해36/h12예로시각12..23이반복된다.",
+      "source_location": "SRC-0062147:보간범위; EXT-H060:tactis1017–1018/1301/network196–213",
+      "verification_method": "전체sample경로·positionencoding·직접작성list슬라이스대조",
+      "limit": "원PyTorch실행/논문표영향검증아님. 값순서복구와time배열을구분."
+    },
+    {
+      "claim_id": "H060-C35",
+      "claim": "공유copula의pretraining/multitask·distribution-shift논의는미래제안이다.",
+      "source_location": "SRC-0062147:9쪽§7; SRC-0022016:연결논리/다음설계",
+      "verification_method": "논문discussion과당시채택없음·새설계조건대조",
+      "limit": "이미수행된연구성과나현재실행지시로세지않음."
+    },
+    {
+      "claim_id": "H060-C36",
+      "claim": "7원본그룹14경로/재사용2/외부5를연결했고conditional normalization·65전체종합은남는다.",
+      "source_location": "SRC-0022015/SRC-0022016/SRC-0062147/SRC-0062148/SRC-0062149/SRC-0063862/SRC-0063863:명세",
+      "verification_method": "aliases/보호6·28쪽/15그림12표·코드16전체·실제범위대조",
+      "limit": "새사본/로컬전체본문/전체JSON가산0. 전체Goal완료아님."
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_scope": "같은 에이전트가 작성된135줄 팀기록/36주장/출처·검수문서를 읽고 논문2–4/9/17–22쪽 및 학습·지표·표 전사,26–27쪽 설정표 시각과 고정코드의 stage freeze,샘플범위,trainer resume/batch/timer/normalization,solar 날짜와생성함수,interpolation 전체sample/position 경로에 재대조했다. 직전읽은6–7/15–16/25–28쪽 및원64·65전체와도 연결했다. 인용위치§2는2쪽/Prop1은3쪽/Discussion은§7로바로잡았다. 정규화환산 미구현 주석과 Jacobian 미포함의 정적판독을 구분했다. 원실험 재현이나 독립검수자 검증은 아니다.",
+  "semantic_second_pass_at_utc": "2026-10-10T06:10:49.892881+00:00"
+}
