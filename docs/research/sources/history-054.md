@@ -14,14 +14,14 @@
 | SRC-0062806 | [render_log.json](../evidence/0059-optimal-lookback/../0059-alw/originals/SRC-0062806.json) | H053에서 전체 읽은 수집·개정·검토범위·렌더 JSON을 재사용; 문헌 열람과 취득 기록을 구별 |
 | SRC-0062783 | [optimal_lookback_2511_12791v1.html](https://arxiv.org/html/2511.12791v1) | 표시본문과전체MathML대조;v3 688줄본문, v1 전체canonicaldiff/수식split6묶음 비교;외부SVG는별도미보유이며해당PDF그림시각검토로내용확인 |
 | SRC-0062784 | [optimal_lookback_2511_12791v1.pdf](https://arxiv.org/pdf/2511.12791v1) | 13쪽 본문/부록/참고문헌/그림/수식;v1은v3와동일본문재사용+전체고유diff/시각검토,2/8쪽pixel동일재사용 |
-| SRC-0062785 | [optimal_lookback_2511_12791v1.txt](https://arxiv.org/pdf/2511.12791v1) | 원PAGE wrapper제외13쪽freshPDF본문과완전일치;독립연구내용재가산없음 |
+| SRC-0062785 | [v1 PDF — 원 TXT의 추출 대상](https://arxiv.org/pdf/2511.12791v1); 원 TXT `optimal_lookback_2511_12791v1.txt`는 명세에 SHA-256·크기·원 경로를 기록 | 원PAGE wrapper제외13쪽freshPDF본문과완전일치;독립연구내용재가산없음 |
 | SRC-0062786 | [optimal_lookback_2511_12791v3.html](https://arxiv.org/html/2511.12791v3) | 표시본문과전체MathML대조;v3 688줄본문, v1 전체canonicaldiff/수식split6묶음 비교;외부SVG는별도미보유이며해당PDF그림시각검토로내용확인 |
 | SRC-0062787 | [optimal_lookback_2511_12791v3.pdf](https://arxiv.org/pdf/2511.12791v3) | 13쪽 본문/부록/참고문헌/그림/수식;v1은v3와동일본문재사용+전체고유diff/시각검토,2/8쪽pixel동일재사용 |
-| SRC-0062788 | [optimal_lookback_2511_12791v3.txt](https://arxiv.org/pdf/2511.12791v3) | 원PAGE wrapper제외13쪽freshPDF본문과완전일치;독립연구내용재가산없음 |
+| SRC-0062788 | [v3 PDF — 원 TXT의 추출 대상](https://arxiv.org/pdf/2511.12791v3); 원 TXT `optimal_lookback_2511_12791v3.txt`는 명세에 SHA-256·크기·원 경로를 기록 | 원PAGE wrapper제외13쪽freshPDF본문과완전일치;독립연구내용재가산없음 |
 | SRC-0062789 | [optimal_lookback_history.html](https://arxiv.org/abs/2511.12791v3) | 과거arxiv메타HTML 표시본문전체독해,원시stylesheet/script은표현요소 |
-| SRC-0062803 | [optimal_lookback_2511_12791v3_p6.png](https://arxiv.org/pdf/2511.12791v3) | 원미리보기6/7/9쪽 각각시각독해;새120dpi렌더와별도원본 |
-| SRC-0062804 | [optimal_lookback_2511_12791v3_p7.png](https://arxiv.org/pdf/2511.12791v3) | 원미리보기6/7/9쪽 각각시각독해;새120dpi렌더와별도원본 |
-| SRC-0062805 | [optimal_lookback_2511_12791v3_p9.png](https://arxiv.org/pdf/2511.12791v3) | 원미리보기6/7/9쪽 각각시각독해;새120dpi렌더와별도원본 |
+| SRC-0062803 | [v3 PDF 6쪽 — 원 PNG의 내용 출처](https://arxiv.org/pdf/2511.12791v3#page=6); 원 PNG `optimal_lookback_2511_12791v3_p6.png`는 명세에 SHA-256·크기·원 경로만 보존 | 원미리보기6/7/9쪽 각각시각독해;새120dpi렌더와별도원본 |
+| SRC-0062804 | [v3 PDF 7쪽 — 원 PNG의 내용 출처](https://arxiv.org/pdf/2511.12791v3#page=7); 원 PNG `optimal_lookback_2511_12791v3_p7.png`는 명세에 SHA-256·크기·원 경로만 보존 | 원미리보기6/7/9쪽 각각시각독해;새120dpi렌더와별도원본 |
+| SRC-0062805 | [v3 PDF 9쪽 — 원 PNG의 내용 출처](https://arxiv.org/pdf/2511.12791v3#page=9); 원 PNG `optimal_lookback_2511_12791v3_p9.png`는 명세에 SHA-256·크기·원 경로만 보존 | 원미리보기6/7/9쪽 각각시각독해;새120dpi렌더와별도원본 |
 
 두 PDF의13쪽 전체 내용·부록·참고문헌·그림을 확인했다. v3 시각13쪽, v1 시각11쪽을 직접 읽고2·8쪽은 pixel동일성에 따라 재사용했다. v3 HTML 표시본문688줄·article MathML487개와 밖의H1개, v1의 전체 canonical 차이·480+1개를 대조했다. 원 TXT26쪽은 PAGE wrapper를 제외하고 새 추출과 같다. 원 PNG3개는 새 렌더와 구분해 각각 읽었다. 파생 TXT/PNG/수식 수를 새 독립 연구기록으로 가산하지 않는다.
 
