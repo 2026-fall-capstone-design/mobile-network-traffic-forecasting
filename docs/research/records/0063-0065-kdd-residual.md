@@ -119,3 +119,7 @@ A.2는 시간 순서를 섞은 잔차와 평균·분산을 맞춘 Gaussian noise
 [명세](../evidence/0063-0065-kdd-residual/manifest.json)는 8개 원본 그룹·16개 경로, 기존 정확 사본 2개와 외부 참조 6개를 연결한다. 63·65의 기존 전체 독해를 재사용하며 새 로컬 본문·전체 JSON·선택 필드 가산은 없다. 외부 논문 1편의 20쪽과 HTML 287단위·401수식, 원 PNG 2개를 별도 범위로 기록했다. TXT/HTML.text는 개행·wrapper 정규화 후 대응하며, HTML의 외부 그림 asset 바이트는 검증하지 않았다.
 
 65번의 다른 네 문헌(PLOS copula, GP-Copula, TACTiS-2, conditional normalization)과 전체 판단·후속 이력 통합은 남아 있다. 이번 KDD 검수나 개별 PR 병합을 전체 연구기록 정리 완료로 표시하지 않는다.
+
+## 후속 범위: PLOS copula 검수
+
+[H058 PLOS 기록](0064-0065-plos-copula.md)에서22쪽본문·증명·9그림과판본을추가검수했습니다. 위미완료문헌수는각작성당시범위이며현재는GP-Copula·TACTiS-2·conditional normalization의세문헌과65전체종합이남습니다. 기존검수JSON은당시snapshot으로보존합니다.

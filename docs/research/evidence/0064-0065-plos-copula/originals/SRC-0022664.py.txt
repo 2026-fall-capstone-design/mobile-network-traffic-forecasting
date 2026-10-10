@@ -1,0 +1,33 @@
+"""Archive primary methods for transform review; no model execution."""
+from pathlib import Path
+import concurrent.futures,hashlib,json,urllib.request
+from pypdf import PdfReader
+base=Path(__file__).resolve().parent
+out=base/'sources/conditional_transform_64'
+if out.exists():raise RuntimeError('Archive exists; do not rerun')
+out.mkdir(parents=True)
+items=[
+ ('Copula_clustering_PLOS2018.pdf','https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0206753&type=printable'),
+ ('Gaussian_copula_NeurIPS2019.pdf','https://papers.neurips.cc/paper_files/paper/2019/file/0b105cf1504c4e241fcc6d519ea962fb-Paper.pdf'),
+ ('TACTiS2_ICLR2024.pdf','https://openreview.net/pdf?id=xtOydkE1Ku'),
+ ('TACTiS2_abs.html','https://arxiv.org/abs/2310.01327'),
+]
+def save(pair):
+    name,url=pair;rec=dict(name=name,url=url,accessed_date='2026-09-26')
+    try:
+        limit=(20 if name.endswith('.pdf') else 5)*1024**2
+        req=urllib.request.Request(url,headers={'User-Agent':'TabICL-research-primary-source-review'})
+        with urllib.request.urlopen(req,timeout=35) as resp:
+            data=resp.read(limit+1);rec.update(status=resp.status,resolved_url=resp.url)
+        if len(data)>limit:raise RuntimeError('Size cap')
+        if name.endswith('.pdf') and not data.startswith(b'%PDF'):raise RuntimeError('Not PDF')
+        path=out/name;path.write_bytes(data)
+        rec.update(saved=True,bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            r=PdfReader(path);rec['pages']=len(r.pages)
+            path.with_suffix('.txt').write_text('\n\n'.join(f'--- PDF page {i+1} ---\n{p.extract_text()}' for i,p in enumerate(r.pages)),encoding='utf-8')
+    except Exception as e:rec.update(saved=False,error=f'{type(e).__name__}: {e}')
+    return rec
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:results=list(pool.map(save,items))
+(out/'manifest.json').write_text(json.dumps(results,ensure_ascii=False,indent=2),encoding='utf-8')
+for r in results:print(json.dumps(r,ensure_ascii=False),flush=True)

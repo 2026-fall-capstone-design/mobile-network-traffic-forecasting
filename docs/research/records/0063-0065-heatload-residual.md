@@ -128,3 +128,7 @@ ECAI와 Heatload의 해당 검수는 끝났지만, KDD residual·PLOS copula·GP
 ## 후속 범위: KDD 전체 검수
 
 [H057 KDD 기록](0063-0065-kdd-residual.md)에서20쪽본문·시각/18표314행3191인쇄값과판본을추가검수했습니다. 위 미완료문헌수는각작성당시범위이며현재는PLOS·GP-Copula·TACTiS-2·conditional normalization의네문헌과65전체종합이남습니다. 기존검수JSON은당시snapshot으로보존합니다.
+
+## 후속 범위: PLOS copula 검수
+
+[H058 PLOS 기록](0064-0065-plos-copula.md)에서22쪽본문·증명·9그림과판본을추가검수했습니다. 위미완료문헌수는각작성당시범위이며현재는GP-Copula·TACTiS-2·conditional normalization의세문헌과65전체종합이남습니다. 기존검수JSON은당시snapshot으로보존합니다.

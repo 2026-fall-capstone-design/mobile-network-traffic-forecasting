@@ -44,3 +44,5 @@ PDF 33쪽의 본문·참고문헌·보충자료를 읽었고 시각 19쪽은 1/3
 고정 12파일의 HTTP 200·크기·Git blob SHA-1을 확인했다. commit.tree.sha와 저장 tree.root.sha는 서로 다른 필드를 그대로 보존한다. 코드 AST 파싱은 했지만 import/실행하지 않았다. 다른 tree 항목의 목록을 읽은 것을 해당 코드·CSV 본문 검수로 세지 않는다.
 
 [H057 후속 범위](history-057.md)는KDD전체본문·표·수식·판본검수를추가합니다. 현재남은다른문헌은PLOS·GP-Copula·TACTiS-2·conditional normalization의네가지이며65전체종합은미완료입니다. 기존범위와해시는당시snapshot으로보존합니다.
+
+[H058 후속 범위](history-058.md)는PLOS copula의전체PDF·원파생물검수를추가합니다. 현재다른세문헌·65전체종합은남아있으며기존범위·해시는당시snapshot으로보존합니다.

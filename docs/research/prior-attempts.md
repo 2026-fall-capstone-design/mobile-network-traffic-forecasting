@@ -321,3 +321,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 별도 잔차 학습과 보정 강도 — 63·65 KDD
 
 검색어: residual pipeline, meta corrector, shrinkage, alpha, overlap averaging, recursive input, Huber, parallel inference, seed confidence. [KDD 검토](records/0063-0065-kdd-residual.md)는 prediction−actual 잔차를 별도 학습해 기준 예측에서 빼는 선행을 연결합니다. α 선택 분할·초기 잔차 부호·동일 target 지표·비교 모델 식별·두 단계 전체 비용이 미확인인 부분을 구분했습니다. 모델 치환을 반복하기 전에 새 질문과 실제 최종 학습기의 이득을 확인할 조건을 적으세요.
+
+## 경험 순위와 lag copula로 군집화 — 64·65 PLOS
+
+검색어: empirical CDF, rank, lag copula, serial dependence, Cramér–von Mises, Lance–Williams, Ward, silhouette, STMA, WA. [PLOS 검토](records/0064-0065-plos-copula.md)는 각시계열내lag의존을비교하는선행과정리의가정을연결합니다. 단순주변변환·전체쌍거리·계층병합을새방법으로반복하기전에,조건부변환이남길정보와최종RCTL성과를확인할차이를명시하세요.
