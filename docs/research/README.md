@@ -219,3 +219,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 ## 원80 조건부 평균 graph의 부정 결과
 
 [원80 진단](records/0088-conditional-graph-diagnostic.md)에서 Tab의 작은 직접 예측 오차가 새 소속으로 이어지지 않은 이유, PCC 대비 앞3일/뒤4일 반례와 비용을 확인할 수 있다. 저장16그룹을 대조했으며 실제 FedAvg 학습·최종 RCTL 성능 검증과 구분한다.
+
+[원80 검색 근거와 코드 캐시](records/0089-conditional-search-provenance.md)에서 조건부 평균·다중 모드·인과 평균 등 후보의 대상과 실제 확인 범위를 비교할 수 있다.

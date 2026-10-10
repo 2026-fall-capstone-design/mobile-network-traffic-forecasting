@@ -1,0 +1,119 @@
+{
+  "source_id": "SRC-0023414",
+  "source_sha256": "b9e460693a0bcb4a2929776abd522804330ec6e632ee335512109d87b1244d96",
+  "corresponding_source_id": "SRC-0022692",
+  "corresponding_source_sha256": "e9534fed0f0d3867cc2530bcb9ae1fd7aa8f8a1c7079c1abc048c8d00a595d32",
+  "checked_at_utc": "2026-10-10T22:35:30.509705+00:00",
+  "interpreter": "3.12.13",
+  "header": {
+    "magic_hex": "cb0d0d0a",
+    "flags": 0,
+    "timestamp": 1790370733,
+    "source_size_bytes": 12285,
+    "timestamp_and_size_match": true
+  },
+  "comparison": {
+    "code_objects": 12,
+    "objects": [
+      {
+        "name": "<module>",
+        "first_line": 1,
+        "bytecode_bytes": 8824,
+        "constants": 186
+      },
+      {
+        "name": "digest",
+        "first_line": 18,
+        "bytecode_bytes": 100,
+        "constants": 1
+      },
+      {
+        "name": "save",
+        "first_line": 19,
+        "bytecode_bytes": 102,
+        "constants": 6
+      },
+      {
+        "name": "<genexpr>",
+        "first_line": 23,
+        "bytecode_bytes": 78,
+        "constants": 3
+      },
+      {
+        "name": "check",
+        "first_line": 29,
+        "bytecode_bytes": 202,
+        "constants": 3
+      },
+      {
+        "name": "balanced",
+        "first_line": 33,
+        "bytecode_bytes": 618,
+        "constants": 6
+      },
+      {
+        "name": "balanced.<locals>.<genexpr>",
+        "first_line": 36,
+        "bytecode_bytes": 228,
+        "constants": 1
+      },
+      {
+        "name": "within",
+        "first_line": 46,
+        "bytecode_bytes": 318,
+        "constants": 3
+      },
+      {
+        "name": "statehash",
+        "first_line": 51,
+        "bytecode_bytes": 358,
+        "constants": 1
+      },
+      {
+        "name": "<genexpr>",
+        "first_line": 100,
+        "bytecode_bytes": 58,
+        "constants": 1
+      },
+      {
+        "name": "<genexpr>",
+        "first_line": 101,
+        "bytecode_bytes": 60,
+        "constants": 1
+      },
+      {
+        "name": "<genexpr>",
+        "first_line": 126,
+        "bytecode_bytes": 76,
+        "constants": 1
+      }
+    ],
+    "compared_fields": [
+      "co_argcount",
+      "co_posonlyargcount",
+      "co_kwonlyargcount",
+      "co_nlocals",
+      "co_stacksize",
+      "co_flags",
+      "co_code",
+      "co_names",
+      "co_varnames",
+      "co_name",
+      "co_qualname",
+      "co_firstlineno",
+      "co_linetable",
+      "co_exceptiontable",
+      "co_freevars",
+      "co_cellvars"
+    ],
+    "constants_recursively_compared": true,
+    "filename_used_only_to_compile": true,
+    "mismatches": [],
+    "structurally_equal": true
+  },
+  "source_executed": false,
+  "source_imported": false,
+  "new_model_runs": 0,
+  "new_fulltext_credit": false,
+  "scope": "CPython3.12 source compile와cached code의구조대조만. code를exec/import하지않음. co_filename은사용자 로컬경로라 출력하지않음. runtime/실험수치 재현 증거가아니다."
+}
