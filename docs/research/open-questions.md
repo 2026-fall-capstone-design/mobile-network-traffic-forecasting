@@ -108,3 +108,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 ## 원79 FMCL 검수 후 남은 범위
 
 [H083](verification/history-083.md)에서 FMCL5그룹을 검수했다. 실제 코드의 빈 거리집합·K=1·fallback 처리, Auto-K seed별 출력, validation metric/loss 선택 기준, 원시 결과·환경·초기 및 전체 비용은 미확인이다. 원79 나머지12개 외부그룹·원80결과·이후 기록과 전체 통합·장기 팀 접근은 계속 검수한다. 표의 편차·BUSI AUC 예외는 재검토 질문이며 실행 실패로 바꾸지 않는다.
+
+## EMD-CFL 논문 검수 후의 구현·이론 질문
+
+[H084](verification/history-084.md)에서 전체 HTML/TXT대응·보충PDF24쪽을 확인했다. loss/gradient 조건·M/κ·인덱스 표기, ResNet18 dimension768/512, ±정의와 실제seed·비용 측정조건은 구분해 남겼다. 원79 EMD코드7·Toso2·검색1은 후속 검수하며 논문상의 확인 항목을 코드의 확정 실패로 바꾸지 않는다.

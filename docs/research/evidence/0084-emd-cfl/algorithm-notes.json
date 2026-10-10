@@ -1,0 +1,45 @@
+{
+  "source_id": "SRC-0062491",
+  "source_sha256": "1a027daee6ccaad801b263d7cac1db73adcfa54725d30b4bb29f5b7a628acac9",
+  "locator": "§2–4/Algorithm1/AppendixA/D/E",
+  "training_order": [
+    "local model update",
+    "pairwise encoder exchange and random projection",
+    "EMD minus own train-validation reference",
+    "bidirectional strict epsilon threshold",
+    "identical neighborhoods mapped to a model index",
+    "continued cluster model training"
+  ],
+  "defaults": {
+    "epsilon": 0.025,
+    "retained_dimension_fraction": 0.9,
+    "sample_cap": 512,
+    "sample_fraction": 0.1,
+    "global_epochs": 10,
+    "local_epochs": 10,
+    "sinkhorn_regularization": 0.1
+  },
+  "costs": {
+    "clustering_time": "O(C^2 N^3 log N)",
+    "encoder_communication": "O(C^2 |omega|)",
+    "wall_time_comparator": "Oracle with known clusters, not measured global FedAvg"
+  },
+  "risk_assumptions": [
+    "binary classification",
+    "common input labelling function",
+    "L-Lipschitz heads on embedding space",
+    "joint ideal error lambda remains in bound"
+  ],
+  "unresolved": [
+    "Theorem2.4 loss-Lipschitz versus parameter-gradient regularity",
+    "update expression omits gradient; Cor2.5/A.3 prints M/kappa",
+    "Eq1/Eq2 indices and epsilon_JL/lambda_JL notation",
+    "Algorithm1 unbound cprime loop and reverse EMD arguments",
+    "neighborhood overlap versus disjoint partition",
+    "ResNet18 dimension768 in main text versus512 in Table5",
+    "definition of table ± and exact seed IDs",
+    "code sampling/projection/cost metric and data split correspondence"
+  ],
+  "limit": "인쇄 논문의 정적 해석. 미확인 조건을 실행 코드의 확정 오류로 분류하지 않으며 새로운 학습을 하지 않음.",
+  "semantic_second_pass_complete": true
+}
