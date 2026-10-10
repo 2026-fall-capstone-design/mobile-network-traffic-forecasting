@@ -1,0 +1,4081 @@
+{
+  "batch_id": "history-076",
+  "status": "source_checked",
+  "source_id": "SRC-0063879",
+  "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+  "checked_at_utc": "2026-10-10T17:28:48.933235+00:00",
+  "summary": {
+    "datasets": 27,
+    "data_rows": 2253,
+    "method_row_counts": {
+      "BII-SPEX-EBM": 245,
+      "FBII-SPEX-EBM": 254,
+      "FOURIER-SPEX-EBM": 200,
+      "FSII-SPEX-EBM": 257,
+      "MOBIUS-SPEX-EBM": 255,
+      "SII-SPEX-EBM": 246,
+      "STII-SPEX-EBM": 256,
+      "Baseline-EBM": 270,
+      "RuleFit-Support-EBM": 270
+    },
+    "missing_grid_rows": 177,
+    "budget_four_rows": 238,
+    "duplicate_term_rows": 12,
+    "finite_numeric_cells": 11265,
+    "rmse_sqrt_checks": 2253,
+    "same_order_metric_conflicts": 0,
+    "same_order_same_metric_groups": 287,
+    "extra_rows_beyond_one_per_ordered_list": 700,
+    "same_multiset_different_order_and_metrics_groups": 207,
+    "same_multiset_different_order_same_metrics_groups": 1,
+    "feature_count_at_least_10": [
+      "229_pwLinear",
+      "527_analcatdata_election2000",
+      "542_pollution",
+      "560_bodyfat",
+      "591_fri_c1_100_10",
+      "602_fri_c3_250_10",
+      "615_fri_c4_250_10",
+      "621_fri_c0_100_10",
+      "634_fri_c2_100_10",
+      "635_fri_c0_250_10",
+      "657_fri_c2_250_10",
+      "695_chatfield_4"
+    ],
+    "time_min": {
+      "dataset": "229_pwLinear",
+      "csv_line": 36,
+      "method": "SII-SPEX-EBM",
+      "nominal_terms": 1,
+      "seconds": 0.190408956259489,
+      "contains_triple": false
+    },
+    "time_max": {
+      "dataset": "635_fri_c0_250_10",
+      "csv_line": 69,
+      "method": "STII-SPEX-EBM",
+      "nominal_terms": 10,
+      "seconds": 7930.269992701709,
+      "contains_triple": true
+    },
+    "prefix_preserving_adjacent_comparisons": {
+      "both_improve": 715,
+      "both_worsen": 798,
+      "opposite_directions": 308,
+      "tie_in_at_least_one_metric": 12
+    },
+    "fbii_four_vs_baselines": {
+      "Baseline-EBM": {
+        "MAE": {
+          "higher": 15,
+          "lower": 12
+        },
+        "MSE": {
+          "lower": 12,
+          "higher": 15
+        }
+      },
+      "RuleFit-Support-EBM": {
+        "MAE": {
+          "higher": 11,
+          "lower": 16
+        },
+        "MSE": {
+          "lower": 14,
+          "higher": 13
+        }
+      }
+    },
+    "model_table_bridge_ordered_term_matches": 27,
+    "model_table_bridge_exact_metric_matches": {
+      "MSE": 3,
+      "RMSE": 6,
+      "MAE": 3,
+      "R2": 6,
+      "Train_Time_s": 0
+    }
+  },
+  "datasets": [
+    {
+      "dataset": "210_cloud",
+      "file_index": 1,
+      "rows": 80,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 5,
+      "rows_containing_triple": 32,
+      "repeated_terms": [
+        {
+          "csv_line": 73,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 6,
+          "unique": 5
+        },
+        {
+          "csv_line": 75,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 7,
+          "unique": 5
+        },
+        {
+          "csv_line": 77,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 8,
+          "unique": 5
+        },
+        {
+          "csv_line": 79,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 9,
+          "unique": 5
+        },
+        {
+          "csv_line": 81,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 10,
+          "unique": 5
+        }
+      ],
+      "same_order_same_metric_groups": 8,
+      "rows_in_same_order_groups": 40,
+      "extra_rows_beyond_one_per_ordered_list": 32,
+      "same_multiset_different_order_and_metrics_groups": 6,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_improve": 23,
+        "both_worsen": 22,
+        "opposite_directions": 14,
+        "tie_in_at_least_one_metric": 5
+      }
+    },
+    {
+      "dataset": "229_pwLinear",
+      "file_index": 2,
+      "rows": 69,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 10,
+      "rows_containing_triple": 22,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 6,
+      "rows_in_same_order_groups": 29,
+      "extra_rows_beyond_one_per_ordered_list": 23,
+      "same_multiset_different_order_and_metrics_groups": 6,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 17,
+        "opposite_directions": 11,
+        "both_improve": 27
+      }
+    },
+    {
+      "dataset": "230_machine_cpu",
+      "file_index": 3,
+      "rows": 89,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 6,
+      "rows_containing_triple": 39,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 8,
+      "rows_in_same_order_groups": 22,
+      "extra_rows_beyond_one_per_ordered_list": 14,
+      "same_multiset_different_order_and_metrics_groups": 13,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_improve": 37,
+        "opposite_directions": 20,
+        "both_worsen": 14
+      }
+    },
+    {
+      "dataset": "527_analcatdata_election2000",
+      "file_index": 4,
+      "rows": 78,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [
+          10
+        ],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [
+          9,
+          10
+        ],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 14,
+      "rows_containing_triple": 60,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 11,
+      "rows_in_same_order_groups": 33,
+      "extra_rows_beyond_one_per_ordered_list": 22,
+      "same_multiset_different_order_and_metrics_groups": 10,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 26,
+        "both_improve": 22,
+        "opposite_directions": 13
+      }
+    },
+    {
+      "dataset": "542_pollution",
+      "file_index": 5,
+      "rows": 44,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "FOURIER-SPEX-EBM": [],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 15,
+      "rows_containing_triple": 23,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 8,
+      "rows_in_same_order_groups": 23,
+      "extra_rows_beyond_one_per_ordered_list": 15,
+      "same_multiset_different_order_and_metrics_groups": 3,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_improve": 16,
+        "both_worsen": 9,
+        "opposite_directions": 5
+      }
+    },
+    {
+      "dataset": "560_bodyfat",
+      "file_index": 6,
+      "rows": 90,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 14,
+      "rows_containing_triple": 14,
+      "repeated_terms": [
+        {
+          "csv_line": 85,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 7,
+          "unique": 6
+        },
+        {
+          "csv_line": 87,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 8,
+          "unique": 6
+        },
+        {
+          "csv_line": 89,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 9,
+          "unique": 6
+        },
+        {
+          "csv_line": 91,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 10,
+          "unique": 6
+        }
+      ],
+      "same_order_same_metric_groups": 14,
+      "rows_in_same_order_groups": 39,
+      "extra_rows_beyond_one_per_ordered_list": 25,
+      "same_multiset_different_order_and_metrics_groups": 12,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_improve": 38,
+        "both_worsen": 27,
+        "opposite_directions": 5,
+        "tie_in_at_least_one_metric": 4
+      }
+    },
+    {
+      "dataset": "561_cpu",
+      "file_index": 7,
+      "rows": 85,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 7,
+      "rows_containing_triple": 26,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 15,
+      "rows_in_same_order_groups": 46,
+      "extra_rows_beyond_one_per_ordered_list": 31,
+      "same_multiset_different_order_and_metrics_groups": 9,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_improve": 45,
+        "opposite_directions": 16,
+        "both_worsen": 8
+      }
+    },
+    {
+      "dataset": "579_fri_c0_250_5",
+      "file_index": 8,
+      "rows": 90,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 5,
+      "rows_containing_triple": 33,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 12,
+      "rows_in_same_order_groups": 36,
+      "extra_rows_beyond_one_per_ordered_list": 24,
+      "same_multiset_different_order_and_metrics_groups": 13,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 46,
+        "opposite_directions": 15,
+        "both_improve": 14
+      }
+    },
+    {
+      "dataset": "591_fri_c1_100_10",
+      "file_index": 9,
+      "rows": 89,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 10,
+      "rows_containing_triple": 67,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 10,
+      "rows_in_same_order_groups": 31,
+      "extra_rows_beyond_one_per_ordered_list": 21,
+      "same_multiset_different_order_and_metrics_groups": 7,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_improve": 28,
+        "both_worsen": 33,
+        "opposite_directions": 13
+      }
+    },
+    {
+      "dataset": "594_fri_c2_100_5",
+      "file_index": 10,
+      "rows": 87,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 5,
+      "rows_containing_triple": 55,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 12,
+      "rows_in_same_order_groups": 47,
+      "extra_rows_beyond_one_per_ordered_list": 35,
+      "same_multiset_different_order_and_metrics_groups": 6,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_improve": 23,
+        "both_worsen": 38,
+        "opposite_directions": 13
+      }
+    },
+    {
+      "dataset": "596_fri_c2_250_5",
+      "file_index": 11,
+      "rows": 86,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 5,
+      "rows_containing_triple": 59,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 18,
+      "rows_in_same_order_groups": 52,
+      "extra_rows_beyond_one_per_ordered_list": 34,
+      "same_multiset_different_order_and_metrics_groups": 10,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 36,
+        "both_improve": 21,
+        "opposite_directions": 13
+      }
+    },
+    {
+      "dataset": "601_fri_c1_250_5",
+      "file_index": 12,
+      "rows": 87,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 5,
+      "rows_containing_triple": 56,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 14,
+      "rows_in_same_order_groups": 46,
+      "extra_rows_beyond_one_per_ordered_list": 32,
+      "same_multiset_different_order_and_metrics_groups": 6,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "opposite_directions": 15,
+        "both_improve": 25,
+        "both_worsen": 34
+      }
+    },
+    {
+      "dataset": "602_fri_c3_250_10",
+      "file_index": 13,
+      "rows": 88,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 10,
+      "rows_containing_triple": 44,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 14,
+      "rows_in_same_order_groups": 58,
+      "extra_rows_beyond_one_per_ordered_list": 44,
+      "same_multiset_different_order_and_metrics_groups": 2,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 48,
+        "opposite_directions": 6,
+        "both_improve": 19
+      }
+    },
+    {
+      "dataset": "611_fri_c3_100_5",
+      "file_index": 14,
+      "rows": 90,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 5,
+      "rows_containing_triple": 69,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 16,
+      "rows_in_same_order_groups": 48,
+      "extra_rows_beyond_one_per_ordered_list": 32,
+      "same_multiset_different_order_and_metrics_groups": 4,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_improve": 39,
+        "both_worsen": 27,
+        "opposite_directions": 10
+      }
+    },
+    {
+      "dataset": "613_fri_c3_250_5",
+      "file_index": 15,
+      "rows": 89,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 5,
+      "rows_containing_triple": 67,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 11,
+      "rows_in_same_order_groups": 38,
+      "extra_rows_beyond_one_per_ordered_list": 27,
+      "same_multiset_different_order_and_metrics_groups": 4,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 37,
+        "both_improve": 35,
+        "opposite_directions": 1
+      }
+    },
+    {
+      "dataset": "615_fri_c4_250_10",
+      "file_index": 16,
+      "rows": 87,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 10,
+      "rows_containing_triple": 64,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 11,
+      "rows_in_same_order_groups": 43,
+      "extra_rows_beyond_one_per_ordered_list": 32,
+      "same_multiset_different_order_and_metrics_groups": 9,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 42,
+        "both_improve": 24,
+        "opposite_directions": 6
+      }
+    },
+    {
+      "dataset": "621_fri_c0_100_10",
+      "file_index": 17,
+      "rows": 76,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          10
+        ],
+        "STII-SPEX-EBM": [
+          10
+        ],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 10,
+      "rows_containing_triple": 19,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 7,
+      "rows_in_same_order_groups": 30,
+      "extra_rows_beyond_one_per_ordered_list": 23,
+      "same_multiset_different_order_and_metrics_groups": 9,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 35,
+        "opposite_directions": 15,
+        "both_improve": 11
+      }
+    },
+    {
+      "dataset": "624_fri_c0_100_5",
+      "file_index": 18,
+      "rows": 90,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 5,
+      "rows_containing_triple": 20,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 6,
+      "rows_in_same_order_groups": 34,
+      "extra_rows_beyond_one_per_ordered_list": 28,
+      "same_multiset_different_order_and_metrics_groups": 9,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 41,
+        "opposite_directions": 13,
+        "both_improve": 20
+      }
+    },
+    {
+      "dataset": "634_fri_c2_100_10",
+      "file_index": 19,
+      "rows": 85,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 10,
+      "rows_containing_triple": 64,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 8,
+      "rows_in_same_order_groups": 25,
+      "extra_rows_beyond_one_per_ordered_list": 17,
+      "same_multiset_different_order_and_metrics_groups": 15,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 27,
+        "opposite_directions": 13,
+        "both_improve": 29
+      }
+    },
+    {
+      "dataset": "635_fri_c0_250_10",
+      "file_index": 20,
+      "rows": 88,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 10,
+      "rows_containing_triple": 49,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 11,
+      "rows_in_same_order_groups": 46,
+      "extra_rows_beyond_one_per_ordered_list": 35,
+      "same_multiset_different_order_and_metrics_groups": 7,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 33,
+        "both_improve": 29,
+        "opposite_directions": 10
+      }
+    },
+    {
+      "dataset": "656_fri_c1_100_5",
+      "file_index": 21,
+      "rows": 90,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 5,
+      "rows_containing_triple": 59,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 16,
+      "rows_in_same_order_groups": 59,
+      "extra_rows_beyond_one_per_ordered_list": 43,
+      "same_multiset_different_order_and_metrics_groups": 8,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 43,
+        "both_improve": 28,
+        "opposite_directions": 4
+      }
+    },
+    {
+      "dataset": "657_fri_c2_250_10",
+      "file_index": 22,
+      "rows": 89,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 10,
+      "rows_containing_triple": 60,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 16,
+      "rows_in_same_order_groups": 49,
+      "extra_rows_beyond_one_per_ordered_list": 33,
+      "same_multiset_different_order_and_metrics_groups": 8,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 33,
+        "both_improve": 35,
+        "opposite_directions": 5
+      }
+    },
+    {
+      "dataset": "659_sleuth_ex1714",
+      "file_index": 23,
+      "rows": 88,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 7,
+      "rows_containing_triple": 57,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 9,
+      "rows_in_same_order_groups": 23,
+      "extra_rows_beyond_one_per_ordered_list": 14,
+      "same_multiset_different_order_and_metrics_groups": 10,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "opposite_directions": 21,
+        "both_worsen": 23,
+        "both_improve": 28
+      }
+    },
+    {
+      "dataset": "665_sleuth_case2002",
+      "file_index": 24,
+      "rows": 90,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 6,
+      "rows_containing_triple": 56,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 12,
+      "rows_in_same_order_groups": 27,
+      "extra_rows_beyond_one_per_ordered_list": 15,
+      "same_multiset_different_order_and_metrics_groups": 11,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_worsen": 34,
+        "both_improve": 26,
+        "opposite_directions": 12
+      }
+    },
+    {
+      "dataset": "687_sleuth_ex1605",
+      "file_index": 25,
+      "rows": 90,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 5,
+      "rows_containing_triple": 64,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 4,
+      "rows_in_same_order_groups": 13,
+      "extra_rows_beyond_one_per_ordered_list": 9,
+      "same_multiset_different_order_and_metrics_groups": 6,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_improve": 30,
+        "both_worsen": 34,
+        "opposite_directions": 10
+      }
+    },
+    {
+      "dataset": "695_chatfield_4",
+      "file_index": 26,
+      "rows": 60,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 12,
+      "rows_containing_triple": 24,
+      "repeated_terms": [],
+      "same_order_same_metric_groups": 6,
+      "rows_in_same_order_groups": 26,
+      "extra_rows_beyond_one_per_ordered_list": 20,
+      "same_multiset_different_order_and_metrics_groups": 4,
+      "same_multiset_different_order_same_metrics_groups": 0,
+      "prefix_preserving_adjacent_comparisons": {
+        "opposite_directions": 15,
+        "both_improve": 16,
+        "both_worsen": 12
+      }
+    },
+    {
+      "dataset": "706_sleuth_case1202",
+      "file_index": 27,
+      "rows": 79,
+      "available_budgets": {
+        "BII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "FBII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FOURIER-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FSII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "MOBIUS-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "SII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "STII-SPEX-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "Baseline-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "RuleFit-Support-EBM": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "missing_budgets_1_to_10": {
+        "BII-SPEX-EBM": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "FBII-SPEX-EBM": [],
+        "FOURIER-SPEX-EBM": [],
+        "FSII-SPEX-EBM": [],
+        "MOBIUS-SPEX-EBM": [],
+        "SII-SPEX-EBM": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "STII-SPEX-EBM": [],
+        "Baseline-EBM": [],
+        "RuleFit-Support-EBM": []
+      },
+      "input_feature_count_lower_bound": 6,
+      "rows_containing_triple": 38,
+      "repeated_terms": [
+        {
+          "csv_line": 76,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 8,
+          "unique": 7
+        },
+        {
+          "csv_line": 78,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 9,
+          "unique": 7
+        },
+        {
+          "csv_line": 80,
+          "method": "RuleFit-Support-EBM",
+          "nominal": 10,
+          "unique": 7
+        }
+      ],
+      "same_order_same_metric_groups": 4,
+      "rows_in_same_order_groups": 24,
+      "extra_rows_beyond_one_per_ordered_list": 20,
+      "same_multiset_different_order_and_metrics_groups": 0,
+      "same_multiset_different_order_same_metrics_groups": 1,
+      "prefix_preserving_adjacent_comparisons": {
+        "both_improve": 27,
+        "both_worsen": 19,
+        "opposite_directions": 14,
+        "tie_in_at_least_one_metric": 3
+      }
+    }
+  ],
+  "method": "저장된 CSV의 필드·항 목록과 표준 라이브러리 산술만 사용했다. 수치 우열과 동률은 저장 실수값의 엄격 비교이며 RMSE 제곱근 검수만 rel_tol=1e-12, abs_tol=1e-9를 적용했다.",
+  "limitations": [
+    "저장 결과의 산술 대조이며 새로운 학습·추론이나 독립 재현이 아니다.",
+    "동일 항 목록과 지표는 독립 실행의 증거가 아니다. 시간은 중복 판단에서 제외했다.",
+    "원 표 생성기의 정확한 판본·분할·seed·하드웨어·총 질의 비용은 이 표와 후속 소비 코드만으로 확정하지 않는다.",
+    "0기반 열 번호로 읽은 선택 인덱스는 입력 좌표 수의 하한이다. 방법 간 승패 개수는 통계적 유의성이나 논문 전체 평균 순위가 아니다.",
+    "순서 비교는 중복 항의 개수를 유지한 multiset으로 묶었다. 항의 순서가 수치 차이의 유일한 원인이라는 뜻은 아니다."
+  ],
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "semantic_second_pass_complete": true,
+  "verified_at_utc": "2026-10-10T17:43:50.737504+00:00",
+  "postdraft_arithmetic_check": {
+    "batch_id": "history-076",
+    "status": "passed",
+    "checked_at_utc": "2026-10-10T17:36:18.626147+00:00",
+    "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+    "source_rows_checked": 2253,
+    "finite_numeric_cells": 11265,
+    "rmse_checks": 2253,
+    "published_original_field_strings_checked": 2500,
+    "budget_four_rows": 238,
+    "repeated_term_rows": 12,
+    "model_bridge_pairs": 27,
+    "same_order_groups": 287,
+    "same_order_extra_rows": 700,
+    "multiset_order_groups": {
+      "different": 207,
+      "same": 1
+    },
+    "adjacent_comparisons": {
+      "both_improve": 715,
+      "both_worsen": 798,
+      "opposite_directions": 308,
+      "tie_in_at_least_one_metric": 12
+    },
+    "paired_comparisons": {
+      "Baseline-EBM": {
+        "MAE": {
+          "higher": 15,
+          "lower": 12
+        },
+        "MSE": {
+          "lower": 12,
+          "higher": 15
+        }
+      },
+      "RuleFit-Support-EBM": {
+        "MAE": {
+          "higher": 11,
+          "lower": 16
+        },
+        "MSE": {
+          "lower": 14,
+          "higher": 13
+        }
+      }
+    },
+    "bridge_exact_matches": {
+      "MSE": 3,
+      "RMSE": 6,
+      "MAE": 3,
+      "R2": 6,
+      "Train_Time_s": 0
+    },
+    "record_decimal_strings_found_in_source": 28,
+    "method": "초안 생성기를 import하지 않고 원 JSON을 다시 파싱했다. 파생 CSV의 모든 원 필드 문자열을 원 행과 대조하고 Decimal로 비교 방향·항 목록 집계를 별도 계산했다. 연결표의 Exactly_Equal은 명시된 float 규칙으로 대조했다.",
+    "semantic_second_pass_complete": false,
+    "limitation": "자동 수치 대조는 주장 의미·원인·실행 범위의 검토를 대신하지 않는다.",
+    "original_scripts_executed": false,
+    "new_model_runs": 0
+  },
+  "postdraft_provenance_check": {
+    "batch_id": "history-076",
+    "status": "passed",
+    "checked_at_utc": "2026-10-10T17:42:06.072878+00:00",
+    "source_sha256": "ae7124a690fdcae8b69d30ab41cbd811a44c34b549531d728933a9f2964837c4",
+    "source_and_alias_bytes_match": 2,
+    "protected_controls_unchanged": 6,
+    "manifest_csvs_checked": 27,
+    "metadata_urls_checked": 264,
+    "all_dataset_aggregate_fields_checked": 27,
+    "rounded_numeric_cells_checked": 162,
+    "prefix_pair_time_decrease_example": {
+      "dataset": "210_cloud",
+      "patch_index": 1,
+      "method": "BII-SPEX-EBM",
+      "csv_lines": [
+        2,
+        3
+      ],
+      "times": [
+        "4.98837411403656",
+        "4.883702784776688"
+      ]
+    },
+    "scope": "원 JSON에서 출처·해시·파일별 집계·반올림 표를 따로 검산했다. 초안 생성기를 import하지 않았다. 의미 검수는 별도 기록한다.",
+    "new_model_runs": 0,
+    "original_scripts_executed": false
+  },
+  "feature_bound_interpretation": "항의 정수 인덱스를0기반 입력 열 번호로 읽은 최대값+1이다. 선택 가능한 좌표 수의 하한이며 전처리 전 원자료 차원을 확정하지 않는다."
+}

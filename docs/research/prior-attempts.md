@@ -402,3 +402,5 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 [76의 문헌·구현 대조](records/0076-response-transfer-audit.md)에서 입력 미분, 파라미터 gradient, 시간 변화, 마스킹 예측 차이를 먼저 구분한다. Sobolev·Jacobian의 반응 loss와 TabDistill의 변수 조합 전달은 선행 사례이며, teacher의 좋은 점 예측만으로 미분 정확도나 별도 clustering 필요성이 보장되지 않는다. 같은 정보를 받는 global 대안, 실제로 가능한 입력 변화, teacher 버전과 질의 비용을 명시해야 한다.
 
 [저장 결과](evidence/0076-response-transfer/README.md)는 PMLB 27개 task의 결과·순위·요약과 PyGAM 1개 실패를 제공한다. 논문의 평균 순위를 원단위 오차로 해석하거나 코드 기본 v3를 버전 없는 과거 결과에 소급하지 않는다.
+
+[상호작용 목록·예산별 결과](records/0076-tabdistill-interaction-audit.md)는 SPEX의 FBII/BII/FOURIER/FSII/MOBIUS/SII/STII와 Baseline·RuleFit을 찾는 관문이다. 4항 FBII는 Baseline 대비 MAE가 작은 과제 12개·큰 과제 15개이며, RuleFit 대비는 16개·11개다. MAE와 MSE가 반대로 움직인 사례와 같은 항이 반복되는 12행도 함께 확인한다. 새 비교는 원 순서·고유 항 수·실제 행 존재 여부를 보존하고, 생성 코드·분할·판본·시간 범위의 공백을 채우는 조건으로 설계한다.
