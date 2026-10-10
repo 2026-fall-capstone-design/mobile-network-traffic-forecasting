@@ -1,0 +1,117 @@
+{
+  "repository": "litian96/fair_flearn",
+  "commit": "f09797113147b5ae66eb0348e93f575d5d63baed",
+  "files": [
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/litian96/fair_flearn/f09797113147b5ae66eb0348e93f575d5d63baed/README.md",
+      "status": 200,
+      "bytes": 6127,
+      "sha256": "d757c93401bf109d7a00e3891b17e7ab9626fb20ce800eb20cfd1fbbe866c548",
+      "lines": 151,
+      "at_utc": "2026-10-10T09:18:15.865624+00:00",
+      "read_scope": "전체 텍스트 정적 독해; import/실행 없음"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/litian96/fair_flearn/f09797113147b5ae66eb0348e93f575d5d63baed/LICENSE",
+      "status": 200,
+      "bytes": 1064,
+      "sha256": "dcbbb5e6c23ad4276694fd04645d887a1d320e809e11b42044a82ed4f639256d",
+      "lines": 21,
+      "at_utc": "2026-10-10T09:18:15.865624+00:00",
+      "read_scope": "전체 텍스트 정적 독해; import/실행 없음"
+    },
+    {
+      "path": "requirements.txt",
+      "url": "https://raw.githubusercontent.com/litian96/fair_flearn/f09797113147b5ae66eb0348e93f575d5d63baed/requirements.txt",
+      "status": 200,
+      "bytes": 56,
+      "sha256": "c0656fc175b54f2c615ad3f1403ec16f194d92eba7d5de36e1ee2e84e11f5f00",
+      "lines": 6,
+      "at_utc": "2026-10-10T09:18:15.877333+00:00",
+      "read_scope": "전체 텍스트 정적 독해; import/실행 없음"
+    },
+    {
+      "path": "main.py",
+      "url": "https://raw.githubusercontent.com/litian96/fair_flearn/f09797113147b5ae66eb0348e93f575d5d63baed/main.py",
+      "status": 200,
+      "bytes": 6496,
+      "sha256": "f71d3dd57cb70cdff5f515518ccbab0e5c89beabded1a67bb16eddb0c1639490",
+      "lines": 170,
+      "at_utc": "2026-10-10T09:18:15.865624+00:00",
+      "read_scope": "전체 텍스트 정적 독해; import/실행 없음"
+    },
+    {
+      "path": "flearn/trainers/qffedavg.py",
+      "url": "https://raw.githubusercontent.com/litian96/fair_flearn/f09797113147b5ae66eb0348e93f575d5d63baed/flearn/trainers/qffedavg.py",
+      "status": 200,
+      "bytes": 3584,
+      "sha256": "39597093d1d772958acd6661cd682860e593c5e9efb26ab656e188b6d80a62e3",
+      "lines": 70,
+      "at_utc": "2026-10-10T09:18:16.174947+00:00",
+      "read_scope": "전체 텍스트 정적 독해; import/실행 없음"
+    },
+    {
+      "path": "flearn/trainers/fedbase.py",
+      "url": "https://raw.githubusercontent.com/litian96/fair_flearn/f09797113147b5ae66eb0348e93f575d5d63baed/flearn/trainers/fedbase.py",
+      "status": 200,
+      "bytes": 7481,
+      "sha256": "4c6ca4cdbcb8cf886930c62f9e13b8b9905f68beccf59fce71ee37cc0d07b34f",
+      "lines": 215,
+      "at_utc": "2026-10-10T09:18:16.188093+00:00",
+      "read_scope": "전체 텍스트 정적 독해; import/실행 없음"
+    },
+    {
+      "path": "flearn/models/client.py",
+      "url": "https://raw.githubusercontent.com/litian96/fair_flearn/f09797113147b5ae66eb0348e93f575d5d63baed/flearn/models/client.py",
+      "status": 200,
+      "bytes": 3970,
+      "sha256": "e3f77242f430f80578d97f8c8fe1c565b0a69efb786eea8e7c011dea33e5039f",
+      "lines": 112,
+      "at_utc": "2026-10-10T09:18:16.191945+00:00",
+      "read_scope": "전체 텍스트 정적 독해; import/실행 없음"
+    },
+    {
+      "path": "flearn/utils/tf_utils.py",
+      "url": "https://raw.githubusercontent.com/litian96/fair_flearn/f09797113147b5ae66eb0348e93f575d5d63baed/flearn/utils/tf_utils.py",
+      "status": 200,
+      "bytes": 3705,
+      "sha256": "ea3439a20757b682d7d64475c4dc31d747315f8791ef1e026952ae28da6eaa70",
+      "lines": 145,
+      "at_utc": "2026-10-10T09:18:16.195404+00:00",
+      "read_scope": "전체 텍스트 정적 독해; import/실행 없음"
+    }
+  ],
+  "role": "Li et al. ICLR2020 q-FFL 원알고리즘 공식 저장소; Panda et al. ICC2025 통신 실험 구현으로 확인되지 않음",
+  "whole_files_read": 8,
+  "whole_code_files_read": 5,
+  "total_lines_read": 890,
+  "repository_whole_content_read": false,
+  "imported": false,
+  "executed": false,
+  "functions_examined": [
+    "Server.train",
+    "BaseFedarated.select_clients",
+    "BaseFedarated.aggregate2",
+    "Client.__init__",
+    "Client.get_loss",
+    "Client.solve_inner",
+    "norm_grad"
+  ],
+  "observations": [
+    "qffedavg.py:48–65는 갱신 전 global model의 전체 local training loss로 Delta=(loss+1e-10)^q g와 h=q(loss+1e-10)^(q-1)||g||²+(loss+1e-10)^q/eta를 계산한다.",
+    "fedbase.py:170–187의 aggregate2는 w−sum(Delta)/sum(h). 단순 loss^q 가중 모델 평균과 구분한다.",
+    "fedbase.py:138–149의 sampling1은 균등 비복원, sampling2는 local train 수 비례 비복원. aggregate2에는 train sample 수 가중치가 직접 들어가지 않는다.",
+    "q0에서는 선택된 local models의 단순 평균으로 약분된다. 크기가 다른 전체 client를 모두 선택하면 표본수 비례 FedAvg 평균과 자동으로 같지 않다.",
+    "client.py:10–34는 train/eval을 합쳐 seed!=0이면 무작위80/10/10분할, seed0이면 val=test. 통신 시계열의 마지막100 test와 같은 분할로 간주하지 않는다.",
+    "requirements.txt TensorFlow GPU1.10과 main.py의 분류 dataset/model 목록은 통신 논문의 TensorFlow2.10.1·Abilene 회귀 설정과 구분한다.",
+    "model-specific files, model_utils, run scripts, 데이터와 전체 의존경로는 이번에 독해/실행하지 않았다. 실제 무오류 실행·통신 결과 재현 주장이 아니다."
+  ],
+  "original_paper_access_attempt": {
+    "url": "https://openreview.net/pdf?id=ByexElSYDr",
+    "result": "HTTP403",
+    "content_read": false,
+    "note": "403 후 우회·재시도 없음. 원알고리즘 논문 전체 검토로 세지 않음."
+  }
+}

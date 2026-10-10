@@ -1,0 +1,705 @@
+{
+  "batch_id": "history-065",
+  "status": "passed",
+  "checked_at_utc": "2026-10-10T09:20:53.169668+00:00",
+  "tableI": [
+    [
+      0,
+      ".2776",
+      ".0558",
+      ".0950",
+      ".1746",
+      ".1889",
+      ".1584"
+    ],
+    [
+      2,
+      ".2443",
+      ".0603",
+      ".0922",
+      ".1798",
+      ".1879",
+      ".1529"
+    ],
+    [
+      4,
+      ".2324",
+      ".0635",
+      ".0918",
+      ".1845",
+      ".1903",
+      ".1525"
+    ],
+    [
+      6,
+      ".2290",
+      ".0654",
+      ".0924",
+      ".1883",
+      ".1935",
+      ".1537"
+    ],
+    [
+      8,
+      ".2293",
+      ".0666",
+      ".0937",
+      ".1916",
+      ".1966",
+      ".1555"
+    ],
+    [
+      10,
+      ".2313",
+      ".0673",
+      ".0952",
+      ".1943",
+      ".1991",
+      ".1575"
+    ]
+  ],
+  "tableII": [
+    [
+      0,
+      104,
+      75,
+      54,
+      39,
+      12,
+      36,
+      53,
+      47,
+      89,
+      182,
+      "62.4",
+      "75.8"
+    ],
+    [
+      2,
+      107,
+      68,
+      59,
+      41,
+      13,
+      36,
+      54,
+      46,
+      98,
+      182,
+      "66.2",
+      "74.6"
+    ],
+    [
+      4,
+      107,
+      66,
+      64,
+      40,
+      13,
+      37,
+      56,
+      47,
+      103,
+      183,
+      "68.6",
+      "74.6"
+    ],
+    [
+      6,
+      107,
+      65,
+      67,
+      40,
+      13,
+      38,
+      57,
+      47,
+      105,
+      177,
+      "69.8",
+      "73.4"
+    ],
+    [
+      8,
+      109,
+      66,
+      69,
+      38,
+      13,
+      38,
+      56,
+      49,
+      106,
+      180,
+      "70.6",
+      "74.2"
+    ],
+    [
+      10,
+      108,
+      66,
+      70,
+      39,
+      13,
+      38,
+      60,
+      49,
+      107,
+      180,
+      "71.6",
+      "74.4"
+    ]
+  ],
+  "printed_scalars": 120,
+  "printed_scalar_counting": "TableI의42개 칸과 TableII의78개 칸을 합산한다. q열의 반복값12개를 포함하며 결과값은108개다.",
+  "check_count": 79,
+  "checks": [
+    {
+      "check": "TableI_q0_PDF",
+      "passed": true,
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
+    },
+    {
+      "check": "TableI_q0_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:162"
+    },
+    {
+      "check": "TableII_q0_PDF",
+      "passed": true,
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
+    },
+    {
+      "check": "TableII_q0_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:217"
+    },
+    {
+      "check": "q0_mean_rounding_compatible",
+      "passed": true,
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
+    },
+    {
+      "check": "q0_under_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q0_over_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q0_Eq3_is_sample_CV",
+      "passed": true,
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
+    },
+    {
+      "check": "q0_Eq4_positive_is_sample_CV",
+      "passed": true,
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
+    },
+    {
+      "check": "q0_Eq5_constant",
+      "passed": true,
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
+    },
+    {
+      "check": "q0_candidate_two_mean_sample_CV",
+      "passed": true,
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
+    },
+    {
+      "check": "TableI_q2_PDF",
+      "passed": true,
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
+    },
+    {
+      "check": "TableI_q2_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:163"
+    },
+    {
+      "check": "TableII_q2_PDF",
+      "passed": true,
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
+    },
+    {
+      "check": "TableII_q2_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:218"
+    },
+    {
+      "check": "q2_mean_rounding_compatible",
+      "passed": true,
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
+    },
+    {
+      "check": "q2_Eq2_below_report_for_all_weights",
+      "passed": true,
+      "detail": "합이1인 모든 p_k>=0에 대해 식2<=max(F_k+0.00005)^(q+1)/(q+1)이다."
+    },
+    {
+      "check": "q2_under_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q2_over_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q2_Eq3_is_sample_CV",
+      "passed": true,
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
+    },
+    {
+      "check": "q2_Eq4_positive_is_sample_CV",
+      "passed": true,
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
+    },
+    {
+      "check": "q2_Eq5_constant",
+      "passed": true,
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
+    },
+    {
+      "check": "q2_candidate_two_mean_sample_CV",
+      "passed": true,
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
+    },
+    {
+      "check": "TableI_q4_PDF",
+      "passed": true,
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
+    },
+    {
+      "check": "TableI_q4_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:164"
+    },
+    {
+      "check": "TableII_q4_PDF",
+      "passed": true,
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
+    },
+    {
+      "check": "TableII_q4_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:219"
+    },
+    {
+      "check": "q4_mean_rounding_compatible",
+      "passed": true,
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
+    },
+    {
+      "check": "q4_Eq2_below_report_for_all_weights",
+      "passed": true,
+      "detail": "합이1인 모든 p_k>=0에 대해 식2<=max(F_k+0.00005)^(q+1)/(q+1)이다."
+    },
+    {
+      "check": "q4_under_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q4_over_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q4_Eq3_is_sample_CV",
+      "passed": true,
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
+    },
+    {
+      "check": "q4_Eq4_positive_is_sample_CV",
+      "passed": true,
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
+    },
+    {
+      "check": "q4_Eq5_constant",
+      "passed": true,
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
+    },
+    {
+      "check": "q4_candidate_two_mean_sample_CV",
+      "passed": true,
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
+    },
+    {
+      "check": "TableI_q6_PDF",
+      "passed": true,
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
+    },
+    {
+      "check": "TableI_q6_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:165"
+    },
+    {
+      "check": "TableII_q6_PDF",
+      "passed": true,
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
+    },
+    {
+      "check": "TableII_q6_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:220"
+    },
+    {
+      "check": "q6_mean_rounding_compatible",
+      "passed": true,
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
+    },
+    {
+      "check": "q6_Eq2_below_report_for_all_weights",
+      "passed": true,
+      "detail": "합이1인 모든 p_k>=0에 대해 식2<=max(F_k+0.00005)^(q+1)/(q+1)이다."
+    },
+    {
+      "check": "q6_under_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q6_over_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q6_Eq3_is_sample_CV",
+      "passed": true,
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
+    },
+    {
+      "check": "q6_Eq4_positive_is_sample_CV",
+      "passed": true,
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
+    },
+    {
+      "check": "q6_Eq5_constant",
+      "passed": true,
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
+    },
+    {
+      "check": "q6_candidate_two_mean_sample_CV",
+      "passed": true,
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
+    },
+    {
+      "check": "TableI_q8_PDF",
+      "passed": true,
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
+    },
+    {
+      "check": "TableI_q8_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:166"
+    },
+    {
+      "check": "TableII_q8_PDF",
+      "passed": true,
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
+    },
+    {
+      "check": "TableII_q8_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:221"
+    },
+    {
+      "check": "q8_mean_rounding_compatible",
+      "passed": true,
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
+    },
+    {
+      "check": "q8_Eq2_below_report_for_all_weights",
+      "passed": true,
+      "detail": "합이1인 모든 p_k>=0에 대해 식2<=max(F_k+0.00005)^(q+1)/(q+1)이다."
+    },
+    {
+      "check": "q8_under_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q8_over_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q8_Eq3_is_sample_CV",
+      "passed": true,
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
+    },
+    {
+      "check": "q8_Eq4_positive_is_sample_CV",
+      "passed": true,
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
+    },
+    {
+      "check": "q8_Eq5_constant",
+      "passed": true,
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
+    },
+    {
+      "check": "q8_candidate_two_mean_sample_CV",
+      "passed": true,
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
+    },
+    {
+      "check": "TableI_q10_PDF",
+      "passed": true,
+      "detail": "q를 포함한7개 칸이 PDF 추출 행과 일치한다. 페이지는 별도로 시각 검수했다."
+    },
+    {
+      "check": "TableI_q10_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:167"
+    },
+    {
+      "check": "TableII_q10_PDF",
+      "passed": true,
+      "detail": "q를 포함한13개 칸이 PDF 추출 행과 일치한다."
+    },
+    {
+      "check": "TableII_q10_TeX",
+      "passed": true,
+      "detail": "main_v3.tex:222"
+    },
+    {
+      "check": "q10_mean_rounding_compatible",
+      "passed": true,
+      "detail": "각 손실과 인쇄 f_q에는 반올림 전 값과0.00005의 차이가 가능하다. 이 양립성으로 실제 구현을 확정하지 않는다."
+    },
+    {
+      "check": "q10_Eq2_below_report_for_all_weights",
+      "passed": true,
+      "detail": "합이1인 모든 p_k>=0에 대해 식2<=max(F_k+0.00005)^(q+1)/(q+1)이다."
+    },
+    {
+      "check": "q10_under_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q10_over_mean",
+      "passed": true,
+      "detail": "인쇄된 크기의 평균을 정확한 유리수로 대조한다."
+    },
+    {
+      "check": "q10_Eq3_is_sample_CV",
+      "passed": true,
+      "detail": "별도로 작성한 대수식과 statistics.stdev 계산을 대조한다."
+    },
+    {
+      "check": "q10_Eq4_positive_is_sample_CV",
+      "passed": true,
+      "detail": "표의 양수 크기10개에 표본 분모9를 적용한다."
+    },
+    {
+      "check": "q10_Eq5_constant",
+      "passed": true,
+      "detail": "인쇄식의 제곱 비율은1이며 바깥의100과 제곱근을 적용하면100이다."
+    },
+    {
+      "check": "q10_candidate_two_mean_sample_CV",
+      "passed": true,
+      "detail": "해석 후보일 뿐 저자나 그림 생성 코드로 확인한 교정식이 아니다."
+    },
+    {
+      "check": "q0_to_q10_four_losses_increase",
+      "passed": true,
+      "detail": "클라이언트 간 CV 감소는 모든 클라이언트의 개선을 뜻하지 않는다."
+    },
+    {
+      "check": "q0_to_q10_all_five_under_counts_increase",
+      "passed": true,
+      "detail": "[4, 16, 1, 7, 18]"
+    },
+    {
+      "check": "q0_to_q10_over_changes_mixed",
+      "passed": true,
+      "detail": "[-9, 0, 2, 2, -2]"
+    },
+    {
+      "check": "mean_under_increase_9_2",
+      "passed": true,
+      "detail": "부족량이 감소한 것이 아니다."
+    },
+    {
+      "check": "mean_over_decrease_1_4",
+      "passed": true,
+      "detail": "평균 과잉 할당량의 변화는 작다."
+    },
+    {
+      "check": "Eq4_not_monotone_every_step",
+      "passed": true,
+      "detail": "q=6에서 q=8로 바뀔 때 증가한다."
+    },
+    {
+      "check": "upstream_q0_simple_selected_mean",
+      "passed": true,
+      "detail": "q=0이면 h_k=1/eta, Delta_k=g_k로 약분된다. 원알고리즘 구현을 실행하지 않았다."
+    },
+    {
+      "check": "upstream_q0_not_automatically_sample_weighted",
+      "passed": true,
+      "detail": "클라이언트별 표본 수는 aggregate2 자체에 반영되지 않으므로 추출 방식을 명시해야 한다."
+    }
+  ],
+  "derived": [
+    {
+      "q": 0,
+      "arithmetic_mean": 0.15838,
+      "reported_fq": 0.1584,
+      "mean_of_printed_values_rounds_to_reported": true,
+      "means_compatible_with_print_rounding": true,
+      "Eq2_upper_bound_any_nonnegative_unit_sum_weights": 0.27765,
+      "Eq2_cannot_equal_printed_fq": false,
+      "loss_CV_from_printed_values": 54.63249386319976,
+      "under_mean": 62.4,
+      "over_mean": 75.8,
+      "QoS_CV_positive_table_magnitudes": 69.29163907373555,
+      "QoS_CV_with_signed_under_definition": 1296.7058277850788,
+      "Eq5_as_printed": 100,
+      "alternative_two_mean_sample_CV_only_a_candidate": 13.712345684370097
+    },
+    {
+      "q": 2,
+      "arithmetic_mean": 0.1529,
+      "reported_fq": 0.1529,
+      "mean_of_printed_values_rounds_to_reported": true,
+      "means_compatible_with_print_rounding": true,
+      "Eq2_upper_bound_any_nonnegative_unit_sum_weights": 0.004863128837625,
+      "Eq2_cannot_equal_printed_fq": true,
+      "loss_CV_from_printed_values": 49.1190076245523,
+      "under_mean": 66.2,
+      "over_mean": 74.6,
+      "QoS_CV_positive_table_magnitudes": 68.44829030605408,
+      "QoS_CV_with_signed_under_definition": 2104.051928425415,
+      "Eq5_as_printed": 100,
+      "alternative_two_mean_sample_CV_only_a_candidate": 8.437069548248578
+    },
+    {
+      "q": 4,
+      "arithmetic_mean": 0.1525,
+      "reported_fq": 0.1525,
+      "mean_of_printed_values_rounds_to_reported": true,
+      "means_compatible_with_print_rounding": true,
+      "Eq2_upper_bound_any_nonnegative_unit_sum_weights": 0.00013573059354758115,
+      "Eq2_cannot_equal_printed_fq": true,
+      "loss_CV_from_printed_values": 46.87761029191868,
+      "under_mean": 68.6,
+      "over_mean": 74.6,
+      "QoS_CV_positive_table_magnitudes": 67.81122194105403,
+      "QoS_CV_with_signed_under_definition": 2989.529051642965,
+      "Eq5_as_printed": 100,
+      "alternative_two_mean_sample_CV_only_a_candidate": 5.925475819999002
+    },
+    {
+      "q": 6,
+      "arithmetic_mean": 0.15372,
+      "reported_fq": 0.1537,
+      "mean_of_printed_values_rounds_to_reported": true,
+      "means_compatible_with_print_rounding": true,
+      "Eq2_upper_bound_any_nonnegative_unit_sum_weights": 4.725132951168382e-06,
+      "Eq2_cannot_equal_printed_fq": true,
+      "loss_CV_from_printed_values": 46.0064081540255,
+      "under_mean": 69.8,
+      "over_mean": 73.4,
+      "QoS_CV_positive_table_magnitudes": 65.71076916292353,
+      "QoS_CV_with_signed_under_definition": 4939.816116491203,
+      "Eq5_as_printed": 100,
+      "alternative_two_mean_sample_CV_only_a_candidate": 3.5552854919994012
+    },
+    {
+      "q": 8,
+      "arithmetic_mean": 0.15556,
+      "reported_fq": 0.1555,
+      "mean_of_printed_values_rounds_to_reported": false,
+      "means_compatible_with_print_rounding": true,
+      "Eq2_upper_bound_any_nonnegative_unit_sum_weights": 1.9509502316598327e-07,
+      "Eq2_cannot_equal_printed_fq": true,
+      "loss_CV_from_printed_values": 45.638488193805976,
+      "under_mean": 70.6,
+      "over_mean": 74.2,
+      "QoS_CV_positive_table_magnitudes": 66.41717404489019,
+      "QoS_CV_with_signed_under_definition": 5010.126918762885,
+      "Eq5_as_printed": 100,
+      "alternative_two_mean_sample_CV_only_a_candidate": 3.516000569435872
+    },
+    {
+      "q": 10,
+      "arithmetic_mean": 0.15744,
+      "reported_fq": 0.1575,
+      "mean_of_printed_values_rounds_to_reported": false,
+      "means_compatible_with_print_rounding": true,
+      "Eq2_upper_bound_any_nonnegative_unit_sum_weights": 9.23787022751261e-09,
+      "Eq2_cannot_equal_printed_fq": true,
+      "loss_CV_from_printed_values": 45.52453674395765,
+      "under_mean": 71.6,
+      "over_mean": 74.4,
+      "QoS_CV_positive_table_magnitudes": 65.55970957602759,
+      "QoS_CV_with_signed_under_definition": 6471.829764360789,
+      "Eq5_as_printed": 100,
+      "alternative_two_mean_sample_CV_only_a_candidate": 2.712190393592237
+    }
+  ],
+  "client_loss_changes_q0_to_q10": [
+    -0.0463,
+    0.0115,
+    0.0002,
+    0.0197,
+    0.0102
+  ],
+  "under_changes_q0_to_q10": [
+    4,
+    16,
+    1,
+    7,
+    18
+  ],
+  "over_changes_q0_to_q10": [
+    -9,
+    0,
+    2,
+    2,
+    -2
+  ],
+  "relative_CV_loss_decrease_percent": 16.671318614977594,
+  "relative_positive_QoS_CV_decrease_percent": 5.385829441466516,
+  "candidate_two_mean_CV_relative_decrease_percent": 80.22081373952157,
+  "upstream_q0_example": {
+    "initial": 5,
+    "local_models": [
+      1,
+      3
+    ],
+    "learning_rate": 0.1,
+    "simple_result": 2,
+    "unequal_weight_result": 2.5,
+    "source_executed": false
+  },
+  "input_sha256": {
+    "qffl-page-04.txt": "bd4090ae5519fcdf65afa867b0d15a497267a4fa7b7366e2d76738932c3d10ec",
+    "qffl-page-06.txt": "b30ab8111764c3083f9d24fc9cc2703ff4b47b3794ea09177c0f29137fc2eb37",
+    "source-main_v3.tex": "a911df22af772b2d7908102f26371da28bf8d1a579bf9a4ad4a0212d49e40ab6",
+    "upstream/flearn/trainers/qffedavg.py": "39597093d1d772958acd6661cd682860e593c5e9efb26ab656e188b6d80a62e3",
+    "upstream/flearn/trainers/fedbase.py": "4c6ca4cdbcb8cf886930c62f9e13b8b9905f68beccf59fce71ee37cc0d07b34f"
+  },
+  "limits": [
+    "반올림된 인쇄값만 사용했다. 원예측 배열·모델 재실행·seed 반복 검증은 아니다.",
+    "식2의 상한 검사는 인쇄 정의와 TableI를 대조한다. 실제 실험을 생성한 목적함수를 확인한 것은 아니다.",
+    "두 평균 CV는 해석 후보이며 저자가 확인한 식5의 교정이 아니다.",
+    "원알고리즘의 scalar 예는 대수 검사다. 통신 구현을 실행하거나 검증한 것이 아니다.",
+    "유한 q와 CV의 평탄화는 정확한 minimax 최적성을 입증하지 않는다."
+  ],
+  "semantic_second_pass_pending": false,
+  "new_model_runs": 0,
+  "original_scripts_executed": false,
+  "random_draws": 0,
+  "semantic_second_pass_at_utc": "2026-10-10T09:29:57.669896+00:00"
+}
