@@ -114,3 +114,7 @@
 ## 원79 FMCL의 후속 원문 검수
 
 [H083](records/0083-fmcl-client-clustering.md)은 당시 선행 구조와 이번 원문 검수에서 발견한 결과 해석의 예외를 구분한다. 신규 실험 없이16쪽·TXT대응·원PNG3을 읽었으며, 원79의 나머지 외부 자료·원80 진단은 후속 범위다.
+
+## 원79 EMD-CFL의 본문·부록 보완
+
+[H084](records/0084-emd-cfl-embedding-distributions.md)은 당시 부분 검토와 이번 전체 논문 검수를 구분한다. 같은 v1 PDF를 현재 보충해 그림까지 확인했고 학습 재현은 하지 않았다. 이론식의 표기·조건, 모델 dimension 불일치와 Oracle 기준 비용을 보존했다.

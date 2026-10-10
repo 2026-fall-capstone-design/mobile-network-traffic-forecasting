@@ -1,0 +1,128 @@
+{
+  "batch_id": "history-084",
+  "status": "source_checked",
+  "completed_at_utc": "2026-10-10T21:15:19.444966+00:00",
+  "claims_checked": 34,
+  "checks": [
+    {
+      "check_id": "H084-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        31,
+        33,
+        34
+      ],
+      "sources": [
+        "원79findings1–51/plan1–24전행재독해",
+        "HTML판본/51서지/전체범위기록",
+        "새PDF메타24쪽/원79외부21그룹명세",
+        "alias4/원본4/보호6/보충PDFhash"
+      ],
+      "result": "과거HTML부분/406·15MB상한과현재v1PDF보충을분리. 원목록독립본문1/TXT·새PDF·이미지추가0. 기존4+FMCL5+EMD논문2+잔여10=21. 구현묶음7은Python7개가아니라README1/Python4/JSON2임을C33에명확화."
+    },
+    {
+      "check_id": "H084-SP02",
+      "claims": [
+        4,
+        5,
+        6,
+        7,
+        12,
+        32
+      ],
+      "sources": [
+        "HTML§3 Algorithm1/ClientEmbeddings/Aggregation재독해",
+        "PDFpp4–5Figure1/의사코드재열람",
+        "p6Aggregation text",
+        "원79methods/후보관계"
+      ],
+      "result": "local학습→encoder교환/R합의→train-valτ보정→양방향strictthreshold→동일neighbor모델·후속학습. C05encoder교환과R합의를분리수정. line10cprime/line16역방향인자표기확인,실제코드오류로확정안함. trustedserver와미적용DP가능성,서로소partition/최종RCTL효용과구분."
+    },
+    {
+      "check_id": "H084-SP03",
+      "claims": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "sources": [
+        "HTML§2.2/§2.3와AppendixA전체재독해",
+        "PDFpp4/13수식확대재열람",
+        "Eq1/2·MathMLalttext825/TeXannotation대응"
+      ],
+      "result": "C08에서headdisagreementbound의2LW1과mixturerisk의추가λ를명확히분리. C09loss정의역을embeddingz로명확화. loss/gradient조건·∇누락/M÷κ·Eqindices/JLε/λ는PDF도동일,원출전정리의반증이나일반RCTL보장아님."
+    },
+    {
+      "check_id": "H084-SP04",
+      "claims": [
+        13,
+        14
+      ],
+      "sources": [
+        "PDFp6§3.1와p17D.1원문재독해",
+        "Table4표시값Decimal재계산"
+      ],
+      "result": "O(C²N³logN)/min10%512/O(C²|omega|)/crosssilo와미가정O(C|omega|)구분. Oracle7.47→8.11h의+.64h/+8.5676%,T10E10. notclustering표현을FedAvg실측비교로확대안함;dataset/GPU수/오차미기재."
+    },
+    {
+      "check_id": "H084-SP05",
+      "claims": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "sources": [
+        "PDFpp6–7데이터/설정/평가지표재독해",
+        "p8dimension768·p17Table5dimension512재대조",
+        "Table5전7행/HTMLD.3",
+        "원문전체불확실성용어검색과실독해"
+      ],
+      "result": "40client/4회전·PACS9991/18·80/10/10·격리30/15조건·retain.9·ε.025·T10/E10·SGD/PyTorch/POT/L40S확인. 16baseline중Oracle/정답K8방법/thresholdtuning구분. 3run평균만명시,±정의/seedIDs는미기재,dimension차이보존."
+    },
+    {
+      "check_id": "H084-SP06",
+      "claims": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "sources": [
+        "PDFp8Table1/p9Table2문자재독해",
+        "HTMLTable1–11전행과PDF문자열재대조",
+        "Table2/7·3/8공통9행exactequal",
+        "Table6/9/10/11선택row직접대조와Decimal"
+      ],
+      "result": "121행1192표시수일치. PACFLMNISTworst97.73>97.58;PACS/FlexCFL등finalARI와accuracy분리;IFCAclean98.54>98.40. 참가10두data/두methodARI.93. 추가6조건EMDARI1이나worst/avg반례있고baselineK2조건다름. Table9within평균10개작음은pair보장아님."
+    },
+    {
+      "check_id": "H084-SP07",
+      "claims": [
+        29,
+        30,
+        31
+      ],
+      "sources": [
+        "PDFpp18/20/22/23그림재열람",
+        "p9art문단/E.9/E.5재독해",
+        "원HTMLfigure13b빈src·새PDFp22",
+        "825math/전체TXT65919대응검사"
+      ],
+      "result": "plotplateau와경계실패·PACS축소50%/Sinkhorn.1구분. 그림표현·색상으로raw값역추정안함. artcloser/too distant문구보존. 빠진13b는보충PDF로확인. 표현검사를정리증명/실험재현으로쓰지않음."
+    }
+  ],
+  "scope": "전체첫독해후34주장의관련원문을7묶음으로재대조. 모든원문전체의두번째독해나독립연구자검수는아님.",
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "new_model_runs": 0
+}

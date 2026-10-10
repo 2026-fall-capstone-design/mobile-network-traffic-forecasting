@@ -425,3 +425,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## FMCL과 같은 사전 군집 구조의 재제안 방지
 
 [H083](records/0083-fmcl-client-clustering.md): 고정 FM으로 client를 사전 군집화하고 별도 모델을 학습하는 구조는 이미 선행연구에 있다. 새 제안은 class 라벨 조건을 연속 target에서 어떻게 바꾸는지, 관측 가능한 정보와 총비용, 실제 출력 공유의 이득을 구체화해야 한다. 평균 성능과 편차·ablation 예외를 함께 보존한다.
+
+## EMD-CFL과 embedding 분포 군집의 재제안 방지
+
+[H084](records/0084-emd-cfl-embedding-distributions.md): encoder로 자료를 변환해 OT로 군집을 정하는 구조에는 선행연구가 있다. 고정 TabICL을 쓴다는 차이를 주장하려면 초기 local 학습·encoder 교환·관측 입력/target 정보·threshold/K 선택·총비용·최종 출력 공유 조건을 명시해야 한다. 군집ARI가 같아도 downstream accuracy가 다른 반례를 먼저 확인한다.
