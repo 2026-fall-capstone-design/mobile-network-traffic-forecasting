@@ -116,3 +116,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 ### H085 · 공식 구현 재사용 전에 남는 확인
 
 [원79 구현](records/0085-emd-cfl-code.md)의 실제 config/model/data/test와 seed별 산출물을 연결해야 한다. τ의정사각randomprojection과cross비율·표본cap512·추출trainmode·자기edge/빈이웃·부분참가stale집계·일부baseline 갱신순서가 실제 결과에 미치는 영향은 미확인이다. 이 확인 없이 논문 수치의 오류나 RCTL 효과를 확정하지 않는다.
+
+### H086 · 회귀 gradient 근거를 인용하기 전
+
+[가정과 표기 검토](records/0086-toso-gradient-heterogeneity.md)의 학습률η·matrix norm·복원 오차 바닥·population/empirical hat·residual vector 구분을 확인해야 한다. 고정 시계열 재사용·cell별 다른 입력분포·RCTL의Jacobian/PL·TabICL 추정오차를 아직 검증하지 않았다. 이 조건 없이 일반적인 RCTL 수렴 또는 성능 이득을 주장하지 않는다.

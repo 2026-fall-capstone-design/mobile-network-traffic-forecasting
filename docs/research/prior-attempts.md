@@ -433,3 +433,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ### EMD-CFL 코드를 그대로 UPC 소속 결정으로 옮기는 제안
 
 [H085 구현](records/0085-emd-cfl-code.md)은 학습한 encoder·분류 loss·own train/other validation·겹칠 수 있는 이웃집계에 의존한다. K 입력은 군집 수 강제가 아니라 진단에 사용된다. 고정 TabICL의 관측 x/조건부 평균을 쓰려는 후보는 별도 정보와 비용 조건이 필요하다. 부분 참여의 거리 재계산도 one-shot 비용 설명과 구분한다.
+
+### 예측값이 비슷하면 RCTL 학습도 같다는 제안
+
+[H086 회귀 이론](records/0086-toso-gradient-heterogeneity.md)의 Γ는 참 함수의 공통 입력 분포상 차이이며, 새 iid 표본·Jacobian·PL 조건이 붙는다. TabICL 추정값의 유사성만으로 유한 batch 학습 경로나 최종 test 성능을 보장하지 않는다. 입력 support·추정 오차·고정 최종 함수·시간 분할·기대 gradient와 SGD 변동의 차이를 먼저 명시한다.
