@@ -203,3 +203,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [Task2Vec 과제 표현 검수](records/0080-task2vec-task-and-output-sharing.md)는 같은 원78의 task embedding·Fisher·expert 선택을 보완한다. 특징 유사성과 같은 scalar 출력 공유의 차이, 과제별 head 적합, MODEL2VEC이 요구하는 성능 정보, 선택 실패 사례와 코드 기본값을 함께 확인할 수 있다.
 
 [NTKMTL 학습 균형 검수](records/0081-ntkmtl-training-balance.md)는 원78의 최종 모델 독립성 조건을 보완한다. 학습 중 task weighting과 사전 cell 소속 결정, 출력 Jacobian과 loss gradient, 활성 기본 코드와 주석 SR을 구분한다. 평균 순위와 STL 대비 손해, 저자의 상대 epoch 비용도 함께 확인할 수 있다.
+
+[원78 검색·접근 기록](records/0082-search-and-access-provenance.md)은 보존된 검색 발췌·접근 오류·직접 GET·빈 HEAD 응답의 차이를 정리한다. 소장43개 그룹이 어느 검수 문서로 연결되는지와 미소장 전문·환경의 한계도 확인할 수 있다.
