@@ -106,3 +106,5 @@
 [H079 보완](records/0079-regression-transferability.md)은 당시 미채택 판단을 논문과 고정 코드에 연결한다. penalty 반환 차이는 원78에 이미 기록됐고, 이번 표기·수치 예외는 과거 판단 이유로 소급하지 않는다. 새 학습은 없다.
 
 [H080 Task2Vec 보완](records/0080-task2vec-task-and-output-sharing.md)은 당시 “필요한 특징이 비슷함”을 “같은 실제 출력을 공유해도 됨”으로 바꾸지 않은 이유를 연결한다. 원78의 서지 쪽수는 공식 자료와 대조해 정정 표시했고, 이번에 확인한 Mixed 수량·코드 기본값·인쇄식 차이는 당시 기각 이유와 구분했다.
+
+[H081 NTKMTL 보완](records/0081-ntkmtl-training-balance.md)은 원78이 이미 지적한 weighted 출력 좌표·loss-gradient Gram·주석 SR·별도 GO4ALIGN을 29쪽 논문과 전체 저장 코드에 연결한다. 이번에 추가한 비교군·표시 결과·구현 범위는 당시 미채택 판단의 보완이며 새 실행이나 과거부터의 전수 독해로 소급하지 않는다.

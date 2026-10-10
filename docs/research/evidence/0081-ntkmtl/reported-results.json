@@ -1,0 +1,566 @@
+{
+  "batch_id": "history-081",
+  "status": "source_checked",
+  "origin": "논문에 인쇄된 선택 결과 전사. 전체 표의 모든 비교군/지표를 옮긴 파일이 아니다. 원시 예측 재계산·독립 재현 없음.",
+  "metric_direction": "MR와 Δm은 낮을수록 좋음. Δm<0 STL대비 평균개선, >0 평균손해. MR은 비교 방법 집합에 의존.",
+  "tables": [
+    {
+      "label": "NYUv2 Table1 selected",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p7 Table1"
+      },
+      "columns": [
+        "mIoU_up",
+        "PixAcc_up",
+        "AbsErr_down",
+        "RelErr_down",
+        "normal_mean_angle_down",
+        "normal_median_angle_down",
+        "normal_11.25_up",
+        "normal_22.5_up",
+        "normal_30_up",
+        "MR_down",
+        "delta_m_percent_down"
+      ],
+      "rows": {
+        "STL": [
+          38.3,
+          63.76,
+          0.6754,
+          0.278,
+          25.01,
+          19.21,
+          30.14,
+          57.2,
+          69.15,
+          null,
+          null
+        ],
+        "NTKMTL": [
+          39.68,
+          65.43,
+          0.5296,
+          0.2168,
+          24.24,
+          18.63,
+          30.74,
+          58.72,
+          70.78,
+          4.33,
+          -6.99
+        ],
+        "NTKMTL-SR": [
+          40.23,
+          65.28,
+          0.5261,
+          0.2136,
+          24.88,
+          19.58,
+          29.53,
+          56.67,
+          69.08,
+          5.56,
+          -5.35
+        ]
+      },
+      "unit": "인쇄 지표별 단위; Δm은 %",
+      "notes": "선택3행. STL의 MR/Δm 빈칸은 null로 보존."
+    },
+    {
+      "label": "NYUv2 comparison indicators",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p7 Table1"
+      },
+      "columns": [
+        "first_metric",
+        "second_metric"
+      ],
+      "rows": {
+        "DB-MTL segmentation": [
+          41.42,
+          66.45
+        ],
+        "STCH depth": [
+          0.4965,
+          0.201
+        ]
+      },
+      "unit": "DB행 mIoU/PixAcc↑; STCH행 AbsErr/RelErr↓",
+      "notes": ""
+    },
+    {
+      "label": "CityScapes and CelebA summary",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p8 Table2"
+      },
+      "columns": [
+        "City_MR",
+        "City_delta_m_percent",
+        "CelebA_MR",
+        "CelebA_delta_m_percent"
+      ],
+      "rows": {
+        "NTKMTL": [
+          7.0,
+          1.92,
+          4.35,
+          -0.77
+        ],
+        "NTKMTL-SR": [
+          6.25,
+          3.84,
+          4.33,
+          0.23
+        ]
+      },
+      "unit": "MR/Δm% 낮을수록 좋음",
+      "notes": "본문의 NTKMTL MR최고라는 표현과 CelebA표시값 차이 보존."
+    },
+    {
+      "label": "QM9 selected MAE and summary",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p9 Table3"
+      },
+      "columns": [
+        "mu",
+        "alpha",
+        "HOMO",
+        "LUMO",
+        "R2",
+        "ZPVE",
+        "U0",
+        "U",
+        "H",
+        "G",
+        "cv",
+        "MR",
+        "delta_m_percent"
+      ],
+      "rows": {
+        "STL": [
+          0.06,
+          0.156,
+          60.54,
+          51.22,
+          0.419,
+          3.08,
+          39.3,
+          42.9,
+          41.7,
+          43.1,
+          0.061,
+          null,
+          null
+        ],
+        "NTKMTL": [
+          0.091,
+          0.212,
+          70.97,
+          70.81,
+          2.113,
+          3.835,
+          44.18,
+          44.56,
+          44.53,
+          44.38,
+          0.077,
+          5.91,
+          56.7
+        ],
+        "NTKMTL-SR": [
+          0.081,
+          0.207,
+          75.95,
+          69.1,
+          1.176,
+          3.689,
+          40.14,
+          40.46,
+          40.48,
+          40.49,
+          0.074,
+          4.0,
+          30.7
+        ]
+      },
+      "unit": "과제별 인쇄 척도의 MAE; MR/Δm%",
+      "notes": "표의 MAE를 training loss와 동일시하지 않음. STL cv 0.061에 쪽번호9가 붙은 layout 추출 오독을 피함."
+    },
+    {
+      "label": "QM9 other MTL average drops",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p9 Table3"
+      },
+      "columns": [
+        "delta_m_percent"
+      ],
+      "rows": {
+        "FAMO": [
+          38.9
+        ],
+        "SI": [
+          39.7
+        ],
+        "GO4Align": [
+          40.5
+        ]
+      },
+      "unit": "Δm%, STL 대비 평균 손해",
+      "notes": ""
+    },
+    {
+      "label": "MT10",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p9 Table4"
+      },
+      "columns": [
+        "mean",
+        "stderr"
+      ],
+      "rows": {
+        "STL": [
+          0.9,
+          0.03
+        ],
+        "MTL SAC": [
+          0.49,
+          0.07
+        ],
+        "MTL SAC+TE": [
+          0.54,
+          0.05
+        ],
+        "MH SAC": [
+          0.61,
+          0.04
+        ],
+        "PCGrad": [
+          0.72,
+          0.02
+        ],
+        "CAGrad": [
+          0.83,
+          0.05
+        ],
+        "MoCo": [
+          0.75,
+          0.05
+        ],
+        "Nash-MTL": [
+          0.91,
+          0.03
+        ],
+        "FAMO": [
+          0.83,
+          0.05
+        ],
+        "FairGrad": [
+          0.84,
+          0.07
+        ],
+        "Aligned-MTL": [
+          0.97,
+          0.05
+        ],
+        "NTKMTL": [
+          0.96,
+          0.03
+        ]
+      },
+      "unit": "성공률;10seeds",
+      "notes": "SR행 없음. 유의성검정/seed별raw값 없음."
+    },
+    {
+      "label": "QM9 setting change examples",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p26 Table6"
+      },
+      "columns": [
+        "original_paper",
+        "authors_reproduced"
+      ],
+      "rows": {
+        "FAMO HOMO MAE": [
+          94.0,
+          98.09
+        ],
+        "LS delta_m_percent": [
+          177.6,
+          179.8
+        ],
+        "RLW delta_m_percent": [
+          203.8,
+          222.6
+        ],
+        "Nash-MTL delta_m_percent": [
+          62.0,
+          72.9
+        ]
+      },
+      "unit": "첫행MAE; 나머지Δm%",
+      "notes": "위행원논문/녹색아래행저자재실행. batch120→60과patience5→10;STL기준도변경."
+    },
+    {
+      "label": "CityScapes Table7 selected",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p27 Table7"
+      },
+      "columns": [
+        "mIoU_up",
+        "PixAcc_up",
+        "AbsErr_down",
+        "RelErr_down",
+        "MR",
+        "delta_m_percent"
+      ],
+      "rows": {
+        "STL": [
+          74.01,
+          93.16,
+          0.0125,
+          27.77,
+          null,
+          null
+        ],
+        "NTKMTL": [
+          73.71,
+          92.71,
+          0.0136,
+          27.21,
+          8.5,
+          1.92
+        ],
+        "NTKMTL-SR": [
+          72.58,
+          92.93,
+          0.0124,
+          31.65,
+          8.0,
+          3.84
+        ]
+      },
+      "unit": "인쇄 지표별 단위; Δm%",
+      "notes": "Table2와 비교군 다름. 본문 C.2에 차이 설명됨."
+    },
+    {
+      "label": "CityScapes and CelebA uncertainty",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p27 Table8"
+      },
+      "columns": [
+        "City_mIoU",
+        "City_PixAcc",
+        "City_AbsErr",
+        "City_RelErr",
+        "City_delta_m_percent",
+        "CelebA_delta_m_percent"
+      ],
+      "rows": {
+        "NTKMTL mean": [
+          73.71,
+          92.71,
+          0.0136,
+          27.21,
+          1.92,
+          -0.77
+        ],
+        "NTKMTL stderr": [
+          0.17,
+          0.15,
+          0.0005,
+          0.23,
+          0.3,
+          0.37
+        ],
+        "NTKMTL-SR mean": [
+          72.58,
+          92.93,
+          0.0124,
+          31.65,
+          3.84,
+          0.23
+        ],
+        "NTKMTL-SR stderr": [
+          0.32,
+          0.23,
+          0.0004,
+          0.35,
+          0.37,
+          0.46
+        ]
+      },
+      "unit": "3seeds mean/stderr",
+      "notes": "stddev가 아님."
+    },
+    {
+      "label": "NYUv2 uncertainty",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p27 Table9"
+      },
+      "columns": [
+        "mIoU",
+        "PixAcc",
+        "AbsErr",
+        "RelErr",
+        "normal_mean",
+        "normal_median",
+        "normal_11.25",
+        "normal_22.5",
+        "normal_30",
+        "delta_m_percent"
+      ],
+      "rows": {
+        "NTKMTL mean": [
+          39.68,
+          65.43,
+          0.5296,
+          0.2168,
+          24.24,
+          18.63,
+          30.74,
+          58.72,
+          70.78,
+          -6.99
+        ],
+        "NTKMTL stderr": [
+          0.51,
+          0.24,
+          0.0008,
+          0.0014,
+          0.07,
+          0.09,
+          0.14,
+          0.19,
+          0.19,
+          0.38
+        ],
+        "NTKMTL-SR mean": [
+          40.23,
+          65.28,
+          0.5261,
+          0.2136,
+          24.88,
+          19.58,
+          29.53,
+          56.67,
+          69.08,
+          -5.35
+        ],
+        "NTKMTL-SR stderr": [
+          0.42,
+          0.26,
+          0.0013,
+          0.0014,
+          0.11,
+          0.13,
+          0.12,
+          0.15,
+          0.16,
+          0.31
+        ]
+      },
+      "unit": "3seeds mean/stderr",
+      "notes": ""
+    },
+    {
+      "label": "CelebA epoch ratio",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p8 Figure1"
+      },
+      "columns": [
+        "ratio_to_LS"
+      ],
+      "rows": {
+        "LS": [
+          1.0
+        ],
+        "SI": [
+          1.0
+        ],
+        "FAMO": [
+          1.08
+        ],
+        "GO4Align": [
+          1.03
+        ],
+        "NTKMTL-SR": [
+          1.24
+        ],
+        "MGDA": [
+          5.58
+        ],
+        "PCGrad": [
+          8.08
+        ],
+        "CAGrad": [
+          4.47
+        ],
+        "Nash-MTL": [
+          6.11
+        ],
+        "NTKMTL": [
+          4.33
+        ]
+      },
+      "unit": "LS=1 epoch 시간비",
+      "notes": "표시 ratio만 전사; 개별측정치나 정확한분단위raw값 미복구."
+    },
+    {
+      "label": "QM9 SR epoch ratio",
+      "source": {
+        "source_id": "SRC-0064468",
+        "source_sha256": "5c0becdbda2e24efb04e17df4665e163040da2e2c9629809cc4d64dd9e1d1512",
+        "locator": "p29 Figure4"
+      },
+      "columns": [
+        "ratio_to_LS"
+      ],
+      "rows": {
+        "n=1": [
+          1.05
+        ],
+        "n=2": [
+          1.14
+        ],
+        "n=3": [
+          1.27
+        ],
+        "n=4": [
+          1.4
+        ],
+        "n=6": [
+          1.69
+        ]
+      },
+      "unit": "LS=1 epoch 시간비",
+      "notes": "성능-시간절충; RCTL비용으로환산하지않음."
+    }
+  ],
+  "numeric_display_values": 210,
+  "raw_prediction_reproduction": false,
+  "new_model_runs": 0,
+  "semantic_second_pass_complete": true,
+  "second_pass_scope": "작성 후 p7–9·26–29 확대 이미지에서 포함한 행/열/값/색·caption을 직접 대조. 210개 값의 PDF 개별 텍스트 또는 plain 추출 토큰 존재도 보조 검사. stderr의 분리된 소수점은 plain에서 확인. 토큰 존재 검사를 행/열 의미 검수로 대체하지 않음."
+}

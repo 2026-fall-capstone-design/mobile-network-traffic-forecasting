@@ -100,3 +100,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H079](verification/history-079.md)에서 회귀 전이 논문23쪽·score/README·metadata3개·TXT2·원PNG3을 대조했다. Task2Vec·NTKMTL와 검색/접근 자료는 계속 검수한다. 논문표·그림 차이의 원인, 실제 환경과 결과 생성 경로·원시 점·특징 pickle 접근, shared head 설계와 RCTL 효과의 연결은 미확인이다. 출력 변환이 가능하다는 이유만으로 같은 cell pooling을 다시 제안하지 않는다.
 
 [H080](verification/history-080.md)에서 Task2Vec의 저장 자료 13개를 보완했다. Mixed의 본문 50개 과제·26개 expert와 보충 40개·25개의 대응, 인쇄 `ResNet-13`과 본문 ResNet-34, 고정 코드 기본값과 실제 실행 설정의 관계는 아직 확인되지 않았다. helper·환경·raw 결과의 확보와 장기 팀 접근, 원78의 NTKMTL·남은 검색 자료, 원79 이후 기록도 계속 검토한다.
+
+[H081](verification/history-081.md)에서 NTKMTL 저장 11개 자료를 검수했다. 원78의 검색/접근 자료는 남아 있고, 실제 trainer·loss/config·환경·seed별 원시 결과와 장기 팀 공유도 미완료다. CityScapes Table 2/7의 MR 차이는 비교군 차이로 확인됐으므로 미해결 모순에서 구분한다. CelebA 본문/표, Figure 3의 variance/stderr, 출력 좌표 및 loss-gradient 구현의 적용 범위는 기록된 조건을 유지한다. 원79 이후와 전체 실패·비용 통합도 계속한다.

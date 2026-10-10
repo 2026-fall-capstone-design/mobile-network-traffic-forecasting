@@ -1,0 +1,107 @@
+# NTKMTL의 학습 중 균형과 사전 cell 소속 결정의 차이
+
+원래 기록 **78**(2026-09-26)의 NTKMTL 검토를 보완하는 아카이브 **H081**이다. 0081은 새 실험 번호가 아니다. [원78 판단 보존본](../evidence/0076-0079-learning-decisions/originals/SRC-0022034.md.txt), [회귀 전이](0079-regression-transferability.md), [Task2Vec](0080-task2vec-task-and-output-sharing.md), [출처](../sources/history-081.md), [근거 묶음](../evidence/0081-ntkmtl/README.md)을 함께 본다.
+
+NTKMTL은 현재 학습하는 다중 과제 모델의 task weight를 조절한다. 최종 예측 모델을 보지 않고 먼저 cell을 묶는 문제에 그대로 답하는 방법은 아니다. 논문 수식, 저장된 기본 코드, 주석 처리된 변형, 저자 보고 성능과 원78의 설계 판단을 각각 구분했다. 새 모델 실행이나 최종 예측기 선정은 수행하지 않았다.
+
+각 주장과 원문 위치는 [주장 지도](../verification/history-081-claims.json), 검수 범위는 [검수 보고서](../verification/history-081.md)에 연결한다. 아래 C 번호는 문서 내부 식별자다.
+
+## 읽은 범위와 이론의 적용 조건
+
+<a id="c01"></a>**C01.** 이번에는 NTKMTL 관련 11개 고유 자료를 읽었다. PDF 29쪽 전체의 본문·표·수식·그림·참고문헌·체크리스트·부록, README 74행, Python 424행과 1,823행, JSON 3개 전체, TXT 29쪽 대응과 원 PNG 3개를 확인했다. 같은 내용의 사본은 22개 경로로 연결했다. 이미 검수된 원78 판단을 다시 참조하되 독립 본문으로 더하지 않는다.
+
+<a id="c02"></a>**C02.** 논문의 질문은 다중 과제 학습에서 과제별 수렴 속도 차이로 생기는 불균형을 줄이는 것이다. 매 iteration의 현재 모델에 의존한다. §5의 한계는 현재 주로 대각 block을 분석하며 과제 상호작용을 담는 비대각 block과 grouping을 후속 연구로 남긴다고 설명한다. 이 논문이 이미 사전 cell clustering을 구현·평가했다고 읽지 않는다.
+
+<a id="c03"></a>**C03.** Eq.1과 Eq.7–9의 NTK는 출력 함수 `f`를 파라미터로 미분한 Jacobian의 Gram이다. 과제 i와 j 사이에는 `Kij = Ji Jjᵀ` block이 들어간다. 전체 Gram과 대각 block의 양의 준정부호 성질을 개별 비대각 block의 성질로 옮겨서는 안 된다. 표 5의 n은 데이터 수 또는 계산에 쓰는 mini-batch 수이며 cell 개수의 기호가 아니다.
+
+<a id="c04"></a>**C04.** Eq.3의 `dO/dt = −K(O−y)`는 부록 B.1의 합 형태 반제곱오차와 gradient flow에서 전개된다. Eq.4의 고정 kernel 근사식에는 초기 출력에 관한 추가 항이 표시되지 않는다. 초기 출력·학습률·고정 kernel 조건을 확인하지 않은 채 유한 신경망, 임의 초기화, 실제 MAE 훈련의 일반적 수렴 보장으로 인용하지 않는다.
+
+<a id="c05"></a>**C05.** B.1은 cross-entropy에도 같은 미분방정식을 쓸 수 있다고 설명한다. 하지만 logits와 확률 출력, loss 미분을 어느 좌표에서 정의했는지는 구분해야 한다. 이 서술을 임의 cross-entropy·MAE에서 원래 출력의 동일 dynamics가 곧바로 성립한다는 근거로 사용하지 않는다. 논문 표시식을 확인한 관찰이며 실제 훈련 실패를 증명한 결과가 아니다.
+
+<a id="c06"></a>**C06.** Eq.12는 `Σωiℓi`인데 Eq.13은 `Dω K Dω`와 같은 O 표기를 사용한다. B.3 p25에서는 중간에 출력을 `ωj fj`로 바꾸고도 잔차에 `fi−yi`를 유지한다. 고정 weight에서 원래 출력은 `dO/dt = −K Dω(O−y)`다. 변환된 출력을 쓰려면 target·잔차의 좌표도 일관되게 정해야 하며 시간에 따라 weight가 변하면 출력 변환 미분의 추가 항도 고려해야 한다. 원78이 이미 적은 주의점이며 새 정리나 성능 반박으로 집계하지 않는다.
+
+<a id="c07"></a>**C07.** Eq.14–15는 과제별 대각 block의 최대 고유값 λi에 대해 `ωi = sqrt(mean(λ)/λi)`를 정한다. 합이 1인 확률 weight가 아니다. 대각 block의 최대값을 맞추는 직관과 전체 block 행렬의 모든 고유값·비대각 상호작용·모든 과제의 성능 보장은 다르다. 과제 간 충돌을 모두 제거한다고 확대하지 않는다.
+
+<a id="c08"></a>**C08.** NTKMTL-SR은 공유 표현 z에 대한 head 쪽 미분을 사용한다. Eq.16의 chain rule로 설명하며 Eq.17은 `df/dz`의 Gram이다. weight를 정한 뒤 합친 loss로 공유 backbone을 한 번 backward한다는 설명이지, 과제별 head의 미분과 모델 학습 자체가 없어지는 것은 아니다. Algorithm 1의 출력 Jacobian과 loss gradient도 구분한다.
+
+<a id="c09"></a>**C09.** §4.1은 일반 NTKMTL을 n=1, 과제 수 k만큼 backward하는 조건으로 설명하고 SR 기본 n=4를 제시한다. 다만 부록 C.2는 NYUv2의 SR을 n=2로 명시한다. 모든 benchmark의 SR이 n=4라는 단일 설정으로 정리하지 않는다.
+
+## 저자 실험의 성능·비교군·비용
+
+<a id="c10"></a>**C10.** Δm%는 단일 과제 학습(STL)을 기준으로 지표 방향을 맞춘 상대 변화의 평균이며 낮을수록 좋다. 음수는 평균 개선, 양수는 평균 손해다. MR도 낮을수록 좋지만 비교 방법 집합과 각 지표의 순위에 의존한다. 다른 비교군에서 얻은 MR이나 MR 우위를 동일한 절대 성능 개선으로 바꾸지 않는다.
+
+<a id="c11"></a>**C11.** 평가 대상은 NYUv2 3과제, CityScapes 2과제, QM9 11과제, CelebA 40과제, MT10 10과제다. 논문의 과제 수와 UPC의 cell 수·시계열 기간은 대응하지 않는다. NYUv2·CityScapes는 SegNet/MTAN, 200 epochs, learning rate 1e−4에서 100 epochs 뒤 5e−5, batch size 2/8이다. CelebA는 9-layer CNN과 과제별 선형층, Adam, 15 epochs, batch size 256으로 설명한다.
+
+<a id="c12"></a>**C12.** Table 1의 NYUv2에서 NTKMTL은 MR 4.33·Δm −6.99%, SR은 5.56·−5.35%다. NTKMTL의 surface normal 5개 지표는 STL보다 좋지만 SR은 median angle과 세 threshold 지표에서 STL보다 나쁘다. NTKMTL이 표의 모든 지표에서 최고인 것은 아니다. DB-MTL의 segmentation 41.42/66.45, STCH의 depth 0.4965/0.2010 등 다른 방법의 이점도 남는다.
+
+<a id="c13"></a>**C13.** Table 2의 CityScapes에서 NTKMTL은 MR 7.00·Δm +1.92%, SR은 6.25·+3.84%다. NTKMTL의 작은 평균 손해와 SR의 더 좋은 평균 순위는 다른 성질이다. Table 7에는 CelebA 결과가 없는 Aligned-MTL·SDMGrad·GO4Align도 포함되어 MR이 각각 8.50/8.00으로 달라진다. 본문과 부록의 이 차이는 비교군 차이로 설명되며 같은 Δm 값은 유지된다.
+
+<a id="c14"></a>**C14.** CelebA의 Table 2에는 NTKMTL MR 4.35·Δm −0.77%, SR 4.33·+0.23%가 인쇄되어 있다. 본문은 NTKMTL이 MR과 Δm 모두 최고라고 설명하지만 표시 MR은 SR이 더 작다. 본문 표현으로 표를 조용히 고치지 않으며, 이 작은 순위 차이에 대한 유의성도 주장하지 않는다.
+
+<a id="c15"></a>**C15.** Table 3의 QM9에서 NTKMTL은 MR 5.91·Δm +56.7%, SR은 4.00·+30.7%다. 표시된 MTL 방법들의 Δm은 모두 양수다. SR의 MTL 비교상 좋은 요약 성능과 STL 대비 남는 평균 손해를 함께 기록한다. NTKMTL의 Δm은 FAMO +38.9%, SI +39.7%, GO4Align +40.5%보다 크다. 표 제목은 MAE이며 p9 설명의 L2 loss와 구분한다. 저장 trainer 본문이 없어 실제 훈련 loss를 이 묶음만으로 확정하지 않았다.
+
+<a id="c16"></a>**C16.** QM9의 부록 C.1은 MPNN으로 300 epochs 학습하면서 batch size를 120에서 60으로, scheduler patience를 5에서 10으로 바꿨다고 보고한다. Table 6의 위 행은 원래 논문 값, 녹색 아래 행은 NTKMTL 저자가 변경한 설정으로 다시 실행한 값이다. 아카이브의 독립 재현이 아니며, 두 변경이 함께 있으므로 개선을 scheduler 하나의 인과 효과로 단정하지 않는다.
+
+<a id="c17"></a>**C17.** C.1의 “모든 과제 개선”이라는 설명과 달리 Table 6에서 FAMO의 HOMO 오차는 94.0에서 98.09로 커진다. LS·RLW·Nash-MTL의 Δm도 각각 177.6→179.8, 203.8→222.6, 62.0→72.9로 커진다. STL 기준 자체도 다시 학습했으므로 개별 raw error 개선과 STL 상대 평균의 변화가 같을 필요는 없다. 다른 benchmark의 비교값은 C.2가 원 논문에서 가져왔다고 설명하므로 QM9의 재실행 범위를 전체 표로 확대하지 않는다.
+
+<a id="c18"></a>**C18.** Table 4의 MT10은 10 seeds의 성공률 평균±standard error다. NTKMTL 0.96±0.03, Aligned-MTL 0.97±0.05, STL 0.90±0.03을 보고한다. SAC/MTRL에서 2 million steps, batch size 1,280 조건이다. head와 공유부 분리가 어려워 NTKMTL을 주로 확인했다고 설명하며 SR 결과는 이 표에 없다. seed별 결과나 검정 없이 유의한 우위를 덧붙이지 않는다.
+
+<a id="c19"></a>**C19.** Figure 1의 CelebA epoch 시간은 LS 대비 NTKMTL 4.33배, SR 1.24배다. 같은 그림의 LS 1.00, SI 1.00, FAMO 1.08, GO4Align 1.03, MGDA 5.58, PCGrad 8.08, CAGrad 4.47, Nash-MTL 6.11을 함께 보존한다. 논문 저자의 특정 모델·과제 수에서 측정한 상대 시간이며 TabICL·RCTL의 예상 실행 시간으로 환산하지 않는다.
+
+<a id="c20"></a>**C20.** Figure 2는 NYUv2의 equal-weight 학습 중 surface normal의 최대 고유값이 대체로 더 작다는 관찰이다. 원시 좌표를 복원하지 않았다. Figure 3의 QM9 SR ablation은 n=1,2,3,4,6에서 3 seeds를 사용하며 n=3이 n=2보다 나쁜 평균으로 표시되어 단조 개선은 아니다. 본문은 mean/variance, caption은 mean/stderr라고 적는다. 정확한 점별 평균·오차막대 값은 숫자로 인쇄되지 않아 추정값을 만들지 않는다.
+
+<a id="c21"></a>**C21.** Figure 4에서 QM9 SR의 LS 대비 epoch 시간은 n=1,2,3,4,6에 각각 1.05,1.14,1.27,1.40,1.69배다. n=4와 6의 성능이 비슷하다는 설명과 비용 증가를 함께 보면 저자가 n=4를 절충안으로 제시한 이유를 확인할 수 있다. 세 데이터셋의 Table 8–9는 3 seeds 평균과 stderr를 별도로 제공한다. stderr를 표준편차나 유의성 검정 결과로 바꾸지 않는다.
+
+## 저장된 코드에서 실제 활성화된 경로
+
+<a id="c22"></a>**C22.** 저장 공식 코드의 commit은 `abbf1f00c2b0bc207a950149cf4bf3a03cd69c8f`, metadata 날짜는 2025-10-25다. README와 Python 2개의 Git blob은 저장 tree와 일치한다. tree 응답 최상위 sha가 commit ID로 적혀 있어 root entry를 재구성했고 실제 root tree `bf56a93b566a910c78907676c731efc6144757ab`와 대조했다. 이 판본 일치가 논문 모든 실행의 환경·설정 복원을 뜻하지는 않는다.
+
+<a id="c23"></a>**C23.** README는 Python 3.9.7 환경, 별도 requirements, CUDA에 맞는 PyTorch 설치를 안내한다. 예시는 seed 0과 `ntk_exp=0.5`이며 일부 상황에 0.75를 권한다. 이를 논문 모든 run의 실제 seed·지수 설정으로 확정하지 않는다. README의 설치·clone·실행 명령은 역사적 자료로 읽었으며 수행하지 않았다.
+
+<a id="c24"></a>**C24.** `weight_methods.py`에는 NTKMTL 외에 LS/SI·FAMO·Nash-MTL·MGDA·PCGrad·CAGrad·FairGrad·GradDrop·IMTLG·DWA·PIVRG·ConsMTL 등의 코드와 log 변형이 함께 있다. 파일 전체를 읽었지만 코드 존재는 논문 표에 그 구현으로 실행했다는 증거가 아니다. `cluster_methods.py`의 두 활성 class와 `weight_methods.py`의 22개 class를 구분했다. 별도 base `WeightMethod`들의 동작도 같다고 가정하지 않는다.
+
+<a id="c25"></a>**C25.** 활성 NTKMTL n=1 경로는 각 `losses[i].backward()` 뒤 공유 파라미터의 gradient를 모은 G를 사용한다. `GTG = GᵀG`이고 `weight = (trace(GTG)/diag(GTG))^ntk_exp`다. 논문의 출력 f Jacobian과 loss gradient는 다른 양이다. 이름이 NTK라는 이유로 출력 Jacobian kernel을 그대로 계산했다고 표시하지 않는다.
+
+<a id="c26"></a>**C26.** 논문 Eq.15는 고유값의 평균을, 활성 코드는 diagonal 값의 합인 trace를 사용한다. 같은 λ라는 가정 아래 이 차이만 비교하면 task 공통 `k^ntk_exp` 배율이며 코드의 `overwrite_grad`에는 추가 k 배율도 있다. 하지만 실제로는 출력 Jacobian과 loss gradient부터 다르고 clipping·optimizer·trainer 조건도 있으므로 두 전체 구현이 단지 학습률만 바꾸면 같다고 결론 내리지 않는다.
+
+<a id="c27"></a>**C27.** 활성 루프는 각 과제 뒤 공유부 `.grad`를 비우고 마지막에 가중합을 덮어쓴다. 과제별 파라미터 gradient는 이 경로 안에서 같은 weight로 다시 쓰지 않는다. 호출자의 초기화와 파라미터 공유 조건은 trainer 확인이 필요하다. NTKMTL의 override `backward`는 공유 gradient를 쓴 뒤 기본 max_norm=1.0으로 clip한다. base class의 backward 전 clip 위치와 혼동하지 않는다.
+
+<a id="c28"></a>**C28.** 함수 앞부분은 `batch_size = losses.shape[0]`을 정하고 공유 파라미터 수×과제 수×그 값 크기의 임시 배열 등을 만들지만 활성 n=1 경로에서는 그 배열을 사용하지 않는다. 활성 루프는 과제별 scalar loss를 기대한다. trainer 본문 없이 실제 loss tensor의 구성·mini-batch 분할·메모리 비용을 확정하거나 실행 오류라고 선언하지 않는다.
+
+<a id="c29"></a>**C29.** `trace/diag` 계산에는 0 diagonal에 대한 epsilon이나 명시적 guard가 없다. 파일 위의 EPS 선언이 이 나눗셈에 적용된다고 설명하지 않는다. 재사용 시 영 gradient 조건과 수치 안정성을 확인할 이유가 되지만, 저장된 실험에서 실제 0이 발생했다는 관측은 없다.
+
+<a id="c30"></a>**C30.** SR 부분은 1612–1637행의 주석이다. 그 안에서도 `autograd(losses[j][i], z)`로 loss의 표현 gradient를 구하고 n×n Gram의 최대 고유값을 사용한다. Eq.17의 `df/dz`와 구별한다. 주석은 override backward를 해제하라고 적고 README도 weight 파일과 trainer 수정이 필요하다고 안내한다. 기본 `ntkmtl` 호출을 SR 실행으로 분류하지 않는다.
+
+<a id="c31"></a>**C31.** 1660–1713행의 일반 n>1 경로도 전부 주석이며 실험에 사용하지 않은 참고용이라고 명시한다. 과제별 공유 gradient를 저장하고 고유값·평균 gradient를 계산하는 설명을 읽었으나 활성 경로나 검증된 재현 코드로 표시하지 않는다. 기본 선택 registry에는 `ntkmtl`과 `go4align`이 별도로 있다.
+
+<a id="c32"></a>**C32.** `cluster_methods.py`에서 실행되는 GO4ALIGN은 현재 detached loss를 사용한다. loss 합/각 loss와 `exp(−0.0001×loss)`로 갱신한 정규화 adversarial probability를 곱한 weight를 만들고, 그룹 수가 2 이상이면 그 scalar weight에 KMeans(random_state=42)를 적용한다. 그룹 중심 weight로 loss를 합친다. 출력 Jacobian에 의한 NTK grouping이나 모델 학습 전 cell 소속 계산이 아니다.
+
+<a id="c33"></a>**C33.** 같은 파일의 GROUP·random·SpectralClustering·SDP 관련 변형은 155–424행에 주석으로 남아 있다. import 또는 함수 이름만 보고 모두 실행된 후보로 세지 않는다. GO4ALIGN의 입력 0 loss와 그룹 수 검증도 재사용할 때 확인할 부분이며, 여기서 실행해 실패를 재현한 것은 아니다.
+
+<a id="c34"></a>**C34.** 저장된 46-entry tree에는 trainer·utils·`min_norm_solvers.py`·requirements·LICENSE 경로가 있지만 해당 본문은 이 원78 NTKMTL packet에 없다. metadata의 master/MIT 표기는 당시 저장 응답이며 현재 상태나 LICENSE 전문 검토를 뜻하지 않는다. 저장 tree에는 MT10 경로도 없다. API·환경·실제 loss·seed별 결과까지 독립 재현했다고 표시하지 않는다.
+
+## 당시 판단과 같은 검토를 반복하지 않을 조건
+
+<a id="c35"></a>**C35.** 원78은 이미 출력 좌표 변경, loss-gradient Gram, 주석 SR, 별도 GO4ALIGN을 구분했다. 이번 29쪽·전체 코드 검토는 그 판단의 근거와 범위를 보완한다. 예전의 부분 독해를 과거부터 전수 독해였던 것처럼 바꾸거나 같은 관찰을 신규 연구 성과로 더하지 않는다.
+
+<a id="c36"></a>**C36.** 당시 설계에서 RCTL 학습 중 gradient를 소속 결정에 사용하면 최종 모델과 독립적인 clustering이라는 조건을 벗어난다. 별도 probe를 사용하면 그 직접 의존은 피할 수 있지만 probe의 학습 균형이 RCTL의 실제 target 공동학습 효과와 연결된다는 증거는 별도로 필요하다. 모든 gradient 기반 연구가 불가능하다는 판정이 아니다.
+
+<a id="c37"></a>**C37.** clustering 이후 RCTL의 task loss를 조절하는 방법은 목적상 구별할 수 있다. 다만 알려진 다중 과제 가중법을 붙였다는 사실만으로 새로운 clustering 기여가 생기지는 않는다는 원78 판단을 보존한다. 평균·변동이 비슷한지, feature를 재사용하기 좋은지, 실제 출력을 같이 학습하면 좋은지의 질문을 합치지 않는다.
+
+<a id="c38"></a>**C38.** 재검토할 때는 최종 모델 의존을 허용하는지, 무엇을 공유하는지, task별 head·출력 변환·추가 적합을 허용하는지부터 명시해야 한다. multi-head로 문제를 바꾸면 같은 구조의 global multi-head 비교도 필요하다는 당시 조건을 연결한다. 원78의 다음 진입 조건은 역사적 제안이며 이 정리가 새 실험을 승인하거나 실행한 것은 아니다.
+
+<a id="c39"></a>**C39.** 원78의 기존 TabICLv2 직접 예측에 관한 긍정적 증거와 16-cell RCTL의 global/K4 비교는 이 문헌 검토와 별도 근거다. raw-unit 결과가 이미 summary에 있었음을 확인한 일을 새 실험이나 새 우위 발견으로 세지 않는다. NTKMTL 저자의 benchmark 수치를 UPC 소속 수정·최종 RCTL 개선 수치로 섞지 않는다.
+
+<a id="c40"></a>**C40.** TXT의 29개 본문은 PDF의 layout 추출과 경계 newline만 제외하면 정확히 일치했다. 추출은 표의 다른 열과 쪽번호를 붙이는 경우가 있어 작은 숫자를 페이지 이미지에서 대조했다. 원 PNG는 p5·p6·p25를 직접 읽었다. PDF 재렌더·TXT·정확 사본은 추가 독립 논문 본문으로 세지 않는다. 폰트 대체 경고와 추출 한계도 기록한다.
+
+<a id="c41"></a>**C41.** 체크리스트의 단일 RTX 4090과 재현성 관련 답변은 저자 보고다. 전체 GPU시간·실제 seed·실행별 로그를 확보한 비용 원장이 아니다. 참고문헌 63개 항목을 읽었다고 인용된 원 논문 63편을 읽은 것으로 세지 않는다. Impact Statement의 task 간 성능 균형을 측정된 사회적 공정성 효과로 바꾸지 않는다.
+
+<a id="c42"></a>**C42.** 재사용을 위해 공식 PDF·고정 commit·원본 hash·표시 결과·정적 구현 관찰을 연결했다. 원 논문과 외부 코드 전체는 재게시하지 않는다. 실제 trainer·환경·원시 결과·장기 팀 접근, 원78의 남은 검색/접근 자료, 원79 이후 자료와 이전 partial 범위, 전체 실패·비용 통합과 최종 검수는 미완료다. 이번 묶음을 전체 아카이브 완료로 표시하지 않는다.
+
+## 관련 근거로 바로 이동
+
+- [논문 표시 결과와 비교 조건](../evidence/0081-ntkmtl/reported-results.json)
+- [수식·그림·코드의 관찰 위치](../evidence/0081-ntkmtl/method-and-figure-scope.json)
+- [commit·tree·blob과 미확보 의존 파일](../evidence/0081-ntkmtl/static-code-version-check.json)
+- [자료별 실제 읽은 범위](../catalog/history-081-sources.jsonl)
+- [원본 보존·사본 검증](../evidence/0081-ntkmtl/provenance-check.json)

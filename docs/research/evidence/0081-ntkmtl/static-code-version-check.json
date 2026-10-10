@@ -1,0 +1,181 @@
+{
+  "commit": "abbf1f00c2b0bc207a950149cf4bf3a03cd69c8f",
+  "commit_date": "2025-10-25T04:12:02Z",
+  "actual_root_tree": "bf56a93b566a910c78907676c731efc6144757ab",
+  "tree_json_top_sha": "abbf1f00c2b0bc207a950149cf4bf3a03cd69c8f",
+  "root_entries": 7,
+  "total_tree_entries": 46,
+  "truncated": false,
+  "blobs": [
+    {
+      "source_id": "SRC-0064483",
+      "path": "README.md",
+      "git_blob": "b664fed601f85056102fb850fea45b23aca72955",
+      "sha256": "abfe9c307ce863cc8d4c36ea103c10be1c11add23e8d9d75ee71ca660a4d0fc1",
+      "lines": 74
+    },
+    {
+      "source_id": "SRC-0064484",
+      "path": "methods/cluster_methods.py",
+      "git_blob": "6966724c493b31238c5f16ae2c811e5f89958fcb",
+      "sha256": "742a931b3b4746c99c07255e22f5d4117475665bb7cdc3a3ce4ceb218ce0421a",
+      "lines": 424
+    },
+    {
+      "source_id": "SRC-0064485",
+      "path": "methods/weight_methods.py",
+      "git_blob": "30123abf88c55b15bba70f4f4838c28476c07a81",
+      "sha256": "fbc5c357f4e6fa2610dc6c8dd74e1cc1b9ef84c41b5232b5c0ea6376f7ff27bc",
+      "lines": 1823
+    }
+  ],
+  "note": "저장 tree 응답의 최상위 sha는 commit ID다. root entries로 Git tree 객체를 재구성해 commit.tree.sha와 대조했다.",
+  "saved_repo_metadata": {
+    "full_name": "jianke0604/NTKMTL",
+    "default_branch": "master",
+    "license_spdx": "MIT"
+  },
+  "metadata_temporality": "당시 저장된 응답의 값. 현재 원격 상태나 라이선스 전문 검토를 뜻하지 않음.",
+  "active_top_level_classes": {
+    "SRC-0064484": [
+      {
+        "name": "WeightMethod",
+        "first_line": 23,
+        "last_line": 104
+      },
+      {
+        "name": "GO4ALIGN",
+        "first_line": 106,
+        "last_line": 153
+      }
+    ],
+    "SRC-0064485": [
+      {
+        "name": "WeightMethod",
+        "first_line": 18,
+        "last_line": 104
+      },
+      {
+        "name": "FAMO",
+        "first_line": 107,
+        "last_line": 145
+      },
+      {
+        "name": "NashMTL",
+        "first_line": 148,
+        "last_line": 294
+      },
+      {
+        "name": "LinearScalarization",
+        "first_line": 297,
+        "last_line": 316
+      },
+      {
+        "name": "ScaleInvariantLinearScalarization",
+        "first_line": 319,
+        "last_line": 338
+      },
+      {
+        "name": "MGDA",
+        "first_line": 341,
+        "last_line": 421
+      },
+      {
+        "name": "LOG_MGDA",
+        "first_line": 424,
+        "last_line": 506
+      },
+      {
+        "name": "STL",
+        "first_line": 509,
+        "last_line": 522
+      },
+      {
+        "name": "Uncertainty",
+        "first_line": 525,
+        "last_line": 547
+      },
+      {
+        "name": "PCGrad",
+        "first_line": 550,
+        "last_line": 644
+      },
+      {
+        "name": "CAGrad",
+        "first_line": 647,
+        "last_line": 768
+      },
+      {
+        "name": "FairGrad",
+        "first_line": 771,
+        "last_line": 873
+      },
+      {
+        "name": "GradDrop",
+        "first_line": 876,
+        "last_line": 964
+      },
+      {
+        "name": "LOG_CAGrad",
+        "first_line": 967,
+        "last_line": 1090
+      },
+      {
+        "name": "RLW",
+        "first_line": 1093,
+        "last_line": 1104
+      },
+      {
+        "name": "IMTLG",
+        "first_line": 1107,
+        "last_line": 1181
+      },
+      {
+        "name": "LOG_IMTLG",
+        "first_line": 1184,
+        "last_line": 1258
+      },
+      {
+        "name": "DynamicWeightAverage",
+        "first_line": 1261,
+        "last_line": 1307
+      },
+      {
+        "name": "PIVRG",
+        "first_line": 1309,
+        "last_line": 1425
+      },
+      {
+        "name": "ConsMTL",
+        "first_line": 1427,
+        "last_line": 1566
+      },
+      {
+        "name": "NTKMTL",
+        "first_line": 1568,
+        "last_line": 1773
+      },
+      {
+        "name": "WeightMethods",
+        "first_line": 1776,
+        "last_line": 1797
+      }
+    ]
+  },
+  "missing_dependency_contents": [
+    "requirements.txt",
+    "methods/min_norm_solvers.py",
+    "experiments/nyuv2/trainer.py",
+    "experiments/cityscapes/trainer.py",
+    "experiments/celeba/trainer.py",
+    "experiments/quantum_chemistry/trainer.py",
+    "experiments/quantum_chemistry/utils.py",
+    "experiments/utils.py",
+    "LICENSE"
+  ],
+  "dependency_scope": "tree에 경로가 있지만 이 원78 NTKMTL 코드 packet에는 README와 Python 2개만 저장됨. trainer/실제 loss·config·seed·환경 및 LICENSE 전문은 미독해.",
+  "static_only": true,
+  "source_code_imported": false,
+  "source_code_executed": false,
+  "batch_id": "history-081"
+}
