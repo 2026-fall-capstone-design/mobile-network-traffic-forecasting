@@ -55,3 +55,7 @@
 ## 77의 동적 소속 근거
 
 [77 DLM의 직접 대조](../records/0077-dynamic-membership-dlm.md)에서 시간별 확률·EDP·전체구간 smoothing을 확인했다. 이는 시간적 안정화의 선행 사례이며 RCTL 학습 자료 partition의 우위까지 입증하지 않는다. 같은 고정코드의 정적 차이는 별도 조건으로 보존한다. [H078의 두 논문 대조](../records/0078-dynamic-graphs-load-balancing.md)에서 DynaSTar의 예측기 내부 관계와 Liu의 예측 후 참여 셀 군집을 보완했다. 도로 MAE, 통신 예측 오차, RL 복합 보상과 UPC 공유 이득을 서로 대체하지 않는다.
+
+## 회귀 전이의 직접 원문·코드 대조
+
+[H079](../records/0079-regression-transferability.md)에서 Nguyen 등의 UAI 2023 본문·보충자료 23쪽과 고정 점수 함수를 확인했다. 이론은 target head 재적합과 iid·bounded ReLU 조건을 사용한다. 높은 전이 점수는 같은 scalar target pooling의 충분조건이 아니며, 코드가 반환하는 잔차 점수와 논문의 regularized objective도 구분한다. Task2Vec·NTKMTL의 후속 본문 검수는 별도로 계속한다.

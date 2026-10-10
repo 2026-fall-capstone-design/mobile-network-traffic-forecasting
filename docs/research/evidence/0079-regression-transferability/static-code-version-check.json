@@ -1,0 +1,75 @@
+{
+  "commit_sha": "b494b4e56be86229883b039230f708236364b772",
+  "commit_tree_sha": "2b310360f7082042fbcb7911665cce7e5413fbe9",
+  "saved_tree_response_root_sha": "b494b4e56be86229883b039230f708236364b772",
+  "reconstructed_top_level_git_tree_sha": "2b310360f7082042fbcb7911665cce7e5413fbe9",
+  "reconstructed_tree_matches_commit": true,
+  "root_field_matches_commit_tree": false,
+  "tree_entries": 9,
+  "top_level_entries": 7,
+  "truncated": false,
+  "blobs": [
+    {
+      "source_id": "SRC-0064489",
+      "path": "README.md",
+      "git_blob_sha1": "aef75a1ae0c02f210ad187b932c12b5a2802f1ae",
+      "tree_blob_matches": true,
+      "bytes": 439
+    },
+    {
+      "source_id": "SRC-0064490",
+      "path": "reg_score.py",
+      "git_blob_sha1": "d2189482d0e9729a60050b9f06c78883259b483b",
+      "tree_blob_matches": true,
+      "bytes": 1169
+    }
+  ],
+  "saved_repo_license": null,
+  "saved_repo_default_branch": "main",
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "note": "tree JSON 최상위 sha는 commit SHA와 같고 commit.tree.sha와 다르다. 원 필드를 보정하지 않고 blob과 root tree 바이트를 별도 검증한다. 현재 GitHub 상태를 조회한 결과가 아니다.",
+  "batch_id": "history-079",
+  "status": "source_checked",
+  "sources": [
+    {
+      "source_id": "SRC-0064489",
+      "source_sha256": "ca6799dd017a7ce5d2f424b5150529ec5aca6969a2f468549c52391cc9fb8bc7",
+      "locator": "전체 정적 독해 및 저장 blob/metadata 대조"
+    },
+    {
+      "source_id": "SRC-0064490",
+      "source_sha256": "b49a231e61c228cee26c1e60402a643474c8cafd1cdec262651956c7dbea2e45",
+      "locator": "전체 정적 독해 및 저장 blob/metadata 대조"
+    },
+    {
+      "source_id": "SRC-0064499",
+      "source_sha256": "6062f4c6eb4ce3a736ec30792f49ab32ff4013deb6c01362f1d38ce328e37df7",
+      "locator": "전체 정적 독해 및 저장 blob/metadata 대조"
+    },
+    {
+      "source_id": "SRC-0064500",
+      "source_sha256": "73a4b9f65a9cb0e3bd7da549800622d5790f7ee0a8e156fbb5e9236573a760d2",
+      "locator": "전체 정적 독해 및 저장 blob/metadata 대조"
+    },
+    {
+      "source_id": "SRC-0064501",
+      "source_sha256": "f99fadfd2b0be02441c1f5649b45801bb34cd5c35a64898be8dd2d575ac898e8",
+      "locator": "전체 정적 독해 및 저장 blob/metadata 대조"
+    }
+  ],
+  "auxiliary_API_references": [
+    {
+      "url": "https://scikit-learn.org/1.2/modules/generated/sklearn.metrics.mean_squared_error.html",
+      "version": "1.2.2",
+      "scope": "signature/default multioutput and MSE semantics"
+    },
+    {
+      "url": "https://scikit-learn.org/1.2/modules/generated/sklearn.linear_model.Ridge.html",
+      "version": "1.2.2",
+      "scope": "SSE+alpha penalty objective and coefficient dimensions"
+    }
+  ],
+  "auxiliary_API_note": "정리 중 공식 문서의 해당 부분만 보조 확인. 원78의 보존 실행환경 버전이나 새 inventory 전문 가산 근거가 아니다.",
+  "semantic_second_pass_complete": true
+}

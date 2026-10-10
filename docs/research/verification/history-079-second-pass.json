@@ -1,0 +1,160 @@
+{
+  "batch_id": "history-079",
+  "status": "source_checked",
+  "completed_at_utc": "2026-10-10T19:13:52.999703+00:00",
+  "claims": 40,
+  "checks": [
+    {
+      "claim_ids": [
+        1,
+        34,
+        40
+      ],
+      "source_ids": [
+        "SRC-0064470",
+        "SRC-0064471",
+        "SRC-0064472",
+        "SRC-0064473",
+        "SRC-0064489",
+        "SRC-0064490",
+        "SRC-0064499",
+        "SRC-0064500",
+        "SRC-0064501",
+        "SRC-0064506",
+        "SRC-0064507",
+        "SRC-0064508"
+      ],
+      "locations": "23쪽 첫 text/visual 독해 및 주석·첨부검사, TXT23쪽 전쪽 비교, PNG3 직접열람 기록; H074 원78 목록43개 재확인",
+      "result": "선택12그룹과 다른31그룹·재참조findings를 구분. TXT/PNG/사본·보조API를 독립본문으로 중복가산하지 않음"
+    },
+    {
+      "claim_ids": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_ids": [
+        "SRC-0064470",
+        "SRC-0064472",
+        "SRC-0022034"
+      ],
+      "locations": "main3–5쪽, supplement2–3쪽 작성후 시각 재독해; 원78 27–34행 재독해",
+      "result": "negative squared risk, rank 정의, target head와 합성의 포함조건, shared identical input, bound와M/F_j/A표기를 대조. 하한 대상을 음의 기대 제곱오차로 명료화"
+    },
+    {
+      "claim_ids": [
+        9,
+        10,
+        11
+      ],
+      "source_ids": [
+        "SRC-0064490",
+        "SRC-0064470",
+        "SRC-0022034"
+      ],
+      "locations": "reg_score30행 전체 작성후 재독해, main4쪽, 원7834행, 보조 API의 signature/목적함수",
+      "result": "같은 fit입력 재예측·Ridge n*alpha·반환 penalty없음 대조. 출력 평균의 API 조건과 미확정 당시환경을 분리"
+    },
+    {
+      "claim_ids": [
+        12,
+        13,
+        35
+      ],
+      "source_ids": [
+        "SRC-0064489",
+        "SRC-0064490",
+        "SRC-0064499",
+        "SRC-0064500",
+        "SRC-0064501",
+        "SRC-0022034"
+      ],
+      "locations": "README14행 전체 및 tree9entry/commit.tree/README patch/repo상태·license 작성후 재독해, blob·tree계산 검증, 원78공식URL",
+      "result": "고정판본 대응과 tree최상위sha차이를 함께 보존. demo/requirements/외부pickle내용·현재상태·실행재현 미확정"
+    },
+    {
+      "claim_ids": [
+        14,
+        15,
+        16,
+        17,
+        30
+      ],
+      "source_ids": [
+        "SRC-0064470",
+        "SRC-0064472"
+      ],
+      "locations": "main5–6/9쪽과 supplement4쪽 작성후 시각 재독해",
+      "result": "keypoint train/test·정규화·backbone·학습방식/epoch/augmentation, dSprites분할LR과초기LR미기록을 구별"
+    },
+    {
+      "claim_ids": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        26,
+        27
+      ],
+      "source_ids": [
+        "SRC-0064470",
+        "SRC-0064472"
+      ],
+      "locations": "main6–9쪽 Table1–4; supplement5–6/8/10–11쪽 TablesC1–C6/FigC6 작성후재대조. C5/C6는200dpi전체이미지 및96행추출문 확인",
+      "result": "표1038개 값·열순서·학습/단위 대조. 정규화의17source손해·pooled와조건부·topk·Table간baseline차이를 보존"
+    },
+    {
+      "claim_ids": [
+        25,
+        28,
+        29,
+        31
+      ],
+      "source_ids": [
+        "SRC-0064470"
+      ],
+      "locations": "main6–9쪽 Figure1–3/§6.3–6.7 작성후 시각 재독해",
+      "result": "표본100–400/10runs와5회시간을분리. Figure2right를feature수가아닌target표본수로정정, ms단위미확정유지. 시간16개와선형적합RMSE 의미대조"
+    },
+    {
+      "claim_ids": [
+        32,
+        33
+      ],
+      "source_ids": [
+        "SRC-0064470",
+        "SRC-0064472"
+      ],
+      "locations": "mainTable1와supplement4/7–9쪽 FiguresC1–C9 작성후시각재대조",
+      "result": "72subplot상관/p표시와 .410/.311 차이 확인. p=.008과.001 구별. score/gap비율의불명확한평균표현제거, rawpoints/CI미확보보존"
+    },
+    {
+      "claim_ids": [
+        36,
+        37,
+        38,
+        39
+      ],
+      "source_ids": [
+        "SRC-0022034"
+      ],
+      "locations": "원78 findings1–80행 작성후 전부 재독해",
+      "result": "당시미채택이유·조건부기호예시·기존rawMAE재인용·재진입조건을새실험/새지시와분리. 정적표기관찰을과거이유로소급하지않음"
+    }
+  ],
+  "independent_reviewer": false,
+  "independent_reproduction": false,
+  "scope": "같은 에이전트의 작성 후 주장 관련 원문 대조. 전 자료의 두 번째 전수독해나 독립연구자 검수·모델실행 재현이 아니다.",
+  "corrections": [
+    "Figure2right의가로축:특징수가아닌target표본수",
+    "C.1 score/gap의평균표현제거:원문은비율로만보고",
+    "Tr 하한의대상을음의target기대제곱오차로명료화"
+  ]
+}

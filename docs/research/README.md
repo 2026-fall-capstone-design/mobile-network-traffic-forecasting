@@ -195,3 +195,7 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [77 DLM 원문·구현 검수](records/0077-dynamic-membership-dlm.md)는 시간별 소속과 예측 시점 배정의 차이를 연결한다. 2020논문27쪽과 고정코드의 smoothing·가중치·초기화 범위를 확인할 수 있다. 코드 차이는 재사용 전 확인 조건이며 트래픽 예측 실패의 관측 결과가 아니다.
 
 [동적 그래프·부하 분산 보완](records/0078-dynamic-graphs-load-balancing.md)은 원77의 나머지 저장 자료 14개와 36개 주장을 연결한다. DynaSTar의 예측기 내부 그래프, Liu 등의 예측 후 참여 셀 군집, UPC의 학습 자료 소속을 구별한다. 논문의 지표·전력 표기 차이와 부분 문헌의 미확보 범위도 확인할 수 있다.
+
+## 78의 회귀 전이 근거
+
+[회귀 전이 점수·코드 검수](records/0079-regression-transferability.md)는 40개 주장으로 target head 재적합과 cell pooling의 차이를 연결한다. 23쪽의 논문·보충자료, 공식 점수 함수, 상관·source 선택·정규화 손해를 함께 확인한다.
