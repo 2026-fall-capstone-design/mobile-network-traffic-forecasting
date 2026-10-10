@@ -211,3 +211,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [EMD-CFL 원문 검수](records/0084-emd-cfl-embedding-distributions.md)는 local 학습 뒤 embedding 분포로 군집을 만드는 구조와 이론·비용·성능의 조건을 연결한다. 부록과 그림까지 보완했고, 정답 군집 회복과 최종 accuracy의 차이 및 인쇄 표기의 미해결 항목을 남겼다.
 
 - [원79 EMD-CFL 공식 구현 대조](records/0085-emd-cfl-code.md): 초기 군집 고정/부분 참여 재계산·투영/표본·이웃별 집계와 미소장 설정을 구분한다.
+
+- [원79 Toso 회귀 gradient 이론](records/0086-toso-gradient-heterogeneity.md): 새 iid 표본·공통 입력·PL 가정과 수렴/복원·RCTL 적용 범위를 구분한다.

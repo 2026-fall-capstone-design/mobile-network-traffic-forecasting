@@ -219,3 +219,7 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 ### H085 구현7그룹
 
 [출처](../sources/history-085.md) · [목록](history-085-sources.jsonl) · [기록](../records/0085-emd-cfl-code.md). 새텍스트5/전체JSON2와 기존2그룹 재참조를 구분한다. 코드/환경 실행은0이고 원79 외부21그룹 중 이번 범위까지18, Toso2/검색1은 후속 범위다.
+
+### H086 Toso2그룹
+
+[출처](../sources/history-086.md) · [목록](history-086-sources.jsonl) · [기록](../records/0086-toso-gradient-heterogeneity.md). 저장HTML 전체와 파생TXT를 대응했고 독립본문은1개다. 새PDF30쪽 중9쪽 보충시각대조는 원목록 가산0이며 원79 외부21그룹 중20개 연결/검색1개가 남는다.
