@@ -437,3 +437,5 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ### 예측값이 비슷하면 RCTL 학습도 같다는 제안
 
 [H086 회귀 이론](records/0086-toso-gradient-heterogeneity.md)의 Γ는 참 함수의 공통 입력 분포상 차이이며, 새 iid 표본·Jacobian·PL 조건이 붙는다. TabICL 추정값의 유사성만으로 유한 batch 학습 경로나 최종 test 성능을 보장하지 않는다. 입력 support·추정 오차·고정 최종 함수·시간 분할·기대 gradient와 SGD 변동의 차이를 먼저 명시한다.
+
+[원79 검색 후보와 판단](records/0087-distributed-search-provenance.md)을 확인해 FedCAP 약칭의 다른 논문, OCFL의 다른 arXiv ID, OTDD의 class 조건부 분포와 회귀 조건부 평균을 구분한다. 후보를 다시 제안하려면 미확인 전문·정보 조건·최종 모델 독립성과 총비용의 차이를 먼저 명시한다.

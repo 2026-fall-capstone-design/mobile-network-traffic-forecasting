@@ -1,0 +1,114 @@
+{
+  "batch_id": "history-087",
+  "status": "source_checked",
+  "claims_checked": 20,
+  "checks": [
+    {
+      "check_id": "H087-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        18
+      ],
+      "sources": [
+        "9개 key/type/decoded lengths·field SHA9·원문응답137구간 SHA 재검사",
+        "R022/R042/R043/R060/R061/R110/R113 전체 작성후 재독해"
+      ],
+      "result": "fulfilled와 오류3, 총행 표시와 본문없는open4를 구분. 16010450을 허용 상한으로 쓰지 않도록 수정. URL121은 응답 대표주소의 정확 문자열 수로 한정."
+    },
+    {
+      "check_id": "H087-SP02",
+      "claims": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "sources": [
+        "79_initial_search[0,3700),[6500,10800),R002/R004 전체",
+        "79_full_methods[13219,14200)",
+        "79_primary_open[15000,18000),[28100,29780)",
+        "R049/R055 전체 및원79 서지정정"
+      ],
+      "result": "FedCAP 개인화 통신0과 전체통신 구분, 학술지/DOI/약칭충돌·원본과HTML갱신·OCFL두식별자 유지. CoLEDS104행은 전문이 아님."
+    },
+    {
+      "check_id": "H087-SP03",
+      "claims": [
+        11,
+        12,
+        13
+      ],
+      "sources": [
+        "R057/R136 전체",
+        "79_locate_methods[24359,26000),79_next_0[23300,25852),79_joint_mean_search[26000,27288)",
+        "R023/R024/R025/R056/R057/R058/R059/R111/R112/R135/R136/R137 반환행범위 재검사",
+        "기존H083/H084/H086 기록도입·범위와 원79판단 대조"
+      ],
+      "result": "검색complexity의 의미와 abs/HTML/excerpt 범위 확인. Toso nonlinear검색이B.8말미도 포함함을 명시. EMD782행 수치 표현을 명확하게 수정."
+    },
+    {
+      "check_id": "H087-SP04",
+      "claims": [
+        14,
+        15,
+        16
+      ],
+      "sources": [
+        "R114/R116/R118/R126/R095/R084/R099 전체",
+        "79_gradient_and_transport_followup[4300,5687),[12321,14211),[14800,15900),[20816,23007)",
+        "원응답 후보 제목/URL 및 첫 독해 전체메모"
+      ],
+      "result": "P(X|Y)와회귀조건부평균 구분. CLoVE의knownK/freshiid/혼합선형조건 유지. label/Byzantine/무선/conceptdrift와 주변후보를 검증성과로 올리지 않음."
+    },
+    {
+      "check_id": "H087-SP05",
+      "claims": [
+        17,
+        20
+      ],
+      "sources": [
+        "SRC-0022036 원79 판단51행 전체 작성후 재독해"
+      ],
+      "result": "관측x/추정m 후보와 고정함수 기대gradient 관계를 과거판단으로 한정. 새pilot0, 원80계획과실행 구별. 문서속 fit상한·명령은 현재지시로 실행하지 않음."
+    },
+    {
+      "check_id": "H087-SP06",
+      "claims": [
+        19
+      ],
+      "sources": [
+        "소장21개source_id/파일명/책임검수/해시 전수대조",
+        "기존H074/H083/H084/H085/H086 전체독해flag·해시와H087연결; 보호원본6해시"
+      ],
+      "result": "4+5+2+7+2+1=21. 뒤 검수에서 재참조한 자료는 최초 내용검수 묶음에 연결. 미소장외부논문·의존파일·전체Goal과 분리."
+    }
+  ],
+  "checked_at_utc": "2026-10-10T22:12:16.066299+00:00",
+  "wording_corrections": [
+    {
+      "before": "정확한 URL 문자열은121종이다.",
+      "after": "응답마다 붙은 대표 URL을 정확 문자열로 세면121종이다."
+    },
+    {
+      "before": "EMD-CFL PDF의400·Content length16,010,450 초과",
+      "after": "EMD-CFL PDF의400(응답16,010,450바이트가 도구 허용 크기를 넘었다는 메시지)"
+    },
+    {
+      "before": "L0–238이며785행이 아니라 해당 페이지의 총782행 중 일부다.",
+      "after": "L0–238이며 해당 페이지의 총782행 중 일부다."
+    },
+    {
+      "before": "nonlinear 부록 도입 L658–663",
+      "after": "B.8 말미와 nonlinear 부록 도입 L658–663"
+    }
+  ],
+  "independent_reviewer": false,
+  "full_second_read_all_sources": false,
+  "source_code_executed": false,
+  "new_model_runs": 0
+}
