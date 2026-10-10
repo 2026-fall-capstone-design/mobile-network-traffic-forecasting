@@ -1,0 +1,665 @@
+{
+  "batch_id": "history-059",
+  "main_PDF_tables_visually_checked": [
+    1,
+    2,
+    3
+  ],
+  "table1": [
+    {
+      "model": "VAR",
+      "CRPS_ratio": "10.0",
+      "CRPS_sum_ratio": "10.9",
+      "parameter_ratio": "35.0"
+    },
+    {
+      "model": "GARCH",
+      "CRPS_ratio": "7.8",
+      "CRPS_sum_ratio": "6.3",
+      "parameter_ratio": "6.2"
+    },
+    {
+      "model": "Vec-LSTM-ind",
+      "CRPS_ratio": "3.6",
+      "CRPS_sum_ratio": "6.8",
+      "parameter_ratio": "13.9"
+    },
+    {
+      "model": "Vec-LSTM-ind-scaling",
+      "CRPS_ratio": "1.4",
+      "CRPS_sum_ratio": "1.4",
+      "parameter_ratio": "13.9"
+    },
+    {
+      "model": "Vec-LSTM-fullrank",
+      "CRPS_ratio": "29.1",
+      "CRPS_sum_ratio": "44.4",
+      "parameter_ratio": "103.4"
+    },
+    {
+      "model": "Vec-LSTM-fullrank-scaling",
+      "CRPS_ratio": "22.5",
+      "CRPS_sum_ratio": "37.6",
+      "parameter_ratio": "103.4"
+    },
+    {
+      "model": "Vec-LSTM-lowrank-Copula",
+      "CRPS_ratio": "1.1",
+      "CRPS_sum_ratio": "1.7",
+      "parameter_ratio": "20.3"
+    },
+    {
+      "model": "GP",
+      "CRPS_ratio": "4.5",
+      "CRPS_sum_ratio": "9.5",
+      "parameter_ratio": "1.0"
+    },
+    {
+      "model": "GP-scaling",
+      "CRPS_ratio": "2.0",
+      "CRPS_sum_ratio": "3.4",
+      "parameter_ratio": "1.0"
+    },
+    {
+      "model": "GP-Copula",
+      "CRPS_ratio": "1.0",
+      "CRPS_sum_ratio": "1.0",
+      "parameter_ratio": "1.0"
+    }
+  ],
+  "table2": [
+    {
+      "model": "VAR",
+      "dataset": "exchange",
+      "mean": "0.010",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "VAR",
+      "dataset": "solar",
+      "mean": "0.524",
+      "std": "0.001",
+      "missing": false
+    },
+    {
+      "model": "VAR",
+      "dataset": "elec",
+      "mean": "0.031",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "VAR",
+      "dataset": "traffic",
+      "mean": "0.144",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "VAR",
+      "dataset": "taxi",
+      "mean": "0.292",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "VAR",
+      "dataset": "wiki",
+      "mean": "3.400",
+      "std": "0.003",
+      "missing": false
+    },
+    {
+      "model": "GARCH",
+      "dataset": "exchange",
+      "mean": "0.020",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "GARCH",
+      "dataset": "solar",
+      "mean": "0.869",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "GARCH",
+      "dataset": "elec",
+      "mean": "0.278",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "GARCH",
+      "dataset": "traffic",
+      "mean": "0.368",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "GARCH",
+      "dataset": "taxi",
+      "mean": null,
+      "std": null,
+      "missing": true
+    },
+    {
+      "model": "GARCH",
+      "dataset": "wiki",
+      "mean": null,
+      "std": null,
+      "missing": true
+    },
+    {
+      "model": "Vec-LSTM-ind",
+      "dataset": "exchange",
+      "mean": "0.009",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind",
+      "dataset": "solar",
+      "mean": "0.470",
+      "std": "0.039",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind",
+      "dataset": "elec",
+      "mean": "0.731",
+      "std": "0.007",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind",
+      "dataset": "traffic",
+      "mean": "0.110",
+      "std": "0.020",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind",
+      "dataset": "taxi",
+      "mean": "0.429",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind",
+      "dataset": "wiki",
+      "mean": "0.801",
+      "std": "0.029",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind-scaling",
+      "dataset": "exchange",
+      "mean": "0.008",
+      "std": "0.001",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind-scaling",
+      "dataset": "solar",
+      "mean": "0.391",
+      "std": "0.017",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind-scaling",
+      "dataset": "elec",
+      "mean": "0.025",
+      "std": "0.001",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind-scaling",
+      "dataset": "traffic",
+      "mean": "0.087",
+      "std": "0.041",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind-scaling",
+      "dataset": "taxi",
+      "mean": "0.506",
+      "std": "0.005",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-ind-scaling",
+      "dataset": "wiki",
+      "mean": "0.133",
+      "std": "0.002",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-fullrank",
+      "dataset": "exchange",
+      "mean": "0.646",
+      "std": "0.114",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-fullrank",
+      "dataset": "solar",
+      "mean": "0.956",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-fullrank",
+      "dataset": "elec",
+      "mean": "0.999",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-fullrank",
+      "dataset": "traffic",
+      "mean": null,
+      "std": null,
+      "missing": true
+    },
+    {
+      "model": "Vec-LSTM-fullrank",
+      "dataset": "taxi",
+      "mean": null,
+      "std": null,
+      "missing": true
+    },
+    {
+      "model": "Vec-LSTM-fullrank",
+      "dataset": "wiki",
+      "mean": null,
+      "std": null,
+      "missing": true
+    },
+    {
+      "model": "Vec-LSTM-fullrank-scaling",
+      "dataset": "exchange",
+      "mean": "0.394",
+      "std": "0.174",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-fullrank-scaling",
+      "dataset": "solar",
+      "mean": "0.920",
+      "std": "0.035",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-fullrank-scaling",
+      "dataset": "elec",
+      "mean": "0.747",
+      "std": "0.020",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-fullrank-scaling",
+      "dataset": "traffic",
+      "mean": null,
+      "std": null,
+      "missing": true
+    },
+    {
+      "model": "Vec-LSTM-fullrank-scaling",
+      "dataset": "taxi",
+      "mean": null,
+      "std": null,
+      "missing": true
+    },
+    {
+      "model": "Vec-LSTM-fullrank-scaling",
+      "dataset": "wiki",
+      "mean": null,
+      "std": null,
+      "missing": true
+    },
+    {
+      "model": "Vec-LSTM-lowrank-Copula",
+      "dataset": "exchange",
+      "mean": "0.007",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-lowrank-Copula",
+      "dataset": "solar",
+      "mean": "0.319",
+      "std": "0.011",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-lowrank-Copula",
+      "dataset": "elec",
+      "mean": "0.064",
+      "std": "0.008",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-lowrank-Copula",
+      "dataset": "traffic",
+      "mean": "0.103",
+      "std": "0.006",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-lowrank-Copula",
+      "dataset": "taxi",
+      "mean": "0.326",
+      "std": "0.007",
+      "missing": false
+    },
+    {
+      "model": "Vec-LSTM-lowrank-Copula",
+      "dataset": "wiki",
+      "mean": "0.241",
+      "std": "0.033",
+      "missing": false
+    },
+    {
+      "model": "GP",
+      "dataset": "exchange",
+      "mean": "0.011",
+      "std": "0.001",
+      "missing": false
+    },
+    {
+      "model": "GP",
+      "dataset": "solar",
+      "mean": "0.828",
+      "std": "0.010",
+      "missing": false
+    },
+    {
+      "model": "GP",
+      "dataset": "elec",
+      "mean": "0.947",
+      "std": "0.016",
+      "missing": false
+    },
+    {
+      "model": "GP",
+      "dataset": "traffic",
+      "mean": "2.198",
+      "std": "0.774",
+      "missing": false
+    },
+    {
+      "model": "GP",
+      "dataset": "taxi",
+      "mean": "0.425",
+      "std": "0.199",
+      "missing": false
+    },
+    {
+      "model": "GP",
+      "dataset": "wiki",
+      "mean": "0.933",
+      "std": "0.003",
+      "missing": false
+    },
+    {
+      "model": "GP-scaling",
+      "dataset": "exchange",
+      "mean": "0.009",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "GP-scaling",
+      "dataset": "solar",
+      "mean": "0.368",
+      "std": "0.012",
+      "missing": false
+    },
+    {
+      "model": "GP-scaling",
+      "dataset": "elec",
+      "mean": "0.022",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "GP-scaling",
+      "dataset": "traffic",
+      "mean": "0.079",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "GP-scaling",
+      "dataset": "taxi",
+      "mean": "0.183",
+      "std": "0.395",
+      "missing": false
+    },
+    {
+      "model": "GP-scaling",
+      "dataset": "wiki",
+      "mean": "1.483",
+      "std": "1.034",
+      "missing": false
+    },
+    {
+      "model": "GP-Copula",
+      "dataset": "exchange",
+      "mean": "0.007",
+      "std": "0.000",
+      "missing": false
+    },
+    {
+      "model": "GP-Copula",
+      "dataset": "solar",
+      "mean": "0.337",
+      "std": "0.024",
+      "missing": false
+    },
+    {
+      "model": "GP-Copula",
+      "dataset": "elec",
+      "mean": "0.024",
+      "std": "0.002",
+      "missing": false
+    },
+    {
+      "model": "GP-Copula",
+      "dataset": "traffic",
+      "mean": "0.078",
+      "std": "0.002",
+      "missing": false
+    },
+    {
+      "model": "GP-Copula",
+      "dataset": "taxi",
+      "mean": "0.208",
+      "std": "0.183",
+      "missing": false
+    },
+    {
+      "model": "GP-Copula",
+      "dataset": "wiki",
+      "mean": "0.086",
+      "std": "0.004",
+      "missing": false
+    }
+  ],
+  "table3": {
+    "Vec_LSTM": [
+      "O(Nk)",
+      "O(Nk)",
+      "O(Nrk)",
+      "O(N^2 k)"
+    ],
+    "GP": [
+      "O(k)",
+      "O(k)",
+      "O(rk)",
+      "O(N^2 k)"
+    ],
+    "columns": [
+      "input",
+      "independent_output",
+      "lowrank_output",
+      "fullrank_output"
+    ]
+  },
+  "table1_numeric_values": 30,
+  "table2_numeric_values": 104,
+  "table2_missing_cells": 8,
+  "table3_complexity_expressions": 8,
+  "GP_Copula_vs_GP_scaling": [
+    {
+      "dataset": "exchange",
+      "GP_Copula": "0.007",
+      "GP_scaling": "0.009",
+      "copula_better_than_scaling": true,
+      "best_models": [
+        "Vec-LSTM-lowrank-Copula",
+        "GP-Copula"
+      ]
+    },
+    {
+      "dataset": "solar",
+      "GP_Copula": "0.337",
+      "GP_scaling": "0.368",
+      "copula_better_than_scaling": true,
+      "best_models": [
+        "Vec-LSTM-lowrank-Copula"
+      ]
+    },
+    {
+      "dataset": "elec",
+      "GP_Copula": "0.024",
+      "GP_scaling": "0.022",
+      "copula_better_than_scaling": false,
+      "best_models": [
+        "GP-scaling"
+      ]
+    },
+    {
+      "dataset": "traffic",
+      "GP_Copula": "0.078",
+      "GP_scaling": "0.079",
+      "copula_better_than_scaling": true,
+      "best_models": [
+        "GP-Copula"
+      ]
+    },
+    {
+      "dataset": "taxi",
+      "GP_Copula": "0.208",
+      "GP_scaling": "0.183",
+      "copula_better_than_scaling": false,
+      "best_models": [
+        "GP-scaling"
+      ]
+    },
+    {
+      "dataset": "wiki",
+      "GP_Copula": "0.086",
+      "GP_scaling": "1.483",
+      "copula_better_than_scaling": true,
+      "best_models": [
+        "GP-Copula"
+      ]
+    }
+  ],
+  "ratios_from_rounded_main_table2": [
+    {
+      "model": "VAR",
+      "datasets": 6,
+      "mean_baseline_over_copula": "7.843336326433593702933293023",
+      "mean_reduction_divided_by_baseline": "0.4338978548639206086939593352"
+    },
+    {
+      "model": "GARCH",
+      "datasets": 4,
+      "mean_baseline_over_copula": "5.43426498081542591928348605",
+      "mean_reduction_divided_by_baseline": "0.7409776179156739650557034732"
+    },
+    {
+      "model": "Vec-LSTM-ind",
+      "datasets": 6,
+      "mean_baseline_over_copula": "7.654236045230886856723582967",
+      "mean_reduction_divided_by_baseline": "0.5285106702636551974615983947"
+    },
+    {
+      "model": "Vec-LSTM-ind-scaling",
+      "datasets": 6,
+      "mean_baseline_over_copula": "1.406558291538624158871208764",
+      "mean_reduction_divided_by_baseline": "0.2248119929520985958711368452"
+    },
+    {
+      "model": "Vec-LSTM-fullrank",
+      "datasets": 3,
+      "mean_baseline_over_copula": "45.5825031793132683340398474",
+      "mean_reduction_divided_by_baseline": "0.870876534137412150806453694"
+    },
+    {
+      "model": "Vec-LSTM-fullrank-scaling",
+      "datasets": 3,
+      "mean_baseline_over_copula": "30.04689487070792708774904621",
+      "mean_reduction_divided_by_baseline": "0.8612668802185864032899050037"
+    },
+    {
+      "model": "Vec-LSTM-lowrank-Copula",
+      "datasets": 6,
+      "mean_baseline_over_copula": "1.717233382995752742492097955",
+      "mean_reduction_divided_by_baseline": "0.3027348052447573217092324153"
+    },
+    {
+      "model": "GP",
+      "datasets": 6,
+      "mean_baseline_over_copula": "14.09305480301486443229594151",
+      "mean_reduction_divided_by_baseline": "0.7190356659573292435506162138"
+    },
+    {
+      "model": "GP-scaling",
+      "datasets": 6,
+      "mean_baseline_over_copula": "3.738530555764097272619803847",
+      "mean_reduction_divided_by_baseline": "0.1722679846769599884059892098"
+    },
+    {
+      "model": "GP-Copula",
+      "datasets": 6,
+      "mean_baseline_over_copula": "1",
+      "mean_reduction_divided_by_baseline": "0"
+    }
+  ],
+  "figure3_caption": {
+    "printed_N": [
+      4,
+      8
+    ],
+    "printed_including_diagonal_count": [
+      10,
+      28
+    ],
+    "arithmetic_including_diagonal": [
+      10,
+      36
+    ],
+    "finding": "N=8이면 대각 포함 하삼각은36개, 대각 제외는28개. 인쇄 캡션의 조건과28은 맞지 않는다. 실제 그림 선/원공분산 배열 개수는 재현하지 않았다."
+  },
+  "conditional_nonnegative_three_run_SD_check": [
+    {
+      "model": "GP-scaling",
+      "dataset": "taxi",
+      "mean": "0.183",
+      "std": "0.395",
+      "three_nonnegative_sample_SD_upper_bound_with_rounding": "0.3178313231888889833622864038",
+      "printed_SD_lower_bound_with_rounding": "0.3945"
+    }
+  ],
+  "SD_limit": "본문 표2의 mean/std가 동일한 비음수3회 CRPS-sum 값에서 계산됐다는 조건에서의 수치 불일치다. 실제 집계 경로·원결과를 확인하기 전 원인이나 오류 종류를 확정하지 않는다.",
+  "ratio_limit": "인쇄 반올림값으로만 검산. 보충표/선택코드도 대조했으나 원논문 raw평가와 집계 정의는 확정하지 못함. 평균ratio초과율과 baseline분모감소율을 구분한다.",
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "random_draws": 0
+}

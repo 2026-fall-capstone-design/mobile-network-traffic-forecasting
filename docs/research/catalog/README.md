@@ -144,3 +144,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H057 출처 목록](history-057-sources.jsonl)은 KDD 문헌과63·65의8그룹16경로를연결합니다. [실제 읽은 범위](../sources/history-057.md)에서 기존2사본과외부6참조,공식v2와미독해출판본을구분했습니다.
 
 [H058 출처 목록](history-058-sources.jsonl)은 PLOS 문헌과64·65의7그룹14경로를연결합니다. [읽은 범위](../sources/history-058.md)에서 새사본2·재사용2·외부3참조와공식판본대조를구분합니다.
+
+[H059 출처 목록](history-059-sources.jsonl)은5그룹10경로의GP-Copula와64·65를연결합니다. [읽은 범위](../sources/history-059.md)는기존사본2재사용/외부참조3,공식보충과고정코드의전체·부분독해를구분합니다.

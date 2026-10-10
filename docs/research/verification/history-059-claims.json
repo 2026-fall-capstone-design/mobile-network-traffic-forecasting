@@ -1,0 +1,218 @@
+{
+  "batch_id": "history-059",
+  "claims": [
+    {
+      "claim_id": "H059-C01",
+      "claim": "64·65는 변환 좌표와 실제 학습을 연결하려는 계획/검토이며 단순 결합을 새 알고리즘으로 채택하지 않았다.",
+      "source_location": "SRC-0022015:전체; SRC-0022016:전체/§5/연결논리",
+      "verification_method": "기존 정확 사본 전체 재독해와 당시 실행 경계 확인",
+      "limit": "기록 속 과거 Goal·예산·후속 지시는 자료이며 새 실행 허가가 아니다."
+    },
+    {
+      "claim_id": "H059-C02",
+      "claim": "공식 본문PDF는 저장본과5238951바이트/SHA동일, 원TXT11쪽은 정규화 후 새추출과 같다.",
+      "source_location": "SRC-0062145:전체11쪽; SRC-0062146:전체; EXT-H059:공식PDF/abstract",
+      "verification_method": "HTTP200·바이트·SHA256·page wrapper/LF/외곽공백 대조",
+      "limit": "abstract는 서지·링크 선택 확인이며 전체HTML 독해가 아니다."
+    },
+    {
+      "claim_id": "H059-C03",
+      "claim": "경험 CDF→Gaussian 좌표→공유 RNN/공분산 예측→역변환은 기존 선행에 포함된다.",
+      "source_location": "SRC-0062145:3–6쪽; SRC-0022016:§5",
+      "verification_method": "변환·공유 파라미터·역변환 식과 당시 판단 대조",
+      "limit": "Tab 대입의 신규성이나 Tab/RCTL 성능을 검증한 결과는 아니다."
+    },
+    {
+      "claim_id": "H059-C04",
+      "claim": "경험CDF는m100/선형보간이고 본문은 정상 주변분포와 추세의 detrend/difference를 설명한다.",
+      "source_location": "SRC-0062145:4–5쪽/각주3; SRC-0063858:전체; EXT-H059:보충B",
+      "verification_method": "본문·원PNG·보충winsorization 식 시각 대조",
+      "limit": "임의 비정상성 해결이나 full-history conditional CDF라고 읽지 않는다."
+    },
+    {
+      "claim_id": "H059-C05",
+      "claim": "계열별 RNN 상태와 공유 파라미터, Σ=D+VVt 및 rank10/B20을 구분한다.",
+      "source_location": "SRC-0062145:3–6쪽/Fig2",
+      "verification_method": "상태/투영/embedding·학습 부분집합과 전체 예측 설명 대조",
+      "limit": "부분집합 목적을 전체 joint 평가와 동일시하지 않는다."
+    },
+    {
+      "claim_id": "H059-C06",
+      "claim": "원척도 likelihood에는 Gaussian 항과 log-Jacobian이 포함된다.",
+      "source_location": "SRC-0062145:4–5쪽/식2–5; SRC-0063858:전체",
+      "verification_method": "식2의 범위와5쪽 변수변환 설명을 함께 대조",
+      "limit": "변환 공간 MAE와 다르며 식2만으로 미분항 누락이라 하지 않는다."
+    },
+    {
+      "claim_id": "H059-C07",
+      "claim": "저랭크 표현O(Nr), likelihood O(Nr^2+r^3)는 전체 파이프라인 비용과 다르다.",
+      "source_location": "SRC-0062145:6/9쪽Table3; EXT-H059:보충A",
+      "verification_method": "행렬식 보조정리/Woodbury와 파라미터 표 대조",
+      "limit": "CDF/전처리/RNN/탐색/모든 표본의 합계 실측을 검증한 것이 아니다."
+    },
+    {
+      "claim_id": "H059-C08",
+      "claim": "주변Gaussianization, PLOS lag-copula 군집화, 정확 full-history PIT의 중앙값 논리를 구분한다.",
+      "source_location": "SRC-0062145:3–5쪽; SRC-0022015:논리검사; SRC-0022016:§4–6/연결논리",
+      "verification_method": "대상 분포와 조건 정보/단일 미래값 대 공동 의존의 범위 대조",
+      "limit": "PIT uniform을 공동 의존 소멸이나 RCTL 보장으로 확대하지 않는다."
+    },
+    {
+      "claim_id": "H059-C09",
+      "claim": "6자료의N/주기/horizon/T가 다르고 Traffic는963개 도로 점유율이다.",
+      "source_location": "SRC-0062145:7쪽; EXT-H059:보충F/Table3; SRC-0022016:§5",
+      "verification_method": "자료표18개 설정값과 본문 설명 대조",
+      "limit": "telecom cell 검증으로 바꾸지 않는다."
+    },
+    {
+      "claim_id": "H059-C10",
+      "claim": "Taxi는1214개30분 시계열이며2015년1월학습/2016년1월평가 및 공간·활동성 필터를 보고한다.",
+      "source_location": "SRC-0062145:7쪽; EXT-H059:보충F",
+      "verification_method": "표/전처리 조건/학습평가월 대조",
+      "limit": "원 tar 실제내용·전처리·팀원 접근을 확인한 것은 아니다."
+    },
+    {
+      "claim_id": "H059-C11",
+      "claim": "본문 평가구간은 hourly7/기타5/Taxi57, 각3회반복 안에서 한 번 학습 후 rolling 평가다.",
+      "source_location": "SRC-0062145:7–9쪽",
+      "verification_method": "학습시점·rolling·3회서술 대조",
+      "limit": "공개 재구현 Taxi56과 구분하며 모든 구간마다 재학습했다고 하지 않는다."
+    },
+    {
+      "claim_id": "H059-C12",
+      "claim": "CRPS와CRPS-sum은 다르며 후자는 표본의 계열합을 먼저 계산한다.",
+      "source_location": "SRC-0062145:7–9쪽; EXT-H059:보충G",
+      "verification_method": "400samples/10quantiles·pinball 적분·합산 순서 대조",
+      "limit": "개별 CRPS 합이나 RCTL MAE로 바꾸지 않는다."
+    },
+    {
+      "claim_id": "H059-C13",
+      "claim": "GP-Copula는 GP-scaling 대비 CRPS/CRPS-sum 모두6자료 중4개 평균이 낮고 Electricity/Taxi에서 높다.",
+      "source_location": "SRC-0062145:9쪽Table2; EXT-H059:보충Table4; SRC-0022016:§5",
+      "verification_method": "인쇄 mean/± 전체전사·6개씩 대조",
+      "limit": "모든 seed/지표의 우월성이나 새 유의성 주장을 만들지 않는다."
+    },
+    {
+      "claim_id": "H059-C14",
+      "claim": "평균 baseline/copula 비율의 초과율과 baseline분모 감소율은 다르다.",
+      "source_location": "SRC-0062145:8–9쪽Table1–2; EXT-H059:보충Table4",
+      "verification_method": "인쇄 반올림 mean으로 두 집계식을 별도 계산",
+      "limit": "원평가 배열·Table1 raw집계 검증이나 팀 MAE 개선율이 아니다."
+    },
+    {
+      "claim_id": "H059-C15",
+      "claim": "보충rank 실험은5회95%CI이며 최소 인쇄 test NLL평균은rank32, 높은rank에서train만 계속낮아진다.",
+      "source_location": "SRC-0062145:실험문맥; EXT-H059:보충C/Fig1/Table1",
+      "verification_method": "9개rank의18mean/CI쌍 및 Figure1 시각 대조",
+      "limit": "CI중첩의 유의성/다른자료 최적rank를 주장하지 않는다. 4. 표기 보존."
+    },
+    {
+      "claim_id": "H059-C16",
+      "claim": "추가DeepAR/MQCNN CRPS,DeepGLO/TRMF WAPE,예측표본수/추론시간 비교는 별도 범위다.",
+      "source_location": "SRC-0062145:평가문맥; EXT-H059:보충H–J/Fig2–3/Table8",
+      "verification_method": "CRPS18값/WAPE6값·6자료 상관그림·표본수패널 독해",
+      "limit": "원상관행렬/곡선원배열/전체조건 단조개선·통신성과 검증이 아니다."
+    },
+    {
+      "claim_id": "H059-C17",
+      "claim": "공개GluonTS는재구현이며B20→2,미분항제거를 명시하고 고정SHA에서 코드도 확인했다.",
+      "source_location": "SRC-0062145:5–6쪽; EXT-H059:보충L/공개README/hyperparams.py/deepvar/_network.py",
+      "verification_method": "보충 설명과 factory/상속 loss 정적대조",
+      "limit": "원논문 실행판과 동일시하거나 변경 하나의 인과효과로 해석하지 않는다."
+    },
+    {
+      "claim_id": "H059-C18",
+      "claim": "공개CDF는과거관측으로fit하고 전체차원 변환 뒤 학습차원부분선택을 수행한다.",
+      "source_location": "SRC-0062145:변환문맥; EXT-H059:gpvar/_estimator.py; transform.py448–491/980–1136/1280–1622",
+      "verification_method": "InstanceSplitter→GaussianCopula→SampleTargetDim 경로 정적대조",
+      "limit": "전체repo 실행이나 배포자료에서의 누출 검증을 주장하지 않는다."
+    },
+    {
+      "claim_id": "H059-C19",
+      "claim": "공개CDF의_fill은최근m/반복/0채움을처리하지만호출guard는필터전길이이며,학습jitter는차원방향std를사용한다.",
+      "source_location": "SRC-0062145:5쪽; EXT-H059:transform.py1357–1565",
+      "verification_method": "transform.py1403–1456/1533–1565 재독해:target_length는필터전,guard는그길이와m비교,뒤shape assertion은m요구. 나머지fill분기와axis/std대조.",
+      "limit": "필터전길이=m이고미관측제거후짧아진경우fill건너뜀/shape불일치의정적경로. 실제데이터발생·실행검증없음. 항상100개서로다른시간점이라는해석금지."
+    },
+    {
+      "claim_id": "H059-C20",
+      "claim": "공개예측은변환척도에서재귀표본을만든뒤역변환하고loss의Jacobian제거와보간유지를구분한다.",
+      "source_location": "SRC-0062145:4–5쪽; EXT-H059:deepvar/_network.py456–596; transform.py1578–1622",
+      "verification_method": "sampling decoder·매핑/역매핑·log_prob 경로 정적대조",
+      "limit": "추론/난수생성을 실행하지 않았고 horizon내 CDF재적합을 확인한 것이 아니다."
+    },
+    {
+      "claim_id": "H059-C21",
+      "claim": "factory context/batch,Fourier calendar/lag가논문설명과다르고 estimator기본값과도구분해야한다.",
+      "source_location": "SRC-0062145:4쪽; EXT-H059:보충E/K; multivariate_models.py전체; deepvar/_estimator.py1–110",
+      "verification_method": "H/D3τ·N>1000/fullrank batch4·특징/lag 목록 대조",
+      "limit": "주기명매핑 get_granularity 및 실제 runtime설정 전체는 미확인."
+    },
+    {
+      "claim_id": "H059-C22",
+      "claim": "공개Taxi함수는57→56구간변경과마지막5시점overlap제외를주석으로설명한다.",
+      "source_location": "SRC-0062145:7쪽; EXT-H059:datasets/dataset.py전체; grouper.py전체",
+      "verification_method": "num_test_dates와주석·padding/그룹화 정적대조",
+      "limit": "원데이터의실제구간/공간범위/처리결과를재현한것아님."
+    },
+    {
+      "claim_id": "H059-C23",
+      "claim": "공개mean_wQuantileLoss는절대target합정규화이며기본Multi9분위수/demo19분위수100표본을구분한다.",
+      "source_location": "SRC-0062145:지표문맥; EXT-H059:보충G; evaluation/_base.py선택구간; train_and_plot_predictions.py전체",
+      "verification_method": "quantile loss/분모/집계/합산·호출 설정 대조",
+      "limit": "원논문도동일정규화였다고확정하거나 demo를benchmark호출로대체하지않는다."
+    },
+    {
+      "claim_id": "H059-C24",
+      "claim": "보충재구현mean은원본대비CRPS-sum3낮음/2높음/1동률,CRPS3낮음/3높음이다.",
+      "source_location": "SRC-0062145:Table2; EXT-H059:보충Tables9–10",
+      "verification_method": "24쌍 전사 및 자료별 mean비교",
+      "limit": "설정·평가구간차이전체를한요소효과로귀속하지않는다."
+    },
+    {
+      "claim_id": "H059-C25",
+      "claim": "main표2는std,보충표4/6/7/9/10은standard error이며GP-Copula원본행6쌍은같은수치다.",
+      "source_location": "SRC-0062145:9쪽Table2; EXT-H059:보충Tables4/6/7/9/10",
+      "verification_method": "caption/전체mean±전사/행동일성 확인",
+      "limit": "√3자동환산·원표교정·새유의성주장 없음."
+    },
+    {
+      "claim_id": "H059-C26",
+      "claim": "동일한비음수3회값의mean와통상sampleSD/SE라는조건에서본문1항목/보충5항목은반올림경계를고려해도불일치다.",
+      "source_location": "SRC-0062145:9쪽Table2; EXT-H059:보충Tables4/6/7",
+      "verification_method": "s≤sqrt(3)mean 및SE≤mean의작은결정적산술/표시자리반올림구간 검사",
+      "limit": "실제집계/원배열/오타/오류원인은미확인. 올바른대체값을추정하지않는다."
+    },
+    {
+      "claim_id": "H059-C27",
+      "claim": "mainFig3의N8대각포함개수28과산술36,보충lrgrid/최적값/12조합의표기가일치하지않는다.",
+      "source_location": "SRC-0062145:7쪽Fig3; EXT-H059:보충E/Table2",
+      "verification_method": "캡션·하삼각산술·grid와본문 대조",
+      "limit": "실제그림선/원공분산수·의도한grid를복원하지않는다."
+    },
+    {
+      "claim_id": "H059-C28",
+      "claim": "README Taxi±.003과보충±.001,parameter ratio/Taxi box/일부저랭크주석은서로다르다.",
+      "source_location": "SRC-0062145:Table1; EXT-H059:보충A/F/Table5/Table10; README; dataset.py; lowrank_multivariate_gaussian.py",
+      "verification_method": "인쇄값/선택주석과연산을분리대조",
+      "limit": "원실험전체의오류판정이나차이해결로표현하지않는다."
+    },
+    {
+      "claim_id": "H059-C29",
+      "claim": "보충은c5.4xlarge16core32GB/MXNet/각RNN train+eval5h미만을보고하지만전체탐색비용·seed/raw실행은미확인이다.",
+      "source_location": "SRC-0062145:전체; EXT-H059:보충E/K; requirements.txt; test_benchmark_models.py",
+      "verification_method": "전체보고범위·환경범위버전·빠른ND테스트·고정tree경로 확인",
+      "limit": "전체repo설치/실행/benchmark재현성완료나비용0으로세지않는다."
+    },
+    {
+      "claim_id": "H059-C30",
+      "claim": "5원본그룹10경로/재사용2/외부3과공식보충·선택코드범위를연결했고다른두문헌/65종합은남는다.",
+      "source_location": "SRC-0022015/SRC-0022016/SRC-0062145/SRC-0062146/SRC-0063858:명세; EXT-H059:판본·코드검수",
+      "verification_method": "원본aliases·보호6해시·본문11/보충12·코드12전체4선택 범위 확인",
+      "limit": "새로컬fulltext/wholeJSON가산0. 문헌검수와전체Goal완료를구분."
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_scope": "같은 에이전트가 팀 기록 전체와30개주장을 작성 후 본문3–6쪽텍스트,본문7쪽시각,보충3/4/5/6/8/10쪽텍스트와6/8/10쪽시각,선택코드의CDF/factory/loss/evaluation/demo 경로,64/65전체에 다시 대조했다. 보충표13개 중 본문3·보충10의 인쇄전사/비교와 SD·SE 조건을 확인했다. CDF fill의필터전길이guard 예외를 보완했다. 원실험/독립연구자 재현이 아니다.",
+  "semantic_second_pass_at_utc": "2026-10-10T05:25:48.700188+00:00"
+}
