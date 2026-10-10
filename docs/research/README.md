@@ -199,3 +199,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 ## 78의 회귀 전이 근거
 
 [회귀 전이 점수·코드 검수](records/0079-regression-transferability.md)는 40개 주장으로 target head 재적합과 cell pooling의 차이를 연결한다. 23쪽의 논문·보충자료, 공식 점수 함수, 상관·source 선택·정규화 손해를 함께 확인한다.
+
+[Task2Vec 과제 표현 검수](records/0080-task2vec-task-and-output-sharing.md)는 같은 원78의 task embedding·Fisher·expert 선택을 보완한다. 특징 유사성과 같은 scalar 출력 공유의 차이, 과제별 head 적합, MODEL2VEC이 요구하는 성능 정보, 선택 실패 사례와 코드 기본값을 함께 확인할 수 있다.

@@ -1,0 +1,74 @@
+{
+  "commit": "c5795e55ba773f9845498091a90eee2fcba5da31",
+  "commit_date": "2023-07-13T20:29:52Z",
+  "actual_root_tree": "696034e080ba45e2224ff4b05b389b18cc2bd803",
+  "tree_json_top_sha": "c5795e55ba773f9845498091a90eee2fcba5da31",
+  "root_entries": 20,
+  "total_tree_entries": 42,
+  "truncated": false,
+  "blobs": [
+    {
+      "source_id": "SRC-0064486",
+      "filename": "README.md",
+      "git_blob": "bd63c4932287239318a0bf4675fe7bf0c9082482",
+      "sha256": "44db3fd6d7082dab36c88db2eb6597dabbb371b008ab301953bc588e1a7ff1e0",
+      "lines": 96
+    },
+    {
+      "source_id": "SRC-0064487",
+      "filename": "task2vec.py",
+      "git_blob": "79d6a8ce5357bd3a9342d2855cf7a3a68287c2c1",
+      "sha256": "27d3f93fe55f6c5bf1a8c7b49c917dd9895f6bdcc69a0002bff26d733cb9ac35",
+      "lines": 353
+    },
+    {
+      "source_id": "SRC-0064488",
+      "filename": "task_similarity.py",
+      "git_blob": "f039a4ac8ff9fe4570db4bf19fe59928af20e182",
+      "sha256": "c4647d6a07f646d2c89bec77246c73a71ac3a184523ddffb71dd473a3b02b4cd",
+      "lines": 218
+    }
+  ],
+  "note": "저장 tree 응답의 최상위 sha는 commit ID다. 저장 root entries로 Git tree 객체를 재구성하여 commit.tree.sha와 일치함을 확인했다.",
+  "static_only": true,
+  "source_code_imported": false,
+  "source_code_executed": false,
+  "task_similarity_top_level_functions": [
+    "_register_distance",
+    "is_excluded",
+    "load_embedding",
+    "get_trivial_embedding_from",
+    "binary_entropy",
+    "get_layerwise_variance",
+    "get_variance",
+    "get_variances",
+    "get_hessian",
+    "get_hessians",
+    "get_scaled_hessian",
+    "get_full_kl",
+    "layerwise_kl",
+    "layerwise_cosine",
+    "kl",
+    "asymmetric_kl",
+    "jsd",
+    "cosine",
+    "normalized_cosine",
+    "correlation",
+    "entropy",
+    "get_normalized_embeddings",
+    "pdist",
+    "cdist",
+    "plot_distance_matrix"
+  ],
+  "missing_dependency_contents": [
+    "variational.py",
+    "models.py",
+    "utils.py",
+    "datasets.py",
+    "conf/config.yaml",
+    "conf/task2vec/variational.yaml",
+    "conf/task2vec/montecarlo.yaml"
+  ],
+  "dependency_scope": "위 경로는 고정 tree에 존재하지만 이 원78 packet에는 본문이 저장되지 않았다. tree 등록을 구현 본문 검토로 세지 않는다.",
+  "batch_id": "history-080"
+}

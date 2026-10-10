@@ -1,0 +1,80 @@
+{
+  "batch_id": "history-080",
+  "status": "source_checked",
+  "origin": "논문에 표시된 수치의 전사. 원시 예측 재계산이나 독립 재현이 아니다.",
+  "numeric_display_values": 20,
+  "figure3_displayed_cells_in_separate_file": 3500,
+  "table1": {
+    "source": {
+      "source_id": "SRC-0064474",
+      "source_sha256": "3c1e0a151bbca09ea7f55b77d269d4a268574257124982f118780ec599c821ee",
+      "locator": "p8 Table1 (인쇄쪽6437)"
+    },
+    "columns": [
+      "Optimal error",
+      "Chance relative increase",
+      "ImageNet relative increase",
+      "Symmetric TASK2VEC relative increase",
+      "Asymmetric TASK2VEC relative increase",
+      "MODEL2VEC relative increase"
+    ],
+    "rows": {
+      "iNat+CUB": [
+        31.24,
+        59.52,
+        30.18,
+        42.54,
+        9.97,
+        6.81
+      ],
+      "Mixed": [
+        22.9,
+        112.49,
+        75.73,
+        40.3,
+        29.23,
+        27.81
+      ]
+    },
+    "units": [
+      "test error",
+      "percent relative increase",
+      "percent relative increase",
+      "percent relative increase",
+      "percent relative increase",
+      "percent relative increase"
+    ]
+  },
+  "table2": {
+    "source": {
+      "source_id": "SRC-0064474",
+      "source_sha256": "3c1e0a151bbca09ea7f55b77d269d4a268574257124982f118780ec599c821ee",
+      "locator": "p8 Table2"
+    },
+    "columns_as_printed": [
+      "Chance",
+      "VGG-13",
+      "DenseNet-121",
+      "ResNet-13"
+    ],
+    "rows": {
+      "Top 10": [
+        13.95,
+        4.82,
+        0.3,
+        0.0
+      ],
+      "All": [
+        59.52,
+        38.03,
+        10.63,
+        9.97
+      ]
+    },
+    "unit": "optimal 대비 상대 오차 증가율(%)",
+    "mismatch": "본문 ResNet-34와 마지막 인쇄 열 제목 ResNet-13의 차이를 보존. 원인 미확인."
+  },
+  "aggregate_recomputed_from_raw_predictions": false,
+  "new_model_runs": 0,
+  "semantic_second_pass_complete": true
+}

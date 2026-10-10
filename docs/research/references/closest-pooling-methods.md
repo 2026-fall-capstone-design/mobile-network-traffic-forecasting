@@ -59,3 +59,7 @@
 ## 회귀 전이의 직접 원문·코드 대조
 
 [H079](../records/0079-regression-transferability.md)에서 Nguyen 등의 UAI 2023 본문·보충자료 23쪽과 고정 점수 함수를 확인했다. 이론은 target head 재적합과 iid·bounded ReLU 조건을 사용한다. 높은 전이 점수는 같은 scalar target pooling의 충분조건이 아니며, 코드가 반환하는 잔차 점수와 논문의 regularized objective도 구분한다. Task2Vec·NTKMTL의 후속 본문 검수는 별도로 계속한다.
+
+## Task2Vec의 직접 원문·코드 대조
+
+[H080](../records/0080-task2vec-task-and-output-sharing.md)은 Task2Vec 본문·보충 16쪽과 저장 구현을 연결한다. 과제별 classifier를 적합한 특징 Fisher의 유사성은 공동 scalar 예측의 충분조건이 아니다. expert 선택의 이득과 손해, MODEL2VEC의 다른 과제 성능 사용, Taskonomy 회귀 decoder, 고정 코드의 Monte Carlo 기본값을 분리해 비교한다. 같은 두 Python 파일의 `asymmetric_kl`을 논문의 비대칭 선택식으로 오인하지 않는다.

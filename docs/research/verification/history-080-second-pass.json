@@ -1,0 +1,167 @@
+{
+  "batch_id": "history-080",
+  "status": "source_checked",
+  "completed_at_utc": "2026-10-10T19:47:53.103619+00:00",
+  "claims_checked": 40,
+  "checks": [
+    {
+      "check_id": "H080-SP01",
+      "claims": [
+        1,
+        21,
+        39,
+        40
+      ],
+      "sources": [
+        "SRC-0064495/96/97 전필드 첫 독해 후 commit/tree/blob 관련 필드 재독해",
+        "SRC-0064475/77 PDF16쪽 대응",
+        "SRC-0064502 저장 HTML 전체 재독해",
+        "SRC-0064509/10 원PNG 전체",
+        "원78 findings68–80행"
+      ],
+      "result": "13그룹+재참조1,26사본/보호6 원본 불변,3blob와20root entries의tree 일치. helper 목록을 본문 확보로 세지 않음. TXT/HTML/PNG 중복 본문 가산 없음."
+    },
+    {
+      "check_id": "H080-SP02",
+      "claims": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sources": [
+        "main3–6 text 재독해",
+        "supp1/4/6 text 및 표시식 visual",
+        "code119–127/208–215행"
+      ],
+      "result": "head 적합·모델분포 Fisher·filter 근사·trivial/비대칭·MODEL2VEC 성과 정보와 leave-one-out 범위 확인. norm의 비단조 Short sleeves 사례와 일반 metric/O(1) 확장 금지."
+    },
+    {
+      "check_id": "H080-SP03",
+      "claims": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        18
+      ],
+      "sources": [
+        "main6/8",
+        "supp1–4",
+        "supp2 Figure3 행열명"
+      ],
+      "result": "1460collection/1300GPUh와평가50/40tasks·expert26/25 구분. expert/classifier/embedding의epochs·LR·balanced10000 조건 구분. Taskonomy 회귀decoder/11tasks/5GPUh 범위 확인."
+    },
+    {
+      "check_id": "H080-SP04",
+      "claims": [
+        15,
+        16,
+        17,
+        20
+      ],
+      "sources": [
+        "main7–8 text/8 visual",
+        "main3/5 Figure1/2 첫시각독해와caption 재독해",
+        "supp5–6 text/visual"
+      ],
+      "result": "Table1/2 20값 원문 전수 대조. Table1의 출처 페이지를 p7에서 p8로 정정. 증가율/optimal error, 대칭의 ImageNet 손해, ResNet13 표기, fixedoracle 기준 음수, subset4와 전체collection 분리."
+    },
+    {
+      "check_id": "H080-SP05",
+      "claims": [
+        6,
+        12,
+        19
+      ],
+      "sources": [
+        "supp2 Figure2/3 600dpi 세 영역 첫시각독해",
+        "supp2 원TXT 3500값·선택색 추출 대조",
+        "CUB Laniidae/IMAT Printed 및 표시정수동률5행 재독해"
+      ],
+      "result": "50×50/40×25,3500정수,red90/blue43 확인. 손해28대17/40대17과 반올림동률 보존. 색=거리,숫자=error이며 raw mean/Table1 재현으로 승격하지 않음."
+    },
+    {
+      "check_id": "H080-SP06",
+      "claims": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        32
+      ],
+      "sources": [
+        "README17–32 재독해",
+        "task2vec.py59–137/170–206/231–353 재독해",
+        "supp4",
+        "고정tree helper/config 목록"
+      ],
+      "result": "MC기본/논문var, cache→fit→Fisher, batch gradient제곱,head CE/default10epochs와var1epoch/LR차이 확인. cache batch 식에 min과 max_samples지정조건 보완. BN주석과train 호출은미확보probe구현없이실패판정안함."
+    },
+    {
+      "check_id": "H080-SP07",
+      "claims": [
+        29,
+        30,
+        31
+      ],
+      "sources": [
+        "task_similarity.py64–97/117–150/165–214 재독해",
+        "218행전체 첫독해와AST선언목록",
+        "main5–6"
+      ],
+      "result": "epsilon1e-8/cosine과normalizedvariance/asymmetricKL 분리. 논문asymmetric점수및MODEL2VEC구현존재로확대하지않음. pair loops/None초기0의재사용조건 보존."
+    },
+    {
+      "check_id": "H080-SP08",
+      "claims": [
+        33,
+        34
+      ],
+      "sources": [
+        "supp4–6 수식 text+visual 재독해",
+        "main4/6",
+        "저장CVF HTML전체",
+        "main1/10 인쇄쪽수 첫독해",
+        "원78 13행 재독해"
+      ],
+      "result": "supp loss의-log누락과main정상표시를함께기록. 혼합block/precision상수는인쇄확인범위이며실행오류단정안함. 공식6430–6439와보존6429–6438 차이 명시."
+    },
+    {
+      "check_id": "H080-SP09",
+      "claims": [
+        35,
+        36,
+        37,
+        38
+      ],
+      "sources": [
+        "원78 5–21/38–46/60–80행 재독해"
+      ],
+      "result": "기호반례에동일분포·동일비중·입력구분정보없음의전제를보완. Gaussian working likelihood와실제관측구분. 당시미채택범위·global multi-head대안·RCTL독립성 조건을새학습승인으로해석안함."
+    }
+  ],
+  "first_read_scope": "PDF16쪽·README96행·구현353행·거리218행·JSON3全필드·HTML전체·TXT2대응·원PNG2직접열람",
+  "second_pass_scope": "작성 후 주요 주장에 연결된 원문 구간·수식·표·코드·metadata를 같은 에이전트가 별도 대조. 전페이지/전코드의 독립 재독해라고 표현하지 않음.",
+  "corrections": [
+    "Table1 출처는 PDF p8/인쇄6437",
+    "Mixed 설명의 절 번호를 §4로 수정",
+    "cache의 min/지정조건 보완",
+    "반례의 같은 cell 비중과 입력분포 전제 명시",
+    "supp loss와main -log 표시를 함께 보존",
+    "외부jquery.js 내용을 읽었다고 표현하지 않음"
+  ],
+  "numeric_display_values": 3520,
+  "raw_prediction_reproduction": false,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false
+}
