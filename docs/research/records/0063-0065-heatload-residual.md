@@ -124,3 +124,7 @@ Figure S2는 두 지역의 모델 순서를 각각 보존했다. 대각선의 �
 원 TXT의 33쪽은 새 PDF 추출과 문자 동일하고, 저장 HTML.text는 원 HTML의 data 텍스트 추출과 동일하다. HTML과 PDF의 인용 번호는 다르므로 문헌 제목·저자·DOI로 연결한다. 예를 들어 Flensburg 데이터는 PDF의 46번, HTML의 14번이다. HTML이 참조하는 외부 SVG 10개·PNG 1개의 바이트는 확보·비교하지 않았고, 그림의 내용은 저장 PDF에서 확인했다. 이 확인을 HTML 파일 안에 그림이 모두 보존됐다는 뜻으로 쓰지 않는다. [형식 검수](../evidence/0063-0065-heatload-residual/format-audit.json) · [C37–C39]
 
 ECAI와 Heatload의 해당 검수는 끝났지만, KDD residual·PLOS copula·GP-Copula·TACTiS-2·conditional normalization과 65 전체 종합은 남아 있다. 읽은 3코드에서 에너지·CRPS·MACE·RTF 최종 표 생성까지 연결하지 못했으며, 다른 저자 코드·tests·외부 패키지 내부·원 데이터·실행 결과도 미검수다. 전체 고유 기록, 실패·비용 종합, 팀의 대용량 자료 접근, 최종 원본 변경분과 검색 검수 역시 계속 진행한다. [C40]
+
+## 후속 범위: KDD 전체 검수
+
+[H057 KDD 기록](0063-0065-kdd-residual.md)에서20쪽본문·시각/18표314행3191인쇄값과판본을추가검수했습니다. 위 미완료문헌수는각작성당시범위이며현재는PLOS·GP-Copula·TACTiS-2·conditional normalization의네문헌과65전체종합이남습니다. 기존검수JSON은당시snapshot으로보존합니다.

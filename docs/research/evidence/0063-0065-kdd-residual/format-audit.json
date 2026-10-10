@@ -1,0 +1,166 @@
+{
+  "batch_id": "history-057",
+  "source_PDF": "SRC-0063835",
+  "source_HTML": "SRC-0063837",
+  "PDF_text_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "PDF_visual_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "original_previews_read": [
+    "SRC-0063860",
+    "SRC-0063861"
+  ],
+  "original_TXT_LF_equal_pages": 20,
+  "stored_HTML_text_LF_equal": true,
+  "HTML_semantic_units": 287,
+  "normalized_prose_matches": 194,
+  "manually_read_unmatched_units": 93,
+  "math_alttext_read": 401,
+  "HTML_references_read": 47,
+  "HTML_external_asset_bytes_verified": false,
+  "observations": [
+    {
+      "observation_id": "H057-EV-01",
+      "location": "PDF1–20/원PNG4·11쪽",
+      "finding": "전체20쪽 텍스트와 시각 내용, 원PNG2개를 실제 읽었다. 초기27관찰의 대기 상태를 이번 결과로 보완하되 초기스냅샷은 보존한다. 표5는9쪽, 표10/11은16쪽, 표12–15는17쪽, 표16/17은18쪽이다."
+    },
+    {
+      "observation_id": "H057-EV-02",
+      "location": "PDF/TXT; HTML/HTML.text",
+      "finding": "원TXT20쪽은 wrapper·앞뒤공백 제거와 CRLF→LF 후 새PDF추출과 모두 같다. HTML data 추출과 저장HTML.text도 같은 정규화 후 같다. 원 파일 바이트가 같다는 뜻이 아니다. HTML287단위 중194 정규화 대응,93전부 직접독해;401수식 alttext·47서지항목·author/algorithm 기타article text를 읽었다."
+    },
+    {
+      "observation_id": "H057-EV-03",
+      "location": "PDF13 C.3; HTML A3.SS3.p5.m7",
+      "finding": "PDF설명의 Huber 선형항은 delta(|a|−delta), HTML은 delta(|a|−1/2 delta)이다. Eq8/13은1/2항을 갖는다. HTML과PDF전체의 의미가 완전히 동일하다고 하지 않는다. 반대 부호만으로 선형영역을 보장하지 않고2|x|>delta조건이 필요하다."
+    },
+    {
+      "observation_id": "H057-EV-04",
+      "location": "PDF4–6 Fig2/Eq4–8/Alg1",
+      "finding": "별도 학습 iTransformer base MSE와 meta Huber, prediction−actual잔차와 base−alpha*residual결합이다. Eq4겹침평균·2L초기이력·stride1재귀 설명이 있다. 최초 R1 actual−prediction은 학습부호와 반대이며 실제 구현 영향은 미확인. Fig2의96–191/96–192와 C×L/C×H 표기도 구분한다."
+    },
+    {
+      "observation_id": "H057-EV-05",
+      "location": "PDF11 A.1; PDF12–14 C.2/C.4/D.2; 원65§3",
+      "finding": "오차조건 재표현은 학습가능성/Tab→RCTL보장이 아니고 가중치 동결만으로 시간 누수 없음이 입증되지 않는다. train residual의OOF·scaler fit범위 미확인. C.4 alpha0..1 step.05의32조건 탐색에 validation선택 명시가 없어 원65의 validation표현을 확인된 사실로 옮기지 않는다. 실제 test선택/누수도 확정하지 않는다."
+    },
+    {
+      "observation_id": "H057-EV-06",
+      "location": "PDF6/13–14/16 D.1/D.2/F.1/Table6/7",
+      "finding": "8datasets,L96,H96/192/336/720,epochs10/earlystop3/Adam/RTX4090이며 데이터셋별설정이 다르다. D.1단일target+exo 대 multivariate C×H, ETTh hourly 대Table6 15min, SolarEnergy언급과8benchmarks, F.1train범위 대Table6의차이를 보존한다. 타겟·집계의실제구현은 미확인."
+    },
+    {
+      "observation_id": "H057-EV-07",
+      "location": "PDF7 Table1",
+      "finding": "ours strict1위 MSE24/32·MAE32/32=56지표조건이다. MSE손해8조건은ETTh1/ETTm1각4h. TimeBridgefooter3은인쇄값가능1위2와차이, TimeBasefooter2는strict2+동률1을세는방식에따라다르다. 독립56실험으로세지 않는다."
+    },
+    {
+      "observation_id": "H057-EV-08",
+      "location": "PDF8 Table2 vs PDF7 Table1",
+      "finding": "T2 TimeBridge12쌍이T1TimeFilter, TimeBase11쌍이T1DUET와같다. 총23쌍의열정체성불확실성을보존한다. 인쇄라벨기준 보정후 iTransformer48/GPHT48/TimeBridge40개선, TimeBase31개선17악화. TimeBridgeExchange미기록은0이아니다."
+    },
+    {
+      "observation_id": "H057-EV-09",
+      "location": "PDF7 §4.2.3; numeric reported_percentage_checks",
+      "finding": "24비율주장중TimeBridgeExchange는기준값이없다. DUET8개는4h상대MAE감소율의평균을반올림하면맞는다. GPHT6개는이산식의입력반올림범위밖이나 산식명시가없어전체오류로확정하지않는다. GPHT Traffic/Weather는평균MAE의상대감소식으로양립할수있다."
+    },
+    {
+      "observation_id": "H057-EV-10",
+      "location": "PDF8 Table2/4",
+      "finding": "보정GPHT대보정iTransformer의15.79%는Electricity336 MAE .019→.016이고 같은조건MSE는.038→.027로28.95%이다. ETTh1192 MAE는.337→.359악화. base/meta5.47M합10.94M은10.9M반올림과양립하고 약7배는GPHT2개75.96M/10.9M비교다."
+    },
+    {
+      "observation_id": "H057-EV-11",
+      "location": "PDF8 Table3; PDF16 F.2; PDF17 Table13",
+      "finding": "ETTm2훈련4.76+4.82=9.58 대인쇄total5.98. 2.00x는인쇄total비율1.2563및구성합비율2.0126모두와통상반올림상충. Electricity37.31/18.25=2.04438도2.00x와차이. 병렬추론complete=max(base,meta)5조건이며초기잔차/전체work/CPU비용은알수없다. GPUutil감소가비용0증거가아니다."
+    },
+    {
+      "observation_id": "H057-EV-12",
+      "location": "PDF15 Table8; PDF17 Table14",
+      "finding": "잔차Huber64지표조건은55개선8악화1인쇄동률이다. 본문never악화와구분한다. 단일stageHuber는15개선33악화. Table8원척도와주결과정규화척도를섞지않는다. literal00.001026을보존한다."
+    },
+    {
+      "observation_id": "H057-EV-13",
+      "location": "PDF9 Table5; PDF18 Table16; PDF7 Table1",
+      "finding": "alpha없음대base45개선3악화, .7/.05는각48개선이다. .05가모든.7보다낫다는뜻아님. T5.05와T1은ETTm1각4h/Weather96·192총6쌍차이. 동일실행으로통일하지않는다."
+    },
+    {
+      "observation_id": "H057-EV-14",
+      "location": "PDF16–17 Table11/12",
+      "finding": "같은대상·가중치·단위일때MSE>=MAE²검사. 인쇄반올림을고려해도T11Random16쌍/T12Random12+Shuffled1쌍이양립불가. 다른집계가능성과raw미확인때문에실행오류·부정행위·전체방법무효로단정하지않는다."
+    },
+    {
+      "observation_id": "H057-EV-15",
+      "location": "PDF18 Table16/17",
+      "finding": "6datasets×4h×2지표의3seed48요약. ±정의미기록. ETTm196MAE .272/.271/.270의평균.271대T17.272는보수적닫힌반올림구간경계에서만접한다. 다른47평균구간은내부교차. popSD해석의이항±.002와sampleSD해석의ETTh1336MSE±.000은각각불일치하지만 실제±정의를확정하지않는다. mean과SD공동가능성은검증하지않았다."
+    },
+    {
+      "observation_id": "H057-EV-16",
+      "location": "PDF17 Table15",
+      "finding": "64confidence중33개의±0행은99.99,나머지31개는인쇄100*(1−spread/mean)반올림과같다. 관측된수치관계이며통계적CI정의나99.99%확률보장으로부르지않는다."
+    },
+    {
+      "observation_id": "H057-EV-17",
+      "location": "PDF15–16 Table9/10; PDF19–20 Figure4/5",
+      "finding": "ADF/분포거리/Ljung–Box는인쇄보고다. p0.0000을정확0또는p<1e−6별도입증으로읽지않는다. TrafficACF음/양진동과Weather약28lag이후음수,8개정성사례를확인했다. rawACF/시계열재계산이나사례대표성은미검증."
+    },
+    {
+      "observation_id": "H057-EV-18",
+      "location": "PDF17/19 Table12/15/18",
+      "finding": "세표ours는주표32쌍재인용이다. seed·추가비교·정성그림을새독립재현으로세지않는다. Figure3의SequenceLength축은H이며L96고정. 한horizon동시출력과창사이재귀를구분하고baselinegroundtruth입력공정성은미확인."
+    },
+    {
+      "observation_id": "H057-EV-19",
+      "location": "공식 arxiv v2 PDF/abs; Crossref DOI metadata; ACM PDF접근",
+      "finding": "공식v2PDF와저장원본은6615803B/SHA256동일. 원65의과거406실패는역사로보존하고이번200을별도기록한다. Crossref선택서지는VoR162–173쪽/46references/2026-08-08online로20쪽arxiv47refs와구분한다. ACM PDF는403,출판본전체미독해. 공식구현링크를검토자료에서식별하지못했으나전역부재를주장하지않는다."
+    },
+    {
+      "observation_id": "H057-EV-20",
+      "location": "원65 전체재대조; HTML assets",
+      "finding": "65는이미증명/누수/병렬비용한계를지적했다. 이를이번새발견으로세지않고validation선택표현과표검수를보완한다. 다른4문헌과65전체종합미완료. HTML2SVG/3PNG의외부바이트는미검증이며그림은PDF로읽었다. 새모델·RNG·원코드실행0."
+    }
+  ],
+  "working_extraction_names_note": "작업 파일명은 검수 과정의 이름. 팀 접근은 출처 목록의 원문/공개 수치 검수를 사용한다.",
+  "new_model_runs": 0,
+  "original_scripts_executed": false
+}
