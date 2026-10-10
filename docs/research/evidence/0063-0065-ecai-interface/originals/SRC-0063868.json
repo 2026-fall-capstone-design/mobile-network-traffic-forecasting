@@ -1,0 +1,163 @@
+{
+  "date": "2026-09-26",
+  "stage": "63-65 residual and conditional-transform source review",
+  "primary_sources": [
+    {
+      "file": "method_audit_28/Two_stage_global_forecasting_ECAI2025.pdf",
+      "reused": true,
+      "version": "ECAI2025, DOI 10.3233/FAIA251157",
+      "new_read_scope": [
+        "section 5",
+        "Figure 3",
+        "Tables 5-6"
+      ],
+      "visually_reviewed_pages": [
+        7,
+        8
+      ],
+      "official_code_commit": "a53e223a4c01259eafe54ea8b0ea40a4ec98dff2",
+      "code_scope": [
+        "TS_X_II.py residual/LjungBox/tsfeatures/Kmeans/frozen-layer training",
+        "TS_X_I.py baseline and residual inspection"
+      ],
+      "not_verified": [
+        "full Fig3c/d reproduction",
+        "external execution"
+      ]
+    },
+    {
+      "file": "residual_interface_63/Heatload_2608.20024v1.pdf",
+      "version": "2608.20024v1, 2026-08-20",
+      "read_scope": [
+        "sections 3-4",
+        "5.1",
+        "5.3-5.6",
+        "Figure 2",
+        "Table 7",
+        "reproducibility"
+      ],
+      "visually_reviewed_pages": [
+        21
+      ],
+      "official_code_commit": "b86ec88019f850eadb544c95ed257cce486be111",
+      "code_scope": [
+        "README",
+        "stacked_residual_full_year_2024.py: origin-available base selection, residual target, future_df, summary"
+      ],
+      "not_verified": [
+        "full publication pipeline reproduction",
+        "complete helper-file code audit",
+        "Munich private data"
+      ]
+    },
+    {
+      "file": "residual_interface_63/Multi_scale_residual_2606.10678_latest_v2.pdf",
+      "version": "2606.10678v2, 2026-06-10, DOI10.1145/3770855.3817960",
+      "read_scope": [
+        "3.1-3.3",
+        "Algorithm 1",
+        "4.2.4-4.2.5",
+        "Tables 2-4",
+        "Appendix A.1-A.2",
+        "C.2 relevant passages"
+      ],
+      "visually_reviewed_pages": [
+        4,
+        11
+      ],
+      "official_code_reviewed": false
+    },
+    {
+      "file": "conditional_transform_64/Copula_clustering_PLOS2018.pdf",
+      "version": "DOI10.1371/journal.pone.0206753",
+      "read_scope": [
+        "Methods pages3-6",
+        "Theorems1-2",
+        "Proposition1",
+        "algorithm",
+        "applications and conclusion"
+      ],
+      "visually_reviewed_pages": [
+        5
+      ],
+      "official_code_reviewed": false
+    },
+    {
+      "file": "conditional_transform_64/Gaussian_copula_NeurIPS2019.pdf",
+      "version": "NeurIPS2019 proceedings",
+      "read_scope": [
+        "sections2-5",
+        "equations2-5",
+        "Figure2",
+        "Tables1-2"
+      ],
+      "visually_reviewed_pages": [
+        5
+      ],
+      "official_code_reviewed": false
+    },
+    {
+      "file": "conditional_transform_64/TACTiS2_2310.01327v2.pdf",
+      "version": "2310.01327v2, 2024-03-25",
+      "read_scope": [
+        "sections2-5.2",
+        "Propositions1-2",
+        "equations7-12",
+        "Figure2",
+        "Tables1-2"
+      ],
+      "visually_reviewed_pages": [
+        4,
+        5
+      ],
+      "official_code_reviewed": false
+    },
+    {
+      "file": "conditional_transform_64/Conditional_normalization_2305.12651v1.pdf",
+      "version": "2305.12651v1, 2023-05-22; author page labels Working paper",
+      "read_scope": [
+        "section2 equations1-6",
+        "section3 evaluation split",
+        "section5 and reproducibility"
+      ],
+      "visually_reviewed_pages": [
+        5
+      ],
+      "official_code_reviewed": false
+    }
+  ],
+  "new_pdf_files": 6,
+  "reused_pdf_files": 1,
+  "visually_reviewed_pages": 10,
+  "execution": {
+    "new_TabICL_contexts": 0,
+    "new_TabICL_query_rows": 0,
+    "new_RCTL_fits": 0,
+    "new_RCTL_forward_calls": 0,
+    "new_simple_fits": 0,
+    "new_data_diagnostics": 0,
+    "external_code_execution": false,
+    "budget_file_modified": false
+  },
+  "search_log_note": "Queries below were issued in this continuation. Earlier searches preceding this saved log are documented by saved URL/manifests; no exact query reconstruction is claimed.",
+  "search_queries": [
+    "\"TabICL\" \"normalization\" \"forecasting\"",
+    "time series forecasting conditional quantile transformation clustering marginal seasonality",
+    "\"time series\" \"conditional normalization\" \"seasonal\" forecasting",
+    "\"TabICL\" \"forecasting\" \"normalization\" [arxiv.org/github.com/soda-inria.github.io]",
+    "\"time series\" \"quantile normalization\" \"clustering\" forecasting",
+    "\"Conditional normalization in time series analysis\" Hyndman 2023 2024 2025"
+  ],
+  "access_failures": [
+    "OpenReview TACTiS-2 PDF HTTP403; public arXiv v2 obtained",
+    "versioned KDD arXiv PDF HTTP406; public current PDF obtained and v2 checked",
+    "Monash direct PDF HTTP403; public arXiv v1 obtained"
+  ],
+  "render_issue": "Initial with_suffix call truncated a decimal-containing PDF stem; already rendered 3 PNGs reused after fixing path construction. No model calculation involved.",
+  "not_accepted": [
+    "forecast-column substitution alone",
+    "residual correction alone",
+    "conditional CDF/normalization substitution alone"
+  ],
+  "goal_complete": false
+}

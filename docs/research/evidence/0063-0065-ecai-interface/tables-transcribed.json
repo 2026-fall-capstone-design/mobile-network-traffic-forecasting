@@ -1,0 +1,1025 @@
+{
+  "source_id": "SRC-0063060",
+  "source_sha256": "8d6713c37bde5888081777e89cbc584c7aa58b177ed1c297de3eb07af68fd3a4",
+  "copied_at_utc": "2026-10-10T02:13:23.555280+00:00",
+  "numeric_values_preserve_printed_decimal_strings": true,
+  "pdf_pages": [
+    5,
+    7,
+    8
+  ],
+  "table_1": {
+    "fields": [
+      "series_count",
+      "length_min",
+      "length_max",
+      "length_mean",
+      "trend",
+      "seasonality",
+      "ADF"
+    ],
+    "rows": [
+      {
+        "dataset": "Tourism",
+        "values": {
+          "series_count": "366",
+          "length_min": "91",
+          "length_max": "333",
+          "length_mean": "299",
+          "trend": "0.855",
+          "seasonality": "0.752",
+          "ADF": "-5.788"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "values": {
+          "series_count": "767",
+          "length_min": "84",
+          "length_max": "84",
+          "length_mean": "84",
+          "trend": "0.484",
+          "seasonality": "0.343",
+          "ADF": "-3.385"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "values": {
+          "series_count": "72",
+          "length_min": "28",
+          "length_max": "120",
+          "length_mean": "99",
+          "trend": "0.903",
+          "seasonality": "0.480",
+          "ADF": "-2.633"
+        }
+      },
+      {
+        "dataset": "M3-demo",
+        "values": {
+          "series_count": "111",
+          "length_min": "71",
+          "length_max": "138",
+          "length_mean": "123",
+          "trend": "0.944",
+          "seasonality": "0.348",
+          "ADF": "-2.738"
+        }
+      },
+      {
+        "dataset": "M3-finance",
+        "values": {
+          "series_count": "145",
+          "length_min": "68",
+          "length_max": "144",
+          "length_mean": "124",
+          "trend": "0.906",
+          "seasonality": "0.331",
+          "ADF": "-1.925"
+        }
+      },
+      {
+        "dataset": "M3-industry",
+        "values": {
+          "series_count": "334",
+          "length_min": "96",
+          "length_max": "144",
+          "length_mean": "140",
+          "trend": "0.790",
+          "seasonality": "0.531",
+          "ADF": "-3.538"
+        }
+      },
+      {
+        "dataset": "M3-macro",
+        "values": {
+          "series_count": "312",
+          "length_min": "66",
+          "length_max": "144",
+          "length_mean": "131",
+          "trend": "0.947",
+          "seasonality": "0.279",
+          "ADF": "-2.336"
+        }
+      },
+      {
+        "dataset": "M3-micro",
+        "values": {
+          "series_count": "474",
+          "length_min": "68",
+          "length_max": "126",
+          "length_mean": "93",
+          "trend": "0.493",
+          "seasonality": "0.371",
+          "ADF": "-4.063"
+        }
+      },
+      {
+        "dataset": "M3",
+        "values": {
+          "series_count": "1376",
+          "length_min": "66",
+          "length_max": "144",
+          "length_mean": "119",
+          "trend": "0.748",
+          "seasonality": "0.383",
+          "ADF": "-3.212"
+        }
+      }
+    ]
+  },
+  "table_2": {
+    "models": [
+      "TSAVG",
+      "ARIMA",
+      "Pooled AR",
+      "MLP",
+      "LSTM",
+      "LSTM.Cluster",
+      "TS-MLP-I",
+      "TS-LSTM-I",
+      "TS-MLP-II",
+      "TS-LSTM-II"
+    ],
+    "metrics_are_cumulative": true,
+    "rows": [
+      {
+        "dataset": "Tourism",
+        "metric": "RMSE.mean",
+        "values": {
+          "TSAVG": "4759.500",
+          "ARIMA": "4119.036",
+          "Pooled AR": "2047.617",
+          "MLP": "1913.457",
+          "LSTM": "1963.280",
+          "LSTM.Cluster": "2192.981",
+          "TS-MLP-I": "1898.218",
+          "TS-LSTM-I": "1903.357",
+          "TS-MLP-II": "1892.543",
+          "TS-LSTM-II": "1916.188"
+        }
+      },
+      {
+        "dataset": "Tourism",
+        "metric": "RMSE.median",
+        "values": {
+          "TSAVG": "1005.795",
+          "ARIMA": "929.144",
+          "Pooled AR": "597.842",
+          "MLP": "511.050",
+          "LSTM": "495.335",
+          "LSTM.Cluster": "509.936",
+          "TS-MLP-I": "503.737",
+          "TS-LSTM-I": "483.842",
+          "TS-MLP-II": "499.367",
+          "TS-LSTM-II": "490.785"
+        }
+      },
+      {
+        "dataset": "Tourism",
+        "metric": "MAE.mean",
+        "values": {
+          "TSAVG": "3647.229",
+          "ARIMA": "3190.488",
+          "Pooled AR": "1543.199",
+          "MLP": "1539.330",
+          "LSTM": "1540.164",
+          "LSTM.Cluster": "1809.114",
+          "TS-MLP-I": "1529.742",
+          "TS-LSTM-I": "1536.206",
+          "TS-MLP-II": "1513.960",
+          "TS-LSTM-II": "1515.407"
+        }
+      },
+      {
+        "dataset": "Tourism",
+        "metric": "MAE.median",
+        "values": {
+          "TSAVG": "770.753",
+          "ARIMA": "700.724",
+          "Pooled AR": "461.658",
+          "MLP": "393.885",
+          "LSTM": "384.459",
+          "LSTM.Cluster": "418.610",
+          "TS-MLP-I": "386.049",
+          "TS-LSTM-I": "387.552",
+          "TS-MLP-II": "375.761",
+          "TS-LSTM-II": "383.539"
+        }
+      },
+      {
+        "dataset": "Tourism",
+        "metric": "sMAPE.mean",
+        "values": {
+          "TSAVG": "0.291",
+          "ARIMA": "0.267",
+          "Pooled AR": "0.206",
+          "MLP": "0.171",
+          "LSTM": "0.167",
+          "LSTM.Cluster": "0.185",
+          "TS-MLP-I": "0.170",
+          "TS-LSTM-I": "0.167",
+          "TS-MLP-II": "0.170",
+          "TS-LSTM-II": "0.167"
+        }
+      },
+      {
+        "dataset": "Tourism",
+        "metric": "sMAPE.median",
+        "values": {
+          "TSAVG": "0.262",
+          "ARIMA": "0.241",
+          "Pooled AR": "0.158",
+          "MLP": "0.136",
+          "LSTM": "0.136",
+          "LSTM.Cluster": "0.153",
+          "TS-MLP-I": "0.138",
+          "TS-LSTM-I": "0.142",
+          "TS-MLP-II": "0.136",
+          "TS-LSTM-II": "0.135"
+        }
+      },
+      {
+        "dataset": "M3",
+        "metric": "RMSE.mean",
+        "values": {
+          "TSAVG": "615.987",
+          "ARIMA": "598.826",
+          "Pooled AR": "597.438",
+          "MLP": "562.183",
+          "LSTM": "579.985",
+          "LSTM.Cluster": "557.876",
+          "TS-MLP-I": "558.386",
+          "TS-LSTM-I": "560.449",
+          "TS-MLP-II": "561.264",
+          "TS-LSTM-II": "565.051"
+        }
+      },
+      {
+        "dataset": "M3",
+        "metric": "RMSE.median",
+        "values": {
+          "TSAVG": "406.703",
+          "ARIMA": "395.709",
+          "Pooled AR": "389.837",
+          "MLP": "328.168",
+          "LSTM": "358.744",
+          "LSTM.Cluster": "356.812",
+          "TS-MLP-I": "325.942",
+          "TS-LSTM-I": "337.669",
+          "TS-MLP-II": "329.176",
+          "TS-LSTM-II": "338.711"
+        }
+      },
+      {
+        "dataset": "M3",
+        "metric": "MAE.mean",
+        "values": {
+          "TSAVG": "484.660",
+          "ARIMA": "470.654",
+          "Pooled AR": "475.890",
+          "MLP": "464.153",
+          "LSTM": "478.653",
+          "LSTM.Cluster": "463.335",
+          "TS-MLP-I": "460.971",
+          "TS-LSTM-I": "462.290",
+          "TS-MLP-II": "462.659",
+          "TS-LSTM-II": "465.618"
+        }
+      },
+      {
+        "dataset": "M3",
+        "metric": "MAE.median",
+        "values": {
+          "TSAVG": "322.573",
+          "ARIMA": "311.126",
+          "Pooled AR": "313.683",
+          "MLP": "270.498",
+          "LSTM": "297.641",
+          "LSTM.Cluster": "290.237",
+          "TS-MLP-I": "268.922",
+          "TS-LSTM-I": "282.301",
+          "TS-MLP-II": "271.838",
+          "TS-LSTM-II": "281.160"
+        }
+      },
+      {
+        "dataset": "M3",
+        "metric": "sMAPE.mean",
+        "values": {
+          "TSAVG": "0.115",
+          "ARIMA": "0.114",
+          "Pooled AR": "0.114",
+          "MLP": "0.113",
+          "LSTM": "0.113",
+          "LSTM.Cluster": "0.110",
+          "TS-MLP-I": "0.114",
+          "TS-LSTM-I": "0.112",
+          "TS-MLP-II": "0.113",
+          "TS-LSTM-II": "0.111"
+        }
+      },
+      {
+        "dataset": "M3",
+        "metric": "sMAPE.median",
+        "values": {
+          "TSAVG": "0.069",
+          "ARIMA": "0.065",
+          "Pooled AR": "0.066",
+          "MLP": "0.055",
+          "LSTM": "0.062",
+          "LSTM.Cluster": "0.061",
+          "TS-MLP-I": "0.054",
+          "TS-LSTM-I": "0.057",
+          "TS-MLP-II": "0.055",
+          "TS-LSTM-II": "0.058"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "metric": "RMSE.mean",
+        "values": {
+          "TSAVG": "360462.500",
+          "ARIMA": "301763.100",
+          "Pooled AR": "451571.800",
+          "MLP": "293090.638",
+          "LSTM": "268568.973",
+          "LSTM.Cluster": "279579.044",
+          "TS-MLP-I": "308556.696",
+          "TS-LSTM-I": "266999.874",
+          "TS-MLP-II": "281854.068",
+          "TS-LSTM-II": "248097.484"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "metric": "RMSE.median",
+        "values": {
+          "TSAVG": "93.481",
+          "ARIMA": "96.834",
+          "Pooled AR": "32944.598",
+          "MLP": "78.259",
+          "LSTM": "87.128",
+          "LSTM.Cluster": "87.080",
+          "TS-MLP-I": "52.036",
+          "TS-LSTM-I": "54.156",
+          "TS-MLP-II": "76.271",
+          "TS-LSTM-II": "75.733"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "metric": "MAE.mean",
+        "values": {
+          "TSAVG": "301584.200",
+          "ARIMA": "233306.100",
+          "Pooled AR": "411428.100",
+          "MLP": "239905.587",
+          "LSTM": "215052.708",
+          "LSTM.Cluster": "227962.398",
+          "TS-MLP-I": "256551.538",
+          "TS-LSTM-I": "207039.528",
+          "TS-MLP-II": "225569.258",
+          "TS-LSTM-II": "199321.157"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "metric": "MAE.median",
+        "values": {
+          "TSAVG": "82.064",
+          "ARIMA": "79.007",
+          "Pooled AR": "32944.310",
+          "MLP": "67.905",
+          "LSTM": "72.229",
+          "LSTM.Cluster": "73.351",
+          "TS-MLP-I": "44.982",
+          "TS-LSTM-I": "50.356",
+          "TS-MLP-II": "65.871",
+          "TS-LSTM-II": "62.792"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "metric": "sMAPE.mean",
+        "values": {
+          "TSAVG": "0.107",
+          "ARIMA": "0.101",
+          "Pooled AR": "1.338",
+          "MLP": "0.095",
+          "LSTM": "0.103",
+          "LSTM.Cluster": "0.101",
+          "TS-MLP-I": "0.082",
+          "TS-LSTM-I": "0.083",
+          "TS-MLP-II": "0.089",
+          "TS-LSTM-II": "0.090"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "metric": "sMAPE.median",
+        "values": {
+          "TSAVG": "0.084",
+          "ARIMA": "0.080",
+          "Pooled AR": "1.592",
+          "MLP": "0.071",
+          "LSTM": "0.086",
+          "LSTM.Cluster": "0.082",
+          "TS-MLP-I": "0.057",
+          "TS-LSTM-I": "0.056",
+          "TS-MLP-II": "0.071",
+          "TS-LSTM-II": "0.069"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "metric": "RMSE.mean",
+        "values": {
+          "TSAVG": "23.985",
+          "ARIMA": "23.320",
+          "Pooled AR": "21.610",
+          "MLP": "20.674",
+          "LSTM": "22.056",
+          "LSTM.Cluster": "22.887",
+          "TS-MLP-I": "20.596",
+          "TS-LSTM-I": "21.888",
+          "TS-MLP-II": "20.926",
+          "TS-LSTM-II": "21.961"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "metric": "RMSE.median",
+        "values": {
+          "TSAVG": "8.080",
+          "ARIMA": "8.022",
+          "Pooled AR": "8.357",
+          "MLP": "7.833",
+          "LSTM": "7.725",
+          "LSTM.Cluster": "7.663",
+          "TS-MLP-I": "7.825",
+          "TS-LSTM-I": "7.725",
+          "TS-MLP-II": "7.944",
+          "TS-LSTM-II": "7.753"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "metric": "MAE.mean",
+        "values": {
+          "TSAVG": "19.610",
+          "ARIMA": "19.040",
+          "Pooled AR": "17.643",
+          "MLP": "17.651",
+          "LSTM": "18.739",
+          "LSTM.Cluster": "19.408",
+          "TS-MLP-I": "17.574",
+          "TS-LSTM-I": "18.654",
+          "TS-MLP-II": "17.816",
+          "TS-LSTM-II": "18.635"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "metric": "MAE.median",
+        "values": {
+          "TSAVG": "6.437",
+          "ARIMA": "6.495",
+          "Pooled AR": "6.854",
+          "MLP": "6.600",
+          "LSTM": "6.558",
+          "LSTM.Cluster": "6.492",
+          "TS-MLP-I": "6.616",
+          "TS-LSTM-I": "6.546",
+          "TS-MLP-II": "6.665",
+          "TS-LSTM-II": "6.612"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "metric": "sMAPE.mean",
+        "values": {
+          "TSAVG": "0.168",
+          "ARIMA": "0.169",
+          "Pooled AR": "0.176",
+          "MLP": "0.169",
+          "LSTM": "0.169",
+          "LSTM.Cluster": "0.170",
+          "TS-MLP-I": "0.170",
+          "TS-LSTM-I": "0.169",
+          "TS-MLP-II": "0.170",
+          "TS-LSTM-II": "0.170"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "metric": "sMAPE.median",
+        "values": {
+          "TSAVG": "0.158",
+          "ARIMA": "0.161",
+          "Pooled AR": "0.169",
+          "MLP": "0.154",
+          "LSTM": "0.154",
+          "LSTM.Cluster": "0.159",
+          "TS-MLP-I": "0.154",
+          "TS-LSTM-I": "0.153",
+          "TS-MLP-II": "0.154",
+          "TS-LSTM-II": "0.156"
+        }
+      }
+    ]
+  },
+  "table_3": {
+    "residual_definition": "additive",
+    "Rh_unit": "percent",
+    "shared_series_and_samples_counted_once": true,
+    "rows": [
+      {
+        "dataset": "Tourism",
+        "series_count": "366",
+        "samples": "91712",
+        "MLP": {
+          "parameters": "241",
+          "nh": "186",
+          "Rh_percent": "50.82"
+        },
+        "LSTM": {
+          "parameters": "1993",
+          "nh": "198",
+          "Rh_percent": "54.10"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "series_count": "767",
+        "samples": "36816",
+        "MLP": {
+          "parameters": "417",
+          "nh": "92",
+          "Rh_percent": "11.99"
+        },
+        "LSTM": {
+          "parameters": "361",
+          "nh": "91",
+          "Rh_percent": "11.86"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "series_count": "72",
+        "samples": "5470",
+        "MLP": {
+          "parameters": "113",
+          "nh": "34",
+          "Rh_percent": "47.22"
+        },
+        "LSTM": {
+          "parameters": "361",
+          "nh": "37",
+          "Rh_percent": "51.39"
+        }
+      },
+      {
+        "dataset": "M3-demo",
+        "series_count": "111",
+        "samples": "9028",
+        "MLP": {
+          "parameters": "417",
+          "nh": "70",
+          "Rh_percent": "63.06"
+        },
+        "LSTM": {
+          "parameters": "1225",
+          "nh": "85",
+          "Rh_percent": "76.58"
+        }
+      },
+      {
+        "dataset": "M3-finance",
+        "series_count": "145",
+        "samples": "11948",
+        "MLP": {
+          "parameters": "417",
+          "nh": "59",
+          "Rh_percent": "40.69"
+        },
+        "LSTM": {
+          "parameters": "1225",
+          "nh": "73",
+          "Rh_percent": "50.34"
+        }
+      },
+      {
+        "dataset": "M3-industry",
+        "series_count": "334",
+        "samples": "32739",
+        "MLP": {
+          "parameters": "417",
+          "nh": "125",
+          "Rh_percent": "37.43"
+        },
+        "LSTM": {
+          "parameters": "1225",
+          "nh": "171",
+          "Rh_percent": "51.20"
+        }
+      },
+      {
+        "dataset": "M3-macro",
+        "series_count": "312",
+        "samples": "27731",
+        "MLP": {
+          "parameters": "417",
+          "nh": "133",
+          "Rh_percent": "42.63"
+        },
+        "LSTM": {
+          "parameters": "1225",
+          "nh": "158",
+          "Rh_percent": "50.64"
+        }
+      },
+      {
+        "dataset": "M3-micro",
+        "series_count": "474",
+        "samples": "24009",
+        "MLP": {
+          "parameters": "417",
+          "nh": "56",
+          "Rh_percent": "11.81"
+        },
+        "LSTM": {
+          "parameters": "1225",
+          "nh": "44",
+          "Rh_percent": "9.28"
+        }
+      }
+    ]
+  },
+  "table_4": {
+    "residual_definition": "multiplicative",
+    "Rh_unit": "percent",
+    "rows": [
+      {
+        "dataset": "Tourism",
+        "model": "MLP",
+        "values": {
+          "before_nh": "139",
+          "before_Rh_percent": "37.98",
+          "K": "5",
+          "parameters": "173",
+          "after_nh": "64",
+          "after_Rh_percent": "17.49"
+        }
+      },
+      {
+        "dataset": "Tourism",
+        "model": "LSTM",
+        "values": {
+          "before_nh": "162",
+          "before_Rh_percent": "44.26",
+          "K": "5",
+          "parameters": "173",
+          "after_nh": "74",
+          "after_Rh_percent": "20.22"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "model": "MLP",
+        "values": {
+          "before_nh": "81",
+          "before_Rh_percent": "10.56",
+          "K": "3",
+          "parameters": "461",
+          "after_nh": "10",
+          "after_Rh_percent": "1.30"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "model": "LSTM",
+        "values": {
+          "before_nh": "88",
+          "before_Rh_percent": "11.47",
+          "K": "3",
+          "parameters": "173",
+          "after_nh": "29",
+          "after_Rh_percent": "3.78"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "model": "MLP",
+        "values": {
+          "before_nh": "33",
+          "before_Rh_percent": "45.83",
+          "K": "2",
+          "parameters": "137",
+          "after_nh": "16",
+          "after_Rh_percent": "22.22"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "model": "LSTM",
+        "values": {
+          "before_nh": "35",
+          "before_Rh_percent": "48.61",
+          "K": "2",
+          "parameters": "89",
+          "after_nh": "14",
+          "after_Rh_percent": "19.44"
+        }
+      },
+      {
+        "dataset": "M3-demo",
+        "model": "MLP",
+        "values": {
+          "before_nh": "59",
+          "before_Rh_percent": "53.15",
+          "K": "3",
+          "parameters": "461",
+          "after_nh": "34",
+          "after_Rh_percent": "30.63"
+        }
+      },
+      {
+        "dataset": "M3-demo",
+        "model": "LSTM",
+        "values": {
+          "before_nh": "84",
+          "before_Rh_percent": "75.68",
+          "K": "3",
+          "parameters": "173",
+          "after_nh": "52",
+          "after_Rh_percent": "46.85"
+        }
+      },
+      {
+        "dataset": "M3-finance",
+        "model": "MLP",
+        "values": {
+          "before_nh": "63",
+          "before_Rh_percent": "43.45",
+          "K": "3",
+          "parameters": "461",
+          "after_nh": "18",
+          "after_Rh_percent": "12.41"
+        }
+      },
+      {
+        "dataset": "M3-finance",
+        "model": "LSTM",
+        "values": {
+          "before_nh": "67",
+          "before_Rh_percent": "46.21",
+          "K": "3",
+          "parameters": "173",
+          "after_nh": "31",
+          "after_Rh_percent": "21.38"
+        }
+      },
+      {
+        "dataset": "M3-industry",
+        "model": "MLP",
+        "values": {
+          "before_nh": "118",
+          "before_Rh_percent": "35.33",
+          "K": "5",
+          "parameters": "461",
+          "after_nh": "46",
+          "after_Rh_percent": "13.77"
+        }
+      },
+      {
+        "dataset": "M3-industry",
+        "model": "LSTM",
+        "values": {
+          "before_nh": "169",
+          "before_Rh_percent": "50.60",
+          "K": "3",
+          "parameters": "173",
+          "after_nh": "77",
+          "after_Rh_percent": "23.05"
+        }
+      },
+      {
+        "dataset": "M3-macro",
+        "model": "MLP",
+        "values": {
+          "before_nh": "128",
+          "before_Rh_percent": "41.03",
+          "K": "3",
+          "parameters": "461",
+          "after_nh": "53",
+          "after_Rh_percent": "16.99"
+        }
+      },
+      {
+        "dataset": "M3-macro",
+        "model": "LSTM",
+        "values": {
+          "before_nh": "156",
+          "before_Rh_percent": "50.00",
+          "K": "3",
+          "parameters": "173",
+          "after_nh": "64",
+          "after_Rh_percent": "20.51"
+        }
+      },
+      {
+        "dataset": "M3-micro",
+        "model": "MLP",
+        "values": {
+          "before_nh": "40",
+          "before_Rh_percent": "8.44",
+          "K": "3",
+          "parameters": "461",
+          "after_nh": "14",
+          "after_Rh_percent": "2.95"
+        }
+      },
+      {
+        "dataset": "M3-micro",
+        "model": "LSTM",
+        "values": {
+          "before_nh": "37",
+          "before_Rh_percent": "7.81",
+          "K": "3",
+          "parameters": "173",
+          "after_nh": "16",
+          "after_Rh_percent": "3.38"
+        }
+      }
+    ]
+  },
+  "table_5": {
+    "metric": "mean cumulative sMAPE",
+    "strategies": [
+      "b_TS_LSTM_II",
+      "c",
+      "d_forecast_input",
+      "a_LSTM_Cluster"
+    ],
+    "rows": [
+      {
+        "dataset": "Tourism",
+        "values": {
+          "b_TS_LSTM_II": "0.1672",
+          "c": "0.1681",
+          "d_forecast_input": "0.1681",
+          "a_LSTM_Cluster": "0.1850"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "values": {
+          "b_TS_LSTM_II": "0.0897",
+          "c": "0.0843",
+          "d_forecast_input": "0.0900",
+          "a_LSTM_Cluster": "0.1018"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "values": {
+          "b_TS_LSTM_II": "0.1696",
+          "c": "0.1691",
+          "d_forecast_input": "0.1690",
+          "a_LSTM_Cluster": "0.1698"
+        }
+      },
+      {
+        "dataset": "M3-demo",
+        "values": {
+          "b_TS_LSTM_II": "0.0414",
+          "c": "0.0413",
+          "d_forecast_input": "0.0421",
+          "a_LSTM_Cluster": "0.0442"
+        }
+      },
+      {
+        "dataset": "M3-finance",
+        "values": {
+          "b_TS_LSTM_II": "0.0722",
+          "c": "0.0712",
+          "d_forecast_input": "0.0716",
+          "a_LSTM_Cluster": "0.0755"
+        }
+      },
+      {
+        "dataset": "M3-industry",
+        "values": {
+          "b_TS_LSTM_II": "0.0851",
+          "c": "0.0863",
+          "d_forecast_input": "0.0854",
+          "a_LSTM_Cluster": "0.0901"
+        }
+      },
+      {
+        "dataset": "M3-macro",
+        "values": {
+          "b_TS_LSTM_II": "0.0366",
+          "c": "0.0375",
+          "d_forecast_input": "0.0365",
+          "a_LSTM_Cluster": "0.0377"
+        }
+      },
+      {
+        "dataset": "M3-micro",
+        "values": {
+          "b_TS_LSTM_II": "0.2069",
+          "c": "0.2081",
+          "d_forecast_input": "0.2073",
+          "a_LSTM_Cluster": "0.1978"
+        }
+      }
+    ],
+    "printed_one_tail_paired_ttest_pvalues": {
+      "b_TS_LSTM_II": "0.094",
+      "c": "0.102",
+      "d_forecast_input": "0.097"
+    }
+  },
+  "table_6": {
+    "unit": "minutes",
+    "rows": [
+      {
+        "dataset": "Tourism",
+        "minutes": {
+          "LSTM": "10.75",
+          "LSTM.Cluster": "10.95",
+          "TS-LSTM-I": "11.20",
+          "TS-LSTM-II": "22.24"
+        }
+      },
+      {
+        "dataset": "Hospital",
+        "minutes": {
+          "LSTM": "4.17",
+          "LSTM.Cluster": "6.82",
+          "TS-LSTM-I": "4.66",
+          "TS-LSTM-II": "7.94"
+        }
+      },
+      {
+        "dataset": "CIF 2016",
+        "minutes": {
+          "LSTM": "0.71",
+          "LSTM.Cluster": "1.72",
+          "TS-LSTM-I": "0.72",
+          "TS-LSTM-II": "3.16"
+        }
+      },
+      {
+        "dataset": "M3-demo",
+        "minutes": {
+          "LSTM": "1.11",
+          "LSTM.Cluster": "2.85",
+          "TS-LSTM-I": "1.55",
+          "TS-LSTM-II": "7.98"
+        }
+      },
+      {
+        "dataset": "M3-finance",
+        "minutes": {
+          "LSTM": "1.17",
+          "LSTM.Cluster": "3.90",
+          "TS-LSTM-I": "1.46",
+          "TS-LSTM-II": "6.33"
+        }
+      },
+      {
+        "dataset": "M3-industry",
+        "minutes": {
+          "LSTM": "3.54",
+          "LSTM.Cluster": "10.24",
+          "TS-LSTM-I": "4.18",
+          "TS-LSTM-II": "18.40"
+        }
+      },
+      {
+        "dataset": "M3-macro",
+        "minutes": {
+          "LSTM": "2.52",
+          "LSTM.Cluster": "8.74",
+          "TS-LSTM-I": "3.01",
+          "TS-LSTM-II": "16.19"
+        }
+      },
+      {
+        "dataset": "M3-micro",
+        "minutes": {
+          "LSTM": "2.35",
+          "LSTM.Cluster": "8.26",
+          "TS-LSTM-I": "2.47",
+          "TS-LSTM-II": "4.50"
+        }
+      }
+    ]
+  },
+  "printed_numeric_fields": 530,
+  "printed_numeric_rows": 82
+}

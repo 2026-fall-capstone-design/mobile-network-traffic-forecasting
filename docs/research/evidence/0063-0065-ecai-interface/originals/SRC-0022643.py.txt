@@ -1,0 +1,47 @@
+"""Bounded public source capture for review 63. Never imports external code."""
+from pathlib import Path
+import hashlib, json, urllib.request, concurrent.futures
+from pypdf import PdfReader
+
+base = Path(__file__).resolve().parent
+out = base / 'sources/residual_interface_63'
+if out.exists():
+    raise RuntimeError('Archive exists; inspect it rather than rerunning.')
+out.mkdir(parents=True)
+sources = [
+ ('Heatload_2608.20024v1.pdf', 'https://arxiv.org/pdf/2608.20024v1'),
+ ('Heatload_2608.20024v1.html', 'https://arxiv.org/html/2608.20024v1'),
+ ('Heatload_abs.html', 'https://arxiv.org/abs/2608.20024'),
+ ('Multi_scale_residual_abs.html', 'https://arxiv.org/abs/2606.10678'),
+ ('heatload_repo.json', 'https://api.github.com/repos/benspoek/tsfm-heatload'),
+ ('two_stage_repo.json', 'https://api.github.com/repos/R-jr-star/Two-stage-modelling-framework'),
+]
+def get(pair):
+    name, url = pair
+    item = dict(name=name,url=url,accessed_date='2026-09-26')
+    try:
+        limit = (20 if name.endswith('.pdf') else 5)*1024**2
+        req=urllib.request.Request(url, headers={'User-Agent':'TabICL-research-primary-source-review'})
+        with urllib.request.urlopen(req, timeout=35) as response:
+            data=response.read(limit+1)
+            item['resolved_url']=response.url
+            item['status']=response.status
+        if len(data)>limit:
+            raise RuntimeError('Per-source size cap exceeded')
+        if name.endswith('.pdf') and not data.startswith(b'%PDF'):
+            raise RuntimeError('Not a PDF response')
+        path=out/name
+        path.write_bytes(data)
+        item.update(saved=True,bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            pdf=PdfReader(path)
+            item['pages']=len(pdf.pages)
+            path.with_suffix('.txt').write_text('\n\n'.join(f'--- PDF page {i+1} ---\n{p.extract_text()}' for i,p in enumerate(pdf.pages)),encoding='utf-8')
+    except Exception as exc:
+        item.update(saved=False,error=f'{type(exc).__name__}: {exc}')
+    return item
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+    results=list(pool.map(get,sources))
+(out/'manifest.json').write_text(json.dumps(results,ensure_ascii=False,indent=2),encoding='utf-8')
+for item in results:
+    print(json.dumps(item,ensure_ascii=False),flush=True)

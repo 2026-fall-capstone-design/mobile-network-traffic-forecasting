@@ -1,0 +1,90 @@
+{
+  "batch_id": "history-055",
+  "code_commit": "a53e223a4c01259eafe54ea8b0ea40a4ec98dff2",
+  "source_ids": [
+    "SRC-0063851",
+    "SRC-0063852"
+  ],
+  "read_lines": {
+    "TS_X_I": [
+      1,
+      287
+    ],
+    "TS_X_II": [
+      1,
+      434
+    ]
+  },
+  "pinned_code_checks": [
+    {
+      "source_id": "SRC-0063851",
+      "commit": "a53e223a4c01259eafe54ea8b0ea40a4ec98dff2",
+      "git_blob_sha1": "75c9b61a69315447c531920eeced0aa34ed3b83e",
+      "local_git_blob_match": true,
+      "manifest_match": true,
+      "url": "https://raw.githubusercontent.com/R-jr-star/Two-stage-modelling-framework/a53e223a4c01259eafe54ea8b0ea40a4ec98dff2/TS_X_I.py",
+      "remote_status": 200,
+      "remote_byte_equal": true,
+      "remote_read_only": true
+    },
+    {
+      "source_id": "SRC-0063852",
+      "commit": "a53e223a4c01259eafe54ea8b0ea40a4ec98dff2",
+      "git_blob_sha1": "fc5ec1b130a018139ec27532eed4de3a4fbeb06e",
+      "local_git_blob_match": true,
+      "manifest_match": true,
+      "url": "https://raw.githubusercontent.com/R-jr-star/Two-stage-modelling-framework/a53e223a4c01259eafe54ea8b0ea40a4ec98dff2/TS_X_II.py",
+      "remote_status": 200,
+      "remote_byte_equal": true,
+      "remote_read_only": true
+    }
+  ],
+  "static_parse_checks": [
+    {
+      "file": "TS_X_I.py",
+      "static_parse_only": true,
+      "error_type": "SyntaxError",
+      "line": 3,
+      "line_text": "pip install tensorflow-determinism"
+    },
+    {
+      "file": "TS_X_II.py",
+      "static_parse_only": true,
+      "error_type": "SyntaxError",
+      "line": 3,
+      "line_text": "pip install tensorflow-determinism"
+    }
+  ],
+  "findings": [
+    "Type I의 잔차는 예측−실제(I212)이며 auto.arima가 이를 적합하고 예측에서 빼므로 실제−예측 잔차를 더하는 표현과 부호가 일관된다. Type I의 테스트 보정은 h=전체 테스트 길이 한 번의 ARIMA forecast(I256–259); 글로벌 입력 창은 테스트에서 관측한 이전값을 포함하는 rolling one-step. ARIMA도 매 테스트 시점 관측으로 갱신했다고 단정할 수 없다.",
+    "두 구현은 입력 구간의 np.mean/np.std로 입력·target을 함께 정규화하고 같은 μ/σ로 역변환(I77–101,II68–92). 논문 σ식의 제곱근 없는 표기와 np.std 구현이 다르다. 상수 창 std=0 및 ratio denominator=0 보호는 없다. 해당 자료에서 실제 발생했다는 실행 증거는 없다.",
+    "분할은 각 시계열 info.test_idx보다 이전을 train, test_idx−input_len 이후를 test 입력으로 만든다(I183–190,II337–344). 날짜/CSV 본문은 이번에 읽지 않았다. 학습 끝에 같은 train을 predict하여 잔차를 만들며 별도 OOF/time cross-fit은 없다. 학습내 잔차라는 사실을 test leakage 확정으로 바꾸지 않는다.",
+    "Type II는 train_true/orig_pred_train 비율(II373)을 Ljung–Box 및 tsfeatures/KMeans의 입력으로 사용하지만 군집 모델 목표는 norm_train_data_frame_clu의 실제 target(II207–224)이다. 추론은 cluster prediction으로 대체(II267–268); 글로벌 예측에 별도의 잔차출력 더하기/곱하기가 없다.",
+    "build_cluster_model_V1은 global 최종 출력층을 제외한 hidden output을 Dense(input_len)로 바꾸고 원 입력과 Add한 뒤 Dense2/출력층을 붙인다(II166–180). 일부 layer를 인덱스 slice로 freeze한다. 논문 Fig3(d)의 최종 global forecast concatenation을 구현했다고 볼 수 없다. Keras 그래프의 실제 layers 순서·학습가능 가중치 수·Dropout 모드는 미실행이므로 확정하지 않는다.",
+    "Type II tsfeatures는12개 feature 선택→MinMaxScaler→NaN있는 열 제거→KMeans(requiredK,random_state=0)(II295–312). unique_id 반환 순서를 hetero_series_idx에 맞추는 별도 join/assert는 보이지 않는다. 실행에서 실제 misalignment가 있었다는 증거는 없다.",
+    "Ljung–Box lag=int(log(잔차길이)), 마지막 lag p<.05(I219–224,II379–384). print의 heteroscedastic라는 단어는 분산 검정 수행 근거가 아니다. 다중검정 보정도 보이지 않는다. 논문 Rh를 생성과정 이질성의 직접 증명으로 확대하지 않는다.",
+    "실행 진입 설정은 M3_1, input24/output1/period12, MLP16 tanh, Adam 문자열, seed3407. Type I batch32/epoch30; Type II batch32/4, epochs30/40, K3(II425–431). 함수 기본seed42/K5와 실제 호출seed3407/K3을 구분. 논문의 validation10%, early stopping,100epoch/grid/K≤10 선택·lr.002 decay는 저장 코드2개에 구현되지 않았다. 전체 논문 실험이 그렇게 안됐다는 반증은 아니다.",
+    "stage1 fit은 shuffle=False(I204,II360–361), stage2 fit(II224)은 shuffle 인수를 지정하지 않는다. seed 설정함수는 있으나 실제 결정성·반복횟수/오차막대/환경버전은 검증하지 않았다. 원본의 RNG 호출을 실행한 적 없다.",
+    "metrics 함수는 각 prefix의 RMSE/MAE/sMAPE를 평균낸 후 시계열별 mean/median을 반환한다. 표준 전체시점 RMSE/MAE/sMAPE와 다름. 분모0의 sMAPE 처리 없음. 누적 지표의 두 정적 예제를 원코드 실행 없이 산술로 확인했다. 계산값은 history-055-numeric-check.json에 보존한다.",
+    "양쪽 코드의 import time은 타이머 호출이나 총 비용 저장으로 이어지지 않는다. 따라서 Table6 시간의 포함 범위, grid/K탐색 포함 여부, 실측 로그는 미확인. stage2는 선별군집에 새 모델 적합을 포함하므로 무비용 변경은 아니다.",
+    "두 .py는 3줄의 pip install 구문 때문에 표준 Python AST 정적 파싱에서 SyntaxError가 난다. 노트북식 설치 셀/환경 정리가 필요하다는 재사용 메모이며 새 실행실패를 보고하는 것이 아니다. requirements/라이선스/README는 저장 tree15항목에 없고 repo license는 null. 데이터는 datasets/ 아래인데 코드의 read_csv는 현재 디렉터리 이름을 사용한다.",
+    "저장 commit은 tourism_info.csv를 삭제한 commit이고 parent patch에는 test_idx 값이 남아 있다. root tree의 sha필드는 commit을 가리키며 commit.tree.sha는 별도0d88e17d…이다. 이 스냅샷만으로 둘을 동일한 tree object로 표기하지 않는다. 코드 blob SHA1은 실제바이트와 일치한다. 원격 고정 코드바이트 비교 결과는 pinned_code_checks 참조.",
+    "이상은 공개된 두 예제 구현 범위다. 논문 모든 모델/자료/하이퍼탐색/표의 독립 재현 또는 TabICL/RCTL 성능 검증이 아니다. 다른 Heatload/KDD/분포변환 자료는 계속 미완료다."
+  ],
+  "source_collection_findings": [
+    "63수집metadata의repoSHA와ECAI2고정코드SHA/공식rawbytes,65렌더log의ECAIPNG7/8 SHA/size를연결했다. 렌더source는수정된파일명결합str(dest)+.png와재사용경로를보여준다. 최초잘못된script판본/오류trace가없으므로정확한실패코드를새로꾸며쓰지않음.",
+    "review_scope전체7문헌과원65의ECAI§1의주요숫자/방법/미실행판정을대조. 다른6문헌은scope와메타데이터만봤으며논문/공식코드검수가완료된것아님. 전체63–65통합판정과분포변환논리는후속묶음에남긴다."
+  ],
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "random_draws": 0,
+  "independent_reproduction": false,
+  "additional_second_pass_findings": [
+    {
+      "source_id": "SRC-0063852",
+      "locator": "239–247행과373–384행",
+      "finding": "처음선별은실제/전역예측비율이지만군집학습후LjungBox의diff_lst_with_adj는실제−군집예측차이다.",
+      "limit": "이저장예제의전후Rh를동일multiplicative정의의Table4재현으로세지않는다.인쇄표의산술은별도검수."
+    }
+  ]
+}

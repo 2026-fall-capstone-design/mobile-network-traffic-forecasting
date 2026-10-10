@@ -309,3 +309,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 ## 최적 입력 길이·첫 평탄구간·cell 분할 — 59–62
 
 검색어: Optimal Look-back, horizon, Bayes 위험, approximation loss, 이력 길이, 최초 포화, GPI, process identification, grouping, trimmed mean. [문헌과62 종합](records/0059-optimal-lookback.md)을 먼저 읽으세요. 기대 Bayes 위험 비증가, 실제 공유 예측기 오차, 최적성 증명 조건은 다릅니다. [60 파일럿](records/0059-0062-history-grouping.md)과 [61 산술·비용](records/0061-history-logic-cost.md)의 조건을 재사용하고, 새 정보집합·기간·공유량·지표·선택 비용이 무엇인지 적어야 합니다.
+
+## 예측값 입력·잔차 target·잔차 군집 — 63–65 ECAI
+
+검색어: forecast column, stacking, residual target, addback, ratio residual, heterogeneity, Ljung–Box, cumulative MAE, frozen layer. [63–65 ECAI 기록](records/0063-0065-ecai-interface.md)에서 세 연결 방식과 실제 학습 목표를 먼저 확인하세요. Fig.3(d)의 예측 입력 선행, 공개 TypeII의 실제값 target, 전후 잔차 정의 차이, 악화 조건·전체 비용 공백을 보존했습니다. 새 시도는 정보 가용 시점·최종 합성·비교군·지표·탐색 예산과 기존 방식에서 달라진 질문을 적어야 합니다.

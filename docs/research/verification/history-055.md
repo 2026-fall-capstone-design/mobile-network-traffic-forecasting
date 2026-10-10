@@ -1,0 +1,13 @@
+# H055 검수 — ECAI 예측값 입력과 잔차 학습
+
+[팀 기록](../records/0063-0065-ecai-interface.md) · [32개 주요 주장](history-055-claims.json) · [문서 검수](history-055-document-check.json) · [출처](../sources/history-055.md)
+
+63–65 노트 전체독해와 ECAI 전체9쪽·공식코드2개721줄·수집/렌더코드4개167줄·메타데이터를 연결했다. 시각7쪽은직접,2쪽은같은PDF의H020독해재사용이다. 원TXT9쪽동등성과원PNG2개도 확인했다. 과거다른6문헌scope기록을 이번본문검토완료로세지않는다.
+
+[표1–6 전사](../evidence/0063-0065-ecai-interface/tables-transcribed.json)의82행530개숫자를 인쇄표와 PDF추출행에대조했다. [수치근거](history-055-numeric-check.json)는 Table2의해당global대비96조건비교,Table3/4의Rh48개,Table5의24비교와인쇄p기준판단,Table6의8시간비를보존한다. 성능배열재계산·rawp재현·96독립실험이아니다. 누적지표2예제는원코드없이결정론적산술로확인했다.
+
+[공식코드 검토](../evidence/0063-0065-ecai-interface/code-audit.json)는 target/최종합성,논문의σ표기와np.std,예제recipe/validation·타이머공백을구분한다. TypeII의처음ratio잔차와후단차이잔차도대조했다. 일부freeze코드만으로실제layer순서/가중치수/Dropout효과를확정하지않는다. AST의pip문장오류는정적구문검사이며모델실행실패를관측한것이아니다.
+
+32개 주요 주장과 65의 해당 판단을 작성 후 원문·표·정적 코드에 다시 대조했다. 원문 위치 8곳과 오래된 검수 상태 표기를 바로잡았다. 이 의미 대조와 자동 파일 검사는 구분하며, 완료 범위·문서 해시는 검수 JSON에 남긴다. H020의log손실/공통AR논리검수를재사용하고 당시범위JSON은고쳐쓰지않는다. 이번후속범위링크만현재읽기용문서에추가한다.
+
+23그룹47원본경로,13새정확사본44,090B,1기존사본,9외부metadata 및보호상태/예산원장6개를확인한다. 원연구Python import/실행·모델학습/추론·pickle실행·난수생성은0이다. 전체Goal과다른6문헌·65전체종합은미완료다.
