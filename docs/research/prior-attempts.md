@@ -347,8 +347,12 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 | 평균은 나빠도 최악cell 보호에는 유리한가 | [66–68 저장 위험](records/0066-0068-group-risk.md) | 기존24프로파일을 재사용한다. 전체/뒤 모든top-k손해와 앞기간·같은cell예외를 함께 남기며 새fairness학습 반박으로 확대하지 않는다. |
 | Tab 오차를 빼면 RCTL 초과손해가 되는가 | [66–68 기준 risk 예](records/0066-0068-group-risk.md) | teacher 오차와 같은 함수집합의 최적risk를 구분한다. baseline·분모·운영손해와 허용행동을 먼저 정의한다. |
 
-MMR/MRI/q-FFL의 원68 상세 주장은 아직 후속 일차문헌 대조가 남아 있다. 검색결과52블록·논문74쪽 보관과 본문 검증 완료를 구분한다.
+MMR·MRI의 후속 일차문헌 대조는 아래 기록에 연결한다. q-FFL과 세 목적의 최종 통합은 남아 있다. 검색결과52블록·논문74쪽 보관과 본문 검증 완료를 구분한다.
 
 ## 집단별 최적 위험을 뺀 보호 — MMR / minimax regret
 
 검색어: MMR, minimax regret, WMR, GDRO, MMV, worst group, 집단별 기준, 단일 집단 지배. [66·68 MMR](records/0066-0068-mmr.md)은 절대 위험이 큰 cell과 최적 위험 대비 손해를 구분할 때 확인할 기록입니다. 같은Θ의집단최적값과 유한 RCTL baseline을 같다고 놓지 마세요. IID/support·집중·볼록성 조건, K개 기준적합 비용, 평균과 개별 집단 결과를 먼저 구분해야 합니다. 원67의 저장 위험을 MMR 학습 결과로 재사용할 수는 없습니다.
+
+## 기준 대비 개선 비율의 보호 — MRI / relative improvement
+
+검색어: MRI, MMRI, maximin relative improvement, Kalai–Smorodinsky, baseline, oracle gap, leximin, 손해 없음. [66·68 MRI](records/0066-0068-mri.md)에서 계절 MAE로 단순히 나누는 것과 같은 함수집합의 개선 가능 폭으로 정규화하는 것의 차이를 확인하세요. 작은 분모·기준 선택·집단 최적값 추정, 시간순 평가와 비용이 남습니다. ACS의 400조건 빈도와 선택6사례는 RCTL의 cell 보호율이 아닙니다.
