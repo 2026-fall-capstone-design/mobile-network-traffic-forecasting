@@ -1,0 +1,281 @@
+{
+  "batch_id": "history-073",
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "record_sha256": "ca50656479ab44b708ce2863b5eaa591a18644e16d0eeb4205a095267f300990",
+  "postdraft_actual_ranges": {
+    "SRC-0063895": "원행54–186,276–397;159항목의 제목·분류·위치 목록 재확인",
+    "SRC-0063896": "JSON value의 Source/Total lines 및 L124/168/290/321/330/358 헤더·경계 재확인",
+    "SRC-0063897": "JSON value의 Source/Internal Error/Report GitHub/LaTeXML 및 L0/L10/L521 관련 저장행 재확인",
+    "SRC-0063898": "원행1–49,50–67,176–196,297–358",
+    "SRC-0063899": "원행1–18,54–64,99–144,183–205,214–223",
+    "SRC-0063900": "디코딩 value행1–14,36–53,64–81,151–157,167–169;서명 URL은 원문 해시/쿼리 제거 검사",
+    "SRC-0063901": "원행1–96 및 전체 결과의 제목/인용 헤더",
+    "SRC-0063902": "원행1–33 및35,53,74,78,80,81,104,110,177,201,243,286,337,373,376,379,382,385",
+    "SRC-0063903": "원행1–12,85–108,253–276,277–299,300–328,363–395,435–452",
+    "SRC-0063904": "원행187–188,222–262,339–357,361–413",
+    "SRC-0063905": "원행1–39,42–65,81–130,131–177,183–215,280–323",
+    "SRC-0022023": "전체52행 작성 후 재독해",
+    "SRC-0022029": "전체18행 작성 후 재독해"
+  },
+  "second_pass_scope": "첫 전구간 독해 후 작성한 주장과 아래 선택 원문·응답 역할 목록을 재대조. 모든 파일의 두 번째 전구간 독해 또는 독립 심사 아님.",
+  "claims": [
+    {
+      "claim_id": "H073-C01",
+      "claim": "원72–73은 학습 구조·출력 압축의 문헌을 검토했고, 원75는 다른 cell의 과거를 입력에 추가하는 경로가 [47](0047-input-sharing-roles.md)과 겹친다고 판단해 실행 전에 중단했다. 두 findings 모두 당시 새 모델 실행·자료 수치 계산이 없다고 기록한다. 검색에 발견된 방법을 새 실험이나 추천안으로 세지 않는다. [72–73 당시 기록](../evidence/0072-0075-output-compression/originals/SRC-0022023.md.txt) · [75 당시 기록](../evidence/0072-0075-output-compression/originals/SRC-0022029.md.txt)",
+      "source_location": "SRC-0022023 전체52행;SRC-0022029 전체18행;H047",
+      "verification_method": "당시 실행0·입력 공유 중복 중단 문장을 직접 재독해",
+      "semantic_second_pass_complete": true,
+      "limit": "당시 저자의 기록이며 연구 전체 완료/추가 실행 허가 아님."
+    },
+    {
+      "claim_id": "H073-C02",
+      "claim": "이번 독해 단위는 TXT 8개와 JSON 3개에 저장된 **159개 응답 블록**이다. 검색 노출143개, 성공 형태의 open/find 응답13개, 내부 오류2개, 브라우저 확인 화면1개다. 159편의 논문이나 159회 실험이 아니다. JSON의 `fulfilled`는 저장된 호출 상태이며 본문 확보·과학적 검증·실험 성공을 뜻하지 않는다.",
+      "source_location": "SRC-0063895–0063905 전체 첫 독해;response-ledger159개",
+      "verification_method": "11파일/JSON필드와 응답 종류의 집계·분류 목록 재대조",
+      "semantic_second_pass_complete": true,
+      "limit": "응답 블록과 논문/실험 수를 구분."
+    },
+    {
+      "claim_id": "H073-C03",
+      "claim": "[목록](../evidence/0072-0075-saved-search/response-ledger.json)은 응답마다 원본 ID·파일/JSON `value` 좌표·짧은 제목·URL·분류·해시를 연결한다. JSON 원파일은 각각4행이지만 `value`에 긴 응답을 담고 있으므로, 실제 읽기는 문자 구간으로 기록했다. 파일 제목에서 정확한 검색 질의나 검색한 날짜를 추정하지 않는다. 이 자료는 체계적 문헌 검색의 완전성을 입증하지 않는다.",
+      "source_location": "response-ledger의159개 location;원파일/디코딩value",
+      "verification_method": "전체 목록의 역할·위치와 원바이트/블록 해시 및 좌표 검수",
+      "semantic_second_pass_complete": true,
+      "limit": "정확한 과거 검색 query/날짜 또는 체계적 검색 완전성은 복원하지 않음."
+    },
+    {
+      "claim_id": "H073-C04",
+      "claim": "`Total lines`, PDF 쪽수, `Download PDF`, 그림 캡션은 실제 포함된 본문·그림과 다르다. 이 11개에는 외부 그림의 픽셀이 없고, 수식이 `Image`로 빠진 발췌도 있다. Globalization 전체는 [H071](0072-globalization-audit.md), ForeCA·mbrdr의 추가 일차자료와 GNN 코드는 [H072](0073-forecastable-output-audit.md)의 별도 검수로 연결한다. 검색 발췌를 읽은 사실로 이 범위를 소급 확대하지 않는다.",
+      "source_location": "SRC-0063896 B04;SRC-0063901 B01;SRC-0063902 B01/B03;H071/H072",
+      "verification_method": "본문 포함 여부·Image/캡션·메타데이터와 기존 별도 전체 검수 범위 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "텍스트를 읽은 사실을 그림 pixels나 연결 원문 전체 독해로 가산하지 않음."
+    },
+    {
+      "claim_id": "H073-C05",
+      "claim": "`72_source_web.txt`의 Globalization 발췌는 지역별 학습 계수를 묶는 whole-series 방식과, 전체 sample의 거리를 중요도로 가중하는 instance 방식을 나눠 제시한다. 둘 다 군집별 global model을 학습하지만 군집 단위와 필요한 학습 정보가 다르다. 후자를 고정 cell 소속을 직접 산출하는 방법으로 바꾸어 설명하지 않는다. 가중치의 정의·부호·척도와 비용 한계는 H071을 함께 확인한다.",
+      "source_location": "SRC-0063898 원행1–49/297–358",
+      "verification_method": "whole-series 계수와 instance 거리/학습 단위를 원문에서 다시 구별",
+      "semantic_second_pass_complete": true,
+      "limit": "가중치/비용은 H071에 연결;새 cell 군집 실험 없음."
+    },
+    {
+      "claim_id": "H073-C06",
+      "claim": "`72_read_b1.json`은 HTML의 L124–168·L290–321·L330–358과 PDF 메타데이터를 담는다. `72_read_c1.json`에는 서로 겹치는 Table2 발췌, 비연속 검색 결과, PDF에서 `training`을 찾다 난 내부 오류가 있다. 반복된 표를 독립 결과로 세거나 검색 오류를 “학습이 없다”는 근거로 쓰지 않는다. 표·본문 수치의 차이는 H071에서 보존한 판단을 따른다.",
+      "source_location": "SRC-0063896 value B01–B04;SRC-0063897 value B01–B05",
+      "verification_method": "후속 Source/경계·오류 헤더를 확인하고 첫 독해의 표/비연속 구간과 연결",
+      "semantic_second_pass_complete": true,
+      "limit": "표 전체를 두 번째 재계산한 것으로 세지 않음;오류는 학습 부재 증거 아님."
+    },
+    {
+      "claim_id": "H073-C07",
+      "claim": "`github` 검색에서 나온 arXiv의 문제 신고 UI와 `Links to Code`, Hugging Face, Demos 등의 일반 메뉴는 저자가 연구 코드를 공개했다는 증거가 아니다. 원72 findings도 공개 코드를 확인하지 못했다고 적는다. 메뉴 문구나 과거 `Submit` 안내를 지금 실행할 지시로 취급하지 않는다.",
+      "source_location": "SRC-0063897 value B02;SRC-0063898 B02;SRC-0022023",
+      "verification_method": "GitHub 문제 신고와 코드 검색 메뉴·findings 공개 코드 미확인 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "일반 UI를 저자 코드 공개나 실행 지시로 취급하지 않음."
+    },
+    {
+      "claim_id": "H073-C08",
+      "claim": "저장 arXiv 정보의 “63쪽·22그림” 코멘트와 확보 PDF의65쪽 메타데이터는 각각 보존한다. 또 같은 제목의 forecasting-accuracy clustering은 2023 arXiv와 2025 KBS 출판본에서 저자·판본 차이가 있다. 동일 연구 계보로 연결하되 바이트가 같은 사본이나 방법이 완전히 같은 판본이라고 확정하지 않는다. KBS 전체 본문 검수는 남아 있다.",
+      "source_location": "SRC-0063898 B02/B03;SRC-0063896 B04;SRC-0063903 B04/B17;SRC-0022023",
+      "verification_method": "63쪽 코멘트/65쪽 응답과 arXiv/KBS 판본·저자 표기 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "서지 계보 연결이며 바이트 동일성/출판본 전체 대조 아님."
+    },
+    {
+      "claim_id": "H073-C09",
+      "claim": "`72_new_candidate_search.txt`에는 tabular embedding, context resampling, 표형 데이터 분류, PFN 목록과 응용 사례가 섞여 있다. Universal Tabular Embeddings의 dummy label·표현 collapse·전처리 설명은 검색 발췌의 주장이다. Credit resampling의 context sample 선택을 최종 예측기 학습에 쓸 cell 소속 결정과 동일하게 다루지 않는다.",
+      "source_location": "SRC-0063895 B01–B05/B09/B10",
+      "verification_method": "54–154행에서 dummy labels/collapse와 context 선택의 대상 재확인",
+      "semantic_second_pass_complete": true,
+      "limit": "저장 검색의 주장;외부 구현/원실험 재현 아님."
+    },
+    {
+      "claim_id": "H073-C10",
+      "claim": "CatalyzeX의 저자 목록 발췌는 bandit 연구의 regret·engagement 설명 다음에 TabClustPFN 항목을 보여 준다. 앞 연구의 성능 문장을 TabClustPFN 결과로 옮기면 잘못된 귀속이 된다. ResearchGate·논문 목록·학회권 목록에서도 한 검색 결과 안에 여러 연구가 들어갈 수 있으므로 제목 하나에 모든 문장을 귀속하지 않는다.",
+      "source_location": "SRC-0063895 B11 원행342–358;SRC-0063903 B10;SRC-0063902 PMLR12목록",
+      "verification_method": "다른 저자 논문 문장의 경계와 제목 귀속을 다시 확인",
+      "semantic_second_pass_complete": true,
+      "limit": "하나의 검색 블록에 여러 논문이 있을 수 있음."
+    },
+    {
+      "claim_id": "H073-C11",
+      "claim": "ScaleMoR는 두 OpenReview URL로 반복 노출되며, 저장 설명은 공유 선형 가중치·재귀 깊이 expert·다중 척도 정렬을 다룬다. 두 URL을 독립 실험으로 세지 않는다. Small Tabular Datasets의 분류 표와 edge-device K-means·DPO 관련 발췌도 그대로 UPC 소속이나 최종 RCTL 성능의 근거가 되지 않는다.",
+      "source_location": "SRC-0063895 B06/B08/B07/B17",
+      "verification_method": "ScaleMoR 두 URL의 공유 재귀 expert 설명과 분류/DPO 단서를 분리",
+      "semantic_second_pass_complete": true,
+      "limit": "같은 노출은 독립 실험 아님;UPC/RCTL 결과 미확인."
+    },
+    {
+      "claim_id": "H073-C12",
+      "claim": "`73_covariance_search.txt`의 hierarchical forecasting 초록·소개는 군집의 구성원 선택과 계층의 깊이·그룹 크기 등 구조를 구분하고, 구조를 고정한 무작위 재배정 대조를 설명한다. “유사한 시계열을 묶어서 좋아졌다”는 해석을 점검할 단서다. 해당 reconciliation 설정의 결과를 모든 군집화가 무용하다거나 UPC가 기각됐다는 결론으로 확대하지 않는다.",
+      "source_location": "SRC-0063899 B02/B12,특히54–64행",
+      "verification_method": "고정 hierarchy 구조/멤버 배정/무작위 대조의 범위를 재독해",
+      "semantic_second_pass_complete": true,
+      "limit": "해당 reconciliation 조건을 군집 일반 기각으로 확대하지 않음."
+    },
+    {
+      "claim_id": "H073-C13",
+      "claim": "같은 파일의 validation-driven MTS 원고는 TRAIN에서 prototype을 학습하고 VAL에서 소속·모델을 선택하며 TEST를 평가용으로 남기는 절차를 설명한다. 이는 저장된 원고 발췌의 설계다. 실제 구현의 분할·누수 부재·재현을 확인했다는 뜻은 아니다. GLOBAL warm start와 cluster prototype 학습도 최종 예측기 독립 소속 조건과 별도로 비교해야 한다.",
+      "source_location": "SRC-0063899 B05 원행99–126",
+      "verification_method": "TRAIN prototype/VAL 선택/TEST 평가·GLOBAL warm start 설명 재독해",
+      "semantic_second_pass_complete": true,
+      "limit": "저장 원고 설계이며 실제 구현의 누수 부재 검증 아님."
+    },
+    {
+      "claim_id": "H073-C14",
+      "claim": "response dimension reduction와 predictor dimension reduction는 축소하는 쪽이 다르다. Yoo–Cook2008·MBRDR는 응답의 조건부 평균 보존을 다루는 경로이고, Kernel SDR·orthoDr·SPCA 검색 결과에는 입력의 축소가 포함된다. 부분 수식이나 `C.1–C.7` 같은 미포함 가정을 본 것만으로 효율성·카이제곱 정리 전체를 검증했다고 쓰지 않는다. 제목이 비슷한 Yoo–Cook2007과2008도 서로 다른 DOI의 논문이다.",
+      "source_location": "SRC-0063899 B01/B03/B04/B06–B08/B10/B13/B16;SRC-0063903 B05/B07;SRC-0063900 입력DR",
+      "verification_method": "응답/입력 구분·누락 가정과2007/2008 DOI를 관련 후속 구간에서 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "정리 전체 증명/2008전체논문은 미검수;H072 범위 유지."
+    },
+    {
+      "claim_id": "H073-C15",
+      "claim": "ForeCA의 2013 PMLR, 2012 arXiv, CRAN 인용 정보, GitHub, rdrr, 블로그는 원논문·판본·구현 안내·설명의 서로 다른 자료다. 검색 블로그의 Ω 예시 수치를 예측 MAE 개선율로 쓰지 않는다. 저자 초록의 white-noise 분리·수렴·국소 최적성 표현은 H072에서 대조한 가정·정규화·증명 범위와 함께 읽는다. 패키지 설치 문구를 읽었지만 설치·실행하지 않았다.",
+      "source_location": "SRC-0063903 B01–B03/B06/B08–B16;H072",
+      "verification_method": "ForeCA 서지/Ω 예시/패키지와 다른 관련 초록을 구분",
+      "semantic_second_pass_complete": true,
+      "limit": "Ω는 MAE 개선률 아님;설치/실행 없음."
+    },
+    {
+      "claim_id": "H073-C16",
+      "claim": "GNN 검색 발췌는 `X̂ = SZ`의 lift, 예측 MAE와 두 auxiliary loss의 합, 소속을 선명하게 만드는 temperature 조절을 보여 준다. 예측 손실을 군집 품질의 대리값으로 쓰는 설명에는 유사한 동역학과 class의 연관성 가정이 붙는다. 이를 모든 자료에서 MAE와 NMI·HS가 동등하다는 보장으로 쓰지 않는다. class를 요구하는 NMI·HS·CS 평가와 비지도 훈련·검증의 역할도 다르다.",
+      "source_location": "SRC-0063902 B01/B03 원행1–33/53–103",
+      "verification_method": "후속 Eq14/15 및 손실·class/temperature 관련행과 첫 독해 연결",
+      "semantic_second_pass_complete": true,
+      "limit": "발췌 휴리스틱의 가정 보존;MAE와군집지표의 일반 동등성 아님."
+    },
+    {
+      "claim_id": "H073-C17",
+      "claim": "GNN의 OpenReview ID URL과 PDF 해시 URL에는 각각 본문의 일부가 검색돼 있지만, 별도 forum 열기는 브라우저 확인 화면을 반환했다. 발췌를 읽을 수 있었다는 것과 전체 PDF 확보 실패는 양립한다. 도식의 단어·캡션만 저장된 부분을 그림 시각 검수로 세지 않는다. H072의 정적 코드 확인도 원논문 전체·실제 실험 로그의 빈칸을 대신하지 않는다.",
+      "source_location": "SRC-0063902 B01/B03;SRC-0063903 B19 원행450–452",
+      "verification_method": "PDF검색 발췌와 forum브라우저 확인 응답을 함께 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "선택 본문 접근과 전체 PDF 확보는 별개;도식pixels 미확인."
+    },
+    {
+      "claim_id": "H073-C18",
+      "claim": "`73_predictable_subspace_search.txt`의 PMLR12개 결과는 학회권 목록이다. 논문 제목·쪽수·PDF/Software 메뉴가 보여도 각 본문·코드를 읽은 것은 아니다. ICML2024의 Cini–Mandic–Alippi 논문과 TMLR2025의 Hansen–Cini–Bianchi 논문을 같은 제목의 사본처럼 합치지 않는다. COSA의 출력 adapter와 STGNN 소속 학습도 다른 연구 역할이다.",
+      "source_location": "SRC-0063902 B02/B04/B06–B16",
+      "verification_method": "PMLR12개목록의 제목/권번호/메뉴와 COSA·GNN의 역할 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "각 목차 항목의 논문/코드 전체를 읽은 것 아님."
+    },
+    {
+      "claim_id": "H073-C19",
+      "claim": "`73_mbrdr_access_search.txt`는 같은 MBRDR의 출판사 발췌·기관 서지·교수 페이지·학술지 목록을 반복 보여 준다. 주변의 다른 논문과 학회 발표를 별도 확인한 본문으로 가산하지 않는다. 검색 발췌는 절을 건너뛰고 수식을 `Image`로 대체한 부분이 있다. 당시 직접 접근 실패는 보존하고, 이후 확보한 MBRDR2024 전체 PDF는 H072에 별도로 연결한다.",
+      "source_location": "SRC-0063901 전체13블록;SRC-0022023;H072",
+      "verification_method": "1–96행/전체헤더에서 절 건너뜀·Image·서지 중복과 과거접근이력 확인",
+      "semantic_second_pass_complete": true,
+      "limit": "과거 실패를 지우지 않음;추가확보된2024PDF는 H072별도."
+    },
+    {
+      "claim_id": "H073-C20",
+      "claim": "`73_followup_1.json`의 online debiasing에서 `predictable`은 이전 정보집합에 대한 가측성 조건으로 쓰인다. ForeCA의 스펙트럼 지표나 실측 forecast error와 같은 뜻이 아니다. 전문가 예측의 편향·공분산을 다루는 금융 모형, 기후 model weighting, 기상 오차 보정도 용어가 겹친다는 이유로 cell 출력 압축의 증명으로 가져오지 않는다.",
+      "source_location": "SRC-0063900 B01/B04–B07/B12",
+      "verification_method": "value64–81/167–169행의 F_(i−1) 가측성과 전문가편향 모형을 구분",
+      "semantic_second_pass_complete": true,
+      "limit": "금융/기후 응용의 단어 일치를 통신 cell 압축 증명으로 쓰지 않음."
+    },
+    {
+      "claim_id": "H073-C21",
+      "claim": "SPCA·PCR·SIR·Kriging 관련 발췌의 반응 정보는 주로 입력 표현이나 선택에 사용된다. 의료·유전·GPS·Sinkhorn 검색 결과도 각각 설명변수 선택·관측 모형·평가 지표 등으로 분류한다. 동일 논문의 저널/기관 PDF 두 URL, 과거 학회 초록의 본문 연도와 검색의 상대 `Published` 표시는 독립 실험 수나 정확한 출판 날짜를 확정하는 근거가 아니다.",
+      "source_location": "SRC-0063900 B02/B03/B08/B10/B11/B13–B18;SRC-0063899 관련입력DR",
+      "verification_method": "value36–53/151–157행 등과 첫 독해 분류를 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "부분 서지/응용 발췌·상대 Published 표시는 전체 논문/정확한 날짜 증거 아님."
+    },
+    {
+      "claim_id": "H073-C22",
+      "claim": "Granger graph clustering·GFSM은 target을 예측할 입력 변수의 중복을 조절하는 경로로 검색됐다. 2025 Ohmori 등의 초록은 pairwise 검사의 한계와 변수 조합 검사를 설명한다. 전체 조합의 계산비를 해결했다거나 예측 의존성이 같은 모델을 공유하기 좋은 충분조건이라고 추정하지 않는다. 원75가 중단한 이유와 47의 sample 공유/입력 열 추가 구분을 함께 확인한다.",
+      "source_location": "SRC-0063904 B01–B04/B07/B10;SRC-0022029;H047",
+      "verification_method": "Ohmori 원행187–188/GFSM361–413과 당시 중단 이유 재독해",
+      "semantic_second_pass_complete": true,
+      "limit": "모든 조합 비용/공유 함수 충분조건 미검증."
+    },
+    {
+      "claim_id": "H073-C23",
+      "claim": "geocif0.4.809의 같은 페이지에는 TabICL 모델 목록과 별도 지역 CID 분석이 함께 나온다. 후자의 문서 예시는 PCA→Ward 군집화이며 `max_k=8`, 누적 PCA 분산 `.85`를 제시한다. 이 동시 노출만으로 TabICL이 군집 소속을 결정했거나 해당 분석이 통신 예측을 개선했다고 쓰지 않는다.",
+      "source_location": "SRC-0063904 B05 원행222–262",
+      "verification_method": "모델 메뉴와 별도CID PCA/Ward/maxK8/.85 문장을 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "같은 페이지의 기능을 TabICL군집 알고리즘으로 결합하지 않음."
+    },
+    {
+      "claim_id": "H073-C24",
+      "claim": "IBM 튜토리얼 발췌는 `grangercausalitytests(..., 24)` 다음에 `res_dict[1]`의 p값을 선택한다. 24라는 인자가 보인다고 24개 lag의 결과를 모두 사용해 변수를 채택했다고 요약하지 않는다. 이 기록에서는 API의 변수 방향·분할·실제 실행을 검증하지 않았으므로, 튜토리얼 코드를 검증된 인과 발견이나 실행 가능한 대조군으로 표시하지 않는다.",
+      "source_location": "SRC-0063904 B08 원행339–357",
+      "verification_method": "24 인자 뒤 res_dict[1] 선택을 코드 발췌에서 직접 재확인",
+      "semantic_second_pass_complete": true,
+      "limit": "API방향·실행·분할은 미확인. 튜토리얼을 실행하지 않음."
+    },
+    {
+      "claim_id": "H073-C25",
+      "claim": "TabPFN의 Kernel SHAP, shapiq의 remove-and-recontextualize, feature relevance 목록은 입력의 기여나 상호작용을 다루는 별도 경로다. 예측 기여·조건부 연관성·인과관계·최종 cell 소속 효용을 한 지표로 합치지 않는다. shapiq의 두 도메인 URL은 같은 보충자료의 반복 노출이며, 그 benchmark 설정 수를 이 연구의 실행 수로 쓰지 않는다.",
+      "source_location": "SRC-0063905 B02/B03/B11/B15/B17",
+      "verification_method": "42–65/201–215/317–323행의KernelSHAP·remove/recontextualize·반복 보충자료 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "입력 설명을 인과/cell효용으로 승격하지 않음."
+    },
+    {
+      "claim_id": "H073-C26",
+      "claim": "fippy README 발췌는 Permutation/Gaussian sampler를 나열하고 TabPFN sampler는 **계획됨**으로 적는다. 따라서 TabPFN 연동 완료나 실험 재현으로 등록하지 않는다. 저장 검색의 GitHub 코드 조각·예제 플롯도 이번 작업에서 import·실행하지 않았다.",
+      "source_location": "SRC-0063905 B14 원행280–316",
+      "verification_method": "Permutation/Gaussian 구현과 TabPFN planned의 명시적 문장 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "현재 저장소 상태는 확인하지 않았으며 설치/import/실행 없음."
+    },
+    {
+      "claim_id": "H073-C27",
+      "claim": "Synthetic Data for Fine-tuning의 두 URL 발췌는 일부 조건에서50개 feature, 실행당10분 제한,32 CPU 병렬화를 설명하고, 목적을 예측 분포의 연관 구조로 한정한다. 이를 인과 입증·이 연구의 실제 비용·추가 실행 허가로 해석하지 않는다. 두 URL을 두 번의 독립 실험으로 가산하지 않는다.",
+      "source_location": "SRC-0063905 B06/B08 원행131–143/168–177",
+      "verification_method": "50feature/10분/32CPU 및 associational목적을 두 URL에서 재확인",
+      "semantic_second_pass_complete": true,
+      "limit": "저자 설정이며 이 연구의 비용·실행 허가·인과 입증 아님."
+    },
+    {
+      "claim_id": "H073-C28",
+      "claim": "Bayesian Tabular Few-shot과 CausalPFN 결과는 TabICL을 참고문헌에서 언급한 구간이다. 단순 인용을 TabICL 기반 인과 군집화의 구현·실행으로 승격하지 않는다. TabCausal·CDFM·Markov Boundary도 각각 별도 문헌 단서로 남기며, 제목이나 인용 목록만으로 신규성의 채택·기각을 확정하지 않는다.",
+      "source_location": "SRC-0063905 B04/B07/B10/B12/B16",
+      "verification_method": "144–167/183–200행의 참고문헌 경계와 다른 원문 단서 역할 확인",
+      "semantic_second_pass_complete": true,
+      "limit": "인용·제목만으로 구현/실행/신규성 채택 확정하지 않음."
+    },
+    {
+      "claim_id": "H073-C29",
+      "claim": "SFTFormer의 super token, PCFNet의 period/channel 모델, chemical GCN-LSTM·C-TFT·AGAC 등의 다른 도메인 결과는 해당 저자의 보고다. 검색에 등장한 MSE·MAE 개선률, 분류 점수, 속도 비율을 UPC 소속 수정이나 RCTL 성능표에 옮기지 않는다. LinkedIn·Reddit 경험담과 일반 응용 목록도 검증된 연구실 결과와 구분한다.",
+      "source_location": "SRC-0063904 다른도메인/소셜블록;SRC-0063905 B01/B05/B09/B13/B18/B19",
+      "verification_method": "SFTFormer/PCFNet 원행1–39/81–130과 전체첫독해 분류 대조",
+      "semantic_second_pass_complete": true,
+      "limit": "외부 저자 결과와 연구실 실험 결과를 분리;실제 재현 없음."
+    },
+    {
+      "claim_id": "H073-C30",
+      "claim": "후보를 다시 검토할 때는 먼저 **바꾸는 대상**을 지정한다: 학습 sample/context, 입력 변수·표현, cell 소속, latent 출력·복원, 예측값 보정, 설명 지표 중 무엇인가. 이어 사용 정보·선택 목적·최종 예측기 의존·실제 실행 자료를 확인한다. 키워드가 같거나 예측 성능이 좋다는 사실만으로 기존 방법과 같은 조건의 실험을 다시 시작하지 않는다. 이 안내는 아카이브 사용 기준이며 새 실험 착수 지시가 아니다.",
+      "source_location": "C05–C29의역할분류;response-ledger159개;H047/원75",
+      "verification_method": "분류 목록을 다시 읽고 팀용 후보 검토 기준으로 종합",
+      "semantic_second_pass_complete": true,
+      "limit": "문헌의 직접 결론이 아닌 아카이브 사용 기준;새 실험 지시 아님."
+    },
+    {
+      "claim_id": "H073-C31",
+      "claim": "저장 검색11그룹과 기존 findings2그룹, 총13그룹·26개 별칭 경로를 보존 명세에 연결한다. 긴 외부 발췌를 새로 게시하지 않고 출처 좌표·URL·해시와 분류를 제공한다. 서명된 CDN 링크는 공개 목록에서 서명 쿼리를 제거했다. 원본과 보호 상태/예산 파일은 보존하며, 링크의 현재 접속 가능성과 원검색 전체의 팀 접근은 별도로 남긴다.",
+      "source_location": "manifest13그룹26경로;원본inventory/보호6;response-ledger URLs",
+      "verification_method": "각 원본·정확사본·별칭/보호파일 SHA 및 공개URL서명쿼리 제거 검사",
+      "semantic_second_pass_complete": true,
+      "limit": "보존/출처검수이며 원검색 전체 팀 접근 또는 URL현재유효성 검증 아님."
+    },
+    {
+      "claim_id": "H073-C32",
+      "claim": "이 묶음은 저장 검색의 독해·연결을 마치는 범위다. KBS·GNN·Yoo–Cook2008 및2018/2019 원정리 전체, 아직 확인하지 않은 후보의 방법·코드·실행 자료는 별도 공백이다. 이후76번부터의 기록, 이전 부분 기록, 실패·비용 통합, 대용량 팀 접근, 최종 원본 변경분과 대표 질문 검색 검수도 남는다. H070–H072의 당시 미열람 표시는 역사적 상태로 보존하고 이번 후속 검수로 연결한다.",
+      "source_location": "H070–H072의remaining;이번manifest;작업queue/coverage",
+      "verification_method": "완료 범위와 미검수 범위를 확인하고 다음과제 연결",
+      "semantic_second_pass_complete": true,
+      "limit": "이 묶음 완료는 전체 Goal 완료/모든 외부문헌 검수 완료 아님."
+    }
+  ]
+}

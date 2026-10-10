@@ -172,3 +172,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H071 목록](history-071-sources.jsonl)은72 Globalization/KBS의13그룹·27경로를 연결합니다. 기존 정확사본2개·외부 참조11개이며 새 원본 복사는0입니다. [출처별 범위](../sources/history-071.md)에서 PDF65쪽, TXT65본문 대응, HTML 정적내용, 원PNG4개, KBS서지와 접근 실패를 구분합니다.
 
 [H072 목록](history-072-sources.jsonl)은 원73 관련 14그룹·28경로를 연결합니다. 기존 정확사본 2개·외부 자료 메타데이터 12개이며 새 원본 복사는 0개입니다. [출처](../sources/history-072.md)는 원PDF 19쪽·보충/추가PDF 13쪽(백지 1쪽 포함), TXT 대조·원PNG 3개, 고정 코드와 외부 요청 26개의 실제 열람 범위를 구분합니다.
+
+[H073 목록](history-073-sources.jsonl)은 기존 findings2개와 저장 검색11개, 총13그룹·26경로를 연결합니다. [159개 응답 색인](../evidence/0072-0075-saved-search/response-ledger.json)은 원본 좌표·URL·해시·연구 역할을 제공합니다. TXT8개와 JSON3개를 전구간 읽었으며, 이를 외부 논문159편의 독해나 새 실험으로 가산하지 않습니다. 새 원본 복사는0개이고 원검색 전체의 팀 접근은 미완료입니다.

@@ -36,3 +36,7 @@
 | GNN의 static assignment | 공유 학습 파라미터 S로 pool/lift하며 예측 손실·군집 regularizer를 공동 최적화 | 최종 RCTL 독립 소속과 다름. 전체 N 인코더 비용·split 이전 adjacency·최소 CLI의 고정 MinCut·미실행 반환 경로를 확인 |
 
 2024 MBRDR 본문은 이번에 확보했으나 GNN/2008 원논문 전체와 원실험·비용은 미확인이다. 문헌의 오류 가능성과 정적 코드 차이를 해당 연구 전체의 과학적 실패로 확대하지 않는다.
+
+## 저장 검색에서 비슷한 이름으로 발견된 다른 역할
+
+[H073](../records/0072-0075-saved-search-audit.md)은 context 선택·입력 변수 축소·cell 소속·출력 복원·설명 지표를 구분한다. GFSM의 입력 중복 조절, ScaleMoR의 공유 expert, COSA의 출력 adapter, SHAP/fippy의 특징 기여는 같은 소속 수정 알고리즘이 아니다. TabICL을 참고문헌에 넣었거나 패키지 모델 목록과 군집 기능을 한 페이지에 실었다는 사실도 직접 구현 근거가 되지 않는다. 세부 단서는 [159응답의 출처·역할](../evidence/0072-0075-saved-search/response-ledger.json)에 연결했다.

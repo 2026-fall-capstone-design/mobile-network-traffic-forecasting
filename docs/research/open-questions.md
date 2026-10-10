@@ -70,7 +70,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 
 ## 72–75 뒤 남은 근거
 
-[기록과 범위](records/0072-0075-output-compression.md): Globalization의 후속 본문·그림 검수는 아래에 연결한다. KBS 출판본 전체와 저장 검색 11개는 후속 범위다. ForeCA/mbrdr/GNN의 확보된 일차자료·구현 대조는 아래 H072에 연결한다. isotropic noise 계획은 저장 실행에 없으며 own-only Tab의 동일 조건 비교도 없다. 이 공백을 새 실험 수행으로 임의 채우지 않는다. 등록 루트 HDF별칭이 없어진 시점과 대용량 팀 접근도 확인 대상이다.
+[기록과 범위](records/0072-0075-output-compression.md): Globalization의 후속 본문·그림 검수는 아래에 연결한다. KBS 출판본 전체는 후속 범위이며 저장 검색11개는 [H073](records/0072-0075-saved-search-audit.md)에서 읽은 범위를 확인할 수 있다. ForeCA/mbrdr/GNN의 확보된 일차자료·구현 대조는 아래 H072에 연결한다. isotropic noise 계획은 저장 실행에 없으며 own-only Tab의 동일 조건 비교도 없다. 이 공백을 새 실험 수행으로 임의 채우지 않는다. 등록 루트 HDF별칭이 없어진 시점과 대용량 팀 접근도 확인 대상이다.
 
 ## Globalization의 재사용 전 확인 조건
 
@@ -79,3 +79,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 ## 출력 표현 문헌의 남은 접근·재사용 조건
 
 [H072](records/0073-forecastable-output-audit.md)에서 ForeCA와 manual 전체, 추가 MBRDR2024·R 소스·고정 GNN 코드를 확인했습니다. GNN 논문 전체와 Yoo–Cook2008 원논문, 2018·2019 원정리 전체는 미확인입니다. ForeCA의 정규화·초기화, mbrdr의 전처리/차원 통계량, GNN의 adjacency 정보 범위·tsl scaler/splitter·훈련 seed·실제 로그와 비용을 새 조건에서 확인해야 합니다. 구현의 정적 불일치를 실제 실험 실패로 확정하지 않습니다.
+
+[H073의159응답 검수](records/0072-0075-saved-search-audit.md)는 저장 검색의 독해를 마쳤지만 후보별 원논문·현재 구현·실제 실행 자료는 별도로 남깁니다. 검색 질의 전체와 정확한 검색 시점을 파일명에서 복원하지 않습니다. 원검색 원본의 팀 공유, 서명 쿼리를 제거한 외부 URL의 현재 접근, 계획으로 적힌 기능의 이후 구현 여부도 미확인입니다.

@@ -388,3 +388,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 예측 가능한 출력·response DR·GNN 공동학습
 
 검색어: ForeCA, forecastability, spectral entropy, mbrdr, yc, prr, pfrr, upfrr, MinCutPool, static assignment, output compression. [73의 문헌·구현 대조](records/0073-forecastable-output-audit.md)를 먼저 확인하세요. 스펙트럼 집중도는 특정 horizon의 예측 손실이 아니며 mbrdr의 통계량은 자동 차원 선택이나 누적 설명분산과 다릅니다. GNN의 S는 예측 손실과 공동학습하므로 최종 RCTL 독립 소속 조건을 다시 확인해야 합니다. 같은 문헌 요약을 반복하기보다 바뀐 입력 정보·전처리·최종 예측기·비용 또는 확보한 원자료를 명시하세요.
+
+## 검색에서 찾은 군집·입력 선택·설명을 다시 제안하려는 경우
+
+검색어: GFSM, Granger, context resampling, ScaleMoR, TabClustPFN, geocif, SHAP, shapiq, fippy, causal discovery. [72–75 검색 검수](records/0072-0075-saved-search-audit.md)와 [47](records/0047-input-sharing-roles.md)을 먼저 확인하세요. 검색159응답은 독립 실험159개가 아닙니다. 학습 sample을 고르는 것, 입력 열을 추가하는 것, 같은 함수를 공유할 cell을 정하는 것은 다른 행동입니다. fippy의 TabPFN은 당시 계획이었고, geocif의 PCA→Ward 분석은 같은 페이지의 TabICL 모델 목록과 별도 기능입니다. 같은 후보를 다시 열려면 확보한 실제 구현·새 정보 조건·비교군·비용과 기존 중단 이유의 변화를 명시하세요.
