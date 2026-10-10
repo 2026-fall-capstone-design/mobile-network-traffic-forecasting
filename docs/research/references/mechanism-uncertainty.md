@@ -43,3 +43,7 @@ Junru Ren·Shaomin Wu, **Boosting Global Time Series Forecasting Models: A Two-S
 | CIF / mean RMSE / Type I | 293090.638 | 308556.696 | 악화 |
 
 이 세 행은 논문 표의 시각 대조이며 실험 재현이 아니다. Friedman p=.096은 논문의 α=.1 기준이며 .05에서 유의하다고 바꾸지 않는다. Proposition 1의 로그 손실 함의는 [원문 28의 산술 반례](../verification/history-020-logic-check.json)와 함께 본다. Proposition 2의 유효 표본 수 대입을 임의 시계열 의존의 보장으로 읽지 않는다. 이 한계들이 모든 residual 방법의 기각을 뜻하지 않는다.
+
+## ECAI 후속 검수 — 63–65
+
+[H055 기록](../records/0063-0065-ecai-interface.md)에서 Fig.3(d)의global forecast입력선행,저장TypeII의normalized실제target·hidden/input Add구조·전후잔차정의차이,표1–6의손해·비용을추가대조했습니다. 위코드미열람은H020당시범위입니다. 공개2파일을정적으로읽었지만Fig.3(c)/(d)전체재현·원실행로그는여전히미확인입니다.

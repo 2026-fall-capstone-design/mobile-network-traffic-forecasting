@@ -1,0 +1,33 @@
+# 64: 시간대별 분포 변환과 temporal clustering의 차별성 검토
+
+2026-09-26. 63의 단순 forecast 입력 추가·잔차 보정과 구별되는 후보 하나를 검토한다. 아직 알고리즘 채택이나 성능 주장이 아니다. 이번 계획은 원문·논리 검토만 허용한다.
+
+## 문제와 바뀌는 학습 행동
+
+cell마다 다른 일주기 수준과 분포를 먼저 가역적으로 변환하고, 그 표현에서 cell의 시간적 의존을 비교해 묶은 뒤, RCTL도 같은 표현의 실제 관측값으로 학습하는 방법을 생각할 수 있다. 최종 결과는 각 cell·예측 시간대의 역변환으로 원래 단위에 돌린다. 이 경우 Tab은 clustering 거리의 대리 예측기 역할을 넘어 실제 학습 좌표를 정한다.
+
+하지만 경험 CDF 정규화, 계절성 제거, copula clustering, copula neural forecasting에 이미 포함되어 있을 가능성이 크다. 단순한 합성 예나 Tab 대입만으로 추천하지 않는다.
+
+## 먼저 확인할 원문
+
+1. Zhang·An, PLOS ONE2018, Clustering time series based on dependence structure, DOI10.1371/journal.pone.0206753: 비교하는 copula가 두 cell 사이 동시 상관인지 각 cell 내부 lag 의존인지, 순위 변환과 이론의 정상성 가정을 확인한다.
+2. Salinas et al., NeurIPS2019, High-dimensional multivariate forecasting with low-rank Gaussian Copula Processes: empirical marginal transform과 shared forecasting의 실제 결합을 확인한다.
+3. TACTiS / TACTiS-2의 marginal·copula 분리: 조건부 분포를 모두 제거하는 것이 다음 예측을 어떻게 바꾸는지와 공동학습 비용을 확인한다.
+
+최신 버전·공식 원문을 사용한다. 기존 자료에 있으면 재사용한다. 이 검토로 분야 전체의 최초성을 단정하지 않는다.
+
+## 중요한 논리 검사
+
+- 전체 과거 입력을 조건으로 하는 정확한 연속 CDF로 target을 변환하면, 변환 target은 그 입력에 대해 Uniform(0,1)이다. 그 경우 RCTL의 중앙값 예측은 0.5가 되고, 원 단위의 최종 중앙값은 Tab 쪽으로 환원된다. 이것을 좋은 학습용 정보로 오인하지 않는다.
+- 달력만 조건으로 변환하면 최근 입력의 추가 예측 정보가 남을 수 있지만, 남는 정보가 cell 간 공유에 적합하다는 것은 별도의 가정이다.
+- 엄격 단조 변환에서는 조건부 중앙값을 역변환할 수 있지만, 유한 모델의 변환 공간 MAE 최소화가 원 단위 MAE 최소화와 항상 같은 것은 아니다.
+- pairwise lag copula가 같아도 다중 lag의 조건부 관계가 같다는 보장은 없다. 기존 방법의 적용 범위와 다른 문제를 구별한다.
+- Tab이 경험 CDF·달력별 smoothing보다 추가하는 정보와 비용을 명시하지 못하면 새 후보로 추천하지 않는다.
+
+## 실행 경계
+
+새 모델 호출·실제 자료 진단은 별도 사전 계획 전에는 하지 않는다. 현재 Tab 잔여15contexts/21,984query, RCTL 추가fit0. 목표 범위·자료 구간·예산은 유지한다. 이번에 확인한 식과 직접 원문 근거만 기록한다.
+
+## 추가 원문 — 2026-09-26
+
+후속 검색에서 Gamakumara et al., Conditional normalization in time series analysis (2305.12651, Monash Working Paper10/23)를 발견했다. 달력 등 공변량을 조건으로 평균·분산을 제거하고 남은 시간 의존을 분석하는 더 직접적인 비교 대상이다. 저자 페이지·최신 arXiv history와 §2, 실험 분할·한계를 읽어 단순 부분 정규화가 새로운지 확인한다. 원문은20MB 이내로 확보하고 외부 코드/모델은 실행하지 않는다. 이 추가는 새 Tab/RCTL 실행 허용이 아니다.

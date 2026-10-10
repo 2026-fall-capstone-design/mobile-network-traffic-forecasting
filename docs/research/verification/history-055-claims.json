@@ -1,0 +1,232 @@
+{
+  "batch_id": "history-055",
+  "claims": [
+    {
+      "claim_id": "H055-C01",
+      "claim": "63/64는 예측 입력·관측 잔차 target·조건부 가역 변환을 구분한 계획이고65는문헌검토다.",
+      "source_location": "SRC-0022008:1–32행; SRC-0022015:1–33행; SRC-0022016:1–19행",
+      "verification_method": "세원문 전체독해와 질문·상태 대조",
+      "limit": "해당방법의 과학적 유효성을 세노트만으로 확인한 것은 아니며 다른6문헌 검수 대기."
+    },
+    {
+      "claim_id": "H055-C02",
+      "claim": "65는 새모델·실자료진단0,새추천안미채택·기존예산불변으로 기록한다.",
+      "source_location": "SRC-0022016:3/77–78행; SRC-0063868:execution/not_accepted/goal_complete",
+      "verification_method": "보고서·scope JSON 및 보호원장6개 해시를 대조",
+      "limit": "당시의보고와 이번원본보존을구분; 실제과거모든프로세스를새로관측한것아님."
+    },
+    {
+      "claim_id": "H055-C03",
+      "claim": "H020의 ECAI선택독해를 재사용하고 H055에서표지포함9쪽·공식코드2개·파생TXT/PNG를 확장했다.",
+      "source_location": "SRC-0021257:35–48행; SRC-0063060:PDF1–9쪽; SRC-0063061:전체9쪽 대응; SRC-0063864/SRC-0063865:원PNG",
+      "verification_method": "H020범위JSON·현재checkpoint·TXT9쪽동등성과시각7직접/2재사용 확인",
+      "limit": "같은PDF/파생본을독립연구나새로컬본문으로중복가산하지않음."
+    },
+    {
+      "claim_id": "H055-C04",
+      "claim": "global잔차의Ljung–Box p<.05로선별하고Rh=nh/n을계산한다. 자기상관검사이지분산이질성직접검사가아니다.",
+      "source_location": "SRC-0063060:PDF3–4§3/6§4.2; SRC-0063851:219–224행; SRC-0063852:379–384행",
+      "verification_method": "본문·코드의검정호출과lag/마지막p조건 확인",
+      "limit": "공통reference오류를배제하지않고생성과정차이의충분조건으로쓰지않음."
+    },
+    {
+      "claim_id": "H055-C05",
+      "claim": "Type I는선별개별잔차에localauto.arima를추가하는보정이다.",
+      "source_location": "SRC-0063060:PDF3–4/6쪽; SRC-0063851:211–259행",
+      "verification_method": "원문방법과코드target/최종부호를대조",
+      "limit": "Type II전체나Fig3(d)와같은학습target으로합치지않음."
+    },
+    {
+      "claim_id": "H055-C06",
+      "claim": "논문 Type II는 잔차 특징 군집과 전역정보를 사용한 군집 모델을 연결한다.",
+      "source_location": "SRC-0063060:PDF3–4 Algorithm1/Fig1 및 PDF6§4.2",
+      "verification_method": "방법/Algorithm/실험서술의일치와동결표현차이를읽음",
+      "limit": "마지막층및실제trainableweights동작은저장예제와실행검증을나눠해석."
+    },
+    {
+      "claim_id": "H055-C07",
+      "claim": "Fig3(d)는globalforecast와원시계열을붙여군집별LSTM을학습하므로예측열추가의직접선행이다.",
+      "source_location": "SRC-0063060:PDF7§5/8 Fig3·Table5; SRC-0022016:11/21–25행",
+      "verification_method": "Fig3/설명/65의원문판정대조",
+      "limit": "Tab/RCTL을쓴논문은아니며이문헌하나로모든가능한새기여를영구기각하지않음."
+    },
+    {
+      "claim_id": "H055-C08",
+      "claim": "월단위4자료군·8세부자료이며M3총1376,전체시계열산술합2581이다.",
+      "source_location": "SRC-0063060:PDF5§4.1/Table1",
+      "verification_method": "Table1의63인쇄값과M3다섯개N합/전체N합 확인",
+      "limit": "cell실험·독립데이터분할2581개로해석하지않음."
+    },
+    {
+      "claim_id": "H055-C09",
+      "claim": "CIF72시계열은24개실제은행자료와48개인공생성으로구성된다.",
+      "source_location": "SRC-0063060:PDF5§4.1 Datasets",
+      "verification_method": "본문과Table1 대조",
+      "limit": "은행자료전체가실측이거나통신자료라는주장아님."
+    },
+    {
+      "claim_id": "H055-C10",
+      "claim": "인쇄 σ식에는제곱근이없지만두코드는입력창np.std로입력/target을변환하고동일통계로역변환한다.",
+      "source_location": "SRC-0063060:PDF6 normalization; SRC-0063851:77–101행; SRC-0063852:68–92행",
+      "verification_method": "인쇄수식시각·정적코드대조",
+      "limit": "논문결과가잘못됐다는실행증거나그차이의실제영향은미확인."
+    },
+    {
+      "claim_id": "H055-C11",
+      "claim": "논문10%validation/rolling/grid/earlystop/100epoch/lr절차와저장예제recipe는다르다.",
+      "source_location": "SRC-0063060:PDF6§4.2; SRC-0063851:174–204/279–287행; SRC-0063852:324–365/422–434행",
+      "verification_method": "논문설정·코드전체의인수/fit경로대조",
+      "limit": "예제에없다는이유로저자전체실험에서수행하지않았다고단정하지않음."
+    },
+    {
+      "claim_id": "H055-C12",
+      "claim": "실제예제진입은MLP,input24/output1/period12/seed3407. TypeII K3와기본K5/seed42를구분한다.",
+      "source_location": "SRC-0063851:155–160/174–175/283–284행; SRC-0063852:146–151/324–329/425–431행",
+      "verification_method": "정적호출인수와함수기본값대조",
+      "limit": "seed설정과실제결정성보장은다르며원RNG실행0."
+    },
+    {
+      "claim_id": "H055-C13",
+      "claim": "공식고정commit두코드바이트는원본과같고721줄전체정적독해했으나일반Python파싱에서pip구문오류가있다.",
+      "source_location": "SRC-0063851:1–287행; SRC-0063852:1–434행; SRC-0063853/SRC-0063855; SRC-0063848",
+      "verification_method": "SHA256/Gitblob/manifest/공식raw200byteidentity와ASTparse3행 확인",
+      "limit": "AST구문검사일뿐모델실행실패나재현성공아님.현재runtime호환성미확인."
+    },
+    {
+      "claim_id": "H055-C14",
+      "claim": "TypeI는예측−실제잔차를빼며ARIMA테스트보정은전체test길이에한번forecast한다.",
+      "source_location": "SRC-0063851:212–237/256–259행",
+      "verification_method": "정적부호와forecast h호출을추적",
+      "limit": "global입력은관측이력rolling이고ARIMA도각시점재적합했다고확대하지않음."
+    },
+    {
+      "claim_id": "H055-C15",
+      "claim": "TypeII ratio는군집화에쓰고target은normalized실제값,예측은cluster모델출력으로대체한다.후단LjungBox는차이잔차다.",
+      "source_location": "SRC-0063852:207–224/239–247/267–268/373–384행",
+      "verification_method": "잔차변수·fit target·예측대체·후단검정식 원문대조",
+      "limit": "잔차target예측+addback으로요약하지않고Table4전후조건실행재현으로쓰지않음."
+    },
+    {
+      "claim_id": "H055-C16",
+      "claim": "V1은global최종출력층제외hidden→Dense→원input Add→새출력이며Fig3(d)forecastconcat과다르다.",
+      "source_location": "SRC-0063852:166–180행; SRC-0063060:PDF8 Fig3",
+      "verification_method": "코드graph표현과그림/본문대조",
+      "limit": "layer배열순서·trainableweights/Dropout은미실행이라확정하지않음."
+    },
+    {
+      "claim_id": "H055-C17",
+      "claim": "TypeII는12tsfeatures→MinMax→NaN열제거→KMeans(random_state0),반환ID재join이보이지않는다.",
+      "source_location": "SRC-0063852:295–312행",
+      "verification_method": "선택열·전처리·label매핑정적독해",
+      "limit": "실제ID불일치발생이나모든환경순서보장은검증하지않음."
+    },
+    {
+      "claim_id": "H055-C18",
+      "claim": "잔차는in-sample train예측에서만들며OOF가없고std0/ratio분모0처리도보이지않는다.",
+      "source_location": "SRC-0063851:77–89/206–213행; SRC-0063852:68–80/367–374행",
+      "verification_method": "두파일전체와해당변수사용을대조",
+      "limit": "test누출이나실제분모0발생을단정하지않음."
+    },
+    {
+      "claim_id": "H055-C19",
+      "claim": "지표는prefix오차의평균이며일반MAE와다르다.오차순서만바꾼예제에서누적MAE1.5/.5가된다.",
+      "source_location": "SRC-0063060:PDF6 metrics; SRC-0063851:113–153행; SRC-0063852:104–144행",
+      "verification_method": "원수식/함수와원코드미실행의결정론적2예제·Fraction가중치대조",
+      "limit": "예제는논문rawprediction검산·실데이터결과아님."
+    },
+    {
+      "claim_id": "H055-C20",
+      "claim": "Table2 해당global대비96조건비교는67개선10인쇄동률19악화이며모든조건개선이아니다.",
+      "source_location": "SRC-0063060:PDF7 Table2",
+      "verification_method": "240인쇄값/24행전사,후보별MLP/LSTM96pairwise Decimal대조",
+      "limit": "96개독립실험/확률아님;반올림동률과통계적동등성구분."
+    },
+    {
+      "claim_id": "H055-C21",
+      "claim": "Table3additive와Table4multiplicative의Rh48개는반올림산술과맞지만정의/성능을합칠수없다.코드후단은차이잔차다.",
+      "source_location": "SRC-0063060:PDF7 Table3/8 Table4; SRC-0063852:239–247/373–384행",
+      "verification_method": "Rh=nh/N48개대조와코드전후잔차정의재대조",
+      "limit": "인쇄Rh산술일치는원실험재현/생성과정이질성증명/같은잔차정의확인이아님."
+    },
+    {
+      "claim_id": "H055-C22",
+      "claim": "Table5는각전략7개선1악화이고micro(d).2073>.1978; α.1에서(c)p.102는불충족이다.",
+      "source_location": "SRC-0063060:PDF8 Table5/§5; SRC-0022016:23행",
+      "verification_method": "35인쇄값·24대조·p .094/.102/.097의기준판단",
+      "limit": "rawp값재계산/독립성가정검증아님;본문의포괄문장과표를구분."
+    },
+    {
+      "claim_id": "H055-C23",
+      "claim": "Friedman p.096은논문의α.1판단이며.05유의성으로전환하지않는다.",
+      "source_location": "SRC-0063060:PDF6§4.2–PDF7 Figure2설명",
+      "verification_method": "p·기준·검정이름과Nemenyi문맥대조",
+      "limit": "원통계검정재현아님;특정쌍/모든모델동시우위와구별."
+    },
+    {
+      "claim_id": "H055-C24",
+      "claim": "Table6TypeII/global은8행모두느리고약1.90–7.19배;Cluster대비micro만더빠르다.",
+      "source_location": "SRC-0063060:PDF8 Table6",
+      "verification_method": "32인쇄값·8자료의Decimal시간비/차이대조",
+      "limit": "분단위보고·조건별비교이며단일CPU작업량/우리예산/보편속도아님."
+    },
+    {
+      "claim_id": "H055-C25",
+      "claim": "코드의import time만으로타이머·탐색포함총비용을확인할수없다.",
+      "source_location": "SRC-0063060:PDF8 Runtime analysis; SRC-0063851:전체; SRC-0063852:전체",
+      "verification_method": "전체코드정적독해로타이머호출/비용저장부재확인",
+      "limit": "Table6의기록값대조와전체비용실측검증을구분."
+    },
+    {
+      "claim_id": "H055-C26",
+      "claim": "H020의공통AR잔차와log손실반례를재사용하며모든잔차방법의무효로확대하지않는다.",
+      "source_location": "SRC-0021257:46–47행; SRC-0063060:PDF4–5 Proposition1; 기존history-020-logic-check.json",
+      "verification_method": "이전검수산술·원문28보존본/해시·논문수식조건다시대조",
+      "limit": "새simulation/원실험반례/전체논문반박아님."
+    },
+    {
+      "claim_id": "H055-C27",
+      "claim": "65의ECAI판단과이번추가확인target/σ/recipe/표전체대조를구분하고60의좋은직접예측을유지한다.",
+      "source_location": "SRC-0022016:5–25행; SRC-0063851/SRC-0063852:전체; SRC-0063060:PDF6–8쪽",
+      "verification_method": "65해당절·28과60검수링크·이번정적증거대조",
+      "limit": "60결과재인용을새RCTL성능이나독립재현으로세지않음."
+    },
+    {
+      "claim_id": "H055-C28",
+      "claim": "두저자코드는Fig3(c)/(d)전체재현코드가확인된것아니며실행도없다.",
+      "source_location": "SRC-0063851/SRC-0063852:전체; SRC-0063855:tree전체; SRC-0063868:ECAI not_verified",
+      "verification_method": "코드2개/metadata15항목·65미확인문구대조",
+      "limit": "tree에나열된CSV본문·다른구현은열람완료로올리지않음."
+    },
+    {
+      "claim_id": "H055-C29",
+      "claim": "HTTP접근실패와PNGsuffix수정은자료취득·렌더기록이다. ECAI2PNG로그byte가맞는다.",
+      "source_location": "SRC-0063840:406항목; SRC-0063866/SRC-0063867/SRC-0063868:전체; SRC-0023100:19–35행; SRC-0022016:74–76행",
+      "verification_method": "수집/렌더원문·각PNG SHA/size와수정후script를대조",
+      "limit": "최초오류trace/수정전코드는미보유;403다른문헌은여기서는역사적보고범위만확인."
+    },
+    {
+      "claim_id": "H055-C30",
+      "claim": "다른6문헌과65전체종합·미열람외부자료/후속기록은미완료다.",
+      "source_location": "SRC-0022016:27–82행; SRC-0063868:일곱primary_sources; SRC-0022015:전체",
+      "verification_method": "현재독해checkpoint와역사scope를대조",
+      "limit": "과거visually_reviewed=True를이번본문검수완료로승계하지않음."
+    },
+    {
+      "claim_id": "H055-C31",
+      "claim": "23고유groups47paths,13새사본44090B/1재사용/9외부metadata를구분한다.",
+      "source_location": "SRC-0021257; SRC-0022008/SRC-0022015/SRC-0022016; SRC-0063060/SRC-0063061 및명세전체",
+      "verification_method": "원문SHA256/alias실바이트·기존catalog미등록credit·public사본확인",
+      "limit": "metadata주소가PNG/TXT원파일이나과거API스냅샷을직접내려주는것아님."
+    },
+    {
+      "claim_id": "H055-C32",
+      "claim": "보호6원장/원문은보존했고이번연구모델·원스크립트실행·난수0이다.",
+      "source_location": "SRC-0063868:execution의역사적기록; SRC-0022016:77–78행; 현재source보존baseline",
+      "verification_method": "현재source47paths·보호6개해시와정리작업범위확인",
+      "limit": "원문의과거예산/goal문구는현재실행지시가아니다.전체Goal미완료."
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "semantic_second_pass_scope": "같은 에이전트가 32개 주장을 원문 전체 독해 기록과 다시 대조했다. 작성 뒤 63/64/65 전체 32/33/82행, 28의 35–53행, 공식 코드의 target·합성·잔차·설정·지표 구간, PDF4/6쪽과 기존 전체 표 검산을 재확인했다. 8개 주장의 원문 위치를 바로잡고 처음 비율/후단 차이 잔차를 구분했다. 자동 파일 검사는 별도이며 독립 연구자의 실험 재현은 아니다.",
+  "semantic_second_pass_at_utc": "2026-10-10T02:34:37.562354+00:00"
+}

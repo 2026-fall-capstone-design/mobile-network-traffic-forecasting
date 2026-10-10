@@ -1,0 +1,37 @@
+"""Capture selected immutable code for static reading only."""
+from pathlib import Path
+import concurrent.futures,hashlib,json,urllib.request
+from html.parser import HTMLParser
+out=Path(__file__).resolve().parent/'sources/residual_interface_63'
+manifest_path=out/'implementation_manifest.json'
+if manifest_path.exists():raise RuntimeError('Archive already exists')
+class Plain(HTMLParser):
+    def __init__(self):super().__init__();self.lines=[]
+    def handle_data(self,data):
+        if data.strip():self.lines.append(data.strip())
+for filename in ('Heatload_2608.20024v1.html','Multi_scale_residual_2606.10678v2.html'):
+    p=Plain();p.feed((out/filename).read_text(encoding='utf-8'))
+    (out/(filename+'.text')).write_text('\n'.join(p.lines),encoding='utf-8')
+items=[]
+for prefix,files in (
+    ('heatload',['README.md','scripts/stacked_residual_full_year_2024.py','scripts/full_year_forecasting_utils.py','scripts/tabpfn_ts_heat_forecast.py']),
+    ('two_stage',['TS_X_I.py','TS_X_II.py']),
+):
+    repo=json.loads((out/(prefix+'_repo.json')).read_text())['full_name']
+    commit=json.loads((out/(prefix+'_commit.json')).read_text())['sha']
+    for file in files:
+        items.append((prefix+'_'+file.replace('/','__'),f'https://raw.githubusercontent.com/{repo}/{commit}/{file}',file,commit))
+def save(item):
+    name,url,original,commit=item
+    rec=dict(name=name,url=url,original_path=original,commit=commit,accessed_date='2026-09-26')
+    try:
+        req=urllib.request.Request(url,headers={'User-Agent':'TabICL-research-primary-source-review'})
+        with urllib.request.urlopen(req,timeout=35) as resp:data=resp.read(5*1024**2+1);rec['status']=resp.status
+        if len(data)>5*1024**2:raise RuntimeError('Size cap')
+        (out/name).write_bytes(data)
+        rec.update(saved=True,bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+    except Exception as exc:rec.update(saved=False,error=str(exc))
+    return rec
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:results=list(pool.map(save,items))
+manifest_path.write_text(json.dumps(results,ensure_ascii=False,indent=2),encoding='utf-8')
+for r in results:print(json.dumps(r,ensure_ascii=False),flush=True)

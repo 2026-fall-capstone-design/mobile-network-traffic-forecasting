@@ -1,0 +1,37 @@
+from pathlib import Path
+import subprocess, json, hashlib
+
+base = Path(__file__).resolve().parent
+out = base / 'sources' / 'residual_transform_review_65'
+out.mkdir(exist_ok=True)
+log = out / 'render_log.json'
+assert not log.exists(), 'Rendering already recorded; do not repeat.'
+exe = Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+items = [
+    ('method_audit_28/Two_stage_global_forecasting_ECAI2025.pdf', [7, 8]),
+    ('residual_interface_63/Heatload_2608.20024v1.pdf', [21]),
+    ('residual_interface_63/Multi_scale_residual_2606.10678_latest_v2.pdf', [4, 11]),
+    ('conditional_transform_64/Copula_clustering_PLOS2018.pdf', [5]),
+    ('conditional_transform_64/Gaussian_copula_NeurIPS2019.pdf', [5]),
+    ('conditional_transform_64/TACTiS2_2310.01327v2.pdf', [4, 5]),
+]
+records = []
+for rel, pages in items:
+    pdf = base / 'sources' / rel
+    for page in pages:
+        dest = out / f'{pdf.stem}_p{page}'
+        png = Path(str(dest) + '.png')
+        reused = png.exists()
+        result = None if reused else subprocess.run([
+            str(exe), '-f', str(page), '-l', str(page), '-singlefile',
+            '-scale-to', '1600', '-png', str(pdf), str(dest)
+        ], check=True, capture_output=True, timeout=30)
+        records.append({
+            'pdf': rel, 'page': page, 'png': png.name,
+            'bytes': png.stat().st_size,
+            'sha256': hashlib.sha256(png.read_bytes()).hexdigest(),
+            'stderr': result.stderr.decode(errors='replace') if result else '',
+            'reused_after_filename_suffix_fix': reused,
+        })
+log.write_text(json.dumps(records, indent=2), encoding='utf-8')
+print(json.dumps({'rendered_pages': len(records), 'directory': str(out)}, ensure_ascii=False))

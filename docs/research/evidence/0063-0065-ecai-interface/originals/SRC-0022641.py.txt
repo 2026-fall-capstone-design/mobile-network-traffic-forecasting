@@ -1,0 +1,46 @@
+"""Capture primary PDF and repository trees, no external execution."""
+from pathlib import Path
+import hashlib,json,urllib.request
+from pypdf import PdfReader
+
+out=Path(__file__).resolve().parent/'sources/residual_interface_63'
+manifest_path=out/'code_discovery_manifest.json'
+if manifest_path.exists():
+    raise RuntimeError('Discovery already completed; no overwrite')
+manifest=[]
+def save(name,url,pdf=False):
+    if (out/name).exists(): raise RuntimeError('Refusing overwrite: '+name)
+    rec=dict(name=name,url=url,accessed_date='2026-09-26')
+    try:
+        req=urllib.request.Request(url,headers={'User-Agent':'TabICL-research-primary-source-review'})
+        limit=(20 if pdf else 5)*1024**2
+        with urllib.request.urlopen(req,timeout=35) as resp:
+            data=resp.read(limit+1)
+            rec.update(status=resp.status,resolved_url=resp.url)
+        if len(data)>limit or (pdf and not data.startswith(b'%PDF')):raise RuntimeError('Size or signature invalid')
+        (out/name).write_bytes(data)
+        rec.update(saved=True,bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        if pdf:
+            r=PdfReader(out/name);rec['pages']=len(r.pages)
+            (out/Path(name).with_suffix('.txt')).write_text('\n\n'.join(f'--- PDF page {i+1} ---\n{p.extract_text()}' for i,p in enumerate(r.pages)),encoding='utf-8')
+        print(json.dumps(rec,ensure_ascii=False),flush=True)
+        return data
+    except Exception as exc:
+        rec.update(saved=False,error=f'{type(exc).__name__}: {exc}')
+        print(json.dumps(rec),flush=True)
+        return None
+    finally:
+        manifest.append(rec)
+        manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+
+save('Multi_scale_residual_2606.10678v2.pdf','https://arxiv.org/pdf/2606.10678v2',True)
+save('Multi_scale_residual_2606.10678v2.html','https://arxiv.org/html/2606.10678v2')
+for prefix in ('heatload','two_stage'):
+    repo=json.loads((out/(prefix+'_repo.json')).read_text())
+    raw=save(prefix+'_commit.json',f"https://api.github.com/repos/{repo['full_name']}/commits/{repo['default_branch']}")
+    if raw:
+        commit=json.loads(raw)['sha']
+        raw=save(prefix+'_tree.json',f"https://api.github.com/repos/{repo['full_name']}/git/trees/{commit}?recursive=1")
+        if raw:
+            obj=json.loads(raw)
+            print(json.dumps({'repo':repo['full_name'],'commit':commit,'truncated':obj.get('truncated'), 'files':[e['path'] for e in obj.get('tree',[]) if e['type']=='blob' and (e['path'].endswith(('.py','.md','.yml','.yaml','.toml')))]},ensure_ascii=False),flush=True)
