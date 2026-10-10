@@ -1,0 +1,541 @@
+{
+  "batch_id": "history-085",
+  "files": [
+    {
+      "source_id": "SRC-0062505",
+      "source_sha256": "f378fea4c09b3097f06f5a05c73263bc32e021eb85e7daac2c5090fbf6682e59",
+      "functions": [
+        {
+          "type": "FunctionDef",
+          "name": "parse_args",
+          "start": 16,
+          "end": 22
+        },
+        {
+          "type": "FunctionDef",
+          "name": "main",
+          "start": 24,
+          "end": 60
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-0062506",
+      "source_sha256": "400ae0d093789093b41642b4b5502b84a3d902e440c96df87cec79a38df1cb11",
+      "functions": [
+        {
+          "type": "ClassDef",
+          "name": "Center",
+          "start": 5,
+          "end": 92
+        },
+        {
+          "type": "ClassDef",
+          "name": "CenterFedProx",
+          "start": 94,
+          "end": 122
+        },
+        {
+          "type": "ClassDef",
+          "name": "CenterEM",
+          "start": 124,
+          "end": 177
+        },
+        {
+          "type": "ClassDef",
+          "name": "CenterPFedGraph",
+          "start": 179,
+          "end": 211
+        },
+        {
+          "type": "ClassDef",
+          "name": "CenterRC",
+          "start": 213,
+          "end": 289
+        },
+        {
+          "type": "FunctionDef",
+          "name": "__init__",
+          "start": 6,
+          "end": 14
+        },
+        {
+          "type": "FunctionDef",
+          "name": "get_optimizer",
+          "start": 16,
+          "end": 17
+        },
+        {
+          "type": "FunctionDef",
+          "name": "set_cluster",
+          "start": 19,
+          "end": 20
+        },
+        {
+          "type": "FunctionDef",
+          "name": "local_step",
+          "start": 22,
+          "end": 37
+        },
+        {
+          "type": "FunctionDef",
+          "name": "get_weights",
+          "start": 39,
+          "end": 40
+        },
+        {
+          "type": "FunctionDef",
+          "name": "update_weights",
+          "start": 42,
+          "end": 44
+        },
+        {
+          "type": "FunctionDef",
+          "name": "save_weights",
+          "start": 46,
+          "end": 48
+        },
+        {
+          "type": "FunctionDef",
+          "name": "get_dW",
+          "start": 50,
+          "end": 58
+        },
+        {
+          "type": "FunctionDef",
+          "name": "local_test_step",
+          "start": 61,
+          "end": 76
+        },
+        {
+          "type": "FunctionDef",
+          "name": "local_logit",
+          "start": 79,
+          "end": 92
+        },
+        {
+          "type": "FunctionDef",
+          "name": "__init__",
+          "start": 95,
+          "end": 97
+        },
+        {
+          "type": "FunctionDef",
+          "name": "local_fedprox_step",
+          "start": 99,
+          "end": 122
+        },
+        {
+          "type": "FunctionDef",
+          "name": "__init__",
+          "start": 126,
+          "end": 129
+        },
+        {
+          "type": "FunctionDef",
+          "name": "update_q",
+          "start": 131,
+          "end": 134
+        },
+        {
+          "type": "FunctionDef",
+          "name": "update_pi",
+          "start": 136,
+          "end": 137
+        },
+        {
+          "type": "FunctionDef",
+          "name": "local_weighted_step",
+          "start": 140,
+          "end": 158
+        },
+        {
+          "type": "FunctionDef",
+          "name": "local_instancewise_loss_step",
+          "start": 161,
+          "end": 174
+        },
+        {
+          "type": "FunctionDef",
+          "name": "get_cluster_weights",
+          "start": 176,
+          "end": 177
+        },
+        {
+          "type": "FunctionDef",
+          "name": "__init__",
+          "start": 180,
+          "end": 182
+        },
+        {
+          "type": "FunctionDef",
+          "name": "local_pfedgraph_step",
+          "start": 184,
+          "end": 211
+        },
+        {
+          "type": "FunctionDef",
+          "name": "__init__",
+          "start": 215,
+          "end": 224
+        },
+        {
+          "type": "FunctionDef",
+          "name": "update_q",
+          "start": 226,
+          "end": 234
+        },
+        {
+          "type": "FunctionDef",
+          "name": "update_pi",
+          "start": 236,
+          "end": 237
+        },
+        {
+          "type": "FunctionDef",
+          "name": "update_cluster_labels_weights",
+          "start": 239,
+          "end": 243
+        },
+        {
+          "type": "FunctionDef",
+          "name": "update_labels_weights",
+          "start": 245,
+          "end": 248
+        },
+        {
+          "type": "FunctionDef",
+          "name": "local_weighted_step",
+          "start": 252,
+          "end": 270
+        },
+        {
+          "type": "FunctionDef",
+          "name": "local_instancewise_loss_step",
+          "start": 273,
+          "end": 286
+        },
+        {
+          "type": "FunctionDef",
+          "name": "get_cluster_weights",
+          "start": 288,
+          "end": 289
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-0062507",
+      "source_sha256": "576a4a120d4a8bda3b3ed5b4eb47fed6f6fa4657fe68e8599ef6967f468fb5ae",
+      "functions": [
+        {
+          "type": "ClassDef",
+          "name": "Trainer",
+          "start": 26,
+          "end": 1901
+        },
+        {
+          "type": "FunctionDef",
+          "name": "__init__",
+          "start": 27,
+          "end": 37
+        },
+        {
+          "type": "FunctionDef",
+          "name": "average_weights",
+          "start": 39,
+          "end": 56
+        },
+        {
+          "type": "FunctionDef",
+          "name": "average_weights_clusterwise",
+          "start": 58,
+          "end": 71
+        },
+        {
+          "type": "FunctionDef",
+          "name": "save_models",
+          "start": 74,
+          "end": 100
+        },
+        {
+          "type": "FunctionDef",
+          "name": "find_distance_threshold",
+          "start": 103,
+          "end": 128
+        },
+        {
+          "type": "FunctionDef",
+          "name": "find_memberships",
+          "start": 131,
+          "end": 137
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_fedavg",
+          "start": 140,
+          "end": 182
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_fedprox",
+          "start": 185,
+          "end": 228
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_ifca",
+          "start": 231,
+          "end": 295
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_cfl",
+          "start": 298,
+          "end": 378
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_emdcfl",
+          "start": 381,
+          "end": 479
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_emdcfl_partial",
+          "start": 482,
+          "end": 593
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_cflgp",
+          "start": 596,
+          "end": 707
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_fedsoft",
+          "start": 710,
+          "end": 780
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_fedce",
+          "start": 783,
+          "end": 877
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_fedem",
+          "start": 880,
+          "end": 940
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_pfedgraph",
+          "start": 943,
+          "end": 1026
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_flexcfl",
+          "start": 1029,
+          "end": 1147
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_fedsac",
+          "start": 1150,
+          "end": 1281
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_fedrc",
+          "start": 1284,
+          "end": 1370
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_fedclust",
+          "start": 1373,
+          "end": 1499
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_fesem",
+          "start": 1502,
+          "end": 1576
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_gt",
+          "start": 1579,
+          "end": 1646
+        },
+        {
+          "type": "FunctionDef",
+          "name": "fit_pacfl",
+          "start": 1649,
+          "end": 1833
+        },
+        {
+          "type": "FunctionDef",
+          "name": "test",
+          "start": 1835,
+          "end": 1853
+        },
+        {
+          "type": "FunctionDef",
+          "name": "get_instancewise_loss",
+          "start": 1855,
+          "end": 1863
+        },
+        {
+          "type": "FunctionDef",
+          "name": "get_embeddings",
+          "start": 1865,
+          "end": 1875
+        },
+        {
+          "type": "FunctionDef",
+          "name": "get_wd",
+          "start": 1877,
+          "end": 1901
+        },
+        {
+          "type": "FunctionDef",
+          "name": "flatten_tensor",
+          "start": 598,
+          "end": 606
+        },
+        {
+          "type": "FunctionDef",
+          "name": "get_loss_vector",
+          "start": 785,
+          "end": 793
+        },
+        {
+          "type": "FunctionDef",
+          "name": "optimizing_graph_matrix_neighbor",
+          "start": 946,
+          "end": 968
+        },
+        {
+          "type": "FunctionDef",
+          "name": "intergroup_learning",
+          "start": 1031,
+          "end": 1040
+        },
+        {
+          "type": "FunctionDef",
+          "name": "optimizing_graph_matrix_neighbor",
+          "start": 1157,
+          "end": 1180
+        },
+        {
+          "type": "FunctionDef",
+          "name": "compute_principal_angles",
+          "start": 1183,
+          "end": 1200
+        },
+        {
+          "type": "FunctionDef",
+          "name": "cal_complementary",
+          "start": 1202,
+          "end": 1211
+        },
+        {
+          "type": "FunctionDef",
+          "name": "recursive_subclustering",
+          "start": 1379,
+          "end": 1425
+        },
+        {
+          "type": "FunctionDef",
+          "name": "calculating_adjacency",
+          "start": 1652,
+          "end": 1671
+        },
+        {
+          "type": "FunctionDef",
+          "name": "flatten",
+          "start": 1674,
+          "end": 1681
+        },
+        {
+          "type": "FunctionDef",
+          "name": "hierarchical_clustering",
+          "start": 1683,
+          "end": 1747
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-0062508",
+      "source_sha256": "7605c965d0015b4f82eb672f5232fd117b093560c26161ed3080875da2c7cdd0",
+      "functions": [
+        {
+          "type": "FunctionDef",
+          "name": "get_summarywriter",
+          "start": 13,
+          "end": 37
+        },
+        {
+          "type": "FunctionDef",
+          "name": "cluster_clients",
+          "start": 39,
+          "end": 44
+        },
+        {
+          "type": "FunctionDef",
+          "name": "flatten",
+          "start": 46,
+          "end": 47
+        },
+        {
+          "type": "FunctionDef",
+          "name": "pairwise_angles",
+          "start": 49,
+          "end": 61
+        },
+        {
+          "type": "FunctionDef",
+          "name": "compute_max_update_norm",
+          "start": 63,
+          "end": 64
+        },
+        {
+          "type": "FunctionDef",
+          "name": "compute_mean_update_norm",
+          "start": 67,
+          "end": 69
+        },
+        {
+          "type": "FunctionDef",
+          "name": "find_neighborhoods",
+          "start": 74,
+          "end": 87
+        },
+        {
+          "type": "FunctionDef",
+          "name": "cluster_neighborhoods",
+          "start": 89,
+          "end": 100
+        },
+        {
+          "type": "FunctionDef",
+          "name": "spectral_clustering_and_matching",
+          "start": 103,
+          "end": 130
+        },
+        {
+          "type": "FunctionDef",
+          "name": "get_gt_clustering",
+          "start": 132,
+          "end": 167
+        }
+      ]
+    }
+  ],
+  "scope": "AST로 추출한 정의 위치. 전행 첫독해와 별개인 탐색 보조자료이며 코드 실행이 아니다.",
+  "semantic_second_pass_complete": true
+}

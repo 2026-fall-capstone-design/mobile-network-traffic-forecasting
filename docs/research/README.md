@@ -209,3 +209,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [FMCL 사전 군집 검수](records/0083-fmcl-client-clustering.md)는 원79의 고정 FM·사전 군집·별도 학습 구조를 보완한다. class 라벨과 실험 조건, Auto-K 평균/편차 차이와 overlap 제거 반례, 트래픽 회귀 적용의 미확인 조건을 함께 확인할 수 있다.
 
 [EMD-CFL 원문 검수](records/0084-emd-cfl-embedding-distributions.md)는 local 학습 뒤 embedding 분포로 군집을 만드는 구조와 이론·비용·성능의 조건을 연결한다. 부록과 그림까지 보완했고, 정답 군집 회복과 최종 accuracy의 차이 및 인쇄 표기의 미해결 항목을 남겼다.
+
+- [원79 EMD-CFL 공식 구현 대조](records/0085-emd-cfl-code.md): 초기 군집 고정/부분 참여 재계산·투영/표본·이웃별 집계와 미소장 설정을 구분한다.

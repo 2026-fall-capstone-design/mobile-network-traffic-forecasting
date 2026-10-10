@@ -118,3 +118,7 @@
 ## 원79 EMD-CFL의 본문·부록 보완
 
 [H084](records/0084-emd-cfl-embedding-distributions.md)은 당시 부분 검토와 이번 전체 논문 검수를 구분한다. 같은 v1 PDF를 현재 보충해 그림까지 확인했고 학습 재현은 하지 않았다. 이론식의 표기·조건, 모델 dimension 불일치와 Oracle 기준 비용을 보존했다.
+
+### H085 · 원79 EMD-CFL 구현 대조
+
+[고정 commit의 구현](records/0085-emd-cfl-code.md)을 논문과 연결했다. 전체/부분 참여 경로, τ와 projection·cosine OT·반올림·K의진단용 사용을 분리하고 정적 위험을 실제 성능 실패로 확정하지 않는다. 원79의 후속 Toso/검색과 원80 저장 결과는 남아 있다.

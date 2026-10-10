@@ -215,3 +215,7 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 ## H084: 원79 EMD-CFL 논문2그룹
 
 [출처](../sources/history-084.md) · [4개 목록](history-084-sources.jsonl). 새HTML/TXT2그룹과 기존findings/plan2그룹을 연결한다. 독립본문1,파생TXT추가0이며 공식v1보충PDF24쪽·그림17개는 현재검수의별도출처다. 원79 외부21중누적11그룹연결·10그룹후속,새JSON/이미지독해가산0.
+
+### H085 구현7그룹
+
+[출처](../sources/history-085.md) · [목록](history-085-sources.jsonl) · [기록](../records/0085-emd-cfl-code.md). 새텍스트5/전체JSON2와 기존2그룹 재참조를 구분한다. 코드/환경 실행은0이고 원79 외부21그룹 중 이번 범위까지18, Toso2/검색1은 후속 범위다.
