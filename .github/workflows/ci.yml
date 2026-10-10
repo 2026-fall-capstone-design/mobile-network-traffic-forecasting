@@ -171,6 +171,11 @@ jobs:
           --manifest docs/research/evidence/0061-history-logic-cost/manifest.json
           --output .research-archive/ci-history-logic-cost.json
 
+      - run: >-
+          uv run --locked --group archive python scripts/research_archive/verify_peak_objective_history.py
+          --manifest docs/research/evidence/0069-0071-peak-objective/manifest.json
+          --output .research-archive/ci-peak-objective.json
+
   deploy:
     name: deploy-pages
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

@@ -347,7 +347,7 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 | 평균은 나빠도 최악cell 보호에는 유리한가 | [66–68 저장 위험](records/0066-0068-group-risk.md) | 기존24프로파일을 재사용한다. 전체/뒤 모든top-k손해와 앞기간·같은cell예외를 함께 남기며 새fairness학습 반박으로 확대하지 않는다. |
 | Tab 오차를 빼면 RCTL 초과손해가 되는가 | [66–68 기준 risk 예](records/0066-0068-group-risk.md) | teacher 오차와 같은 함수집합의 최적risk를 구분한다. baseline·분모·운영손해와 허용행동을 먼저 정의한다. |
 
-MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 세 목적의 최종 통합과 실행 근거 공백은 남아 있다. 검색결과52블록·논문74쪽 보관과 본문 검증 완료를 구분한다.
+MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 세 목적의 본문 비교는 [H066](records/0066-0068-objectives.md)에 통합했으며 실행 근거 공백은 남아 있다. 검색결과52블록·논문74쪽 보관과 본문 검증 완료를 구분한다.
 
 ## 집단별 최적 위험을 뺀 보호 — MMR / minimax regret
 
@@ -360,3 +360,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 편차 감소와 부족 할당의 구분 — 통신 q-FFL / q-FedAvg
 
 검색어: q-FFL, q-FedAvg, Abilene, fairness, CV, under-provisioning, 과잉·부족, 식5, 80%. [66·68 q-FFL](records/0066-0068-qffl.md)에서 MSE 편차 감소와 개별 손실 증가, 부족/과잉 균형과 부족량 증가를 먼저 확인하세요. 원래 알고리즘의 공개 코드는 통신 실험 구현으로 확인되지 않았습니다. 지표 이름 변경이나 Tab loss 대입만으로 보호 효과와 신규성을 주장할 근거가 생기지 않습니다.
+
+## 피크 보호·분위수 보정·부족 예측 비용
+
+검색어: peak, extreme, macro, micro, pinball, quantile, inverted_cdf, 여유분, underprediction, Forecaster’s Dilemma, DeepCog. [69–71](records/0069-0071-peak-objective.md)에서 기존 8조건과 38보정 조건을 먼저 확인하세요. 실제 target으로 고른 피크의 이득과 전체 U/O·발생 빈도·기간별 예외를 구분합니다. 평균 높이 맞춤은 Tab 검증 정보를 사용하며 새 독립 경쟁 모델이 아닙니다. [세 보호 목적 비교](records/0066-0068-objectives.md)는 baseline·최적 위험·손실 척도의 차이를 정리합니다.

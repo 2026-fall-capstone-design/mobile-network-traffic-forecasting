@@ -1,0 +1,14 @@
+from pathlib import Path
+import json,hashlib
+b=Path(__file__).resolve().parent/'sources/peak_objective_69'
+assert not (b/'log_encoding_repairs.json').exists()
+rows=[]
+for name in ['peak_sources_search_69.json','peak_sources_primary_search_69.json']:
+    p=b/name;data=p.read_bytes();text=data.decode('utf-8')
+    raw=p.with_suffix('.txt');assert not raw.exists()
+    raw.write_bytes(data)
+    p.write_text(json.dumps(dict(format='verbatim web tool text',raw_text=text),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    rows.append(dict(path=name,raw_preserved_as=raw.name,original_sha256=hashlib.sha256(data).hexdigest(),
+        encoded_sha256=hashlib.sha256(p.read_bytes()).hexdigest()))
+(b/'log_encoding_repairs.json').write_text(json.dumps(dict(reason='Two early search logs were verbatim text with a .json suffix. Preserved exact raw .txt and encoded same text as JSON before archiving.',files=rows,models_rerun=False),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(rows,indent=2))

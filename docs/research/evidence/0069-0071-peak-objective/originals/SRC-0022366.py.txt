@@ -1,0 +1,82 @@
+from pathlib import Path
+import hashlib,json,math,re,shutil
+from pypdf import PdfReader
+b=Path(__file__).resolve().parent;w=b.parents[1]
+target=w/'output/research/redesign_20260925_snapshot_17'
+assert not target.exists(),'Do not overwrite archive.'
+s=b/'sources/peak_objective_69';d=b/'results/peak_diagnostic_70'
+public=w/'output/research/TabICLv2_재설계_피크오차와예측목적_추가검토.md'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+def finite(x):
+    if isinstance(x,float):assert math.isfinite(x)
+    elif isinstance(x,dict):
+        for y in x.values():finite(y)
+    elif isinstance(x,list):
+        for y in x:finite(y)
+manifest=read(s/'manifest.json');pages=0;pdfs=0
+for r in manifest:
+    assert r['saved'] and r['status']==200
+    p=s/r['name'];assert sha(p)==r['sha256'] and p.stat().st_size==r['bytes']
+    if p.suffix=='.pdf':
+        assert p.read_bytes().startswith(b'%PDF-')
+        pp=PdfReader(p);assert len(pp.pages)==r['pages'];pages+=len(pp.pages);pdfs+=1
+        if 'Forecaster' in p.name:assert '10.1214/16-STS588' in pp.pages[0].extract_text()
+        else:assert 'preprint version' in pp.pages[0].extract_text()
+assert pages==38 and pdfs==2
+renders=read(s/'renders/manifest.json');assert len(renders)==6
+for r in renders:assert sha(s/'renders'/r['file'])==r['sha256']
+settings=read(d/'settings.json')
+assert settings['plan_sha256']==sha(b/'70_peak_diagnostic_plan.md')
+assert settings['code_sha256']==sha(b/'peak_diagnostic_70.py')
+for rel,h in settings['input_sha256'].items():assert sha(b/rel)==h
+r=read(d/'result.json');assert r['complete'] and r['original_metrics_reproduced'] and r['inputs_unchanged']
+assert read(d/'run_finished.json')['complete'] and len(r['originals'])==24 and len(r['calibrated'])==114
+assert settings['offset_parameters']==98
+before=read(d/'budget_before_70.json');after=read(d/'budget_after_70.json')
+assert after==read(b/'cumulative_execution_budget.json')
+for k in before:
+    if k!='new_cheap_diagnostic_seconds':assert before[k]==after[k]
+new=set(after['new_cheap_diagnostic_seconds'])-set(before['new_cheap_diagnostic_seconds'])
+assert new=={'peak_diagnostic_70'}
+assert after['new_cheap_diagnostic_seconds']['peak_diagnostic_70']==r['numeric_wall_seconds']
+report=public.read_text(encoding='utf-8')
+names=['global_20260925','tabicl_risk_20260925','tabicl_risk_20260926']
+for row in r['originals']:
+    if row['method'] in names:
+        if row['period']=='all':
+            for k in ['mae','peak_macro_mae','peak_micro_mae','under_amount','over_amount','under_frequency']:
+                assert f'{row[k]:.6f}' in report,(row['method'],k)
+        else:assert f"{row['peak_macro_mae']:.6f}" in report
+for row in r['calibrated']:
+    if row['period']=='all' and row['source'] in names and row['type']=='pooled_validation_residual_quantile':
+        assert f"{row['target_tau_pinball']:.6f}" in report
+links=re.findall(r'\]\(<(C:/[^>]+)>\)',report)
+assert len(links)==5
+for p in links:assert Path(p).is_file(),p
+assert '\uc0ac\ub840' not in report
+files=[w/'AGENTS.md',public,b/'progress.md',b/'cumulative_execution_budget.json',
+       b/'69_peak_objective_review_plan.md',b/'70_peak_diagnostic_plan.md',b/'71_peak_objective_findings.md',
+       b/'collect_peak_sources_69.py',b/'render_peak_sources_69.py',b/'peak_diagnostic_70.py',
+       b/'record_peak_review_71.py',b/'fix_peak_source_logs_71.py',Path(__file__)]
+files += [b/rel for rel in settings['input_sha256']]
+files += list(s.rglob('*'))+list(d.rglob('*'))
+files=sorted(set(p for p in files if p.is_file()))
+for p in files:
+    if p.suffix=='.json':finite(read(p))
+target.mkdir();copies=[]
+for p in files:
+    rel=p.relative_to(w);q=target/rel;q.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(p,q);assert sha(p)==sha(q)
+    copies.append(dict(path=rel.as_posix(),bytes=q.stat().st_size,sha256=sha(q)))
+verification=dict(complete=True,date='2026-09-26',source_records_verified=len(manifest),pdf_count=pdfs,pdf_pages=pages,
+    visual_pages_verified=6,plan_code_input_hashes_verified=True,original_metrics_reproduced=True,
+    report_tables_verified=True,local_links_verified=5,finite_json=True,budget_increment_once=True,
+    model_counts_and_caps_unchanged=True,new_models=0,new_forwards=0,postprocessing_scalar_parameters=98,
+    copied_files=len(copies),copied_bytes=sum(x['bytes'] for x in copies),copy_hashes_verified=True,
+    final_direction_selected=False,final_Word_written=False,research_goal_complete=False,
+    independent_test=False,notes=['Increment17; previous snapshots unchanged.','Explicit reading scope; downloaded page count does not mean cover-to-cover review.',
+    'First archive verification stopped before any copy on two raw-text search logs named .json. Exact raw .txt preserved and same text encoded as JSON; no model or diagnostic rerun.'])
+(target/'manifest.json').write_text(json.dumps(copies,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(target/'verification.json').write_text(json.dumps(verification,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(dict(path=str(target),**verification),ensure_ascii=False,indent=2))

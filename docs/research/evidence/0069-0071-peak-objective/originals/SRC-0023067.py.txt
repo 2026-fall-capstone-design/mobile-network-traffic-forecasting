@@ -1,0 +1,80 @@
+from pathlib import Path
+import json,hashlib,copy
+b=Path(__file__).resolve().parent
+src=b/'sources/peak_objective_69';diag=b/'results/peak_diagnostic_70'
+ledger=b/'cumulative_execution_budget.json'
+assert not (diag/'budget_recorded_71.json').exists()
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def save(p,v):
+    assert not p.exists(),p
+    p.write_text(json.dumps(v,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+before_bytes=ledger.read_bytes();before=json.loads(before_bytes)
+r=json.loads((diag/'result.json').read_text(encoding='utf-8'))
+assert r['complete'] and json.loads((diag/'run_finished.json').read_text())['complete']
+assert before['used']['RCTL_fits']==29 and before['remaining_count_budgets']['RCTL_fits']==0
+assert before['used']['TabICL_contexts']==65 and before['used']['TabICL_query_rows']==38016
+after=copy.deepcopy(before)
+assert 'peak_diagnostic_70' not in after['new_cheap_diagnostic_seconds']
+after['new_cheap_diagnostic_seconds']['peak_diagnostic_70']=r['numeric_wall_seconds']
+for k in before:
+    if k!='new_cheap_diagnostic_seconds':assert before[k]==after[k]
+cheap=sum(after['new_cheap_diagnostic_seconds'].values())
+total=cheap+after['used']['TabICL_fit_predict_seconds']+after['used']['RCTL_wall_seconds']+after['used']['RCTL_frozen_inference_seconds']
+assert cheap<after['caps']['cheap_numeric_seconds'] and total<after['caps']['total_local_modeling_seconds']
+(diag/'budget_before_70.json').write_bytes(before_bytes)
+ledger.write_text(json.dumps(after,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+(diag/'budget_after_70.json').write_bytes(ledger.read_bytes())
+save(diag/'budget_recorded_71.json',dict(stage='peak_diagnostic_70',count=1,new_cheap_seconds=r['numeric_wall_seconds'],
+    cheap_total_seconds=cheap,recorded_modeling_total_seconds=total,before_sha256=hashlib.sha256(before_bytes).hexdigest(),
+    after_sha256=sha(ledger),caps_and_model_counts_unchanged=True,new_models=0,new_forwards=0,
+    validation_postprocessing_scalar_parameters=98,initial_preprocessing_not_fully_logged=True))
+scopes=[
+ dict(title='Forecaster’s Dilemma: Extreme Events and Forecast Evaluation',doi='10.1214/16-STS588',
+      url='https://bia.unibz.it/esploro/outputs/journalArticle/Forecasters-Dilemma-Extreme-Events-and-Forecast/991005773027901241',
+      pdf='Forecasters_Dilemma_Statistical_Science_2017.pdf',version='Published Statistical Science 32(1),106–127,2017; latest arXiv is v1(2015), not substituted for this journal version',
+      pages=22,read=['Section1 equation1.1 and Table2','Section2.2–2.4, equations2.9–2.13','Table3/4 text located but not used as new empirical evidence'],
+      rendered_read_pages=[3,6,7],not_read=['Full Section3–4 simulations/application','Supplementary material','Official code'],
+      use='Observed-extreme restricted loss does not by itself identify generally skillful prediction; keep all-time decision loss separate.',
+      code_reviewed=False,code_executed=False),
+ dict(title='DeepCog: Optimizing Resource Provisioning in Network Slicing with AI-based Capacity Forecasting',
+      doi='10.1109/JSAC.2019.2959245',url='https://dspace.networks.imdea.org/handle/20.500.12761/770',
+      pdf='DeepCog_JSAC_2020_author_version.pdf',version='Author accepted/preprint,2019 acceptance; repository publication date2020-02; cover+15bodypages. Not final publisher version.',
+      pages=16,read=['SectionIII objective and data units','SectionIV equations1–2 and correctness discussion','SectionV measurement setup and A/B benchmarks; Figure7','SectionV.C opening tradeoff definition'],
+      rendered_read_pages=[8,11,12],not_read=['Full architecture hyperparameter audit','All SectionV.C/D figures','Official code','Final publisher PDF comparison'],
+      use='Match operating action, whole-horizon cost and simple offset comparator; do not identify fixed shortage-incident cost with pinball loss.',
+      technical_note='Printed MAE-pre expression on bodyp10 adds a parameter-independent constant O to MAE; this alone cannot change its minimizer or gradient. Actual code/final version not verified. Do not reproduce or generalize this baseline from the formula.',
+      code_reviewed=False,code_executed=False),
+ dict(title='Limit Management in Network Traffic Forecasting via Asymmetric Loss Function',
+      doi='10.1109/SIU71813.2026.11636729',url='https://avesis.metu.edu.tr/publication/details/35df2d7a-e64d-4ab1-b343-82ad5b850e60/limit-management-in-network-traffic-forecasting-via-asymmetric-loss-function-ag-trafigi-tahminlemesinde-asimetrik-kayip-fonksiyonu-ile-limit-yonetimi',
+      pdf=None,version='SIU2026 author institutional metadata/abstract only',read=['Abstract'],rendered_read_pages=[],
+      not_read=['Full paper','Equations','Experiments','Official code'],use='Search lead only; not counted as methods-reviewed evidence.',code_reviewed=False,code_executed=False)]
+for s in scopes:
+    if s['pdf']:s['pdf_sha256']=sha(src/s['pdf'])
+save(src/'review_scope.json',dict(date='2026-09-26',sources=scopes,new_pdf_count=2,new_pdf_pages=38,
+    visual_pages_reviewed=6,all_pdfs_read_cover_to_cover=False,models_run=0,
+    access_notes=['UC3M entity page web internal error; used separate IMDEA author public copy',
+    'UNIBZ download failed in web fetch redirect but standard urllib public link succeeded; no authentication bypass',
+    'Publisher Euclid web page returned iframe only; public coauthor institutional journal PDF obtained',
+    'SIU2026 full text not acquired; no author contact']))
+save(src/'search_scope.json',dict(date='2026-09-26',queries=[
+ '"network traffic prediction" "peak" "quantile"',
+ '"clustering" "quantile" "forecasting" pooling',
+ '"TabICL" "extreme" forecasting',
+ '"traffic forecasting" "underestimation" "peak" loss',
+ '"network traffic" "quantile regression" forecasting',
+ '"DeepCog" "loss" forecasting',
+ '"network traffic" "prediction" "asymmetric loss"',
+ '"forecast evaluation" "extreme events" "forecaster\'s dilemma"',
+ '"Network Traffic Statistical Upper Limit Prediction From Flow Features for Traffic Fluctuations"',
+ '"Limit Management in Network Traffic Forecasting via Asymmetric Loss Function"',
+ '"DeepCog" "pdf" "2019"',
+ 'site:dspace.networks.imdea.org "DeepCog: Optimizing"',
+ '"DeepCog" "JSAC" "pdf" Bega',
+ '"Limit Management in Network Traffic Forecasting" pdf',
+ '"Forecaster’s Dilemma" "pdf" Lerch',
+ '"Forecaster\'s Dilemma" "2017" site:*.edu filetype:pdf'],
+    raw_results=[p.name for p in src.glob('*sources*.json')],
+    first_query_batch_raw_not_saved=True,search_does_not_establish_absence_or_novelty=True,
+    search_only_not_method_reviewed=['Network Traffic Statistical Upper Limit Prediction from Flow Features for Traffic Fluctuations,2026',
+    'Adaptive Digital Twin synchronization under bandwidth constraints,2026','Rolling-Origin Conformal Prediction under Local Stationarity and Weak Dependence,2026']))
+print(json.dumps(dict(cheap_seconds=cheap,recorded_modeling_seconds=total,used=after['used'],remaining=after['remaining_count_budgets']),indent=2))

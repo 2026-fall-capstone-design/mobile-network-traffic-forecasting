@@ -1,0 +1,26 @@
+# 69. 피크 성능 관찰과 예측 목적의 정합성 검토
+
+2026-09-26. 66–68의 보호 목적 검토 이후 새 원문을 읽는 계획이다. 기존 파일·비용·모델을 유지한다.
+
+## 확인할 주장
+
+기존 MAE 학습 RCTL의 Tab 분할은 전체 오차가 나쁘지만, 실제 target이 학습 구간의 cell별 95% 분위수보다 높았던 시점의 평균 오차는 global보다 작았다. 이것을 유효한 피크 대응 이득으로 해석할 수 있는지 확인한다. 이미 증가 중인 입력 조건(27) 및 전체 기간 worst-cell 위험(67)과 다른 질문이다. 지표를 바꾸어 기존 후보를 채택하려는 검토가 아니다.
+
+## 우선 읽을 두 원문
+
+1. Lerch et al., Forecaster’s Dilemma: Extreme Events and Forecast Evaluation, arXiv1512.09244 / Statistical Science 2017. 최신 공개 버전·저널본을 구분하고, 실제 extreme만 골라 평가할 때의 목적 변화, 조건부 평가와 proper score의 차이, 점 예측 반례 및 대안을 읽는다.
+2. Bega et al., DeepCog: Optimizing Resource Provisioning in Network Slicing With AI-Based Capacity Forecasting, JSAC 2020, DOI10.1109/JSAC.2019.2959245. 2019 INFOCOM과 제목·버전을 구별한다. 통신량/용량의 단위, 관측 시간, 과잉·부족 공급의 실제 손실, 단순 traffic predictor+여유분 baseline, 학습 및 평가 목적을 읽는다.
+
+2026의 Limit Management in Network Traffic Forecasting via Asymmetric Loss Function은 공개 원문이 있으면 추가 확인한다. 공개 원문이 없으면 초록 수준으로 표시하며 근거의 강도를 올리지 않는다. 논문당 PDF20MB 이하, 공식 출판사/저자/기관 공개본만 사용한다. 접근 제한을 우회하지 않고 저자에게 연락하지 않는다. 새 PDF의 제목·페이지·버전·SHA256·읽은 범위 및 관련 페이지 이미지를 보존한다.
+
+## 이번 분석의 경계
+
+- 피크 조건부 MAE는 서술 지표로 유지할 수 있다. 그것만으로 모든 시점에서 좋은 예측기 또는 실제 자원 비용 감소를 주장하지 않는다.
+- Milan 값은 정규화된 활동량이다. 원문에 없는 Mbps·SLA·운영자 비용비를 부여하지 않는다.
+- 기존 분할은 그대로 고정한다. RCTL 오차를 사용해 clustering·임계값·후보를 다시 고르지 않는다.
+- 원문 검토 뒤 필요한 경우 저장된 예측만으로 별도의 70 진단 계획을 먼저 작성한다. 그 계획 전에는 새 수치 진단을 실행하지 않는다.
+- 단순 예측 여유분/분위수 선택만으로 설명되는 이득이면 그것을 새 clustering 기여로 채택하지 않는다. 반대로 일부 피크의 실질적 개선은 숨기지 않는다.
+
+## 자원 및 결정
+
+이번 단계 model fit/forward/Tab context/query0. Tab65contexts/38,016rows, RCTL29fits/잔여0을 유지한다. 목표를 완료하거나 Word의 최종 추천 방향을 정하는 단계가 아니다. 핵심 원리와 현실적 손해가 연결되면 다음 후보를 설계하고, 그렇지 않으면 피크 이름을 붙인 기존안은 채택하지 않는다.

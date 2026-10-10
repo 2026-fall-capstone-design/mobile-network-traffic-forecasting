@@ -1,0 +1,410 @@
+{
+  "batch_id": "history-066",
+  "claims": [
+    {
+      "claim_id": "H066-C01",
+      "claim": "원69·70·71은 각각 문헌 검토 계획, 저장 예측 진단, 결과 정리다.",
+      "source_location": "SRC-0022020–0022022 전체",
+      "verification_method": "전체 독해와 실행 산출물 연결",
+      "limit": "원문 지시는 과거 자료다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C02",
+      "claim": "기존 예측을 재집계했으며 새 fit·forward·소속 변경·독립 test는 없다.",
+      "source_location": "SRC-0029500 settings; SRC-0029497 flags; SRC-0029493 ledger",
+      "verification_method": "정적 코드·설정·원장 비교",
+      "limit": "기록과 저장 산출물의 일치이며 당시 프로세스 독립 감사를 뜻하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C03",
+      "claim": "과거 문헌 읽기 범위와 현재 일차논문 본문의 미검수 상태를 구분한다.",
+      "source_location": "SRC-0063462 전체; manifest primary_sources",
+      "verification_method": "read_scope와 실제 열람 이력 대조",
+      "limit": "현재 논문 본문·시각 독해0.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C04",
+      "claim": "6개 입력 파일의 해시, 16cell, target 시간 인덱스와 척도를 고정했다.",
+      "source_location": "SRC-0022021 자료고정; SRC-0029500 input_sha256; 입력NPZ3",
+      "verification_method": "해시·IDs·shape·test_times·기존 B2 기록 연결",
+      "limit": "validation 시간 경계는 원계획/기존 frozenfit 기록 근거이며 NPZ에 별도 시간 배열은 없다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C05",
+      "claim": "8개 원조건 중 두 Tab seed는 같은 하나의 global seed와 비교한다.",
+      "source_location": "SRC-0029497 originals24; SRC-0030237 fit_results29",
+      "verification_method": "조건 키·seed 전수 대조",
+      "limit": "8조건은8새실험이 아니며 global2번째 seed 없음.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C06",
+      "claim": "원결과 24행과 보정 결과 114행은 같은 개발 구간의 전체·앞·뒤 집계다.",
+      "source_location": "SRC-0029497 originals/calibrated; SRC-0022971 periods",
+      "verification_method": "배열 재집계",
+      "limit": "3기간은 독립 반복이 아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C07",
+      "claim": "offset은 검증 정답으로 정했다. 계획에 있던 cell별 피크 U/O는 별도 필드로 저장되지 않았다.",
+      "source_location": "SRC-0022021 계산1–2; SRC-0022971 metrics; SRC-0029497 전체 필드",
+      "verification_method": "계획·구현·산출물 필드 비교",
+      "limit": "계획/코드 존재만으로 모든 계획 항목 실행을 확정하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C08",
+      "claim": "피크 임계값은 학습 target의 linear 95% 분위수다.",
+      "source_location": "SRC-0022971 threshold; SRC-0030236 peak_threshold; SRC-0027514 train_y",
+      "verification_method": "정렬과 선형 보간·저장threshold 대조",
+      "limit": "offset inverted_cdf와 다르며 dev5%를 보장하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C09",
+      "claim": "피크는 전체 95/7,680·12cell, 앞 84/3,840·11cell, 뒤 11/3,840·2cell이다.",
+      "source_location": "SRC-0029497 originals.cell_peak_counts; 입력3NPZ",
+      "verification_method": "조건 mask와 분모 재계산",
+      "limit": "기간별 피크 cell 집합이 다르다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C10",
+      "claim": "뒤 피크는 cell 3745·5337에 있고, 피크가 없는 cell의 MAE는 null이다.",
+      "source_location": "SRC-0029497 IDs/last_240.cell_peak_counts/cell_peak_mae",
+      "verification_method": "ID 대응·null 처리 대조",
+      "limit": "관측 전 입력상태·오차순위 보호와 다르다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C11",
+      "claim": "피크 macro는 해당 cell에, micro는 해당 관측치에 같은 가중치를 준다.",
+      "source_location": "SRC-0022971 metrics; SRC-0029497 originals",
+      "verification_method": "두 분모를 별도 합산",
+      "limit": "macro와micro의 목적은 동일하지 않다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C12",
+      "claim": "전체 MAE는 global 0.071067767, Tab 1은 0.087328136, Tab 2는 0.087760059다.",
+      "source_location": "SRC-0029497 all originals; SRC-0030211",
+      "verification_method": "float64 재집계와 원summary 대조",
+      "limit": "정규화 activity 척도다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C13",
+      "claim": "전체 피크 macro는 두 Tab 조건이 개선되지만 Tab 1의 micro는 악화한다.",
+      "source_location": "SRC-0029497 all originals peak_macro/peak_micro",
+      "verification_method": "각 지표 원값과 반올림 대조",
+      "limit": "모든피크지표에서 개선이라고 말할 수 없다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C14",
+      "claim": "전체 피크 cell 개선 목록은 Tab 1에서 7개, Tab 2에서 8개다.",
+      "source_location": "SRC-0029497 Tab_vs_global all.peak_improved_cell_ids",
+      "verification_method": "cellID별 peakMAE 비교",
+      "limit": "전체시점 cellMAE 이득 목록과 다르다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C15",
+      "claim": "피크 조건부 평균 손실과 전체 분모로 나눈 기여분을 구분한다.",
+      "source_location": "SRC-0029497 peak_loss_contribution/nonpeak_loss_contribution",
+      "verification_method": "기여분 합=전체MAE 대조",
+      "limit": "조건부 평균을 전체손해로 해석하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C16",
+      "claim": "앞 기간 피크 macro는 두 Tab 조건 모두 개선되고 뒤 기간에는 모두 악화한다.",
+      "source_location": "SRC-0029497 first_240/last_240 originals",
+      "verification_method": "원배열 재집계·반올림",
+      "limit": "같은 cell 구성과 독립 기간 비교를 뜻하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C17",
+      "claim": "뒤 기간 Tab의 개선 cell은 3745뿐이다. empirical 1·KNN·PCC의 뒤 피크 macro는 global보다 작다.",
+      "source_location": "SRC-0029497 last_240 originals/Tab_vs_global",
+      "verification_method": "방법별·cell별 비교",
+      "limit": "모든방법·모든지표의global지배를주장하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C18",
+      "claim": "U+O=MAE, bias=O−U이며 부족 발생 빈도는 별도 지표다.",
+      "source_location": "SRC-0022971 metrics; SRC-0029497 originals24",
+      "verification_method": "전24행 항등식 및 mask 대조",
+      "limit": "실제capacity·SLA·원화비용을 관측하지 않았다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C19",
+      "claim": "전체 기간 U/O가 모두 작은 global은 공통 비음수 상수의 선형 비용에서 두 Tab보다 더 나쁘지 않다.",
+      "source_location": "SRC-0029497 all originals/Tab_vs_global",
+      "verification_method": "원배열과 aΔU+bΔO 부호 논리",
+      "limit": "cell별 가격·비선형·사건비용 제외; a=b=0이면동일.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C20",
+      "claim": "전체 기간 Tab 2의 부족 발생 빈도는 global보다 낮다.",
+      "source_location": "SRC-0029497 all.under_frequency",
+      "verification_method": "원배열 count 대조",
+      "limit": "부족량과 발생한건당 비용을 혼동하지 않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C21",
+      "claim": "뒤 기간 Tab 2의 평균 부족량은 global보다 약 0.000031114690 작다.",
+      "source_location": "SRC-0029497 last_240 originals/Tab_vs_global",
+      "verification_method": "뒤기간 U 및 피크조건 U/O 별도대조",
+      "limit": "전체기간 선형지배를 모든기간으로확대금지.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C22",
+      "claim": "개발 구간 예측 평균 차이와 검증 평균 맞춤 offset의 부호·크기가 다르다. 평균 맞춤에는 Tab 정보가 들어간다.",
+      "source_location": "SRC-0029497 Tab_vs_global; SRC-0029496 mean_height_match offsets; 원70 계산2.3",
+      "verification_method": "두 구간의 평균차 재계산",
+      "limit": "인과적 원인 확정 아님; 평균맞춤은Tab정보를쓰므로Tab없는경쟁모델아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C23",
+      "claim": "pooled 32개, cell별 64개, 평균 맞춤 2개로 총 98개 scalar와 38개 보정 조건이다.",
+      "source_location": "SRC-0029496 offsets 전체",
+      "verification_method": "조건·파라미터 수 합산",
+      "limit": "새신경망fit횟수와다르다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C24",
+      "claim": "inverted_cdf 순서통계량 96개와 평균 차이 2개가 저장값과 정확히 일치한다.",
+      "source_location": "SRC-0027514 검증예측; SRC-0030237 members; SRC-0029496",
+      "verification_method": "29블록 복원·ceil(nτ) 정렬값/평균차",
+      "limit": "np.quantile 원코드 실행 없이 산술 대조.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C25",
+      "claim": "코드는 frozen_offsets를 먼저 저장한 뒤 개발 구간 지표를 계산한다.",
+      "source_location": "SRC-0022971 offsets save와 periods; SRC-0029496 flags",
+      "verification_method": "정적 전체 코드 독해",
+      "limit": "시각적 사전등록 증명/독립test가아니다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C26",
+      "claim": "같은 τ의 pinball은 τU+(1−τ)O이며 τ=.5이면 MAE/2다.",
+      "source_location": "SRC-0022971 metrics; SRC-0029497 calibrated/comparisons",
+      "verification_method": "전보정행 재계산",
+      "limit": "다른τ손실을같은목표성능순위로비교금지.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C27",
+      "claim": "global τ=.75는 피크 macro 0.244572710의 개선과 전체 MAE 0.096272219의 악화가 공존한다.",
+      "source_location": "SRC-0029497 all global_pooled_tau0.75",
+      "verification_method": "원예측+검증offset 재계산",
+      "limit": "median예측정확도 개선으로해석하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C28",
+      "claim": "global τ=.5는 전체 MAE 0.069404006으로 개선되지만 피크 macro 0.285735359로 악화한다.",
+      "source_location": "SRC-0029497 all global_pooled_tau0.5",
+      "verification_method": "원예측+검증offset 재계산",
+      "limit": "지표선택에따라결론다름.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C29",
+      "claim": "전체·뒤 기간의 같은 τ pinball 비교는 각각 16건 모두 global 쪽이 작다.",
+      "source_location": "SRC-0029497 calibrated_comparisons 전체",
+      "verification_method": "48비교 재계산",
+      "limit": "선택된4τ·2Tabseed·global보정2유형 범위.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C30",
+      "claim": "앞 기간 Tab 2에는 pooled τ=.9/.95와 cell τ=.9의 음수 차이 세 건이 있다.",
+      "source_location": "SRC-0029497 first_240 calibrated_comparisons",
+      "verification_method": "차이 및 원손실 재계산",
+      "limit": "앞cell.95는양수; 통계유의성미계산.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C31",
+      "claim": "뒤 기간 PCC τ=.95의 피크 macro는 global보다 작지만 전체 pinball은 크다.",
+      "source_location": "SRC-0029497 last_240 PCC/global pooled_tau0.95",
+      "verification_method": "각지표 별도대조",
+      "limit": "피크순위와전체비대칭손실순위구분.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C32",
+      "claim": "toy 예측 0/10의 MAE는 1/9, 피크 MAE는 10/0이며 부족/과잉 단가 비 9에서 동률이다.",
+      "source_location": "SRC-0029497 exact_toy; SRC-0022971 Fraction 계산",
+      "verification_method": "자체유리수합산",
+      "limit": "실제traffic확률·모델생성·신규성근거아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C33",
+      "claim": "문헌 scope의 22/16쪽과 지정 절·초록 읽기 범위를 그대로 한정한다.",
+      "source_location": "SRC-0063462 전체; SRC-0022020/0022022",
+      "verification_method": "원scope·보고서 교차대조",
+      "limit": "현재primary본문·그림검수미완료.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C34",
+      "claim": "검색어 16개, raw 경로 8개, 첫 묶음 미보존, 검색만 한 문헌 3개를 구분한다.",
+      "source_location": "SRC-0063463 전체",
+      "verification_method": "목록·선언범위 독해",
+      "limit": "검색내용/해당논문검수나신규성부재증명아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C35",
+      "claim": "numeric wall 0.0477632초, finish 0.0552278초, RSS 40,009,728 bytes의 계측 범위가 다르다.",
+      "source_location": "SRC-0029497 timing/RSS; SRC-0029498; SRC-0022971 종료부",
+      "verification_method": "원값·타이머위치·제한대조",
+      "limit": "RSS는peak아니며계측재현아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C36",
+      "claim": "before70은 after67과 같고 cheap 한 항목만 추가됐다. Tab 65/38,016과 RCTL 29의 횟수는 유지됐다.",
+      "source_location": "SRC-0029494/0029493/0029495; reused SRC-0027838",
+      "verification_method": "전체JSON diff·해시·합계",
+      "limit": "초기전처리일부미기록으로총연구비용확정불가.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C37",
+      "claim": "두 raw 검색 로그를 TXT로 보존한 뒤 JSON으로 감싼 것은 보관 형식의 복구다.",
+      "source_location": "SRC-0063450; SRC-0022803; SRC-0001076.notes",
+      "verification_method": "두SHA·decoded raw_text UTF8일치",
+      "limit": "모델실패/성능부정결과와구분;당시재실행없음은기록의주장.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C38",
+      "claim": "snapshot17은 56파일·14,152,614 bytes이며 complete는 보관 단계의 표시다.",
+      "source_location": "SRC-0001075/0001076 전체",
+      "verification_method": "56사본 실제해시·크기·flags",
+      "limit": "원문전체독해와전체Goal완료아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C39",
+      "claim": "원60의 4cell Tab 직접 예측 이득과 소속별 RCTL의 피크 진단 결과를 구분한다.",
+      "source_location": "H050/0059-0062-history-grouping; SRC-0022022 당시판단",
+      "verification_method": "기존검수·역할비교",
+      "limit": "본결과로모든Tab이용을기각하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C40",
+      "claim": "새 연구는 목표·허용 행동·자료·평가 경계에서 기존 연구와 달라지는 점을 명시해야 한다.",
+      "source_location": "SRC-0022020–0022022 사전판단/미정사항",
+      "verification_method": "계획·판단과실제결과의설계상함의",
+      "limit": "현재새실행/후보채택승인아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C41",
+      "claim": "MMR·MRI·q-FFL의 목표 비교는 H063–65의 기존 본문 검수를 통합한 것이다.",
+      "source_location": "H063/H064/H065 기록·검수",
+      "verification_method": "기존결론의범위 재대조",
+      "limit": "추가모델실험/문헌읽기수중복가산없음.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C42",
+      "claim": "q-FFL의 비음수 손실 거듭제곱 목적, q=0의 가중치·코드 집계, 유한 q와 최악 손실을 구분한다.",
+      "source_location": "H065 식1·원qffedavg/fedbase 정적감사",
+      "verification_method": "기존수식·코드검수재사용",
+      "limit": "통신구현과동일함미확인;finiteq!=exactmax.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C43",
+      "claim": "MMR의 기준은 같은 F의 최적 위험이며 teacher의 관측 오차와 자동으로 같지 않다.",
+      "source_location": "H063 정의식2–6; H062 정확기준반례",
+      "verification_method": "정의·반례의범위대조",
+      "limit": "실제RCTL최적위험측정없음.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C44",
+      "claim": "MRI에는 사전 baseline과 모든 집단의 양의 개선 가능 폭이 필요하다.",
+      "source_location": "H064 식1–3/17–19/AppendixC",
+      "verification_method": "정의·분모·조건 검수재사용",
+      "limit": "계절MAE나임의epsilon대입이원목적과동일하다고할수없음.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C45",
+      "claim": "CV 감소, 네 client 손실·다섯 연결 부족량 증가, 식2·식5의 문제를 각각 보존한다.",
+      "source_location": "H065 인쇄120값/79산술/TeX지정범위",
+      "verification_method": "기존검수결과 교차대조",
+      "limit": "교정후보는저자확정교정아님;전체논문무효주장아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C46",
+      "claim": "MMR·MRI는 주어진 집단을 다루며 clustering 방법이나 시계열 보장을 자동 제공하지 않는다.",
+      "source_location": "H063 계층가정; H064 함수집합·집단조건",
+      "verification_method": "가정·대상 비교",
+      "limit": "소속데이터/평가분할 추가검토필요.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C47",
+      "claim": "원67의 상위 k 우열과 같은 cell 손해, 앞 기간의 예외를 구분한다.",
+      "source_location": "H062 saved-risk1512checks; 0066-0068-group-risk",
+      "verification_method": "기존숫자·해석 재대조",
+      "limit": "새보호목적학습성능아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C48",
+      "claim": "cell 보호와 실제 target 피크 보호는 비교 단위·분모·허용 행동이 다르다.",
+      "source_location": "H062 원67; H066 원70/71",
+      "verification_method": "집계정의·실제수치 비교",
+      "limit": "공통공정성이름으로통합하지않는다.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C49",
+      "claim": "설계 전에 보호 대상·손해·기준·행동·평가·실행 근거를 명시한다.",
+      "source_location": "H063–65 재검토조건; 원70 사전판단",
+      "verification_method": "검수공백을실험설계양식으로연결",
+      "limit": "실제새실행을시작한것아님.",
+      "semantic_second_pass_complete": true
+    },
+    {
+      "claim_id": "H066-C50",
+      "claim": "본문 비교 통합이 각 논문의 실행 공백이나 전체 아카이브의 완료를 뜻하지 않는다.",
+      "source_location": "H063–65 remaining; H066 manifest.remaining",
+      "verification_method": "미확인범위·완료조건대조",
+      "limit": "후속논문·과거기록·팀접근·최종검색검수대기.",
+      "semantic_second_pass_complete": true
+    }
+  ],
+  "semantic_second_pass_complete": true,
+  "created_at_utc": "2026-10-10T10:17:37.895748+00:00",
+  "independent_reviewer": false,
+  "reviewed_at_utc": "2026-10-10T10:21:53.423586+00:00",
+  "semantic_second_pass_scope": "같은 에이전트가 초안 작성 후 원문과 주장별 근거·제한을 별도로 대조했다. 독립 심사나 자동 검사의 대체물이 아니다."
+}

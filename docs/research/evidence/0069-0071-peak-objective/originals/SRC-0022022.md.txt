@@ -1,0 +1,43 @@
+# 71. 피크 재해석 후보의 판단과 이어갈 경계
+
+2026-09-26. 69 원문 검토 + 70 새 수치 진단 완료. 추천 방향/최종 Word 미완료. goal active 유지, 완료 또는 blocked로 변경하지 않았다.
+
+공개 설명은 `output/research/TabICLv2_재설계_피크오차와예측목적_추가검토.md`에 기록했다. 아래는 다음 실행의 재개 메모다.
+
+## 실제 진전
+
+- 새로운 primary PDF2개/38쪽 확보, 관련6쪽을 렌더링해 식·Table2·Fig7 확인. Forecaster’s Dilemma는 coauthor 기관의2017 저널본22쪽, 최신 arXivv1(2015)와 구분. DeepCog는2019 accepted/preprint cover+15body, repo2020-02 JSAC이며 final publisher와 비교 안 함.
+- Forecaster’s Dilemma §1/Table2 및§2.2–2.4 확인. 관측 extreme에만 제한한 기존 점수의 문제와 proper weighted score 원리를 구별. proper score라고 원래MAE의 선택목적이 자동 보존되는 것은 아니다.
+- DeepCog §III/IV/V.A–B, Eq1–2/offsetbaseline 확인. 5분 bytes, allocation 유지시간Th, 부족구간 fixed fee와 overprovision linearcost. pinball과 동일시하지 않는다. 본문p10 MAE-pre의 인쇄식은 상수O+MAE이며 그 자체로 optimizer가 바뀌지 않음; 코드/finalversion미검증. 이식하지 않는다.
+- SIU2026 asymmetric network 논문은 metadata/abstract만, method-reviewed 아님. sourcemanifest6기록 모두 확보, 검색/접근실패/읽지않은범위 보존.
+- `70_peak_diagnostic_plan.md`를 먼저 고정, `peak_diagnostic_70.py` 단일 실행 성공. fit/forward/Tab/simplefit0. 저장 validation residual 기반 scalar98개(8method×4 pooledτ +16cell×4globalτ +Tabmeanmatch2), 8원예측×3기간 및38보정조건×3기간. numeric0.04776319999655243초, 원래metric/peakcounts재현, 입력hash불변.
+
+## 새 관찰
+
+1. 기존peak95%는train threshold. 확인7680query중95개,12cell. 처음240에84개,뒤240에11개/2cell. 표본이test의5%라는 해석은 잘못이다.
+2. 기존 equal-cell peakMAE global.279857922 vsTab .270420018/.262355691. sampleweighted는 .277175979 vs .277774980/.276809995. primaryseed의 개선 부호가 평균단위에 따라 바뀜. peak가1개인cell과28개인cell의 동일비중은보호목적일수있으므로그자체오류아님.
+3. 전체U/O global.026259853/.044807914, Tab1 .028980739/.058347396, Tab2 .027178306/.060581753. 공통cell/time가중 및비음수상수linear비용에서global우위. 임의cell별비용·비선형SLA로확대금지. underfrequency는Tab2.367317708<global.369401042로작은이득, Tab1.392838542나쁨.
+4. 뒤기간peakmacro global.371719010 vsTab .387788879/.401658366. 앞기간Tabmacro이득은유지. 뒤Tab2 U만미세하게작으므로모든기간 U/O지배주장금지.
+5. 동일τ pooledoffset에서 전체와뒤기간은τ.5/.75/.9/.95모두 global의 pinball이작음. globalcelloffset비교도전체같음. 앞기간Tab2τ.9차이−.000002029,τ.95−.000033544작은양호조건존재. 모든조건지배주장금지.
+6. globalτ.75보정은peakmacro.244572710으로원래Tab보다작으나전체MAE.096272219로원래global보다큼. 단순offset이기존피크점수를개선할수있음을직접보임. 공정한비교는같은τ로보정한각방법의alltime손실이며위4τ비교가그역할.
+7. Tabvalidationmeanmatch offset은−.001735521/.000886557, 확인기간평균높이차이.010818595/.014855385와다름. 기존Tab이득전부상수편향이라는인과해석금지. 관측된높이차이만으로원인확정안함.
+
+## 이번에 선택하지 않은 것
+
+- 기존 B2를 peak-protection 또는quantileclustering으로재명명하지않는다.
+- 실운영자비용/용량label이없는Milanactivity에임의SLA금액을넣지않는다.
+- 새로운asymmetric RCTL학습을이번결과로반박하지않는다. 이미29fit상한을썼으므로추가fit하지않는다.
+- 60의Tabglobal_L2가4cell직접예측에서Ridge/HGB보다좋았던긍정적결과를없애지않는다.
+- primary source의이론오류가능성을그전체논문기각근거로확대하지않는다. 필요한목적구분과실험해석만사용.
+
+## 이어갈 작업의 경계
+
+다음에는 기존16cell partition의 평가목적을 더 바꿔가며 장점을 찾는 루프를 끝낸다. 66–71에서 평균·cell보호·피크 및단순보정까지 확인했다. 같은예측의다른집계만으로신규후보를만들지않는다.
+
+실제분리해야하는RCTL학습문제와Tab정보가연결되는다른결정을원문/자료로찾아야한다. 시간별할당용량과한시점traffic의구분은DeepCog에서이미다뤘다. 집계해상도를낮춰생긴정보손실을원래UPC의문제로전가하지않는다. history60/residual63–65/aggregate49/sampling57의기각을이름만바꿔반복하지않는다.
+
+새 후보/새 numeric실행계획은 아직 없다. 원문·새공개자료범위로문제정의부터진전할수있으며현재외부차단은없다. 이번turn은새원문과진단으로진전한turn이므로blocked반복turn으로세지않는다. 어떠한새주제도최종추천한상태가아니다.
+
+## 비용
+
+70 비용은 `record_peak_review_71.py`로1회기록. cheap64.07695530000142초,recordedmodeling1977.6237435999992초. Tab65contexts/38016rows/잔여15/21984, RCTL29fits/잔여0, modelcount/caps모두불변. 처음전처리일부시간미기록은그대로유지. liveprocess없음.

@@ -1,0 +1,48 @@
+# 70. 저장 예측의 피크 이득과 단순 여유분 비교
+
+2026-09-26. 69의 Forecaster’s Dilemma 저널본 §1/Table2·§2.2–2.4, DeepCog 저자 공개본 §III·IV·V.A–B를 읽은 뒤 고정한 수치 계획이다. 새로운 clustering이나 최종 목적을 선택하지 않는다.
+
+## 주장 및 가장 강한 작은 비교
+
+기존 Tab 분할의 피크 조건부 MAE 감소가 (a) 다른 시점의 과대예측 손해와 어떤 관계가 있는지, (b) validation에서 정한 단순 예측 여유분으로 설명되는지 확인한다. 원래의 8개 조건을 모두 보존한다. 한 모델에만 유리한 비용비·시간대·cell을 선택하지 않는다.
+
+## 자료 고정
+
+- 기존16cell, 학습 target168–839, validation840–1007, 개발 확인1008–1487. 원래 파일의 cell순서·scale·분할·예측값 그대로 사용.
+- `results/rctl_pilot/all_predictions.npz`, `evaluation_data.npz`, `summary.json`, `fit_results.json`; `results/frozen_fit_gap_34/predictions.npz`, `summary.json` 재사용.
+- 기존 peak threshold는 각 cell 학습 target의95% 분위수이다. 이번 결과를 보고 변경하지 않는다. 모든 원시 예측·partition은 읽기 전용.
+- 전체480시점과 앞240/뒤240으로 나눈다. 검증 기간은 단순 offset의 산출에만 사용하고, 확인 target은 offset·cluster·threshold 선택에 사용하지 않는다. 이미 접근한 모든 기간은 개발 자료이며 독립 test라는 표현을 사용하지 않는다.
+
+## 계산 1: 원래 예측의 손해 위치
+
+8조건×3기간에서 전체MAE, 평균 과소량 U=mean(max(y−prediction,0)), 평균 과대량 O=mean(max(prediction−y,0)), signed bias, underprediction 비율을 계산한다. U+O=MAE인지 검증한다.
+
+학습95% threshold를 넘는 query와 나머지를 나누어 cell별 query수·MAE·U·O를 기록한다. 조건부 cell평균(해당 query가 없는 cell제외)과 전체 sample기준 피크 손해 기여분을 구별한다. 기존 peak_mean_scaled_mae를 허용오차1e-6 이내로 재현한다. 두Tabseed의 cell별 개선수와 시간절반별 부호, 예측값이 global보다 얼마나 높은지 함께 보존한다.
+
+서술적인 U/O가 모두 작을 때만 비음수 선형 과소·과대비용에 대한 지배 관계를 말한다. 원문 DeepCog의 부족 발생 횟수 비용과 부족량 비용은 다르다. U/O를 DeepCog monetary cost로 부르지 않는다.
+
+## 계산 2: validation만 사용한 작은 대안
+
+상수 offset은 새로운 모델을 학습하거나 호출하지 않고 저장 validation 잔차 y−prediction에서 산출한다. quantile은 numpy의 `inverted_cdf` 정의로 고정하며, 모든cell이 같은168query를 가진다.
+
+1. 각8조건에서 전체validation 잔차의 τ 분위수를 하나 구하여 모든cell·모든확인시점 예측에 동일하게 더한다. τ={0.5,0.75,0.9,0.95}, 총32개 scalar. τ 선택은 비용비 민감도 진단용이며 실제 운영자 비용이라고 가정하지 않는다.
+2. 강한 단순 대안으로 global만 cell별 잔차 분위수16×4개를 구한다. cell소속을 바꾸거나 RCTL을 다시 학습하지 않는다.
+3. 평균 예측 높이 차이를 분리하기 위해 각Tabseed의 validation 평균예측과 global의 평균예측 차이2개를 구해 global에 더한다. 이 대안에는 Tab 예측 정보가 들어가므로 Tab 없이 구현한 경쟁 모델로 부르지 않는다. 높이 차이의 설명력만 확인하는 진단이다.
+
+모든 offset은 확인오차를 보기 전에 계산해 저장한다. 각τ에서 전체시점 pinball loss τU+(1−τ)O, U/O, 피크MAE를 보고한다. 원래MAE 학습 모델들의 비교와 동일τ로 보정한 모델들의 비교를 구별한다. pinball을 적용했으므로 예측값은 해당분위수를 목표로 한 용량 여유 수준이며, 중앙값의 정확도가 개선되었다고 해석하지 않는다. offset 적용 전후 동일계산조건·원예측 재사용, 후처리parameter수/연산/메모리를 보고한다. 음수 offset도 삭제하지 않는다.
+
+## 계산 3: 논리 설명용 정확 산술
+
+확률0.9로Y=0,0.1로Y=10인 예에서 예측0과10을 비교한다. 전체MAE와Y=10조건부MAE, 선형 부족/과잉비용의 차이를 유리수로 계산한다. 미래변동을 잘 알아서 생긴 피크점수 이득과 항상 높게 예측한 이득을 구별하는 설명용이다. 실제traffic의 발생확률이나 신규성 근거로 사용하지 않는다.
+
+## 사전 판단 기준
+
+- 피크MAE의 작은 이득만으로 채택하지 않는다. 전체 U/O·validation offset대안·양시간절반을 함께 본다.
+- offset대안보다 나은 조건이 있어도 기계적 전체기각/채택을 하지 않고 개선 대상·안정성·원형clustering의 근거를 구별한다. 사업기준이 없으므로 유리한 허용악화폭/비용비를 고르지 않는다.
+- 단순offset으로 기존피크이득이 사라지거나 실제부족손해가 줄지 않으면 기존 B2안을 피크보호 clustering으로 재포장하지 않는다.
+- 실제피크query가 희소하거나 시간별로 부호가 바뀌면 그 수치를 보존하고 독립적개선으로 부르지 않는다.
+- 이번 사후 RCTL진단은 기존가설 평가다. 이 결과로 clustering 소속·점수·임계값을 조정하지 않는다.
+
+## 실행 상한과 기록
+
+단일 스크립트1회, wall30초/RSS1GB. 새 RCTLfit0/forward0, Tabcontext0/query0, 단순회귀fit0. 상수offset98개(32+64+2)의 추정·예측 산술만 한다. numeric시간은 cheap ledger에1회 누적한다. plan/code/inputhash·중간offset·모든결과·예외·원본불변을 저장한다. 실패하면 유효 출력 재사용하고 같은 진단을 무작정 재실행하지 않는다. 누적상한확장0, 최종추천방향선택0.
