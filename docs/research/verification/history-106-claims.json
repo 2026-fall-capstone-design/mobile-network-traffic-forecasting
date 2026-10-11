@@ -1,0 +1,819 @@
+{
+  "batch_id": "history-106",
+  "record_path": "../records/0106-fda-drift-correlation.md",
+  "record_sha256": "c795af84b0e1baeb516a39dcbe6cb1bf7857b2578c89c269d8e919683a4e621e",
+  "claims": [
+    {
+      "claim_id": "H106-C01",
+      "title": "판본과 제목",
+      "claim": "검토 대상은 Song·Zhang·Haiyan Lu·Jie Lu의 A Fuzzy Drift Correlation Matrix for Multiple Data Stream Regression, FUZZ-IEEE2020, DOI10.1109/FUZZ48607.2020.9177566의6쪽 논문이다. 표제와 DOI 서지를 대조했다. 본문에는 FDV·FDA·fuzzy variance·fuzzy-driance가 혼용되므로 이름만 보고 여러 실험으로 세지 않는다.",
+      "record_anchor": "c01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              1,
+              97
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            1
+          ]
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              37,
+              45
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H106-C02",
+      "title": "문제와 대상 변화",
+      "claim": "저자는 여러 regression stream에서 drift 관계를 찾는 행렬을 제안한다. §II는 p_t(X,y)의 변화를 정의하고 sudden·incremental을 다루며 gradual·recurrent는 제외한다. Abstract의 기존 방법 일반화는 당시 저자의 주장으로 남긴다. 모든 최신 선행연구나 통신 cell의 갱신 문제를 조사한 결론은 아니다.",
+      "record_anchor": "c02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              1,
+              153
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            1,
+            2
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H106-C03",
+      "title": "행렬과 시차 방향",
+      "claim": "M(i,j,l)은0/1이며 양의 l은 i의 변화 뒤 l만큼 지나 j가 변한다는 방향이다. v_ij^l=v_ji^(−l) 관계를 두고 양의 시차를 분석한다. 이 관계는 지연된 변화의 동시성을 나타내려는 정의이며 실제 RCTL을 함께 재학습해야 한다는 비용·품질 조건을 포함하지 않는다.",
+      "record_anchor": "c03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              144,
+              194
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            2
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H106-C04",
+      "title": "대각 정의와 표의 차이",
+      "claim": "§III는 v_ii^0=1, 나머지 자기 시차 값0을 수동 설정한다고 쓴다. 그러나 Table I와 II의 S1·S2 대각은0이고 S3–S7만1이다. 정의와 두 표를 함께 보존한다. 표기 오류인지 다른 판정 규칙인지, 실제 코드가 어느 쪽을 따르는지는 이 자료만으로 확정하지 않는다.",
+      "record_anchor": "c04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              144,
+              194
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            2,
+            4,
+            5
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H106-C05",
+      "title": "오차 정규화",
+      "claim": "식1은 예측 손실을 오차로 삼고, 식2는 절대 오차를 오차의 표준편차로 나눈다. 저자는 이를 Z-score라고 부르지만 평균을 빼는 항은 없다. 표준편차0인 경우의 규칙도 제시되지 않는다. 명칭을 근거로 평균 중심화나 예외 처리를 추가해 저자 방법으로 기록하지 않는다.",
+      "record_anchor": "c05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              195,
+              215
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              241,
+              260
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            2,
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H106-C06",
+      "title": "미래 정보와 인덱스",
+      "claim": "식3은 고정 기간에서 t 이전 평균과 t부터 이후 평균의 차이를 쓰므로 t에서 아직 오지 않은 오차가 필요하다. 그대로 온라인 감지식으로 사용할 수 없다. T={1,…,T} 표기와 t=0 예외도 함께 존재해 첫 유효 시각의 빈 구간 처리가 불명확하다. 임의의 인덱스 수정이나 인과적 창을 저자의 검증 결과로 바꾸지 않는다.",
+      "record_anchor": "c06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              241,
+              280
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H106-C07",
+      "title": "fuzzy 값과 개별 점수",
+      "claim": "식4는 a,b를 쓰는 logistic 변환, 식5는 그 값의 시간 평균 fed_ii다. 저자는 높은 값이 빈번한 drift를 나타낸다고 해석한다. 이 점수 자체는 예측기 갱신으로 얻을 실익·갱신 비용·허용 오차를 측정한 것이 아니다. Fig.1의 처리 순서도 이 오차 기반 구성과 맞는다.",
+      "record_anchor": "c07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              255,
+              292
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H106-C08",
+      "title": "시차 비교의 경계",
+      "claim": "식6은 fz_it와 fz_j,t+l 차이의 절댓값이고 식7은 이를 기간 전체에 걸쳐 평균한다. 따라서 두 fuzzy 변화 모양이 가까운지를 측정한다. t+l이 끝을 넘을 때 유효 시간 구간, 잘린 구간의 분모와 경계 처리는 식에 명시되지 않는다. 그림만 보고 padding이나 circular shift를 가정하지 않는다.",
+      "record_anchor": "c08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              288,
+              320
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H106-C09",
+      "title": "기대값0 가정의 의미",
+      "claim": "§III.D는 식6의 비음수 값의 분포에 평균0과 미지의 분산을 가정한다. 비음수 확률변수의 유한 기대값이0이면 거의 확실하게0이므로 분산도0이다. 이 점은 원문 가정을 그대로 놓고 확인한 논리적 한계다. 이를 비퇴화 정규근사 검정의 타당성으로 받아들이지 않으며 FDA 관련 모든 방법의 실패나 실제 구현 오류로 확대하지 않는다.",
+      "record_anchor": "c09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              319,
+              339
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H106-C10",
+      "title": "임계값 세 표기",
+      "claim": "3쪽은 평균의 근사 분포 분산을 σ²/|T|로 쓰고, 문장에서는1.96×σhat를 기준으로 든다. 이어지는4쪽 λ 식은1.96×Σ(fz_ij,t(l)²)/(|T|−1)로 분산 추정 꼴에 곱하며 제곱근이 없다. 표준오차·표준편차·분산의 차이를 보존한다. 수정한 식을 저자 구현으로 간주하거나 유효한 유의수준을 검증했다고 하지 않는다.",
+      "record_anchor": "c10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              319,
+              353
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H106-C11",
+      "title": "최종 판정",
+      "claim": "식8은 i≠j에 대해 min(fed_ii,fed_jj)>ρ와 fed_ij(l)<λ를 모두 만족할 때1, 아니면0이다. 실험에서 ρ=0.3을 보고한다. 높은 개별 변화 점수와 낮은 pair 차이를 함께 요구하는 구조지만, 앞선 수식의 경계·임계값 문제를 해결하는 별도 검증은 아니다.",
+      "record_anchor": "c11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              344,
+              365
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              437,
+              466
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H106-C12",
+      "title": "재현에 남은 설정",
+      "claim": "6쪽 전체 본문에서 실험의 a,b 수치, 난수 seed·반복 횟수, 모든 후보 lag의 탐색 범위를 확인하지 못했다. 정규화의0 표준편차 처리와 식3·7의 유효 인덱스, 실제 임계값 구현도 확인이 필요하다. 이는 읽은 논문에서 미확인인 항목이며, 존재하지 않는 저자 코드나 추가 자료를 전수 검사했다는 뜻은 아니다.",
+      "record_anchor": "c12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              1,
+              582
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H106-C13",
+      "title": "실험 단위",
+      "claim": "§IV.A는 입력 X·정답 y와 회귀기를 훈련해 오차를 얻는 대신 길이1,000인 합성 오차 시계열7개를 직접 생성한다. 이 구성을 비교한 결과를 실제 예측 성능·모델 재학습 횟수·wall-clock 비용 절감의 실험으로 옮기지 않는다. 연구 코드나 논문의 식을 이번 정리에서 실행하지 않았다.",
+      "record_anchor": "c13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              396,
+              424
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H106-C14",
+      "title": "무변화와 급변 구성",
+      "claim": "e1·e2는 각각 N(0,1)에서 생성한다. e3은 처음500개 N(0,1), 뒤500개 N(10,1), e4는 뒤 구간을 N(100,1)로 둔다. e7은 처음300개 N(0,1), 뒤700개 N(100,1)이다. 따라서 e7과 e3·e4의 구성상 지연은200이다. 논문의 N(평균,1) 표기를 그대로 보존한다.",
+      "record_anchor": "c14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              396,
+              432
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H106-C15",
+      "title": "점진 변화 구성과 그림",
+      "claim": "e5는100개씩10구간의 평균을0부터9까지, e6은0부터90까지10씩 올리고 각 구간은 N(평균,1)에서 생성한다고 쓴다. Fig.2는7개 오차열을 서로 다른 세로축 척도로 보여 준다. 이 정해진 합성 패턴을 정답으로 삼은 기대 행렬과 실제 통신 cell에서 관측해야 할 갱신 필요성을 구별한다.",
+      "record_anchor": "c15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              396,
+              436
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H106-C16",
+      "title": "개별 fed와0.3",
+      "claim": "Table III의 S1–S7 fed는 차례로0.0014,0.0026,0.61,0.62,0.89,0.89,0.54이다. ρ=0.3과 비교하면 앞의2열만 아래이고 나머지5열은 위다. 이 비교는 인쇄된 수치의 산술 점검이며 동일 결과가 나오는지 합성 오차를 다시 생성한 재현이 아니다.",
+      "record_anchor": "c16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              437,
+              466
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            5
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H106-C17",
+      "title": "동시 변화 표의 일치",
+      "claim": "Table I의 기대 l=0 행렬과 Table II의 보고 l=0 행렬은49칸이 모두 같다.1인 위치는 대각 S3–S7의5칸과 (3,4),(4,3),(5,6),(6,5)의4칸이다. 이 합성 예에서 동시 변화의 기대와 맞는다는 결과를 보존하며, 대각 정의와의 불일치도 별도로 남긴다.",
+      "record_anchor": "c17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            4,
+            5
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H106-C18",
+      "title": "지연 양성의 불일치",
+      "claim": "Table I에 적힌 양의 nonzero-lag는 (7,3,200),(7,4,200)의2개다. Table II에는 (5,6)·(6,5)의150·200·250, (7,3)·(7,4)의200·250으로10개가 있다. 인쇄된 양성 집합끼리 비교하면8개가 기대에 추가된다. 전체 후보 lag의 분모가 없으므로 전체 정확도·오탐률로 환산하지 않는다.",
+      "record_anchor": "c18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            4,
+            5
+          ]
+        },
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              468,
+              493
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H106-C19",
+      "title": "성공과 실패를 함께 보존",
+      "claim": "§IV.D–E와 결론은 이 합성 예에서 무변화·동시 변화 구별 결과를 제시하면서 점진 변화 쌍의 잘못된 지연 검출과200·250 지연을 정밀하게 가리지 못한 한계도 인정한다. 시차가 있는지에 대한 단서와 정확한 시차 추정은 다르다. 양호한 l=0 표만 남겨 지연 문제까지 해결한 선행연구로 소개하지 않는다.",
+      "record_anchor": "c19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              468,
+              513
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            6
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H106-C20",
+      "title": "원83의 판단 중 재확인한 부분",
+      "claim": "원83은 식3의 미래 정보, 식6의 비음수 값과 기대0, 표준편차와 λ 표기의 차이,7개 합성 오차와 지연 식별 한계를 지적했다. 이번 PDF·TXT·기존 PNG 대조는 그 역사적 보고의 인용 범위를 직접 확인한 후속이다. 당시 scope에 적힌 열람 문구만으로 현재 원문 검수를 대신하지 않았다.",
+      "record_anchor": "c20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              37,
+              45
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063012",
+          "source_sha256": "ccc13daf878634dcf304f8bc1f2618029fa18e4ca10caf05fb09849f323880f0",
+          "JSON_pointer": "/new_sources_method_reviewed/1"
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H106-C21",
+      "title": "이번 대조에서 추가한 부분",
+      "claim": "대각 정의와 두 표의 불일치, Z-score 명칭과 중심화 항의 차이, 인덱스·수치 설정의 미기재, 표의 전체 전사는 H106의 추가 대조다. 이를 원83이 당시 이미 확인한 내용으로 소급하지 않는다. 해석과 관측 위치를 남겨 이후 코드·추가 자료가 확보되면 수정할 수 있게 한다.",
+      "record_anchor": "c21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              37,
+              45
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H106-C22",
+      "title": "현재 연구에서 다시 쓸 조건",
+      "claim": "이 논문은 예측 오차의 동시·지연 변화 관계를 살펴본 선행연구로 연결할 수 있다. 원83의 RCTL 결과를 clustering에 쓰지 않는 조건에서는 RCTL 오차로 만든 관계를 그대로 적용할 수 없다. Tab 오차로 바꾼다면 온라인 이용 가능한 정보와 명시된 경계·임계값, 관측 가능한 RCTL 갱신 실익·품질·비용의 연결을 따로 입증해야 한다. 이 논문은 그 연결의 실증 근거를 제공하지 않는다.",
+      "record_anchor": "c22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              37,
+              45
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              195,
+              215
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              396,
+              424
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            2,
+            5,
+            6
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H106-C23",
+      "title": "독해와 팀 접근",
+      "claim": "고정 PDF6쪽의 본문·참고문헌·2그림·3표·8수식, 저장 TXT582행, 기존 PNG2개를 읽었다. 한 논문의 본문2·이미지2그룹이며 동일8경로·새 렌더6장·서지 조회·파생 검수 자료와 기존2자료 재참조는 추가0이다. 원문을 재배포하는 대신 해시·공식 DOI·기관 공개본 링크와 위치별 해석을 제공한다.",
+      "record_anchor": "c23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              1,
+              582
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "source_id": "SRC-0063006",
+          "source_sha256": "d0b84185b3f57de085184cae98b9f3f4d0e3574c641cda31bad314246e3a6dda",
+          "image_scope": "full_image"
+        },
+        {
+          "source_id": "SRC-0063007",
+          "source_sha256": "6fe525d145cf3e4b1028b4edda1ae5709e4a6352a7a64031c4d0e2d2b9e92695",
+          "image_scope": "full_image"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H106-C24",
+      "title": "남은 원83과 전체 범위",
+      "claim": "H105의 후속14그룹에서 이번 FDA4그룹을 제외하면 LNN4표현물, 저장 web·검색4응답, snapshot25 고유 연혁2그룹이 남는다. 참고문헌21개의 목록을 읽은 것을 인용된 논문 전문의 독해로 세지 않는다. 원84 이후·이전 미완독·모든 고유 개정본·전체 실패와 비용 통합을 포함한 연구 정리 Goal은 계속 진행한다.",
+      "record_anchor": "c24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063005",
+          "source_sha256": "05ac8fa588a7cdb71df4e66c0d2ddf200438a0b95adb8ffb0fcca1ede2cfd7f7",
+          "line_ranges": [
+            [
+              514,
+              582
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063004",
+          "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+          "PDF_pages": [
+            6
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "archive_evidence": [
+        "../evidence/0105-joint-update-cost/packet-coverage.json",
+        "../evidence/0106-fda/packet-coverage.json"
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

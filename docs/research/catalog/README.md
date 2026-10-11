@@ -266,3 +266,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H104 출처](../sources/history-104.md) · [목록](history-104-sources.jsonl). 새 후보표·누적일지 전체2개와 기존2판본 재참조를 구별한다. 29개 연혁/19개 결정 링크와 두 판본의 공통행은 새 실행이나 추가 독해 파일 수가 아니다.
 
 [H105 출처](../sources/history-105.md) · [목록](history-105-sources.jsonl). 원83 중심8그룹(텍스트5·전체JSON3), 기존4재참조, 후속14그룹을 구별한다.16별칭과 snapshot25의 24사본의 해시는 독해 수와 별도다.
+
+[H106 출처](../sources/history-106.md) · [목록](history-106-sources.jsonl). FDA 한 논문의 PDF·TXT2본문과 PNG2이미지, 동일8경로, 기존2자료 재참조를 구별한다.

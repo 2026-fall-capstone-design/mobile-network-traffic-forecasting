@@ -1,0 +1,157 @@
+{
+  "batch_id": "history-106",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T08:54:04.807341+00:00",
+  "claims_checked": 24,
+  "checks": [
+    {
+      "check_id": "H106-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "finding": "고정 판본·서지·joint distribution·시차 방향·수동 대각1과 Table I/II의0 불일치를 재독했다."
+    },
+    {
+      "check_id": "H106-SP02",
+      "claims": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "finding": "식1–7과 Fig.1을 재독했다. 중심화 없음·미래 정보·t=0 경계·logistic·pair 절댓값·t+l 경계의 미기재를 구별했다."
+    },
+    {
+      "check_id": "H106-SP03",
+      "claims": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "finding": "비음수 기대0의 논리와 CLT/문장/λ 표기를 픽셀로 재대조했다. 식8의 i≠j를 초안에 명시하고 미확인 설정을 임의 보충하지 않았다."
+    },
+    {
+      "check_id": "H106-SP04",
+      "claims": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "finding": "실제 회귀기 없는7합성오차·길이1000·구간/정규분포 표기·Fig.2 축·Table III7값과ρ를 확인했다. 원문에 없는 명시적 분산 설명처럼 보일 문장을 바꿨다."
+    },
+    {
+      "check_id": "H106-SP05",
+      "claims": [
+        17,
+        18,
+        19
+      ],
+      "finding": "Table I/II98개l=0칸과 양의지연2/10개를 새로 전사해 첫 전사와 대조했다. 인쇄된 양성8추가를 확인하고 전체 오탐률을 계산하지 않았다. 저자 자신의 지연 한계 설명과 일치한다."
+    },
+    {
+      "check_id": "H106-SP06",
+      "claims": [
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "finding": "원83의37–45행·scope FDA pointer를 다시 읽었다. 당시 판단·이번 추가 관측·RCTL 적용 공백·표현물 중복·남은10그룹·전체Goal미완료를 구별했다."
+    }
+  ],
+  "initial_draft_record_sha256": "dc598dc57b4df9ad784c8fd8c21d3a43123360f63512d7f7ccbdbf08d6f73208",
+  "corrected_record_sha256": "c795af84b0e1baeb516a39dcbe6cb1bf7857b2578c89c269d8e919683a4e621e",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0063005": [
+      [
+        1,
+        582
+      ]
+    ],
+    "SRC-0022048": [
+      [
+        37,
+        45
+      ]
+    ]
+  },
+  "actual_postdraft_JSON_pointers": {
+    "SRC-0063012": [
+      "/new_sources_method_reviewed/1"
+    ]
+  },
+  "visual_reread": {
+    "source_id": "SRC-0063004",
+    "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+    "PDF_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "figures": [
+      1,
+      2
+    ],
+    "tables": [
+      "I",
+      "II",
+      "III"
+    ],
+    "equations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "saved_images": [
+      "SRC-0063006",
+      "SRC-0063007"
+    ],
+    "all_actual_pixels_reread": true,
+    "independent_reviewer": false
+  },
+  "corrections": [
+    {
+      "claim_id": "H106-C01",
+      "before": "검토 대상은 Song·Zhang·Haiyan Lu·Jie Lu의 A Fuzzy Drift Correlation Matrix for Multiple Data Stream Regression, FUZZ-IEEE2020, DOI10.1109/FUZZ48607.2020.9177566의6쪽 논문이다. 표제와 DOI 서지를 대조했다. 본문에는 FDV·FDA·fuzzy variance·fuzzy-driance가 혼용되므로 이름만 보고 여러 실험으로 세지 않는다. 원83 계획의 다른 검색 제목을 이 논문 제목과 자동으로 같다고 처리하지 않는다.",
+      "after": "검토 대상은 Song·Zhang·Haiyan Lu·Jie Lu의 A Fuzzy Drift Correlation Matrix for Multiple Data Stream Regression, FUZZ-IEEE2020, DOI10.1109/FUZZ48607.2020.9177566의6쪽 논문이다. 표제와 DOI 서지를 대조했다. 본문에는 FDV·FDA·fuzzy variance·fuzzy-driance가 혼용되므로 이름만 보고 여러 실험으로 세지 않는다.",
+      "reason": "제목 차이는 기존 H105-C11에서 검수했다. 이번 주장의 직접 원문 좌표 범위에 맞춰 중복 문장을 뺐다."
+    },
+    {
+      "claim_id": "H106-C11",
+      "before": "식8은 min(fed_ii,fed_jj)>ρ와 fed_ij(l)<λ를 모두 만족할 때1, 아니면0이다. 실험에서 ρ=0.3을 보고한다. 높은 개별 변화 점수와 낮은 pair 차이를 함께 요구하는 구조지만, 앞선 수식의 경계·임계값 문제를 해결하는 별도 검증은 아니다.",
+      "after": "식8은 i≠j에 대해 min(fed_ii,fed_jj)>ρ와 fed_ij(l)<λ를 모두 만족할 때1, 아니면0이다. 실험에서 ρ=0.3을 보고한다. 높은 개별 변화 점수와 낮은 pair 차이를 함께 요구하는 구조지만, 앞선 수식의 경계·임계값 문제를 해결하는 별도 검증은 아니다.",
+      "reason": "직접 대조한 범위로 한정하고 식8의 비대각 조건·원문 정규분포 표기를 명확히 했다."
+    },
+    {
+      "claim_id": "H106-C14",
+      "before": "e1·e2는 각각 N(0,1)에서 생성한다. e3은 처음500개 N(0,1), 뒤500개 N(10,1), e4는 뒤 구간을 N(100,1)로 둔다. e7은 처음300개 N(0,1), 뒤700개 N(100,1)이다. 따라서 e7과 e3·e4의 구성상 지연은200이다. 정규분포 두 번째 매개변수는 논문 설명의 분산1이다.",
+      "after": "e1·e2는 각각 N(0,1)에서 생성한다. e3은 처음500개 N(0,1), 뒤500개 N(10,1), e4는 뒤 구간을 N(100,1)로 둔다. e7은 처음300개 N(0,1), 뒤700개 N(100,1)이다. 따라서 e7과 e3·e4의 구성상 지연은200이다. 논문의 N(평균,1) 표기를 그대로 보존한다.",
+      "reason": "직접 대조한 범위로 한정하고 식8의 비대각 조건·원문 정규분포 표기를 명확히 했다."
+    },
+    {
+      "claim_id": "H106-C15",
+      "before": "e5는100개씩10구간의 평균을0부터9까지, e6은0부터90까지10씩 올리고 각 구간의 분산은1로 둔다. Fig.2는7개 오차열을 서로 다른 세로축 척도로 보여 준다. 이 정해진 합성 패턴을 정답으로 삼은 기대 행렬과 실제 통신 cell에서 관측해야 할 갱신 필요성을 구별한다.",
+      "after": "e5는100개씩10구간의 평균을0부터9까지, e6은0부터90까지10씩 올리고 각 구간은 N(평균,1)에서 생성한다고 쓴다. Fig.2는7개 오차열을 서로 다른 세로축 척도로 보여 준다. 이 정해진 합성 패턴을 정답으로 삼은 기대 행렬과 실제 통신 cell에서 관측해야 할 갱신 필요성을 구별한다.",
+      "reason": "직접 대조한 범위로 한정하고 식8의 비대각 조건·원문 정규분포 표기를 명확히 했다."
+    }
+  ],
+  "all_claim_semantic_locations_actually_reread": true,
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "new_model_runs": 0,
+  "coverage_increment_applied": false
+}
