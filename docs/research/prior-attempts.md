@@ -461,3 +461,5 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 주파수 관계·시간 expert를 이용한 channel 선택
 
 [DUET 검토](records/0094-duet-literature-review.md)를 먼저 확인한다. noisy Top-k expert와 학습 진폭 거리/확률 mask는 예측기 내부의 관계다. 제안에는 고정 partition·소속점수·독립전체fit 중 무엇이 달라지는지, M/k/γ와 평가 선택/난수/전체 비용을 명시한다. 평균 우세만으로 모든 horizon·expert수·입력길이의 개선을 가정하지 않는다.
+
+[DUET 저장 코드](records/0095-duet-code-review.md)는 sparse expert dispatch와 dense channel 거리/attention을 구분한다. mask=0의 의미·평가 시 sampling·입력 정규화·k/설정·Drop Last와 사전 계산 비용을 재사용 전에 확인한다. 정적 차이가 성능에 미치는 영향은 별도 연구 질문이며 기존 실험 실패로 인용하지 않는다.

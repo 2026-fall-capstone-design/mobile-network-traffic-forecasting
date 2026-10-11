@@ -1,0 +1,862 @@
+{
+  "commit": "dcc6e6780a9138731b64b9b5398a94a1d97033f0",
+  "commit_date": "2026-05-12T09:56:21Z",
+  "commit_message": "add more baselines and scripts",
+  "root_tree": "d9988e8928c8541c108a00df55b31848fc0055d1",
+  "response_sha_is_commit": true,
+  "trees_reconstructed": [
+    {
+      "path": "/",
+      "sha": "d9988e8928c8541c108a00df55b31848fc0055d1",
+      "children": 8
+    },
+    {
+      "path": "config",
+      "sha": "250d058238677a9380d2e583f878b1226a56203e",
+      "children": 1
+    },
+    {
+      "path": "figures",
+      "sha": "b8c84a92a81bb4ab244ba3da8cf5d8725b212060",
+      "children": 8
+    },
+    {
+      "path": "scripts",
+      "sha": "1176b8d8ee525fa93cac6250ec656190d32a2cbd",
+      "children": 3
+    },
+    {
+      "path": "scripts/multivariate_forecast",
+      "sha": "3784b5b6b91af2dc977535471048dab2129b4e95",
+      "children": 26
+    },
+    {
+      "path": "scripts/multivariate_forecast/AQShunyi_script",
+      "sha": "1c8522fd3a4c509e1c5dd99460ee9043016ca980",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/AQWan_script",
+      "sha": "19bd98ea9f849c17dc9e34e19700010557c56cf1",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/Covid-19_script",
+      "sha": "37567fb3b0b03a2957fe3c37e8a71f1613ff1cd8",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/CzeLan_script",
+      "sha": "44f647d5881e33fb92d7da5cdfc39ae858b4ee87",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/ETTh1_script",
+      "sha": "ca1a501e727a4a6b3e5fb0c4324420a6a69ea335",
+      "children": 34
+    },
+    {
+      "path": "scripts/multivariate_forecast/ETTh2_script",
+      "sha": "584dbcdad59e8714281b007a5c12aa0a75896d75",
+      "children": 28
+    },
+    {
+      "path": "scripts/multivariate_forecast/ETTm1_script",
+      "sha": "1ece32b9511e7200bb4d278869aef2d08b20ccf8",
+      "children": 28
+    },
+    {
+      "path": "scripts/multivariate_forecast/ETTm2_script",
+      "sha": "8e8ba157b07bf5b82f45e0098004ec56bf2a1190",
+      "children": 28
+    },
+    {
+      "path": "scripts/multivariate_forecast/Electricity_script",
+      "sha": "4fa779ef307a89e0af3174771e8b9cf01effb59a",
+      "children": 28
+    },
+    {
+      "path": "scripts/multivariate_forecast/Exchange_script",
+      "sha": "52ee73fcbdd6cb95dcba569d2079787d38952d34",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/FRED-MD_script",
+      "sha": "65e6cdba57a4e9504efe7075b90fc41760a62df9",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/ILI_script",
+      "sha": "176e83ce04a342be4c4f9fe18bf0798d5610bfdc",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/METR-LA_script",
+      "sha": "07a96f03740dcd6f2b07e3996335baac62596f75",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/NASDAQ_script",
+      "sha": "454d5c28531c223d20b52eca156cf118e4746051",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/NN5_script",
+      "sha": "329aeb9ac46e33078dc7eec3f5e09c8fc65266f4",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/NYSE_script",
+      "sha": "ee0908ddf317d291135f7e78b0f77eaf3e203265",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/PEMS-BAY_script",
+      "sha": "8602a0abc205ef06bc61eade7125c57947f1f5d0",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/PEMS04_script",
+      "sha": "de72add00b90dc9103b826dea3062c7febaf5e86",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/PEMS08_script",
+      "sha": "aeffcfe4d202cc9a18909357213bc243b9e02b3d",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/Solar_script",
+      "sha": "4eeba3728890ce3e37522f712e216de8e0e50d49",
+      "children": 28
+    },
+    {
+      "path": "scripts/multivariate_forecast/Traffic_script",
+      "sha": "ca580091bb4273d99694cc2eaab41ee7d5f2f305",
+      "children": 29
+    },
+    {
+      "path": "scripts/multivariate_forecast/Weather_script",
+      "sha": "bb2274815d4c272e2078572c6099153de8f6d641",
+      "children": 29
+    },
+    {
+      "path": "scripts/multivariate_forecast/Wike2000_script",
+      "sha": "f38e69a93d11ab14c213fa076b06e1617d6347e6",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/Wind_script",
+      "sha": "c3b5bda08d7d88e1f9d0074bd68b23373cd6bd79",
+      "children": 27
+    },
+    {
+      "path": "scripts/multivariate_forecast/ZafNoo_script",
+      "sha": "8d0e843f0eaad52039e2434f5417027e9f0a7acb",
+      "children": 27
+    },
+    {
+      "path": "ts_benchmark",
+      "sha": "fdff13be991162eaf53b511de9c55251734a869c",
+      "children": 10
+    },
+    {
+      "path": "ts_benchmark/baselines",
+      "sha": "3c6d6bc6ec3a746097835aecc341762667820b21",
+      "children": 27
+    },
+    {
+      "path": "ts_benchmark/baselines/amplifier",
+      "sha": "2dfde06304eefd255b793447895808152005649f",
+      "children": 4
+    },
+    {
+      "path": "ts_benchmark/baselines/amplifier/layers",
+      "sha": "7df2defc9d8dbd0b38b181a87b2c3c51367bc744",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/amplifier/models",
+      "sha": "fcd6828e961641e9a55489f1d05e70f3366d6b9b",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/cmos",
+      "sha": "bc92db164bdd1b76398e68421fea33cae020adf8",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/baselines/cmos/model",
+      "sha": "10b975094b484123af8567c14fbe44bc245a9947",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/crosslinear",
+      "sha": "7c3a0e0200d4621267f17d50ff8dc5cd1b54b31b",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/baselines/crosslinear/model",
+      "sha": "56cdfc1494f0d4e28200e9e8550751b9c7093622",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/darts",
+      "sha": "6fe59e538c60f8435bfd293e207f3a1d0b1d631e",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/dtaf",
+      "sha": "d5115364e338afe6f21872389e6f02cc403d6a3c",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/dtaf/layer",
+      "sha": "f130b1185396808d218e5d6ec0e04757df4a1480",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/dtaf/model",
+      "sha": "e45f821ee08903348695c82af0c4be25b4383756",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/dtaf/utils",
+      "sha": "ac9b9f5e0cfe98588e0adf8a44d37a4a8e6ca45d",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/duet",
+      "sha": "0bb3f2fc1b460ca82ffb4739842ac9058fd39044",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/duet/layers",
+      "sha": "083ff101d7af1f69d80d74c4af253fdc0696ba19",
+      "children": 9
+    },
+    {
+      "path": "ts_benchmark/baselines/duet/models",
+      "sha": "62787d3f7c7fb892e0ebad9831a6209a135dca8e",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/duet/utils",
+      "sha": "fcd099f8b84fea7ba727c4901aa5f77559871d5d",
+      "children": 6
+    },
+    {
+      "path": "ts_benchmark/baselines/fits",
+      "sha": "3b7060d833a5ce8fed413b9723eed011cc50ee39",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/baselines/hdmixer",
+      "sha": "cb83446650ab7b538e4c4e70c42d9d1ab2069775",
+      "children": 4
+    },
+    {
+      "path": "ts_benchmark/baselines/hdmixer/layers",
+      "sha": "6fef71f55f850c55abc24734db5af07751b1930f",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/baselines/hdmixer/models",
+      "sha": "a968d395525595d92fbccecd7bb3c477c04ac7d3",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/merlion",
+      "sha": "431e3c2247992cb7b00f4eeb4a2d9759a9b1e74c",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/moderntcn",
+      "sha": "14921e52719751a65a47f34a7f513404d46029f1",
+      "children": 4
+    },
+    {
+      "path": "ts_benchmark/baselines/moderntcn/layers",
+      "sha": "ca03edac9a1e337fc4a92ac55f566c590608b905",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/moderntcn/models",
+      "sha": "72cc0a38a6e6afac395eabfaa4fb6c6aa181e42d",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/patchmlp",
+      "sha": "2153b23ff82d90c90664d2984ffb5bb547d16d56",
+      "children": 4
+    },
+    {
+      "path": "ts_benchmark/baselines/patchmlp/layers",
+      "sha": "1ae4341e0b44274c80b4253d3ad92324ea4359d4",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/patchmlp/models",
+      "sha": "e2d36bc97bcfd90d1cbf96b94b7eb81a5b065e2f",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/pathformer",
+      "sha": "429fbcab16de8ace0c8fd2a1072a3ae71f400351",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/pathformer/layers",
+      "sha": "521d7b438e0ecdaddebd43ecdddbe85956978544",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/pathformer/models",
+      "sha": "519ca8d16f220c758feef477a0e7eaa55ad047ad",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/pathformer/utils",
+      "sha": "4bbc67c8e510937dbd3c635db253d4538c331a2b",
+      "children": 7
+    },
+    {
+      "path": "ts_benchmark/baselines/pdf",
+      "sha": "0a4cfc5138adb061dddbd8cba5bb089859f0e74e",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/pdf/layers",
+      "sha": "e1fa6674e3222d38f9e09fb86161aaeee557a262",
+      "children": 4
+    },
+    {
+      "path": "ts_benchmark/baselines/pdf/models",
+      "sha": "89e752a24bbfec06933cc6719513d8910e373e99",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/pdf/utils",
+      "sha": "b4752f3dea4bbfd40561412a7073c992945ee3a9",
+      "children": 7
+    },
+    {
+      "path": "ts_benchmark/baselines/self_impl",
+      "sha": "02e81ab5b83a197926e7044600b95e4dd5453844",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/self_impl/VAR",
+      "sha": "d02281d0b505b6aea15053dfb398f89fcf1873eb",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/sparsetsf",
+      "sha": "e76be72f51c01e8dc6267e8fb6a39cf317b7e44c",
+      "children": 4
+    },
+    {
+      "path": "ts_benchmark/baselines/sparsetsf/layers",
+      "sha": "5111cb062c2bfd59888ec137df75c6efb4956729",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/sparsetsf/models",
+      "sha": "f5e7e849a1ac4c6d412d74f85f411b3e0f9e1f5c",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/srsnet",
+      "sha": "38cc0fa47dc920dc3c4247c7cb5ff0926a26ac7c",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/srsnet/layers",
+      "sha": "696631f1e5ab623a57a8bb01356b8255e83d2b2a",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/baselines/srsnet/models",
+      "sha": "5f388ea6d280ec5c569d94650471f4a3088cb5a8",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/srsnet/utils",
+      "sha": "c3137f58121e7d624e3679b2faca6e4dc1c6c731",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/tag_csv",
+      "sha": "816b10492316e2acb3c6e5f0f728765927f3f646",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/baselines/time_series_library",
+      "sha": "22160199461d300c8b4b5bfc9933baddc75dc314",
+      "children": 6
+    },
+    {
+      "path": "ts_benchmark/baselines/time_series_library/layers",
+      "sha": "1c653f5661b045fe51d7807d20c507daf72be683",
+      "children": 13
+    },
+    {
+      "path": "ts_benchmark/baselines/time_series_library/models",
+      "sha": "9861cf4dd01e24b3f74d36807923070b6b481c9c",
+      "children": 23
+    },
+    {
+      "path": "ts_benchmark/baselines/time_series_library/patchs",
+      "sha": "46d4580423b5917eae04c677dc85403666c99e0a",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/baselines/time_series_library/utils",
+      "sha": "9827a09a102aa98967f6f1092c7dd30f2ad8da45",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/timebase",
+      "sha": "e88e9f2e1d045ea96d40900c1f7f3c6ac1351ab6",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/baselines/timebase/model",
+      "sha": "afcec00b7b3f788e565e8041fd93d4194c57ac10",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/timebridge",
+      "sha": "b91f279effc7ba032668c6acdc40431054195c8f",
+      "children": 4
+    },
+    {
+      "path": "ts_benchmark/baselines/timebridge/layers",
+      "sha": "676a9a23fa1e440a1cc9eb13b1fe750b63d4bba3",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/timebridge/models",
+      "sha": "1df9061e79882c47520728e50f464cab3504ed1f",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/timefilter",
+      "sha": "499163c65c5ed86702ed3a29a6dc5bd35bde0e23",
+      "children": 4
+    },
+    {
+      "path": "ts_benchmark/baselines/timefilter/layers",
+      "sha": "8fafe471d6249ca68babe5428fb225dab6d07e85",
+      "children": 4
+    },
+    {
+      "path": "ts_benchmark/baselines/timefilter/models",
+      "sha": "917761b6c8e5ffe4c7c801187ce9de46bedac6df",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/baselines/timekan",
+      "sha": "32104bcb500e7452dfe556432093cde4250ad333",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/timekan/layers",
+      "sha": "f89546ac4e62925c383bd0ff3b6e554587d97399",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/timekan/models",
+      "sha": "8c65b6cb75a09f6c277656f053d1d775b4644102",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/timekan/utils",
+      "sha": "a8a55a9da480ad1b9bc0c632522ff54f06871f89",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/timeperceiver",
+      "sha": "b9e1ccd0c8b00eab62e691dfacf14bf42d6be6b5",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/baselines/timeperceiver/model",
+      "sha": "67c05080369ea8e275e3baf019adb073f6003e23",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/xpatch",
+      "sha": "fb37be76b45f7703beed92c61259541f7fe931db",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/baselines/xpatch/layers",
+      "sha": "c8b1a535d73fd84ef093ccb71d884dbda71511aa",
+      "children": 7
+    },
+    {
+      "path": "ts_benchmark/baselines/xpatch/models",
+      "sha": "53c14ac9f12f38d614b503e546ee7b02d40b9f86",
+      "children": 1
+    },
+    {
+      "path": "ts_benchmark/baselines/xpatch/utils",
+      "sha": "d5ade0261b81025a6b492af5bea4a799ae42bd28",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/common",
+      "sha": "ddcb08e1dbe82a483b1926e0b2e1b62ffcddc262",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/data",
+      "sha": "c070097e95115460d9af5b2475f0507df6c01c0d",
+      "children": 8
+    },
+    {
+      "path": "ts_benchmark/data/suites",
+      "sha": "a68a9c64e6f5afde4804bd1ed6f60ad044c1a455",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/evaluation",
+      "sha": "3d32765d253e4883e053d0361e1b19fc759a32b2",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/evaluation/metrics",
+      "sha": "2247eae792ff725f9f2527c5218d20a5f3085452",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/evaluation/strategy",
+      "sha": "6d4115ced632c4d1a3bc79223b881fad0e2283fa",
+      "children": 6
+    },
+    {
+      "path": "ts_benchmark/models",
+      "sha": "a6421e051f8f2953b77d520819ae52ba839f8969",
+      "children": 3
+    },
+    {
+      "path": "ts_benchmark/report",
+      "sha": "cff97a2c65fd787ad57e1a7165ab9a799edad2f6",
+      "children": 4
+    },
+    {
+      "path": "ts_benchmark/report/report_dash",
+      "sha": "b093f12714181797e329708598f9d392630ce68f",
+      "children": 5
+    },
+    {
+      "path": "ts_benchmark/report/report_dash/pages",
+      "sha": "e36a894793cb0ab0891df55a4f7eb655c0833efc",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/report/utils",
+      "sha": "3ac77d90f7783e43753fc2e6425fc029fab41610",
+      "children": 2
+    },
+    {
+      "path": "ts_benchmark/utils",
+      "sha": "63507f58a4e9b9121f4431a3ed209b5c88089bd8",
+      "children": 8
+    },
+    {
+      "path": "ts_benchmark/utils/parallel",
+      "sha": "ee9ac878f55703770d806ec83dc94dbbf51bdb1c",
+      "children": 4
+    }
+  ],
+  "source_blobs": [
+    {
+      "source_id": "SRC-0062863",
+      "repo_path": "ts_benchmark/baselines/duet/duet.py",
+      "git_blob_sha1": "c9f43919435ffcc85991e57a21e56e6e591a1b0d",
+      "sha256": "fc26a8d6d4b53d342219b33face13c551115aada57611fdbbfac7b582fc9b46b",
+      "size_bytes": 1789
+    },
+    {
+      "source_id": "SRC-0062864",
+      "repo_path": "ts_benchmark/baselines/duet/layers/SelfAttention_Family.py",
+      "git_blob_sha1": "4f6468ba3dd1190d75fd8671105edd17c056b4b7",
+      "sha256": "cb1266e7aadee3da2040966029f08e5fe30d391d09f06600480e11e3938172db",
+      "size_bytes": 12348
+    },
+    {
+      "source_id": "SRC-0062865",
+      "repo_path": "ts_benchmark/baselines/duet/models/duet_model.py",
+      "git_blob_sha1": "f5a578158dce7f26b5ce4a2d6a02d2801ffe17ac",
+      "sha256": "840690b13fecdd08fdc4a602f3d700ede940731a29ad0fe1de7830b7bb9b22b7",
+      "size_bytes": 2770
+    },
+    {
+      "source_id": "SRC-0062866",
+      "repo_path": "ts_benchmark/baselines/duet/utils/masked_attention.py",
+      "git_blob_sha1": "9c57f0f4d072e43917276f83c59542379326a4de",
+      "sha256": "edc17a01d813f6847d847b21ac53c9cb090af99e0b4d35c530d588f182bdb57c",
+      "size_bytes": 7143
+    }
+  ],
+  "all_tree_entries_human_read": true,
+  "tree_human_read_scope": "전체1085항목: 5개 비중복 범위, 모든필드 복원 가능한 표시 및 URL 규칙 전체검증",
+  "tree_entries": 1085,
+  "source_code_executed": false,
+  "new_model_runs": 0,
+  "tree_read_ranges": [
+    [
+      1,
+      180
+    ],
+    [
+      181,
+      420
+    ],
+    [
+      421,
+      700
+    ],
+    [
+      701,
+      900
+    ],
+    [
+      901,
+      1085
+    ]
+  ],
+  "tree_reading": {
+    "source_id": "SRC-0062868",
+    "sha256": "bb295c6a168e515c30f21c9933a3a9ecee3c84e001ba2e4794307f563a075216",
+    "full_structured_read": true,
+    "entry_ranges": [
+      [
+        1,
+        180
+      ],
+      [
+        181,
+        420
+      ],
+      [
+        421,
+        700
+      ],
+      [
+        701,
+        900
+      ],
+      [
+        901,
+        1085
+      ]
+    ],
+    "entries": 1085,
+    "types": {
+      "blob": 973,
+      "tree": 112
+    },
+    "modes": {
+      "100644": 935,
+      "040000": 112,
+      "100755": 38
+    },
+    "lossless_display": {
+      "format": "parent header + index/mode-type code/size/full SHA/basename",
+      "url_rule": "https://api.github.com/repos/decisionintelligence/DUET/git/{type}s/{sha}",
+      "all_URLs_verified": true,
+      "all_fields_roundtrip_equal": true,
+      "root_parent": ".",
+      "top_level_keys_read": true
+    },
+    "root_contents": [
+      {
+        "path": ".gitignore",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "aba31a5d5aa7b95c62dc09d680a887043b194a1b",
+        "size": 54,
+        "url": "https://api.github.com/repos/decisionintelligence/DUET/git/blobs/aba31a5d5aa7b95c62dc09d680a887043b194a1b"
+      },
+      {
+        "path": "LICENSE",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7c7ed473c5b33babed512e5ec1c12dccd1647670",
+        "size": 1085,
+        "url": "https://api.github.com/repos/decisionintelligence/DUET/git/blobs/7c7ed473c5b33babed512e5ec1c12dccd1647670"
+      },
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "79f9ee7948086c3d0753e5ac1c4fa26f98eac647",
+        "size": 7818,
+        "url": "https://api.github.com/repos/decisionintelligence/DUET/git/blobs/79f9ee7948086c3d0753e5ac1c4fa26f98eac647"
+      },
+      {
+        "path": "config",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "250d058238677a9380d2e583f878b1226a56203e",
+        "url": "https://api.github.com/repos/decisionintelligence/DUET/git/trees/250d058238677a9380d2e583f878b1226a56203e"
+      },
+      {
+        "path": "figures",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "b8c84a92a81bb4ab244ba3da8cf5d8725b212060",
+        "url": "https://api.github.com/repos/decisionintelligence/DUET/git/trees/b8c84a92a81bb4ab244ba3da8cf5d8725b212060"
+      },
+      {
+        "path": "requirements.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "928edfdd024db693b47ea6620a5bb8a0cf0b5ba2",
+        "size": 263,
+        "url": "https://api.github.com/repos/decisionintelligence/DUET/git/blobs/928edfdd024db693b47ea6620a5bb8a0cf0b5ba2"
+      },
+      {
+        "path": "scripts",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "1176b8d8ee525fa93cac6250ec656190d32a2cbd",
+        "url": "https://api.github.com/repos/decisionintelligence/DUET/git/trees/1176b8d8ee525fa93cac6250ec656190d32a2cbd"
+      },
+      {
+        "path": "ts_benchmark",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "fdff13be991162eaf53b511de9c55251734a869c",
+        "url": "https://api.github.com/repos/decisionintelligence/DUET/git/trees/fdff13be991162eaf53b511de9c55251734a869c"
+      }
+    ],
+    "limits": "Git metadata 전체를 읽은 것이며, 미취득 blob 본문·그림·데이터·실험 결과를 읽거나 실행한 것이 아니다."
+  },
+  "verification_supplements": [
+    {
+      "supplement_id": "H095-S01",
+      "repo_path": "ts_benchmark/baselines/duet/layers/linear_extractor_cluster.py",
+      "sha256": "46ec8d4986e5579ce93066a205f4986ec2bfbc90a7fc221cd6a29ef0726754e1",
+      "git_blob_sha1": "efb7b92c9357b957f98b31d0f8fd0787707634bb",
+      "size_bytes": 12493,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/ts_benchmark/baselines/duet/layers/linear_extractor_cluster.py"
+    },
+    {
+      "supplement_id": "H095-S02",
+      "repo_path": "ts_benchmark/baselines/duet/layers/distributional_router_encoder.py",
+      "sha256": "4c07daaf45ece7df1e007c224513df7d6a5eba455b59dd49a1a5caa0c5bcd76c",
+      "git_blob_sha1": "6b7d9154357877cb12319d565767985171b02c26",
+      "size_bytes": 604,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/ts_benchmark/baselines/duet/layers/distributional_router_encoder.py"
+    },
+    {
+      "supplement_id": "H095-S03",
+      "repo_path": "ts_benchmark/baselines/duet/layers/linear_pattern_extractor.py",
+      "sha256": "558becad06d912ebe8012f71b348b58e677c0acfcd0856ff48fdb42025fa3f0e",
+      "git_blob_sha1": "c1f73df495c7da0254da64fa2f4d169022051c3a",
+      "size_bytes": 3204,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/ts_benchmark/baselines/duet/layers/linear_pattern_extractor.py"
+    },
+    {
+      "supplement_id": "H095-S04",
+      "repo_path": "ts_benchmark/baselines/duet/layers/RevIN.py",
+      "sha256": "965a2dab1a9d8f36009073800030276022633d0b89c2aa201c18444d24b8ec49",
+      "git_blob_sha1": "6c1bfb77fb139e598bef518277cb339e6d2e2a27",
+      "size_bytes": 2145,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/ts_benchmark/baselines/duet/layers/RevIN.py"
+    },
+    {
+      "supplement_id": "H095-S05",
+      "repo_path": "ts_benchmark/baselines/deep_forecasting_model_base.py",
+      "sha256": "045b82957e9b6ccada3d2c00e7e2660e743f9afcb88e51c55b5b9600e2742e1d",
+      "git_blob_sha1": "fb06c5850990fe6e571a5e50ebac4822768d4087",
+      "size_bytes": 29080,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/ts_benchmark/baselines/deep_forecasting_model_base.py"
+    },
+    {
+      "supplement_id": "H095-S06",
+      "repo_path": "config/rolling_forecast_config.json",
+      "sha256": "395169bda4b41d0bbf5631a8b57ea346f145b26596bcdf32eb31fb6d1f0ccb09",
+      "git_blob_sha1": "0bc2db2c3a3781c87742fc48871b9e77c5d14816",
+      "size_bytes": 1432,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/config/rolling_forecast_config.json"
+    },
+    {
+      "supplement_id": "H095-S07",
+      "repo_path": "requirements.txt",
+      "sha256": "74ac70e5b034e683fdf29094f5e1edfa5e8a06b6ee8ad1b2b22286c59d110a3c",
+      "git_blob_sha1": "928edfdd024db693b47ea6620a5bb8a0cf0b5ba2",
+      "size_bytes": 263,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/requirements.txt"
+    },
+    {
+      "supplement_id": "H095-S08",
+      "repo_path": "README.md",
+      "sha256": "0dbd93cd8d440bfa1d5f571bbfb21bd80695fab0cabba55886eb9ec3c4358943",
+      "git_blob_sha1": "79f9ee7948086c3d0753e5ac1c4fa26f98eac647",
+      "size_bytes": 7818,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/README.md"
+    },
+    {
+      "supplement_id": "H095-S09",
+      "repo_path": "ts_benchmark/baselines/duet/__init__.py",
+      "sha256": "c43ec25f878da9ac296a9a14be464328c202f60df1e0c8366eba6676c1ab1959",
+      "git_blob_sha1": "373adff918bd7869868fe8e918ec1e3dab45cdb9",
+      "size_bytes": 70,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/ts_benchmark/baselines/duet/__init__.py"
+    },
+    {
+      "supplement_id": "H095-S10",
+      "repo_path": "ts_benchmark/baselines/utils.py",
+      "sha256": "f1f6a8f957797db64be11fdc7cde2083b21cb4b40d09c63c1f231d4702b50b46",
+      "git_blob_sha1": "2acecffb70a327b14d91126d9e1f62124083623e",
+      "size_bytes": 12502,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/ts_benchmark/baselines/utils.py"
+    },
+    {
+      "supplement_id": "H095-S11",
+      "repo_path": "ts_benchmark/baselines/duet/layers/Autoformer_EncDec.py",
+      "sha256": "f3cda7c36b43e4a959f9f6c6a69487aaa7338e6d4dd8ce7045484ab67adc84a6",
+      "git_blob_sha1": "92391d70ac39b33a16848372cd6b687332365213",
+      "size_bytes": 7065,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/ts_benchmark/baselines/duet/layers/Autoformer_EncDec.py"
+    },
+    {
+      "supplement_id": "H095-S12",
+      "repo_path": "scripts/multivariate_forecast/ETTh1_script/DUET.sh",
+      "sha256": "117ef2d37ee54fa5a0e0f6f875692e2c4827ca95df61b416a2a580918021b1b5",
+      "git_blob_sha1": "95d1abdb8e57f2c52360ad4b20a994fdb9c983a0",
+      "size_bytes": 2341,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/scripts/multivariate_forecast/ETTh1_script/DUET.sh"
+    },
+    {
+      "supplement_id": "H095-S13",
+      "repo_path": "scripts/multivariate_forecast/ILI_script/DUET.sh",
+      "sha256": "4c09f033b1228d396cfd1f864eb3ef6460e4e3367b8621d4bc3a48122196c0d1",
+      "git_blob_sha1": "3f65e76013b6f26b9c02b112632a3a55bf49b49c",
+      "size_bytes": 2307,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/scripts/multivariate_forecast/ILI_script/DUET.sh"
+    },
+    {
+      "supplement_id": "H095-S14",
+      "repo_path": "scripts/multivariate_forecast/Traffic_script/DUET.sh",
+      "sha256": "d83c4bad84995ac1fa3031897d33be7947530172c014d36c657d76cf9139ba2b",
+      "git_blob_sha1": "dff1dddf185b511e6053e07ae1267d28d323b4c7",
+      "size_bytes": 2431,
+      "official_url": "https://github.com/decisionintelligence/DUET/blob/dcc6e6780a9138731b64b9b5398a94a1d97033f0/scripts/multivariate_forecast/Traffic_script/DUET.sh"
+    }
+  ],
+  "scope": "원코드 blob4·보충 blob14 및 root 포함113tree의 정적 식별 검증. 실행/전체 저장소 본문 독해와 구분.",
+  "postdraft_mechanical_check": {
+    "trees_reconstructed": 113,
+    "original_code_blobs": 4,
+    "supplement_blobs": 14,
+    "root_tree": "d9988e8928c8541c108a00df55b31848fc0055d1",
+    "success": true,
+    "source_code_executed": false
+  }
+}
