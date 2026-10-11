@@ -1,0 +1,54 @@
+{
+  "batch_id": "history-107",
+  "source_id": "SRC-0063009",
+  "source_sha256": "94208af1e52a0239f0ff8aef2a22665ef45332b043f0df434b2e1390f9bebc04",
+  "equation": 1,
+  "PDF_page": 3,
+  "expression": "dx(t)/dt = -[1/tau + f(x(t),I(t),theta)] x(t) + f(x(t),I(t),theta) A",
+  "interpretation": "x는 neuron 상태, I는 입력, tau는 안정화 상수, f는 theta로 매개화된 신경망, A는 bias라는 본문 설명이다. 상태의 연속시간 변화와 추가 가중치 훈련을 구별한다.",
+  "implementation_unconfirmed": [
+    "수치 solver",
+    "tau 실제 값",
+    "학습·적분 코드"
+  ],
+  "postdraft_visual_check_complete": true,
+  "source_equations_executed": false,
+  "independent_reproduction": false,
+  "postdraft_visual_check": {
+    "source_id": "SRC-0063009",
+    "source_sha256": "94208af1e52a0239f0ff8aef2a22665ef45332b043f0df434b2e1390f9bebc04",
+    "PDF_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "additional_300dpi_PDF_pages": [
+      4
+    ],
+    "figures": [
+      1,
+      2,
+      3
+    ],
+    "tables": [
+      "I"
+    ],
+    "equations": [
+      1
+    ],
+    "saved_images": [
+      "SRC-0063011"
+    ],
+    "HTML_inline_SVG_panels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "all_actual_pixels_reread": true,
+    "independent_reviewer": false
+  }
+}
