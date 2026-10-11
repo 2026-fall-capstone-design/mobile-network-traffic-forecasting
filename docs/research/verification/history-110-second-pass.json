@@ -33,7 +33,7 @@
         9,
         10
       ],
-      "finding": "RCTL480시간·2seed·K4 표4값/8조건 요약·paired 퍼센트 복사 일치,6/7cell 개선,globalK1 보조 기준,개발 구간 처리. 저장 float비율 차이를 숨기지 않고 두 자리7.02/5.08% 일치 확인."
+      "finding": "RCTL480시간·2seed·K4 표4값/8조건 요약·paired 퍼센트 복사 일치,seed별16개중각각6개·7개cell 개선,globalK1 보조 기준,개발 구간 처리. 저장 float비율 차이를 숨기지 않고 두 자리7.02/5.08% 일치 확인."
     },
     {
       "check_id": "H110-SP04",
@@ -293,5 +293,14 @@
   "limitations": [
     "DOCX/PDF/PNG5/progress8그룹은 미독",
     "최초 실패 assert판과9쪽 렌더 세부는 미확인"
-  ]
+  ],
+  "publication_review_correction": {
+    "comment_id": 4241378416,
+    "valid": true,
+    "source": "evidence-comparison.json RCTL_Tab_vs_empirical; H110-C09",
+    "before": "RCTL 평균 악화와6/7개 cell의 개선",
+    "after": "RCTL 평균 악화와 seed별 16개 중 각각 6개·7개 cell의 개선",
+    "result_values_changed": false,
+    "reason": "두 seed의 개선 cell 수를 분수로 오해하지 않도록 분모16과 각각의 수를 명시했다."
+  }
 }

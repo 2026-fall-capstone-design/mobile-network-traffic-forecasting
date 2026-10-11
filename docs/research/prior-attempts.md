@@ -523,4 +523,4 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 
 ## 직접 예측이 좋은데 소속 결정도 좋은지 묻는 경우
 
-[원84 근거 종합](records/0110-evidence-synthesis.md)에서4cell 직접 예측,16cell 소속,16cell 최종 RCTL의 구간·척도를 각각 확인한다. 원80의 같은 partition5방법, cell6153의 반례, RCTL 평균 악화와6/7개 cell의 개선을 함께 보존했다.
+[원84 근거 종합](records/0110-evidence-synthesis.md)에서4cell 직접 예측,16cell 소속,16cell 최종 RCTL의 구간·척도를 각각 확인한다. 원80의 같은 partition5방법, cell6153의 반례, RCTL 평균 악화와 seed별 16개 중 각각 6개·7개 cell의 개선을 함께 보존했다.
