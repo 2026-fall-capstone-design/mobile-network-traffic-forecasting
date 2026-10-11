@@ -146,3 +146,5 @@
 [H094 DUET 문헌 검토](records/0094-duet-literature-review.md)는 원81의 주파수 기반 학습관계 설명을 v3 전체로 확장한다. 평균 우위와 개별 조건 손해, expert 수/입력 길이의 반례 및 논문·코드·독립 RCTL의 차이를 보존한다. 새 연구 실행이나 DUET 코드 확인을 완료한 것은 아니다.
 
 [H095 DUET 코드 대조](records/0095-duet-code-review.md)는 원81의 전체 channel 쌍 계산 관찰을 고정 commit으로 확인한다. routing·Gumbel 확률·유한 score 마스크·검증/설정 차이를 기록하며 2026년 코드를 2025년 논문의 실제 실행으로 소급하지 않는다.
+
+[H096](records/0096-predictive-clustering-literature-review.md)은 원81이 지목한 Fuchs–Wang의 집합 간 의존성 군집화를 검토한다. 일방/상호 완전의존,쌍별linkage의한계,가정·비용 및잡음/군집 수선택을 연결했다. 패키지/교통예측 재현 실행으로소급하지않는다.

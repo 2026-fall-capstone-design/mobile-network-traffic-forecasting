@@ -233,3 +233,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [DUET 문헌 검토](records/0094-duet-literature-review.md)는 시간 expert와 학습 channel mask를 고정 UPC/RCTL과 구분한다. 동률을 포함한 순위·조건별 반례·ILI 예측길이 표기와 부록 가정까지 확인한다.
 
 [DUET 코드 검토](records/0095-duet-code-review.md)는 실제 호출 경로·routing·확률 mask·설정과 전체 쌍 계산을 확인한다. 코드의 정적 관찰과 논문의 보고 성능, 고정 UPC/RCTL 재사용 조건을 구분했다.
+
+[변수 집합의 예측 의존성 검토](records/0096-predictive-clustering-literature-review.md)는 공동 의존성을 쓰는 선행연구와 미래 raw MSE/UPC 재배정의 차이를 찾는 출발점이다. i.i.d·순열 비용과 고정/자동 군집 수의 실패 조건을 함께 확인한다.
