@@ -1,0 +1,391 @@
+{
+  "success": true,
+  "batch_id": "history-125",
+  "checked_at_utc": "2026-10-11T21:47:18.629432+00:00",
+  "operation": "Saved-array arithmetic, raw source hashes, JSON structure and ZIP metadata; no model execution or research code import.",
+  "array_source_id": "SRC-0001814",
+  "array_sha256": "b3d733b0fdec0d7a01af6c62b80ac4dc1ada2c2e8dc77b838c3876fcaa019fbd",
+  "arrays": {
+    "routes": {
+      "shape": [
+        6
+      ],
+      "dtype": "<U27",
+      "elements": 6
+    },
+    "timing_seconds": {
+      "shape": [
+        6,
+        3,
+        12
+      ],
+      "dtype": "float64",
+      "elements": 216
+    },
+    "prediction": {
+      "shape": [
+        6,
+        3,
+        12,
+        16
+      ],
+      "dtype": "float32",
+      "elements": 3456
+    },
+    "origins": {
+      "shape": [
+        12
+      ],
+      "dtype": "int64",
+      "elements": 12
+    },
+    "cell_ids": {
+      "shape": [
+        16
+      ],
+      "dtype": "int64",
+      "elements": 16
+    }
+  },
+  "routes": [
+    "global__per_cell",
+    "global__per_cluster",
+    "tabicl_risk__per_cell",
+    "tabicl_risk__per_cluster",
+    "empirical_risk__per_cell",
+    "empirical_risk__per_cluster"
+  ],
+  "origins": [
+    840,
+    855,
+    870,
+    885,
+    900,
+    915,
+    931,
+    946,
+    961,
+    976,
+    991,
+    1007
+  ],
+  "cell_ids": [
+    3737,
+    3745,
+    3753,
+    3765,
+    4537,
+    4545,
+    4553,
+    4565,
+    5337,
+    5345,
+    5353,
+    5365,
+    6137,
+    6145,
+    6153,
+    6165
+  ],
+  "timing_sample_count_per_route": 36,
+  "metrics": [
+    {
+      "route": "global__per_cell",
+      "recomputed": {
+        "median_seconds": 0.03318599999329308,
+        "p10_seconds": 0.03247555000416469,
+        "p90_seconds": 0.034527199997683056,
+        "repeat_median_seconds": [
+          0.033076350002374966,
+          0.03306919999886304,
+          0.03382534999400377
+        ]
+      },
+      "summary_matches": true
+    },
+    {
+      "route": "global__per_cluster",
+      "recomputed": {
+        "median_seconds": 0.0034929000030388124,
+        "p10_seconds": 0.003337399997690227,
+        "p90_seconds": 0.005505699999048375,
+        "repeat_median_seconds": [
+          0.0034159999995608814,
+          0.0034929000030388124,
+          0.0035168500035069883
+        ]
+      },
+      "summary_matches": true
+    },
+    {
+      "route": "tabicl_risk__per_cell",
+      "recomputed": {
+        "median_seconds": 0.03386470000259578,
+        "p10_seconds": 0.03274435000639642,
+        "p90_seconds": 0.03602949999185512,
+        "repeat_median_seconds": [
+          0.033845650003058836,
+          0.033484499996120576,
+          0.03453605000686366
+        ]
+      },
+      "summary_matches": true
+    },
+    {
+      "route": "tabicl_risk__per_cluster",
+      "recomputed": {
+        "median_seconds": 0.014005199998791795,
+        "p10_seconds": 0.012235599999257829,
+        "p90_seconds": 0.015399299998534843,
+        "repeat_median_seconds": [
+          0.01425415000267094,
+          0.013676499998837244,
+          0.01403674999892246
+        ]
+      },
+      "summary_matches": true
+    },
+    {
+      "route": "empirical_risk__per_cell",
+      "recomputed": {
+        "median_seconds": 0.03403814999910537,
+        "p10_seconds": 0.03326825000112876,
+        "p90_seconds": 0.035351149999769405,
+        "repeat_median_seconds": [
+          0.03433094999491004,
+          0.033896950000780635,
+          0.03396199999406235
+        ]
+      },
+      "summary_matches": true
+    },
+    {
+      "route": "empirical_risk__per_cluster",
+      "recomputed": {
+        "median_seconds": 0.014152000003377907,
+        "p10_seconds": 0.012614000006578863,
+        "p90_seconds": 0.014756600001419429,
+        "repeat_median_seconds": [
+          0.014347349999297876,
+          0.013989949999086093,
+          0.014174400006595533
+        ]
+      },
+      "summary_matches": true
+    }
+  ],
+  "within_method_comparisons": [
+    {
+      "method": "global",
+      "max_abs_prediction_difference": 7.152557373046875e-07,
+      "median_latency_ratio": 9.500987707756122,
+      "summary_matches": true
+    },
+    {
+      "method": "tabicl_risk",
+      "max_abs_prediction_difference": 1.1920928955078125e-06,
+      "median_latency_ratio": 2.418009025613146,
+      "summary_matches": true
+    },
+    {
+      "method": "empirical_risk",
+      "max_abs_prediction_difference": 1.0728836059570312e-06,
+      "median_latency_ratio": 2.4051830123643927,
+      "summary_matches": true
+    }
+  ],
+  "forward_calls_total_including_warmup": 2166,
+  "predicted_rows_total_including_warmup": 3648,
+  "actual_timed_calls": 2052,
+  "actual_timed_rows": 3456,
+  "timed_measurement_array_seconds": 4.816830499985372,
+  "timed_seconds_including_warmup": 5.10660659999121,
+  "warmup_timed_seconds_difference": 0.2897761000058381,
+  "final_stage_wall_seconds": 5.4455786000035005,
+  "summary_midstage_wall_seconds": 5.444760700003826,
+  "final_minus_summary_wall_seconds": 0.0008178999996744096,
+  "budget_before_copy": {
+    "source_id": "SRC-0001812",
+    "sha256": "f60705e1cecd539871c8fdb019d27a25adf007efa7a1ee534f0428802f9b8dfb",
+    "raw_declared_input_source_id": "SRC-0001780",
+    "raw_declared_input_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+    "raw_bytes_equal": false,
+    "parsed_JSON_equal": true,
+    "exact_saved_JSON_reserialization_verified": true,
+    "semantic_change": false,
+    "newline_only_byte_difference": true,
+    "saved_copy_CRLF_count": 243,
+    "declared_input_CRLF_count": 0,
+    "saved_copy_bytes": 7894,
+    "declared_input_bytes": 7651,
+    "exact_identity_after_CRLF_to_LF": true
+  },
+  "budget_after": {
+    "source_id": "SRC-0001804",
+    "sha256": "ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7",
+    "stage_entries": 1,
+    "only_changes": [
+      "one serving_cost_95 stage appended",
+      "RCTL_frozen_inference_seconds increased by final stage wall"
+    ],
+    "recorded_modeling_before_seconds": 1992.615061800001,
+    "recorded_modeling_after_seconds": 1998.0606404000046,
+    "stage_not_double_counted": true,
+    "budget_resets": 0
+  },
+  "input_references": [
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/global_20260925_cluster0.pt",
+      "sha256": "822808952e35b22921569f915db4b693f0929362e564ff4deae7cafbd6bc8476",
+      "size_bytes": 745123,
+      "current_hash_matches": true,
+      "exact_alias_source_ids": [
+        "SRC-0000280",
+        "SRC-0030240"
+      ],
+      "content_reexecution_or_import": false,
+      "zip_storage_bytes": 701412,
+      "zip_storage_entries": 142,
+      "pickle_deserialized": false
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster0.pt",
+      "sha256": "081bcc8b369f3f3cb275cfb839677c004be3e2b55837b2fddb921aecbba82e69",
+      "size_bytes": 745123,
+      "current_hash_matches": true,
+      "exact_alias_source_ids": [
+        "SRC-0000322",
+        "SRC-0030282"
+      ],
+      "content_reexecution_or_import": false,
+      "zip_storage_bytes": 701412,
+      "zip_storage_entries": 142,
+      "pickle_deserialized": false
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster1.pt",
+      "sha256": "ae92219d6aff933933f726d783275f136dd6e05eb0aaa329d1ccedc3426424c2",
+      "size_bytes": 745123,
+      "current_hash_matches": true,
+      "exact_alias_source_ids": [
+        "SRC-0000325",
+        "SRC-0030285"
+      ],
+      "content_reexecution_or_import": false,
+      "zip_storage_bytes": 701412,
+      "zip_storage_entries": 142,
+      "pickle_deserialized": false
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster2.pt",
+      "sha256": "c165bbe9b891a9b2ad9f77058f387b72d9cfd1bb11d35254a45ef05fe3023ff9",
+      "size_bytes": 745123,
+      "current_hash_matches": true,
+      "exact_alias_source_ids": [
+        "SRC-0000328",
+        "SRC-0030288"
+      ],
+      "content_reexecution_or_import": false,
+      "zip_storage_bytes": 701412,
+      "zip_storage_entries": 142,
+      "pickle_deserialized": false
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/tabicl_risk_20260925_cluster3.pt",
+      "sha256": "29381448c41cb1f0ec0b111215817875b8586fba74ea2df365974ddc4cf5f7d7",
+      "size_bytes": 745123,
+      "current_hash_matches": true,
+      "exact_alias_source_ids": [
+        "SRC-0000331",
+        "SRC-0030291"
+      ],
+      "content_reexecution_or_import": false,
+      "zip_storage_bytes": 701412,
+      "zip_storage_entries": 142,
+      "pickle_deserialized": false
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster0.pt",
+      "sha256": "95a274b8e4b7825756b5d9bb79ed6ed7d780db57d4a4993d4d3e54fe46b155b8",
+      "size_bytes": 745123,
+      "current_hash_matches": true,
+      "exact_alias_source_ids": [
+        "SRC-0000253",
+        "SRC-0030213"
+      ],
+      "content_reexecution_or_import": false,
+      "zip_storage_bytes": 701412,
+      "zip_storage_entries": 142,
+      "pickle_deserialized": false
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster1.pt",
+      "sha256": "aec1ff6c877631699da297e766b46057322e98e32c9663f4a6c1918d4817a38a",
+      "size_bytes": 745123,
+      "current_hash_matches": true,
+      "exact_alias_source_ids": [
+        "SRC-0000256",
+        "SRC-0030216"
+      ],
+      "content_reexecution_or_import": false,
+      "zip_storage_bytes": 701412,
+      "zip_storage_entries": 142,
+      "pickle_deserialized": false
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster2.pt",
+      "sha256": "a6f4418c7cf5ce97f4a6a9f1abfb9686d3134aa1f4785b1af7748fde006ac6da",
+      "size_bytes": 745123,
+      "current_hash_matches": true,
+      "exact_alias_source_ids": [
+        "SRC-0000259",
+        "SRC-0030219"
+      ],
+      "content_reexecution_or_import": false,
+      "zip_storage_bytes": 701412,
+      "zip_storage_entries": 142,
+      "pickle_deserialized": false
+    },
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/empirical_risk_20260925_cluster3.pt",
+      "sha256": "d2b926912cfc95129d4c6d646fcaf581a07b47939d63136c6bc3d753e0caad28",
+      "size_bytes": 745123,
+      "current_hash_matches": true,
+      "exact_alias_source_ids": [
+        "SRC-0000262",
+        "SRC-0030222"
+      ],
+      "content_reexecution_or_import": false,
+      "zip_storage_bytes": 701412,
+      "zip_storage_entries": 142,
+      "pickle_deserialized": false
+    },
+    {
+      "path": "tmp/redesign_20260925/results/design_data.npz",
+      "sha256": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+      "size_bytes": 739949,
+      "current_hash_matches": true,
+      "exact_alias_source_ids": [
+        "SRC-0000218",
+        "SRC-0023577"
+      ],
+      "content_reexecution_or_import": false
+    }
+  ],
+  "snapshot37": {
+    "listed_files": 21,
+    "listed_bytes": 241706,
+    "manifest_bytes": 4301,
+    "physical_files": 22,
+    "physical_bytes": 246007,
+    "all_listed_hashes_match": true,
+    "inputs_and_checkpoints_copied_into_this_snapshot": false
+  },
+  "sampled_RSS_bytes": 233689088,
+  "old_model_dynamic_state_identity_independently_replayed": false,
+  "model_code_imported": false,
+  "original_scripts_executed": false,
+  "new_model_runs": 0,
+  "coverage_increment": 0,
+  "limits": "All array values were mechanically checked; this is not literal reading of every value, new inference, accuracy validation or an independent timing measurement. Runtime state before/after identity is a stored historical claim with its static checking code, not a current replay."
+}

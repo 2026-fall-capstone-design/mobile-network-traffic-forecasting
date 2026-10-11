@@ -580,3 +580,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원94 정답 대기 입력·PPI·adapter를 다시 검토할 때
 
 [원94](records/0124-delayed-target-inference-boundaries.md)와 [세 문헌의 방법/가정](references/delayed-target-inference.md)을 먼저 읽는다. h1에서는 cell당 한 행을 기다리고 Ch행이 독립 표본은 아니다. 과거 오차의 입력 밀도비 보정만으로 임의 조건부 변화나 아직 학습하지 않은 RCTL의 병합 효용을 해결했다고 쓰지 않는다. 실제 관측 지연·대표성·강한 대안의 손해·유용한 결정·context/query 비용이 다른지 구체적으로 적는다. PPCI v2의 입력만 쓰는 simulation 수정은 기존 v1 우려와 구별한다.
+
+## 원95 모델 수 감소·batch·실행 비용을 비교할 때
+
+[원95](records/0125-frozen-rctl-serving-cost-baseline.md)와 [비용 비교의 기본 조건](references/serving-cost-baseline.md)을 먼저 읽는다. 같은 가중치를 쓰는 동시 cell을 batch로 처리한 baseline과 비교하고 모델 저장량·입력 행·호출·실측시간·Tab 준비비용을 따로 적는다. 호출을 합치는 이득을 Tab의 기여로 세지 않는다. 같은 K4의 약0.147ms 차이나16cell CPU 결과를 유의미한 Tab 우위·대규모 latency로 확대하지 않는다. 새 partition 정확도 검증과 기존 checkpoint의 실행 방식 검토도 구별한다.

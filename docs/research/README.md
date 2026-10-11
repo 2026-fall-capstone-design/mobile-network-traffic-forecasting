@@ -292,3 +292,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원93 후보 기준 보완](records/0123-candidate-gates-comparison-scope.md)은 같은K4 부정 결과를 유지하며 global 비교 범위·탐색/추천 조건·재사용 근거를 연결한다.
 
 [원94 정답 대기 입력](records/0124-delayed-target-inference-boundaries.md)은 실제 h별 관측시각·PPI 보장 가정·PPCI v2 수정·RCTL 소속 연결과 비용을 구분한다. 관련 실험 전에는 [세 문헌 비교](references/delayed-target-inference.md)와 재검토 조건을 확인한다.
+
+[원95 저장 RCTL의 실제 호출 비용](records/0125-frozen-rctl-serving-cost-baseline.md)은 cell별 호출과 같은 가중치의 batch 처리, 모델 저장량·예측 행·호출·실측시간을 구분한다. 비용 실험 전에는 [기본 비교 조건](references/serving-cost-baseline.md)을 확인한다.
