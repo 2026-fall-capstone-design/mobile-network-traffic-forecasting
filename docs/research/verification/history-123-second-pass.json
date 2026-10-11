@@ -1,0 +1,439 @@
+{
+  "batch_id": "history-123",
+  "draft_sha256": "4702c4519979a937ac48f2e46a5044e3735b51594f86b9d94e0863106ee77c97",
+  "claims_checked": 30,
+  "checks": [
+    {
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scope": "원93 report·findings1–12·새후보35–57·audit88–104·result실행상태를 실제 재독",
+      "assessment": "동일partition 효율·sample 전달·탐색/추천 기준 보완은 새 성공이 아님. 과거Goal/코드/예산 DATA.",
+      "status": "source_checked"
+    },
+    {
+      "claims": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "scope": "train코드26–70/84–133·frozen1–361·result8조건·fit전체29항목·summary40포인터를 실제 재독",
+      "assessment": "동일자료/입력/시간분할·8조건/29fit·두seed 비대칭·평균악화와6/7cell 이득 확인. 도시 표현은 공개 시 동일자료로 좁힘. 독립자료2개/예측 재현 주장 없음.",
+      "status": "source_checked"
+    },
+    {
+      "claims": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "scope": "audit15–76·findings14–34·fit29/finished9행·8조건·29history의 epoch/val58필드 재독",
+      "assessment": "1565epoch/stop·선택checkpoint·672행×members/ceilbatch·총18610/15110·empirical update +22/−209. 같은policy≠samepath, 최적수렴/원인확정 아님.",
+      "status": "source_checked"
+    },
+    {
+      "claims": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "scope": "원93 result8조건/37hash·finishedwall·audit78–104·원74 teacher+3flag·원80 ARI/teacher+4flag",
+      "assessment": "과거fit시간과전체pipeline비용 구분. 코드/hash정합성≠실행시각/독립재현. Tab직접MSE이득 유지/새partition RCTL전체미검증.",
+      "status": "source_checked"
+    },
+    {
+      "claims": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "scope": "report21–27·findings36–59·새후보35–57·plan9–15·verify27–30 실제 재독",
+      "assessment": "metric/목적 차이, 문헌·기호 미추천≠전방법실험실패, 원34gap 인용범위·global표현가능성≠유한학습 우열. 미검증을유망함으로승격하지 않음.",
+      "status": "source_checked"
+    },
+    {
+      "claims": [
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "scope": "새후보41–57·직전40–50·현재progress1–36/직전1–25·report25–29·findings54–59·snapshot/root counts·firstscope/선택/hash 메타대조",
+      "assessment": "최종추천조건/실패빠른계산 제한·46listed/47snapshot·10새/40재사용·163physicalaliases 구분. 현재37–517/직전66–508미독 유지·정리Goal미완료.",
+      "status": "source_checked"
+    }
+  ],
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0001731": [
+      [
+        15,
+        76
+      ],
+      [
+        78,
+        104
+      ]
+    ],
+    "SRC-0001736": [
+      [
+        26,
+        70
+      ],
+      [
+        84,
+        133
+      ]
+    ],
+    "SRC-0001729": [
+      [
+        9,
+        15
+      ]
+    ],
+    "SRC-0001704": [
+      [
+        40,
+        50
+      ]
+    ],
+    "SRC-0001730": [
+      [
+        1,
+        12
+      ],
+      [
+        14,
+        34
+      ],
+      [
+        36,
+        59
+      ]
+    ],
+    "SRC-0001737": [
+      [
+        27,
+        30
+      ]
+    ],
+    "SRC-0001708": [
+      [
+        1,
+        25
+      ]
+    ],
+    "SRC-0001728": [
+      [
+        5,
+        29
+      ]
+    ],
+    "SRC-0001734": [
+      [
+        1,
+        36
+      ]
+    ],
+    "SRC-0001750": [
+      [
+        1,
+        361
+      ]
+    ],
+    "SRC-0001764": [
+      [
+        1,
+        9
+      ]
+    ],
+    "SRC-0001732": [
+      [
+        35,
+        57
+      ]
+    ]
+  },
+  "raw_lines": 742,
+  "actual_postdraft_json_pointers": {
+    "SRC-0001727": [
+      "/bytes",
+      "/files"
+    ],
+    "SRC-0001749": [
+      "/0",
+      "/1",
+      "/10",
+      "/11",
+      "/12",
+      "/13",
+      "/14",
+      "/15",
+      "/16",
+      "/17",
+      "/18",
+      "/19",
+      "/2",
+      "/20",
+      "/21",
+      "/22",
+      "/23",
+      "/24",
+      "/25",
+      "/26",
+      "/27",
+      "/28",
+      "/3",
+      "/4",
+      "/5",
+      "/6",
+      "/7",
+      "/8",
+      "/9"
+    ],
+    "SRC-0001765": [
+      "/metrics/0/fit_seconds",
+      "/metrics/0/mean_scaled_mae",
+      "/metrics/0/method",
+      "/metrics/0/models",
+      "/metrics/0/seed",
+      "/metrics/1/fit_seconds",
+      "/metrics/1/mean_scaled_mae",
+      "/metrics/1/method",
+      "/metrics/1/models",
+      "/metrics/1/seed",
+      "/metrics/2/fit_seconds",
+      "/metrics/2/mean_scaled_mae",
+      "/metrics/2/method",
+      "/metrics/2/models",
+      "/metrics/2/seed",
+      "/metrics/3/fit_seconds",
+      "/metrics/3/mean_scaled_mae",
+      "/metrics/3/method",
+      "/metrics/3/models",
+      "/metrics/3/seed",
+      "/metrics/4/fit_seconds",
+      "/metrics/4/mean_scaled_mae",
+      "/metrics/4/method",
+      "/metrics/4/models",
+      "/metrics/4/seed",
+      "/metrics/5/fit_seconds",
+      "/metrics/5/mean_scaled_mae",
+      "/metrics/5/method",
+      "/metrics/5/models",
+      "/metrics/5/seed",
+      "/metrics/6/fit_seconds",
+      "/metrics/6/mean_scaled_mae",
+      "/metrics/6/method",
+      "/metrics/6/models",
+      "/metrics/6/seed",
+      "/metrics/7/fit_seconds",
+      "/metrics/7/mean_scaled_mae",
+      "/metrics/7/method",
+      "/metrics/7/models",
+      "/metrics/7/seed"
+    ],
+    "SRC-0001738": [
+      "/74_scope",
+      "/80_scope",
+      "/RCTL_conditions",
+      "/candidate_recommended",
+      "/goal_complete",
+      "/ledger_sha256",
+      "/ledger_unchanged",
+      "/new_model_calls",
+      "/new_numeric_experiments",
+      "/scope",
+      "/verified_evidence_hashes"
+    ],
+    "SRC-0001739": [
+      "/ARI_vs_TabICL",
+      "/clustering_uses_RCTL",
+      "/final_RCTL_performance_validated",
+      "/independent_test",
+      "/teacher_query_metrics",
+      "/weights_or_buffers_updated"
+    ],
+    "SRC-0001740": [
+      "/RCTL_validated",
+      "/all_target_values_real",
+      "/independent_test",
+      "/teacher"
+    ],
+    "SRC-0022088": [
+      "/bytes",
+      "/files"
+    ],
+    "SRC-0001751": [
+      "/34/epoch",
+      "/34/val_mae"
+    ],
+    "SRC-0001766": [
+      "/54/epoch",
+      "/54/val_mae"
+    ],
+    "SRC-0001767": [
+      "/31/epoch",
+      "/31/val_mae"
+    ],
+    "SRC-0001768": [
+      "/44/epoch",
+      "/44/val_mae"
+    ],
+    "SRC-0001769": [
+      "/48/epoch",
+      "/48/val_mae"
+    ],
+    "SRC-0001741": [
+      "/58/epoch",
+      "/58/val_mae"
+    ],
+    "SRC-0001742": [
+      "/44/epoch",
+      "/44/val_mae"
+    ],
+    "SRC-0001743": [
+      "/37/epoch",
+      "/37/val_mae"
+    ],
+    "SRC-0001744": [
+      "/40/epoch",
+      "/40/val_mae"
+    ],
+    "SRC-0001752": [
+      "/40/epoch",
+      "/40/val_mae"
+    ],
+    "SRC-0001753": [
+      "/47/epoch",
+      "/47/val_mae"
+    ],
+    "SRC-0001754": [
+      "/40/epoch",
+      "/40/val_mae"
+    ],
+    "SRC-0001755": [
+      "/34/epoch",
+      "/34/val_mae"
+    ],
+    "SRC-0001756": [
+      "/36/epoch",
+      "/36/val_mae"
+    ],
+    "SRC-0001757": [
+      "/36/epoch",
+      "/36/val_mae"
+    ],
+    "SRC-0001758": [
+      "/48/epoch",
+      "/48/val_mae"
+    ],
+    "SRC-0001759": [
+      "/47/epoch",
+      "/47/val_mae"
+    ],
+    "SRC-0001760": [
+      "/40/epoch",
+      "/40/val_mae"
+    ],
+    "SRC-0001761": [
+      "/41/epoch",
+      "/41/val_mae"
+    ],
+    "SRC-0001762": [
+      "/42/epoch",
+      "/42/val_mae"
+    ],
+    "SRC-0001763": [
+      "/42/epoch",
+      "/42/val_mae"
+    ],
+    "SRC-0001770": [
+      "/58/epoch",
+      "/58/val_mae"
+    ],
+    "SRC-0001771": [
+      "/47/epoch",
+      "/47/val_mae"
+    ],
+    "SRC-0001772": [
+      "/49/epoch",
+      "/49/val_mae"
+    ],
+    "SRC-0001773": [
+      "/37/epoch",
+      "/37/val_mae"
+    ],
+    "SRC-0001745": [
+      "/37/epoch",
+      "/37/val_mae"
+    ],
+    "SRC-0001746": [
+      "/44/epoch",
+      "/44/val_mae"
+    ],
+    "SRC-0001747": [
+      "/32/epoch",
+      "/32/val_mae"
+    ],
+    "SRC-0001748": [
+      "/59/epoch",
+      "/59/val_mae"
+    ]
+  },
+  "compact_whole_fit_JSON_items": 29,
+  "RCTL_condition_objects_reread": 8,
+  "summary_selected_scalar_pointers": 40,
+  "selected_history_sources": 29,
+  "selected_history_value_pointers": 58,
+  "full_raw_JSON_sources": [
+    "SRC-0001764"
+  ],
+  "metadata_scope_checked": true,
+  "all_claim_semantic_locations_actually_reread": true,
+  "unresolved_output_truncation": false,
+  "semantic_second_pass_complete": true,
+  "coverage_increment_applied": false,
+  "public_files_written": true,
+  "independent_reviewer": false,
+  "independent_model_reproduction": false,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "new_model_runs": 0,
+  "collector_limit": "초기3개 완전한출력을 직접확인한scope를 별도로복구; 단일collector의병렬갱신기록은사용하지않음. 이후emit파일독립저장.",
+  "editorial_plan": [
+    {
+      "claim_id": "H123-C07",
+      "before": "같은 도시·cell·기간",
+      "after": "동일 자료·cell·기간",
+      "reason": "이번 직접대조한 동일파일·cell·시간분할의 범위로 문구를 좁힘. 사실/수치 변경 없음."
+    }
+  ],
+  "checked_at_utc": "2026-10-11T20:40:39.804361+00:00",
+  "status": "source_checked",
+  "initial_private_draft_sha256": "4702c4519979a937ac48f2e46a5044e3735b51594f86b9d94e0863106ee77c97",
+  "corrected_record_sha256": "cda50620cd62863b8901d031d0e7a15567dae0ec3499f5b0c6931198f8bbf867",
+  "editorial_clarifications": [
+    {
+      "claim_id": "H123-C07",
+      "reason": "이번 직접대조한 동일자료·cell·시간분할의 범위로 문구를 좁힘. 수치/판단 변경 없음.",
+      "before": "seed20260925에는 Tab risk·empirical risk·KNN risk·PCC balanced·random balanced의 K4 각4fit과 global K1 1fit, 총21fit이 있다. seed20260926에는 Tab risk·empirical risk의 각4fit만 추가해 전체29fit이다. 따라서 저장 조건은8개이며 global·KNN·PCC·random의 두 번째 seed 결과는 미실행이다. 같은 도시·cell·기간의 seed 반복을 독립 데이터셋 두 개로 세지 않는다.",
+      "after": "seed20260925에는 Tab risk·empirical risk·KNN risk·PCC balanced·random balanced의 K4 각4fit과 global K1 1fit, 총21fit이 있다. seed20260926에는 Tab risk·empirical risk의 각4fit만 추가해 전체29fit이다. 따라서 저장 조건은8개이며 global·KNN·PCC·random의 두 번째 seed 결과는 미실행이다. 동일 자료·cell·기간의 seed 반복을 독립 데이터셋 두 개로 세지 않는다."
+    }
+  ],
+  "limitations": [
+    "현재 연혁37–517행·직전66–508행의 직접 미독, 원94 이후와 이전 고유 판본, 원83 FedPPBC·원84 DOCX 판독 공백, 전체 문헌·실패·비용 통합, 장기 팀 접근, 최종 원본 변경분과 대표 질문 검색 검수."
+  ]
+}

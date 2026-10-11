@@ -201,3 +201,5 @@
 [H121 원91](records/0121-predictive-role-alignment.md): 역할 대응을 별도 결정으로 검토했으나 실제 손해·정렬 뒤 분리 필요성을 확인하지 못해 진입하지 않았다. CPiRi·CRAFT·TIDES의 수치와 적용 조건을 함께 검수했다.
 
 [H122 원92](records/0122-prequential-sharing-objective.md): 유한 context의 순차 공유·분리 증거 후보를 채택하지 않았다. BHC/GP-BHC의 생성 가설·표/예외·근사, PreqTorch와 Tab density 구현의 적용 범위를 검수했다.
+
+[H123 원93](records/0123-candidate-gates-comparison-scope.md): 과거37근거·8조건·29fit의 정합성 감사. 같은 소속의 별도 효율 기여와 실제 sample 묶음 변경을 허용하는 진입 기준으로 보완했으며 새 성능 실험/추천은 없다.

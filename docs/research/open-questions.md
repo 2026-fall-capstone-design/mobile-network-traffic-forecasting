@@ -193,3 +193,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H121 범위표](evidence/0121-predictive-role-alignment/packet-coverage.json)에 현재 연혁56–498행, 선택 외 HTML/TXT, 부모/외부 실제 구현·원자료, 역할 손해와 정렬 뒤 분리 필요성 및 원92 이후/이전 고유판본·전체통합 검수를 남겼다.
 
 [H122 남은 범위](evidence/0122-prequential-sharing-objective/packet-coverage.json): 현재 연혁66–508행·직전56–498행, TXT literal 미독 구간·외부 실제 구현/추가파일·workshop 전문, 원93 이후와 이전 고유 판본, 기존 문서 공백·전체 통합/접근/최종 검색 검수는 계속 남아 있다.
+
+[H123 남은 범위](evidence/0123-candidate-gates-comparison-scope/packet-coverage.json): 현재연혁37–517/직전66–508, 원94 이후와 이전고유판본·FedPPBC/DOCX공백·전체 통합/장기접근/최종 원본 및 검색 검수는 미완료다.

@@ -572,3 +572,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원92 순차 공유·분리 점수를 다시 검토할 때
 
 [원92](records/0122-prequential-sharing-objective.md)를 먼저 읽는다. 같은 conditional median과 다른 noise를 분리할 log score 이득이 별도 RCTL 점 예측의 필요성을 뜻하지 않는다. 함수 불확실성·관측 잡음·유한 학습 손해·최종 RCTL 목적을 구분하고 어떤 유용한 소속 결정이 달라지는지 명시한다.
+
+## 원93 후보 진입 기준과 기존 실패를 적용할 때
+
+[원93](records/0123-candidate-gates-comparison-scope.md)을 먼저 읽는다. 같은K4 empirical 대비 부정 결과는 유지한다. 같은 유용한 결정을 더 효율적으로 얻거나 실제 함께 학습할 sample을 바꾸는 기여도 검토할 수 있지만, 같은 소속만 얻은 사실과 새모듈 추가를 성공 근거로 쓰지 않는다. global의 표현 가능성과 모델당 자료량 차이도 유한학습 우열의 보편적 결론으로 확대하지 않는다.
