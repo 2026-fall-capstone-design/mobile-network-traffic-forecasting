@@ -1,0 +1,105 @@
+{
+  "fixed_commit": "c495edac3125ba2d0f104fcb7c11d3d9012bab13",
+  "raw_code_lines": 750,
+  "source_code_executed": false,
+  "findings": [
+    {
+      "source_id": "SRC-0001604",
+      "ranges": [
+        [
+          14,
+          20
+        ],
+        [
+          49,
+          55
+        ],
+        [
+          60,
+          114
+        ],
+        [
+          134,
+          173
+        ]
+      ],
+      "finding": "기본B200/K100/alpha.05/test_size.2;shuffle=True split;target와Xj모두V2/create_default/fit_with_cache/각fit;target관측predict1회/조건부분포predict1회/nullB회targetpredict. 연속분위수표는linspace0..1 K개중uniformindex,finite가아닌선택값만최대10재추출. (1+#Tnull>=Tobs)/(B+1),reject<=alpha."
+    },
+    {
+      "source_id": "SRC-0001605",
+      "ranges": [
+        [
+          5,
+          23
+        ],
+        [
+          42,
+          52
+        ],
+        [
+          55,
+          66
+        ]
+      ],
+      "finding": "categorical heuristic는non-NaN unique수<max_unique(기본10)이며<=10아님. regressioncriterion(logits,y)의음수→meanlogdensity;classification는실제class색인및probclip1e-12. 평균회귀값검사아님."
+    },
+    {
+      "source_id": "SRC-0001602",
+      "ranges": [
+        [
+          217,
+          245
+        ],
+        [
+          255,
+          292
+        ]
+      ],
+      "finding": "활성registry13개=linear5+nonlinear6+real2;xor·proxy/chain/collider/grouped·housing/wine는주석. B1000/K1000/repeats25. rep마다seed=rep를CRT에주지만dataset_fn()에는전달안함→활성합성생성기는매번기본seed0의같은자료,CRT split/재표본seed는변함. 25독립생성자료실험아님."
+    },
+    {
+      "source_id": "SRC-0001602",
+      "ranges": [
+        [
+          340,
+          351
+        ],
+        [
+          373,
+          408
+        ]
+      ],
+      "finding": "집계후df_datasets는dataset,power_mean/std,type1_mean/std를만들지만첫LaTeX저장은n_features/n_relevant/power/type1_error열을요청. 전체스크립트순차경로에서존재하지않는열선택. CSV저장은그보다앞에있음. 실제실행/오류재현아님;논문실행판본과동일확정금지."
+    },
+    {
+      "source_id": "SRC-0001603",
+      "ranges": [
+        [
+          1,
+          7
+        ]
+      ],
+      "finding": "numpy/torch/scikit-learn/tabpfn/tqdm/matplotlib버전미고정. demo는pandas도직접import. 환경전체·전이의존성/설치성공검증아님."
+    }
+  ],
+  "calibration_aggregation": {
+    "source_id": "SRC-0001602",
+    "line_ranges": [
+      [
+        52,
+        56
+      ],
+      [
+        313,
+        365
+      ],
+      [
+        428,
+        462
+      ]
+    ],
+    "finding": "feature별 반복p 평균을 df_plot으로 쓰는 경로. null 입력 없는 dense에서 type-I=0 계산. df_global의 앞선 열 오류 때문에 순차 실행의 그림 저장 성공을 주장하지 않음."
+  },
+  "actual_paper_run_or_errors_reproduced": false,
+  "all_dependencies_verified": false
+}
