@@ -1,0 +1,79 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib,json,re,shutil
+from pypdf import PdfReader
+
+ROOT=Path(__file__).resolve().parent
+WORK=ROOT.parents[1]
+SRC=ROOT/'sources/intermittence_82'
+OUT=WORK/'output/research/redesign_20260925_snapshot_24'
+assert not OUT.exists(), 'Do not overwrite an existing snapshot'
+expected='f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+ledger=ROOT/'cumulative_execution_budget.json'
+assert sha(ledger)==expected
+b=json.loads(ledger.read_text(encoding='utf-8-sig'))
+assert b['remaining_count_budgets']=={'TabICL_contexts':11,'TabICL_query_rows':20640,'RCTL_fits':0}
+assert b['used']['RCTL_fits']==29
+
+search={
+ 'searched_date_KST':'2026-09-26',
+ 'queries':[
+   '"network traffic forecasting" "intermittent" clustering',
+   '"cellular traffic prediction" "zero" sparse clustering',
+   '"Time-Series Foundation Models for ISP Traffic Forecasting" sparse',
+   '"CESNET-TimeSeries24" "99.94"',
+   '"CESNET-TimeSeries24" "gaps"',
+   'intermittent demand forecasting "Deep Renewal" model paper',
+   '"TabICL" "intermittent" forecasting',
+   '"network traffic" "zero-inflated" forecasting clustering',
+ ],
+ 'bounds':'Four new primary papers; ISP v2 reused; no new dataset download; no conclusion of world-first from search absence.',
+ 'reviewed':[
+   {'source':'Citywide_DenseNet_2018.pdf','scope':'Sections II-IV.A, printed p1656-1658; p3 visually inspected','version':'IEEE Communications Letters 22(8), Aug 2018, author public PDF'},
+   {'source':'Beam_GRU_MTL_2025.pdf','scope':'Sections 3.3, 4.1.1, 4.2.2; equations 5-10; tables 2,4,5; p9 and p12 visually inspected','version':'Frontiers 2025-10-24 publisher PDF; DOI10.3389/frcmn.2025.1658461'},
+   {'source':'CESNET_TimeSeries24_2025.html','scope':'Technical Validation, Table6, monitoring outage, data preprocessing; primary fulltext via PMC','version':'Scientific Data 2025; DOI10.1038/s41597-025-04603-x'},
+   {'source':'Deep_Renewal_PLOS_2021.html','scope':'Sections 3.2, 4.1-4.4 and 5.2-6 narrative; not all image-only equations or table cells inspected','version':'PLOS ONE 2021-11-29; DOI10.1371/journal.pone.0259764'},
+   {'source':'ISP_TTM_2511.17529v2.html','scope':'Sections III.A-C and reported cross-level results; reference interpretation cross-check','version':'arXiv2511.17529v2; existing local PDF not replaced'}
+ ],
+ 'source_access_notes':['Nature web open returned internal error. PMC fulltext was obtained by an ordinary public request. Later PMC web open showed a verification page; not bypassed.','Frontiers HTML equations were incomplete in extraction; original PDF equations inspected instead.'],
+ 'unexecuted':['New data statistics','Any TabICL, RCTL, or simple-model run','External source code execution','Beam or raw Milan data download','New candidate selection','Final recommendation and Word'],
+}
+p=SRC/'search_and_review_scope.json';assert not p.exists();p.write_text(json.dumps(search,ensure_ascii=False,indent=2),encoding='utf-8')
+
+for filename in ['source_manifest.json','additional_source_manifest.json']:
+    for r in json.loads((SRC/filename).read_text(encoding='utf-8')):
+        assert not r.get('error'),r
+        path=SRC/r['name'];assert sha(path)==r['sha256']
+        assert path.stat().st_size==r['bytes']
+        if r['name'].endswith('.pdf'):
+            assert len(PdfReader(path).pages)==r['pages']
+assert sum(x.stat().st_size for x in SRC.glob('*.pdf'))==4_132_717
+
+report=WORK/'output/research/TabICLv2_재설계_간헐트래픽과데이터근거_검토.md'
+findings=ROOT/'82_intermittence_findings.md'
+for p in (report,findings):
+    text=p.read_text(encoding='utf-8');assert '사례' not in text
+    for link in re.findall(r'\]\((C:/[^)]+)\)',text):assert Path(link).exists(),link
+assert json.loads((ROOT/'results/population_scope_diagnostic.json').read_text(encoding='utf-8'))['zero_fraction']==0.0001975
+
+include=[WORK/'AGENTS.md',ROOT/'progress.md',ROOT/'candidate_decision_index.md',
+         ROOT/'82_intermittence_scope_plan.md',findings,report,
+         ROOT/'collect_intermittence_82.py',ROOT/'complete_intermittence_sources_82.py',
+         Path(__file__).resolve(),ledger,
+         ROOT/'results/population_scope_diagnostic.json',ROOT/'population_scope_diagnostic.py',
+         ROOT/'32_resolution_findings.md',ROOT/'55_network_and_telemetry_findings.md',
+         ROOT/'sources/STCNet_README.txt']
+include+=sorted(p for p in SRC.rglob('*') if p.is_file())
+assert all(p.is_relative_to(WORK) for p in include)
+records=[]
+for p in include:
+    if p.suffix=='.json':json.dumps(json.loads(p.read_text(encoding='utf-8-sig')),allow_nan=False)
+    dest=OUT/p.relative_to(WORK);dest.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(p,dest);assert sha(dest)==sha(p)
+    records.append({'path':p.relative_to(WORK).as_posix(),'bytes':p.stat().st_size,'sha256':sha(p)})
+(OUT/'snapshot_manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+result={'created_utc':datetime.now(timezone.utc).isoformat(),'files':len(records),'bytes':sum(r['bytes'] for r in records),'budget_unchanged_sha256':expected,'new_model_calls':0,'new_numeric_pilots':0,'pdf_count':2,'pdf_pages':21,'pdf_rendered_review_pages':3,'checks':['source hashes','PDF signatures/page count/rendered pages','finite JSON','Korean terminology','local links','existing zero statistic and its code scope','budget/caps unchanged','snapshot copy hashes']}
+out=ROOT/'82_archive_verification.json';assert not out.exists();out.write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+(OUT/'archive_verification.json').write_text(out.read_text(encoding='utf-8'),encoding='utf-8')
+print(json.dumps(result,ensure_ascii=False,indent=2))

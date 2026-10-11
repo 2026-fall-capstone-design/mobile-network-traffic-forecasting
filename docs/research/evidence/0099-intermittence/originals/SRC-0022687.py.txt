@@ -1,0 +1,44 @@
+from pathlib import Path
+from datetime import datetime, timezone
+from html.parser import HTMLParser
+import hashlib,json,urllib.request
+from pypdf import PdfReader
+
+B=Path(__file__).resolve().parent/'sources/intermittence_82'
+manifest=B/'additional_source_manifest.json'
+assert not manifest.exists(), 'Do not repeat completed requests'
+records=[]
+class P(HTMLParser):
+    def __init__(self): super().__init__();self.parts=[];self.skip=0
+    def handle_starttag(self,t,a):
+        if t in ('script','style','nav'):self.skip+=1
+        if t in ('p','h1','h2','h3','h4','tr','li','div'):self.parts.append('\n')
+        if t=='img' and dict(a).get('alt'):self.parts.append(' [image: '+dict(a)['alt']+'] ')
+    def handle_endtag(self,t):
+        if t in ('script','style','nav'):self.skip=max(0,self.skip-1)
+        if t in ('p','tr','li','div'):self.parts.append('\n')
+    def handle_data(self,d):
+        if not self.skip:self.parts.append(d)
+items=[
+('Deep_Renewal_PLOS_2021.html','https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0259764',5_000_000),
+('Beam_GRU_MTL_2025.pdf','https://www.frontiersin.org/journals/communications-and-networks/articles/10.3389/frcmn.2025.1658461/pdf',10_000_000),
+]
+for name,url,limit in items:
+    r={'name':name,'url':url,'accessed_utc':datetime.now(timezone.utc).isoformat()}
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'Research-source-verification/1.0'}),timeout=25) as f:
+            if int(f.headers.get('Content-Length') or 0)>limit:raise ValueError('size limit')
+            data=f.read(limit+1);r['final_url']=f.url
+        assert len(data)<=limit
+        p=B/name;assert not p.exists();p.write_bytes(data)
+        r.update(bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.pdf'):
+            assert data.startswith(b'%PDF-')
+            reader=PdfReader(p);r['pages']=len(reader.pages)
+            p.with_suffix('.pdf.txt').write_text('\n\n'.join(f'PAGE {i+1}\n'+(x.extract_text() or '') for i,x in enumerate(reader.pages)),encoding='utf-8')
+        else:
+            parser=P();parser.feed(data.decode('utf-8'))
+            p.with_suffix('.txt').write_text('\n'.join(' '.join(x.split()) for x in ''.join(parser.parts).splitlines() if x.strip()),encoding='utf-8')
+    except Exception as e:r['error']=repr(e)
+    records.append(r);manifest.write_text(json.dumps(records,indent=2,ensure_ascii=False),encoding='utf-8')
+    print(json.dumps(r,ensure_ascii=False),flush=True)

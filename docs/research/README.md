@@ -239,3 +239,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원81 검색 경로](records/0097-input-partition-search-review.md)에서 101응답을 핵심 문헌·코드 검토와 연결한다. 헤더만 있는 응답, didec의 부분 API, 추가 조사 후보를 확인한 뒤 후속 설계를 시작한다.
 
 [원81 연혁 변경](records/0098-input-partition-history.md)은 입력 공유 후보를 보류한 이유와 Tab 직접 예측의 긍정 증거가 후보표·연구일지에 어떻게 함께 남았는지 보여 준다. 두 snapshot의 고유 변경과 새 실험을 구분해 재검토 조건을 찾는다.
+
+[간헐 트래픽 후보의 진입 판단](records/0099-intermittence-decision.md)은0 비율의 분모, 실제 무트래픽과 누락, 발생/양 분해와 평가손실의 차이를 정리한다. 당시 문헌 주장과 현재 원문 검수가 남은 부분을 구별한다.
