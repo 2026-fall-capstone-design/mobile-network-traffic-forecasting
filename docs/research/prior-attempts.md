@@ -568,3 +568,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원91 이웃 역할 정렬을 다시 검토할 때
 
 [원91 검수](records/0121-predictive-role-alignment.md)를 먼저 확인한다. 공통 열 순열의 표현 동등성과 셀별 역할 대응, 정렬 뒤 global 대안과 별도 소속의 필요성을 구분한다. 기존 일부 셀의 공간 입력 이득이나 다른 논문의 attention 비용을 RCTL 군집화 성공으로 이전하지 않는다.
+
+## 원92 순차 공유·분리 점수를 다시 검토할 때
+
+[원92](records/0122-prequential-sharing-objective.md)를 먼저 읽는다. 같은 conditional median과 다른 noise를 분리할 log score 이득이 별도 RCTL 점 예측의 필요성을 뜻하지 않는다. 함수 불확실성·관측 잡음·유한 학습 손해·최종 RCTL 목적을 구분하고 어떤 유용한 소속 결정이 달라지는지 명시한다.

@@ -1,0 +1,104 @@
+{
+  "date": "2026-09-26",
+  "plan": "92_prequential_sharing_scope_plan.md",
+  "new_TabICL_calls": 0,
+  "new_RCTL_calls": 0,
+  "new_numeric_diagnostics": 0,
+  "external_code_executed": false,
+  "sources": [
+    {
+      "id": "Heller_Ghahramani_BHC_ICML2005",
+      "scope": "Section2 equations1–3/Figure2, selected Section3 DPM/tree-consistent partition argument, Section4 hyperparameters/prediction; methods pages2–3 visually inspected. All proofs/empirical results not independently reproduced."
+    },
+    {
+      "id": "Cooke_et_al_GPBHC_BMC2011_12_399",
+      "scope": "Methods equations1–12, datasets and evaluation, Table1 and runtime section; PDFpages4–5 visually inspected. 13 PDFpages include repository cover; article12pages. No code executed or data reproduction."
+    },
+    {
+      "id": "Aswadi_et_al_PFN_BayesCodes_ICML_StructuredData_Workshop2025",
+      "scope": "Official accepted-paper list and search-indexed abstract/first-page excerpt only. Full PDF unavailable: browser verification and HTTP403 on public static PDF. No detailed method, equation, code or result claims based on this source."
+    }
+  ],
+  "valid_pdf_count": 2,
+  "valid_pdf_pages": 21,
+  "valid_pdf_bytes": 1142162,
+  "installed_tabicl_version": "2.2.0",
+  "installed_code_files": 2,
+  "preqtorch_commit": "9272d6d8b10aeb1d81d08fecd8ac3ac53ffa5cb4",
+  "preqtorch_code_files": 3,
+  "code_scope": [
+    "TabICL QuantileDistribution interpolation, default tails, slope clamping, log_prob/pdf, and sklearn regressor target inverse transform; static reading, no module execution.",
+    "PreqTorch README and BlockEncoder encode/eval/train control flow plus utils loss calling contract; static reading only. Other encoder methods not validated."
+  ],
+  "renders": [
+    {
+      "pdf": "BHC_ICML2005.pdf",
+      "page": 2,
+      "image": "renders\\BHC_ICML2005_p2.png",
+      "sha256": "a528fd4915cc9db26de2f70ce34f02bc5ced2d3e8c093e17840cf770a5459aa9",
+      "visually_inspected": true
+    },
+    {
+      "pdf": "BHC_ICML2005.pdf",
+      "page": 3,
+      "image": "renders\\BHC_ICML2005_p3.png",
+      "sha256": "be1761fc23679f55226a9181fb8f502197e463e5ca2d84151a841a3dcedd50f1",
+      "visually_inspected": true
+    },
+    {
+      "pdf": "BHC_GaussianProcess_2011.pdf",
+      "page": 4,
+      "image": "renders\\BHC_GaussianProcess_2011_p4.png",
+      "sha256": "a1f8949c59cff851631c8c7762980bc4387956e986ca14c75fa865f88b476081",
+      "visually_inspected": true
+    },
+    {
+      "pdf": "BHC_GaussianProcess_2011.pdf",
+      "page": 5,
+      "image": "renders\\BHC_GaussianProcess_2011_p5.png",
+      "sha256": "81b70c59fc17dc0d82c65f21b9aa9f81e9aa57f80565110a11d94611b1dfbe8c",
+      "visually_inspected": true
+    }
+  ],
+  "queries": [
+    "Bayesian hierarchical clustering regression functions predictive likelihood time series Heller Ghahramani",
+    "TabPFN Bayes factor clustering prequential likelihood",
+    "in context learning Bayesian model comparison predictive evidence clustering foundation models",
+    "\"PreqTorch\"",
+    "\"TabPFN\" \"prequential\"",
+    "\"TabICL\" \"marginal likelihood\"",
+    "Bayesian hierarchical clustering time series Gaussian process regression Cooke Savage Wild Ghahramani 2011",
+    "\"Rethinking Description Length\" TabPFN code workshop 2025",
+    "\"Rethinking Description Length\" Aswadi pdf",
+    "\"MCBOqoQk2r\" github",
+    "\"TabPFN\" \"mixture codes\" code",
+    "\"Afiq Abdillah\" \"Description\"",
+    "\"HCP\" \"clustering\" \"Torres\"",
+    "\"Rethinking Description Length\" \"Bayes\" site:arxiv.org"
+  ],
+  "search_only_not_method_evidence": [
+    "Accelerated BHC 2013 PMC3614914",
+    "Bayesian Martingale LLM OpenReview b1YQ5WKY3w",
+    "Bayesian Prism ICLR2024",
+    "GPRN1110.4411",
+    "PreqTorch old PyPI versions"
+  ],
+  "excluded_irrelevant_search_hits": "HCP/Torres materials-science hits; aggregators and Reddit",
+  "own_symbolic_findings": [
+    "Normalized causal predictive conditionals define a sequential joint law without requiring iid/exchangeability; not automatically the exact TabICL pretraining-prior marginal or posterior probability of shared true functions.",
+    "Product of blockwise predictive marginals and a shared-latent-function joint predictive law differ in general.",
+    "Lag covariates may reveal previous targets; conditioning must use information available at each prediction time.",
+    "For z=(y-a)/s the original-unit log density has the -log(s) Jacobian; identical scales can cancel and already-inverted quantiles must not be corrected twice.",
+    "Different symmetric noises with the same conditional median require no separate oracle MAE predictors, but their separate oracle log scores improve over the pooled mixture by a positive Jensen-Shannon divergence. Population counterexample, not a finite-data BHC or network performance result.",
+    "The implementation clamps dQ/dalpha to [1e-6,1e6]; a finite returned pdf thereby has a positive floor. Literal extension across the full real support is not an exact normalized continuous density. Numerical impact on actual data was not measured.",
+    "Block-factorized prefix score work is R(N+P) context preparations and RQ(N+2P) query rows before additional search/merge costs. Union-symmetrized top-k graph has P<=Nk, not generally Nk/2."
+  ],
+  "decision": "Do not adopt or run this candidate: available evidence does not resolve novelty, point-forecast objective mismatch or RCTL sharing benefit. Not a claim that Bayesian clustering is universally invalid.",
+  "ledger_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+  "remaining_Tab_contexts": 11,
+  "remaining_Tab_query_rows": 20640,
+  "additional_RCTL_fits_allowed": 0,
+  "goal_complete": false,
+  "external_blocker": null,
+  "search_completeness_claimed": false
+}
