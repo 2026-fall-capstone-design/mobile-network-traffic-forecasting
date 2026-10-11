@@ -173,3 +173,5 @@
 [H107 LNN](records/0107-lnn-adaptation.md)은 원83의 문헌 판단을 고정 PDF·TXT·HTML·기존 결과 이미지로 대조한다. 당시 판단과 이번 추가 발견을 구별하며 원83 후속6그룹은 남는다.
 
 [H108 검색·열람 응답](records/0108-maintenance-search-review.md)은 원83의 문헌 발견 경로와 실제 저장 범위를 대조한다. Fed-PPBC 온라인 알고리즘의 보존 공백을 남기고 FDA·LNN의 별도 원문 검수에 연결한다.
+
+[H109 누적 연혁](records/0109-cumulative-history.md)은 snapshot24→25의 후보1행·진행기록11행 추가와 제목 변경을 확인한다. 원83까지의 결정 지도를 제공하고 이전의 실험·정정·검수는 기존 기록으로 연결한다.

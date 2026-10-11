@@ -1,0 +1,149 @@
+{
+  "batch_id": "history-109",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T10:45:54.054222+00:00",
+  "claims_checked": 20,
+  "checks": [
+    {
+      "check_id": "H109-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        19
+      ],
+      "finding": "현재457행 첫 독해와 작성 후 인용 구간/직전44행·22행 실제 재독. 후보1행·progress11행/제목 변경 및44·400행 일치,3경로와고유2본문을확인. snapshot24보관보고연결을현삽입구간으로수정."
+    },
+    {
+      "check_id": "H109-SP02",
+      "claims": [
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "finding": "갱신시점합집합의조건부비용·관측변화/재학습실익구별·128특징과scalar출력·누적예산보고를원문과H105기존검수에연결. 새비용/모델실험아님."
+    },
+    {
+      "check_id": "H109-SP03",
+      "claims": [
+        8,
+        9,
+        20
+      ],
+      "finding": "Fed-PPBC열람보고와보존응답의미확인본문을구별. H108C05/C06·4개공백을실제다시읽고FDA/LNN후속검수경로및보존2그룹소진범위를확인."
+    },
+    {
+      "check_id": "H109-SP04",
+      "claims": [
+        11,
+        12,
+        18
+      ],
+      "finding": "결정20행전체·긍정5항목·진입4조건을재독. 기존19행과새갱신1행및상세기록해시일치;긍정5항목은새수치재현아님. 부분기간/피크와뒤기간손해기록을함께연결."
+    },
+    {
+      "check_id": "H109-SP05",
+      "claims": [
+        13,
+        14,
+        15
+      ],
+      "finding": "역순/초기순서혼합,최종20일미관찰→열람상태변경,UPC255행정정과276행옛설명,interval0.6→600초,HTTP오류후속확인범위를재독. 활동량비교표현으로정확화."
+    },
+    {
+      "check_id": "H109-SP06",
+      "claims": [
+        16,
+        17
+      ],
+      "finding": "float복구/preflight오류와후속부정결과,고정추론/gradient/새fit을구별. 원26에는단순2fit이포함되고29누적fit은반복가산하지않음."
+    }
+  ],
+  "initial_draft_record_sha256": "0f88cc498ff7b92cdfe4e6611da11ca936fb7e1eec29145f17133360fdd62952",
+  "corrected_record_sha256": "0369e4716fe42313985ba43e13162af729f06aeacacfa293a6258202065bda4b",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0001476": [
+      [
+        1,
+        45
+      ]
+    ],
+    "SRC-0001479": [
+      [
+        1,
+        38
+      ],
+      [
+        40,
+        52
+      ],
+      [
+        181,
+        187
+      ],
+      [
+        250,
+        280
+      ],
+      [
+        282,
+        306
+      ],
+      [
+        334,
+        367
+      ],
+      [
+        397,
+        412
+      ]
+    ],
+    "SRC-0001443": [
+      [
+        1,
+        44
+      ]
+    ],
+    "SRC-0001448": [
+      [
+        1,
+        22
+      ]
+    ]
+  },
+  "all_claim_semantic_locations_actually_reread": true,
+  "unresolved_output_truncation": false,
+  "corrections": [
+    {
+      "claim_id": "H109-C15",
+      "type": "wording",
+      "before": "272행의 interval_seconds 0.6→600초는 datetime 단위 처리의 수정이며 새 자료 해상도 발견이 아니다. 최초 JSON을 보존했고 시간 정렬·자료량·다운로드를 바꾸지 않았다고 기록했다. 원29의 상태 코드 미기록과 원30의 후속 HTTP400 보고도 구별한다. 뒤의 원인 확인을 앞선 오류 로그로 소급하지 않는다.",
+      "after": "272행의 interval_seconds 0.6→600초는 datetime 단위 처리의 수정이며 새 자료 해상도 발견이 아니다. 최초 JSON을 보존했고 시간 정렬·활동량 비교는 그대로이며 재다운로드도 없었다고 기록했다. 원29의 상태 코드 미기록과 원30의 후속 HTTP400 보고도 구별한다. 뒤의 원인 확인을 앞선 오류 로그로 소급하지 않는다.",
+      "reason": "272행은 자료량이 아니라 활동량 비교가 변하지 않았다고 기록한다. 원문의 정확한 수정 범위로 맞췄다."
+    },
+    {
+      "claim_id": "H109-C03",
+      "type": "archive_evidence_link",
+      "before": [
+        "../records/0104-cumulative-history.md#c03"
+      ],
+      "after": [
+        "../evidence/0109-cumulative-history/unique-deltas.json"
+      ],
+      "reason": "H104-C03은 직전 snapshot23의 보관 후 추가 기록에 관한 설명이다. snapshot24의34파일 보관 보고를 담은 현재 판본의 삽입 구간으로 연결했다."
+    }
+  ],
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "new_model_runs": 0,
+  "numeric_performance_recomputed": false,
+  "coverage_increment_applied": false,
+  "archive_evidence_reread": [
+    "H105 scalar-check entire JSON",
+    "H108 evidence-gaps entire JSON",
+    "H108-C05/C06 paragraphs"
+  ],
+  "mechanical_equal_lines_not_additional_semantic_credit": true
+}
