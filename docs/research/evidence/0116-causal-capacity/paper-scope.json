@@ -1,0 +1,91 @@
+{
+  "source_id": "SRC-0061921",
+  "sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a",
+  "title": "Conditional Information Bottleneck-Based Multivariate Time Series Forecasting",
+  "authors": [
+    "Xinhui Li",
+    "Liang Duan",
+    "Lixing Yu",
+    "Kun Yue",
+    "Yuehua Li"
+  ],
+  "venue": "IJCAI 2025",
+  "file_pages": 9,
+  "text_and_images_read": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "printed_pages_read": [
+    5634,
+    5635,
+    5636,
+    5637,
+    5638,
+    5639
+  ],
+  "previously_saved_PNGs_viewed": [
+    4,
+    5,
+    6
+  ],
+  "unread_pages": [
+    7,
+    8,
+    9
+  ],
+  "CMI_reference": {
+    "page": 5,
+    "equations": [
+      24,
+      25
+    ],
+    "distribution": "P(C)P(A|C)P(B|C)",
+    "prose_shuffle": "5쪽 본문은 C를 고정하고 양쪽 인접patch shuffle를 설명; 조건부 분포 matching 구체 절차까지 명시하지 않음"
+  },
+  "objective": {
+    "page": 6,
+    "equation": 27,
+    "algorithm": 1,
+    "form": "MSE+alpha1*KL+alpha1*contrast-alpha2*CMI"
+  },
+  "text_equation_disagreement": {
+    "page": 5,
+    "location": "Eq21 앞 문장의 minimize와 주변 maximize/수식 부호"
+  },
+  "experiment_setup": {
+    "page": 6,
+    "datasets": [
+      "ETTh1",
+      "ETTh2",
+      "ETTm1",
+      "ETTm2",
+      "Weather",
+      "Traffic",
+      "Electricity",
+      "ILI",
+      "Exchange Rate"
+    ],
+    "ETT_split": [
+      6,
+      2,
+      2
+    ],
+    "others_split": [
+      7,
+      1,
+      2
+    ],
+    "metrics": [
+      "MSE",
+      "MAE"
+    ]
+  },
+  "Table1_Table2_checked": false,
+  "performance_percentages_independently_checked": false,
+  "all_proofs_or_implementations_verified": false,
+  "new_model_runs": 0
+}

@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-26",
+  "new_model_or_numeric_pilot_calls": 0,
+  "symbolic_scope": "Latest-time rank bound for a proposed joint-output causal RCTL with fixed evaluation BN and no preprocessing that propagates latest values backwards. Squared-risk lower bound is population symbolic, not estimated or tested.",
+  "sources": [
+    {
+      "title": "Conditional Information Bottleneck-Based Multivariate Time Series Forecasting",
+      "url": "https://www.ijcai.org/proceedings/2025/0627.pdf",
+      "file": "sources/causal_capacity_87/CIB_IJCAI2025.pdf",
+      "sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a",
+      "pages": 9,
+      "scope": "Sections3–4.4, Section5.1; PDFpages4,5,6 rendered and visually inspected. No performance reproduction.",
+      "code_commit": "ac09a66245f9eaa7371065ec3f7d3673df125c94",
+      "code_scope": "CMI.py and Conditional_MI.py; backbone CMI/contrastive construction and forward lines118–228; exp_main training loss/backward lines160–204. Public source inspected, not executed.",
+      "finding_scope": "Unconditional batch permutation is not in general sampling from the conditional-product reference. Ideal population identity does not claim equality of finite-batch neural/clipped estimates with KL."
+    }
+  ],
+  "metadata_only": [
+    {
+      "url": "https://arxiv.org/abs/2603.06609v1",
+      "scope": "Title, abstract, authors, version; full method assigned to stage88."
+    }
+  ],
+  "queries": [
+    "\"time series forecasting\" \"bottleneck\" \"rank\""
+  ],
+  "search_scope": "Browser public Google result exposed official IJCAI PDF. Google AI overview not used. Subsequent web official-page access succeeded. Search coverage is not exhaustive.",
+  "unavailable": [
+    "Two arXiv export API queries returned HTTP406."
+  ],
+  "download_note": "cib_source_manifest error is cp949 console print failure after successful HTTP200 PDF save and extraction; original record preserved.",
+  "rctl_code_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+  "code_files": [
+    {
+      "path": "sources/causal_capacity_87/code/CIBMTSF_backbone.py",
+      "sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c",
+      "bytes": 22168
+    },
+    {
+      "path": "sources/causal_capacity_87/code/CMI.py",
+      "sha256": "814b27b6057cb9661a6e09fc44ed849b5a8ecf9ef205e6d95ee7452fdba504c2",
+      "bytes": 1281
+    },
+    {
+      "path": "sources/causal_capacity_87/code/Conditional_MI.py",
+      "sha256": "22925a0e5f44163835f252423c804ea78f5a9d8e0db9ae75eed03aa09e48212d",
+      "bytes": 1219
+    },
+    {
+      "path": "sources/causal_capacity_87/code/exp_main.py",
+      "sha256": "ea934b368478d7762dc7c5015345852836cf87c44ee9ac0c32aac4acae13d1a7",
+      "bytes": 16942
+    }
+  ]
+}
