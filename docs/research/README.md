@@ -272,3 +272,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원85 후속 결정표·연혁·문헌 범위](records/0113-decision-history-sources.md)는 비용 기각의 정정과 과거 판단을 함께 찾는 입구다.
 
 [원86 학습 공유의 범위와 비용](records/0114-shared-training-scope.md)은 공통 초기화·고정 표현·공동 갱신의 차이와 Tab의 추가 기여 조건을 정리한다.
+
+[원86 후속 이력과 문헌](records/0115-sharing-history-literature.md)은21개 후보 결정의 상세 기록, 저장검색의 실제9항목, Jacob논문의 전체 읽기 범위와 실험 한계를 연결한다.
