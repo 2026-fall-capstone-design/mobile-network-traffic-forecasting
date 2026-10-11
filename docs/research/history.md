@@ -203,3 +203,5 @@
 [H122 원92](records/0122-prequential-sharing-objective.md): 유한 context의 순차 공유·분리 증거 후보를 채택하지 않았다. BHC/GP-BHC의 생성 가설·표/예외·근사, PreqTorch와 Tab density 구현의 적용 범위를 검수했다.
 
 [H123 원93](records/0123-candidate-gates-comparison-scope.md): 과거37근거·8조건·29fit의 정합성 감사. 같은 소속의 별도 효율 기여와 실제 sample 묶음 변경을 허용하는 진입 기준으로 보완했으며 새 성능 실험/추천은 없다.
+
+[H124 원94](records/0124-delayed-target-inference-boundaries.md): 실제 정답 지연의 h행/cell 계산·PPCI v2/Algorithm Selection/ADAPT 원문 가정 검토. 현재 정적 h1 후보 미채택이며 새 성능 실험0. v1 우려와 v2 수정, 입력 변화와 조건부 변화, 논문 결과와 RCTL 소속 이득을 구분했다.

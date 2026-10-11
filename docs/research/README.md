@@ -290,3 +290,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원92 순차 공유 증거](records/0122-prequential-sharing-objective.md)는 분포 분리와 최종 RCTL 점 예측의 소속 결정을 구분하고 미채택 사유·다시 열 조건을 연결한다.
 
 [원93 후보 기준 보완](records/0123-candidate-gates-comparison-scope.md)은 같은K4 부정 결과를 유지하며 global 비교 범위·탐색/추천 조건·재사용 근거를 연결한다.
+
+[원94 정답 대기 입력](records/0124-delayed-target-inference-boundaries.md)은 실제 h별 관측시각·PPI 보장 가정·PPCI v2 수정·RCTL 소속 연결과 비용을 구분한다. 관련 실험 전에는 [세 문헌 비교](references/delayed-target-inference.md)와 재검토 조건을 확인한다.

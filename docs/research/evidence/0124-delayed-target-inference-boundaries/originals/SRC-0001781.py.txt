@@ -1,0 +1,39 @@
+from pathlib import Path
+from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor
+import hashlib, json, urllib.request
+from pypdf import PdfReader
+
+base = Path(__file__).resolve().parent / 'sources/delayed_94'
+base.mkdir(parents=True, exist_ok=True)
+jobs = [
+    ('PPCI_2603_05575v2', 'https://arxiv.org/pdf/2603.05575v2'),
+    ('ADAPT_Z_2509_03810v2', 'https://arxiv.org/pdf/2509.03810v2'),
+    ('Reliable_Algorithm_Selection_ICML2025', 'https://raw.githubusercontent.com/mlresearch/v267/main/assets/fannjiang25a/fannjiang25a.pdf'),
+]
+
+def fetch(job):
+    stem, url = job
+    out = base / (stem + '.pdf')
+    assert not out.exists(), out
+    row = {'name': stem, 'url': url, 'accessed_utc': datetime.now(timezone.utc).isoformat()}
+    try:
+        with urllib.request.urlopen(url, timeout=40) as response:
+            data = response.read(14000001)
+            row.update(status=response.status, final_url=response.url)
+        assert len(data) <= 14000000
+        if not data.startswith(b'%PDF'):
+            (base / (stem + '_response.bin')).write_bytes(data)
+            raise ValueError('Not a PDF response; no access-challenge bypass')
+        out.write_bytes(data)
+        pdf = PdfReader(out)
+        row.update(bytes=len(data), sha256=hashlib.sha256(data).hexdigest(), pages=len(pdf.pages), local_file=out.name)
+        (base / (stem + '.txt')).write_text('\n\n'.join(f'--- PDF page {i+1} ---\n{p.extract_text() or ""}' for i,p in enumerate(pdf.pages)), encoding='utf-8')
+    except Exception as exc:
+        row['error'] = type(exc).__name__ + ': ' + str(exc)
+    return row
+
+with ThreadPoolExecutor(max_workers=3) as pool:
+    rows = list(pool.map(fetch, jobs))
+(base / 'source_manifest.json').write_text(json.dumps(rows, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps(rows, ensure_ascii=True))

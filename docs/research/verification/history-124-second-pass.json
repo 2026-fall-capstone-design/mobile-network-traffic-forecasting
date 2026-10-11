@@ -1,0 +1,506 @@
+{
+  "batch_id": "history-124",
+  "draft_sha256": "b9880d83549be627db8de0c715cc539e72a4975eee327064c8baf20e9053cf62",
+  "checks": [
+    {
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "title": "실제 정답 지연과 estimand",
+      "finding": "고정h 대기 h행/cell과 partial vector·offline감춤을 구분했다. Ch iid로 세지 않음. 교통량 moment와 아직 학습하지 않은 RCTL loss는 다르며 원94 문헌/기호 검토·미채택·새실행0을 확인했다."
+    },
+    {
+      "claims": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "title": "PPCI v2 방법·가정·수정",
+      "finding": "Assumption1–6, RKHS weight/cross-fit Eq5–10, ω와 unlabeled의 두 역할을 대조했다. AppendixE의 shared-design도 Assumption1–5를 유지한다. §6.1 deterministic input-only f_q를 이미지로 확인해 v1 우려를 v2에 반복하지 않음."
+    },
+    {
+      "claims": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "title": "Reliable의 보장 경계",
+      "finding": "공통 P(Y|X), held-out independence, Bonferroni population criterion, weighted rectifier와 finite range/D, known비율·정규화상수만 미지인 점근 B.2·추정비율 실험을 구별했다. 실제 교통/RCTL 적용조건 인증0."
+    },
+    {
+      "claims": [
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "title": "ADAPT의 도착 정답·변형·논문 범위",
+      "finding": "encoder/head feature correction·관측 후 past gradient와 cache·online frozen Version2를 대조했다. C말미 conceptual 제한을 이미지로 확인. 본문12/24/48와 표1/24/48 미확인 유지, runtime은 AppendixG로 바로 연결했다. Table10의 예외와 firstdimension last100 그림 범위를 확인했다."
+    },
+    {
+      "claims": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "title": "조건부 변화·결정·비용·재검토",
+      "finding": "densityratio identity의 Q_X와 μ_P−μ_Q 항을 도출 수준으로 한정. 추가가정 없는 미래 식별과 학습 가능한 변화 구별. Ccontext/Chquery를 조건부 작업량으로 한정하고 실제pilot 미실행·탐색/추천 기준·역사원장 권한 분리를 확인했다."
+    },
+    {
+      "claims": [
+        30,
+        31,
+        32,
+        33
+      ],
+      "title": "보존·판본·읽은 범위·남은 작업",
+      "finding": "snapshot listed24/7551747와 manifest추가25/7556799 및 별도213B를 대조했다. 후보58 전문/연혁1–48 partial; 이전판본 기계비교를 전문완료로 확대하지 않음. PDF49page 첫판독/TXT직독0/파생중복0, newline일치의 비과학적 범위와 전체Goal 미완료를 확인했다."
+    }
+  ],
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0001774": [
+      [
+        1,
+        128
+      ]
+    ],
+    "SRC-0001775": [
+      [
+        1,
+        33
+      ]
+    ],
+    "SRC-0001776": [
+      [
+        1,
+        70
+      ]
+    ],
+    "SRC-0001777": [
+      [
+        1,
+        19
+      ]
+    ],
+    "SRC-0001778": [
+      [
+        1,
+        109
+      ]
+    ],
+    "SRC-0001779": [
+      [
+        1,
+        58
+      ]
+    ],
+    "SRC-0001782": [
+      [
+        1,
+        48
+      ]
+    ],
+    "SRC-0001784": [
+      [
+        57,
+        130
+      ]
+    ],
+    "SRC-0001791": [
+      [
+        1,
+        44
+      ]
+    ],
+    "SRC-0001792": [
+      [
+        1,
+        35
+      ]
+    ],
+    "SRC-0022091": [
+      [
+        1,
+        7
+      ]
+    ]
+  },
+  "postdraft_raw_lines": 625,
+  "actual_postdraft_PDF_text_pages": {
+    "SRC-0001785": [
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      16,
+      17,
+      18,
+      19,
+      24,
+      25,
+      26,
+      27
+    ],
+    "SRC-0001787": [
+      1,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      20,
+      21,
+      22,
+      24,
+      25,
+      26,
+      60,
+      61,
+      62,
+      63
+    ],
+    "SRC-0001789": [
+      1,
+      3,
+      4,
+      13,
+      14,
+      17,
+      19
+    ]
+  },
+  "actual_postdraft_PDF_line_ranges": {
+    "SRC-0001785": {
+      "1": [
+        [
+          1,
+          59
+        ]
+      ],
+      "4": [
+        [
+          1,
+          66
+        ]
+      ],
+      "5": [
+        [
+          1,
+          50
+        ]
+      ],
+      "6": [
+        [
+          1,
+          52
+        ]
+      ],
+      "7": [
+        [
+          1,
+          55
+        ]
+      ],
+      "8": [
+        [
+          1,
+          52
+        ]
+      ],
+      "9": [
+        [
+          1,
+          98
+        ]
+      ],
+      "10": [
+        [
+          1,
+          68
+        ]
+      ],
+      "16": [
+        [
+          1,
+          52
+        ]
+      ],
+      "17": [
+        [
+          1,
+          76
+        ]
+      ],
+      "18": [
+        [
+          1,
+          95
+        ]
+      ],
+      "19": [
+        [
+          1,
+          113
+        ]
+      ],
+      "24": [
+        [
+          1,
+          43
+        ]
+      ],
+      "25": [
+        [
+          1,
+          73
+        ]
+      ],
+      "26": [
+        [
+          1,
+          98
+        ]
+      ],
+      "27": [
+        [
+          1,
+          175
+        ]
+      ]
+    },
+    "SRC-0001787": {
+      "1": [
+        [
+          1,
+          28
+        ]
+      ],
+      "6": [
+        [
+          1,
+          31
+        ]
+      ],
+      "8": [
+        [
+          1,
+          29
+        ]
+      ],
+      "9": [
+        [
+          1,
+          29
+        ]
+      ],
+      "10": [
+        [
+          1,
+          57
+        ]
+      ],
+      "11": [
+        [
+          1,
+          53
+        ]
+      ],
+      "12": [
+        [
+          1,
+          39
+        ]
+      ],
+      "13": [
+        [
+          1,
+          41
+        ]
+      ],
+      "14": [
+        [
+          1,
+          60
+        ]
+      ],
+      "15": [
+        [
+          1,
+          51
+        ]
+      ],
+      "20": [
+        [
+          1,
+          35
+        ]
+      ],
+      "21": [
+        [
+          1,
+          67
+        ]
+      ],
+      "22": [
+        [
+          1,
+          37
+        ]
+      ],
+      "24": [
+        [
+          1,
+          32
+        ]
+      ],
+      "25": [
+        [
+          1,
+          44
+        ]
+      ],
+      "26": [
+        [
+          1,
+          45
+        ]
+      ],
+      "60": [
+        [
+          1,
+          55
+        ]
+      ],
+      "61": [
+        [
+          1,
+          48
+        ]
+      ],
+      "62": [
+        [
+          1,
+          63
+        ]
+      ],
+      "63": [
+        [
+          1,
+          68
+        ]
+      ]
+    },
+    "SRC-0001789": {
+      "1": [
+        [
+          1,
+          77
+        ]
+      ],
+      "3": [
+        [
+          1,
+          103
+        ]
+      ],
+      "4": [
+        [
+          1,
+          139
+        ]
+      ],
+      "13": [
+        [
+          1,
+          77
+        ]
+      ],
+      "14": [
+        [
+          1,
+          69
+        ]
+      ],
+      "17": [
+        [
+          1,
+          84
+        ]
+      ],
+      "19": [
+        [
+          1,
+          67
+        ]
+      ]
+    }
+  },
+  "postdraft_PDF_pages": 43,
+  "postdraft_PDF_text_lines": 2753,
+  "actual_postdraft_PDF_image_pages": {
+    "SRC-0001785": [
+      5,
+      19,
+      25,
+      26
+    ],
+    "SRC-0001787": [
+      24
+    ],
+    "SRC-0001789": [
+      13,
+      17
+    ]
+  },
+  "postdraft_whole_images": 7,
+  "postdraft_original_derived_images": [
+    "SRC-0001794",
+    "SRC-0001795"
+  ],
+  "postdraft_own_rendered_images": 5,
+  "metadata_checked_source_groups": 28,
+  "metadata_checked_physical_aliases": 65,
+  "TXT_actual_semantic_read_ranges": {},
+  "full_PDF_or_all_proofs_checked": false,
+  "independent_reviewer": false,
+  "semantic_second_pass_complete": true,
+  "source_code_executed": false,
+  "source_imported": false,
+  "new_model_runs": 0,
+  "coverage_increment_applied": false,
+  "limitations": [
+    "PDF 나머지125page·literalTXT·연혁49–527/이전37–517 전문 미독. 선택page 재독·메타대조는 전체 증명 검수/공식 구현 재현이 아님.",
+    "단독 연구기록만 준비됨. 원95이후/고유판본/FedPPBC/DOCX공백/전체통합/장기접근/최종변경 및검색검수 미완료."
+  ],
+  "updated_at_utc": "2026-10-11T21:22:51.664763+00:00",
+  "status": "source_checked",
+  "claims_checked": 33,
+  "initial_private_draft_sha256": "b9880d83549be627db8de0c715cc539e72a4975eee327064c8baf20e9053cf62",
+  "corrected_record_sha256": "0a8a90fc77c19a989fc6834c0bbb3dc169252f162b2c42264db9efb045f73521",
+  "public_files_written": true,
+  "editorial_clarifications": [],
+  "unresolved_output_truncation": false
+}

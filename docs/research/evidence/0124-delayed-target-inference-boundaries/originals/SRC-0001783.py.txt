@@ -1,0 +1,21 @@
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
+import subprocess, hashlib, json
+
+base = Path(__file__).resolve().parent / 'sources/delayed_94'
+outdir = base / 'renders'
+outdir.mkdir(exist_ok=True)
+poppler = Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+jobs = [('PPCI_2603_05575v2', 6), ('PPCI_2603_05575v2', 24),
+        ('ADAPT_Z_2509_03810v2', 5), ('ADAPT_Z_2509_03810v2', 16),
+        ('Reliable_Algorithm_Selection_ICML2025', 3), ('Reliable_Algorithm_Selection_ICML2025', 14)]
+def render(job):
+    stem, page = job
+    prefix = outdir / f'{stem}_p{page}'
+    subprocess.run([str(poppler), '-f', str(page), '-l', str(page), '-r', '105', '-png', '-singlefile', str(base/(stem+'.pdf')), str(prefix)], check=True, capture_output=True)
+    image = Path(str(prefix)+'.png')
+    return {'pdf': stem+'.pdf', 'page': page, 'image': image.relative_to(base).as_posix(), 'sha256': hashlib.sha256(image.read_bytes()).hexdigest(), 'visually_inspected': False}
+with ThreadPoolExecutor(max_workers=3) as pool:
+    rows = list(pool.map(render, jobs))
+(base/'render_manifest.json').write_text(json.dumps(rows, indent=2), encoding='utf-8')
+print(json.dumps(rows))
