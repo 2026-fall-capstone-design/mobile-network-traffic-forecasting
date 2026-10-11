@@ -1,0 +1,28 @@
+{
+  "batch_id": "history-105",
+  "success": true,
+  "symbolic_cost_b_units": {
+    "same_update_times": 4,
+    "mixed_update_times": 8,
+    "per_two_cell_update": 2
+  },
+  "assumptions": [
+    "각 cell의 필요한 갱신 시점이 알려져 있음",
+    "두 partition 모두 예측 품질 조건 충족",
+    "매번 같은 기간의 cluster 전체 자료 재학습",
+    "한 번의 비용은 cell 수×b"
+  ],
+  "measured_savings": false,
+  "empirical_cost_or_accuracy_recomputed": false,
+  "RCTL_default_steps": 8,
+  "final_channels": 16,
+  "flattened_features": 128,
+  "output_scalar_dimension": 1,
+  "capacity_or_rank_experiment": false,
+  "budget_remaining_from_caps_minus_used": {
+    "TabICL_contexts": 11,
+    "TabICL_query_rows": 20640,
+    "RCTL_fits": 0
+  },
+  "new_model_runs": 0
+}

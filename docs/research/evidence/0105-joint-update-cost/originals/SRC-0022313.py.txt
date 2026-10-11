@@ -1,0 +1,101 @@
+from pathlib import Path
+from hashlib import sha256
+from datetime import datetime, timezone
+import json
+import shutil
+import re
+from pypdf import PdfReader
+
+BASE = Path(__file__).resolve().parent
+ROOT = BASE.parent.parent
+SRC = BASE / 'sources' / 'maintenance_83'
+EXPECTED_LEDGER = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+LEDGER = BASE / 'cumulative_execution_budget.json'
+assert sha256(LEDGER.read_bytes()).hexdigest() == EXPECTED_LEDGER
+scope = {
+    'date_kst': '2026-09-26',
+    'new_TabICL_contexts': 0, 'new_TabICL_rows': 0,
+    'new_RCTL_fits': 0, 'new_numeric_experiments': 0,
+    'ledger_sha256_unchanged': EXPECTED_LEDGER,
+    'new_sources_method_reviewed': [
+        {'title': 'Adaptive federated learning framework for predicting EV charging stations occupancy',
+         'version': 'Author full text uploaded 2025-05-29; DOI 10.1016/j.ijtst.2025.04.007; issue June 2026',
+         'read': 'Author public full-text HTML: sections 3.1, 3.2.1-3.2.3, algorithms 1,3-5, 4.1,4.5-4.7. Some experiment text/table discrepancies noted; no reproduced performance claim.',
+         'access': 'Publisher direct fetch HTTP403; HAL verification screen; author-uploaded public ResearchGate full text available. No bypass, no PDF or code validation.'},
+        {'title': 'A Fuzzy Drift Correlation Matrix for Multiple Data Stream Regression',
+         'version': 'FUZZ-IEEE 2020 institutional PDF DOI 10.1109/FUZZ48607.2020.9177566',
+         'read': 'Sections III-IV: equations 1-8, simulation setup and discussion; rendered pages 3 and 4 inspected.',
+         'not_done': 'No source-code execution, no reproduction of statistical rule or simulation.'},
+        {'title': 'Liquid Neural Network-based Adaptive Learning vs. Incremental Learning for Link Load Prediction amid Concept Drift due to Network Failures',
+         'version': 'ONDM2024 IFIP PDF plus arXiv 2404.05304v1 HTML',
+         'read': 'Sections III-V, simulation and learning setup, Fig3 discussion, TableI. PDF page6 inspected.',
+         'not_done': 'No reproduced models or simulations; no measured maintenance cost for RCTL.'}
+    ],
+    'reused_evidence': [
+        '17_temporal_validity_findings.md',
+        '77_conditional_membership_findings.md',
+        'sources/intermittence_82/CESNET_TimeSeries24_2025.txt',
+        'rctl_torch.py: final Linear(steps*16,1) and flatten'
+    ],
+    'search_queries': [
+        'Adaptive federated learning framework for predicting EV charging stations occupancy',
+        'Multi-stream regression model based on fuzzy drift variance matrix',
+        'A fuzzy drift correlation matrix for multiple data stream regression',
+        'network traffic forecasting concept drift retraining clustering',
+        'Fed-PPBC',
+        'Liquid Neural Network-based Adaptive Learning arxiv'
+    ],
+    'render_note': 'pdftoppm emitted missing display font warnings for Symbol/ArialUnicode. Relevant equations and table remained legible in visual inspection. No source altered.',
+    'numeric_examples': 'Symbolic cost illustrations only; not empirical performance or numerical experiments.',
+    'candidate_selected': False, 'goal_complete': False
+}
+(SRC / 'review_scope.json').write_text(json.dumps(scope, ensure_ascii=False, indent=2), encoding='utf-8')
+
+reports = [BASE / '83_maintenance_scope_plan.md', BASE / '83_maintenance_findings.md', ROOT / 'output/research/TabICLv2_재설계_공동갱신비용_검토.md']
+for p in reports:
+    s = p.read_text(encoding='utf-8')
+    assert '사례' not in s, str(p)
+    for link in re.findall(r'\]\((C:/[^)]+)\)', s):
+        assert Path(link).is_file(), link
+
+manifest = json.loads((SRC / 'source_manifest.json').read_text(encoding='utf-8'))
+pdf_total = 0
+pdf_pages = 0
+for entry in manifest:
+    if 'sha256' in entry:
+        p = SRC / entry['filename']
+        assert sha256(p.read_bytes()).hexdigest() == entry['sha256']
+        if p.suffix == '.pdf':
+            pdf_total += p.stat().st_size
+            pdf_pages += len(PdfReader(p).pages)
+assert (pdf_total, pdf_pages) == (1851180, 12)
+
+archive = ROOT / 'output/research/redesign_20260925_snapshot_25'
+if archive.exists():
+    raise RuntimeError('Snapshot25 already exists; refuse overwrite')
+files = [ROOT/'AGENTS.md', *reports, BASE/'collect_maintenance_83.py', Path(__file__).resolve(), BASE/'progress.md', BASE/'candidate_decision_index.md', LEDGER, BASE/'rctl_torch.py', *sorted(SRC.iterdir())]
+copied = []
+for src in files:
+    if not src.is_file():
+        continue
+    rel = src.relative_to(ROOT)
+    dst = archive / rel
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(src, dst)
+    digest = sha256(src.read_bytes()).hexdigest()
+    assert sha256(dst.read_bytes()).hexdigest() == digest
+    copied.append({'path': rel.as_posix(), 'bytes': src.stat().st_size, 'sha256': digest})
+verification = {
+    'verified_utc': datetime.now(timezone.utc).isoformat(),
+    'snapshot': str(archive), 'copied_files': len(copied),
+    'copied_bytes': sum(x['bytes'] for x in copied),
+    'PDF_count': 2, 'PDF_pages': pdf_pages, 'PDF_bytes': pdf_total,
+    'source_hashes_verified': True, 'copy_hashes_verified': True,
+    'local_report_links_verified': True, 'terminology_verified': True,
+    'cost_ledger_unchanged': True, 'model_experiments_executed': 0,
+    'goal_complete': False, 'files': copied
+}
+(archive/'verification.json').write_text(json.dumps(verification, ensure_ascii=False, indent=2), encoding='utf-8')
+(BASE/'83_archive_verification.json').write_text(json.dumps(verification, ensure_ascii=False, indent=2), encoding='utf-8')
+assert sha256(LEDGER.read_bytes()).hexdigest() == EXPECTED_LEDGER
+print(json.dumps({k:v for k,v in verification.items() if k != 'files'}, ensure_ascii=False, indent=2))
