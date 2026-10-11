@@ -1,0 +1,77 @@
+{
+  "title": "DGCformer: Deep Graph Clustering Transformer for Multivariate Time Series Forecasting",
+  "authors": [
+    "Qinshuo Liu",
+    "Yanwen Fang",
+    "Pengtao Jiang",
+    "Guodong Li"
+  ],
+  "arxiv_version": "2405.08440v1",
+  "submitted": "2024-05-14",
+  "DOI": "10.48550/arXiv.2405.08440",
+  "versioned_HTML": "https://arxiv.org/html/2405.08440v1",
+  "versioned_metadata": "https://arxiv.org/abs/2405.08440v1",
+  "versioned_PDF": "https://arxiv.org/pdf/2405.08440v1",
+  "current_code_availability": "not_checked",
+  "saved_code_statement": "논문 채택 이후 코드를 공개하겠다는 저장 당시의 예정 설명",
+  "datasets": [
+    "ETTh1",
+    "ETTh2",
+    "ETTm1",
+    "ETTm2",
+    "EXC",
+    "WTH",
+    "ILI",
+    "ECL"
+  ],
+  "lookback_general": 96,
+  "lookback_ILI": 104,
+  "main_prediction_lengths": [
+    96,
+    192,
+    336,
+    720
+  ],
+  "ILI_prediction_lengths": [
+    24,
+    36,
+    48,
+    60
+  ],
+  "Table5_prediction_lengths_general": [
+    96,
+    192,
+    336,
+    512
+  ],
+  "normalization": "train mean/std applied to train/validation/test as stated in the paper",
+  "encoder_layers": 3,
+  "attention_heads": 16,
+  "model_dimension": 128,
+  "dropout": "0.2",
+  "RFL_hidden_dimensions": [
+    32,
+    10
+  ],
+  "patch_general": {
+    "length": 16,
+    "stride": 8
+  },
+  "patch_ILI": {
+    "length": 24,
+    "stride": 2
+  },
+  "environment": "PyTorch, one NVIDIA V100 32GB",
+  "unreported_or_unverified": [
+    "seed",
+    "learning_rate",
+    "epochs",
+    "repeated_run_variance",
+    "K_grid_and_validation_selection",
+    "threshold_value",
+    "prediction_loss_gradient_path",
+    "raw_predictions",
+    "end_to_end_cost"
+  ],
+  "original81_dataset_description_correction": "원81 보고서 31행의 도로 교통 포함 설명은 v1의 여덟 데이터셋 목록과 일치하지 않음"
+}

@@ -447,3 +447,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 조건부 평균으로 client를 묶는 제안은 [H089](records/0089-conditional-search-provenance.md)의 CLoVE·DQC·OTCP·인과 평균 후보와 [H088](records/0088-conditional-graph-diagnostic.md)의 같은 소속·기간별 반례를 먼저 확인한다. 출력 대상·평가 척도·독립 표본 조건의 차이를 새 설계에 적는다.
 
 공동 입력·다중 출력·subset·집합 관계 후보는 [원81](records/0090-input-partition-decision.md)에서 sample행과cell열, sharedcore와출력head, cluster별모델과global모델의 비교를 먼저 확인한다. 새 입력선택이 실제손해를 줄이는 조건을 명시해야 한다.
+
+## 관련 channel을 묶어 함께 예측하는 구조는 새로웠는가
+
+[DGCformer 검토](records/0091-dgcformer-source-review.md)에서 잠재 표현의 K-means와 channel mask를 먼저 확인한다. 이 구조의 존재만으로 cluster별 RCTL 독립 학습, 예측과 독립적인 K 선택, 실제 비용 절감을 입증할 수는 없다. 재검토 제안에는 K 선택 구간·목표, 손실별 갱신 parameter, 고정 분할·global 비교군과 전체 탐색 비용의 차이를 적는다. 논문의 평균적 우세뿐 아니라 ECL·720 및 ablation의 불리한 항목도 함께 확인한다.

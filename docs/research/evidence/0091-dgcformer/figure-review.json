@@ -1,0 +1,155 @@
+{
+  "supplement_id": "H091-SUPP-PDF",
+  "supplement_sha256": "b2ba7727545313be4385bb1e8c86488540307a810ddf56d048e4599a548dc113",
+  "figures": [
+    {
+      "figure": 1,
+      "PDF_page": 1,
+      "observation": "Informer의 CD/CI 막대 비교에서 ETTh2 MAE는 CI가 불리하다.",
+      "limit": "막대 픽셀을 정확한 수치로 환산하지 않는다."
+    },
+    {
+      "figure": 2,
+      "PDF_page": 2,
+      "observation": "전체 channel·독립 channel·그룹 내 정보 교환의 개념도다.",
+      "limit": "모델별 가중치 공유나 독립 학습 구현을 입증하지 않는다."
+    },
+    {
+      "figure": 3,
+      "PDF_page": 3,
+      "observation": "ETTh1과 ILI의 상관 열지도다.",
+      "limit": "인과관계나 정량 예측 이득의 증거로 확대하지 않는다."
+    },
+    {
+      "figure": 4,
+      "PDF_page": 4,
+      "observation": "GRU·선형 변환·RFL·GCN·q/P·손실, H²의 K-means와 예측 mask가 연결된다.",
+      "limit": "예측 손실이 어떤 parameter까지 전파되는지는 그림만으로 확정하지 않는다."
+    },
+    {
+      "figure": 5,
+      "PDF_page": 8,
+      "observation": "ETTh1/ETTh2에서 cluster 수 2–6, look-back 96/192/336과 최적 수평선을 표시한다.",
+      "limit": "Batch별 K 선택에 사용한 정보·검증 규칙과 원시 값은 제시하지 않는다."
+    },
+    {
+      "figure": 6,
+      "PDF_page": 13,
+      "observation": "ETTh1의 HUFL/MUFL, ILI의 연령별·여러 변수, WTH의 증기압을 초기 720-step에서 비교한다.",
+      "limit": "축과 단위가 다르며 표시상의 유사성을 군집 최적성으로 바꾸지 않는다."
+    },
+    {
+      "figure": 7,
+      "PDF_page": 14,
+      "observation": "ECL의 과거 96-step으로 다음 720-step을 예측한 네 모델 사례다. 약 550 부근의 큰 spike 누락이 보인다.",
+      "limit": "History/forecast 경계나 정량 통계를 그림에서 확정하지 않는다."
+    }
+  ],
+  "HTML_media_mapping": [
+    {
+      "HTML_id": "S1.F1.g1",
+      "HTML_reference": "2405.08440v1/bar_chart.svg",
+      "PDF_page_one_based": 1
+    },
+    {
+      "HTML_id": "S1.F2.g1",
+      "HTML_reference": "2405.08440v1/CICD.png",
+      "PDF_page_one_based": 2
+    },
+    {
+      "HTML_id": "S3.F3.sf1.g1",
+      "HTML_reference": "2405.08440v1/heatmapetth1.png",
+      "PDF_page_one_based": 3
+    },
+    {
+      "HTML_id": "S3.F3.sf2.g1",
+      "HTML_reference": "2405.08440v1/heatmapetth1_ill.png",
+      "PDF_page_one_based": 3
+    },
+    {
+      "HTML_id": "S3.F4.g1",
+      "HTML_reference": "2405.08440v1/overview2.png",
+      "PDF_page_one_based": 4
+    },
+    {
+      "HTML_id": "S4.F5.g1",
+      "HTML_reference": "2405.08440v1/hyperparameter_plot1.svg",
+      "PDF_page_one_based": 8
+    },
+    {
+      "HTML_id": "A4.F6.sf1.g1",
+      "HTML_reference": "2405.08440v1/compare.svg",
+      "PDF_page_one_based": 13
+    },
+    {
+      "HTML_id": "A4.F6.sf2.g1",
+      "HTML_reference": "2405.08440v1/compare_ill.svg",
+      "PDF_page_one_based": 13
+    },
+    {
+      "HTML_id": "A4.F6.sf3.g1",
+      "HTML_reference": "2405.08440v1/compare_weather.svg",
+      "PDF_page_one_based": 13
+    },
+    {
+      "HTML_id": "A4.F6.sf4.g1",
+      "HTML_reference": "2405.08440v1/compare_ill_2.svg",
+      "PDF_page_one_based": 13
+    },
+    {
+      "HTML_id": "A4.F7.sf1.g1",
+      "HTML_reference": "2405.08440v1/autoformer_visual.svg",
+      "PDF_page_one_based": 14
+    },
+    {
+      "HTML_id": "A4.F7.sf2.g1",
+      "HTML_reference": "2405.08440v1/dlinear_visual.svg",
+      "PDF_page_one_based": 14
+    },
+    {
+      "HTML_id": "A4.F7.sf3.g1",
+      "HTML_reference": "2405.08440v1/patchtst_visual.svg",
+      "PDF_page_one_based": 14
+    },
+    {
+      "HTML_id": "A4.F7.sf4.g1",
+      "HTML_reference": "2405.08440v1/DGCformer_visual.svg",
+      "PDF_page_one_based": 14
+    }
+  ],
+  "HTML_image_files_fetched": false,
+  "HTML_PDF_image_byte_equality_checked": false,
+  "first_visual_PDF_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "postdraft_visual_PDF_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14
+  ],
+  "images_republished": false,
+  "semantic_second_pass_complete": true
+}

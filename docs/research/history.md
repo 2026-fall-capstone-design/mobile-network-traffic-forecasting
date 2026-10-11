@@ -136,3 +136,5 @@
 [H089](records/0089-conditional-search-provenance.md)는 원80 검색42응답과 소스에 대응하는 캐시를 연결한다. 검색 전체JSON1개와 파생 관계를 정리하며 새 실험이나42편의 전문 독해로 세지 않는다.
 
 [H090](records/0090-input-partition-decision.md)은 원81의 미실행 방향 검토다. 저장scalar코드에 다중출력층을 가정한 기호MAC를 확인했으며 실제속도·새RCTL성능과 구별한다.
+
+[H091](records/0091-dgcformer-source-review.md)은 원81에 연결된 DGCformer v1을 후속 검토한 기록이다. 당시 “도로 교통 포함” 서술을 실험 목록에 맞춰 정정하고, 군집·예측 모듈의 분리와 학습·선택의 독립성을 구별한다. 논문의 57개 1위 주장과 표시값의 동률 포함 최저 54개를 함께 보존하며, 새 모델 실험으로 세지 않는다.

@@ -130,3 +130,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 원80의 검색JSON·파생캐시 확인은 [H089](records/0089-conditional-search-provenance.md)로 연결됐다. CLoVE 등 미소장 전문의 가정·판본 관계와 장기 팀 접근, 원81이후·이전 부분 기록의 검수는 남는다.
 
 [원81 검토](records/0090-input-partition-decision.md)의 핵심 판단·기호MAC는 정리했지만 문헌·외부코드·Git명세·검색29그룹의본문과snapshot연혁변경분은 남는다. 다중출력 RCTL의실제성능·walltime을 검증했다고 보지 않는다.
+
+[H091 후속 검토](records/0091-dgcformer-source-review.md)로 위 29그룹 중 DGCformer 네 그룹을 읽었다. 나머지 25그룹과 snapshot 연혁의 고유 변경분은 남는다. DGCformer의 정확한 K 선택 지표·분할, 손실별 gradient 경로, 원시 실행값·반복 분산·총비용은 확보하지 않았다. 표의 57 대 54 집계, 마지막 예측 길이 512 대 720, ablation caption의 길이 표현은 원문 차이로 보존하며 임의로 통일하지 않는다.
