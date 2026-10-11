@@ -148,3 +148,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H098](records/0098-input-partition-history.md)은 위에서 남겼던 snapshot23 연혁의 두 고유 변경을 검토한다. 누적 연구일지의 나머지 본문과 원82 이후·전체 통합·원자료 장기 팀 접근은 별도다. 원81의 판단 및 H091–H097 출처 검수 연결을 실제 다중 출력 모델 실행이나 전체 Goal 완료로 확대하지 않는다.
 
 [H099](records/0099-intermittence-decision.md)에서 원82 중심자료12개와 기존6자료를 연결했다. CESNET Table6/ISP v2의 분모, Citywide·Beam·DeepRenewal 수식·표·그림의15자료그룹 및 snapshot24 후보표·연구일지 고유 변경은 후속 검수로 남긴다. 당시 paper review 표시만으로 현재 검수 완료를 선언하지 않는다.
+
+[H100](records/0100-cesnet-isp-data-semantics.md)에서 CESNET/ISP4자료 그룹을 후속 검수했다. 남은 원82 일차자료는11그룹이며 snapshot24 연혁도 남아 있다. ISP의 평가 표본·scaler fit·trim·극단값·시간 normalization 코드와 비교 benchmark의 인용 번호/동일 조건 여부는 추가 확인 항목이다.

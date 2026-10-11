@@ -154,3 +154,5 @@
 [H098](records/0098-input-partition-history.md)은 snapshot22→23의 후보표11행 추가, 연구일지 최신 제목 교체와 원81/보관 확인의 삽입을 정리한다. 원81의 문헌·기호 비용 검토와 이전 원79–80 실행·사후 보관 문장을 구별했다.
 
 [H099 원82 중심기록](records/0099-intermittence-decision.md)은2026-09-26 간헐 트래픽 후보의 보류 이유를 다룬다. 저장0 비율0.01975%는1시간 Internet activity의 최초35일×1만 grid 값이며, 새 모델 실험은 없다. 문헌15그룹과 snapshot24 연혁 검수는 남아 있다.
+
+[H100](records/0100-cesnet-isp-data-semantics.md)은 원82의 CESNET/ISP 후속 검수다. 원본 Table6는 gaps를 포함한 시계열의 비율이며 ISP의 intervals 설명과 다르다. 두 논문의 저장4형식과 그림을 대조했고 새 모델 실행은 없다. 원82의 나머지11자료 그룹과 snapshot24 연혁은 남아 있다.
