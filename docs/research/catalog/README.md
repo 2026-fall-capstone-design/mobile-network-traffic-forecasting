@@ -241,3 +241,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H092 출처](history-092-sources.jsonl)는 CCM 논문·서지 HTML/TXT 네 그룹을 추가 검토한다. 본문2개·대응TXT2개이며 보충 PDF23쪽은 원목록 가산0이다. [읽은 범위](../sources/history-092.md)에 원81 나머지21그룹과 코드/commit/tree 미검토를 명시했다.
 
 [H093 출처](../sources/history-093.md) · [목록](history-093-sources.jsonl). 새 코드본문4·전체JSON2와 기존2 재참조를 연결했다. 보충 patch_layer376행은 원목록 가산0이다. 원81 잔여15그룹은 [별도 목록](../evidence/0093-ccm-code/packet-coverage.json)에 남긴다.
+
+[H094 출처](../sources/history-094.md) · [목록](history-094-sources.jsonl). DUET 논문·서지HTML/TXT4그룹/8사본과 원81 재참조를 연결했다. 본문2개와 대응TXT2개를 구분하며 보충PDF14쪽은 원목록 가산0이다. 남은11그룹은 [별도 목록](../evidence/0094-duet/packet-coverage.json)에 남긴다.
