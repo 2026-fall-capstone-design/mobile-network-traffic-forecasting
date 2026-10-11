@@ -272,3 +272,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H107 출처](../sources/history-107.md) · [목록](history-107-sources.jsonl). LNN 한 논문의 HTML·PDF·TXT3본문과 PNG1이미지, 동일8경로, 기존2자료 재참조를 구별한다.
 
 [H108 출처](../sources/history-108.md) · [목록](history-108-sources.jsonl). TXT2개·전체JSON2개에 담긴54응답을 검수하며8사본·기존2재참조·파생자료를 추가 집계하지 않는다.
+
+[H109 출처](../sources/history-109.md) · [목록](history-109-sources.jsonl). snapshot25 고유본문2개/457행을 보존하고3사본경로·직전판본2개·기존 상세 검수는 추가 집계하지 않는다.
