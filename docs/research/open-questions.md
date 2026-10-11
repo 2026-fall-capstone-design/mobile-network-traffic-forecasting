@@ -134,3 +134,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H091 후속 검토](records/0091-dgcformer-source-review.md)로 위 29그룹 중 DGCformer 네 그룹을 읽었다. 나머지 25그룹과 snapshot 연혁의 고유 변경분은 남는다. DGCformer의 정확한 K 선택 지표·분할, 손실별 gradient 경로, 원시 실행값·반복 분산·총비용은 확보하지 않았다. 표의 57 대 54 집계, 마지막 예측 길이 512 대 720, ablation caption의 길이 표현은 원문 차이로 보존하며 임의로 통일하지 않는다.
 
 [H092 CCM 후속 검토](records/0092-ccm-source-review.md)로 앞의25그룹 중4그룹을 읽어21그룹이 남는다. Eq.4의 실제 구현·제약, Normalize와 Sinkhorn, K/β 선택, seed별 원시값·M4 집계 절차는 미확인이다. 저장 코드4그룹과 commit/tree를 논문 및 원81의 관찰에 대조해야 한다. 이 공백은 논문 실험의 오류나 RCTL/UPC 성능을 확정하는 근거가 아니다.
+
+[H093 구현 대조](records/0093-ccm-code-review.md)로 위21그룹 중6그룹을 읽어15그룹이 남는다. 활성 sinkhorn·Eq.4 구현·projection/마스킹·prototype와 S 차원을 확인했다. 실제 entrypoint/자료·환경·seed별 결과·M4 집계/선택 이력은 여전히 미확인이다. 코드 경로의 차원·순서·등록 문제는 정적 조건부 관찰이며 논문 실행의 실패를 확인한 것이 아니다.

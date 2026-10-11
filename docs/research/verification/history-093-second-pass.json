@@ -1,0 +1,193 @@
+{
+  "batch_id": "history-093",
+  "checked_at_utc": "2026-10-11T01:17:27.112903+00:00",
+  "claims_checked": 34,
+  "checks": [
+    {
+      "check_id": "H093-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "actual_rechecked_ranges": [
+        "원소장 파일 6그룹/12사본 및 보호원본6 해시",
+        "commit JSON 전체 키 재독해; tree 지정필드/직접항목·5blob 재대조",
+        "Git root 재계산; 보충patch Gitblob 확인"
+      ],
+      "conclusion": "6원자료와 새 보충1, tree의71항목 목록과 실제 읽은본문을 구분. 저장서비스서명판정은 독립PGP검증 아님."
+    },
+    {
+      "check_id": "H093-SP02",
+      "claims": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "actual_rechecked_ranges": [
+        "Dlinear1–100; layers176–393; attention1–149",
+        "patch1–84·193–267·271–368",
+        "논문TXT105–136·1782–1839"
+      ],
+      "conclusion": "wildcard 공개이름·활성/주석정의, i/c/shared, 단일Linear·cosine·batch평균, 행정규화, mask후재정규화없음, 예측값혼합을 확인. 논문 Eq3 projection/정규화와의 차이를 추가."
+    },
+    {
+      "check_id": "H093-SP03",
+      "claims": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "actual_rechecked_ranges": [
+        "Dlinear71–100; layers262–306·352–393",
+        "exp74–76·138–178; patch1–84·271–368",
+        "논문TXT1963–1975 및 공식 API 의미"
+      ],
+      "conclusion": "prototype 반환[B,K,d]와 다음 .t 계약, Parameter교체/optimizer등록 구분, Dlinear와Patch의RevIN/mean범위를 대조. 실제 실패로그로 단정하지 않음."
+    },
+    {
+      "check_id": "H093-SP04",
+      "claims": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "actual_rechecked_ranges": [
+        "exp79–116·154–163·255–313",
+        "Dlinear76–100; layers279–299",
+        "논문TXT108–111·1782–1797"
+      ],
+      "conclusion": "공통randperm과caller원입력의순서, BLC의S차원, max분모와RBFσ5차이를 추론조건과 함께 확인."
+    },
+    {
+      "check_id": "H093-SP05",
+      "claims": [
+        22,
+        23
+      ],
+      "actual_rechecked_ranges": [
+        "exp272–320; 논문TXT124–133",
+        "trace 선형성/순환성, 정리용 유리수 예시"
+      ],
+      "conclusion": "scalar1의J/I차이·+C·epsilon entropy, 고정S에대한상수차이 확인. 실제붕괴/논문무효로 확장하지 않음."
+    },
+    {
+      "check_id": "H093-SP06",
+      "claims": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "actual_rechecked_ranges": [
+        "exp1–212·213–379 전체 재독해",
+        "layers279–306; patch244–267; 원81 15–27"
+      ],
+      "conclusion": "Adam/MSE·combinedvali earlystop·test관측·평가난수·batch가중치·출력경로 확인. eval의직접Dataset인자와 epoch타이머 경계를 추가."
+    },
+    {
+      "check_id": "H093-SP07",
+      "claims": [
+        31,
+        32,
+        33
+      ],
+      "actual_rechecked_ranges": [
+        "원81 15–103; 논문TXT105–136·1782–1839·1963–1975",
+        "Dlinear전체·exp전체·layers지정구간"
+      ],
+      "conclusion": "당시batch평균/joint관찰을 후속코드검토와 연결. zero-shot은crossattention계산/갱신분리와 실제프로토콜공백을 남김. 원81후보표현을 군집별다중출력RCTL로 정밀화."
+    },
+    {
+      "check_id": "H093-SP08",
+      "claims": [
+        34
+      ],
+      "actual_rechecked_ranges": [
+        "H090 pending-source-index29그룹에서 H0914/H0924/H0936을 원ID로 차감",
+        "원81 43–103·현재handoff의미완료범위"
+      ],
+      "conclusion": "잔여15의실제이름/ID를 보존. 중복/재참조/보충파일에 새원자료 독해가산 없음."
+    }
+  ],
+  "full_second_read_all_sources": false,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "actual_source_ranges": {
+    "SRC-0062856": [
+      [
+        1,
+        212
+      ],
+      [
+        213,
+        379
+      ]
+    ],
+    "SRC-0062857": [
+      [
+        1,
+        100
+      ]
+    ],
+    "SRC-0062858": [
+      [
+        1,
+        149
+      ]
+    ],
+    "SRC-0062859": [
+      [
+        176,
+        393
+      ]
+    ],
+    "SRC-0022042": [
+      [
+        15,
+        103
+      ]
+    ],
+    "SRC-0062841": [
+      [
+        105,
+        136
+      ],
+      [
+        1782,
+        1839
+      ],
+      [
+        1963,
+        1975
+      ]
+    ]
+  },
+  "supplement_actual_ranges": [
+    [
+      1,
+      84
+    ],
+    [
+      193,
+      267
+    ],
+    [
+      271,
+      368
+    ]
+  ]
+}
