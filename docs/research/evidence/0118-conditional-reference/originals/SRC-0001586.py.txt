@@ -1,0 +1,93 @@
+from pathlib import Path
+import hashlib
+import json
+import shutil
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT / 'tmp/redesign_20260925'
+SRC = WORK / 'sources/conditional_reference_88'
+LEDGER = WORK / 'cumulative_execution_budget.json'
+EXPECTED = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+REPORT = ROOT / 'output/research/TabICLv2_재설계_조건부sample비교_선행연구검토.md'
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(LEDGER) == EXPECTED
+downloads = json.loads((SRC / 'download_manifest.json').read_text(encoding='utf-8'))
+assert len(downloads) == 4 and all('error' not in row for row in downloads)
+for row in downloads:
+    source = SRC / (row['name'] + '.pdf')
+    assert sha(source) == row['sha256']
+    assert len(PdfReader(source).pages) == row['pages']
+for p in [REPORT, WORK / '88_conditional_reference_findings.md']:
+    assert '\uc0ac\ub840' not in p.read_text(encoding='utf-8')
+
+scope = {
+    'date': '2026-09-26', 'new_model_or_numeric_pilot_calls': 0,
+    'sources': [
+        {'name': 'TabPFN_CRT_2603.06609v1', 'scope': 'Sections1–5, especially3,4.2,Table1,4.4; references scanned. PDF4–5 visually inspected. No result reproduction.'},
+        {'name': 'CPT_JRSSB2020', 'scope': 'Sections2–5, equations2–8, Theorems1–4 statements and Theorem1 proof, Algorithms1–2. Appendix proofs and full empirical evaluation not audited. PDF6 visually inspected.'},
+        {'name': 'CCMI_UAI2019_PMLR2020', 'scope': 'Sections2–3.3, Definition2, KL/DV representation, classifier ratio, Lemma2, Algorithm1 and experiment setup. Supplementary assumptions/proofs not audited. PDF5 visually inspected.'},
+        {'name': 'CMIknn_AISTATS2018', 'scope': 'Sections2.3,4,5; Algorithm1, sampling/cost/guarantee limitations and real time-series application. Full simulation/supplement not audited. PDF4 visually inspected.'},
+    ],
+    'code': {
+        'repo': 'https://github.com/msalem7777/tabpfn-crt',
+        'commit': 'c495edac3125ba2d0f104fcb7c11d3d9012bab13',
+        'scope': 'crt.py and utils.py complete; demo.py configuration and feature-call loop; requirements.txt. No source executed or dependencies installed.',
+        'configuration_note': 'Paper B1000/K200/repeats5 differs from demo B1000/K1000/repeats25 and API defaults B200/K100. Not a reproduced experiment.',
+    },
+    'queries': [
+        'conditional mutual information estimation nearest neighbor sampling classifier CCIT original paper',
+        'conditional permutation test Berrett Wang Barber Samworth 2020 exact conditional distribution paper',
+        'Runge 2018 conditional independence testing nearest neighbor conditional mutual information time series local permutation original paper',
+    ],
+    'metadata_only_not_method_audited': ['Nearest-Neighbor Sampling Based Conditional Independence Testing AAAI2023', 'K-Nearest-Neighbor Local Sampling Based Conditional Independence Testing NeurIPS2023', 'Local permutation tests arXiv2112.11666'],
+    'prior_records_read': ['47_input_sharing_findings.md','81_input_partition_findings.md','28_mechanism_and_uncertainty_audit.md'],
+    'cost_scope': 'Symbolic external context/query counts from public code, not wall-time or memory measurement.',
+    'decision': 'Do not advance generator replacement, local matching, or generator-bias correction alone as a novel cell-clustering proposal.',
+    'search_completeness_claimed': False,
+}
+for source in scope['sources']:
+    row = next(x for x in downloads if x['name'] == source['name'])
+    source.update(url=row['url'], sha256=row['sha256'], pages=row['pages'], bytes=row['bytes'])
+scope['code']['files'] = [{'path': p.relative_to(WORK).as_posix(), 'sha256': sha(p), 'bytes': p.stat().st_size} for p in sorted((SRC / 'code').glob('*'))]
+(WORK / '88_source_reading_scope.json').write_text(json.dumps(scope, ensure_ascii=False, indent=2), encoding='utf-8')
+
+progress = WORK / 'progress.md'
+content = progress.read_text(encoding='utf-8-sig')
+heading = '## 최신 상태 — 88 조건부 비교의 기존 원리와 실제 호출 비용 확인'
+assert heading not in content
+previous = '## 최신 상태 — 87 공동 출력 용량과 조건부 sample 비교 검토'
+assert previous in content
+new = '''## 최신 상태 — 88 조건부 비교의 기존 원리와 실제 호출 비용 확인
+
+- 2026-09-26. 88 계획 후 TabPFN+CRT2603.06609v1, CPT JRSSB2020, CCMI UAI2019/PMLR2020, CMIknn AISTATS2018 원문4개58쪽을 확보했다. 지정 방법·알고리즘·가정·실험 범위를 읽고 관련5쪽을 시각 대조했다. 전체 proof/실험 재현은 아니다.
+- TabPFN+CRT 공식 commit c495edac3125ba2d0f104fcb7c11d3d9012bab13의4파일을 저장해 읽었다. target 예측과 조건부 입력 분위수 생성에 둘 다 TabPFN V2를 사용하고, 분위수 cache 뒤에도 교체 query마다 target 모델을 다시 예측한다. 원문 K200/5회와 demo K1000/25회, API 기본 K100/B200의 차이를 기록했다. 외부 코드 실행0.
+- 조건을 보존하는 교체는 CMIknn/CPT가, 생성 분포 편향 보정은 CCMI Lemma2가 이미 다룬다. 87의 CIB shuffle 문제를 바로잡거나 Tab 생성기로 교체하는 것만으로 신규 후보를 추천하지 않는다. conditional sampler의 추정 정확성·iid/교환가능성 가정을 분위수 개수로 대체하지 않는다.
+- 47·81의 구분을 대조했다. 추가 입력 정보가 있는지와 같은 scalar RCTL에서 sample을 공유하면 좋은지는 다른 질문이다. 조건부 분포 의존성도 평균/중앙값 예측 이득과 다를 수 있다. 입력 공동 처리로 바꾸면 기존 channel clustering과 같은 정보·용량·비용 비교가 필요하다.
+- 실제 코드 기준 한 target/p개 검사/Q행/B반복의 literal context준비2p회, query p(B+2)Q행이며 target 재사용시 p+1회/(pB+p+1)Q행이다. 기호 작업량만 정리했고 새로운 모델·수치 pilot0. 조건부 검사를 모든 cell 쌍에 추가하는 pilot을 시작하지 않았다.
+- 원장 sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변. Tab 잔여11context/20640행, 추가 RCTL fit0 유지. 기존 실험/최종 평가로 보았던 구간은 개발 자료이며 재설계를 독립 검증으로 재명명하지 않는다.
+- 상세88 보고서, 공개 한국어 요약, source 읽기 범위, 공식 코드 위치와 설정 차이, 인덱스를 갱신했다. 87의 snapshot29는24파일/1790337bytes로 완료되어 불변이다. 84의 중간 Word도 변경하지 않았다. 새 최종 추천안/Word는 아직 미완료이며 goal은 active다.
+- 다음에는 조건부 검사의 임계값·분위수·모델만 바꾸어 같은 후보로 재진입하지 않는다. 남은 핵심은 실제 traffic의 손해를 줄이는 partition/입력/학습 결정을 특정하는 것이다. 기존 직접 Tab 예측 이득을 clustering 성공으로 바꾸지 않고, 아직 채택하지 않은 새로운 문제 정의가 실제 관측 또는 원문 증거와 연결되는지 먼저 확인한다. 이번은 가장 가까운 선행 구현과 비용을 확인하여 후보 범위를 좁힌 progress이며 외부 blocker는 없다.
+
+'''
+progress.write_text(content.replace(previous, new + previous.replace('최신', '이전'), 1), encoding='utf-8')
+
+snapshot = ROOT / 'output/research/redesign_20260925_snapshot_30'
+assert not snapshot.exists()
+snapshot.mkdir()
+files = [WORK / n for n in ['88_conditional_reference_scope_plan.md','88_conditional_reference_findings.md','88_source_reading_scope.json','fetch_conditional_sources_88.py','progress.md','candidate_decision_index.md']]
+files += [LEDGER, REPORT, Path(__file__).resolve()] + sorted(p for p in SRC.rglob('*') if p.is_file())
+manifest = []
+for source in files:
+    relative = source.relative_to(ROOT)
+    target = snapshot / relative
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+    assert sha(source) == sha(target)
+    if source.suffix == '.json':
+        json.loads(source.read_text(encoding='utf-8'))
+    manifest.append({'path': relative.as_posix(), 'bytes': source.stat().st_size, 'sha256': sha(source)})
+record = {'files': len(manifest), 'bytes': sum(x['bytes'] for x in manifest), 'manifest': manifest, 'ledger_unchanged': sha(LEDGER) == EXPECTED, 'goal_complete': False}
+(snapshot / 'manifest.json').write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding='utf-8')
+(WORK / '88_archive_verification.json').write_text(json.dumps({'snapshot': str(snapshot), 'files': record['files'], 'bytes': record['bytes'], 'verified': True, 'ledger_unchanged': True}, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps({'snapshot_files': record['files'], 'snapshot_bytes': record['bytes'], 'pdf_pages': sum(x['pages'] for x in downloads), 'ledger_unchanged': True}))

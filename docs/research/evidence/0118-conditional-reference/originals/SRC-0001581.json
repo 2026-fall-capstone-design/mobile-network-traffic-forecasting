@@ -1,0 +1,84 @@
+{
+  "date": "2026-09-26",
+  "new_model_or_numeric_pilot_calls": 0,
+  "sources": [
+    {
+      "name": "TabPFN_CRT_2603.06609v1",
+      "scope": "Sections1–5, especially3,4.2,Table1,4.4; references scanned. PDF4–5 visually inspected. No result reproduction.",
+      "url": "https://arxiv.org/pdf/2603.06609v1",
+      "sha256": "46bd5b984248128efe0a518247ff0281ff5f065380f60c7bc52bff3e18a7468c",
+      "pages": 14,
+      "bytes": 385972
+    },
+    {
+      "name": "CPT_JRSSB2020",
+      "scope": "Sections2–5, equations2–8, Theorems1–4 statements and Theorem1 proof, Algorithms1–2. Appendix proofs and full empirical evaluation not audited. PDF6 visually inspected.",
+      "url": "https://wrap.warwick.ac.uk/id/eprint/139572/1/rssb.12340.pdf",
+      "sha256": "7dc541234ec8c23b3dd086f3a8f6c07f3fd92dd51407ed1a5e0fce6524980c66",
+      "pages": 23,
+      "bytes": 1058161
+    },
+    {
+      "name": "CCMI_UAI2019_PMLR2020",
+      "scope": "Sections2–3.3, Definition2, KL/DV representation, classifier ratio, Lemma2, Algorithm1 and experiment setup. Supplementary assumptions/proofs not audited. PDF5 visually inspected.",
+      "url": "https://proceedings.mlr.press/v115/mukherjee20a/mukherjee20a.pdf",
+      "sha256": "8fd21515890497e1197a29af9346188cc0ea37038210d8f0573205886b4492c5",
+      "pages": 11,
+      "bytes": 1374250
+    },
+    {
+      "name": "CMIknn_AISTATS2018",
+      "scope": "Sections2.3,4,5; Algorithm1, sampling/cost/guarantee limitations and real time-series application. Full simulation/supplement not audited. PDF4 visually inspected.",
+      "url": "https://proceedings.mlr.press/v84/runge18a/runge18a.pdf",
+      "sha256": "c6fb8bf50d7beeee1e3f1db8aeb0b28811e547ed17c261ecddce263cc8e4c13b",
+      "pages": 10,
+      "bytes": 1258950
+    }
+  ],
+  "code": {
+    "repo": "https://github.com/msalem7777/tabpfn-crt",
+    "commit": "c495edac3125ba2d0f104fcb7c11d3d9012bab13",
+    "scope": "crt.py and utils.py complete; demo.py configuration and feature-call loop; requirements.txt. No source executed or dependencies installed.",
+    "configuration_note": "Paper B1000/K200/repeats5 differs from demo B1000/K1000/repeats25 and API defaults B200/K100. Not a reproduced experiment.",
+    "files": [
+      {
+        "path": "sources/conditional_reference_88/code/experiments__demo.py",
+        "sha256": "79191f89acdef059f0bd83f4392164dfb41a8cc0ab801a5723fa92bc7f871577",
+        "bytes": 12480
+      },
+      {
+        "path": "sources/conditional_reference_88/code/requirements.txt",
+        "sha256": "895ab477251da129cb9b0e4f50b7e329d61fdf40df6efc66c83225d018fd2322",
+        "bytes": 49
+      },
+      {
+        "path": "sources/conditional_reference_88/code/tabpfn_crt__crt.py",
+        "sha256": "01aebaf83ecb9a40fd56441eb3e9d6b4e981bf7b430b7e89a9b9a22abd931ed0",
+        "bytes": 6290
+      },
+      {
+        "path": "sources/conditional_reference_88/code/tabpfn_crt__utils.py",
+        "sha256": "b1a6309a8d09dc0b83748ab9d751bc8bd56629c40486d1e293747380d7aae0ee",
+        "bytes": 1593
+      }
+    ]
+  },
+  "queries": [
+    "conditional mutual information estimation nearest neighbor sampling classifier CCIT original paper",
+    "conditional permutation test Berrett Wang Barber Samworth 2020 exact conditional distribution paper",
+    "Runge 2018 conditional independence testing nearest neighbor conditional mutual information time series local permutation original paper"
+  ],
+  "metadata_only_not_method_audited": [
+    "Nearest-Neighbor Sampling Based Conditional Independence Testing AAAI2023",
+    "K-Nearest-Neighbor Local Sampling Based Conditional Independence Testing NeurIPS2023",
+    "Local permutation tests arXiv2112.11666"
+  ],
+  "prior_records_read": [
+    "47_input_sharing_findings.md",
+    "81_input_partition_findings.md",
+    "28_mechanism_and_uncertainty_audit.md"
+  ],
+  "cost_scope": "Symbolic external context/query counts from public code, not wall-time or memory measurement.",
+  "decision": "Do not advance generator replacement, local matching, or generator-bias correction alone as a novel cell-clustering proposal.",
+  "search_completeness_claimed": false
+}

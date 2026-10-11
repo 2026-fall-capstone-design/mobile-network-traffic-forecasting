@@ -1,0 +1,44 @@
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
+from pathlib import Path
+import hashlib
+import json
+import urllib.request
+from pypdf import PdfReader
+
+WORK = Path(__file__).resolve().parent
+DEST = WORK / 'sources/conditional_reference_88'
+DEST.mkdir(parents=True, exist_ok=True)
+SOURCES = [
+    ('TabPFN_CRT_2603.06609v1', 'https://arxiv.org/pdf/2603.06609v1'),
+    ('CPT_JRSSB2020', 'https://wrap.warwick.ac.uk/id/eprint/139572/1/rssb.12340.pdf'),
+    ('CCMI_UAI2019_PMLR2020', 'https://proceedings.mlr.press/v115/mukherjee20a/mukherjee20a.pdf'),
+    ('CMIknn_AISTATS2018', 'https://proceedings.mlr.press/v84/runge18a/runge18a.pdf'),
+]
+CAP = 5_000_000
+def fetch(item):
+    name, url = item
+    result = {'name': name, 'url': url, 'accessed_utc': datetime.now(timezone.utc).isoformat(), 'cap_bytes': CAP}
+    path = DEST / (name + '.pdf')
+    try:
+        if path.exists():
+            raise RuntimeError('Output already exists; do not repeat downloads without inspecting prior manifest.')
+        request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (public academic document research)'})
+        with urllib.request.urlopen(request, timeout=35) as response:
+            result.update(status=response.status, final_url=response.url)
+            data = response.read(CAP + 1)
+        if len(data) > CAP or not data.startswith(b'%PDF'):
+            raise ValueError('Not a PDF within the fixed size cap')
+        path.write_bytes(data)
+        reader = PdfReader(path)
+        text = '\n\n'.join(f'--- PDF page {i+1} ---\n{p.extract_text() or ""}' for i, p in enumerate(reader.pages))
+        (DEST / (name + '.txt')).write_text(text, encoding='utf-8')
+        result.update(bytes=len(data), sha256=hashlib.sha256(data).hexdigest(), pages=len(reader.pages))
+    except Exception as error:
+        result['error'] = type(error).__name__ + ': ' + str(error)
+    return result
+
+with ThreadPoolExecutor(max_workers=4) as pool:
+    records = list(pool.map(fetch, SOURCES))
+(DEST / 'download_manifest.json').write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps(records, ensure_ascii=True))
