@@ -250,3 +250,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 
 
 [Deep Renewal 검수](records/0103-deep-renewal-evidence.md)에서 간격·크기와 global LSTM, 자료별 반례, 부록 수식의 재사용 주의점을 확인한다.
+
+[원82까지의 누적 연혁과 후보 결정 지도](records/0104-cumulative-history.md)에서 원본 번호 또는 바꾸려는 결정으로 상세 기록을 찾을 수 있다. 초기 상태·후속 정정·실행 종류·긍정 증거를 함께 읽어 같은 조건의 조사를 반복하지 않도록 한다.
