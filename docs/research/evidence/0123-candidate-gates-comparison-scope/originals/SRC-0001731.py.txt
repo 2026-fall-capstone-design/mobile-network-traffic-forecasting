@@ -1,0 +1,104 @@
+"""Read-only evidence audit; no dataset/model import, inference, or new fit."""
+from pathlib import Path
+import hashlib
+import json
+from collections import defaultdict
+
+WORK = Path(__file__).resolve().parent
+OUT = WORK / 'results/candidate_gate_audit_93'
+assert not OUT.exists()
+LEDGER = WORK / 'cumulative_execution_budget.json'
+EXPECTED_LEDGER = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+assert sha(LEDGER) == EXPECTED_LEDGER
+evidence = {}
+def read_json(relative):
+    path = WORK / relative
+    evidence[relative] = sha(path)
+    return json.loads(path.read_text(encoding='utf-8'))
+
+settings = read_json('results/rctl_pilot/frozen_settings.json')
+fits = read_json('results/rctl_pilot/fit_results.json')
+summary = read_json('results/rctl_pilot/summary.json')
+finished = read_json('results/rctl_pilot/run_finished.json')
+assert finished['all_fits_complete'] and finished['fits_completed'] == len(fits) == 29
+assert finished['epochs_total'] == sum(fit['epochs_run'] for fit in fits) == 1565
+assert sha(WORK / 'train_rctl_pilot.py') == settings['training_code_sha256']
+assert sha(WORK / 'rctl_torch.py') == settings['model_code_sha256']
+evidence['train_rctl_pilot.py'] = settings['training_code_sha256']
+evidence['rctl_torch.py'] = settings['model_code_sha256']
+assert settings['batch_size'] == 256 and settings['loss'] == 'MAE'
+assert settings['RCTL_results_used_for_clustering'] is False
+
+groups = defaultdict(list)
+for fit in fits:
+    groups[(fit['method'], fit['seed'])].append(fit)
+    path = f"results/rctl_pilot/{fit['method']}_{fit['seed']}_cluster{fit['cluster']}_history.json"
+    history = read_json(path)
+    assert len(history) == fit['epochs_run']
+    assert fit['stop_reason'] == 'validation_patience'
+    assert fit['epochs_run'] < settings['max_epochs']
+    assert 1 <= fit['best_epoch'] <= fit['epochs_run']
+    assert history[fit['best_epoch'] - 1]['val_mae'] == fit['best_val_mae']
+
+training_length = settings['train_targets'][1] - settings['train_targets'][0] + 1
+rows = []
+for metric in summary['metrics']:
+    method, seed = metric['method'], metric['seed']
+    selected = groups[(method, seed)]
+    members = [member for fit in selected for member in fit['members']]
+    assert sorted(members) == list(range(16))
+    assert len(selected) == metric['models']
+    assert all(len(fit['members']) == (16 if method == 'global' else 4) for fit in selected)
+    weighted_recorded_mae = sum(len(fit['members']) * fit['test_mean_scaled_mae'] for fit in selected) / len(members)
+    assert abs(weighted_recorded_mae - metric['mean_scaled_mae']) < 1e-7
+    detail = []
+    for fit in selected:
+        train_rows = len(fit['members']) * training_length
+        updates_per_epoch = (train_rows + settings['batch_size'] - 1) // settings['batch_size']
+        detail.append({
+            'cluster': fit['cluster'], 'training_rows': train_rows,
+            'updates_per_epoch_from_code': updates_per_epoch,
+            'epochs_run': fit['epochs_run'], 'best_epoch': fit['best_epoch'],
+            'updates_executed_from_loop': updates_per_epoch * fit['epochs_run'],
+            'updates_to_selected_checkpoint_from_loop': updates_per_epoch * fit['best_epoch']
+        })
+    rows.append({
+        'method': method, 'seed': seed, 'models': metric['models'],
+        'recorded_mean_scaled_mae': metric['mean_scaled_mae'],
+        'recorded_fit_seconds': metric['fit_seconds'],
+        'training_rows_per_model': [row['training_rows'] for row in detail],
+        'updates_per_epoch_per_model': [row['updates_per_epoch_from_code'] for row in detail],
+        'derived_total_updates_executed': sum(row['updates_executed_from_loop'] for row in detail),
+        'derived_total_updates_to_selected_checkpoints': sum(row['updates_to_selected_checkpoint_from_loop'] for row in detail),
+        'detail': detail
+    })
+
+result80 = read_json('results/conditional_graph_80/result.json')
+result74 = read_json('results/output_compression_74/result.json')
+assert result80['final_RCTL_performance_validated'] is False
+assert result80['weights_or_buffers_updated'] is False
+assert result80['clustering_uses_RCTL'] is False
+assert result74['RCTL_validated'] is False
+assert result74['all_target_values_real'] is True
+assert result80['independent_test'] is False and result74['independent_test'] is False
+assert sha(LEDGER) == EXPECTED_LEDGER
+
+result = {
+    'date': '2026-09-26', 'stage': 93,
+    'scope': 'Existing settings, result records, code hashes and history consistency. No predictions recalculated or statistical testing added.',
+    'new_model_calls': 0, 'new_numeric_experiments': 0,
+    'training_update_counts': 'Integer accounting derived from recorded epochs, member counts and the preserved batch loop; not a new training run or measured speed comparison.',
+    'RCTL_conditions': rows,
+    'verified_evidence_hashes': evidence,
+    '74_scope': 'Downstream actual-target HGB output compression; RCTL not trained/validated.',
+    '80_scope': 'Identical partitions for specified five graph criteria; fixed RCTL gradients inspected, no end-to-end RCTL training or forecasting validation for these partitions.',
+    'decision_scope': 'B2 same-K4 negative finding retained; universal no-clustering claim unsupported. Same partition is not inherently disqualifying if independently demonstrated cost/statistical efficiency improves.',
+    'ledger_sha256': EXPECTED_LEDGER, 'ledger_unchanged': True,
+    'candidate_recommended': False, 'goal_complete': False, 'external_blocker': None
+}
+OUT.mkdir()
+(OUT / 'result.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps({'conditions': len(rows), 'checked_evidence_files': len(evidence), 'ledger_unchanged': True,
+    'training_accounting': [{k: row[k] for k in ('method','seed','derived_total_updates_executed','derived_total_updates_to_selected_checkpoints')} for row in rows]}, ensure_ascii=False))
