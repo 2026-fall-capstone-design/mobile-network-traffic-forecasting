@@ -140,3 +140,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H094 DUET 후속 검토](records/0094-duet-literature-review.md)로 앞15그룹 중4그룹을 읽어11그룹이 남는다. DUET 코드6그룹·다른문헌4·검색1과 snapshot고유변경분은 미완료다. ILI 표제/행의 차이, 개선율의 원집계, 실제 k/γ·난수/분할/seed·추가15자료 결과와 전체 비용을 확인해야 한다. 부록A.2 대수와 Fig8 반례를 전체 실험 실패로 확대하지 않는다.
 
 [H095 DUET 코드 검토](records/0095-duet-code-review.md)로 앞의11그룹 중6그룹을 읽어 문헌4·검색1의5그룹이 남는다. routing의 훈련/평가 차이·load threshold 수치 공간·Gumbel 확률·유한 마스크·drop_last를 확인했지만 실제 실행 로그·최종 CLI 병합·seed별 영향·unified/retest 결과·전체 시간/메모리는 미확인이다. snapshot 연혁의 고유 변경과 다른 과거기록 검토도 이어간다.
+
+[H096](records/0096-predictive-clustering-literature-review.md) 후 원81 패킷에는 [검색JSON1그룹](../research/evidence/0096-predictive-clustering/packet-coverage.json)과별도snapshot 연혁이남는다. HTML/PDF의This version 날짜차이,예2.11의분포범위,실제didec의순열근사/동률처리·전체비용,시계열가정과미래손실을연결할후속검증도남는다. 문헌의합성예를교통실험성공으로기록하지않는다.

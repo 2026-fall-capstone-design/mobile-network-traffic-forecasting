@@ -1,0 +1,81 @@
+{
+  "kind": "출판식의 소규모 유리수 대입과 유한집합 경계점검. 새 연구/재현실험 아님.",
+  "source_code_executed": false,
+  "example25": [
+    {
+      "k": 1,
+      "kappa_X1_given_X2": "1",
+      "kappa_X2_given_X1": "1",
+      "dPi": "0",
+      "dave": "0"
+    },
+    {
+      "k": 3,
+      "kappa_X1_given_X2": "1/9",
+      "kappa_X2_given_X1": "1",
+      "dPi": "0",
+      "dave": "4/9"
+    },
+    {
+      "k": 5,
+      "kappa_X1_given_X2": "1/25",
+      "kappa_X2_given_X1": "1",
+      "dPi": "0",
+      "dave": "12/25"
+    }
+  ],
+  "example28": {
+    "dPi_34": "2/5",
+    "dave_34": "19/30"
+  },
+  "example29": {
+    "dPi_12": "9/16",
+    "dPi_34": "1/16",
+    "dave_12": "3/4",
+    "dave_34": "1/4"
+  },
+  "example211_scope": {
+    "independent_uniform_supports": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "equiprobable_points": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        2
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    "recover_X1_from_sum": "s mod 2",
+    "recover_X2_from_sum": "2 floor(s/2)",
+    "finding": "독립이라는 조건만으로 각 kappa<1을 모든 분포에 일반화할 수 없다. 이 네 점 예에서는 sum으로 양쪽을 복원하므로 각 product dissimilarity가0이다. 논문 예2.10의정규분포 설정에서 전달하는 pairwise linkage의 구조적한계와 구분."
+  },
+  "postdraft_check": {
+    "success": true,
+    "exact_fraction_substitutions": true,
+    "four_point_recovery_verified": true,
+    "scope": "인쇄 κ값을 대입하는 산술과 네 점의 가역성만 재검산. κ의 적분값 재유도·추정·새 데이터 실험은 아님.",
+    "new_model_runs": 0
+  }
+}
