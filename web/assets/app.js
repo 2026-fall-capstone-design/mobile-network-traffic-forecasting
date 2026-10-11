@@ -8,7 +8,7 @@ const date = new Intl.DateTimeFormat("sv-SE", {
   timeZone: "UTC", year: "numeric", month: "2-digit", day: "2-digit",
   hour: "2-digit", minute: "2-digit", hourCycle: "h23",
 });
-const state = { manifest: null, run: null, metrics: null, points: [], chart: null, errorChart: null, epoch: 0, controller: null };
+const state = { manifest: null, run: null, metrics: null, points: [], chart: null, errorChart: null, metricChart: null, epoch: 0, controller: null };
 
 function text(id, value) { $(id).textContent = value; }
 function time(value) { return date.format(new Date(value)); }
@@ -126,6 +126,29 @@ function renderMetrics() {
     tr.append(...cells([label, number.format(item.mae), number.format(item.rmse), number.format(item.macro_rmse)], true));
     return tr;
   }));
+    const labelOf = (item) => state.run.models.find((entry) => entry.id === item.model_id)?.label || item.model_id;
+  const palette = ["#146d60", "#bb6a30", "#207dbe", "#8a5a9e"];
+  if (typeof Chart === "undefined") throw new Error("차트 파일을 불러오지 못했습니다. 페이지를 새로고침해 주세요.");
+  state.metricChart?.destroy();
+  state.metricChart = new Chart($("metric-chart"), {
+    type: "bar",
+    data: {
+      labels: ["MAE", "RMSE", "Macro RMSE"],
+      datasets: state.metrics.rows.map((item, index) => ({
+        label: labelOf(item),
+        data: [item.mae, item.rmse, item.macro_rmse],
+        backgroundColor: palette[index % palette.length],
+      })),
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, animation: false,
+      plugins: { legend: { display: true, position: "bottom" } },
+      scales: {
+        x: { grid: { display: false } },
+        y: { beginAtZero: true, title: { display: true, text: "오차 (작을수록 좋음)" }, grid: { color: "#edf1ed" } },
+      },
+    },
+  });
 }
 function renderRecord() {
   const run = state.run;

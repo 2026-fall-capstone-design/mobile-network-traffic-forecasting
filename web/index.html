@@ -72,6 +72,9 @@
           <article class="panel kpi"><h3>Macro RMSE <span>셀별 RMSE의 평균</span></h3><p id="macro-rmse">—</p></article>
         </div>
         <div class="panel table-scroll" tabindex="0" aria-label="전체 모델 지표 비교">
+                  <div class="panel chart-panel metric-chart">
+          <div class="chart-wrap small"><canvas id="metric-chart" role="img" aria-label="모델별 MAE, RMSE, Macro RMSE 비교 막대 차트. 아래 표에서 수치를 확인할 수 있습니다."></canvas></div>
+        </div>
           <table><caption>동일한 테스트 표본에서 모델 비교</caption>
             <thead><tr><th scope="col">모델</th><th scope="col">MAE</th><th scope="col">RMSE</th><th scope="col">Macro RMSE</th></tr></thead>
             <tbody id="metric-rows"></tbody>
