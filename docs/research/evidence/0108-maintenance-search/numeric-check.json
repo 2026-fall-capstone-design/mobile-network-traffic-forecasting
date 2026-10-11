@@ -1,0 +1,70 @@
+{
+  "batch_id": "history-108",
+  "success": true,
+  "table_text_values_checked": 45,
+  "two_actual_text_transcriptions_match": true,
+  "table_value_lines": [
+    397,
+    399,
+    401,
+    403,
+    405
+  ],
+  "source_id": "SRC-0063000",
+  "source_sha256": "24469a02b3fafbc94a543b60862bdc5e625b160b907e2d7b37e1db7ea377307d",
+  "JSON_pointer": "/value",
+  "Guangzhou_formula": "(AFML - Fed_PPBC) / AFML * 100",
+  "Guangzhou_relative_improvements": [
+    {
+      "metric": "RMSE",
+      "Fed_PPBC": "8.13",
+      "AFML": "10.18",
+      "calculated_percent": "20.13752455795677799607072692",
+      "rounded_percent": "20.14",
+      "reported_percent": "20.14",
+      "match": true
+    },
+    {
+      "metric": "MAE",
+      "Fed_PPBC": "5.87",
+      "AFML": "8.50",
+      "calculated_percent": "30.94117647058823529411764706",
+      "rounded_percent": "30.94",
+      "reported_percent": "30.94",
+      "match": true
+    },
+    {
+      "metric": "MAPE",
+      "Fed_PPBC": "20.51",
+      "AFML": "42.47",
+      "calculated_percent": "51.70708735578055097716034848",
+      "rounded_percent": "51.71",
+      "reported_percent": "51.71",
+      "match": true
+    }
+  ],
+  "Paris_prose_vs_table": [
+    {
+      "model": "Itransform",
+      "prose_RMSE": "9.13",
+      "table_Paris_RMSE": "10.13",
+      "table_Guangzhou_RMSE": "9.13"
+    },
+    {
+      "model": "LightTS",
+      "prose_RMSE": "9.33",
+      "table_Paris_RMSE": "10.07",
+      "table_Guangzhou_RMSE": "9.33"
+    }
+  ],
+  "Paris_ranking_discrepancies": [
+    "설명의 Itransform9.13은 최저라고 한 Dlinear9.19보다 작음",
+    "설명은 LSTM11.12를 최대 오차로 부르지만 표의 TSMixer는12.31"
+  ],
+  "missing_baseline_values_not_reconstructed": true,
+  "original_PDF_pixels_read": false,
+  "source_predictions_read": false,
+  "statistical_significance_checked": false,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

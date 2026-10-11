@@ -171,3 +171,5 @@
 [H106 FDA](records/0106-fda-drift-correlation.md)는 원83의 문헌 판단을 PDF6쪽·TXT582행·기존 이미지2개로 대조한다. 당시 지적과 이번 추가 발견을 분리하며 원83 후속10그룹은 남는다.
 
 [H107 LNN](records/0107-lnn-adaptation.md)은 원83의 문헌 판단을 고정 PDF·TXT·HTML·기존 결과 이미지로 대조한다. 당시 판단과 이번 추가 발견을 구별하며 원83 후속6그룹은 남는다.
+
+[H108 검색·열람 응답](records/0108-maintenance-search-review.md)은 원83의 문헌 발견 경로와 실제 저장 범위를 대조한다. Fed-PPBC 온라인 알고리즘의 보존 공백을 남기고 FDA·LNN의 별도 원문 검수에 연결한다.

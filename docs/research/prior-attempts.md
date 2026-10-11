@@ -512,3 +512,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 갱신 횟수를 줄이는 적응 모델을 도입하려는 경우
 
 [LNN 검수](records/0107-lnn-adaptation.md)를 먼저 확인한다. 큰 변화의 RMSE 이득과 MAPE의 다른 승자, 중간 변화에서20시점 갱신 MLP의 우위, 수렴 시간의 동률·불리한 사례를 함께 읽는다. 입력 시각과 장애 후50관측을 쓰는 사후 분류도 점검한다. RCTL의 공동 갱신 실익·비용으로 이어지는 근거는 [원83](records/0105-joint-update-cost.md)에 남은 과제다.
+
+## drift clustering·재훈련 문헌을 다시 찾으려는 경우
+
+[원83 검색 기록](records/0108-maintenance-search-review.md)에서 Fed-PPBC·FDA·LNN·RLEM·REFOL의 이미 찾은 경로를 먼저 확인한다.54개 응답을54개 전문 독해로 세지 않으며 Algorithm 번호만 같은 검색 결과, 분류/탐지와 회귀, 서지·초록과 실제 비용 실험을 구별한다. Fed-PPBC의 온라인 본문과 수치·m 표기에는 확인할 공백이 있다.
