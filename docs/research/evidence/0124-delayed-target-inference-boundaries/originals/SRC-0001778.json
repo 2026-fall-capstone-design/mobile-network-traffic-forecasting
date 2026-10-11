@@ -1,0 +1,109 @@
+{
+  "date": "2026-09-26",
+  "plan": "94_delayed_target_scope_plan.md",
+  "new_TabICL_calls": 0,
+  "new_RCTL_calls": 0,
+  "new_numeric_experiments": 0,
+  "external_code_executed": false,
+  "official_code_audited": false,
+  "sources": [
+    {
+      "id": "PPCI_2603_05575v2",
+      "version_date": "2026-08-29",
+      "scope": "Section2.4 Assumption1; Section3 Algorithm1/equations5-7; selected Section4 assumptions and dependence discussion; Section5 weighting/unlabeled role; Section6.1-6.2; AppendixE dependence scope. Not a complete proof audit.",
+      "version_change": "Section6.1 now uses deterministic f_q(X)=q*m(X)+(1-q)*s(X), independent of realized response noise. Do not transfer the v1 simulation concern to v2."
+    },
+    {
+      "id": "ADAPT_Z_2509_03810v2",
+      "version_date": "2026-02-26",
+      "venue": "ICLR2026",
+      "scope": "Sections3.1-3.4,4.1 and selected4.3,5; AppendixB Algorithm1/hyperparameters; AppendixC final conceptual-theory limitation; selected AppendixF failure and runtime discussion. No code execution or full reproduction.",
+      "unresolved": "Section4.1 describes horizons12,24,48 while later tables include1,24,48. No code-based experiment-setting certification."
+    },
+    {
+      "id": "Reliable_Algorithm_Selection_ICML2025",
+      "venue": "PMLR267:16078-16101",
+      "scope": "Sections2-3, Algorithm1-5, AppendixA.1 equations4-9 and variance rationale; known vs estimated density-ratio scope. Full proofs and experiments not independently reproduced."
+    }
+  ],
+  "valid_pdf_count": 3,
+  "valid_pdf_pages": 174,
+  "valid_pdf_bytes": 5369639,
+  "renders": [
+    {
+      "pdf": "PPCI_2603_05575v2.pdf",
+      "page": 6,
+      "image": "renders/PPCI_2603_05575v2_p6.png",
+      "sha256": "16903da20a1444a347745e021fe8f5c27aabeafb8903cf20181bb5b0304ae485",
+      "visually_inspected": true
+    },
+    {
+      "pdf": "PPCI_2603_05575v2.pdf",
+      "page": 24,
+      "image": "renders/PPCI_2603_05575v2_p24.png",
+      "sha256": "5e3b6e1af1f6a175fb7312a14337b5a974a3eb50c956a1275f0413a02cf3c9dc",
+      "visually_inspected": true
+    },
+    {
+      "pdf": "ADAPT_Z_2509_03810v2.pdf",
+      "page": 5,
+      "image": "renders/ADAPT_Z_2509_03810v2_p5.png",
+      "sha256": "3ce6c6d41befee15339a912d75f806c5d5d2bbc830acfead9574e7fa718c6050",
+      "visually_inspected": true
+    },
+    {
+      "pdf": "ADAPT_Z_2509_03810v2.pdf",
+      "page": 16,
+      "image": "renders/ADAPT_Z_2509_03810v2_p16.png",
+      "sha256": "aec6d7d1888b200ad4915515612419c7995c05b963b2f4abab73703d4fd3df48",
+      "visually_inspected": true
+    },
+    {
+      "pdf": "Reliable_Algorithm_Selection_ICML2025.pdf",
+      "page": 3,
+      "image": "renders/Reliable_Algorithm_Selection_ICML2025_p3.png",
+      "sha256": "e4894dc492a246250d8bad8b37c0a733fa97a5c403f41dbdf87762405cbe47e4",
+      "visually_inspected": true
+    },
+    {
+      "pdf": "Reliable_Algorithm_Selection_ICML2025.pdf",
+      "page": 14,
+      "image": "renders/Reliable_Algorithm_Selection_ICML2025_p14.png",
+      "sha256": "2d8e972c6dbfd9f410ee335d616709c73f2d8fa6543d8ec1703ef6675bf1266a",
+      "visually_inspected": true
+    }
+  ],
+  "queries": [
+    "\"prediction powered\" \"delayed\" forecasting inference",
+    "time series forecasting delayed feedback unlabeled covariates prediction powered",
+    "\"TabICL\" \"delayed\" regression streaming",
+    "\"prediction-powered\" \"covariate shift\"",
+    "\"forecasting\" \"delayed feedback\" \"online\"",
+    "\"TabPFN\" \"stream\" \"regression\"",
+    "\"Prediction-Powered Conditional Inference\"",
+    "\"Reliable Algorithm Selection for Machine Learning-Guided Design\""
+  ],
+  "search_only_not_method_evidence": [
+    "Online Learning with Optimism and Delay ICML2021",
+    "Multi-Source PPI2606.21232",
+    "DEAL2606.15602",
+    "Causal-Guided Ultra-Long-Term Forecasting",
+    "CEP ICLR2026"
+  ],
+  "access_notes": "Web PDF opening for the ICML paper returned an internal error; ordinary download of the official PMLR GitHub asset succeeded. No access-control bypass. All three PDFs parsed successfully.",
+  "own_symbolic_findings": [
+    "At time t with fixed horizon h and X_s observed by s, Y_(s+h) is known iff s+h<=t. Ignoring start/missing data, h pending rows per cell; one for h=1. Ch raw rows are not automatically independent samples.",
+    "For multi-output horizons partially observed target prefixes differ from fully unobserved targets. Known prefixes do not reveal unknown future suffixes.",
+    "Under support overlap and integrability E_Q f + E_P[(dQ_X/dP_X)(Y-f)] = E_Q mu_P, with discrepancy E_Q(mu_P-mu_Q) from a shifted conditional mean. Correcting input shift alone does not remove arbitrary conditional drift.",
+    "Two environments with the same observed past and current inputs but different future conditional laws cannot always be distinguished at the current boundary without additional assumptions.",
+    "Traffic-label inference and risk of an as-yet untrained grouped RCTL are different estimands. Using learned RCTL predictions/losses in the clustering correction would change the independence requirement."
+  ],
+  "decision": "Do not add a delayed-label PPI module to the present static one-step clustering proposal. Not a universal impossibility claim for delayed forecasting or PPI.",
+  "ledger_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+  "remaining_Tab_contexts": 11,
+  "remaining_Tab_query_rows": 20640,
+  "additional_RCTL_fits_allowed": 0,
+  "goal_complete": false,
+  "external_blocker": null,
+  "search_completeness_claimed": false
+}

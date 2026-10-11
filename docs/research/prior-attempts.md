@@ -576,3 +576,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원93 후보 진입 기준과 기존 실패를 적용할 때
 
 [원93](records/0123-candidate-gates-comparison-scope.md)을 먼저 읽는다. 같은K4 empirical 대비 부정 결과는 유지한다. 같은 유용한 결정을 더 효율적으로 얻거나 실제 함께 학습할 sample을 바꾸는 기여도 검토할 수 있지만, 같은 소속만 얻은 사실과 새모듈 추가를 성공 근거로 쓰지 않는다. global의 표현 가능성과 모델당 자료량 차이도 유한학습 우열의 보편적 결론으로 확대하지 않는다.
+
+## 원94 정답 대기 입력·PPI·adapter를 다시 검토할 때
+
+[원94](records/0124-delayed-target-inference-boundaries.md)와 [세 문헌의 방법/가정](references/delayed-target-inference.md)을 먼저 읽는다. h1에서는 cell당 한 행을 기다리고 Ch행이 독립 표본은 아니다. 과거 오차의 입력 밀도비 보정만으로 임의 조건부 변화나 아직 학습하지 않은 RCTL의 병합 효용을 해결했다고 쓰지 않는다. 실제 관측 지연·대표성·강한 대안의 손해·유용한 결정·context/query 비용이 다른지 구체적으로 적는다. PPCI v2의 입력만 쓰는 simulation 수정은 기존 v1 우려와 구별한다.

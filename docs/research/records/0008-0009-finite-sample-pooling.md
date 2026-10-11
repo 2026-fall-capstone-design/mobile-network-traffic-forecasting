@@ -80,3 +80,5 @@
 
 
 후속 [23·25 조건부 공유 비용](0023-0025-conditional-pooling.md)은 기존B1 분포와 고정 소속을 재사용했다. 직접 혼합 예측의 이득과 RCTL 소속 선택의 근거를 구분하고, 유한표본 반례·수치 실패·비용 한계를 연결했다. 새 Tab 추론이나 RCTL fit은0회다.
+
+후속 [원94 정답 대기 입력](0124-delayed-target-inference-boundaries.md)은 실제 고정h 지연의 대기 h행/cell과 PPCI v2 수정을 확인했다. 이전 v1의 simulation 우려와 최신 입력만 쓰는 구성, offline 정답 감춤과 실제 미관측, 교통량 추론과 RCTL 소속 이득을 구분한다. 기존09의 같은 query 보정 상쇄 판단을 모든 지연 PPI의 기각으로 확대하지 않는다.
