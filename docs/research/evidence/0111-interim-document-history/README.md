@@ -3,7 +3,7 @@
 [정리 기록](../../records/0111-interim-document-history.md) · [팀용 보고서](../0110-evidence-synthesis/team-report.md) · [Word 원본](originals/SRC-0000030.docx) · [PDF 원본](originals/SRC-0023570.pdf) · [누적연혁 원문](originals/SRC-0001505.md.txt)
 
 | 쪽 | 확인 내용 | 보존 이미지 |
-|---|---|
+|---|---|---|
 | 1 | 직접 예측·최종 RCTL 두 표 | [PNG 1](originals/SRC-0023571.png) |
 | 2 | 예측과 소속 결정·근접 연구 | [PNG 2](originals/SRC-0023572.png) |
 | 3 | 시계열 입력·작업량 표 | [PNG 3](originals/SRC-0023573.png) |
