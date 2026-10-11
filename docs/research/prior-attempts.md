@@ -504,3 +504,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 비슷한 변화 시점의 cell을 묶어 재학습 비용을 줄이려는 경우
 
 [원83](records/0105-joint-update-cost.md)을 먼저 확인한다. 갱신 시점 합집합과 cluster별1회 비용, 예측 품질 조건을 함께 명시해야 한다. Tab context 변화만으로 RCTL 재학습 필요를 입증하지 못한다. [원17](records/0016-0017-temporal-validity.md)의 누적 자료 우위와 [원77](records/0077-dynamic-membership-dlm.md)의 다른 소속 결정을 재사용하고, 새 설계가 바꿀 행동과 기존 감시법보다 유용한 근거를 적는다.
+
+## 오차의 동시·지연 변화로 공동 갱신 대상을 묶으려는 경우
+
+[FDA 검수](records/0106-fda-drift-correlation.md)를 먼저 확인한다. 합성 오차의 l=0 일치와 지연 양성8개 추가를 함께 읽고, 식3의 미래 정보·식6의 비음수 기대0·임계값 세 표기·대각 정의와 표의 차이를 검토한다. RCTL 오차 사용의 독립 조건과 Tab 오차에서 실제 갱신 실익으로 가는 연결도 [원83](records/0105-joint-update-cost.md)에서 확인한다.

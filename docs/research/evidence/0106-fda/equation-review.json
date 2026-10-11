@@ -1,0 +1,90 @@
+{
+  "batch_id": "history-106",
+  "source_id": "SRC-0063004",
+  "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+  "equations": [
+    {
+      "equation": 1,
+      "PDF_page": 2,
+      "observation": "예측기 손실로 오차 e를 정의한다. 실험에서는 실제 예측기 대신 합성 오차를 바로 생성한다."
+    },
+    {
+      "equation": 2,
+      "PDF_page": 3,
+      "observation": "절대 오차를 그 표준편차로 나눈다. Z-score라고 부르지만 평균 중심화 항은 없고0 표준편차 처리도 명시하지 않는다."
+    },
+    {
+      "equation": 3,
+      "PDF_page": 3,
+      "observation": "고정 기간의 t 이전과 t 이후를 포함하는 두 평균의 차이 절댓값. 미래 정보가 필요하며 T={1,…,T}와 t=0 예외의 인덱스 경계가 불명확하다."
+    },
+    {
+      "equation": 4,
+      "PDF_page": 3,
+      "observation": "a,b를 사용하는 logistic 변환. 실험의 a,b 수치는 본문에서 확인되지 않았다."
+    },
+    {
+      "equation": 5,
+      "PDF_page": 3,
+      "observation": "한 시계열의 fuzzy 값 시간 평균 fed_ii."
+    },
+    {
+      "equation": 6,
+      "PDF_page": 3,
+      "observation": "시차 l로 대응시킨 두 fuzzy 값 차이의 절댓값이므로 비음수다."
+    },
+    {
+      "equation": 7,
+      "PDF_page": 3,
+      "observation": "식6의 시간 평균. t+l이 기간 밖일 때의 유효 범위·분모 규칙이 명시되지 않는다."
+    },
+    {
+      "equation": 8,
+      "PDF_page": 4,
+      "observation": "두 개별 fed의 최솟값이 ρ보다 크고 pair fed가 λ보다 작으면1, 그 외0."
+    }
+  ],
+  "threshold_discrepancy": "3쪽 CLT 분산 σ²/|T|, 문장 기준1.96σhat, 4쪽 λ=1.96×Σ(fz_ij,t(l)²)/(|T|−1). 세 표기를 보존하고 교정식을 저자 구현으로 간주하지 않는다.",
+  "diagonal_discrepancy": "§III v_ii^0=1 수동 설정과 Table I·II의 S1,S2 대각0이 불일치한다.",
+  "nonnegative_zero_mean_inference": "비음수 확률변수의 유한 기대값이0이면 거의 확실하게0이어서 양의 분산을 가진 정규근사를 이 가정만으로 정당화할 수 없다. 이 논리 점검은 경험적 재현이 아니다.",
+  "postdraft_visual_check_complete": true,
+  "source_equations_executed": false,
+  "independent_reproduction": false,
+  "postdraft_visual_check": {
+    "source_id": "SRC-0063004",
+    "source_sha256": "4665b91aedabc101fbd38a6878e75f15b0cc137e6d05b907ab615907466fd4d4",
+    "PDF_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "figures": [
+      1,
+      2
+    ],
+    "tables": [
+      "I",
+      "II",
+      "III"
+    ],
+    "equations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "saved_images": [
+      "SRC-0063006",
+      "SRC-0063007"
+    ],
+    "all_actual_pixels_reread": true,
+    "independent_reviewer": false
+  }
+}
