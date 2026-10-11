@@ -146,3 +146,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H097](records/0097-input-partition-search-review.md)에서 원81 검색 JSON의 저장 범위를 확인했다. [패킷 범위](evidence/0097-input-partition-search/packet-coverage.json)와 별도로 snapshot23 연혁의 고유 변경이 남는다. didec 전체 API·구현과 판본별 차이, SCPaT 등 검색 후보 전문, 출판사/arXiv 판본 대응은 이번 검색 응답만으로 완료되지 않았다.
 
 [H098](records/0098-input-partition-history.md)은 위에서 남겼던 snapshot23 연혁의 두 고유 변경을 검토한다. 누적 연구일지의 나머지 본문과 원82 이후·전체 통합·원자료 장기 팀 접근은 별도다. 원81의 판단 및 H091–H097 출처 검수 연결을 실제 다중 출력 모델 실행이나 전체 Goal 완료로 확대하지 않는다.
+
+[H099](records/0099-intermittence-decision.md)에서 원82 중심자료12개와 기존6자료를 연결했다. CESNET Table6/ISP v2의 분모, Citywide·Beam·DeepRenewal 수식·표·그림의15자료그룹 및 snapshot24 후보표·연구일지 고유 변경은 후속 검수로 남긴다. 당시 paper review 표시만으로 현재 검수 완료를 선언하지 않는다.

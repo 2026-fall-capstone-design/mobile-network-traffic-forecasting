@@ -1,0 +1,845 @@
+{
+  "batch_id": "history-099",
+  "record_path": "../records/0099-intermittence-decision.md",
+  "record_sha256": "ec66fe7e4b83ca76a6452f4888baa59da0cba1e261813909cdd6070a11f58655",
+  "claims": [
+    {
+      "claim_id": "H099-C01",
+      "title": "질문과 판단의 범위",
+      "claim": "원82는 발생 여부와 발생했을 때의 양을 나눠 cell 공유를 정하는 후보를 검토한 2026-09-26 기록이다. 현재 자료에서 이 후보를 채택할 근거가 부족하다는 당시 판단을 보존한다. 모든 간헐 수요 예측이나 모든 데이터에서의 군집화를 기각한 결과는 아니다.",
+      "record_anchor": "c01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022046",
+          "source_sha256": "5fed972e893842daf9f9b0d6fa78a082ad66f00a144c98ec3ab4a7333cbeee44",
+          "line_ranges": [
+            [
+              1,
+              27
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              1,
+              5
+            ],
+            [
+              49,
+              53
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H099-C02",
+      "title": "실제 수행과 미실행",
+      "claim": "당시 문헌·기존 진단 재검토를 보고했고 새 수치 pilot, TabICL·RCTL·단순 모델 실행, 새 원자료 다운로드와 추천안 확정은 하지 않았다고 명시했다. 저장 실행범위 JSON과 보관 보고도 새 호출0을 기록한다. 이 상태표시를 독립적인 전체 실행 로그 검증으로 확대하지 않는다. 이번 정리에서도 원 연구 코드 실행과 새 모델 실행은0이다.",
+      "record_anchor": "c02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              3,
+              3
+            ],
+            [
+              57,
+              62
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062911",
+          "source_sha256": "a9262047c378bf0a1fd2255275276dce4ef624217f13b4b40e28b59fce2f593a",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022044",
+          "source_sha256": "5520a59ec41b2855837d2c8dc474bfcf956602dc49951052c1b23c0bf9face8d",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0062912",
+          "source_sha256": "86603382e3ff6193e3ea99b7b89b20703c24e9305a26a629024bb5ea811a2668",
+          "JSON_pointer": "/unexecuted"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H099-C03",
+      "title": "서로 다른 0과 결측",
+      "claim": "관측된 실제 무트래픽, 기록 누락, 수집기 장애, 전처리의 zero fill을 구별해야 한다는 것이 진입 질문이다. 결측을0으로 채웠다는 처리 사실만으로 그 구간에 실제 트래픽이 없었다고 확정하지 않는다. 관측 단위·시간 집계·누락 원인을 확인한 뒤 예측 손해와 연결한다.",
+      "record_anchor": "c03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022046",
+          "source_sha256": "5fed972e893842daf9f9b0d6fa78a082ad66f00a144c98ec3ab4a7333cbeee44",
+          "line_ranges": [
+            [
+              1,
+              27
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              7,
+              15
+            ],
+            [
+              31,
+              35
+            ],
+            [
+              53,
+              53
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H099-C04",
+      "title": "CESNET와 ISP 인용의 미해결 확인",
+      "claim": "원82는 ISP v2의99.94%·99.21%를 CESNET Table6의 «gaps가 있는 시계열 비율»과 대조하며 시점별 결측률로 읽으면 안 된다고 기록했다. 또한 수집기 장애 구간과 관측시간 비율을 별도로 언급했다. H099는 이 정정이 원82에 존재함을 확인한 단계다. 두 논문의 실제 표·절 대조는 남아 있으므로 해당 수치를 확정된 시점별0 비율로 인용하지 않는다.",
+      "record_anchor": "c04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              7,
+              15
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062912",
+          "source_sha256": "86603382e3ff6193e3ea99b7b89b20703c24e9305a26a629024bb5ea811a2668",
+          "JSON_pointer": "/reviewed"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H099-C05",
+      "title": "Citywide 문헌의 적용 한계",
+      "claim": "원82는 Citywide2018이 Milan SMS·call과 최근/일주기 입력을 사용하고10분 자료의0 때문에 hourly로 집계했다고 보고했다. 이를 현재 Internet activity의 동일 조건 결과나0 빈도로 cell을 묶는 효과의 증거로 옮기지 않았다. 해당 PDF 본문·그림의 현재 검수는 후속 범위다.",
+      "record_anchor": "c05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              17,
+              23
+            ],
+            [
+              31,
+              35
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062912",
+          "source_sha256": "86603382e3ff6193e3ea99b7b89b20703c24e9305a26a629024bb5ea811a2668",
+          "JSON_pointer": "/reviewed"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H099-C06",
+      "title": "Beam 문헌의 적용 한계",
+      "claim": "원82는 Beam GRU-MTL의 발생 분류·양 회귀·hard gate, MAE0.257 대0.213이라는 저자 보고와 표/본문 가중치·비앙상블 수치의 차이를 기록했다. 재귀 예측의 horizon과2,880개 beam을 현재 cell별 관측1-step 조건에 그대로 옮기지 않았다. H099에서 그 성능 수치나 수식·구현을 독립 검증했다고 세지 않으며 PDF·표 대조를 후속에 남긴다.",
+      "record_anchor": "c06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              17,
+              27
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0021824",
+          "source_sha256": "797a5850de4f781f1fd09aec5c5eb77ecac690020cd0559fe3a317b33d9779c4",
+          "line_ranges": [
+            [
+              13,
+              16
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062912",
+          "source_sha256": "86603382e3ff6193e3ea99b7b89b20703c24e9305a26a629024bb5ea811a2668",
+          "JSON_pointer": "/reviewed"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H099-C07",
+      "title": "Deep Renewal와 신규성 판단",
+      "claim": "원82는 Deep Renewal2021을 발생 간격과 양의 분포·공유 LSTM을 다룬 선행연구로 연결했다. joint occurrence/amount나 공유 모델이라는 설명만으로 새 cell clustering 기여가 성립하지 않는다는 당시 판단이다. 당시에도 이미지 수식과 모든 표 셀을 읽었다고 하지 않았으며, 이 아카이브의 문헌 본문 검수도 아직 남아 있다.",
+      "record_anchor": "c07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              17,
+              23
+            ],
+            [
+              39,
+              49
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062912",
+          "source_sha256": "86603382e3ff6193e3ea99b7b89b20703c24e9305a26a629024bb5ea811a2668",
+          "JSON_pointer": "/reviewed"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H099-C08",
+      "title": "0 비율의 정확한 분모",
+      "claim": "저장 population 진단의 zero_fraction은0.0001975, 백분율로0.01975%다. 생성 코드는 H5의 data[:840, :, 2]를 읽고 shape(840,10000)를 확인한 뒤 np.mean(data==0)를 계산한다. 따라서 분모는 최초35일의840시간×1만 grid cell, 총8,400,000개 값이다. 소수 비율과 백분율을 혼동하거나 «99.94%가0»이라는 다른 데이터의 주장과 합치지 않는다.",
+      "record_anchor": "c08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023595",
+          "source_sha256": "372f6b136e3dedc071b27940123a8a93364855d8878aabb35774a7268c894e88",
+          "JSON_pointer": "/zero_fraction"
+        },
+        {
+          "source_id": "SRC-0022978",
+          "source_sha256": "40782c46e67d45fef8de1205a3f5463b1edd05288fc30da9c7a372822b9c6445",
+          "line_ranges": [
+            [
+              19,
+              27
+            ],
+            [
+              82,
+              93
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              31,
+              35
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H099-C09",
+      "title": "28일 설명 통계와35일0 통계",
+      "claim": "동일 파일의 설명 통계·정규화 척도는 앞28일(672시간), naive 오차는 다음7일을 사용한다. 그러나 zero_fraction은 앞35일 data 전체에서 계산된다. H099는 저장 JSON과 코드의 범위 및 비율 변환을 확인했으며 원H5 traffic tensor를 다시 읽어0 개수를 독립 재계산하지 않았다.",
+      "record_anchor": "c09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023595",
+          "source_sha256": "372f6b136e3dedc071b27940123a8a93364855d8878aabb35774a7268c894e88",
+          "JSON_pointer": "/scope"
+        },
+        {
+          "source_id": "SRC-0022978",
+          "source_sha256": "40782c46e67d45fef8de1205a3f5463b1edd05288fc30da9c7a372822b9c6445",
+          "line_ranges": [
+            [
+              19,
+              29
+            ],
+            [
+              53,
+              56
+            ],
+            [
+              82,
+              93
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H099-C10",
+      "title": "공개 파생 자료의 전처리",
+      "claim": "고정 STCNet README는 자료를 소수 셋째 자리로 반올림하고, 원래5채널(sms_in/out, call_in/out, internet)을3채널(sms, call, internet)로 합쳤다고 설명한다. README 전체는 기존 pilot006에서 이미 확인한 자료이며 이번에 다시 읽었다. 반올림의 존재만으로 모든0의 원인이나 전체 결측/보간 처리를 확인했다고 하지는 않는다.",
+      "record_anchor": "c10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061707",
+          "source_sha256": "f74194b7b7d3d376fc77ec3b27e2855bd5286ecb4f512fb9b27c3520a718b6f0",
+          "line_ranges": [
+            [
+              30,
+              37
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              31,
+              35
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H099-C11",
+      "title": "10분 자료의 작은 대조",
+      "claim": "원32는4159·4556·5161 세 cell의 최초30일10분 관측4,320개씩에서 누락·NaN·0·음수가 없었다고 보고했다. 국가별 행이 합산된 공개 CSV이고5161 선정에는 두 달 활동량이 사용됐다는 한계도 남겼다. 원82가 재사용한 이 범위는 전체 도시·전체 cell·원시 CDR의 무결성이나0 부재를 보장하지 않는다. 이번에는 원32 본문을 대조했으며 CSV 검산을 새로 실행하지 않았다.",
+      "record_anchor": "c11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0021341",
+          "source_sha256": "aa9984bae4acb5c9502d2bc87c5895759a65038eb417b648c7ff3c407f14371e",
+          "line_ranges": [
+            [
+              7,
+              13
+            ],
+            [
+              21,
+              23
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              31,
+              35
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H099-C12",
+      "title": "단위와 관측 대상을 구별",
+      "claim": "현재 인용한 Milan 값은 공개 자료의 Internet activity이며 bytes/Mbps로 바꾸어 부르지 않는다. 원55는2,880개 시계열이30개 base station×3개 cell×32개 beam이며 beam 합이 중복 없는 cell 총량인지는 미확인이라고 남겼다. 이 구분 없이 beam 문헌의 결과를 cell 소속 수정의 직접 근거로 사용하지 않는다.",
+      "record_anchor": "c12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0021824",
+          "source_sha256": "797a5850de4f781f1fd09aec5c5eb77ecac690020cd0559fe3a317b33d9779c4",
+          "line_ranges": [
+            [
+              13,
+              16
+            ],
+            [
+              64,
+              64
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              31,
+              35
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H099-C13",
+      "title": "발생과 양을 나누는 수학적 조건",
+      "claim": "유한한 조건부 평균이 존재하는 비음수 Y에서 p(x)=P(Y>0|x), a(x)=E[Y|Y>0,x]로 두면 p(x)>0일 때 조건부 평균은 p(x)a(x)이고, p(x)=0일 때는0이다. 이것은 발생 여부를 hard threshold로 결정한 값에 회귀량을 곱하는 것과 일반적으로 다르다. 또한 a를 양수 표본에서 조건부로 학습하는 것과 전체 표본에 회귀 손실을 주는 방식을 구별해야 한다는 원82의 논리 점검을 보존한다.",
+      "record_anchor": "c13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              39,
+              45
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H099-C14",
+      "title": "손실별 최적 예측의 예",
+      "claim": "P(Y=0)=0.9, P(Y=100)=0.1이라는 설명용 분포에서는 MAE의 최적 중앙값이0, MSE의 최적 평균이10이다. 저장된 실제 트래픽 실험이 아니다. 작은 산술로0/10 예측의 기대 MAE10/18, 기대 MSE1000/900을 대조했다. «0을 예측한다»만으로 실패를 정하거나, 발생/양 분포가 다르다는 사실만으로 최적 점예측도 반드시 다르다고 하지는 않는다.",
+      "record_anchor": "c14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              43,
+              45
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H099-C15",
+      "title": "전체 비율과 조건부 확률",
+      "claim": "전체0 비율0.01975%는 특정 시간·cell·입력 조건의 p(x)를 대신하지 않는다. 원82는 quantile을 많이 출력하는 회귀라는 설명만으로 정확한0의 point mass, 발생 확률의 calibration, 결측 원인의 구별까지 보장되는 것은 아니라고 지적했다. 이는 특정 모델 API의 현재 기능 검증이나 새 분류 head 구현 결과가 아니다.",
+      "record_anchor": "c15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              43,
+              49
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023595",
+          "source_sha256": "372f6b136e3dedc071b27940123a8a93364855d8878aabb35774a7268c894e88",
+          "JSON_pointer": "/zero_fraction"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H099-C16",
+      "title": "논문 수식과 구현 오류의 구별",
+      "claim": "원82는 beam 논문의 round(sigmoid) gate와 손실 설명 사이에서 구현 확인이 필요하다고 남겼다. 소스 구현을 실행·검토하지 않은 채 gradient가 흐르지 않는 버그라고 단정하지 않았다. 발생·양의 분해가 가능한 것, 저자 수식의 의미, 실제 학습 구현과 성능은 각각 확인할 항목이다.",
+      "record_anchor": "c16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              25,
+              27
+            ],
+            [
+              39,
+              41
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062912",
+          "source_sha256": "86603382e3ff6193e3ea99b7b89b20703c24e9305a26a629024bb5ea811a2668",
+          "JSON_pointer": "/unexecuted"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H099-C17",
+      "title": "재검토 조건",
+      "claim": "당시 재진입 조건은 관측 누락과 구별된 반복 무트래픽이 실제 예측 손해를 만든다는 근거, 그리고 기존 two-part 학습보다 cell 공유·분리의 선택을 유용하게 바꾸는 원리다. 현재 자료를 인위적으로0으로 만들어 문제를 만들거나, beam을 cell로 재명명하거나, 새 loss·분류 모듈을 붙이는 것만으로 이 조건을 충족했다고 보지 않았다. 최종 RCTL이 사용하는 손실과 예측 대상을 유지하고, 기존 global RCTL 비교를 생략하지 않는 조건도 포함한다.",
+      "record_anchor": "c17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              49,
+              53
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022046",
+          "source_sha256": "5fed972e893842daf9f9b0d6fa78a082ad66f00a144c98ec3ab4a7333cbeee44",
+          "line_ranges": [
+            [
+              1,
+              27
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              41,
+              45
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H099-C18",
+      "title": "긍정 증거와 당시 예산",
+      "claim": "원82는 원60·74·80의 Tab 직접 예측 긍정 증거를 삭제하지 않았고 이번 간헐 후보 채택과 구별했다. 재사용한 원80 종료 원장은 Tab 사용69context·39,360query행/상한80·60,000, RCTL29fit/상한29로 잔량11·20,640·0이다. 이 산술과 저장해시를 확인했지만 당시 남은 예산을 현재 새 실험 허가로 사용하지 않는다.",
+      "record_anchor": "c18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              60,
+              62
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0025150",
+          "source_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+          "JSON_pointer": "/used"
+        },
+        {
+          "source_id": "SRC-0025150",
+          "source_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+          "JSON_pointer": "/caps"
+        },
+        {
+          "source_id": "SRC-0025150",
+          "source_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+          "JSON_pointer": "/remaining_count_budgets"
+        },
+        {
+          "source_id": "SRC-0062911",
+          "source_sha256": "a9262047c378bf0a1fd2255275276dce4ef624217f13b4b40e28b59fce2f593a",
+          "JSON_pointer": "/budget_ledger_sha256"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H099-C19",
+      "title": "확보 자료와 당시 열람표시",
+      "claim": "source_manifest4항목과 additional_manifest2항목은 Citywide PDF, Beam HTML/PDF, CESNET HTML, ISP v2 HTML, Deep Renewal HTML의 확보 주소·시각·바이트·해시를 기록한다. PDF 두 개의 합계는4,132,717바이트이고 명세상4+17=21쪽이다. 당시 PDF3쪽 시각 확인이라는 보고를 이번 PDF 전체 독해나 현재 이미지 검수로 가산하지 않는다.",
+      "record_anchor": "c19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062913",
+          "source_sha256": "649223ad3a22f7486a06e70db0aa6718276caaa3418ec75ae8c038c5c993fa34",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0062910",
+          "source_sha256": "134a7884238e825807c553efcf93493eb2f29820d186a495556dd35e2da698c6",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022044",
+          "source_sha256": "5520a59ec41b2855837d2c8dc474bfcf956602dc49951052c1b23c0bf9face8d",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0062912",
+          "source_sha256": "86603382e3ff6193e3ea99b7b89b20703c24e9305a26a629024bb5ea811a2668",
+          "JSON_pointer": "/reviewed"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H099-C20",
+      "title": "수집 코드의 역할과 한계",
+      "claim": "수집/보완 코드에는 응답 크기 상한, 파일 중복 방지, 해시 저장, HTML/PDF 텍스트 추출과 오류 필드 기록이 있다. 보관 코드는 원장 해시·잔량, 확보 manifest의 성공/파일 해시·크기·PDF 쪽수, 저장0 비율과 사본 동일성을 검사한다. rendered_review_pages 같은 보고 필드는 코드에 정해진 수를 쓰므로 그 필드만으로 실제 시각 검수를 증명할 수 없다. 세 코드는 전체 정적 독해했으며 실행하거나 import하지 않았다.",
+      "record_anchor": "c20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022609",
+          "source_sha256": "cfbb06c67cf3c78e2e33dd2e8cea42674de931e6c3b4b2812aa73763ced022cf",
+          "line_ranges": [
+            [
+              33,
+              68
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022687",
+          "source_sha256": "b02eb6c0a31cd43fe376584ad233908031ca9cdf194f7ce1ac895f0381b489b4",
+          "line_ranges": [
+            [
+              22,
+              44
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022298",
+          "source_sha256": "a4ce4d2b6e533e6b02939c97e830cefc817ae072aebed3c3a09431c70d5f95a3",
+          "line_ranges": [
+            [
+              10,
+              17
+            ],
+            [
+              44,
+              79
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H099-C21",
+      "title": "snapshot24의 보관 범위",
+      "claim": "snapshot_manifest.json은34파일·7,480,756바이트를 나열한다. 현재 그34사본의 크기·해시가 명세와 일치함을 확인했다. 이 명세와 별도 archive_verification.json의 역할, 원문과 동일한 사본의 관계를 구별한다. 34개 사본 확인을34개 고유 내용의 독해 완료로 세지 않으며 후보표·연구일지의 고유 변경 검토는 남아 있다.",
+      "record_anchor": "c21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001436",
+          "source_sha256": "d7975be59b7d7c760212f88e06ebe759cd76703c55f76e49a5c9ffc32ee34f55",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022044",
+          "source_sha256": "5520a59ec41b2855837d2c8dc474bfcf956602dc49951052c1b23c0bf9face8d",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022298",
+          "source_sha256": "a4ce4d2b6e533e6b02939c97e830cefc817ae072aebed3c3a09431c70d5f95a3",
+          "line_ranges": [
+            [
+              60,
+              79
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H099-C22",
+      "title": "팀용 사본과 원문 보존",
+      "claim": "공개 요약문 SRC-0000118은 원문20행까지 읽었다. 팀용 링크 보정 사본에서는1–19행을 유지하고20행의 개인 파일 경로만 이 저장소의 원82 기록으로 연결했으며 변경 설명을 덧붙였다. 원본 파일과 SHA-256은 그대로 보존하고 보정본을 바이트 동일 원본으로 표시하지 않는다.",
+      "record_anchor": "c22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000118",
+          "source_sha256": "2232b32850f8afd3f2c7b14bf8b281a3b947b34bcaaed3c3f2b9d77d772feef2",
+          "line_ranges": [
+            [
+              1,
+              20
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H099-C23",
+      "title": "이 묶음의 실제 검수 범위",
+      "claim": "H099의 첫 독해는 중심자료12개(텍스트6·전체JSON6)와 기존6개 재참조다. STCNet README는 pilot006, population 자료는H007에서 이미 읽은 근거이므로 추가 가산하지 않는다. 새 논문 HTML4·PDF2·추출TXT6·PNG3의15그룹은 해시만 확인했고 현재 내용·그림 검수가 남아 있다. 과거 scope JSON의 열람 표시는 현재 독해를 대신하지 않는다.",
+      "record_anchor": "c23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062912",
+          "source_sha256": "86603382e3ff6193e3ea99b7b89b20703c24e9305a26a629024bb5ea811a2668",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0001436",
+          "source_sha256": "d7975be59b7d7c760212f88e06ebe759cd76703c55f76e49a5c9ffc32ee34f55",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0061707",
+          "source_sha256": "f74194b7b7d3d376fc77ec3b27e2855bd5286ecb4f512fb9b27c3520a718b6f0",
+          "line_ranges": [
+            [
+              1,
+              59
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023595",
+          "source_sha256": "372f6b136e3dedc071b27940123a8a93364855d8878aabb35774a7268c894e88",
+          "JSON_pointer": ""
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H099-C24",
+      "title": "남은 통합과 다음 작업",
+      "claim": "CESNET Table6와 ISP v2의 분모·결측 원인을 먼저 대조하고 Citywide·Beam·Deep Renewal의 수식·표·그림을 확인해야 한다. 이어 snapshot24 연혁의 고유 변경을 연결한다. 이 중심기록을 원82 전체 자료, 누적 연구일지 전체, 최종 연구 추천안 또는 전체 정리 Goal의 완료로 표시하지 않는다.",
+      "record_anchor": "c24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              57,
+              62
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062912",
+          "source_sha256": "86603382e3ff6193e3ea99b7b89b20703c24e9305a26a629024bb5ea811a2668",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0001436",
+          "source_sha256": "d7975be59b7d7c760212f88e06ebe759cd76703c55f76e49a5c9ffc32ee34f55",
+          "JSON_pointer": ""
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

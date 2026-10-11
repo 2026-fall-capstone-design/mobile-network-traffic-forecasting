@@ -1,0 +1,68 @@
+from pathlib import Path
+from datetime import datetime, timezone
+from html.parser import HTMLParser
+import hashlib, json, urllib.request
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parent
+BASE = ROOT / 'sources/intermittence_82'
+BASE.mkdir(parents=True, exist_ok=True)
+MANIFEST = BASE / 'source_manifest.json'
+assert not MANIFEST.exists(), 'Do not repeat a completed source collection'
+records = []
+
+class Parser(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.parts=[]; self.skip=0; self.math=0
+    def handle_starttag(self, tag, attrs):
+        attrs=dict(attrs)
+        if tag in ('script','style','nav'): self.skip+=1
+        if tag == 'math':
+            self.math+=1; self.parts.append(' '+attrs.get('alttext','[math]')+' ')
+        if tag in ('section','p','h1','h2','h3','h4','li','tr','figure','div'):
+            self.parts.append('\n')
+        if tag == 'img' and attrs.get('alt'):
+            self.parts.append(' [image: '+attrs['alt']+'] ')
+    def handle_endtag(self, tag):
+        if tag in ('script','style','nav'): self.skip=max(0,self.skip-1)
+        if tag=='math': self.math=max(0,self.math-1)
+        if tag in ('section','p','li','tr','div'): self.parts.append('\n')
+    def handle_data(self, data):
+        if not self.skip and not self.math: self.parts.append(data)
+
+def save(name, url, limit=5_000_000):
+    rec={'name':name,'requested_url':url,'accessed_utc':datetime.now(timezone.utc).isoformat()}
+    try:
+        req=urllib.request.Request(url,headers={'User-Agent':'Research-source-verification/1.0'})
+        with urllib.request.urlopen(req,timeout=20) as res:
+            if int(res.headers.get('Content-Length') or 0)>limit: raise ValueError('size limit')
+            data=res.read(limit+1); rec['final_url']=res.url
+        assert len(data)<=limit
+        path=BASE/name; assert not path.exists()
+        path.write_bytes(data)
+        rec.update(bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        if name.endswith('.html'):
+            parser=Parser(); parser.feed(data.decode('utf-8'))
+            lines=[' '.join(line.split()) for line in ''.join(parser.parts).splitlines()]
+            path.with_suffix('.txt').write_text('\n'.join(x for x in lines if x),encoding='utf-8')
+        elif name.endswith('.pdf'):
+            assert data.startswith(b'%PDF-')
+            pdf=PdfReader(path); rec['pages']=len(pdf.pages)
+            path.with_suffix('.txt').write_text('\n\n'.join(f'PAGE {i+1}\n'+(p.extract_text() or '') for i,p in enumerate(pdf.pages)),encoding='utf-8')
+    except Exception as exc:
+        rec['error']=repr(exc)
+    records.append(rec)
+    MANIFEST.write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps(rec,ensure_ascii=False),flush=True)
+
+save('Citywide_DenseNet_2018.pdf','https://chuanting.github.io/assets/pdf/ieee_cl_2018.pdf')
+save('Beam_GRU_MTL_2025.html','https://www.frontiersin.org/journals/communications-and-networks/articles/10.3389/frcmn.2025.1658461/full')
+save('CESNET_TimeSeries24_2025.html','https://pmc.ncbi.nlm.nih.gov/articles/PMC11865510/')
+save('ISP_TTM_2511.17529v2.html','https://arxiv.org/html/2511.17529v2')
+
+ledger=ROOT/'cumulative_execution_budget.json'
+(BASE/'execution_scope.json').write_text(json.dumps({
+    'stage':82,'new_model_fits':0,'new_model_predictions':0,'new_numeric_pilot':False,
+    'budget_ledger_sha256':hashlib.sha256(ledger.read_bytes()).hexdigest(),
+    'note':'Read-only source retrieval. Existing local ISP PDF retained; no dataset downloaded.'
+},indent=2),encoding='utf-8')

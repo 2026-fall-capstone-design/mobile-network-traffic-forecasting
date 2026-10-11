@@ -475,3 +475,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 입력 공유 후보가 보류된 맥락
 
 [H098](records/0098-input-partition-history.md)에서 scalar pooling 반례의 범위, 같은 폭의 global 다중 출력 대안, 유지한 Tab 직접 예측 이득을 함께 읽는다. 다시 제안할 때는 실제 입력 분할 손해와 바뀌는 선택, 최종 학습 단위를 기존 단순 대안에 대비해 명시한다.
+
+## 발생 여부와 양을 나눠 cell을 묶으려는 경우
+
+[원82의 진입 판단](records/0099-intermittence-decision.md)을 먼저 확인한다. 전체0 비율과 조건부 발생 확률, 실제 무트래픽과 누락/zero fill, MAE와MSE, beam과cell을 구별해야 한다. 기존 two-part 방법에 비해 어떤 공유 결정을 바꾸는지와 실제 예측 손해가 재검토 조건이다.
