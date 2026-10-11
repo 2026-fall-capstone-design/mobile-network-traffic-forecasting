@@ -471,3 +471,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 입력 분할의 선행연구를 다시 찾기 전에
 
 [H097 검색 기록](records/0097-input-partition-search-review.md)의 마지막 표에서 DGCformer·CCM·DUET·Fuchs–Wang 검토로 이동한다. 공동 정보·입력 공유라는 이름의 반복보다 기존 방법과 다른 목표·선택 조건·실제 손해를 명시한다. 코드 미확인과 부재, 문서 API와 실행 성공, 검색 수치와 독립 결과를 구별한다.
+
+## 입력 공유 후보가 보류된 맥락
+
+[H098](records/0098-input-partition-history.md)에서 scalar pooling 반례의 범위, 같은 폭의 global 다중 출력 대안, 유지한 Tab 직접 예측 이득을 함께 읽는다. 다시 제안할 때는 실제 입력 분할 손해와 바뀌는 선택, 최종 학습 단위를 기존 단순 대안에 대비해 명시한다.
