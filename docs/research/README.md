@@ -280,3 +280,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원87 후속의 결정 이력·CIB 표와 평가 경로](records/0117-conditional-history-cib.md)는 22판단·38연혁절, Table1/2의 수치·horizon 차이, 대조 손실과 validation/test/predict 경로를 연결한다.
 
 [원88 조건부 비교의 선행연구·고정 코드·비용](records/0118-conditional-reference-audit.md)은 TabPFN+CRT, CPT, CCMI, CMIknn의 역할·가정·저장판 차이를 연결한다.
+
+[원89 cell 이질성과 RCTL 분할](records/0119-heterogeneity-splitting.md)은 그룹 정보 입력과 분리 학습을 구별하고 두 논문의 결과·적용 범위·표의 미해결 차이를 연결한다.

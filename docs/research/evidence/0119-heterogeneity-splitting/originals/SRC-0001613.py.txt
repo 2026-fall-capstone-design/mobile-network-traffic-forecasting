@@ -1,0 +1,23 @@
+from datetime import datetime, timezone
+from pathlib import Path
+import hashlib, json, urllib.request
+from pypdf import PdfReader
+
+dest = Path(__file__).resolve().parent / 'sources/heterogeneity_89'
+url = 'https://arxiv.org/pdf/2404.06198'
+path = dest / 'Similarity_Diversity_2404.06198v2.pdf'
+record = {'url': url, 'accessed_utc': datetime.now(timezone.utc).isoformat(), 'cap_bytes': 5000000, 'reason': 'Public latest PDF; abs page confirms latest is v2. Version-specific urllib request returned 406; web tool reads v2 successfully. No authentication or access-control changes.'}
+try:
+    if path.exists(): raise RuntimeError('PDF already exists')
+    with urllib.request.urlopen(url, timeout=35) as response:
+        data = response.read(5000001)
+        record.update(status=response.status, final_url=response.url)
+    if len(data)>5000000 or not data.startswith(b'%PDF'): raise ValueError('Expected PDF below 5 MB')
+    path.write_bytes(data)
+    reader = PdfReader(path)
+    txt = '\n\n'.join(f'--- PDF page {i+1} ---\n{p.extract_text() or ""}' for i,p in enumerate(reader.pages))
+    path.with_suffix('.txt').write_text(txt, encoding='utf-8')
+    record.update(bytes=len(data), pages=len(reader.pages), sha256=hashlib.sha256(data).hexdigest(), version_v2_in_text='2404.06198v2' in txt)
+except Exception as e: record['error'] = type(e).__name__ + ': ' + str(e)
+(dest/'diversity_download_latest_manifest.json').write_text(json.dumps(record,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(record, ensure_ascii=True))

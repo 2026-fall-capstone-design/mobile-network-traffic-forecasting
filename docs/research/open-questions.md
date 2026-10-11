@@ -185,3 +185,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H117](records/0117-conditional-history-cib.md)에서 H116의 알려진 후속7그룹을 읽고 CIB 전9쪽·두 코드 전문 독해를 마쳤다. 표의 horizon·기준값·증가율 차이와 predict 반환 처리, NNI에 보고하는 지표, 대조 손실 계산을 대조했다. 실제 실행/설정·인용 방법·원88 후속·다른 공백은 [범위표](evidence/0117-conditional-history-cib/packet-coverage.json)에 남는다.
 
 [H118 범위표](evidence/0118-conditional-reference/packet-coverage.json)에 현재 진행판본의 미독445행, 별도 supplementary, 정확한 논문 실행판본·원자료·환경, 원89 이후와 기존 공백을 남겼다. 저장 demo의 정적 문제나 논문 인쇄값의 차이는 실제 실행 결과를 대신하지 않는다.
+
+[H119 범위표](evidence/0119-heterogeneity-splitting/packet-coverage.json)에 현재 진행판본 미독448행, 별도 부록·실행 근거, 논문 표·본문 불일치와 원90 이후의 정리 범위를 남겼다. 상대 다양성이나 유의하지 않은 기울기를 새로운 분할 기준으로 확정하지 않는다.

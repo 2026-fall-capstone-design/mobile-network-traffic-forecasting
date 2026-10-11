@@ -1,0 +1,747 @@
+{
+  "batch_id": "history-119",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T16:55:59.686199+00:00",
+  "claims_checked": 30,
+  "checks": [
+    {
+      "check_id": "H119-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "finding": "원89 전문과 원15·35·80 직접 근거를 재독. 과거 실행 범위, 훈련/validation 반대 방향과 seed/step 한계, ID의 유한 이득, 같은 소속과 직접 예측의 긍정 결과를 확인."
+    },
+    {
+      "check_id": "H119-SP02",
+      "claims": [
+        5,
+        6
+      ],
+      "finding": "원89 기호 검토·원38 sharing 구분 재독. 고정 훈련·partition, 정보 포함관계·직교성·유한 제곱적률·모집단 비중/함수군 포함 전제와 MAE 차이를 확인. 모집단 평균을 Tab 출력으로 대체하지 않음."
+    },
+    {
+      "check_id": "H119-SP03",
+      "claims": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "finding": "Global Models 인용19쪽 및 이미지4쪽 재대조. known GroupFeature와 향후 GFM.Cluster, neural10seed·평가척도·별도부록, Table8 긍정값·Table6 길이600대240·반복100예외·Table7 FFNN 반례·Table9 단일dataset 시간을 확인."
+    },
+    {
+      "check_id": "H119-SP04",
+      "claims": [
+        13,
+        14,
+        15
+      ],
+      "finding": "Similarity/Diversity 방법·Table1–5·Eq1–7 대조. DeepAR/Ensemble 구분·weekly/h15·표본 범위·ME 부호충돌, Table4 35쌍의 개선/악화 및29우세+1동률 대89% 불일치를 확인. 실행이나 반올림 전 값의 재현으로 간주하지 않음."
+    },
+    {
+      "check_id": "H119-SP05",
+      "claims": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "finding": "§5–7과 Appendix 특징/적재량을 재독하고 전체 이미지 재대조. source/target 별도 표준화·feature별 두 단계 중앙값·상대 다양성·PCA 전체표준화·6점회귀와 비유의성을 확인. Table11 중복열/본문충돌·Fig4/5 비음수 표시·실제 코드 미확인을 보존."
+    },
+    {
+      "check_id": "H119-SP06",
+      "claims": [
+        21,
+        22
+      ],
+      "finding": "Table13 35비율·Table2 규모 표와 본문을 재대조. 25/35<1, pretraining 미포함·서로다른분모, Wholesaler2 55000×124와 인쇄값의1000000 차이를 확인."
+    },
+    {
+      "check_id": "H119-SP07",
+      "claims": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "finding": "초록 수준과 저장PDF 전문범위, fetch/verify/render 소스 정적 전문 및 JSON·manifest를 재독. 실패406→latest 저장v2, 최초/수정PNG 경로와 이미 수정된 저장소스,27파일/28파일 집계,52별칭·9재사용·6보호원본 해시,후보47행·진행1–30행과 이전판본/당시예산을 확인. TXT/PNG 독립가산0,현재진행448행미독 유지."
+    },
+    {
+      "check_id": "H119-SP08",
+      "claims": [
+        30
+      ],
+      "finding": "결론과 재진입 조건을 실제 원문에 대조. 분할/공유/정보/표현/비용을 구분하고 별도부록·원자료·이후기록·기존공백·전체통합/접근/최종검수를 미완료로 유지."
+    }
+  ],
+  "initial_draft_record_sha256": "03bd179b43ab815f170cea33048a49f7498b6d1b7d238ae6ce1a4c6bd746ee18",
+  "corrected_record_sha256": "39b665586f1325d4bcddaa0419da7e80eb82f1e224d5fb58b41080b5bd634b99",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0001608": [
+      [
+        1,
+        87
+      ]
+    ],
+    "SRC-0001616": [
+      [
+        1,
+        30
+      ]
+    ],
+    "SRC-0021407": [
+      [
+        7,
+        28
+      ],
+      [
+        34,
+        45
+      ]
+    ],
+    "SRC-0020972": [
+      [
+        7,
+        15
+      ],
+      [
+        17,
+        32
+      ]
+    ],
+    "SRC-0022039": [
+      [
+        7,
+        35
+      ]
+    ],
+    "SRC-0021471": [
+      [
+        53,
+        59
+      ],
+      [
+        63,
+        68
+      ]
+    ],
+    "SRC-0001610": [
+      [
+        1,
+        87
+      ]
+    ],
+    "SRC-0001613": [
+      [
+        1,
+        23
+      ]
+    ],
+    "SRC-0001614": [
+      [
+        1,
+        28
+      ]
+    ],
+    "SRC-0001615": [
+      [
+        1,
+        29
+      ]
+    ],
+    "SRC-0001623": [
+      [
+        1,
+        12
+      ]
+    ],
+    "SRC-0001624": [
+      [
+        1,
+        6
+      ]
+    ],
+    "SRC-0001625": [
+      [
+        1,
+        10
+      ]
+    ],
+    "SRC-0001617": [
+      [
+        1,
+        25
+      ]
+    ],
+    "SRC-0001618": [
+      [
+        1,
+        105
+      ]
+    ],
+    "SRC-0001626": [
+      [
+        1,
+        32
+      ]
+    ],
+    "SRC-0001627": [
+      [
+        1,
+        47
+      ]
+    ],
+    "SRC-0001606": [
+      [
+        1,
+        143
+      ]
+    ],
+    "SRC-0022071": [
+      [
+        1,
+        7
+      ]
+    ],
+    "SRC-0001611": [
+      [
+        1,
+        47
+      ]
+    ],
+    "SRC-0001582": [
+      [
+        1,
+        13
+      ]
+    ],
+    "SRC-0001585": [
+      [
+        1,
+        22
+      ]
+    ],
+    "SRC-0025150": [
+      [
+        68,
+        92
+      ]
+    ],
+    "SRC-0001607": [
+      [
+        1,
+        17
+      ]
+    ],
+    "SRC-0001609": [
+      [
+        1,
+        14
+      ]
+    ]
+  },
+  "postdraft_total_raw_lines": 910,
+  "actual_postdraft_PDF_text_pages": {
+    "SRC-0001619": [
+      1,
+      6,
+      7,
+      8,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      26,
+      27,
+      28,
+      29,
+      33,
+      35
+    ],
+    "SRC-0001621": [
+      1,
+      3,
+      4,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      31,
+      32,
+      33,
+      34
+    ]
+  },
+  "postdraft_PDF_text_page_count": 46,
+  "postdraft_PDF_text_lines": 1535,
+  "PDF_extracts": [
+    {
+      "source_id": "SRC-0001619",
+      "page": 1,
+      "lines": 33,
+      "sha256": "fd0bdaede2bcd730f0ddc2e826b85b5ab43fb1748e162fd4018165d472135ff4"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 6,
+      "lines": 16,
+      "sha256": "99cf06a14afe699d1787d2e6613b48bc388a5cd33c48c6b8503493b20d150ae3"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 7,
+      "lines": 29,
+      "sha256": "0194182cf6bc82a1cb24f12c1497c5045587f6fe1554fdd28d5b2d013899ba1c"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 8,
+      "lines": 31,
+      "sha256": "03f40bfb40e58b1dae3097259f0d3cf88a47cadd4e76c14b0a567e2a5da9e7fe"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 14,
+      "lines": 16,
+      "sha256": "671c1ad0f2b2bd6a73787e278b2109a6f856c5481994fdace3ebae0cba64d596"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 15,
+      "lines": 21,
+      "sha256": "736743f6ef35d23f1e16ac7ea5654ea58c0bd3f79fa4f36c55348a6f0b6c8c55"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 16,
+      "lines": 29,
+      "sha256": "50e66713b99df082433de9c505250bbf74a47be8b6707c46b0a60fa524147420"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 17,
+      "lines": 34,
+      "sha256": "3fd6179ac07b6784863cc500b0d28e0c93ab591c163396a6bc4ec3328693037a"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 18,
+      "lines": 31,
+      "sha256": "daf6061a6e0224c091303a6907e0fb8368a655a402944b865178274756c8f11c"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 19,
+      "lines": 45,
+      "sha256": "62d6ca399b49d3e0908131eda3c2fcf08275aa4c1c5899ed4f55b93312d30c58"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 20,
+      "lines": 33,
+      "sha256": "9b4876556e47235483d0a06ca613e0a8bfe660bd9c1b1849aa5bdc6deeb0e420"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 21,
+      "lines": 31,
+      "sha256": "e7bfe05e546255e1f19f310dda069254094f1e9002155513ae4b8115a2143121"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 22,
+      "lines": 44,
+      "sha256": "83462da53051efc333689b47953313075dbd5a33c31c814c1a6cbaedc73cb880"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 26,
+      "lines": 32,
+      "sha256": "aaddd9456f1fd77599b35c23bcc9a7d2cf57602adcacd8f698c7ca2ea2dc04aa"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 27,
+      "lines": 32,
+      "sha256": "e6f896a4b880bc6460fe782a0e7d0192b2326bf58371ccdce130746101725cba"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 28,
+      "lines": 31,
+      "sha256": "322873a2d544724e79d1a78631c704c76d8d928c58db3c69a4efa1f3cfdd8cee"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 29,
+      "lines": 37,
+      "sha256": "4e7bfe36f23341d87196d4e226a24d21e6dc3f24f4ea228af67660630888472e"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 33,
+      "lines": 45,
+      "sha256": "da4b10e4065a9256ea5bc66cfcfbd5cf1f94820f5130bcedddcbae8a305df803"
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 35,
+      "lines": 51,
+      "sha256": "8957c6543195e9bef7868da2fba54acce1a62482ec79e2c455a0ceffc4f7e6ea"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 1,
+      "lines": 28,
+      "sha256": "ee69f45ad2ed11cfab7ed83be2afa4afd3bb0b94faa97891ec571d2eed1b688d"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 3,
+      "lines": 14,
+      "sha256": "577dae92c5cd9fc90be5c839102bf25b38172cacad264061d632e7ee38bece23"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 4,
+      "lines": 30,
+      "sha256": "b3e7757150227ce35f123e4437560c1cdca928f83dfe61dca5a3198341f7d3e1"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 8,
+      "lines": 29,
+      "sha256": "33c65b9d08a1c1c69aafaef844cc2c12bd81c206a5b5147d569a591db4f163fc"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 9,
+      "lines": 30,
+      "sha256": "f68c91fcf87c1f397056429f5f4ea739b330c7f360f1c873191149eded576a9b"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 10,
+      "lines": 34,
+      "sha256": "df9b1840e2f2952674fa834e2b5fcc61f40549db3942baadf107dd297fe635b2"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 11,
+      "lines": 46,
+      "sha256": "c0552458245003c8c735911b34811c1a988ede84b34e8f6d6af09578ecdf3543"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 12,
+      "lines": 50,
+      "sha256": "92a3a56a6358b84bb3a46efd87dcd36365b50ed83364f85bf8dd5b7c1be0a742"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 13,
+      "lines": 61,
+      "sha256": "aa81169162ba509ed88e5dd1a9925937874f9a1f41a97211cfb8a970a6001600"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 14,
+      "lines": 30,
+      "sha256": "e3e3b4911250aa90e2d14fa049688327560e3b1a180d4e40311f9c23e7841249"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 15,
+      "lines": 28,
+      "sha256": "b957813fa25ae18571bceb248d06d3cf34b1c0bb952b112ee8ecb45a8b9fd34a"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 16,
+      "lines": 29,
+      "sha256": "57fd3071b370273aa63dbb4ef916e3330b9e1c662bb1933560cd46a94c8f5a08"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 18,
+      "lines": 29,
+      "sha256": "d586ae68d14e847cd7a2847bc5b4669e54095a440f7c9a7efedbeb6a5c5f631a"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 19,
+      "lines": 29,
+      "sha256": "634ff8eb4f38a9e66e4d414ad8a2ee8e7580ea22f3693d5b76ac962c80d983b1"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 20,
+      "lines": 28,
+      "sha256": "2ad3d3ba6d1e859f57fd98b830b9786fa3c833f780633b2fa389b73f418bd621"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 21,
+      "lines": 30,
+      "sha256": "e23e0c50f656ef2a3f3c2e533a67b7473960cc6807d6b19691bcc5c05857f0db"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 22,
+      "lines": 80,
+      "sha256": "c7fbae040eb0af451698c0909fe917c28e9375235f0e861177c0dbcc0cc44d40"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 23,
+      "lines": 29,
+      "sha256": "0c58f7ba2785f7c513426101ffb19410285e5965056c7ff61180972c212e7fb8"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 24,
+      "lines": 55,
+      "sha256": "f1190019c1cecca9e0caced3a8e1fcbe1f3b578d06c91fd4b35ce115179f7fe8"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 25,
+      "lines": 29,
+      "sha256": "c52f5699a71dd7dd7f755bab8df312d550531ee19686705131568b896e363fa0"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 26,
+      "lines": 30,
+      "sha256": "e094d896318178d1cea710c1b2a9715ce8d631f83364d8c24af69b780ba5de24"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 27,
+      "lines": 31,
+      "sha256": "7b82f47ba75c8abf55ce2bfc857e1449df81659baa9dae0aba96421ab7e1e945"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 28,
+      "lines": 29,
+      "sha256": "dd81f38db2ce501e5c07f2d5549db9157f76d9180735f6bb03d9a929bd849680"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 31,
+      "lines": 36,
+      "sha256": "bc1835a014fe23745f7f36935fe67a2c4603ac755919f1e93fbe2ad84cfe9f7a"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 32,
+      "lines": 26,
+      "sha256": "59e2462d22810f14e1d9bd82919d8d054bf38796795847ba4eb1b4b133de9b12"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 33,
+      "lines": 27,
+      "sha256": "6b9d041baf7c216f6141b21b6098c0ba06e34389ee0665d4934b5c125956b996"
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 34,
+      "lines": 17,
+      "sha256": "e4d9652e52b3d67764e4df7dc69bcb627d3e7c982878dce150839a84e08590d5"
+    }
+  ],
+  "actual_postdraft_PDF_image_rechecks": {
+    "SRC-0001619": [
+      20,
+      22,
+      28,
+      29
+    ],
+    "SRC-0001621": [
+      11,
+      13,
+      14,
+      16,
+      18,
+      19,
+      21,
+      24,
+      25,
+      26,
+      32
+    ]
+  },
+  "PDF_image_checks": [
+    {
+      "source_id": "SRC-0001619",
+      "page": 20,
+      "sha256": "17da11d99161583b81b00ce12f3d0a3bb92bed46ec0823a3b5b9e380f5f11f5a",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 22,
+      "sha256": "7ad40b55d901d34370649c65f52aa9f1cdb78c2d3be6bf49b0fccc6462204baf",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 28,
+      "sha256": "e106bdb511dc1debf9883c54bfac12eb8fc82d311e141c3d269066807c7d3954",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001619",
+      "page": 29,
+      "sha256": "8f6e5618d84eb4d093032575de74f7bf758b299049ae6a11d81ff14e86bd7bd8",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 11,
+      "sha256": "25b18dd6b4a9fae2176b9eafebe10544269ead3a8c5cbe82a9f0c4beaa28f54c",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 13,
+      "sha256": "6ce16b892126ce9463c083bd16230bc133a9ccaa0a2d0c0de2695830707007a5",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 14,
+      "sha256": "adaa9afb14cfa83cd1a7e63b86bec68eb2c5b897ee61978bbc63e17eab85d3e3",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 16,
+      "sha256": "8c2893c33627c2b57e8ae26051037fe20f169f494bb9119062c8ac9357acaee9",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 18,
+      "sha256": "517b0eba6c9206fe81ba9ed4122778f0ed6b58c78da95e2c80d9f6c99448c3d5",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 19,
+      "sha256": "f1291264ea4ee085becb83aac73670c90839afd0fc41dff27665800419338722",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 21,
+      "sha256": "a73e8bcdd9f1712dbda8322ddbdd6f169d25b0913cabb928a80ebe483d0f1699",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 24,
+      "sha256": "4e08d5260e90bf514c3d4a05e6229eb39ebab2608804eab511c90c3bd8205b89",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 25,
+      "sha256": "7656482ff1dc46db59ab5e853d7bb19d0357e19b7a6d34e8f3ac6b024fc69f7a",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 26,
+      "sha256": "6d78278fff7a28e92a26fcdc3152b6528830404464c1dd9ac2c3c5ee1131a513",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    },
+    {
+      "source_id": "SRC-0001621",
+      "page": 32,
+      "sha256": "c962ea4e8beaa9f838517df643125c26fe404c94c95da2031ea265744908460f",
+      "whole_image_actually_rechecked_after_draft": true,
+      "independent_image_credit": 0
+    }
+  ],
+  "all_claim_semantic_locations_actually_reread": true,
+  "unresolved_output_truncation": false,
+  "truncation_recovery": [
+    "SRC-0001611 1–47행 전체 별도 재출력 후 실제독해",
+    "SRC-0001619 A27–28쪽 별도 재출력 후 실제독해"
+  ],
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "coverage_increment_applied": false,
+  "corrections": [
+    {
+      "claim": "H119-C05",
+      "before": "원89의 식은 외부 논문의 정리가 아니라 자체 기호 검토다. 고정 훈련 결과와 partition G=π(C), 유한 제곱적률, 독립 미래 모집단에서 μC=E[Y|X,C], μG=E[Y|X,G]라 두면 R(f̂)=E[(Y−μC)²]+E[(μC−μG)²]+E[(μG−f̂(X,G))²]다. (X,G)의 정보가 (X,C)에 포함되고 f̂가 (X,G)의 함수이므로 조건부 평균의 직교성이 교차항을 없앤다. 참 평균을 Tab 출력으로 바꾸거나 미래 분포가 달라지면 같은 항을 그대로 관측했다고 할 수 없다.",
+      "after": "원89의 식은 외부 논문의 정리가 아니라 자체 기호 검토다. 고정 훈련 결과와 partition G=π(C), Y와 f̂의 유한 제곱적률, 독립 미래 모집단에서 μC=E[Y|X,C], μG=E[Y|X,G]라 두면 R(f̂)=E[(Y−μC)²]+E[(μC−μG)²]+E[(μG−f̂(X,G))²]다. (X,G)의 정보가 (X,C)에 포함되고 f̂가 (X,G)의 함수이므로 조건부 평균의 직교성이 교차항을 없앤다. 참 평균을 Tab 출력으로 바꾸거나 미래 분포가 달라지면 같은 항을 그대로 관측했다고 할 수 없다.",
+      "reason": "제곱 위험 분해의 유한성 전제를 추정 함수에도 명시."
+    },
+    {
+      "claim": "H119-C19",
+      "before": "Table11의 Kaggle/Traffic/Solar bias slope·p-value는 uncertainty 열과 각각 −1.66/0.24, −5.95/0.71, −0.34/0.70으로 완전히 같다. 반면 본문은 bias 기울기가 거의 항상 양수라고 설명한다. Wholesaler1의0.31/0.01, Wholesaler2의0.41/0.00은 인쇄값 그대로 보존하며0.00을 정확한 p=0으로 읽지 않는다. Fig4/5의 bias는 음수 없이 크기로 표현되어 Table5의 signed ME와 동일 변수로 간주할 수 없다. 원 코드 없이 올바른 회귀값을 추정해 대체하지 않는다.",
+      "after": "Table11의 Kaggle/Traffic/Solar bias slope·p-value는 uncertainty 열과 각각 −1.66/0.24, −5.95/0.71, −0.34/0.70으로 완전히 같다. 반면 본문은 bias 기울기가 거의 항상 양수라고 설명한다. Wholesaler1의0.31/0.01, Wholesaler2의0.41/0.00은 인쇄값 그대로 보존하며0.00을 정확한 p=0으로 읽지 않는다. Fig4/5의 bias 점들은 음수 없이 표시되므로 Table5의 signed ME를 그대로 그린 값으로 간주할 수 없다. 절댓값·스케일 변환의 정확한 구현은 미확인이다. 원 코드 없이 올바른 회귀값을 추정해 대체하지 않는다.",
+      "reason": "그림의 비음수 표시라는 관찰과 절댓값 변환 여부의 추정을 구분."
+    },
+    {
+      "claim": "H119-C27",
+      "before": "원89의 scope는 두 논문의 지정 절·표와6쪽 시각 확인을 보고했다. 이번 H119는 두 PDF 본문·참고문헌·파일 안 부록69쪽의2,299행을 끝까지 읽고 새 렌더33쪽과 기존 PNG6개를 직접 확인했다. PDF 파생 TXT2개는 페이지별 추출 대응만 대조했다. 별도 부록·외부 코드·참고문헌에 나오는 모든 논문의 방법·원자료 재현까지 완료한 것은 아니다. TXT·PNG·별칭·페이지 수를 독립 연구 성과로 중복 집계하지 않는다.",
+      "after": "원89의 scope는 두 논문의 지정 절·표와6쪽 시각 확인을 보고했다. 이번 H119는 두 PDF 본문·참고문헌·파일 안 부록69쪽의2,299행을 끝까지 읽고 1차로 새 렌더33쪽과 기존 PNG6개를 직접 확인했다. 작성 후에는 PDF46쪽의 인용 내용을 다시 읽고 이미 확인한 렌더 중15쪽을 재대조했다. PDF 파생 TXT2개는 페이지별 추출 대응만 대조했다. 별도 부록·외부 코드·참고문헌에 나오는 모든 논문의 방법·원자료 재현까지 완료한 것은 아니다. TXT·PNG·별칭·페이지 수를 독립 연구 성과로 중복 집계하지 않는다.",
+      "reason": "1차 범위와 작성 후 실제 재독 범위를 구분하고 반복 열람은 고유 페이지 수에 더하지 않음."
+    }
+  ],
+  "limitations": [
+    "현재 진행판본31–478행의 직접 재독·별도 Online Appendix·외부 코드/원자료/정확 실행환경·원90 이후 및 이전 고유 판본·원83FedPPBC/원84DOCX 공백·실패와 비용 통합·장기 팀 접근·최종 원본 변경과 대표 검색 검수."
+  ]
+}
