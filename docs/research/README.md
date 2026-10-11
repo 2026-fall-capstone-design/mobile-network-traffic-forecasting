@@ -266,3 +266,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원84 중간검토](records/0110-evidence-synthesis.md)는 직접 예측·같은 소속·최종 RCTL을 구별하고 평균과 cell별 예외, 작업량 산술, 보고서의 근거·남은 판단을 연결한다.
 
 [원84 문서·누적연혁](records/0111-interim-document-history.md)에서 보고서5쪽의 보존본, 개인 링크를 대신하는 팀 경로, 최신 상태와 후속 정정을 확인할 수 있다.
+
+[원85 비용 판단의 정정](records/0112-rejection-scope-allocation.md)은 고정 처리량의 자료 배분, 기존 재추출 원리와 실제 학습 이득의 차이를 정리한다.

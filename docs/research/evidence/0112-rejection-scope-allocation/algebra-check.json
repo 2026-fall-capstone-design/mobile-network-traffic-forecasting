@@ -1,0 +1,65 @@
+{
+  "success": true,
+  "checks": [
+    {
+      "identity": "hard_conditional_mean",
+      "reduced_difference": "0",
+      "passed": true
+    },
+    {
+      "identity": "hard_conditional_variance",
+      "reduced_difference": "0",
+      "passed": true
+    },
+    {
+      "identity": "allocation_conditional_mean",
+      "reduced_difference": "0",
+      "passed": true
+    },
+    {
+      "identity": "allocation_conditional_variance",
+      "reduced_difference": "0",
+      "passed": true
+    },
+    {
+      "identity": "posterior_allocation_variance",
+      "reduced_difference": "0",
+      "passed": true
+    },
+    {
+      "identity": "conditional_independent_average_variance",
+      "reduced_difference": "0",
+      "passed": true
+    },
+    {
+      "identity": "repeated_total_variance",
+      "reduced_difference": "0",
+      "passed": true
+    }
+  ],
+  "scope": "고정Z·모수/손실과정확r,상수c=a/pi에서조건부1·2차모멘트의대수전개7식. 조건부기대/totalvariance의확률가정은별도의의미검수로확인한다.",
+  "assumptions": [
+    "Q=sum(pi_g P_g),pi_g>0,sum(pi)=1",
+    "r_g=P(G=g|Z),0<=r<=1,sum(r)=1",
+    "a_g와ell_g는고정·유한secondmoment",
+    "r_g>0이면p_g>0; r=p=0항은0",
+    "J_e는같은Z에조건부독립;반복식Var(U)+Var(H|Z)/E는p=r",
+    "training모수변화·BNbatch·time/cell의존·추정r·fixedquota로자동확장하지않음",
+    "분산을비교하는각변수의제2모멘트가존재해야한다. 일반p에서S의적분가능한제2모멘트는support조건만으로보장되지않는다."
+  ],
+  "probabilistic_argument": [
+    "E[1{G=g}|Z]=r_g이므로E[H_g|Z]=U_g",
+    "E_Q[U_g]=a_g E_Pg[ell_g]는RN도함수항등식",
+    "Q(dz)r_g(z)=pi_g P_g(dz)이므로p=r의(Z,J)는(Z,G)동분포",
+    "같은Z를공유한조건부독립반복평균은Var_Z(U_g)+E_Z[Var(S_g|Z)]/E"
+  ],
+  "new_numeric_pilot": false,
+  "random_sampling": false,
+  "model_calls": 0,
+  "original_scripts_executed": false,
+  "formal_proof_certification": false,
+  "engine": "Python standard-library exact sparse Laurent polynomials",
+  "optional_sympy_unavailable": true,
+  "postdraft_checked": true,
+  "semantic_check_reference": "../../verification/history-112-second-pass.json"
+}

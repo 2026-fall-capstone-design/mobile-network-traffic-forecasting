@@ -179,3 +179,5 @@
 [H110 원84](records/0110-evidence-synthesis.md): 새 모델 실행 없이 원74·80·07 결과를 종합한 중간검토를 검수한다. 원장 당시 판본·생성 코드·보관 보고와 현재 실제 확인 범위를 구별한다.
 
 [H111 원84 후속](records/0111-interim-document-history.md): Word·PDF·PNG5장과 snapshot26 누적연혁422행을 검수했다. H110의 후속8미독을 해소하며 새 모델 실행·최종 연구 완료와 구별한다.
+
+[H112 원85](records/0112-rejection-scope-allocation.md): 모든 외부 sample을 추가하는 구현의 비용 판단을 고정 처리량 배분까지 확대하지 않도록 정정했다. 단일/반복 배분의 고정 손실식과 RCTL 성능을 구분하며 새 추천안으로 채택하지 않은 이유를 보존한다.
