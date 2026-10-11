@@ -163,3 +163,5 @@
 
 
 [H103](records/0103-deep-renewal-evidence.md)은 원82의 Deep Renewal 저장2표현물과 현재 출판사 보완 자료를 구별했다. 선택된 원82 문헌 후속 목록은 소진했지만 snapshot24의 고유 연혁과 전체 기록 통합은 남아 있다.
+
+[H104 누적 연혁](records/0104-cumulative-history.md)은 snapshot24 후보표44행·연구일지401행을 전체 독해해29개 상세 기록 경로와19개 결정 경로로 연결한다. snapshot23에서 추가된 원82 판단과 이전부터 재인용한 실행을 구별한다.
