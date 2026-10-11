@@ -298,3 +298,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H120 출처](../sources/history-120.md) · [목록](history-120-sources.jsonl): 새26그룹48별칭·재사용6그룹. 본문10·전체JSON6·선택1의 내용 검수를 마쳤으며 TXT3·PNG5·불완전PDF·별도보완PDF는 독립 완료로 더하지 않는다.
 
 [H121 출처](../sources/history-121.md) · [목록](history-121-sources.jsonl): 새39그룹73별칭·재사용9그룹. 본문16·전체JSON5·부분연혁1을 검수했다. 파생 HTML/TXT/PNG·페이지 이미지·별칭·재독의 독립 중복 가산0.
+
+[H122 출처](../sources/history-122.md) · [목록](history-122-sources.jsonl): 새26그룹48별칭·재사용7그룹. 본문13(quantile 선택→전체 승격1 포함)·전체JSON7·부분연혁1을 검수했다. 이전 전역 선택 집계에서 해당 코드의 가산은0이므로 selected 조정도0이다. 파생물·별칭·재독 중복 가산0.

@@ -199,3 +199,5 @@
 [H120 원90](records/0120-prescribed-regularity.md): 제약을 추가해 분리를 정당화하는 안의 미채택 판단과 세 논문의 적용 범위·자료 보존을 정리한다.
 
 [H121 원91](records/0121-predictive-role-alignment.md): 역할 대응을 별도 결정으로 검토했으나 실제 손해·정렬 뒤 분리 필요성을 확인하지 못해 진입하지 않았다. CPiRi·CRAFT·TIDES의 수치와 적용 조건을 함께 검수했다.
+
+[H122 원92](records/0122-prequential-sharing-objective.md): 유한 context의 순차 공유·분리 증거 후보를 채택하지 않았다. BHC/GP-BHC의 생성 가설·표/예외·근사, PreqTorch와 Tab density 구현의 적용 범위를 검수했다.

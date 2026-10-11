@@ -1,0 +1,161 @@
+from pathlib import Path
+import hashlib
+import json
+import shutil
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT / 'tmp/redesign_20260925'
+SRC = WORK / 'sources/prequential_92'
+LEDGER = WORK / 'cumulative_execution_budget.json'
+EXPECTED = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+assert sha(LEDGER) == EXPECTED
+manifest = json.loads((SRC / 'source_manifest.json').read_text(encoding='utf-8'))
+pdfs = []
+unavailable = []
+for row in manifest:
+    if 'error' in row:
+        unavailable.append(row)
+        continue
+    path = SRC / row['local_file']
+    assert sha(path) == row['sha256']
+    assert len(PdfReader(path).pages) == row['pages']
+    pdfs.append(row)
+assert len(pdfs) == 2 and len(unavailable) == 1
+code = json.loads((SRC / 'installed_code_manifest.json').read_text(encoding='utf-8'))
+for row in code['files']:
+    assert sha(SRC / row['copy']) == row['sha256']
+    assert sha(Path(row['installed_path'])) == row['sha256']
+metadata = (WORK / 'runtime/Lib/site-packages/tabicl-2.2.0.dist-info/METADATA').read_text(encoding='utf-8')
+assert '\nVersion: 2.2.0\n' in metadata
+preq = json.loads((SRC / 'preqtorch_code_manifest.json').read_text(encoding='utf-8'))
+for row in preq['files']:
+    assert sha(SRC / row['path']) == row['sha256']
+renders = json.loads((SRC / 'render_manifest.json').read_text(encoding='utf-8'))
+assert len(renders) == 4
+for row in renders:
+    assert sha(SRC / row['image']) == row['sha256']
+
+scope = {
+    'date': '2026-09-26',
+    'plan': '92_prequential_sharing_scope_plan.md',
+    'new_TabICL_calls': 0, 'new_RCTL_calls': 0, 'new_numeric_diagnostics': 0,
+    'external_code_executed': False,
+    'sources': [
+        {'id': 'Heller_Ghahramani_BHC_ICML2005', 'scope': 'Section2 equations1–3/Figure2, selected Section3 DPM/tree-consistent partition argument, Section4 hyperparameters/prediction; methods pages2–3 visually inspected. All proofs/empirical results not independently reproduced.'},
+        {'id': 'Cooke_et_al_GPBHC_BMC2011_12_399', 'scope': 'Methods equations1–12, datasets and evaluation, Table1 and runtime section; PDFpages4–5 visually inspected. 13 PDFpages include repository cover; article12pages. No code executed or data reproduction.'},
+        {'id': 'Aswadi_et_al_PFN_BayesCodes_ICML_StructuredData_Workshop2025', 'scope': 'Official accepted-paper list and search-indexed abstract/first-page excerpt only. Full PDF unavailable: browser verification and HTTP403 on public static PDF. No detailed method, equation, code or result claims based on this source.'}
+    ],
+    'valid_pdf_count': len(pdfs),
+    'valid_pdf_pages': sum(row['pages'] for row in pdfs),
+    'valid_pdf_bytes': sum(row['bytes'] for row in pdfs),
+    'installed_tabicl_version': '2.2.0',
+    'installed_code_files': len(code['files']),
+    'preqtorch_commit': preq['commit'],
+    'preqtorch_code_files': len(preq['files']),
+    'code_scope': [
+        'TabICL QuantileDistribution interpolation, default tails, slope clamping, log_prob/pdf, and sklearn regressor target inverse transform; static reading, no module execution.',
+        'PreqTorch README and BlockEncoder encode/eval/train control flow plus utils loss calling contract; static reading only. Other encoder methods not validated.'
+    ],
+    'renders': [{**row, 'visually_inspected': True} for row in renders],
+    'queries': [
+        'Bayesian hierarchical clustering regression functions predictive likelihood time series Heller Ghahramani',
+        'TabPFN Bayes factor clustering prequential likelihood',
+        'in context learning Bayesian model comparison predictive evidence clustering foundation models',
+        '"PreqTorch"', '"TabPFN" "prequential"', '"TabICL" "marginal likelihood"',
+        'Bayesian hierarchical clustering time series Gaussian process regression Cooke Savage Wild Ghahramani 2011',
+        '"Rethinking Description Length" TabPFN code workshop 2025',
+        '"Rethinking Description Length" Aswadi pdf', '"MCBOqoQk2r" github',
+        '"TabPFN" "mixture codes" code', '"Afiq Abdillah" "Description"',
+        '"HCP" "clustering" "Torres"', '"Rethinking Description Length" "Bayes" site:arxiv.org'
+    ],
+    'search_only_not_method_evidence': [
+        'Accelerated BHC 2013 PMC3614914', 'Bayesian Martingale LLM OpenReview b1YQ5WKY3w',
+        'Bayesian Prism ICLR2024', 'GPRN1110.4411', 'PreqTorch old PyPI versions'
+    ],
+    'excluded_irrelevant_search_hits': 'HCP/Torres materials-science hits; aggregators and Reddit',
+    'own_symbolic_findings': [
+        'Normalized causal predictive conditionals define a sequential joint law without requiring iid/exchangeability; not automatically the exact TabICL pretraining-prior marginal or posterior probability of shared true functions.',
+        'Product of blockwise predictive marginals and a shared-latent-function joint predictive law differ in general.',
+        'Lag covariates may reveal previous targets; conditioning must use information available at each prediction time.',
+        'For z=(y-a)/s the original-unit log density has the -log(s) Jacobian; identical scales can cancel and already-inverted quantiles must not be corrected twice.',
+        'Different symmetric noises with the same conditional median require no separate oracle MAE predictors, but their separate oracle log scores improve over the pooled mixture by a positive Jensen-Shannon divergence. Population counterexample, not a finite-data BHC or network performance result.',
+        'The implementation clamps dQ/dalpha to [1e-6,1e6]; a finite returned pdf thereby has a positive floor. Literal extension across the full real support is not an exact normalized continuous density. Numerical impact on actual data was not measured.',
+        'Block-factorized prefix score work is R(N+P) context preparations and RQ(N+2P) query rows before additional search/merge costs. Union-symmetrized top-k graph has P<=Nk, not generally Nk/2.'
+    ],
+    'decision': 'Do not adopt or run this candidate: available evidence does not resolve novelty, point-forecast objective mismatch or RCTL sharing benefit. Not a claim that Bayesian clustering is universally invalid.',
+    'ledger_sha256': EXPECTED,
+    'remaining_Tab_contexts': 11, 'remaining_Tab_query_rows': 20640,
+    'additional_RCTL_fits_allowed': 0,
+    'goal_complete': False, 'external_blocker': None, 'search_completeness_claimed': False,
+}
+scope_path = WORK / '92_source_reading_scope.json'
+assert not scope_path.exists()
+scope_path.write_text(json.dumps(scope, ensure_ascii=False, indent=2), encoding='utf-8')
+
+index = WORK / 'candidate_decision_index.md'
+content = index.read_text(encoding='utf-8')
+anchor = '| subgroup의 유한학습 손해 |'
+assert anchor in content
+row = '| 유한 context의 순차 공유·분리 증거 | 92: BHC2005, GP-BHC2011, TabPFN Bayesian coding 초록, PreqTorch와 TabICL density 구현 | 유한 자료의 순차 예측 비교는 가능하지만 기존 BHC/MDL 원리다. 같은 median·다른 noise의 분포 분리는 RCTL 점 예측 분리 필요성과 다르다. 정규화·시간 조건화·joint 예측을 명시해야 하며, 함수 추정의 불확실성과 noise를 구별하는 근거 없이 log score로 재진입하지 않는다. density API 부재나 Bayesian 방법 전체의 불가능성으로 기각하지 않는다. | 08–09,28,92 |\n'
+content = content.replace(anchor, row + anchor, 1)
+index.write_text(content, encoding='utf-8')
+
+progress = WORK / 'progress.md'
+content = progress.read_text(encoding='utf-8-sig')
+previous = '## 최신 상태 — 91 공간 입력의 역할 정렬과 telecom 선행연구 검토'
+assert previous in content
+new = '''## 최신 상태 — 92 순차 예측 증거와 점 예측 목적의 구별
+
+- 2026-09-26. 92 계획에 따라 BHC ICML2005와 GP-BHC BMC2011의 방법·계산·평가를 읽었다. 확보 PDF2개21쪽/1142162bytes, 방법4쪽 시각 대조 완료. TabPFN Bayesian coding ICML Workshop2025는 공식 목록·초록만 확인했고 전문403을 기록했다. 이 미확보를 전체 연구의 외부 blocker로 확대하지 않는다.
+- 설치 TabICL2.2.0의 QuantileDistribution/log_prob 및 target 역변환, PreqTorch commit9272d6d8b10aeb1d81d08fecd8ac3ac53ffa5cb4의 BlockEncoder를 정적으로 읽었다. density API는 존재한다. 보간·꼬리·수치 clamp가 포함된 점수를 정확한 원래 Bayesian marginal로 부르지 않으며 실제 영향의 수치는 측정하지 않았다. 외부 코드 실행0.
+- 정규화된 causal predictive conditionals의 곱은 iid/exchangeability 없이도 순차 joint law를 정의할 수 있다. 이를 Tab prior의 exact marginal이나 실제 공유 함수의 posterior로 해석하는 것은 별도다. 고정 context의 block marginal 곱, latent-function joint, lag 조건화, target Jacobian을 구분했다.
+- 같은 conditional median·다른 noise 분포는 하나의 oracle MAE 예측값으로 충분하지만 분포별 oracle log score는 pooled mixture보다 좋다는 반례를 정리했다. population 관계이며 실제 network 성능이나 유한 BHC 판정으로 확대하지 않는다. likelihood 정교화만으로 최종 RCTL 점 예측 목적과의 차이가 해결되지 않는다.
+- 순차 공유 증거 후보는 미채택이다. 기존 BHC/MDL 원리와 구별되는 유용한 partition 결정이 없고 유한 학습 이득과 RCTL 목적의 연결도 미확인이다. 학습기/metric 이름만 바꾼 재진입을 막도록 결정 인덱스에 추가했다. 이전의 Tab 직접 예측 이득은 유지한다.
+- 새 Tab/RCTL/데이터수치실행0. 원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변. 잔여 Tab11context/20640행, 추가 RCTLfit0. 모든 기존 확인 기간은 개발자료이며84 중간Word는 변경하지 않았다.
+- 상세92검토·공개보고서·source/code 범위·후보인덱스를 보존했다. 최종 추천안과 최종Word는 미완료다. 이번 진행은 새 점수의 기술적 가능성과 적용 한계를 구체화했지만, 추천 방향을 확보한 것은 아니다. 다음 검토에서 같은 공유·분리 점수에 다른 이름을 붙이지 않는다.
+
+'''
+progress.write_text(content.replace(previous, new + previous.replace('최신', '이전'), 1), encoding='utf-8')
+
+report = ROOT / 'output/research/TabICLv2_재설계_순차예측증거와_clustering목적_검토.md'
+findings = WORK / '92_prequential_sharing_findings.md'
+for path in (report, findings):
+    text = path.read_text(encoding='utf-8')
+    assert '사례' not in text
+    assert '미완료' in text or '완료되지' in text
+
+snapshot = ROOT / 'output/research/redesign_20260925_snapshot_34'
+assert not snapshot.exists()
+snapshot.mkdir()
+names = [
+    '92_prequential_sharing_scope_plan.md', '92_prequential_sharing_findings.md',
+    '92_source_reading_scope.json', 'fetch_prequential_sources_92.py',
+    'finish_prequential_sources_92.py', 'progress.md', 'candidate_decision_index.md'
+]
+files = [WORK / name for name in names] + [LEDGER, report, Path(__file__).resolve()]
+files += sorted(path for path in SRC.rglob('*') if path.is_file())
+records = []
+for source in files:
+    rel = source.relative_to(ROOT)
+    target = snapshot / rel
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+    assert sha(source) == sha(target)
+    if source.suffix == '.json':
+        json.loads(source.read_text(encoding='utf-8'))
+    records.append({'path': rel.as_posix(), 'bytes': source.stat().st_size, 'sha256': sha(source)})
+result = {
+    'files': len(records), 'bytes': sum(row['bytes'] for row in records),
+    'manifest': records, 'ledger_unchanged': sha(LEDGER) == EXPECTED, 'goal_complete': False
+}
+(snapshot / 'manifest.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+(WORK / '92_archive_verification.json').write_text(json.dumps({
+    'snapshot': str(snapshot), 'files': result['files'], 'bytes': result['bytes'],
+    'verified': True, 'ledger_unchanged': True
+}, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps({key: value for key, value in result.items() if key != 'manifest'}))
