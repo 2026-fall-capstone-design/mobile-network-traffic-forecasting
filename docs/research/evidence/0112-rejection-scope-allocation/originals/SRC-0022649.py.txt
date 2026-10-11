@@ -1,0 +1,42 @@
+from pathlib import Path
+import hashlib
+import json
+import urllib.parse
+import urllib.request
+from datetime import datetime, timezone
+
+ROOT = Path(__file__).resolve().parent
+OUT = ROOT / 'sources/routing_85'
+OUT.mkdir(parents=True, exist_ok=True)
+jobs = [
+    ('crossref_importance', 'https://api.crossref.org/works?' + urllib.parse.urlencode({'query':'multi task learning importance sampling sample allocation','rows':8,'select':'title,DOI,URL,published'}), 1000000, '.json'),
+    ('crossref_routing', 'https://api.crossref.org/works?' + urllib.parse.urlencode({'query.title':'Boosting Share Routing for Multi-task Learning','rows':3,'select':'title,DOI,URL,published,abstract,link'}), 1000000, '.json'),
+    ('importance_ICML2018', 'https://proceedings.mlr.press/v80/katharopoulos18a.html', 1000000, '.html'),
+    ('importance_ICML2015', 'https://proceedings.mlr.press/v37/zhaoa15.html', 1000000, '.html'),
+]
+manifest = []
+for name, url, cap, ext in jobs:
+    rec = {'name': name, 'url': url, 'accessed_utc': datetime.now(timezone.utc).isoformat(), 'cap_bytes': cap}
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'ResearchReview/1.0'})
+        with urllib.request.urlopen(req, timeout=20) as response:
+            rec['status'] = response.status
+            rec['final_url'] = response.url
+            data = response.read(cap + 1)
+        if len(data) > cap:
+            raise ValueError('Size cap exceeded')
+        path = OUT / (name + ext)
+        path.write_bytes(data)
+        rec.update({'path': str(path), 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
+        if ext == '.json':
+            items = json.loads(data)['message']['items']
+            print(json.dumps({'source':name, 'items':items}, ensure_ascii=False))
+        else:
+            text = data.decode('utf-8', errors='replace')
+            print(json.dumps({'source':name, 'html':text[:30000]}, ensure_ascii=False))
+    except Exception as error:
+        rec['error_type'] = type(error).__name__
+        rec['error'] = str(error)
+        print(json.dumps({'source':name, 'error':str(error)}, ensure_ascii=False))
+    manifest.append(rec)
+(OUT / 'source_manifest.json').write_text(json.dumps({'scope':'Discovery metadata and official primary pages; not full-method verification.', 'web_tool_status':'Search tool authentication error; no credentials inspected or changed. Public sources accessed directly.', 'sources':manifest}, ensure_ascii=False, indent=2), encoding='utf-8')

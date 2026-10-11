@@ -528,3 +528,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 오래된 진행 기록의 미실행 문장을 찾은 경우
 
 [원84 누적연혁 검수](records/0111-interim-document-history.md)에서 초기 RCTL0회와 후속29회 완료, UPC 군집 수의 후속 정정을 함께 확인한다. 당시 Goal·다음 행동·잔여 예산은 현재 실행 지시가 아니다.
+
+## 자료 공유의 비용을 이유로 후보를 다시 검토하는 경우
+
+[원85 기각 범위 정정](records/0112-rejection-scope-allocation.md)에서 고정 총 sample–모델 평가수 N, 전체 자료를 각 모델에 추가하는 방식, score·batch·wall time을 구분한다. quota 재추출·joint density ratio·importance weighting은 기존 원리를 먼저 확인한다. 비용 정정만으로 Tab의 배분 결정이나 최종 RCTL 이득이 확인되지는 않는다.
