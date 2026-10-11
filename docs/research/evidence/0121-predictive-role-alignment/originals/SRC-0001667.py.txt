@@ -1,0 +1,48 @@
+from pathlib import Path
+from datetime import datetime,timezone
+from concurrent.futures import ThreadPoolExecutor
+from html.parser import HTMLParser
+import hashlib,json,urllib.request
+from pypdf import PdfReader
+
+base=Path(__file__).resolve().parent/'sources/alignment_91';base.mkdir(parents=True,exist_ok=True)
+jobs=[
+ ('CPiRi_2601.20318v2','https://arxiv.org/pdf/2601.20318v2','pdf'),
+ ('CPiRi_2601.20318v2','https://arxiv.org/html/2601.20318v2','html'),
+ ('CPiRi_2601.20318_abs','https://arxiv.org/abs/2601.20318','html'),
+ ('CRAFT_WWW2026','https://zheng-kai.com/paper/2026_www_fang.pdf','pdf'),
+ ('TIDES_2512.22178v1','https://arxiv.org/pdf/2512.22178v1','pdf'),
+ ('TIDES_2512.22178v1','https://arxiv.org/html/2512.22178v1','html'),
+ ('TIDES_2512.22178_abs','https://arxiv.org/abs/2512.22178','html'),
+]
+class Extract(HTMLParser):
+    def __init__(self):super().__init__();self.parts=[];self.skip=0
+    def handle_starttag(self,tag,attrs):
+        if tag in ('script','style'):self.skip+=1
+        if tag in ('p','section','div','h1','h2','h3','h4','tr','li'):self.parts.append('\n')
+    def handle_endtag(self,tag):
+        if tag in ('script','style') and self.skip:self.skip-=1
+    def handle_data(self,data):
+        if not self.skip:self.parts.append(data)
+def fetch(job):
+    stem,url,kind=job;path=base/(stem+'.'+kind)
+    result={'url':url,'path':path.name,'accessed_utc':datetime.now(timezone.utc).isoformat(),'cap_bytes':20000000}
+    try:
+        assert not path.exists(),'Preserve prior downloads'
+        with urllib.request.urlopen(url,timeout=40) as response:
+            data=response.read(20000001);result.update(status=response.status,final_url=response.url)
+        assert len(data)<=20000000
+        path.write_bytes(data);result.update(bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+        if kind=='pdf':
+            assert data.startswith(b'%PDF')
+            pdf=PdfReader(path);result['pages']=len(pdf.pages)
+            text='\n\n'.join(f'--- PDF page {i+1} ---\n{p.extract_text() or ""}' for i,p in enumerate(pdf.pages))
+            result['first_page']=pdf.pages[0].extract_text()[:180]
+        else:
+            parser=Extract();parser.feed(data.decode('utf-8'));text=''.join(parser.parts)
+        (base/(stem+'_'+kind+'.txt')).write_text(text,encoding='utf-8')
+    except Exception as e:result['error']=type(e).__name__+': '+str(e)
+    return result
+with ThreadPoolExecutor(max_workers=3) as pool:records=list(pool.map(fetch,jobs))
+(base/'source_manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(records,ensure_ascii=True))

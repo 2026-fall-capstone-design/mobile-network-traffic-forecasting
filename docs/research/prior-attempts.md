@@ -564,3 +564,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원90 함수 제약으로 분할을 제안할 때
 
 [원90 검수](records/0120-prescribed-regularity.md)를 먼저 확인한다. 실제 운영 요구, 전체 모델 제약, 정보·학습 결정의 변화를 특정해야 한다. state contraction·입력 sensitivity·cell 소속과 sample routing을 같은 것으로 취급하지 않는다.
+
+## 원91 이웃 역할 정렬을 다시 검토할 때
+
+[원91 검수](records/0121-predictive-role-alignment.md)를 먼저 확인한다. 공통 열 순열의 표현 동등성과 셀별 역할 대응, 정렬 뒤 global 대안과 별도 소속의 필요성을 구분한다. 기존 일부 셀의 공간 입력 이득이나 다른 논문의 attention 비용을 RCTL 군집화 성공으로 이전하지 않는다.

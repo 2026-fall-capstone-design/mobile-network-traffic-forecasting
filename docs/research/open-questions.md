@@ -189,3 +189,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H119 범위표](evidence/0119-heterogeneity-splitting/packet-coverage.json)에 현재 진행판본 미독448행, 별도 부록·실행 근거, 논문 표·본문 불일치와 원90 이후의 정리 범위를 남겼다. 상대 다양성이나 유의하지 않은 기울기를 새로운 분할 기준으로 확정하지 않는다.
 
 [H120 범위표](evidence/0120-prescribed-regularity/packet-coverage.json)에 현재 연혁46–488행, CKLR Table4 본체와 전역 상계 조건, Mixture 증명·표기 추가 확인, 이후 기록과 전체 통합 검수를 남겼다.
+
+[H121 범위표](evidence/0121-predictive-role-alignment/packet-coverage.json)에 현재 연혁56–498행, 선택 외 HTML/TXT, 부모/외부 실제 구현·원자료, 역할 손해와 정렬 뒤 분리 필요성 및 원92 이후/이전 고유판본·전체통합 검수를 남겼다.
