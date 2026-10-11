@@ -1,0 +1,159 @@
+{
+  "kind": "bounded_scalar_algebra",
+  "source_code_executed": false,
+  "torch_imported": false,
+  "new_model_runs": 0,
+  "original_inventory_credit": 0,
+  "gumbel": {
+    "assumptions": "0<p<1, independent standard Gumbel perturbations, categorical hard argmax semantics; default tau=1. Saved logits are [log(p/(1-p)),log((1-p)/p)]. Finite-precision endpoints are outside this algebra.",
+    "formula": "q=p^2/(p^2+(1-p)^2)",
+    "cases": [
+      {
+        "input_p": "1/100",
+        "categorical_probability_exact": "1/9802",
+        "categorical_probability_float": 0.00010201999591920016
+      },
+      {
+        "input_p": "1/10",
+        "categorical_probability_exact": "1/82",
+        "categorical_probability_float": 0.012195121951219513
+      },
+      {
+        "input_p": "1/4",
+        "categorical_probability_exact": "1/10",
+        "categorical_probability_float": 0.1
+      },
+      {
+        "input_p": "1/2",
+        "categorical_probability_exact": "1/2",
+        "categorical_probability_float": 0.5
+      },
+      {
+        "input_p": "3/4",
+        "categorical_probability_exact": "9/10",
+        "categorical_probability_float": 0.9
+      },
+      {
+        "input_p": "9/10",
+        "categorical_probability_exact": "81/82",
+        "categorical_probability_float": 0.9878048780487805
+      },
+      {
+        "input_p": "99/100",
+        "categorical_probability_exact": "9801/9802",
+        "categorical_probability_float": 0.9998979800040808
+      }
+    ],
+    "diagonal_p": "99/100",
+    "diagonal_retained_probability": "9801/9802",
+    "diagonal_guaranteed": false
+  },
+  "finite_mask": {
+    "assumptions": "한 행에 retained key 1개(score=0), masked key 1개, scale=1/sqrt(E), softmax 전후만 비교하고 dropout 미적용. 입력과 점수는 유한한 실수라고 가정.",
+    "cases": [
+      {
+        "head_dimension": 64,
+        "kept_score_before_scaling": 0,
+        "masked_score_before_scaling": -23.025850929940457,
+        "masked_score_after_scaling": -2.878231366242557,
+        "masked_pre_dropout_attention": 0.053240215202022434,
+        "kept_pre_dropout_attention": 0.9467597847979776
+      },
+      {
+        "head_dimension": 128,
+        "kept_score_before_scaling": 0,
+        "masked_score_before_scaling": -23.025850929940457,
+        "masked_score_after_scaling": -2.0352169168939334,
+        "masked_pre_dropout_attention": 0.11555467353166055,
+        "kept_pre_dropout_attention": 0.8844453264683394
+      },
+      {
+        "head_dimension": 256,
+        "kept_score_before_scaling": 0,
+        "masked_score_before_scaling": -23.025850929940457,
+        "masked_score_after_scaling": -1.4391156831212786,
+        "masked_pre_dropout_attention": 0.1916823274505414,
+        "kept_pre_dropout_attention": 0.8083176725494586
+      },
+      {
+        "head_dimension": 512,
+        "kept_score_before_scaling": 0,
+        "masked_score_before_scaling": -23.025850929940457,
+        "masked_score_after_scaling": -1.0176084584469667,
+        "masked_pre_dropout_attention": 0.26549350554058043,
+        "kept_pre_dropout_attention": 0.7345064944594195
+      }
+    ],
+    "all_masked_finite_row": "모든 score가 같은 유한 상수면 dropout 이전 softmax는 1/N. 실제 mask row가 모두 0인 빈도는 측정하지 않음.",
+    "scope": "특정 예에서 zero mask가 exact zero attention을 보장하지 않는다는 대수; 실제 학습 성능·일반 row의 질량을 주장하지 않음."
+  },
+  "dense_difference_tensor": [
+    {
+      "B": 16,
+      "N": 862,
+      "L": 336,
+      "F": 169,
+      "shape": [
+        16,
+        862,
+        862,
+        169
+      ],
+      "elements": 2009190976,
+      "float32_bytes": 8036763904,
+      "GiB": 7.484819650650024,
+      "scope": "diff 한 개의 dense float32 원소 수만 계산. temp/gradient/기타 tensor·할당기·실측 peak·시간을 포함하지 않음."
+    },
+    {
+      "B": 16,
+      "N": 862,
+      "L": 512,
+      "F": 257,
+      "shape": [
+        16,
+        862,
+        862,
+        257
+      ],
+      "elements": 3055396928,
+      "float32_bytes": 12221587712,
+      "GiB": 11.382240533828735,
+      "scope": "diff 한 개의 dense float32 원소 수만 계산. temp/gradient/기타 tensor·할당기·실측 peak·시간을 포함하지 않음."
+    }
+  ],
+  "load_threshold_scale_example": {
+    "M": 2,
+    "k": 1,
+    "W_h": "identity",
+    "illustrative_clean_and_noisy_logits": [
+      2.0,
+      0.0
+    ],
+    "softmax_top_values": [
+      0.8807970779778824,
+      0.11920292202211755
+    ],
+    "code_threshold_if_in": 0.11920292202211755,
+    "code_threshold_if_out": 0.8807970779778824,
+    "same_logit_space_order_statistics": {
+      "if_in": 0.0,
+      "if_out": 2.0
+    },
+    "scope": "실제 학습/확률 추정 오차 측정이 아닌, load helper의 입력과 threshold가 다른 수치 공간임을 보이는 예. 고정 zero-noise 예를 샘플링하지 않았다."
+  },
+  "costs": {
+    "freq_dim": "F=floor(L/2)+1",
+    "dense_difference_shape": "B*N*N*F",
+    "A_parameters": "F*F",
+    "literal_dense_A_diff_multiply": "B*N*N*F*F multiply terms; 라이브러리 실행 시간/전체 모델 비용이 아니다.",
+    "attention_score_shape": "B*heads*N*N",
+    "caution": "빈도 차이 tensor·학습 거리·전체 attention의 비용을 Transformer 한 layer 복잡도나 RCTL 비용 절감과 동일시하지 않음."
+  },
+  "batch_id": "history-095",
+  "semantic_second_pass_complete": true,
+  "postdraft_check": {
+    "success": true,
+    "method": "같은 에이전트가 다른 scalar 식·Fraction·정수 곱으로 교차검산. sampling·tensor 할당·모델 실행 없음.",
+    "independent_reviewer": false
+  }
+}

@@ -144,3 +144,5 @@
 [H093 CCM 코드 검토](records/0093-ccm-code-review.md)는 H092 다음에 원81의 batch 평균·공동 역전파 관찰을 고정 commit과 대조했다. sinkhorn의 활성 행정규화, 논문과 손실/attention의 차이 및 조건부 차원·순서 위험을 보존한다. 실제 모델 실행·성능 재현은 하지 않았다.
 
 [H094 DUET 문헌 검토](records/0094-duet-literature-review.md)는 원81의 주파수 기반 학습관계 설명을 v3 전체로 확장한다. 평균 우위와 개별 조건 손해, expert 수/입력 길이의 반례 및 논문·코드·독립 RCTL의 차이를 보존한다. 새 연구 실행이나 DUET 코드 확인을 완료한 것은 아니다.
+
+[H095 DUET 코드 대조](records/0095-duet-code-review.md)는 원81의 전체 channel 쌍 계산 관찰을 고정 commit으로 확인한다. routing·Gumbel 확률·유한 score 마스크·검증/설정 차이를 기록하며 2026년 코드를 2025년 논문의 실제 실행으로 소급하지 않는다.

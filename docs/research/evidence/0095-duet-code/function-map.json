@@ -1,0 +1,310 @@
+{
+  "sources": [
+    {
+      "source_id": "SRC-0062863",
+      "definitions": [
+        {
+          "name": "DUET",
+          "kind": "ClassDef",
+          "start": 42,
+          "end": 68
+        },
+        {
+          "name": "DUET.__init__",
+          "kind": "FunctionDef",
+          "start": 53,
+          "end": 54
+        },
+        {
+          "name": "DUET.model_name",
+          "kind": "FunctionDef",
+          "start": 57,
+          "end": 58
+        },
+        {
+          "name": "DUET._init_model",
+          "kind": "FunctionDef",
+          "start": 60,
+          "end": 61
+        },
+        {
+          "name": "DUET._process",
+          "kind": "FunctionDef",
+          "start": 63,
+          "end": 68
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-0062864",
+      "definitions": [
+        {
+          "name": "DSAttention",
+          "kind": "ClassDef",
+          "start": 10,
+          "end": 52
+        },
+        {
+          "name": "DSAttention.__init__",
+          "kind": "FunctionDef",
+          "start": 13,
+          "end": 25
+        },
+        {
+          "name": "DSAttention.forward",
+          "kind": "FunctionDef",
+          "start": 27,
+          "end": 52
+        },
+        {
+          "name": "FullAttention",
+          "kind": "ClassDef",
+          "start": 55,
+          "end": 89
+        },
+        {
+          "name": "FullAttention.__init__",
+          "kind": "FunctionDef",
+          "start": 56,
+          "end": 68
+        },
+        {
+          "name": "FullAttention.forward",
+          "kind": "FunctionDef",
+          "start": 70,
+          "end": 89
+        },
+        {
+          "name": "ProbAttention",
+          "kind": "ClassDef",
+          "start": 92,
+          "end": 192
+        },
+        {
+          "name": "ProbAttention.__init__",
+          "kind": "FunctionDef",
+          "start": 93,
+          "end": 106
+        },
+        {
+          "name": "ProbAttention._prob_QK",
+          "kind": "FunctionDef",
+          "start": 108,
+          "end": 130
+        },
+        {
+          "name": "ProbAttention._get_initial_context",
+          "kind": "FunctionDef",
+          "start": 132,
+          "end": 142
+        },
+        {
+          "name": "ProbAttention._update_context",
+          "kind": "FunctionDef",
+          "start": 144,
+          "end": 163
+        },
+        {
+          "name": "ProbAttention.forward",
+          "kind": "FunctionDef",
+          "start": 165,
+          "end": 192
+        },
+        {
+          "name": "AttentionLayer",
+          "kind": "ClassDef",
+          "start": 195,
+          "end": 223
+        },
+        {
+          "name": "AttentionLayer.__init__",
+          "kind": "FunctionDef",
+          "start": 196,
+          "end": 207
+        },
+        {
+          "name": "AttentionLayer.forward",
+          "kind": "FunctionDef",
+          "start": 209,
+          "end": 223
+        },
+        {
+          "name": "ReformerLayer",
+          "kind": "ClassDef",
+          "start": 226,
+          "end": 264
+        },
+        {
+          "name": "ReformerLayer.__init__",
+          "kind": "FunctionDef",
+          "start": 227,
+          "end": 246
+        },
+        {
+          "name": "ReformerLayer.fit_length",
+          "kind": "FunctionDef",
+          "start": 248,
+          "end": 258
+        },
+        {
+          "name": "ReformerLayer.forward",
+          "kind": "FunctionDef",
+          "start": 260,
+          "end": 264
+        },
+        {
+          "name": "TwoStageAttentionLayer",
+          "kind": "ClassDef",
+          "start": 267,
+          "end": 360
+        },
+        {
+          "name": "TwoStageAttentionLayer.__init__",
+          "kind": "FunctionDef",
+          "start": 273,
+          "end": 322
+        },
+        {
+          "name": "TwoStageAttentionLayer.forward",
+          "kind": "FunctionDef",
+          "start": 324,
+          "end": 360
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-0062865",
+      "definitions": [
+        {
+          "name": "DUETModel",
+          "kind": "ClassDef",
+          "start": 16,
+          "end": 81
+        },
+        {
+          "name": "DUETModel.__init__",
+          "kind": "FunctionDef",
+          "start": 17,
+          "end": 48
+        },
+        {
+          "name": "DUETModel.forward",
+          "kind": "FunctionDef",
+          "start": 50,
+          "end": 81
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-0062866",
+      "definitions": [
+        {
+          "name": "EncoderLayer",
+          "kind": "ClassDef",
+          "start": 12,
+          "end": 32
+        },
+        {
+          "name": "EncoderLayer.__init__",
+          "kind": "FunctionDef",
+          "start": 13,
+          "end": 22
+        },
+        {
+          "name": "EncoderLayer.forward",
+          "kind": "FunctionDef",
+          "start": 24,
+          "end": 32
+        },
+        {
+          "name": "Encoder",
+          "kind": "ClassDef",
+          "start": 35,
+          "end": 65
+        },
+        {
+          "name": "Encoder.__init__",
+          "kind": "FunctionDef",
+          "start": 36,
+          "end": 42
+        },
+        {
+          "name": "Encoder.forward",
+          "kind": "FunctionDef",
+          "start": 44,
+          "end": 65
+        },
+        {
+          "name": "FullAttention",
+          "kind": "ClassDef",
+          "start": 68,
+          "end": 107
+        },
+        {
+          "name": "FullAttention.__init__",
+          "kind": "FunctionDef",
+          "start": 69,
+          "end": 81
+        },
+        {
+          "name": "FullAttention.forward",
+          "kind": "FunctionDef",
+          "start": 83,
+          "end": 107
+        },
+        {
+          "name": "AttentionLayer",
+          "kind": "ClassDef",
+          "start": 110,
+          "end": 138
+        },
+        {
+          "name": "AttentionLayer.__init__",
+          "kind": "FunctionDef",
+          "start": 111,
+          "end": 122
+        },
+        {
+          "name": "AttentionLayer.forward",
+          "kind": "FunctionDef",
+          "start": 124,
+          "end": 138
+        },
+        {
+          "name": "Mahalanobis_mask",
+          "kind": "ClassDef",
+          "start": 141,
+          "end": 207
+        },
+        {
+          "name": "Mahalanobis_mask.__init__",
+          "kind": "FunctionDef",
+          "start": 142,
+          "end": 147
+        },
+        {
+          "name": "Mahalanobis_mask.calculate_prob_distance",
+          "kind": "FunctionDef",
+          "start": 149,
+          "end": 180
+        },
+        {
+          "name": "Mahalanobis_mask.bernoulli_gumbel_rsample",
+          "kind": "FunctionDef",
+          "start": 182,
+          "end": 197
+        },
+        {
+          "name": "Mahalanobis_mask.forward",
+          "kind": "FunctionDef",
+          "start": 199,
+          "end": 207
+        }
+      ]
+    }
+  ],
+  "source_code_executed": false,
+  "new_model_runs": 0,
+  "batch_id": "history-095",
+  "method": "ast.parse로 정의 범위를 추출하며 원본을 import하거나 실행하지 않음."
+}

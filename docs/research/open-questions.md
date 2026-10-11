@@ -138,3 +138,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H093 구현 대조](records/0093-ccm-code-review.md)로 위21그룹 중6그룹을 읽어15그룹이 남는다. 활성 sinkhorn·Eq.4 구현·projection/마스킹·prototype와 S 차원을 확인했다. 실제 entrypoint/자료·환경·seed별 결과·M4 집계/선택 이력은 여전히 미확인이다. 코드 경로의 차원·순서·등록 문제는 정적 조건부 관찰이며 논문 실행의 실패를 확인한 것이 아니다.
 
 [H094 DUET 후속 검토](records/0094-duet-literature-review.md)로 앞15그룹 중4그룹을 읽어11그룹이 남는다. DUET 코드6그룹·다른문헌4·검색1과 snapshot고유변경분은 미완료다. ILI 표제/행의 차이, 개선율의 원집계, 실제 k/γ·난수/분할/seed·추가15자료 결과와 전체 비용을 확인해야 한다. 부록A.2 대수와 Fig8 반례를 전체 실험 실패로 확대하지 않는다.
+
+[H095 DUET 코드 검토](records/0095-duet-code-review.md)로 앞의11그룹 중6그룹을 읽어 문헌4·검색1의5그룹이 남는다. routing의 훈련/평가 차이·load threshold 수치 공간·Gumbel 확률·유한 마스크·drop_last를 확인했지만 실제 실행 로그·최종 CLI 병합·seed별 영향·unified/retest 결과·전체 시간/메모리는 미확인이다. snapshot 연혁의 고유 변경과 다른 과거기록 검토도 이어간다.

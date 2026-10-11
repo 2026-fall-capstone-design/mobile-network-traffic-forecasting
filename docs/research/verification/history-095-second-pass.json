@@ -1,0 +1,322 @@
+{
+  "batch_id": "history-095",
+  "checked_at_utc": "2026-10-11T02:28:27.349396+00:00",
+  "claims_checked": 34,
+  "checks": [
+    {
+      "check_id": "H095-SP01",
+      "claims": [
+        1,
+        2,
+        3
+      ],
+      "actual_rechecked_ranges": [
+        "원81 30–48·서지TXT 1–30",
+        "원코드4 전체716행·commit JSON 전체 키·tree 헤더/777–801 및 선택 항목",
+        "원12사본·보호6·재참조3 SHA 및 113tree/18blob 재계산"
+      ],
+      "conclusion": "2026 commit과 2025 v3를 분리. tree 응답 sha와 실제 root 구분. 구조 목록과 파일 본문 독해를 구분."
+    },
+    {
+      "check_id": "H095-SP02",
+      "claims": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "actual_rechecked_ranges": [
+        "duet wrapper/model 전체·TCM 전체·router 전체·RevIN 전체",
+        "base 26–139·328–499·529–654; duet __init__ 1–3"
+      ],
+      "conclusion": "활성 utils/masked_attention 경로·CI reshape·N=1 분기·내부 RevIN 이전 입력과 global scaler를 확인."
+    },
+    {
+      "check_id": "H095-SP03",
+      "claims": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "actual_rechecked_ranges": [
+        "TCM 1–290·router 1–21·pattern 1–81·RevIN 1–67",
+        "Autoformer 21–53·wrapper 전체·model 전체",
+        "load threshold scalar 예시"
+      ],
+      "conclusion": "W_h의 훈련 분기·softmax 이후 Top-k·load 수치 공간·dispatcher·decomposition을 확인. RevIN 표현을 평균/표준편차로 정밀화."
+    },
+    {
+      "check_id": "H095-SP04",
+      "claims": [
+        14,
+        15
+      ],
+      "actual_rechecked_ranges": [
+        "masked_attention 141–180"
+      ],
+      "conclusion": "rFFT 진폭·A 변환·dense diff·역수 거리·행별 최대 정규화 및 대각 0.99 확인."
+    },
+    {
+      "check_id": "H095-SP05",
+      "claims": [
+        16,
+        17,
+        18
+      ],
+      "actual_rechecked_ranges": [
+        "masked_attention 182–207·model 64–72",
+        "requirements 1–15·PyTorch 2.4.1 함수1894–1953",
+        "base 검증/예측 eval 구간; Fraction 확률 계산"
+      ],
+      "conclusion": "opposite log-odds의 q 식과 자기연결의 확률을 확인. eval에도 호출되며 실제 sampling/실행결과는 미측정."
+    },
+    {
+      "check_id": "H095-SP06",
+      "claims": [
+        19,
+        20,
+        21
+      ],
+      "actual_rechecked_ranges": [
+        "masked_attention 전체·model 전체·원81 35–41",
+        "finite score softmax scalar 재계산"
+      ],
+      "conclusion": "유한 마스크값과 head scale의 순서, 동일 mask의 head/layer 공유를 확인. attention 0이나 고정 UPC 분할을 보장한다고 해석하지 않음."
+    },
+    {
+      "check_id": "H095-SP07",
+      "claims": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "actual_rechecked_ranges": [
+        "base 26–139·config 1–45·scripts3개 전체24행",
+        "utils162–176·논문TXT460–467/1165–1257"
+      ],
+      "conclusion": "설정 우선순위·loss 분기·12개 요청값을 대조. ILI 근거의 잘못된 1444–1454행을 실제 ILI 표 행으로 수정; 당시 실행을 추정하지 않음."
+    },
+    {
+      "check_id": "H095-SP08",
+      "claims": [
+        28,
+        29,
+        30
+      ],
+      "actual_rechecked_ranges": [
+        "base328–499/529–654·wrapper63–68",
+        "utils34–66/242–259·README64–65·논문460–466"
+      ],
+      "conclusion": "multivariate train drop_last, 검증 shuffle/단순 batch 평균, 훈련에서만 auxiliary loss, delta0 동률의 improved 및 checkpoint를 대조."
+    },
+    {
+      "check_id": "H095-SP09",
+      "claims": [
+        31,
+        32,
+        33
+      ],
+      "actual_rechecked_ranges": [
+        "masked_attention83–159·Traffic스크립트전체·논문235–250",
+        "README전체145행·정수 tensor 원소값 크기 재계산"
+      ],
+      "conclusion": "dense 차원과 특정 float32 diff 저장공간만 계산. unified/search/retest의 README 서술을 실제 결과 독해와 구분."
+    },
+    {
+      "check_id": "H095-SP10",
+      "claims": [
+        34
+      ],
+      "actual_rechecked_ranges": [
+        "선택명세6그룹/12사본·first-read 기록·이번 실제 재대조 범위",
+        "H090 잔여29에서 H0914/H0924/H0936/H0944/H0956 차감"
+      ],
+      "conclusion": "남은 문헌4/검색1·snapshot 연혁을 보존. 재참조3·보충15·파생자료는 원목록 가산0; 독립 리뷰/모델 재현 아님."
+    }
+  ],
+  "actual_source_ranges": {
+    "SRC-0022042": [
+      [
+        30,
+        48
+      ]
+    ],
+    "SRC-0062863": [
+      [
+        1,
+        68
+      ]
+    ],
+    "SRC-0062864": [
+      [
+        1,
+        360
+      ]
+    ],
+    "SRC-0062865": [
+      [
+        1,
+        81
+      ]
+    ],
+    "SRC-0062866": [
+      [
+        1,
+        207
+      ]
+    ],
+    "SRC-0062851": [
+      [
+        1,
+        30
+      ]
+    ],
+    "SRC-0062849": [
+      [
+        235,
+        250
+      ],
+      [
+        460,
+        467
+      ],
+      [
+        1165,
+        1257
+      ],
+      [
+        1425,
+        1515
+      ]
+    ]
+  },
+  "supplement_actual_ranges": {
+    "H095-S01": [
+      [
+        1,
+        290
+      ]
+    ],
+    "H095-S02": [
+      [
+        1,
+        21
+      ]
+    ],
+    "H095-S03": [
+      [
+        1,
+        81
+      ]
+    ],
+    "H095-S04": [
+      [
+        1,
+        67
+      ]
+    ],
+    "H095-S05": [
+      [
+        26,
+        139
+      ],
+      [
+        141,
+        158
+      ],
+      [
+        328,
+        499
+      ],
+      [
+        529,
+        654
+      ]
+    ],
+    "H095-S06": [
+      [
+        1,
+        45
+      ]
+    ],
+    "H095-S07": [
+      [
+        1,
+        15
+      ]
+    ],
+    "H095-S08": [
+      [
+        1,
+        145
+      ]
+    ],
+    "H095-S09": [
+      [
+        1,
+        3
+      ]
+    ],
+    "H095-S10": [
+      [
+        34,
+        66
+      ],
+      [
+        162,
+        176
+      ],
+      [
+        242,
+        259
+      ]
+    ],
+    "H095-S11": [
+      [
+        21,
+        53
+      ]
+    ],
+    "H095-S12": [
+      [
+        1,
+        8
+      ]
+    ],
+    "H095-S13": [
+      [
+        1,
+        8
+      ]
+    ],
+    "H095-S14": [
+      [
+        1,
+        8
+      ]
+    ],
+    "H095-S15": [
+      [
+        1894,
+        1953
+      ]
+    ]
+  },
+  "postdraft_tree_scope": "첫 독해는 1085항목 모든 필드. 작성 후에는 sha/url/truncated·777–801항목과 DUET 스크립트/관련 모듈 선택 항목 재독해, 113tree와 원코드4/보충14blob 기계적 재계산. 전체 tree를 다시 독해했다고 표시하지 않음.",
+  "full_second_read_all_sources": false,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "corrections": [
+    "C25 논문 표 위치를 실제 ILI 1165–1257행으로 수정",
+    "원81 내부 링크를 실제 파일명으로 수정",
+    "C13 detach 대상을 평균·표준편차로 정밀화",
+    "C10 noisy load 경로 조건 명시"
+  ]
+}
