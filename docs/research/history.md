@@ -197,3 +197,5 @@
 [H119 원89](records/0119-heterogeneity-splitting.md): 원15·35·38·80과 두 논문69쪽을 연결해 특징 차이·정보 손실·유한 학습의 구분을 기록한다.
 
 [H120 원90](records/0120-prescribed-regularity.md): 제약을 추가해 분리를 정당화하는 안의 미채택 판단과 세 논문의 적용 범위·자료 보존을 정리한다.
+
+[H121 원91](records/0121-predictive-role-alignment.md): 역할 대응을 별도 결정으로 검토했으나 실제 손해·정렬 뒤 분리 필요성을 확인하지 못해 진입하지 않았다. CPiRi·CRAFT·TIDES의 수치와 적용 조건을 함께 검수했다.

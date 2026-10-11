@@ -1,0 +1,87 @@
+from pathlib import Path
+import hashlib,json,shutil
+from pypdf import PdfReader
+
+ROOT=Path(__file__).resolve().parents[2]
+WORK=ROOT/'tmp/redesign_20260925'
+SRC=WORK/'sources/alignment_91'
+LEDGER=WORK/'cumulative_execution_budget.json'
+EXPECTED='f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(LEDGER)==EXPECTED
+manifest=json.loads((SRC/'source_manifest.json').read_text(encoding='utf-8'))
+pdfs=[]
+for row in manifest:
+    assert 'error' not in row,row
+    p=SRC/row['path'];assert sha(p)==row['sha256']
+    if p.suffix=='.pdf':
+        assert len(PdfReader(p).pages)==row['pages'];pdfs.append(row)
+code=json.loads((SRC/'code_manifest.json').read_text(encoding='utf-8'))
+for row in code['files']:assert sha(SRC/row['local_path'])==row['sha256']
+images=sorted((SRC/'renders').glob('*.png'));assert len(images)==6
+scope={
+ 'date':'2026-09-26','plan':'91_predictive_role_alignment_scope_plan.md',
+ 'new_TabICL_calls':0,'new_RCTL_calls':0,'new_numeric_diagnostics':0,'external_code_executed':False,
+ 'sources':[
+  {'id':'CPiRi_2601.20318v2','scope':'Sections3.1–3.5/Algorithm1, selected Section4 benchmark discussion and AppendixA.5. PDFp5 visual. Six public code files read statically; not full repository execution/reproduction. Latest abs version checked v2.'},
+  {'id':'CRAFT_WWW2026','scope':'Sections2.2,3.1–3.4,4.1–4.3.1; equations4–19, Tables1–3 discussion. PDFp5–6 visual. Author PDF; no external implementation executed.'},
+  {'id':'TIDES_2512.22178v1','scope':'SectionIV.A–B equations13–28; V.A–C/I, TableI–II. PDFp12/15/17 visual. Official arXiv source; institutional later manuscript surfaced but not read; no complete code or public data access verified.'}
+ ],
+ 'valid_pdf_count':len(pdfs),'valid_pdf_pages':sum(r['pages'] for r in pdfs),'valid_pdf_bytes':sum(r['bytes'] for r in pdfs),
+ 'code_commit':code['commit'],'code_files':len(code['files']),
+ 'renders':[{'path':str(p.relative_to(SRC)),'sha256':sha(p),'visually_inspected':True} for p in images],
+ 'queries':[
+  'traffic forecasting spatial role alignment functional similarity node permutation transfer learning',
+  'network traffic forecasting input alignment local patterns permutation equivariant neural network',
+  'time series forecasting channel permutation alignment local neighborhoods transfer',
+  'forecasting neighborhood alignment relative roles traffic forecasting semantic spatial transfer network',
+  '"forecasting" "channel" "reordering" similarity model',
+  '"traffic prediction" "spatial matching" neural network',
+  '"mobile traffic" "role" prediction spatial',
+  '"time series" "channel reordering"',
+  '"traffic prediction" "spatial matching" convolution',
+  '"forecasting" "neighborhood" "canonical"',
+  '"Efficient High-Dimensional Time Series Forecasting with Transformers"',
+  '"mobile traffic" "spatial" "reordering"',
+  '"network traffic" "prediction" "spatial alignment"',
+  '"Wireless Traffic Prediction with Large Language Model" TIDES arxiv',
+  '"CPiRi" "2601.20318"'
+ ],
+ 'search_only_not_method_evidence':['DGCTF Electronics2026','CLOC Mathematics2026','TSKNET EAAI2026','GSTPRN2023','ISTFA PLOS2026','From Patterns to Predictions Computers2025','MITDASTN2022'],
+ 'own_symbolic_findings':['Common input permutation changes coordinates, not unconstrained RCTL expressivity if every raw-input projection is adjusted.','Cell-dependent alignment can simplify sharing, but may make one global model sufficient.','Unordered inputs can remove useful roles; equal importance does not identify joint response equivalence.','CRAFT printed attention terms give O(C(P+C/P)) under GP≈C; not a measured end-to-end linear clustering cost.'],
+ 'decision':'No recommendation or new numeric pilot: actual role-mismatch harm and incremental partition benefit are not established. Not proof of universal impossibility.',
+ 'ledger_sha256':EXPECTED,'goal_complete':False,'external_blocker':None,'search_completeness_claimed':False,
+}
+out=WORK/'91_source_reading_scope.json';assert not out.exists()
+out.write_text(json.dumps(scope,ensure_ascii=False,indent=2),encoding='utf-8')
+progress=WORK/'progress.md';content=progress.read_text(encoding='utf-8-sig')
+previous='## 최신 상태 — 90 사전 함수 제약의 필요성과 적용 범위 확인'
+assert previous in content
+new='''## 최신 상태 — 91 공간 입력의 역할 정렬과 telecom 선행연구 검토
+
+- 2026-09-26. 91 계획 후 CPiRi2601.20318v2, CRAFT WWW2026, TIDES2512.22178v1의 지정 방법·실험 조건을 읽었다. PDF3개65쪽/10173209bytes, 관련6쪽 시각 대조. CPiRi 공식 commit3f1e00f62b42782062c3484792f47fe905e5b743의6파일을 정적으로 읽었고 외부 코드 실행0이다.
+- 입력·target 목록의 동시 permutation과 자기 target을 고정한 이웃 역할 대응은 다르다. 모든 cell에 같은 입력 순서 변경은 원입력을 읽는 projection들의 계수 재배열로 표현할 수 있다. cell별 역할 정렬은 별도 결정이지만, 정렬 뒤 global 하나가 충분한 경우도 있다. 자체 기호 검토이며 실제 데이터 개선이 아니다.
+- CPiRi 저장소의 특정 METR-LA 설정에는 shuffle 주석과 epoch11 gradient 허용 옵션이 있어 논문의 frozen/shuffle 전체 실험과 구별했다. 실제 optimizer 갱신·실행 결과까지 단정하지 않는다. CRAFT의 예측형 정렬은 알려진 원리이며 인쇄된 비용식과 선형이라는 표현도 구별했다.
+- TIDES는 실제 telecom의 지리·시간·Moran 특징 K-means→cluster별 LLM 예측을 제시한다. 따라서 clustering+foundation model이라는 큰 틀 자체를 신규성으로 삼지 않는다. 19k sector의15분자료를 region으로 집계한 조건이며 Milan/RCTL과 다르다. ZoneB에서는 Time-LLM이 MAE/RMSE에서 더 작다. 각 모듈의 독립 기여·완전 재현은 미확인이다.
+- 후보는 미채택: 현재 자료의 실제 역할 불일치 손해와 정렬 뒤에도 필요한 cell 분리 근거가 없다. 46·47의 일부 공간 입력 이득은 보존하지만 역할 불일치의 증거로 바꾸지 않는다. 임의 permutation으로 문제를 만들거나 08–09의 covariance/24–25의 horizon 검토를 새 원리로 반복하지 않는다.
+- 새 Tab/RCTL/데이터수치실행0. 원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변. 잔여 Tab11context/20640행, 추가 RCTLfit0 유지. 기존 기간은 개발자료이며84의5쪽중간Word는불변이다.
+- 상세91판단·공개보고서·source/code manifest·후보인덱스를 갱신했다. 최종 추천안과 최종Word는 미완료다. 이번은 새 telecom 선행 구조와 실제 코드 적용 범위를 구체화한 progress이며 외부 blocker는 없다. 다음 탐색에서 역할 정렬/순서 불변성을 이름만 바꾸어 재실행하지 않는다.
+
+'''
+progress.write_text(content.replace(previous,new+previous.replace('최신','이전'),1),encoding='utf-8')
+report=ROOT/'output/research/TabICLv2_재설계_공간입력역할과_선행연구_검토.md'
+for p in (report,WORK/'91_predictive_role_alignment_findings.md'):
+    assert '사례' not in p.read_text(encoding='utf-8')
+snapshot=ROOT/'output/research/redesign_20260925_snapshot_33';assert not snapshot.exists();snapshot.mkdir()
+names=['91_predictive_role_alignment_scope_plan.md','91_predictive_role_alignment_findings.md','91_source_reading_scope.json','fetch_alignment_sources_91.py','finish_alignment_sources_91.py','progress.md','candidate_decision_index.md']
+files=[WORK/n for n in names]+[LEDGER,report,Path(__file__).resolve()]+sorted(p for p in SRC.rglob('*') if p.is_file())
+records=[]
+for source in files:
+    rel=source.relative_to(ROOT);target=snapshot/rel;target.parent.mkdir(exist_ok=True,parents=True);shutil.copy2(source,target)
+    assert sha(source)==sha(target)
+    if source.suffix=='.json':json.loads(source.read_text(encoding='utf-8'))
+    records.append({'path':rel.as_posix(),'bytes':source.stat().st_size,'sha256':sha(source)})
+result={'files':len(records),'bytes':sum(r['bytes'] for r in records),'manifest':records,'ledger_unchanged':sha(LEDGER)==EXPECTED,'goal_complete':False}
+(snapshot/'manifest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+(WORK/'91_archive_verification.json').write_text(json.dumps({'snapshot':str(snapshot),'files':result['files'],'bytes':result['bytes'],'verified':True,'ledger_unchanged':True},ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({k:v for k,v in result.items() if k!='manifest'}))
