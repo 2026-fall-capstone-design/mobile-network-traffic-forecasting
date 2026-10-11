@@ -170,4 +170,4 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 
 [H109](records/0109-cumulative-history.md)에서 H108의 snapshot25 연혁2그룹을 검수했다. [후속 범위](evidence/0109-cumulative-history/packet-coverage.json)의 미독 보존 그룹은0이지만 Fed-PPBC의4개 근거 공백·장기 접근과 모든 이전 고유 판본·원84 이후의 전체 정리는 계속 남는다. 오래된 문서의 당시 미완료 표시는 보존한다.
 
-[H110 원84](records/0110-evidence-synthesis.md)의 핵심9그룹을 정리한다. [미독 후속8그룹](evidence/0110-evidence-synthesis/packet-coverage.json)은 DOCX1·PDF1·PNG5·고유 연혁1이며, 최초 실패 검사·9쪽 렌더의 세부 증거도 이번에 확인하지 못했다. 실제 운영 제약과 유용한 소속 결정·최종 RCTL 개선은 여전히 연구 질문이다.
+[H110 원84](records/0110-evidence-synthesis.md)의 당시 후속8미독은 [H111 문서·연혁 검수](records/0111-interim-document-history.md)에서 해소했다. Word 새 렌더와 최초 실패 검사·9쪽 렌더의 세부 증거는 여전히 미확인이다. 실제 운영 제약과 유용한 소속 결정·최종 RCTL 개선은 여전히 연구 질문이다.

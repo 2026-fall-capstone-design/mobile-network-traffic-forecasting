@@ -1,0 +1,100 @@
+{
+  "previous_source_id": "SRC-0001479",
+  "previous_sha256": "5bbd8ca6e7a47f042df1c60172c791a194e86556cb1668f8b23e6c80dc10f513",
+  "current_source_id": "SRC-0001505",
+  "current_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+  "previous_lines": 412,
+  "current_lines": 422,
+  "opcodes": [
+    {
+      "operation": "equal",
+      "previous_range": [
+        1,
+        6
+      ],
+      "current_range": [
+        1,
+        6
+      ],
+      "previous_line_count": 6,
+      "current_line_count": 6
+    },
+    {
+      "operation": "replace",
+      "previous_range": [
+        7,
+        7
+      ],
+      "current_range": [
+        7,
+        7
+      ],
+      "previous_line_count": 1,
+      "current_line_count": 1
+    },
+    {
+      "operation": "equal",
+      "previous_range": [
+        8,
+        8
+      ],
+      "current_range": [
+        8,
+        8
+      ],
+      "previous_line_count": 1,
+      "current_line_count": 1
+    },
+    {
+      "operation": "insert",
+      "previous_range": [],
+      "current_range": [
+        9,
+        18
+      ],
+      "previous_line_count": 0,
+      "current_line_count": 10
+    },
+    {
+      "operation": "equal",
+      "previous_range": [
+        9,
+        412
+      ],
+      "current_range": [
+        19,
+        422
+      ],
+      "previous_line_count": 404,
+      "current_line_count": 404
+    }
+  ],
+  "diff": [
+    "--- output/research/redesign_20260925_snapshot_25/tmp/redesign_20260925/progress.md",
+    "+++ output/research/redesign_20260925_snapshot_26/tmp/redesign_20260925/progress.md",
+    "@@ -4,8 +4,18 @@",
+    " ",
+    " 활성 goal 중에 이전의 goal 입력 방법 질문을 반복 답변하지 않는다. 사용자가 명시적으로 해결을 요청했다. 앞으로 자동 continuation은 이 연구의 실행·증거·산출물 작업을 이어가는 것으로 해석한다. goal 사용법 안내·재등록 제안은 요청이 다시 있을 때만 한다. 작업 폴더의 `AGENTS.md`에도 이 지침을 남겼다. 아래의 최신 상태부터 이어간다.",
+    " ",
+    "-## 최신 상태 — 83 정적 cluster의 공동 갱신 비용 검토",
+    "-",
+    "+## 최신 상태 — 84 근거 종합과 중간 Word 검수 완료",
+    "+",
+    "+- 2026-09-26. 84계획 후 직접예측74, 소속결정80, 최종RCTL07의 원 JSON을 대조했다. 다른 cell·입력·기간·mean/median·손실의 숫자를 섞지 않았다. 좋은Tab예측과 좋은군집판단을 구분한 중간 보고서를 작성했다. 신규 추천안 확정이나 goal완료를 선언하지 않았다.",
+    "+- 실제 모델·데이터 진단 0회. M256/Q64/k16에서 N128/1024/10000의 전체·방향후보·양방향 query행 수를 산술로 계산했다. N10000에서6,399,360,000/10,240,000/20,480,000행이며 own-query와 새context준비는 별도다. 실행시간·최종알고리즘 성공으로 세지 않는다.",
+    "+- 교수님 검토용 Word `output/docx/TabICLv2_재설계_근거정리와_남은핵심판단_중간검토.docx` 5쪽 작성·전페이지 시각검수 완료. 같은 이름의 한국어md는 output/research에 있다. 기존문서불변. 최종추천을 담은 Word는 여전히 미완료다. 첫렌더9쪽의빈페이지를수정해v2렌더5쪽으로확인했다.",
+    "+- 실제네트워크의global모델운영제약 유무에 관한 선택적질문은 현재 미응답이다. 운영제약의존재/부재를가정하지않는다. 별도승인요청이나goal입력안내로바꾸지않는다.",
+    "+- 파일:84_evidence_synthesis_plan.md,84_evidence_synthesis_findings.md,84_evidence_and_workload.json,build_synthesis_84.py,84_document_verification.json. 예산원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변, Tab잔여11/20640, RCTL새fit0 유지.",
+    "+- 다음에는84문서를다시작성하거나탈락점수에보정항만붙이지않는다. 새운영조건답변이있으면문제정의에반영하고, 없으면그런제약을발명하지않는다. 원래완료조건에필요한유용한결정·Tab의실익·RCTL연결은미확정이며goalactive다. 사용법안내·그안내를고쳤다는보고를반복하지않는다.",
+    "+",
+    "+## 이전 상태 — 83 정적 cluster의 공동 갱신 비용 검토",
+    "+",
+    "+- snapshot25 보관·검증 완료: 24파일/4,045,758bytes. PDF 2개12쪽, 원문·복사 hash, local 링크, 용어, 비용 원장 불변을 확인했다. 기존 snapshot01–25는 변경하지 않는다. 이 줄만 보관 후 추가했다.",
+    " - 2026-09-26. `83_maintenance_scope_plan.md`를 먼저 저장하고 원문·기존 코드·논리를 검토했다. 새 TabICLv2/RCTL/수치 실행 0회, 비용 상한·원장 변경 없음. Tab 잔여 11 context/20,640행, RCTL 새 fit 0회 조건을 유지한다.",
+    " - 검토한 새 결정은 동적 소속 변경이 아니라 **같은 시점에 갱신이 필요한 cell들을 고정 partition으로 묶어 중복 재학습을 줄이는 것**이다. 갱신 비용은 cluster 크기와 구성 cell의 필요 갱신 시점 합집합에 함께 의존한다. 산술 예는 조건부 원리이며 실제 절감 결과가 아니다.",
+    " - Fed-PPBC의 저자 공개 전문 §3/Alg3–5, FDA FUZZ2020 §III/식1–8·§IV, ONDM2024 LNN link부하 §III–V를 확인했다. PDF 2개12쪽/1,851,180bytes와 arXiv HTML 확보. FDA p3·4, ONDM p6 시각 대조. Fed-PPBC 출판사403/HAL확인화면 우회 없이 저자 ResearchGate 공개 전문을 읽었고 PDF/코드는 미검증이다."
+  ],
+  "new_model_execution_evidence": false,
+  "scope": "판본 전체의 행 비교. 역사적 다음 행동·예산은 현재 실행 지시가 아니다.",
+  "postdraft_checked": true
+}
