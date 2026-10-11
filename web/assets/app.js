@@ -8,7 +8,7 @@ const date = new Intl.DateTimeFormat("sv-SE", {
   timeZone: "UTC", year: "numeric", month: "2-digit", day: "2-digit",
   hour: "2-digit", minute: "2-digit", hourCycle: "h23",
 });
-const state = { manifest: null, run: null, metrics: null, points: [], chart: null, epoch: 0, controller: null };
+const state = { manifest: null, run: null, metrics: null, points: [], chart: null, errorChart: null, epoch: 0, controller: null };
 
 function text(id, value) { $(id).textContent = value; }
 function time(value) { return date.format(new Date(value)); }
@@ -175,6 +175,26 @@ function renderChart() {
       scales: {
         x: { grid: { display: false }, ticks: { maxRotation: 0, maxTicksLimit: 7, callback(value) { return this.getLabelForValue(value).slice(11); } } },
         y: { beginAtZero: true, title: { display: true, text: state.manifest.dataset.unit }, grid: { color: "#edf1ed" } },
+      },
+    },
+  });
+    state.errorChart?.destroy();
+  state.errorChart = new Chart($("error-chart"), {
+    type: "bar",
+    data: {
+      labels: points.map((point) => time(point.timestamp)),
+      datasets: [{
+        label: "예측 − 실제",
+        data: points.map((point) => point.predicted - point.actual),
+        backgroundColor: points.map((point) => (point.predicted - point.actual >= 0 ? "#bb6a30" : "#146d60")),
+      }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, animation: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false }, ticks: { maxRotation: 0, maxTicksLimit: 7, callback(value) { return this.getLabelForValue(value).slice(11); } } },
+        y: { title: { display: true, text: "오차 (" + state.manifest.dataset.unit + ")" }, grid: { color: "#edf1ed" } },
       },
     },
   });
