@@ -229,3 +229,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [CCM 원문 후속 검토](records/0092-ccm-source-review.md)는 소속 확률·클러스터별 출력층과 전체 RCTL 독립 학습을 구별한다. 표의 개선·동률·악화, M4 집계 범위, 군집 수와 입력 길이의 반례를 확인할 수 있다.
 
 [CCM 저장 구현 검토](records/0093-ccm-code-review.md)에서 행별 확률 정규화·출력 혼합·prototype/유사도 차원과 채널 순서를 확인한다. 논문 설명, 원81의 당시 관찰, 실행 전 확인할 조건을 구분했다.
+
+[DUET 문헌 검토](records/0094-duet-literature-review.md)는 시간 expert와 학습 channel mask를 고정 UPC/RCTL과 구분한다. 동률을 포함한 순위·조건별 반례·ILI 예측길이 표기와 부록 가정까지 확인한다.

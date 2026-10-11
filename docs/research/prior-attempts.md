@@ -457,3 +457,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 [CCM 검토](records/0092-ccm-source-review.md)를 먼저 확인한다. 학습 가능한 소속·prototype·선형 출력층의 확률 가중 결합과 예측/군집 공동 손실은 기존 구조다. 새 설계는 공유 core·입력 공유·독립 전체 fit의 차이, K/β 선택 데이터와 총 비용을 명시해야 한다. 평균 이득만으로 모든 군집 수나 각 조건의 개선을 가정하지 않는다.
 
 [CCM 저장 구현](records/0093-ccm-code-review.md)은 함수명만으로 균형 군집화를 가정하지 않고 batch 평균 소속·출력 혼합·손실·prototype 갱신을 구분한다. 재사용 제안에는 채널 ID와 차원, optimizer 등록·실제 설정·검증 손실 선택, 논문과 다른 보정 내용을 명시한다. 정적 위험을 이미 관측한 연구 실패로 인용하지 않는다.
+
+## 주파수 관계·시간 expert를 이용한 channel 선택
+
+[DUET 검토](records/0094-duet-literature-review.md)를 먼저 확인한다. noisy Top-k expert와 학습 진폭 거리/확률 mask는 예측기 내부의 관계다. 제안에는 고정 partition·소속점수·독립전체fit 중 무엇이 달라지는지, M/k/γ와 평가 선택/난수/전체 비용을 명시한다. 평균 우세만으로 모든 horizon·expert수·입력길이의 개선을 가정하지 않는다.
