@@ -1,0 +1,62 @@
+{
+  "batch_id": "history-103",
+  "new_model_runs": 0,
+  "independent_reproduction": false,
+  "rows": [
+    {
+      "table": 8,
+      "row": "RNN",
+      "metric": "P50",
+      "reported_ratio": ".896",
+      "formula": "100*(1-ratio)",
+      "relative_reduction_percent": "10.400"
+    },
+    {
+      "table": 8,
+      "row": "RNN",
+      "metric": "P90",
+      "reported_ratio": ".945",
+      "formula": "100*(1-ratio)",
+      "relative_reduction_percent": "5.500"
+    },
+    {
+      "table": 8,
+      "row": "RNN",
+      "metric": "RMSE",
+      "reported_ratio": ".973",
+      "formula": "100*(1-ratio)",
+      "relative_reduction_percent": "2.700"
+    },
+    {
+      "table": 8,
+      "row": "RNN",
+      "metric": "RMSSE",
+      "reported_ratio": ".967",
+      "formula": "100*(1-ratio)",
+      "relative_reduction_percent": "3.300"
+    }
+  ],
+  "Auto_table5": {
+    "series": 1227,
+    "length": 24,
+    "total_issue_points": 56133,
+    "reported_mean": "18.71",
+    "derived_mean_if_selected_series_denominator": "45.74816625916870415647921760",
+    "selected_maximum_issue_points": 29448,
+    "derived_mean_if_original_3000_series_denominator": "18.711",
+    "interpretation": "56133 exceeds 1227*24, and /1227 differs from18.71. /3000 approximately18.71 is an arithmetic observation, not proof of actual denominator."
+  },
+  "M5_table7": {
+    "TSB_RMSE": "2.213",
+    "TSB_RMSSE": "1.323",
+    "HPO_RNN_GPo_RMSE": "2.190",
+    "HPO_RNN_GPo_RMSSE": "1.338",
+    "HPO_RNN_GNB_RMSE": "2.203",
+    "HPO_RNN_GNB_RMSSE": "1.328",
+    "HPO_RNN_NBPo_RMSE": "2.245",
+    "HPO_RNN_NBPo_RMSSE": "1.354",
+    "HPO_RNN_NBNB_RMSE": "2.235",
+    "HPO_RNN_NBNB_RMSSE": "1.353",
+    "all_HPO_RMSSE_worse_than_TSB": true
+  }
+}

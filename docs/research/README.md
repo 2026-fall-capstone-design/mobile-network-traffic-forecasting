@@ -247,3 +247,6 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [Citywide DenseNet의 적용 범위](records/0101-citywide-densenet-scope.md)에서 SMS·통화의 시간 단위 예측, 최근/일주기 입력, fusion 비교와 현재 Internet·cell 공유 연구에 인용할 한계를 확인할 수 있다.
 
 [Beam GRU-MTL 검수](records/0102-beam-mtl-evidence.md)에서 발생/양head·hard gate·재귀 예측과 성능 표의 내부 차이를 확인할 수 있다.
+
+
+[Deep Renewal 검수](records/0103-deep-renewal-evidence.md)에서 간격·크기와 global LSTM, 자료별 반례, 부록 수식의 재사용 주의점을 확인한다.

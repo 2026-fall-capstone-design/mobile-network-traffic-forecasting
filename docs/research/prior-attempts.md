@@ -491,3 +491,8 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 발생·양 공동 학습이나 ensemble을 새로 제안하려는 경우
 
 [H102](records/0102-beam-mtl-evidence.md)의 기존 공유GRU·두head·hard gate·recursive 평가부터 확인한다. 입력 길이56% 개선이나 ensemble8시간60% 수치를 그대로 재인용하지 않는다. 현재 관측 손해와 새로운 공유 결정의 차이를 먼저 적는다.
+
+
+## 간격·양의 크기·공유 LSTM을 새로 제안하려는 경우
+
+[H103](records/0103-deep-renewal-evidence.md)의 기존 분포모형과 global 공유를 확인한다.0/1 gate·연속 발생확률·조건부 평균과 cell 소속 결정은 각각 구별한다. 자료별 성능 반례와 부록의 시간 인덱스·RMSSE 표기를 확인한 뒤 실제 구현 조건을 정한다.

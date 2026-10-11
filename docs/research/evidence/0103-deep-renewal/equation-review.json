@@ -1,0 +1,199 @@
+{
+  "batch_id": "history-103",
+  "supplement_XML_sha256": "c738304ddbd4c1d3d9997ef54db1fd1168391c2a5826f74dafc076b91e309df5",
+  "main_display_formulas": [
+    {
+      "id": "pone.0259764.e011",
+      "XML_line": 235,
+      "display": true,
+      "label": "(1a)",
+      "text": "[mover(M,^)_{i+1}=αM_{i+1}+(1−α)mover(M,^)_{i},]",
+      "xpath": "/article/body/sec[3]/sec[2]/p[2]/disp-formula[1]"
+    },
+    {
+      "id": "pone.0259764.e012",
+      "XML_line": 236,
+      "display": true,
+      "label": "(1b)",
+      "text": "[mover(Q,^)_{i+1}=αQ_{i+1}+(1−α)mover(Q,^)_{i}.]",
+      "xpath": "/article/body/sec[3]/sec[2]/p[2]/disp-formula[2]"
+    },
+    {
+      "id": "pone.0259764.e014",
+      "XML_line": 238,
+      "display": true,
+      "label": "(2a)",
+      "text": "[M_{i}∼N(μ,σ^{2}) i.i.d.,]",
+      "xpath": "/article/body/sec[3]/sec[2]/p[2]/disp-formula[3]"
+    },
+    {
+      "id": "pone.0259764.e015",
+      "XML_line": 239,
+      "display": true,
+      "label": "(2b)",
+      "text": "[Q_{i}∼G(1/π) i.i.d.]",
+      "xpath": "/article/body/sec[3]/sec[2]/p[2]/disp-formula[4]"
+    },
+    {
+      "id": "pone.0259764.e018",
+      "XML_line": 243,
+      "display": true,
+      "label": null,
+      "text": "[mover(Y,^)_{n}=(1−α/2)(mover(M,^)_{i^{′}})/(mover(Q,^)_{i^{′}}).]",
+      "xpath": "/article/body/sec[3]/sec[2]/p[4]/disp-formula"
+    },
+    {
+      "id": "pone.0259764.e028",
+      "XML_line": 313,
+      "display": true,
+      "label": null,
+      "text": "[h_{i}=LSTM(h_{i−1},x_{i})]",
+      "xpath": "/article/body/sec[3]/sec[4]/p[2]/disp-formula"
+    },
+    {
+      "id": "pone.0259764.e030",
+      "XML_line": 316,
+      "display": true,
+      "label": null,
+      "text": "[munder(min,Θ) | ‖y−mover(y,^)‖_{2}; | s.t. mover(y,^)_{i}=g(h_{i}) h_{i}=LSTM_{Θ}(h_{i−1},x_{i}),]",
+      "xpath": "/article/body/sec[3]/sec[4]/p[3]/disp-formula[1]"
+    },
+    {
+      "id": "pone.0259764.e033",
+      "XML_line": 318,
+      "display": true,
+      "label": null,
+      "text": "[y_{i}∼D(β) β=g_{β}(h_{i}),]",
+      "xpath": "/article/body/sec[3]/sec[4]/p[3]/disp-formula[2]"
+    },
+    {
+      "id": "pone.0259764.e035",
+      "XML_line": 337,
+      "display": true,
+      "label": null,
+      "text": "[h(k)=P{Q=k|Q≥k}=P{Q=k}/P{Q≥k}=(P{Q=k})/(1−F(k−1)).]",
+      "xpath": "/article/body/sec[4]/sec[1]/p[3]/disp-formula"
+    },
+    {
+      "id": "pone.0259764.e040",
+      "XML_line": 364,
+      "display": true,
+      "label": null,
+      "text": "[mover(Q,^)_{i}=EWMA_{α}(Q_{1:i})=f(mover(Q,^)_{i−1},Q_{i})=αQ_{i}+(1−α)mover(Q,^)_{i−1}.]",
+      "xpath": "/article/body/sec[4]/sec[3]/p[2]/disp-formula[1]"
+    },
+    {
+      "id": "pone.0259764.e043",
+      "XML_line": 366,
+      "display": true,
+      "label": "(3)",
+      "text": "[mover(Q,^)_{i}=g_{w}(h_{i}),]",
+      "xpath": "/article/body/sec[4]/sec[3]/p[2]/disp-formula[2]"
+    },
+    {
+      "id": "pone.0259764.e044",
+      "XML_line": 367,
+      "display": true,
+      "label": "(4)",
+      "text": "[h_{i}=LSTM_{Θ}(h_{i−1},Q_{i}),]",
+      "xpath": "/article/body/sec[4]/sec[3]/p[2]/disp-formula[3]"
+    }
+  ],
+  "main_equation_pixels_read": true,
+  "appendix": {
+    "PDF_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+    "TeX_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+    "sections": [
+      {
+        "section": "A.1",
+        "PDF_pages": [
+          1
+        ],
+        "TeX_lines": [
+          194,
+          231
+        ],
+        "finding": "shiftedNB: support1이상,평균mu>1,분산=nu*(mu-1),nu>1"
+      },
+      {
+        "section": "A.2",
+        "PDF_pages": [
+          1,
+          2
+        ],
+        "TeX_lines": [
+          233,
+          263
+        ],
+        "finding": "독립성 아래 발생확률×양의평균. h(n-T_i)표기는 자체hazard정의상 +1인덱스와 불일치."
+      },
+      {
+        "section": "A.3",
+        "PDF_pages": [
+          2
+        ],
+        "TeX_lines": [
+          265,
+          312
+        ],
+        "finding": "positive-support EWMA의 M/Q→1문제. Static 제외·stationary mean 완화예시; 모든RNN에대한정리로확장하지않음."
+      },
+      {
+        "section": "A.4",
+        "PDF_pages": [
+          3
+        ],
+        "TeX_lines": [
+          315,
+          342
+        ],
+        "finding": "PXX는2*pinball의ML평균. RMSSE표기식은외부제곱근없고분모절대1차차분. 실제평가구현미확인."
+      }
+    ]
+  },
+  "independent_formal_proof": false,
+  "source_equations_executed": false,
+  "postdraft_visual_check_complete": true,
+  "postdraft_visual_check": [
+    {
+      "supplement_id": "H103-SUP-PDF",
+      "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+      "PDF_pages": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "actual_pixels_read": true
+    },
+    {
+      "supplement_id": "H103-SUP-APP-PDF",
+      "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+      "PDF_pages": [
+        1,
+        2,
+        3
+      ],
+      "actual_pixels_read": true
+    }
+  ]
+}

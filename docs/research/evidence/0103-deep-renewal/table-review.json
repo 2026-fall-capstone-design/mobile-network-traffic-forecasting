@@ -1,0 +1,4108 @@
+{
+  "supplement_id": "H103-SUP-XML",
+  "source_sha256": "c738304ddbd4c1d3d9997ef54db1fd1168391c2a5826f74dafc076b91e309df5",
+  "tables": [
+    {
+      "id": "pone.0259764.t001",
+      "label": "Table 1",
+      "XML_line": 247,
+      "title": "\n Baseline models. \n",
+      "rows": [
+        [
+          {
+            "text": "Model",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Q_{i}",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "M_{i}",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-Po [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "G(μ_{q}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "PO(μ_{m}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-NB [19]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "G(μ_{q}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "NB(μ_{m},ν_{m}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-Po [18]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | G(mover(Q,^)_{i−1}); | mover(Q,^)_{i−1}=EWMA_{α}(Q_{1:i−1})]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | PO(mover(M,^)_{i−1}); | mover(M,^)_{i−1}=EWMA_{α}(M_{1:i−1})]",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | G(mover(Q,^)_{i−1}); | mover(Q,^)_{i−1}=EWMA_{α}(Q_{1:i−1})]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | NB(mover(M,^)_{i−1},ν_{m}); | mover(M,^)_{i−1}=EWMA_{α}(M_{1:i−1})]",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ],
+      "footnotes": []
+    },
+    {
+      "id": "pone.0259764.t002",
+      "label": "Table 2",
+      "XML_line": 372,
+      "title": "\n Discrete time models. \n",
+      "rows": [
+        [
+          {
+            "text": "Model",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Q_{i}",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "M_{i}",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "NB(μ_{q},ν_{q}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "PO(μ_{m}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "NB(μ_{q},ν_{q}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "NB(μ_{m},ν_{m}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | NB(mover(Q,^)_{i−1},ν_{q}); | mover(Q,^)_{i−1}=EWMA_{α}(Q_{1:i−1})]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | PO(mover(M,^)_{i−1}); | mover(M,^)_{i−1}=EWMA_{α}(M_{1:i−1})]",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | NB(mover(Q,^)_{i−1},ν_{q}); | mover(Q,^)_{i−1}=EWMA_{α}(Q_{1:i−1})]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | NB(mover(M,^)_{i−1},ν_{m}); | mover(M,^)_{i−1}=EWMA_{α}(M_{1:i−1})]",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | NB(mover(Q,^)_{i−1},ν_{q}); | mover(Q,^)_{i−1}=g(LSTM_{θ}(h_{i−1},Q_{i−1},M_{i−1}))]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | PO(mover(M,^)_{i−1}); | mover(M,^)_{i−1}=g(LSTM_{θ}(h_{i−1},Q_{i−1},M_{i−1}))]",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | NB(mover(Q,^)_{i−1},ν_{q}); | mover(Q,^)_{i−1}=g(LSTM_{θ}(h_{i−1},Q_{i−1},M_{i−1}))]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | NB(mover(M,^)_{i−1},ν_{m}); | mover(M,^)_{i−1}=g(LSTM_{θ}(h_{i−1},Q_{i−1},M_{i−1}))]",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ],
+      "footnotes": []
+    },
+    {
+      "id": "pone.0259764.t003",
+      "label": "Table 3",
+      "XML_line": 442,
+      "title": "\n Continuous time models. \n",
+      "rows": [
+        [
+          {
+            "text": "Model",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Q_{i}^{′}",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "M_{i}^{′}",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static E-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "E(μ_{q^{′}}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "PO(μ_{m^{′}}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static E-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "E(μ_{q^{′}}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "NB(μ_{m^{′}},ν_{m^{′}}), i.i.d.",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN E-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | E(mover(Q^{′},^)_{i−1}); | mover(Q^{′},^)_{i−1}=g(LSTM_{θ}(h_{i−1},Q_{i−1}^{′},M_{i−1}^{′}))]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | PO(mover(M^{′},^)_{i−1}); | mover(M^{′},^)_{i−1}=g(LSTM_{θ}(h_{i−1},Q_{i−1}^{′},M_{i−1}^{′}))]",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN E-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | E(mover(Q^{′},^)_{i−1}); | mover(Q^{′},^)_{i−1}=g(LSTM_{θ}(h_{i−1},Q_{i−1}^{′},M_{i−1}^{′}))]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "[ | NB(mover(M^{′},^)_{i−1}); | mover(M^{′},^)_{i−1}=g(LSTM_{θ}(h_{i−1},Q_{i−1}^{′},M_{i−1}^{′}))]",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ],
+      "footnotes": []
+    },
+    {
+      "id": "pone.0259764.t004",
+      "label": "Table 4",
+      "XML_line": 525,
+      "title": "\n Experiments with synthetic data sets. \n",
+      "rows": [
+        [
+          {
+            "text": "Data Sets",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Model",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "P50 Loss",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "P90 Loss",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSSE",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Random",
+            "rowspan": 6,
+            "colspan": 1
+          },
+          {
+            "text": "Croston [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.535",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.484",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "SBA [22]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.534",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.480",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "TSB [30]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.571",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.528",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-Po [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.418",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.792",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.537",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.488",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.418",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.796",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.536",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.493",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.418",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.752",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.534",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.485",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Periodic",
+            "rowspan": 6,
+            "colspan": 1
+          },
+          {
+            "text": "Croston [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.218",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.587",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "SBA [22]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.218",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.586",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "TSB [30]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.232",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.610",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-Po [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.256",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.460",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.219",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.589",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.256",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.419",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.181",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.536",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.256",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.412",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.183",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.536",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Alternating",
+            "rowspan": 6,
+            "colspan": 1
+          },
+          {
+            "text": "Croston [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.339",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.692",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "SBA [22]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.340",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.691",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "TSB [30]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.361",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.709",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-Po [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.022",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.209",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.339",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.691",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.022",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.192",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.332",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.686",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.021",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.187",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.331",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.686",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ],
+      "footnotes": []
+    },
+    {
+      "id": "pone.0259764.t005",
+      "label": "Table 5",
+      "XML_line": 699,
+      "title": "\n Summary statistics of data sets. \n",
+      "rows": [
+        [
+          {
+            "text": "",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Car Parts",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Auto",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RAF",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "UCI",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "M5",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Number of Time Series—M",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2503",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1227",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "5000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1381",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "30490",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Time Series Length—N",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "51",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "24",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "84",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "90",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1913",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Demand Size—Mean",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.02",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.79",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "14.19",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "5.21",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.54",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Demand Size—CV^{2}",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.86",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "4.42",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "11.89",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.28",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.08",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Mean Interdemand Time—p",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.41",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.50",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.75",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "4.89",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.13",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "CV^{2} of Interdemand Time",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.93",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.22",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.67",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.72",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "74.3",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Total Number of Issue Points",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "32,093",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "56,133",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "42,695",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "23,416",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "18,549,855",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Mean Number of Issue Points",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "12.82",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "18.71",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.54",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.96",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "608.4",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Number of “Intermittent” Items (SBC)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2087",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "942",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2597",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "23041",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Number of “Lumpy” Items (SBC)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "412",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "285",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2403",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1381",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "5953",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ],
+      "footnotes": []
+    },
+    {
+      "id": "pone.0259764.t006",
+      "label": "Table 6",
+      "XML_line": 817,
+      "title": "\n Experiment results for discrete-time models with Car Parts, Auto, and RAF data sets. \n",
+      "rows": [
+        [
+          {
+            "text": "Data Set",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Model",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "P50 Loss",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "P90 Loss",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSSE",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Car Parts",
+            "rowspan": 16,
+            "colspan": 1
+          },
+          {
+            "text": "All Zeros",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.513",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.406",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Croston [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.372",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.307",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "SBA [22]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.368",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.301",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "TSB [30]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.362",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.278",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-Po [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.750 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.638 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.410 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.345 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-NB [19]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.718 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.713 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.434 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.366 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-Po [18]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.716 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.791 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.438 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.363 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.711 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.800 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.438 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.363 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.663 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.553 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.343 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.257 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.663 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.620 ± 0.003",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.365 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.290 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.720 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.751 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.435 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.358 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.708 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.764 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.436 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.358 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.396 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.447 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.062 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.996 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.401 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.452 ± 0.009",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.074 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.015 ± 0.008",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.388 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.458 ± 0.003",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.068 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.021 ± 0.008",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.385 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.448 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.068 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.026 ± 0.027",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Auto",
+            "rowspan": 16,
+            "colspan": 1
+          },
+          {
+            "text": "All Zeros",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "9.618",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.820",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Croston [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.881",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.477",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "SBA [22]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.868",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.468",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "TSB [30]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.501",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-Po [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.383 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.527 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.842 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.479 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-NB [19]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.121 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.277 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.439 ± 0.003",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.828 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-Po [18]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.503 ± 0.008",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.574 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.144 ± 0.010",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.525 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.330 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.605 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.134 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.526 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.335 ± 0.003",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.521 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.809 ± 0.023",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.452 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.109 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.271 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.465 ± 0.009",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.809 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.493 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.575 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.156 ± 0.016",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.524 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.333 ± 0.003",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.606 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.156 ± 0.008",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.526 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.395 ± 0.020",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.649 ± 0.010",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.725 ± 0.016",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.492 ± 0.008",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.158 ± 0.028",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.834 ± 0.014",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.814 ± 0.053",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.630 ± 0.031",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.411 ± 0.036",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.649 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.634 ± 0.018",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.497 ± 0.016",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.119 ± 0.009",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.892 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "8.951 ± 0.015",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.605 ± 0.014",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RAF",
+            "rowspan": 16,
+            "colspan": 1
+          },
+          {
+            "text": "All Zeros",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.786",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.423",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Croston [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.545",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.777",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "SBA [22]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.543",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.770",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "TSB [30]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "17.731",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.710",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-Po [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.312 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.878 ± 0.008",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.557 ± 0.019",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.818 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-NB [19]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.287 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.354 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.541 ± 0.018",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.922 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-Po [18]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.339 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.094 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.657 ± 0.015",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.915 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.320 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.782 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.663 ± 0.007",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.925 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.324 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.299 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.607 ± 0.015",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.956 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.285 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.448 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.596 ± 0.021",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.099 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.299 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.118 ± 0.003",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.666 ± 0.013",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.912 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.291 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.786 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.668 ± 0.023",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.921 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.277 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.592 ± 0.021",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.625 ± 0.007",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.825 ± 0.012",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.278 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.407 ± 0.023",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.630 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.763 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.278 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.893 ± 0.029",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.595 ± 0.010",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.964 ± 0.018",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.278 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.499 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "16.614 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.837 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ],
+      "footnotes": []
+    },
+    {
+      "id": "pone.0259764.t007",
+      "label": "Table 7",
+      "XML_line": 1188,
+      "title": "\n Experiment results for discrete-time models with UCI and M5 sets. \n",
+      "rows": [
+        [
+          {
+            "text": "Data Set",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Model",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "P50 Loss",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "P90 Loss",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSSE",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "UCI",
+            "rowspan": 16,
+            "colspan": 1
+          },
+          {
+            "text": "All Zeros",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.661",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.413",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Croston [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.456",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.466",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "SBA [22]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.460",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.462",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "TSB [30]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.430",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.409",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-Po [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.059 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.043 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.488 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.514 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-NB [19]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.054 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.041 ± 0.003",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.458 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.467 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-Po [18]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.054 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.079 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.490 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.548 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.043 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.126 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.494 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.555 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.059 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.121 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.526 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.585 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.059 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.249 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.504 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.596 ± 0.003",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.120 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.068 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.501 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.568 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.061 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.113 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.503 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.574 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.071 ± 0.007",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.906 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.393 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.562 ± 0.010",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.039 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.870 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.368 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.566 ± 0.012",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.086 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.937 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.423 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.573 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.062 ± 0.003",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.923 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.417 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.539 ± 0.018",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "M5",
+            "rowspan": 20,
+            "colspan": 1
+          },
+          {
+            "text": "All Zeros",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.852",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.730",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Croston [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.299",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.370",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "SBA [22]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.280",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.364",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "TSB [30]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "N/A",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.213",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.323",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-Po [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.093 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.730 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.453 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.414 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-NB [19]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.250 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.192 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.255 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.520 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-Po [18]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.031 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.667 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.301 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.377 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.015 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.664 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.301 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.378 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.378 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.786 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.040 ± 0.002",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.529 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.384 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.550 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.578 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.728 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.055 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.663 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.306 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.398 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.032 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.661 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.308 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.399 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.069 ± 0.051",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.674 ± 0.011",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.554 ± 0.112",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.381 ± 0.026",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.062 ± 0.026",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.720 ± 0.016",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.638 ± 0.038",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.369 ± 0.011",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.080 ± 0.031",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.666 ± 0.004",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.505 ± 0.097",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.393 ± 0.015",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.022 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.711 ± 0.008",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.522 ± 0.046",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.395 ± 0.010",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-Po + HPO",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.970 ± 0.005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.647 ± 0.007",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.190 ± 0.011",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.338 ± 0.003",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-NB + HPO",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.968 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.639 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.203 ± 0.012",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.328 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-Po + HPO",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.011 ± 0.014",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.638 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.245 ± 0.065",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.354 ± 0.007",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN NB-NB + HPO",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.999 ± 0.006",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.638 ± 0.000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.235 ± 0.013",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.353 ± 0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ],
+      "footnotes": []
+    },
+    {
+      "id": "pone.0259764.t008",
+      "label": "Table 8",
+      "XML_line": 1477,
+      "title": "\n Ratios of model families to the Static G-Po baseline model. \n",
+      "rows": [
+        [
+          {
+            "text": "Model Feature",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "P50 Loss",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "P90 Loss",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSSE",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Flexible Demand Size Distribution(*-NB Models)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.952(0.000*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.083(—)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.023(—)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.028(—)",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Flexible Interdemand Time Distribution(NB-* Models)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.966(0.000*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.053(—)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.015(—)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.020(—)",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "EWMA",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.983(0.000*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.043(—)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.001(—)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1.019(—)",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.896(0.000*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.945(0.000*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.973(0.002*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.967(0.000*)",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN & Flexible Demand Size",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.884(0.000*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.948(0.002*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.976(0.036*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.970(0.008*)",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN & Flexible Interdemand Time",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.895(0.000*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.956(0.004*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.974(0.023*)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.973(0.013*)",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ],
+      "footnotes": []
+    },
+    {
+      "id": "pone.0259764.t009",
+      "label": "Table 9",
+      "XML_line": 1552,
+      "title": "\n Experiment results for continuous-time models. \n",
+      "rows": [
+        [
+          {
+            "text": "Model",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "P50 Loss",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "P90 Loss",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSSE",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-Po [1]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.059",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.043",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.488",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.514",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static G-NB [19]",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.054",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.041",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.458",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.467",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-Po",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.071",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.906",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.393",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.562",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN G-NB",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.039",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.870",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.368",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.566",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static E-Po (cont.)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.062",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.039",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.489",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.518",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Static E-NB (cont.)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.055",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.015",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.449",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.477",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN E-Po (cont.)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.055",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.937",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.416",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.544",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RNN E-NB (cont.)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.059",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "2.871",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "7.359",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "3.738",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ],
+      "footnotes": []
+    }
+  ],
+  "batch_id": "history-103",
+  "supplementary_not_historical": true,
+  "PDF_pages_by_table": {
+    "1": 7,
+    "2": 12,
+    "3": 13,
+    "4": 15,
+    "5": 16,
+    "6": 18,
+    "7": 19,
+    "8": 20,
+    "9": 20
+  },
+  "all_table_pixels_read": true,
+  "postdraft_visual_check_complete": true,
+  "reported_values_not_recomputed_from_predictions": true,
+  "postdraft_visual_check": [
+    {
+      "supplement_id": "H103-SUP-PDF",
+      "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+      "PDF_pages": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "actual_pixels_read": true
+    },
+    {
+      "supplement_id": "H103-SUP-APP-PDF",
+      "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+      "PDF_pages": [
+        1,
+        2,
+        3
+      ],
+      "actual_pixels_read": true
+    }
+  ]
+}

@@ -160,3 +160,6 @@
 [H101](records/0101-citywide-densenet-scope.md)은 원82에서 보류했던 Citywide 원문 검수다. PDF4쪽·추출문·기존3쪽 그림을 대조하여 SMS/Call hourly 평가와 Internet activity·소속 수정의 차이를 확인했다. 새 모델 실행 없이 저자 보고와 당시 판단을 연결했으며 Beam·Deep Renewal8그룹과 snapshot24 연혁은 남아 있다.
 
 [H102](records/0102-beam-mtl-evidence.md)는 원82의 Beam GRU-MTL 저장6표현물을 대조한다. hard gate와 ensemble의 경로, 표의 기준 행·56% 및8시간60% 주장에 남는 공백을 연결했다. Deep Renewal2그룹과 snapshot24 고유 연혁은 남아 있다.
+
+
+[H103](records/0103-deep-renewal-evidence.md)은 원82의 Deep Renewal 저장2표현물과 현재 출판사 보완 자료를 구별했다. 선택된 원82 문헌 후속 목록은 소진했지만 snapshot24의 고유 연혁과 전체 기록 통합은 남아 있다.
