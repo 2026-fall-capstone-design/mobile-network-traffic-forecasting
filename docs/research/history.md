@@ -185,3 +185,5 @@
 [H113 원85 후속](records/0113-decision-history-sources.md): 결정색인2행의 수정과 누적연혁433행을 검토했다. UPC군집수·Tab준비비용·실험상태의 정정을 연결하고 검색11항목/공식초록2개를 방법 전문과 구분한다.
 
 [H114 원86](records/0114-shared-training-scope.md): 후단 공유를 독립성 위반으로 일괄 기각하지 않고, 기존29fit의 독립 학습 조건을 명시했다. 파라미터 저장 수와 총 sample 처리량, 선형 MTL 문헌과 비선형 RCTL의 적용 범위를 구분한다.
+
+[H115 원86 후속](records/0115-sharing-history-literature.md): 학습 공유 행이 추가된 결정표·445행 연혁을 연결했다. 검색 metadata와 CVPR 오류 본문을 구분하고 Jacob9–14쪽의 방법·실험을 후속 검수했다.
