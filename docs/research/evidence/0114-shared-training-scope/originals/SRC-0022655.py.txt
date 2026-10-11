@@ -1,0 +1,45 @@
+from pathlib import Path
+import datetime
+import hashlib
+import json
+import urllib.parse
+import urllib.request
+
+DEST = Path(__file__).resolve().parent / 'sources/shared_training_86'
+DEST.mkdir(parents=True, exist_ok=True)
+queries = [
+    ('clustered_mtl_metadata', 'Clustered Multi-Task Learning A Convex Formulation'),
+    ('branching_metadata', 'Learning to Branch for Multi-Task Learning'),
+    ('regularized_mtl_metadata', 'Regularized Multi-Task Learning'),
+]
+urls = [(name, 'https://api.crossref.org/works?' + urllib.parse.urlencode({
+    'query.title': query, 'rows': 3, 'select': 'title,DOI,URL,published,author,link,abstract'
+}), 'json') for name, query in queries]
+urls += [
+    ('clustered_mtl_arxiv', 'https://arxiv.org/abs/0809.2085', 'html'),
+    ('cvpr2020_task_grouping', 'https://openaccess.thecvf.com/content_CVPR_2020/html/Standley_Which_Tasks_Should_Be_Learned_Together_in_Multi-Task_Learning_CVPR_2020_paper.html', 'html'),
+]
+records = []
+for name, url, suffix in urls:
+    path = DEST / (name + '.' + suffix)
+    if path.exists():
+        raise RuntimeError('Do not repeat a completed source fetch: ' + str(path))
+    record = {'name': name, 'url': url, 'accessed_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'cap_bytes': 1_000_000}
+    try:
+        request = urllib.request.Request(url, headers={'User-Agent': 'ResearchSourceReview/1.0'})
+        with urllib.request.urlopen(request, timeout=20) as response:
+            data = response.read(1_000_001)
+            if len(data) > 1_000_000:
+                raise ValueError('Public text page exceeded cap')
+            path.write_bytes(data)
+            record.update(status=response.status, final_url=response.url, path=str(path), bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+        if suffix == 'json':
+            payload = json.loads(data)
+            print(json.dumps({'name': name, 'results': [{'title': x.get('title'), 'DOI': x.get('DOI'), 'URL': x.get('URL')} for x in payload['message']['items']]}, ensure_ascii=False))
+        else:
+            print(json.dumps({'name': name, 'status': record['status'], 'bytes': len(data)}))
+    except Exception as error:
+        record['error'] = type(error).__name__ + ': ' + str(error)
+        print(json.dumps({'name': name, 'error': record['error']}))
+    records.append(record)
+(DEST / 'source_manifest.json').write_text(json.dumps({'scope': 'Primary metadata and official abstracts; full methods not yet read.', 'sources': records}, ensure_ascii=False, indent=2), encoding='utf-8')

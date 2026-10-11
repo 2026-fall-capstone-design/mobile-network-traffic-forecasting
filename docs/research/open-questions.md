@@ -175,3 +175,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [원85 자료 배분](records/0112-rejection-scope-allocation.md)의 비용 기각은 적용 구현을 한정했다. Tab이 source 분류·단순 quota 재추출보다 유용한 다른 결정을 만드는지, 그 점수 비용과 유한 학습 손해를 회수하는지는 남은 질문이다. [고유 후속6자료](evidence/0112-rejection-scope-allocation/packet-coverage.json)는 다음 검수 대상이다.
 
 [H113 후속검수](records/0113-decision-history-sources.md)에서 H112가 남긴 고유6자료를 읽었다. 2015/routing 전문·ICML2018 부록/구현 공백과 원86 이후는 별도 미완료다. 기존 H112의 미독6표시는 그 묶음 완료 당시 범위이며 후속검수와 함께 읽는다.
+
+[H114 원86](records/0114-shared-training-scope.md)의 핵심11자료는 검토했다. 후속8표현물과 Jacob9–14쪽은 남았다. 같은 공유 조건에서 Tab이 바꾸는 소속의 이득, BN/공유 범위, 실제 시간·메모리 절감은 미실행·미확인이다. Jacob의 인쇄식 일부 m/n·차원 표기 불일치도 정의와 구분해 남겼다.

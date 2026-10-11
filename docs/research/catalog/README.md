@@ -282,3 +282,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H112 출처](../sources/history-112.md) · [목록](history-112-sources.jsonl): 원85 핵심9고유/16경로의MD3·Python정적2·전체JSON4. 기존 자료/논문 재독과 파생 렌더는 추가0, 후속6본문은 미독이다.
 
 [H113 출처](../sources/history-113.md) · [목록](history-113-sources.jsonl): H112 후속6고유/10경로의Markdown2·공식HTML2·전체JSON2. 기존5·검색11항목·연혁36절은 추가집계0.
+
+[H114 출처](../sources/history-114.md) · [목록](history-114-sources.jsonl): 새11고유/21경로는본문6·전체JSON5, Jacob1–8/14쪽은선택1. 기존자료3·ECAI재독·렌더이미지 추가집계0.

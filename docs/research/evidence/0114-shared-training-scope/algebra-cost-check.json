@@ -1,0 +1,65 @@
+{
+  "kind": "owned_exact_rational_sanity_check_not_empirical_experiment",
+  "symbolic_identity": "W is d×m, U=11^T/m, mean=W1/m => tr(W U W^T)=m||mean||²",
+  "illustration": {
+    "d": 2,
+    "m": 3,
+    "n": 5,
+    "W": [
+      [
+        1,
+        2,
+        5
+      ],
+      [
+        2,
+        0,
+        4
+      ]
+    ],
+    "mean_penalty": "100/3",
+    "printed_n_coefficient": "500/9",
+    "between": "85/6",
+    "within": "5/2",
+    "total": "50"
+  },
+  "paper_notation_findings": [
+    {
+      "pages": [
+        4,
+        6
+      ],
+      "finding": "PDF 실제 표기는 n||mean||²이나 §2의 m task 및 U 정의로는 m||mean||². p4 식3 직후 평균합 상한 n도 뒤의 m 정의와 불일치."
+    },
+    {
+      "pages": [
+        7,
+        8
+      ],
+      "equations": [
+        16,
+        17
+      ],
+      "finding": "W d×m, Π m×m일 때 인쇄된 ΠW는 일반 d≠m에서 곱셈 불가. 중심화 WΠ로 읽은 설명과 인쇄식을 구분하며 증명/구현 전체 검증으로 표시하지 않음."
+    }
+  ],
+  "cost_illustration": {
+    "assumptions": "K=4, N=12 서로다른입력·각1담당, 동일구조/길이, 준비/배치/통신/optimizer비용제외",
+    "K": 4,
+    "N": 12,
+    "Ps": 80,
+    "Pc": 20,
+    "independent_parameters": 400,
+    "shared_parameters": 160,
+    "Cs": 6,
+    "Cc": 4,
+    "independent_one_pass_ops": 120,
+    "shared_one_pass_ops": 120,
+    "same_input_four_heads_shared_ops": 22,
+    "same_input_four_independent_ops": 40,
+    "measured_runtime": false
+  },
+  "success": true,
+  "source_code_executed": false,
+  "new_model_runs": 0
+}

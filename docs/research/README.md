@@ -270,3 +270,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원85 비용 판단의 정정](records/0112-rejection-scope-allocation.md)은 고정 처리량의 자료 배분, 기존 재추출 원리와 실제 학습 이득의 차이를 정리한다.
 
 [원85 후속 결정표·연혁·문헌 범위](records/0113-decision-history-sources.md)는 비용 기각의 정정과 과거 판단을 함께 찾는 입구다.
+
+[원86 학습 공유의 범위와 비용](records/0114-shared-training-scope.md)은 공통 초기화·고정 표현·공동 갱신의 차이와 Tab의 추가 기여 조건을 정리한다.
