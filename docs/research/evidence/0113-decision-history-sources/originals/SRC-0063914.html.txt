@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Search Engine Info --><title>Stochastic Optimization with Importance Sampling for Regularized Loss Minimization</title><meta name="description" content="Stochastic Optimization with Importance Sampling for Regularized Loss MinimizationPeilin Zhao,&nbsp;Tong ZhangUniform sampling of training data has been comm..."><!-- Solution from http://stackoverflow.com/questions/31593297/using-execcommand-javascript-to-copy-hidden-text-to-clipboard -->
+<script src="https://proceedings.mlr.press/v37/assets/js/copy_input.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://proceedings.mlr.press/v37/assets/js/download.js"></script>
+<meta name="citation_publisher" content="PMLR"/><meta name="citation_title" content="Stochastic Optimization with Importance Sampling for Regularized Loss Minimization"/><meta name="citation_language" content="en"/>
+<meta name="citation_abstract_html_url" content="https://proceedings.mlr.press/v37/zhaoa15.html"/><meta name="citation_pdf_url" content="http://proceedings.mlr.press/v37/zhaoa15.pdf"><meta name="citation_firstpage" content="1"><meta name="citation_lastpage" content="9"><meta name="citation_author" content="Peilin Zhao"><meta name="citation_author" content="Tong Zhang"><meta name="citation_publication_date" content="2015/06/01"><meta name="citation_inbook_title" content="International Conference on Machine Learning"/><meta name="citation_conference_title" content="International Conference on Machine Learning"/><meta name="citation_conference_sequence_num" content="32"/><meta name="citation_issn" content="1938-7228"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Stochastic Optimization with Importance Sampling for Regularized Loss Minimization"/><meta name="twitter:site" content="@MLResearchPress" /><meta name="twitter:description" content="Uniform sampling of training data has been commonly used in traditional stochastic optimization algorithms such as Proximal Stochastic Mirror Descent (prox-S..."/><meta name="twitter:image" content="https://proceedings.mlr.press/v37/assets/images/logo-pmlr.png"/>
+<meta name="twitter:image:alt" content="PMLR Logo"/><meta property="og:title" content="Stochastic Optimization with Importance Sampling for Regularized Loss Minimization"/>
+<meta property="og:description" content="Uniform sampling of training data has been commonly used in traditional stochastic optimization algorithms such as Proximal Stochastic Mirror Descent (prox-SMD) and Proximal Stochastic Dual Coordin..."/>
+<meta property="og:type" content="article"/><meta property="article:published_time" content="2015-06-01T00:00:00+00:00"><meta property="og:url" content="https://proceedings.mlr.press/v37/zhaoa15.html"/><meta property="og:image" content="https://proceedings.mlr.press/v37/assets/images/logo-pmlr.png"/><meta property="og:site_name" content="PMLR"/><!-- Style Info -->
+  <link rel="stylesheet" type="text/css" href="https://proceedings.mlr.press/v37/assets/css/pmlr.css" />
+  <style>.hero-text {
+    color: #303030;
+  }</style>
+
+  <!-- Icon Info -->
+  <link rel="shortcut icon" href="https://proceedings.mlr.press/v37/assets/images/favicon-pmlr.ico" type="image/x-icon">
+  <link rel="icon" href="https://proceedings.mlr.press/v37/assets/images/favicon-pmlr.ico" type="image/x-icon">
+
+  <!-- Feed Info --><link type="application/atom+xml" rel="alternate" href="https://proceedings.mlr.press/v37/feed.xml" title="Proceedings of Machine Learning Research" /><!-- Scripting info --><!-- Solution from http://stackoverflow.com/questions/31593297/using-execcommand-javascript-to-copy-hidden-text-to-clipboard -->
+<script src="https://proceedings.mlr.press/v37/assets/js/copy_input.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://proceedings.mlr.press/v37/assets/js/download.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-92432422-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+      inlineMath: [ ['$','$'], ['\\(', '\\)'] ],
+      displayMath: [ ['$$','$$'], ['\\[', '\\]'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script  async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <!-- User custom header -->
+</head>
+
+
+
+
+
+
+<body>
+
+
+<header class="site-header">
+  <div class="wrapper">
+    
+
+
+<div class="hero-image">
+  <div class="hero-text">
+    <a href="/" target="_top"><img src="/v37/assets/images/logo-pmlr.svg" alt="[International Conference on Machine Learning Logo]"></a>
+    Proceedings of Machine Learning Research
+  </div>
+</div>
+
+
+    <nav class="site-nav">
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger">
+  <span class="menu-icon"><svg viewBox="0 0 18 15" width="18px" height="15px">
+  <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+</svg>
+</span>
+  </label>
+  <div class="trigger"><a class="page-link" href="https://proceedings.mlr.press/v37/">Volume 37</a><a class="page-link" href="http://www.jmlr.org/">JMLR</a> 
+    <a class="page-link" href="http://www.jmlr.org/mloss">MLOSS</a>
+    <a class="page-link" href="/faq.html">FAQ</a>
+    <a class="page-link" href="/spec.html">Submission Format</a>
+    <a class="page-link" href="https://proceedings.mlr.press//v37/assets/rss/feed.xml">
+      <img src="https://proceedings.mlr.press/v37/assets/images/RSS.gif" class="rss" alt="RSS Feed">
+    </a>
+  </div>
+</nav>
+
+  </div>
+</header>
+
+
+
+
+
+<main class="page-content" aria-label="Content"><div class="wrapper">
+
+
+<p style="text-align:right">[<a href="https://github.com/mlresearch/v37/edit/gh-pages/_posts/2015-06-01-zhaoa15.md" target="_blank" onclick="ga('send', 'event', 'Edit Page', 'Edit', 'https://github.com/mlresearch/v37/edit/gh-pages/_posts/2015-06-01-zhaoa15.md', 13);">edit</a>]</p>
+
+
+<article class="post-content">
+  <h1>Stochastic Optimization with Importance Sampling for Regularized Loss Minimization</h1><span class="authors">Peilin Zhao,&nbsp;Tong Zhang</span>
+<div id="info"><i>Proceedings of the 32nd International Conference on Machine Learning</i>,&nbsp;PMLR 37:1-9,&nbsp;2015.
+  </div> <!-- info -->
+  
+  <h4>Abstract</h4>
+  <div id="abstract" class="abstract">
+    Uniform sampling of training data has been commonly used in traditional stochastic optimization algorithms such as Proximal Stochastic Mirror Descent (prox-SMD) and Proximal Stochastic Dual Coordinate Ascent (prox-SDCA). Although uniform sampling can guarantee that the sampled stochastic quantity is an unbiased estimate of the corresponding true quantity, the resulting estimator may have a rather high variance, which negatively affects the convergence of the underlying optimization procedure. In this paper we study stochastic optimization, including prox-SMD and prox-SDCA, with importance sampling, which improves the convergence rate by reducing the stochastic variance. We theoretically analyze the algorithms and empirically validate their effectiveness.
+  </div>
+  <h4>Cite this Paper</h4>
+<hr class="bibhr">
+
+<div class="bibbuttongroup row row--justified">
+  <div class="bibbuttontext column">
+    BibTeX
+  </div>
+  <div class="column">
+  <div class="codebox">
+    <code class="citecode" id="bibtex">
+@InProceedings{pmlr-v37-zhaoa15,
+  title = 	 {Stochastic Optimization with Importance Sampling for Regularized Loss Minimization},
+  author = 	 {Zhao, Peilin and Zhang, Tong},
+  booktitle = 	 {Proceedings of the 32nd International Conference on Machine Learning},
+  pages = 	 {1--9},
+  year = 	 {2015},
+  editor = 	 {Bach, Francis and Blei, David},
+  volume = 	 {37},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {Lille, France},
+  month = 	 {07--09 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v37/zhaoa15.pdf},
+  url = 	 {https://proceedings.mlr.press/v37/zhaoa15.html},
+  abstract = 	 {Uniform sampling of training data has been commonly used in traditional stochastic optimization algorithms such as Proximal Stochastic Mirror Descent (prox-SMD) and Proximal Stochastic Dual Coordinate Ascent (prox-SDCA). Although uniform sampling can guarantee that the sampled stochastic quantity is an unbiased estimate of the corresponding true quantity, the resulting estimator may have a rather high variance, which negatively affects the convergence of the underlying optimization procedure. In this paper we study stochastic optimization, including prox-SMD and prox-SDCA, with importance sampling, which improves the convergence rate by reducing the stochastic variance. We theoretically analyze the algorithms and empirically validate their effectiveness.}
+}
+</code>
+  </div>
+  <button class="button"  id="button-bibtex1" onclick="CopyToClipboard('bibtex');  ga('send', 'event', 'Ref Copy', 'CopyToClipboard', '/v37/pmlr-v37-zhaoa15.bib', 15);">Copy to Clipboard</button>
+  <button class="button" id="button-bibtex2" onclick="DownloadTexToFile('pmlr-v37-zhaoa15.bib', 'bibtex'); ga('send', 'event', 'Ref Downloads', 'Download', '/v37/pmlr-v37-zhaoa15.bib', 16);">Download</button>
+  </div>
+</div>
+
+
+<div class="bibbuttongroup row row--justified">
+  <div class="bibbuttontext column">
+    Endnote
+  </div>
+  <div class="column">
+  <div class="codebox">
+    <code class="citecode" id="endnote">%0 Conference Paper
+%T Stochastic Optimization with Importance Sampling for Regularized Loss Minimization
+%A Peilin Zhao
+%A Tong Zhang
+%B Proceedings of the 32nd International Conference on Machine Learning
+%C Proceedings of Machine Learning Research
+%D 2015
+%E Francis Bach
+%E David Blei	
+%F pmlr-v37-zhaoa15
+%I PMLR
+%P 1--9
+%U https://proceedings.mlr.press/v37/zhaoa15.html
+%V 37
+%X Uniform sampling of training data has been commonly used in traditional stochastic optimization algorithms such as Proximal Stochastic Mirror Descent (prox-SMD) and Proximal Stochastic Dual Coordinate Ascent (prox-SDCA). Although uniform sampling can guarantee that the sampled stochastic quantity is an unbiased estimate of the corresponding true quantity, the resulting estimator may have a rather high variance, which negatively affects the convergence of the underlying optimization procedure. In this paper we study stochastic optimization, including prox-SMD and prox-SDCA, with importance sampling, which improves the convergence rate by reducing the stochastic variance. We theoretically analyze the algorithms and empirically validate their effectiveness.
+</code>
+  </div>
+  <button class="button"  id="button-endnote1" onclick="CopyToClipboard('endnote');  ga('send', 'event', 'Ref Copy', 'CopyToClipboard', '/v37/pmlr-v37-zhaoa15.enw', 15);">Copy to Clipboard</button>
+  <button class="button" id="button-endnote2" onclick="DownloadTexToFile('pmlr-v37-zhaoa15.enw', 'endnote'); ga('send', 'event', 'Ref Downloads', 'Download', '/v37/pmlr-v37-zhaoa15.enw', 16);">Download</button>
+  </div>
+</div>
+
+
+<div class="bibbuttongroup row row--justified">
+  <div class="bibbuttontext column">
+    RIS
+  </div>
+  <div class="column">
+  <div class="codebox">
+    <code class="citecode" id="ris">
+TY  - CPAPER
+TI  - Stochastic Optimization with Importance Sampling for Regularized Loss Minimization
+AU  - Peilin Zhao
+AU  - Tong Zhang
+BT  - Proceedings of the 32nd International Conference on Machine Learning
+DA  - 2015/06/01
+ED  - Francis Bach
+ED  - David Blei	
+ID  - pmlr-v37-zhaoa15
+PB  - PMLR
+DP  - Proceedings of Machine Learning Research
+VL  - 37
+SP  - 1
+EP  - 9
+L1  - http://proceedings.mlr.press/v37/zhaoa15.pdf
+UR  - https://proceedings.mlr.press/v37/zhaoa15.html
+AB  - Uniform sampling of training data has been commonly used in traditional stochastic optimization algorithms such as Proximal Stochastic Mirror Descent (prox-SMD) and Proximal Stochastic Dual Coordinate Ascent (prox-SDCA). Although uniform sampling can guarantee that the sampled stochastic quantity is an unbiased estimate of the corresponding true quantity, the resulting estimator may have a rather high variance, which negatively affects the convergence of the underlying optimization procedure. In this paper we study stochastic optimization, including prox-SMD and prox-SDCA, with importance sampling, which improves the convergence rate by reducing the stochastic variance. We theoretically analyze the algorithms and empirically validate their effectiveness.
+ER  -
+
+</code>
+  </div>
+  <button class="button"  id="button-ris1" onclick="CopyToClipboard('ris');  ga('send', 'event', 'Ref Copy', 'CopyToClipboard', '/v37/pmlr-v37-zhaoa15.ris', 15);">Copy to Clipboard</button>
+  <button class="button" id="button-ris2" onclick="DownloadTexToFile('pmlr-v37-zhaoa15.ris', 'ris'); ga('send', 'event', 'Ref Downloads', 'Download', '/v37/pmlr-v37-zhaoa15.ris', 16);">Download</button>
+  </div>
+</div>
+
+
+<div class="bibbuttongroup row row--justified">
+  <div class="bibbuttontext column">
+    APA
+  </div>
+  <div class="column">
+  <div class="codebox">
+    <code class="citecode" id="apa">
+Zhao, P. & Zhang, T.. (2015). Stochastic Optimization with Importance Sampling for Regularized Loss Minimization. <i>Proceedings of the 32nd International Conference on Machine Learning</i>, in <i>Proceedings of Machine Learning Research</i> 37:1-9 Available from https://proceedings.mlr.press/v37/zhaoa15.html.
+
+</code>
+  </div>
+  <button class="button"  id="button-apa1" onclick="CopyToClipboard('apa');  ga('send', 'event', 'Ref Copy', 'CopyToClipboard', '/v37/pmlr-v37-zhaoa15.txt', 15);">Copy to Clipboard</button>
+  <button class="button" id="button-apa2" onclick="DownloadTexToFile('pmlr-v37-zhaoa15.txt', 'apa'); ga('send', 'event', 'Ref Downloads', 'Download', '/v37/pmlr-v37-zhaoa15.txt', 16);">Download</button>
+  </div>
+</div>
+
+<hr class="bibhr">
+
+
+  
+  <h4>Related Material</h4>
+  <div id="extras">
+    <ul>
+      <li><a href="http://proceedings.mlr.press/v37/zhaoa15.pdf" target="_blank" onclick="ga('send', 'event', 'PDF Downloads', 'Download', 'http://proceedings.mlr.press/v37/zhaoa15.pdf', 10);">Download PDF</a></li>
+    </ul>
+  </div>
+  
+
+</article>
+
+
+
+
+
+
+
+
+
+      </div>
+    </main>
+
+
+<footer class="site-footer">
+  <div class="wrapper">
+    <p>This site last compiled Wed, 08 Feb 2023 10:40:17 +0000</p>
+      <div class="footer-left"><i><a href="https://github.com/mlresearch/v37">Github Account</a></i>
+      </div>
+      <div class="footer-right">Copyright &copy; <a href="https://proceedings.mlr.press">The authors and PMLR</a> 2023.<a href="https://twitter.com/MLResearchPress"><i class="icon-twitter"></i>&nbsp;MLResearchPress</a></div>
+  </div>
+</footer>
+
+
+
+
+
+</body>
+
+</html>

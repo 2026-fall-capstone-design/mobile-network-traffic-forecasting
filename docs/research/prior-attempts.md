@@ -532,3 +532,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 자료 공유의 비용을 이유로 후보를 다시 검토하는 경우
 
 [원85 기각 범위 정정](records/0112-rejection-scope-allocation.md)에서 고정 총 sample–모델 평가수 N, 전체 자료를 각 모델에 추가하는 방식, score·batch·wall time을 구분한다. quota 재추출·joint density ratio·importance weighting은 기존 원리를 먼저 확인한다. 비용 정정만으로 Tab의 배분 결정이나 최종 RCTL 이득이 확인되지는 않는다.
+
+## 수정된 기각 사유를 확인할 때
+
+[원85 후속 결정표20행](records/0113-decision-history-sources.md)은 기존 시도의 상세 기록을 연결한다. 예전 비용 사유와 후속 정정, 직접 예측의 긍정 결과와 cell/기간별 반례, 문헌 발견과 전문 검토를 함께 확인한다.

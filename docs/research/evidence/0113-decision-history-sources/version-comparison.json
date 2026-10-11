@@ -1,0 +1,105 @@
+[
+  {
+    "previous_source_id": "SRC-0001503",
+    "current_source_id": "SRC-0001521",
+    "previous_sha256": "3ce9b88042eb8aba24977f72acf70c32435a79bb2fae7f8f2ec7882a54d27940",
+    "current_sha256": "eab7920ef1fe310795d9af436b3dce3502e6c47035c6fd4301a0a4d68016f7df",
+    "previous_lines": 45,
+    "current_lines": 45,
+    "opcodes": [
+      [
+        "equal",
+        0,
+        11,
+        0,
+        11
+      ],
+      [
+        "replace",
+        11,
+        13,
+        11,
+        13
+      ],
+      [
+        "equal",
+        13,
+        45,
+        13,
+        45
+      ]
+    ],
+    "diff": [
+      "--- SRC-0001503",
+      "+++ SRC-0001521",
+      "@@ -9,8 +9,8 @@",
+      " | cell 정보·target 좌표 | cell ID, broad32, level/delta, calendar/day/week 입력 | Tabdelta의 큰 평균 이득은 특정 큰cell 영향. 시간·변환 사용 자체는 기본설계다. | 14–22 |",
+      " | 입력 cell 선택·공유 | 주변/조건부정보/Granger graph/Markov boundary | 공간 정보 이득과 같은 함수를 공유하는 이득은 다르다. 새 정보 집합·실제 RCTL 입력·기존feature-selection 대비 기여가 먼저 필요하다. 75의 단순 재진입 중단. | 18,45–47,75 |",
+      " | 공동 입력·cell별 다중 출력으로 학습 단위 변경 | DGCformer, DUET, CCM, Fuchs–Wang 집합 예측 의존도 | 81: scalar 충돌 반례는 그대로 적용되지 않지만 구조·집합 효과는 이미 알려짐. 같은 hidden 폭의 global 다중 출력 RCTL이 K개 core보다 산술 비용이 작음. 입력 분할의 실제 손해와 Tab이 바꿀 결정의 근거 없이 추가 subset/graph 검사를 시작하지 않는다. | 47,74–75,81 |",
+      "-| 학습 sample 재사용 | density-ratio, external-task borrowing, inverse weights | joint input-target 비가 필요. Tab 분위수만으로 안정적 joint비를 추정한 증거가 없다. 기존MTL reweighting에 이름만 붙이지 않는다. | 39–40 |",
+      "-| 학습 sample 압축 | TimeDC, Shapley, importance/stratified SGD | loss 중요도는 gradient효율과 다름. BN의batch의존성도 있다. | 56–58 |",
+      "+| 학습 sample 재사용·고정 처리량 배분 | density-ratio, external-task borrowing, inverse weights, posterior routing | 85: 외부 sample 공유가 반드시 처리량을 늘리지는 않는다. Bickel2008은 고정 개수 재추출에 사용할 원리도 이미 제시한다. 한 번의 posterior 배분과 반복 epoch 배분은 다르다. joint input-target 비중을 회귀 Tab 분위수로 안정적으로 구한 증거와, 단순 재추출보다 유용한 배분 결정은 미확인이다. 비용 불가능성이나 모든 반복 학습의 무효로 기각하지 않는다. | 39–40,85 |",
+      "+| 학습 sample 압축 | TimeDC, Shapley, importance/stratified SGD | loss 중요도는 gradient효율과 다름. BN의batch의존성도 있다. 소속을 고정한 뒤 optimizer 안에서 RCTL gradient를 쓰는 것은 clustering 판단에 쓰는 것과 구별한다. 새 fit 상한은 그대로다. | 56–58,85 |",
+      " | 그룹 보호·피크 목적 | worst-cell/top-k, relative regret, pinball, under/over provision | 기존K4를 새metric으로 선택해도 전체·뒤기간 이득을 확보하지 못했다. 실제networkcost없이 목적을 바꾸지 않는다. | 41–44,66–71 |",
+      " | 관측 자료·해상도 | 10분원자료, telemetry/imputation, partial observation | 공개데이터단위와label가용성을 구별. 일부Tab복원은단순모델보다불리. 원자료를임의가려문제존재를만들지않는다. | 29–32,51–55 |",
+      " | 실제 무통신과 양의 트래픽을 구별한 공유 | 82: Citywide SMS·통화, CESNET 원문, beam GRU-MTL, Deep Renewal | CESNET의99.94%는gap을포함한시계열비율이며시점의zero비율이아님. 기존Milan hourly Internet 전체35일zero0.01975%. 발생/크기분리·LSTM공유는기존방법이다. cell자료의실제희소손해와다른유용한공유결정없이head/context모듈을추가하지않는다. | 82 |"
+    ],
+    "comparison_not_full_content_read": true
+  },
+  {
+    "previous_source_id": "SRC-0001505",
+    "current_source_id": "SRC-0001524",
+    "previous_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+    "current_sha256": "d57da31b6edbf89b7ca0f40fcf7c603dc403df8f8c59dcab8cdbceefdccd1323",
+    "previous_lines": 422,
+    "current_lines": 433,
+    "opcodes": [
+      [
+        "equal",
+        0,
+        6,
+        0,
+        6
+      ],
+      [
+        "replace",
+        6,
+        7,
+        6,
+        18
+      ],
+      [
+        "equal",
+        7,
+        422,
+        18,
+        433
+      ]
+    ],
+    "diff": [
+      "--- SRC-0001505",
+      "+++ SRC-0001524",
+      "@@ -4,7 +4,18 @@",
+      " ",
+      " 활성 goal 중에 이전의 goal 입력 방법 질문을 반복 답변하지 않는다. 사용자가 명시적으로 해결을 요청했다. 앞으로 자동 continuation은 이 연구의 실행·증거·산출물 작업을 이어가는 것으로 해석한다. goal 사용법 안내·재등록 제안은 요청이 다시 있을 때만 한다. 작업 폴더의 `AGENTS.md`에도 이 지침을 남겼다. 아래의 최신 상태부터 이어간다.",
+      " ",
+      "-## 최신 상태 — 84 근거 종합과 중간 Word 검수 완료",
+      "+## 최신 상태 — 85 기각 범위와 고정 처리량 sample 배분 재검토",
+      "+",
+      "+- 2026-09-26. 85계획 후35·38·40·47·62·76·80의 결론 범위를 대조했다. 16cell/시간단위/K4의 실패를 모든 clustering이나 원 UPC의10분/K2 결과의 부정으로 확대하지 않는다. 관찰된 train–validation 차이는 일반화 손해와 일치하지만 원인을 하나로 확정하지 않는다.",
+      "+- 40의 비용 판단을 구체화했다. 모든 외부 자료를 각 RCTL에 추가하면 비용이 늘지만, 총 sample–모델 처리 횟수를 고정한 재배분은 가능하다. 이를 비용 때문에 불가능하다고 기각하지 않는다. 다만 Bickel2008§4는 이미 재추출과 loss가중을 모두 제시하므로 이 변경 자체는 신규 추천안이 아니다.",
+      "+- true posterior의 soft비중·hard출처·sample당하나의모델배분을 기호적으로 구분했다. p=r의단일pass는원출처와같은결합분포지만, 같은sample을epoch마다다시배분하면고정loss의조건부배분변동을줄일수있다. 실제학습파라미터변화·시간의존·BN·추정비중까지보장하지않는다. 반복학습전체가무의미하다는결론은배제했다.",
+      "+- 소속고정뒤optimizer의RCTLgradient사용과clustering판단에RCTL결과사용을구별했다. 전자는자동으로독립성위반이아니다. 이번에는둘다실행하지않았다. Tab회귀분포의좋은예측이joint출처비중이나더좋은배분결정을보인것은아니다.",
+      "+- 새모델·수치pilot0회, 예산원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변. Tab잔여11context/20640행, RCTL추가fit0을유지한다. 문헌읽기·기호검토·비용해석수정은새실행성과로세지않는다.",
+      "+- 새웹검색도구는인증오류였으나Crossref/PMLR공개직접접근은성공했다. 자격증명조회·수정없음. 최신검색의완전성을주장하지않으며이를전체작업blocker로표시하지않는다. 새공개자료4개와읽기범위/hash를보존했다.",
+      "+- `85_rejection_scope_and_routing_findings.md`, `85_source_reading_scope.json`, `output/research/TabICLv2_재설계_자료공유비용과기각범위_재검토.md`를작성했다. candidate_decision_index의sample재사용·압축행을수정했다. 현재추천안과최종Word는여전히미완료다. 84의검수된5쪽중간Word는그대로유지한다.",
+      "+- 다음에는고정quota재추출을새로운명칭으로다시제안하지않는다. 실제운영제약에대한선택질문은미응답이며존재/부재를발명하지않는다. 새후보는직접확인한분리손해를줄이는행동, Tab의다른유용한판단, 남은예산으로판단할근거가있어야한다. 이번turn은판단범위를수정한progress이며최종목표는active다.",
+      "+",
+      "+## 이전 상태 — 84 근거 종합과 중간 Word 검수 완료",
+      " ",
+      " - 2026-09-26. 84계획 후 직접예측74, 소속결정80, 최종RCTL07의 원 JSON을 대조했다. 다른 cell·입력·기간·mean/median·손실의 숫자를 섞지 않았다. 좋은Tab예측과 좋은군집판단을 구분한 중간 보고서를 작성했다. 신규 추천안 확정이나 goal완료를 선언하지 않았다.",
+      " - 실제 모델·데이터 진단 0회. M256/Q64/k16에서 N128/1024/10000의 전체·방향후보·양방향 query행 수를 산술로 계산했다. N10000에서6,399,360,000/10,240,000/20,480,000행이며 own-query와 새context준비는 별도다. 실행시간·최종알고리즘 성공으로 세지 않는다."
+    ],
+    "comparison_not_full_content_read": true
+  }
+]
