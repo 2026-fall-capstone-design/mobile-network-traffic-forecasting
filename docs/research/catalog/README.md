@@ -276,3 +276,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H109 출처](../sources/history-109.md) · [목록](history-109-sources.jsonl). snapshot25 고유본문2개/457행을 보존하고3사본경로·직전판본2개·기존 상세 검수는 추가 집계하지 않는다.
 
 [H110 출처](../sources/history-110.md) · [목록](history-110-sources.jsonl). 원84 핵심9고유 자료1109행/16경로와 이전JSON4개의 선택 재독을 구별한다. 현재 원장과 당시 인용 원장은 다른 판본이다.
+
+[H111 출처](../sources/history-111.md) · [목록](history-111-sources.jsonl): 원84 후속8고유/15경로의3본문·5이미지. 기존2본문·추출·새 PDF raster는 중복 가산하지 않는다.

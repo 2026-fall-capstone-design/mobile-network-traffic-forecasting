@@ -1,0 +1,137 @@
+{
+  "batch_id": "history-111",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T11:47:08.509536+00:00",
+  "claims_checked": 18,
+  "checks": [
+    {
+      "check_id": "H111-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        17
+      ],
+      "finding": "DOCX65요소·4표/부품·페이지필드·빈bibliography/thumbnail을 재확인. PDF전문과 PNG5전체를 초안 뒤 다시 읽음. 첫읽기의 새PDF이미지5쪽과 저장PNG5쪽 비교,5180문자동등성,15별칭/6보호해시와3본문5이미지 집계 범위를 구별. 새DOCX렌더미완료 유지."
+    },
+    {
+      "check_id": "H111-SP02",
+      "claims": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "finding": "직접예측6값/RCTL4값·2seed·globalK1·원80같은소속5방법·M256Q64k16작업량9값을 본문/표/그림과 대조. 뒤168시간은 누적연혁107–108행을 근거에 추가. query원칙을 과거구현 전체 준수로 확대하지 않음."
+    },
+    {
+      "check_id": "H111-SP03",
+      "claims": [
+        10,
+        11,
+        15
+      ],
+      "finding": "6개남은판단/운영조건미응답/개발자료/최종추천미완료,문헌8·기록6라벨,hourly·활동cell·UPC구별과checkpoint/코드commit/RCTL학습경로한계,당시예산과현재실행권한을 구별."
+    },
+    {
+      "check_id": "H111-SP04",
+      "claims": [
+        12
+      ],
+      "finding": "DOCX14관계/PDF18주석14고유URI·7file7https를 대조. PDF개인경로의추출문자깨짐과팀상대링크를구별. 원본수정·외부URL가용성검증없음. 보정목적지는 기존H110사본에연결."
+    },
+    {
+      "check_id": "H111-SP05",
+      "claims": [
+        13,
+        14,
+        16
+      ],
+      "finding": "snapshot25 412행과26 422행의첫6행/8행/이전9–412=현재19–422동일. 제목7행교체·현재9–18추가. UPC1~4옛문장/후속1,2,4,6,8,12정정·초기RCTL0/후속29fits를실제재독.20결정지도와원84보고서를연결."
+    },
+    {
+      "check_id": "H111-SP06",
+      "claims": [
+        18
+      ],
+      "finding": "H110후속8고유의실제독해와최초실패판/9쪽렌더미확인,새DOCX렌더실패·원85이후/전체통합미완료를명시. 전체Goal완료로계산하지않음."
+    }
+  ],
+  "initial_draft_record_sha256": "d525e62859c3df1a24fb2e3bbf7396b9fec8bd8f9eca4b37616bbdb5b13870fb",
+  "corrected_record_sha256": "41e503faadc2c2adc4ec72be3cd32da4701f88fb6db433071eca89c2408d4ce0",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0001505": [
+      [
+        1,
+        25
+      ],
+      [
+        39,
+        62
+      ],
+      [
+        101,
+        114
+      ],
+      [
+        263,
+        273
+      ],
+      [
+        277,
+        290
+      ],
+      [
+        361,
+        377
+      ],
+      [
+        407,
+        422
+      ]
+    ],
+    "SRC-0000125": [
+      [
+        1,
+        137
+      ]
+    ],
+    "SRC-0001479": [
+      [
+        1,
+        27
+      ]
+    ]
+  },
+  "postdraft_progress_lines": 121,
+  "postdraft_reused_lines": 164,
+  "postdraft_DOCX_body_blocks": 65,
+  "postdraft_PDF_text_pages": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "postdraft_saved_PNGs_actually_reopened": 5,
+  "all_claim_semantic_locations_actually_reread": true,
+  "unresolved_output_truncation": false,
+  "corrections": [
+    "원33–35 문서 링크를 실제 파일명으로 수정",
+    "C05의 뒤168시간 범위에 실제 재독한 연혁107–108행 근거 추가"
+  ],
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "new_performance_measurements": 0,
+  "fresh_DOCX_render_success": false,
+  "coverage_increment_applied": false,
+  "limitations": [
+    "DOCX 새 렌더는 환경 제한으로 미완료",
+    "당시 최초 실패 검사판·9쪽 렌더 세부 증거 미확인",
+    "원85 이후와 이전 고유 판본·보조자료, 전체 통합·최종 원본변경/검색 검수"
+  ]
+}
