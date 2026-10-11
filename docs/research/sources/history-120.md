@@ -143,6 +143,7 @@
 - SHA-256: `f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c`; 2,701 bytes.
 - [바이트 동일 보존판](../evidence/0120-prescribed-regularity/../0639/originals/SRC-0023048.py.txt).
 - 범위: `{"full_content_read": true, "lines_read": [[1, 60]]}`.
+- 동일 해시 별칭: `SRC-0000209`, `SRC-0000907`, `SRC-0001402`, `SRC-0001480`, `SRC-0001541`, `SRC-0001563`, `SRC-0001735`, `SRC-0001806`, `SRC-0001832`, `SRC-0023048`, `SRC-0064153`. [11개 원본 경로와 해시 검증](../evidence/0120-prescribed-regularity/provenance-check.json).
 
 ## <a id="src-0001645"></a>SRC-0001645
 
@@ -150,6 +151,7 @@
 - SHA-256: `9bc1bf14435dbc1b774a286e3d498b36468b5f6397957fd14cf3df1fc8d0aba5`; 1,048,576 bytes.
 - [원문 요청 또는 대응 판본](https://arxiv.org/pdf/2505.04904).
 - 범위: `{"full_content_read": false, "metadata_only": true, "hash_only_this_batch": true}`.
+- 상태: `broken_PDF: true`인 불완전 파일이다. 위 SHA-256은 1,048,576바이트인 이 파일의 검증값이며 완전한 논문의 검증값이 아니다. 마지막1024바이트의 끝표식 부재와 `PdfStreamError`를 확인했다. 로컬 원본은 유지하고 이 저장소에는 바이트를 재배포하지 않아 `archive_path: null`이다. [실패 파일 검사](../evidence/0120-prescribed-regularity/broken-PDF-check.json).
 
 ## <a id="src-0001646"></a>SRC-0001646
 
