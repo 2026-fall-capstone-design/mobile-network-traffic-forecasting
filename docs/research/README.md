@@ -276,3 +276,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원86 후속 이력과 문헌](records/0115-sharing-history-literature.md)은21개 후보 결정의 상세 기록, 저장검색의 실제9항목, Jacob논문의 전체 읽기 범위와 실험 한계를 연결한다.
 
 [원87 표현 용량과 조건부 비교](records/0116-causal-capacity-reference.md)는 공동 출력의 rank/MSE 조건, 단순 skip 대안, CIB의 조건부 분포와 batch shuffle, 저장 코드의 판본·AMP 경로 제한을 연결한다.
+
+[원87 후속의 결정 이력·CIB 표와 평가 경로](records/0117-conditional-history-cib.md)는 22판단·38연혁절, Table1/2의 수치·horizon 차이, 대조 손실과 validation/test/predict 경로를 연결한다.

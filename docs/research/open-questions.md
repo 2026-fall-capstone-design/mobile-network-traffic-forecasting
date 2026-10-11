@@ -181,3 +181,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H115 후속 검수](records/0115-sharing-history-literature.md)로 H114가남긴9그룹의내용읽기를끝냈다. CVPR 오류HTML은 직접확인했지만 bs4실패터미널·외부구현·인용문헌과후속판본은 별도다. Jacob의14쪽완독은RCTL성능·공유층·실측비용 검증이 아니며 원87이후와 전체통합을 이어간다.
 
 [H116 원87](records/0116-causal-capacity-reference.md)은 구조적 rank 조건과 CIB의 조건부 비교·일반 학습 경로를 검수한다. 실제 트래픽 손해/새 소속의 실익은 미확인이고 AMP 경로에 정적 불일치가 있다. 논문7–9쪽·실험표, 긴코드의 나머지, TXT와 결정·연혁·원88 계획은 [후속 목록](evidence/0116-causal-capacity/packet-coverage.json)에 남겼다.
+
+[H117](records/0117-conditional-history-cib.md)에서 H116의 알려진 후속7그룹을 읽고 CIB 전9쪽·두 코드 전문 독해를 마쳤다. 표의 horizon·기준값·증가율 차이와 predict 반환 처리, NNI에 보고하는 지표, 대조 손실 계산을 대조했다. 실제 실행/설정·인용 방법·원88 후속·다른 공백은 [범위표](evidence/0117-conditional-history-cib/packet-coverage.json)에 남는다.
