@@ -195,3 +195,5 @@
 [H118 원88](records/0118-conditional-reference-audit.md): 네 논문58쪽·코드4개와 당시 판단을 대조한다. 입력 정보와 공동 학습, 분포 의존성과 예측손실, 문헌 보장과 저장 demo의 차이를 구별한다.
 
 [H119 원89](records/0119-heterogeneity-splitting.md): 원15·35·38·80과 두 논문69쪽을 연결해 특징 차이·정보 손실·유한 학습의 구분을 기록한다.
+
+[H120 원90](records/0120-prescribed-regularity.md): 제약을 추가해 분리를 정당화하는 안의 미채택 판단과 세 논문의 적용 범위·자료 보존을 정리한다.

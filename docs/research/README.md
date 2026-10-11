@@ -282,3 +282,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원88 조건부 비교의 선행연구·고정 코드·비용](records/0118-conditional-reference-audit.md)은 TabPFN+CRT, CPT, CCMI, CMIknn의 역할·가정·저장판 차이를 연결한다.
 
 [원89 cell 이질성과 RCTL 분할](records/0119-heterogeneity-splitting.md)은 그룹 정보 입력과 분리 학습을 구별하고 두 논문의 결과·적용 범위·표의 미해결 차이를 연결한다.
+
+[원90 함수 제약과 clustering](records/0120-prescribed-regularity.md)은 두 점 하한·상태 안정성·제어용 입력 분할의 조건을 구분하고 미채택 이유와 재검토 조건을 연결한다.

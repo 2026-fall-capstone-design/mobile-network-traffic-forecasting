@@ -560,3 +560,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원89 이질성·다양성으로 다시 분할을 제안할 때
 
 [원89 검수](records/0119-heterogeneity-splitting.md)에서 기존 동일 소속 결과와 group-input global 비교를 확인한다. 특징 거리를 바꾼 이유만으로 분리 학습의 이득을 추정하지 않고, 실제로 바뀌는 정보·표본 공유·표현·비용을 특정한다.
+
+## 원90 함수 제약으로 분할을 제안할 때
+
+[원90 검수](records/0120-prescribed-regularity.md)를 먼저 확인한다. 실제 운영 요구, 전체 모델 제약, 정보·학습 결정의 변화를 특정해야 한다. state contraction·입력 sensitivity·cell 소속과 sample routing을 같은 것으로 취급하지 않는다.
