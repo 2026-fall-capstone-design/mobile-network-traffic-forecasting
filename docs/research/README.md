@@ -262,3 +262,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원83 검색·열람 기록](records/0108-maintenance-search-review.md)은 저장54응답의 실제 범위와 Fed-PPBC 표 텍스트의 불일치를 연결한다. 당시 열람 보고와 현재 보존된 본문을 구별해 재검토할 자료를 찾을 수 있다.
 
 [원83까지의 결정 지도](records/0109-cumulative-history.md)는 검토한20개 결정을 상세 기록에 연결하고, 공동 갱신 비용의 추가 판단·긍정 증거·과거 정정·남은 근거 공백을 함께 찾게 한다.
+
+[원84 중간검토](records/0110-evidence-synthesis.md)는 직접 예측·같은 소속·최종 RCTL을 구별하고 평균과 cell별 예외, 작업량 산술, 보고서의 근거·남은 판단을 연결한다.
