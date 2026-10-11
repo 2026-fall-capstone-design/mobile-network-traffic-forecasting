@@ -148,3 +148,5 @@
 [H095 DUET 코드 대조](records/0095-duet-code-review.md)는 원81의 전체 channel 쌍 계산 관찰을 고정 commit으로 확인한다. routing·Gumbel 확률·유한 score 마스크·검증/설정 차이를 기록하며 2026년 코드를 2025년 논문의 실제 실행으로 소급하지 않는다.
 
 [H096](records/0096-predictive-clustering-literature-review.md)은 원81이 지목한 Fuchs–Wang의 집합 간 의존성 군집화를 검토한다. 일방/상호 완전의존,쌍별linkage의한계,가정·비용 및잡음/군집 수선택을 연결했다. 패키지/교통예측 재현 실행으로소급하지않는다.
+
+[H097](records/0097-input-partition-search-review.md)은 원81이 네 핵심 방법을 찾고 비교하던 검색 경로를 보존한다. 원81 자료 패킷의 마지막 검색 JSON을 연결했으며, 검색 발췌와 H091–H096의 문헌·고정 코드 검수는 범위를 구분한다.

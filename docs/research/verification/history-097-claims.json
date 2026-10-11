@@ -1,0 +1,2248 @@
+{
+  "batch_id": "history-097",
+  "record_path": "../records/0097-input-partition-search-review.md",
+  "record_sha256": "40069802625dc98c8c914654fb6eb2c4c59feb631d633fe3349f8fb4ae780269",
+  "status": "source_checked",
+  "claims": [
+    {
+      "claim_id": "H097-C01",
+      "claim": "원81의 저장 검색 기록은 JSON 1그룹, 동일 바이트 사본 2경로, 225,455 bytes다. 최상위 메타데이터와 검색 질의 10개, 결과 문자열 8개를 모두 읽었다. JSON 전체 독해는 그 안에 연결된 웹 문서 전체의 독해와 다르다. 본문 35물리행 안에 긴 문자열이 들어 있어 출처는 JSON pointer와 디코딩한 문자열의 1부터 시작하는 문자 구간으로 지정한다.",
+      "record_anchor": "c01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/date",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/purpose",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/searches",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H097-C02",
+      "claim": "저장 date는 2026-09-26이고 purpose는 원81 입력 분할 방법·공식 코드 조사이며 새 모델·수치 pilot이 없다고 적는다. 원81도 새 TabICLv2 추론·회귀 적합·RCTL 계산 0회를 기록했다. 세 응답 wrapper의 fulfilled는 도구 반환 상태이며 논문 전문 확보나 실행 성공의 증거가 아니다. 이번 정리에서도 원 연구 코드·검색 기록 안의 명령·R 예제를 실행하지 않았다.",
+      "record_anchor": "c02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/date",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/purpose",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/status",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_details_1/status",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_code_lookup_1/status",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              1,
+              11
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H097-C03",
+      "claim": "구분자로 나눈 응답은 101개, 정확히 같은 URL 문자열을 합치면 93개다. 7개 URL이 반복되며 URL 인코딩·미러·판본을 합치는 논문 단위 중복 제거는 하지 않았다. 같은 XGBoost 배포 질문이 Reddit 네 커뮤니티에 실린 사례도 있다. 101응답·93URL·10질의를 독립 논문 수나 연구·실험 수로 세지 않는다.",
+      "record_anchor": "c03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            29866,
+            30641
+          ],
+          "response_id": "H097-R026",
+          "response_sha256": "f9ab5de9613c10b54d8e73cbc8d3e73f79534197425c2d7f8fde78b2ef60db16",
+          "saved_url": "https://www.reddit.com/r/MachineLearning/comments/1ik5vl4"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            30723,
+            31499
+          ],
+          "response_id": "H097-R027",
+          "response_sha256": "56d7261cccbaed1f070b29af1cd71fde34aef52fbe4cf96e348f68dcaf65aaf8",
+          "saved_url": "https://www.reddit.com/r/learnmachinelearning/comments/1ik5tc9"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            31581,
+            32348
+          ],
+          "response_id": "H097-R028",
+          "response_sha256": "9a35518948ed53f2e0c0062911adf263b93fd5632c6c449191424be0f8e22422",
+          "saved_url": "https://www.reddit.com/r/learnpython/comments/1ik5shp"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            34884,
+            35654
+          ],
+          "response_id": "H097-R032",
+          "response_sha256": "be84092e5945a4f7fbea7b9dc09fd3947b46a2ecba49a4fdb25ecd762b379e1f",
+          "saved_url": "https://www.reddit.com/r/neuralnetworks/comments/1iliiwo"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H097-C04",
+      "claim": "14개 저장 open 응답 중 SCPaT·DUET GitHub·DGCformer HTML 세 응답은 제목과 총행수 헤더만 있고 본문 L행이 없다. CRAN index는 접근 오류 한 행이다. 나머지도 표시 범위가 서로 다르며, 총행수는 저장된 본문 길이가 아니다. 별도 범위표는 웹 응답의 0부터 시작하는 L행과 JSON 문자열의 1부터 시작하는 문자를 구별한다.",
+      "record_anchor": "c04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_details_1/value",
+          "one_based_character_range": [
+            1,
+            29059
+          ],
+          "response_id": "H097-R033",
+          "response_sha256": "c19d84907013232c883d5965e51329efd42fa37369c07287c3d5abbd4fa72ec1",
+          "saved_url": "https://arxiv.org/html/2412.10859v2"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_details_1/value",
+          "one_based_character_range": [
+            29141,
+            29452
+          ],
+          "response_id": "H097-R034",
+          "response_sha256": "6ef93b5d10768fbcd3c8a07ccd22c16266c3ec49e3eaf9d8ccbdb9a2b788a3f2",
+          "saved_url": "https://arxiv.org/html/2608.19966v1"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_details_1/value",
+          "one_based_character_range": [
+            29534,
+            29907
+          ],
+          "response_id": "H097-R035",
+          "response_sha256": "24b4075027cfb862ec66dfc9ae54160b59e1becb168300a34e135e9a5bf882c4",
+          "saved_url": "https://github.com/decisionintelligence/DUET"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            34075,
+            34373
+          ],
+          "response_id": "H097-R073",
+          "response_sha256": "4e1db7d3674c8b7198526873e6b99edc9d409a5125b0ff93361d78c04bb1d19f",
+          "saved_url": "https://arxiv.org/html/2405.08440v1"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            1,
+            7725
+          ],
+          "response_id": "H097-R074",
+          "response_sha256": "7865b50e7c0b4df00fb89d1bee1dcb600e7ff924a1225db4d2fb6e0fceeb41ab",
+          "saved_url": "https://arxiv.org/abs/2412.10859"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            7807,
+            14633
+          ],
+          "response_id": "H097-R075",
+          "response_sha256": "3db2817f6a5f9e01ba04eadd80b932afe97dad88b751ae82eb0394590e7057ab",
+          "saved_url": "https://arxiv.org/abs/2405.08440"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            14715,
+            22482
+          ],
+          "response_id": "H097-R076",
+          "response_sha256": "1e6e8c0ce0f532a8f55025fc22f4f55b64b0430006c54b795120b4b114c5254b",
+          "saved_url": "https://arxiv.org/abs/2404.01340"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            22564,
+            26228
+          ],
+          "response_id": "H097-R077",
+          "response_sha256": "78f677e1626dad56f688a6753364f17f0c5a587e780db8be89a14db5d39b8c08",
+          "saved_url": "https://arxiv.org/abs/2312.16544"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_methods",
+          "one_based_character_range": [
+            1,
+            6520
+          ],
+          "response_id": "H097-R078",
+          "response_sha256": "104b9e2e473c867caa2834f3d926f95b4535efa9679e5b7dc31ec7c466814f57",
+          "saved_url": "https://arxiv.org/html/2412.10859v3"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_methods",
+          "one_based_character_range": [
+            6602,
+            13399
+          ],
+          "response_id": "H097-R079",
+          "response_sha256": "112123373c480f6d8bcfe9ce55a3c5a10ab81feca643c18b43ab443fe7424950",
+          "saved_url": "https://arxiv.org/html/2405.08440v1"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_methods",
+          "one_based_character_range": [
+            13481,
+            20978
+          ],
+          "response_id": "H097-R080",
+          "response_sha256": "d359a88fa44fd24fb22cad2834ee984a03c4082c053f75dc939bc1f20f21238b",
+          "saved_url": "https://arxiv.org/html/2404.01340v2"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_methods",
+          "one_based_character_range": [
+            21060,
+            28044
+          ],
+          "response_id": "H097-R081",
+          "response_sha256": "b708568d6bbab83ef2211b4e5c813aad29d16771561ae8018be6fd4c321373c8",
+          "saved_url": "https://arxiv.org/html/2312.16544v1"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_didec_public_api",
+          "one_based_character_range": [
+            1,
+            265
+          ],
+          "response_id": "H097-R100",
+          "response_sha256": "401f0b64504bd53e6766188603def192e61c1ac682497b148da63ea21cb6fde7",
+          "saved_url": "https://cran.r-project.org/web/packages/didec/index.html"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_didec_public_api",
+          "one_based_character_range": [
+            347,
+            11965
+          ],
+          "response_id": "H097-R101",
+          "response_sha256": "08e3975a65251189da6947074d49466f964f587c1b501820159f41cc5ecdae05",
+          "saved_url": "https://cran.r-project.org/web/packages/didec/refman/didec.html"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H097-C05",
+      "claim": "응답 101개 모두에 원 JSON pointer·문자 구간·응답 텍스트 SHA-256·URL·표시행 범위를 연결했다. 여기의 URL은 당시 응답을 찾는 출처이며 이번에 모두 다시 접속한 주소가 아니다. 검색 결과 전문은 재게시하지 않고 조사 범위와 분석을 제공한다. URL 목록과 요약을 읽는 것만으로 미수집 문서 본문까지 확인했다고 표시하지 않는다.",
+      "record_anchor": "c05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H097-C06",
+      "claim": "검색에는 arXiv·출판사·저자 프로젝트/저장소뿐 아니라 서지 집계, AI 요약, ResearchGate 소개, 다른 논문의 참고목록, 위키·Reddit가 함께 있다. 저자 원문을 확인할 수 있는 후보와 2차 소개를 같은 검증 수준으로 사용하지 않는다. Request full-text 표시는 해당 서비스의 상태이지 다른 공식 경로에도 전문이 없다는 증명이 아니다.",
+      "record_anchor": "c06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            4806,
+            6967
+          ],
+          "response_id": "H097-R002",
+          "response_sha256": "512dcb5e980fda08fc2c0ae37c7330b69a605521aec8ed44369e8f1fe354531a",
+          "saved_url": "https://arxiv.org/abs/2412.10859"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            7049,
+            10644
+          ],
+          "response_id": "H097-R003",
+          "response_sha256": "8ee6069d23d5eaf6c014e6dbd041573494fd7a221a1dc86b7b5eaf4d687819e2",
+          "saved_url": "https://explore.openaire.eu/search/publication?pid=10.1145%2F3690624.3709325"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            14130,
+            15106
+          ],
+          "response_id": "H097-R007",
+          "response_sha256": "b7dc271c681dc1ce2ade9a5859c16d4407cf08134564f09bd1591eff37c6c38f",
+          "saved_url": "https://brainfeed.ai/pages/duet-dual-clustering-enhanced-multivariate-time-series-forecasting-https.html"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            19388,
+            20030
+          ],
+          "response_id": "H097-R012",
+          "response_sha256": "073572a4283ea2045ef0af35bdd1e9d13a9e6d133b8a0881dd4675eaf6c5b323",
+          "saved_url": "https://www.preprints.org/manuscript/202602.0646/v1/download"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            23499,
+            23728
+          ],
+          "response_id": "H097-R017",
+          "response_sha256": "105cdc9d5bbd4493320458994bc3195060644a4df0c5ef3e31e06d9790bb5edb",
+          "saved_url": "https://m.thepaper.cn/newsDetail_forward_29729051"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            26759,
+            27738
+          ],
+          "response_id": "H097-R023",
+          "response_sha256": "290500768d6abf97b6d9a0439b9bf27c450167b7b2b5a26ebd33213ab622a31b",
+          "saved_url": "https://en.wikipedia.org/wiki/Cluster-weighted_modeling"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            1546,
+            3813
+          ],
+          "response_id": "H097-R037",
+          "response_sha256": "45bb01f6b95b87929fd171ec25650e656a1849d5d9fea32bbb1ea63d61d1dfe4",
+          "saved_url": "https://www.emergentmind.com/papers/2405.08440"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            3895,
+            5301
+          ],
+          "response_id": "H097-R038",
+          "response_sha256": "cb707be1b58fd90a6e6eb94915ee790711dda0ce0511fee5818b7b5b639e2dcd",
+          "saved_url": "https://www.researchgate.net/publication/387106047_DUET_Dual_Clustering_Enhanced_Multivariate_Time_Series_Forecasting"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            4037,
+            5434
+          ],
+          "response_id": "H097-R058",
+          "response_sha256": "14d89babd3d092c37c76b34e180c8a6e90df65c07351fbdde48280eea6956d89",
+          "saved_url": "https://graph-and-geometric-learning.github.io/projects/CCM"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            5516,
+            7182
+          ],
+          "response_id": "H097-R059",
+          "response_sha256": "386173dafa02537d5c6f59a8738b09f84a7cc1987d9b9fbee89a1302fbf17821",
+          "saved_url": "https://dblp.org/rec/journals/corr/abs-2404-01340.html"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            7264,
+            8588
+          ],
+          "response_id": "H097-R060",
+          "response_sha256": "2cee47a9993686af594f91d1c9537c6e6117be2f9a7391eebdf47c27a27df8d2",
+          "saved_url": "https://cir.nii.ac.jp/crid/1360307281042272512?lang=en"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            22097,
+            23825
+          ],
+          "response_id": "H097-R064",
+          "response_sha256": "b116cfc1b8e171087281f44062920af65789ffc97fec6c25be3e2bbaf8879e8e",
+          "saved_url": "https://www.researchgate.net/publication/397217807_From_Similarity_to_Superiority_Channel_Clustering_for_Time_Series_Forecasting"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            25236,
+            27459
+          ],
+          "response_id": "H097-R066",
+          "response_sha256": "070216ed9b73846cf8d141e203857ae857ba4f6924000d9264819484e2265e12",
+          "saved_url": "https://www.alphaxiv.org/abs/2404.01340"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            27541,
+            28363
+          ],
+          "response_id": "H097-R067",
+          "response_sha256": "6a48a26fdd8d3f4cf2cd0063fd45240d1472a0a6fb36e7d09c7d6d53c8cd19d5",
+          "saved_url": "https://hub.baai.ac.cn/paper/363021a7-2c4f-4724-85f9-aa30d56429cd"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            30843,
+            31552
+          ],
+          "response_id": "H097-R070",
+          "response_sha256": "8fce3ef212a15523fb0aceb99d56ef15be8f61935b3994bb94b17452939b83ae",
+          "saved_url": "https://liner.com/review/from-similarity-to-superiority-channel-clustering-for-time-series-forecasting"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            31634,
+            32702
+          ],
+          "response_id": "H097-R071",
+          "response_sha256": "d2ce72d023b3e1f5e86eed9e5991dc4d3ad5c40c3c13d186e089dd00adf52aaa",
+          "saved_url": "https://www.scribd.com/document/998578106/2404-01340v2"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H097-C07",
+      "claim": "당시 탐색 후보에는 global model의 예측 정확도 기반 군집화, TimeCapsule, contextual subsequence 군집화, Cini 등의 계층 예측, STaTS, SCPaT, localized forecasting model이 있다. 검색 발췌로 발견한 후보이며 원81의 네 핵심 방법과 같은 깊이로 검토된 목록이 아니다. 새 설계가 해당 개념에 의존할 때 판본·방법·조건을 추가로 확인해야 한다.",
+      "record_anchor": "c07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            10726,
+            11520
+          ],
+          "response_id": "H097-R004",
+          "response_sha256": "fffc7ac347d038c7c66ee9698a27600c522823abbc6b66ccbac935afb0db593d",
+          "saved_url": "https://arxiv.org/abs/2305.00473"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            11602,
+            12654
+          ],
+          "response_id": "H097-R005",
+          "response_sha256": "dc6ab69383225430351f0289302cc03f0e5881bf65b22220252223ce9d1341a2",
+          "saved_url": "https://doi.org/10.1145/3711896.3737157"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            12736,
+            14048
+          ],
+          "response_id": "H097-R006",
+          "response_sha256": "eb4ae9faf0461551ed55545d3b949892e4fe002973491b40256a7df91e3ab74a",
+          "saved_url": "https://www.sciencedirect.com/science/article/pii/S0950705121009035"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            16508,
+            18357
+          ],
+          "response_id": "H097-R010",
+          "response_sha256": "4c5c00a2575c084a467de7a5cb45c32ea7b381de5e5e35f7458734d326240e10",
+          "saved_url": "https://proceedings.mlr.press/v235/cini24a.html"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            18439,
+            19306
+          ],
+          "response_id": "H097-R011",
+          "response_sha256": "fc25013d37d5ae9ea1dbb3992c653fd625e96a80db86421800b10574169621be",
+          "saved_url": "https://arxiv.org/abs/2510.09593"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            21211,
+            21829
+          ],
+          "response_id": "H097-R014",
+          "response_sha256": "442e3944609c5254669c54459516da119ce90909b17b70ecaa721a83039403d7",
+          "saved_url": "https://arxiv.deeppaper.ai/papers/2608.19966v1?locale=en"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            24392,
+            24969
+          ],
+          "response_id": "H097-R019",
+          "response_sha256": "cc29f1dad65e5bf8bf29f751b0ed07ca59f6b41f37b17ac8eb2845ef20334edf",
+          "saved_url": "https://www.monash.edu/business/ebs/research/publications/ebs/wp45-2020.pdf"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            25051,
+            25750
+          ],
+          "response_id": "H097-R020",
+          "response_sha256": "f68ffcdecbde370ff61f7c23c07889b1a223ec900daf0bb5aac6eb763ffd46c9",
+          "saved_url": "https://arxiv.org/abs/2012.15059"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            25832,
+            26341
+          ],
+          "response_id": "H097-R021",
+          "response_sha256": "d02869fc667084668dde73419d924701498634832172b8a0fb23bac3b3de5d8a",
+          "saved_url": "https://repository.kaust.edu.sa/server/api/core/bitstreams/fd72eec5-826e-4991-9fdc-de1b803329f8/content"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_details_1/value",
+          "one_based_character_range": [
+            29141,
+            29452
+          ],
+          "response_id": "H097-R034",
+          "response_sha256": "6ef93b5d10768fbcd3c8a07ccd22c16266c3ec49e3eaf9d8ccbdb9a2b788a3f2",
+          "saved_url": "https://arxiv.org/html/2608.19966v1"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              97,
+              103
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H097-C08",
+      "claim": "검색어 partition은 서로 다른 대상을 가리켰다. 관측 공간의 데이터 분할, CMI 추정을 위한 구간화, 과거 trajectory를 예측 상태로 압축하는 정보병목, 환경 변수의 정보 분해, channel 집합의 군집화는 같은 결정 규칙이 아니다. CMI 식이 Image 자리표시자로 남은 응답은 식을 실제로 읽은 근거로 사용하지 않는다.",
+      "record_anchor": "c08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            7013,
+            9151
+          ],
+          "response_id": "H097-R040",
+          "response_sha256": "261a35f1d7a81eebc20872e813c0d19085e94e5fd4e019f99a6b430fc079537f",
+          "saved_url": "https://citeseerx.ist.psu.edu/document?doi=52aafec33f0c327cbbbe0aa45a638e8cd10f6650&repid=rep1&type=pdf"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            9233,
+            10791
+          ],
+          "response_id": "H097-R041",
+          "response_sha256": "2b3782518e90c01b91317fd9ffc7715918f0a2e1d2521f903e51ae35f10bdeaa",
+          "saved_url": "https://www.causality.inf.ethz.ch/ciml/CiML-v1-book.pdf"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            10873,
+            12209
+          ],
+          "response_id": "H097-R042",
+          "response_sha256": "10b19c9fb2c27b99ed680c02b744d15b2330feef8f07c153995a1fff9d218c80",
+          "saved_url": "https://edoc.hu-berlin.de/bitstreams/59ae5a89-77c8-4df1-9b76-8de0019b5c4a/download"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            12291,
+            14778
+          ],
+          "response_id": "H097-R043",
+          "response_sha256": "6f18b91bacbf6e9ef137a26e3543e34a45e83e78fbbc378a8e992d80c8e6a4a5",
+          "saved_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3171392/"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            14860,
+            16634
+          ],
+          "response_id": "H097-R044",
+          "response_sha256": "06032ee50d5d7204afedfed8e1acb02b8a5979f7a50a153351899eb9ebb6c41d",
+          "saved_url": "https://doi.org/10.1175%2F2011JCLI4143.1"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            20539,
+            22731
+          ],
+          "response_id": "H097-R047",
+          "response_sha256": "eb2d23d80db86c62a9ac5599c71e12453c0361cbc6e457c2132e61142ba67d4b",
+          "saved_url": "https://www.mdpi.com/1099-4300/16/2/968"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            25894,
+            28024
+          ],
+          "response_id": "H097-R050",
+          "response_sha256": "142a91d21335acceef3fa25d088f335c1b0b3cad776f204f83878819ab652e23",
+          "saved_url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2016WR020216"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            31070,
+            31595
+          ],
+          "response_id": "H097-R055",
+          "response_sha256": "4cafdeb58e30864c57368a84842c47bf8cb081622fedd68aa06c0674da5931c9",
+          "saved_url": "https://en.wikipedia.org/wiki/Mutual_information"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H097-C09",
+      "claim": "DGCformer의 초록과 방법 응답에는 deep graph clustering 뒤 cluster 내 attention을 허용하는 설명과 64경우 중 57경우 최상위라는 저자 주장이 있다. 검색 발췌만으로 전체 표·K 선택·학습 독립성을 확정하지 않는다. 원81의 분리형 입력 분할 비교는 H091의 전체 문헌 검토, 조건과 반례를 함께 읽어야 한다.",
+      "record_anchor": "c09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            1,
+            1464
+          ],
+          "response_id": "H097-R036",
+          "response_sha256": "7905b21c1fa565c1cacbaac350f38eaa8e7e2422469e6c0d3f59fdaf49c8adc2",
+          "saved_url": "https://arxiv.org/abs/2405.08440"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            7807,
+            14633
+          ],
+          "response_id": "H097-R075",
+          "response_sha256": "3db2817f6a5f9e01ba04eadd80b932afe97dad88b751ae82eb0394590e7057ab",
+          "saved_url": "https://arxiv.org/abs/2405.08440"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_methods",
+          "one_based_character_range": [
+            6602,
+            13399
+          ],
+          "response_id": "H097-R079",
+          "response_sha256": "112123373c480f6d8bcfe9ce55a3c5a10ab81feca643c18b43ab443fe7424950",
+          "saved_url": "https://arxiv.org/html/2405.08440v1"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              25,
+              31
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H091-C01",
+          "record_path": "../records/0091-dgcformer-source-review.md",
+          "record_sha256": "561b909c968f6cfb6cda0aa7aa716c216527fa3133f7ae6b510d95eb7c6d25f6",
+          "record_anchor": "c01",
+          "link": "[H091-C01](../records/0091-dgcformer-source-review.md#c01)"
+        },
+        {
+          "claim_id": "H091-C27",
+          "record_path": "../records/0091-dgcformer-source-review.md",
+          "record_sha256": "561b909c968f6cfb6cda0aa7aa716c216527fa3133f7ae6b510d95eb7c6d25f6",
+          "record_anchor": "c27",
+          "link": "[H091-C27](../records/0091-dgcformer-source-review.md#c27)"
+        },
+        {
+          "claim_id": "H091-C28",
+          "record_path": "../records/0091-dgcformer-source-review.md",
+          "record_sha256": "561b909c968f6cfb6cda0aa7aa716c216527fa3133f7ae6b510d95eb7c6d25f6",
+          "record_anchor": "c28",
+          "link": "[H091-C28](../records/0091-dgcformer-source-review.md#c28)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H097-C10",
+      "claim": "DGCformer의 코드 공개 예정 문구, 외부 논문 목록의 None 또는 대시, 원81의 공식 코드 미확인 진술은 각각 당시 자료의 상태다. 현재 공식 코드가 존재하지 않는다는 결론을 내릴 근거는 아니다. H093은 TimeSeriesCCM 코드 검토이며 DGCformer 코드 검토로 연결하지 않는다.",
+      "record_anchor": "c10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            1,
+            1464
+          ],
+          "response_id": "H097-R036",
+          "response_sha256": "7905b21c1fa565c1cacbaac350f38eaa8e7e2422469e6c0d3f59fdaf49c8adc2",
+          "saved_url": "https://arxiv.org/abs/2405.08440"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            5383,
+            6931
+          ],
+          "response_id": "H097-R039",
+          "response_sha256": "548c24145ffadf5c0c17d5189a77dc073ac11c064708dc46e1ab4bfa4b7bf99a",
+          "saved_url": "https://gitextract.com/ddz16/TSFpaper"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            22813,
+            24200
+          ],
+          "response_id": "H097-R048",
+          "response_sha256": "6f57004fdce70252cc04ff876b69da03ba4e7070192ecd623e41aa8f82ede957",
+          "saved_url": "https://github.com/decisionintelligence/CS4TS"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            7807,
+            14633
+          ],
+          "response_id": "H097-R075",
+          "response_sha256": "3db2817f6a5f9e01ba04eadd80b932afe97dad88b751ae82eb0394590e7057ab",
+          "saved_url": "https://arxiv.org/abs/2405.08440"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              25,
+              31
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H091-C29",
+          "record_path": "../records/0091-dgcformer-source-review.md",
+          "record_sha256": "561b909c968f6cfb6cda0aa7aa716c216527fa3133f7ae6b510d95eb7c6d25f6",
+          "record_anchor": "c29",
+          "link": "[H091-C29](../records/0091-dgcformer-source-review.md#c29)"
+        },
+        {
+          "claim_id": "H093-C01",
+          "record_path": "../records/0093-ccm-code-review.md",
+          "record_sha256": "65a1ffd20bcb3c304245f0191eb0c49c815e14c5f52ab8214acf63d27e2923cf",
+          "record_anchor": "c01",
+          "link": "[H093-C01](../records/0093-ccm-code-review.md#c01)"
+        },
+        {
+          "claim_id": "H093-C02",
+          "record_path": "../records/0093-ccm-code-review.md",
+          "record_sha256": "65a1ffd20bcb3c304245f0191eb0c49c815e14c5f52ab8214acf63d27e2923cf",
+          "record_anchor": "c02",
+          "link": "[H093-C02](../records/0093-ccm-code-review.md#c02)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H097-C11",
+      "claim": "DUET details 응답은 arXiv v2(2024-12-23)의 L0–179/총539행이고, methods 응답은 v3(2025-01-10)의 L171–201/총544행이다. v1 제출일은 2024-12-14다. v2 발췌의 DOI 자리표시자·Woodstock 2018·Received 2009 같은 템플릿 잔재를 실제 서지로 사용하지 않는다. v3 전체 검토와 정식 표기 확인은 H094에 연결한다.",
+      "record_anchor": "c11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_details_1/value",
+          "one_based_character_range": [
+            1,
+            29059
+          ],
+          "response_id": "H097-R033",
+          "response_sha256": "c19d84907013232c883d5965e51329efd42fa37369c07287c3d5abbd4fa72ec1",
+          "saved_url": "https://arxiv.org/html/2412.10859v2"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            1,
+            7725
+          ],
+          "response_id": "H097-R074",
+          "response_sha256": "7865b50e7c0b4df00fb89d1bee1dcb600e7ff924a1225db4d2fb6e0fceeb41ab",
+          "saved_url": "https://arxiv.org/abs/2412.10859"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_methods",
+          "one_based_character_range": [
+            1,
+            6520
+          ],
+          "response_id": "H097-R078",
+          "response_sha256": "104b9e2e473c867caa2834f3d926f95b4535efa9679e5b7dc31ec7c466814f57",
+          "saved_url": "https://arxiv.org/html/2412.10859v3"
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H094-C01",
+          "record_path": "../records/0094-duet-literature-review.md",
+          "record_sha256": "0c9f7361b584d791b5924880a4f92e0e8f01e026ac2559c80b131c37733a5763",
+          "record_anchor": "c01",
+          "link": "[H094-C01](../records/0094-duet-literature-review.md#c01)"
+        },
+        {
+          "claim_id": "H094-C02",
+          "record_path": "../records/0094-duet-literature-review.md",
+          "record_sha256": "0c9f7361b584d791b5924880a4f92e0e8f01e026ac2559c80b131c37733a5763",
+          "record_anchor": "c02",
+          "link": "[H094-C02](../records/0094-duet-literature-review.md#c02)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H097-C12",
+      "claim": "SCPaT v1 응답의 총466행과 DUET GitHub 응답의 총304행은 본문을 저장했다는 뜻이 아니다. 이 두 open 응답에는 L행 본문이 없다. 다른 필드의 DUET README 검색 발췌나 후속에 보존한 코드가 있다는 사실도 이 빈 응답 자체의 읽기 범위를 늘리지 않는다.",
+      "record_anchor": "c12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            1,
+            4724
+          ],
+          "response_id": "H097-R001",
+          "response_sha256": "e374c0e4b0236278cbe68db9d898f43d78974a0c631f9a31ae36ce1a54befa53",
+          "saved_url": "https://github.com/decisionintelligence/DUET/blob/main/README.md"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_details_1/value",
+          "one_based_character_range": [
+            29141,
+            29452
+          ],
+          "response_id": "H097-R034",
+          "response_sha256": "6ef93b5d10768fbcd3c8a07ccd22c16266c3ec49e3eaf9d8ccbdb9a2b788a3f2",
+          "saved_url": "https://arxiv.org/html/2608.19966v1"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_details_1/value",
+          "one_based_character_range": [
+            29534,
+            29907
+          ],
+          "response_id": "H097-R035",
+          "response_sha256": "24b4075027cfb862ec66dfc9ae54160b59e1becb168300a34e135e9a5bf882c4",
+          "saved_url": "https://github.com/decisionintelligence/DUET"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H097-C13",
+      "claim": "DUET README 검색 발췌에는 버그 수정 뒤 결과를 재검증했다는 저자 설명과 실행 예제가 있다. requirements 위치에 ILI 명령 조각이 반복된 추출 흔적도 보존돼 있다. 이를 설치 명세나 고정 commit 실행 결과로 사용하지 않는다. 당시 수집한 코드의 날짜·해시와 논문 시점의 차이는 H095가 별도로 확인했다.",
+      "record_anchor": "c13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            1,
+            4724
+          ],
+          "response_id": "H097-R001",
+          "response_sha256": "e374c0e4b0236278cbe68db9d898f43d78974a0c631f9a31ae36ce1a54befa53",
+          "saved_url": "https://github.com/decisionintelligence/DUET/blob/main/README.md"
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H095-C02",
+          "record_path": "../records/0095-duet-code-review.md",
+          "record_sha256": "5ac5eb9d5bab15809afcda17d3c464ae52ac4caa4e6bface4e7e8435e19294d3",
+          "record_anchor": "c02",
+          "link": "[H095-C02](../records/0095-duet-code-review.md#c02)"
+        },
+        {
+          "claim_id": "H095-C25",
+          "record_path": "../records/0095-duet-code-review.md",
+          "record_sha256": "5ac5eb9d5bab15809afcda17d3c464ae52ac4caa4e6bface4e7e8435e19294d3",
+          "record_anchor": "c25",
+          "link": "[H095-C25](../records/0095-duet-code-review.md#c25)"
+        },
+        {
+          "claim_id": "H095-C28",
+          "record_path": "../records/0095-duet-code-review.md",
+          "record_sha256": "5ac5eb9d5bab15809afcda17d3c464ae52ac4caa4e6bface4e7e8435e19294d3",
+          "record_anchor": "c28",
+          "link": "[H095-C28](../records/0095-duet-code-review.md#c28)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H097-C14",
+      "claim": "DUET 검색 수식의 Top-k 후 softmax, 학습 가능한 주파수 거리·mask는 논문 설명이다. H095의 고정 코드에서는 전체 softmax 뒤 Top-k와 재정규화, 전체 channel 쌍의 거리·attention 계산 등 실제 정적 경로를 따로 검토했다. 검색 수식과 코드를 동일한 실행이라고 합치거나 희소 mask만으로 전체 계산 비용 감소를 확정하지 않는다.",
+      "record_anchor": "c14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_details_1/value",
+          "one_based_character_range": [
+            1,
+            29059
+          ],
+          "response_id": "H097-R033",
+          "response_sha256": "c19d84907013232c883d5965e51329efd42fa37369c07287c3d5abbd4fa72ec1",
+          "saved_url": "https://arxiv.org/html/2412.10859v2"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_methods",
+          "one_based_character_range": [
+            1,
+            6520
+          ],
+          "response_id": "H097-R078",
+          "response_sha256": "104b9e2e473c867caa2834f3d926f95b4535efa9679e5b7dc31ec7c466814f57",
+          "saved_url": "https://arxiv.org/html/2412.10859v3"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              33,
+              39
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H094-C07",
+          "record_path": "../records/0094-duet-literature-review.md",
+          "record_sha256": "0c9f7361b584d791b5924880a4f92e0e8f01e026ac2559c80b131c37733a5763",
+          "record_anchor": "c07",
+          "link": "[H094-C07](../records/0094-duet-literature-review.md#c07)"
+        },
+        {
+          "claim_id": "H095-C09",
+          "record_path": "../records/0095-duet-code-review.md",
+          "record_sha256": "5ac5eb9d5bab15809afcda17d3c464ae52ac4caa4e6bface4e7e8435e19294d3",
+          "record_anchor": "c09",
+          "link": "[H095-C09](../records/0095-duet-code-review.md#c09)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H097-C15",
+      "claim": "CCM methods의 Table 1 발췌는 ETTh1·ETTm1·Exchange, TSMixer/CD·DLinear/CI·PatchTST/CI·TimesNet/CD의 ΔLoss와 PCC 24개 인쇄값을 담는다. PCC 범위는 −0.68∼−0.47이다. 채널별 MSE 변화 차이와 표준화 시계열 RBF 유사도의 관찰이며, 원 단위 MSE를 최적으로 만드는 partition의 증명이 아니다. 24값은 별도 표에 전사해 저장 응답과 대조한다.",
+      "record_anchor": "c15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_methods",
+          "one_based_character_range": [
+            13481,
+            20978
+          ],
+          "response_id": "H097-R080",
+          "response_sha256": "d359a88fa44fd24fb22cad2834ee984a03c4082c053f75dc939bc1f20f21238b",
+          "saved_url": "https://arxiv.org/html/2404.01340v2"
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H092-C03",
+          "record_path": "../records/0092-ccm-source-review.md",
+          "record_sha256": "c90a4a65f988e6352a3c6fd7ed0fdadd12068627e8d0797c21a55a9facbaea82",
+          "record_anchor": "c03",
+          "link": "[H092-C03](../records/0092-ccm-source-review.md#c03)"
+        },
+        {
+          "claim_id": "H092-C05",
+          "record_path": "../records/0092-ccm-source-review.md",
+          "record_sha256": "c90a4a65f988e6352a3c6fd7ed0fdadd12068627e8d0797c21a55a9facbaea82",
+          "record_anchor": "c05",
+          "link": "[H092-C05](../records/0092-ccm-source-review.md#c05)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H097-C16",
+      "claim": "CCM의 확률 행 합이 1이라는 설명과 Bernoulli 근사 membership 설명을 동시에 보존한다. 이것만으로 각 채널이 꼭 한 군집에만 속하는 고정 partition을 보장하지 않는다. prototype 갱신과 cluster별 선형 출력의 가중 결합을 원81의 독립 RCTL core 학습과 구별한다.",
+      "record_anchor": "c16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            8670,
+            12378
+          ],
+          "response_id": "H097-R061",
+          "response_sha256": "388e4d4d1416348a06b4aae3b33df45d88d58d8e9d0a20147bbad179bc992056",
+          "saved_url": "https://cs.stanford.edu/~jure/pubs/similarity-superiority24.pdf"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            16749,
+            22015
+          ],
+          "response_id": "H097-R063",
+          "response_sha256": "b65b7e212370fe418c0128b55fe34d1c67cc2c7964fb42dac36097ba47dc4d1c",
+          "saved_url": "https://www.proceedings.com/content/079/079017-4152open.pdf"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_methods",
+          "one_based_character_range": [
+            13481,
+            20978
+          ],
+          "response_id": "H097-R080",
+          "response_sha256": "d359a88fa44fd24fb22cad2834ee984a03c4082c053f75dc939bc1f20f21238b",
+          "saved_url": "https://arxiv.org/html/2404.01340v2"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              41,
+              49
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H092-C06",
+          "record_path": "../records/0092-ccm-source-review.md",
+          "record_sha256": "c90a4a65f988e6352a3c6fd7ed0fdadd12068627e8d0797c21a55a9facbaea82",
+          "record_anchor": "c06",
+          "link": "[H092-C06](../records/0092-ccm-source-review.md#c06)"
+        },
+        {
+          "claim_id": "H092-C07",
+          "record_path": "../records/0092-ccm-source-review.md",
+          "record_sha256": "c90a4a65f988e6352a3c6fd7ed0fdadd12068627e8d0797c21a55a9facbaea82",
+          "record_anchor": "c07",
+          "link": "[H092-C07](../records/0092-ccm-source-review.md#c07)"
+        },
+        {
+          "claim_id": "H092-C10",
+          "record_path": "../records/0092-ccm-source-review.md",
+          "record_sha256": "c90a4a65f988e6352a3c6fd7ed0fdadd12068627e8d0797c21a55a9facbaea82",
+          "record_anchor": "c10",
+          "link": "[H092-C10](../records/0092-ccm-source-review.md#c10)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H097-C17",
+      "claim": "CCM PDF 검색 발췌 두 응답에는 수식 괄호 주변의 제어문자가 남아 있다. Stanford 응답에는 U+0012·U+0013 각1개, proceedings 응답에는 U+0000·U+0001 각6개가 있다. 이 텍스트를 정확한 수식으로 복사하지 않는다. Eq.4의 인쇄식 대수와 코드의 scalar 1·추가 entropy 차이는 H092·H093의 별도 검수로 연결한다.",
+      "record_anchor": "c17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            8670,
+            12378
+          ],
+          "response_id": "H097-R061",
+          "response_sha256": "388e4d4d1416348a06b4aae3b33df45d88d58d8e9d0a20147bbad179bc992056",
+          "saved_url": "https://cs.stanford.edu/~jure/pubs/similarity-superiority24.pdf"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            16749,
+            22015
+          ],
+          "response_id": "H097-R063",
+          "response_sha256": "b65b7e212370fe418c0128b55fe34d1c67cc2c7964fb42dac36097ba47dc4d1c",
+          "saved_url": "https://www.proceedings.com/content/079/079017-4152open.pdf"
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H092-C09",
+          "record_path": "../records/0092-ccm-source-review.md",
+          "record_sha256": "c90a4a65f988e6352a3c6fd7ed0fdadd12068627e8d0797c21a55a9facbaea82",
+          "record_anchor": "c09",
+          "link": "[H092-C09](../records/0092-ccm-source-review.md#c09)"
+        },
+        {
+          "claim_id": "H093-C22",
+          "record_path": "../records/0093-ccm-code-review.md",
+          "record_sha256": "65a1ffd20bcb3c304245f0191eb0c49c815e14c5f52ab8214acf63d27e2923cf",
+          "record_anchor": "c22",
+          "link": "[H093-C22](../records/0093-ccm-code-review.md#c22)"
+        },
+        {
+          "claim_id": "H093-C23",
+          "record_path": "../records/0093-ccm-code-review.md",
+          "record_sha256": "65a1ffd20bcb3c304245f0191eb0c49c815e14c5f52ab8214acf63d27e2923cf",
+          "record_anchor": "c23",
+          "link": "[H093-C23](../records/0093-ccm-code-review.md#c23)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H097-C18",
+      "claim": "CCM 발췌의 O(KCd)는 소속 점수와 prototype cross-attention에 관한 범위이고, 전체 C×C 유사도·기반 모델·전처리 비용이 아니다. README의 장기·zero-shot·M4·stock 실행 예제는 사용법 자료다. 명령이 실렸다는 사실은 원81에서 해당 실험이 수행됐다는 증거가 아니다.",
+      "record_anchor": "c18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            4037,
+            5434
+          ],
+          "response_id": "H097-R058",
+          "response_sha256": "14d89babd3d092c37c76b34e180c8a6e90df65c07351fbdde48280eea6956d89",
+          "saved_url": "https://graph-and-geometric-learning.github.io/projects/CCM"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            8670,
+            12378
+          ],
+          "response_id": "H097-R061",
+          "response_sha256": "388e4d4d1416348a06b4aae3b33df45d88d58d8e9d0a20147bbad179bc992056",
+          "saved_url": "https://cs.stanford.edu/~jure/pubs/similarity-superiority24.pdf"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            12460,
+            16667
+          ],
+          "response_id": "H097-R062",
+          "response_sha256": "9c33c023276a7c262bfe91cc60f25eb130ce29d2ec7e22c7b2e55c802ec67b64",
+          "saved_url": "https://github.com/Graph-and-Geometric-Learning/TimeSeriesCCM"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            16749,
+            22015
+          ],
+          "response_id": "H097-R063",
+          "response_sha256": "b65b7e212370fe418c0128b55fe34d1c67cc2c7964fb42dac36097ba47dc4d1c",
+          "saved_url": "https://www.proceedings.com/content/079/079017-4152open.pdf"
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H092-C07",
+          "record_path": "../records/0092-ccm-source-review.md",
+          "record_sha256": "c90a4a65f988e6352a3c6fd7ed0fdadd12068627e8d0797c21a55a9facbaea82",
+          "record_anchor": "c07",
+          "link": "[H092-C07](../records/0092-ccm-source-review.md#c07)"
+        },
+        {
+          "claim_id": "H092-C11",
+          "record_path": "../records/0092-ccm-source-review.md",
+          "record_sha256": "c90a4a65f988e6352a3c6fd7ed0fdadd12068627e8d0797c21a55a9facbaea82",
+          "record_anchor": "c11",
+          "link": "[H092-C11](../records/0092-ccm-source-review.md#c11)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H097-C19",
+      "claim": "원81이 정적으로 본 CCM 코드는 commit e4769baa7f8457358eb9b4614af2de1fbfba2257에 연결되며 H093이 저장 파일·Git blob을 대조했다. H093은 prototype 차원·optimizer 등록·채널 순서·유사도 축 등의 정적 위험을 기록했다. README와 검색상의 성능 설명으로 이런 조건을 해결됐다고 판단하거나 실제 논문 실행 실패가 관측됐다고 역으로 단정하지 않는다.",
+      "record_anchor": "c19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            12460,
+            16667
+          ],
+          "response_id": "H097-R062",
+          "response_sha256": "9c33c023276a7c262bfe91cc60f25eb130ce29d2ec7e22c7b2e55c802ec67b64",
+          "saved_url": "https://github.com/Graph-and-Geometric-Learning/TimeSeriesCCM"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              41,
+              49
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H093-C02",
+          "record_path": "../records/0093-ccm-code-review.md",
+          "record_sha256": "65a1ffd20bcb3c304245f0191eb0c49c815e14c5f52ab8214acf63d27e2923cf",
+          "record_anchor": "c02",
+          "link": "[H093-C02](../records/0093-ccm-code-review.md#c02)"
+        },
+        {
+          "claim_id": "H093-C15",
+          "record_path": "../records/0093-ccm-code-review.md",
+          "record_sha256": "65a1ffd20bcb3c304245f0191eb0c49c815e14c5f52ab8214acf63d27e2923cf",
+          "record_anchor": "c15",
+          "link": "[H093-C15](../records/0093-ccm-code-review.md#c15)"
+        },
+        {
+          "claim_id": "H093-C16",
+          "record_path": "../records/0093-ccm-code-review.md",
+          "record_sha256": "65a1ffd20bcb3c304245f0191eb0c49c815e14c5f52ab8214acf63d27e2923cf",
+          "record_anchor": "c16",
+          "link": "[H093-C16](../records/0093-ccm-code-review.md#c16)"
+        },
+        {
+          "claim_id": "H093-C18",
+          "record_path": "../records/0093-ccm-code-review.md",
+          "record_sha256": "65a1ffd20bcb3c304245f0191eb0c49c815e14c5f52ab8214acf63d27e2923cf",
+          "record_anchor": "c18",
+          "link": "[H093-C18](../records/0093-ccm-code-review.md#c18)"
+        },
+        {
+          "claim_id": "H093-C19",
+          "record_path": "../records/0093-ccm-code-review.md",
+          "record_sha256": "65a1ffd20bcb3c304245f0191eb0c49c815e14c5f52ab8214acf63d27e2923cf",
+          "record_anchor": "c19",
+          "link": "[H093-C19](../records/0093-ccm-code-review.md#c19)"
+        },
+        {
+          "claim_id": "H093-C20",
+          "record_path": "../records/0093-ccm-code-review.md",
+          "record_sha256": "65a1ffd20bcb3c304245f0191eb0c49c815e14c5f52ab8214acf63d27e2923cf",
+          "record_anchor": "c20",
+          "link": "[H093-C20](../records/0093-ccm-code-review.md#c20)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H097-C20",
+      "claim": "Fuchs–Wang의 저장 arXiv 서지는 v1 제출일 2023-12-27을 보여주지만 해당 응답은 L0–84/총158행까지만 남아 있다. ScienceDirect 검색 응답은 IJAR 170, July 2024, 109185와 DOI 10.1016/j.ijar.2024.109185, 자료 요청 가능 문구를 제공한다. 이는 원81 서지의 추가 저장 근거이며 출판사 PDF와 arXiv 본문의 동일성이나 현재 자료 접근성을 확인한 결과는 아니다.",
+      "record_anchor": "c20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            29680,
+            30388
+          ],
+          "response_id": "H097-R053",
+          "response_sha256": "bdc72f7c6039b1495a15a1cb21015f9d3f42cc7f163dee8faa9e02444cf1f4f1",
+          "saved_url": "https://doi.org/10.1016%2Fj.ijar.2024.109185"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            1,
+            1543
+          ],
+          "response_id": "H097-R056",
+          "response_sha256": "17177a2ea67f9240e91f4a50a37983fd7492b5a44ba4481fd2dbc6ecbdc4af35",
+          "saved_url": "https://arxiv.org/abs/2312.16544"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            32784,
+            33993
+          ],
+          "response_id": "H097-R072",
+          "response_sha256": "59a856eef32300f0ab74d239b4009bc1ad90610b3001ce3afd361c440745b1f7",
+          "saved_url": "https://doi.org/10.1016%2Fj.ijar.2024.109185"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            22564,
+            26228
+          ],
+          "response_id": "H097-R077",
+          "response_sha256": "78f677e1626dad56f688a6753364f17f0c5a587e780db8be89a14db5d39b8c08",
+          "saved_url": "https://arxiv.org/abs/2312.16544"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_code_lookup_1/value",
+          "one_based_character_range": [
+            1272,
+            3116
+          ],
+          "response_id": "H097-R083",
+          "response_sha256": "20a85eed89c26e48aa13b7707b2b1489457ed26795dc9798d8e31781b093ff18",
+          "saved_url": "https://www.sciencedirect.com/science/article/pii/S0888613X24000720"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_code_lookup_1/value",
+          "one_based_character_range": [
+            4945,
+            6200
+          ],
+          "response_id": "H097-R085",
+          "response_sha256": "587fec41d1966ed6c4f6f477251555b2dfe1a53b0d9accc43363ba80c2e78d12",
+          "saved_url": "https://arxiv.org/abs/2312.16544"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              51,
+              57
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H096-C01",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c01",
+          "link": "[H096-C01](../records/0096-predictive-clustering-literature-review.md#c01)"
+        },
+        {
+          "claim_id": "H096-C02",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c02",
+          "link": "[H096-C02](../records/0096-predictive-clustering-literature-review.md#c02)"
+        },
+        {
+          "claim_id": "H096-C03",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c03",
+          "link": "[H096-C03](../records/0096-predictive-clustering-literature-review.md#c03)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H097-C21",
+      "claim": "Fuchs–Wang methods 발췌는 변수 집합의 방향별 분포적 예측 의존성과 군집 간 결합을 다룬다. 공동 정보라는 개념만으로 신규성을 주장할 수 없지만 미래 horizon·raw MSE·UPC 재배정과 같은 방법이라고도 할 수 없다. 전체 논문의 정의·i.i.d. 가정·순열과 병합 비용·실패 조건은 H096을 참조한다.",
+      "record_anchor": "c21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_channel_sources",
+          "one_based_character_range": [
+            1,
+            1543
+          ],
+          "response_id": "H097-R056",
+          "response_sha256": "17177a2ea67f9240e91f4a50a37983fd7492b5a44ba4481fd2dbc6ecbdc4af35",
+          "saved_url": "https://arxiv.org/abs/2312.16544"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_methods",
+          "one_based_character_range": [
+            21060,
+            28044
+          ],
+          "response_id": "H097-R081",
+          "response_sha256": "b708568d6bbab83ef2211b4e5c813aad29d16771561ae8018be6fd4c321373c8",
+          "saved_url": "https://arxiv.org/html/2312.16544v1"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_code_lookup_1/value",
+          "one_based_character_range": [
+            4945,
+            6200
+          ],
+          "response_id": "H097-R085",
+          "response_sha256": "587fec41d1966ed6c4f6f477251555b2dfe1a53b0d9accc43363ba80c2e78d12",
+          "saved_url": "https://arxiv.org/abs/2312.16544"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              51,
+              57
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H096-C04",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c04",
+          "link": "[H096-C04](../records/0096-predictive-clustering-literature-review.md#c04)"
+        },
+        {
+          "claim_id": "H096-C06",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c06",
+          "link": "[H096-C06](../records/0096-predictive-clustering-literature-review.md#c06)"
+        },
+        {
+          "claim_id": "H096-C07",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c07",
+          "link": "[H096-C07](../records/0096-predictive-clustering-literature-review.md#c07)"
+        },
+        {
+          "claim_id": "H096-C09",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c09",
+          "link": "[H096-C09](../records/0096-predictive-clustering-literature-review.md#c09)"
+        },
+        {
+          "claim_id": "H096-C20",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c20",
+          "link": "[H096-C20](../records/0096-predictive-clustering-literature-review.md#c20)"
+        },
+        {
+          "claim_id": "H096-C21",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c21",
+          "link": "[H096-C21](../records/0096-predictive-clustering-literature-review.md#c21)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H097-C22",
+      "claim": "didec의 ETH와 ZJU 미러 검색 발췌에는 API 서명 차이가 있다. ETH 발췌는 trans·estim.method를 포함하다 link.method에서 끝나고, ZJU 발췌는 criterion을 포함한 더 짧은 서명을 보여준다. part.criterion은 별도 공식 refman 응답에서 확인했다. 판본이나 발췌 범위 차이를 확인하기 전에 이들을 합친 호출 명세를 만들지 않는다. 일부 발췌에 인자가 없다는 사실만으로 패키지 전체에 없다고 판단하지 않는다.",
+      "record_anchor": "c22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_code_lookup_1/value",
+          "one_based_character_range": [
+            3198,
+            4863
+          ],
+          "response_id": "H097-R084",
+          "response_sha256": "3897743547724c74afda5f8b5746424f1016750877cc1905f80d565dff442e1b",
+          "saved_url": "https://stat.ethz.ch/CRAN/web/packages/didec/didec.pdf"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_code_lookup_1/value",
+          "one_based_character_range": [
+            9661,
+            11146
+          ],
+          "response_id": "H097-R088",
+          "response_sha256": "207d21eaa2a74a41e464fb6b814fc0bdbe707e5f85f3dc887010369602d44bf3",
+          "saved_url": "https://mirrors.zju.edu.cn/CRAN/web/packages/didec/didec.pdf"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_didec_public_api",
+          "one_based_character_range": [
+            347,
+            11965
+          ],
+          "response_id": "H097-R101",
+          "response_sha256": "08e3975a65251189da6947074d49466f964f587c1b501820159f41cc5ecdae05",
+          "saved_url": "https://cran.r-project.org/web/packages/didec/refman/didec.html"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H097-C23",
+      "claim": "CRAN index 응답은 접근 오류이고 refman은 didec 1.1.0, Packaged 2026-01-30, Date/Publication 2026-02-02를 표시한다. refman 저장 범위는 L0–405/총1,070행이다. 오류 응답의 총1행을 모두 읽었다는 기계 판정은 패키지 소개나 API 전문을 확보했다는 의미가 아니다.",
+      "record_anchor": "c23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_didec_public_api",
+          "one_based_character_range": [
+            1,
+            265
+          ],
+          "response_id": "H097-R100",
+          "response_sha256": "401f0b64504bd53e6766188603def192e61c1ac682497b148da63ea21cb6fde7",
+          "saved_url": "https://cran.r-project.org/web/packages/didec/index.html"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_didec_public_api",
+          "one_based_character_range": [
+            347,
+            11965
+          ],
+          "response_id": "H097-R101",
+          "response_sha256": "08e3975a65251189da6947074d49466f964f587c1b501820159f41cc5ecdae05",
+          "saved_url": "https://cran.r-project.org/web/packages/didec/refman/didec.html"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H097-C24",
+      "claim": "저장 refman의 Codec.Tq.Perm과 Copula.Tq.Perm은 method 기본값 sample, 선택지 sample/increasing/decreasing/full을 명시한다. 이 문서의 기본값만으로 모든 계산이 q! 전체 순열을 실제로 열거했다고 할 수 없다. 표본 순열 수·seed·동률 처리·정확한 비용은 구현과 실행 설정을 확인해야 한다.",
+      "record_anchor": "c24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_didec_public_api",
+          "one_based_character_range": [
+            347,
+            11965
+          ],
+          "response_id": "H097-R101",
+          "response_sha256": "08e3975a65251189da6947074d49466f964f587c1b501820159f41cc5ecdae05",
+          "saved_url": "https://cran.r-project.org/web/packages/didec/refman/didec.html"
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H096-C07",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c07",
+          "link": "[H096-C07](../records/0096-predictive-clustering-literature-review.md#c07)"
+        },
+        {
+          "claim_id": "H096-C20",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c20",
+          "link": "[H096-C20](../records/0096-predictive-clustering-literature-review.md#c20)"
+        },
+        {
+          "claim_id": "H096-C21",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c21",
+          "link": "[H096-C21](../records/0096-predictive-clustering-literature-review.md#c21)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H097-C25",
+      "claim": "저장 VarClustPartition 서명의 기본값은 trans=FALSE, trans.method=standardization, dist.method=PD, estim.method=copula, linkage=FALSE, link.method=complete, part.method=optimal, part.criterion=Adiam&Msplit, num.cluster=NULL, plot=FALSE다. standardization·complete라는 기본 문자열이 있다는 것과 변환·linkage가 기본으로 켜져 있다는 것은 다르다.",
+      "record_anchor": "c25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_didec_public_api",
+          "one_based_character_range": [
+            347,
+            11965
+          ],
+          "response_id": "H097-R101",
+          "response_sha256": "08e3975a65251189da6947074d49466f964f587c1b501820159f41cc5ecdae05",
+          "saved_url": "https://cran.r-project.org/web/packages/didec/refman/didec.html"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H097-C26",
+      "claim": "VarClustPartition의 설명은 PD/MPD에서 codec·copula 추정법을 선택하고, optimal일 때 Adiam&Msplit 또는 Silhouette, selected일 때 지정 군집 수를 사용한다고 한다. PD/MPD와 kendall/footrule 선택, 전처리 여부와 linkage 여부를 각각 기록해야 한다. 이 API를 미래 오차를 최소화하는 실험 설정으로 바꾸어 기록하지 않는다.",
+      "record_anchor": "c26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_didec_public_api",
+          "one_based_character_range": [
+            347,
+            11965
+          ],
+          "response_id": "H097-R101",
+          "response_sha256": "08e3975a65251189da6947074d49466f964f587c1b501820159f41cc5ecdae05",
+          "saved_url": "https://cran.r-project.org/web/packages/didec/refman/didec.html"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H097-C27",
+      "claim": "저장 refman은 mfoci를 목차·패키지 설명에서 변수 선택 방법으로 소개하지만 해당 함수 본문은 L0–405에 포함되지 않는다. 이 범위에서 읽은 함수 설명과 이름만 나오는 API를 구별한다. 패키지 내부 source·설치·실행·모바일 트래픽 결과는 이번 묶음의 검증 범위 밖이다.",
+      "record_anchor": "c27",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_didec_public_api",
+          "one_based_character_range": [
+            347,
+            11965
+          ],
+          "response_id": "H097-R101",
+          "response_sha256": "08e3975a65251189da6947074d49466f964f587c1b501820159f41cc5ecdae05",
+          "saved_url": "https://cran.r-project.org/web/packages/didec/refman/didec.html"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              51,
+              57
+            ],
+            [
+              97,
+              103
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H097-C28",
+      "claim": "SMPS 2024 시간표 PDF 검색 응답에는 직전 발표의 fuzzy count-data 군집화 초록과 Fuchs–Wang의 변수 군집화 발표 초록이 이어져 있다. 검색 결과 하나에 붙어 나온 두 초록을 하나의 방법으로 합치지 않는다. 저자·제목·세션 경계를 확인해야 잘못된 방법 귀속을 피할 수 있다.",
+      "record_anchor": "c28",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_code_lookup_1/value",
+          "one_based_character_range": [
+            6282,
+            8115
+          ],
+          "response_id": "H097-R086",
+          "response_sha256": "9fdb83cdc49290edf8805f8234cf57ea09cdae343ac71f0c138ca330c99dad5e",
+          "saved_url": "https://www.smps2024.com/wp-content/uploads/2024/09/SMPS_2024_Timetable_02092024.pdf"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_code_lookup_1/value",
+          "one_based_character_range": [
+            8197,
+            9579
+          ],
+          "response_id": "H097-R087",
+          "response_sha256": "589ff5dc79e5fb80d2bbe927e460f17ac5b2976ed731fc6e137da9c4161bdd0f",
+          "saved_url": "https://www.smps2024.com/wp-content/uploads/2024/09/SMPS_2024_Timetable_03092024.pdf"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H097-C29",
+      "claim": "STaTS의 성능 유지 비율, 제3자 특허 페이지의 DGCFormer 설명과 MAE 7.1% 개선, 다른 논문의 DUET 인용은 해당 응답에 실린 주장이다. 이를 원81의 실험 수치나 핵심 DGCformer·DUET 논문의 성능으로 옮기지 않는다. 새 실험의 근거로 쓸 때는 해당 원문·자료·비교 조건부터 확인해야 한다.",
+      "record_anchor": "c29",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            18439,
+            19306
+          ],
+          "response_id": "H097-R011",
+          "response_sha256": "fc25013d37d5ae9ea1dbb3992c653fd625e96a80db86421800b10574169621be",
+          "saved_url": "https://arxiv.org/abs/2510.09593"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            19388,
+            20030
+          ],
+          "response_id": "H097-R012",
+          "response_sha256": "073572a4283ea2045ef0af35bdd1e9d13a9e6d133b8a0881dd4675eaf6c5b323",
+          "saved_url": "https://www.preprints.org/manuscript/202602.0646/v1/download"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_search_more",
+          "one_based_character_range": [
+            28826,
+            29598
+          ],
+          "response_id": "H097-R052",
+          "response_sha256": "c25ce70ba2a96c6624b005a2e93c72eae78bbb6aea278d6edf99c29bf4238653",
+          "saved_url": "https://eureka.patsnap.com/patent/CN121524666A"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H097-C30",
+      "claim": "Published/Crawled의 상대 시각, 검색 저장 date, arXiv 제출·개정일, CRAN package publication, Git commit 시각은 서로 다른 날짜다. 검색 응답에 나타난 최근 연도나 Code Finder UI만으로 논문의 실제 발표일·최신판·공식 구현 존재·원81 실행 시점을 정하지 않는다.",
+      "record_anchor": "c30",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_entry_1/value",
+          "one_based_character_range": [
+            1,
+            4724
+          ],
+          "response_id": "H097-R001",
+          "response_sha256": "e374c0e4b0236278cbe68db9d898f43d78974a0c631f9a31ae36ce1a54befa53",
+          "saved_url": "https://github.com/decisionintelligence/DUET/blob/main/README.md"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            1,
+            7725
+          ],
+          "response_id": "H097-R074",
+          "response_sha256": "7865b50e7c0b4df00fb89d1bee1dcb600e7ff924a1225db4d2fb6e0fceeb41ab",
+          "saved_url": "https://arxiv.org/abs/2412.10859"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            7807,
+            14633
+          ],
+          "response_id": "H097-R075",
+          "response_sha256": "3db2817f6a5f9e01ba04eadd80b932afe97dad88b751ae82eb0394590e7057ab",
+          "saved_url": "https://arxiv.org/abs/2405.08440"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            14715,
+            22482
+          ],
+          "response_id": "H097-R076",
+          "response_sha256": "1e6e8c0ce0f532a8f55025fc22f4f55b64b0430006c54b795120b4b114c5254b",
+          "saved_url": "https://arxiv.org/abs/2404.01340"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_versions",
+          "one_based_character_range": [
+            22564,
+            26228
+          ],
+          "response_id": "H097-R077",
+          "response_sha256": "78f677e1626dad56f688a6753364f17f0c5a587e780db8be89a14db5d39b8c08",
+          "saved_url": "https://arxiv.org/abs/2312.16544"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/results/81_didec_public_api",
+          "one_based_character_range": [
+            347,
+            11965
+          ],
+          "response_id": "H097-R101",
+          "response_sha256": "08e3975a65251189da6947074d49466f964f587c1b501820159f41cc5ecdae05",
+          "saved_url": "https://cran.r-project.org/web/packages/didec/refman/didec.html"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/date",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H097-C31",
+      "claim": "원81은 입력 공유를 다중 출력으로 바꾸는 후보에서 추가 실행에 들어가지 않았고, TabICLv2 직접 예측 이득은 유지했다. 단순히 분할·공동 정보를 쓰는 구조와 실제 입력 분할 손해를 줄이는 근거를 구분했으며 단일 global 다중 출력도 비용 비교군으로 요구했다. 이 검색 기록은 그 판단의 조사 경로이지 모든 다변량 군집화가 무용하다는 결론이나 새 성능 실험이 아니다.",
+      "record_anchor": "c31",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              5,
+              11
+            ],
+            [
+              75,
+              95
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    },
+    {
+      "claim_id": "H097-C32",
+      "claim": "H091–H097로 H090 당시 남아 있던 원81 sources/input_partition_81의 29그룹을 연결했다. 이 패킷의 남은 그룹은 0이지만 snapshot23 연혁의 고유 변경과 이후 기록은 아직 남는다. 후속 설계는 분할 대상·목표 시점·손실 척도·입력 가능 시점·선택에 쓴 시간 구간·강한 비교군·전체 비용을 기존 기록과 비교해 차이를 명시해야 한다. 검색 후보 목록을 전체 연구의 신규성 판정이나 Goal 완료로 사용하지 않는다.",
+      "record_anchor": "c32",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/purpose",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        },
+        {
+          "source_id": "SRC-0062870",
+          "source_sha256": "6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136",
+          "JSON_pointer": "/searches",
+          "locator": "메타데이터 값 또는 전체 결과 구조·응답 목록의 집계"
+        },
+        {
+          "source_id": "SRC-0022042",
+          "source_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+          "line_ranges": [
+            [
+              87,
+              103
+            ]
+          ]
+        }
+      ],
+      "related_verified_claims": [
+        {
+          "claim_id": "H091-C30",
+          "record_path": "../records/0091-dgcformer-source-review.md",
+          "record_sha256": "561b909c968f6cfb6cda0aa7aa716c216527fa3133f7ae6b510d95eb7c6d25f6",
+          "record_anchor": "c30",
+          "link": "[H091-C30](../records/0091-dgcformer-source-review.md#c30)"
+        },
+        {
+          "claim_id": "H096-C03",
+          "record_path": "../records/0096-predictive-clustering-literature-review.md",
+          "record_sha256": "8127f9c19cfacda8ab2d29ba91692211383dc16a26fdba841704bf4ee49564c5",
+          "record_anchor": "c03",
+          "link": "[H096-C03](../records/0096-predictive-clustering-literature-review.md#c03)"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    }
+  ],
+  "semantic_second_pass_complete": true
+}
