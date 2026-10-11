@@ -173,3 +173,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H110 원84](records/0110-evidence-synthesis.md)의 당시 후속8미독은 [H111 문서·연혁 검수](records/0111-interim-document-history.md)에서 해소했다. Word 새 렌더와 최초 실패 검사·9쪽 렌더의 세부 증거는 여전히 미확인이다. 실제 운영 제약과 유용한 소속 결정·최종 RCTL 개선은 여전히 연구 질문이다.
 
 [원85 자료 배분](records/0112-rejection-scope-allocation.md)의 비용 기각은 적용 구현을 한정했다. Tab이 source 분류·단순 quota 재추출보다 유용한 다른 결정을 만드는지, 그 점수 비용과 유한 학습 손해를 회수하는지는 남은 질문이다. [고유 후속6자료](evidence/0112-rejection-scope-allocation/packet-coverage.json)는 다음 검수 대상이다.
+
+[H113 후속검수](records/0113-decision-history-sources.md)에서 H112가 남긴 고유6자료를 읽었다. 2015/routing 전문·ICML2018 부록/구현 공백과 원86 이후는 별도 미완료다. 기존 H112의 미독6표시는 그 묶음 완료 당시 범위이며 후속검수와 함께 읽는다.
