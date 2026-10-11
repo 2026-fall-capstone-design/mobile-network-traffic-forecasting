@@ -1,0 +1,83 @@
+{
+  "batch_id": "history-101",
+  "source_id": "SRC-0062903",
+  "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+  "figures": [
+    {
+      "figure": 1,
+      "PDF_page": 2,
+      "observation": "a: SMS·Call in/out 예시 시계열. b: lag별 평균 traffic volume ratio이며 Pearson 계수가 아니다. c: SMS 공간 분포. d: 9×9 예시에서 중심(5,5)과 좌우 이웃의 계수0.48/0.87을 확인했다.",
+      "pixels_read": true
+    },
+    {
+      "figure": 2,
+      "PDF_page": 2,
+      "observation": "과거 날짜의14:00에서 period 입력 경로로 내려오는 연결선과 현재11:00·12:00·13:00에서14:00을 예측하는 closeness 경로를 확인했다. 배경의 모든 시각을 period 입력으로 세지 않는다. 두 경로의 dense CNN·최종Conv·fusion·Sigmoid·loss를 대조했다.",
+      "pixels_read": true
+    },
+    {
+      "figure": 3,
+      "PDF_page": 3,
+      "observation": "SMS와 CALL 별도 RMSE 막대. 두 패널 모두 낮은 순서는 Proposed-F, Proposed, LSTM, ARIMA, HA. 정확 수치 라벨·오차막대는 없고 픽셀에서 값을 역산하지 않았다.",
+      "pixels_read": true
+    },
+    {
+      "figure": 4,
+      "PDF_page": 4,
+      "observation": "단일 100epoch 학습 곡선. 세로축 Loss(rmse), 가로축 Epochs. 초반 감소와 이후 완만한 변화를 확인했다. wall-clock 시간은 표시되지 않는다.",
+      "pixels_read": true
+    },
+    {
+      "figure": 5,
+      "PDF_page": 4,
+      "observation": "임의 선택 cell 하나의 SMS-in/out·CALL-in/out 네 패널, Predicted 빨강·Ground Truth 검정, 세로축 # of events, 시간축 Timestamp. cell 전체·기간 전체의 손해를 집계한 표는 아니다. CALL-in 등 일부 peak의 빨간 예측이 검은 실제보다 낮은 모습도 확인했다. 전 cell peak 정확도의 증거로 확대하지 않는다.",
+      "pixels_read": true
+    }
+  ],
+  "saved_page3_image": {
+    "source_id": "SRC-0062905",
+    "source_sha256": "6f46f3c8b418c3758c6f9f42233f1c0f1a1b91bcbe6f0243ef845a1e5a59d4c7",
+    "pixels_read": true,
+    "same_visible_paper_content": true,
+    "byte_identical_to_new_render": false
+  },
+  "render_method": "Poppler150dpi. Symbol/ArialUnicode display font 경고 관측; 실제 수식과 기존3쪽PNG 대조. 완전한 font 동일성 보증은 아니다.",
+  "postdraft_visual_check_complete": true,
+  "digitized_numeric_results": false,
+  "independent_reproduction": false,
+  "postdraft_visual_check": {
+    "source_id": "SRC-0062903",
+    "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+    "PDF_pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "figures": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "equations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "saved_image": "SRC-0062905",
+    "saved_image_sha256": "6f46f3c8b418c3758c6f9f42233f1c0f1a1b91bcbe6f0243ef845a1e5a59d4c7",
+    "all_actual_pixels_reread": true,
+    "correction_reread_PDF_pages": [
+      2,
+      4
+    ],
+    "independent_reviewer": false
+  }
+}

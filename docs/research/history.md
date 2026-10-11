@@ -156,3 +156,5 @@
 [H099 원82 중심기록](records/0099-intermittence-decision.md)은2026-09-26 간헐 트래픽 후보의 보류 이유를 다룬다. 저장0 비율0.01975%는1시간 Internet activity의 최초35일×1만 grid 값이며, 새 모델 실험은 없다. 문헌15그룹과 snapshot24 연혁 검수는 남아 있다.
 
 [H100](records/0100-cesnet-isp-data-semantics.md)은 원82의 CESNET/ISP 후속 검수다. 원본 Table6는 gaps를 포함한 시계열의 비율이며 ISP의 intervals 설명과 다르다. 두 논문의 저장4형식과 그림을 대조했고 새 모델 실행은 없다. 원82의 나머지11자료 그룹과 snapshot24 연혁은 남아 있다.
+
+[H101](records/0101-citywide-densenet-scope.md)은 원82에서 보류했던 Citywide 원문 검수다. PDF4쪽·추출문·기존3쪽 그림을 대조하여 SMS/Call hourly 평가와 Internet activity·소속 수정의 차이를 확인했다. 새 모델 실행 없이 저자 보고와 당시 판단을 연결했으며 Beam·Deep Renewal8그룹과 snapshot24 연혁은 남아 있다.

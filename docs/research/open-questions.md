@@ -150,3 +150,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H099](records/0099-intermittence-decision.md)에서 원82 중심자료12개와 기존6자료를 연결했다. CESNET Table6/ISP v2의 분모, Citywide·Beam·DeepRenewal 수식·표·그림의15자료그룹 및 snapshot24 후보표·연구일지 고유 변경은 후속 검수로 남긴다. 당시 paper review 표시만으로 현재 검수 완료를 선언하지 않는다.
 
 [H100](records/0100-cesnet-isp-data-semantics.md)에서 CESNET/ISP4자료 그룹을 후속 검수했다. 남은 원82 일차자료는11그룹이며 snapshot24 연혁도 남아 있다. ISP의 평가 표본·scaler fit·trim·극단값·시간 normalization 코드와 비교 benchmark의 인용 번호/동일 조건 여부는 추가 확인 항목이다.
+
+[H101](records/0101-citywide-densenet-scope.md)에서 Citywide3자료 그룹을 검수한다. loader의 period 입력, scaler fit·집계·0 처리, loss 표기와 실제 구현, baseline·RMSE 집계·seed·비용은 미확인이다. 원82의 남은 일차자료는 Beam6·Deep Renewal2그룹이며 snapshot24의 고유 연혁도 후속에 남는다.

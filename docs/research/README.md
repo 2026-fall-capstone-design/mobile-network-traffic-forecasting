@@ -243,3 +243,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [간헐 트래픽 후보의 진입 판단](records/0099-intermittence-decision.md)은0 비율의 분모, 실제 무트래픽과 누락, 발생/양 분해와 평가손실의 차이를 정리한다. 당시 문헌 주장과 현재 원문 검수가 남은 부분을 구별한다.
 
 [CESNET·ISP 원문 대조](records/0100-cesnet-isp-data-semantics.md)에서99.94%의 분모, 수집 장애와 zero fill, trimmed 표와 극단값 그림, IP 성능·few-shot·비용의 적용 범위를 확인할 수 있다.
+
+[Citywide DenseNet의 적용 범위](records/0101-citywide-densenet-scope.md)에서 SMS·통화의 시간 단위 예측, 최근/일주기 입력, fusion 비교와 현재 Internet·cell 공유 연구에 인용할 한계를 확인할 수 있다.

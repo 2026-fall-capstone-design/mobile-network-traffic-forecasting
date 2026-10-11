@@ -1,0 +1,147 @@
+{
+  "batch_id": "history-101",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T05:40:47.859300+00:00",
+  "claims_checked": 22,
+  "checks": [
+    {
+      "check_id": "H101-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "finding": "당시 원82 인용·확보 이력·판본·SMS/Call grid·10분에서hourly 집계·0비율 미제시를 대조했다."
+    },
+    {
+      "check_id": "H101-SP02",
+      "claims": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "finding": "Eq1평균비율과공간Pearson,입력공식·denseCNN·Hadamard융합을 재독했다. Fig2 연결선은 과거날짜14:00을 가리켜 공식과 맞으므로 모순처럼 읽힐 C08을 고쳤다."
+    },
+    {
+      "check_id": "H101-SP03",
+      "claims": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "finding": "마지막7일·역변환·학습설정·RMSE집계와 Fig3–5를 대조했다. 정확 막대값을 만들지 않았고 C16에 일부peak과소예측을 보강했다. 두 수정 후 PDF2·4쪽을 다시 확인했다."
+    },
+    {
+      "check_id": "H101-SP04",
+      "claims": [
+        18,
+        19,
+        20
+      ],
+      "finding": "저자예측결과와Internet/소속수정근거를 구별하고 원82재진입조건을 대조했다. 코드·scalerfit·seed·반복·비용 등미확인항목을 완료로 처리하지 않았다."
+    },
+    {
+      "check_id": "H101-SP05",
+      "claims": [
+        21,
+        22
+      ],
+      "finding": "원본3그룹/6별칭·기존3자료·독해범위·해시와 남은Beam6/DeepRenewal2를 확인했다. 참고문헌목록·새렌더·파생JSON·재열람의 추가가산0과 전체Goal미완료를 유지했다."
+    }
+  ],
+  "initial_draft_record_sha256": "aad076cc15cdfb5cf111e9c464fbf388b4165e6552d255651fa7252dbff96eb7",
+  "corrected_draft_record_sha256": "af6085a750a1a68cd17d56790bf58eebfec8fd19218bdab7bd43158a74a833e0",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0062904": [
+      [
+        1,
+        436
+      ]
+    ],
+    "SRC-0022045": [
+      [
+        1,
+        62
+      ]
+    ],
+    "SRC-0000118": [
+      [
+        1,
+        20
+      ]
+    ],
+    "SRC-0062913": [
+      [
+        1,
+        35
+      ]
+    ]
+  },
+  "visual_reread": {
+    "source_id": "SRC-0062903",
+    "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+    "PDF_pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "figures": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "equations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "saved_image": "SRC-0062905",
+    "saved_image_sha256": "6f46f3c8b418c3758c6f9f42233f1c0f1a1b91bcbe6f0243ef845a1e5a59d4c7",
+    "all_actual_pixels_reread": true,
+    "correction_reread_PDF_pages": [
+      2,
+      4
+    ],
+    "independent_reviewer": false
+  },
+  "corrections": [
+    {
+      "claim": "H101-C08",
+      "before": "Fig.2의 period 쪽에는 과거 날짜의12:00·13:00·14:00이 함께 그려져 있고, 현재 날짜 쪽에는11:00·12:00·13:00에서14:00을 예측하는 구성이 있다. 본문의 같은 시각 q개 공식과 이 도식을 함께 보존한다. 그림만으로 실제 loader가 과거 날짜마다 인접 시간까지 넣는다고 단정하지 않으며 코드 대조가 남아 있다.",
+      "after": "Fig.2는 과거 날짜의12:00·13:00·14:00을 배경으로 보여 주지만, period 경로로 내려오는 연결선은 각 날짜의14:00 그림에서 시작한다. 현재 날짜에서는11:00·12:00·13:00을 묶어14:00을 예측한다. 따라서 도식에 함께 보이는 모든 시각을 period 입력으로 세지 않으며, 같은 시각을 고르는 본문 공식과 모순으로 기록하지 않는다. 실제 loader 검증은 코드 대조와 구별한다.",
+      "PDF_pages": [
+        2
+      ]
+    },
+    {
+      "claim": "H101-C16",
+      "before": "Fig.5는 임의로 선택한 cell 하나에 대해 SMS-in/out·CALL-in/out을 네 패널로 보여 준다. Predicted는 빨강, Ground Truth는 검정이며 세로축 표기는 # of events다. 저자의 peak 추적 해석은 이 예시와 함께 남기되, 모든 cell의 peak가 개선됐다는 집계 결과나 Internet bytes/Mbps 측정으로 바꾸지 않는다.",
+      "after": "Fig.5는 임의로 선택한 cell 하나에 대해 SMS-in/out·CALL-in/out을 네 패널로 보여 준다. Predicted는 빨강, Ground Truth는 검정이며 세로축 표기는 # of events다. CALL-in 등 일부 peak에서는 예측이 실제 곡선보다 낮은 모습도 남아 있다. 저자의 peak 추적 해석과 이 시각적 한계를 함께 보존하며, 모든 cell의 peak 개선이나 Internet bytes/Mbps 측정으로 확대하지 않는다.",
+      "PDF_pages": [
+        4
+      ]
+    }
+  ],
+  "correction_visual_reread_complete": true,
+  "all_claim_semantic_locations_actually_reread": true,
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "new_model_runs": 0,
+  "coverage_increment_applied": false
+}

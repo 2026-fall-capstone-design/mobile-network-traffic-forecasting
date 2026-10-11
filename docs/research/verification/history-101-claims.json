@@ -1,0 +1,783 @@
+{
+  "batch_id": "history-101",
+  "record_path": "../records/0101-citywide-densenet-scope.md",
+  "record_sha256": "61ae1eeccf05d2ac439e6bd0907a7247804b3eb40767dfb16a2d6042899e8c99",
+  "claims": [
+    {
+      "claim_id": "H101-C01",
+      "title": "원82 판단의 후속 검수",
+      "claim": "원82의 2026-09-26 기록은 Citywide의 SMS·통화와 현재 Internet activity를 구별하고, 이 논문을 0 빈도 기준 clustering이나 발생/크기 분리의 효과로 인용하지 않았다. H099에서 남겼던 원문 검수를 이번에 수행한다. 과거 문헌 검토를 새 모델 실험이나 최종 연구 방향 확정으로 바꾸지 않는다.",
+      "record_anchor": "c01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              1,
+              5
+            ],
+            [
+              19,
+              21
+            ],
+            [
+              57,
+              62
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000118",
+          "source_sha256": "2232b32850f8afd3f2c7b14bf8b281a3b947b34bcaaed3c3f2b9d77d772feef2",
+          "line_ranges": [
+            [
+              3,
+              7
+            ],
+            [
+              18,
+              20
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            1,
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H101-C02",
+      "title": "판본과 확보 이력",
+      "claim": "논문은 Zhang 등의 Citywide Cellular Traffic Prediction Based on Densely Connected Convolutional Neural Networks, IEEE Communications Letters 22(8), 2018, 1656–1659, DOI10.1109/LCOMM.2018.2841832다. 인쇄본의 publication date는5월29일, current version은8월10일이다. 당시 수집 manifest는 저자 사이트에서 2026-09-25에 확보한744,487바이트·4쪽 PDF와 해시를 남긴다. 파일 수정 시각을 논문 발표일로 쓰지 않는다.",
+      "record_anchor": "c02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              1,
+              6
+            ],
+            [
+              46,
+              58
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            1
+          ]
+        },
+        {
+          "source_id": "SRC-0062913",
+          "source_sha256": "649223ad3a22f7486a06e70db0aa6718276caaa3418ec75ae8c038c5c993fa34",
+          "JSON_pointer": "/0"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H101-C03",
+      "title": "자료와 관측 단위",
+      "claim": "대상은 Telecom Italia Milan의 SMS·Call in/out이다. 100×100 지리 grid를 쓰며 원문 기간은2013-11-01 00:00부터2014-01-01 00:00, 원자료 간격은10분이다. 각 시각 입력은 in/out 두 채널이다. 논문은 grid cell을 공개 자료에서 cell tower를 근사한 단위라고 설명하므로 실제 기지국 ID와 동일하다고 쓰지 않는다.",
+      "record_anchor": "c03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              86,
+              111
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            1
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H101-C04",
+      "title": "0이 많다는 문장의 범위",
+      "claim": "§IV.A는 원래10분 자료의 상당 부분이0이라고 서술하고,10분 단위 자원 계획의 부담도 이유로 들어 시간 단위 집계를 선택한다. 해당 절은0 비율·분모·결측 원인·시간 집계 후0 비율을 수치로 제시하지 않는다. 이 설명을 현재 Internet activity의 정량적 희소성 근거나 모든 빈 기록이 실제 무통신이라는 확인으로 확대하지 않는다.",
+      "record_anchor": "c04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              300,
+              312
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            1,
+            3
+          ]
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              21,
+              21
+            ],
+            [
+              31,
+              35
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H101-C05",
+      "title": "시간 의존성의 통계",
+      "claim": "Fig.1b와 Eq.1의 traffic volume ratio는 시차τ에서 x_t/x_(t−τ)를 시간·grid에 걸쳐 평균한 비율이다. 공간 Pearson 계수와 같은 통계가 아니다. 그림은τ를 시간 단위로 표시한다. 원문은0인 분모를 어떻게 처리하는지 설명하지 않으므로 비율 계산 코드를 추정해 재현했다고 하지 않는다.",
+      "record_anchor": "c05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              119,
+              152
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            2
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H101-C06",
+      "title": "공간 관계의 예시",
+      "claim": "Fig.1c는 SMS 공간 분포, Fig.1d는9×9 영역의 Pearson 계수 예시다. 중심(5,5)에서 같은 거리에 있는(5,4)와(5,6)의 값은 각각0.48과0.87이다. 이는 거리만으로 해당 예시의 상관 차이를 설명할 수 없다는 관측이며, 모든 cell에 대한 보편적 관계나 임의 군집화의 성능 이득을 증명하지 않는다.",
+      "record_anchor": "c06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              153,
+              178
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            2
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H101-C07",
+      "title": "입력 이력과 예측 대상",
+      "claim": "§III.A는 예측할X_t에 대해 최근p개 시각과24시간 간격의q개 같은 시각 이력을 두 입력으로 만든다. §IV.A의p=q=3과 시간 단위 집계를 함께 적용하면 최근3시간과 이전3일의 같은 시각이 해당한다. in/out을 이어 붙인 입력 크기는각각2p×H×W와2q×H×W다. 이 기록을 여러 예측 horizon에 대한 별도 성능 검증으로 읽지 않는다.",
+      "record_anchor": "c07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              190,
+              208
+            ],
+            [
+              313,
+              320
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            2,
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H101-C08",
+      "title": "도식과 구현의 경계",
+      "claim": "Fig.2는 과거 날짜의12:00·13:00·14:00을 배경으로 보여 주지만, period 경로로 내려오는 연결선은 각 날짜의14:00 그림에서 시작한다. 현재 날짜에서는11:00·12:00·13:00을 묶어14:00을 예측한다. 따라서 도식에 함께 보이는 모든 시각을 period 입력으로 세지 않으며, 같은 시각을 고르는 본문 공식과 모순으로 기록하지 않는다. 실제 loader 검증은 코드 대조와 구별한다.",
+      "record_anchor": "c08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              190,
+              208
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            2
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H101-C09",
+      "title": "Dense CNN의 역할",
+      "claim": "최근 이력과 일주기 이력용 CNN 두 개는 같은 구조를 사용하며, 각 층에서 Conv·Batch Normalization·ReLU를 적용하고 앞선 층들의 feature map을 이어 붙인다. 원문의 shared structure가 두 경로의 가중치까지 공유한다는 뜻인지는 확인되지 않았다. 공간 convolution과 feature 결합을 cell별 소속 재배정 알고리즘과 구별한다.",
+      "record_anchor": "c09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              209,
+              260
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            2,
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H101-C10",
+      "title": "융합과 출력",
+      "claim": "Eq.5–6은 두 경로의 최종 convolution 출력에 학습 가능한W_c·W_d를 원소별로 곱해 더하고 sigmoid를 적용한다. Proposed-F는 이 parametric fusion을 사용하고 Proposed는 가중치 없는 합을 비교한다. 이 비교는 최근/일주기 정보의 결합 방식에 관한 것이며 UPC 소속 수정이나 RCTL 군집 선택의 비교가 아니다.",
+      "record_anchor": "c10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              261,
+              291
+            ],
+            [
+              330,
+              358
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H101-C11",
+      "title": "전처리와 평가 분할",
+      "claim": "원문은 시간 단위 집계, Min–Max[0,1] 변환, 평가 때 원래 척도로 역변환, 마지막7일 test와 그 이전 전체 training을 기술한다. scaler를 어느 구간·cell·채널에 맞췄는지, 집계 연산과 결측 처리 순서는 이 본문에서 미기록이다. 따라서 train-only 전처리나 누출 발생 여부를 본문만으로 확정하지 않는다.",
+      "record_anchor": "c11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              300,
+              312
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H101-C12",
+      "title": "보고된 학습 설정",
+      "claim": "Adam, mini-batch32,100epochs, 초기 학습률0.01과 전체 epoch의50%·75%에서10분의1로 감소시키는 설정을 보고한다. convolution은3×3·32filters이며 마지막 층은3×3·2filters, p=q=3이다. 이 설정은 저자의 보고이며 새 모델 실행으로 검증한 값이 아니다.",
+      "record_anchor": "c12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              313,
+              320
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H101-C13",
+      "title": "지표의 척도와 집계",
+      "claim": "Eq.8은H×W개 cell의 제곱 오차 평균에 제곱근을 취하는 RMSE다. 평가 전 역변환을 한다고 기술하므로 Min–Max 척도의 오차와 구별한다. 이 식만으로 두 in/out 채널과 test 시각들을 어떤 순서로 평균했는지는 정해지지 않는다. 원단위 MAE·Tab 직접 예측 점수·최종 RCTL MAE와 같은 값으로 비교하지 않는다.",
+      "record_anchor": "c13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              306,
+              329
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            3
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H101-C14",
+      "title": "보고 성능과 반례 확인 범위",
+      "claim": "Fig.3의 SMS·CALL 두 패널에서 RMSE가 낮은 순서는 Proposed-F, Proposed, LSTM, ARIMA, HA다. 그림에는 정확한 막대 값과 반복 실행 오차막대가 없어 소수점 수치나 유의한 개선율을 생성하지 않았다. cell별·기간별 손해의 분포도 이 그림에는 없다. CALL의 더 낮은 RMSE만으로 두 서비스의 예측 난이도를 척도와 무관하게 비교하지 않는다.",
+      "record_anchor": "c14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              330,
+              362
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H101-C15",
+      "title": "수렴과 계산 비용",
+      "claim": "Fig.4는 가로축 Epochs, 세로축 Loss(rmse)의 한 학습 곡선이다. 저자는 초기20epochs에서 빠르게 감소하고40epochs 뒤 안정화한다고 해석한다. 이 그림에는 초·GPU/CPU·메모리 비용이 없으므로 수렴 epoch 수를 현재 환경의 시간 효율이나 실행 예산으로 환산하지 않는다.",
+      "record_anchor": "c15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              363,
+              368
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            4
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H101-C16",
+      "title": "예측 그림의 표본",
+      "claim": "Fig.5는 임의로 선택한 cell 하나에 대해 SMS-in/out·CALL-in/out을 네 패널로 보여 준다. Predicted는 빨강, Ground Truth는 검정이며 세로축 표기는 # of events다. CALL-in 등 일부 peak에서는 예측이 실제 곡선보다 낮은 모습도 남아 있다. 저자의 peak 추적 해석과 이 시각적 한계를 함께 보존하며, 모든 cell의 peak 개선이나 Internet bytes/Mbps 측정으로 확대하지 않는다.",
+      "record_anchor": "c16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              369,
+              377
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            4
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H101-C17",
+      "title": "수식 표기와 실제 loss",
+      "claim": "Eq.7은L(θ)=argmin_θ‖예측−실제‖²로 적혀 있고 본문은 Frobenius norm 최소화를 설명한다. Fig.4 축은Loss(rmse)다. 목적함수·최적화 변수와 표시 지표의 관계는 코드 확인이 필요하다. 이 표기를 임의로 고쳐 논문 오류가 모델 실패를 일으켰다고 단정하지 않는다. TXT의 control 문자·줄 분리로 빠진 기호는 PDF 픽셀로 대조했다.",
+      "record_anchor": "c17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              283,
+              294
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H101-C18",
+      "title": "현재 연구에 인용할 수 있는 부분",
+      "claim": "이 논문은 지리 grid의 최근·일주기 이력과 공간 convolution을 함께 쓰는 예측 선행연구로 연결할 수 있다. SMS·Call hourly 평가에서 보고한 fusion 이득을 Internet activity의 희소성, 발생/양 분해, TabICL의 관계 추정이나 UPC/RCTL 소속 수정의 실증 근거로 이전하지 않는다. 해당 비교들은 이 논문의 실험 대상이 아니다.",
+      "record_anchor": "c18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              86,
+              111
+            ],
+            [
+              190,
+              208
+            ],
+            [
+              330,
+              392
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              19,
+              21
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H101-C19",
+      "title": "당시 보류와 재검토 조건",
+      "claim": "원82는 간헐성 모듈을 현재 연구에 추가하지 않는 판단을 남겼다. 재검토에는 실제 관측 단위·누락 원인을 구별한 반복 무통신이 예측 손해를 만든다는 근거와, 기존 발생/양 공동 학습과 구별되는 유용한 공유 결정이 함께 필요하다고 적었다. H101은 Citywide 인용 범위를 확인한 후속 기록이며 당시 판단을 새로운 보편적 기각으로 확장하지 않는다.",
+      "record_anchor": "c19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              31,
+              35
+            ],
+            [
+              47,
+              53
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000118",
+          "source_sha256": "2232b32850f8afd3f2c7b14bf8b281a3b947b34bcaaed3c3f2b9d77d772feef2",
+          "line_ranges": [
+            [
+              7,
+              7
+            ],
+            [
+              18,
+              18
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H101-C20",
+      "title": "재사용 전에 필요한 확인",
+      "claim": "학습·전처리를 재사용하려면 모델 깊이L, 두 경로의 가중치 공유 여부, 실제 period 입력, scaler fit 범위, 결측/0 처리, 시간 집계 연산, baseline 설정, RMSE의 채널·시간 집계, seed·반복수와 실행 환경을 더 확인해야 한다. 저자 코드 링크는 원문에 있지만 이번에 repository·commit·checkpoint를 검수하거나 실행하지 않았다. 저자는 새 자료의 재학습과 충분한 학습 자료 필요성도 명시한다.",
+      "record_anchor": "c20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              221,
+              291
+            ],
+            [
+              300,
+              392
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            3,
+            4
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H101-C21",
+      "title": "읽은 자료와 중복 집계",
+      "claim": "고정 해시 PDF4쪽의 본문·참고문헌·5그림·8수식, 저장 TXT436행, 기존3쪽 PNG를 실제 읽었다. 세 원본 그룹은 한 논문의 서로 다른 표현물이며 두 개의 본문·한 개의 이미지 검토 단위로 구별한다. 바이트 동일6경로, 새 렌더 PNG, 파생 검수 JSON, 기존 원82 자료3개 재열람을 독립 연구·실험·추가 본문으로 세지 않는다.",
+      "record_anchor": "c21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              1,
+              436
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "source_id": "SRC-0062905",
+          "source_sha256": "6f46f3c8b418c3758c6f9f42233f1c0f1a1b91bcbe6f0243ef845a1e5a59d4c7",
+          "image_scope": "full_image"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_evidence": [
+        "../evidence/0101-citywide/read-scopes.json",
+        "../evidence/0101-citywide/provenance-check.json"
+      ]
+    },
+    {
+      "claim_id": "H101-C22",
+      "title": "남은 자료의 범위",
+      "claim": "이번 후속 검수 뒤 원82 일차자료의 대기 범위는 Beam GRU-MTL6그룹과 Deep Renewal2그룹이다. snapshot24 후보표·연구일지의 고유 변경, 별도 코드·재현 조건, 원83 이후와 전체 아카이브 통합도 남아 있다. 기존 참고문헌 목록을 읽은 것을 그 논문들 전문의 독해로 세지 않는다. 원82 패킷이나 전체 Goal 완료로 표시하지 않는다.",
+      "record_anchor": "c22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062904",
+          "source_sha256": "cd9f9f622a14a784c940f13461d3b44d26f7dd4b78f547104dda8e539cb8e38b",
+          "line_ranges": [
+            [
+              393,
+              436
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062903",
+          "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+          "PDF_pages": [
+            4
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_evidence": [
+        "../evidence/0101-citywide/packet-coverage.json"
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}
