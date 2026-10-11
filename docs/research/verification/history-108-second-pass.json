@@ -126,14 +126,14 @@
       "type": "wording",
       "before": "Fed-PPBC 발췌는10회 반복 평균, 모든 client가 참여하는500 communication round, round당 local1epoch, Adam 학습률10^-3, batch32를 보고한다. Guangzhou·Shenzhen은2021-12-10–31의30개 station으로 학습하고2022-01-01–07의새5개 station에서 평가한다. Paris는 학습에 참여한20개 station의 다음7일 예측이다. 서로 다른 일반화 조건을 같은 평가로 합치지 않는다.",
       "after": "실험 비교 발췌는10회 반복 평균을 보고한다. baseline 설정 절에는 모든 client가 참여하는500 communication round, round당 local1epoch, Adam 학습률10^-3, batch32가 적혀 있다. 이를 확인하지 못한 Fed-PPBC 최종 튜닝값 전체로 확대하지 않는다. Guangzhou·Shenzhen은2021-12-10–31의30개 station으로 학습하고2022-01-01–07의새5개 station에서 평가한다. Paris는 학습에 참여한20개 station의 다음7일을 평가 대상으로 삼는다. §4.7은1-step prediction 비교이므로 이7일을 단일 예측 horizon으로 해석하지 않는다. 서로 다른 일반화 조건을 같은 평가로 합치지 않는다.",
-      "reason": "설정 절의 범위·1-step 평가 기간을 명확히 하고 표에 남은 추가 순위 불일치를 연결했다."
+      "reason": "baseline 설정 절의 범위·1-step 평가 기간을 명확히 했다."
     },
     {
       "claim_id": "H108-C12",
       "type": "wording",
       "before": "Paris 설명은 Itransform RMSE9.13×10^-2와 LightTS9.33×10^-2를 적지만, Table2 텍스트의 Paris 열은10.13×10^-2와10.07×10^-2다. 문장의9.13·9.33은 표의 Guangzhou 열과 같다. 또한 설명의9.13은 Dlinear9.19보다 작아 Dlinear가 최저라는 같은 문장의 설명과도 맞지 않는다. 열 혼동 가능성을 남기되 저자의 숫자를 임의 수정하지 않는다.",
       "after": "Paris 설명은 Itransform RMSE9.13×10^-2와 LightTS9.33×10^-2를 적지만, Table2 텍스트의 Paris 열은10.13×10^-2와10.07×10^-2다. 문장의9.13·9.33은 표의 Guangzhou 열과 같다. 또한 설명의9.13은 Dlinear9.19보다 작아 Dlinear가 최저라는 같은 문장의 설명과도 맞지 않는다. 열 혼동 가능성을 남기되 저자의 숫자를 임의 수정하지 않는다. 같은 설명은 LSTM11.12를 최대 오차로 부르지만 표의 TSMixer는12.31이다. 이 순위 설명의 불일치도 보존한다.",
-      "reason": "설정 절의 범위·1-step 평가 기간을 명확히 하고 표에 남은 추가 순위 불일치를 연결했다."
+      "reason": "표에 남은 LSTM/TSMixer 순위 불일치를 추가로 연결했다."
     },
     {
       "claim_id": "H108-C07",
