@@ -1,0 +1,125 @@
+{
+  "batch_id": "history-093",
+  "success": true,
+  "scope": "정적 구조/차원/대수 검토. 실제 실행과 역사적 설치환경은 미검증.",
+  "observations": [
+    {
+      "id": "H093-O01",
+      "claims": [
+        5,
+        8,
+        10
+      ],
+      "kind": "static_AST",
+      "findings": [
+        "layers의 공개 Cluster_assigner 1개와 같은 이름의 private 정의2개를 구분",
+        "patch_layer의 Cluster_assigner 재정의 및 __all__ 없음",
+        "활성 sinkhorn에 반복문과 sinkhorn_iterations 참조 없음"
+      ],
+      "runtime_verified": false
+    },
+    {
+      "id": "H093-O02",
+      "claims": [
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "kind": "manual_symbolic_shapes",
+      "steps": [
+        "x [B,L,C] -> linear [B,C,d] -> cosine [B,C,K]",
+        "mean batch -> p [C,K] -> Concrete mask [C,K]",
+        "p2c q [B,K,d], k/v [B,C,d] -> prototype [B,K,d]",
+        "cluster heads [B,C,H,K] times p [C,K,1] -> [B,C,H]",
+        "Dlinear prototype 교체 뒤 .t() 입력의 3D/2D 계약 충돌"
+      ],
+      "assumption": "고정 소스의 Dlinear c 경로와 명시된 입력 계약",
+      "runtime_verified": false
+    },
+    {
+      "id": "H093-O03",
+      "claims": [
+        18,
+        19,
+        20,
+        21
+      ],
+      "kind": "manual_symbolic_shapes",
+      "steps": [
+        "C>1: x [B,L,C] -> diff [B,B,L,C] -> S [B,B,L]",
+        "C=1: squeeze -> [B,L] -> S [B,B]; p [1,K]와 mm이면 B=1 필요",
+        "S는 caller의 원입력, p는 공통process의 채널randperm 입력",
+        "max distance=0 분모 보호 없음"
+      ],
+      "runtime_verified": false
+    },
+    {
+      "id": "H093-O04",
+      "claims": [
+        22,
+        23
+      ],
+      "kind": "algebra",
+      "assumption": "차원이 호환되는 고정 S와 M; 원코드 실행 아님",
+      "code": "-Tr(M^T S M)+Tr((J-MM^T)S)+C+H(p)",
+      "expanded": "Tr(JS)-2Tr(M^T S M)+C+H(p)",
+      "paper_trace": "Tr(S)-2Tr(M^T S M)",
+      "reason": "trace의 선형성과 순환성. scalar1은 all-ones J이며 identity I와 다르다.",
+      "interpretation": "고정 S에서 상수차이와 추가 entropy를 구별. 실제 붕괴/성능/논문무효 주장 없음",
+      "runtime_verified": false
+    },
+    {
+      "id": "H093-O05",
+      "claims": [
+        16,
+        24,
+        26,
+        27,
+        28,
+        29
+      ],
+      "kind": "static_call_order",
+      "findings": [
+        "optimizer 생성 -> forward에서 Parameter교체 -> backward/step; optimizer 재등록문장 미확인",
+        "earlystop에는 combined vali_loss",
+        "loss는 batch단순평균, metric은 instance수 가중",
+        "평가에서도 loss Concrete난수 생성; 예측 prototype mask와 별개",
+        "경로/저장문장은 실제 결과 존재 증거 아님"
+      ],
+      "runtime_verified": false
+    }
+  ],
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "algebra_example": {
+    "S": [
+      [
+        "1",
+        "1/4"
+      ],
+      [
+        "1/4",
+        "1"
+      ]
+    ],
+    "M": [
+      [
+        "4/5",
+        "1/5"
+      ],
+      [
+        "3/10",
+        "7/10"
+      ]
+    ],
+    "entropy_excluded": true,
+    "trace_term": "29/20",
+    "direct_code_trace_plus_C": "8/5",
+    "expanded_trace_plus_C": "8/5",
+    "paper_trace_without_entropy": "-9/10",
+    "scope": "새 Fraction 행렬 산술 예시. 증명 전체/실제 연구자료/모델실행 아님."
+  }
+}

@@ -227,3 +227,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [DGCformer 원문 후속 검토](records/0091-dgcformer-source-review.md)는 channel 군집·mask와 독립 RCTL 모델의 차이, 손실·K 선택의 미확인 조건, 표의 1위 집계 차이를 설명한다. 원81의 도로 교통 데이터셋 서술도 여기서 정정한다.
 
 [CCM 원문 후속 검토](records/0092-ccm-source-review.md)는 소속 확률·클러스터별 출력층과 전체 RCTL 독립 학습을 구별한다. 표의 개선·동률·악화, M4 집계 범위, 군집 수와 입력 길이의 반례를 확인할 수 있다.
+
+[CCM 저장 구현 검토](records/0093-ccm-code-review.md)에서 행별 확률 정규화·출력 혼합·prototype/유사도 차원과 채널 순서를 확인한다. 논문 설명, 원81의 당시 관찰, 실행 전 확인할 조건을 구분했다.
