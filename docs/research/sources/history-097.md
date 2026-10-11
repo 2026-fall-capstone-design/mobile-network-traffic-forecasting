@@ -4,14 +4,14 @@
 
 원본 경로는 Tab-ICL 루트 기준 식별자다. 검색 응답 전문은 재게시하지 않는다. 공개 URL은 당시 응답의 출처이며 현재 재접속·동일 내용·팀의 원본 전체 접근을 보장하지 않는다.
 
-<a id="src-0022042"></a>## SRC-0022042
+## <a id="src-0022042"></a>SRC-0022042
 
 - 원본: `tmp/redesign_20260925/81_input_partition_findings.md`
 - SHA-256: `576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956`; 13,968 bytes.
 - 동일 바이트 별칭: SRC-0001394, SRC-0022042.
 - 읽기 범위: H090에서 전체 독해한 원81을 H097 작성 전 103행 전부 재참조. 새 본문 집계 0.
 
-<a id="src-0062870"></a>## SRC-0062870
+## <a id="src-0062870"></a>SRC-0062870
 
 - 원본: `tmp/redesign_20260925/sources/input_partition_81/web_search_record.json`
 - SHA-256: `6e6355d89ecffbfc7531b5c12c1411bf7a14fc3594bd0335f2cd2a274a9dc136`; 225,455 bytes.

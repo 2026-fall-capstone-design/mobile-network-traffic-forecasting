@@ -1,7 +1,7 @@
 {
   "batch_id": "history-097",
   "status": "source_checked",
-  "checked_at_utc": "2026-10-11T03:34:19.050492+00:00",
+  "checked_at_utc": "2026-10-11T03:47:35.466282+00:00",
   "claims_checked": 32,
   "checks": [
     {
@@ -14,7 +14,7 @@
         5,
         30
       ],
-      "finding": "메타데이터·질의·wrapper 실제 재독해, 4개 중복 Reddit·세 헤더·오류 재독해. 8문자열/101응답의 전해시·범위·행라벨을 재계산해 전문과 구별."
+      "finding": "메타데이터·질의·wrapper 실제 재독해, 4개 중복 Reddit·세 헤더·오류 재독해. 8문자열/101응답의 전해시·범위·행라벨을 재계산해 전문과 구별. R076의 0–166행 서지를 추가 실제 재독해하여 제출/수정 날짜와 UI 문구를 구별했다."
     },
     {
       "check_id": "H097-SP02",
@@ -24,7 +24,7 @@
         8,
         29
       ],
-      "finding": "핵심·2차 소개·후보·관측분할/정보분해 발췌를 재독해. 후보 수치·제3자 특허와 원81 실험을 구별."
+      "finding": "핵심·2차 소개·후보·관측분할/정보분해 발췌를 재독해. 후보 수치·제3자 특허와 원81 실험을 구별. R002의 DUET 초록 2,162문자를 추가 실제 재독해하여 핵심 1차 출처를 확인했다."
     },
     {
       "check_id": "H097-SP03",
@@ -95,6 +95,10 @@
       [
         1,
         4724
+      ],
+      [
+        4806,
+        6967
       ],
       [
         7049,
@@ -241,6 +245,10 @@
         11537
       ],
       [
+        14715,
+        22482
+      ],
+      [
         22564,
         26228
       ]
@@ -377,9 +385,9 @@
     ]
   },
   "actual_postdraft_character_counts": {
-    "/results/81_entry_1/value": 22528,
+    "/results/81_entry_1/value": 24690,
     "/results/81_search_more": 23706,
-    "/results/81_versions": 8215,
+    "/results/81_versions": 15983,
     "/results/81_methods": 27801,
     "/results/81_channel_sources": 27181,
     "/results/81_code_lookup_1/value": 9470,
@@ -388,6 +396,7 @@
   },
   "actual_postdraft_response_ids": [
     "H097-R001",
+    "H097-R002",
     "H097-R003",
     "H097-R004",
     "H097-R005",
@@ -440,6 +449,7 @@
     "H097-R073",
     "H097-R074",
     "H097-R075",
+    "H097-R076",
     "H097-R077",
     "H097-R078",
     "H097-R079",
@@ -515,6 +525,19 @@
       "claim_id": "H097-C22",
       "description": "ETH의 불완전 서명과 공식 refman의 part.criterion 출처를 분리",
       "after_correction_source_reread": true
+    },
+    {
+      "claim_ids": [
+        "H097-C04",
+        "H097-C06",
+        "H097-C30"
+      ],
+      "description": "인용 응답 R002/R076이 작성 후 재독 범위에서 누락되어 두 응답 전문을 실제 다시 읽고 범위·개수 기록을 보완했다. 기존 1차 독해 집계는 추가하지 않았다.",
+      "after_correction_source_reread": true,
+      "response_ids": [
+        "H097-R002",
+        "H097-R076"
+      ]
     }
   ],
   "coverage_increment_applied": false
