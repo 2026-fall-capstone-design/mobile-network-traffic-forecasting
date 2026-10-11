@@ -249,3 +249,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H096 출처](../sources/history-096.md) · [목록](history-096-sources.jsonl). 변수군집 논문·서지4그룹/8사본을 대조했다. 새본문2·대응TXT2·보충PDF34쪽의 집계를 구분하며 원81 [검색1그룹](../evidence/0096-predictive-clustering/packet-coverage.json)과 별도연혁은 남아 있다.
 
 [H097 출처](../sources/history-097.md) · [목록](history-097-sources.jsonl). 저장 검색 JSON1그룹/2사본과 원81 재참조를 연결한다. 101응답·93URL은 독립 논문·실험 수가 아니며 원81 snapshot 연혁은 남아 있다.
+
+[H098 출처](../sources/history-098.md) · [목록](history-098-sources.jsonl). 새 후보표 전체1·연구일지 선택1, 기존6자료 재참조를 구별한다. 두 snapshot 명세의91항목 해시 검수는91개 새로운 내용 독해나 모델 실행 집계가 아니다.

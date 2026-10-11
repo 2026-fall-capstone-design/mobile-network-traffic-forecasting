@@ -1,0 +1,87 @@
+{
+  "batch_id": "history-098",
+  "diffs": [
+    {
+      "source_id": "SRC-0001397",
+      "previous_source_id": "SRC-0001350",
+      "source_sha256": "0801a6702eca8f8a5bd84b868d749bef823c22df4bb910c54797ace1b3931f41",
+      "previous_sha256": "4139c3fb07af908e44d86780f6b878028cd3f8c53c3c1d053b99ef80c75d1a86",
+      "old_total_lines": 42,
+      "new_total_lines": 43,
+      "equal_line_count": 42,
+      "changes": [
+        {
+          "kind": "insert",
+          "old_range": [
+            11,
+            10
+          ],
+          "new_range": [
+            11,
+            11
+          ],
+          "old_lines": [],
+          "new_lines": [
+            "| 공동 입력·cell별 다중 출력으로 학습 단위 변경 | DGCformer, DUET, CCM, Fuchs–Wang 집합 예측 의존도 | 81: scalar 충돌 반례는 그대로 적용되지 않지만 구조·집합 효과는 이미 알려짐. 같은 hidden 폭의 global 다중 출력 RCTL이 K개 core보다 산술 비용이 작음. 입력 분할의 실제 손해와 Tab이 바꿀 결정의 근거 없이 추가 subset/graph 검사를 시작하지 않는다. | 47,74–75,81 |"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-0001401",
+      "previous_source_id": "SRC-0001356",
+      "source_sha256": "6e336fff811d5f29b6f0f78b1b2f01eb6bd1f71fba1bc443e3a5eee867a267ba",
+      "previous_sha256": "b13d58d3825b5369a2ec3e14df71af29695b35bf04af0abdd65335e49ad8f2a8",
+      "old_total_lines": 378,
+      "new_total_lines": 389,
+      "equal_line_count": 377,
+      "changes": [
+        {
+          "kind": "replace",
+          "old_range": [
+            7,
+            7
+          ],
+          "new_range": [
+            7,
+            7
+          ],
+          "old_lines": [
+            "## 최신 상태 — 79 분산 학습 원문 검토와 80 조건부 평균 graph 실제 진단"
+          ],
+          "new_lines": [
+            "## 최신 상태 — 81 공동 입력·다중 출력 방향의 선행연구와 비용 검토"
+          ]
+        },
+        {
+          "kind": "insert",
+          "old_range": [
+            9,
+            8
+          ],
+          "new_range": [
+            9,
+            19
+          ],
+          "old_lines": [],
+          "new_lines": [
+            "- 2026-09-26. `81_input_partition_scope_plan.md`를 고정한 뒤 기존 47·74·75·80의 판단을 대조했다. 새 모델·수치 pilot은 실행하지 않았다. 비용 원장은 SHA-256 `f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9`로 유지했다. Tab 잔여 11 context·20,640행, RCTL 추가 fit 0회다.",
+            "- DGCformer 2405.08440v1, DUET 2412.10859v3, CCM 2404.01340v2, Fuchs–Wang 2312.16544v1의 지정 방법 절을 읽었다. 공식 HTML/서지 8개, DUET·CCM의 commit/tree와 관련 코드 8파일을 보존했다. PDF 다운로드 0, 외부 code 실행 0. CRAN didec 1.1.0 API 문서도 확인했으며 패키지 source/실행은 미검토다.",
+            "- 새 검토는 sample pooling 대신 cluster의 관측 이력을 입력 열로 주고 cell별 미래값을 따로 출력하는 학습 단위다. 47의 동일 scalar 함수 충돌 반례는 이 방식에 그대로 적용되지 않는다. 하지만 DGCformer의 분리형 channel clustering, DUET의 학습형 channel mask, CCM의 cluster별 head와 구별되는 새 결정은 아직 확보하지 못했다.",
+            "- Fuchs–Wang Example 2.11은 pairwise linkage가 집합의 완전 의존을 놓칠 수 있음을 이미 다룬다. 공동 효과 또는 hypergraph라는 설명만으로 신규성 주장하지 않는다. 그 연구의 i.i.d. 추정 일치성을 시계열에 옮기지 않는다.",
+            "- 고정 폭 RCTL의 MAC을 기호식으로 분리했다: C(F,s)=L(169728+96F+16s). 서로소 K개 cluster, F_g=q*s_g+c이면 총 L[(96q+16)N+(169728+96c)K]. global 다중 출력은 K=1이므로 같은 폭에서는 더 적다. 속도 측정/정확도 우위로 주장하지 않는다. 여러 cell 동시 출력 효과와 Tab clustering 효과를 분리해야 한다.",
+            "- **현재 형태 채택하지 않음.** Tab 직접 예측 이득은 유지하지만 공간 입력 이득 또는 다른 소속 선택의 이득으로 세지 않는다. 새 추론은 미실행. 다음에는 이 입력 분할 구조를 이름만 바꿔 반복하지 않고 실제 손해가 있는 문제를 우선 특정한다.",
+            "- 상세 `81_input_partition_findings.md`, 공개 `output/research/TabICLv2_재설계_입력공유와예측단위_검토.md`, 출처 `sources/input_partition_81/`. 추천안·최종 Word 미완료. 이번은 새 원문·공식 구현과 실제 연산 구조로 판단을 구체화한 진전이며, 외부 impasse나 goal 완료로 처리하지 않는다.",
+            "",
+            "## 이전 상태 — 79 분산 학습 원문 검토와 80 조건부 평균 graph 실제 진단",
+            "",
+            "- snapshot22 보관·검증 완료:49파일/5,272,991bytes,PDF1개16쪽·관련3쪽시각검수. 원문/code/plan/소속hash,비용원장단일증분·상한불변,유한배열/JSON,local링크,복사hash확인. 이전01–22불변. 이줄만보관후추가했다."
+          ]
+        }
+      ]
+    }
+  ],
+  "mechanically_extracted": true,
+  "semantically_read": true,
+  "postdraft_reread": true
+}

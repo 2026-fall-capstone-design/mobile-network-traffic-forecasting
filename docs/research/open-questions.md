@@ -144,3 +144,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H096](records/0096-predictive-clustering-literature-review.md) 후 원81 패킷에는 [검색JSON1그룹](../research/evidence/0096-predictive-clustering/packet-coverage.json)과별도snapshot 연혁이남는다. HTML/PDF의This version 날짜차이,예2.11의분포범위,실제didec의순열근사/동률처리·전체비용,시계열가정과미래손실을연결할후속검증도남는다. 문헌의합성예를교통실험성공으로기록하지않는다.
 
 [H097](records/0097-input-partition-search-review.md)에서 원81 검색 JSON의 저장 범위를 확인했다. [패킷 범위](evidence/0097-input-partition-search/packet-coverage.json)와 별도로 snapshot23 연혁의 고유 변경이 남는다. didec 전체 API·구현과 판본별 차이, SCPaT 등 검색 후보 전문, 출판사/arXiv 판본 대응은 이번 검색 응답만으로 완료되지 않았다.
+
+[H098](records/0098-input-partition-history.md)은 위에서 남겼던 snapshot23 연혁의 두 고유 변경을 검토한다. 누적 연구일지의 나머지 본문과 원82 이후·전체 통합·원자료 장기 팀 접근은 별도다. 원81의 판단 및 H091–H097 출처 검수 연결을 실제 다중 출력 모델 실행이나 전체 Goal 완료로 확대하지 않는다.

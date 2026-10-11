@@ -1,0 +1,157 @@
+{
+  "batch_id": "history-098",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T04:07:55.696189+00:00",
+  "claims_checked": 18,
+  "checks": [
+    {
+      "check_id": "H098-SP01",
+      "claims": [
+        1,
+        2,
+        3
+      ],
+      "finding": "새/직전 후보표 전체 및 연구일지 선택구간 재독. 고유행 추가·제목교체·원81과원79/80 경계를 실제 원문과 차이계산에 대조."
+    },
+    {
+      "check_id": "H098-SP02",
+      "claims": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "finding": "원81 전체103행·새일지 및 H090/H096 관련주장 재독. scalar 반례 범위·저장판본·당시와 후속검수·i.i.d. 경계를 구별."
+    },
+    {
+      "check_id": "H098-SP03",
+      "claims": [
+        8,
+        9
+      ],
+      "finding": "원81 비용식·H090 항별식과 동일폭/단일global 비교를 재독. 조건 L>0/c≥0/K>1과 parameter·latency·정확도 한계 유지."
+    },
+    {
+      "check_id": "H098-SP04",
+      "claims": [
+        10,
+        11,
+        12
+      ],
+      "finding": "두 후보표의 긍정증거·보류범위·네 질문 대조. C12에 RCTL 학습결과를 clustering에 쓰지 않는 조건을 보완하고 해당행을 다시 읽음."
+    },
+    {
+      "check_id": "H098-SP05",
+      "claims": [
+        13,
+        14,
+        15
+      ],
+      "finding": "두manifest·원장 전체JSON 재독,49/42파일·총바이트·91현재사본 및 원장동일hash/잔량 재계산. 과거16쪽/3쪽열람 flag와 현재검수 구별."
+    },
+    {
+      "check_id": "H098-SP06",
+      "claims": [
+        16,
+        17,
+        18
+      ],
+      "finding": "실제첫독해/재독범위·기존22검수주장·H090→H097출처 경로 대조. 고유증분과 누적본문/추가연구/전체Goal을 구별."
+    }
+  ],
+  "actual_postdraft_line_ranges": {
+    "SRC-0001397": [
+      [
+        1,
+        43
+      ]
+    ],
+    "SRC-0001350": [
+      [
+        1,
+        42
+      ]
+    ],
+    "SRC-0022042": [
+      [
+        1,
+        103
+      ]
+    ],
+    "SRC-0001401": [
+      [
+        1,
+        30
+      ]
+    ],
+    "SRC-0001356": [
+      [
+        1,
+        22
+      ]
+    ]
+  },
+  "actual_postdraft_whole_JSON_source_ids": [
+    "SRC-0001341",
+    "SRC-0001392",
+    "SRC-0025150"
+  ],
+  "related_verified_claims_reread": [
+    "H090-C02",
+    "H090-C03",
+    "H090-C04",
+    "H090-C05",
+    "H090-C06",
+    "H090-C10",
+    "H090-C15",
+    "H090-C16",
+    "H090-C17",
+    "H090-C18",
+    "H090-C19",
+    "H090-C20",
+    "H090-C21",
+    "H090-C22",
+    "H090-C23",
+    "H090-C24",
+    "H090-C25",
+    "H090-C26",
+    "H090-C28",
+    "H096-C16",
+    "H096-C20",
+    "H097-C32"
+  ],
+  "full_second_read_all_sources": false,
+  "whole_progress_read": false,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "remote_fetches": 0,
+  "snapshot_copy_hashes_checked": 91,
+  "budget_arithmetic_checked": {
+    "TabICL_contexts": 11,
+    "TabICL_query_rows": 20640,
+    "RCTL_fits": 0
+  },
+  "corrections": [
+    {
+      "claim_id": "H098-C12",
+      "description": "최종RCTL 학습결과를 clustering에 쓰지 않는 원래 제약을 명시",
+      "source_reread_after_correction": true,
+      "source_ranges": {
+        "SRC-0001397": [
+          [
+            38,
+            41
+          ]
+        ],
+        "SRC-0001350": [
+          [
+            37,
+            40
+          ]
+        ]
+      }
+    }
+  ],
+  "coverage_increment_applied": false
+}
