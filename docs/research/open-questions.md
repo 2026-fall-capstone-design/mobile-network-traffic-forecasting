@@ -165,3 +165,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H106](records/0106-fda-drift-correlation.md)은 H105 대기14그룹 중 FDA4표현물의 원문 검수를 진행했다. LNN4표현물·web/검색4응답·snapshot25 연혁2그룹이 남는다. 합성 drift 관계를 온라인 갱신 실익으로 연결하는 근거와 논문 코드의 실제 경계·임계값은 미확인이다.
 
 [H107](records/0107-lnn-adaptation.md)은 H106 대기10그룹 중 LNN4표현물의 검수를 진행했다. 저장 web·검색4응답과 snapshot25 연혁2그룹이 남는다. 입력 인덱스·TConv 계산·초기 MLP 학습 조건의 구현 확인과 현재 연구에서의 품질/갱신 비용 측정은 별도 과제다.
+
+[H108](records/0108-maintenance-search-review.md)은 원83의 저장 web·검색4응답을 읽었다. 보존 자료에서는 snapshot25 연혁2그룹이 남는다. 별도로 Fed-PPBC 온라인 알고리즘3–5의 미보존 본문, 수치/차원 불일치와 원 응답의 장기 팀 접근을 [근거 공백](evidence/0108-maintenance-search/evidence-gaps.json)으로 추적한다.
