@@ -451,3 +451,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 관련 channel을 묶어 함께 예측하는 구조는 새로웠는가
 
 [DGCformer 검토](records/0091-dgcformer-source-review.md)에서 잠재 표현의 K-means와 channel mask를 먼저 확인한다. 이 구조의 존재만으로 cluster별 RCTL 독립 학습, 예측과 독립적인 K 선택, 실제 비용 절감을 입증할 수는 없다. 재검토 제안에는 K 선택 구간·목표, 손실별 갱신 parameter, 고정 분할·global 비교군과 전체 탐색 비용의 차이를 적는다. 논문의 평균적 우세뿐 아니라 ECL·720 및 ablation의 불리한 항목도 함께 확인한다.
+
+## 클러스터별 head나 소속 확률을 더하는 제안
+
+[CCM 검토](records/0092-ccm-source-review.md)를 먼저 확인한다. 학습 가능한 소속·prototype·선형 출력층의 확률 가중 결합과 예측/군집 공동 손실은 기존 구조다. 새 설계는 공유 core·입력 공유·독립 전체 fit의 차이, K/β 선택 데이터와 총 비용을 명시해야 한다. 평균 이득만으로 모든 군집 수나 각 조건의 개선을 가정하지 않는다.

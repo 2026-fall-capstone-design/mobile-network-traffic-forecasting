@@ -237,3 +237,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H090 출처](history-090-sources.jsonl)는 중심 11그룹·기존 4그룹과 당시 본문 미검토 29그룹을 구별한다. 새 가산은 본문 6개·전체 JSON 4개이며 보존 파일 42개나 문헌 후보 수를 독해 성과로 세지 않는다.
 
 [H091 출처](history-091-sources.jsonl)는 그중 DGCformer 논문·서지 HTML/TXT 네 그룹을 후속 검토한다. 본문 두 개를 추가하고 TXT 두 개는 대응 형식으로 연결한다. 보충 PDF 14쪽과 재사용한 원81 보고서·collector는 원본 본문 집계에 추가하지 않는다. [읽은 범위](../sources/history-091.md)에 남은 25그룹과 그림·표 검수 범위를 명시했다.
+
+[H092 출처](history-092-sources.jsonl)는 CCM 논문·서지 HTML/TXT 네 그룹을 추가 검토한다. 본문2개·대응TXT2개이며 보충 PDF23쪽은 원목록 가산0이다. [읽은 범위](../sources/history-092.md)에 원81 나머지21그룹과 코드/commit/tree 미검토를 명시했다.

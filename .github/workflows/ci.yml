@@ -57,6 +57,7 @@ jobs:
       - run: uv sync --locked --group archive
       - run: uv run --locked --group archive python scripts/research_archive/check_archive.py
       - run: uv run --locked --group archive python scripts/research_archive/check_dgcformer_display.py --check
+      - run: uv run --locked --group archive python scripts/research_archive/check_ccm_display.py --check
       - run: >-
           uv run --locked --group archive python scripts/research_archive/verify_relation_pilot.py
           --source docs/research/evidence/0635-0638/manifest.json
