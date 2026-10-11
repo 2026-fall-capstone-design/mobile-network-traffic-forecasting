@@ -1,0 +1,876 @@
+{
+  "batch_id": "history-105",
+  "record_path": "../records/0105-joint-update-cost.md",
+  "record_sha256": "5ee6c6214702167b9cd5b2b8ced099b82066e0ce9857618cb8030841f5214258",
+  "claims": [
+    {
+      "claim_id": "H105-C01",
+      "title": "정적 소속과 공동 갱신",
+      "claim": "원83은2026-09-26에 cell 소속을 고정한 채 공동 재학습 비용을 줄이는 방향을 검토했다. 갱신이 필요한 시점이 비슷한 cell을 묶으면 관계가 바뀌지 않은 cell까지 반복 학습하는 일을 줄일 수 있는지가 질문이다. 실제 필요한 갱신 시점과 TabICLv2의 추가 판단 가치가 확인되지 않아 당시 추천안으로 채택하지 않았다.",
+      "record_anchor": "c01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022049",
+          "source_sha256": "f1b81beb6f9ad7725d1ba27c29d3bce80ed7ed4feffd3ccb63466dcacea816d0",
+          "line_ranges": [
+            [
+              1,
+              9
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              3,
+              9
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H105-C02",
+      "title": "이전 질문과의 차이",
+      "claim": "원17의 old/recent/expanding 학습 구간 선택, 원77의 시간별 소속 변경·모델 routing과 구별한다. 원83의 결정은 고정 partition을 재학습 단위로 사용하는 것이다. 목적을 유지 비용으로 바꿨다는 설명만으로 신규성이나 개선 효과가 성립하지 않는다.",
+      "record_anchor": "c02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022049",
+          "source_sha256": "f1b81beb6f9ad7725d1ba27c29d3bce80ed7ed4feffd3ccb63466dcacea816d0",
+          "line_ranges": [
+            [
+              11,
+              16
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              11,
+              19
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H105-C03",
+      "title": "4b와8b의 조건",
+      "claim": "A·B는 시점1, C·D는 시점2에 반드시 갱신이 필요하고2cell의 한 번 갱신 비용이2b라고 가정한다. {A,B}/{C,D}의2회 갱신은4b, {A,C}/{B,D}의4회 갱신은8b다. 필요한 시점을 이미 알고, 두 구성 모두 품질이 허용되며, 매번 같은 기간의 cluster 전체 자료를 재학습할 때의 산술이다. 실제 자료에서50% 절감을 측정한 결과가 아니다.",
+      "record_anchor": "c03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              15,
+              15
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000121",
+          "source_sha256": "ceeb4e498114cb70b3d707005e29bc74b057f50ad50041325ddfa810a1a4a356",
+          "line_ranges": [
+            [
+              13,
+              15
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H105-C04",
+      "title": "일반 비용 식의 경계",
+      "claim": "각 cluster의 필요한 갱신 시점을 구성 cell의 필요 시점 합집합으로 가정하면, 총비용은 cluster별 «한 번 갱신 비용×합집합 크기»의 합이다. 고정 epoch·batch와 같은 길이 자료에서는 한 번 비용도 cluster 크기에 따라 늘 수 있다. 모델 개수만 세거나 큰 cluster의 비용을 일정하게 놓아 이득을 만들지 않는다. 실제 시간·성능 제약을 측정한 최적화 결과는 없다.",
+      "record_anchor": "c04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              17,
+              19
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022049",
+          "source_sha256": "f1b81beb6f9ad7725d1ba27c29d3bce80ed7ed4feffd3ccb63466dcacea816d0",
+          "line_ranges": [
+            [
+              26,
+              30
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H105-C05",
+      "title": "먼저 필요한 관측 근거",
+      "claim": "핵심 공백은 정확도를 유지하는 데 필요한 갱신 시점을 관측 가능한 정보로 정하는 방법이다. 트래픽이나 예측이 변했다는 사실, 인위적 drift·업무 SLA·정답을 가진 갱신 시점의 가정만으로 실제 운영 효용을 주장하지 않는다.",
+      "record_anchor": "c05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              19,
+              19
+            ],
+            [
+              63,
+              71
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022049",
+          "source_sha256": "f1b81beb6f9ad7725d1ba27c29d3bce80ed7ed4feffd3ccb63466dcacea816d0",
+          "line_ranges": [
+            [
+              27,
+              30
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000121",
+          "source_sha256": "ceeb4e498114cb70b3d707005e29bc74b057f50ad50041325ddfa810a1a4a356",
+          "line_ranges": [
+            [
+              15,
+              15
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H105-C06",
+      "title": "서로 다른 세 명제",
+      "claim": "① context 교체로 TabICLv2 예측이 달라짐, ② 그 차이가 잡음·입력 분포·sample 구성과 구별되는 예측 관계 변화임, ③ 그때 RCTL을 재학습하면 실익이 생김은 서로 다른 주장이다. 첫 번째가 가능하다는 것으로 뒤의 두 개가 입증되지 않는다. 새 drift score의 이름이나 Tab 직접 예측 우위도 이 연결을 대신하지 않는다.",
+      "record_anchor": "c06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              61,
+              71
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000121",
+          "source_sha256": "ceeb4e498114cb70b3d707005e29bc74b057f50ad50041325ddfa810a1a4a356",
+          "line_ranges": [
+            [
+              33,
+              39
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H105-C07",
+      "title": "독립 조건과 오차 사용",
+      "claim": "원83은 clustering→RCTL 구조와 RCTL 결과를 clustering에 쓰지 않는 조건을 유지했다. RCTL 오차로 drift 관계를 만들면 이 독립 조건과 충돌한다. Tab 오차로 대체하려면 그 정보가 RCTL 갱신 결정을 유용하게 바꾸는 근거가 추가로 필요하다. 이는 현재 후보의 조건이며 모든 오차 기반 적응 방법의 금지나 실패를 뜻하지 않는다.",
+      "record_anchor": "c07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000121",
+          "source_sha256": "ceeb4e498114cb70b3d707005e29bc74b057f50ad50041325ddfa810a1a4a356",
+          "line_ranges": [
+            [
+              7,
+              7
+            ],
+            [
+              27,
+              27
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              43,
+              43
+            ],
+            [
+              65,
+              71
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H105-C08",
+      "title": "32cell 진단의 재사용",
+      "claim": "기존 원17은 동일16개 입력을 쓰는32cell 개발 진단이었다.4주 전체 cell 평균 정규화 MAE에서 recent/expanding은 Ridge0.126735/0.115344, HGB0.162980/0.149347이었다. Expanding이 평균적으로 유리했지만 recent의336행과 expanding의504–1,008행은 자료량도 다르다. 이 결과를 참 조건부 변화나 모든 갱신 방식의 실패 증거로 확대하지 않는다.",
+      "record_anchor": "c08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0021004",
+          "source_sha256": "1e617fbf9c9469d111a3cbcd466fbcb1e185f7369fe9fb3652f80bd5c265d73d",
+          "line_ranges": [
+            [
+              3,
+              10
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              57,
+              57
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H105-C09",
+      "title": "기간을 나눠 본 선택 실패",
+      "claim": "첫 query 주의 cell별 recent/expanding 선택을 다음3주에 고정했을 때 Ridge0.111333·HGB0.120613으로, 항상 expanding인0.109024·0.118348보다 나빴다. 이3주 비교는 앞의4주 평균과 평가 범위가 다르다. 원17은 새 Tab/RCTL 호출0의 기존 작은 회귀 진단이며 원83에서 재실험한 값이 아니다. 배열 검산과 cell·날짜별 손해는 기존 H010 검수로 연결한다.",
+      "record_anchor": "c09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0021004",
+          "source_sha256": "1e617fbf9c9469d111a3cbcd466fbcb1e185f7369fe9fb3652f80bd5c265d73d",
+          "line_ranges": [
+            [
+              12,
+              14
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              57,
+              57
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H105-C10",
+      "title": "CESNET의 horizon과 갱신 빈도",
+      "claim": "CESNET-TimeSeries24의 SARIMA 시연은 IP103의 hourly IP flow 수에 대해7일·2일 예측을 하고 매 예측 뒤 재학습한다고 설명한다. 예측 길이와 갱신 빈도가 함께 달라져 «같은 예측 문제에서 재학습만 자주 하면 이득»을 분리한 증거가 아니다. 원문은 모든 지표가 낮을수록 좋다고 쓰면서 R²0.77→0.79를 개선으로 해석한다. 이 기술상 불일치를 그대로 남기며 새 모델로 재현하지 않았다.",
+      "record_anchor": "c10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062902",
+          "source_sha256": "7878b426531b0ac3256d77e80f684b9828e151dbc8b5ca6d55017d015685fab4",
+          "line_ranges": [
+            [
+              321,
+              322
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              59,
+              59
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H105-C11",
+      "title": "계획한 검색명과 실제 문헌",
+      "claim": "계획은 Fed-PPBC와 «Multi-stream regression model based on fuzzy drift variance matrix»를 우선 검색하고 세 번째 통신 문헌을 후속 선정한다고 썼다. 실제 판단·scope·수집 명세는 FDA의 «A Fuzzy Drift Correlation Matrix for Multiple Data Stream Regression»(FUZZ-IEEE2020)과 LNN ONDM2024를 다룬다. 검색한 제목과 실제 확보·검토한 논문을 같은 문헌으로 자동 처리하지 않는다.",
+      "record_anchor": "c11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022049",
+          "source_sha256": "f1b81beb6f9ad7725d1ba27c29d3bce80ed7ed4feffd3ccb63466dcacea816d0",
+          "line_ranges": [
+            [
+              18,
+              22
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              25,
+              25
+            ],
+            [
+              39,
+              39
+            ],
+            [
+              49,
+              49
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063012",
+          "source_sha256": "ccc13daf878634dcf304f8bc1f2618029fa18e4ca10caf05fb09849f323880f0",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0063013",
+          "source_sha256": "933bc021031033e9dd742d04054c8f902bf82017845915e051fe0457f0e92cb7",
+          "JSON_pointer": ""
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H105-C12",
+      "title": "Fed-PPBC의 당시 해석",
+      "claim": "원83은 Fed-PPBC가 성능 변화 감시, 최근 EV 점유율 벡터와 중심의 거리로 소속 재배정, 최근 n개 sample의 local 갱신과 cluster 내 모델 평균을 한다고 보고했다. 따라서 «같이 변하는 대상을 묶어 갱신한다»는 발상만을 새 기여로 삼지 않았다. 당시 출판사403·HAL 확인 화면과 저자 공개 전문 지정절 열람을 구별했고 PDF·코드 검증은 하지 않았다고 기록했다. H105는 이 역사적 보고를 확인한 단계이며 저장 web 응답의 방법·표 검수는 후속이다.",
+      "record_anchor": "c12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              23,
+              35
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063012",
+          "source_sha256": "ccc13daf878634dcf304f8bc1f2618029fa18e4ca10caf05fb09849f323880f0",
+          "JSON_pointer": "/new_sources_method_reviewed/0"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H105-C13",
+      "title": "FDA의 당시 해석과 미검수 식",
+      "claim": "원83은 FDA가 예측 오차의 동시·지연 변화를 비교하며7개 합성 오차 시계열을 평가한다고 보고했다. 식3의 미래 자료 사용과 식6의 비음수 값·기대0 가정, 표준편차/lambda 표기 차이를 문제로 남겼고 유효한 시계열 검정으로 채택하지 않았다. 이 수식 해석·시각 검수 보고 자체는 읽었지만 H105에서 PDF 식1–8과 그림을 직접 검증한 것으로 세지 않는다. 저자의 의도나 실제 코드 오류도 확정하지 않는다.",
+      "record_anchor": "c13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              37,
+              45
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063012",
+          "source_sha256": "ccc13daf878634dcf304f8bc1f2618029fa18e4ca10caf05fb09849f323880f0",
+          "JSON_pointer": "/new_sources_method_reviewed/1"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H105-C14",
+      "title": "LNN 문헌의 당시 적용 범위",
+      "claim": "원83은 ONDM2024의 Euro28·82방향 link 장애 시뮬레이션과 추가 학습 없는 LNN/5·20시점 갱신 MLP 비교를 인용했다. 지표·변화 강도별 우열을 구별하고, 이를 실제 cell·RCTL의 공동 재학습 비용 절감 증거로 옮기지 않았다. H105는 이 인용의 존재와 한계를 확인한 것이며 실제 Table I·Fig.3·모델 설정 검수는 후속이다.",
+      "record_anchor": "c14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              47,
+              53
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063012",
+          "source_sha256": "ccc13daf878634dcf304f8bc1f2618029fa18e4ca10caf05fb09849f323880f0",
+          "JSON_pointer": "/new_sources_method_reviewed/2"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H105-C15",
+      "title": "16채널과128특징의 차이",
+      "claim": "고정 RCTL 코드의 기본 steps는8, 마지막 channel 폭은16이며 Linear(steps*16,1) 전에 sequence를 flatten한다. 따라서 입력 길이8에서 출력층 입력 특징은128개이고 최종 예측값은 scalar다.16채널을 전체 특징 차원 한계로 잘못 사용하거나128개 특징을128차원 예측 출력이라고 부르지 않는다. 코드의 정적 shape와8×16 산술을 확인했으며 실제 표현 rank·예측 용량의 실험은 아니다.",
+      "record_anchor": "c15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023048",
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "line_ranges": [
+            [
+              32,
+              40
+            ],
+            [
+              49,
+              60
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              73,
+              75
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H105-C16",
+      "title": "당시 원장과 직접 예측 증거",
+      "claim": "원83은 기존 Tab 직접 예측 우위를 지우지 않으면서 갱신 판단의 직접 근거와 구별했다. 당시 고정 원장은 Tab69context·39,360query행/상한80·60,000, RCTL29fit/상한29다. 잔량11·20,640·0과 snapshot25 원장 해시를 대조했다. 이 누적값을 원83의 새 실행량으로 더하거나 현재 실험 허가로 사용하지 않는다.",
+      "record_anchor": "c16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              71,
+              71
+            ],
+            [
+              79,
+              80
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022049",
+          "source_sha256": "f1b81beb6f9ad7725d1ba27c29d3bce80ed7ed4feffd3ccb63466dcacea816d0",
+          "line_ranges": [
+            [
+              34,
+              34
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0025150",
+          "source_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+          "JSON_pointer": "/used"
+        },
+        {
+          "source_id": "SRC-0025150",
+          "source_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+          "JSON_pointer": "/caps"
+        },
+        {
+          "source_id": "SRC-0025150",
+          "source_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+          "JSON_pointer": "/remaining_count_budgets"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H105-C17",
+      "title": "실행 상태와 연구 완료 상태",
+      "claim": "계획·판단·공개 보고와 scope JSON은 새 Tab/RCTL·수치 실험0을 기록한다. 이는 당시 자료의 실행범위 보고이며 전체 시스템 실행 로그의 독립 감사로 확대하지 않는다. 당시 최종 추천 방향·Word는 미완료였고 비용 후보와 rank 제약 후보는 미채택이었다. 현재 정리에서도 연구 코드 실행·import와 새 모델 실행은0이다.",
+      "record_anchor": "c17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022049",
+          "source_sha256": "f1b81beb6f9ad7725d1ba27c29d3bce80ed7ed4feffd3ccb63466dcacea816d0",
+          "line_ranges": [
+            [
+              3,
+              3
+            ],
+            [
+              36,
+              36
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              77,
+              83
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000121",
+          "source_sha256": "ceeb4e498114cb70b3d707005e29bc74b057f50ad50041325ddfa810a1a4a356",
+          "line_ranges": [
+            [
+              47,
+              47
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063012",
+          "source_sha256": "ccc13daf878634dcf304f8bc1f2618029fa18e4ca10caf05fb09849f323880f0",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022047",
+          "source_sha256": "115ebddff8fd2e665b9546e96bc0d12acd7fb1f79e6c9bc0635f10d70daa0df0",
+          "JSON_pointer": ""
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H105-C18",
+      "title": "확보 명세와 실패 응답",
+      "claim": "source_manifest의4요청 중 FDA PDF·LNN PDF·LNN HTML은200 응답, EV 출판사 HTML은HTTP403 오류로 기록됐다. 두 PDF 크기는1,414,896+436,284=1,851,180바이트이며 당시 명세의 쪽수는각6쪽이다. 현재 파일 크기·해시는 대조했으나 H105에서 PDF 쪽수를 다시 세거나 본문 전체를 읽지는 않았다. collector 명세의3성공과 별도 저자 공개 전문 web 열람 보고를 혼동하지 않는다.",
+      "record_anchor": "c18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063013",
+          "source_sha256": "933bc021031033e9dd742d04054c8f902bf82017845915e051fe0457f0e92cb7",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022047",
+          "source_sha256": "115ebddff8fd2e665b9546e96bc0d12acd7fb1f79e6c9bc0635f10d70daa0df0",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              35,
+              35
+            ],
+            [
+              79,
+              79
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H105-C19",
+      "title": "수집 코드의 실제 역할",
+      "claim": "수집 코드는 기존 파일 덮어쓰기를 거부하고 응답 크기 상한·PDF signature를 확인하며 해시·크기·오류를 기록한다. PDF 텍스트 추출과 HTML 앞20,000바이트의 접근 화면 문구 검사는 내용의 진실성·전체 접근 성공을 보증하지 않는다. 전체52행을 정적으로 읽었고 실행하지 않았다.",
+      "record_anchor": "c19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022612",
+          "source_sha256": "313c1f281d3f1a1e36539d0ac627158a839b5ceee10c643fdb501ce725b50672",
+          "line_ranges": [
+            [
+              19,
+              52
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H105-C20",
+      "title": "보관 코드와 열람 표시의 한계",
+      "claim": "보관 코드는 지정 원장 해시, 보고서 링크, 확보 파일 해시·PDF 합계와 복사본 동일성을 확인하도록 쓰였다. 그러나 문헌을 읽었다는 설명·새 실행0·goal 미완료 등의 필드는 상수로 작성한다. 이 필드를 현재 독해나 독립 검증의 증거로 대체하지 않는다. 코드 안의 과거 단어 금지·예산·다음 행동도 역사적 자료로만 보존했다.",
+      "record_anchor": "c20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022313",
+          "source_sha256": "1d1b46eafd4d592c4f99f5b3ebfe18d48869b703ed78a13152d6dcea5d478b65",
+          "line_ranges": [
+            [
+              12,
+              52
+            ],
+            [
+              54,
+              101
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0063012",
+          "source_sha256": "ccc13daf878634dcf304f8bc1f2618029fa18e4ca10caf05fb09849f323880f0",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022047",
+          "source_sha256": "115ebddff8fd2e665b9546e96bc0d12acd7fb1f79e6c9bc0635f10d70daa0df0",
+          "JSON_pointer": ""
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H105-C21",
+      "title": "snapshot25의24사본",
+      "claim": "보관 검수 JSON에 나열된24파일의 현재 크기·SHA-256을 snapshot25 사본과 대조했고 합계4,045,758바이트가 일치했다. verification.json 자체를 그24개에 추가해 세지 않는다. 사본 해시 확인은 논문·후보표·연혁의 고유 내용 전체를 읽었다는 뜻이 아니다. 현재 원본 보호파일6개의 해시도 초기 기준과 일치한다.",
+      "record_anchor": "c21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022047",
+          "source_sha256": "115ebddff8fd2e665b9546e96bc0d12acd7fb1f79e6c9bc0635f10d70daa0df0",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022313",
+          "source_sha256": "1d1b46eafd4d592c4f99f5b3ebfe18d48869b703ed78a13152d6dcea5d478b65",
+          "line_ranges": [
+            [
+              73,
+              101
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H105-C22",
+      "title": "보류와 다시 검토할 조건",
+      "claim": "유효한 문제는 같은 예측 품질을 유지하며 불필요한 공동 재학습을 줄이는 것이다. 재진입에는 Tab 도입 전부터 존재하는 손해, 관측 가능한 갱신 필요성, 바꿀 수 있는 학습 결정, 정기 갱신·오차 감시·입력 변화 감시보다 유용한 행동의 근거가 필요하다. 당시 후보 보류를 유지 비용 연구 전체가 무의미하다는 결론으로 확대하지 않는다.",
+      "record_anchor": "c22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              7,
+              9
+            ],
+            [
+              69,
+              71
+            ],
+            [
+              81,
+              83
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000121",
+          "source_sha256": "ceeb4e498114cb70b3d707005e29bc74b057f50ad50041325ddfa810a1a4a356",
+          "line_ranges": [
+            [
+              43,
+              45
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H105-C23",
+      "title": "이번 독해와 팀 접근",
+      "claim": "중심자료8그룹의 전체본문을 읽었고 새 집계는 텍스트5·전체JSON3으로 제한한다. 기존4자료는 명시 범위 재참조로 추가0, 동일한16별칭 경로와 snapshot25의 24사본 확인도 중복 가산하지 않는다. 공개 보고서의 팀용 사본은1–48행을 보존하고49행의 개인 파일 링크를 보정했으며 변경 설명·원본 해시를 남겼다. 원본은 수정하지 않았다.",
+      "record_anchor": "c23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000121",
+          "source_sha256": "ceeb4e498114cb70b3d707005e29bc74b057f50ad50041325ddfa810a1a4a356",
+          "line_ranges": [
+            [
+              1,
+              49
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022047",
+          "source_sha256": "115ebddff8fd2e665b9546e96bc0d12acd7fb1f79e6c9bc0635f10d70daa0df0",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0063012",
+          "source_sha256": "ccc13daf878634dcf304f8bc1f2618029fa18e4ca10caf05fb09849f323880f0",
+          "JSON_pointer": ""
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H105-C24",
+      "title": "남은 검토 범위",
+      "claim": "원83의 FDA·LNN 문헌과 저장 web·검색 응답12그룹, snapshot25 후보표·연혁2그룹의 내용 검수가 남는다. 과거 열람 표시·현재 해시 검사·중심기록 완료를 문헌 전체나 전체 연구 Goal의 완료로 바꾸지 않는다. 다음 묶음은 FDA의 식·표·그림부터 실제 원문을 대조한다.",
+      "record_anchor": "c24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0063012",
+          "source_sha256": "ccc13daf878634dcf304f8bc1f2618029fa18e4ca10caf05fb09849f323880f0",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022047",
+          "source_sha256": "115ebddff8fd2e665b9546e96bc0d12acd7fb1f79e6c9bc0635f10d70daa0df0",
+          "JSON_pointer": ""
+        },
+        {
+          "source_id": "SRC-0022048",
+          "source_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+          "line_ranges": [
+            [
+              79,
+              83
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

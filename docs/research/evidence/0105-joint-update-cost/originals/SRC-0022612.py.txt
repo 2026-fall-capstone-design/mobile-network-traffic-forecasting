@@ -1,0 +1,52 @@
+from pathlib import Path
+from urllib.request import Request, urlopen
+from concurrent.futures import ThreadPoolExecutor
+from hashlib import sha256
+from datetime import datetime, timezone
+import json
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parent
+OUT = ROOT / 'sources' / 'maintenance_83'
+OUT.mkdir(parents=True, exist_ok=True)
+SOURCES = [
+    ('FDA_FUZZ_2020.pdf', 'https://opus.lib.uts.edu.au/bitstream/10453/147899/3/A%20Fuzzy%20Drift%20Correlation%20Matrix%20for%20Multiple%20Data%20Stream%20Regression.pdf', 4_000_000),
+    ('LNN_ONDM_2024.pdf', 'https://dl.ifip.org/db/conf/ondm2024/ondm2024/1570996339.pdf', 4_000_000),
+    ('LNN_2404.05304v1.html', 'https://arxiv.org/html/2404.05304v1', 2_000_000),
+    ('EV_IJTST_2025.html', 'https://www.sciencedirect.com/science/article/pii/S204604302500067X', 2_000_000),
+]
+
+def fetch(entry):
+    name, url, cap = entry
+    item = {'filename': name, 'url': url, 'retrieved_at': datetime.now(timezone.utc).isoformat()}
+    p = OUT / name
+    if p.exists():
+        raise RuntimeError('Refuse to overwrite source: ' + str(p))
+    try:
+        req = Request(url, headers={'User-Agent': 'ResearchDocumentReview/1.0'})
+        with urlopen(req, timeout=40) as r:
+            data = r.read(cap + 1)
+            item.update(status=r.status, final_url=r.url, content_type=r.headers.get('Content-Type'))
+        if len(data) > cap:
+            raise RuntimeError('Response exceeds precommitted per-file limit')
+        if name.endswith('.pdf') and not data.startswith(b'%PDF'):
+            raise RuntimeError('Response is not PDF; no access-control bypass attempted')
+        p.write_bytes(data)
+        item.update(bytes=len(data), sha256=sha256(data).hexdigest(), saved_path=str(p))
+        if name.endswith('.pdf'):
+            reader = PdfReader(p)
+            item['pages'] = len(reader.pages)
+            text_path = p.with_suffix('.txt')
+            text_path.write_text('\n\n'.join(f'=== PAGE {i+1} ===\n{page.extract_text()}' for i, page in enumerate(reader.pages)), encoding='utf-8')
+        else:
+            sample = data[:20000].decode('utf-8', errors='replace').lower()
+            item['possible_access_screen'] = any(x in sample for x in ('verify you are human', 'access denied', 'oh noes!', 'challenge-platform'))
+    except Exception as e:
+        item['error'] = type(e).__name__ + ': ' + str(e)
+    return item
+
+with ThreadPoolExecutor(max_workers=4) as pool:
+    result = list(pool.map(fetch, SOURCES))
+(OUT / 'source_manifest.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+for item in result:
+    print(json.dumps({k:v for k,v in item.items() if k != 'saved_path'}, ensure_ascii=False))

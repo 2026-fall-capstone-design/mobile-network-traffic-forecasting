@@ -1,0 +1,193 @@
+{
+  "batch_id": "history-105",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T08:29:41.028327+00:00",
+  "claims_checked": 24,
+  "checks": [
+    {
+      "check_id": "H105-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "finding": "계획36행/판단83행과보고49행 재독. 고정소속의 결정·4b/8b 필요시점기지/품질허용/전체기간조건·1회비용과합집합 구별. 실측50%절감으로 표현하지 않음."
+    },
+    {
+      "check_id": "H105-SP02",
+      "claims": [
+        6,
+        7,
+        22
+      ],
+      "finding": "context차이→관계변화→RCTL갱신실익3단계를 구별. 독립조건에서 RCTL오차 사용 불가와 Tab대체의 추가근거, 후보보류의 범위를 대조."
+    },
+    {
+      "check_id": "H105-SP03",
+      "claims": [
+        8,
+        9,
+        10
+      ],
+      "finding": "원17전체26행과 CESNET321–322행 재독.4주/3주 평균을 분리, recent/expanding자료량 차이와 개발진단·기존값 재인용 확인. SARIMA horizon/갱신빈도 동시변경 및 R²설명 모순 확인. 기존 배열 전체를 재검산한 것으로 표현하지 않음."
+    },
+    {
+      "check_id": "H105-SP04",
+      "claims": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "finding": "계획검색명/실제FDA제목을 구별. 문헌별 서술이 원83에 있는지 대조하되, FDA/LNN/Fed 원문/표/그림 독해는 후속으로 유지. scope열람flag를 현재증거로 가산하지 않음."
+    },
+    {
+      "check_id": "H105-SP05",
+      "claims": [
+        15,
+        16,
+        17
+      ],
+      "finding": "RCTL60행 전체·원장used/caps/remaining 선택필드 재독. 기본steps8×16=128출력층입력/최종scalar·누적69/39360/29와잔량11/20640/0·당시미실행/미완료의범위 대조. 실제rank/모델/원자료통계 실험0."
+    },
+    {
+      "check_id": "H105-SP06",
+      "claims": [
+        18,
+        19,
+        20,
+        21,
+        23,
+        24
+      ],
+      "finding": "수집52행/보관101행/scope46행/확보44행/보관검수138행 전체 재독.3응답성공+1오류와별도web열람, 상수검수flag,24파일4045758B/PDF1851180B·쪽수는과거명세임을 확인.16별칭/기존4/후속14의 집계 경계를 대조."
+    }
+  ],
+  "actual_postdraft": {
+    "SRC-0022049": {
+      "line_ranges": [
+        [
+          1,
+          36
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0022048": {
+      "line_ranges": [
+        [
+          1,
+          83
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0000121": {
+      "line_ranges": [
+        [
+          1,
+          49
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0021004": {
+      "line_ranges": [
+        [
+          1,
+          26
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0023048": {
+      "line_ranges": [
+        [
+          1,
+          60
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0062902": {
+      "line_ranges": [
+        [
+          321,
+          322
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0022612": {
+      "line_ranges": [
+        [
+          1,
+          52
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0022313": {
+      "line_ranges": [
+        [
+          1,
+          101
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0063012": {
+      "line_ranges": [
+        [
+          1,
+          46
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0022047": {
+      "line_ranges": [
+        [
+          1,
+          138
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0063013": {
+      "line_ranges": [
+        [
+          1,
+          44
+        ]
+      ],
+      "JSON_pointers": []
+    },
+    "SRC-0025150": {
+      "line_ranges": [],
+      "JSON_pointers": [
+        "/used",
+        "/caps",
+        "/remaining_count_budgets"
+      ]
+    }
+  },
+  "core_whole_sources": 8,
+  "reused_sources": 4,
+  "new_PDF_or_image_read": false,
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "new_model_runs": 0,
+  "output_truncated": false,
+  "corrections": [
+    {
+      "kind": "wording",
+      "before": "snapshot24사본",
+      "after": "snapshot25의 24사본",
+      "reason": "snapshot 번호25와 사본 개수24가 혼동되지 않도록 분리"
+    }
+  ],
+  "scope": "에이전트의 실제 작성후 재독·의미 대조를 저장. emitted 로그를 자동 독해로 간주하지 않음. 원자료 전체 재실행/독립검증 아님."
+}
