@@ -18,6 +18,8 @@
 - [바이트 동일 보존판](../evidence/0121-predictive-role-alignment/originals/SRC-0001661.md.txt).
 - 범위: `{"full_content_read": true, "lines_read": [[1, 31]]}`.
 
+- 팀용 상세 검토: [당시 판단 원문](../evidence/0121-predictive-role-alignment/originals/SRC-0001662.md.txt) · [40개 주장 검수 기록](../records/0121-predictive-role-alignment.md). 보존 보고서31행의 개인 경로에 대응하는 저장소 안내다.
+
 ## <a id="src-0001662"></a>SRC-0001662
 
 - 원본: `output/research/redesign_20260925_snapshot_33/tmp/redesign_20260925/91_predictive_role_alignment_findings.md`
