@@ -1,0 +1,90 @@
+from pathlib import Path
+import hashlib
+import json
+import shutil
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT / 'tmp/redesign_20260925'
+SRC = WORK / 'sources/shared_training_86'
+LEDGER = WORK / 'cumulative_execution_budget.json'
+EXPECTED = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+REPORT = ROOT / 'output/research/TabICLv2_재설계_RCTL학습공유와비용_검토.md'
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(LEDGER) == EXPECTED
+assert len(PdfReader(SRC / 'clustered_mtl_0809.2085v1.pdf').pages) == 14
+for p in [REPORT, WORK / '86_shared_training_scope_findings.md']:
+    text = p.read_text(encoding='utf-8')
+    assert '\uc0ac\ub840' not in text
+
+scope = {
+    'date': '2026-09-26', 'new_model_and_numeric_pilot_calls': 0,
+    'sources': [
+        {
+            'title': 'Boosting Global Time Series Forecasting Models: A Two-Stage Modelling Framework',
+            'url': 'https://kar.kent.ac.uk/111229/1/FAIA-413-FAIA251157.pdf',
+            'file': 'sources/method_audit_28/Two_stage_global_forecasting_ECAI2025.pdf',
+            'scope': 'Re-read Section 3.2, Figure 1 text, Algorithm 1, following clustering objective. Existing stage28 source reused.',
+        },
+        {
+            'title': 'Clustered Multi-Task Learning: A Convex Formulation',
+            'url': 'https://arxiv.org/pdf/0809.2085v1',
+            'file': 'sources/shared_training_86/clustered_mtl_0809.2085v1.pdf',
+            'scope': 'Introduction, Section 2 equations 1–11, Section 3 equations 12–16 and Section 3.2. Not a complete proof/experiment reproduction.',
+            'version': 'v1, arXiv submitted 2008-09-11; PDF title-page typesetting date 2018-10-22 is separately noted.',
+        },
+    ],
+    'metadata_only': ['Regularized multi-task learning and other Crossref matches'],
+    'unavailable': ['Guessed CVPR2020 paper URL returned404; day=all index returned HTTP200 with database DATE error. No CVPR paper PDF retrieved.'],
+    'software_note': 'bs4 import failed; no dependency installation or environment change.',
+    'rctl_code_sha256': sha(WORK / 'rctl_torch.py'),
+    'cost_scope': 'Symbolic parameter and sample-computation counts; no new wall-time or memory measurements.',
+    'latest_search_completeness_claimed': False,
+}
+for source in scope['sources']:
+    source['sha256'] = sha(WORK / source['file'])
+(WORK / '86_source_reading_scope.json').write_text(json.dumps(scope, ensure_ascii=False, indent=2), encoding='utf-8')
+
+progress = WORK / 'progress.md'
+text = progress.read_text(encoding='utf-8-sig')
+heading = '## 최신 상태 — 86 소속 고정 이후 RCTL 학습 공유 검토'
+assert heading not in text
+new = '''## 최신 상태 — 86 소속 고정 이후 RCTL 학습 공유 검토
+
+- 2026-09-26. 86계획 후 공통 초기화·독립 미세조정, 고정 global 표현, 실제 파라미터 공동 갱신을 구분했다. 소속 고정 뒤 후단 공유는 자동으로 clustering 독립성 위반이 아니다. 독립 초기화한 기존29회 결과를 이러한 모든 학습 방식의 실패로 확대하지 않는다.
+- ECAI2025§3.2/Fig1/Alg1을 다시 읽어 global의처음L−1층복사·고정+cluster보완층임을확인했다. Jacob/Bach/Vert arXiv0809.2085v1의§2식1–11,§3식12–16/3.2를읽었다. global/between/within규제원리가있으므로모델공유자체를새로운방법으로추천하지않는다. 새PDF14쪽184537bytes확보,기존원문재사용.
+- 현재RCTLcode의TCN→BN→잔차→LSTM→잔차와여섯block/skip/dense를대조했다. TCN과LSTM을분리된두예측기로설명하지않는다. sharedweight/privateBN/globalBN의선택이함수를바꾼다. 공유층을Tab출력만으로알수있다는근거는아직없다.
+- 저장량KP대P_s+KP_c와서로다른N개입력의연산N(C_s+C_c)를구별했다. 독립cluster가각자자기sample을처리해총N개였으면공동학습도총N개다. 모델수감소를K배학습연산절감으로바꾸지않는다. global준비·fine-tuning비용은별도다. 기호적비용이지실측결과가아니다.
+- 새Tab/RCTL/수치pilot0, 예산원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변. Tab잔여11/20640,새RCTLfit0유지. 기존checkpoint/head/BN를새로적합하지않았다.
+- 공개Crossref/arXiv접근성공. CVPR추정개별URL404,day=allindex는HTTP200이어도databaseDATE오류라전문확보로세지않는다. bs4없는환경에서첫추출명령실패후파일텍스트를읽었고설치변경없음. metadata를원문분석으로세지않는다.
+- `86_shared_training_scope_findings.md`, `86_source_reading_scope.json`, `output/research/TabICLv2_재설계_RCTL학습공유와비용_검토.md`와인덱스행을추가했다. 이번안은유효한학습대안이나Tab이개선하는별도소속결정이없어미채택이다. 새로운추천안과최종Word는여전히미완료이며84의중간Word는불변이다.
+- 다음에공동입력·다중출력을다시검토한다면81의비용비교와함께인과적입력경로의표현용량을확인해야한다. flatten전체차원과최신시점에서지나가는폭은다를수있지만아직새진단/알고리즘으로채택하지않았다. 원래cell별scalar global은이제약이같지않다. 단순잔차skip·global다중출력과공정하게비교할근거가먼저다.
+- 이turn은기존비교의학습조건·새원문·비용해석을정리한progress다. 선택적인실제운영제약질문은미응답이며가정을발명하지않는다. 최종목표active,goal사용법안내반복없음.
+
+'''
+text = text.replace('## 최신 상태 — 85 기각 범위와 고정 처리량 sample 배분 재검토', new + '## 이전 상태 — 85 기각 범위와 고정 처리량 sample 배분 재검토', 1)
+progress.write_text(text, encoding='utf-8')
+
+snapshot = ROOT / 'output/research/redesign_20260925_snapshot_28'
+assert not snapshot.exists()
+snapshot.mkdir()
+files = [
+    WORK / '86_shared_training_scope_plan.md', WORK / '86_shared_training_scope_findings.md',
+    WORK / '86_source_reading_scope.json', WORK / 'collect_shared_training_sources_86.py',
+    WORK / 'fetch_shared_training_methods_86.py', Path(__file__).resolve(),
+    WORK / 'rctl_torch.py', WORK / 'progress.md', WORK / 'candidate_decision_index.md', LEDGER, REPORT,
+] + sorted(SRC.glob('*'))
+manifest = []
+for source in files:
+    relative = source.relative_to(ROOT)
+    target = snapshot / relative
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+    assert sha(source) == sha(target)
+    if source.suffix == '.json':
+        json.loads(source.read_text(encoding='utf-8'))
+    manifest.append({'path': relative.as_posix(), 'bytes': source.stat().st_size, 'sha256': sha(source)})
+record = {'files': len(manifest), 'bytes': sum(row['bytes'] for row in manifest), 'manifest': manifest, 'ledger_unchanged': sha(LEDGER) == EXPECTED, 'old_snapshots_modified': False, 'goal_complete': False}
+(snapshot / 'manifest.json').write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding='utf-8')
+(WORK / '86_archive_verification.json').write_text(json.dumps({'snapshot': str(snapshot), 'files': record['files'], 'bytes': record['bytes'], 'verified': True, 'ledger_unchanged': True}, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps({'snapshot_files': record['files'], 'snapshot_bytes': record['bytes'], 'ledger_unchanged': True}, ensure_ascii=False))
