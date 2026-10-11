@@ -1,0 +1,19 @@
+{
+  "scope": "Official arXiv discovery metadata; not full methods or exhaustive literature coverage.",
+  "sources": [
+    {
+      "query": "all:\"time series\" AND (ti:\"bottleneck\" OR ti:\"rank\")",
+      "url": "https://export.arxiv.org/api/query?search_query=all%3A%22time+series%22+AND+%28ti%3A%22bottleneck%22+OR+ti%3A%22rank%22%29&start=0&max_results=12&sortBy=submittedDate&sortOrder=descending",
+      "accessed_utc": "2026-09-26T02:29:11.288578+00:00",
+      "cap_bytes": 1000000,
+      "error": "HTTPError: HTTP Error 406: Not Acceptable"
+    },
+    {
+      "query": "all:forecasting AND (all:\"conditional innovation\" OR all:\"predictive subspace\")",
+      "url": "https://export.arxiv.org/api/query?search_query=all%3Aforecasting+AND+%28all%3A%22conditional+innovation%22+OR+all%3A%22predictive+subspace%22%29&start=0&max_results=12&sortBy=submittedDate&sortOrder=descending",
+      "accessed_utc": "2026-09-26T02:29:11.595215+00:00",
+      "cap_bytes": 1000000,
+      "error": "HTTPError: HTTP Error 406: Not Acceptable"
+    }
+  ]
+}

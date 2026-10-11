@@ -286,3 +286,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H114 출처](../sources/history-114.md) · [목록](history-114-sources.jsonl): 새11고유/21경로는본문6·전체JSON5, Jacob1–8/14쪽은선택1. 기존자료3·ECAI재독·렌더이미지 추가집계0.
 
 [H115 출처](../sources/history-115.md) · [목록](history-115-sources.jsonl): 새8표현물1904행과 기존부분PDF의후속6쪽,16별칭을 구분한다. 본문5·전체JSON3,Jacob selected-only−1 전환이며 대응TXT·재독·렌더는 독립본문 추가0이다.
+
+[H116 출처](../sources/history-116.md) · [목록](history-116-sources.jsonl): 핵심11/486행 및 추가원문을 합친1662행, PDF1–6쪽, 기존파생PNG3개. 새 본문8·전체JSON6·부분3이며 파생표현·재독·현재추가wrapper는 독립내용추가0이다.
