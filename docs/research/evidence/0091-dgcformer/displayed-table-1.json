@@ -1,0 +1,1116 @@
+{
+  "source_id": "SRC-0062844",
+  "source_sha256": "a9e148b828ecb7118b5111cec5421d16407749b2c488a97516d22f4521545d6b",
+  "source_locator": "HTML Table1 S4.T1; PDF page7; paired TXT153–674",
+  "models": [
+    "DGCformer",
+    "PatchTST",
+    "Crossformer",
+    "DLinear",
+    "Autoformer",
+    "Informer",
+    "MTGNN"
+  ],
+  "reported_counts": {
+    "DGCformer": 57,
+    "PatchTST": 4,
+    "Crossformer": 1,
+    "DLinear": 4,
+    "Autoformer": 0,
+    "Informer": 0,
+    "MTGNN": 0
+  },
+  "scope": "원표의표시값/굵기전사. 반올림전값이나실험산출물은아님.",
+  "rows": [
+    {
+      "dataset": "ETTh1",
+      "horizon": 96,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.379",
+        "PatchTST": "0.393",
+        "Crossformer": "0.396",
+        "DLinear": "0.386",
+        "Autoformer": "0.449",
+        "Informer": "0.865",
+        "MTGNN": "0.522"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh1",
+      "horizon": 96,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.400",
+        "PatchTST": "0.408",
+        "Crossformer": "0.412",
+        "DLinear": "0.400",
+        "Autoformer": "0.459",
+        "Informer": "0.713",
+        "MTGNN": "0.490"
+      },
+      "bold_models": [
+        "DGCformer",
+        "DLinear"
+      ]
+    },
+    {
+      "dataset": "ETTh1",
+      "horizon": 192,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.426",
+        "PatchTST": "0.445",
+        "Crossformer": "0.534",
+        "DLinear": "0.437",
+        "Autoformer": "0.500",
+        "Informer": "1.008",
+        "MTGNN": "0.542"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh1",
+      "horizon": 192,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.432",
+        "PatchTST": "0.434",
+        "Crossformer": "0.515",
+        "DLinear": "0.432",
+        "Autoformer": "0.482",
+        "Informer": "0.792",
+        "MTGNN": "0.536"
+      },
+      "bold_models": [
+        "DGCformer",
+        "DLinear"
+      ]
+    },
+    {
+      "dataset": "ETTh1",
+      "horizon": 336,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.456",
+        "PatchTST": "0.484",
+        "Crossformer": "0.656",
+        "DLinear": "0.481",
+        "Autoformer": "0.521",
+        "Informer": "1.107",
+        "MTGNN": "0.736"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh1",
+      "horizon": 336,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.454",
+        "PatchTST": "0.451",
+        "Crossformer": "0.581",
+        "DLinear": "0.459",
+        "Autoformer": "0.496",
+        "Informer": "0.809",
+        "MTGNN": "0.643"
+      },
+      "bold_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "ETTh1",
+      "horizon": 720,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.458",
+        "PatchTST": "0.480",
+        "Crossformer": "0.849",
+        "DLinear": "0.519",
+        "Autoformer": "0.514",
+        "Informer": "1.181",
+        "MTGNN": "0.916"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh1",
+      "horizon": 720,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.468",
+        "PatchTST": "0.471",
+        "Crossformer": "0.709",
+        "DLinear": "0.516",
+        "Autoformer": "0.512",
+        "Informer": "0.865",
+        "MTGNN": "0.750"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh2",
+      "horizon": 96,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.278",
+        "PatchTST": "0.294",
+        "Crossformer": "0.339",
+        "DLinear": "0.333",
+        "Autoformer": "0.358",
+        "Informer": "3.489",
+        "MTGNN": "1.843"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh2",
+      "horizon": 96,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.340",
+        "PatchTST": "0.343",
+        "Crossformer": "0.379",
+        "DLinear": "0.387",
+        "Autoformer": "0.397",
+        "Informer": "1.515",
+        "MTGNN": "0.911"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh2",
+      "horizon": 192,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.375",
+        "PatchTST": "0.377",
+        "Crossformer": "0.415",
+        "DLinear": "0.477",
+        "Autoformer": "0.456",
+        "Informer": "3.755",
+        "MTGNN": "2.439"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh2",
+      "horizon": 192,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.388",
+        "PatchTST": "0.393",
+        "Crossformer": "0.425",
+        "DLinear": "0.476",
+        "Autoformer": "0.452",
+        "Informer": "1.525",
+        "MTGNN": "1.325"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh2",
+      "horizon": 336,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.414",
+        "PatchTST": "0.422",
+        "Crossformer": "0.452",
+        "DLinear": "0.594",
+        "Autoformer": "0.482",
+        "Informer": "4.721",
+        "MTGNN": "2.944"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh2",
+      "horizon": 336,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.425",
+        "PatchTST": "0.430",
+        "Crossformer": "0.468",
+        "DLinear": "0.541",
+        "Autoformer": "0.486",
+        "Informer": "1.835",
+        "MTGNN": "1.405"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh2",
+      "horizon": 720,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.415",
+        "PatchTST": "0.424",
+        "Crossformer": "0.455",
+        "DLinear": "0.831",
+        "Autoformer": "0.515",
+        "Informer": "3.647",
+        "MTGNN": "3.244"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTh2",
+      "horizon": 720,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.430",
+        "PatchTST": "0.442",
+        "Crossformer": "0.471",
+        "DLinear": "0.657",
+        "Autoformer": "0.511",
+        "Informer": "1.625",
+        "MTGNN": "1.592"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 96,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.327",
+        "PatchTST": "0.321",
+        "Crossformer": "0.320",
+        "DLinear": "0.345",
+        "Autoformer": "0.505",
+        "Informer": "0.672",
+        "MTGNN": "0.428"
+      },
+      "bold_models": [
+        "Crossformer"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 96,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.367",
+        "PatchTST": "0.360",
+        "Crossformer": "0.373",
+        "DLinear": "0.372",
+        "Autoformer": "0.475",
+        "Informer": "0.571",
+        "MTGNN": "0.446"
+      },
+      "bold_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 192,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.366",
+        "PatchTST": "0.379",
+        "Crossformer": "0.386",
+        "DLinear": "0.380",
+        "Autoformer": "0.553",
+        "Informer": "0.795",
+        "MTGNN": "0.457"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 192,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.382",
+        "PatchTST": "0.388",
+        "Crossformer": "0.401",
+        "DLinear": "0.389",
+        "Autoformer": "0.496",
+        "Informer": "0.669",
+        "MTGNN": "0.469"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 336,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.405",
+        "PatchTST": "0.407",
+        "Crossformer": "0.406",
+        "DLinear": "0.413",
+        "Autoformer": "0.621",
+        "Informer": "1.212",
+        "MTGNN": "0.579"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 336,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.409",
+        "PatchTST": "0.415",
+        "Crossformer": "0.427",
+        "DLinear": "0.413",
+        "Autoformer": "0.537",
+        "Informer": "0.871",
+        "MTGNN": "0.562"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 720,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.462",
+        "PatchTST": "0.466",
+        "Crossformer": "0.569",
+        "DLinear": "0.474",
+        "Autoformer": "0.671",
+        "Informer": "1.166",
+        "MTGNN": "0.798"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 720,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.439",
+        "PatchTST": "0.438",
+        "Crossformer": "0.528",
+        "DLinear": "0.453",
+        "Autoformer": "0.561",
+        "Informer": "0.823",
+        "MTGNN": "0.671"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm2",
+      "horizon": 96,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.176",
+        "PatchTST": "0.178",
+        "Crossformer": "0.196",
+        "DLinear": "0.193",
+        "Autoformer": "0.255",
+        "Informer": "0.365",
+        "MTGNN": "0.289"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm2",
+      "horizon": 96,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.258",
+        "PatchTST": "0.260",
+        "Crossformer": "0.275",
+        "DLinear": "0.292",
+        "Autoformer": "0.339",
+        "Informer": "0.453",
+        "MTGNN": "0.364"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm2",
+      "horizon": 192,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.243",
+        "PatchTST": "0.249",
+        "Crossformer": "0.248",
+        "DLinear": "0.284",
+        "Autoformer": "0.281",
+        "Informer": "0.533",
+        "MTGNN": "0.456"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm2",
+      "horizon": 192,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.304",
+        "PatchTST": "0.307",
+        "Crossformer": "0.317",
+        "DLinear": "0.362",
+        "Autoformer": "0.340",
+        "Informer": "0.563",
+        "MTGNN": "0.492"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm2",
+      "horizon": 336,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.303",
+        "PatchTST": "0.313",
+        "Crossformer": "0.322",
+        "DLinear": "0.369",
+        "Autoformer": "0.339",
+        "Informer": "1.363",
+        "MTGNN": "1.432"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm2",
+      "horizon": 336,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.320",
+        "PatchTST": "0.329",
+        "Crossformer": "0.358",
+        "DLinear": "0.427",
+        "Autoformer": "0.372",
+        "Informer": "0.887",
+        "MTGNN": "0.812"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ETTm2",
+      "horizon": 720,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.401",
+        "PatchTST": "0.400",
+        "Crossformer": "0.402",
+        "DLinear": "0.554",
+        "Autoformer": "0.433",
+        "Informer": "3.379",
+        "MTGNN": "2.972"
+      },
+      "bold_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "ETTm2",
+      "horizon": 720,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.397",
+        "PatchTST": "0.398",
+        "Crossformer": "0.406",
+        "DLinear": "0.522",
+        "Autoformer": "0.432",
+        "Informer": "1.338",
+        "MTGNN": "1.336"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "EXC",
+      "horizon": 96,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.081",
+        "PatchTST": "0.081",
+        "Crossformer": "0.139",
+        "DLinear": "0.088",
+        "Autoformer": "0.197",
+        "Informer": "0.847",
+        "MTGNN": "0.289"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "EXC",
+      "horizon": 96,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.208",
+        "PatchTST": "0.216",
+        "Crossformer": "0.265",
+        "DLinear": "0.218",
+        "Autoformer": "0.323",
+        "Informer": "0.752",
+        "MTGNN": "0.338"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "EXC",
+      "horizon": 192,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.167",
+        "PatchTST": "0.169",
+        "Crossformer": "0.241",
+        "DLinear": "0.176",
+        "Autoformer": "0.300",
+        "Informer": "1.204",
+        "MTGNN": "0.441"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "EXC",
+      "horizon": 192,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.294",
+        "PatchTST": "0.317",
+        "Crossformer": "0.375",
+        "DLinear": "0.315",
+        "Autoformer": "0.369",
+        "Informer": "0.895",
+        "MTGNN": "0.498"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "EXC",
+      "horizon": 336,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.279",
+        "PatchTST": "0.305",
+        "Crossformer": "0.392",
+        "DLinear": "0.313",
+        "Autoformer": "0.509",
+        "Informer": "1.672",
+        "MTGNN": "0.934"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "EXC",
+      "horizon": 336,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.337",
+        "PatchTST": "0.416",
+        "Crossformer": "0.468",
+        "DLinear": "0.427",
+        "Autoformer": "0.524",
+        "Informer": "1.036",
+        "MTGNN": "0.741"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "EXC",
+      "horizon": 720,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.759",
+        "PatchTST": "0.853",
+        "Crossformer": "1.112",
+        "DLinear": "0.839",
+        "Autoformer": "1.447",
+        "Informer": "2.478",
+        "MTGNN": "1.478"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "EXC",
+      "horizon": 720,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.593",
+        "PatchTST": "0.702",
+        "Crossformer": "0.802",
+        "DLinear": "0.695",
+        "Autoformer": "0.941",
+        "Informer": "1.310",
+        "MTGNN": "1.037"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 96,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.176",
+        "PatchTST": "0.180",
+        "Crossformer": "0.185",
+        "DLinear": "0.196",
+        "Autoformer": "0.266",
+        "Informer": "0.300",
+        "MTGNN": "0.189"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 96,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.221",
+        "PatchTST": "0.221",
+        "Crossformer": "0.248",
+        "DLinear": "0.255",
+        "Autoformer": "0.336",
+        "Informer": "0.384",
+        "MTGNN": "0.252"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 192,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.225",
+        "PatchTST": "0.224",
+        "Crossformer": "0.229",
+        "DLinear": "0.237",
+        "Autoformer": "0.307",
+        "Informer": "0.598",
+        "MTGNN": "0.235"
+      },
+      "bold_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 192,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.259",
+        "PatchTST": "0.259",
+        "Crossformer": "0.305",
+        "DLinear": "0.296",
+        "Autoformer": "0.367",
+        "Informer": "0.544",
+        "MTGNN": "0.299"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 336,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.277",
+        "PatchTST": "0.278",
+        "Crossformer": "0.287",
+        "DLinear": "0.283",
+        "Autoformer": "0.359",
+        "Informer": "0.578",
+        "MTGNN": "0.295"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 336,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.297",
+        "PatchTST": "0.298",
+        "Crossformer": "0.332",
+        "DLinear": "0.335",
+        "Autoformer": "0.395",
+        "Informer": "0.523",
+        "MTGNN": "0.359"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 720,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.350",
+        "PatchTST": "0.350",
+        "Crossformer": "0.356",
+        "DLinear": "0.345",
+        "Autoformer": "0.419",
+        "Informer": "1.059",
+        "MTGNN": "0.440"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 720,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.346",
+        "PatchTST": "0.346",
+        "Crossformer": "0.398",
+        "DLinear": "0.381",
+        "Autoformer": "0.428",
+        "Informer": "0.741",
+        "MTGNN": "0.481"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ILI",
+      "horizon": 24,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "1.366",
+        "PatchTST": "1.522",
+        "Crossformer": "3.041",
+        "DLinear": "2.215",
+        "Autoformer": "2.906",
+        "Informer": "4.657",
+        "MTGNN": "4.265"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ILI",
+      "horizon": 24,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.785",
+        "PatchTST": "0.814",
+        "Crossformer": "1.186",
+        "DLinear": "1.081",
+        "Autoformer": "1.182",
+        "Informer": "1.449",
+        "MTGNN": "1.387"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ILI",
+      "horizon": 36,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "1.051",
+        "PatchTST": "1.430",
+        "Crossformer": "3.406",
+        "DLinear": "1.963",
+        "Autoformer": "2.585",
+        "Informer": "4.650",
+        "MTGNN": "4.777"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ILI",
+      "horizon": 36,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.679",
+        "PatchTST": "0.834",
+        "Crossformer": "1.232",
+        "DLinear": "0.963",
+        "Autoformer": "1.038",
+        "Informer": "1.463",
+        "MTGNN": "1.496"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ILI",
+      "horizon": 48,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "1.497",
+        "PatchTST": "1.673",
+        "Crossformer": "3.459",
+        "DLinear": "2.130",
+        "Autoformer": "3.024",
+        "Informer": "5.004",
+        "MTGNN": "5.333"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ILI",
+      "horizon": 48,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.792",
+        "PatchTST": "0.854",
+        "Crossformer": "1.221",
+        "DLinear": "1.024",
+        "Autoformer": "1.145",
+        "Informer": "1.542",
+        "MTGNN": "1.592"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ILI",
+      "horizon": 60,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "1.201",
+        "PatchTST": "1.529",
+        "Crossformer": "3.640",
+        "DLinear": "2.368",
+        "Autoformer": "2.761",
+        "Informer": "5.071",
+        "MTGNN": "5.070"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ILI",
+      "horizon": 60,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.719",
+        "PatchTST": "0.862",
+        "Crossformer": "1.305",
+        "DLinear": "1.096",
+        "Autoformer": "1.114",
+        "Informer": "1.543",
+        "MTGNN": "1.552"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 96,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.175",
+        "PatchTST": "0.195",
+        "Crossformer": "0.219",
+        "DLinear": "0.197",
+        "Autoformer": "0.201",
+        "Informer": "0.274",
+        "MTGNN": "0.243"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 96,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.273",
+        "PatchTST": "0.289",
+        "Crossformer": "0.314",
+        "DLinear": "0.282",
+        "Autoformer": "0.317",
+        "Informer": "0.368",
+        "MTGNN": "0.342"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 192,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.190",
+        "PatchTST": "0.199",
+        "Crossformer": "0.231",
+        "DLinear": "0.196",
+        "Autoformer": "0.222",
+        "Informer": "0.296",
+        "MTGNN": "0.298"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 192,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.280",
+        "PatchTST": "0.289",
+        "Crossformer": "0.322",
+        "DLinear": "0.285",
+        "Autoformer": "0.334",
+        "Informer": "0.386",
+        "MTGNN": "0.364"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 336,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.210",
+        "PatchTST": "0.215",
+        "Crossformer": "0.246",
+        "DLinear": "0.209",
+        "Autoformer": "0.231",
+        "Informer": "0.300",
+        "MTGNN": "0.368"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 336,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.300",
+        "PatchTST": "0.305",
+        "Crossformer": "0.337",
+        "DLinear": "0.301",
+        "Autoformer": "0.338",
+        "Informer": "0.394",
+        "MTGNN": "0.396"
+      },
+      "bold_models": [
+        "DGCformer"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 720,
+      "metric": "MSE",
+      "values": {
+        "DGCformer": "0.259",
+        "PatchTST": "0.256",
+        "Crossformer": "0.280",
+        "DLinear": "0.245",
+        "Autoformer": "0.254",
+        "Informer": "0.373",
+        "MTGNN": "0.422"
+      },
+      "bold_models": [
+        "DLinear"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 720,
+      "metric": "MAE",
+      "values": {
+        "DGCformer": "0.344",
+        "PatchTST": "0.337",
+        "Crossformer": "0.363",
+        "DLinear": "0.333",
+        "Autoformer": "0.361",
+        "Informer": "0.439",
+        "MTGNN": "0.410"
+      },
+      "bold_models": [
+        "DLinear"
+      ]
+    }
+  ]
+}

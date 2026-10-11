@@ -1,0 +1,204 @@
+{
+  "batch_id": "history-091",
+  "status": "source_checked",
+  "claims_checked": 30,
+  "checks": [
+    {
+      "check_id": "H091-SP01",
+      "claims": [
+        1,
+        2,
+        29
+      ],
+      "sources": [
+        "논문 TXT 1–151행, 서지 TXT 1–109행",
+        "원81 보고서 1–15·27–39·85–103행, collector 1–53행 정적 재독해",
+        "PDF 1·11·12쪽, Appendix B와 metadata 대응"
+      ],
+      "result": "저자·v1·제출일 및 저장/보충 시점을 구별했다. Baseline 저장소 링크의 존재를 저장소 내용 독해나 DGCformer 공식 코드 확보로 표현하지 않도록 C29를 보완했다."
+    },
+    {
+      "check_id": "H091-SP02",
+      "claims": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "sources": [
+        "논문 TXT 33–151행 및 1009–1012행",
+        "PDF 1–6·12쪽의 방법·Figure 1–4·Eq.1–9"
+      ],
+      "result": "RFL 32→10, q/P, 사용자 threshold, ε=0.5, H²의 K-means와 mask를 대조했다. C05의 t=1 고정 표현을 통상 1로 보완했다. Eq.3의 j′ 표기는 HTML/TXT와 PDF에 있으며 오류로 남기지 않았다."
+    },
+    {
+      "check_id": "H091-SP03",
+      "claims": [
+        10,
+        11,
+        12,
+        28
+      ],
+      "sources": [
+        "논문 TXT 120–150·742–745·774–775·1010–1012행",
+        "PDF 5·6·8·9·12쪽, Eq.6/8/9/10/11·Figure 5",
+        "원81 보고서의 DGCformer 선택/학습 독립성 제한"
+      ],
+      "result": "복합 손실과 통합 end-to-end 미래 과제를 함께 보존했다. K 선택 공백으로 누수·완전 독립·미분 가능 K-means 중 어느 것도 단정하지 않았다. C12의 mask 행 표현을 벡터 성분으로 수정했다."
+    },
+    {
+      "check_id": "H091-SP04",
+      "claims": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "sources": [
+        "논문 TXT 675–679·927–1012행, 원81 31행",
+        "HTML Table 1 caption 및 전체 표 compact 재추출",
+        "PDF 6·7·11·12쪽, Table 1/5·Appendix A/C"
+      ],
+      "result": "8개 데이터셋·정규화·길이·분할 수·architecture·환경을 대조했다. 원81의 도로 교통 포함을 후속 정정한다. Seed·학습률·epoch·반복 분산·K 선택 분할·총비용은 확인되지 않는 상태로 보존했다."
+    },
+    {
+      "check_id": "H091-SP05",
+      "claims": [
+        19,
+        20,
+        21,
+        22
+      ],
+      "sources": [
+        "HTML Table 1의 전체 35행 compact 재추출 및 인쇄값 448개/강조 flag 448개 대조",
+        "PDF 7쪽 Table 1 전체 시각 대조",
+        "공개 Decimal 재계산 도구와 저장 감사 결과"
+      ],
+      "result": "7모델×64비교의 전사·집계를 확인했다. DGCformer 원문/강조57, 동률 포함 최저54, 단독48과 비최저10·비최저 굵기3·최저 비굵기7을 구별한다. 반올림 전 값이나 저자의 집계 과정·의도는 미확인이다."
+    },
+    {
+      "check_id": "H091-SP06",
+      "claims": [
+        23,
+        24
+      ],
+      "sources": [
+        "논문 TXT 680–773·940–994행",
+        "HTML Table 2–5 구조 및 caption 재확인",
+        "PDF 7·8·11쪽"
+      ],
+      "result": "GCL/RFL의 MAE 악화·동률, DTW 비교8값, 0.380/0.379 및 512/720 차이, caption의 look-back 표현을 확인했다. 조건이 다른 표를 동일 실행으로 통일하지 않는다."
+    },
+    {
+      "check_id": "H091-SP07",
+      "claims": [
+        25,
+        26
+      ],
+      "sources": [
+        "HTML Figure 1–7의 media14 참조와 caption",
+        "논문 TXT 41–82·683·1019–1027행",
+        "PDF 1·2·3·4·8·13·14쪽의 그림을 작성 후 다시 읽음"
+      ],
+      "result": "그룹 동기와 mask 흐름, Figure 7 네 패널의 약550 spike 누락을 확인했다. 그림에서 원시 숫자·인과·유의성·전체 성능 순위를 추정하지 않는다. HTML media와 PDF의 바이트 동일성은 확인하지 않았다."
+    },
+    {
+      "check_id": "H091-SP08",
+      "claims": [
+        27,
+        30
+      ],
+      "sources": [
+        "논문 방법·실험 및 확인된 설정 공백",
+        "원81 보고서 1–15·27–39·85–103행, H090의 이미 검수된 RCTL/MAC 조건"
+      ],
+      "result": "Transformer mask와 RCTL 독립 적합, 논문 정규화 지표와 과거 TabICL 지표, 정적 산술과 모델 실행을 구별했다. 새 실험 조건은 제안이며 실행 권한이나 실행 결과로 바꾸지 않는다."
+    }
+  ],
+  "actual_postdraft_text_reads": [
+    {
+      "source_id": "SRC-0062845",
+      "line_ranges": [
+        [
+          1,
+          151
+        ],
+        [
+          675,
+          776
+        ],
+        [
+          909,
+          1053
+        ]
+      ],
+      "full_second_read": false
+    },
+    {
+      "source_id": "SRC-0062847",
+      "line_ranges": [
+        [
+          1,
+          109
+        ]
+      ],
+      "full_second_read": true
+    },
+    {
+      "source_id": "SRC-0022042",
+      "line_ranges": [
+        [
+          1,
+          15
+        ],
+        [
+          27,
+          39
+        ],
+        [
+          85,
+          103
+        ]
+      ],
+      "full_second_read": false
+    },
+    {
+      "source_id": "SRC-0022608",
+      "line_ranges": [
+        [
+          1,
+          53
+        ]
+      ],
+      "full_second_read": true
+    }
+  ],
+  "HTML_Table1_all_rows_and_bold_reextracted": true,
+  "display_values_crosschecked": 448,
+  "bold_flags_crosschecked": 448,
+  "postdraft_visual_PDF_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14
+  ],
+  "full_second_read_all_sources": false,
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "new_model_runs": 0,
+  "checked_at_utc": "2026-10-11T00:03:19.561529+00:00"
+}

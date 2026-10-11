@@ -1,0 +1,273 @@
+{
+  "source_id": "SRC-0062844",
+  "source_sha256": "a9e148b828ecb7118b5111cec5421d16407749b2c488a97516d22f4521545d6b",
+  "scope": "인쇄된 소수와 HTML 굵기만 비교한다. 원시 결과나 모델 재현이 아니다.",
+  "cases": 64,
+  "reported_counts": {
+    "DGCformer": 57,
+    "PatchTST": 4,
+    "Crossformer": 1,
+    "DLinear": 4,
+    "Autoformer": 0,
+    "Informer": 0,
+    "MTGNN": 0
+  },
+  "top1_including_ties": {
+    "DGCformer": 54,
+    "PatchTST": 9,
+    "Crossformer": 1,
+    "DLinear": 6,
+    "Autoformer": 0,
+    "Informer": 0,
+    "MTGNN": 0
+  },
+  "strict_top1": {
+    "DGCformer": 48,
+    "PatchTST": 5,
+    "Crossformer": 1,
+    "DLinear": 4,
+    "Autoformer": 0,
+    "Informer": 0,
+    "MTGNN": 0
+  },
+  "HTML_bold_counts": {
+    "DGCformer": 57,
+    "PatchTST": 4,
+    "Crossformer": 1,
+    "DLinear": 4,
+    "Autoformer": 0,
+    "Informer": 0,
+    "MTGNN": 0
+  },
+  "DGCformer_nonminimum": [
+    {
+      "dataset": "ETTh1",
+      "horizon": 336,
+      "metric": "MAE",
+      "model": "DGCformer",
+      "value": "0.454",
+      "minimum": "0.451",
+      "minimum_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 96,
+      "metric": "MSE",
+      "model": "DGCformer",
+      "value": "0.327",
+      "minimum": "0.320",
+      "minimum_models": [
+        "Crossformer"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 96,
+      "metric": "MAE",
+      "model": "DGCformer",
+      "value": "0.367",
+      "minimum": "0.360",
+      "minimum_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "ETTm1",
+      "horizon": 720,
+      "metric": "MAE",
+      "model": "DGCformer",
+      "value": "0.439",
+      "minimum": "0.438",
+      "minimum_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "ETTm2",
+      "horizon": 720,
+      "metric": "MSE",
+      "model": "DGCformer",
+      "value": "0.401",
+      "minimum": "0.400",
+      "minimum_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 192,
+      "metric": "MSE",
+      "model": "DGCformer",
+      "value": "0.225",
+      "minimum": "0.224",
+      "minimum_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 720,
+      "metric": "MSE",
+      "model": "DGCformer",
+      "value": "0.350",
+      "minimum": "0.345",
+      "minimum_models": [
+        "DLinear"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 336,
+      "metric": "MSE",
+      "model": "DGCformer",
+      "value": "0.210",
+      "minimum": "0.209",
+      "minimum_models": [
+        "DLinear"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 720,
+      "metric": "MSE",
+      "model": "DGCformer",
+      "value": "0.259",
+      "minimum": "0.245",
+      "minimum_models": [
+        "DLinear"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 720,
+      "metric": "MAE",
+      "model": "DGCformer",
+      "value": "0.344",
+      "minimum": "0.333",
+      "minimum_models": [
+        "DLinear"
+      ]
+    }
+  ],
+  "bold_but_not_display_minimum": [
+    {
+      "dataset": "ETTm1",
+      "horizon": 720,
+      "metric": "MAE",
+      "model": "DGCformer",
+      "value": "0.439",
+      "minimum": "0.438",
+      "minimum_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 720,
+      "metric": "MSE",
+      "model": "DGCformer",
+      "value": "0.350",
+      "minimum": "0.345",
+      "minimum_models": [
+        "DLinear"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 336,
+      "metric": "MSE",
+      "model": "DGCformer",
+      "value": "0.210",
+      "minimum": "0.209",
+      "minimum_models": [
+        "DLinear"
+      ]
+    }
+  ],
+  "minimum_not_bold": [
+    {
+      "dataset": "ETTm1",
+      "horizon": 720,
+      "metric": "MAE",
+      "model": "PatchTST",
+      "value": "0.438",
+      "minimum": "0.438",
+      "minimum_models": [
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "EXC",
+      "horizon": 96,
+      "metric": "MSE",
+      "model": "PatchTST",
+      "value": "0.081",
+      "minimum": "0.081",
+      "minimum_models": [
+        "DGCformer",
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 96,
+      "metric": "MAE",
+      "model": "PatchTST",
+      "value": "0.221",
+      "minimum": "0.221",
+      "minimum_models": [
+        "DGCformer",
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 192,
+      "metric": "MAE",
+      "model": "PatchTST",
+      "value": "0.259",
+      "minimum": "0.259",
+      "minimum_models": [
+        "DGCformer",
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 720,
+      "metric": "MSE",
+      "model": "DLinear",
+      "value": "0.345",
+      "minimum": "0.345",
+      "minimum_models": [
+        "DLinear"
+      ]
+    },
+    {
+      "dataset": "WTH",
+      "horizon": 720,
+      "metric": "MAE",
+      "model": "PatchTST",
+      "value": "0.346",
+      "minimum": "0.346",
+      "minimum_models": [
+        "DGCformer",
+        "PatchTST"
+      ]
+    },
+    {
+      "dataset": "ECL",
+      "horizon": 336,
+      "metric": "MSE",
+      "model": "DLinear",
+      "value": "0.209",
+      "minimum": "0.209",
+      "minimum_models": [
+        "DLinear"
+      ]
+    }
+  ],
+  "new_model_runs": 0
+}
