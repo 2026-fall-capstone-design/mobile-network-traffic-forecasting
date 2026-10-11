@@ -88,6 +88,77 @@ footer { max-width: 1180px; padding: 32px 28px; margin: auto; display: flex; jus
   footer { padding: 28px 18px; flex-direction: column; gap: 8px; }
   .record dl { grid-template-columns: 80px 1fr; gap: 8px 12px; }
 }
+
+/*비주얼/
 .sub-title { font-size: 16px; margin: 28px 0 4px; letter-spacing: -.02em; }
 .chart-wrap.small { height: 200px; }
 .metric-chart { margin-bottom: 20px; padding: 20px 24px; }
+
+/*디자인*/
+/* ===== 스타일 업그레이드 ===== */
+:root {
+  --paper: #f3f6f4;
+  --ink: #0f1f1d;
+  --accent: #0e6b5c;
+  --shadow: 0 1px 2px rgba(15, 31, 29, .04), 0 8px 24px rgba(15, 31, 29, .06);
+}
+body {
+  font-family: "Pretendard Variable", Pretendard, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(1000px 420px at 85% -80px, rgba(14, 107, 92, .10), transparent 70%),
+    var(--paper);
+}
+
+/* 상단바: 유리 느낌 */
+.topbar {
+  position: sticky; top: 0; z-index: 5; max-width: none;
+  padding: 16px max(28px, calc((100% - 1124px) / 2));
+  background: rgba(243, 246, 244, .82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 31, 29, .08);
+}
+.brand-mark { background: linear-gradient(135deg, #0e6b5c, #1a9a84); box-shadow: 0 4px 12px rgba(14, 107, 92, .35); }
+
+/* 히어로 */
+.intro { padding: 84px 0 48px; }
+h1 {
+  font-size: clamp(36px, 5.2vw, 62px);
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: 1.15;
+  background: linear-gradient(120deg, #0f1f1d 30%, #0e6b5c 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lead { font-size: 18px; max-width: 560px; }
+.eyebrow { font-weight: 700; letter-spacing: .18em; }
+.notice { border-radius: 999px; padding: 7px 16px; }
+
+/* 카드 */
+.panel { border: 1px solid rgba(15, 31, 29, .06); border-radius: 16px; box-shadow: var(--shadow); }
+.filters { padding: 24px 28px; }
+.chart-panel { padding: 32px 34px 26px; }
+.kpi { padding: 26px 28px; transition: transform .2s ease, box-shadow .2s ease; }
+.kpi:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(15, 31, 29, .05), 0 14px 32px rgba(15, 31, 29, .10); }
+.kpi p { font-size: 40px; font-weight: 700; letter-spacing: -.04em; }
+h2 { font-size: 24px; font-weight: 750; }
+
+/* 입력창 */
+select { border-radius: 10px; border: 1px solid #d3ddd8; padding: 11px 30px 11px 14px; transition: border-color .15s, box-shadow .15s; }
+select:hover { border-color: var(--accent); }
+select:focus-visible { box-shadow: 0 0 0 4px rgba(14, 107, 92, .15); }
+
+/* 표 */
+th { background: #f6f9f7; font-size: 12px; letter-spacing: .04em; }
+tbody tr:hover > * { background: #f4f9f6; }
+
+/* 푸터 */
+footer { border-top: 1px solid rgba(15, 31, 29, .08); margin-top: 48px; }
+
+@media (max-width: 700px) {
+  .intro { padding: 48px 0 32px; }
+  .topbar { padding: 14px 18px; }
+  .kpi p { font-size: 26px; }
+  .chart-panel { padding: 24px 18px; }
+}
