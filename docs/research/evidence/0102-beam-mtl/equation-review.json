@@ -1,0 +1,177 @@
+{
+  "batch_id": "history-102",
+  "PDF_source_id": "SRC-0062896",
+  "PDF_source_sha256": "3cef9d625608c90a3cb4d7e402148a12068bb1619c2578825d4eccc32cd454a4",
+  "HTML_source_id": "SRC-0062895",
+  "HTML_source_sha256": "884baa5de8910a9132b8b5c6db5b0a0e3bbd4611b7d1f323c90902460be8d88d",
+  "equations": [
+    {
+      "equation": 1,
+      "PDF_page": 12,
+      "Nuxt_math_id": "m37",
+      "transcription": "z_{t}=σ(W_{z}x_{t}+U_{z}h_{t−1}),",
+      "pixels_read": true
+    },
+    {
+      "equation": 2,
+      "PDF_page": 12,
+      "Nuxt_math_id": "m38",
+      "transcription": "r_{t}=σ(W_{r}x_{t}+U_{r}h_{t−1}),",
+      "pixels_read": true
+    },
+    {
+      "equation": 3,
+      "PDF_page": 12,
+      "Nuxt_math_id": "m39",
+      "transcription": "mover(h,̃)_{t}=tanh(W_{h}x_{t}+U_{h}(r_{t}⊙h_{t−1})),",
+      "pixels_read": true
+    },
+    {
+      "equation": 4,
+      "PDF_page": 12,
+      "Nuxt_math_id": "m40",
+      "transcription": "h_{t}=(1−z_{t})⊙h_{t−1}+z_{t}⊙mover(h,̃)_{t},",
+      "pixels_read": true
+    },
+    {
+      "equation": 5,
+      "PDF_page": 12,
+      "Nuxt_math_id": "m47",
+      "transcription": "mover(y,̂)_{reg}=W_{reg}h_{T}+b_{reg},",
+      "pixels_read": true
+    },
+    {
+      "equation": 6,
+      "PDF_page": 12,
+      "Nuxt_math_id": "m49",
+      "transcription": "mover(y,̂)_{cls}=round(σ(W_{cls}h_{T}+b_{cls})).",
+      "pixels_read": true
+    },
+    {
+      "equation": 7,
+      "PDF_page": 12,
+      "Nuxt_math_id": "m51",
+      "transcription": "mover(y,̂)=mover(y,̂)_{cls}⊙mover(y,̂)_{reg},",
+      "pixels_read": true
+    },
+    {
+      "equation": 8,
+      "PDF_page": 12,
+      "Nuxt_math_id": "m52",
+      "transcription": "L_{total}=λ_{reg}⋅L_{reg}+λ_{cls}⋅L_{cls},",
+      "pixels_read": true
+    },
+    {
+      "equation": 9,
+      "PDF_page": 12,
+      "Nuxt_math_id": "m58",
+      "transcription": "L_{reg}=(1)/(N)∑_{i=1}^{N}(y_{i}−mover(y,̂)_{i})^{2}",
+      "pixels_read": true
+    },
+    {
+      "equation": 10,
+      "PDF_page": 12,
+      "Nuxt_math_id": "m62",
+      "transcription": "L_{cls}=−(1)/(N)∑_{i=1}^{N}[y_{i}⁡log(mover(y,̂)_{i})+(1−y_{i})log(1−mover(y,̂)_{i})]",
+      "pixels_read": true
+    }
+  ],
+  "transcription_notation": "mover(y,̂)와mover(h,̃)는 hat/tilde; _{}는 아래첨자, ^{}는 위첨자다. 괄호·합 범위는 MathML 구조와 PDF를 대조했다.",
+  "algorithm": {
+    "PDF_page": 11,
+    "Nuxt_paragraph_index": 2075,
+    "models": [
+      "GRU-MTL regression head only",
+      "GRU-Linear",
+      "XGBoost(GRU(X))"
+    ],
+    "weight_constraint": "alpha+beta+gamma=1",
+    "steps": [
+      "입력 normalize/scale",
+      "각 기본모델 추론",
+      "가중평균"
+    ],
+    "actual_weights_reported": false
+  },
+  "loss_weight_difference": {
+    "PDF_body_page": 11,
+    "body": "lambda_reg=lambda_cls=1",
+    "Table4_page": 9,
+    "best": "lambda_reg=lambda_cls=0.5",
+    "interpretation": "비율1:1은 같지만 총손실의 공통배율은 다르다. 실제 최적화 영향은 코드 미확인."
+  },
+  "source_equations_executed": false,
+  "postdraft_visual_check_complete": true,
+  "postdraft_visual_check": {
+    "source_id": "SRC-0062896",
+    "source_sha256": "3cef9d625608c90a3cb4d7e402148a12068bb1619c2578825d4eccc32cd454a4",
+    "PDF_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "figures": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "tables": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "equations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "algorithm": [
+      1
+    ],
+    "saved_images": [
+      "SRC-0062899",
+      "SRC-0062900"
+    ],
+    "all_actual_pixels_reread": true,
+    "correction_reread_PDF_pages": [
+      4,
+      5,
+      6,
+      12
+    ],
+    "independent_reviewer": false
+  }
+}

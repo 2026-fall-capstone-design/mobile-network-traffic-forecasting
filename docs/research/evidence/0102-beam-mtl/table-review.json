@@ -1,0 +1,1255 @@
+{
+  "batch_id": "history-102",
+  "source_id": "SRC-0062895",
+  "source_sha256": "884baa5de8910a9132b8b5c6db5b0a0e3bbd4611b7d1f323c90902460be8d88d",
+  "PDF_source_id": "SRC-0062896",
+  "PDF_source_sha256": "3cef9d625608c90a3cb4d7e402148a12068bb1619c2578825d4eccc32cd454a4",
+  "tables": [
+    {
+      "table": 1,
+      "source_id": "SRC-0062895",
+      "source_sha256": "884baa5de8910a9132b8b5c6db5b0a0e3bbd4611b7d1f323c90902460be8d88d",
+      "source_line": 90,
+      "xpath": "/html/body/div[1]/div[1]/div/main/div[4]/div[1]/div[5]/div[6]/div[2]/table",
+      "rows": [
+        [
+          {
+            "text": "Hyperparameters",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Linear regression",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "DLinear",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "XGBoost",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "ESN",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "LSTM",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MTL",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Input Sequence Length",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "168, 24, 8",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "168, 24, 8",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "168, 24, 8",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "168, 24, 8",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "168, 24, 8",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "168, 24, 8",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Hidden Dimension",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1,024",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1,024",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1,024",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1,024",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1,024",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1,024",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Network Architecture",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "GRU + Linear",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "GRU + Linear",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "GRU + XGBoost",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "ESN core",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "LSTM + Linear",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "GRU, Linear, Classifier",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Activation Function",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "ReLU",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "ReLu",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "-",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "tanh",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "tanh",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "ReLU/Linear",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Optimizer",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Adam",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Adam",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Adam",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Adam",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Adam",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Adam",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Learning Rate",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.01",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.0001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.1",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.000001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.0001",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.001",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Batch Size",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "128",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "128",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "128",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "128",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "128",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "128",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Epochs",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1,500",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "500",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1,500",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "5,000",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1,500",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "1,500",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Evaluation Metrics",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MAE, MSE, RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MAE, MSE, RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MAE, MSE, RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MAE, MSE, RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MAE, MSE, RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MAE, MSE, RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ]
+    },
+    {
+      "table": 2,
+      "source_id": "SRC-0062895",
+      "source_sha256": "884baa5de8910a9132b8b5c6db5b0a0e3bbd4611b7d1f323c90902460be8d88d",
+      "source_line": 90,
+      "xpath": "/html/body/div[1]/div[1]/div/main/div[4]/div[1]/div[5]/div[7]/div[2]/table",
+      "rows": [
+        [
+          {
+            "text": "Metrics",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Sequence length",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Linear regression",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "DLinear",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "XGBoost",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "ESN",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "LSTM",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MTL",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "MAE",
+            "rowspan": 3,
+            "colspan": 1
+          },
+          {
+            "text": "168",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.218503",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.238085",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.230860",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.264141",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.355919",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.213631",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "24",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.239661",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.286313",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.225731",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.264349",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.301782",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.300096",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "8",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.277397",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.274060",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.227612",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.268062",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.316045",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.282097",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "MSE",
+            "rowspan": 3,
+            "colspan": 1
+          },
+          {
+            "text": "168",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.273377",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.324395",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.299680",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.389497",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.743190",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.249026",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "24",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.361508",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.550637",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.291654",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.367124",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.503964",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.733608",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "8",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.479330",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.398813",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.270044",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.383942",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.587777",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.494261",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "RMSE",
+            "rowspan": 3,
+            "colspan": 1
+          },
+          {
+            "text": "168",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.522855",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.569557",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.547430",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.624097",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.862085",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.499025",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "24",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.601255",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.742049",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.540050",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.605908",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.709904",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.856509",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "8",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.692336",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.631516",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.519658",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.619631",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.766666",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.703037",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ]
+    },
+    {
+      "table": 3,
+      "source_id": "SRC-0062895",
+      "source_sha256": "884baa5de8910a9132b8b5c6db5b0a0e3bbd4611b7d1f323c90902460be8d88d",
+      "source_line": 90,
+      "xpath": "/html/body/div[1]/div[1]/div/main/div[4]/div[1]/div[5]/div[8]/div[2]/table",
+      "rows": [
+        [
+          {
+            "text": "Target",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Hist. Avg",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "iTransformer",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "PatchTST",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "DLinear",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "Transformer",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Test 1",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.2108",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.1967",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.1973",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.2005",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.2166",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Test 2",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.2431",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.2348",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.2343",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.2352",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.2331",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ]
+    },
+    {
+      "table": 4,
+      "source_id": "SRC-0062895",
+      "source_sha256": "884baa5de8910a9132b8b5c6db5b0a0e3bbd4611b7d1f323c90902460be8d88d",
+      "source_line": 90,
+      "xpath": "/html/body/div[1]/div[1]/div/main/div[4]/div[1]/div[5]/div[13]/div[2]/table",
+      "rows": [
+        [
+          {
+            "text": "Configuration",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MAE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Classification-only (, )",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.398",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.667",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.816",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Regression-only (, )",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.257",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.405",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.636",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.218",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.272",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.521",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.219",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.272",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.521",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "Balanced Multitask (, )",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.213",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.249",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.499",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.224",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.281",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.531",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ]
+    },
+    {
+      "table": 5,
+      "source_id": "SRC-0062895",
+      "source_sha256": "884baa5de8910a9132b8b5c6db5b0a0e3bbd4611b7d1f323c90902460be8d88d",
+      "source_line": 90,
+      "xpath": "/html/body/div[1]/div[1]/div/main/div[4]/div[1]/div[5]/div[15]/div[2]/table",
+      "rows": [
+        [
+          {
+            "text": "Sequence_Length",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MAE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "MSE",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "RMSE",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "168 (without ensemble)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.218503",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.249026",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.499025",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ],
+        [
+          {
+            "text": "168 (with ensemble)",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.210520",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.246709",
+            "rowspan": 1,
+            "colspan": 1
+          },
+          {
+            "text": "0.496698",
+            "rowspan": 1,
+            "colspan": 1
+          }
+        ]
+      ]
+    }
+  ],
+  "PDF_pages_by_table": {
+    "1": 6,
+    "2": 7,
+    "3": 7,
+    "4": 9,
+    "5": 9
+  },
+  "table4_lambda_columns": [
+    "lambda_cls",
+    "lambda_reg"
+  ],
+  "table4_lambda_rows": [
+    [
+      "1",
+      "0"
+    ],
+    [
+      "0",
+      "1"
+    ],
+    [
+      "0.1",
+      "1"
+    ],
+    [
+      "0.5",
+      "1"
+    ],
+    [
+      "0.5",
+      "0.5"
+    ],
+    [
+      "2.0",
+      "1"
+    ]
+  ],
+  "table4_math_ids": [
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103
+  ],
+  "table4_scope": "DOM에서빈기호는Nuxt m92–m103과PDF9쪽으로보완;숫자셀은DOM/저장TXT/PDF대조",
+  "postdraft_visual_check_complete": true,
+  "postdraft_visual_check": {
+    "source_id": "SRC-0062896",
+    "source_sha256": "3cef9d625608c90a3cb4d7e402148a12068bb1619c2578825d4eccc32cd454a4",
+    "PDF_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "figures": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "tables": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "equations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "algorithm": [
+      1
+    ],
+    "saved_images": [
+      "SRC-0062899",
+      "SRC-0062900"
+    ],
+    "all_actual_pixels_reread": true,
+    "correction_reread_PDF_pages": [
+      4,
+      5,
+      6,
+      12
+    ],
+    "independent_reviewer": false
+  }
+}

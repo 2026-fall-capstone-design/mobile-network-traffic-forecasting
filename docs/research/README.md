@@ -245,3 +245,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [CESNET·ISP 원문 대조](records/0100-cesnet-isp-data-semantics.md)에서99.94%의 분모, 수집 장애와 zero fill, trimmed 표와 극단값 그림, IP 성능·few-shot·비용의 적용 범위를 확인할 수 있다.
 
 [Citywide DenseNet의 적용 범위](records/0101-citywide-densenet-scope.md)에서 SMS·통화의 시간 단위 예측, 최근/일주기 입력, fusion 비교와 현재 Internet·cell 공유 연구에 인용할 한계를 확인할 수 있다.
+
+[Beam GRU-MTL 검수](records/0102-beam-mtl-evidence.md)에서 발생/양head·hard gate·재귀 예측과 성능 표의 내부 차이를 확인할 수 있다.

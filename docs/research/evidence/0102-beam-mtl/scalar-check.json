@@ -1,0 +1,82 @@
+{
+  "batch_id": "history-102",
+  "purpose": "저장 표 숫자와 분모의 산술 검수",
+  "new_model_runs": 0,
+  "independent_reproduction": false,
+  "rows": [
+    {
+      "name": "MTL_8_to_168_MAE_reduction",
+      "baseline": ".282097",
+      "comparison": ".213631",
+      "formula": "100 * (baseline - comparison) / baseline",
+      "percent": "24.27037508374778888112954055",
+      "source_cells": "Table2 MAE MTL 8h→168h",
+      "interpretation": "분모8h MAE; 초록56%감소와 다름"
+    },
+    {
+      "name": "MTL_168_to_8_MAE_increase",
+      "baseline": ".213631",
+      "comparison": ".282097",
+      "formula": "100 * (baseline - comparison) / baseline",
+      "percent": "-32.04871952104329427845209731",
+      "source_cells": "Table2 MAE MTL 168h→8h",
+      "interpretation": "음의감소율의부호를뒤집으면 증가율; 본문56%증가와 다름"
+    },
+    {
+      "name": "ensemble_vs_Table2_MTL168",
+      "baseline": ".213631",
+      "comparison": ".210520",
+      "formula": "100 * (baseline - comparison) / baseline",
+      "percent": "1.456249327110765759650986982",
+      "source_cells": "Table2 MTL168 MAE; Table5 with ensemble MAE",
+      "interpretation": "1.456%가량, 논문1.45% 근사와 가까움"
+    },
+    {
+      "name": "ensemble_vs_Table5_without",
+      "baseline": ".218503",
+      "comparison": ".210520",
+      "formula": "100 * (baseline - comparison) / baseline",
+      "percent": "3.653496748328398237095142858",
+      "source_cells": "Table5 MAE without→with",
+      "interpretation": "다른분모: 약3.65%; without행모델불명"
+    },
+    {
+      "name": "ensemble_vs_LSTM168",
+      "baseline": ".355919",
+      "comparison": ".210520",
+      "formula": "100 * (baseline - comparison) / baseline",
+      "percent": "40.85171064202810189958951334",
+      "source_cells": "Table2 LSTM168; Table5 with168 MAE",
+      "interpretation": "LSTM분모로약40.85%; 일괄45%와다름"
+    },
+    {
+      "name": "ensemble_vs_ESN168",
+      "baseline": ".264141",
+      "comparison": ".210520",
+      "formula": "100 * (baseline - comparison) / baseline",
+      "percent": "20.30014272680121601720293328",
+      "source_cells": "Table2 ESN168; Table5 with168 MAE",
+      "interpretation": "ESN분모로약20.3%; 일괄45%와다름"
+    },
+    {
+      "name": "balanced_vs_regression_only",
+      "baseline": ".257",
+      "comparison": ".213",
+      "formula": "100 * (baseline - comparison) / baseline",
+      "percent": "17.12062256809338521400778210",
+      "source_cells": "Table4 MAE regonly→balanced",
+      "interpretation": "표에표시된반올림값의산술;독립실험추정치아님"
+    }
+  ],
+  "sparsity": {
+    "zero_beams": "915",
+    "total_beams": "2880",
+    "formula": "100 * 915 / 2880",
+    "percent": "31.77083333333333333333333333",
+    "location": "PDFp3§1.1 말미; Fig5p4; Nuxt m6"
+  },
+  "limitations": [
+    "표의 표시값으로만 계산; 원예측/반복분산/유의성/실제모델설정 미검증.",
+    "동일h행간의 비교이며Table3Test1/2와순위합치지않음."
+  ]
+}

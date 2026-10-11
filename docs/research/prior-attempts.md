@@ -487,3 +487,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## Citywide의 희소성·fusion을 cell 공유 설계에 인용하려는 경우
 
 [H101](records/0101-citywide-densenet-scope.md)의 SMS/Call·hourly 집계, 마지막7일 평가, 최근3시간/이전3일 입력을 확인한다. Fig.3 막대의 정확값·오차막대·cell별 손해는 확보되지 않았다. 새로운 공유 결정을 주장하려면 현재 채널의 실제 손해와 기존 예측 입력·fusion 대비 차이를 따로 보여야 한다.
+
+## 발생·양 공동 학습이나 ensemble을 새로 제안하려는 경우
+
+[H102](records/0102-beam-mtl-evidence.md)의 기존 공유GRU·두head·hard gate·recursive 평가부터 확인한다. 입력 길이56% 개선이나 ensemble8시간60% 수치를 그대로 재인용하지 않는다. 현재 관측 손해와 새로운 공유 결정의 차이를 먼저 적는다.

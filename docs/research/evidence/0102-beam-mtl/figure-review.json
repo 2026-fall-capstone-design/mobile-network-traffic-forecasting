@@ -1,0 +1,177 @@
+{
+  "batch_id": "history-102",
+  "source_id": "SRC-0062896",
+  "source_sha256": "3cef9d625608c90a3cb4d7e402148a12068bb1619c2578825d4eccc32cd454a4",
+  "figures": [
+    {
+      "figure": 1,
+      "PDF_page": 2,
+      "observation": "도식·caption은BS당3users/각32beams,본문은BS당3cells/각32beams. 관측 단위 용어 차이를 보존한다.",
+      "pixels_read": true
+    },
+    {
+      "figure": 2,
+      "PDF_page": 3,
+      "observation": "0_0_0과0_0_10의4metric,총8패널. 가로축Hour·세로0–1눈금, 0구간과spike. scaler fit은 그림으로 확인 불가.",
+      "pixels_read": true
+    },
+    {
+      "figure": 3,
+      "PDF_page": 3,
+      "observation": "0_1_5와1_0_13의4metric8패널. 0구간과활성peak, 그림의0이누락인지무통신인지독립확인하지않았다.",
+      "pixels_read": true
+    },
+    {
+      "figure": 4,
+      "PDF_page": 4,
+      "observation": "1_1_29와2_2_15의4metric8패널. 2_2_15에서긴낮은활동구간이보이나원인은미확인.",
+      "pixels_read": true
+    },
+    {
+      "figure": 5,
+      "PDF_page": 4,
+      "observation": "a는평균zero/nonzero개수, b는840sample별zero비율. b의세로눈금은25–50%; 정확극값을역산하거나본문약20%~40%초과와동일범위로놓지않음.",
+      "pixels_read": true
+    },
+    {
+      "figure": 6,
+      "PDF_page": 4,
+      "observation": "672×2880 training matrix→GRU→linear regression/binary classification→원소곱. training전체와개별window길이를구별한다.",
+      "pixels_read": true
+    },
+    {
+      "figure": 7,
+      "PDF_page": 5,
+      "observation": "840×2880 dataset을4주training과5주차testing으로나누는block diagram. GRU두head도식은Fig6이다.",
+      "pixels_read": true
+    },
+    {
+      "figure": 8,
+      "PDF_page": 5,
+      "observation": "왼쪽training sliding windows,오른쪽testing에서예측값을다음입력으로재사용. 5주차재귀평가와관측갱신1-step을구별한다.",
+      "pixels_read": true
+    },
+    {
+      "figure": 9,
+      "PDF_page": 6,
+      "observation": "beam들을열로둔5주matrix, 위4주는training, 아래crosshatched영역은5주차groundtruth. 실제시간정렬검증을대신하지않음.",
+      "pixels_read": true
+    },
+    {
+      "figure": 10,
+      "PDF_page": 6,
+      "observation": "4th week of training data→pre-trained model→예측Yhat, groundtruthY로평가하는testing block diagram. PDF13쪽본문의Figures9/10 각각소개순서는캡션과달라 실제그림·캡션을좌표로보존.",
+      "pixels_read": true
+    },
+    {
+      "figure": 11,
+      "PDF_page": 7,
+      "observation": "DLinear/XGBoost/Linear/MTL의Sample111첫100dimensions 네패널. GroundTruth파랑/Prediction주황, 일부높은peak를MTL도과소추정한다.",
+      "pixels_read": true
+    },
+    {
+      "figure": 12,
+      "PDF_page": 8,
+      "observation": "ESN/LSTM의동일Sample111첫100dimensions. 일부큰peak누락과다른dimension과대예측; 전체beam/반복분포아님.",
+      "pixels_read": true
+    },
+    {
+      "figure": 13,
+      "PDF_page": 8,
+      "observation": "ensemble의동일Sample111첫100dimensions. 큰peak를모두복원하지못하며시간축100step의그림이아니다.",
+      "pixels_read": true
+    }
+  ],
+  "saved_images": [
+    {
+      "source_id": "SRC-0062899",
+      "source_sha256": "40c2adc5a7863f407fabe93990cf461c3b684045eace783e6328166e20e7a435",
+      "PDF_page": 12,
+      "full_pixels_read": true,
+      "same_visible_paper_content": true
+    },
+    {
+      "source_id": "SRC-0062900",
+      "source_sha256": "4c02cb2f49522ed842ced7731ea061f36fb981214da0844e64f98da72142417e",
+      "PDF_page": 9,
+      "full_pixels_read": true,
+      "same_visible_paper_content": true
+    }
+  ],
+  "render_method": "Poppler150dpi;17쪽 렌더 stderr없음. 저장PNG2장의원픽셀도대조.",
+  "postdraft_visual_check_complete": true,
+  "digitized_numeric_results": false,
+  "independent_reproduction": false,
+  "postdraft_visual_check": {
+    "source_id": "SRC-0062896",
+    "source_sha256": "3cef9d625608c90a3cb4d7e402148a12068bb1619c2578825d4eccc32cd454a4",
+    "PDF_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "figures": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "tables": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "equations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "algorithm": [
+      1
+    ],
+    "saved_images": [
+      "SRC-0062899",
+      "SRC-0062900"
+    ],
+    "all_actual_pixels_reread": true,
+    "correction_reread_PDF_pages": [
+      4,
+      5,
+      6,
+      12
+    ],
+    "independent_reviewer": false
+  }
+}
