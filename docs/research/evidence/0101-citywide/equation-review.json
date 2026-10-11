@@ -1,0 +1,92 @@
+{
+  "batch_id": "history-101",
+  "source_id": "SRC-0062903",
+  "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+  "equations": [
+    {
+      "equation": 1,
+      "PDF_page": 2,
+      "meaning": "(T−τ)HW를 분모로 시간·행·열의 x_t/x_(t−τ)를 합한 평균 비율. 0 분모 처리 규칙은 미기록.",
+      "pixels_read": true
+    },
+    {
+      "equation": 2,
+      "PDF_page": 2,
+      "meaning": "공분산을 두 표준편차의 곱으로 나눈 공간 Pearson 계수. Eq1과 다른 통계.",
+      "pixels_read": true
+    },
+    {
+      "equation": 3,
+      "PDF_page": 3,
+      "meaning": "closeness 경로의 각 층은 이전 모든 층의 feature map을 이어 붙여 비선형 변환한다.",
+      "pixels_read": true
+    },
+    {
+      "equation": 4,
+      "PDF_page": 3,
+      "meaning": "period 경로도 같은 형식의 dense 연결을 사용한다.",
+      "pixels_read": true
+    },
+    {
+      "equation": 5,
+      "PDF_page": 3,
+      "meaning": "W_c와W_d를 각 경로 최종 feature map에 Hadamard 곱한 뒤 더한다.",
+      "pixels_read": true
+    },
+    {
+      "equation": 6,
+      "PDF_page": 3,
+      "meaning": "융합 결과에 sigmoid를 적용해 X_t를 예측한다.",
+      "pixels_read": true
+    },
+    {
+      "equation": 7,
+      "PDF_page": 3,
+      "meaning": "저자는 L(θ)=argmin_θ ||예측−실제||² 형태로 쓴다. 목적함수와 argmin 표기를 임의로 고쳐 실행 코드와 같다고 단정하지 않는다.",
+      "pixels_read": true
+    },
+    {
+      "equation": 8,
+      "PDF_page": 3,
+      "meaning": "H×W개 cell의 제곱 오차 평균에 제곱근을 취한 RMSE. 시간·in/out 채널 집계는 이 식에 나타나지 않는다.",
+      "pixels_read": true
+    }
+  ],
+  "source_equations_executed": false,
+  "postdraft_visual_check_complete": true,
+  "postdraft_visual_check": {
+    "source_id": "SRC-0062903",
+    "source_sha256": "1e8437cef6cc5381019f16558bab8ee66123d0032218cf801a4ac591c7f93e7d",
+    "PDF_pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "figures": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "equations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "saved_image": "SRC-0062905",
+    "saved_image_sha256": "6f46f3c8b418c3758c6f9f42233f1c0f1a1b91bcbe6f0243ef845a1e5a59d4c7",
+    "all_actual_pixels_reread": true,
+    "correction_reread_PDF_pages": [
+      2,
+      4
+    ],
+    "independent_reviewer": false
+  }
+}
