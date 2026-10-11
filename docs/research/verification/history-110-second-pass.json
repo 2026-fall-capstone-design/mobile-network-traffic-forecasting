@@ -1,0 +1,297 @@
+{
+  "batch_id": "history-110",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T11:15:23.314941+00:00",
+  "claims_checked": 26,
+  "checks": [
+    {
+      "check_id": "H110-SP01",
+      "claims": [
+        1,
+        2,
+        17,
+        18,
+        26
+      ],
+      "finding": "9고유/16경로·기존 결과 종합·중간문서와 연구완료·운영제약 미응답·후속8미독을 원문과 대조. snapshot20파일 해시는 본문/시각 독해로 세지 않음."
+    },
+    {
+      "check_id": "H110-SP02",
+      "claims": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "finding": "원74 4cell/28열/context256/뒤168시간과 원80 16cell/168시간/129분위수 평균의 구분, teacher 객체·같은partition5방법·cell6153 반례 확인. 최초 실패 assert는 당시 보고이며 실패판 코드/로그 미확보."
+    },
+    {
+      "check_id": "H110-SP03",
+      "claims": [
+        8,
+        9,
+        10
+      ],
+      "finding": "RCTL480시간·2seed·K4 표4값/8조건 요약·paired 퍼센트 복사 일치,6/7cell 개선,globalK1 보조 기준,개발 구간 처리. 저장 float비율 차이를 숨기지 않고 두 자리7.02/5.08% 일치 확인."
+    },
+    {
+      "check_id": "H110-SP04",
+      "claims": [
+        11,
+        12,
+        13,
+        19
+      ],
+      "finding": "직접예측/공동학습 연결의 미확인·가까운 방법의 재인용·시계열 겹침과 미래 누수·hourly 활동cell/UPC비재현·Tab checkpoint와 RCTL Torch 학습 경로를 구별."
+    },
+    {
+      "check_id": "H110-SP05",
+      "claims": [
+        14,
+        15,
+        16
+      ],
+      "finding": "N3개/M256/Q64/k16의 작업량21정수·표9값 재계산. own-query/NM/context재준비 및 후보탐색 비용 분리. 무방향 Nk/2나 시간 실측으로 확대하지 않음."
+    },
+    {
+      "check_id": "H110-SP06",
+      "claims": [
+        20,
+        25
+      ],
+      "finding": "인용11해시 모두 기존 보존본에 대응;현재 예산원장만 당시판과 다르며 보호기준은 불변. 당시ledger5포인터 재독,원문9개/상대링크7개 사본 보정범위 확인."
+    },
+    {
+      "check_id": "H110-SP07",
+      "claims": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "finding": "생성/보관코드 정적 독해; evidence-only의 JSON쓰기와 출력 덮어쓰기,자동검사와 고정 시각보고값,첫9쪽 빈페이지 보고·후속5쪽미독 구별.20파일 크기/해시 일치와 manifest자체 제외 확인."
+    }
+  ],
+  "initial_draft_record_sha256": "95168af670b6826872223ea3962c1b8e0fbebd5e1af303498841db572913af06",
+  "corrected_record_sha256": "8db23a7e0bb8da47342783790a43b4953b278fa94eedead21cb05160200d5acc",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0022054": [
+      [
+        1,
+        25
+      ]
+    ],
+    "SRC-0022053": [
+      [
+        1,
+        38
+      ]
+    ],
+    "SRC-0000125": [
+      [
+        1,
+        137
+      ]
+    ],
+    "SRC-0022052": [
+      [
+        1,
+        316
+      ]
+    ],
+    "SRC-0022051": [
+      [
+        1,
+        21
+      ]
+    ],
+    "SRC-0022549": [
+      [
+        1,
+        91
+      ],
+      [
+        192,
+        248
+      ],
+      [
+        329,
+        360
+      ]
+    ],
+    "SRC-0023233": [
+      [
+        1,
+        97
+      ]
+    ],
+    "SRC-0022050": [
+      [
+        1,
+        7
+      ]
+    ],
+    "SRC-0001495": [
+      [
+        1,
+        108
+      ]
+    ]
+  },
+  "actual_postdraft_JSON_pointers": {
+    "SRC-0029276": [
+      "/teacher",
+      "/settings/cell_ids",
+      "/settings/calibration_count",
+      "/settings/assessment_count",
+      "/settings/seed",
+      "/settings/Tab_output",
+      "/settings/contexts",
+      "/settings/query_rows",
+      "/settings/simple_fits",
+      "/settings/RCTL_fits",
+      "/settings/independent_test"
+    ],
+    "SRC-0025157": [
+      "/teacher_query_metrics",
+      "/ARI_vs_TabICL",
+      "/cell_ids",
+      "/partitions",
+      "/final_RCTL_performance_validated",
+      "/independent_test",
+      "/weights_or_buffers_updated",
+      "/clustering_uses_RCTL",
+      "/settings/time_splits",
+      "/settings/K",
+      "/settings/cluster_size",
+      "/settings/new_Tab_contexts",
+      "/settings/new_Tab_queries",
+      "/settings/new_RCTL_fits",
+      "/settings/optimizer_steps",
+      "/settings/Tab_mean"
+    ],
+    "SRC-0030280": [
+      "/execution",
+      "/test_period_becomes_development_if_used_for_new_design",
+      "/all_predictions_finite",
+      "/all_test_rows_covered_once_per_condition",
+      "/metrics/0/method",
+      "/metrics/0/seed",
+      "/metrics/0/models",
+      "/metrics/0/mean_scaled_mae",
+      "/metrics/1/method",
+      "/metrics/1/seed",
+      "/metrics/1/models",
+      "/metrics/1/mean_scaled_mae",
+      "/metrics/2/method",
+      "/metrics/2/seed",
+      "/metrics/2/models",
+      "/metrics/2/mean_scaled_mae",
+      "/metrics/3/method",
+      "/metrics/3/seed",
+      "/metrics/3/models",
+      "/metrics/3/mean_scaled_mae",
+      "/metrics/4/method",
+      "/metrics/4/seed",
+      "/metrics/4/models",
+      "/metrics/4/mean_scaled_mae",
+      "/metrics/5/method",
+      "/metrics/5/seed",
+      "/metrics/5/models",
+      "/metrics/5/mean_scaled_mae",
+      "/metrics/6/method",
+      "/metrics/6/seed",
+      "/metrics/6/models",
+      "/metrics/6/mean_scaled_mae",
+      "/metrics/7/method",
+      "/metrics/7/seed",
+      "/metrics/7/models",
+      "/metrics/7/mean_scaled_mae",
+      "/paired_comparisons/0/candidate",
+      "/paired_comparisons/0/comparison",
+      "/paired_comparisons/0/relative_mae_change_percent",
+      "/paired_comparisons/0/cell_improvements",
+      "/paired_comparisons/0/cell_count",
+      "/paired_comparisons/1/candidate",
+      "/paired_comparisons/1/comparison",
+      "/paired_comparisons/1/relative_mae_change_percent",
+      "/paired_comparisons/1/cell_improvements",
+      "/paired_comparisons/1/cell_count",
+      "/paired_comparisons/2/candidate",
+      "/paired_comparisons/2/comparison",
+      "/paired_comparisons/2/relative_mae_change_percent",
+      "/paired_comparisons/2/cell_improvements",
+      "/paired_comparisons/2/cell_count",
+      "/paired_comparisons/3/candidate",
+      "/paired_comparisons/3/comparison",
+      "/paired_comparisons/3/relative_mae_change_percent",
+      "/paired_comparisons/3/cell_improvements",
+      "/paired_comparisons/3/cell_count",
+      "/paired_comparisons/4/candidate",
+      "/paired_comparisons/4/comparison",
+      "/paired_comparisons/4/relative_mae_change_percent",
+      "/paired_comparisons/4/cell_improvements",
+      "/paired_comparisons/4/cell_count",
+      "/paired_comparisons/5/candidate",
+      "/paired_comparisons/5/comparison",
+      "/paired_comparisons/5/relative_mae_change_percent",
+      "/paired_comparisons/5/cell_improvements",
+      "/paired_comparisons/5/cell_count"
+    ],
+    "SRC-0025150": [
+      "/used",
+      "/caps",
+      "/remaining_count_budgets",
+      "/budget_resets",
+      "/new_RCTL_fits_permitted_under_current_cap"
+    ]
+  },
+  "all_claim_semantic_locations_actually_reread": true,
+  "unresolved_output_truncation": false,
+  "corrections": [
+    {
+      "claim_id": "H110-C22",
+      "before": "verify_and_archive_84.py의 자동 검사는 PDF5쪽·쪽당 글자 수·일부 용어·로컬 링크·DOCX zip·원장 해시 등을 확인한다. all_five_pages_visually_inspected, statistics_checked 등 일부 값은 저장 코드에 직접 적힌 보고값이다. 이 true만으로 현재의 시각·의미 검수가 완료됐다고 보지 않는다.",
+      "after": "verify_and_archive_84.py의 자동 검사는 PDF5쪽·쪽당 글자 수·일부 용어·로컬 링크·DOCX zip·원장 해시 등을 확인한다. all_five_pages_visually_reviewed, source_statistics_checked_against_saved_JSON 등 일부 값은 저장 코드에 직접 적힌 보고값이다. 이 true만으로 현재의 시각·의미 검수가 완료됐다고 보지 않는다.",
+      "reason": "검증 JSON과 코드의 정확한 필드명으로 맞췄다."
+    },
+    {
+      "claim_id": "H110-C23",
+      "before": "findings와 검증 JSON은 첫 렌더가 문서 격자의 영향으로9쪽·여백 문제를 보였고 수정 뒤5쪽을 모두 확인했다고 기록한다. 이것은 당시 검수 보고다. 이번 묶음에서는 DOCX와 PDF·PNG의 실제 본문·페이지를 아직 읽지 않았고, 최초9쪽의 저장 증거도 재검증하지 않았다.",
+      "after": "findings와 검증 JSON은 첫 렌더가 쪽나눔·문서 격자의 영향으로9쪽·빈 페이지 문제를 보였고 수정 뒤5쪽을 모두 확인했다고 기록한다. 이것은 당시 검수 보고다. 이번 묶음에서는 DOCX와 PDF·PNG의 실제 본문·페이지를 아직 읽지 않았고, 최초9쪽의 저장 증거도 재검증하지 않았다.",
+      "reason": "당시 findings30행과 검증 JSON은 일반 여백 문제가 아니라 빈 페이지 및 쪽나눔을 기록한다."
+    },
+    {
+      "claim_id": "H110-C03",
+      "type": "archive_evidence_link",
+      "before": [
+        "../records/0072-0075-output-compression.md#c07",
+        "../records/0072-0075-output-compression.md#c08"
+      ],
+      "after": [
+        "../records/0072-0075-output-compression.md"
+      ],
+      "reason": "H070의 C07/C08은 문단 표기이며 HTML anchor가 없다. 실제 존재하는 문서로 연결하고 문단 위치를 별도 기록했다. 문단 자체도 작성 후 다시 읽었다."
+    }
+  ],
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "new_model_runs": 0,
+  "new_performance_measurements": 0,
+  "stored_numerical_comparisons_performed": true,
+  "workload_integer_arithmetic": true,
+  "postdraft_primary_lines": 929,
+  "postdraft_reused_pointers": 98,
+  "coverage_increment_applied": false,
+  "archive_record_reuse": [
+    "H070 C07/C08/first65lines",
+    "H001 first80lines",
+    "H088 source-checked record scopes"
+  ],
+  "limitations": [
+    "DOCX/PDF/PNG5/progress8그룹은 미독",
+    "최초 실패 assert판과9쪽 렌더 세부는 미확인"
+  ]
+}

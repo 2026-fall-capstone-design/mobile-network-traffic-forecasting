@@ -1,0 +1,308 @@
+{
+  "batch_id": "history-110",
+  "success": true,
+  "operation": "기존 결과의 JSON 일치·표의 반올림·정수 산술·해시만 비교. 모델과 원본 코드는 실행하지 않았다.",
+  "source_hashes": {
+    "SRC-0022052": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+    "SRC-0029276": "17ff03927948011db346a9da925702dfa4257d88ba781abb66a78729455e1d48",
+    "SRC-0025157": "e4e3053023c49d55d535dddc35e030e84ba6ad30ec2d0de17ad31427edea0b60",
+    "SRC-0030280": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab",
+    "SRC-0025150": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9"
+  },
+  "copied_JSON_sections_equal": [
+    "direct_prediction_74",
+    "direct_prediction_80",
+    "partition_80_ARI",
+    "RCTL_metrics",
+    "RCTL_Tab_vs_empirical_percent"
+  ],
+  "direct74_table_6_decimals": [
+    {
+      "method": "Ridge",
+      "MSE": "0.014360",
+      "MAE": "0.089565"
+    },
+    {
+      "method": "HGB",
+      "MSE": "0.011925",
+      "MAE": "0.078400"
+    },
+    {
+      "method": "TabICL",
+      "MSE": "0.009580",
+      "MAE": "0.066828"
+    }
+  ],
+  "graph80_identical_partitions": [
+    "input_only",
+    "raw_joint",
+    "TabICL",
+    "Ridge",
+    "HGB"
+  ],
+  "graph80_cell_MSE": {
+    "Ridge": {
+      "better_cells": [
+        3737,
+        3745,
+        3753,
+        3765,
+        4537,
+        4545,
+        4553,
+        4565,
+        5337,
+        5345,
+        5353,
+        5365,
+        6137,
+        6145,
+        6165
+      ],
+      "not_better": [
+        {
+          "cell": 6153,
+          "TabICL": 0.030753034736637846,
+          "comparison": 0.02469025153199379
+        }
+      ]
+    },
+    "HGB": {
+      "better_cells": [
+        3737,
+        3745,
+        3753,
+        3765,
+        4537,
+        4545,
+        4553,
+        4565,
+        5337,
+        5345,
+        5353,
+        5365,
+        6137,
+        6145,
+        6153,
+        6165
+      ],
+      "not_better": []
+    }
+  },
+  "RCTL_Tab_vs_empirical": [
+    {
+      "seed": 20260925,
+      "stored_percent": 7.019254207611084,
+      "ratio_recomputed_float64": 7.019243587144897,
+      "round_2": "7.02",
+      "cell_improvements": 6,
+      "cell_count": 16
+    },
+    {
+      "seed": 20260926,
+      "stored_percent": 5.08136510848999,
+      "ratio_recomputed_float64": 5.081366325145753,
+      "round_2": "5.08",
+      "cell_improvements": 7,
+      "cell_count": 16
+    }
+  ],
+  "workload": [
+    {
+      "N": 128,
+      "M": 256,
+      "Q": 64,
+      "k": 16,
+      "recomputed": {
+        "own_query_rows": 8192,
+        "all_cross_query_rows": 1040384,
+        "directed_candidate_query_rows_bound": 131072,
+        "unique_candidate_edges_bound": 2048,
+        "both_directions_candidate_query_rows_bound": 262144,
+        "context_preparations_if_each_cell_context_is_fixed": 128,
+        "context_rows_across_fixed_cell_contexts": 32768
+      },
+      "runtime_measured": false
+    },
+    {
+      "N": 1024,
+      "M": 256,
+      "Q": 64,
+      "k": 16,
+      "recomputed": {
+        "own_query_rows": 65536,
+        "all_cross_query_rows": 67043328,
+        "directed_candidate_query_rows_bound": 1048576,
+        "unique_candidate_edges_bound": 16384,
+        "both_directions_candidate_query_rows_bound": 2097152,
+        "context_preparations_if_each_cell_context_is_fixed": 1024,
+        "context_rows_across_fixed_cell_contexts": 262144
+      },
+      "runtime_measured": false
+    },
+    {
+      "N": 10000,
+      "M": 256,
+      "Q": 64,
+      "k": 16,
+      "recomputed": {
+        "own_query_rows": 640000,
+        "all_cross_query_rows": 6399360000,
+        "directed_candidate_query_rows_bound": 10240000,
+        "unique_candidate_edges_bound": 160000,
+        "both_directions_candidate_query_rows_bound": 20480000,
+        "context_preparations_if_each_cell_context_is_fixed": 10000,
+        "context_rows_across_fixed_cell_contexts": 2560000
+      },
+      "runtime_measured": false
+    }
+  ],
+  "workload_scalars_checked": 21,
+  "workload_table_cells_checked": 9,
+  "direct_table_values_checked": 6,
+  "RCTL_table_values_checked": 4,
+  "reference_hashes": [
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/summary.json",
+      "sha256": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab",
+      "current_original_sha256": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab",
+      "current_named_path_matches": true,
+      "existing_archive": {
+        "source_id": "SRC-0030280",
+        "archive_path": "../0003-0007/originals/SRC-0030280.json"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    },
+    {
+      "path": "tmp/redesign_20260925/results/output_compression_74/result.json",
+      "sha256": "17ff03927948011db346a9da925702dfa4257d88ba781abb66a78729455e1d48",
+      "current_original_sha256": "17ff03927948011db346a9da925702dfa4257d88ba781abb66a78729455e1d48",
+      "current_named_path_matches": true,
+      "existing_archive": {
+        "source_id": "SRC-0029276",
+        "archive_path": "../0072-0075-output-compression/originals/SRC-0029276.json"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    },
+    {
+      "path": "tmp/redesign_20260925/results/conditional_graph_80/result.json",
+      "sha256": "e4e3053023c49d55d535dddc35e030e84ba6ad30ec2d0de17ad31427edea0b60",
+      "current_original_sha256": "e4e3053023c49d55d535dddc35e030e84ba6ad30ec2d0de17ad31427edea0b60",
+      "current_named_path_matches": true,
+      "existing_archive": {
+        "source_id": "SRC-0025157",
+        "archive_path": "../0088-conditional-graph/originals/SRC-0025157.json"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    },
+    {
+      "path": "tmp/redesign_20260925/cumulative_execution_budget.json",
+      "sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+      "current_original_sha256": "17a549fcf926e534eaecd4efd278fe4e13f7c7a13e74805c21059a2d6fc59243",
+      "current_named_path_matches": false,
+      "existing_archive": {
+        "source_id": "SRC-0025150",
+        "archive_path": "../0088-conditional-graph/originals/SRC-0025150.json"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    },
+    {
+      "path": "tmp/redesign_20260925/05_literature_decision_audit.md",
+      "sha256": "32712471012db2732e9698513ce2579d254ba624143825e24d47ad3c53336562",
+      "current_original_sha256": "32712471012db2732e9698513ce2579d254ba624143825e24d47ad3c53336562",
+      "current_named_path_matches": true,
+      "existing_archive": {
+        "source_id": "SRC-0020826",
+        "archive_path": "../0005/originals/SRC-0020826.md.txt"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    },
+    {
+      "path": "tmp/redesign_20260925/07_rctl_candidate_decision.md",
+      "sha256": "1f5f362e21ff67f903270200aa6d5bdc9e879e95a54e4ce5f2f4b1a05a2e08ce",
+      "current_original_sha256": "1f5f362e21ff67f903270200aa6d5bdc9e879e95a54e4ce5f2f4b1a05a2e08ce",
+      "current_named_path_matches": true,
+      "existing_archive": {
+        "source_id": "SRC-0020828",
+        "archive_path": "../0003-0007/originals/SRC-0020828.md.txt"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    },
+    {
+      "path": "tmp/redesign_20260925/74_output_compression_findings.md",
+      "sha256": "5b14728f7173a7250cbabb0ac5045c1a593e36579920cd1def2fd229be7689f5",
+      "current_original_sha256": "5b14728f7173a7250cbabb0ac5045c1a593e36579920cd1def2fd229be7689f5",
+      "current_named_path_matches": true,
+      "existing_archive": {
+        "source_id": "SRC-0022026",
+        "archive_path": "../0072-0075-output-compression/originals/SRC-0022026.md.txt"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    },
+    {
+      "path": "tmp/redesign_20260925/80_conditional_graph_findings.md",
+      "sha256": "9c65a007a6f08a589df19445e0d9abf78bf897de4f1f4902194daaa9468c9d98",
+      "current_original_sha256": "9c65a007a6f08a589df19445e0d9abf78bf897de4f1f4902194daaa9468c9d98",
+      "current_named_path_matches": true,
+      "existing_archive": {
+        "source_id": "SRC-0022039",
+        "archive_path": "../0088-conditional-graph/originals/SRC-0022039.md.txt"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    },
+    {
+      "path": "tmp/redesign_20260925/81_input_partition_findings.md",
+      "sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+      "current_original_sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956",
+      "current_named_path_matches": true,
+      "existing_archive": {
+        "source_id": "SRC-0022042",
+        "archive_path": "../0090-input-partition/originals/SRC-0022042.md.txt"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    },
+    {
+      "path": "tmp/redesign_20260925/82_intermittence_findings.md",
+      "sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+      "current_original_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+      "current_named_path_matches": true,
+      "existing_archive": {
+        "source_id": "SRC-0022045",
+        "archive_path": "../0099-intermittence/originals/SRC-0022045.md.txt"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    },
+    {
+      "path": "tmp/redesign_20260925/83_maintenance_findings.md",
+      "sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+      "current_original_sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e",
+      "current_named_path_matches": true,
+      "existing_archive": {
+        "source_id": "SRC-0022048",
+        "archive_path": "../0105-joint-update-cost/originals/SRC-0022048.md.txt"
+      },
+      "machine_hash_check_only": true,
+      "new_credit": 0
+    }
+  ],
+  "ledger_remaining": {
+    "TabICL_contexts": 11,
+    "TabICL_query_rows": 20640,
+    "RCTL_fits": 0
+  },
+  "no_new_performance_measurement": true,
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "postdraft_checked": true
+}

@@ -1,0 +1,360 @@
+"""Build an evidence-only interim report. No model imports or execution."""
+from pathlib import Path
+import argparse
+import hashlib
+import json
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT / 'tmp/redesign_20260925'
+NAME = 'TabICLv2_재설계_근거정리와_남은핵심판단_중간검토'
+REPORT = ROOT / 'output/research' / (NAME + '.md')
+DOCX = ROOT / 'output/docx' / (NAME + '.docx')
+EXPECTED_LEDGER = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def read_json(relative):
+    return json.loads((WORK / relative).read_text(encoding='utf-8-sig'))
+
+
+def collect_evidence():
+    ledger = WORK / 'cumulative_execution_budget.json'
+    assert digest(ledger) == EXPECTED_LEDGER
+    rctl = read_json('results/rctl_pilot/summary.json')
+    output = read_json('results/output_compression_74/result.json')
+    graph = read_json('results/conditional_graph_80/result.json')
+    rows = {(r['method'], r['seed']): r for r in rctl['metrics']}
+    assert rctl['execution']['fits_completed'] == 29
+    assert rctl['all_predictions_finite']
+    assert rctl['all_test_rows_covered_once_per_condition']
+    assert rctl['execution']['RCTL_outputs_not_used_for_clustering']
+    assert not graph['final_RCTL_performance_validated']
+    assert not graph['independent_test']
+    assert not graph['weights_or_buffers_updated']
+    assert not graph['clustering_uses_RCTL']
+    assert all(graph['ARI_vs_TabICL'][k] == 1.0 for k in ('input_only', 'raw_joint', 'TabICL', 'Ridge', 'HGB'))
+    cost = []
+    for n in (128, 1024, 10000):
+        q, k, m = 64, 16, 256
+        edges_bound = min(n * k, n * (n - 1) // 2)
+        cost.append({
+            'N': n, 'M': m, 'Q': q, 'k': k,
+            'own_query_rows': n * q,
+            'all_cross_query_rows': n * (n - 1) * q,
+            'directed_candidate_query_rows_bound': n * k * q,
+            'unique_candidate_edges_bound': edges_bound,
+            'both_directions_candidate_query_rows_bound': 2 * edges_bound * q,
+            'context_preparations_if_each_cell_context_is_fixed': n,
+            'context_rows_across_fixed_cell_contexts': n * m,
+            'runtime_measured': False,
+        })
+    sources = [
+        'results/rctl_pilot/summary.json',
+        'results/output_compression_74/result.json',
+        'results/conditional_graph_80/result.json',
+        'cumulative_execution_budget.json',
+        '05_literature_decision_audit.md',
+        '07_rctl_candidate_decision.md',
+        '74_output_compression_findings.md',
+        '80_conditional_graph_findings.md',
+        '81_input_partition_findings.md',
+        '82_intermittence_findings.md',
+        '83_maintenance_findings.md',
+    ]
+    evidence = {
+        'date': '2026-09-26',
+        'purpose': 'interim evidence synthesis; not an accepted research direction',
+        'new_model_calls': 0,
+        'new_data_or_prediction_diagnostics': 0,
+        'new_workload_integer_arithmetic': True,
+        'ledger_sha256': EXPECTED_LEDGER,
+        'direct_prediction_74': output['teacher'],
+        'direct_prediction_80': graph['teacher_query_metrics'],
+        'partition_80_ARI': graph['ARI_vs_TabICL'],
+        'RCTL_metrics': [{k: r[k] for k in ('method', 'seed', 'models', 'mean_scaled_mae')} for r in rctl['metrics']],
+        'RCTL_Tab_vs_empirical_percent': [r['relative_mae_change_percent'] for r in rctl['paired_comparisons'] if r['comparison'].startswith('empirical_risk')],
+        'workload': cost,
+        'source_hashes': [{'path': str((WORK / s).relative_to(ROOT)).replace('\\', '/'), 'sha256': digest(WORK / s)} for s in sources],
+        'completion': {
+            'TabICL_runtime_and_checkpoint_available': True,
+            'direct_prediction_positive_local_evidence': True,
+            'accepted_useful_clustering_decision': False,
+            'validated_RCTL_gain_from_Tab_clustering': False,
+            'final_recommended_direction': False,
+            'fresh_final_test_available_in_current_used_periods': False,
+        },
+    }
+    (WORK / '84_evidence_and_workload.json').write_text(json.dumps(evidence, ensure_ascii=False, indent=2), encoding='utf-8')
+    return evidence, rows
+
+
+def blocks(e, rows):
+    pages = []
+    p = []
+    def add(kind, *args):
+        p.append((kind, *args))
+    add('title', 'TabICLv2 기반 clustering 연구의 근거 검토')
+    add('meta', '교수님 검토용 중간 보고  2026년 9월 26일')
+    add('p', '현재 확인한 결과는 TabICLv2를 예측기로 활용할 가능성을 보여 줍니다. 다만 그 예측을 이용해 cell을 묶는 판단이 기존보다 좋아졌다는 근거는 아직 확보하지 못했습니다. 본 문서는 직접 예측, clustering 결정, 최종 RCTL 성능을 구분하여 재설계의 출발점을 정리한 중간 검토본입니다.')
+    add('heading', '1 현재 근거가 보여 주는 것')
+    add('sub', 'TabICLv2의 직접 예측에는 긍정적인 결과가 있습니다')
+    add('p', 'Milan의 기존 4개 cell에서 모든 예측기에 같은 28개 입력 열과 cell당 context 256개를 제공했습니다. 최근 이력, 전일·전주 이력, 달력 정보가 포함됩니다. 이후 168시간의 개발 구간에서 얻은 결과는 다음과 같습니다. 수치는 정규화한 활동량 기준이며, 아래에서는 TabICLv2의 mean 출력을 사용했습니다. [실행 기록 74]')
+    add('table', ['예측기', 'MSE', 'MAE'], [[name, f"{e['direct_prediction_74'][key]['MSE']:.6f}", f"{e['direct_prediction_74'][key]['MAE']:.6f}"] for name, key in [('Ridge', 'Ridge'), ('HGB', 'HGB'), ('TabICLv2', 'TabICL')]], [7.8, 4.5, 4.5])
+    add('p', '이 결과는 같은 작은 context에서 입력과 이후 결과의 관계를 추정하는 데 TabICLv2가 도움이 될 수 있다는 근거입니다. 이웃 입력 자체의 효과나 RCTL을 함께 학습할 cell의 선택 효과를 확인한 결과는 아닙니다.')
+    add('sub', '같은 수의 cluster를 비교한 RCTL 결과는 다릅니다')
+    add('p', '별도의 16개 cell 확인에서는 cluster 4개, 각 cluster 4개 cell로 소속과 설정을 먼저 고정한 뒤 RCTL을 학습했습니다. 표는 같은 480시간에서 구한 cell 평균 정규화 MAE입니다. 두 seed는 학습의 변동을 살핀 것이며, 두 독립 데이터셋을 뜻하지 않습니다. [실행 기록 07]')
+    add('table', ['소속 결정 방법', 'seed 20260925', 'seed 20260926'], [
+        ['실제 관측값 기반 risk', f"{rows[('empirical_risk',20260925)]['mean_scaled_mae']:.6f}", f"{rows[('empirical_risk',20260926)]['mean_scaled_mae']:.6f}"],
+        ['TabICLv2 기반 risk', f"{rows[('tabicl_risk',20260925)]['mean_scaled_mae']:.6f}", f"{rows[('tabicl_risk',20260926)]['mean_scaled_mae']:.6f}"],
+    ], [7.8, 4.5, 4.5])
+    add('p', 'TabICLv2 군집안의 오차가 각각 7.02%, 5.08% 컸습니다. 따라서 이 군집안은 채택하지 않습니다. 두 표는 cell, 입력, 기간과 지표가 다르므로 표 사이의 숫자를 직접 비교해서도 안 됩니다.')
+    pages.append(p)
+
+    p = []
+    add('heading', '2 좋은 예측이 좋은 clustering을 뜻하지 않는 이유')
+    add('p', 'TabICLv2가 답해야 하는 첫 질문은 “이 입력 다음에 얼마가 관측되는가”입니다. clustering이 답해야 하는 질문은 “어떤 cell의 자료를 한 RCTL이 함께 학습할 때 유리한가”입니다. 두 번째 질문에는 예측 관계의 차이 외에도 자료의 양, 입력으로 cell을 구별할 수 있는 정도, RCTL의 용량과 학습 방식이 영향을 줍니다.')
+    add('p', '예를 들어 A와 B의 이후 값이 다르더라도 요일과 최근 이력이 두 cell의 상황을 구별해 준다면, 하나의 모델이 서로 다른 결과를 함께 학습할 수 있습니다. 반대로 예측 관계가 비슷해도 이미 충분한 자료가 있거나 두 cell의 자료가 중복되면 합치는 이득이 작을 수 있습니다. 예측값 사이의 거리를 좁히는 것만으로 이 문제를 해결할 수는 없습니다.')
+    add('sub', '실제 소속이 바뀌었는지를 별도로 확인했습니다')
+    add('p', '16개 cell의 후속 확인에서는 관측 입력과 TabICLv2의 예측 평균을 함께 비교하여 군집을 구성했습니다. TabICLv2의 직접 예측 오차는 Ridge와 HGB보다 작았지만, 입력만 이용한 방법, 실제 입력과 정답을 이용한 방법, TabICLv2·Ridge·HGB를 이용한 방법이 모두 같은 소속을 선택했습니다. 이 설정에서는 더 좋은 예측이 새로운 clustering 결정으로 이어지지 않았습니다. [실행 기록 80]')
+    add('sub', '가장 가까운 선행연구와의 연결')
+    add('p', 'HCP 2025는 분리 모델과 합친 모델을 실제 학습하고, 확인용 자료의 손실을 비교하여 병합합니다. 현재 연구처럼 최종 RCTL을 clustering에서 호출하지 않으면 그 비용은 줄일 수 있지만, HCP가 직접 관측한 공동 학습의 효과를 다른 점수가 대신해야 합니다. 이 연결을 생략한 채 “HCP를 더 빠르게 구현했다”고 설명할 수는 없습니다. [1]')
+    add('p', 'RMB-CLE는 task별 모델의 교차 예측 오차로 유사도를 만들고, clustering 뒤에 별도의 최종 예측기를 학습합니다. 따라서 “예측 관계로 묶고 다른 모델로 예측한다”는 구조 자체는 선행연구에 있습니다. TabICLv2로 모델 이름을 바꾸는 것 외에, 어떤 잘못된 병합을 줄이거나 어떤 계산을 절감하는지 제시해야 합니다. [2]')
+    add('p', 'ETAP은 task 간 gradient 유사도와 실제 공동 학습 이득의 차이를 보정합니다. 대리 점수와 최종 성능의 차이가 이미 연구되는 문제라는 뜻입니다. 다만 최종 학습기의 정보를 사용하는 방식을 그대로 가져오면 현재 연구의 RCTL 독립 조건과 맞지 않습니다. [3]')
+    add('p', '네트워크 traffic matrix를 다룬 clustering 연구는 무작위 분할과 global 예측도 비교합니다. 이를 반영해 현재 검토에도 같은 cluster 수의 무작위 분할과 global RCTL을 넣었습니다. 의미 있어 보이는 군집이 강한 단순 대안보다 나은지는 별도로 확인해야 합니다. [4]')
+    pages.append(p)
+
+    p = []
+    add('heading', '3 시간 흐름과 실행 비용에서 유지할 설계')
+    add('sub', '하루와 주간의 흐름을 sample 안에 명시합니다')
+    add('p', '현재 예측 시점에서 관측된 최근 이력에 전일·전주 같은 시간의 이력, 시각과 요일을 함께 제공합니다. 다른 시간대에서 짧은 증가 모양만 비슷한 sample을 모으면 주기적 상황을 놓칠 수 있기 때문입니다. 이 입력 정보는 TabICLv2와 모든 비교 방법에 동일하게 주어야 합니다. 시간·lag 특징의 중요성은 TabPFN-ST-AR를 참고하되, 도로 속도의 결과를 통신 활동량의 성능으로 옮기지는 않습니다. [5]')
+    add('p', '한 sample은 해당 시점까지의 입력과 이후 실제 관측값으로 구성합니다. context에는 두 항목을 함께 주고, query의 실제값은 오차 계산에만 씁니다. query의 예측 시점에 이미 관측된 이력이 context의 과거 정답과 겹치는 것만으로 누출은 아닙니다. 미래 정답이 들어가는 누출과 가까운 시간 sample의 의존성을 구분하며, 의존성을 살피기 위한 간격은 입력 길이와 평가 목적에 맞춰 정합니다.')
+    add('sub', '후보 수는 비싼 검사 전에 제한해야 합니다')
+    add('p', '전체 cell 쌍을 TabICLv2로 검사한 다음 좋은 후보만 남기면 최초 계산량은 줄지 않습니다. 먼저 저렴한 입력 요약으로 cell당 후보를 제한하고, 그 후보에만 추론을 적용해야 합니다. 아래는 cell당 context 256개, query 64개, 방향별 후보 최대 16개를 가정한 작업량입니다. 설정의 최적성이나 실제 실행 시간을 뜻하지 않습니다.')
+    add('table', ['cell 수', '전체 교차 query', '방향별 후보 제한', '후보를 양방향 검사'], [[f"{r['N']:,}", f"{r['all_cross_query_rows']:,}", f"{r['directed_candidate_query_rows_bound']:,}", f"{r['both_directions_candidate_query_rows_bound']:,}"] for r in e['workload']], [2.3, 4.9, 4.8, 4.8])
+    add('note', '단위는 예측할 query 행 수입니다. 자기 context로 자기 query를 평가하는 N×64행은 별도입니다. 양방향 열은 중복을 제거한 후보 쌍마다 양쪽을 검사할 때의 상한입니다.')
+    add('p', '전체 교차 검사는 N×(N−1)×64행, 방향별 후보 검사는 최대 N×16×64행입니다. 후보를 무방향 쌍으로 만든 뒤 양방향으로 검사하면 최대 2×N×16×64행이 됩니다. 한쪽에서 선택한 후보가 반대쪽에서도 선택되었다고 가정해 후보 수를 임의로 절반으로 줄이면 안 됩니다.')
+    add('p', 'cell별 context를 고정한 교차 예측은 준비 결과를 재사용할 수 있습니다. 반면 sample 교체나 cluster 병합으로 context 내용이 바뀌면 새 준비 비용이 생깁니다. 이를 포함하지 않은 호출 수는 전체 비용이 아닙니다. 후보 제한으로 놓친 유용한 조합도 작은 전체 탐색과 비교해야 합니다. 이 절은 재설계의 공통 요건이며, 신규성이 확인된 최종 알고리즘은 아닙니다.')
+    pages.append(p)
+
+    p = []
+    add('heading', '4 아직 필요한 결정과 근거')
+    add('p', '현재 자료에서는 하나의 global RCTL도 강한 기준선이었습니다. 첫 seed의 MAE는 0.071068로, 확인한 4개 cluster 방법보다 작았습니다. 이는 모든 데이터에서 global 모델이 낫다는 결론이 아닙니다. 다만 cluster를 나눠야 하는 이유를 먼저 구체화해야 한다는 결과입니다. 모델 수가 다른 이 비교는 같은 K의 주 비교와 구분합니다. [실행 기록 07]')
+    add('table', ['판단 항목', '현재 확보한 근거', '남은 핵심'], [
+        ['TabICLv2 실행 가능성', '공식 회귀 가중치로 실제 추론', '도시 전체 규모의 비용'],
+        ['직접 예측의 이점', '4개·16개 cell의 국소적 이득', '새 기간과 데이터의 재현성'],
+        ['clustering의 필요성', 'global 및 같은 K 대안 비교', '단순 대안이 남기는 실제 손해'],
+        ['TabICLv2가 바꾸는 결정', '일부 후보는 소속이 변하지 않음', '다른 유용한 결정을 만드는 근거'],
+        ['RCTL 성능과의 연결', '고정 군집안 사후 학습 완료', 'Tab 군집안의 이득은 미확보'],
+        ['신규성과 최종 추천', '근접 방법과 중복 원리 확인', '채택할 새 방향은 미확정'],
+    ], [4.1, 6.3, 6.4])
+    add('sub', '다음 설계를 바꾸는 정보')
+    add('p', '데이터 분리, 모델당 메모리·지연 한도, cell별 갱신 주기처럼 global 모델을 쓰기 어려운 실제 조건이 있다면, clustering의 목표를 그 조건 아래의 비용과 정확도로 정의할 수 있습니다. 아직 해당 조건은 제공되지 않았습니다. 연구를 성립시키기 위해 임의의 운영 제약을 가정하지 않습니다.')
+    add('p', '그러한 제약을 전제로 하지 않는다면, 계절·lag·정규화와 global 학습을 적용한 뒤에도 남는 손해를 새로운 직접 근거에서 찾아야 합니다. 기존 개발 구간의 유리한 cell만 골라내거나 이미 탈락한 점수에 보정항을 붙이는 방식은 다음 후보의 근거가 되지 않습니다.')
+    add('sub', '남은 실행 범위')
+    add('p', '누적 예산에서 TabICLv2는 context 11개와 query 20,640행이 남아 있고, 추가 RCTL 학습은 허용되지 않습니다. 이번 정리에서는 모델을 새로 실행하지 않았습니다. 따라서 새 규칙을 제안하더라도 RCTL 성능 확인을 완료했다고 표시할 수 없습니다. 먼저 저장된 근거와 원문으로 판단할 수 있는 결정을 특정해야 합니다.')
+    add('p', '현재까지 사용한 Milan 기간은 후속 설계에 참조되었으므로 개발 자료입니다. 최종 추천 방향과 독립적인 최종 평가의 요건은 남아 있습니다. 본 문서는 그 요건을 충족했다고 주장하는 연구계획서가 아니라, 확인된 사실과 미해결 연결을 교수님께 검토받기 위한 자료입니다.')
+    pages.append(p)
+
+    p = []
+    add('heading', '5 주요 출처와 재현 기록')
+    add('p', '아래 원문은 방법의 근거이고, 로컬 실행 기록은 이번 자료에서 얻은 관찰의 근거입니다. 개별 선행연구의 성공을 현재 TabICLv2 군집안의 성공으로 합산하지 않았습니다. 상세 식·절·코드 위치는 연결된 검토 기록에 보존했습니다.')
+    refs = [
+        ('[1] López-Oriona, Sun, Vilar. Improving the prediction accuracy of statistical models: A new hierarchical clustering approach. Statistics and Computing, 2025. §2, Algorithm 1, Theorem 1–2.', ROOT / 'tmp/preflight_20260925/sources/HCP_2025.txt'),
+        ('[2] RMB-CLE. arXiv:2602.14231v1. §3.1–3.3, 식 5–13.', 'https://arxiv.org/abs/2602.14231v1'),
+        ('[3] ETAP. arXiv:2602.18591v1. §3.1–3.3.', 'https://arxiv.org/abs/2602.18591v1'),
+        ('[4] On the Role of Time Series Clustering in Traffic Matrix Prediction. arXiv:2604.26081v1.', 'https://arxiv.org/abs/2604.26081v1'),
+        ('[5] Architectural Bias vs. Feature Engineering: Deconstructing the Limits of Tabular Foundation Models in Traffic Forecasting. SMBD 2025.', 'https://doi.org/10.1145/3768740.3768798'),
+        ('[6] From Tables to Time: Extending TabPFN-v2 to Time Series Forecasting. arXiv:2501.02945v4. §3과 §5. 해당 논문 버전의 외삽 결과이며 최신 TabPFN 전체의 한계로 일반화하지 않음.', 'https://arxiv.org/abs/2501.02945v4'),
+        ('[7] Time-Series Foundation Models for ISP Traffic Forecasting. arXiv:2511.17529v2. ISP 계층·단위·horizon을 구분한 평가.', 'https://arxiv.org/abs/2511.17529v2'),
+        ('[8] TabICLv2. 회귀 구조와 context 추론의 근거.', 'https://arxiv.org/html/2602.11139v2#S3'),
+    ]
+    for label, target in refs:
+        add('ref', label, str(target))
+    add('sub', '이번 판단을 재현할 수 있는 기록')
+    for label, relative in [
+        ('선행연구의 식과 알고리즘 및 설계 반영 기록', '05_literature_decision_audit.md'),
+        ('16개 cell의 고정 군집안과 RCTL 비교 결과', '07_rctl_candidate_decision.md'),
+        ('4개 cell의 직접 예측과 출력 압축 비교', '74_output_compression_findings.md'),
+        ('16개 cell의 직접 예측과 동일 소속 확인', '80_conditional_graph_findings.md'),
+        ('20개 결정 계열의 검토 및 재진입 조건', 'candidate_decision_index.md'),
+        ('문서 수치의 원자료 hash와 작업량 계산', '84_evidence_and_workload.json'),
+    ]:
+        add('ref', label, str(WORK / relative))
+    add('note', '실행 자료는 시간별 가공 Milan Internet activity이며 원 논문의 10분 단위 실험을 그대로 재현한 것은 아닙니다. 16개 cell의 표본은 비교적 활동량이 큰 영역입니다. PCC balanced 비교도 원본 UPC 전체 재현과 구분합니다.')
+    add('note', '회귀 가중치: tabicl-regressor-v2-20260212.ckpt. 공식 코드 commit: 0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3. RCTL은 기존 핵심 구조의 Torch port로, 복사 가중치의 forward 일치를 확인했으며 학습 경로의 동일성까지 주장하지 않습니다.')
+    pages.append(p)
+    return pages
+
+
+def write_report(pages):
+    lines = []
+    for page in pages:
+        for block in page:
+            kind, *args = block
+            if kind == 'table':
+                headers, rows, widths = args
+                lines += ['| ' + ' | '.join(headers) + ' |', '| ' + ' | '.join(['---'] * len(headers)) + ' |']
+                lines += ['| ' + ' | '.join(row) + ' |' for row in rows]
+            elif kind == 'ref':
+                label, target = args
+                target = target.replace('\\', '/')
+                lines.append(f'- [{label}](<{target}>)')
+            else:
+                prefix = {'title': '# ', 'heading': '## ', 'sub': '### '}.get(kind, '')
+                lines.append(prefix + args[0])
+            lines.append('')
+    REPORT.parent.mkdir(exist_ok=True, parents=True)
+    REPORT.write_text('\n'.join(lines), encoding='utf-8')
+    assert '\uc0ac\ub840' not in REPORT.read_text(encoding='utf-8')
+
+
+def write_docx(pages):
+    from docx import Document
+    from docx.shared import Cm, Pt, RGBColor
+    from docx.oxml import OxmlElement
+    from docx.oxml.ns import qn
+    from docx.enum.text import WD_ALIGN_PARAGRAPH
+    from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
+    from docx.opc.constants import RELATIONSHIP_TYPE as RT
+
+    doc = Document()
+    section = doc.sections[0]
+    section.page_width, section.page_height = Cm(21), Cm(29.7)
+    section.top_margin, section.bottom_margin = Cm(1.8), Cm(1.8)
+    section.left_margin, section.right_margin = Cm(2.1), Cm(2.1)
+    section.header_distance, section.footer_distance = Cm(.7), Cm(.8)
+    for name, size in [('Normal', 10.5), ('Title', 20), ('Heading 1', 14), ('Heading 2', 11.5)]:
+        s = doc.styles[name]
+        s.font.name = '맑은 고딕'
+        s.font.size = Pt(size)
+        s.font.color.rgb = RGBColor(0, 0, 0)
+        s.element.get_or_add_rPr().rFonts.set(qn('w:eastAsia'), '맑은 고딕')
+        pf = s.paragraph_format
+        pf.line_spacing = Pt(15 if name == 'Normal' else size * 1.3)
+        pf.space_after = Pt(7)
+        pf.widow_control = True
+        if name != 'Normal':
+            s.font.bold = True
+            pf.keep_with_next = True
+            pf.space_before = Pt(10 if name != 'Title' else 0)
+        ppr = s.element.get_or_add_pPr()
+        snap = OxmlElement('w:snapToGrid')
+        snap.set(qn('w:val'), '0')
+        ppr.append(snap)
+        for border in list(ppr.findall(qn('w:pBdr'))):
+            ppr.remove(border)
+    doc.core_properties.title = 'TabICLv2 기반 clustering 연구의 근거 검토'
+    doc.core_properties.subject = '확인된 예측 근거와 미확정 clustering 판단을 구분한 중간 검토'
+    doc.core_properties.author = '연구 검토 자료'
+    footer = section.footer.paragraphs[0]
+    footer.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    footer.add_run('중간 검토본  ·  ').font.size = Pt(9)
+    field = OxmlElement('w:fldSimple')
+    field.set(qn('w:instr'), 'PAGE')
+    footer._p.append(field)
+
+    def link(paragraph, text, url):
+        if not url.startswith('http'):
+            path = Path(url)
+            assert path.exists(), path
+            url = path.as_uri()
+        relationship = paragraph.part.relate_to(url, RT.HYPERLINK, is_external=True)
+        el = OxmlElement('w:hyperlink')
+        el.set(qn('r:id'), relationship)
+        run = OxmlElement('w:r')
+        props = OxmlElement('w:rPr')
+        fonts = OxmlElement('w:rFonts')
+        for attr in ('ascii', 'hAnsi', 'eastAsia'):
+            fonts.set(qn('w:' + attr), '맑은 고딕')
+        props.append(fonts)
+        color = OxmlElement('w:color'); color.set(qn('w:val'), '234E70'); props.append(color)
+        size = OxmlElement('w:sz'); size.set(qn('w:val'), '18'); props.append(size)
+        run.append(props)
+        txt = OxmlElement('w:t'); txt.text = text; run.append(txt)
+        el.append(run); paragraph._p.append(el)
+
+    def table(headers, rows, widths):
+        tbl = doc.add_table(rows=1, cols=len(headers))
+        tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
+        tbl.autofit = False
+        for col, width in zip(tbl.columns, widths):
+            col.width = Cm(width)
+        props = tbl._tbl.tblPr
+        borders = OxmlElement('w:tblBorders')
+        for edge in ('top', 'left', 'bottom', 'right', 'insideH', 'insideV'):
+            el = OxmlElement('w:' + edge)
+            for k, v in [('val', 'single'), ('sz', '4'), ('color', 'D9D9D9')]:
+                el.set(qn('w:' + k), v)
+            borders.append(el)
+        props.append(borders)
+        repeat = OxmlElement('w:tblHeader')
+        tbl.rows[0]._tr.get_or_add_trPr().append(repeat)
+        allrows = [headers] + rows
+        for i, vals in enumerate(allrows):
+            row = tbl.rows[0] if i == 0 else tbl.add_row()
+            row._tr.get_or_add_trPr().append(OxmlElement('w:cantSplit'))
+            for j, val in enumerate(vals):
+                cell = row.cells[j]
+                cell.width = Cm(widths[j])
+                cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+                tcpr = cell._tc.get_or_add_tcPr()
+                margins = OxmlElement('w:tcMar')
+                for edge, twips in [('top','85'),('bottom','85'),('left','95'),('right','95')]:
+                    el = OxmlElement('w:' + edge)
+                    el.set(qn('w:w'), twips); el.set(qn('w:type'), 'dxa'); margins.append(el)
+                tcpr.append(margins)
+                if i == 0:
+                    shade = OxmlElement('w:shd'); shade.set(qn('w:fill'), 'F2F2F2'); tcpr.append(shade)
+                pp = cell.paragraphs[0]
+                pp.paragraph_format.space_after = Pt(0)
+                pp.paragraph_format.line_spacing = Pt(13)
+                if i == 0:
+                    pp.paragraph_format.keep_with_next = True
+                rr = pp.add_run(val)
+                rr.font.size = Pt(9.5)
+                rr.bold = i == 0
+        spacer = doc.add_paragraph()
+        spacer.paragraph_format.space_after = Pt(0)
+        spacer.paragraph_format.line_spacing = Pt(3)
+        spacer.add_run().font.size = Pt(1)
+
+    for page_index, page in enumerate(pages):
+        for block_index, block in enumerate(page):
+            kind, *args = block
+            if kind == 'table':
+                table(*args)
+            elif kind == 'ref':
+                pp = doc.add_paragraph()
+                pp.paragraph_format.space_after = Pt(5)
+                pp.paragraph_format.line_spacing = Pt(12.5)
+                link(pp, args[0], args[1])
+            else:
+                style = {'title': 'Title', 'heading': 'Heading 1', 'sub': 'Heading 2'}.get(kind)
+                pp = doc.add_paragraph(args[0], style=style)
+                if page_index and block_index == 0:
+                    pp.paragraph_format.page_break_before = True
+                if kind in ('meta', 'note'):
+                    for rr in pp.runs:
+                        rr.font.size = Pt(9)
+                    pp.paragraph_format.line_spacing = Pt(12.5)
+                    pp.paragraph_format.space_after = Pt(6)
+    DOCX.parent.mkdir(exist_ok=True, parents=True)
+    doc.save(DOCX)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--evidence-only', action='store_true')
+    options = parser.parse_args()
+    evidence, rctl_rows = collect_evidence()
+    if not options.evidence_only:
+        content = blocks(evidence, rctl_rows)
+        write_report(content)
+        write_docx(content)
+        print(json.dumps({'report': str(REPORT), 'docx': str(DOCX), 'intended_pages': len(content)}, ensure_ascii=False))
+    else:
+        print(json.dumps({'evidence': str(WORK / '84_evidence_and_workload.json'), 'workload': evidence['workload']}, ensure_ascii=False))
+    assert digest(WORK / 'cumulative_execution_budget.json') == EXPECTED_LEDGER
