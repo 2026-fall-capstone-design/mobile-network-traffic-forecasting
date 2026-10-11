@@ -1,0 +1,1358 @@
+{
+  "batch_id": "history-103",
+  "record_path": "../records/0103-deep-renewal-evidence.md",
+  "record_sha256": "106da8f0663ccfd9291018aeee7bd266de3d703d9b26106e765f2c112c1ac7d5",
+  "claims": [
+    {
+      "claim_id": "H103-C01",
+      "title": "당시 질문",
+      "claim": "원기록 82는 발생 조건과 발생량을 구별해 함께 학습할 cell을 정하는 방향을 검토하고, 당시 자료에서는 채택하지 않았다. H103은 그 판단에 인용된 Deep Renewal을 자세히 대조하는 정리 기록이다. 새 실험 103회나 현재 연구 방향의 변경을 뜻하지 않는다.",
+      "record_anchor": "c01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              1,
+              5
+            ],
+            [
+              19,
+              25
+            ],
+            [
+              47,
+              53
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000118",
+          "source_sha256": "2232b32850f8afd3f2c7b14bf8b281a3b947b34bcaaed3c3f2b9d77d772feef2",
+          "line_ranges": [
+            [
+              3,
+              3
+            ],
+            [
+              9,
+              18
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H103-C02",
+      "title": "판본과 확보 이력",
+      "claim": "Türkmen·Januschowski·Wang·Cemgil의 PLOS ONE 16(11):e0259764 논문은 2021-11-29 발표됐다. 저장 HTML/TXT와 snapshot24의 동일해시 사본을 확인했다. 당시 source_manifest의 4항목에는 이 논문이 없어 옛 입수 시각을 검증할 수 없다. 수식·표·그림 보완용 PDF/XML/부록은 2026-10-11 별도로 확보한 출판사 자료다.",
+      "record_anchor": "c02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              95,
+              106
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062906",
+          "source_sha256": "ebef0c0782251603efe4bcb130a279bbcf50d43f17bf19bcad84520d3ae23248",
+          "line_ranges": [
+            [
+              49,
+              72
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062913",
+          "source_sha256": "649223ad3a22f7486a06e70db0aa6718276caaa3418ec75ae8c038c5c993fa34",
+          "line_ranges": [
+            [
+              1,
+              35
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            1
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H103-C03",
+      "title": "대상과 관측 단위",
+      "claim": "대상은 긴 0구간을 갖는 단변량 비음수 정수 수요다. 균일 시간 n과 양의 수요 발생 index i를 구별하고, Q는 발생 간격, M은 양의 수요 크기다. 사용한 Poisson·기하·음이항 분포는 양의 정수 지지집합으로 이동한 형태다. 품목 수요를 현재 Internet activity의 연속값과 같은 관측량으로 취급하지 않는다.",
+      "record_anchor": "c03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              133,
+              140
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            5
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-APP-TEX",
+          "source_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+          "line_ranges": [
+            [
+              194,
+              217
+            ]
+          ],
+          "visual_crosscheck": {
+            "supplement_id": "H103-SUP-APP-PDF",
+            "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+            "PDF_pages": [
+              1
+            ]
+          }
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H103-C04",
+      "title": "Croston의 가정과 갱신",
+      "claim": "Eq. 1a/b는 M과 Q의 지수평활을 따로 갱신한다. Eq. 2의 i.i.d. 모형과 시간의존 갱신 사이의 차이, E[1/Q̂]와 1/E[Q̂]의 차이에서 생기는 역수 편향을 논의한다. SBA 보정(1−α/2)M̂/Q̂는 이 맥락의 근사이며 현재 RCTL의 소속 변경식이 아니다.",
+      "record_anchor": "c04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              139,
+              150
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            6
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H103-C05",
+      "title": "기본 모형",
+      "claim": "Table 1의 Static G-Po/G-NB는 기하 간격과 Poisson/음이항 크기를 쓰고, EWMA G-Po/G-NB는 각각의 평균을 과거 관측으로 갱신한다. Static과 EWMA, 간격 분포와 크기 분포를 별도 축으로 비교해야 어느 변경의 효과인지 알 수 있다.",
+      "record_anchor": "c05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              150,
+              167
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            6,
+            7
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H103-C06",
+      "title": "발생 간격과 hazard",
+      "claim": "h(k)=P(Q=k|Q≥k)는 직전 발생 뒤 k−1기간 동안 새 수요가 없을 때 다음 발생확률이다. 기하분포의 hazard는 일정하지만 음이항 간격은 aging·시간적 clustering·준주기 패턴을 표현할 수 있다. Fig. 1의 평균 5와 dispersion 1.1/4/20 예시는 확률모형의 형태이며 실측 통신 빈도를 측정한 결과가 아니다.",
+      "record_anchor": "c06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              182,
+              198
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            9,
+            10
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H103-C07",
+      "title": "음이항의 매개변수",
+      "claim": "부록 A.1은 Y=X+1, μ>1, ν>1로 정의하고 Var(Y)/(E(Y)−1)=ν를 사용한다. 따라서 이 논문의 NB(μ,ν)를 0부터 시작하는 count 분포나 다른 라이브러리의 인자와 같은 값으로 바로 넣으면 안 된다. 표·그림의 ν는 단순히 분산이나 변동계수라고 읽지 않는다.",
+      "record_anchor": "c07",
+      "source_locations": [
+        {
+          "supplement_id": "H103-SUP-APP-TEX",
+          "source_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+          "line_ranges": [
+            [
+              194,
+              231
+            ]
+          ],
+          "visual_crosscheck": {
+            "supplement_id": "H103-SUP-APP-PDF",
+            "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+            "PDF_pages": [
+              1
+            ]
+          }
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            10
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H103-C08",
+      "title": "장기 수렴 한계",
+      "claim": "간격을 음이항으로 바꾸어도 논문의 positive-support EWMA는 장기적으로 크기와 간격이 1로 수렴하는 문제를 피하지 못한다고 설명한다. 부록 A.3은 해당 구성의 명제·따름정리와 stationary mean 완화 예를 제시하고 Static은 구별한다. 이 설명을 모든 LSTM이 1로 수렴한다는 정리로 확대하지 않으며 증명을 독립 재검증한 것은 아니다.",
+      "record_anchor": "c08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              199,
+              204
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            10,
+            11
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-APP-TEX",
+          "source_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+          "line_ranges": [
+            [
+              265,
+              312
+            ]
+          ],
+          "visual_crosscheck": {
+            "supplement_id": "H103-SUP-APP-PDF",
+            "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+            "PDF_pages": [
+              2
+            ]
+          }
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H103-C09",
+      "title": "RNN이 예측하는 것",
+      "claim": "Eq. 3/4는 hidden state를 LSTM으로 갱신하고 1+softplus 형태의 g로 조건부 평균을 만든다. RNN이 수요 간격·크기의 분포 매개변수를 내고 음의 로그우도로 학습한다는 구성이다. MSE로 단일값만 예측하는 모델이나 활동 여부를 먼저 0/1로 반올림하는 hard gate와 구별한다.",
+      "record_anchor": "c09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              168,
+              175
+            ],
+            [
+              205,
+              212
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            8,
+            11
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H103-C10",
+      "title": "공유 학습과 공변량",
+      "claim": "§4.3과 Table 2는 이전 간격과 크기를 함께 입력하고 추가 공변량을 받을 수 있으며, 여러 SKU에서 LSTM의 Θ를 공유하는 global model이라고 명시한다. 공변량을 넣을 수 있다는 설명이 모든 실험에서 특정 공변량을 실제 사용했다는 증거는 아니다. 어느 cell을 함께 학습할지 고르는 UPC 소속 수정 효과도 여기서 검증하지 않았다.",
+      "record_anchor": "c10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              205,
+              222
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            11,
+            12
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H103-C11",
+      "title": "발생확률과 조건부 평균",
+      "claim": "부록 A.2는 Static 모형의 크기·간격 독립성과 크기의 과거 독립성 아래 다음 수요 평균을 발생확률×양의 수요 평균으로 전개한다. 이는 원기록 82의 확률 곱과 hard gate 구별을 이해하는 근거다. 독립성 없이 같은 단순 분해를 모든 RNN 구현에 적용했다고 주장하지 않는다.",
+      "record_anchor": "c11",
+      "source_locations": [
+        {
+          "supplement_id": "H103-SUP-APP-TEX",
+          "source_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+          "line_ranges": [
+            [
+              233,
+              263
+            ]
+          ],
+          "visual_crosscheck": {
+            "supplement_id": "H103-SUP-APP-PDF",
+            "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+            "PDF_pages": [
+              1,
+              2
+            ]
+          }
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              37,
+              45
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H103-C12",
+      "title": "시간 인덱스의 차이",
+      "claim": "부록 A.2의 P(Q=n−T_i+1 | Q>n−T_i)를 h_Q(n−T_i)로 적은 부분은 자체 h(k)=P(Q=k|Q≥k) 정의와 1만큼 어긋난다. 그 정의를 대입하면 h_Q(n−T_i+1)에 대응한다는 문서 내부 대조다. PDF와 TeX 모두 같은 표기이며 실제 코드의 인덱스 오류를 확인한 것은 아니다.",
+      "record_anchor": "c12",
+      "source_locations": [
+        {
+          "supplement_id": "H103-SUP-APP-TEX",
+          "source_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+          "line_ranges": [
+            [
+              225,
+              231
+            ]
+          ],
+          "visual_crosscheck": {
+            "supplement_id": "H103-SUP-APP-PDF",
+            "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+            "PDF_pages": [
+              1
+            ]
+          }
+        },
+        {
+          "supplement_id": "H103-SUP-APP-TEX",
+          "source_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+          "line_ranges": [
+            [
+              249,
+              260
+            ]
+          ],
+          "visual_crosscheck": {
+            "supplement_id": "H103-SUP-APP-PDF",
+            "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+            "PDF_pages": [
+              2
+            ]
+          }
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            9
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H103-C13",
+      "title": "연속시간 확장",
+      "claim": "§4.4·Table 3은 개별 주문의 정확한 시각을 이용해 Q′를 연속시간 간격으로 바꾸고, 양의 정수 크기는 유지한다. j는 집계된 양수 기간이 아니라 개별 사건 index다. Static E-Po/E-NB와 RNN 확장은 정확한 사건 시각이 있을 때의 대안이며 집계된 Internet activity만으로 그 입력이 확보되지는 않는다.",
+      "record_anchor": "c13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              176,
+              180
+            ],
+            [
+              223,
+              235
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            8,
+            9,
+            12,
+            13
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H103-C14",
+      "title": "합성 실험 조건",
+      "claim": "완전 주기는 10주 분량의 시간별 수요로 간격 20시간·Poisson 평균 5를 설정한다. 교대 사례는 간격 4/16·크기 10이며 Periodic/Alternating을 100회 시뮬레이션했다. Random은 Static G-Po에서 생성한다. 시각 예시의 LSTM은 1층 5 unit이고 음영은 forward sampling의 1–99%구간, 선은 표본 경로 평균이다.",
+      "record_anchor": "c14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              236,
+              270
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            13,
+            14
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H103-C15",
+      "title": "합성 결과의 범위",
+      "claim": "Fig. 2/3은 유연한 간격과 RNN이 주기·교대 패턴을 표현하는 사례다. Table 4의 Periodic P90은 Static G-Po 0.460→Static NB-NB 0.419→RNN NB-NB 0.412지만 RMSE는 1.219→1.181→1.183이다. RNN이 모든 지표에서 최고라는 결과는 아니며, Alternating의 P50도 1.022→1.021 정도다. 이 수치를 실제 통신 자료의 개선율로 옮기지 않는다.",
+      "record_anchor": "c15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              257,
+              270
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            13,
+            14,
+            15
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H103-C16",
+      "title": "기존 수요 자료",
+      "claim": "Car Parts는 2,674개 중 51개월이 완전하고 처음 45개월에 수요가 있는 2,503개, Auto는 3,000개 중 24개월의 intermittent/lumpy 1,227개, RAF는 84개월의 5,000개 품목을 썼다고 보고한다. 모두 현재 cell/beam의 트래픽 실험과 구별되는 재고 수요 자료다.",
+      "record_anchor": "c16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              271,
+              275
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            15,
+            16
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H103-C17",
+      "title": "UCI와 M5 자료",
+      "claim": "UCI는 4,070개 품목의 거래 중 마지막 3개월을 일별 집계하고 처음 30일에 수요가 있으며 전체 기간 구매기록이 90개 미만인 1,381개를 유지했다. M5는 Walmart 제품·점포별 30,490개 일별 시계열, 가장 긴 자료 1,913일이라고 보고한다. UCI의 정확한 주문 시각은 연속시간 실험에도 사용했다.",
+      "record_anchor": "c17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              276,
+              278
+            ],
+            [
+              322,
+              330
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            15,
+            16,
+            20
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H103-C18",
+      "title": "M5 개수 불일치",
+      "claim": "M5 intermittent 개수는 본문 23,401과 Table 5의 23,041이 다르다. lumpy 5,953과 전체 30,490은 같이 보고돼 있다. 저장 HTML 본문과 현재 PDF에서도 같은 차이가 보여 두 값을 보존하며, 어느 값이 실제 전처리 결과인지 임의로 고르지 않는다.",
+      "record_anchor": "c18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              277,
+              278
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0062906",
+          "source_sha256": "ebef0c0782251603efe4bcb130a279bbcf50d43f17bf19bcad84520d3ae23248",
+          "line_ranges": [
+            [
+              1462,
+              1462
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            15,
+            16
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H103-C19",
+      "title": "Auto 통계의 분모",
+      "claim": "Table 5의 Auto는 1,227시계열×24기간인데 issue point 총수 56,133·평균 18.71을 제시한다. 선택된 자료를 분모로 삼으면 가능한 최대 29,448보다 총수가 크고, 56,133/1,227은 약 45.748이다. /3,000은 18.711로 표시 평균과 가깝지만 실제 통계가 원래 3,000개에서 계산됐다는 확인은 아니다.",
+      "record_anchor": "c19",
+      "source_locations": [
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            15,
+            16
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H103-C20",
+      "title": "시간 분할",
+      "claim": "기본 실험은 마지막 6기간을 보류하고 앞 기간으로 학습하는 6-step 예측이다. M5는 마지막 28일과 28일 예측을 사용한다. 품목별 입력 이력과 예측기간을 구별하며, 임의의 시간 섞기나 모든 시점의 관측을 계속 갱신하는 평가로 다시 기술하지 않는다.",
+      "record_anchor": "c20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              279,
+              291
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            16,
+            17
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H103-C21",
+      "title": "기본 학습 설정",
+      "claim": "논문은 Apache MXNet·Gluon Adam·Amazon SageMaker, 기본 학습률 0.1과 Croston α=0.1을 보고한다. 처음 4자료에는 HPO를 하지 않았고 RNN은 1층 20 unit·weight decay 0.01이다. 실제 seed·batch·훈련 로그·정규화 구현은 이 기록에서 확인하지 않았다.",
+      "record_anchor": "c21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              286,
+              289
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            16
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H103-C22",
+      "title": "M5 조정 설정",
+      "claim": "M5는 학습 구간의 20%를 검증 자료로 두고 4개 평가 지표의 단순 평균을 목적값으로 Bayesian HPO를 했다고 보고한다. 학습률·층수·unit·epoch를 조정한 선정 설정은 3층×30 unit·750 epoch·학습률 0.01이다. 서로 척도가 다른 지표 평균의 실제 코드와 검증 시점 배치는 미확인이다.",
+      "record_anchor": "c22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              289,
+              291
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            16
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H103-C23",
+      "title": "평가 지표와 표본",
+      "claim": "실험은 3회 반복의 평균·표준편차를 보고하고 확률모형에서 250개 경로를 표본 추출한다. 점 예측 비교에는 경로 평균을 쓴다. 부록의 P50/P90은 ρ=.5/.9의 2배 pinball loss를 품목×예측기간으로 평균하며, 식에는 수요 합으로 나누는 항이 없다. 이 지표값을 비율 오차로 해석하지 않는다.",
+      "record_anchor": "c23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              290,
+              291
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            16,
+            17
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-APP-TEX",
+          "source_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+          "line_ranges": [
+            [
+              315,
+              336
+            ]
+          ],
+          "visual_crosscheck": {
+            "supplement_id": "H103-SUP-APP-PDF",
+            "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+            "PDF_pages": [
+              3
+            ]
+          }
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H103-C24",
+      "title": "RMSSE 식의 재사용 한계",
+      "claim": "부록 A.4에서 RMSSE라 부르는 식은 분모를 학습 구간의 절대 1차 차분 합 × (1/L′)로 정의하고, 바깥 제곱근 없이 제곱오차/분모를 평균한다. PDF 3쪽과 TeX 339–340행이 일치하므로 추출 누락이 아니다. 이름과 식의 차이를 남기고 실제 평가 코드·표 계산이 어느 정의를 썼는지는 미확인으로 둔다. 표 수치를 임의로 수정하거나 현재 RMSSE와 직접 비교하지 않는다.",
+      "record_anchor": "c24",
+      "source_locations": [
+        {
+          "supplement_id": "H103-SUP-APP-TEX",
+          "source_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+          "line_ranges": [
+            [
+              333,
+              342
+            ]
+          ],
+          "visual_crosscheck": {
+            "supplement_id": "H103-SUP-APP-PDF",
+            "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+            "PDF_pages": [
+              3
+            ]
+          }
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            18,
+            19,
+            20
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H103-C25",
+      "title": "Car Parts의 개선",
+      "claim": "Table 6에서 Car Parts의 RNN G-Po는 P50/P90/RMSE/RMSSE=0.396/0.447/1.062/0.996이다. Static G-Po는 0.750/0.638/1.410/1.345, TSB의 RMSE/RMSSE는 1.362/1.278이다. 이 자료에서는 보고된 평균값이 개선되지만 같은 RNN 계열 안에서도 P50 최저는 NB-NB 0.385로 지표별 선택이 다르다.",
+      "record_anchor": "c25",
+      "source_locations": [
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            18
+          ]
+        },
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              309,
+              310
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H103-C26",
+      "title": "Auto의 반례",
+      "claim": "Auto는 학습 18기간에 불과하며 RNN의 일반적 개선을 보이지 않는다고 저자가 설명한다. Table 6에서 Static NB-Po RMSE 7.809·RMSSE 1.452에 비해 RNN NB-Po는 8.634·1.497이다. 짧은 자료에서도 공유 RNN이면 항상 좋아진다는 주장의 근거로 사용할 수 없다.",
+      "record_anchor": "c26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              309,
+              309
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            17,
+            18
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H103-C27",
+      "title": "RAF와0 예측",
+      "claim": "RAF에서는 all-zero의 RMSSE 1.423이 표의 다른 행보다 낮지만 RMSE 16.786은 Static G-NB 16.541보다 높다. RNN G-Po의 P50은 1.277로 낮고 P90 최저는 Static G-NB 2.354다. 0 예측의 유불리와 모델 선택은 지표에 따라 달라지며, RMSSE 명칭 아래의 구현 공백도 함께 남긴다.",
+      "record_anchor": "c27",
+      "source_locations": [
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            18
+          ]
+        },
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              130,
+              130
+            ],
+            [
+              292,
+              310
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H103-C28",
+      "title": "UCI의 지표별 차이",
+      "claim": "Table 7 UCI의 RNN G-NB는 P50/P90/RMSE=2.039/2.870/7.368로 낮지만 RMSSE 3.566은 TSB 3.409보다 높다. Static G-Po의 2.059/3.043/7.488/3.514를 기준으로 보더라도 모든 지표가 함께 좋아지는 것은 아니다.",
+      "record_anchor": "c28",
+      "source_locations": [
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            19
+          ]
+        },
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              310,
+              323
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H103-C29",
+      "title": "M5 조정 모델과 TSB",
+      "claim": "본문은 조정 RNN이 점 예측에서도 약간 낫다고 서술하지만 Table 7에서 TSB의 RMSE/RMSSE는 2.213/1.323, RNN G-Po+HPO는 2.190/1.338이다. 네 HPO 행의 RMSSE는 1.338/1.328/1.354/1.353으로 모두 TSB보다 높다. RMSE도 G-Po/G-NB 두 행만 TSB보다 낮으므로 조정 RNN 전체의 두 지표 우위로 요약하지 않는다.",
+      "record_anchor": "c29",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              309,
+              309
+            ],
+            [
+              321,
+              323
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            17,
+            19,
+            20
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H103-C30",
+      "title": "모형 계열 평균의 의미",
+      "claim": "Table 8은 각 손실을 Static G-Po의 손실로 나눈 비율을 자료·모형 계열에서 요약한다. RNN행의 0.896/0.945/0.973/0.967은 P50/P90/RMSE/RMSSE에서 10.4/5.5/2.7/3.3% 감소에 대응한다. 이는 각 자료·모형의 보장된 개선이나 TSB 대비 수치가 아니다. 괄호는 단측 1표본 t-test의 보고값이며 0.000을 확률이 정확히 0이라고 해석하지 않는다.",
+      "record_anchor": "c30",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              310,
+              323
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            17,
+            19,
+            20
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H103-C31",
+      "title": "연속시간 결과",
+      "claim": "UCI의 정확한 구매시각으로 학습한 연속시간 모형은 예측 사건을 마지막 6기간으로 집계해 비교했다. Table 9에서 RNN E-NB의 RMSE 7.359는 RNN G-NB 7.368보다 낮지만 RMSSE 3.738은 3.566보다 높다. 저자도 연속시간 모형을 선호할 실증 근거가 없다고 보고하므로 더 세밀한 시각이 항상 예측을 개선한다고 결론 내리지 않는다.",
+      "record_anchor": "c31",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              322,
+              335
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            20,
+            21
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H103-C32",
+      "title": "비용·재현 범위",
+      "claim": "원문은 SageMaker와 GluonTS 구현 링크를 제시하지만 이 검수에서 해당 코드·데이터·seed·하드웨어·시간·요금의 일치나 실행 성공을 확인하지 않았다. 250경로·3회 반복·HPO 설정은 보고된 실험 조건이며 전체 파이프라인 비용 측정이 아니다. 원연구 스크립트·TeX 컴파일·새 모델 실행은 0이다.",
+      "record_anchor": "c32",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              286,
+              291
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            16
+          ]
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              55,
+              62
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H103-C33",
+      "title": "당시 판단을 지지하는 범위",
+      "claim": "원기록 82의 “발생 간격·양의 크기·여러 품목의 LSTM 공유 자체만으로 새롭다고 할 수 없다”는 판단은 §4.3과 부록의 구조에 근거가 있다. 다만 품목 수요의 손실 개선은 현재 cell 공유 결정의 성능 증거가 아니며, 이 문헌 한 편의 대조를 전체 문헌의 신규성 심사로 표시하지 않는다.",
+      "record_anchor": "c33",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              19,
+              25
+            ],
+            [
+              39,
+              53
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000118",
+          "source_sha256": "2232b32850f8afd3f2c7b14bf8b281a3b947b34bcaaed3c3f2b9d77d772feef2",
+          "line_ranges": [
+            [
+              9,
+              18
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            11,
+            12
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-APP-TEX",
+          "source_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+          "line_ranges": [
+            [
+              233,
+              263
+            ]
+          ],
+          "visual_crosscheck": {
+            "supplement_id": "H103-SUP-APP-PDF",
+            "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+            "PDF_pages": [
+              1,
+              2
+            ]
+          }
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H103-C34",
+      "title": "재검토 조건",
+      "claim": "원기록 82는 현재 관측 단위에서 실제 무통신이 반복적 예측 손해를 만든다는 근거와 기존 발생/크기 공동 학습보다 유용한 새로운 cell 공유 결정이 함께 있을 때 재진입하도록 했다. 팀은 해당 기록과 이 논문의 support·간격·분할·목적함수·지표 구현부터 비교하고, 가정이나 입력이 달라지는 부분을 새 실험 계획에 명시할 수 있다.",
+      "record_anchor": "c34",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              29,
+              53
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000118",
+          "source_sha256": "2232b32850f8afd3f2c7b14bf8b281a3b947b34bcaaed3c3f2b9d77d772feef2",
+          "line_ranges": [
+            [
+              16,
+              18
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            5,
+            16
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H103-C35",
+      "title": "결론과 미실행 확장",
+      "claim": "논문의 결론은 자료별 혼합 결과와 확률 RNN의 가능성이다. 간헐 패턴별 모형 선택, 다른 분포·구조·학습 전략, 계층적 확률예측과의 결합은 후속 연구로 제시된다. 이 후속 아이디어가 이미 실행된 UPC 소속 수정이나 현재 TabICL의 확정된 개선이라고 적지 않는다.",
+      "record_anchor": "c35",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              331,
+              336
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            20,
+            21
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H103-C36",
+      "title": "정리 범위와 다음 기록",
+      "claim": "이번 범위는 원논문 1편의 저장 HTML/TXT 2표현물·4별칭, 별도 시점의 출판사 보완 자료, 원기록 82의 기존 3자료다. 참고문헌 100항목과 부록 6항목을 읽은 일을 해당 논문 106편의 독해로 세지 않는다. 선택했던 원기록 82 문헌 후속 목록은 끝나지만 snapshot24 고유 연혁·누적본문과 전체 연구기록 정리는 남아 있다.",
+      "record_anchor": "c36",
+      "source_locations": [
+        {
+          "source_id": "SRC-0062907",
+          "source_sha256": "cfaeba47f30eb7f11b29017e1e6786616d7492c6c07d707cbdd65b24a9530bf5",
+          "line_ranges": [
+            [
+              343,
+              768
+            ]
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-PDF",
+          "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+          "PDF_pages": [
+            22,
+            23,
+            24,
+            25,
+            26
+          ]
+        },
+        {
+          "supplement_id": "H103-SUP-APP-TEX",
+          "source_sha256": "c155a982641532cd2fa7c0055a25e3f2d8f40716733cc8cfb721ca1d415cf16c",
+          "line_ranges": [
+            [
+              346,
+              390
+            ]
+          ],
+          "visual_crosscheck": {
+            "supplement_id": "H103-SUP-APP-PDF",
+            "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+            "PDF_pages": [
+              3
+            ]
+          }
+        },
+        {
+          "source_id": "SRC-0022045",
+          "source_sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0",
+          "line_ranges": [
+            [
+              55,
+              62
+            ]
+          ]
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

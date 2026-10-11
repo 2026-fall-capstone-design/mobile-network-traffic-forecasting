@@ -259,3 +259,6 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H101 출처](../sources/history-101.md) · [목록](history-101-sources.jsonl). Citywide1논문의 PDF·TXT2본문 및 기존PNG1이미지,6별칭과 원82 기존3자료 재참조를 구별한다. 새 렌더와 파생 검수 JSON·재열람은 추가 본문으로 세지 않는다.
 
 [H102 출처](../sources/history-102.md) · [목록](history-102-sources.jsonl). 한 논문의4본문·기존2이미지와12별칭을 구별하며 새렌더·파생JSON·재열람을 추가하지 않는다.
+
+
+[H103 출처](../sources/history-103.md) · [목록](history-103-sources.jsonl). 원본2본문·4별칭과 현재 보완PDF/XML/부록의 입수 시점을 구별한다. 보완 자료·새렌더·기존자료는 신규 원본 독해 수에 더하지 않는다.

@@ -1,0 +1,354 @@
+{
+  "batch_id": "history-103",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T07:14:38.925736+00:00",
+  "claims_checked": 36,
+  "checks": [
+    {
+      "check_id": "H103-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "finding": "당시 비채택 판단, 서지와 원본 입수 시각의 공백, 양의 크기/간격, Croston의 갱신·역수 편향, Static/EWMA와 hazard를 대조했다."
+    },
+    {
+      "check_id": "H103-SP02",
+      "claims": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "finding": "shifted NB의 support와 dispersion, positive EWMA의 장기 수렴 범위, 확률 RNN과 global 공유, 독립성 아래 평균 분해 및 부록 hazard의 +1 차이를 대조했다."
+    },
+    {
+      "check_id": "H103-SP03",
+      "claims": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "finding": "연속시간의 개별 사건 index, 합성 주기/교대 설정과 지표별 차이, 다섯 자료의 선정 조건, M5 본문 23401/표 23041 불일치를 대조했다."
+    },
+    {
+      "check_id": "H103-SP04",
+      "claims": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "finding": "Auto의 총 issue point와 가능한 최대·분모, 6/28기간 보류, 기본/HPO 설정, 3회 반복·250경로, PXX 정규화와 RMSSE의 실제 표기식을 대조했다."
+    },
+    {
+      "check_id": "H103-SP05",
+      "claims": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "finding": "Car Parts의 보고 평균 개선과 Auto·RAF·UCI·M5 반례, TSB와 HPO의 RMSE/RMSSE 순위, Table8의 기준·평균비율·보고 t-test 범위를 대조했다."
+    },
+    {
+      "check_id": "H103-SP06",
+      "claims": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "finding": "연속시간 결과의 혼합 지표, 비용·코드·재현 미확인, 원82 신규성 판단의 범위와 재진입 조건, 미실행 후속 아이디어와 남은 전체 기록 범위를 대조했다."
+    }
+  ],
+  "initial_draft_record_sha256": "cc3448d4da278e4ad60370db0af121186fe237d9058f7ade0365e168c938b6c8",
+  "corrected_draft_record_sha256": "cee71c9fa648fdd6e267113fd0ea2dd2544b760190513c8350c7809e56573338",
+  "final_record_sha256": "106da8f0663ccfd9291018aeee7bd266de3d703d9b26106e765f2c112c1ac7d5",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0062906": [
+      [
+        49,
+        72
+      ],
+      [
+        1270,
+        1286
+      ],
+      [
+        1449,
+        1462
+      ]
+    ],
+    "SRC-0062907": [
+      [
+        95,
+        768
+      ]
+    ],
+    "SRC-0000118": [
+      [
+        1,
+        20
+      ]
+    ],
+    "SRC-0022045": [
+      [
+        1,
+        62
+      ]
+    ],
+    "SRC-0062913": [
+      [
+        1,
+        35
+      ]
+    ],
+    "H103-SUP-APP-TEX": [
+      [
+        194,
+        390
+      ]
+    ]
+  },
+  "visual_reread": [
+    {
+      "supplement_id": "H103-SUP-PDF",
+      "source_sha256": "ff205e798ef4d9fa2a33787317ae6e49dcae26b958331f7e9273858e2fbd192c",
+      "PDF_pages": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "actual_pixels_read": true
+    },
+    {
+      "supplement_id": "H103-SUP-APP-PDF",
+      "source_sha256": "221430242e8b83624737818f588acf6f63081eb31c68bd4b8be763305c5fdf05",
+      "PDF_pages": [
+        1,
+        2,
+        3
+      ],
+      "actual_pixels_read": true
+    }
+  ],
+  "fixed_payload_check": {
+    "batch_id": "history-103",
+    "checked_at_utc": "2026-10-11T07:13:05.289927+00:00",
+    "success": true,
+    "source_XML_sha256": "c738304ddbd4c1d3d9997ef54db1fd1168391c2a5826f74dafc076b91e309df5",
+    "all_9_tables_reextracted_equal": true,
+    "all_12_display_formulas_reextracted_equal": true,
+    "XML_math_node_count": 71,
+    "XML_reference_count": 100,
+    "nested_list_parent_coordinates_checked": [
+      {
+        "XML_line": 197,
+        "HTML_lines": [
+          1271,
+          1276,
+          1278,
+          1280,
+          1282,
+          1284
+        ],
+        "note": "XML parent includes five bullet paragraphs; HTML parent and five separate list items were all read."
+      },
+      {
+        "XML_line": 690,
+        "HTML_lines": [
+          1449,
+          1454,
+          1456,
+          1458,
+          1460,
+          1462
+        ],
+        "note": "XML parent includes five dataset paragraphs; HTML body and separate list items were all read. Exact HTML coordinates are stored per semantic entry; this alignment is not byte identity."
+      }
+    ],
+    "supplement_hashes_and_ZIP_members_checked": 5,
+    "source_scripts_executed": false,
+    "new_model_runs": 0,
+    "mechanical_check_not_semantic_review": true
+  },
+  "corrections": [
+    {
+      "claim": "H103-C04",
+      "field": "TXT_line_ranges",
+      "before": [
+        [
+          141,
+          156
+        ]
+      ],
+      "after": [
+        [
+          139,
+          150
+        ]
+      ],
+      "reason": "작성 후 실제 원문에서 주장에 해당하는 직접 근거 행으로 정밀화."
+    },
+    {
+      "claim": "H103-C25",
+      "field": "TXT_line_ranges",
+      "before": [
+        [
+          292,
+          294
+        ]
+      ],
+      "after": [
+        [
+          309,
+          310
+        ]
+      ],
+      "reason": "작성 후 실제 원문에서 주장에 해당하는 직접 근거 행으로 정밀화."
+    },
+    {
+      "claim": "H103-C26",
+      "field": "TXT_line_ranges",
+      "before": [
+        [
+          293,
+          294
+        ]
+      ],
+      "after": [
+        [
+          309,
+          309
+        ]
+      ],
+      "reason": "작성 후 실제 원문에서 주장에 해당하는 직접 근거 행으로 정밀화."
+    },
+    {
+      "claim": "H103-C27",
+      "field": "TXT_line_ranges",
+      "before": [
+        [
+          132,
+          132
+        ],
+        [
+          292,
+          310
+        ]
+      ],
+      "after": [
+        [
+          130,
+          130
+        ],
+        [
+          292,
+          310
+        ]
+      ],
+      "reason": "작성 후 실제 원문에서 주장에 해당하는 직접 근거 행으로 정밀화."
+    },
+    {
+      "claim": "H103-C29",
+      "field": "TXT_line_ranges",
+      "before": [
+        [
+          293,
+          294
+        ],
+        [
+          321,
+          323
+        ]
+      ],
+      "after": [
+        [
+          309,
+          309
+        ],
+        [
+          321,
+          323
+        ]
+      ],
+      "reason": "작성 후 실제 원문에서 주장에 해당하는 직접 근거 행으로 정밀화."
+    },
+    {
+      "claim": "H103-C35",
+      "field": "TXT_line_ranges",
+      "before": [
+        [
+          331,
+          335
+        ]
+      ],
+      "after": [
+        [
+          331,
+          336
+        ]
+      ],
+      "reason": "작성 후 실제 원문에서 주장에 해당하는 직접 근거 행으로 정밀화."
+    },
+    {
+      "claim": "H103-C24",
+      "field": "prose",
+      "before": "부록A.4에서 RMSSE라 부르는 식은 제곱오차를 학습 구간의 평균 절대1차차분으로 나누고 외부 제곱근 없이 평균한다. PDF3쪽과 TeX339–340행이 일치하므로 추출 누락이 아니다. 이름과 식의 차이를 남기고 실제 평가 코드·표 계산이 어느 정의를 썼는지는 미확인으로 둔다. 표 수치를 임의로 수정하거나 현재 RMSSE와 직접 비교하지 않는다.",
+      "after": "부록A.4에서 RMSSE라 부르는 식은 분모를 학습 구간의 절대 1차 차분 합 × (1/L′)로 정의하고, 바깥 제곱근 없이 제곱오차/분모를 평균한다. PDF3쪽과 TeX339–340행이 일치하므로 추출 누락이 아니다. 이름과 식의 차이를 남기고 실제 평가 코드·표 계산이 어느 정의를 썼는지는 미확인으로 둔다. 표 수치를 임의로 수정하거나 현재 RMSSE와 직접 비교하지 않는다.",
+      "reason": "TeX339–340의 분모는 L′−1개 차분 합을 L′로 나눈 값이므로 보통의 평균으로 뭉뚱그리지 않는다."
+    },
+    {
+      "claim": "H103-C25",
+      "field": "interpretation",
+      "reason": "표에 보고된 평균 비교라는 범위를 명시하고 별도 유의성 검정으로 확대하지 않는다."
+    },
+    {
+      "claims": "C01–C36",
+      "field": "spacing",
+      "reason": "한국어·숫자·영문 사이 띄어쓰기를 정리. 실험 설정과 수치값은 바꾸지 않는다."
+    }
+  ],
+  "corrected_wording_rechecked": true,
+  "all_claim_semantic_locations_actually_reread": true,
+  "independent_reviewer": false,
+  "source_code_executed": false,
+  "new_model_runs": 0,
+  "coverage_increment_applied": false
+}

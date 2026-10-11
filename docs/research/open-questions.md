@@ -154,3 +154,6 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H101](records/0101-citywide-densenet-scope.md)에서 Citywide3자료 그룹을 검수한다. loader의 period 입력, scaler fit·집계·0 처리, loss 표기와 실제 구현, baseline·RMSE 집계·seed·비용은 미확인이다. 원82의 남은 일차자료는 Beam6·Deep Renewal2그룹이며 snapshot24의 고유 연혁도 후속에 남는다.
 
 [H102](records/0102-beam-mtl-evidence.md)는 Beam6그룹의 저장 원문을 대조했다. 학습 gate/loss 적용·feature/scaler·ESN·ensemble weight·평가척도·표 숫자 차이·seed/비용은 미확인이다. Deep Renewal2그룹과 snapshot24 고유 연혁을 이어간다.
+
+
+[H103](records/0103-deep-renewal-evidence.md)은 저장2표현물·현재 보완 수식/표/그림을 대조했다. 실제 코드의 hazard index·RMSSE 정의·전처리/개수·seed/비용은 미확인이다. 다음 기록 범위는 snapshot24의 후보표·연구일지 고유 변경과 누적본문이다.
