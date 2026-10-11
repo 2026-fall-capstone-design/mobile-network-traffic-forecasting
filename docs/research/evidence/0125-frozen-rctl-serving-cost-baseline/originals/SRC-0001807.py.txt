@@ -1,0 +1,44 @@
+from pathlib import Path
+import hashlib,json
+
+BASE=Path(__file__).resolve().parent
+OUT=BASE/'results/serving_cost_95'
+path=BASE/'cumulative_execution_budget.json'
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+settings=json.loads((OUT/'settings.json').read_text(encoding='utf-8'))
+assert sha(path)==settings['ledger_before_sha256']
+ledger=json.loads(path.read_text(encoding='utf-8'))
+result=json.loads((OUT/'summary.json').read_text(encoding='utf-8'))
+finished=json.loads((OUT/'run_finished.json').read_text(encoding='utf-8'))
+assert finished['complete'] and finished['error'] is None
+assert result['states_and_inputs_unchanged'] and result['new_fits']==result['new_Tab_calls']==0
+assert not (OUT/'budget_update.json').exists()
+assert not any(row['stage']=='serving_cost_95' for row in ledger['inference_only_stages'])
+record={'stage':'serving_cost_95','RCTL_fits':0,'TabICL_contexts':0,
+        'forward_calls':finished['counters']['forward_completed'],
+        'predicted_rows':finished['counters']['predicted_rows_completed'],
+        'wall_seconds':finished['wall_seconds'],
+        'timed_route_seconds_included_in_wall':finished['counters']['timed_route_seconds'],
+        'precommitted_stage_wall_cap_seconds':180,
+        'sampled_max_rss_bytes':finished['counters']['sampled_max_rss_bytes'],
+        'counts_toward_total_local_modeling':True,
+        'timing_scope':'Stage includes preparation and warmup; library import/process startup not timed.',
+        'partitions_unchanged':True,'weights_and_buffers_unchanged':True}
+assert record['forward_calls']==2166 and record['predicted_rows']==3648
+assert record['wall_seconds']<180
+ledger['inference_only_stages'].append(record)
+ledger['used']['RCTL_frozen_inference_seconds']+=record['wall_seconds']
+assert ledger['used']['RCTL_fits']==29 and ledger['remaining_count_budgets']['RCTL_fits']==0
+assert ledger['used']['TabICL_contexts']==69 and ledger['used']['TabICL_query_rows']==39360
+used=ledger['used']
+total=sum(used[name] for name in ('TabICL_fit_predict_seconds','RCTL_wall_seconds',
+    'RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'))+sum(ledger['new_cheap_diagnostic_seconds'].values())
+assert total<ledger['caps']['total_local_modeling_seconds']
+path.write_text(json.dumps(ledger,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+update={'stage':record,'ledger_before_sha256':settings['ledger_before_sha256'],
+        'ledger_after_sha256':sha(path),'recorded_modeling_seconds':total,
+        'remaining_count_budgets':ledger['remaining_count_budgets'],'budget_resets':ledger['budget_resets']}
+(OUT/'budget_update.json').write_text(json.dumps(update,ensure_ascii=False,indent=2),encoding='utf-8')
+(OUT/'budget_after.json').write_bytes(path.read_bytes())
+print(json.dumps(update))

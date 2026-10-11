@@ -1,0 +1,55 @@
+{
+  "methods": [
+    "global",
+    "tabicl_risk",
+    "empirical_risk"
+  ],
+  "seed": 20260925,
+  "origins": [
+    840,
+    855,
+    870,
+    885,
+    900,
+    915,
+    931,
+    946,
+    961,
+    976,
+    991,
+    1007
+  ],
+  "warmup_origins": 2,
+  "repeats": 3,
+  "route_types": [
+    "per_cell",
+    "per_cluster"
+  ],
+  "threads": 4,
+  "inter_op_threads": 2,
+  "dtype": "float32",
+  "device": "cpu",
+  "new_fits": 0,
+  "new_Tab_contexts": 0,
+  "max_forward_calls": 2166,
+  "max_predicted_rows": 3648,
+  "wall_cap_seconds": 180,
+  "rss_cap_bytes": 2147483648,
+  "equivalence_tolerance": 2e-05,
+  "result_used_for_clustering": false,
+  "independent_test": false,
+  "timing_excludes": [
+    "model_load",
+    "input_preparation"
+  ],
+  "plan_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+  "code_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+  "model_code_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+  "design_data_sha256": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+  "frozen_settings_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+  "ledger_before_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+  "torch_version": "2.14.0+cpu",
+  "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "processor": "Intel64 Family 6 Model 189 Stepping 1, GenuineIntel",
+  "logical_cpus": 8
+}

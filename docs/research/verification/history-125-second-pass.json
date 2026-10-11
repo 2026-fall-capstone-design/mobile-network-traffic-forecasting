@@ -1,0 +1,350 @@
+{
+  "batch_id": "history-125",
+  "success": true,
+  "initial_private_draft_sha256": "2e2c3ae221822fa55876b86832649a51cde13283b327b1a00985e5bb6dc8a0f6",
+  "corrected_private_draft_sha256": "74e9f409feeac19aad2f047d700b3f7a35c9413282ca7c8b52a8b44904c894d2",
+  "initial_draft_preserved": true,
+  "corrected_draft_actually_read_after_write": true,
+  "claims_checked": 32,
+  "checks": [
+    {
+      "group": 1,
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "scope": "실제시행/기존9모델·개발시각/입력/동시batch/순환측정/타이머범위",
+      "result": "source_checked",
+      "assessment": "원95 실제frozen benchmark·계획SHA·settings/finished·9 checkpoint/1+4+4·seed/개발12시각을직접대조. seq8×9 구성·CPU4/2·eval/inference_mode·동시cellbatch·순환순서·타이머범위가자료/코드와맞다. 새독립정확도확인이나미래시각대기batch로표현하지않음.",
+      "source_locations_actually_reread": true,
+      "independent_reviewer": false
+    },
+    {
+      "group": 2,
+      "claims": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "scope": "median/P10/P90/반복median·ratio·동일방법수치차이/저장재계산",
+      "result": "source_checked",
+      "assessment": "원summary6경로median/P10/P90/반복median·동일method3개max차이/ratio를작성후재독하고이전NPZ재계산proof와직접대조. 수치/분모/단위/방향일치. P10–P90은관측분위수/CI아님;tol2e-5는연구효과합격선아님;새timing/유의성검정0.",
+      "source_locations_actually_reread": true,
+      "independent_reviewer": false
+    },
+    {
+      "group": 3,
+      "claims": [
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "scope": "상태불변의historical근거/현재hash·ZIP·storage/RSS·행별계산",
+      "result": "source_checked",
+      "assessment": "동적state불변은historical보고및static검사코드로표시하고currentRAM재연과구별. 현재원SHA9checkpoint+data/ZIP142storage각701412B·preparedparam/buffer/파일bytes를대조. stateK4/K1=4배와sampledRSS9모델/runtime을구별.16rows/core계산/1vs4call을분리. C12첫60/작성후50재독범위를보정.",
+      "source_locations_actually_reread": true,
+      "independent_reviewer": false
+    },
+    {
+      "group": 4,
+      "claims": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "scope": "warmup/timed횟수·시간안포함/최종시계·CRLF/JSON·단회원장/역사예산",
+      "result": "source_checked",
+      "assessment": "2166call/3648row에는warmup114call/192row가포함되고NPZ216timing/3456prediction은timed2052call/3456row. 내부5.1066066s는warmup을포함/최종5.4455786s안,storedsum4.8168305s와차이0.2897761s. summary시계차이0.0008179s를모순/별도실행으로세지않음. before243CRLF-only/JSON동일·after단회stage/시간증분 및1998.0606404s/예산DATA대조.",
+      "source_locations_actually_reread": true,
+      "independent_reviewer": false
+    },
+    {
+      "group": 5,
+      "claims": [
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "scope": "pipeline비용/같은K4차이·B2판정·기본batch·이전후보와재진입",
+      "result": "source_checked",
+      "assessment": "Tab준비비용이latency표밖임을유지. empirical−TabK4차이약0.147ms는sourceexact차이의반올림요약/신규숫자나유의성아님. 기존B2범위판정은유지/새정확도검증아님. 기본batch효과를신규성으로세지않고대표예측/압축·기존긍정/진입기준과연결;모든다른partition불가능성으로확장안함.",
+      "source_locations_actually_reread": true,
+      "independent_reviewer": false
+    },
+    {
+      "group": 6,
+      "claims": [
+        29,
+        30,
+        31,
+        32
+      ],
+      "scope": "판본diff/미독·snapshot·현재hash/판독집계·전체Goal잔여",
+      "result": "source_checked",
+      "assessment": "후보58→64전체직독/연혁1–57·58–536미독/이전49–527미독·diff신규9행을대조. snapshot21listed241706B+manifest4301B=22physical246007B/별도receipt와10inputref를구별. current25source75alias/보호6/RCTL11/입력10hash검수. 첫raw2002/작성후1645·NPZliteral모든값미독/재계산가산0·Goal잔여를맞춤. C32작성후상태문구교정/공개문서검사는별도결과연결.",
+      "source_locations_actually_reread": true,
+      "independent_reviewer": false
+    }
+  ],
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0001800": [
+      [
+        1,
+        28
+      ]
+    ],
+    "SRC-0001801": [
+      [
+        1,
+        70
+      ]
+    ],
+    "SRC-0001802": [
+      [
+        1,
+        38
+      ]
+    ],
+    "SRC-0001818": [
+      [
+        1,
+        55
+      ]
+    ],
+    "SRC-0001816": [
+      [
+        1,
+        15
+      ]
+    ],
+    "SRC-0001815": [
+      [
+        1,
+        200
+      ]
+    ],
+    "SRC-0001808": [
+      [
+        1,
+        211
+      ]
+    ],
+    "SRC-0001806": [
+      [
+        11,
+        60
+      ]
+    ],
+    "SRC-0001819": [
+      [
+        57,
+        153
+      ],
+      [
+        155,
+        170
+      ],
+      [
+        330,
+        343
+      ]
+    ],
+    "SRC-0001820": [
+      [
+        1,
+        56
+      ]
+    ],
+    "SRC-0001813": [
+      [
+        2,
+        26
+      ]
+    ],
+    "SRC-0001812": [
+      [
+        1,
+        244
+      ]
+    ],
+    "SRC-0001799": [
+      [
+        1,
+        114
+      ]
+    ],
+    "SRC-0001804": [
+      [
+        1,
+        259
+      ]
+    ],
+    "SRC-0001807": [
+      [
+        18,
+        41
+      ]
+    ],
+    "SRC-0001805": [
+      [
+        1,
+        57
+      ]
+    ],
+    "SRC-0001803": [
+      [
+        1,
+        64
+      ]
+    ],
+    "SRC-0022095": [
+      [
+        1,
+        8
+      ]
+    ]
+  },
+  "postdraft_raw_lines": 1645,
+  "postdraft_raw_sources": 18,
+  "required_source_raw_lines": 1611,
+  "extra_context_raw_lines": 34,
+  "actual_derived_reads": [
+    {
+      "file": "saved-measurement-check.json",
+      "sha256": "442ff37c341e262bb362b416b09f1480e66b7ba6c806d6ee66fab717bfff5b4f",
+      "actually_read": true,
+      "omitted_only_fields": [
+        "/input_references/0/exact_alias_source_ids",
+        "/input_references/1/exact_alias_source_ids",
+        "/input_references/2/exact_alias_source_ids",
+        "/input_references/3/exact_alias_source_ids",
+        "/input_references/4/exact_alias_source_ids",
+        "/input_references/5/exact_alias_source_ids",
+        "/input_references/6/exact_alias_source_ids",
+        "/input_references/7/exact_alias_source_ids",
+        "/input_references/8/exact_alias_source_ids",
+        "/input_references/9/exact_alias_source_ids"
+      ],
+      "scope": "전필드 읽기;입력reference의exact_alias_source_ids 배열만개수로보고그ID전문직독은주장하지않음",
+      "independent_content_credit": 0
+    },
+    {
+      "file": "version-comparison.json",
+      "sha256": "9c09bcbcc6155091a4389b042c29d5da466ff7be7f9433683673f14a3dc6ff4f",
+      "actually_read": true,
+      "omitted_only_fields": [],
+      "scope": "전필드 읽기;입력reference의exact_alias_source_ids 배열만개수로보고그ID전문직독은주장하지않음",
+      "independent_content_credit": 0
+    },
+    {
+      "file": "first-scope-progress.json",
+      "sha256": "716417493cf613f19528d813d23159a1fc56a8156a2e2508435f6e1baf39d462",
+      "actually_read": true,
+      "omitted_only_fields": [],
+      "scope": "전필드 읽기;입력reference의exact_alias_source_ids 배열만개수로보고그ID전문직독은주장하지않음",
+      "independent_content_credit": 0
+    }
+  ],
+  "postdraft_metadata_checked_source_ids": [
+    "SRC-0001799",
+    "SRC-0001800",
+    "SRC-0001801",
+    "SRC-0001802",
+    "SRC-0001807",
+    "SRC-0001808",
+    "SRC-0001809",
+    "SRC-0001813",
+    "SRC-0001815",
+    "SRC-0001816",
+    "SRC-0001817",
+    "SRC-0001818",
+    "SRC-0001819",
+    "SRC-0001820",
+    "SRC-0022095",
+    "SRC-0001803",
+    "SRC-0001804",
+    "SRC-0001805",
+    "SRC-0001812",
+    "SRC-0001814",
+    "SRC-0001806",
+    "SRC-0001810",
+    "SRC-0001779",
+    "SRC-0001782",
+    "SRC-0001780"
+  ],
+  "all_claim_semantic_locations_actually_reread": true,
+  "unresolved_output_truncation": false,
+  "semantic_second_pass_complete": true,
+  "public_files_written": true,
+  "coverage_increment_applied": false,
+  "independent_reviewer": false,
+  "original_scripts_executed": false,
+  "source_code_imported": false,
+  "new_model_runs": 0,
+  "current_dynamic_model_state_independently_replayed": false,
+  "corrections": {
+    "scientific_conclusions_changed": false,
+    "editorial_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
+    ],
+    "read_scope_precision_claims": [
+      12,
+      32
+    ],
+    "same_source_number_rounded_in_C25": true,
+    "public_document_checks_are_separate": true
+  },
+  "new_source_versions_are_not_independent_experiments": true,
+  "before_newline_version_semantic_contribution": 0,
+  "protected_originals_unchanged": 6,
+  "RCTL_identical_aliases_unchanged": 11,
+  "input_references_unchanged": 10,
+  "checked_at_utc": "2026-10-11T22:10:55.278788+00:00",
+  "status": "source_checked",
+  "corrected_record_sha256": "93370c32ae814adadb2954efc4030f9d15aaba2d8a092f6197b72cc0de1f7ea9"
+}

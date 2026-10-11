@@ -197,3 +197,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H123 남은 범위](evidence/0123-candidate-gates-comparison-scope/packet-coverage.json): 현재연혁37–517/직전66–508, 원94 이후와 이전고유판본·FedPPBC/DOCX공백·전체 통합/장기접근/최종 원본 및 검색 검수는 미완료다.
 
 [H124 남은 범위](evidence/0124-delayed-target-inference-boundaries/packet-coverage.json): 연혁49–527/이전37–517,PDF나머지125page와literalTXT·원95이후/이전판본·FedPPBC/DOCX공백·전체통합/접근/최종 원본변경 및검색검수는 미완료다.
+
+[H125 남은 범위](evidence/0125-frozen-rctl-serving-cost-baseline/packet-coverage.json): 현재 연혁58–536/직전49–527행 직접 미독,9개 checkpoint·원입력의 장기 팀 공유, 원96 이후/이전 고유판본·FedPPBC/DOCX 공백·문헌/실패/비용 통합·최종 원본 변경분/대표 검색 검수는 미완료다.

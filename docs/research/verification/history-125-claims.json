@@ -1,0 +1,1692 @@
+{
+  "batch_id": "history-125",
+  "record_path": "../records/0125-frozen-rctl-serving-cost-baseline.md",
+  "record_sha256": "93370c32ae814adadb2954efc4030f9d15aaba2d8a092f6197b72cc0de1f7ea9",
+  "claims": [
+    {
+      "claim_id": "H125-C01",
+      "title": "저장 모델의 실제 CPU 비용을 확인한 역사 기록",
+      "claim": "원95(2026-09-26)는 고정한 계획에 따라 보존된 RCTL을 실행한 CPU 비용 측정이다. 새 RCTL 학습, TabICLv2 호출, 소속 선택, optimizer·gradient 갱신은 없었다. 당시 frozen inference 실행과 이번 저장 배열·원장 검산을 구별한다. 이번 정리에서는 모델과 원 연구 코드를 실행하거나 import하지 않았다.",
+      "claim_type": "historical_status",
+      "record_anchor": "claim-01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              1,
+              20
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              1,
+              38
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001816",
+          "line_ranges": [
+            [
+              1,
+              15
+            ]
+          ],
+          "source_sha256": "384ca099be23e27c16a16ea83341a36155d8c34af25bc76b444a29e4c1adaf0d",
+          "team_source": "../sources/history-125.md#src-0001816"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H125-C02",
+      "title": "seed 하나의 1+4+4 checkpoint 비교",
+      "claim": "기존 seed20260925의 global 1개, tabicl_risk 4개, empirical_risk 4개를 사용했다. 같은 RCTL 구조의 총9개 checkpoint이며 빠른 timing 결과를 보고 새 모델·소속을 선택한 것이 아니다. prepared의 members는16개 cell 목록의 위치0–15다. 이 위치 번호와 실제 cell ID를 구별한다.",
+      "claim_type": "data_and_settings",
+      "record_anchor": "claim-02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              11,
+              16
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001815",
+          "line_ranges": [
+            [
+              1,
+              184
+            ]
+          ],
+          "source_sha256": "5187bc6302ec452f29a43a77267df74f7dd7def94ec7cccc1cc28b71e5802627",
+          "team_source": "../sources/history-125.md#src-0001815"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              41,
+              45
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              79,
+              117
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H125-C03",
+      "title": "개발 구간의12시점과 독립 검증의 구별",
+      "claim": "기존16개 cell의 개발 구간840..1007에서 linspace(840,1007,12,dtype=int)로840/855/870/885/900/915/931/946/961/976/991/1007을 정했다. 이미 관찰한 구간이며 새로운 미래 구간이나 독립 정확도 평가가 아니다. 저장 origins와 준비 기록이 일치했다.",
+      "claim_type": "data_scope",
+      "record_anchor": "claim-03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              13,
+              17
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001818",
+          "line_ranges": [
+            [
+              7,
+              21
+            ]
+          ],
+          "source_sha256": "95ee4c170a15b2f4776b6c7f66b96703c99a8cf7e118daa56ac76703e9b7ff3d",
+          "team_source": "../sources/history-125.md#src-0001818"
+        },
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              11,
+              20
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001814",
+          "metadata_scope": "보존 origins12개·cell_ids16개·routes6개를 준비/설정과 대조. 저장 측정 확인 파일 참조.",
+          "source_sha256": "b3d733b0fdec0d7a01af6c62b80ac4dc1ada2c2e8dc77b838c3876fcaa019fbd",
+          "team_source": "../sources/history-125.md#src-0001814",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H125-C04",
+      "title": "8×9 입력과 고정 평가 모드의 CPU 설정",
+      "claim": "각 cell의 입력은 float32의8×9 배열이다. 준비 코드에서는 flat의8개 lag를 첫 채널에 넣고 나머지8개 feature를8step에 반복했다. Torch CPU4 intra-op/2 inter-op threads, eval()·requires_grad_(False)·inference_mode를 사용했다. 기존 convolution/LSTM/선형층 및 BatchNorm/Dropout의 Torch port이며 GPU·compile·quantization·hidden-state 변경을 시험하지 않았다.",
+      "claim_type": "settings",
+      "record_anchor": "claim-04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              1,
+              15
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              83,
+              111
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              139,
+              158
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001818",
+          "line_ranges": [
+            [
+              22,
+              54
+            ]
+          ],
+          "source_sha256": "95ee4c170a15b2f4776b6c7f66b96703c99a8cf7e118daa56ac76703e9b7ff3d",
+          "team_source": "../sources/history-125.md#src-0001818"
+        },
+        {
+          "source_id": "SRC-0001806",
+          "line_ranges": [
+            [
+              11,
+              60
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-125.md#src-0001806"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H125-C05",
+      "title": "같은 시각의 행을 묶은6개 실행 경로",
+      "claim": "각 방법에서 cell별 호출과 같은 가중치의 묶음 호출을 비교해 총6경로를 실행했다. 시점당16개 cell을 개별 처리하면 모두16번 호출한다. 묶음 경로는 global 16행1번, K4는4행씩4번 호출한다. 서로 다른 미래 시각의 입력을 기다려 batch를 키운 대기시간 이득으로 해석하지 않는다.",
+      "claim_type": "serving_structure",
+      "record_anchor": "claim-05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              13,
+              20
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              13,
+              17
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001815",
+          "line_ranges": [
+            [
+              185,
+              200
+            ]
+          ],
+          "source_sha256": "5187bc6302ec452f29a43a77267df74f7dd7def94ec7cccc1cc28b71e5802627",
+          "team_source": "../sources/history-125.md#src-0001815"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              113,
+              137
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H125-C06",
+      "title": "warm-up2회와 경로별36개 timing",
+      "claim": "각 경로는 앞의2시점으로2회 warm-up한 뒤12시점×3반복의36개 timing을 남겼다. 반복·시점마다6경로의 순서를 순환시켜 항상 같은 경로부터 실행하지 않았다. 한 기기의 작은 반복 측정이며 독립 표본36개에 대한 신뢰구간이나 무작위 설계 검정으로 부르지 않는다.",
+      "claim_type": "measurement_design",
+      "record_anchor": "claim-06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              19,
+              23
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              24,
+              34
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              160,
+              170
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001818",
+          "line_ranges": [
+            [
+              22,
+              27
+            ]
+          ],
+          "source_sha256": "95ee4c170a15b2f4776b6c7f66b96703c99a8cf7e118daa56ac76703e9b7ff3d",
+          "team_source": "../sources/history-125.md#src-0001818"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H125-C07",
+      "title": "입력 준비 뒤 실행과 결과 수집의 시간",
+      "claim": "시점별 timing은 입력 tensor와 route package를 준비한 뒤 모델 호출, numpy 결과 변환, 원래 cell 순서로 모으는 시간을 잰 것이다. Python 루프와 호출별 카운터·상한 검사도 포함하므로 순수 FLOP 측정이 아니다. 입력 준비·checkpoint 로딩·전처리·프로세스 시작을 포함한 온라인 전체 지연으로 표시하지 않는다.",
+      "claim_type": "measurement_scope",
+      "record_anchor": "claim-07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              20,
+              24
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              16,
+              25
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              119,
+              158
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H125-C08",
+      "title": "저장 배열에서 대조한6경로 중앙값",
+      "claim": "cell별→묶음 median은 global33.186→3.493ms, Tab risk K4 33.865→14.005ms, empirical risk K4 34.038→14.152ms다. 시점당16개 cell 모두를 처리한 값이며 학습 비용은 포함하지 않는다. timing_seconds(6,3,12)에서6경로의 median을 재계산해 summary와 절대 허용오차1e-12seconds 이내 일치를 확인했다. 새 실행시간 측정은 아니다.",
+      "claim_type": "saved_numeric_result",
+      "record_anchor": "claim-08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              22,
+              32
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001819",
+          "line_ranges": [
+            [
+              57,
+              153
+            ]
+          ],
+          "source_sha256": "266188ceffeb0fea5ec89086140e55865e3a8ffb5c9fd4ec5cb29114b75eeb39",
+          "team_source": "../sources/history-125.md#src-0001819"
+        },
+        {
+          "source_id": "SRC-0001814",
+          "metadata_scope": "저장 timing_seconds6×3×12의 median/P10/P90/반복median 재계산; 모든 결과 summary 일치.",
+          "source_sha256": "b3d733b0fdec0d7a01af6c62b80ac4dc1ada2c2e8dc77b838c3876fcaa019fbd",
+          "team_source": "../sources/history-125.md#src-0001814",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H125-C09",
+      "title": "P10–P90와 반복별 median의 범위",
+      "claim": "묶음 경로의 P10–P90은 global3.337–5.506ms, Tab K4 12.236–15.399ms, empirical K4 12.614–14.757ms다. 저장된 반복별 median도 같은 배열의 재계산과 일치했다. 이 분위수는36개 timing의 관측 요약이며 미래 서비스 latency의 신뢰구간이나 방법 간 유의성 검정이 아니다.",
+      "claim_type": "saved_numeric_scope",
+      "record_anchor": "claim-09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              24,
+              32
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001819",
+          "line_ranges": [
+            [
+              74,
+              153
+            ]
+          ],
+          "source_sha256": "266188ceffeb0fea5ec89086140e55865e3a8ffb5c9fd4ec5cb29114b75eeb39",
+          "team_source": "../sources/history-125.md#src-0001819"
+        },
+        {
+          "source_id": "SRC-0001814",
+          "metadata_scope": "6경로 P10/P90 및3반복median 모두 np.quantile/np.median 재계산 일치.",
+          "source_sha256": "b3d733b0fdec0d7a01af6c62b80ac4dc1ada2c2e8dc77b838c3876fcaa019fbd",
+          "team_source": "../sources/history-125.md#src-0001814",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H125-C10",
+      "title": "동일 방법에서 호출 구현을 바꾼 시간비",
+      "claim": "동일 방법의 cell별/묶음 median 시간비는 global9.501, Tab K4 2.418, empirical K4 2.405다. 같은 checkpoint의 호출 구현을 바꾼 비교이며 Tab clustering의 정확도 기여나 다른 알고리즘 대비 신규성으로 세지 않는다. 각 방법의 두 경로는 같은 시점·입력·가중치를 사용했다.",
+      "claim_type": "cost_comparison",
+      "record_anchor": "claim-10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              7,
+              9
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              26,
+              34
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001819",
+          "line_ranges": [
+            [
+              155,
+              170
+            ]
+          ],
+          "source_sha256": "266188ceffeb0fea5ec89086140e55865e3a8ffb5c9fd4ec5cb29114b75eeb39",
+          "team_source": "../sources/history-125.md#src-0001819"
+        },
+        {
+          "source_id": "SRC-0001814",
+          "metadata_scope": "within-method median ratio 재계산 일치. 서로 다른 method 예측 동등성을 검증한 것이 아님.",
+          "source_sha256": "b3d733b0fdec0d7a01af6c62b80ac4dc1ada2c2e8dc77b838c3876fcaa019fbd",
+          "team_source": "../sources/history-125.md#src-0001814",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H125-C11",
+      "title": "사전 허용치 안의 동일 방법 예측 차이",
+      "claim": "cell별/묶음의 최대 절대 예측 차이는 global7.1525574e-7, Tab1.1920929e-6, empirical1.0728836e-6으로 사전2e-5 이내였다. 저장 prediction(6,3,12,16)으로 이 차이를 재계산했다. 서로 다른 세 방법의 예측이 같거나 정확도가 개선됐다는 뜻이 아니며2e-5는 연구 효과의 합격선이 아니다.",
+      "claim_type": "numerical_equivalence",
+      "record_anchor": "claim-11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              21,
+              25
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              34,
+              34
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001819",
+          "line_ranges": [
+            [
+              155,
+              170
+            ]
+          ],
+          "source_sha256": "266188ceffeb0fea5ec89086140e55865e3a8ffb5c9fd4ec5cb29114b75eeb39",
+          "team_source": "../sources/history-125.md#src-0001819"
+        },
+        {
+          "source_id": "SRC-0001814",
+          "metadata_scope": "동일방법 per_cell/per_cluster prediction maximum absolute difference를 전체 저장 배열에서 기계적으로 재계산.",
+          "source_sha256": "b3d733b0fdec0d7a01af6c62b80ac4dc1ada2c2e8dc77b838c3876fcaa019fbd",
+          "team_source": "../sources/history-125.md#src-0001814",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H125-C12",
+      "title": "상태 불변의 당시 보고와 현재 hash 확인",
+      "claim": "원 실행은 가중치·모든 buffer·입력·checkpoint가 전후 같았다고 보고했다. 코드는 state_dict tensor hash와 원 파일 hash를 다시 검사한 뒤 성공 summary를 저장한다. 현재 입력10개와 원 RCTL 코드의 raw SHA를 대조했지만 당시 RAM 상태나 예측 호출을 재연하지 않았다. 당시 상태 불변 보고를 현재 독립 실행 검증으로 바꾸지 않는다.",
+      "claim_type": "preservation_scope",
+      "record_anchor": "claim-12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              26,
+              31
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              179,
+              204
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001819",
+          "line_ranges": [
+            [
+              330,
+              343
+            ]
+          ],
+          "source_sha256": "266188ceffeb0fea5ec89086140e55865e3a8ffb5c9fd4ec5cb29114b75eeb39",
+          "team_source": "../sources/history-125.md#src-0001819"
+        },
+        {
+          "source_id": "SRC-0001820",
+          "line_ranges": [
+            [
+              1,
+              56
+            ]
+          ],
+          "source_sha256": "6ab2587d0d25a8aa7fb81bd55c214e2fa1f36b016f240c77aac40b3d30602116",
+          "team_source": "../sources/history-125.md#src-0001820"
+        },
+        {
+          "source_id": "SRC-0001806",
+          "metadata_scope": "동일hash RCTL source를 첫판독에서는1–60행 전체,작성후에는11–60행50행 정적으로재독. 실행/import0.",
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-125.md#src-0001806",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H125-C13",
+      "title": "parameter·buffer와 상태 tensor 저장량",
+      "claim": "prepared는 모델당174433개 parameter,697732parameter bytes,3680buffer bytes,701412state tensor bytes를 기록했다. 현재9개 .pt의 ZIP data storage entry 크기 합도 각각701412bytes로 대조했다. pickle을 역직렬화하거나 tensor 값·trainable parameter를 새 모델로 재구성하지 않았다.",
+      "claim_type": "memory_scope",
+      "record_anchor": "claim-13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001815",
+          "line_ranges": [
+            [
+              50,
+              55
+            ]
+          ],
+          "source_sha256": "5187bc6302ec452f29a43a77267df74f7dd7def94ec7cccc1cc28b71e5802627",
+          "team_source": "../sources/history-125.md#src-0001815"
+        },
+        {
+          "source_id": "SRC-0001815",
+          "line_ranges": [
+            [
+              66,
+              183
+            ]
+          ],
+          "source_sha256": "5187bc6302ec452f29a43a77267df74f7dd7def94ec7cccc1cc28b71e5802627",
+          "team_source": "../sources/history-125.md#src-0001815"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              106,
+              112
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001820",
+          "metadata_scope": "참조9 checkpoint 원 SHA/파일크기·ZIP storage entry uncompressed bytes 대조. 연구코드/Torch load/import0.",
+          "source_sha256": "6ab2587d0d25a8aa7fb81bd55c214e2fa1f36b016f240c77aac40b3d30602116",
+          "team_source": "../sources/history-125.md#src-0001820",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H125-C14",
+      "title": "K1/K4의 상태와 checkpoint 파일 저장량",
+      "claim": "global K1의 state tensor는701412bytes, K4는2805648bytes다. checkpoint 파일 합은745123bytes와2980492bytes다. 같은 구조4개이므로 각각4배이며 tensor 저장량과 파일 형식 overhead를 구분한다. 이를 라이브러리와 입출력 buffer까지 포함한 프로세스 전체 메모리비로 확대하지 않는다.",
+      "claim_type": "memory_result",
+      "record_anchor": "claim-14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              36,
+              47
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001819",
+          "line_ranges": [
+            [
+              57,
+              153
+            ]
+          ],
+          "source_sha256": "266188ceffeb0fea5ec89086140e55865e3a8ffb5c9fd4ec5cb29114b75eeb39",
+          "team_source": "../sources/history-125.md#src-0001819"
+        },
+        {
+          "source_id": "SRC-0001815",
+          "line_ranges": [
+            [
+              28,
+              184
+            ]
+          ],
+          "source_sha256": "5187bc6302ec452f29a43a77267df74f7dd7def94ec7cccc1cc28b71e5802627",
+          "team_source": "../sources/history-125.md#src-0001815"
+        },
+        {
+          "source_id": "SRC-0001820",
+          "metadata_scope": "현재9파일 bytes/SHA 및 ZIP storage합으로 prepared/summary 저장량을 대조.",
+          "source_sha256": "6ab2587d0d25a8aa7fb81bd55c214e2fa1f36b016f240c77aac40b3d30602116",
+          "team_source": "../sources/history-125.md#src-0001820",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H125-C15",
+      "title": "9모델을 함께 올린 프로세스의 sampled RSS",
+      "claim": "sampled_max_rss는233689088bytes이며9모델과 Torch runtime이 함께 있는 프로세스의 값이다. bounds()에서 확인한 표본 시점의 최대치이므로 완전한 연속 메모리 추적이나 방법별 독립 peak가 아니다. K1/K4 전체 메모리4배 또는 대규모 서비스의 메모리 예측에 사용하지 않는다.",
+      "claim_type": "memory_limit",
+      "record_anchor": "claim-15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              42,
+              47
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              66,
+              77
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001816",
+          "line_ranges": [
+            [
+              5,
+              12
+            ]
+          ],
+          "source_sha256": "384ca099be23e27c16a16ea83341a36155d8c34af25bc76b444a29e4c1adaf0d",
+          "team_source": "../sources/history-125.md#src-0001816"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H125-C16",
+      "title": "모델 수를 줄여도 시점당16행은 처리한다",
+      "claim": "global과 K4는 모두 시점당16개8×9 입력 행을 처리한다. 묶음 호출은 호출 overhead와 라이브러리·하드웨어의 처리 효율을 바꾸지만 여러 cell을 하나의 대표 예측으로 치환하지 않았다. convolution/LSTM/선형층의 행별 계산을 생략했다고 주장하지 않으며 모델 수·호출 수·예측 행 수를 별도로 적는다.",
+      "claim_type": "computational_scope",
+      "record_anchor": "claim-16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001800",
+          "line_ranges": [
+            [
+              15,
+              19
+            ]
+          ],
+          "source_sha256": "90f8c6c551d160d9ab412c6661d93b5f968ac362de9232848b91dfde554c1c4c",
+          "team_source": "../sources/history-125.md#src-0001800"
+        },
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              36,
+              52
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001815",
+          "line_ranges": [
+            [
+              185,
+              200
+            ]
+          ],
+          "source_sha256": "5187bc6302ec452f29a43a77267df74f7dd7def94ec7cccc1cc28b71e5802627",
+          "team_source": "../sources/history-125.md#src-0001815"
+        },
+        {
+          "source_id": "SRC-0001806",
+          "line_ranges": [
+            [
+              49,
+              60
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-125.md#src-0001806"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H125-C17",
+      "title": "전체 호출과 저장된 측정 구간의 차이",
+      "claim": "warm-up 포함 총2166forward/3648예측행은 (16+1+16+4+16+4)×(2+12×3) 및6×16×(2+12×3)와 일치한다. NPZ에는 측정 구간의216개 timing과3456개 예측값만 저장됐다. timed 구간은2052forward/3456행, warm-up은114forward/192행이다. 저장 배열을 전체3648행의 literal 결과로 표시하지 않는다.",
+      "claim_type": "execution_accounting",
+      "record_anchor": "claim-17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              160,
+              187
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001816",
+          "line_ranges": [
+            [
+              5,
+              14
+            ]
+          ],
+          "source_sha256": "384ca099be23e27c16a16ea83341a36155d8c34af25bc76b444a29e4c1adaf0d",
+          "team_source": "../sources/history-125.md#src-0001816"
+        },
+        {
+          "source_id": "SRC-0001815",
+          "line_ranges": [
+            [
+              191,
+              199
+            ]
+          ],
+          "source_sha256": "5187bc6302ec452f29a43a77267df74f7dd7def94ec7cccc1cc28b71e5802627",
+          "team_source": "../sources/history-125.md#src-0001815"
+        },
+        {
+          "source_id": "SRC-0001814",
+          "metadata_scope": "timing216/prediction3456 elements와 prepared calls_per_origin/설정으로 시행 횟수 산술 확인.",
+          "source_sha256": "b3d733b0fdec0d7a01af6c62b80ac4dc1ada2c2e8dc77b838c3876fcaa019fbd",
+          "team_source": "../sources/history-125.md#src-0001814",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H125-C18",
+      "title": "warm-up이 포함된 내부 timing 합",
+      "claim": "저장 timing 배열 합은4.816830499985372seconds이고 counters.timed_route_seconds는5.10660659999121seconds다. 차이0.2897761000058381seconds는 warm-up 호출도 같은 evaluate() 카운터에 더한 코드와 일치한다. 내부 합은 최종stage5.4455786000035005seconds에 포함되므로 stage와 더해 비용을 이중 계산하지 않는다.",
+      "claim_type": "execution_accounting",
+      "record_anchor": "claim-18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              139,
+              170
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001816",
+          "line_ranges": [
+            [
+              4,
+              11
+            ]
+          ],
+          "source_sha256": "384ca099be23e27c16a16ea83341a36155d8c34af25bc76b444a29e4c1adaf0d",
+          "team_source": "../sources/history-125.md#src-0001816"
+        },
+        {
+          "source_id": "SRC-0001813",
+          "line_ranges": [
+            [
+              2,
+              15
+            ]
+          ],
+          "source_sha256": "eaa33249d85978f4a84d315edcf4569519943cac5789039648dff7305ce952cc",
+          "team_source": "../sources/history-125.md#src-0001813"
+        },
+        {
+          "source_id": "SRC-0001814",
+          "metadata_scope": "저장 timing sum과 counters timed합의 차이를 재계산; 새 latency 측정 아님.",
+          "source_sha256": "b3d733b0fdec0d7a01af6c62b80ac4dc1ada2c2e8dc77b838c3876fcaa019fbd",
+          "team_source": "../sources/history-125.md#src-0001814",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H125-C19",
+      "title": "summary와 finally 종료 시계의 차이",
+      "claim": "summary.wall_seconds는5.444760700003826seconds, finally의 run_finished와 원장 stage는5.4455786000035005seconds다. summary의 시계는 summary 저장·출력과 finally보다 앞에서 읽으며 차이는0.0008178999996744seconds다. 최종stage 비용은 run_finished/budget_update를 사용한다. 두 값을 별도 실행 두 번으로 세거나 임의로 같은 값으로 덮어쓰지 않는다.",
+      "claim_type": "timestamp_scope",
+      "record_anchor": "claim-19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001819",
+          "line_ranges": [
+            [
+              330,
+              343
+            ]
+          ],
+          "source_sha256": "266188ceffeb0fea5ec89086140e55865e3a8ffb5c9fd4ec5cb29114b75eeb39",
+          "team_source": "../sources/history-125.md#src-0001819"
+        },
+        {
+          "source_id": "SRC-0001816",
+          "line_ranges": [
+            [
+              1,
+              15
+            ]
+          ],
+          "source_sha256": "384ca099be23e27c16a16ea83341a36155d8c34af25bc76b444a29e4c1adaf0d",
+          "team_source": "../sources/history-125.md#src-0001816"
+        },
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              200,
+              211
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001813",
+          "line_ranges": [
+            [
+              2,
+              19
+            ]
+          ],
+          "source_sha256": "eaa33249d85978f4a84d315edcf4569519943cac5789039648dff7305ce952cc",
+          "team_source": "../sources/history-125.md#src-0001813"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H125-C20",
+      "title": "원장 입력과 before 사본의 줄바꿈 차이",
+      "claim": "원장 입력 SHA는f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9(7651bytes), budget_before 사본은f60705e1cecd539871c8fdb019d27a25adf007efa7a1ee534f0428802f9b8dfb(7894bytes)다. 두 JSON객체가 같으며 사본의243개CRLF를LF로 바꾸면 전체 바이트가 일치한다. 두 raw 판본과 형식 차이를 보존하며 비용·과학적 내용 변화나 손상으로 해석하지 않는다.",
+      "claim_type": "version_identity",
+      "record_anchor": "claim-20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001808",
+          "line_ranges": [
+            [
+              36,
+              65
+            ]
+          ],
+          "source_sha256": "d7586986c2aeb33330c747992dccc69b108050b207224cb59bd39c0b15833523",
+          "team_source": "../sources/history-125.md#src-0001808"
+        },
+        {
+          "source_id": "SRC-0001813",
+          "line_ranges": [
+            [
+              17,
+              18
+            ]
+          ],
+          "source_sha256": "eaa33249d85978f4a84d315edcf4569519943cac5789039648dff7305ce952cc",
+          "team_source": "../sources/history-125.md#src-0001813"
+        },
+        {
+          "source_id": "SRC-0001812",
+          "line_ranges": [
+            [
+              1,
+              244
+            ]
+          ],
+          "source_sha256": "f60705e1cecd539871c8fdb019d27a25adf007efa7a1ee534f0428802f9b8dfb",
+          "team_source": "../sources/history-125.md#src-0001812"
+        },
+        {
+          "source_id": "SRC-0001780",
+          "metadata_scope": "직전 H124가재사용한 실제f3e370…원장 입력과 raw/JSON/newline 기계 대조. 이번 해당baseline전체 직접재독0.",
+          "source_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+          "team_source": "../sources/history-125.md#src-0001780",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H125-C21",
+      "title": "after 원장과 budget_after의 같은 바이트",
+      "claim": "원95 이후 원장 SHA는ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7이다. 보존 cumulative_execution_budget와 budget_after는 같은 바이트이므로 서로 다른 실행 결과로 중복 세지 않는다. before의f60705…와 입력f3e370…는 다른 raw 판본으로 출처를 유지한다.",
+      "claim_type": "version_identity",
+      "record_anchor": "claim-21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001799",
+          "line_ranges": [
+            [
+              25,
+              58
+            ]
+          ],
+          "source_sha256": "9034bddaf1d523cd641637b9a74686c196ed78858d9c9c938f5edd6105f23cf7",
+          "team_source": "../sources/history-125.md#src-0001799"
+        },
+        {
+          "source_id": "SRC-0001813",
+          "line_ranges": [
+            [
+              17,
+              26
+            ]
+          ],
+          "source_sha256": "eaa33249d85978f4a84d315edcf4569519943cac5789039648dff7305ce952cc",
+          "team_source": "../sources/history-125.md#src-0001813"
+        },
+        {
+          "source_id": "SRC-0001804",
+          "line_ranges": [
+            [
+              1,
+              259
+            ]
+          ],
+          "source_sha256": "ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7",
+          "team_source": "../sources/history-125.md#src-0001804"
+        },
+        {
+          "source_id": "SRC-0001804",
+          "metadata_scope": "같은SHA의SRC-0001811과 전체물리별칭을metadata/hash 대조. 신규원장집계는한그룹.",
+          "source_sha256": "ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7",
+          "team_source": "../sources/history-125.md#src-0001804",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H125-C22",
+      "title": "한 번 추가한 비용과 기록된 누적시간",
+      "claim": "after 원장은 serving_cost_95 항목을 한 번 추가하고 RCTL_frozen_inference_seconds를 최종stage5.4455786000035005seconds만큼 늘렸다. 기존 항목·fit/context·caps는 그대로다. 같은 계산식의 기록된 modeling은1992.615061800001→1998.0606404000046seconds다. 초기 전처리와 일부 과거시간이 따로 기록되지 않았으므로 완전한 전체 연구시간으로 부르지 않는다.",
+      "claim_type": "historical_budget",
+      "record_anchor": "claim-22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001807",
+          "line_ranges": [
+            [
+              18,
+              41
+            ]
+          ],
+          "source_sha256": "3a3d11843dd846984bd55a37db1bdbabba2ef8003f5152000ef1901dbe5ad9fd",
+          "team_source": "../sources/history-125.md#src-0001807"
+        },
+        {
+          "source_id": "SRC-0001813",
+          "line_ranges": [
+            [
+              2,
+              26
+            ]
+          ],
+          "source_sha256": "eaa33249d85978f4a84d315edcf4569519943cac5789039648dff7305ce952cc",
+          "team_source": "../sources/history-125.md#src-0001813"
+        },
+        {
+          "source_id": "SRC-0001812",
+          "line_ranges": [
+            [
+              68,
+              125
+            ]
+          ],
+          "source_sha256": "f60705e1cecd539871c8fdb019d27a25adf007efa7a1ee534f0428802f9b8dfb",
+          "team_source": "../sources/history-125.md#src-0001812"
+        },
+        {
+          "source_id": "SRC-0001804",
+          "line_ranges": [
+            [
+              68,
+              163
+            ]
+          ],
+          "source_sha256": "ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7",
+          "team_source": "../sources/history-125.md#src-0001804"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H125-C23",
+      "title": "역사적 예산과 현재 실행 범위",
+      "claim": "원95 이후에도 누적Tab69context/39360query행·RCTL29fit/1565epoch, 잔여Tab11context/20640행·추가RCTLfit0이라는 당시 원장 상태가 유지됐다. 원문 Goal·AGENTS·상한·다음 행동은 역사자료다. 현재 정리 작업의 모델 실행 허가로 사용하지 않으며 모델 실행·원장 수정·새 연구 Goal 재개는0이다.",
+      "claim_type": "historical_budget",
+      "record_anchor": "claim-23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001804",
+          "line_ranges": [
+            [
+              68,
+              92
+            ]
+          ],
+          "source_sha256": "ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7",
+          "team_source": "../sources/history-125.md#src-0001804"
+        },
+        {
+          "source_id": "SRC-0001813",
+          "line_ranges": [
+            [
+              20,
+              26
+            ]
+          ],
+          "source_sha256": "eaa33249d85978f4a84d315edcf4569519943cac5789039648dff7305ce952cc",
+          "team_source": "../sources/history-125.md#src-0001813"
+        },
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              34,
+              38
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001805",
+          "line_ranges": [
+            [
+              3,
+              14
+            ]
+          ],
+          "source_sha256": "f7c574a8a05c488d2891c762f7d52cfe40650fc1682df8222f64305c7074ba31",
+          "team_source": "../sources/history-125.md#src-0001805"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H125-C24",
+      "title": "실행시간 표 밖에 있는 Tab 준비 비용",
+      "claim": "이번 timing은 준비된 partition과 checkpoint를 사용했고 Tab context/query 호출은0이다. 이 표로 새로운 Tab 소속 결정의 사전 계산 비용까지 절약됐다고 주장할 수 없다. 후속 설계에서는 cluster 수·실제 입력 행·호출/batch·실측시간·가중치 저장·Tab context/query 준비 비용을 따로 적고 전체 비교 범위를 정해야 한다.",
+      "claim_type": "pipeline_cost_boundary",
+      "record_anchor": "claim-24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              47,
+              67
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001800",
+          "line_ranges": [
+            [
+              21,
+              28
+            ]
+          ],
+          "source_sha256": "90f8c6c551d160d9ab412c6661d93b5f968ac362de9232848b91dfde554c1c4c",
+          "team_source": "../sources/history-125.md#src-0001800"
+        },
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              27,
+              38
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001818",
+          "line_ranges": [
+            [
+              32,
+              44
+            ]
+          ],
+          "source_sha256": "95ee4c170a15b2f4776b6c7f66b96703c99a8cf7e118daa56ac76703e9b7ff3d",
+          "team_source": "../sources/history-125.md#src-0001818"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H125-C25",
+      "title": "같은 K4의 작은 차이와 Tab 속도 우위",
+      "claim": "empirical K4−Tab K4 묶음 median 차이는 약0.147ms다. 구조·모델 수·행 수·호출 수가 같고 작은 timing만 확인했다. 이 차이는 Tab clustering의 유의미한 속도 우위나 정확도 개선의 근거가 아니다. 이번에 유의성 검정이나 반복 실행을 추가하지 않았다.",
+      "claim_type": "interpretation_limit",
+      "record_anchor": "claim-25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              54,
+              58
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001819",
+          "line_ranges": [
+            [
+              106,
+              153
+            ]
+          ],
+          "source_sha256": "266188ceffeb0fea5ec89086140e55865e3a8ffb5c9fd4ec5cb29114b75eeb39",
+          "team_source": "../sources/history-125.md#src-0001819"
+        },
+        {
+          "source_id": "SRC-0001814",
+          "metadata_scope": "14.152000003377907−14.005199998791795ms 산술차이. 기계 재계산이며독립속도실험0.",
+          "source_sha256": "b3d733b0fdec0d7a01af6c62b80ac4dc1ada2c2e8dc77b838c3876fcaa019fbd",
+          "team_source": "../sources/history-125.md#src-0001814",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H125-C26",
+      "title": "기존 B2 판단과 새 정확도 실험의 구별",
+      "claim": "원95는 기존 B2의 같은K 조건에서 불리했던 RCTL 성능 판정을 바꾸지 않았다. 이전 checkpoint 평가에서 global 평균오차가 작았다는 보고를 참조했지만 이 timing은 새 기간의 오차 재검증이 아니다. 현재 방법에 별도 계산 이점이 확보되지 않았다는 판단을 모든 partition·학습 공유의 불가능성으로 넓히지 않는다.",
+      "claim_type": "historical_decision",
+      "record_anchor": "claim-26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              7,
+              9
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              54,
+              62
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001803",
+          "line_ranges": [
+            [
+              51,
+              58
+            ]
+          ],
+          "source_sha256": "588158ed6f8d1d78aef4bd2b371088052937da33ed8dfe0cf7ec97782752569c",
+          "team_source": "../sources/history-125.md#src-0001803"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H125-C27",
+      "title": "기본 batch 구현과 연구 신규성의 구별",
+      "claim": "당시 향후 비교의 기본 구현은 같은 가중치를 사용하는 동시 cell을 batch로 처리하는 것으로 확정했다. 느린 cell별 호출을 개선한 효과를 Tab의 신규성으로 설명하지 않는다. 이 baseline에서도 실제로 어떤 일을 생략하는지 특정해야 하며 새 후보나 최종 추천안을 채택한 결과는 아니다.",
+      "claim_type": "decision_rule",
+      "record_anchor": "claim-27",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001800",
+          "line_ranges": [
+            [
+              21,
+              28
+            ]
+          ],
+          "source_sha256": "90f8c6c551d160d9ab412c6661d93b5f968ac362de9232848b91dfde554c1c4c",
+          "team_source": "../sources/history-125.md#src-0001800"
+        },
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              54,
+              70
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              27,
+              32
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001803",
+          "line_ranges": [
+            [
+              60,
+              64
+            ]
+          ],
+          "source_sha256": "588158ed6f8d1d78aef4bd2b371088052937da33ed8dfe0cf7ec97782752569c",
+          "team_source": "../sources/history-125.md#src-0001803"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H125-C28",
+      "title": "대표 예측·다중 출력의 이전 검토에 연결",
+      "claim": "대표 예측·다중 출력·출력 압축은48–50·74·81 등의 이전 검토에 연결한다. 같은 모델의 batch로 묶은 입력을 새 대표 예측으로 바꾸지 않는다. 후보 색인의 긍정 증거와 탐색 진입·최종 추천의 구별도 유지한다. 과거 Tab 직접 예측의 이득을 현재 clustering 성공으로 옮기거나, 과거 실패 때문에 다른 실익의 모든 가능성을 금지하지 않는다.",
+      "claim_type": "prior_attempt_connection",
+      "record_anchor": "claim-28",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              54,
+              62
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        },
+        {
+          "source_id": "SRC-0001802",
+          "line_ranges": [
+            [
+              7,
+              9
+            ]
+          ],
+          "source_sha256": "e63e48bf2666c42a2273594324173e38ae2cf1420a21ee2fb46fec822561e047",
+          "team_source": "../sources/history-125.md#src-0001802"
+        },
+        {
+          "source_id": "SRC-0001803",
+          "line_ranges": [
+            [
+              23,
+              27
+            ]
+          ],
+          "source_sha256": "588158ed6f8d1d78aef4bd2b371088052937da33ed8dfe0cf7ec97782752569c",
+          "team_source": "../sources/history-125.md#src-0001803"
+        },
+        {
+          "source_id": "SRC-0001803",
+          "line_ranges": [
+            [
+              34,
+              58
+            ]
+          ],
+          "source_sha256": "588158ed6f8d1d78aef4bd2b371088052937da33ed8dfe0cf7ec97782752569c",
+          "team_source": "../sources/history-125.md#src-0001803"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H125-C29",
+      "title": "후보·연혁의 판본 차이와 미독 범위",
+      "claim": "후보 색인은58→64행으로 원95의6행이 추가됐고 현재64행을 전체 읽었다. 연혁은527→536행으로 새95블록9행과94제목의 최신→이전 변경이 있다. 현재1–57행을 읽고58–536행은 직접 미독이다. 직전 연혁49–527행도 기계적으로 대응한다는 이유로 전문 판독 완료 처리하지 않는다.",
+      "claim_type": "archive_scope",
+      "record_anchor": "claim-29",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001803",
+          "line_ranges": [
+            [
+              1,
+              64
+            ]
+          ],
+          "source_sha256": "588158ed6f8d1d78aef4bd2b371088052937da33ed8dfe0cf7ec97782752569c",
+          "team_source": "../sources/history-125.md#src-0001803"
+        },
+        {
+          "source_id": "SRC-0001805",
+          "line_ranges": [
+            [
+              1,
+              57
+            ]
+          ],
+          "source_sha256": "f7c574a8a05c488d2891c762f7d52cfe40650fc1682df8222f64305c7074ba31",
+          "team_source": "../sources/history-125.md#src-0001805"
+        },
+        {
+          "source_id": "SRC-0001779",
+          "metadata_scope": "직전58행whole 판독을재사용;현재source와diff만기계대조. 이번baseline 직접재독0.",
+          "source_sha256": "5b38b7f870ed39d6765d406ef808cf4753cc6c1ebf5d58641a7fb682bc0200f2",
+          "team_source": "../sources/history-125.md#src-0001779",
+          "semantic_full_re_read_claimed": false
+        },
+        {
+          "source_id": "SRC-0001782",
+          "metadata_scope": "직전1–48/527행판독·49–527미독을유지;현재source와diff대조.",
+          "source_sha256": "67813d7091a7ec97c48ad03767ca5bfb91d90671a4c9e0c71a551b70345a5129",
+          "team_source": "../sources/history-125.md#src-0001782",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H125-C30",
+      "title": "snapshot37의 파일·용량과 입력 참조",
+      "claim": "snapshot37은21파일241706bytes를 열거하며 manifest4301bytes를 포함하면22파일246007bytes다. 별도 원95 archive receipt는 snapshot 밖에 있다. 입력/checkpoint10개는 snapshot에 복사하지 않았고9개 checkpoint 각745123bytes와 design_data739949bytes를 경로·hash로 참조했다. 보관 사실을 모델 재현 성공으로 세지 않는다.",
+      "claim_type": "archive_metadata",
+      "record_anchor": "claim-30",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001799",
+          "line_ranges": [
+            [
+              1,
+              114
+            ]
+          ],
+          "source_sha256": "9034bddaf1d523cd641637b9a74686c196ed78858d9c9c938f5edd6105f23cf7",
+          "team_source": "../sources/history-125.md#src-0001799"
+        },
+        {
+          "source_id": "SRC-0001820",
+          "line_ranges": [
+            [
+              1,
+              56
+            ]
+          ],
+          "source_sha256": "6ab2587d0d25a8aa7fb81bd55c214e2fa1f36b016f240c77aac40b3d30602116",
+          "team_source": "../sources/history-125.md#src-0001820"
+        },
+        {
+          "source_id": "SRC-0022095",
+          "line_ranges": [
+            [
+              1,
+              8
+            ]
+          ],
+          "source_sha256": "6c97194a9d60d6ae9d70fb4058a2c01cee9b928859bf1af711f00420e4e2c367",
+          "team_source": "../sources/history-125.md#src-0022095"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H125-C31",
+      "title": "현재 hash 검수와 팀 자료 접근의 범위",
+      "claim": "새20개 고유 바이트 자료40물리별칭, 이전 RCTL/설정2그룹16별칭, 직전 판본3그룹19별칭의 총75경로를 현재SHA로 대조했다. 새 보존가능 자료는20개230062bytes다. 보호원본6개·RCTL 동일hash 별칭11개·입력 참조10개도 hash로 확인했다. checkpoint는 pickle 역직렬화·원코드 import 없이 ZIP 저장 크기만 확인했다. 장기 팀 접근은 별도 과제로 남긴다.",
+      "claim_type": "archive_verification",
+      "record_anchor": "claim-31",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001799",
+          "metadata_scope": "selection75alias·현재manifest22파일·보호6/RCTL11 해시검수. first-scope-progress/saved-measurement-check 참조.",
+          "source_sha256": "9034bddaf1d523cd641637b9a74686c196ed78858d9c9c938f5edd6105f23cf7",
+          "team_source": "../sources/history-125.md#src-0001799",
+          "semantic_full_re_read_claimed": false
+        },
+        {
+          "source_id": "SRC-0001820",
+          "metadata_scope": "입력10개현재hash/bytes·기존catalog exact aliases대조; .pt9 ZIP metadata만읽음.",
+          "source_sha256": "6ab2587d0d25a8aa7fb81bd55c214e2fa1f36b016f240c77aac40b3d30602116",
+          "team_source": "../sources/history-125.md#src-0001820",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H125-C32",
+      "title": "실제 판독·검산과 전체 Goal의 잔여",
+      "claim": "첫 판독은 새raw1942행과 재사용 RCTL 코드60행으로 총2002행이다. 초안 작성 뒤 원문1645행과 저장 검사 결과를 대조했다. NPZ field/shape/dtype·수치 요약 및 배열 기계검사를 확인했지만 모든 float값의 literal 판독이나 새 timing 실행은 아니다. 문서·링크 검사는 별도 검수 파일에 결과를 기록한다. 원96 이후, 이전 고유판본, FedPPBC/DOCX 공백, 문헌·연혁 후미, 실패·비용 통합, 장기 팀 접근, 최종 원본 변경분·대표 검색이 남아 전체 Goal은 진행 중이다.",
+      "claim_type": "archive_status",
+      "record_anchor": "claim-32",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001805",
+          "metadata_scope": "현재1–57직독/58–536미독;first-scope-progress에raw2002범위·재사용가산0저장.",
+          "source_sha256": "f7c574a8a05c488d2891c762f7d52cfe40650fc1682df8222f64305c7074ba31",
+          "team_source": "../sources/history-125.md#src-0001805",
+          "semantic_full_re_read_claimed": false
+        },
+        {
+          "source_id": "SRC-0001814",
+          "metadata_scope": "5배열metadata·6경로통계/예측차이/합재계산. 모든floatliteral read0·독립연구실행0.",
+          "source_sha256": "b3d733b0fdec0d7a01af6c62b80ac4dc1ada2c2e8dc77b838c3876fcaa019fbd",
+          "team_source": "../sources/history-125.md#src-0001814",
+          "semantic_full_re_read_claimed": false
+        },
+        {
+          "source_id": "SRC-0001801",
+          "line_ranges": [
+            [
+              64,
+              70
+            ]
+          ],
+          "source_sha256": "c841a388434697d071ef92c42709b181bc5918c6296ec12c66638166540e4672",
+          "team_source": "../sources/history-125.md#src-0001801"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

@@ -1,0 +1,187 @@
+{
+  "success": true,
+  "comparisons": [
+    {
+      "old_source_id": "SRC-0001779",
+      "current_source_id": "SRC-0001803",
+      "old_sha256": "5b38b7f870ed39d6765d406ef808cf4753cc6c1ebf5d58641a7fb682bc0200f2",
+      "current_sha256": "588158ed6f8d1d78aef4bd2b371088052937da33ed8dfe0cf7ec97782752569c",
+      "raw_bytes_equal": false,
+      "old_lines": 58,
+      "current_lines": 64,
+      "changed_ranges": [
+        {
+          "operation": "insert",
+          "old_lines": [],
+          "current_lines": [
+            59,
+            64
+          ],
+          "old_text": [],
+          "current_text": [
+            "",
+            "## 실제 실행 비용의 기본 비교 — 95",
+            "",
+            "같은 가중치를 쓰는 동시 cell은 batch로 처리하는 것을 기본 구현으로 둔다. 기존16cell·CPU4thread의 보존된 모델에서 cell별→묶음 호출 median은 global33.186→3.493ms, TabK4 33.865→14.005ms, empiricalK4 34.038→14.152ms였다. 동일방법 예측차이는최대1.20e-6미만이고가중치/buffer불변이다. 기본batch효과를Tab신규성으로세지않는다.",
+            "",
+            "K1과K4는모두시점당16행을계산하며상태tensor는701412/2805648bytes다. 호출수·예측행·모델저장량·실측시간·Tab준비비용을분리한다. 이측정은새partition의정확도확인이나다른hardware/대규모latency의증거가아니다. 상세95와results/serving_cost_95를참조한다."
+          ]
+        }
+      ],
+      "mechanical_comparison_not_semantic_read": true,
+      "new_semantic_read_credit": 0
+    },
+    {
+      "old_source_id": "SRC-0001782",
+      "current_source_id": "SRC-0001805",
+      "old_sha256": "67813d7091a7ec97c48ad03767ca5bfb91d90671a4c9e0c71a551b70345a5129",
+      "current_sha256": "f7c574a8a05c488d2891c762f7d52cfe40650fc1682df8222f64305c7074ba31",
+      "raw_bytes_equal": false,
+      "old_lines": 527,
+      "current_lines": 536,
+      "changed_ranges": [
+        {
+          "operation": "replace",
+          "old_lines": [
+            7,
+            7
+          ],
+          "current_lines": [
+            7,
+            16
+          ],
+          "old_text": [
+            "## 최신 상태 — 94 정답 대기 입력의 정보와 보정 가능 범위"
+          ],
+          "current_text": [
+            "## 최신 상태 — 95 저장된 RCTL의 실제 묶음 예측 비용",
+            "",
+            "- 2026-09-26.95계획을고정한뒤기존seed20260925 global1·Tabrisk4·empiricalrisk4 checkpoint로실제CPU benchmark를한번실행했다. 기존16cell·12시점×3반복,6실행경로다. 같은시각cell만묶고미래시점대기batch를사용하지않았다.",
+            "- cell별→묶음호출median은global33.186→3.493ms,TabK4 33.865→14.005ms,empiricalK4 34.038→14.152ms다. 같은방법예측차이최대1.1921e-6,모든가중치/buffer/원자료/checkpointhash불변. 입력준비·모델로딩제외측정이며다른hardware/10000cell에선형외삽하지않는다.",
+            "- 모두시점당16행을예측한다. K1/K4 상태tensor는701412/2805648bytes다. 모델수·행수·호출·메모리·실측시간을구분하며,기본batch처리의효과를Tab의신규성으로세지않는다. 대표예측/다중출력/출력압축후보를재실행하지않았다.",
+            "- 새fit0/gradient0/Tab호출0. frozen forward2166회·3648행(warm-up포함),stage5.4455786초,그안의timed route5.1066066초. 원장에한번반영했고누적recorded modeling1998.0606404초다. 새원장sha ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7. 잔여Tab11context/20640행,추가RCTLfit0.",
+            "- 94는원문수정/정보가용성의확인으로판단을바꾼progress였다.95는실제실행비용과향후기본구현을확정한progress이며새추천안은아니다. 이번역시외부blocker가확인되지않았고최종추천방향/최종Word는미완료다.",
+            "- 상세95·공개요약·계획/코드/측정배열/불변성/원장갱신을보존했다. 기존Word와이전snapshot은불변이다. 후속비용주장은묶음처리기준에서도어떤실제계산이제거되는지특정해야한다. 같은N행의호출만합치는구조를새연구기여로추천하지않는다.",
+            "",
+            "## 이전 상태 — 94 정답 대기 입력의 정보와 보정 가능 범위"
+          ]
+        }
+      ],
+      "mechanical_comparison_not_semantic_read": true,
+      "new_semantic_read_credit": 0
+    },
+    {
+      "old_source_id": "SRC-0001780",
+      "current_source_id": "SRC-0001812",
+      "old_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+      "current_sha256": "f60705e1cecd539871c8fdb019d27a25adf007efa7a1ee534f0428802f9b8dfb",
+      "raw_bytes_equal": false,
+      "old_lines": 244,
+      "current_lines": 244,
+      "changed_ranges": [],
+      "mechanical_comparison_not_semantic_read": true,
+      "new_semantic_read_credit": 0
+    },
+    {
+      "old_source_id": "SRC-0001812",
+      "current_source_id": "SRC-0001804",
+      "old_sha256": "f60705e1cecd539871c8fdb019d27a25adf007efa7a1ee534f0428802f9b8dfb",
+      "current_sha256": "ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7",
+      "raw_bytes_equal": false,
+      "old_lines": 244,
+      "current_lines": 259,
+      "changed_ranges": [
+        {
+          "operation": "replace",
+          "old_lines": [
+            75,
+            75
+          ],
+          "current_lines": [
+            75,
+            75
+          ],
+          "old_text": [
+            "    \"RCTL_frozen_inference_seconds\": 9.867848400001094,"
+          ],
+          "current_text": [
+            "    \"RCTL_frozen_inference_seconds\": 15.313427000004594,"
+          ]
+        },
+        {
+          "operation": "insert",
+          "old_lines": [],
+          "current_lines": [
+            148,
+            162
+          ],
+          "old_text": [],
+          "current_text": [
+            "    },",
+            "    {",
+            "      \"stage\": \"serving_cost_95\",",
+            "      \"RCTL_fits\": 0,",
+            "      \"TabICL_contexts\": 0,",
+            "      \"forward_calls\": 2166,",
+            "      \"predicted_rows\": 3648,",
+            "      \"wall_seconds\": 5.4455786000035005,",
+            "      \"timed_route_seconds_included_in_wall\": 5.10660659999121,",
+            "      \"precommitted_stage_wall_cap_seconds\": 180,",
+            "      \"sampled_max_rss_bytes\": 233689088,",
+            "      \"counts_toward_total_local_modeling\": true,",
+            "      \"timing_scope\": \"Stage includes preparation and warmup; library import/process startup not timed.\",",
+            "      \"partitions_unchanged\": true,",
+            "      \"weights_and_buffers_unchanged\": true"
+          ]
+        }
+      ],
+      "mechanical_comparison_not_semantic_read": true,
+      "new_semantic_read_credit": 0
+    }
+  ],
+  "current_actual_read_scopes": {
+    "SRC-0001803": [
+      [
+        1,
+        64
+      ]
+    ],
+    "SRC-0001805": [
+      [
+        1,
+        57
+      ]
+    ],
+    "SRC-0001812": [
+      [
+        1,
+        244
+      ]
+    ],
+    "SRC-0001804": [
+      [
+        1,
+        259
+      ]
+    ]
+  },
+  "current_unread_scopes": {
+    "SRC-0001805": [
+      [
+        58,
+        536
+      ]
+    ]
+  },
+  "previous_direct_unread_scopes": {
+    "SRC-0001782": [
+      [
+        49,
+        527
+      ]
+    ]
+  },
+  "prior_unread_not_completed_by_mechanical_identity": true,
+  "comparison_execution_not_original_research_code": true,
+  "coverage_increment": 0
+}

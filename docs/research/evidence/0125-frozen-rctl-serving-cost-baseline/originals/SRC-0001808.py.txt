@@ -1,0 +1,211 @@
+"""Frozen inference timing; no training, cluster selection, or model modification."""
+import os
+for name in ('OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS'):
+    os.environ[name] = '4'
+from pathlib import Path
+import hashlib, json, platform, sys, time
+import numpy as np
+import psutil
+import torch
+from rctl_torch import RCTL
+
+sys.stdout.reconfigure(encoding='utf-8')
+torch.set_num_threads(4)
+torch.set_num_interop_threads(2)
+BASE = Path(__file__).resolve().parent
+PRIOR = BASE/'results/rctl_pilot'
+OUT = BASE/'results/serving_cost_95'
+OUT.mkdir(parents=True, exist_ok=True)
+assert not (OUT/'run_started.json').exists(), 'Inspect the existing execution; do not restart.'
+start = time.perf_counter()
+process = psutil.Process()
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def state_hash(model):
+    h = hashlib.sha256()
+    for key, value in model.state_dict().items():
+        h.update(key.encode())
+        h.update(value.detach().cpu().numpy().tobytes())
+    return h.hexdigest()
+
+def save(name, value):
+    (OUT/name).write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+
+ledger_path = BASE/'cumulative_execution_budget.json'
+expected_ledger = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+assert sha(ledger_path) == expected_ledger
+ledger = json.loads(ledger_path.read_text(encoding='utf-8'))
+assert ledger['used']['RCTL_fits'] == ledger['caps']['RCTL_fits'] == 29
+frozen = json.loads((PRIOR/'frozen_settings.json').read_text(encoding='utf-8'))
+assert sha(BASE/'rctl_torch.py') == frozen['model_code_sha256']
+method_names = ['global','tabicl_risk','empirical_risk']
+tasks = [task for task in frozen['tasks'] if task[0] in method_names and task[1] == 20260925]
+assert len(tasks) == 9
+origins = np.linspace(840,1007,12,dtype=int)
+settings = {
+    'methods': method_names, 'seed':20260925, 'origins':origins.tolist(),
+    'warmup_origins':2, 'repeats':3, 'route_types':['per_cell','per_cluster'],
+    'threads':4, 'inter_op_threads':2, 'dtype':'float32', 'device':'cpu',
+    'new_fits':0, 'new_Tab_contexts':0, 'max_forward_calls':2166,
+    'max_predicted_rows':3648, 'wall_cap_seconds':180, 'rss_cap_bytes':2*1024**3,
+    'equivalence_tolerance':2e-5, 'result_used_for_clustering':False,
+    'independent_test':False, 'timing_excludes':['model_load','input_preparation'],
+    'plan_sha256':sha(BASE/'95_serving_cost_plan.md'), 'code_sha256':sha(Path(__file__)),
+    'model_code_sha256':sha(BASE/'rctl_torch.py'),
+    'design_data_sha256':sha(BASE/'results/design_data.npz'),
+    'frozen_settings_sha256':sha(PRIOR/'frozen_settings.json'),
+    'ledger_before_sha256':expected_ledger,
+    'torch_version':torch.__version__, 'python_version':sys.version,
+    'processor':platform.processor(), 'logical_cpus':psutil.cpu_count(),
+}
+save('settings.json',settings)
+save('run_started.json',{'unix':time.time(),'pid':os.getpid(),'settings_sha256':sha(OUT/'settings.json')})
+save('budget_before.json',ledger)
+counter={'forward_attempts':0,'forward_completed':0,'predicted_rows_attempted':0,
+         'predicted_rows_completed':0,'timed_route_seconds':0.0,'sampled_max_rss_bytes':process.memory_info().rss}
+completed=False
+failure=None
+records=[]
+models={}
+before_states={}
+
+def bounds():
+    counter['sampled_max_rss_bytes']=max(counter['sampled_max_rss_bytes'],process.memory_info().rss)
+    assert time.perf_counter()-start < settings['wall_cap_seconds'], 'Stage time cap reached'
+    assert counter['sampled_max_rss_bytes'] <= settings['rss_cap_bytes'], 'RSS cap reached'
+
+try:
+    proposal=json.loads((BASE/'results/observed_risk_pilot.json').read_text(encoding='utf-8'))
+    ids=np.asarray(proposal['cell_ids'],dtype=np.int64)
+    assert len(ids)==16
+    with np.load(BASE/'results/design_data.npz',allow_pickle=False) as data:
+        selected=np.array([np.flatnonzero(data['cell_indices']==cell-1).item() for cell in ids])
+        time_ix=np.array([np.flatnonzero(data['times']==t).item() for t in origins])
+        flat=data['X'][selected][:,time_ix].astype(np.float32)
+    seq=np.empty((16,12,8,9),dtype=np.float32)
+    seq[:,:,:,0]=flat[:,:,:8]
+    seq[:,:,:,1:]=flat[:,:,None,8:]
+    assert np.isfinite(seq).all()
+    groups={name:[] for name in method_names}
+    for method,seed,cluster,members in tasks:
+        bounds()
+        key=f'{method}_{seed}_cluster{cluster}'
+        path=PRIOR/(key+'.pt')
+        before_sha=sha(path)
+        load_start=time.perf_counter()
+        model=RCTL(steps=8,channels=9)
+        model.load_state_dict(torch.load(path,map_location='cpu',weights_only=True))
+        model.eval()
+        model.requires_grad_(False)
+        load_seconds=time.perf_counter()-load_start
+        models[key]=model
+        before_states[key]=state_hash(model)
+        groups[method].append((key,np.asarray(members,dtype=np.int64)))
+        records.append({'checkpoint':key,'checkpoint_sha256':before_sha,
+            'members':members,'load_including_initialization_seconds':load_seconds,
+            'parameters':sum(p.numel() for p in model.parameters()),
+            'parameter_tensor_bytes':sum(p.numel()*p.element_size() for p in model.parameters()),
+            'buffer_tensor_bytes':sum(b.numel()*b.element_size() for b in model.buffers()),
+            'state_tensor_bytes':sum(v.numel()*v.element_size() for v in model.state_dict().values()),
+            'checkpoint_file_bytes':path.stat().st_size})
+    for method,items in groups.items():
+        members=np.concatenate([item[1] for item in items])
+        assert sorted(members.tolist())==list(range(16))
+        if method!='global':
+            assert [len(item[1]) for item in items]==[4]*4
+    routes=[]
+    packages={}
+    for method in method_names:
+        for kind in settings['route_types']:
+            route=method+'__'+kind
+            routes.append(route)
+            pieces=[]
+            if kind=='per_cluster':
+                pieces=groups[method]
+            else:
+                for cell in range(16):
+                    key=next(key for key,members in groups[method] if cell in members)
+                    pieces.append((key,np.array([cell],dtype=np.int64)))
+            packages[route]=[
+                [(key,members,torch.from_numpy(np.ascontiguousarray(seq[members,ti]))) for key,members in pieces]
+                for ti in range(12)
+            ]
+    save('prepared.json',{'routes':routes,'cell_ids':ids.tolist(),'checkpoints':records,
+        'preparation_seconds':time.perf_counter()-start,'row_shape':[8,9],
+        'timed_rows_per_route':16*12*3,'calls_per_origin':{r:len(packages[r][0]) for r in routes}})
+
+    def evaluate(route, ti):
+        bounds()
+        output=np.empty(16,dtype=np.float32)
+        route_start=time.perf_counter()
+        try:
+            with torch.inference_mode():
+                for key,members,x in packages[route][ti]:
+                    assert counter['forward_attempts']+1<=settings['max_forward_calls']
+                    assert counter['predicted_rows_attempted']+len(x)<=settings['max_predicted_rows']
+                    counter['forward_attempts']+=1
+                    counter['predicted_rows_attempted']+=len(x)
+                    result=models[key](x).numpy()
+                    output[members]=result
+                    counter['forward_completed']+=1
+                    counter['predicted_rows_completed']+=len(x)
+        finally:
+            elapsed=time.perf_counter()-route_start
+            counter['timed_route_seconds']+=elapsed
+        assert np.isfinite(output).all()
+        return output,elapsed
+
+    for ti in range(2):
+        for route in routes:
+            evaluate(route,ti)
+    timing=np.zeros((6,3,12),dtype=np.float64)
+    prediction=np.empty((6,3,12,16),dtype=np.float32)
+    for rep in range(3):
+        for ti in range(12):
+            order=np.roll(np.arange(6),-(rep+ti)%6)
+            for ri in order:
+                prediction[ri,rep,ti],timing[ri,rep,ti]=evaluate(routes[ri],ti)
+        print(json.dumps({'repeat_completed':rep+1,'wall_seconds':time.perf_counter()-start}),flush=True)
+    comparisons=[]
+    for method in method_names:
+        a=routes.index(method+'__per_cell')
+        b=routes.index(method+'__per_cluster')
+        discrepancy=float(np.max(np.abs(prediction[a]-prediction[b])))
+        assert discrepancy<=settings['equivalence_tolerance'], (method,discrepancy)
+        comparisons.append({'method':method,'max_abs_prediction_difference':discrepancy,
+            'per_cell_over_per_cluster_median_latency_ratio':float(np.median(timing[a])/np.median(timing[b]))})
+    for row in records:
+        assert state_hash(models[row['checkpoint']])==before_states[row['checkpoint']]
+        assert sha(PRIOR/(row['checkpoint']+'.pt'))==row['checkpoint_sha256']
+    assert sha(BASE/'results/design_data.npz')==settings['design_data_sha256']
+    assert sha(ledger_path)==expected_ledger
+    assert counter['forward_completed']==settings['max_forward_calls']
+    assert counter['predicted_rows_completed']==settings['max_predicted_rows']
+    np.savez_compressed(OUT/'measurements.npz',routes=np.array(routes),timing_seconds=timing,
+        prediction=prediction,origins=origins,cell_ids=ids)
+    metrics=[]
+    for ri,route in enumerate(routes):
+        method,kind=route.split('__')
+        selected_records=[row for row in records if row['checkpoint'].startswith(method+'_20260925_')]
+        metrics.append({'route':route,'models':len(selected_records),'rows_per_origin':16,
+            'forward_calls_per_origin':len(packages[route][0]),
+            'median_seconds':float(np.median(timing[ri])),
+            'p10_seconds':float(np.quantile(timing[ri],.1)),
+            'p90_seconds':float(np.quantile(timing[ri],.9)),
+            'repeat_median_seconds':np.median(timing[ri],axis=1).tolist(),
+            'state_tensor_bytes':sum(row['state_tensor_bytes'] for row in selected_records),
+            'checkpoint_file_bytes':sum(row['checkpoint_file_bytes'] for row in selected_records)})
+    save('summary.json',{'settings':settings,'metrics':metrics,'within_method_comparisons':comparisons,
+        'checkpoints':records,'counters':counter,'new_fits':0,'new_Tab_calls':0,
+        'states_and_inputs_unchanged':True,'wall_seconds':time.perf_counter()-start,
+        'scope':'Frozen CPU serving benchmark; no independent accuracy or new clustering validation.'})
+    completed=True
+    print(json.dumps({'complete':True,'metrics':metrics,'comparisons':comparisons}),flush=True)
+except Exception as exc:
+    failure=repr(exc)
+    raise
+finally:
+    save('run_finished.json',{'complete':completed,'error':failure,'wall_seconds':time.perf_counter()-start,
+        'counters':counter,'new_fits':0,'new_Tab_calls':0})
