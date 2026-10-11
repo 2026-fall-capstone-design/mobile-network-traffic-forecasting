@@ -1,0 +1,29 @@
+from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib, json, urllib.request
+from pypdf import PdfReader
+
+dest=Path(__file__).resolve().parent/'sources/regularity_90'
+dest.mkdir(parents=True,exist_ok=True)
+sources=[('Stable_Recurrent_1805.10369v4','https://arxiv.org/pdf/1805.10369v4'),('Mixture_Generalization_2504.20651v1','https://arxiv.org/pdf/2504.20651v1'),('Clustering_Lipschitz_Control_2505.04904_latest','https://arxiv.org/pdf/2505.04904')]
+def fetch(item):
+    name,url=item
+    record={'name':name,'url':url,'accessed_utc':datetime.now(timezone.utc).isoformat(),'cap_bytes':5000000}
+    try:
+        path=dest/(name+'.pdf')
+        if path.exists(): raise RuntimeError('Already downloaded; inspect manifest before repeat')
+        with urllib.request.urlopen(url,timeout=35) as r:
+            data=r.read(5000001)
+            record.update(status=r.status,final_url=r.url)
+        if len(data)>5000000 or not data.startswith(b'%PDF'): raise ValueError('Expected PDF below 5 MB')
+        path.write_bytes(data)
+        reader=PdfReader(path)
+        txt='\n\n'.join(f'--- PDF page {i+1} ---\n{p.extract_text() or ""}' for i,p in enumerate(reader.pages))
+        path.with_suffix('.txt').write_text(txt,encoding='utf-8')
+        record.update(bytes=len(data),pages=len(reader.pages),sha256=hashlib.sha256(data).hexdigest(),first_page=reader.pages[0].extract_text()[:200])
+    except Exception as e: record['error']=type(e).__name__+': '+str(e)
+    return record
+with ThreadPoolExecutor(max_workers=3) as pool: records=list(pool.map(fetch,sources))
+(dest/'download_manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(records,ensure_ascii=True))
