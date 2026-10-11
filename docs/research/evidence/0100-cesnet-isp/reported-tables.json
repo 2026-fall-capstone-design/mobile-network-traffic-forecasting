@@ -449,7 +449,7 @@
           "96",
           "0",
           "0.0317 ± 0.0262",
-          "-1.3872\\pm 8.6764"
+          "-1.3872 ± 8.6764"
         ],
         [
           "Horizon Scaling (10-minute, Institutions, L=1024)"
@@ -495,7 +495,7 @@
           "96",
           "10",
           "0.0718 ± 0.0380",
-          "-0.2170\\pm 0.3600"
+          "-0.2170 ± 0.3600"
         ],
         [
           "Few-shot: 30%",
@@ -1363,5 +1363,25 @@
   "independently_reproduced": false,
   "raw_experiment_data_loaded": false,
   "normalization": "ISP per-series minmax n_bytes; TableII top/bottom5%trim caption,TableIII mean±std without equivalent trim caption",
-  "new_model_runs": 0
+  "new_model_runs": 0,
+  "cell_text_normalizations": [
+    {
+      "source_id": "SRC-0062908",
+      "table_index": 3,
+      "row_1based": 9,
+      "column_1based": 6,
+      "source_cell_text": "-1.3872\\pm 8.6764",
+      "display_cell_text": "-1.3872 ± 8.6764",
+      "reason": "MathML alttext의 LaTeX pm 기호를 다른 셀과 같은 ± 표기로 정규화. 평균·표준편차·부호의 수치는 변경하지 않음."
+    },
+    {
+      "source_id": "SRC-0062908",
+      "table_index": 3,
+      "row_1based": 16,
+      "column_1based": 6,
+      "source_cell_text": "-0.2170\\pm 0.3600",
+      "display_cell_text": "-0.2170 ± 0.3600",
+      "reason": "MathML alttext의 LaTeX pm 기호를 다른 셀과 같은 ± 표기로 정규화. 평균·표준편차·부호의 수치는 변경하지 않음."
+    }
+  ]
 }
