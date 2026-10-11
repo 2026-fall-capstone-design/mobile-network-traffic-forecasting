@@ -253,3 +253,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H098 출처](../sources/history-098.md) · [목록](history-098-sources.jsonl). 새 후보표 전체1·연구일지 선택1, 기존6자료 재참조를 구별한다. 두 snapshot 명세의91항목 해시 검수는91개 새로운 내용 독해나 모델 실행 집계가 아니다.
 
 [H099 출처](../sources/history-099.md) · [목록](history-099-sources.jsonl). 중심12그룹(텍스트6·전체JSON6), 기존6재참조, 내용 미검수 일차자료15그룹을 구별한다. 23별칭·snapshot34사본 해시는 독해 수와 별도다.
+
+[H100 출처](../sources/history-100.md) · [목록](history-100-sources.jsonl). 두 논문의 저장 HTML/TXT4그룹/8별칭, 보조 PDF의6쪽 시각 대조/2경로를 구별한다. 외부 그림·보조 PDF·파생 표 JSON은 새 본문/JSON/이미지 수로 중복 가산하지 않는다.

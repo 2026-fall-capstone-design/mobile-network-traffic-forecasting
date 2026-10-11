@@ -479,3 +479,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 발생 여부와 양을 나눠 cell을 묶으려는 경우
 
 [원82의 진입 판단](records/0099-intermittence-decision.md)을 먼저 확인한다. 전체0 비율과 조건부 발생 확률, 실제 무트래픽과 누락/zero fill, MAE와MSE, beam과cell을 구별해야 한다. 기존 two-part 방법에 비해 어떤 공유 결정을 바꾸는지와 실제 예측 손해가 재검토 조건이다.
+
+## CESNET·ISP 결과를 간헐 cell 공유 설계에 인용하려는 경우
+
+[H100 원문 대조](records/0100-cesnet-isp-data-semantics.md)를 먼저 확인한다. 99.94%의 시계열 분모, zero fill의 가정, 시계열별 min–max·trimmed 결과와 IP의 음의 R²를 구별해야 한다. 발생/양 분해와 계층 공유는 해당 ISP 논문의 향후 제안이며 실험된 clustering 성과가 아니다.
