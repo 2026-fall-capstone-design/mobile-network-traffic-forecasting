@@ -604,3 +604,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원100 사전학습 모델·시간 보정을 다시 검토할 때
 
 [원100](records/0130-pretraining-objective-and-time-conditioning.md)과 [문헌 비교](references/pretraining-objective-and-time-conditioning.md)를 먼저 읽는다. 표의 행이 sample인지 cell 표현인지, 잠재 정답과 실제 공유 효용, 자동 K1과 점유 label 수, 공유 encoder와 K별 decoder, 준비와 공동 학습을 명시한다. 시간 조건 보강만으로 cell 소속이 검증됐다고 쓰지 않는다. 기존 Tab 직접 예측의 긍정 증거를 보존하고 새로운 유용한 결정 또는 추정 효율·전체 비용의 차이를 설명한다.
+
+## 원101 실제 sample pooling을 다시 비교할 때
+
+[원101](records/0131-actual-pooled-context-and-rctl-ranking.md)과 [재사용 안내](references/pooled-context-and-learner-ranking.md)를 먼저 읽는다. context조건504/672,16열과8×9표현, rolling실측lag와재귀horizon, validation사용, 사후소속/독립test, K1과주간·cell별예외를 명시한다. 이미 저장된 직접 예측 이득과 순위 불일치를 모두 보존하고, 새 결정 또는 효율에서 무엇이 달라지는지 적는다.

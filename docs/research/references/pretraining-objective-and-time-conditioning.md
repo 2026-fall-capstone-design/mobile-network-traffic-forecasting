@@ -18,3 +18,5 @@ Yujie Li, Zezhi Shao, Chengqing Yu, Yisong Fu, Tao Sun, Yongjun Xu, Fei Wang, **
 원100의같은함수/다른입력예시와상수공통affine의기울기보존은제한된직접추론이다. 실제finiteRCTL우위나전체APT불가의증명은아니다. 비교문헌과현재cell의묶는객체·학습정답·K1·최종learner사용·전체비용을명시한다. 좋은clusteringrank/시간보정효과만으로유용한공유결정이확보되었다고쓰지않는다.
 
 외부 본문·PDF/TXT/PNG는 통째 게시하지 않고 정식 URL, SHA, 실제 읽기 범위를 제공한다. 원문을읽은것과원실험재현·모든곡선/증명독립검수는구별한다. 다른선행연구의부재/전체분야불가능성을판정한기록이아니다.
+
+후속 [원101](../records/0131-actual-pooled-context-and-rctl-ranking.md)은 실제 sample context에서도 직접 예측의 이득과 저장 RCTL의 두K4 순위 불일치를 확인했다. [재사용 조건](pooled-context-and-learner-ranking.md)의16열/8×9입력·validation·개발자료 사후선택 차이가 있어, 이 관찰을 사전학습 목적 하나의 인과 효과로 분해하지 않는다.
