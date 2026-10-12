@@ -1,0 +1,874 @@
+{
+  "papers": [
+    {
+      "source_id": "SRC-0001910",
+      "source_sha256": "6abbad74fb7129f0312ae85ca753b3cbb70ced8b29f8ae783f78b8abc6718b40",
+      "whole_page_text_actually_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "actual_PDF_line_ranges": {
+        "1": [
+          [
+            1,
+            100
+          ]
+        ],
+        "2": [
+          [
+            1,
+            138
+          ]
+        ],
+        "3": [
+          [
+            1,
+            131
+          ]
+        ],
+        "4": [
+          [
+            1,
+            120
+          ]
+        ],
+        "5": [
+          [
+            1,
+            108
+          ]
+        ],
+        "6": [
+          [
+            1,
+            105
+          ]
+        ]
+      },
+      "text_lines_actually_read": 702,
+      "whole_page_images_actually_viewed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "whole_text_and_page_visuals_read": true,
+      "text_pages_unread": [],
+      "all_reported_results_or_author_implementation_reproduced": false,
+      "independent_original_image_credit": 0,
+      "notes": [
+        "III은matrix sliding windows와joint multi-flow output이며 scalarRCTL pooled-row와다름. H30/one-layer GRU·batch32/100epochs/Adam.001/earlystop5/minDelta1e-5·10TM history·80/20+train10%validation·minmax를직접읽음. split순서/normalizer·clustering범위/seed·exacthead/저자코드 미검증.",
+        "histogramJSD/계층dendrogram threshold1.75/2.5→K9/47. pairwiseJSD bounded값과linkage높이를같은양으로단정하지않음. linkagemethod구현은미확인. sourcegroupsnode별. random/naive group대조군은이2025논문에없음.",
+        "TableI24개/II12개 인쇄값 전부 읽음. 본문92%는Abilene-ARCNN,75%는GEANT-TEProphet기준. localGRU는두network두metric에서histogram보다좋음; p5visual의matcheslocal을평균성능동등으로확대안함.",
+        "Prophet은p4/참고3의TE-centric GRU+angle-loss framework이며 일반동명forecastlibrary와혼동하지않음. MLU bias=predicted/true의비·1에가까울수록좋음. p5주장18/21%를비자체의감소율 또는Milan활동량RMSE개선으로대입안함. topologyrequired.",
+        "p2 Eq2에서sigma를variance라부르는문장, p3 rho가0에가까울수록더negative라는문장과Fig2시간지속해석에는해석주의. 본99주요unit/cost판단의증거로사용안함. 전체논문무효화하지않음.",
+        "Fig1–6/두표/식/모든본문·참고문헌을6페이지전체이미지와TXT로읽음. plotcurve pixel의독립수치화·새model/data실험·runtime측정/MLU 재현은0. 저자code/reproduction 미완료는PDF읽기완료와구별."
+      ]
+    },
+    {
+      "source_id": "SRC-0001912",
+      "source_sha256": "6683efa10ee415785c2127ccbfce6880b5a2b42d71ba78c9cfd4b24b4cfc7259",
+      "whole_page_text_actually_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "actual_PDF_line_ranges": {
+        "1": [
+          [
+            1,
+            105
+          ]
+        ],
+        "2": [
+          [
+            1,
+            111
+          ]
+        ],
+        "3": [
+          [
+            1,
+            136
+          ]
+        ],
+        "4": [
+          [
+            1,
+            151
+          ]
+        ],
+        "5": [
+          [
+            1,
+            140
+          ]
+        ],
+        "6": [
+          [
+            1,
+            112
+          ]
+        ],
+        "7": [
+          [
+            1,
+            125
+          ]
+        ],
+        "8": [
+          [
+            1,
+            162
+          ]
+        ],
+        "9": [
+          [
+            1,
+            122
+          ]
+        ],
+        "10": [
+          [
+            1,
+            112
+          ]
+        ],
+        "11": [
+          [
+            1,
+            116
+          ]
+        ],
+        "12": [
+          [
+            1,
+            39
+          ]
+        ]
+      },
+      "text_lines_actually_read": 1431,
+      "whole_page_images_actually_viewed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "whole_text_and_page_visuals_read": true,
+      "text_pages_unread": [],
+      "prior_history004_selected_PDF_source": "SRC-0062986",
+      "prior_history004_selected_TXT_source": "SRC-0062987",
+      "all_reported_results_or_author_implementation_reproduced": false,
+      "independent_original_image_credit": 0,
+      "notes": [
+        "wholeOD-flow系列를representation→HAC→cluster joint-vector predictor→TM재구성. H200 one-layerGRU/10history/80–20+train10%val/batch32/100epochs/Adam.001/earlystop5. 2025H30과차이·scope/scale구분. prototype/head저자implementation 미검증.",
+        "Histogram50bins/log2 JSD complete linkage; ACF euclidean/average linkage; PSDWelch/euclidean/average. naive는random label절차로설명하지만TableV에서는balanced크기6–7/10–11을보고. exactseed/저자랜덤코드 미검증; 모든random분할이그크기라는보장 아님.",
+        "TableI운영K Abilene21/21/41/21 및GEANT40/100/100/50. TableII testMbps RMSE는그운영K. ARI/NMI는K21/40로맞춤. 같은K 구조분석과다른K 성능비교를혼합안함. naive이득은모델단위/parametercapacity/분할과관계, scalarRCTL로직접승격안함.",
+        "K-sweep Δ10·five trials mean/errorbars·Kneedle에RMSE-Kcurve사용. 확인한본문은어떤split으로curve/K를정했는지명확히표시안함. seed/normalizer fit기간/clustering사용구간/실측runtime경계와hardware미검증.",
+        "운영K근처 유사RMSE와상이한partition이관찰되었고원문은더작은K에서representation역할가능성을명시. 모든K/모든자료에서grouping무효 또는global 불가능로확대안함.",
+        "p7 localAbilene120–150분 vsp9 150–200분의범위차이·Fig3Abilene끝tick143 vs본문local144는그대로범위문제로보존. minutes를우리95 CPU16cell milliseconds나10000cell end-to-end로환산안함.",
+        "모든Fig1–4/표I–V/본문·참고문헌12쪽을읽음. 116개인쇄표숫자전부판독. 그래프curve pixel수치화/저자코드/모든실험재현·newmodel0; automaticliteratureverification을과대표현안함."
+      ]
+    },
+    {
+      "source_id": "SRC-0001914",
+      "source_sha256": "4507a6f8b0110431ffc22ecd8c5ce2819d7bb54e5ef3a500cc48431cd97e28c8",
+      "PDF_pages_total": 43,
+      "whole_page_text_actually_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        23,
+        24,
+        36,
+        37,
+        38,
+        39
+      ],
+      "actual_PDF_line_ranges": {
+        "1": [
+          [
+            1,
+            22
+          ]
+        ],
+        "2": [
+          [
+            1,
+            26
+          ]
+        ],
+        "3": [
+          [
+            1,
+            26
+          ]
+        ],
+        "4": [
+          [
+            1,
+            26
+          ]
+        ],
+        "5": [
+          [
+            1,
+            26
+          ]
+        ],
+        "6": [
+          [
+            1,
+            35
+          ]
+        ],
+        "7": [
+          [
+            1,
+            40
+          ]
+        ],
+        "8": [
+          [
+            1,
+            77
+          ]
+        ],
+        "9": [
+          [
+            1,
+            37
+          ]
+        ],
+        "10": [
+          [
+            1,
+            51
+          ]
+        ],
+        "11": [
+          [
+            1,
+            25
+          ]
+        ],
+        "12": [
+          [
+            1,
+            25
+          ]
+        ],
+        "13": [
+          [
+            1,
+            33
+          ]
+        ],
+        "14": [
+          [
+            1,
+            56
+          ]
+        ],
+        "15": [
+          [
+            1,
+            55
+          ]
+        ],
+        "16": [
+          [
+            1,
+            80
+          ]
+        ],
+        "17": [
+          [
+            1,
+            32
+          ]
+        ],
+        "18": [
+          [
+            1,
+            46
+          ]
+        ],
+        "19": [
+          [
+            1,
+            25
+          ]
+        ],
+        "20": [
+          [
+            1,
+            27
+          ]
+        ],
+        "21": [
+          [
+            1,
+            28
+          ]
+        ],
+        "23": [
+          [
+            1,
+            14
+          ]
+        ],
+        "24": [
+          [
+            1,
+            27
+          ]
+        ],
+        "36": [
+          [
+            1,
+            8
+          ]
+        ],
+        "37": [
+          [
+            1,
+            98
+          ]
+        ],
+        "38": [
+          [
+            1,
+            30
+          ]
+        ],
+        "39": [
+          [
+            1,
+            12
+          ]
+        ]
+      },
+      "whole_page_images_actually_viewed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        13,
+        14,
+        18,
+        19,
+        20,
+        21,
+        37,
+        39
+      ],
+      "whole_paper_read": false,
+      "PDF_text_pages_unread": [
+        22,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        40,
+        41,
+        42,
+        43
+      ],
+      "source_code_executed": false,
+      "independent_content_credit": 0,
+      "findings": [
+        "PEMS-BAY N180 days,T288,P325 (PDF19–20); PEMS-SF N440 days,T144,P963 (PDF23). Sensors are components, not clustering objects.",
+        "Each MTS has its own chronological TRAIN/VAL/TEST split; TRAIN-only imputation/standardization. Fit GLOBAL and prototypes on TRAIN, reassign/K-select on VAL, freeze fallback before TRAIN+VAL refit and single TEST (PDF6–14,37).",
+        "Shared encoder/decoder, GRU prototypes/warm-start regularization; repeated forecaster training is part of this method, not a forecaster-free partition rule.",
+        "Fallback controls cluster-average validation comparison, not a guarantee for every held-out day or a later absolute calendar period. PEMS-BAY K7 Table2 Ben84/86/92%, Fb0: some individual days do not benefit.",
+        "Table7 penalized VAL Huber selects K7; Table2 TEST MSE reductions18.12/19.24/23.75 are printed, rounded author results, not our reruns. Exact implementation/time split sizes/runtime remain unverified.",
+        "PDF text27pages/987lines; selected whole images18. Tables/proofs/experiments on unread16pages remain pending; curves in PDF23 captions were not visually read."
+      ]
+    }
+  ],
+  "printed_table_witnesses": [
+    {
+      "source_id": "SRC-0001910",
+      "PDF_page": 5,
+      "label": "Table I",
+      "methods": [
+        "histogram",
+        "source",
+        "Prophet_TE",
+        "ARCNN",
+        "GRU_EM",
+        "GRU_local"
+      ],
+      "rows": [
+        {
+          "network": "Abilene",
+          "metric": "RMSE",
+          "values": [
+            0.0238,
+            0.286,
+            0.249,
+            0.303,
+            0.294,
+            0.00289
+          ]
+        },
+        {
+          "network": "Abilene",
+          "metric": "MAE",
+          "values": [
+            0.018,
+            0.242,
+            0.198,
+            0.253,
+            0.249,
+            0.00188
+          ]
+        },
+        {
+          "network": "GEANT",
+          "metric": "RMSE",
+          "values": [
+            0.0855,
+            0.114,
+            0.354,
+            0.257,
+            0.244,
+            0.0111
+          ]
+        },
+        {
+          "network": "GEANT",
+          "metric": "MAE",
+          "values": [
+            0.0679,
+            0.092,
+            0.306,
+            0.207,
+            0.196,
+            0.00779
+          ]
+        }
+      ],
+      "numeric_values": 24
+    },
+    {
+      "source_id": "SRC-0001910",
+      "PDF_page": 6,
+      "label": "Table II",
+      "methods": [
+        "histogram",
+        "source",
+        "Prophet_TE",
+        "ARCNN",
+        "GRU_EM",
+        "GRU_local"
+      ],
+      "rows": [
+        {
+          "network": "Abilene",
+          "values": [
+            1,
+            0.8,
+            0.92,
+            0.82,
+            0.92,
+            1.02
+          ]
+        },
+        {
+          "network": "GEANT",
+          "values": [
+            1.07,
+            1.06,
+            0.88,
+            0.89,
+            0.88,
+            1.06
+          ]
+        }
+      ],
+      "numeric_values": 12
+    },
+    {
+      "source_id": "SRC-0001912",
+      "PDF_page": 6,
+      "label": "Table I",
+      "methods": [
+        "histogram",
+        "ACF",
+        "PSD",
+        "naive"
+      ],
+      "columns": [
+        "K",
+        "runtime_minutes"
+      ],
+      "rows": [
+        {
+          "network": "Abilene",
+          "values": [
+            [
+              21,
+              37
+            ],
+            [
+              21,
+              36
+            ],
+            [
+              41,
+              55
+            ],
+            [
+              21,
+              44
+            ]
+          ]
+        },
+        {
+          "network": "GEANT",
+          "values": [
+            [
+              40,
+              46
+            ],
+            [
+              100,
+              89
+            ],
+            [
+              100,
+              91
+            ],
+            [
+              50,
+              67
+            ]
+          ]
+        }
+      ],
+      "numeric_values": 16
+    },
+    {
+      "source_id": "SRC-0001912",
+      "PDF_page": 8,
+      "label": "Table II",
+      "methods": [
+        "histogram",
+        "ACF",
+        "PSD",
+        "naive",
+        "Prophet_TE",
+        "ARCNN",
+        "EM",
+        "local"
+      ],
+      "metric": "test_RMSE_Mbps",
+      "K_scope": "operating K from Table I",
+      "rows": [
+        {
+          "network": "Abilene",
+          "values": [
+            0.64,
+            0.755,
+            0.597,
+            0.688,
+            3.35,
+            2.5,
+            1.28,
+            0.189
+          ]
+        },
+        {
+          "network": "GEANT",
+          "values": [
+            0.014,
+            0.027,
+            0.014,
+            0.014,
+            0.067,
+            0.041,
+            0.04,
+            0.003
+          ]
+        }
+      ],
+      "numeric_values": 16
+    },
+    {
+      "source_id": "SRC-0001912",
+      "PDF_page": 8,
+      "label": "Table III",
+      "pairs": [
+        "hist_ACF",
+        "hist_PSD",
+        "hist_naive",
+        "ACF_PSD",
+        "ACF_naive",
+        "PSD_naive"
+      ],
+      "columns": [
+        "NMI",
+        "ARI"
+      ],
+      "K_scope": {
+        "Abilene": 21,
+        "GEANT": 40
+      },
+      "rows": [
+        {
+          "network": "Abilene",
+          "values": [
+            [
+              0.47,
+              0.091
+            ],
+            [
+              0.44,
+              0.098
+            ],
+            [
+              0.4,
+              0.016
+            ],
+            [
+              0.56,
+              0.24
+            ],
+            [
+              0.34,
+              -0.008
+            ],
+            [
+              0.32,
+              0
+            ]
+          ]
+        },
+        {
+          "network": "GEANT",
+          "values": [
+            [
+              0.27,
+              0.013
+            ],
+            [
+              0.25,
+              0.032
+            ],
+            [
+              0.28,
+              0.001
+            ],
+            [
+              0.29,
+              0.06
+            ],
+            [
+              0.24,
+              0.002
+            ],
+            [
+              0.19,
+              0.002
+            ]
+          ]
+        }
+      ],
+      "numeric_values": 24
+    },
+    {
+      "source_id": "SRC-0001912",
+      "PDF_page": 9,
+      "label": "Table IV",
+      "pairs": [
+        "hist_ACF",
+        "hist_PSD",
+        "hist_naive",
+        "ACF_PSD",
+        "ACF_naive",
+        "PSD_naive"
+      ],
+      "metric": "per_flow_RMSE_error_correlation",
+      "rows": [
+        {
+          "network": "Abilene",
+          "values": [
+            0.88,
+            0.89,
+            0.91,
+            0.87,
+            0.84,
+            0.85
+          ]
+        },
+        {
+          "network": "GEANT",
+          "values": [
+            0.87,
+            0.83,
+            0.68,
+            0.88,
+            0.78,
+            0.56
+          ]
+        }
+      ],
+      "numeric_values": 12
+    },
+    {
+      "source_id": "SRC-0001912",
+      "PDF_page": 9,
+      "label": "Table V",
+      "methods": [
+        "histogram",
+        "ACF",
+        "PSD",
+        "naive"
+      ],
+      "columns": [
+        "K",
+        "min",
+        "mean",
+        "max",
+        "singletons",
+        "singleton_percent"
+      ],
+      "rows": [
+        {
+          "network": "Abilene",
+          "values": [
+            [
+              21,
+              1,
+              6.86,
+              20,
+              2,
+              9.52
+            ],
+            [
+              21,
+              1,
+              6.86,
+              31,
+              6,
+              28.57
+            ],
+            [
+              41,
+              1,
+              3.51,
+              17,
+              19,
+              46.34
+            ],
+            [
+              21,
+              6,
+              6.86,
+              7,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "network": "GEANT",
+          "values": [
+            [
+              40,
+              1,
+              13.22,
+              79,
+              5,
+              12.5
+            ],
+            [
+              100,
+              1,
+              5.29,
+              55,
+              37,
+              37
+            ],
+            [
+              100,
+              1,
+              5.29,
+              76,
+              75,
+              75
+            ],
+            [
+              50,
+              10,
+              10.58,
+              11,
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "numeric_values": 48
+    }
+  ],
+  "current_official_metadata_scope": "현재 arXiv v1 서지·GRU shape 확인; remote PDF byte 비교/학회 program/저자 code 미검증",
+  "distribution": "bibliography_scope_official_links_only",
+  "new_model_runs": 0
+}

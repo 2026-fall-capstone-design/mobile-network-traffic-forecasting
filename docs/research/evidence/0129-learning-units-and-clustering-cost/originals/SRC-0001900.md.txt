@@ -1,0 +1,75 @@
+# 99. 학습 단위와 계산 구조를 맞춘 선행연구 해석
+
+2026-09-26. 최종 추천안을 확정한 문서가 아니다. 98의 원문·기호 검토는 새로운 판단 근거를 추가한 progress였으며, 이번에는 99 사전 계획을 실행했다. 새 모델 실행과 실제 트래픽 통계 재계산은 없다.
+
+## 이번에 달라진 판단
+
+네트워크 트래픽에서 clustering의 이득을 보인 연구도 **한 sample과 한 출력이 무엇인지** 확인해야 현재 RCTL의 근거로 사용할 수 있다. 다음 세 구조는 다르다.
+
+| 구조 | 한 입력 sample | 한 모델의 출력 | clustering이 바꾸는 것 |
+|---|---|---|---|
+| 현재 보존된 scalar RCTL | 한 cell의 최근 8시점과 보조 입력, 8×9 | 그 cell의 다음 값 1개 | 같은 가중치로 학습하는 cell의 sample 집합 |
+| Cash의 traffic-matrix 예측 | 같은 시각에 관측한 여러 OD flow의 과거 벡터 | 해당 flow들의 다음 값 벡터 | 입력·출력 차원, recurrent core 수, flow별 공동 입력 |
+| Ma의 validation-driven 실험 | 하루 기록 안의 다수 도로 센서 관측 창 | 그날의 여러 센서 값 | 하루 기록들의 모델 소속; 센서 자체의 소속은 아님 |
+
+05에서는 Cash 연구를 random grouping 대조군의 근거로 반영했다. 그 원칙은 유지한다. 이번에는 원문의 실제 학습 단위와 K별 구조까지 확인하여, 이를 scalar RCTL의 공동 학습 이득에 대한 직접 증거로 읽지 않도록 적용 범위를 구체화했다.
+
+## 확인한 원문과 옮길 수 있는 부분
+
+**Cash·Wyglinski, 2025, arXiv:2509.15072v1.** 공개 서지는 ICMLA 2025 accepted로 표시한다. §III–V는 OD flow clustering 후 벡터 예측이며, §V-D의 GRU hidden width는 **30**이다. histogram의 dendrogram 절단으로 K=9/47을 정한다. §VI의 92%·75%는 각각 ARCNN·Prophet 대비 수치다. 단순 GRU나 현재 RCTL 대비 수치가 아니다. 네트워크 목적의 지표를 함께 본다는 원칙은 참고하되, traffic matrix/topology가 없는 Milan 활동량에 MLU를 가정하지 않는다. [원문](https://arxiv.org/html/2509.15072v1)
+
+**Cash·Fowler·Wyglinski, 2026, arXiv:2604.26081v1.** §V-D는 hidden width **200**을 쓴다. §IV의 histogram/ACF/PSD/naive 비교, §VI의 K sweep은 분할 자체의 효과를 확인하는 근거다. Table I·II의 운영점은 같은 K가 아니다. 예를 들어 GÉANT는 histogram 40, ACF·PSD 100, naive 50이다. 반면 ARI/NMI 분석은 같은 K로 맞춘다. 이 두 비교를 혼동하지 않는다. K 선택 곡선에 어떤 split을 썼는지는 확인한 서술만으로 확정하지 않으며, 저자의 실행 코드를 검증한 것은 아니다. [원문](https://arxiv.org/html/2604.26081v1)
+
+**Ma 등, 2026, arXiv:2604.13748v1.** §5.3의 PEMS-BAY는 180개의 **하루 단위** MTS이고, 각각 288×325이다. §5.4의 PEMS-SF도 하루를 묶는다. §2.2.1은 각 MTS 내부의 시간축을 TRAIN/VAL/TEST로 나눈다. §3 및 Algorithm 1은 GLOBAL을 학습하고 cluster prototype을 반복 학습·재배정하며 validation으로 fallback을 고정한다. 따라서 이 방식은 cell partition의 직접 증거나 RCTL을 호출하지 않는 알고리즘이 아니다. 손실에 맞춘 소속 선택과 global 대조군의 원리는 참고한다. [원문](https://arxiv.org/html/2604.13748v1)
+
+세 논문의 저자 구현을 직접 확인할 공식 repository 링크는 이번 원문·검색 범위에서 찾지 못했다. arXiv HTML의 GitHub 링크는 렌더러 issue 링크이므로 저자 코드로 세지 않았다. 코드가 존재하지 않는다고 단정하지 않는다. PDF 세 편 61쪽 중 지정한 방법·실험 절을 읽었고, 6쪽을 렌더링하여 대조했다. 모든 proof/표/실험을 재현했다는 뜻이 아니다.
+
+## 다중 출력 분할은 전체 모델을 자동으로 작게 만들지 않는다
+
+다음은 원문 보고 수치가 아니라 **명시한 구조에 대한 직접 산술**이다. flow 총수 D를 K개로 나누고, 각 cluster는 입력 차원 d_k, hidden width H인 한 층 GRU와 H→d_k 선형 출력층을 쓴다고 가정한다. sum(d_k)=D이다. PyTorch 방식의 두 bias를 포함하면:
+
+`전체 parameter 수 = K×(3H²+6H) + (4H+1)×D`
+
+입력·출력 차원과 비례하는 부분은 합치면 그대로지만 recurrent core는 K개가 된다. [PyTorch 2.14의 GRU tensor 정의](https://docs.pytorch.org/docs/2.14/generated/torch.nn.modules.rnn.GRU.html)에 따라 도출했다. 저자 head 구현을 확인하지 못했으므로 아래 값을 논문 checkpoint의 정확한 parameter 수라고 쓰지 않는다.
+
+| D | K | 위 가정의 parameter 수 | K=1 대비 |
+|---:|---:|---:|---:|
+| 144 | 1 | 236,544 | 1.00배 |
+| 144 | 21 | 2,660,544 | 11.25배 |
+| 529 | 1 | 544,929 | 1.00배 |
+| 529 | 40 | 5,271,729 | 9.67배 |
+
+따라서 “입력 벡터가 작아졌다”와 “전체 학습 용량·연산량이 작아졌다”는 다른 주장이다. 같은 width에서 K를 늘리면 그룹별 분리와 전체 용량 확대가 함께 일어난다. 이것이 관찰된 개선의 유일한 원인이라는 증거는 없지만, 관계를 더 잘 묶어서 좋아졌다는 설명도 이 비교 하나로 확정할 수 없다.
+
+반대로 현재 scalar RCTL은 한 번에 cell 한 개의 sample을 처리한다. group에 1개 cell이 있든 100개가 있든 한 sample의 입력은 8×9이고 출력은 1개다. group 크기가 커지면 **입력 열 수가 아니라 학습 row 수**가 늘어난다. 근거는 `train_rctl_pilot.py:84–86`의 reshape와 `rctl_torch.py`의 scalar head다. global과 K4의 차이를 큰 다중 출력 병목으로 설명하지 않는다.
+
+## 규모별 작업량을 실제 코드의 단위로 계산
+
+보존된 학습 조건 T=672 sample/cell, batch=256을 그대로 확대했다. K개의 서로 겹치지 않는 cluster가 모든 실제 sample을 1회씩 사용하면, 한 epoch의 처리 row 수는 항상 N×T다. optimizer update 수는 `sum_k ceil(n_k×T/256)`이다. 아래는 균형에 가까운 cluster 크기로 계산했다.
+
+| cell 수 N | 한 epoch 총 row | K1 update | K4 update | K16 update | K32 update |
+|---:|---:|---:|---:|---:|---:|
+| 128 | 86,016 | 336 | 336 | 336 | 352 |
+| 1,024 | 688,128 | 2,688 | 2,688 | 2,688 | 2,688 |
+| 10,000 | 6,720,000 | 26,250 | 26,252 | 26,256 | 26,256 |
+
+각 모델이 도는 epoch 수와 조기 종료 시점은 다를 수 있으므로 총 학습시간은 이 표로 정해지지 않는다. 시점마다 모든 cell을 예측하면 출력은 N개이며 scalar 모델에 들어가는 row도 N개다. 모델 수를 줄이면 저장량·호출 overhead는 줄 수 있지만 N개의 forward row 자체가 사라지지 않는다. 95의 16cell 실제 batch 측정과 이번 대규모 산술을 구분한다.
+
+TabICL의 초기 비용도 따로 남는다. 이미 검토한 B2 방식의 M=504/Q=168/R=1, cell별 준비 1회, 129개 float32 분위수 cache만 계산하면:
+
+| N | context 준비 횟수 | context 총 row | query 총 row | 분위수 배열 bytes |
+|---:|---:|---:|---:|---:|
+| 128 | 128 | 64,512 | 21,504 | 11,096,064 |
+| 1,024 | 1,024 | 516,096 | 172,032 | 88,768,512 |
+| 10,000 | 10,000 | 5,040,000 | 1,680,000 | 866,880,000 |
+
+이는 그 알고리즘을 채택하거나 새로 실행했다는 뜻이 아니다. 모델 weight·중간 activation·입력·검색·저장 I/O·ensemble 비용을 포함한 peak RAM 또는 end-to-end 시간도 아니다. cache가 남는다는 사실로 처음 추론 비용을 없애지 않는다. 상세 정수 검산은 `99_workload_arithmetic.json`에 있다.
+
+## 연구 설계에서 바꿀 점
+
+1. **성능 근거를 두 층으로 나눈다.** 다른 단위의 clustering 성공은 가능한 방법론의 근거이고, 현재 cell pooling의 이득은 동일 학습 단위의 결과로 확인한다. 기존 K4의 두 seed 결과와 global 강세를 그대로 보존한다.
+2. **주된 비교는 같은 K·scalar 출력·sample 수·학습 조건에서 수행한다.** 운영 K를 달리 선택한 논문 표를 순수한 소속 품질 비교처럼 읽지 않는다. K가 달라지는 별도 정확도·비용 곡선은 허용한다.
+3. **유용한 Tab 판단을 먼저 특정한다.** Tab이 grouping 품질 또는 그 결정의 비용·변동을 실제로 개선한다면 연구가 가능하다. 단순히 더 많은 recurrent core로 나누거나 하루 기록을 묶는 것으로 원래 목적을 바꾸지 않는다.
+4. **시간 분할은 절대 시각으로 유지한다.** 하루를 별도 MTS로 취급한 패널 분할은 모든 기존 cell을 같은 미래 날짜에서 평가하는 현재 설정과 다르다. Ma 연구 전체가 잘못됐다는 판단이 아니라 적용 대상의 구분이다.
+
+이번 확인으로 새 알고리즘의 novelty나 Tab의 실익이 생긴 것은 아니다. 확인되지 않은 직접 성능 근거를 제거하고, 후속 후보가 설명해야 할 실제 효과를 좁혔다. 'clustering을 했으므로 비용이 줄어든다'는 일반 문장을 쓰지 않고, 저장 모델·optimizer update·예측 row·준비 비용 중 무엇이 감소하는지 구체적으로 지정한다. 새 추천안과 최종 Word는 미완료이며 외부 blocker는 확인되지 않았다.

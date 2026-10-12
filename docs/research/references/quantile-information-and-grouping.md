@@ -21,3 +21,5 @@ Xiaorong Yang, Jia Chen, Degui Li, Runze Li, **Functional-Coefficient Quantile R
 Xu 등의 **A Grouped GEE Framework for Quantile Regression in Heterogeneous Longitudinal Data Analysis**는 [당시 출판사 URL](https://onlinelibrary.wiley.com/doi/abs/10.1002/sta4.70051)에서 초록으로 연결됐다고 기록했다. 이번 요청은 이 도구에서 접근되지 않았으며 전문 알고리즘을 읽지 않았다. 과거 PMC 확인 화면도 현재 access결과와 구분한다. 출판사/논문 전체가 원천적으로 접근 불가하다는 판단은 아니다.
 
 외부 PDF/TXT/PNG와 설치 라이브러리를 재배포하지 않는다. 정식 링크·버전·SHA·실제 판독 위치를 제공하며, 원PDF 나머지137페이지·현재v1 나머지50페이지·모든 공식 코드/증명·다른 시각 내용은 미완료다. Tab의 구간 밀도 추정과 실제 calibration/RCTL 학습 정보 연결은 후속 질문이다.
+
+후속 [원99 학습 단위/비용](../records/0129-learning-units-and-clustering-cost.md)과 [Cash/Ma 비교](learning-unit-and-clustering-cost.md)는 cell sample 공유·OD flow벡터분할·하루MTS 소속의 차이를 확인했다. target/source 또는 group 추정 이론을 다른 단위의 실측 개선율과 바로 합치지 않는다.

@@ -1,0 +1,78 @@
+{
+  "comparisons": [
+    {
+      "current_source_id": "SRC-0001904",
+      "baseline_source_id": "SRC-0001877",
+      "current_sha256": "a68d748745fc44c88b758a994e82c02d4b0c4948654dfa65a35781599ba6320d",
+      "baseline_sha256": "021feca0fb45cfb4ce9484fb96ab54e5f4f73398bea7127149159cd6d1c41f7a",
+      "current_lines": 94,
+      "baseline_lines": 86,
+      "non_equal_opcodes": [
+        {
+          "kind": "insert",
+          "old_lines": [
+            87,
+            86
+          ],
+          "new_lines": [
+            87,
+            94
+          ],
+          "old_text": [],
+          "new_text": [
+            "",
+            "## 선행연구의 학습 단위와 전체 비용 — 99",
+            "",
+            "Cash의 2025/2026 traffic-matrix 예측은 OD flow를 벡터로 함께 예측한다. 2025의 GRU 폭 30과 2026의 폭 200을 구별한다. 2026의 대표 RMSE 표는 방법별 선택 K가 다르며, 동일 K의 ARI/NMI 분석과 별개다. 소속을 정교하게 정한 효과, 입출력 차원 변경, 전체 recurrent 용량 증가를 구별한다.",
+            "",
+            "Ma 2604.13748의 실험 단위는 하루 MTS다. PEMS-BAY는 180일×(288시점×325센서)이며 각 하루 안의 시간축을 나눈다. 최종 learner의 validation으로 소속을 반복 수정한다. 이 결과를 기존 cell의 독립 clustering 성과로 옮기지 않으며 방법 원리의 참고로 유지한다.",
+            "",
+            "현재 RCTL은 cell별 8×9 입력→scalar 출력이며 cell들이 학습 row를 공유한다. 고정 epoch의 처리 row는 N×T이고, 모델 수 감소가 같은 비율의 row/update 감소를 뜻하지 않는다. 128/1,024/10,000 규모와 Tab 초기 context/query/cache의 정수 작업량을 99에 보존했다. 실측 시간·저자 checkpoint 규모와 직접 산술을 구분하며 새 알고리즘/최종 추천의 증거로 승격하지 않는다."
+          ]
+        }
+      ],
+      "mechanical_comparison_only": true,
+      "unseen_tail_semantically_reviewed": false
+    },
+    {
+      "current_source_id": "SRC-0001906",
+      "baseline_source_id": "SRC-0001880",
+      "current_sha256": "3940387c011a16c8d08ca36b27c578dfac16910ea0385a62f3512b11761f9f2d",
+      "baseline_sha256": "3e829b6cd4c6e1abae947092c777894dd457a0c930ad12221379a36135c5850a",
+      "current_lines": 573,
+      "baseline_lines": 563,
+      "non_equal_opcodes": [
+        {
+          "kind": "replace",
+          "old_lines": [
+            7,
+            7
+          ],
+          "new_lines": [
+            7,
+            17
+          ],
+          "old_text": [
+            "## 최신 상태 — 98 분위수 정보량과 공동 학습 목적"
+          ],
+          "new_text": [
+            "## 최신 상태 — 99 학습 단위와 비용 효과의 구별",
+            "",
+            "- 2026-09-26. 이전 98은 직접 기호 검토와 원문 비교를 완료한 progress였다. 최신 원장·snapshot 40·후보 인덱스를 재확인하고 99 계획을 고정한 뒤 Cash 2025/2026과 Ma 2026의 실제 학습 단위·입출력·소속 결정·비용 비교를 읽었다. PDF 3편 61쪽을 준비했으며 Ma 원문은 재사용했다. 방법·표 6쪽을 시각 대조했다.",
+            "- Cash의 traffic-matrix 모델은 여러 OD flow를 함께 입력·출력한다. 2025의 GRU 폭은 30, 2026은 200이다. 2026 Table I/II는 방법별 K가 다르며 ARI/NMI 비교는 같은 K다. 05의 random 대조군 원칙은 유지하되, 입출력 차원 축소를 scalar RCTL 공동 학습의 직접 이득으로 쓰지 않는다.",
+            "- Ma의 PEMS-BAY 실험은 325개 sensor 대신 180개의 하루 MTS를 묶는다(각 288×325). PEMS-SF도 하루 단위다. 각 MTS 내부를 시간으로 나누고 최종 learner의 validation으로 소속을 반복 수정한다. 고정 cell partition 및 모든 cell의 동일 미래 날짜 평가와 구별하며, cell sharing의 직접 성능 근거로 확대하지 않는다.",
+            "- 한 층 GRU와 선형 head 가정의 정수 산술로 K별 총 parameter 수를 분리했다. 폭 200, D=144에서 K1은 236,544개, K21은 2,660,544개다. 저자 checkpoint 실측이 아니며 개선 원인을 용량 하나로 단정하지 않는다.",
+            "- 현재 RCTL의 scalar 입출력·row pooling 코드를 확인하고 128/1,024/10,000 cell 작업량을 산출했다. T=672, batch=256에서 10,000 cell은 한 epoch 6,720,000행이며 K1/K4 update는 26,250/26,252다. 기존 B2의 M=504/Q=168/129개 분위수로 10,000 cell cache는 866,880,000 bytes다. 대규모 모델 실행·peak RAM·시간 측정은 아니다.",
+            "- 새 Tab/RCTL/기타 모델 실행과 실제 traffic 통계 재계산은 0이다. 원장 SHA는 807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f이며 기존 Word는 불변이다. 잔여 Tab 11 context/20,640행, 추가 RCTL fit 0을 유지한다. 기존 보고서·snapshot을 덮어쓰지 않는다.",
+            "- 상세 99·공개 설명·출처 읽기 범위·산술·코드·렌더·원장 불변성 검사를 보존한다. 다음 추천 근거는 scalar cell pooling에서 실제로 바뀌는 판단/비용을 설명해야 하며, 다중 출력 분할이나 하루 MTS clustering의 성공을 대체 근거로 삼지 않는다. 최종 추천안과 Word는 미완료이며 외부 blocker는 확인되지 않았다.",
+            "",
+            "## 이전 상태 — 98 분위수 정보량과 공동 학습 목적"
+          ]
+        }
+      ],
+      "mechanical_comparison_only": true,
+      "unseen_tail_semantically_reviewed": false
+    }
+  ],
+  "source_code_executed": false
+}

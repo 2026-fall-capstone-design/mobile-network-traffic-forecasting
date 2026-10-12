@@ -205,3 +205,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H127 남은 범위](evidence/0127-forecast-time-reuse-diagnostic/packet-coverage.json): current progress76–554·직전67–545, summary literal71–9909/나머지 cell vectors/모든NPZ 값, 문헌 전체·원98 이후·이전판본/FedPPBC/DOCX·전체 통합/장기 접근/최종 변경분/검색 검수는 미완료다.
 
 [원98](records/0128-quantile-information-and-pooling-objective.md)에서 남은 질문은 Tab 분위수 기울기의 정확성, 시간/cell 의존을 반영한 학습 정보, 전체 cell 목적에 맞는 유용한 공유 결정과 비용이다. point 예측의 긍정 결과를 밀도/새 clustering 성공으로 재인용하지 않는다. 원PDF137페이지·v1현재 비교50페이지·연혁 tail/이전판본·전체 통합과 최종 검색 검수는 미완료다.
+
+[원99](records/0129-learning-units-and-clustering-cost.md)의 후속 질문은 같은 scalar/K/sample 조건에서 Tab이 바꾸는 소속 또는 그 결정 비용, 서로 다른 epoch/early-stop·준비/검색을 포함한 전체비용이다. Cash의 authorhead/Kneedle split/runtime·Ma의 exact split/공식코드·16PDF쪽·각TXT·Word와 연혁tail은 남는다.

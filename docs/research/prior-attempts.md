@@ -596,3 +596,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원98 중앙값 밀도·quantile information·donor graph를 다시 검토할 때
 
 [원98](records/0128-quantile-information-and-pooling-objective.md)과 [Bai/Gu/Yang 비교](references/quantile-information-and-grouping.md)를 먼저 읽는다. 한 target donor 선별의 양방향화, 분위수 간격의 역수, 조건별 관계 clustering 자체의 이름 변경만으로 실익을 확보하지 않는다. 실제 pooling 문제·유용한 소속 결정 또는 같은 결정의 효율·강한 단순/global 대안·전체 cell 목적/손해·밀도 정확성과 RCTL 연결·전체 비용에서 달라지는 조건을 적는다. 과거 예산은 당시 상태이며 미래 팀 연구 전체의 금지 규칙이 아니다.
+
+## 원99 학습 단위·다중 출력·clustering 비용을 다시 볼 때
+
+[원99](records/0129-learning-units-and-clustering-cost.md)와 [문헌 비교](references/learning-unit-and-clustering-cost.md)를 먼저 확인한다. cell·OD flow·하루 MTS, scalar/jointvector, 같은K/선택K, 용량·sample/epoch·예측row/호출·Tab초기비용을 명시한다. 다른 단위의 개선율이나 줄어든 모델 개수만으로 현재cell의 실익을 주장하지 않는다. 새질문은 기존 global/naive/K4 결과와 어떤 조건·유용한 결정이 달라지는지 적는다.

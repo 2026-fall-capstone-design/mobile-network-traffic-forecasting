@@ -305,3 +305,5 @@ quantile_dist/regressor 두SHA는 이전 H122/H075 전체 판독과 동일하며
 첫 판독은 새 원문846행(core676+candidate86+progress84), 원PDF41페이지/2351행·관련6이미지, 기존 코드477재독행과 현재 v1의3페이지/160행·2이미지다. current progress85–563/이전76–554, 원PDF 나머지137페이지·v1나머지50페이지·전TXT의 직접 판독·다른 시각 내용은 미완료다. 원99 이후·이전 고유 판본/FedPPBC·DOCX·전체 통합/장기 팀 접근/최종 변경분/대표 질문 검수까지 계속 남으며 원98의 검수·병합을 전체 Goal 완료로 표시하지 않는다.
 
 근거: [SRC-0001877 행80–86](../sources/history-128.md#src-0001877) · [SRC-0001880 행7–14](../sources/history-128.md#src-0001880) · [SRC-0001873 행70–77](../sources/history-128.md#src-0001873); 추가 산술·현재 판본과 상세 위치는 [주장 목록](../verification/history-128-claims.json) 참조.
+
+후속 [원99](0129-learning-units-and-clustering-cost.md)는 원98의 target/전체평균 구분을 다른 예측 단위와 비용 구조에 연결했다. 새로운 밀도/Tab/RCTL 실험 없이 문헌·정적코드·정수 계산을 대조했다.

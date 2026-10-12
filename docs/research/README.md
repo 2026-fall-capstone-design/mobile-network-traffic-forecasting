@@ -302,3 +302,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원97 예측 시간 재사용](records/0127-forecast-time-reuse-diagnostic.md)은 저장 예측의 주기1·2·3·6 출력/증가량 유지 진단이다. 전체 평균의 비용 절충과 앞기간·cell별 손해, late persistence, 실제 latency 미측정을 함께 확인한다. [재사용 문헌/기준](references/forecast-time-reuse.md)을 새 비용 후보의 비교 설계에 연결한다.
 
 [원98 중앙값 정보와 공동 학습 목적](records/0128-quantile-information-and-pooling-objective.md)은 같은 참 중앙값과 유한 자료 추정의 이득을 구분한다. 기호 계산·문헌·설치 코드 확인이며 새 traffic/model 실험은 없다. [문헌 비교](references/quantile-information-and-grouping.md)에서 target 보호와 전체 cell 평균, group 회복과 재추정 조건을 확인한다.
+
+[원99 학습 단위와 clustering 비용](records/0129-learning-units-and-clustering-cost.md)은 scalar cell row pooling·OD flow 벡터 분할·하루 MTS 소속을 나눈다. 문헌 개선율과 고정 용량/작업량을 현재 RCTL 실측으로 바꾸지 않도록 [문헌 비교](references/learning-unit-and-clustering-cost.md)와 출처를 확인한다.
