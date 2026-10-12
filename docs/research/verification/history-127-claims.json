@@ -1,0 +1,2327 @@
+{
+  "batch_id": "history-127",
+  "record_path": "../records/0127-forecast-time-reuse-diagnostic.md",
+  "record_sha256": "0fae86eed931a07f25420690ca6613723468a3f5c81dce81366a71ce0ed45d90",
+  "claims": [
+    {
+      "claim_id": "H127-C01",
+      "title": "저장 예측을 재분석한 개발 진단",
+      "claim": "원97(2026-09-26)은 기존 RCTL 예측을 재생해 예측 계산의 주기를 줄이는 단순 기준을 확인한 기록이다. 당시 소속과 모델을 바꾸거나 새 신경망을 호출하지 않았다. 이번 아카이브에서도 저장 배열·수치만 검산했으며 원 연구 코드 실행/import와 새 모델 실행은0이다.",
+      "claim_type": "historical_execution",
+      "record_anchor": "claim-01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001853",
+          "line_ranges": [
+            [
+              1,
+              5
+            ]
+          ],
+          "source_sha256": "51826c571dd49528ef3b00a1d027ed3f2c4f938c172466a7a21b431eed1bf80e",
+          "team_source": "../sources/history-127.md#src-0001853"
+        },
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              1,
+              9
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              1,
+              5
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001867",
+          "line_ranges": [
+            [
+              1,
+              6
+            ]
+          ],
+          "source_sha256": "20a50d6ac4ff36908599a626cd7733919797b5e874067467036996d5837b4f62",
+          "team_source": "../sources/history-127.md#src-0001867"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C02",
+      "title": "시간 재사용과 재학습·동시 batch의 구분",
+      "claim": "같은 cell의 이전 예측을 다음 시점에 재사용하는 것은 원83의 재학습 주기, 원49의 다른 cell 대표 출력, 원95의 같은 시각 cell 묶음 호출과 다른 결정이다. 이번 변경은 시간축에서 일부 RCTL 계산을 생략하는 구성이고, 기존 partition을 다시 선정한 작업이 아니다.",
+      "claim_type": "method_boundary",
+      "record_anchor": "claim-02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001854",
+          "line_ranges": [
+            [
+              5,
+              9
+            ]
+          ],
+          "source_sha256": "f126ed5504f07c4251a6f28e7484efca2af8a4c02fecfccd48f6965c3a1daf2a",
+          "team_source": "../sources/history-127.md#src-0001854"
+        },
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              7,
+              20
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001857",
+          "line_ranges": [
+            [
+              72,
+              78
+            ]
+          ],
+          "source_sha256": "6fb376d16db7714a03d25a7e039fe299bbc16db25fc445949147ed64f2984a22",
+          "team_source": "../sources/history-127.md#src-0001857"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C03",
+      "title": "16cell·480시간·이미 사용한 확인 구간",
+      "claim": "기존16cell의 target시간1008–1487을 전체480시간과 앞/뒤240시간으로 비교했다. 이전에 확인한20일 자료를 다시 사용했으므로 독립적인 미래 test가 아니라 개발 진단이다. 저장 조건도 independent_test=False, changed_partitions=False로 남아 있다.",
+      "claim_type": "data_scope",
+      "record_anchor": "claim-03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001854",
+          "line_ranges": [
+            [
+              11,
+              16
+            ]
+          ],
+          "source_sha256": "f126ed5504f07c4251a6f28e7484efca2af8a4c02fecfccd48f6965c3a1daf2a",
+          "team_source": "../sources/history-127.md#src-0001854"
+        },
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              3,
+              3
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001869",
+          "line_ranges": [
+            [
+              33,
+              53
+            ]
+          ],
+          "source_sha256": "5fc8975038d96243be3b643f6afe2df9b9fab89688e7fbc647c906fbb22bb760",
+          "team_source": "../sources/history-127.md#src-0001869"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/cell_ids",
+            "/target_time_range"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C04",
+      "title": "정규화 MAE와 cell별 동등 가중",
+      "claim": "지표는 원문이 기존28일 평균으로 정규화했다고 기록한 cell별 MAE의 동일 비중 평균이다. 저장 scale과 cell 순서를 기존 입력에 대조했고, 전체/기간별 mean·cell값을 검산했다. 원단위 byte·MAPE·Tab 직접 예측 점수와 혼합하지 않는다. 원시 traffic을 다시 정규화하거나 새 모델 예측을 만든 작업은 아니다.",
+      "claim_type": "metric_scope",
+      "record_anchor": "claim-04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              24,
+              24
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              38,
+              51
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              79,
+              91
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/cell_ids"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C05",
+      "title": "첫 현재값1007와 이후 관측의 연결",
+      "claim": "시간1008을 예측할 때의 최근 실제값은 design.Y의 시간1007 열에서 가져온다. 이후에는 저장 target의 직전 열을 현재 관측으로 사용한다. 실제 cell·scale·시간 연결을 검산했으며, 해당 시점의 미래 target을 재계산 시점 선택에 사용하지 않는 규칙이다.",
+      "claim_type": "causality",
+      "record_anchor": "claim-05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001854",
+          "line_ranges": [
+            [
+              14,
+              19
+            ]
+          ],
+          "source_sha256": "f126ed5504f07c4251a6f28e7484efca2af8a4c02fecfccd48f6965c3a1daf2a",
+          "team_source": "../sources/history-127.md#src-0001854"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              38,
+              56
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001866",
+          "NPZ_arrays": [
+            "current_observation",
+            "y",
+            "cell_ids",
+            "target_times"
+          ],
+          "mechanical_value_evidence": true,
+          "whole_literal_array_values_read": false,
+          "source_sha256": "43e2eea76b10907524ccceeea75cd8490965fcf3300c2ce7d7c23a22607cfd94",
+          "team_source": "../sources/history-127.md#src-0001866"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C06",
+      "title": "사전 고정한 주기와 시작 위상",
+      "claim": "재계산 주기는1·2·3·6시간, 시작 위상은0으로 고정했다. 배열 위치t에서 가져올 마지막 예측 위치는 s(t)=d·floor(t/d)다. 결과를 본 뒤 유리한 위상·threshold·partition을 고르지 않았으며, 모든 시점의 예측을 계속 평가한다.",
+      "claim_type": "precommitted_method",
+      "record_anchor": "claim-06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001854",
+          "line_ranges": [
+            [
+              16,
+              23
+            ]
+          ],
+          "source_sha256": "f126ed5504f07c4251a6f28e7484efca2af8a4c02fecfccd48f6965c3a1daf2a",
+          "team_source": "../sources/history-127.md#src-0001854"
+        },
+        {
+          "source_id": "SRC-0001869",
+          "line_ranges": [
+            [
+              22,
+              46
+            ]
+          ],
+          "source_sha256": "5fc8975038d96243be3b643f6afe2df9b9fab89688e7fbc647c906fbb22bb760",
+          "team_source": "../sources/history-127.md#src-0001869"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              55,
+              77
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C07",
+      "title": "출력 유지 규칙",
+      "claim": "hold_output은 마지막 재계산 시점s의 저장 예측 p_s를 다음 재계산 전까지 유지한다. 설명에 쓰인100→110 또는108의 숫자는 실제 결과가 아니라 동작 예시다. 오래된 한 시간 예측을 현재 시점에 재사용하는 근사이며 현재 RCTL의 동일 출력을 보장하지 않는다.",
+      "claim_type": "method",
+      "record_anchor": "claim-07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001853",
+          "line_ranges": [
+            [
+              7,
+              11
+            ]
+          ],
+          "source_sha256": "51826c571dd49528ef3b00a1d027ed3f2c4f938c172466a7a21b431eed1bf80e",
+          "team_source": "../sources/history-127.md#src-0001853"
+        },
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              11,
+              20
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              69,
+              78
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C08",
+      "title": "증가량 유지 규칙과 계속 필요한 관측",
+      "claim": "hold_increment는 현재 관측 o_t에 마지막 예측 증가량(p_s−o_s)을 더한다. 저장된 함수는 o_t+(p_s−o_s)이며, 모델 재학습이나 신경망 내부 cache 갱신은 아니다. 새로운 실제 관측값을 매시간 계속 사용하므로 관측·통신 비용까지 제거한 방식으로 해석하지 않는다.",
+      "claim_type": "method",
+      "record_anchor": "claim-08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001854",
+          "line_ranges": [
+            [
+              17,
+              25
+            ]
+          ],
+          "source_sha256": "f126ed5504f07c4251a6f28e7484efca2af8a4c02fecfccd48f6965c3a1daf2a",
+          "team_source": "../sources/history-127.md#src-0001854"
+        },
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              13,
+              20
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              69,
+              91
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C09",
+      "title": "8개 방법·seed 조건과192개 결과",
+      "claim": "8개 저장 조건은6개 primary 방법·추가2개 secondary seed 조건이다. 이8조건×2재사용 방식×4주기×3기간이192개 결과 행을 이룬다. NPZ에는64개 재사용 출력과 y/current_observation/cell_ids/target_times의4개 metadata 배열이 있다. seed 조건을 새로운 알고리즘8개로 세지 않는다.",
+      "claim_type": "result_structure",
+      "record_anchor": "claim-09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              52,
+              91
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001862",
+          "line_ranges": [
+            [
+              47,
+              75
+            ]
+          ],
+          "source_sha256": "d5a4e5e59088725e6f6a5a100aac15d299ae660be1f9af473d31c2378fc58055",
+          "team_source": "../sources/history-127.md#src-0001862"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/settings/cadences",
+            "/settings/modes",
+            "/settings/periods"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001866",
+          "NPZ_arrays": [
+            "y",
+            "current_observation",
+            "cell_ids",
+            "target_times"
+          ],
+          "mechanical_value_evidence": true,
+          "whole_literal_array_values_read": false,
+          "source_sha256": "43e2eea76b10907524ccceeea75cd8490965fcf3300c2ce7d7c23a22607cfd94",
+          "team_source": "../sources/history-127.md#src-0001866"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C10",
+      "title": "주기1 및 재계산 시점의 불변 조건",
+      "claim": "원 구현은 d=1과 refresh 위치의 출력이 저장된 fresh 예측과 atol1e-15 이내로 같음을 검사했다. 이번 검산에서 d=1의16개 배열은 fresh 예측을 float64로 변환한 배열과 원소값이 완전히 같았고, 모든 refresh·재사용 규칙도 일치했다. np.array_equal로 확인한 수치적 동일성이며 바이트 비교·신경망 재실행·모든 원소의 사람 직접 판독을 뜻하지 않는다.",
+      "claim_type": "saved_value_verification",
+      "record_anchor": "claim-10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              73,
+              77
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001862",
+          "line_ranges": [
+            [
+              56,
+              75
+            ]
+          ],
+          "source_sha256": "d5a4e5e59088725e6f6a5a100aac15d299ae660be1f9af473d31c2378fc58055",
+          "team_source": "../sources/history-127.md#src-0001862"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/invariants"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001866",
+          "NPZ_arrays": [
+            "empirical_risk_20260925__hold_output__d1",
+            "empirical_risk_20260925__hold_increment__d1",
+            "empirical_risk_20260926__hold_output__d1",
+            "empirical_risk_20260926__hold_increment__d1",
+            "global_20260925__hold_output__d1",
+            "global_20260925__hold_increment__d1",
+            "knn_risk_20260925__hold_output__d1",
+            "knn_risk_20260925__hold_increment__d1",
+            "pcc_balanced_20260925__hold_output__d1",
+            "pcc_balanced_20260925__hold_increment__d1",
+            "random_balanced_20260925__hold_output__d1",
+            "random_balanced_20260925__hold_increment__d1",
+            "tabicl_risk_20260925__hold_output__d1",
+            "tabicl_risk_20260925__hold_increment__d1",
+            "tabicl_risk_20260926__hold_output__d1",
+            "tabicl_risk_20260926__hold_increment__d1"
+          ],
+          "mechanical_value_evidence": true,
+          "whole_literal_array_values_read": false,
+          "source_sha256": "43e2eea76b10907524ccceeea75cd8490965fcf3300c2ce7d7c23a22607cfd94",
+          "team_source": "../sources/history-127.md#src-0001866"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {
+        "check": "saved-array audit",
+        "comparison": "np.array_equal(prediction, existing_fresh.astype(np.float64))",
+        "exact_numeric_equal_arrays": 16,
+        "bytewise_comparison_performed": false,
+        "maximum_difference": 0.0
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C11",
+      "title": "예측 행과 모델 호출의 산술",
+      "claim": "전체480시간에서 필요한 새 예측 행은16×ceil(480/d), 동일 시각 cell을 담당 모델별로 batch 처리하는 호출은K×ceil(480/d)다. 주기2에서 행7,680→3,840, global 호출480→240, K4 호출1,920→960이다. 이는 해당 방식을 실행할 때의 산술값이며 이번에 그 횟수만큼 모델을 실행한 측정치가 아니다.",
+      "claim_type": "cost_scope",
+      "record_anchor": "claim-11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001854",
+          "line_ranges": [
+            [
+              25,
+              25
+            ]
+          ],
+          "source_sha256": "f126ed5504f07c4251a6f28e7484efca2af8a4c02fecfccd48f6965c3a1daf2a",
+          "team_source": "../sources/history-127.md#src-0001854"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              83,
+              91
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/57/fresh_prediction_rows_arithmetic",
+            "/metrics/57/model_calls_arithmetic",
+            "/metrics/57/observation_rows_still_read"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/144/model_calls_arithmetic"
+          ],
+          "row_identity": {
+            "method": "tabicl_risk_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 1,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C12",
+      "title": "관측·준비 비용과 실측 latency의 미확인",
+      "claim": "주기2의 재사용에서도 전체 관측 행7,680은 유지한다. 자료 수집·입력 준비·cache 산술·모델 준비의 비용을0으로 두지 않으며, 예측 행 절반을 실제 latency 절반으로 환산하지 않는다. 저장 조건과 결과는 새 모델 실행·실측 speedup을 명시적으로 부정한다.",
+      "claim_type": "cost_limit",
+      "record_anchor": "claim-12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001854",
+          "line_ranges": [
+            [
+              25,
+              25
+            ]
+          ],
+          "source_sha256": "f126ed5504f07c4251a6f28e7484efca2af8a4c02fecfccd48f6965c3a1daf2a",
+          "team_source": "../sources/history-127.md#src-0001854"
+        },
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              37,
+              39
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001869",
+          "line_ranges": [
+            [
+              48,
+              53
+            ]
+          ],
+          "source_sha256": "5fc8975038d96243be3b643f6afe2df9b9fab89688e7fbc647c906fbb22bb760",
+          "team_source": "../sources/history-127.md#src-0001869"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/runtime_speedup_measured",
+            "/no_new_model_execution"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/57/observation_rows_still_read"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H127-C13",
+      "title": "Global 주기2의 두 재사용 방식",
+      "claim": "primary global의 fresh 정규화 MAE는0.071068이다. 주기2에서는 출력 유지0.087171, 증가량 유지0.077725다. 증가량 유지의 fresh 대비 악화는9.3673%이며, 이를 허용 가능한 손해나 성공 기준으로 정하지 않았다. 이번 수치는 저장 결과를 다시 계산해 확인했다.",
+      "claim_type": "quantitative_result",
+      "record_anchor": "claim-13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              26,
+              39
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/51"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 1,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/54/mean_scaled_mae",
+            "/metrics/54/relative_delta_percent"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/57"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H127-C14",
+      "title": "주기3·6과 persistence를 넘는 손해",
+      "claim": "global 증가량 유지의 전체 MAE는 주기3에서0.086607, 주기6에서0.094615로 fresh보다 각각21.8660%·33.1333% 크다. 주기3은 persistence 전체0.085135보다도 크다. 더 적은 예측 행만으로 모델 사용의 이득이나 허용 가능한 정확도를 확정하지 않는다.",
+      "claim_type": "quantitative_result",
+      "record_anchor": "claim-14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              28,
+              31
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              50,
+              52
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/63/mean_scaled_mae",
+            "/metrics/63/relative_delta_percent"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 3,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/69/mean_scaled_mae",
+            "/metrics/69/relative_delta_percent"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 6,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/persistence/0"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H127-C15",
+      "title": "K4 fresh보다 작은 전체 평균의 범위",
+      "claim": "global 주기2 증가량 유지0.077725는 같은 primary seed의 empirical K4 fresh0.081600와 Tab K4 fresh0.087328보다 전체 평균에서 작았다. 모델수K·호출 수가 다르며, 이 비교를 Tab 소속의 효용이나 새 partition의 성공으로 해석하지 않는다. 기존 같은K4에서의 Tab 판정도 이 비용 진단으로 바꾸지 않는다.",
+      "claim_type": "quantitative_comparison",
+      "record_anchor": "claim-15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              28,
+              39
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/57"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/0/mean_scaled_mae"
+          ],
+          "row_identity": {
+            "method": "empirical_risk_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 1,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/144/mean_scaled_mae"
+          ],
+          "row_identity": {
+            "method": "tabicl_risk_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 1,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H127-C16",
+      "title": "앞·뒤240시간에서 뒤집히는 비교",
+      "claim": "앞240시간에서는 global 주기2가0.078791로 empirical/Tab K4 fresh0.071408/0.074603보다 크지만, 뒤240시간에서는0.076659로0.091793/0.100053보다 작았다. global 자체 fresh 대비 악화도 앞14.9846%·뒤4.1384%로 다르다. 전체 평균의 비교 우위를 모든 기간의 우위로 확대하지 않는다.",
+      "claim_type": "quantitative_limit",
+      "record_anchor": "claim-16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              41,
+              50
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/58"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "first_240"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/59"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "last_240"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/1/mean_scaled_mae"
+          ],
+          "row_identity": {
+            "method": "empirical_risk_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 1,
+            "period": "first_240"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/146/mean_scaled_mae"
+          ],
+          "row_identity": {
+            "method": "tabicl_risk_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 1,
+            "period": "last_240"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/2/mean_scaled_mae"
+          ],
+          "row_identity": {
+            "method": "empirical_risk_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 1,
+            "period": "last_240"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/145/mean_scaled_mae"
+          ],
+          "row_identity": {
+            "method": "tabicl_risk_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 1,
+            "period": "first_240"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H127-C17",
+      "title": "Global 주기2의 cell별 손해",
+      "claim": "global 주기2 증가량 유지의 전체·앞기간에서는16cell 모두 fresh 대비 MAE가 컸다. 뒤기간에는2cell이 작고14cell이 컸다. 전체의 가장 큰 정규화 MAE 증분은cell5337의0.0145020이다. 평균 비교와 cell별 손해를 함께 보존하며 이 정규화 증분을 원단위 평균으로 바꾸어 쓰지 않는다.",
+      "claim_type": "cell_level_limit",
+      "record_anchor": "claim-17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/51"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 1,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/57"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/58"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "first_240"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/59"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "last_240"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/cell_ids"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H127-C18",
+      "title": "뒤기간의 단순 persistence 기준",
+      "claim": "persistence MAE는 전체0.085135·앞0.103898·뒤0.066372다. 뒤기간에서는 global fresh0.073613와 global 주기2 증가량 유지0.076659보다 작았다. 전체에서 global 재사용이 persistence보다 좋다는 관찰을 두 기간 모두의 우위로 읽지 않는다. 이 대조는 저장 근거 판독에서 함께 명시한 한계다.",
+      "claim_type": "quantitative_limit",
+      "record_anchor": "claim-18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/persistence"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/53"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 1,
+            "period": "last_240"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/59"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "last_240"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H127-C19",
+      "title": "seed와 일부 cell의 이득을 보존한다",
+      "claim": "모든8개 방법·seed 조건에서 두 mode의 주기2 전체 평균은 해당 조건의 fresh보다 악화했지만, secondary empirical 조건의 전체1cell 등 부분 이득이 있다. secondary Tab의 주기6 전체에서도2cell이 이득이다. primary global 한 조건만 저장되어 secondary global 비교는 없다. seed·기간·cell 조건이 다른 결과를 하나의 보편적 판정으로 합치지 않는다.",
+      "claim_type": "comparison_scope",
+      "record_anchor": "claim-19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              24,
+              24
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/cell_ids"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/33/mean_scaled_mae",
+            "/metrics/33/fresh_mean_scaled_mae",
+            "/metrics/33/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "empirical_risk_20260926",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/189/mean_scaled_mae",
+            "/metrics/189/fresh_mean_scaled_mae",
+            "/metrics/189/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "tabicl_risk_20260926",
+            "mode": "hold_increment",
+            "cadence_hours": 6,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/6/method",
+            "/metrics/6/mode",
+            "/metrics/6/mean_scaled_mae",
+            "/metrics/6/fresh_mean_scaled_mae",
+            "/metrics/6/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "empirical_risk_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/9/method",
+            "/metrics/9/mode",
+            "/metrics/9/mean_scaled_mae",
+            "/metrics/9/fresh_mean_scaled_mae",
+            "/metrics/9/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "empirical_risk_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/30/method",
+            "/metrics/30/mode",
+            "/metrics/30/mean_scaled_mae",
+            "/metrics/30/fresh_mean_scaled_mae",
+            "/metrics/30/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "empirical_risk_20260926",
+            "mode": "hold_output",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/33/method",
+            "/metrics/33/mode",
+            "/metrics/33/mean_scaled_mae",
+            "/metrics/33/fresh_mean_scaled_mae",
+            "/metrics/33/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "empirical_risk_20260926",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/54/method",
+            "/metrics/54/mode",
+            "/metrics/54/mean_scaled_mae",
+            "/metrics/54/fresh_mean_scaled_mae",
+            "/metrics/54/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/57/method",
+            "/metrics/57/mode",
+            "/metrics/57/mean_scaled_mae",
+            "/metrics/57/fresh_mean_scaled_mae",
+            "/metrics/57/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "global_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/78/method",
+            "/metrics/78/mode",
+            "/metrics/78/mean_scaled_mae",
+            "/metrics/78/fresh_mean_scaled_mae",
+            "/metrics/78/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "knn_risk_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/81/method",
+            "/metrics/81/mode",
+            "/metrics/81/mean_scaled_mae",
+            "/metrics/81/fresh_mean_scaled_mae",
+            "/metrics/81/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "knn_risk_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/102/method",
+            "/metrics/102/mode",
+            "/metrics/102/mean_scaled_mae",
+            "/metrics/102/fresh_mean_scaled_mae",
+            "/metrics/102/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "pcc_balanced_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/105/method",
+            "/metrics/105/mode",
+            "/metrics/105/mean_scaled_mae",
+            "/metrics/105/fresh_mean_scaled_mae",
+            "/metrics/105/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "pcc_balanced_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/126/method",
+            "/metrics/126/mode",
+            "/metrics/126/mean_scaled_mae",
+            "/metrics/126/fresh_mean_scaled_mae",
+            "/metrics/126/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "random_balanced_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/129/method",
+            "/metrics/129/mode",
+            "/metrics/129/mean_scaled_mae",
+            "/metrics/129/fresh_mean_scaled_mae",
+            "/metrics/129/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "random_balanced_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/150/method",
+            "/metrics/150/mode",
+            "/metrics/150/mean_scaled_mae",
+            "/metrics/150/fresh_mean_scaled_mae",
+            "/metrics/150/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "tabicl_risk_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/153/method",
+            "/metrics/153/mode",
+            "/metrics/153/mean_scaled_mae",
+            "/metrics/153/fresh_mean_scaled_mae",
+            "/metrics/153/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "tabicl_risk_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/174/method",
+            "/metrics/174/mode",
+            "/metrics/174/mean_scaled_mae",
+            "/metrics/174/fresh_mean_scaled_mae",
+            "/metrics/174/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "tabicl_risk_20260926",
+            "mode": "hold_output",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/177/method",
+            "/metrics/177/mode",
+            "/metrics/177/mean_scaled_mae",
+            "/metrics/177/fresh_mean_scaled_mae",
+            "/metrics/177/cells_with_lower_mae"
+          ],
+          "row_identity": {
+            "method": "tabicl_risk_20260926",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "all"
+          },
+          "semantic_scope": "명시한 원본 행의 선택 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H127-C20",
+      "title": "증가량 유지가 모든 조건에서 더 좋지는 않다",
+      "claim": "PCC primary의 주기2 뒤기간에서는 증가량 유지0.111976가 출력 유지0.111818보다 크다. 따라서 global 전체 평균에서의 장점을 모든 모델·기간의 규칙으로 일반화하지 않는다. 두 mode와 네 주기를 함께 보존한192행의 범위 안에서 판단한다.",
+      "claim_type": "quantitative_limit",
+      "record_anchor": "claim-20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/107/mean_scaled_mae"
+          ],
+          "row_identity": {
+            "method": "pcc_balanced_20260925",
+            "mode": "hold_increment",
+            "cadence_hours": 2,
+            "period": "last_240"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/metrics/104/mean_scaled_mae"
+          ],
+          "row_identity": {
+            "method": "pcc_balanced_20260925",
+            "mode": "hold_output",
+            "cadence_hours": 2,
+            "period": "last_240"
+          },
+          "semantic_scope": "명시한 행/필드만; 9,953행 JSON 전체의 직접 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              20,
+              24
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H127-C21",
+      "title": "Tab의 유용한 실행 결정과 clustering의 역할",
+      "claim": "이번 재사용 규칙에는 Tab이나 새 clustering이 필요하지 않았다. 후속에는 단순 주기·최근 실제값보다 유용한 실행 결정인지, 필요한 cell만 global에서 계산하는 대안보다 소속 분리가 필요한지와 전체 비용을 명시한다. 원93의 기준처럼 같은 유용한 결정을 더 효율적으로 얻는 방향도 구별하며, 이번 미추천을 모든 재사용 연구의 실패로 확대하지 않는다.",
+      "claim_type": "research_decision",
+      "record_anchor": "claim-21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              62,
+              71
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001857",
+          "line_ranges": [
+            [
+              42,
+              58
+            ]
+          ],
+          "source_sha256": "6fb376d16db7714a03d25a7e039fe299bbc16db25fc445949147ed64f2984a22",
+          "team_source": "../sources/history-127.md#src-0001857"
+        },
+        {
+          "source_id": "SRC-0001857",
+          "line_ranges": [
+            [
+              72,
+              78
+            ]
+          ],
+          "source_sha256": "6fb376d16db7714a03d25a7e039fe299bbc16db25fc445949147ed64f2984a22",
+          "team_source": "../sources/history-127.md#src-0001857"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H127-C22",
+      "title": "새 모델 호출과 partition 선택은 없었다",
+      "claim": "계획·runner·완료 기록은 새 Tab context/query, RCTL fit/forward/gradient가 없고 저장 예측만 재생했다고 남긴다. 재계산 시점은 clock으로 정했고, RCTL의 새 오차·표현으로 소속을 바꾸지 않았다. 기록된 과거 fit0 상한은 현재 아카이브의 실행 지시가 아니며 미래 팀 연구 전체의 금지로도 옮기지 않는다.",
+      "claim_type": "historical_execution",
+      "record_anchor": "claim-22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001854",
+          "line_ranges": [
+            [
+              29,
+              31
+            ]
+          ],
+          "source_sha256": "f126ed5504f07c4251a6f28e7484efca2af8a4c02fecfccd48f6965c3a1daf2a",
+          "team_source": "../sources/history-127.md#src-0001854"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              1,
+              5
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              69,
+              103
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001867",
+          "line_ranges": [
+            [
+              1,
+              6
+            ]
+          ],
+          "source_sha256": "20a50d6ac4ff36908599a626cd7733919797b5e874067467036996d5837b4f62",
+          "team_source": "../sources/history-127.md#src-0001867"
+        },
+        {
+          "source_id": "SRC-0001856",
+          "line_ranges": [
+            [
+              62,
+              70
+            ]
+          ],
+          "source_sha256": "947a4dd763617f1785770c241b714b2fea4721071fa83568dafc5e20502273bf",
+          "team_source": "../sources/history-127.md#src-0001856"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H127-C23",
+      "title": "두 타이머의 실제 포함 범위",
+      "claim": "summary.seconds=0.0252162000초는 settings/시작 marker 저장 뒤부터 입력NPZ·이전 summary 읽기와 수치 loop 종료까지다. finally의0.2157690000초는 그 구간에 hash/RSS 검사·NPZ/JSON 쓰기·출력까지 포함한다. 짧은 값을 순수 산술 시간으로 부르거나 둘을 더하지 않는다. import·초기 input hash·settings/marker 쓰기는 이 타이머 밖이다.",
+      "claim_type": "timing_scope",
+      "record_anchor": "claim-23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              22,
+              37
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              92,
+              113
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001861",
+          "line_ranges": [
+            [
+              19,
+              27
+            ]
+          ],
+          "source_sha256": "e57c97a37aeed560b4b290535d7ffa30bc4d70fa8ded299b2b88aaae1b15620b",
+          "team_source": "../sources/history-127.md#src-0001861"
+        },
+        {
+          "source_id": "SRC-0001865",
+          "line_ranges": [
+            [
+              1,
+              8
+            ]
+          ],
+          "source_sha256": "68fba2c3aebd38319c99a3284b45c17431053c53c02c46caeae8488f8c375a6b",
+          "team_source": "../sources/history-127.md#src-0001865"
+        },
+        {
+          "source_id": "SRC-0001867",
+          "line_ranges": [
+            [
+              1,
+              6
+            ]
+          ],
+          "source_sha256": "20a50d6ac4ff36908599a626cd7733919797b5e874067467036996d5837b4f62",
+          "team_source": "../sources/history-127.md#src-0001867"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/seconds"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H127-C24",
+      "title": "RSS는 끝 시점 표본이다",
+      "claim": "저장 RSS는38,850,560bytes이며 수치 loop 뒤의 한 번 측정이다. 원문 필드도 rss_bytes_end_not_peak라고 표시한다. 지속 peak나 전 구간의 메모리 상한 준수로 강화하지 않는다. 계획의20초/1GB와 코드의 끝점 검사 및 실제 저장 시간·RSS를 구분한다.",
+      "claim_type": "resource_scope",
+      "record_anchor": "claim-24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001854",
+          "line_ranges": [
+            [
+              31,
+              31
+            ]
+          ],
+          "source_sha256": "f126ed5504f07c4251a6f28e7484efca2af8a4c02fecfccd48f6965c3a1daf2a",
+          "team_source": "../sources/history-127.md#src-0001854"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              92,
+              99
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001869",
+          "line_ranges": [
+            [
+              48,
+              53
+            ]
+          ],
+          "source_sha256": "5fc8975038d96243be3b643f6afe2df9b9fab89688e7fbc647c906fbb22bb760",
+          "team_source": "../sources/history-127.md#src-0001869"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/rss_bytes_end_not_peak"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H127-C25",
+      "title": "원장 증분을 한 번만 반영했다",
+      "claim": "before ad8926…와 after807600…를 대조하면 forecast_reuse_97의0.2157690000초와 대응 detail 한 항목만 추가됐다. 내부0.0252162000초는 포함 항목이며 중복 비용이 아니다. 모델 사용량·잔여 count는 같고, cheap69.4067832초·recorded modeling1,998.2764094초를 검산했다. 현재 원장은 변경하지 않았다.",
+      "claim_type": "accounting_verification",
+      "record_anchor": "claim-25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001861",
+          "line_ranges": [
+            [
+              17,
+              39
+            ]
+          ],
+          "source_sha256": "e57c97a37aeed560b4b290535d7ffa30bc4d70fa8ded299b2b88aaae1b15620b",
+          "team_source": "../sources/history-127.md#src-0001861"
+        },
+        {
+          "source_id": "SRC-0001865",
+          "line_ranges": [
+            [
+              1,
+              15
+            ]
+          ],
+          "source_sha256": "68fba2c3aebd38319c99a3284b45c17431053c53c02c46caeae8488f8c375a6b",
+          "team_source": "../sources/history-127.md#src-0001865"
+        },
+        {
+          "source_id": "SRC-0001858",
+          "line_ranges": [
+            [
+              93,
+              126
+            ]
+          ],
+          "source_sha256": "807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f",
+          "team_source": "../sources/history-127.md#src-0001858"
+        },
+        {
+          "source_id": "SRC-0001858",
+          "line_ranges": [
+            [
+              246,
+              260
+            ]
+          ],
+          "source_sha256": "807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f",
+          "team_source": "../sources/history-127.md#src-0001858"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H127-C26",
+      "title": "사전 메타데이터·import 오류의 범위",
+      "claim": "원문은 object 날짜 배열을 읽으려던 메타데이터 점검과 psutil import 실패를 run marker·수치 작업 전의 오류로 기록한다. 성공 실행의 marker·완료·결과는 보존돼 있다. 실패 로그를 이번에 독립 재현한 것은 아니며, 이를 재사용 방법의 성능 실패로 분류하거나 원 코드를 실행해 복구하지 않는다. 현재 검산은 numeric 배열만 allow_pickle=False로 읽었다.",
+      "claim_type": "implementation_history",
+      "record_anchor": "claim-26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              73,
+              79
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001859",
+          "line_ranges": [
+            [
+              1,
+              31
+            ]
+          ],
+          "source_sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef",
+          "team_source": "../sources/history-127.md#src-0001859"
+        },
+        {
+          "source_id": "SRC-0001858",
+          "line_ranges": [
+            [
+              255,
+              259
+            ]
+          ],
+          "source_sha256": "807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f",
+          "team_source": "../sources/history-127.md#src-0001858"
+        },
+        {
+          "source_id": "SRC-0001868",
+          "line_ranges": [
+            [
+              1,
+              4
+            ]
+          ],
+          "source_sha256": "0302f4e8d430ab44081e21386120e0b0e6ec4f274e557e6073fb6e615bb7e8b8",
+          "team_source": "../sources/history-127.md#src-0001868"
+        },
+        {
+          "source_id": "SRC-0001867",
+          "line_ranges": [
+            [
+              1,
+              6
+            ]
+          ],
+          "source_sha256": "20a50d6ac4ff36908599a626cd7733919797b5e874067467036996d5837b4f62",
+          "team_source": "../sources/history-127.md#src-0001867"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H127-C27",
+      "title": "Snapshot39와 입력·Word 보존",
+      "claim": "Snapshot39의 manifest는18파일2,151,527bytes를 열거하며 manifest4,916bytes를 더한 실제 파일은19개2,156,443bytes다. 별도 receipt는531bytes다. after 사본1863과1858은 같은 SHA 그룹이며 입력4개의 hash를 확인했다. 중간 Word의 hash4f1112… 확인은 본문·layout 독해가 아니다.",
+      "claim_type": "artifact_provenance",
+      "record_anchor": "claim-27",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001852",
+          "line_ranges": [
+            [
+              1,
+              118
+            ]
+          ],
+          "source_sha256": "a5aca2689d58d4a98ca68dd294a9694a54ec644959c2d6cd09f0cf89e95603a9",
+          "team_source": "../sources/history-127.md#src-0001852"
+        },
+        {
+          "source_id": "SRC-0001862",
+          "line_ranges": [
+            [
+              172,
+              198
+            ]
+          ],
+          "source_sha256": "d5a4e5e59088725e6f6a5a100aac15d299ae660be1f9af473d31c2378fc58055",
+          "team_source": "../sources/history-127.md#src-0001862"
+        },
+        {
+          "source_id": "SRC-0022102",
+          "line_ranges": [
+            [
+              1,
+              13
+            ]
+          ],
+          "source_sha256": "a105b5abb7de67e6975504e726c99d115694a027b0012edf6fdb7bda1e6c5713",
+          "team_source": "../sources/history-127.md#src-0022102"
+        },
+        {
+          "source_id": "SRC-0001869",
+          "line_ranges": [
+            [
+              4,
+              20
+            ]
+          ],
+          "source_sha256": "5fc8975038d96243be3b643f6afe2df9b9fab89688e7fbc647c906fbb22bb760",
+          "team_source": "../sources/history-127.md#src-0001869"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H127-C28",
+      "title": "Delta Networks의 내부 계산 재사용과 출력 근사",
+      "claim": "Delta Networks(ICML2017) §2 식2–5는 고정 행렬의 이전 결과와 입력 변화량으로 같은 선형 결과를 계산하는 등식이다. §3은 GRU 내부 preactivation에 적용하며, §4의 threshold 근사는 마지막으로 기억한 값·오차 누적을 별도로 다룬다. 출력 오차가 같은 threshold로 제한된다는 보장은 없다. 원97의 최종 출력/증가량 유지는 이 내부 알고리즘의 RCTL 구현이 아니며 논문 속도 수치를 가져오지 않는다.",
+      "claim_type": "primary_literature",
+      "record_anchor": "claim-28",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              54,
+              58
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001856",
+          "line_ranges": [
+            [
+              18,
+              32
+            ]
+          ],
+          "source_sha256": "947a4dd763617f1785770c241b714b2fea4721071fa83568dafc5e20502273bf",
+          "team_source": "../sources/history-127.md#src-0001856"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [
+        {
+          "reference_id": "REF-H127-DELTA-2017",
+          "URL": "https://proceedings.mlr.press/v70/neil17a/neil17a.pdf",
+          "PDF_pages": [
+            2,
+            3,
+            4
+          ],
+          "current_PDF_sha256": "e3071431fe9416482ac24c261d780d53978cab0c1c03986be5151623166001e1",
+          "whole_paper_or_code_validation": false
+        }
+      ],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H127-C29",
+      "title": "Skip RNN은 초록·서지까지만 확인했다",
+      "claim": "당시 기록은 Skip RNN의 학습 기반 state update 생략을 초록·서지에서 확인했고 OpenReview 전문의 확인 화면을 기록한다. 이번에는 arXiv1708.06834v3의 제목·초록·저자·2018-02-05 개정과 ICLR2018 서지를 대조했다. 전체 알고리즘·공식 코드·PDF는 검증하지 않았고, 당시 접근 실패를 현재의 접근 실패로 재사용하지 않는다.",
+      "claim_type": "literature_scope",
+      "record_anchor": "claim-29",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              60,
+              60
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001856",
+          "line_ranges": [
+            [
+              33,
+              47
+            ]
+          ],
+          "source_sha256": "947a4dd763617f1785770c241b714b2fea4721071fa83568dafc5e20502273bf",
+          "team_source": "../sources/history-127.md#src-0001856"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [
+        {
+          "reference_id": "REF-H127-SKIP-2018",
+          "URL": "https://arxiv.org/abs/1708.06834v3",
+          "scope": "제목/저자/초록/판본/서지만",
+          "whole_PDF_or_algorithm_read": false
+        }
+      ],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H127-C30",
+      "title": "기계 검산·직접 판독·독립 재현의 구분",
+      "claim": "이번 자체 검사에서192행의 scalar/cell 지표와68개 배열의 시간·cell·재생 규칙은 모두 일치했다. 최초 직접 판독은 원문1,320행,192행의 선택 scalar projection,global6개 완전 metric row·persistence3개 cell vector와 문헌3페이지 이미지 범위다. summary9,953행의 전체 literalJSON·나머지 cell vectors·모든NPZ float의 직접 독해나 독립 모델 재현을 완료 처리하지 않는다.",
+      "claim_type": "verification_scope",
+      "record_anchor": "claim-30",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001862",
+          "line_ranges": [
+            [
+              47,
+              75
+            ]
+          ],
+          "source_sha256": "d5a4e5e59088725e6f6a5a100aac15d299ae660be1f9af473d31c2378fc58055",
+          "team_source": "../sources/history-127.md#src-0001862"
+        },
+        {
+          "source_id": "SRC-0022102",
+          "line_ranges": [
+            [
+              5,
+              12
+            ]
+          ],
+          "source_sha256": "a105b5abb7de67e6975504e726c99d115694a027b0012edf6fdb7bda1e6c5713",
+          "team_source": "../sources/history-127.md#src-0022102"
+        },
+        {
+          "source_id": "SRC-0001870",
+          "JSON_pointers": [
+            "/invariants",
+            "/no_new_model_execution"
+          ],
+          "semantic_scope": "명시한 필드만 실제 판독; JSON 전문 판독 아님",
+          "source_sha256": "00078bd219d7d324b0b095546d797b1f5e0da7bc4c398c5414c6f7d90cbda037",
+          "team_source": "../sources/history-127.md#src-0001870"
+        },
+        {
+          "source_id": "SRC-0001866",
+          "NPZ_arrays": [
+            "y",
+            "current_observation",
+            "cell_ids",
+            "target_times"
+          ],
+          "mechanical_value_evidence": true,
+          "whole_literal_array_values_read": false,
+          "source_sha256": "43e2eea76b10907524ccceeea75cd8490965fcf3300c2ce7d7c23a22607cfd94",
+          "team_source": "../sources/history-127.md#src-0001866"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {
+        "first_scope": "../evidence/0127-forecast-time-reuse-diagnostic/read-scopes.json",
+        "mechanical_check": "../evidence/0127-forecast-time-reuse-diagnostic/numeric-check.json",
+        "source_semantic_credit_from_mechanical_check": 0
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H127-C31",
+      "title": "후보·연혁의 다른 판본과 미독 구간",
+      "claim": "현재 candidate1857은78행 전체를 읽었고 이전1828의70행 판본과 비교했다. 현재 progress1860은1–75/554행만 읽어76–554행이 남는다. 이전1831의67–545행도 미독이다. 판본의 기계 대응과 같은 과거 결과의 재인용을 후반 기록 독해나 독립 연구 여러 회로 집계하지 않는다.",
+      "claim_type": "version_scope",
+      "record_anchor": "claim-31",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001857",
+          "line_ranges": [
+            [
+              72,
+              78
+            ]
+          ],
+          "source_sha256": "6fb376d16db7714a03d25a7e039fe299bbc16db25fc445949147ed64f2984a22",
+          "team_source": "../sources/history-127.md#src-0001857"
+        },
+        {
+          "source_id": "SRC-0001860",
+          "line_ranges": [
+            [
+              7,
+              23
+            ]
+          ],
+          "source_sha256": "85bff6a03bd5d98e07bcd5d0d115b50597ab509ed1e7d596cf330a4916e0a355",
+          "team_source": "../sources/history-127.md#src-0001860"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H127-C32",
+      "title": "미추천과 전체 Goal의 미완료",
+      "claim": "당시 단순 시간 재사용 또는 Tab 부가 후보는 추천 방향으로 채택되지 않았고 최종 방향·Word도 미완료였다. 이번 진단은 후속 비용 후보가 비교할 단순 기준을 구체화한 것이다. 원98 이후·이전 고유 판본, 문헌·연혁·JSON 미독, FedPPBC/DOCX 공백, 통합·장기 팀 접근·최종 변경분·대표 질문 검수는 계속 남아 있다. 원97 기록의 검수·병합을 전체 Goal 완료로 표시하지 않는다.",
+      "claim_type": "research_decision",
+      "record_anchor": "claim-32",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001853",
+          "line_ranges": [
+            [
+              31,
+              37
+            ]
+          ],
+          "source_sha256": "51826c571dd49528ef3b00a1d027ed3f2c4f938c172466a7a21b431eed1bf80e",
+          "team_source": "../sources/history-127.md#src-0001853"
+        },
+        {
+          "source_id": "SRC-0001855",
+          "line_ranges": [
+            [
+              62,
+              81
+            ]
+          ],
+          "source_sha256": "03ff9d32126a1ca35a77e4eace4d5353dceab2226bf7d33c9decdd255e212b04",
+          "team_source": "../sources/history-127.md#src-0001855"
+        },
+        {
+          "source_id": "SRC-0001860",
+          "line_ranges": [
+            [
+              9,
+              14
+            ]
+          ],
+          "source_sha256": "85bff6a03bd5d98e07bcd5d0d115b50597ab509ed1e7d596cf330a4916e0a355",
+          "team_source": "../sources/history-127.md#src-0001860"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

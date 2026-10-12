@@ -207,3 +207,5 @@ snapshot37은21파일241706bytes를 열거하며 manifest4301bytes를 포함하�
 현재 연혁58–536행·직전49–527행 직접 미독,NPZ 모든 float값 literal판독/실행 재현은 하지 않음,기존9checkpoint·원입력의 장기 팀 공유,원96 이후와 이전 고유판본,원83 FedPPBC/원84 DOCX 공백,문헌·실패·비용 통합,최종 원본 변경분·대표 질문 검색 검수.
 
 후속 [원96 가중치 병합](0126-rctl-parameter-merging-scope.md)은 한 모델로 저장량을 줄여도 N개 cell 입력이 남는다는 비용 범위를 확인했다. 원95의 동일 시각 batch를 기본 비교로 유지한다. 학습된 가중치 병합과 TIMEFUSE 출력 혼합을 구별했으며 새 비용/정확도 실험은 없다.
+
+후속 [원97 예측 시간 재사용](0127-forecast-time-reuse-diagnostic.md)은 동시 batch를 기본으로 두고 일부 시점의 계산을 생략할 때의 저장 출력 오차를 확인했다. 같은 cell의 시간 재사용이며 관측은 유지한다. 호출/행 절반은 산술이고, 실제 latency 개선·Tab 기여·새 clustering 성공은 확인하지 않았다.

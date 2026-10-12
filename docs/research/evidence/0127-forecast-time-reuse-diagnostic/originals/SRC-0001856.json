@@ -1,0 +1,70 @@
+{
+  "date": "2026-09-26",
+  "purpose": "Distinguish posthoc inference-cadence diagnostics from new clustering or model-update decisions.",
+  "search_queries": [
+    "\"time series forecasting\" \"event-triggered\" inference",
+    "\"traffic forecasting\" \"prediction\" \"refresh\" inference adaptive",
+    "\"forecasting\" \"caching\" \"clustering\" predictions computational cost",
+    "\"time series\" \"prediction reuse\"",
+    "\"time series forecasting\" \"inference\" \"skip\" computational",
+    "\"event-triggered\" \"forecasting\" \"prediction\" neural network",
+    "\"neural network\" \"inference\" \"reuse\" \"time series\" caching",
+    "\"forecasting\" \"event-triggered\" prediction update cost",
+    "\"adaptive inference\" \"regression\" sensor",
+    "Skip RNN: Learning to Skip State Updates in Recurrent Neural Networks",
+    "Delta Networks for Optimized Recurrent Network Computation"
+  ],
+  "search_scope_note": "Broad queries and primary-domain filters included arxiv.org, proceedings.mlr.press, ieee.org, and acm.org. Search absence is not evidence of novelty.",
+  "sources_read": [
+    {
+      "title": "Delta Networks for Optimized Recurrent Network Computation",
+      "edition": "ICML 2017, PMLR 70:2584-2593, official 10-page PDF viewed with web reader",
+      "url": "https://proceedings.mlr.press/v70/neil17a.html",
+      "pdf_url": "https://proceedings.mlr.press/v70/neil17a/neil17a.pdf",
+      "scope": [
+        "Sections 2-4",
+        "Equations 2-5",
+        "GRU internal update construction",
+        "Thresholded differences and last memorized value"
+      ],
+      "local_pdf_downloaded_this_stage": false,
+      "claim_limit": "Matrix update identity and threshold approximation only; no transfer of published speech/driving speedups to RCTL."
+    },
+    {
+      "title": "Skip RNN: Learning to Skip State Updates in Recurrent Neural Networks",
+      "edition": "arXiv:1708.06834; ICLR 2018 metadata",
+      "url": "https://arxiv.org/abs/1708.06834",
+      "attempted_pdf_url": "https://openreview.net/pdf?id=HkwVAXyCW",
+      "scope": [
+        "Abstract",
+        "Bibliographic metadata"
+      ],
+      "access_limit": "OpenReview PDF request returned a verification challenge; full algorithm not verified in this stage.",
+      "local_pdf_downloaded_this_stage": false
+    }
+  ],
+  "official_external_code_reviewed": false,
+  "external_methods_reproduced": false,
+  "local_code": [
+    {
+      "path": "C:\\Users\\jungj\\OneDrive\\Desktop\\연구실\\Tab-ICL\\tmp\\redesign_20260925\\forecast_reuse_diagnostic_97.py",
+      "sha256": "08717f38d9319500cefb6456cff2d3506e8d84467780b21bff78e9c06f72ecef"
+    },
+    {
+      "path": "C:\\Users\\jungj\\OneDrive\\Desktop\\연구실\\Tab-ICL\\tmp\\redesign_20260925\\record_forecast_reuse_97.py",
+      "sha256": "e57c97a37aeed560b4b290535d7ffa30bc4d70fa8ded299b2b88aaae1b15620b"
+    },
+    {
+      "path": "C:\\Users\\jungj\\OneDrive\\Desktop\\연구실\\Tab-ICL\\tmp\\redesign_20260925\\data_and_smoke.py",
+      "sha256": "ce4014f2ab6bcc82e738ac8d6c8144662e954bc7bb67ddac6c8d73be7a9af9a2"
+    }
+  ],
+  "execution": {
+    "new_TabICL_contexts": 0,
+    "new_RCTL_fits": 0,
+    "new_neural_forwards": 0,
+    "new_gradients": 0,
+    "stored_prediction_replay": true
+  },
+  "recommendation_confirmed": false
+}
