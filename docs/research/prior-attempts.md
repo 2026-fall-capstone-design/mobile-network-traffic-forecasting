@@ -584,3 +584,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원95 모델 수 감소·batch·실행 비용을 비교할 때
 
 [원95](records/0125-frozen-rctl-serving-cost-baseline.md)와 [비용 비교의 기본 조건](references/serving-cost-baseline.md)을 먼저 읽는다. 같은 가중치를 쓰는 동시 cell을 batch로 처리한 baseline과 비교하고 모델 저장량·입력 행·호출·실측시간·Tab 준비비용을 따로 적는다. 호출을 합치는 이득을 Tab의 기여로 세지 않는다. 같은 K4의 약0.147ms 차이나16cell CPU 결과를 유의미한 Tab 우위·대규모 latency로 확대하지 않는다. 새 partition 정확도 검증과 기존 checkpoint의 실행 방식 검토도 구별한다.
+
+## 원96 weight averaging·model soup·re-basin·fusion을 다시 검토할 때
+
+[원96](records/0126-rctl-parameter-merging-scope.md)과 [문헌의 연산·정보·조건](references/parameter-merging.md)을 읽는다. 출력 혼합과 파라미터 병합, 공통 random 초기화와 pretrained, 소속 이전의 모델 이용과 소속 이후의 학습을 구별한다. 실제 병합 필요성·Tab의 결정/효율 기여·hidden/BN/LSTM 처리·union-data 기준과 전체 비용이 달라졌는지 적는다. 당시 미실행을 성능 실패로, 기호 예를 모든 모델 병합의 불가능성으로 쓰지 않는다.

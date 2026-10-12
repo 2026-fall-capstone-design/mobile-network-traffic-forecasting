@@ -205,3 +205,5 @@ snapshot37은21파일241706bytes를 열거하며 manifest4301bytes를 포함하�
 보존된 timing/prediction 배열은 위 수치와 같은 방법의 예측 차이를 검산하는 데 재사용한다. CPU 측정을 다시 실행했다는 뜻은 아니다. [원93](0123-candidate-gates-comparison-scope.md)의 탐색 진입 기준, [원81 공동 입력·다중 출력](0090-input-partition-decision.md), [과거 시도 색인](../prior-attempts.md)을 함께 확인하고 실제로 달라지는 결정·연산과 새 비교 범위를 실험 이슈에 적는다. 과거 상한과 현재 팀 실험 계획을 혼동하지 않는다.
 
 현재 연혁58–536행·직전49–527행 직접 미독,NPZ 모든 float값 literal판독/실행 재현은 하지 않음,기존9checkpoint·원입력의 장기 팀 공유,원96 이후와 이전 고유판본,원83 FedPPBC/원84 DOCX 공백,문헌·실패·비용 통합,최종 원본 변경분·대표 질문 검색 검수.
+
+후속 [원96 가중치 병합](0126-rctl-parameter-merging-scope.md)은 한 모델로 저장량을 줄여도 N개 cell 입력이 남는다는 비용 범위를 확인했다. 원95의 동일 시각 batch를 기본 비교로 유지한다. 학습된 가중치 병합과 TIMEFUSE 출력 혼합을 구별했으며 새 비용/정확도 실험은 없다.

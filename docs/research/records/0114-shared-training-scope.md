@@ -76,3 +76,5 @@
 [ECAI 논문·구현의 기존 상세 검토](0063-0065-ecai-interface.md) · [원85 sample 처리량과 BatchNorm 조건](0112-rejection-scope-allocation.md) · [원85 판단 수정 이력](0113-decision-history-sources.md) · [문헌 페이지와 수식 표기 한계](../evidence/0114-shared-training-scope/literature-scope.json) · [기호 비용·유리수 확인](../evidence/0114-shared-training-scope/algebra-cost-check.json) · [남은 원86 자료](../evidence/0114-shared-training-scope/packet-coverage.json)
 
 새 성능 지표·seed·데이터 분할·정규화 설정은 해당 없음이다. 원86이 새 성능 실험을 하지 않았기 때문이다. 기초 RCTL 실험의 설정과 결과는 기존 개별 기록에서 찾는다. 재검토하려면 공유 범위, 단순 비교군, Tab이 바꾸는 소속 결정, 관측된 평가 기간과 추가 비용을 먼저 명시해야 한다.
+
+후속 [원96 가중치 병합](0126-rctl-parameter-merging-scope.md)은 학습 후 파라미터를 합치는 연산을 공통 초기화·고정 표현·지속 공유와 구별했다. 보존 코드는 매 fit 전에 같은 seed를 설정한다. 소속 확정 뒤의 병합은 검토 가능하지만 union-data 단일 RCTL과 Tab의 유용한 결정/효율 기여가 필요하며, 실제 병합 모델 성능은 실행하지 않았다.

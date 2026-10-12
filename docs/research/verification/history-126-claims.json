@@ -1,0 +1,1444 @@
+{
+  "batch_id": "history-126",
+  "record_path": "../records/0126-rctl-parameter-merging-scope.md",
+  "record_sha256": "551808592837fe941622c1f960a02caa25bfcd470f8db44fb20cb5f92411df29",
+  "claims": [
+    {
+      "claim_id": "H126-C01",
+      "title": "미실행 후보를 정리한 문헌·기호 검토",
+      "claim": "원96(2026-09-26)은 TabICLv2가 추정한 cell 간 예측 관계를 학습된 RCTL의 가중치 병합으로 연결할 수 있는지 검토한 기록이다. 논문·기존 코드·기호 반례를 확인한 뒤 이번 후보를 채택하지 않았다. 병합 checkpoint를 만들어 성능을 측정한 실행 실패가 아니다.",
+      "claim_type": "historical_status",
+      "record_anchor": "claim-01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001822",
+          "line_ranges": [
+            [
+              1,
+              34
+            ]
+          ],
+          "source_sha256": "38bd97e71c52d137577b292d935321a9b4cf8f5c38548f6958d17e5a8e76e437",
+          "team_source": "../sources/history-126.md#src-0001822"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              1,
+              9
+            ],
+            [
+              56,
+              67
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001826",
+          "line_ranges": [
+            [
+              1,
+              28
+            ]
+          ],
+          "source_sha256": "8211f584eab75a719fbaa867412a0af471e8a9cfad860e0595dec2ca0dcae8d0",
+          "team_source": "../sources/history-126.md#src-0001826"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H126-C02",
+      "title": "예측값 혼합과 파라미터 평균의 대상",
+      "claim": "여러 모델의 출력에 가중치를 주는 예측값 혼합과, 파라미터를 평균해 하나의 모델로 만드는 병합은 계산 대상이 다르다. TIMEFUSE의 출력 혼합과 Model soups의 가중치 평균을 같은 한 모델 실행으로 부르지 않는다.",
+      "claim_type": "method_boundary",
+      "record_anchor": "claim-02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001836",
+          "pdf_pages": [
+            3,
+            4,
+            5
+          ],
+          "source_sha256": "7a0c963cad661cedcbd5496b1bcdfdd0c2460a72580aec7df455ba8be14fb210",
+          "team_source": "../sources/history-126.md#src-0001836"
+        },
+        {
+          "source_id": "SRC-0001840",
+          "pdf_pages": [
+            3
+          ],
+          "source_sha256": "5f7e770b7bfea7463a2909694b1692804fc57d79ccbc54e7dac92855844bfb9c",
+          "team_source": "../sources/history-126.md#src-0001840"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              11,
+              20
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H126-C03",
+      "title": "Tab의 예측 관계가 hidden 좌표를 식별하지 않는다",
+      "claim": "cell의 예측값·조건부 예측 관계가 비슷하다는 관찰만으로 RCTL 내부 채널·LSTM 상태의 대응이나 파라미터 평균의 손실을 알 수는 없다. 원96은 그 연결을 별도로 확인할 필요를 제시했으며, 실제 RCTL에서 병합 손해를 측정했다고 주장하지 않았다.",
+      "claim_type": "interpretation",
+      "record_anchor": "claim-03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              22,
+              40
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001828",
+          "line_ranges": [
+            [
+              66,
+              70
+            ]
+          ],
+          "source_sha256": "8231f64396661424a9547e5ddf4f93a2b86b476b25d0e05c3e69cca5d03701bc",
+          "team_source": "../sources/history-126.md#src-0001828"
+        },
+        {
+          "source_id": "SRC-0001832",
+          "line_ranges": [
+            [
+              15,
+              60
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-126.md#src-0001832"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H126-C04",
+      "title": "같은 함수의 파라미터 평균이 다른 함수가 되는 예",
+      "claim": "원문의 f(x)=a·ReLU(w·x)에서 (a,w)=(1,1)과 (1/2,2)는 모든 입력에서 같은 ReLU(x)를 계산한다. 좌표별 평균은 (3/4,3/2)이므로 9/8·ReLU(x)가 된다. 입력·출력의 동등함만으로 파라미터 평균의 동등함을 보장할 수 없다는 기호 예다.",
+      "claim_type": "symbolic_example",
+      "record_anchor": "claim-04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              24,
+              30
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001831",
+          "line_ranges": [
+            [
+              7,
+              14
+            ]
+          ],
+          "source_sha256": "c985ba74b199e4ba337167781c08339979fe8c84dbb81a8d48f52865407ab3fd",
+          "team_source": "../sources/history-126.md#src-0001831"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H126-C05",
+      "title": "기호 반례를 실제 RCTL의 실패로 확대하지 않는다",
+      "claim": "이 ReLU 예는 실제 RCTL 구조·SGD 학습·공통 초기화 후 궤적에 대한 실증 결과가 아니다. 채널 scaling이나 순열을 먼저 정렬하는 방법, 특정 학습 조건에서의 성공까지 부정하는 반례로 사용하지 않는다. 단순 평균과 출력 평균이 언제나 같다는 주장에 한정한다.",
+      "claim_type": "scope_limit",
+      "record_anchor": "claim-05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              30,
+              32
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001838",
+          "pdf_pages": [
+            6,
+            7,
+            8
+          ],
+          "source_sha256": "d5781e2826ddce9eee03de1d4bc5bb66401ec698934cb0e498794d86628bde4b",
+          "team_source": "../sources/history-126.md#src-0001838"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H126-C06",
+      "title": "각 fit의 같은 seed와 무작위 초기화",
+      "claim": "보존된 train_rctl_pilot.py는 각 fit 안에서 random.seed, numpy seed, torch.manual_seed를 다시 설정한 다음 같은 shape의 RCTL을 생성한다. 따라서 같은 seed인 fit의 출발 무작위 가중치는 같다는 코드 조건이다. 공통 사전학습 가중치를 불러오는 설계는 아니다. 이 정적 확인을 새 모델 초기화·실행으로 세지 않는다.",
+      "claim_type": "static_code",
+      "record_anchor": "claim-06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001834",
+          "line_ranges": [
+            [
+              78,
+              90
+            ]
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-126.md#src-0001834"
+        },
+        {
+          "source_id": "SRC-0001832",
+          "line_ranges": [
+            [
+              32,
+              48
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-126.md#src-0001832"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              34,
+              40
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H126-C07",
+      "title": "같은 출발점과 학습된 상태의 동일함을 구분한다",
+      "claim": "같은 seed여도 cluster별 학습·검증자료가 다르고, batch 순서·epoch 진행·선택된 checkpoint가 달라질 수 있다. 코드의 validation MAE로 best_state를 선택해 저장하는 조건과 공통 출발점은 별개다. 초기화가 같다는 사실만으로 최종 BN buffer·LSTM 가중치나 병합 성능이 같다고 쓰지 않는다.",
+      "claim_type": "static_code",
+      "record_anchor": "claim-07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001834",
+          "line_ranges": [
+            [
+              79,
+              127
+            ]
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-126.md#src-0001834"
+        },
+        {
+          "source_id": "SRC-0001832",
+          "line_ranges": [
+            [
+              15,
+              30
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-126.md#src-0001832"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H126-C08",
+      "title": "Model soups가 출발하는 공통 사전학습",
+      "claim": "Model soups §2는 공통 pretrained θ0에서 서로 다른 설정으로 fine-tuning한 θi를 평균한다. 같은 random seed로 처음부터 RCTL을 학습하는 현재 보존 코드와 구별한다. 이 논문의 이미지·텍스트 분류 결과를 현재 RCTL 회귀의 성능 보장으로 옮기지 않는다.",
+      "claim_type": "primary_literature",
+      "record_anchor": "claim-08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001840",
+          "pdf_pages": [
+            3
+          ],
+          "source_sha256": "5f7e770b7bfea7463a2909694b1692804fc57d79ccbc54e7dac92855844bfb9c",
+          "team_source": "../sources/history-126.md#src-0001840"
+        },
+        {
+          "source_id": "SRC-0001834",
+          "line_ranges": [
+            [
+              78,
+              90
+            ]
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-126.md#src-0001834"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H126-C09",
+      "title": "Greedy soup가 사용하는 validation 판단",
+      "claim": "Greedy soup는 개별 모델의 validation 성능으로 후보를 정렬하고, 후보를 평균에 넣었을 때 held-out validation 성능이 유지·개선되는지 평가한다. 이를 cell 소속 결정 전에 RCTL 결과로 쓰면 당시 독립성 조건이 바뀐다. 소속을 먼저 고정한 뒤 내부 학습·병합을 비교하는 절차는 별도로 검토할 수 있다.",
+      "claim_type": "primary_literature",
+      "record_anchor": "claim-09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001840",
+          "pdf_pages": [
+            3
+          ],
+          "source_sha256": "5f7e770b7bfea7463a2909694b1692804fc57d79ccbc54e7dac92855844bfb9c",
+          "team_source": "../sources/history-126.md#src-0001840"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              15,
+              16
+            ],
+            [
+              42,
+              44
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001828",
+          "line_ranges": [
+            [
+              70,
+              70
+            ]
+          ],
+          "source_sha256": "8231f64396661424a9547e5ddf4f93a2b86b476b25d0e05c3e69cca5d03701bc",
+          "team_source": "../sources/history-126.md#src-0001828"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H126-C10",
+      "title": "Git Re-Basin의 세 정렬 방법",
+      "claim": "Git Re-Basin은 hidden unit 대응을 찾은 뒤 가중치를 정렬한다. activation matching은 자료의 activation을, weight matching은 학습된 가중치를 사용한다. STE 방식은 병합 loss를 이용한 gradient 최적화를 포함한다. 셋을 모두 자료·gradient가 필요 없는 단순 평균으로 요약하지 않는다.",
+      "claim_type": "primary_literature",
+      "record_anchor": "claim-10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001838",
+          "pdf_pages": [
+            4,
+            5,
+            6
+          ],
+          "source_sha256": "d5781e2826ddce9eee03de1d4bc5bb66401ec698934cb0e498794d86628bde4b",
+          "team_source": "../sources/history-126.md#src-0001838"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H126-C11",
+      "title": "Git Re-Basin의 성공과 적용 한계",
+      "claim": "해당 논문은 특정 구조·자료에서 순열 정렬 후 interpolation의 손실을 줄이지만 모든 모델의 zero-barrier를 보장하지 않는다. §4의 반례는 비SGD 해를 다루며, §5.4의 split-data 병합은 combined-data 학습 및 ensemble보다 약했다. 이를 RCTL 병합 전체의 불가능성이나 union-data 기준의 불필요함으로 바꾸지 않는다.",
+      "claim_type": "primary_literature",
+      "record_anchor": "claim-11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001838",
+          "pdf_pages": [
+            6,
+            8
+          ],
+          "source_sha256": "d5781e2826ddce9eee03de1d4bc5bb66401ec698934cb0e498794d86628bde4b",
+          "team_source": "../sources/history-126.md#src-0001838"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H126-C12",
+      "title": "RCTL의 BN 상태와 recurrent·잔차 연결",
+      "claim": "현재 RCTL은 Conv→BatchNorm→ReLU·dropout, LSTM, 여러 잔차/projection 연결을 갖는다. hidden 채널을 재배열한다면 연결된 입출력·LSTM gate와 recurrent 좌표·잔차 경로의 대응을 함께 보존해야 한다. 원96은 이 구조의 실제 정렬·병합 성공을 검증하지 않았다.",
+      "claim_type": "static_code",
+      "record_anchor": "claim-12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001832",
+          "line_ranges": [
+            [
+              15,
+              60
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-126.md#src-0001832"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              34,
+              40
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H126-C13",
+      "title": "BatchNorm 통계 재추정의 역할과 비용",
+      "claim": "Git Re-Basin Appendix A.3–A.4는 CIFAR의 LayerNorm 변형과 ImageNet ResNet50의 BN 통계 재계산을 구별한다. 학습된 BN affine 파라미터와 running mean/variance는 다르다. 앞단 가중치를 바꾼 뒤 통계를 단순 평균하는 것을 올바른 보정으로 가정하지 않으며, 자료로 통계를 다시 맞추는 과정은 모델 상태 갱신과 준비 비용이다.",
+      "claim_type": "primary_literature",
+      "record_anchor": "claim-13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001838",
+          "pdf_pages": [
+            21
+          ],
+          "source_sha256": "d5781e2826ddce9eee03de1d4bc5bb66401ec698934cb0e498794d86628bde4b",
+          "team_source": "../sources/history-126.md#src-0001838"
+        },
+        {
+          "source_id": "SRC-0001832",
+          "line_ranges": [
+            [
+              18,
+              29
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-126.md#src-0001832"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              38,
+              40
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H126-C14",
+      "title": "고정 BN folding의 가능성과 남는 비선형 문제",
+      "claim": "고정된 inference BN을 앞선 Conv의 계수·bias에 접어 넣는 변환은 가능하다. 이 변환은 통계 재추정 없이 같은 고정 함수를 표현하는 조건부 대안이다. 그러나 두 모델의 비선형·LSTM·잔차 가중치를 평균해 같은 함수를 얻는 보장은 별개다. 원96에서 실제 folding 또는 병합을 실행하지 않았다.",
+      "claim_type": "conditional_method",
+      "record_anchor": "claim-14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              38,
+              40
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001832",
+          "line_ranges": [
+            [
+              15,
+              60
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-126.md#src-0001832"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H126-C15",
+      "title": "TIMEFUSE는 입력별 출력 혼합이다",
+      "claim": "TIMEFUSE는 입력 시계열의 24개 요약 특징을 한 층 fusor와 softmax에 넣어 base 모델별 혼합 비중을 정한다. 최종값은 여러 base 모델 예측의 가중합이다. 모델 zoo를 하나의 RCTL 파라미터로 압축한 방법이 아니며, 기존 cell당 지정 모델 하나 실행보다 싸다는 근거도 아니다.",
+      "claim_type": "primary_literature",
+      "record_anchor": "claim-15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001836",
+          "pdf_pages": [
+            3,
+            4,
+            5
+          ],
+          "source_sha256": "7a0c963cad661cedcbd5496b1bcdfdd0c2460a72580aec7df455ba8be14fb210",
+          "team_source": "../sources/history-126.md#src-0001836"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              17,
+              18
+            ],
+            [
+              46,
+              48
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H126-C16",
+      "title": "TIMEFUSE의 meta-training 자료와 평가 범위",
+      "claim": "Fusor는 base 모델 학습에 쓰지 않은 validation 입력의 특징·base 예측·실제 정답으로 학습하며 논문은 Huber loss를 사용한다. 이 예측·정답을 사용한 meta-training과 단순 input-only 규칙을 구분한다. 논문 benchmark 결과는 현재 Milan/TabICLv2/RCTL의 재현·개선 결과가 아니다.",
+      "claim_type": "primary_literature",
+      "record_anchor": "claim-16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001836",
+          "pdf_pages": [
+            4,
+            5
+          ],
+          "source_sha256": "7a0c963cad661cedcbd5496b1bcdfdd0c2460a72580aec7df455ba8be14fb210",
+          "team_source": "../sources/history-126.md#src-0001836"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H126-C17",
+      "title": "확률적 병합의 task vector 출발점",
+      "claim": "UAI2026의 보존 판본은 공통 pretrained W0에서 fine-tuning한 Wi의 task vector θi=Wi−W0를 PoE energy/MAP로 합치는 문제를 정의한다. 현재 RCTL의 무작위 초기화와 동일한 전제라고 가정하지 않으며, conditional prediction 유사도를 이 파라미터 energy로 바로 치환하지 않는다.",
+      "claim_type": "primary_literature",
+      "record_anchor": "claim-17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001842",
+          "pdf_pages": [
+            2,
+            5
+          ],
+          "source_sha256": "dadecd235331a085fb46c705e9f9a23ff043a8234b4698c44e09f9c06c503916",
+          "team_source": "../sources/history-126.md#src-0001842"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              18,
+              18
+            ],
+            [
+              50,
+              54
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H126-C18",
+      "title": "같은 PDF의 residual 분모 표기 차이",
+      "claim": "보존 UAI PDF6의 Eq23은 residual 제곱+γ²를 사용하지만 Algorithm1 line7은 residual 제곱+γ·‖θi‖²를 쓴다. Appendix의 식에서도 γ²·γ·η 표기가 달라지는 부분이 있다. 원96의 지적을 실제 이미지로 대조했다. 공식 구현·정오표를 확인해 하나의 식으로 해소한 상태는 아니다.",
+      "claim_type": "source_discrepancy",
+      "record_anchor": "claim-18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001842",
+          "pdf_pages": [
+            5,
+            6,
+            13,
+            14
+          ],
+          "source_sha256": "dadecd235331a085fb46c705e9f9a23ff043a8234b4698c44e09f9c06c503916",
+          "team_source": "../sources/history-126.md#src-0001842"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              50,
+              54
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H126-C19",
+      "title": "Conditioning 항과 원 energy의 정지점",
+      "claim": "Eq22의 energy와 Eq24의 양의 ηI를 포함한 mapping은 인쇄된 식 그대로는 같은 정지점 관계를 갖지 않는다. θ=γ=1인 1차원 예에서 Eq22는 log(1+(ζ−1)²)로 ζ=1이 정지점이지만, Eq24는 F(1)=1/(1+η)이다. η>0이면 F(1)≠1이다. 이 기호 대조를 실제 RCTL 병합 실험이나 모든 논문 결과의 무효 판정으로 쓰지 않는다.",
+      "claim_type": "symbolic_consistency",
+      "record_anchor": "claim-19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001842",
+          "pdf_pages": [
+            5,
+            6,
+            13
+          ],
+          "source_sha256": "dadecd235331a085fb46c705e9f9a23ff043a8234b4698c44e09f9c06c503916",
+          "team_source": "../sources/history-126.md#src-0001842"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              50,
+              54
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H126-C20",
+      "title": "Local contraction과 전체 RCTL 보장의 차이",
+      "claim": "해당 판본의 Assumption5.2·5.3은 task vector의 유계성과 fixed point 주변의 iterate 조건을 둔다. AppendixB는 미분 bound와 논문 실험에서의 L<1을 제시한다. Eq24의 ηI와 AppendixA Eq31의 pseudoinverse 및 표기 차이를 해결하지 않은 채 현재 RCTL에 global 수렴·정확도 보장을 적용하지 않는다.",
+      "claim_type": "scope_limit",
+      "record_anchor": "claim-20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001842",
+          "pdf_pages": [
+            6,
+            13,
+            14
+          ],
+          "source_sha256": "dadecd235331a085fb46c705e9f9a23ff043a8234b4698c44e09f9c06c503916",
+          "team_source": "../sources/history-126.md#src-0001842"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              50,
+              54
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H126-C21",
+      "title": "소속을 먼저 고정한 뒤의 학습·병합",
+      "claim": "RCTL의 학습된 가중치·activation·병합 loss를 보고 cell 소속을 정하면 당시 RCTL 독립 소속 조건이 바뀐다. 반면 소속을 먼저 고정하고 cluster 내부에서 학습·병합하는 순서는 검토 가능한 대안이다. 두 순서를 혼동해 모델 병합을 전부 금지한 기록으로 읽지 않는다.",
+      "claim_type": "research_decision",
+      "record_anchor": "claim-21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              42,
+              48
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001828",
+          "line_ranges": [
+            [
+              66,
+              70
+            ]
+          ],
+          "source_sha256": "8231f64396661424a9547e5ddf4f93a2b86b476b25d0e05c3e69cca5d03701bc",
+          "team_source": "../sources/history-126.md#src-0001828"
+        },
+        {
+          "source_id": "SRC-0001823",
+          "line_ranges": [
+            [
+              1,
+              51
+            ]
+          ],
+          "source_sha256": "b6af91ed1272eac5c7bcea5b171d50a89de9ac58a18dee59f3d52b488842a330",
+          "team_source": "../sources/history-126.md#src-0001823"
+        },
+        {
+          "source_id": "SRC-0001824",
+          "line_ranges": [
+            [
+              1,
+              73
+            ]
+          ],
+          "source_sha256": "0ef74a6c7a7ac713bb2733e7231c78c94b550297dbe742aa7d96fafbc7135b58",
+          "team_source": "../sources/history-126.md#src-0001824"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H126-C22",
+      "title": "Union-data 단일 RCTL과 Tab의 유용한 결정",
+      "claim": "함께 쓸 자료를 이미 모을 수 있다면 해당 union-data로 RCTL 하나를 직접 학습하는 비교군이 필요하다. 모델 병합 방법에 Tab을 붙인다는 사실만으로 효용이 생기지는 않는다. 원93에서 보완한 기준처럼, 새로운 소속 결정 또는 같은 유용한 결정을 더 적은 계산·추정 변동으로 얻는 경로를 구별한다. 기존 global·경험적 소속·공유 학습 대안과 달라지는 점 및 Tab의 기여를 특정한다.",
+      "claim_type": "research_decision",
+      "record_anchor": "claim-22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              42,
+              48
+            ],
+            [
+              56,
+              60
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001824",
+          "line_ranges": [
+            [
+              1,
+              73
+            ]
+          ],
+          "source_sha256": "0ef74a6c7a7ac713bb2733e7231c78c94b550297dbe742aa7d96fafbc7135b58",
+          "team_source": "../sources/history-126.md#src-0001824"
+        },
+        {
+          "source_id": "SRC-0001828",
+          "line_ranges": [
+            [
+              66,
+              70
+            ]
+          ],
+          "source_sha256": "8231f64396661424a9547e5ddf4f93a2b86b476b25d0e05c3e69cca5d03701bc",
+          "team_source": "../sources/history-126.md#src-0001828"
+        },
+        {
+          "source_id": "SRC-0001838",
+          "pdf_pages": [
+            8
+          ],
+          "source_sha256": "d5781e2826ddce9eee03de1d4bc5bb66401ec698934cb0e498794d86628bde4b",
+          "team_source": "../sources/history-126.md#src-0001838"
+        },
+        {
+          "source_id": "SRC-0001828",
+          "line_ranges": [
+            [
+              42,
+              58
+            ]
+          ],
+          "source_sha256": "8231f64396661424a9547e5ddf4f93a2b86b476b25d0e05c3e69cca5d03701bc",
+          "team_source": "../sources/history-126.md#src-0001828"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H126-C23",
+      "title": "모델 수 K와 예측 입력 수 N의 구분",
+      "claim": "모델 상태가 K개에서 한 개로 줄어도 서로 다른 cell 입력 N개가 사라지는 것은 아니다. 기존 cell별 scalar 예측은 입력마다 지정 모델 하나를 사용한다. 원95의 동일 시각 batch 기준을 유지하며, 저장량·호출 수·예측 행·실측 latency·입력 준비·Tab 준비를 분리한다.",
+      "claim_type": "cost_boundary",
+      "record_anchor": "claim-23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              46,
+              48
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001828",
+          "line_ranges": [
+            [
+              60,
+              70
+            ]
+          ],
+          "source_sha256": "8231f64396661424a9547e5ddf4f93a2b86b476b25d0e05c3e69cca5d03701bc",
+          "team_source": "../sources/history-126.md#src-0001828"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H126-C24",
+      "title": "학습 처리량과 병합 준비 비용",
+      "claim": "자료를 분할해 여러 모델을 학습하는 비용은 무조건 전체 자료 K회 학습과 같지 않다. 실제 학습 sample·update·epoch 및 정렬/validation/BN 처리 비용으로 비교한다. 최종 가중치를 합친다고 이미 수행한 학습이 없어지지 않는다. 기존 누적 예산의 수치는 역사적 운영 기록이며 현재 아카이브의 실험 허가로 사용하지 않는다.",
+      "claim_type": "cost_boundary",
+      "record_anchor": "claim-24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              46,
+              48
+            ],
+            [
+              62,
+              67
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001834",
+          "line_ranges": [
+            [
+              79,
+              137
+            ]
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-126.md#src-0001834"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H126-C25",
+      "title": "후보 미채택의 이유와 재검토 조건",
+      "claim": "이번 미채택은 예측 관계에서 파라미터 좌표로 이어지는 근거, Tab의 유용한 결정, union-data 강한 기준 대비 이득이 확보되지 않았기 때문이다. 실제 자료의 병합 필요성·좌표 처리·학습/검증 순서·전체 비용 및 달라진 질문이 구체화되면 별도 탐색을 검토할 수 있다. 작은 pilot에서 알아낼 성능 차이를 진입 전에 이미 입증하라고 요구하지 않으며, 같은 유용한 결정의 효율 개선도 가능하다. 완전한 보장 부재만으로 모든 병합을 기각하지 않는다.",
+      "claim_type": "research_decision",
+      "record_anchor": "claim-25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001822",
+          "line_ranges": [
+            [
+              1,
+              34
+            ]
+          ],
+          "source_sha256": "38bd97e71c52d137577b292d935321a9b4cf8f5c38548f6958d17e5a8e76e437",
+          "team_source": "../sources/history-126.md#src-0001822"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              5,
+              9
+            ],
+            [
+              56,
+              60
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001828",
+          "line_ranges": [
+            [
+              42,
+              70
+            ]
+          ],
+          "source_sha256": "8231f64396661424a9547e5ddf4f93a2b86b476b25d0e05c3e69cca5d03701bc",
+          "team_source": "../sources/history-126.md#src-0001828"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H126-C26",
+      "title": "원96의 추가 모델 실행은 없었다",
+      "claim": "계획·판단·읽기 범위·검수 코드·진행 기록은 새 Tab context/query, RCTL fit/gradient, BN update, frozen inference가 모두0이라고 남긴다. 이번에는 원 연구 코드 실행/import도0이며, 문헌 추출·기호와 저장 metadata 대조만 수행했다. 기존 결과의 hash 확인을 병합 모델 재현으로 표시하지 않는다.",
+      "claim_type": "historical_execution",
+      "record_anchor": "claim-26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001826",
+          "line_ranges": [
+            [
+              1,
+              28
+            ]
+          ],
+          "source_sha256": "8211f584eab75a719fbaa867412a0af471e8a9cfad860e0595dec2ca0dcae8d0",
+          "team_source": "../sources/history-126.md#src-0001826"
+        },
+        {
+          "source_id": "SRC-0001827",
+          "line_ranges": [
+            [
+              1,
+              104
+            ]
+          ],
+          "source_sha256": "72b3adaef0b0a6704e13b6470a6cbcf1399d7bbf13be6e24e3e969b9806d36ec",
+          "team_source": "../sources/history-126.md#src-0001827"
+        },
+        {
+          "source_id": "SRC-0001835",
+          "line_ranges": [
+            [
+              1,
+              103
+            ]
+          ],
+          "source_sha256": "dfdeb7fe11e10f607d9d108173c2b6ec66ecd85cf26fb74344e849b2c232a04d",
+          "team_source": "../sources/history-126.md#src-0001835"
+        },
+        {
+          "source_id": "SRC-0001831",
+          "line_ranges": [
+            [
+              7,
+              14
+            ]
+          ],
+          "source_sha256": "c985ba74b199e4ba337167781c08339979fe8c84dbb81a8d48f52865407ab3fd",
+          "team_source": "../sources/history-126.md#src-0001831"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H126-C27",
+      "title": "확보·실제 판독·전문 검증을 구분한다",
+      "claim": "보존 PDF4개는 총104페이지·7,829,802bytes다. 이번 실제 전체 페이지 텍스트 판독은23페이지이며 관련 원 PNG6개를 전체 시각 대조했다. 나머지81페이지의 텍스트와 다른 시각 내용, 공식 구현 감사·실행은 남아 있다. 당시 읽기 범위 flag, 추출 완료, 파일 크기만으로 전문 검증을 완료 처리하지 않는다.",
+      "claim_type": "reading_scope",
+      "record_anchor": "claim-27",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001844",
+          "line_ranges": [
+            [
+              1,
+              57
+            ]
+          ],
+          "source_sha256": "eb0ec04f640948701a67284b636f6b10ce9c1e4107b37adcbbc109a47ed476a5",
+          "team_source": "../sources/history-126.md#src-0001844"
+        },
+        {
+          "source_id": "SRC-0001827",
+          "line_ranges": [
+            [
+              1,
+              104
+            ]
+          ],
+          "source_sha256": "72b3adaef0b0a6704e13b6470a6cbcf1399d7bbf13be6e24e3e969b9806d36ec",
+          "team_source": "../sources/history-126.md#src-0001827"
+        },
+        {
+          "source_id": "SRC-0001845",
+          "line_ranges": [
+            [
+              1,
+              32
+            ]
+          ],
+          "source_sha256": "e7aa06f89e3f982b306a21157845313466033a4c7bcfee6911691974b3a8a0c0",
+          "team_source": "../sources/history-126.md#src-0001845"
+        },
+        {
+          "source_id": "SRC-0001836",
+          "pdf_pages": [
+            3,
+            4,
+            5
+          ],
+          "source_sha256": "7a0c963cad661cedcbd5496b1bcdfdd0c2460a72580aec7df455ba8be14fb210",
+          "team_source": "../sources/history-126.md#src-0001836",
+          "metadata_scope": "실제첫판독23page 범위의집계·hash/scopes. 인용모든page의작성후전문재독주장이아님",
+          "semantic_full_re_read_claimed": false
+        },
+        {
+          "source_id": "SRC-0001838",
+          "pdf_pages": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            21
+          ],
+          "source_sha256": "d5781e2826ddce9eee03de1d4bc5bb66401ec698934cb0e498794d86628bde4b",
+          "team_source": "../sources/history-126.md#src-0001838",
+          "metadata_scope": "실제첫판독23page 범위의집계·hash/scopes. 인용모든page의작성후전문재독주장이아님",
+          "semantic_full_re_read_claimed": false
+        },
+        {
+          "source_id": "SRC-0001840",
+          "pdf_pages": [
+            2,
+            3,
+            4,
+            8,
+            9
+          ],
+          "source_sha256": "5f7e770b7bfea7463a2909694b1692804fc57d79ccbc54e7dac92855844bfb9c",
+          "team_source": "../sources/history-126.md#src-0001840",
+          "metadata_scope": "실제첫판독23page 범위의집계·hash/scopes. 인용모든page의작성후전문재독주장이아님",
+          "semantic_full_re_read_claimed": false
+        },
+        {
+          "source_id": "SRC-0001842",
+          "pdf_pages": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            13,
+            14,
+            15
+          ],
+          "source_sha256": "dadecd235331a085fb46c705e9f9a23ff043a8234b4698c44e09f9c06c503916",
+          "team_source": "../sources/history-126.md#src-0001842",
+          "metadata_scope": "실제첫판독23page 범위의집계·hash/scopes. 인용모든page의작성후전문재독주장이아님",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H126-C28",
+      "title": "다운로드·렌더링의 도구 이력",
+      "claim": "원문은 PDF 확보 URL/hash와 관련6페이지 렌더 metadata를 보존했다. dotted filename을 suffix로 처리한 첫 렌더 오류를 고치고 기존2개를 재사용해 나머지4개를 생성한 것은 문서 변환 이력이다. 모델 병합·추론의 구현 실패나 연구자료 손실로 분류하지 않는다. 원 fetch/render/verify 스크립트는 이번에 실행하지 않았다.",
+      "claim_type": "artifact_provenance",
+      "record_anchor": "claim-28",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001830",
+          "line_ranges": [
+            [
+              1,
+              40
+            ]
+          ],
+          "source_sha256": "238dd59f7427065a68afac97a83c0270a49d10c36d20fc00580527b96cfe6118",
+          "team_source": "../sources/history-126.md#src-0001830"
+        },
+        {
+          "source_id": "SRC-0001833",
+          "line_ranges": [
+            [
+              1,
+              21
+            ]
+          ],
+          "source_sha256": "c9b55a1b3ebb8c46c50dbd4b3e94e6b0aae59ada2b9c535bb624fb8127739683",
+          "team_source": "../sources/history-126.md#src-0001833"
+        },
+        {
+          "source_id": "SRC-0001835",
+          "line_ranges": [
+            [
+              1,
+              103
+            ]
+          ],
+          "source_sha256": "dfdeb7fe11e10f607d9d108173c2b6ec66ecd85cf26fb74344e849b2c232a04d",
+          "team_source": "../sources/history-126.md#src-0001835"
+        },
+        {
+          "source_id": "SRC-0001844",
+          "line_ranges": [
+            [
+              1,
+              57
+            ]
+          ],
+          "source_sha256": "eb0ec04f640948701a67284b636f6b10ce9c1e4107b37adcbbc109a47ed476a5",
+          "team_source": "../sources/history-126.md#src-0001844"
+        },
+        {
+          "source_id": "SRC-0001845",
+          "line_ranges": [
+            [
+              1,
+              32
+            ]
+          ],
+          "source_sha256": "e7aa06f89e3f982b306a21157845313466033a4c7bcfee6911691974b3a8a0c0",
+          "team_source": "../sources/history-126.md#src-0001845"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H126-C29",
+      "title": "Snapshot38과 기존 원본의 보존 범위",
+      "claim": "Snapshot38은 manifest가 열거한30개 파일10,954,157bytes에 manifest6,511bytes를 더한 실제31개 파일10,960,668bytes다. 별도 원 archive 검수 receipt는394bytes다. 사본 hash와 보호된 기존 원본은 대조하지만, 별도로 남은 중간 Word의 hash 확인을 본문·layout 검수로 세지 않는다.",
+      "claim_type": "artifact_provenance",
+      "record_anchor": "claim-29",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001821",
+          "line_ranges": [
+            [
+              1,
+              160
+            ]
+          ],
+          "source_sha256": "c92ce1c93ad8b7a8bcc6584c2d2979c1ac71f3b568ddfe2e91f19aedfbf88bcc",
+          "team_source": "../sources/history-126.md#src-0001821"
+        },
+        {
+          "source_id": "SRC-0001835",
+          "line_ranges": [
+            [
+              1,
+              103
+            ]
+          ],
+          "source_sha256": "dfdeb7fe11e10f607d9d108173c2b6ec66ecd85cf26fb74344e849b2c232a04d",
+          "team_source": "../sources/history-126.md#src-0001835"
+        },
+        {
+          "source_id": "SRC-0022098",
+          "line_ranges": [
+            [
+              1,
+              9
+            ]
+          ],
+          "source_sha256": "0dda11b7eaee34ea57d32c0a79724c7b4ff4215446174d8b976872b5566eca3e",
+          "team_source": "../sources/history-126.md#src-0022098"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H126-C30",
+      "title": "후보 인덱스와 연혁의 판본",
+      "claim": "이번 후보 인덱스1828은 전체1–70행을 읽었고 이전1803의64행 판본과 대조했다. 현재 연혁1831은1–66/545행만 읽어67–545행이 남는다. 직전1805의58–536행도 직접 미독이다. 새 원96 항목의 추가와 기존 내용의 기계 대응을 후반 연혁의 독해 완료로 바꾸지 않는다.",
+      "claim_type": "version_scope",
+      "record_anchor": "claim-30",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001828",
+          "line_ranges": [
+            [
+              66,
+              70
+            ]
+          ],
+          "metadata_scope": "판본행수/first실제판독1–70은별도read-scopes와version-comparison으로확인;미독tail독해주장아님",
+          "source_sha256": "8231f64396661424a9547e5ddf4f93a2b86b476b25d0e05c3e69cca5d03701bc",
+          "team_source": "../sources/history-126.md#src-0001828",
+          "semantic_full_re_read_claimed": false
+        },
+        {
+          "source_id": "SRC-0001831",
+          "line_ranges": [
+            [
+              7,
+              14
+            ]
+          ],
+          "metadata_scope": "545행수/first실제판독1–66·미독67–545/직전58–536은scope·기계판본대조;전체재독주장아님",
+          "source_sha256": "c985ba74b199e4ba337167781c08339979fe8c84dbb81a8d48f52865407ab3fd",
+          "team_source": "../sources/history-126.md#src-0001831",
+          "semantic_full_re_read_claimed": false
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H126-C31",
+      "title": "PDF 추출 TXT·PNG는 독립 연구 결과가 아니다",
+      "claim": "TXT4개와 PNG6개는 같은 PDF의 파생 자료이므로 별도 독립 내용 가산은0이다. 새 추출과 원 TXT의 기계 대조에서 UAI PDF14만 빈줄 한 줄 차이가 있었고 nonblank 내용은 같았다. 추출 일치와 기계 비교를 literal TXT 전문의 직접 판독이나 독립 재현으로 집계하지 않는다.",
+      "claim_type": "source_accounting",
+      "record_anchor": "claim-31",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001830",
+          "line_ranges": [
+            [
+              1,
+              40
+            ]
+          ],
+          "source_sha256": "238dd59f7427065a68afac97a83c0270a49d10c36d20fc00580527b96cfe6118",
+          "team_source": "../sources/history-126.md#src-0001830"
+        },
+        {
+          "source_id": "SRC-0001833",
+          "line_ranges": [
+            [
+              1,
+              21
+            ]
+          ],
+          "source_sha256": "c9b55a1b3ebb8c46c50dbd4b3e94e6b0aae59ada2b9c535bb624fb8127739683",
+          "team_source": "../sources/history-126.md#src-0001833"
+        },
+        {
+          "source_id": "SRC-0001845",
+          "line_ranges": [
+            [
+              1,
+              32
+            ]
+          ],
+          "source_sha256": "e7aa06f89e3f982b306a21157845313466033a4c7bcfee6911691974b3a8a0c0",
+          "team_source": "../sources/history-126.md#src-0001845"
+        },
+        {
+          "source_id": "SRC-0001842",
+          "pdf_pages": [
+            14
+          ],
+          "source_sha256": "dadecd235331a085fb46c705e9f9a23ff043a8234b4698c44e09f9c06c503916",
+          "team_source": "../sources/history-126.md#src-0001842"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H126-C32",
+      "title": "남은 연구 범위와 미완료 판단",
+      "claim": "당시 최종 추천 방향과 최종 Word는 미완료였다. 이번 원96 기록의 검수·병합도 전체 연구기록 정리 완료를 뜻하지 않는다. 원97 이후·이전 고유 판본, 문헌과 연혁의 미독, FedPPBC/DOCX 공백, 전체 통합·장기 팀 접근·최종 원본 변경분·대표 질문 검색 검수는 이어서 처리한다.",
+      "claim_type": "scope_limit",
+      "record_anchor": "claim-32",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001822",
+          "line_ranges": [
+            [
+              1,
+              34
+            ]
+          ],
+          "source_sha256": "38bd97e71c52d137577b292d935321a9b4cf8f5c38548f6958d17e5a8e76e437",
+          "team_source": "../sources/history-126.md#src-0001822"
+        },
+        {
+          "source_id": "SRC-0001825",
+          "line_ranges": [
+            [
+              56,
+              67
+            ]
+          ],
+          "source_sha256": "e49078c88492aea57a9c364150b5721004baaa3cd80a86387f769daeec2cf1ea",
+          "team_source": "../sources/history-126.md#src-0001825"
+        },
+        {
+          "source_id": "SRC-0001831",
+          "line_ranges": [
+            [
+              7,
+              14
+            ]
+          ],
+          "source_sha256": "c985ba74b199e4ba337167781c08339979fe8c84dbb81a8d48f52865407ab3fd",
+          "team_source": "../sources/history-126.md#src-0001831"
+        },
+        {
+          "source_id": "SRC-0001828",
+          "line_ranges": [
+            [
+              51,
+              58
+            ]
+          ],
+          "source_sha256": "8231f64396661424a9547e5ddf4f93a2b86b476b25d0e05c3e69cca5d03701bc",
+          "team_source": "../sources/history-126.md#src-0001828"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

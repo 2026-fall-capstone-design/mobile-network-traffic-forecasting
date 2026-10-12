@@ -1,0 +1,103 @@
+from pathlib import Path
+import hashlib, json, shutil
+
+ROOT=Path(__file__).resolve().parents[2]
+WORK=ROOT/'tmp/redesign_20260925'
+SOURCE=WORK/'sources/model_merging_96'
+def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
+ledger=WORK/'cumulative_execution_budget.json'
+expected='ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7'
+assert sha(ledger)==expected
+manifest=json.loads((SOURCE/'download_manifest.json').read_text(encoding='utf-8'))
+for row in manifest['sources']:
+ path=Path(row['path'])
+ assert row['success'] and path.stat().st_size==row['bytes'] and sha(path)==row['sha256']
+assert sum(row['pages'] for row in manifest['sources'])==104
+assert sum(row['bytes'] for row in manifest['sources'])==7829802
+renders=json.loads((SOURCE/'render_manifest.json').read_text(encoding='utf-8'))
+assert len(renders)==6 and all(Path(row['image']).exists() for row in renders)
+
+scope={
+ 'date':'2026-09-26',
+ 'purpose':'Distinguish predictive similarity, parameter mergeability, and data-only clustering decisions.',
+ 'search_queries':[
+  'model soups averaging weights fine-tuned models same initialization batch normalization statistics paper',
+  'model merging regression neural networks batch normalization common initialization feature matching weight averaging time series',
+  'model merging time series forecasting clustering 2025 2026 arxiv'],
+ 'search_domains_last_query':['arxiv.org','openreview.net','proceedings.mlr.press'],
+ 'sources_read':[
+  {'paper':'Model soups','edition':'ICML 2022 PMLR publisher PDF','url':'https://proceedings.mlr.press/v162/wortsman22a.html','scope':['Section 2','Table 2','Recipe 1','Section 3.1 setup'],'visual_pdf_pages':[3]},
+  {'paper':'Git Re-Basin','edition':'arXiv:2209.04836v4','url':'https://arxiv.org/html/2209.04836v4','scope':['Sections 3.1-3.3','Algorithm 1','Section 4 statement','Section 5.4','Appendices A.3-A.4'],'visual_pdf_pages':[21]},
+  {'paper':'Breaking Silos: Adaptive Model Fusion Unlocks Better Time Series Forecasting','edition':'ICML 2025 PMLR publisher PDF','url':'https://proceedings.mlr.press/v267/liu25cm.html','scope':['Sections 3.1-3.2','Equations 1-2','Algorithm 1','Table 2 read without reproducing results'],'visual_pdf_pages':[4]},
+  {'paper':'Model Merging as Probabilistic Inference in Fine-Tuning Parameter Space','edition':'UAI 2026 PMLR publisher PDF','url':'https://proceedings.mlr.press/v337/bui26a.html','scope':['Sections 2-5','Equations 18-26','Algorithm 1','Appendix A','Appendix B','Appendix C opening, not implementation verification'],'visual_pdf_pages':[6,13,14]}],
+ 'external_official_code_reviewed':False,
+ 'external_code_executed':False,
+ 'local_static_code':[{'path':str(WORK/name),'sha256':sha(WORK/name)} for name in ['rctl_torch.py','train_rctl_pilot.py']],
+ 'symbolic_checks':['ReLU positive scaling: functions equal, parameter average differs by factor 9/8','UAI Eq22/Eq24: one-dimensional theta=gamma=1, eta>0 shifts fixed point from stationary point'],
+ 'source_scope_limit':'Methods and selected related statements read; not all 104 pages, all proofs, experiments, or software reproduced.',
+ 'execution':{'Tab_contexts':0,'query_predictions':0,'RCTL_fits':0,'gradients':0,'BN_updates':0,'frozen_inference':0},
+ 'render_issue':'First pass stopped on a dotted arXiv filename suffix assertion after two PNGs were already rendered. Fixed concatenation, reused those PNGs, rendered four remaining pages.',
+ 'goal_complete':False
+}
+(WORK/'96_source_reading_scope.json').write_text(json.dumps(scope,ensure_ascii=False,indent=2),encoding='utf-8')
+
+index=WORK/'candidate_decision_index.md'
+content=index.read_text(encoding='utf-8')
+assert '## 학습된 RCTL의 파라미터 병합 — 96' not in content
+content+='''
+## 학습된 RCTL의 파라미터 병합 — 96
+
+Model soups·Git Re-Basin·TIMEFUSE·UAI 2026 파라미터 병합의 방법을 확인했다. 예측값 혼합과 파라미터 평균은 다르다. 같은 함수도 파라미터의 양의 scaling에 따라 평균 함수가 달라지는 직접 반례가 있다. Tab이 추정한 cell 예측 관계만으로 RCTL hidden 좌표의 병합 가능성을 알았다고 하지 않는다.
+
+소속을 먼저 고정한 뒤 cluster 내부에서 학습·병합하는 것은 허용 가능한 대안이다. 그러나 union-data RCTL 하나를 직접 학습하는 강한 기준보다 나은 이유와 Tab의 유용한 결정이 필요하다. 공통 random seed는 공통 사전학습이 아니고, BN folding 가능성과 비선형 병합 보장은 다르다. RCTL 가중치/표현/혼합 손실을 보고 cell 소속을 정하면 독립성 조건이 달라진다. 새 수치 실행 없이 이번 후보를 미채택했다. 모델 병합 전체의 불가능성으로 확대하지 않는다. 상세96 참조.
+'''
+index.write_text(content,encoding='utf-8')
+
+progress=WORK/'progress.md'
+content=progress.read_text(encoding='utf-8')
+anchor='## 최신 상태 — 95 저장된 RCTL의 실제 묶음 예측 비용'
+assert anchor in content
+new='''## 최신 상태 — 96 RCTL 가중치 병합의 적용 범위
+
+- 2026-09-26. 96계획을 고정한 뒤 Model soups·Git Re-Basin v4·TIMEFUSE·UAI2026 파라미터 병합의 방법과 현재 RCTL 코드를 대조했다. PDF4편 104쪽/7,829,802bytes를 확보하고 관련6쪽을 시각 검토했다. 전문 전체·모든 proof·공식 코드의 검증은 아니다.
+- 공통 pretrained 초기화와 기존 RCTL의 같은 random seed를 구별했다. TIMEFUSE는 출력 혼합이므로 기존 cell당 한 모델 실행의 비용 절감 근거가 아니다. 파라미터 평균에는 hidden 좌표·BN/LSTM 처리가 별도로 필요하며 예측 관계의 유사성이 이를 결정하지 않는다.
+- 직접 기호 반례: aReLU(wx)의 (a,w)=(1,1),(1/2,2)는 같은 함수이나 평균은9/8배가 된다. 이는 실제 RCTL/SGD 실패 결과가 아니다. UAI 원문 Eq22/24의 양의 conditioning 항과 정상점 관계도 확인하여 그 정리를 RCTL 보장으로 가져오지 않았다. 논문 전체 무효로 확대하지 않는다.
+- 소속 확정 후 학습·병합은 검토 가능하지만 알려진 병합 방법에 Tab을 붙일 신규 결정과 union-data RCTL 대비 이득 근거가 없어 이번 후보는 미채택이다. 저장된 checkpoint 평균·BN 재추정·새 모델 실행은 하지 않았다. 같은 원리로 이름을 바꿔 재진입하지 않는다.
+- 새 Tab/RCTL fit/gradient/BN update/frozen inference 모두0. 누적 원장 sha ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7 불변. 잔여 Tab11context/20,640행, 새 RCTLfit0이다. 상세96·공개 요약·출처 범위·후보 인덱스를 보존했다.
+- 최종 추천 방향과 최종 Word는 미완료다. 이번은 모델 병합으로 이전의 대리 점수 문제를 해결할 수 있는지 확인한 제한된 진전이다. 현재 외부 blocker가 확인된 것은 아니다. 95의 batch 비용 근거는 유지하며, 후속 후보는 실제로 바뀌는 유용한 판단을 먼저 제시해야 한다.
+
+'''
+progress.write_text(content.replace(anchor,new+anchor.replace('최신','이전'),1),encoding='utf-8')
+
+report=ROOT/'output/research/TabICLv2_재설계_RCTL_가중치병합의_적용범위.md'
+findings=WORK/'96_model_merging_scope_findings.md'
+for path in [report,findings]: assert '사례' not in path.read_text(encoding='utf-8')
+word=ROOT/'output/docx/TabICLv2_재설계_근거정리와_남은핵심판단_중간검토.docx'
+word_hash=sha(word)
+snapshot=ROOT/'output/research/redesign_20260925_snapshot_38'
+assert not snapshot.exists()
+snapshot.mkdir()
+files=[WORK/'96_model_merging_scope_plan.md',findings,WORK/'96_source_reading_scope.json',
+       WORK/'fetch_model_merging_96.py',WORK/'render_model_merging_96.py',Path(__file__).resolve(),
+       WORK/'79_distributed_training_scope_findings.md',WORK/'86_shared_training_scope_findings.md',
+       WORK/'rctl_torch.py',WORK/'train_rctl_pilot.py',report,index,progress,ledger]
+files += [p for p in SOURCE.rglob('*') if p.is_file()]
+rows=[]
+for path in sorted(set(files)):
+ relative=path.relative_to(ROOT)
+ target=snapshot/relative
+ target.parent.mkdir(parents=True,exist_ok=True)
+ shutil.copy2(path,target)
+ assert sha(path)==sha(target)
+ if path.suffix=='.json': json.loads(path.read_text(encoding='utf-8'))
+ rows.append({'path':relative.as_posix(),'bytes':path.stat().st_size,'sha256':sha(path)})
+result={'files':len(rows),'bytes':sum(row['bytes'] for row in rows),'manifest':rows,
+        'ledger_sha256':expected,'prior_word_sha256_unchanged':word_hash,
+        'model_execution':False,'goal_complete':False}
+(snapshot/'manifest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+assert sha(ledger)==expected and sha(word)==word_hash
+verification={'snapshot':str(snapshot),'files':result['files'],'bytes':result['bytes'],
+              'verified':True,'ledger_sha256':expected,'model_execution':False,
+              'prior_word_sha256':word_hash}
+(WORK/'96_archive_verification.json').write_text(json.dumps(verification,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(verification,ensure_ascii=False,indent=2))
