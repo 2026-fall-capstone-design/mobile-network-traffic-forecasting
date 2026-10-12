@@ -217,3 +217,5 @@
 [H129 원99](records/0129-learning-units-and-clustering-cost.md): Cash2025/2026와Ma의 관측 단위·K/지표·최종learner 사용을 대조하고21개 저장 산술행을 검산했다. 새 모델/traffic 통계0, 최종추천/Word미완료. 기존 random/global 원칙은 유지했다.
 
 [H130 원100](records/0130-pretraining-objective-and-time-conditioning.md): TabClustPFN v3, AAAI APT, 공식 코드 11개/metadata 2개를 대조했다. 당시 모듈 추가는 미채택했고 새 모델·traffic 통계는 0, 최종 추천·Word는 미완료였다. 현재 PDF 44쪽/3,307행·44이미지, 36주장/9그룹의 작성 후 검수와 pinned 코드 11개 바이트 대조를 기록했다.
+
+[H131 원101](records/0131-actual-pooled-context-and-rctl-ranking.md): 당시 Tab9context·simple18fit과 저장RCTL5결과를 같은336시점으로 비교했다. Tab 직접 예측은 좋았고 두K4순위는 RCTL과 반대였다. 현재917저장수치·구현4파일·입력변환/스레드/반례를 대조했으며 새모델0·전체Goal미완료다.

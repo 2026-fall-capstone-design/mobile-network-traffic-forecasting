@@ -1,0 +1,235 @@
+"""One frozen diagnostic: actual context pooling, no RCTL execution or tuning."""
+import os
+for name in ["OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS"]:
+    os.environ[name] = "4"
+from pathlib import Path
+import sys, time, json, hashlib, threading, gc, platform, traceback
+import numpy as np
+import pandas as pd
+import h5py, psutil, torch, sklearn, tabicl
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor
+from tabicl import TabICLRegressor
+
+sys.stdout.reconfigure(encoding="utf-8")
+torch.set_num_threads(4)
+torch.set_num_interop_threads(2)
+B = Path(__file__).resolve().parent
+O = B / "results/pooled_context_101"
+O.mkdir(exist_ok=True)
+assert not (O / "run_started.json").exists(), "Do not repeat a started diagnostic."
+
+def sha(p):
+    h = hashlib.sha256()
+    with p.open("rb") as f:
+        for block in iter(lambda: f.read(4 * 1024**2), b""):
+            h.update(block)
+    return h.hexdigest()
+
+def save(name, obj):
+    (O / name).write_text(json.dumps(obj, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+
+paths = {
+    "plan": B / "101_pooled_context_diagnostic_plan.md",
+    "code": Path(__file__),
+    "ledger": B / "cumulative_execution_budget.json",
+    "design": B / "results/design_data.npz",
+    "partition": B / "results/observed_risk_pilot.json",
+    "traffic": B / "assets/data_git_version.h5",
+    "checkpoint": B / "assets/tabicl-regressor-v2-20260212.ckpt",
+    "RCTL_saved_predictions": B / "results/rctl_pilot/all_predictions.npz",
+}
+hashes = {k: sha(v) for k, v in paths.items()}
+assert hashes["ledger"] == "807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f"
+ledger = json.loads(paths["ledger"].read_text(encoding="utf-8"))
+assert ledger["remaining_count_budgets"]["TabICL_contexts"] >= 9
+assert ledger["remaining_count_budgets"]["TabICL_query_rows"] >= 16128
+assert ledger["remaining_count_budgets"]["RCTL_fits"] == 0
+limits = {"tab_seconds": 1200, "cheap_seconds": 30, "stage_seconds": 1230, "rss_bytes": 12 * 1024**3}
+old = json.loads(paths["partition"].read_text(encoding="utf-8"))
+ids = np.array(old["cell_ids"], dtype=int)
+labels = {"global": np.zeros(16, dtype=int)}
+labels.update({k: np.array(old["partitions"][k], dtype=int) for k in ["tabicl_risk", "empirical_risk"]})
+groups = {k: [np.flatnonzero(lab == j).tolist() for j in np.unique(lab)] for k, lab in labels.items()}
+tasks = [(k, j, mem) for k, gs in groups.items() for j, mem in enumerate(gs)]
+assert len(ids) == 16 and len(tasks) == 9 and len(set(ids)) == 16
+settings = {
+    "hashes": hashes, "cell_ids": ids.tolist(), "groups_local_index": groups,
+    "context_targets": [168, 839], "query_targets": [1008, 1343],
+    "features": ["lag8", "lag7", "lag6", "lag5", "lag4", "lag3", "lag2", "lag1", "lag24", "lag168", "mean24", "std24", "hour_sin", "hour_cos", "weekday_sin", "weekday_cos"],
+    "seed": 20260925, "ensemble": 1, "output": "median", "limits": limits,
+    "planned_contexts": 9, "planned_query_rows": 16128, "simple_fits_cap": 18,
+    "new_RCTL_fits": 0, "new_RCTL_forwards": 0, "new_RCTL_gradients": 0,
+    "independent_test": False, "partition_selection_uses_new_results": False,
+    "known_scope": "Posthoc diagnostic of three original partitions; RCTL results were already viewed before this plan.",
+    "versions": {"python": platform.python_version(), "torch": torch.__version__, "sklearn": sklearn.__version__, "tabicl": getattr(tabicl, "__version__", "unknown")},
+    "torch_threads": torch.get_num_threads(), "torch_interop_threads": torch.get_num_interop_threads(),
+    "timing_scope": "Starts after imports, settings and source hashes; includes feature construction, model fitting/prediction, numerical summaries and result writes until final marker. Source rehashing excluded.",
+}
+save("settings.json", settings)
+save("run_started.json", {"unix": time.time(), "pid": os.getpid(), "settings_sha256": sha(O / "settings.json")})
+start = time.perf_counter()
+state = {"phase": "prepare", "tab_seconds": 0.0, "simple_fit_seconds": 0.0, "contexts_attempted": 0, "query_rows_attempted": 0, "simple_fits": 0, "rss_peak_bytes": 0, "active_tab_start": None}
+calls, simple_calls, arrays, metrics = [], [], {}, {}
+done = threading.Event()
+proc = psutil.Process()
+
+def guard():
+    while not done.wait(0.2):
+        now = time.perf_counter()
+        state["rss_peak_bytes"] = max(state["rss_peak_bytes"], proc.memory_info().rss)
+        active = 0.0 if state["active_tab_start"] is None else now - state["active_tab_start"]
+        why = None
+        if state["rss_peak_bytes"] >= limits["rss_bytes"]:
+            why = "memory_cap"
+        elif state["tab_seconds"] + active >= limits["tab_seconds"]:
+            why = "TabICL_time_cap"
+        elif now - start >= limits["stage_seconds"]:
+            why = "stage_time_cap"
+        if why:
+            save("hard_stop.json", {"reason": why, "state": state, "wall_seconds": now - start,
+                                    "active_tab_seconds": active, "no_auto_retry": True})
+            print(json.dumps({"hard_stop": why}), flush=True)
+            os._exit(86)
+
+threading.Thread(target=guard, daemon=True).start()
+success, error = False, None
+
+def check():
+    elapsed = time.perf_counter() - start
+    assert elapsed - state["tab_seconds"] < limits["cheap_seconds"], "Cheap time cap"
+    assert elapsed < limits["stage_seconds"]
+    assert state["contexts_attempted"] <= 9 and state["query_rows_attempted"] <= 16128
+
+def summarize(pred, actual):
+    e = np.abs(pred - actual)
+    return {"mean_cell_MAE": float(e.mean()), "cell_MAE": e.mean(1).tolist(),
+            "day_MAE": e.reshape(16, 14, 24).mean((0, 2)).tolist(),
+            "first7_MAE": float(e[:, :168].mean()), "last7_MAE": float(e[:, 168:].mean())}
+
+try:
+    design = np.load(paths["design"])
+    sel = np.array([int(np.flatnonzero(design["cell_indices"] == i - 1)[0]) for i in ids])
+    scales = design["scales"][sel]
+    with h5py.File(paths["traffic"], "r") as f:
+        raw = f["data"][:, ids - 1, 2]
+        dates = pd.to_datetime(f["idx"][:].astype(str))
+    z = raw / scales
+    all_times = np.r_[np.arange(168, 840), np.arange(1008, 1344)]
+    cal = dates[all_times]
+    calendar = np.column_stack([np.sin(2 * np.pi * cal.hour / 24), np.cos(2 * np.pi * cal.hour / 24), np.sin(2 * np.pi * cal.dayofweek / 7), np.cos(2 * np.pi * cal.dayofweek / 7)])
+    X = np.stack([np.array([np.r_[z[t-8:t, j], z[t-24, j], z[t-168, j], z[t-24:t, j].mean(), z[t-24:t, j].std(), calendar[k]] for k, t in enumerate(all_times)]) for j in range(16)]).astype(np.float32)
+    Y = z[all_times].T.astype(np.float32)
+    assert X.shape == (16, 1008, 16) and Y.shape == (16, 1008)
+    assert np.array_equal(X[:, :672], design["X"][sel, :672])
+    assert np.array_equal(Y[:, :672], design["Y"][sel, :672])
+    assert np.isfinite(X).all() and np.isfinite(Y).all()
+    qy = Y[:, 672:]
+    arrays.update(actual=qy, cell_ids=ids, context_times=all_times[:672], query_times=all_times[672:], scales=scales)
+    for family in ["TabICL", "Ridge", "HGB"]:
+        for method in groups:
+            arrays[f"{family}_{method}"] = np.full((16, 336), np.nan, dtype=np.float32)
+    np.savez_compressed(O / "inputs.npz", X=X, Y=Y, **{k: arrays[k] for k in ["cell_ids", "context_times", "query_times", "scales"]})
+    check()
+    state["phase"] = "TabICL"
+    for method, j, mem in tasks:
+        check()
+        cx = X[mem, :672].reshape(-1, 16)
+        cy = Y[mem, :672].ravel()
+        qx = X[mem, 672:].reshape(-1, 16)
+        state["contexts_attempted"] += 1
+        state["query_rows_attempted"] += len(qx)
+        call = {"method": method, "cluster": j, "members": mem, "cell_ids": ids[mem].tolist(), "context_rows": len(cy), "query_rows": len(qx), "status": "started"}
+        calls.append(call)
+        save("calls.json", calls)
+        print(json.dumps({"event": "Tab_start", **call}), flush=True)
+        m = TabICLRegressor(n_estimators=1, batch_size=1, kv_cache=False, model_path=str(paths["checkpoint"]), allow_auto_download=False, device="cpu", use_amp=False, use_fa3=False, offload_mode=False, random_state=20260925, n_jobs=1)
+        t = time.perf_counter()
+        state["active_tab_start"] = t
+        try:
+            m.fit(cx, cy)
+            fitted = time.perf_counter()
+            inner = [0]
+            original_stats = m.model_.predict_stats
+            def counted_stats(*args, **kwargs):
+                inner[0] += 1
+                return original_stats(*args, **kwargs)
+            m.model_.predict_stats = counted_stats
+            pred = m.predict(qx, output_type="median")
+            finished = time.perf_counter()
+            assert np.isfinite(pred).all() and len(pred) == len(qx)
+            arrays[f"TabICL_{method}"][mem] = np.asarray(pred).reshape(len(mem), 336)
+            call.update(status="completed", fit_seconds=fitted-t, predict_seconds=finished-fitted, inner_predict_stats_calls=inner[0], target_scaler_mean=m.y_scaler_.mean_.tolist(), target_scaler_scale=m.y_scaler_.scale_.tolist(), rss_peak_so_far=state["rss_peak_bytes"])
+        finally:
+            duration = time.perf_counter() - t
+            state["tab_seconds"] += duration
+            state["active_tab_start"] = None
+            call["accounted_seconds"] = duration
+            save("calls.json", calls)
+        print(json.dumps({"event": "Tab_done", **call}), flush=True)
+        np.savez_compressed(O / "predictions_partial.npz", **arrays)
+        del m, original_stats, counted_stats
+        gc.collect()
+    state["phase"] = "simple_models"
+    for family in ["Ridge", "HGB"]:
+        for method, j, mem in tasks:
+            check()
+            if family == "Ridge":
+                m = make_pipeline(StandardScaler(), Ridge(alpha=1.0))
+            else:
+                m = HistGradientBoostingRegressor(loss="absolute_error", max_iter=100, learning_rate=.1, max_leaf_nodes=15, min_samples_leaf=20, l2_regularization=1, early_stopping=False, random_state=20260925)
+            t = time.perf_counter()
+            m.fit(X[mem, :672].reshape(-1, 16), Y[mem, :672].ravel())
+            pred = m.predict(X[mem, 672:].reshape(-1, 16))
+            duration = time.perf_counter() - t
+            assert np.isfinite(pred).all()
+            state["simple_fits"] += 1
+            state["simple_fit_seconds"] += duration
+            arrays[f"{family}_{method}"][mem] = pred.reshape(len(mem), 336)
+            simple_calls.append({"family": family, "method": method, "cluster": j, "seconds": duration})
+    assert state["simple_fits"] == 18
+    for family in ["TabICL", "Ridge", "HGB"]:
+        for method in groups:
+            key = f"{family}_{method}"
+            assert np.isfinite(arrays[key]).all()
+            metrics[key] = summarize(arrays[key], qy)
+    save("new_scores_frozen.json", metrics)
+    new_score_sha = sha(O / "new_scores_frozen.json")
+    state["phase"] = "posthoc_stored_RCTL"
+    saved = np.load(paths["RCTL_saved_predictions"])
+    assert np.array_equal(saved["cell_ids"], ids)
+    assert np.array_equal(saved["y"][:, :336], qy)
+    for method, seed in [("global", 20260925), ("tabicl_risk", 20260925), ("empirical_risk", 20260925), ("tabicl_risk", 20260926), ("empirical_risk", 20260926)]:
+        key = f"RCTL_{method}_{seed}"
+        arrays[key] = saved[f"{method}_{seed}"][:, :336]
+        metrics[key] = summarize(arrays[key], qy)
+    deltas = {}
+    for family in ["TabICL", "Ridge", "HGB", "RCTL25", "RCTL26"]:
+        getkey = (lambda m: f"RCTL_{m}_202609{family[-2:]}") if family.startswith("RCTL") else (lambda m: f"{family}_{m}")
+        comparisons = [("tabicl_risk", "empirical_risk")]
+        if family != "RCTL26":
+            comparisons += [("tabicl_risk", "global"), ("empirical_risk", "global")]
+        for left, right in comparisons:
+            a, b = arrays[getkey(left)], arrays[getkey(right)]
+            diff = np.abs(a-qy) - np.abs(b-qy)
+            deltas[f"{family}:{left}_minus_{right}"] = {"mean": float(diff.mean()), "first7": float(diff[:, :168].mean()), "last7": float(diff[:, 168:].mean()), "cells_with_smaller_error_left": int(np.sum(diff.mean(1)<0)), "days_with_smaller_error_left": int(np.sum(diff.reshape(16,14,24).mean((0,2))<0)), "cell_differences": diff.mean(1).tolist(), "day_differences": diff.reshape(16,14,24).mean((0,2)).tolist()}
+    assert sha(O / "new_scores_frozen.json") == new_score_sha
+    np.savez_compressed(O / "predictions.npz", **arrays)
+    save("simple_calls.json", simple_calls)
+    check()
+    result = {"settings": settings, "state": {k:v for k,v in state.items() if k != "active_tab_start"}, "calls": calls, "metrics": metrics, "differences": deltas, "new_scores_before_RCTL_read_sha256": new_score_sha, "RCTL_results_used_to_change_partition": False, "independent_test": False}
+    save("summary.json", result)
+    print(json.dumps({"event": "completed", "mean_MAE": {k:v["mean_cell_MAE"] for k,v in metrics.items()}, "tab_seconds": state["tab_seconds"], "simple_seconds": state["simple_fit_seconds"]}), flush=True)
+    success = True
+except Exception:
+    error = traceback.format_exc()
+    save("error.json", {"error": error, "state": state})
+    print(error, flush=True)
+finally:
+    done.set()
+    wall = time.perf_counter() - start
+    save("run_finished.json", {"success": success, "wall_seconds": wall, "TabICL_seconds": state["tab_seconds"], "cheap_seconds": wall-state["tab_seconds"], "simple_fit_predict_seconds": state["simple_fit_seconds"], "contexts_attempted": state["contexts_attempted"], "contexts_completed": sum(c["status"]=="completed" for c in calls), "query_rows_attempted": state["query_rows_attempted"], "simple_fits": state["simple_fits"], "rss_peak_bytes": state["rss_peak_bytes"], "new_RCTL_fits": 0, "new_RCTL_forwards": 0, "new_RCTL_gradients": 0, "error": error})
+if not success:
+    sys.exit(1)

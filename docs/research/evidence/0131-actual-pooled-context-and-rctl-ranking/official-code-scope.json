@@ -1,0 +1,130 @@
+{
+  "batch_id": "history-131",
+  "captured_code_files": 4,
+  "actual_whole_code_lines": 3365,
+  "actual_read": {
+    "SRC-0001986": {
+      "sha256": "a0c562600fe22944f91b1b71b706198cb9a4c3d9d8aaba67a86f35a85493d322",
+      "ranges": [
+        [
+          1,
+          230
+        ],
+        [
+          231,
+          455
+        ],
+        [
+          456,
+          690
+        ],
+        [
+          691,
+          892
+        ]
+      ],
+      "full_content_read": true,
+      "lines": 892,
+      "prior_scope_reused": true,
+      "independent_re_read_credit": 0,
+      "source_code_executed": false,
+      "source_code_imported": false
+    },
+    "SRC-0001987": {
+      "sha256": "96cce2e84db33e176d872c7bb7c0df8c305de3eb7a02fcad9f1128f33d319d95",
+      "ranges": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          470
+        ],
+        [
+          471,
+          795
+        ]
+      ],
+      "full_content_read": true,
+      "lines": 795,
+      "prior_scope_reused": false,
+      "independent_re_read_credit": 0,
+      "source_code_executed": false,
+      "source_code_imported": false
+    },
+    "SRC-0001988": {
+      "sha256": "583786e5ffd70b9eb425bca8e52aed415dadcdf4254c908b3b6fa52026a56491",
+      "ranges": [
+        [
+          1,
+          240
+        ],
+        [
+          241,
+          470
+        ],
+        [
+          471,
+          720
+        ],
+        [
+          721,
+          913
+        ]
+      ],
+      "full_content_read": true,
+      "lines": 913,
+      "prior_scope_reused": true,
+      "independent_re_read_credit": 0,
+      "source_code_executed": false,
+      "source_code_imported": false
+    },
+    "SRC-0001989": {
+      "sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+      "ranges": [
+        [
+          1,
+          250
+        ],
+        [
+          251,
+          515
+        ],
+        [
+          516,
+          765
+        ]
+      ],
+      "full_content_read": true,
+      "lines": 765,
+      "prior_scope_reused": true,
+      "independent_re_read_credit": 0,
+      "source_code_executed": false,
+      "source_code_imported": false
+    }
+  },
+  "first_current_all_raw_lines": 6934,
+  "previous_H005_selected_code_now_whole": [
+    "SRC-0001986",
+    "SRC-0001988"
+  ],
+  "previous_whole_regressor_reread_no_new_credit": "SRC-0001989",
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "models_instantiated": false,
+  "new_model_runs": 0,
+  "semantic_second_pass_complete": false,
+  "coverage_increment_applied": false,
+  "findings": [
+    "진단1968:148 n_jobs=1. regressor1989:688–703는predict동안old_n_threads저장후min(logical_cores,n_jobs)=1로torchthread변경,754–755정상종료시복원. settings1982:154–155의4/2는predict전초기intra/inter-op이며4thread실측추론이라고쓸수없음. OMP/MKL/OPENBLAS4와PyTorchpredictscope1구별;per-callthread로그는미기록.",
+    "regressorfit1989:357–446는checkpointconfig/state_dictload+eval(),CPUdevice/setup·contextyStandardScaler.fit_transform·contextXTransformToNumerical.fit_transform·EnsembleGenerator.fit(X,y_scaled). 가중치optimizer/retraining이아님. kv_cache=False라_build_kv_cache비활성.",
+    "regressorpredict:708–730는queryXtransform+modebothensemble+_batch_forward(model.predict_stats)이며queryy인자없음. _batch_forward529–536torch.no_grad();drivercontextcy672·queryqx336만넘기며qy는평가용. 입력인자범위만근거로기록;추가import/preprocessor전체구현감사아님.",
+    "tabicl1988:524–585predict_statsembed_with_test=False기본→_inference_forward에서contexty만배치·col_embedder/row_interactor/ICLearningcallee호출. median은quantiledistributionicdf(.5)→regressoryinverse/ensemblemean;mean과구별. 캐시코드도판독했지만원101kv_cache=False의활성경로아님.",
+    "embedding1986:340–421는yembedding을[:train_size]에만더하고tf_col train_size=None if embed_with_test else train_size전달. target-aware/classification/mixedradix별경로·cacheinactive구별. encoders/inference_mgr본문은이번4파일범위밖.",
+    "layers1987:432–454 train_size인자제공시K/V를contextprefix로제한,625–652ISABinducing첫단계도contextprefix. ICLearningcallee가실제로train_size전달하는지/attentionhelper·preprocessing상세는수집4파일밖이므로전체누수없음보장하지않음.",
+    "계획/진단의lagfeature는각query시점직전실측을이용한rolling1-step평가다. 14일시간구간은336시간open-loop재귀예측horizon이아니다. rawtraffic새통계/feature재생성0;저장X의학습prefix와기존설계/scales만비교검수.",
+    "원배포라이브러리versionunknown과모델checkpointSHA/config는구별. 세파일H005공식PIN대조재사용후새layers포함4Gitblob판본검수가남음. 지금whole4/3365행판독·원code/import/모델0;저장917수치검산과독립새모델재현구별."
+  ],
+  "recorded_at_utc": "2026-10-12T11:22:43.643704+00:00"
+}
