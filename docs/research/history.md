@@ -215,3 +215,5 @@
 [H128 원98](records/0128-quantile-information-and-pooling-objective.md): 밀도 정보를 추가한 donor/병합안을 미추천했다. 독립 Uniform 기호 모형에서 A의 분산 주항은65.289% 증가하지만 동등 cell 평균 초과 MAE는11/(8n)→5/(22n)이다. 실제 전체 MAE 개선률이나 RCTL 결과가 아니다. 최종 방향/Word는 당시 미완료였다.
 
 [H129 원99](records/0129-learning-units-and-clustering-cost.md): Cash2025/2026와Ma의 관측 단위·K/지표·최종learner 사용을 대조하고21개 저장 산술행을 검산했다. 새 모델/traffic 통계0, 최종추천/Word미완료. 기존 random/global 원칙은 유지했다.
+
+[H130 원100](records/0130-pretraining-objective-and-time-conditioning.md): TabClustPFN v3, AAAI APT, 공식 코드 11개/metadata 2개를 대조했다. 당시 모듈 추가는 미채택했고 새 모델·traffic 통계는 0, 최종 추천·Word는 미완료였다. 현재 PDF 44쪽/3,307행·44이미지, 36주장/9그룹의 작성 후 검수와 pinned 코드 11개 바이트 대조를 기록했다.

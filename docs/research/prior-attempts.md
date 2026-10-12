@@ -600,3 +600,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원99 학습 단위·다중 출력·clustering 비용을 다시 볼 때
 
 [원99](records/0129-learning-units-and-clustering-cost.md)와 [문헌 비교](references/learning-unit-and-clustering-cost.md)를 먼저 확인한다. cell·OD flow·하루 MTS, scalar/jointvector, 같은K/선택K, 용량·sample/epoch·예측row/호출·Tab초기비용을 명시한다. 다른 단위의 개선율이나 줄어든 모델 개수만으로 현재cell의 실익을 주장하지 않는다. 새질문은 기존 global/naive/K4 결과와 어떤 조건·유용한 결정이 달라지는지 적는다.
+
+## 원100 사전학습 모델·시간 보정을 다시 검토할 때
+
+[원100](records/0130-pretraining-objective-and-time-conditioning.md)과 [문헌 비교](references/pretraining-objective-and-time-conditioning.md)를 먼저 읽는다. 표의 행이 sample인지 cell 표현인지, 잠재 정답과 실제 공유 효용, 자동 K1과 점유 label 수, 공유 encoder와 K별 decoder, 준비와 공동 학습을 명시한다. 시간 조건 보강만으로 cell 소속이 검증됐다고 쓰지 않는다. 기존 Tab 직접 예측의 긍정 증거를 보존하고 새로운 유용한 결정 또는 추정 효율·전체 비용의 차이를 설명한다.

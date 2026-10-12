@@ -1,0 +1,25 @@
+from pathlib import Path
+import hashlib
+import json
+import subprocess
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parent
+SRC = ROOT / 'sources' / 'pretraining_objective_100'
+OUT = SRC / 'rendered'
+OUT.mkdir(exist_ok=True)
+POPPLER = Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+selected = {'TabClustPFN_2601.21656v3.pdf': [3, 4], 'APT_AAAI_2026.pdf': [3, 4, 5]}
+records = []
+for name, pages in selected.items():
+    source = SRC / name
+    reader = PdfReader(source)
+    for page in pages:
+        prefix = OUT / f'{source.stem}_p{page:02}'
+        image = Path(str(prefix) + '.png')
+        result = subprocess.run([str(POPPLER), '-f', str(page), '-l', str(page), '-singlefile', '-scale-to', '1600', '-png', str(source), str(prefix)], capture_output=True, text=True, encoding='utf-8', errors='replace')
+        if result.returncode or not image.exists():
+            raise RuntimeError(result.stderr)
+        records.append({'source': str(source.relative_to(ROOT)), 'page_1based': page, 'image': str(image.relative_to(ROOT)), 'sha256': hashlib.sha256(image.read_bytes()).hexdigest(), 'renderer_warnings': result.stderr.strip(), 'page_text_prefix': (reader.pages[page-1].extract_text() or '')[:160]})
+(SRC / 'render_manifest.json').write_text(json.dumps(records, indent=2, ensure_ascii=False), encoding='utf-8')
+print(json.dumps(records, ensure_ascii=False, indent=2))

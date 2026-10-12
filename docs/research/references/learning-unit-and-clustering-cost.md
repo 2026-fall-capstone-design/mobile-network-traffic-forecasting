@@ -17,3 +17,5 @@ Ziling Ma, Ángel López-Oriona, Hernando Ombao, Ying Sun, **Forecasting Multiva
 외부 PDF/TXT/PNG를 게시하지 않는다. 현재 공식 서지와 과거 로컬PDF SHA·다운로드 경위를 분리한다. 원99 첫HTTP406/재시도 후 성공 URL 미기록, arXiv renderer issue 링크를 저자코드로 보지 않은 당시 검색 한계를 남긴다. 세 저자 구현이 존재하지 않는다고 판단하지 않는다.
 
 [공식 GRU tensor shape](https://docs.pytorch.org/docs/2.14/generated/torch.nn.modules.rnn.GRU.html)에 따른 원99 H200 식은 명시한 한층/단방향/bias2/head 가정의 산술이다. Ma의 shared encoder나 현재 RCTL(LSTM 포함·extra bias frozen)에 그대로 대입하지 않는다. 소속 품질, 전체 용량, sample/update, 예측row/호출, Tab 준비/cache를 나누어 같은 조건의 재실험을 설계한다.
+
+후속 [원100](../records/0130-pretraining-objective-and-time-conditioning.md)과 [사전학습·시간 조건 비교](pretraining-objective-and-time-conditioning.md)는 다른 학습 단위의 성공을 현재 cell 공유에 적용할 때 학습 정답, K1, 최종 learner의 학습 관계도 확인한다. 새 모델 실행 없이 문헌·보관 공식 코드·제한된 기호를 대조했다.

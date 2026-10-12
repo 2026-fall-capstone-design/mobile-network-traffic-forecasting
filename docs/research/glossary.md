@@ -19,3 +19,5 @@
 [원98](records/0128-quantile-information-and-pooling-objective.md)의 **이상적 공유 비용**은 참 중앙값을 아는 경우의 손실 차이, **추정 초과 MAE**는 유한 자료에서 중앙값을 추정하면서 더해지는 주항이다. **불가피한 MAE**와 분리한다. **목표 분위수 밀도**는 한 점/구간·단위·조건을 명시하고, 입력 회귀의 정보 행렬이나 비선형 RCTL의 학습 정보와 같다고 두지 않는다.
 
 [원99](records/0129-learning-units-and-clustering-cost.md)에서 **학습 단위**는 cell sample/ODflow벡터/하루MTS를 구별한다. **운영K**와**matched-K 구조분석**, **등록parameter/학습가능parameter/state tensorbytes**, **optimizer update/forward row/호출 횟수**는 별개다. **MLU bias**는1에 가까운 비율이며 topology없는 활동량의MAE가 아니다.
+
+[원100](records/0130-pretraining-objective-and-time-conditioning.md)에서 **잠재 cardinality K**, **실제 점유 label 수**, **필요한 RCTL 수**, **APT prototype 수/top-k**는 서로 다르다. **single-forward API와 내부 K별 계산**, **달력 조건 변환과 cell 학습 소속**, **인쇄 동률과 저자 first-count**도 구별한다.

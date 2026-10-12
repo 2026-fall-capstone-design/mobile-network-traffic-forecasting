@@ -1,0 +1,75 @@
+"""Record source scope, immutable evidence checks, and this review's progress."""
+from pathlib import Path
+import hashlib
+import json
+
+ROOT = Path(__file__).resolve().parent
+WORK = ROOT.parent.parent
+SRC = ROOT / 'sources' / 'pretraining_objective_100'
+EXPECTED_BUDGET = '807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f'
+EXPECTED_WORD = '4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686'
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+budget = ROOT / 'cumulative_execution_budget.json'
+word = WORK / 'output' / 'docx' / 'TabICLv2_재설계_근거정리와_남은핵심판단_중간검토.docx'
+assert sha(budget) == EXPECTED_BUDGET
+assert sha(word) == EXPECTED_WORD
+manifest = json.loads((SRC / 'manifest.json').read_text(encoding='utf-8'))
+for record in manifest['files']:
+    target = ROOT / record['path']
+    assert sha(target) == record['sha256'], target
+renders = json.loads((SRC / 'render_manifest.json').read_text(encoding='utf-8'))
+for record in renders:
+    assert sha(ROOT / record['image']) == record['sha256']
+scope = {
+    'review_date_local': '2026-09-26',
+    'plan': '100_pretraining_objective_review_plan.md',
+    'search_queries': ['"task grouping" "conditional" "risk" learning 2026', '"clustering" "foundation models" "regression" "forecasting" 2026', '"network traffic" "clustering" "parameter sharing" 2025 2026', '"TabClustPFN"', '"APT" "Affine Prototype-Timestamp"', '"tabular foundation" "clustering" "regression" "2026"'],
+    'sources': [
+        {'name': 'TabClustPFN', 'paper_version': '2601.21656v3, 2026-05-14', 'canonical_url': 'https://arxiv.org/pdf/2601.21656v3', 'pdf_reused': True, 'pages_total': 35, 'read_scope': ['Sections 3.1-3.4', 'Section 4.1 CIN calibration and larger N/D scaling', 'Appendix B.2 architecture and cardinality inference'], 'visual_pages': [3, 4], 'code_commit': '5673beaab72d69bb9db30da2740aef90975a3e0c', 'code_read_scope': ['cluster.py 89-170', 'model/tabcluster.py 83-105,171-287,399-443', 'exp/run_Softari.py 323-439', 'README checkpoint link'], 'not_claimed': ['checkpoint execution', 'paper reproduction', 'ARI-to-RCTL forecast-risk guarantee', 'N<=1000 hard execution cap', 'empty-label collapse cannot occur'], 'version_note': 'v1 HTML used initially; final method and K choice verified against existing v3 PDF. PDF v3 has additional larger-N and calibration material.'},
+        {'name': 'APT', 'paper_version': 'AAAI 2026 published pp.15180-15188; arXiv 2511.12945v1 appendix read via HTML', 'canonical_url': 'https://ojs.aaai.org/index.php/AAAI/article/view/38542', 'appendix_url': 'https://arxiv.org/html/2511.12945v1', 'pdf_reused': False, 'pages_total': 9, 'read_scope': ['Preliminaries', 'Methodology and Training Strategy', 'Experiments setup and Table 2', 'arXiv Appendix B-C dataset domain and hyperparameters'], 'visual_pages': [3, 4, 5], 'code_commit': '98a4c9c017666207b02029f842eff92818f0eab8', 'code_read_scope': ['normalization/APT.py 187-226,275-390', 'runner/normal_tsf_runner.py 236-384,624-680', 'ETTh1_itransformer.py 15-85'], 'not_claimed': ['training execution', 'telecom forecasting evidence', 'RCTL-independent grouping', 'all normalization combinations improved', 'full forecasting backbone audit for all data paths']}
+    ],
+    'unreviewed_lead': 'Li et al. 2025 tabular PFN pseudo-label clustering: reference in TabClustPFN only, no claim of full primary-method review.',
+    'direct_reasoning': ['Separate input-distribution components can share the same conditional forecast function.', 'For fixed nonzero gamma, transforming both scalar input and target by gamma*x+beta preserves slope of y=a*x+b. This is a restricted illustration, not a bound on the full APT neural model.'],
+    'new_model_execution': {'tab_contexts': 0, 'tab_query_rows': 0, 'rctl_fits': 0, 'other_fits': 0, 'model_forwards': 0, 'gradient_calls': 0, 'traffic_statistics_recomputed': False},
+    'budget_sha256': EXPECTED_BUDGET,
+    'existing_word_sha256': EXPECTED_WORD,
+    'remaining': {'tab_contexts': 11, 'tab_query_rows': 20640, 'rctl_fits': 0},
+    'goal_complete': False,
+    'external_blocker': None,
+}
+(ROOT / '100_source_reading_scope.json').write_text(json.dumps(scope, ensure_ascii=False, indent=2), encoding='utf-8')
+
+index = ROOT / 'candidate_decision_index.md'
+section = '''
+## 사전학습의 정답과 시간 조건 변환 — 100
+
+TabClustPFN 2601.21656v3는 TabICL 2025 encoder를 초기화한 별도 PIN/CIN이며 합성 표의 latent 소속과 K를 학습한다. CIN은 K=2부터 선택한다. 실제 label이 한 종류로 collapse할 수 있는지와 K1을 명시적으로 검증하는지는 다르다. 공식 코드의 자동 K 경로는 열·행 표현을 재사용하고 K별 decoder를 반복한다. v3의 N=10,000 추가 평가도 반영하며 학습 N≤1,000을 실행 상한으로 쓰지 않는다.
+
+APT AAAI2026은 시각 시작/끝의 시간대·요일로 affine 변환을 만들며 초기 준비 후 최종 예측모델과 공동 학습한다. 확인한 기본형은 cell ID 없이 같은 시간에 같은 변환을 준다. 시간 흐름 보존에 관련된 선행 방법이지만 독립적인 cell 소속 결정은 아니다. Traffic 실험은 도로 자료이고 일부 backbone/정규화 조합은 악화한다. 고정된 동일 affine 입력/target 변환에서는 선형 관계의 기울기가 유지되는 직접 구별을 기록했다.
+
+이 두 모듈을 덧붙인 방향을 새 추천안으로 채택하지 않는다. 묶는 단위, 학습 정답, K1 허용, 최종 learner와의 학습 관계를 확인하는 기준을 추가했다. 새 모델 실행 0, 기존 긍정/부정 pilot 결과와 예산은 불변이다. 상세100 참조.
+'''
+text = index.read_text(encoding='utf-8')
+if '## 사전학습의 정답과 시간 조건 변환 — 100' not in text:
+    index.write_text(text.rstrip() + '\n' + section, encoding='utf-8')
+
+progress = ROOT / 'progress.md'
+old = progress.read_text(encoding='utf-8')
+heading = '## 최신 상태 — 99 학습 단위와 비용 효과의 구별'
+new = '''## 최신 상태 — 100 사전학습 목적과 시간 조건 변환
+
+- 2026-09-26. 99 이후 후보 인덱스·기존 증거와 예산을 확인하고 100 계획을 고정했다. TabClustPFN의 기존 v3 PDF 35쪽을 재사용하고 APT의 AAAI 출판본 9쪽을 확보했다. 관련 5쪽을 렌더링하여 방법·표와 대조했다. 공식 repository 2개 commit의 선택 코드 11파일을 저장했고 실행하지 않았다.
+- TabClustPFN의 PIN/CIN 정답은 표의 잠재 집단이다. cell 학습 효용의 정답과 다르다. CIN 선택지 K≥2, 표현 재사용 뒤 K별 decoder 반복을 확인했다. v3의 N=10,000 추가 평가를 반영하며 사전학습 규모를 절대 실행 상한으로 쓰지 않는다. 05에서 이미 발견한 논문의 방법·코드 검토 보완이다.
+- APT의 시간대·요일 조건 변환과 준비/공동 학습을 확인했다. 기본 설정에서는 동시 cell에 같은 변환을 주며, 시간 조건 반영만으로 cell 소속을 정하지 않는다. Table 2의 개선/악화를 함께 읽고 Traffic은 도로 자료임을 구별했다. 같은 affine 입력/target 변환의 기울기 불변은 제한된 직접 기호 설명이며 전체 neural 모델의 불가능성으로 확대하지 않는다.
+- 현재안에 두 모듈을 추가하지 않는다. Tab의 좋은 직접 예측을 유용한 RCTL partition으로 연결한 새 성능 증거는 없으며, 새로운 사전학습이나 정규화 pilot을 시작하지 않았다. 시간 조건·표의 집단 복원·실제 cell 공유 목적을 분리하는 설계 기준을 보완했다.
+- 새 Tab/RCTL/기타 모델 fit·forward·gradient와 traffic 통계 재계산 0. 누적 원장 SHA 807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f 및 기존 Word 불변. 잔여 Tab 11 context/20,640행, 추가 RCTL fit 0이다. 상세100·공개 설명·출처/코드·검증 snapshot 42를 보존한다.
+- 다음 작업은 남은 직접 예측 우위가 실제 sharing 결정의 추정 효율을 개선하는지 구체적인 행동 단위로 연결하는 것이다. 이미 기각한 분포 거리·정규화·task 표현을 이름만 바꾸어 다시 추가하지 않는다. 최종 추천안과 최종 Word는 미완료이며 현재 외부 blocker는 확인되지 않았다.
+
+## 이전 상태 — 99 학습 단위와 비용 효과의 구별'''
+if '## 최신 상태 — 100 사전학습 목적과 시간 조건 변환' not in old:
+    assert heading in old
+    progress.write_text(old.replace(heading, new, 1), encoding='utf-8')
+print(json.dumps({'scope_written': True, 'budget_unchanged': True, 'word_unchanged': True, 'source_files_verified': len(manifest['files']), 'rendered_pages_verified': len(renders), 'source_network_bytes': manifest['network_bytes']}, ensure_ascii=False))

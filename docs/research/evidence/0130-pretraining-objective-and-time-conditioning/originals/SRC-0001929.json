@@ -1,0 +1,100 @@
+{
+  "review_date_local": "2026-09-26",
+  "plan": "100_pretraining_objective_review_plan.md",
+  "search_queries": [
+    "\"task grouping\" \"conditional\" \"risk\" learning 2026",
+    "\"clustering\" \"foundation models\" \"regression\" \"forecasting\" 2026",
+    "\"network traffic\" \"clustering\" \"parameter sharing\" 2025 2026",
+    "\"TabClustPFN\"",
+    "\"APT\" \"Affine Prototype-Timestamp\"",
+    "\"tabular foundation\" \"clustering\" \"regression\" \"2026\""
+  ],
+  "sources": [
+    {
+      "name": "TabClustPFN",
+      "paper_version": "2601.21656v3, 2026-05-14",
+      "canonical_url": "https://arxiv.org/pdf/2601.21656v3",
+      "pdf_reused": true,
+      "pages_total": 35,
+      "read_scope": [
+        "Sections 3.1-3.4",
+        "Section 4.1 CIN calibration and larger N/D scaling",
+        "Appendix B.2 architecture and cardinality inference"
+      ],
+      "visual_pages": [
+        3,
+        4
+      ],
+      "code_commit": "5673beaab72d69bb9db30da2740aef90975a3e0c",
+      "code_read_scope": [
+        "cluster.py 89-170",
+        "model/tabcluster.py 83-105,171-287,399-443",
+        "exp/run_Softari.py 323-439",
+        "README checkpoint link"
+      ],
+      "not_claimed": [
+        "checkpoint execution",
+        "paper reproduction",
+        "ARI-to-RCTL forecast-risk guarantee",
+        "N<=1000 hard execution cap",
+        "empty-label collapse cannot occur"
+      ],
+      "version_note": "v1 HTML used initially; final method and K choice verified against existing v3 PDF. PDF v3 has additional larger-N and calibration material."
+    },
+    {
+      "name": "APT",
+      "paper_version": "AAAI 2026 published pp.15180-15188; arXiv 2511.12945v1 appendix read via HTML",
+      "canonical_url": "https://ojs.aaai.org/index.php/AAAI/article/view/38542",
+      "appendix_url": "https://arxiv.org/html/2511.12945v1",
+      "pdf_reused": false,
+      "pages_total": 9,
+      "read_scope": [
+        "Preliminaries",
+        "Methodology and Training Strategy",
+        "Experiments setup and Table 2",
+        "arXiv Appendix B-C dataset domain and hyperparameters"
+      ],
+      "visual_pages": [
+        3,
+        4,
+        5
+      ],
+      "code_commit": "98a4c9c017666207b02029f842eff92818f0eab8",
+      "code_read_scope": [
+        "normalization/APT.py 187-226,275-390",
+        "runner/normal_tsf_runner.py 236-384,624-680",
+        "ETTh1_itransformer.py 15-85"
+      ],
+      "not_claimed": [
+        "training execution",
+        "telecom forecasting evidence",
+        "RCTL-independent grouping",
+        "all normalization combinations improved",
+        "full forecasting backbone audit for all data paths"
+      ]
+    }
+  ],
+  "unreviewed_lead": "Li et al. 2025 tabular PFN pseudo-label clustering: reference in TabClustPFN only, no claim of full primary-method review.",
+  "direct_reasoning": [
+    "Separate input-distribution components can share the same conditional forecast function.",
+    "For fixed nonzero gamma, transforming both scalar input and target by gamma*x+beta preserves slope of y=a*x+b. This is a restricted illustration, not a bound on the full APT neural model."
+  ],
+  "new_model_execution": {
+    "tab_contexts": 0,
+    "tab_query_rows": 0,
+    "rctl_fits": 0,
+    "other_fits": 0,
+    "model_forwards": 0,
+    "gradient_calls": 0,
+    "traffic_statistics_recomputed": false
+  },
+  "budget_sha256": "807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f",
+  "existing_word_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+  "remaining": {
+    "tab_contexts": 11,
+    "tab_query_rows": 20640,
+    "rctl_fits": 0
+  },
+  "goal_complete": false,
+  "external_blocker": null
+}
