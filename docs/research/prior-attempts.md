@@ -592,3 +592,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원97 output hold·delta hold·forecast cache를 다시 검토할 때
 
 [원97](records/0127-forecast-time-reuse-diagnostic.md)과 [두 규칙/강한 단순 기준](references/forecast-time-reuse.md)을 먼저 읽는다. 원83 재학습 주기·원49 다른 cell 대표값·원95 동시 batch와 구별하고, 모든 현재 관측을 유지한 비용을 적는다. 새 후보는 fixed clock/persistence/global 선택적 cell 계산 대비 Tab의 유용한 결정, clustering의 이유, 전 기간/cell 손해와 전체 latency를 확인할 질문이 달라졌는지 명시한다.
+
+## 원98 중앙값 밀도·quantile information·donor graph를 다시 검토할 때
+
+[원98](records/0128-quantile-information-and-pooling-objective.md)과 [Bai/Gu/Yang 비교](references/quantile-information-and-grouping.md)를 먼저 읽는다. 한 target donor 선별의 양방향화, 분위수 간격의 역수, 조건별 관계 clustering 자체의 이름 변경만으로 실익을 확보하지 않는다. 실제 pooling 문제·유용한 소속 결정 또는 같은 결정의 효율·강한 단순/global 대안·전체 cell 목적/손해·밀도 정확성과 RCTL 연결·전체 비용에서 달라지는 조건을 적는다. 과거 예산은 당시 상태이며 미래 팀 연구 전체의 금지 규칙이 아니다.

@@ -211,3 +211,5 @@
 [H126 원96](records/0126-rctl-parameter-merging-scope.md): 모델 병합 문헌·현재 RCTL 코드·기호 반례 검토 후 미채택. 같은 seed는 확인했으나 공통 pretrained와 다르며, prediction 유사성이 hidden 병합을 보장하지 않는다. 후단 병합은 검토 가능하고 새 병합 성능 실험은0이다.
 
 [H127 원97](records/0127-forecast-time-reuse-diagnostic.md): 같은 cell의 과거 예측을 재사용한 개발 진단. Global 주기2 증가량은 fresh보다9.3673% 악화했으며 예측 행/호출 절반은 산술이다. 두 K4 fresh보다 작은 전체 평균은 앞/뒤 기간에서 뒤집혔다. 새 Tab/RCTL 실행0·후보 미추천.
+
+[H128 원98](records/0128-quantile-information-and-pooling-objective.md): 밀도 정보를 추가한 donor/병합안을 미추천했다. 독립 Uniform 기호 모형에서 A의 분산 주항은65.289% 증가하지만 동등 cell 평균 초과 MAE는11/(8n)→5/(22n)이다. 실제 전체 MAE 개선률이나 RCTL 결과가 아니다. 최종 방향/Word는 당시 미완료였다.
