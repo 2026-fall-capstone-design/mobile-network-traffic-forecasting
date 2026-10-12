@@ -304,3 +304,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원98 중앙값 정보와 공동 학습 목적](records/0128-quantile-information-and-pooling-objective.md)은 같은 참 중앙값과 유한 자료 추정의 이득을 구분한다. 기호 계산·문헌·설치 코드 확인이며 새 traffic/model 실험은 없다. [문헌 비교](references/quantile-information-and-grouping.md)에서 target 보호와 전체 cell 평균, group 회복과 재추정 조건을 확인한다.
 
 [원99 학습 단위와 clustering 비용](records/0129-learning-units-and-clustering-cost.md)은 scalar cell row pooling·OD flow 벡터 분할·하루 MTS 소속을 나눈다. 문헌 개선율과 고정 용량/작업량을 현재 RCTL 실측으로 바꾸지 않도록 [문헌 비교](references/learning-unit-and-clustering-cost.md)와 출처를 확인한다.
+
+[원100 사전학습 목적과 시간 조건](records/0130-pretraining-objective-and-time-conditioning.md)은 TabClustPFN의 잠재 row 소속/K와 APT의 달력 조건 변환을 실제 cell 공유 효용과 구별한다. [문헌·코드 비교](references/pretraining-objective-and-time-conditioning.md)에서 K1, 표현 재사용, 공동 학습, 인쇄표의 확인 범위를 읽는다.

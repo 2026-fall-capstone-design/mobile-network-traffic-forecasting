@@ -1,0 +1,81 @@
+from pathlib import Path
+import hashlib
+import json
+import shutil
+from datetime import datetime, timezone
+
+ROOT = Path(__file__).resolve().parents[2]
+BASE = ROOT / 'tmp/redesign_20260925'
+SOURCE = BASE / 'sources/pretraining_objective_100'
+DEST = ROOT / 'output/research/redesign_20260925_snapshot_42'
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def read(path):
+    return json.loads(path.read_text(encoding='utf-8'))
+
+ledger = BASE / 'cumulative_execution_budget.json'
+word = ROOT / 'output/docx/TabICLv2_재설계_근거정리와_남은핵심판단_중간검토.docx'
+assert sha(ledger) == '807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f'
+assert sha(word) == '4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686'
+assert read(BASE / '99_archive_verification.json')['verified']
+assert not DEST.exists()
+
+manifest = read(SOURCE / 'manifest.json')
+for entry in manifest['files']:
+    source = BASE / entry['path']
+    assert sha(source) == entry['sha256']
+    assert source.stat().st_size == entry['bytes']
+pdf_entries = [x for x in manifest['files'] if 'pages' in x]
+assert len(pdf_entries) == 2
+assert sum(x['pages'] for x in pdf_entries) == 44
+reuse = pdf_entries[0]
+assert sha(BASE / reuse['reused_from']) == reuse['sha256']
+renders = read(SOURCE / 'render_manifest.json')
+assert len(renders) == 5
+for item in renders:
+    assert sha(BASE / item['image']) == item['sha256']
+scope = read(BASE / '100_source_reading_scope.json')
+assert scope['remaining'] == {'tab_contexts': 11, 'tab_query_rows': 20640, 'rctl_fits': 0}
+assert not scope['goal_complete']
+
+files = [
+    BASE / '100_pretraining_objective_review_plan.md',
+    BASE / '100_pretraining_objective_findings.md',
+    BASE / '100_source_reading_scope.json',
+    BASE / 'collect_pretraining_objective_100.py',
+    BASE / 'collect_pretraining_code_100.py',
+    BASE / 'render_pretraining_objective_100.py',
+    BASE / 'finalize_pretraining_objective_100.py',
+    Path(__file__),
+    BASE / 'candidate_decision_index.md',
+    BASE / 'progress.md',
+    ledger,
+    ROOT / 'output/research/TabICLv2_재설계_사전학습목적과_시간정보_적용판단.md',
+]
+files.extend(sorted(p for p in SOURCE.rglob('*') if p.is_file()))
+entries = []
+for source in files:
+    relative = source.relative_to(ROOT)
+    destination = DEST / relative
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination)
+    assert sha(source) == sha(destination)
+    if source.suffix == '.json':
+        read(destination)
+    entries.append({'path': str(relative), 'bytes': source.stat().st_size, 'sha256': sha(source)})
+
+result = {
+    'snapshot': str(DEST), 'files': len(entries),
+    'bytes': sum(x['bytes'] for x in entries), 'verified': True,
+    'source_pdf_pages': 44, 'rendered_pages': 5,
+    'source_network_bytes': manifest['network_bytes'],
+    'new_model_execution': False, 'new_traffic_statistics': False,
+    'ledger_sha256': sha(ledger), 'prior_word_sha256': sha(word),
+    'goal_complete': False,
+}
+(DEST / 'manifest.json').write_text(json.dumps({'files': entries, 'verified_at_utc': datetime.now(timezone.utc).isoformat(), 'source_scope': '100 incremental snapshot, existing versions preserved'}, ensure_ascii=False, indent=2), encoding='utf-8')
+for path in [BASE / '100_archive_verification.json', DEST / 'verification.json']:
+    path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps(result, ensure_ascii=False))

@@ -207,3 +207,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [원98](records/0128-quantile-information-and-pooling-objective.md)에서 남은 질문은 Tab 분위수 기울기의 정확성, 시간/cell 의존을 반영한 학습 정보, 전체 cell 목적에 맞는 유용한 공유 결정과 비용이다. point 예측의 긍정 결과를 밀도/새 clustering 성공으로 재인용하지 않는다. 원PDF137페이지·v1현재 비교50페이지·연혁 tail/이전판본·전체 통합과 최종 검색 검수는 미완료다.
 
 [원99](records/0129-learning-units-and-clustering-cost.md)의 후속 질문은 같은 scalar/K/sample 조건에서 Tab이 바꾸는 소속 또는 그 결정 비용, 서로 다른 epoch/early-stop·준비/검색을 포함한 전체비용이다. Cash의 authorhead/Kneedle split/runtime·Ma의 exact split/공식코드·16PDF쪽·각TXT·Word와 연혁tail은 남는다.
+
+[원100](records/0130-pretraining-objective-and-time-conditioning.md) 뒤 남은 질문은 Tab의 좋은 직접 예측이 실제 cell 공유 결정 또는 같은 유용한 결정의 추정 효율에 주는 기여다. manual K1, 선택 밖 import, 원실험 재현, 전 TXT, 현재 연혁103–582/이전94–573, Word 본문도 미검증이다. N1000 학습 범위를 절대 실행 상한으로 반복하지 않는다.
