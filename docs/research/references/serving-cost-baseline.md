@@ -13,3 +13,5 @@
 비교 설계에는 저장 모델 수·상태 tensor/파일 bytes, 시점당 입력 행·호출/batch, 실제 타이머 범위·warm-up, Tab context/query·준비 비용, 기기·threads/dtype, 개발자료·새자료를 적는다. 입력 행을 그대로 두고 호출만 합쳤다면 생략한 예측 문제 수로 표시하지 않는다. 같은K4의 약0.147ms 차이는 Tab 우위의 근거가 아니며 다른 기기나10000개 cell에 선형 확대하지 않는다. 새로운 비용 기여는 이 기본 구현에서도 제거되는 실제 일과 조건을 명시한다. [재검토 기준](../records/0125-frozen-rctl-serving-cost-baseline.md#claim-27).
 
 [원96의 병합 문헌 검토](../records/0126-rctl-parameter-merging-scope.md)는 원95 batch 기준을 이어받았다. 모델 저장량 감소, 입력 N행의 연산, 정렬/BN 준비와 과거 학습 비용을 분리한다. 여러 모델 출력을 섞는 방식은 cell당 지정 모델 하나를 실행하던 조건과 비교해야 한다.
+
+[원97 시간 재사용](../records/0127-forecast-time-reuse-diagnostic.md)은 원95 동시 batch 다음에 비교할 단순 기준이다. 새 예측 행/모델 호출, 매시간 관측, cache/준비, 실제 latency를 분리하고 기간/cell별 정확도 손해를 보존한다. [관련 문헌](forecast-time-reuse.md)의 신경망 내부 delta 연산을 최종 출력 근사로 대입하지 않는다.

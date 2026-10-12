@@ -1,0 +1,39 @@
+from pathlib import Path
+import hashlib,json
+
+base=Path(__file__).resolve().parent
+out=base/'results/forecast_reuse_97'
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+path=base/'cumulative_execution_budget.json'
+expected='ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7'
+assert sha(path)==expected
+assert not (out/'budget_update.json').exists()
+before=path.read_bytes()
+ledger=json.loads(before)
+result=json.loads((out/'summary.json').read_text(encoding='utf-8'))
+finished=json.loads((out/'run_finished.json').read_text(encoding='utf-8'))
+assert finished['success'] and result['no_new_model_execution']
+assert all(result['invariants'].values())
+key='forecast_reuse_97'
+assert key not in ledger['new_cheap_diagnostic_seconds']
+seconds=finished['wall_seconds']
+assert 0<seconds<20
+ledger['new_cheap_diagnostic_seconds'][key]=seconds
+ledger.setdefault('cheap_stage_details',[]).append({
+ 'stage':key,'new_simple_fits':0,'new_TabICL_calls':0,'new_RCTL_fits':0,'new_RCTL_forwards':0,
+ 'entire_stage_seconds':seconds,'array_analysis_seconds_included':result['seconds'],
+ 'cost_not_counted_twice':True,'timing_scope':'Includes stored data load, arithmetic replay and result array writes; excludes process imports and initial source hashing.',
+ 'input_prediction_methods':8,'cells':16,'target_hours':480,
+ 'note':'Initial bundled Python failed importing psutil before run marker or numeric work; model runtime succeeded once.'})
+cheap=sum(ledger['new_cheap_diagnostic_seconds'].values())
+total=cheap+sum(ledger['used'][k] for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'])
+assert cheap<ledger['caps']['cheap_numeric_seconds'] and total<ledger['caps']['total_local_modeling_seconds']
+assert ledger['used']['RCTL_fits']==29 and ledger['remaining_count_budgets']['RCTL_fits']==0
+(out/'budget_before.json').write_bytes(before)
+path.write_text(json.dumps(ledger,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+(out/'budget_after.json').write_bytes(path.read_bytes())
+update={'stage':key,'added_seconds':seconds,'analysis_seconds_included':result['seconds'],
+        'ledger_before_sha256':expected,'ledger_after_sha256':sha(path),'recorded_cheap_seconds':cheap,
+        'recorded_modeling_seconds':total,'budget_reset':False,'remaining':ledger['remaining_count_budgets']}
+(out/'budget_update.json').write_text(json.dumps(update,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(update,ensure_ascii=False,indent=2))

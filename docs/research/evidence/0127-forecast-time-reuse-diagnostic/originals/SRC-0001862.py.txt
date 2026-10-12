@@ -1,0 +1,198 @@
+"""Verify saved diagnostic artifacts; never rerun forecasts or select a partition."""
+from pathlib import Path
+import hashlib
+import json
+import shutil
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT / 'tmp/redesign_20260925'
+OUT = WORK / 'results/forecast_reuse_97'
+SNAPSHOT = ROOT / 'output/research/redesign_20260925_snapshot_39'
+LEDGER_SHA = '807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f'
+WORD_SHA = '4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686'
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def read(path):
+    return json.loads(path.read_text(encoding='utf-8'))
+
+def save(path, value):
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+
+assert not SNAPSHOT.exists(), 'Do not overwrite an archived stage.'
+ledger_path = WORK / 'cumulative_execution_budget.json'
+word = ROOT / 'output/docx/TabICLv2_재설계_근거정리와_남은핵심판단_중간검토.docx'
+assert sha(ledger_path) == LEDGER_SHA
+assert sha(word) == WORD_SHA
+settings = read(OUT / 'settings.json')
+summary = read(OUT / 'summary.json')
+update = read(OUT / 'budget_update.json')
+finished = read(OUT / 'run_finished.json')
+assert finished['success'] and finished['new_model_execution'] is False
+assert settings == summary['settings']
+assert sha(WORK / '97_forecast_reuse_diagnostic_plan.md') == settings['plan_sha256']
+assert sha(WORK / 'forecast_reuse_diagnostic_97.py') == settings['code_sha256']
+for reference in settings['input_files'].values():
+    assert sha(Path(reference['path'])) == reference['sha256']
+assert sha(OUT / 'budget_before.json') == settings['ledger_before_sha256']
+assert sha(OUT / 'budget_after.json') == sha(ledger_path) == update['ledger_after_sha256']
+ledger = read(ledger_path)
+assert ledger['used']['RCTL_fits'] == 29
+assert ledger['remaining_count_budgets'] == {'TabICL_contexts': 11, 'TabICL_query_rows': 20640, 'RCTL_fits': 0}
+assert ledger['new_cheap_diagnostic_seconds']['forecast_reuse_97'] == finished['wall_seconds']
+assert sum(row['stage'] == 'forecast_reuse_97' for row in ledger['cheap_stage_details']) == 1
+
+metrics = summary['metrics']
+assert len(metrics) == 192
+keys = [(r['method'], r['mode'], r['cadence_hours'], r['period']) for r in metrics]
+assert len(set(keys)) == 192
+methods = sorted(set(row['method'] for row in metrics))
+assert len(methods) == 8 and all(summary['invariants'].values())
+assert summary['no_new_model_execution'] and not summary['runtime_speedup_measured']
+assert not summary['new_research_direction_confirmed']
+
+# Artifact checks only: compare stored d=1 and refresh entries with stored fresh predictions.
+with np.load(OUT / 'replayed_predictions.npz', allow_pickle=False) as saved, np.load(
+        settings['input_files']['predictions']['path'], allow_pickle=False) as original:
+    assert len(saved.files) == 68
+    assert saved['y'].shape == (16, 480)
+    assert np.array_equal(saved['target_times'], np.arange(1008, 1488))
+    assert np.array_equal(saved['current_observation'][:, 1:], saved['y'][:, :-1])
+    for row in metrics:
+        assert abs(np.mean(row['cell_mae']) - row['mean_scaled_mae']) < 1e-12
+        begin, end = settings['periods'][row['period']]
+        refresh = np.arange(begin, end) % row['cadence_hours'] == 0
+        assert row['fresh_prediction_rows_arithmetic'] == int(16 * refresh.sum())
+        assert row['model_calls_arithmetic'] == int(row['models'] * refresh.sum())
+    for method in methods:
+        fresh = original[method].astype(np.float64)
+        for mode in settings['modes']:
+            assert np.allclose(saved[f'{method}__{mode}__d1'], fresh, rtol=0, atol=1e-15)
+            for cadence in settings['cadences']:
+                take = np.arange(480) % cadence == 0
+                assert np.allclose(saved[f'{method}__{mode}__d{cadence}'][:, take], fresh[:, take], rtol=0, atol=1e-15)
+
+def metric(method, cadence=1, period='all', mode='hold_increment'):
+    return next(r for r in metrics if (r['method'], r['mode'], r['cadence_hours'], r['period']) == (method, mode, cadence, period))
+
+assert abs(metric('global_20260925', 2)['mean_scaled_mae'] - 0.0777249002810) < 1e-12
+assert abs(metric('global_20260925', 2)['relative_delta_percent'] - 9.3673) < 0.0001
+for other in ['tabicl_risk_20260925', 'empirical_risk_20260925']:
+    assert metric('global_20260925', 2)['mean_scaled_mae'] < metric(other)['mean_scaled_mae']
+    assert metric('global_20260925', 2, 'first_240')['mean_scaled_mae'] > metric(other, period='first_240')['mean_scaled_mae']
+    assert metric('global_20260925', 2, 'last_240')['mean_scaled_mae'] < metric(other, period='last_240')['mean_scaled_mae']
+assert all(metric(method, 2)['delta_mae'] > 0 for method in methods)
+
+scope = {
+    'date': '2026-09-26',
+    'purpose': 'Distinguish posthoc inference-cadence diagnostics from new clustering or model-update decisions.',
+    'search_queries': [
+        '"time series forecasting" "event-triggered" inference',
+        '"traffic forecasting" "prediction" "refresh" inference adaptive',
+        '"forecasting" "caching" "clustering" predictions computational cost',
+        '"time series" "prediction reuse"',
+        '"time series forecasting" "inference" "skip" computational',
+        '"event-triggered" "forecasting" "prediction" neural network',
+        '"neural network" "inference" "reuse" "time series" caching',
+        '"forecasting" "event-triggered" prediction update cost',
+        '"adaptive inference" "regression" sensor',
+        'Skip RNN: Learning to Skip State Updates in Recurrent Neural Networks',
+        'Delta Networks for Optimized Recurrent Network Computation'
+    ],
+    'search_scope_note': 'Broad queries and primary-domain filters included arxiv.org, proceedings.mlr.press, ieee.org, and acm.org. Search absence is not evidence of novelty.',
+    'sources_read': [
+        {
+            'title': 'Delta Networks for Optimized Recurrent Network Computation',
+            'edition': 'ICML 2017, PMLR 70:2584-2593, official 10-page PDF viewed with web reader',
+            'url': 'https://proceedings.mlr.press/v70/neil17a.html',
+            'pdf_url': 'https://proceedings.mlr.press/v70/neil17a/neil17a.pdf',
+            'scope': ['Sections 2-4', 'Equations 2-5', 'GRU internal update construction', 'Thresholded differences and last memorized value'],
+            'local_pdf_downloaded_this_stage': False,
+            'claim_limit': 'Matrix update identity and threshold approximation only; no transfer of published speech/driving speedups to RCTL.'
+        },
+        {
+            'title': 'Skip RNN: Learning to Skip State Updates in Recurrent Neural Networks',
+            'edition': 'arXiv:1708.06834; ICLR 2018 metadata',
+            'url': 'https://arxiv.org/abs/1708.06834',
+            'attempted_pdf_url': 'https://openreview.net/pdf?id=HkwVAXyCW',
+            'scope': ['Abstract', 'Bibliographic metadata'],
+            'access_limit': 'OpenReview PDF request returned a verification challenge; full algorithm not verified in this stage.',
+            'local_pdf_downloaded_this_stage': False
+        }
+    ],
+    'official_external_code_reviewed': False,
+    'external_methods_reproduced': False,
+    'local_code': [{'path': str(WORK / name), 'sha256': sha(WORK / name)} for name in ['forecast_reuse_diagnostic_97.py', 'record_forecast_reuse_97.py', 'data_and_smoke.py']],
+    'execution': {'new_TabICL_contexts': 0, 'new_RCTL_fits': 0, 'new_neural_forwards': 0, 'new_gradients': 0, 'stored_prediction_replay': True},
+    'recommendation_confirmed': False
+}
+save(WORK / '97_source_reading_scope.json', scope)
+
+index = WORK / 'candidate_decision_index.md'
+text = index.read_text(encoding='utf-8')
+heading = '## 예측값의 시간 재사용 — 97'
+assert heading not in text
+text += '''
+## 예측값의 시간 재사용 — 97
+
+83의 재학습 주기, 49의 다른 cell 대표 출력과 구별하여 같은 cell의 이전 RCTL 출력을 재사용했다. 새 모델 호출 없이 기존 8개 방법·16개 cell·480시간에 주기 1/2/3/6시간과 출력 유지/증가량 유지 규칙을 고정하여 확인했다. Delta Networks와 Skip RNN 등에서 계산 재사용 자체는 알려진 원리다.
+
+Global K1의 2시간 증가량 재사용은 전체 MAE 0.077725로 매시간 0.071068보다 9.37% 나쁘지만, 기존 Tab K4 0.087328·실제값 risk K4 0.081600보다 작았다. 앞 10일에는 K4 매시간 방식보다 나빴고 뒤 10일에는 좋았다. 새 예측 행 수는 7,680→3,840의 산술값이며 실제 속도 향상을 측정한 것은 아니다. 관측값은 여전히 매시간 사용한다.
+
+후속 비용 비교에는 이 단순 global 재사용과 95의 기본 batch를 포함한다. Tab이 단순 주기/최근값보다 유용한 실행 결정을 만드는지, 필요한 cell만 global 모델로 처리하는 것보다 cell 소속을 나눌 이유가 있는지는 확인하지 못했다. 따라서 재사용에 Tab을 덧붙인 방향은 미추천이다. 실제 RCTL 출력을 새로운 clustering 결정에 사용하지 않았다. 상세97 참조.
+'''
+index.write_text(text, encoding='utf-8')
+
+progress = WORK / 'progress.md'
+text = progress.read_text(encoding='utf-8')
+anchor = '## 최신 상태 — 96 RCTL 가중치 병합의 적용 범위'
+assert anchor in text
+latest = '''## 최신 상태 — 97 예측 재사용의 정확도·비용 기준
+
+- 2026-09-26. 사전 계획을 고정한 뒤 저장된 8개 방법·16개 cell·480시간의 RCTL 예측을 한 번 재생했다. 주기 1/2/3/6시간, 출력 유지/증가량 유지, 전체/앞/뒤 구간을 모두 기록했으며 총 192개 결과 행이다. 소속·모델·위상·threshold를 새로 선택하지 않았다.
+- Global K1의 2시간 증가량 재사용은 MAE 0.077725, 매시간은 0.071068이었다. 새 예측 행 수를 절반으로 줄이는 산술 구성에서 오차는 9.37% 증가했다. 기존 K4 매시간 방식보다 전체 평균은 작지만 앞 10일에는 더 컸다. 실제 지연시간 개선이나 독립 미래 성능의 증거로 확대하지 않는다.
+- 계산 절감 후보의 기준에 단순 global 재사용을 추가한다. Tab이 더 좋은 실행 결정을 만드는지, global의 선택적 cell 계산보다 clustering이 유리한지는 아직 확인하지 못했다. 단순 재사용 또는 Tab 부가를 새 추천 방향으로 채택하지 않았다.
+- Delta Networks의 §2–4와 식 2–5를 확인해 정확한 내부 행렬 갱신과 이번 출력 근사를 구별했다. Skip RNN은 서지·초록만 확인했고 전문 접근 제한을 기록했다. 새 원문 PDF 다운로드는 없으며 모델 재현을 주장하지 않는다.
+- 새 모델 fit·forward·gradient 모두 0. 저장 배열 분석·쓰기 기록 구간 0.215769초를 cheap 예산에 한 번 반영했다. 누적 기록 modeling 시간 1,998.2764094초, 원장 sha 807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f. 잔여 Tab 11 context/20,640행, 추가 RCTL fit 0이다.
+- 상세97·공개 요약·사전 계획·코드·결과·출처 범위·원장을 검증하고 snapshot39에 보존했다. 이전 Word와 입력 파일은 불변이다. 최종 추천 방향과 최종 Word는 미완료다. 같은 원리의 후보를 반복하지 말고 기존 근거로 판별할 수 있는 유용한 clustering 결정을 계속 탐색한다.
+
+'''
+progress.write_text(text.replace(anchor, latest + anchor.replace('최신', '이전'), 1), encoding='utf-8')
+
+report = ROOT / 'output/research/TabICLv2_재설계_예측재사용과_정확도비용_진단.md'
+findings = WORK / '97_forecast_reuse_findings.md'
+for path in [report, findings]:
+    contents = path.read_text(encoding='utf-8')
+    assert '사례' not in contents
+    assert '앞 10일' in contents and '뒤 10일' in contents
+    assert '9.37%' in contents
+
+files = [WORK / '97_forecast_reuse_diagnostic_plan.md', findings, WORK / '97_source_reading_scope.json',
+         WORK / 'forecast_reuse_diagnostic_97.py', WORK / 'record_forecast_reuse_97.py', Path(__file__).resolve(),
+         report, index, progress, ledger_path]
+files += [path for path in OUT.iterdir() if path.is_file()]
+SNAPSHOT.mkdir()
+rows = []
+for source in sorted(set(files)):
+    relative = source.relative_to(ROOT)
+    destination = SNAPSHOT / relative
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination)
+    assert sha(source) == sha(destination)
+    if source.suffix == '.json':
+        read(source)
+    rows.append({'path': relative.as_posix(), 'bytes': source.stat().st_size, 'sha256': sha(source)})
+manifest = {'files': len(rows), 'bytes': sum(row['bytes'] for row in rows), 'manifest': rows,
+            'external_input_hash_references': settings['input_files'], 'ledger_sha256': LEDGER_SHA,
+            'prior_word_sha256_unchanged': WORD_SHA, 'new_model_execution': False,
+            'goal_complete': False}
+save(SNAPSHOT / 'manifest.json', manifest)
+assert sha(ledger_path) == LEDGER_SHA and sha(word) == WORD_SHA
+verification = {'verified': True, 'snapshot': str(SNAPSHOT), 'files': manifest['files'], 'bytes': manifest['bytes'],
+                'unique_metric_rows': 192, 'prediction_archive_arrays': 68,
+                'input_files_unchanged': True, 'ledger_sha256': LEDGER_SHA,
+                'prior_word_sha256': WORD_SHA, 'no_diagnostic_rerun': True, 'new_model_execution': False}
+save(WORK / '97_archive_verification.json', verification)
+print(json.dumps(verification, ensure_ascii=False, indent=2))

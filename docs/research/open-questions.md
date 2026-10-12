@@ -201,3 +201,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [H125 남은 범위](evidence/0125-frozen-rctl-serving-cost-baseline/packet-coverage.json): 현재 연혁58–536/직전49–527행 직접 미독,9개 checkpoint·원입력의 장기 팀 공유, 원96 이후/이전 고유판본·FedPPBC/DOCX 공백·문헌/실패/비용 통합·최종 원본 변경분/대표 검색 검수는 미완료다.
 
 [H126 남은 범위](evidence/0126-rctl-parameter-merging-scope/packet-coverage.json): 현재 연혁67–545/직전58–536,논문 나머지81페이지 텍스트·다른 시각 내용/literalTXT·원97이후/이전판본·FedPPBC/DOCX공백·전체통합/접근/최종변경·검색검수는 미완료다.
+
+[H127 남은 범위](evidence/0127-forecast-time-reuse-diagnostic/packet-coverage.json): current progress76–554·직전67–545, summary literal71–9909/나머지 cell vectors/모든NPZ 값, 문헌 전체·원98 이후·이전판본/FedPPBC/DOCX·전체 통합/장기 접근/최종 변경분/검색 검수는 미완료다.

@@ -308,3 +308,5 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H125 출처](../sources/history-125.md) · [목록](history-125-sources.jsonl): 새20그룹40별칭/이전2그룹16별칭/직전3판본19별칭,25출처. 본문7·전체JSON11·선택2(부분연혁+NPZ요약) 검수. CRLF-only before판본은 다른raw바이트판본이며 새실행결과가 아니다. 별칭·재사용·재독·저장검산 가산0.
 
 [H126 출처](../sources/history-126.md) · [목록](history-126-sources.jsonl): 새27그룹50별칭/이전7그룹30별칭,34출처. 본문7·전체JSON5·선택5(PDF4+부분연혁1) 검수. 파생TXT/PNG·별칭·재독·기계 비교는 추가 가산0.
+
+[H127 출처](../sources/history-127.md) · [목록](history-127-sources.jsonl): 새18그룹38별칭/이전3그룹8별칭, 총21출처. 본문7·전체JSON8·선택3(연혁·summary·NPZ) 검수. 기계192행/68배열·재독·같은 after 사본·현재 문헌 이미지는 독립 가산0.

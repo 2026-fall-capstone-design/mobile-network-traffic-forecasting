@@ -298,3 +298,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원96 가중치 병합](records/0126-rctl-parameter-merging-scope.md)은 동일 random 초기화·공통 pretrained, 출력 혼합·파라미터 정렬·BN 처리를 구별한 미실행 후보다. [네 문헌 비교](references/parameter-merging.md)와 소속 확정 순서·union-data 비교·재검토 조건을 먼저 확인한다.
 
 학습 공유와 병합을 구별하는 현재 [연구 용어](glossary.md)를 함께 사용한다.
+
+[원97 예측 시간 재사용](records/0127-forecast-time-reuse-diagnostic.md)은 저장 예측의 주기1·2·3·6 출력/증가량 유지 진단이다. 전체 평균의 비용 절충과 앞기간·cell별 손해, late persistence, 실제 latency 미측정을 함께 확인한다. [재사용 문헌/기준](references/forecast-time-reuse.md)을 새 비용 후보의 비교 설계에 연결한다.

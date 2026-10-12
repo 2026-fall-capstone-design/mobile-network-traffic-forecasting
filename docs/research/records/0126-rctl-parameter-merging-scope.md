@@ -213,3 +213,5 @@ TXT4개와 PNG6개는 같은 PDF의 파생 자료이므로 별도 독립 내용 
 [원86 학습 공유](0114-shared-training-scope.md), [원93 탐색 기준](0123-candidate-gates-comparison-scope.md), [원95 batch 비용](0125-frozen-rctl-serving-cost-baseline.md)을 함께 읽는다. 새로운 소속 결정과 같은 유용한 결정의 효율 개선을 구분하고, union-data 비교군·소속 확정 시점·정렬/BN 준비 및 전체 비용을 이슈에 적는다. 당시 새 fit0 상한을 미래 팀 실험 전체의 금지로 해석하지 않는다.
 
 현재 연혁67–545행·직전58–536행, 네 PDF의 나머지81페이지 텍스트와 다른 시각 내용·literal TXT 전문 직접 판독, 원97 이후와 이전 고유 판본, FedPPBC·DOCX 공백, 전체 문헌·실패·비용 통합, 장기 팀 접근, 최종 원본 변경분과 대표 질문 검색 검수.
+
+후속 [원97](0127-forecast-time-reuse-diagnostic.md)은 가중치 병합을 실행하지 않고 고정된 모델의 과거 최종 출력/증가량을 재사용했다. 내부 정확한 delta 계산과 출력 근사를 구별하고, global 재사용·persistence·기본 batch를 후속 비용 후보의 기준에 추가했다.

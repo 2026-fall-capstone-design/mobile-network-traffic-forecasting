@@ -588,3 +588,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원96 weight averaging·model soup·re-basin·fusion을 다시 검토할 때
 
 [원96](records/0126-rctl-parameter-merging-scope.md)과 [문헌의 연산·정보·조건](references/parameter-merging.md)을 읽는다. 출력 혼합과 파라미터 병합, 공통 random 초기화와 pretrained, 소속 이전의 모델 이용과 소속 이후의 학습을 구별한다. 실제 병합 필요성·Tab의 결정/효율 기여·hidden/BN/LSTM 처리·union-data 기준과 전체 비용이 달라졌는지 적는다. 당시 미실행을 성능 실패로, 기호 예를 모든 모델 병합의 불가능성으로 쓰지 않는다.
+
+## 원97 output hold·delta hold·forecast cache를 다시 검토할 때
+
+[원97](records/0127-forecast-time-reuse-diagnostic.md)과 [두 규칙/강한 단순 기준](references/forecast-time-reuse.md)을 먼저 읽는다. 원83 재학습 주기·원49 다른 cell 대표값·원95 동시 batch와 구별하고, 모든 현재 관측을 유지한 비용을 적는다. 새 후보는 fixed clock/persistence/global 선택적 cell 계산 대비 Tab의 유용한 결정, clustering의 이유, 전 기간/cell 손해와 전체 latency를 확인할 질문이 달라졌는지 명시한다.
