@@ -213,3 +213,5 @@
 [H127 원97](records/0127-forecast-time-reuse-diagnostic.md): 같은 cell의 과거 예측을 재사용한 개발 진단. Global 주기2 증가량은 fresh보다9.3673% 악화했으며 예측 행/호출 절반은 산술이다. 두 K4 fresh보다 작은 전체 평균은 앞/뒤 기간에서 뒤집혔다. 새 Tab/RCTL 실행0·후보 미추천.
 
 [H128 원98](records/0128-quantile-information-and-pooling-objective.md): 밀도 정보를 추가한 donor/병합안을 미추천했다. 독립 Uniform 기호 모형에서 A의 분산 주항은65.289% 증가하지만 동등 cell 평균 초과 MAE는11/(8n)→5/(22n)이다. 실제 전체 MAE 개선률이나 RCTL 결과가 아니다. 최종 방향/Word는 당시 미완료였다.
+
+[H129 원99](records/0129-learning-units-and-clustering-cost.md): Cash2025/2026와Ma의 관측 단위·K/지표·최종learner 사용을 대조하고21개 저장 산술행을 검산했다. 새 모델/traffic 통계0, 최종추천/Word미완료. 기존 random/global 원칙은 유지했다.

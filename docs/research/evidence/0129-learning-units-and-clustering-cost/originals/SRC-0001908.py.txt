@@ -1,0 +1,15 @@
+from pathlib import Path
+import subprocess, json
+BASE=Path(__file__).resolve().parent/'sources/learning_unit_99'
+OUT=BASE/'rendered'
+OUT.mkdir(exist_ok=True)
+BIN=Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+pages={'Cash_2025_2509.15072v1':[4], 'Cash_2026_2604.26081v1':[6,8], 'Ma_2026_2604.13748v1':[6,19,20]}
+rows=[]
+for name, indices in pages.items():
+    for p in indices:
+        prefix=OUT/f'{name}_p{p:02d}'
+        subprocess.run([str(BIN),'-f',str(p),'-l',str(p),'-r','110','-singlefile','-png',str(BASE/(name+'.pdf')),str(prefix)],check=True,capture_output=True)
+        rows.append({'pdf':name+'.pdf','page':p,'png':str(prefix)+'.png'})
+(BASE/'render_manifest.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'rendered_pages':len(rows)},ensure_ascii=False))
