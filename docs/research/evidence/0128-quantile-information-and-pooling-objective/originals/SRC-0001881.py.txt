@@ -1,0 +1,21 @@
+from pathlib import Path
+import json, subprocess
+
+base = Path(__file__).resolve().parent / 'sources/quantile_information_98'
+poppler = Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+requests = [
+    ('Bai_distribution_shift_2411.19933v2', [7, 16]),
+    ('Gu_Volgushev_grouped_1801.05041v2', [5, 6]),
+    ('Yang_functional_group_2303.13218v1', [9, 15]),
+]
+rows = []
+for name, pages in requests:
+    for page in pages:
+        prefix = base / f'{name}_p{page}'
+        destination = Path(str(prefix) + '.png')
+        if not destination.exists():
+            subprocess.run([str(poppler), '-f', str(page), '-l', str(page), '-r', '120', '-png', '-singlefile', str(base / (name + '.pdf')), str(prefix)], check=True, timeout=35, capture_output=True)
+        assert destination.exists()
+        rows.append({'source': name + '.pdf', 'pdf_page': page, 'image': str(destination)})
+(base / 'render_manifest.json').write_text(json.dumps(rows, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps({'rendered_pages': len(rows)}, ensure_ascii=False))

@@ -15,3 +15,5 @@ Daniel Neil, Jun Haeng Lee, Tobi Delbruck, Shih-Chii Liu, **Delta Networks for O
 Victor Campos, Brendan Jou, Xavier Giro-i-Nieto, Jordi Torres, Shih-Fu Chang, **Skip RNN: Learning to Skip State Updates in Recurrent Neural Networks**, ICLR2018. [공식 arXiv1708.06834v3](https://arxiv.org/abs/1708.06834v3)는2017-08-22 제출/2018-02-05 개정이다. 현재 확인은 제목·초록·서지/판본까지다. 당시 OpenReview 확인 화면을 현재 접근 실패로 쓰지 않으며 상세 알고리즘 재현을 주장하지 않는다.
 
 후속 후보는 fixed clock/최근값/persistence, 하나의global에서 필요한cell만 계산하는 방식과 기본batch를 포함한다. 실행 시점에 사용 가능한 자료, 전체/기간/cell별 손해, Tab이 바꾸는 유용한 결정과 clustering의 필요성, 관측/준비/cache/Tab 추가비용을 함께 적는다. 새 실험은 다른 질문과 조건을 먼저 명시한다.
+
+후속 [원98 정보량/공동 목적](../records/0128-quantile-information-and-pooling-objective.md)은 새로운 모델 계산 없이 유한 자료 추정의 이득을 검토했다. 예측 시간 재사용의 실제 latency와 중앙값 정보의 기호 주항은 다른 근거다. [밀도·grouping 비교](quantile-information-and-grouping.md)에 목적·의존 조건·재추정 범위를 연결한다.
