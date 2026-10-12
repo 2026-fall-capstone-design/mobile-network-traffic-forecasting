@@ -1,0 +1,40 @@
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
+import hashlib, json, urllib.request
+from datetime import datetime, timezone
+from pypdf import PdfReader
+
+BASE=Path(__file__).resolve().parent
+OUT=BASE/'sources/model_merging_96'
+OUT.mkdir(parents=True,exist_ok=True)
+MAX=15_000_000
+ITEMS=[
+ ('Model_Soups_ICML2022','https://proceedings.mlr.press/v162/wortsman22a/wortsman22a.pdf'),
+ ('Git_Re_Basin_2209.04836v4','https://arxiv.org/pdf/2209.04836v4'),
+ ('Breaking_Silos_ICML2025','https://raw.githubusercontent.com/mlresearch/v267/main/assets/liu25cm/liu25cm.pdf'),
+ ('Probabilistic_Merging_UAI2026','https://raw.githubusercontent.com/mlresearch/v337/main/assets/bui26a/bui26a.pdf')
+]
+def fetch(item):
+ name,url=item
+ result={'name':name,'url':url,'retrieved_at_utc':datetime.now(timezone.utc).isoformat()}
+ try:
+  request=urllib.request.Request(url,headers={'User-Agent':'Research-source-verification/1.0'})
+  with urllib.request.urlopen(request,timeout=45) as response:
+   content=response.read(MAX+1)
+   result.update(status=response.status,final_url=response.url,content_type=response.headers.get('Content-Type'))
+  if len(content)>MAX: raise ValueError('Source exceeds per-paper 15 MB cap')
+  if not content.startswith(b'%PDF'): raise ValueError('Response is not PDF')
+  target=OUT/(name+'.pdf')
+  if target.exists(): raise FileExistsError(str(target))
+  target.write_bytes(content)
+  reader=PdfReader(target)
+  text=[]
+  for n,page in enumerate(reader.pages,1): text.append(f'\n--- PDF PAGE {n} ---\n'+(page.extract_text() or ''))
+  target.with_suffix('.txt').write_text('\n'.join(text),encoding='utf-8')
+  result.update(bytes=len(content),pages=len(reader.pages),sha256=hashlib.sha256(content).hexdigest(),path=str(target),success=True)
+ except Exception as error:
+  result.update(success=False,error=str(error))
+ return result
+with ThreadPoolExecutor(max_workers=4) as pool: results=list(pool.map(fetch,ITEMS))
+(OUT/'download_manifest.json').write_text(json.dumps({'sources':results,'no_model_execution':True},ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(results,ensure_ascii=False,indent=2))

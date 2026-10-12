@@ -1,0 +1,104 @@
+{
+  "date": "2026-09-26",
+  "purpose": "Distinguish predictive similarity, parameter mergeability, and data-only clustering decisions.",
+  "search_queries": [
+    "model soups averaging weights fine-tuned models same initialization batch normalization statistics paper",
+    "model merging regression neural networks batch normalization common initialization feature matching weight averaging time series",
+    "model merging time series forecasting clustering 2025 2026 arxiv"
+  ],
+  "search_domains_last_query": [
+    "arxiv.org",
+    "openreview.net",
+    "proceedings.mlr.press"
+  ],
+  "sources_read": [
+    {
+      "paper": "Model soups",
+      "edition": "ICML 2022 PMLR publisher PDF",
+      "url": "https://proceedings.mlr.press/v162/wortsman22a.html",
+      "scope": [
+        "Section 2",
+        "Table 2",
+        "Recipe 1",
+        "Section 3.1 setup"
+      ],
+      "visual_pdf_pages": [
+        3
+      ]
+    },
+    {
+      "paper": "Git Re-Basin",
+      "edition": "arXiv:2209.04836v4",
+      "url": "https://arxiv.org/html/2209.04836v4",
+      "scope": [
+        "Sections 3.1-3.3",
+        "Algorithm 1",
+        "Section 4 statement",
+        "Section 5.4",
+        "Appendices A.3-A.4"
+      ],
+      "visual_pdf_pages": [
+        21
+      ]
+    },
+    {
+      "paper": "Breaking Silos: Adaptive Model Fusion Unlocks Better Time Series Forecasting",
+      "edition": "ICML 2025 PMLR publisher PDF",
+      "url": "https://proceedings.mlr.press/v267/liu25cm.html",
+      "scope": [
+        "Sections 3.1-3.2",
+        "Equations 1-2",
+        "Algorithm 1",
+        "Table 2 read without reproducing results"
+      ],
+      "visual_pdf_pages": [
+        4
+      ]
+    },
+    {
+      "paper": "Model Merging as Probabilistic Inference in Fine-Tuning Parameter Space",
+      "edition": "UAI 2026 PMLR publisher PDF",
+      "url": "https://proceedings.mlr.press/v337/bui26a.html",
+      "scope": [
+        "Sections 2-5",
+        "Equations 18-26",
+        "Algorithm 1",
+        "Appendix A",
+        "Appendix B",
+        "Appendix C opening, not implementation verification"
+      ],
+      "visual_pdf_pages": [
+        6,
+        13,
+        14
+      ]
+    }
+  ],
+  "external_official_code_reviewed": false,
+  "external_code_executed": false,
+  "local_static_code": [
+    {
+      "path": "C:\\Users\\jungj\\OneDrive\\Desktop\\연구실\\Tab-ICL\\tmp\\redesign_20260925\\rctl_torch.py",
+      "sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c"
+    },
+    {
+      "path": "C:\\Users\\jungj\\OneDrive\\Desktop\\연구실\\Tab-ICL\\tmp\\redesign_20260925\\train_rctl_pilot.py",
+      "sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e"
+    }
+  ],
+  "symbolic_checks": [
+    "ReLU positive scaling: functions equal, parameter average differs by factor 9/8",
+    "UAI Eq22/Eq24: one-dimensional theta=gamma=1, eta>0 shifts fixed point from stationary point"
+  ],
+  "source_scope_limit": "Methods and selected related statements read; not all 104 pages, all proofs, experiments, or software reproduced.",
+  "execution": {
+    "Tab_contexts": 0,
+    "query_predictions": 0,
+    "RCTL_fits": 0,
+    "gradients": 0,
+    "BN_updates": 0,
+    "frozen_inference": 0
+  },
+  "render_issue": "First pass stopped on a dotted arXiv filename suffix assertion after two PNGs were already rendered. Fixed concatenation, reused those PNGs, rendered four remaining pages.",
+  "goal_complete": false
+}

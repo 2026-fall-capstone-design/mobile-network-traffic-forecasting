@@ -207,3 +207,5 @@
 [H124 원94](records/0124-delayed-target-inference-boundaries.md): 실제 정답 지연의 h행/cell 계산·PPCI v2/Algorithm Selection/ADAPT 원문 가정 검토. 현재 정적 h1 후보 미채택이며 새 성능 실험0. v1 우려와 v2 수정, 입력 변화와 조건부 변화, 논문 결과와 RCTL 소속 이득을 구분했다.
 
 [H125 원95](records/0125-frozen-rctl-serving-cost-baseline.md): 보존9개 RCTL의16cell·12시점×3반복 CPU 비용을 실제 측정한 역사기록이다. 기본 batch 처리의 이득을 Tab 신규성으로 세지 않고 B2 판정을 유지했다. 이번 정리는 저장 배열 검산이며 새 모델 실행0이다.
+
+[H126 원96](records/0126-rctl-parameter-merging-scope.md): 모델 병합 문헌·현재 RCTL 코드·기호 반례 검토 후 미채택. 같은 seed는 확인했으나 공통 pretrained와 다르며, prediction 유사성이 hidden 병합을 보장하지 않는다. 후단 병합은 검토 가능하고 새 병합 성능 실험은0이다.

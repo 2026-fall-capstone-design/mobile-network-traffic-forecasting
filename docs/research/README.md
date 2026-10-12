@@ -294,3 +294,7 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원94 정답 대기 입력](records/0124-delayed-target-inference-boundaries.md)은 실제 h별 관측시각·PPI 보장 가정·PPCI v2 수정·RCTL 소속 연결과 비용을 구분한다. 관련 실험 전에는 [세 문헌 비교](references/delayed-target-inference.md)와 재검토 조건을 확인한다.
 
 [원95 저장 RCTL의 실제 호출 비용](records/0125-frozen-rctl-serving-cost-baseline.md)은 cell별 호출과 같은 가중치의 batch 처리, 모델 저장량·예측 행·호출·실측시간을 구분한다. 비용 실험 전에는 [기본 비교 조건](references/serving-cost-baseline.md)을 확인한다.
+
+[원96 가중치 병합](records/0126-rctl-parameter-merging-scope.md)은 동일 random 초기화·공통 pretrained, 출력 혼합·파라미터 정렬·BN 처리를 구별한 미실행 후보다. [네 문헌 비교](references/parameter-merging.md)와 소속 확정 순서·union-data 비교·재검토 조건을 먼저 확인한다.
+
+학습 공유와 병합을 구별하는 현재 [연구 용어](glossary.md)를 함께 사용한다.
