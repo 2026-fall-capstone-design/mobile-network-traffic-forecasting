@@ -1,0 +1,42 @@
+from pathlib import Path
+import hashlib, json, subprocess, urllib.request
+
+B = Path(__file__).resolve().parent
+S = B / 'sources/architecture_proxy_102'
+OUT = S / 'code'
+OUT.mkdir(exist_ok=True)
+
+def fetch(url):
+    req = urllib.request.Request(url, headers={'User-Agent': 'research-source-verification/1.0'})
+    with urllib.request.urlopen(req, timeout=45) as r:
+        return r.read()
+
+meta = json.loads(fetch('https://api.github.com/repos/thegregyang/NTK4A/commits/master'))
+commit = meta['sha']
+records = []
+for name in ['README.md', 'RNN-NTK.ipynb', 'Batchnorm-NTK.ipynb', 'utils.py']:
+    url = f'https://raw.githubusercontent.com/thegregyang/NTK4A/{commit}/{name}'
+    data = fetch(url)
+    path = OUT / name
+    assert not path.exists(), path
+    path.write_bytes(data)
+    if name.endswith('.ipynb'):
+        notebook = json.loads(data)
+        text = '\n\n'.join(f"CELL {i} [{c['cell_type']}]\n" + ''.join(c.get('source', []))
+                           for i, c in enumerate(notebook['cells']))
+        (OUT / (name + '.txt')).write_text(text, encoding='utf-8')
+    records.append({'url': url, 'file': str(path), 'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)})
+(OUT / 'manifest.json').write_text(json.dumps({'commit': commit, 'files': records, 'executed': False}, indent=2), encoding='utf-8')
+
+poppler = Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+R = S / 'render'
+R.mkdir(exist_ok=True)
+renders = []
+for fname, pages in [('RNTK_2006.10246v4.pdf', [3, 5, 9]), ('TensorProgramsII_2006.14548v4.pdf', [2, 11, 27])]:
+    for page in pages:
+        prefix = R / f'{Path(fname).stem}_p{page}'
+        png = Path(str(prefix) + '.png')
+        assert not png.exists(), png
+        subprocess.run([str(poppler), '-f', str(page), '-l', str(page), '-scale-to', '1500', '-singlefile', '-png', str(S / fname), str(prefix)], check=True, capture_output=True)
+        renders.append(str(png))
+print(json.dumps({'commit': commit, 'source_files': len(records), 'rendered_pages': renders, 'model_execution': False}, indent=2))

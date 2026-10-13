@@ -211,3 +211,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [원100](records/0130-pretraining-objective-and-time-conditioning.md) 뒤 남은 질문은 Tab의 좋은 직접 예측이 실제 cell 공유 결정 또는 같은 유용한 결정의 추정 효율에 주는 기여다. manual K1, 선택 밖 import, 원실험 재현, 전 TXT, 현재 연혁103–582/이전94–573, Word 본문도 미검증이다. N1000 학습 범위를 절대 실행 상한으로 반복하지 않는다.
 
 [원101](records/0131-actual-pooled-context-and-rctl-ranking.md) 이후에는 같은기초자료를 쓰더라도 입력표현·validation·학습방식의 차이를 통제한 소속 효용과 Tab의 추가 기여를 구별해야 한다. K4의 Tab평가시간을 RCTL운영이득으로 옮기지 않는다. progress112–591/이전103–582·Word본문·선정밖callee·독립재현·전체통합은 남는다.
+
+[원102](records/0132-architecture-kernel-and-joint-risk.md)은 현재 RCTL의 학습 위험을 kernel로 대신하는 연결 근거·비용 개선이 남음을 기록했다. Morello PDF와 두2026 논문의 전체방법, 현재progress122–601/이전112–591, Word 등 고유 기록·전체 통합/팀 접근/최종delta/검색10+는 미완료다. 일반 NTK 접근 전체의 기각으로 처리하지 않는다.

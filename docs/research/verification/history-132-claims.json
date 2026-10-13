@@ -1,0 +1,1690 @@
+{
+  "batch_id": "history-132",
+  "record_path": "../records/0132-architecture-kernel-and-joint-risk.md",
+  "record_sha256": "72680000544a1a98e45d7b180084b88d9cdbbf4ed6c952f38bf9abb8c77bea04",
+  "claims": [
+    {
+      "claim_id": "H132-C01",
+      "title": "원102의 질문과 판단",
+      "claim": "2026-09-26 원102는 직전 실제 pooled Tab context와 저장 RCTL의 두 K4 순위 불일치를, 학습하지 않는 구조 기반 대리값으로 보완할 수 있는지 검토했다. 현재 안에 RNN kernel을 추가하지 않는다는 판단이다. 새 kernel 성능 실험의 실패나 모든 NTK 접근의 불가능성을 측정한 기록은 아니다.",
+      "claim_type": "historical_scope",
+      "record_anchor": "claim-01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001994",
+          "lines": [
+            1,
+            7
+          ],
+          "source_sha256": "68d104424c281380ba66ec12caf06ced3009ec253d25ee95b90682dbde9d4595",
+          "team_source": "../sources/history-132.md#src-0001994"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            5,
+            9
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001992",
+          "lines": [
+            3,
+            7
+          ],
+          "source_sha256": "ab87a0d77ad9e5aa060a425afc394a5c0f0e5e15153448581d6796740a3bc62f",
+          "team_source": "../sources/history-132.md#src-0001992"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H132-C02",
+      "title": "실제 모델 gradient와 수학적 kernel 계산",
+      "claim": "RCTL을 초기화해 Jacobian·forward/backward를 계산하는 일은 학습을 생략해도 모델 실행이다. 구조·초기화의 정의로 analytic infinite-width kernel을 계산하는 접근은 구별한다. 실행 독립성이 가능하다는 사실만으로 유한 RCTL의 공유 효과·순위를 잘 대리한다는 결론은 나오지 않는다.",
+      "claim_type": "method_boundary",
+      "record_anchor": "claim-02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            11,
+            15
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001992",
+          "lines": [
+            13,
+            17
+          ],
+          "source_sha256": "ab87a0d77ad9e5aa060a425afc394a5c0f0e5e15153448581d6796740a3bc62f",
+          "team_source": "../sources/history-132.md#src-0001992"
+        },
+        {
+          "source_id": "SRC-0002012",
+          "lines": [
+            100,
+            137
+          ],
+          "source_sha256": "aa8ff03ecfac12dc330a54a4c91fd365316c1e4f817fa89ceff390922192ce36",
+          "team_source": "../sources/history-132.md#src-0002012"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H132-C03",
+      "title": "당시 선택 검토와 현재 전체 판독",
+      "claim": "당시 확보한 PDF는 합계86쪽이지만 실제로는 관련 본문과 렌더6쪽·공식 코드4파일을 확인했다. 현재 아카이브는 보관 RNTK26쪽/TP II60쪽을 텍스트8069행과 전체 이미지86개로 읽었다. 전문 판독을 독립적인 증명 전수검증·후속 NTK 연구 전수조사로 부르지 않는다.",
+      "claim_type": "reading_scope",
+      "record_anchor": "claim-03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            27,
+            29
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001992",
+          "lines": [
+            33,
+            35
+          ],
+          "source_sha256": "ab87a0d77ad9e5aa060a425afc394a5c0f0e5e15153448581d6796740a3bc62f",
+          "team_source": "../sources/history-132.md#src-0001992"
+        },
+        {
+          "source_id": "SRC-0001995",
+          "JSON_pointers": [
+            "/source_pdf_pages_total_not_pages_read",
+            "/rendered_pages_visually_checked",
+            "/official_code_files_saved"
+          ],
+          "source_sha256": "bc1a678fd867f5e25cc87b2d0db11461d4b6c938f0029c0e296141954a67d96a",
+          "team_source": "../sources/history-132.md#src-0001995"
+        },
+        {
+          "source_id": "SRC-0002002",
+          "PDF_pages": [
+            1,
+            26
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "f4dafafcc2127d5123d38b8ebcdf1a16dc410f9f9de84faf182c09695f7d3926",
+          "team_source": "../sources/history-132.md#src-0002002"
+        },
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            1,
+            60
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "paper_read_scope": "../evidence/0132-architecture-kernel-and-joint-risk/paper-reading-scope.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H132-C04",
+      "title": "새 모델 실행과 역사적 예산",
+      "claim": "원102는 새 Tab context/query·RCTL fit/forward/gradient/BN 갱신·단순 predictor fit·traffic 수치 실험0을 기록했고, 잔여 Tab2context/4512query와 추가 RCTLfit0을 유지했다. 최종 추천과 Word는 미완료였다. 현재 정리도 원코드 실행/import·모델 생성·학습·추론·gradient0이며 과거 Goal·다음 행동·예산은 자료다.",
+      "claim_type": "execution_scope",
+      "record_anchor": "claim-04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001994",
+          "lines": [
+            17,
+            23
+          ],
+          "source_sha256": "68d104424c281380ba66ec12caf06ced3009ec253d25ee95b90682dbde9d4595",
+          "team_source": "../sources/history-132.md#src-0001994"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            78,
+            78
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001995",
+          "JSON_pointers": [
+            "/new_TabICL_contexts",
+            "/new_TabICL_query_rows",
+            "/new_RCTL_fits",
+            "/new_RCTL_forwards",
+            "/new_RCTL_gradients",
+            "/new_simple_predictor_fits",
+            "/new_traffic_numerical_experiments",
+            "/goal_complete"
+          ],
+          "source_sha256": "bc1a678fd867f5e25cc87b2d0db11461d4b6c938f0029c0e296141954a67d96a",
+          "team_source": "../sources/history-132.md#src-0001995"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H132-C05",
+      "title": "문헌 버전과 공식 구현의 저자 구분",
+      "claim": "보관 RNTK는 Alemohammad·Wang·Balestriero·Baraniuk의 arXiv2006.10246v4(2021-06-15), TP II는 Greg Yang의 arXiv2006.14548v4(2020-11-30)다. NTK4A는 TP II의 공식 companion이며 RNTK 저자들의 공식 코드로 기록하지 않는다. 현재 웹 서지는 보관 PDF의 새 원격 바이트 동일성 검증과도 구별한다.",
+      "claim_type": "provenance",
+      "record_anchor": "claim-05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            29,
+            29
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            82,
+            84
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001997",
+          "lines": [
+            1,
+            25
+          ],
+          "source_sha256": "cd021d0164a461c3a3f7336de20447e7d6d5421a62fa4d73cb9941185704bd30",
+          "team_source": "../sources/history-132.md#src-0001997"
+        },
+        {
+          "source_id": "SRC-0002002",
+          "PDF_pages": [
+            1
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "f4dafafcc2127d5123d38b8ebcdf1a16dc410f9f9de84faf182c09695f7d3926",
+          "team_source": "../sources/history-132.md#src-0002002"
+        },
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            1
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "primary_metadata": "../evidence/0132-architecture-kernel-and-joint-risk/primary-bibliography.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H132-C06",
+      "title": "RNTK가 다룬 recurrent 구조",
+      "claim": "RNTK는 단순 recurrent 변환·선형 last-state 출력과 Gaussian NTK 초기화의 infinite-width kernel을 전개한다. 길이가 다른 입력과 scalar kernel×출력 항등행렬, 같은 길이에서 tied/untied weight의 극한 관계를 포함한다. TCN·LSTM·BN·잔차를 합친 현재 RCTL의 kernel을 그대로 제공한 것은 아니다.",
+      "claim_type": "theory_scope",
+      "record_anchor": "claim-06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002002",
+          "PDF_pages": [
+            3,
+            4,
+            6
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "f4dafafcc2127d5123d38b8ebcdf1a16dc410f9f9de84faf182c09695f7d3926",
+          "team_source": "../sources/history-132.md#src-0002002"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            21,
+            25
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H132-C07",
+      "title": "RNTK 초기화·학습 정리와 제곱오차의 조건",
+      "claim": "RNTK의 kernel 안정성·학습 연결에는 NTK 초기화, 충분한 폭, 초기 kernel의 양의 고유값과 학습 regime/step 조건 등이 붙는다. §2의 제곱오차 선형 ODE·kernel 회귀 연결을 유한 RCTL의 Adam·MAE 최종 예측과 동일시하지 않는다. 본문의 일반 loss 표기와 부록의 조건부 kernel 안정성 진술을 논문 전체가 오직 MSE만 다룬다는 뜻으로 축소하지 않으며, 독립적인 증명 검증도 주장하지 않는다.",
+      "claim_type": "theory_boundary",
+      "record_anchor": "claim-07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002002",
+          "PDF_pages": [
+            2,
+            3,
+            5,
+            23,
+            24,
+            25,
+            26
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "f4dafafcc2127d5123d38b8ebcdf1a16dc410f9f9de84faf182c09695f7d3926",
+          "team_source": "../sources/history-132.md#src-0002002"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            21,
+            24
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H132-C08",
+      "title": "RNTK의 실증 범위와 예외",
+      "claim": "RNTK의 UCR 분류·synthetic/stock next-step 비교는 telecom의 pooling 소속·336시간 평가와 다르다. stock에서는 PTS가 kernel들보다 좋았고 분류도 모든 dataset 승리는 아니다. 부록 P90/P95는 각 dataset의 비교 classifier 최고 관측 정확도의90/95% 이상을 달성하는 dataset의 비율로, Tab 예측 분위수나 신뢰구간이 아니다. 저장 연구를 현재 새 실험으로 세지 않는다.",
+      "claim_type": "empirical_scope",
+      "record_anchor": "claim-08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002002",
+          "PDF_pages": [
+            7,
+            8,
+            12,
+            13,
+            14
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "f4dafafcc2127d5123d38b8ebcdf1a16dc410f9f9de84faf182c09695f7d3926",
+          "team_source": "../sources/history-132.md#src-0002002"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            82,
+            82
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H132-C09",
+      "title": "TP II의 일반 구조와 INIT/TRAIN 구분",
+      "claim": "TP II는 formal tensor program 조건에서 LSTM/GRU·합성곱·skip/residual·BN·pooling 등의 초기 NTK 극한을 다루므로 LSTM이나 BN을 이론상 못 다룬다는 기각은 부정확하다. 본문은 NTK INIT을 일반화하고 일반 구조의 NTK TRAIN은 후속 문제로 구별한다. 표현 가능성과 실제 유한 Adam·MAE 학습 위험의 정확한 대리는 별개다.",
+      "claim_type": "theory_scope",
+      "record_anchor": "claim-09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            1,
+            2,
+            3,
+            10,
+            11,
+            25,
+            26,
+            27,
+            28
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            23,
+            25
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H132-C10",
+      "title": "TP II 가정·폭 비율·증명 검증의 한계",
+      "claim": "TP II의 BP-like 프로그램, mean-zero independent readout/GIA 조건과 rank 안정성·약미분/성장 조건을 유지한다. deterministic readout averaging 반례는 shortcut의 조건 위반이며 kernel 자체의 부재가 아니다. 변수별 폭의 유한 양의 비율을 허용하므로 RCTL 채널 수가 서로 다르다는 사실만으로 적용 불가를 증명하지 않는다. 60쪽 전문을 읽었지만 인용 증명과 인쇄 기호의 불일치를 모두 독립 해결한 것은 아니다.",
+      "claim_type": "theory_conditions",
+      "record_anchor": "claim-10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            6,
+            9,
+            10,
+            11,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            41,
+            52,
+            60
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "proof_review_limit": "../evidence/0132-architecture-kernel-and-joint-risk/paper-reading-scope.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H132-C11",
+      "title": "현재 RCTL의 구조·초기화·readout",
+      "claim": "재사용 RCTL은6개 causal Conv/LSTM/residual block, 폭16/32/64/64/32/16, BN eps.001·momentum.01, dropout.05와 flatten8×16→scalar readout을 쓴다. Conv/Linear Xavier uniform, LSTM input Xavier·recurrent orthogonal·forget bias1이다. Gaussian·infinite-width simple RNN의 LastState/AvgPool과 같지 않지만 이 차이 자체가 성능 실패의 증명은 아니다.",
+      "claim_type": "implementation_conditions",
+      "record_anchor": "claim-11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023048",
+          "lines": [
+            11,
+            60
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-132.md#src-0023048"
+        },
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            32,
+            33
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        },
+        {
+          "source_id": "SRC-0002012",
+          "lines": [
+            36,
+            98
+          ],
+          "source_sha256": "aa8ff03ecfac12dc330a54a4c91fd365316c1e4f817fa89ceff390922192ce36",
+          "team_source": "../sources/history-132.md#src-0002012"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            24,
+            25
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H132-C12",
+      "title": "현재 RCTL 학습 조건과 자료 표현",
+      "claim": "보관 pilot는 같은16기초값을8lag step마다 나머지8값을 반복하는8×9 입력으로 바꾼다. cell당672학습행(index168–839), validation840–1007, 기존 test1008–1487, 최대80epoch/batch256/patience10/Adam lr.001·eps1e-7·MAE와 validation best를 사용한다. 원101은 test 첫336시점의 rolling 실측 lag 비교였다. 새 kernel/RCTL 비교를 실행하지 않았고 이 기존 코드 재독의 신규 집계는0이다.",
+      "claim_type": "implementation_conditions",
+      "record_anchor": "claim-12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            17,
+            50
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-132.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            51,
+            126
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-132.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            9,
+            9
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            22,
+            24
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001996",
+          "lines": [
+            40,
+            40
+          ],
+          "source_sha256": "f69d3a339ab73500fdebda7707431aad7b3e09b32e0774258d1f80db6e56b357",
+          "team_source": "../sources/history-132.md#src-0001996"
+        },
+        {
+          "source_id": "SRC-0001969",
+          "lines": [
+            9,
+            12
+          ],
+          "source_sha256": "a16d95b23a9b1b2e9dfb3b9e005c7a4c11db2cc22cbdb0d80b3a02dcf98d9d45",
+          "team_source": "../sources/history-132.md#src-0001969"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H132-C13",
+      "title": "NTK4A pin과 source-only 변환",
+      "claim": "NTK4A commit db79a5bd9e75e5a15548306d4770951f94883fb7의 README·utils·RNN/BN notebook4개는 Git blob/크기/SHA와 보관 바이트가 일치한다. README는 선택한 advanced architecture의 구현이며 모든 구조를 구현하지 않는다. 당시 notebook TXT는 모든 cell의 source만 이어 붙여 저장 출력·metadata를 생략했다. 현재 논리 내용 판독은 그 누락을 따로 확인했다.",
+      "claim_type": "code_provenance",
+      "record_anchor": "claim-13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002013",
+          "lines": [
+            1,
+            30
+          ],
+          "source_sha256": "826eb4ef74472ea4c51a28996ac80cb3b986c77ca3766af0bc42da711d61af0c",
+          "team_source": "../sources/history-132.md#src-0002013"
+        },
+        {
+          "source_id": "SRC-0002010",
+          "lines": [
+            1,
+            30
+          ],
+          "source_sha256": "e94d7d8648eb62026ce56a4bfdc21f8e95fa1772c96bfbb222fbc0941d96e2ac",
+          "team_source": "../sources/history-132.md#src-0002010"
+        },
+        {
+          "source_id": "SRC-0002000",
+          "lines": [
+            1,
+            42
+          ],
+          "source_sha256": "cb15e6624d659e05dbb0e56e487b992b354d327aa25499706b2dfef485377fb9",
+          "team_source": "../sources/history-132.md#src-0002000"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "pinned_code_identity": "../evidence/0132-architecture-kernel-and-joint-risk/official-code-identity-check.json"
+      },
+      "archive_scope_evidence": {
+        "notebook_read_scope": "../evidence/0132-architecture-kernel-and-joint-risk/notebook-reading-scope.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H132-C14",
+      "title": "RNN simulation·analytic·출력 방식",
+      "claim": "SimpleRNNClassifier/simrnn_ntk는 finite Gaussian model을 만들고 forward/backward 후 parameter gradient 내적을 계산한다. rnnntk_batch는 input Gram에서 activation·backward covariance를 전개하는 analytic 경로다. LastState와 AvgPool의 NTK 합·경계조건이 달라 현재 RCTL flatten readout에 그대로 대입할 수 없다. 함수 읽기만 했고 어떤 경로도 실행하지 않았다.",
+      "claim_type": "code_scope",
+      "record_anchor": "claim-14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002012",
+          "lines": [
+            36,
+            137
+          ],
+          "source_sha256": "aa8ff03ecfac12dc330a54a4c91fd365316c1e4f817fa89ceff390922192ce36",
+          "team_source": "../sources/history-132.md#src-0002012"
+        },
+        {
+          "source_id": "SRC-0002012",
+          "lines": [
+            169,
+            252
+          ],
+          "source_sha256": "aa8ff03ecfac12dc330a54a4c91fd365316c1e4f817fa89ceff390922192ce36",
+          "team_source": "../sources/history-132.md#src-0002012"
+        },
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            32,
+            33
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H132-C15",
+      "title": "RNN 예제의 입력·seed·측정량",
+      "claim": "RNN 저장 예제는 CIFAR10 첫2이미지의 첫5pixel×3channel을 sequence로 사용하고 erf·varw1/varu2/varb.2/varv1·avgpool True·width64–8192·100seed를 비교한다. 다른 길이용 rnnntk helper도 있지만 해당 예제의 호출은 rnnntk_batch다. 상대 Frobenius NTK 오차는 원101의 traffic MAE·소속 위험이 아니다.",
+      "claim_type": "code_example_scope",
+      "record_anchor": "claim-15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002012",
+          "lines": [
+            259,
+            333
+          ],
+          "source_sha256": "aa8ff03ecfac12dc330a54a4c91fd365316c1e4f817fa89ceff390922192ce36",
+          "team_source": "../sources/history-132.md#src-0002012"
+        },
+        {
+          "source_id": "SRC-0002012",
+          "lines": [
+            337,
+            421
+          ],
+          "source_sha256": "aa8ff03ecfac12dc330a54a4c91fd365316c1e4f817fa89ceff390922192ce36",
+          "team_source": "../sources/history-132.md#src-0002012"
+        },
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            2
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H132-C16",
+      "title": "BN 예제의 epsilon·batch·analytic 미분",
+      "claim": "BN 예제는 Gaussian ReLU MLP/depth1·CIFAR12·projection13차원·두 batch7/5·width64–8192·100seed다. eps0·momentumNone·affineFalse·running stats 없음은 현재 RCTL BN과 다르며, 두 batch를 cell cluster K2로 부르지 않는다. analytic backward는 covariance 변환에 Torch autograd를 사용하고 simNTK의 model gradient와 역할이 다르다. TP II Master의 epsilon>0 조건/epsilon0 각주와 공식 예제 범위를 구별한다.",
+      "claim_type": "code_example_scope",
+      "record_anchor": "claim-16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002009",
+          "lines": [
+            42,
+            80
+          ],
+          "source_sha256": "d7f44e7f200dda6485605baa4ad0ace8afb1ee4e72b735519b5d5c24f1459f33",
+          "team_source": "../sources/history-132.md#src-0002009"
+        },
+        {
+          "source_id": "SRC-0002009",
+          "lines": [
+            157,
+            237
+          ],
+          "source_sha256": "d7f44e7f200dda6485605baa4ad0ace8afb1ee4e72b735519b5d5c24f1459f33",
+          "team_source": "../sources/history-132.md#src-0002009"
+        },
+        {
+          "source_id": "SRC-0002009",
+          "lines": [
+            393,
+            561
+          ],
+          "source_sha256": "d7f44e7f200dda6485605baa4ad0ace8afb1ee4e72b735519b5d5c24f1459f33",
+          "team_source": "../sources/history-132.md#src-0002009"
+        },
+        {
+          "source_id": "SRC-0002009",
+          "lines": [
+            640,
+            798
+          ],
+          "source_sha256": "d7f44e7f200dda6485605baa4ad0ace8afb1ee4e72b735519b5d5c24f1459f33",
+          "team_source": "../sources/history-132.md#src-0002009"
+        },
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            26,
+            36,
+            37,
+            38
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        },
+        {
+          "source_id": "SRC-0023048",
+          "lines": [
+            19,
+            25
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-132.md#src-0023048"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H132-C17",
+      "title": "notebook 저장 출력·시각 자료의 출처",
+      "claim": "현재 BN48/RNN34셀의 source·metadata·저장 출력6개/PNG2개를 모두 읽었고 고정 공식 연결 그림15개도 전체 확인했다. 이는 literal notebook JSON/base64 전문 읽기나 새2026실행이 아니다. ExecuteTime은2020-06-17, kernelspec Python3.6.6/language_info3.6.10을 함께 보존한다. 저장 진행률·시간·width 오차곡선을 현재 RCTL 비용/MAE로 옮기지 않는다. TP II 2쪽 plot의 band는100seed 평균의95%CI로 명시되어 있다.",
+      "claim_type": "reading_scope",
+      "record_anchor": "claim-17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002008",
+          "notebook_cells_zero_based": [
+            36,
+            44,
+            46
+          ],
+          "whole_literal_JSON_read": false,
+          "source_sha256": "ec7b7df85609ea8d24273f718c6a13c085fa5daef79ed4caa7915d6142d66c20",
+          "team_source": "../sources/history-132.md#src-0002008"
+        },
+        {
+          "source_id": "SRC-0002011",
+          "notebook_cells_zero_based": [
+            23,
+            31,
+            32
+          ],
+          "whole_literal_JSON_read": false,
+          "source_sha256": "f1521f8f2592c3d29d2834b1171aa64aef45211fb90f8fff1d88b52a687f839e",
+          "team_source": "../sources/history-132.md#src-0002011"
+        },
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            2
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "notebook_read_scope": "../evidence/0132-architecture-kernel-and-joint-risk/notebook-reading-scope.json",
+        "linked_diagrams": "../evidence/0132-architecture-kernel-and-joint-risk/official-linked-assets-scope.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H132-C18",
+      "title": "공식 Transformer와 전체 RCTL 구현 확보 여부",
+      "claim": "TP II는 저자가 정의한 Transformer의 projection/attention/LN/readout 조건으로 초기 kernel을 전개한다. 이것을 pretrained TabICLv2 또는 현재 RCTL의 kernel·학습 위험이라고 부르지 않는다. Transformer/GP4A/별도 plot notebook은 이번4파일 수집에 포함되지 않아 전체 코드 판독/실행을 주장하지 않는다. RCTL 전체 analytic kernel 구현은 미확보다.",
+      "claim_type": "code_scope",
+      "record_anchor": "claim-18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            38,
+            39,
+            40,
+            41
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        },
+        {
+          "source_id": "SRC-0002010",
+          "lines": [
+            1,
+            30
+          ],
+          "source_sha256": "e94d7d8648eb62026ce56a4bfdc21f8e95fa1772c96bfbb222fbc0941d96e2ac",
+          "team_source": "../sources/history-132.md#src-0002010"
+        },
+        {
+          "source_id": "SRC-0002013",
+          "lines": [
+            1,
+            30
+          ],
+          "source_sha256": "826eb4ef74472ea4c51a28996ac80cb3b986c77ca3766af0bc42da711d61af0c",
+          "team_source": "../sources/history-132.md#src-0002013"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            25,
+            29
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H132-C19",
+      "title": "고정 affine smoother의 조건부 위험 항등식",
+      "claim": "입력·설정과 A,b,대칭 PSD W를 고정하고 target 공동분포의 유한2차적률이 존재하면 d=AμT+b−μQ에 대해 E[eᵀWe]=dᵀWd+tr W[AΣTTAᵀ+ΣQQ−AΣTQ−ΣQTAᵀ]다. 이는 기본 조건부 제곱오차 항등식이며 새로운 RCTL 성능 보장이 아니다. 아카이브의 작은 유리수 예제에서 직접 합과 식은775997/11025로 같고 차이는0이다.",
+      "claim_type": "algebra",
+      "record_anchor": "claim-19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            31,
+            43
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "exact_algebra_witnesses": "../evidence/0132-architecture-kernel-and-joint-risk/fixed-affine-identity-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H132-C20",
+      "title": "target 공동 공분산과 activation covariance",
+      "claim": "위 식에는 학습/확인 target의 ΣTT·ΣTQ·ΣQQ가 필요하다. input Gram, Gaussian activation moment 또는 gradient covariance를 계산하는 NTK/GP recursion이 그 target 공동 공분산을 자동 제공하지 않는다. 다른 kernel로 A를 바꾸면 다른 learner의 위험이며 RCTL의 소속 순위와 동일하다고 할 수 없다.",
+      "claim_type": "information_boundary",
+      "record_anchor": "claim-20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            35,
+            51
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0002014",
+          "lines": [
+            24,
+            29
+          ],
+          "source_sha256": "08e8bc9555dcb0168e3feca57fc2a1ac154cb8494a2dac6cb1067bb7e2a3d289",
+          "team_source": "../sources/history-132.md#src-0002014"
+        },
+        {
+          "source_id": "SRC-0002014",
+          "lines": [
+            35,
+            64
+          ],
+          "source_sha256": "08e8bc9555dcb0168e3feca57fc2a1ac154cb8494a2dac6cb1067bb7e2a3d289",
+          "team_source": "../sources/history-132.md#src-0002014"
+        },
+        {
+          "source_id": "SRC-0002012",
+          "lines": [
+            169,
+            252
+          ],
+          "source_sha256": "aa8ff03ecfac12dc330a54a4c91fd365316c1e4f817fa89ceff390922192ce36",
+          "team_source": "../sources/history-132.md#src-0002012"
+        },
+        {
+          "source_id": "SRC-0002004",
+          "PDF_pages": [
+            29,
+            30,
+            31,
+            32
+          ],
+          "whole_paper_read": true,
+          "independent_proof_validation": false,
+          "source_sha256": "096e801ba9c2612e23beac1f5d8fb47392d050ea2f61b30f96e4afb553ab7223",
+          "team_source": "../sources/history-132.md#src-0002004"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H132-C21",
+      "title": "같은 주변 분위수와 다른 공동 위험",
+      "claim": "개별 sample의 완전한 주변분포/분위수도 다른 시간·cell 사이의 coupling을 정하지 않는다. 검수용 ±1 두 target의 같은 주변분포를 동일·반대·독립으로 결합하면 A=1,b=0,W=1의 제곱위험이 각각0/4/2다. 실제 traffic 결과가 아니라 원문 정보 요구를 확인한 유한 지지집합 예제다.",
+      "claim_type": "algebra_counterexample",
+      "record_anchor": "claim-21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            47,
+            49
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "exact_algebra_witnesses": "../evidence/0132-architecture-kernel-and-joint-risk/fixed-affine-identity-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H132-C22",
+      "title": "평균·공분산만으로 일반 MAE는 결정되지 않음",
+      "claim": "제곱위험 식을 일반 MAE 식으로 바꾸지 않는다. 검수용 오차 ±1(각1/2)과0(3/4)·±2(각1/8)는 모두 평균0/분산1이지만 MAE는1과1/2다. 공동 Gaussian처럼 오차분포를 정하는 추가 가정이 있으면 별도 계산은 가능하나 현재 traffic에서 그 가정을 확인한 기록은 아니다.",
+      "claim_type": "loss_boundary",
+      "record_anchor": "claim-22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            51,
+            51
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001992",
+          "lines": [
+            21,
+            23
+          ],
+          "source_sha256": "ab87a0d77ad9e5aa060a425afc394a5c0f0e5e15153448581d6796740a3bc62f",
+          "team_source": "../sources/history-132.md#src-0001992"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "exact_algebra_witnesses": "../evidence/0132-architecture-kernel-and-joint-risk/fixed-affine-identity-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H132-C23",
+      "title": "target 적응 선택과 고정 조건",
+      "claim": "target을 보고 partition·regularization·A를 고른 과정을 고정 A의 무조건 식에 생략하지 않는다. 검수 예제 A=YT, YT=±1, YQ=0은 실제 제곱위험1이지만 평균 A=0을 대입하면0이다. 선택을 적절히 조건화한 target 적률에는 원 항등식이 여전히 유효하며 선택 적응 자체의 불가능성 정리는 아니다.",
+      "claim_type": "selection_boundary",
+      "record_anchor": "claim-23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            35,
+            43
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "exact_algebra_witnesses": "../evidence/0132-architecture-kernel-and-joint-risk/fixed-affine-identity-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H132-C24",
+      "title": "lag 행렬 조건화와 독립 target 생성",
+      "claim": "X(t+1)에 Y(t)가 lag로 들어 있으면 모든 입력을 고정한 뒤 target을 독립 재추출하는 절차가 원래 공동 시계열을 보존하지 않는다. 검수 예제 Xnext=1을 조건화하면 Yprev=1/조건부분산0인데 무조건 ±1을 추출하면 lag 관계를 지킬 확률은1/2다. 이는 무조건 긴 context/query 공백을 새로 요구하는 주장도 아니다.",
+      "claim_type": "time_conditioning",
+      "record_anchor": "claim-24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            53,
+            57
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "exact_algebra_witnesses": "../evidence/0132-architecture-kernel-and-joint-risk/fixed-affine-identity-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H132-C25",
+      "title": "dense kernel 계산량과 대안의 범위",
+      "claim": "naive dense kernel ridge는 n학습행에 저장 O(n²)·직접 선형계 풀이 O(n³)가 필요하다. 특수·근사·반복 solver나 구조 활용이 존재하므로 이를 모든 kernel 방법의 비용 하한으로 쓰지 않는다. RCTL 학습을 생략한 것과 kernel 점수의 실제 비용·유용성 개선은 별도다.",
+      "claim_type": "cost_boundary",
+      "record_anchor": "claim-25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            59,
+            65
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H132-C26",
+      "title": "원102의 두 저장량 검산",
+      "claim": "원101과 같은16×672=10752학습행에서 float64 dense kernel 한 행렬은924844032bytes(882MiB), 균등 네 group(각2688행)의 행렬 합은231211008bytes(220.5MiB)다. 원문의 두 정수값을 검산했으며 allocation·factorization·시점별 중간값·peak memory·실행 시간은 측정하지 않았다.",
+      "claim_type": "integer_arithmetic",
+      "record_anchor": "claim-26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            63,
+            65
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001992",
+          "lines": [
+            25,
+            25
+          ],
+          "source_sha256": "ab87a0d77ad9e5aa060a425afc394a5c0f0e5e15153448581d6796740a3bc62f",
+          "team_source": "../sources/history-132.md#src-0001992"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "storage_arithmetic": "../evidence/0132-architecture-kernel-and-joint-risk/cost-arithmetic-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H132-C27",
+      "title": "공식 RNN 4차원 버퍼의 조건부 산술",
+      "claim": "rnnntk_batch의 N×N×T×T hcov/hhcov shape에 원101의 N과8step·float64를 가정하면 한 global 버퍼59190018048bytes(55.125GiB), 균등 네 group의 한 버퍼씩 합14797504512bytes(13.78125GiB)다. 아카이브의 추가 shape 산술이며 원102의 kernel 실행 결과·전체 peak·모든 구현의 하한이 아니다. 버퍼를 할당하거나 kernel entry를 계산하지 않았다.",
+      "claim_type": "scoped_archive_calculation",
+      "record_anchor": "claim-27",
+      "source_locations": [
+        {
+          "source_id": "SRC-0002012",
+          "lines": [
+            169,
+            192
+          ],
+          "source_sha256": "aa8ff03ecfac12dc330a54a4c91fd365316c1e4f817fa89ceff390922192ce36",
+          "team_source": "../sources/history-132.md#src-0002012"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            63,
+            65
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            60,
+            69
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-132.md#src-0023202"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "storage_arithmetic": "../evidence/0132-architecture-kernel-and-joint-risk/cost-arithmetic-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H132-C28",
+      "title": "값이 싸다는 주장에 필요한 비교",
+      "claim": "kernel을 더해 모델 학습을 피했다는 설명만으로 기존 empirical 기준/저장 Tab 결과보다 싸거나 좋은 결정을 얻는다고 하지 않는다. 실제 구조·손실·최적화의 연결과 후보 재계산/중간 배열을 포함한 비용 근거가 필요하다. 원102는 이 근거 없이 새 kernel 실행을 시작하지 않았다.",
+      "claim_type": "decision_boundary",
+      "record_anchor": "claim-28",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            61,
+            65
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            72,
+            76
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001994",
+          "lines": [
+            19,
+            23
+          ],
+          "source_sha256": "68d104424c281380ba66ec12caf06ced3009ec253d25ee95b90682dbde9d4595",
+          "team_source": "../sources/history-132.md#src-0001994"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H132-C29",
+      "title": "Morello 워크숍의 접근 공백",
+      "claim": "Morello·Grégoire·Verboven의2024 M3L/NeurIPS workshop task-affinity 연구는 대학 공식 서지·초록/검색 일부만 확인했다. 보관 접근과 현재 일반 PDF GET은403으로 원문 확보에 실패했다. early-training gradient similarity/synthetic task 검토를 현재 RCTL pooling 성능 증거·세부식 전수검증·정확한 방법 반증이나 main-track NeurIPS로 표기하지 않는다.",
+      "claim_type": "reference_gap",
+      "record_anchor": "claim-29",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            69,
+            70
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            85,
+            85
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001994",
+          "lines": [
+            11,
+            11
+          ],
+          "source_sha256": "68d104424c281380ba66ec12caf06ced3009ec253d25ee95b90682dbde9d4595",
+          "team_source": "../sources/history-132.md#src-0001994"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "primary_metadata": "../evidence/0132-architecture-kernel-and-joint-risk/primary-bibliography.json",
+        "current_PDF_access_receipt": "../evidence/0132-architecture-kernel-and-joint-risk/Morello-access-check.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    },
+    {
+      "claim_id": "H132-C30",
+      "title": "2026년 두 논문의 스크리닝 수준",
+      "claim": "2026-08-10 Sustainability18(16)8165 load-heterogeneity 연구와2026-09-18 Forecasting8(5)89(Aras Yolusever) annual compositional pooling 연구는 서지·검색 공개 내용 수준이다. 후자는 Eurostat 연간 composition panel의 parameter sharing 비교로 hourly telecom/RCTL과 다르다. 현재 MDPI 직접 fetch429와 cached primary metadata/선택 조각을 구별하고 두 논문 전문·정리의 직접 성능 검증 완료로 세지 않는다.",
+      "claim_type": "reference_scope",
+      "record_anchor": "claim-30",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            70,
+            70
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            86,
+            87
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001994",
+          "lines": [
+            15,
+            15
+          ],
+          "source_sha256": "68d104424c281380ba66ec12caf06ced3009ec253d25ee95b90682dbde9d4595",
+          "team_source": "../sources/history-132.md#src-0001994"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "primary_metadata": "../evidence/0132-architecture-kernel-and-joint-risk/primary-bibliography.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    },
+    {
+      "claim_id": "H132-C31",
+      "title": "직접 예측의 긍정 근거와 소속 대리점수",
+      "claim": "원101에서 실제 Tab pooled context의 직접 예측 우위는 원102에서도 긍정 근거로 보존했다. 두 K4 순위 불일치 때문에 이를 RCTL clustering 개선으로 승격하지 않았으며 모든 cell/기간·소속의 실패로 일반화하지 않는다. 같은 저장 결과를 색인·보고서가 다시 인용한 것을 독립 재현/새 실험 여러 번으로 세지 않는다.",
+      "claim_type": "historical_interpretation",
+      "record_anchor": "claim-31",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001992",
+          "lines": [
+            7,
+            7
+          ],
+          "source_sha256": "ab87a0d77ad9e5aa060a425afc394a5c0f0e5e15153448581d6796740a3bc62f",
+          "team_source": "../sources/history-132.md#src-0001992"
+        },
+        {
+          "source_id": "SRC-0001992",
+          "lines": [
+            29,
+            35
+          ],
+          "source_sha256": "ab87a0d77ad9e5aa060a425afc394a5c0f0e5e15153448581d6796740a3bc62f",
+          "team_source": "../sources/history-132.md#src-0001992"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            9,
+            9
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            74,
+            78
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001996",
+          "lines": [
+            40,
+            40
+          ],
+          "source_sha256": "f69d3a339ab73500fdebda7707431aad7b3e09b32e0774258d1f80db6e56b357",
+          "team_source": "../sources/history-132.md#src-0001996"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    },
+    {
+      "claim_id": "H132-C32",
+      "title": "색인·progress 개정의 정확한 연결",
+      "claim": "Snapshot43 후보103행→44 후보104행은 새7행 삽입 외 전행이 정확히 대응한다. progress는 old7행을 new7–17로 대체하고 old8–591=new18–601이다. 현재 candidate104행과 progress1–17은 직접 읽었고 new18–121만 prior old8–111의 실제 판독과 hash-bound 행 동일성으로 연결한다. new122–601/old112–591은 미독이다. 개정 비교만으로 전체 progress 판독을 완료하지 않는다.",
+      "claim_type": "version_scope",
+      "record_anchor": "claim-32",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001996",
+          "lines": [
+            1,
+            8
+          ],
+          "source_sha256": "f69d3a339ab73500fdebda7707431aad7b3e09b32e0774258d1f80db6e56b357",
+          "team_source": "../sources/history-132.md#src-0001996"
+        },
+        {
+          "source_id": "SRC-0001999",
+          "lines": [
+            1,
+            17
+          ],
+          "source_sha256": "17e16269c4cdaa69582a16a13c6db378ac9e07b4c52e6f3c69e9316cb1facb5f",
+          "team_source": "../sources/history-132.md#src-0001999"
+        },
+        {
+          "source_id": "SRC-0001966",
+          "lines": [
+            5,
+            8
+          ],
+          "source_sha256": "71b6782f54f8f516ca88bfe9d99f4da89b6f8aab4fe2016894da934faac96ca1",
+          "team_source": "../sources/history-132.md#src-0001966"
+        },
+        {
+          "source_id": "SRC-0001969",
+          "lines": [
+            1,
+            12
+          ],
+          "source_sha256": "a16d95b23a9b1b2e9dfb3b9e005c7a4c11db2cc22cbdb0d80b3a02dcf98d9d45",
+          "team_source": "../sources/history-132.md#src-0001969"
+        },
+        {
+          "source_id": "SRC-0002001",
+          "lines": [
+            1,
+            103
+          ],
+          "source_sha256": "faa40e9c635ffe612e4d7dec050ef4e0241dfa8fca9a27adf392c96dc84a807a",
+          "team_source": "../sources/history-132.md#src-0002001"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "exact_version_comparison": "../evidence/0132-architecture-kernel-and-joint-risk/index-version-differences.json"
+      },
+      "archive_scope_evidence": {
+        "version_read_scope": "../evidence/0132-architecture-kernel-and-joint-risk/index-version-reading-scope.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    },
+    {
+      "claim_id": "H132-C33",
+      "title": "원장·Word 버전 보존",
+      "claim": "원102 verification의 원장SHA60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a와 WordSHA4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686는 당시 불변 증거다. 현재 루트 원장 후속 버전과 구별한다. Word는 hash 보존을 확인한 것이며 본문 완료가 아니다. 현재 아카이브의 보호 원본·별칭 해시 검수는 연구 예산·최종 추천을 갱신하지 않는다.",
+      "claim_type": "preservation",
+      "record_anchor": "claim-33",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001995",
+          "JSON_pointers": [
+            "/ledger_unchanged_sha256",
+            "/prior_Word_unchanged_sha256",
+            "/goal_complete"
+          ],
+          "source_sha256": "bc1a678fd867f5e25cc87b2d0db11461d4b6c938f0029c0e296141954a67d96a",
+          "team_source": "../sources/history-132.md#src-0001995"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            78,
+            78
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0002001",
+          "lines": [
+            17,
+            23
+          ],
+          "source_sha256": "faa40e9c635ffe612e4d7dec050ef4e0241dfa8fca9a27adf392c96dc84a807a",
+          "team_source": "../sources/history-132.md#src-0002001"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "source_preservation": "../evidence/0132-architecture-kernel-and-joint-risk/preservation-check.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        9
+      ]
+    },
+    {
+      "claim_id": "H132-C34",
+      "title": "출처·사본·배포와 집계 단위",
+      "claim": "최초 선택33출처/65물리경로에 기존 RCTL2출처/16경로를 연결해 최종35출처/81경로다. 같은SHA 사본·이전자료 재독·변환TXT·PDF파생PNG·공식 연결 그림은 독립 새 원문으로 중복 집계하지 않는다. 연구자 소형 원본과 기존 정확사본을 팀 경로로 연결하고 논문/공식 코드 원문은 버전·hash·정식 링크·검토 범위로 제공한다.",
+      "claim_type": "archive_scope",
+      "record_anchor": "claim-34",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001991",
+          "lines": [
+            1,
+            151
+          ],
+          "source_sha256": "8208bb4f93adf90caf3aec3db09a853afe5aeea1a3cf4c72b8320cff17cdb103",
+          "team_source": "../sources/history-132.md#src-0001991"
+        },
+        {
+          "source_id": "SRC-0020840",
+          "lines": [
+            1,
+            8
+          ],
+          "source_sha256": "6893298a0d025277cec8ff291e0cd0d8c0006495d1a9fdadf3fcce2d35913874",
+          "team_source": "../sources/history-132.md#src-0020840"
+        },
+        {
+          "source_id": "SRC-0002013",
+          "lines": [
+            1,
+            30
+          ],
+          "source_sha256": "826eb4ef74472ea4c51a28996ac80cb3b986c77ca3766af0bc42da711d61af0c",
+          "team_source": "../sources/history-132.md#src-0002013"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "packet_coverage": "../evidence/0132-architecture-kernel-and-joint-risk/packet-coverage.json",
+        "source_preservation": "../evidence/0132-architecture-kernel-and-joint-risk/preservation-check.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        9
+      ]
+    },
+    {
+      "claim_id": "H132-C35",
+      "title": "전체 판독과 아직 읽지 않은 구간",
+      "claim": "현재 raw text22자료2348고유행(19전문/3선택)·두 PDF86쪽8069행·notebook82셀과 저장 출력6개를 확인했다. literal paper TXT 두 개는 직접 전독하지 않았고 PDF 추출의 정확 대응만 검수했다. notebook raw JSON 전문도 아니다. progress 긴 tail, Word/FedPPBC/발표자료와 다른 고유 판본·후속 원103 이후·전체 통합/팀 접근/최종 delta/검색10+는 남는다.",
+      "claim_type": "reading_scope",
+      "record_anchor": "claim-35",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001999",
+          "lines": [
+            1,
+            17
+          ],
+          "source_sha256": "17e16269c4cdaa69582a16a13c6db378ac9e07b4c52e6f3c69e9316cb1facb5f",
+          "team_source": "../sources/history-132.md#src-0001999"
+        },
+        {
+          "source_id": "SRC-0001969",
+          "lines": [
+            1,
+            12
+          ],
+          "source_sha256": "a16d95b23a9b1b2e9dfb3b9e005c7a4c11db2cc22cbdb0d80b3a02dcf98d9d45",
+          "team_source": "../sources/history-132.md#src-0001969"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            27,
+            29
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            78,
+            83
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "packet_coverage": "../evidence/0132-architecture-kernel-and-joint-risk/packet-coverage.json",
+        "paper_read_scope": "../evidence/0132-architecture-kernel-and-joint-risk/paper-reading-scope.json",
+        "notebook_read_scope": "../evidence/0132-architecture-kernel-and-joint-risk/notebook-reading-scope.json",
+        "version_read_scope": "../evidence/0132-architecture-kernel-and-joint-risk/index-version-reading-scope.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        9
+      ]
+    },
+    {
+      "claim_id": "H132-C36",
+      "title": "재검토 조건과 현재 Goal의 완료 범위",
+      "claim": "Tab 추정값+RNN kernel을 다시 검토하려면 현재 구조·학습 조건에서 유용한 결정의 대리 정확도 또는 같은 결정을 더 싸게 얻는 근거와 기존 empirical/저장 Tab 기준 대비 차이를 특정해야 한다. 일반 NTK 극한의 존재나 Tab 직접 MAE 개선만으로 재채택하지 않는다. 현재는 원102 정리이며 새 설계·모델 실험·최종 Word를 완료한 것이 아니다. 검수본의 PR/병합 뒤에도 전체 연구기록 정리 Goal은 계속된다.",
+      "claim_type": "reconsideration",
+      "record_anchor": "claim-36",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001993",
+          "lines": [
+            72,
+            78
+          ],
+          "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+          "team_source": "../sources/history-132.md#src-0001993"
+        },
+        {
+          "source_id": "SRC-0001992",
+          "lines": [
+            27,
+            35
+          ],
+          "source_sha256": "ab87a0d77ad9e5aa060a425afc394a5c0f0e5e15153448581d6796740a3bc62f",
+          "team_source": "../sources/history-132.md#src-0001992"
+        },
+        {
+          "source_id": "SRC-0001994",
+          "lines": [
+            19,
+            23
+          ],
+          "source_sha256": "68d104424c281380ba66ec12caf06ced3009ec253d25ee95b90682dbde9d4595",
+          "team_source": "../sources/history-132.md#src-0001994"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        9
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

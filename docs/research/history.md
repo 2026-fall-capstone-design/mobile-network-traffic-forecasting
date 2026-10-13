@@ -219,3 +219,5 @@
 [H130 원100](records/0130-pretraining-objective-and-time-conditioning.md): TabClustPFN v3, AAAI APT, 공식 코드 11개/metadata 2개를 대조했다. 당시 모듈 추가는 미채택했고 새 모델·traffic 통계는 0, 최종 추천·Word는 미완료였다. 현재 PDF 44쪽/3,307행·44이미지, 36주장/9그룹의 작성 후 검수와 pinned 코드 11개 바이트 대조를 기록했다.
 
 [H131 원101](records/0131-actual-pooled-context-and-rctl-ranking.md): 당시 Tab9context·simple18fit과 저장RCTL5결과를 같은336시점으로 비교했다. Tab 직접 예측은 좋았고 두K4순위는 RCTL과 반대였다. 현재917저장수치·구현4파일·입력변환/스레드/반례를 대조했으며 새모델0·전체Goal미완료다.
+
+[H132 원102](records/0132-architecture-kernel-and-joint-risk.md): 원101의 직접 예측/소속 순위 차이를 보완할 구조 점수를 논문·정적 코드·기호로 검토했으나 채택 근거가 부족했다. 현재 두PDF86쪽·notebook82셀/6출력,36주장/9대조를 보존했다. 새모델0이며 모든 NTK의 불가능성이나 kernel 성능 실패 기록은 아니다.

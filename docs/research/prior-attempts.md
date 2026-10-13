@@ -608,3 +608,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원101 실제 sample pooling을 다시 비교할 때
 
 [원101](records/0131-actual-pooled-context-and-rctl-ranking.md)과 [재사용 안내](references/pooled-context-and-learner-ranking.md)를 먼저 읽는다. context조건504/672,16열과8×9표현, rolling실측lag와재귀horizon, validation사용, 사후소속/독립test, K1과주간·cell별예외를 명시한다. 이미 저장된 직접 예측 이득과 순위 불일치를 모두 보존하고, 새 결정 또는 효율에서 무엇이 달라지는지 적는다.
+
+## 원102 구조 기반 NTK 대리값을 다시 검토할 때
+
+RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](records/0132-architecture-kernel-and-joint-risk.md)와 [조건 비교](references/architecture-kernel-and-joint-risk.md)를 먼저 읽는다. 유한 구조·Gaussian/실제 초기화·readout·손실/optimizer·validation·target 공동분포·target 적응 선택과 K1/기존 기준 대비 결정·전체 비용 중 무엇이 달라지는지 적는다. 선행 정리의 존재·직접 예측 우위만으로 재채택하지 않는다.

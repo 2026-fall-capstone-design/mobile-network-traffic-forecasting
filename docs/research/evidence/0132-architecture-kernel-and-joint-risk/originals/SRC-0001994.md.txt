@@ -1,0 +1,23 @@
+# 102. 학습하지 않는 구조 기반 대리값의 적용 범위 — 검토 계획
+
+2026-09-26. 직전101은 실제9context와저장RCTL의순위차이를확인한progress다. 실행종료·원장·snapshot43을확인했으며재실행하지않는다.
+
+## 확인할 핵심 질문
+
+실제 pooled Tab 예측의 우열도 RCTL과 달랐다. 이를 보완하기 위해, RCTL을 실행하지 않고 구조로 계산한 학습 특성에 Tab의 추정 관계를 결합하는 방향이 실제로 가능한지 원문·코드·기호 관계부터 확인한다. 새 kernel이나 새 알고리즘을 채택한 상태가 아니다.
+
+## 이번 범위
+
+1. Morello·Grégoire·Verboven의 NeurIPS2024 M3L workshop 논문 `Exploring Task Affinities through NTK Alignment and Early Training Dynamics in Multi-Task Learning`의 §2–4와 도출 가정을 확인한다. 학습한 gradient score, 초기화의 score, 닫힌 형태의 구조 score를 구별한다. task별 head가 있는 MTL과 같은 scalar 함수를 공유하는 cell pooling을 구별한다. 본문에 접근하지 못하면 검색에 노출된 일부 식을 전체 방법 검증으로 바꾸지 않는다.
+2. `The Recurrent Neural Tangent Kernel`의 ICLR2021/arXiv 공개 원문·공식 코드에서 어떤 recurrent architecture, 초기화, 손실·학습 regime을 다루는지 확인한다. vanilla RNN kernel을 LSTM·TCN·이중잔차·BN·Adam/MAE RCTL의 정확한 대리값이라고 부르지 않는다. 후속 `Tensor Programs II`의 적용 범위가 필요한 경우 관련 정리·공식 구현을 확인한다.
+3. 원문이 허용하는 경우에 한해, 사전에 고정한 선형 smoother의 예측 위험에서 조건부 평균·공분산이 맡는 역할을 직접 전개한다. 이는 RCTL의 성능 보장이 아니다. lag가 미래 행의 입력에 포함되는 시계열에서 전체 입력을 고정하고 target만 독립 생성하는 방식의 조건화 문제를 구별한다.
+4. 현재 RCTL 코드의 폭·TCN·LSTM·BN·loss·optimizer와 원문 가정을 나란히 대조한다. 모델 실행을 피했다는 사실만으로 그 대리값이 유용하다고 결론 내리지 않는다. 실제 finite RCTL에 필요한 추가 가정과 데이터 검증을 명시한다.
+5. 초기에 찾은 2026년9월 parameter-sharing 비교 및 2026년8월 load-forecasting 연구는 필요한 범위에서 후보 스크리닝 자료로 기록한다. 본문·이론까지 확인한 자료와 구별하고 이번 결론을 단순 성능 문구에 의존시키지 않는다.
+
+## 판정과 예산
+
+- 구조 기반 점수에 Tab을 붙이는 것만으로 이미 알려진 NTK affinity/위험 추정과 차이가 생기지 않으면 신규성으로 채택하지 않는다.
+- 원문의 전제가 현재 RCTL에 맞지 않으면 kernel 계산을 새로 실행하지 않는다. 반대로 무한폭 정리가 없다는 이유로 모든 구조 기반 실증 가능성을 부정하지 않는다.
+- 이번 새 Tab context/query, RCTL fit/forward/gradient/BN update, 단순 예측모델 fit 및 traffic 수치 실험은 모두0이다. 남은2context/4,512query행과추가RCTLfit0을변경하지않는다.
+- 원장SHA `60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a`를 유지한다. 원문·관련 코드의 공개 열람/저장·기호 검토만 수행한다. 새대규모pretraining·kernel학습을시작하지않는다.
+- 산출물: 출처·버전·읽은범위, 원문과RCTL의대응표, 직접기호전개, 채택여부와달라지는다음행동. 이번범위만으로최종추천이확정되지않으면goal을완료처리하지않는다.
