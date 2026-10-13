@@ -223,3 +223,5 @@
 [H132 원102](records/0132-architecture-kernel-and-joint-risk.md): 원101의 직접 예측/소속 순위 차이를 보완할 구조 점수를 논문·정적 코드·기호로 검토했으나 채택 근거가 부족했다. 현재 두PDF86쪽·notebook82셀/6출력,36주장/9대조를 보존했다. 새모델0이며 모든 NTK의 불가능성이나 kernel 성능 실패 기록은 아니다.
 
 [H133 원103](records/0133-current-evidence-and-unapproved-extension.md): 원101/95/102를 새중간보고서에 연결하고11요구사항을감사했다. 새모델0·추천미확정·확장18fit미승인. 33주장/8대조·Word52body3표/PDF4쪽127행·기간/cell반례와미독을보존했다.
+
+[H134 원104](records/0134-resource-and-evidence-audit.md): 같은 자원·근거 제약을 두 번째 감사로 기록했다. 새 모델·수치0, 제안 미승인, thresholdfalse·과거Goal active미완료를 보존했다. 13주장/4대조·원문94행/원장4선택필드를 연결했다.
