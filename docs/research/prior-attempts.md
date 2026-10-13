@@ -632,3 +632,7 @@ RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](
 ## 원107과 입력 지원·시간자료 보존을 반복하기 전에
 
 [기록](records/0137-calendar-retention-and-external-support.md)과 [재검토 조건](references/calendar-retention-and-external-support.md)을 읽는다. 같은K4/sample개수·원23density·zero/반대cell·기존RCTL반례를 확인하고 지원/조건부관계/유한표본/최적화·평가 중 무엇을 구별할지 적는다. 가까운입력 수를정보량/원인/신규성으로바꾸지않는다.
+
+## 원108과 BN 통계 재계산을 반복하기 전에
+
+[기록](records/0138-fixed-weight-bn-statistics.md)과 [재검토 조건](references/fixed-weight-bn-statistics.md)을 읽는다. 단일seed·고정가중치·train-only12BN·14일 개발구간·반대cell/day·복원144행·29+9회계를 확인하고 새조건/구별할 원인을 적는다.

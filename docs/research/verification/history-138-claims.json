@@ -1,0 +1,1599 @@
+{
+  "batch_id": "history-138",
+  "record_path": "../records/0138-fixed-weight-bn-statistics.md",
+  "record_sha256": "c127475cdb4e1a1845cda7564124420be723a93652435811422e95f9e3b9ca18",
+  "claims": [
+    {
+      "claim_id": "H138-C01",
+      "title": "질문과 선행 기록",
+      "claim": "원108은 원106 같은 K의 손해와 원107 입력지원 진단 다음에, 저장된 최종 RCTL 가중치·소속을 고정하고 훈련입력만으로 BN 통계를 다시 계산하면 차이가 줄어드는지 확인한 기록이다. 새 클러스터링 알고리즘을 검증한 기록으로 세지 않는다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020859",
+          "lines": [
+            1,
+            38
+          ],
+          "source_sha256": "2161721c8d09e1198b36751716701bf226b033ea42e0a576befdd67f667eef2c",
+          "team_source": "../sources/history-138.md#src-0020859"
+        },
+        {
+          "source_id": "SRC-0020860",
+          "lines": [
+            1,
+            55
+          ],
+          "source_sha256": "9c0022f6ea60b86b5405ecbc4038c41430d183aced7e3c541a728762baa20075",
+          "team_source": "../sources/history-138.md#src-0020860"
+        }
+      ],
+      "record_anchor": "claim-01",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C02",
+      "title": "실제 수행과 현재 정리 구분",
+      "claim": "완료 결과에는 global1·Tab-risk4·empirical-risk4의 통계 적합9개, optimizer fit/step·gradient0이 남았다. 당시에는 prefix 및 prediction forward를 수행한 모델상태 적합이다. 현재 아카이브는 원code 실행/import·모델 생성/학습/추론/forward/BN 계산0이며 저장값 산술만 수행했다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/complete",
+            "/counts"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        },
+        {
+          "source_id": "SRC-0022934",
+          "lines": [
+            222,
+            278
+          ],
+          "source_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+          "team_source": "../sources/history-138.md#src-0022934"
+        }
+      ],
+      "record_anchor": "claim-02",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C03",
+      "title": "자료와 평가 범위",
+      "claim": "Milan internet hourly pilot 고정16cell, train168–839(672시간/cell), validation840–1007(168), development check1008–1343(14일336)이다. 원106의20일480시간과 다르고 원101에서 이미 사용한 check여서 독립 최종평가가 아니다. cell순서/target/scale를 이전 저장자료와 대조했다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029136",
+          "JSON_pointers": [
+            "/train_target_indices",
+            "/validation_target_indices",
+            "/development_check_target_indices",
+            "/independent_final_evaluation"
+          ],
+          "source_sha256": "ae850ac3183f549f728df8695d3edcc00ee5fbc402195b663c8e5ee77f446f4b",
+          "team_source": "../sources/history-138.md#src-0029136"
+        },
+        {
+          "source_id": "SRC-0029561",
+          "NPZ_keys": [
+            "cell_ids",
+            "context_times",
+            "query_times",
+            "Y",
+            "scales"
+          ],
+          "source_sha256": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+          "team_source": "../sources/history-138.md#src-0029561"
+        },
+        {
+          "source_id": "SRC-0029132",
+          "NPZ_keys": [
+            "cell_ids",
+            "train_y",
+            "validation_y",
+            "check_y",
+            "scales"
+          ],
+          "source_sha256": "55c4dcee996a161d8dd005dfe5161d919cc41ed02fa6de244d928ff5ac0a9069",
+          "team_source": "../sources/history-138.md#src-0029132"
+        }
+      ],
+      "record_anchor": "claim-03",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C04",
+      "title": "입력 표현과 정규화 출처",
+      "claim": "flat16열의 앞8값은8step의 channel0, 뒤8특징은 각step의 나머지8channel로 반복해8×9 sequence를 구성한다. 저장 flat trainX가 design과 같고 Y/scales도 일치한다. cell별 원시0–671 평균 정규화는 기존 원33–35 기록의 조건을 재사용하며 원시전체나 실제 sequence forward 입력을 새로 저장·재현한 것은 아니다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022934",
+          "lines": [
+            46,
+            51
+          ],
+          "source_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+          "team_source": "../sources/history-138.md#src-0022934"
+        },
+        {
+          "source_id": "SRC-0022934",
+          "lines": [
+            193,
+            216
+          ],
+          "source_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+          "team_source": "../sources/history-138.md#src-0022934"
+        },
+        {
+          "source_id": "SRC-0023577",
+          "NPZ_keys": [
+            "X",
+            "Y",
+            "scales",
+            "cell_indices",
+            "times"
+          ],
+          "source_sha256": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+          "team_source": "../sources/history-138.md#src-0023577"
+        },
+        {
+          "source_id": "SRC-0029561",
+          "NPZ_keys": [
+            "X",
+            "Y",
+            "scales"
+          ],
+          "source_sha256": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+          "team_source": "../sources/history-138.md#src-0029561"
+        }
+      ],
+      "record_anchor": "claim-04",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C05",
+      "title": "고정 모델과 단일 seed",
+      "claim": "primary seed20260925의 기존9 checkpoint와 members를 사용한다. Tab/empirical은 각각K4·4cell/cluster, global은16cell이다. 기존 optimizer 설정(max80epoch·batch256·patience10·lr0.001·Adam epsilon1e−7·MAE)과 이번 통계/예측 batch512·threads4를 구별한다. secondary seed·새 소속·혼합/threshold 탐색은 실행 범위에 없다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029136",
+          "JSON_pointers": [
+            "/seed",
+            "/methods",
+            "/checkpoint_count",
+            "/batch",
+            "/threads"
+          ],
+          "source_sha256": "ae850ac3183f549f728df8695d3edcc00ee5fbc402195b663c8e5ee77f446f4b",
+          "team_source": "../sources/history-138.md#src-0029136"
+        },
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/max_epochs",
+            "/batch_size",
+            "/patience",
+            "/learning_rate",
+            "/adam_eps",
+            "/loss",
+            "/tasks/0",
+            "/tasks/1",
+            "/tasks/2",
+            "/tasks/3",
+            "/tasks/4",
+            "/tasks/5",
+            "/tasks/6",
+            "/tasks/7",
+            "/tasks/8"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-138.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "JSON_pointers": [
+            "/0",
+            "/1",
+            "/2",
+            "/3",
+            "/4",
+            "/5",
+            "/6",
+            "/7",
+            "/8"
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-138.md#src-0030237"
+        }
+      ],
+      "record_anchor": "claim-05",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C06",
+      "title": "BN 구조와 계산 모드",
+      "claim": "정의에는 여섯 block에 BN2개씩 총12개, epsilon0.001이 있다. 통계 적합은 eval/inference 모드로 dropout을 끄고, 앞쪽 BN 통계를 먼저 바꾼 상태에서 현재 BN 직전 입력을 모은다. affine 파라미터·epsilon·가중치·partition은 고정한다고 구현과 결과에 기록했다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023048",
+          "lines": [
+            1,
+            60
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-138.md#src-0023048"
+        },
+        {
+          "source_id": "SRC-0022934",
+          "lines": [
+            117,
+            190
+          ],
+          "source_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+          "team_source": "../sources/history-138.md#src-0022934"
+        },
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/records/0/layers",
+            "/records/1/layers",
+            "/records/2/layers",
+            "/records/3/layers",
+            "/records/4/layers",
+            "/records/5/layers",
+            "/records/6/layers",
+            "/records/7/layers",
+            "/records/8/layers"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        }
+      ],
+      "record_anchor": "claim-06",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C07",
+      "title": "분산 식의 범위",
+      "claim": "float64 sum/square_sum/count로 훈련입력의 유한집합 평균과 E[x²]−E[x]²를 계산하며 작은 음수만0으로 제한한다. N/(N−1) 보정이나 시계열 표본의 iid/불편분산 보장은 없다. 이는 저장 BN 입력을 현재 다시 계산하거나 논문 식2를 그대로 재현했다는 주장이 아니다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022934",
+          "lines": [
+            145,
+            190
+          ],
+          "source_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+          "team_source": "../sources/history-138.md#src-0022934"
+        }
+      ],
+      "record_anchor": "claim-07",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C08",
+      "title": "기존 예측 일치",
+      "claim": "새 NPZ의 original train/validation/check 값56,448개가 기존 원34와 원pilot 미래예측의 앞336시간과 정확히 일치한다. 당시 보고된 reproduction maxdiff0·허용1e−5도 일치한다. 이 대조는 저장 예측 간 일치이며 현재 모델 forward의 독립 재현이 아니다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/max_reproduction_abs_difference",
+            "/records/0/reproduction_differences",
+            "/records/1/reproduction_differences",
+            "/records/2/reproduction_differences",
+            "/records/3/reproduction_differences",
+            "/records/4/reproduction_differences",
+            "/records/5/reproduction_differences",
+            "/records/6/reproduction_differences",
+            "/records/7/reproduction_differences",
+            "/records/8/reproduction_differences"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        },
+        {
+          "source_id": "SRC-0022934",
+          "lines": [
+            238,
+            247
+          ],
+          "source_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+          "team_source": "../sources/history-138.md#src-0022934"
+        },
+        {
+          "source_id": "SRC-0027514",
+          "NPZ_keys": [
+            "global_20260925_cluster0_train_prediction",
+            "global_20260925_cluster0_validation_prediction",
+            "tabicl_risk_20260925_cluster0_train_prediction",
+            "tabicl_risk_20260925_cluster0_validation_prediction",
+            "tabicl_risk_20260925_cluster1_train_prediction",
+            "tabicl_risk_20260925_cluster1_validation_prediction",
+            "tabicl_risk_20260925_cluster2_train_prediction",
+            "tabicl_risk_20260925_cluster2_validation_prediction",
+            "tabicl_risk_20260925_cluster3_train_prediction",
+            "tabicl_risk_20260925_cluster3_validation_prediction",
+            "empirical_risk_20260925_cluster0_train_prediction",
+            "empirical_risk_20260925_cluster0_validation_prediction",
+            "empirical_risk_20260925_cluster1_train_prediction",
+            "empirical_risk_20260925_cluster1_validation_prediction",
+            "empirical_risk_20260925_cluster2_train_prediction",
+            "empirical_risk_20260925_cluster2_validation_prediction",
+            "empirical_risk_20260925_cluster3_train_prediction",
+            "empirical_risk_20260925_cluster3_validation_prediction",
+            "cell_ids",
+            "train_y",
+            "validation_y"
+          ],
+          "source_sha256": "75399770d55d018ee8cd65bfcd18f5552aa73cf971175ec81d16559b573f0f3d",
+          "team_source": "../sources/history-138.md#src-0027514"
+        },
+        {
+          "source_id": "SRC-0030211",
+          "NPZ_keys": [
+            "empirical_risk_20260925",
+            "global_20260925",
+            "tabicl_risk_20260925",
+            "y",
+            "cell_ids",
+            "scales"
+          ],
+          "source_sha256": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096",
+          "team_source": "../sources/history-138.md#src-0030211"
+        }
+      ],
+      "record_anchor": "claim-08",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C09",
+      "title": "파라미터 보존의 증거 한계",
+      "claim": "각 원checkpoint의142개 저장 tensor 중106개 파라미터 byte와 이름을 등록 순서대로 합쳐 계산한 SHA는 보고된 before/after SHA와 모두 일치한다. 새 파일은36개 buffer만 담아 적합후 파라미터 tensor는 별도 보존되지 않았다. 따라서 실제 적합후 live 파라미터 불변의 독립 확인은 보고/assertion 범위를 넘지 않는다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/records/0/parameter_sha256_before",
+            "/records/1/parameter_sha256_before",
+            "/records/2/parameter_sha256_before",
+            "/records/3/parameter_sha256_before",
+            "/records/4/parameter_sha256_before",
+            "/records/5/parameter_sha256_before",
+            "/records/6/parameter_sha256_before",
+            "/records/7/parameter_sha256_before",
+            "/records/8/parameter_sha256_before",
+            "/records/0/parameter_sha256_after",
+            "/records/1/parameter_sha256_after",
+            "/records/2/parameter_sha256_after",
+            "/records/3/parameter_sha256_after",
+            "/records/4/parameter_sha256_after",
+            "/records/5/parameter_sha256_after",
+            "/records/6/parameter_sha256_after",
+            "/records/7/parameter_sha256_after",
+            "/records/8/parameter_sha256_after"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        },
+        {
+          "source_id": "SRC-0022934",
+          "lines": [
+            231,
+            261
+          ],
+          "source_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+          "team_source": "../sources/history-138.md#src-0022934"
+        },
+        {
+          "source_id": "SRC-0030240",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "822808952e35b22921569f915db4b693f0929362e564ff4deae7cafbd6bc8476",
+          "team_source": "../sources/history-138.md#src-0030240"
+        },
+        {
+          "source_id": "SRC-0030282",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "081bcc8b369f3f3cb275cfb839677c004be3e2b55837b2fddb921aecbba82e69",
+          "team_source": "../sources/history-138.md#src-0030282"
+        },
+        {
+          "source_id": "SRC-0030285",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "ae92219d6aff933933f726d783275f136dd6e05eb0aaa329d1ccedc3426424c2",
+          "team_source": "../sources/history-138.md#src-0030285"
+        },
+        {
+          "source_id": "SRC-0030288",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "c165bbe9b891a9b2ad9f77058f387b72d9cfd1bb11d35254a45ef05fe3023ff9",
+          "team_source": "../sources/history-138.md#src-0030288"
+        },
+        {
+          "source_id": "SRC-0030291",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "29381448c41cb1f0ec0b111215817875b8586fba74ea2df365974ddc4cf5f7d7",
+          "team_source": "../sources/history-138.md#src-0030291"
+        },
+        {
+          "source_id": "SRC-0030213",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "95a274b8e4b7825756b5d9bb79ed6ed7d780db57d4a4993d4d3e54fe46b155b8",
+          "team_source": "../sources/history-138.md#src-0030213"
+        },
+        {
+          "source_id": "SRC-0030216",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "aec1ff6c877631699da297e766b46057322e98e32c9663f4a6c1918d4817a38a",
+          "team_source": "../sources/history-138.md#src-0030216"
+        },
+        {
+          "source_id": "SRC-0030219",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "a6f4418c7cf5ce97f4a6a9f1abfb9686d3134aa1f4785b1af7748fde006ac6da",
+          "team_source": "../sources/history-138.md#src-0030219"
+        },
+        {
+          "source_id": "SRC-0030222",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "d2b926912cfc95129d4c6d646fcaf581a07b47939d63136c6bc3d753e0caad28",
+          "team_source": "../sources/history-138.md#src-0030222"
+        }
+      ],
+      "record_anchor": "claim-09",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C10",
+      "title": "변경 buffer 확인",
+      "claim": "원checkpoint9와 새buffer9의 저장 byte를 대조해 각 모델에서 running_mean/var24키가 바뀌고 num_batches_tracked12키는 그대로임을 확인했다. 108층의 변화 최대값은 저장 보고와 정확히 일치했고 variance 평균은 reduction 반올림 허용2e−7 안이다. GLOBAL/REDUCE를 호출하거나 pickle unpickle/torch import 없이 symbolic descriptor와 raw storage만 읽었다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/records/0/changed_state_keys",
+            "/records/1/changed_state_keys",
+            "/records/2/changed_state_keys",
+            "/records/3/changed_state_keys",
+            "/records/4/changed_state_keys",
+            "/records/5/changed_state_keys",
+            "/records/6/changed_state_keys",
+            "/records/7/changed_state_keys",
+            "/records/8/changed_state_keys",
+            "/records/0/layers",
+            "/records/1/layers",
+            "/records/2/layers",
+            "/records/3/layers",
+            "/records/4/layers",
+            "/records/5/layers",
+            "/records/6/layers",
+            "/records/7/layers",
+            "/records/8/layers"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        },
+        {
+          "source_id": "SRC-0030240",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "822808952e35b22921569f915db4b693f0929362e564ff4deae7cafbd6bc8476",
+          "team_source": "../sources/history-138.md#src-0030240"
+        },
+        {
+          "source_id": "SRC-0030282",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "081bcc8b369f3f3cb275cfb839677c004be3e2b55837b2fddb921aecbba82e69",
+          "team_source": "../sources/history-138.md#src-0030282"
+        },
+        {
+          "source_id": "SRC-0030285",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "ae92219d6aff933933f726d783275f136dd6e05eb0aaa329d1ccedc3426424c2",
+          "team_source": "../sources/history-138.md#src-0030285"
+        },
+        {
+          "source_id": "SRC-0030288",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "c165bbe9b891a9b2ad9f77058f387b72d9cfd1bb11d35254a45ef05fe3023ff9",
+          "team_source": "../sources/history-138.md#src-0030288"
+        },
+        {
+          "source_id": "SRC-0030291",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "29381448c41cb1f0ec0b111215817875b8586fba74ea2df365974ddc4cf5f7d7",
+          "team_source": "../sources/history-138.md#src-0030291"
+        },
+        {
+          "source_id": "SRC-0030213",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "95a274b8e4b7825756b5d9bb79ed6ed7d780db57d4a4993d4d3e54fe46b155b8",
+          "team_source": "../sources/history-138.md#src-0030213"
+        },
+        {
+          "source_id": "SRC-0030216",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "aec1ff6c877631699da297e766b46057322e98e32c9663f4a6c1918d4817a38a",
+          "team_source": "../sources/history-138.md#src-0030216"
+        },
+        {
+          "source_id": "SRC-0030219",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "a6f4418c7cf5ce97f4a6a9f1abfb9686d3134aa1f4785b1af7748fde006ac6da",
+          "team_source": "../sources/history-138.md#src-0030219"
+        },
+        {
+          "source_id": "SRC-0030222",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "d2b926912cfc95129d4c6d646fcaf581a07b47939d63136c6bc3d753e0caad28",
+          "team_source": "../sources/history-138.md#src-0030222"
+        },
+        {
+          "source_id": "SRC-0029130",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "f1d69763964c13109fae0b0fa8e3bfeb21b8ef0a457b68287609c964eca43ed6",
+          "team_source": "../sources/history-138.md#src-0029130"
+        },
+        {
+          "source_id": "SRC-0029137",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "2f418d0f5af70ffcaff635340bbb53c3aba4a84928984f308e2eec87ab9f9c4b",
+          "team_source": "../sources/history-138.md#src-0029137"
+        },
+        {
+          "source_id": "SRC-0029138",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "cc5cd83296d936ec6837ae7679a7aef32ff82418548f04ad563e69d279ad31e9",
+          "team_source": "../sources/history-138.md#src-0029138"
+        },
+        {
+          "source_id": "SRC-0029139",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "195e88f41d58bb02b163830b888de8b58739c4b8328ee2579310e4ece36c5e9c",
+          "team_source": "../sources/history-138.md#src-0029139"
+        },
+        {
+          "source_id": "SRC-0029140",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "6307c92aa1b5fec218d12b8da57d666291cf682212134fed0a87c4d8aea6fb2a",
+          "team_source": "../sources/history-138.md#src-0029140"
+        },
+        {
+          "source_id": "SRC-0029126",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "a1ff64094b67ebe663dee14160f84038800c472acc34b6f3fac160aef4539edb",
+          "team_source": "../sources/history-138.md#src-0029126"
+        },
+        {
+          "source_id": "SRC-0029127",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "783c95a96559c898c24cdef6449637b44986d23543e6d2034a758ca2e2841092",
+          "team_source": "../sources/history-138.md#src-0029127"
+        },
+        {
+          "source_id": "SRC-0029128",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "03b4d8fca9ccac18f1d2055f0fe3f1bb85b3a4d4c28515399349373780ffa969",
+          "team_source": "../sources/history-138.md#src-0029128"
+        },
+        {
+          "source_id": "SRC-0029129",
+          "tensor_scope": "all_saved_tensor_bytes_non_executing",
+          "source_sha256": "c2a458fc8b607dde98c3af67e54e4db7eac2db26624fb931905f37120155d007",
+          "team_source": "../sources/history-138.md#src-0029129"
+        }
+      ],
+      "record_anchor": "claim-10",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C11",
+      "title": "복원 검사의 제한",
+      "claim": "당시 복원은 모델별 check의 첫min(16,행수)개, 총144행과 original_state hash assertion이다. 모든cell/전체 예측을 복원검사한 것이 아니며 복원후 출력은 별도 저장되지 않았다. 보고 maxdiff0을 전체 독립 복원 성공으로 확대하지 않는다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022934",
+          "lines": [
+            269,
+            275
+          ],
+          "source_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+          "team_source": "../sources/history-138.md#src-0022934"
+        },
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/max_restoration_abs_difference",
+            "/counts",
+            "/records/0/restoration_max_abs_difference",
+            "/records/1/restoration_max_abs_difference",
+            "/records/2/restoration_max_abs_difference",
+            "/records/3/restoration_max_abs_difference",
+            "/records/4/restoration_max_abs_difference",
+            "/records/5/restoration_max_abs_difference",
+            "/records/6/restoration_max_abs_difference",
+            "/records/7/restoration_max_abs_difference",
+            "/records/8/restoration_max_abs_difference"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        }
+      ],
+      "record_anchor": "claim-11",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C12",
+      "title": "평균 오차의 방향",
+      "claim": "14일 scaled MAE는 global0.072873612→0.073333726, Tab-risk0.086002226→0.089940461, empirical-risk0.079864979→0.083497946로 모두 증가했다. validation 평균도 모두 증가했다. Tab/empirical train 평균은 조금 감소하고 global train은 증가했다. float32 subtraction/abs 뒤 float64 평균을 보존하며 원단위 MAE와 합치지 않는다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/aggregates/global/original/train_mae",
+            "/aggregates/global/recalibrated/train_mae",
+            "/aggregates/tabicl_risk/original/train_mae",
+            "/aggregates/tabicl_risk/recalibrated/train_mae",
+            "/aggregates/empirical_risk/original/train_mae",
+            "/aggregates/empirical_risk/recalibrated/train_mae",
+            "/aggregates/global/original/validation_mae",
+            "/aggregates/global/recalibrated/validation_mae",
+            "/aggregates/tabicl_risk/original/validation_mae",
+            "/aggregates/tabicl_risk/recalibrated/validation_mae",
+            "/aggregates/empirical_risk/original/validation_mae",
+            "/aggregates/empirical_risk/recalibrated/validation_mae",
+            "/aggregates/global/original/check_mae",
+            "/aggregates/global/recalibrated/check_mae",
+            "/aggregates/tabicl_risk/original/check_mae",
+            "/aggregates/tabicl_risk/recalibrated/check_mae",
+            "/aggregates/empirical_risk/original/check_mae",
+            "/aggregates/empirical_risk/recalibrated/check_mae"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        },
+        {
+          "source_id": "SRC-0029132",
+          "NPZ_keys": [
+            "cell_ids",
+            "scales",
+            "train_y",
+            "validation_y",
+            "check_y",
+            "global_original_train",
+            "global_original_validation",
+            "global_original_check",
+            "global_recalibrated_train",
+            "global_recalibrated_validation",
+            "global_recalibrated_check",
+            "tabicl_risk_original_train",
+            "tabicl_risk_original_validation",
+            "tabicl_risk_original_check",
+            "tabicl_risk_recalibrated_train",
+            "tabicl_risk_recalibrated_validation",
+            "tabicl_risk_recalibrated_check",
+            "empirical_risk_original_train",
+            "empirical_risk_original_validation",
+            "empirical_risk_original_check",
+            "empirical_risk_recalibrated_train",
+            "empirical_risk_recalibrated_validation",
+            "empirical_risk_recalibrated_check"
+          ],
+          "source_sha256": "55c4dcee996a161d8dd005dfe5161d919cc41ed02fa6de244d928ff5ac0a9069",
+          "team_source": "../sources/history-138.md#src-0029132"
+        }
+      ],
+      "record_anchor": "claim-12",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C13",
+      "title": "K4 차이와 반기간 반례",
+      "claim": "Tab−empirical check차이는+0.006137247→+0.006442515이며 앞7일+0.003136804→+0.002995205로 줄고 뒤7일+0.009137689→+0.009889824로 늘었다. 두기간 모두 평균 순위가 뒤집히지 않았다. 전체gap 증가를 두반기간 모두 증가로 요약하지 않는다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/comparisons/original/check",
+            "/comparisons/recalibrated/check",
+            "/comparisons/original/first_7_days",
+            "/comparisons/recalibrated/first_7_days",
+            "/comparisons/original/last_7_days",
+            "/comparisons/recalibrated/last_7_days"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        }
+      ],
+      "record_anchor": "claim-13",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C14",
+      "title": "cell과 날짜의 개선 사례",
+      "claim": "각방법의14일 cell평균은14개 악화·2개 개선이다. 개선cell은 global3745/5337, Tab4553/5337, empirical4565/5365다. 하루16cell평균 개선은 global2/9/13/14일, empirical3일, Tab0일이다. cell×day224개에서 개선/악화는94/130·78/146·69/155다. 겹치는 시계열 구간을 독립 반복이나 유의성 표본으로 세지 않는다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/aggregates/global/original/check_cell_mae",
+            "/aggregates/global/recalibrated/check_cell_mae",
+            "/aggregates/tabicl_risk/original/check_cell_mae",
+            "/aggregates/tabicl_risk/recalibrated/check_cell_mae",
+            "/aggregates/empirical_risk/original/check_cell_mae",
+            "/aggregates/empirical_risk/recalibrated/check_cell_mae",
+            "/aggregates/global/original/day_mae",
+            "/aggregates/global/recalibrated/day_mae",
+            "/aggregates/tabicl_risk/original/day_mae",
+            "/aggregates/tabicl_risk/recalibrated/day_mae",
+            "/aggregates/empirical_risk/original/day_mae",
+            "/aggregates/empirical_risk/recalibrated/day_mae"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        },
+        {
+          "source_id": "SRC-0029132",
+          "NPZ_keys": [
+            "global_original_check",
+            "global_recalibrated_check",
+            "tabicl_risk_original_check",
+            "tabicl_risk_recalibrated_check",
+            "empirical_risk_original_check",
+            "empirical_risk_recalibrated_check",
+            "check_y"
+          ],
+          "source_sha256": "55c4dcee996a161d8dd005dfe5161d919cc41ed02fa6de244d928ff5ac0a9069",
+          "team_source": "../sources/history-138.md#src-0029132"
+        }
+      ],
+      "record_anchor": "claim-14",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C15",
+      "title": "cluster 평균과 국소 개선",
+      "claim": "9개 checkpoint 모두 check 평균은 증가했다. Tab cluster2·3은 train/validation이 좋아져도 check는 나빠졌다. cluster 평균의 악화와 일부cell/day 개선을 함께 보존하며 개별 모델 float32 reduction과 전체 float64 평균의 작은 차이를 오류로 취급하지 않는다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/records/0/train_original_mae",
+            "/records/0/train_recalibrated_mae",
+            "/records/0/validation_original_mae",
+            "/records/0/validation_recalibrated_mae",
+            "/records/0/check_original_mae",
+            "/records/0/check_recalibrated_mae",
+            "/records/1/train_original_mae",
+            "/records/1/train_recalibrated_mae",
+            "/records/1/validation_original_mae",
+            "/records/1/validation_recalibrated_mae",
+            "/records/1/check_original_mae",
+            "/records/1/check_recalibrated_mae",
+            "/records/2/train_original_mae",
+            "/records/2/train_recalibrated_mae",
+            "/records/2/validation_original_mae",
+            "/records/2/validation_recalibrated_mae",
+            "/records/2/check_original_mae",
+            "/records/2/check_recalibrated_mae",
+            "/records/3/train_original_mae",
+            "/records/3/train_recalibrated_mae",
+            "/records/3/validation_original_mae",
+            "/records/3/validation_recalibrated_mae",
+            "/records/3/check_original_mae",
+            "/records/3/check_recalibrated_mae",
+            "/records/4/train_original_mae",
+            "/records/4/train_recalibrated_mae",
+            "/records/4/validation_original_mae",
+            "/records/4/validation_recalibrated_mae",
+            "/records/4/check_original_mae",
+            "/records/4/check_recalibrated_mae",
+            "/records/5/train_original_mae",
+            "/records/5/train_recalibrated_mae",
+            "/records/5/validation_original_mae",
+            "/records/5/validation_recalibrated_mae",
+            "/records/5/check_original_mae",
+            "/records/5/check_recalibrated_mae",
+            "/records/6/train_original_mae",
+            "/records/6/train_recalibrated_mae",
+            "/records/6/validation_original_mae",
+            "/records/6/validation_recalibrated_mae",
+            "/records/6/check_original_mae",
+            "/records/6/check_recalibrated_mae",
+            "/records/7/train_original_mae",
+            "/records/7/train_recalibrated_mae",
+            "/records/7/validation_original_mae",
+            "/records/7/validation_recalibrated_mae",
+            "/records/7/check_original_mae",
+            "/records/7/check_recalibrated_mae",
+            "/records/8/train_original_mae",
+            "/records/8/train_recalibrated_mae",
+            "/records/8/validation_original_mae",
+            "/records/8/validation_recalibrated_mae",
+            "/records/8/check_original_mae",
+            "/records/8/check_recalibrated_mae"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        }
+      ],
+      "record_anchor": "claim-15",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C16",
+      "title": "당시 판단의 기각 범위",
+      "claim": "이 단일조건에서 훈련입력 통계 재계산만으로 Tab K4 손해나 global 대비 손해가 해결되지 않았다. BN이 원인이 아니라는 일반 기각, Tab 자체의 기각, 새 소속 성능 우위나 독립 clustering validation으로 확대하지 않는다. 관계충돌·유한표본·최적화·평가절차 등 경쟁원인은 남는다.",
+      "claim_type": "interpretation_or_scope",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020860",
+          "lines": [
+            1,
+            55
+          ],
+          "source_sha256": "9c0022f6ea60b86b5405ecbc4038c41430d183aced7e3c541a728762baa20075",
+          "team_source": "../sources/history-138.md#src-0020860"
+        },
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/new_clustering_rule",
+            "/partition_changes",
+            "/independent_test",
+            "/clustering_validation_passed",
+            "/comparisons"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        }
+      ],
+      "record_anchor": "claim-16",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C17",
+      "title": "호출·행수와 통계 분모",
+      "claim": "12층×9모델의 prefix828회/387072행, 두mode×3방법×16cell×(672+168+336)=primary112896행, 복원144행, prediction261회가 batch512로 설명된다. moment_count/channel은 global86016·각cluster21504이며 sample×8step이지 독립 관측 수가 아니다. 현재 새 호출은0이다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/counts",
+            "/records/0/layers",
+            "/records/1/layers",
+            "/records/2/layers",
+            "/records/3/layers",
+            "/records/4/layers",
+            "/records/5/layers",
+            "/records/6/layers",
+            "/records/7/layers",
+            "/records/8/layers"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        },
+        {
+          "source_id": "SRC-0029136",
+          "JSON_pointers": [
+            "/expected_calibration_prefix_rows",
+            "/expected_primary_prediction_rows",
+            "/batch"
+          ],
+          "source_sha256": "ae850ac3183f549f728df8695d3edcc00ee5fbc402195b663c8e5ee77f446f4b",
+          "team_source": "../sources/history-138.md#src-0029136"
+        },
+        {
+          "source_id": "SRC-0022934",
+          "lines": [
+            145,
+            177
+          ],
+          "source_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+          "team_source": "../sources/history-138.md#src-0022934"
+        }
+      ],
+      "record_anchor": "claim-17",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C18",
+      "title": "시간과 메모리 범위",
+      "claim": "보고된 entire_stage8.635802399992826초/RSS271278080bytes는 imports/초기hash 이후부터 data load·모델계산·partial쓰기·predictions저장까지이며 최종rehash/summary직렬화는 제외한다. calibration_seconds9개의 합은 이 전체의 부분시간이다. 현재 측정한 모델시간이나 원33 fit시간과 중복 합산하지 않는다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/entire_stage_seconds",
+            "/timing_scope",
+            "/counts",
+            "/records/0/calibration_seconds",
+            "/records/1/calibration_seconds",
+            "/records/2/calibration_seconds",
+            "/records/3/calibration_seconds",
+            "/records/4/calibration_seconds",
+            "/records/5/calibration_seconds",
+            "/records/6/calibration_seconds",
+            "/records/7/calibration_seconds",
+            "/records/8/calibration_seconds"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        }
+      ],
+      "record_anchor": "claim-18",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C19",
+      "title": "부분결과의 고유 내용",
+      "claim": "partial의9records는 최종records와 같고 current=null이다. partial_elapsed8.607991600001696초/peak271220736bytes와 최종시간/peak는 다르다. 최종 partial을 별도 실험·실패 재시도·전체 바이트 동일사본으로 세지 않는다. 검수 boolean은 당시 보고이며 독립 모델 실행 증명이 아니다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029131",
+          "JSON_pointers": [
+            "/records",
+            "/counts",
+            "/current",
+            "/elapsed_seconds"
+          ],
+          "source_sha256": "ae8d146f3d1aeca1b999eee78e3e36c14236b3d9b8b55de3f4bf54f9d9c2cb91",
+          "team_source": "../sources/history-138.md#src-0029131"
+        },
+        {
+          "source_id": "SRC-0029141",
+          "JSON_pointers": [
+            "/checks",
+            "/source_sha256",
+            "/result_sha256",
+            "/research_goal_complete",
+            "/stage109_executed"
+          ],
+          "source_sha256": "50a291d576fd97ccecbcd850baece4ea2c21213946250a49b755d3c1677f49f2",
+          "team_source": "../sources/history-138.md#src-0029141"
+        }
+      ],
+      "record_anchor": "claim-19",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C20",
+      "title": "9회 상태 적합의 회계",
+      "claim": "예전 optimizer29회·Tab78context/55488query행은 유지하며 BN상태 적합9회를 같은 allowance에 차감해 combined38/cap47/잔여9가 됐다. 추가18회 예약 중9개를 사용했고 gradient/optimizer0이어도 모델상태 적합 비용은0이 아니다. 8.635802초는 RCTL wall의 부분이며 두번 더하지 않는다. budget_resets0/automatic_recharge=false는 현재 예산 지시가 아니다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022121",
+          "lines": [
+            23,
+            107
+          ],
+          "source_sha256": "0c0d1182fb4c1ae5ae75196f26ab7e36408c9d8989314f613cb28c873ae2dde2",
+          "team_source": "../sources/history-138.md#src-0022121"
+        },
+        {
+          "source_id": "SRC-0020858",
+          "JSON_pointers": [
+            "/used",
+            "/caps",
+            "/remaining_count_budgets",
+            "/budget_resets"
+          ],
+          "source_sha256": "98972b834adb0c650f6e309bc1b24a7d5a96e0b03eec1f86a9c0f651025204ba",
+          "team_source": "../sources/history-138.md#src-0020858"
+        },
+        {
+          "source_id": "SRC-0032507",
+          "JSON_pointers": [
+            "/used",
+            "/caps",
+            "/remaining_count_budgets",
+            "/additional_rounds",
+            "/RCTL_count_accounting_note",
+            "/statistics_adaptation_stages",
+            "/budget_resets"
+          ],
+          "source_sha256": "300d59d3efd7f6709d4b9b5da0f83023ef68f4251a74afcbfc73f2dac5afb2dc",
+          "team_source": "../sources/history-138.md#src-0032507"
+        }
+      ],
+      "record_anchor": "claim-20",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C21",
+      "title": "실행전 원장 재구성의 제한",
+      "claim": "settings의 실행전96e00… 원장 SHA와 같은 JSON byte를 before98972…·저장107비용·정적회계 규칙에서 재구성했고,9회 정산을 적용한 전체JSON 값은 after300d59…와 일치했다. 파생 snapshot이지 발견/복구된 원본파일이 아니며 원본 목록/본문 credit은0이다. 실제 도구회계응답·정확한 쓰기시각은 미복구다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029136",
+          "JSON_pointers": [
+            "/ledger_before_run_sha256",
+            "/round_id"
+          ],
+          "source_sha256": "ae850ac3183f549f728df8695d3edcc00ee5fbc402195b663c8e5ee77f446f4b",
+          "team_source": "../sources/history-138.md#src-0029136"
+        },
+        {
+          "source_id": "SRC-0022121",
+          "lines": [
+            23,
+            107
+          ],
+          "source_sha256": "0c0d1182fb4c1ae5ae75196f26ab7e36408c9d8989314f613cb28c873ae2dde2",
+          "team_source": "../sources/history-138.md#src-0022121"
+        },
+        {
+          "source_id": "SRC-0032507",
+          "JSON_pointers": [
+            "/cheap_stage_details/9",
+            "/new_cheap_diagnostic_seconds/support_composition_107",
+            "/additional_rounds"
+          ],
+          "source_sha256": "300d59d3efd7f6709d4b9b5da0f83023ef68f4251a74afcbfc73f2dac5afb2dc",
+          "team_source": "../sources/history-138.md#src-0032507"
+        }
+      ],
+      "record_anchor": "claim-21",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C22",
+      "title": "입력18hash와 종료 표식",
+      "claim": "계획·실행code·모델정의·설정/배열·원checkpoint의18개 hash가 현재 보존 byte와 맞고 종료표식의result hash도 일치한다. 원107과 달리108 결과에는 실행code SHA가 기록돼 있다. 이는 보고된 코드 pin이며 당시에 실행된 프로세스의 독립 도구로그 복구는 아니다. 원본78경로/보호6개의 hash도 불변이다.",
+      "claim_type": "bounded_observation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029136",
+          "JSON_pointers": [
+            "/source_hashes"
+          ],
+          "source_sha256": "ae850ac3183f549f728df8695d3edcc00ee5fbc402195b663c8e5ee77f446f4b",
+          "team_source": "../sources/history-138.md#src-0029136"
+        },
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/source_files_unchanged"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        },
+        {
+          "source_id": "SRC-0029135",
+          "JSON_pointers": [
+            "/settings_sha256",
+            "/unix"
+          ],
+          "source_sha256": "58f06762114aaaee698d62101c252f6b1162359f673157a45116065a138a58e4",
+          "team_source": "../sources/history-138.md#src-0029135"
+        },
+        {
+          "source_id": "SRC-0029134",
+          "JSON_pointers": [
+            "/result_sha256",
+            "/complete",
+            "/unix"
+          ],
+          "source_sha256": "41b31d8cbac7fd2c7abddf7fb58b45da0c1822019e3160d57f0a86cd122f2dab",
+          "team_source": "../sources/history-138.md#src-0029134"
+        }
+      ],
+      "record_anchor": "claim-22",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C23",
+      "title": "선행문헌과 신규성 경계",
+      "claim": "Wu·Johnson의 Rethinking Batch in BatchNorm v1 §3.2–3.3/A.2–A.3에서 고정모델 통계와 층별절차를 확인했다. §3.2 실험의 모멘트식과 A.2 식2의N/(N−1) 불편분산 보정을 구별한다. 원108은 유한집합 모멘트를 채택한다. 영상분류 결과를 Milan 성능 보장이나 Tab 클러스터링 신규성으로 이전하지 않는다.",
+      "claim_type": "interpretation_or_scope",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020859",
+          "lines": [
+            1,
+            38
+          ],
+          "source_sha256": "2161721c8d09e1198b36751716701bf226b033ea42e0a576befdd67f667eef2c",
+          "team_source": "../sources/history-138.md#src-0020859"
+        },
+        {
+          "source_id": "SRC-0022934",
+          "lines": [
+            145,
+            190
+          ],
+          "source_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+          "team_source": "../sources/history-138.md#src-0022934"
+        }
+      ],
+      "record_anchor": "claim-23",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "external_reference_refs": [
+        {
+          "url": "https://arxiv.org/pdf/2105.07576v1",
+          "sections": [
+            "3.2",
+            "3.3",
+            "A.2",
+            "A.3"
+          ],
+          "selected_visual_page_1_based": 13,
+          "whole_paper_read": false
+        }
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C24",
+      "title": "과거 Goal·다음 행동",
+      "claim": "당시 continuation_state의 getGoal active·heartbeat 미재생성·차단감사 초기화·next109 logs-only는 역사적 운영 보고다. nativeGoal 도구응답과 정확한 section9.1 판본은 복구하지 않았다. 이 문장을 현재 Goal/자동화/예산/모델 권한으로 실행하지 않는다.",
+      "claim_type": "interpretation_or_scope",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020857",
+          "lines": [
+            1,
+            22
+          ],
+          "source_sha256": "b93e5750903275c481dc15a7e3efb63e12c986dbf133b6673b2e8a1d5b526b8b",
+          "team_source": "../sources/history-138.md#src-0020857"
+        },
+        {
+          "source_id": "SRC-0020860",
+          "lines": [
+            1,
+            55
+          ],
+          "source_sha256": "9c0022f6ea60b86b5405ecbc4038c41430d183aced7e3c541a728762baa20075",
+          "team_source": "../sources/history-138.md#src-0020860"
+        }
+      ],
+      "record_anchor": "claim-24",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C25",
+      "title": "재사용과 재검토 조건",
+      "claim": "같은 seed·가중치·K4·train통계·14일check의 단순반복 전에 이 부정결과와 개선cell/day를 찾는다. 새질문은 비교할 원인과 달라진 입력/기간/통계/학습조건을 명시하고, 이미 본14일에 맞춘 통계 혼합·layer/threshold·소속 선택을 독립검증으로 세지 않는다. 원checkpoint와 새buffer를 같이 사용해야 재계산 상태를 복원할 수 있으며 현재 실행 검증은 없다.",
+      "claim_type": "interpretation_or_scope",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020859",
+          "lines": [
+            1,
+            38
+          ],
+          "source_sha256": "2161721c8d09e1198b36751716701bf226b033ea42e0a576befdd67f667eef2c",
+          "team_source": "../sources/history-138.md#src-0020859"
+        },
+        {
+          "source_id": "SRC-0020860",
+          "lines": [
+            1,
+            55
+          ],
+          "source_sha256": "9c0022f6ea60b86b5405ecbc4038c41430d183aced7e3c541a728762baa20075",
+          "team_source": "../sources/history-138.md#src-0020860"
+        },
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/independent_test",
+            "/clustering_validation_passed"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        }
+      ],
+      "record_anchor": "claim-25",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H138-C26",
+      "title": "검수 범위와 남은 기록",
+      "claim": "첫11개 literal5833행, 모델정의60행 재사용·39SHA/72경로·새NPZ23키와 연결38키, 원checkpoint9/새buffer9의 저장tensor byte를 대조했다. 수치2208회 중 aggregate/comparison1776개는 정확히 일치하고 BN variance reduction의 최대차이는3.259629e−8이다. 원모델 재현/독립 인간심사/전체 과거기록 완료가 아니다. 원109이후·긴고유판본·다른형식·통합·장기팀접근·최종원본delta/검색검수가 남는다.",
+      "claim_type": "interpretation_or_scope",
+      "source_locations": [
+        {
+          "source_id": "SRC-0029133",
+          "JSON_pointers": [
+            "/complete"
+          ],
+          "source_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "team_source": "../sources/history-138.md#src-0029133"
+        },
+        {
+          "source_id": "SRC-0029132",
+          "NPZ_keys": [
+            "cell_ids",
+            "scales",
+            "train_y",
+            "validation_y",
+            "check_y",
+            "global_original_train",
+            "global_original_validation",
+            "global_original_check",
+            "global_recalibrated_train",
+            "global_recalibrated_validation",
+            "global_recalibrated_check",
+            "tabicl_risk_original_train",
+            "tabicl_risk_original_validation",
+            "tabicl_risk_original_check",
+            "tabicl_risk_recalibrated_train",
+            "tabicl_risk_recalibrated_validation",
+            "tabicl_risk_recalibrated_check",
+            "empirical_risk_original_train",
+            "empirical_risk_original_validation",
+            "empirical_risk_original_check",
+            "empirical_risk_recalibrated_train",
+            "empirical_risk_recalibrated_validation",
+            "empirical_risk_recalibrated_check"
+          ],
+          "source_sha256": "55c4dcee996a161d8dd005dfe5161d919cc41ed02fa6de244d928ff5ac0a9069",
+          "team_source": "../sources/history-138.md#src-0029132"
+        }
+      ],
+      "record_anchor": "claim-26",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "external_reference_refs": [],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0138-fixed-weight-bn-statistics/first-scope-progress.json",
+        "saved_scopes": "../evidence/0138-fixed-weight-bn-statistics/numeric-scope-packet.json",
+        "postdraft_actual_reads": "../evidence/0138-fixed-weight-bn-statistics/postdraft-actual-reads.json"
+      }
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_human_reviewer": false,
+  "new_model_runs": 0
+}

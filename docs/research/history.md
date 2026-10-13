@@ -231,3 +231,5 @@
 [H136 원106](records/0136-same-k-cellwise-error-transition.md): 동일K4/2688행·두seed의 저장예측 진단을26주장/6그룹으로 정리했다. 이후 평균 손해와4/7cell·반대 방향·실제epoch 차이, 새모델0·회계1사건과 미활성 계획을 구별한다.
 
 [H137 원107](records/0137-calendar-retention-and-external-support.md): 자기calendar4행/cluster16행은 보존됐고 k32 external은Tab12.03%/empirical15.94%였다. PCC반례·cell10/6·훈련query범위·초기범위오류와실패포함비용을 함께 남겼다. 원인은미식별이고 후속BN계획은별도다.
+
+[H138 원108](records/0138-fixed-weight-bn-statistics.md): 통계 재계산 후 세방식의14일 평균 오차는 증가했고K4순위는 유지됐다. 앞7일gap 감소·개선cell2개씩·9회 비용과후속 저장로그 계획을 보존했다. 원인식별/독립최종평가는 아니다.

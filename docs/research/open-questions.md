@@ -223,3 +223,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [원106](records/0136-same-k-cellwise-error-transition.md)은 자료구성·시간변화·최적화를 인과적으로 식별하지 않았다. 수정후Goal9.1절 정확판본·당시상태/자동화 도구응답은 미복구다. progress132–611/old122–601·RCTLsummary literal전문·원107이후/옛고유판본/형식·통합/장기접근/최종delta/검색10+와전체Goal은미완료다.
 
 [원107](records/0137-calendar-retention-and-external-support.md)의 입력비중 차이는 RCTL 손해의 원인을 식별하지 않았다. 초기실패로그/실행코드hash/원장기입시점/nativeGoal상태전환은 미복구이며 BN12/후속비교는 이번새검증이아니다. 원108이후/긴고유판본/다른형식·통합/장기접근/최종delta/검색10+와전체Goal은미완료다.
+
+[원108](records/0138-fixed-weight-bn-statistics.md)은 사후 BN 통계만으로 기존손해를 해결하지 못했다. 적합후parameter/전체복원출력·실행도구로그/회계시각/과거Goal9.1판본 공백이 남는다. 원109이후·고유긴판본/다른형식·통합/장기접근/최종delta/검색검수와전체Goal도 미완료다.

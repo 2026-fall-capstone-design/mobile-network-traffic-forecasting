@@ -1,0 +1,57 @@
+{
+  "seed": 20260925,
+  "methods": [
+    "global",
+    "tabicl_risk",
+    "empirical_risk"
+  ],
+  "checkpoint_count": 9,
+  "optimizer_fits": 0,
+  "maximum_statistics_adaptations": 9,
+  "TabICL_calls": 0,
+  "batch": 512,
+  "threads": 4,
+  "wall_cap_seconds": 300,
+  "rss_cap_bytes": 4294967296,
+  "reproduction_max_abs_tolerance": 1e-05,
+  "train_target_indices": [
+    168,
+    839
+  ],
+  "validation_target_indices": [
+    840,
+    1007
+  ],
+  "development_check_target_indices": [
+    1008,
+    1343
+  ],
+  "calibration": "Layerwise finite-population input moments, train X only, eval mode",
+  "source": "https://arxiv.org/pdf/2105.07576 (v1), Appendix A.3",
+  "expected_calibration_prefix_rows": 387072,
+  "expected_primary_prediction_rows": 112896,
+  "source_hashes": {
+    "plan": "2161721c8d09e1198b36751716701bf226b033ea42e0a576befdd67f667eef2c",
+    "code": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+    "model_code": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+    "design": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+    "inputs_101": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+    "predictions_34": "75399770d55d018ee8cd65bfcd18f5552aa73cf971175ec81d16559b573f0f3d",
+    "saved_future": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096",
+    "fit_results": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+    "frozen_training": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+    "global_20260925_cluster0": "822808952e35b22921569f915db4b693f0929362e564ff4deae7cafbd6bc8476",
+    "tabicl_risk_20260925_cluster0": "081bcc8b369f3f3cb275cfb839677c004be3e2b55837b2fddb921aecbba82e69",
+    "tabicl_risk_20260925_cluster1": "ae92219d6aff933933f726d783275f136dd6e05eb0aaa329d1ccedc3426424c2",
+    "tabicl_risk_20260925_cluster2": "c165bbe9b891a9b2ad9f77058f387b72d9cfd1bb11d35254a45ef05fe3023ff9",
+    "tabicl_risk_20260925_cluster3": "29381448c41cb1f0ec0b111215817875b8586fba74ea2df365974ddc4cf5f7d7",
+    "empirical_risk_20260925_cluster0": "95a274b8e4b7825756b5d9bb79ed6ed7d780db57d4a4993d4d3e54fe46b155b8",
+    "empirical_risk_20260925_cluster1": "aec1ff6c877631699da297e766b46057322e98e32c9663f4a6c1918d4817a38a",
+    "empirical_risk_20260925_cluster2": "a6f4418c7cf5ce97f4a6a9f1abfb9686d3134aa1f4785b1af7748fde006ac6da",
+    "empirical_risk_20260925_cluster3": "d2b926912cfc95129d4c6d646fcaf581a07b47939d63136c6bc3d753e0caad28"
+  },
+  "ledger_before_run_sha256": "96e00f220c5d206ca29a70ed72c0dd799e7a657d458ae33179878d139b1695f2",
+  "round_id": "post_revision_106_round1",
+  "partitions_frozen": true,
+  "independent_final_evaluation": false
+}
