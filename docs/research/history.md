@@ -225,3 +225,5 @@
 [H133 원103](records/0133-current-evidence-and-unapproved-extension.md): 원101/95/102를 새중간보고서에 연결하고11요구사항을감사했다. 새모델0·추천미확정·확장18fit미승인. 33주장/8대조·Word52body3표/PDF4쪽127행·기간/cell반례와미독을보존했다.
 
 [H134 원104](records/0134-resource-and-evidence-audit.md): 같은 자원·근거 제약을 두 번째 감사로 기록했다. 새 모델·수치0, 제안 미승인, thresholdfalse·과거Goal active미완료를 보존했다. 13주장/4대조·원문94행/원장4선택필드를 연결했다.
+
+[H135 원105](records/0135-blocked-audit-and-resume-conditions.md): 연속감사1→2→3과 reportedblocked·미완료를 보존했다. 새모델/수치0·15주장4대조·원문142행/원장6필드·문서identity2개를 연결했다. 당시 상태도구 반환로그의 독립복구는 미확인이다.
