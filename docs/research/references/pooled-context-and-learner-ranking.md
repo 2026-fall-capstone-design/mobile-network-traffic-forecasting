@@ -17,3 +17,5 @@ TabICL은 이 개발 구간에서 같은16열을 받은 Ridge/HGB보다 직접 �
 공식 보관 구현4개는 [고정commit](https://github.com/soda-inria/tabicl/tree/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3)의 바이트와 일치한다. 초기4thread와 predict중n_jobs1 범위를 구별한다. context target/일부K-V 제한을 확인했지만 선정 밖 callee 전체는 미검증이다. checkpoint를 다시 실행한 성능 재현도 아니다.
 
 앞선 [원98 pooling 목적](../records/0128-quantile-information-and-pooling-objective.md), [원99 학습 단위](../records/0129-learning-units-and-clustering-cost.md), [원100 사전학습·시간조건](pretraining-objective-and-time-conditioning.md)을 함께 읽는다. 실제 소속 결정 또는 같은 유용한 결정의 추정 비용에서 Tab이 추가하는 차이를 특정해야 같은 실험을 반복하는 일을 줄일 수 있다.
+
+후속 [원102](../records/0132-architecture-kernel-and-joint-risk.md)은 실제context의 순위 불일치를 보완할 analytic kernel을 검토했지만 현재 RCTL 구조/초기화·Adam/MAE·target 공동분포와 비용의 연결 근거가 부족했다. [조건 안내](architecture-kernel-and-joint-risk.md)에 직접 예측의 긍정 근거, 전체 NTK 가능성과 이번 후보 보류를 함께 남겼다.

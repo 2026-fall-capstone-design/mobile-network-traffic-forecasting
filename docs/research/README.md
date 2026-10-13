@@ -308,3 +308,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원100 사전학습 목적과 시간 조건](records/0130-pretraining-objective-and-time-conditioning.md)은 TabClustPFN의 잠재 row 소속/K와 APT의 달력 조건 변환을 실제 cell 공유 효용과 구별한다. [문헌·코드 비교](references/pretraining-objective-and-time-conditioning.md)에서 K1, 표현 재사용, 공동 학습, 인쇄표의 확인 범위를 읽는다.
 
 [원101 실제 pooled context와 RCTL 순위](records/0131-actual-pooled-context-and-rctl-ranking.md)는 직접 예측의 이득과 다른 learner의 소속 대리점수를 구별한다. [재사용 안내](references/pooled-context-and-learner-ranking.md)에서 같은16기초값의16열/8×9표현, rolling one-step·주간/cell예외와 비용 범위를 확인한다.
+
+[원102 구조 kernel과 공동 target 위험](records/0132-architecture-kernel-and-joint-risk.md)은 kernel 점수의 채택 보류 조건을 설명한다. [문헌·재사용 안내](references/architecture-kernel-and-joint-risk.md)에서 NTK INIT/유한 RCTL 학습, target 공분산·MAE, 비용 산술과 실제 측정을 구별한다.

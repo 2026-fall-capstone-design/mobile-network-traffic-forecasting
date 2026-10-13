@@ -1,0 +1,36 @@
+from pathlib import Path
+import json, hashlib, urllib.request, urllib.error
+from pypdf import PdfReader
+B=Path(__file__).resolve().parent
+O=B/'sources/architecture_proxy_102'
+O.mkdir(exist_ok=True)
+assert not (O/'download_manifest.json').exists()
+targets=[
+ ('Morello_NTK_affinities_2024.pdf','https://openreview.net/pdf?id=HxT9EuHdXW','NeurIPS2024 M3L workshop; version as served 2026-09-26'),
+ ('RNTK_2006.10246v4.pdf','https://arxiv.org/pdf/2006.10246v4','arXiv v4, 2021-06-15'),
+ ('TensorProgramsII_2006.14548v4.pdf','https://arxiv.org/pdf/2006.14548v4','arXiv v4, 2020-11-30'),
+]
+records=[]
+for filename,url,version in targets:
+ p=O/filename
+ assert not p.exists()
+ rec={'url':url,'version':version,'filename':filename,'retrieval_date':'2026-09-26'}
+ try:
+  request=urllib.request.Request(url,headers={'User-Agent':'research-source-check/1.0'})
+  with urllib.request.urlopen(request,timeout=35) as response:
+   content=response.read(8*1024**2+1)
+   rec.update(http_status=response.status,final_url=response.url,bytes=len(content),content_type=response.headers.get('Content-Type'))
+  if len(content)>8*1024**2 or not content.startswith(b'%PDF-'):
+   rec['status']='not_saved_not_pdf_or_size_limit'
+  else:
+   p.write_bytes(content)
+   reader=PdfReader(p)
+   pages=[page.extract_text() or '' for page in reader.pages]
+   text='\n'.join(f'\n=== PDF PAGE {i+1} ===\n{page}' for i,page in enumerate(pages))
+   p.with_suffix('.txt').write_text(text,encoding='utf-8')
+   rec.update(status='saved',sha256=hashlib.sha256(content).hexdigest(),pdf_pages=len(pages),metadata={str(k):str(v) for k,v in (reader.metadata or {}).items()})
+ except Exception as e:
+  rec.update(status='failed',error=str(e))
+ records.append(rec)
+ (O/'download_manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+ print(json.dumps({k:v for k,v in rec.items() if k!='metadata'},ensure_ascii=False),flush=True)
