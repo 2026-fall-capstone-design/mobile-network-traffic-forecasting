@@ -624,3 +624,7 @@ RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](
 ## 원105 차단 감사 뒤 같은 후보를 다시 다룰 때
 
 [원105](records/0135-blocked-audit-and-resume-conditions.md)와 [재검토조건](references/blocked-audit-and-resume-conditions.md)을 먼저 읽는다. 예산 허용뿐 아니라 빠진근거를 해결하는 새경로·구체적후보·가까운문헌·비교계획이 무엇인지 적는다. 기존실패와누적비용을 보존하고 좋은직접예측·basicbatch·이론검토를 새partition의 후속검증으로 옮기지 않는다.
+
+## 원106과 같은 K 비교를 반복하기 전에
+
+[기록](records/0136-same-k-cellwise-error-transition.md)과 [재검토 조건](references/same-k-cellwise-error-transition.md)을 읽는다. 평균·유리한cell/날짜·네전이조합과학습경로 차이를 함께 확인하고, 지원/구성·시간변화·최적화 중 무엇을 구별할 비교인지 적는다. cached오차를 새소속/threshold에 입력하지 않는다.

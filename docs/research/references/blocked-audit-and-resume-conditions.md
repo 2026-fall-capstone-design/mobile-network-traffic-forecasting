@@ -9,3 +9,5 @@
 [원101](../records/0131-actual-pooled-context-and-rctl-ranking.md)의 직접 예측/소속선호 차이, [원95](../records/0125-frozen-rctl-serving-cost-baseline.md)의 기본batch 비용, [원102](../records/0132-architecture-kernel-and-joint-risk.md)의 이론 연결 한계를 먼저 읽는다. 그 결과를 새 후보의 직접 검증이나 독립 재현으로 재인용하지 않는다.
 
 중간Word/MD는 같은바이트 사본의 이전 검수범위를 재사용한다. 현재 새Word 렌더·본문 판독으로 집계하지 않는다. 과거 운영 명령과 현재 아카이브의 실행 범위를 구별하며, 새Goal 재개나 추가학습은 이 정리에서 수행하지 않았다.
+
+후속 [원106](../records/0136-same-k-cellwise-error-transition.md)은 과거상태 보고·저장예측 진단·미활성 작은정책을 구별했다. [동일K 재검토 조건](same-k-cellwise-error-transition.md)에서 추가예산보다 먼저 경쟁원인과 최소판별 비교를 확인한다.

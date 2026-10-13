@@ -227,3 +227,5 @@
 [H134 원104](records/0134-resource-and-evidence-audit.md): 같은 자원·근거 제약을 두 번째 감사로 기록했다. 새 모델·수치0, 제안 미승인, thresholdfalse·과거Goal active미완료를 보존했다. 13주장/4대조·원문94행/원장4선택필드를 연결했다.
 
 [H135 원105](records/0135-blocked-audit-and-resume-conditions.md): 연속감사1→2→3과 reportedblocked·미완료를 보존했다. 새모델/수치0·15주장4대조·원문142행/원장6필드·문서identity2개를 연결했다. 당시 상태도구 반환로그의 독립복구는 미확인이다.
+
+[H136 원106](records/0136-same-k-cellwise-error-transition.md): 동일K4/2688행·두seed의 저장예측 진단을26주장/6그룹으로 정리했다. 이후 평균 손해와4/7cell·반대 방향·실제epoch 차이, 새모델0·회계1사건과 미활성 계획을 구별한다.
