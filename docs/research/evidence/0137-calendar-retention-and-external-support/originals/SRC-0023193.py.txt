@@ -1,0 +1,80 @@
+"""Reuse stage23 input-neighbor frequencies for fixed partitions. No model calls."""
+from pathlib import Path
+from datetime import datetime,timedelta
+import json,hashlib,time
+import numpy as np
+
+B=Path(__file__).resolve().parent
+O=B/'results/support_composition_107'
+O.mkdir(exist_ok=True)
+if (O/'result.json').exists(): raise RuntimeError('Existing completed analysis; do not rerun.')
+paths={'density':B/'results/conditional_pooling_cost/arrays.npz',
+       'risk_predictions':B/'results/risk_table_predictions.npz',
+       'partitions':B/'results/observed_risk_pilot.json',
+       'training_settings':B/'results/rctl_pilot/frozen_settings.json',
+       'plan':B/'107_support_composition_plan.md'}
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+hashes={k:sha(p) for k,p in paths.items()}
+t0=time.perf_counter()
+d=np.load(paths['density'],allow_pickle=False)
+p=np.load(paths['risk_predictions'],allow_pickle=False)
+j=json.loads(paths['partitions'].read_text(encoding='utf-8'))
+s=json.loads(paths['training_settings'].read_text(encoding='utf-8'))
+ids=np.asarray(j['cell_ids']); assert len(ids)==16
+assert np.array_equal(ids,d['cell_ids']) and np.array_equal(ids,p['cell_ids'])
+assert np.array_equal(d['query_times'],p['query_times'])
+assert np.array_equal(p['context_times'],np.arange(168,672))
+assert len(p['query_times'])==64 and p['query_times'].min()>=672 and p['query_times'].max()<=839
+assert s['train_targets']==[168,839]
+train_times=np.arange(168,840)
+keys=np.array([(datetime(2013,11,1)+timedelta(hours=int(t))).weekday()*24+int(t)%24 for t in train_times])
+counts=np.bincount(keys,minlength=168)
+assert np.all(counts==4)
+names=['tabicl_risk','empirical_risk','knn_risk','pcc_balanced','random_balanced']
+parts={name:j['partitions'][name] for name in names}
+for name, labels0 in parts.items():
+    expected=[set(group) for method,seed,cluster,group in s['tasks'] if method==name and seed==20260925]
+    assert len(expected)==4
+    assert all(set(np.flatnonzero(np.asarray(labels0)==cluster))==expected[cluster] for cluster in range(4))
+rows=[]
+for name,labels0 in parts.items():
+    labels=np.asarray(labels0)
+    assert len(labels)==16 and len(np.unique(labels))==4
+    assert sorted(np.bincount(labels))==[4,4,4,4]
+    for k in [16,32,64]:
+        w=d[f'density_k{k}']; assert w.shape==(16,1024) and np.allclose(w.sum(0),1)
+        owner=np.repeat(np.arange(16),64)
+        own=w[owner,np.arange(1024)]
+        same=labels[:,None]==labels[owner][None,:]
+        group=(w*same).sum(0); external=group-own
+        assert np.all(external>=-1e-12)
+        percell=external.reshape(16,64).mean(1)
+        rows.append(dict(partition=name,k=k,
+            calendar_rows_per_hour_weekday_per_cluster=(counts*4).tolist(),
+            self_training_rows_per_cell=672,cluster_training_rows=2688,
+            own_mass=float(own.mean()),external_mass=float(external.mean()),group_mass=float(group.mean()),
+            zero_group_mass_queries=int((group==0).sum()),
+            external_mass_by_cell=percell.tolist(),
+            external_mass_first_half=float(external.reshape(16,64)[:,:32].mean()),
+            external_mass_second_half=float(external.reshape(16,64)[:,32:].mean())))
+comparisons=[]
+for k in [16,32,64]:
+    a=next(x for x in rows if x['k']==k and x['partition']=='tabicl_risk')
+    b=next(x for x in rows if x['k']==k and x['partition']=='empirical_risk')
+    delta=np.array(a['external_mass_by_cell'])-np.array(b['external_mass_by_cell'])
+    comparisons.append(dict(k=k,Tab_minus_empirical_external_mass=float(delta.mean()),
+        Tab_higher_cells=int((delta>1e-12).sum()),Tab_lower_cells=int((delta< -1e-12).sum()),
+        Tab_minus_empirical_first_half=a['external_mass_first_half']-b['external_mass_first_half'],
+        Tab_minus_empirical_second_half=a['external_mass_second_half']-b['external_mass_second_half']))
+result=dict(complete=True,source_hashes=hashes,cell_ids=ids.tolist(),records=rows,
+    comparisons=comparisons,calendar_counts_identical=True,own_samples_retained=True,
+    query_is_RCTL_training_period=True,causal_identification=False,
+    new_TabICL_calls=0,new_RCTL_calls=0,new_fits=0,
+    arithmetic_seconds=time.perf_counter()-t0,
+    prior_failed_process_seconds=0.3895649,
+    prior_failure='Read untrained partition metadata beyond the five specified RCTL partitions; assertion stopped, no model calls or outputs. Corrected scope to the original plan.',
+    inputs_unchanged=all(sha(p)==hashes[k] for k,p in paths.items()))
+assert result['inputs_unchanged'] and result['arithmetic_seconds']<30
+(O/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'records_k32':[{k:v for k,v in r.items() if k in ['partition','own_mass','external_mass','group_mass','zero_group_mass_queries']} for r in rows if r['k']==32],
+                  'comparisons':comparisons,'seconds':result['arithmetic_seconds']},ensure_ascii=False))

@@ -9,3 +9,5 @@
 20개 날짜와 두seed는 독립20실험·유의성 검정이 아니다. 오차차이 항등식을 인과 기여율로 쓰지 않고, globalK1과 K4의 비교도 동일K 비교와 구별한다. 조건별구성 진단·학습정책/자료량 통제·가까운 조건부전이 방법과의 결정 차이는 당시 후속 조건이며 실행완료나 신규성 증거가 아니다.
 
 추가18fit·다음Tab32context/16384행·별도600초는 계획이며 기존잔여 포함은 context/query행에 적용된다. 당시nativeGoal/heartbeat 상태는 JSON보고로만 확인했다. 원code 실행/모델·자동화 재개는 이 정리에서 수행하지 않았다.
+
+후속 [원107](../records/0137-calendar-retention-and-external-support.md)은 자기 시간·요일 자료를 유지한 상태의 외부입력 비중과PCC RCTL반례를 확인했다. [지원/자료보존 재검토](calendar-retention-and-external-support.md)에서 평균·반대cell·query기간·경쟁원인과실패로그 한계를 함께 확인한다.
