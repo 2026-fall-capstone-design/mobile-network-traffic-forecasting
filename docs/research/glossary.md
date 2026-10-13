@@ -35,3 +35,5 @@
 [원106](records/0136-same-k-cellwise-error-transition.md)에서 **동일K/sample 수**와 **자료 구성/실제최적화 경로 통제**, **부호전이 항등식**과 **인과 기여율**, **저장배열 산술 대조**와 **독립 모델 재현**, **하나의 회계사건/두기록위치**, **잔여포함 계획상한**과 **실제사용**을 구별한다.
 
 [원107](records/0137-calendar-retention-and-external-support.md)의 **k이웃 수/K소속 수**, **학습행 점유/density own비중**, **external/group 비중**, **훈련query절반 평균/개별cell·이후10일**, **sample개수/독립정보량**, **입력근접성/RCTL scaled MAE**를 구별한다.
+
+[원108](records/0138-fixed-weight-bn-statistics.md)에서 **optimizer fit/모델상태 적합**, **EMA/유한집합 모멘트/불편분산 보정**, **평균 손해/cell·day 개선**, **복원144행/전체 예측 복원**, **파생원장/복구된 원본**, **저장값 검수/모델 재현**을 구별한다.
