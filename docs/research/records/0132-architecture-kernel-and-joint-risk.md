@@ -77,7 +77,7 @@ RCTL을 초기화해 Jacobian·forward/backward를 계산하는 일은 학습을
 
 당시 확보한 PDF는 합계86쪽이지만 실제로는 관련 본문과 렌더6쪽·공식 코드4파일을 확인했다. 현재 아카이브는 보관 RNTK26쪽/TP II60쪽을 텍스트8069행과 전체 이미지86개로 읽었다. 전문 판독을 독립적인 증명 전수검증·후속 NTK 연구 전수조사로 부르지 않는다.
 
-근거: [SRC-0001993](../sources/history-132.md#src-0001993) 행27–29 · [SRC-0001992](../sources/history-132.md#src-0001992) 행33–35 · [SRC-0001995](../sources/history-132.md#src-0001995) JSON /source_pdf_pages_total_not_pages_read, /rendered_pages_visually_checked, /official_code_files_saved · [SRC-0002002](../sources/history-132.md#src-0002002) PDF쪽 1,26 · [SRC-0002004](../sources/history-132.md#src-0002004) PDF쪽 1,60
+근거: [SRC-0001993](../sources/history-132.md#src-0001993) 행27–29 · [SRC-0001992](../sources/history-132.md#src-0001992) 행33–35 · [SRC-0001995](../sources/history-132.md#src-0001995) JSON /source_pdf_pages_total_not_pages_read, /rendered_pages_visually_checked, /official_code_files_saved · [SRC-0002002](../sources/history-132.md#src-0002002) PDF쪽 1–26 · [SRC-0002004](../sources/history-132.md#src-0002004) PDF쪽 1–60
 
 <a id="claim-04"></a>
 
