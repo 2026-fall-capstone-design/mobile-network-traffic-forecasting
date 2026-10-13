@@ -215,3 +215,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [원102](records/0132-architecture-kernel-and-joint-risk.md)은 현재 RCTL의 학습 위험을 kernel로 대신하는 연결 근거·비용 개선이 남음을 기록했다. Morello PDF와 두2026 논문의 전체방법, 현재progress122–601/이전112–591, Word 등 고유 기록·전체 통합/팀 접근/최종delta/검색10+는 미완료다. 일반 NTK 접근 전체의 기각으로 처리하지 않는다.
 
 [원103](records/0133-current-evidence-and-unapproved-extension.md)은 최종추천·유용한새소속·RCTL연결이남고18fit제안이미승인임을기록했다. 중간Word와연구Goal완료를구별한다. progress132–611/old122–601 및RCTLsummaryliteral전문·원104이후/옛판본·전체통합/장기팀접근/최종delta/검색10+는미완료다.
+
+[원104](records/0134-resource-and-evidence-audit.md)는 당시 제안 승인·새 후보·후속RCTL 근거가 남았다는 감사다. 현재root 색인의 원104 정확판본·긴 고유본문, progress132–611/old122–601·RCTLsummary literal전문·원105이후/다른고유판본/형식·통합/장기접근/최종delta/검색10+는 미완료다.

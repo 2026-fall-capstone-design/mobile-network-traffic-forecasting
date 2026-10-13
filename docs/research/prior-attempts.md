@@ -616,3 +616,7 @@ RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](
 ## 원103 중간문서나 추가예산을 새연구 완료로 읽지 않기
 
 [원103](records/0133-current-evidence-and-unapproved-extension.md)과 [재사용조건](references/current-evidence-and-unapproved-extension.md)을 먼저확인한다. 중간Word·Global우위·좋은Tab직접예측·RCTL독립성·18fit상한제안 각각은 유용한새소속과최종RCTL개선의증거가아니다. 새손해·Tab결정·최종이득·같은K/정보/비용·기간/cell예외와고정중단조건을구체화한다.
+
+## 원104 자원 감사 이후 같은 질문을 다시 다룰 때
+
+[원104](records/0134-resource-and-evidence-audit.md)와 [재검토 기준](references/resource-and-evidence-audit.md)을 먼저 읽는다. 남은 예산이나 상한 증액은 후보 선정·실제 효용 근거와 다르다. 실제 손해·Tab이 바꾸는 결정·가까운 선행·같은 정보/비용 비교·최종RCTL 후속검사·seed별 중단 조건 중 무엇이 달라졌는지 적는다.

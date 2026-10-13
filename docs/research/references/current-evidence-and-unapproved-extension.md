@@ -12,3 +12,5 @@
 HCP/RMB-CLE는 [가까운선행](closest-pooling-methods.md), 도로시간입력·network traffic-matrix는 [네트워크·시계열](network-timeseries.md), 공식회귀는 [TabICLv2](official-tabicl.md)에이전세부검토를연결했다. 원103의문헌요약을이논문들의새전문검토·독립재현·신규성전수감사로세지않는다. 구조이론의가능성과원102에서의점수보류도구별한다.
 
 원103의한국어보고서·Word는중간산출물이다. 개인PC링크·PDFURI문자깨짐·새Word렌더부재·미독progress/RCTLsummary전문을보존하며, [읽기용보고서](../evidence/0133-current-evidence-and-unapproved-extension/readable-report.md)에서팀이근거로이동할수있게했다. 새학습이나기존연구Goal은재개하지않았다.
+
+후속 [원104](../records/0134-resource-and-evidence-audit.md)는 같은 제약을 두 번째로 감사하고5경로의 요약·미승인 상태를 남겼다. [재검토 안내](resource-and-evidence-audit.md)에서 새로운 결정·근거 없이 예산이나 상태 확인만 반복하지 않는 기준을 확인한다.

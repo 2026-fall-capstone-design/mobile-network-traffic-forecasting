@@ -27,3 +27,5 @@
 [원102](records/0132-architecture-kernel-and-joint-risk.md)의 **NTK INIT/TRAIN**은 초기 kernel 극한과 학습 중의 연결을 구별한다. **target 공동 covariance**와 **activation/gradient covariance**, **고정 A**와 **target 적응 선택**, **주변 분위수**·**seed 평균95%CI**·**P90/P95 dataset 비율**, **한 버퍼 산술**과 **peak/runtime 실측**도 서로 다른 정보다.
 
 [원103](records/0133-current-evidence-and-unapproved-extension.md)의 **조건부상한제안**은 승인/실제사용과다르다. **중간산출물완료**와 **최종연구완료**, **Global완비조건**과 **secondseed미실행**, **state tensor bytes**와 **checkpoint file bytes**, **허용오차내예측대응**과 **bit동일성**, **retainedPDF시각검토**와 **새Wordcompilation**도구별한다.
+
+[원104](records/0134-resource-and-evidence-audit.md)의 **자원·근거 감사**는 새 성능 실험과 다르다. **조건부상한**과 **실제 승인·사용량**, **당시 파일의 응답 미기록**과 **모든 외부 대화 부재**, **과거Goal 감사 횟수**와 **현재 아카이브 상태**, **연결 기록의 재인용**과 **새 전문 검증·독립 재현**을 구별한다.
