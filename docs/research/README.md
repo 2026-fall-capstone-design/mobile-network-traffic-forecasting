@@ -318,3 +318,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원105 과거 차단 감사](records/0135-blocked-audit-and-resume-conditions.md)는 보고된차단·연구완료·재개조건을 구별한다. [재검토 안내](references/blocked-audit-and-resume-conditions.md)에서 예산 변경과 새독립경로·실제근거의 차이를 확인한다.
 
 [원106 같은 K 진단](records/0136-same-k-cellwise-error-transition.md)에서 평균·cell·시간 손해와 실제epoch 차이를 함께 확인한다. [재검토 안내](references/same-k-cellwise-error-transition.md)는 저장 재분석을 새학습·인과증명으로 읽지 않는 기준을 연결한다.
+
+[원107 자기 시간자료와 외부입력 비중](records/0137-calendar-retention-and-external-support.md)은15조건·240cell비중·zero와PCC RCTL반례를25주장으로 정리했다. [재검토 안내](references/calendar-retention-and-external-support.md)에서 자료수·입력근접성·조건부관계·RCTL 지표를 구별한다.

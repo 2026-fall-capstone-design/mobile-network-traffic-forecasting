@@ -628,3 +628,7 @@ RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](
 ## 원106과 같은 K 비교를 반복하기 전에
 
 [기록](records/0136-same-k-cellwise-error-transition.md)과 [재검토 조건](references/same-k-cellwise-error-transition.md)을 읽는다. 평균·유리한cell/날짜·네전이조합과학습경로 차이를 함께 확인하고, 지원/구성·시간변화·최적화 중 무엇을 구별할 비교인지 적는다. cached오차를 새소속/threshold에 입력하지 않는다.
+
+## 원107과 입력 지원·시간자료 보존을 반복하기 전에
+
+[기록](records/0137-calendar-retention-and-external-support.md)과 [재검토 조건](references/calendar-retention-and-external-support.md)을 읽는다. 같은K4/sample개수·원23density·zero/반대cell·기존RCTL반례를 확인하고 지원/조건부관계/유한표본/최적화·평가 중 무엇을 구별할지 적는다. 가까운입력 수를정보량/원인/신규성으로바꾸지않는다.

@@ -33,3 +33,5 @@
 [원105](records/0135-blocked-audit-and-resume-conditions.md)에서 **감사JSON의 상태보고**와 **당시 도구응답의 별도복구**, **운영차단**과 **연구완료/모든가능성의 기각**, **문서바이트 동일성**과 **현재새판독/이전범위재사용**, **누적상한 증액**과 **실제후보 검증**을 구별한다.
 
 [원106](records/0136-same-k-cellwise-error-transition.md)에서 **동일K/sample 수**와 **자료 구성/실제최적화 경로 통제**, **부호전이 항등식**과 **인과 기여율**, **저장배열 산술 대조**와 **독립 모델 재현**, **하나의 회계사건/두기록위치**, **잔여포함 계획상한**과 **실제사용**을 구별한다.
+
+[원107](records/0137-calendar-retention-and-external-support.md)의 **k이웃 수/K소속 수**, **학습행 점유/density own비중**, **external/group 비중**, **훈련query절반 평균/개별cell·이후10일**, **sample개수/독립정보량**, **입력근접성/RCTL scaled MAE**를 구별한다.

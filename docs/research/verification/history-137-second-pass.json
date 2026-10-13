@@ -1,0 +1,349 @@
+{
+  "batch_id": "history-137",
+  "semantic_second_pass_complete": true,
+  "checks": [
+    {
+      "index": 1,
+      "claims": [
+        "H137-C01",
+        "H137-C02",
+        "H137-C03",
+        "H137-C04"
+      ],
+      "result": "계획·보고·수정코드/result30nodes·기간/cell/입력SHA 일치. 모델0은 저장보고이며 당시 도구로그는 미복구다.",
+      "meaning": "질문·실제 저장재분석·입력/시간·모델0 보고의 범위를 확인했다."
+    },
+    {
+      "index": 2,
+      "claims": [
+        "H137-C05",
+        "H137-C06",
+        "H137-C07",
+        "H137-C08"
+      ],
+      "result": "calendar15×168 / fiveK4 / primary20task&fit / densitydefinition / own-external-group 확인.",
+      "meaning": "고정 시간의 개수·기존 표준화 이웃 정의·분모와 소속을 대조했다."
+    },
+    {
+      "index": 3,
+      "claims": [
+        "H137-C09",
+        "H137-C10",
+        "H137-C11",
+        "H137-C12",
+        "H137-C13",
+        "H137-C14"
+      ],
+      "result": "원15record와3comparison/반례/zero/ownmass 대조. C12를16cell평균으로수정.",
+      "meaning": "k32 다섯비중·k16/64·10/6cell·반기간전체평균·zero를확인했다. 개별cell 각반기간 음수 주장을 제거했다."
+    },
+    {
+      "index": 4,
+      "claims": [
+        "H137-C15",
+        "H137-C16"
+      ],
+      "result": "stored primary20fit equal-weight means와PCC반례/인과false 확인.",
+      "meaning": "기존 RCTL scaled MAE를 입력비중과 구별했고 원인미식별·독립평가아님을보존했다."
+    },
+    {
+      "index": 5,
+      "claims": [
+        "H137-C17",
+        "H137-C18",
+        "H137-C19",
+        "H137-C20"
+      ],
+      "result": "failure문장·타이머·result5inputhash·원장beforeabsence/later&root sameevent 확인.",
+      "meaning": "실패초기로그/코드판본/회계기입시점 미복구와 보고비용을 구별했다. 전체회계불변은 주장하지 않는다."
+    },
+    {
+      "index": 6,
+      "claims": [
+        "H137-C21",
+        "H137-C22",
+        "H137-C23",
+        "H137-C24",
+        "H137-C25"
+      ],
+      "result": "BN/Goal다음지시를historyDATA로읽음; 보존30경로/선택범위/credit조건/wholeGoal미완료 확인.",
+      "meaning": "원107 이후 BN계획·과거Goal상태는 현재 실행으로 적용하지 않았고 반복읽기/자동원장검색을 신규전문검토로세지 않았다."
+    }
+  ],
+  "claims_checked": 25,
+  "initial_private_draft_sha256": "b03e3717543b61d1766bdb5c943bbe15e08fc5dcfe58e418dac365ae95846a05",
+  "corrected_private_draft_sha256": "dbe67cce5571f7e6c9a5a2e370d7e51cd7e71c0f3044d75104ba0ae3952cfb36",
+  "initial25_complete_saved_claim_fields_actually_read": true,
+  "precision_corrections": [
+    "H137-C02",
+    "H137-C12"
+  ],
+  "corrected_draft_actually_read_after_write": true,
+  "corrected_fields_actual_read_pending": false,
+  "actual_postdraft_raw_ranges": {
+    "SRC-0020855": [
+      [
+        1,
+        33
+      ]
+    ],
+    "SRC-0020856": [
+      [
+        1,
+        24
+      ]
+    ],
+    "SRC-0023193": [
+      [
+        1,
+        80
+      ]
+    ],
+    "SRC-0022693": [
+      [
+        68,
+        101
+      ]
+    ]
+  },
+  "actual_postdraft_raw_sources": 4,
+  "actual_postdraft_raw_lines": 171,
+  "actual_postdraft_JSON_pointers": {
+    "SRC-0023588": [
+      "/cell_ids",
+      "/partitions/tabicl_risk",
+      "/partitions/empirical_risk",
+      "/partitions/knn_risk",
+      "/partitions/pcc_balanced",
+      "/partitions/random_balanced"
+    ],
+    "SRC-0030238": [
+      "/seed_primary",
+      "/seed_secondary",
+      "/max_epochs",
+      "/batch_size",
+      "/patience",
+      "/learning_rate",
+      "/adam_eps",
+      "/loss",
+      "/threads",
+      "/train_targets",
+      "/validation_targets",
+      "/test_targets",
+      "/selection_uses_test",
+      "/RCTL_results_used_for_clustering",
+      "/tasks/1",
+      "/tasks/2",
+      "/tasks/3",
+      "/tasks/4",
+      "/tasks/5",
+      "/tasks/6",
+      "/tasks/7",
+      "/tasks/8",
+      "/tasks/9",
+      "/tasks/10",
+      "/tasks/11",
+      "/tasks/12",
+      "/tasks/13",
+      "/tasks/14",
+      "/tasks/15",
+      "/tasks/16",
+      "/tasks/17",
+      "/tasks/18",
+      "/tasks/19",
+      "/tasks/20"
+    ],
+    "SRC-0030237": [
+      "/1/method",
+      "/1/seed",
+      "/1/cluster",
+      "/1/members",
+      "/1/test_mean_scaled_mae",
+      "/2/method",
+      "/2/seed",
+      "/2/cluster",
+      "/2/members",
+      "/2/test_mean_scaled_mae",
+      "/3/method",
+      "/3/seed",
+      "/3/cluster",
+      "/3/members",
+      "/3/test_mean_scaled_mae",
+      "/4/method",
+      "/4/seed",
+      "/4/cluster",
+      "/4/members",
+      "/4/test_mean_scaled_mae",
+      "/5/method",
+      "/5/seed",
+      "/5/cluster",
+      "/5/members",
+      "/5/test_mean_scaled_mae",
+      "/6/method",
+      "/6/seed",
+      "/6/cluster",
+      "/6/members",
+      "/6/test_mean_scaled_mae",
+      "/7/method",
+      "/7/seed",
+      "/7/cluster",
+      "/7/members",
+      "/7/test_mean_scaled_mae",
+      "/8/method",
+      "/8/seed",
+      "/8/cluster",
+      "/8/members",
+      "/8/test_mean_scaled_mae",
+      "/9/method",
+      "/9/seed",
+      "/9/cluster",
+      "/9/members",
+      "/9/test_mean_scaled_mae",
+      "/10/method",
+      "/10/seed",
+      "/10/cluster",
+      "/10/members",
+      "/10/test_mean_scaled_mae",
+      "/11/method",
+      "/11/seed",
+      "/11/cluster",
+      "/11/members",
+      "/11/test_mean_scaled_mae",
+      "/12/method",
+      "/12/seed",
+      "/12/cluster",
+      "/12/members",
+      "/12/test_mean_scaled_mae",
+      "/13/method",
+      "/13/seed",
+      "/13/cluster",
+      "/13/members",
+      "/13/test_mean_scaled_mae",
+      "/14/method",
+      "/14/seed",
+      "/14/cluster",
+      "/14/members",
+      "/14/test_mean_scaled_mae",
+      "/15/method",
+      "/15/seed",
+      "/15/cluster",
+      "/15/members",
+      "/15/test_mean_scaled_mae",
+      "/16/method",
+      "/16/seed",
+      "/16/cluster",
+      "/16/members",
+      "/16/test_mean_scaled_mae",
+      "/17/method",
+      "/17/seed",
+      "/17/cluster",
+      "/17/members",
+      "/17/test_mean_scaled_mae",
+      "/18/method",
+      "/18/seed",
+      "/18/cluster",
+      "/18/members",
+      "/18/test_mean_scaled_mae",
+      "/19/method",
+      "/19/seed",
+      "/19/cluster",
+      "/19/members",
+      "/19/test_mean_scaled_mae",
+      "/20/method",
+      "/20/seed",
+      "/20/cluster",
+      "/20/members",
+      "/20/test_mean_scaled_mae"
+    ],
+    "SRC-0020858": [
+      "/new_cheap_diagnostic_seconds",
+      "/cheap_stage_details"
+    ],
+    "SRC-0032507": [
+      "/new_cheap_diagnostic_seconds/support_composition_107",
+      "/cheap_stage_details/9"
+    ],
+    "SRC-0022700": [
+      "/new_cheap_diagnostic_seconds/support_composition_107",
+      "/cheap_stage_details/9"
+    ],
+    "SRC-0032345": [
+      "/complete",
+      "/source_hashes",
+      "/cell_ids",
+      "/comparisons",
+      "/calendar_counts_identical",
+      "/own_samples_retained",
+      "/query_is_RCTL_training_period",
+      "/causal_identification",
+      "/new_TabICL_calls",
+      "/new_RCTL_calls",
+      "/new_fits",
+      "/arithmetic_seconds",
+      "/prior_failed_process_seconds",
+      "/prior_failure",
+      "/inputs_unchanged",
+      "/records/0",
+      "/records/1",
+      "/records/2",
+      "/records/3",
+      "/records/4",
+      "/records/5",
+      "/records/6",
+      "/records/7",
+      "/records/8",
+      "/records/9",
+      "/records/10",
+      "/records/11",
+      "/records/12",
+      "/records/13",
+      "/records/14"
+    ]
+  },
+  "actual_postdraft_linked_JSON_pointers": 146,
+  "actual_postdraft_result_complete_compact_nodes": 30,
+  "actual_postdraft_result_all_fields_including_15_calendars": true,
+  "actual_postdraft_result_literal_lines_re_read": false,
+  "actual_postdraft_JSON_total_pointers": 176,
+  "actual_postdraft_NPZ_header_keys": {
+    "SRC-0025173": [
+      "density_k16",
+      "density_k32",
+      "density_k64",
+      "cell_ids",
+      "query_times"
+    ],
+    "SRC-0023605": [
+      "cell_ids",
+      "context_times",
+      "query_times"
+    ]
+  },
+  "actual_postdraft_NPZ_headers": 8,
+  "actual_postdraft_NPZ_values_recomputed": false,
+  "prior_numeric_proof_sha256": "04f64933ca798ed364b587ad629347747a8879e76091227fb505e026c7704e1e",
+  "source_reference_counts": {
+    "total_locations": 97,
+    "raw_locations": 47,
+    "JSON_locations": 27,
+    "JSON_pointers": 255,
+    "NPZ_locations": 4,
+    "NPZ_keys": 10,
+    "metadata_locations": 19,
+    "metadata_fields": 57
+  },
+  "independent_human_review": false,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "models_instantiated": false,
+  "new_model_runs": 0,
+  "coverage_increment_applied": false,
+  "whole_research_goal_complete": false,
+  "checked_at_utc": "2026-10-13T07:48:25.275170+00:00",
+  "corrected_C02_C12_complete_fields_actually_read": true,
+  "all25_final_status_scope_fields_actually_read": true,
+  "final_draft_all_literal_bytes_reread_claimed": false,
+  "corrected_record_sha256": "36babd52b397fe270ca125c90aa8f6216f0f7dad5aba26414fa820c44aade807",
+  "public_files_written": true,
+  "public_link_and_metadata_scope_precision_fixed": true
+}

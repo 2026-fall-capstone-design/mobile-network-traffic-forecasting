@@ -1,0 +1,890 @@
+{
+  "batch_id": "history-137",
+  "selected_JSON_values": {
+    "SRC-0023588": {
+      "/cell_ids": [
+        3737,
+        3745,
+        3753,
+        3765,
+        4537,
+        4545,
+        4553,
+        4565,
+        5337,
+        5345,
+        5353,
+        5365,
+        6137,
+        6145,
+        6153,
+        6165
+      ],
+      "/partitions/tabicl_risk": [
+        0,
+        1,
+        2,
+        0,
+        2,
+        1,
+        2,
+        2,
+        1,
+        3,
+        3,
+        0,
+        3,
+        0,
+        1,
+        3
+      ],
+      "/partitions/empirical_risk": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        0,
+        2,
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "/partitions/knn_risk": [
+        0,
+        1,
+        2,
+        0,
+        2,
+        2,
+        1,
+        2,
+        3,
+        3,
+        0,
+        1,
+        0,
+        1,
+        3,
+        3
+      ],
+      "/partitions/pcc_balanced": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        1,
+        0,
+        3,
+        1,
+        0,
+        3,
+        2,
+        2,
+        1,
+        3,
+        2
+      ],
+      "/partitions/random_balanced": [
+        2,
+        3,
+        1,
+        1,
+        3,
+        0,
+        0,
+        1,
+        3,
+        3,
+        2,
+        2,
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    "SRC-0030238": {
+      "/seed_primary": 20260925,
+      "/seed_secondary": 20260926,
+      "/max_epochs": 80,
+      "/batch_size": 256,
+      "/patience": 10,
+      "/learning_rate": 0.001,
+      "/adam_eps": 1e-07,
+      "/loss": "MAE",
+      "/threads": 4,
+      "/train_targets": [
+        168,
+        839
+      ],
+      "/validation_targets": [
+        840,
+        1007
+      ],
+      "/test_targets": [
+        1008,
+        1487
+      ],
+      "/selection_uses_test": false,
+      "/RCTL_results_used_for_clustering": false,
+      "/tasks/1": [
+        "tabicl_risk",
+        20260925,
+        0,
+        [
+          0,
+          3,
+          11,
+          13
+        ]
+      ],
+      "/tasks/2": [
+        "tabicl_risk",
+        20260925,
+        1,
+        [
+          1,
+          5,
+          8,
+          14
+        ]
+      ],
+      "/tasks/3": [
+        "tabicl_risk",
+        20260925,
+        2,
+        [
+          2,
+          4,
+          6,
+          7
+        ]
+      ],
+      "/tasks/4": [
+        "tabicl_risk",
+        20260925,
+        3,
+        [
+          9,
+          10,
+          12,
+          15
+        ]
+      ],
+      "/tasks/5": [
+        "empirical_risk",
+        20260925,
+        0,
+        [
+          0,
+          9,
+          12,
+          13
+        ]
+      ],
+      "/tasks/6": [
+        "empirical_risk",
+        20260925,
+        1,
+        [
+          1,
+          2,
+          14,
+          15
+        ]
+      ],
+      "/tasks/7": [
+        "empirical_risk",
+        20260925,
+        2,
+        [
+          3,
+          4,
+          10,
+          11
+        ]
+      ],
+      "/tasks/8": [
+        "empirical_risk",
+        20260925,
+        3,
+        [
+          5,
+          6,
+          7,
+          8
+        ]
+      ],
+      "/tasks/9": [
+        "knn_risk",
+        20260925,
+        0,
+        [
+          0,
+          3,
+          10,
+          12
+        ]
+      ],
+      "/tasks/10": [
+        "knn_risk",
+        20260925,
+        1,
+        [
+          1,
+          6,
+          11,
+          13
+        ]
+      ],
+      "/tasks/11": [
+        "knn_risk",
+        20260925,
+        2,
+        [
+          2,
+          4,
+          5,
+          7
+        ]
+      ],
+      "/tasks/12": [
+        "knn_risk",
+        20260925,
+        3,
+        [
+          8,
+          9,
+          14,
+          15
+        ]
+      ],
+      "/tasks/13": [
+        "pcc_balanced",
+        20260925,
+        0,
+        [
+          0,
+          1,
+          6,
+          9
+        ]
+      ],
+      "/tasks/14": [
+        "pcc_balanced",
+        20260925,
+        1,
+        [
+          2,
+          5,
+          8,
+          13
+        ]
+      ],
+      "/tasks/15": [
+        "pcc_balanced",
+        20260925,
+        2,
+        [
+          3,
+          11,
+          12,
+          15
+        ]
+      ],
+      "/tasks/16": [
+        "pcc_balanced",
+        20260925,
+        3,
+        [
+          4,
+          7,
+          10,
+          14
+        ]
+      ],
+      "/tasks/17": [
+        "random_balanced",
+        20260925,
+        0,
+        [
+          5,
+          6,
+          12,
+          15
+        ]
+      ],
+      "/tasks/18": [
+        "random_balanced",
+        20260925,
+        1,
+        [
+          2,
+          3,
+          7,
+          13
+        ]
+      ],
+      "/tasks/19": [
+        "random_balanced",
+        20260925,
+        2,
+        [
+          0,
+          10,
+          11,
+          14
+        ]
+      ],
+      "/tasks/20": [
+        "random_balanced",
+        20260925,
+        3,
+        [
+          1,
+          4,
+          8,
+          9
+        ]
+      ]
+    },
+    "SRC-0030237": {
+      "/1/method": "tabicl_risk",
+      "/1/seed": 20260925,
+      "/1/cluster": 0,
+      "/1/members": [
+        0,
+        3,
+        11,
+        13
+      ],
+      "/1/test_mean_scaled_mae": 0.09866011887788773,
+      "/2/method": "tabicl_risk",
+      "/2/seed": 20260925,
+      "/2/cluster": 1,
+      "/2/members": [
+        1,
+        5,
+        8,
+        14
+      ],
+      "/2/test_mean_scaled_mae": 0.10392538458108902,
+      "/3/method": "tabicl_risk",
+      "/3/seed": 20260925,
+      "/3/cluster": 2,
+      "/3/members": [
+        2,
+        4,
+        6,
+        7
+      ],
+      "/3/test_mean_scaled_mae": 0.06284569203853607,
+      "/4/method": "tabicl_risk",
+      "/4/seed": 20260925,
+      "/4/cluster": 3,
+      "/4/members": [
+        9,
+        10,
+        12,
+        15
+      ],
+      "/4/test_mean_scaled_mae": 0.08388134092092514,
+      "/5/method": "empirical_risk",
+      "/5/seed": 20260925,
+      "/5/cluster": 0,
+      "/5/members": [
+        0,
+        9,
+        12,
+        13
+      ],
+      "/5/test_mean_scaled_mae": 0.0884167030453682,
+      "/6/method": "empirical_risk",
+      "/6/seed": 20260925,
+      "/6/cluster": 1,
+      "/6/members": [
+        1,
+        2,
+        14,
+        15
+      ],
+      "/6/test_mean_scaled_mae": 0.08137941360473633,
+      "/7/method": "empirical_risk",
+      "/7/seed": 20260925,
+      "/7/cluster": 2,
+      "/7/members": [
+        3,
+        4,
+        10,
+        11
+      ],
+      "/7/test_mean_scaled_mae": 0.06698843836784363,
+      "/8/method": "empirical_risk",
+      "/8/seed": 20260925,
+      "/8/cluster": 3,
+      "/8/members": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "/8/test_mean_scaled_mae": 0.0896170437335968,
+      "/9/method": "knn_risk",
+      "/9/seed": 20260925,
+      "/9/cluster": 0,
+      "/9/members": [
+        0,
+        3,
+        10,
+        12
+      ],
+      "/9/test_mean_scaled_mae": 0.08458967506885529,
+      "/10/method": "knn_risk",
+      "/10/seed": 20260925,
+      "/10/cluster": 1,
+      "/10/members": [
+        1,
+        6,
+        11,
+        13
+      ],
+      "/10/test_mean_scaled_mae": 0.08840489387512207,
+      "/11/method": "knn_risk",
+      "/11/seed": 20260925,
+      "/11/cluster": 2,
+      "/11/members": [
+        2,
+        4,
+        5,
+        7
+      ],
+      "/11/test_mean_scaled_mae": 0.06570085883140564,
+      "/12/method": "knn_risk",
+      "/12/seed": 20260925,
+      "/12/cluster": 3,
+      "/12/members": [
+        8,
+        9,
+        14,
+        15
+      ],
+      "/12/test_mean_scaled_mae": 0.0975969135761261,
+      "/13/method": "pcc_balanced",
+      "/13/seed": 20260925,
+      "/13/cluster": 0,
+      "/13/members": [
+        0,
+        1,
+        6,
+        9
+      ],
+      "/13/test_mean_scaled_mae": 0.08147924393415451,
+      "/14/method": "pcc_balanced",
+      "/14/seed": 20260925,
+      "/14/cluster": 1,
+      "/14/members": [
+        2,
+        5,
+        8,
+        13
+      ],
+      "/14/test_mean_scaled_mae": 0.0979619026184082,
+      "/15/method": "pcc_balanced",
+      "/15/seed": 20260925,
+      "/15/cluster": 2,
+      "/15/members": [
+        3,
+        11,
+        12,
+        15
+      ],
+      "/15/test_mean_scaled_mae": 0.11063914000988007,
+      "/16/method": "pcc_balanced",
+      "/16/seed": 20260925,
+      "/16/cluster": 3,
+      "/16/members": [
+        4,
+        7,
+        10,
+        14
+      ],
+      "/16/test_mean_scaled_mae": 0.06942811608314514,
+      "/17/method": "random_balanced",
+      "/17/seed": 20260925,
+      "/17/cluster": 0,
+      "/17/members": [
+        5,
+        6,
+        12,
+        15
+      ],
+      "/17/test_mean_scaled_mae": 0.09039836376905441,
+      "/18/method": "random_balanced",
+      "/18/seed": 20260925,
+      "/18/cluster": 1,
+      "/18/members": [
+        2,
+        3,
+        7,
+        13
+      ],
+      "/18/test_mean_scaled_mae": 0.08497095853090286,
+      "/19/method": "random_balanced",
+      "/19/seed": 20260925,
+      "/19/cluster": 2,
+      "/19/members": [
+        0,
+        10,
+        11,
+        14
+      ],
+      "/19/test_mean_scaled_mae": 0.08944738656282425,
+      "/20/method": "random_balanced",
+      "/20/seed": 20260925,
+      "/20/cluster": 3,
+      "/20/members": [
+        1,
+        4,
+        8,
+        9
+      ],
+      "/20/test_mean_scaled_mae": 0.07757413387298584
+    },
+    "SRC-0020858": {
+      "/new_cheap_diagnostic_seconds": {
+        "finite_sample_information.json": 0.24920859999929235,
+        "population_scope_diagnostic.json": 0.2892932999993718,
+        "upc_core_stability.json": 0.3006076000001485,
+        "upc_transfer_diagnostic.json": 0.33516769999914686,
+        "cell_identity_simple_Ridge_and_HGB": 0.27645530000154395,
+        "broad_cell_information_simple_Ridge_and_HGB": 0.37565600000016275,
+        "target_parameterization_simple_Ridge_and_HGB": 0.28845060000094236,
+        "temporal_validity": 30.648936099998537,
+        "spatial_information": 13.466453199998796,
+        "error_concentration": 0.12889259999974456,
+        "conditional_pooling_cost": 6.4339365999992895,
+        "observable_state_loss": 0.6636078999999881,
+        "resolution_diagnostic_31": 2.314005800002633,
+        "information_claim_audit_37": 0.0002907999987655785,
+        "cell_harm_envelope_42": 0.03152100000079372,
+        "input_sharing_stability_46": 0.030363999998371582,
+        "aggregation_recovery_49": 0.08182460000170977,
+        "beijing_schema_52": 0.01390940000055707,
+        "partial_observation_54": 0.7142799000030209,
+        "partial_observation_54_failed_preflight_process": 4.1631648,
+        "mae_sampling_audit_57": 0.00016200000027311035,
+        "history_grouping_60": 3.2025605000017094,
+        "history_logic_cost_61": 9.660000068834051e-05,
+        "group_risk_diagnostic_67": 0.020347199999378063,
+        "peak_diagnostic_70": 0.04776319999655243,
+        "output_compression_74": 2.667649800001527,
+        "conditional_graph_80": 2.44640910000453,
+        "forecast_reuse_97": 0.21576900000218302,
+        "pooled_context_101": 2.2270843999867793,
+        "cellwise_transition_106": 0.02850919999764301
+      },
+      "/cheap_stage_details": [
+        {
+          "stage": "observable_state_loss",
+          "new_simple_fits": 2,
+          "methods": [
+            "global_Ridge",
+            "global_HGB"
+          ],
+          "entire_stage_seconds": 0.6636078999999881,
+          "fit_predict_seconds_included_in_stage": 0.24943749999874854,
+          "peak_rss_bytes": 171868160,
+          "cost_not_counted_twice": true
+        },
+        {
+          "stage": "resolution_diagnostic_31",
+          "new_simple_fits": 32,
+          "methods": [
+            "Ridge",
+            "HGB"
+          ],
+          "resolutions_minutes": [
+            10,
+            60
+          ],
+          "entire_stage_seconds": 2.314005800002633,
+          "fit_predict_seconds_included_in_stage": 2.2153856999975687,
+          "peak_rss_bytes": 164704256,
+          "cost_not_counted_twice": true
+        },
+        {
+          "stage": "partial_observation_54",
+          "new_simple_fits": 8,
+          "methods": [
+            "Ridge",
+            "HGB"
+          ],
+          "entire_stage_seconds": 3.25768909999897,
+          "TabICL_seconds_accounted_separately": 2.543409199995949,
+          "fit_predict_seconds_included_in_cheap_stage": 0.4162254999973811,
+          "cost_not_counted_twice": true,
+          "preflight_correction_no_model_calls": true
+        },
+        {
+          "stage": "history_grouping_60",
+          "new_simple_fits": 32,
+          "methods": [
+            "Ridge",
+            "HGB"
+          ],
+          "entire_stage_seconds": 22.312041500001214,
+          "TabICL_seconds_accounted_separately": 19.109480999999505,
+          "fit_predict_seconds_included_in_cheap_stage": 2.006623100001889,
+          "cost_not_counted_twice": true
+        },
+        {
+          "stage": "output_compression_74",
+          "new_simple_fits": 26,
+          "methods": [
+            "Ridge",
+            "HGB"
+          ],
+          "entire_stage_seconds": 7.949191300001985,
+          "TabICL_seconds_accounted_separately": 5.281541500000458,
+          "fit_predict_seconds_included_in_cheap_stage": 2.3038000999949872,
+          "cost_not_counted_twice": true
+        },
+        {
+          "stage": "conditional_graph_80",
+          "new_simple_fits": 32,
+          "methods": [
+            "Ridge",
+            "HGB"
+          ],
+          "entire_stage_seconds": 7.042126899999857,
+          "RCTL_gradient_seconds_accounted_separately": 4.595717799995327,
+          "simple_fit_predict_seconds_included_in_cheap_stage": 1.4865054000038072,
+          "cost_not_counted_twice": true,
+          "new_TabICL_calls": 0,
+          "new_RCTL_fits": 0
+        },
+        {
+          "stage": "forecast_reuse_97",
+          "new_simple_fits": 0,
+          "new_TabICL_calls": 0,
+          "new_RCTL_fits": 0,
+          "new_RCTL_forwards": 0,
+          "entire_stage_seconds": 0.21576900000218302,
+          "array_analysis_seconds_included": 0.025216200010618195,
+          "cost_not_counted_twice": true,
+          "timing_scope": "Includes stored data load, arithmetic replay and result array writes; excludes process imports and initial source hashing.",
+          "input_prediction_methods": 8,
+          "cells": 16,
+          "target_hours": 480,
+          "note": "Initial bundled Python failed importing psutil before run marker or numeric work; model runtime succeeded once."
+        },
+        {
+          "stage": "pooled_context_101",
+          "new_simple_fits": 18,
+          "new_TabICL_contexts": 9,
+          "new_TabICL_query_rows": 16128,
+          "new_RCTL_fits": 0,
+          "new_RCTL_forwards": 0,
+          "new_RCTL_gradients": 0,
+          "entire_stage_seconds": 140.48528870000155,
+          "TabICL_seconds_accounted_separately": 138.25820430001477,
+          "cheap_seconds": 2.2270843999867793,
+          "cost_not_counted_twice": true,
+          "timing_scope": "Starts after imports, settings and source hashes; includes feature construction, model fitting/prediction, numerical summaries and result writes until final marker. Source rehashing excluded."
+        },
+        {
+          "stage": "cellwise_transition_106",
+          "new_simple_fits": 0,
+          "new_RCTL_fits": 0,
+          "new_TabICL_calls": 0,
+          "new_model_forwards": 0,
+          "arithmetic_seconds": 0.02850919999764301,
+          "cost_not_counted_twice": true,
+          "timing_scope": "Saved arrays load and numerical diagnosis only; model calls none."
+        }
+      ]
+    },
+    "SRC-0032507": {
+      "/new_cheap_diagnostic_seconds/support_composition_107": 0.4165343999878993,
+      "/cheap_stage_details/9": {
+        "stage": "support_composition_107",
+        "new_simple_fits": 0,
+        "new_RCTL_fits": 0,
+        "new_TabICL_calls": 0,
+        "new_model_forwards": 0,
+        "entire_charged_seconds": 0.4165343999878993,
+        "failed_process_seconds_included": 0.3895649,
+        "arithmetic_seconds": 0.026969499987899326,
+        "cost_not_counted_twice": true
+      }
+    },
+    "SRC-0022700": {
+      "/new_cheap_diagnostic_seconds/support_composition_107": 0.4165343999878993,
+      "/cheap_stage_details/9": {
+        "stage": "support_composition_107",
+        "new_simple_fits": 0,
+        "new_RCTL_fits": 0,
+        "new_TabICL_calls": 0,
+        "new_model_forwards": 0,
+        "entire_charged_seconds": 0.4165343999878993,
+        "failed_process_seconds_included": 0.3895649,
+        "arithmetic_seconds": 0.026969499987899326,
+        "cost_not_counted_twice": true
+      }
+    }
+  },
+  "selected_JSON_pointer_count": 146,
+  "NPZ_selected_headers": {
+    "SRC-0025173": {
+      "density_k16": {
+        "descr": "<f8",
+        "fortran_order": false,
+        "shape": [
+          16,
+          1024
+        ]
+      },
+      "density_k32": {
+        "descr": "<f8",
+        "fortran_order": false,
+        "shape": [
+          16,
+          1024
+        ]
+      },
+      "density_k64": {
+        "descr": "<f8",
+        "fortran_order": false,
+        "shape": [
+          16,
+          1024
+        ]
+      },
+      "cell_ids": {
+        "descr": "<i8",
+        "fortran_order": false,
+        "shape": [
+          16
+        ]
+      },
+      "query_times": {
+        "descr": "<i8",
+        "fortran_order": false,
+        "shape": [
+          64
+        ]
+      }
+    },
+    "SRC-0023605": {
+      "cell_ids": {
+        "descr": "<i8",
+        "fortran_order": false,
+        "shape": [
+          16
+        ]
+      },
+      "context_times": {
+        "descr": "<i8",
+        "fortran_order": false,
+        "shape": [
+          504
+        ]
+      },
+      "query_times": {
+        "descr": "<i8",
+        "fortran_order": false,
+        "shape": [
+          64
+        ]
+      }
+    }
+  },
+  "selected_NPZ_headers_count": 8,
+  "query_times_actually_read": [
+    672,
+    675,
+    677,
+    680,
+    683,
+    685,
+    688,
+    691,
+    693,
+    696,
+    699,
+    701,
+    704,
+    706,
+    709,
+    712,
+    714,
+    717,
+    720,
+    722,
+    725,
+    728,
+    730,
+    733,
+    736,
+    738,
+    741,
+    744,
+    746,
+    749,
+    752,
+    754,
+    757,
+    759,
+    762,
+    765,
+    767,
+    770,
+    773,
+    775,
+    778,
+    781,
+    783,
+    786,
+    789,
+    791,
+    794,
+    797,
+    799,
+    802,
+    805,
+    807,
+    810,
+    812,
+    815,
+    818,
+    820,
+    823,
+    826,
+    828,
+    831,
+    834,
+    836,
+    839
+  ],
+  "current_selected_static_code_ranges": {
+    "SRC-0022693": [
+      [
+        1,
+        107
+      ]
+    ]
+  },
+  "source_numeric_proof_sha256": "04f64933ca798ed364b587ad629347747a8879e76091227fb505e026c7704e1e",
+  "whole_literal_ledger_or_fit_or_settings_current_read": false,
+  "ledger_search_metadata_only_unique_versions": 308,
+  "ledger_search_not_body_review_or_new_content_credit": true,
+  "new_model_runs": 0
+}
