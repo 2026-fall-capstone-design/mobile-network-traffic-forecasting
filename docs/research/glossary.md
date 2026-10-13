@@ -29,3 +29,5 @@
 [원103](records/0133-current-evidence-and-unapproved-extension.md)의 **조건부상한제안**은 승인/실제사용과다르다. **중간산출물완료**와 **최종연구완료**, **Global완비조건**과 **secondseed미실행**, **state tensor bytes**와 **checkpoint file bytes**, **허용오차내예측대응**과 **bit동일성**, **retainedPDF시각검토**와 **새Wordcompilation**도구별한다.
 
 [원104](records/0134-resource-and-evidence-audit.md)의 **자원·근거 감사**는 새 성능 실험과 다르다. **조건부상한**과 **실제 승인·사용량**, **당시 파일의 응답 미기록**과 **모든 외부 대화 부재**, **과거Goal 감사 횟수**와 **현재 아카이브 상태**, **연결 기록의 재인용**과 **새 전문 검증·독립 재현**을 구별한다.
+
+[원105](records/0135-blocked-audit-and-resume-conditions.md)에서 **감사JSON의 상태보고**와 **당시 도구응답의 별도복구**, **운영차단**과 **연구완료/모든가능성의 기각**, **문서바이트 동일성**과 **현재새판독/이전범위재사용**, **누적상한 증액**과 **실제후보 검증**을 구별한다.

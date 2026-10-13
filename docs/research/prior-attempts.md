@@ -620,3 +620,7 @@ RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](
 ## 원104 자원 감사 이후 같은 질문을 다시 다룰 때
 
 [원104](records/0134-resource-and-evidence-audit.md)와 [재검토 기준](references/resource-and-evidence-audit.md)을 먼저 읽는다. 남은 예산이나 상한 증액은 후보 선정·실제 효용 근거와 다르다. 실제 손해·Tab이 바꾸는 결정·가까운 선행·같은 정보/비용 비교·최종RCTL 후속검사·seed별 중단 조건 중 무엇이 달라졌는지 적는다.
+
+## 원105 차단 감사 뒤 같은 후보를 다시 다룰 때
+
+[원105](records/0135-blocked-audit-and-resume-conditions.md)와 [재검토조건](references/blocked-audit-and-resume-conditions.md)을 먼저 읽는다. 예산 허용뿐 아니라 빠진근거를 해결하는 새경로·구체적후보·가까운문헌·비교계획이 무엇인지 적는다. 기존실패와누적비용을 보존하고 좋은직접예측·basicbatch·이론검토를 새partition의 후속검증으로 옮기지 않는다.

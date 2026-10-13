@@ -314,3 +314,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원103 현재근거와 미승인실행범위](records/0133-current-evidence-and-unapproved-extension.md)에서 직접Tab예측과RCTL소속판단의차이, batch비용, 중간Word/미완료조건, 미승인18fit제안을 구별한다. [읽기용보고서](evidence/0133-current-evidence-and-unapproved-extension/readable-report.md)는 개인PC출처4개를팀경로로연결했다.
 
 [원104 자원과 근거 감사](records/0134-resource-and-evidence-audit.md)는 당시 상한·미승인 제안·다섯 검토 경로를 구별한다. [재검토 안내](references/resource-and-evidence-audit.md)에서 감사 기록을 새 성능 결과로 읽지 않는 기준을 확인한다.
+
+[원105 과거 차단 감사](records/0135-blocked-audit-and-resume-conditions.md)는 보고된차단·연구완료·재개조건을 구별한다. [재검토 안내](references/blocked-audit-and-resume-conditions.md)에서 예산 변경과 새독립경로·실제근거의 차이를 확인한다.

@@ -217,3 +217,5 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [원103](records/0133-current-evidence-and-unapproved-extension.md)은 최종추천·유용한새소속·RCTL연결이남고18fit제안이미승인임을기록했다. 중간Word와연구Goal완료를구별한다. progress132–611/old122–601 및RCTLsummaryliteral전문·원104이후/옛판본·전체통합/장기팀접근/최종delta/검색10+는미완료다.
 
 [원104](records/0134-resource-and-evidence-audit.md)는 당시 제안 승인·새 후보·후속RCTL 근거가 남았다는 감사다. 현재root 색인의 원104 정확판본·긴 고유본문, progress132–611/old122–601·RCTLsummary literal전문·원105이후/다른고유판본/형식·통합/장기접근/최종delta/검색10+는 미완료다.
+
+[원105](records/0135-blocked-audit-and-resume-conditions.md)의 exactGoal/색인/요구사항 판본·당시상태도구 반환로그는 미확인이다. 중간Word/MD는 이전범위 재사용이다. progress132–611/old122–601·RCTLsummary literal전문·원106이후/옛고유판본/형식·전체통합/장기접근/최종delta/검색10+와 전체Goal은 미완료다.

@@ -11,3 +11,5 @@
 | 감사 횟수 | 과거1→2, thresholdfalse/Goal active미완료 | 당시 상태와 현재 운영·새 실행을 별도 기록 |
 
 원104의 다섯 경로는 당시 요약이다. [원101](../records/0131-actual-pooled-context-and-rctl-ranking.md), [원95](../records/0125-frozen-rctl-serving-cost-baseline.md), [원102](../records/0132-architecture-kernel-and-joint-risk.md)의 이전 검수로 이동할 수 있다. 새 모델·전문 재검증·모든 방향의 기각으로 세지 않는다. 새 응답이나 다른 구체적 경로가 생겼을 때 무엇이 달라지는지 적어야 같은 상태 확인을 연구 진척으로 반복하지 않는다.
+
+후속 [원105](../records/0135-blocked-audit-and-resume-conditions.md)는 세번째 감사의 reportedblocked와 미완료·재개조건을 남겼다. [재검토안내](blocked-audit-and-resume-conditions.md)에 추가상한/범위변경뿐 아니라 새독립경로·고정계획·이전비용 보존을 연결했다.
