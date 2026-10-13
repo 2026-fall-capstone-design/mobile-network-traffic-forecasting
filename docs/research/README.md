@@ -316,3 +316,5 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원104 자원과 근거 감사](records/0134-resource-and-evidence-audit.md)는 당시 상한·미승인 제안·다섯 검토 경로를 구별한다. [재검토 안내](references/resource-and-evidence-audit.md)에서 감사 기록을 새 성능 결과로 읽지 않는 기준을 확인한다.
 
 [원105 과거 차단 감사](records/0135-blocked-audit-and-resume-conditions.md)는 보고된차단·연구완료·재개조건을 구별한다. [재검토 안내](references/blocked-audit-and-resume-conditions.md)에서 예산 변경과 새독립경로·실제근거의 차이를 확인한다.
+
+[원106 같은 K 진단](records/0136-same-k-cellwise-error-transition.md)에서 평균·cell·시간 손해와 실제epoch 차이를 함께 확인한다. [재검토 안내](references/same-k-cellwise-error-transition.md)는 저장 재분석을 새학습·인과증명으로 읽지 않는 기준을 연결한다.
