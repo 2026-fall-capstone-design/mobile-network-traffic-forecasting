@@ -25,3 +25,5 @@
 [원101](records/0131-actual-pooled-context-and-rctl-ranking.md)의 **actual pooled context**는 소속내 실제sample을 context로 주는 것이다. **rolling one-step 구간336시간**은 실측lag를 쓰며 **open-loop horizon336**과 다르다. **같은16기초값**과 **16열/8×9입력표현**, **초기intra-op4**와 **predict중n_jobs1**, **partial NaN placeholder**와 **최종실패**도 구별한다.
 
 [원102](records/0132-architecture-kernel-and-joint-risk.md)의 **NTK INIT/TRAIN**은 초기 kernel 극한과 학습 중의 연결을 구별한다. **target 공동 covariance**와 **activation/gradient covariance**, **고정 A**와 **target 적응 선택**, **주변 분위수**·**seed 평균95%CI**·**P90/P95 dataset 비율**, **한 버퍼 산술**과 **peak/runtime 실측**도 서로 다른 정보다.
+
+[원103](records/0133-current-evidence-and-unapproved-extension.md)의 **조건부상한제안**은 승인/실제사용과다르다. **중간산출물완료**와 **최종연구완료**, **Global완비조건**과 **secondseed미실행**, **state tensor bytes**와 **checkpoint file bytes**, **허용오차내예측대응**과 **bit동일성**, **retainedPDF시각검토**와 **새Wordcompilation**도구별한다.
