@@ -612,3 +612,7 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 ## 원102 구조 기반 NTK 대리값을 다시 검토할 때
 
 RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](records/0132-architecture-kernel-and-joint-risk.md)와 [조건 비교](references/architecture-kernel-and-joint-risk.md)를 먼저 읽는다. 유한 구조·Gaussian/실제 초기화·readout·손실/optimizer·validation·target 공동분포·target 적응 선택과 K1/기존 기준 대비 결정·전체 비용 중 무엇이 달라지는지 적는다. 선행 정리의 존재·직접 예측 우위만으로 재채택하지 않는다.
+
+## 원103 중간문서나 추가예산을 새연구 완료로 읽지 않기
+
+[원103](records/0133-current-evidence-and-unapproved-extension.md)과 [재사용조건](references/current-evidence-and-unapproved-extension.md)을 먼저확인한다. 중간Word·Global우위·좋은Tab직접예측·RCTL독립성·18fit상한제안 각각은 유용한새소속과최종RCTL개선의증거가아니다. 새손해·Tab결정·최종이득·같은K/정보/비용·기간/cell예외와고정중단조건을구체화한다.

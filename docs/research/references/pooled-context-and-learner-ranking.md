@@ -19,3 +19,5 @@ TabICL은 이 개발 구간에서 같은16열을 받은 Ridge/HGB보다 직접 �
 앞선 [원98 pooling 목적](../records/0128-quantile-information-and-pooling-objective.md), [원99 학습 단위](../records/0129-learning-units-and-clustering-cost.md), [원100 사전학습·시간조건](pretraining-objective-and-time-conditioning.md)을 함께 읽는다. 실제 소속 결정 또는 같은 유용한 결정의 추정 비용에서 Tab이 추가하는 차이를 특정해야 같은 실험을 반복하는 일을 줄일 수 있다.
 
 후속 [원102](../records/0132-architecture-kernel-and-joint-risk.md)은 실제context의 순위 불일치를 보완할 analytic kernel을 검토했지만 현재 RCTL 구조/초기화·Adam/MAE·target 공동분포와 비용의 연결 근거가 부족했다. [조건 안내](architecture-kernel-and-joint-risk.md)에 직접 예측의 긍정 근거, 전체 NTK 가능성과 이번 후보 보류를 함께 남겼다.
+
+후속 [원103](../records/0133-current-evidence-and-unapproved-extension.md)은 이직접예측/소속선호차이를4쪽중간Word와완료조건감사에반영했다. [재사용조건](current-evidence-and-unapproved-extension.md)에강한기준뒤의손해·Tab결정·최종RCTL/비용연결·미승인확장을함께남겼다.

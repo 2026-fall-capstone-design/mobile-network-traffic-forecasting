@@ -221,3 +221,5 @@
 [H131 원101](records/0131-actual-pooled-context-and-rctl-ranking.md): 당시 Tab9context·simple18fit과 저장RCTL5결과를 같은336시점으로 비교했다. Tab 직접 예측은 좋았고 두K4순위는 RCTL과 반대였다. 현재917저장수치·구현4파일·입력변환/스레드/반례를 대조했으며 새모델0·전체Goal미완료다.
 
 [H132 원102](records/0132-architecture-kernel-and-joint-risk.md): 원101의 직접 예측/소속 순위 차이를 보완할 구조 점수를 논문·정적 코드·기호로 검토했으나 채택 근거가 부족했다. 현재 두PDF86쪽·notebook82셀/6출력,36주장/9대조를 보존했다. 새모델0이며 모든 NTK의 불가능성이나 kernel 성능 실패 기록은 아니다.
+
+[H133 원103](records/0133-current-evidence-and-unapproved-extension.md): 원101/95/102를 새중간보고서에 연결하고11요구사항을감사했다. 새모델0·추천미확정·확장18fit미승인. 33주장/8대조·Word52body3표/PDF4쪽127행·기간/cell반례와미독을보존했다.
