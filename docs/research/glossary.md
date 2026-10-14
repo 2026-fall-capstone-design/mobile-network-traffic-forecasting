@@ -49,3 +49,7 @@
 ## 방향×query / target×query / 기간 기여
 
 [원112](records/0141-calendar-predictive-selection-and-weighting.md)의402는방향×query이며 서로다른target×query는336이다. 동일target label을donor비교에서재사용한것을독립표본으로세지않는다. 이336은원101미래336행/cell과다른단위다. 각기간새평균과원래전체weight의기간기여도구별한다.
+
+## 고정 K / 균등 크기 / 수정 규칙 / 가정 batch
+
+[원113](records/0142-fixed-k-and-unrestricted-cluster-sizes.md)의 고정 K는 group 개수이고 균등 크기는 각group의 cell 수다. 수정 규칙은 group별 숫자 δ를 구하는 방식이며, 같은 규칙이 모든 소속에 같은 숫자 δ를 뜻하지 않는다.10752행·44batch는 가정 산술이고 실제 RCTL 측정값이 아니다.

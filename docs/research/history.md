@@ -245,3 +245,7 @@
 ## 원112: 첫 실제 예측 기준의 실패
 
 [원112](records/0141-calendar-predictive-selection-and-weighting.md)는 원110의 profile 이득과 원111의 입력 검사를 실제 예측 효용으로 확대하지 않았다. Tab 선택의 확인 MAE는 무이동보다 약0.000549 높아 후속 RCTL 확인으로 진행하지 않았다. 전체 시각 보정 연구의 기각이나 최종 연구방향 확정은 아니다.
+
+## 원113: 크기 제약 진단과 교차 평가
+
+[원113](records/0142-fixed-k-and-unrestricted-cluster-sizes.md)은 원112 뒤 기존 위험표를 재사용한 배열 진단이다. 네 평균은 줄었지만 수정 규칙별 소속 순위가 바뀌었고, 새 RCTL·UPC 대비 신규성·기존 실패 해결로 채택하지 않았다.

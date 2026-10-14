@@ -1,0 +1,27 @@
+{
+  "source_hashes": {
+    "113_cluster_size_constraint_audit_plan.md": "9b5a7d05d60e4589395ca00103389e8e02bb3fac6e69303256a37d940ea4046a",
+    "cluster_size_constraint_audit_113.py": "8ea57dfcff274227347cdb1e488cca48dbd399d6021a6f555c8c9163504c0af4",
+    "cumulative_execution_budget.json": "7f6ca273e07e8617fb73dd3c885dc9b484233349fb0d9b3748bf932582a87d8e",
+    "results\\observed_risk_tables.npz": "40837fdeef5632f688d91b526c499af0384a4226058fa94d56845fa1f0e5da5c",
+    "results\\observed_risk_pilot.json": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+    "results\\design_data.npz": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144"
+  },
+  "K": 4,
+  "rules": [
+    "tabicl_risk",
+    "empirical_risk"
+  ],
+  "unrestricted_rule": "merge a single current minimum-cost pair, no size restrictions",
+  "tie_break": "minimum member indices of sorted clusters",
+  "query_period": [
+    840,
+    1007
+  ],
+  "all_cells": 16,
+  "wall_cap_seconds": 10,
+  "rss_cap_bytes": 1073741824,
+  "new_model_calls": 0,
+  "RCTL_results_used_in_selection": false,
+  "independent_test": false
+}

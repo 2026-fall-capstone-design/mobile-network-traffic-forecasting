@@ -334,3 +334,7 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 ## 원112: 이동 선택과 기간 가중치
 
 [원112 정리](records/0141-calendar-predictive-selection-and-weighting.md)는 정상 완료된 예측 비교의 진행 기준 실패를 보존한다. 선택자·평가자15칸과 방향/cell 손해, 서로 다른 기간 가중치, 실제 비용·원장 판본을 분리했다. 원113 이후와 전체 기록 정리는 계속 진행 중이다.
+
+## 원113: 고정 K와 균등 크기
+
+[원113](records/0142-fixed-k-and-unrestricted-cluster-sizes.md)은 같은 K와 같은 cell 수, 소속과 수정 규칙을 구분한다. 평균 감소·조건별 순위·cell 손해·병합 일정·실제/가정 비용과 단일 정산을 보존했다. 원114 이후와 전체 정리는 진행 중이다.
