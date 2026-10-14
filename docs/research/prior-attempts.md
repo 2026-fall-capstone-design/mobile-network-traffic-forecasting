@@ -648,3 +648,7 @@ RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](
 ## 시각 이동 선택 / selector–evaluator / 기간 가중치
 
 [원112](records/0141-calendar-predictive-selection-and-weighting.md)의 세이동·고정donor context·14방향/11target·개발기간과 사전두비교군을 먼저 확인한다. 좋은 직접 예측기를 좋은 관계 선택자로 재인용하지 않는다. 같은조건은저장예측으로조회하고, 새실험에는달라진질문·후보/context/support·공동좌표와독립평가를연결한다.
+
+## 고정 K / 균등 크기 / sequential merge / 소속·수정 규칙
+
+[원113](records/0142-fixed-k-and-unrestricted-cluster-sizes.md)의16cell·K4·64상태·257격자·개발 주간·4×2비교를 먼저 찾는다. 같은 수정 규칙 아래 소속을 비교하고, 크기와 병합 일정·단일 RSS/peak·가정44batch/실제 비용·공통 격자의 label 접근을 구분한다. 같은8비교는 저장 자료로 재사용한다.
