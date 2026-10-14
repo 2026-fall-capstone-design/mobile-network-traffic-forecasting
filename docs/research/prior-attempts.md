@@ -1,5 +1,7 @@
 # 문제별 과거 시도 색인
 
+먼저 [남은 519개 번호별 주제 표](remaining-records-summary.md)에서 비슷한 기록을 찾을 수 있다. 아래는 이미 작성된 상세 시도의 조건·결과 색인이다. 남은 기록의 전체 결과·과정은 추가 게시하지 않는다.
+
 현재까지 검수한 기록의 색인이다. 여기에 없다는 이유로 과거 시도가 없다고 판단하면 안 된다. 전체 고유 기록 검토를 계속하고 있다.
 
 | 찾으려는 문제·별칭 | 확인한 기록과 조건 | 결과·주의할 해석 | 재사용·새 실험의 차이 |
@@ -652,3 +654,7 @@ RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](
 ## 고정 K / 균등 크기 / sequential merge / 소속·수정 규칙
 
 [원113](records/0142-fixed-k-and-unrestricted-cluster-sizes.md)의16cell·K4·64상태·257격자·개발 주간·4×2비교를 먼저 찾는다. 같은 수정 규칙 아래 소속을 비교하고, 크기와 병합 일정·단일 RSS/peak·가정44batch/실제 비용·공통 격자의 label 접근을 구분한다. 같은8비교는 저장 자료로 재사용한다.
+
+## 입력 미분 / signed gradient / saliency / task relation / SRDML
+
+[원114](records/0143-signed-input-gradients-and-task-relations.md)에서 출력 gradient와 loss parameter gradient, 부호·크기와 sign만의 비교, 공유 feature 좌표·공통 입력과 task 분포를 먼저 찾는다. 고정 Tab probe라는 차이만으로 새 원리나 RCTL 공유 이득을 설명하지 않는다. 잔차 동시 상관 경로도 원114의 기존08·09 재참조이며 새 계산은 없었다.
