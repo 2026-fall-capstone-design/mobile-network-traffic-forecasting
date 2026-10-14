@@ -53,3 +53,7 @@
 ## 고정 K / 균등 크기 / 수정 규칙 / 가정 batch
 
 [원113](records/0142-fixed-k-and-unrestricted-cluster-sizes.md)의 고정 K는 group 개수이고 균등 크기는 각group의 cell 수다. 수정 규칙은 group별 숫자 δ를 구하는 방식이며, 같은 규칙이 모든 소속에 같은 숫자 δ를 뜻하지 않는다.10752행·44batch는 가정 산술이고 실제 RCTL 측정값이 아니다.
+
+## 출력 gradient / parameter gradient / task relation
+
+[원114](records/0143-signed-input-gradients-and-task-relations.md)의 출력 gradient는 예측 출력의 입력/feature map에 대한 미분이다. parameter gradient는 학습 loss를 모델 가중치로 미분한 값이다. SRDML의 관계 가중치는 공동 학습의 연속 변수이며 고정 K의 cell 소속과 다르다. 부호 있는 벡터의 L1 차이는 sign만 비교하거나 먼저 절댓값을 취한 차이와 같지 않다.

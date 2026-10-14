@@ -338,3 +338,7 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 ## 원113: 고정 K와 균등 크기
 
 [원113](records/0142-fixed-k-and-unrestricted-cluster-sizes.md)은 같은 K와 같은 cell 수, 소속과 수정 규칙을 구분한다. 평균 감소·조건별 순위·cell 손해·병합 일정·실제/가정 비용과 단일 정산을 보존했다. 원114 이후와 전체 정리는 진행 중이다.
+
+## 원114: 입력 미분과 task 관계
+
+[원114](records/0143-signed-input-gradients-and-task-relations.md)은 SRDML의 부호 있는 출력 gradient·공동 학습·정리 적용 조건과 사전 RCTL 소속 결정의 차이를 정리한다. 소장 논문과 demo 설정 차이, 미실행·미확인 범위도 보존했다. 원115 이후와 전체 정리는 계속 진행 중이다.
