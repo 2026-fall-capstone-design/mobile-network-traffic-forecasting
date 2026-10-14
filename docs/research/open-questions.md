@@ -233,3 +233,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 ## 원110–111 이후의 좌표 효용
 
 [원110–111](records/0140-calendar-alignment-and-input-preflight.md)의 geometry 통과는 예측 관계 증명이 아니다. 원112 실제 결과와 selector/evaluator 분리, 고정 좌표의 공동 일관성, 같은K RCTL·독립 기간/도시의 손해와 비용을 이어 확인해야 한다. 실패의 원시 tool/stack trace와 정확한 정산 시각은 미복구다. 현재 보고서의 후속 안내를 당시 계획과 섞지 않는다.
+
+## 원112 이후에 남은 좌표 질문
+
+[원112](records/0141-calendar-predictive-selection-and-weighting.md)의 현재조건은 첫예측기준을 통과하지 못했다. 다른자료·context·후보/support 또는 공동cell좌표로 질문을 바꾸는 근거, 같은K의 RCTL 효용·독립기간/도시·확장비용은별도로확인해야한다. 원135의후속113–115판단과원101미래336행/cell은미검수다.

@@ -45,3 +45,7 @@
 ## profile 이동 / 원형 잔차 / 공통 mask / own query 합집합
 
 [원110–111](records/0140-calendar-alignment-and-input-preflight.md)의 δij는 j[h+δ]를 i[h]에 맞춘다. 원형 잔차는 mod24의짧은 거리이고 pair별 최적을 하나의cell 좌표로 곧바로 쓸 수 없다. 공통 mask는세 이동의 지원교집합이며, own mask는같은target 시점의합집합이다.1222전체공통시점·807통과방향공통시점·2421세이동행·675own행·3096합계는다른집계다.
+
+## 방향×query / target×query / 기간 기여
+
+[원112](records/0141-calendar-predictive-selection-and-weighting.md)의402는방향×query이며 서로다른target×query는336이다. 동일target label을donor비교에서재사용한것을독립표본으로세지않는다. 이336은원101미래336행/cell과다른단위다. 각기간새평균과원래전체weight의기간기여도구별한다.

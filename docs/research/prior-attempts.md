@@ -644,3 +644,7 @@ RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](
 ## 시각 보정 / phase alignment / fixed cell clock / support preflight
 
 [원110–111](records/0140-calendar-alignment-and-input-preflight.md)에서24이동·MSE 선택·원형 차이·5NN/95percentile·세 이동 교집합을 먼저 확인한다. profile MAE9.22% 감소를 예측 개선으로 재인용하지 않는다. 새 실험에는 원112 후속 판단, 바뀐 입력/선택/평가 조건, 공동 좌표 일관성과 같은K RCTL·독립평가를 연결한다.
+
+## 시각 이동 선택 / selector–evaluator / 기간 가중치
+
+[원112](records/0141-calendar-predictive-selection-and-weighting.md)의 세이동·고정donor context·14방향/11target·개발기간과 사전두비교군을 먼저 확인한다. 좋은 직접 예측기를 좋은 관계 선택자로 재인용하지 않는다. 같은조건은저장예측으로조회하고, 새실험에는달라진질문·후보/context/support·공동좌표와독립평가를연결한다.
