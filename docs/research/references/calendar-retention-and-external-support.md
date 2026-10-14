@@ -13,3 +13,7 @@ PCC의 큰 외부입력 비중과 기존 RCTL 오차 반례를 함께 확인한�
 ## 원109: 입력지원과 저장 학습 경로
 
 원107의입력지원과원108의BN통계확인뒤 [원109](../records/0139-saved-training-path-and-stopping.md)은기존29로그의strict best·patience와두K4의공통epoch경로를읽었다. 동일epoch에서의우열은바뀌었고상한절단의근거는없었다. 입력지원차이·학습량효과의원인을입증한결과는아니며 [읽기범위](../evidence/0139-saved-training-path-and-stopping/read-scopes.json)와선택checkpoint·online train의정의를함께확인한다.
+
+## 원110–111: 달력 좌표 후보와 입력 검사의 확장
+
+원107–109 이후 [원110–111](../records/0140-calendar-alignment-and-input-preflight.md)은 hour두 열만 바꾸고 다른14열을 보존하는입력검사를 동결했다. 입력14방향/11target과 profile 이득을 조건부예측·RCTL효용으로 확대하지 않는다. [문헌비교](calendar-alignment-and-input-preflight.md)와 평균손해/좌표불일치·후속보고서판본·실제읽기범위를 함께 확인한다.

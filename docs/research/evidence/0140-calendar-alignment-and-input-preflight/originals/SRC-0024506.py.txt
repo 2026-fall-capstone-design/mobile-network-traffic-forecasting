@@ -1,0 +1,133 @@
+"""Frozen daily-profile alignment diagnostic. No predictor calls or target changes."""
+from pathlib import Path
+import hashlib
+import itertools
+import json
+import time
+import numpy as np
+import psutil
+
+BASE = Path(__file__).resolve().parent
+OUT = BASE / 'results/calendar_alignment_110'
+OUT.mkdir(parents=True, exist_ok=True)
+if (OUT / 'run_started.json').exists():
+    raise RuntimeError('Already started; audit rather than repeat.')
+
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def save(p, obj):
+    p.write_text(json.dumps(obj, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+
+
+source = BASE / 'results/pooled_context_101/inputs.npz'
+ledger_path = BASE / 'cumulative_execution_budget.json'
+paths = [source, ledger_path, Path(__file__), BASE / '110_calendar_alignment_candidate_and_plan.md']
+hashes = {str(p.relative_to(BASE)): sha(p) for p in paths}
+shifts = [0] + [v for k in range(1, 12) for v in [k, -k]] + [12]
+assert len(shifts) == 24 and len(set(s % 24 for s in shifts)) == 24
+settings = {'source_hashes': hashes, 'shift_priority': shifts, 'train': [168, 671],
+    'split_a': [168, 503], 'split_b': [504, 671], 'check': [672, 839],
+    'pair_metric': 'Mean squared difference of daily profiles standardized on train only',
+    'phase_orientation': 'delta_ij aligns j[h+delta_ij] to i[h]',
+    'wall_cap_seconds': 10, 'rss_cap_bytes': 1024**3, 'new_fits': 0, 'new_model_calls': 0,
+    'gate': 'nonzero_pairs>60 AND over half of nonzero pairs split-stable within 1 hour AND full-pair check MAE improves',
+    'phase_only_profile_check_not_forecast_performance': True}
+save(OUT / 'settings.json', settings)
+save(OUT / 'run_started.json', {'unix': time.time(), 'settings_sha256': sha(OUT / 'settings.json')})
+started = time.perf_counter()
+with np.load(source, allow_pickle=False) as a:
+    ids = a['cell_ids']
+    y = a['Y'][:, :672].astype(float)
+    flat = a['X'][:, :672]
+    assert np.array_equal(a['context_times'], np.arange(168, 840))
+assert y.shape == (16, 672)
+hour = np.rint(np.mod(np.arctan2(flat[0, :, 12], flat[0, :, 13]), 2*np.pi)*24/(2*np.pi)).astype(int) % 24
+assert np.allclose(flat[:, :, 12], np.sin(2*np.pi*hour/24)[None, :], atol=1e-6)
+assert np.allclose(flat[:, :, 13], np.cos(2*np.pi*hour/24)[None, :], atol=1e-6)
+center, scale = y[:, :504].mean(1), y[:, :504].std(1)
+assert np.all(scale > 0)
+z = (y-center[:, None])/scale[:, None]
+periods = {'train': slice(0, 504), 'split_a': slice(0, 336),
+           'split_b': slice(336, 504), 'check': slice(504, 672)}
+profiles = {name: np.stack([z[:, s][:, hour[s] == h].mean(1) for h in range(24)], axis=1)
+            for name, s in periods.items()}
+assert all(np.isfinite(p).all() and p.shape == (16, 24) for p in profiles.values())
+
+
+def choose(p, i, j):
+    costs = [float(np.mean((p[i]-np.roll(p[j], -s))**2)) for s in shifts]
+    best = min(costs)
+    # Fixed priority resolves numerical ties; it does not inspect the check period.
+    idx = next(k for k, cost in enumerate(costs) if cost <= best + 1e-12)
+    return shifts[idx], costs
+
+
+def distance(a, b):
+    return abs((a-b+12) % 24 - 12)
+
+
+phase = np.zeros((16, 16), int)
+records = []
+for i, j in itertools.combinations(range(16), 2):
+    delta, costs = choose(profiles['train'], i, j)
+    da, _ = choose(profiles['split_a'], i, j)
+    db, _ = choose(profiles['split_b'], i, j)
+    phase[i, j], phase[j, i] = delta, -delta
+    rec = {'i': i, 'j': j, 'cell_i': int(ids[i]), 'cell_j': int(ids[j]),
+           'selected_shift_hours': delta, 'training_squared_distances': costs,
+           'split_a_shift': da, 'split_b_shift': db,
+           'split_circular_difference_hours': distance(da, db),
+           'train_peak_i': int(np.argmax(profiles['train'][i])),
+           'train_peak_j': int(np.argmax(profiles['train'][j]))}
+    for p in ['train', 'check']:
+        original = profiles[p][i]-profiles[p][j]
+        aligned = profiles[p][i]-np.roll(profiles[p][j], -delta)
+        rec[p+'_unshifted_MAE'] = float(np.abs(original).mean())
+        rec[p+'_aligned_MAE'] = float(np.abs(aligned).mean())
+        rec[p+'_unshifted_MSE'] = float(np.square(original).mean())
+        rec[p+'_aligned_MSE'] = float(np.square(aligned).mean())
+    assert rec['train_aligned_MSE'] <= rec['train_unshifted_MSE']+1e-12
+    records.append(rec)
+
+nonzero = [r for r in records if r['selected_shift_hours'] != 0]
+stable = [r for r in nonzero if r['split_circular_difference_hours'] <= 1]
+cycles = [{'i': i, 'j': j, 'k': k,
+           'circular_residual_hours': distance(phase[i, j]+phase[j, k], phase[i, k])}
+          for i, j, k in itertools.combinations(range(16), 3)]
+agg = {'pairs': len(records), 'nonzero_pairs': len(nonzero), 'zero_pairs': len(records)-len(nonzero),
+    'split_stable_nonzero_pairs_within_1h': len(stable),
+    'check_MAE_improved_pairs': sum(r['check_aligned_MAE'] < r['check_unshifted_MAE']-1e-12 for r in records),
+    'check_MAE_worsened_pairs': sum(r['check_aligned_MAE'] > r['check_unshifted_MAE']+1e-12 for r in records),
+    'check_unshifted_MAE': float(np.mean([r['check_unshifted_MAE'] for r in records])),
+    'check_aligned_MAE': float(np.mean([r['check_aligned_MAE'] for r in records])),
+    'train_unshifted_MSE': float(np.mean([r['train_unshifted_MSE'] for r in records])),
+    'train_aligned_MSE': float(np.mean([r['train_aligned_MSE'] for r in records])),
+    'triangles': len(cycles), 'triangles_exactly_consistent': sum(c['circular_residual_hours'] == 0 for c in cycles),
+    'triangles_within_1h': sum(c['circular_residual_hours'] <= 1 for c in cycles)}
+agg['profile_only_gate_passes'] = (len(nonzero) > 60 and len(stable) > len(nonzero)/2
+                                    and agg['check_aligned_MAE'] < agg['check_unshifted_MAE'])
+np.savez_compressed(OUT / 'profiles.npz', **profiles, cell_ids=ids, center=center, scale=scale,
+                    pair_shift_matrix=phase, hour=hour)
+elapsed = time.perf_counter()-started
+rss = psutil.Process().memory_info().rss
+assert elapsed < 10 and rss < 1024**3
+assert all(sha(BASE / p) == h for p, h in hashes.items())
+save(OUT / 'result.json', {'complete': True, 'settings': settings, 'aggregate': agg,
+    'pairs': records, 'cycles': cycles, 'cell_ids': ids.tolist(), 'elapsed_seconds': elapsed,
+    'sampled_rss_bytes': rss, 'new_model_calls': 0, 'new_fits': 0,
+    'forecast_performance_measured': False, 'new_partition_chosen': False,
+    'input_files_unchanged_before_accounting': True,
+    'timing_scope': 'Input loading, numeric arrays, profile archive; excludes imports/hash/settings and final result serialization'})
+ledger = json.loads(ledger_path.read_text(encoding='utf-8'))
+assert 'calendar_alignment_110' not in ledger['new_cheap_diagnostic_seconds']
+(OUT / 'ledger_before_accounting.json').write_bytes(ledger_path.read_bytes())
+ledger['new_cheap_diagnostic_seconds']['calendar_alignment_110'] = elapsed
+ledger['cheap_stage_details'].append({'stage': 'calendar_alignment_110', 'new_fits': 0,
+    'new_model_calls': 0, 'arithmetic_seconds': elapsed, 'cost_not_counted_twice': True})
+save(ledger_path, ledger)
+save(OUT / 'run_finished.json', {'complete': True, 'unix': time.time(),
+    'result_sha256': sha(OUT / 'result.json'), 'ledger_after_sha256': sha(ledger_path)})
+print(json.dumps({'aggregate': agg, 'elapsed_seconds': elapsed, 'ledger_sha256': sha(ledger_path)}), flush=True)

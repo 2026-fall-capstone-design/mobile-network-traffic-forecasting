@@ -229,3 +229,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 ## 원109 뒤에 남은 학습·선정 질문
 
 [원109](records/0139-saved-training-path-and-stopping.md)은epoch80절단이나저장종료불일치의근거를찾지못했다. optimizer 수렴·patience의최적공정성·추가학습효과·소속효과의원인은미확인이다. 재검토에는기존과달라지는입력지원/소속/optimizer/종료조건과독립평가를명시한다. 정확한원장쓰기시각·도구응답은미복구이며after109백업만으로원110내용의검토완료를주장하지 않는다.
+
+## 원110–111 이후의 좌표 효용
+
+[원110–111](records/0140-calendar-alignment-and-input-preflight.md)의 geometry 통과는 예측 관계 증명이 아니다. 원112 실제 결과와 selector/evaluator 분리, 고정 좌표의 공동 일관성, 같은K RCTL·독립 기간/도시의 손해와 비용을 이어 확인해야 한다. 실패의 원시 tool/stack trace와 정확한 정산 시각은 미복구다. 현재 보고서의 후속 안내를 당시 계획과 섞지 않는다.

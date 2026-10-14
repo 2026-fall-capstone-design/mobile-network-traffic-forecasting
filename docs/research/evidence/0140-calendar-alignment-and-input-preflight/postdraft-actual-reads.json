@@ -1,0 +1,464 @@
+{
+  "batch_id": "history-140",
+  "claim_count": 32,
+  "check_groups": [
+    {
+      "index": 1,
+      "title": "Question, actual execution and saved source scope",
+      "claim_numbers": [
+        1,
+        2,
+        3,
+        4,
+        21,
+        22,
+        23,
+        24,
+        31,
+        32
+      ]
+    },
+    {
+      "index": 2,
+      "title": "All120 pair selected fields, aggregate, original code and reused arithmetic",
+      "claim_numbers": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "index": 3,
+      "title": "Initial/recovery variants, markers, timing, source hashes and whole3ledgers",
+      "claim_numbers": [
+        2,
+        10,
+        11,
+        12,
+        13,
+        24
+      ]
+    },
+    {
+      "index": 4,
+      "title": "All32 preflight nodes and NPZ header/complete selection/count values",
+      "claim_numbers": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        31
+      ]
+    },
+    {
+      "index": 5,
+      "title": "Primary source pages and current algebra caution",
+      "claim_numbers": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    {
+      "index": 6,
+      "title": "Future112 plan, later-report reconstruction and limitations",
+      "claim_numbers": [
+        22,
+        23,
+        24,
+        30,
+        31,
+        32
+      ]
+    }
+  ],
+  "initial_draft_sha256": "07d2f6a79eed2b50ccc0c4c9de0fe8e3e08e13faf763b71281b867a0be1c8958",
+  "initial_saved_draft_all32claims_actually_read": true,
+  "wording_or_locator_repairs": [
+    {
+      "claim_id": "H140-C08",
+      "old": "|δij+δjk−δik| mod24 잔차",
+      "new": "abs(((δij+δjk−δik+12) mod24)−12)로 정의한 원형 잔차",
+      "reason": "Actual circular-distance and inverse-shift implementation, not reciprocal or absolute-then-mod notation."
+    },
+    {
+      "claim_id": "H140-C14",
+      "old": "24개 이동의 역수 인덱스",
+      "new": "부호를 반전한 mod24 이동 인덱스",
+      "reason": "Actual circular-distance and inverse-shift implementation, not reciprocal or absolute-then-mod notation."
+    },
+    {
+      "claim_id": "H140-C21",
+      "reason": "Preserve original111 plan line10: overlapping observed inputs are distinct from query-target leakage."
+    },
+    {
+      "claim_id": "H140-C03",
+      "old_NPZ_keys": [
+        "context_times",
+        "X[:,0:672,:]",
+        "Y[:,0:672]"
+      ],
+      "new_NPZ_keys": [
+        "context_times",
+        "X",
+        "Y"
+      ],
+      "reason": "Use actual member names with separate slice locators; no fabricated pseudo-key."
+    },
+    {
+      "claim_id": "H140-C16",
+      "old_NPZ_keys": [
+        "X[:,0:672,:]"
+      ],
+      "new_NPZ_keys": [
+        "X"
+      ],
+      "reason": "Use actual member names with separate slice locators; no fabricated pseudo-key."
+    },
+    {
+      "claim_id": "H140-C21",
+      "old_NPZ_keys": [
+        "all15key_names"
+      ],
+      "new_NPZ_keys": [
+        "context_X",
+        "query_X",
+        "shifted_query_X",
+        "pair_indices",
+        "phase_candidates",
+        "common_masks",
+        "eligible_pairs",
+        "own_baseline_masks",
+        "support_distances",
+        "support_radii",
+        "context_means",
+        "context_scales",
+        "query_positions",
+        "query_target_times",
+        "cell_ids"
+      ],
+      "reason": "Use actual member names with separate slice locators; no fabricated pseudo-key."
+    },
+    {
+      "claim_id": "H140-C31",
+      "old_NPZ_keys": [
+        "all9members"
+      ],
+      "new_NPZ_keys": [
+        "train",
+        "split_a",
+        "split_b",
+        "check",
+        "cell_ids",
+        "center",
+        "scale",
+        "pair_shift_matrix",
+        "hour"
+      ],
+      "reason": "Use actual member names with separate slice locators; no fabricated pseudo-key."
+    },
+    {
+      "claim_id": "H140-C31",
+      "old_NPZ_keys": [
+        "all15members"
+      ],
+      "new_NPZ_keys": [
+        "context_X",
+        "query_X",
+        "shifted_query_X",
+        "pair_indices",
+        "phase_candidates",
+        "common_masks",
+        "eligible_pairs",
+        "own_baseline_masks",
+        "support_distances",
+        "support_radii",
+        "context_means",
+        "context_scales",
+        "query_positions",
+        "query_target_times",
+        "cell_ids"
+      ],
+      "reason": "Use actual member names with separate slice locators; no fabricated pseudo-key."
+    },
+    {
+      "claim_id": "H140-C31",
+      "old_NPZ_keys": [
+        "selected_past672rows_only"
+      ],
+      "new_NPZ_keys": [
+        "X",
+        "Y",
+        "cell_ids",
+        "context_times"
+      ],
+      "reason": "Use actual member names with separate slice locators; no fabricated pseudo-key."
+    }
+  ],
+  "corrected_draft_sha256": "4ec5dd1b726cfae79abfc730a3b615dbef086ae137327d3e336029bd5c1a3ea6",
+  "corrected_draft_actually_read_after_write": true,
+  "raw_actual_ranges": {
+    "SRC-0020866": [
+      [
+        1,
+        51
+      ]
+    ],
+    "SRC-0020865": [
+      [
+        1,
+        35
+      ]
+    ],
+    "SRC-0020864": [
+      [
+        1,
+        42
+      ]
+    ],
+    "SRC-0020867": [
+      [
+        1,
+        32
+      ]
+    ],
+    "SRC-0022559": [
+      [
+        1,
+        165
+      ]
+    ],
+    "SRC-0022563": [
+      [
+        1,
+        185
+      ]
+    ],
+    "SRC-0024506": [
+      [
+        1,
+        133
+      ]
+    ],
+    "SRC-0024507": [
+      [
+        1,
+        7
+      ]
+    ],
+    "SRC-0024510": [
+      [
+        1,
+        58
+      ]
+    ],
+    "SRC-0024511": [
+      [
+        1,
+        6
+      ]
+    ],
+    "SRC-0024514": [
+      [
+        1,
+        4
+      ]
+    ],
+    "SRC-0024515": [
+      [
+        1,
+        58
+      ]
+    ],
+    "SRC-0024513": [
+      [
+        1,
+        6
+      ]
+    ],
+    "SRC-0024558": [
+      [
+        1,
+        4
+      ]
+    ],
+    "SRC-0024557": [
+      [
+        1,
+        6
+      ]
+    ],
+    "SRC-0024559": [
+      [
+        1,
+        31
+      ]
+    ],
+    "SRC-0024560": [
+      [
+        1,
+        18
+      ]
+    ],
+    "SRC-0000136": [
+      [
+        1,
+        43
+      ]
+    ],
+    "SRC-0020868": [
+      [
+        1,
+        48
+      ]
+    ]
+  },
+  "raw_lines": 932,
+  "raw_whole_sources": 19,
+  "source_JSON_pointers": {
+    "SRC-0020864": [],
+    "SRC-0020865": [],
+    "SRC-0020866": [],
+    "SRC-0024506": [],
+    "SRC-0024507": [],
+    "SRC-0024508": [
+      ""
+    ],
+    "SRC-0024509": [],
+    "SRC-0024510": [
+      "/gate",
+      "/phase_only_profile_check_not_forecast_performance",
+      "/source_hashes"
+    ],
+    "SRC-0024511": [],
+    "SRC-0024512": [
+      "/aggregate",
+      "/cell_ids",
+      "/charged_seconds_including_initial_failure",
+      "/cycles",
+      "/elapsed_seconds",
+      "/forecast_performance_measured",
+      "/new_fits",
+      "/new_model_calls",
+      "/new_partition_chosen",
+      "/pairs",
+      "/reused_saved_profiles",
+      "/sampled_rss_bytes",
+      "/settings",
+      "/timing_scope"
+    ],
+    "SRC-0024513": [],
+    "SRC-0024514": [],
+    "SRC-0024515": [
+      "/phase_orientation",
+      "/shift_priority",
+      "/source_hashes"
+    ],
+    "SRC-0020867": [],
+    "SRC-0022559": [],
+    "SRC-0022563": [],
+    "SRC-0024554": [],
+    "SRC-0024555": [
+      "",
+      "/cheap_stage_details",
+      "/new_cheap_diagnostic_seconds/calendar_alignment_110"
+    ],
+    "SRC-0024556": [
+      "/aggregate",
+      "/pairs",
+      "/pairs/1",
+      "/sampled_rss_bytes",
+      "/settings",
+      "/timing_scope"
+    ],
+    "SRC-0024557": [],
+    "SRC-0024558": [],
+    "SRC-0024559": [
+      "/query_targets_read",
+      "/source_hashes",
+      "/support"
+    ],
+    "SRC-0024560": [
+      "/documents_sha256"
+    ],
+    "SRC-0029561": [],
+    "SRC-0024530": [
+      ""
+    ],
+    "SRC-0020868": [],
+    "SRC-0020862": [],
+    "SRC-0000136": []
+  },
+  "all120_pair_selected_fields_actually_read": [
+    "i",
+    "j",
+    "cell_i",
+    "cell_j",
+    "selected_shift_hours",
+    "split_a_shift",
+    "split_b_shift",
+    "split_circular_difference_hours",
+    "train_unshifted_MAE",
+    "train_aligned_MAE",
+    "train_unshifted_MSE",
+    "train_aligned_MSE",
+    "check_unshifted_MAE",
+    "check_aligned_MAE",
+    "check_unshifted_MSE",
+    "check_aligned_MSE"
+  ],
+  "pair_training24cost_vectors_whole_second_display": false,
+  "individual560cycles_second_display": false,
+  "cycles_saved_histogram_actually_read": true,
+  "preflight_all32complete_pair_nodes_and_all_noncontainer_values_actually_read": true,
+  "all3ledgers_complete_JSON_values_second_read": true,
+  "literal_large_JSON_whitespace_second_read": false,
+  "actual_NPZ_member_headers_second_read": 30,
+  "actual_preflight_complete_selected_values": [
+    "pair_indices",
+    "phase_candidates",
+    "eligible_pairs",
+    "support_radii",
+    "common_masks row_counts",
+    "own_baseline_masks per_cell_counts",
+    "query_target_times first/last_half boundaries"
+  ],
+  "preflight_masks_union_count807_and_own_count675_read": true,
+  "prior_saved_arithmetic_verification_reused": true,
+  "full264912value_arithmetic_not_recomputed_after_draft": true,
+  "primary_page6_TROUT_formula_second_text_read": true,
+  "other_primary_text_visual_checks_reused_from_first_pass": true,
+  "report_exact_hash_matched_reconstruction_checked": true,
+  "postdraft_truncation_repairs": [
+    "112plan lines24–36 and37 separately re-read",
+    "110 selected pair rows54–63 separately re-read after whole selected display was truncated"
+  ],
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "models_instantiated": false,
+  "new_model_runs": 0,
+  "independent_human_reviewer": false,
+  "semantic_second_pass_complete": true,
+  "coverage_increment_applied": false,
+  "whole_research_goal_complete": false,
+  "checked_at_utc": "2026-10-14T03:14:03.966240+00:00",
+  "corrected_changed_claims_and_locators_actually_read": [
+    3,
+    8,
+    14,
+    16,
+    21,
+    31
+  ],
+  "unchanged_statements_initial_saved_read_reused": true
+}

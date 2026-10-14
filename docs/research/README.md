@@ -326,3 +326,7 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 ## 원109: 저장 학습 경로와 종료 규칙
 
 [정리 기록](records/0139-saved-training-path-and-stopping.md)에서29개 로그의 strict best·patience와 두 K4의공통42/43epoch를 찾을 수 있다. 학습 우열은 바뀌었지만 상한 절단으로 기존 비교를 무효화할 근거는 없었다. online train/eval과 선택 checkpoint의 차이, 실제 전후원장과미복구 공백을 보존했다. 41SHA/110경로·새사본8/기존33·새전문38개 중로그29개이며 전체정리는 진행 중이다.
+
+## 원110–111: 시각 좌표와 예측 전 입력
+
+[정리 기록](records/0140-calendar-alignment-and-input-preflight.md)에 profile9.22%감소·15쌍 손해·pair 좌표 불일치와 입력14/32방향·11target을 남겼다. 3096행/14context는 후속 상한이며 새 모델 사용량이 아니다. 최초 직렬화 실패·저장profile 복구·문헌4편·후속 원112 안내의 판본 차이를 구별했다. 원112 실제 결과와 전체 과거기록 정리는 계속 진행한다.
