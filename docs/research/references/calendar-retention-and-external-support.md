@@ -9,3 +9,7 @@ PCC의 큰 외부입력 비중과 기존 RCTL 오차 반례를 함께 확인한�
 초기 추가소속 assertion은 구현/범위 오류이며 방법의 과학적 기각이 아니다. 실패포함비용 한사건과 실행코드/로그/원장기입시점 미복구를 함께 읽는다. 당시 goalactive와후속BN계획은 역사자료이며 현재 지시가 아니다.
 
 후속 [원108](../records/0138-fixed-weight-bn-statistics.md)은 고정 가중치의훈련입력 BN통계 재계산을 확인했다. [BN 재검토](fixed-weight-bn-statistics.md)에 평균손해·반대cell/day·모델상태9회 비용·불편분산 식 차이와한계를 연결했다.
+
+## 원109: 입력지원과 저장 학습 경로
+
+원107의입력지원과원108의BN통계확인뒤 [원109](../records/0139-saved-training-path-and-stopping.md)은기존29로그의strict best·patience와두K4의공통epoch경로를읽었다. 동일epoch에서의우열은바뀌었고상한절단의근거는없었다. 입력지원차이·학습량효과의원인을입증한결과는아니며 [읽기범위](../evidence/0139-saved-training-path-and-stopping/read-scopes.json)와선택checkpoint·online train의정의를함께확인한다.

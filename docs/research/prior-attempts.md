@@ -636,3 +636,7 @@ RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](
 ## 원108과 BN 통계 재계산을 반복하기 전에
 
 [기록](records/0138-fixed-weight-bn-statistics.md)과 [재검토 조건](references/fixed-weight-bn-statistics.md)을 읽는다. 단일seed·고정가중치·train-only12BN·14일 개발구간·반대cell/day·복원144행·29+9회계를 확인하고 새조건/구별할 원인을 적는다.
+
+## 학습 부족 / epoch 상한 / 조기 종료 / online train 곡선
+
+[원109](records/0139-saved-training-path-and-stopping.md)에서같은K4·두seed·고정16cell 조건의29로그와patience10을먼저 확인한다. common epoch·tail5·서로다른best checkpoint 평균을구별한다. global과local의같은epoch를같은작업량으로세지 않는다. 새실험은바뀌는학습·종료규칙과검증할가설,독립평가조건을적는다. 동일로그의재분석을새실험으로집계하지 않는다.

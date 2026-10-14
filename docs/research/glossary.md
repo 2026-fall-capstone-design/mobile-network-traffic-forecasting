@@ -37,3 +37,7 @@
 [원107](records/0137-calendar-retention-and-external-support.md)의 **k이웃 수/K소속 수**, **학습행 점유/density own비중**, **external/group 비중**, **훈련query절반 평균/개별cell·이후10일**, **sample개수/독립정보량**, **입력근접성/RCTL scaled MAE**를 구별한다.
 
 [원108](records/0138-fixed-weight-bn-statistics.md)에서 **optimizer fit/모델상태 적합**, **EMA/유한집합 모멘트/불편분산 보정**, **평균 손해/cell·day 개선**, **복원144행/전체 예측 복원**, **파생원장/복구된 원본**, **저장값 검수/모델 재현**을 구별한다.
+
+## online train / 공통 epoch / validation-selected checkpoint
+
+[원109](records/0139-saved-training-path-and-stopping.md)의online train은학습중배치별가변가중치·train mode 손실의가중평균이다. validation은epoch종료뒤eval mode 값이다. 공통epoch는같은seed의여덟K4로그가모두남은구간으로42/43이다. validation-selected checkpoint 평균은서로다른best_epoch에서선택한4모델의최소validation 평균이며동시epoch나새test값이 아니다.

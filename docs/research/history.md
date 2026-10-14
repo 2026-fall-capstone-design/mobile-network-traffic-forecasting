@@ -233,3 +233,7 @@
 [H137 원107](records/0137-calendar-retention-and-external-support.md): 자기calendar4행/cluster16행은 보존됐고 k32 external은Tab12.03%/empirical15.94%였다. PCC반례·cell10/6·훈련query범위·초기범위오류와실패포함비용을 함께 남겼다. 원인은미식별이고 후속BN계획은별도다.
 
 [H138 원108](records/0138-fixed-weight-bn-statistics.md): 통계 재계산 후 세방식의14일 평균 오차는 증가했고K4순위는 유지됐다. 앞7일gap 감소·개선cell2개씩·9회 비용과후속 저장로그 계획을 보존했다. 원인식별/독립최종평가는 아니다.
+
+## 원109: 학습 상한 설명을 저장 경로에 대조
+
+원108 이후 [원109](records/0139-saved-training-path-and-stopping.md)은29개 모두best+10에서끝났음을 확인했다. 같은 K4 두seed의우열이공통42/43epoch에서바뀌었고선택validation 평균gap은각+0.002773024/+0.000161814였다. 새학습이나소속선정이 아니며, 상한절단의근거부재를 전역수렴·원인증명으로 확대하지 않는다.
