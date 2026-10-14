@@ -1,0 +1,101 @@
+"""Activate the existing one-round allowance once, then settle attempted work."""
+from pathlib import Path
+import hashlib
+import json
+import sys
+B = Path(__file__).resolve().parent
+O = B/'results/calendar_predictive_112'
+P = B/'cumulative_execution_budget.json'
+O.mkdir(exist_ok=True)
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+load = lambda p: json.loads(p.read_text(encoding='utf-8'))
+def save(p,obj):
+    p.write_text(json.dumps(obj, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+stage = 'calendar_predictive_112'
+ledger = load(P)
+round_budget = ledger['additional_rounds']['post_revision_106_round1']
+if sys.argv[1] == 'reserve':
+    expected = '084b70d96d242043471b49e656273bb69c34481a5c6d1a7f0be3891548d9e1a0'
+    assert sha(P) == expected
+    assert not (O/'budget_authorization.json').exists() and not (O/'run_started.json').exists()
+    assert not round_budget['TabICL_allowance_activated']
+    assert ledger['used']['TabICL_contexts'] == 78 and ledger['used']['TabICL_query_rows'] == 55488
+    assert round_budget['used_fit_or_adaptation_runs'] == 9
+    assert ledger['remaining_count_budgets']['RCTL_fits'] == 9
+    assert sum(ledger['new_cheap_diagnostic_seconds'].values())+30 < ledger['caps']['cheap_numeric_seconds']
+    paths = [B/'112_calendar_predictive_comparison_plan.md', B/'calendar_predictive_comparison_112.py', Path(__file__),
+        B/'results/calendar_query_preflight_111/frozen_queries.npz', B/'results/calendar_query_preflight_111/result.json',
+        B/'results/pooled_context_101/inputs.npz', B/'assets/tabicl-regressor-v2-20260212.ckpt']
+    hashes = {str(p.relative_to(B)): sha(p) for p in paths}
+    (O/'ledger_before_activation.json').write_bytes(P.read_bytes())
+    round_budget.update(TabICL_allowance_activated=True, baseline_TabICL_contexts=78,
+        baseline_TabICL_query_rows=55488, baseline_TabICL_seconds=ledger['used']['TabICL_fit_predict_seconds'],
+        limit_TabICL_contexts=32, limit_TabICL_query_rows=16384, limit_TabICL_seconds=600,
+        used_TabICL_contexts=0, used_TabICL_query_rows=0, used_TabICL_seconds=0,
+        previous_TabICL_caps={k:ledger['caps'][k] for k in ['TabICL_contexts','TabICL_query_rows','TabICL_fit_predict_seconds']})
+    ledger['caps']['TabICL_contexts'] = 110
+    ledger['caps']['TabICL_query_rows'] = 71872
+    ledger['caps']['TabICL_fit_predict_seconds'] = ledger['used']['TabICL_fit_predict_seconds']+600
+    round_budget['reservations'][stage] = {'status': 'reserved', 'contexts':14,'query_rows':3096,
+        'Tab_seconds_cap':180, 'cheap_seconds_cap':30, 'stage_seconds_cap':210,
+        'simple_fits_cap':28, 'new_RCTL_fits':0, 'source_hashes': hashes}
+    ledger['remaining_count_budgets']['TabICL_contexts'] = 18
+    ledger['remaining_count_budgets']['TabICL_query_rows'] = 13288
+    save(P,ledger)
+    save(O/'budget_authorization.json', {'stage':stage, 'source_hashes':hashes,
+        'authorization':'Existing goal section 9.1, one round only, no renewed allowance',
+        'ledger_before_sha256':expected, 'ledger_after_sha256':sha(P),
+        'Tab_reserved_contexts':14, 'Tab_reserved_query_rows':3096,
+        'remaining_counts_exclude_reservations':True})
+    print(json.dumps({'reserved':stage,'ledger_sha256':sha(P),'remaining_unreserved':ledger['remaining_count_budgets']}))
+elif sys.argv[1] == 'settle':
+    auth = load(O/'budget_authorization.json')
+    assert sha(P) == auth['ledger_after_sha256']
+    assert not (O/'budget_update.json').exists()
+    assert all(sha(B/name)==value for name,value in auth['source_hashes'].items())
+    if (O/'run_finished.json').exists():
+        r = load(O/'run_finished.json')
+        contexts,rows,seconds = r['contexts_attempted'],r['query_rows_attempted'],r['Tab_seconds']
+        cheap,simple,complete = r['cheap_seconds'],r['simple_fits_attempted'],r['success']
+    else:
+        r = load(O/'hard_stop.json')
+        s = r['state']
+        contexts,rows = s['contexts_attempted'],s['query_rows_attempted']
+        seconds = s['Tab_seconds']+r['active_tab_seconds']
+        cheap,simple,complete = r['wall_seconds']-seconds,s['simple_fits_attempted'],False
+    assert 0<=contexts<=14 and 0<=rows<=3096 and 0<=simple<=28 and cheap>=0
+    assert stage not in ledger['new_cheap_diagnostic_seconds']
+    (O/'ledger_before_settlement.json').write_bytes(P.read_bytes())
+    ledger['model_calls_by_stage'].append({'stage':stage,'contexts':contexts,'predicted_query_rows':rows,
+        'fit_predict_seconds':seconds,'ensemble':1,'all_calls_successful':complete,
+        'accounting_basis':'Attempted calls; no automatic retry or reset'})
+    u=ledger['used']
+    u['TabICL_contexts']+=contexts
+    u['TabICL_query_rows']+=rows
+    u['TabICL_fit_predict_seconds']+=seconds
+    ledger['new_cheap_diagnostic_seconds'][stage]=cheap
+    ledger['cheap_stage_details'].append({'stage':stage,'new_simple_fits':simple,
+        'new_TabICL_contexts':contexts,'new_TabICL_query_rows':rows,'new_RCTL_calls':0,
+        'cheap_seconds':cheap,'Tab_seconds_accounted_separately':seconds,'cost_not_counted_twice':True})
+    round_budget['used_TabICL_contexts']+=contexts
+    round_budget['used_TabICL_query_rows']+=rows
+    round_budget['used_TabICL_seconds']+=seconds
+    round_budget['reservations'][stage].update(status='settled',complete=complete,
+        used_contexts=contexts,used_query_rows=rows,used_Tab_seconds=seconds,used_cheap_seconds=cheap)
+    for key in ['TabICL_contexts','TabICL_query_rows']:
+        ledger['remaining_count_budgets'][key]=ledger['caps'][key]-u[key]
+        assert ledger['remaining_count_budgets'][key]>=0
+    assert round_budget['used_TabICL_seconds']<=600 and u['TabICL_fit_predict_seconds']<=ledger['caps']['TabICL_fit_predict_seconds']
+    assert u['RCTL_fit_or_adaptation_runs']==38 and ledger['remaining_count_budgets']['RCTL_fits']==9
+    cheap_total=sum(ledger['new_cheap_diagnostic_seconds'].values())
+    model_total=cheap_total+sum(u[k] for k in ['TabICL_fit_predict_seconds','RCTL_wall_seconds','RCTL_frozen_inference_seconds','RCTL_frozen_gradient_seconds'])
+    assert cheap_total<ledger['caps']['cheap_numeric_seconds'] and model_total<ledger['caps']['total_local_modeling_seconds']
+    save(P,ledger)
+    record={'stage':stage,'complete':complete,'Tab_contexts_added':contexts,'Tab_query_rows_added':rows,
+        'Tab_seconds_added':seconds,'cheap_seconds_added':cheap,'simple_fits_added':simple,
+        'ledger_after_sha256':sha(P),'remaining_counts':ledger['remaining_count_budgets'],
+        'total_recorded_modeling_seconds':model_total,'budget_resets':ledger['budget_resets']}
+    save(O/'budget_update.json',record)
+    print(json.dumps(record,ensure_ascii=False))
+else:
+    raise ValueError('Use reserve or settle; no implicit repeated execution.')

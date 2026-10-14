@@ -14,3 +14,7 @@
 TROUT의 §3/부록A 정규화 표기는 [현재 대수 대조](../records/0140-calendar-alignment-and-input-preflight.md#claim-27)를 함께 확인한다. 이는 현재 검토판본의 표기 주의이며 공식 코드·실험 전체의 오류 판정이 아니다. 원문상의 norm 분모를 그대로 재사용하지 않고 단위 phase 조건을 확인할 필요가 있다.
 
 arXiv 제출/개정일은 NUG2016-07-12, TROUTv2 2021-02-10, CAPS2026-02-02, AOSNetv1 2026-06-04다. NUG표지7월13일·CAPS표지2월4일과 구별한다. AOSNetv2의 존재는 확인했지만 v1 이후 변경은 비교하지 않았다. 과거 ScienceDirect/PMC 접근 문제와 abstract-only 후보를 fulltext 검수로 승격하지 않는다.
+
+## 원112의 실제 예측 비교로 이어짐
+
+[원112](../records/0141-calendar-predictive-selection-and-weighting.md)에서 profile/geometry와 실제예측·선택효과를분리하고 실패기준·긍정례·손해·기간weight·정산을대조했다. [선택자와집계 안내](calendar-predictive-selection-and-weighting.md)는이번회차의새문헌검토가아니다.
