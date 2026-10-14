@@ -640,3 +640,7 @@ RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](
 ## 학습 부족 / epoch 상한 / 조기 종료 / online train 곡선
 
 [원109](records/0139-saved-training-path-and-stopping.md)에서같은K4·두seed·고정16cell 조건의29로그와patience10을먼저 확인한다. common epoch·tail5·서로다른best checkpoint 평균을구별한다. global과local의같은epoch를같은작업량으로세지 않는다. 새실험은바뀌는학습·종료규칙과검증할가설,독립평가조건을적는다. 동일로그의재분석을새실험으로집계하지 않는다.
+
+## 시각 보정 / phase alignment / fixed cell clock / support preflight
+
+[원110–111](records/0140-calendar-alignment-and-input-preflight.md)에서24이동·MSE 선택·원형 차이·5NN/95percentile·세 이동 교집합을 먼저 확인한다. profile MAE9.22% 감소를 예측 개선으로 재인용하지 않는다. 새 실험에는 원112 후속 판단, 바뀐 입력/선택/평가 조건, 공동 좌표 일관성과 같은K RCTL·독립평가를 연결한다.

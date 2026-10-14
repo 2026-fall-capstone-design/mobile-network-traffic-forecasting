@@ -1,0 +1,1913 @@
+{
+  "batch_id": "history-140",
+  "record_path": "../records/0140-calendar-alignment-and-input-preflight.md",
+  "record_sha256": "41793fd953a419e479ee4d6815fbfc8b5ec21e8891668a9d4a6399ab7aa37bcb",
+  "claims": [
+    {
+      "claim_id": "H140-C01",
+      "title": "고정 cell 좌표라는 후보",
+      "claim": "cell마다 고정된 φ를 두고 달력 시각을 (h−φ) mod24로 표현하되 실제 관측 순서·최근 이력·다음 target·요일을 보존한다는 후보였다. A query의 시각을 donor B의 좌표에 대응시켜도 다른 cell의 미래 관측을 가져오지 않는다는 명세다. 원110–111에서는 φ·cluster 소속을 확정하거나 RCTL 구조를 바꾸지 않았다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020866",
+          "lines": [
+            1,
+            51
+          ],
+          "source_sha256": "fc9b8e649f65d57aec97f307e71b700210fdd71efd600c90c660f6497dc3559e",
+          "team_source": "../sources/history-140.md#src-0020866"
+        },
+        {
+          "source_id": "SRC-0020867",
+          "lines": [
+            1,
+            32
+          ],
+          "source_sha256": "3dfbc0577c7aeb8bfb0d574df6c7c2cc1687764f4d1a8f143d105544f03ff7aa",
+          "team_source": "../sources/history-140.md#src-0020867"
+        },
+        {
+          "source_id": "SRC-0024512",
+          "JSON_pointers": [
+            "/new_partition_chosen",
+            "/forecast_performance_measured"
+          ],
+          "source_sha256": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+          "team_source": "../sources/history-140.md#src-0024512"
+        },
+        {
+          "source_id": "SRC-0024556",
+          "JSON_pointers": [
+            "/aggregate"
+          ],
+          "source_sha256": "e77417044b2558aaa17b7476cd7666d4d93034bf2f1dec51f19e2fd0c81461ad",
+          "team_source": "../sources/history-140.md#src-0024556"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-01",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C02",
+      "title": "실제 수행과 아직 수행하지 않은 비교",
+      "claim": "원110은 저장된 원101 입력으로 평균 profile을 점검하고 직렬화 실패 뒤 저장 profile에서 요약을 복구했다. 원111은 donor·세 이동량·공통 query mask를 동결한 입력 검사였다. 정적 코드·결과·전후 원장에는 두 단계의 새 모델 fit/predict·RCTL 적합·새 소속 선정이 없으며, 이번 정리에서도 원코드를 실행·import하거나 모델을 생성하지 않았다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024506",
+          "lines": [
+            1,
+            133
+          ],
+          "source_sha256": "8015adb97c347e9b454af42dbfee3e65a055326361910cb59d18d6087b280f43",
+          "team_source": "../sources/history-140.md#src-0024506"
+        },
+        {
+          "source_id": "SRC-0022559",
+          "lines": [
+            1,
+            165
+          ],
+          "source_sha256": "64d3681625e96ead70dfc606574af18207244c3f1aac2762917f22d8c45260c9",
+          "team_source": "../sources/history-140.md#src-0022559"
+        },
+        {
+          "source_id": "SRC-0022563",
+          "lines": [
+            1,
+            185
+          ],
+          "source_sha256": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6",
+          "team_source": "../sources/history-140.md#src-0022563"
+        },
+        {
+          "source_id": "SRC-0024512",
+          "JSON_pointers": [
+            "/new_model_calls",
+            "/new_fits",
+            "/reused_saved_profiles"
+          ],
+          "source_sha256": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+          "team_source": "../sources/history-140.md#src-0024512"
+        },
+        {
+          "source_id": "SRC-0024556",
+          "JSON_pointers": [
+            "/settings"
+          ],
+          "source_sha256": "e77417044b2558aaa17b7476cd7666d4d93034bf2f1dec51f19e2fd0c81461ad",
+          "team_source": "../sources/history-140.md#src-0024556"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-02",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C03",
+      "title": "16 cell과 이미 쓰인 개발 자료",
+      "claim": "cell은 3737,3745,3753,3765,4537,4545,4553,4565,5337,5345,5353,5365,6137,6145,6153,6165다. 저장 target168–839 중 train168–671은504시간/21일, splitA168–503은336시간/14일, splitB504–671은168시간/7일, check672–839은168시간/7일이다. 원111의 query도 이 check 구간에서 골랐으며 이미 사용한 개발 자료라 독립 최종평가가 아니다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020866",
+          "lines": [
+            1,
+            51
+          ],
+          "source_sha256": "fc9b8e649f65d57aec97f307e71b700210fdd71efd600c90c660f6497dc3559e",
+          "team_source": "../sources/history-140.md#src-0020866"
+        },
+        {
+          "source_id": "SRC-0020867",
+          "lines": [
+            1,
+            32
+          ],
+          "source_sha256": "3dfbc0577c7aeb8bfb0d574df6c7c2cc1687764f4d1a8f143d105544f03ff7aa",
+          "team_source": "../sources/history-140.md#src-0020867"
+        },
+        {
+          "source_id": "SRC-0024509",
+          "NPZ_keys": [
+            "cell_ids",
+            "hour"
+          ],
+          "source_sha256": "1fbac28a60aa934b671202211a0200033c11b4b5925c13ed200a2dfbefd7ef6e",
+          "team_source": "../sources/history-140.md#src-0024509"
+        },
+        {
+          "source_id": "SRC-0029561",
+          "NPZ_keys": [
+            "context_times",
+            "X",
+            "Y"
+          ],
+          "NPZ_slices": {
+            "X": "[:,0:672,:]",
+            "Y": "[:,0:672]"
+          },
+          "source_sha256": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+          "team_source": "../sources/history-140.md#src-0029561"
+        },
+        {
+          "source_id": "SRC-0024512",
+          "JSON_pointers": [
+            "/settings",
+            "/cell_ids"
+          ],
+          "source_sha256": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+          "team_source": "../sources/history-140.md#src-0024512"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-03",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C04",
+      "title": "profile 표준화와 입력 표준화를 구별",
+      "claim": "원110은 각 cell의 train504개 target에서 평균·population std를 구해 네 기간의24시간 평균 profile을 비교했다. 이는 profile 거리용 표준화이고 원101의 입력·target 척도를 덮어쓰지 않았다. 원111의 거리 표준화는 각 donor context504행의16개 특징별 평균·std이며 두 표준화와 원래 cell 척도는 서로 다른 단계다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022559",
+          "lines": [
+            60,
+            82
+          ],
+          "source_sha256": "64d3681625e96ead70dfc606574af18207244c3f1aac2762917f22d8c45260c9",
+          "team_source": "../sources/history-140.md#src-0022559"
+        },
+        {
+          "source_id": "SRC-0022563",
+          "lines": [
+            74,
+            85
+          ],
+          "source_sha256": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6",
+          "team_source": "../sources/history-140.md#src-0022563"
+        },
+        {
+          "source_id": "SRC-0024509",
+          "NPZ_keys": [
+            "center",
+            "scale",
+            "train",
+            "split_a",
+            "split_b",
+            "check"
+          ],
+          "source_sha256": "1fbac28a60aa934b671202211a0200033c11b4b5925c13ed200a2dfbefd7ef6e",
+          "team_source": "../sources/history-140.md#src-0024509"
+        },
+        {
+          "source_id": "SRC-0024554",
+          "NPZ_keys": [
+            "context_means",
+            "context_scales"
+          ],
+          "source_sha256": "60991de972fe785bb2c4a88de1c05229777f44e6162b49f38ca2df161e17c0f6",
+          "team_source": "../sources/history-140.md#src-0024554"
+        },
+        {
+          "source_id": "SRC-0020868",
+          "lines": [
+            11,
+            15
+          ],
+          "source_sha256": "449e46212991196caa9d30a7d8b864016cc02c0a154b963562f89e7fb1f419d3",
+          "team_source": "../sources/history-140.md#src-0020868"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-04",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C05",
+      "title": "24개 이동·MSE·동점과 방향",
+      "claim": "120개 무방향 쌍에서 [0,+1,−1,…,+11,−11,+12]의24개 서로 다른 mod24 이동을 train profile MSE로 비교했다. 최소값+1e−12 이내 중 미리 정한 순서의 첫 이동을 골랐으며 정확히 같은 값에만 적용하는 동점 규칙은 아니다. δij는 j[h+δij]를 i[h]에 맞추며 np.roll(j,−δij)와 대응한다. 역방향은 −δij이고 −12는+12와 같은 잉여류다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022559",
+          "lines": [
+            85,
+            118
+          ],
+          "source_sha256": "64d3681625e96ead70dfc606574af18207244c3f1aac2762917f22d8c45260c9",
+          "team_source": "../sources/history-140.md#src-0022559"
+        },
+        {
+          "source_id": "SRC-0024515",
+          "JSON_pointers": [
+            "/shift_priority",
+            "/phase_orientation"
+          ],
+          "source_sha256": "cbe9377ced50b31db53b9098629b1a2a1a1b8f02e34cd858bb119b23c563fb1a",
+          "team_source": "../sources/history-140.md#src-0024515"
+        },
+        {
+          "source_id": "SRC-0024512",
+          "JSON_pointers": [
+            "/pairs"
+          ],
+          "source_sha256": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+          "team_source": "../sources/history-140.md#src-0024512"
+        },
+        {
+          "source_id": "SRC-0024509",
+          "NPZ_keys": [
+            "pair_shift_matrix"
+          ],
+          "source_sha256": "1fbac28a60aa934b671202211a0200033c11b4b5925c13ed200a2dfbefd7ef6e",
+          "team_source": "../sources/history-140.md#src-0024509"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-05",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C06",
+      "title": "전체120쌍의 profile 결과",
+      "claim": "비영 이동은76/120, 무이동은44/120이며 비영76쌍 중72쌍의 splitA/B 이동 차이가1시간 이내였다. train에서 고른 이동을 check에 고정 적용한 전체120쌍 동일 비중 평균 MAE는0.486019094→0.441194325로9.2228% 감소했다. 이는 표준화된 하루 평균 파형 사이의 절대차 감소이며 다음값 예측·TabICL·RCTL MAE의 개선율이 아니다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020864",
+          "lines": [
+            1,
+            42
+          ],
+          "source_sha256": "b6dbb974b03c01d6768c7e730b25c3108526573895a8c839c99145efe07f4b04",
+          "team_source": "../sources/history-140.md#src-0020864"
+        },
+        {
+          "source_id": "SRC-0024512",
+          "JSON_pointers": [
+            "/aggregate",
+            "/pairs"
+          ],
+          "source_sha256": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+          "team_source": "../sources/history-140.md#src-0024512"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-06",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C07",
+      "title": "MSE 선택과 쌍별 손해",
+      "claim": "check MAE는61쌍 개선·15쌍 악화·44쌍 무이동이었다. 가장 큰 악화는3745–4545의δ=−2에서0.684141126→0.767690471(+0.083549345)였다. train에서도 MSE로 선택한 이동 때문에 MAE가 악화된 쌍이6개 있었다. 평균만으로 모든 쌍의 이득이나 통계적 유의성을 주장하지 않으며15개 손해를 함께 보관한다.",
+      "claim_type": "저장 관측·현재 산술 대조",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024512",
+          "JSON_pointers": [
+            "/aggregate",
+            "/pairs"
+          ],
+          "source_sha256": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+          "team_source": "../sources/history-140.md#src-0024512"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-07",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C08",
+      "title": "쌍별 최적 이동의 좌표 불일치",
+      "claim": "560개 삼각형의 abs(((δij+δjk−δik+12) mod24)−12)로 정의한 원형 잔차는0시간232개,1시간226개,2시간62개,3시간32개,4시간8개다. 따라서458개는1시간 이내지만 현재16cell의 모든 쌍별 최적 이동을 동시에 정확히 만족하는 단일 고정 좌표는 없다. 일부 cluster 안에서 다른 공동 최적 좌표를 정하는 가능성을 기각한 결과는 아니며 실제 공동 정렬·소속 최적화는 아직 수행하지 않았다.",
+      "claim_type": "저장 관측·좌표 일관성 해석",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020866",
+          "lines": [
+            1,
+            51
+          ],
+          "source_sha256": "fc9b8e649f65d57aec97f307e71b700210fdd71efd600c90c660f6497dc3559e",
+          "team_source": "../sources/history-140.md#src-0020866"
+        },
+        {
+          "source_id": "SRC-0022559",
+          "lines": [
+            120,
+            138
+          ],
+          "source_sha256": "64d3681625e96ead70dfc606574af18207244c3f1aac2762917f22d8c45260c9",
+          "team_source": "../sources/history-140.md#src-0022559"
+        },
+        {
+          "source_id": "SRC-0024512",
+          "JSON_pointers": [
+            "/cycles",
+            "/aggregate"
+          ],
+          "source_sha256": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+          "team_source": "../sources/history-140.md#src-0024512"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-08",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C09",
+      "title": "profile 진행 기준의 범위",
+      "claim": "사전에 적힌 기준은 비영 쌍>60, 그중 절반 초과가 split 차이1시간 이내, 전체120쌍 평균 check MAE 감소였다. 원110 결과는 이 profile 전용 기준을 통과했다. 이는 시각 차이의 존재·반복성 진단이며 예측 효용·신규성·최종 연구 채택이나 원112 통과를 뜻하지 않는다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020866",
+          "lines": [
+            1,
+            51
+          ],
+          "source_sha256": "fc9b8e649f65d57aec97f307e71b700210fdd71efd600c90c660f6497dc3559e",
+          "team_source": "../sources/history-140.md#src-0020866"
+        },
+        {
+          "source_id": "SRC-0024510",
+          "JSON_pointers": [
+            "/gate",
+            "/phase_only_profile_check_not_forecast_performance"
+          ],
+          "source_sha256": "130a32c04eceaa6e1f2dcc6eb3afe0a15cb86760a54d0b399d63822abb8a80f3",
+          "team_source": "../sources/history-140.md#src-0024510"
+        },
+        {
+          "source_id": "SRC-0024512",
+          "JSON_pointers": [
+            "/aggregate"
+          ],
+          "source_sha256": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+          "team_source": "../sources/history-140.md#src-0024512"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-09",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C10",
+      "title": "최초 실패와 저장 profile의 복구",
+      "claim": "133행 최초 코드에는 numpy scalar를 처리하는 JSON default가 없었고 profiles.npz를 저장한 뒤 요약 JSON을 쓴다. 기록된 실패 원인은 triangle count의 numpy int64 직렬화였다. 165행 복구 코드는 기존 profiles SHA1fbac28a…를 읽고 쌍·삼각형 요약만 계산하며 새 phase 행렬이 저장 행렬과 같음을 확인한다. 복구를 새로운 모델 실험이나 일반적인 JSON 오류 해결로 표현하지 않는다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024506",
+          "lines": [
+            1,
+            133
+          ],
+          "source_sha256": "8015adb97c347e9b454af42dbfee3e65a055326361910cb59d18d6087b280f43",
+          "team_source": "../sources/history-140.md#src-0024506"
+        },
+        {
+          "source_id": "SRC-0022559",
+          "lines": [
+            1,
+            165
+          ],
+          "source_sha256": "64d3681625e96ead70dfc606574af18207244c3f1aac2762917f22d8c45260c9",
+          "team_source": "../sources/history-140.md#src-0022559"
+        },
+        {
+          "source_id": "SRC-0024507",
+          "lines": [
+            1,
+            7
+          ],
+          "source_sha256": "038b5da7e9da4960147764a6670d1a4f1cd37ba78fd0530fbc7aa0dd7cad9847",
+          "team_source": "../sources/history-140.md#src-0024507"
+        },
+        {
+          "source_id": "SRC-0024511",
+          "lines": [
+            1,
+            6
+          ],
+          "source_sha256": "29cf78d24486e56bd4b642dcfb05a25fda164905103fe57c8a7bdac2288fbdfc",
+          "team_source": "../sources/history-140.md#src-0024511"
+        },
+        {
+          "source_id": "SRC-0024509",
+          "NPZ_keys": [
+            "pair_shift_matrix"
+          ],
+          "source_sha256": "1fbac28a60aa934b671202211a0200033c11b4b5925c13ed200a2dfbefd7ef6e",
+          "team_source": "../sources/history-140.md#src-0024509"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-10",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C11",
+      "title": "실패 요약의 작성 시점과 비용",
+      "claim": "initial_failure.json은 최초 프로세스가 남긴 원시 stack trace가 아니라 복구 코드가 나중에 작성하는 요약이다. 최초 실패 비용0.5907747초와 복구 산술0.07503449999785516초를 합친0.6658091999978552초가 원110 비용으로 한 번 정산됐다. 코드 경로·요약·원장은 부합하지만 최초 도구 응답·원시 예외 로그·정확한 정산 쓰기 시각은 복구하지 못했다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024507",
+          "lines": [
+            1,
+            7
+          ],
+          "source_sha256": "038b5da7e9da4960147764a6670d1a4f1cd37ba78fd0530fbc7aa0dd7cad9847",
+          "team_source": "../sources/history-140.md#src-0024507"
+        },
+        {
+          "source_id": "SRC-0022559",
+          "lines": [
+            30,
+            59
+          ],
+          "source_sha256": "64d3681625e96ead70dfc606574af18207244c3f1aac2762917f22d8c45260c9",
+          "team_source": "../sources/history-140.md#src-0022559"
+        },
+        {
+          "source_id": "SRC-0024512",
+          "JSON_pointers": [
+            "/elapsed_seconds",
+            "/charged_seconds_including_initial_failure"
+          ],
+          "source_sha256": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+          "team_source": "../sources/history-140.md#src-0024512"
+        },
+        {
+          "source_id": "SRC-0024555",
+          "JSON_pointers": [
+            "/new_cheap_diagnostic_seconds/calendar_alignment_110",
+            "/cheap_stage_details"
+          ],
+          "source_sha256": "4a2f5162a209e9d002945e979f914e846044613fa4a062635aff5ac643c39b53",
+          "team_source": "../sources/history-140.md#src-0024555"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-11",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C12",
+      "title": "timer와 RSS가 포함하는 범위",
+      "claim": "원111 산술 시간은0.17921170000045095초다. 원110 복구 timer는 저장 profile 로드·거리·요약 계산을 포함하고, 원111 timer는 입력·profile 로드·거리 계산·frozen archive 쓰기를 포함한다. import·settings·hash·최종 JSON은 제외돼 있으며 원110의 일반 timing_scope에 있는 profile archive 쓰기는 복구 분기에서 새로 수행되지 않는다. RSS34938880/70144000bytes는 각 한 번의 표본이고 peak가 아니다. marker 시각 차이도 이 timer나 전체 과정 비용을 대신하지 않는다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022559",
+          "lines": [
+            59,
+            165
+          ],
+          "source_sha256": "64d3681625e96ead70dfc606574af18207244c3f1aac2762917f22d8c45260c9",
+          "team_source": "../sources/history-140.md#src-0022559"
+        },
+        {
+          "source_id": "SRC-0022563",
+          "lines": [
+            48,
+            185
+          ],
+          "source_sha256": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6",
+          "team_source": "../sources/history-140.md#src-0022563"
+        },
+        {
+          "source_id": "SRC-0024511",
+          "lines": [
+            1,
+            6
+          ],
+          "source_sha256": "29cf78d24486e56bd4b642dcfb05a25fda164905103fe57c8a7bdac2288fbdfc",
+          "team_source": "../sources/history-140.md#src-0024511"
+        },
+        {
+          "source_id": "SRC-0024513",
+          "lines": [
+            1,
+            6
+          ],
+          "source_sha256": "b6b5a1428db709d58067227082e91e83d45743f80771984d7f43e9106aa7b2d8",
+          "team_source": "../sources/history-140.md#src-0024513"
+        },
+        {
+          "source_id": "SRC-0024558",
+          "lines": [
+            1,
+            4
+          ],
+          "source_sha256": "9e91a97cc92545441a477afda22c32ae3baa9d6bed99c7716086c883b71b7444",
+          "team_source": "../sources/history-140.md#src-0024558"
+        },
+        {
+          "source_id": "SRC-0024557",
+          "lines": [
+            1,
+            6
+          ],
+          "source_sha256": "749e8eaa44771095cbabf8ed261f45b34089fe88d01ec27ab1edf8163979dc46",
+          "team_source": "../sources/history-140.md#src-0024557"
+        },
+        {
+          "source_id": "SRC-0024512",
+          "JSON_pointers": [
+            "/sampled_rss_bytes",
+            "/timing_scope"
+          ],
+          "source_sha256": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+          "team_source": "../sources/history-140.md#src-0024512"
+        },
+        {
+          "source_id": "SRC-0024556",
+          "JSON_pointers": [
+            "/sampled_rss_bytes",
+            "/timing_scope"
+          ],
+          "source_sha256": "e77417044b2558aaa17b7476cd7666d4d93034bf2f1dec51f19e2fd0c81461ad",
+          "team_source": "../sources/history-140.md#src-0024556"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-12",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C13",
+      "title": "전후 원장과 입력 판본",
+      "claim": "원110 전/원109 후 원장은989194de…(SRC-0024508), 원110 후/원111 전은4a2f5162…(SRC-0024555), 원111 후는084b70d9…(원112 활성화 전 SRC-0024530)에 남아 있다. 각 차이는 해당 cheap 비용 키 하나와 detail 하나의 추가뿐이다. 당시 Tab78context·55488query행·RCTL optimizer29+통계 적합9=38·잔여9·reset0과 cap/예약 상태가 그대로다. 현재 루트 원장17a549fc…로 과거 판본을 대체하거나 갱신하지 않았다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024508",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "989194de962a6cc5dca684b9290469abb5b9fb948fbf7cf53ec3df5f3453a9c9",
+          "team_source": "../sources/history-140.md#src-0024508"
+        },
+        {
+          "source_id": "SRC-0024555",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "4a2f5162a209e9d002945e979f914e846044613fa4a062635aff5ac643c39b53",
+          "team_source": "../sources/history-140.md#src-0024555"
+        },
+        {
+          "source_id": "SRC-0024530",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "084b70d96d242043471b49e656273bb69c34481a5c6d1a7f0be3891548d9e1a0",
+          "team_source": "../sources/history-140.md#src-0024530"
+        },
+        {
+          "source_id": "SRC-0024513",
+          "lines": [
+            1,
+            6
+          ],
+          "source_sha256": "b6b5a1428db709d58067227082e91e83d45743f80771984d7f43e9106aa7b2d8",
+          "team_source": "../sources/history-140.md#src-0024513"
+        },
+        {
+          "source_id": "SRC-0024557",
+          "lines": [
+            1,
+            6
+          ],
+          "source_sha256": "749e8eaa44771095cbabf8ed261f45b34089fe88d01ec27ab1edf8163979dc46",
+          "team_source": "../sources/history-140.md#src-0024557"
+        },
+        {
+          "source_id": "SRC-0024515",
+          "JSON_pointers": [
+            "/source_hashes"
+          ],
+          "source_sha256": "cbe9377ced50b31db53b9098629b1a2a1a1b8f02e34cd858bb119b23c563fb1a",
+          "team_source": "../sources/history-140.md#src-0024515"
+        },
+        {
+          "source_id": "SRC-0024510",
+          "JSON_pointers": [
+            "/source_hashes"
+          ],
+          "source_sha256": "130a32c04eceaa6e1f2dcc6eb3afe0a15cb86760a54d0b399d63822abb8a80f3",
+          "team_source": "../sources/history-140.md#src-0024510"
+        },
+        {
+          "source_id": "SRC-0024559",
+          "JSON_pointers": [
+            "/source_hashes"
+          ],
+          "source_sha256": "dd119b861d74c14e76047c25ec33ffcd08b2c747352c875d9b4e0c87d8f78a9b",
+          "team_source": "../sources/history-140.md#src-0024559"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-13",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C14",
+      "title": "donor와 세 후보를 고른 규칙",
+      "claim": "각 target의 다른15cell 중 train21일 profile의 최소 MSE가 작은 donor2개를 골랐다. donor 동점은 정확한 최소 비용과 cell ID의 정렬 순서이며 이동량 동점 허용1e−12와 구별한다. 역방향 cost는부호를 반전한 mod24 이동 인덱스로 대응시켰다. 각 방향에서 무이동+train 비용이 작은 비영 이동2개를 남겨32방향×3후보로 만들었고 profile 최적 이동은 이 안에 포함됐다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022563",
+          "lines": [
+            65,
+            107
+          ],
+          "source_sha256": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6",
+          "team_source": "../sources/history-140.md#src-0022563"
+        },
+        {
+          "source_id": "SRC-0020867",
+          "lines": [
+            1,
+            32
+          ],
+          "source_sha256": "3dfbc0577c7aeb8bfb0d574df6c7c2cc1687764f4d1a8f143d105544f03ff7aa",
+          "team_source": "../sources/history-140.md#src-0020867"
+        },
+        {
+          "source_id": "SRC-0024556",
+          "JSON_pointers": [
+            "/pairs"
+          ],
+          "source_sha256": "e77417044b2558aaa17b7476cd7666d4d93034bf2f1dec51f19e2fd0c81461ad",
+          "team_source": "../sources/history-140.md#src-0024556"
+        },
+        {
+          "source_id": "SRC-0024554",
+          "NPZ_keys": [
+            "pair_indices",
+            "phase_candidates"
+          ],
+          "source_sha256": "60991de972fe785bb2c4a88de1c05229777f44e6162b49f38ca2df161e17c0f6",
+          "team_source": "../sources/history-140.md#src-0024554"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-14",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C15",
+      "title": "64시점과 두 절반",
+      "claim": "query는168개 위치에서 floor(linspace(0,167,64))로 고른 서로 다른64시점이며 target672–839의 시간순이다. 처음32개는672–754, 뒤32개는756–839에 해당한다. 각각 mask로 남는 시점에서 이후 이동량 선택/고정 확인을 하겠다는 계획이며 원111은 정답으로 이동량을 고르지 않았다. 두 절반을 처음부터 독립 최종 test로 해석하지 않는다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020867",
+          "lines": [
+            1,
+            32
+          ],
+          "source_sha256": "3dfbc0577c7aeb8bfb0d574df6c7c2cc1687764f4d1a8f143d105544f03ff7aa",
+          "team_source": "../sources/history-140.md#src-0020867"
+        },
+        {
+          "source_id": "SRC-0020868",
+          "lines": [
+            11,
+            15
+          ],
+          "source_sha256": "449e46212991196caa9d30a7d8b864016cc02c0a154b963562f89e7fb1f419d3",
+          "team_source": "../sources/history-140.md#src-0020868"
+        },
+        {
+          "source_id": "SRC-0024554",
+          "NPZ_keys": [
+            "query_positions",
+            "query_target_times",
+            "common_masks"
+          ],
+          "source_sha256": "60991de972fe785bb2c4a88de1c05229777f44e6162b49f38ca2df161e17c0f6",
+          "team_source": "../sources/history-140.md#src-0024554"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-15",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C16",
+      "title": "hour 두 열만 바꾼 동결 입력",
+      "claim": "16개 특징 중12/13열의 hour sin/cos만 (h+δ) mod24로 다시 계산했다. 나머지14열의 실제 최근 관측·요약·요일 값은32방향×3후보에서 정확히 보존됐고 시간 순서·target·horizon을 이동시키지 않았다. 무이동의 hour도 float32 저장값에서 float64 삼각함수로 재계산돼 최대1.55436e−8 차이가 있다. 이는 표현 차이이며 별도의 예측 효과를 측정한 결과가 아니다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022563",
+          "lines": [
+            108,
+            117
+          ],
+          "source_sha256": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6",
+          "team_source": "../sources/history-140.md#src-0022563"
+        },
+        {
+          "source_id": "SRC-0024554",
+          "NPZ_keys": [
+            "context_X",
+            "query_X",
+            "shifted_query_X"
+          ],
+          "source_sha256": "60991de972fe785bb2c4a88de1c05229777f44e6162b49f38ca2df161e17c0f6",
+          "team_source": "../sources/history-140.md#src-0024554"
+        },
+        {
+          "source_id": "SRC-0029561",
+          "NPZ_keys": [
+            "X"
+          ],
+          "NPZ_slices": {
+            "X": "[:,0:672,:]"
+          },
+          "source_sha256": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+          "team_source": "../sources/history-140.md#src-0029561"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-16",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C17",
+      "title": "donor 내부에서 정한 지원 반경",
+      "claim": "donor context504행의 특징별 평균·population std로 거리 척도를 정했고 zero std는1로 처리하는 규칙이었다. 16특징의 RMS 표준화 Euclidean 거리에서 donor 내부 |행 인덱스 차이|≤8을 제외한 다섯 번째 이웃 거리의95percentile을 반경으로 썼다. context 시점이 연속 시간이라 이 제외는±8시간에 대응한다. query target으로 scaler나 반경을 맞추거나 통과 수에 맞춰 반경을 키우지 않았다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022563",
+          "lines": [
+            74,
+            85
+          ],
+          "source_sha256": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6",
+          "team_source": "../sources/history-140.md#src-0022563"
+        },
+        {
+          "source_id": "SRC-0024559",
+          "JSON_pointers": [
+            "/support"
+          ],
+          "source_sha256": "dd119b861d74c14e76047c25ec33ffcd08b2c747352c875d9b4e0c87d8f78a9b",
+          "team_source": "../sources/history-140.md#src-0024559"
+        },
+        {
+          "source_id": "SRC-0024554",
+          "NPZ_keys": [
+            "context_means",
+            "context_scales",
+            "support_radii"
+          ],
+          "source_sha256": "60991de972fe785bb2c4a88de1c05229777f44e6162b49f38ca2df161e17c0f6",
+          "team_source": "../sources/history-140.md#src-0024554"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-17",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C18",
+      "title": "같은 query에서 세 이동의 교집합",
+      "claim": "각 이동의 query→donor context 다섯 번째 이웃 거리가 donor 반경 이하여야 하며, 세 이동 모두를 만족하는 교집합 mask만 비교 대상으로 남겼다. 방향별 처음/뒤32시점에서 공통 시점이 각각16개 이상이어야 eligible이다. 예를 들어3737→4553은 개별 이동의 지원 수22/20/19와 달리 공통18개가15/3으로 나뉘어 탈락했다. 개별 지원 수·공통 수·절반 기준은 다른 수다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022563",
+          "lines": [
+            116,
+            130
+          ],
+          "source_sha256": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6",
+          "team_source": "../sources/history-140.md#src-0022563"
+        },
+        {
+          "source_id": "SRC-0024556",
+          "JSON_pointers": [
+            "/pairs/1"
+          ],
+          "source_sha256": "e77417044b2558aaa17b7476cd7666d4d93034bf2f1dec51f19e2fd0c81461ad",
+          "team_source": "../sources/history-140.md#src-0024556"
+        },
+        {
+          "source_id": "SRC-0024554",
+          "NPZ_keys": [
+            "support_distances",
+            "common_masks",
+            "eligible_pairs"
+          ],
+          "source_sha256": "60991de972fe785bb2c4a88de1c05229777f44e6162b49f38ca2df161e17c0f6",
+          "team_source": "../sources/history-140.md#src-0024554"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-18",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C19",
+      "title": "14방향·11target·남긴 반례",
+      "claim": "32방향 중14개가 통과했고 target11cell·donor9cell이었다. 전체의 profile 비영 최적은13/32, 통과 방향 안에서는5/14였다. 전역 입력 기준≥8방향/≥8target은 통과했지만18방향을 제외했으며4537·4553·5337·5365·6137은 eligible target이 없었다. 통과11cell에서의 가능성을 전체16cell·다른 도시·새 기간의 효용으로 확대하지 않는다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024556",
+          "JSON_pointers": [
+            "/aggregate",
+            "/pairs"
+          ],
+          "source_sha256": "e77417044b2558aaa17b7476cd7666d4d93034bf2f1dec51f19e2fd0c81461ad",
+          "team_source": "../sources/history-140.md#src-0024556"
+        },
+        {
+          "source_id": "SRC-0024554",
+          "NPZ_keys": [
+            "eligible_pairs",
+            "pair_indices"
+          ],
+          "source_sha256": "60991de972fe785bb2c4a88de1c05229777f44e6162b49f38ca2df161e17c0f6",
+          "team_source": "../sources/history-140.md#src-0024554"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-19",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C20",
+      "title": "1222와3096의 다른 분모",
+      "claim": "2048=32×64에서 공통 시점1222개가 남은 값은 탈락 방향까지 포함한다. eligible14방향의807공통 시점×3이동=2421교차 추론 행이며, 같은 target 시점의 중복을 합집합으로 제거한 자기 기준은675행이다. 합계3096행, 필요한 target/donor cell의 합집합14context가 후속 비교의 상한이다.14방향이라는 수와14context는 의미가 다르며 원111이 이만큼 모델을 사용·예약한 것은 아니다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024556",
+          "JSON_pointers": [
+            "/aggregate"
+          ],
+          "source_sha256": "e77417044b2558aaa17b7476cd7666d4d93034bf2f1dec51f19e2fd0c81461ad",
+          "team_source": "../sources/history-140.md#src-0024556"
+        },
+        {
+          "source_id": "SRC-0022563",
+          "lines": [
+            137,
+            167
+          ],
+          "source_sha256": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6",
+          "team_source": "../sources/history-140.md#src-0022563"
+        },
+        {
+          "source_id": "SRC-0024554",
+          "NPZ_keys": [
+            "common_masks",
+            "eligible_pairs",
+            "own_baseline_masks",
+            "pair_indices"
+          ],
+          "source_sha256": "60991de972fe785bb2c4a88de1c05229777f44e6162b49f38ca2df161e17c0f6",
+          "team_source": "../sources/history-140.md#src-0024554"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-20",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C21",
+      "title": "입력 지원과 label-free 범위",
+      "claim": "원111 코드의 입력 검사에는 query target Y를 읽는 경로가 없고 frozen archive15개 key에도 정답이 없다. 하지만 선행 원110 profile에는 train target과 다음 주 check target이 사용됐다. 이 두 단계 전체나 후속 원112의 정답 기반 선택을 label-free 또는 zero-shot clustering으로 부르지 않는다. 인접 context/query 입력은 실제 과거 관측을 공유할 수 있지만 공유 자체를 미래 정답 누출로 해석하지 않는다. 거리 반경 통과는 입력 기하의 필터이며 공통 조건부 분포·미래 예측 관계를 입증하지 않는다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022563",
+          "lines": [
+            1,
+            185
+          ],
+          "source_sha256": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6",
+          "team_source": "../sources/history-140.md#src-0022563"
+        },
+        {
+          "source_id": "SRC-0022559",
+          "lines": [
+            68,
+            81
+          ],
+          "source_sha256": "64d3681625e96ead70dfc606574af18207244c3f1aac2762917f22d8c45260c9",
+          "team_source": "../sources/history-140.md#src-0022559"
+        },
+        {
+          "source_id": "SRC-0020868",
+          "lines": [
+            15,
+            15
+          ],
+          "source_sha256": "449e46212991196caa9d30a7d8b864016cc02c0a154b963562f89e7fb1f419d3",
+          "team_source": "../sources/history-140.md#src-0020868"
+        },
+        {
+          "source_id": "SRC-0024559",
+          "JSON_pointers": [
+            "/query_targets_read"
+          ],
+          "source_sha256": "dd119b861d74c14e76047c25ec33ffcd08b2c747352c875d9b4e0c87d8f78a9b",
+          "team_source": "../sources/history-140.md#src-0024559"
+        },
+        {
+          "source_id": "SRC-0024560",
+          "lines": [
+            1,
+            18
+          ],
+          "source_sha256": "a26cc111e6eb7fa284a0aa6687509c54b3718fdb9d8b1c8887c84be30db8ad98",
+          "team_source": "../sources/history-140.md#src-0024560"
+        },
+        {
+          "source_id": "SRC-0024554",
+          "NPZ_keys": [
+            "context_X",
+            "query_X",
+            "shifted_query_X",
+            "pair_indices",
+            "phase_candidates",
+            "common_masks",
+            "eligible_pairs",
+            "own_baseline_masks",
+            "support_distances",
+            "support_radii",
+            "context_means",
+            "context_scales",
+            "query_positions",
+            "query_target_times",
+            "cell_ids"
+          ],
+          "source_sha256": "60991de972fe785bb2c4a88de1c05229777f44e6162b49f38ca2df161e17c0f6",
+          "team_source": "../sources/history-140.md#src-0024554"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-21",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C22",
+      "title": "원112의 세 예측기는 당시 계획",
+      "claim": "원112 계획은 동결14방향·세 이동·공통 query에 TabICLv2, StandardScaler+Ridge(alpha1), 원101과 같은 HGB를 제공하는 비교다. Tab은 median·n_estimators1·batch1·CPU4·seed20260925와 로컬 ckpt를 명시했다. 추가 scaler는 각 donor context로만 맞추고 같은 context를 한 번 준비해 자기/교차 query를 묶겠다는 계획이었다. 이 문서를 읽은 것은 원112 예측 실행·RCTL 개선·구현 재현의 검수가 아니다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020868",
+          "lines": [
+            9,
+            24
+          ],
+          "source_sha256": "449e46212991196caa9d30a7d8b864016cc02c0a154b963562f89e7fb1f419d3",
+          "team_source": "../sources/history-140.md#src-0020868"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-22",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C23",
+      "title": "선택자와 평가 예측기의 분리",
+      "claim": "원112는 처음 절반의 정답 MAE로 이동을 고른 뒤 뒤 절반에서 고정 확인하고, 선택자5개(무이동/profile/Tab/Ridge/HGB)×평가 예측기3개의 저장 결과 표를 계획했다. 주 지표는 donor별 MAE를 cell 안에서 평균한 뒤11target을 같은 비중으로 평균하며 query 수로 가중하지 않는다. 같은 예측기의 저장 결과에서 서로 다른 선택자를 평가하려는 설계이며 모델 자체의 낮은 오차와 더 나은 좌표 선택을 분리한다. 같은 K의 RCTL 효용은 별도다.",
+      "claim_type": "관측·범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020868",
+          "lines": [
+            25,
+            38
+          ],
+          "source_sha256": "449e46212991196caa9d30a7d8b864016cc02c0a154b963562f89e7fb1f419d3",
+          "team_source": "../sources/history-140.md#src-0020868"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-23",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C24",
+      "title": "후속 안내가 추가된 보고서 판본",
+      "claim": "원111 verification에 적힌 보고서 SHA81c9716d…는 inventory의 현재 보고서 SHA13b7bfe0…와 다르다. 현재43행의3행 후속 안내와4행 빈 줄만 빼면 당시 SHA와 정확히 일치한다. 해시가 맞는 재구성본과 실제 보존된 당시 원본을 구별하며 재구성본을 새 source_id·본문 credit으로 세지 않는다. 후속 안내는 원112가 진행 기준에 실패했다고 기록하지만, 원112의 실제 예측 배열·결과 검수는 다음 묶음에 남아 있다.",
+      "claim_type": "판본 관측·후속 판단 연결",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000136",
+          "lines": [
+            1,
+            43
+          ],
+          "source_sha256": "13b7bfe0cb43e4b3f7608eb85a4f8d40981b6352789879e1fee86060455993c2",
+          "team_source": "../sources/history-140.md#src-0000136"
+        },
+        {
+          "source_id": "SRC-0024560",
+          "JSON_pointers": [
+            "/documents_sha256"
+          ],
+          "source_sha256": "a26cc111e6eb7fa284a0aa6687509c54b3718fdb9d8b1c8887c84be30db8ad98",
+          "team_source": "../sources/history-140.md#src-0024560"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-24",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        3,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/report-version-reconstruction.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C25",
+      "title": "소속과 정렬의 공동 목적은 선행 구조",
+      "claim": "Lederman·Singer의 원문 식25는 같은 class 안의 쌍별 정렬 비용을 합하며 소속과 group 변환을 공동으로 정한다. 식26은 동일 class 크기의 예이고 식52–55는 소속 일치 indicator로 목적을 다시 쓴다. 따라서 그 비용을 TabICL 오차로 바꾸는 것만으로 공동 결정 구조의 신규성이 생긴다는 주장은 성립하지 않는다. 현재 후보는 공동 최적화를 실행하지 않았으며 문헌의60개 synthetic signal 실험을 우리16cell 결과로 인용하지 않는다.",
+      "claim_type": "선행연구 대조·범위 해석",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020865",
+          "lines": [
+            1,
+            35
+          ],
+          "source_sha256": "2d3c0ac77fda64c3975b3d5ecd4c5f2dd68a1ffd6a648aab5f0a516e8d59f7a0",
+          "team_source": "../sources/history-140.md#src-0020865"
+        }
+      ],
+      "external_primary_locations": [
+        {
+          "arxiv_version": "1607.03464v1",
+          "URL": "https://arxiv.org/pdf/1607.03464v1",
+          "text_pages_1based": [
+            1,
+            2,
+            14,
+            17,
+            22,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "visual_pages_1based": [
+            17,
+            22
+          ],
+          "whole_paper_claimed": false
+        }
+      ],
+      "record_anchor": "claim-25",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/literature-primary-checks.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C26",
+      "title": "TROUT 회전과 실제 시각 이동",
+      "claim": "TROUT 식1은 Fourier 벡터 전체에 같은 단위 복소 스칼라를 곱해 정렬하고 식2는 fusion penalty와 결합한다. 실제 cyclic time shift는 주파수마다 다른 phase factor를 주므로 이 연산과 일반적으로 같지 않다는 것은 원문 식에 대한 수학적 대조다. MM/ADMM의 stationary-point 논의와 O(n³) 초기 factorization/O(n²p) 반복 비용은 해당 논문의 범위이며 우리 Tab 후보의 실측·전역 최적 보장으로 쓰지 않았다. 공식 코드는 재현하지 않았다.",
+      "claim_type": "선행연구 대조·수학적 해석",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020865",
+          "lines": [
+            1,
+            35
+          ],
+          "source_sha256": "2d3c0ac77fda64c3975b3d5ecd4c5f2dd68a1ffd6a648aab5f0a516e8d59f7a0",
+          "team_source": "../sources/history-140.md#src-0020865"
+        }
+      ],
+      "external_primary_locations": [
+        {
+          "arxiv_version": "2012.04756v2",
+          "URL": "https://arxiv.org/pdf/2012.04756v2",
+          "text_pages_1based": [
+            1,
+            2,
+            3,
+            4,
+            6
+          ],
+          "visual_pages_1based": [
+            2,
+            6
+          ],
+          "whole_paper_claimed": false
+        }
+      ],
+      "record_anchor": "claim-26",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/literature-primary-checks.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C27",
+      "title": "TROUT 정규화 표기를 재사용할 때",
+      "claim": "현재 PDF 본문3쪽과 부록6쪽의 정규화 식은 xᴴu/(||x||||u||)를 단위 복소 회전의 최소해와 연결한다. x=(1,0), u=(1,1)이면 그 비의 modulus는1/√2로1이 아니어서 일반적인 단위 회전 제약과 충돌한다. 이 표기 주의는 이번 아카이브의 작은 대수 대조이며 과거 실험 결과가 아니다. 공식 구현·실험 전체를 오류라고 판정하지 않으며, 식을 그대로 구현하기 전 원문과 단위 phase 정규화를 재확인해야 한다.",
+      "claim_type": "현재 아카이브의 원문 표기 대조",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020865",
+          "lines": [
+            1,
+            35
+          ],
+          "source_sha256": "2d3c0ac77fda64c3975b3d5ecd4c5f2dd68a1ffd6a648aab5f0a516e8d59f7a0",
+          "team_source": "../sources/history-140.md#src-0020865"
+        }
+      ],
+      "external_primary_locations": [
+        {
+          "arxiv_version": "2012.04756v2",
+          "URL": "https://arxiv.org/pdf/2012.04756v2",
+          "text_pages_1based": [
+            1,
+            2,
+            3,
+            4,
+            6
+          ],
+          "visual_pages_1based": [
+            2,
+            6
+          ],
+          "whole_paper_claimed": false
+        }
+      ],
+      "record_anchor": "claim-27",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/literature-primary-checks.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C28",
+      "title": "CAPS의 적용 위치",
+      "claim": "CAPS는 SO(2)/RoPE 상대 위치 정렬, Clock 가중 softmax·prefix product·baseline의 세 경로를 attention 안에서 학습한다. 원문3.1–3.4와 Figure2의 내부 연산이며, RCTL 밖에서 먼저 고정할 cell별 달력 좌표와 적용 위치가 다르다. 그 모델의 linear/softmax 복잡도와 benchmark 결과를 현재 후보의 예측 성능·비용으로 옮기지 않았다. 비교는 arXiv v1의 선택 절이고 공식 구현은 미검수다.",
+      "claim_type": "선행연구 대조",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020865",
+          "lines": [
+            1,
+            35
+          ],
+          "source_sha256": "2d3c0ac77fda64c3975b3d5ecd4c5f2dd68a1ffd6a648aab5f0a516e8d59f7a0",
+          "team_source": "../sources/history-140.md#src-0020865"
+        }
+      ],
+      "external_primary_locations": [
+        {
+          "arxiv_version": "2602.02729v1",
+          "URL": "https://arxiv.org/pdf/2602.02729v1",
+          "text_pages_1based": [
+            1,
+            3,
+            4,
+            5,
+            6
+          ],
+          "visual_pages_1based": [
+            4,
+            5
+          ],
+          "whole_paper_claimed": false
+        }
+      ],
+      "record_anchor": "claim-28",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/literature-primary-checks.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C29",
+      "title": "AOSNet은 관측 상태를 학습해 보정",
+      "claim": "AOSNet은 관측과 학습 prior의 Hilbert 진폭·phase·주파수 descriptor로 gate를 구해 식10에서 (1−G)X+GP로 관측 표현을 보정한다. 같은 phase의 다른 상태와 channel attention 분석은 평균 profile만으로 합치지 않을 이유를 설명하지만 고정 cell 소속의 RCTL 효용을 입증한 자료는 아니다. 우리 후보가 이 gate를 RCTL에 추가한 것은 아니다. 과거 검토 v1을 대조했고 이후 v2의 변경이나 공식 구현 전체는 검수하지 않았다.",
+      "claim_type": "선행연구 대조·후보 한계",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020865",
+          "lines": [
+            1,
+            35
+          ],
+          "source_sha256": "2d3c0ac77fda64c3975b3d5ecd4c5f2dd68a1ffd6a648aab5f0a516e8d59f7a0",
+          "team_source": "../sources/history-140.md#src-0020865"
+        },
+        {
+          "source_id": "SRC-0020866",
+          "lines": [
+            1,
+            51
+          ],
+          "source_sha256": "fc9b8e649f65d57aec97f307e71b700210fdd71efd600c90c660f6497dc3559e",
+          "team_source": "../sources/history-140.md#src-0020866"
+        }
+      ],
+      "external_primary_locations": [
+        {
+          "arxiv_version": "2606.06010v1",
+          "URL": "https://arxiv.org/pdf/2606.06010v1",
+          "text_pages_1based": [
+            1,
+            3,
+            4,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "visual_pages_1based": [
+            3,
+            4
+          ],
+          "whole_paper_claimed": false
+        }
+      ],
+      "record_anchor": "claim-29",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/literature-primary-checks.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C30",
+      "title": "문헌 읽기의 실제 범위",
+      "claim": "네 편의 버전·서지·관련 본문과 핵심 수식/도식8쪽을 공식 PDF에 대조했다. NUG34쪽·TROUT6쪽·CAPS16쪽·AOSNet14쪽을 모두 전수 검토하거나 구현을 재현한 것은 아니다. NUG 제출일7월12일과 표지7월13일, CAPS 제출일2월2일과 표지2월4일도 구별한다. 과거 감사의 다른 abstract-only 후보와 당시 접근 실패를 fulltext 확인으로 승격하지 않았으며, 네 문헌만으로 관련 연구 전체를 조사했거나 신규성을 확정했다고 주장하지 않는다.",
+      "claim_type": "문헌 검수 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020865",
+          "lines": [
+            1,
+            35
+          ],
+          "source_sha256": "2d3c0ac77fda64c3975b3d5ecd4c5f2dd68a1ffd6a648aab5f0a516e8d59f7a0",
+          "team_source": "../sources/history-140.md#src-0020865"
+        }
+      ],
+      "external_primary_locations": [
+        {
+          "arxiv_version": "1607.03464v1",
+          "URL": "https://arxiv.org/pdf/1607.03464v1",
+          "text_pages_1based": [
+            1,
+            2,
+            14,
+            17,
+            22,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "visual_pages_1based": [
+            17,
+            22
+          ],
+          "whole_paper_claimed": false
+        },
+        {
+          "arxiv_version": "2012.04756v2",
+          "URL": "https://arxiv.org/pdf/2012.04756v2",
+          "text_pages_1based": [
+            1,
+            2,
+            3,
+            4,
+            6
+          ],
+          "visual_pages_1based": [
+            2,
+            6
+          ],
+          "whole_paper_claimed": false
+        },
+        {
+          "arxiv_version": "2602.02729v1",
+          "URL": "https://arxiv.org/pdf/2602.02729v1",
+          "text_pages_1based": [
+            1,
+            3,
+            4,
+            5,
+            6
+          ],
+          "visual_pages_1based": [
+            4,
+            5
+          ],
+          "whole_paper_claimed": false
+        },
+        {
+          "arxiv_version": "2606.06010v1",
+          "URL": "https://arxiv.org/pdf/2606.06010v1",
+          "text_pages_1based": [
+            1,
+            3,
+            4,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "visual_pages_1based": [
+            3,
+            4
+          ],
+          "whole_paper_claimed": false
+        }
+      ],
+      "record_anchor": "claim-30",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/literature-primary-checks.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C31",
+      "title": "현재 저장 근거와 재사용 범위",
+      "claim": "28개 고유 SHA/29경로를 연결했다. 새 literal 읽기는19개932행, 결과2개·원장2개는 공백을 생략하되 모든 JSON 값을 손실 없이 읽었고, 새 NPZ2개의9+15member를 저장 산술로 대조했다. 이전109 근거2개와 원101 입력 사본은 재사용하며 원101의 미래336행 전체를 새로 검토한 것으로 세지 않는다. 엄격한 저장 수식/동일성 대조264912개 값의 최대차이는2.66454e−15이고 float32 달력 일치 점검21504값의 오차1.55436e−8은 별도 허용1e−6 범위다. 반복 배열 원소 검사를 독립적인 성능 지표·새 모델 실험 수로 세지 않는다.",
+      "claim_type": "현재 아카이브 검수 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020864",
+          "lines": [
+            1,
+            42
+          ],
+          "source_sha256": "b6dbb974b03c01d6768c7e730b25c3108526573895a8c839c99145efe07f4b04",
+          "team_source": "../sources/history-140.md#src-0020864"
+        },
+        {
+          "source_id": "SRC-0024509",
+          "NPZ_keys": [
+            "train",
+            "split_a",
+            "split_b",
+            "check",
+            "cell_ids",
+            "center",
+            "scale",
+            "pair_shift_matrix",
+            "hour"
+          ],
+          "source_sha256": "1fbac28a60aa934b671202211a0200033c11b4b5925c13ed200a2dfbefd7ef6e",
+          "team_source": "../sources/history-140.md#src-0024509"
+        },
+        {
+          "source_id": "SRC-0024554",
+          "NPZ_keys": [
+            "context_X",
+            "query_X",
+            "shifted_query_X",
+            "pair_indices",
+            "phase_candidates",
+            "common_masks",
+            "eligible_pairs",
+            "own_baseline_masks",
+            "support_distances",
+            "support_radii",
+            "context_means",
+            "context_scales",
+            "query_positions",
+            "query_target_times",
+            "cell_ids"
+          ],
+          "source_sha256": "60991de972fe785bb2c4a88de1c05229777f44e6162b49f38ca2df161e17c0f6",
+          "team_source": "../sources/history-140.md#src-0024554"
+        },
+        {
+          "source_id": "SRC-0029561",
+          "NPZ_keys": [
+            "X",
+            "Y",
+            "cell_ids",
+            "context_times"
+          ],
+          "NPZ_slices": {
+            "X": "[:,0:672,:]",
+            "Y": "[:,0:672]"
+          },
+          "source_sha256": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+          "team_source": "../sources/history-140.md#src-0029561"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-31",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        4,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": "../evidence/0140-calendar-alignment-and-input-preflight/reading-complete-checkpoint.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H140-C32",
+      "title": "당시 판단과 다음 재검토",
+      "claim": "원110–111의 당시 판단은 다음 예측 관계 검사에 쓸 시각 차이와 입력을 마련했다는 범위였다. 새 시도 전에 원112 실제 예측 결과와 이후 판단, joint 좌표의 일관성, 동일 K의 RCTL·독립 기간·cell별 손해를 이어 확인해야 한다. profile 이득·입력 지원·예측 관계·좌표 선정·최종 RCTL 효용을 구별하고 기존과 달라지는 질문·조건을 기록한다. 원112 이후·옛 고유 판본·다른 형식·전체 통합/장기 팀 접근/최종 원본 변경분과 검색 검수는 남아 있으며 이번 묶음이 전체 Goal 완료는 아니다.",
+      "claim_type": "당시 판단·재사용 조건·남은 범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020864",
+          "lines": [
+            1,
+            42
+          ],
+          "source_sha256": "b6dbb974b03c01d6768c7e730b25c3108526573895a8c839c99145efe07f4b04",
+          "team_source": "../sources/history-140.md#src-0020864"
+        },
+        {
+          "source_id": "SRC-0020868",
+          "lines": [
+            1,
+            48
+          ],
+          "source_sha256": "449e46212991196caa9d30a7d8b864016cc02c0a154b963562f89e7fb1f419d3",
+          "team_source": "../sources/history-140.md#src-0020868"
+        },
+        {
+          "source_id": "SRC-0000136",
+          "lines": [
+            1,
+            43
+          ],
+          "source_sha256": "13b7bfe0cb43e4b3f7608eb85a4f8d40981b6352789879e1fee86060455993c2",
+          "team_source": "../sources/history-140.md#src-0000136"
+        }
+      ],
+      "external_primary_locations": [],
+      "record_anchor": "claim-32",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0140-calendar-alignment-and-input-preflight/saved-arithmetic-verification.json",
+        "current_archival_proof": null
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0140-calendar-alignment-and-input-preflight/first-scope-progress.json",
+        "JSON_value_reads": "../evidence/0140-calendar-alignment-and-input-preflight/JSON-value-reading.json",
+        "postdraft_reads": "../evidence/0140-calendar-alignment-and-input-preflight/postdraft-actual-reads.json"
+      }
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_human_reviewer": false,
+  "new_model_runs": 0
+}

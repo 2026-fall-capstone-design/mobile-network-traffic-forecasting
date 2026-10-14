@@ -1,0 +1,1007 @@
+{
+  "complete": true,
+  "settings": {
+    "source_hashes": {
+      "results\\pooled_context_101\\inputs.npz": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+      "results\\calendar_alignment_110\\profiles.npz": "1fbac28a60aa934b671202211a0200033c11b4b5925c13ed200a2dfbefd7ef6e",
+      "results\\calendar_alignment_110\\result.json": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+      "cumulative_execution_budget.json": "4a2f5162a209e9d002945e979f914e846044613fa4a062635aff5ac643c39b53",
+      "111_calendar_query_preflight_plan.md": "3dfbc0577c7aeb8bfb0d574df6c7c2cc1687764f4d1a8f143d105544f03ff7aa",
+      "calendar_query_preflight_111.py": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6"
+    },
+    "context_target_times": [
+      168,
+      671
+    ],
+    "query_target_times": [
+      672,
+      839
+    ],
+    "donors_per_target": 2,
+    "query_positions": "floor(linspace(0,167,64))",
+    "shift_candidates": "zero plus the two lowest training-profile MSE nonzero shifts",
+    "support": "fifth-neighbor RMS standardized distance <= donor leave-8h-out 95th percentile",
+    "paired_comparison": "intersection over all three shifts",
+    "minimum_queries_per_half": 16,
+    "minimum_pairs": 8,
+    "minimum_target_cells": 8,
+    "wall_cap_seconds": 30,
+    "rss_cap_bytes": 1073741824,
+    "query_targets_read": false,
+    "model_fit_calls": 0,
+    "model_predict_calls": 0
+  },
+  "aggregate": {
+    "directed_candidates": 32,
+    "eligible_pairs": 14,
+    "eligible_target_cells": [
+      3737,
+      3745,
+      3753,
+      3765,
+      4545,
+      4565,
+      5345,
+      5353,
+      6145,
+      6153,
+      6165
+    ],
+    "eligible_donor_cells": [
+      3737,
+      3745,
+      3765,
+      4553,
+      4565,
+      5337,
+      5353,
+      5365,
+      6153
+    ],
+    "profile_best_nonzero_pairs": 13,
+    "eligible_profile_best_nonzero_pairs": 5,
+    "paired_queries_before_filter": 2048,
+    "paired_queries_after_filter_all_pairs": 1222,
+    "eligible_cross_rows_for_all_three_shifts": 2421,
+    "own_baseline_rows_for_same_queries": 675,
+    "upper_bound_Tab_query_rows_including_own": 3096,
+    "upper_bound_Tab_contexts_including_own": 14,
+    "input_preflight_passes": true,
+    "forecast_performance_measured": false,
+    "new_partition_chosen": false
+  },
+  "pairs": [
+    {
+      "target_index": 0,
+      "donor_index": 1,
+      "target_cell": 3737,
+      "donor_cell": 3745,
+      "training_profile_min_MSE": 0.05296031760287765,
+      "phase_candidates_hours": [
+        0,
+        1,
+        -1
+      ],
+      "phase_training_MSE": [
+        0.05296031760287765,
+        0.07547533819283693,
+        0.19506832805778462
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        64,
+        63,
+        64
+      ],
+      "paired_query_counts_first_second": [
+        32,
+        31
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.8122253825889314
+    },
+    {
+      "target_index": 0,
+      "donor_index": 6,
+      "target_cell": 3737,
+      "donor_cell": 4553,
+      "training_profile_min_MSE": 0.067764072792132,
+      "phase_candidates_hours": [
+        0,
+        1,
+        2
+      ],
+      "phase_training_MSE": [
+        0.07391900742052887,
+        0.067764072792132,
+        0.2081448532767267
+      ],
+      "profile_selected_shift": 1,
+      "phase_support_counts": [
+        22,
+        20,
+        19
+      ],
+      "paired_query_counts_first_second": [
+        15,
+        3
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.8404558529569915
+    },
+    {
+      "target_index": 1,
+      "donor_index": 0,
+      "target_cell": 3745,
+      "donor_cell": 3737,
+      "training_profile_min_MSE": 0.05296031760287765,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        1
+      ],
+      "phase_training_MSE": [
+        0.05296031760287765,
+        0.07547533819283693,
+        0.19506832805778462
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        57,
+        57,
+        57
+      ],
+      "paired_query_counts_first_second": [
+        31,
+        26
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.783210001149236
+    },
+    {
+      "target_index": 1,
+      "donor_index": 6,
+      "target_cell": 3745,
+      "donor_cell": 4553,
+      "training_profile_min_MSE": 0.07790447639762697,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        1
+      ],
+      "phase_training_MSE": [
+        0.07790447639762697,
+        0.15226477113970216,
+        0.15946948660242452
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        23,
+        24,
+        22
+      ],
+      "paired_query_counts_first_second": [
+        10,
+        12
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.8404558529569915
+    },
+    {
+      "target_index": 2,
+      "donor_index": 8,
+      "target_cell": 3753,
+      "donor_cell": 5337,
+      "training_profile_min_MSE": 0.11278350214025527,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        1
+      ],
+      "phase_training_MSE": [
+        0.11278350214025527,
+        0.1363878434092279,
+        0.24069954573557173
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        64,
+        64,
+        63
+      ],
+      "paired_query_counts_first_second": [
+        31,
+        32
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.7130831515414222
+    },
+    {
+      "target_index": 2,
+      "donor_index": 15,
+      "target_cell": 3753,
+      "donor_cell": 6165,
+      "training_profile_min_MSE": 0.12434972365303805,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        -2
+      ],
+      "phase_training_MSE": [
+        0.16138097913162092,
+        0.12434972365303805,
+        0.2300923932500151
+      ],
+      "profile_selected_shift": -1,
+      "phase_support_counts": [
+        7,
+        9,
+        7
+      ],
+      "paired_query_counts_first_second": [
+        5,
+        0
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.42168033651861553
+    },
+    {
+      "target_index": 3,
+      "donor_index": 11,
+      "target_cell": 3765,
+      "donor_cell": 5365,
+      "training_profile_min_MSE": 0.05081480525902624,
+      "phase_candidates_hours": [
+        0,
+        1,
+        -1
+      ],
+      "phase_training_MSE": [
+        0.05081480525902624,
+        0.08522692558904425,
+        0.13532992393954965
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        45,
+        42,
+        44
+      ],
+      "paired_query_counts_first_second": [
+        20,
+        21
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.493719325610043
+    },
+    {
+      "target_index": 3,
+      "donor_index": 10,
+      "target_cell": 3765,
+      "donor_cell": 5353,
+      "training_profile_min_MSE": 0.0706388794898889,
+      "phase_candidates_hours": [
+        0,
+        1,
+        2
+      ],
+      "phase_training_MSE": [
+        0.0804046101533643,
+        0.0706388794898889,
+        0.17703775621124498
+      ],
+      "profile_selected_shift": 1,
+      "phase_support_counts": [
+        60,
+        60,
+        59
+      ],
+      "paired_query_counts_first_second": [
+        28,
+        30
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.7963424957735078
+    },
+    {
+      "target_index": 4,
+      "donor_index": 14,
+      "target_cell": 4537,
+      "donor_cell": 6153,
+      "training_profile_min_MSE": 0.14953383769813952,
+      "phase_candidates_hours": [
+        0,
+        2,
+        1
+      ],
+      "phase_training_MSE": [
+        0.2078392650206602,
+        0.14953383769813952,
+        0.16214426782028835
+      ],
+      "profile_selected_shift": 2,
+      "phase_support_counts": [
+        22,
+        24,
+        23
+      ],
+      "paired_query_counts_first_second": [
+        4,
+        18
+      ],
+      "eligible": false,
+      "donor_support_radius": 1.515906643632298
+    },
+    {
+      "target_index": 4,
+      "donor_index": 3,
+      "target_cell": 4537,
+      "donor_cell": 3765,
+      "training_profile_min_MSE": 0.20618865102249884,
+      "phase_candidates_hours": [
+        0,
+        1,
+        -1
+      ],
+      "phase_training_MSE": [
+        0.20618865102249884,
+        0.22826032286616793,
+        0.22923568461795685
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        0,
+        0,
+        0
+      ],
+      "paired_query_counts_first_second": [
+        0,
+        0
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.7243208993319458
+    },
+    {
+      "target_index": 5,
+      "donor_index": 8,
+      "target_cell": 4545,
+      "donor_cell": 5337,
+      "training_profile_min_MSE": 0.10079796728709699,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        1
+      ],
+      "phase_training_MSE": [
+        0.10079796728709699,
+        0.14665810608941032,
+        0.22757014885115112
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        64,
+        64,
+        64
+      ],
+      "paired_query_counts_first_second": [
+        32,
+        32
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.7130831515414222
+    },
+    {
+      "target_index": 5,
+      "donor_index": 11,
+      "target_cell": 4545,
+      "donor_cell": 5365,
+      "training_profile_min_MSE": 0.10507824575448677,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        1
+      ],
+      "phase_training_MSE": [
+        0.10507824575448677,
+        0.13164595599640258,
+        0.2244471530762362
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        25,
+        21,
+        21
+      ],
+      "paired_query_counts_first_second": [
+        11,
+        8
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.493719325610043
+    },
+    {
+      "target_index": 6,
+      "donor_index": 0,
+      "target_cell": 4553,
+      "donor_cell": 3737,
+      "training_profile_min_MSE": 0.067764072792132,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        -2
+      ],
+      "phase_training_MSE": [
+        0.07391900742052887,
+        0.067764072792132,
+        0.2081448532767267
+      ],
+      "profile_selected_shift": -1,
+      "phase_support_counts": [
+        39,
+        39,
+        39
+      ],
+      "paired_query_counts_first_second": [
+        12,
+        26
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.783210001149236
+    },
+    {
+      "target_index": 6,
+      "donor_index": 1,
+      "target_cell": 4553,
+      "donor_cell": 3745,
+      "training_profile_min_MSE": 0.07790447639762697,
+      "phase_candidates_hours": [
+        0,
+        1,
+        -1
+      ],
+      "phase_training_MSE": [
+        0.07790447639762697,
+        0.15226477113970216,
+        0.15946948660242452
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        40,
+        39,
+        43
+      ],
+      "paired_query_counts_first_second": [
+        12,
+        27
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.8122253825889314
+    },
+    {
+      "target_index": 7,
+      "donor_index": 6,
+      "target_cell": 4565,
+      "donor_cell": 4553,
+      "training_profile_min_MSE": 0.08346325631652196,
+      "phase_candidates_hours": [
+        0,
+        1,
+        2
+      ],
+      "phase_training_MSE": [
+        0.13047617185625948,
+        0.08346325631652196,
+        0.19643047578162567
+      ],
+      "profile_selected_shift": 1,
+      "phase_support_counts": [
+        40,
+        39,
+        38
+      ],
+      "paired_query_counts_first_second": [
+        27,
+        9
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.8404558529569915
+    },
+    {
+      "target_index": 7,
+      "donor_index": 14,
+      "target_cell": 4565,
+      "donor_cell": 6153,
+      "training_profile_min_MSE": 0.10604811152957165,
+      "phase_candidates_hours": [
+        0,
+        1,
+        2
+      ],
+      "phase_training_MSE": [
+        0.13215558704039154,
+        0.10604811152957165,
+        0.21634803243825698
+      ],
+      "profile_selected_shift": 1,
+      "phase_support_counts": [
+        64,
+        64,
+        64
+      ],
+      "paired_query_counts_first_second": [
+        32,
+        32
+      ],
+      "eligible": true,
+      "donor_support_radius": 1.515906643632298
+    },
+    {
+      "target_index": 8,
+      "donor_index": 13,
+      "target_cell": 5337,
+      "donor_cell": 6145,
+      "training_profile_min_MSE": 0.03552648795156855,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        1
+      ],
+      "phase_training_MSE": [
+        0.03552648795156855,
+        0.07460408664344909,
+        0.1748412951854811
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        18,
+        17,
+        17
+      ],
+      "paired_query_counts_first_second": [
+        9,
+        7
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.6012960213382003
+    },
+    {
+      "target_index": 8,
+      "donor_index": 15,
+      "target_cell": 5337,
+      "donor_cell": 6165,
+      "training_profile_min_MSE": 0.05087175436739339,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        -2
+      ],
+      "phase_training_MSE": [
+        0.053008181005191446,
+        0.05087175436739339,
+        0.19243601183137918
+      ],
+      "profile_selected_shift": -1,
+      "phase_support_counts": [
+        7,
+        5,
+        3
+      ],
+      "paired_query_counts_first_second": [
+        3,
+        0
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.42168033651861553
+    },
+    {
+      "target_index": 9,
+      "donor_index": 0,
+      "target_cell": 5345,
+      "donor_cell": 3737,
+      "training_profile_min_MSE": 0.07166375267740414,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        -2
+      ],
+      "phase_training_MSE": [
+        0.09165220421882399,
+        0.07166375267740414,
+        0.23954842287671094
+      ],
+      "profile_selected_shift": -1,
+      "phase_support_counts": [
+        64,
+        64,
+        64
+      ],
+      "paired_query_counts_first_second": [
+        32,
+        32
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.783210001149236
+    },
+    {
+      "target_index": 9,
+      "donor_index": 6,
+      "target_cell": 5345,
+      "donor_cell": 4553,
+      "training_profile_min_MSE": 0.07806894726020808,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        1
+      ],
+      "phase_training_MSE": [
+        0.07806894726020808,
+        0.17339032966676884,
+        0.17998354813393677
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        31,
+        32,
+        30
+      ],
+      "paired_query_counts_first_second": [
+        17,
+        13
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.8404558529569915
+    },
+    {
+      "target_index": 10,
+      "donor_index": 3,
+      "target_cell": 5353,
+      "donor_cell": 3765,
+      "training_profile_min_MSE": 0.0706388794898889,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        -2
+      ],
+      "phase_training_MSE": [
+        0.0804046101533643,
+        0.0706388794898889,
+        0.17703775621124498
+      ],
+      "profile_selected_shift": -1,
+      "phase_support_counts": [
+        61,
+        61,
+        61
+      ],
+      "paired_query_counts_first_second": [
+        31,
+        29
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.7243208993319458
+    },
+    {
+      "target_index": 10,
+      "donor_index": 14,
+      "target_cell": 5353,
+      "donor_cell": 6153,
+      "training_profile_min_MSE": 0.1166770045827893,
+      "phase_candidates_hours": [
+        0,
+        1,
+        2
+      ],
+      "phase_training_MSE": [
+        0.1166770045827893,
+        0.13077523272398425,
+        0.2083936207210169
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        64,
+        64,
+        64
+      ],
+      "paired_query_counts_first_second": [
+        32,
+        32
+      ],
+      "eligible": true,
+      "donor_support_radius": 1.515906643632298
+    },
+    {
+      "target_index": 11,
+      "donor_index": 13,
+      "target_cell": 5365,
+      "donor_cell": 6145,
+      "training_profile_min_MSE": 0.03655816344466409,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        1
+      ],
+      "phase_training_MSE": [
+        0.03655816344466409,
+        0.10663477639144087,
+        0.11959636175446271
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        12,
+        10,
+        12
+      ],
+      "paired_query_counts_first_second": [
+        9,
+        1
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.6012960213382003
+    },
+    {
+      "target_index": 11,
+      "donor_index": 12,
+      "target_cell": 5365,
+      "donor_cell": 6137,
+      "training_profile_min_MSE": 0.04541882410463891,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        -2
+      ],
+      "phase_training_MSE": [
+        0.0668478696097702,
+        0.04541882410463891,
+        0.12913580684871082
+      ],
+      "profile_selected_shift": -1,
+      "phase_support_counts": [
+        46,
+        46,
+        40
+      ],
+      "paired_query_counts_first_second": [
+        25,
+        14
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.4855523672268675
+    },
+    {
+      "target_index": 12,
+      "donor_index": 11,
+      "target_cell": 6137,
+      "donor_cell": 5365,
+      "training_profile_min_MSE": 0.04541882410463891,
+      "phase_candidates_hours": [
+        0,
+        1,
+        2
+      ],
+      "phase_training_MSE": [
+        0.0668478696097702,
+        0.04541882410463891,
+        0.12913580684871082
+      ],
+      "profile_selected_shift": 1,
+      "phase_support_counts": [
+        38,
+        38,
+        35
+      ],
+      "paired_query_counts_first_second": [
+        18,
+        13
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.493719325610043
+    },
+    {
+      "target_index": 12,
+      "donor_index": 3,
+      "target_cell": 6137,
+      "donor_cell": 3765,
+      "training_profile_min_MSE": 0.08696690689051671,
+      "phase_candidates_hours": [
+        0,
+        1,
+        2
+      ],
+      "phase_training_MSE": [
+        0.08696690689051671,
+        0.10396617398574258,
+        0.18473906920182484
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        15,
+        18,
+        17
+      ],
+      "paired_query_counts_first_second": [
+        7,
+        7
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.7243208993319458
+    },
+    {
+      "target_index": 13,
+      "donor_index": 15,
+      "target_cell": 6145,
+      "donor_cell": 6165,
+      "training_profile_min_MSE": 0.018300990280458285,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        1
+      ],
+      "phase_training_MSE": [
+        0.018300990280458285,
+        0.06895913330955641,
+        0.14023561579676208
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        41,
+        37,
+        37
+      ],
+      "paired_query_counts_first_second": [
+        8,
+        27
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.42168033651861553
+    },
+    {
+      "target_index": 13,
+      "donor_index": 8,
+      "target_cell": 6145,
+      "donor_cell": 5337,
+      "training_profile_min_MSE": 0.03552648795156855,
+      "phase_candidates_hours": [
+        0,
+        1,
+        -1
+      ],
+      "phase_training_MSE": [
+        0.03552648795156855,
+        0.07460408664344909,
+        0.1748412951854811
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        61,
+        62,
+        61
+      ],
+      "paired_query_counts_first_second": [
+        32,
+        29
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.7130831515414222
+    },
+    {
+      "target_index": 14,
+      "donor_index": 7,
+      "target_cell": 6153,
+      "donor_cell": 4565,
+      "training_profile_min_MSE": 0.10604811152957165,
+      "phase_candidates_hours": [
+        0,
+        -1,
+        -2
+      ],
+      "phase_training_MSE": [
+        0.13215558704039154,
+        0.10604811152957165,
+        0.21634803243825698
+      ],
+      "profile_selected_shift": -1,
+      "phase_support_counts": [
+        58,
+        58,
+        57
+      ],
+      "paired_query_counts_first_second": [
+        30,
+        26
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.7338544294737365
+    },
+    {
+      "target_index": 14,
+      "donor_index": 6,
+      "target_cell": 6153,
+      "donor_cell": 4553,
+      "training_profile_min_MSE": 0.10946427080471888,
+      "phase_candidates_hours": [
+        0,
+        1,
+        -1
+      ],
+      "phase_training_MSE": [
+        0.10946427080471888,
+        0.1512370686334731,
+        0.16693991416970766
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        39,
+        39,
+        39
+      ],
+      "paired_query_counts_first_second": [
+        20,
+        18
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.8404558529569915
+    },
+    {
+      "target_index": 15,
+      "donor_index": 13,
+      "target_cell": 6165,
+      "donor_cell": 6145,
+      "training_profile_min_MSE": 0.018300990280458285,
+      "phase_candidates_hours": [
+        0,
+        1,
+        -1
+      ],
+      "phase_training_MSE": [
+        0.018300990280458285,
+        0.06895913330955641,
+        0.14023561579676208
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        42,
+        39,
+        40
+      ],
+      "paired_query_counts_first_second": [
+        8,
+        30
+      ],
+      "eligible": false,
+      "donor_support_radius": 0.6012960213382003
+    },
+    {
+      "target_index": 15,
+      "donor_index": 11,
+      "target_cell": 6165,
+      "donor_cell": 5365,
+      "training_profile_min_MSE": 0.04686572640524428,
+      "phase_candidates_hours": [
+        0,
+        1,
+        -1
+      ],
+      "phase_training_MSE": [
+        0.04686572640524428,
+        0.09214816314717761,
+        0.13313646796049072
+      ],
+      "profile_selected_shift": 0,
+      "phase_support_counts": [
+        56,
+        55,
+        54
+      ],
+      "paired_query_counts_first_second": [
+        22,
+        32
+      ],
+      "eligible": true,
+      "donor_support_radius": 0.493719325610043
+    }
+  ],
+  "elapsed_seconds": 0.17921170000045095,
+  "sampled_rss_bytes": 70144000,
+  "input_files_unchanged_before_accounting": true,
+  "timing_scope": "Input loading, profiles, distance operations, frozen arrays; excludes imports/settings/hash/final JSON"
+}

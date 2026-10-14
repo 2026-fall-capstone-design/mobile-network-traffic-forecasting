@@ -1,0 +1,35 @@
+# 110–111 시각 정렬 후보의 근접 원문 대조
+
+2026-09-26. 이전 검색에서 발견한 원문을 확인했다. 이번 단계는 서지·원리 검토이며 논문의 코드를 실행하거나 성능을 재현하지 않았다. 기존 UPC·RCTL·TabICLv2 분석은 원래 기록을 재사용한다. 아래 비교는 새 시각 보정 후보와 직접 관련된 추가 조사다.
+
+## 1. 정렬과 clustering을 함께 정하는 구조는 이미 있다
+
+Roy R. Lederman·Amit Singer, *A Representation Theory Perspective on Simultaneous Alignment and Classification*, arXiv:1607.03464v1, 2016-07-12. arXiv의 제출 이력과 34쪽 PDF를 확인했다. [원문](https://arxiv.org/pdf/1607.03464v1)
+
+실제 읽은 범위는 도입부 식 (1), §3.1–3.2의 혼합 신호와 식 (25)–(26), §3.4의 group 표현, §3.6 식 (52)–(53), §4의 SDP 표현과 §4.1–4.2, §5 실험 설정이다. 모든 정리와 증명을 검증한 것은 아니다.
+
+식 (25)는 같은 class 안의 쌍별 정렬 비용을 합하며 소속과 변환을 함께 정한다. 식 (26)은 같은 크기의 class까지 다룬다. §5는 네 원형 신호에서 만든 60개 noisy shifted signal을 사용한다. 원문의 비용 f_ij를 TabICL 교차 예측 오차로 대체해도 공동 정렬·소속 목적식 자체는 새 구조가 되지 않는다. 실제 네트워크 예측 문제에서 비용을 어떻게 추정하며 어떤 오류를 줄였는지가 별도로 필요하다. 이 범용 목적식이 RCTL의 학습 성능까지 보장하는 것은 아니다.
+
+## 2. TROUT의 회전은 실제 시각 이동과 구별한다
+
+Michael Weylandt·George Michailidis, *Automatic Registration and Clustering of Time Series*, arXiv:2012.04756v2, 2021-02-10, 6쪽. §2–4, 식 (1)–(2), ADMM/MM 설명과 비용을 읽었다. [원문](https://arxiv.org/pdf/2012.04756v2)
+
+식 (1)은 모든 복소 Fourier 성분에 같은 회전을 적용한다. 실제 시간 이동은 주파수별 위상 변화가 달라지므로 두 연산을 동일하게 취급하지 않는다. 식 (2)는 정렬 오차와 cluster 융합 벌점을 결합한다. Cholesky의 최초 O(n³)와 반복 O(n²p)가 명시돼 있다. 구현을 가져오지 않았으며 이 비용을 제안 후보의 실측 비용으로 쓰지 않는다. 파형을 정렬한 뒤 묶는 발상은 차별점에서 제외한다.
+
+## 3. CAPS는 최종 예측 모델 내부의 정렬이다
+
+Pati 등, *CAPS: Unifying Attention, Recurrence, and Alignment in Transformer-based Time Series Forecasting*, arXiv:2602.02729v1, 2026-02-02. §2.6과 §3.1–3.4를 읽었다. [원문](https://arxiv.org/html/2602.02729v1)
+
+RoPE의 상대 회전과 softmax·prefix-product·clock 경로를 최종 모델 안에서 함께 학습한다. 이번 후보는 과거 자료에서 cell별 달력 좌표를 고정하고 RCTL의 입력에 전달하는 방식이다. 적용 위치가 다르지만 상대 시각 표현 자체는 새 원리가 아니다. 공식 GitHub 링크는 확인했으나 구현 파일을 검토·실행하지 않아 commit 검증 대상으로 기록하지 않는다.
+
+## 4. AOSNet은 ‘같은 주기 위치’와 ‘같은 상태’를 구별한다
+
+Zhangyao Song 등, *Adaptive Oscillatory-State Alignment for Time Series Forecasting*, arXiv:2606.06010v1, 2026-06-04. §III-A–D, IV의 계산 개요, V-C–E, VI를 읽었다. [원문](https://arxiv.org/html/2606.06010v1)
+
+Hilbert 변환에서 얻은 진폭·위상·주파수와 학습 가능한 prior를 gate에 넣고, 식 (10)에서 관측값과 prior를 보간한다. 이는 단순한 시간축 재배열이 아니다. 최종 attention/base 예측 경로까지 함께 학습하며 RCTL과 독립적인 cell clustering이 아니다. §V-E의 같은 phase라도 상태가 다를 수 있다는 설명을 반영해, 다음 확인은 평균 파형이 아닌 실제 최근 입력과 다음 실제값을 사용한다. §V-D의 attention 분석은 학습 후 표현 분석이며 독립 clustering의 효용 증거로 옮기지 않는다.
+
+## 확인 범위와 아직 남은 차별점
+
+앞선 탐색에서 alignment·classification·forecasting·phase 조건화를 조합한 검색으로 후보를 찾았다. 이번 재확인은 위 네 원문의 URL과 절을 직접 열어 수행했다. ScienceDirect의 DGLASA-Net·AlignTime·phase/amplitude clustering 관련 페이지는 앞선 접근에서 본문을 확보하지 못했으므로 검색 초록 수준의 후보 목록으로만 남긴다. PMC 경로도 접근 제약이 있어 NUG는 arXiv 원문을 근거로 삼았다. 후속 검토에서 읽지 않은 본문을 읽었다고 쓰지 않는다.
+
+현재 고정 시각 보정과 clustering의 결합은 **신규성이 확정된 추천안이 아니다**. RCTL과 독립적으로 실제 lag를 보존한 조건부 예측 비교를 수행하고, 그 결과가 단순 profile·Ridge·HGB와 다른 유용한 소속·좌표 결정을 만드는지가 남은 핵심이다. 단순 비용 추정기 교체에 그치면 구조적 신규성을 주장하지 않는다. 110–111의 통과는 작은 예측 검사에 진입할 근거이며 최종 채택 근거가 아니다.

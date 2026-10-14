@@ -41,3 +41,7 @@
 ## online train / 공통 epoch / validation-selected checkpoint
 
 [원109](records/0139-saved-training-path-and-stopping.md)의online train은학습중배치별가변가중치·train mode 손실의가중평균이다. validation은epoch종료뒤eval mode 값이다. 공통epoch는같은seed의여덟K4로그가모두남은구간으로42/43이다. validation-selected checkpoint 평균은서로다른best_epoch에서선택한4모델의최소validation 평균이며동시epoch나새test값이 아니다.
+
+## profile 이동 / 원형 잔차 / 공통 mask / own query 합집합
+
+[원110–111](records/0140-calendar-alignment-and-input-preflight.md)의 δij는 j[h+δ]를 i[h]에 맞춘다. 원형 잔차는 mod24의짧은 거리이고 pair별 최적을 하나의cell 좌표로 곧바로 쓸 수 없다. 공통 mask는세 이동의 지원교집합이며, own mask는같은target 시점의합집합이다.1222전체공통시점·807통과방향공통시점·2421세이동행·675own행·3096합계는다른집계다.

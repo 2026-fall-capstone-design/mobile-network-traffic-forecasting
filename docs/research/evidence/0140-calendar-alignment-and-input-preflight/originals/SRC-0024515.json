@@ -1,0 +1,58 @@
+{
+  "source_hashes": {
+    "results\\pooled_context_101\\inputs.npz": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+    "cumulative_execution_budget.json": "989194de962a6cc5dca684b9290469abb5b9fb948fbf7cf53ec3df5f3453a9c9",
+    "calendar_alignment_diagnostic_110.py": "8015adb97c347e9b454af42dbfee3e65a055326361910cb59d18d6087b280f43",
+    "110_calendar_alignment_candidate_and_plan.md": "fc9b8e649f65d57aec97f307e71b700210fdd71efd600c90c660f6497dc3559e"
+  },
+  "shift_priority": [
+    0,
+    1,
+    -1,
+    2,
+    -2,
+    3,
+    -3,
+    4,
+    -4,
+    5,
+    -5,
+    6,
+    -6,
+    7,
+    -7,
+    8,
+    -8,
+    9,
+    -9,
+    10,
+    -10,
+    11,
+    -11,
+    12
+  ],
+  "train": [
+    168,
+    671
+  ],
+  "split_a": [
+    168,
+    503
+  ],
+  "split_b": [
+    504,
+    671
+  ],
+  "check": [
+    672,
+    839
+  ],
+  "pair_metric": "Mean squared difference of daily profiles standardized on train only",
+  "phase_orientation": "delta_ij aligns j[h+delta_ij] to i[h]",
+  "wall_cap_seconds": 10,
+  "rss_cap_bytes": 1073741824,
+  "new_fits": 0,
+  "new_model_calls": 0,
+  "gate": "nonzero_pairs>60 AND over half of nonzero pairs split-stable within 1 hour AND full-pair check MAE improves",
+  "phase_only_profile_check_not_forecast_performance": true
+}

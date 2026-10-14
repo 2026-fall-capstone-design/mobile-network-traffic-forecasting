@@ -1,0 +1,185 @@
+"""Freeze phase-conditioned queries without reading query targets or calling models."""
+import os
+for name in ('OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS'):
+    os.environ[name] = '4'
+from pathlib import Path
+import hashlib
+import json
+import time
+import numpy as np
+import psutil
+from scipy.spatial.distance import cdist
+from threadpoolctl import threadpool_limits
+
+BASE = Path(__file__).resolve().parent
+OUT = BASE / 'results/calendar_query_preflight_111'
+OUT.mkdir(parents=True, exist_ok=True)
+if (OUT / 'run_started.json').exists():
+    raise RuntimeError('Already started. Inspect saved state instead of repeating.')
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def save(path, obj):
+    path.write_text(json.dumps(obj, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+
+ledger_path = BASE / 'cumulative_execution_budget.json'
+source = BASE / 'results/pooled_context_101/inputs.npz'
+profile_path = BASE / 'results/calendar_alignment_110/profiles.npz'
+profile_result_path = BASE / 'results/calendar_alignment_110/result.json'
+plan = BASE / '111_calendar_query_preflight_plan.md'
+paths = [source, profile_path, profile_result_path, ledger_path, plan, Path(__file__)]
+hashes = {str(p.relative_to(BASE)): sha(p) for p in paths}
+ledger = json.loads(ledger_path.read_text(encoding='utf-8'))
+assert 'calendar_query_preflight_111' not in ledger['new_cheap_diagnostic_seconds']
+assert sum(ledger['new_cheap_diagnostic_seconds'].values()) + 30 < ledger['caps']['cheap_numeric_seconds']
+settings = {
+    'source_hashes': hashes, 'context_target_times': [168, 671], 'query_target_times': [672, 839],
+    'donors_per_target': 2, 'query_positions': 'floor(linspace(0,167,64))',
+    'shift_candidates': 'zero plus the two lowest training-profile MSE nonzero shifts',
+    'support': 'fifth-neighbor RMS standardized distance <= donor leave-8h-out 95th percentile',
+    'paired_comparison': 'intersection over all three shifts',
+    'minimum_queries_per_half': 16, 'minimum_pairs': 8, 'minimum_target_cells': 8,
+    'wall_cap_seconds': 30, 'rss_cap_bytes': 1024**3,
+    'query_targets_read': False, 'model_fit_calls': 0, 'model_predict_calls': 0,
+}
+save(OUT / 'settings.json', settings)
+save(OUT / 'run_started.json', {'unix': time.time(), 'settings_sha256': sha(OUT / 'settings.json')})
+started = time.perf_counter()
+with threadpool_limits(limits=4):
+    with np.load(source, allow_pickle=False) as data:
+        x = data['X'][:, :672].astype(np.float64)
+        ids = data['cell_ids'].copy()
+        assert np.array_equal(data['context_times'], np.arange(168, 840))
+    with np.load(profile_path, allow_pickle=False) as data:
+        profiles = data['train'].copy()
+        assert np.array_equal(ids, data['cell_ids'])
+    assert x.shape == (16, 672, 16) and profiles.shape == (16, 24)
+    positions = np.floor(np.linspace(0, 167, 64)).astype(int)
+    assert len(np.unique(positions)) == 64
+    ctx = x[:, :504]
+    query = x[:, 504 + positions]
+    hours = np.rint(np.mod(np.arctan2(query[:, :, 12], query[:, :, 13]), 2*np.pi)*24/(2*np.pi)).astype(int) % 24
+    assert np.allclose(query[:, :, 12], np.sin(2*np.pi*hours/24), atol=1e-6)
+    assert np.allclose(query[:, :, 13], np.cos(2*np.pi*hours/24), atol=1e-6)
+    shifts = [0] + [v for k in range(1, 12) for v in (k, -k)] + [12]
+    profile_result = json.loads(profile_result_path.read_text(encoding='utf-8'))
+    cost_lookup = {}
+    inverse_indices = [next(k for k, v in enumerate(shifts) if v % 24 == (-s) % 24) for s in shifts]
+    for row in profile_result['pairs']:
+        saved = np.array(row['training_squared_distances'])
+        cost_lookup[(row['i'], row['j'])] = saved
+        cost_lookup[(row['j'], row['i'])] = saved[inverse_indices]
+
+    means = ctx.mean(axis=1)
+    scales = ctx.std(axis=1)
+    scales[scales == 0] = 1
+    zctx = (ctx - means[:, None, :])/scales[:, None, :]
+    near_in_time = np.abs(np.arange(504)[:, None] - np.arange(504)[None, :]) <= 8
+    radii = []
+    for j in range(16):
+        d2 = cdist(zctx[j], zctx[j], metric='sqeuclidean') / 16
+        d2[near_in_time] = np.inf
+        neighbor5 = np.sqrt(np.partition(d2, 4, axis=1)[:, 4])
+        radii.append(float(np.quantile(neighbor5, .95)))
+    radii = np.array(radii)
+
+    pairs, shifted_queries, masks, all_distances, pairs_index, phase_lists = [], [], [], [], [], []
+    for i in range(16):
+        donor_options = []
+        for j in range(16):
+            if i == j:
+                continue
+            costs = cost_lookup[(i, j)]
+            best = float(costs.min())
+            profile_best_index = next(k for k, c in enumerate(costs) if c <= best + 1e-12)
+            nonzero = list(range(1, 24))
+            chosen = []
+            for _ in range(2):
+                cmin = min(float(costs[k]) for k in nonzero)
+                k = next(k for k in nonzero if costs[k] <= cmin + 1e-12)
+                chosen.append(k)
+                nonzero.remove(k)
+            indices = [0] + chosen
+            assert profile_best_index in indices
+            donor_options.append((best, int(ids[j]), j, costs, indices, profile_best_index))
+        donor_options.sort(key=lambda row: (row[0], row[1]))
+        for best, _, j, costs, indices, profile_best_index in donor_options[:2]:
+            phase_values = [shifts[k] for k in indices]
+            qversions = np.repeat(query[i][None, :, :], 3, axis=0)
+            for sidx, delta in enumerate(phase_values):
+                h = (hours[i] + delta) % 24
+                qversions[sidx, :, 12] = np.sin(2*np.pi*h/24)
+                qversions[sidx, :, 13] = np.cos(2*np.pi*h/24)
+            unchanged = list(range(12)) + [14, 15]
+            assert np.array_equal(qversions[:, :, unchanged], np.repeat(query[i][:, unchanged][None, :, :], 3, axis=0))
+            zq = (qversions - means[j])/scales[j]
+            distances = np.sqrt(np.partition(cdist(zq.reshape(-1, 16), zctx[j], metric='sqeuclidean')/16, 4, axis=1)[:, 4]).reshape(3, 64)
+            condition_masks = distances <= radii[j]
+            common = condition_masks.all(axis=0)
+            counts = [int(common[:32].sum()), int(common[32:].sum())]
+            eligible = min(counts) >= 16
+            pairs.append({
+                'target_index': i, 'donor_index': j, 'target_cell': int(ids[i]), 'donor_cell': int(ids[j]),
+                'training_profile_min_MSE': best, 'phase_candidates_hours': phase_values,
+                'phase_training_MSE': [float(costs[k]) for k in indices],
+                'profile_selected_shift': shifts[profile_best_index],
+                'phase_support_counts': [int(v) for v in condition_masks.sum(axis=1)],
+                'paired_query_counts_first_second': counts, 'eligible': eligible,
+                'donor_support_radius': float(radii[j]),
+            })
+            pairs_index.append((i, j))
+            phase_lists.append(phase_values)
+            shifted_queries.append(qversions)
+            masks.append(common)
+            all_distances.append(distances)
+    assert len(pairs) == 32
+    eligible = np.array([r['eligible'] for r in pairs], dtype=bool)
+    masks = np.array(masks)
+    target_cells = sorted({r['target_cell'] for r in pairs if r['eligible']})
+    donor_cells = sorted({r['donor_cell'] for r in pairs if r['eligible']})
+    eligible_masked_cross_rows = int(3 * masks[eligible].sum())
+    target_indices = sorted({r['target_index'] for r in pairs if r['eligible']})
+    own_masks = np.zeros((16, 64), dtype=bool)
+    for index, (i, j) in enumerate(pairs_index):
+        if eligible[index]:
+            own_masks[i] |= masks[index]
+    own_rows = int(own_masks.sum())
+    required_context_cells = sorted(set(target_cells) | set(donor_cells))
+    aggregate = {
+        'directed_candidates': len(pairs), 'eligible_pairs': int(eligible.sum()),
+        'eligible_target_cells': target_cells, 'eligible_donor_cells': donor_cells,
+        'profile_best_nonzero_pairs': sum(r['profile_selected_shift'] != 0 for r in pairs),
+        'eligible_profile_best_nonzero_pairs': sum(r['eligible'] and r['profile_selected_shift'] != 0 for r in pairs),
+        'paired_queries_before_filter': 32*64, 'paired_queries_after_filter_all_pairs': int(masks.sum()),
+        'eligible_cross_rows_for_all_three_shifts': eligible_masked_cross_rows,
+        'own_baseline_rows_for_same_queries': own_rows,
+        'upper_bound_Tab_query_rows_including_own': eligible_masked_cross_rows + own_rows,
+        'upper_bound_Tab_contexts_including_own': len(required_context_cells),
+        'input_preflight_passes': bool(eligible.sum() >= 8 and len(target_cells) >= 8),
+        'forecast_performance_measured': False, 'new_partition_chosen': False,
+    }
+    np.savez_compressed(OUT / 'frozen_queries.npz', context_X=ctx, query_X=query,
+        shifted_query_X=np.array(shifted_queries), pair_indices=np.array(pairs_index),
+        phase_candidates=np.array(phase_lists), common_masks=masks, eligible_pairs=eligible,
+        own_baseline_masks=own_masks, support_distances=np.array(all_distances),
+        support_radii=radii, context_means=means, context_scales=scales,
+        query_positions=positions, query_target_times=672+positions, cell_ids=ids)
+elapsed = time.perf_counter() - started
+rss = psutil.Process().memory_info().rss
+assert elapsed < 30 and rss < 1024**3
+assert all(sha(BASE / name) == value for name, value in hashes.items())
+save(OUT / 'result.json', {'complete': True, 'settings': settings, 'aggregate': aggregate,
+    'pairs': pairs, 'elapsed_seconds': elapsed, 'sampled_rss_bytes': rss,
+    'input_files_unchanged_before_accounting': True,
+    'timing_scope': 'Input loading, profiles, distance operations, frozen arrays; excludes imports/settings/hash/final JSON'})
+(OUT / 'ledger_before_accounting.json').write_bytes(ledger_path.read_bytes())
+ledger['new_cheap_diagnostic_seconds']['calendar_query_preflight_111'] = elapsed
+ledger['cheap_stage_details'].append({'stage': 'calendar_query_preflight_111',
+    'new_fits': 0, 'new_model_calls': 0, 'arithmetic_seconds': elapsed,
+    'cost_not_counted_twice': True, 'query_targets_read': False})
+save(ledger_path, ledger)
+save(OUT / 'run_finished.json', {'complete': True, 'unix': time.time(),
+    'result_sha256': sha(OUT / 'result.json'), 'ledger_after_sha256': sha(ledger_path)})
+print(json.dumps({'aggregate': aggregate, 'elapsed_seconds': elapsed,
+    'ledger_after_sha256': sha(ledger_path)}, ensure_ascii=False), flush=True)
