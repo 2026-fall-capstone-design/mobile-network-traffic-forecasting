@@ -1,0 +1,138 @@
+"""Read saved training histories only; never import or execute a predictor."""
+import hashlib
+import json
+import math
+from pathlib import Path
+import time
+import numpy as np
+import psutil
+
+BASE = Path(__file__).resolve().parent
+SRC = BASE / 'results/rctl_pilot'
+OUT = BASE / 'results/training_path_109'
+OUT.mkdir(parents=True, exist_ok=True)
+if (OUT / 'run_started.json').exists():
+    raise RuntimeError('Execution already exists; do not repeat it.')
+
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def write(p, x):
+    p.write_text(json.dumps(x, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+
+
+settings_path = SRC / 'frozen_settings.json'
+settings = json.loads(settings_path.read_text(encoding='utf-8'))
+fits = json.loads((SRC / 'fit_results.json').read_text(encoding='utf-8'))
+assert len(fits) == 29
+assert sha(BASE / 'train_rctl_pilot.py') == settings['training_code_sha256']
+assert settings['max_epochs'] == 80 and settings['patience'] == 10
+paths = [BASE / '109_training_path_audit_plan.md', Path(__file__),
+         BASE / 'train_rctl_pilot.py', SRC / 'fit_results.json', settings_path,
+         BASE / 'cumulative_execution_budget.json']
+for f in fits:
+    key = f"{f['method']}_{f['seed']}_cluster{f['cluster']}"
+    paths.append(SRC / f'{key}_history.json')
+hashes = {str(p.relative_to(BASE)): sha(p) for p in paths}
+write(OUT / 'settings.json', {'source_hashes': hashes, 'wall_cap_seconds': 10,
+    'rss_cap_bytes': 1024**3, 'methods': ['tabicl_risk', 'empirical_risk'],
+    'seeds': [20260925, 20260926], 'new_fits': 0, 'model_forwards': 0,
+    'missing_epochs': 'Not filled or extrapolated',
+    'train_loss_semantics': 'Online train-mode loss, not fixed-checkpoint eval loss'})
+write(OUT / 'run_started.json', {'unix': time.time(), 'settings_sha256': sha(OUT / 'settings.json')})
+started = time.perf_counter()
+histories, records = {}, []
+for f in fits:
+    key = f"{f['method']}_{f['seed']}_cluster{f['cluster']}"
+    h = json.loads((SRC / f'{key}_history.json').read_text(encoding='utf-8'))
+    assert [v['epoch'] for v in h] == list(range(1, len(h) + 1))
+    assert len(h) == f['epochs_run'] <= 80
+    val = np.array([v['val_mae'] for v in h], dtype=float)
+    train = np.array([v['train_mae'] for v in h], dtype=float)
+    assert np.isfinite(val).all() and np.isfinite(train).all()
+    best, best_epoch, stale, updates = float('inf'), None, 0, []
+    for row in h:
+        if row['val_mae'] < best:
+            best, best_epoch, stale = row['val_mae'], row['epoch'], 0
+            updates.append(best_epoch)
+        else:
+            stale += 1
+        if row['epoch'] < len(h):
+            assert stale < 10, (key, 'Should have stopped sooner')
+    assert best_epoch == f['best_epoch'] and best == f['best_val_mae']
+    reason = f['stop_reason']
+    assert reason in ['validation_patience', 'epoch_cap', 'wall_cap', 'ram_cap']
+    if reason == 'validation_patience':
+        assert stale == 10
+    if reason == 'epoch_cap':
+        assert len(h) == 80 and stale < 10
+    last = val[-10:]
+    records.append({'key': key, 'method': f['method'], 'seed': f['seed'],
+        'cluster': f['cluster'], 'members': f['members'], 'epochs': len(h),
+        'best_epoch': best_epoch, 'first_validation': float(val[0]),
+        'best_validation': best, 'last_validation': float(val[-1]),
+        'first_minus_best': float(val[0] - best), 'last_minus_best': float(val[-1] - best),
+        'stop_reason': reason, 'final_stale_count': stale,
+        'best_improvement_epochs': updates, 'last10_validation': last.tolist(),
+        'last10_first_to_last_change': float(last[-1] - last[0]),
+        'last10_step_decreases': int(np.sum(np.diff(last) < 0)),
+        'last10_fitted_slope_per_epoch': float(np.polyfit(np.arange(len(last)), last, 1)[0]),
+        'new_best_in_last10': [e for e in updates if e > len(h) - 10],
+        'optimizer_steps_per_epoch': math.ceil(len(f['members']) * 672 / 256),
+        'record_consistency': True})
+    histories[key] = {'train': train, 'validation': val}
+
+comparisons = []
+for seed in [20260925, 20260926]:
+    rr = [r for r in records if r['seed'] == seed and r['method'] in ['tabicl_risk', 'empirical_risk']]
+    assert len(rr) == 8 and all(len(r['members']) == 4 for r in rr)
+    common = min(r['epochs'] for r in rr)
+    per_method = {}
+    for method in ['tabicl_risk', 'empirical_risk']:
+        chosen = [r for r in rr if r['method'] == method]
+        per_method[method] = {
+            'mean_validation_at_epoch': np.mean([histories[r['key']]['validation'][:common] for r in chosen], axis=0).tolist(),
+            'mean_online_train_at_epoch': np.mean([histories[r['key']]['train'][:common] for r in chosen], axis=0).tolist(),
+            'validation_selected_checkpoint_mean': float(np.mean([r['best_validation'] for r in chosen])),
+            'epochs': [r['epochs'] for r in chosen], 'best_epochs': [r['best_epoch'] for r in chosen],
+            'stop_reasons': [r['stop_reason'] for r in chosen],
+        }
+    diff = (np.array(per_method['tabicl_risk']['mean_validation_at_epoch']) -
+            np.array(per_method['empirical_risk']['mean_validation_at_epoch']))
+    comparisons.append({'seed': seed, 'common_observed_epochs': common, 'per_method': per_method,
+        'Tab_minus_empirical_validation_by_epoch': diff.tolist(),
+        'Tab_lower_epochs': int(np.sum(diff < 0)), 'Tab_higher_epochs': int(np.sum(diff > 0)),
+        'zero_difference_epochs': int(np.sum(diff == 0)),
+        'last_common_epoch_difference': float(diff[-1]),
+        'last5_common_epoch_mean_difference': float(diff[-5:].mean()),
+        'selected_checkpoint_mean_difference': per_method['tabicl_risk']['validation_selected_checkpoint_mean'] -
+                                               per_method['empirical_risk']['validation_selected_checkpoint_mean']})
+
+elapsed = time.perf_counter() - started
+rss = psutil.Process().memory_info().rss
+assert elapsed < 10 and rss < 1024**3
+assert all(sha(BASE / name) == h for name, h in hashes.items())
+stop_counts = {reason: sum(r['stop_reason'] == reason for r in records)
+               for reason in sorted(set(r['stop_reason'] for r in records))}
+result = {'complete': True, 'records': records, 'comparisons': comparisons,
+    'stop_counts_all29': stop_counts, 'all_records_consistent': True,
+    'elapsed_seconds': elapsed, 'sampled_rss_bytes': rss, 'new_fits': 0,
+    'new_model_calls': 0, 'input_files_unchanged_before_accounting': True,
+    'timing_scope': 'Saved history loading and numerical summaries; excludes imports/hashes/result serialization',
+    'claims_optimizer_convergence': False, 'used_to_select_clustering': False}
+write(OUT / 'result.json', result)
+ledger_path = BASE / 'cumulative_execution_budget.json'
+ledger = json.loads(ledger_path.read_text(encoding='utf-8'))
+assert 'training_path_109' not in ledger['new_cheap_diagnostic_seconds']
+(OUT / 'ledger_before_accounting.json').write_bytes(ledger_path.read_bytes())
+ledger['new_cheap_diagnostic_seconds']['training_path_109'] = elapsed
+ledger['cheap_stage_details'].append({'stage': 'training_path_109', 'new_fits': 0,
+    'new_model_calls': 0, 'arithmetic_seconds': elapsed, 'cost_not_counted_twice': True})
+write(ledger_path, ledger)
+write(OUT / 'run_finished.json', {'complete': True, 'unix': time.time(),
+    'result_sha256': sha(OUT / 'result.json'), 'ledger_after_sha256': sha(ledger_path)})
+print(json.dumps({'stop_counts': stop_counts, 'comparisons': [{k:v for k,v in c.items()
+    if k != 'per_method' and k != 'Tab_minus_empirical_validation_by_epoch'} for c in comparisons],
+    'elapsed_seconds': elapsed, 'ledger_sha256': sha(ledger_path)}), flush=True)

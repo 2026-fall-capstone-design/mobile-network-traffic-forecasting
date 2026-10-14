@@ -322,3 +322,7 @@ H043 후속: [51·55 GOTSF 그림·애니메이션](records/0051-0055-gotsf-medi
 [원107 자기 시간자료와 외부입력 비중](records/0137-calendar-retention-and-external-support.md)은15조건·240cell비중·zero와PCC RCTL반례를25주장으로 정리했다. [재검토 안내](references/calendar-retention-and-external-support.md)에서 자료수·입력근접성·조건부관계·RCTL 지표를 구별한다.
 
 [원108 고정 가중치 BN 통계](records/0138-fixed-weight-bn-statistics.md)는14일 평균 악화와 개선cell/day·144행 복원 한계·9회 상태적합 비용을26주장으로 연결했다. [재사용 안내](references/fixed-weight-bn-statistics.md)에서 원checkpoint와 새buffer, 파생원장과 원본을 구별한다.
+
+## 원109: 저장 학습 경로와 종료 규칙
+
+[정리 기록](records/0139-saved-training-path-and-stopping.md)에서29개 로그의 strict best·patience와 두 K4의공통42/43epoch를 찾을 수 있다. 학습 우열은 바뀌었지만 상한 절단으로 기존 비교를 무효화할 근거는 없었다. online train/eval과 선택 checkpoint의 차이, 실제 전후원장과미복구 공백을 보존했다. 41SHA/110경로·새사본8/기존33·새전문38개 중로그29개이며 전체정리는 진행 중이다.

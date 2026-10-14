@@ -225,3 +225,7 @@ MMR2405.01709v2(35쪽), MRI2602.04155v2(32쪽), 통신 q-FFL2502.06743v2(7쪽)�
 [원107](records/0137-calendar-retention-and-external-support.md)의 입력비중 차이는 RCTL 손해의 원인을 식별하지 않았다. 초기실패로그/실행코드hash/원장기입시점/nativeGoal상태전환은 미복구이며 BN12/후속비교는 이번새검증이아니다. 원108이후/긴고유판본/다른형식·통합/장기접근/최종delta/검색10+와전체Goal은미완료다.
 
 [원108](records/0138-fixed-weight-bn-statistics.md)은 사후 BN 통계만으로 기존손해를 해결하지 못했다. 적합후parameter/전체복원출력·실행도구로그/회계시각/과거Goal9.1판본 공백이 남는다. 원109이후·고유긴판본/다른형식·통합/장기접근/최종delta/검색검수와전체Goal도 미완료다.
+
+## 원109 뒤에 남은 학습·선정 질문
+
+[원109](records/0139-saved-training-path-and-stopping.md)은epoch80절단이나저장종료불일치의근거를찾지못했다. optimizer 수렴·patience의최적공정성·추가학습효과·소속효과의원인은미확인이다. 재검토에는기존과달라지는입력지원/소속/optimizer/종료조건과독립평가를명시한다. 정확한원장쓰기시각·도구응답은미복구이며after109백업만으로원110내용의검토완료를주장하지 않는다.

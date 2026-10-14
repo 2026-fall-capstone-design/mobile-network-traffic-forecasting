@@ -1,0 +1,393 @@
+{
+  "as_of_date": "2026-09-26",
+  "model_calls_by_stage": [
+    {
+      "stage": "smoke",
+      "contexts": 4,
+      "predicted_query_rows": 256,
+      "fit_predict_seconds": 4.840182299999924,
+      "ensemble": 1
+    },
+    {
+      "stage": "B1_anchor_and_cross_query",
+      "contexts": 16,
+      "predicted_query_rows": 17408,
+      "fit_predict_seconds": 100.32148320000078,
+      "ensemble": 1
+    },
+    {
+      "stage": "B2_observed_query",
+      "contexts": 16,
+      "predicted_query_rows": 2688,
+      "fit_predict_seconds": 31.532703299998957,
+      "ensemble": 1
+    },
+    {
+      "stage": "cell_identity_information_diagnostic",
+      "contexts": 3,
+      "predicted_query_rows": 3072,
+      "fit_predict_seconds": 27.52008300000125,
+      "ensemble": 1
+    },
+    {
+      "stage": "broad_cell_information",
+      "contexts": 4,
+      "predicted_query_rows": 8192,
+      "fit_predict_seconds": 40.164919400000144,
+      "ensemble": 1
+    },
+    {
+      "stage": "target_parameterization",
+      "contexts": 2,
+      "predicted_query_rows": 4096,
+      "fit_predict_seconds": 19.50751510000009,
+      "ensemble": 1
+    },
+    {
+      "stage": "partial_observation_54",
+      "contexts": 4,
+      "predicted_query_rows": 256,
+      "fit_predict_seconds": 2.543409199995949,
+      "ensemble": 1
+    },
+    {
+      "stage": "history_grouping_60",
+      "contexts": 16,
+      "predicted_query_rows": 2048,
+      "fit_predict_seconds": 19.109480999999505,
+      "ensemble": 1
+    },
+    {
+      "stage": "output_compression_74",
+      "contexts": 4,
+      "predicted_query_rows": 1344,
+      "fit_predict_seconds": 5.281541500000458,
+      "ensemble": 1
+    },
+    {
+      "stage": "pooled_context_101",
+      "contexts": 9,
+      "predicted_query_rows": 16128,
+      "fit_predict_seconds": 138.25820430001477,
+      "ensemble": 1,
+      "all_calls_successful": true,
+      "accounting_basis": "Attempted context/query counts; completed or interrupted work is never retried or reset."
+    }
+  ],
+  "used": {
+    "TabICL_contexts": 78,
+    "TabICL_query_rows": 55488,
+    "TabICL_fit_predict_seconds": 389.07952230001183,
+    "RCTL_fits": 29,
+    "RCTL_epochs": 1565,
+    "RCTL_wall_seconds": 1666.774965799993,
+    "RCTL_frozen_inference_seconds": 15.313427000004594,
+    "RCTL_frozen_gradient_seconds": 4.595717799995327,
+    "RCTL_statistics_adaptations": 9,
+    "RCTL_fit_or_adaptation_runs": 38,
+    "RCTL_statistics_adaptation_stage_seconds": 8.635802399992826
+  },
+  "caps": {
+    "TabICL_contexts": 80,
+    "TabICL_query_rows": 60000,
+    "TabICL_fit_predict_seconds": 2400,
+    "RCTL_fits": 47,
+    "RCTL_epochs": 3005,
+    "RCTL_wall_seconds": 3458.1391634,
+    "cheap_numeric_seconds": 600,
+    "total_local_modeling_seconds": 6000,
+    "RCTL_fit_or_adaptation_runs": 47
+  },
+  "remaining_count_budgets": {
+    "TabICL_contexts": 2,
+    "TabICL_query_rows": 4512,
+    "RCTL_fits": 9,
+    "RCTL_fit_or_adaptation_runs_including_reservation": 9
+  },
+  "new_cheap_diagnostic_seconds": {
+    "finite_sample_information.json": 0.24920859999929235,
+    "population_scope_diagnostic.json": 0.2892932999993718,
+    "upc_core_stability.json": 0.3006076000001485,
+    "upc_transfer_diagnostic.json": 0.33516769999914686,
+    "cell_identity_simple_Ridge_and_HGB": 0.27645530000154395,
+    "broad_cell_information_simple_Ridge_and_HGB": 0.37565600000016275,
+    "target_parameterization_simple_Ridge_and_HGB": 0.28845060000094236,
+    "temporal_validity": 30.648936099998537,
+    "spatial_information": 13.466453199998796,
+    "error_concentration": 0.12889259999974456,
+    "conditional_pooling_cost": 6.4339365999992895,
+    "observable_state_loss": 0.6636078999999881,
+    "resolution_diagnostic_31": 2.314005800002633,
+    "information_claim_audit_37": 0.0002907999987655785,
+    "cell_harm_envelope_42": 0.03152100000079372,
+    "input_sharing_stability_46": 0.030363999998371582,
+    "aggregation_recovery_49": 0.08182460000170977,
+    "beijing_schema_52": 0.01390940000055707,
+    "partial_observation_54": 0.7142799000030209,
+    "partial_observation_54_failed_preflight_process": 4.1631648,
+    "mae_sampling_audit_57": 0.00016200000027311035,
+    "history_grouping_60": 3.2025605000017094,
+    "history_logic_cost_61": 9.660000068834051e-05,
+    "group_risk_diagnostic_67": 0.020347199999378063,
+    "peak_diagnostic_70": 0.04776319999655243,
+    "output_compression_74": 2.667649800001527,
+    "conditional_graph_80": 2.44640910000453,
+    "forecast_reuse_97": 0.21576900000218302,
+    "pooled_context_101": 2.2270843999867793,
+    "cellwise_transition_106": 0.02850919999764301,
+    "support_composition_107": 0.4165343999878993,
+    "training_path_109": 0.01929139999265317
+  },
+  "accounting_note": "Model fit/predict and RCTL totals are measured. New numeric diagnostics are measured. Initial preprocessing and some earlier numeric wall times were not separately logged; no exact full preprocessing total is claimed.",
+  "budget_resets": 0,
+  "new_RCTL_fits_permitted_under_current_cap": true,
+  "research_goal_complete": false,
+  "external_blocker": null,
+  "inference_only_stages": [
+    {
+      "stage": "frozen_recursive_horizon",
+      "RCTL_fits": 0,
+      "TabICL_contexts": 0,
+      "forward_calls": 504,
+      "predicted_rows": 110592,
+      "wall_seconds": 4.574360099999467,
+      "precommitted_stage_wall_cap_seconds": 300,
+      "counts_toward_total_local_modeling": true
+    },
+    {
+      "stage": "frozen_fit_gap_34",
+      "RCTL_fits": 0,
+      "TabICL_contexts": 0,
+      "forward_calls": 251,
+      "predicted_rows": 107520,
+      "wall_seconds": 5.293488300001627,
+      "precommitted_stage_wall_cap_seconds": 300,
+      "peak_rss_bytes": 257781760,
+      "counts_toward_total_local_modeling": true
+    },
+    {
+      "stage": "serving_cost_95",
+      "RCTL_fits": 0,
+      "TabICL_contexts": 0,
+      "forward_calls": 2166,
+      "predicted_rows": 3648,
+      "wall_seconds": 5.4455786000035005,
+      "timed_route_seconds_included_in_wall": 5.10660659999121,
+      "precommitted_stage_wall_cap_seconds": 180,
+      "sampled_max_rss_bytes": 233689088,
+      "counts_toward_total_local_modeling": true,
+      "timing_scope": "Stage includes preparation and warmup; library import/process startup not timed.",
+      "partitions_unchanged": true,
+      "weights_and_buffers_unchanged": true
+    }
+  ],
+  "cheap_stage_details": [
+    {
+      "stage": "observable_state_loss",
+      "new_simple_fits": 2,
+      "methods": [
+        "global_Ridge",
+        "global_HGB"
+      ],
+      "entire_stage_seconds": 0.6636078999999881,
+      "fit_predict_seconds_included_in_stage": 0.24943749999874854,
+      "peak_rss_bytes": 171868160,
+      "cost_not_counted_twice": true
+    },
+    {
+      "stage": "resolution_diagnostic_31",
+      "new_simple_fits": 32,
+      "methods": [
+        "Ridge",
+        "HGB"
+      ],
+      "resolutions_minutes": [
+        10,
+        60
+      ],
+      "entire_stage_seconds": 2.314005800002633,
+      "fit_predict_seconds_included_in_stage": 2.2153856999975687,
+      "peak_rss_bytes": 164704256,
+      "cost_not_counted_twice": true
+    },
+    {
+      "stage": "partial_observation_54",
+      "new_simple_fits": 8,
+      "methods": [
+        "Ridge",
+        "HGB"
+      ],
+      "entire_stage_seconds": 3.25768909999897,
+      "TabICL_seconds_accounted_separately": 2.543409199995949,
+      "fit_predict_seconds_included_in_cheap_stage": 0.4162254999973811,
+      "cost_not_counted_twice": true,
+      "preflight_correction_no_model_calls": true
+    },
+    {
+      "stage": "history_grouping_60",
+      "new_simple_fits": 32,
+      "methods": [
+        "Ridge",
+        "HGB"
+      ],
+      "entire_stage_seconds": 22.312041500001214,
+      "TabICL_seconds_accounted_separately": 19.109480999999505,
+      "fit_predict_seconds_included_in_cheap_stage": 2.006623100001889,
+      "cost_not_counted_twice": true
+    },
+    {
+      "stage": "output_compression_74",
+      "new_simple_fits": 26,
+      "methods": [
+        "Ridge",
+        "HGB"
+      ],
+      "entire_stage_seconds": 7.949191300001985,
+      "TabICL_seconds_accounted_separately": 5.281541500000458,
+      "fit_predict_seconds_included_in_cheap_stage": 2.3038000999949872,
+      "cost_not_counted_twice": true
+    },
+    {
+      "stage": "conditional_graph_80",
+      "new_simple_fits": 32,
+      "methods": [
+        "Ridge",
+        "HGB"
+      ],
+      "entire_stage_seconds": 7.042126899999857,
+      "RCTL_gradient_seconds_accounted_separately": 4.595717799995327,
+      "simple_fit_predict_seconds_included_in_cheap_stage": 1.4865054000038072,
+      "cost_not_counted_twice": true,
+      "new_TabICL_calls": 0,
+      "new_RCTL_fits": 0
+    },
+    {
+      "stage": "forecast_reuse_97",
+      "new_simple_fits": 0,
+      "new_TabICL_calls": 0,
+      "new_RCTL_fits": 0,
+      "new_RCTL_forwards": 0,
+      "entire_stage_seconds": 0.21576900000218302,
+      "array_analysis_seconds_included": 0.025216200010618195,
+      "cost_not_counted_twice": true,
+      "timing_scope": "Includes stored data load, arithmetic replay and result array writes; excludes process imports and initial source hashing.",
+      "input_prediction_methods": 8,
+      "cells": 16,
+      "target_hours": 480,
+      "note": "Initial bundled Python failed importing psutil before run marker or numeric work; model runtime succeeded once."
+    },
+    {
+      "stage": "pooled_context_101",
+      "new_simple_fits": 18,
+      "new_TabICL_contexts": 9,
+      "new_TabICL_query_rows": 16128,
+      "new_RCTL_fits": 0,
+      "new_RCTL_forwards": 0,
+      "new_RCTL_gradients": 0,
+      "entire_stage_seconds": 140.48528870000155,
+      "TabICL_seconds_accounted_separately": 138.25820430001477,
+      "cheap_seconds": 2.2270843999867793,
+      "cost_not_counted_twice": true,
+      "timing_scope": "Starts after imports, settings and source hashes; includes feature construction, model fitting/prediction, numerical summaries and result writes until final marker. Source rehashing excluded."
+    },
+    {
+      "stage": "cellwise_transition_106",
+      "new_simple_fits": 0,
+      "new_RCTL_fits": 0,
+      "new_TabICL_calls": 0,
+      "new_model_forwards": 0,
+      "arithmetic_seconds": 0.02850919999764301,
+      "cost_not_counted_twice": true,
+      "timing_scope": "Saved arrays load and numerical diagnosis only; model calls none."
+    },
+    {
+      "stage": "support_composition_107",
+      "new_simple_fits": 0,
+      "new_RCTL_fits": 0,
+      "new_TabICL_calls": 0,
+      "new_model_forwards": 0,
+      "entire_charged_seconds": 0.4165343999878993,
+      "failed_process_seconds_included": 0.3895649,
+      "arithmetic_seconds": 0.026969499987899326,
+      "cost_not_counted_twice": true
+    },
+    {
+      "stage": "training_path_109",
+      "new_fits": 0,
+      "new_model_calls": 0,
+      "arithmetic_seconds": 0.01929139999265317,
+      "cost_not_counted_twice": true
+    }
+  ],
+  "frozen_gradient_stages": [
+    {
+      "stage": "conditional_graph_80",
+      "forward_backward_batches": 224,
+      "rows": 5376,
+      "optimizer_steps": 0,
+      "RCTL_fits": 0,
+      "wall_seconds": 4.595717799995327,
+      "precommitted_stage_wall_cap_seconds": 180,
+      "partition_frozen_before_RCTL": true,
+      "parameters_and_buffers_unchanged": true
+    }
+  ],
+  "additional_rounds": {
+    "post_revision_106_round1": {
+      "status": "active",
+      "authorization": "User continuation request reflected in goal section 9.1 on 2026-09-26",
+      "plan_sha256": "2161721c8d09e1198b36751716701bf226b033ea42e0a576befdd67f667eef2c",
+      "code_sha256": "e93ff72cd288dd1c275cfb83c6ee07697cf23a89715c594e2b16f22b050ff612",
+      "previous_ledger_sha256": "98972b834adb0c650f6e309bc1b24a7d5a96e0b03eec1f86a9c0f651025204ba",
+      "baseline_optimizer_fits": 29,
+      "baseline_RCTL_wall_seconds": 1658.1391634000001,
+      "limit_fit_or_adaptation_runs": 18,
+      "limit_epochs_per_optimizer_fit": 80,
+      "limit_RCTL_model_seconds": 1800,
+      "used_fit_or_adaptation_runs": 9,
+      "used_optimizer_fits": 0,
+      "used_statistics_adaptations": 9,
+      "used_RCTL_model_seconds": 8.635802399992826,
+      "TabICL_allowance_activated": false,
+      "reservations": {
+        "normalization_108": {
+          "status": "settled",
+          "adaptations": 9,
+          "optimizer_fits": 0,
+          "stage_seconds_cap": 300,
+          "used_adaptations": 9,
+          "used_stage_seconds": 8.635802399992826,
+          "result_sha256": "8763da8c54212d914ce822cee759a157dc725922dbd3d9497fa5d594bd87be84",
+          "complete": true
+        }
+      },
+      "unreserved_remaining_fit_or_adaptation_runs": 9,
+      "automatic_recharge": false
+    }
+  },
+  "RCTL_count_accounting_note": "used.RCTL_fits counts optimizer training only. Statistics adaptations consume the same combined allowance; caps.RCTL_fits is a compatibility alias of the combined cap, never subtract only optimizer fits. remaining_count_budgets.RCTL_fits excludes outstanding reservations. RCTL_wall_seconds includes completed adaptation stages; the separate adaptation seconds are a subset, not an extra charge.",
+  "statistics_adaptation_stages": [
+    {
+      "stage": "normalization_108",
+      "optimizer_fits": 0,
+      "adaptations_started": 9,
+      "adaptations_completed": 9,
+      "entire_stage_seconds": 8.635802399992826,
+      "included_in_RCTL_wall_seconds": true,
+      "counts": {
+        "statistics_adaptations_started": 9,
+        "statistics_adaptations_completed": 9,
+        "optimizer_fits": 0,
+        "optimizer_steps": 0,
+        "gradient_calls": 0,
+        "calibration_prefix_calls": 828,
+        "calibration_prefix_rows": 387072,
+        "prediction_calls": 261,
+        "primary_prediction_rows": 112896,
+        "restoration_prediction_rows": 144,
+        "peak_rss_bytes": 271278080
+      },
+      "complete": true
+    }
+  ]
+}
