@@ -1,5 +1,7 @@
 # 13–15 교차 예측과 cell 식별 정보
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 2026년 9월 25일의 13·14 계획과 저장 산출물, 15의 수치·방법 판단을 연결했다. [10–12](0010-0012-population-upc-stability.md)에서 확인한 소속 차이가 실제 예측 관계와 연결되는지, 같은 pooled 자료에 cell ID를 더하면 무엇이 달라지는지를 물었다. 13은 기존 예측의 재분석이고, 14는 당시 새 TabICL 3조건과 단순모델 4조건의 실행이다. 이 아카이브에서는 저장값만 검산했다.
 
 15의 §3, 여섯 선행연구의 지정 방법·가정은 [후속 문헌 검수](0015-category-cost-time-literature.md)에서 대조했다. 누적 호출·비용은 [15·21 비용 원장](0015-0021-cumulative-costs.md)에 연결한다. 원문 전체 62행을 읽고 보존한 것과 전체 주장 검수 완료를 구분한다. [출처·실제 읽은 범위](../sources/history-008.md), [핵심 주장 11개](../verification/history-008-primary-review.json), [검수](../verification/history-008.md)를 함께 본다.
@@ -148,6 +150,5 @@ Tab ID는 11cell에서 이득·5cell에서 손해, 열 순서 변경은 9cell에
 같은 조건의 실험을 다시 계획하기 전에 [보존 근거](../evidence/0013-0015/README.md)의 교차 MAE·지원 matrix·24소속·7예측·선택 시간·ID 순열을 재사용한다. 새 연구라면 기간/도시/cell 집합, 같은 자료량의 pooled 비교, 실제 제공 X/Y, seed/표현 반복, 최종 learner와 RCTL 평가 중 무엇이 달라지는지 명시한다. 평균 이득 외에 cell·기간별 손해와 준비/추론 비용도 함께 남긴다.
 
 15 §3의 Effect fusion·Tree-Structured·BanditPAM++·Active Clustering·CURE·NOMADD 해석과 신규성 판단은 [후속 문헌 검수](0015-category-cost-time-literature.md)에서 지정 구간의 방법·가정과 대조했다. 전논문 검토와 이후 시간 유효성 탐색·회귀 TabPFN·전체 후속 연구의 연결은 미완료다. 이 페이지의 수치 정리는 13/14 및 15의 위 지정 부분에 한정한다.
-
 
 후속 검수: [19의 넓힌 cell ID 비교](0019-broad-cell-identity.md)와 [20·21의 잔차·집중도](0020-0021-target-parameterization.md)를 연결했다. 21의 문헌 종합과 전체 누적 원장은 계속 미완료다.

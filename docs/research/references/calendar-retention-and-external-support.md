@@ -1,5 +1,7 @@
 # 시간자료 보존과 외부 입력 근접성을 새 후보에 재사용할 때
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원107](../records/0137-calendar-retention-and-external-support.md) · [원106](../records/0136-same-k-cellwise-error-transition.md)
 
 자기 시간·요일 sample 개수가 같은 것과 트래픽 분포가 같은 것, 학습행의 자기cell25%와 density own 비중, external과group으로 재정규화한 비율을 구별한다. 훈련기간 안64query의 앞뒤절반 평균을 개별cell 두절반 부호나 이후20일 지원으로 확대하지 않는다.

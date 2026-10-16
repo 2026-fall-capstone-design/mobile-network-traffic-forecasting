@@ -1,5 +1,7 @@
 # 원85 후속: 후보 판단의 수정 이력과 문헌의 실제 읽기 범위
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-113.md) · [검수](../verification/history-113.md) · [보존 근거](../evidence/0113-decision-history-sources/README.md) · [원85 비용·기호식](0112-rejection-scope-allocation.md)
 
 팀원이 과거의 기각 사유와 정정된 결론을 함께 찾도록 결정표20행, 누적연혁36절, 검색 자료의 실제 범위를 연결했다.

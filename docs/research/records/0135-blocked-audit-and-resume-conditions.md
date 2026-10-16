@@ -1,5 +1,7 @@
 # 원105 과거 차단 감사와 재개 조건
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **원105는 세 번째 자원 감사에서 과거 연구 Goal의 차단 상태를 보고한 기록이다.** 새 성능 결과나 모든 연구 방향의 기각으로 읽지 않는다. 현재 아카이브 Goal의 상태도 이 보고에서 가져오지 않는다.
 
 [7출처/15사본](../sources/history-135.md) · [15주장](../verification/history-135-claims.json) · [작성 후 대조](../verification/history-135-second-pass.json) · [판독 범위](../evidence/0135-blocked-audit-and-resume-conditions/packet-coverage.json) · [재개·재검토 안내](../references/blocked-audit-and-resume-conditions.md)

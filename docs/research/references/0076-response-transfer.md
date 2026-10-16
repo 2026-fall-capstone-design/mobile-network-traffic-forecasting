@@ -1,5 +1,7 @@
 # 반응 전달과 상호작용 전달의 선행 근거
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [76의 당시 판단](../records/0076-0079-learning-decisions.md#c04) · [전체 대조 기록](../records/0076-response-transfer-audit.md) · [수치 증거](../evidence/0076-response-transfer/README.md)
 
 | 문헌 | 확인한 판본·위치 | 전달 대상 | 보존할 조건과 예외 |

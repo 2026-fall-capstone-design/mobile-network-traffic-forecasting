@@ -5,6 +5,13 @@
 [배포된 데모](https://2026-fall-capstone-design.github.io/mobile-network-traffic-forecasting/) ·
 [결과 JSON 규약](../docs/web-data-contract.md)
 
+## 표시하는 결과의 범위
+
+현재 화면은 3셀·1시간 간격의 합성 예제와 MAE/RMSE를 표시합니다.
+연구용 [Milan-900-10min v1.0](../docs/research-protocol.md)의 결과는
+[웹 v1 지원 범위](../docs/web-data-contract.md#연구-결과를-연결할-때)를 확장한 뒤 연결합니다.
+연구 예측 원본과 시드별 지표는 [팀 결과 교환 형식](../docs/experiment-results.md)으로 보관합니다.
+
 ## 파일별 역할
 
 | 파일 | 수정할 내용 |
@@ -70,9 +77,9 @@ GitHub Pages의 프로젝트 주소는 `/mobile-network-traffic-forecasting/` �
 
 [Checks and Pages](../.github/workflows/ci.yml)가 다음 순서로 실행됩니다.
 
-1. PR에서 `python-check`와 `web-check`를 실행합니다.
+1. PR에서 `python-check`, `web-check`, `archive-check`를 실행합니다.
 2. PR을 `main`에 병합하면 같은 검사를 다시 실행합니다.
-3. 두 검사가 성공하면 `deploy-pages`가 `web/`를 배포합니다.
+3. 배포 의존 검사인 `python-check`와 `web-check`가 성공하면 `deploy-pages`가 `web/`를 배포합니다.
 
 배포 상태는
 [GitHub Actions](https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting/actions)에서

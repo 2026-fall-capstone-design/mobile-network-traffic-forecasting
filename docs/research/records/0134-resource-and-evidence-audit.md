@@ -1,5 +1,7 @@
 # 원104 자원과 근거의 두 번째 감사
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **원104는 실험 상한과 후속 근거를 다시 확인한 운영 기록이다.** 새 성능 실험이나 모든 대안의 기각으로 분류하지 않는다. 2026-09-26 당시 연구 Goal은 미완료·활성 상태로 남았다. 현재 아카이브 작업은 이 상태와 구별한다.
 
 [4출처/10사본](../sources/history-134.md) · [13주장](../verification/history-134-claims.json) · [작성 후 대조](../verification/history-134-second-pass.json) · [범위](../evidence/0134-resource-and-evidence-audit/packet-coverage.json) · [재검토 안내](../references/resource-and-evidence-audit.md)

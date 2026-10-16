@@ -1,5 +1,7 @@
 # 고정 cluster를 공동 재학습 단위로 쓸 때 남는 근거
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-105.md) · [검수](../verification/history-105.md) · [실제 독해](../evidence/0105-joint-update-cost/read-scopes.json) · [남은 자료](../evidence/0105-joint-update-cost/packet-coverage.json)
 
 원본83의 유지·갱신 비용 후보를 정리한다. 비용의 조건부 원리와 현재 자료에서 그 원리를 사용할 근거를 구별해 같은 가정의 재제안을 줄인다.

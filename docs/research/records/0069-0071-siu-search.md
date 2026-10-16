@@ -1,5 +1,7 @@
 # 69–71 문헌 보충: SIU2026 초록과 저장 검색 경로
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 30개 주장을 작성 후 원문에 다시 대조했다. [주장별 근거](../verification/history-069-claims.json)와 [문서·출처 검사](../verification/history-069-document-check.json)를 함께 확인할 수 있다. 같은 에이전트의 별도 대조이며 독립 심사나 원실험 재현은 아니다.
 
 [69–71 피크 목적 진단](0069-0071-peak-objective.md) · [Forecaster’s Dilemma](0069-0071-forecaster-dilemma.md) · [DeepCog](0069-0071-deepcog.md) · [출처·읽은 범위](../sources/history-069.md) · [검수](../verification/history-069.md) · [결과 100개 색인](../evidence/0069-0071-siu-search/search-result-index.json)

@@ -1,5 +1,7 @@
 # 18·21: 주변 cell 입력의 추가 가치
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 기록 17이 시간에 따라 context를 버리는 구조를 추천하지 않은 뒤, 기록 18은 주변 cell의 관측 이력을 더하는 가장 단순한 비교를 계획했다. 기록 21의 공간 진단 부분은 그 저장 결과를 보고한다. **Ridge는 세 추가 입력 모두의 전체 MAE가 나빠졌고, HGB 이웃 평균의 작은 전체 이득도 모든 cell·기간의 이득으로 이어지지 않았다.** 당시에는 방향 정렬·attention·별도 clustering을 추가할 직접 근거를 확보하지 못했다고 판단했다. **H012-C01·H012-C05·H012-C11**
 
 [17의 앞선 질문](0017-adaptation-literature.md) → [18 사전 계획](../evidence/0018-0021/originals/SRC-0021026.md.txt) → [21 당시 종합](../evidence/0018-0021/originals/SRC-0021095.md.txt)의 20–29행을 연결한다. [보존 근거](../evidence/0018-0021/README.md)·[출처 범위](../sources/history-012.md)·[검수](../verification/history-012.md)·[주장별 출처](../verification/history-012-primary-review.json)를 함께 읽는다. 이번에는 원 모델을 실행하지 않고 저장된 수치를 검산했다.
@@ -98,6 +100,5 @@ Cell 7524의 Ridge MAE는 자기 입력 1.550966532에서 8방향 2.293829286으
 동일 32cell·분할·입력으로 비교하려면 먼저 5개 저장 배열,이웃 선택,전체 cell/day 반례를 재사용한다. 새 질문은 다른 입력·자료·모델 용량·기간·grouping 규칙 중 무엇이 달라지는지 적어야 한다. 공간 입력을 추가하는 효과와 cell을 묶어 학습하는 효과는 분리해 평가한다. 이 결과로 물리적 공간 영향이 없다고 결론 내리거나 새 소속의 RCTL 효용을 기각하지 않는다. **H012-C11**
 
 후속 검수에서 기록21의 [19 pooled cell ID](0019-broad-cell-identity.md), [20 target 표현](0020-0021-target-parameterization.md), [추가 문헌](0021-0022-literature-scope.md), [완료 호출 누적 비용](0015-0021-cumulative-costs.md)을 연결했다. 기록21 전체를 읽은 것과 전체 주장을 검증·통합한 것은 다르다. 실패·후속 비용 전수 검토는 남았고, 이후393의 공간 정보 기록도 탐색만 했으며 완료로 세지 않았다.
-
 
 후속 검수: [19의 넓힌 cell ID 비교](0019-broad-cell-identity.md)와 [20·21의 잔차·집중도](0020-0021-target-parameterization.md)를 연결했다. 21의 문헌 종합과 전체 누적 원장은 계속 미완료다.

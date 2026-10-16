@@ -1,5 +1,7 @@
 # 과거 차단 기록을 새 연구안에 재사용할 때
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원105](../records/0135-blocked-audit-and-resume-conditions.md) · [원104](../records/0134-resource-and-evidence-audit.md) · [원103](../records/0133-current-evidence-and-unapproved-extension.md)
 
 차단은 당시 상한과 직접 근거 공백의 판단이다. 모든 연구 방향의 기각이나 중간 문서의 최종 연구 완료와 구별한다. 기록의 requested/returned/confirmed 필드는 당시 도구 응답을 별도로 복구한 증거가 아니다.

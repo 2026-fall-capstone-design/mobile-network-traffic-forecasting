@@ -1,5 +1,11 @@
 # 자료 목록과 출처 매핑
 
+[목록과 초기 검수](#목록과-초기-검수) | [관측 비용과 입력 표현](#관측-비용과-입력-표현) | [반응 전달과 동적 소속](#반응-전달과-동적-소속) | [공유 구조와 후속 검수](#공유-구조와-후속-검수)
+
+> 아래의 진행·후속·미완료 표기는 각 묶음을 작성한 당시의 검토 범위입니다. 현재 정리 범위는 [연구기록 안내](../README.md)를 따릅니다.
+
+## 목록과 초기 검수
+
 [history-024 목록](history-024-sources.jsonl)은 39–40의 새 원문 5개(19,293 bytes), 일차자료 metadata 8개, 해시 전용 4개를 연결한다. [읽은 범위](../sources/history-024.md)는 메모·코드 3개와 작은 JSON 2개 전체, 세 논문 지정 텍스트 22쪽/시각 9쪽, 설치 코드 선택 구간이다. 원문의 68G 비용과 pinned 구현의 최대 289G 정정을 구별한다.
 
 [history-023 목록](history-023-sources.jsonl)은36–38의 새 원문10개·기존 원장1개·지정 일차자료 metadata11개·해시 전용4개를 연결한다. [실제 열람 범위](../sources/history-023.md)는 메모/코드5개·작은 JSON5개 전체와 세 논문의 지정45쪽/시각16쪽이다. 전체 논문 완료로 세지 않으며 원문의 fixed-k 표현을 일차문헌 범위로 좁힌 정정을 보존한다.
@@ -59,7 +65,6 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 
 [15·21 초기 누적 비용 출처](history-015-sources.jsonl)는 기존28개 원본을 재사용하고 이번 타이머·비용 필드 대조 범위를 구분한다. 전체 실패·후속 비용 원장의 완료를 뜻하지 않는다.
 
-
 [23·25 조건부 공유 비용 목록](history-016-sources.jsonl)은 새 원본9개·기존6개를 연결한다. [읽은 범위](../sources/history-016.md)는 텍스트3개·JSON전체5개·신규 배열1개와 재사용 구간을 구분한다.25의 전체 열람을 §2/§3 검수 완료로 세지 않는다.
 
 [24·25 recursive 진단 목록](history-017-sources.jsonl)은 보존 참조32개(새7·기존25),H5 metadata1개,미게시체크포인트 metadata21개를 구분한다. [읽은 범위](../sources/history-017.md)는 새 텍스트2개·전체JSON3개·지정수치자료2개이며summary의큰행렬은모든값산술대조와수동열람을구분했다.25 §2를추가검수했고§3와전체후속연결은남았다. 체크포인트해시확인을팀가중치접근완료로세지않는다.
@@ -88,7 +93,9 @@ with gzip.open("docs/research/catalog/inventory.jsonl.gz", "rt", encoding="utf-8
 
 [H031 목록](history-031-sources.jsonl)은 52·54와 55의 수치·실패·비용을 [열람 범위](../sources/history-031.md)에 연결한다. 새 정확 사본30개158,421bytes·기존3개·바이너리metadata3개다. 저장 배열·H5고정16열·타임스탬프·원장과 수정 전후 코드를 대조했다. snapshot12의108개 항목은 metadata이며 전체 본문 읽기 수가 아니다. 51·53/55 문헌·팀 바이너리 접근·관련 전체 보고서는 미완료다.
 
-## H032: 51·55 GOTSF의 제한된 통합
+## 관측 비용과 입력 표현
+
+### H032: 51·55 GOTSF의 제한된 통합
 
 [원본 목록](history-032-sources.jsonl)은 34경로(새 정확 사본 23개·236,888 bytes, 재사용 1개, metadata 10개)를 연결합니다. [manifest](../evidence/0051-0055-gotsf-audit/manifest.json)의 별도 추가 참조 4개 중 3개·15,273 bytes를 보존했습니다. 추가 취득은 원래 원본 목록의 증가나 당시 입수 실적을 뜻하지 않습니다. [읽기 범위](../sources/history-032.md)의 텍스트 23쪽·시각 확인 14쪽·코드/노트북 검토와 696개 인쇄값 대조는 저자 성능 재현 및 51·55 전체 완료와 구분합니다.
 
@@ -127,7 +134,6 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H049 출처 목록](history-049-sources.jsonl)은 SGD-as 4묶음·8원본 경로와 58 메모 재사용 2경로를 연결합니다. [열람 범위](../sources/history-049.md)에 PDF7쪽·TXT/preview 파생물·HTML visible text와 공식 URL·해시를 구분했습니다.
 
 [H050 출처 목록](history-050-sources.jsonl)은 수집 script/receipt와 전체 필드로 검토를 확장한 tree 2개, 기존 계획/결과와 다섯 주논문을 연결합니다. [42개 파일 범위표](../evidence/0056-0058-compression-synthesis/packet-scope.json)에 전체 메타데이터·HTML의 보이는 본문·파생물·연결 본문의 구분을 보존했습니다.
-
 
 [H051 목록](history-051-sources.jsonl)은 보존/재사용15묶음31경로와 대형 자산2개를 연결합니다. [실제 열람 범위](../sources/history-051.md)에 전체 텍스트/JSON, 숫자 배열 검산, object 날짜의 정적 읽기와 미검토 문헌을 구분했습니다.
 
@@ -177,58 +183,61 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 
 [H074 출처](../sources/history-074.md)와 [161그룹 catalogue](history-074-sources.jsonl)는 원76–79의 전체 텍스트27·JSON24·변경행8, 정확사본59참조와 metadata102를 구분한다. 등록338경로 중336개는 현재 일치하며 라이브러리2경로는 없다. snapshot19–22의178파일 해시 검사는178본문 독해가 아니다.
 
-## H075: 원76 외부 자료와 저장 결과
+## 반응 전달과 동적 소속
+
+### H075: 원76 외부 자료와 저장 결과
 
 [출처](../sources/history-075.md)와 [25그룹 목록](history-075-sources.jsonl)은 PDF 3개·39쪽, 코드·README 6개, 검색 4개, 별도 TXT 2개, 원 PNG 6개, tree JSON과 부분 commit JSON을 구분한다. TabDistill TXT의 가역적인 표현 대응은 새 독립 독해로 가산하지 않는다. 등록76경로 중74개 해시 일치, 기존 누락2경로는 보관사본과 분리해 기록했다. commit의61patch 독해와27patch 미독해도 명세에 남긴다.
 
-## H076: 남은 상호작용 CSV와 커밋 전체 범위
+### H076: 남은 상호작용 CSV와 커밋 전체 범위
 
 [출처](../sources/history-076.md)와 [3그룹 목록](history-076-sources.jsonl)은 같은 커밋 JSON의 후속 검토와 재참조 논문·코드를 연결한다. CSV 27개·2,253행과 남은 메타데이터를 읽고 20개 주장을 대조했다. `SRC-0063879`는 H075의 부분 검토에서 저장 JSON 전체 검토로 전환한다. 부분 자료 1개를 빼고 전체 JSON 1개를 더하며, 27개 patch나 기존 논문·코드를 새 파일 독해로 중복 가산하지 않는다. H075 목록은 그 당시의 읽기 범위를 보존한다.
 
-
-## 77의 동적 소속 근거
+### 77의 동적 소속 근거
 
 [H077 출처](../sources/history-077.md)와 [22그룹 목록](history-077-sources.jsonl)은 원77외부21그룹과 재참조findings1개를 구분한다. 새전체본문5개·전체JSON2개이며 다른14그룹은 미독해다. 같은commit의 보완외부2파일은 별도명세로 남기고 로컬목록의 완료 수에 더하지 않는다.
 
 [H078 출처](../sources/history-078.md)와 [목록](history-078-sources.jsonl)이 그 후 남은 14개 그룹을 완료했다. 새 독립 PDF 2개·전체 JSON 3개, 기존 논문과 전쪽 대응하는 TXT 3개·직접 열람한 PNG 6개를 구분한다. H077의 목록은 당시 범위를 보존하며, 현재 원77 외부 21개 그룹의 저장 내용 검토는 완료됐다. 인용 문헌 전문과 실행 재현까지 완료한 것은 아니다.
 
-## H079: 원78 회귀 전이 12개 그룹
+### H079: 원78 회귀 전이 12개 그룹
 
 [출처](../sources/history-079.md)와 [13개 목록](history-079-sources.jsonl)은 새 검토 12개와 재참조 findings 1개를 구분한다. 새 독립 본문 4개·전체 JSON 3개, TXT 2개의 23쪽 대응·PNG 3개의 직접 열람이다. 원78의 외부 43개 그룹 중 다른 31개는 이번 범위 밖이며, 그중 H074에서 읽은 manifest도 있어 모두 미독해로 세지 않는다.
 
-## H080: 원78 Task2Vec 13개 그룹
+### H080: 원78 Task2Vec 13개 그룹
 
 [출처](../sources/history-080.md)와 [14개 목록](history-080-sources.jsonl)은 새 검토 13개와 원78 판단 재참조 1개를 연결한다. 독립 본문 5개·전체 JSON 3개, TXT 16쪽 대응·원 PNG 2개·공식 서지 HTML 전체를 구분한다. 표 20개 값과 보충 행렬 3,500개 정수는 표시 결과이며 새 실험 수가 아니다. 이번 밖의 30개에는 H079 등의 기존 완료 자료도 있다.
 
-## H081: 원78 NTKMTL 11개 그룹
+### H081: 원78 NTKMTL 11개 그룹
 
 [출처](../sources/history-081.md)와 [12개 목록](history-081-sources.jsonl)은 새 자료 11개와 이전 판단 1개를 연결한다. PDF29쪽·README74행·Python424/1823행으로 독립 본문4개, 전체JSON3개, 원PNG3개를 구분한다. TXT29쪽 대응·사본22경로·재참조findings는 본문 중복 가산이 없다. 이번 밖의32개에는 기존 검수 범위도 포함된다.
 
-## H082: 원78 검색·접근 3개 그룹
+### H082: 원78 검색·접근 3개 그룹
 
 [출처](../sources/history-082.md)와 [4개 목록](history-082-sources.jsonl)은 새3개와 기존 판단1개를 연결한다. 전체JSON2·빈HEAD1을 구분하고 독립 본문·이미지 추가 가산은 없다. [43개 소장그룹 연결](../evidence/0082-transferability-access/packet-coverage.json)은 H0744·H07912·H08013·H08111·H0823으로 검수 책임을 나눈다. 검색에 나온 모든 논문/저장소 의존 파일을 확보한 목록은 아니다.
 
-## H083: 원79 FMCL 5개 그룹
+### H083: 원79 FMCL 5개 그룹
 
 [출처](../sources/history-083.md)와 [7개 목록](history-083-sources.jsonl)은 새5개와 기존 findings·plan2개를 연결한다. 독립 PDF1개·16쪽, 파생TXT16쪽 대응·원PNG3개·사본10경로를 구분한다. 새 JSON 독해 가산은 없고 원79 외부21그룹 중 잔여12그룹은 후속 검수 대상이다.
 
-## H084: 원79 EMD-CFL 논문2그룹
+### H084: 원79 EMD-CFL 논문2그룹
 
 [출처](../sources/history-084.md) · [4개 목록](history-084-sources.jsonl). 새HTML/TXT2그룹과 기존findings/plan2그룹을 연결한다. 독립본문1,파생TXT추가0이며 공식v1보충PDF24쪽·그림17개는 현재검수의별도출처다. 원79 외부21중누적11그룹연결·10그룹후속,새JSON/이미지독해가산0.
 
-### H085 구현7그룹
+#### H085 구현7그룹
 
 [출처](../sources/history-085.md) · [목록](history-085-sources.jsonl) · [기록](../records/0085-emd-cfl-code.md). 새텍스트5/전체JSON2와 기존2그룹 재참조를 구분한다. 코드/환경 실행은0이고 원79 외부21그룹 중 이번 범위까지18, Toso2/검색1은 후속 범위다.
 
-### H086 Toso2그룹
+#### H086 Toso2그룹
 
 [출처](../sources/history-086.md) · [목록](history-086-sources.jsonl) · [기록](../records/0086-toso-gradient-heterogeneity.md). 저장HTML 전체와 파생TXT를 대응했고 독립본문은1개다. 새PDF30쪽 중9쪽 보충시각대조는 원목록 가산0이며 원79 외부21그룹 중20개 연결/검색1개가 남는다.
 
-## H087: 원79 검색1그룹
+### H087: 원79 검색1그룹
 
 [출처](../sources/history-087.md) · [목록](history-087-sources.jsonl) · [21그룹 연결](../evidence/0087-distributed-search/packet-coverage.json). 9개 값 전체를 읽은 JSON1개를 추가하며 독립 논문·이미지 가산은0이다. H0744·H0835·H0842·H0857·H0862·H0871은 소장 파일의 검수 연결이며 모든 외부문헌 확보를 뜻하지 않는다.
 
-## H088: 원80 진단과 실행 기록
+## 공유 구조와 후속 검수
+
+### H088: 원80 진단과 실행 기록
 
 [출처](../sources/history-088.md) · [목록](history-088-sources.jsonl) · [검수](../verification/history-088.md).16그룹55경로, 신규본문5·전체JSON8·선택NPZ2이며 budget_before는 H070과 같아 추가 가산0이다. 검색JSON과pyc는 다음 범위로 남긴다.
 
@@ -259,7 +268,6 @@ H044는 [103개 대표 행](history-044-sources.jsonl)과 [207경로·판독 수
 [H101 출처](../sources/history-101.md) · [목록](history-101-sources.jsonl). Citywide1논문의 PDF·TXT2본문 및 기존PNG1이미지,6별칭과 원82 기존3자료 재참조를 구별한다. 새 렌더와 파생 검수 JSON·재열람은 추가 본문으로 세지 않는다.
 
 [H102 출처](../sources/history-102.md) · [목록](history-102-sources.jsonl). 한 논문의4본문·기존2이미지와12별칭을 구별하며 새렌더·파생JSON·재열람을 추가하지 않는다.
-
 
 [H103 출처](../sources/history-103.md) · [목록](history-103-sources.jsonl). 원본2본문·4별칭과 현재 보완PDF/XML/부록의 입수 시점을 구별한다. 보완 자료·새렌더·기존자료는 신규 원본 독해 수에 더하지 않는다.
 

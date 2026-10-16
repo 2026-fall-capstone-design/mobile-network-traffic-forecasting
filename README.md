@@ -1,7 +1,5 @@
 # 모바일 네트워크 트래픽 예측 연구
 
-TabICLv2 과거 연구를 찾으려면 [연구기록 안내](docs/research/README.md)와 [남은 519개 번호별 주제 표](docs/research/remaining-records-summary.md)를 확인하세요.
-
 모바일 네트워크 트래픽 데이터를 이용해 미래 트래픽을 예측하고,
 모델과 입력 구성에 따른 성능을 비교하는 4인 캡스톤 연구 프로젝트입니다.
 동일한 데이터와 평가 조건에서 예측 정확도와 계산 비용을 분석합니다.
@@ -13,7 +11,24 @@ Python으로 데이터를 처리하고 예측·평가한 결과를 JSON으로 �
 [팀 작업 보드](https://github.com/orgs/2026-fall-capstone-design/projects/1) ·
 [협업 안내](CONTRIBUTING.md)
 
-## 현재 구현
+## 공통 연구 기준
+
+연구 비교는 2026-10-14 확정된 **Milan-900-10min v1.0**을 사용합니다.
+
+| 항목 | 기준 |
+| --- | --- |
+| 데이터 | 밀라노 중심 900셀의 Internet activity, 현지 2013년 11월, 10분 간격 |
+| 예측 | 대상 셀의 직전 8개 관측으로 다음 10분 값 1개 |
+| 분할 | 11/01–20 학습, 11/21–25 검증, 11/26–30 평가 |
+| 전처리 | 학습기간 셀별 min-max, 보간 없이 공통 유효 창 사용 |
+| 평가 | 원 척도 macro MAPE(%), macro MAE·micro MAE, 시드 53·54·55 |
+
+[공통 실험 규약](docs/research-protocol.md) → [데이터 준비](data/README.md) →
+[결과 교환 형식](docs/experiment-results.md) → [실험 기록 양식](docs/progress/README.md) 순서로 확인합니다.
+새 실험 전에 [과거 시도 색인](docs/research/prior-attempts.md)과
+[642개 기록 안내](docs/research/README.md)를 확인합니다.
+
+## 현재 구현: 합성 데모
 
 | 구성 | 내용 |
 |---|---|
@@ -23,7 +38,8 @@ Python으로 데이터를 처리하고 예측·평가한 결과를 JSON으로 �
 | 웹 | 실험·모델·셀 선택, 표시 구간 변경, 차트·수치 표·평가 결과 조회 |
 | 자동화 | PR 검사, 예제 결과 재현성 확인, GitHub Pages 배포 |
 
-현재 데모는 데이터부터 웹까지 연결한 합성 예제입니다.
+현재 데모는 데이터부터 웹까지 연결한 [1시간 합성 예제](docs/demo-protocol.md)입니다.
+연구용 10분 자료·공통 마스크·MAPE·3시드 결과의 실행 및 웹 연동은 후속 구현 대상입니다.
 연구에 사용할 모델과 구조는 아직 정하지 않았습니다.
 데이터 특성, 기준 모델 대비 예측 오차, 실행 시간과 메모리 사용량을 비교해 선정합니다.
 선정 기준과 실험 조건은 [공통 실험 규약](docs/research-protocol.md)에 기록합니다.
@@ -89,9 +105,11 @@ docs/              # 실험 규약과 팀 기록
 |---|---|
 | 브랜치 생성, 검사, PR 작성·병합 | [협업 안내](CONTRIBUTING.md) |
 | 입력 데이터 준비, 예제 재생성 | [데이터 안내](data/README.md) |
-| 실험 조건 설정, 모델 비교, 지표 해석 | [공통 실험 규약](docs/research-protocol.md) |
+| 연구용 실험 조건 설정, 모델 비교, 지표 해석 | [공통 실험 규약](docs/research-protocol.md) |
 | TabICL의 과거 시도·실패·정정과 재사용 근거 확인 | [연구기록 아카이브](docs/research/README.md) |
-| 예측 결과를 웹에 연결 | [웹 데이터 규약](docs/web-data-contract.md) |
+| 팀 간 연구 결과 전달 | [결과 교환 형식](docs/experiment-results.md) |
+| 문서 제목·표·근거 표기 통일 | [문서 작성 기준](docs/document-style.md) |
+| 합성 예측 결과를 웹에 연결 | [웹 데이터 규약](docs/web-data-contract.md) |
 | 화면 수정, 로컬 확인, 배포 | [웹 개발 안내](web/README.md) |
 | 역할 분담, 실험·회의 결과 기록 | [진행 기록 안내](docs/progress/README.md) |
 | 프로젝트 구성의 결정 배경 확인 | [주요 결정](docs/decisions.md) |

@@ -1,5 +1,7 @@
 # 저장 학습 경로와 조기 종료를 해석하는 기준
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원109 기록](../records/0139-saved-training-path-and-stopping.md) · [정적 학습 정의](../sources/history-139.md#src-0023202) · [진단 코드](../sources/history-139.md#src-0023204) · [공통 경로 결과](../sources/history-139.md#src-0032508)
 
 원109에서 재사용한 것은 기존29개 로그다. 코드의 strict improvement와 patience10, 선택 checkpoint, 공통42/43epoch를 원본에 대조했다. 상한 절단의 증거가 없다는 판단과 optimizer 수렴/추가학습 효과/공정한 최적 설정의 증명은 구별한다.

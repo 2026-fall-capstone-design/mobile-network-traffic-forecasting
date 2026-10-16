@@ -1,5 +1,7 @@
 # 예측 시간 재사용 — 원97 비교 기준과 문헌 범위
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원97 저장 결과](../records/0127-forecast-time-reuse-diagnostic.md) · [당시/현재 문헌 범위](../evidence/0127-forecast-time-reuse-diagnostic/literature-scope.json) · [원95 동시 batch](serving-cost-baseline.md)
 
 | 방식 | 재사용 대상 | 원97과의 관계/확인 범위 |

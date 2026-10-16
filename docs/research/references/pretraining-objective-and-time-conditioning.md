@@ -1,5 +1,7 @@
 # 사전학습 목적·시간 조건·cell 공유 — 원100 문헌 비교
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [기록](../records/0130-pretraining-objective-and-time-conditioning.md) · [40출처](../sources/history-130.md) · [실제 판독](../evidence/0130-pretraining-objective-and-time-conditioning/literature-scope.json) · [공식코드 scope](../evidence/0130-pretraining-objective-and-time-conditioning/official-code-scope.json)
 
 | 문헌·판본 | 대상·학습·현재 확인 | 현재 RCTL 공유에 적용할 때의 경계 |

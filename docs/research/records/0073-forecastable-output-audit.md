@@ -1,5 +1,7 @@
 # 73 문헌 추가 검토 — 예측 가능한 출력과 공동학습의 적용 조건
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [72–75 통합 기록](0072-0075-output-compression.md) · [출처와 판본](../sources/history-072.md) · [검토 범위](../evidence/0073-forecastable-output/manifest.json) · [주장별 대조](../verification/history-072-claims.json)
 
 **원문 독해와 작성 후 36개 주장 대조를 마쳤다.** 이 문서는 2026-09-26의 기록73을 보완하는 아카이브 기록이다. 새 모델 선정이나 실험 결과가 아니다.

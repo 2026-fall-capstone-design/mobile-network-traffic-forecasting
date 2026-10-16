@@ -1,5 +1,7 @@
 # 동적 그래프와 부하 분산 군집: 원77의 남은 근거
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 아카이브 묶음 **H078**이며, 과거 연구 **원77**을 보완한다. 과거 원78을 새로 실행하거나 정리했다는 뜻이 아니다. 원77은 2026-09-26의 문헌·코드·논리 검토이며 이번에도 모델 학습·추론은 수행하지 않았다.
 
 [원77의 당시 판단](../evidence/0076-0079-learning-decisions/originals/SRC-0022032.md.txt) · [DLM 부분 H077](0077-dynamic-membership-dlm.md) · [출처와 읽기 범위](../sources/history-078.md) · [수치·표기 대조](../evidence/0078-dynamic-graphs-load-balancing/paper-review.md) · [주장별 근거](../verification/history-078-claims.json) · [검수](../verification/history-078.md)

@@ -1,5 +1,7 @@
 # 원84 근거 종합: 직접 예측·소속 결정·최종 RCTL을 구별하기
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-110.md) · [검수](../verification/history-110.md) · [당시 보고서의 팀용 사본](../evidence/0110-evidence-synthesis/team-report.md) · [수치 대조](../evidence/0110-evidence-synthesis/evidence-comparison.json)
 
 새 설계를 논의하기 전에 어떤 성과가 있었고 어떤 연결이 아직 확인되지 않았는지 찾는 중간검토다. 직접 예측의 이득을 유지하면서 소속 결정과 최종 예측기의 개선 여부를 각각 확인한다.

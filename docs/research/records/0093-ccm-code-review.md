@@ -1,5 +1,7 @@
 # 원81 CCM 저장 구현: 확률·손실·입력 차원 대조
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-093.md) · [주장별 근거](../verification/history-093-claims.json) · [검수](../verification/history-093.md) · [논문 검토](0092-ccm-source-review.md)
 
 원81의 CCM 구현 관찰을 고정 판본과 대조한다. 코드의 동작 명세, 그 명세에서 도출한 조건부 위험, 실제 실험 결과를 구분한다. 이 기록은 정적 검토이며 새 모델 실험이나 재현 성공 보고가 아니다. 아래에서 B는 batch 크기, L은 입력 길이, C는 채널 수, K는 군집 수, d는 embedding 차원, H는 출력 길이다.

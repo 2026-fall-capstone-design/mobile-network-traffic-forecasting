@@ -1,5 +1,7 @@
 # 원83의 검색·열람 기록: 확인한 근거와 남은 본문
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-108.md) · [검수](../verification/history-108.md) · [54응답 목록](../evidence/0108-maintenance-search/response-index.json) · [Fed-PPBC 표 텍스트](../evidence/0108-maintenance-search/fed-table2-text.json) · [근거 공백](../evidence/0108-maintenance-search/evidence-gaps.json)
 
 정적 cluster의 갱신 비용 후보를 검토할 때 찾았던 문헌 경로를 정리한다. 검색으로 찾은 내용, 실제 보존된 발췌, 당시 열람 보고와 후속 원문 검수를 연결한다.

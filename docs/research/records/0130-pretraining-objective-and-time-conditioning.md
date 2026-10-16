@@ -1,5 +1,7 @@
 # 원100 — 사전학습 목적과 시간 조건 변환
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **표의 집단을 잘 복원하는 것, 하루·요일에 맞게 예측을 보정하는 것, 실제 cell 자료를 같은 RCTL로 학습할 이득은 서로 다른 판단이다.** 2026-09-26 원100은 TabClustPFN과 APT를 그대로 추가하면 이 차이가 해결되는지 문헌·보관 코드·제한된 기호로 검토했다. 두 모듈을 바로 추가하는 안은 당시 미채택했다. 새로운 모델 실행으로 성능 실패를 확인한 기록은 아니다.
 
 [40출처/83사본](../sources/history-130.md) · [36주장](../verification/history-130-claims.json) · [작성 후 대조](../verification/history-130-second-pass.json) · [실제 읽기 범위](../evidence/0130-pretraining-objective-and-time-conditioning/read-scopes.json) · [숫자·보존 검산](../evidence/0130-pretraining-objective-and-time-conditioning/numeric-check.json) · [문헌 비교](../references/pretraining-objective-and-time-conditioning.md)

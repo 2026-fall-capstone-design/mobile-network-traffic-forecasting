@@ -1,5 +1,7 @@
 # 원95 저장 RCTL의 실제 호출 비용과 기본 batch 비교
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **상태:** 2026-09-26 보존 모델의 CPU frozen inference 측정. 이번 정리는 저장 결과 검산·32주장/6묶음의 원문 대조이며 새 모델 실행0이다.
 
 [출처·판독 범위](../sources/history-125.md) · [검수](../verification/history-125.md) · [근거와 저장 배열](../evidence/0125-frozen-rctl-serving-cost-baseline/README.md) · [비교 조건](../references/serving-cost-baseline.md) · [원93 조건 감사](0123-candidate-gates-comparison-scope.md)

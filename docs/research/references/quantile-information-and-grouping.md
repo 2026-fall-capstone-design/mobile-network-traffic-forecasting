@@ -1,5 +1,7 @@
 # 중앙값 정보·source 선택·grouping — 원98 문헌 비교
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원98](../records/0128-quantile-information-and-pooling-objective.md) · [당시/현재 범위](../evidence/0128-quantile-information-and-pooling-objective/literature-scope.json) · [출처](../sources/history-128.md)
 
 | 논문/판본 | 묶거나 선별하는 대상·실제 절차 | 확인 범위·현재 traffic 적용의 경계 |

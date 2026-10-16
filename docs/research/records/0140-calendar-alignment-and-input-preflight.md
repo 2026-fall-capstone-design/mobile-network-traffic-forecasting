@@ -1,5 +1,7 @@
 # 원110–111: 고정 시각 좌표 후보와 예측 전 입력 지원
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 2026-09-26의 개발 자료 진단을 정리했다. **profile 절대차9.22% 감소와 입력 지원 통과는 예측 성능 개선이 아니다.** 새 모델 호출·RCTL 적합·고정 좌표/소속 확정 없이 profile과 후속 비교 입력을 마련한 단계였다. 현재 보고서에는 원112가 진행 기준에 실패했다는 후속 안내가 추가됐으며, 원112 실제 예측 결과 검수는 다음 묶음에 남아 있다.
 
 [원109 학습 경로](0139-saved-training-path-and-stopping.md) · [원107 입력지원](0137-calendar-retention-and-external-support.md) · [28개 출처](../sources/history-140.md) · [근거 보관](../evidence/0140-calendar-alignment-and-input-preflight/README.md) · [32개 주장 검수](../verification/history-140-claims.json) · [문헌 비교](../references/calendar-alignment-and-input-preflight.md)

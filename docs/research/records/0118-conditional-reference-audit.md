@@ -1,5 +1,7 @@
 # 원88: 조건부 표본 비교의 선행연구·고정 코드·비용 검수
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-118.md) · [검수](../verification/history-118.md) · [근거](../evidence/0118-conditional-reference/README.md) · [이전 판단표·연혁](0117-conditional-history-cib.md) · [원87의 정보·예측손실 구분](0116-causal-capacity-reference.md)
 
 조건부 검사를 다시 설계하기 전에 원88이 검토한 후보와 남긴 조건을 찾는 기록이다. 당시 판단, 현재의 원문 대조, 실행으로 확인하지 않은 범위를 구별한다.

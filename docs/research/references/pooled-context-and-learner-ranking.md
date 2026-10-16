@@ -1,5 +1,7 @@
 # 실제 pooled context 결과를 다른 learner에 옮길 때
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원101](../records/0131-actual-pooled-context-and-rctl-ranking.md) · [설정 원문](../evidence/0131-actual-pooled-context-and-rctl-ranking/originals/SRC-0001982.json) · [결과 원문](../evidence/0131-actual-pooled-context-and-rctl-ranking/originals/SRC-0001984.json) · [저장 배열 검산](../evidence/0131-actual-pooled-context-and-rctl-ranking/numeric-check.json)
 
 TabICL은 이 개발 구간에서 같은16열을 받은 Ridge/HGB보다 직접 예측 MAE가 낮았다. 같은K4 소속 둘의 전체 평균 순위는 저장 RCTL과 반대였다. 직접 예측 성능, 같은 learner에서 소속의 효과, 다른 learner의 소속 선택을 대신하는 점수는 구별한다.

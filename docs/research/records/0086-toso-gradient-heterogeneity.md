@@ -1,9 +1,10 @@
 # 원79 Toso 회귀 이론: 가정·gradient 수렴·함수 복원의 구분
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-086.md) · [검수](../verification/history-086.md) · [근거](../evidence/0086-toso-gradient-heterogeneity/README.md) · [원76–79](0076-0079-learning-decisions.md)
 
 검수 완료: 저장v1 전문·부록의 첫 독해와 핵심34주장의 작성 후 대조를 마쳤다. 이 논문은 새 iid 표본과 공통 입력·Jacobian·PL 등의 조건을 둔 회귀 이론이며, TabICL 예측 유사성이나 RCTL 최종 성능의 직접 보장은 아니다. 논문 전체의 형식 증명 검증·독립 연구자 심사·모델 재현은 수행하지 않았다.
-
 
 ## 검토 자료와 실행 범위
 
@@ -17,18 +18,15 @@
 
 보충 근거: [바이트·표현 대응 및 새PDF 취득 기록](../evidence/0086-toso-gradient-heterogeneity/representation-check.json)
 
-
 <a id="c03"></a>**C03.** 표기의 변환 오류 여부를 확인하려고 같은 v1의 PDF를 이번 정리 때 새로 취득했다. 447570B·30쪽이며3·8·9·10·11·17·24·25·28쪽을 시각 대조했다. PDF30쪽 전체를 별도 독해했다고 세거나 원79 당시 확보한 자료라고 기록하지 않는다. PDF·렌더 원문은 재게시하지 않고 URL·해시·확인 위치를 연결한다.
 
 출처: [SRC-0062499 · §1.2/§3–4/B.1/B.8/C.1/C.5](https://arxiv.org/html/2609.25705v1#S1.SS2) · [SRC-0022036 · 당시 Toso HTML 선택 독해 범위](../evidence/0076-0079-learning-decisions/originals/SRC-0022036.md.txt)
 
 보충 근거: [바이트·표현 대응 및 새PDF 취득 기록](../evidence/0086-toso-gradient-heterogeneity/representation-check.json) · [공식v1 PDF](https://arxiv.org/pdf/2609.25705v1)
 
-
 <a id="c04"></a>**C04.** 이 논문 본문은 회귀 이론과 증명으로 구성되며 경험 실험표·성능 그림·dataset별 seed 결과를 제공하지 않는다. DOM의 table148개는 수식 등의 배치 구조이며 실험표148개가 아니다. 실제 traffic 시간 분할·정규화·훈련 seed·GPU 시간·성능 비교값은 이 이론 기록에 해당 없음이다. 원79의 새 모델·수치 pilot과 누적 비용 원장 변경은0이다.
 
 출처: [SRC-0062499 · 전본문/부록·DOM table/figure 범위](https://arxiv.org/html/2609.25705v1#S6) · [SRC-0022036 · 도입/79 새 수치 계산 없음](../evidence/0076-0079-learning-decisions/originals/SRC-0022036.md.txt)
-
 
 ## 공통 설정과 선형 회귀
 
@@ -80,7 +78,6 @@
 
 출처: [SRC-0062499 · B.7 TheoremB.1/Ex90/B.8 CorollaryB.1/§3](https://arxiv.org/html/2609.25705v1#A2.Thmtheorem1)
 
-
 ## 비선형 가정과 보장의 대상
 
 <a id="c17"></a>**C17.** 비선형 Γ_nonlin은 같은 입력 주변분포의 X에서 참 함수 h_i⋆(X)와 h_j⋆(X)의 제곱 차이를 평균한다. 서로 다른 cell의 관측 x 분포 자체가 다른 상황은 이 정의와 가정에 추가 연결이 필요하다. 각자 관측한 x와 TabICL 추정 m(x)의 joint 분포 거리를 곧 Γ_nonlin이라고 부르지 않는다.
@@ -111,7 +108,6 @@
 
 출처: [SRC-0062499 · §4 Corollary4.1/C.6 CorollaryC.1](https://arxiv.org/html/2609.25705v1#A3.SS6)
 
-
 ## 인용 전에 확인할 표기
 
 <a id="c24"></a>**C24.** Lemma4.1은 η≤1/L′를 두지만 Theorem4.1의 초기항은 L′ΔL⁽⁰⁾/T, Corollary4.1은 L′ΔL⁽⁰⁾/(μ′T)를 쓴다. AppendixC는 각각 ΔL⁽⁰⁾/(ηT), ΔL⁽⁰⁾/(μ′ηT)를 유지한다. η=1/L′이면 이 두 표기를 연결할 수 있으나 더 작은 모든 η에 같은 L′/T 상한을 그대로 적용하지 않는다. Lemma4.1의 두 번째 G_T 식과 LemmaC.3의1/η 차이도 재확인 대상으로 남긴다.
@@ -137,7 +133,6 @@
 <a id="c29"></a>**C29.** 이번에는 부록의 부등식·concentration·gradient 분해·최적화 recursion·복원 연결까지 읽고 핵심 주장과 표기를 대조했다. 이는 완전한 형식 증명 검증이나 독립 연구자 심사, 실제 모델 재현이 아니다. 충분히 큰 미지 상수의 상한을 dataset별로 수치화하거나 임의의 sample 수를 이 논문의 권장값으로 제시하지 않는다.
 
 출처: [SRC-0062499 · B.2–8/C.1–6/§1.2 asymptotic notation](https://arxiv.org/html/2609.25705v1#A1)
-
 
 ## 원79 판단과 다음 연구의 차이
 

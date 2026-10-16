@@ -1,5 +1,7 @@
 # 원101 — 실제 pooled context와 RCTL 소속 순위
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **TabICL은 이 구간에서 직접 예측이 좋았지만, 같은 K4 소속 두 개의 순위는 저장된 RCTL 결과와 반대였다.** 2026-09-26 원101은 B2의 대리 위험식만 살핀 이전 진단을 보완해 실제 학습 sample을 context로 주었다. 직접 예측의 긍정 근거와 소속 대리점수의 한계를 함께 보존한다.
 
 [36출처/153사본](../sources/history-131.md) · [36주장](../verification/history-131-claims.json) · [작성 후 원문 대조](../verification/history-131-second-pass.json) · [실제 읽기 범위](../evidence/0131-actual-pooled-context-and-rctl-ranking/read-scopes.json) · [917수치 검산](../evidence/0131-actual-pooled-context-and-rctl-ranking/numeric-check.json) · [재사용·비교 안내](../references/pooled-context-and-learner-ranking.md)

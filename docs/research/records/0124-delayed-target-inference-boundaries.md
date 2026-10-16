@@ -1,5 +1,7 @@
 # 원94 정답 대기 입력·예측 보정의 적용 범위
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **상태:** 2026-09-26 당시 문헌·기호 검토/현재 정적 h1 후보 미채택. 33개 주장·6개 묶음의 작성 후 원문 대조 완료. 새 모델 실행0.
 
 [출처와 실제 판독 범위](../sources/history-124.md) · [검수](../verification/history-124.md) · [근거](../evidence/0124-delayed-target-inference-boundaries/README.md) · [논문 비교](../references/delayed-target-inference.md) · [직전 원93](0123-candidate-gates-comparison-scope.md)

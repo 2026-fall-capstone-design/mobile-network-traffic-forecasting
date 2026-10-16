@@ -1,5 +1,7 @@
 # 33–35 process 식별과 고정 RCTL의 훈련·validation 차이
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [과거 시도 색인](../prior-attempts.md) · [출처와 열람 범위](../sources/history-022.md) · [저장 근거](../evidence/0033-0035-frozen-fit/README.md) · [검수](../verification/history-022.md)
 
 2026-09-25의 33은 문헌 확인 계획, 34는 기존 checkpoint 진단 계획·실행, 35는 결과와 판단이다. 이 묶음은 **관계를 식별하는 능력과 자료를 나눈 최종 예측기의 이득이 같은 주장이 아니라는 진단**을 남긴다. 당시 새 알고리즘 채택이나 최종 Word 완료 선언은 없다. 현재 정리에서도 모델을 실행하지 않았다. 주요 주장 C01–C14의 원문 위치와 한계는 [주장 지도](../verification/history-022-primary-review.json)에 있다. [C01]

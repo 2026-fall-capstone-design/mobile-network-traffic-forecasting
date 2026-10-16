@@ -1,5 +1,7 @@
 # 현재 근거와 다음 연구안의 차이를 기록할 때
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원103](../records/0133-current-evidence-and-unapproved-extension.md) · [원101](../records/0131-actual-pooled-context-and-rctl-ranking.md) · [원95](../records/0125-frozen-rctl-serving-cost-baseline.md) · [원102](../records/0132-architecture-kernel-and-joint-risk.md)
 
 | 확인할 연결 | 원103의 당시 판단 | 새안에서 달라져야 할 근거 |

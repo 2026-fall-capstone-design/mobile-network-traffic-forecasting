@@ -1,5 +1,7 @@
 # 16–17: 오래된 자료·최근 자료·누적 자료의 예측 비교
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 기록15는 교차 예측 손해와 cell 식별 정보 진단 뒤 시간에 따른 자료 유효성을 질문으로 남겼다. 2026-09-25의 계획16과 결과17은 같은 입력을 받은 작은 예측기로 이 질문을 확인했다. **누적 자료 방식이 두 예측기의 전체 평균에서 가장 좋았고, 첫 주에 cell별로 고른 recent/expanding 정책의 이후 세 주 전체 평균은 expanding을 계속 사용한 평균보다 나빴다.** 당시에는 시간에 따라 context를 버리는 새 구조를 추천하지 않았다. **H010-C01·H010-C08**
 
 [15의 앞선 판단](0015-category-cost-time-literature.md) → [16 사전 계획](../evidence/0016-0017/originals/SRC-0020991.md.txt) → [17 당시 결과](../evidence/0016-0017/originals/SRC-0021004.md.txt)를 연결한다. [보존 근거](../evidence/0016-0017/README.md)·[출처 범위](../sources/history-010.md)·[검수](../verification/history-010.md)·[주장별 출처](../verification/history-010-primary-review.json)를 함께 읽는다.

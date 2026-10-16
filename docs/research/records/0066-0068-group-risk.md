@@ -1,5 +1,7 @@
 # 66–68: cell 보호 목표와 저장 예측의 오차 분포
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [연구 안내](../README.md) · [65 종합](0063-0065-synthesis.md) · [과거 시도 색인](../prior-attempts.md) · [출처](../sources/history-062.md) · [검수](../verification/history-062.md) · [저장 수치 대조](../verification/history-062-saved-risk-check.json)
 
 기존 군집별 RCTL 예측을 **평균에서는 불리하지만 cell 보호에는 지속적으로 유리한 결과**라고 해석할 근거는 확인되지 않았다. 저장된 16cell·480시점·8조건을 다시 집계하면 전체 기간과 뒤 240시점에서 모든 비global 조건의 상위 k개 오차 평균(k=1…16)이 global보다 컸다. 앞 240시점의 일부 개선과 특정 cell의 이득은 별도로 남는다. 이것은 기존 예측의 진단이며, 새 보호 loss로 학습한 RCTL의 평가나 모든 공정성 방법의 반박이 아니다. [원67 계획](../evidence/0063-0068-synthesis-risk/originals/SRC-0022018.md.txt) · [원68 판단](../evidence/0063-0068-synthesis-risk/originals/SRC-0022019.md.txt) · [C19–C21]

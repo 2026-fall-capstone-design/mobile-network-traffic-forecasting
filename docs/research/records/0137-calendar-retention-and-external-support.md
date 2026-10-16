@@ -1,5 +1,7 @@
 # 원107 자기 시간자료 보존과 다른 cell 입력의 근접성
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **원107은 자기 시간·요일 sample은 남아 있지만, 같은 cluster에서 가까운 다른 cell 입력의 비중은 달랐다는 저장자료 진단이다.** 이 차이를 RCTL 손해의 원인으로 확정하지 않았다. 외부 입력 비중이 가장 큰 PCC 소속은 기존 RCTL 결과에서 가장 낮은 오차를 얻지 못했다.
 
 [13출처/25경로](../sources/history-137.md) · [25주장](../verification/history-137-claims.json) · [작성 후 대조](../verification/history-137-second-pass.json) · [수치 검수](../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json) · [재검토 안내](../references/calendar-retention-and-external-support.md)

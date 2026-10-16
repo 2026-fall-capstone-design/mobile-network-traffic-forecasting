@@ -1,5 +1,7 @@
 # 구조 기반 kernel을 최종 학습기의 위험으로 사용할 때
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원102](../records/0132-architecture-kernel-and-joint-risk.md) · [수식 검수](../evidence/0132-architecture-kernel-and-joint-risk/fixed-affine-identity-check.json) · [비용 산술](../evidence/0132-architecture-kernel-and-joint-risk/cost-arithmetic-check.json) · [서지와 확인 수준](../evidence/0132-architecture-kernel-and-joint-risk/primary-bibliography.json)
 
 | 자료 | 버전·정식 위치 | 이번 확인과 사용 한계 |

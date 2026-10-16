@@ -1,5 +1,7 @@
 # 원96 RCTL 가중치 병합의 적용 범위
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **상태:** 2026-09-26 당시 문헌·기존 코드·기호 검토 후 후보 미채택. 실제 병합 모델의 성능 실험은 없었다. 32개 주장과 6개 검수 묶음을 작성 후 원문에 대조했다.
 
 [출처와 실제 판독 범위](../sources/history-126.md) · [검수](../verification/history-126.md) · [보존 근거](../evidence/0126-rctl-parameter-merging-scope/README.md) · [네 문헌 비교](../references/parameter-merging.md) · [직전 원95 비용 기준](0125-frozen-rctl-serving-cost-baseline.md)

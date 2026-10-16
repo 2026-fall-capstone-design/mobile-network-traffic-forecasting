@@ -1,5 +1,7 @@
 # 원79 EMD-CFL 구현: 논문과 저장 코드의 조건 대조
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-085.md) · [검수](../verification/history-085.md) · [코드 경로 근거](../evidence/0085-emd-cfl-code/README.md) · [논문 검수](0084-emd-cfl-embedding-distributions.md)
 
 저장된 고정 commit의 전체 첫 정적 독해 후36개 주장을 원문과7묶음으로 다시 대조했다. 정적 관찰·조건부 위험과 실제 실행 결과를 구분한다. H085는 정리용 ID이며 새 실험 번호가 아니다.

@@ -1,5 +1,7 @@
 # 원92 순차 예측 증거의 미채택과 점 예측 공유 목적의 차이
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **상태:** 2026-09-26 당시 후보 미채택. 42개 주장·8개 묶음의 작성 후 원문 대조 완료. 새 모델 실행0.
 
 [출처와 판독 범위](../sources/history-122.md) · [검수](../verification/history-122.md) · [근거](../evidence/0122-prequential-sharing-objective/README.md) · [직전 원91](0121-predictive-role-alignment.md)

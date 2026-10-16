@@ -1,5 +1,7 @@
 # 53·55 — NETNOMOS의 규칙 학습·예측·관측 복원
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 NETNOMOS는 관측 데이터에서 논리 규칙을 찾고 의미가 있다고 선택한 규칙을 생성 과정에 적용한다. 수집된 관측의 세밀한 이력 복원, 다음 구간의 트래픽 예측, 합성 자료 생성을 각각 평가한다. **규칙을 만족하는 출력과 예측 오차의 우위는 다른 주장**이다. 예측 최고 성능을 주장하지 않으며, sMAPE 반례·MAWI의 규칙 위반·추론 비용 증가도 함께 확인해야 한다.
 
 [53 계획](../evidence/0053-moghadas-thesis/originals/SRC-0021782.md.txt)과 [55 판단 §3](../evidence/0052-0054-partial-observation/originals/SRC-0021824.md.txt)의 문헌 검토를 확장했다. 원래 질문은 관측 비용을 줄이는 clustering이 기존 sensor selection·imputation과 무엇이 다른지였다. [Moghadas](0053-moghadas-thesis.md), [SRSSS](0053-srsss.md), [Zoom2Net](0053-zoom2net.md), [52·54의 실제 부분 관측 확인](0052-0054-partial-observation.md)과 연결한다. 이 문헌 검토 자체는 새 TabICL/RCTL 실험이 아니다.

@@ -152,3 +152,10 @@ git pull --ff-only
 | `blocked` | 선행 작업이나 결정 대기 |
 
 진행 단계와 기록 양식은 [진행 기록 안내](docs/progress/README.md)를 참고합니다.
+
+## 문서 변경
+
+연구 조건은 [공통 실험 규약](docs/research-protocol.md), 결과 전달은
+[연구 결과 교환 형식](docs/experiment-results.md)을 기준으로 검토합니다.
+제목·표·문단·출처 표기는 [문서 작성 기준](docs/document-style.md)을 따릅니다.
+합성 데모의 현재 구현과 연구용 요구사항, 과거 실험의 당시 조건을 구분합니다.

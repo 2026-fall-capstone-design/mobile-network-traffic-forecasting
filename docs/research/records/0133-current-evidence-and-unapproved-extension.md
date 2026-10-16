@@ -1,5 +1,7 @@
 # 원103 현재 근거의 중간 보고와 미승인 실행 범위
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **직접 예측의 이점은 확인했지만 최종 RCTL 소속 선정의 개선 근거는 남아 있었다.** 원103은 그 차이와 연구 완료 조건을 최신 중간 보고서에 반영한 문서화 기록이다. 추가18fit은 아직 승인·실행하지 않은 상한 제안으로 남겼다.
 
 [30출처/65사본](../sources/history-133.md) · [33주장](../verification/history-133-claims.json) · [작성 후 대조](../verification/history-133-second-pass.json) · [읽기용 보고서](../evidence/0133-current-evidence-and-unapproved-extension/readable-report.md) · [재사용 조건](../references/current-evidence-and-unapproved-extension.md)

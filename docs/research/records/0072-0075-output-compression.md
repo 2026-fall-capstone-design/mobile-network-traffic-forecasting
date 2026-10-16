@@ -1,5 +1,7 @@
 # 72–75: 출력 압축의 작은 확인과 입력 공유 재진입 중단
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 40개 주장을 작성 후 원문·저장 수치에 다시 대조했다. [주장별 근거](../verification/history-070-claims.json)와 [문서 검사](../verification/history-070-document-check.json)를 확인할 수 있다. 같은 에이전트의 별도 대조이며 독립 심사나 원실험 재현은 아니다. [출처·읽은 범위](../sources/history-070.md) · [검수](../verification/history-070.md) · [보존 명세](../evidence/0072-0075-output-compression/manifest.json)
 
 ## 판단과 실제 수행 범위

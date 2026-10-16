@@ -1,5 +1,7 @@
 # 고정 K·균등 크기·소속과 수정 규칙
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원113 기록](../records/0142-fixed-k-and-unrestricted-cluster-sizes.md) · [출처](../sources/history-142.md) · [원04–07](../records/0004-0007-b2-observed-risk.md)
 
 [Yang 등,2025 원 UPC](https://doi.org/10.1109/TNSM.2025.3599168)의 Algorithm1·인쇄6263–6264/물리4–5쪽을 현재 PDF hash와 실제 픽셀로 대조했다. N은 cluster 수,θ는 초기 group의 PCC 계산 조건이며 균등 cell 수 요구와 다르다. 전체 논문/공개 코드의 재현·미해결 작은 group 처리를 완료한 문헌조사가 아니다.

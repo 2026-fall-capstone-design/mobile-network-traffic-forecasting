@@ -1,5 +1,7 @@
 # 원86: 소속 고정 뒤 RCTL 학습 공유의 범위와 비용
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-114.md) · [검수](../verification/history-114.md) · [보존 근거](../evidence/0114-shared-training-scope/README.md) · [원85 비용 정정](0112-rejection-scope-allocation.md)
 
 학습 정보를 공유하는 방식이 바뀌면 기존 독립 학습 결과의 적용 범위와 비교 조건도 달라진다. 이 기록은 가능한 변경과 아직 확인되지 않은 효과를 구분한다.

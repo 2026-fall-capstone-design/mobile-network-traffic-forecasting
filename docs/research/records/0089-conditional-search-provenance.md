@@ -1,5 +1,7 @@
 # 원80 조건부 평균 후보의 검색 근거와 코드 캐시
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-089.md) · [검수](../verification/history-089.md) · [근거](../evidence/0089-conditional-search/README.md) · [원80 진단](0088-conditional-graph-diagnostic.md)
 
 원래 연구 기록 번호는 **80**이며 H089는 아카이브 검수 묶음이다. 검색 후보의 적용 조건과 읽은 범위를 원80 진단에 연결한다. 원 연구를 실행하지 않는다. 22개 주장의 작성 후 대조와 출처 검수를 마쳤다.

@@ -1,5 +1,7 @@
 # 시각 정렬·고정 좌표·예측 전 입력 지원의 문헌 비교
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원110–111 기록](../records/0140-calendar-alignment-and-input-preflight.md) · [당시 원문 감사](../sources/history-140.md#src-0020865) · [현재 선택 절/판본 검수](../evidence/0140-calendar-alignment-and-input-preflight/literature-primary-checks.json)
 
 네 편의 선택 본문과 핵심 수식/도식8쪽을 대조했다. 전체 논문·공식 구현·새 benchmark 성능을 전수 재현한 결과가 아니다. 외부 PDF와 렌더링 이미지는 검수 중간물이며 저장소에 원문 전체를 게시하지 않았다.

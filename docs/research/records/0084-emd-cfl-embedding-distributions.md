@@ -1,5 +1,7 @@
 # 원79 EMD-CFL: embedding 분포 군집의 근거와 적용 조건
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-084.md) · [검수](../verification/history-084.md) · [표·절차 근거](../evidence/0084-emd-cfl/README.md) · [당시 판단](0076-0079-learning-decisions.md)
 
 local 학습 뒤 embedding 분포로 한 번 군집을 만드는 선행연구다. 군집 회복과 최종 학습 성능, 이론의 가정과 인쇄 표기의 공백, 초기 비용과 전체 비용을 구분해 같은 연구의 반복을 줄인다. H084는 정리용 ID이며 새 실험 번호가 아니다.

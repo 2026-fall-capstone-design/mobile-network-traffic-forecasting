@@ -1,5 +1,7 @@
 # 63–65: 예측값·잔차·분포 변환을 실제 학습에 연결한 검토
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [연구 안내](../README.md) · [과거 시도 색인](../prior-attempts.md) · [출처](../sources/history-062.md) · [검수](../verification/history-062.md) · [후속 66–68](0066-0068-group-risk.md)
 
 63–65번은 Tab의 점수를 소속 결정에 쓰는 안에서, **Tab이 제공한 예측이나 변환을 최종 RCTL의 입력·target에도 연결하는 안**으로 질문을 넓혔다. 실제 학습 문제를 바꾸면 대리 점수와 최종 학습 사이의 차이를 줄일 여지는 있지만, 예측값 추가·잔차 보정·분포 변환 자체는 선행 원리다. 당시에는 새 추천안을 채택하거나 새 모델을 실행하지 않았다. 이 기록은 그 판단을 H055–H061의 일곱 문헌 검수와 연결한다. [원63](../evidence/0063-0065-ecai-interface/originals/SRC-0022008.md.txt) · [원64](../evidence/0063-0065-ecai-interface/originals/SRC-0022015.md.txt) · [원65](../evidence/0063-0065-ecai-interface/originals/SRC-0022016.md.txt) · [C01–C03]

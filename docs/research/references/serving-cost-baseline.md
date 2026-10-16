@@ -1,5 +1,7 @@
 # RCTL 비용 비교에서 먼저 고정할 기본 구현
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원95](../records/0125-frozen-rctl-serving-cost-baseline.md)가 2026-09-26에 보존된 checkpoint로 측정한16개 cell의 CPU 결과다. 같은 가중치를 사용하는 cell을 같은 시각에 batch로 처리하는 조건을 기본 비교에 포함한다. 이 구현의 이득을 Tab의 연구 기여로 세지 않는다.
 
 | 보존 모델 | cell별 median(ms) | 묶음 median(ms) | 묶음 P10–P90(ms) | 시점당 예측 행 / 묶음 호출 |

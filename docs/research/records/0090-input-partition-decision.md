@@ -1,5 +1,7 @@
 # 원81 공동 입력·다중 출력의 진입 보류와 계산 조건
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-090.md) · [검수](../verification/history-090.md) · [근거](../evidence/0090-input-partition/README.md) · [원80](0088-conditional-graph-diagnostic.md)
 
 원래 번호는 **81**이다. H090은 당시 판단과 저장 소스의 기호 비용을 검토한다. 문헌 보고서가 주장한 독해 범위와 이번에 직접 검수한 범위를 구분한다.

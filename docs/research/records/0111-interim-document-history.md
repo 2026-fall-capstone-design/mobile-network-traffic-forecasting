@@ -1,5 +1,7 @@
 # 원84 보고서 판본과 누적연혁: 저장 문서 검수와 정정 관계
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-111.md) · [검수](../verification/history-111.md) · [팀용 보고서](../evidence/0110-evidence-synthesis/team-report.md) · [페이지 안내](../evidence/0111-interim-document-history/README.md)
 
 원84 중간검토의 Word·PDF·PNG를 실제 읽고 누적연혁의 최신 상태와 옛 판단을 구별했다. 공유할 때는 상대경로로 근거를 연결한 팀용 보고서를 먼저 사용한다.

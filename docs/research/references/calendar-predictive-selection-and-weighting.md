@@ -1,5 +1,7 @@
 # 원112의 선택자·평가자와 기간 가중치
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [정리 기록](../records/0141-calendar-predictive-selection-and-weighting.md) · [출처](../sources/history-141.md)
 
 원110–111의 profile/geometry 검사에서 원112의 실제 예측 비교로 이어진 범위다. 선행문헌4편의 검토 범위는 [앞선 문헌 비교](calendar-alignment-and-input-preflight.md)에 있다. 이번 회차에서 새 논문이나 공식 구현을 추가로 검토했다고 표시하지 않는다.
