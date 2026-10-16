@@ -1,5 +1,7 @@
 # 같은 K의 저장 오차 진단을 새 후보에 재사용할 때
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원106](../records/0136-same-k-cellwise-error-transition.md) · [원105](../records/0135-blocked-audit-and-resume-conditions.md)
 
 같은K·모델당sample 개수는 자료 구성·최적화 경로까지 통제한 비교가 아니다. 원106의 평균 손해, 네 전이 조합, 유리한cell·날짜와 실제epoch 차이를 함께 읽는다. saved scaled MAE를 직접Tab 성능·원단위 MAE·독립 RCTL 재현과 섞지 않는다.

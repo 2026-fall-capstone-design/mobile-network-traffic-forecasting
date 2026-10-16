@@ -1,5 +1,7 @@
 # 입력 미분으로 task 관계를 정하는 선행연구와 적용 조건
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 아카이브 H143은 과거 **원114(2026-09-26)**의 문헌·공식 구현 검토다. 입력 미분으로 관계를 표현한다는 원리와 실제 RCTL의 공유 학습 이득을 구분한다. 당시에는 새 추천안으로 채택하지 않았으며, 문헌 검토를 트래픽 성능 실험으로 세지 않는다.
 
 [출처·읽은 구간](../sources/history-143.md) · [문헌 비교](../references/signed-input-gradients-and-task-relations.md) · [근거](../evidence/0143-signed-input-gradients-and-task-relations/README.md) · [주장 검수](../verification/history-143.md)

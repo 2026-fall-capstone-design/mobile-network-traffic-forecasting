@@ -1,5 +1,7 @@
 # 53·55: Ciena의 관측·전송·저장 비용 감소를 구분하기
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 2026-09-26의 53번 계획은 일부 cell을 관측하고 나머지 이력을 복원하는 구상이 기존 방법과 무엇이 다른지 물었다. Ciena 논문은 당시 PDF 취득에 실패한 문헌 후보였다. 이번에는 공식 PDF를 확보해 세 접근의 실제 대상과 결과를 검토했다. **링크 관측으로 OD 흐름 추정, 표본 전송 생략 후 복원, 이미 수집한 이력의 손실 압축은 서로 다른 비용 문제**다. 어느 결과도 TabICL을 이용한 cell 선택이나 RCTL의 미래 예측 개선 실험은 아니다. [53 계획](../evidence/0053-moghadas-thesis/originals/SRC-0021782.md.txt), [55 당시 판단](../evidence/0052-0054-partial-observation/originals/SRC-0021824.md.txt), H040-C01–04.
 
 자료는 Petar Djukic·Maryam Amiri·Wade Cherrington(Ciena Canada), *Reducing the cost of network traffic monitoring with AI*, 2021 Fall Technical Forum이다. [공식 소개](https://nctatechnicalpapers.com/?p=39541)와 [공식 PDF](https://nctatechnicalpapers.com/wp-content/uploads/2025/09/2021-reducing-the-cost-of-network-traffic-monitoring-with-ai.pdf)를 연결한다. PDF는 917077 bytes, SHA-256 `c20e543ac396d8f530f1cbd39bffdeb126629042e3377abcd6efec3fad390980`, 물리·인쇄 페이지 모두 23쪽이다. 본문 23쪽, 그림 1–11·표 1–4·수식이 있는 14쪽을 읽었다. 저자 구현과 원 결과 배열의 재현은 수행하지 않았다. [읽은 범위](../sources/history-040.md), [주장별 근거](../verification/history-040-claims.json), [수치 검수](../verification/history-040-primary-check.json).

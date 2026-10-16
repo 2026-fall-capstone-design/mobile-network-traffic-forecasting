@@ -1,5 +1,7 @@
 # 원106 같은 K에서 남는 cell별 오차 전이
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **원106은 같은 K4와 모델당 학습행 수를 가진 두 소속을 저장 예측으로 비교한 진단이다.** 두 seed 모두 이후 구간의 평균 손해가 남았지만, 자료 구성·시간 변화·최적화 중 어느 원인이 작용했는지는 식별하지 않았다.
 
 [14출처/31경로](../sources/history-136.md) · [26주장](../verification/history-136-claims.json) · [작성 후 대조](../verification/history-136-second-pass.json) · [수치 검수](../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json) · [재검토 안내](../references/same-k-cellwise-error-transition.md)

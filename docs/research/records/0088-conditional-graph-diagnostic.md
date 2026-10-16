@@ -1,5 +1,7 @@
 # 원80: 조건부 평균 graph와 고정 RCTL gradient 진단
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-088.md) · [검수](../verification/history-088.md) · [저장 근거](../evidence/0088-conditional-graph/README.md) · [원79 후보 논리](0076-0079-learning-decisions.md)
 
 **결론:** 원80은 Tab 예측의 평균 오차 이득을 확인했지만, 고정한 다섯 transport 방법의 소속이 같고 PCC 대비 gradient 이득도 일관되지 않아 후보를 추천하지 않았다. 아래는2026-09-26의 저장 기록을 정리한 것이며 새 실험 결과가 아니다.

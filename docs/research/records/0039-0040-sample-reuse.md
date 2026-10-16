@@ -1,5 +1,7 @@
 # 39–40: 담당 cluster를 유지하면서 학습 자료를 공유할 수 있는가
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 2026-09-25의 문헌·설치 코드 검토다. 예측 담당 RCTL과 실제 관측 target은 유지하고 다른 cluster의 학습 sample에 가중치를 주는 방향을 검토했다. 참 결합 밀도비의 손실 항등식은 성립하지만 기본 구조가 선행연구에 있고 TabICLv2를 추가할 효용·비용 근거가 부족해 **당시 추천안으로 채택하지 않았다**. 새 성능 실험의 부정 결과로 분류하지 않는다.
 
 [39 계획](../evidence/0039-0040-sample-reuse/originals/SRC-0021492.md.txt) · [40 판단 원문](../evidence/0039-0040-sample-reuse/originals/SRC-0021511.md.txt) · [출처와 읽은 범위](../sources/history-024.md) · [주장 지도](../verification/history-024-primary-review.json) · [검수](../verification/history-024.md)

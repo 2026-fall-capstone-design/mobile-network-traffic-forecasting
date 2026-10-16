@@ -1,5 +1,7 @@
 # 원109: 저장 학습 경로와 조기 종료 확인
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 2026-09-26 원기록을 정리했다. **새 학습·추론 없이 기존 로그를 확인한 진단**이다. 29개 모두 patience10으로 끝났고 epoch 상한 절단의 증거는 없었다. 두 K4의 경로 우열은 바뀌었으며, 수렴·원인·새 소속의 우위를 증명한 결과로 해석하지 않는다.
 
 [원108 BN 통계](0138-fixed-weight-bn-statistics.md) · [원106 같은 K4 전이](0136-same-k-cellwise-error-transition.md) · [원107 입력지원](0137-calendar-retention-and-external-support.md) · [41개 출처](../sources/history-139.md) · [근거 보관](../evidence/0139-saved-training-path-and-stopping/README.md) · [26개 주장 검수](../verification/history-139-claims.json)

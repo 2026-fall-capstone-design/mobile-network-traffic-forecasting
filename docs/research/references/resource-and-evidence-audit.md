@@ -1,5 +1,7 @@
 # 자원 감사와 새 연구 근거를 구별할 때
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원104](../records/0134-resource-and-evidence-audit.md) · [원103](../records/0133-current-evidence-and-unapproved-extension.md) · [현재 근거와 새 후보](current-evidence-and-unapproved-extension.md)
 
 | 확인할 내용 | 과거 감사가 남긴 사실 | 새 연구안에서 필요한 차이 |

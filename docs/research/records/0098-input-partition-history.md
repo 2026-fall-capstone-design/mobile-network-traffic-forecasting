@@ -1,5 +1,7 @@
 # 원81의 결론이 후보표와 연구일지에 반영된 과정
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-098.md) · [검수](../verification/history-098.md) · [변경 비교](../evidence/0098-input-partition-history/unique-deltas.json) · [원81 판단](0090-input-partition-decision.md)
 
 팀원이 같은 입력 공유 후보를 다시 조사하기 전에 당시 보류 이유, 남겨 둔 긍정 증거, 재검토 조건을 찾는 기록이다. 원본 번호는81이며 H098은 snapshot22→23의 고유 연혁 변경을 다룬다.

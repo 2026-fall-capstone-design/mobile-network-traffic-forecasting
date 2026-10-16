@@ -1,5 +1,7 @@
 # 원78 검색·접근 기록과 실제 검토 범위
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-082.md) · [검수](../verification/history-082.md) · [근거](../evidence/0082-transferability-access/README.md) · [당시 판단](0076-0079-learning-decisions.md)
 
 원래 기록 번호는 **78**이다. H082는 아카이브 검수 묶음 ID이며 새 실험 번호가 아니다. 저장된 검색 발췌와 직접 접근 로그를 전체 문헌 검수에 연결해, 자료가 있다는 사실과 실제로 확인한 범위를 구분한다.

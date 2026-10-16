@@ -1,5 +1,7 @@
 # 26·27 · 관측 가능한 상태에서 남는 손해
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 2026-09-25의 [26 계획](../evidence/0026-0027-observable/originals/SRC-0021210.md.txt)과 [27 결과](../evidence/0026-0027-observable/originals/SRC-0021235.md.txt)를 연결했다. 앞선 [25의 실제 peak 표](0025-adjacent-structures.md)는 미래 target으로 조건을 정했고 표본도 적었다. 이번 질문은 **예측 당시에 알 수 있는 높은 수준·빠른 증가 상태에서도 global RCTL의 손해가 반복되며, 기존 소속이나 단순 예측기가 그 손해를 줄이는가**였다. 새로운 clustering 추천이나 독립 test 결과가 아닌 개발 진단이다. **H019-C01**
 
 당시 기존 RCTL 예측 8개를 재사용하고 Ridge·HGB를 각각 한 번 학습한 완료 로그와 저장 결과가 있다. 이번 아카이브 작업의 학습·추론은 0회다. [코드](../evidence/0026-0027-observable/originals/SRC-0022935.py.txt)는 정적으로 읽었으며 실행하지 않았다.

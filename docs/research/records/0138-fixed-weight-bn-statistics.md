@@ -1,5 +1,7 @@
 # 원108 고정 가중치에서 BatchNorm 통계만 다시 계산한 결과
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **이 조건에서는 훈련입력으로 BN 통계를 다시 계산해도 Tab-risk K4의 손해가 해결되지 않았다.** 세 방식의 14일 평균 오차는 모두 늘었지만, 개선된 cell과 날짜도 있었다. BN의 모든 영향이나 TabICL을 일반적으로 기각하는 근거로 쓰지 않는다.
 
 [39출처/72경로](../sources/history-138.md) · [26주장](../verification/history-138-claims.json) · [작성 후 대조](../verification/history-138-second-pass.json) · [저장 수치 검사](../evidence/0138-fixed-weight-bn-statistics/saved-numeric-check.json) · [재사용·문헌 안내](../references/fixed-weight-bn-statistics.md)

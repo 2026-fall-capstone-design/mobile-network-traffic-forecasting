@@ -1,5 +1,7 @@
 # 05의 가까운 선행: 무엇을 묶고 어떤 손실을 계산하는가
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [05 부분 정리](../records/0005-closest-methods-audit.md)의 다섯 방법 비교다. 지정 절을 읽은 결과이며 전체 논문 재현이나 신규성 전수 조사에 해당하지 않는다. [원문 판본·해시·실제 열람 범위](../sources/history-003.md).
 
 | 선행과 확인 위치 | 정보·소속 결정 | 적용 범위와 현재 후보의 차이 |
@@ -50,7 +52,6 @@
 [세 논문 비교](0076-response-transfer.md)와 [76의 상세 검수](../records/0076-response-transfer-audit.md)에서 Sobolev·Jacobian·TabDistill의 저장 원문을 확인했다. Jacobian의 자료량별 결과 반전과 TabDistill의 F1·variance 예외, 자기 기준 overlap, Fiat 표의 설명 차이를 함께 읽는다. 위의 77–79 문헌까지 검수를 완료했다는 의미는 아니다.
 
 [TabDistill 상호작용 표](../records/0076-tabdistill-interaction-audit.md)는 삭제 patch에 남은 27개 PMLB CSV를 보완한다. 항 수 증가가 항상 유리하지 않고 MAE·MSE의 비교 방향이 달라질 수 있다. 원 상호작용 표의 조건과 그 목록을 읽어 다시 학습하는 후속 코드의 조건을 구별한다.
-
 
 ## 77의 동적 소속 근거
 

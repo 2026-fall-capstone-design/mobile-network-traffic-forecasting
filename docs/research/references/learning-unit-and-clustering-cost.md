@@ -1,5 +1,7 @@
 # 학습 단위·clustering·전체 비용 — 원99 문헌 비교
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원99](../records/0129-learning-units-and-clustering-cost.md) · [34출처](../sources/history-129.md) · [실제 판독/미독](../evidence/0129-learning-units-and-clustering-cost/literature-scope.json)
 
 | 판본 | 대상·결정·비교 | 현재 cell pooling에 옮길 때의 경계 |

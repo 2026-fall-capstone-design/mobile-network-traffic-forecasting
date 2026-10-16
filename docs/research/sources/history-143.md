@@ -11,6 +11,7 @@
 7개 작은 원문은 바이트 그대로 보존하고 기존 보고서 1개는 정확 사본을 재사용한다. 외부 논문·추출문·그림·README·학습 코드 전문은 재게시하지 않고 공식 위치·고정 commit·해시·실제 구간을 연결한다. 원문의 실행 지시와 완료 선언은 역사적 자료다.
 
 <a id="src-0020872"></a>
+
 ## SRC-0020872
 
 - 원본 위치: `tmp/redesign_20260925/114_archive_verification.json`
@@ -21,6 +22,7 @@
 - 원문 JSON 전체를 읽었다. historical complete/models_executed 등의 필드는 당시 기록의 진술이며 현재 전체 아카이브 완료나 독립 실행 증명의 표시가 아니다.
 
 <a id="src-0020873"></a>
+
 ## SRC-0020873
 
 - 원본 위치: `tmp/redesign_20260925/114_input_response_literature_findings.md`
@@ -30,6 +32,7 @@
 - 작성 후 실제 읽기: `[[1, 47]]`.
 
 <a id="src-0020874"></a>
+
 ## SRC-0020874
 
 - 원본 위치: `tmp/redesign_20260925/114_input_response_literature_plan.md`
@@ -39,6 +42,7 @@
 - 작성 후 실제 읽기: `[[1, 23]]`.
 
 <a id="src-0063917"></a>
+
 ## SRC-0063917
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/README.md`
@@ -48,6 +52,7 @@
 - 작성 후 실제 읽기: `[[1, 33]]`.
 
 <a id="src-0063918"></a>
+
 ## SRC-0063918
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/SRDML_KDD2022_author_copy.pdf`
@@ -56,6 +61,7 @@
 - PDF 실제 시각 검토: 3·4·5·10·11쪽. 첫 쪽 서지는 PDF와 정확히 대응하는 추출문에서 확인했다. 1·2·6·7·8·9쪽 전체 픽셀과 나머지 그림·표의 검수는 미완료다.
 
 <a id="src-0063919"></a>
+
 ## SRC-0063919
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/SRDML_text.txt`
@@ -66,6 +72,7 @@
 - TXT 전체 문자 구간은 읽었지만, 이번 과학적 대조는 원114의 목적식·정리·구현·설정·적용 조건이다. PDF의 남은 시각 요소와 benchmark 세부 검수는 이 범위에 포함하지 않는다. whole text literal과 whole paper review를 구별한다.
 
 <a id="src-0063920"></a>
+
 ## SRC-0063920
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/commit.json`
@@ -76,6 +83,7 @@
 - 저장 JSON의 모든 필드와 중첩 문자열을 읽었다. commit 판본·tree·당시 repository 응답을 구별하고 현재 API 상태나 환경 재현으로 소급하지 않는다.
 
 <a id="src-0063921"></a>
+
 ## SRC-0063921
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/manifest.json`
@@ -86,6 +94,7 @@
 - 원문 JSON 전체를 읽었다. historical complete/models_executed 등의 필드는 당시 기록의 진술이며 현재 전체 아카이브 완료나 독립 실행 증명의 표시가 아니다.
 
 <a id="src-0063922"></a>
+
 ## SRC-0063922
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/qa-03.png`
@@ -94,6 +103,7 @@
 - 저장 이미지 전체를 열어 확인했고, 동일한 현재 PDF 렌더도 작성 후 다시 보았다. 한 논문의 파생 화면이며 별도 실험이 아니다.
 
 <a id="src-0063923"></a>
+
 ## SRC-0063923
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/qa-04.png`
@@ -102,6 +112,7 @@
 - 저장 이미지 전체를 열어 확인했고, 동일한 현재 PDF 렌더도 작성 후 다시 보았다. 한 논문의 파생 화면이며 별도 실험이 아니다.
 
 <a id="src-0063924"></a>
+
 ## SRC-0063924
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/qa-10.png`
@@ -110,6 +121,7 @@
 - 저장 이미지 전체를 열어 확인했고, 동일한 현재 PDF 렌더도 작성 후 다시 보았다. 한 논문의 파생 화면이며 별도 실험이 아니다.
 
 <a id="src-0063925"></a>
+
 ## SRC-0063925
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/repository.json`
@@ -120,6 +132,7 @@
 - 저장 JSON의 모든 필드와 중첩 문자열을 읽었다. commit 판본·tree·당시 repository 응답을 구별하고 현재 API 상태나 환경 재현으로 소급하지 않는다.
 
 <a id="src-0063926"></a>
+
 ## SRC-0063926
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/synthetic_train.py`
@@ -130,6 +143,7 @@
 - 코드 전체를 첫 읽기·작성 후 대조에서 정적으로 읽었다. 실행·import·모델 생성·gradient 계산·학습·추론은 하지 않았다. 원114가 확보하지 않은 데이터 준비/pretraining 본문과 실제 결과를 검수했다고 하지 않는다.
 
 <a id="src-0063927"></a>
+
 ## SRC-0063927
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/train.py`
@@ -140,6 +154,7 @@
 - 코드 전체를 첫 읽기·작성 후 대조에서 정적으로 읽었다. 실행·import·모델 생성·gradient 계산·학습·추론은 하지 않았다. 원114가 확보하지 않은 데이터 준비/pretraining 본문과 실제 결과를 검수했다고 하지 않는다.
 
 <a id="src-0063928"></a>
+
 ## SRC-0063928
 
 - 원본 위치: `tmp/redesign_20260925/sources/saliency_114/tree.json`
@@ -150,6 +165,7 @@
 - 저장 JSON의 모든 필드와 중첩 문자열을 읽었다. commit 판본·tree·당시 repository 응답을 구별하고 현재 API 상태나 환경 재현으로 소급하지 않는다.
 
 <a id="src-0000135"></a>
+
 ## SRC-0000135
 
 - 원본 위치: `output/research/TabICLv2_재설계_시각보정실측과_후보판단_갱신.md`

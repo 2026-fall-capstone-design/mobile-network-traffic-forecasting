@@ -1,5 +1,7 @@
 # 21·22: 문헌 근거와 최신 구현의 확인 범위
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 2026-09-25의 기록21은 진단 결과를 해석하며 문헌의 적용 조건을 제한했고, 기록22는 새로 확인한 구현과 미완료 문헌을 구분했다. 이번 정리는 **당시 읽었다고 기록한 범위와 지금 고정해 확인한 근거**를 연결한다. 새 모델·RCTL 실행은 없다. **H014-C01**
 
 [21 원문](../evidence/0018-0021/originals/SRC-0021095.md.txt)·[22 원문](../evidence/0021-0022-literature/originals/SRC-0021116.md.txt)·[방법과 버전 비교](../references/forecasting-version-boundaries.md)·[출처와 열람 범위](../sources/history-014.md)·[주장별 검수](../verification/history-014-primary-review.json)를 함께 본다.

@@ -1,5 +1,7 @@
 # Citywide DenseNet의 입력·평가 범위와 간헐 트래픽 인용의 한계
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-101.md) · [검수](../verification/history-101.md) · [그림 대조](../evidence/0101-citywide/figure-review.json) · [수식 대조](../evidence/0101-citywide/equation-review.json)
 
 **핵심:** 이 논문의 결과는 Milan SMS·통화의 시간 단위 예측에 해당한다. 10분 자료에0이 많다는 설명을 현재 Internet activity의 정량적 희소성이나 cell 군집화의 효과로 인용하지 않는다.

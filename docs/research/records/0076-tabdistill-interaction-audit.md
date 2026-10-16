@@ -1,5 +1,7 @@
 # 76 보완: TabDistill의 저장된 상호작용 비교표
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [문헌·구현 검토](0076-response-transfer-audit.md) · [출처와 범위](../sources/history-076.md) · [수치 자료](../evidence/0076-tabdistill-interactions/README.md) · [주장 검수](../verification/history-076.md)
 
 TabDistill을 다시 검토할 때는 상호작용을 선택한 표와 그 목록으로 모델을 다시 학습한 표를 구분해야 한다. 같은 항 수라도 목록·순서·고유 항 수가 다르고, MAE와 MSE가 다른 비교 결과를 낼 수 있다. 이 기록은 원76의 참고 구현에서 남아 있던 CSV를 읽어, 과거 결과를 재사용할 때 확인할 조건을 보완한다.

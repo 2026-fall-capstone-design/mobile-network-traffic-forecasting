@@ -1,5 +1,7 @@
 # CCM v2: 클러스터별 출력층, 공동 학습, 표시값 검수
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 원81이 참고한 CCM은 **학습 가능한 소속 확률과 클러스터별 선형 출력층을 함께 쓰는 선행연구**다. 클러스터마다 완전한 RCTL 모델을 별도로 학습한 결과로 해석하면 안 된다. 원81의 이 구분은 논문에서 확인되지만, 저장 코드의 실제 동작은 별도 검토가 남아 있다.
 
 [출처와 읽은 범위](../sources/history-092.md) · [표시값 및 산술 근거](../evidence/0092-ccm/README.md) · [주장별 위치](../verification/history-092-claims.json) · [검수 상태](../verification/history-092.md) · [원81 기록](0090-input-partition-decision.md)

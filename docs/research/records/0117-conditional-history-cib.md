@@ -1,5 +1,7 @@
 # 원87 후속: 결정 이력과 CIB 실험표·평가 경로
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-117.md) · [검수](../verification/history-117.md) · [근거](../evidence/0117-conditional-history-cib/README.md) · [원87 핵심 판단](0116-causal-capacity-reference.md) · [이전 결정표](0115-sharing-history-literature.md)
 
 같은 연구를 다시 시작하기 전에 이미 검토한 결정과 남은 조건을 찾을 수 있도록 연결했다. 논문이 보고한 성능, 인쇄값의 산술 대조, 저장 코드의 정적 발견을 구별한다.

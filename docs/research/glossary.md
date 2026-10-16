@@ -2,7 +2,21 @@
 
 [연구 안내](README.md) · [원86 학습 공유](records/0114-shared-training-scope.md) · [원96 파라미터 병합](records/0126-rctl-parameter-merging-scope.md)
 
-아래는 원86·96에서 구별한 용어다. 전체 과거 자료의 용어 정리는 계속 진행한다.
+과거 기록에서 구별한 용어를 모았습니다. 당시 조건의 의미를 보존하며 전체 용어 사전의 완성을 뜻하지 않습니다.
+새 연구의 지표·분할·시드는 [공통 실험 규약](../research-protocol.md)을 따릅니다.
+
+## 공통 평가 용어
+
+| 용어 | 이번 기본 비교에서의 뜻 |
+| --- | --- |
+| `valid_q8` | 대상 셀의 입력 8개와 타깃이 모두 유한한 데이터 마스크 |
+| raw / scaled | 각각 원 활동량 척도 / 학습기간 셀별 min-max 정규화 척도 |
+| macro / micro MAE | 각각 셀별 MAE의 동일 가중 평균 / 모든 유효 행의 절대오차 평균 |
+| MAPE(%) / 비율 | 퍼센트 값 / 그 값의 100분의 1 |
+| 선택 점수 / 주지표 | 검증 정규화 macro MAE / 평가 원 척도 macro MAPE(%) |
+| 기본 비교 / 추가 조건 실험 | 대상 셀 입력 8개의 공통 조건 / 추가 정보·변환·갱신 등을 공개한 별도 조건 |
+
+## 공유와 비용의 용어
 
 | 용어 | 이 기록에서의 뜻 |
 |---|---|
@@ -38,22 +52,24 @@
 
 [원108](records/0138-fixed-weight-bn-statistics.md)에서 **optimizer fit/모델상태 적합**, **EMA/유한집합 모멘트/불편분산 보정**, **평균 손해/cell·day 개선**, **복원144행/전체 예측 복원**, **파생원장/복구된 원본**, **저장값 검수/모델 재현**을 구별한다.
 
-## online train / 공통 epoch / validation-selected checkpoint
+## 학습과 시각 정렬
+
+### online train / 공통 epoch / validation-selected checkpoint
 
 [원109](records/0139-saved-training-path-and-stopping.md)의online train은학습중배치별가변가중치·train mode 손실의가중평균이다. validation은epoch종료뒤eval mode 값이다. 공통epoch는같은seed의여덟K4로그가모두남은구간으로42/43이다. validation-selected checkpoint 평균은서로다른best_epoch에서선택한4모델의최소validation 평균이며동시epoch나새test값이 아니다.
 
-## profile 이동 / 원형 잔차 / 공통 mask / own query 합집합
+### profile 이동 / 원형 잔차 / 공통 mask / own query 합집합
 
 [원110–111](records/0140-calendar-alignment-and-input-preflight.md)의 δij는 j[h+δ]를 i[h]에 맞춘다. 원형 잔차는 mod24의짧은 거리이고 pair별 최적을 하나의cell 좌표로 곧바로 쓸 수 없다. 공통 mask는세 이동의 지원교집합이며, own mask는같은target 시점의합집합이다.1222전체공통시점·807통과방향공통시점·2421세이동행·675own행·3096합계는다른집계다.
 
-## 방향×query / target×query / 기간 기여
+### 방향×query / target×query / 기간 기여
 
 [원112](records/0141-calendar-predictive-selection-and-weighting.md)의402는방향×query이며 서로다른target×query는336이다. 동일target label을donor비교에서재사용한것을독립표본으로세지않는다. 이336은원101미래336행/cell과다른단위다. 각기간새평균과원래전체weight의기간기여도구별한다.
 
-## 고정 K / 균등 크기 / 수정 규칙 / 가정 batch
+### 고정 K / 균등 크기 / 수정 규칙 / 가정 batch
 
 [원113](records/0142-fixed-k-and-unrestricted-cluster-sizes.md)의 고정 K는 group 개수이고 균등 크기는 각group의 cell 수다. 수정 규칙은 group별 숫자 δ를 구하는 방식이며, 같은 규칙이 모든 소속에 같은 숫자 δ를 뜻하지 않는다.10752행·44batch는 가정 산술이고 실제 RCTL 측정값이 아니다.
 
-## 출력 gradient / parameter gradient / task relation
+### 출력 gradient / parameter gradient / task relation
 
 [원114](records/0143-signed-input-gradients-and-task-relations.md)의 출력 gradient는 예측 출력의 입력/feature map에 대한 미분이다. parameter gradient는 학습 loss를 모델 가중치로 미분한 값이다. SRDML의 관계 가중치는 공동 학습의 연속 변수이며 고정 K의 cell 소속과 다르다. 부호 있는 벡터의 L1 차이는 sign만 비교하거나 먼저 절댓값을 취한 차이와 같지 않다.

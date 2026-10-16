@@ -1,5 +1,7 @@
 # NTKMTL의 학습 중 균형과 사전 cell 소속 결정의 차이
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 원래 기록 **78**(2026-09-26)의 NTKMTL 검토를 보완하는 아카이브 **H081**이다. 0081은 새 실험 번호가 아니다. [원78 판단 보존본](../evidence/0076-0079-learning-decisions/originals/SRC-0022034.md.txt), [회귀 전이](0079-regression-transferability.md), [Task2Vec](0080-task2vec-task-and-output-sharing.md), [출처](../sources/history-081.md), [근거 묶음](../evidence/0081-ntkmtl/README.md)을 함께 본다.
 
 NTKMTL은 현재 학습하는 다중 과제 모델의 task weight를 조절한다. 최종 예측 모델을 보지 않고 먼저 cell을 묶는 문제에 그대로 답하는 방법은 아니다. 논문 수식, 저장된 기본 코드, 주석 처리된 변형, 저자 보고 성능과 원78의 설계 판단을 각각 구분했다. 새 모델 실행이나 최종 예측기 선정은 수행하지 않았다.

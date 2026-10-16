@@ -1,5 +1,7 @@
 # 원90: 함수 제약을 추가해 clustering을 정당화할 수 있는가
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-120.md) · [검수](../verification/history-120.md) · [근거](../evidence/0120-prescribed-regularity/README.md) · [이전 원89](0119-heterogeneity-splitting.md)
 
 원90의 미채택 판단과 다시 검토할 조건을 연결한다. 두 점의 수학적 하한, recurrent 상태 안정성, 제어용 입력표본 분할과 traffic cell 소속 결정을 구별해 같은 후보의 반복을 줄인다.

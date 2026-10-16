@@ -1,5 +1,7 @@
 # 72 — Globalization 논문의 학습 기반 군집화와 성능 주장 대조
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 이 논문은 모형에 따라 공유할 자료의 단위가 달라질 수 있다는 선행 근거다. 그러나 학습한 계수·중요도로 소속을 정하므로, 이를 그대로 적용해 **RCTL과 독립적인 cell 소속을 발견했다**고 말할 수는 없다. 평균 개선도 모든 지역·월·지표의 개선을 뜻하지 않는다.
 
 [72–75의 당시 판단과 실제 실행](0072-0075-output-compression.md) · [출처·판본](../sources/history-071.md) · [표와 소속 전사](../evidence/0072-globalization/tables-membership.json) · [피크 그림 전사](../evidence/0072-globalization/figures.json) · [검수](../verification/history-071.md)

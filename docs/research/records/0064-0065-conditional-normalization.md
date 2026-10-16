@@ -1,5 +1,7 @@
 # 64·65: 조건부 정규화의 선행 범위와 구현 조건
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 후속 H062에서 [65 전체 판단을 종합](0063-0065-synthesis.md)하고 [66–68의 cell 보호·저장 위험 진단](0066-0068-group-risk.md)에 연결했습니다. 아래 남은 문헌 수는 각 작성 당시의 범위입니다. 원실험·구현 공백과 새 세 논문의 본문 검수는 계속 남아 있습니다.
 
 [연구 안내](../README.md) · [과거 시도](../prior-attempts.md) · [출처·판본](../sources/history-061.md) · [주장 검수](../verification/history-061-claims.json) · [수치 검수](../verification/history-061-paper-numeric-check.json)

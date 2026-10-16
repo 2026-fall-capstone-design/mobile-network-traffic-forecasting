@@ -1,5 +1,7 @@
 # 19: 넓힌 cell 범위에서 ID와 과거 요약의 가치
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 활동량 범위를 넓힌 32개 cell을 같은 context에 넣고 ID·과거 통계를 추가했다. **이 조건에서 TabICL의 세 추가 입력은 전체 평균을 개선하지 못했다.** Ridge의 과거 요약과 HGB의 ID는 전체 MAE가 조금 줄었으나 cell·날짜별 손해도 있었다. 모든 clustering의 효용이 없다는 결론으로 확대하지 않는다. **H013-C01·H013-C05·H013-C06**
 
 [13–15의 16cell 진단](0013-0015-transfer-cell-identity.md) → [19 계획](../evidence/0019-0021/originals/SRC-0021049.md.txt) → [20 잔차 진단](0020-0021-target-parameterization.md)을 연결한다. 작성일은 원문 기준 2026-09-25다. [근거 안내](../evidence/0019-0021/README.md)·[열람 범위](../sources/history-013.md)·[검수](../verification/history-013.md)·[주장별 출처](../verification/history-013-primary-review.json)를 함께 읽는다.

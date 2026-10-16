@@ -1,5 +1,7 @@
 # 고정 가중치의 BN 통계를 다시 검토하기 전에
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원108](../records/0138-fixed-weight-bn-statistics.md) · [원107](../records/0137-calendar-retention-and-external-support.md) · [판본 한계](../evidence/0138-fixed-weight-bn-statistics/source-version-limits.json)
 
 같은 가중치·소속·훈련입력의 통계 재계산은9회 모두 check평균이 나빠졌으나 일부cell/day는 개선됐다. 같은 조건을 반복하기 전에 평균과 예외,14일 개발기간, 단일seed,144행 복원 한계를 읽는다. 새 비교가 구별할 원인과 달라지는 자료/통계/학습조건을 기록한다. 이미 본 check에 맞춘 층·혼합·threshold·소속 선택을 독립 최종평가로 세지 않는다.

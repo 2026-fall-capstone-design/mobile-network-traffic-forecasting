@@ -1,5 +1,7 @@
 # 원102 — 구조 기반 kernel과 공동 target 위험의 적용 범위
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **원102는 현재 추천안에 RNN kernel 점수를 더하지 않기로 한 근거 검토다.** 구조 기반 계산의 가능성은 남겼지만, 초기화의 무한폭 이론·참고 구현을 실제 유한 RCTL의 Adam·MAE 학습 결과에 연결할 근거가 부족했다. 새 kernel 성능을 측정해 실패한 기록은 아니다.
 
 [35출처/81사본](../sources/history-132.md) · [36주장](../verification/history-132-claims.json) · [작성 후 대조](../verification/history-132-second-pass.json) · [수식 검수](../evidence/0132-architecture-kernel-and-joint-risk/fixed-affine-identity-check.json) · [비용 산술](../evidence/0132-architecture-kernel-and-joint-risk/cost-arithmetic-check.json) · [문헌·재사용 조건](../references/architecture-kernel-and-joint-risk.md)

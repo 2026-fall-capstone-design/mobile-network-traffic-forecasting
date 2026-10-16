@@ -1,5 +1,7 @@
 # 원89: cell 이질성과 RCTL 분할 효과의 구분
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-119.md) · [검수](../verification/history-119.md) · [근거](../evidence/0119-heterogeneity-splitting/README.md) · [이전 원88](0118-conditional-reference-audit.md)
 
 특징의 차이, 그룹 정보의 가치, 별도 모델 학습의 효과를 혼동해 같은 실험을 다시 시작하지 않도록 원89의 판단과 근거를 연결한다. 논문에서 확인한 긍정 결과, 적용 한계, 표·본문의 미해결 차이를 함께 보존한다.

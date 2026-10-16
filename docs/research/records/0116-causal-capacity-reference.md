@@ -1,5 +1,7 @@
 # 원87: 공동 출력의 표현 용량과 조건부 비교의 기준 분포
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-116.md) · [검수](../verification/history-116.md) · [근거](../evidence/0116-causal-capacity/README.md) · [원81 입력·출력 변경](0090-input-partition-decision.md) · [원86 학습 공유](0114-shared-training-scope.md)
 
 구조의 기호적 제약을 실제 예측 손해로 바꾸어 읽거나, 조건 열을 남겼다는 설명만으로 조건부 표본 생성이 성립한다고 판단하지 않도록 당시 질문과 근거를 연결했다. 원래 연구 번호는 **87**이다.

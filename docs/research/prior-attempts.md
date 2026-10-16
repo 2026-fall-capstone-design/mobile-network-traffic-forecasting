@@ -1,8 +1,16 @@
 # 문제별 과거 시도 색인
 
+새 실험의 데이터·선택·평가 조건은 [공통 실험 규약](../research-protocol.md)을 확인하세요.
+
+[초기 진단과 기준 비교](#초기-진단과-기준-비교) | [공유 구조와 입력 정보](#공유-구조와-입력-정보) | [관측 비용과 학습량](#관측-비용과-학습량) | [입력 길이와 잔차 표현](#입력-길이와-잔차-표현) | [셀 보호와 출력 표현](#셀-보호와-출력-표현) | [반응 전달과 동적 소속](#반응-전달과-동적-소속) | [소속 결정과 공동 출력](#소속-결정과-공동-출력) | [갱신과 운영 비용](#갱신과-운영-비용) | [근거 감사와 학습 조건](#근거-감사와-학습-조건)
+
+> 아래의 진행·후속·미완료 표기는 각 묶음을 작성한 당시의 검토 범위입니다. 현재 정리 범위는 [연구기록 안내](README.md)를 따릅니다.
+
 먼저 [남은 519개 번호별 주제 표](remaining-records-summary.md)에서 비슷한 기록을 찾을 수 있다. 아래는 이미 작성된 상세 시도의 조건·결과 색인이다. 남은 기록의 전체 결과·과정은 추가 게시하지 않는다.
 
-현재까지 검수한 기록의 색인이다. 여기에 없다는 이유로 과거 시도가 없다고 판단하면 안 된다. 전체 고유 기록 검토를 계속하고 있다.
+검수된 기록에서 문제별로 찾을 수 있는 색인입니다. 여기에 없다는 이유로 과거 시도가 없다고 판단하지 않습니다. 남은 기록은 주제 표의 범위로 제공합니다.
+
+## 초기 진단과 기준 비교
 
 | 찾으려는 문제·별칭 | 확인한 기록과 조건 | 결과·주의할 해석 | 재사용·새 실험의 차이 |
 |---|---|---|---|
@@ -71,7 +79,6 @@
 | residual target, delta, 차분, 최근값baseline | [20·21](records/0020-0021-target-parameterization.md),같은행·Y−최근관측·복원 | Tab평균44.93%감소와28cell악화,7524에집중. 개발후속·RCTL변경아님 | raw19재실행없이6잔차예측재사용;독립기간과최종소속효용은별도 |
 | extrapolation, saturation, loss concentration, cell7524 | [집중도](records/0020-0021-target-parameterization.md),32cell모두유지 | 60.449%raw손실,26/64query가context최대초과. 수학적출력상한/물리원인미확인 | 6큰target예시와전체cell/day손해;실제병합오류의근거와구분 |
 
-
 문헌의 이름과 구현 버전은 다음 조건으로 구분한다.
 
 | 문제·별칭 | 먼저 볼 기록 | 재사용 범위와 확인할 차이 |
@@ -109,29 +116,31 @@
 
 새 실험은 관련 과거 기록, 같게 유지할 조건, 달라지는 질문·조건, 재사용할 파일을 먼저 적는다. 기존 부정 결과를 회피하기 위한 조건 변경과 새로운 가설 검증을 구분한다. [첫 묶음 검수](verification/pilot-001.md), [RCTL 검수](verification/pilot-002.md), [문헌 검수](verification/pilot-003.md), [캐시 대조 검수](verification/pilot-004.md), [전체 조사 현황](verification/inventory-2026-10-08.md).
 
-## 인접 구조를 새 소속 원리로 제안하기 전
+## 공유 구조와 입력 정보
+
+### 인접 구조를 새 소속 원리로 제안하기 전
 
 [25 인접 문헌·판단 경계](records/0025-adjacent-structures.md)는 Ma의 VAL routing, NeST의 지역 미래 guidance, Graph Coloring의 gradient update 스케줄을 구별한다. [지정 원문 비교](references/adjacent-structures.md)에 fallback·SNR 보장의 한계와 문서 불일치를 연결했다. NTK는 상세 검토 완료 문헌이 아니다. 실제 peak 표는16cell중4개에 표본이 없고 나머지도1–28개여서, 이 결과만으로 peak 연구 방향을 확정하지 않았다.
 
-## 관측 상태의 손해와 단순 예측기
+### 관측 상태의 손해와 단순 예측기
 
 [26·27](records/0026-0027-observable-states.md)은 최근 수준·변화·하루 편차의 TRAIN 분위수 상태를 고정하고 기존 RCTL 8개 조건·계절 기준 3개·Ridge/HGB 2개를 대조했다. empirical의 급증 이득은 두 seed/기간에 남지만 전체 손해를 상쇄하지 못했다. Tab의 희소 high_high 이득과 HGB 전체 이득에도 seed·기간·cell 반례가 있다. actual target peak·입력 상태·micro/macro·빈도 기여를 바꾸어 결론을 선택하지 않는다.
 
-## 관계 차이·불확실성·residual 분할
+### 관계 차이·불확실성·residual 분할
 
 [28](records/0028-mechanism-uncertainty.md)은 TabMGP posterior clustering, predictive CLT/UD 병합 확신도, Vario의 mechanism partition/MDL/top-down, two-stage global residual clustering을 비교한 문헌 검토다. 새 모델 실행 결과가 아니다. 예측 폭이 넓다는 사실이나 residual 자기상관만으로 cell별 다른 예측기가 필요하다고 결론 내리지 않는다. 재검토 시 기존 방법이 남긴 손해, TabICL의 추가 정보, 바뀔 소속, 고정 RCTL의 효용과 비용을 연결한다. 이미 존재하는 TabICL adapter·prefix 비용·겹치는 lag의 정리 조건을 먼저 확인한다. [문헌 비교와 공식 근거](references/mechanism-uncertainty.md)를 재사용하고 새로운 실행 조건의 차이를 남긴다.
 
-## 시간 해상도만 바꾸면 공유 손해가 나타나는가
+### 시간 해상도만 바꾸면 공유 손해가 나타나는가
 
 [29–32](records/0029-0032-resolution-diagnostic.md)는 동일 세cell의10분값/시간합, S8/S+L16, Ridge/HGB global/local32fit을 비교했다. 최근lag는 두해상도 모두 이득이지만 공유효과는조건별로달랐다. S+L10분Ridge4556·시간HGB4159 손해와 시간Ridge전체손해를 보존한다. 같은cell·평균정규화·학습분할·global3배행 조건의 반복인지 먼저 확인한다. [저장근거](evidence/0029-0032-resolution/README.md)와 [출처](sources/history-021.md)를 재사용하고 새 설계의 cell선정/자료량/용량/정보 차이를 명시한다. 원 UPC Fig. 7은1·2·4·6·8·12축과single global을 포함한다.
 
-## process 식별과 분리 학습의 일반화 손해
+### process 식별과 분리 학습의 일반화 손해
 
 [33–35](records/0033-0035-process-fit-gap.md): frozen fit gap, GPI/CF, G/F embedding cache, 유한 학습 손해. 고정16cell·기존29checkpoint의 일곱K=4 조건은 global보다 train평균이 좋고 validation평균은 나빴다. 주Tab의 validation은16cell모두 악화했다. 앞/뒤84시간에서도 평균손해가 남지만 과적합만을 원인으로 확정하지는 못한다. 같은 가중치·소속·자료의 질문은 보존 예측으로 확인할 수 있다. 새로운 데이터 크기·seed·시간 구간·소속을 묻는 경우 그 차이를 먼저 적는다.
 
 Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장이 아니다. G/F 분리와 embedding cache는 선행 구조다. 모델 수4배와 epoch/batch로 계산한 step4배를 혼동하지 않는다. [근거](evidence/0033-0035-frozen-fit/README.md)와 [읽기 범위](sources/history-022.md)를 함께 확인한다. UPC Fig7의10표기는 정리 오기였고1·2·4·6·8·12로 정정했다.
 
-## 정보이론 보장·유한 학습·sample 공유
+### 정보이론 보장·유한 학습·sample 공유
 
 | 문제·별칭 | 확인한 기록 | 재사용 범위·재검토 조건 |
 | --- | --- | --- |
@@ -142,7 +151,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 
 같은 네 수학 반례는 [모델 없는 검산](evidence/0036-0038-finite-information/README.md)으로 확인한다. 문헌 상세 방법과 성능 검증, 초록 발견과 전체 논문 검토를 구분한다.
 
-## 담당 소속과 학습 sample 공유를 분리하려는가
+### 담당 소속과 학습 sample 공유를 분리하려는가
 
 | 문제·별칭 | 확인한 기록 | 재사용 범위·재검토 조건 |
 | --- | --- | --- |
@@ -154,7 +163,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 
 당시 추천안 미채택은 문헌·정보·비용 근거가 부족하다는 판단이다. 같은 자료에서 새 모델을 학습해 성능 실패를 관측한 기록이 아니다. [보존 원문과 검산](evidence/0039-0040-sample-reuse/README.md)을 재사용하고, 후속 연구에서 바뀔 질문과 조건을 명시한다.
 
-## 평균에 가려진 cell 이득이나 기존 예측 경로 선택을 검토하는가
+### 평균에 가려진 cell 이득이나 기존 예측 경로 선택을 검토하는가
 
 | 문제·별칭 | 확인한 기록·조건 | 결과와 재사용·재검토 조건 |
 | --- | --- | --- |
@@ -165,7 +174,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 
 43과 44 §3–5의 문헌·역할 종합 및 §6 문헌 입수는 아래 기록으로 연결한다. 새 실험은 어떤 새 정보로 어떤 학습 행동을 바꾸는지, 기존 경로 재선택과 무엇이 다른지, 독립 평가 자료를 먼저 명시한다.
 
-## 학습 후 성능이나 국소 설명으로 공유 그룹을 정하려는가
+### 학습 후 성능이나 국소 설명으로 공유 그룹을 정하려는가
 
 | 문제·별칭 | 확인한 기록·근거 | 같은 연구의 반복을 피하려면 |
 | --- | --- | --- |
@@ -177,7 +186,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 
 두 경로는 당시 목표에서 문헌 검토 후 미채택됐다. 새 모델 실행으로 성능 실패를 확인한 기록이 아니다. [43–44 출처](sources/history-026.md)를 재사용하고 새 정보·실제 학습 행동·이전 시도와 다른 검증 조건을 설계에 적는다.
 
-## 다른 cell의 과거를 입력 열로 추가하려는가
+### 다른 cell의 과거를 입력 열로 추가하려는가
 
 | 문제·별칭 | 기존 근거 | 같은 연구의 반복을 피하려면 |
 |---|---|---|
@@ -189,7 +198,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 
 [설정·예측·결과·당시 원장](evidence/0045-0046-input-stability/README.md)을 재사용할 수 있다. 47의 문헌·논리·규모·전체 판단은 아래 후속 기록에 연결했다. 후속75와 전수 범위는 남아 있으며 검색 결과가 없다는 이유로 새 연구라고 판단하지 않는다.
 
-## 예측 의존 graph를 RCTL 소속으로 바꾸려는가
+### 예측 의존 graph를 RCTL 소속으로 바꾸려는가
 
 | 검색어·질문 | 먼저 볼 기록 | 같은 연구와 구별할 조건 |
 |---|---|---|
@@ -201,7 +210,7 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 
 47의 방향 미추천은 모든 공간 입력 기각이 아니다. [45–46의 일부 긍정·부정 결과](records/0045-0046-input-stability.md)와 함께 읽고, 새 연구는 정보 손실·입력 구성·RCTL 학습 단위·독립 기간 중 무엇을 새로 검증하는지 적는다.
 
-## 군집 합계 하나로 예측량을 줄이려는가
+### 군집 합계 하나로 예측량을 줄이려는가
 
 | 검색어·질문 | 먼저 볼 기록 | 같은 연구와 구별할 조건 |
 |---|---|---|
@@ -213,134 +222,137 @@ Butera의 W>P는 가정 아래 MSE 필요조건이며 유한 RCTL의 MAE 보장�
 
 [저장 NPZ/JSON](evidence/0048-0049-aggregation-recovery/README.md)으로 같은 조건의 진단을 재사용할 수 있다. 50의 상세 선행연구·신규성 종합과 후속 기록은 남아 있으므로 이 색인만으로 새 기여라고 결론내리지 않는다.
 
-## 합계 예측·다중 출력·대표 예측을 혼동하지 않기 — 50
+## 관측 비용과 학습량
+
+### 합계 예측·다중 출력·대표 예측을 혼동하지 않기 — 50
 
 [50 문헌과 판단](records/0050-aggregation-literature.md)을 먼저 확인한다. ONDM은 2k 입력/k 출력의 다중 출력, HiGP는 하위·상위 출력과 정합, HTS-Cluster는 거리 기반 대표 예측 조합이다. 모델 수가 줄었다고 출력·호출·지연이 같은 비율로 줄지 않는다. HTS의 상대 시간 0.16과 네 계층 MASE 악화, ONDM MLP 동률, HiGP의 horizon별 손해를 함께 본다. [48–49 진단](records/0048-0049-aggregation-recovery.md)의 고정 비중 복원 오차를 이 세 방법 전체의 불가능성으로 확대하지 않는다. 기존 대표 예측과 다른 결정·TabICLv2의 추가 정보·개별 오차와 실측 비용이 재검토 조건이며 새 실험은 수행하지 않았다.
 
-## 부분 관측 복원·probe 선택을 다시 설계하기 전에 — 52·54
+### 부분 관측 복원·probe 선택을 다시 설계하기 전에 — 52·54
 
 [52·54 기록](records/0052-0054-partial-observation.md)을 확인한다. Beijing 부분집합은 두 배열의 identity와 스키마가 확인됐지만 시각·단위·물리 cell mapping이 부족하다. Milan에서는 probe4/target4·16시간 생략·cell당 context256/query64·ensemble1을 검사했다. TabICL 전체 정규화 MAE0.108537은 Ridge0.092963/HGB0.098836보다 컸고, 앞쪽 이득과 뒤쪽 손해가 공존했다. 세 확대 조건은 false/false/0이었다. 최초 context공동결측 assert 오류와 query만 검사한 수정, 실패4.1631648초도 남겼다. 현재값 복원과 미래 RCTL 성능·소속 판단은 별도 과제이며 51·53/55의 문헌 종합은 계속 검토한다.
 
-## 목적 구간의 예측·sleep 정책을 다시 설계하기 전에 — 51·55
+### 목적 구간의 예측·sleep 정책을 다시 설계하기 전에 — 51·55
 
 [GOTSF 기록](records/0051-0055-gotsf-audit.md)을 먼저 봅니다. interval은 target 값 범위이며 zero-mask MAE는 구간 빈도를 포함합니다. BLW PatchTST I1의 D1_2L은 B보다 27.48% 악화하며, 표의 평균 55.8%는 다른 최선 정책의 이득입니다. 2,880 beam을 cell로 부르거나 week 6·11을 연속 기간으로 연결하지 않습니다. 논문·코드 설정, 1025·1026행의 차이, 정수 date의 시간축, notebook 출처 공백을 확인하고 새 정보·학습 행동·구간 빈도·기간/cell 손해·실측 비용을 명시해야 합니다. 운영 simulation을 RCTL 소속 개선이나 실측 전력 절감으로 옮기지 않습니다.
 
-## Beam 특징과 도로 정보로 예측 개선 — 51·55 후속
+### Beam 특징과 도로 정보로 예측 개선 — 51·55 후속
 
 검색어: ITU, LightGBM, CatBoost, beam forecasting, stratified CV, target encoding, Cellular Predictions, PeMS, flow, speed, 모의 통화, 입력 가용성. [기록](records/0051-0055-network-forecasting.md)에서 10-fold BS층화와 시간순검증, 실측도로입력과모의target, 24주개선과7주금요일손해를 구분합니다. 재검토하려면 같은target/척도와미래입력가용성·분할·정규화를고정하고 셀/기간별반례까지 비교해야 합니다. 소속수정효용은 최종RCTL에서 별도확인해야하며55전체신규성검토는남아있습니다.
 
-## Zero 판별과 공동 학습을 새 역할로 제안하기 전에 — 51 Frontiers
+### Zero 판별과 공동 학습을 새 역할로 제안하기 전에 — 51 Frontiers
 
 검색어: sparse beam, zero inflation, GRU-MTL, multi-task learning, ensemble, 입력 길이, week5, 56%, regression head. [기록](records/0051-frontiers-beam-audit.md)에서0/nonzero분류+회귀의 기존 구조와 조건별 반례를 확인합니다. 긴 입력의 보편적 우위·MAE에서분산개선·주최측week6/11직접순위는 지지되지 않습니다. 새 제안에는 실제 추가정보·학습행동·입력가용성·같은test·계산비용·기간/beam별손해를 명시하고 최종RCTL효용을 별도로 확인해야 합니다.55의event문헌은 본문미검토 상태로 남깁니다.
 
-## 관측 입력을 줄이는 clustering을 제안하기 전에 — 53·55 Moghadas
+### 관측 입력을 줄이는 clustering을 제안하기 전에 — 53·55 Moghadas
 
 검색어: 부분 관측, probe selection, sensor selection, LRP, DTW, softDTW, centroid, input redundancy,17%,81%,10415.90,DeExp,SEA. [학위논문 기록](records/0053-moghadas-thesis.md)은 시간 군집→일부 입력 선택→전체 미래 출력의 기존 구조와 작은M의 손해·perBS 정확도·최초 비용을 보존합니다. 단변량 RCTL 표본 공유나 현재 이력 복원과 목적을 구분하고, 새 제안에는 관측/선택/출력의 차이·시간 분리·초기/반복 비용·최종 RCTL 효용을 적습니다. [54의 제한된 복원 진단](records/0052-0054-partial-observation.md)도 함께 확인해야 합니다.
 
-## 센서 선택과 복원을 함께 제안하기 전에 — 53·55 SRSSS
+### 센서 선택과 복원을 함께 제안하기 전에 — 53·55 SRSSS
 
 검색어: SRSSS, streaming sensor selection, 공간 정보, 관측 비용, 주기적 전체 관측, C_xx, ADMM, 선형 복원. [SRSSS 기록](records/0053-srsss.md)에서 현재값 복원과 미래 예측을 구분하고 초기100개 관측·전체 갱신·합성 비용 c의 조건을 확인합니다. 같은 관측을 줄이는 제안에는 단순 선형 복원과 다른 추가 정보, 실제 예산·초기/반복 비용, 최종 RCTL 효용을 명시해야 합니다. 표의 비교 분모와 작은 차이, 식9 부호·λ=0·주기 표기의 미해결 조건도 보존했습니다.
 
-## 거친 관측에서 세밀한 이력을 복원하기 전에 — 53·55 Zoom2Net
+### 거친 관측에서 세밀한 이력을 복원하기 전에 — 53·55 Zoom2Net
 
 검색어: Zoom2Net, telemetry imputation, super-resolution, collision, KAL, CEM, ILP, target refinement, EMD. [Zoom2Net 기록](records/0053-zoom2net.md)에서 이미 있는 측정/운영 제약·모호한 정답 집합·출력 보정을 확인합니다. 정밀 학습 정답과 실제 가용 관측, 모델 단독/CEM 포함 비용, 최종 미래 예측에 필요한 정보가 새 제안의 차이여야 합니다. MSE·Meta position 반례와 zoom factor 문구 차이, 100회 uncertainty forward의 비용 공백도 보존했습니다.
 
-## 규칙으로 예측·복원 출력을 제한하기 전에 — 53·55 NETNOMOS
+### 규칙으로 예측·복원 출력을 제한하기 전에 — 53·55 NETNOMOS
 
 검색어: NETNOMOS, neurosymbolic, logic enforcement, SMT, constrained generation, hitting set, rule mining, semantic filtering. [NETNOMOS 기록](records/0053-netnomos.md)에서 이미 있는 규칙 학습·선택·생성 제어와 초기 GPT-2 학습, 약5배 추론 비용을 확인합니다. 새 제안은 예측 시 가용 입력·학습 구간·잘못된 규칙 처리·단순 비교군·최종 미래 예측 지표의 차이를 설명해야 합니다. sMAPE와 Burst Position의 손해, MAWI 위반0.3%, 필터 recall·비용 공백은 같은 조건의 반복을 판단할 근거입니다.
 
-## 조건부 대체 API를 새 관측 정책으로 제안하기 전에 — 53·55
+### 조건부 대체 API를 새 관측 정책으로 제안하기 전에 — 53·55
 
 검색어: TabICLUnsupervised, impute, MICE, missingness, temperature, Shuffler, n_permutations, Ciena. [imputation 기록](records/0053-tabicl-imputation.md)은 이미 있는 대체 기능, 먼저 완전한 X로 fit한 공식 예제, [54의 직접 회귀 실험](records/0052-0054-partial-observation.md)을 구분합니다. 새 실험에는 가용 입력·시간 분리·강한 단순 대안·관측 선택 규칙·최종 RCTL 효용·반복 복원 비용의 차이가 필요합니다. 저장 코드의 범주 fallback과 요청 순열 수/실제 순서 수 차이도 재사용 조건입니다.
 
-## 관측·전송·저장 감소를 같은 비용으로 계산하기 전에 — 53·55 Ciena
+### 관측·전송·저장 감소를 같은 비용으로 계산하기 전에 — 53·55 Ciena
 
 검색어: Ciena, IPFIX, OD traffic matrix, link counts, telemetry pruning, denoising autoencoder, DNN compression, index memorization. [Ciena 기록](records/0053-ciena-telemetry.md)은 링크로 흐름을 추정하는 방법, 표본 전송을 줄이는 방법, 과거 이력을 가중치로 압축하는 방법을 구분합니다. 새 제안에는 가용 참값·관측 정책·시점 분리·강한 단순 비교군·최종 예측 효용·총비용의 차이가 필요합니다. 75/78%의 분모, 시뮬레이션 압축표, 2021년 비용 기간의 공백도 함께 확인합니다.
 
-## Beijing 생성 자료를 미래 예측으로 재사용하기 전에 — 51·55 STK-Diff
+### Beijing 생성 자료를 미래 예측으로 재사용하기 전에 — 51·55 STK-Diff
 
 검색어: STK-Diff, Beijing, 960×168, UrbanKG, diffusion, CRPS, nsample, seed, induced subgraph. [STK-Diff 기록](records/0051-stkdiff-audit.md)은 이미 검수한 스키마와 station 생성 분할, 과거값 mask 없는 생성, 단일샘플 지표의 정답절댓값합 분모를 연결합니다. 새 제안은 실제 시간·단위·예측 때의 가용입력·시간holdout·단순비교군·최종RCTL 효용·비용의 차이를 밝혀야 합니다. 같은 NPZ 스키마 확인은 H031 결과를 재사용하고, 배치 구성·seed 초기화·샘플 수·환경과 그림/코드 차이를 재현 조건으로 남깁니다.
 
-## 미래 일정·합성 증강을 clustering의 새 기여로 제안하기 전에 — 51·55
+### 미래 일정·합성 증강을 clustering의 새 기여로 제안하기 전에 — 51·55
 
 검색어: football, event context, future covariates, MWS, Past Learner, Future Priors Learner, STL, Bezier, synthetic augmentation, BHE, E-MAPE. [event 기록](records/0051-event-context.md)은 사전에 알려진 일정과 학습 자료 기반 합성, 전체/이벤트/주거/업무 오차의 다른 순위와 큰K 손해를 연결합니다. 새 제안은 일정의 asof 버전·같은 입력의 단순 비교군·지표 구현·train 안의 K 선택·추가 훈련비·소속 변경 행동과 최종 RCTL 효용의 차이를 명시해야 합니다. 원자료/코드 접근과 날짜·수식 불일치가 해소되기 전에는 재현 완료로 세지 않습니다.
 
 H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책·patching·분할 그림 검토](records/0051-0055-gotsf-media.md). GIF 144프레임은 독립 실험 횟수가 아니며, 생략된 예측과 무표기 생성 조건을 보존합니다. target 값 범위의 목적 변경을 새 cell clustering/RCTL 개선으로 동일시하지 않습니다.
 
-## 관측 절감을 TabICL clustering으로 다시 제안하기 전에 — 51–55 종합
+### 관측 절감을 TabICL clustering으로 다시 제안하기 전에 — 51–55 종합
 
 검색어: partial observation, telemetry, sensor selection, reconstruction, imputation, 관측 비용, 신규성, 입력 선택, 직접 회귀, sample pooling. [51–55 종합](records/0051-0055-synthesis.md)은 문제 존재·기존 원리·Tab 추가 기여를 나눕니다. 같은 네 cell·네 블록·같은 입력의 재실험보다 [저장 예측·오류·비용](evidence/0052-0054-partial-observation/README.md)을 먼저 확인합니다. 새 제안은 관측/전송/저장 단위, 가용 추가 정보, 실제 선택 행동, 시간 분리, 강한 단순 비교군, 기간·cell별 손해, 최종 RCTL 효용과 전체 비용에서 달라지는 조건을 적어야 합니다. 앞 기간 이득을 지우거나 후반 손해를 숨기지 않으며, 54를 MICE/clustering/RCTL 실험으로 재명명하지 않습니다.
 
-## 큰 loss를 중요한 학습 표본으로 바꾸기 전에 — MAE 표본추출 반례 — 56–58
+### 큰 loss를 중요한 학습 표본으로 바꾸기 전에 — MAE 표본추출 반례 — 56–58
 
 검색어: importance sampling, loss-proportional, gradient variance, unbiased, inverse probability, coreset, sample compression, 큰 오차, strata, 학습량. [56–58 기록](records/0056-0058-mae-sampling.md)은 손실분산18→0이어도 기울기분산3.025배인 정확 반례와 당시 기각 범위를 연결합니다. [보존 결과·원장과 산술 검산](evidence/0056-0058-mae-sampling/README.md)을 먼저 재사용합니다. 표본 추출용 층화와 최종 cell cluster, 모델 수와 처리 행·계산 step·fit 시간을 분리하고, 새 제안은 학습기·모드·확률·가중·정보·전체 비용에서 달라지는 조건을 명시해야 합니다. 다른 네 압축/표본추출 문헌은 아직 현재 원문 대조가 남아 있습니다.
 
-## 합성 자료의 epoch 절감을 전체 학습비 절감으로 제안하기 전에 — 56·58 TimeDC
+### 합성 자료의 epoch 절감을 전체 학습비 절감으로 제안하기 전에 — 56·58 TimeDC
 
 검색어: TimeDC, dataset condensation, synthetic time series, trajectory matching, expert buffer, DDFM, CT2M, cross-architecture, coreset, 압축 비용. [TimeDC 기록](records/0056-0058-timedc.md)에서 합성자료 허용 여부, 원 X/y pairing, 원자료expert 비용, 예측기별 원자료 대조 유무를 확인합니다. 새 제안은 단순 표본선택·cell군집·lookback 축과 달라지는 행동, 시간분할·실제지표·반복학습횟수·최종 RCTL 효용을 밝혀야 합니다. [인쇄표와 정적 코드 검토](evidence/0056-0058-timedc/README.md)를 재사용하고 재현 완료로 표시된 baseline인지 먼저 확인합니다.
 
-## TabPFN context Shapley를 RCTL 표본 중요도로 제안하기 전에 — 56·58
+### TabPFN context Shapley를 RCTL 표본 중요도로 제안하기 전에 — 56·58
 
 검색어: TabPFN IML, Data Shapley, Kernel SHAP, context optimization, validation risk, WLS, coreset, pp, 9216 forward, sample valuation. [문맥 선택 기록](records/0056-0058-tabpfn-iml.md)에서어떤예측기의손실을설명하는지,무엇을선택하는지,validation/test와사전비용을확인합니다. 논문의분류AUC우위를최종RCTL학습속도·회귀오차·cell소속근거로대체하지않습니다. 새제안은기존안과달라지는선택단위·목적·독립근거·전체비용을연결해야합니다.
 
-## 시간대 층화로 학습을 줄이겠다는 제안 전에 — 56·58 SCott
+### 시간대 층화로 학습을 줄이겠다는 제안 전에 — 56·58 SCott
 
 검색어: SCott, stratified sampling, control variate, gradient variance, timestamp, strata, SCSG, SVRG, S-Adam, S-Adagrad. [SCott 기록](records/0056-0058-scott.md)에서 학습 창과 cell cluster, snapshot과 inner update, smooth 이론과 MAE/ReLU·BatchNorm/dropout 조건을 확인합니다. 같은 strata·시간 규칙에 Tab 이름만 붙이는 것은 새 clustering 결정이 아닙니다. 새 제안은 다른 선택 대상·목적·직접 근거와 준비/튜닝까지 포함한 총비용을 연결해야 합니다.
 
-## 반대 방향 표본을 미리 짝지어 학습하겠다는 제안 전에 — 56·58 SGD-as
+### 반대 방향 표본을 미리 짝지어 학습하겠다는 제안 전에 — 56·58 SGD-as
 
 검색어: SGD-as, antithetic sampling, permutation, negative covariance, signed inner product, gradient variance, 사전 짝짓기. [SGD-as 기록](records/0056-0058-sgd-as.md)에서 균등 주변분포와 음의 공분산, greedy permutation과 대칭 쌍, 이진 label과 MAE residual을 구분합니다. Tab median의 부호로 바꿨다는 사실만으로 RCTL의 분산·시간 개선이 확인되지는 않습니다. 새 제안은 실제 학습기의 근거, 시간 분할, 대응표 준비비와 재사용 횟수를 연결해야 합니다.
 
-## 학습자료를 줄여 RCTL을 빠르게 하겠다는 제안 전에 — 56–58 종합
+### 학습자료를 줄여 RCTL을 빠르게 하겠다는 제안 전에 — 56–58 종합
 
 검색어: training compression, sample importance, dataset condensation, context valuation, stratification, antithetic sampling, 학습량, 준비비, 재사용. [다섯 문헌 비교](records/0056-0058-compression-synthesis.md)에서 셀 소속·학습 창·PFN 문맥·합성 자료를 먼저 구분합니다. 원문별 유효 사례와 적용 한계, 비용의 분모, 당시 미채택 조건을 확인하고 새 제안에서 달라지는 학습기·목적·분할·직접 근거를 연결하세요.
 
+## 입력 길이와 잔차 표현
 
-## cell을 나누어 입력 길이를 줄이겠다는 제안 전에 — 59–62
+### cell을 나누어 입력 길이를 줄이겠다는 제안 전에 — 59–62
 
 검색어: grouping × history, lookback, 짧은 입력, process identification, global ID, context 공유량. [60번 pilot](records/0059-0062-history-grouping.md)은 4cell의 L2/L8와 일·주간 lag를 비교했습니다. Tab의 좋은 통합 예측을 clustering의 효과로 바꾸지 않고, 분할 뒤 손해와 기간별 상호작용 부호 변경을 보존했습니다. 새 기간·공유량·소속 기준·RCTL 평가에서 무엇이 달라지는지 먼저 연결하세요.
 
-## 긴 이력의 식별 정보나 짧은 모델의 비용을 주장하기 전에 — 61
+### 긴 이력의 식별 정보나 짧은 모델의 비용을 주장하기 전에 — 61
 
 검색어: Bayes MAE, conditional median, Markov, process identification, history gain, MAC, trainable parameter, frozen bias. [61번 산술 기록](records/0061-history-logic-cost.md)에서 cell을 아는 조건과 찾는 절차, 관측 1개/2개, 전체/학습 가능한 parameter, 표준 연산 수/실제 시간을 구별합니다. 같은 식별 직관과 입력 후보만으로 신규성이나 실데이터 성능을 주장하지 말고, 달라진 가정·선택 규칙·평가·총비용 근거를 연결하세요.
 
-## 입력 압축·wavelet·attention으로 비용 절감을 주장하기 전에 — 59 ALW
+### 입력 압축·wavelet·attention으로 비용 절감을 주장하기 전에 — 59 ALW
 
 검색어: ALW, adaptive lookback, wavelet, soft truncation, 입력 길이, 공동 학습, PE, 정규화, 비용. [59번 ALW 검토](records/0059-alw.md)에서 L512→H256과 전체 Q/K·mask 연산, 고정 L512 기준의 iteration 증가, seed/환경/epoch 및 복원식 차이를 확인하세요. 기존보다 달라지는 소속 결정·독립성·실제 총비용을 설명해야 같은 시도를 반복하지 않을 수 있습니다.
 
-## 최적 입력 길이·첫 평탄구간·cell 분할 — 59–62
+### 최적 입력 길이·첫 평탄구간·cell 분할 — 59–62
 
 검색어: Optimal Look-back, horizon, Bayes 위험, approximation loss, 이력 길이, 최초 포화, GPI, process identification, grouping, trimmed mean. [문헌과62 종합](records/0059-optimal-lookback.md)을 먼저 읽으세요. 기대 Bayes 위험 비증가, 실제 공유 예측기 오차, 최적성 증명 조건은 다릅니다. [60 파일럿](records/0059-0062-history-grouping.md)과 [61 산술·비용](records/0061-history-logic-cost.md)의 조건을 재사용하고, 새 정보집합·기간·공유량·지표·선택 비용이 무엇인지 적어야 합니다.
 
-## 예측값 입력·잔차 target·잔차 군집 — 63–65 ECAI
+### 예측값 입력·잔차 target·잔차 군집 — 63–65 ECAI
 
 검색어: forecast column, stacking, residual target, addback, ratio residual, heterogeneity, Ljung–Box, cumulative MAE, frozen layer. [63–65 ECAI 기록](records/0063-0065-ecai-interface.md)에서 세 연결 방식과 실제 학습 목표를 먼저 확인하세요. Fig.3(d)의 예측 입력 선행, 공개 TypeII의 실제값 target, 전후 잔차 정의 차이, 악화 조건·전체 비용 공백을 보존했습니다. 새 시도는 정보 가용 시점·최종 합성·비교군·지표·탐색 예산과 기존 방식에서 달라진 질문을 적어야 합니다.
 
-## 다중 해상도 잔차 보정과 총비용 — 63·65 Heatload
+### 다중 해상도 잔차 보정과 총비용 — 63·65 Heatload
 
 검색어: MRRC, HFHR, residual target, addback, multi-resolution, forecast origin, perfect weather, RTF, stacked timing. [Heatload 검토](records/0063-0065-heatload-residual.md)에서 Base+예측잔차의 직접 선행을 확인하세요. HFHR 대비 비용 이득과 Base 대비 추가 비용, Chronos 단기 악화·에너지 개선을 함께 보존했습니다. 새 설계에는 해상도·context·horizon·발행 간격·잔차 생성 시점·최종 합성·동일 정보 비교군·두 단계 전체 비용과 기존 질문에서 달라진 점을 적어야 합니다.
 
-## 별도 잔차 학습과 보정 강도 — 63·65 KDD
+### 별도 잔차 학습과 보정 강도 — 63·65 KDD
 
 검색어: residual pipeline, meta corrector, shrinkage, alpha, overlap averaging, recursive input, Huber, parallel inference, seed confidence. [KDD 검토](records/0063-0065-kdd-residual.md)는 prediction−actual 잔차를 별도 학습해 기준 예측에서 빼는 선행을 연결합니다. α 선택 분할·초기 잔차 부호·동일 target 지표·비교 모델 식별·두 단계 전체 비용이 미확인인 부분을 구분했습니다. 모델 치환을 반복하기 전에 새 질문과 실제 최종 학습기의 이득을 확인할 조건을 적으세요.
 
-## 경험 순위와 lag copula로 군집화 — 64·65 PLOS
+### 경험 순위와 lag copula로 군집화 — 64·65 PLOS
 
 검색어: empirical CDF, rank, lag copula, serial dependence, Cramér–von Mises, Lance–Williams, Ward, silhouette, STMA, WA. [PLOS 검토](records/0064-0065-plos-copula.md)는 각시계열내lag의존을비교하는선행과정리의가정을연결합니다. 단순주변변환·전체쌍거리·계층병합을새방법으로반복하기전에,조건부변환이남길정보와최종RCTL성과를확인할차이를명시하세요.
 
-## 경험 CDF와 공유 확률 예측 — 64·65 GP-Copula
+### 경험 CDF와 공유 확률 예측 — 64·65 GP-Copula
 
 검색어: Gaussian copula, empirical CDF, marginal transform, shared RNN, low-rank covariance, Jacobian, CRPS-sum, GluonTS. [GP-Copula 검수](records/0064-0065-gp-copula.md)는분포변환→공유신경망→역변환이기존연결임을확인합니다. 새실험은Tab이추가하는정보·비용과RCTL이배울남은정보를명시해야합니다. Electricity/Taxi의예외,원본/재구현설정·구간·지표차이를먼저확인하세요.
 
-## 조건부 PIT와 공동 의존 — 64·65 TACTiS-2
+### 조건부 PIT와 공동 의존 — 64·65 TACTiS-2
 
 검색어: TACTiS-2, conditional marginal, PIT, copula validity, DSF, two-stage curriculum, NLL, Newey-West, interpolation. [TACTiS-2 기록](records/0064-0065-tactis2.md)은 개별 미래값의 정확조건부PIT가균등해도 공동의존은남을수있음을구분합니다. Tab CDF로바꾸는것만으로새알고리즘이되지는않습니다. 새실험은제거할정보·남길정보,단일중앙값대공동분포,원척도목표와비용을명시하고공개코드의샘플범위·단계설정·보간시각경로부터확인하세요.
 
-## 공변량 정규화 뒤 잔존 의존 — 64·65 Conditional normalization
+### 공변량 정규화 뒤 잔존 의존 — 64·65 Conditional normalization
 
 검색어: conditional normalization, GAM, Gamma variance, ARIMA, Kalman smoother, sieve bootstrap, conduits, lag, PIT. [조건부 정규화 기록](records/0064-0065-conditional-normalization.md)은 공변량으로 평균·분산을 제거하고 남은 의존을 모델링하는 기존 방법을 정리합니다. 약96%를 지연 정답률로, .946을 미래예측 정확도로 인용하지 마세요. Tab 적용은 남길 정보·예측 시점의 가용 공변량·원척도 손실·기존 회귀 대비 추가 기여와 비용을 먼저 정의해야 합니다. 코드 재사용 때는 ACF 변환·행lag·bootstrap 구현과 논문 조건의 차이를 확인하세요.
 
-## 예측값·변환·보호 목표를 최종 학습에 연결하려는 경우
+### 예측값·변환·보호 목표를 최종 학습에 연결하려는 경우
 
 | 다시 제안할 질문 | 확인할 과거 기록 | 재사용과 달라져야 할 조건 |
 |---|---|---|
@@ -351,55 +363,59 @@ H043 — GOTSF 그림을 실험 결과로 재사용하기 전: [구간별 정책
 
 MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 세 목적의 본문 비교는 [H066](records/0066-0068-objectives.md)에 통합했으며 실행 근거 공백은 남아 있다. 검색결과52블록·논문74쪽 보관과 본문 검증 완료를 구분한다.
 
-## 집단별 최적 위험을 뺀 보호 — MMR / minimax regret
+## 셀 보호와 출력 표현
+
+### 집단별 최적 위험을 뺀 보호 — MMR / minimax regret
 
 검색어: MMR, minimax regret, WMR, GDRO, MMV, worst group, 집단별 기준, 단일 집단 지배. [66·68 MMR](records/0066-0068-mmr.md)은 절대 위험이 큰 cell과 최적 위험 대비 손해를 구분할 때 확인할 기록입니다. 같은Θ의집단최적값과 유한 RCTL baseline을 같다고 놓지 마세요. IID/support·집중·볼록성 조건, K개 기준적합 비용, 평균과 개별 집단 결과를 먼저 구분해야 합니다. 원67의 저장 위험을 MMR 학습 결과로 재사용할 수는 없습니다.
 
-## 기준 대비 개선 비율의 보호 — MRI / relative improvement
+### 기준 대비 개선 비율의 보호 — MRI / relative improvement
 
 검색어: MRI, MMRI, maximin relative improvement, Kalai–Smorodinsky, baseline, oracle gap, leximin, 손해 없음. [66·68 MRI](records/0066-0068-mri.md)에서 계절 MAE로 단순히 나누는 것과 같은 함수집합의 개선 가능 폭으로 정규화하는 것의 차이를 확인하세요. 작은 분모·기준 선택·집단 최적값 추정, 시간순 평가와 비용이 남습니다. ACS의 400조건 빈도와 선택6사례는 RCTL의 cell 보호율이 아닙니다.
 
-## 편차 감소와 부족 할당의 구분 — 통신 q-FFL / q-FedAvg
+### 편차 감소와 부족 할당의 구분 — 통신 q-FFL / q-FedAvg
 
 검색어: q-FFL, q-FedAvg, Abilene, fairness, CV, under-provisioning, 과잉·부족, 식5, 80%. [66·68 q-FFL](records/0066-0068-qffl.md)에서 MSE 편차 감소와 개별 손실 증가, 부족/과잉 균형과 부족량 증가를 먼저 확인하세요. 원래 알고리즘의 공개 코드는 통신 실험 구현으로 확인되지 않았습니다. 지표 이름 변경이나 Tab loss 대입만으로 보호 효과와 신규성을 주장할 근거가 생기지 않습니다.
 
-## 피크 보호·분위수 보정·부족 예측 비용
+### 피크 보호·분위수 보정·부족 예측 비용
 
 검색어: peak, extreme, macro, micro, pinball, quantile, inverted_cdf, 여유분, underprediction, Forecaster’s Dilemma, DeepCog. [69–71](records/0069-0071-peak-objective.md)에서 기존 8조건과 38보정 조건을 먼저 확인하세요. 실제 target으로 고른 피크의 이득과 전체 U/O·발생 빈도·기간별 예외를 구분합니다. 평균 높이 맞춤은 Tab 검증 정보를 사용하며 새 독립 경쟁 모델이 아닙니다. [세 보호 목적 비교](records/0066-0068-objectives.md)는 baseline·최적 위험·손실 척도의 차이를 정리합니다.
 
-## 피크 subset 평가와 proper score — Forecaster’s Dilemma
+### 피크 subset 평가와 proper score — Forecaster’s Dilemma
 
 검색어: outcome conditioning, observed extreme, twCRPS, CL, CSL, calibration, DM, Neyman–Pearson, 점예측, 꼬리 가중치. [69–71 문헌 검수](records/0069-0071-forecaster-dilemma.md)에서 결과 y에 가중치를 곱하는 평가와 임계값 z에 가중하는 twCRPS를 먼저 구분하세요. 전체 MAE·관측 피크 손해·실제 운영 결정은 서로 다른 질문입니다. 논문의 점예측 반례는 실제 Tab 이득 전체의 원인이 상수 편향이라는 증명이 아니며, 모든 비대칭 학습 목적을 기각하지 않습니다. 판본 없는 Table 7 인용은 2015/2017의 17개 차이를 먼저 확인해야 합니다.
 
-## 용량 결정·SLA 사건 비용·DeepCog 구현을 검토할 때
+### 용량 결정·SLA 사건 비용·DeepCog 구현을 검토할 때
 
 검색어: DeepCog, α-OMC, capacity, SLA, 사건 비용, pinball, SBD, MDS, Hungarian, MAE-pre, MAE-post, oracle. [69–71 DeepCog](records/0069-0071-deepcog.md)에서 먼저 용량 유지 기간과 비용의 분모를 확인하세요. INFOCOM2019 notebook과 JSAC 저자본은 손실의 양초과 기울기와 Dense 구조가 다르고, 고정 상수+MAE 인쇄식만으로 학습이 바뀌지는 않습니다. 미래 oracle의 이득을 배치 가능한 보정으로 제시하거나 입력 격자 배치를 UPC 소속 수정의 기여로 재명명하지 않습니다.
 
-## SIU2026·비대칭 예측·검색에만 등장한 후보
+### SIU2026·비대칭 예측·검색에만 등장한 후보
 
 검색어: NeuralProphet, PELT, rolling Z-score, SIU2026, TSUL, SVAE, Digital Twin, quantile GRU, 검색 오류, 중복 초록. [69–71 검색 기록](records/0069-0071-siu-search.md)에서 먼저 본문 검수 여부와 실제 연구 대상을 확인하세요. SIU 손실 계수·단위·시간 분할은 미확인입니다. TSUL 주변 추천문의76.4%·10%, Digital Twin의 통신량5.41–7.01%를 UPC/RCTL 성능으로 옮기지 않습니다. 새 설계에는 실제 논문/실행 자료와 정보 시점·행동·비교군의 차이가 필요합니다.
 
-## 예측 가능한 출력 공간으로 압축하려는 경우
+### 예측 가능한 출력 공간으로 압축하려는 경우
 
 [72–75](records/0072-0075-output-compression.md)를 먼저 확인한다. 좋은 직접 Tab 예측은 압축 성공과 다르며, 실제 target의 rank2 압축7조건은 비압축 HGB보다 전체·양쪽 절반 MSE가 나빴다. 국소 이득은 남긴다. 같은 비용의 multioutput 대안·복원 손실·실제 RCTL 연결을 명시해야 한다. 75의 입력 공유 재진입은47중복으로 새 모델 실행 전에 중단됐다.
 
-## 예측모형의 계수·중요도로 군집화 — Globalization
+### 예측모형의 계수·중요도로 군집화 — Globalization
 
 검색어: model-based whole TSC, weighted instance TSC, local/global, feature-transformer, target-transformer, M×M, AESO, peak load. [72 문헌 대조](records/0072-globalization-audit.md)를 먼저 확인하세요. Algorithm1은 local계수로 series를 묶고 Algorithm2는 global중요도로 sample거리를 가중합니다. 최종 RCTL계수에 의존하면 독립 소속 조건과 충돌하며, cell과sample의 군집 단위도 다릅니다. 평균nMAE만으로 채택하지 말고 최대MAPE·월별피크 반례, local200/global1000 trees, t+1입력 입수 가정, θ처리/query배정/seed 공백을 함께 확인해야 합니다.
 
-## 예측 가능한 출력·response DR·GNN 공동학습
+### 예측 가능한 출력·response DR·GNN 공동학습
 
 검색어: ForeCA, forecastability, spectral entropy, mbrdr, yc, prr, pfrr, upfrr, MinCutPool, static assignment, output compression. [73의 문헌·구현 대조](records/0073-forecastable-output-audit.md)를 먼저 확인하세요. 스펙트럼 집중도는 특정 horizon의 예측 손실이 아니며 mbrdr의 통계량은 자동 차원 선택이나 누적 설명분산과 다릅니다. GNN의 S는 예측 손실과 공동학습하므로 최종 RCTL 독립 소속 조건을 다시 확인해야 합니다. 같은 문헌 요약을 반복하기보다 바뀐 입력 정보·전처리·최종 예측기·비용 또는 확보한 원자료를 명시하세요.
 
-## 검색에서 찾은 군집·입력 선택·설명을 다시 제안하려는 경우
+### 검색에서 찾은 군집·입력 선택·설명을 다시 제안하려는 경우
 
 검색어: GFSM, Granger, context resampling, ScaleMoR, TabClustPFN, geocif, SHAP, shapiq, fippy, causal discovery. [72–75 검색 검수](records/0072-0075-saved-search-audit.md)와 [47](records/0047-input-sharing-roles.md)을 먼저 확인하세요. 검색159응답은 독립 실험159개가 아닙니다. 학습 sample을 고르는 것, 입력 열을 추가하는 것, 같은 함수를 공유할 cell을 정하는 것은 다른 행동입니다. fippy의 TabPFN은 당시 계획이었고, geocif의 PCA→Ward 분석은 같은 페이지의 TabICL 모델 목록과 별도 기능입니다. 같은 후보를 다시 열려면 확보한 실제 구현·새 정보 조건·비교군·비용과 기존 중단 이유의 변화를 명시하세요.
 
-## 반응 증류·동적 routing·task 표현·분산 학습을 제안하려는 경우
+## 반응 전달과 동적 소속
+
+### 반응 증류·동적 routing·task 표현·분산 학습을 제안하려는 경우
 
 [76–79](records/0076-0079-learning-decisions.md)를 먼저 확인한다. 반응 loss는 global distillation과, 동적 소속은 calendar/global 대안 및 예측 시점 정보와 비교한다. task 전이는 허용 head와 동일 target을, 분산 학습은 실제 배치·통신 조건과 독립적인 소속 판단을 확인한다. 모델명·거리·embedding 교체만으로 과거 시도와 다른 연구가 되지는 않는다. 77 FedCAP의 IoT 표기는 79에서 Telecom으로 정정됐고, 80은 별도 원결과 검수가 남았다.
 
-## 입력 반응·상호작용 증류를 다시 설계하기 전
+### 입력 반응·상호작용 증류를 다시 설계하기 전
 
 [76의 문헌·구현 대조](records/0076-response-transfer-audit.md)에서 입력 미분, 파라미터 gradient, 시간 변화, 마스킹 예측 차이를 먼저 구분한다. Sobolev·Jacobian의 반응 loss와 TabDistill의 변수 조합 전달은 선행 사례이며, teacher의 좋은 점 예측만으로 미분 정확도나 별도 clustering 필요성이 보장되지 않는다. 같은 정보를 받는 global 대안, 실제로 가능한 입력 변화, teacher 버전과 질의 비용을 명시해야 한다.
 
@@ -407,14 +423,13 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 
 [상호작용 목록·예산별 결과](records/0076-tabdistill-interaction-audit.md)는 SPEX의 FBII/BII/FOURIER/FSII/MOBIUS/SII/STII와 Baseline·RuleFit을 찾는 관문이다. 4항 FBII는 Baseline 대비 MAE가 작은 과제 12개·큰 과제 15개이며, RuleFit 대비는 16개·11개다. MAE와 MSE가 반대로 움직인 사례와 같은 항이 반복되는 12행도 함께 확인한다. 새 비교는 원 순서·고유 항 수·실제 행 존재 여부를 보존하고, 생성 코드·분할·판본·시간 범위의 공백을 채우는 조건으로 설계한다.
 
-
-## 77의 동적 소속 근거
+### 77의 동적 소속 근거
 
 [동적 소속 DLM·EDP·soft membership](records/0077-dynamic-membership-dlm.md)을 먼저 확인한다. 별칭이나 시간별 배정만 바꾼 설계보다 origin에서 가능한 규칙, 상태별 공유 이득, 같은 정보의 global·달력 대안, RCTL bank/재학습의 연결을 제시해야 한다. 저장 구현에는 η 사용·역방향 mean·다변량 index 등 재사용 전 확인 항목이 있다.
 
 [그래프 갱신·참여 셀 군집의 비교](records/0078-dynamic-graphs-load-balancing.md)를 함께 찾는다. DynaSTar의 momentum 제거 비교와 Liu의 최대 12% 복합 보상은 고정 UPC 대비 동적 소속의 독립 이득이 아니다. 새 설계에서는 입력 이웃, 참여 여부, 함께 학습할 자료 중 무엇을 바꾸는지 먼저 명시한다.
 
-## 전이 점수를 cell 병합에 다시 쓰기 전
+### 전이 점수를 cell 병합에 다시 쓰기 전
 
 [원78 회귀 전이 검수](records/0079-regression-transferability.md)의 head·입력·출력 좌표 조건을 확인한다. 높은 상관과 최적 source 선택, Ridge 학습과 반환 점수, 같은 source의 전이와 실제 target pooling은 별개다. source별 정규화 손해와 global multi-head 비교 조건도 보존했다.
 
@@ -424,25 +439,27 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 
 [M3L·early training affinity·NTK alignment와 원78 검색 이력](records/0082-search-and-access-provenance.md)을 추가 탐색의 출발점으로 쓸 수 있다. 저장 snippet만으로 전문 검토가 끝났다고 가정하지 말고, 전문·고정 판본·실험 조건을 확보한 뒤 최종 예측기 독립성과 실제 출력 공유 조건을 다시 확인한다.
 
-## FMCL과 같은 사전 군집 구조의 재제안 방지
+### FMCL과 같은 사전 군집 구조의 재제안 방지
 
 [H083](records/0083-fmcl-client-clustering.md): 고정 FM으로 client를 사전 군집화하고 별도 모델을 학습하는 구조는 이미 선행연구에 있다. 새 제안은 class 라벨 조건을 연속 target에서 어떻게 바꾸는지, 관측 가능한 정보와 총비용, 실제 출력 공유의 이득을 구체화해야 한다. 평균 성능과 편차·ablation 예외를 함께 보존한다.
 
-## EMD-CFL과 embedding 분포 군집의 재제안 방지
+### EMD-CFL과 embedding 분포 군집의 재제안 방지
 
 [H084](records/0084-emd-cfl-embedding-distributions.md): encoder로 자료를 변환해 OT로 군집을 정하는 구조에는 선행연구가 있다. 고정 TabICL을 쓴다는 차이를 주장하려면 초기 local 학습·encoder 교환·관측 입력/target 정보·threshold/K 선택·총비용·최종 출력 공유 조건을 명시해야 한다. 군집ARI가 같아도 downstream accuracy가 다른 반례를 먼저 확인한다.
 
-### EMD-CFL 코드를 그대로 UPC 소속 결정으로 옮기는 제안
+#### EMD-CFL 코드를 그대로 UPC 소속 결정으로 옮기는 제안
 
 [H085 구현](records/0085-emd-cfl-code.md)은 학습한 encoder·분류 loss·own train/other validation·겹칠 수 있는 이웃집계에 의존한다. K 입력은 군집 수 강제가 아니라 진단에 사용된다. 고정 TabICL의 관측 x/조건부 평균을 쓰려는 후보는 별도 정보와 비용 조건이 필요하다. 부분 참여의 거리 재계산도 one-shot 비용 설명과 구분한다.
 
-### 예측값이 비슷하면 RCTL 학습도 같다는 제안
+#### 예측값이 비슷하면 RCTL 학습도 같다는 제안
 
 [H086 회귀 이론](records/0086-toso-gradient-heterogeneity.md)의 Γ는 참 함수의 공통 입력 분포상 차이이며, 새 iid 표본·Jacobian·PL 조건이 붙는다. TabICL 추정값의 유사성만으로 유한 batch 학습 경로나 최종 test 성능을 보장하지 않는다. 입력 support·추정 오차·고정 최종 함수·시간 분할·기대 gradient와 SGD 변동의 차이를 먼저 명시한다.
 
 [원79 검색 후보와 판단](records/0087-distributed-search-provenance.md)을 확인해 FedCAP 약칭의 다른 논문, OCFL의 다른 arXiv ID, OTDD의 class 조건부 분포와 회귀 조건부 평균을 구분한다. 후보를 다시 제안하려면 미확인 전문·정보 조건·최종 모델 독립성과 총비용의 차이를 먼저 명시한다.
 
-## 조건부 평균을 운송 거리에 더하면 clustering이 달라지는가
+## 소속 결정과 공동 출력
+
+### 조건부 평균을 운송 거리에 더하면 clustering이 달라지는가
 
 [원80](records/0088-conditional-graph-diagnostic.md)을 먼저 확인한다. 당시 output weight1·K4·기존16cell/개발 구간에서는5transport 소속 ARI1, PCC 대비 전체7일 gradient 비율은 두 모델 상태 모두 불리했다. 입력 clustering의 실제 손해와 새 자료·조건의 차이를 제시한 뒤 재검토하며 직접 예측 MSE 이득을 clustering 효용으로 대신하지 않는다.
 
@@ -450,211 +467,214 @@ MMR·MRI·q-FFL의 후속 일차문헌 대조는 아래 기록에 연결한다. 
 
 공동 입력·다중 출력·subset·집합 관계 후보는 [원81](records/0090-input-partition-decision.md)에서 sample행과cell열, sharedcore와출력head, cluster별모델과global모델의 비교를 먼저 확인한다. 새 입력선택이 실제손해를 줄이는 조건을 명시해야 한다.
 
-## 관련 channel을 묶어 함께 예측하는 구조는 새로웠는가
+### 관련 channel을 묶어 함께 예측하는 구조는 새로웠는가
 
 [DGCformer 검토](records/0091-dgcformer-source-review.md)에서 잠재 표현의 K-means와 channel mask를 먼저 확인한다. 이 구조의 존재만으로 cluster별 RCTL 독립 학습, 예측과 독립적인 K 선택, 실제 비용 절감을 입증할 수는 없다. 재검토 제안에는 K 선택 구간·목표, 손실별 갱신 parameter, 고정 분할·global 비교군과 전체 탐색 비용의 차이를 적는다. 논문의 평균적 우세뿐 아니라 ECL·720 및 ablation의 불리한 항목도 함께 확인한다.
 
-## 클러스터별 head나 소속 확률을 더하는 제안
+### 클러스터별 head나 소속 확률을 더하는 제안
 
 [CCM 검토](records/0092-ccm-source-review.md)를 먼저 확인한다. 학습 가능한 소속·prototype·선형 출력층의 확률 가중 결합과 예측/군집 공동 손실은 기존 구조다. 새 설계는 공유 core·입력 공유·독립 전체 fit의 차이, K/β 선택 데이터와 총 비용을 명시해야 한다. 평균 이득만으로 모든 군집 수나 각 조건의 개선을 가정하지 않는다.
 
 [CCM 저장 구현](records/0093-ccm-code-review.md)은 함수명만으로 균형 군집화를 가정하지 않고 batch 평균 소속·출력 혼합·손실·prototype 갱신을 구분한다. 재사용 제안에는 채널 ID와 차원, optimizer 등록·실제 설정·검증 손실 선택, 논문과 다른 보정 내용을 명시한다. 정적 위험을 이미 관측한 연구 실패로 인용하지 않는다.
 
-## 주파수 관계·시간 expert를 이용한 channel 선택
+### 주파수 관계·시간 expert를 이용한 channel 선택
 
 [DUET 검토](records/0094-duet-literature-review.md)를 먼저 확인한다. noisy Top-k expert와 학습 진폭 거리/확률 mask는 예측기 내부의 관계다. 제안에는 고정 partition·소속점수·독립전체fit 중 무엇이 달라지는지, M/k/γ와 평가 선택/난수/전체 비용을 명시한다. 평균 우세만으로 모든 horizon·expert수·입력길이의 개선을 가정하지 않는다.
 
 [DUET 저장 코드](records/0095-duet-code-review.md)는 sparse expert dispatch와 dense channel 거리/attention을 구분한다. mask=0의 의미·평가 시 sampling·입력 정규화·k/설정·Drop Last와 사전 계산 비용을 재사용 전에 확인한다. 정적 차이가 성능에 미치는 영향은 별도 연구 질문이며 기존 실험 실패로 인용하지 않는다.
 
-## 공동 예측정보로 변수 집합을 합치는 군집화
+### 공동 예측정보로 변수 집합을 합치는 군집화
 
 [H096 선행연구](records/0096-predictive-clustering-literature-review.md)를 먼저 확인한다. 집합의 공동 의존성을 고려한다는 아이디어만으로 신규성을 주장하지 않는다. 미래 목표·손실·시간분할·소속수정 규칙을 구체화하고,rank 기반 정보와raw MSE,전체순열/병합비용,군집 수선택을 별도로평가한다.
 
-## 입력 분할의 선행연구를 다시 찾기 전에
+### 입력 분할의 선행연구를 다시 찾기 전에
 
 [H097 검색 기록](records/0097-input-partition-search-review.md)의 마지막 표에서 DGCformer·CCM·DUET·Fuchs–Wang 검토로 이동한다. 공동 정보·입력 공유라는 이름의 반복보다 기존 방법과 다른 목표·선택 조건·실제 손해를 명시한다. 코드 미확인과 부재, 문서 API와 실행 성공, 검색 수치와 독립 결과를 구별한다.
 
-## 입력 공유 후보가 보류된 맥락
+### 입력 공유 후보가 보류된 맥락
 
 [H098](records/0098-input-partition-history.md)에서 scalar pooling 반례의 범위, 같은 폭의 global 다중 출력 대안, 유지한 Tab 직접 예측 이득을 함께 읽는다. 다시 제안할 때는 실제 입력 분할 손해와 바뀌는 선택, 최종 학습 단위를 기존 단순 대안에 대비해 명시한다.
 
-## 발생 여부와 양을 나눠 cell을 묶으려는 경우
+### 발생 여부와 양을 나눠 cell을 묶으려는 경우
 
 [원82의 진입 판단](records/0099-intermittence-decision.md)을 먼저 확인한다. 전체0 비율과 조건부 발생 확률, 실제 무트래픽과 누락/zero fill, MAE와MSE, beam과cell을 구별해야 한다. 기존 two-part 방법에 비해 어떤 공유 결정을 바꾸는지와 실제 예측 손해가 재검토 조건이다.
 
-## CESNET·ISP 결과를 간헐 cell 공유 설계에 인용하려는 경우
+### CESNET·ISP 결과를 간헐 cell 공유 설계에 인용하려는 경우
 
 [H100 원문 대조](records/0100-cesnet-isp-data-semantics.md)를 먼저 확인한다. 99.94%의 시계열 분모, zero fill의 가정, 시계열별 min–max·trimmed 결과와 IP의 음의 R²를 구별해야 한다. 발생/양 분해와 계층 공유는 해당 ISP 논문의 향후 제안이며 실험된 clustering 성과가 아니다.
 
-## Citywide의 희소성·fusion을 cell 공유 설계에 인용하려는 경우
+### Citywide의 희소성·fusion을 cell 공유 설계에 인용하려는 경우
 
 [H101](records/0101-citywide-densenet-scope.md)의 SMS/Call·hourly 집계, 마지막7일 평가, 최근3시간/이전3일 입력을 확인한다. Fig.3 막대의 정확값·오차막대·cell별 손해는 확보되지 않았다. 새로운 공유 결정을 주장하려면 현재 채널의 실제 손해와 기존 예측 입력·fusion 대비 차이를 따로 보여야 한다.
 
-## 발생·양 공동 학습이나 ensemble을 새로 제안하려는 경우
+### 발생·양 공동 학습이나 ensemble을 새로 제안하려는 경우
 
 [H102](records/0102-beam-mtl-evidence.md)의 기존 공유GRU·두head·hard gate·recursive 평가부터 확인한다. 입력 길이56% 개선이나 ensemble8시간60% 수치를 그대로 재인용하지 않는다. 현재 관측 손해와 새로운 공유 결정의 차이를 먼저 적는다.
 
-
-## 간격·양의 크기·공유 LSTM을 새로 제안하려는 경우
+### 간격·양의 크기·공유 LSTM을 새로 제안하려는 경우
 
 [H103](records/0103-deep-renewal-evidence.md)의 기존 분포모형과 global 공유를 확인한다.0/1 gate·연속 발생확률·조건부 평균과 cell 소속 결정은 각각 구별한다. 자료별 성능 반례와 부록의 시간 인덱스·RMSSE 표기를 확인한 뒤 실제 구현 조건을 정한다.
 
-## 원82까지의 결정을 한곳에서 찾기
+### 원82까지의 결정을 한곳에서 찾기
 
 [H104 결정 지도](records/0104-cumulative-history.md)에서 바꾸려는 학습 단위·관측·손실·소속을 찾은 뒤 연결된 상세 기록의 실패 원인과 재검토 조건을 확인한다. 간헐성의 새 행, 유지한 직접 예측 이득, 후속 정정을 함께 보존했다.
 
-## 비슷한 변화 시점의 cell을 묶어 재학습 비용을 줄이려는 경우
+## 갱신과 운영 비용
+
+### 비슷한 변화 시점의 cell을 묶어 재학습 비용을 줄이려는 경우
 
 [원83](records/0105-joint-update-cost.md)을 먼저 확인한다. 갱신 시점 합집합과 cluster별1회 비용, 예측 품질 조건을 함께 명시해야 한다. Tab context 변화만으로 RCTL 재학습 필요를 입증하지 못한다. [원17](records/0016-0017-temporal-validity.md)의 누적 자료 우위와 [원77](records/0077-dynamic-membership-dlm.md)의 다른 소속 결정을 재사용하고, 새 설계가 바꿀 행동과 기존 감시법보다 유용한 근거를 적는다.
 
-## 오차의 동시·지연 변화로 공동 갱신 대상을 묶으려는 경우
+### 오차의 동시·지연 변화로 공동 갱신 대상을 묶으려는 경우
 
 [FDA 검수](records/0106-fda-drift-correlation.md)를 먼저 확인한다. 합성 오차의 l=0 일치와 지연 양성8개 추가를 함께 읽고, 식3의 미래 정보·식6의 비음수 기대0·임계값 세 표기·대각 정의와 표의 차이를 검토한다. RCTL 오차 사용의 독립 조건과 Tab 오차에서 실제 갱신 실익으로 가는 연결도 [원83](records/0105-joint-update-cost.md)에서 확인한다.
 
-## 갱신 횟수를 줄이는 적응 모델을 도입하려는 경우
+### 갱신 횟수를 줄이는 적응 모델을 도입하려는 경우
 
 [LNN 검수](records/0107-lnn-adaptation.md)를 먼저 확인한다. 큰 변화의 RMSE 이득과 MAPE의 다른 승자, 중간 변화에서20시점 갱신 MLP의 우위, 수렴 시간의 동률·불리한 사례를 함께 읽는다. 입력 시각과 장애 후50관측을 쓰는 사후 분류도 점검한다. RCTL의 공동 갱신 실익·비용으로 이어지는 근거는 [원83](records/0105-joint-update-cost.md)에 남은 과제다.
 
-## drift clustering·재훈련 문헌을 다시 찾으려는 경우
+### drift clustering·재훈련 문헌을 다시 찾으려는 경우
 
 [원83 검색 기록](records/0108-maintenance-search-review.md)에서 Fed-PPBC·FDA·LNN·RLEM·REFOL의 이미 찾은 경로를 먼저 확인한다.54개 응답을54개 전문 독해로 세지 않으며 Algorithm 번호만 같은 검색 결과, 분류/탐지와 회귀, 서지·초록과 실제 비용 실험을 구별한다. Fed-PPBC의 온라인 본문과 수치·m 표기에는 확인할 공백이 있다.
 
-## 기존 결정과 같은 제안인지 확인하려는 경우
+### 기존 결정과 같은 제안인지 확인하려는 경우
 
 [원83까지20개 결정](records/0109-cumulative-history.md)에서 바꾸려는 학습 결정으로 찾아간다. 새 공동 갱신 비용 후보는 필요 갱신 시점과 품질 유지 근거가 부족해 보류됐다. 실패 이유와 함께 직접 예측·일부cell/기간의 긍정 증거를 확인하고, 새 제안이 바꾸는 정보·target·공유 단위를 기록한다.
 
-## 직접 예측이 좋은데 소속 결정도 좋은지 묻는 경우
+### 직접 예측이 좋은데 소속 결정도 좋은지 묻는 경우
 
 [원84 근거 종합](records/0110-evidence-synthesis.md)에서4cell 직접 예측,16cell 소속,16cell 최종 RCTL의 구간·척도를 각각 확인한다. 원80의 같은 partition5방법, cell6153의 반례, RCTL 평균 악화와 seed별 16개 중 각각 6개·7개 cell의 개선을 함께 보존했다.
 
-## 오래된 진행 기록의 미실행 문장을 찾은 경우
+### 오래된 진행 기록의 미실행 문장을 찾은 경우
 
 [원84 누적연혁 검수](records/0111-interim-document-history.md)에서 초기 RCTL0회와 후속29회 완료, UPC 군집 수의 후속 정정을 함께 확인한다. 당시 Goal·다음 행동·잔여 예산은 현재 실행 지시가 아니다.
 
-## 자료 공유의 비용을 이유로 후보를 다시 검토하는 경우
+### 자료 공유의 비용을 이유로 후보를 다시 검토하는 경우
 
 [원85 기각 범위 정정](records/0112-rejection-scope-allocation.md)에서 고정 총 sample–모델 평가수 N, 전체 자료를 각 모델에 추가하는 방식, score·batch·wall time을 구분한다. quota 재추출·joint density ratio·importance weighting은 기존 원리를 먼저 확인한다. 비용 정정만으로 Tab의 배분 결정이나 최종 RCTL 이득이 확인되지는 않는다.
 
-## 수정된 기각 사유를 확인할 때
+### 수정된 기각 사유를 확인할 때
 
 [원85 후속 결정표20행](records/0113-decision-history-sources.md)은 기존 시도의 상세 기록을 연결한다. 예전 비용 사유와 후속 정정, 직접 예측의 긍정 결과와 cell/기간별 반례, 문헌 발견과 전문 검토를 함께 확인한다.
 
-## 학습 공유로 과거 분할 손해를 다시 검토할 때
+### 학습 공유로 과거 분할 손해를 다시 검토할 때
 
 [원86 네 가지 학습 방식](records/0114-shared-training-scope.md)을 먼저 확인한다. 같은 초기값·고정된 표현·공유 파라미터 공동 갱신은 서로 다르다. 모델 수나 파라미터 수만으로 연산 K배 절감을 주장하지 않으며 같은 공유 조건에서 Tab 소속 결정의 추가 효과를 비교해야 한다.
 
-## 원86까지의 결정 이력과 문헌을 찾을 때
+### 원86까지의 결정 이력과 문헌을 찾을 때
 
 [21개 결정의 상세 기록](records/0115-sharing-history-literature.md)을 먼저 확인한다. 학습 공유의 조건 변경, 미실행인 표현 용량 질문, 보존할 긍정 결과가 함께 있다. Jacob의 소규모 선형 task 결과나 검색 결과의 초록만으로 새 RCTL 구조를 검증한 것으로 처리하지 않는다.
 
-## 공동 출력 폭이나 조건부 shuffle을 다시 제안할 때
+### 공동 출력 폭이나 조건부 shuffle을 다시 제안할 때
 
 [원87](records/0116-causal-capacity-reference.md)을 확인한다. 폭16은 고정 평가 조건의 공동 출력 변형에 대한 제약이며 scalar 원RCTL 전체의 상한이 아니다. 실제 손해와 skip/AR 비교, Tab이 바꾸는 소속이 필요하다. 조건 열을 유지하는 것과 조건에 맞는 비교 표본을 생성하는 것도 구별한다.
 
-## 원87 이후 조건부 비교나 CIB 구현을 다시 검토할 때
+### 원87 이후 조건부 비교나 CIB 구현을 다시 검토할 때
 
 [22개 판단과 검수 범위](records/0117-conditional-history-cib.md)를 먼저 확인한다. 논문 표의 일부 불일치나 저장 코드의 정적 문제를 곧바로 실제 성능 실패로 확대하지 않는다. 원88의 당시 계획은 후속 문헌을 읽었다는 증거가 아니며, 실제 바뀌는 결정·RCTL 연결·단순 대안을 함께 확인해야 한다.
 
-## 원88 조건부 비교를 다시 제안할 때
+### 원88 조건부 비교를 다시 제안할 때
 
 [원88 검수](records/0118-conditional-reference-audit.md)를 먼저 확인한다. 조건부 생성·local 교체·CMI 보정의 존재 자체를 독창성으로 삼기 전에 실제 소속·입력·학습 결정과 예측 또는 비용 차이를 설명해야 한다. 과거의 긍정 결과와 미완료 범위도 함께 보존한다.
 
-## 원89 이질성·다양성으로 다시 분할을 제안할 때
+### 원89 이질성·다양성으로 다시 분할을 제안할 때
 
 [원89 검수](records/0119-heterogeneity-splitting.md)에서 기존 동일 소속 결과와 group-input global 비교를 확인한다. 특징 거리를 바꾼 이유만으로 분리 학습의 이득을 추정하지 않고, 실제로 바뀌는 정보·표본 공유·표현·비용을 특정한다.
 
-## 원90 함수 제약으로 분할을 제안할 때
+### 원90 함수 제약으로 분할을 제안할 때
 
 [원90 검수](records/0120-prescribed-regularity.md)를 먼저 확인한다. 실제 운영 요구, 전체 모델 제약, 정보·학습 결정의 변화를 특정해야 한다. state contraction·입력 sensitivity·cell 소속과 sample routing을 같은 것으로 취급하지 않는다.
 
-## 원91 이웃 역할 정렬을 다시 검토할 때
+### 원91 이웃 역할 정렬을 다시 검토할 때
 
 [원91 검수](records/0121-predictive-role-alignment.md)를 먼저 확인한다. 공통 열 순열의 표현 동등성과 셀별 역할 대응, 정렬 뒤 global 대안과 별도 소속의 필요성을 구분한다. 기존 일부 셀의 공간 입력 이득이나 다른 논문의 attention 비용을 RCTL 군집화 성공으로 이전하지 않는다.
 
-## 원92 순차 공유·분리 점수를 다시 검토할 때
+### 원92 순차 공유·분리 점수를 다시 검토할 때
 
 [원92](records/0122-prequential-sharing-objective.md)를 먼저 읽는다. 같은 conditional median과 다른 noise를 분리할 log score 이득이 별도 RCTL 점 예측의 필요성을 뜻하지 않는다. 함수 불확실성·관측 잡음·유한 학습 손해·최종 RCTL 목적을 구분하고 어떤 유용한 소속 결정이 달라지는지 명시한다.
 
-## 원93 후보 진입 기준과 기존 실패를 적용할 때
+### 원93 후보 진입 기준과 기존 실패를 적용할 때
 
 [원93](records/0123-candidate-gates-comparison-scope.md)을 먼저 읽는다. 같은K4 empirical 대비 부정 결과는 유지한다. 같은 유용한 결정을 더 효율적으로 얻거나 실제 함께 학습할 sample을 바꾸는 기여도 검토할 수 있지만, 같은 소속만 얻은 사실과 새모듈 추가를 성공 근거로 쓰지 않는다. global의 표현 가능성과 모델당 자료량 차이도 유한학습 우열의 보편적 결론으로 확대하지 않는다.
 
-## 원94 정답 대기 입력·PPI·adapter를 다시 검토할 때
+### 원94 정답 대기 입력·PPI·adapter를 다시 검토할 때
 
 [원94](records/0124-delayed-target-inference-boundaries.md)와 [세 문헌의 방법/가정](references/delayed-target-inference.md)을 먼저 읽는다. h1에서는 cell당 한 행을 기다리고 Ch행이 독립 표본은 아니다. 과거 오차의 입력 밀도비 보정만으로 임의 조건부 변화나 아직 학습하지 않은 RCTL의 병합 효용을 해결했다고 쓰지 않는다. 실제 관측 지연·대표성·강한 대안의 손해·유용한 결정·context/query 비용이 다른지 구체적으로 적는다. PPCI v2의 입력만 쓰는 simulation 수정은 기존 v1 우려와 구별한다.
 
-## 원95 모델 수 감소·batch·실행 비용을 비교할 때
+### 원95 모델 수 감소·batch·실행 비용을 비교할 때
 
 [원95](records/0125-frozen-rctl-serving-cost-baseline.md)와 [비용 비교의 기본 조건](references/serving-cost-baseline.md)을 먼저 읽는다. 같은 가중치를 쓰는 동시 cell을 batch로 처리한 baseline과 비교하고 모델 저장량·입력 행·호출·실측시간·Tab 준비비용을 따로 적는다. 호출을 합치는 이득을 Tab의 기여로 세지 않는다. 같은 K4의 약0.147ms 차이나16cell CPU 결과를 유의미한 Tab 우위·대규모 latency로 확대하지 않는다. 새 partition 정확도 검증과 기존 checkpoint의 실행 방식 검토도 구별한다.
 
-## 원96 weight averaging·model soup·re-basin·fusion을 다시 검토할 때
+### 원96 weight averaging·model soup·re-basin·fusion을 다시 검토할 때
 
 [원96](records/0126-rctl-parameter-merging-scope.md)과 [문헌의 연산·정보·조건](references/parameter-merging.md)을 읽는다. 출력 혼합과 파라미터 병합, 공통 random 초기화와 pretrained, 소속 이전의 모델 이용과 소속 이후의 학습을 구별한다. 실제 병합 필요성·Tab의 결정/효율 기여·hidden/BN/LSTM 처리·union-data 기준과 전체 비용이 달라졌는지 적는다. 당시 미실행을 성능 실패로, 기호 예를 모든 모델 병합의 불가능성으로 쓰지 않는다.
 
-## 원97 output hold·delta hold·forecast cache를 다시 검토할 때
+### 원97 output hold·delta hold·forecast cache를 다시 검토할 때
 
 [원97](records/0127-forecast-time-reuse-diagnostic.md)과 [두 규칙/강한 단순 기준](references/forecast-time-reuse.md)을 먼저 읽는다. 원83 재학습 주기·원49 다른 cell 대표값·원95 동시 batch와 구별하고, 모든 현재 관측을 유지한 비용을 적는다. 새 후보는 fixed clock/persistence/global 선택적 cell 계산 대비 Tab의 유용한 결정, clustering의 이유, 전 기간/cell 손해와 전체 latency를 확인할 질문이 달라졌는지 명시한다.
 
-## 원98 중앙값 밀도·quantile information·donor graph를 다시 검토할 때
+### 원98 중앙값 밀도·quantile information·donor graph를 다시 검토할 때
 
 [원98](records/0128-quantile-information-and-pooling-objective.md)과 [Bai/Gu/Yang 비교](references/quantile-information-and-grouping.md)를 먼저 읽는다. 한 target donor 선별의 양방향화, 분위수 간격의 역수, 조건별 관계 clustering 자체의 이름 변경만으로 실익을 확보하지 않는다. 실제 pooling 문제·유용한 소속 결정 또는 같은 결정의 효율·강한 단순/global 대안·전체 cell 목적/손해·밀도 정확성과 RCTL 연결·전체 비용에서 달라지는 조건을 적는다. 과거 예산은 당시 상태이며 미래 팀 연구 전체의 금지 규칙이 아니다.
 
-## 원99 학습 단위·다중 출력·clustering 비용을 다시 볼 때
+### 원99 학습 단위·다중 출력·clustering 비용을 다시 볼 때
 
 [원99](records/0129-learning-units-and-clustering-cost.md)와 [문헌 비교](references/learning-unit-and-clustering-cost.md)를 먼저 확인한다. cell·OD flow·하루 MTS, scalar/jointvector, 같은K/선택K, 용량·sample/epoch·예측row/호출·Tab초기비용을 명시한다. 다른 단위의 개선율이나 줄어든 모델 개수만으로 현재cell의 실익을 주장하지 않는다. 새질문은 기존 global/naive/K4 결과와 어떤 조건·유용한 결정이 달라지는지 적는다.
 
-## 원100 사전학습 모델·시간 보정을 다시 검토할 때
+### 원100 사전학습 모델·시간 보정을 다시 검토할 때
 
 [원100](records/0130-pretraining-objective-and-time-conditioning.md)과 [문헌 비교](references/pretraining-objective-and-time-conditioning.md)를 먼저 읽는다. 표의 행이 sample인지 cell 표현인지, 잠재 정답과 실제 공유 효용, 자동 K1과 점유 label 수, 공유 encoder와 K별 decoder, 준비와 공동 학습을 명시한다. 시간 조건 보강만으로 cell 소속이 검증됐다고 쓰지 않는다. 기존 Tab 직접 예측의 긍정 증거를 보존하고 새로운 유용한 결정 또는 추정 효율·전체 비용의 차이를 설명한다.
 
-## 원101 실제 sample pooling을 다시 비교할 때
+### 원101 실제 sample pooling을 다시 비교할 때
 
 [원101](records/0131-actual-pooled-context-and-rctl-ranking.md)과 [재사용 안내](references/pooled-context-and-learner-ranking.md)를 먼저 읽는다. context조건504/672,16열과8×9표현, rolling실측lag와재귀horizon, validation사용, 사후소속/독립test, K1과주간·cell별예외를 명시한다. 이미 저장된 직접 예측 이득과 순위 불일치를 모두 보존하고, 새 결정 또는 효율에서 무엇이 달라지는지 적는다.
 
-## 원102 구조 기반 NTK 대리값을 다시 검토할 때
+### 원102 구조 기반 NTK 대리값을 다시 검토할 때
 
 RNTK/NTK4A/analytic kernel/초기화 NTK/Tab 분위수+구조점수는 [원102](records/0132-architecture-kernel-and-joint-risk.md)와 [조건 비교](references/architecture-kernel-and-joint-risk.md)를 먼저 읽는다. 유한 구조·Gaussian/실제 초기화·readout·손실/optimizer·validation·target 공동분포·target 적응 선택과 K1/기존 기준 대비 결정·전체 비용 중 무엇이 달라지는지 적는다. 선행 정리의 존재·직접 예측 우위만으로 재채택하지 않는다.
 
-## 원103 중간문서나 추가예산을 새연구 완료로 읽지 않기
+## 근거 감사와 학습 조건
+
+### 원103 중간문서나 추가예산을 새연구 완료로 읽지 않기
 
 [원103](records/0133-current-evidence-and-unapproved-extension.md)과 [재사용조건](references/current-evidence-and-unapproved-extension.md)을 먼저확인한다. 중간Word·Global우위·좋은Tab직접예측·RCTL독립성·18fit상한제안 각각은 유용한새소속과최종RCTL개선의증거가아니다. 새손해·Tab결정·최종이득·같은K/정보/비용·기간/cell예외와고정중단조건을구체화한다.
 
-## 원104 자원 감사 이후 같은 질문을 다시 다룰 때
+### 원104 자원 감사 이후 같은 질문을 다시 다룰 때
 
 [원104](records/0134-resource-and-evidence-audit.md)와 [재검토 기준](references/resource-and-evidence-audit.md)을 먼저 읽는다. 남은 예산이나 상한 증액은 후보 선정·실제 효용 근거와 다르다. 실제 손해·Tab이 바꾸는 결정·가까운 선행·같은 정보/비용 비교·최종RCTL 후속검사·seed별 중단 조건 중 무엇이 달라졌는지 적는다.
 
-## 원105 차단 감사 뒤 같은 후보를 다시 다룰 때
+### 원105 차단 감사 뒤 같은 후보를 다시 다룰 때
 
 [원105](records/0135-blocked-audit-and-resume-conditions.md)와 [재검토조건](references/blocked-audit-and-resume-conditions.md)을 먼저 읽는다. 예산 허용뿐 아니라 빠진근거를 해결하는 새경로·구체적후보·가까운문헌·비교계획이 무엇인지 적는다. 기존실패와누적비용을 보존하고 좋은직접예측·basicbatch·이론검토를 새partition의 후속검증으로 옮기지 않는다.
 
-## 원106과 같은 K 비교를 반복하기 전에
+### 원106과 같은 K 비교를 반복하기 전에
 
 [기록](records/0136-same-k-cellwise-error-transition.md)과 [재검토 조건](references/same-k-cellwise-error-transition.md)을 읽는다. 평균·유리한cell/날짜·네전이조합과학습경로 차이를 함께 확인하고, 지원/구성·시간변화·최적화 중 무엇을 구별할 비교인지 적는다. cached오차를 새소속/threshold에 입력하지 않는다.
 
-## 원107과 입력 지원·시간자료 보존을 반복하기 전에
+### 원107과 입력 지원·시간자료 보존을 반복하기 전에
 
 [기록](records/0137-calendar-retention-and-external-support.md)과 [재검토 조건](references/calendar-retention-and-external-support.md)을 읽는다. 같은K4/sample개수·원23density·zero/반대cell·기존RCTL반례를 확인하고 지원/조건부관계/유한표본/최적화·평가 중 무엇을 구별할지 적는다. 가까운입력 수를정보량/원인/신규성으로바꾸지않는다.
 
-## 원108과 BN 통계 재계산을 반복하기 전에
+### 원108과 BN 통계 재계산을 반복하기 전에
 
 [기록](records/0138-fixed-weight-bn-statistics.md)과 [재검토 조건](references/fixed-weight-bn-statistics.md)을 읽는다. 단일seed·고정가중치·train-only12BN·14일 개발구간·반대cell/day·복원144행·29+9회계를 확인하고 새조건/구별할 원인을 적는다.
 
-## 학습 부족 / epoch 상한 / 조기 종료 / online train 곡선
+### 학습 부족 / epoch 상한 / 조기 종료 / online train 곡선
 
 [원109](records/0139-saved-training-path-and-stopping.md)에서같은K4·두seed·고정16cell 조건의29로그와patience10을먼저 확인한다. common epoch·tail5·서로다른best checkpoint 평균을구별한다. global과local의같은epoch를같은작업량으로세지 않는다. 새실험은바뀌는학습·종료규칙과검증할가설,독립평가조건을적는다. 동일로그의재분석을새실험으로집계하지 않는다.
 
-## 시각 보정 / phase alignment / fixed cell clock / support preflight
+### 시각 보정 / phase alignment / fixed cell clock / support preflight
 
 [원110–111](records/0140-calendar-alignment-and-input-preflight.md)에서24이동·MSE 선택·원형 차이·5NN/95percentile·세 이동 교집합을 먼저 확인한다. profile MAE9.22% 감소를 예측 개선으로 재인용하지 않는다. 새 실험에는 원112 후속 판단, 바뀐 입력/선택/평가 조건, 공동 좌표 일관성과 같은K RCTL·독립평가를 연결한다.
 
-## 시각 이동 선택 / selector–evaluator / 기간 가중치
+### 시각 이동 선택 / selector–evaluator / 기간 가중치
 
 [원112](records/0141-calendar-predictive-selection-and-weighting.md)의 세이동·고정donor context·14방향/11target·개발기간과 사전두비교군을 먼저 확인한다. 좋은 직접 예측기를 좋은 관계 선택자로 재인용하지 않는다. 같은조건은저장예측으로조회하고, 새실험에는달라진질문·후보/context/support·공동좌표와독립평가를연결한다.
 
-## 고정 K / 균등 크기 / sequential merge / 소속·수정 규칙
+### 고정 K / 균등 크기 / sequential merge / 소속·수정 규칙
 
 [원113](records/0142-fixed-k-and-unrestricted-cluster-sizes.md)의16cell·K4·64상태·257격자·개발 주간·4×2비교를 먼저 찾는다. 같은 수정 규칙 아래 소속을 비교하고, 크기와 병합 일정·단일 RSS/peak·가정44batch/실제 비용·공통 격자의 label 접근을 구분한다. 같은8비교는 저장 자료로 재사용한다.
 
-## 입력 미분 / signed gradient / saliency / task relation / SRDML
+### 입력 미분 / signed gradient / saliency / task relation / SRDML
 
 [원114](records/0143-signed-input-gradients-and-task-relations.md)에서 출력 gradient와 loss parameter gradient, 부호·크기와 sign만의 비교, 공유 feature 좌표·공통 입력과 task 분포를 먼저 찾는다. 고정 Tab probe라는 차이만으로 새 원리나 RCTL 공유 이득을 설명하지 않는다. 잔차 동시 상관 경로도 원114의 기존08·09 재참조이며 새 계산은 없었다.

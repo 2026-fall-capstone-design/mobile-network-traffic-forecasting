@@ -1,5 +1,7 @@
 # 04·06·07 — 실제 query 손실표 B2와 RCTL 사후 기각
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 2026-09-25의 연결된 설계·진단·판단 기록이다. B2는 [B1의 대표 입력 축약](0003-b1-anchor-projection.md)을 제거하고 실제 query의 분포로 group 손실을 합산했다. **후속 RCTL에서 관측 정답의 손실표보다 MAE가 두 seed 모두 컸고, 07은 이 후보를 추천 방향에서 제외했다.** 모든 Tab clustering 실패나 원인 하나의 확정을 뜻하지 않는다. [04 사전 계획](../evidence/0003-0007/originals/SRC-0020825.md.txt), [06 진단 계획](../evidence/0003-0007/originals/SRC-0020827.md.txt), [07 사후 판단](../evidence/0003-0007/originals/SRC-0020828.md.txt)
 
 ## 계획에서 실행으로 바뀐 내용
@@ -96,7 +98,6 @@ RCTL은29/29fit,1565epoch, wall1658.1391634초, 개별 fit 시간 합1652.177200
 재검토하려면 이미 labels가 있는 상황에서 empirical보다 분포 추정이 유용할 새 조건, 더 적합한 공유 함수군, 유한 표본 효과나 다른 도시·독립 기간 등을 명시해야 한다. 단순 PCC 대비 한 번의 이득, surrogate 순위, 이미 본20일을 다시 독립 검증으로 부르는 방식은 새 근거가 아니다. action의 정답 접근 범위와 두 번째 seed 대상 변경도 조건표에 남겨야 한다.
 
 [원문·실제 열람 범위](../sources/history-001.md), [검수](../verification/history-001.md), [근거와 실행 방법](../evidence/0003-0007/README.md). [과거 시도 색인](../prior-attempts.md).
-
 
 후속 [23·25 조건부 공유 비용](0023-0025-conditional-pooling.md)은 기존B1 분포와 고정 소속을 재사용했다. 직접 혼합 예측의 이득과 RCTL 소속 선택의 근거를 구분하고, 유한표본 반례·수치 실패·비용 한계를 연결했다. 새 Tab 추론이나 RCTL fit은0회다.
 

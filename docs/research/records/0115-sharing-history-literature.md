@@ -1,5 +1,7 @@
 # 원86: 결정 이력·저장 검색과 Clustered MTL 후속 독해
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-115.md) · [검수](../verification/history-115.md) · [근거](../evidence/0115-sharing-history-literature/README.md) · [학습 공유의 핵심 판단](0114-shared-training-scope.md)
 
 팀원이 같은 후보를 다시 검토할 때, 이미 수행한 실험과 조건이 달라지는 제안, 검색만 한 문헌과 본문을 읽은 문헌을 구분할 수 있도록 연결했다.
