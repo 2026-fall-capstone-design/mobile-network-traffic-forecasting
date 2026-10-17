@@ -25,8 +25,9 @@ Python으로 데이터를 처리하고 예측·평가한 결과를 JSON으로 �
 
 [공통 실험 규약](docs/research-protocol.md) → [데이터 준비](data/README.md) →
 [결과 교환 형식](docs/experiment-results.md) → [실험 기록 양식](docs/progress/README.md) 순서로 확인합니다.
-새 실험 전에 [과거 시도 색인](docs/research/prior-attempts.md)과
-[642개 기록 안내](docs/research/README.md)를 확인합니다.
+새 실험 전에 [과거 시도 색인](docs/research/prior-attempts.md),
+[연구기록 안내](docs/research/README.md)와
+[643~773번 GECOS 후속 연구 요약](docs/research/gecos-0643-0773-summary.md)을 확인합니다.
 
 ## 현재 구현: 합성 데모
 
