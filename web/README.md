@@ -8,7 +8,7 @@
 ## 표시하는 결과의 범위
 
 현재 화면은 3셀·1시간 간격의 합성 예제와 MAE/RMSE를 표시합니다.
-연구용 [Milan-900-10min v1.0](../docs/research-protocol.md)의 결과는
+연구용 [Milan-900-10min v1.2](../docs/research-protocol.md)의 결과는
 [웹 v1 지원 범위](../docs/web-data-contract.md#연구-결과를-연결할-때)를 확장한 뒤 연결합니다.
 연구 예측 원본과 시드별 지표는 [팀 결과 교환 형식](../docs/experiment-results.md)으로 보관합니다.
 
