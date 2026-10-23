@@ -1,7 +1,7 @@
 # 합성 데모 실험 규약
 
 현재 구현된 `synthetic-hourly-v1` 예제의 동작과 검증 범위입니다.
-연구용 Milan-900-10min v1.0은 [공통 실험 규약](research-protocol.md)을 따릅니다.
+연구용 Milan-900-10min v1.2는 [공통 실험 규약](research-protocol.md)을 따릅니다.
 
 ## 데이터와 예측
 
@@ -29,7 +29,7 @@
 
 [evaluation 모듈](../src/traffic_forecasting/evaluation/__init__.py)은 이 지표를 소수점 6자리로 저장합니다.
 웹의 셀·구간 필터는 차트만 바꾸며 전체 지표를 재계산하지 않습니다.
-데모의 RMSE는 연구 기본 비교의 주지표 raw macro MAPE를 대신하지 않습니다.
+데모의 RMSE는 연구 기본 비교의 주지표 raw micro MAPE를 대신하지 않습니다.
 
 ## 생성과 검증
 
