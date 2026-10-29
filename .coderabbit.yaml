@@ -18,7 +18,12 @@ reviews:
     예제 데이터는 합성 데이터이며 실제 연구 데이터로 수행한 실험 결과와 구분한다.
     생성한 설명에 영어 문장이 남아 있으면 코드·경로·명령어를 제외하고 한국어로 고쳐 작성한다.
   auto_title_placeholder: "@coderabbitai"
-  auto_title_instructions: "핵심 변경을 설명하는 간결한 한국어 제목을 작성한다. 이슈 번호는 필수가 아니다."
+  auto_title_instructions: >-
+    PR 제목을 유형(영역): 한국어 요약 형식으로 작성한다.
+    유형은 feat, fix, docs, chore, ci, refactor, test 중에서 고른다.
+    영역은 변경 중심을 나타내는 영문 소문자·숫자·하이픈으로 쓴다.
+    확인된 연구기록 번호·모델명·문서 버전과 미실행·기각 등 상태를 보존한다.
+    이슈 번호는 필수가 아니다.
   assess_linked_issues: false
   suggested_reviewers: false
   auto_assign_reviewers: false
