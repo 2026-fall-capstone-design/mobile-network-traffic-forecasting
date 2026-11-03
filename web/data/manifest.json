@@ -3,14 +3,14 @@
   "dataset": {
     "id": "synthetic-hourly-v1",
     "kind": "synthetic",
-    "unit": "Synthetic Activity Units",
+    "unit": "합성 활동량",
     "timezone": "UTC",
-    "description": "Synthetic hourly activity data used for interface testing."
+    "description": "구성 확인용 합성 데이터입니다. 실제 연구 성능을 나타내지 않습니다."
   },
   "runs": [
     {
       "id": "synthetic-demo-v1",
-      "label": "Baseline Comparison",
+      "label": "합성 데이터 기본 비교",
       "test_start": "2026-01-04T00:00:00Z",
       "test_end": "2026-01-04T23:00:00Z",
       "generated_at": "2026-10-07T07:53:34.680044Z",
@@ -25,7 +25,7 @@
       "models": [
         {
           "id": "last-value",
-          "label": "Previous Value",
+          "label": "직전 값",
           "series": [
             {
               "cell_id": "1001",
@@ -43,7 +43,7 @@
         },
         {
           "id": "seasonal-24h",
-          "label": "Value 24 Hours Earlier",
+          "label": "24시간 전 값",
           "series": [
             {
               "cell_id": "1001",
