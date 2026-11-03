@@ -145,16 +145,16 @@ h1 { font-size: clamp(34px, 4.2vw, 60px); line-height: 1.06; letter-spacing: -.0
 .notice::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 10px; border-radius: 50%; background: var(--orange); vertical-align: 1px; }
 .cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 .hero .cta-row { justify-content: flex-start; }
-/* ---------- Hero image ---------- */
+/* ---------- Hero GIF ---------- */
 
-.hero-image {
+.hero-gif {
   display: block;
-  width: 100%;
+  width: 120%;
+  max-width: 200%;
   height: auto;
-  min-height: 0;
   object-fit: contain;
-  border-radius: 0;
-  background: transparent;
+  margin: 0 auto;
+  border-radius: 16px;
 }
 
 /* ---------- Overview (dark) ---------- */
