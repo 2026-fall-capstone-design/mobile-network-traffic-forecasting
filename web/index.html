@@ -1,89 +1,446 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="모바일 네트워크 트래픽 예측 연구의 실험 결과와 모델별 평가 지표를 확인하는 정적 웹입니다. 현재는 합성 데이터 데모를 제공합니다.">
-  <title>Traffic Lab · 예측 결과</title>
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Explore mobile network traffic forecasts, compare model performance, and review the dataset and evaluation setup. The current version uses synthetic demo data.">
+  <title>Traffic Lab | Mobile Network Traffic Forecasting</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="./assets/style.css">
   <script defer src="./assets/vendor/chart.umd.min.js"></script>
   <script defer src="./assets/app.js"></script>
 </head>
 <body>
-  <a class="skip" href="#main">본문으로 건너뛰기</a>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Header (floats over the page) -->
   <header class="topbar">
-    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">↗</span> TRAFFIC LAB</a>
-    <span class="team">2026 CAPSTONE</span>
-    <a class="repo-link" href="https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting">GitHub ↗</a>
+    <div class="topbar-inner">
+      <a class="brand" href="./">TRAFFIC LAB</a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">Overview</a>
+        <a href="#forecast-section">Forecasts</a>
+        <a href="#metrics-section">Model Performance</a>
+        <a href="#record-section">Dataset &amp; Evaluation</a>
+      </nav>
+
+      <div class="topbar-actions">
+        <span class="team">2026 CAPSTONE</span>
+        <a class="btn btn-ghost btn-sm repo-link"
+           href="https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting">
+          GitHub ↗
+        </a>
+      </div>
+    </div>
   </header>
+
   <main id="main">
-    <section class="intro">
-      <p class="eyebrow">MOBILE NETWORK TRAFFIC FORECASTING</p>
-      <h1>예측을 살펴보고,<br>차이를 비교합니다.</h1>
-      <p class="lead">시간에 따른 실제 값과 예측 값을 한눈에 확인하는 팀의 실험 기록입니다.</p>
-      <p class="notice" id="dataset-notice">합성 데이터 데모 · 실제 연구 성능을 나타내지 않습니다.</p>
+
+    <!-- Hero (light, full width) -->
+    <section class="section hero theme-light" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          
+
+          <h1 id="hero-title">Forecast mobile network traffic.<br>Compare models.</h1>
+
+          <p class="lead">
+            Explore how model predictions compare with observed traffic
+            and evaluate forecasting performance across different models.
+          </p>
+
+          <p class="notice" id="dataset-notice">
+            DEMO MODE · Results use synthetic data and do not represent actual research performance.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#filters">Explore Results</a>
+            <a class="btn btn-ghost"
+               href="https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting/blob/main/docs/research-protocol.md">
+              Evaluation Protocol ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero GIF -->
+<img
+  class="hero-gif"
+  src="./assets/images/hero.gif"
+  alt="Mobile network traffic visualization"
+>
+      </div>
     </section>
 
-    <section class="filters panel" aria-label="결과 선택">
-      <label>실험<select id="run" disabled><option>불러오는 중</option></select></label>
-      <label>예측 모델<select id="model" disabled><option>불러오는 중</option></select></label>
-      <label>셀<select id="cell" disabled><option>불러오는 중</option></select></label>
-      <label>차트 표시 구간<select id="period" disabled>
-        <option value="all">전체 구간</option>
-        <option value="12">마지막 12개 시점</option>
-        <option value="6">마지막 6개 시점</option>
-      </select></label>
+    <!-- Overview (dark) -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <p class="eyebrow">Overview</p>
+
+        <h2 class="statement" id="about-title">
+          Understanding traffic through forecasting.
+        </h2>
+
+        <p class="about-text">
+          Recent traffic observations provide the context for predicting
+          future activity. This project examines how accurately different
+          models capture changes in network traffic.
+        </p>
+
+        <!-- Image slot: wide visual -->
+        <div class="overview-visual">
+          <img
+            src="./assets/images/traffic-lab-overview-pipeline.png"
+            alt="Data processing and traffic forecasting visualization"
+            loading="lazy">
+        </div>
+
+        <div class="cards3">
+
+          <article class="panel info-card">
+            <span class="info-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 3 8-9"/><path d="M3 21h18"/></svg>
+            </span>
+            <h3>Forecast vs. Actual</h3>
+            <p>
+              Compare observed traffic with model predictions across
+              the selected time window.
+            </p>
+            <a href="#forecast-section">View Forecasts →</a>
+          </article>
+
+          <article class="panel info-card">
+            <span class="info-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 20V10"/><path d="M12 20V4"/><path d="M19 20v-7"/></svg>
+            </span>
+            <h3>Model Performance</h3>
+            <p>
+              Compare prediction errors across models using
+              consistent evaluation metrics.
+            </p>
+            <a href="#metrics-section">Compare Models →</a>
+          </article>
+
+          <article class="panel info-card">
+            <span class="info-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg>
+            </span>
+            <h3>Dataset &amp; Evaluation</h3>
+            <p>
+              Review the dataset, evaluation setup, and experiment
+              details behind the reported results.
+            </p>
+            <a href="#record-section">View Experiment Details →</a>
+          </article>
+
+        </div>
+      </div>
     </section>
-    <div class="status" id="status" role="status" aria-live="polite">결과를 불러오고 있습니다.</div>
-    <button class="retry" id="retry" hidden>다시 불러오기</button>
+
+    <!-- Result filters (light) -->
+    <section class="section filters-section theme-light" id="filters" aria-label="Result filters">
+      <div class="wrap">
+
+        <div class="filters panel">
+
+          <label>
+            Experiment
+            <select id="run" disabled>
+              <option>Loading...</option>
+            </select>
+          </label>
+
+          <label>
+            Forecasting Model
+            <select id="model" disabled>
+              <option>Loading...</option>
+            </select>
+          </label>
+
+          <label>
+            Cell
+            <select id="cell" disabled>
+              <option>Loading...</option>
+            </select>
+          </label>
+
+          <label>
+            Chart Time Range
+            <select id="period" disabled>
+              <option value="all">Full Time Range</option>
+              <option value="12">Last 12 Time Steps</option>
+              <option value="6">Last 6 Time Steps</option>
+            </select>
+          </label>
+
+        </div>
+
+        <div class="status" id="status" role="status" aria-live="polite">
+          Loading results...
+        </div>
+
+        <button class="btn btn-primary retry" id="retry" hidden>
+          Try Again
+        </button>
+
+        <noscript>
+          <p class="notice">
+            Please enable JavaScript in your browser to view the results.
+          </p>
+        </noscript>
+
+      </div>
+    </section>
 
     <div id="results" hidden aria-busy="false">
-      <section class="panel chart-panel" aria-labelledby="chart-title">
-        <div class="section-heading">
-          <div><p class="eyebrow">01 / TIME SERIES</p><h2 id="chart-title">실제 값과 예측 값</h2></div>
-          <p class="chart-caption" id="chart-caption"></p>
-        </div>
-        <div class="legend" aria-hidden="true"><span class="actual">실제 값</span><span class="predicted">예측 값</span></div>
-        <div class="chart-wrap"><canvas id="forecast" role="img" aria-label="실제 값과 예측 값의 시간별 비교. 아래 표에서 수치를 확인할 수 있습니다."></canvas></div>
-        <p class="muted" id="chart-range"></p>
-        <details class="data-details">
-          <summary>표로 수치 확인</summary>
-          <div class="table-scroll" tabindex="0" aria-label="선택 구간 예측 수치">
-            <table><caption class="sr-only">차트에 표시된 시간별 실제 값과 예측 값</caption>
-              <thead><tr><th scope="col">시각 (UTC)</th><th scope="col">실제 값</th><th scope="col">예측 값</th></tr></thead>
-              <tbody id="point-rows"></tbody>
-            </table>
+
+      <!-- Forecast vs. Actual (light, continues the filters band) -->
+      <section class="section results-first theme-light"
+               id="forecast-section"
+               aria-labelledby="chart-title">
+        <div class="wrap">
+
+          <div class="section-head">
+            <p class="eyebrow">Forecast vs. Actual</p>
+            <h2 id="chart-title">Observed Traffic and Model Predictions</h2>
+            <p class="chart-caption" id="chart-caption"></p>
           </div>
-        </details>
+
+          <div class="panel chart-panel">
+
+            <div class="legend" aria-hidden="true">
+              <span class="actual">Actual</span>
+              <span class="predicted">Predicted</span>
+            </div>
+
+            <div class="chart-wrap">
+              <canvas
+                id="forecast"
+                role="img"
+                aria-label="Time series comparing actual traffic with predicted traffic. The chart draws itself over time. See the data table below for exact values.">
+              </canvas>
+            </div>
+
+            <!-- Playback: the chart draws itself over time -->
+            <div class="player">
+              <button type="button" class="btn btn-ghost btn-sm" id="play">Play</button>
+              <input type="range" id="scrub" min="0" max="1000" value="0" step="1"
+                     aria-label="Time position in the forecast">
+              <span class="playhead" id="playhead"></span>
+            </div>
+
+            <p class="muted" id="chart-range"></p>
+
+            <details class="data-details">
+              <summary>View Data Table</summary>
+
+              <div class="table-scroll"
+                   tabindex="0"
+                   aria-label="Forecast values for the selected time range">
+
+                <table>
+                  <caption class="sr-only">
+                    Actual and predicted traffic at each timestamp
+                  </caption>
+
+                  <thead>
+                    <tr>
+                      <th scope="col">Timestamp (UTC)</th>
+                      <th scope="col">Actual</th>
+                      <th scope="col">Predicted</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="point-rows"></tbody>
+                </table>
+
+              </div>
+            </details>
+
+            <h3 class="sub-title">
+              Prediction Error (Predicted − Actual)
+            </h3>
+
+            <p class="muted">
+              Positive values indicate overprediction; negative values indicate underprediction.
+            </p>
+
+            <div class="chart-wrap small">
+              <canvas
+                id="error-chart"
+                role="img"
+                aria-label="Bar chart showing prediction error at each time step.">
+              </canvas>
+            </div>
+
+          </div>
+        </div>
       </section>
 
-      <section aria-labelledby="metrics-title">
-        <div class="section-heading metric-heading">
-          <div><p class="eyebrow">02 / MODEL COMPARISON</p><h2 id="metrics-title">전체 평가 결과</h2></div>
-          <p class="muted" id="metric-scope"></p>
-        </div>
-        <p class="muted">지표는 전체 셀·전체 테스트 구간의 결과입니다. 차트의 셀·표시 구간을 바꿔도 같으며, 값이 작을수록 오차가 작습니다.</p>
-        <div class="kpis">
-          <article class="panel kpi"><h3>MAE <span>평균 절대 오차</span></h3><p id="mae">—</p></article>
-          <article class="panel kpi"><h3>RMSE <span>전체 표본 기준</span></h3><p id="rmse">—</p></article>
-          <article class="panel kpi"><h3>Macro RMSE <span>셀별 RMSE의 평균</span></h3><p id="macro-rmse">—</p></article>
-        </div>
-        <div class="panel table-scroll" tabindex="0" aria-label="전체 모델 지표 비교">
-          <table><caption>동일한 테스트 표본에서 모델 비교</caption>
-            <thead><tr><th scope="col">모델</th><th scope="col">MAE</th><th scope="col">RMSE</th><th scope="col">Macro RMSE</th></tr></thead>
-            <tbody id="metric-rows"></tbody>
-          </table>
+      <!-- Model Performance (dark) -->
+      <section class="section"
+               id="metrics-section"
+               aria-labelledby="metrics-title">
+        <div class="wrap">
+
+          <div class="section-head">
+            <p class="eyebrow">Model Performance</p>
+            <h2 id="metrics-title">Comparing Prediction Accuracy</h2>
+            <p class="chart-caption" id="metric-scope"></p>
+          </div>
+
+          <p class="muted section-note">
+            These metrics summarize performance across all evaluated cells
+            and the full evaluation window. Changing the chart filters does
+            not affect these scores. Lower errors indicate better predictions.
+          </p>
+
+          <div class="kpis">
+
+            <article class="panel kpi">
+              <h3>MAE <span>Mean Absolute Error</span></h3>
+              <p id="mae">—</p>
+            </article>
+
+            <article class="panel kpi">
+              <h3>RMSE <span>Root Mean Squared Error</span></h3>
+              <p id="rmse">—</p>
+            </article>
+
+            <article class="panel kpi">
+              <h3>Macro RMSE <span>Average RMSE Across Cells</span></h3>
+              <p id="macro-rmse">—</p>
+            </article>
+
+          </div>
+
+          <div class="bento">
+
+            <div class="panel metric-chart">
+              <div class="chart-wrap small">
+                <canvas
+                  id="metric-chart"
+                  role="img"
+                  aria-label="Bar chart comparing model MAE, RMSE, and Macro RMSE. See the table for exact values.">
+                </canvas>
+              </div>
+            </div>
+
+            <div class="panel table-scroll metric-table"
+                 tabindex="0"
+                 aria-label="Comparison of evaluation metrics across models">
+
+              <table>
+                <caption>
+                  Model performance on the same evaluation samples
+                </caption>
+
+                <thead>
+                  <tr>
+                    <th scope="col">Model</th>
+                    <th scope="col">MAE</th>
+                    <th scope="col">RMSE</th>
+                    <th scope="col">Macro RMSE</th>
+                  </tr>
+                </thead>
+
+                <tbody id="metric-rows"></tbody>
+              </table>
+
+            </div>
+          </div>
         </div>
       </section>
-      <section class="panel record" aria-labelledby="record-title">
-        <div><p class="eyebrow">03 / EXPERIMENT RECORD</p><h2 id="record-title">이 결과에 대하여</h2>
-          <p class="muted" id="dataset-description"></p></div>
-        <dl id="record"></dl>
-        <p class="muted">각 시점에서 1시간 뒤를 예측합니다. 앞선 시점에서 관측된 실제 값은 다음 예측에 사용할 수 있습니다.</p>
+
+      <!-- Dataset & Evaluation (light) -->
+      <section class="section theme-light"
+               id="record-section"
+               aria-labelledby="record-title">
+        <div class="wrap">
+
+          <div class="panel record">
+
+            <div class="record-text">
+              <p class="eyebrow">Dataset &amp; Evaluation</p>
+
+              <h2 id="record-title">How the Results Were Obtained</h2>
+
+              <p class="muted" id="dataset-description"></p>
+
+              <dl id="record"></dl>
+            </div>
+
+           
+
+          </div>
+        </div>
       </section>
+
     </div>
-    <noscript><p class="notice">결과를 표시하려면 브라우저의 JavaScript를 켜 주세요.</p></noscript>
+
+    <!-- Closing CTA (dark) -->
+    <section class="section closing" aria-labelledby="closing-title">
+      <div class="wrap">
+
+        <h2 id="closing-title">
+          Explore the code.<br>
+          Review the methodology.
+        </h2>
+
+        <div class="cta-row">
+
+          <a class="btn btn-primary"
+             href="https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting">
+            GitHub ↗
+          </a>
+
+          <a class="btn btn-ghost"
+             href="https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting/blob/main/docs/research-protocol.md">
+            Evaluation Protocol ↗
+          </a>
+
+        </div>
+      </div>
+    </section>
+
   </main>
-  <footer><span>모바일 네트워크 트래픽 예측 · 4인 캡스톤 프로젝트</span><a href="https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting/blob/main/docs/research-protocol.md">실험 규약 ↗</a></footer>
+
+  <!-- Footer (dark) -->
+  <footer class="footer">
+    <div class="wrap">
+
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+          <a class="brand" href="./">TRAFFIC LAB</a>
+          <p>Mobile Network Traffic Forecasting · Capstone Design Project</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Quick links">
+          <h3>Quick Links</h3>
+          <a href="#about">Overview</a>
+          <a href="#forecast-section">Forecasts</a>
+          <a href="#metrics-section">Model Performance</a>
+          <a href="#record-section">Dataset &amp; Evaluation</a>
+        </nav>
+
+        <nav class="footer-col" aria-label="Project resources">
+          <h3>Project</h3>
+          <a href="https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting">
+            GitHub ↗
+          </a>
+          <a href="https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting/blob/main/docs/research-protocol.md">
+            Evaluation Protocol ↗
+          </a>
+        </nav>
+
+      </div>
+
+      <p class="footer-wordmark" aria-hidden="true">TRAFFIC LAB</p>
+
+    </div>
+  </footer>
+
 </body>
 </html>
