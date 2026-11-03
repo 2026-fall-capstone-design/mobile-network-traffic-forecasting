@@ -1,0 +1,36 @@
+{
+  "variables": {
+    "p": "tested input columns for one target",
+    "B": "null repetitions",
+    "Q": "evaluation rows per call"
+  },
+  "literal": {
+    "context_fits": "2*p",
+    "conditional_rows": "p*Q",
+    "target_observed_rows": "p*Q",
+    "target_null_rows": "p*B*Q",
+    "total_query_rows": "p*(B+2)*Q"
+  },
+  "reuse_proposal": {
+    "context_fits": "p+1",
+    "conditional_rows": "p*Q",
+    "target_observed_rows": "Q",
+    "target_null_rows": "p*B*Q",
+    "total_query_rows": "(p*B+p+1)*Q"
+  },
+  "assumptions": [
+    "successful calls",
+    "same split/model/observed statistic for target reuse",
+    "common Q and B"
+  ],
+  "source_id": "SRC-0001604",
+  "line_ranges": [
+    [
+      49,
+      173
+    ]
+  ],
+  "implementation_of_reuse_verified": false,
+  "wall_time_or_memory_measured": false,
+  "new_model_runs": 0
+}

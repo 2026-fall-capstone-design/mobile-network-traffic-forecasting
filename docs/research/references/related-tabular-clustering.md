@@ -1,5 +1,7 @@
 # TabICL 관련 여섯 방법의 정보·결정·적용 한계
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [05의 문헌 판단](../records/0005-related-foundations-audit.md)을 지원하는 비교다. 아래 원문은 지정 판본의 일부 방법·표·수식만 검토했다. 전논문·저자 코드 검증이나 전수 신규성 조사가 아니다. 각 주장의 위치와 미검토 구간은 [검토 원장](../verification/history-006-primary-review.json)에 있다.
 
 ## 1 Localized TabICLv2

@@ -1,0 +1,219 @@
+{
+  "batch_id": "history-117",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T15:10:53.103602+00:00",
+  "claims_checked": 26,
+  "checks": [
+    {
+      "check_id": "H117-SP01",
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "finding": "계획19행·후보47행·연혁456행 전체와 이전 후보46행·연혁1–19행을 재독. 새12/13행·22판단·38절 대응, 폭16 대16L, 초기0fit/미열람 대29fit/관찰, UPC 정정과 H024 최대289열 정정을 확인. C03의 초록 설명을 실제 본문·알고리즘·가정 독해 계획으로 수정. 긍정5항목·진입4질문과 역사적 지시의 범위 유지."
+    },
+    {
+      "check_id": "H117-SP02",
+      "claims": [
+        7,
+        8
+      ],
+      "finding": "TXT1128행 전체와 PDF6–9쪽 본문을 작성 후 재독. H116의1–6쪽 및 이번7–9쪽 최초 독해·전체 이미지 기록을 연결. 참고문헌35항목과9자료·36조건·72지표·입력/출력길이를 확인. 참고문헌35편 검수나 실험재현으로 확대하지 않음."
+    },
+    {
+      "check_id": "H117-SP03",
+      "claims": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "finding": "PDF6/7쪽 본문·7쪽 전체 이미지 및 TXT 표 구간 재대조. Table1 순위67/3/2, HDMixer 대비 두 집계식, Table1/2 ILI 예측길이·세 기준값 차이, ablation71악화/1동률 및7.532% 대 인쇄2.8%를 확인. 실제 집계 정의·정밀 원결과는 미확인."
+    },
+    {
+      "check_id": "H117-SP04",
+      "claims": [
+        13,
+        14,
+        15
+      ],
+      "finding": "PDF4쪽 식8/9 텍스트·전체 이미지와 backbone118–173행 재독. 내적/cosine·별도max이동/공통이동의 차이, 스칼라 반례, 고정anchor/설정batch 인덱스 및 무작위 채널 선택을 확인. 실제 임베딩·loader 조건·오류 재현과 구별."
+    },
+    {
+      "check_id": "H117-SP05",
+      "claims": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "finding": "backbone585행 전체와 재사용 CMI52행 전체를 재독. eval에도aux가 계산되는 경로·생성flag·일반속성평균 덮어쓰기·채널별/공유head·접힌batch의BN·patch² attention을 확인. PDF6쪽 복잡도 문장과 전체 구현 비용을 구별."
+    },
+    {
+      "check_id": "H117-SP06",
+      "claims": [
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "finding": "exp_main389행 전체·고정 커밋 wrapper113행·H116 기록 전체를 재독. validation MSE+aux, earlystop=vali/NNI=test, test의AMP 양쪽tuple분리, predict의양쪽미분리후detach 및 학습AMP의별도문제를 확인. 실제 튜너·실행설정·metric·모든 의존성 검수와 구별."
+    },
+    {
+      "check_id": "H117-SP07",
+      "claims": [
+        25,
+        26
+      ],
+      "finding": "snapshot29 manifest128행·13별칭 및3기존보존출처·6보호원본 해시, 새사본3개123079B와 파생표현 중복을 대조. 이전 선택3개를 독립본문 완료로 전환하므로 본문+6/선택전용−3; JSON/독립이미지+0. 알려진7그룹 완료와 전체 연구·원88 이후·기존공백을 구별."
+    }
+  ],
+  "initial_draft_record_sha256": "bf7f407a3240cfa576d2ef94545c74502e81aeea41dfb06c9492ae8f5b6d2520",
+  "corrected_record_sha256": "f7654431a4161e61bb78af26240d0c705450fa219cd04ec31bd6f0e63bd81302",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0001557": [
+      [
+        1,
+        19
+      ]
+    ],
+    "SRC-0001558": [
+      [
+        1,
+        47
+      ]
+    ],
+    "SRC-0001536": [
+      [
+        1,
+        46
+      ]
+    ],
+    "SRC-0001540": [
+      [
+        1,
+        19
+      ]
+    ],
+    "SRC-0001552": [
+      [
+        1,
+        128
+      ]
+    ],
+    "SRC-0001562": [
+      [
+        1,
+        456
+      ]
+    ],
+    "SRC-0061929": [
+      [
+        1,
+        585
+      ]
+    ],
+    "SRC-0061932": [
+      [
+        1,
+        389
+      ]
+    ],
+    "SRC-0061922": [
+      [
+        1,
+        1128
+      ]
+    ]
+  },
+  "postdraft_total_raw_lines": 2817,
+  "additional_reused_original": {
+    "source_id": "SRC-0061930",
+    "path": "tmp/redesign_20260925/sources/causal_capacity_87/code/CMI.py",
+    "sha256": "814b27b6057cb9661a6e09fc44ed849b5a8ecf9ef205e6d95ee7452fdba504c2",
+    "line_ranges": [
+      [
+        1,
+        52
+      ]
+    ],
+    "previous_full_credit": "H116",
+    "independent_content_credit": 0
+  },
+  "postdraft_total_original_raw_lines": 2869,
+  "actual_postdraft_PDF_text_pages": {
+    "SRC-0061921": [
+      4,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "actual_postdraft_PDF_image_rechecks": {
+    "SRC-0061921": [
+      4,
+      7
+    ]
+  },
+  "postdraft_PDF_text_lines": 585,
+  "existing_archive_references_reread": [
+    {
+      "path": "../records/0039-0040-sample-reuse.md",
+      "sha256": "99dc1d7d05d07c87fb0a966b0823a532a2fbec168f4230a119ea2afae9dc5dad",
+      "scope": "전체 작성 후 재독",
+      "independent_content_credit": 0
+    },
+    {
+      "path": "../records/0116-causal-capacity-reference.md",
+      "sha256": "2808687a9349276a642194aac5690fc6e3bcacba46697488cc1fc59b7b087435",
+      "scope": "전체 작성 후 재독",
+      "independent_content_credit": 0
+    }
+  ],
+  "external_wrapper": {
+    "url": "https://raw.githubusercontent.com/Xinhui-Lee/CIB-MTSF/ac09a66245f9eaa7371065ec3f7d3673df125c94/CIB-MTSF/CIB-MTSF/models/CIBMTSF.py",
+    "sha256": "31d461f4d938ea19dcfd85d082915779c92d66d3c273e2bb41f59e51aa6216fd",
+    "line_ranges": [
+      [
+        1,
+        113
+      ]
+    ],
+    "original_credit": 0
+  },
+  "all_claim_semantic_locations_actually_reread": true,
+  "unresolved_output_truncation": false,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "coverage_increment_applied": false,
+  "corrections": [
+    {
+      "claim": "H117-C03",
+      "source_id": "SRC-0001557",
+      "lines": [
+        11,
+        12
+      ],
+      "finding": "원88 계획은 초록만의 역할 확인이 아니라 arXiv v1 본문·알고리즘·가정 독해를 명시한다. 추가 원문 최대3편은 그 다음 단계다.",
+      "actual_source_reread_chunk": 1
+    },
+    {
+      "finding": "H116에서 복사한 TXT/PDF 대응 파일의 과거 미독 표시를 earlier_H116_semantic_scope로 구분하고 이번 실제 전문 독해 상태와 일치시킴. 기계적 대응만으로 의미 검수를 주장하지 않음."
+    },
+    {
+      "claim": "H117-C26",
+      "finding": "검수 완료에 맞춰 집계 증분을 명시. 실제 단회 집계는 문서·전체 아카이브 검사 후 별도 수행."
+    }
+  ],
+  "limitations": [
+    "원88 이후 문헌/판본·이전 고유 판본·코드 의존성/실행 설정·기존 원83FedPPBC/원84DOCX 공백·실패와 비용의 전체 통합·장기 팀 접근·최종 원본 변경과 대표 검색 검수."
+  ]
+}

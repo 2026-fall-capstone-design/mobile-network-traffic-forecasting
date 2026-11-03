@@ -1,0 +1,201 @@
+{
+  "scope": "exact integer arithmetic under stated assumptions; not model execution or runtime extrapolation",
+  "GRU_formula": "K*(3*H^2+6*H)+(4*H+1)*D",
+  "GRU_assumptions": "1-layer unidirectional PyTorch-style biased GRU H=200, final linear H-to-d_k head, disjoint outputs summing to D; author implementation unverified",
+  "GRU_capacity": [
+    {
+      "flows": 144,
+      "clusters": 1,
+      "conditional_parameter_count": 236544,
+      "ratio_to_K1": 1.0
+    },
+    {
+      "flows": 144,
+      "clusters": 21,
+      "conditional_parameter_count": 2660544,
+      "ratio_to_K1": 11.247564935064934
+    },
+    {
+      "flows": 144,
+      "clusters": 41,
+      "conditional_parameter_count": 5084544,
+      "ratio_to_K1": 21.49512987012987
+    },
+    {
+      "flows": 144,
+      "clusters": 144,
+      "conditional_parameter_count": 17568144,
+      "ratio_to_K1": 74.27008928571429
+    },
+    {
+      "flows": 529,
+      "clusters": 1,
+      "conditional_parameter_count": 544929,
+      "ratio_to_K1": 1.0
+    },
+    {
+      "flows": 529,
+      "clusters": 40,
+      "conditional_parameter_count": 5271729,
+      "ratio_to_K1": 9.674157550800196
+    },
+    {
+      "flows": 529,
+      "clusters": 50,
+      "conditional_parameter_count": 6483729,
+      "ratio_to_K1": 11.898300512543836
+    },
+    {
+      "flows": 529,
+      "clusters": 100,
+      "conditional_parameter_count": 12543729,
+      "ratio_to_K1": 23.019015321262035
+    },
+    {
+      "flows": 529,
+      "clusters": 529,
+      "conditional_parameter_count": 64538529,
+      "ratio_to_K1": 118.43474838006419
+    }
+  ],
+  "scalar_RCTL_workload": [
+    {
+      "cells": 128,
+      "RCTL_rows_per_epoch": 86016,
+      "prediction_rows_per_timestamp": 128,
+      "Tab_contexts": 128,
+      "Tab_context_rows_total": 64512,
+      "Tab_query_rows_total": 21504,
+      "Tab_quantile_cache_bytes_float32": 11096064,
+      "Tab_context_X_y_bytes_float32": 4386816,
+      "Tab_query_X_bytes_float32": 1376256,
+      "balanced_RCTL": [
+        {
+          "K": 1,
+          "cluster_size_min": 128,
+          "cluster_size_max": 128,
+          "updates_per_epoch": 336,
+          "stored_parameters": 174433,
+          "stored_parameter_and_buffer_bytes": 701412
+        },
+        {
+          "K": 4,
+          "cluster_size_min": 32,
+          "cluster_size_max": 32,
+          "updates_per_epoch": 336,
+          "stored_parameters": 697732,
+          "stored_parameter_and_buffer_bytes": 2805648
+        },
+        {
+          "K": 16,
+          "cluster_size_min": 8,
+          "cluster_size_max": 8,
+          "updates_per_epoch": 336,
+          "stored_parameters": 2790928,
+          "stored_parameter_and_buffer_bytes": 11222592
+        },
+        {
+          "K": 32,
+          "cluster_size_min": 4,
+          "cluster_size_max": 4,
+          "updates_per_epoch": 352,
+          "stored_parameters": 5581856,
+          "stored_parameter_and_buffer_bytes": 22445184
+        }
+      ]
+    },
+    {
+      "cells": 1024,
+      "RCTL_rows_per_epoch": 688128,
+      "prediction_rows_per_timestamp": 1024,
+      "Tab_contexts": 1024,
+      "Tab_context_rows_total": 516096,
+      "Tab_query_rows_total": 172032,
+      "Tab_quantile_cache_bytes_float32": 88768512,
+      "Tab_context_X_y_bytes_float32": 35094528,
+      "Tab_query_X_bytes_float32": 11010048,
+      "balanced_RCTL": [
+        {
+          "K": 1,
+          "cluster_size_min": 1024,
+          "cluster_size_max": 1024,
+          "updates_per_epoch": 2688,
+          "stored_parameters": 174433,
+          "stored_parameter_and_buffer_bytes": 701412
+        },
+        {
+          "K": 4,
+          "cluster_size_min": 256,
+          "cluster_size_max": 256,
+          "updates_per_epoch": 2688,
+          "stored_parameters": 697732,
+          "stored_parameter_and_buffer_bytes": 2805648
+        },
+        {
+          "K": 16,
+          "cluster_size_min": 64,
+          "cluster_size_max": 64,
+          "updates_per_epoch": 2688,
+          "stored_parameters": 2790928,
+          "stored_parameter_and_buffer_bytes": 11222592
+        },
+        {
+          "K": 32,
+          "cluster_size_min": 32,
+          "cluster_size_max": 32,
+          "updates_per_epoch": 2688,
+          "stored_parameters": 5581856,
+          "stored_parameter_and_buffer_bytes": 22445184
+        }
+      ]
+    },
+    {
+      "cells": 10000,
+      "RCTL_rows_per_epoch": 6720000,
+      "prediction_rows_per_timestamp": 10000,
+      "Tab_contexts": 10000,
+      "Tab_context_rows_total": 5040000,
+      "Tab_query_rows_total": 1680000,
+      "Tab_quantile_cache_bytes_float32": 866880000,
+      "Tab_context_X_y_bytes_float32": 342720000,
+      "Tab_query_X_bytes_float32": 107520000,
+      "balanced_RCTL": [
+        {
+          "K": 1,
+          "cluster_size_min": 10000,
+          "cluster_size_max": 10000,
+          "updates_per_epoch": 26250,
+          "stored_parameters": 174433,
+          "stored_parameter_and_buffer_bytes": 701412
+        },
+        {
+          "K": 4,
+          "cluster_size_min": 2500,
+          "cluster_size_max": 2500,
+          "updates_per_epoch": 26252,
+          "stored_parameters": 697732,
+          "stored_parameter_and_buffer_bytes": 2805648
+        },
+        {
+          "K": 16,
+          "cluster_size_min": 625,
+          "cluster_size_max": 625,
+          "updates_per_epoch": 26256,
+          "stored_parameters": 2790928,
+          "stored_parameter_and_buffer_bytes": 11222592
+        },
+        {
+          "K": 32,
+          "cluster_size_min": 312,
+          "cluster_size_max": 313,
+          "updates_per_epoch": 26256,
+          "stored_parameters": 5581856,
+          "stored_parameter_and_buffer_bytes": 22445184
+        }
+      ]
+    }
+  ],
+  "RCTL_counts_source": "results/serving_cost_95/summary.json; unchanged 8x9 input and scalar output",
+  "new_models": 0,
+  "new_traffic_statistics": 0
+}

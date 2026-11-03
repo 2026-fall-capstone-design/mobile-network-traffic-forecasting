@@ -1,0 +1,56 @@
+"""Verify saved stage 113 artifacts; do not rerun clustering or any model."""
+from pathlib import Path
+import hashlib
+import json
+import math
+import numpy as np
+
+B = Path(__file__).resolve().parent
+O = B / 'results/cluster_size_constraint_113'
+read = lambda p: json.loads(p.read_text(encoding='utf-8'))
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+r = read(O / 'result.json')
+end = read(O / 'run_finished.json')
+before = read(O / 'ledger_before_accounting.json')
+ledger = read(B / 'cumulative_execution_budget.json')
+assert sha(O / 'result.json') == end['result_sha256']
+assert sha(B / 'cumulative_execution_budget.json') == end['ledger_after_sha256']
+for name, digest in r['settings']['source_hashes'].items():
+    path = O / 'ledger_before_accounting.json' if name == 'cumulative_execution_budget.json' else B / name
+    assert sha(path) == digest, name
+assert ledger['used'] == before['used'] and ledger['caps'] == before['caps']
+assert ledger['remaining_count_budgets'] == before['remaining_count_budgets']
+assert len(ledger['cheap_stage_details']) == len(before['cheap_stage_details']) + 1
+assert set(ledger['new_cheap_diagnostic_seconds']) - set(before['new_cheap_diagnostic_seconds']) == {'cluster_size_constraint_113'}
+assert ledger['new_cheap_diagnostic_seconds']['cluster_size_constraint_113'] == r['elapsed_seconds']
+for k, v in before['new_cheap_diagnostic_seconds'].items():
+    assert ledger['new_cheap_diagnostic_seconds'][k] == v
+old = read(B / 'results/observed_risk_pilot.json')
+largest = 0.0
+with np.load(O / 'predictions.npz', allow_pickle=False) as a:
+    y = a['actual']
+    assert y.shape == (16, 168)
+    for name, item in r['results'].items():
+        groups = item['groups_indices']
+        assert len(groups) == 4 and sorted(i for g in groups for i in g) == list(range(16))
+        assert item['group_sizes'] == [len(g) for g in groups]
+        assert sum(item['hypothetical_RCTL_train_rows']) == 16 * 672
+        assert item['hypothetical_RCTL_batches_per_epoch'] == sum(math.ceil(len(g)*672/256) for g in groups) == 44
+        for rule, stored in item['MAE_by_correction_rule'].items():
+            cell = np.abs(a[name + '__' + rule] - y).mean(axis=1)
+            assert np.allclose(cell, item['cell_MAE_by_correction_rule'][rule], atol=1e-14, rtol=0)
+            largest = max(largest, abs(float(cell.mean()) - stored))
+            assert abs(float(cell.mean()) - stored) < 1e-14
+            if name == rule + '_balanced':
+                assert abs(stored - old['surrogate_validation'][rule]['mae_design_following_week']) < 1e-10
+for rule, history in r['merge_history'].items():
+    assert len(history) == 12
+    assert all(x['increment'] >= -1e-10 for x in history)
+assert r['pair_scores'] == {'tabicl_risk': 670, 'empirical_risk': 670}
+assert not r['RCTL_performance_measured'] and not r['novelty_established']
+out = {'complete': True, 'stored_MAE_max_difference': largest,
+       'input_hashes_verified': True, 'balanced_results_reproduce_previous_stage': True,
+       'model_usage_and_caps_unchanged': True, 'single_cheap_charge_verified': True,
+       'new_models_or_clustering_runs': 0, 'ledger_sha256': sha(B / 'cumulative_execution_budget.json')}
+(O / 'verification.json').write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps(out, ensure_ascii=False))

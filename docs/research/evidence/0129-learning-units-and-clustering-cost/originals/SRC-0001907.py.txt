@@ -1,0 +1,84 @@
+"""Read primary PDFs and check integer workload formulas; no model/data execution."""
+from pathlib import Path
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError
+import hashlib, json, math, shutil
+from datetime import datetime, timezone
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parents[2]
+BASE = ROOT / 'tmp/redesign_20260925'
+DEST = BASE / 'sources/learning_unit_99'
+DEST.mkdir(parents=True, exist_ok=True)
+items = [
+    ('Cash_2025_2509.15072v1', 'https://arxiv.org/pdf/2509.15072v1', None),
+    ('Cash_2026_2604.26081v1', 'https://arxiv.org/pdf/2604.26081v1', None),
+    ('Ma_2026_2604.13748v1', 'https://arxiv.org/pdf/2604.13748v1', ROOT / 'output/research/related_work/10_Validation_Driven_Clustering_2026.pdf'),
+]
+manifest = []
+for stem, url, prior in items:
+    pdf = DEST / (stem + '.pdf')
+    if not pdf.exists():
+        if prior is not None:
+            shutil.copy2(prior, pdf)
+        else:
+            used_url=url
+            req = Request(url, headers={'User-Agent':'Mozilla/5.0 (research literature retrieval)', 'Accept':'application/pdf'})
+            try:
+                with urlopen(req, timeout=45) as response:
+                    data = response.read(12_000_001)
+            except HTTPError as error:
+                if error.code != 406:
+                    raise
+                used_url=url.removesuffix('v1')
+                req = Request(used_url, headers={'User-Agent':'Mozilla/5.0', 'Accept':'application/pdf'})
+                with urlopen(req, timeout=45) as response:
+                    data = response.read(12_000_001)
+            if not data.startswith(b'%PDF-') or len(data) > 12_000_000:
+                raise ValueError('Unexpected PDF response')
+            pdf.write_bytes(data)
+    reader = PdfReader(pdf)
+    parts=[]
+    for index, page in enumerate(reader.pages,1):
+        parts.append(f'\n--- PDF PAGE {index} ---\n'+(page.extract_text() or ''))
+    (DEST/(stem+'.txt')).write_text('\n'.join(parts), encoding='utf-8')
+    manifest.append({'file':str(pdf.relative_to(ROOT)), 'url':url,
+                     'prior_source':str(prior.relative_to(ROOT)) if prior else None,
+                     'bytes':pdf.stat().st_size, 'sha256':hashlib.sha256(pdf.read_bytes()).hexdigest(),
+                     'pages':len(reader.pages), 'first_page_excerpt':parts[0][:340]})
+(DEST/'manifest.json').write_text(json.dumps({'read_at_utc':datetime.now(timezone.utc).isoformat(), 'pdfs':manifest},ensure_ascii=False,indent=2), encoding='utf-8')
+
+H=200
+capacity=[]
+for D, Ks in ((144,(1,21,41,144)),(529,(1,40,50,100,529))):
+    base=3*H*H+6*H+(4*H+1)*D
+    for K in Ks:
+        p=K*(3*H*H+6*H)+(4*H+1)*D
+        capacity.append({'flows':D, 'clusters':K,'conditional_parameter_count':p, 'ratio_to_K1':p/base})
+rows=[]
+for N in (128,1024,10000):
+    record={'cells':N,'RCTL_rows_per_epoch':N*672,'prediction_rows_per_timestamp':N,
+            'Tab_contexts':N,'Tab_context_rows_total':N*504,'Tab_query_rows_total':N*168,
+            'Tab_quantile_cache_bytes_float32':N*168*129*4,
+            'Tab_context_X_y_bytes_float32':N*504*17*4,
+            'Tab_query_X_bytes_float32':N*168*16*4,
+            'balanced_RCTL':[]}
+    for K in (1,4,16,32):
+        small,extra=divmod(N,K)
+        sizes=[small+1]*extra+[small]*(K-extra)
+        updates=sum(math.ceil(n*672/256) for n in sizes)
+        assert sum(sizes)==N
+        assert updates>=math.ceil(N*672/256)
+        record['balanced_RCTL'].append({'K':K,'cluster_size_min':min(sizes),'cluster_size_max':max(sizes),
+            'updates_per_epoch':updates,'stored_parameters':174433*K,
+            'stored_parameter_and_buffer_bytes':701412*K})
+    rows.append(record)
+result={'scope':'exact integer arithmetic under stated assumptions; not model execution or runtime extrapolation',
+        'GRU_formula':'K*(3*H^2+6*H)+(4*H+1)*D',
+        'GRU_assumptions':'1-layer unidirectional PyTorch-style biased GRU H=200, final linear H-to-d_k head, disjoint outputs summing to D; author implementation unverified',
+        'GRU_capacity':capacity,'scalar_RCTL_workload':rows,
+        'RCTL_counts_source':'results/serving_cost_95/summary.json; unchanged 8x9 input and scalar output',
+        'new_models':0,'new_traffic_statistics':0}
+(BASE/'99_workload_arithmetic.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'pdfs':[{k:p[k] for k in ('file','bytes','pages')} for p in manifest],
+                  'workload_cells':[r['cells'] for r in rows]},ensure_ascii=False))

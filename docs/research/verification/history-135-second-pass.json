@@ -1,0 +1,126 @@
+{
+  "batch_id": "history-135",
+  "checks": [
+    {
+      "check_index": 1,
+      "claim_ids": [
+        "H135-C01",
+        "H135-C02",
+        "H135-C03",
+        "H135-C04",
+        "H135-C14"
+      ],
+      "topic": "sourceclassification/past1→2→3/reportedtoolstatus only/no fresh complete",
+      "success": true
+    },
+    {
+      "check_index": 2,
+      "claim_ids": [
+        "H135-C05",
+        "H135-C06"
+      ],
+      "topic": "same historical ledger/caps/used/remaining/6fields/pending authorization",
+      "success": true
+    },
+    {
+      "check_index": 3,
+      "claim_ids": [
+        "H135-C07",
+        "H135-C08",
+        "H135-C09",
+        "H135-C10",
+        "H135-C11",
+        "H135-C12"
+      ],
+      "topic": "4basis/version gaps/resume includes independent route/frozenplan/past instructions DATA",
+      "success": true
+    },
+    {
+      "check_index": 4,
+      "claim_ids": [
+        "H135-C13",
+        "H135-C15"
+      ],
+      "topic": "7source15alias/docidentity-only/prioractualscope/newJSON1/21originalpaths/remaining",
+      "success": true
+    }
+  ],
+  "claims_checked": 15,
+  "actual_postdraft_raw_ranges": {
+    "SRC-0020850": [
+      [
+        1,
+        48
+      ]
+    ],
+    "SRC-0020849": [
+      [
+        1,
+        37
+      ]
+    ],
+    "SRC-0020848": [
+      [
+        1,
+        32
+      ]
+    ],
+    "SRC-0020843": [
+      [
+        1,
+        25
+      ]
+    ]
+  },
+  "actual_postdraft_raw_sources": 4,
+  "actual_postdraft_raw_lines": 142,
+  "actual_postdraft_JSON_pointers": {
+    "SRC-0002031": [
+      "/used",
+      "/remaining_count_budgets",
+      "/budget_resets",
+      "/research_goal_complete",
+      "/caps",
+      "/new_RCTL_fits_permitted_under_current_cap"
+    ]
+  },
+  "actual_postdraft_document_identity_checks": [
+    {
+      "source_id": "SRC-0000028",
+      "sha256": "72972ff51337f10d04ad1258322ebbc48f93dc0c2403b0844e23bc4e45b66196",
+      "current_identity_checked": true,
+      "current_body_actually_read": false,
+      "prior_scope_reused": true
+    },
+    {
+      "source_id": "SRC-0000108",
+      "sha256": "46b6ebde3223f80b84e19a3049ebdcc4e19d4e07cf75dc55b13ae8ccd61ea8f4",
+      "current_identity_checked": true,
+      "current_body_actually_read": false,
+      "prior_scope_reused": true
+    }
+  ],
+  "initial15_claims_all_fields_actually_read": true,
+  "corrected_saved_claims_actually_read": 15,
+  "corrected_private_draft_sha256": "ed23175aca19488243f88031c248ddea139fb47f931c546b527931565116cc60",
+  "corrected_draft_actually_read_after_write": true,
+  "statement_changes": 1,
+  "metadata_refs_actually_read": true,
+  "semantic_second_pass_complete": true,
+  "whole_related_sources_reread": false,
+  "independent_human_review": false,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "new_model_runs": 0,
+  "global_coverage_increment_applied": false,
+  "recorded_at_utc": "2026-10-13T04:30:10.901013+00:00",
+  "initial_draft_sha256": "f731099bdf02984b6d91269f2928dfa3cd8cefd990ac06a4b8c011b51bba18a3",
+  "changed_claim_ids": [
+    "H135-C13"
+  ],
+  "changed_saved_claim_actual_read_pending": false,
+  "changed_saved_claim_actually_read": "H135-C13",
+  "composed_final_reading_basis": "Initial all15 fields actually read; then exact-byte document identity vs reused scope wording C13 corrected and its complete saved claim/type/refs/evidence actually read. Remaining14 statements/refs unchanged. No claim all finalJSON literalbytes were reread.",
+  "corrected_record_sha256": "aede34a956f7e1d5396c8868bf0d2557903346f1d9d5f006a5406145903f9609",
+  "public_files_written": true
+}

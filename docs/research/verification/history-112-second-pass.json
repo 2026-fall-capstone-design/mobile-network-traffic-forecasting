@@ -1,0 +1,246 @@
+{
+  "batch_id": "history-112",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T12:27:12.868490+00:00",
+  "claims_checked": 20,
+  "checks": [
+    {
+      "check_id": "H112-SP01",
+      "claims": [
+        1,
+        19,
+        20
+      ],
+      "finding": "원85 계획27·판단62·보고33행과 당시scope33/source_manifest50행을 초안 뒤 재독. 새 추천/새 모델0은 당시 기록의 의미, 현재 수집4본문미독/누적2미독/전체Goal미완료와 구분."
+    },
+    {
+      "check_id": "H112-SP02",
+      "claims": [
+        2,
+        3
+      ],
+      "finding": "원35·47·62·74·80의 긍정/부정과 조건을 실제 재독. K4 seven 평균손해를 UPC 전체로 확대하지 않음. 원80 result의 cell_ids와 teacher_query_metrics를 추가 재독하여 cell6153 직접MSE 반례를 확인; 소속 예외로 쓰지 않음."
+    },
+    {
+      "check_id": "H112-SP03",
+      "claims": [
+        4,
+        5
+      ],
+      "finding": "원85 19–23행/보고11–15행/원35·40 재독. 처리횟수N·모델수K·Tab score·walltime구분. H024의 68G→289G 기존 pinned 코드 정정은 별개로 유지하며 정정 본문 구간도 재독."
+    },
+    {
+      "check_id": "H112-SP04",
+      "claims": [
+        6,
+        7
+      ],
+      "finding": "Bickel PDF3–5와 ICML2018 PDF3–4 텍스트·전페이지 이미지를 초안 뒤 다시 읽음. ratio와 posterior 기호구분, source분류/가중최종학습, inverse-prob SGD·B/b 후보forward비용. H045의 식24–26 미완대조 구간 재확인. 논문전체 이론·실행 재현으로 승격하지 않음."
+    },
+    {
+      "check_id": "H112-SP05",
+      "claims": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "finding": "원85 35–47행과 원40 identity·Bickel3쪽 대조. E[H|Z]=U, totalvariance, S의 support/0항·조건부분산, p=r joint동일, 조건부독립 반복평균을 실제 기호 전개와 대조. 반복식의 p=r 조건과 일반p의 S분산, 적분 가능한 제2모멘트 조건 명시. 실험/학습보장 아님."
+    },
+    {
+      "check_id": "H112-SP06",
+      "claims": [
+        14,
+        15,
+        16
+      ],
+      "finding": "원85 47–54행, RCTL Block15–30행, 원40 조건부ratio·원76 실제Y+teacher보조loss 및 globalteacher비교를 재독. 시간/cell·estimatedr·quota·BN과고정손실 가정구분; 원Python실행/import없음."
+    },
+    {
+      "check_id": "H112-SP07",
+      "claims": [
+        17,
+        18
+      ],
+      "finding": "collector42/verifier97행과 snapshotmanifest80/archive8행 재독. scope쓰기·progress변경·14파일복사 코드는 실행하지 않음. 보존14파일188028bytes와16별칭/보호6해시, 역사budgetf3e/현재17a판본 구분. 원 verified/old_snapshots_modified 상수는 실제 과거 전역검증을 대신하지 않음."
+    }
+  ],
+  "initial_draft_record_sha256": "1c349b744800d1f94cd14a09451357ad43210d60c8f00ec384f1507cde9df5fc",
+  "corrected_record_sha256": "db0dbf30ac1e7144689b00e81b3b0e2f6ee189265e6d343874d702627983b68d",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0022057": [
+      [
+        1,
+        27
+      ]
+    ],
+    "SRC-0022056": [
+      [
+        1,
+        62
+      ]
+    ],
+    "SRC-0022058": [
+      [
+        1,
+        33
+      ]
+    ],
+    "SRC-0000142": [
+      [
+        1,
+        33
+      ]
+    ],
+    "SRC-0022649": [
+      [
+        1,
+        42
+      ]
+    ],
+    "SRC-0023234": [
+      [
+        1,
+        97
+      ]
+    ],
+    "SRC-0022055": [
+      [
+        1,
+        8
+      ]
+    ],
+    "SRC-0001516": [
+      [
+        1,
+        80
+      ]
+    ],
+    "SRC-0063916": [
+      [
+        1,
+        50
+      ]
+    ],
+    "SRC-0021407": [
+      [
+        1,
+        83
+      ]
+    ],
+    "SRC-0021471": [
+      [
+        1,
+        9
+      ],
+      [
+        53,
+        60
+      ]
+    ],
+    "SRC-0021511": [
+      [
+        1,
+        80
+      ]
+    ],
+    "SRC-0021660": [
+      [
+        1,
+        34
+      ],
+      [
+        84,
+        94
+      ]
+    ],
+    "SRC-0021984": [
+      [
+        1,
+        7
+      ],
+      [
+        35,
+        56
+      ],
+      [
+        64,
+        69
+      ]
+    ],
+    "SRC-0022026": [
+      [
+        1,
+        59
+      ]
+    ],
+    "SRC-0022031": [
+      [
+        1,
+        17
+      ],
+      [
+        104,
+        114
+      ]
+    ],
+    "SRC-0022039": [
+      [
+        1,
+        44
+      ]
+    ],
+    "SRC-0023048": [
+      [
+        1,
+        50
+      ]
+    ]
+  },
+  "postdraft_core_lines": 432,
+  "postdraft_reused_lines": 441,
+  "postdraft_selected_json": {
+    "SRC-0025157": [
+      "/cell_ids",
+      "/teacher_query_metrics"
+    ]
+  },
+  "postdraft_PDF_text_pages": {
+    "SRC-0063933": [
+      3,
+      4,
+      5
+    ],
+    "SRC-0064458": [
+      3,
+      4
+    ]
+  },
+  "postdraft_PDF_full_page_images": {
+    "SRC-0063933": [
+      3,
+      4,
+      5
+    ],
+    "SRC-0064458": [
+      3,
+      4
+    ]
+  },
+  "all_claim_semantic_locations_actually_reread": true,
+  "unresolved_output_truncation": false,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "coverage_increment_applied": false,
+  "corrections": [
+    "원80 cell6153 반례의 result JSON 선택 필드 근거 보강",
+    "원문47행의 반복식에 p=r·조건부독립,일반p의 S분산을 명시",
+    "S의 support 조건과 적분 가능한 제2모멘트를 구분",
+    "파생수식의 이중 역슬래시 서식 수정"
+  ],
+  "limitations": "snapshot27의고유누적연혁·결정색인,발견JSON2/공식HTML2와후속원86이후. Bickel나머지페이지/외부코드·모든실패비용/장기팀접근/최종원본변경·검색검수는별도."
+}

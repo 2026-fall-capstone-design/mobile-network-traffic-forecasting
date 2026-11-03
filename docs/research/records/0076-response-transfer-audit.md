@@ -1,5 +1,7 @@
 # 76: 입력 반응·상호작용 증류의 근거와 구현 경계
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [당시 판단](0076-0079-learning-decisions.md#c04) · [출처와 범위](../sources/history-075.md) · [문헌 비교](../references/0076-response-transfer.md) · [수치와 재사용 자료](../evidence/0076-response-transfer/README.md) · [주장 검수](../verification/history-075.md)
 
 76번은 TabICLv2가 파악한 관계를 최종 RCTL의 학습에 전달하려던 검토다. 당시에는 기존 증류와 다른 공유 결정, 신뢰할 수 있는 교사 반응, 같은 정보를 받는 global 모델 대비 필요성을 확보하지 못해 현재 형태를 채택하지 않았다. 이번 기록은 그 판단에 쓰인 논문과 저장 구현을 대조하고, 유리한 결과와 예외를 함께 찾을 수 있도록 보완한다.

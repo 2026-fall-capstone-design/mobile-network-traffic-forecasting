@@ -1,0 +1,31 @@
+{
+  "source_hashes": {
+    "results\\pooled_context_101\\inputs.npz": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+    "results\\calendar_alignment_110\\profiles.npz": "1fbac28a60aa934b671202211a0200033c11b4b5925c13ed200a2dfbefd7ef6e",
+    "results\\calendar_alignment_110\\result.json": "e66d6d753e7292d70960c576e7549b36dd4b7043bea6c41a8748e799ec5d6638",
+    "cumulative_execution_budget.json": "4a2f5162a209e9d002945e979f914e846044613fa4a062635aff5ac643c39b53",
+    "111_calendar_query_preflight_plan.md": "3dfbc0577c7aeb8bfb0d574df6c7c2cc1687764f4d1a8f143d105544f03ff7aa",
+    "calendar_query_preflight_111.py": "d42a53668a897c315bae1b9be77825d0f2b73cc704ef8083372c2029d2ba5eb6"
+  },
+  "context_target_times": [
+    168,
+    671
+  ],
+  "query_target_times": [
+    672,
+    839
+  ],
+  "donors_per_target": 2,
+  "query_positions": "floor(linspace(0,167,64))",
+  "shift_candidates": "zero plus the two lowest training-profile MSE nonzero shifts",
+  "support": "fifth-neighbor RMS standardized distance <= donor leave-8h-out 95th percentile",
+  "paired_comparison": "intersection over all three shifts",
+  "minimum_queries_per_half": 16,
+  "minimum_pairs": 8,
+  "minimum_target_cells": 8,
+  "wall_cap_seconds": 30,
+  "rss_cap_bytes": 1073741824,
+  "query_targets_read": false,
+  "model_fit_calls": 0,
+  "model_predict_calls": 0
+}

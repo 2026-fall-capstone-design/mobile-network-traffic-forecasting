@@ -1,0 +1,72 @@
+{
+  "date": "2026-09-26",
+  "purpose": "updated interim evidence memo, not a final recommendation",
+  "new_model_calls": 0,
+  "new_traffic_numerical_experiments": 0,
+  "source_hashes": [
+    {
+      "path": "results/pooled_context_101/summary.json",
+      "sha256": "63c58b236b397d92d0589fcf5ff8d302fb5b2f96703cf41590259054730729aa"
+    },
+    {
+      "path": "results/pooled_context_101/run_finished.json",
+      "sha256": "345599e32e5cd051d9934d5c9582abb9e342d2e7e827daf0cbda84fa91894b42"
+    },
+    {
+      "path": "results/rctl_pilot/summary.json",
+      "sha256": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab"
+    },
+    {
+      "path": "results/serving_cost_95/summary.json",
+      "sha256": "266188ceffeb0fea5ec89086140e55865e3a8ffb5c9fd4ec5cb29114b75eeb39"
+    },
+    {
+      "path": "cumulative_execution_budget.json",
+      "sha256": "60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a"
+    },
+    {
+      "path": "101_pooled_context_findings.md",
+      "sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619"
+    },
+    {
+      "path": "102_architecture_proxy_findings.md",
+      "sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237"
+    },
+    {
+      "path": "candidate_decision_index.md",
+      "sha256": "f69d3a339ab73500fdebda7707431aad7b3e09b32e0774258d1f80db6e56b357"
+    }
+  ],
+  "ledger_unchanged_sha256": "60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a",
+  "reported_metrics_from_saved_JSON": {
+    "TabICL_global": 0.06618314981460571,
+    "TabICL_tabicl_risk": 0.07324502617120743,
+    "TabICL_empirical_risk": 0.07540667802095413,
+    "Ridge_global": 0.07922793924808502,
+    "Ridge_tabicl_risk": 0.08678670227527618,
+    "Ridge_empirical_risk": 0.08244127780199051,
+    "HGB_global": 0.07157078385353088,
+    "HGB_tabicl_risk": 0.09170041978359222,
+    "HGB_empirical_risk": 0.08459679037332535,
+    "RCTL_global_20260925": 0.07287360727787018,
+    "RCTL_tabicl_risk_20260925": 0.08600222319364548,
+    "RCTL_empirical_risk_20260925": 0.0798649787902832,
+    "RCTL_tabicl_risk_20260926": 0.08809588849544525,
+    "RCTL_empirical_risk_20260926": 0.0836716741323471
+  },
+  "RCTL_fits_completed": 29,
+  "remaining_count_budgets": {
+    "TabICL_contexts": 2,
+    "TabICL_query_rows": 4512,
+    "RCTL_fits": 0
+  },
+  "completion": {
+    "official_model_executed": true,
+    "positive_direct_prediction_local_evidence": true,
+    "useful_new_clustering_decision_established": false,
+    "new_clustering_RCTL_gain_established": false,
+    "novel_feasible_final_direction_selected": false,
+    "final_deliverables_complete": false
+  },
+  "goal_complete": false
+}

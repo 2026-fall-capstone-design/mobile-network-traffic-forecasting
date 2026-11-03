@@ -1,0 +1,173 @@
+{
+  "complete": true,
+  "stage": 106,
+  "source_hashes": {
+    "early": "75399770d55d018ee8cd65bfcd18f5552aa73cf971175ec81d16559b573f0f3d",
+    "later": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096",
+    "fits": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+    "plan": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+    "ledger": "60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a"
+  },
+  "seeds": [
+    {
+      "seed": 20260925,
+      "method_mae": {
+        "tabicl_risk": {
+          "train": 0.07840144138996645,
+          "validation": 0.08165614241512403,
+          "future": 0.08732813561315804
+        },
+        "empirical_risk": {
+          "train": 0.07508738273186498,
+          "validation": 0.07888312045750874,
+          "future": 0.08160039687839647
+        }
+      },
+      "mean_deltas": {
+        "train": 0.0033140586581014617,
+        "validation": 0.0027730219576153035,
+        "future": 0.005727738734761564
+      },
+      "worse_cell_counts": {
+        "train": 11,
+        "validation": 13,
+        "future": 10
+      },
+      "train_future_categories": {
+        "train_worse_future_worse": 8,
+        "train_worse_future_better": 3,
+        "train_better_future_better": 3,
+        "train_better_future_worse": 2
+      },
+      "worse_in_both10day_halves": 9,
+      "daily_deltas": [
+        0.004213183109338085,
+        -0.0012912766930336754,
+        -0.007531718855413298,
+        0.005285287314715485,
+        0.010700622418274483,
+        0.004924315066697697,
+        0.005657215214644869,
+        0.004070469566310446,
+        0.004556720610707998,
+        0.0013699766326074798,
+        0.007761224522255361,
+        0.009506986010819674,
+        0.018671034835278988,
+        0.018027411948423833,
+        -0.005839090910740197,
+        -0.0038285802584141493,
+        0.006805409289275606,
+        0.018069568905048072,
+        -0.0024150972021743655,
+        0.015841113170608878
+      ],
+      "worse_days": 15,
+      "mean_gap_difference": 0.0024136800766601015,
+      "same_model_count": 4,
+      "cells_per_model": 4,
+      "training_rows_per_model": 2688
+    },
+    {
+      "seed": 20260926,
+      "method_mae": {
+        "tabicl_risk": {
+          "train": 0.07534063564145028,
+          "validation": 0.0792967052298731,
+          "future": 0.0877600585333615
+        },
+        "empirical_risk": {
+          "train": 0.07607878931490372,
+          "validation": 0.0791348921844647,
+          "future": 0.08351629064127337
+        }
+      },
+      "mean_deltas": {
+        "train": -0.0007381536734534333,
+        "validation": 0.00016181304540839863,
+        "future": 0.004243767892088121
+      },
+      "worse_cell_counts": {
+        "train": 10,
+        "validation": 9,
+        "future": 9
+      },
+      "train_future_categories": {
+        "train_better_future_better": 2,
+        "train_worse_future_better": 5,
+        "train_worse_future_worse": 5,
+        "train_better_future_worse": 4
+      },
+      "worse_in_both10day_halves": 6,
+      "daily_deltas": [
+        0.0012046448343123,
+        -0.0015057614461208384,
+        -0.0022612677809471884,
+        0.003952217715171476,
+        0.004383426819307108,
+        0.002081029505158464,
+        0.0014773392661785085,
+        -0.002673578759034475,
+        -0.0038794014447679124,
+        0.00010517724634458621,
+        0.012610183873524269,
+        0.010455327729384104,
+        0.010289681958965957,
+        0.02570000725487868,
+        0.006513361741478245,
+        0.011610662836271027,
+        -0.0017898792090515296,
+        0.01791491456485043,
+        0.002562021817235897,
+        -0.013874750681376705
+      ],
+      "worse_days": 14,
+      "mean_gap_difference": 0.004981921565541555,
+      "same_model_count": 4,
+      "cells_per_model": 4,
+      "training_rows_per_model": 2688
+    }
+  ],
+  "cell_ids": [
+    3737,
+    3745,
+    3753,
+    3765,
+    4537,
+    4545,
+    4553,
+    4565,
+    5337,
+    5345,
+    5353,
+    5365,
+    6137,
+    6145,
+    6153,
+    6165
+  ],
+  "both_seeds_future_worse_cells": [
+    3765,
+    4545,
+    5353,
+    5365,
+    6145,
+    6153,
+    6165
+  ],
+  "both_seeds_both_halves_worse_cells": [
+    3765,
+    4545,
+    5353,
+    6153
+  ],
+  "both_seeds_worse_day_count": 11,
+  "max_original_MAE_reproduction_error": 1.013201350597015e-08,
+  "arithmetic_seconds": 0.02850919999764301,
+  "new_RCTL_fits": 0,
+  "new_model_inference_calls": 0,
+  "new_TabICL_contexts": 0,
+  "causal_identification": false,
+  "all_periods_are_development": true,
+  "inputs_unchanged": true
+}

@@ -1,0 +1,1169 @@
+{
+  "success": true,
+  "checked_at_utc": "2026-10-12T11:15:12.645647+00:00",
+  "stored_array_sources": [
+    {
+      "source_id": "SRC-0001976",
+      "sha256": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+      "keys": [
+        {
+          "key": "X",
+          "shape": [
+            16,
+            1008,
+            16
+          ],
+          "dtype": "float32",
+          "values": 258048,
+          "finite_values": 258048,
+          "nan_values": 0,
+          "array_bytes_sha256": "e320f0ec874ec5eca143993757ce874de37edf37568a0dd38641feab14f7ea03"
+        },
+        {
+          "key": "Y",
+          "shape": [
+            16,
+            1008
+          ],
+          "dtype": "float32",
+          "values": 16128,
+          "finite_values": 16128,
+          "nan_values": 0,
+          "array_bytes_sha256": "fb74361dc549b8cb07ac0ff92071d5167425bb133b6bde8c67ed91dcfeb8a399"
+        },
+        {
+          "key": "cell_ids",
+          "shape": [
+            16
+          ],
+          "dtype": "int64",
+          "values": 16,
+          "finite_values": 16,
+          "nan_values": 0,
+          "array_bytes_sha256": "faf4e931e62e1d79ff7f9a63b9dc358f0a1b942abc5ed9dd2f94bbb215eda817"
+        },
+        {
+          "key": "context_times",
+          "shape": [
+            672
+          ],
+          "dtype": "int64",
+          "values": 672,
+          "finite_values": 672,
+          "nan_values": 0,
+          "array_bytes_sha256": "eb285fb8da439c06111046565677b6918988d07a1363f90b231cf75e4c7fcb16"
+        },
+        {
+          "key": "query_times",
+          "shape": [
+            336
+          ],
+          "dtype": "int64",
+          "values": 336,
+          "finite_values": 336,
+          "nan_values": 0,
+          "array_bytes_sha256": "3d95ca30c15cfc781794c007b2a1256ef08f649b33f60387d043c372142d5d03"
+        },
+        {
+          "key": "scales",
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "values": 16,
+          "finite_values": 16,
+          "nan_values": 0,
+          "array_bytes_sha256": "59ed27c350d02226638cb8e57acab6433d0a1dc83adb40786c7add92a66cc0b5"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-0001978",
+      "sha256": "29a5cd88641f6280ee573948a97bb60b846918d94ffa7131ed477812f2243fc3",
+      "keys": [
+        {
+          "key": "actual",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "af4986d7dd7421f58365659f6f1ce4e11e396b45e8263dacfde856b66593353b"
+        },
+        {
+          "key": "cell_ids",
+          "shape": [
+            16
+          ],
+          "dtype": "int64",
+          "values": 16,
+          "finite_values": 16,
+          "nan_values": 0,
+          "array_bytes_sha256": "faf4e931e62e1d79ff7f9a63b9dc358f0a1b942abc5ed9dd2f94bbb215eda817"
+        },
+        {
+          "key": "context_times",
+          "shape": [
+            672
+          ],
+          "dtype": "int64",
+          "values": 672,
+          "finite_values": 672,
+          "nan_values": 0,
+          "array_bytes_sha256": "eb285fb8da439c06111046565677b6918988d07a1363f90b231cf75e4c7fcb16"
+        },
+        {
+          "key": "query_times",
+          "shape": [
+            336
+          ],
+          "dtype": "int64",
+          "values": 336,
+          "finite_values": 336,
+          "nan_values": 0,
+          "array_bytes_sha256": "3d95ca30c15cfc781794c007b2a1256ef08f649b33f60387d043c372142d5d03"
+        },
+        {
+          "key": "scales",
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "values": 16,
+          "finite_values": 16,
+          "nan_values": 0,
+          "array_bytes_sha256": "59ed27c350d02226638cb8e57acab6433d0a1dc83adb40786c7add92a66cc0b5"
+        },
+        {
+          "key": "TabICL_global",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "31f1aa4dc514a01c9c5f3d65b2531e801c1bd2926742c60dbf978736102cdfbd"
+        },
+        {
+          "key": "TabICL_tabicl_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "9827da383e118b70b53a3751496845b0a5ebfad61a652b388436f1c3460025d7"
+        },
+        {
+          "key": "TabICL_empirical_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "098b6948fc1fa601b3e71a8e8d3662a1c8376d2ffc05d5bf2bfe5185731d8cbf"
+        },
+        {
+          "key": "Ridge_global",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "b5504a728cf5f13f2f611497769ab8bee2c5b647b2abfa2c7d5fc5dc97383cf5"
+        },
+        {
+          "key": "Ridge_tabicl_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "64d31640c97cd7b8987f461398377cac67f337ae84f85c82f4f2d5ba5c360804"
+        },
+        {
+          "key": "Ridge_empirical_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "5aba4d9a56687ecc0b9a536f578f7a8b37ece135469f3a84c96d990e838c36bb"
+        },
+        {
+          "key": "HGB_global",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "da60e0fe98695f6020d99c74bb8bf1bbaa00d97ebfed379720e86d3f1820cc18"
+        },
+        {
+          "key": "HGB_tabicl_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "941be409a2fd84f47a134583ab48caecb502aa74f75bf674fe057285fa0fb142"
+        },
+        {
+          "key": "HGB_empirical_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "10b6ceb4e34f6f44a68da8a93a875c0a297542fea232e9e7507ce376e6b17161"
+        },
+        {
+          "key": "RCTL_global_20260925",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "fb3649a30c0360fdd128a72fef94df25c42fc0c06149aeff571ffe2be6ce8d53"
+        },
+        {
+          "key": "RCTL_tabicl_risk_20260925",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "1c2b4adc2f532abebc55ebe5cee95bf56d535d84f3c4ae1312a1ef226eaa77ab"
+        },
+        {
+          "key": "RCTL_empirical_risk_20260925",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "a473f77ab37ebce4e37b95df58b6dd1addec5301405fbaac08c296666a3b3c3d"
+        },
+        {
+          "key": "RCTL_tabicl_risk_20260926",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "a6ca7b3ea26ef145d341f38d34808835055111e7b07e5f8c28afe9a21b0817d4"
+        },
+        {
+          "key": "RCTL_empirical_risk_20260926",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "9136a67dfcb1b1556f46dc7018b14e61463433a5d6fb4f4a196f59167773c964"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC-0001979",
+      "sha256": "bd842d933b35cc70d02df863d7e636071050786d4c0c51b620b4df6ea1b21150",
+      "keys": [
+        {
+          "key": "actual",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "af4986d7dd7421f58365659f6f1ce4e11e396b45e8263dacfde856b66593353b"
+        },
+        {
+          "key": "cell_ids",
+          "shape": [
+            16
+          ],
+          "dtype": "int64",
+          "values": 16,
+          "finite_values": 16,
+          "nan_values": 0,
+          "array_bytes_sha256": "faf4e931e62e1d79ff7f9a63b9dc358f0a1b942abc5ed9dd2f94bbb215eda817"
+        },
+        {
+          "key": "context_times",
+          "shape": [
+            672
+          ],
+          "dtype": "int64",
+          "values": 672,
+          "finite_values": 672,
+          "nan_values": 0,
+          "array_bytes_sha256": "eb285fb8da439c06111046565677b6918988d07a1363f90b231cf75e4c7fcb16"
+        },
+        {
+          "key": "query_times",
+          "shape": [
+            336
+          ],
+          "dtype": "int64",
+          "values": 336,
+          "finite_values": 336,
+          "nan_values": 0,
+          "array_bytes_sha256": "3d95ca30c15cfc781794c007b2a1256ef08f649b33f60387d043c372142d5d03"
+        },
+        {
+          "key": "scales",
+          "shape": [
+            16
+          ],
+          "dtype": "float64",
+          "values": 16,
+          "finite_values": 16,
+          "nan_values": 0,
+          "array_bytes_sha256": "59ed27c350d02226638cb8e57acab6433d0a1dc83adb40786c7add92a66cc0b5"
+        },
+        {
+          "key": "TabICL_global",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "31f1aa4dc514a01c9c5f3d65b2531e801c1bd2926742c60dbf978736102cdfbd"
+        },
+        {
+          "key": "TabICL_tabicl_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "9827da383e118b70b53a3751496845b0a5ebfad61a652b388436f1c3460025d7"
+        },
+        {
+          "key": "TabICL_empirical_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 5376,
+          "nan_values": 0,
+          "array_bytes_sha256": "098b6948fc1fa601b3e71a8e8d3662a1c8376d2ffc05d5bf2bfe5185731d8cbf"
+        },
+        {
+          "key": "Ridge_global",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 0,
+          "nan_values": 5376,
+          "array_bytes_sha256": "fc7b72cba79225fe64bc9d141ef49d60798b34c4aeb47178df6aa327ddac840c"
+        },
+        {
+          "key": "Ridge_tabicl_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 0,
+          "nan_values": 5376,
+          "array_bytes_sha256": "fc7b72cba79225fe64bc9d141ef49d60798b34c4aeb47178df6aa327ddac840c"
+        },
+        {
+          "key": "Ridge_empirical_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 0,
+          "nan_values": 5376,
+          "array_bytes_sha256": "fc7b72cba79225fe64bc9d141ef49d60798b34c4aeb47178df6aa327ddac840c"
+        },
+        {
+          "key": "HGB_global",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 0,
+          "nan_values": 5376,
+          "array_bytes_sha256": "fc7b72cba79225fe64bc9d141ef49d60798b34c4aeb47178df6aa327ddac840c"
+        },
+        {
+          "key": "HGB_tabicl_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 0,
+          "nan_values": 5376,
+          "array_bytes_sha256": "fc7b72cba79225fe64bc9d141ef49d60798b34c4aeb47178df6aa327ddac840c"
+        },
+        {
+          "key": "HGB_empirical_risk",
+          "shape": [
+            16,
+            336
+          ],
+          "dtype": "float32",
+          "values": 5376,
+          "finite_values": 0,
+          "nan_values": 5376,
+          "array_bytes_sha256": "fc7b72cba79225fe64bc9d141ef49d60798b34c4aeb47178df6aa327ddac840c"
+        }
+      ]
+    }
+  ],
+  "previous_foundation_sources": {
+    "design": {
+      "source_id": "SRC-0023577",
+      "path": "tmp/redesign_20260925/results/design_data.npz",
+      "sha256": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+      "distribution": "previous_source_reused_no_new_credit"
+    },
+    "partition": {
+      "source_id": "SRC-0023588",
+      "path": "tmp/redesign_20260925/results/observed_risk_pilot.json",
+      "sha256": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+      "distribution": "previous_source_reused_no_new_credit"
+    },
+    "RCTL_saved_predictions": {
+      "source_id": "SRC-0030211",
+      "path": "tmp/redesign_20260925/results/rctl_pilot/all_predictions.npz",
+      "sha256": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096",
+      "distribution": "previous_source_reused_no_new_credit"
+    }
+  },
+  "metric_methods": 14,
+  "metric_numeric_values_checked": 462,
+  "difference_comparisons": 13,
+  "difference_numeric_values_checked": 455,
+  "max_absolute_saved_replay_difference": 0.0,
+  "metric_summary": [
+    {
+      "key": "TabICL_global",
+      "mean": 0.06618314981460571,
+      "first7": 0.06194663792848587,
+      "last7": 0.07041965425014496
+    },
+    {
+      "key": "TabICL_tabicl_risk",
+      "mean": 0.07324502617120743,
+      "first7": 0.061959344893693924,
+      "last7": 0.08453069627285004
+    },
+    {
+      "key": "TabICL_empirical_risk",
+      "mean": 0.07540667802095413,
+      "first7": 0.06179588660597801,
+      "last7": 0.08901745080947876
+    },
+    {
+      "key": "Ridge_global",
+      "mean": 0.07922793924808502,
+      "first7": 0.07640726119279861,
+      "last7": 0.08204861730337143
+    },
+    {
+      "key": "Ridge_tabicl_risk",
+      "mean": 0.08678670227527618,
+      "first7": 0.0753752812743187,
+      "last7": 0.09819811582565308
+    },
+    {
+      "key": "Ridge_empirical_risk",
+      "mean": 0.08244127780199051,
+      "first7": 0.07496695220470428,
+      "last7": 0.08991560339927673
+    },
+    {
+      "key": "HGB_global",
+      "mean": 0.07157078385353088,
+      "first7": 0.06795032322406769,
+      "last7": 0.07519124448299408
+    },
+    {
+      "key": "HGB_tabicl_risk",
+      "mean": 0.09170041978359222,
+      "first7": 0.07071808725595474,
+      "last7": 0.1126827523112297
+    },
+    {
+      "key": "HGB_empirical_risk",
+      "mean": 0.08459679037332535,
+      "first7": 0.06775213778018951,
+      "last7": 0.10144146531820297
+    },
+    {
+      "key": "RCTL_global_20260925",
+      "mean": 0.07287360727787018,
+      "first7": 0.0672767162322998,
+      "last7": 0.07847050577402115
+    },
+    {
+      "key": "RCTL_tabicl_risk_20260925",
+      "mean": 0.08600222319364548,
+      "first7": 0.07240069657564163,
+      "last7": 0.09960375726222992
+    },
+    {
+      "key": "RCTL_empirical_risk_20260925",
+      "mean": 0.0798649787902832,
+      "first7": 0.06926389038562775,
+      "last7": 0.09046606719493866
+    },
+    {
+      "key": "RCTL_tabicl_risk_20260926",
+      "mean": 0.08809588849544525,
+      "first7": 0.07301357388496399,
+      "last7": 0.10317820310592651
+    },
+    {
+      "key": "RCTL_empirical_risk_20260926",
+      "mean": 0.0836716741323471,
+      "first7": 0.07168048620223999,
+      "last7": 0.09566285461187363
+    }
+  ],
+  "difference_summary": [
+    {
+      "key": "TabICL:tabicl_risk_minus_empirical_risk",
+      "mean": -0.0021616462618112564,
+      "first7": 0.00016346099437214434,
+      "last7": -0.004486752673983574,
+      "cells_with_smaller_error_left": 6,
+      "days_with_smaller_error_left": 10,
+      "cell_differences": [
+        0.00020937781664542854,
+        2.7137853066960815e-06,
+        -0.008479970507323742,
+        0.007552000228315592,
+        -0.0002602900203783065,
+        0.0032989992760121822,
+        -0.043900467455387115,
+        -0.019047502428293228,
+        -0.00878461729735136,
+        0.0029689790681004524,
+        0.0036099571734666824,
+        0.00842707883566618,
+        0.011854962445795536,
+        0.004277682863175869,
+        -0.0004799171001650393,
+        0.004164677578955889
+      ],
+      "day_differences": [
+        0.0032506242860108614,
+        -0.0010150530142709613,
+        -0.0002894213830586523,
+        -0.0006279725930653512,
+        0.0008953558281064034,
+        -0.0008605541661381721,
+        -0.00020875137124676257,
+        0.0004344882909208536,
+        -0.0005207614158280194,
+        -0.0019727253820747137,
+        0.005097107496112585,
+        -0.004584464710205793,
+        -0.017801813781261444,
+        -0.012059103697538376
+      ]
+    },
+    {
+      "key": "TabICL:tabicl_risk_minus_global",
+      "mean": 0.0070618814788758755,
+      "first7": 1.271535802516155e-05,
+      "last7": 0.014111049473285675,
+      "cells_with_smaller_error_left": 1,
+      "days_with_smaller_error_left": 5,
+      "cell_differences": [
+        0.003978895954787731,
+        0.001157459570094943,
+        0.00043626874685287476,
+        0.009521613828837872,
+        0.0003928787773475051,
+        0.0036605428904294968,
+        0.0010495403548702598,
+        -0.0003912428510375321,
+        0.01216528657823801,
+        0.00616688746958971,
+        0.0069312890991568565,
+        0.007703388575464487,
+        0.02340574562549591,
+        0.01102842204272747,
+        0.0017462546238675714,
+        0.02403688058257103
+      ],
+      "day_differences": [
+        0.001317534944973886,
+        -0.0015464229509234428,
+        0.0005163864698261023,
+        -5.307692845235579e-05,
+        0.0014285013312473893,
+        -0.0007609261083416641,
+        -0.0008129893685691059,
+        -0.0028273239731788635,
+        0.0032922595273703337,
+        0.004263146314769983,
+        0.01074029877781868,
+        0.023387370631098747,
+        0.024438003078103065,
+        0.03548358753323555
+      ]
+    },
+    {
+      "key": "TabICL:empirical_risk_minus_global",
+      "mean": 0.009223529137670994,
+      "first7": -0.0001507456909166649,
+      "last7": 0.01859780214726925,
+      "cells_with_smaller_error_left": 1,
+      "days_with_smaller_error_left": 4,
+      "cell_differences": [
+        0.003769518109038472,
+        0.0011547458125278354,
+        0.008916239254176617,
+        0.0019696136005222797,
+        0.0006531688268296421,
+        0.0003615440218709409,
+        0.04495001211762428,
+        0.018656259402632713,
+        0.02094990387558937,
+        0.003197908401489258,
+        0.003321332624182105,
+        -0.0007236896199174225,
+        0.0115507822483778,
+        0.006750738248229027,
+        0.002226171549409628,
+        0.019872205331921577
+      ],
+      "day_differences": [
+        -0.00193308899179101,
+        -0.0005313699948601425,
+        0.0008058078237809241,
+        0.0005748956464231014,
+        0.0005331455613486469,
+        9.962799958884716e-05,
+        -0.0006042379536665976,
+        -0.003261812264099717,
+        0.003813020884990692,
+        0.006235871464014053,
+        0.00564319035038352,
+        0.02797183394432068,
+        0.04223981872200966,
+        0.04754268750548363
+      ]
+    },
+    {
+      "key": "Ridge:tabicl_risk_minus_empirical_risk",
+      "mean": 0.004345419816672802,
+      "first7": 0.0004083270614501089,
+      "last7": 0.008282512426376343,
+      "cells_with_smaller_error_left": 5,
+      "days_with_smaller_error_left": 2,
+      "cell_differences": [
+        0.0005351298023015261,
+        0.0003170811978634447,
+        -0.006297257728874683,
+        0.02087095007300377,
+        -0.004055853467434645,
+        0.00393686955794692,
+        -0.012904833070933819,
+        -0.0038712783716619015,
+        0.0034435209818184376,
+        0.006927012465894222,
+        0.02004629746079445,
+        0.027508985251188278,
+        -0.00034369732020422816,
+        0.009373536333441734,
+        0.000683129474055022,
+        0.003357123816385865
+      ],
+      "day_differences": [
+        0.0018031346844509244,
+        0.00039349356666207314,
+        -0.0028649542946368456,
+        -0.0005015716888010502,
+        0.00012100712774554268,
+        0.002180212875828147,
+        0.0017269677482545376,
+        0.00032939124503172934,
+        0.0025120775680989027,
+        0.002013190882280469,
+        0.0024633740540593863,
+        0.014057734049856663,
+        0.013795132748782635,
+        0.022806687280535698
+      ]
+    },
+    {
+      "key": "Ridge:tabicl_risk_minus_global",
+      "mean": 0.007558760698884726,
+      "first7": -0.0010319782886654139,
+      "last7": 0.016149500384926796,
+      "cells_with_smaller_error_left": 3,
+      "days_with_smaller_error_left": 6,
+      "cell_differences": [
+        0.0016164149856194854,
+        0.0012217485345900059,
+        2.5933253709808923e-05,
+        0.01929701305925846,
+        -0.0028814238030463457,
+        0.0027822782285511494,
+        -0.009869703091681004,
+        -0.0013459752080962062,
+        0.004681267775595188,
+        0.017519300803542137,
+        0.017297085374593735,
+        0.022428376600146294,
+        0.009913231246173382,
+        0.02458367496728897,
+        0.00219099223613739,
+        0.011479969136416912
+      ],
+      "day_differences": [
+        -0.001820861711166799,
+        -0.002231844002380967,
+        -0.0019043415086343884,
+        -0.00432854238897562,
+        -0.0012732319300994277,
+        0.0017432431923225522,
+        0.0025917310267686844,
+        -0.0014187678461894393,
+        0.002492740284651518,
+        0.007204772904515266,
+        0.004867382813245058,
+        0.024795643985271454,
+        0.03339964523911476,
+        0.04170508682727814
+      ]
+    },
+    {
+      "key": "Ridge:empirical_risk_minus_global",
+      "mean": 0.003213341813534498,
+      "first7": -0.001440305495634675,
+      "last7": 0.007866987027227879,
+      "cells_with_smaller_error_left": 4,
+      "days_with_smaller_error_left": 7,
+      "cell_differences": [
+        0.0010812851833179593,
+        0.000904667132999748,
+        0.006323190871626139,
+        -0.0015739388763904572,
+        0.0011744294315576553,
+        -0.0011545916786417365,
+        0.003035129513591528,
+        0.0025253030471503735,
+        0.0012377470266073942,
+        0.01059228926897049,
+        -0.0027492125518620014,
+        -0.005080610513687134,
+        0.010256926529109478,
+        0.015210140496492386,
+        0.0015078624710440636,
+        0.008122844621539116
+      ],
+      "day_differences": [
+        -0.00362399616278708,
+        -0.0026253375690430403,
+        0.0009606124949641526,
+        -0.0038269704673439264,
+        -0.0013942389050498605,
+        -0.00043696994544006884,
+        0.0008647632785141468,
+        -0.00174815917853266,
+        -1.9337438061484136e-05,
+        0.005191581789404154,
+        0.0024040089920163155,
+        0.010737910866737366,
+        0.0196045134216547,
+        0.01889839768409729
+      ]
+    },
+    {
+      "key": "HGB:tabicl_risk_minus_empirical_risk",
+      "mean": 0.007103625684976578,
+      "first7": 0.0029659545980393887,
+      "last7": 0.011241297237575054,
+      "cells_with_smaller_error_left": 6,
+      "days_with_smaller_error_left": 2,
+      "cell_differences": [
+        0.0020575150847434998,
+        -0.0012951521202921867,
+        -0.018388928845524788,
+        0.04805811867117882,
+        0.001792454277165234,
+        0.003583854530006647,
+        -0.03917556256055832,
+        -0.01721431501209736,
+        0.006442179437726736,
+        0.008179621770977974,
+        0.04822852462530136,
+        0.03983025997877121,
+        0.010276861488819122,
+        -0.005840633064508438,
+        -0.0013312820810824633,
+        0.028454497456550598
+      ],
+      "day_differences": [
+        0.0031295858789235353,
+        0.004213381092995405,
+        0.0017357124015688896,
+        0.0039872233755886555,
+        -0.0011289239628240466,
+        0.005305176135152578,
+        0.003519528778269887,
+        0.00047495440230704844,
+        0.001074284897185862,
+        -0.003100854577496648,
+        0.003935280721634626,
+        0.007839731872081757,
+        0.026645535603165627,
+        0.04182014241814613
+      ]
+    },
+    {
+      "key": "HGB:tabicl_risk_minus_global",
+      "mean": 0.02012963779270649,
+      "first7": 0.0027677651960402727,
+      "last7": 0.037491507828235626,
+      "cells_with_smaller_error_left": 5,
+      "days_with_smaller_error_left": 2,
+      "cell_differences": [
+        0.0024560270830988884,
+        -4.84238080389332e-05,
+        -0.002987426705658436,
+        0.04377470910549164,
+        -0.0009880549041554332,
+        0.008834976702928543,
+        -0.0036810669116675854,
+        -0.00363651174120605,
+        0.013715656474232674,
+        0.019900761544704437,
+        0.04360859841108322,
+        0.033259376883506775,
+        0.06200576573610306,
+        0.04372940957546234,
+        0.005557407159358263,
+        0.05657300353050232
+      ],
+      "day_differences": [
+        0.0018442865693941712,
+        0.0013823448680341244,
+        0.0012897101696580648,
+        0.003799531375989318,
+        -0.0007570356247015297,
+        0.005439192056655884,
+        0.006376327481120825,
+        -0.0031635065097361803,
+        0.0031814563553780317,
+        0.0073538352735340595,
+        0.013781771063804626,
+        0.04250235855579376,
+        0.08427832275629044,
+        0.11450633406639099
+      ]
+    },
+    {
+      "key": "HGB:empirical_risk_minus_global",
+      "mean": 0.013026013039052486,
+      "first7": -0.00019818938744720072,
+      "last7": 0.026250215247273445,
+      "cells_with_smaller_error_left": 4,
+      "days_with_smaller_error_left": 5,
+      "cell_differences": [
+        0.00039851205656304955,
+        0.0012467283522710204,
+        0.015401501208543777,
+        -0.00428340770304203,
+        -0.0027805091813206673,
+        0.005251122172921896,
+        0.035494495183229446,
+        0.01357780210673809,
+        0.007273477967828512,
+        0.011721137911081314,
+        -0.004619927145540714,
+        -0.006570881232619286,
+        0.05172890052199364,
+        0.04957004263997078,
+        0.006888689007610083,
+        0.02811851166188717
+      ],
+      "day_differences": [
+        -0.0012852993095293641,
+        -0.002831036224961281,
+        -0.00044600237742997706,
+        -0.00018769172311294824,
+        0.0003718881926033646,
+        0.00013401645992416888,
+        0.002856799168512225,
+        -0.00363846099935472,
+        0.002107171341776848,
+        0.010454691015183926,
+        0.009846489876508713,
+        0.034662626683712006,
+        0.05763278529047966,
+        0.07268619537353516
+      ]
+    },
+    {
+      "key": "RCTL25:tabicl_risk_minus_empirical_risk",
+      "mean": 0.006137246266007423,
+      "first7": 0.0031368040945380926,
+      "last7": 0.00913768820464611,
+      "cells_with_smaller_error_left": 5,
+      "days_with_smaller_error_left": 2,
+      "cell_differences": [
+        0.0016319588758051395,
+        0.010452409274876118,
+        -0.006152193993330002,
+        0.02745581790804863,
+        -0.0038384313229471445,
+        0.015087896957993507,
+        -0.017545295879244804,
+        -0.006422447506338358,
+        0.01460527628660202,
+        -0.0026626833714544773,
+        0.010656100697815418,
+        0.026509186252951622,
+        0.003713077399879694,
+        0.006362720392644405,
+        0.015744779258966446,
+        0.002597767161205411
+      ],
+      "day_differences": [
+        0.004213182721287012,
+        -0.00129127677064389,
+        -0.0075317188166081905,
+        0.0052852872759103775,
+        0.010700623504817486,
+        0.004924315493553877,
+        0.005657215137034655,
+        0.00407046964392066,
+        0.004556720610707998,
+        0.0013699772534891963,
+        0.007761223707348108,
+        0.00950698647648096,
+        0.018671035766601562,
+        0.01802741177380085
+      ]
+    },
+    {
+      "key": "RCTL25:tabicl_risk_minus_global",
+      "mean": 0.013128613121807575,
+      "first7": 0.0051239728927612305,
+      "last7": 0.02113325335085392,
+      "cells_with_smaller_error_left": 3,
+      "days_with_smaller_error_left": 1,
+      "cell_differences": [
+        0.004565589129924774,
+        0.01030086912214756,
+        -0.0029263519681990147,
+        0.02249973639845848,
+        0.007885622791945934,
+        0.011414600536227226,
+        -0.006303397472947836,
+        -0.002762740943580866,
+        0.021706778556108475,
+        0.006012674421072006,
+        0.010150643065571785,
+        0.025047138333320618,
+        0.036784879863262177,
+        0.02929622493684292,
+        0.018135959282517433,
+        0.018249599263072014
+      ],
+      "day_differences": [
+        0.00846093986183405,
+        0.002926680026575923,
+        0.0009551614639349282,
+        0.0010603074915707111,
+        0.0064339227974414825,
+        0.0040918863378465176,
+        0.011938914656639099,
+        0.00858550425618887,
+        0.01637682318687439,
+        -2.737979775702115e-05,
+        0.01266674604266882,
+        0.014416299760341644,
+        0.04319658502936363,
+        0.05271820351481438
+      ]
+    },
+    {
+      "key": "RCTL25:empirical_risk_minus_global",
+      "mean": 0.006991367321461439,
+      "first7": 0.001987169263884425,
+      "last7": 0.01199556514620781,
+      "cells_with_smaller_error_left": 5,
+      "days_with_smaller_error_left": 4,
+      "cell_differences": [
+        0.002933631418272853,
+        -0.0001515420590294525,
+        0.003225840162485838,
+        -0.004956080578267574,
+        0.011724059469997883,
+        -0.003673295257613063,
+        0.011241893284022808,
+        0.0036597049329429865,
+        0.007101496681571007,
+        0.008675356395542622,
+        -0.000505457166582346,
+        -0.0014620405854657292,
+        0.033071793615818024,
+        0.02293349802494049,
+        0.002391166752204299,
+        0.01565183326601982
+      ],
+      "day_differences": [
+        0.004247757140547037,
+        0.004217956215143204,
+        0.008486880920827389,
+        -0.004224979784339666,
+        -0.004266699776053429,
+        -0.0008324294467456639,
+        0.00628169858828187,
+        0.004515034146606922,
+        0.011820103041827679,
+        -0.001397356973029673,
+        0.0049055214039981365,
+        0.00490931561216712,
+        0.02452555112540722,
+        0.03469078987836838
+      ]
+    },
+    {
+      "key": "RCTL26:tabicl_risk_minus_empirical_risk",
+      "mean": 0.0044242157600820065,
+      "first7": 0.001333089778199792,
+      "last7": 0.007515341974794865,
+      "cells_with_smaller_error_left": 6,
+      "days_with_smaller_error_left": 4,
+      "cell_differences": [
+        -0.007048907224088907,
+        -0.0028545819222927094,
+        0.0022295708768069744,
+        0.022689834237098694,
+        -0.008787401020526886,
+        0.0041538989171385765,
+        -0.014875124208629131,
+        -0.007776356767863035,
+        -0.001138649764470756,
+        0.014431441202759743,
+        0.028100356459617615,
+        0.013648027554154396,
+        0.0011696858564391732,
+        0.0016843073535710573,
+        0.004113460890948772,
+        0.02104787901043892
+      ],
+      "day_differences": [
+        0.0012046449119225144,
+        -0.001505761407315731,
+        -0.0022612677421420813,
+        0.0039522177539765835,
+        0.004383426625281572,
+        0.002081029349938035,
+        0.0014773393049836159,
+        -0.00267357868142426,
+        -0.0038794015999883413,
+        0.00010517658665776253,
+        0.012610184960067272,
+        0.010455328039824963,
+        0.010289681144058704,
+        0.025700004771351814
+      ]
+    }
+  ],
+  "global_relative_reductions": {
+    "HGB_global_MAE_reduction_percent": 7.5277001994989,
+    "Ridge_global_MAE_reduction_percent": 16.464885439759318
+  },
+  "partial_snapshot_stage": "After 9 Tab contexts, before all 18 simple fits. 3 Tab arrays complete; 6 simple arrays NaN placeholders. Partial filename is not evidence of a failed or additional run.",
+  "calls_completed": 9,
+  "total_context_rows": 32256,
+  "total_query_rows": 16128,
+  "inner_predict_stats_calls": 9,
+  "simple_fits": 18,
+  "stage_wall_seconds": 140.48528870000155,
+  "tab_fit_predict_seconds": 138.25820430001477,
+  "simple_fit_predict_seconds": 1.0048376000631833,
+  "cheap_seconds_include_simple_fit_predict": 2.2270843999867793,
+  "sampled_rss_bytes": 2602754048,
+  "initial_import_and_source_hash_excluded": true,
+  "budget_before_sha256": "807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f",
+  "budget_after_sha256": "60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a",
+  "current_root_budget_sha256": "17a549fcf926e534eaecd4efd278fe4e13f7c7a13e74805c21059a2d6fc59243",
+  "budgets_reset": false,
+  "originals_modified": false,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "models_instantiated": false,
+  "new_model_runs": 0,
+  "traffic_statistics_recomputed": false,
+  "independent_experiment_reproduction": false,
+  "coverage_increment_applied": false,
+  "scope": "All 14 saved model/partition arrays, all 13 stored paired deltas and input/group/RCTL-slice bindings. Replayed float32 arithmetic; tolerance5e-8. Stored checkpoint performance or independent future test not reproduced. Only stored scale constants checked; raw traffic means/features not regenerated."
+}

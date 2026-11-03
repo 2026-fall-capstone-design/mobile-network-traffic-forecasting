@@ -1,5 +1,7 @@
 # 05 — 공식 TabICL과 초기 실행 설정의 연결
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 05는 TabICLv2의 고정 가중치를 cell별 context에 적용하되, **모델이 제공하는 기능과 실제 clustering 실험에서 사용한 기능을 구분**했다. 공식 시계열 pipeline의 존재, 회귀용 분위수 출력, context에 의존하는 표현은 확인할 수 있다. 이것만으로 clustering의 신규성이나 RCTL 성능 개선이 성립하지는 않는다.
 
 이 페이지는 05의 공식 코드·자산·초기 호출 부분을 정리한다. [가까운 다섯 방법](0005-closest-methods-audit.md), [네트워크·시계열 아홉 문헌](0005-network-timeseries-audit.md)에 이은 부분 기록이다. 관련 여섯 연구와 이후 대체 모델 비교의 통합은 남아 있으며 **05 전체 완료로 집계하지 않는다.** [보존 원문](../evidence/0005/originals/SRC-0020826.md.txt), [지정 근거와 검수](../verification/history-005.md).

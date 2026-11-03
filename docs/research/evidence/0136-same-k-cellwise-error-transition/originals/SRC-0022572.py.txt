@@ -1,0 +1,112 @@
+"""Arithmetic-only diagnosis of frozen same-K RCTL predictions; no model calls."""
+from pathlib import Path
+import csv
+import hashlib
+import json
+import time
+import numpy as np
+
+BASE = Path(__file__).resolve().parent
+OUT = BASE / 'results' / 'cellwise_transition_106'
+OUT.mkdir(exist_ok=True)
+if (OUT / 'result.json').exists():
+    raise RuntimeError('Already completed; read saved result instead of repeating.')
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+paths = {
+    'early': BASE/'results/frozen_fit_gap_34/predictions.npz',
+    'later': BASE/'results/rctl_pilot/all_predictions.npz',
+    'fits': BASE/'results/rctl_pilot/fit_results.json',
+    'plan': BASE/'106_cellwise_transition_plan.md',
+    'ledger': BASE/'cumulative_execution_budget.json',
+}
+hashes = {k: sha(v) for k, v in paths.items()}
+start = time.perf_counter()
+early, later = np.load(paths['early']), np.load(paths['later'])
+fits = json.loads(paths['fits'].read_text(encoding='utf-8'))
+ids = early['cell_ids']
+assert np.array_equal(ids, later['cell_ids']) and len(ids) == 16
+assert early['train_y'].shape == (16, 672)
+assert early['validation_y'].shape == (16, 168)
+assert later['y'].shape == (16, 480)
+seeds = [20260925, 20260926]
+methods = ['tabicl_risk', 'empirical_risk']
+rows, results = [], []
+daily_diffs, future_diffs, half_diffs = [], [], []
+max_reproduction_error = 0.0
+
+for seed in seeds:
+    errors = {}
+    for method in methods:
+        selected = [f for f in fits if f['method'] == method and f['seed'] == seed]
+        assert len(selected) == 4
+        assert sorted(i for f in selected for i in f['members']) == list(range(16))
+        assert all(len(f['members']) == 4 for f in selected)
+        train, val = np.empty((16, 672)), np.empty((16, 168))
+        for f in selected:
+            key = f"{method}_{seed}_cluster{f['cluster']}"
+            train[f['members']] = early[f'{key}_train_prediction']
+            val[f['members']] = early[f'{key}_validation_prediction']
+            observed = np.abs(later[f'{method}_{seed}'][f['members']].astype(float)
+                              - later['y'][f['members']].astype(float)).mean()
+            max_reproduction_error = max(max_reproduction_error,
+                                        abs(observed - f['test_mean_scaled_mae']))
+        errors[method] = {
+            'train': np.abs(train - early['train_y'].astype(float)),
+            'validation': np.abs(val - early['validation_y'].astype(float)),
+            'future': np.abs(later[f'{method}_{seed}'].astype(float)-later['y'].astype(float)),
+        }
+    diff = {s: errors[methods[0]][s].mean(1)-errors[methods[1]][s].mean(1)
+            for s in ['train', 'validation', 'future']}
+    half = np.stack([
+        errors[methods[0]]['future'][:, t:t+240].mean(1)
+        - errors[methods[1]]['future'][:, t:t+240].mean(1)
+        for t in [0, 240]], axis=1)
+    daily = (errors[methods[0]]['future']-errors[methods[1]]['future']).reshape(16,20,24).mean((0,2))
+    gap_difference = ((errors[methods[0]]['future'].mean(1)-errors[methods[0]]['train'].mean(1))
+                      -(errors[methods[1]]['future'].mean(1)-errors[methods[1]]['train'].mean(1)))
+    assert np.allclose(diff['future'], diff['train']+gap_difference, atol=1e-14)
+    def sign(x):
+        return 'tie' if abs(x) <= 1e-10 else ('worse' if x > 0 else 'better')
+    categories = {}
+    for j, cell in enumerate(ids):
+        category = f"train_{sign(diff['train'][j])}_future_{sign(diff['future'][j])}"
+        categories[category] = categories.get(category, 0)+1
+        rows.append(dict(seed=seed, cell_id=int(cell),
+                         **{f'{s}_mae_delta': float(diff[s][j]) for s in diff},
+                         first10day_delta=float(half[j,0]), last10day_delta=float(half[j,1]),
+                         gap_difference=float(gap_difference[j]), category=category))
+    results.append(dict(seed=seed,
+        method_mae={m:{s:float(a.mean()) for s,a in errors[m].items()} for m in methods},
+        mean_deltas={s:float(v.mean()) for s,v in diff.items()},
+        worse_cell_counts={s:int((v>1e-10).sum()) for s,v in diff.items()},
+        train_future_categories=categories,
+        worse_in_both10day_halves=int((half>1e-10).all(1).sum()),
+        daily_deltas=daily.tolist(), worse_days=int((daily>1e-10).sum()),
+        mean_gap_difference=float(gap_difference.mean()),
+        same_model_count=4, cells_per_model=4, training_rows_per_model=2688))
+    future_diffs.append(diff['future'])
+    half_diffs.append(half)
+    daily_diffs.append(daily)
+
+assert max_reproduction_error < 1e-6
+joint = np.stack(future_diffs)
+halves = np.stack(half_diffs)
+result = dict(complete=True, stage=106, source_hashes=hashes,
+    seeds=results, cell_ids=ids.tolist(),
+    both_seeds_future_worse_cells=ids[(joint>1e-10).all(0)].tolist(),
+    both_seeds_both_halves_worse_cells=ids[(halves>1e-10).all((0,2))].tolist(),
+    both_seeds_worse_day_count=int((np.stack(daily_diffs)>1e-10).all(0).sum()),
+    max_original_MAE_reproduction_error=max_reproduction_error,
+    arithmetic_seconds=time.perf_counter()-start,
+    new_RCTL_fits=0, new_model_inference_calls=0, new_TabICL_contexts=0,
+    causal_identification=False, all_periods_are_development=True,
+    inputs_unchanged=all(sha(v)==hashes[k] for k,v in paths.items()))
+assert result['inputs_unchanged']
+(OUT/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+with (OUT/'cellwise.csv').open('w',encoding='utf-8-sig',newline='') as f:
+    writer=csv.DictWriter(f,fieldnames=list(rows[0]))
+    writer.writeheader(); writer.writerows(rows)
+print(json.dumps(result,ensure_ascii=False))

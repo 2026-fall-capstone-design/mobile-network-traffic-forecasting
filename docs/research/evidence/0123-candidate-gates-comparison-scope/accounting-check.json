@@ -1,0 +1,614 @@
+{
+  "success": true,
+  "conditions": [
+    {
+      "method": "empirical_risk",
+      "seed": 20260925,
+      "models": 4,
+      "mean_scaled_mae": 0.08160039782524109,
+      "fit_seconds": 196.38986740000018,
+      "training_rows_per_model": [
+        2688,
+        2688,
+        2688,
+        2688
+      ],
+      "updates_per_epoch_per_model": [
+        11,
+        11,
+        11,
+        11
+      ],
+      "total_executed_updates": 2453,
+      "total_updates_to_selected": 2013
+    },
+    {
+      "method": "empirical_risk",
+      "seed": 20260926,
+      "models": 4,
+      "mean_scaled_mae": 0.08351629227399826,
+      "fit_seconds": 182.26738179999938,
+      "training_rows_per_model": [
+        2688,
+        2688,
+        2688,
+        2688
+      ],
+      "updates_per_epoch_per_model": [
+        11,
+        11,
+        11,
+        11
+      ],
+      "total_executed_updates": 2376,
+      "total_updates_to_selected": 1936
+    },
+    {
+      "method": "global",
+      "seed": 20260925,
+      "models": 1,
+      "mean_scaled_mae": 0.07106776535511017,
+      "fit_seconds": 269.5897295999994,
+      "training_rows_per_model": [
+        10752
+      ],
+      "updates_per_epoch_per_model": [
+        42
+      ],
+      "total_executed_updates": 1890,
+      "total_updates_to_selected": 1470
+    },
+    {
+      "method": "knn_risk",
+      "seed": 20260925,
+      "models": 4,
+      "mean_scaled_mae": 0.08407308161258698,
+      "fit_seconds": 202.04448429999957,
+      "training_rows_per_model": [
+        2688,
+        2688,
+        2688,
+        2688
+      ],
+      "updates_per_epoch_per_model": [
+        11,
+        11,
+        11,
+        11
+      ],
+      "total_executed_updates": 2255,
+      "total_updates_to_selected": 1815
+    },
+    {
+      "method": "pcc_balanced",
+      "seed": 20260925,
+      "models": 4,
+      "mean_scaled_mae": 0.08987709879875183,
+      "fit_seconds": 201.11064389999956,
+      "training_rows_per_model": [
+        2688,
+        2688,
+        2688,
+        2688
+      ],
+      "updates_per_epoch_per_model": [
+        11,
+        11,
+        11,
+        11
+      ],
+      "total_executed_updates": 2321,
+      "total_updates_to_selected": 1881
+    },
+    {
+      "method": "random_balanced",
+      "seed": 20260925,
+      "models": 4,
+      "mean_scaled_mae": 0.08559770882129669,
+      "fit_seconds": 199.01116459999957,
+      "training_rows_per_model": [
+        2688,
+        2688,
+        2688,
+        2688
+      ],
+      "updates_per_epoch_per_model": [
+        11,
+        11,
+        11,
+        11
+      ],
+      "total_executed_updates": 2299,
+      "total_updates_to_selected": 1859
+    },
+    {
+      "method": "tabicl_risk",
+      "seed": 20260925,
+      "models": 4,
+      "mean_scaled_mae": 0.08732812851667404,
+      "fit_seconds": 177.5529198000013,
+      "training_rows_per_model": [
+        2688,
+        2688,
+        2688,
+        2688
+      ],
+      "updates_per_epoch_per_model": [
+        11,
+        11,
+        11,
+        11
+      ],
+      "total_executed_updates": 2431,
+      "total_updates_to_selected": 1991
+    },
+    {
+      "method": "tabicl_risk",
+      "seed": 20260926,
+      "models": 4,
+      "mean_scaled_mae": 0.0877600610256195,
+      "fit_seconds": 224.21100869999918,
+      "training_rows_per_model": [
+        2688,
+        2688,
+        2688,
+        2688
+      ],
+      "updates_per_epoch_per_model": [
+        11,
+        11,
+        11,
+        11
+      ],
+      "total_executed_updates": 2585,
+      "total_updates_to_selected": 2145
+    }
+  ],
+  "fit_count": 29,
+  "epochs_total": 1565,
+  "total_executed_updates": 18610,
+  "total_updates_to_selected": 15110,
+  "history_selected_field_checks": [
+    {
+      "source_id": "SRC-0001751",
+      "method": "global",
+      "seed": 20260925,
+      "cluster": 0,
+      "history_count": 45,
+      "selected_pointer": "/34",
+      "selected_epoch": 35,
+      "selected_val_mae": 0.07537146657705307,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001766",
+      "method": "tabicl_risk",
+      "seed": 20260925,
+      "cluster": 0,
+      "history_count": 65,
+      "selected_pointer": "/54",
+      "selected_epoch": 55,
+      "selected_val_mae": 0.08220468461513519,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001767",
+      "method": "tabicl_risk",
+      "seed": 20260925,
+      "cluster": 1,
+      "history_count": 42,
+      "selected_pointer": "/31",
+      "selected_epoch": 32,
+      "selected_val_mae": 0.09185627102851868,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001768",
+      "method": "tabicl_risk",
+      "seed": 20260925,
+      "cluster": 2,
+      "history_count": 55,
+      "selected_pointer": "/44",
+      "selected_epoch": 45,
+      "selected_val_mae": 0.06858707964420319,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001769",
+      "method": "tabicl_risk",
+      "seed": 20260925,
+      "cluster": 3,
+      "history_count": 59,
+      "selected_pointer": "/48",
+      "selected_epoch": 49,
+      "selected_val_mae": 0.08397654443979263,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001741",
+      "method": "empirical_risk",
+      "seed": 20260925,
+      "cluster": 0,
+      "history_count": 69,
+      "selected_pointer": "/58",
+      "selected_epoch": 59,
+      "selected_val_mae": 0.07489806413650513,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001742",
+      "method": "empirical_risk",
+      "seed": 20260925,
+      "cluster": 1,
+      "history_count": 55,
+      "selected_pointer": "/44",
+      "selected_epoch": 45,
+      "selected_val_mae": 0.0767856314778328,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001743",
+      "method": "empirical_risk",
+      "seed": 20260925,
+      "cluster": 2,
+      "history_count": 48,
+      "selected_pointer": "/37",
+      "selected_epoch": 38,
+      "selected_val_mae": 0.08372412621974945,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001744",
+      "method": "empirical_risk",
+      "seed": 20260925,
+      "cluster": 3,
+      "history_count": 51,
+      "selected_pointer": "/40",
+      "selected_epoch": 41,
+      "selected_val_mae": 0.08012466132640839,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001752",
+      "method": "knn_risk",
+      "seed": 20260925,
+      "cluster": 0,
+      "history_count": 51,
+      "selected_pointer": "/40",
+      "selected_epoch": 41,
+      "selected_val_mae": 0.08145789057016373,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001753",
+      "method": "knn_risk",
+      "seed": 20260925,
+      "cluster": 1,
+      "history_count": 58,
+      "selected_pointer": "/47",
+      "selected_epoch": 48,
+      "selected_val_mae": 0.0775902196764946,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001754",
+      "method": "knn_risk",
+      "seed": 20260925,
+      "cluster": 2,
+      "history_count": 51,
+      "selected_pointer": "/40",
+      "selected_epoch": 41,
+      "selected_val_mae": 0.06613997370004654,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001755",
+      "method": "knn_risk",
+      "seed": 20260925,
+      "cluster": 3,
+      "history_count": 45,
+      "selected_pointer": "/34",
+      "selected_epoch": 35,
+      "selected_val_mae": 0.08895737677812576,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001756",
+      "method": "pcc_balanced",
+      "seed": 20260925,
+      "cluster": 0,
+      "history_count": 47,
+      "selected_pointer": "/36",
+      "selected_epoch": 37,
+      "selected_val_mae": 0.0688396617770195,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001757",
+      "method": "pcc_balanced",
+      "seed": 20260925,
+      "cluster": 1,
+      "history_count": 47,
+      "selected_pointer": "/36",
+      "selected_epoch": 37,
+      "selected_val_mae": 0.08548800647258759,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001758",
+      "method": "pcc_balanced",
+      "seed": 20260925,
+      "cluster": 2,
+      "history_count": 59,
+      "selected_pointer": "/48",
+      "selected_epoch": 49,
+      "selected_val_mae": 0.0809846818447113,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001759",
+      "method": "pcc_balanced",
+      "seed": 20260925,
+      "cluster": 3,
+      "history_count": 58,
+      "selected_pointer": "/47",
+      "selected_epoch": 48,
+      "selected_val_mae": 0.0774749144911766,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001760",
+      "method": "random_balanced",
+      "seed": 20260925,
+      "cluster": 0,
+      "history_count": 51,
+      "selected_pointer": "/40",
+      "selected_epoch": 41,
+      "selected_val_mae": 0.06954985857009888,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001761",
+      "method": "random_balanced",
+      "seed": 20260925,
+      "cluster": 1,
+      "history_count": 52,
+      "selected_pointer": "/41",
+      "selected_epoch": 42,
+      "selected_val_mae": 0.08185028284788132,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001762",
+      "method": "random_balanced",
+      "seed": 20260925,
+      "cluster": 2,
+      "history_count": 53,
+      "selected_pointer": "/42",
+      "selected_epoch": 43,
+      "selected_val_mae": 0.09015185385942459,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001763",
+      "method": "random_balanced",
+      "seed": 20260925,
+      "cluster": 3,
+      "history_count": 53,
+      "selected_pointer": "/42",
+      "selected_epoch": 43,
+      "selected_val_mae": 0.08129006624221802,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001770",
+      "method": "tabicl_risk",
+      "seed": 20260926,
+      "cluster": 0,
+      "history_count": 69,
+      "selected_pointer": "/58",
+      "selected_epoch": 59,
+      "selected_val_mae": 0.08222341537475586,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001771",
+      "method": "tabicl_risk",
+      "seed": 20260926,
+      "cluster": 1,
+      "history_count": 58,
+      "selected_pointer": "/47",
+      "selected_epoch": 48,
+      "selected_val_mae": 0.08726995438337326,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001772",
+      "method": "tabicl_risk",
+      "seed": 20260926,
+      "cluster": 2,
+      "history_count": 60,
+      "selected_pointer": "/49",
+      "selected_epoch": 50,
+      "selected_val_mae": 0.06455391645431519,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001773",
+      "method": "tabicl_risk",
+      "seed": 20260926,
+      "cluster": 3,
+      "history_count": 48,
+      "selected_pointer": "/37",
+      "selected_epoch": 38,
+      "selected_val_mae": 0.08313954621553421,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001745",
+      "method": "empirical_risk",
+      "seed": 20260926,
+      "cluster": 0,
+      "history_count": 48,
+      "selected_pointer": "/37",
+      "selected_epoch": 38,
+      "selected_val_mae": 0.07597767561674118,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001746",
+      "method": "empirical_risk",
+      "seed": 20260926,
+      "cluster": 1,
+      "history_count": 55,
+      "selected_pointer": "/44",
+      "selected_epoch": 45,
+      "selected_val_mae": 0.07897254079580307,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001747",
+      "method": "empirical_risk",
+      "seed": 20260926,
+      "cluster": 2,
+      "history_count": 43,
+      "selected_pointer": "/32",
+      "selected_epoch": 33,
+      "selected_val_mae": 0.08326198905706406,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    },
+    {
+      "source_id": "SRC-0001748",
+      "method": "empirical_risk",
+      "seed": 20260926,
+      "cluster": 3,
+      "history_count": 70,
+      "selected_pointer": "/59",
+      "selected_epoch": 60,
+      "selected_val_mae": 0.07832737267017365,
+      "recorded_best_matches": true,
+      "full_semantic_history_read": false,
+      "machine_sequence_and_minimum_check": true
+    }
+  ],
+  "evidence_hash_files": 37,
+  "manifest_listed_files": 46,
+  "manifest_listed_bytes": 578394,
+  "preserved_code_sha_matches_settings": true,
+  "paired_stored_MAE": [
+    {
+      "seed": 20260925,
+      "relative_worse_percent": 7.019243587144897,
+      "better_cell_positions": [
+        2,
+        4,
+        6,
+        7,
+        9,
+        12
+      ],
+      "worse_cell_positions": [
+        0,
+        1,
+        3,
+        5,
+        8,
+        10,
+        11,
+        13,
+        14,
+        15
+      ],
+      "source": "Stored per-cell fit metrics, no predictions/model recomputation",
+      "not_new_original93_statistic": true
+    },
+    {
+      "seed": 20260926,
+      "relative_worse_percent": 5.081366325145753,
+      "better_cell_positions": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        8,
+        12
+      ],
+      "worse_cell_positions": [
+        2,
+        3,
+        5,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15
+      ],
+      "source": "Stored per-cell fit metrics, no predictions/model recomputation",
+      "not_new_original93_statistic": true
+    }
+  ],
+  "source_code_executed": false,
+  "source_imported": false,
+  "new_model_runs": 0,
+  "new_performance_experiments": 0,
+  "whole_history_semantic_credit": 0,
+  "independent_reproduction": false
+}

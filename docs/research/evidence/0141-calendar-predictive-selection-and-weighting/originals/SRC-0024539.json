@@ -1,0 +1,38 @@
+{
+  "complete": true,
+  "calls_counts_and_sources_verified": true,
+  "RCTL_usage_unchanged": true,
+  "no_models_rerun": true,
+  "selection_reproduced_from_calibration_only": true,
+  "independent_flat_weight_MAE_max_difference": 2.7755575615628914e-17,
+  "period_coverage": {
+    "selection": {
+      "target_cells": 11,
+      "pairs": 14,
+      "paired_queries": 405
+    },
+    "heldout": {
+      "target_cells": 11,
+      "pairs": 14,
+      "paired_queries": 402
+    },
+    "heldout_first": {
+      "target_cells": 11,
+      "pairs": 14,
+      "paired_queries": 210
+    },
+    "heldout_last": {
+      "target_cells": 11,
+      "pairs": 14,
+      "paired_queries": 192
+    }
+  },
+  "primary_weighted_period_contributions": {
+    "heldout_first_under_primary_weights": -0.0004690514013414336,
+    "heldout_last_under_primary_weights": 0.0010176546547472154,
+    "total_under_primary_weights": 0.0005486032534057805
+  },
+  "note": "Different pair-level sample counts change period-normalized weights; subperiod means need not average to primary mean.",
+  "inner_Tab_stats_calls": 14,
+  "ledger_sha256": "7f6ca273e07e8617fb73dd3c885dc9b484233349fb0d9b3748bf932582a87d8e"
+}

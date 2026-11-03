@@ -1,0 +1,36 @@
+from pathlib import Path
+from datetime import datetime,timezone
+from concurrent.futures import ThreadPoolExecutor
+import hashlib,json,urllib.request,shutil
+from pypdf import PdfReader
+
+base=Path(__file__).resolve().parent/'sources/prequential_92';base.mkdir(parents=True,exist_ok=True)
+jobs=[
+ ('BHC_ICML2005','https://mlg.eng.cam.ac.uk/zoubin/papers/icml05heller.pdf'),
+ ('BHC_GaussianProcess_2011','https://wrap.warwick.ac.uk/id/eprint/40846/1/WRAP_Wild_1471-2105-12-399.pdf'),
+ ('PFN_BayesCodes_ICMLWorkshop2025','https://openreview.net/pdf/8d3d462a76a95409dbedd72b42fee2e1bd73eb45.pdf'),
+]
+def fetch(job):
+    stem,url=job;out=base/(stem+'.pdf');assert not out.exists()
+    r={'name':stem,'url':url,'accessed_utc':datetime.now(timezone.utc).isoformat()}
+    try:
+        with urllib.request.urlopen(url,timeout=40) as response:
+            data=response.read(12000001);r.update(status=response.status,final_url=response.url)
+        assert len(data)<=12000000
+        if not data.startswith(b'%PDF'):
+            failed=base/(stem+'_response.bin');failed.write_bytes(data)
+            raise ValueError('Response is not PDF; no challenge bypass or retry')
+        out.write_bytes(data);pdf=PdfReader(out)
+        r.update(bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),pages=len(pdf.pages),local_file=out.name)
+        (base/(stem+'.txt')).write_text('\n\n'.join(f'--- PDF page {i+1} ---\n{p.extract_text() or ""}' for i,p in enumerate(pdf.pages)),encoding='utf-8')
+    except Exception as e:r['error']=type(e).__name__+': '+str(e)
+    return r
+with ThreadPoolExecutor(max_workers=3) as pool:rows=list(pool.map(fetch,jobs))
+(base/'source_manifest.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
+runtime=Path(__file__).resolve().parent/'runtime/Lib/site-packages/tabicl'
+source_rows=[]
+for name in ('_model/quantile_dist.py','_sklearn/regressor.py'):
+    src=runtime/name;out=base/'installed_tabicl_2_2_0'/name;out.parent.mkdir(parents=True,exist_ok=True);assert not out.exists();shutil.copy2(src,out)
+    source_rows.append({'installed_path':str(src),'copy':str(out.relative_to(base)),'bytes':src.stat().st_size,'sha256':hashlib.sha256(src.read_bytes()).hexdigest()})
+(base/'installed_code_manifest.json').write_text(json.dumps({'files':source_rows,'read_only':True,'executed':False},ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(rows,ensure_ascii=True))

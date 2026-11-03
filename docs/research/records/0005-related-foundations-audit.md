@@ -1,5 +1,7 @@
 # 05 관련 여섯 연구 — context 선택·환경 진단·사전학습 clustering
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 2026-09-25의 [05 문헌 판단 원문](../evidence/0005/originals/SRC-0020826.md.txt) 41–47행을 여섯 일차문헌의 지정 구간과 대조했다. 문헌 검토 기록이며 이 프로젝트에서 여섯 방법을 실행했다는 보고가 아니다. 05의 다른 부분은 [가까운 방법](0005-closest-methods-audit.md), [네트워크·시계열](0005-network-timeseries-audit.md), [공식 구현](0005-official-tabicl-audit.md)에 연결된다.
 
 핵심 구분은 **query의 context를 고르는 일, 관측 행을 clustering하는 일, cell별 학습자료 공유를 결정하는 일**이다. 모두 clustering 또는 표현 재사용이라는 말을 쓰지만, 필요한 정보와 최종 목적이 다르다. 논문의 분류 정확도·ARI·진단 점수·추론 속도가 현재 소속의 RCTL MAE를 직접 입증하지는 않는다.

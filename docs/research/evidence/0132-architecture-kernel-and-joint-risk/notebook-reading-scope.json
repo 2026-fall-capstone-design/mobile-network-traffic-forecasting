@@ -1,0 +1,1622 @@
+{
+  "notebooks": [
+    {
+      "source_id": "SRC-0002008",
+      "source_sha256": "ec7b7df85609ea8d24273f718c6a13c085fa5daef79ed4caa7915d6142d66c20",
+      "formal_pinned_URL": "https://github.com/thegregyang/NTK4A/blob/db79a5bd9e75e5a15548306d4770951f94883fb7/Batchnorm-NTK.ipynb",
+      "converted_TXT_source_id": "SRC-0002009",
+      "converted_source_only_exact_correspondence": true,
+      "conversion_excludes_outputs_and_metadata": true,
+      "cell_count": 48,
+      "cell_scopes": [
+        {
+          "cell_zero_based": 0,
+          "cell_type": "markdown",
+          "source_chars": 411,
+          "source_lines": 2,
+          "normalized_source_sha256": "a22c9819e941ba389391d5831bee6cb115b4889cdd41df417a0b31c7412c9aa9",
+          "converted_TXT_header_line": 1,
+          "converted_TXT_source_range": [
+            2,
+            3
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 1,
+          "cell_type": "code",
+          "source_chars": 24,
+          "source_lines": 1,
+          "normalized_source_sha256": "c3124357f83c59a3700a7817cb27a3b3f9480e34475e6cde02330b3c1fac43fb",
+          "converted_TXT_header_line": 5,
+          "converted_TXT_source_range": [
+            6,
+            6
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 2,
+          "cell_type": "code",
+          "source_chars": 326,
+          "source_lines": 14,
+          "normalized_source_sha256": "9d0bebc1fd9f3475eed72e975ef5eb4cc42415b7eb2bfbc39d8079e49477fd2e",
+          "converted_TXT_header_line": 8,
+          "converted_TXT_source_range": [
+            9,
+            22
+          ],
+          "source_actually_read": true,
+          "execution_count": 1,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 3,
+          "cell_type": "code",
+          "source_chars": 84,
+          "source_lines": 1,
+          "normalized_source_sha256": "45e3f9e494eea738363c65f6e97ad4e529464b08f899430ca8737b83c1f679e2",
+          "converted_TXT_header_line": 24,
+          "converted_TXT_source_range": [
+            25,
+            25
+          ],
+          "source_actually_read": true,
+          "execution_count": 2,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 4,
+          "cell_type": "markdown",
+          "source_chars": 402,
+          "source_lines": 6,
+          "normalized_source_sha256": "57f5e80855ed4a80c41c64e4fc4f10fc04f0eec2e9491bc6287ca5fa5b8914ef",
+          "converted_TXT_header_line": 27,
+          "converted_TXT_source_range": [
+            28,
+            33
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 5,
+          "cell_type": "markdown",
+          "source_chars": 47,
+          "source_lines": 1,
+          "normalized_source_sha256": "36069753b07bb21ad78e29ab8a1277308a9495e00fcf48c7a867a48e2c7041e8",
+          "converted_TXT_header_line": 35,
+          "converted_TXT_source_range": [
+            36,
+            36
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 6,
+          "cell_type": "markdown",
+          "source_chars": 29,
+          "source_lines": 1,
+          "normalized_source_sha256": "9424d0441154f6d13cfedb72eb2f9e297121346a11f024da88b6a15ea68af66e",
+          "converted_TXT_header_line": 38,
+          "converted_TXT_source_range": [
+            39,
+            39
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 7,
+          "cell_type": "code",
+          "source_chars": 1595,
+          "source_lines": 38,
+          "normalized_source_sha256": "e6db2c6ee22272a82a1088a8c3d2e021a0a3700036e56a70acf2bb9b8f06409d",
+          "converted_TXT_header_line": 41,
+          "converted_TXT_source_range": [
+            42,
+            79
+          ],
+          "source_actually_read": true,
+          "execution_count": 3,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 8,
+          "cell_type": "markdown",
+          "source_chars": 31,
+          "source_lines": 1,
+          "normalized_source_sha256": "3f30afbbad7cc0d6e80241e6510f2692facfbb0e181d5a41af07e17f27ecc712",
+          "converted_TXT_header_line": 81,
+          "converted_TXT_source_range": [
+            82,
+            82
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 9,
+          "cell_type": "markdown",
+          "source_chars": 142,
+          "source_lines": 1,
+          "normalized_source_sha256": "5bb09945bb817f8b52a9cd80c9eb133c31277a2025b046d6e520a59ed199aeeb",
+          "converted_TXT_header_line": 84,
+          "converted_TXT_source_range": [
+            85,
+            85
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 10,
+          "cell_type": "markdown",
+          "source_chars": 35,
+          "source_lines": 1,
+          "normalized_source_sha256": "9d1a2606e2d38c6e6051f3785c815fbebed763ad84bcdc4336aa0ced92b5a1f6",
+          "converted_TXT_header_line": 87,
+          "converted_TXT_source_range": [
+            88,
+            88
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 11,
+          "cell_type": "markdown",
+          "source_chars": 57,
+          "source_lines": 1,
+          "normalized_source_sha256": "d922dd86b4a95a02eb2840ae22fd9cfd45514ef6469300022d1a0e2a8aa5a314",
+          "converted_TXT_header_line": 90,
+          "converted_TXT_source_range": [
+            91,
+            91
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 12,
+          "cell_type": "markdown",
+          "source_chars": 183,
+          "source_lines": 1,
+          "normalized_source_sha256": "b9b22da88d2e83cb4cf4365db1569f63b4073e4351fc0e515fe2f9015bf381b0",
+          "converted_TXT_header_line": 93,
+          "converted_TXT_source_range": [
+            94,
+            94
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 13,
+          "cell_type": "code",
+          "source_chars": 2034,
+          "source_lines": 48,
+          "normalized_source_sha256": "32004dae48ce0cce68ecc4294992c958d1d85cf7a9681bcad4e617cc870a6fa1",
+          "converted_TXT_header_line": 96,
+          "converted_TXT_source_range": [
+            97,
+            144
+          ],
+          "source_actually_read": true,
+          "execution_count": 4,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 14,
+          "cell_type": "markdown",
+          "source_chars": 36,
+          "source_lines": 1,
+          "normalized_source_sha256": "5ea1be7a2dd0948cac65eac136fd81336512c75a67b84b1c93f4274b5e1bab56",
+          "converted_TXT_header_line": 147,
+          "converted_TXT_source_range": [
+            148,
+            148
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 15,
+          "cell_type": "markdown",
+          "source_chars": 59,
+          "source_lines": 1,
+          "normalized_source_sha256": "3fc37f76735f7a40b21595de176ccced133e0f7827adbe873187286faeab75c7",
+          "converted_TXT_header_line": 150,
+          "converted_TXT_source_range": [
+            151,
+            151
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 16,
+          "cell_type": "markdown",
+          "source_chars": 59,
+          "source_lines": 1,
+          "normalized_source_sha256": "e39d94ff4ce68c81601d1b7179ee95e40a28c5a7b1555a285faffddbdb5daaa5",
+          "converted_TXT_header_line": 153,
+          "converted_TXT_source_range": [
+            154,
+            154
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 17,
+          "cell_type": "code",
+          "source_chars": 3196,
+          "source_lines": 81,
+          "normalized_source_sha256": "21d5d9cfc8c2ca08866701a0c02806f31f7c50a9c13bde36a958bffb279b16a6",
+          "converted_TXT_header_line": 156,
+          "converted_TXT_source_range": [
+            157,
+            237
+          ],
+          "source_actually_read": true,
+          "execution_count": 5,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 18,
+          "cell_type": "markdown",
+          "source_chars": 34,
+          "source_lines": 1,
+          "normalized_source_sha256": "7cdf54e11ce7f8317042dcfc904f5b50e48d161de42cdf4d61d2613bc39a3b30",
+          "converted_TXT_header_line": 239,
+          "converted_TXT_source_range": [
+            240,
+            240
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 19,
+          "cell_type": "markdown",
+          "source_chars": 56,
+          "source_lines": 1,
+          "normalized_source_sha256": "9151eef09ff5bb3a86f236a31e7bb5d41b6f23af182a5e216dc53b0242ff2314",
+          "converted_TXT_header_line": 242,
+          "converted_TXT_source_range": [
+            243,
+            243
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 20,
+          "cell_type": "markdown",
+          "source_chars": 190,
+          "source_lines": 1,
+          "normalized_source_sha256": "143a640ecf51ffb71c3f6d44efc1a6a9595ed22959d96170a79ed565876e1fd1",
+          "converted_TXT_header_line": 245,
+          "converted_TXT_source_range": [
+            246,
+            246
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 21,
+          "cell_type": "code",
+          "source_chars": 5936,
+          "source_lines": 135,
+          "normalized_source_sha256": "b63ed0f7d138cf307722c20963cdbb168c2bd27218596589fff81d8115a23423",
+          "converted_TXT_header_line": 248,
+          "converted_TXT_source_range": [
+            249,
+            383
+          ],
+          "source_actually_read": true,
+          "execution_count": 6,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 22,
+          "cell_type": "markdown",
+          "source_chars": 35,
+          "source_lines": 1,
+          "normalized_source_sha256": "da93a64cff4ed452bf9a145058d88a8c60a8b002cffbfd53518743f30fe6c42d",
+          "converted_TXT_header_line": 386,
+          "converted_TXT_source_range": [
+            387,
+            387
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 23,
+          "cell_type": "markdown",
+          "source_chars": 57,
+          "source_lines": 1,
+          "normalized_source_sha256": "65080ae9ccdadc885432f6ad74a3b3bdfbbcc6ca5c72ab3ab4519c7f2230c13e",
+          "converted_TXT_header_line": 389,
+          "converted_TXT_source_range": [
+            390,
+            390
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 24,
+          "cell_type": "code",
+          "source_chars": 6873,
+          "source_lines": 168,
+          "normalized_source_sha256": "39cfd183f81c6a2af3517bb31e66b08052505c29fd75acedc5daeea9f6f2737c",
+          "converted_TXT_header_line": 392,
+          "converted_TXT_source_range": [
+            393,
+            560
+          ],
+          "source_actually_read": true,
+          "execution_count": 7,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 25,
+          "cell_type": "markdown",
+          "source_chars": 6,
+          "source_lines": 1,
+          "normalized_source_sha256": "c743440b166be16ba2bfa690826ae57ba6d906c3c7f331e7341f2d5b6d51ff23",
+          "converted_TXT_header_line": 562,
+          "converted_TXT_source_range": [
+            563,
+            563
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 26,
+          "cell_type": "markdown",
+          "source_chars": 53,
+          "source_lines": 1,
+          "normalized_source_sha256": "6a6fba22daaa96a7d124f7223a9fb1aff83016c52f44dcda197db54412f672ec",
+          "converted_TXT_header_line": 565,
+          "converted_TXT_source_range": [
+            566,
+            566
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 27,
+          "cell_type": "markdown",
+          "source_chars": 52,
+          "source_lines": 1,
+          "normalized_source_sha256": "21bb92f16cd97e1722c292c39a5a35ebb32c7dc0a46cbba8f7d72b4daed63c7a",
+          "converted_TXT_header_line": 568,
+          "converted_TXT_source_range": [
+            569,
+            569
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 28,
+          "cell_type": "code",
+          "source_chars": 1846,
+          "source_lines": 57,
+          "normalized_source_sha256": "dd29ea9103adecfd1b61ba7a757f5fa2869031e8a64e208dfa9af9267263a854",
+          "converted_TXT_header_line": 571,
+          "converted_TXT_source_range": [
+            572,
+            628
+          ],
+          "source_actually_read": true,
+          "execution_count": 8,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 29,
+          "cell_type": "markdown",
+          "source_chars": 22,
+          "source_lines": 1,
+          "normalized_source_sha256": "6b2e283649a2fa5766175ba21558d7fb8075a4187b53472a2ec38138fe6732e0",
+          "converted_TXT_header_line": 630,
+          "converted_TXT_source_range": [
+            631,
+            631
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 30,
+          "cell_type": "markdown",
+          "source_chars": 114,
+          "source_lines": 1,
+          "normalized_source_sha256": "c1b56aebb0411c2c687f6389e84e2c152d24d6a60e24840eff803c43077a2bca",
+          "converted_TXT_header_line": 633,
+          "converted_TXT_source_range": [
+            634,
+            634
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 31,
+          "cell_type": "markdown",
+          "source_chars": 7,
+          "source_lines": 1,
+          "normalized_source_sha256": "e2478b56493dca9bdedf10ced1b54792e5674114d812ffcb8e60cef1236b6fb5",
+          "converted_TXT_header_line": 636,
+          "converted_TXT_source_range": [
+            637,
+            637
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 32,
+          "cell_type": "code",
+          "source_chars": 521,
+          "source_lines": 18,
+          "normalized_source_sha256": "ad05deadbda4e0c5c98d9acb999a3e7b9ea63af745296e88c2daca15fc0d56b8",
+          "converted_TXT_header_line": 639,
+          "converted_TXT_source_range": [
+            640,
+            657
+          ],
+          "source_actually_read": true,
+          "execution_count": 9,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 33,
+          "cell_type": "code",
+          "source_chars": 841,
+          "source_lines": 28,
+          "normalized_source_sha256": "798604d624bb546048d45bee69262ebbb1eb588db78239d07083317ee562162f",
+          "converted_TXT_header_line": 659,
+          "converted_TXT_source_range": [
+            660,
+            687
+          ],
+          "source_actually_read": true,
+          "execution_count": 10,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 34,
+          "cell_type": "code",
+          "source_chars": 1795,
+          "source_lines": 46,
+          "normalized_source_sha256": "f1c7b53ac334957fdc7550d0170c351a4c33dfbb94f15c76406a1ec63730fd03",
+          "converted_TXT_header_line": 689,
+          "converted_TXT_source_range": [
+            690,
+            735
+          ],
+          "source_actually_read": true,
+          "execution_count": 11,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 35,
+          "cell_type": "markdown",
+          "source_chars": 7,
+          "source_lines": 1,
+          "normalized_source_sha256": "864d49c6d73fe95f7f9e786e75f68dc8d6fa3e71387574d45ecb936ec8c76550",
+          "converted_TXT_header_line": 737,
+          "converted_TXT_source_range": [
+            738,
+            738
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 36,
+          "cell_type": "code",
+          "source_chars": 265,
+          "source_lines": 6,
+          "normalized_source_sha256": "f4fa3bbfc21eb554de3f38cca81bcfef2f65a1f6fe6e9a77be68b66d9af217e8",
+          "converted_TXT_header_line": 740,
+          "converted_TXT_source_range": [
+            741,
+            746
+          ],
+          "source_actually_read": true,
+          "execution_count": 12,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 1,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 37,
+          "cell_type": "code",
+          "source_chars": 70,
+          "source_lines": 5,
+          "normalized_source_sha256": "6ef3f5049776ddad69fb0186afaac275116e28d88f4f854374492511a0234b09",
+          "converted_TXT_header_line": 748,
+          "converted_TXT_source_range": [
+            749,
+            753
+          ],
+          "source_actually_read": true,
+          "execution_count": 13,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 38,
+          "cell_type": "code",
+          "source_chars": 92,
+          "source_lines": 2,
+          "normalized_source_sha256": "0f395f57d5a00b6f8e72ce9ac060788765117cf24bab5bceaafae25341b0945f",
+          "converted_TXT_header_line": 755,
+          "converted_TXT_source_range": [
+            756,
+            757
+          ],
+          "source_actually_read": true,
+          "execution_count": 14,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 39,
+          "cell_type": "code",
+          "source_chars": 111,
+          "source_lines": 2,
+          "normalized_source_sha256": "228cc79ad6a27c9b512f40e48dadda8b9b1e1f07b34608e9baebff14e000db7b",
+          "converted_TXT_header_line": 759,
+          "converted_TXT_source_range": [
+            760,
+            761
+          ],
+          "source_actually_read": true,
+          "execution_count": 15,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 40,
+          "cell_type": "code",
+          "source_chars": 100,
+          "source_lines": 2,
+          "normalized_source_sha256": "ccb673fcbfad8eb2d9a3823338964cfb40081690bbd3fe015b0a6784a13f86a1",
+          "converted_TXT_header_line": 763,
+          "converted_TXT_source_range": [
+            764,
+            765
+          ],
+          "source_actually_read": true,
+          "execution_count": 16,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 41,
+          "cell_type": "markdown",
+          "source_chars": 70,
+          "source_lines": 1,
+          "normalized_source_sha256": "3965170a6d150964e057d17c1a0440a2698b813411568881a16b27f155eee86b",
+          "converted_TXT_header_line": 767,
+          "converted_TXT_source_range": [
+            768,
+            768
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 42,
+          "cell_type": "code",
+          "source_chars": 7,
+          "source_lines": 1,
+          "normalized_source_sha256": "2d8c8a8315c57b32e602ea2c6621eed46bcfa24b28193ef81290dcc48923027d",
+          "converted_TXT_header_line": 770,
+          "converted_TXT_source_range": [
+            771,
+            771
+          ],
+          "source_actually_read": true,
+          "execution_count": 17,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 43,
+          "cell_type": "code",
+          "source_chars": 93,
+          "source_lines": 2,
+          "normalized_source_sha256": "e2db9393a6f5c4fdbd69bdcccc62a41783c8d9a74df596e7760cda57795e38b5",
+          "converted_TXT_header_line": 773,
+          "converted_TXT_source_range": [
+            774,
+            775
+          ],
+          "source_actually_read": true,
+          "execution_count": 18,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 44,
+          "cell_type": "code",
+          "source_chars": 180,
+          "source_lines": 6,
+          "normalized_source_sha256": "608840866f921e68bdd2600bdad45fcbcd06dad9091da9bf3d5c40e538aee1ff",
+          "converted_TXT_header_line": 777,
+          "converted_TXT_source_range": [
+            778,
+            783
+          ],
+          "source_actually_read": true,
+          "execution_count": 19,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 1,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 45,
+          "cell_type": "markdown",
+          "source_chars": 241,
+          "source_lines": 1,
+          "normalized_source_sha256": "ee8c3bbad1093da95ab05cb498a0c9736d28762c57b64a87cd5b677f0af8eea4",
+          "converted_TXT_header_line": 785,
+          "converted_TXT_source_range": [
+            786,
+            786
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 46,
+          "cell_type": "code",
+          "source_chars": 313,
+          "source_lines": 7,
+          "normalized_source_sha256": "d5cccb02622e8696d92d0b8023cf4ed60c0c337e7a2ac2c624b7dfc19c09fc39",
+          "converted_TXT_header_line": 788,
+          "converted_TXT_source_range": [
+            789,
+            795
+          ],
+          "source_actually_read": true,
+          "execution_count": 20,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 1,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 47,
+          "cell_type": "code",
+          "source_chars": 39,
+          "source_lines": 1,
+          "normalized_source_sha256": "a6d1bf99fbd986b37b879ee6b713bce1acb34a4ecc2870f9db4c6a5688dde2a1",
+          "converted_TXT_header_line": 797,
+          "converted_TXT_source_range": [
+            798,
+            798
+          ],
+          "source_actually_read": true,
+          "execution_count": 21,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        }
+      ],
+      "whole_logical_source_metadata_outputs_read": true,
+      "whole_literal_notebook_JSON_read": false,
+      "stored_PNG_whole_actually_viewed": true,
+      "stored_metadata_and_output_observation": {
+        "source_id": "SRC-0002008",
+        "source_sha256": "ec7b7df85609ea8d24273f718c6a13c085fa5daef79ed4caa7915d6142d66c20",
+        "metadata": {
+          "kernelspec": {
+            "display_name": "Python 3.6.6 64-bit ('base': conda)",
+            "language": "python",
+            "name": "python36664bitbaseconda707c1567454d4d918345c26606d07f5e"
+          },
+          "language_info": {
+            "codemirror_mode": {
+              "name": "ipython",
+              "version": 3
+            },
+            "file_extension": ".py",
+            "mimetype": "text/x-python",
+            "name": "python",
+            "nbconvert_exporter": "python",
+            "pygments_lexer": "ipython3",
+            "version": "3.6.10"
+          }
+        },
+        "cells": [
+          {
+            "cell_zero_based": 36,
+            "execution_count": 12,
+            "metadata": {
+              "ExecuteTime": {
+                "end_time": "2020-06-17T21:12:18.530812Z",
+                "start_time": "2020-06-17T21:12:17.629168Z"
+              },
+              "hidden": true
+            },
+            "outputs": [
+              {
+                "output_type": "stream",
+                "name": "stdout",
+                "text": [
+                  "Files already downloaded and verified\n"
+                ]
+              }
+            ]
+          },
+          {
+            "cell_zero_based": 44,
+            "execution_count": 19,
+            "metadata": {
+              "ExecuteTime": {
+                "end_time": "2020-06-17T21:14:41.118032Z",
+                "start_time": "2020-06-17T21:12:31.691748Z"
+              },
+              "hidden": true
+            },
+            "outputs": [
+              {
+                "output_type": "stream",
+                "name": "stderr",
+                "text": [
+                  "100%|██████████| 800/800 [02:09<00:00,  6.18it/s]\n"
+                ]
+              }
+            ]
+          },
+          {
+            "cell_zero_based": 46,
+            "execution_count": 20,
+            "metadata": {
+              "ExecuteTime": {
+                "end_time": "2020-06-17T21:14:42.560347Z",
+                "start_time": "2020-06-17T21:14:41.119392Z"
+              },
+              "hidden": true
+            },
+            "outputs": [
+              {
+                "output_type": "display_data",
+                "MIME_types": [
+                  "image/png",
+                  "text/plain"
+                ],
+                "text/plain": [
+                  "<Figure size 432x288 with 1 Axes>"
+                ],
+                "stored_PNG": {
+                  "bytes": 23110,
+                  "sha256": "fe0d8444eb5c01bdc6f86235be6bf27aa1cbfd70cecfb6c7c7656d407c478242"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "code_executed": false,
+      "independent_converted_TXT_credit": 0
+    },
+    {
+      "source_id": "SRC-0002011",
+      "source_sha256": "f1521f8f2592c3d29d2834b1171aa64aef45211fb90f8fff1d88b52a687f839e",
+      "formal_pinned_URL": "https://github.com/thegregyang/NTK4A/blob/db79a5bd9e75e5a15548306d4770951f94883fb7/RNN-NTK.ipynb",
+      "converted_TXT_source_id": "SRC-0002012",
+      "converted_source_only_exact_correspondence": true,
+      "conversion_excludes_outputs_and_metadata": true,
+      "cell_count": 34,
+      "cell_scopes": [
+        {
+          "cell_zero_based": 0,
+          "cell_type": "markdown",
+          "source_chars": 363,
+          "source_lines": 2,
+          "normalized_source_sha256": "be09a2a0a2e30c8ba4e0cda818f4866cfd7a8f6e264fde6dc982e19a7dda73f1",
+          "converted_TXT_header_line": 1,
+          "converted_TXT_source_range": [
+            2,
+            3
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 1,
+          "cell_type": "code",
+          "source_chars": 187,
+          "source_lines": 8,
+          "normalized_source_sha256": "e2d4a67ad6996c04ceb955f1349076703f2917514459af70d9bd3b3ff7166961",
+          "converted_TXT_header_line": 5,
+          "converted_TXT_source_range": [
+            6,
+            13
+          ],
+          "source_actually_read": true,
+          "execution_count": 1,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 2,
+          "cell_type": "code",
+          "source_chars": 56,
+          "source_lines": 1,
+          "normalized_source_sha256": "5e6aaed816016e5d0008b9ad67bb599a8b60f3685b3e74de88e72f0b96caaab3",
+          "converted_TXT_header_line": 15,
+          "converted_TXT_source_range": [
+            16,
+            16
+          ],
+          "source_actually_read": true,
+          "execution_count": 2,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 3,
+          "cell_type": "markdown",
+          "source_chars": 73,
+          "source_lines": 1,
+          "normalized_source_sha256": "e1d9e927e81cf085f2c358bccba8067e16983fcb803e2d5b1b09c8c217ba71f6",
+          "converted_TXT_header_line": 18,
+          "converted_TXT_source_range": [
+            19,
+            19
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 4,
+          "cell_type": "markdown",
+          "source_chars": 38,
+          "source_lines": 1,
+          "normalized_source_sha256": "9235aafdada24ae3594a6cf2cb30486789569ba5bc927ff760e9eef3bd77c100",
+          "converted_TXT_header_line": 21,
+          "converted_TXT_source_range": [
+            22,
+            22
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 5,
+          "cell_type": "markdown",
+          "source_chars": 14,
+          "source_lines": 1,
+          "normalized_source_sha256": "1beeb9d9572bd8dcce117e1453953bf42a5b3a4f3a176d1c935e0b7f7594c8a0",
+          "converted_TXT_header_line": 24,
+          "converted_TXT_source_range": [
+            25,
+            25
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 6,
+          "cell_type": "markdown",
+          "source_chars": 47,
+          "source_lines": 1,
+          "normalized_source_sha256": "f0b8dca9abb9d991d3367c340df8327c071b2a8e0a4b8344c4ff92c5f3d23f74",
+          "converted_TXT_header_line": 27,
+          "converted_TXT_source_range": [
+            28,
+            28
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 7,
+          "cell_type": "markdown",
+          "source_chars": 29,
+          "source_lines": 1,
+          "normalized_source_sha256": "9424d0441154f6d13cfedb72eb2f9e297121346a11f024da88b6a15ea68af66e",
+          "converted_TXT_header_line": 30,
+          "converted_TXT_source_range": [
+            31,
+            31
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 8,
+          "cell_type": "code",
+          "source_chars": 2282,
+          "source_lines": 64,
+          "normalized_source_sha256": "a2984536754612d246ce8fc3b688c99e7ac923040cf0f3cb942320d9ab3f3c72",
+          "converted_TXT_header_line": 33,
+          "converted_TXT_source_range": [
+            34,
+            97
+          ],
+          "source_actually_read": true,
+          "execution_count": 3,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 9,
+          "cell_type": "code",
+          "source_chars": 1697,
+          "source_lines": 44,
+          "normalized_source_sha256": "ba8b8ed0b0c95ec49ae72abc0eb8cac320770f11315255d8eca0d67dd17d1ca9",
+          "converted_TXT_header_line": 99,
+          "converted_TXT_source_range": [
+            100,
+            143
+          ],
+          "source_actually_read": true,
+          "execution_count": 4,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 10,
+          "cell_type": "markdown",
+          "source_chars": 20,
+          "source_lines": 1,
+          "normalized_source_sha256": "f1c8ffbbb877bf5523f1c24231611da9c5da92b60939b2d7b8d684c19684a2a2",
+          "converted_TXT_header_line": 145,
+          "converted_TXT_source_range": [
+            146,
+            146
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 11,
+          "cell_type": "markdown",
+          "source_chars": 258,
+          "source_lines": 2,
+          "normalized_source_sha256": "f657585541a379a9b477dab982049816d07d69624a4887506e1d7ab405d5cfd2",
+          "converted_TXT_header_line": 148,
+          "converted_TXT_source_range": [
+            149,
+            150
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 12,
+          "cell_type": "markdown",
+          "source_chars": 197,
+          "source_lines": 2,
+          "normalized_source_sha256": "1ce833fe6cb3a3f5be23fa06634c50f22adcc3f2ddf281ec4d70d20f3bad7157",
+          "converted_TXT_header_line": 152,
+          "converted_TXT_source_range": [
+            153,
+            154
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 13,
+          "cell_type": "markdown",
+          "source_chars": 55,
+          "source_lines": 1,
+          "normalized_source_sha256": "905278f1c4b3f51746d3a5d8f481b4531ba8d2691f42e56911c166f8262807f8",
+          "converted_TXT_header_line": 156,
+          "converted_TXT_source_range": [
+            157,
+            157
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 14,
+          "cell_type": "markdown",
+          "source_chars": 48,
+          "source_lines": 1,
+          "normalized_source_sha256": "349ac5ea205a8a8c9dcea02dd0ad7b922ea4b25e27bb2b594026660fa6d88c4f",
+          "converted_TXT_header_line": 159,
+          "converted_TXT_source_range": [
+            160,
+            160
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 15,
+          "cell_type": "markdown",
+          "source_chars": 46,
+          "source_lines": 1,
+          "normalized_source_sha256": "643803553e379b4b1f12474ec6fe96249125e388989f92d59533e11d46edb525",
+          "converted_TXT_header_line": 162,
+          "converted_TXT_source_range": [
+            163,
+            163
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 16,
+          "cell_type": "markdown",
+          "source_chars": 42,
+          "source_lines": 1,
+          "normalized_source_sha256": "3686ac478fa03ad16377f637961ce9a93b6acabbc333cb72a52c3073277c03b0",
+          "converted_TXT_header_line": 165,
+          "converted_TXT_source_range": [
+            166,
+            166
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 17,
+          "cell_type": "code",
+          "source_chars": 3518,
+          "source_lines": 85,
+          "normalized_source_sha256": "86bc51742af3c6dee2dfd7d6eaa8bd15682fe980eff0eb05194ddc497489411f",
+          "converted_TXT_header_line": 168,
+          "converted_TXT_source_range": [
+            169,
+            253
+          ],
+          "source_actually_read": true,
+          "execution_count": 5,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 18,
+          "cell_type": "markdown",
+          "source_chars": 214,
+          "source_lines": 1,
+          "normalized_source_sha256": "f61e0d23fd675b9eb97fe3233b0bf74b0904a485d2ca579e8cbce2841387263f",
+          "converted_TXT_header_line": 255,
+          "converted_TXT_source_range": [
+            256,
+            256
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 19,
+          "cell_type": "code",
+          "source_chars": 3256,
+          "source_lines": 75,
+          "normalized_source_sha256": "9539a1e7b0797fcd73a1a41a80d23383baf2dc565d151edbb1399b3a2dfedec4",
+          "converted_TXT_header_line": 258,
+          "converted_TXT_source_range": [
+            259,
+            333
+          ],
+          "source_actually_read": true,
+          "execution_count": 6,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 20,
+          "cell_type": "markdown",
+          "source_chars": 22,
+          "source_lines": 1,
+          "normalized_source_sha256": "6b2e283649a2fa5766175ba21558d7fb8075a4187b53472a2ec38138fe6732e0",
+          "converted_TXT_header_line": 336,
+          "converted_TXT_source_range": [
+            337,
+            337
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 21,
+          "cell_type": "markdown",
+          "source_chars": 114,
+          "source_lines": 1,
+          "normalized_source_sha256": "c1b56aebb0411c2c687f6389e84e2c152d24d6a60e24840eff803c43077a2bca",
+          "converted_TXT_header_line": 339,
+          "converted_TXT_source_range": [
+            340,
+            340
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 22,
+          "cell_type": "markdown",
+          "source_chars": 7,
+          "source_lines": 1,
+          "normalized_source_sha256": "864d49c6d73fe95f7f9e786e75f68dc8d6fa3e71387574d45ecb936ec8c76550",
+          "converted_TXT_header_line": 342,
+          "converted_TXT_source_range": [
+            343,
+            343
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 23,
+          "cell_type": "code",
+          "source_chars": 265,
+          "source_lines": 6,
+          "normalized_source_sha256": "f4fa3bbfc21eb554de3f38cca81bcfef2f65a1f6fe6e9a77be68b66d9af217e8",
+          "converted_TXT_header_line": 345,
+          "converted_TXT_source_range": [
+            346,
+            351
+          ],
+          "source_actually_read": true,
+          "execution_count": 7,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 1,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 24,
+          "cell_type": "markdown",
+          "source_chars": 141,
+          "source_lines": 1,
+          "normalized_source_sha256": "ccdc47f0af0fe41af29bc857822e464f8b9c7106cf6ba30d60c5bd47ef75b440",
+          "converted_TXT_header_line": 353,
+          "converted_TXT_source_range": [
+            354,
+            354
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 25,
+          "cell_type": "code",
+          "source_chars": 229,
+          "source_lines": 7,
+          "normalized_source_sha256": "c607c8c48a9e1ab0fe5fb1a34332e2114efd1fed5fa82f5d65ae1a5c7f346b83",
+          "converted_TXT_header_line": 356,
+          "converted_TXT_source_range": [
+            357,
+            363
+          ],
+          "source_actually_read": true,
+          "execution_count": 8,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 26,
+          "cell_type": "markdown",
+          "source_chars": 9,
+          "source_lines": 1,
+          "normalized_source_sha256": "9fb6d35b9791cf610a58524f852b077ebe3de26a6cef47abb116028785ac5c0b",
+          "converted_TXT_header_line": 365,
+          "converted_TXT_source_range": [
+            366,
+            366
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 27,
+          "cell_type": "code",
+          "source_chars": 52,
+          "source_lines": 5,
+          "normalized_source_sha256": "f46a2407430da32a573787d9b399955d6233bbd050417147c564ac2a6a07e830",
+          "converted_TXT_header_line": 368,
+          "converted_TXT_source_range": [
+            369,
+            373
+          ],
+          "source_actually_read": true,
+          "execution_count": 9,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 28,
+          "cell_type": "code",
+          "source_chars": 93,
+          "source_lines": 1,
+          "normalized_source_sha256": "b4fb6617c251de7450fa6c0679937cb80332038854f379c304bdff37394e4a30",
+          "converted_TXT_header_line": 375,
+          "converted_TXT_source_range": [
+            376,
+            376
+          ],
+          "source_actually_read": true,
+          "execution_count": 10,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 29,
+          "cell_type": "code",
+          "source_chars": 960,
+          "source_lines": 24,
+          "normalized_source_sha256": "90703d0f239796083469383554d8152d484070c38ac4ea446cbace1bfa210366",
+          "converted_TXT_header_line": 378,
+          "converted_TXT_source_range": [
+            379,
+            402
+          ],
+          "source_actually_read": true,
+          "execution_count": 11,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 30,
+          "cell_type": "markdown",
+          "source_chars": 241,
+          "source_lines": 1,
+          "normalized_source_sha256": "ee8c3bbad1093da95ab05cb498a0c9736d28762c57b64a87cd5b677f0af8eea4",
+          "converted_TXT_header_line": 404,
+          "converted_TXT_source_range": [
+            405,
+            405
+          ],
+          "source_actually_read": true,
+          "execution_count": null,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 31,
+          "cell_type": "code",
+          "source_chars": 128,
+          "source_lines": 2,
+          "normalized_source_sha256": "b1251a0a2b39d3a31a31eb01b5e4ae008fec20b4dffd08fe50e32947f44cf5a1",
+          "converted_TXT_header_line": 407,
+          "converted_TXT_source_range": [
+            408,
+            409
+          ],
+          "source_actually_read": true,
+          "execution_count": 12,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 1,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 32,
+          "cell_type": "code",
+          "source_chars": 307,
+          "source_lines": 7,
+          "normalized_source_sha256": "be0c6d212973c330b453be45c22c28c47b066096bf73f8a46f9c26580aae5a06",
+          "converted_TXT_header_line": 411,
+          "converted_TXT_source_range": [
+            412,
+            418
+          ],
+          "source_actually_read": true,
+          "execution_count": 13,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 1,
+          "stored_output_payloads_actually_read": true
+        },
+        {
+          "cell_zero_based": 33,
+          "cell_type": "code",
+          "source_chars": 36,
+          "source_lines": 1,
+          "normalized_source_sha256": "bec2bc9e0b788417baba48f3705595c257544f262b58fd04f08764e54bfd2e2a",
+          "converted_TXT_header_line": 420,
+          "converted_TXT_source_range": [
+            421,
+            421
+          ],
+          "source_actually_read": true,
+          "execution_count": 14,
+          "cell_metadata_actually_read": true,
+          "stored_outputs_count": 0,
+          "stored_output_payloads_actually_read": true
+        }
+      ],
+      "whole_logical_source_metadata_outputs_read": true,
+      "whole_literal_notebook_JSON_read": false,
+      "stored_PNG_whole_actually_viewed": true,
+      "stored_metadata_and_output_observation": {
+        "source_id": "SRC-0002011",
+        "source_sha256": "f1521f8f2592c3d29d2834b1171aa64aef45211fb90f8fff1d88b52a687f839e",
+        "metadata": {
+          "kernelspec": {
+            "display_name": "Python 3.6.6 64-bit ('base': conda)",
+            "language": "python",
+            "name": "python36664bitbaseconda707c1567454d4d918345c26606d07f5e"
+          },
+          "language_info": {
+            "codemirror_mode": {
+              "name": "ipython",
+              "version": 3
+            },
+            "file_extension": ".py",
+            "mimetype": "text/x-python",
+            "name": "python",
+            "nbconvert_exporter": "python",
+            "pygments_lexer": "ipython3",
+            "version": "3.6.10"
+          }
+        },
+        "cells": [
+          {
+            "cell_zero_based": 23,
+            "execution_count": 7,
+            "metadata": {
+              "ExecuteTime": {
+                "end_time": "2020-06-17T20:58:22.976287Z",
+                "start_time": "2020-06-17T20:58:21.995796Z"
+              },
+              "hidden": true
+            },
+            "outputs": [
+              {
+                "output_type": "stream",
+                "name": "stdout",
+                "text": [
+                  "Files already downloaded and verified\n"
+                ]
+              }
+            ]
+          },
+          {
+            "cell_zero_based": 31,
+            "execution_count": 12,
+            "metadata": {
+              "ExecuteTime": {
+                "end_time": "2020-06-17T21:05:30.779105Z",
+                "start_time": "2020-06-17T20:58:32.865163Z"
+              },
+              "hidden": true,
+              "scrolled": true
+            },
+            "outputs": [
+              {
+                "output_type": "stream",
+                "name": "stderr",
+                "text": [
+                  "100%|██████████| 8/8 [06:57<00:00, 52.24s/it] \n"
+                ]
+              }
+            ]
+          },
+          {
+            "cell_zero_based": 32,
+            "execution_count": 13,
+            "metadata": {
+              "ExecuteTime": {
+                "end_time": "2020-06-17T21:05:32.092838Z",
+                "start_time": "2020-06-17T21:05:30.780738Z"
+              },
+              "hidden": true
+            },
+            "outputs": [
+              {
+                "output_type": "display_data",
+                "MIME_types": [
+                  "image/png",
+                  "text/plain"
+                ],
+                "text/plain": [
+                  "<Figure size 432x288 with 1 Axes>"
+                ],
+                "stored_PNG": {
+                  "bytes": 25385,
+                  "sha256": "22a8fe153b659a0ae8e615d556047557429e88625e852473da32d1d125cacdca"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "code_executed": false,
+      "independent_converted_TXT_credit": 0
+    }
+  ],
+  "whole_logical_notebooks": 2,
+  "cells": 82,
+  "stored_outputs": 6,
+  "stored_PNG_images": 2,
+  "literal_notebook_JSON_full_read": false,
+  "source_code_executed": false,
+  "new_model_runs": 0
+}

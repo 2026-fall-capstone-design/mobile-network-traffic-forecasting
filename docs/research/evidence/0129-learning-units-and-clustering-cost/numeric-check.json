@@ -1,0 +1,350 @@
+{
+  "success": true,
+  "GRU_capacity_rows": 9,
+  "scalar_balanced_rows": 12,
+  "all_21_saved_arithmetic_rows_match": true,
+  "gru_shape_checks": [
+    {
+      "source_pointer": "/GRU_capacity/0",
+      "flows": 144,
+      "K": 1,
+      "expanded_parameter_count": 236544,
+      "ratio_exact": "1",
+      "not_author_checkpoint_measurement": true
+    },
+    {
+      "source_pointer": "/GRU_capacity/1",
+      "flows": 144,
+      "K": 21,
+      "expanded_parameter_count": 2660544,
+      "ratio_exact": "13857/1232",
+      "not_author_checkpoint_measurement": true
+    },
+    {
+      "source_pointer": "/GRU_capacity/2",
+      "flows": 144,
+      "K": 41,
+      "expanded_parameter_count": 5084544,
+      "ratio_exact": "13241/616",
+      "not_author_checkpoint_measurement": true
+    },
+    {
+      "source_pointer": "/GRU_capacity/3",
+      "flows": 144,
+      "K": 144,
+      "expanded_parameter_count": 17568144,
+      "ratio_exact": "33273/448",
+      "not_author_checkpoint_measurement": true
+    },
+    {
+      "source_pointer": "/GRU_capacity/4",
+      "flows": 529,
+      "K": 1,
+      "expanded_parameter_count": 544929,
+      "ratio_exact": "1",
+      "not_author_checkpoint_measurement": true
+    },
+    {
+      "source_pointer": "/GRU_capacity/5",
+      "flows": 529,
+      "K": 40,
+      "expanded_parameter_count": 5271729,
+      "ratio_exact": "1757243/181643",
+      "not_author_checkpoint_measurement": true
+    },
+    {
+      "source_pointer": "/GRU_capacity/6",
+      "flows": 529,
+      "K": 50,
+      "expanded_parameter_count": 6483729,
+      "ratio_exact": "44107/3707",
+      "not_author_checkpoint_measurement": true
+    },
+    {
+      "source_pointer": "/GRU_capacity/7",
+      "flows": 529,
+      "K": 100,
+      "expanded_parameter_count": 12543729,
+      "ratio_exact": "380113/16513",
+      "not_author_checkpoint_measurement": true
+    },
+    {
+      "source_pointer": "/GRU_capacity/8",
+      "flows": 529,
+      "K": 529,
+      "expanded_parameter_count": 64538529,
+      "ratio_exact": "1955713/16513",
+      "not_author_checkpoint_measurement": true
+    }
+  ],
+  "scalar_workload_checks": [
+    {
+      "source_pointer": "/scalar_RCTL_workload/0/balanced_RCTL/0",
+      "cells": 128,
+      "K": 1,
+      "rows": 86016,
+      "updates": 336,
+      "storage_registered_parameters": 174433,
+      "trainable_parameter_count_from_static_source": 173537,
+      "state_tensor_bytes": 701412
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/0/balanced_RCTL/1",
+      "cells": 128,
+      "K": 4,
+      "rows": 86016,
+      "updates": 336,
+      "storage_registered_parameters": 697732,
+      "trainable_parameter_count_from_static_source": 694148,
+      "state_tensor_bytes": 2805648
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/0/balanced_RCTL/2",
+      "cells": 128,
+      "K": 16,
+      "rows": 86016,
+      "updates": 336,
+      "storage_registered_parameters": 2790928,
+      "trainable_parameter_count_from_static_source": 2776592,
+      "state_tensor_bytes": 11222592
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/0/balanced_RCTL/3",
+      "cells": 128,
+      "K": 32,
+      "rows": 86016,
+      "updates": 352,
+      "storage_registered_parameters": 5581856,
+      "trainable_parameter_count_from_static_source": 5553184,
+      "state_tensor_bytes": 22445184
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/1/balanced_RCTL/0",
+      "cells": 1024,
+      "K": 1,
+      "rows": 688128,
+      "updates": 2688,
+      "storage_registered_parameters": 174433,
+      "trainable_parameter_count_from_static_source": 173537,
+      "state_tensor_bytes": 701412
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/1/balanced_RCTL/1",
+      "cells": 1024,
+      "K": 4,
+      "rows": 688128,
+      "updates": 2688,
+      "storage_registered_parameters": 697732,
+      "trainable_parameter_count_from_static_source": 694148,
+      "state_tensor_bytes": 2805648
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/1/balanced_RCTL/2",
+      "cells": 1024,
+      "K": 16,
+      "rows": 688128,
+      "updates": 2688,
+      "storage_registered_parameters": 2790928,
+      "trainable_parameter_count_from_static_source": 2776592,
+      "state_tensor_bytes": 11222592
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/1/balanced_RCTL/3",
+      "cells": 1024,
+      "K": 32,
+      "rows": 688128,
+      "updates": 2688,
+      "storage_registered_parameters": 5581856,
+      "trainable_parameter_count_from_static_source": 5553184,
+      "state_tensor_bytes": 22445184
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/2/balanced_RCTL/0",
+      "cells": 10000,
+      "K": 1,
+      "rows": 6720000,
+      "updates": 26250,
+      "storage_registered_parameters": 174433,
+      "trainable_parameter_count_from_static_source": 173537,
+      "state_tensor_bytes": 701412
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/2/balanced_RCTL/1",
+      "cells": 10000,
+      "K": 4,
+      "rows": 6720000,
+      "updates": 26252,
+      "storage_registered_parameters": 697732,
+      "trainable_parameter_count_from_static_source": 694148,
+      "state_tensor_bytes": 2805648
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/2/balanced_RCTL/2",
+      "cells": 10000,
+      "K": 16,
+      "rows": 6720000,
+      "updates": 26256,
+      "storage_registered_parameters": 2790928,
+      "trainable_parameter_count_from_static_source": 2776592,
+      "state_tensor_bytes": 11222592
+    },
+    {
+      "source_pointer": "/scalar_RCTL_workload/2/balanced_RCTL/3",
+      "cells": 10000,
+      "K": 32,
+      "rows": 6720000,
+      "updates": 26256,
+      "storage_registered_parameters": 5581856,
+      "trainable_parameter_count_from_static_source": 5553184,
+      "state_tensor_bytes": 22445184
+    }
+  ],
+  "RCTL_static_shape_count": {
+    "blocks": [
+      {
+        "input_channels": 9,
+        "output_channels": 16,
+        "components": {
+          "conv1": 448,
+          "BN1_affine": 32,
+          "conv2": 784,
+          "BN2_affine": 32,
+          "two_shortcuts": 320,
+          "LSTM_input_and_hidden_weights": 2048,
+          "LSTM_two_biases": 128
+        },
+        "all_registered_parameters": 3792,
+        "frozen_recurrent_bias": 64
+      },
+      {
+        "input_channels": 16,
+        "output_channels": 32,
+        "components": {
+          "conv1": 1568,
+          "BN1_affine": 64,
+          "conv2": 3104,
+          "BN2_affine": 64,
+          "two_shortcuts": 1088,
+          "LSTM_input_and_hidden_weights": 8192,
+          "LSTM_two_biases": 256
+        },
+        "all_registered_parameters": 14336,
+        "frozen_recurrent_bias": 128
+      },
+      {
+        "input_channels": 32,
+        "output_channels": 64,
+        "components": {
+          "conv1": 6208,
+          "BN1_affine": 128,
+          "conv2": 12352,
+          "BN2_affine": 128,
+          "two_shortcuts": 4224,
+          "LSTM_input_and_hidden_weights": 32768,
+          "LSTM_two_biases": 512
+        },
+        "all_registered_parameters": 56320,
+        "frozen_recurrent_bias": 256
+      },
+      {
+        "input_channels": 64,
+        "output_channels": 64,
+        "components": {
+          "conv1": 12352,
+          "BN1_affine": 128,
+          "conv2": 12352,
+          "BN2_affine": 128,
+          "two_shortcuts": 8320,
+          "LSTM_input_and_hidden_weights": 32768,
+          "LSTM_two_biases": 512
+        },
+        "all_registered_parameters": 66560,
+        "frozen_recurrent_bias": 256
+      },
+      {
+        "input_channels": 64,
+        "output_channels": 32,
+        "components": {
+          "conv1": 6176,
+          "BN1_affine": 64,
+          "conv2": 3104,
+          "BN2_affine": 64,
+          "two_shortcuts": 4160,
+          "LSTM_input_and_hidden_weights": 8192,
+          "LSTM_two_biases": 256
+        },
+        "all_registered_parameters": 22016,
+        "frozen_recurrent_bias": 128
+      },
+      {
+        "input_channels": 32,
+        "output_channels": 16,
+        "components": {
+          "conv1": 1552,
+          "BN1_affine": 32,
+          "conv2": 784,
+          "BN2_affine": 32,
+          "two_shortcuts": 1056,
+          "LSTM_input_and_hidden_weights": 2048,
+          "LSTM_two_biases": 128
+        },
+        "all_registered_parameters": 5632,
+        "frozen_recurrent_bias": 64
+      }
+    ],
+    "projection_parameters": 5488,
+    "final_shortcut_parameters": 160,
+    "dense_parameters": 129,
+    "registered_parameters": 174433,
+    "frozen_bias_parameters": 896,
+    "trainable_parameters": 173537,
+    "parameter_bytes_float32": 697732,
+    "BN_float32_buffer_elements": 896,
+    "BN_int64_counters": 12,
+    "buffer_bytes": 3680,
+    "state_tensor_bytes": 701412,
+    "source": "SRC-0023048 read-only; no instantiation/import",
+    "saved_checkpoint_metadata_objects_compared": 9,
+    "checkpoint_tensor_values_loaded": false
+  },
+  "Cash2025_printed_RMSE_percentage_checks": {
+    "Abilene_ARCNN": 92.14521452145215,
+    "GEANT_TEProphet": 75.84745762711864,
+    "paper_prose_percentages": [
+      92,
+      75
+    ],
+    "rounded_printed_values_not_reproduced_raw_predictions": true
+  },
+  "Cash2025_MLU_ratio_scope": {
+    "Abilene_histogram": 1.0,
+    "GEANT_histogram": 1.07,
+    "ratio_optimum": 1,
+    "ratio_is_not_deviation_from_1": true,
+    "paper_reported_18_21_percent_not_reinterpreted_as_18_21_raw_MLU_reduction": true
+  },
+  "snapshot_listed_files": 25,
+  "snapshot_listed_bytes": 4663812,
+  "snapshot_physical_files": 27,
+  "snapshot_physical_bytes": 4669685,
+  "manifest_bytes": 5412,
+  "snapshot_verification_bytes": 461,
+  "root_receipt_same_hash_alias": true,
+  "ledger_unchanged": true,
+  "ledger_scope": "원99 snapshot의 원98 이후 동일 판본",
+  "ledger_sha256": "807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f",
+  "current_root_ledger_distinct_later_version": true,
+  "current_root_ledger_sha256": "17a549fcf926e534eaecd4efd278fe4e13f7c7a13e74805c21059a2d6fc59243",
+  "current_root_ledger_matches_preservation_baseline": true,
+  "protected_current_originals_unchanged": 6,
+  "prior_Word_hash_only": true,
+  "prior_Word_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "models_instantiated": false,
+  "new_model_runs": 0,
+  "traffic_statistics_recomputed": false,
+  "independent_experiment_reproduction": false,
+  "coverage_increment_applied": false,
+  "checked_at_utc": "2026-10-12T05:42:18.622634+00:00"
+}

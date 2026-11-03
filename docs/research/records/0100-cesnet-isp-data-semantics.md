@@ -1,5 +1,7 @@
 # CESNET과 ISP TTM 원문에서 확인한 결측 분모와 결과의 한계
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-100.md) · [검수](../verification/history-100.md) · [표 전사](../evidence/0100-cesnet-isp/reported-tables.json) · [그림 확인](../evidence/0100-cesnet-isp/figure-review.json)
 
 **핵심:** 99.94%는 “gap이 있는 IP 시계열의 비율”이다. 관측 시점의 결측률·실제0 비율과 다르다. ISP의 zero fill, 집계 설명, 이상치 제거와 비용 측정 범위를 함께 확인해야 결과를 재사용할 수 있다.

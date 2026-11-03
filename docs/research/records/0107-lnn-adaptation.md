@@ -1,5 +1,7 @@
 # LNN의 장애 후 적응: 지표별 이득과 불리한 사례
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-107.md) · [검수](../verification/history-107.md) · [60개 표 값](../evidence/0107-lnn/table-transcription.json) · [표 비교](../evidence/0107-lnn/table-check.json)
 
 원83의 갱신 주기 관련 선행연구를 직접 대조한다. LNN의 추가 훈련 없음과 조건별 예측 성능을 구별하고, 같은 가설을 다시 시험할 때 놓치기 쉬운 입력·평가 조건을 남긴다.

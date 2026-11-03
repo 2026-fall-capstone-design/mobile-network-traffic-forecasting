@@ -1,0 +1,2272 @@
+{
+  "batch_id": "history-128",
+  "record_path": "../records/0128-quantile-information-and-pooling-objective.md",
+  "record_sha256": "2c850fa6b14e2af8173d135aa9dd0db2ba08e3b24592c7f2ad99d5c35781f3ae",
+  "claims": [
+    {
+      "claim_id": "H128-C01",
+      "title": "문헌·정적 코드·기호 계산 기록",
+      "claim": "원98(2026-09-26)은 중앙값 주변 밀도와 sample 수가 공유 판단에 주는 영향을 문헌·설치 코드·기호 모형으로 검토했다. 실제 traffic 수치 실험이나 새 Tab/RCTL fit·forward·gradient는 없었다. 이번 아카이브도 기존 원문과 저장 분수의 확인이며 원 연구 코드 실행/import·새 모델 실행0이다.",
+      "claim_type": "historical_status",
+      "record_anchor": "claim-01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001872",
+          "line_ranges": [
+            [
+              3,
+              9
+            ]
+          ],
+          "source_sha256": "a40df30e59459e3e45ada5a36e9f2b23a5bdbfdfb2c595ac3bfdaec3ced1a88b",
+          "team_source": "../sources/history-128.md#src-0001872"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              1,
+              11
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001874",
+          "line_ranges": [
+            [
+              1,
+              5
+            ]
+          ],
+          "source_sha256": "cbd21f48dcd3932fd518f14f945d6a9c45b8978c494511243fc64f4284ab8345",
+          "team_source": "../sources/history-128.md#src-0001874"
+        },
+        {
+          "source_id": "SRC-0001875",
+          "line_ranges": [
+            [
+              90,
+              102
+            ]
+          ],
+          "source_sha256": "d32a143ebf6028c1bcf1f45cc36f78875932d87ab6d6bf00fb3e526f266a6e95",
+          "team_source": "../sources/history-128.md#src-0001875"
+        },
+        {
+          "source_id": "SRC-0001880",
+          "line_ranges": [
+            [
+              7,
+              14
+            ]
+          ],
+          "source_sha256": "3e829b6cd4c6e1abae947092c777894dd457a0c930ad12221379a36135c5850a",
+          "team_source": "../sources/history-128.md#src-0001880"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H128-C02",
+      "title": "이상적 MAE 공유 비용과 유한 자료 추정",
+      "claim": "참 조건부 중앙값이 같으면 이상적인 MAE 공유 비용이0일 수 있어도, 자료로 그 중앙값을 추정하는 어려움이0이라는 뜻은 아니다. 원08·23–25·28·38에서 논의한 자료 공유와 함수 추정의 차이를 중앙값 주변 밀도의 관점에서 구체화했다. 이상적 예측 관계의 일치와 유한 학습의 이득을 같은 판정으로 쓰지 않는다.",
+      "claim_type": "method_boundary",
+      "record_anchor": "claim-02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001874",
+          "line_ranges": [
+            [
+              7,
+              9
+            ]
+          ],
+          "source_sha256": "cbd21f48dcd3932fd518f14f945d6a9c45b8978c494511243fc64f4284ab8345",
+          "team_source": "../sources/history-128.md#src-0001874"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              7,
+              11
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001877",
+          "line_ranges": [
+            [
+              7,
+              9
+            ]
+          ],
+          "source_sha256": "021feca0fb45cfb4ce9484fb96ab54e5f4f73398bea7127149159cd6d1c41f7a",
+          "team_source": "../sources/history-128.md#src-0001877"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H128-C03",
+      "title": "잡음 분포와 학습 불확실성의 역할",
+      "claim": "정답 분포의 폭을 함수 추정의 epistemic 불확실성과 동일시하지 않으면서, 그 분포가 유한 sample의 학습 효율에 영향을 줄 수 있다는 점도 보존한다. 미래 잡음이라는 이유만으로 밀도를 학습과 무관하다고 배제하거나, 좋은 Tab 직접 예측을 밀도 정확성·RCTL 학습 개선의 증거로 바꾸지 않는다.",
+      "claim_type": "concept_scope",
+      "record_anchor": "claim-03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              7,
+              11
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              54,
+              60
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001877",
+          "line_ranges": [
+            [
+              82,
+              86
+            ]
+          ],
+          "source_sha256": "021feca0fb45cfb4ce9484fb96ab54e5f4f73398bea7127149159cd6d1c41f7a",
+          "team_source": "../sources/history-128.md#src-0001877"
+        },
+        {
+          "source_id": "SRC-0001874",
+          "line_ranges": [
+            [
+              22,
+              25
+            ]
+          ],
+          "source_sha256": "cbd21f48dcd3932fd518f14f945d6a9c45b8978c494511243fc64f4284ab8345",
+          "team_source": "../sources/history-128.md#src-0001874"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H128-C04",
+      "title": "단일 target 보호와 전체 cell 평균",
+      "claim": "하나의 target에 손해인 donor가 모든 cell의 동등 가중 평균에는 이득일 수 있다. 한 target을 개선하는 transfer 규칙을 양방향으로 적용하거나 그래프 edge로 바꾸는 것만으로 공동 clustering 목적을 최적화했다고 할 수 없다. 개별 cell 보호가 필요한 경우 목적과 정규화·손실 비중을 별도로 명시한다.",
+      "claim_type": "objective_scope",
+      "record_anchor": "claim-04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001872",
+          "line_ranges": [
+            [
+              5,
+              9
+            ]
+          ],
+          "source_sha256": "a40df30e59459e3e45ada5a36e9f2b23a5bdbfdfb2c595ac3bfdaec3ced1a88b",
+          "team_source": "../sources/history-128.md#src-0001872"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              21,
+              23
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              36,
+              48
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              56,
+              60
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001883",
+          "PDF_pages": [
+            2,
+            3
+          ],
+          "PDF_text_line_ranges": {
+            "2": [
+              [
+                1,
+                43
+              ]
+            ],
+            "3": [
+              [
+                1,
+                36
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "c3ad33fb922e2f0003f386a2c79723c5efed171eb2dfe83f02967a2f6d150726",
+          "team_source": "../sources/history-128.md#src-0001883"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H128-C05",
+      "title": "Bai v2의 선형 QR target와 source",
+      "claim": "Bai 등2411.19933v2는 고정 분위수τ에서 희소 target 계수β*를 추정하는 고차원 선형 QR이다. source 계수w^(k)와의 차이δ^(k)를 작은ℓ1 대비로 선별하고, 독립 source datasets를 둔다. 이 연구의 target 계수 목적과 전체 cell MAE·비선형 RCTL의 학습 목적은 구별한다.",
+      "claim_type": "primary_method",
+      "record_anchor": "claim-05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001883",
+          "PDF_pages": [
+            2,
+            3,
+            6
+          ],
+          "PDF_text_line_ranges": {
+            "2": [
+              [
+                1,
+                43
+              ]
+            ],
+            "3": [
+              [
+                1,
+                36
+              ]
+            ],
+            "6": [
+              [
+                1,
+                46
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "c3ad33fb922e2f0003f386a2c79723c5efed171eb2dfe83f02967a2f6d150726",
+          "team_source": "../sources/history-128.md#src-0001883"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              17,
+              17
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H128-C06",
+      "title": "v1과 v2 정보 조건의 실제 차이",
+      "claim": "현재 공식 v1 PDF10 식3은 E[f0]/E[fk]와 균형 sample 수의 단순화를 명시한다. 원문 v2 PDF8 식2는 n0·E[f0]/(nk·E[fk])를 사용한다. v1이 모든 손실·이론에서 sample 수를 무시했다고 확대하지 않는다. 이번 v1 PDF의 확보는 당시 로컬 다운로드 기록이 아니라 현재 판본 대조다.",
+      "claim_type": "primary_version",
+      "record_anchor": "claim-06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001874",
+          "line_ranges": [
+            [
+              11,
+              16
+            ]
+          ],
+          "source_sha256": "cbd21f48dcd3932fd518f14f945d6a9c45b8978c494511243fc64f4284ab8345",
+          "team_source": "../sources/history-128.md#src-0001874"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              21,
+              21
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001883",
+          "PDF_pages": [
+            4,
+            8,
+            15,
+            16
+          ],
+          "PDF_text_line_ranges": {
+            "4": [
+              [
+                1,
+                58
+              ]
+            ],
+            "8": [
+              [
+                1,
+                60
+              ]
+            ],
+            "15": [
+              [
+                1,
+                54
+              ]
+            ],
+            "16": [
+              [
+                1,
+                120
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "c3ad33fb922e2f0003f386a2c79723c5efed171eb2dfe83f02967a2f6d150726",
+          "team_source": "../sources/history-128.md#src-0001883"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [
+        {
+          "reference_id": "REF-H128-BAI-v1",
+          "URL": "https://arxiv.org/pdf/2411.19933v1",
+          "PDF_pages": [
+            1,
+            9,
+            10
+          ],
+          "current_PDF_sha256": "9ac6f6dfc97e30a6fdae7260a0308643fa592dff35ee661a282aa7fa5e918d01",
+          "current_acquisition_not_historical_source": true,
+          "whole_paper_or_algorithm_read": false
+        }
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H128-C07",
+      "title": "이론식·one-shot·교대 추정의 구별",
+      "claim": "v2 이론식3은 β와 source 대비δ를 함께 추정하는 희소 score 제약이다. 실용 Algorithm1은 초기 target/대비 추정과 두 선별집합의 교집합을 만든 뒤, 그 대비를 고정한 pooled QR을 푼다. Appendix Algorithm3은 알려진 source 집합에서 대비와β를 번갈아 갱신한다. 원문의 rate 연결 및 반복 설명을 보존하되 같은 최적화식으로 혼합하거나 공식 구현·모든 증명을 검증한 것으로 쓰지 않는다.",
+      "claim_type": "primary_algorithm_scope",
+      "record_anchor": "claim-07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001883",
+          "PDF_pages": [
+            8,
+            9,
+            15,
+            16,
+            17,
+            39,
+            40
+          ],
+          "PDF_text_line_ranges": {
+            "8": [
+              [
+                1,
+                60
+              ]
+            ],
+            "9": [
+              [
+                1,
+                41
+              ]
+            ],
+            "15": [
+              [
+                1,
+                54
+              ]
+            ],
+            "16": [
+              [
+                1,
+                120
+              ]
+            ],
+            "17": [
+              [
+                1,
+                74
+              ]
+            ],
+            "39": [
+              [
+                1,
+                66
+              ]
+            ],
+            "40": [
+              [
+                1,
+                129
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "c3ad33fb922e2f0003f386a2c79723c5efed171eb2dfe83f02967a2f6d150726",
+          "team_source": "../sources/history-128.md#src-0001883"
+        },
+        {
+          "source_id": "SRC-0001875",
+          "line_ranges": [
+            [
+              27,
+              39
+            ]
+          ],
+          "source_sha256": "d32a143ebf6028c1bcf1f45cc36f78875932d87ab6d6bf00fb3e526f266a6e95",
+          "team_source": "../sources/history-128.md#src-0001875"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H128-C08",
+      "title": "Bai의 밀도 추정은 잔차 주변 빈도다",
+      "claim": "v2 식7은 추정한 β+δ의 잔차가 bandwidth bk 안에 든 빈도를2bk·nk로 나누는 평균 잔차 밀도 추정이다. 전체 CDF를 직접 추정한 절차가 아니다. 선별에는 계수 차이와 sample 수를 함께 쓰며, 이 kernel 계산을 Tab의 미래값 분위수로 바꿀 때도 척도·조건·오차의 연결이 별도로 필요하다.",
+      "claim_type": "primary_estimator",
+      "record_anchor": "claim-08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001883",
+          "PDF_pages": [
+            14,
+            15,
+            16,
+            40,
+            41
+          ],
+          "PDF_text_line_ranges": {
+            "14": [
+              [
+                1,
+                68
+              ]
+            ],
+            "15": [
+              [
+                1,
+                54
+              ]
+            ],
+            "16": [
+              [
+                1,
+                120
+              ]
+            ],
+            "40": [
+              [
+                1,
+                129
+              ]
+            ],
+            "41": [
+              [
+                1,
+                34
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "c3ad33fb922e2f0003f386a2c79723c5efed171eb2dfe83f02967a2f6d150726",
+          "team_source": "../sources/history-128.md#src-0001883"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              17,
+              23
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H128-C09",
+      "title": "밀도 scalar와 회귀 정보 행렬의 범위",
+      "claim": "Bai의 조건은 밀도로 가중한 입력 행렬의 restricted eigenvalue, sub-Gaussian 설계, 밀도 정칙성과 source 분리 등을 포함한다. 단일 밀도 scalar만으로 회귀 방향의 정보나 임의 시계열의 유효 sample 수를 보장하지 않는다. theoretical error/detection 조건을 실제 RCTL 성능·clustering 이득으로 옮기지 않는다.",
+      "claim_type": "primary_assumptions",
+      "record_anchor": "claim-09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001883",
+          "PDF_pages": [
+            10,
+            11,
+            13,
+            16,
+            17
+          ],
+          "PDF_text_line_ranges": {
+            "10": [
+              [
+                1,
+                70
+              ]
+            ],
+            "11": [
+              [
+                1,
+                83
+              ]
+            ],
+            "13": [
+              [
+                1,
+                53
+              ]
+            ],
+            "16": [
+              [
+                1,
+                120
+              ]
+            ],
+            "17": [
+              [
+                1,
+                74
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "c3ad33fb922e2f0003f386a2c79723c5efed171eb2dfe83f02967a2f6d150726",
+          "team_source": "../sources/history-128.md#src-0001883"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              17,
+              19
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              58,
+              60
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H128-C10",
+      "title": "Bai PDF7의 문장·식 방향과 경계",
+      "claim": "v2 PDF7의 target 밀도f0가 더 작다는 문장은 바로 뒤의 pooling 분산과 손해 부등식 방향에 맞지 않는다. 공통 Σx, 양의 밀도 아래 r=n1/n0,s=f1/f0이면 pooled/target 분산 주항 비는(1+r)/(1+rs)^2다. s<1/(sqrt(1+r)+1)에서 strict 손해이며 경계에서는 주항이 같다. 식과 직접 비교를 기준으로 해석하고 논문 전체의 무효나 RCTL 실패로 확대하지 않는다.",
+      "claim_type": "primary_inconsistency",
+      "record_anchor": "claim-10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              72,
+              73
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001875",
+          "line_ranges": [
+            [
+              34,
+              39
+            ]
+          ],
+          "source_sha256": "d32a143ebf6028c1bcf1f45cc36f78875932d87ab6d6bf00fb3e526f266a6e95",
+          "team_source": "../sources/history-128.md#src-0001875"
+        },
+        {
+          "source_id": "SRC-0001883",
+          "PDF_pages": [
+            6,
+            7,
+            8,
+            12
+          ],
+          "PDF_text_line_ranges": {
+            "6": [
+              [
+                1,
+                46
+              ]
+            ],
+            "7": [
+              [
+                1,
+                90
+              ]
+            ],
+            "8": [
+              [
+                1,
+                60
+              ]
+            ],
+            "12": [
+              [
+                1,
+                42
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "c3ad33fb922e2f0003f386a2c79723c5efed171eb2dfe83f02967a2f6d150726",
+          "team_source": "../sources/history-128.md#src-0001883"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H128-C11",
+      "title": "Gu는 공통 기울기 아래 절편을 묶는다",
+      "claim": "Gu·Volgushev v2는 공통 β(τ)와 개별 절편α_i(τ)를 가진 panel QR에서 절편의 latent groups를 찾는다. group 수와 소속은 분위수τ에 따라 달라질 수 있다. 임의의 비선형 cell 함수 전체나 동일 미래 출력값을 묶는 모형과 같다고 쓰지 않는다.",
+      "claim_type": "primary_group_target",
+      "record_anchor": "claim-11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001887",
+          "PDF_pages": [
+            1,
+            4,
+            7
+          ],
+          "PDF_text_line_ranges": {
+            "1": [
+              [
+                1,
+                40
+              ]
+            ],
+            "4": [
+              [
+                1,
+                50
+              ]
+            ],
+            "7": [
+              [
+                1,
+                67
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "d328d0a7cf8f09b5a406a1f36c079bc394c31d224d0e14413fe738519f7ae0e2",
+          "team_source": "../sources/history-128.md#src-0001887"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              18,
+              18
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H128-C12",
+      "title": "Gu의 fusion·refit·정보기준",
+      "claim": "Gu는 초기 절편 차이의 역제곱을 가중한 fusion penalty로 후보 group을 만들고, 각 후보에서 실제 자료를 재추정한 pinball loss에 group 수 벌점을 더해 선택한다. 최종 추정을 초기 계수의 단순 평균이나 RCTL 모델 가중치 병합으로 해석하지 않는다.",
+      "claim_type": "primary_algorithm",
+      "record_anchor": "claim-12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001887",
+          "PDF_pages": [
+            4,
+            5,
+            6,
+            10
+          ],
+          "PDF_text_line_ranges": {
+            "4": [
+              [
+                1,
+                50
+              ]
+            ],
+            "5": [
+              [
+                1,
+                52
+              ]
+            ],
+            "6": [
+              [
+                1,
+                73
+              ]
+            ],
+            "10": [
+              [
+                1,
+                78
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "d328d0a7cf8f09b5a406a1f36c079bc394c31d224d0e14413fe738519f7ae0e2",
+          "team_source": "../sources/history-128.md#src-0001887"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              18,
+              18
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H128-C13",
+      "title": "Gu의 역밀도·독립성·pointwise 조건",
+      "claim": "Gu의 sparsity ŝ는 초기 fit의 pooled residual 경험 분위수 폭으로 계산하고, 공통 잔차 밀도 단순화 아래 역밀도에 대응한다. 일반적인 inverse-density 합과 이 단순화를 구분한다. 본문은 개체 내부 i.i.d./개체 간 독립, bounded design·양의 밀도·group separation을 두며 pointwise 결과의 범위도 밝힌다. 겹치는 traffic lag나 거의 붙은 모든 group에 보장을 자동 적용하지 않는다.",
+      "claim_type": "primary_limits",
+      "record_anchor": "claim-13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001887",
+          "PDF_pages": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "PDF_text_line_ranges": {
+            "4": [
+              [
+                1,
+                50
+              ]
+            ],
+            "5": [
+              [
+                1,
+                52
+              ]
+            ],
+            "6": [
+              [
+                1,
+                73
+              ]
+            ],
+            "7": [
+              [
+                1,
+                67
+              ]
+            ],
+            "8": [
+              [
+                1,
+                74
+              ]
+            ],
+            "9": [
+              [
+                1,
+                91
+              ]
+            ],
+            "10": [
+              [
+                1,
+                78
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "d328d0a7cf8f09b5a406a1f36c079bc394c31d224d0e14413fe738519f7ae0e2",
+          "team_source": "../sources/history-128.md#src-0001887"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              18,
+              18
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H128-C14",
+      "title": "Yang은 slope 함수와 개별 효과를 구분한다",
+      "claim": "Yang 등 v1은 조건Z에 따른 slope 함수β_i(Z)를 묶으며 개별 효과α_i는 같은 group에서도 다를 수 있다. 관측한Z에서 계수 함수의 Euclidean 차이를 평균해 complete linkage로 묶는다. group 수 선택용 초기 함수 평균과 최종 실제 sample을 사용한 post-grouping QR을 구분한다.",
+      "claim_type": "primary_group_target",
+      "record_anchor": "claim-14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001891",
+          "PDF_pages": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "PDF_text_line_ranges": {
+            "6": [
+              [
+                1,
+                29
+              ]
+            ],
+            "7": [
+              [
+                1,
+                42
+              ]
+            ],
+            "8": [
+              [
+                1,
+                47
+              ]
+            ],
+            "9": [
+              [
+                1,
+                31
+              ]
+            ],
+            "10": [
+              [
+                1,
+                42
+              ]
+            ],
+            "11": [
+              [
+                1,
+                55
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "b224c87cddac030f65e99a4fe64b7aee404a8b8653be490cc7115aae4cf216f7",
+          "team_source": "../sources/history-128.md#src-0001891"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              19,
+              19
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H128-C15",
+      "title": "Yang의 group 회복·group 수·CLT 조건",
+      "claim": "Yang의 known-R group 회복은 Assumptions1–4 아래이며 별도의 cross-sectional 독립 제약을 요구하지 않는다. unknown-R 선택에는5가 추가되고 post-grouping CLT에는1–7 및 joint mixing·covariance/group 크기 조건이 필요하다. 같은 조건 세트로 뭉뚱그리거나 모든 공통 충격을 배제하는 논문으로 읽지 않는다.",
+      "claim_type": "primary_theory_scope",
+      "record_anchor": "claim-15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001891",
+          "PDF_pages": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "PDF_text_line_ranges": {
+            "12": [
+              [
+                1,
+                66
+              ]
+            ],
+            "13": [
+              [
+                1,
+                40
+              ]
+            ],
+            "14": [
+              [
+                1,
+                81
+              ]
+            ],
+            "15": [
+              [
+                1,
+                46
+              ]
+            ],
+            "16": [
+              [
+                1,
+                49
+              ]
+            ],
+            "17": [
+              [
+                1,
+                38
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "b224c87cddac030f65e99a4fe64b7aee404a8b8653be490cc7115aae4cf216f7",
+          "team_source": "../sources/history-128.md#src-0001891"
+        },
+        {
+          "source_id": "SRC-0001875",
+          "line_ranges": [
+            [
+              60,
+              69
+            ]
+          ],
+          "source_sha256": "d32a143ebf6028c1bcf1f45cc36f78875932d87ab6d6bf00fb3e526f266a6e95",
+          "team_source": "../sources/history-128.md#src-0001875"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H128-C16",
+      "title": "Yang의 시간 변형과 재학습 범위",
+      "claim": "Yang은 smooth한 scaled time t/T나 개별Z_it 모형 변형도 명시한다. 이는 임의 급변·비정상 traffic 전체의 보장이 아니다. clustering 후 원자료의 공동 추정으로 함수 수를 줄이는 구조와, N개의 서로 다른 입력·관측을 계산하지 않아도 된다는 비용 주장은 구분한다.",
+      "claim_type": "primary_method_boundary",
+      "record_anchor": "claim-16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001891",
+          "PDF_pages": [
+            6,
+            7,
+            8,
+            11,
+            12,
+            14,
+            17
+          ],
+          "PDF_text_line_ranges": {
+            "6": [
+              [
+                1,
+                29
+              ]
+            ],
+            "7": [
+              [
+                1,
+                42
+              ]
+            ],
+            "8": [
+              [
+                1,
+                47
+              ]
+            ],
+            "11": [
+              [
+                1,
+                55
+              ]
+            ],
+            "12": [
+              [
+                1,
+                66
+              ]
+            ],
+            "14": [
+              [
+                1,
+                81
+              ]
+            ],
+            "17": [
+              [
+                1,
+                38
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "b224c87cddac030f65e99a4fe64b7aee404a8b8653be490cc7115aae4cf216f7",
+          "team_source": "../sources/history-128.md#src-0001891"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              19,
+              19
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              64,
+              68
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H128-C17",
+      "title": "직접 기호 모형의 가정과 단위",
+      "claim": "기호 모형은 입력 없이 중앙값10 하나를 추정하는 두 독립 Uniform[9.5,10.5]/Uniform[5,15] 집단과 cell당 n개 sample이다. 중앙값 밀도는1/0.1, cell loss는 동일 비중이다. 실제 traffic·특징·시간 분할·학습 가중치·seed의 실험이 아니다. 저장 계수는 n을 곱한 점근적 주항이며 유한 n의 정확한 값으로 쓰지 않는다.",
+      "claim_type": "symbolic_scope",
+      "record_anchor": "claim-17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              25,
+              29
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001876",
+          "JSON_pointers": [
+            "/model",
+            "/quantities",
+            "/traffic_data_used",
+            "/random_samples_generated",
+            "/model_executed"
+          ],
+          "symbolic_not_traffic_metrics": true,
+          "source_sha256": "941efcad06c8319858d7769ec20c4920b4846ccb0a51e64cb4356897b16a689e",
+          "team_source": "../sources/history-128.md#src-0001876"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H128-C18",
+      "title": "각자·공동 중앙값 분산의 계수",
+      "claim": "개별 중앙값 분산의 n 배 계수는 A=1/4, B=25이고, 공동 추정은 양쪽에50/121≈0.413223이다. 공통 중앙값에서 두 경험 CDF의 분산과 혼합 CDF 기울기를 사용한 결과다. 이번 자체 Fraction 계산에서 저장된 계수와 정확히 일치했지만 독립 simulation·model 재현으로 집계하지 않는다.",
+      "claim_type": "symbolic_numeric",
+      "record_anchor": "claim-18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              29,
+              44
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001882",
+          "line_ranges": [
+            [
+              29,
+              48
+            ]
+          ],
+          "source_sha256": "64adf622d78dbad78abaaca3dd0a1760e1f2546883745c426992fab84232a0a3",
+          "team_source": "../sources/history-128.md#src-0001882"
+        },
+        {
+          "source_id": "SRC-0001876",
+          "JSON_pointers": [
+            "/variance_A_local_times_n",
+            "/variance_B_local_times_n",
+            "/variance_pooled_times_n"
+          ],
+          "symbolic_not_traffic_metrics": true,
+          "source_sha256": "941efcad06c8319858d7769ec20c4920b4846ccb0a51e64cb4356897b16a689e",
+          "team_source": "../sources/history-128.md#src-0001876"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {
+        "symbolic_and_provenance_check": "../evidence/0128-quantile-information-and-pooling-objective/numeric-check.json",
+        "own_arithmetic_not_model_experiment": true
+      },
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H128-C19",
+      "title": "A의 손해와 B의 추정 안정화",
+      "claim": "공동 추정의 분산 주항은 A의1/4보다 커져65.289256% 증가하고 B의25보다 작다. 이 수치는 추정 분산에 관한 것이며 A의 전체 MAE가 같은 비율로 악화했다는 실제 성능 결과가 아니다. 한쪽의 손해만으로 전체 cell 공유의 손해를 확정하지 않는다.",
+      "claim_type": "symbolic_counterexample",
+      "record_anchor": "claim-19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              31,
+              46
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001876",
+          "JSON_pointers": [
+            "/A_variance_increase_percent",
+            "/variance_A_local_times_n",
+            "/variance_B_local_times_n",
+            "/variance_pooled_times_n"
+          ],
+          "symbolic_not_traffic_metrics": true,
+          "source_sha256": "941efcad06c8319858d7769ec20c4920b4846ccb0a51e64cb4356897b16a689e",
+          "team_source": "../sources/history-128.md#src-0001876"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {
+        "symbolic_and_provenance_check": "../evidence/0128-quantile-information-and-pooling-objective/numeric-check.json",
+        "own_arithmetic_not_model_experiment": true
+      },
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H128-C20",
+      "title": "전체 평균 초과 MAE 주항의 비교",
+      "claim": "중앙값 주변에서 population MAE의 증가가 밀도×δ²라는 관계를 이용하면, 동등 cell 평균 추정 초과 MAE의 n 배 계수는 개별11/8에서 공동5/22로 줄고 비는20/121이다. 이 비교는 추정 오차의 주항이며 전체 MAE 감소율·현재 traffic의 clustering 개선률로 쓰지 않는다.",
+      "claim_type": "symbolic_numeric",
+      "record_anchor": "claim-20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              36,
+              44
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001876",
+          "JSON_pointers": [
+            "/mean_local_excess_MAE_times_n",
+            "/mean_pooled_excess_MAE_times_n",
+            "/mean_excess_ratio"
+          ],
+          "symbolic_not_traffic_metrics": true,
+          "source_sha256": "941efcad06c8319858d7769ec20c4920b4846ccb0a51e64cb4356897b16a689e",
+          "team_source": "../sources/history-128.md#src-0001876"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {
+        "symbolic_and_provenance_check": "../evidence/0128-quantile-information-and-pooling-objective/numeric-check.json",
+        "own_arithmetic_not_model_experiment": true
+      },
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H128-C21",
+      "title": "불가피한 MAE와 목표·척도를 보존한다",
+      "claim": "이번 정리의 추가 산술 확인에서 Uniform 두 집단의 참 중앙값에 남는 동등 cell 평균 MAE는11/8이다. 원98의 추정 초과항과 별도이며 숫자가 같은 개별 초과항 계수11/8과 혼합하지 않는다. cell 보호·동등 평균·정규화/가중치를 먼저 구별하며 기호 모형의 원척도 결과를 기존 정규화 RCTL/Tab 점수와 합치지 않는다.",
+      "claim_type": "metric_scope",
+      "record_anchor": "claim-21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              38,
+              48
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              58,
+              60
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001876",
+          "JSON_pointers": [
+            "/quantities",
+            "/mean_local_excess_MAE_times_n"
+          ],
+          "symbolic_not_traffic_metrics": true,
+          "source_sha256": "941efcad06c8319858d7769ec20c4920b4846ccb0a51e64cb4356897b16a689e",
+          "team_source": "../sources/history-128.md#src-0001876"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {
+        "symbolic_and_provenance_check": "../evidence/0128-quantile-information-and-pooling-objective/numeric-check.json",
+        "own_arithmetic_not_model_experiment": true
+      },
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {
+        "irreducible_equal_cell_MAE": "11/8",
+        "formula": "mean(Uniform-width/4)=(1/4+10/4)/2",
+        "new_experiment": false
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H128-C22",
+      "title": "독립 sample 수와 공분산의 차이",
+      "claim": "기호 CDF 분산은 독립 sample을 가정한다. 시간·cell 의존이 있으면 경험 CDF의 분산에 공분산 항이 더해지므로 행 수 증가를 독립 정보 증가로 계산하지 않는다. 이 기록은 그 의존성을 보정하는 새 알고리즘이나 실제 유효 sample 수를 검증한 결과가 아니다.",
+      "claim_type": "dependence_scope",
+      "record_anchor": "claim-22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              42,
+              48
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001874",
+          "line_ranges": [
+            [
+              23,
+              25
+            ]
+          ],
+          "source_sha256": "cbd21f48dcd3932fd518f14f945d6a9c45b8978c494511243fc64f4284ab8345",
+          "team_source": "../sources/history-128.md#src-0001874"
+        },
+        {
+          "source_id": "SRC-0001887",
+          "PDF_pages": [
+            4
+          ],
+          "PDF_text_line_ranges": {
+            "4": [
+              [
+                1,
+                50
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "d328d0a7cf8f09b5a406a1f36c079bc394c31d224d0e14413fe738519f7ae0e2",
+          "team_source": "../sources/history-128.md#src-0001887"
+        },
+        {
+          "source_id": "SRC-0001891",
+          "PDF_pages": [
+            12,
+            14,
+            15
+          ],
+          "PDF_text_line_ranges": {
+            "12": [
+              [
+                1,
+                66
+              ]
+            ],
+            "14": [
+              [
+                1,
+                81
+              ]
+            ],
+            "15": [
+              [
+                1,
+                46
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "b224c87cddac030f65e99a4fe64b7aee404a8b8653be490cc7115aae4cf216f7",
+          "team_source": "../sources/history-128.md#src-0001891"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H128-C23",
+      "title": "Tab 밀도 구현의 Δalpha와 수치 처리",
+      "claim": "설치된 TabICL2.2.0의 quantile distribution은 분위수 사이 선형 spline 기울기를 구하고 log_prob/pdf에서 그 역수 관계를 사용한다. 양의 비퇴화·clamp가 작동하지 않는 내부 구간의 밀도는 Δalpha/Δq이며 확률 차이를 생략하지 않는다. monotonicity 처리·tail·수치 clamp가 있는 구현을 모든 입력의 참 밀도나 실제 calibration 보장으로 강화하지 않는다.",
+      "claim_type": "code_scope",
+      "record_anchor": "claim-23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              50,
+              54
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0047550",
+          "line_ranges": [
+            [
+              544,
+              601
+            ]
+          ],
+          "reused_existing_full_review": true,
+          "current_whole_code_re_read": false,
+          "source_code_executed": false,
+          "source_code_imported": false,
+          "source_sha256": "7e09ac0c3ce0260dc07cef79b0a98ee63b0785efafbf415fd243fe2981499b99",
+          "team_source": "../sources/history-128.md#src-0047550"
+        },
+        {
+          "source_id": "SRC-0047550",
+          "line_ranges": [
+            [
+              953,
+              983
+            ]
+          ],
+          "reused_existing_full_review": true,
+          "current_whole_code_re_read": false,
+          "source_code_executed": false,
+          "source_code_imported": false,
+          "source_sha256": "7e09ac0c3ce0260dc07cef79b0a98ee63b0785efafbf415fd243fe2981499b99",
+          "team_source": "../sources/history-128.md#src-0047550"
+        },
+        {
+          "source_id": "SRC-0047550",
+          "line_ranges": [
+            [
+              1031,
+              1102
+            ]
+          ],
+          "reused_existing_full_review": true,
+          "current_whole_code_re_read": false,
+          "source_code_executed": false,
+          "source_code_imported": false,
+          "source_sha256": "7e09ac0c3ce0260dc07cef79b0a98ee63b0785efafbf415fd243fe2981499b99",
+          "team_source": "../sources/history-128.md#src-0047550"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H128-C24",
+      "title": "Raw quantiles와 구간 평균 농도",
+      "claim": "regressor.predict는 raw_quantiles 전달·반환 경로를 갖고 원척도로 inverse transform한 뒤 ensemble 평균을 반환한다. 45%–55% 분위수의0.1/간격은 해당 구간 평균 농도 계산이며 한 점의 참 밀도를 직접 관측한 값이 아니다. 이번 확인은 정적 코드 재독이고 새 inference를 호출하지 않았다.",
+      "claim_type": "code_API_scope",
+      "record_anchor": "claim-24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              52,
+              54
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0047573",
+          "line_ranges": [
+            [
+              621,
+              668
+            ]
+          ],
+          "reused_existing_full_review": true,
+          "current_whole_code_re_read": false,
+          "source_code_executed": false,
+          "source_code_imported": false,
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-128.md#src-0047573"
+        },
+        {
+          "source_id": "SRC-0047573",
+          "line_ranges": [
+            [
+              710,
+              760
+            ]
+          ],
+          "reused_existing_full_review": true,
+          "current_whole_code_re_read": false,
+          "source_code_executed": false,
+          "source_code_imported": false,
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-128.md#src-0047573"
+        },
+        {
+          "source_id": "SRC-0047550",
+          "line_ranges": [
+            [
+              579,
+              601
+            ]
+          ],
+          "reused_existing_full_review": true,
+          "current_whole_code_re_read": false,
+          "source_code_executed": false,
+          "source_code_imported": false,
+          "source_sha256": "7e09ac0c3ce0260dc07cef79b0a98ee63b0785efafbf415fd243fe2981499b99",
+          "team_source": "../sources/history-128.md#src-0047550"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H128-C25",
+      "title": "좋은 점 예측과 밀도 정확성",
+      "claim": "좋은 mean·median 예측은 중앙값 주변 기울기의 정확성을 보장하지 않는다. 좁은 분위수 간격의 작은 오차도 밀도 값을 크게 바꿀 수 있다. 기존 Tab 직접 예측의 긍정 결과를 유지하면서 밀도 검증이나 새로운 소속의 RCTL 개선으로 바꾸어 재인용하지 않는다.",
+      "claim_type": "evidence_boundary",
+      "record_anchor": "claim-25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001872",
+          "line_ranges": [
+            [
+              17,
+              19
+            ]
+          ],
+          "source_sha256": "a40df30e59459e3e45ada5a36e9f2b23a5bdbfdfb2c595ac3bfdaec3ced1a88b",
+          "team_source": "../sources/history-128.md#src-0001872"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              54,
+              60
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001877",
+          "line_ranges": [
+            [
+              34,
+              40
+            ]
+          ],
+          "source_sha256": "021feca0fb45cfb4ce9484fb96ab54e5f4f73398bea7127149159cd6d1c41f7a",
+          "team_source": "../sources/history-128.md#src-0001877"
+        },
+        {
+          "source_id": "SRC-0001877",
+          "line_ranges": [
+            [
+              82,
+              86
+            ]
+          ],
+          "source_sha256": "021feca0fb45cfb4ce9484fb96ab54e5f4f73398bea7127149159cd6d1c41f7a",
+          "team_source": "../sources/history-128.md#src-0001877"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        6
+      ]
+    },
+    {
+      "claim_id": "H128-C26",
+      "title": "밀도만으로 RCTL의 학습 정보를 알 수 없다",
+      "claim": "입력 없는 중앙값 추정에서의 밀도 효과와, 회귀의 입력 방향·밀도 가중 정보 행렬, 비선형 RCTL의 표현/미분 방향·gradient 의존을 구분한다. Tab 밀도 scalar를 RCTL 분산 감소량이나 pooling 이득으로 바로 대입하지 않는다. 실제 learner의 정보와 목적을 연결한 직접 근거는 이 기록에서 미확인이다.",
+      "claim_type": "learner_scope",
+      "record_anchor": "claim-26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              56,
+              60
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001883",
+          "PDF_pages": [
+            10
+          ],
+          "PDF_text_line_ranges": {
+            "10": [
+              [
+                1,
+                70
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "c3ad33fb922e2f0003f386a2c79723c5efed171eb2dfe83f02967a2f6d150726",
+          "team_source": "../sources/history-128.md#src-0001883"
+        },
+        {
+          "source_id": "SRC-0001891",
+          "PDF_pages": [
+            11,
+            14,
+            16
+          ],
+          "PDF_text_line_ranges": {
+            "11": [
+              [
+                1,
+                55
+              ]
+            ],
+            "14": [
+              [
+                1,
+                81
+              ]
+            ],
+            "16": [
+              [
+                1,
+                49
+              ]
+            ]
+          },
+          "whole_paper_or_all_proofs_read": false,
+          "source_sha256": "b224c87cddac030f65e99a4fe64b7aee404a8b8653be490cc7115aae4cf216f7",
+          "team_source": "../sources/history-128.md#src-0001891"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        6
+      ]
+    },
+    {
+      "claim_id": "H128-C27",
+      "title": "미추천과 다시 검토할 조건",
+      "claim": "당시 밀도 기반 donor/병합안은 새 추천 방향으로 채택하지 않았다. 이미 알려진 선별·group 복잡도 조절에 추정기만 바꾸는 것으로 실익을 확보하지 못했다는 판단이다. 같은 원리 전체의 불가능성이나 실제 RCTL 성능 실패로 확대하지 않는다. 실제 문제, 다른 유용한 소속 결정 또는 같은 유용한 결정의 효율, strong global 대안과 전체 비용의 차이를 새로 특정해야 한다.",
+      "claim_type": "historical_decision",
+      "record_anchor": "claim-27",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              62,
+              68
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001877",
+          "line_ranges": [
+            [
+              44,
+              58
+            ]
+          ],
+          "source_sha256": "021feca0fb45cfb4ce9484fb96ab54e5f4f73398bea7127149159cd6d1c41f7a",
+          "team_source": "../sources/history-128.md#src-0001877"
+        },
+        {
+          "source_id": "SRC-0001877",
+          "line_ranges": [
+            [
+              80,
+              86
+            ]
+          ],
+          "source_sha256": "021feca0fb45cfb4ce9484fb96ab54e5f4f73398bea7127149159cd6d1c41f7a",
+          "team_source": "../sources/history-128.md#src-0001877"
+        },
+        {
+          "source_id": "SRC-0001872",
+          "line_ranges": [
+            [
+              19,
+              19
+            ]
+          ],
+          "source_sha256": "a40df30e59459e3e45ada5a36e9f2b23a5bdbfdfb2c595ac3bfdaec3ced1a88b",
+          "team_source": "../sources/history-128.md#src-0001872"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H128-C28",
+      "title": "과거 예산과 현재 아카이브 실행 범위",
+      "claim": "원98의 누적 원장 SHA807600…는 원97 이후와 같은 바이트이며 추가 모델 사용·예산 reset을 기록하지 않았다. 원문이 적은 Tab 잔여11context/20,640행·RCTL 추가fit0은 당시 상태다. 이번 정리는 원장/중간 Word를 바꾸지 않았고 과거 fit 상한을 미래 팀 연구 전체의 실행 규칙으로 옮기지 않는다.",
+      "claim_type": "accounting_scope",
+      "record_anchor": "claim-28",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001874",
+          "line_ranges": [
+            [
+              3,
+              5
+            ]
+          ],
+          "source_sha256": "cbd21f48dcd3932fd518f14f945d6a9c45b8978c494511243fc64f4284ab8345",
+          "team_source": "../sources/history-128.md#src-0001874"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              75,
+              77
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001875",
+          "line_ranges": [
+            [
+              93,
+              102
+            ]
+          ],
+          "source_sha256": "d32a143ebf6028c1bcf1f45cc36f78875932d87ab6d6bf00fb3e526f266a6e95",
+          "team_source": "../sources/history-128.md#src-0001875"
+        },
+        {
+          "source_id": "SRC-0001880",
+          "line_ranges": [
+            [
+              9,
+              14
+            ]
+          ],
+          "source_sha256": "3e829b6cd4c6e1abae947092c777894dd457a0c930ad12221379a36135c5850a",
+          "team_source": "../sources/history-128.md#src-0001880"
+        },
+        {
+          "source_id": "SRC-0001871",
+          "line_ranges": [
+            [
+              141,
+              145
+            ]
+          ],
+          "source_sha256": "4e6a2e5f81a2ac47cc177f51bb0da4b50d1b3a6940e9ade25b1bdd43edf28c49",
+          "team_source": "../sources/history-128.md#src-0001871"
+        },
+        {
+          "source_id": "SRC-0022106",
+          "line_ranges": [
+            [
+              6,
+              10
+            ]
+          ],
+          "source_sha256": "98e17340938023ee5320bb4d7d3f09c0085e8872ed88e4488cda3ab12f935dd9",
+          "team_source": "../sources/history-128.md#src-0022106"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        7
+      ]
+    },
+    {
+      "claim_id": "H128-C29",
+      "title": "문헌 확인·접근·판본의 범위",
+      "claim": "당시 PDF3편178페이지와 관련6이미지를 확보한 기록, 지금 원PDF41페이지/2351텍스트행을 읽은 범위, 별도로 확보한 v1 비교를 구분한다. Xu 논문은 당시 abstract-only로 보고됐고 현재 Wiley URL 요청은 이 도구에서 접근되지 않았다. 과거 PMC 확인 화면과 현재 arXiv 원문 읽기를 구분하며 모든 논문 증명·공식 코드의 검증/재현을 완료 처리하지 않는다.",
+      "claim_type": "reading_scope",
+      "record_anchor": "claim-29",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              70,
+              77
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        },
+        {
+          "source_id": "SRC-0001875",
+          "line_ranges": [
+            [
+              22,
+              79
+            ]
+          ],
+          "source_sha256": "d32a143ebf6028c1bcf1f45cc36f78875932d87ab6d6bf00fb3e526f266a6e95",
+          "team_source": "../sources/history-128.md#src-0001875"
+        },
+        {
+          "source_id": "SRC-0001895",
+          "line_ranges": [
+            [
+              1,
+              32
+            ]
+          ],
+          "source_sha256": "2f76319da478613ce7abc8c0590e683a9ab222917e50f50b0c13d9f8ae7cfc49",
+          "team_source": "../sources/history-128.md#src-0001895"
+        },
+        {
+          "source_id": "SRC-0001896",
+          "line_ranges": [
+            [
+              1,
+              32
+            ]
+          ],
+          "source_sha256": "4da689de7415c5e2ba993a42254ef403fd805d27a3780e46ee8166ff3255bda5",
+          "team_source": "../sources/history-128.md#src-0001896"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "first_scope": "../evidence/0128-quantile-information-and-pooling-objective/read-scopes.json",
+        "mechanical_registration": "../evidence/0128-quantile-information-and-pooling-objective/primary-correspondence.json",
+        "mechanical_not_semantic_completion": true
+      },
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7,
+        8
+      ]
+    },
+    {
+      "claim_id": "H128-C30",
+      "title": "Snapshot40·receipt·Word hash-only",
+      "claim": "Snapshot40 manifest는25파일6,248,743bytes를 열거하고 manifest6,259bytes를 더한 실제 파일은26개6,255,002bytes다. 별도 root receipt440bytes와 원장/Word hash를 대조했다. Word SHA4f1112…의 불변은 문서 본문·layout 판독 완료가 아니다.",
+      "claim_type": "provenance_scope",
+      "record_anchor": "claim-30",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001871",
+          "line_ranges": [
+            [
+              1,
+              145
+            ]
+          ],
+          "source_sha256": "4e6a2e5f81a2ac47cc177f51bb0da4b50d1b3a6940e9ade25b1bdd43edf28c49",
+          "team_source": "../sources/history-128.md#src-0001871"
+        },
+        {
+          "source_id": "SRC-0001882",
+          "line_ranges": [
+            [
+              141,
+              164
+            ]
+          ],
+          "source_sha256": "64adf622d78dbad78abaaca3dd0a1760e1f2546883745c426992fab84232a0a3",
+          "team_source": "../sources/history-128.md#src-0001882"
+        },
+        {
+          "source_id": "SRC-0022106",
+          "line_ranges": [
+            [
+              1,
+              10
+            ]
+          ],
+          "source_sha256": "98e17340938023ee5320bb4d7d3f09c0085e8872ed88e4488cda3ab12f935dd9",
+          "team_source": "../sources/history-128.md#src-0022106"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {
+        "symbolic_and_provenance_check": "../evidence/0128-quantile-information-and-pooling-objective/numeric-check.json",
+        "own_arithmetic_not_model_experiment": true
+      },
+      "archive_scope_evidence": {},
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H128-C31",
+      "title": "이전 코드·사본·TXT 대응의 집계",
+      "claim": "quantile_dist/regressor 두SHA는 이전 H122/H075 전체 판독과 동일하며 이번 관련477행 재독에 새 본문/선택 완료를 가산하지 않는다. 원TXT3은 CRLF 때문에 raw 바이트 재구성 비교가 달랐지만 개행 정규화 후 모든 PDF페이지 내용과 구간이 정확히 대응했다. 기계 대응·파생PNG/TXT·현재 v1·별칭을 독립 내용이나 전TXT 판독으로 세지 않는다.",
+      "claim_type": "coverage_scope",
+      "record_anchor": "claim-31",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001871",
+          "line_ranges": [
+            [
+              131,
+              139
+            ]
+          ],
+          "source_sha256": "4e6a2e5f81a2ac47cc177f51bb0da4b50d1b3a6940e9ade25b1bdd43edf28c49",
+          "team_source": "../sources/history-128.md#src-0001871"
+        },
+        {
+          "source_id": "SRC-0001875",
+          "line_ranges": [
+            [
+              80,
+              92
+            ]
+          ],
+          "source_sha256": "d32a143ebf6028c1bcf1f45cc36f78875932d87ab6d6bf00fb3e526f266a6e95",
+          "team_source": "../sources/history-128.md#src-0001875"
+        },
+        {
+          "source_id": "SRC-0001879",
+          "line_ranges": [
+            [
+              25,
+              30
+            ]
+          ],
+          "source_sha256": "204fdb17105f4db69473de32b3fc559445049ee29fe929fe4b106e41282066b4",
+          "team_source": "../sources/history-128.md#src-0001879"
+        },
+        {
+          "source_id": "SRC-0001881",
+          "line_ranges": [
+            [
+              12,
+              20
+            ]
+          ],
+          "source_sha256": "193f358e0aa428f2d8439052f295a9f1f365b33eebcd2b386fe526e836a7d929",
+          "team_source": "../sources/history-128.md#src-0001881"
+        },
+        {
+          "source_id": "SRC-0047550",
+          "line_ranges": [
+            [
+              579,
+              601
+            ]
+          ],
+          "reused_existing_full_review": true,
+          "current_whole_code_re_read": false,
+          "source_code_executed": false,
+          "source_code_imported": false,
+          "source_sha256": "7e09ac0c3ce0260dc07cef79b0a98ee63b0785efafbf415fd243fe2981499b99",
+          "team_source": "../sources/history-128.md#src-0047550"
+        },
+        {
+          "source_id": "SRC-0047573",
+          "line_ranges": [
+            [
+              737,
+              765
+            ]
+          ],
+          "reused_existing_full_review": true,
+          "current_whole_code_re_read": false,
+          "source_code_executed": false,
+          "source_code_imported": false,
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-128.md#src-0047573"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "first_scope": "../evidence/0128-quantile-information-and-pooling-objective/read-scopes.json",
+        "mechanical_registration": "../evidence/0128-quantile-information-and-pooling-objective/primary-correspondence.json",
+        "mechanical_not_semantic_completion": true
+      },
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7,
+        8
+      ]
+    },
+    {
+      "claim_id": "H128-C32",
+      "title": "실제 읽은 구간과 전체 Goal의 남은 범위",
+      "claim": "첫 판독은 새 원문846행(core676+candidate86+progress84), 원PDF41페이지/2351행·관련6이미지, 기존 코드477재독행과 현재 v1의3페이지/160행·2이미지다. current progress85–563/이전76–554, 원PDF 나머지137페이지·v1나머지50페이지·전TXT의 직접 판독·다른 시각 내용은 미완료다. 원99 이후·이전 고유 판본/FedPPBC·DOCX·전체 통합/장기 팀 접근/최종 변경분/대표 질문 검수까지 계속 남으며 원98의 검수·병합을 전체 Goal 완료로 표시하지 않는다.",
+      "claim_type": "coverage_boundary",
+      "record_anchor": "claim-32",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001877",
+          "line_ranges": [
+            [
+              80,
+              86
+            ]
+          ],
+          "source_sha256": "021feca0fb45cfb4ce9484fb96ab54e5f4f73398bea7127149159cd6d1c41f7a",
+          "team_source": "../sources/history-128.md#src-0001877"
+        },
+        {
+          "source_id": "SRC-0001880",
+          "line_ranges": [
+            [
+              7,
+              14
+            ]
+          ],
+          "source_sha256": "3e829b6cd4c6e1abae947092c777894dd457a0c930ad12221379a36135c5850a",
+          "team_source": "../sources/history-128.md#src-0001880"
+        },
+        {
+          "source_id": "SRC-0001873",
+          "line_ranges": [
+            [
+              70,
+              77
+            ]
+          ],
+          "source_sha256": "3776ab784af0cb91ce3acc26c99206c955920c63acd693924778cee0f3fe1ef7",
+          "team_source": "../sources/history-128.md#src-0001873"
+        }
+      ],
+      "status": "source_checked",
+      "additional_primary_verification_refs": [],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "first_scope": "../evidence/0128-quantile-information-and-pooling-objective/read-scopes.json",
+        "mechanical_registration": "../evidence/0128-quantile-information-and-pooling-objective/primary-correspondence.json",
+        "mechanical_not_semantic_completion": true
+      },
+      "archive_arithmetic_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

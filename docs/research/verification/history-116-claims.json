@@ -1,0 +1,1069 @@
+{
+  "batch_id": "history-116",
+  "record_path": "../records/0116-causal-capacity-reference.md",
+  "record_sha256": "2808687a9349276a642194aac5690fc6e3bcacba46697488cc1fc59b7b087435",
+  "claims": [
+    {
+      "claim_id": "H116-C01",
+      "title": "원87의 질문",
+      "claim": "원87은 2026-09-26에 원81의 공동 입력·다중 출력 제안과 원86의 학습 공유 검토를 이어받았다. 같은 causal core를 여러 cell의 공동 출력에 쓸 때 전체 flatten 크기와 최신 입력의 영향이 통과하는 폭을 구분하고, 조건부 관계를 추정하는 비교 표본의 생성 과정을 확인했다. 기존 cell별 scalar UPC·RCTL의 결함을 발견한 기록으로 바꾸지 않는다.",
+      "record_anchor": "c01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022065",
+          "line_ranges": [
+            [
+              1,
+              14
+            ]
+          ],
+          "source_sha256": "c754855f407617ff1245ebdd7dff1378e5e419ee73b97b917f192c9ddc7aa63f"
+        },
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              1,
+              17
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0000151",
+          "line_ranges": [
+            [
+              1,
+              13
+            ]
+          ],
+          "source_sha256": "df7704a4e378a10d094b18783534e7919a4737d92eac2b3bdea078efdf8c8f52"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H116-C02",
+      "title": "실행과 예산",
+      "claim": "당시 기록은 새 Tab 추론, RCTL 학습·forward·gradient, 데이터 수치 진단을 모두 0회로 명시한다. 같은 해시의 당시 원장에는 RCTL 29fit, Tab 69context·39,360query행, 잔량 11context·20,640행·추가 RCTL fit 0이 있다. 원87의 기호 검토를 새 성능 실험으로 세지 않는다. 이 원장은 과거 상태이며 현재 작업의 실행 허가가 아니다.",
+      "record_anchor": "c02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              3,
+              3
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0022066",
+          "line_ranges": [
+            [
+              2,
+              4
+            ]
+          ],
+          "source_sha256": "1e0649375d344679f999a61208186a428e877d87bbf77255d353a83cc863582a"
+        },
+        {
+          "source_id": "SRC-0025150",
+          "line_ranges": [
+            [
+              68,
+              92
+            ]
+          ],
+          "source_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H116-C03",
+      "title": "저장 RCTL의 실제 구조",
+      "claim": "저장 RCTL은 왼쪽 padding convolution, 정방향 LSTM, 시간별 1×1 shortcut을 사용하며 block 폭은 16·32·64·64·32·16이다. 마지막 root shortcut도 폭 16이고 실제 dense는 `steps*16→1`이다. 따라서 원87의 다중 출력 head는 이 core에 대한 기호적 변경 가정이며, 저장 코드가 이미 다중 출력 모델을 학습했다는 증거가 아니다.",
+      "record_anchor": "c03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023048",
+          "line_ranges": [
+            [
+              11,
+              39
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c"
+        },
+        {
+          "source_id": "SRC-0023048",
+          "line_ranges": [
+            [
+              49,
+              60
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c"
+        },
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              7,
+              13
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H116-C04",
+      "title": "최신 시점의 rank",
+      "claim": "과거 입력 O를 고정하고 최신 cell 벡터 Z만 바꾸며, 선형 다중 출력 head의 고정 가중치를 B∈R^(d×16)라 두면 `f(O,Z)=a(O)+B h(O,Z)`로 쓸 수 있다. 미분 가능한 곳에서는 `J_Z f=B J_Z h`여서 rank≤min(d,16)이다. flatten 크기 16L이 최신 입력의 독립적인 영향 차원 16을 늘려주지는 않는다. ReLU 경계에서도 고정 O의 출력 차이가 B의 열공간에 속한다는 진술은 유지된다.",
+      "record_anchor": "c04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              9,
+              17
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0023048",
+          "line_ranges": [
+            [
+              11,
+              39
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c"
+        },
+        {
+          "source_id": "SRC-0023048",
+          "line_ranges": [
+            [
+              49,
+              60
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "derived_check": "../evidence/0116-causal-capacity/symbolic-audit.json"
+    },
+    {
+      "claim_id": "H116-C05",
+      "title": "적용 조건",
+      "claim": "이 주장은 평가 모드의 고정 BatchNorm 통계·dropout off, 과거 hidden으로 최신값을 보내지 않는 인과 경로, 고정 선형 출력층을 전제로 한다. training BatchNorm, 최신값을 이용해 이전 위치도 바꾸는 전처리·RevIN, 최신값 복제는 별도로 다뤄야 한다. scalar RCTL을 cell마다 호출하면 각 호출의 hidden이 달라 전체 cell에 같은 공동 rank-16 상한을 붙일 수 없다.",
+      "record_anchor": "c05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              9,
+              17
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0022065",
+          "line_ranges": [
+            [
+              7,
+              12
+            ]
+          ],
+          "source_sha256": "c754855f407617ff1245ebdd7dff1378e5e419ee73b97b917f192c9ddc7aa63f"
+        },
+        {
+          "source_id": "SRC-0023048",
+          "line_ranges": [
+            [
+              15,
+              30
+            ]
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H116-C06",
+      "title": "제곱 위험의 한정된 하한",
+      "claim": "동일 모집단에서 제곱적분 가능한 Y와 예측 f를 두고 `m=E[Y|O,Z]`, `m_O=E[Y|O]`, `U=m−m_O`라 하자. 고정된 B의 열공간에 대한 직교 투영을 사용하면 초과 합 MSE는 `E||m−f||² ≥ E||(I−P_B)U||² ≥ Σ(j>16) λ_j(E[UUᵀ])`이다. 고유값은 큰 순서다. 이 하한은 국소 rank만이 아니라 고정 선형 부분공간을 사용한다. 출력 평균 MSE에는 d로 나누며 MAE에 같은 식을 적용하지 않는다.",
+      "record_anchor": "c06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              19,
+              27
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "derived_check": "../evidence/0116-causal-capacity/symbolic-audit.json"
+    },
+    {
+      "claim_id": "H116-C07",
+      "title": "실측과 구분",
+      "claim": "하한의 U는 알려지지 않은 참 조건부 평균의 추가 성분이다. noisy target이나 Tab 예측의 공분산을 바로 대입해 RCTL의 실제 손해를 입증할 수 없다. 원74의 4-cell 직접 teacher 결과도 d>16의 공동 출력 제약을 시험한 결과가 아니다. 원87에는 이 하한을 실제 트래픽에서 추정한 결과나 해당 다중 출력 모델의 seed·성능표가 없다.",
+      "record_anchor": "c07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              21,
+              27
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0022065",
+          "line_ranges": [
+            [
+              10,
+              14
+            ]
+          ],
+          "source_sha256": "c754855f407617ff1245ebdd7dff1378e5e419ee73b97b917f192c9ddc7aa63f"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H116-C08",
+      "title": "잔차와 선형 대안",
+      "claim": "`f=Z+core` 같은 최신값 출력 skip이나 cell별 선형 AR 항을 허용하면 전체 Jacobian에 보편적인 rank-16 상한을 적용할 수 없다. 예를 들어 core가 0이면 identity 전달이 가능하다. 이것이 항상 full rank이거나 실제 오차가 줄어든다는 뜻은 아니다. 출력 차분 뒤 최신값을 복원하는 구성도 구별해 먼저 비교해야 한다.",
+      "record_anchor": "c08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              29,
+              33
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0000151",
+          "line_ranges": [
+            [
+              9,
+              13
+            ]
+          ],
+          "source_sha256": "df7704a4e378a10d094b18783534e7919a4737d92eac2b3bdea078efdf8c8f52"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "derived_check": "../evidence/0116-causal-capacity/symbolic-audit.json"
+    },
+    {
+      "claim_id": "H116-C09",
+      "title": "소속 선택과 비용",
+      "claim": "cluster 크기를 줄여 용량 제약을 완화할 수 있다는 사실만으로 어떤 cell을 묶어야 하는지, Tab이 균등 분할보다 나은 소속을 고르는지가 정해지지는 않는다. 원81의 같은 폭에서 계산한 선형 MAC 비교는 유지하면서 용량·정확도·실측 시간의 해석 범위를 보완한다. 원86의 학습 공유 가능성도 신규성이나 성공으로 자동 전환하지 않는다.",
+      "record_anchor": "c09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              7,
+              7
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              31,
+              33
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0022060",
+          "line_ranges": [
+            [
+              63,
+              73
+            ]
+          ],
+          "source_sha256": "0ef74a6c7a7ac713bb2733e7231c78c94b550297dbe742aa7d96fafbc7135b58"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H116-C10",
+      "title": "문헌과 실제 읽기 범위",
+      "claim": "CIB는 Xinhui Li·Liang Duan·Lixing Yu·Kun Yue·Yuehua Li의 IJCAI 2025 논문이다. 저장 PDF는 9쪽·297,818바이트이며 이번에는 파일 1–6쪽의 본문과 전체 페이지 이미지를 읽었다. 기존 4·5·6쪽 PNG도 대조했다. 논문의 inter-series CIB와 intra-series CMI 손실은 서로 다른 부분이며, clustering이나 사전학습 Tab 소속 수정의 성능 증거가 아니다. 7–9쪽·실험표의 후속 검수는 남아 있다.",
+      "record_anchor": "c10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061926",
+          "line_ranges": [
+            [
+              1,
+              12
+            ]
+          ],
+          "source_sha256": "87072911cda599b49f4373f2349d15799d394ee306b415b83d829ce1f654584a"
+        },
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H116-C11",
+      "title": "공식 커밋과 저장본",
+      "claim": "저장 metadata의 공식 커밋은 `ac09a66245f9eaa7371065ec3f7d3673df125c94`다. 네 코드 저장본은 공식 Git blob과 바이트 그대로 같지는 않았다. 마지막 LF 하나를 제외하면 backbone·exp_main은 공식 blob에 일치하고, CMI·Conditional_MI는 추가로 LF를 CRLF로 바꾸면 일치한다. 원저장본을 수정하지 않고 양쪽 SHA·바이트 수와 변환 관계를 보존했다. 현재 main의 최신 코드나 재현 성공을 확인한 결과는 아니다.",
+      "record_anchor": "c11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061927",
+          "line_ranges": [
+            [
+              1,
+              34
+            ]
+          ],
+          "source_sha256": "4d79f120c430d11529c2aa0bd0e9ff29d1b3b5f38ace7058e8a10d2c1ee865af"
+        },
+        {
+          "source_id": "SRC-0061927",
+          "line_ranges": [
+            [
+              290,
+              327
+            ]
+          ],
+          "source_sha256": "4d79f120c430d11529c2aa0bd0e9ff29d1b3b5f38ace7058e8a10d2c1ee865af"
+        },
+        {
+          "source_id": "SRC-0061927",
+          "line_ranges": [
+            [
+              588,
+              609
+            ]
+          ],
+          "source_sha256": "4d79f120c430d11529c2aa0bd0e9ff29d1b3b5f38ace7058e8a10d2c1ee865af"
+        },
+        {
+          "source_id": "SRC-0022066",
+          "line_ranges": [
+            [
+              33,
+              53
+            ]
+          ],
+          "source_sha256": "1e0649375d344679f999a61208186a428e877d87bbf77255d353a83cc863582a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "derived_check": "../evidence/0116-causal-capacity/archive-and-version-audit.json"
+    },
+    {
+      "claim_id": "H116-C12",
+      "title": "수식과 본문 설명",
+      "claim": "논문 §4.3 식24–25가 정의하는 기준 분포는 `P(C)P(A|C)P(B|C)`다. 다만 5쪽 본문도 과거 C를 고정한 채 인접 두 patch를 shuffle한다고 설명하며, 조건부 분포를 맞추는 구체적 절차까지 제시하지는 않는다. 따라서 ‘논문은 완전한 조건부 sampler를 구현했고 코드만 이를 어겼다’고 요약하지 않는다. 정의한 분포, 본문의 구현 설명, 실제 저장 코드를 각각 대조한다.",
+      "record_anchor": "c12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            5
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              37,
+              49
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H116-C13",
+      "title": "저장 sample 생성",
+      "claim": "CMI.generate_samples는 앞 patch들을 평균한 벡터를 condition으로 두고 patch1·condition을 유지한 채 patch2를 batch축에서 무조건 randperm한다. backbone의 실제 loop는 i=1부터 M−2까지 i와 i+1을 비교하므로 함수의 patch_idx1=0 영조건 분기는 이 경로에서 쓰지 않는다. 과거 전체를 조건으로 둔 논문과 과거 평균을 둔 코드도 구별한다.",
+      "record_anchor": "c13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061930",
+          "line_ranges": [
+            [
+              29,
+              51
+            ]
+          ],
+          "source_sha256": "814b27b6057cb9661a6e09fc44ed849b5a8ecf9ef205e6d95ee7452fdba504c2"
+        },
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              203,
+              210
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        },
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            5,
+            6
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H116-C14",
+      "title": "무조건 shuffle의 추정 대상",
+      "claim": "고정된 표현의 독립 모집단 표본에서 무조건 B를 섞는 이상화의 기준은 `P(A,C)P(B)`다. 필요한 KL이 존재할 때 이에 대한 KL은 `I(B;A,C)=I(B;C)+I(B;A|C)`다. condition을 입력에 남겨두는 것만으로 같은 C에서 B를 다시 뽑는 연산이 되지는 않는다. 이는 해당 생성 방식의 일반적 분포 차이에 관한 기호 관계다.",
+      "record_anchor": "c14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              45,
+              49
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0061930",
+          "line_ranges": [
+            [
+              40,
+              49
+            ]
+          ],
+          "source_sha256": "814b27b6057cb9661a6e09fc44ed849b5a8ecf9ef205e6d95ee7452fdba504c2"
+        },
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            5
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "derived_check": "../evidence/0116-causal-capacity/symbolic-audit.json"
+    },
+    {
+      "claim_id": "H116-C15",
+      "title": "기호 반례",
+      "claim": "C가 0·1을 각각 확률 1/2로 갖고 A=B=C라면 조건부 MI는 0이지만 무조건 shuffle 기준의 KL은 log 2이다. 이번 정리에서는 8개 가능한 상태의 정확 유리확률을 열거해 원문의 반례를 다시 확인했다. log 2≈0.693147은 자연로그 단위의 기호 예시이며 실제 데이터 실험·논문 성능 재현·새 모델 pilot이 아니다.",
+      "record_anchor": "c15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              45,
+              49
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "derived_check": "../evidence/0116-causal-capacity/symbolic-audit.json"
+    },
+    {
+      "claim_id": "H116-C16",
+      "title": "학습으로 연결되는 경로",
+      "claim": "backbone은 CMI 값들을 평균하고 상한 clipping한 뒤 `klweight·KL + contraweight·contrast − cmiweight·CMI`를 vaeloss로 반환한다. Conditional_MI의 Gaussian KL 계산은 CMI critic과 별도다. 현재 고정 커밋의 model wrapper를 추가 조회해 `decomposition=False` 경로의 backbone 호출과 `(출력, vaeloss)` 반환을 확인했다. exp_main의 `use_amp=False` 경로는 예측 MSE에 vaeloss를 더해 backward·optimizer에 넘긴다. 정적 호출 연결 확인이며 원연구 당시 wrapper를 저장·독해했다는 주장이나 실행 재현이 아니다.",
+      "record_anchor": "c16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061931",
+          "line_ranges": [
+            [
+              33,
+              40
+            ]
+          ],
+          "source_sha256": "22925a0e5f44163835f252423c804ea78f5a9d8e0db9ae75eed03aa09e48212d"
+        },
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              178,
+              229
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        },
+        {
+          "source_id": "SRC-0061932",
+          "line_ranges": [
+            [
+              33,
+              56
+            ]
+          ],
+          "source_sha256": "ea934b368478d7762dc7c5015345852836cf87c44ee9ac0c32aac4acae13d1a7"
+        },
+        {
+          "source_id": "SRC-0061932",
+          "line_ranges": [
+            [
+              172,
+              204
+            ]
+          ],
+          "source_sha256": "ea934b368478d7762dc7c5015345852836cf87c44ee9ac0c32aac4acae13d1a7"
+        },
+        {
+          "source_id": "SRC-0061927",
+          "line_ranges": [
+            [
+              430,
+              437
+            ]
+          ],
+          "source_sha256": "4d79f120c430d11529c2aa0bd0e9ff29d1b3b5f38ace7058e8a10d2c1ee865af"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "external_evidence": {
+        "url": "https://raw.githubusercontent.com/Xinhui-Lee/CIB-MTSF/ac09a66245f9eaa7371065ec3f7d3673df125c94/CIB-MTSF/CIB-MTSF/models/CIBMTSF.py",
+        "sha256": "31d461f4d938ea19dcfd85d082915779c92d66d3c273e2bb41f59e51aa6216fd",
+        "git_blob": "7caf2f02cd23c22f36352d2d863c70c64950c91b",
+        "raw_line_ranges": [
+          [
+            82,
+            106
+          ]
+        ],
+        "current_read_not_historical_action": true
+      }
+    },
+    {
+      "claim_id": "H116-C17",
+      "title": "AMP 경로의 제한",
+      "claim": "같은 exp_main의 AMP/CIBMTSF 분기는 모델의 두 반환값을 분리하지 않고 outputs로 받은 뒤 tensor처럼 슬라이싱한다. 확인한 wrapper의 tuple 반환과 맞지 않는 정적 코드 문제다. 따라서 앞의 정상적인 손실 연결 설명을 AMP를 포함한 모든 실행 경로의 검증으로 확대하지 않는다. 이 분기를 실행하거나 당시 논문의 실험 설정이 이 분기를 사용했다고 확인한 것은 아니다.",
+      "record_anchor": "c17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061932",
+          "line_ranges": [
+            [
+              153,
+              170
+            ]
+          ],
+          "source_sha256": "ea934b368478d7762dc7c5015345852836cf87c44ee9ac0c32aac4acae13d1a7"
+        },
+        {
+          "source_id": "SRC-0061927",
+          "line_ranges": [
+            [
+              430,
+              437
+            ]
+          ],
+          "source_sha256": "4d79f120c430d11529c2aa0bd0e9ff29d1b3b5f38ace7058e8a10d2c1ee865af"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "external_evidence": {
+        "url": "https://raw.githubusercontent.com/Xinhui-Lee/CIB-MTSF/ac09a66245f9eaa7371065ec3f7d3673df125c94/CIB-MTSF/CIB-MTSF/models/CIBMTSF.py",
+        "sha256": "31d461f4d938ea19dcfd85d082915779c92d66d3c273e2bb41f59e51aa6216fd",
+        "git_blob": "7caf2f02cd23c22f36352d2d863c70c64950c91b",
+        "raw_line_ranges": [
+          [
+            82,
+            106
+          ]
+        ],
+        "current_read_not_historical_action": true
+      }
+    },
+    {
+      "claim_id": "H116-C18",
+      "title": "모집단 식과 실제 추정값",
+      "claim": "유한 batch 순열에는 제자리 항목이 남을 수 있고, 겹친 시간 window·변하는 표현·유한 critic·clipping도 영향을 준다. 실제 코드 출력이 앞의 모집단 KL과 같다고 주장할 수 없다. 확인한 범위는 무조건 shuffle이 조건부 독립 기준 분포를 일반적으로 보장하지 않는다는 점이다. 이 사실만으로 논문의 모든 이론이나 예측 결과를 부정하지 않는다.",
+      "record_anchor": "c18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              45,
+              49
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0061930",
+          "line_ranges": [
+            [
+              20,
+              49
+            ]
+          ],
+          "source_sha256": "814b27b6057cb9661a6e09fc44ed849b5a8ecf9ef205e6d95ee7452fdba504c2"
+        },
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              203,
+              216
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        },
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            5
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H116-C19",
+      "title": "논문 목표의 표기 보정",
+      "claim": "논문 5쪽 식21 직전의 설명은 I(Zi;Yi)와 I(Zi;다른 변수)를 minimize한다고 쓰지만, 앞뒤 설명과 식21의 부호는 이 두 항을 키우는 목적을 나타낸다. 이 문장과 수식의 불일치를 보존한다. 6쪽 식27·Algorithm1은 MSE+α1·KL+α1·contrast−α2·CMI를 사용한다. 이번 대조를 논문의 모든 변분 경계·증명·시간복잡도 검증으로 확대하지 않는다.",
+      "record_anchor": "c19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            5,
+            6
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H116-C20",
+      "title": "문헌의 실험 조건",
+      "claim": "읽은 §5.1에는 ETT 4종·Weather·Traffic·Electricity·ILI·Exchange Rate의 9자료, ETT의 6:2:2와 나머지의 7:1:2 분할, MSE·MAE 평가가 있다. 6쪽의 성능 우위·개선율은 저자의 보고이며 아직 Table1·2를 대조하지 않았다. 이를 원87의 모바일 통신 트래픽 성능표나 Tab/RCTL 개선율로 재사용하지 않는다.",
+      "record_anchor": "c20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            6
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              3,
+              3
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0022066",
+          "line_ranges": [
+            [
+              11,
+              15
+            ]
+          ],
+          "source_sha256": "1e0649375d344679f999a61208186a428e877d87bbf77255d353a83cc863582a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H116-C21",
+      "title": "후속 선행 검토",
+      "claim": "원87은 시간·요일·계절 조건을 남겨두었다는 말 대신 실제로 생성되는 결합분포를 확인하자는 판단을 남겼다. TabPFN+CRT arXiv2603.06609v1은 당시 초록·버전까지 확인했다고 보고하고 원88에 본문 검토를 넘겼다. H116에서 그 논문 방법을 검증한 것으로 세지 않으며, scalar 회귀 분위수를 다변량 시계열 공동 생성기로 간주하거나 Tab으로 교체했다는 사실만으로 신규성을 주장하지 않는다.",
+      "record_anchor": "c21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              51,
+              64
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0022066",
+          "line_ranges": [
+            [
+              18,
+              27
+            ]
+          ],
+          "source_sha256": "1e0649375d344679f999a61208186a428e877d87bbf77255d353a83cc863582a"
+        },
+        {
+          "source_id": "SRC-0000151",
+          "line_ranges": [
+            [
+              19,
+              33
+            ]
+          ],
+          "source_sha256": "df7704a4e378a10d094b18783534e7919a4737d92eac2b3bdea078efdf8c8f52"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H116-C22",
+      "title": "검색 실패의 범위",
+      "claim": "수집기는 arXiv API query 두 건에 각각 최대 12결과·1MB cap을 설정했지만, 저장 search manifest에는 두 건 모두 HTTP406 오류만 남아 있다. 최대 24편을 찾거나 읽었다고 세지 않는다. 이후 공개 검색에서 공식 PDF를 찾았다는 경로는 당시 기록의 설명이며, API 오류 자체는 모델 실패나 연구 가설의 기각이 아니다.",
+      "record_anchor": "c22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022592",
+          "line_ranges": [
+            [
+              11,
+              40
+            ]
+          ],
+          "source_sha256": "66490b9b3d5f6aaf5d42b64cc5e35f13ff2811042e6074a52c488252271beca4"
+        },
+        {
+          "source_id": "SRC-0061928",
+          "line_ranges": [
+            [
+              1,
+              19
+            ]
+          ],
+          "source_sha256": "2e78efafb30dc5910f6700f6c924fd9510081dc150db0fba130104436a094320"
+        },
+        {
+          "source_id": "SRC-0061926",
+          "line_ranges": [
+            [
+              2,
+              4
+            ]
+          ],
+          "source_sha256": "87072911cda599b49f4373f2349d15799d394ee306b415b83d829ce1f654584a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H116-C23",
+      "title": "PDF 오류의 실제 단계",
+      "claim": "cib_source_manifest에는 HTTP200·297,818바이트·동일 PDF 해시·9쪽과 cp949 UnicodeEncodeError가 함께 있다. fetcher는 PDF 저장, TXT 추출 저장, 페이지 수 기록을 마친 뒤 첫 페이지를 console에 출력한다. 현재 PDF를 새로 추출한 결과도 9쪽이며 저장 TXT의 각 페이지가 머리글·양끝 공백을 제외하고 일치했다. 오류 기록을 지우거나 다운로드 전체 실패로 바꾸지 않는다. 이 자동 대응 확인은 TXT 1,128행 전체의 의미 독해를 대신하지 않는다.",
+      "record_anchor": "c23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022731",
+          "line_ranges": [
+            [
+              14,
+              29
+            ]
+          ],
+          "source_sha256": "0a98e3b158ffb16fc6f3d6c5281bb53d3754240534f2ed6a2a680d3446fe055e"
+        },
+        {
+          "source_id": "SRC-0061926",
+          "line_ranges": [
+            [
+              1,
+              12
+            ]
+          ],
+          "source_sha256": "87072911cda599b49f4373f2349d15799d394ee306b415b83d829ce1f654584a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ],
+      "derived_check": "../evidence/0116-causal-capacity/text-pdf-correspondence.json"
+    },
+    {
+      "claim_id": "H116-C24",
+      "title": "snapshot의 분모",
+      "claim": "snapshot29 manifest의 24파일·1,790,337바이트를 저장 파일의 크기·해시와 대조했다. 원87 archive_verification의 수치도 일치한다. manifest 자체와 뒤에 쓴 archive_verification은 이 24파일 목록에 들어 있지 않다. 24는 보존 파일 수이며 독립 실험 수나 모든 내용의 검수 완료 수가 아니다.",
+      "record_anchor": "c24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001552",
+          "line_ranges": [
+            [
+              1,
+              128
+            ]
+          ],
+          "source_sha256": "ca4a28e5b34823775a59799787969bbac0f0e1bd5a3789fdee5aff4d0b5e7e06"
+        },
+        {
+          "source_id": "SRC-0022063",
+          "line_ranges": [
+            [
+              1,
+              7
+            ]
+          ],
+          "source_sha256": "295c592c1254076cdba212c78db3c8ff840606088265b79971868ec8bd0778e1"
+        },
+        {
+          "source_id": "SRC-0023236",
+          "line_ranges": [
+            [
+              65,
+              83
+            ]
+          ],
+          "source_sha256": "eddec4aa440d7bfa3252474cd0c2f3f45627f7fdff7e524f7dd7edda58aaf8c9"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ],
+      "derived_check": "../evidence/0116-causal-capacity/archive-and-version-audit.json"
+    },
+    {
+      "claim_id": "H116-C25",
+      "title": "과거 verifier의 의미",
+      "claim": "원 verifier는 예산·PDF 해시, 페이지 수, PNG 존재, 일부 문자열, JSON parse, 복사 후 해시를 확인하고 scope·progress·snapshot을 작성한다. 이 절차가 기호 증명·CMI 추정의 정확성·성능 실행을 검증한 것은 아니다. 과거 Goal·예산·다음 행동 문구는 자료로 보존했으며 원본 연구 스크립트는 실행하거나 import하지 않았다.",
+      "record_anchor": "c25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023236",
+          "line_ranges": [
+            [
+              1,
+              83
+            ]
+          ],
+          "source_sha256": "eddec4aa440d7bfa3252474cd0c2f3f45627f7fdff7e524f7dd7edda58aaf8c9"
+        },
+        {
+          "source_id": "SRC-0022066",
+          "line_ranges": [
+            [
+              1,
+              55
+            ]
+          ],
+          "source_sha256": "1e0649375d344679f999a61208186a428e877d87bbf77255d353a83cc863582a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H116-C26",
+      "title": "범위와 재검토 조건",
+      "claim": "핵심 11표현물 486행, code metadata 전체와 짧은 코드 2개, backbone 1–252행·exp_main 1–220행, 논문 1–6쪽을 읽었다. 기존 PNG 3개는 같은 논문의 파생 표현으로 독립 내용을 추가 집계하지 않는다. 결정표·연혁·원88 계획·TXT 전문, 논문 7–9쪽, 긴 코드의 나머지는 후속 검수로 남긴다. 재검토하려면 실제 용량 손해, 단순 skip/AR 대비 차이, Tab이 바꾸는 소속 또는 조건부 생성의 정확도·비용을 먼저 명시해야 한다. 이번 검수와 전체 연구 Goal 완료는 별개다.",
+      "record_anchor": "c26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              31,
+              33
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0022064",
+          "line_ranges": [
+            [
+              51,
+              66
+            ]
+          ],
+          "source_sha256": "4118bcc01f2541381aa9c10ad89d995194656d0f6dad2eb9103abfa17c82b827"
+        },
+        {
+          "source_id": "SRC-0000151",
+          "line_ranges": [
+            [
+              25,
+              33
+            ]
+          ],
+          "source_sha256": "df7704a4e378a10d094b18783534e7919a4737d92eac2b3bdea078efdf8c8f52"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "archive_references_reread": [
+    {
+      "claims": [
+        3,
+        7,
+        9
+      ],
+      "path": "../records/0090-input-partition-decision.md",
+      "sha256": "9bee3fb74f7611aeb00b62a36a42b2fbb8414691ac1f355de76c7559c9046aa2",
+      "scope": "H090 전체 작성 후 재독. scalar dense와 제안된 다중 출력, 기호 MAC과 실제 용량·성능, 원74 4cell 결과의 적용 한계."
+    }
+  ]
+}

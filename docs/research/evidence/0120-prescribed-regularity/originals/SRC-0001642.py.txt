@@ -1,0 +1,42 @@
+from pathlib import Path
+from datetime import datetime, timezone
+from html.parser import HTMLParser
+import hashlib, json, subprocess, urllib.request
+
+base=Path(__file__).resolve().parent/'sources/regularity_90'
+url='https://arxiv.org/html/2505.04904v1'
+target=base/'Clustering_Lipschitz_Control_2505.04904v1.html'
+assert not target.exists()
+with urllib.request.urlopen(url,timeout=30) as response:
+    data=response.read(4000001)
+    assert len(data)<=4000000
+    status=response.status
+target.write_bytes(data)
+
+class Extract(HTMLParser):
+    def __init__(self):
+        super().__init__();self.parts=[];self.skip=0
+    def handle_starttag(self,tag,attrs):
+        if tag in ('script','style'):self.skip+=1
+        if tag in ('p','section','div','h1','h2','h3','h4','tr','li'):self.parts.append('\n')
+    def handle_endtag(self,tag):
+        if tag in ('script','style') and self.skip:self.skip-=1
+    def handle_data(self,data):
+        if not self.skip:self.parts.append(data)
+parser=Extract();parser.feed(data.decode('utf-8'))
+target.with_suffix('.txt').write_text(''.join(parser.parts),encoding='utf-8')
+bad=base/'Clustering_Lipschitz_Control_2505.04904_latest.pdf'
+record={'url':url,'accessed_utc':datetime.now(timezone.utc).isoformat(),'status':status,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'incomplete_pdf':{'file':bad.name,'bytes':bad.stat().st_size,'sha256':hashlib.sha256(bad.read_bytes()).hexdigest(),'status':'Incomplete PDF; original failure preserved, not counted as secured full PDF'}}
+(base/'html_and_failure_manifest.json').write_text(json.dumps(record,ensure_ascii=False,indent=2),encoding='utf-8')
+
+poppler=Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+render=base/'rendered';render.mkdir(exist_ok=True)
+jobs=[('Stable_Recurrent_1805.10369v4',4),('Stable_Recurrent_1805.10369v4',28),('Mixture_Generalization_2504.20651v1',4),('Mixture_Generalization_2504.20651v1',5),('Mixture_Generalization_2504.20651v1',7)]
+records=[]
+for stem,page in jobs:
+    prefix=render/f'{stem}_p{page:02d}'
+    image=Path(str(prefix)+'.png');assert not image.exists()
+    subprocess.run([str(poppler),'-f',str(page),'-l',str(page),'-singlefile','-scale-to','1500','-png',str(base/(stem+'.pdf')),str(prefix)],check=True,capture_output=True)
+    records.append({'pdf':stem+'.pdf','page':page,'image':str(image),'sha256':hashlib.sha256(image.read_bytes()).hexdigest()})
+(base/'render_manifest.json').write_text(json.dumps(records,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'html':record,'rendered':len(records)},ensure_ascii=True))

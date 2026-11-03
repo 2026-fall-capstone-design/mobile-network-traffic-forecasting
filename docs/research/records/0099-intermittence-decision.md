@@ -1,5 +1,7 @@
 # 간헐 트래픽 후보를 채택하기 전에 확인할 데이터와 손실
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-099.md) · [검수](../verification/history-099.md) · [실제 읽은 범위](../evidence/0099-intermittence/read-scopes.json) · [남은 문헌](../evidence/0099-intermittence/packet-coverage.json)
 
 원본 번호82의 질문·보류 이유와 근거의 적용 범위를 정리한다. 팀원이0 비율, 발생/양 분해, beam 문헌을 이용한 cell 공유 후보를 다시 제안할 때 먼저 확인할 기록이다.

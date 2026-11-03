@@ -1,0 +1,98 @@
+"""Independently reconstruct selection/evaluation weights from saved predictions."""
+from pathlib import Path
+import hashlib
+import json
+import numpy as np
+B=Path(__file__).resolve().parent
+O=B/'results/calendar_predictive_112'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+load=lambda p:json.loads(p.read_text(encoding='utf-8'))
+r=load(O/'result.json')
+finish=load(O/'run_finished.json')
+account=load(O/'budget_update.json')
+auth=load(O/'budget_authorization.json')
+calls=load(O/'calls.json')
+simple=load(O/'simple_calls.json')
+source=load(B/'results/calendar_query_preflight_111/result.json')
+assert finish['success'] and r['complete'] and account['complete']
+assert len(calls)==14 and len(simple)==28
+assert all(c['status']=='completed' for c in calls+simple)
+assert sum(c['query_rows_attempted'] for c in calls)==3096
+assert all(sha(B/n)==v for n,v in auth['source_hashes'].items())
+ledger=load(B/'cumulative_execution_budget.json')
+assert sha(B/'cumulative_execution_budget.json')==account['ledger_after_sha256']
+before=load(O/'ledger_before_activation.json')
+assert ledger['used']['TabICL_contexts']-before['used']['TabICL_contexts']==14
+assert ledger['used']['TabICL_query_rows']-before['used']['TabICL_query_rows']==3096
+assert all(ledger['used'][k]==v for k,v in before['used'].items() if k.startswith('RCTL'))
+assert ledger['remaining_count_budgets']['RCTL_fits']==9 and ledger['budget_resets']==0
+families=['TabICL','Ridge','HGB']
+selectors=['none','profile']+families
+maxdiff=0.
+with np.load(O/'predictions_partial.npz',allow_pickle=False) as a:
+    actual,mask,pairs,phases=a['actual'],a['common_masks'],a['pair_indices'],a['phase_candidates']
+    eligible=np.flatnonzero(a['eligible_pairs'])
+    ids=a['cell_ids']
+    indices=np.arange(64)
+    chosen={}
+    for p in eligible:
+        i,j=pairs[p]
+        first=np.flatnonzero(mask[p]&(indices<32))
+        chosen[p]={'none':0,'profile':int(np.flatnonzero(phases[p]==source['pairs'][p]['profile_selected_shift'])[0])}
+        for family in families:
+            pred=a['cross_'+family][p]
+            losses=[float(sum(abs(pred[s,t]-actual[i,t]) for t in first)/len(first)) for s in range(3)]
+            chosen[p][family]=int(np.argmin(losses))
+            assert np.isfinite(pred[:,mask[p]]).all()
+        rec=next(v for v in r['pair_results'] if v['pair_index']==p)
+        assert rec['selected_shift_hours']=={s:int(phases[p,k]) for s,k in chosen[p].items()}
+    periods={'selection':indices<32,'heldout':indices>=32,
+             'heldout_first':(indices>=32)&(indices<48),'heldout_last':indices>=48}
+    decomposition={}
+    for name,period in periods.items():
+        covered=[p for p in eligible if (mask[p]&period).any()]
+        target_set=sorted({int(pairs[p,0]) for p in covered})
+        counts={i:sum(pairs[p,0]==i for p in covered) for i in target_set}
+        flatweights=[]
+        locations=[]
+        for p in covered:
+            i=int(pairs[p,0])
+            times=np.flatnonzero(mask[p]&period)
+            for t in times:
+                locations.append((p,i,t))
+                flatweights.append(1/(len(target_set)*counts[i]*len(times)))
+        weights=np.array(flatweights)
+        assert abs(weights.sum()-1)<1e-12
+        for selector in selectors:
+            for f in families:
+                losses=np.array([abs(a['cross_'+f][p,chosen[p][selector],t]-actual[i,t]) for p,i,t in locations])
+                value=float(np.dot(weights,losses))
+                maxdiff=max(maxdiff,abs(value-r['tables'][name]['MAE'][selector][f]))
+        decomposition[name]={'target_cells':len(target_set),'pairs':len(covered),'paired_queries':len(locations)}
+    # Attribute the overall Tab-selected change using the fixed primary weights.
+    # These contributions sum to the primary change, unlike separately renormalized period means.
+    ixs=[]
+    values=[]
+    for p in eligible:
+        i=int(pairs[p,0]);times=np.flatnonzero(mask[p]&(indices>=32))
+        same_target=sum(pairs[other,0]==i for other in eligible)
+        for t in times:
+            own=a['cross_TabICL'][p,chosen[p]['TabICL'],t]
+            base=a['cross_TabICL'][p,0,t]
+            values.append((abs(own-actual[i,t])-abs(base-actual[i,t]))/(11*same_target*len(times)))
+            ixs.append(t)
+    values,ixs=np.array(values),np.array(ixs)
+    contributions={'heldout_first_under_primary_weights':float(values[ixs<48].sum()),
+                   'heldout_last_under_primary_weights':float(values[ixs>=48].sum()),
+                   'total_under_primary_weights':float(values.sum())}
+    assert abs(contributions['total_under_primary_weights']-r['primary_differences']['Tab_selected_minus_none'])<1e-12
+assert maxdiff<1e-12
+report={'complete':True,'calls_counts_and_sources_verified':True,
+    'RCTL_usage_unchanged':True,'no_models_rerun':True,'selection_reproduced_from_calibration_only':True,
+    'independent_flat_weight_MAE_max_difference':maxdiff,
+    'period_coverage':decomposition,'primary_weighted_period_contributions':contributions,
+    'note':'Different pair-level sample counts change period-normalized weights; subperiod means need not average to primary mean.',
+    'inner_Tab_stats_calls':sum(c['inner_predict_stats_calls'] for c in calls),
+    'ledger_sha256':sha(B/'cumulative_execution_budget.json')}
+(O/'verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(report,ensure_ascii=False),flush=True)

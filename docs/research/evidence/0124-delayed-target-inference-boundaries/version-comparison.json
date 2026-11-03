@@ -1,0 +1,90 @@
+{
+  "comparisons": [
+    {
+      "old": "SRC-0001732",
+      "new": "SRC-0001779",
+      "old_lines": 57,
+      "new_lines": 58,
+      "diff": [
+        "--- SRC-0001732",
+        "+++ SRC-0001779",
+        "@@ -18,6 +18,7 @@",
+        " | 학습 sample 압축 | TimeDC, Shapley, importance/stratified SGD | loss 중요도는 gradient효율과 다름. BN의batch의존성도 있다. 소속을 고정한 뒤 optimizer 안에서 RCTL gradient를 쓰는 것은 clustering 판단에 쓰는 것과 구별한다. 새 fit 상한은 그대로다. | 56–58,85 |",
+        " | 그룹 보호·피크 목적 | worst-cell/top-k, relative regret, pinball, under/over provision | 기존K4를 새metric으로 선택해도 전체·뒤기간 이득을 확보하지 못했다. 실제networkcost없이 목적을 바꾸지 않는다. | 41–44,66–71 |",
+        " | 관측 자료·해상도 | 10분원자료, telemetry/imputation, partial observation | 공개데이터단위와label가용성을 구별. 일부Tab복원은단순모델보다불리. 원자료를임의가려문제존재를만들지않는다. | 29–32,51–55 |",
+        "+| 최근의 정답 대기 입력으로 소속 갱신 | 94: PPCI2603.05575v2, Reliable Algorithm Selection ICML2025, ADAPT-Z ICLR2026 | 고정h에서는cell당h개대기입력이고h1에서는1행이다. 입력분포보정은임의조건부변화를제거하지않고traffic추정과RCTL공동학습손해는다르다. 현재정적안에는미채택. PPCI v2의입력만사용하는simulation수정을반영하며v1우려를반복하지않는다. 실제지연필요·유용한소속결정근거없이adapter/PPI를추가하지않는다. | 09,17,77,83,94 |",
+        " | 실제 무통신과 양의 트래픽을 구별한 공유 | 82: Citywide SMS·통화, CESNET 원문, beam GRU-MTL, Deep Renewal | CESNET의99.94%는gap을포함한시계열비율이며시점의zero비율이아님. 기존Milan hourly Internet 전체35일zero0.01975%. 발생/크기분리·LSTM공유는기존방법이다. cell자료의실제희소손해와다른유용한공유결정없이head/context모듈을추가하지않는다. | 82 |",
+        " | 합계·대표예측으로cell복원 | HTS-Cluster/HiGP, true aggregate vs lagshare | true future 합계 성능은실행가능예측아님. 같은비용의lastvalue항등식·기존대표예측과중복을확인한다. | 48–50 |",
+        " | 필요한 입력길이 | ALW, optimal lookback, process-ID | 실제4cell의Tabglobal우위는있으나clustering으로짧게입력하는이득은확인안됨. | 59–62 |"
+      ],
+      "mechanical_comparison_not_full_semantic_read": true
+    },
+    {
+      "old": "SRC-0001734",
+      "new": "SRC-0001782",
+      "old_lines": 517,
+      "new_lines": 527,
+      "diff": [
+        "--- SRC-0001734",
+        "+++ SRC-0001782",
+        "@@ -4,7 +4,17 @@",
+        " ",
+        " 활성 goal 중에 이전의 goal 입력 방법 질문을 반복 답변하지 않는다. 사용자가 명시적으로 해결을 요청했다. 앞으로 자동 continuation은 이 연구의 실행·증거·산출물 작업을 이어가는 것으로 해석한다. goal 사용법 안내·재등록 제안은 요청이 다시 있을 때만 한다. 작업 폴더의 `AGENTS.md`에도 이 지침을 남겼다. 아래의 최신 상태부터 이어간다.",
+        " ",
+        "-## 최신 상태 — 93 후보 판정 기준과 기존 비교의 적용 범위 감사",
+        "+## 최신 상태 — 94 정답 대기 입력의 정보와 보정 가능 범위",
+        "+",
+        "+- 2026-09-26.94계획 후 PPCI2603.05575v2·ADAPT-Z2509.03810v2·Reliable Algorithm Selection ICML2025의 지정 방법·가정·보정식을 읽었다. PDF3개174쪽/5369639bytes 확보, 관련6쪽 시각 대조. 전체 증명/실험 재현과 공식 코드 감사는 하지 않았다.",
+        "+- PPCI 최신v2는 입력만의 결정적 예측자로 simulation을 바꿨다. 이전v1의 realized-label noise 우려를 최신판에 반복하지 않는다. iid/동일입력분포·독립 또는cross-fit 조건과 abundant-unlabeled 이득은 현재의존시계열에 자동 적용되지 않는다.",
+        "+- 현재t와고정h에서 정답대기입력은cell당h개, h1은한행임을 기호로 확인했다. 실제자료의 새 통계가 아니다. 인접창·동시cell을독립sample로세지않고 일부target만도착한vector예측과 구분했다.",
+        "+- 정확한입력밀도비를써도 보정값은과거conditional mean을최근입력에평균한값이다. 임의conditional drift는남는다. 현재traffic값의추정과학습할RCTL의risk는다른대상이며 ADAPT-Z의학습된표현/gradient로clustering하면 독립성조건이달라진다.",
+        "+- 현재정적h1안에지연보정module을추가하는후보는미채택이다. 실제운영지연·단순대안의손해·바뀔유용한소속결정없이horizon/미관측label을발명하지않는다. 지연예측/PPI전체의불가능성으로판정하지않는다.",
+        "+- 새Tab/RCTL/데이터수치실행0.원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변.잔여Tab11context/20640행,추가RCTLfit0.상세94·공개요약·읽기범위·인덱스를보존했고기존Word/snapshot은불변이다.",
+        "+- 최종추천안/최종Word는미완료다. 이번은최신판수정과현재정보가용성의차이를확인해추가하지않을구조를구체화한progress이며외부blocker는없다. 다음에과거label을일부러숨기거나같은PPI/drift점수의이름을바꾸어재진입하지않는다.",
+        "+",
+        "+## 이전 상태 — 93 후보 판정 기준과 기존 비교의 적용 범위 감사",
+        " ",
+        " - 2026-09-26. 93 계획 후 보존된 학습 코드·설정·결과·history 등37개 근거 파일을 대조했다. 코드 hash,29fit 종료,1565epoch,선택 checkpoint,조건별16cell coverage,fit별 기록과 summary 정합성을 확인했다. 모델 호출·예측 재계산·새 통계 검정0이다.",
+        " - 후보 인덱스의 과도한 진입 문구를 보완했다. 같은 유용한 결정을 더 적은 계산/추정 변동으로 얻는 방향도 허용한다. RCTL의 새 입력·target·모듈을 필수로 요구하지 않으며, 함께 학습할 실제 sample 묶음을 바꾸는 것도 명시적인 연결 경로다. pilot 진입과 최종 추천 근거를 분리했다. 원래 goal의 최종 조건을 낮추거나 새 후보를 합격시킨 것은 아니다."
+      ],
+      "mechanical_comparison_not_full_semantic_read": true
+    }
+  ],
+  "new_candidate_direct_read": [
+    [
+      1,
+      58
+    ]
+  ],
+  "old_candidate_prior_direct_read": [
+    [
+      1,
+      57
+    ]
+  ],
+  "new_progress_direct_read": [
+    [
+      1,
+      48
+    ]
+  ],
+  "unread_new_progress": [
+    [
+      49,
+      527
+    ]
+  ],
+  "old_progress_prior_direct_read": [
+    [
+      1,
+      36
+    ]
+  ],
+  "unread_old_progress": [
+    [
+      37,
+      517
+    ]
+  ],
+  "machine_comparison_not_semantic_full_read": true
+}

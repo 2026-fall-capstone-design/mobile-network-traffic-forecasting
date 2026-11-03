@@ -1,0 +1,1321 @@
+{
+  "batch_id": "history-139",
+  "record_path": "../records/0139-saved-training-path-and-stopping.md",
+  "record_sha256": "7f0d67c28180032b15f8c39a1129f46a480673b5bbd6b73ca588586c8830816a",
+  "claims": [
+    {
+      "claim_id": "H139-C01",
+      "title": "질문과 선행 기록",
+      "claim": "원109는 원108의 BN 통계 재계산 뒤, 같은 K4의 차이가 epoch 상한 절단이나 저장된 종료 규칙의 불일치 때문인지 기존 학습 경로로 확인한 기록이다. 원34의 최종 train/validation, 원106의 최종 cell 전이, 원108의 BN 상태 변경과 서로 다른 확인이다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020861",
+          "lines": [
+            1,
+            9
+          ],
+          "source_sha256": "a54d36047325d8c81e63665fcd671adcb320d3d5b0ffed193ffab71e3f74e689",
+          "team_source": "../sources/history-139.md#src-0020861"
+        },
+        {
+          "source_id": "SRC-0020862",
+          "lines": [
+            1,
+            7
+          ],
+          "source_sha256": "dd25ce070eee8114507e15da8b4c66a94e25c9f3e79dedeed5d866f6a00ae88e",
+          "team_source": "../sources/history-139.md#src-0020862"
+        }
+      ],
+      "record_anchor": "claim-01",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C02",
+      "title": "실제 수행과 재현 범위",
+      "claim": "원109의 완료 결과·시작/종료 marker·입력 hash가 연결되며 새 fit와 모델 호출은 0으로 기록됐다. 이번 아카이브는 원본 코드를 실행·import하거나 모델을 만들지 않고 저장 자료와 작은 산술로 대조했다. 저장값 일치는 원래 모델 실행을 독립 재현한 성과가 아니다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/complete",
+            "/new_fits",
+            "/new_model_calls",
+            "/input_files_unchanged_before_accounting"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0032510",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "fb2e1dc1f975e0b831bb708b801d64cd00dfde6feef57395253c914acde4a8e2",
+          "team_source": "../sources/history-139.md#src-0032510"
+        },
+        {
+          "source_id": "SRC-0032509",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "ca923dfd82b6f45e86822143d201cfdc77bb986de43bdd341af5f53cc6d59077",
+          "team_source": "../sources/history-139.md#src-0032509"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            26,
+            45
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            113,
+            135
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        }
+      ],
+      "record_anchor": "claim-02",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        5,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C03",
+      "title": "자료·입력·지표",
+      "claim": "원학습의 target index는 train168–839의672개, validation840–1007의168개, 기존 test1008–1487의480개였다. 코드에서 선택한 traffic 채널(index2)을 저장 scales로 나누고 8step×9channel RCTL 입력을 만들었다. 본 기록의 MAE는 정규화된 validation 오차이며 원단위 MAE·Tab 직접 예측·소속 점수와 합치지 않는다. scale 산출과 실제 cell ID 대응은 선행 자료의 조건을 함께 읽는다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/train_targets",
+            "/validation_targets",
+            "/test_targets"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-139.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            46,
+            70
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-139.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            84,
+            90
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-139.md#src-0023202"
+        }
+      ],
+      "record_anchor": "claim-03",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C04",
+      "title": "핵심16개와 보조13개",
+      "claim": "핵심 비교는 TabICL risk·empirical risk의 두 seed20260925/20260926×4cluster=16모델이다. 각 cluster는 고정된16cell 중4cell이고 저장 members는 cell ID가 아닌0–15 내부 index다. global1개와 첫 seed의 KNN/PCC/random12개는 총29개의 종료 일관성 확인에만 쓰며 같은 K 핵심 순위에 섞지 않는다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020861",
+          "lines": [
+            5,
+            17
+          ],
+          "source_sha256": "a54d36047325d8c81e63665fcd671adcb320d3d5b0ffed193ffab71e3f74e689",
+          "team_source": "../sources/history-139.md#src-0020861"
+        },
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/tasks"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-139.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/records"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        }
+      ],
+      "record_anchor": "claim-04",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C05",
+      "title": "원래 학습·종료 정의",
+      "claim": "원학습은 MAE, Adam lr0.001/eps1e-7, batch256, 최대80epoch, patience10, threads4였다. validation이 이전 best보다 엄격히 작을 때만 best와 stale을 갱신하고 아니면 stale을 늘려10에서 멈춘다. max_fits29/max_total_epochs2320, wall3000초/RAM20GiB는 과거 설정이며 현재 실행 허가나 예산이 아니다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/max_epochs",
+            "/patience",
+            "/learning_rate",
+            "/adam_eps",
+            "/batch_size",
+            "/loss",
+            "/threads",
+            "/max_fits",
+            "/max_total_epochs",
+            "/wall_cap_seconds",
+            "/ram_cap_bytes"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-139.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            95,
+            118
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-139.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            55,
+            70
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        }
+      ],
+      "record_anchor": "claim-05",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C06",
+      "title": "로그의 실제 확인 범위",
+      "claim": "원본29개 history의 전체 본문9,448행을 읽고 epoch/train_mae/val_mae/seconds_from_fit_start 네 필드를 확인했다. 총1,565epoch·6,260숫자 필드이며 epoch는1부터 연속되고 유한·비음수 값과 증가하는 누적 시간을 저장했다. 끝 시간은 해당 fit_seconds 이하였으며 step별 실행 trace를 복구한 것은 아니다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/records"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-139.md#src-0030237"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            47,
+            84
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        }
+      ],
+      "record_anchor": "claim-06",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2,
+        4,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C07",
+      "title": "종료와 최저점의 일치",
+      "claim": "29개 모두 validation_patience 종료다. 각 로그는 best_epoch+10에서 끝나고 마지막 stale=10, 중간에 stale=10에 먼저 도달한 곳이나 마지막10개의 새 best는 없었다. 실제 길이는42–70epoch로80상한에 닿지 않았다. 저장 종료 이유와 정적 규칙은 일치하지만 RAM peak나 전체 실행 과정을 별도로 재현한 검사는 아니다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/records",
+            "/stop_counts_all29",
+            "/all_records_consistent"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            95,
+            118
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-139.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            55,
+            84
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        }
+      ],
+      "record_anchor": "claim-07",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2,
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C08",
+      "title": "하강하는 마지막 구간도 보존",
+      "claim": "마지막10개 validation의 fitted slope가 음수인 모델은15/29, 끝 값이 첫 값보다 낮은 모델은17/29, 인접 감소는136/261구간이다. 예를 들어 empirical/첫 seed/cluster3은 best41·종료51이며 slope≈−0.003415904, 마지막10개 첫끝 차이≈−0.000781886이다. 하강·변동이 있어도 이전 best를 갱신하지 않았다는 사실을 보존하며 수렴·추가 학습 이득의 증명으로 바꾸지 않는다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/records"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            71,
+            84
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        }
+      ],
+      "record_anchor": "claim-08",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2,
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C09",
+      "title": "epoch당 작업량과 파생횟수",
+      "claim": "정적 batch loop에서 global의 epoch당 명목 update는ceil(16×672/256)=42, K4 각 모델은ceil(4×672/256)=11이며 K4의 마지막 batch는128행이다. 저장 epoch 수로 얻은 총 명목 update18,610회는 파생값이다. 실제 optimizer.step별 trace를 독립 복원한 수가 아니고 같은 epoch의 global과 K4를 같은 작업량으로 세지 않는다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            84,
+            110
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-139.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0020861",
+          "lines": [
+            17,
+            17
+          ],
+          "source_sha256": "a54d36047325d8c81e63665fcd671adcb320d3d5b0ffed193ffab71e3f74e689",
+          "team_source": "../sources/history-139.md#src-0020861"
+        },
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/records"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        }
+      ],
+      "record_anchor": "claim-09",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2,
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C10",
+      "title": "공통 epoch 집계 정의",
+      "claim": "같은 seed의 두 K4 여덟 로그 중 가장 짧은 길이까지만 각 방법4모델의 validation을 평균했다. 모든 cluster가4cell이라 동일 cell 비중이며 종료 뒤 값 복제·padding·보간·외삽은 없다. 전체 공통 gap 배열은 저장된 경로의 기술 통계이고 새 test 성능이나 독립 반복실험 표본이 아니다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020861",
+          "lines": [
+            13,
+            17
+          ],
+          "source_sha256": "a54d36047325d8c81e63665fcd671adcb320d3d5b0ffed193ffab71e3f74e689",
+          "team_source": "../sources/history-139.md#src-0020861"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            87,
+            111
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        },
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/comparisons"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        }
+      ],
+      "record_anchor": "claim-10",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C11",
+      "title": "첫 seed의 경로",
+      "claim": "seed20260925의 공통 구간은42epoch다. Tab−empirical validation 차이가 음수인20epoch, 양수인22epoch,0인0epoch이고 부호는25번 바뀌었다. Tab이 학습 시작부터 종료까지 일관되게 나빴다고 해석할 수 없으며 인접 epoch를 독립 표본으로 세어 유의성을 주장하지 않는다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/comparisons/0"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0020862",
+          "lines": [
+            9,
+            16
+          ],
+          "source_sha256": "dd25ce070eee8114507e15da8b4c66a94e25c9f3e79dedeed5d866f6a00ae88e",
+          "team_source": "../sources/history-139.md#src-0020862"
+        }
+      ],
+      "record_anchor": "claim-11",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C12",
+      "title": "둘째 seed의 경로",
+      "claim": "seed20260926의 공통 구간은43epoch다. Tab이 낮은21epoch·높은22epoch·같은0epoch이며 부호는16번 바뀌었다. 이 seed에서도 한 시점만 골라 새 후보의 성능으로 발표하거나 공통 구간 밖의 경로를 덧붙이지 않는다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/comparisons/1"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0020861",
+          "lines": [
+            15,
+            15
+          ],
+          "source_sha256": "a54d36047325d8c81e63665fcd671adcb320d3d5b0ffed193ffab71e3f74e689",
+          "team_source": "../sources/history-139.md#src-0020861"
+        },
+        {
+          "source_id": "SRC-0020862",
+          "lines": [
+            9,
+            16
+          ],
+          "source_sha256": "dd25ce070eee8114507e15da8b4c66a94e25c9f3e79dedeed5d866f6a00ae88e",
+          "team_source": "../sources/history-139.md#src-0020862"
+        }
+      ],
+      "record_anchor": "claim-12",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C13",
+      "title": "첫 seed의 서로 다른 요약",
+      "claim": "첫 seed의 마지막 공통 epoch gap은−0.00009810179471969604, 마지막5개 공통 epoch 평균 gap은+0.00038709938526153563, 각 모델의 선택 checkpoint 평균 gap은+0.0027730241417884827이다. 서로 다른 가중치·시점·집계라 부호가 달라도 모순이 아니며 유리한 요약을 골라 최종 성능을 교체하지 않는다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/comparisons/0"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            95,
+            111
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        }
+      ],
+      "record_anchor": "claim-13",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C14",
+      "title": "둘째 seed의 서로 다른 요약",
+      "claim": "둘째 seed의 마지막 공통 epoch gap은+0.00037717074155807495, 마지막5개 평균 gap은−0.0015455834567546845, 선택 checkpoint 평균 gap은+0.00016181357204914093이다. 마지막5개 평균에서 Tab이 낮다는 관측과 선택 checkpoint 평균에서 높다는 관측은 비교 대상이 다르다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/comparisons/1"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            95,
+            111
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        }
+      ],
+      "record_anchor": "claim-14",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C15",
+      "title": "첫 seed의 실제 epoch",
+      "claim": "첫 seed에서 Tab 각 cluster의 실제 epoch는[65,42,55,59] 합221, best는[55,32,45,49]이고 empirical은[69,55,48,51] 합223, best[59,45,38,41]이다. 명목 update 합은각2,431/2,453회다. 두 방법의 최대 설정이 같아도 실제 수행량이나 선택 시점이 동일했던 것은 아니다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/comparisons/0"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "JSON_pointers": [
+            "/1",
+            "/2",
+            "/3",
+            "/4",
+            "/5",
+            "/6",
+            "/7",
+            "/8"
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-139.md#src-0030237"
+        }
+      ],
+      "record_anchor": "claim-15",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2,
+        3,
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C16",
+      "title": "둘째 seed의 실제 epoch",
+      "claim": "둘째 seed에서 Tab 실제 epoch는[69,58,60,48] 합235, best[59,48,50,38]이고 empirical은[48,55,43,70] 합216, best[38,45,33,60]이다. 명목 update 합은2,585/2,376회다. 첫 seed와 차이가 작은 둘째 seed를 하나의 보편적 학습량 효과로 합치지 않는다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/comparisons/1"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "JSON_pointers": [
+            "/21",
+            "/22",
+            "/23",
+            "/24",
+            "/25",
+            "/26",
+            "/27",
+            "/28"
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-139.md#src-0030237"
+        }
+      ],
+      "record_anchor": "claim-16",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2,
+        3,
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C17",
+      "title": "선택 checkpoint 평균의 의미",
+      "claim": "첫 seed의 선택 validation 평균은Tab0.08165614493191242/empirical0.07888312079012394, 둘째는0.07929670810699463/0.07913489453494549다. 각 모델의 서로 다른 best_epoch에서 validation으로 고른 최소값4개를 평균했으며 동시 epoch·공통 가중치·새 held-out 평가의 평균이 아니다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/comparisons/0",
+            "/comparisons/1"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            107,
+            126
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-139.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            95,
+            111
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        }
+      ],
+      "record_anchor": "claim-17",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2,
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C18",
+      "title": "online train과 eval의 차이",
+      "claim": "train_mae는 model.train 상태의 각 배치 loss를 배치 크기로 가중해 모은 값이다. 배치 사이 가중치가 갱신되고 dropout·BN은 train mode였다. validation은 epoch 종료 뒤 model.eval과 no_grad로 계산한다. 따라서 두 곡선 차이는 고정 checkpoint의 일반 과적합 gap이 아니며 원34/106/108의 고정 가중치 train 평가와 구별한다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020861",
+          "lines": [
+            8,
+            16
+          ],
+          "source_sha256": "a54d36047325d8c81e63665fcd671adcb320d3d5b0ffed193ffab71e3f74e689",
+          "team_source": "../sources/history-139.md#src-0020861"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            73,
+            76
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-139.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            100,
+            118
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-139.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0032511",
+          "JSON_pointers": [
+            "/train_loss_semantics"
+          ],
+          "source_sha256": "ca201a6f997821f81f73a64a6e286a78af5292539ae30a087cd0518c9b3a68b7",
+          "team_source": "../sources/history-139.md#src-0032511"
+        },
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/comparisons"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        }
+      ],
+      "record_anchor": "claim-18",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C19",
+      "title": "global과 보조 비교군의 한계",
+      "claim": "global의 sample/update 수는 local K4와 다르고 KNN/PCC/random은 둘째 seed가 없다. 보조13개의 종료 일관성을 핵심 두 방법×두 seed의 효과크기·일반 우위·학습량 통제 실험으로 바꾸지 않는다. 개별 첫·best·마지막값과 tail 변동은 결과표에 그대로 보존한다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020861",
+          "lines": [
+            7,
+            17
+          ],
+          "source_sha256": "a54d36047325d8c81e63665fcd671adcb320d3d5b0ffed193ffab71e3f74e689",
+          "team_source": "../sources/history-139.md#src-0020861"
+        },
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/tasks"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-139.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/records"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        }
+      ],
+      "record_anchor": "claim-19",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        2,
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C20",
+      "title": "판단 변경의 경계",
+      "claim": "당시 판단은 epoch 상한 절단이나 종료 불일치를 근거로 기존 비교를 무효화할 자료가 없다는 것이다. optimizer가 전역적으로 수렴했거나 patience10이 모든 분할에 가장 공정한 설정이었다는 증명, 오차 차이의 원인 규명, 추가 학습을 하면 복구된다는 증명은 아니다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020862",
+          "lines": [
+            18,
+            22
+          ],
+          "source_sha256": "dd25ce070eee8114507e15da8b4c66a94e25c9f3e79dedeed5d866f6a00ae88e",
+          "team_source": "../sources/history-139.md#src-0020862"
+        },
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/claims_optimizer_convergence"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0020861",
+          "lines": [
+            9,
+            23
+          ],
+          "source_sha256": "a54d36047325d8c81e63665fcd671adcb320d3d5b0ffed193ffab71e3f74e689",
+          "team_source": "../sources/history-139.md#src-0020861"
+        }
+      ],
+      "record_anchor": "claim-20",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C21",
+      "title": "소속 선택으로 되먹이지 않음",
+      "claim": "원109의 RCTL loss는 기존 실패의 해석에 쓰였고 새 cell 소속·시각 이동·병합 threshold의 입력으로 쓰지 않았다고 기록됐다. 설정과 결과의 selection_uses_test/RCTL_results_used_for_clustering/used_to_select_clustering은false다. 새 분할 설계에는 달라지는 질문과 입력·선정 규칙을 먼저 명시한다는 과거 판단을 보존한다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020862",
+          "lines": [
+            20,
+            22
+          ],
+          "source_sha256": "dd25ce070eee8114507e15da8b4c66a94e25c9f3e79dedeed5d866f6a00ae88e",
+          "team_source": "../sources/history-139.md#src-0020862"
+        },
+        {
+          "source_id": "SRC-0020861",
+          "lines": [
+            21,
+            25
+          ],
+          "source_sha256": "a54d36047325d8c81e63665fcd671adcb320d3d5b0ffed193ffab71e3f74e689",
+          "team_source": "../sources/history-139.md#src-0020861"
+        },
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/selection_uses_test",
+            "/RCTL_results_used_for_clustering"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-139.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/used_to_select_clustering"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        }
+      ],
+      "record_anchor": "claim-21",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C22",
+      "title": "진단 비용과 측정 범위",
+      "claim": "원109가 기록한 저장 로그 읽기·수치 요약은0.01929139999265317초, sampled RSS는33,890,304bytes다. timer는history 처리·요약을 포함하고 imports·입력hash·마지막hash 재검사·결과와 원장 직렬화를 제외한다. RSS는 한 번 읽은 값이며 peak가 아니다. 아카이브 산술과 문서 작업을 이 과거 비용에 더하지 않는다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/elapsed_seconds",
+            "/sampled_rss_bytes",
+            "/timing_scope"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            38,
+            45
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            113,
+            135
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        }
+      ],
+      "record_anchor": "claim-22",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C23",
+      "title": "marker와 입력 판본",
+      "claim": "시작marker의 settings SHA와 종료marker의 result/after-ledger SHA가 정확히 일치한다. 두 unix 시각 차이는0.05562114715576172초로 진단 산술 timer와 범위가 다르다. settings가 기록한35개의 입력hash를 실제 판본에 연결했으며 현재 root 원장과 옛 입력 원장은 서로 다른 버전이다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032510",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "fb2e1dc1f975e0b831bb708b801d64cd00dfde6feef57395253c914acde4a8e2",
+          "team_source": "../sources/history-139.md#src-0032510"
+        },
+        {
+          "source_id": "SRC-0032509",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "ca923dfd82b6f45e86822143d201cfdc77bb986de43bdd341af5f53cc6d59077",
+          "team_source": "../sources/history-139.md#src-0032509"
+        },
+        {
+          "source_id": "SRC-0032511",
+          "JSON_pointers": [
+            "/source_hashes"
+          ],
+          "source_sha256": "ca201a6f997821f81f73a64a6e286a78af5292539ae30a087cd0518c9b3a68b7",
+          "team_source": "../sources/history-139.md#src-0032511"
+        },
+        {
+          "source_id": "SRC-0024508",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "989194de962a6cc5dca684b9290469abb5b9fb948fbf7cf53ec3df5f3453a9c9",
+          "team_source": "../sources/history-139.md#src-0024508"
+        }
+      ],
+      "record_anchor": "claim-23",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C24",
+      "title": "실제 전후 원장과 한 번의 정산",
+      "claim": "분석전300d59… 원장과 정산후989194… 원장의 전체 JSON 값을 비교한 차이는 /new_cheap_diagnostic_seconds/training_path_109와 /cheap_stage_details/10 두 위치뿐이다. 둘은 같은0.01929139999265317초 사건의 요약·상세이며 두 번 과금한 것이 아니다. 나머지 값은 같고 optimizer29회+BN 통계 적합9회=combined38회, 남은9회·Tab78호출/55,488query행·reset0을 그대로 보존한다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032507",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "300d59d3efd7f6709d4b9b5da0f83023ef68f4251a74afcbfc73f2dac5afb2dc",
+          "team_source": "../sources/history-139.md#src-0032507"
+        },
+        {
+          "source_id": "SRC-0024508",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "989194de962a6cc5dca684b9290469abb5b9fb948fbf7cf53ec3df5f3453a9c9",
+          "team_source": "../sources/history-139.md#src-0024508"
+        },
+        {
+          "source_id": "SRC-0023204",
+          "lines": [
+            126,
+            135
+          ],
+          "source_sha256": "e3a35ba146867cf58ab44ef1fc7040f60686de3153044ce4104f9f0fa98a4af5",
+          "team_source": "../sources/history-139.md#src-0023204"
+        },
+        {
+          "source_id": "SRC-0020862",
+          "lines": [
+            24,
+            29
+          ],
+          "source_sha256": "dd25ce070eee8114507e15da8b4c66a94e25c9f3e79dedeed5d866f6a00ae88e",
+          "team_source": "../sources/history-139.md#src-0020862"
+        }
+      ],
+      "record_anchor": "claim-24",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C25",
+      "title": "복구한 판본과 남은 공백",
+      "claim": "정산후989194…의 바이트 일치 원본은 다음 원110 디렉터리의 ledger_before_accounting.json에 남아 있었다. 이 파일로 원109 정산 판본을 연결했으며 원110 실험 내용을 검토·실행한 것으로 세지 않는다. 실제 원장 쓰기 도구 응답·정확한 정산 시각은 미복구다. historical hash와 현재root 원장hash 차이를 자료 훼손으로 단정하지 않는다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020862",
+          "lines": [
+            27,
+            29
+          ],
+          "source_sha256": "dd25ce070eee8114507e15da8b4c66a94e25c9f3e79dedeed5d866f6a00ae88e",
+          "team_source": "../sources/history-139.md#src-0020862"
+        },
+        {
+          "source_id": "SRC-0032509",
+          "JSON_pointers": [
+            "/ledger_after_sha256"
+          ],
+          "source_sha256": "ca923dfd82b6f45e86822143d201cfdc77bb986de43bdd341af5f53cc6d59077",
+          "team_source": "../sources/history-139.md#src-0032509"
+        },
+        {
+          "source_id": "SRC-0024508",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "989194de962a6cc5dca684b9290469abb5b9fb948fbf7cf53ec3df5f3453a9c9",
+          "team_source": "../sources/history-139.md#src-0024508"
+        },
+        {
+          "source_id": "SRC-0032511",
+          "JSON_pointers": [
+            "/source_hashes"
+          ],
+          "source_sha256": "ca201a6f997821f81f73a64a6e286a78af5292539ae30a087cd0518c9b3a68b7",
+          "team_source": "../sources/history-139.md#src-0032511"
+        }
+      ],
+      "record_anchor": "claim-25",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H139-C26",
+      "title": "재사용과 다시 검토할 조건",
+      "claim": "29개 원로그, frozen settings, fit summary, 정적 학습·진단 코드, 완료marker와 두 원장 판본을 재사용 근거로 연결한다. 원fit summary에 있는 test 값은 기존 학습의 저장 결과이고 원109에서 새 test를 계산한 결과가 아니다. 같은 조건의 재학습을 반복하기 전에 입력지원·소속·optimizer 또는 종료규칙 중 무엇을 바꿔 어떤 가설을 구별하는지와 독립 평가 조건을 설계한다. 과거 다음 행동·예산·Goal 문구는 현재 실행 지시가 아니다.",
+      "claim_type": "bounded_observation_or_interpretation",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020861",
+          "lines": [
+            19,
+            25
+          ],
+          "source_sha256": "a54d36047325d8c81e63665fcd671adcb320d3d5b0ffed193ffab71e3f74e689",
+          "team_source": "../sources/history-139.md#src-0020861"
+        },
+        {
+          "source_id": "SRC-0020862",
+          "lines": [
+            18,
+            29
+          ],
+          "source_sha256": "dd25ce070eee8114507e15da8b4c66a94e25c9f3e79dedeed5d866f6a00ae88e",
+          "team_source": "../sources/history-139.md#src-0020862"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "JSON_pointers": [
+            ""
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-139.md#src-0030237"
+        },
+        {
+          "source_id": "SRC-0032508",
+          "JSON_pointers": [
+            "/new_model_calls",
+            "/used_to_select_clustering"
+          ],
+          "source_sha256": "ed24e624b82dba0e08f92cc6883a7f97740ebc117505803639ad437d0f7856ea",
+          "team_source": "../sources/history-139.md#src-0032508"
+        }
+      ],
+      "record_anchor": "claim-26",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1,
+        2,
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_values": "../evidence/0139-saved-training-path-and-stopping/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "first_reads": "../evidence/0139-saved-training-path-and-stopping/first-scope-progress.json",
+        "literal_history_reads": "../evidence/0139-saved-training-path-and-stopping/log-body-read-progress.json",
+        "postdraft_actual_reads": "../evidence/0139-saved-training-path-and-stopping/postdraft-actual-reads.json"
+      }
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_human_reviewer": false,
+  "new_model_runs": 0
+}

@@ -1,0 +1,1588 @@
+{
+  "batch_id": "history-136",
+  "record_path": "../records/0136-same-k-cellwise-error-transition.md",
+  "record_sha256": "e63e8ed43d78a9ddcf29b10e3a4cc7be3a0539beaf4bf8f54c9bfdc78af3f61d",
+  "claims": [
+    {
+      "claim_id": "H136-C01",
+      "title": "원106의 계속 진행 기록과 과거 도구 보고",
+      "claim": "2026-09-26 원106 상태JSON은 목표파일 수정true·기존nativeGoal blocked·native재개false·새Goal생성false·goal완료false와 과거heartbeat ACTIVE/creation_confirmed_by_tool=true를 기록했다. 이는 JSON의 당시 보고이며 도구반환 로그나 현재 자동화 상태를 별도로 복구한 것은 아니다. 현재 아카이브에서 Goal재개·자동화생성·예약작업을 실행하지 않는다.",
+      "claim_type": "연구 기록/범위",
+      "record_anchor": "claim-01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020852",
+          "lines": [
+            1,
+            18
+          ],
+          "source_sha256": "7d1c5969b5c386b3472010f9090e42494496465536cab324e8e6b02899c6fa19",
+          "team_source": "../sources/history-136.md#src-0020852"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C02",
+      "title": "수정 전 Goal 판본과 수정 후 증거 공백",
+      "claim": "106_goal_before_revision.md의 SHA0c36c5… 250행을 읽었다. 기존cell clustering→RCTL·RCTL결과의 소속결정 배제·실제근거/누적상한/완료조건을 담은 수정 전 판본이다. 상태JSON의 goal_file_revised=true와 보고서의 제9.1절 인용은 수정 후 Goal 전문이나 승인도구 응답의 복구를 뜻하지 않는다. 과거Goal 전문은 현재 실행 지시로 쓰지 않는다.",
+      "claim_type": "연구 기록/범위",
+      "record_anchor": "claim-02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020853",
+          "lines": [
+            1,
+            34
+          ],
+          "source_sha256": "0c36c53d455abf241ad30443adb6e53fc1dbec493658304b4b4eded7d878e693",
+          "team_source": "../sources/history-136.md#src-0020853"
+        },
+        {
+          "source_id": "SRC-0020853",
+          "lines": [
+            181,
+            206
+          ],
+          "source_sha256": "0c36c53d455abf241ad30443adb6e53fc1dbec493658304b4b4eded7d878e693",
+          "team_source": "../sources/history-136.md#src-0020853"
+        },
+        {
+          "source_id": "SRC-0020853",
+          "lines": [
+            228,
+            250
+          ],
+          "source_sha256": "0c36c53d455abf241ad30443adb6e53fc1dbec493658304b4b4eded7d878e693",
+          "team_source": "../sources/history-136.md#src-0020853"
+        },
+        {
+          "source_id": "SRC-0020852",
+          "lines": [
+            3,
+            8
+          ],
+          "source_sha256": "7d1c5969b5c386b3472010f9090e42494496465536cab324e8e6b02899c6fa19",
+          "team_source": "../sources/history-136.md#src-0020852"
+        },
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            41,
+            41
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C03",
+      "title": "작은 실행 정책과 당시 원장 활성화를 구별",
+      "claim": "원106 상태JSON의 작은 정책은 activated_in_model_ledger=false였다. starting29fit/Tab78context·55488행, 추가RCTL18fit·fit당80epoch·1800초, 기존잔여를 포함한 다음Tab32context·16384행과 별도의 다음Tab시간600초와 automatic_recharge_per_run=false를 남겼다. 계획 상한을 실제 사용·자동 증액·현재 아카이브의 모델 실행 권한으로 옮기지 않는다.",
+      "claim_type": "계획/실제 비용",
+      "record_anchor": "claim-03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020852",
+          "lines": [
+            19,
+            33
+          ],
+          "source_sha256": "7d1c5969b5c386b3472010f9090e42494496465536cab324e8e6b02899c6fa19",
+          "team_source": "../sources/history-136.md#src-0020852"
+        },
+        {
+          "source_id": "SRC-0002031",
+          "JSON_pointers": [
+            "/used",
+            "/caps",
+            "/remaining_count_budgets",
+            "/new_RCTL_fits_permitted_under_current_cap"
+          ],
+          "source_sha256": "60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a",
+          "team_source": "../sources/history-136.md#src-0002031"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C04",
+      "title": "같은 K와 sample 개수의 비교 질문",
+      "claim": "원106은 두 소속의 K4·cluster당4cell·모델당2688훈련행을 고정하고, 훈련→validation→이후 구간에서 Tab-risk RCTL과 empirical-risk RCTL의 순위 변화를 16cell·두seed 모두 확인했다. 같은 sample 개수는 자료 구성·난이도·학습 경로까지 같다는 뜻이 아니며 원인의 증명도 아니다.",
+      "claim_type": "고정 조건/질문",
+      "record_anchor": "claim-04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            5,
+            20
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        },
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            7,
+            18
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            29,
+            46
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            67,
+            69
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            126,
+            128
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C05",
+      "title": "저장 예측 재분석과 새 모델 실행의 구별",
+      "claim": "진단 코드는 기존early/later NPZ와 fitsJSON을 읽어 산술을 수행하도록 작성됐고, 기존 결과가 있으면 반복을 막는다. 이번 아카이브는 그112행을 읽기만 했으며 실행/import하지 않았다. 저장 결과의 새RCTL fit·새추론·새Tabcontext는 모두0이고 새 성능 실험이나 독립 모델 재현으로 세지 않는다. 보고서는 코드경로를 연결했지만 원결과에 코드SHA가 없어 실행 당시 코드판본의 독립고정은 미확인이다.",
+      "claim_type": "수행 범위",
+      "record_anchor": "claim-05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            1,
+            35
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        },
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            97,
+            112
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            165,
+            172
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            43,
+            47
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            4,
+            10
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json",
+        "execution_code_version_pin_limit": "../evidence/0136-same-k-cellwise-error-transition/source-version-limits.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C06",
+      "title": "해시로 연결한 고정 입력",
+      "claim": "원106 결과의 early753997…/laterf2d5c4…/fits5531c0…/plan81b7a1…/ledger60b589…는 현재 확인한 정확사본과 일치했다. 기존 보존 NPZ2개와 fits·설정을 재사용한다. 현재root 원장17a549…는 다른 이후 판본의 보호대상으로 해시만 확인하며 당시ledger의 본문과 혼동하지 않는다.",
+      "claim_type": "버전/재사용",
+      "record_anchor": "claim-06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            4,
+            10
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            18,
+            35
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        },
+        {
+          "source_id": "SRC-0027514",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "75399770d55d018ee8cd65bfcd18f5552aa73cf971175ec81d16559b573f0f3d",
+          "team_source": "../sources/history-136.md#src-0027514"
+        },
+        {
+          "source_id": "SRC-0030211",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096",
+          "team_source": "../sources/history-136.md#src-0030211"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-136.md#src-0030237"
+        },
+        {
+          "source_id": "SRC-0002031",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a",
+          "team_source": "../sources/history-136.md#src-0002031"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C07",
+      "title": "시간 위치와 개발 구간을 고정",
+      "claim": "고정 설정의 train168–839/validation840–1007/이후1008–1487은 각각672/168/480개 target위치다. 저장 배열은16cell×해당 길이이며 이후480시간을240시간씩 앞·뒤10일로 나눴다. 모든 기간은 이미 사용한 개발자료다. 위치만으로 새 독립시간 표본·새검증 구간이나 실제 timestamp를 추가 복구했다고 주장하지 않는다.",
+      "claim_type": "데이터/분할",
+      "record_anchor": "claim-07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/train_targets",
+            "/validation_targets",
+            "/test_targets"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-136.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0027514",
+          "NPZ_keys": [
+            "train_y",
+            "validation_y"
+          ],
+          "source_sha256": "75399770d55d018ee8cd65bfcd18f5552aa73cf971175ec81d16559b573f0f3d",
+          "team_source": "../sources/history-136.md#src-0027514"
+        },
+        {
+          "source_id": "SRC-0030211",
+          "NPZ_keys": [
+            "y"
+          ],
+          "source_sha256": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096",
+          "team_source": "../sources/history-136.md#src-0030211"
+        },
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            14,
+            20
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            170,
+            172
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            63,
+            67
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C08",
+      "title": "signed scaled MAE와 예측기 구별",
+      "claim": "차이는 Tab-risk 소속으로 학습한 RCTL의 scaled MAE에서 empirical-risk 소속 RCTL의 scaled MAE를 뺀 값이다. 양수면 Tab 소속 쪽이 불리하다. 직접Tab 예측 MAE·원단위 MAE·평균과 cell별 손해를 섞지 않으며 현재 독립 단위복원이나 새정규화를 수행하지 않았다.",
+      "claim_type": "지표 척도",
+      "record_anchor": "claim-08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            7,
+            12
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            17,
+            19
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "JSON_pointers": [
+            "/1/test_mean_scaled_mae",
+            "/5/test_mean_scaled_mae"
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-136.md#src-0030237"
+        },
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            52,
+            62
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C09",
+      "title": "고정 학습 정책과 실제 epoch 차이",
+      "claim": "고정설정에는 MAE·batch256·patience10·lr0.001·Adam epsilon1e-7·최대80epoch가 명시됐다. 16개task의 seed/cluster/members가 선택fit과 일치했다. 실제epoch 합은 첫seed Tab221/empirical223, 둘째235/216이다. 같은 설정·sample 개수를 같은 최적화 경로 또는 자료 구성 원인의 통제로 확대하지 않는다.",
+      "claim_type": "통제와 남은 변동",
+      "record_anchor": "claim-09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/loss",
+            "/batch_size",
+            "/patience",
+            "/learning_rate",
+            "/adam_eps",
+            "/max_epochs"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-136.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "JSON_pointers": [
+            "/1/epochs_run",
+            "/2/epochs_run",
+            "/3/epochs_run",
+            "/4/epochs_run",
+            "/5/epochs_run",
+            "/6/epochs_run",
+            "/7/epochs_run",
+            "/8/epochs_run",
+            "/21/epochs_run",
+            "/22/epochs_run",
+            "/23/epochs_run",
+            "/24/epochs_run",
+            "/25/epochs_run",
+            "/26/epochs_run",
+            "/27/epochs_run",
+            "/28/epochs_run"
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-136.md#src-0030237"
+        },
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            16,
+            16
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/tasks/1",
+            "/tasks/2",
+            "/tasks/3",
+            "/tasks/4",
+            "/tasks/5",
+            "/tasks/6",
+            "/tasks/7",
+            "/tasks/8",
+            "/tasks/21",
+            "/tasks/22",
+            "/tasks/23",
+            "/tasks/24",
+            "/tasks/25",
+            "/tasks/26",
+            "/tasks/27",
+            "/tasks/28"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-136.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "JSON_pointers": [
+            "/1/seed",
+            "/1/cluster",
+            "/1/members",
+            "/2/seed",
+            "/2/cluster",
+            "/2/members",
+            "/3/seed",
+            "/3/cluster",
+            "/3/members",
+            "/4/seed",
+            "/4/cluster",
+            "/4/members",
+            "/5/seed",
+            "/5/cluster",
+            "/5/members",
+            "/6/seed",
+            "/6/cluster",
+            "/6/members",
+            "/7/seed",
+            "/7/cluster",
+            "/7/members",
+            "/8/seed",
+            "/8/cluster",
+            "/8/members",
+            "/21/seed",
+            "/21/cluster",
+            "/21/members",
+            "/22/seed",
+            "/22/cluster",
+            "/22/members",
+            "/23/seed",
+            "/23/cluster",
+            "/23/members",
+            "/24/seed",
+            "/24/cluster",
+            "/24/members",
+            "/25/seed",
+            "/25/cluster",
+            "/25/members",
+            "/26/seed",
+            "/26/cluster",
+            "/26/members",
+            "/27/seed",
+            "/27/cluster",
+            "/27/members",
+            "/28/seed",
+            "/28/cluster",
+            "/28/members"
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-136.md#src-0030237"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C10",
+      "title": "첫 seed의 평균 손해와 cell 범위",
+      "claim": "seed20260925의 train/validation/이후 평균차이는 +0.0033140586581/+0.00277302195762/+0.00572773873476이다. Tab 쪽이 불리한cell은 각각11/13/10개이며 이후 유리한6개도 CSV에 남아 있다. 이후 손해10/16만으로 모든cell에 같은 원인을 부여하지 않는다.",
+      "claim_type": "수치 결과",
+      "record_anchor": "claim-10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            13,
+            35
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024873",
+          "lines": [
+            2,
+            17
+          ],
+          "source_sha256": "cf620db407f1924c7d29ca9d32988eca4584bb05da9a13e181b3500f0332b1c0",
+          "team_source": "../sources/history-136.md#src-0024873"
+        },
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            9,
+            16
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C11",
+      "title": "둘째 seed의 훈련 우열과 이후 손해",
+      "claim": "seed20260926의 train평균은 −0.000738153673453이지만 validation/이후는 +0.000161813045408/+0.00424376789209다. 불리한cell10/9/9개와 이후 유리한7개를 함께 보존한다. 음수 훈련평균과 이후 손해의 공존을 과적합 한 원인의 증명으로 쓰지 않는다.",
+      "claim_type": "수치 결과",
+      "record_anchor": "claim-11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            72,
+            94
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024873",
+          "lines": [
+            18,
+            33
+          ],
+          "source_sha256": "cf620db407f1924c7d29ca9d32988eca4584bb05da9a13e181b3500f0332b1c0",
+          "team_source": "../sources/history-136.md#src-0024873"
+        },
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            11,
+            16
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C12",
+      "title": "훈련과 이후의 네 부호 조합",
+      "claim": "첫seed는 train불리/future불리8·불리/유리3·유리/유리3·유리/불리2, 둘째는 각각5·5·2·4cell이다. 1e-10 이내는 수치동점 정의이며 동등성 검정이 아니다. 이미 불리한 경우와 이후 뒤집힌 경우가 함께 있어 실패 원인을 하나로 묶지 않는다.",
+      "claim_type": "전이 분류",
+      "record_anchor": "claim-12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            36,
+            42
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            95,
+            101
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            71,
+            80
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        },
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            18,
+            24
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        },
+        {
+          "source_id": "SRC-0024873",
+          "lines": [
+            2,
+            33
+          ],
+          "source_sha256": "cf620db407f1924c7d29ca9d32988eca4584bb05da9a13e181b3500f0332b1c0",
+          "team_source": "../sources/history-136.md#src-0024873"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C13",
+      "title": "두 seed와 두 반구간의 손해를 별도로 보존",
+      "claim": "두seed에서 이후 평균이 모두 불리한cell은3765/4545/5353/5365/6145/6153/6165의7개다. 두seed와 앞·뒤10일을 모두 만족한 것은3765/4545/5353/6153의4개다. 한seed의 두 반구간 손해9/6개와 구별하고 이cell만 다음 평가에 선택하지 않는다.",
+      "claim_type": "반례/평가 선택",
+      "record_anchor": "claim-13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            149,
+            163
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            42,
+            42
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            101,
+            101
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            14,
+            14
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            20,
+            20
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C14",
+      "title": "날짜별 우열을 독립 실험으로 세지 않음",
+      "claim": "20개 날짜에서 Tab 쪽 평균이 불리한 날은 두seed 각각15일/14일이고 두seed 모두 불리한 것은11일이다. 나머지 날짜의 반대 방향도 저장daily_deltas에 남겼다. 날짜20개를 독립 실험20회로 세거나 유의성·원인 식별의 검정으로 바꾸지 않는다.",
+      "claim_type": "시간 변동",
+      "record_anchor": "claim-14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            43,
+            66
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            102,
+            125
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            164,
+            164
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            20,
+            20
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        },
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            45,
+            45
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C15",
+      "title": "오차 차이 분해는 산술 항등식",
+      "claim": "이후차이=훈련차이+두방법의 이후−훈련 변화량 차이가 cell별로 성립한다. 평균 변화량 차이는0.00241368007666/0.00498192156554다. 이 항등식은 원인 기여율·과적합·자료구성의 인과 분해가 아니다.",
+      "claim_type": "산술/인과 경계",
+      "record_anchor": "claim-15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            19,
+            19
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        },
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            68,
+            70
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            66,
+            66
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            125,
+            125
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024873",
+          "lines": [
+            1,
+            33
+          ],
+          "source_sha256": "cf620db407f1924c7d29ca9d32988eca4584bb05da9a13e181b3500f0332b1c0",
+          "team_source": "../sources/history-136.md#src-0024873"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C16",
+      "title": "저장 수치 검수와 독립 재현의 경계",
+      "claim": "기존 보존NPZ의 필요한41배열(early35/later6)을 stdlib로 해석해 scaled MAE·32CSV행·날짜별값 등250개 수치를 대조했다. CSV 최대차이0, 기존fit평균과의 최대차이1.013201350597015e-8로 원106 저장값과 일치했다. 이는 저장자료의 산술 검수이며 원code 실행·새 모델 추론/학습·독립 모델 재현이나 NPZ 모든배열 전문검토가 아니다.",
+      "claim_type": "검수 범위",
+      "record_anchor": "claim-16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            165,
+            172
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            29,
+            70
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        },
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            45,
+            45
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0027514",
+          "NPZ_keys": [
+            "cell_ids",
+            "train_y",
+            "validation_y"
+          ],
+          "source_sha256": "75399770d55d018ee8cd65bfcd18f5552aa73cf971175ec81d16559b573f0f3d",
+          "team_source": "../sources/history-136.md#src-0027514"
+        },
+        {
+          "source_id": "SRC-0030211",
+          "NPZ_keys": [
+            "cell_ids",
+            "y",
+            "tabicl_risk_20260925",
+            "empirical_risk_20260925",
+            "tabicl_risk_20260926",
+            "empirical_risk_20260926"
+          ],
+          "source_sha256": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096",
+          "team_source": "../sources/history-136.md#src-0030211"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C17",
+      "title": "보고된 원래 진단 시간과 회계",
+      "claim": "보고서0.029초/원결과0.02850919999764301초와 accountingJSON의 new_entry_seconds가 일치했다. 원코드는 최초hash 계산 뒤 배열로드/수치대조를 재고, 마지막hash확인·결과파일 출력 전에 시간을 저장한다. 원래 시간을 현재 다시 측정하거나 전체 작업·모델 실행 시간으로 확대하지 않는다.",
+      "claim_type": "비용 척도",
+      "record_anchor": "claim-17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            45,
+            47
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            165,
+            169
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0024871",
+          "lines": [
+            1,
+            6
+          ],
+          "source_sha256": "31987c2c89ca7bc38f80ea112994413c66f5033d63060ec51fd07e652b1d1744",
+          "team_source": "../sources/history-136.md#src-0024871"
+        },
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            18,
+            28
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        },
+        {
+          "source_id": "SRC-0022572",
+          "lines": [
+            97,
+            110
+          ],
+          "source_sha256": "63d38909860850bd3ce452aa37a7d7673d9f39007a537e05a1bbb8b076080495",
+          "team_source": "../sources/history-136.md#src-0022572"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C18",
+      "title": "변경 전후 원장을 정확SHA로 대조",
+      "claim": "회계의 before60b589…와 after98972…를 정확판본에 대조했다. 후자는 원108 활성화 전 보관본으로 남은 SHA이며 원108의 실행을 재개하지 않았다. 값의 차이는 진단비용 키1개와 같은 사건의 상세항목1개뿐이다. 사건은1회이고 used/caps/잔여/fit허용/reset/goalfalse는 그대로다. 전체JSON 값차이 검사와 현재 literal전문 판독은 구별한다.",
+      "claim_type": "회계/판본",
+      "record_anchor": "claim-18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024871",
+          "lines": [
+            1,
+            6
+          ],
+          "source_sha256": "31987c2c89ca7bc38f80ea112994413c66f5033d63060ec51fd07e652b1d1744",
+          "team_source": "../sources/history-136.md#src-0024871"
+        },
+        {
+          "source_id": "SRC-0002031",
+          "JSON_pointers": [
+            "/used",
+            "/caps",
+            "/remaining_count_budgets",
+            "/budget_resets",
+            "/new_RCTL_fits_permitted_under_current_cap",
+            "/research_goal_complete",
+            "/new_cheap_diagnostic_seconds"
+          ],
+          "source_sha256": "60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a",
+          "team_source": "../sources/history-136.md#src-0002031"
+        },
+        {
+          "source_id": "SRC-0020858",
+          "JSON_pointers": [
+            "/used",
+            "/caps",
+            "/remaining_count_budgets",
+            "/budget_resets",
+            "/new_RCTL_fits_permitted_under_current_cap",
+            "/research_goal_complete",
+            "/cheap_stage_details/8",
+            "/new_cheap_diagnostic_seconds/cellwise_transition_106"
+          ],
+          "source_sha256": "98972b834adb0c650f6e309bc1b24a7d5a96e0b03eec1f86a9c0f651025204ba",
+          "team_source": "../sources/history-136.md#src-0020858"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C19",
+      "title": "같은 sample 수가 설명하지 못하는 것",
+      "claim": "두K4의 모델당 sample 개수는 같고 훈련 우열도seed/cell에 따라 달랐다. 이는 자료 수 감소 하나로 같은K의 순위 차이를 설명하는 해석에 한계가 있다는 진단이다. input 구별 가능성·함께 학습한 자료 구성·시간 변화·최적화 변동은 여전히 식별되지 않았고 잘못 병합/분할했다는 원인을 증명하지 않는다.",
+      "claim_type": "원인/한계",
+      "record_anchor": "claim-19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            14,
+            18
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            7,
+            9
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        },
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            24,
+            26
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            170,
+            172
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C20",
+      "title": "global 비교와 원UPC 재현을 구별",
+      "claim": "globalK1 대비K4의 앞선 손해는 모델 수와 자료량도 바뀐 비교다. 원106의 동일K 진단과 섞지 않는다. 보고서는 원UPC의10분·대규모 실험 재현도 아니라고 명시했다. 해당 과거 비교의 재인용을 이번 새실험 또는 독립 재현으로 세지 않는다.",
+      "claim_type": "비교 범위",
+      "record_anchor": "claim-20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            18,
+            18
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            9,
+            9
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C21",
+      "title": "후보 진입의 네 근거",
+      "claim": "다음 후보에는 실제 손해와 적용 범위, 경쟁 원인과 식별 한계, TabICLv2가 추정할 정보와 달라질 소속 결정, 큰학습 전에 원인을 구별할 최소 비교가 있어야 한다는 당시 기준을 남겼다. 직접Tab 예측 MAE가 작다는 것만으로 RCTL 공동학습 이득을 대신하지 않으며 성공 결과를 미리 요구하는 기준도 아니다.",
+      "claim_type": "재검토 기준",
+      "record_anchor": "claim-21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            20,
+            29
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C22",
+      "title": "다음 작업은 조건별 구성의 진단 명세",
+      "claim": "후속은 기존16cell·모든훈련sample의 조건별 자료 구성과 원인 구별 계획1개 고정이었다. 보고서는 기존13/14/19/23/25/80의 입력지원·조건위험을 재사용하고 같은거리/위험을 반복 계산하지 않도록 적었다. 이 지침은 당시 미완료 후속이며 현재 새연구 실행 지시나 그연결자료 전문재검토 완료가 아니다.",
+      "claim_type": "후속/재사용",
+      "record_anchor": "claim-22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            31,
+            38
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            26,
+            26
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C23",
+      "title": "기본 특징과 신규성, 조건부 후보를 구별",
+      "claim": "달력·일/주lag가 이미 입력에 있어 새추가를 개선안으로 삼지 않는다던 보고서의 조건을 보존한다. 지원 차이가 미확인이면 threshold없는 기술통계와 두결과별 결정을 먼저 적고, 지원차이로 설명할 근거가 없으면 retrieval/거리/겹침 보정을 추천하지 않는다. 차이가 있더라도 가까운 조건부전이 방법과 결정 차이를 확인하기 전 신규성으로 쓰지 않는다.",
+      "claim_type": "신규성/재검토",
+      "record_anchor": "claim-23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            35,
+            39
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C24",
+      "title": "새18fit을 시작했다는 결과는 아님",
+      "claim": "보고서는 신규 후보/원인구별 명세 뒤 작은예산을 편성하되 현재 새18fit을 시작하지 않았다고 썼다. 상태JSON의 ledger비활성화와 기존29fit상한·추가fit허용false도 일치한다. 후속 조건부계획과 저장배열 진단을 새 RCTL 검증의 완료로 바꾸지 않는다.",
+      "claim_type": "미실행 계획",
+      "record_anchor": "claim-24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            41,
+            47
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        },
+        {
+          "source_id": "SRC-0020852",
+          "lines": [
+            19,
+            33
+          ],
+          "source_sha256": "7d1c5969b5c386b3472010f9090e42494496465536cab324e8e6b02899c6fa19",
+          "team_source": "../sources/history-136.md#src-0020852"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            167,
+            169
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0020858",
+          "JSON_pointers": [
+            "/caps",
+            "/used",
+            "/new_RCTL_fits_permitted_under_current_cap"
+          ],
+          "source_sha256": "98972b834adb0c650f6e309bc1b24a7d5a96e0b03eec1f86a9c0f651025204ba",
+          "team_source": "../sources/history-136.md#src-0020858"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C25",
+      "title": "진단 완료와 연구 완료를 구별",
+      "claim": "결과JSON의 complete=true/stage106은 해당 저장예측 진단의 완료다. 상태JSON goal_complete=false와 과거Goal의 추천방향/직접근거/착수판단 조건은 별도다. 기각·진단·문서·참고목록/계획만으로 최종 연구 완료를 선언하지 않는다. 현재 전체기록 아카이브Goal도 미완료다.",
+      "claim_type": "완료 경계",
+      "record_anchor": "claim-25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            1,
+            3
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0020852",
+          "lines": [
+            5,
+            8
+          ],
+          "source_sha256": "7d1c5969b5c386b3472010f9090e42494496465536cab324e8e6b02899c6fa19",
+          "team_source": "../sources/history-136.md#src-0020852"
+        },
+        {
+          "source_id": "SRC-0020853",
+          "lines": [
+            238,
+            250
+          ],
+          "source_sha256": "0c36c53d455abf241ad30443adb6e53fc1dbec493658304b4b4eded7d878e693",
+          "team_source": "../sources/history-136.md#src-0020853"
+        },
+        {
+          "source_id": "SRC-0020854",
+          "lines": [
+            1,
+            3
+          ],
+          "source_sha256": "4e17c31da114f660a6a7b0701c5fdc71e04c83dbea6179a2c2be2513e4718bab",
+          "team_source": "../sources/history-136.md#src-0020854"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H136-C26",
+      "title": "판독·재사용·집계 분모와 미확인",
+      "claim": "현재14고유SHA/31물리경로·원본37고유경로를 확인했다. 새8raw687행을 전부읽고 settings72행/30선택위치·fit16개항목8필드/128선택위치와 부수적/0·원장7/9선택위치·NPZ41필요배열을 검수했다. 이전5사본 재사용과 literal전문/선택/산술을 구별한다. 이26주장 묶음은 공개문서 검수 뒤 신규내용만 한 번 집계하고 재사용·재독은 집계하지 않는다. 수정후Goal 정확판본·당시자동화/상태도구로그·남은Corpus/통합/접근/finaldelta/검색10+와전체Goal은미완료다.",
+      "claim_type": "검토 범위",
+      "record_anchor": "claim-26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020851",
+          "lines": [
+            28,
+            30
+          ],
+          "source_sha256": "81b7a11d46c36025feec055c9e4aefb36f1e323c06756938c023e5922ab5240c",
+          "team_source": "../sources/history-136.md#src-0020851"
+        },
+        {
+          "source_id": "SRC-0024874",
+          "lines": [
+            165,
+            173
+          ],
+          "source_sha256": "53989b3159bc41218cdc5f32cceeb09de281ef27c3d07e2e9c4c5219eaaddb60",
+          "team_source": "../sources/history-136.md#src-0024874"
+        },
+        {
+          "source_id": "SRC-0020852",
+          "lines": [
+            3,
+            17
+          ],
+          "source_sha256": "7d1c5969b5c386b3472010f9090e42494496465536cab324e8e6b02899c6fa19",
+          "team_source": "../sources/history-136.md#src-0020852"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_array_numeric_and_accounting": "../evidence/0136-same-k-cellwise-error-transition/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0136-same-k-cellwise-error-transition/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0136-same-k-cellwise-error-transition/numeric-scope-packet.json",
+        "selection_identity_and_current_scopes": "../evidence/0136-same-k-cellwise-error-transition/selection.json",
+        "postdraft_actual_reads": "../evidence/0136-same-k-cellwise-error-transition/postdraft-actual-reads.json"
+      }
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_human_reviewer": false,
+  "new_model_runs": 0
+}

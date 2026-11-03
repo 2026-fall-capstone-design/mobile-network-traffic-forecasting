@@ -1,0 +1,40 @@
+from pathlib import Path
+import datetime
+import hashlib
+import json
+import urllib.parse
+import urllib.request
+from xml.etree import ElementTree as ET
+
+DEST = Path(__file__).resolve().parent / 'sources/causal_capacity_87'
+DEST.mkdir(parents=True, exist_ok=True)
+queries = [
+    ('forecasting_bottleneck', 'all:"time series" AND (ti:"bottleneck" OR ti:"rank")'),
+    ('forecasting_innovation_subspace', 'all:forecasting AND (all:"conditional innovation" OR all:"predictive subspace")'),
+]
+manifest = []
+for name, query in queries:
+    url = 'https://export.arxiv.org/api/query?' + urllib.parse.urlencode({'search_query': query, 'start': 0, 'max_results': 12, 'sortBy': 'submittedDate', 'sortOrder': 'descending'})
+    record = {'query': query, 'url': url, 'accessed_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'cap_bytes': 1_000_000}
+    try:
+        request = urllib.request.Request(url, headers={'User-Agent': 'ResearchSourceReview/1.0'})
+        with urllib.request.urlopen(request, timeout=15) as response:
+            data = response.read(1_000_001)
+            assert len(data) <= 1_000_000, 'Response exceeds cap'
+            record.update(status=response.status, final_url=response.url)
+        path = DEST / (name + '.xml')
+        assert not path.exists()
+        path.write_bytes(data)
+        record.update(path=str(path), bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+        root = ET.fromstring(data)
+        entries = []
+        ns = '{http://www.w3.org/2005/Atom}'
+        for item in root.findall(ns + 'entry'):
+            entries.append({tag: ' '.join((item.findtext(ns + tag) or '').split()) for tag in ('title', 'id', 'published', 'updated', 'summary')})
+        record['entries'] = entries
+        print(json.dumps({'name': name, 'entries': [{k: x[k] for k in ('title', 'id', 'published')} for x in entries]}, ensure_ascii=False), flush=True)
+    except Exception as error:
+        record['error'] = type(error).__name__ + ': ' + str(error)
+        print(json.dumps({'name': name, 'error': record['error']}), flush=True)
+    manifest.append(record)
+(DEST / 'search_manifest.json').write_text(json.dumps({'scope': 'Official arXiv discovery metadata; not full methods or exhaustive literature coverage.', 'sources': manifest}, ensure_ascii=False, indent=2), encoding='utf-8')

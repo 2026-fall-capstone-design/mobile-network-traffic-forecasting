@@ -1,5 +1,7 @@
 # 17: 시간 적응 문헌이 제한한 해석
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 기록17은 시간에 따라 자료를 버리는 새 구조를 추천하지 않았다. [16–17의 저장 진단](0016-0017-temporal-validity.md)에 이어 세 문헌을 검토하고, 주변 cell 정보의 추가 가치를 다음 질문으로 남겼다. 이번 정리는 그 **세 문헌의 지정 방법과 당시 판단을 일차자료에 대조한 것**이다. 새 예측 실험이나 성능 재현은 없다. **H011-C01·H011-C11**
 
 [당시 원문](../evidence/0016-0017/originals/SRC-0021004.md.txt)의18–22행, [방법 비교](../references/temporal-adaptation-methods.md), [출처·읽은 범위](../sources/history-011.md), [주장별 근거](../verification/history-011-primary-review.json), [검수](../verification/history-011.md)를 함께 연결한다.

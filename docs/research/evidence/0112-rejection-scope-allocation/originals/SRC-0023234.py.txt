@@ -1,0 +1,97 @@
+from pathlib import Path
+import hashlib
+import json
+import shutil
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT / 'tmp/redesign_20260925'
+LEDGER = WORK / 'cumulative_execution_budget.json'
+EXPECTED = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+REPORT = ROOT / 'output/research/TabICLv2_재설계_자료공유비용과기각범위_재검토.md'
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(LEDGER) == EXPECTED
+
+source_scope = {
+    'date': '2026-09-26',
+    'new_model_or_numeric_pilot_calls': 0,
+    'algebra_scope': 'Fixed losses/parameters, true posterior, finite second moments; no empirical RCTL theorem.',
+    'read_sources': [
+        {
+            'title': 'Multi-Task Learning for HIV Therapy Screening',
+            'url': 'https://icml.cc/Conferences/2008/papers/520.pdf',
+            'pdf': 'sources/sample_reuse_39/bickel2008.pdf',
+            'text': 'sources/sample_reuse_39/bickel2008.txt',
+            'scope_this_stage': 'Section 4, equations 1–8, Section 4.2 opening; explicit resampling and loss-weighting alternatives.',
+        },
+        {
+            'title': 'Not All Samples Are Created Equal: Deep Learning with Importance Sampling',
+            'url': 'https://proceedings.mlr.press/v80/katharopoulos18a.html',
+            'pdf': 'sources/training_compression_56/importance_sampling_ICML2018.pdf',
+            'text': 'sources/training_compression_56/importance_sampling_ICML2018.txt',
+            'scope_this_stage': 'Sections 2–3.2, equations 1–8, Algorithm 1 and surrounding selection-cost discussion.',
+        },
+    ],
+    'abstract_only': ['Stochastic Optimization with Importance Sampling for Regularized Loss Minimization, PMLR 37, 2015'],
+    'metadata_only_not_method_evidence': ['Boosting Share Routing for Multi-task Learning, DOI 10.1145/3442442.3452323', 'Other Crossref discovery results'],
+    'search_access_limit': 'web search tool authentication failed; no credential inspection/change. Public Crossref and PMLR pages were accessible directly. No exhaustive current-literature claim.',
+}
+for record in source_scope['read_sources']:
+    record['pdf_sha256'] = sha(WORK / record['pdf'])
+    record['text_sha256'] = sha(WORK / record['text'])
+(WORK / '85_source_reading_scope.json').write_text(json.dumps(source_scope, ensure_ascii=False, indent=2), encoding='utf-8')
+
+for p in [REPORT, WORK / '85_rejection_scope_and_routing_findings.md']:
+    body = p.read_text(encoding='utf-8')
+    assert '\uc0ac\ub840' not in body
+    assert 'TabICLv2' in body and 'RCTL' in body
+
+progress = WORK / 'progress.md'
+body = progress.read_text(encoding='utf-8-sig')
+heading = '## 최신 상태 — 85 기각 범위와 고정 처리량 sample 배분 재검토'
+assert heading not in body, 'Do not execute this archival stage twice.'
+new = '''## 최신 상태 — 85 기각 범위와 고정 처리량 sample 배분 재검토
+
+- 2026-09-26. 85계획 후35·38·40·47·62·76·80의 결론 범위를 대조했다. 16cell/시간단위/K4의 실패를 모든 clustering이나 원 UPC의10분/K2 결과의 부정으로 확대하지 않는다. 관찰된 train–validation 차이는 일반화 손해와 일치하지만 원인을 하나로 확정하지 않는다.
+- 40의 비용 판단을 구체화했다. 모든 외부 자료를 각 RCTL에 추가하면 비용이 늘지만, 총 sample–모델 처리 횟수를 고정한 재배분은 가능하다. 이를 비용 때문에 불가능하다고 기각하지 않는다. 다만 Bickel2008§4는 이미 재추출과 loss가중을 모두 제시하므로 이 변경 자체는 신규 추천안이 아니다.
+- true posterior의 soft비중·hard출처·sample당하나의모델배분을 기호적으로 구분했다. p=r의단일pass는원출처와같은결합분포지만, 같은sample을epoch마다다시배분하면고정loss의조건부배분변동을줄일수있다. 실제학습파라미터변화·시간의존·BN·추정비중까지보장하지않는다. 반복학습전체가무의미하다는결론은배제했다.
+- 소속고정뒤optimizer의RCTLgradient사용과clustering판단에RCTL결과사용을구별했다. 전자는자동으로독립성위반이아니다. 이번에는둘다실행하지않았다. Tab회귀분포의좋은예측이joint출처비중이나더좋은배분결정을보인것은아니다.
+- 새모델·수치pilot0회, 예산원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변. Tab잔여11context/20640행, RCTL추가fit0을유지한다. 문헌읽기·기호검토·비용해석수정은새실행성과로세지않는다.
+- 새웹검색도구는인증오류였으나Crossref/PMLR공개직접접근은성공했다. 자격증명조회·수정없음. 최신검색의완전성을주장하지않으며이를전체작업blocker로표시하지않는다. 새공개자료4개와읽기범위/hash를보존했다.
+- `85_rejection_scope_and_routing_findings.md`, `85_source_reading_scope.json`, `output/research/TabICLv2_재설계_자료공유비용과기각범위_재검토.md`를작성했다. candidate_decision_index의sample재사용·압축행을수정했다. 현재추천안과최종Word는여전히미완료다. 84의검수된5쪽중간Word는그대로유지한다.
+- 다음에는고정quota재추출을새로운명칭으로다시제안하지않는다. 실제운영제약에대한선택질문은미응답이며존재/부재를발명하지않는다. 새후보는직접확인한분리손해를줄이는행동, Tab의다른유용한판단, 남은예산으로판단할근거가있어야한다. 이번turn은판단범위를수정한progress이며최종목표는active다.
+
+'''
+body = body.replace('## 최신 상태 — 84 근거 종합과 중간 Word 검수 완료', new + '## 이전 상태 — 84 근거 종합과 중간 Word 검수 완료', 1)
+progress.write_text(body, encoding='utf-8')
+
+snapshot = ROOT / 'output/research/redesign_20260925_snapshot_27'
+assert not snapshot.exists(), 'Never overwrite earlier snapshots.'
+snapshot.mkdir()
+files = [
+    WORK / '85_rejection_scope_and_routing_plan.md',
+    WORK / '85_rejection_scope_and_routing_findings.md',
+    WORK / '85_source_reading_scope.json',
+    WORK / 'collect_routing_sources_85.py', Path(__file__).resolve(),
+    WORK / 'progress.md', WORK / 'candidate_decision_index.md', LEDGER, REPORT,
+] + sorted((WORK / 'sources/routing_85').glob('*'))
+manifest = []
+for source in files:
+    relative = source.relative_to(ROOT)
+    destination = snapshot / relative
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination)
+    assert sha(source) == sha(destination)
+    if source.suffix == '.json':
+        json.loads(source.read_text(encoding='utf-8'))
+    manifest.append({'path': relative.as_posix(), 'bytes': source.stat().st_size, 'sha256': sha(source)})
+record = {
+    'files': len(manifest), 'bytes': sum(item['bytes'] for item in manifest),
+    'manifest': manifest, 'ledger_unchanged': sha(LEDGER) == EXPECTED,
+    'old_snapshots_modified': False, 'new_model_calls': 0, 'goal_complete': False,
+}
+(snapshot / 'manifest.json').write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding='utf-8')
+(WORK / '85_archive_verification.json').write_text(json.dumps({
+    'snapshot': str(snapshot), 'files': record['files'], 'bytes': record['bytes'],
+    'verified': True, 'ledger_unchanged': True, 'source_scope_recorded': True,
+}, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps({'snapshot_files': record['files'], 'snapshot_bytes': record['bytes'], 'ledger_unchanged': True}, ensure_ascii=False))

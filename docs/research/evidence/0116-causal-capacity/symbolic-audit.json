@@ -1,0 +1,119 @@
+{
+  "original_source_id": "SRC-0022064",
+  "source_lines": [
+    [
+      9,
+      33
+    ],
+    [
+      45,
+      49
+    ]
+  ],
+  "type": "원문 기호관계의 재대조와 정확 유리확률 반례 열거; 실제 데이터/모델 pilot 아님",
+  "rank_bound": {
+    "assumptions": [
+      "고정 평가 BN·dropout off",
+      "causal convolution·정방향 LSTM·시간별 shortcut",
+      "최신값을 이전 위치로 전파하지 않는 전처리",
+      "고정 선형 다중출력 head, 최종 hidden폭16"
+    ],
+    "factorization": "f(O,Z)=a(O)+B h(O,Z), B in R^(d x 16)",
+    "Jacobian": "J_Z f=B J_Z h, rank<=min(d,16) at differentiable points",
+    "global_statement": "고정 O에서 모든 출력 차이는 col(B)에 속함; ReLU 경계에서도 성립",
+    "stored_model": "원본 dense는 steps*16->1. 다중출력 head는 당시 기호 가정이며 학습된 구현 아님"
+  },
+  "risk_bound": {
+    "conditions": "동일 평가 모집단, 제곱적분 Y와 f; m=E[Y|O,Z], m_O=E[Y|O], U=m-m_O, P_B는 고정 col(B)의 직교 projection",
+    "steps": [
+      "Excess=sum-MSE(f)-sum-MSE(m)=E||m-f||^2",
+      "=E||m_O-E[f|O]||^2+E||U-(f-E[f|O])||^2",
+      ">=E||(I-P_B)U||^2",
+      ">=sum_{j>16} lambda_j(E[UU^T]), eigenvalues descending"
+    ],
+    "scope": "평균 출력 MSE는 d로 나눔. MAE에 적용하지 않음. 국소 rank만으로 도출하지 않고 고정 선형 subspace를 사용. 참 innovation의 spectrum을 추정하지 않았음."
+  },
+  "skip": {
+    "form": "f=Z+core or D Z+core",
+    "conclusion": "전체 Jacobian의 보편적 rank16 상한은 적용 불가. core=0이면 identity 가능. 항상 full rank/오차개선이라는 주장은 아님."
+  },
+  "CMI": {
+    "required": "Q_cond=P(C)P(A|C)P(B|C)",
+    "ideal_unconditional_shuffle": "Q_shuffle=P(A,C)P(B)",
+    "chain_rule": "KL(P(A,B,C)||Q_shuffle)=I(B;A,C)=I(B;C)+I(B;A|C)",
+    "condition": "고정 표현·독립 모집단 표본 이상화·필요한 KL 존재 조건. 실제 유한 batch critic 출력과의 동일성 아님.",
+    "binary_example": "C~Bernoulli(1/2), A=C, B=C",
+    "probability_table": [
+      {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "joint": "1/2",
+        "conditional_product": "1/2",
+        "unconditional_B_shuffle": "1/4"
+      },
+      {
+        "A": 0,
+        "B": 0,
+        "C": 1,
+        "joint": "0",
+        "conditional_product": "0",
+        "unconditional_B_shuffle": "0"
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "C": 0,
+        "joint": "0",
+        "conditional_product": "0",
+        "unconditional_B_shuffle": "1/4"
+      },
+      {
+        "A": 0,
+        "B": 1,
+        "C": 1,
+        "joint": "0",
+        "conditional_product": "0",
+        "unconditional_B_shuffle": "0"
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "joint": "0",
+        "conditional_product": "0",
+        "unconditional_B_shuffle": "0"
+      },
+      {
+        "A": 1,
+        "B": 0,
+        "C": 1,
+        "joint": "0",
+        "conditional_product": "0",
+        "unconditional_B_shuffle": "1/4"
+      },
+      {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "joint": "0",
+        "conditional_product": "0",
+        "unconditional_B_shuffle": "0"
+      },
+      {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "joint": "1/2",
+        "conditional_product": "1/2",
+        "unconditional_B_shuffle": "1/4"
+      }
+    ],
+    "conditional_MI_nats": 0.0,
+    "unconditional_shuffle_KL_nats": 0.6931471805599453,
+    "unconditional_shuffle_KL_exact": "log(2)",
+    "no_empirical_forecasting_conclusion": true
+  },
+  "new_model_runs": 0,
+  "original_code_executed": false
+}

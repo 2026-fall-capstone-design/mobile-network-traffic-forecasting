@@ -1,0 +1,316 @@
+{
+  "date": "2026-09-26",
+  "purpose": "interim evidence synthesis; not an accepted research direction",
+  "new_model_calls": 0,
+  "new_data_or_prediction_diagnostics": 0,
+  "new_workload_integer_arithmetic": true,
+  "ledger_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+  "direct_prediction_74": {
+    "Ridge": {
+      "MSE": 0.014359847237104397,
+      "MAE": 0.08956492377539582,
+      "half_MSE": [
+        0.012624010998058374,
+        0.016095683476150417
+      ],
+      "daily_MSE": [
+        0.01637070979773755,
+        0.009780803845249918,
+        0.011954385788901295,
+        0.012721344573875304,
+        0.012477361815991225,
+        0.02336784834934443,
+        0.013846476488631049
+      ],
+      "cell_MSE": [
+        0.009968336310455276,
+        0.01546039101271025,
+        0.018480298899516346,
+        0.013530362725735703
+      ],
+      "negative_predictions": 0,
+      "clipped_MSE": 0.014359847237104397
+    },
+    "HGB": {
+      "MSE": 0.011924807253712862,
+      "MAE": 0.07840027553742436,
+      "half_MSE": [
+        0.010087121538002803,
+        0.013762492969422922
+      ],
+      "daily_MSE": [
+        0.015410438766911588,
+        0.008239827746587032,
+        0.007886547120886251,
+        0.007341671204257321,
+        0.009872792757813697,
+        0.023400652698178342,
+        0.011321720481355796
+      ],
+      "cell_MSE": [
+        0.007199330652098021,
+        0.014768058266239316,
+        0.013426376528393635,
+        0.012305463568120482
+      ],
+      "negative_predictions": 0,
+      "clipped_MSE": 0.011924807253712862
+    },
+    "TabICL": {
+      "MSE": 0.009579815874350413,
+      "MAE": 0.06682772606385984,
+      "half_MSE": [
+        0.008215300930726772,
+        0.010944330817974055
+      ],
+      "daily_MSE": [
+        0.01349672665101901,
+        0.007630867526797015,
+        0.005730401879697228,
+        0.004706368919814928,
+        0.00933135571831401,
+        0.017091188391870363,
+        0.009071802032940342
+      ],
+      "cell_MSE": [
+        0.00700221716260591,
+        0.012481406285111579,
+        0.011501695841958261,
+        0.0073339442077259035
+      ],
+      "negative_predictions": 0,
+      "clipped_MSE": 0.009579815874350413
+    }
+  },
+  "direct_prediction_80": {
+    "TabICL": {
+      "MSE": 0.013043476419677038,
+      "MAE": 0.07744037281233995,
+      "cell_MSE": [
+        0.007145964489633661,
+        0.02608889217586202,
+        0.014754070336152487,
+        0.009667958214972572,
+        0.005342928091595581,
+        0.005703559725235883,
+        0.007830563437840584,
+        0.011767763493089702,
+        0.01945345351450362,
+        0.007777811524162227,
+        0.015579204327046202,
+        0.01955574759664135,
+        0.009137442075063607,
+        0.01257215369136607,
+        0.030753034736637846,
+        0.00556507528502918
+      ]
+    },
+    "Ridge": {
+      "MSE": 0.015839025414009555,
+      "MAE": 0.09001100792846682,
+      "cell_MSE": [
+        0.008331565929122809,
+        0.029770179399999982,
+        0.018143590613560474,
+        0.01298411270424267,
+        0.006554020782558602,
+        0.010139583339187422,
+        0.01022379186955339,
+        0.014403893603147517,
+        0.02439233230534963,
+        0.008771752423732985,
+        0.017583108734391978,
+        0.026431219349232024,
+        0.013681315722453796,
+        0.01750532145958012,
+        0.02469025153199379,
+        0.009818366856045693
+      ]
+    },
+    "HGB": {
+      "MSE": 0.015861665916631507,
+      "MAE": 0.0877404633878408,
+      "cell_MSE": [
+        0.008651349725495517,
+        0.026448495827995303,
+        0.016816741516357574,
+        0.018119013102890817,
+        0.005632734407189194,
+        0.008394041676498296,
+        0.01107148666989973,
+        0.012607397912109625,
+        0.029557960956213408,
+        0.010607394974505182,
+        0.018370683640950944,
+        0.019886360737265157,
+        0.011693460622286137,
+        0.016516648581238982,
+        0.03268631320059397,
+        0.00672657111461428
+      ]
+    }
+  },
+  "partition_80_ARI": {
+    "input_only": 1.0,
+    "raw_joint": 1.0,
+    "TabICL": 1.0,
+    "Ridge": 1.0,
+    "HGB": 1.0,
+    "untrained_probe": 0.375,
+    "PCC": 0.0625,
+    "random": 0.0625,
+    "global": 0.0
+  },
+  "RCTL_metrics": [
+    {
+      "method": "empirical_risk",
+      "seed": 20260925,
+      "models": 4,
+      "mean_scaled_mae": 0.08160039782524109
+    },
+    {
+      "method": "empirical_risk",
+      "seed": 20260926,
+      "models": 4,
+      "mean_scaled_mae": 0.08351629227399826
+    },
+    {
+      "method": "global",
+      "seed": 20260925,
+      "models": 1,
+      "mean_scaled_mae": 0.07106776535511017
+    },
+    {
+      "method": "knn_risk",
+      "seed": 20260925,
+      "models": 4,
+      "mean_scaled_mae": 0.08407308161258698
+    },
+    {
+      "method": "pcc_balanced",
+      "seed": 20260925,
+      "models": 4,
+      "mean_scaled_mae": 0.08987709879875183
+    },
+    {
+      "method": "random_balanced",
+      "seed": 20260925,
+      "models": 4,
+      "mean_scaled_mae": 0.08559770882129669
+    },
+    {
+      "method": "tabicl_risk",
+      "seed": 20260925,
+      "models": 4,
+      "mean_scaled_mae": 0.08732812851667404
+    },
+    {
+      "method": "tabicl_risk",
+      "seed": 20260926,
+      "models": 4,
+      "mean_scaled_mae": 0.0877600610256195
+    }
+  ],
+  "RCTL_Tab_vs_empirical_percent": [
+    7.019254207611084,
+    5.08136510848999
+  ],
+  "workload": [
+    {
+      "N": 128,
+      "M": 256,
+      "Q": 64,
+      "k": 16,
+      "own_query_rows": 8192,
+      "all_cross_query_rows": 1040384,
+      "directed_candidate_query_rows_bound": 131072,
+      "unique_candidate_edges_bound": 2048,
+      "both_directions_candidate_query_rows_bound": 262144,
+      "context_preparations_if_each_cell_context_is_fixed": 128,
+      "context_rows_across_fixed_cell_contexts": 32768,
+      "runtime_measured": false
+    },
+    {
+      "N": 1024,
+      "M": 256,
+      "Q": 64,
+      "k": 16,
+      "own_query_rows": 65536,
+      "all_cross_query_rows": 67043328,
+      "directed_candidate_query_rows_bound": 1048576,
+      "unique_candidate_edges_bound": 16384,
+      "both_directions_candidate_query_rows_bound": 2097152,
+      "context_preparations_if_each_cell_context_is_fixed": 1024,
+      "context_rows_across_fixed_cell_contexts": 262144,
+      "runtime_measured": false
+    },
+    {
+      "N": 10000,
+      "M": 256,
+      "Q": 64,
+      "k": 16,
+      "own_query_rows": 640000,
+      "all_cross_query_rows": 6399360000,
+      "directed_candidate_query_rows_bound": 10240000,
+      "unique_candidate_edges_bound": 160000,
+      "both_directions_candidate_query_rows_bound": 20480000,
+      "context_preparations_if_each_cell_context_is_fixed": 10000,
+      "context_rows_across_fixed_cell_contexts": 2560000,
+      "runtime_measured": false
+    }
+  ],
+  "source_hashes": [
+    {
+      "path": "tmp/redesign_20260925/results/rctl_pilot/summary.json",
+      "sha256": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab"
+    },
+    {
+      "path": "tmp/redesign_20260925/results/output_compression_74/result.json",
+      "sha256": "17ff03927948011db346a9da925702dfa4257d88ba781abb66a78729455e1d48"
+    },
+    {
+      "path": "tmp/redesign_20260925/results/conditional_graph_80/result.json",
+      "sha256": "e4e3053023c49d55d535dddc35e030e84ba6ad30ec2d0de17ad31427edea0b60"
+    },
+    {
+      "path": "tmp/redesign_20260925/cumulative_execution_budget.json",
+      "sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9"
+    },
+    {
+      "path": "tmp/redesign_20260925/05_literature_decision_audit.md",
+      "sha256": "32712471012db2732e9698513ce2579d254ba624143825e24d47ad3c53336562"
+    },
+    {
+      "path": "tmp/redesign_20260925/07_rctl_candidate_decision.md",
+      "sha256": "1f5f362e21ff67f903270200aa6d5bdc9e879e95a54e4ce5f2f4b1a05a2e08ce"
+    },
+    {
+      "path": "tmp/redesign_20260925/74_output_compression_findings.md",
+      "sha256": "5b14728f7173a7250cbabb0ac5045c1a593e36579920cd1def2fd229be7689f5"
+    },
+    {
+      "path": "tmp/redesign_20260925/80_conditional_graph_findings.md",
+      "sha256": "9c65a007a6f08a589df19445e0d9abf78bf897de4f1f4902194daaa9468c9d98"
+    },
+    {
+      "path": "tmp/redesign_20260925/81_input_partition_findings.md",
+      "sha256": "576d1423c967735d913325378883a4f4dae6fa61df155146aaa29c9f1c9c3956"
+    },
+    {
+      "path": "tmp/redesign_20260925/82_intermittence_findings.md",
+      "sha256": "3ff72ca95db134e79c4eb512567a7e9a7c5f0208eddab5d77dcbd4094f06cad0"
+    },
+    {
+      "path": "tmp/redesign_20260925/83_maintenance_findings.md",
+      "sha256": "0146efac2452d77327ccf85cd25d6d4ceda1efec3741dccf5c5d54f006cbed1e"
+    }
+  ],
+  "completion": {
+    "TabICL_runtime_and_checkpoint_available": true,
+    "direct_prediction_positive_local_evidence": true,
+    "accepted_useful_clustering_decision": false,
+    "validated_RCTL_gain_from_Tab_clustering": false,
+    "final_recommended_direction": false,
+    "fresh_final_test_available_in_current_used_periods": false
+  }
+}

@@ -1,0 +1,954 @@
+{
+  "batch_id": "history-117",
+  "record_path": "../records/0117-conditional-history-cib.md",
+  "record_sha256": "f7654431a4161e61bb78af26240d0c705450fa219cd04ec31bd6f0e63bd81302",
+  "claims": [
+    {
+      "claim_id": "H117-C01",
+      "title": "판단표 판본과 22개 연결",
+      "claim": "snapshot28→29에서 후보 결정표는 46행에서 47행이 됐다. 기존 12행의 공동 입력·다중 출력 판단을 보완하고 새 13행의 조건 보존 표본 비교를 추가했으며 나머지 행은 같다. 전체 22개 판단을 상세 기록에 연결했다. 이는 새 실험 22개나 모든 후보의 영구 기각을 뜻하지 않는다.",
+      "record_anchor": "c01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001558",
+          "line_ranges": [
+            [
+              1,
+              47
+            ]
+          ],
+          "source_sha256": "27075247d8e70729ecf0c8b5e336c521422f85de11dff3d0bb48b74abfb051a9"
+        },
+        {
+          "source_id": "SRC-0001536",
+          "line_ranges": [
+            [
+              1,
+              46
+            ]
+          ],
+          "source_sha256": "1256b29927a0d6861b1b9abf3380de9c7a04f31aa51c7cc359a59ff693cbf7ae"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "derived_check": "../evidence/0117-conditional-history-cib/version-comparison.json"
+    },
+    {
+      "claim_id": "H117-C02",
+      "title": "비용 판단과 최신 입력 용량",
+      "claim": "보완된 12행은 원81의 산술 비용 비교를 유지하면서 원87의 causal core·선형 head·고정 BN에서 최신 입력 변화가 지나는 폭16 조건을 덧붙인다. 원래 cell별 scalar 모델과 최신값 출력 skip은 구별한다. 연혁 57행의 flatten 폭16L와 9행의 최신 입력 폭16은 서로 다른 경로의 설명이다. 실제 트래픽 손해나 Tab의 유용한 소속 결정은 아직 입증하지 않았다.",
+      "record_anchor": "c02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001558",
+          "line_ranges": [
+            [
+              12,
+              12
+            ]
+          ],
+          "source_sha256": "27075247d8e70729ecf0c8b5e336c521422f85de11dff3d0bb48b74abfb051a9"
+        },
+        {
+          "source_id": "SRC-0001562",
+          "line_ranges": [
+            [
+              7,
+              17
+            ],
+            [
+              52,
+              60
+            ]
+          ],
+          "source_sha256": "c817e822eb01d3bc5f62a51a4002990697825f1ee756b144e0dd762df1fa6cc2"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H117-C03",
+      "title": "조건부 비교와 원88의 당시 계획",
+      "claim": "새 판단은 조건을 남긴 무조건 shuffle과 조건에 맞춘 재추출이 다른 기준 분포라는 원87 검토를 연결한다. 원88 계획은 TabPFN+CRT(2603.06609v1)의 본문·알고리즘·가정에서 예측 통계량과 조건부 생성기 역할을 구분하고, 가까운 conditional permutation/randomization 및 조건부 MI 원문을 최대 3편 추가로 확인하려는 내용이다. 추정기 교체만으로 신규성을 주장하지 않고 실제 바뀌는 결정·RCTL 연결·간단한 대안이 필요하다고 적었다. 이 계획 문서를 읽은 것이 원88의 후속 문헌 검수나 새 실험 수행은 아니다.",
+      "record_anchor": "c03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001557",
+          "line_ranges": [
+            [
+              1,
+              19
+            ]
+          ],
+          "source_sha256": "39f702e4c5b5c0fe448229da7395aaa578241c009d0a728c76c237b6e49fc37f"
+        },
+        {
+          "source_id": "SRC-0001558",
+          "line_ranges": [
+            [
+              13,
+              13
+            ]
+          ],
+          "source_sha256": "27075247d8e70729ecf0c8b5e336c521422f85de11dff3d0bb48b74abfb051a9"
+        },
+        {
+          "source_id": "SRC-0001562",
+          "line_ranges": [
+            [
+              10,
+              17
+            ]
+          ],
+          "source_sha256": "c817e822eb01d3bc5f62a51a4002990697825f1ee756b144e0dd762df1fa6cc2"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H117-C04",
+      "title": "연혁 38절과 시간 순서",
+      "claim": "누적연혁은 445행에서 456행으로 늘었다. 새 원87 절은 7–17행이며 이전 원86 제목이 18행으로 이동했다. 나머지 기존 8–445행은 새 19–456행과 같다. 456행·38절 전체를 읽고 위치를 연결했다. 최신→과거 절들 뒤에 초기 확인과 B2 완료가 이어지므로 파일의 아래쪽을 무조건 최신 상태로 읽지 않는다.",
+      "record_anchor": "c04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001562",
+          "line_ranges": [
+            [
+              1,
+              30
+            ],
+            [
+              380,
+              456
+            ]
+          ],
+          "source_sha256": "c817e822eb01d3bc5f62a51a4002990697825f1ee756b144e0dd762df1fa6cc2"
+        },
+        {
+          "source_id": "SRC-0001540",
+          "line_ranges": [
+            [
+              1,
+              19
+            ]
+          ],
+          "source_sha256": "5adede970d3714579c21e3bc90e49e2adec2c3618a47bd0747347053fdd598ac"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "derived_check": "../evidence/0117-conditional-history-cib/version-comparison.json"
+    },
+    {
+      "claim_id": "H117-C05",
+      "title": "과거 예산·관측·정정의 유지",
+      "claim": "RCTL 0회와 최종 20일 미열람은 초기 상태이며, 뒤의 29fit 완료·최종 20일 관찰과 함께 보존한다. UPC의 구 1~4 cluster 표현은 같은 연혁의 1,2,4,6,8,12 확인으로 정정된다. 원289행의 최대 68개 열 계산에는 H024의 고정 구현 최대 289개 열별 처리 정정을 연결한다. 이는 모델 호출 수나 실측 시간이 아니다. 당시 예산을 초기화하거나 이미 관찰한 기간을 새 독립 test로 간주하지 않는다.",
+      "record_anchor": "c05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001562",
+          "line_ranges": [
+            [
+              279,
+              310
+            ],
+            [
+              309,
+              340
+            ],
+            [
+              395,
+              421
+            ],
+            [
+              441,
+              456
+            ]
+          ],
+          "source_sha256": "c817e822eb01d3bc5f62a51a4002990697825f1ee756b144e0dd762df1fa6cc2"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H117-C06",
+      "title": "긍정 결과와 진입 조건",
+      "claim": "후보표의 다섯 긍정 결과 항목과 네 진입 질문은 이전 판본과 같다. Tab의 직접 예측 이득, 일부 cell의 공간 입력 이득, 기존 K4의 부분 이득을 전체 판단과 함께 남긴다. 좋은 직접 예측이 새로운 소속 결정이나 출력 압축의 성공을 자동으로 뜻하지 않는다. 마지막 문장도 최종 방향·Word가 당시 미완료라고 명시하며, 원문 지시를 현재 작업의 실행 허가로 쓰지 않는다.",
+      "record_anchor": "c06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001558",
+          "line_ranges": [
+            [
+              30,
+              47
+            ]
+          ],
+          "source_sha256": "27075247d8e70729ecf0c8b5e336c521422f85de11dff3d0bb48b74abfb051a9"
+        },
+        {
+          "source_id": "SRC-0001536",
+          "line_ranges": [
+            [
+              29,
+              46
+            ]
+          ],
+          "source_sha256": "1256b29927a0d6861b1b9abf3380de9c7a04f31aa51c7cc359a59ff693cbf7ae"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "derived_check": "../evidence/0117-conditional-history-cib/version-comparison.json"
+    },
+    {
+      "claim_id": "H117-C07",
+      "title": "CIB 전문 독해와 파생 TXT",
+      "claim": "H116에서 읽은 CIB PDF 1–6쪽에 7–9쪽의 본문과 전체 페이지 이미지 확인을 더해 9쪽 전체를 읽었다. 저장 TXT 1,128행도 전부 읽었고 페이지 머리글·양끝 공백을 제외하면 9쪽별 새 추출과 같다. 참고문헌 목록은 35개 항목이다. 이 35편의 방법이나 논문의 모든 증명·실험을 검증했다는 뜻은 아니며 TXT·렌더를 별도 독립 본문으로 세지 않는다.",
+      "record_anchor": "c07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            7,
+            8,
+            9
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0061922",
+          "line_ranges": [
+            [
+              1,
+              1128
+            ]
+          ],
+          "source_sha256": "da6e210c122a78cb9c88049f55605900431226be03a275bcc5a45f4921edac6b"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H117-C08",
+      "title": "표의 비교 조건",
+      "claim": "Table1은 9개 자료의 4개 예측 길이에 MSE·MAE를 기록해 36조건·72지표를 비교한다. ILI의 예측 길이는 24/36/48/60, 다른 자료는 96/192/336/720이다. 본문이 적은 입력 길이는 Exchange 96, ILI 60, 나머지 336이다. 이 실험의 지표와 시간 단위·자료 조건을 우리 트래픽의 MAE 실험과 동일하게 취급하지 않는다.",
+      "record_anchor": "c08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            6,
+            7
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0061922",
+          "line_ranges": [
+            [
+              738,
+              759
+            ],
+            [
+              827,
+              881
+            ]
+          ],
+          "source_sha256": "da6e210c122a78cb9c88049f55605900431226be03a275bcc5a45f4921edac6b"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "derived_check": "../evidence/0117-conditional-history-cib/table-audit.json"
+    },
+    {
+      "claim_id": "H117-C09",
+      "title": "순위 집계와 예외",
+      "claim": "인쇄된 Table1 값을 대조하면 67개 지표에서 단독 최소, 3개에서 공동 최소, 2개에서 둘째로 작아 본문 순위 개수와 일치한다. 동률은 Weather720 MAE 0.327, ETTm1 720 MAE 0.417, ETTm2 192 MSE 0.213이다. Exchange336/720 MSE에서는 CIB 0.304/0.769보다 MICN 0.272/0.714가 작다. 이를 모든 조건에서 엄격한 개선이나 통계적 유의성으로 확대하지 않는다.",
+      "record_anchor": "c09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            6,
+            7
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0061922",
+          "line_ranges": [
+            [
+              760,
+              764
+            ],
+            [
+              827,
+              881
+            ]
+          ],
+          "source_sha256": "da6e210c122a78cb9c88049f55605900431226be03a275bcc5a45f4921edac6b"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "derived_check": "../evidence/0117-conditional-history-cib/table-audit.json"
+    },
+    {
+      "claim_id": "H117-C10",
+      "title": "향상률의 집계 정의",
+      "claim": "Table1의 HDMixer 대비 감소율을 현재 별도로 계산했다. 36조건의 행별 감소율 평균은 MSE 3.860975%, MAE 4.620860%이고, 각 지표 합계의 감소율은 4.742600%, 6.123755%다. 본문이 적은 4.26%/6.12% 중 MAE는 후자 반올림과 맞지만 MSE는 두 계산 모두와 다르다. 원래 집계 방식·가중치·더 정밀한 원결과는 미확인이므로 저자의 실제 산식을 추정하거나 인쇄값을 고치지 않는다.",
+      "record_anchor": "c10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            6,
+            7
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0061922",
+          "line_ranges": [
+            [
+              794,
+              804
+            ],
+            [
+              827,
+              881
+            ]
+          ],
+          "source_sha256": "da6e210c122a78cb9c88049f55605900431226be03a275bcc5a45f4921edac6b"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "derived_check": "../evidence/0117-conditional-history-cib/table-audit.json"
+    },
+    {
+      "claim_id": "H117-C11",
+      "title": "Table1·2의 기준값과 horizon 차이",
+      "claim": "Table2는 ILI 열에도 96/192/336/720을 인쇄해 Table1의 24/36/48/60과 다르다. 같은 열 위치를 비교하면 ILI 둘째 MSE는 Table1 1.299 대 Table2 1.239, 셋째 MAE는 0.644 대 0.624다. 예측 길이가 같은 ETTm1 720 MAE도 0.417 대 0.416이다. ILI의 열 위치 비교를 동일한 실제 예측 조건의 비교로 단정하거나 표기를 임의로 정규화하지 않는다.",
+      "record_anchor": "c11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            7
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0061922",
+          "line_ranges": [
+            [
+              827,
+              924
+            ]
+          ],
+          "source_sha256": "da6e210c122a78cb9c88049f55605900431226be03a275bcc5a45f4921edac6b"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "derived_check": "../evidence/0117-conditional-history-cib/table-audit.json"
+    },
+    {
+      "claim_id": "H117-C12",
+      "title": "Ablation과 인쇄 증가율",
+      "claim": "Table2의 세 제거 방식×12조건×2지표 중 71개 값은 Ours보다 크고 하나는 같다. 동률은 W/O-Lk의 Weather192 MAE 0.237이다. 현재 계산한 개별 상대 증가율과 본문의 최대·평균 증가율도 구분한다. 예를 들어 ILI 셋째 열의 W/O-Ls MAE는 0.624→0.671로 약 7.532% 증가하지만 본문은 MAE 최대 2.8%라고 적었다. 원집계 정의와 실제 horizon이 미확인이므로 불일치를 남기고 유의성이나 재현 성능을 만들지 않는다.",
+      "record_anchor": "c12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            6,
+            7
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0061922",
+          "line_ranges": [
+            [
+              809,
+              824
+            ],
+            [
+              883,
+              935
+            ]
+          ],
+          "source_sha256": "da6e210c122a78cb9c88049f55605900431226be03a275bcc5a45f4921edac6b"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "derived_check": "../evidence/0117-conditional-history-cib/table-audit.json"
+    },
+    {
+      "claim_id": "H117-C13",
+      "title": "Cosine과 내적 계산",
+      "claim": "논문 4쪽 식8은 두 벡터의 norm으로 나눈 cosine 유사도를 사용한다. 저장 backbone의 contrastive_loss 143·159행은 특징 차원의 곱을 합한 내적이며 이 함수에 명시적인 L2 정규화 분모가 없다. 예를 들어 (2,0)과 (1,0)의 내적은 2, cosine은 1이다. 임의의 임베딩에서 두 계산을 같다고 볼 수 없으며 실제 학습 임베딩이나 예측오차를 측정한 결과는 아니다.",
+      "record_anchor": "c13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            4
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0061922",
+          "line_ranges": [
+            [
+              425,
+              471
+            ]
+          ],
+          "source_sha256": "da6e210c122a78cb9c88049f55605900431226be03a275bcc5a45f4921edac6b"
+        },
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              118,
+              173
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "derived_check": "../evidence/0117-conditional-history-cib/contrastive-audit.json"
+    },
+    {
+      "claim_id": "H117-C14",
+      "title": "서로 다른 최대값을 빼는 영향",
+      "claim": "저장 코드는 양성 점수와 음성 점수의 최대값을 각각 빼고 지수화한다. 두 집합에 같은 상수를 빼는 경우와 달리 일반적으로 식9 형태의 비율을 보존하지 않는다. 양성 점수 1, 음성 점수 −1, 온도 1인 한 쌍에서 원식과 공통 이동의 손실은 약 0.126928이지만 별도 최대값 이동은 log2≈0.693147이다. 이는 현재 수행한 스칼라 산술 대조이며 원 모델 실행이나 논문 전체 결과의 반증이 아니다.",
+      "record_anchor": "c14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            4
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0061922",
+          "line_ranges": [
+            [
+              437,
+              471
+            ]
+          ],
+          "source_sha256": "da6e210c122a78cb9c88049f55605900431226be03a275bcc5a45f4921edac6b"
+        },
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              159,
+              173
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "derived_check": "../evidence/0117-conditional-history-cib/contrastive-audit.json"
+    },
+    {
+      "claim_id": "H117-C15",
+      "title": "표본 선택과 설정 의존",
+      "claim": "contrastive_loss는 설정된 batch_size와 채널 수에서 고정 anchor를 정하고, 다른 채널 중 select_channel개를 무작위로 고른다. 음성 인덱스도 실제 tensor batch 크기 대신 self.batch_size로 구성한다. 유효한 batch·채널 수 및 마지막 batch 처리 조건이 필요하지만 data loader의 drop_last와 실제 실행 설정은 이번 두 코드의 전문 독해만으로 확인되지 않는다. 모든 설정에서 실패한다고 단정하지 않는다.",
+      "record_anchor": "c15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              70,
+              117
+            ],
+            [
+              118,
+              159
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H117-C16",
+      "title": "평가 모드에서도 계산되는 보조 항",
+      "claim": "backbone의 forward는 KL·contrastive·CMI 보조 항을 계산하는 구간에 self.training 분기가 없다. 모델을 eval로 둬도 다른 채널 선택과 CMI shuffle을 포함한 보조 항 계산 경로가 남는다. TSTiEncoder의 flag=True/False는 생성 때 정한 두 분기이며 train/eval 전환 자체가 아니다. 이 사실만으로 유한한 예측 tensor가 오염되거나 평가 데이터 누출이 발생했다고 확정하지 않는다.",
+      "record_anchor": "c16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              52,
+              67
+            ],
+            [
+              118,
+              135
+            ],
+            [
+              178,
+              229
+            ],
+            [
+              320,
+              389
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "additional_reused_original": {
+        "source_id": "SRC-0061930",
+        "path": "tmp/redesign_20260925/sources/causal_capacity_87/code/CMI.py",
+        "sha256": "814b27b6057cb9661a6e09fc44ed849b5a8ecf9ef205e6d95ee7452fdba504c2",
+        "line_ranges": [
+          [
+            1,
+            52
+          ]
+        ],
+        "previous_full_credit": "H116",
+        "independent_content_credit": 0,
+        "source_link": "[H116 CMI 출처](../sources/history-116.md#src-0061930)",
+        "reason": "작성 후 재독한 shuffle 구현의 직접 근거; H116에서 이미 본문 완료로 집계"
+      }
+    },
+    {
+      "claim_id": "H117-C17",
+      "title": "평균 상태 갱신과 덮어쓰기",
+      "claim": "TSTiEncoder의 mu_avg와 logvar_avg는 일반 속성으로 초기화되며 forward의 NaN 대체와 평균 갱신에도 학습 모드 조건이 없다. 360–363행의 momentum 평균 계산은 곧바로 366–367행의 현재 평균 대입으로 덮인다. 따라서 이 구간을 지속적인 momentum 평균 유지라고 설명할 수 없다. 실제 NaN 발생 여부나 그에 따른 예측·checkpoint 영향은 실행 검증하지 않았다.",
+      "record_anchor": "c17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              316,
+              372
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H117-C18",
+      "title": "공유 encoder와 head의 조건",
+      "claim": "Flatten_Head는 individual=True에서 채널별 Linear를, False에서 공유 Linear를 사용한다. TSTiEncoder는 batch와 변수 축을 접어 공유 patch encoder에 전달한다. BatchNorm을 사용하는 학습 경로에서는 접힌 batch·채널에 걸친 정규화 통계도 공유하므로 주석의 channel-independent를 모든 의미의 채널 간 독립성으로 확대하지 않는다. 이를 Tab 기반 소속이나 공유 모델의 효과 증거로 쓰지 않는다.",
+      "record_anchor": "c18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              241,
+              274
+            ],
+            [
+              277,
+              336
+            ],
+            [
+              418,
+              450
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H117-C19",
+      "title": "복잡도 식과 attention 경로",
+      "claim": "논문은 Algorithm1의 시간 복잡도를 O(M d²+L d)로 적는다. 저장 코드의 patch encoder에서는 q·k 곱으로 patch 수×patch 수 attention 점수 배열을 만든다. 따라서 그 문장만으로 저장 구현 전체의 계산량이나 RCTL과의 비용 우열을 확정하지 않는다. 실제 설정의 차원·layer·batch 및 연산 횟수와 실행 시간은 측정하지 않았다.",
+      "record_anchor": "c19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            6
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        },
+        {
+          "source_id": "SRC-0061922",
+          "line_ranges": [
+            [
+              729,
+              735
+            ]
+          ],
+          "source_sha256": "da6e210c122a78cb9c88049f55605900431226be03a275bcc5a45f4921edac6b"
+        },
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              277,
+              306
+            ],
+            [
+              501,
+              583
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H117-C20",
+      "title": "Validation 목적의 실제 경로",
+      "claim": "exp_main.vali는 eval/no_grad 상태에서 예측값과 정답의 마지막 pred_len 및 features 설정에 따른 열을 자르고, MSE에 vaeloss를 더한 값을 batch별로 모아 단순 평균한다. 종료할 때 train 모드로 돌린다. 이 validation 값은 test 메서드가 예측 배열에서 따로 계산하는 MSE·MAE 자체와 구별해야 한다.",
+      "record_anchor": "c20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061932",
+          "line_ranges": [
+            [
+              53,
+              105
+            ],
+            [
+              235,
+              334
+            ]
+          ],
+          "source_sha256": "ea934b368478d7762dc7c5015345852836cf87c44ee9ac0c32aac4acae13d1a7"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H117-C21",
+      "title": "조기 종료와 NNI 보고",
+      "claim": "학습 루프는 매 epoch validation과 test loader에 vali를 호출한다. early_stopping에는 vali_loss를 전달하지만 nni.report_intermediate_result에는 test_loss를 전달한다. best checkpoint를 다시 읽는 경로도 있다. 외부 tuner가 이 보고값을 선택에 쓰는지 확인할 필요가 있으나 실제 NNI 설정·시행 내역을 읽지 않았으므로 논문 실험의 데이터 누출을 확정한 것으로 쓰지 않는다.",
+      "record_anchor": "c21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061932",
+          "line_ranges": [
+            [
+              212,
+              233
+            ]
+          ],
+          "source_sha256": "ea934b368478d7762dc7c5015345852836cf87c44ee9ac0c32aac4acae13d1a7"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H117-C22",
+      "title": "Test 반환 처리와 저장 범위",
+      "claim": "CIBMTSF의 test 경로는 AMP 사용 여부와 관계없이 (outputs, vaeloss)를 분리하고 예측 tensor를 잘라 numpy 배열로 모은 뒤 metric에 전달한다. pred.npy 저장은 활성화돼 있고 metrics.npy·true.npy·x.npy 저장은 주석이다. metric 구현, 정규화·역변환, 분할, 실행 설정 및 실제 생성 파일은 별도로 확인하지 않았으므로 이 메서드만으로 완전한 재현 자료가 확보됐다고 할 수 없다.",
+      "record_anchor": "c22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061932",
+          "line_ranges": [
+            [
+              235,
+              334
+            ]
+          ],
+          "source_sha256": "ea934b368478d7762dc7c5015345852836cf87c44ee9ac0c32aac4acae13d1a7"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H117-C23",
+      "title": "Predict와 학습 AMP의 서로 다른 문제",
+      "claim": "반면 predict의 CIBMTSF 분기는 AMP/비AMP 모두 모델 반환을 outputs 하나에 받은 뒤 375행에서 detach를 호출한다. H116에서 확인한 고정 커밋의 비decomposition wrapper는 (예측 tensor, 보조 손실) tuple을 반환하므로 이 조합과 맞지 않는다. H116의 학습 AMP tuple slicing 문제와도 별개다. 올바르게 분리하는 test 경로까지 같은 오류라고 쓰지 않으며 실제 호출·오류 재현은 하지 않았다.",
+      "record_anchor": "c23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061932",
+          "line_ranges": [
+            [
+              153,
+              173
+            ],
+            [
+              235,
+              284
+            ],
+            [
+              336,
+              388
+            ]
+          ],
+          "source_sha256": "ea934b368478d7762dc7c5015345852836cf87c44ee9ac0c32aac4acae13d1a7"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "external_evidence": {
+        "url": "https://raw.githubusercontent.com/Xinhui-Lee/CIB-MTSF/ac09a66245f9eaa7371065ec3f7d3673df125c94/CIB-MTSF/CIB-MTSF/models/CIBMTSF.py",
+        "sha256": "31d461f4d938ea19dcfd85d082915779c92d66d3c273e2bb41f59e51aa6216fd",
+        "git_blob": "7caf2f02cd23c22f36352d2d863c70c64950c91b",
+        "raw_line_ranges": [
+          [
+            82,
+            106
+          ]
+        ],
+        "current_read_not_historical_action": true
+      }
+    },
+    {
+      "claim_id": "H117-C24",
+      "title": "코드 전문 독해의 범위",
+      "claim": "저장 backbone 585행과 exp_main 389행을 모두 읽었다. H116에서 미독한 333행·169행을 이어 읽고 이전 구간 472행도 재독했다. 공식 커밋 ac09a66245f9eaa7371065ec3f7d3673df125c94와 저장 바이트의 줄끝 차이, 외부 wrapper의 고정 버전 근거는 H116 대조를 재사용한다. 원 연구 코드를 실행하거나 import하지 않았으며 이 저장 버전의 정적 발견을 현재 최신 구현 전체에 일반화하지 않는다.",
+      "record_anchor": "c24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0061929",
+          "line_ranges": [
+            [
+              1,
+              585
+            ]
+          ],
+          "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c"
+        },
+        {
+          "source_id": "SRC-0061932",
+          "line_ranges": [
+            [
+              1,
+              389
+            ]
+          ],
+          "source_sha256": "ea934b368478d7762dc7c5015345852836cf87c44ee9ac0c32aac4acae13d1a7"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H117-C25",
+      "title": "보존과 원87 후속 7그룹",
+      "claim": "이번에는 H116의 알려진 후속 7그룹 모두를 읽고 13개 원본 경로의 해시를 대조했다. 계획·후보·연혁 3개는 바이트 동일 사본으로 보존하고, 이전 판본 2개와 snapshot29 manifest는 기존 보존판으로 연결한다. 외부 PDF·TXT·두 코드는 공식 링크·해시·읽은 범위로 연결한다. snapshot29의 24파일 보존 대조는 H116에서 확인한 근거를 재사용하며 파일 수를 연구 완독 수로 바꾸지 않는다.",
+      "record_anchor": "c25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001557",
+          "line_ranges": [
+            [
+              1,
+              19
+            ]
+          ],
+          "source_sha256": "39f702e4c5b5c0fe448229da7395aaa578241c009d0a728c76c237b6e49fc37f"
+        },
+        {
+          "source_id": "SRC-0001558",
+          "line_ranges": [
+            [
+              1,
+              47
+            ]
+          ],
+          "source_sha256": "27075247d8e70729ecf0c8b5e336c521422f85de11dff3d0bb48b74abfb051a9"
+        },
+        {
+          "source_id": "SRC-0001562",
+          "line_ranges": [
+            [
+              1,
+              456
+            ]
+          ],
+          "source_sha256": "c817e822eb01d3bc5f62a51a4002990697825f1ee756b144e0dd762df1fa6cc2"
+        },
+        {
+          "source_id": "SRC-0001552",
+          "line_ranges": [
+            [
+              1,
+              128
+            ]
+          ],
+          "source_sha256": "ca4a28e5b34823775a59799787969bbac0f0e1bd5a3789fdee5aff4d0b5e7e06"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H117-C26",
+      "title": "집계와 남은 연구 기록",
+      "claim": "이번 검수의 집계 증분은 독립 본문 6개(MD3·기존 부분 코드2·기존 부분 PDF1)의 완료 추가와, 앞서 부분으로 센 3개의 선택 전용 집계 제외다. 전체 JSON·독립 이미지 추가는 없고 TXT·재독·렌더는 중복 가산하지 않는다. 알려진 7그룹의 독해 완료가 원88 이후 문헌·후속 판본·모든 코드 의존성·기존 공백·전체 통합과 팀 접근 검수의 완료는 아니다. 전체 Goal은 계속 진행 중이다.",
+      "record_anchor": "c26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001557",
+          "line_ranges": [
+            [
+              1,
+              19
+            ]
+          ],
+          "source_sha256": "39f702e4c5b5c0fe448229da7395aaa578241c009d0a728c76c237b6e49fc37f"
+        },
+        {
+          "source_id": "SRC-0001558",
+          "line_ranges": [
+            [
+              47,
+              47
+            ]
+          ],
+          "source_sha256": "27075247d8e70729ecf0c8b5e336c521422f85de11dff3d0bb48b74abfb051a9"
+        },
+        {
+          "source_id": "SRC-0061921",
+          "pdf_pages": [
+            7,
+            8,
+            9
+          ],
+          "source_sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a"
+        }
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "archive_references_reread": [
+    {
+      "path": "../records/0039-0040-sample-reuse.md",
+      "sha256": "99dc1d7d05d07c87fb0a966b0823a532a2fbec168f4230a119ea2afae9dc5dad",
+      "scope": "전체 작성 후 재독",
+      "independent_content_credit": 0
+    },
+    {
+      "path": "../records/0116-causal-capacity-reference.md",
+      "sha256": "2808687a9349276a642194aac5690fc6e3bcacba46697488cc1fc59b7b087435",
+      "scope": "전체 작성 후 재독",
+      "independent_content_credit": 0
+    }
+  ]
+}

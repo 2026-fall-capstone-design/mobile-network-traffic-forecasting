@@ -1,0 +1,128 @@
+"""Audit a pilot-only balanced-size constraint using existing risk tables."""
+import os
+for key in ['OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS']:
+    os.environ[key]='4'
+from pathlib import Path
+import hashlib
+import json
+import math
+import time
+import numpy as np
+import psutil
+B=Path(__file__).resolve().parent
+O=B/'results/cluster_size_constraint_113'
+O.mkdir(exist_ok=True)
+assert not (O/'run_started.json').exists(), 'Inspect results rather than rerun.'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+load=lambda p:json.loads(p.read_text(encoding='utf-8'))
+def save(p,obj):
+    p.write_text(json.dumps(obj,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+ledger_path=B/'cumulative_execution_budget.json'
+paths=[B/'113_cluster_size_constraint_audit_plan.md',Path(__file__),ledger_path,
+       B/'results/observed_risk_tables.npz',B/'results/observed_risk_pilot.json',B/'results/design_data.npz']
+hashes={str(p.relative_to(B)):sha(p) for p in paths}
+ledger=load(ledger_path)
+assert sum(ledger['new_cheap_diagnostic_seconds'].values())+10<ledger['caps']['cheap_numeric_seconds']
+settings={'source_hashes':hashes,'K':4,'rules':['tabicl_risk','empirical_risk'],
+    'unrestricted_rule':'merge a single current minimum-cost pair, no size restrictions',
+    'tie_break':'minimum member indices of sorted clusters',
+    'query_period':[840,1007],'all_cells':16,'wall_cap_seconds':10,'rss_cap_bytes':1024**3,
+    'new_model_calls':0,'RCTL_results_used_in_selection':False,'independent_test':False}
+save(O/'settings.json',settings)
+save(O/'run_started.json',{'unix':time.time(),'settings_sha256':sha(O/'settings.json')})
+started=time.perf_counter()
+old=load(B/'results/observed_risk_pilot.json')
+with np.load(B/'results/observed_risk_tables.npz',allow_pickle=False) as a:
+    tabs={rule:a[rule].copy() for rule in settings['rules']}
+    actions=a['actions'].copy()
+    base=a['base_followweek'].copy()
+    bins=a['followweek_bins'].copy()
+    ids=a['cell_ids'].copy()
+    selected=a['selected_cells'].copy()
+with np.load(B/'results/design_data.npz',allow_pickle=False) as a:
+    actual=a['Y'][selected][:,a['times']>=840]
+assert actual.shape==(16,168) and base.shape==(16,168) and actions.shape==(64,257)
+assert np.array_equal(ids,np.array(old['cell_ids']))
+partitions={}
+history={}
+objective={}
+scores={}
+for rule,tab in tabs.items():
+    assert tab.shape==(16,64,257) and np.isfinite(tab).all()
+    original=old['partitions'][rule]
+    partitions[rule+'_balanced']=[np.flatnonzero(np.array(original)==c).tolist() for c in range(4)]
+    def risk(group):
+        return float(np.min(tab[group].sum(0),axis=1).sum())
+    balanced_cost=sum(risk(g) for g in partitions[rule+'_balanced'])
+    assert abs(balanced_cost-old['surrogate_validation'][rule]['predicted_objective'])<1e-10
+    groups=[[i] for i in range(16)]
+    merges=[]
+    count=0
+    while len(groups)>4:
+        single=[risk(g) for g in groups]
+        options=[]
+        for ia in range(len(groups)):
+            for ib in range(ia+1,len(groups)):
+                cost=risk(groups[ia]+groups[ib])-single[ia]-single[ib]
+                assert cost>=-1e-10
+                options.append((cost,min(groups[ia]),min(groups[ib]),ia,ib))
+        count+=len(options)
+        cost,_,__,ia,ib=min(options)
+        left,right=groups[ia],groups[ib]
+        merged=sorted(left+right)
+        merges.append({'left':left,'right':right,'increment':float(cost),'merged_size':len(merged)})
+        groups=[g for k,g in enumerate(groups) if k not in [ia,ib]]+[merged]
+        groups.sort(key=min)
+    assert count==670
+    key=rule+'_unrestricted'
+    partitions[key]=groups
+    history[key]=merges
+    objective[rule]={'balanced':balanced_cost,'unrestricted':sum(risk(g) for g in groups)}
+    scores[rule]=count
+
+results={}
+arrays={'actual':actual,'cell_ids':ids}
+for pname,groups in partitions.items():
+    assert len(groups)==4 and sorted(i for g in groups for i in g)==list(range(16))
+    label=np.empty(16,dtype=int)
+    for c,g in enumerate(groups):label[g]=c
+    result={'groups_indices':groups,'groups_cell_ids':[[int(ids[i]) for i in g] for g in groups],
+        'group_sizes':[len(g) for g in groups],
+        'hypothetical_RCTL_train_rows':[672*len(g) for g in groups],
+        'hypothetical_RCTL_batches_per_epoch':sum(math.ceil(672*len(g)/256) for g in groups),
+        'MAE_by_correction_rule':{},'cell_MAE_by_correction_rule':{}}
+    for rule,tab in tabs.items():
+        delta=[]
+        for g in groups:
+            curve=tab[g].sum(0)
+            ix=np.argmin(curve,axis=1)
+            d=actions[np.arange(64),ix].copy()
+            d[np.sum(curve,axis=1)==0]=0
+            delta.append(d)
+        pred=np.stack([base[i]+delta[label[i]][bins[i]] for i in range(16)])
+        cell_mae=np.abs(pred-actual).mean(1)
+        result['MAE_by_correction_rule'][rule]=float(cell_mae.mean())
+        result['cell_MAE_by_correction_rule'][rule]=cell_mae.tolist()
+        arrays[pname+'__'+rule]=pred
+        if pname==rule+'_balanced':
+            assert abs(float(cell_mae.mean())-old['surrogate_validation'][rule]['mae_design_following_week'])<1e-10
+    results[pname]=result
+np.savez_compressed(O/'predictions.npz',**arrays)
+elapsed=time.perf_counter()-started
+rss=psutil.Process().memory_info().rss
+assert elapsed<10 and rss<1024**3
+assert all(sha(B/name)==value for name,value in hashes.items())
+save(O/'result.json',{'complete':True,'settings':settings,'results':results,'objectives':objective,
+    'merge_history':history,'pair_scores':scores,'elapsed_seconds':elapsed,'sampled_rss_bytes':rss,
+    'new_model_calls':0,'RCTL_performance_measured':False,'novelty_established':False,
+    'used_to_reclassify_previous_failure_as_success':False,
+    'input_files_unchanged_before_accounting':True})
+assert 'cluster_size_constraint_113' not in ledger['new_cheap_diagnostic_seconds']
+(O/'ledger_before_accounting.json').write_bytes(ledger_path.read_bytes())
+ledger['new_cheap_diagnostic_seconds']['cluster_size_constraint_113']=elapsed
+ledger['cheap_stage_details'].append({'stage':'cluster_size_constraint_113','new_model_calls':0,
+    'new_fits':0,'arithmetic_seconds':elapsed,'cost_not_counted_twice':True})
+save(ledger_path,ledger)
+save(O/'run_finished.json',{'complete':True,'result_sha256':sha(O/'result.json'),'ledger_after_sha256':sha(ledger_path)})
+print(json.dumps({'results':results,'objectives':objective,'elapsed_seconds':elapsed,
+    'ledger_after_sha256':sha(ledger_path)},ensure_ascii=False),flush=True)

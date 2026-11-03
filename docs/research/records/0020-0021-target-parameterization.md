@@ -1,5 +1,7 @@
 # 20·21: 잔차 target의 평균 개선과 cell별 손해
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 **ID 없는 TabICL의 전체 MAE는 0.240991556에서 0.132709790으로 약44.93% 줄었지만, 32개 cell 중 28개의 오차는 증가했다.** 큰 평균 개선은 cell 7524의 손해 감소에 집중됐다. 같은 개발 구간을 보고 만든 후속 진단이며 일반적인 개선이나 독립 test로 제시하지 않는다. **H013-C07·H013-C08·H013-C11**
 
 [19의 원래 target 결과](0019-broad-cell-identity.md) → [20 후속 계획](../evidence/0019-0021/originals/SRC-0021073.md.txt) → [21 종합](../evidence/0018-0021/originals/SRC-0021095.md.txt)의31–54행·65–72행을 연결한다. 원문 날짜는 2026-09-25다. [근거](../evidence/0019-0021/README.md)·[검수](../verification/history-013.md)·[주장별 출처](../verification/history-013-primary-review.json)를 함께 읽는다.

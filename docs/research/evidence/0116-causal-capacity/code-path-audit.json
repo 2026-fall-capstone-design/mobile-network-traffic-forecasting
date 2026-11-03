@@ -1,0 +1,60 @@
+{
+  "commit": "ac09a66245f9eaa7371065ec3f7d3673df125c94",
+  "wrapper": {
+    "url": "https://raw.githubusercontent.com/Xinhui-Lee/CIB-MTSF/ac09a66245f9eaa7371065ec3f7d3673df125c94/CIB-MTSF/CIB-MTSF/models/CIBMTSF.py",
+    "sha256": "31d461f4d938ea19dcfd85d082915779c92d66d3c273e2bb41f59e51aa6216fd",
+    "git_blob": "7caf2f02cd23c22f36352d2d863c70c64950c91b",
+    "current_extra_read_not_original_credit": true,
+    "read_raw_lines": [
+      [
+        1,
+        113
+      ]
+    ],
+    "nondecomposition_lines": [
+      82,
+      106
+    ]
+  },
+  "steps": [
+    {
+      "source_id": "SRC-0061930",
+      "lines": [
+        29,
+        51
+      ],
+      "role": "과거평균condition·patch2 batch shuffle"
+    },
+    {
+      "source_id": "SRC-0061929",
+      "lines": [
+        203,
+        229
+      ],
+      "role": "평균·clipping·가중 auxiliary loss 반환"
+    },
+    {
+      "source_id": "SRC-0061932",
+      "lines": [
+        172,
+        204
+      ],
+      "role": "non-AMP prediction MSE+auxiliary loss·backward·optimizer"
+    }
+  ],
+  "AMP_static_issue": {
+    "source_id": "SRC-0061932",
+    "lines": [
+      154,
+      169
+    ],
+    "finding": "CIBMTSF tuple 반환을 outputs 한 변수에 받고 tensor index를 적용함; 실행 재현 아님"
+  },
+  "verified_route_conditions": [
+    "use_amp=False",
+    "decomposition=False"
+  ],
+  "finite_batch_KL_equality_claimed": false,
+  "all_dependencies_or_configurations_verified": false,
+  "source_code_executed": false
+}

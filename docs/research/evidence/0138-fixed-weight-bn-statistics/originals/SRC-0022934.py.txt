@@ -1,0 +1,338 @@
+"""Stage 108: one precommitted, train-input-only BN moment recalibration.
+
+No optimizer, gradients, partition changes, or hyperparameter selection.
+Statistics adaptations are charged as model adaptations in the execution ledger.
+"""
+import os
+for name in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS"):
+    os.environ[name] = "4"
+import hashlib
+import json
+from pathlib import Path
+import time
+import traceback
+import numpy as np
+import psutil
+import torch
+from rctl_torch import RCTL
+
+torch.set_num_threads(4)
+torch.set_num_interop_threads(2)
+BASE = Path(__file__).resolve().parent
+OUT = BASE / "results/normalization_108"
+SRC = BASE / "results/rctl_pilot"
+METHODS = ("global", "tabicl_risk", "empirical_risk")
+ROUND = "post_revision_106_round1"
+SEED = 20260925
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def save(name, obj):
+    (OUT / name).write_text(json.dumps(obj, ensure_ascii=False, indent=2,
+                                      allow_nan=False), encoding="utf-8")
+
+
+def tensor_hash(items):
+    h = hashlib.sha256()
+    for name, value in items:
+        h.update(name.encode())
+        h.update(value.detach().cpu().numpy().tobytes())
+    return h.hexdigest()
+
+
+def as_sequence(flat):
+    seq = np.empty((*flat.shape[:2], 8, 9), dtype=np.float32)
+    seq[:, :, :, 0] = flat[:, :, :8]
+    seq[:, :, :, 1:] = flat[:, :, None, 8:]
+    assert np.isfinite(seq).all()
+    return seq
+
+
+def main():
+    OUT.mkdir(parents=True, exist_ok=True)
+    if (OUT / "run_started.json").exists():
+        raise RuntimeError("Existing run must be audited, not restarted.")
+    ledger_path = BASE / "cumulative_execution_budget.json"
+    ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
+    budget = ledger["additional_rounds"][ROUND]
+    assert budget["status"] == "active"
+    assert budget["reservations"]["normalization_108"]["adaptations"] == 9
+    assert budget["reservations"]["normalization_108"]["status"] == "reserved"
+    assert budget["used_fit_or_adaptation_runs"] == 0
+    assert budget["limit_fit_or_adaptation_runs"] == 18
+
+    fits_all = json.loads((SRC / "fit_results.json").read_text(encoding="utf-8"))
+    fits = [f for f in fits_all if f["seed"] == SEED and f["method"] in METHODS]
+    assert len(fits) == 9
+    files = {
+        "plan": BASE / "108_normalization_diagnostic_plan.md",
+        "code": Path(__file__),
+        "model_code": BASE / "rctl_torch.py",
+        "design": BASE / "results/design_data.npz",
+        "inputs_101": BASE / "results/pooled_context_101/inputs.npz",
+        "predictions_34": BASE / "results/frozen_fit_gap_34/predictions.npz",
+        "saved_future": SRC / "all_predictions.npz",
+        "fit_results": SRC / "fit_results.json",
+        "frozen_training": SRC / "frozen_settings.json",
+    }
+    for f in fits:
+        key = f"{f['method']}_{f['seed']}_cluster{f['cluster']}"
+        files[key] = SRC / f"{key}.pt"
+    hashes = {k: digest(v) for k, v in files.items()}
+    original_settings = json.loads(files["frozen_training"].read_text(encoding="utf-8"))
+    assert hashes["model_code"] == original_settings["model_code_sha256"]
+    settings = {
+        "seed": SEED, "methods": METHODS, "checkpoint_count": 9,
+        "optimizer_fits": 0, "maximum_statistics_adaptations": 9,
+        "TabICL_calls": 0, "batch": 512, "threads": 4,
+        "wall_cap_seconds": 300, "rss_cap_bytes": 4 * 1024 ** 3,
+        "reproduction_max_abs_tolerance": 1e-5,
+        "train_target_indices": [168, 839], "validation_target_indices": [840, 1007],
+        "development_check_target_indices": [1008, 1343],
+        "calibration": "Layerwise finite-population input moments, train X only, eval mode",
+        "source": "https://arxiv.org/pdf/2105.07576 (v1), Appendix A.3",
+        "expected_calibration_prefix_rows": 387072,
+        "expected_primary_prediction_rows": 112896,
+        "source_hashes": hashes, "ledger_before_run_sha256": digest(ledger_path),
+        "round_id": ROUND, "partitions_frozen": True,
+        "independent_final_evaluation": False,
+    }
+    save("settings.json", settings)
+    save("run_started.json", {"pid": os.getpid(), "unix": time.time(),
+                              "settings_sha256": digest(OUT / "settings.json")})
+    started = time.perf_counter()
+    process = psutil.Process()
+    counts = {"statistics_adaptations_started": 0, "statistics_adaptations_completed": 0,
+              "optimizer_fits": 0, "optimizer_steps": 0, "gradient_calls": 0,
+              "calibration_prefix_calls": 0, "calibration_prefix_rows": 0,
+              "prediction_calls": 0, "primary_prediction_rows": 0,
+              "restoration_prediction_rows": 0, "peak_rss_bytes": process.memory_info().rss}
+    records, arrays, aggregates = [], {}, {}
+    current = None
+
+    def guard():
+        counts["peak_rss_bytes"] = max(counts["peak_rss_bytes"], process.memory_info().rss)
+        if time.perf_counter() - started > settings["wall_cap_seconds"]:
+            raise RuntimeError("Stage wall limit exceeded")
+        if counts["peak_rss_bytes"] > settings["rss_cap_bytes"]:
+            raise RuntimeError("Stage RSS limit exceeded")
+
+    def predict(model, data, restoration=False):
+        values = []
+        with torch.inference_mode():
+            for offset in range(0, len(data), settings["batch"]):
+                guard()
+                block = torch.from_numpy(data[offset:offset + settings["batch"]])
+                counts["prediction_calls"] += 1
+                field = "restoration_prediction_rows" if restoration else "primary_prediction_rows"
+                counts[field] += len(block)
+                values.append(model(block).cpu().numpy())
+        pred = np.concatenate(values)
+        assert np.isfinite(pred).all()
+        return pred
+
+    class PrefixComplete(Exception):
+        pass
+
+    def calibrate_bn(model, train_x):
+        """Only train_x is accepted; no query, validation, target, or partition selection."""
+        modules = [(n, m) for n, m in model.named_modules()
+                   if isinstance(m, torch.nn.BatchNorm1d)]
+        assert len(modules) == 12 and not model.training
+        layer_records = []
+        for layer_name, bn in modules:
+            accumulator = {"sum": torch.zeros(bn.num_features, dtype=torch.float64),
+                           "square_sum": torch.zeros(bn.num_features, dtype=torch.float64),
+                           "count": 0}
+
+            def collect(_module, inputs):
+                x = inputs[0].detach().to(torch.float64)
+                assert x.ndim == 3 and x.shape[1] == bn.num_features
+                accumulator["sum"] += x.sum(dim=(0, 2))
+                accumulator["square_sum"] += (x * x).sum(dim=(0, 2))
+                accumulator["count"] += x.shape[0] * x.shape[2]
+                raise PrefixComplete()
+
+            old_mean = bn.running_mean.detach().clone()
+            old_var = bn.running_var.detach().clone()
+            hook = bn.register_forward_pre_hook(collect)
+            try:
+                with torch.inference_mode():
+                    for offset in range(0, len(train_x), settings["batch"]):
+                        guard()
+                        block = torch.from_numpy(train_x[offset:offset + settings["batch"]])
+                        counts["calibration_prefix_calls"] += 1
+                        counts["calibration_prefix_rows"] += len(block)
+                        try:
+                            model(block)
+                        except PrefixComplete:
+                            pass
+                        else:
+                            raise AssertionError("Target BN layer was not reached")
+            finally:
+                hook.remove()
+            assert accumulator["count"] == len(train_x) * 8
+            mean = accumulator["sum"] / accumulator["count"]
+            var = accumulator["square_sum"] / accumulator["count"] - mean.square()
+            assert torch.isfinite(mean).all() and torch.isfinite(var).all()
+            assert float(var.min()) >= -1e-10
+            with torch.no_grad():
+                bn.running_mean.copy_(mean.to(bn.running_mean.dtype))
+                bn.running_var.copy_(var.clamp_min(0).to(bn.running_var.dtype))
+            layer_records.append({"layer": layer_name, "moment_count_per_channel": accumulator["count"],
+                "mean_max_abs_change": float((bn.running_mean - old_mean).abs().max()),
+                "variance_max_abs_change": float((bn.running_var - old_var).abs().max()),
+                "old_variance_mean": float(old_var.mean()),
+                "new_variance_mean": float(bn.running_var.mean()), "epsilon": bn.eps})
+        return layer_records
+
+    try:
+        with np.load(files["inputs_101"], allow_pickle=False) as a:
+            ids, flat, targets = a["cell_ids"], a["X"], a["Y"]
+            scales = a["scales"]
+            assert np.array_equal(a["context_times"], np.arange(168, 840))
+            assert np.array_equal(a["query_times"], np.arange(1008, 1344))
+        with np.load(files["design"], allow_pickle=False) as a:
+            sel = [np.flatnonzero(a["cell_indices"] == cell - 1).item() for cell in ids]
+            assert np.array_equal(a["times"], np.arange(168, 1008))
+            assert np.array_equal(a["X"][sel, :672], flat[:, :672])
+            assert np.array_equal(a["Y"][sel, :672], targets[:, :672])
+            val_x, val_y = a["X"][sel, 672:], a["Y"][sel, 672:]
+        seq = {"train": as_sequence(flat[:, :672]), "validation": as_sequence(val_x),
+               "check": as_sequence(flat[:, 672:])}
+        yy = {"train": targets[:, :672], "validation": val_y, "check": targets[:, 672:]}
+        assert tuple(yy[k].shape for k in yy) == ((16, 672), (16, 168), (16, 336))
+        assert len(ids) == 16
+        with np.load(files["predictions_34"], allow_pickle=False) as a:
+            saved34 = {k: a[k] for k in a.files}
+        with np.load(files["saved_future"], allow_pickle=False) as a:
+            saved_future = {k: a[k] for k in a.files}
+        assert np.array_equal(saved34["train_y"], yy["train"])
+        assert np.array_equal(saved34["validation_y"], yy["validation"])
+        assert np.array_equal(saved_future["y"][:, :336], yy["check"])
+        arrays.update({"cell_ids": ids, "scales": scales, **{f"{s}_y": y for s, y in yy.items()}})
+        for method in METHODS:
+            for mode in ("original", "recalibrated"):
+                for split in seq:
+                    arrays[f"{method}_{mode}_{split}"] = np.full(yy[split].shape, np.nan, np.float32)
+
+        for fit in fits:
+            guard()
+            key = f"{fit['method']}_{fit['seed']}_cluster{fit['cluster']}"
+            members = np.asarray(fit["members"], dtype=np.int64)
+            current = {"checkpoint": key, "phase": "reproduce"}
+            model = RCTL(steps=8, channels=9)
+            original_state = torch.load(files[key], map_location="cpu", weights_only=True)
+            model.load_state_dict(original_state)
+            model.eval()
+            original_parameter_hash = tensor_hash(model.named_parameters())
+            original_state_hash = tensor_hash(model.state_dict().items())
+            data = {s: np.ascontiguousarray(x[members].reshape(-1, 8, 9)) for s, x in seq.items()}
+            rec = {"checkpoint": key, "method": fit["method"], "cluster": fit["cluster"],
+                   "members": members.tolist(), "original_checkpoint_sha256": hashes[key],
+                   "parameter_sha256_before": original_parameter_hash, "reproduction_differences": {}}
+            original_preds = {}
+            for split in seq:
+                pred = predict(model, data[split]).reshape(len(members), -1)
+                original_preds[split] = pred
+                reference = (saved_future[f"{fit['method']}_{SEED}"][members, :336] if split == "check"
+                             else saved34[f"{key}_{split}_prediction"])
+                difference = float(np.max(np.abs(pred - reference)))
+                rec["reproduction_differences"][split] = difference
+                assert difference <= settings["reproduction_max_abs_tolerance"], (key, split, difference)
+                arrays[f"{fit['method']}_original_{split}"][members] = pred
+            assert tensor_hash(model.state_dict().items()) == original_state_hash
+            counts["statistics_adaptations_started"] += 1
+            current = {"checkpoint": key, "phase": "recalculate_train_moments"}
+            save("partial.json", {"records": records, "counts": counts, "current": current,
+                                  "elapsed_seconds": time.perf_counter() - started})
+            adapt_start = time.perf_counter()
+            rec["layers"] = calibrate_bn(model, data["train"])
+            rec["calibration_seconds"] = time.perf_counter() - adapt_start
+            rec["parameter_sha256_after"] = tensor_hash(model.named_parameters())
+            assert rec["parameter_sha256_after"] == original_parameter_hash
+            assert all(p.grad is None for p in model.parameters())
+            changed = [n for n, v in model.state_dict().items() if not torch.equal(v, original_state[n])]
+            assert changed and all(n.endswith((".running_mean", ".running_var")) for n in changed)
+            rec["changed_state_keys"] = changed
+            torch.save({n: v.detach().clone() for n, v in model.named_buffers()}, OUT / f"{key}_buffers.pt")
+            counts["statistics_adaptations_completed"] += 1
+            current = {"checkpoint": key, "phase": "evaluate_recalibrated"}
+            for split in seq:
+                pred = predict(model, data[split]).reshape(len(members), -1)
+                arrays[f"{fit['method']}_recalibrated_{split}"][members] = pred
+                rec[f"{split}_original_mae"] = float(np.abs(original_preds[split] - yy[split][members]).mean())
+                rec[f"{split}_recalibrated_mae"] = float(np.abs(pred - yy[split][members]).mean())
+            model.load_state_dict(original_state)
+            restore_n = min(16, len(data["check"]))
+            restored = predict(model, data["check"][:restore_n], restoration=True)
+            rec["restoration_max_abs_difference"] = float(np.max(np.abs(restored - original_preds["check"].ravel()[:restore_n])))
+            assert rec["restoration_max_abs_difference"] <= settings["reproduction_max_abs_tolerance"]
+            assert tensor_hash(model.state_dict().items()) == original_state_hash
+            rec["original_checkpoint_unchanged"] = hashes[key] == digest(files[key])
+            assert rec["original_checkpoint_unchanged"]
+            records.append(rec)
+            save("partial.json", {"records": records, "counts": counts, "current": None,
+                                  "elapsed_seconds": time.perf_counter() - started})
+            print(json.dumps({"checkpoint": key, "completed": len(records),
+                              "original_check_mae": rec["check_original_mae"],
+                              "recalibrated_check_mae": rec["check_recalibrated_mae"]}), flush=True)
+            del model
+
+        assert counts["statistics_adaptations_completed"] == 9
+        assert counts["calibration_prefix_rows"] == settings["expected_calibration_prefix_rows"]
+        assert counts["primary_prediction_rows"] == settings["expected_primary_prediction_rows"]
+        for method in METHODS:
+            aggregates[method] = {}
+            for mode in ("original", "recalibrated"):
+                stats = {}
+                for split in seq:
+                    err = np.abs(arrays[f"{method}_{mode}_{split}"] - yy[split]).astype(np.float64)
+                    assert np.isfinite(err).all()
+                    stats[f"{split}_mae"] = float(err.mean())
+                    stats[f"{split}_cell_mae"] = err.mean(1).tolist()
+                    if split == "check":
+                        stats["first_7_days_mae"] = float(err[:, :168].mean())
+                        stats["last_7_days_mae"] = float(err[:, 168:].mean())
+                        stats["day_mae"] = err.reshape(16, 14, 24).mean((0, 2)).tolist()
+                        stats["day_cell_mae"] = err.reshape(16, 14, 24).mean(2).tolist()
+                aggregates[method][mode] = stats
+        comparisons = {}
+        for mode in ("original", "recalibrated"):
+            comparisons[mode] = {}
+            for split in ("train", "validation", "check", "first_7_days", "last_7_days"):
+                field = f"{split}_mae"
+                tab, emp, glob = (aggregates[m][mode][field] for m in ("tabicl_risk", "empirical_risk", "global"))
+                comparisons[mode][split] = {"Tab_minus_empirical": tab - emp,
+                    "Tab_minus_global": tab - glob, "empirical_minus_global": emp - glob}
+        np.savez_compressed(OUT / "predictions.npz", **arrays)
+        guard()
+        elapsed = time.perf_counter() - started
+        unchanged = {k: digest(p) == hashes[k] for k, p in files.items()}
+        assert all(unchanged.values())
+        result = {"complete": True, "settings": settings, "counts": counts,
+                  "records": records, "aggregates": aggregates, "comparisons": comparisons,
+                  "entire_stage_seconds": elapsed, "source_files_unchanged": unchanged,
+                  "max_reproduction_abs_difference": max(max(r["reproduction_differences"].values()) for r in records),
+                  "max_restoration_abs_difference": max(r["restoration_max_abs_difference"] for r in records),
+                  "new_clustering_rule": False, "partition_changes": False,
+                  "independent_test": False, "clustering_validation_passed": False,
+                  "timing_scope": "After imports/source hashes; includes data loading, all model computation, partial writes and prediction archive; final source rehash and summary serialization excluded."}
+        save("result.json", result)
+        save("run_finished.json", {"unix": time.time(), "complete": True,
+                                   "result_sha256": digest(OUT / "result.json")})
+        print(json.dumps({"complete": True, "counts": counts, "entire_stage_seconds": elapsed,
+                          "comparisons": comparisons}), flush=True)
+    except BaseException as exc:
+        save("failure.json", {"complete": False, "error": repr(exc), "traceback": traceback.format_exc(),
+                              "counts": counts, "records": records, "current": current,
+                              "entire_stage_seconds": time.perf_counter() - started})
+        save("run_finished.json", {"unix": time.time(), "complete": False})
+        raise
+
+
+if __name__ == "__main__":
+    main()

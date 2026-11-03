@@ -1,0 +1,31 @@
+from pathlib import Path
+import hashlib, io, json, time, urllib.request
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parent / 'sources/quantile_information_98'
+ROOT.mkdir(parents=True, exist_ok=True)
+sources = [
+    ('Bai_distribution_shift_2411.19933v2', 'https://arxiv.org/pdf/2411.19933v2', 'Transfer Learning for High-dimensional Quantile Regression with Distribution Shift'),
+    ('Gu_Volgushev_grouped_1801.05041v2', 'https://arxiv.org/pdf/1801.05041v2', 'Panel Data Quantile Regression with Grouped Fixed Effects'),
+    ('Yang_functional_group_2303.13218v1', 'https://arxiv.org/pdf/2303.13218v1', 'Functional-Coefficient Quantile Regression for Panel Data with Latent Group Structure')
+]
+rows = []
+for name, url, title in sources:
+    path = ROOT / (name + '.pdf')
+    if path.exists():
+        data = path.read_bytes()
+    else:
+        request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (research literature retrieval)'})
+        with urllib.request.urlopen(request, timeout=40) as response:
+            size = response.headers.get('Content-Length')
+            assert size is None or int(size) < 8_000_000
+            data = response.read(8_000_001)
+        assert len(data) < 8_000_000 and data.startswith(b'%PDF')
+        path.write_bytes(data)
+    reader = PdfReader(io.BytesIO(data))
+    text = '\n\n'.join(f'=== PDF PAGE {i + 1} ===\n{page.extract_text() or ""}' for i, page in enumerate(reader.pages))
+    (ROOT / (name + '.txt')).write_text(text, encoding='utf-8')
+    rows.append({'title': title, 'url': url, 'path': str(path), 'pages': len(reader.pages), 'bytes': len(data),
+                 'sha256': hashlib.sha256(data).hexdigest(), 'retrieved_unix': time.time()})
+(ROOT / 'download_manifest.json').write_text(json.dumps({'date': '2026-09-26', 'sources': rows}, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps(rows, ensure_ascii=False, indent=2))

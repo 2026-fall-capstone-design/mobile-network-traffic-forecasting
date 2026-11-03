@@ -1,0 +1,157 @@
+{
+  "hashes": {
+    "plan": "8ab57ab4de3dbf43e14f385bcda42f08c55f60d1e17aab9ee82a62da8967d5cc",
+    "code": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+    "ledger": "807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f",
+    "design": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+    "partition": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+    "traffic": "4371f984d6ff235ce1760869eb8fe44e10b5b0214196158f8fb8dea8b324e65e",
+    "checkpoint": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a",
+    "RCTL_saved_predictions": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096"
+  },
+  "cell_ids": [
+    3737,
+    3745,
+    3753,
+    3765,
+    4537,
+    4545,
+    4553,
+    4565,
+    5337,
+    5345,
+    5353,
+    5365,
+    6137,
+    6145,
+    6153,
+    6165
+  ],
+  "groups_local_index": {
+    "global": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    ],
+    "tabicl_risk": [
+      [
+        0,
+        3,
+        11,
+        13
+      ],
+      [
+        1,
+        5,
+        8,
+        14
+      ],
+      [
+        2,
+        4,
+        6,
+        7
+      ],
+      [
+        9,
+        10,
+        12,
+        15
+      ]
+    ],
+    "empirical_risk": [
+      [
+        0,
+        9,
+        12,
+        13
+      ],
+      [
+        1,
+        2,
+        14,
+        15
+      ],
+      [
+        3,
+        4,
+        10,
+        11
+      ],
+      [
+        5,
+        6,
+        7,
+        8
+      ]
+    ]
+  },
+  "context_targets": [
+    168,
+    839
+  ],
+  "query_targets": [
+    1008,
+    1343
+  ],
+  "features": [
+    "lag8",
+    "lag7",
+    "lag6",
+    "lag5",
+    "lag4",
+    "lag3",
+    "lag2",
+    "lag1",
+    "lag24",
+    "lag168",
+    "mean24",
+    "std24",
+    "hour_sin",
+    "hour_cos",
+    "weekday_sin",
+    "weekday_cos"
+  ],
+  "seed": 20260925,
+  "ensemble": 1,
+  "output": "median",
+  "limits": {
+    "tab_seconds": 1200,
+    "cheap_seconds": 30,
+    "stage_seconds": 1230,
+    "rss_bytes": 12884901888
+  },
+  "planned_contexts": 9,
+  "planned_query_rows": 16128,
+  "simple_fits_cap": 18,
+  "new_RCTL_fits": 0,
+  "new_RCTL_forwards": 0,
+  "new_RCTL_gradients": 0,
+  "independent_test": false,
+  "partition_selection_uses_new_results": false,
+  "known_scope": "Posthoc diagnostic of three original partitions; RCTL results were already viewed before this plan.",
+  "versions": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "sklearn": "1.9.1",
+    "tabicl": "unknown"
+  },
+  "torch_threads": 4,
+  "torch_interop_threads": 2,
+  "timing_scope": "Starts after imports, settings and source hashes; includes feature construction, model fitting/prediction, numerical summaries and result writes until final marker. Source rehashing excluded."
+}

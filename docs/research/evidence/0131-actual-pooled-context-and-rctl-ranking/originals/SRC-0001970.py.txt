@@ -1,0 +1,53 @@
+"""Account for the single frozen 101 run, including an unsuccessful attempt."""
+from pathlib import Path
+import json, hashlib
+B = Path(__file__).resolve().parent
+O = B / "results/pooled_context_101"
+P = B / "cumulative_execution_budget.json"
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def save(p, x): p.write_text(json.dumps(x, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+expected = "807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f"
+assert not (O / "budget_update.json").exists(), "Already accounted."
+assert sha(P) == expected, "Ledger changed; inspect rather than overwrite."
+before = P.read_bytes()
+ledger = json.loads(before)
+settings = json.loads((O / "settings.json").read_text(encoding="utf-8"))
+assert settings["hashes"]["ledger"] == expected
+assert sha(B / "101_pooled_context_diagnostic_plan.md") == settings["hashes"]["plan"]
+assert sha(B / "pooled_context_diagnostic_101.py") == settings["hashes"]["code"]
+if (O / "run_finished.json").exists():
+    result = json.loads((O / "run_finished.json").read_text(encoding="utf-8"))
+    contexts, queries = result["contexts_attempted"], result["query_rows_attempted"]
+    seconds, cheap = result["TabICL_seconds"], result["cheap_seconds"]
+    simple, complete = result["simple_fits"], result["success"]
+else:
+    stop = json.loads((O / "hard_stop.json").read_text(encoding="utf-8"))
+    state = stop["state"]
+    contexts, queries = state["contexts_attempted"], state["query_rows_attempted"]
+    seconds = state["tab_seconds"] + stop["active_tab_seconds"]
+    cheap = stop["wall_seconds"] - seconds
+    simple, complete = state["simple_fits"], False
+assert 0 <= contexts <= 9 and 0 <= queries <= 16128 and cheap >= 0
+stage = "pooled_context_101"
+assert stage not in ledger["new_cheap_diagnostic_seconds"]
+ledger["model_calls_by_stage"].append({"stage": stage, "contexts": contexts, "predicted_query_rows": queries, "fit_predict_seconds": seconds, "ensemble": 1, "all_calls_successful": complete, "accounting_basis": "Attempted context/query counts; completed or interrupted work is never retried or reset."})
+u = ledger["used"]
+u["TabICL_contexts"] += contexts
+u["TabICL_query_rows"] += queries
+u["TabICL_fit_predict_seconds"] += seconds
+ledger["new_cheap_diagnostic_seconds"][stage] = cheap
+ledger["cheap_stage_details"].append({"stage": stage, "new_simple_fits": simple, "new_TabICL_contexts": contexts, "new_TabICL_query_rows": queries, "new_RCTL_fits": 0, "new_RCTL_forwards": 0, "new_RCTL_gradients": 0, "entire_stage_seconds": seconds + cheap, "TabICL_seconds_accounted_separately": seconds, "cheap_seconds": cheap, "cost_not_counted_twice": True, "timing_scope": settings["timing_scope"]})
+for key in ["TabICL_contexts", "TabICL_query_rows"]:
+    ledger["remaining_count_budgets"][key] = ledger["caps"][key] - u[key]
+    assert ledger["remaining_count_budgets"][key] >= 0
+assert u["TabICL_fit_predict_seconds"] <= ledger["caps"]["TabICL_fit_predict_seconds"]
+assert u["RCTL_fits"] == 29 and ledger["remaining_count_budgets"]["RCTL_fits"] == 0
+cheap_total = sum(ledger["new_cheap_diagnostic_seconds"].values())
+total = cheap_total + sum(u[k] for k in ["TabICL_fit_predict_seconds", "RCTL_wall_seconds", "RCTL_frozen_inference_seconds", "RCTL_frozen_gradient_seconds"])
+assert cheap_total < ledger["caps"]["cheap_numeric_seconds"] and total < ledger["caps"]["total_local_modeling_seconds"]
+(O / "budget_before.json").write_bytes(before)
+save(P, ledger)
+(O / "budget_after.json").write_bytes(P.read_bytes())
+update = {"stage": stage, "success": complete, "TabICL_contexts_added": contexts, "TabICL_query_rows_added": queries, "TabICL_seconds_added": seconds, "cheap_seconds_added": cheap, "ledger_before_sha256": expected, "ledger_after_sha256": sha(P), "recorded_cheap_seconds": cheap_total, "recorded_modeling_seconds": total, "budget_resets": 0, "remaining": ledger["remaining_count_budgets"]}
+save(O / "budget_update.json", update)
+print(json.dumps(update, ensure_ascii=False, indent=2))

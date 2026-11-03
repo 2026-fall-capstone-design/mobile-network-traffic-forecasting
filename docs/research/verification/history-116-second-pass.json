@@ -1,0 +1,322 @@
+{
+  "batch_id": "history-116",
+  "status": "source_checked",
+  "checked_at_utc": "2026-10-11T14:27:12.169714+00:00",
+  "claims_checked": 26,
+  "checks": [
+    {
+      "check_id": "H116-SP01",
+      "claims": [
+        1,
+        2,
+        3
+      ],
+      "finding": "원87 계획·판단·보고서, 실제 RCTL 60행·원장68–92행·원86후속63–73행 재독. 다중 출력은 기호적 변경이며 실제 저장 dense는 scalar, 과거 실행 예산은 현 작업 허가가 아님."
+    },
+    {
+      "check_id": "H116-SP02",
+      "claims": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "finding": "원87 기호 조건·RCTL 인과 경로·H090 전체 재독. 고정 선형 부분공간을 쓰는 rank/합MSE 하한, 제곱적분과 평가 BN 조건, scalar·d4·skip/AR·비용 비교 한계를 확인."
+    },
+    {
+      "check_id": "H116-SP03",
+      "claims": [
+        10,
+        11
+      ],
+      "finding": "PDF1–6쪽 본문, code metadata의 커밋/네 blob/행 끝 차이 근거를 재독. 정확 원본 해시와 변환 후 공식 blob의 일치를 구별; 현재 최신성이나 코드 실행을 주장하지 않음."
+    },
+    {
+      "check_id": "H116-SP04",
+      "claims": [
+        12,
+        13,
+        14,
+        15,
+        18
+      ],
+      "finding": "PDF5쪽 식24–25·본문 shuffle 설명, CMI52행·backbone178–229행 재독 및 PNG5쪽 대조. 조건부 기준/과거평균/무조건 batch 순열을 구별하고 이진 반례와 finite-batch 한계 확인."
+    },
+    {
+      "check_id": "H116-SP05",
+      "claims": [
+        16,
+        17
+      ],
+      "finding": "Conditional_MI43행·backbone178–229행·exp33–56/153–204행·새 wrapper113행 및 metadata430–437행 재독. 비AMP·비decomposition 호출 경로와 AMP tuple 슬라이싱 문제를 분리. 원당시 wrapper 저장 여부로 확대하지 않음."
+    },
+    {
+      "check_id": "H116-SP06",
+      "claims": [
+        19,
+        20,
+        21
+      ],
+      "finding": "PDF1–6쪽 재독·기존 PNG4/5/6 대조. 식21 직전 minimize 문장과 수식 부호, 식27·Algorithm1·9자료/분할/MSE·MAE를 확인. Table1/2와 TabPFN+CRT 방법은 미검수로 유지."
+    },
+    {
+      "check_id": "H116-SP07",
+      "claims": [
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "finding": "수집기40행·fetcher29행·검색19행·CIB manifest12행·verifier83행·scope55행·snapshot128행·archive7행 재독. HTTP406과 저장 후 cp949 출력 오류, TXT 기계 대응/미독, 24파일 보존 검수와 내용 검수의 차이 확인."
+    }
+  ],
+  "initial_draft_record_sha256": "fb58b531b9bec6232f8f71acfdb96cab15150310aa3b562f27be2f4490dd0a3e",
+  "corrected_record_sha256": "2808687a9349276a642194aac5690fc6e3bcacba46697488cc1fc59b7b087435",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0022065": [
+      [
+        1,
+        14
+      ]
+    ],
+    "SRC-0022064": [
+      [
+        1,
+        66
+      ]
+    ],
+    "SRC-0000151": [
+      [
+        1,
+        33
+      ]
+    ],
+    "SRC-0023048": [
+      [
+        1,
+        60
+      ]
+    ],
+    "SRC-0025150": [
+      [
+        68,
+        92
+      ]
+    ],
+    "SRC-0022060": [
+      [
+        63,
+        73
+      ]
+    ],
+    "SRC-0061930": [
+      [
+        1,
+        52
+      ]
+    ],
+    "SRC-0061931": [
+      [
+        1,
+        43
+      ]
+    ],
+    "SRC-0061929": [
+      [
+        178,
+        229
+      ]
+    ],
+    "SRC-0061932": [
+      [
+        33,
+        56
+      ],
+      [
+        153,
+        204
+      ]
+    ],
+    "SRC-0061927": [
+      [
+        1,
+        34
+      ],
+      [
+        290,
+        327
+      ],
+      [
+        430,
+        437
+      ],
+      [
+        588,
+        609
+      ]
+    ],
+    "SRC-0022592": [
+      [
+        1,
+        40
+      ]
+    ],
+    "SRC-0022731": [
+      [
+        1,
+        29
+      ]
+    ],
+    "SRC-0061928": [
+      [
+        1,
+        19
+      ]
+    ],
+    "SRC-0061926": [
+      [
+        1,
+        12
+      ]
+    ],
+    "SRC-0023236": [
+      [
+        1,
+        83
+      ]
+    ],
+    "SRC-0022066": [
+      [
+        1,
+        55
+      ]
+    ],
+    "SRC-0001552": [
+      [
+        1,
+        128
+      ]
+    ],
+    "SRC-0022063": [
+      [
+        1,
+        7
+      ]
+    ]
+  },
+  "postdraft_total_raw_lines": 907,
+  "actual_postdraft_PDF_text_pages": {
+    "SRC-0061921": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "actual_postdraft_PDF_image_rechecks": {
+    "SRC-0061921": [
+      4,
+      5,
+      6
+    ]
+  },
+  "postdraft_PDF_text_lines": 812,
+  "existing_archive_references_reread": [
+    {
+      "claims": [
+        3,
+        7,
+        9
+      ],
+      "path": "../records/0090-input-partition-decision.md",
+      "sha256": "9bee3fb74f7611aeb00b62a36a42b2fbb8414691ac1f355de76c7559c9046aa2",
+      "scope": "H090 전체 작성 후 재독. scalar dense와 제안된 다중 출력, 기호 MAC과 실제 용량·성능, 원74 4cell 결과의 적용 한계."
+    }
+  ],
+  "external_wrapper": {
+    "url": "https://raw.githubusercontent.com/Xinhui-Lee/CIB-MTSF/ac09a66245f9eaa7371065ec3f7d3673df125c94/CIB-MTSF/CIB-MTSF/models/CIBMTSF.py",
+    "sha256": "31d461f4d938ea19dcfd85d082915779c92d66d3c273e2bb41f59e51aa6216fd",
+    "actual_raw_line_ranges": [
+      [
+        1,
+        113
+      ]
+    ],
+    "current_read_not_historical_download": true,
+    "original_coverage_credit": 0
+  },
+  "all_claim_semantic_locations_actually_reread": true,
+  "unresolved_output_truncation": false,
+  "independent_reviewer": false,
+  "new_model_runs": 0,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "coverage_increment_applied": false,
+  "corrections": [
+    "초안의 적용 조건·본문/수식/코드 구분·AMP 경로 문제·줄바꿈 판본 차이를 원문으로 재확인. 내용 수정 없이 검수 상태를 확정.",
+    "TXT 1128행은 기계적 페이지 대응 확인뿐이며 의미 독해 완료로 표시하지 않음."
+  ],
+  "limitations": [
+    {
+      "source_id": "SRC-0001557",
+      "path": "output/research/redesign_20260925_snapshot_29/tmp/redesign_20260925/88_conditional_reference_scope_plan.md",
+      "kind": "physical_file",
+      "size_bytes": 2237,
+      "sha256": "39f702e4c5b5c0fe448229da7395aaa578241c009d0a728c76c237b6e49fc37f",
+      "remaining": "전체 미독"
+    },
+    {
+      "source_id": "SRC-0001558",
+      "path": "output/research/redesign_20260925_snapshot_29/tmp/redesign_20260925/candidate_decision_index.md",
+      "kind": "physical_file",
+      "size_bytes": 10248,
+      "sha256": "27075247d8e70729ecf0c8b5e336c521422f85de11dff3d0bb48b74abfb051a9",
+      "remaining": "전체 미독"
+    },
+    {
+      "source_id": "SRC-0001562",
+      "path": "output/research/redesign_20260925_snapshot_29/tmp/redesign_20260925/progress.md",
+      "kind": "physical_file",
+      "size_bytes": 110594,
+      "sha256": "c817e822eb01d3bc5f62a51a4002990697825f1ee756b144e0dd762df1fa6cc2",
+      "remaining": "전체 미독"
+    },
+    {
+      "source_id": "SRC-0061921",
+      "path": "tmp/redesign_20260925/sources/causal_capacity_87/CIB_IJCAI2025.pdf",
+      "kind": "physical_file",
+      "size_bytes": 297818,
+      "sha256": "0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a",
+      "remaining": "7–9쪽·실험표·참고문헌"
+    },
+    {
+      "source_id": "SRC-0061922",
+      "path": "tmp/redesign_20260925/sources/causal_capacity_87/CIB_IJCAI2025.txt",
+      "kind": "physical_file",
+      "size_bytes": 47214,
+      "sha256": "da6e210c122a78cb9c88049f55605900431226be03a275bcc5a45f4921edac6b",
+      "remaining": "전체1128행 의미독해(TXT–PDF 대응만 자동확인)"
+    },
+    {
+      "source_id": "SRC-0061929",
+      "path": "tmp/redesign_20260925/sources/causal_capacity_87/code/CIBMTSF_backbone.py",
+      "kind": "physical_file",
+      "size_bytes": 22168,
+      "sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c",
+      "remaining": "253–585행"
+    },
+    {
+      "source_id": "SRC-0061932",
+      "path": "tmp/redesign_20260925/sources/causal_capacity_87/code/exp_main.py",
+      "kind": "physical_file",
+      "size_bytes": 16942,
+      "sha256": "ea934b368478d7762dc7c5015345852836cf87c44ee9ac0c32aac4acae13d1a7",
+      "remaining": "221–389행"
+    }
+  ]
+}

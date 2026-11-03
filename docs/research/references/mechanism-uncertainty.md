@@ -1,5 +1,7 @@
 # 관계 차이·추정 불확실성 문헌 비교
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [28번 기록](../records/0028-mechanism-uncertainty.md)의 판단을 지정 원문 구간과 연결한다. 2026-09-25의 검토를 2026-10-09에 대조했으며 최신판 전체 조사나 성능 재현이 아니다. [판본·해시·읽기 범위](../evidence/0028-mechanism-uncertainty/manifest.json)와 [주장별 한계](../verification/history-020-primary-review.json)를 함께 확인한다.
 
 ## TabMGP

@@ -1,0 +1,1358 @@
+{
+  "batch_id": "history-142",
+  "success": true,
+  "source_hashes": {
+    "tables": "40837fdeef5632f688d91b526c499af0384a4226058fa94d56845fa1f0e5da5c",
+    "pilot": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+    "design": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+    "capture": "1dba41f61cf950cbe2ab1ffeda15f8fd189d1faacfa0b9768caac31d0815f0d5",
+    "old_code": "4a88e89be8484b9b84aed7356e2ee1c8392df4fe0771536b633fcf6848f44e40",
+    "old_plan": "3826faa9527e0fc98bb121ffeb3274ab045e36f01aca14ff88c0a8bcc4068507",
+    "saved_predictions": "3c384d617dc75f85f8aa4417f2e1d04748a7fc260faef182dad6babb0bbf90b0"
+  },
+  "old_code_plan_result_hashes_match_preserved_capture": true,
+  "hash_capture_is_not_independent_timestamp_proof": true,
+  "baseline_MAE": 0.08902209252119064,
+  "baseline_cell_MAE": [
+    0.07281772792339325,
+    0.08032980561256409,
+    0.08953702449798584,
+    0.0935124009847641,
+    0.053644079715013504,
+    0.074417844414711,
+    0.07577337324619293,
+    0.08127281814813614,
+    0.12201210111379623,
+    0.08760656416416168,
+    0.10804891586303711,
+    0.09191682189702988,
+    0.10768508911132812,
+    0.09550808370113373,
+    0.09569881856441498,
+    0.09457196295261383
+  ],
+  "baseline_macro_cell_MAE": 0.08902208507061005,
+  "baseline_recalculated_difference": 0.0,
+  "inherited_action_grid_values_checked": 16448,
+  "action_grid_max_difference": 0.0,
+  "action_grid_bounds": [
+    {
+      "state": 0,
+      "rows": 50,
+      "low": -0.49874775377354885,
+      "high": 2.4485700130462646,
+      "all_source_lows": {
+        "tabicl_risk": -0.38584864139556885,
+        "empirical_risk": -0.18181288242340088,
+        "knn_risk": -0.49874775377354885,
+        "median_only": -0.16090470552444458,
+        "median_iqr": -0.28053890503654183
+      },
+      "all_source_highs": {
+        "tabicl_risk": 2.4485700130462646,
+        "empirical_risk": 0.16068929433822632,
+        "knn_risk": 2.025782347187515,
+        "median_only": 0.11694496870040894,
+        "median_iqr": 0.3179667989412943
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 1,
+      "rows": 70,
+      "low": -0.6965115070343018,
+      "high": 3.1508679389953613,
+      "all_source_lows": {
+        "tabicl_risk": -0.6965115070343018,
+        "empirical_risk": -0.3927529454231262,
+        "knn_risk": -0.6828198378631312,
+        "median_only": -0.27383697032928467,
+        "median_iqr": -0.35617624974065976
+      },
+      "all_source_highs": {
+        "tabicl_risk": 3.1508679389953613,
+        "empirical_risk": 0.792919397354126,
+        "knn_risk": 0.9384008368780443,
+        "median_only": 0.2875248193740845,
+        "median_iqr": 0.48021061937938364
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 2,
+      "rows": 85,
+      "low": -0.5733596345250921,
+      "high": 1.6160213947296143,
+      "all_source_lows": {
+        "tabicl_risk": -0.39578139781951904,
+        "empirical_risk": -0.29225534200668335,
+        "knn_risk": -0.5733596345250921,
+        "median_only": -0.06635665893554688,
+        "median_iqr": -0.23102327095445735
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.6160213947296143,
+        "empirical_risk": 0.34847044944763184,
+        "knn_risk": 0.9220833251642624,
+        "median_only": 0.22553420066833496,
+        "median_iqr": 0.45725698064464004
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 3,
+      "rows": 59,
+      "low": -0.5523957576631575,
+      "high": 1.3910878896713257,
+      "all_source_lows": {
+        "tabicl_risk": -0.4550490379333496,
+        "empirical_risk": -0.20685982704162598,
+        "knn_risk": -0.5523957576631575,
+        "median_only": -0.14948588609695435,
+        "median_iqr": -0.27556479254434274
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.3910878896713257,
+        "empirical_risk": 0.12319779396057129,
+        "knn_risk": 0.9797566343647564,
+        "median_only": 0.16423988342285156,
+        "median_iqr": 0.4012963346732679
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 4,
+      "rows": 52,
+      "low": -0.6580746173858643,
+      "high": 1.2114216713018193,
+      "all_source_lows": {
+        "tabicl_risk": -0.6580746173858643,
+        "empirical_risk": -0.10172390937805176,
+        "knn_risk": -0.5543081816141457,
+        "median_only": -0.06294006109237671,
+        "median_iqr": -0.2205685025961824
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.8425970077514648,
+        "empirical_risk": 0.9481372833251953,
+        "knn_risk": 1.2114216713018193,
+        "median_only": 0.29908090829849243,
+        "median_iqr": 0.42122708596000374
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 5,
+      "rows": 33,
+      "low": -1.220020439504653,
+      "high": 1.2456026077270508,
+      "all_source_lows": {
+        "tabicl_risk": -0.898999810218811,
+        "empirical_risk": -0.2640089988708496,
+        "knn_risk": -1.220020439504653,
+        "median_only": -0.5159592628479004,
+        "median_iqr": -0.7058913837107577
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.2456026077270508,
+        "empirical_risk": 0.2915639877319336,
+        "knn_risk": 0.8860342123711753,
+        "median_only": 0.468308687210083,
+        "median_iqr": 0.8430328461550927
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 6,
+      "rows": 33,
+      "low": -0.8739785746086476,
+      "high": 1.0999259948730469,
+      "all_source_lows": {
+        "tabicl_risk": -0.5231630206108093,
+        "empirical_risk": -0.3842763900756836,
+        "knn_risk": -0.8739785746086476,
+        "median_only": -0.1916905641555786,
+        "median_iqr": -0.36007644686588025
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.0999259948730469,
+        "empirical_risk": 0.7102866172790527,
+        "knn_risk": 1.0674205214478243,
+        "median_only": 0.22643566131591797,
+        "median_iqr": 0.4861122776371564
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 7,
+      "rows": 16,
+      "low": -0.7846074000347493,
+      "high": 1.2419395446777344,
+      "all_source_lows": {
+        "tabicl_risk": -0.5559773445129395,
+        "empirical_risk": -0.2829294204711914,
+        "knn_risk": -0.7846074000347493,
+        "median_only": -0.23418045043945312,
+        "median_iqr": -0.3942939116973285
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.2419395446777344,
+        "empirical_risk": 0.4045279026031494,
+        "knn_risk": 1.0995447487794148,
+        "median_only": 0.30915260314941406,
+        "median_iqr": 0.6363292516664016
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 8,
+      "rows": 45,
+      "low": -0.32089465255885163,
+      "high": 0.8841190763222149,
+      "all_source_lows": {
+        "tabicl_risk": -0.3012465238571167,
+        "empirical_risk": -0.126315176486969,
+        "knn_risk": -0.32089465255885163,
+        "median_only": -0.10426634550094604,
+        "median_iqr": -0.24039414871570675
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.7098151445388794,
+        "empirical_risk": 0.1146625280380249,
+        "knn_risk": 0.8841190763222149,
+        "median_only": 0.1280631422996521,
+        "median_iqr": 0.2655619831048241
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 9,
+      "rows": 31,
+      "low": -0.49355162749456805,
+      "high": 1.127567780572314,
+      "all_source_lows": {
+        "tabicl_risk": -0.28921258449554443,
+        "empirical_risk": -0.10866627097129822,
+        "knn_risk": -0.49355162749456805,
+        "median_only": -0.0671614408493042,
+        "median_iqr": -0.16752622848333315
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.8653626441955566,
+        "empirical_risk": 0.25523483753204346,
+        "knn_risk": 1.127567780572314,
+        "median_only": 0.2068328857421875,
+        "median_iqr": 0.30114479952080303
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 10,
+      "rows": 33,
+      "low": -0.48214101791381836,
+      "high": 1.018975551738295,
+      "all_source_lows": {
+        "tabicl_risk": -0.48214101791381836,
+        "empirical_risk": -0.17077070474624634,
+        "knn_risk": -0.37420095514881524,
+        "median_only": -0.15820914506912231,
+        "median_iqr": -0.30139249101165655
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.6097241640090942,
+        "empirical_risk": 0.3602566123008728,
+        "knn_risk": 1.018975551738295,
+        "median_only": 0.08759355545043945,
+        "median_iqr": 0.2043534988580748
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 11,
+      "rows": 55,
+      "low": -0.42746789141218794,
+      "high": 1.179214362950288,
+      "all_source_lows": {
+        "tabicl_risk": -0.2075967788696289,
+        "empirical_risk": -0.11006185412406921,
+        "knn_risk": -0.42746789141218794,
+        "median_only": -0.09194058179855347,
+        "median_iqr": -0.12914273674173873
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.7931284308433533,
+        "empirical_risk": 0.5604540109634399,
+        "knn_risk": 1.179214362950288,
+        "median_only": 0.4897250533103943,
+        "median_iqr": 0.5914732314819513
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 12,
+      "rows": 82,
+      "low": -0.9158345460891724,
+      "high": 1.37815260887146,
+      "all_source_lows": {
+        "tabicl_risk": -0.9158345460891724,
+        "empirical_risk": -0.27021437883377075,
+        "knn_risk": -0.788924285145693,
+        "median_only": -0.4930824041366577,
+        "median_iqr": -0.7328098383984825
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.37815260887146,
+        "empirical_risk": 0.7043397426605225,
+        "knn_risk": 1.1598907323308683,
+        "median_only": 0.12573033571243286,
+        "median_iqr": 0.268292388712713
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 13,
+      "rows": 38,
+      "low": -0.8681627955547598,
+      "high": 1.3940238952636719,
+      "all_source_lows": {
+        "tabicl_risk": -0.8573163151741028,
+        "empirical_risk": -0.3986970782279968,
+        "knn_risk": -0.8681627955547598,
+        "median_only": -0.41792571544647217,
+        "median_iqr": -0.63461985976197
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.3940238952636719,
+        "empirical_risk": 0.4144376516342163,
+        "knn_risk": 1.3772628427475917,
+        "median_only": 0.40210115909576416,
+        "median_iqr": 0.6546587213989377
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 14,
+      "rows": 70,
+      "low": -0.6471342282701832,
+      "high": 1.7583574056625366,
+      "all_source_lows": {
+        "tabicl_risk": -0.5470478534698486,
+        "empirical_risk": -0.35059040784835815,
+        "knn_risk": -0.6471342282701832,
+        "median_only": -0.29113662242889404,
+        "median_iqr": -0.44628973432289537
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.7583574056625366,
+        "empirical_risk": 0.3481200933456421,
+        "knn_risk": 0.7829341735950734,
+        "median_only": 0.23594188690185547,
+        "median_iqr": 0.40022259349970857
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 15,
+      "rows": 34,
+      "low": -1.2966327766577401,
+      "high": 1.5303794284199554,
+      "all_source_lows": {
+        "tabicl_risk": -0.6655420064926147,
+        "empirical_risk": -0.3523061275482178,
+        "knn_risk": -1.2966327766577401,
+        "median_only": -0.24005162715911865,
+        "median_iqr": -0.4170427636582722
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.1781089305877686,
+        "empirical_risk": 0.3931863307952881,
+        "knn_risk": 1.5303794284199554,
+        "median_only": 0.19589316844940186,
+        "median_iqr": 0.5873032337011292
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 16,
+      "rows": 35,
+      "low": -0.9301206938518111,
+      "high": 1.0755822658538818,
+      "all_source_lows": {
+        "tabicl_risk": -0.6636311411857605,
+        "empirical_risk": -0.3794785737991333,
+        "knn_risk": -0.9301206938518111,
+        "median_only": -0.2632688283920288,
+        "median_iqr": -0.46580306781354797
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.0755822658538818,
+        "empirical_risk": 0.34019720554351807,
+        "knn_risk": 0.8945748306984123,
+        "median_only": 0.43101656436920166,
+        "median_iqr": 0.6541240723558175
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 17,
+      "rows": 67,
+      "low": -1.1440060138702393,
+      "high": 2.0747722733852454,
+      "all_source_lows": {
+        "tabicl_risk": -1.1440060138702393,
+        "empirical_risk": -1.0466841459274292,
+        "knn_risk": -0.9476711438145748,
+        "median_only": -0.6958882808685303,
+        "median_iqr": -0.8802918999694115
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.5508509874343872,
+        "empirical_risk": 0.9875600934028625,
+        "knn_risk": 2.0747722733852454,
+        "median_only": 0.22230160236358643,
+        "median_iqr": 0.42769334575002504
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 18,
+      "rows": 58,
+      "low": -0.403170657481334,
+      "high": 0.5011463165283203,
+      "all_source_lows": {
+        "tabicl_risk": -0.3655496835708618,
+        "empirical_risk": -0.09970247745513916,
+        "knn_risk": -0.403170657481334,
+        "median_only": -0.11197352409362793,
+        "median_iqr": -0.2363867260688959
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.5011463165283203,
+        "empirical_risk": 0.3636643886566162,
+        "knn_risk": 0.41448066285414276,
+        "median_only": 0.08726963400840759,
+        "median_iqr": 0.17400970847107644
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 19,
+      "rows": 64,
+      "low": -0.4018799662590027,
+      "high": 0.7934393882751465,
+      "all_source_lows": {
+        "tabicl_risk": -0.4018799662590027,
+        "empirical_risk": -0.2547268271446228,
+        "knn_risk": -0.3261242585126744,
+        "median_only": -0.08779722452163696,
+        "median_iqr": -0.24430502569952675
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.7934393882751465,
+        "empirical_risk": 0.22036904096603394,
+        "knn_risk": 0.743297633967658,
+        "median_only": 0.12085944414138794,
+        "median_iqr": 0.2711757948232252
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 20,
+      "rows": 65,
+      "low": -0.35018426179885864,
+      "high": 1.0778160095214844,
+      "all_source_lows": {
+        "tabicl_risk": -0.35018426179885864,
+        "empirical_risk": -0.11546269059181213,
+        "knn_risk": -0.3141497789427291,
+        "median_only": -0.14499658346176147,
+        "median_iqr": -0.23864841738412546
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.0778160095214844,
+        "empirical_risk": 0.08694034814834595,
+        "knn_risk": 0.7598799351573915,
+        "median_only": 0.09130090475082397,
+        "median_iqr": 0.20575739200725113
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 21,
+      "rows": 32,
+      "low": -0.5839672568001488,
+      "high": 1.1703818149344858,
+      "all_source_lows": {
+        "tabicl_risk": -0.5038650035858154,
+        "empirical_risk": -0.32572972774505615,
+        "knn_risk": -0.5839672568001488,
+        "median_only": -0.29372113943099976,
+        "median_iqr": -0.4155277942502221
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.6297715902328491,
+        "empirical_risk": 0.24428468942642212,
+        "knn_risk": 1.1703818149344858,
+        "median_only": 0.07835015654563904,
+        "median_iqr": 0.16041562030481737
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 22,
+      "rows": 40,
+      "low": -0.31662434582100357,
+      "high": 1.5264102936715114,
+      "all_source_lows": {
+        "tabicl_risk": -0.2428508996963501,
+        "empirical_risk": -0.10648852586746216,
+        "knn_risk": -0.31662434582100357,
+        "median_only": -0.07806169986724854,
+        "median_iqr": -0.16111828513847765
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.8040510416030884,
+        "empirical_risk": 0.1172838807106018,
+        "knn_risk": 1.5264102936715114,
+        "median_only": 0.10451555252075195,
+        "median_iqr": 0.20391259082528046
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 23,
+      "rows": 0
+    },
+    {
+      "state": 24,
+      "rows": 0
+    },
+    {
+      "state": 25,
+      "rows": 58,
+      "low": -0.8564529257227284,
+      "high": 1.8904051780700684,
+      "all_source_lows": {
+        "tabicl_risk": -0.7926695346832275,
+        "empirical_risk": -0.331881582736969,
+        "knn_risk": -0.8564529257227284,
+        "median_only": -0.3045005798339844,
+        "median_iqr": -0.836420547130496
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.8904051780700684,
+        "empirical_risk": 0.347217321395874,
+        "knn_risk": 1.6985724000043634,
+        "median_only": 0.19308984279632568,
+        "median_iqr": 0.44475554957870367
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 26,
+      "rows": 39,
+      "low": -0.33647126098011815,
+      "high": 0.6823918223381042,
+      "all_source_lows": {
+        "tabicl_risk": -0.31702089309692383,
+        "empirical_risk": -0.12458926439285278,
+        "knn_risk": -0.33647126098011815,
+        "median_only": -0.08636373281478882,
+        "median_iqr": -0.26078094761500986
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.6823918223381042,
+        "empirical_risk": 0.09632295370101929,
+        "knn_risk": 0.4294008150581239,
+        "median_only": 0.061521172523498535,
+        "median_iqr": 0.11894025312837703
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 27,
+      "rows": 78,
+      "low": -0.6566506621911544,
+      "high": 1.7125946283340454,
+      "all_source_lows": {
+        "tabicl_risk": -0.5527162551879883,
+        "empirical_risk": -0.3485320806503296,
+        "knn_risk": -0.6566506621911544,
+        "median_only": -0.22003501653671265,
+        "median_iqr": -0.3304782648419225
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.7125946283340454,
+        "empirical_risk": 0.28052783012390137,
+        "knn_risk": 0.6728563964828962,
+        "median_only": 0.2544691562652588,
+        "median_iqr": 0.4088217731594115
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 28,
+      "rows": 44,
+      "low": -0.6584875583648682,
+      "high": 2.0963461810304196,
+      "all_source_lows": {
+        "tabicl_risk": -0.6584875583648682,
+        "empirical_risk": -0.3664851188659668,
+        "knn_risk": -0.6462442177210668,
+        "median_only": -0.2910412549972534,
+        "median_iqr": -0.46496161102324496
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.5176676511764526,
+        "empirical_risk": 0.2938697338104248,
+        "knn_risk": 2.0963461810304196,
+        "median_only": 0.27342355251312256,
+        "median_iqr": 0.4862910231878591
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 29,
+      "rows": 39,
+      "low": -1.0544896125793457,
+      "high": 1.5594640970230103,
+      "all_source_lows": {
+        "tabicl_risk": -1.0544896125793457,
+        "empirical_risk": -0.41190385818481445,
+        "knn_risk": -1.0270820964098901,
+        "median_only": -0.513347864151001,
+        "median_iqr": -0.7253404088722644
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.5594640970230103,
+        "empirical_risk": 0.36687028408050537,
+        "knn_risk": 1.0334612283595765,
+        "median_only": 0.3253664970397949,
+        "median_iqr": 0.5294535104618516
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 30,
+      "rows": 57,
+      "low": -0.6961989462837692,
+      "high": 1.1963604443757099,
+      "all_source_lows": {
+        "tabicl_risk": -0.6021699905395508,
+        "empirical_risk": -0.2854357957839966,
+        "knn_risk": -0.6961989462837692,
+        "median_only": -0.24311256408691406,
+        "median_iqr": -0.4145560301551523
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.0000394582748413,
+        "empirical_risk": 0.31975746154785156,
+        "knn_risk": 1.1963604443757099,
+        "median_only": 0.21603548526763916,
+        "median_iqr": 0.39207267483999564
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 31,
+      "rows": 19,
+      "low": -0.3185860514640808,
+      "high": 0.6013332589190135,
+      "all_source_lows": {
+        "tabicl_risk": -0.3185860514640808,
+        "empirical_risk": -0.0791316032409668,
+        "knn_risk": -0.30822787093099696,
+        "median_only": -0.09791445732116699,
+        "median_iqr": -0.23239606480265773
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.5595857501029968,
+        "empirical_risk": 0.09942668676376343,
+        "knn_risk": 0.6013332589190135,
+        "median_only": 0.03922584652900696,
+        "median_iqr": 0.1360877553621928
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 32,
+      "rows": 63,
+      "low": -0.5634560095247372,
+      "high": 1.1458659172058105,
+      "all_source_lows": {
+        "tabicl_risk": -0.49040478467941284,
+        "empirical_risk": -0.26491087675094604,
+        "knn_risk": -0.5634560095247372,
+        "median_only": -0.15552109479904175,
+        "median_iqr": -0.33661972228870835
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.1458659172058105,
+        "empirical_risk": 0.43473708629608154,
+        "knn_risk": 0.7904768673948537,
+        "median_only": 0.2261568307876587,
+        "median_iqr": 0.3171038267224334
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 33,
+      "rows": 25,
+      "low": -0.7766047373067502,
+      "high": 1.1647811989451562,
+      "all_source_lows": {
+        "tabicl_risk": -0.3117715120315552,
+        "empirical_risk": -0.17008423805236816,
+        "knn_risk": -0.7766047373067502,
+        "median_only": -0.054183006286621094,
+        "median_iqr": -0.18044562672459802
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.0626496076583862,
+        "empirical_risk": 0.4609818458557129,
+        "knn_risk": 1.1647811989451562,
+        "median_only": 0.4181790351867676,
+        "median_iqr": 0.669699650402217
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 34,
+      "rows": 0
+    },
+    {
+      "state": 35,
+      "rows": 10,
+      "low": -0.5818464756011963,
+      "high": 0.834495793017306,
+      "all_source_lows": {
+        "tabicl_risk": -0.5818464756011963,
+        "empirical_risk": -0.32087868452072144,
+        "knn_risk": -0.5470673980176911,
+        "median_only": -0.2412804365158081,
+        "median_iqr": -0.4380820583003436
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.630887508392334,
+        "empirical_risk": 0.12302398681640625,
+        "knn_risk": 0.834495793017306,
+        "median_only": 0.1962040662765503,
+        "median_iqr": 0.3665640400361645
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 36,
+      "rows": 77,
+      "low": -0.32532477378845215,
+      "high": 1.0468029975891113,
+      "all_source_lows": {
+        "tabicl_risk": -0.32532477378845215,
+        "empirical_risk": -0.14577901363372803,
+        "knn_risk": -0.32019525500693063,
+        "median_only": -0.14918476343154907,
+        "median_iqr": -0.24290937647338984
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.0468029975891113,
+        "empirical_risk": 0.6795588135719299,
+        "knn_risk": 0.7211294081784034,
+        "median_only": 0.12658989429473877,
+        "median_iqr": 0.25469739400139146
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 37,
+      "rows": 44,
+      "low": -0.6748196508071219,
+      "high": 2.283803939819336,
+      "all_source_lows": {
+        "tabicl_risk": -0.5000503063201904,
+        "empirical_risk": -0.3142550587654114,
+        "knn_risk": -0.6748196508071219,
+        "median_only": -0.23236095905303955,
+        "median_iqr": -0.3800187674603721
+      },
+      "all_source_highs": {
+        "tabicl_risk": 2.283803939819336,
+        "empirical_risk": 0.3217231035232544,
+        "knn_risk": 1.1866747542869205,
+        "median_only": 0.2875524163246155,
+        "median_iqr": 0.5786262080650921
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 38,
+      "rows": 41,
+      "low": -0.7992554794448291,
+      "high": 0.9955339893814199,
+      "all_source_lows": {
+        "tabicl_risk": -0.5221284031867981,
+        "empirical_risk": -0.18605053424835205,
+        "knn_risk": -0.7992554794448291,
+        "median_only": -0.12459325790405273,
+        "median_iqr": -0.3134487774945045
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.947847843170166,
+        "empirical_risk": 0.41507256031036377,
+        "knn_risk": 0.9955339893814199,
+        "median_only": 0.1604377031326294,
+        "median_iqr": 0.34610456089640773
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 39,
+      "rows": 29,
+      "low": -1.0254128951896992,
+      "high": 1.1833395957946777,
+      "all_source_lows": {
+        "tabicl_risk": -0.5323672294616699,
+        "empirical_risk": -0.14430439472198486,
+        "knn_risk": -1.0254128951896992,
+        "median_only": -0.14714956283569336,
+        "median_iqr": -0.33216039894163146
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.1833395957946777,
+        "empirical_risk": 0.31169724464416504,
+        "knn_risk": 1.0192784911902373,
+        "median_only": 0.355743408203125,
+        "median_iqr": 0.6572773068450217
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 40,
+      "rows": 11,
+      "low": -0.6316890335360239,
+      "high": 1.15898047953613,
+      "all_source_lows": {
+        "tabicl_risk": -0.4373478889465332,
+        "empirical_risk": -0.2309151291847229,
+        "knn_risk": -0.6316890335360239,
+        "median_only": -0.218328595161438,
+        "median_iqr": -0.3279315455015316
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.8666988015174866,
+        "empirical_risk": 0.2106778621673584,
+        "knn_risk": 1.15898047953613,
+        "median_only": 0.06656718254089355,
+        "median_iqr": 0.24072563370992972
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 41,
+      "rows": 66,
+      "low": -0.3624974489212036,
+      "high": 0.9089924328086909,
+      "all_source_lows": {
+        "tabicl_risk": -0.3624974489212036,
+        "empirical_risk": -0.09125971794128418,
+        "knn_risk": -0.3538132443908573,
+        "median_only": -0.08367890119552612,
+        "median_iqr": -0.17810938524645428
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.6689538955688477,
+        "empirical_risk": 0.29957515001296997,
+        "knn_risk": 0.9089924328086909,
+        "median_only": 0.19705426692962646,
+        "median_iqr": 0.3521563803502755
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 42,
+      "rows": 64,
+      "low": -0.4807016200335451,
+      "high": 1.8399194063142277,
+      "all_source_lows": {
+        "tabicl_risk": -0.46491336822509766,
+        "empirical_risk": -0.15875244140625,
+        "knn_risk": -0.4807016200335451,
+        "median_only": -0.16423815488815308,
+        "median_iqr": -0.3276323121647502
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.4672315120697021,
+        "empirical_risk": 0.2937256097793579,
+        "knn_risk": 1.8399194063142277,
+        "median_only": 0.12258321046829224,
+        "median_iqr": 0.2947231572727824
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 43,
+      "rows": 66,
+      "low": -0.5830917358398438,
+      "high": 3.090148687362671,
+      "all_source_lows": {
+        "tabicl_risk": -0.5830917358398438,
+        "empirical_risk": -0.1981341540813446,
+        "knn_risk": -0.541277733422065,
+        "median_only": -0.1428389549255371,
+        "median_iqr": -0.31911682528118757
+      },
+      "all_source_highs": {
+        "tabicl_risk": 3.090148687362671,
+        "empirical_risk": 0.27345967292785645,
+        "knn_risk": 1.171492085438365,
+        "median_only": 0.27479952573776245,
+        "median_iqr": 0.514269674933234
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 44,
+      "rows": 41,
+      "low": -1.102412906265998,
+      "high": 0.8674473762512207,
+      "all_source_lows": {
+        "tabicl_risk": -0.9649393558502197,
+        "empirical_risk": -0.5657265186309814,
+        "knn_risk": -1.102412906265998,
+        "median_only": -0.31764376163482666,
+        "median_iqr": -0.6515642626340998
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.8674473762512207,
+        "empirical_risk": 0.43415164947509766,
+        "knn_risk": 0.6988460869752156,
+        "median_only": 0.26148509979248047,
+        "median_iqr": 0.42046864088191543
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 45,
+      "rows": 0
+    },
+    {
+      "state": 46,
+      "rows": 33,
+      "low": -0.46609318256378174,
+      "high": 1.0081081492032191,
+      "all_source_lows": {
+        "tabicl_risk": -0.46609318256378174,
+        "empirical_risk": -0.31151437759399414,
+        "knn_risk": -0.4511057965515195,
+        "median_only": -0.08997869491577148,
+        "median_iqr": -0.313561713048654
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.9158685207366943,
+        "empirical_risk": 0.1476271152496338,
+        "knn_risk": 1.0081081492032191,
+        "median_only": 0.21324336528778076,
+        "median_iqr": 0.3791272797325785
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 47,
+      "rows": 48,
+      "low": -0.6968644282152486,
+      "high": 0.6383090019226074,
+      "all_source_lows": {
+        "tabicl_risk": -0.6266112923622131,
+        "empirical_risk": -0.15485218167304993,
+        "knn_risk": -0.6968644282152486,
+        "median_only": -0.19532757997512817,
+        "median_iqr": -0.42906753637993983
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.6383090019226074,
+        "empirical_risk": 0.16909164190292358,
+        "knn_risk": 0.4103559022263962,
+        "median_only": 0.05243775248527527,
+        "median_iqr": 0.16767628386963246
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 48,
+      "rows": 52,
+      "low": -0.515621002792388,
+      "high": 2.2490997314453125,
+      "all_source_lows": {
+        "tabicl_risk": -0.506580114364624,
+        "empirical_risk": -0.21550416946411133,
+        "knn_risk": -0.515621002792388,
+        "median_only": -0.12210619449615479,
+        "median_iqr": -0.39796519649121187
+      },
+      "all_source_highs": {
+        "tabicl_risk": 2.2490997314453125,
+        "empirical_risk": 0.3073885440826416,
+        "knn_risk": 2.1975507634554705,
+        "median_only": 0.20930111408233643,
+        "median_iqr": 0.4365512733311616
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 49,
+      "rows": 43,
+      "low": -0.20277558111174163,
+      "high": 0.3898311673208723,
+      "all_source_lows": {
+        "tabicl_risk": -0.15022653341293335,
+        "empirical_risk": -0.032357245683670044,
+        "knn_risk": -0.20277558111174163,
+        "median_only": -0.018562018871307373,
+        "median_iqr": -0.09223843106003694
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.23690688610076904,
+        "empirical_risk": 0.2450818419456482,
+        "knn_risk": 0.3898311673208723,
+        "median_only": 0.10586592555046082,
+        "median_iqr": 0.16229962540227313
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 50,
+      "rows": 28,
+      "low": -0.9740549115709556,
+      "high": 1.1651895434357393,
+      "all_source_lows": {
+        "tabicl_risk": -0.7236039638519287,
+        "empirical_risk": -0.37292158603668213,
+        "knn_risk": -0.9740549115709556,
+        "median_only": -0.42314469814300537,
+        "median_iqr": -0.5840430102607077
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.8665845394134521,
+        "empirical_risk": 0.4259089231491089,
+        "knn_risk": 1.1651895434357393,
+        "median_only": 0.2221444845199585,
+        "median_iqr": 0.33994825034178505
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 51,
+      "rows": 29,
+      "low": -0.653952910918598,
+      "high": 1.2235364821530124,
+      "all_source_lows": {
+        "tabicl_risk": -0.5662955045700073,
+        "empirical_risk": -0.3359886407852173,
+        "knn_risk": -0.653952910918598,
+        "median_only": -0.22543329000473022,
+        "median_iqr": -0.4067669205887373
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.6943378448486328,
+        "empirical_risk": 0.48189252614974976,
+        "knn_risk": 1.2235364821530124,
+        "median_only": 0.07209700345993042,
+        "median_iqr": 0.2141525297201881
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 52,
+      "rows": 51,
+      "low": -0.6511105298995972,
+      "high": 1.368888258934021,
+      "all_source_lows": {
+        "tabicl_risk": -0.6511105298995972,
+        "empirical_risk": -0.30256152153015137,
+        "knn_risk": -0.5760192665480828,
+        "median_only": -0.3810591697692871,
+        "median_iqr": -0.5612453749013502
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.368888258934021,
+        "empirical_risk": 0.524808406829834,
+        "knn_risk": 0.9047117413476449,
+        "median_only": 0.06563460826873779,
+        "median_iqr": 0.2034793223521506
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 53,
+      "rows": 51,
+      "low": -0.6762683488601862,
+      "high": 1.8236522674560547,
+      "all_source_lows": {
+        "tabicl_risk": -0.42107462882995605,
+        "empirical_risk": -0.2752455472946167,
+        "knn_risk": -0.6762683488601862,
+        "median_only": -0.18403267860412598,
+        "median_iqr": -0.34247172340866205
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.8236522674560547,
+        "empirical_risk": 0.7918988466262817,
+        "knn_risk": 1.8204919159874415,
+        "median_only": 0.13608276844024658,
+        "median_iqr": 0.3476459083631057
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 54,
+      "rows": 36,
+      "low": -0.8096282560695973,
+      "high": 1.0136165845301712,
+      "all_source_lows": {
+        "tabicl_risk": -0.6664856672286987,
+        "empirical_risk": -0.25701260566711426,
+        "knn_risk": -0.8096282560695973,
+        "median_only": -0.29818058013916016,
+        "median_iqr": -0.4832583656606748
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.7377653121948242,
+        "empirical_risk": 0.2238631248474121,
+        "knn_risk": 1.0136165845301712,
+        "median_only": 0.08734679222106934,
+        "median_iqr": 0.23857999217602632
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 55,
+      "rows": 0
+    },
+    {
+      "state": 56,
+      "rows": 32,
+      "low": -0.27686316906943803,
+      "high": 0.7264228839744891,
+      "all_source_lows": {
+        "tabicl_risk": -0.2538660764694214,
+        "empirical_risk": -0.11294418573379517,
+        "knn_risk": -0.27686316906943803,
+        "median_only": -0.16872793436050415,
+        "median_iqr": -0.2222991622695627
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.41696274280548096,
+        "empirical_risk": 0.2631351351737976,
+        "knn_risk": 0.7264228839744891,
+        "median_only": 0.026430070400238037,
+        "median_iqr": 0.09819564431212668
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 57,
+      "rows": 41,
+      "low": -1.1198824664881064,
+      "high": 1.0511977672576904,
+      "all_source_lows": {
+        "tabicl_risk": -0.9957353472709656,
+        "empirical_risk": -0.7997874617576599,
+        "knn_risk": -1.1198824664881064,
+        "median_only": -0.4817866086959839,
+        "median_iqr": -0.7061154851617739
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.0511977672576904,
+        "empirical_risk": 0.5179043412208557,
+        "knn_risk": 0.9707556708838583,
+        "median_only": 0.5714051723480225,
+        "median_iqr": 0.7198924408402554
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 58,
+      "rows": 50,
+      "low": -0.7701867818832397,
+      "high": 1.2389905452728271,
+      "all_source_lows": {
+        "tabicl_risk": -0.7701867818832397,
+        "empirical_risk": -0.32028281688690186,
+        "knn_risk": -0.7479151907817337,
+        "median_only": -0.345365047454834,
+        "median_iqr": -0.5664554677268332
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.2389905452728271,
+        "empirical_risk": 0.22270095348358154,
+        "knn_risk": 0.7449844345565912,
+        "median_only": 0.11866140365600586,
+        "median_iqr": 0.25916678776112634
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 59,
+      "rows": 48,
+      "low": -0.9828273057937622,
+      "high": 1.407387614250183,
+      "all_source_lows": {
+        "tabicl_risk": -0.9828273057937622,
+        "empirical_risk": -0.34246355295181274,
+        "knn_risk": -0.684215326872907,
+        "median_only": -0.19435077905654907,
+        "median_iqr": -0.47937625507975734
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.407387614250183,
+        "empirical_risk": 0.34349071979522705,
+        "knn_risk": 1.2239016654879538,
+        "median_only": 0.1924893856048584,
+        "median_iqr": 0.5754746420438899
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 60,
+      "rows": 33,
+      "low": -0.647925542653069,
+      "high": 1.1490395069122314,
+      "all_source_lows": {
+        "tabicl_risk": -0.4870328903198242,
+        "empirical_risk": -0.21244114637374878,
+        "knn_risk": -0.647925542653069,
+        "median_only": -0.06269258260726929,
+        "median_iqr": -0.3548399399417315
+      },
+      "all_source_highs": {
+        "tabicl_risk": 1.1490395069122314,
+        "empirical_risk": 0.6023989915847778,
+        "knn_risk": 0.8333240197610479,
+        "median_only": 0.07655841112136841,
+        "median_iqr": 0.3533804606097613
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 61,
+      "rows": 0
+    },
+    {
+      "state": 62,
+      "rows": 63,
+      "low": -0.5996524691581726,
+      "high": 0.8632018529167469,
+      "all_source_lows": {
+        "tabicl_risk": -0.5996524691581726,
+        "empirical_risk": -0.3402819037437439,
+        "knn_risk": -0.5380169401566188,
+        "median_only": -0.28061920404434204,
+        "median_iqr": -0.4762303149977396
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.7681918740272522,
+        "empirical_risk": 0.3142714500427246,
+        "knn_risk": 0.8632018529167469,
+        "median_only": 0.1948622465133667,
+        "median_iqr": 0.3305072733598162
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    },
+    {
+      "state": 63,
+      "rows": 32,
+      "low": -0.7498264312744141,
+      "high": 0.9554731651794075,
+      "all_source_lows": {
+        "tabicl_risk": -0.7498264312744141,
+        "empirical_risk": -0.24582886695861816,
+        "knn_risk": -0.6028571170429851,
+        "median_only": -0.24319911003112793,
+        "median_iqr": -0.3940777501394582
+      },
+      "all_source_highs": {
+        "tabicl_risk": 0.9433820247650146,
+        "empirical_risk": 0.3931288719177246,
+        "knn_risk": 0.9554731651794075,
+        "median_only": 0.27937448024749756,
+        "median_iqr": 0.42434681570807165
+      },
+      "empirical_strict_lower_bound": false,
+      "empirical_strict_upper_bound": false
+    }
+  ],
+  "states_with_empirical_strict_extrema": 0,
+  "empirical_strict_lower_states": [],
+  "empirical_strict_upper_states": [],
+  "prior_balanced_pair_scores_per_rule": 148,
+  "current_unrestricted_pair_scores_per_rule": 670,
+  "curve_targets_are_not_the_same_as_action_candidate_label_access": true,
+  "query_labels_672_839_read_for_saved_grid_audit": true,
+  "future_840_1007_not_used_to_change_grid_or_partitions": true,
+  "alternative_label_removed_grid_not_run": true,
+  "new_partition_selection_not_run": true,
+  "all_design_values_reviewed": false,
+  "object_dates_member_not_loaded": true,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "models_instantiated": false,
+  "new_model_runs": 0,
+  "coverage_increment_applied": false,
+  "checked_at_utc": "2026-10-14T07:00:38.253153+00:00"
+}

@@ -1,5 +1,7 @@
 # DGCformer의 channel 군집과 원81 판단 검토
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [원81 방향 검토](0090-input-partition-decision.md) · [출처와 읽은 범위](../sources/history-091.md) · [검수](../verification/history-091.md)
 
 DGCformer는 관련 channel을 묶고 같은 그룹 안에서 정보를 교환하도록 예측기를 구성한 선행연구다. 따라서 원81에서 검토한 공동 입력·다중 출력 후보는 기존 분할 방식과 무엇이 달라지는지 설명해야 한다. 다만 논문이 clustering과 forecasting을 구분해 설명한다는 사실만으로 군집 선택이 예측 성능과 완전히 독립적이라고 단정할 수는 없다. 손실의 결합, K 선택 절차, 성능표의 집계에 남은 확인사항을 함께 보존한다.

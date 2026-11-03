@@ -1,0 +1,120 @@
+from pathlib import Path
+import json, hashlib, math, shutil
+from datetime import datetime, timezone
+
+ROOT=Path(__file__).resolve().parents[2]
+BASE=ROOT/'tmp/redesign_20260925'
+SOURCE=BASE/'sources/learning_unit_99'
+DEST=ROOT/'output/research/redesign_20260925_snapshot_41'
+def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
+def read(path): return json.loads(path.read_text(encoding='utf-8'))
+def save(path,obj): path.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+ledger=BASE/'cumulative_execution_budget.json'
+word=ROOT/'output/docx/TabICLv2_재설계_근거정리와_남은핵심판단_중간검토.docx'
+assert sha(ledger)=='807600a7666a6d6912c8db3014a033b5c3c7643527a02fc726da14cb8664d34f'
+assert sha(word)=='4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686'
+assert not DEST.exists()
+prior=read(BASE/'98_archive_verification.json')
+assert prior['verified']
+manifest=read(SOURCE/'manifest.json')
+assert sum(x['pages'] for x in manifest['pdfs'])==61
+for x in manifest['pdfs']:
+    p=ROOT/x['file']
+    assert sha(p)==x['sha256'] and p.stat().st_size==x['bytes']
+    if x['prior_source']:
+        assert sha(ROOT/x['prior_source'])==sha(p)
+renders=read(SOURCE/'render_manifest.json')
+assert len(renders)==6 and all(Path(x['png']).exists() for x in renders)
+a=read(BASE/'99_workload_arithmetic.json')
+for x in a['GRU_capacity']:
+    D,K=x['flows'],x['clusters']
+    n,r=divmod(D,K)
+    sizes=[n+1]*r+[n]*(K-r)
+    # Independently expand each layer tensor size, without instantiating a model.
+    expanded=sum(3*200*d+3*200*200+2*3*200+200*d+d for d in sizes)
+    assert expanded==x['conditional_parameter_count']
+for x in a['scalar_RCTL_workload']:
+    N=x['cells']
+    assert x['RCTL_rows_per_epoch']==672*N
+    assert x['Tab_quantile_cache_bytes_float32']==129*4*168*N
+    for b in x['balanced_RCTL']:
+        K=b['K'];n,r=divmod(N,K)
+        expected=r*math.ceil((n+1)*672/256)+(K-r)*math.ceil(n*672/256)
+        assert expected==b['updates_per_epoch']
+serving=read(BASE/'results/serving_cost_95/summary.json')
+def dictionaries(obj):
+    if isinstance(obj,dict):
+        yield obj
+        for v in obj.values(): yield from dictionaries(v)
+    elif isinstance(obj,list):
+        for v in obj: yield from dictionaries(v)
+counts=[x for x in dictionaries(serving) if 'parameters' in x and 'state_tensor_bytes' in x]
+assert len(counts)==9
+assert all(x['parameters']==174433 and x['state_tensor_bytes']==701412 for x in counts)
+refs=[BASE/'rctl_torch.py',BASE/'train_rctl_pilot.py',BASE/'results/rctl_pilot/frozen_settings.json',
+      BASE/'results/serving_cost_95/summary.json',BASE/'05_literature_decision_audit.md']
+scope={
+ 'date':'2026-09-26','previous_goal_turn_classification':'progress',
+ 'previous_evidence':'98_archive_verification.json and snapshot40',
+ 'search_queries':[
+  'forecasting clustering "negative transfer" "model selection" foundation model 2026',
+  '"clustering" "optimal prediction" "pooling" heterogeneous time series cost',
+  '"TabICL" clustering regression transfer learning 2026',
+  'forecasting "clustering" "cost" "pooling" model selection statistical efficiency',
+  '"network traffic" "clustering" "model" "training time" prediction 2026',
+  '"multi-task" "clustering" "risk" "heteroskedastic"',
+  '"On the Role of Time Series Clustering in Traffic Matrix Prediction"',
+  '"traffic matrix prediction" "clustering" 2026',
+  '"traffic matrix" "clustering" "foundation"',
+  '"Martha Cash" "clustering" github',
+  '"Validation-Driven Clustering" "github" "Ma"'],
+ 'primary_sources':[
+  {'version':'2509.15072v1','url':'https://arxiv.org/html/2509.15072v1',
+   'read_scope':['Sections III-VI, selected method/result text','dendrogram K selection','GRU width 30','MLU ratio definition'],
+   'visual_pages':[4],'metadata_status':'arXiv says accepted ICMLA 2025; official conference program also lists title',
+   'unverified':['author code','exact head and parameter count','reproduction of accuracy/MLU']},
+  {'version':'2604.26081v1','url':'https://arxiv.org/html/2604.26081v1',
+   'read_scope':['Sections III-VI','representations and linkage','Tables I-II','matched K for ARI/NMI','GRU width 200'],
+   'visual_pages':[6,8],'metadata_status':'arXiv says submitted to IEEE; not treated as accepted',
+   'unverified':['author code','exact output head','which split drives Kneedle curves','end-to-end timing scope']},
+  {'version':'2604.13748v1','url':'https://arxiv.org/html/2604.13748v1',
+   'read_scope':['Section 2.2.1','Equations 1-2,9-12','Sections 2.5,5.1-5.4 unit definitions','Algorithm 1'],
+   'visual_pages':[6,19,20],'pdf_reused':manifest['pdfs'][2]['prior_source'],
+   'unverified':['author code','all numerical tables','full proof/implementation audit']},
+  {'url':'https://docs.pytorch.org/docs/2.14/generated/torch.nn.modules.rnn.GRU.html',
+   'read_scope':['Variables: weight_ih, weight_hh, bias_ih, bias_hh shapes'],
+   'use':'algebraic count for explicitly assumed architecture, not authors measured checkpoint'}],
+ 'access_notes':['Initial urllib request returned HTTP406 before any PDF or arithmetic output; retry script with PDF Accept header and unversioned fallback completed. Exact successful transport URL was not separately logged; canonical version URLs and PDF hashes are preserved.',
+                 'All three arXiv abstract histories showed only v1 at inspection.',
+                 'No author code repository verified; renderer GitHub links excluded.',
+                 'Broad search results were noisy and do not establish novelty.'],
+ 'existing_evidence_references':[{'path':str(p.relative_to(ROOT)),'sha256':sha(p)} for p in refs],
+ 'new_model_fit_predict_gradient':0,'new_traffic_statistics':0,
+ 'arithmetic_verified':True,'ledger_unchanged':True,'old_word_unchanged':True,
+ 'reading_scope_limit':'61 PDF pages present, selected sections read, six pages visually checked; no full-paper reproduction',
+ 'decision':'Separate scalar row pooling, joint-vector partitioning and daily-MTS clustering; retain simple global/naive baselines; no final candidate selected.'}
+save(BASE/'99_source_reading_scope.json',scope)
+
+files=[BASE/'99_learning_unit_and_cost_plan.md',BASE/'99_learning_unit_and_cost_findings.md',
+       BASE/'99_workload_arithmetic.json',BASE/'99_source_reading_scope.json',
+       BASE/'read_learning_unit_99.py',BASE/'render_learning_unit_99.py',Path(__file__),
+       BASE/'candidate_decision_index.md',BASE/'progress.md',ledger,
+       ROOT/'output/research/TabICLv2_재설계_선행연구의_학습단위와_비용_재검토.md']
+files.extend(sorted(p for p in SOURCE.rglob('*') if p.is_file()))
+entries=[]
+for p in files:
+    dest=DEST/p.relative_to(ROOT)
+    dest.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(p,dest)
+    assert sha(p)==sha(dest)
+    if p.suffix=='.json': read(dest)
+    entries.append({'path':str(p.relative_to(ROOT)),'sha256':sha(p),'bytes':p.stat().st_size})
+save(DEST/'manifest.json',{'files':entries,'verified_at_utc':datetime.now(timezone.utc).isoformat(),
+                           'source_scope':'99 incremental snapshot; previous snapshots preserved'})
+result={'snapshot':str(DEST),'files':len(entries),'bytes':sum(x['bytes'] for x in entries),
+        'verified':True,'new_model_execution':False,'new_traffic_statistics':False,
+        'arithmetic_rows':len(a['GRU_capacity'])+sum(len(x['balanced_RCTL']) for x in a['scalar_RCTL_workload']),
+        'ledger_sha256':sha(ledger),'prior_word_sha256':sha(word)}
+save(BASE/'99_archive_verification.json',result)
+save(DEST/'verification.json',result)
+print(json.dumps(result,ensure_ascii=False))

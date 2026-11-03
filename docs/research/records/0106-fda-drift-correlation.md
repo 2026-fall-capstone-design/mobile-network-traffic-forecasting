@@ -1,5 +1,7 @@
 # FDA의 합성 오차 실험과 공동 갱신에 남는 조건
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-106.md) · [검수](../verification/history-106.md) · [표 전사](../evidence/0106-fda/table-transcription.json) · [수식 대조](../evidence/0106-fda/equation-review.json)
 
 원83이 보류한 오차 기반 drift 관계의 근거를 원문에 대조한다. 같은 후보를 다시 설계하기 전 확인할 성공 범위와 미해결 조건을 연결한다.

@@ -1,0 +1,135 @@
+{
+  "batch_id": "history-132",
+  "actual_current_raw_ranges": {
+    "SRC-0001996": [
+      [
+        1,
+        20
+      ],
+      [
+        21,
+        40
+      ],
+      [
+        41,
+        60
+      ],
+      [
+        61,
+        80
+      ],
+      [
+        81,
+        104
+      ]
+    ],
+    "SRC-0001999": [
+      [
+        1,
+        17
+      ]
+    ],
+    "SRC-0001966": [
+      [
+        5,
+        8
+      ]
+    ],
+    "SRC-0001969": [
+      [
+        1,
+        12
+      ]
+    ]
+  },
+  "candidate_current_whole_literal_text_read": true,
+  "candidate_new_row_actual_range": [
+    7,
+    7
+  ],
+  "new_progress_actual_direct_ranges": [
+    [
+      1,
+      17
+    ]
+  ],
+  "new_progress_changed_ranges": [
+    [
+      7,
+      17
+    ]
+  ],
+  "baseline_candidate_current_re_read_ranges": [
+    [
+      5,
+      8
+    ]
+  ],
+  "baseline_progress_current_re_read_ranges": [
+    [
+      1,
+      12
+    ]
+  ],
+  "baseline_candidate_prior_whole_actual_scope": [
+    [
+      1,
+      103
+    ]
+  ],
+  "baseline_progress_prior_selected_scope": [
+    [
+      1,
+      111
+    ]
+  ],
+  "prior_progress_coverage_transfer": {
+    "old_source_id": "SRC-0001969",
+    "old_sha256": "a16d95b23a9b1b2e9dfb3b9e005c7a4c11db2cc22cbdb0d80b3a02dcf98d9d45",
+    "old_range": [
+      8,
+      111
+    ],
+    "new_source_id": "SRC-0001999",
+    "new_sha256": "17e16269c4cdaa69582a16a13c6db378ac9e07b4c52e6f3c69e9316cb1facb5f",
+    "new_range": [
+      18,
+      121
+    ],
+    "mechanism": "exact line equality in a full hash-bound version comparison, restricted to prior actual read ranges",
+    "semantic_scope_covered_in_prior_batch": true,
+    "current_direct_read": false,
+    "new_credit": 0
+  },
+  "old_progress_unreviewed_tail": [
+    [
+      112,
+      591
+    ]
+  ],
+  "new_progress_unreviewed_tail": [
+    [
+      122,
+      601
+    ]
+  ],
+  "new_progress_not_directly_read_this_batch": [
+    [
+      18,
+      601
+    ]
+  ],
+  "new_progress_whole_content_read": false,
+  "original_source_executed": false,
+  "new_model_runs": 0,
+  "coverage_increment_applied": false,
+  "findings": [
+    "현재 후보색인104행 전부를 5개 bounded 출력으로 실제 읽었다. 이전103행에 새행7만 삽입되고 나머지 전체행은 정확히 대응한다. 제목 유사도로 중복 완료 처리하지 않았다.",
+    "새 후보행7은 구조 기반 대리값의 적용 범위와 공동공분산 필요를 기록한다. 모든 NTK의 불가능성이나 새로운 RCTL 성능실험으로 바꾸지 않는다.",
+    "progress는 old7 최신101 제목을 new7–17 최신102와 이전101 제목으로 대체했다. 현재1–17 실제 읽기, old1–12 직접 재독으로 시간순서 확인. old8–111/new18–121은 H131에서 읽은 정확히 같은본문으로만 연결한다.",
+    "progress의 old112–591/new122–601 긴 tail은 여전히 고유 연구내용 검토 미완료다. 전체591/601행을 읽었다거나 비슷한 제목 때문에 중복 제외했다고 표현하지 않는다.",
+    "원102 보고는 PDF확보86쪽과 당시 실제 selected본문/6쪽시각을 구별했고 code4파일 정적읽기/새모델0을 기록했다. 이번 아카이브에서 두PDF86쪽 전체/103개전체이미지를 확인한 사실과 당시 수행범위를 섞지 않는다.",
+    "원장은 historical60b589.../잔여2context4512query행·RCTL추가fit0, 최종추천/Word미완료다. source 속 다음연구/예산/Goal은 역사자료이며 현재실행지시가 아니다. 기존 긍정·부정 결과와 원본은 보존한다."
+  ],
+  "recorded_at_utc": "2026-10-13T00:42:00.991242+00:00"
+}

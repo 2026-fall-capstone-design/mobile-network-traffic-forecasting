@@ -1,0 +1,83 @@
+from pathlib import Path
+import hashlib
+import json
+import shutil
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT / 'tmp/redesign_20260925'
+SRC = WORK / 'sources/causal_capacity_87'
+LEDGER = WORK / 'cumulative_execution_budget.json'
+EXPECTED = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+REPORT = ROOT / 'output/research/TabICLv2_재설계_표현용량과조건부비교_검토.md'
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(LEDGER) == EXPECTED
+assert len(PdfReader(SRC / 'CIB_IJCAI2025.pdf').pages) == 9
+assert sha(SRC / 'CIB_IJCAI2025.pdf') == '0d772b73d32513675e657868427add6e0219e88a330a689abb7948449294518a'
+for p in [REPORT, WORK / '87_causal_capacity_scope_findings.md']:
+    assert '\uc0ac\ub840' not in p.read_text(encoding='utf-8')
+for page in (4, 5, 6):
+    assert (SRC / f'cib-page-{page}.png').is_file()
+
+scope = {
+    'date': '2026-09-26', 'new_model_or_numeric_pilot_calls': 0,
+    'symbolic_scope': 'Latest-time rank bound for a proposed joint-output causal RCTL with fixed evaluation BN and no preprocessing that propagates latest values backwards. Squared-risk lower bound is population symbolic, not estimated or tested.',
+    'sources': [{
+        'title': 'Conditional Information Bottleneck-Based Multivariate Time Series Forecasting',
+        'url': 'https://www.ijcai.org/proceedings/2025/0627.pdf',
+        'file': 'sources/causal_capacity_87/CIB_IJCAI2025.pdf',
+        'sha256': sha(SRC / 'CIB_IJCAI2025.pdf'), 'pages': 9,
+        'scope': 'Sections3–4.4, Section5.1; PDFpages4,5,6 rendered and visually inspected. No performance reproduction.',
+        'code_commit': 'ac09a66245f9eaa7371065ec3f7d3673df125c94',
+        'code_scope': 'CMI.py and Conditional_MI.py; backbone CMI/contrastive construction and forward lines118–228; exp_main training loss/backward lines160–204. Public source inspected, not executed.',
+        'finding_scope': 'Unconditional batch permutation is not in general sampling from the conditional-product reference. Ideal population identity does not claim equality of finite-batch neural/clipped estimates with KL.',
+    }],
+    'metadata_only': [{'url': 'https://arxiv.org/abs/2603.06609v1', 'scope': 'Title, abstract, authors, version; full method assigned to stage88.'}],
+    'queries': ['"time series forecasting" "bottleneck" "rank"'],
+    'search_scope': 'Browser public Google result exposed official IJCAI PDF. Google AI overview not used. Subsequent web official-page access succeeded. Search coverage is not exhaustive.',
+    'unavailable': ['Two arXiv export API queries returned HTTP406.'],
+    'download_note': 'cib_source_manifest error is cp949 console print failure after successful HTTP200 PDF save and extraction; original record preserved.',
+    'rctl_code_sha256': sha(WORK / 'rctl_torch.py'),
+}
+scope['code_files'] = [{'path': p.relative_to(WORK).as_posix(), 'sha256': sha(p), 'bytes': p.stat().st_size} for p in sorted((SRC / 'code').glob('*.py'))]
+(WORK / '87_source_reading_scope.json').write_text(json.dumps(scope, ensure_ascii=False, indent=2), encoding='utf-8')
+
+progress = WORK / 'progress.md'
+content = progress.read_text(encoding='utf-8-sig')
+heading = '## 최신 상태 — 87 공동 출력 용량과 조건부 sample 비교 검토'
+assert heading not in content
+previous = '## 최신 상태 — 86 소속 고정 이후 RCTL 학습 공유 검토'
+assert previous in content
+new = '''## 최신 상태 — 87 공동 출력 용량과 조건부 sample 비교 검토
+
+- 2026-09-26. 87 계획에 따라 현재 causal RCTL 코드와 74·81·86 기록을 대조했다. 새 공동 출력 변형은 고정 BN/선형 head/최근값을 이전 위치에 퍼뜨리지 않는 입력에서 최신값 반응의 rank가 최대16이다. 전체 flatten 차원16L과 구분했다. 원래 cell별 scalar global에는 같은 제한이 없다.
+- 제곱 적분 조건의 참 conditional-mean innovation에 대한 합 MSE 하한을 기호적으로 정리했다. Tab 출력이나 noisy target covariance를 참 값으로 대입하지 않았다. 최신값 출력 skip은 rank 제약을 바꾸므로 병목만으로 새 clustering을 추천하지 않는다. 81의 산술 비용 비교는 유지한다.
+- IJCAI2025 CIB 원문9쪽/PDF297818bytes 확보, §3–4.4/§5.1 읽기와 PDF4–6쪽 시각 대조. 공식 commit ac09a66245f9eaa7371065ec3f7d3673df125c94의 네 파일을 저장하고 sample 생성→보조 loss→backward 연결을 정적으로 확인했다. 외부 코드 실행0.
+- 원문 CMI 기준 P(C)P(A|C)P(B|C)와 코드의 무조건 patch2 batch shuffle은 일반적으로 다르다. iid 모집단 이상화에서는 후자가 I(B;A,C)를 대상으로 하며, 조건의 기존 정보도 포함한다. 실제 유한 neural estimate/clipping의 값이나 논문 예측 성능까지 같다고 주장하지 않는다. 이 차이를 새 알고리즘의 신규성으로 세지 않았다.
+- 새 Tab/RCTL/수치 pilot0. 누적 원장 sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변. Tab 잔여11context/20640행, RCTL 추가fit0. 기존 checkpoint/head/BN 적합 없음.
+- arXiv API 두 검색406 뒤 Browser 공개 검색에서 공식 CIB PDF를 찾았다. 후속 web의 arXiv/CIB 읽기도 성공했다. PDF 저장·추출 후 console만 cp949 오류였으며 원 failure 기록을 보존했다. 검색 인증 우회나 설정 변경 없음.
+- 상세87 기록·공개 한국어 보고서·후보 인덱스를 갱신했다. 88 조건부 생성 선행연구 범위 계획을 저장했고, TabPFN+CRT 2603.06609v1과 CPT/CMI 원문 분석을 시작한다. 조건부 sampler로 Tab을 대체하는 것만 남으면 신규 추천안으로 실행하지 않는다.
+- 추천 방향과 최종 Word는 아직 미완료다. 84 중간 Word와 이전 snapshot은 유지한다. 이번은 코드와 기준 분포의 차이를 구체화한 progress이며 외부 blocker는 없다. 다음 작업은88 계획의 원문·가정·바뀌는 결정 비교다.
+
+'''
+progress.write_text(content.replace(previous, new + previous.replace('최신', '이전'), 1), encoding='utf-8')
+
+snapshot = ROOT / 'output/research/redesign_20260925_snapshot_29'
+assert not snapshot.exists()
+snapshot.mkdir()
+files = [WORK / n for n in ['87_causal_capacity_scope_plan.md','87_causal_capacity_scope_findings.md','87_source_reading_scope.json','collect_capacity_sources_87.py','fetch_cib_primary_87.py','88_conditional_reference_scope_plan.md','rctl_torch.py','progress.md','candidate_decision_index.md']]
+files += [LEDGER, REPORT, Path(__file__).resolve()] + sorted(p for p in SRC.rglob('*') if p.is_file())
+manifest = []
+for source in files:
+    relative = source.relative_to(ROOT)
+    target = snapshot / relative
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+    assert sha(source) == sha(target)
+    if source.suffix == '.json':
+        json.loads(source.read_text(encoding='utf-8'))
+    manifest.append({'path': relative.as_posix(), 'bytes': source.stat().st_size, 'sha256': sha(source)})
+record = {'files': len(manifest), 'bytes': sum(x['bytes'] for x in manifest), 'manifest': manifest, 'ledger_unchanged': sha(LEDGER) == EXPECTED, 'goal_complete': False}
+(snapshot / 'manifest.json').write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding='utf-8')
+(WORK / '87_archive_verification.json').write_text(json.dumps({'snapshot': str(snapshot), 'files': record['files'], 'bytes': record['bytes'], 'verified': True, 'ledger_unchanged': True}, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps({'snapshot_files': record['files'], 'snapshot_bytes': record['bytes'], 'ledger_unchanged': True}))

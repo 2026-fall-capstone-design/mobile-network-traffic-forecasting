@@ -1,5 +1,7 @@
 # 53·55 — TabICL imputation의 범위와 다시 실험하기 전 확인할 조건
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 53은 적은 cell의 관측으로 나머지 이력을 복원하는 방법이 기존 sensor selection·imputation과 어떻게 다른지를 물었다. 55는 공식 `TabICLUnsupervised.impute()`가 이미 조건부 예측을 반복하는 기능을 제공하므로, 그 API를 사용하는 것만으로 새 기여가 되지 않는다고 판단했다. 이 기록은 저장한 공식 예제와 당시 코드를 대조한다. **API의 존재, 작은 기능 예제, 실제 54 실험, 최종 RCTL 이득은 각각 다른 근거다.**
 
 [53 계획](../evidence/0053-moghadas-thesis/originals/SRC-0021782.md.txt) · [55 당시 판단](../evidence/0052-0054-partial-observation/originals/SRC-0021824.md.txt) · [54의 저장 결과 검수](0052-0054-partial-observation.md) · [출처와 읽은 범위](../sources/history-039.md) · [검수](../verification/history-039.md).

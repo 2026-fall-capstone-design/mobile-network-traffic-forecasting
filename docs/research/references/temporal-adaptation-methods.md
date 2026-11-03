@@ -1,5 +1,7 @@
 # 기록17의 세 적응 방법 비교
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [당시 판단](../records/0017-adaptation-literature.md)과 [출처 manifest](../evidence/0017-literature/manifest.json)를 연결한다. 아래는 지정 방법의 비교다. 논문 전체의 옳고 그름이나 성능 순위를 판정한 문서가 아니다. DOI·날짜는 [공식 판본 metadata](../sources/history-011.md)에 따른다.
 
 ## MGSTC — 손실 감시와 가중치 갱신

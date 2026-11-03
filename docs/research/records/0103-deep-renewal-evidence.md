@@ -1,5 +1,7 @@
 # Deep Renewal의 간격·크기 공유 학습과 성능 근거 대조
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-103.md) · [검수](../verification/history-103.md) · [표](../evidence/0103-deep-renewal/table-review.json) · [수식](../evidence/0103-deep-renewal/equation-review.json)
 
 **핵심:** 발생 간격과 양의 크기를 모델링하고 여러 품목의 LSTM을 공유하는 선행 구조는 확인된다. 성능은 자료·지표마다 다르며, 현재 cell 소속 결정의 개선을 입증하지 않는다. 본문·표의 개수와 성능 해석, 부록의 시간 인덱스와 RMSSE 식에는 재사용 전에 확인할 차이가 남는다.

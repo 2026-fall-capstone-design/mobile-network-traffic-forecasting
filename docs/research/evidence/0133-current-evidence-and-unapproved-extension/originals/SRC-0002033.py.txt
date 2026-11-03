@@ -1,0 +1,134 @@
+from pathlib import Path
+import hashlib, json, shutil
+from urllib.parse import unquote, urlparse
+from zipfile import ZipFile
+from lxml import etree
+from pypdf import PdfReader
+from docx import Document
+
+B = Path(__file__).resolve().parent
+ROOT = B.parent.parent
+NAME = 'TabICLv2_연구재설계_현재근거와_미완료조건_검토'
+DOCX = ROOT / 'output/docx' / (NAME + '.docx')
+REPORT = ROOT / 'output/research' / (NAME + '.md')
+RENDER = B / 'render_103_v1'
+PDF = RENDER / (NAME + '.pdf')
+SNAP = ROOT / 'output/research/redesign_20260925_snapshot_45'
+assert not SNAP.exists()
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def save(p, x): p.write_text(json.dumps(x, ensure_ascii=False, indent=2, allow_nan=False)+'\n', encoding='utf-8')
+
+evidence = json.loads((B/'103_evidence_audit.json').read_text(encoding='utf-8'))
+for row in evidence['source_hashes']:
+    assert sha(B / row['path']) == row['sha256'], row['path']
+ledger = B / 'cumulative_execution_budget.json'
+assert sha(ledger) == '60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a'
+old_word = ROOT / 'output/docx/TabICLv2_재설계_근거정리와_남은핵심판단_중간검토.docx'
+assert sha(old_word) == '4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686'
+pdf = PdfReader(str(PDF))
+assert len(pdf.pages) == 4
+assert len(list(RENDER.glob('page-*.png'))) == 4
+page_texts = [p.extract_text() or '' for p in pdf.pages]
+assert all(len(t) > 700 for t in page_texts)
+doc = Document(DOCX)
+assert len(doc.tables) == 3
+for paragraph in doc.paragraphs:
+    assert '사례' not in paragraph.text
+assert '미완료' in '\n'.join(p.text for p in doc.paragraphs)
+assert '미실행' in '\n'.join(c.text for t in doc.tables for r in t.rows for c in r.cells)
+
+# Artifact QA: compare displayed rounded values with the already saved summary.
+summary = json.loads((B/'results/pooled_context_101/summary.json').read_text(encoding='utf-8'))
+expected_keys = [
+ ['TabICL_global','TabICL_tabicl_risk','TabICL_empirical_risk'],
+ ['Ridge_global','Ridge_tabicl_risk','Ridge_empirical_risk'],
+ ['HGB_global','HGB_tabicl_risk','HGB_empirical_risk'],
+ ['RCTL_global_20260925','RCTL_tabicl_risk_20260925','RCTL_empirical_risk_20260925'],
+ [None,'RCTL_tabicl_risk_20260926','RCTL_empirical_risk_20260926'],
+]
+for row, keys in zip(doc.tables[0].rows[1:], expected_keys):
+    for cell, key in zip(row.cells[1:], keys):
+        expected = '미실행' if key is None else f"{summary['metrics'][key]['mean_cell_MAE']:.5f}"
+        assert cell.text == expected
+
+local_links = 0
+with ZipFile(DOCX) as z:
+    rels = etree.fromstring(z.read('word/_rels/document.xml.rels'))
+    for rel in rels:
+        if rel.get('Type', '').endswith('/hyperlink'):
+            target = rel.get('Target')
+            if target.startswith('file:'):
+                path = unquote(urlparse(target).path).lstrip('/')
+                assert Path(path).exists(), path
+                local_links += 1
+
+verification = {
+ 'pages': 4, 'page_text_character_counts': [len(t) for t in page_texts],
+ 'all_pages_visually_reviewed': True, 'visual_result': 'All four pages clean; no blank pages, split tables, clipping or orphan headings.',
+ 'displayed_values_match_saved_JSON': True, 'local_links_checked': local_links,
+ 'docx_sha256': sha(DOCX), 'report_sha256': sha(REPORT),
+ 'previous_word_unchanged': True, 'ledger_unchanged': True,
+ 'new_model_execution': False, 'new_traffic_statistical_analysis': False,
+ 'artifact_is_interim': True, 'final_recommendation_selected': False, 'goal_complete': False,
+}
+save(B/'103_document_verification.json', verification)
+
+goal_audit = {
+ 'date': '2026-09-26', 'objective_file': 'output/research/TabICLv2_문제정의부터_신규성과개선근거_재설계_goal_prompt.md',
+ 'requirements': [
+  {'requirement': '기존 cell의 연속 traffic 및 clustering 이후 RCTL 범위', 'state': 'preserved', 'evidence': ['results/rctl_pilot/summary.json','rctl_torch.py']},
+  {'requirement': 'RCTL 결과로 소속이나 threshold를 고르지 않음', 'state': 'verified_for_executed_candidates', 'evidence': ['results/rctl_pilot/summary.json','results/pooled_context_101/summary.json']},
+  {'requirement': '네트워크 시계열 TFM 및 공유 연구의 실제 방법 검토', 'state': 'substantial_existing_work_but_not_a_selected_final_candidate', 'evidence': ['05_literature_decision_audit.md','65_residual_and_transform_findings.md','99_learning_unit_and_cost_findings.md','102_architecture_proxy_findings.md']},
+  {'requirement': '강한 단순 대안 뒤에도 남는 핵심 문제의 직접 근거', 'state': 'not_established_for_new_recommended_direction', 'evidence': ['results/pooled_context_101/summary.json']},
+  {'requirement': 'TabICLv2가 유용한 새 clustering 결정 또는 같은 판단의 비용을 개선', 'state': 'not_established', 'evidence': ['candidate_decision_index.md','results/pooled_context_101/summary.json']},
+  {'requirement': '최종 추천 후보의 구현 가능한 알고리즘과 비용', 'state': 'incomplete_no_candidate_selected', 'evidence': ['candidate_decision_index.md']},
+  {'requirement': '최종 추천 후보의 RCTL 연결 최소 확인 또는 동등한 직접 근거', 'state': 'missing_existing_candidates_do_not_supply_it', 'evidence': ['results/rctl_pilot/summary.json','102_architecture_proxy_findings.md']},
+  {'requirement': '누적 상한 준수 및 후보 변경 시 초기화 금지', 'state': 'verified_current_ledger', 'evidence': ['cumulative_execution_budget.json']},
+  {'requirement': '새 후보의 근접 연구 비교 주장과 증거 반론 표', 'state': 'incomplete_for_final_candidate', 'evidence': ['candidate_decision_index.md']},
+  {'requirement': '한국어 재설계 보고서 교수님용 Word 및 근거 자료', 'state': 'interim_artifacts_verified_final_design_incomplete', 'evidence': ['103_document_verification.json','103_evidence_audit.json']},
+  {'requirement': '하나의 추천 방향 선택 및 후속 본 실험 실패 시 행동', 'state': 'incomplete', 'evidence': ['103_evidence_audit.json']},
+ ],
+ 'complete': False, 'complete_must_not_be_called': True,
+ 'resource_limit': {'RCTL_fits_remaining': 0, 'Tab_contexts_remaining': 2, 'Tab_query_rows_remaining': 4512},
+ 'conditional_extension_proposed_not_authorized_or_applied': True,
+}
+for row in goal_audit['requirements']:
+    for ref in row['evidence']:
+        assert (B/ref).exists(), ref
+save(B/'103_goal_requirements_audit.json', goal_audit)
+
+progress_path = B/'progress.md'
+progress = progress_path.read_text(encoding='utf-8')
+old = '## 최신 상태 — 102 구조 기반 대리값의 적용 범위'
+assert old in progress and '## 최신 상태 — 103' not in progress
+new = '''## 최신 상태 — 103 최신 실제 결과를 반영한 근거 문서와 완료 조건 감사
+
+- 2026-09-26. 102는 구조 기반 대리값의 적용 범위를 확인하여 다음 채택 판단을 바꾼 progress였다. 103에서는 goal의 현재 요구·원장·101/95/RCTL 저장 결과를 읽고, 84 이후 바뀐 결과를 새 한국어 보고서와4쪽 Word에 반영했다. 새 모델 실행이나 traffic 통계 재계산은 없다.
+- 새문서: output/docx/TabICLv2_연구재설계_현재근거와_미완료조건_검토.docx 및 같은 이름의 output/research Markdown. 기존 Word를 덮어쓰지 않았다. 묶은 실제 context의 같은14일 비교, batch 비용, 선행 방법과의 차이, 미완료 조건을 연결했다. 101의 Tab 직접 우위를 RCTL clustering 개선으로 바꾸지 않는다.
+- 번들 render_docx.py에 기존 hidden Word COM adapter를 사용했다. process75623은exit0으로종료했다.4쪽 모두 시각 확인했고 clipping/빈쪽/분리table/고립heading이없다.표의반올림수치는저장JSON과대조했으며local출처link도확인했다.임시render PDF/PNG는내부QA자료다.
+- 완료조건별감사103_goal_requirements_audit.json에서새문제·유용한Tab결정·최종RCTL연결·추천방향이아직미완료임을기록했다.문서가완성됐다는사실로연구goal을완료하지않는다.중간감사를새연구기여로세지않는다.
+- RCTL29fit전부완료,추가fit0.잔여Tab2context/4512query행.원장SHA60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a불변.모델수/상한/과거평가기간의개발자료지위를바꾸지않았다.
+- 추가확인을허용할경우의조건부범위를103_conditional_execution_extension.md에별도작성했다.최대18fit은새K4후보4+단순비교4+Global1을2seed확인하는상한제안이며아직허용·실행하지않았다.후보가구체화되기전에는실행하지않으며,상한증가만으로신규성이생긴다고설명하지않는다.
+- 새추천후보는여전히미확정이다.현재실행상한안에서새partition의RCTL실측을더진행할수없고,원문/기호대체확인도그연결을충족하지못했다.동일실패를다른이름으로반복하거나추가예산을자동사용하지않는다.사용자의범위변경응답이오면기존조건과통합하고,없으면현재상한을유지한다.
+
+## 이전 상태 — 102 구조 기반 대리값의 적용 범위'''
+progress_path.write_text(progress.replace(old,new,1),encoding='utf-8')
+
+files = [B/n for n in ['103_current_evidence_audit_plan.md','build_evidence_audit_103.py',
+ '103_evidence_audit.json','103_document_verification.json','103_goal_requirements_audit.json',
+ '103_conditional_execution_extension.md','verify_and_archive_103.py','progress.md',
+ 'candidate_decision_index.md','cumulative_execution_budget.json']]
+files += [DOCX,REPORT] + list(RENDER.glob('*'))
+SNAP.mkdir()
+records=[]
+for path in files:
+    rel=path.relative_to(ROOT); dst=SNAP/rel
+    dst.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(path,dst)
+    assert sha(path)==sha(dst)
+    records.append({'path':str(rel),'sha256':sha(dst),'bytes':dst.stat().st_size})
+save(SNAP/'manifest.json',{'verified':True,'files':records,'goal_complete':False})
+result={'snapshot':str(SNAP),'files':len(records),'bytes':sum(x['bytes'] for x in records),'verified':True,
+ 'pages':len(pdf.pages),'ledger_unchanged_sha256':sha(ledger),'new_model_calls':0,'goal_complete':False}
+save(B/'103_archive_verification.json',result)
+print(json.dumps(result,ensure_ascii=False,indent=2))

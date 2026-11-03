@@ -1,5 +1,7 @@
 # 원83까지의 연구 연혁: 공동 갱신 비용과 기존 결정 지도
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-109.md) · [검수](../verification/history-109.md) · [판본 차이](../evidence/0109-cumulative-history/unique-deltas.json) · [직전 연혁](0104-cumulative-history.md)
 
 이미 검토한 결정을 찾고 새 설계의 차이를 적기 위한 문서다. 원83의 추가 판단을 기존 실험·정정·후속 원문 검수에 연결한다. 원01–82의 상세 연혁은 직전 지도에서 계속 찾을 수 있다.

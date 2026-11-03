@@ -1,0 +1,103 @@
+from pathlib import Path
+import hashlib, json, shutil
+from pypdf import PdfReader
+
+B = Path(__file__).resolve().parent
+ROOT = B.parent.parent
+SOURCES = B / 'sources/architecture_proxy_102'
+SNAP = ROOT / 'output/research/redesign_20260925_snapshot_44'
+assert not SNAP.exists(), 'Do not overwrite prior snapshots.'
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+def save(p, obj):
+    p.write_text(json.dumps(obj, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+
+ledger = B / 'cumulative_execution_budget.json'
+ledger_expected = '60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a'
+assert sha(ledger) == ledger_expected
+assert json.loads(ledger.read_text(encoding='utf-8'))['remaining_count_budgets'] == {
+    'TabICL_contexts': 2, 'TabICL_query_rows': 4512, 'RCTL_fits': 0}
+word = ROOT / 'output/docx/TabICLv2_재설계_근거정리와_남은핵심판단_중간검토.docx'
+assert sha(word) == '4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686'
+downloads = json.loads((SOURCES / 'download_manifest.json').read_text(encoding='utf-8'))
+for row in downloads:
+    if row['status'] != 'saved':
+        continue
+    path = SOURCES / row['filename']
+    assert sha(path) == row['sha256']
+    assert path.read_bytes().startswith(b'%PDF')
+    assert len(PdfReader(str(path)).pages) == row['pdf_pages']
+code = json.loads((SOURCES / 'code/manifest.json').read_text(encoding='utf-8'))
+assert code['executed'] is False
+assert code['commit'] == 'db79a5bd9e75e5a15548306d4770951f94883fb7'
+for row in code['files']:
+    assert sha(Path(row['file'])) == row['sha256']
+assert len(list((SOURCES / 'render').glob('*.png'))) == 6
+
+details = B / '102_architecture_proxy_findings.md'
+public = ROOT / 'output/research/TabICLv2_재설계_RCTL구조기반_대리값의_적용범위.md'
+for p in [details, public]:
+    txt = p.read_text(encoding='utf-8')
+    assert '사례' not in txt
+    assert '403' in txt or '확보에 실패' in txt
+assert 10752**2 * 8 == 924844032
+assert 4 * 2688**2 * 8 == 231211008
+
+progress_path = B / 'progress.md'
+progress = progress_path.read_text(encoding='utf-8')
+old_heading = '## 최신 상태 — 101 실제 pooled context와 RCTL 판단 대조'
+assert old_heading in progress and '## 최신 상태 — 102' not in progress
+new_progress = '''## 최신 상태 — 102 구조 기반 대리값의 적용 범위
+
+- 2026-09-26. 101 뒤 원장·이전 코드·후보 인덱스를 확인하고 102 계획에 따라 NTK affinity, RNTK, Tensor Programs II의 적용 범위를 검토했다. PDF2개86쪽을 확보했으며 실제 읽은 부분과 관련6쪽 시각 검수를 구분했다. NTK4A commit db79a5bd9e75e5a15548306d4770951f94883fb7의 관련 코드4파일은 정적으로만 읽었다.
+- RNTK의 단순 RNN/Gaussian 초기화/gradient flow와 실제 폭16–64의 TCN·LSTM·BN·잔차/Adam·MAE를 구별했다. Tensor Programs II에는 LSTM·BN도 포함되지만 이번 정리는 초기화의 무한폭 NTK 극한이다. 구조를 다룰 수 없다는 단정도, 바로 RCTL 위험을 계산한다는 단정도 하지 않는다.
+- 고정 affine smoother의 제곱오차를 평균 편향과 train/query 공동 공분산으로 직접 전개했다. 개별 Tab 분위수는 공동 공분산을 자동 제공하지 않으며, 모든 lag 입력을 고정하고 target을 독립 재생성하면 원래 시계열과 달라진다. 이 기본 항등식을 새 이론이나 RCTL MAE 보장으로 부르지 않는다.
+- dense kernel 저장의 정수 산술: n10752의 double 행렬 하나924844032bytes, n2688인4개 합231211008bytes. 실제 peak memory/실행 시간 측정은 아니다. 확인된 개선 없이 새kernel 점수를 추가하지 않는다. 모델 실행0이며 일반적인 구조 기반 접근 전체의 불가능성으로 확대하지 않는다.
+- Morello M3L/NeurIPS2024 workshop 공식 PDF는403으로 확보 실패. 공식 서지/초록과 검색 일부만 읽었다. 2026년8월load 및9월annual-panel 연구는 스크리닝만 했고 telecom/RCTL의 직접 근거로 쓰지 않았다. 세부 읽기 범위·다운로드 결과·기호 전개를 보존한다.
+- 새Tab context/query, RCTLfit/forward/gradient/BN, 기타 예측모델fit, traffic 수치실험 모두0. 원장SHA60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a 및 기존Word 불변. 잔여Tab2context/4512query행, 추가RCTLfit0. 최종 추천과 최종Word는 미완료다.
+- 다음에는 이미 관찰한 직접 예측 우위와 partition 선택의 불일치를 분리하여, 기존 증거로 판단 가능한 유용한 결정 또는 비용 절감을 특정한다. NTK/밀도/attention을 하나 더 붙여 핵심 연결을 미루거나, 14·19에서 이미 검사한 cell-ID 정보를 새 아이디어로 반복하지 않는다. 현재 새 외부 접근 제한 하나가 전체 goal을 막는다고 판단한 상태는 아니다.
+
+## 이전 상태 — 101 실제 pooled context와 RCTL 판단 대조'''
+progress_path.write_text(progress.replace(old_heading, new_progress, 1), encoding='utf-8')
+
+index_path = B / 'candidate_decision_index.md'
+index = index_path.read_text(encoding='utf-8')
+table_start = '|---|---|---|---|\n'
+assert table_start in index
+row = '| 구조만으로 계산한 최종 학습기 대리값 | 102: RNTK2021, Tensor Programs II, NTK4A 공식 구현; Morello workshop은 초록/일부만 | analytic kernel은 실제 RCTL 실행 없이 구성할 여지가 있으나, 단순 RNN kernel 또는 초기화 무한폭 정리를 finite TCN/LSTM/BN/Adam/MAE의 위험으로 대입하지 않는다. 선형 smoother에도 공동 공분산이 필요하다. kernel 추가로 101의 순위 불일치가 해결된 증거 없이 재진입하지 않는다. 모든 NTK 접근의 불가능성으로 기각하지 않는다. | 78,101–102 |\n'
+assert row not in index
+index_path.write_text(index.replace(table_start, table_start + row, 1), encoding='utf-8')
+
+verification = {
+    'verified': True, 'read_scope_not_full_proof_audit': True,
+    'source_pdf_pages_total_not_pages_read': 86,
+    'rendered_pages_visually_checked': 6, 'official_code_files_saved': 4,
+    'code_commit': code['commit'], 'source_code_executed': False,
+    'Morello_PDF_acquired': False, 'screening_only_papers': 2,
+    'new_TabICL_contexts': 0, 'new_TabICL_query_rows': 0,
+    'new_RCTL_fits': 0, 'new_RCTL_forwards': 0, 'new_RCTL_gradients': 0,
+    'new_simple_predictor_fits': 0, 'new_traffic_numerical_experiments': 0,
+    'ledger_unchanged_sha256': sha(ledger), 'prior_Word_unchanged_sha256': sha(word),
+    'goal_complete': False,
+}
+save(B / '102_verification.json', verification)
+files = [B / n for n in ['102_architecture_proxy_scope_plan.md', '102_architecture_proxy_findings.md',
+    'collect_architecture_proxy_102.py', 'read_kernel_sources_102.py', 'record_and_archive_102.py',
+    '102_verification.json', 'candidate_decision_index.md', 'progress.md', 'cumulative_execution_budget.json']]
+files += [public] + [p for p in SOURCES.rglob('*') if p.is_file()]
+SNAP.mkdir()
+records = []
+for path in files:
+    relative = path.relative_to(ROOT)
+    dest = SNAP / relative
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(path, dest)
+    assert sha(path) == sha(dest)
+    records.append({'relative_path': str(relative), 'sha256': sha(dest), 'bytes': dest.stat().st_size})
+save(SNAP / 'manifest.json', {'verified': True, 'files': records, 'goal_complete': False})
+result = {'snapshot': str(SNAP), 'files': len(records), 'bytes': sum(r['bytes'] for r in records),
+          'verified': True, 'ledger_unchanged_sha256': sha(ledger), 'goal_complete': False}
+save(B / '102_archive_verification.json', result)
+print(json.dumps(result, ensure_ascii=False, indent=2))

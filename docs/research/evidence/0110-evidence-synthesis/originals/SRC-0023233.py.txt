@@ -1,0 +1,97 @@
+from pathlib import Path
+import hashlib
+import json
+import re
+import shutil
+import zipfile
+from urllib.parse import unquote, urlparse
+from xml.etree import ElementTree as ET
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT / 'tmp/redesign_20260925'
+NAME = 'TabICLv2_재설계_근거정리와_남은핵심판단_중간검토'
+REPORT = ROOT / 'output/research' / (NAME + '.md')
+DOCX = ROOT / 'output/docx' / (NAME + '.docx')
+RENDER = WORK / 'render_84_v2'
+LEDGER = WORK / 'cumulative_execution_budget.json'
+EXPECTED = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(LEDGER) == EXPECTED
+pdf = PdfReader(str(RENDER / (NAME + '.pdf')))
+assert len(pdf.pages) == 5
+page_texts = [p.extract_text() for p in pdf.pages]
+assert all(len(t.strip()) > 400 for t in page_texts)
+all_text = '\n'.join(page_texts)
+for term in ('7.02%', '5.08%', '6,399,360,000', '10,240,000', '20,480,000', '미확정'):
+    assert term in all_text, term
+assert '\uc0ac\ub840' not in REPORT.read_text(encoding='utf-8')
+for href in re.findall(r'\]\(<([^>]+)>\)', REPORT.read_text(encoding='utf-8')):
+    if not href.startswith('http'):
+        assert Path(href).exists(), href
+with zipfile.ZipFile(DOCX) as archive:
+    assert archive.testzip() is None
+    rels = ET.fromstring(archive.read('word/_rels/document.xml.rels'))
+    for item in rels:
+        target = item.attrib.get('Target', '')
+        if target.startswith('file:'):
+            p = unquote(urlparse(target).path).lstrip('/')
+            assert Path(p).exists(), p
+
+verification = {
+    'date': '2026-09-26', 'pages': 5,
+    'page_text_character_counts': [len(t) for t in page_texts],
+    'all_five_pages_visually_reviewed': True,
+    'visual_review_result': 'No clipping, blank pages, split tables, or orphan headings in v2.',
+    'first_render_issue': 'Nine pages including blank pages; grid and break paragraph corrected.',
+    'docx_sha256': sha(DOCX), 'report_sha256': sha(REPORT),
+    'source_statistics_checked_against_saved_JSON': True,
+    'local_links_exist': True, 'ledger_byte_unchanged': True,
+    'new_model_calls': 0, 'final_research_goal_complete': False,
+}
+(WORK / '84_document_verification.json').write_text(json.dumps(verification, ensure_ascii=False, indent=2), encoding='utf-8')
+
+progress = WORK / 'progress.md'
+old = progress.read_text(encoding='utf-8-sig')
+heading = '## 최신 상태 — 84 근거 종합과 중간 Word 검수 완료'
+assert heading not in old, 'Do not append the same stage twice.'
+new_section = '''## 최신 상태 — 84 근거 종합과 중간 Word 검수 완료
+
+- 2026-09-26. 84계획 후 직접예측74, 소속결정80, 최종RCTL07의 원 JSON을 대조했다. 다른 cell·입력·기간·mean/median·손실의 숫자를 섞지 않았다. 좋은Tab예측과 좋은군집판단을 구분한 중간 보고서를 작성했다. 신규 추천안 확정이나 goal완료를 선언하지 않았다.
+- 실제 모델·데이터 진단 0회. M256/Q64/k16에서 N128/1024/10000의 전체·방향후보·양방향 query행 수를 산술로 계산했다. N10000에서6,399,360,000/10,240,000/20,480,000행이며 own-query와 새context준비는 별도다. 실행시간·최종알고리즘 성공으로 세지 않는다.
+- 교수님 검토용 Word `output/docx/TabICLv2_재설계_근거정리와_남은핵심판단_중간검토.docx` 5쪽 작성·전페이지 시각검수 완료. 같은 이름의 한국어md는 output/research에 있다. 기존문서불변. 최종추천을 담은 Word는 여전히 미완료다. 첫렌더9쪽의빈페이지를수정해v2렌더5쪽으로확인했다.
+- 실제네트워크의global모델운영제약 유무에 관한 선택적질문은 현재 미응답이다. 운영제약의존재/부재를가정하지않는다. 별도승인요청이나goal입력안내로바꾸지않는다.
+- 파일:84_evidence_synthesis_plan.md,84_evidence_synthesis_findings.md,84_evidence_and_workload.json,build_synthesis_84.py,84_document_verification.json. 예산원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변, Tab잔여11/20640, RCTL새fit0 유지.
+- 다음에는84문서를다시작성하거나탈락점수에보정항만붙이지않는다. 새운영조건답변이있으면문제정의에반영하고, 없으면그런제약을발명하지않는다. 원래완료조건에필요한유용한결정·Tab의실익·RCTL연결은미확정이며goalactive다. 사용법안내·그안내를고쳤다는보고를반복하지않는다.
+
+'''
+old = old.replace('## 최신 상태 — 83 정적 cluster의 공동 갱신 비용 검토', '## 이전 상태 — 83 정적 cluster의 공동 갱신 비용 검토', 1)
+marker = '## 이전 상태 — 83 정적 cluster의 공동 갱신 비용 검토'
+old = old.replace(marker, new_section + marker, 1)
+progress.write_text(old, encoding='utf-8')
+
+snapshot = ROOT / 'output/research/redesign_20260925_snapshot_26'
+assert not snapshot.exists(), 'Do not overwrite snapshots.'
+snapshot.mkdir()
+files = [
+    WORK / '84_evidence_synthesis_plan.md', WORK / '84_evidence_synthesis_findings.md',
+    WORK / '84_evidence_and_workload.json', WORK / '84_document_verification.json',
+    WORK / 'build_synthesis_84.py', Path(__file__).resolve(),
+    WORK / 'progress.md', WORK / 'candidate_decision_index.md', LEDGER,
+    WORK / 'results/rctl_pilot/summary.json',
+    WORK / 'results/output_compression_74/result.json',
+    WORK / 'results/conditional_graph_80/result.json',
+    REPORT, DOCX,
+] + sorted(RENDER.glob('*'))
+manifest = []
+for source in files:
+    relative = source.relative_to(ROOT)
+    target = snapshot / relative
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+    assert sha(source) == sha(target)
+    manifest.append({'path': relative.as_posix(), 'bytes': source.stat().st_size, 'sha256': sha(source)})
+record = {'files': len(manifest), 'bytes': sum(x['bytes'] for x in manifest), 'manifest': manifest, 'ledger_unchanged': sha(LEDGER) == EXPECTED, 'previous_snapshots_modified': False}
+(snapshot / 'manifest.json').write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding='utf-8')
+(WORK / '84_archive_verification.json').write_text(json.dumps({'snapshot': str(snapshot), 'files': record['files'], 'bytes': record['bytes'], 'verified': True, 'ledger_unchanged': True}, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps({'pages': 5, 'snapshot_files': record['files'], 'snapshot_bytes': record['bytes'], 'ledger_unchanged': True}, ensure_ascii=False))

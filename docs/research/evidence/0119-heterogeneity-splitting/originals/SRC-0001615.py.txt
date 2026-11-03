@@ -1,0 +1,29 @@
+from datetime import datetime, timezone
+from pathlib import Path
+import hashlib
+import json
+import urllib.request
+from pypdf import PdfReader
+
+dest = Path(__file__).resolve().parent / 'sources/heterogeneity_89'
+dest.mkdir(parents=True, exist_ok=True)
+url = 'https://arxiv.org/pdf/2012.12485v3'
+path = dest / 'Global_Models_Simulation_2012.12485v3.pdf'
+record = {'url': url, 'accessed_utc': datetime.now(timezone.utc).isoformat(), 'cap_bytes': 5000000}
+try:
+    if path.exists():
+        raise RuntimeError('PDF exists; inspect manifest before any repeated download')
+    with urllib.request.urlopen(url, timeout=35) as response:
+        data = response.read(5000001)
+        record.update(status=response.status, final_url=response.url)
+    if len(data) > 5000000 or not data.startswith(b'%PDF'):
+        raise ValueError('Expected a PDF below 5 MB')
+    path.write_bytes(data)
+    reader = PdfReader(path)
+    extracted = '\n\n'.join(f'--- PDF page {i+1} ---\n{p.extract_text() or ""}' for i,p in enumerate(reader.pages))
+    path.with_suffix('.txt').write_text(extracted, encoding='utf-8')
+    record.update(bytes=len(data), pages=len(reader.pages), sha256=hashlib.sha256(data).hexdigest())
+except Exception as error:
+    record['error'] = type(error).__name__ + ': ' + str(error)
+(dest / 'download_manifest.json').write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps(record, ensure_ascii=True))

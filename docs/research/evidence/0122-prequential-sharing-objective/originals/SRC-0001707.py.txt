@@ -1,0 +1,25 @@
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
+import hashlib,json,urllib.request,subprocess
+
+base=Path(__file__).resolve().parent/'sources/prequential_92'
+commit='9272d6d8b10aeb1d81d08fecd8ac3ac53ffa5cb4'
+paths=['README.md','preqtorch/encoders.py','preqtorch/utils.py']
+def fetch(path):
+    url=f'https://raw.githubusercontent.com/cj-torres/preqtorch/{commit}/{path}'
+    out=base/'preqtorch_code'/path;out.parent.mkdir(exist_ok=True,parents=True);assert not out.exists()
+    with urllib.request.urlopen(url,timeout=30) as res: data=res.read(1000001)
+    assert len(data)<=1000000;out.write_bytes(data)
+    return {'url':url,'path':str(out.relative_to(base)),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+with ThreadPoolExecutor(max_workers=3) as pool:rows=list(pool.map(fetch,paths))
+(base/'preqtorch_code_manifest.json').write_text(json.dumps({'commit':commit,'files':rows,'external_code_executed':False},ensure_ascii=False,indent=2),encoding='utf-8')
+poppler='C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe'
+jobs=[('BHC_ICML2005',2),('BHC_ICML2005',3),('BHC_GaussianProcess_2011',4),('BHC_GaussianProcess_2011',5)]
+folder=base/'renders';folder.mkdir(exist_ok=True)
+def render(job):
+    name,page=job;prefix=folder/(name+'_p'+str(page));out=Path(str(prefix)+'.png');assert not out.exists()
+    subprocess.run([poppler,'-f',str(page),'-l',str(page),'-scale-to','1500','-singlefile','-png',str(base/(name+'.pdf')),str(prefix)],check=True,capture_output=True)
+    return {'pdf':name+'.pdf','page':page,'image':str(out.relative_to(base)),'sha256':hashlib.sha256(out.read_bytes()).hexdigest()}
+with ThreadPoolExecutor(max_workers=2) as pool:renders=list(pool.map(render,jobs))
+(base/'render_manifest.json').write_text(json.dumps(renders,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'code_files':rows,'renders':renders},ensure_ascii=True))

@@ -1,0 +1,40 @@
+# 검색·읽기 범위
+
+검색일 2026-09-26. 원문·저자 구현·대학 공식 서지 중심. 검색 결과의 존재만으로 방법의 검증 완료를 주장하지 않는다.
+
+## 검색어
+
+- `"TabICL" "clustering" "forecasting"`
+- `"TabICL" "model selection" "transfer"`
+- `"time series" "clustering" "regret" forecasting foundation model`
+- `"TabICL" "time series" "2026" context`
+- `"clustering" "forecasting" "estimation variance" pooling`
+- `"task grouping" "surrogate" "generalization" 2026`
+- `"TabPFN" "pooling" "learning curve"`
+- `"time series" "clustering" "bias-variance" "global"`
+- `"nXVenJ6KFI"`
+- `"Load Forecasting for Sustainable Demand-Side Energy Management"`
+- `"Pooling Beats Structure on Short Annual Panels"`
+- `"task grouping" "neural tangent"`
+- `"recurrent neural tangent kernel" "LSTM"`
+- `"task grouping" "kernel" "2026"`
+- `"pooling" "kernel ridge" "risk" regression transfer`
+- `"Exploring Task Affinities" "arxiv"`
+- `"The Recurrent Neural Tangent Kernel" arxiv github`
+- `"architecture-dependent task affinities"`
+- `"Exploring Task Affinities through NTK Alignment" Morello pdf`
+- `"The Recurrent Neural Tangent Kernel" github Sina`
+- `"HxT9EuHdXW"`
+
+## 상태
+
+- RNTK arXiv2006.10246v4 PDF26쪽과 Tensor Programs II arXiv2006.14548v4 PDF60쪽을 보존했다. 실제 읽은 부분은 102 findings에 명시했다. 모든 페이지·증명 검증이 아니다.
+- RNTK3·5·9쪽, Tensor Programs II2·11·27쪽을 렌더링하여 수식과 문장을 시각 대조했다.
+- NTK4A commit db79a5bd9e75e5a15548306d4770951f94883fb7의 README, RNN/BN notebook, utils.py를 저장했다. README, SimpleRNNClassifier/analytic rnnntk_batch, BN 구조의 관련 부분을 확인했다. 전 코드 감사나 실행이 아니다.
+- Morello workshop 논문은 공식 대학 서지·초록, 검색에 노출된 원문 일부만 확인했다. 공식 PDF URL의 직접 요청은 HTTP403으로 실패했다. 저자에게 연락하거나 접근 제한을 우회하지 않았다.
+- `nXVenJ6KFI` OpenReview는 전문 확인 불가이며 새 방법의 근거로 사용하지 않았다.
+- 2026-08-10 load-forecasting 논문과 2026-09-18 annual-panel pooling 논문은 공식 출판 metadata와 검색 내용만 스크리닝했다. 직접 페이지 요청의429 및 전문 미확인을 구분한다. telecom 또는 RCTL 개선 증거로 사용하지 않는다.
+- TabICL 공식 저장소·PyPI의 이미 알려진2.2.0 상태도 확인했으나 이번 새 방법 증거로 세지 않았다.
+- Tensor Programs 계열의 모든 후속 정리를 조사한 것은 아니다. 이번 원문만으로 일반적인 유한 RCTL 분석이 원천 불가능하다고 결론 내리지 않는다.
+
+PDF·코드의 URL, SHA256, 용량은 download_manifest.json과 code/manifest.json에 있다. 새 모델·traffic 통계 실행0이다.

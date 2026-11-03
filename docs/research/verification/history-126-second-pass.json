@@ -1,0 +1,433 @@
+{
+  "batch_id": "history-126",
+  "status": "source_checked",
+  "initial_private_draft_sha256": "b2a4ff04e2c26c2a358994c861fe6fad278af6161b29a57674b36c55aaf0a2b7",
+  "corrected_private_draft_sha256": "69ad8d7702c7b96cc8ac19d49b590d292d155acdea7a2a0fb6980193170b7c32",
+  "draft_sha256": "69ad8d7702c7b96cc8ac19d49b590d292d155acdea7a2a0fb6980193170b7c32",
+  "actual_postdraft_raw_line_ranges": {
+    "SRC-0001821": [
+      [
+        1,
+        160
+      ]
+    ],
+    "SRC-0001822": [
+      [
+        1,
+        34
+      ]
+    ],
+    "SRC-0001825": [
+      [
+        1,
+        67
+      ]
+    ],
+    "SRC-0001826": [
+      [
+        1,
+        28
+      ]
+    ],
+    "SRC-0001827": [
+      [
+        1,
+        104
+      ]
+    ],
+    "SRC-0001830": [
+      [
+        1,
+        40
+      ]
+    ],
+    "SRC-0001833": [
+      [
+        1,
+        21
+      ]
+    ],
+    "SRC-0001835": [
+      [
+        1,
+        103
+      ]
+    ],
+    "SRC-0001844": [
+      [
+        1,
+        57
+      ]
+    ],
+    "SRC-0001845": [
+      [
+        1,
+        32
+      ]
+    ],
+    "SRC-0022098": [
+      [
+        1,
+        9
+      ]
+    ],
+    "SRC-0001828": [
+      [
+        42,
+        70
+      ]
+    ],
+    "SRC-0001831": [
+      [
+        7,
+        14
+      ]
+    ],
+    "SRC-0001832": [
+      [
+        15,
+        60
+      ]
+    ],
+    "SRC-0001834": [
+      [
+        78,
+        143
+      ]
+    ],
+    "SRC-0001823": [
+      [
+        1,
+        51
+      ]
+    ],
+    "SRC-0001824": [
+      [
+        1,
+        73
+      ]
+    ]
+  },
+  "postdraft_raw_lines": 928,
+  "actual_postdraft_PDF_text_pages": {
+    "SRC-0001836": [
+      3,
+      4,
+      5
+    ],
+    "SRC-0001838": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      21
+    ],
+    "SRC-0001840": [
+      3
+    ],
+    "SRC-0001842": [
+      2,
+      5,
+      6,
+      13,
+      14
+    ]
+  },
+  "actual_postdraft_PDF_line_ranges": {
+    "SRC-0001836": {
+      "4": [
+        [
+          1,
+          145
+        ]
+      ],
+      "5": [
+        [
+          1,
+          102
+        ]
+      ],
+      "3": [
+        [
+          1,
+          75
+        ]
+      ]
+    },
+    "SRC-0001838": {
+      "4": [
+        [
+          1,
+          85
+        ]
+      ],
+      "5": [
+        [
+          1,
+          106
+        ]
+      ],
+      "6": [
+        [
+          1,
+          64
+        ]
+      ],
+      "8": [
+        [
+          1,
+          75
+        ]
+      ],
+      "21": [
+        [
+          1,
+          47
+        ]
+      ],
+      "7": [
+        [
+          1,
+          66
+        ]
+      ]
+    },
+    "SRC-0001840": {
+      "3": [
+        [
+          1,
+          108
+        ]
+      ]
+    },
+    "SRC-0001842": {
+      "2": [
+        [
+          1,
+          109
+        ]
+      ],
+      "5": [
+        [
+          1,
+          119
+        ]
+      ],
+      "6": [
+        [
+          1,
+          133
+        ]
+      ],
+      "13": [
+        [
+          1,
+          101
+        ]
+      ],
+      "14": [
+        [
+          1,
+          106
+        ]
+      ]
+    }
+  },
+  "postdraft_PDF_text_lines": 1441,
+  "postdraft_PDF_pages": 15,
+  "postdraft_original_derived_images": [
+    "SRC-0001846",
+    "SRC-0001847",
+    "SRC-0001848",
+    "SRC-0001849",
+    "SRC-0001850",
+    "SRC-0001851"
+  ],
+  "postdraft_whole_images": 6,
+  "checks": [
+    {
+      "check_id": "H126-SP01",
+      "title": "실행 상태·함수 반례·동일seed의 범위",
+      "claims": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "result": "원96 보고/판단/계획·raw train/RCTL와 ReLU 기호식을 대조. 같은 random 초기화와 pretrained를 구분. 실증 병합 실패로 확대0.",
+      "source_checked": true
+    },
+    {
+      "check_id": "H126-SP02",
+      "title": "Model soups·Git Re-Basin·BN/LSTM·folding",
+      "claims": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "result": "공통 pretrained·greedy validation·세 matching 방식·split-data 대조군·LayerNorm/BN 재계산을 원문에 대조. folding은 고정 함수 표현의 조건부 대안.",
+      "source_checked": true
+    },
+    {
+      "check_id": "H126-SP03",
+      "title": "TIMEFUSE와 확률적 task-vector 병합",
+      "claims": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "result": "TIMEFUSE output weighted sum/24features/meta labels/Huber, UAI common backbone·Eq22/23/24·Algorithm1·AppA/B를 텍스트와6 PNG에서 대조. etaI stationary example와 local guarantee 한계, 전체paper무효 아님.",
+      "source_checked": true
+    },
+    {
+      "check_id": "H126-SP04",
+      "title": "소속 순서·강한 비교·비용·재검토",
+      "claims": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "result": "원79/86 전행·current candidate42–70·train78–143 및 원96을 대조. RCTL-before-partition와after를구분. 동일유용결정효율개선도 탐색허용/개선사전입증강제아님을 보완.",
+      "source_checked": true
+    },
+    {
+      "check_id": "H126-SP05",
+      "title": "실행0·판독·렌더·snapshot 보존",
+      "claims": [
+        26,
+        27,
+        28,
+        29
+      ],
+      "result": "core11/655행 전문을작성후대조. 실제104pages/7829802B·manifest listed30/10954157+6511·31/10960668와 rootreceipt394 검수. Word hash만/원코드실행0.",
+      "source_checked": true
+    },
+    {
+      "check_id": "H126-SP06",
+      "title": "판본·파생자료·남은 범위",
+      "claims": [
+        30,
+        31,
+        32
+      ],
+      "result": "candidate전체70행과연혁첫66행,previous64/536 baseline scope·기계diff를 구분. TXT/PNG independent0/UAI14빈줄차이·나머지81pages 미독과전체Goal미완료.",
+      "source_checked": true
+    }
+  ],
+  "claims_checked": 32,
+  "editorial_clarifications": [
+    "C22/C25에원93의동일유용결정효율개선/진입과추천구분을명시; source1828 실제42–70행 재독근거.",
+    "원96findings 근거를실제절의행구간으로좁힘. 의미에맞는기존실제재독범위내보완이며추가완료가산0.",
+    "C30 원문 내용은 실제 작성후 재독한 원96절로 좁히고, 판본 행수와 첫 판독 범위는 metadata_scope로 구분했다. 원문 내용을 기계 비교만으로 완료 처리하지 않았다.",
+    "문헌주장의page인용을실제작성후재독한핵심page로좁힘. C27의전체첫판독범위는metadata로구분. 본문주장/실제독해량/완료집계는변경없음.",
+    "출처구간 검사에서 C02/C05/C15에 인용된Silos3/Git7의작성후재독누락을찾아전체141행을실제재독했다. 텍스트만재독/시각추가0·첫판독/독립완료가산0."
+  ],
+  "unresolved_output_truncation": false,
+  "independent_reviewer": false,
+  "whole_paper_proof_or_software_validation": false,
+  "source_code_executed": false,
+  "source_imported": false,
+  "new_model_runs": 0,
+  "coverage_increment_applied": false,
+  "updated_at_utc": "2026-10-12T01:05:27.558260+00:00",
+  "editorial_private_draft_sha256": "b86993aa0c5fbf2d006ed944fe2ca526c77af49aa7a74267a6f86a2d241374bd",
+  "semantic_second_pass_complete": true,
+  "corrected_draft_actually_read_after_write": true,
+  "corrected_record_sha256": "551808592837fe941622c1f960a02caa25bfcd470f8db44fb20cb5f92411df29",
+  "public_files_written": true,
+  "literature_locations_narrowed_to_postdraft": [
+    {
+      "claim_id": "H126-C08",
+      "source_id": "SRC-0001840",
+      "original_pages": [
+        2,
+        3,
+        4,
+        8,
+        9
+      ],
+      "published_pages": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H126-C10",
+      "source_id": "SRC-0001838",
+      "original_pages": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "published_pages": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "claim_id": "H126-C11",
+      "source_id": "SRC-0001838",
+      "original_pages": [
+        6,
+        7,
+        8
+      ],
+      "published_pages": [
+        6,
+        8
+      ]
+    },
+    {
+      "claim_id": "H126-C17",
+      "source_id": "SRC-0001842",
+      "original_pages": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "published_pages": [
+        2,
+        5
+      ]
+    },
+    {
+      "claim_id": "H126-C20",
+      "source_id": "SRC-0001842",
+      "original_pages": [
+        6,
+        13,
+        14,
+        15
+      ],
+      "published_pages": [
+        6,
+        13,
+        14
+      ]
+    }
+  ],
+  "metadata_scope_for_current_reading_counts": true,
+  "additional_pages_actually_read_after_location_QA": {
+    "SRC-0001836": [
+      3
+    ],
+    "SRC-0001838": [
+      7
+    ]
+  }
+}

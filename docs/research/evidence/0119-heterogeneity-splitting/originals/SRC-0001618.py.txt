@@ -1,0 +1,105 @@
+from pathlib import Path
+import hashlib, json, shutil
+from pypdf import PdfReader
+
+ROOT=Path(__file__).resolve().parents[2]
+WORK=ROOT/'tmp/redesign_20260925'
+SRC=WORK/'sources/heterogeneity_89'
+LEDGER=WORK/'cumulative_execution_budget.json'
+EXPECTED='f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+REPORT=ROOT/'output/research/TabICLv2_재설계_cell차이와_RCTL분할효과_검토.md'
+sha=lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(LEDGER)==EXPECTED
+records=[]
+for manifest,stem,scope in [
+    ('download_manifest.json','Global_Models_Simulation_2012.12485v3', 'Sections1–5.1 and6.1.4–7; Table5–6,8–9. Earlier6.1.1–3 searched but not comprehensively read. Online Appendix, external source code and published journal version not audited. No reproduction.'),
+    ('diversity_download_latest_manifest.json','Similarity_Diversity_2404.06198v2','Sections3,5.1–5.4,6–7; Table1–3,7–12. Section4 overview read via web and referred performance definitions; no full empirical reproduction. Code not fetched or executed.'),
+]:
+    record=json.loads((SRC/manifest).read_text(encoding='utf-8'))
+    path=SRC/(stem+'.pdf')
+    assert sha(path)==record['sha256']
+    assert len(PdfReader(path).pages)==record['pages']
+    records.append({'name':stem,'scope':scope,**record})
+
+# Preserve the initial manifest's path error. Poppler generated correct files;
+# only the Python with_suffix record was wrong. No images are regenerated.
+jobs=[('Global_Models_Simulation_2012.12485v3',19),('Global_Models_Simulation_2012.12485v3',28),('Global_Models_Simulation_2012.12485v3',29),('Similarity_Diversity_2404.06198v2',18),('Similarity_Diversity_2404.06198v2',25),('Similarity_Diversity_2404.06198v2',28)]
+corrected=[]
+for stem,page in jobs:
+    path=SRC/'rendered'/f'{stem}_p{page:02d}.png'
+    assert path.exists() and path.read_bytes()[:8]==b'\x89PNG\r\n\x1a\n'
+    corrected.append({'pdf':stem+'.pdf','page':page,'image':path.relative_to(ROOT).as_posix(),'sha256':sha(path),'visually_inspected':True})
+corrected_path=SRC/'render_manifest_corrected.json'
+assert not corrected_path.exists()
+corrected_path.write_text(json.dumps({'correction':'Path records only; initial render_manifest preserved. Six actual images visually inspected. No rerender.', 'pages':corrected},ensure_ascii=False,indent=2),encoding='utf-8')
+
+scope={
+    'date':'2026-09-26','new_model_calls':0,'new_numeric_diagnostic_calls':0,
+    'sources':records,
+    'abstract_only':{'title':'Measuring time series heterogeneity for global learning','doi':'10.1016/j.eswa.2024.125666','ssrn':'https://ssrn.com/abstract=4897928','status':'No full text acquired; official abstract/search metadata only. 13 features/LightGBM premise known, detailed sampling/tuning/controls not verified.'},
+    'access_failures':[
+        {'url':'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4897928','result':'web403'},
+        {'url':'https://papers.ssrn.com/sol3/Delivery.cfm/f54cc51b-9f7a-428a-82d1-96b0333422c9-MECA.pdf?abstractid=4897928&mirid=1','result':'web403; search returns abstract, not full PDF'},
+        {'url':'https://www.sciencedirect.com/science/article/pii/S0957417424025338','result':'web403'},
+        {'url':'https://publica.fraunhofer.de/entities/publication/3c5000ed-549b-4f9d-be90-7dad10ca1272','result':'web open InternalError; official metadata search only'},
+        {'url':'https://arxiv.org/pdf/2404.06198v2','result':'urllib406; web PDF/HTML readable. Public latest PDF later downloaded and v2 checked; no security changes.'},
+    ],
+    'queries':[
+        'Sonnleitner 2025 Measuring time series heterogeneity global forecasting paper',
+        '"time series heterogeneity" "global" forecasting measure',
+        '"Measuring time series heterogeneity for global learning" pdf',
+        '"Sonnleitner" "heterogeneity" github',
+        '"Measuring time series heterogeneity for global learning" "pdf" "Sonnleitner"',
+        '"Benedikt Sonnleitner" heterogeneity preprint',
+        '"Measuring time series heterogeneity for global learning" "Sonnleitner" -site:researchgate.net -site:sciencedirect.com -site:papers.ssrn.com -site:dblp.org -site:scholar.google.com -site:ouci.dntb.gov.ua -site:semanticscholar.org',
+    ],
+    'search_only_not_added_as_method_evidence':['BasicTS+ TKDE2025 heterogeneity','DEEPEN DOI10.1002/for.3263','Decision Support through Global Demand Forecasting thesis'],
+    'own_derivation':'Squared-loss orthogonal decomposition for fixed population and partition; not a source theorem, empirical calculation, MAE identity, or RCTL guarantee.',
+    'prior_records':['35_process_and_fit_gap_findings.md','38_finite_learning_findings.md','15_transfer_identity_and_literature_findings.md','candidate_decision_index.md','train_rctl_pilot.py'],
+    'decision':'Do not promote feature homogeneity/diversity alone as a new cluster decision. Distinguish group information fed to global model from training separate predictors.',
+    'search_completeness_claimed':False,'external_blocker':None,'goal_complete':False,
+}
+scope_path=WORK/'89_source_reading_scope.json'
+assert not scope_path.exists()
+scope_path.write_text(json.dumps(scope,ensure_ascii=False,indent=2),encoding='utf-8')
+for p in [REPORT,WORK/'89_heterogeneity_decision_findings.md']:
+    assert '사례' not in p.read_text(encoding='utf-8')
+
+progress=WORK/'progress.md'
+content=progress.read_text(encoding='utf-8-sig')
+previous='## 최신 상태 — 88 조건부 비교의 기존 원리와 실제 호출 비용 확인'
+heading='## 최신 상태 — 89 cell 이질성과 별도 RCTL의 필요성 구분'
+assert previous in content and heading not in content
+new='''## 최신 상태 — 89 cell 이질성과 별도 RCTL의 필요성 구분
+
+- 2026-09-26. 89 계획 후 Global Models simulation2012.12485v3와 Similarity/Diversity2404.06198v2 원문2개69쪽/2168823bytes를 확보했다. 방법·특징 계산·실험 통제 범위·관련표를 읽고6쪽을 시각 확인했다. 전체 재현은 아니다. Sonnleitner ESWA2025는 publisher/SSRN403 등으로 여전히 초록 수준이다.
+- Global Models의 GFM.GroupFeature는 알려진 그룹을 global 입력에 주는 방식이며 별도 cluster 모델이 아니다. 이 버전에서 GFM.Cluster는 향후 작업이다. group정보의 유용성과 여러RCTL 분할의 유용성을 구분한다. 알려진 synthetic그룹의 개선을 실제traffic 소속추정 성공으로 바꾸지 않는다.
+- Similarity/Diversity는 weekly 단변량 DeepAR의 전이 비교다. 서로 다른 특징 표준화·거리 중앙값·source별 상대 분산을 쓰며 절대 병합 기준이 없다. 보고한 다양성/유사성의 기울기 상당수가 유의하지 않다. 동질성 또는 다양성 penalty를 새 clustering 규칙으로 추가하지 않는다.
+- 고정 모집단/partition에서 제곱손실을 cell정보 기반 noise, group으로 합칠 때의 정보 손실, 실제 추정함수의 손해로 분해했다. 자체 기호 검토이며 신규정리나 MAE RCTL보장이 아니다. 마지막 손해를 Tab분위수 폭으로 추정하지 않는다.
+- 35의 train/validation 결과,15의 ID 비교,80의 동일 partition 결과를 연결했다. 새 후보는 소속 자체의 정보와 별도모델 학습 효과 중 무엇을 바꾸는지 특정해야 한다. 같은 소속을 group입력으로 쓰는 global 대안도 구별한다. 이를 새RCTL 실행 허가로 해석하지 않는다.
+- 새 Tab/RCTL/수치 pilot0. 원장 sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변. Tab잔여11context/20640행, 추가RCTLfit0. 이전 구간은 개발자료 유지.
+- 상세89기록·공개요약·읽기범위·후보인덱스를 갱신한다. 렌더manifest의 경로만 잘못 기록된 부분은 별도 수정manifest로 고치고 원기록/6이미지를 보존했다. 이전 Word와 snapshot30까지 변경하지 않는다.
+- 다음 행동은 거리/특징 이질성 항을 다시 만드는 것이 아니다. 실제 traffic에서 분리 후의 자료·표현·학습 결정을 바꾸는 후보를 찾되, group정보만 더 준 global 대안으로 설명되는 효과와 구분한다. 기존 원리와 같은 후보면 실행하지 않는다. 추천방향/최종Word는 미완료이고 goal은 active다. 이번은 원문을 확인해 대안 비교를 구체화한 progress이며 외부 blocker는 없다.
+
+'''
+progress.write_text(content.replace(previous,new+previous.replace('최신','이전'),1),encoding='utf-8')
+
+snapshot=ROOT/'output/research/redesign_20260925_snapshot_31'
+assert not snapshot.exists()
+snapshot.mkdir()
+files=[WORK/n for n in ['89_heterogeneity_decision_scope_plan.md','89_heterogeneity_decision_findings.md','89_source_reading_scope.json','fetch_heterogeneity_sources_89.py','fetch_diversity_source_89.py','fetch_diversity_public_latest_89.py','render_heterogeneity_sources_89.py','progress.md','candidate_decision_index.md']]
+files += [LEDGER,REPORT,Path(__file__).resolve()] + sorted(p for p in SRC.rglob('*') if p.is_file())
+manifest=[]
+for source in files:
+    relative=source.relative_to(ROOT)
+    target=snapshot/relative
+    target.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(source,target)
+    assert sha(source)==sha(target)
+    if source.suffix=='.json': json.loads(source.read_text(encoding='utf-8'))
+    manifest.append({'path':relative.as_posix(),'bytes':source.stat().st_size,'sha256':sha(source)})
+assert sha(LEDGER)==EXPECTED
+result={'files':len(manifest),'bytes':sum(x['bytes'] for x in manifest),'manifest':manifest,'ledger_unchanged':True,'goal_complete':False}
+(snapshot/'manifest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+(WORK/'89_archive_verification.json').write_text(json.dumps({'snapshot':str(snapshot),'files':result['files'],'bytes':result['bytes'],'verified':True,'ledger_unchanged':True},ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'files':result['files'],'bytes':result['bytes'],'pdf_pages':69,'ledger_unchanged':True}))

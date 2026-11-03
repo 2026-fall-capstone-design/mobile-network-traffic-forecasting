@@ -1,0 +1,1507 @@
+{
+  "records": [
+    {
+      "checkpoint": "global_20260925_cluster0",
+      "method": "global",
+      "cluster": 0,
+      "members": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "original_checkpoint_sha256": "822808952e35b22921569f915db4b693f0929362e564ff4deae7cafbd6bc8476",
+      "parameter_sha256_before": "c5b8f60b25ae300094ea511830f8baba9da015f6e5c0a34f7e01a0bf8b0cc3d6",
+      "reproduction_differences": {
+        "train": 0.0,
+        "validation": 0.0,
+        "check": 0.0
+      },
+      "layers": [
+        {
+          "layer": "blocks.0.b1",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.023586809635162354,
+          "variance_max_abs_change": 0.003658860921859741,
+          "old_variance_mean": 0.26157164573669434,
+          "new_variance_mean": 0.2620067000389099,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.0.b2",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.02141294628381729,
+          "variance_max_abs_change": 0.032115787267684937,
+          "old_variance_mean": 0.5085221529006958,
+          "new_variance_mean": 0.49160635471343994,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b1",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.024037443101406097,
+          "variance_max_abs_change": 0.005279190838336945,
+          "old_variance_mean": 0.1379512995481491,
+          "new_variance_mean": 0.13698841631412506,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b2",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.01834704726934433,
+          "variance_max_abs_change": 0.03871887922286987,
+          "old_variance_mean": 0.45177340507507324,
+          "new_variance_mean": 0.43390756845474243,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b1",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.02168351784348488,
+          "variance_max_abs_change": 0.004727400839328766,
+          "old_variance_mean": 0.05191728472709656,
+          "new_variance_mean": 0.05104738473892212,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b2",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.032132647931575775,
+          "variance_max_abs_change": 0.03667652606964111,
+          "old_variance_mean": 0.29462307691574097,
+          "new_variance_mean": 0.28549373149871826,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b1",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.05382620170712471,
+          "variance_max_abs_change": 0.009236477315425873,
+          "old_variance_mean": 0.07116004824638367,
+          "new_variance_mean": 0.06997114419937134,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b2",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.059264928102493286,
+          "variance_max_abs_change": 0.09171083569526672,
+          "old_variance_mean": 0.28187742829322815,
+          "new_variance_mean": 0.27460479736328125,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b1",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.05378200113773346,
+          "variance_max_abs_change": 0.02237674593925476,
+          "old_variance_mean": 0.09078525006771088,
+          "new_variance_mean": 0.08668546378612518,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b2",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.01791122555732727,
+          "variance_max_abs_change": 0.02517417073249817,
+          "old_variance_mean": 0.2033732831478119,
+          "new_variance_mean": 0.19591692090034485,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b1",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.03387272357940674,
+          "variance_max_abs_change": 0.031743258237838745,
+          "old_variance_mean": 0.12323995679616928,
+          "new_variance_mean": 0.11508280783891678,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b2",
+          "moment_count_per_channel": 86016,
+          "mean_max_abs_change": 0.01956119015812874,
+          "variance_max_abs_change": 0.018687188625335693,
+          "old_variance_mean": 0.19874094426631927,
+          "new_variance_mean": 0.1926206797361374,
+          "epsilon": 0.001
+        }
+      ],
+      "calibration_seconds": 1.606917400000384,
+      "parameter_sha256_after": "c5b8f60b25ae300094ea511830f8baba9da015f6e5c0a34f7e01a0bf8b0cc3d6",
+      "changed_state_keys": [
+        "blocks.0.b1.running_mean",
+        "blocks.0.b1.running_var",
+        "blocks.0.b2.running_mean",
+        "blocks.0.b2.running_var",
+        "blocks.1.b1.running_mean",
+        "blocks.1.b1.running_var",
+        "blocks.1.b2.running_mean",
+        "blocks.1.b2.running_var",
+        "blocks.2.b1.running_mean",
+        "blocks.2.b1.running_var",
+        "blocks.2.b2.running_mean",
+        "blocks.2.b2.running_var",
+        "blocks.3.b1.running_mean",
+        "blocks.3.b1.running_var",
+        "blocks.3.b2.running_mean",
+        "blocks.3.b2.running_var",
+        "blocks.4.b1.running_mean",
+        "blocks.4.b1.running_var",
+        "blocks.4.b2.running_mean",
+        "blocks.4.b2.running_var",
+        "blocks.5.b1.running_mean",
+        "blocks.5.b1.running_var",
+        "blocks.5.b2.running_mean",
+        "blocks.5.b2.running_var"
+      ],
+      "train_original_mae": 0.07998137921094894,
+      "train_recalibrated_mae": 0.08007343113422394,
+      "validation_original_mae": 0.07537146657705307,
+      "validation_recalibrated_mae": 0.07572737336158752,
+      "check_original_mae": 0.07287361472845078,
+      "check_recalibrated_mae": 0.0733337253332138,
+      "restoration_max_abs_difference": 0.0,
+      "original_checkpoint_unchanged": true
+    },
+    {
+      "checkpoint": "tabicl_risk_20260925_cluster0",
+      "method": "tabicl_risk",
+      "cluster": 0,
+      "members": [
+        0,
+        3,
+        11,
+        13
+      ],
+      "original_checkpoint_sha256": "081bcc8b369f3f3cb275cfb839677c004be3e2b55837b2fddb921aecbba82e69",
+      "parameter_sha256_before": "b52519e2a0f3594db46e471f253ff28503f62303b489c051390e406e07cbaf79",
+      "reproduction_differences": {
+        "train": 0.0,
+        "validation": 0.0,
+        "check": 0.0
+      },
+      "layers": [
+        {
+          "layer": "blocks.0.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03456848859786987,
+          "variance_max_abs_change": 0.009409487247467041,
+          "old_variance_mean": 0.24841110408306122,
+          "new_variance_mean": 0.2477574646472931,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.0.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.021966755390167236,
+          "variance_max_abs_change": 0.033716946840286255,
+          "old_variance_mean": 0.4195764660835266,
+          "new_variance_mean": 0.40237128734588623,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.023776456713676453,
+          "variance_max_abs_change": 0.010166540741920471,
+          "old_variance_mean": 0.14992232620716095,
+          "new_variance_mean": 0.14540837705135345,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.02185407280921936,
+          "variance_max_abs_change": 0.03812456130981445,
+          "old_variance_mean": 0.3851981461048126,
+          "new_variance_mean": 0.373985230922699,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.02761581540107727,
+          "variance_max_abs_change": 0.011666275560855865,
+          "old_variance_mean": 0.05824996531009674,
+          "new_variance_mean": 0.05419762060046196,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03362920880317688,
+          "variance_max_abs_change": 0.03872866928577423,
+          "old_variance_mean": 0.26742374897003174,
+          "new_variance_mean": 0.26043611764907837,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.04993937164545059,
+          "variance_max_abs_change": 0.019740857183933258,
+          "old_variance_mean": 0.08020194619894028,
+          "new_variance_mean": 0.07387691736221313,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03571145236492157,
+          "variance_max_abs_change": 0.041782885789871216,
+          "old_variance_mean": 0.24474668502807617,
+          "new_variance_mean": 0.23971933126449585,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.06041783094406128,
+          "variance_max_abs_change": 0.04208460450172424,
+          "old_variance_mean": 0.09516840428113937,
+          "new_variance_mean": 0.08631747215986252,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.01424570381641388,
+          "variance_max_abs_change": 0.03436562418937683,
+          "old_variance_mean": 0.17817898094654083,
+          "new_variance_mean": 0.17013341188430786,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.054842591285705566,
+          "variance_max_abs_change": 0.030187904834747314,
+          "old_variance_mean": 0.17887765169143677,
+          "new_variance_mean": 0.1648785024881363,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.012400321662425995,
+          "variance_max_abs_change": 0.02034623920917511,
+          "old_variance_mean": 0.17506767809391022,
+          "new_variance_mean": 0.17086686193943024,
+          "epsilon": 0.001
+        }
+      ],
+      "calibration_seconds": 0.4264151999959722,
+      "parameter_sha256_after": "b52519e2a0f3594db46e471f253ff28503f62303b489c051390e406e07cbaf79",
+      "changed_state_keys": [
+        "blocks.0.b1.running_mean",
+        "blocks.0.b1.running_var",
+        "blocks.0.b2.running_mean",
+        "blocks.0.b2.running_var",
+        "blocks.1.b1.running_mean",
+        "blocks.1.b1.running_var",
+        "blocks.1.b2.running_mean",
+        "blocks.1.b2.running_var",
+        "blocks.2.b1.running_mean",
+        "blocks.2.b1.running_var",
+        "blocks.2.b2.running_mean",
+        "blocks.2.b2.running_var",
+        "blocks.3.b1.running_mean",
+        "blocks.3.b1.running_var",
+        "blocks.3.b2.running_mean",
+        "blocks.3.b2.running_var",
+        "blocks.4.b1.running_mean",
+        "blocks.4.b1.running_var",
+        "blocks.4.b2.running_mean",
+        "blocks.4.b2.running_var",
+        "blocks.5.b1.running_mean",
+        "blocks.5.b1.running_var",
+        "blocks.5.b2.running_mean",
+        "blocks.5.b2.running_var"
+      ],
+      "train_original_mae": 0.07515709847211838,
+      "train_recalibrated_mae": 0.07697425782680511,
+      "validation_original_mae": 0.08220468461513519,
+      "validation_recalibrated_mae": 0.0838736742734909,
+      "check_original_mae": 0.09213965386152267,
+      "check_recalibrated_mae": 0.09939201921224594,
+      "restoration_max_abs_difference": 0.0,
+      "original_checkpoint_unchanged": true
+    },
+    {
+      "checkpoint": "tabicl_risk_20260925_cluster1",
+      "method": "tabicl_risk",
+      "cluster": 1,
+      "members": [
+        1,
+        5,
+        8,
+        14
+      ],
+      "original_checkpoint_sha256": "ae92219d6aff933933f726d783275f136dd6e05eb0aaa329d1ccedc3426424c2",
+      "parameter_sha256_before": "d467b1a2f85401fe973c4959ef33efc2c054557df099df59f4a180ee4810e41f",
+      "reproduction_differences": {
+        "train": 0.0,
+        "validation": 0.0,
+        "check": 0.0
+      },
+      "layers": [
+        {
+          "layer": "blocks.0.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.05695760250091553,
+          "variance_max_abs_change": 0.029056578874588013,
+          "old_variance_mean": 0.2621252238750458,
+          "new_variance_mean": 0.239724263548851,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.0.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.039090514183044434,
+          "variance_max_abs_change": 0.04760926961898804,
+          "old_variance_mean": 0.4246889352798462,
+          "new_variance_mean": 0.3974457383155823,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.05450707674026489,
+          "variance_max_abs_change": 0.0342797115445137,
+          "old_variance_mean": 0.17133530974388123,
+          "new_variance_mean": 0.1448664516210556,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03931450843811035,
+          "variance_max_abs_change": 0.04185953736305237,
+          "old_variance_mean": 0.3607166111469269,
+          "new_variance_mean": 0.34036752581596375,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.028007015585899353,
+          "variance_max_abs_change": 0.03539993613958359,
+          "old_variance_mean": 0.0871867761015892,
+          "new_variance_mean": 0.05773482471704483,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.05336904525756836,
+          "variance_max_abs_change": 0.04938434064388275,
+          "old_variance_mean": 0.2585600018501282,
+          "new_variance_mean": 0.23692643642425537,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.05574706196784973,
+          "variance_max_abs_change": 0.051719844341278076,
+          "old_variance_mean": 0.11138265579938889,
+          "new_variance_mean": 0.07879719138145447,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.04217362403869629,
+          "variance_max_abs_change": 0.05490614473819733,
+          "old_variance_mean": 0.24113325774669647,
+          "new_variance_mean": 0.22092431783676147,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.12500673532485962,
+          "variance_max_abs_change": 0.05349048972129822,
+          "old_variance_mean": 0.13504911959171295,
+          "new_variance_mean": 0.10394078493118286,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.02091240882873535,
+          "variance_max_abs_change": 0.04660859704017639,
+          "old_variance_mean": 0.17546901106834412,
+          "new_variance_mean": 0.1473993957042694,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.07628574967384338,
+          "variance_max_abs_change": 0.08412063121795654,
+          "old_variance_mean": 0.24436524510383606,
+          "new_variance_mean": 0.20264503359794617,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.023299336433410645,
+          "variance_max_abs_change": 0.04461316764354706,
+          "old_variance_mean": 0.19394317269325256,
+          "new_variance_mean": 0.16875474154949188,
+          "epsilon": 0.001
+        }
+      ],
+      "calibration_seconds": 0.4164196999918204,
+      "parameter_sha256_after": "d467b1a2f85401fe973c4959ef33efc2c054557df099df59f4a180ee4810e41f",
+      "changed_state_keys": [
+        "blocks.0.b1.running_mean",
+        "blocks.0.b1.running_var",
+        "blocks.0.b2.running_mean",
+        "blocks.0.b2.running_var",
+        "blocks.1.b1.running_mean",
+        "blocks.1.b1.running_var",
+        "blocks.1.b2.running_mean",
+        "blocks.1.b2.running_var",
+        "blocks.2.b1.running_mean",
+        "blocks.2.b1.running_var",
+        "blocks.2.b2.running_mean",
+        "blocks.2.b2.running_var",
+        "blocks.3.b1.running_mean",
+        "blocks.3.b1.running_var",
+        "blocks.3.b2.running_mean",
+        "blocks.3.b2.running_var",
+        "blocks.4.b1.running_mean",
+        "blocks.4.b1.running_var",
+        "blocks.4.b2.running_mean",
+        "blocks.4.b2.running_var",
+        "blocks.5.b1.running_mean",
+        "blocks.5.b1.running_var",
+        "blocks.5.b2.running_mean",
+        "blocks.5.b2.running_var"
+      ],
+      "train_original_mae": 0.0998598039150238,
+      "train_recalibrated_mae": 0.10034888237714767,
+      "validation_original_mae": 0.09185627102851868,
+      "validation_recalibrated_mae": 0.09562113136053085,
+      "check_original_mae": 0.10445743799209595,
+      "check_recalibrated_mae": 0.1093599945306778,
+      "restoration_max_abs_difference": 0.0,
+      "original_checkpoint_unchanged": true
+    },
+    {
+      "checkpoint": "tabicl_risk_20260925_cluster2",
+      "method": "tabicl_risk",
+      "cluster": 2,
+      "members": [
+        2,
+        4,
+        6,
+        7
+      ],
+      "original_checkpoint_sha256": "c165bbe9b891a9b2ad9f77058f387b72d9cfd1bb11d35254a45ef05fe3023ff9",
+      "parameter_sha256_before": "f250c9c52f77c516b45c463012cc9cdcbb5fcbf11c0f908e641e623a296033d2",
+      "reproduction_differences": {
+        "train": 0.0,
+        "validation": 0.0,
+        "check": 0.0
+      },
+      "layers": [
+        {
+          "layer": "blocks.0.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.01934194564819336,
+          "variance_max_abs_change": 0.009127199649810791,
+          "old_variance_mean": 0.28902262449264526,
+          "new_variance_mean": 0.28497448563575745,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.0.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03015512228012085,
+          "variance_max_abs_change": 0.021156251430511475,
+          "old_variance_mean": 0.4226335883140564,
+          "new_variance_mean": 0.4100716710090637,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.01987728476524353,
+          "variance_max_abs_change": 0.012390494346618652,
+          "old_variance_mean": 0.15946099162101746,
+          "new_variance_mean": 0.15218113362789154,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.0363028347492218,
+          "variance_max_abs_change": 0.03581583499908447,
+          "old_variance_mean": 0.36416083574295044,
+          "new_variance_mean": 0.35364100337028503,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03235107660293579,
+          "variance_max_abs_change": 0.012681849300861359,
+          "old_variance_mean": 0.06896625459194183,
+          "new_variance_mean": 0.060959648340940475,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.04499290883541107,
+          "variance_max_abs_change": 0.02969154715538025,
+          "old_variance_mean": 0.2545454204082489,
+          "new_variance_mean": 0.2446499913930893,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.052494168281555176,
+          "variance_max_abs_change": 0.022709921002388,
+          "old_variance_mean": 0.09961716830730438,
+          "new_variance_mean": 0.09069240093231201,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.028910398483276367,
+          "variance_max_abs_change": 0.05967968702316284,
+          "old_variance_mean": 0.2336534708738327,
+          "new_variance_mean": 0.22711889445781708,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.09207409620285034,
+          "variance_max_abs_change": 0.04611319303512573,
+          "old_variance_mean": 0.14986774325370789,
+          "new_variance_mean": 0.13446204364299774,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.01891528069972992,
+          "variance_max_abs_change": 0.025387048721313477,
+          "old_variance_mean": 0.18394255638122559,
+          "new_variance_mean": 0.1781473010778427,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.08667021989822388,
+          "variance_max_abs_change": 0.05093809962272644,
+          "old_variance_mean": 0.1970706731081009,
+          "new_variance_mean": 0.1773339807987213,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.014440834522247314,
+          "variance_max_abs_change": 0.028998583555221558,
+          "old_variance_mean": 0.17889879643917084,
+          "new_variance_mean": 0.16850033402442932,
+          "epsilon": 0.001
+        }
+      ],
+      "calibration_seconds": 0.42606670000532176,
+      "parameter_sha256_after": "f250c9c52f77c516b45c463012cc9cdcbb5fcbf11c0f908e641e623a296033d2",
+      "changed_state_keys": [
+        "blocks.0.b1.running_mean",
+        "blocks.0.b1.running_var",
+        "blocks.0.b2.running_mean",
+        "blocks.0.b2.running_var",
+        "blocks.1.b1.running_mean",
+        "blocks.1.b1.running_var",
+        "blocks.1.b2.running_mean",
+        "blocks.1.b2.running_var",
+        "blocks.2.b1.running_mean",
+        "blocks.2.b1.running_var",
+        "blocks.2.b2.running_mean",
+        "blocks.2.b2.running_var",
+        "blocks.3.b1.running_mean",
+        "blocks.3.b1.running_var",
+        "blocks.3.b2.running_mean",
+        "blocks.3.b2.running_var",
+        "blocks.4.b1.running_mean",
+        "blocks.4.b1.running_var",
+        "blocks.4.b2.running_mean",
+        "blocks.4.b2.running_var",
+        "blocks.5.b1.running_mean",
+        "blocks.5.b1.running_var",
+        "blocks.5.b2.running_mean",
+        "blocks.5.b2.running_var"
+      ],
+      "train_original_mae": 0.06823298335075378,
+      "train_recalibrated_mae": 0.06702002137899399,
+      "validation_original_mae": 0.06858707964420319,
+      "validation_recalibrated_mae": 0.06760848313570023,
+      "check_original_mae": 0.06311698257923126,
+      "check_recalibrated_mae": 0.0634194016456604,
+      "restoration_max_abs_difference": 0.0,
+      "original_checkpoint_unchanged": true
+    },
+    {
+      "checkpoint": "tabicl_risk_20260925_cluster3",
+      "method": "tabicl_risk",
+      "cluster": 3,
+      "members": [
+        9,
+        10,
+        12,
+        15
+      ],
+      "original_checkpoint_sha256": "29381448c41cb1f0ec0b111215817875b8586fba74ea2df365974ddc4cf5f7d7",
+      "parameter_sha256_before": "e2ea52ce63c03744bcd921946d723d97a7b9887a434ec6989f35b3005f1769b4",
+      "reproduction_differences": {
+        "train": 0.0,
+        "validation": 0.0,
+        "check": 0.0
+      },
+      "layers": [
+        {
+          "layer": "blocks.0.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.027430206537246704,
+          "variance_max_abs_change": 0.008899420499801636,
+          "old_variance_mean": 0.26090008020401,
+          "new_variance_mean": 0.25876176357269287,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.0.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.02097855508327484,
+          "variance_max_abs_change": 0.031080186367034912,
+          "old_variance_mean": 0.4208136200904846,
+          "new_variance_mean": 0.40585196018218994,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.032817542552948,
+          "variance_max_abs_change": 0.010515943169593811,
+          "old_variance_mean": 0.1540476679801941,
+          "new_variance_mean": 0.14832614362239838,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03481915593147278,
+          "variance_max_abs_change": 0.039663732051849365,
+          "old_variance_mean": 0.39157065749168396,
+          "new_variance_mean": 0.38405585289001465,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.032420337200164795,
+          "variance_max_abs_change": 0.011607281863689423,
+          "old_variance_mean": 0.06506866961717606,
+          "new_variance_mean": 0.05948600545525551,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.04298636317253113,
+          "variance_max_abs_change": 0.029835015535354614,
+          "old_variance_mean": 0.25466910004615784,
+          "new_variance_mean": 0.24751310050487518,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.08487905561923981,
+          "variance_max_abs_change": 0.0194246768951416,
+          "old_variance_mean": 0.08803025633096695,
+          "new_variance_mean": 0.08008367568254471,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03657811880111694,
+          "variance_max_abs_change": 0.0638875961303711,
+          "old_variance_mean": 0.2459413707256317,
+          "new_variance_mean": 0.24146334826946259,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.07921945303678513,
+          "variance_max_abs_change": 0.05239422619342804,
+          "old_variance_mean": 0.1085699051618576,
+          "new_variance_mean": 0.09892313182353973,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.016462944447994232,
+          "variance_max_abs_change": 0.028464555740356445,
+          "old_variance_mean": 0.17174197733402252,
+          "new_variance_mean": 0.16380949318408966,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.11041206121444702,
+          "variance_max_abs_change": 0.0796734094619751,
+          "old_variance_mean": 0.20351392030715942,
+          "new_variance_mean": 0.17803996801376343,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.01688273251056671,
+          "variance_max_abs_change": 0.03098006546497345,
+          "old_variance_mean": 0.18448132276535034,
+          "new_variance_mean": 0.17483481764793396,
+          "epsilon": 0.001
+        }
+      ],
+      "calibration_seconds": 0.4353947000054177,
+      "parameter_sha256_after": "e2ea52ce63c03744bcd921946d723d97a7b9887a434ec6989f35b3005f1769b4",
+      "changed_state_keys": [
+        "blocks.0.b1.running_mean",
+        "blocks.0.b1.running_var",
+        "blocks.0.b2.running_mean",
+        "blocks.0.b2.running_var",
+        "blocks.1.b1.running_mean",
+        "blocks.1.b1.running_var",
+        "blocks.1.b2.running_mean",
+        "blocks.1.b2.running_var",
+        "blocks.2.b1.running_mean",
+        "blocks.2.b1.running_var",
+        "blocks.2.b2.running_mean",
+        "blocks.2.b2.running_var",
+        "blocks.3.b1.running_mean",
+        "blocks.3.b1.running_var",
+        "blocks.3.b2.running_mean",
+        "blocks.3.b2.running_var",
+        "blocks.4.b1.running_mean",
+        "blocks.4.b1.running_var",
+        "blocks.4.b2.running_mean",
+        "blocks.4.b2.running_var",
+        "blocks.5.b1.running_mean",
+        "blocks.5.b1.running_var",
+        "blocks.5.b2.running_mean",
+        "blocks.5.b2.running_var"
+      ],
+      "train_original_mae": 0.0703558698296547,
+      "train_recalibrated_mae": 0.06923249363899231,
+      "validation_original_mae": 0.08397654443979263,
+      "validation_recalibrated_mae": 0.0827878788113594,
+      "check_original_mae": 0.08429483324289322,
+      "check_recalibrated_mae": 0.08759042620658875,
+      "restoration_max_abs_difference": 0.0,
+      "original_checkpoint_unchanged": true
+    },
+    {
+      "checkpoint": "empirical_risk_20260925_cluster0",
+      "method": "empirical_risk",
+      "cluster": 0,
+      "members": [
+        0,
+        9,
+        12,
+        13
+      ],
+      "original_checkpoint_sha256": "95a274b8e4b7825756b5d9bb79ed6ed7d780db57d4a4993d4d3e54fe46b155b8",
+      "parameter_sha256_before": "268d3e81e54d2f8ebcfaa718d9c6d49f238034fbe8bc518f4d43e81947104195",
+      "reproduction_differences": {
+        "train": 0.0,
+        "validation": 0.0,
+        "check": 0.0
+      },
+      "layers": [
+        {
+          "layer": "blocks.0.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.02320193499326706,
+          "variance_max_abs_change": 0.011081069707870483,
+          "old_variance_mean": 0.2532617151737213,
+          "new_variance_mean": 0.25180044770240784,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.0.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.014757394790649414,
+          "variance_max_abs_change": 0.035952210426330566,
+          "old_variance_mean": 0.4274140000343323,
+          "new_variance_mean": 0.4120883345603943,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.023438364267349243,
+          "variance_max_abs_change": 0.012367665767669678,
+          "old_variance_mean": 0.14717447757720947,
+          "new_variance_mean": 0.1434113085269928,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.02723073959350586,
+          "variance_max_abs_change": 0.02972656488418579,
+          "old_variance_mean": 0.39445123076438904,
+          "new_variance_mean": 0.3850688934326172,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.020177900791168213,
+          "variance_max_abs_change": 0.0059165358543396,
+          "old_variance_mean": 0.06108752638101578,
+          "new_variance_mean": 0.058469682931900024,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.032685309648513794,
+          "variance_max_abs_change": 0.033383578062057495,
+          "old_variance_mean": 0.2685779929161072,
+          "new_variance_mean": 0.26263970136642456,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.055672600865364075,
+          "variance_max_abs_change": 0.023923642933368683,
+          "old_variance_mean": 0.08153422176837921,
+          "new_variance_mean": 0.07593631744384766,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.04898596554994583,
+          "variance_max_abs_change": 0.05004924535751343,
+          "old_variance_mean": 0.2642446756362915,
+          "new_variance_mean": 0.2575324475765228,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.07616019248962402,
+          "variance_max_abs_change": 0.03195244073867798,
+          "old_variance_mean": 0.10986188054084778,
+          "new_variance_mean": 0.1036435216665268,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.019388213753700256,
+          "variance_max_abs_change": 0.03056708723306656,
+          "old_variance_mean": 0.18922246992588043,
+          "new_variance_mean": 0.18603934347629547,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.058440178632736206,
+          "variance_max_abs_change": 0.04342520236968994,
+          "old_variance_mean": 0.18352030217647552,
+          "new_variance_mean": 0.16925255954265594,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.020416494458913803,
+          "variance_max_abs_change": 0.022153794765472412,
+          "old_variance_mean": 0.1783415675163269,
+          "new_variance_mean": 0.1707233041524887,
+          "epsilon": 0.001
+        }
+      ],
+      "calibration_seconds": 0.4327620999974897,
+      "parameter_sha256_after": "268d3e81e54d2f8ebcfaa718d9c6d49f238034fbe8bc518f4d43e81947104195",
+      "changed_state_keys": [
+        "blocks.0.b1.running_mean",
+        "blocks.0.b1.running_var",
+        "blocks.0.b2.running_mean",
+        "blocks.0.b2.running_var",
+        "blocks.1.b1.running_mean",
+        "blocks.1.b1.running_var",
+        "blocks.1.b2.running_mean",
+        "blocks.1.b2.running_var",
+        "blocks.2.b1.running_mean",
+        "blocks.2.b1.running_var",
+        "blocks.2.b2.running_mean",
+        "blocks.2.b2.running_var",
+        "blocks.3.b1.running_mean",
+        "blocks.3.b1.running_var",
+        "blocks.3.b2.running_mean",
+        "blocks.3.b2.running_var",
+        "blocks.4.b1.running_mean",
+        "blocks.4.b1.running_var",
+        "blocks.4.b2.running_mean",
+        "blocks.4.b2.running_var",
+        "blocks.5.b1.running_mean",
+        "blocks.5.b1.running_var",
+        "blocks.5.b2.running_mean",
+        "blocks.5.b2.running_var"
+      ],
+      "train_original_mae": 0.0641869530081749,
+      "train_recalibrated_mae": 0.06505824625492096,
+      "validation_original_mae": 0.07489806413650513,
+      "validation_recalibrated_mae": 0.07473598420619965,
+      "check_original_mae": 0.08267394453287125,
+      "check_recalibrated_mae": 0.08628430217504501,
+      "restoration_max_abs_difference": 0.0,
+      "original_checkpoint_unchanged": true
+    },
+    {
+      "checkpoint": "empirical_risk_20260925_cluster1",
+      "method": "empirical_risk",
+      "cluster": 1,
+      "members": [
+        1,
+        2,
+        14,
+        15
+      ],
+      "original_checkpoint_sha256": "aec1ff6c877631699da297e766b46057322e98e32c9663f4a6c1918d4817a38a",
+      "parameter_sha256_before": "d4e3c41bb14cc7d25f0ddeba79043cf349dcfb95a0415bba4149e9af7560dc6f",
+      "reproduction_differences": {
+        "train": 0.0,
+        "validation": 0.0,
+        "check": 0.0
+      },
+      "layers": [
+        {
+          "layer": "blocks.0.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03397095203399658,
+          "variance_max_abs_change": 0.010531723499298096,
+          "old_variance_mean": 0.24560114741325378,
+          "new_variance_mean": 0.24073255062103271,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.0.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.022984743118286133,
+          "variance_max_abs_change": 0.02906593680381775,
+          "old_variance_mean": 0.4434996247291565,
+          "new_variance_mean": 0.4277181625366211,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.01964429020881653,
+          "variance_max_abs_change": 0.013413786888122559,
+          "old_variance_mean": 0.15060955286026,
+          "new_variance_mean": 0.14258429408073425,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03834518790245056,
+          "variance_max_abs_change": 0.04265984892845154,
+          "old_variance_mean": 0.3581404685974121,
+          "new_variance_mean": 0.3439018130302429,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.025586657226085663,
+          "variance_max_abs_change": 0.014105014503002167,
+          "old_variance_mean": 0.06244002282619476,
+          "new_variance_mean": 0.05367293581366539,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03913983702659607,
+          "variance_max_abs_change": 0.036559417843818665,
+          "old_variance_mean": 0.25305309891700745,
+          "new_variance_mean": 0.24774064123630524,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.053869426250457764,
+          "variance_max_abs_change": 0.024793431162834167,
+          "old_variance_mean": 0.08806178718805313,
+          "new_variance_mean": 0.07716168463230133,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03968760371208191,
+          "variance_max_abs_change": 0.03888246417045593,
+          "old_variance_mean": 0.244428813457489,
+          "new_variance_mean": 0.23910732567310333,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.07077348232269287,
+          "variance_max_abs_change": 0.0269106924533844,
+          "old_variance_mean": 0.10442452132701874,
+          "new_variance_mean": 0.09236197918653488,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.02653081715106964,
+          "variance_max_abs_change": 0.02919521927833557,
+          "old_variance_mean": 0.16047628223896027,
+          "new_variance_mean": 0.15014442801475525,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.04890568554401398,
+          "variance_max_abs_change": 0.03392304480075836,
+          "old_variance_mean": 0.17845430970191956,
+          "new_variance_mean": 0.16182060539722443,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.014822430908679962,
+          "variance_max_abs_change": 0.03019656240940094,
+          "old_variance_mean": 0.1656605452299118,
+          "new_variance_mean": 0.15466077625751495,
+          "epsilon": 0.001
+        }
+      ],
+      "calibration_seconds": 0.4216688000014983,
+      "parameter_sha256_after": "d4e3c41bb14cc7d25f0ddeba79043cf349dcfb95a0415bba4149e9af7560dc6f",
+      "changed_state_keys": [
+        "blocks.0.b1.running_mean",
+        "blocks.0.b1.running_var",
+        "blocks.0.b2.running_mean",
+        "blocks.0.b2.running_var",
+        "blocks.1.b1.running_mean",
+        "blocks.1.b1.running_var",
+        "blocks.1.b2.running_mean",
+        "blocks.1.b2.running_var",
+        "blocks.2.b1.running_mean",
+        "blocks.2.b1.running_var",
+        "blocks.2.b2.running_mean",
+        "blocks.2.b2.running_var",
+        "blocks.3.b1.running_mean",
+        "blocks.3.b1.running_var",
+        "blocks.3.b2.running_mean",
+        "blocks.3.b2.running_var",
+        "blocks.4.b1.running_mean",
+        "blocks.4.b1.running_var",
+        "blocks.4.b2.running_mean",
+        "blocks.4.b2.running_var",
+        "blocks.5.b1.running_mean",
+        "blocks.5.b1.running_var",
+        "blocks.5.b2.running_mean",
+        "blocks.5.b2.running_var"
+      ],
+      "train_original_mae": 0.08027773350477219,
+      "train_recalibrated_mae": 0.08249685168266296,
+      "validation_original_mae": 0.0767856314778328,
+      "validation_recalibrated_mae": 0.07698752731084824,
+      "check_original_mae": 0.08107735961675644,
+      "check_recalibrated_mae": 0.0879787728190422,
+      "restoration_max_abs_difference": 0.0,
+      "original_checkpoint_unchanged": true
+    },
+    {
+      "checkpoint": "empirical_risk_20260925_cluster2",
+      "method": "empirical_risk",
+      "cluster": 2,
+      "members": [
+        3,
+        4,
+        10,
+        11
+      ],
+      "original_checkpoint_sha256": "a6f4418c7cf5ce97f4a6a9f1abfb9686d3134aa1f4785b1af7748fde006ac6da",
+      "parameter_sha256_before": "e7f41d3c3f9c2b4b7e8553c36789eccfc7f0df3e3293e20b4f72b98fc84862ee",
+      "reproduction_differences": {
+        "train": 0.0,
+        "validation": 0.0,
+        "check": 0.0
+      },
+      "layers": [
+        {
+          "layer": "blocks.0.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.04798068106174469,
+          "variance_max_abs_change": 0.021368592977523804,
+          "old_variance_mean": 0.3030300438404083,
+          "new_variance_mean": 0.2905952036380768,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.0.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.039991676807403564,
+          "variance_max_abs_change": 0.03535512089729309,
+          "old_variance_mean": 0.4031868278980255,
+          "new_variance_mean": 0.38473063707351685,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.028680846095085144,
+          "variance_max_abs_change": 0.019807159900665283,
+          "old_variance_mean": 0.16798558831214905,
+          "new_variance_mean": 0.15482862293720245,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.043187305331230164,
+          "variance_max_abs_change": 0.044629573822021484,
+          "old_variance_mean": 0.365927517414093,
+          "new_variance_mean": 0.35742613673210144,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.023946940898895264,
+          "variance_max_abs_change": 0.02001657336950302,
+          "old_variance_mean": 0.0765705481171608,
+          "new_variance_mean": 0.06139469891786575,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.06476491689682007,
+          "variance_max_abs_change": 0.04111941158771515,
+          "old_variance_mean": 0.2593354284763336,
+          "new_variance_mean": 0.2467050552368164,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.09830822050571442,
+          "variance_max_abs_change": 0.02616431564092636,
+          "old_variance_mean": 0.10547967255115509,
+          "new_variance_mean": 0.0901375561952591,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.05473750829696655,
+          "variance_max_abs_change": 0.04918530583381653,
+          "old_variance_mean": 0.24274671077728271,
+          "new_variance_mean": 0.22987647354602814,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.11630061268806458,
+          "variance_max_abs_change": 0.042230114340782166,
+          "old_variance_mean": 0.14534133672714233,
+          "new_variance_mean": 0.1292877346277237,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.02503471076488495,
+          "variance_max_abs_change": 0.054245561361312866,
+          "old_variance_mean": 0.19429397583007812,
+          "new_variance_mean": 0.18539704382419586,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.08312297612428665,
+          "variance_max_abs_change": 0.05603495240211487,
+          "old_variance_mean": 0.22686129808425903,
+          "new_variance_mean": 0.2086356282234192,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.014587447047233582,
+          "variance_max_abs_change": 0.030246347188949585,
+          "old_variance_mean": 0.18313413858413696,
+          "new_variance_mean": 0.17255999147891998,
+          "epsilon": 0.001
+        }
+      ],
+      "calibration_seconds": 0.4492470000113826,
+      "parameter_sha256_after": "e7f41d3c3f9c2b4b7e8553c36789eccfc7f0df3e3293e20b4f72b98fc84862ee",
+      "changed_state_keys": [
+        "blocks.0.b1.running_mean",
+        "blocks.0.b1.running_var",
+        "blocks.0.b2.running_mean",
+        "blocks.0.b2.running_var",
+        "blocks.1.b1.running_mean",
+        "blocks.1.b1.running_var",
+        "blocks.1.b2.running_mean",
+        "blocks.1.b2.running_var",
+        "blocks.2.b1.running_mean",
+        "blocks.2.b1.running_var",
+        "blocks.2.b2.running_mean",
+        "blocks.2.b2.running_var",
+        "blocks.3.b1.running_mean",
+        "blocks.3.b1.running_var",
+        "blocks.3.b2.running_mean",
+        "blocks.3.b2.running_var",
+        "blocks.4.b1.running_mean",
+        "blocks.4.b1.running_var",
+        "blocks.4.b2.running_mean",
+        "blocks.4.b2.running_var",
+        "blocks.5.b1.running_mean",
+        "blocks.5.b1.running_var",
+        "blocks.5.b2.running_mean",
+        "blocks.5.b2.running_var"
+      ],
+      "train_original_mae": 0.08150742202997208,
+      "train_recalibrated_mae": 0.07963291555643082,
+      "validation_original_mae": 0.08372412621974945,
+      "validation_recalibrated_mae": 0.08473042398691177,
+      "check_original_mae": 0.06818129867315292,
+      "check_recalibrated_mae": 0.07103056460618973,
+      "restoration_max_abs_difference": 0.0,
+      "original_checkpoint_unchanged": true
+    },
+    {
+      "checkpoint": "empirical_risk_20260925_cluster3",
+      "method": "empirical_risk",
+      "cluster": 3,
+      "members": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "original_checkpoint_sha256": "d2b926912cfc95129d4c6d646fcaf581a07b47939d63136c6bc3d753e0caad28",
+      "parameter_sha256_before": "dad901b9a825e7d456b8c6c5fbcfef698c0957e59a69609472effd6bef63e3bd",
+      "reproduction_differences": {
+        "train": 0.0,
+        "validation": 0.0,
+        "check": 0.0
+      },
+      "layers": [
+        {
+          "layer": "blocks.0.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03590250015258789,
+          "variance_max_abs_change": 0.01540711522102356,
+          "old_variance_mean": 0.2537614107131958,
+          "new_variance_mean": 0.2446233630180359,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.0.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03326326608657837,
+          "variance_max_abs_change": 0.04030284285545349,
+          "old_variance_mean": 0.40962666273117065,
+          "new_variance_mean": 0.38676583766937256,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.027617573738098145,
+          "variance_max_abs_change": 0.017480388283729553,
+          "old_variance_mean": 0.15863357484340668,
+          "new_variance_mean": 0.14701735973358154,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.1.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03282064199447632,
+          "variance_max_abs_change": 0.03218619525432587,
+          "old_variance_mean": 0.3600902855396271,
+          "new_variance_mean": 0.3499313294887543,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.0340280681848526,
+          "variance_max_abs_change": 0.02066231518983841,
+          "old_variance_mean": 0.06934702396392822,
+          "new_variance_mean": 0.05686424672603607,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.2.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.03849303722381592,
+          "variance_max_abs_change": 0.03814452886581421,
+          "old_variance_mean": 0.26625022292137146,
+          "new_variance_mean": 0.25490015745162964,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.08183819055557251,
+          "variance_max_abs_change": 0.03481750190258026,
+          "old_variance_mean": 0.09147293865680695,
+          "new_variance_mean": 0.07535931468009949,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.3.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.04795201122760773,
+          "variance_max_abs_change": 0.06169840693473816,
+          "old_variance_mean": 0.23837639391422272,
+          "new_variance_mean": 0.22664791345596313,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.08600518107414246,
+          "variance_max_abs_change": 0.05373623967170715,
+          "old_variance_mean": 0.11358468979597092,
+          "new_variance_mean": 0.09319473803043365,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.4.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.0234890878200531,
+          "variance_max_abs_change": 0.032732442021369934,
+          "old_variance_mean": 0.18403790891170502,
+          "new_variance_mean": 0.17437958717346191,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b1",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.08997970819473267,
+          "variance_max_abs_change": 0.0871744453907013,
+          "old_variance_mean": 0.20776648819446564,
+          "new_variance_mean": 0.17529596388339996,
+          "epsilon": 0.001
+        },
+        {
+          "layer": "blocks.5.b2",
+          "moment_count_per_channel": 21504,
+          "mean_max_abs_change": 0.010775089263916016,
+          "variance_max_abs_change": 0.029501616954803467,
+          "old_variance_mean": 0.18390396237373352,
+          "new_variance_mean": 0.1753854602575302,
+          "epsilon": 0.001
+        }
+      ],
+      "calibration_seconds": 0.42250369999965187,
+      "parameter_sha256_after": "dad901b9a825e7d456b8c6c5fbcfef698c0957e59a69609472effd6bef63e3bd",
+      "changed_state_keys": [
+        "blocks.0.b1.running_mean",
+        "blocks.0.b1.running_var",
+        "blocks.0.b2.running_mean",
+        "blocks.0.b2.running_var",
+        "blocks.1.b1.running_mean",
+        "blocks.1.b1.running_var",
+        "blocks.1.b2.running_mean",
+        "blocks.1.b2.running_var",
+        "blocks.2.b1.running_mean",
+        "blocks.2.b1.running_var",
+        "blocks.2.b2.running_mean",
+        "blocks.2.b2.running_var",
+        "blocks.3.b1.running_mean",
+        "blocks.3.b1.running_var",
+        "blocks.3.b2.running_mean",
+        "blocks.3.b2.running_var",
+        "blocks.4.b1.running_mean",
+        "blocks.4.b1.running_var",
+        "blocks.4.b2.running_mean",
+        "blocks.4.b2.running_var",
+        "blocks.5.b1.running_mean",
+        "blocks.5.b1.running_var",
+        "blocks.5.b2.running_mean",
+        "blocks.5.b2.running_var"
+      ],
+      "train_original_mae": 0.07437743246555328,
+      "train_recalibrated_mae": 0.07222342491149902,
+      "validation_original_mae": 0.08012466132640839,
+      "validation_recalibrated_mae": 0.08175570517778397,
+      "check_original_mae": 0.0875273123383522,
+      "check_recalibrated_mae": 0.0886981338262558,
+      "restoration_max_abs_difference": 0.0,
+      "original_checkpoint_unchanged": true
+    }
+  ],
+  "counts": {
+    "statistics_adaptations_started": 9,
+    "statistics_adaptations_completed": 9,
+    "optimizer_fits": 0,
+    "optimizer_steps": 0,
+    "gradient_calls": 0,
+    "calibration_prefix_calls": 828,
+    "calibration_prefix_rows": 387072,
+    "prediction_calls": 261,
+    "primary_prediction_rows": 112896,
+    "restoration_prediction_rows": 144,
+    "peak_rss_bytes": 271220736
+  },
+  "current": null,
+  "elapsed_seconds": 8.607991600001696
+}

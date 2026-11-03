@@ -1,0 +1,54 @@
+from pathlib import Path
+import datetime
+import hashlib
+import json
+import re
+import urllib.parse
+import urllib.request
+from html.parser import HTMLParser
+from pypdf import PdfReader
+
+DEST = Path(__file__).resolve().parent / 'sources/shared_training_86'
+records = []
+def fetch(name, url, cap):
+    path = DEST / name
+    assert not path.exists(), path
+    rec = {'url': url, 'accessed_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'cap_bytes': cap}
+    try:
+        req = urllib.request.Request(url, headers={'User-Agent': 'ResearchSourceReview/1.0'})
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = resp.read(cap + 1)
+            assert len(data) <= cap, 'Exceeded download cap'
+            if name.endswith('.pdf'):
+                assert data.startswith(b'%PDF'), 'Not a PDF'
+            path.write_bytes(data)
+            rec.update(status=resp.status, final_url=resp.url, path=str(path), bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+        if path.suffix == '.pdf':
+            pdf = PdfReader(path)
+            rec['pages'] = len(pdf.pages)
+            texts = [f'\n--- PDF page {i+1} ---\n' + (page.extract_text() or '') for i, page in enumerate(pdf.pages)]
+            path.with_suffix('.txt').write_text('\n'.join(texts), encoding='utf-8')
+        records.append(rec)
+        print(json.dumps({'name': name, 'bytes': len(data), 'pages': rec.get('pages')}, ensure_ascii=False))
+        return data
+    except Exception as exc:
+        rec['error'] = type(exc).__name__ + ': ' + str(exc)
+        records.append(rec)
+        print(json.dumps({'name': name, 'error': rec['error']}))
+        return None
+
+fetch('clustered_mtl_0809.2085v1.pdf', 'https://arxiv.org/pdf/0809.2085v1', 3_000_000)
+index = fetch('cvpr2020_index.html', 'https://openaccess.thecvf.com/CVPR2020?day=all', 3_000_000)
+if index:
+    links = re.findall(r'href=[\"\x27]([^\"\x27]+)[\"\x27]', index.decode('utf-8'))
+    matches = [link for link in links if 'Standley' in link and link.endswith('_paper.html')]
+    print(json.dumps({'discovered_standley_pages': matches}))
+    for link in matches[:1]:
+        page_url = urllib.parse.urljoin('https://openaccess.thecvf.com', link)
+        page = fetch('task_grouping_cvpr2020.html', page_url, 500_000)
+        if page:
+            page_links = re.findall(r'href=[\"\x27]([^\"\x27]+)[\"\x27]', page.decode('utf-8'))
+            pdf_links = [x for x in page_links if 'Standley' in x and x.endswith('_paper.pdf')]
+            if pdf_links:
+                fetch('task_grouping_cvpr2020.pdf', urllib.parse.urljoin(page_url, pdf_links[0]), 5_000_000)
+(DEST / 'method_source_manifest.json').write_text(json.dumps({'scope': 'Primary PDFs downloaded and text extracted; reading scope recorded separately.', 'sources': records}, ensure_ascii=False, indent=2), encoding='utf-8')

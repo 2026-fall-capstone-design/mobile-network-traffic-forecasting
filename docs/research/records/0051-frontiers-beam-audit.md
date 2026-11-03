@@ -1,5 +1,7 @@
 # 51 — 희소 beam 트래픽의 공동 학습과 비교 조건
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 Frontiers의 GRU-MTL은 **beam의 0/nonzero 분류와 트래픽량 회귀를 함께 학습**한다. 같은 목적을 다시 제안하기 전에 참고할 선행 방법이지만, cell clustering·관측 대상 선택·TabICLv2 소속 수정·최종 RCTL 성능의 검증은 아니다. 표에서 확인되는 이득과 본문의 과장된 일반화, 서로 다른 평가 조건을 함께 보존한다.
 
 이 자료는 [51 검토 계획](../evidence/0051-0055-gotsf-audit/originals/SRC-0021746.md.txt)에 관련된 `network_scope_51` 수집 묶음에 있다. [55 판단](../evidence/0052-0054-partial-observation/originals/SRC-0021824.md.txt)은 Frontiers를 직접 지명하지 않는다. 이번 원문 검토를 당시 55의 채택·기각 근거였다고 소급하지 않는다. 55의 event 문헌 접근 공백만 이 기록 말미에 연결한다. 기존 [GOTSF](0051-0055-gotsf-audit.md), [ITU·Cellular](0051-0055-network-forecasting.md), [52·54 부분 관측](0052-0054-partial-observation.md) 기록과 함께 읽는다.

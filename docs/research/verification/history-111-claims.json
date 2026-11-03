@@ -1,0 +1,860 @@
+{
+  "batch_id": "history-111",
+  "record_path": "../records/0111-interim-document-history.md",
+  "record_sha256": "41e503faadc2c2adc4ec72be3cd32da4701f88fb6db433071eca89c2408d4ce0",
+  "claims": [
+    {
+      "claim_id": "H111-C01",
+      "title": "읽은 범위",
+      "claim": "H110이 남긴 원84의 후속8고유 자료를 읽었다. Word1개·저장 PDF5쪽·PNG5장·snapshot26 누적연혁422행이며 바이트가 같은 사본을 포함한15경로를 연결한다. 문서 판본과 그림 수를 새 연구 시도나 독립 실험 수로 세지 않는다.",
+      "record_anchor": "c01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              1,
+              65
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              1,
+              18
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023571",
+          "source_sha256": "92daf7270531649c6edf24980a83927bf58e2a393035e73d3e3ade2dfc478f24",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023572",
+          "source_sha256": "32af8a4920dbfef35619ce9c186b418c4dd2c351910aed17fc5ef7d7a89df436",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023573",
+          "source_sha256": "c0047e02710b5e09fc5e38a0c313f86c546d69bc1ead67785da30a7e2a849dce",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023574",
+          "source_sha256": "c7ff998d22e3c575fbc32c70ee2a4fbca285711181a44e2afa2641f5d19d630d",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023575",
+          "source_sha256": "09f096d8b5d284aae9f2a51439557d31935fa4dfb8c5153cbe3eec38ea554391",
+          "full_image": true
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0111-interim-document-history/read-scopes.json",
+        "../evidence/0111-interim-document-history/provenance-check.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H111-C02",
+      "title": "본문 동등성",
+      "claim": "Word의65개 body 요소에는4개 표가 있다. 표의 행·셀 순서를 유지해 추출한 본문은 PDF의 매쪽 footer와 공백, Markdown의 제목·표·링크 서식과 공백을 제외하면 모두5,180자로 일치한다. 숫자·문장부호·대소문자를 고쳐 맞춘 비교가 아니다. 이 검사는 파일 바이트나 픽셀 동일성을 뜻하지 않는다.",
+      "record_anchor": "c02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              1,
+              65
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              1,
+              137
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0111-interim-document-history/document-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H111-C03",
+      "title": "실제 시각검수 범위",
+      "claim": "저장 PNG5장과 저장 PDF를 이번에 새로 이미지로 만든5쪽을 모두 실제 열어 읽었다. 제목·본문·4개 표·출처·footer에서 잘림, 빈 페이지 또는 표 분리는 관찰하지 못했다. 저장 PNG는1414×2000, 새 PDF 이미지는1415×2000이므로 픽셀 동일하다고 하지 않는다. 번들 렌더 도구에 LibreOffice가 없어 Word의 새 렌더는 미완료다.",
+      "record_anchor": "c03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "source_id": "SRC-0023571",
+          "source_sha256": "92daf7270531649c6edf24980a83927bf58e2a393035e73d3e3ade2dfc478f24",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023572",
+          "source_sha256": "32af8a4920dbfef35619ce9c186b418c4dd2c351910aed17fc5ef7d7a89df436",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023573",
+          "source_sha256": "c0047e02710b5e09fc5e38a0c313f86c546d69bc1ead67785da30a7e2a849dce",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023574",
+          "source_sha256": "c7ff998d22e3c575fbc32c70ee2a4fbca285711181a44e2afa2641f5d19d630d",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023575",
+          "source_sha256": "09f096d8b5d284aae9f2a51439557d31935fa4dfb8c5153cbe3eec38ea554391",
+          "full_image": true
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0111-interim-document-history/visual-review.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H111-C04",
+      "title": "패키지 내용과 기본 메타데이터",
+      "claim": "Word 본문에는 변경추적·주석 참조·각주/미주 참조·그림·OMML 수식이 없고, footer에는 PAGE 필드1개가 있다. customXml은 문헌 항목이 없는 Sources 요소이며 thumbnail은 흰 페이지로 보인다. core 속성의2013년 시각과 app 속성 Pages1은 기본 메타데이터로 남아 있어, 본문의2026-09-26 날짜와 저장 PDF5쪽을 대신하는 근거로 쓰지 않는다.",
+      "record_anchor": "c04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              1,
+              65
+            ]
+          ],
+          "parts": [
+            "word/footer1.xml",
+            "customXml/item1.xml",
+            "docProps/core.xml",
+            "docProps/app.xml",
+            "docProps/thumbnail.jpeg"
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0111-interim-document-history/package-review.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H111-C05",
+      "title": "직접 예측의 긍정적 근거",
+      "claim": "1쪽의 원74 표는4cell·공통28열·cell당 context256·뒤168시간 개발 구간의 정규화 수치다. Ridge/HGB/Tab의 MSE는0.014360/0.011925/0.009580, MAE는0.089565/0.078400/0.066828이다. Tab은 mean 출력을 사용한다. 이 표는 작은 context에서의 직접 예측 이득이며 공간 입력이나 소속 선택 자체의 개선 실험은 아니다.",
+      "record_anchor": "c05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              5,
+              9
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            1
+          ]
+        },
+        {
+          "source_id": "SRC-0023571",
+          "source_sha256": "92daf7270531649c6edf24980a83927bf58e2a393035e73d3e3ade2dfc478f24",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              107,
+              108
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H111-C06",
+      "title": "최종 RCTL의 다른 결론",
+      "claim": "같은1쪽의 원07 비교는16cell·K4·군집당4cell·480시간의 cell 평균 정규화 MAE다. seed20260925의 empirical/Tab은0.081600/0.087328, seed20260926은0.083516/0.087760이며 Tab이 각각7.02%,5.08% 불리하다. 두 seed는 같은 자료를 사용한다. 4쪽의 global0.071068은 첫 seed의 K1 보조 비교다. 직접 예측 표와 지표·cell·기간을 합치지 않는다.",
+      "record_anchor": "c06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              10,
+              14
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              37,
+              37
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            1,
+            4
+          ]
+        },
+        {
+          "source_id": "SRC-0023571",
+          "source_sha256": "92daf7270531649c6edf24980a83927bf58e2a393035e73d3e3ade2dfc478f24",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023574",
+          "source_sha256": "c7ff998d22e3c575fbc32c70ee2a4fbca285711181a44e2afa2641f5d19d630d",
+          "full_image": true
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H111-C07",
+      "title": "예측과 군집 결정의 연결",
+      "claim": "2쪽은 원80에서 입력만 사용, 실제 입력·정답, TabICL·Ridge·HGB의 다섯 방법이 같은 소속을 선택했다고 설명한다. 평균 직접 예측이 좋아도 새로운 소속 결정이 만들어진 것은 아니다. HCP·RMB-CLE·ETAP·Traffic Matrix는 이 연결과 강한 비교군을 검토할 선행 근거이며 이번에 새로 전부 재현한 연구로 세지 않는다.",
+      "record_anchor": "c07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              15,
+              24
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            2
+          ]
+        },
+        {
+          "source_id": "SRC-0023572",
+          "source_sha256": "32af8a4920dbfef35619ce9c186b418c4dd2c351910aed17fc5ef7d7a89df436",
+          "full_image": true
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H111-C08",
+      "title": "시계열 입력 원칙의 범위",
+      "claim": "3쪽은 최근 이력·전일/전주 lag·시각·요일을 비교 방법에 공통으로 주고, 관측된 이력의 겹침과 미래 정답 누수를 구분한다. query 실제값을 오차 계산에 쓴다는 문장은 이 보고서의 입력 설명이다. 이전 모든 구현의 target 사용이 동일하다는 별도 검증으로 확대하지 않는다. 도로 속도 연구의 결과를 통신 활동량 성능으로 옮기지도 않는다.",
+      "record_anchor": "c08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              25,
+              28
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            3
+          ]
+        },
+        {
+          "source_id": "SRC-0023573",
+          "source_sha256": "c0047e02710b5e09fc5e38a0c313f86c546d69bc1ead67785da30a7e2a849dce",
+          "full_image": true
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H111-C09",
+      "title": "작업량과 실행시간",
+      "claim": "3쪽의 M256/Q64/k16 예시에서 N128·1024·10000의 전체 교차 query는1,040,384·67,043,328·6,399,360,000행, 방향 후보는131,072·1,048,576·10,240,000행, 양방향 상한은262,144·2,097,152·20,480,000행이다. 표는 H110이 검산한 저장 수치와 같은 본문이다. 자기 query N×64와 context 재준비 비용은 별도이며 실행시간·최적 설정·새 알고리즘 성공을 뜻하지 않는다.",
+      "record_anchor": "c09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              29,
+              35
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            3
+          ]
+        },
+        {
+          "source_id": "SRC-0023573",
+          "source_sha256": "c0047e02710b5e09fc5e38a0c313f86c546d69bc1ead67785da30a7e2a849dce",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              10,
+              10
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H111-C10",
+      "title": "완료되지 않은 판단",
+      "claim": "4쪽의6행 표는 도시 규모 비용, 새 기간·자료의 재현성, clustering의 실제 필요, Tab이 만드는 유용한 결정, RCTL 이득, 최종 방향을 남긴다. 운영 제약에 관한 답은 기록돼 있지 않아 이를 임의로 가정하지 않는다. 보고서 완성은 최종 추천·독립 평가 완료가 아니며, 이미 설계에 사용한 Milan 기간은 개발 자료다.",
+      "record_anchor": "c10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              36,
+              45
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            4
+          ]
+        },
+        {
+          "source_id": "SRC-0023574",
+          "source_sha256": "c7ff998d22e3c575fbc32c70ee2a4fbca285711181a44e2afa2641f5d19d630d",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              9,
+              14
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H111-C11",
+      "title": "자료와 구현의 제한",
+      "claim": "5쪽은 시간별 가공 Milan Internet activity·활동량이 큰16cell·PCC balanced와 원 UPC의 차이를 명시한다. Tab 가중치는 tabicl-regressor-v2-20260212.ckpt, 공식 코드 commit은0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3이다. RCTL Torch port의 복사 가중치 forward 일치 보고를 학습 경로의 동일성으로 확대하지 않는다. 문헌8개와 재현기록6개의 출처 라벨도 보존했다.",
+      "record_anchor": "c11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              46,
+              64
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            5
+          ]
+        },
+        {
+          "source_id": "SRC-0023575",
+          "source_sha256": "09f096d8b5d284aae9f2a51439557d31935fa4dfb8c5153cbe3eec38ea554391",
+          "full_image": true
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H111-C12",
+      "title": "개인 링크와 팀 접근",
+      "claim": "Word의14개 hyperlink 관계는 개인 file 경로7개와 HTTPS7개다. PDF는 줄바꿈된 링크가 여러 사각형으로 나뉘어18주석·14고유 주소이며 HTTPS 목적지는 Word와 같다. PDF에서 추출한 개인 경로에는 한글 문자 깨짐도 보인다. 바이너리를 수정하지 않고 H110의7개 상대링크 보정 사본으로 연결한다. HCP는 기존 문헌 검수 페이지로 연결하며 논문 전문의 새 사본은 아니다.",
+      "record_anchor": "c12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              48,
+              62
+            ]
+          ],
+          "parts": [
+            "word/_rels/document.xml.rels"
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            5
+          ]
+        },
+        {
+          "source_id": "SRC-0023575",
+          "source_sha256": "09f096d8b5d284aae9f2a51439557d31935fa4dfb8c5153cbe3eec38ea554391",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              103,
+              133
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0111-interim-document-history/team-access.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H111-C13",
+      "title": "누적연혁의 판본 차이",
+      "claim": "snapshot25의412행이 snapshot26에서422행이 됐다. 새 최신 상태는 원84의 근거 종합·중간 Word 검수이며 원83 상태를 이전 항목으로 옮겼다. snapshot25 보관 완료24파일·4,045,758바이트 확인 한 줄도 추가됐다. 나머지 동일 구간은 판본 비교로 연결한다. 과거 기록을 새 실험으로 재집계하지 않는다.",
+      "record_anchor": "c13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              1,
+              25
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0001479",
+          "source_sha256": "5bbd8ca6e7a47f042df1c60172c791a194e86556cb1668f8b23e6c80dc10f513",
+          "line_ranges": [
+            [
+              1,
+              27
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0111-interim-document-history/version-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H111-C14",
+      "title": "후속 정정과 완료 시점을 읽는 법",
+      "claim": "연혁286행에는 원 UPC가1~4 cluster를 비교했다는 옛 설명이 남지만,265행의 후속 검토가1·2·4·6·8·12라고 정정한다. 초기366·377행의 RCTL0회도409행의29/29 fits 완료와 다른 시점이다. 옛 문장을 삭제해 경과를 없애거나 현재 상태로 읽지 않는다. 해당 성능·원문 검수는 연결한 기존 상세 기록에서 확인한다.",
+      "record_anchor": "c14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              263,
+              273
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              277,
+              290
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              361,
+              377
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              407,
+              422
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H111-C15",
+      "title": "당시 잔여 예산과 새 실행의 구별",
+      "claim": "원84 최신 상태는 새 모델·자료 진단0회, 작업량 산술과 문서 작성을 기록한다. Tab 잔여11context·20,640query행과 RCTL 새 fit0은 당시 원장판 f3e370…을 인용한 역사적 상태다. 현재 정리 작업의 실행 허가나 초기화할 예산으로 쓰지 않는다. 이번에는 추출·해시·저장 수치/서식 비교만 했으며 원본 생성·검증 코드나 모델을 실행하지 않았다.",
+      "record_anchor": "c15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              9,
+              14
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              43,
+              45
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H111-C16",
+      "title": "재진입 조건을 남긴 연혁",
+      "claim": "연혁은 실제 실행, 저장 예측 재분석, 문헌 검토, 기각·보류와 부분 이득을 함께 남긴다. 원74/80의 Tab 직접 예측 이득을 유지해도 같은 소속이나 최종 RCTL 개선이 저절로 확인되지는 않는다. 원83까지20개 결정 계열의 기존 지도에 원84의 중간 보고서를 연결하며, 후속 제안은 기존 실패 원인과 달라진 결정·자료·사전 판정 기준을 명시해야 한다.",
+      "record_anchor": "c16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              39,
+              62
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              101,
+              114
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              9,
+              25
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H111-C17",
+      "title": "원본 보존과 집계",
+      "claim": "8고유 원문은 바이트 그대로 저장하고15별칭 경로 및 보호 대상6개 원본의 해시를 확인했다. 새 집계 대상은 DOCX·PDF·연혁3본문과 PNG5이미지다. 재사용한 Markdown·직전 연혁, 추출문·기계 비교·추가 PDF 이미지와 같은 파생 자료는 새 본문/이미지로 중복 가산하지 않는다.",
+      "record_anchor": "c17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              1,
+              65
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              1,
+              18
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023571",
+          "source_sha256": "92daf7270531649c6edf24980a83927bf58e2a393035e73d3e3ade2dfc478f24",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023572",
+          "source_sha256": "32af8a4920dbfef35619ce9c186b418c4dd2c351910aed17fc5ef7d7a89df436",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023573",
+          "source_sha256": "c0047e02710b5e09fc5e38a0c313f86c546d69bc1ead67785da30a7e2a849dce",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023574",
+          "source_sha256": "c7ff998d22e3c575fbc32c70ee2a4fbca285711181a44e2afa2641f5d19d630d",
+          "full_image": true
+        },
+        {
+          "source_id": "SRC-0023575",
+          "source_sha256": "09f096d8b5d284aae9f2a51439557d31935fa4dfb8c5153cbe3eec38ea554391",
+          "full_image": true
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0111-interim-document-history/provenance-check.json",
+        "../evidence/0111-interim-document-history/read-scopes.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H111-C18",
+      "title": "남은 범위",
+      "claim": "H110이 지정한 후속8개는 이 기록에서 내용 검토를 마쳤다. Word의 새 렌더, 당시 최초 실패 검사판·9쪽 렌더의 세부 증거는 여전히 미확인이다. 원85 이후와 이전 고유 판본·보조자료, 전체 통합·장기 팀 접근·최종 원본 변경 및 검색 검수는 남는다. 이 문서 묶음의 정리를 전체 연구 Goal 완료로 표시하지 않는다.",
+      "record_anchor": "c18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001505",
+          "source_sha256": "00ae93688dc21f5c6f0865f508312289bfe72408d2f5403eb12ab7451d577300",
+          "line_ranges": [
+            [
+              9,
+              14
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000030",
+          "source_sha256": "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686",
+          "docx_blocks": [
+            [
+              43,
+              45
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023570",
+          "source_sha256": "9260710ea68527a575fe3ce4e74364e7bc93ec224cb3bb3ddb0802202d5a9df9",
+          "pages": [
+            4
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0111-interim-document-history/packet-coverage.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

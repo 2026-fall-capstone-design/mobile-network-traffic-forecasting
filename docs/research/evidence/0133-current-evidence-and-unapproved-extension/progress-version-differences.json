@@ -1,0 +1,65 @@
+{
+  "old_source_id": "SRC-0001999",
+  "new_source_id": "SRC-0002032",
+  "old_sha256": "17e16269c4cdaa69582a16a13c6db378ac9e07b4c52e6f3c69e9316cb1facb5f",
+  "new_sha256": "650d9542074f524b6847b40d9e6576cbf7c2b5ef6829abfbe378cd202b983a28",
+  "old_lines": 601,
+  "new_lines": 611,
+  "opcodes": [
+    {
+      "operation": "equal",
+      "old_range_one_based": [
+        1,
+        6
+      ],
+      "new_range_one_based": [
+        1,
+        6
+      ],
+      "old_text": null,
+      "new_text": null
+    },
+    {
+      "operation": "replace",
+      "old_range_one_based": [
+        7,
+        7
+      ],
+      "new_range_one_based": [
+        7,
+        17
+      ],
+      "old_text": [
+        "## 최신 상태 — 102 구조 기반 대리값의 적용 범위"
+      ],
+      "new_text": [
+        "## 최신 상태 — 103 최신 실제 결과를 반영한 근거 문서와 완료 조건 감사",
+        "",
+        "- 2026-09-26. 102는 구조 기반 대리값의 적용 범위를 확인하여 다음 채택 판단을 바꾼 progress였다. 103에서는 goal의 현재 요구·원장·101/95/RCTL 저장 결과를 읽고, 84 이후 바뀐 결과를 새 한국어 보고서와4쪽 Word에 반영했다. 새 모델 실행이나 traffic 통계 재계산은 없다.",
+        "- 새문서: output/docx/TabICLv2_연구재설계_현재근거와_미완료조건_검토.docx 및 같은 이름의 output/research Markdown. 기존 Word를 덮어쓰지 않았다. 묶은 실제 context의 같은14일 비교, batch 비용, 선행 방법과의 차이, 미완료 조건을 연결했다. 101의 Tab 직접 우위를 RCTL clustering 개선으로 바꾸지 않는다.",
+        "- 번들 render_docx.py에 기존 hidden Word COM adapter를 사용했다. process75623은exit0으로종료했다.4쪽 모두 시각 확인했고 clipping/빈쪽/분리table/고립heading이없다.표의반올림수치는저장JSON과대조했으며local출처link도확인했다.임시render PDF/PNG는내부QA자료다.",
+        "- 완료조건별감사103_goal_requirements_audit.json에서새문제·유용한Tab결정·최종RCTL연결·추천방향이아직미완료임을기록했다.문서가완성됐다는사실로연구goal을완료하지않는다.중간감사를새연구기여로세지않는다.",
+        "- RCTL29fit전부완료,추가fit0.잔여Tab2context/4512query행.원장SHA60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a불변.모델수/상한/과거평가기간의개발자료지위를바꾸지않았다.",
+        "- 추가확인을허용할경우의조건부범위를103_conditional_execution_extension.md에별도작성했다.최대18fit은새K4후보4+단순비교4+Global1을2seed확인하는상한제안이며아직허용·실행하지않았다.후보가구체화되기전에는실행하지않으며,상한증가만으로신규성이생긴다고설명하지않는다.",
+        "- 새추천후보는여전히미확정이다.현재실행상한안에서새partition의RCTL실측을더진행할수없고,원문/기호대체확인도그연결을충족하지못했다.동일실패를다른이름으로반복하거나추가예산을자동사용하지않는다.사용자의범위변경응답이오면기존조건과통합하고,없으면현재상한을유지한다.",
+        "",
+        "## 이전 상태 — 102 구조 기반 대리값의 적용 범위"
+      ]
+    },
+    {
+      "operation": "equal",
+      "old_range_one_based": [
+        8,
+        601
+      ],
+      "new_range_one_based": [
+        18,
+        611
+      ],
+      "old_text": null,
+      "new_text": null
+    }
+  ],
+  "metadata_diff_not_actual_body_read": true,
+  "new_credit": 0
+}

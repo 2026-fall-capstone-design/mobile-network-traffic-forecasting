@@ -1,0 +1,123 @@
+{
+  "batch_id": "history-130",
+  "actual_read_ranges": {
+    "SRC-0001944": [
+      [
+        1,
+        285
+      ]
+    ],
+    "SRC-0001945": [
+      [
+        1,
+        31
+      ]
+    ],
+    "SRC-0001946": [
+      [
+        1,
+        70
+      ]
+    ],
+    "SRC-0001947": [
+      [
+        1,
+        187
+      ]
+    ],
+    "SRC-0001948": [
+      [
+        1,
+        32
+      ]
+    ],
+    "SRC-0001949": [
+      [
+        1,
+        415
+      ]
+    ],
+    "SRC-0001950": [
+      [
+        1,
+        671
+      ]
+    ],
+    "SRC-0001951": [
+      [
+        1,
+        54
+      ]
+    ],
+    "SRC-0001952": [
+      [
+        1,
+        98
+      ]
+    ],
+    "SRC-0001953": [
+      [
+        1,
+        349
+      ]
+    ],
+    "SRC-0001954": [
+      [
+        1,
+        377
+      ]
+    ],
+    "SRC-0001955": [
+      [
+        1,
+        455
+      ]
+    ],
+    "SRC-0001956": [
+      [
+        1,
+        505
+      ]
+    ]
+  },
+  "actual_raw_lines": 3529,
+  "whole_source_ids": [
+    "SRC-0001944",
+    "SRC-0001945",
+    "SRC-0001946",
+    "SRC-0001947",
+    "SRC-0001948",
+    "SRC-0001949",
+    "SRC-0001950",
+    "SRC-0001951",
+    "SRC-0001952",
+    "SRC-0001953",
+    "SRC-0001954",
+    "SRC-0001955",
+    "SRC-0001956"
+  ],
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "models_instantiated": false,
+  "new_model_runs": 0,
+  "coverage_increment_applied": false,
+  "status": "selected_11_code_README_and2_metadata_whole_read",
+  "unread_source_ids": [],
+  "findings": [
+    "APT metadata pins 98a4c9c017666207b02029f842eff92818f0eab8, 2026-01-26T16:37:07Z; Tab metadata pins 5673beaab72d69bb9db30da2740aef90975a3e0c, 2026-05-01T16:29:00Z. These are captured revisions, not latest-main assertions.",
+    "APT forward takes history-first and horizon-last timestamp codes, learned weighted timestamp embeddings, dot-product similarities, top-k softmax, and two scalar heads. independent=False shares the returned W/B across channels at a given timestamp pair; normalizer statistics and backbone predictions need not be shared.",
+    "Captured ETTh1/iTransformer config has L336/H96, normalization None, independentFalse, 30 prototypes/top3, masked_mae loss. It is not a direct reproduction of the Traffic/RevIN Table2 row or the four-horizon paper aggregate.",
+    "Runner freezes model and normalization for APT preparation, then also keeps them frozen for the first configured prediction-loss epoch (tan_epoch+1), before joint training. Runner has l2 callsites and a captured L2affine implementation; loss/__init__.py binding is outside selected scope; paper regularizer and exact implementation are not interchangeable.",
+    "APT.py comments say cosine but active einsum is a dot product. independent branch computes fused_proto but match_prototypes returns weighted_proto; this is unused auxiliary code; do not equate it with a gate depicted by the paper. This is static source inspection, not an execution result or a proven paper implementation defect.",
+    "Selected captured sources omit model/model.py and normalizer internals; full affine application/de-normalization path and all future-data usage are outside this code reading. No leak-free or exact end-to-end reproduction claim.",
+    "Tab README checkpoint links and commands were read as data; no checkpoint download, commands, training, source import, model instantiation or inference was performed.",
+    "The preceding oversized emitted APT.py ranges had zero actual read credit. Recovered actual complete text via separate 1-100/101-240/241-415 calls; other complete ranges replace the prior 209-line partial scope rather than adding it.",
+    "Tab inference computes col_embedder/row_interactor once, reuses row_representations, and calls cluster_learner for each k in range(2,max_classes+1); default max_classes10 implies nine K-specific calls plus k_decision. Training additionally calls cluster_learner for the true K. No wall-clock/memory benchmark performed.",
+    "Tab automatic selection returns k_idx+2 as predicted cardinality; fixed-K path returns the number of occupied argmax labels, which can differ from requested K. Occupied-one-label output is not a learned CIN K1 decision.",
+    "CLI fixed K is passed without a visible lower-bound check in cluster.py; tabcluster.py fixed path delegates to imported ClusterLearningIMAB, whose implementation is outside the selected four PY files. Do not assert manual K1 is impossible or demonstrated working.",
+    "Tab training parser defaults (max_steps2000, optimizerSGD, min_features5) are not the paper reported final training protocol; model/training overrides and external base trainer remain outside selected scope. Default values do not establish actual checkpoint training.",
+    "Selected run_Softari computes synthetic-label soft ARI and K cross entropy, skipping single-class samples. It does not optimize traffic forecast error, RCTL model count, or cell assignment utility.",
+    "All selected 11 code/README files and two repository metadata JSON files are now actually read. Imported model/decision.py, learning.py, embedding.py, interaction.py, utils/preprocess.py, utils/trainer.py and datasets generator remain outside this selected-source audit.",
+    "Post-draft clarified that l2 import binding via loss/__init__.py is outside selected audit, and Tab paper main/App layer-count conventions are recorded separately."
+  ]
+}

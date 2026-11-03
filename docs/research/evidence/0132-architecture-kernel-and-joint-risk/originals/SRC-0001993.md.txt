@@ -1,0 +1,87 @@
+# 102. RCTL을 실행하지 않는 구조 기반 점수의 적용 범위
+
+2026-09-26. 원문·공식 코드와 직접 기호 전개를 확인한 기록이다. 새로운 모델 또는 traffic 실험은 실행하지 않았다.
+
+## 판단
+
+**현재 clustering에 RNN kernel을 추가하지 않는다.** 실행하지 않고 신경망의 구조를 수식으로 반영하는 원리는 존재한다. 그러나 확인한 kernel이 현재 RCTL의 학습 결과를 대신한다는 근거는 없으며, TabICLv2의 예측을 결합한다고 그 차이가 없어지지도 않는다. 이는 구조 기반 대리값 전체가 불가능하다는 판정이 아니다. 이번 후보를 현재 연구의 핵심 해결책으로 채택할 근거가 부족하다는 판정이다.
+
+직전101에서 실제 pooled context의 TabICLv2도 두 K4 partition을 RCTL과 반대로 평가했다. 이번 검토의 목적은 그 차이를 새로운 점수 하나로 해결할 수 있는지 확인하는 것이었다. 새 kernel 성능을 측정한 결과로 이 문서를 해석해서는 안 된다.
+
+## 1. 기존 gradient 검사와 다른 점
+
+실제 RCTL을 초기화하거나 학습한 뒤 Jacobian을 계산하면 그 모델을 실행한 것이다. 학습을 하지 않았다는 이유만으로 현재의 clustering 독립성 조건을 충족하지는 않는다. 반면 구조·초기화의 수학적 정의에서 무한폭 kernel을 계산하는 것은 RCTL 실행 없이 가능하다. 두 접근을 구별했다.
+
+다만 ‘RCTL을 호출하지 않았다’와 ‘그 점수가 RCTL의 공유 효과를 잘 예측한다’는 별개다. 두 번째 주장에는 그 구조·손실·최적화와 실제 유한 모델을 연결하는 근거가 필요하다.
+
+## 2. 확인한 원문과 현재 RCTL의 차이
+
+| 항목 | 원문에서 확인한 범위 | 현재 RCTL과의 연결 |
+|---|---|---|
+| Recurrent NTK | 단순 recurrent 변환과 선형 출력, Gaussian NTK 초기화, 무한폭 극한을 다룬다. §3.2는 gradient flow의 kernel 안정성을 다룬다. | 현재 모델은 TCN·LSTM·두 종류의 잔차 연결·BN을 조합한다. 단순 RNN kernel을 그대로 대입할 수 없다. |
+| 제곱오차와 kernel 회귀 | RNTK §2는 제곱오차에서 학습 방정식이 선형화되는 관계를 설명한다. | 현재 Adam·MAE 학습의 최종 예측을 고정 kernel ridge 해라고 놓을 수 없다. |
+| Tensor Programs II | LSTM·합성곱·잔차·BN 등을 표현하는 일반 틀이다. Corollary 7.3은 조건을 갖춘 무작위 초기화에서 폭이 커질 때의 NTK 극한이다. | ‘LSTM이나 BN은 이론상 다룰 수 없다’는 기각 사유는 부정확하다. 그러나 초기화의 극한 존재만으로 실제 학습 후 성능을 얻지는 않는다. |
+| 실제 폭·초기화 | RCTL의 폭은 16/32/64/64/32/16, Conv/Dense는 Xavier uniform, recurrent weight는 orthogonal이다. | 확인한 Gaussian·무한폭 정리와 그대로 동일하지 않다. 이 차이가 곧 실패의 증명인 것은 아니다. |
+| 공식 구현 | NTK4A는 RNN, BN+ReLU MLP, Transformer의 선택된 구현을 제공한다. README도 모든 구조의 구현이 아님을 명시한다. | 현재 RCTL 전체의 kernel 구현을 확보한 상태가 아니다. |
+
+RNTK v4의 PDF3·5·9쪽, Tensor Programs II v4의 PDF2·11·27쪽을 렌더링하여 수식·가정·LSTM 언급을 대조했다. 증명 전체를 검증하거나 모든 후속 NTK 연구를 배제한 것은 아니다.
+
+공식 NTK4A 코드 commit은 `db79a5bd9e75e5a15548306d4770951f94883fb7`이다. README, RNN/BN notebook, utils의 원본을 보존했다. RNN notebook의 `SimpleRNNClassifier`, `simrnn_ntk`, `rnnntk_batch`를 정적으로 읽어 finite simulation과 analytic 계산을 구분했다. 코드는 실행하지 않았다. 이 repository를 RNTK 저자들의 공식 구현이라고 혼동하지 않는다. RNTK 저자 페이지에서 확인한 링크는 논문이며, 이번에 그 논문의 공식 코드까지 확보한 것으로 기록하지 않는다.
+
+## 3. 단순한 학습기에서도 필요한 정보 — 직접 전개
+
+이 절은 새 이론이나 RCTL 성능 보장이 아니라, 대리값에 무엇이 필요한지 드러내는 기본 항등식이다.
+
+입력과 설정을 고정했을 때 학습 target 벡터 `Y_T`로부터 확인 구간을 예측하는 선형 smoother가 `A Y_T + b`라고 하자. `A`, `b`, 확인 구간의 가중치 `W`는 이 조건에서 고정한다. `W`는 대칭 양의 준정부호다. 학습·확인 target의 조건부 평균을 `μ_T`, `μ_Q`, 조건부 공분산 블록을 `Σ_TT`, `Σ_TQ`, `Σ_QQ`라고 놓는다. 2차 적률이 존재하면:
+
+`d = A μ_T + b − μ_Q`
+
+`E[(A Y_T + b − Y_Q)' W (A Y_T + b − Y_Q)]`
+
+`= d' W d + tr{ W [A Σ_TT A' + Σ_QQ − A Σ_TQ − Σ_QT A'] }`.
+
+전개는 오차를 평균 `d`와 평균0인 부분으로 나눈 뒤 교차항의 기대값0을 사용하면 된다. kernel과 규제값을 정한 kernel ridge는 선형 smoother의 한 예다. target을 보고 규제값·partition을 다시 고르면 그 선택 과정을 고정한 동일 식으로 무조건 다룰 수 없다.
+
+이 관계는 세 가지를 보여준다.
+
+1. 평균 관계만 잘 추정해도, sample을 합쳤을 때 달라지는 학습 변동까지 정해지지는 않는다.
+2. 개별 sample의 예측 분위수는 같은 시간·다른 cell 또는 다른 시간 사이의 공분산 블록을 자동으로 제공하지 않는다.
+3. kernel을 바꾸면 `A`가 바뀐다. 다른 학습기의 위험을 정확히 계산해도 RCTL의 순위를 정확히 계산한 것은 아니다.
+
+이 항등식은 제곱오차에 관한 것이다. 평균·공분산만으로 일반적인 MAE가 결정되지는 않는다. 공동 Gaussian과 같은 추가 가정에서 오차의 분포가 결정되면 MAE까지 계산할 수 있지만, 그 가정이 현재 traffic에서 확인된 것은 아니다.
+
+### 시계열 입력을 고정할 때의 주의점
+
+`X_(t+1)`에 `Y_t`가 lag로 포함된다면, 모든 행의 입력을 고정한 채 각 행의 target만 독립적으로 새로 생성하는 절차는 원래 시계열의 공동분포를 보존하지 않는다. 위 조건부 항등식 자체는 유효하지만, 어떤 정보를 조건으로 삼았는지에 따라 평균·공분산이 달라진다. 전체 lag 행렬을 조건으로 주면 상당수 과거 target은 이미 그 안에 들어 있다. 따라서 개별 Tab 분위수에서 target을 독립 추출한 결과를 실제 RCTL의 반복 학습 위험이라고 해석하지 않는다.
+
+이는 context와 query 사이에 무조건 긴 공백을 두어야 한다는 새로운 주장도 아니다. 이번 쟁점은 lag 입력과 target의 공동 관계를 유지하느냐이다.
+
+## 4. 계산량의 실체
+
+학습하지 않는 kernel도 계산이 무료는 아니다. dense kernel ridge의 일반적인 직접 계산은 학습 행 수 `n`에 대해 matrix 저장 `O(n²)`, 선형계 풀이 `O(n³)`가 필요하다. 효율적인 근사·특수 solver가 존재하므로 이를 모든 구현의 하한으로 부르지는 않는다.
+
+101과 같은 global의 `n=16×672=10,752`에서 double precision kernel 행렬 하나는 `10,752²×8=924,844,032 bytes`다. 동일 크기 네 group 각각의 `n=2,688` 행렬을 합하면 `231,211,008 bytes`다. 이는 행렬 하나씩의 정수 산술이며 peak memory나 실제 시간을 측정한 값이 아니다. RNN kernel의 시점별 중간 배열, factorization, 후보 재계산은 별도다.
+
+따라서 kernel 점수를 더해 ‘RCTL을 직접 학습하지 않으므로 계산이 작다’고만 주장할 수 없다. 원래의 단순 empirical 기준·저장된 Tab 결과 대비 실제 줄어드는 연산과 판단 개선이 먼저 필요하다. 이번에는 kernel 실행을 시작하지 않았다.
+
+## 5. 다른 관련 연구의 확인 수준
+
+- Morello·Grégoire·Verboven의 M3L/NeurIPS2024 workshop 논문은 early-training NTK 기반 task affinity라는 가까운 선행연구다. 대학의 공식 서지·초록과 검색에 노출된 원문 일부를 확인했다. 공식 PDF 접근은 HTTP403으로 실패했다. 그러므로 세부 식·가정·구조를 모두 검증했다거나 본 논문의 정확한 방법으로 후보가 반증됐다고 쓰지 않는다. main-track NeurIPS 논문으로 표기하지 않는다.
+- 2026년8월 electricity-load 연구와 2026년9월 annual-panel pooling 연구는 publication metadata와 검색에 노출된 내용을 스크리닝했다. telecom, 현재 RCTL, TabICLv2 partition의 직접 성능 근거로 사용하지 않았다. 전문 검토 완료 목록에 넣지 않는다.
+
+## 6. 실제로 바뀌는 다음 판단
+
+이번 검토 후 ‘Tab 추정값 + RNN kernel’은 추천 후보에서 제외한다. 실행 독립성은 충족할 가능성이 있으나, 같은 정보로 직접 확인할 수 없는 RCTL 연결 가정을 더하고 아직 확인되지 않은 비용을 발생시키기 때문이다. 이 판단을 바꾸려면 현재 구조·학습 조건에 맞는 대리값의 유용성 또는 같은 유용한 결정을 더 싸게 얻는 근거가 필요하다. 일반적인 NTK 정리의 존재나 Tab의 직접 MAE 개선만으로 재진입하지 않는다.
+
+101의 직접 예측 개선은 남아 있는 긍정적 증거다. 그러나 이를 RCTL clustering 개선으로 승격시키지 않는다. 다음에는 기존 자료에서 이미 확인한 유용한 결정과 비용 문제를 구체적으로 특정해야 하며, 또 다른 대리 점수를 추가하는 방식으로 이 연결 문제를 미루지 않는다.
+
+새 Tab context/query, RCTL fit/forward/gradient/BN 갱신, 기타 예측모델 fit, traffic 수치 실험은 모두0이다. 누적 원장은 SHA `60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a`로 불변이다. 잔여 Tab2context/4,512query행, 추가 RCTLfit0을 유지한다. 최종 추천안과 최종 Word는 아직 완료되지 않았다.
+
+## 출처
+
+1. Alemohammad et al., *The Recurrent Neural Tangent Kernel*. ICLR2021; [arXiv2006.10246v4](https://arxiv.org/abs/2006.10246v4), 2021-06-15. 이번 읽기: §2–3.2, §4 일부, 결론 및 관련 초기화 설명. PDF26쪽 전체 증명 감사는 아님.
+2. Yang, *Tensor Programs II: Neural Tangent Kernel for Any Architecture*. [arXiv2006.14548v4](https://arxiv.org/abs/2006.14548v4), 2020-11-30. 이번 읽기: §1–2, §7/Corollary7.3, Appendix D의 BN·GRU/LSTM 관련 부분. PDF60쪽 전체 증명 감사는 아님.
+3. [NTK4A 공식 구현](https://github.com/thegregyang/NTK4A/tree/db79a5bd9e75e5a15548306d4770951f94883fb7). 관련 정적 코드만 읽음; 실행0.
+4. Morello et al., *Exploring Task Affinities through NTK Alignment and Early Training Dynamics in Multi-Task Learning*. [공식 대학 서지](https://researchportal.vub.be/en/publications/exploring-task-affinities-through-ntk-alignment-and-early-trainin/), [공식 PDF 주소—이번 확보 실패](https://openreview.net/pdf?id=HxT9EuHdXW).
+5. Qin et al., *Load Forecasting for Sustainable Demand-Side Energy Management Under User Heterogeneity and Temporal Dynamics*. [공식 출판 페이지](https://www.mdpi.com/2071-1050/18/16/8165), 2026-08-10. 스크리닝만.
+6. Yolusever, *Pooling Beats Structure on Short Annual Panels: Parameter Sharing and the Forecast Accuracy of Evolutionary Models for Compositional Time Series*. [공식 출판 페이지](https://www.mdpi.com/2571-9394/8/5/89), 2026-09-18. 스크리닝만.

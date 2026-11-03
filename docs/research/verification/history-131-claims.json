@@ -1,0 +1,1778 @@
+{
+  "batch_id": "history-131",
+  "record_path": "../records/0131-actual-pooled-context-and-rctl-ranking.md",
+  "record_sha256": "dfa3730f25a1b9fa7f8bbab50a4a93b456f529c1833977a875d3d6604526368d",
+  "claims": [
+    {
+      "claim_id": "H131-C01",
+      "title": "원101의 실제 진단과 현재 정리 작업",
+      "claim": "2026-09-26 원101은 기존 16cell의 global K1·Tab-risk K4·empirical-risk K4에 실제 sample을 함께 넣어 비교한 사후 진단이다. 당시 Tab9context/16,128query와 Ridge·HGB18fit은 완료 로그·저장 결과에 연결되고 새 RCTL fit/forward/gradient는0이다. 현재 정리에서는 원코드 실행/import·모델생성·새 학습/추론0이며 당시 수행을 다시 시작하지 않는다.",
+      "claim_type": "historical_scope",
+      "record_anchor": "claim-01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            1,
+            9
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001980",
+          "JSON_pointers": [
+            "/success",
+            "/contexts_completed",
+            "/query_rows_attempted",
+            "/simple_fits",
+            "/new_RCTL_fits",
+            "/new_RCTL_forwards",
+            "/new_RCTL_gradients"
+          ],
+          "source_sha256": "345599e32e5cd051d9934d5c9582abb9e342d2e7e827daf0cbda84fa91894b42",
+          "team_source": "../sources/history-131.md#src-0001980"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H131-C02",
+      "title": "B2 위험 합산과 실제 context의 차이",
+      "claim": "B2는 cell별 Tab 분포로 공통 Ridge 예측+상태 수정값의 손해를 합산했으며 실제 pooled Tab을 실행한 결과가 아니다. 원101은 실제 context를 평가하지만 B2의 cell당504행과 원101의672행도 다르므로 달라진 결과를 대리 계산식 제거 하나의 인과 효과로 해석하지 않는다. 과거14·19의 cell 정보/입력 진단과도 세 partition의 직접 비교 범위를 구별한다.",
+      "claim_type": "method_scope",
+      "record_anchor": "claim-02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001964",
+          "lines": [
+            7,
+            17
+          ],
+          "source_sha256": "8ab57ab4de3dbf43e14f385bcda42f08c55f60d1e17aab9ee82a62da8967d5cc",
+          "team_source": "../sources/history-131.md#src-0001964"
+        },
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            11,
+            21
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H131-C03",
+      "title": "고정된 소속과 사후 비교의 독립성 한계",
+      "claim": "세 소속은 원래 RCTL 학습 전에 고정한 global·Tab-risk·실제 관측 정답 risk 구성이고 두K4는 각각4cell씩4그룹이다. 현재 저장 소속은 기존 observed-risk 자료와 일치한다. 원101은 새 점수를 고정한 뒤 저장 RCTL과 대조했지만 RCTL 결과는 계획 전부터 알려져 있었으므로 눈가림·독립 신규 test가 아니다. 기존 소속을 다시 선택한 실험으로 쓰지 않는다.",
+      "claim_type": "information_scope",
+      "record_anchor": "claim-03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001964",
+          "lines": [
+            9,
+            18
+          ],
+          "source_sha256": "8ab57ab4de3dbf43e14f385bcda42f08c55f60d1e17aab9ee82a62da8967d5cc",
+          "team_source": "../sources/history-131.md#src-0001964"
+        },
+        {
+          "source_id": "SRC-0001982",
+          "JSON_pointers": [
+            "/groups_local_index",
+            "/partition_selection_uses_new_results",
+            "/independent_test",
+            "/known_scope"
+          ],
+          "source_sha256": "2a0be7128833273b54d9edbbb68dd7e217f29f95d7fcae6bf3a7b568e197d349",
+          "team_source": "../sources/history-131.md#src-0001982"
+        },
+        {
+          "source_id": "SRC-0023588",
+          "JSON_pointers": [
+            "/cell_ids",
+            "/partitions/tabicl_risk",
+            "/partitions/empirical_risk"
+          ],
+          "source_sha256": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+          "team_source": "../sources/history-131.md#src-0023588"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H131-C04",
+      "title": "시간 분할과 이미 열람한 평가 기간",
+      "claim": "context target은168–839의672시간, query는1008–1343의336시간·연속14일이며 cell당 동일하다. query target에서 RCTL early-stopping840–1007을 제외했지만 기존20일 평가의 첫14일로 이미 열람한 개발 기간이다. 학습·validation·query의 구분을 독립 미래 일반화 증거로 승격하지 않는다.",
+      "claim_type": "data_scope",
+      "record_anchor": "claim-04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001964",
+          "lines": [
+            14,
+            18
+          ],
+          "source_sha256": "8ab57ab4de3dbf43e14f385bcda42f08c55f60d1e17aab9ee82a62da8967d5cc",
+          "team_source": "../sources/history-131.md#src-0001964"
+        },
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            17,
+            21
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001982",
+          "JSON_pointers": [
+            "/context_targets",
+            "/query_targets",
+            "/independent_test"
+          ],
+          "source_sha256": "2a0be7128833273b54d9edbbb68dd7e217f29f95d7fcae6bf3a7b568e197d349",
+          "team_source": "../sources/history-131.md#src-0001982"
+        },
+        {
+          "source_id": "SRC-0001976",
+          "NPZ_keys": [
+            "context_times",
+            "query_times"
+          ],
+          "source_sha256": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+          "team_source": "../sources/history-131.md#src-0001976"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H131-C05",
+      "title": "입력·정규화와 원 자료의 결합",
+      "claim": "입력은 최근8시간, lag24/168, 최근24시간 평균/표준편차와 query시각의 hour/weekday sin·cos인16열이다. cell ID를 새 입력으로 넣지 않았고 기존 최초28일 cell 평균 척도를 유지했다고 보고했다. 저장X/Y의672학습 prefix와 scales는 기존32cell design에서같은16cell을선택한자료와정확히일치한다. 여기서는 저장 척도를 대조했으며 raw traffic 평균이나 특징을 새로 생성하지 않았다. 이전 RCTL은 같은16개 기초값 중8lag를 순서축으로 놓고 나머지8값을 각step에 반복해8×9 입력으로 만들었다. 따라서 관측값·기초변수와 일치하는 부분이 있어도 Tab/Ridge/HGB의16열 표현과 RCTL의8step×9channel 입력 형식은 다르다.",
+      "claim_type": "data_scope",
+      "record_anchor": "claim-05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001964",
+          "lines": [
+            16,
+            18
+          ],
+          "source_sha256": "8ab57ab4de3dbf43e14f385bcda42f08c55f60d1e17aab9ee82a62da8967d5cc",
+          "team_source": "../sources/history-131.md#src-0001964"
+        },
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            113,
+            134
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001982",
+          "JSON_pointers": [
+            "/features"
+          ],
+          "source_sha256": "2a0be7128833273b54d9edbbb68dd7e217f29f95d7fcae6bf3a7b568e197d349",
+          "team_source": "../sources/history-131.md#src-0001982"
+        },
+        {
+          "source_id": "SRC-0001976",
+          "NPZ_keys": [
+            "X",
+            "Y",
+            "scales"
+          ],
+          "source_sha256": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+          "team_source": "../sources/history-131.md#src-0001976"
+        },
+        {
+          "source_id": "SRC-0023577",
+          "NPZ_keys": [
+            "X",
+            "Y",
+            "cell_indices",
+            "scales"
+          ],
+          "source_sha256": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+          "team_source": "../sources/history-131.md#src-0023577"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            59,
+            67
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-131.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            84,
+            90
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-131.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0023048",
+          "lines": [
+            25,
+            60
+          ],
+          "source_sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c",
+          "team_source": "../sources/history-131.md#src-0023048"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "stored_bindings": "../evidence/0131-actual-pooled-context-and-rctl-ranking/numeric-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H131-C06",
+      "title": "학습·query 행 수의 집계 단위",
+      "claim": "global은context10,752/query5,376행, 각K4는그룹당2,688/1,344행이다. 9context 전체 호출합계는context32,256/query16,128행으로 같은10,752학습행·5,376query를 세소속에서 반복한 값이다. 서로 다른 독립 표본 수가 아니며 context를100행으로 잘라내지 않았다. 같은 cell에672학습행/336query를 보장한다.",
+      "claim_type": "method_scope",
+      "record_anchor": "claim-06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001964",
+          "lines": [
+            17,
+            25
+          ],
+          "source_sha256": "8ab57ab4de3dbf43e14f385bcda42f08c55f60d1e17aab9ee82a62da8967d5cc",
+          "team_source": "../sources/history-131.md#src-0001964"
+        },
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            137,
+            144
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001975",
+          "JSON_pointers": [
+            "/0/context_rows",
+            "/0/query_rows",
+            "/1/context_rows",
+            "/1/query_rows"
+          ],
+          "source_sha256": "b7f15f46a7aa08926457c6c4a6d1cbb802e577ef7a389bb78b854b1151a522bd",
+          "team_source": "../sources/history-131.md#src-0001975"
+        },
+        {
+          "source_id": "SRC-0001980",
+          "JSON_pointers": [
+            "/contexts_completed",
+            "/query_rows_attempted"
+          ],
+          "source_sha256": "345599e32e5cd051d9934d5c9582abb9e342d2e7e827daf0cbda84fa91894b42",
+          "team_source": "../sources/history-131.md#src-0001980"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H131-C07",
+      "title": "Tab의 선택 설정과 재학습 없는 fit",
+      "claim": "진단 코드는 seed20260925, ensemble1, CPU·batch_size1·kv_cache=False·AMP/FA3/offload=False와 allow_auto_download=False를 지정했다. fit은 checkpoint config/state_dict를 읽고 eval과 context 전처리를 준비하며 가중치 최적화가 아니다. 기록 checkpoint SHA와 version정보를 보존하고, 이번 아카이브에서는 checkpoint를 불러오거나 모델을 만들지 않았다.",
+      "claim_type": "model_scope",
+      "record_anchor": "claim-07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            148,
+            164
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001982",
+          "JSON_pointers": [
+            "/seed",
+            "/ensemble",
+            "/output",
+            "/hashes/checkpoint",
+            "/versions"
+          ],
+          "source_sha256": "2a0be7128833273b54d9edbbb68dd7e217f29f95d7fcae6bf3a7b568e197d349",
+          "team_source": "../sources/history-131.md#src-0001982"
+        },
+        {
+          "source_id": "SRC-0001989",
+          "lines": [
+            346,
+            355
+          ],
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-131.md#src-0001989"
+        },
+        {
+          "source_id": "SRC-0001989",
+          "lines": [
+            406,
+            446
+          ],
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-131.md#src-0001989"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H131-C08",
+      "title": "초기 스레드 값과 predict의 임시 변경",
+      "claim": "settings의 PyTorch intra/inter-op4/2와 계획의CPU4thread는 predict 전에 기록한 값이다. 진단은 n_jobs=1을 넘기며 보관 regressor의 predict는688–703에서 intra-op을1로 바꾸고 정상 종료754–755에서 이전 값으로 복원한다. 따라서138초 측정을4thread 추론 실측이라고 반복하지 않는다. OMP/MKL/OPENBLAS4 및 inter-op2와 구별하고 호출 중 별도 스레드 로그는 미기록으로 남긴다.",
+      "claim_type": "implementation_scope",
+      "record_anchor": "claim-08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001964",
+          "lines": [
+            23,
+            24
+          ],
+          "source_sha256": "8ab57ab4de3dbf43e14f385bcda42f08c55f60d1e17aab9ee82a62da8967d5cc",
+          "team_source": "../sources/history-131.md#src-0001964"
+        },
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            1,
+            18
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            148,
+            160
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001982",
+          "JSON_pointers": [
+            "/torch_threads",
+            "/torch_interop_threads"
+          ],
+          "source_sha256": "2a0be7128833273b54d9edbbb68dd7e217f29f95d7fcae6bf3a7b568e197d349",
+          "team_source": "../sources/history-131.md#src-0001982"
+        },
+        {
+          "source_id": "SRC-0001989",
+          "lines": [
+            688,
+            703
+          ],
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-131.md#src-0001989"
+        },
+        {
+          "source_id": "SRC-0001989",
+          "lines": [
+            754,
+            760
+          ],
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-131.md#src-0001989"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H131-C09",
+      "title": "단순 비교군의 고정 손실·설정",
+      "claim": "Ridge는 StandardScaler+alpha1의 제곱손실 학습이고 MAE로 평가한다. HGB는 absolute_error,100iter,lr.1,leaf15,min_samples20,l2=1,early_stopping=False와 동일seed를 썼다. 같은 context/query에서 각각9fit·총18fit이며 새로운 튜닝이 아니다. Ridge의 학습 손실을 MAE라고 바꾸어 기록하지 않는다.",
+      "claim_type": "model_scope",
+      "record_anchor": "claim-09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001964",
+          "lines": [
+            24,
+            27
+          ],
+          "source_sha256": "8ab57ab4de3dbf43e14f385bcda42f08c55f60d1e17aab9ee82a62da8967d5cc",
+          "team_source": "../sources/history-131.md#src-0001964"
+        },
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            175,
+            197
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001980",
+          "JSON_pointers": [
+            "/simple_fits"
+          ],
+          "source_sha256": "345599e32e5cd051d9934d5c9582abb9e342d2e7e827daf0cbda84fa91894b42",
+          "team_source": "../sources/history-131.md#src-0001980"
+        },
+        {
+          "source_id": "SRC-0001983",
+          "lines": [
+            1,
+            110
+          ],
+          "source_sha256": "d2321372e7d4843f760e02d068be43a9b2146478803b247ee748607825cba3db",
+          "team_source": "../sources/history-131.md#src-0001983"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H131-C10",
+      "title": "context 표적과 query 인자의 구별",
+      "claim": "driver는fit(cx,cy)에 contextY[:672]를 주고 predict(qx)에 queryX만 준다. qy는 저장·평가에 사용한다. 보관 regressor는 context target scaler와 input/ensemble fit 호출을 분리하고 query에서는 transform을 호출하며 no_grad로 predict_stats를 계산한다. 이는 읽은 인자/호출 경로의 확인이며 수집 밖 preprocessing 전체 구현이나 모든 설정의 누수 없음을 증명한 것은 아니다.",
+      "claim_type": "implementation_scope",
+      "record_anchor": "claim-10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            129,
+            164
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001989",
+          "lines": [
+            417,
+            434
+          ],
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-131.md#src-0001989"
+        },
+        {
+          "source_id": "SRC-0001989",
+          "lines": [
+            525,
+            536
+          ],
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-131.md#src-0001989"
+        },
+        {
+          "source_id": "SRC-0001989",
+          "lines": [
+            705,
+            735
+          ],
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-131.md#src-0001989"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H131-C11",
+      "title": "default embedding·context K/V의 확인 범위",
+      "claim": "선정4파일에서 predict_stats의 embed_with_test=False 기본, column target embedding의contextprefix 추가와 train_size 전달, ISAB 첫 단계 및 MultiheadAttentionBlock의context K/V 제한을 읽었다. 실제 ICLearning/SetTransformer/attention/inference-manager callee와 preprocessing 본문은 이4파일 밖이므로 완전한 end-to-end 누수 감사로 쓰지 않는다. 분류·mixed-radix·cache 분기를 읽은 사실을 원101의 활성 경로 실행으로 세지 않는다.",
+      "claim_type": "implementation_scope",
+      "record_anchor": "claim-11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001988",
+          "lines": [
+            524,
+            585
+          ],
+          "source_sha256": "583786e5ffd70b9eb425bca8e52aed415dadcdf4254c908b3b6fa52026a56491",
+          "team_source": "../sources/history-131.md#src-0001988"
+        },
+        {
+          "source_id": "SRC-0001986",
+          "lines": [
+            340,
+            421
+          ],
+          "source_sha256": "a0c562600fe22944f91b1b71b706198cb9a4c3d9d8aaba67a86f35a85493d322",
+          "team_source": "../sources/history-131.md#src-0001986"
+        },
+        {
+          "source_id": "SRC-0001987",
+          "lines": [
+            432,
+            454
+          ],
+          "source_sha256": "96cce2e84db33e176d872c7bb7c0df8c305de3eb7a02fcad9f1128f33d319d95",
+          "team_source": "../sources/history-131.md#src-0001987"
+        },
+        {
+          "source_id": "SRC-0001987",
+          "lines": [
+            625,
+            665
+          ],
+          "source_sha256": "96cce2e84db33e176d872c7bb7c0df8c305de3eb7a02fcad9f1128f33d319d95",
+          "team_source": "../sources/history-131.md#src-0001987"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "implementation": "../evidence/0131-actual-pooled-context-and-rctl-ranking/official-code-scope.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H131-C12",
+      "title": "median 예측과 rolling one-step 평가",
+      "claim": "Tab 출력은 quantile 분포 icdf(.5) median이며 target 역변환 후 ensemble 평균을 낸다. 입력은 각query시점의 직전 실측 lag와 calendar를 사용하므로14일은336개 rolling one-step 평가 구간이다. 336시간 open-loop 재귀 예측이나 mean 출력의 MSE 비교로 바꾸지 않는다. 이번 저장 자료에서 미래 raw-feature를 다시 만들거나 모델 예측을 재실행하지 않았다.",
+      "claim_type": "method_scope",
+      "record_anchor": "claim-12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            120,
+            134
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            152,
+            164
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001988",
+          "lines": [
+            581,
+            613
+          ],
+          "source_sha256": "583786e5ffd70b9eb425bca8e52aed415dadcdf4254c908b3b6fa52026a56491",
+          "team_source": "../sources/history-131.md#src-0001988"
+        },
+        {
+          "source_id": "SRC-0001989",
+          "lines": [
+            737,
+            752
+          ],
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-131.md#src-0001989"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H131-C13",
+      "title": "14방법 성능표의 구성과 지표",
+      "claim": "성능표는 Tab/Ridge/HGB 각각3소속의9새예측과 RCTL seed20260925의3소속·20260926의2K4 저장예측인14방법이다. secondary seed의K1은 이 진단에 없다. 척도는 고정cell별 정규화 MAE,16cell 동등 비중·같은336시점이며 원단위MAE나 새로운 RCTL 학습 결과가 아니다.",
+      "claim_type": "quantitative_observation",
+      "record_anchor": "claim-13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            23,
+            39
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001984",
+          "JSON_pointers": [
+            "/metrics"
+          ],
+          "source_sha256": "63c58b236b397d92d0589fcf5ff8d302fb5b2f96703cf41590259054730729aa",
+          "team_source": "../sources/history-131.md#src-0001984"
+        },
+        {
+          "source_id": "SRC-0001978",
+          "NPZ_keys": [
+            "actual",
+            "RCTL_global_20260925",
+            "RCTL_tabicl_risk_20260926",
+            "RCTL_empirical_risk_20260926"
+          ],
+          "source_sha256": "29a5cd88641f6280ee573948a97bb60b846918d94ffa7131ed477812f2243fc3",
+          "team_source": "../sources/history-131.md#src-0001978"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H131-C14",
+      "title": "Tab global의 직접 예측 이득",
+      "claim": "global K1의 MAE는Tab0.0661831498, HGB0.0715707839, Ridge0.0792279392다. 같은 자료의 기준 오차를 분모로 한 Tab 상대 감소는각각7.5277002%와16.4648854%이고 앞/뒤7일에도 직접 예측 우열이 같다. 이 긍정 결과는 보존하지만 다른 기간·모집단의 일반적 우위나 RCTL 소속 선택 기여로 옮기지 않는다.",
+      "claim_type": "quantitative_observation",
+      "record_anchor": "claim-14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            29,
+            39
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001977",
+          "JSON_pointers": [
+            "/TabICL_global",
+            "/HGB_global",
+            "/Ridge_global"
+          ],
+          "source_sha256": "978efa90e634c2649d9bb8fe55e40141154e73cd76d8625eded19b77dfe2f111",
+          "team_source": "../sources/history-131.md#src-0001977"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "relative_reductions": "../evidence/0131-actual-pooled-context-and-rctl-ranking/numeric-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H131-C15",
+      "title": "같은K4에서 RCTL과 반대인 Tab 순위",
+      "claim": "같은K4에서 Tab은Tab-risk0.07324503<empirical0.07540668을 선호하지만 RCTL25는0.08600222>0.07986498, RCTL26은0.08809589>0.08367167로 empirical을 선호한다. Ridge0.08678670>0.08244128와 HGB0.09170042>0.08459679도 이 비교에서는 RCTL과 같은 방향이다. 좋은 직접 예측과 다른 learner의partition 순위 대리를 구별한다. 이 결과는 입력 표현·학습방식·validation 사용이 다른 learner 사이의 관찰이다. 순위 차이를 사전학습 목적이나 함수족 하나의 원인으로 분해하지 않는다.",
+      "claim_type": "quantitative_observation",
+      "record_anchor": "claim-15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            27,
+            39
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001984",
+          "JSON_pointers": [
+            "/metrics/TabICL_tabicl_risk/mean_cell_MAE",
+            "/metrics/TabICL_empirical_risk/mean_cell_MAE",
+            "/metrics/RCTL_tabicl_risk_20260925/mean_cell_MAE",
+            "/metrics/RCTL_empirical_risk_20260925/mean_cell_MAE",
+            "/metrics/RCTL_tabicl_risk_20260926/mean_cell_MAE",
+            "/metrics/RCTL_empirical_risk_20260926/mean_cell_MAE"
+          ],
+          "source_sha256": "63c58b236b397d92d0589fcf5ff8d302fb5b2f96703cf41590259054730729aa",
+          "team_source": "../sources/history-131.md#src-0001984"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            59,
+            67
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-131.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            84,
+            90
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-131.md#src-0023202"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H131-C16",
+      "title": "전체14일 K1 우위의 범위",
+      "claim": "K1 결과가 있는 Tab/Ridge/HGB/primary RCTL에서는14일 전체 평균의K1 MAE가 두K4보다 작았다. 이global 선택은 Tab만의 결정 기여가 아니다. secondary RCTL의미실행K1이나 모든cell·시간절반·다른소속·10,000cell까지 K1이 최적이라고 확장하지 않는다.",
+      "claim_type": "quantitative_scope",
+      "record_anchor": "claim-16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            35,
+            39
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001984",
+          "JSON_pointers": [
+            "/metrics/TabICL_global/mean_cell_MAE",
+            "/metrics/Ridge_global/mean_cell_MAE",
+            "/metrics/HGB_global/mean_cell_MAE",
+            "/metrics/RCTL_global_20260925/mean_cell_MAE"
+          ],
+          "source_sha256": "63c58b236b397d92d0589fcf5ff8d302fb5b2f96703cf41590259054730729aa",
+          "team_source": "../sources/history-131.md#src-0001984"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H131-C17",
+      "title": "Tab의 앞뒤주 순위 반전",
+      "claim": "Tab-risk minus empirical MAE는전체−0.0021616463, 앞7일+0.0001634610, 뒤7일−0.0044867527다. RCTL25/26은각각전체+0.0061372463/+0.0044242158이며 두시간절반에서도 양수다. 같은14일의고정절반 비교이지 독립 반복·유의성 검정이나 반전 원인의 분해가 아니다.",
+      "claim_type": "quantitative_observation",
+      "record_anchor": "claim-17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            41,
+            59
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001984",
+          "JSON_pointers": [
+            "/differences/TabICL:tabicl_risk_minus_empirical_risk",
+            "/differences/RCTL25:tabicl_risk_minus_empirical_risk",
+            "/differences/RCTL26:tabicl_risk_minus_empirical_risk"
+          ],
+          "source_sha256": "63c58b236b397d92d0589fcf5ff8d302fb5b2f96703cf41590259054730729aa",
+          "team_source": "../sources/history-131.md#src-0001984"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H131-C18",
+      "title": "Tab의 cell별 결과와 날짜별 결과",
+      "claim": "Tab-risk K4가empirical보다작은 평균오차를 낸 비율은cell6/16과day10/14다. 전체 평균의 음수delta를 모든cell 개선으로 쓰지 않고 cell/day paired 차이를 함께 보존한다. 표본16과기간14를 독립 시행 수나 유의성 증거로 세지 않는다.",
+      "claim_type": "quantitative_observation",
+      "record_anchor": "claim-18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            43,
+            53
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001984",
+          "JSON_pointers": [
+            "/differences/TabICL:tabicl_risk_minus_empirical_risk/cells_with_smaller_error_left",
+            "/differences/TabICL:tabicl_risk_minus_empirical_risk/days_with_smaller_error_left",
+            "/differences/TabICL:tabicl_risk_minus_empirical_risk/cell_differences",
+            "/differences/TabICL:tabicl_risk_minus_empirical_risk/day_differences"
+          ],
+          "source_sha256": "63c58b236b397d92d0589fcf5ff8d302fb5b2f96703cf41590259054730729aa",
+          "team_source": "../sources/history-131.md#src-0001984"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H131-C19",
+      "title": "RCTL 두seed의 평균과 개별 예외",
+      "claim": "RCTL의두K4 평균은empirical 우위지만 Tab-risk가작은cell/day도 남아 있다. seed25에서5/16cell·2/14day, seed26에서6/16cell·4/14day가Tab-risk 우위다. 두seed 평균·주간방향의일치를 모든cell의일치로 바꾸지 않으며 이 진단에 새 RCTL seed를 추가하지 않았다.",
+      "claim_type": "quantitative_observation",
+      "record_anchor": "claim-19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001984",
+          "JSON_pointers": [
+            "/differences/RCTL25:tabicl_risk_minus_empirical_risk/cells_with_smaller_error_left",
+            "/differences/RCTL25:tabicl_risk_minus_empirical_risk/days_with_smaller_error_left",
+            "/differences/RCTL26:tabicl_risk_minus_empirical_risk/cells_with_smaller_error_left",
+            "/differences/RCTL26:tabicl_risk_minus_empirical_risk/days_with_smaller_error_left"
+          ],
+          "source_sha256": "63c58b236b397d92d0589fcf5ff8d302fb5b2f96703cf41590259054730729aa",
+          "team_source": "../sources/history-131.md#src-0001984"
+        },
+        {
+          "source_id": "SRC-0001978",
+          "NPZ_keys": [
+            "RCTL_tabicl_risk_20260925",
+            "RCTL_empirical_risk_20260925",
+            "RCTL_tabicl_risk_20260926",
+            "RCTL_empirical_risk_20260926"
+          ],
+          "source_sha256": "29a5cd88641f6280ee573948a97bb60b846918d94ffa7131ed477812f2243fc3",
+          "team_source": "../sources/history-131.md#src-0001978"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H131-C20",
+      "title": "첫7일의 K1 예외",
+      "claim": "전체 평균K1 우위와 달리 첫7일에서는 Tab empirical−global=−0.0001507457, Ridge Tab−global=−0.0010319783/empirical−global=−0.0014403055, HGB empirical−global=−0.0001981894로일부K4가좋다. 이 예외와 Tab의직접예측 우위는 서로다른 비교다. 기간을 골라 최종소속을 재선택하거나 평균의기각을 보편적실패로 바꾸지 않는다.",
+      "claim_type": "quantitative_observation",
+      "record_anchor": "claim-20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001984",
+          "JSON_pointers": [
+            "/differences/TabICL:empirical_risk_minus_global/first7",
+            "/differences/Ridge:tabicl_risk_minus_global/first7",
+            "/differences/Ridge:empirical_risk_minus_global/first7",
+            "/differences/HGB:empirical_risk_minus_global/first7"
+          ],
+          "source_sha256": "63c58b236b397d92d0589fcf5ff8d302fb5b2f96703cf41590259054730729aa",
+          "team_source": "../sources/history-131.md#src-0001984"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H131-C21",
+      "title": "입력·소속·RCTL 저장slice의 결합",
+      "claim": "저장X(16,1008,16)/Y(16,1008)의672학습prefix·scales는기존design에, 세소속은기존observed-risk에연결된다. 실제값(16,336)과5RCTL예측은기존all_predictions의(16,480)자료에서같은16cell·첫336시점을취한slice와정확히같다. 이전자료3개는기존정확보존본을재사용하고새원본/독립재현으로집계하지 않는다.",
+      "claim_type": "provenance",
+      "record_anchor": "claim-21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001976",
+          "NPZ_keys": [
+            "X",
+            "Y",
+            "cell_ids",
+            "scales"
+          ],
+          "source_sha256": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+          "team_source": "../sources/history-131.md#src-0001976"
+        },
+        {
+          "source_id": "SRC-0001978",
+          "NPZ_keys": [
+            "actual",
+            "RCTL_global_20260925"
+          ],
+          "source_sha256": "29a5cd88641f6280ee573948a97bb60b846918d94ffa7131ed477812f2243fc3",
+          "team_source": "../sources/history-131.md#src-0001978"
+        },
+        {
+          "source_id": "SRC-0023577",
+          "NPZ_keys": [
+            "X",
+            "Y",
+            "cell_indices",
+            "scales"
+          ],
+          "source_sha256": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144",
+          "team_source": "../sources/history-131.md#src-0023577"
+        },
+        {
+          "source_id": "SRC-0023588",
+          "JSON_pointers": [
+            "/cell_ids",
+            "/partitions/tabicl_risk",
+            "/partitions/empirical_risk"
+          ],
+          "source_sha256": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+          "team_source": "../sources/history-131.md#src-0023588"
+        },
+        {
+          "source_id": "SRC-0030211",
+          "NPZ_keys": [
+            "cell_ids",
+            "y",
+            "global_20260925",
+            "tabicl_risk_20260925",
+            "empirical_risk_20260925",
+            "tabicl_risk_20260926",
+            "empirical_risk_20260926"
+          ],
+          "source_sha256": "f2d5c425c77067a235fd79ea64df02c4f7c0c82b77fac706492877dd24acc096",
+          "team_source": "../sources/history-131.md#src-0030211"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "bindings": "../evidence/0131-actual-pooled-context-and-rctl-ranking/numeric-check.json",
+        "prior_preservation": "../evidence/0131-actual-pooled-context-and-rctl-ranking/foundation-reuse-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H131-C22",
+      "title": "새점수 고정과 눈가림의 구별",
+      "claim": "driver는9새방법점수를 new_scores_frozen에 저장·SHA고정한 뒤 기존RCTL을읽는 순서다. frozen SHA978efa90…와summary에기록한SHA 및9공통metric이일치한다. 저장무결성·코드순서의확인이지 RCTL을계획전부터알았던사후진단을 독립 눈가림 평가로 바꾸는 근거가 아니다.",
+      "claim_type": "provenance",
+      "record_anchor": "claim-22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            193,
+            207
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            218,
+            223
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001984",
+          "JSON_pointers": [
+            "/new_scores_before_RCTL_read_sha256",
+            "/RCTL_results_used_to_change_partition"
+          ],
+          "source_sha256": "63c58b236b397d92d0589fcf5ff8d302fb5b2f96703cf41590259054730729aa",
+          "team_source": "../sources/history-131.md#src-0001984"
+        },
+        {
+          "source_id": "SRC-0001977",
+          "JSON_pointers": [
+            "/TabICL_global/mean_cell_MAE"
+          ],
+          "source_sha256": "978efa90e634c2649d9bb8fe55e40141154e73cd76d8625eded19b77dfe2f111",
+          "team_source": "../sources/history-131.md#src-0001977"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H131-C23",
+      "title": "저장917수치의 검산과 새실험의 구별",
+      "claim": "저장14방법의 mean/cell/day/두시간절반33값씩462개와13paired delta의35값씩455개, 총917수치를float32 배열에서재계산했고저장값과최대차0.0이었다. NPZ3개는6/19/14키의shape·dtype·유한/NaN·바이트hash·입력/기준예측 결합도확인했다. 허용오차5e−8의저장산술 검수이며새model실행·rawtraffic통계/feature재생성·checkpoint성능 재현이아니다.",
+      "claim_type": "verification_scope",
+      "record_anchor": "claim-23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001984",
+          "JSON_pointers": [
+            "/metrics",
+            "/differences"
+          ],
+          "source_sha256": "63c58b236b397d92d0589fcf5ff8d302fb5b2f96703cf41590259054730729aa",
+          "team_source": "../sources/history-131.md#src-0001984"
+        },
+        {
+          "source_id": "SRC-0001976",
+          "NPZ_keys": [
+            "X",
+            "Y"
+          ],
+          "source_sha256": "9f8cc62cf84936e9fea21d26cd214bbef9ebcd32f30ff9e2cdae93b412c01323",
+          "team_source": "../sources/history-131.md#src-0001976"
+        },
+        {
+          "source_id": "SRC-0001978",
+          "NPZ_keys": [
+            "actual",
+            "TabICL_global",
+            "HGB_global",
+            "Ridge_global"
+          ],
+          "source_sha256": "29a5cd88641f6280ee573948a97bb60b846918d94ffa7131ed477812f2243fc3",
+          "team_source": "../sources/history-131.md#src-0001978"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "arithmetic": "../evidence/0131-actual-pooled-context-and-rctl-ranking/numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "array_scope": "../evidence/0131-actual-pooled-context-and-rctl-ranking/stored-array-scope.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H131-C24",
+      "title": "partial NPZ의 의도된 저장 시점",
+      "claim": "predictions_partial은9Tabcontext 완료후18simplefit이전 저장본이다. Tab3배열은최종배열과같고Ridge/HGB6배열은아직NaNplaceholder이며RCTL배열은없다. 최종predictions에는14방법이모두유한하다. partial파일명/NaN을실패한실험·추가run·재시도증거로해석하지 않는다.",
+      "claim_type": "execution_scope",
+      "record_anchor": "claim-24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            130,
+            134
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            163,
+            192
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001979",
+          "NPZ_keys": [
+            "TabICL_global",
+            "TabICL_tabicl_risk",
+            "TabICL_empirical_risk",
+            "Ridge_global",
+            "HGB_global"
+          ],
+          "source_sha256": "bd842d933b35cc70d02df863d7e636071050786d4c0c51b620b4df6ea1b21150",
+          "team_source": "../sources/history-131.md#src-0001979"
+        },
+        {
+          "source_id": "SRC-0001980",
+          "JSON_pointers": [
+            "/success",
+            "/error"
+          ],
+          "source_sha256": "345599e32e5cd051d9934d5c9582abb9e342d2e7e827daf0cbda84fa91894b42",
+          "team_source": "../sources/history-131.md#src-0001980"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "partial": "../evidence/0131-actual-pooled-context-and-rctl-ranking/numeric-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H131-C25",
+      "title": "단계 시간과 중복 비용 집계",
+      "claim": "Tab accounted fit/predict는138.2582043초, cheap2.2270844초, stage140.4852887초다. Ridge/HGB총1.0048376초는cheap에포함돼다시더하지않는다. 초기import·설정·sourcehash는측정시작전이고stage는특징구성/결과쓰기등을포함한다. 이전기록의미기록전처리를더해정확한전체프로젝트비용을만들지 않는다.",
+      "claim_type": "quantitative_cost",
+      "record_anchor": "claim-25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001980",
+          "JSON_pointers": [
+            "/TabICL_seconds",
+            "/cheap_seconds",
+            "/wall_seconds",
+            "/simple_fit_predict_seconds"
+          ],
+          "source_sha256": "345599e32e5cd051d9934d5c9582abb9e342d2e7e827daf0cbda84fa91894b42",
+          "team_source": "../sources/history-131.md#src-0001980"
+        },
+        {
+          "source_id": "SRC-0001982",
+          "JSON_pointers": [
+            "/timing_scope"
+          ],
+          "source_sha256": "2a0be7128833273b54d9edbbb68dd7e217f29f95d7fcae6bf3a7b568e197d349",
+          "team_source": "../sources/history-131.md#src-0001982"
+        },
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            65,
+            80
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "cost_sums": "../evidence/0131-actual-pooled-context-and-rctl-ranking/numeric-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H131-C26",
+      "title": "소속별 Tab 비용과 활성 설정",
+      "claim": "Tab의global1context accounted시간69.1113167초, Tab-risk4합34.4148190초, empirical4합34.7320696초다. context10752→그룹당2688 차이가있는이번CPU·ensemble1·batch1·cacheFalse비교이며predict의n_jobs1 스코프를함께적는다. 세소속9호출의시간이고훈련가중치최적화시간이나RCTL운영속도실측이아니다.",
+      "claim_type": "quantitative_cost",
+      "record_anchor": "claim-26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            69,
+            80
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001975",
+          "JSON_pointers": [
+            "/0/accounted_seconds",
+            "/1/accounted_seconds",
+            "/2/accounted_seconds",
+            "/3/accounted_seconds",
+            "/4/accounted_seconds",
+            "/5/accounted_seconds",
+            "/6/accounted_seconds",
+            "/7/accounted_seconds",
+            "/8/accounted_seconds"
+          ],
+          "source_sha256": "b7f15f46a7aa08926457c6c4a6d1cbb802e577ef7a389bb78b854b1151a522bd",
+          "team_source": "../sources/history-131.md#src-0001975"
+        },
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            148,
+            170
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001989",
+          "lines": [
+            688,
+            703
+          ],
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-131.md#src-0001989"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "per_partition_sums": "../evidence/0131-actual-pooled-context-and-rctl-ranking/numeric-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H131-C27",
+      "title": "sampled RSS와 당시 상한",
+      "claim": "기록 sampled process RSS최대는2,602,754,048bytes(약2.42GiB)다. guard는0.2초간격으로RSS를보았으므로연속시간진짜peak의증명은아니다. 당시12GiB/Tab1200초/cheap30초/stage1230초 상한과종료success를보존한다. 이역사상한은현재 정리에서 모델을 실행할 권한이나예산이아니다.",
+      "claim_type": "quantitative_cost",
+      "record_anchor": "claim-27",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001968",
+          "lines": [
+            79,
+            104
+          ],
+          "source_sha256": "c5b1bdfbfe626aaf2e445a2b0c71993f4393c2267ddbd6a7fb8d310a84811e32",
+          "team_source": "../sources/history-131.md#src-0001968"
+        },
+        {
+          "source_id": "SRC-0001982",
+          "JSON_pointers": [
+            "/limits"
+          ],
+          "source_sha256": "2a0be7128833273b54d9edbbb68dd7e217f29f95d7fcae6bf3a7b568e197d349",
+          "team_source": "../sources/history-131.md#src-0001982"
+        },
+        {
+          "source_id": "SRC-0001980",
+          "JSON_pointers": [
+            "/success",
+            "/rss_peak_bytes",
+            "/wall_seconds"
+          ],
+          "source_sha256": "345599e32e5cd051d9934d5c9582abb9e342d2e7e827daf0cbda84fa91894b42",
+          "team_source": "../sources/history-131.md#src-0001980"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H131-C28",
+      "title": "Tab 준비 비용과 RCTL 운영 비용의 분리",
+      "claim": "K4의Tabcontext평가가이번K1보다빨랐어도소속확정뒤RCTL학습/실행의운영속도이득으로바꾸지않는다. 과거95의같은시각cell batch,97의480시간출력재사용과원101의336시간MAE·Tab추론비용은조건/단위가다르다. 16cell CPU실행을10,000cell에선형외삽하거나기본batch효과를Tab신규성으로세지 않는다.",
+      "claim_type": "cost_scope",
+      "record_anchor": "claim-28",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            65,
+            82
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001966",
+          "lines": [
+            61,
+            79
+          ],
+          "source_sha256": "71b6782f54f8f516ca88bfe9d99f4da89b6f8aab4fe2016894da934faac96ca1",
+          "team_source": "../sources/history-131.md#src-0001966"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H131-C29",
+      "title": "당시 원장의 단회 증가",
+      "claim": "before원장807600a7…에서after60b589e8…로Tab9context/16,128query/138.2582043초를한번더해누적78context/55,488query/389.0795223초가됐다. RCTL29fit과budget_resets0은그대로다. 현재root원장17a549fc…는후속판본이므로원101시점의after와다른것을보존실패라고쓰거나역사after로덮어쓰지 않는다.",
+      "claim_type": "historical_accounting",
+      "record_anchor": "claim-29",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001974",
+          "JSON_pointers": [
+            "/ledger_before_sha256",
+            "/ledger_after_sha256",
+            "/TabICL_contexts_added",
+            "/TabICL_query_rows_added",
+            "/TabICL_seconds_added",
+            "/budget_resets"
+          ],
+          "source_sha256": "5823c3227c54de72b6c026c8fce80051e092529e798883009d14b8da260539ae",
+          "team_source": "../sources/history-131.md#src-0001974"
+        },
+        {
+          "source_id": "SRC-0001967",
+          "JSON_pointers": [
+            "/used",
+            "/budget_resets"
+          ],
+          "source_sha256": "60b589e806c4d1bc8b37d9130e1215d5e15de1d186980ca7de5d2bf4d0a1a43a",
+          "team_source": "../sources/history-131.md#src-0001967"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "ledger_versions": "../evidence/0131-actual-pooled-context-and-rctl-ranking/numeric-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    },
+    {
+      "claim_id": "H131-C30",
+      "title": "남은 역사 예산과 최종 Word",
+      "claim": "당시remaining은Tab2context/4,512query·추가RCTLfit0이며원장에cheap/modeling집계와시간범위가남아있다. 검증표식의Word SHA4f1112dc…와당시goal_complete=False를보존하되Word본문은hash-only다. 역사Goal/다음행동/프로세스/상한은자료이며현재아카이브Goal이나새실험지시가 아니다.",
+      "claim_type": "historical_scope",
+      "record_anchor": "claim-30",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001974",
+          "JSON_pointers": [
+            "/remaining",
+            "/recorded_cheap_seconds",
+            "/recorded_modeling_seconds"
+          ],
+          "source_sha256": "5823c3227c54de72b6c026c8fce80051e092529e798883009d14b8da260539ae",
+          "team_source": "../sources/history-131.md#src-0001974"
+        },
+        {
+          "source_id": "SRC-0001985",
+          "JSON_pointers": [
+            "/prior_word_sha256",
+            "/goal_complete"
+          ],
+          "source_sha256": "90b62df0aeb4b128b0ef3aa0998faa009438bdd97570288c66c3d023723a6b4b",
+          "team_source": "../sources/history-131.md#src-0001985"
+        },
+        {
+          "source_id": "SRC-0001969",
+          "lines": [
+            3,
+            14
+          ],
+          "source_sha256": "a16d95b23a9b1b2e9dfb3b9e005c7a4c11db2cc22cbdb0d80b3a02dcf98d9d45",
+          "team_source": "../sources/history-131.md#src-0001969"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    },
+    {
+      "claim_id": "H131-C31",
+      "title": "snapshot 목록과 실제 물리 파일",
+      "claim": "원101snapshot43은manifest의28listed파일1,182,878bytes에manifest6,324bytes를더한물리29파일1,189,202bytes다. root receipt393bytes는별도다. 현재검토묶음36source/153물리별칭은snapshot자료에기존판본·foundation·RCTL입력구현을연결한수로snapshot파일수와다르다. 코드4개는공식link/metadata로연결하며파일존재·복사를의미검토완료로세지 않는다.",
+      "claim_type": "provenance",
+      "record_anchor": "claim-31",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001962",
+          "JSON_pointers": [
+            "/files",
+            "/verified",
+            "/raw_and_checkpoint_assets_not_duplicated"
+          ],
+          "source_sha256": "0e8dc5a7346d7ebbadd55e5b8690aff76a208ac909dee16ab4d48cd5af8df2f5",
+          "team_source": "../sources/history-131.md#src-0001962"
+        },
+        {
+          "source_id": "SRC-0020835",
+          "JSON_pointers": [
+            "/files",
+            "/bytes",
+            "/verified"
+          ],
+          "source_sha256": "08e7aa0900d1d72f390674a16b1de57b9dd1e2e0ca3e21e64c55d8126c2c31f2",
+          "team_source": "../sources/history-131.md#src-0020835"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "snapshot_and_aliases": "../evidence/0131-actual-pooled-context-and-rctl-ranking/preservation-check.json"
+      },
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    },
+    {
+      "claim_id": "H131-C32",
+      "title": "후보·연혁 개정본과 미독 tail",
+      "claim": "candidate는이전102행에서현재103행으로바뀌며공유함수결정행7을보완하고행39에원101직접예측긍정근거를추가했다. progress는582→591행이며현재1–111만실제읽었다. 현재tail112–591과이전103–582의바이트같음은기계대조일뿐미독범위를완료로바꾸지 않는다. 새상태header를이전기록의독립재현으로세지 않는다.",
+      "claim_type": "version_scope",
+      "record_anchor": "claim-32",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001966",
+          "lines": [
+            7,
+            7
+          ],
+          "source_sha256": "71b6782f54f8f516ca88bfe9d99f4da89b6f8aab4fe2016894da934faac96ca1",
+          "team_source": "../sources/history-131.md#src-0001966"
+        },
+        {
+          "source_id": "SRC-0001966",
+          "lines": [
+            34,
+            41
+          ],
+          "source_sha256": "71b6782f54f8f516ca88bfe9d99f4da89b6f8aab4fe2016894da934faac96ca1",
+          "team_source": "../sources/history-131.md#src-0001966"
+        },
+        {
+          "source_id": "SRC-0001969",
+          "lines": [
+            7,
+            24
+          ],
+          "source_sha256": "a16d95b23a9b1b2e9dfb3b9e005c7a4c11db2cc22cbdb0d80b3a02dcf98d9d45",
+          "team_source": "../sources/history-131.md#src-0001969"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "versions": "../evidence/0131-actual-pooled-context-and-rctl-ranking/version-delta-check.json",
+        "read_ranges": "../evidence/0131-actual-pooled-context-and-rctl-ranking/read-scopes.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        8
+      ]
+    },
+    {
+      "claim_id": "H131-C33",
+      "title": "보관 공식 코드와 이전 부분판독",
+      "claim": "embedding/layers/tabicl/regressor4파일전문3,365행을읽고공식soda-inria/tabicl의고정commit0dbff3ec… Gitblob/size와대조했다. H005에서부분만읽은embedding/tabicl은이번에전문을확인했고기존전독regressor재독은독립새credit0이다. 이4파일일치는최신main·설치runtime전체commit·정확한packageversion의증명이아니며원manifestversion은unknown이다.",
+      "claim_type": "provenance",
+      "record_anchor": "claim-33",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001990",
+          "lines": [
+            1,
+            30
+          ],
+          "source_sha256": "abe5c4af35a46492760564e3e4129de38bb2d87d0941735ae0343b31e4021846",
+          "team_source": "../sources/history-131.md#src-0001990"
+        },
+        {
+          "source_id": "SRC-0001989",
+          "lines": [
+            19,
+            25
+          ],
+          "source_sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731",
+          "team_source": "../sources/history-131.md#src-0001989"
+        },
+        {
+          "source_id": "SRC-0001988",
+          "lines": [
+            7,
+            12
+          ],
+          "source_sha256": "583786e5ffd70b9eb425bca8e52aed415dadcdf4254c908b3b6fa52026a56491",
+          "team_source": "../sources/history-131.md#src-0001988"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {
+        "pinned_blobs": "../evidence/0131-actual-pooled-context-and-rctl-ranking/official-code-identity-check.json"
+      },
+      "archive_scope_evidence": {
+        "whole_code": "../evidence/0131-actual-pooled-context-and-rctl-ranking/official-code-scope.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        9
+      ]
+    },
+    {
+      "claim_id": "H131-C34",
+      "title": "당시 연구 방향에 반영한 판단",
+      "claim": "원101은실제samplecontext를주었어도좋은Tab직접예측이RCTL의같은K4판단과일치하지않은관찰로기존대리점수의적용범위를보완했다. 공통context검사를다시붙이는것만으로B2를복구하거나Tab/단순회귀점수혼합·attention거리·새모듈을최종안으로추천하지않았다. 세소속사후비교를모든pooling/Tab/RCTL의불가능성으로확대하지 않고직접예측긍정근거를유지한다.",
+      "claim_type": "historical_decision",
+      "record_anchor": "claim-34",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            55,
+            63
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            93,
+            95
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001963",
+          "lines": [
+            39,
+            51
+          ],
+          "source_sha256": "6d95333dfce15bfcd954164b7819e1f7c5908e709e5d75067abc567c9687d68d",
+          "team_source": "../sources/history-131.md#src-0001963"
+        },
+        {
+          "source_id": "SRC-0001966",
+          "lines": [
+            7,
+            7
+          ],
+          "source_sha256": "71b6782f54f8f516ca88bfe9d99f4da89b6f8aab4fe2016894da934faac96ca1",
+          "team_source": "../sources/history-131.md#src-0001966"
+        },
+        {
+          "source_id": "SRC-0001966",
+          "lines": [
+            36,
+            41
+          ],
+          "source_sha256": "71b6782f54f8f516ca88bfe9d99f4da89b6f8aab4fe2016894da934faac96ca1",
+          "team_source": "../sources/history-131.md#src-0001966"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        9
+      ]
+    },
+    {
+      "claim_id": "H131-C35",
+      "title": "재검토 조건과 현재 미확인 범위",
+      "claim": "재검토하려면실제RCTL학습에유효한소속결정또는같은유용한결정의추정/계산효율에서Tab이단순방법보다기여하는차이를특정해야한다. 시간분할/같은기초16값과Tab16열·RCTL8×9표현/척도·기준·seed·원예측/비용을재사용해같은조건의중복실험을피한다. 선정밖callee전체감사·원모델독립재현·Word본문·남은연혁tail은미확인이고당시최종추천/Word도미완료였다.",
+      "claim_type": "reuse_scope",
+      "record_anchor": "claim-35",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            57,
+            63
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001965",
+          "lines": [
+            80,
+            95
+          ],
+          "source_sha256": "53950d47fb621d176c6e31223de8da455e04766abe641d26861d371bedee4619",
+          "team_source": "../sources/history-131.md#src-0001965"
+        },
+        {
+          "source_id": "SRC-0001963",
+          "lines": [
+            39,
+            51
+          ],
+          "source_sha256": "6d95333dfce15bfcd954164b7819e1f7c5908e709e5d75067abc567c9687d68d",
+          "team_source": "../sources/history-131.md#src-0001963"
+        },
+        {
+          "source_id": "SRC-0001966",
+          "lines": [
+            43,
+            59
+          ],
+          "source_sha256": "71b6782f54f8f516ca88bfe9d99f4da89b6f8aab4fe2016894da934faac96ca1",
+          "team_source": "../sources/history-131.md#src-0001966"
+        },
+        {
+          "source_id": "SRC-0001969",
+          "lines": [
+            14,
+            14
+          ],
+          "source_sha256": "a16d95b23a9b1b2e9dfb3b9e005c7a4c11db2cc22cbdb0d80b3a02dcf98d9d45",
+          "team_source": "../sources/history-131.md#src-0001969"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            59,
+            67
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-131.md#src-0023202"
+        },
+        {
+          "source_id": "SRC-0023202",
+          "lines": [
+            84,
+            90
+          ],
+          "source_sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e",
+          "team_source": "../sources/history-131.md#src-0023202"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {},
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        9
+      ]
+    },
+    {
+      "claim_id": "H131-C36",
+      "title": "읽기·검수·집계와 전체 Goal의 경계",
+      "claim": "이번최초실제읽기는원문25개7148행(24whole/1selected),보관code4/3365행과NPZ3선택키·917저장수치검산이다. 기존부분code2의이번전독완료를포함해문서 검수 후 단회 집계할 범위는본문10/전체JSON13/선택4/독립이미지0이며범위를 읽은 사본 수와 구별한다. 36주장/9그룹작성후원문대조에기존RCTL코드2개의실제재독109행을추가했고독립새credit0이다. 원102이후/이전고유판본/FedPPBC·DOCX/전TXT·연혁/통합/장기접근/최종delta/대표질문10+가남아전체Goal미완료다.",
+      "claim_type": "coverage_scope",
+      "record_anchor": "claim-36",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001969",
+          "lines": [
+            7,
+            24
+          ],
+          "source_sha256": "a16d95b23a9b1b2e9dfb3b9e005c7a4c11db2cc22cbdb0d80b3a02dcf98d9d45",
+          "team_source": "../sources/history-131.md#src-0001969"
+        },
+        {
+          "source_id": "SRC-0001985",
+          "JSON_pointers": [
+            "/goal_complete"
+          ],
+          "source_sha256": "90b62df0aeb4b128b0ef3aa0998faa009438bdd97570288c66c3d023723a6b4b",
+          "team_source": "../sources/history-131.md#src-0001985"
+        }
+      ],
+      "status": "source_checked",
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "first": "../evidence/0131-actual-pooled-context-and-rctl-ranking/read-scopes.json",
+        "coverage": "../evidence/0131-actual-pooled-context-and-rctl-ranking/packet-coverage.json"
+      },
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        9
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

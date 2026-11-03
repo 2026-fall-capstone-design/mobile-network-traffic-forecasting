@@ -1,0 +1,1208 @@
+{
+  "batch_id": "history-110",
+  "record_path": "../records/0110-evidence-synthesis.md",
+  "record_sha256": "8db23a7e0bb8da47342783790a43b4953b278fa94eedead21cb05160200d5acc",
+  "claims": [
+    {
+      "claim_id": "H110-C01",
+      "title": "중간검토의 범위",
+      "claim": "원84는 2026-09-26의 근거 종합·교수 검토용 중간 문서다. 이번에는 계획·findings·보고서3본문, 보조JSON4개, 생성·보관 코드2개의 총9고유 자료1109행을 읽었다. 16개의 동일 사본 경로를 연결하며 새 독립 실험9회를 뜻하지 않는다. DOCX·저장 PDF·PNG5장·고유 누적연혁8그룹은 후속 독해로 남겼다.",
+      "record_anchor": "c01",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022054",
+          "source_sha256": "b73a519fe165b2d2042caede3d3aa57f1394ec24c9fd971542c2a9e62b5bef1c",
+          "line_ranges": [
+            [
+              1,
+              25
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              1,
+              5
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              24,
+              38
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H110-C02",
+      "title": "실제로 추가한 작업",
+      "claim": "당시 계획과 findings는 새 TabICLv2/RCTL 실행·새 자료 진단0, 정수 작업량 산술·기존 JSON 대조·문서 생성·보관을 기록한다. 원본 코드는 이번에 텍스트로만 읽었다. 원문의 과거 Goal·예산·사용자 질문·다음 행동을 현재 연구 실행 지시로 사용하지 않는다.",
+      "record_anchor": "c02",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022054",
+          "source_sha256": "b73a519fe165b2d2042caede3d3aa57f1394ec24c9fd971542c2a9e62b5bef1c",
+          "line_ranges": [
+            [
+              15,
+              25
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              5,
+              10
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              34,
+              38
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              1,
+              7
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H110-C03",
+      "title": "직접 예측의 조건",
+      "claim": "원74의 값은 cell4개, 공통 입력28열, 고정 context256행으로 비교한 결과다. 전체 query336시간 가운데 뒤168시간의 정규화 MSE/MAE이며 1시간 ahead rolling 예측이다. 원래 설정의 seed는20260925다. 전처리·시간 분할의 상세 검수는 H070에 연결한다.",
+      "record_anchor": "c03",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              9,
+              19
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0029276",
+          "source_sha256": "17ff03927948011db346a9da925702dfa4257d88ba781abb66a78729455e1d48",
+          "json_pointers": [
+            "/settings/cell_ids",
+            "/settings/assessment_count",
+            "/settings/seed",
+            "/settings/independent_test"
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../records/0072-0075-output-compression.md"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_record_locations": [
+        "H070 C07/C08: 시점 분할·공통 입력·1시간 rolling"
+      ]
+    },
+    {
+      "claim_id": "H110-C04",
+      "title": "직접 예측의 긍정 결과",
+      "claim": "원74의 Ridge MSE/MAE는0.014360/0.089565, HGB는0.011925/0.078400, TabICL은0.009580/0.066828이다. 원84가 복사한 전체 teacher 객체는 기존 결과와 일치하며 표의 여섯 반올림 값도 맞다. 공통 입력에서의 국소 직접 예측 이득이고 공간 입력의 인과 효과나 clustering 개선을 검증한 결과는 아니다.",
+      "record_anchor": "c04",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              11,
+              19
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              8,
+              84
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0029276",
+          "source_sha256": "17ff03927948011db346a9da925702dfa4257d88ba781abb66a78729455e1d48",
+          "json_pointers": [
+            "/teacher"
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H110-C05",
+      "title": "원80은 별도의 비교",
+      "claim": "원80의 teacher 평가는16cell·시간672–839의 개발 구간이다. TabICL MSE/MAE0.0130434764/0.0774403728, Ridge0.0158390254/0.0900110079, HGB0.0158616659/0.0877404634이며 원74의 표와 합쳐 평균내지 않는다. Tab 출력은 저장129개 분위수의 평균 근사로 API의 정확한 mean과 다르며 새 Tab context/query는0이다.",
+      "record_anchor": "c05",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              40,
+              40
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              85,
+              152
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0025157",
+          "source_sha256": "e4e3053023c49d55d535dddc35e030e84ba6ad30ec2d0de17ad31427edea0b60",
+          "json_pointers": [
+            "/teacher_query_metrics",
+            "/settings/time_splits",
+            "/settings/Tab_mean",
+            "/settings/new_Tab_contexts",
+            "/settings/new_Tab_queries"
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../records/0088-conditional-graph-diagnostic.md",
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H110-C06",
+      "title": "cell별 반례",
+      "claim": "원80에서 Tab의 cell MSE는 HGB보다16/16개에서 낮고 Ridge보다15/16개에서 낮다. 예외6153에서는 Tab0.0307530347, Ridge0.0246902515로 Ridge가 더 낫다. 평균 이득을 모든 cell 또는 MAE의 동일한 승패로 확장하지 않는다. 이는 저장된 cell MSE의 비교이며 모델을 다시 실행한 결과가 아니다.",
+      "record_anchor": "c06",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              85,
+              152
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0025157",
+          "source_sha256": "e4e3053023c49d55d535dddc35e030e84ba6ad30ec2d0de17ad31427edea0b60",
+          "json_pointers": [
+            "/teacher_query_metrics",
+            "/cell_ids"
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H110-C07",
+      "title": "동일 partition의 정확한 범위",
+      "claim": "input_only·raw_joint·TabICL·Ridge·HGB 다섯 방법만 같은 K4 partition이며 저장 ARI는1이다. untrained_probe의 ARI는0.375, PCC와 random은0.0625, global은0이다. findings는 처음 검사가 PCC/random/untrained까지 포함해 실패한 뒤 범위를 고쳤다고 보고한다. 최종 코드·결과에서는 다섯 방법을 확인했지만 최초 실패 코드·로그는 이번에 확보하지 못했다.",
+      "record_anchor": "c07",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              8,
+              8
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              40,
+              40
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              153,
+              163
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022549",
+          "source_sha256": "c50df223963d80e11abb5096db6912d83ef15a6a93ce96ae2e77ce2e60d75cff",
+          "line_ranges": [
+            [
+              30,
+              39
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0025157",
+          "source_sha256": "e4e3053023c49d55d535dddc35e030e84ba6ad30ec2d0de17ad31427edea0b60",
+          "json_pointers": [
+            "/ARI_vs_TabICL",
+            "/partitions",
+            "/settings/K",
+            "/settings/cluster_size"
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ]
+    },
+    {
+      "claim_id": "H110-C08",
+      "title": "최종 RCTL은 다른 지표",
+      "claim": "원07의 RCTL 비교는16cell·평가480시간의 cell별 정규화 MAE 평균이다. K4에서 seed20260925의 empirical/Tab은0.081600/0.087328, seed20260926은0.083516/0.087760이다. 두 seed는 같은 평가자료를 쓴 것이며 독립 데이터셋 두 개가 아니다. 원84의 여덟 조건별 요약과 보고서 네 값은 저장 결과에 일치한다.",
+      "record_anchor": "c08",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              21,
+              30
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              164,
+              213
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0030280",
+          "source_sha256": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab",
+          "json_pointers": [
+            "/metrics/0/method",
+            "/metrics/0/seed",
+            "/metrics/0/models",
+            "/metrics/0/mean_scaled_mae",
+            "/metrics/1/method",
+            "/metrics/1/seed",
+            "/metrics/1/models",
+            "/metrics/1/mean_scaled_mae",
+            "/metrics/2/method",
+            "/metrics/2/seed",
+            "/metrics/2/models",
+            "/metrics/2/mean_scaled_mae",
+            "/metrics/3/method",
+            "/metrics/3/seed",
+            "/metrics/3/models",
+            "/metrics/3/mean_scaled_mae",
+            "/metrics/4/method",
+            "/metrics/4/seed",
+            "/metrics/4/models",
+            "/metrics/4/mean_scaled_mae",
+            "/metrics/5/method",
+            "/metrics/5/seed",
+            "/metrics/5/models",
+            "/metrics/5/mean_scaled_mae",
+            "/metrics/6/method",
+            "/metrics/6/seed",
+            "/metrics/6/models",
+            "/metrics/6/mean_scaled_mae",
+            "/metrics/7/method",
+            "/metrics/7/seed",
+            "/metrics/7/models",
+            "/metrics/7/mean_scaled_mae"
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../records/0004-0007-b2-observed-risk.md",
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H110-C09",
+      "title": "평균 악화와 부분 이득",
+      "claim": "Tab partition의 RCTL MAE는 empirical보다 각각7.02%,5.08% 높았다. 저장 paired 비교의 개선 cell 수는 각각6/16,7/16이므로 모든 cell이 악화됐다고 말하지 않는다. 저장 퍼센트와 평균값으로 다시 계산한 float64 비율에는 작은 반올림 차이가 있지만 두 자리 표기는 같다. 이번 작업은 저장 수치 비교이며 새로운 성능 측정이 아니다.",
+      "record_anchor": "c09",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              30,
+              30
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              214,
+              217
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0030280",
+          "source_sha256": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab",
+          "json_pointers": [
+            "/paired_comparisons/0/relative_mae_change_percent",
+            "/paired_comparisons/0/cell_improvements",
+            "/paired_comparisons/0/cell_count",
+            "/paired_comparisons/5/relative_mae_change_percent",
+            "/paired_comparisons/5/cell_improvements",
+            "/paired_comparisons/5/cell_count"
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../records/0004-0007-b2-observed-risk.md",
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H110-C10",
+      "title": "비교군과 재사용 조건",
+      "claim": "global K1의0.071068은 당시 primary seed에서 모든 시험 K4 평균보다 작았지만 같은 K의 비교군은 아니다. balanced PCC도 UPC와 같지 않다. 이미 사용한 Milan 구간은 후속 설계의 개발 자료이며 독립 최종 test가 남았다고 표시하지 않는다. 원74·원80·RCTL의 기간·cell·출력·척도를 구별한다.",
+      "record_anchor": "c10",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              7,
+              10
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              78,
+              78
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              97,
+              99
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              177,
+              181
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              308,
+              315
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0030280",
+          "source_sha256": "297c75ea94891757768837bf6c84f4a326914b85ca1b3cc4222129a600e715ab",
+          "json_pointers": [
+            "/test_period_becomes_development_if_used_for_new_design"
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ]
+    },
+    {
+      "claim_id": "H110-C11",
+      "title": "직접 예측과 소속 결정의 연결",
+      "claim": "Tab 직접 예측이 좋다는 사실만으로 다른 모델의 공동 학습 이득을 보장할 수 없다. 보고서는 다른 함수도 유한한 학습 용량에서 같이 배울 수 있고 비슷한 함수라도 표본 중복으로 이득이 작을 수 있다는 가능성을 설명한다. 이를 새로운 실험이나 증명으로 읽지 않는다. 필요한 근거는 Tab 정보가 단순 대안과 다른 유용한 결정을 만들고 최종 RCTL에 이득을 주는지다.",
+      "record_anchor": "c11",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              34,
+              40
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              80,
+              87
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H110-C12",
+      "title": "선행연구의 역할",
+      "claim": "보고서는 HCP의 분리·결합 학습 검증, RMB-CLE의 교차 예측 profile, ETAP의 gradient·실제 이득 차이, Traffic Matrix의 random/global 비교를 남은 판단과 연결한다. 기존 문헌 검수에 이어 읽으며 이번에 네 논문을 새로 전부 검증하거나 실험을 재현했다고 세지 않는다. RCTL 정보를 소속 판단에 쓰는 설계는 기존 독립 조건과도 대조해야 한다.",
+      "record_anchor": "c12",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              42,
+              50
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../records/0005-closest-methods-audit.md"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H110-C13",
+      "title": "시계열 구조와 누수",
+      "claim": "시각·요일·주기 lag는 이미 공통 입력에 반영할 수 있다. TabPFN-ST-AR의 도로 결과를 cell 통신량 성능으로 옮기지 않는다. 과거 관측 lag를 공유하는 rolling sample은 그 자체로 미래 target 누수가 아니며 표본 의존성과 누수도 다르다. 시간 간격을 늘리는 선택에는 실제로 줄일 의존성·비용 근거가 필요하다.",
+      "record_anchor": "c13",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              54,
+              58
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H110-C14",
+      "title": "작업량 예시의 크기",
+      "claim": "M256·Q64·k16을 가정한 N128/1024/10000의 모든 교차 query 행 수는1,040,384/67,043,328/6,399,360,000이다. 방향 후보만 보면131,072/1,048,576/10,240,000, 선택한 관계의 양방향 상한은262,144/2,097,152/20,480,000이다. 표의 아홉 수치와 JSON의21개 작업량 수치를 정수 산술로 대조했다. 실행 시간이나 확정한 최적 설정이 아니다.",
+      "record_anchor": "c14",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              14,
+              22
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              62,
+              72
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              218,
+              261
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H110-C15",
+      "title": "계산에 포함할 항목",
+      "claim": "교차 query는 N(N−1)Q, 자기 평가 query는 별도 NQ, 방향 후보는 NkQ다. 중복 제거한 무방향 관계 수는 min(Nk,N(N−1)/2) 이하이고 양방향 query는 그 두 배에 Q를 곱한다. 상호 후보 선택을 가정해 Nk/2라고 둘 수 없다. 고정된 cell context의 준비 횟수N과 총 context행 NM도 query행과 따로 센다.",
+      "record_anchor": "c15",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022054",
+          "source_sha256": "b73a519fe165b2d2042caede3d3aa57f1394ec24c9fd971542c2a9e62b5bef1c",
+          "line_ranges": [
+            [
+              17,
+              17
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              22,
+              22
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              70,
+              74
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              218,
+              261
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022549",
+          "source_sha256": "c50df223963d80e11abb5096db6912d83ef15a6a93ce96ae2e77ce2e60d75cff",
+          "line_ranges": [
+            [
+              40,
+              53
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H110-C16",
+      "title": "확장성을 주장하기 전 조건",
+      "claim": "고정 context의 cache 재사용과 context를 교체·병합한 뒤의 재준비를 구별한다. 후보 탐색이 모든 쌍을 먼저 보면 전체 과정을 선형이라고 할 수 없다. k16은 예시이며 후보 축소로 중요한 관계를 놓치는지 별도 확인해야 한다. 원84는 이 원칙을 최종 신규 clustering 알고리즘으로 제안하지 않았다.",
+      "record_anchor": "c16",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              22,
+              22
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              62,
+              74
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ]
+    },
+    {
+      "claim_id": "H110-C17",
+      "title": "완료와 미완료",
+      "claim": "당시 완료표는 실행 환경·checkpoint 확보와 국소 직접 예측 이득을 확인한 반면, 채택할 유용한 clustering 결정·Tab clustering의 RCTL 개선·최종 추천 방향·사용 기간의 독립 test는 미완료로 두었다. 보고서 완성과 연구 목표 달성을 구별한다.",
+      "record_anchor": "c17",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              80,
+              87
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              308,
+              315
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              28,
+              28
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              38,
+              38
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H110-C18",
+      "title": "새 설계를 판단할 질문",
+      "claim": "실제 통신망의 운영 제약 답변은 기록되지 않았다. 이를 임의로 채우지 않는다. global·계절·lag·정규화 이후에도 남는 손해와 기존 실패 원인을 바꾸는 결정을 먼저 정의하고, 좋은 cell을 결과를 본 뒤 고르는 방식으로 새 검증을 만들지 않는다. 후속 실험에는 기존 기록과 바뀐 조건을 연결해야 한다.",
+      "record_anchor": "c18",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              89,
+              99
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022054",
+          "source_sha256": "b73a519fe165b2d2042caede3d3aa57f1394ec24c9fd971542c2a9e62b5bef1c",
+          "line_ranges": [
+            [
+              25,
+              25
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              34,
+              34
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    },
+    {
+      "claim_id": "H110-C19",
+      "title": "자료·모델의 고정 범위",
+      "claim": "실행 입력은 hourly 가공 자료이며 원10분 자료와 다르다. 활동 cell 선택과 PCC balanced의 비교를 UPC 전체 재현과 구별한다. 보고서가 고정한 TabICL checkpoint는 tabicl-regressor-v2-20260212.ckpt, 공식 코드 commit은0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3이다. 별도로 RCTL Torch port의 복사 가중치 forward 일치를 확인했다는 보고가 RCTL 학습 경로의 동일성까지 검증한 것은 아니다.",
+      "record_anchor": "c19",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              135,
+              137
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ]
+    },
+    {
+      "claim_id": "H110-C20",
+      "title": "당시 예산과 현재 원장",
+      "claim": "원84는 당시 누적 원장 SHA-256 f3e370…을 인용하며 Tab 잔여11context·20,640query행, 새 RCTL fit0을 기록한다. 현재 같은 원장 경로의 해시는17a549…이며 정리 시작 때의 보호 기준과 같다. 이번 대조는 f3e370…과 같은 보존 원장을 사용했다. 당시 값과 현재 판본을 혼동하지 않으며 이 값은 추가 모델 실행 허가가 아니다.",
+      "record_anchor": "c20",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              36,
+              36
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              97,
+              97
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              275,
+              278
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0025150",
+          "source_sha256": "f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9",
+          "json_pointers": [
+            "/used",
+            "/caps",
+            "/remaining_count_budgets",
+            "/budget_resets",
+            "/new_RCTL_fits_permitted_under_current_cap"
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0110-evidence-synthesis/provenance-check.json",
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H110-C21",
+      "title": "생성 코드의 역할과 부작용",
+      "claim": "build_synthesis_84.py는 저장 결과·원장 검사를 거쳐 근거 JSON, Markdown, Word를 작성한다. --evidence-only도 근거 JSON을 쓰므로 읽기 전용 검사 명령이 아니다. 문서 저장은 이름이 같은 출력 파일을 덮어쓸 수 있다. A4·맑은 고딕·문서 격자 해제·쪽나눔 설정을 정적으로 읽었으며 이번에 원본 생성 코드를 실행하지 않았다.",
+      "record_anchor": "c21",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022549",
+          "source_sha256": "c50df223963d80e11abb5096db6912d83ef15a6a93ce96ae2e77ce2e60d75cff",
+          "line_ranges": [
+            [
+              23,
+              91
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022549",
+          "source_sha256": "c50df223963d80e11abb5096db6912d83ef15a6a93ce96ae2e77ce2e60d75cff",
+          "line_ranges": [
+            [
+              192,
+              211
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022549",
+          "source_sha256": "c50df223963d80e11abb5096db6912d83ef15a6a93ce96ae2e77ce2e60d75cff",
+          "line_ranges": [
+            [
+              214,
+              248
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022549",
+          "source_sha256": "c50df223963d80e11abb5096db6912d83ef15a6a93ce96ae2e77ce2e60d75cff",
+          "line_ranges": [
+            [
+              329,
+              360
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H110-C22",
+      "title": "문서 검증 플래그의 한계",
+      "claim": "verify_and_archive_84.py의 자동 검사는 PDF5쪽·쪽당 글자 수·일부 용어·로컬 링크·DOCX zip·원장 해시 등을 확인한다. all_five_pages_visually_reviewed, source_statistics_checked_against_saved_JSON 등 일부 값은 저장 코드에 직접 적힌 보고값이다. 이 true만으로 현재의 시각·의미 검수가 완료됐다고 보지 않는다.",
+      "record_anchor": "c22",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023233",
+          "source_sha256": "98c9fb61f6ce1becf4c252d62a4a98014b1fef0829ab825a79c81bb41315aedb",
+          "line_ranges": [
+            [
+              20,
+              52
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022051",
+          "source_sha256": "d8f30202a9fe3cffbc8253a855e45fb6e6e544b7e8838acd54e55c0ee6c1b7b2",
+          "line_ranges": [
+            [
+              1,
+              21
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H110-C23",
+      "title": "렌더링 복구 기록",
+      "claim": "findings와 검증 JSON은 첫 렌더가 쪽나눔·문서 격자의 영향으로9쪽·빈 페이지 문제를 보였고 수정 뒤5쪽을 모두 확인했다고 기록한다. 이것은 당시 검수 보고다. 이번 묶음에서는 DOCX와 PDF·PNG의 실제 본문·페이지를 아직 읽지 않았고, 최초9쪽의 저장 증거도 재검증하지 않았다.",
+      "record_anchor": "c23",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              28,
+              30
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022051",
+          "source_sha256": "d8f30202a9fe3cffbc8253a855e45fb6e6e544b7e8838acd54e55c0ee6c1b7b2",
+          "line_ranges": [
+            [
+              1,
+              21
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022549",
+          "source_sha256": "c50df223963d80e11abb5096db6912d83ef15a6a93ce96ae2e77ce2e60d75cff",
+          "line_ranges": [
+            [
+              244,
+              248
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H110-C24",
+      "title": "snapshot26 보관 검증",
+      "claim": "manifest에는20파일·총2,334,424바이트가 나열돼 있으며 manifest 자신은 이20개에 포함되지 않는다. 현재 보존된20파일의 크기·해시는 목록과 일치한다. 보관 코드는 snapshot이 이미 있으면 중단하고 복사 후 해시를 기록한다. previous_snapshots_modified=false라는 고정 보고값을 전체 이전 snapshot의 독립 불변 검증으로 확대하지 않는다.",
+      "record_anchor": "c24",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022050",
+          "source_sha256": "b8c257f32f5cf3b62bb057793a0b99c9d21218e099d9c52a27af44a8dcb07e7c",
+          "line_ranges": [
+            [
+              1,
+              7
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0001495",
+          "source_sha256": "4e43e2b2db9e06fc58dcb309a6dbeb82b25f74213ecf8f841da36cc7572fbd88",
+          "line_ranges": [
+            [
+              1,
+              108
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0023233",
+          "source_sha256": "98c9fb61f6ce1becf4c252d62a4a98014b1fef0829ab825a79c81bb41315aedb",
+          "line_ranges": [
+            [
+              73,
+              97
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0110-evidence-synthesis/snapshot26-byte-check.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        7
+      ]
+    },
+    {
+      "claim_id": "H110-C25",
+      "title": "팀 접근과 원본 보존",
+      "claim": "핵심9개 원문은 바이트 그대로 보존한다. 보고서의 개인 PC 링크7개는 별도의 팀용 사본에서 저장소 상대경로로만 바꿨고 변경 위치를 기록했다. HCP 원문 파일 링크는 기존 문헌 검수 페이지로 연결하므로 논문 전문의 새 배포본은 아니다. 근거JSON의11개 인용 해시는 기존 보존본 모두와 연결했고 현재 경로의 예산 원장 판본 차이는 따로 남겼다.",
+      "record_anchor": "c25",
+      "source_locations": [
+        {
+          "source_id": "SRC-0000125",
+          "source_sha256": "e8cd236748413b0c5eb83cb61d637bdc791a77366253a83696a789838f9de0c1",
+          "line_ranges": [
+            [
+              103,
+              133
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022052",
+          "source_sha256": "972208169a32a528fe97197f35f64d91e48c9cd8ad6f6813d3a50b9f76536b2d",
+          "line_ranges": [
+            [
+              262,
+              307
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0110-evidence-synthesis/link-corrections.json",
+        "../evidence/0110-evidence-synthesis/evidence-comparison.json"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ]
+    },
+    {
+      "claim_id": "H110-C26",
+      "title": "다음 검수와 공백",
+      "claim": "DOCX1·저장PDF1·PNG5·고유progress1의8그룹은 해시 확인만 했으며 미독으로 남겼다. snapshot26 candidate index는 H109와 바이트가 같아 재집계하지 않는다. 최초 실패 검사·9쪽 렌더의 세부 증거, 이전 미완독 판본, 전체 실패·비용 통합과 최종 검색 검수도 남는다. 원84나 전체 Goal의 완료로 판정하지 않는다.",
+      "record_anchor": "c26",
+      "source_locations": [
+        {
+          "source_id": "SRC-0001495",
+          "source_sha256": "4e43e2b2db9e06fc58dcb309a6dbeb82b25f74213ecf8f841da36cc7572fbd88",
+          "line_ranges": [
+            [
+              1,
+              108
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              8,
+              8
+            ]
+          ]
+        },
+        {
+          "source_id": "SRC-0022053",
+          "source_sha256": "08beac9fb75e0a63bf456a3533df33a5c7222881f18987fac603f947c126c079",
+          "line_ranges": [
+            [
+              30,
+              38
+            ]
+          ]
+        }
+      ],
+      "archive_evidence": [
+        "../evidence/0110-evidence-synthesis/packet-coverage.json",
+        "../records/0109-cumulative-history.md"
+      ],
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ]
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_reviewer": false,
+  "new_model_runs": 0
+}

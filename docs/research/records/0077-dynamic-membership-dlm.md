@@ -1,5 +1,7 @@
 # 77 보완: 동적 소속 DLM의 원문과 저장 구현
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [당시 판단](0076-0079-learning-decisions.md) · [출처](../sources/history-077.md) · [구현 대조표](../evidence/0077-dynamic-membership/implementation-review.md) · [검수](../verification/history-077.md)
 
 시간에 따라 cell 소속을 바꾸는 아이디어를 다시 검토한다면, 전체 구간을 보고 복원한 소속과 예측 시점에 사용할 수 있는 배정을 먼저 구분해야 한다. 이 논문은 시간별 소속과 시간적 안정화의 선행 사례다. 우리 트래픽에서 별도 RCTL을 함께 학습할 cell을 선택하는 효과까지 입증한 자료는 아니다.

@@ -1,0 +1,105 @@
+from pathlib import Path
+import hashlib,json,shutil
+import numpy as np
+
+ROOT=Path(__file__).resolve().parents[2]
+WORK=ROOT/'tmp/redesign_20260925'
+OUT=WORK/'results/serving_cost_95'
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+summary=json.loads((OUT/'summary.json').read_text(encoding='utf-8'))
+settings=summary['settings']
+update=json.loads((OUT/'budget_update.json').read_text(encoding='utf-8'))
+ledger=WORK/'cumulative_execution_budget.json'
+expected='ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7'
+assert sha(ledger)==expected==update['ledger_after_sha256']
+assert sha(WORK/'95_serving_cost_plan.md')==settings['plan_sha256']
+assert sha(WORK/'serving_cost_diagnostic_95.py')==settings['code_sha256']
+assert sha(WORK/'rctl_torch.py')==settings['model_code_sha256']
+assert sha(WORK/'results/design_data.npz')==settings['design_data_sha256']
+assert summary['states_and_inputs_unchanged']
+data=np.load(OUT/'measurements.npz',allow_pickle=False)
+routes=data['routes'].tolist()
+timing=data['timing_seconds']
+pred=data['prediction']
+assert timing.shape==(6,3,12) and pred.shape==(6,3,12,16)
+assert np.isfinite(timing).all() and (timing>0).all() and np.isfinite(pred).all()
+for ri,row in enumerate(summary['metrics']):
+    assert row['route']==routes[ri]
+    assert abs(float(np.median(timing[ri]))-row['median_seconds'])<1e-12
+for row in summary['within_method_comparisons']:
+    a=routes.index(row['method']+'__per_cell')
+    b=routes.index(row['method']+'__per_cluster')
+    difference=float(np.max(np.abs(pred[a]-pred[b])))
+    assert difference==row['max_abs_prediction_difference'] and difference<=2e-5
+refs=[]
+for row in summary['checkpoints']:
+    path=WORK/'results/rctl_pilot'/(row['checkpoint']+'.pt')
+    assert sha(path)==row['checkpoint_sha256']
+    refs.append({'path':str(path),'bytes':path.stat().st_size,'sha256':sha(path)})
+path=WORK/'results/design_data.npz'
+refs.append({'path':str(path),'bytes':path.stat().st_size,'sha256':sha(path)})
+(OUT/'verified_input_references.json').write_text(json.dumps({
+    'files':refs,'copied_into_this_snapshot':False,
+    'note':'Original inputs/checkpoints remain at their preserved workspace paths; this snapshot records their verified identities.'
+},ensure_ascii=False,indent=2),encoding='utf-8')
+
+index=WORK/'candidate_decision_index.md'
+value=index.read_text(encoding='utf-8')
+assert '## 실제 실행 비용의 기본 비교 — 95' not in value
+value+='''
+## 실제 실행 비용의 기본 비교 — 95
+
+같은 가중치를 쓰는 동시 cell은 batch로 처리하는 것을 기본 구현으로 둔다. 기존16cell·CPU4thread의 보존된 모델에서 cell별→묶음 호출 median은 global33.186→3.493ms, TabK4 33.865→14.005ms, empiricalK4 34.038→14.152ms였다. 동일방법 예측차이는최대1.20e-6미만이고가중치/buffer불변이다. 기본batch효과를Tab신규성으로세지않는다.
+
+K1과K4는모두시점당16행을계산하며상태tensor는701412/2805648bytes다. 호출수·예측행·모델저장량·실측시간·Tab준비비용을분리한다. 이측정은새partition의정확도확인이나다른hardware/대규모latency의증거가아니다. 상세95와results/serving_cost_95를참조한다.
+'''
+index.write_text(value,encoding='utf-8')
+progress=WORK/'progress.md'
+value=progress.read_text(encoding='utf-8')
+anchor='## 최신 상태 — 94 정답 대기 입력의 정보와 보정 가능 범위'
+assert anchor in value
+new='''## 최신 상태 — 95 저장된 RCTL의 실제 묶음 예측 비용
+
+- 2026-09-26.95계획을고정한뒤기존seed20260925 global1·Tabrisk4·empiricalrisk4 checkpoint로실제CPU benchmark를한번실행했다. 기존16cell·12시점×3반복,6실행경로다. 같은시각cell만묶고미래시점대기batch를사용하지않았다.
+- cell별→묶음호출median은global33.186→3.493ms,TabK4 33.865→14.005ms,empiricalK4 34.038→14.152ms다. 같은방법예측차이최대1.1921e-6,모든가중치/buffer/원자료/checkpointhash불변. 입력준비·모델로딩제외측정이며다른hardware/10000cell에선형외삽하지않는다.
+- 모두시점당16행을예측한다. K1/K4 상태tensor는701412/2805648bytes다. 모델수·행수·호출·메모리·실측시간을구분하며,기본batch처리의효과를Tab의신규성으로세지않는다. 대표예측/다중출력/출력압축후보를재실행하지않았다.
+- 새fit0/gradient0/Tab호출0. frozen forward2166회·3648행(warm-up포함),stage5.4455786초,그안의timed route5.1066066초. 원장에한번반영했고누적recorded modeling1998.0606404초다. 새원장sha ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7. 잔여Tab11context/20640행,추가RCTLfit0.
+- 94는원문수정/정보가용성의확인으로판단을바꾼progress였다.95는실제실행비용과향후기본구현을확정한progress이며새추천안은아니다. 이번역시외부blocker가확인되지않았고최종추천방향/최종Word는미완료다.
+- 상세95·공개요약·계획/코드/측정배열/불변성/원장갱신을보존했다. 기존Word와이전snapshot은불변이다. 후속비용주장은묶음처리기준에서도어떤실제계산이제거되는지특정해야한다. 같은N행의호출만합치는구조를새연구기여로추천하지않는다.
+
+'''
+progress.write_text(value.replace(anchor,new+anchor.replace('최신','이전'),1),encoding='utf-8')
+report=ROOT/'output/research/TabICLv2_재설계_RCTL_모델수와_실제예측비용_확인.md'
+findings=WORK/'95_serving_cost_findings.md'
+for path in (report,findings):
+    content=path.read_text(encoding='utf-8')
+    assert '사례' not in content and '미완료' in content
+snapshot=ROOT/'output/research/redesign_20260925_snapshot_37'
+assert not snapshot.exists()
+snapshot.mkdir()
+files=[WORK/'95_serving_cost_plan.md',WORK/'serving_cost_diagnostic_95.py',
+       WORK/'record_serving_cost_95.py',Path(__file__).resolve(),findings,
+       report,index,progress,ledger,WORK/'rctl_torch.py',
+       WORK/'results/rctl_pilot/frozen_settings.json']
+files += [p for p in OUT.rglob('*') if p.is_file()]
+rows=[]
+for source in sorted(set(files)):
+    relative=source.relative_to(ROOT)
+    target=snapshot/relative
+    target.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(source,target)
+    assert sha(source)==sha(target)
+    if source.suffix=='.json':
+        json.loads(source.read_text(encoding='utf-8'))
+    rows.append({'path':relative.as_posix(),'bytes':source.stat().st_size,'sha256':sha(source)})
+result={'files':len(rows),'bytes':sum(row['bytes'] for row in rows),
+        'manifest':rows,'original_input_references_verified':len(refs),
+        'model_rerun_during_verification':False,'goal_complete':False}
+(snapshot/'manifest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+(WORK/'95_archive_verification.json').write_text(json.dumps({
+    'snapshot':str(snapshot),'files':result['files'],'bytes':result['bytes'],
+    'verified':True,'ledger_sha256':expected,'accounted_stage_once':True
+},ensure_ascii=False,indent=2),encoding='utf-8')
+assert sha(ledger)==expected
+print(json.dumps({key:value for key,value in result.items() if key!='manifest'}))

@@ -1,0 +1,110 @@
+{
+  "commit": "ac09a66245f9eaa7371065ec3f7d3673df125c94",
+  "saved_full_code_read": {
+    "SRC-0061929": 585,
+    "SRC-0061932": 389
+  },
+  "previous_code_read_in_H116": {
+    "SRC-0061929": [
+      [
+        1,
+        252
+      ]
+    ],
+    "SRC-0061932": [
+      [
+        1,
+        220
+      ]
+    ]
+  },
+  "new_raw_code_lines": 502,
+  "previous_code_reread_lines": 472,
+  "prior_provenance": "[H116 줄끝·Git blob 대조](../0116-causal-capacity/archive-and-version-audit.json)",
+  "wrapper": {
+    "url": "https://raw.githubusercontent.com/Xinhui-Lee/CIB-MTSF/ac09a66245f9eaa7371065ec3f7d3673df125c94/CIB-MTSF/CIB-MTSF/models/CIBMTSF.py",
+    "sha256": "31d461f4d938ea19dcfd85d082915779c92d66d3c273e2bb41f59e51aa6216fd",
+    "git_blob": "7caf2f02cd23c22f36352d2d863c70c64950c91b",
+    "raw_lines": [
+      82,
+      106
+    ],
+    "current_extra_read_original_credit": 0
+  },
+  "routes": [
+    {
+      "name": "validation",
+      "source_id": "SRC-0061932",
+      "lines": [
+        59,
+        105
+      ],
+      "finding": "eval/no_grad·tuple분리·MSE+aux의batch평균"
+    },
+    {
+      "name": "epoch report",
+      "source_id": "SRC-0061932",
+      "lines": [
+        212,
+        233
+      ],
+      "finding": "earlystop=vali_loss,NNI=test_loss;실제튜너사용미확인"
+    },
+    {
+      "name": "test",
+      "source_id": "SRC-0061932",
+      "lines": [
+        235,
+        334
+      ],
+      "finding": "AMP/비AMP tuple분리,metric호출,pred.npy저장"
+    },
+    {
+      "name": "predict",
+      "source_id": "SRC-0061932",
+      "lines": [
+        336,
+        388
+      ],
+      "finding": "AMP/비AMP outputs하나에tuple수신후detach;비decompositionwrapper와불일치"
+    }
+  ],
+  "static_findings": [
+    {
+      "source_id": "SRC-0061929",
+      "lines": [
+        118,
+        173
+      ],
+      "finding": "내적과cosine차이·양성/음성별max이동·고정batchanchor"
+    },
+    {
+      "source_id": "SRC-0061929",
+      "lines": [
+        178,
+        229
+      ],
+      "finding": "eval에도aux구간계산"
+    },
+    {
+      "source_id": "SRC-0061929",
+      "lines": [
+        316,
+        372
+      ],
+      "finding": "일반속성평균·학습guard없음·momentum평균덮어쓰기"
+    },
+    {
+      "source_id": "SRC-0061929",
+      "lines": [
+        277,
+        583
+      ],
+      "finding": "공유patchencoder·BN조건·patch²attention점수"
+    }
+  ],
+  "all_dependencies_or_configurations_verified": false,
+  "actual_tuner_leakage_established": false,
+  "source_code_executed": false,
+  "new_model_runs": 0
+}

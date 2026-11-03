@@ -5,7 +5,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        실험 전에는 계획을 작성하고, 실험 후에는 결과와 다음 작업을 보완해 주세요.
+        실험 전에는 [공통 실험 규약](https://github.com/2026-fall-capstone-design/mobile-network-traffic-forecasting/blob/main/docs/research-protocol.md)의 Milan-900-10min v1.2 기준으로 계획을 작성하고, 실험 후에는 결과와 다음 작업을 보완해 주세요.
+        v1.2는 전체 30일 정규화와 겹치는 검증·평가를 사용하는 재현 비교입니다. 기본 조건을 바꾸면 별도 프로토콜로 구분해 주세요.
         담당자는 오른쪽 Assignees에서 지정해 주세요.
   - type: textarea
     id: hypothesis
@@ -19,7 +20,7 @@ body:
     id: prior_work
     attributes:
       label: 관련 과거 시도와 이번 실험의 차이
-      description: docs/research/prior-attempts.md와 관련 기록을 확인해 주세요. 아카이브는 정리 중이므로 검색 결과가 없다는 사실만으로 과거 시도가 없다고 판단하지 않습니다.
+      description: docs/research/README.md의 상세 기록·519개 주제 표·후속 요약과 docs/research/prior-attempts.md를 확인해 주세요. 검색 결과가 없다는 사실만으로 과거 시도가 없다고 판단하지 않습니다.
       placeholder: |
         - 관련 기록 / 기존 실험 링크:
         - 같게 유지할 조건과 달라지는 질문 / 조건:
@@ -31,26 +32,36 @@ body:
     id: data
     attributes:
       label: 데이터와 평가 구간
-      description: 데이터 출처·버전, 대상 지역·기간, 전처리 및 시간 순서에 따른 분할 기준을 적어 주세요.
+      description: 데이터 출처·버전과 공통 기준의 정확한 타깃 경계를 적고, 과거 결과와 조건이 다르면 구분해 주세요.
       placeholder: |
-        - 데이터 출처 / 버전 / 대상:
-        - 집계 간격 / 결측치 처리:
-        - 학습 또는 컨텍스트 / 검증 / 테스트 기간:
-        - 미래 정보가 입력이나 전처리에 포함되지 않도록 확인할 사항:
+        - protocol_id: Milan-900-10min-v1.2 / 기본 비교 또는 추가 조건:
+        - 데이터 출처 / 버전 / 900셀 ID·4,320시점·원 배열 해시:
+        - 10분 집계 / 보간 없음 / valid_q8·mape_eligible 해시:
+        - 전체 30일 scaler fit / lo·scale·상수 셀 여부 / 계수 해시:
+        - 학습 타깃 [8, 2872) / 검증 [2888, 4320) / 평가 [2893, 4320):
+        - 검증·평가 중복 / independent_test=false:
+        - 직전 q=8 실측 입력 / 다음 10분 예측 / 추가 입력·적합 정보의 범위:
+        - 원 배열·계수·역변환·지표 float64 / 모델 입력·학습 float32 여부:
     validations:
       required: false
   - type: textarea
     id: setup
     attributes:
       label: 실험 설정과 비교 방법
-      description: 재현과 공정한 비교에 필요한 설정을 적어 주세요. 해당하지 않는 항목은 생략해도 됩니다.
+      description: 공통 규약과 docs/experiment-results.md를 따릅니다. 비교 후보·시드·탐색 예산·선택 규칙은 실행 전에 정하고 모든 시도를 기록해 주세요. 과거 연구별 세부 확인사항은 관련 원기록에서 연결합니다.
       placeholder: |
-        - 비교 모델 / 기준 모델:
-        - 입력 이력 길이 / 예측 구간:
-        - 모델 버전 / 변경할 설정 / 고정할 설정:
-        - 평가 지표 및 집계 방식 (예: MAE, RMSE):
+        - run_id / model_id / config_id / 비교 모델·기준 모델:
+        - 코드·가중치 버전 / 구조 / 변경·고정 설정 / 사전학습 여부:
+        - 학습 손실·학습률·배치·예산·종료 규칙·탐색 횟수:
+        - 모델별 유효 검증표본 전체의 정규화 MAE(val_loss, float32):
+        - 선택 checkpoint·epoch / 정확한 동률이면 이른 epoch / 평가 전 선택 가중치 복원:
+        - raw micro MAPE(%)·비율 / micro MAE / macro MAPE(%)·비율 / macro MAE:
+        - 시드 53·54·55 / 초기 모델·optimizer 상태 / 실행 환경:
+        - 앙상블 별도 run_id·ensemble_id / 검증에서 고정한 구성·시드·가중치:
+        - 같은 구성 수·예측 집합의 단순 평균 앙상블 기준:
         - 실행 명령 또는 노트북 / 설정 파일:
-        - 랜덤 시드 / 실행 환경:
+        - 관련 원기록의 추가 확인사항 / 이번 조건에서 달라지는 점:
+        - 실행시간에 포함·제외한 준비 / 로딩 / warm-up / 결과 수집 범위:
     validations:
       required: false
   - type: textarea
@@ -58,7 +69,7 @@ body:
     attributes:
       label: 완료 기준
       description: 성능이 개선되지 않더라도 실험을 완료했다고 판단할 기준을 적어 주세요.
-      placeholder: 동일한 테스트 구간에서 기준 모델과 비교하고, 지표·실행 시간·해석을 기록한다.
+      placeholder: 동일한 프로토콜·타깃·마스크에서 모든 유효 평가 표본을 예측하고, 네 지표·실행 시간·재현 비교의 한계를 기록한다.
     validations:
       required: false
   - type: textarea
@@ -67,8 +78,12 @@ body:
       label: 결과 / 해석 / 후속 작업
       description: 실험 후 이 이슈를 수정하거나 댓글로 결과를 남겨 주세요. 등록 시에는 비워 두어도 됩니다.
       placeholder: |
-        - 결과 표 / 그래프 / 산출물 링크:
-        - 가설에 대한 결론과 한계:
+        - 예측 테이블 / 셀별 지표 / 결과 표·로그 링크:
+        - 평가 후보 1,284,300개 / 유효 1,283,738개 / 양수·0 타깃 수 / 셀별 표본 수:
+        - 네 지표의 시드별 값 / 3시드 점수 평균·표본 표준편차(ddof=1) / 대응 시드 차이:
+        - 별도 앙상블 점수 / 동일 예측 집합 단순 평균 대비 추가 개선:
+        - 같은 조건의 MAPE 차이(%p) / 상대 개선율(%) / 기준 오차 0이면 미정의:
+        - 가설에 대한 결론과 한계 / 독립 시험으로 해석하지 않음:
         - 평균 결과와 기간별 / 셀별 손해:
         - 새 실행과 저장 결과 재분석의 구분:
         - 후속 작업 또는 관련 PR:

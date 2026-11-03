@@ -1,5 +1,7 @@
 # 51·55 — beam 예측의 특징과 도로 정보의 재사용 조건
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 ITU beam 예측은 시간적 거리에 따라 특징을 다르게 쓰는 강한 표형 기준을, *Cellular Predictions on the Move*는 도로 flow·speed를 추가하는 조건과 반례를 보여 준다. 두 연구를 새 cell clustering이나 RCTL 공동 학습의 검증으로 옮기지 않는다. 특히 두 번째 연구의 target은 실제 도로 관측으로 만든 **모의 통화량**이다.
 
 이번 기록은 [51 계획](../evidence/0051-0055-gotsf-audit/originals/SRC-0021746.md.txt)과 [55 §1–2](../evidence/0052-0054-partial-observation/originals/SRC-0021824.md.txt)의 ITU·Cellular 판단을 원문에 연결한다. 55의 GOTSF 부분은 [앞선 기록](0051-0055-gotsf-audit.md), 작은 부분 관측 실험은 [52·54 기록](0052-0054-partial-observation.md)에 있다. 51·53·55 전체 문헌 검토와 종합은 계속 진행 중이며, 이 아카이브의 새 학습·추론·모의자료 생성은 0회다.

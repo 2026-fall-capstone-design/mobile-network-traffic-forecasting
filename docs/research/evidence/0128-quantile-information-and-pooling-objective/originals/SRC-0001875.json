@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-26",
+  "previous_goal_turn_classification": "progress",
+  "previous_progress_evidence": "C:\\Users\\jungj\\OneDrive\\Desktop\\연구실\\Tab-ICL\\tmp\\redesign_20260925\\97_archive_verification.json",
+  "search_queries": [
+    "\"TabICL\" \"clustering\" \"regression\" 2026",
+    "\"time series\" \"clustering\" \"forecasting\" \"sample complexity\" 2025 2026",
+    "\"traffic forecasting\" \"foundation\" \"clustering\" 2026",
+    "\"tabular foundation models\" \"task similarity\"",
+    "\"TabICL\" \"influence\" \"context\"",
+    "\"forecasting\" \"clustering\" \"effective sample size\"",
+    "\"clustering\" \"prediction\" \"data pooling\" 2026",
+    "\"quantile regression\" \"group\" \"pooling\" \"density\" heterogeneous panel",
+    "\"clustering\" \"quantile\" \"bias\" \"variance\" regression panel",
+    "\"task grouping\" \"quantile regression\"",
+    "\"TabPFN\" \"density\" \"median\" uncertainty clustering",
+    "quantile regression latent group panel density at zero pooling asymptotic variance",
+    "grouped panel quantile regression clustering 2025 2026",
+    "quantile regression transfer learning source detection density target 2024 2025"
+  ],
+  "search_limit": "Broad searches were noisy; no novelty inference from missing search results.",
+  "primary_sources": [
+    {
+      "paper": "Transfer Learning for High-dimensional Quantile Regression with Distribution Shift",
+      "version": "2411.19933v2, revised 2025-11-25",
+      "url": "https://arxiv.org/html/2411.19933v2",
+      "read_scope": [
+        "Sections 2-3",
+        "Equations 2,3,7",
+        "Algorithm 1",
+        "Conditions 1-6",
+        "Selected Section 8.1.3 tuning explanation"
+      ],
+      "visual_pdf_pages": [
+        7,
+        16
+      ],
+      "version_note": "Opened v1 first, then checked v2. v2 information ratio includes source/target sample sizes.",
+      "text_inconsistency": "Page 7 prose says f0 smaller than f1; following inequality implies smaller source density f1 for the equal-size harm example. Used equations and direct CDF derivation, not this reversed wording."
+    },
+    {
+      "paper": "Panel Data Quantile Regression with Grouped Fixed Effects",
+      "version": "1801.05041v2, 2018-08-05",
+      "url": "https://arxiv.org/abs/1801.05041v2",
+      "read_scope": [
+        "Sections 2-3 selected model, criterion and assumptions",
+        "Equations 1-4",
+        "Algorithm 1",
+        "IID-within and independent-between assumption"
+      ],
+      "visual_pdf_pages": [
+        5,
+        6
+      ]
+    },
+    {
+      "paper": "Functional-Coefficient Quantile Regression for Panel Data with Latent Group Structure",
+      "version": "2303.13218v1, 2023-03-23",
+      "url": "https://arxiv.org/abs/2303.13218v1",
+      "read_scope": [
+        "Sections 2-4",
+        "Equations 3.1-3.4",
+        "Assumptions 1-7",
+        "Distinction between group recovery and post-grouping normality conditions"
+      ],
+      "visual_pdf_pages": [
+        9,
+        15
+      ]
+    }
+  ],
+  "abstract_only": [
+    {
+      "title": "A Grouped GEE Framework for Quantile Regression in Heterogeneous Longitudinal Data Analysis",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/sta4.70051",
+      "reason": "Requested full page redirected to abstract; no full method verification claimed."
+    }
+  ],
+  "access_note": "PMC functional-coefficient article initially opened, later requests returned verification challenge. Read the public arXiv author version instead.",
+  "local_installed_code_read": [
+    {
+      "path": "C:\\Users\\jungj\\OneDrive\\Desktop\\연구실\\Tab-ICL\\tmp\\redesign_20260925\\runtime\\Lib\\site-packages\\tabicl\\_model\\quantile_dist.py",
+      "sha256": "7e09ac0c3ce0260dc07cef79b0a98ee63b0785efafbf415fd243fe2981499b99"
+    },
+    {
+      "path": "C:\\Users\\jungj\\OneDrive\\Desktop\\연구실\\Tab-ICL\\tmp\\redesign_20260925\\runtime\\Lib\\site-packages\\tabicl\\_sklearn\\regressor.py",
+      "sha256": "9bfc15027a63211e7ab15a2924c13eb7537937dbd3d53e2799b18cdbc8d09731"
+    }
+  ],
+  "package_scope": "Installed TabICL 2.2.0 implementation; not a claim that all current GitHub revisions were inspected.",
+  "external_official_implementation_executed": false,
+  "all_pdf_pages_read": false,
+  "execution": {
+    "new_TabICL_contexts": 0,
+    "new_query_rows": 0,
+    "new_RCTL_fits": 0,
+    "new_forwards": 0,
+    "new_gradients": 0,
+    "new_data_experiment": false
+  },
+  "new_direction_confirmed": false
+}

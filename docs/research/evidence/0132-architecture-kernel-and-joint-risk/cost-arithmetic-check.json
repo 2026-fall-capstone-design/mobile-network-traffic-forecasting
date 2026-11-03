@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "reported_integer_values_checked": 2,
+  "reported_global_rows": 10752,
+  "reported_group_rows": 2688,
+  "reported_float_bytes": 8,
+  "reported_global_kernel_bytes": 924844032,
+  "reported_four_group_kernel_bytes": 231211008,
+  "reported_global_kernel_MiB": {
+    "numerator": 882,
+    "denominator": 1
+  },
+  "reported_four_group_kernel_MiB": {
+    "numerator": 441,
+    "denominator": 2
+  },
+  "additional_code_shape_calculation": {
+    "source_id": "SRC-0002012",
+    "source_lines": [
+      [
+        171,
+        190
+      ],
+      [
+        190,
+        192
+      ]
+    ],
+    "kind": "archiver_scoped_static_storage_calculation",
+    "hypothetical_input": "원101과같은학습sequence수N/기존RCTL8steps를해당RNNbatchedroutine에그대로입력한다고가정",
+    "not_actual_original102_kernel_execution": true,
+    "assumed_training_sequence_count_global": 10752,
+    "assumed_sequence_steps": 8,
+    "assumed_dtype": "float64 / 8 bytes, explicit arithmetic assumption",
+    "shape": "N×N×T×T",
+    "bytes_per_global_four_dimensional_buffer": 59190018048,
+    "bytes_for_four_group_four_dimensional_buffers": 14797504512,
+    "global_one_buffer_GiB": {
+      "numerator": 441,
+      "denominator": 8
+    },
+    "four_groups_one_buffer_each_GiB": {
+      "numerator": 441,
+      "denominator": 32
+    },
+    "buffers_observed_in_static_code": [
+      "hcov",
+      "hhcov"
+    ],
+    "no_buffer_was_allocated": true,
+    "not_complete_peak_memory": true,
+    "not_runtime_measurement": true,
+    "not_lower_bound_for_all_kernel_implementations": true
+  },
+  "scope": "기존2정수값검산과조건을고정한코드shape저장량4수치만. kernel값/예측/traffic평균·공분산·새모델을계산하지않는다.",
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "models_instantiated": false,
+  "new_model_runs": 0,
+  "kernel_entries_computed": 0,
+  "traffic_statistics_recomputed": false,
+  "coverage_increment_applied": false,
+  "checked_at_utc": "2026-10-12T13:51:21.679862+00:00"
+}

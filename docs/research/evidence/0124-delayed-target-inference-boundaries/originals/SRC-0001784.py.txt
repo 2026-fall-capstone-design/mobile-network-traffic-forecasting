@@ -1,0 +1,130 @@
+from pathlib import Path
+import hashlib, json, shutil
+from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT/'tmp/redesign_20260925'
+SRC = WORK/'sources/delayed_94'
+LEDGER = WORK/'cumulative_execution_budget.json'
+EXPECTED = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+assert sha(LEDGER) == EXPECTED
+sources = json.loads((SRC/'source_manifest.json').read_text(encoding='utf-8'))
+for row in sources:
+    path = SRC/row['local_file']
+    assert 'error' not in row
+    assert sha(path) == row['sha256']
+    assert len(PdfReader(path).pages) == row['pages']
+assert sum(row['pages'] for row in sources) == 174
+assert sum(row['bytes'] for row in sources) == 5369639
+renders = json.loads((SRC/'render_manifest.json').read_text(encoding='utf-8'))
+for row in renders:
+    assert sha(SRC/row['image']) == row['sha256']
+    row['visually_inspected'] = True
+(SRC/'render_manifest.json').write_text(json.dumps(renders, ensure_ascii=False, indent=2), encoding='utf-8')
+
+scope = {
+    'date': '2026-09-26', 'plan': '94_delayed_target_scope_plan.md',
+    'new_TabICL_calls': 0, 'new_RCTL_calls': 0, 'new_numeric_experiments': 0,
+    'external_code_executed': False, 'official_code_audited': False,
+    'sources': [
+        {'id': 'PPCI_2603_05575v2', 'version_date': '2026-08-29',
+         'scope': 'Section2.4 Assumption1; Section3 Algorithm1/equations5-7; selected Section4 assumptions and dependence discussion; Section5 weighting/unlabeled role; Section6.1-6.2; AppendixE dependence scope. Not a complete proof audit.',
+         'version_change': 'Section6.1 now uses deterministic f_q(X)=q*m(X)+(1-q)*s(X), independent of realized response noise. Do not transfer the v1 simulation concern to v2.'},
+        {'id': 'ADAPT_Z_2509_03810v2', 'version_date': '2026-02-26', 'venue': 'ICLR2026',
+         'scope': 'Sections3.1-3.4,4.1 and selected4.3,5; AppendixB Algorithm1/hyperparameters; AppendixC final conceptual-theory limitation; selected AppendixF failure and runtime discussion. No code execution or full reproduction.',
+         'unresolved': 'Section4.1 describes horizons12,24,48 while later tables include1,24,48. No code-based experiment-setting certification.'},
+        {'id': 'Reliable_Algorithm_Selection_ICML2025', 'venue': 'PMLR267:16078-16101',
+         'scope': 'Sections2-3, Algorithm1-5, AppendixA.1 equations4-9 and variance rationale; known vs estimated density-ratio scope. Full proofs and experiments not independently reproduced.'}
+    ],
+    'valid_pdf_count': 3, 'valid_pdf_pages': 174, 'valid_pdf_bytes': 5369639,
+    'renders': renders,
+    'queries': [
+        '"prediction powered" "delayed" forecasting inference',
+        'time series forecasting delayed feedback unlabeled covariates prediction powered',
+        '"TabICL" "delayed" regression streaming',
+        '"prediction-powered" "covariate shift"',
+        '"forecasting" "delayed feedback" "online"',
+        '"TabPFN" "stream" "regression"',
+        '"Prediction-Powered Conditional Inference"',
+        '"Reliable Algorithm Selection for Machine Learning-Guided Design"'
+    ],
+    'search_only_not_method_evidence': [
+        'Online Learning with Optimism and Delay ICML2021',
+        'Multi-Source PPI2606.21232', 'DEAL2606.15602',
+        'Causal-Guided Ultra-Long-Term Forecasting', 'CEP ICLR2026'
+    ],
+    'access_notes': 'Web PDF opening for the ICML paper returned an internal error; ordinary download of the official PMLR GitHub asset succeeded. No access-control bypass. All three PDFs parsed successfully.',
+    'own_symbolic_findings': [
+        'At time t with fixed horizon h and X_s observed by s, Y_(s+h) is known iff s+h<=t. Ignoring start/missing data, h pending rows per cell; one for h=1. Ch raw rows are not automatically independent samples.',
+        'For multi-output horizons partially observed target prefixes differ from fully unobserved targets. Known prefixes do not reveal unknown future suffixes.',
+        'Under support overlap and integrability E_Q f + E_P[(dQ_X/dP_X)(Y-f)] = E_Q mu_P, with discrepancy E_Q(mu_P-mu_Q) from a shifted conditional mean. Correcting input shift alone does not remove arbitrary conditional drift.',
+        'Two environments with the same observed past and current inputs but different future conditional laws cannot always be distinguished at the current boundary without additional assumptions.',
+        'Traffic-label inference and risk of an as-yet untrained grouped RCTL are different estimands. Using learned RCTL predictions/losses in the clustering correction would change the independence requirement.'
+    ],
+    'decision': 'Do not add a delayed-label PPI module to the present static one-step clustering proposal. Not a universal impossibility claim for delayed forecasting or PPI.',
+    'ledger_sha256': EXPECTED, 'remaining_Tab_contexts': 11,
+    'remaining_Tab_query_rows': 20640, 'additional_RCTL_fits_allowed': 0,
+    'goal_complete': False, 'external_blocker': None, 'search_completeness_claimed': False
+}
+scope_path = WORK/'94_source_reading_scope.json'
+assert not scope_path.exists()
+scope_path.write_text(json.dumps(scope, ensure_ascii=False, indent=2), encoding='utf-8')
+
+index = WORK/'candidate_decision_index.md'
+value = index.read_text(encoding='utf-8')
+anchor = '| 실제 무통신과 양의 트래픽을 구별한 공유 |'
+assert anchor in value and '| 최근의 정답 대기 입력으로 소속 갱신 |' not in value
+row = '| 최근의 정답 대기 입력으로 소속 갱신 | 94: PPCI2603.05575v2, Reliable Algorithm Selection ICML2025, ADAPT-Z ICLR2026 | 고정h에서는cell당h개대기입력이고h1에서는1행이다. 입력분포보정은임의조건부변화를제거하지않고traffic추정과RCTL공동학습손해는다르다. 현재정적안에는미채택. PPCI v2의입력만사용하는simulation수정을반영하며v1우려를반복하지않는다. 실제지연필요·유용한소속결정근거없이adapter/PPI를추가하지않는다. | 09,17,77,83,94 |\n'
+index.write_text(value.replace(anchor, row+anchor, 1), encoding='utf-8')
+
+progress = WORK/'progress.md'
+value = progress.read_text(encoding='utf-8')
+anchor = '## 최신 상태 — 93 후보 판정 기준과 기존 비교의 적용 범위 감사'
+assert anchor in value
+new = '''## 최신 상태 — 94 정답 대기 입력의 정보와 보정 가능 범위
+
+- 2026-09-26.94계획 후 PPCI2603.05575v2·ADAPT-Z2509.03810v2·Reliable Algorithm Selection ICML2025의 지정 방법·가정·보정식을 읽었다. PDF3개174쪽/5369639bytes 확보, 관련6쪽 시각 대조. 전체 증명/실험 재현과 공식 코드 감사는 하지 않았다.
+- PPCI 최신v2는 입력만의 결정적 예측자로 simulation을 바꿨다. 이전v1의 realized-label noise 우려를 최신판에 반복하지 않는다. iid/동일입력분포·독립 또는cross-fit 조건과 abundant-unlabeled 이득은 현재의존시계열에 자동 적용되지 않는다.
+- 현재t와고정h에서 정답대기입력은cell당h개, h1은한행임을 기호로 확인했다. 실제자료의 새 통계가 아니다. 인접창·동시cell을독립sample로세지않고 일부target만도착한vector예측과 구분했다.
+- 정확한입력밀도비를써도 보정값은과거conditional mean을최근입력에평균한값이다. 임의conditional drift는남는다. 현재traffic값의추정과학습할RCTL의risk는다른대상이며 ADAPT-Z의학습된표현/gradient로clustering하면 독립성조건이달라진다.
+- 현재정적h1안에지연보정module을추가하는후보는미채택이다. 실제운영지연·단순대안의손해·바뀔유용한소속결정없이horizon/미관측label을발명하지않는다. 지연예측/PPI전체의불가능성으로판정하지않는다.
+- 새Tab/RCTL/데이터수치실행0.원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변.잔여Tab11context/20640행,추가RCTLfit0.상세94·공개요약·읽기범위·인덱스를보존했고기존Word/snapshot은불변이다.
+- 최종추천안/최종Word는미완료다. 이번은최신판수정과현재정보가용성의차이를확인해추가하지않을구조를구체화한progress이며외부blocker는없다. 다음에과거label을일부러숨기거나같은PPI/drift점수의이름을바꾸어재진입하지않는다.
+
+'''
+progress.write_text(value.replace(anchor, new+anchor.replace('최신','이전'), 1), encoding='utf-8')
+
+report = ROOT/'output/research/TabICLv2_재설계_정답이_없는_최근입력의_활용범위.md'
+findings = WORK/'94_delayed_target_findings.md'
+for path in (report,findings):
+    value = path.read_text(encoding='utf-8')
+    assert '사례' not in value
+    assert '미완료' in value
+assert sha(LEDGER) == EXPECTED
+snapshot = ROOT/'output/research/redesign_20260925_snapshot_36'
+assert not snapshot.exists()
+snapshot.mkdir()
+files = [WORK/'94_delayed_target_scope_plan.md', findings, scope_path,
+         WORK/'fetch_delayed_sources_94.py', WORK/'render_delayed_sources_94.py',
+         Path(__file__).resolve(), report, progress, index, LEDGER]
+files += [p for p in SRC.rglob('*') if p.is_file()]
+records=[]
+for source in sorted(set(files)):
+    rel = source.relative_to(ROOT)
+    target = snapshot/rel
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source,target)
+    assert sha(source) == sha(target)
+    if source.suffix == '.json':
+        json.loads(source.read_text(encoding='utf-8'))
+    records.append({'path':rel.as_posix(),'bytes':source.stat().st_size,'sha256':sha(source)})
+result={'files':len(records),'bytes':sum(r['bytes'] for r in records),
+        'manifest':records,'ledger_unchanged':True,'goal_complete':False}
+(snapshot/'manifest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+(WORK/'94_archive_verification.json').write_text(json.dumps({
+    'snapshot':str(snapshot),'files':result['files'],'bytes':result['bytes'],
+    'verified':True,'ledger_unchanged':True
+},ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({k:v for k,v in result.items() if k!='manifest'}))

@@ -1,0 +1,74 @@
+# 92. 순차 예측 증거를 이용한 공유 판단의 검토
+
+2026-09-26. 사전 범위: `92_prequential_sharing_scope_plan.md`. 이번에는 문헌·정적 코드·기호 관계만 확인했다. 새 TabICLv2 추론, RCTL 학습, 데이터 수치 검사는 모두 0이다.
+
+## 판단
+
+**공유 context와 개별 context의 순차 예측 확률을 비교하는 안은 현재 추천 후보로 채택하지 않는다.** 유한한 자료에서 얼마나 빨리 관계를 학습하는지 평가할 여지는 있지만, 분포 전체를 잘 설명하는 구분이 RCTL의 점 예측에 필요한 구분과 같지는 않다. 공유·분리의 예측 증거로 clustering하는 원리도 이미 존재한다. TabICLv2의 density API를 연결하는 것만으로 이 두 문제를 해결할 수 없다.
+
+이는 순차 예측 점수나 Bayesian clustering 자체가 무효라는 판단이 아니다. 현재 목표인 독립적인 clustering → 실제 target으로 학습한 RCTL의 개선에 필요한 연결이 확보되지 않았다는 판단이다. 이전의 Tab 직접 예측 이득은 유지한다.
+
+## 원문에서 실제 확인한 내용
+
+| 자료 | 확인한 방법 | 현재 연구와 구별할 점 |
+|---|---|---|
+| Heller·Ghahramani, Bayesian Hierarchical Clustering, ICML 2005 | §2 식1–3과 Fig.2: 하나의 성분으로 설명하는 marginal likelihood와 현재 tree에 맞는 분할 설명을 비교하여 병합한다. §3은 DPM과의 관계, §4는 hyperparameter와 예측 분포를 다룬다. | component likelihood와 prior를 명시한 비교다. 임의의 예측 점수를 넣었다고 원문의 posterior나 DPM bound가 유지되지는 않는다. 공유·분리 증거를 병합 기준으로 쓰는 발상은 선행된다. |
+| Cooke 외, Bayesian hierarchical clustering for microarray time series data with replicates and outlier measurements, BMC Bioinformatics 2011, 12:399 | Methods 식1–12: 같은 cluster의 gene들이 하나의 시간 함수와 잡음 모형을 공유한다. GP covariance, replicate로 추정한 noise prior, outlier mixture를 사용한다. 실험과 runtime 설명도 확인했다. | 시간 좌표에 따른 곡선 clustering이며, 최근 lag로 미래 트래픽을 예측하는 문제와 다르다. 주요 평가는 biological homogeneity와 내부 PCC다. replicate는 여러 cell이나 이웃 시간 관측과 동일하지 않다. |
+| Aswadi·Jeffrey·Wei, Rethinking Description Length: A TabPFN-Based Approximation of Bayesian Mixture Codes, ICML Structured Data Workshop 2025 | 공식 채택 목록과 검색에 노출된 초록·첫 페이지에서 TabPFN으로 Bayesian coding을 근사한다는 연구 범위를 확인했다. | **전문 미확보·방법 미검증.** main ICML 논문으로 표기하지 않는다. OpenReview browser verification과 공개 PDF의 HTTP 403을 기록했다. 세부 식·결과를 이번 기각의 근거로 사용하지 않는다. |
+
+출처: [BHC 2005 원문](https://mlg.eng.cam.ac.uk/zoubin/papers/icml05heller.pdf), [GP-BHC 2011 저자 저장본](https://wrap.warwick.ac.uk/id/eprint/40846/1/WRAP_Wild_1471-2105-12-399.pdf), [2025 워크숍 공식 채택 목록](https://icml-structured-fm-workshop.github.io/2025/accepted-papers/), [TabPFN coding 논문 페이지](https://openreview.net/forum?id=MCBOqoQk2r).
+
+BHC 2005의 tree/DPM 설명은 지정 구간을 읽었으며 모든 증명을 독립 재현한 것은 아니다. GP-BHC는 cluster별 hyperparameter를 최적화한다. 모든 변수를 완전히 적분한 exact Bayesian 계산이라고 확대하지 않는다. 원문은 covariance의 block 구조를 이용해 여러 gene 전체 크기의 역행렬을 시간점 수 크기로 줄인다. 따라서 단순한 거대 GP 역행렬 비용을 필요 비용으로 가정하여 TabICLv2의 비용 우위를 만들지 않는다.
+
+확보 PDF는 2개, 총 21 PDF쪽이다. GP-BHC는 저장소 표지 1쪽을 포함하며 논문 자체는 12쪽이다. 지정된 방법 4쪽을 이미지로 대조했다. 출처·hash·읽은 범위는 manifest와 `92_source_reading_scope.json`에 남긴다.
+
+## 구현에서 확인한 것
+
+설치된 TabICL 2.2.0의 `_model/quantile_dist.py`와 `_sklearn/regressor.py`를 복사하여 정적으로 읽었다. 실행한 모델과 같은 설치본이며 이번에 추론하지 않았다.
+
+- `QuantileDistribution`에는 `log_prob`와 `pdf`가 있다. 따라서 density를 계산하는 기능이 없다고 설명하면 틀린다.
+- 이 클래스는 유한 분위수를 정렬하고 분위수 사이를 선형으로 잇는다. 기본 꼬리는 exponential이며 GPD 선택지도 있다. 분위수 출력만으로 모든 구간의 density가 유일하게 정해지는 것은 아니므로, 보간·꼬리 규칙도 점수 정의의 일부다.
+- `_icdf_derivative`는 기울기를 1e-6~1e6으로 제한하고 `log_prob`는 그 기울기의 음의 로그를 반환한다. 이러한 수치 보호를 포함한 점수를 그대로 무한 support 위의 정확히 정규화된 likelihood라고 부르지 않는다. 유한 반환값의 density에는 양의 하한이 생기므로, 이를 실수 전체에 그대로 연장하면 적분값 1인 연속 density로 해석할 수 없다. **정적 코드에서 얻은 제한이며, 실제 traffic 점수에 어느 정도 영향을 주는지는 측정하지 않았다.** 이것만으로 모델의 점 예측이 잘못됐다고 결론 내리지 않는다.
+- 기존 저장본의 129개 분위수를 활용한다면 그 실제 분위수 위치를 함께 전달해야 한다. 기본 균등 위치를 대신 적용하지 않는다. 이번에는 기존 예측 배열도 재계산하지 않았다.
+- 회귀 구현은 예측한 mean·median·분위수를 원 target 단위로 되돌리는 처리를 포함한다. 이미 복원된 분위수에 scale 보정을 다시 적용하면 이중 보정이다.
+
+PreqTorch의 [공식 코드](https://github.com/cj-torres/preqtorch/tree/9272d6d8b10aeb1d81d08fecd8ac3ac53ffa5cb4)도 정적으로 확인했다. `BlockEncoder.encode`는 현재 블록을 평가하고, 마지막 블록이 아니면 초기 가중치를 복원한 뒤 전달받은 학습 loader로 다음 블록을 준비한다. 시간순 loader 구성과 loss 정의는 호출자가 담당한다. 평가 함수는 전달된 loss를 더하므로 임의의 MAE를 넣었다고 자동으로 Bayesian code가 되지는 않는다. 최종 RCTL을 이 평가 loop에 넣어 clustering하면 현재 독립성 조건과 다르다. 외부 코드는 실행하지 않았다.
+
+## 점수의 의미를 나누어야 하는 이유
+
+다음은 원문이 현재 연구에 대해 입증한 결론이 아니라, 이번 설계에 대한 자체 기호 검토다.
+
+**1. 순차 예측 모형은 만들 수 있다.** 각 시점 이전에 알려진 자료만 사용하는 정규화된 예측 density를 정하고 시간순으로 곱하면 하나의 joint law를 정의할 수 있다. 이 사실에 iid나 exchangeability가 반드시 필요한 것은 아니다. 두 개의 그렇게 정의한 모형을 비교하는 likelihood ratio도 가능하다. 다만 그것이 TabICLv2 사전학습 prior를 정확히 적분한 marginal likelihood이거나, 실제 두 cell이 같은 함수를 공유한다는 확률이라는 뜻은 아니다. 시간·cell 순서가 바뀌면 다른 순차 모형이 될 수 있다.
+
+**2. 같은 context에서 여러 query를 한꺼번에 예측한 곱은 다른 비교다.** 개별 marginal 예측을 곱하면 블록 내부를 조건부로 분리한 모형을 정의한다. 일반적으로, 하나의 잠재 함수를 공유하는 joint posterior predictive는 그와 같지 않다. '적분한 예측을 각각 곱하기'와 '함수별 예측의 곱을 적분하기'는 다르다. cell 간 동시 변동이나 블록 내부 dependence도 자동으로 해결되지 않는다. 시간 블록 재추출만으로 이 joint likelihood를 얻었다고 설명할 수 없다.
+
+**3. lag 입력은 이후 target과 연결된다.** 다음 sample의 최근 lag가 직전 sample의 target일 수 있다. 인과적 순차 점수는 각 예측 시점까지 알려진 정보를 조건으로 해야 한다. 미래의 입력 행 전체를 미리 조건으로 둔 점수와 혼동하지 않는다. 이것은 설계상 조건화 문제이며, 별도 확인 없이 현재 TabICLv2가 query 정답을 누출한다고 주장하는 것은 아니다.
+
+**4. 단위를 통일해야 한다.** z=(y−a)/s, s>0이면 원단위 log density는 변환단위 log density에서 log(s)를 뺀 값이다. 두 비교에 동일한 고정 scale을 쓰면 이 항이 소거될 수 있다. prefix 또는 공유 여부에 따라 scale이 달라지면 생략할 수 없다. 원단위로 복원된 분위수를 사용한 경우는 따로 구별한다.
+
+## 현재 목표와 맞지 않는 직접 반례
+
+같은 최근 입력에서 A와 B의 미래 트래픽은 모두 같은 중심값을 가지지만, B의 변동 폭만 크다고 하자. 수학적으로는 공통 중심을 뺀 후 A와 B가 분산이 다른 대칭 Gaussian인 경우다.
+
+- A와 B의 최적 MAE 점 예측은 모두 0이다. 하나의 점 예측 규칙을 공유해도 이상적 MAE 손해는 0이다.
+- 두 분포를 P_A, P_B, 균등 mixture를 M이라고 하면, 각 분포를 따로 정확히 예측한 log score와 M으로 공통 예측한 log score의 평균 차이는 0.5 KL(P_A‖M)+0.5 KL(P_B‖M)이다. 분포가 다르면 양수다.
+
+따라서 noise 폭의 차이만으로도 분포를 분리할 이유가 생기지만, 동일한 점 예측 함수를 분리할 이유는 생기지 않는다. 양의 공통 중심으로 이동하거나 대칭 bounded 분포를 사용해도 핵심 관계는 같다. 이는 population 수준의 반례이며, 유한 자료의 BHC가 반드시 분리한다거나 실제 network에 같은 현상이 얼마나 있는지까지 입증한 결과는 아니다.
+
+공통 median 함수와 cell별 noise를 분리한 모형을 정의하면 이 반례를 다룰 수 있다. 그러나 현재 분위수 출력에서 '함수 추정의 불확실성'만 바로 읽을 수는 없다. 그 분해를 새로 추정하는 근거가 필요하다. noise 항을 추가했다는 이유만으로 신규성이나 RCTL 효과를 인정하지 않는다. 08–09에서 확인한 공동 sample 의존성에 따른 유한 학습 이득 차이도 남는다.
+
+또한 prefix 초기의 예측 성능을 누적한 점수는 최종 전체 자료로 학습한 RCTL의 오차와 목적이 다르다. 유한 context의 TabICLv2 학습 이득을 측정한다는 장점과, 다른 학습기의 최종 성능을 대신하지 못한다는 한계를 함께 기록한다.
+
+## 계산 비용
+
+N개 cell, 중복 제거한 후보 pair P개, prefix 블록 R개, 블록당 cell별 query Q개라 하자. 개별 context를 후보들 사이에서 재사용하고 각 pair의 두 cell을 같은 공유 context로 평가한다면, 단순한 블록별 점수 계산에도 context 준비 R(N+P)회와 query RQ(N+2P)행이 필요하다. prefix의 전처리·target scale·context cache가 달라지면 준비 비용을 다시 포함한다.
+
+이는 **고정 context에서 한 블록의 marginal을 계산하는 작업량**이며, 블록 내부의 관측을 한 행씩 공개하여 갱신하는 exact 순차 계산량이 아니다. 후자는 더 많은 context 준비가 필요할 수 있다. 최초 prior/prefix 비용, 후보 검색, 병합 뒤 새 cluster의 계산도 별도다. 전체 pair라면 P=N(N−1)/2이다. cell당 k개를 검색하고 합집합으로 대칭화하면 보통 P≤Nk이며, 추가 degree 제한 없이 Nk/2로 줄였다고 계산하지 않는다.
+
+이번에 실행 시간을 측정하거나 이 안을 실행하지 않았다. 잔여 예산 11 context·20,640 query가 있다는 이유만으로 작은 검사를 자동 시작하지 않는다. 먼저 검사할 유용한 결정이 기존 방법과 어떻게 달라지는지 정해야 한다.
+
+## 다음 설계에서 유지할 판단
+
+공유 여부의 확률을 구하는 방향으로 이름을 바꾸어 같은 context 병합 후보를 다시 실행하지 않는다. 재검토하려면 '점 예측 함수 차이와 관측 잡음을 어떤 정보로 구분하는가', '그 구분이 단순한 점 예측 비교와 다른 유용한 소속 결정을 만드는가', '유한 학습의 이득과 실제 RCTL의 목적을 어떻게 연결하는가'를 먼저 해결해야 한다.
+
+최종 추천안과 최종 Word는 아직 미완료다. 자료에 접근하지 못한 워크숍 논문 한 편은 읽기 범위의 제한으로 기록하며, 전체 연구를 진행할 수 없는 외부 blocker로 확대하지 않는다. 누적 모델 비용과 기존 중간 Word는 변경하지 않았다.

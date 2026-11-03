@@ -1,0 +1,927 @@
+{
+  "batch_id": "history-142",
+  "success": true,
+  "source_hashes": {
+    "result": "afa1e76b81dffdb8895279914d6023bcd5426503dc8065fedbc3b3fae431785d",
+    "saved_predictions": "3c384d617dc75f85f8aa4417f2e1d04748a7fc260faef182dad6babb0bbf90b0",
+    "saved_risk_tables": "40837fdeef5632f688d91b526c499af0384a4226058fa94d56845fa1f0e5da5c",
+    "saved_pilot_result": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+    "saved_design_data": "47074f406a090fc15759f6c5aa29171f49f82425f2381ed79a7530c427132144"
+  },
+  "NPZ_headers": {
+    "saved_predictions": [
+      {
+        "member": "actual.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float32",
+        "fortran_order": true,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "cell_ids.npy",
+        "shape": [
+          16
+        ],
+        "dtype": "int64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "tabicl_risk_balanced__tabicl_risk.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "tabicl_risk_balanced__empirical_risk.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "tabicl_risk_unrestricted__tabicl_risk.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "tabicl_risk_unrestricted__empirical_risk.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "empirical_risk_balanced__tabicl_risk.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "empirical_risk_balanced__empirical_risk.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "empirical_risk_unrestricted__tabicl_risk.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "empirical_risk_unrestricted__empirical_risk.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      }
+    ],
+    "saved_risk_tables": [
+      {
+        "member": "tabicl_risk.npy",
+        "shape": [
+          16,
+          64,
+          257
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "empirical_risk.npy",
+        "shape": [
+          16,
+          64,
+          257
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "knn_risk.npy",
+        "shape": [
+          16,
+          64,
+          257
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "median_only.npy",
+        "shape": [
+          16,
+          64,
+          257
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "median_iqr.npy",
+        "shape": [
+          16,
+          64,
+          257
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "actions.npy",
+        "shape": [
+          64,
+          257
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "predicted_quantiles.npy",
+        "shape": [
+          16,
+          168,
+          129
+        ],
+        "dtype": "float32",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "knn_quantiles.npy",
+        "shape": [
+          16,
+          168,
+          129
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "base_query.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float32",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "base_followweek.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "float32",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "query_bins.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "int32",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "followweek_bins.npy",
+        "shape": [
+          16,
+          168
+        ],
+        "dtype": "int32",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "cell_ids.npy",
+        "shape": [
+          16
+        ],
+        "dtype": "int64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "selected_cells.npy",
+        "shape": [
+          16
+        ],
+        "dtype": "int64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      }
+    ],
+    "saved_design_data": [
+      {
+        "member": "X.npy",
+        "shape": [
+          32,
+          840,
+          16
+        ],
+        "dtype": "float32",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "Y.npy",
+        "shape": [
+          32,
+          840
+        ],
+        "dtype": "float32",
+        "fortran_order": true,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "raw.npy",
+        "shape": [
+          1008,
+          32
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "scales.npy",
+        "shape": [
+          32
+        ],
+        "dtype": "float64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "cell_indices.npy",
+        "shape": [
+          32
+        ],
+        "dtype": "int64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "times.npy",
+        "shape": [
+          840
+        ],
+        "dtype": "int64",
+        "fortran_order": false,
+        "object_dtype_header_only": false
+      },
+      {
+        "member": "dates.npy",
+        "shape": [
+          1008
+        ],
+        "dtype": "object",
+        "fortran_order": false,
+        "object_dtype_header_only": true
+      }
+    ]
+  },
+  "selected_NPZ_keys": {
+    "saved_predictions": [
+      "actual",
+      "cell_ids",
+      "tabicl_risk_balanced__tabicl_risk",
+      "tabicl_risk_balanced__empirical_risk",
+      "tabicl_risk_unrestricted__tabicl_risk",
+      "tabicl_risk_unrestricted__empirical_risk",
+      "empirical_risk_balanced__tabicl_risk",
+      "empirical_risk_balanced__empirical_risk",
+      "empirical_risk_unrestricted__tabicl_risk",
+      "empirical_risk_unrestricted__empirical_risk"
+    ],
+    "saved_risk_tables": [
+      "tabicl_risk",
+      "empirical_risk",
+      "actions",
+      "base_followweek",
+      "followweek_bins",
+      "cell_ids",
+      "selected_cells"
+    ],
+    "saved_design_data": [
+      "Y:selected_cells,times>=840",
+      "times"
+    ]
+  },
+  "MAE_values": [
+    {
+      "partition": "tabicl_risk_balanced",
+      "correction": "tabicl_risk",
+      "stored": 0.0852568598694495,
+      "recalculated": 0.0852568598694495,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_balanced",
+      "correction": "empirical_risk",
+      "stored": 0.08516091991466108,
+      "recalculated": 0.08516091991466108,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "correction": "tabicl_risk",
+      "stored": 0.08449792642055401,
+      "recalculated": 0.08449792642055401,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "correction": "empirical_risk",
+      "stored": 0.08453050532478354,
+      "recalculated": 0.08453050532478354,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_balanced",
+      "correction": "tabicl_risk",
+      "stored": 0.08442873364709708,
+      "recalculated": 0.08442873364709708,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_balanced",
+      "correction": "empirical_risk",
+      "stored": 0.0862521226415163,
+      "recalculated": 0.0862521226415163,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "correction": "tabicl_risk",
+      "stored": 0.08398498619286206,
+      "recalculated": 0.08398498619286206,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "correction": "empirical_risk",
+      "stored": 0.08514132576974544,
+      "recalculated": 0.08514132576974544,
+      "difference": 0.0
+    }
+  ],
+  "cell_MAE_values": [
+    {
+      "partition": "tabicl_risk_balanced",
+      "correction": "tabicl_risk",
+      "values": [
+        0.06883479399221568,
+        0.08305474714417696,
+        0.09082824469678351,
+        0.09314281014632712,
+        0.04008057623310503,
+        0.06992596916889468,
+        0.06715561492726627,
+        0.08454015978228936,
+        0.1185243432010327,
+        0.0828421308349973,
+        0.10847041645068738,
+        0.09867227336997583,
+        0.09389511991621081,
+        0.08568021025559545,
+        0.09315023195593976,
+        0.08531211583569408
+      ],
+      "max_difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_balanced",
+      "correction": "empirical_risk",
+      "values": [
+        0.07263515493887855,
+        0.07841633585261668,
+        0.08654247809177157,
+        0.09155065972870254,
+        0.04142969784836853,
+        0.07665698234711109,
+        0.07126985691103631,
+        0.0791870110318185,
+        0.119063854516695,
+        0.0803957024588848,
+        0.1057366910750137,
+        0.09913061644853537,
+        0.09600969144968277,
+        0.08699875267945617,
+        0.09163249511766751,
+        0.08591873813833834
+      ],
+      "max_difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "correction": "tabicl_risk",
+      "values": [
+        0.06677170739393334,
+        0.08434262602522148,
+        0.08865076004590872,
+        0.09333971658243735,
+        0.04008057623310503,
+        0.06933298074171403,
+        0.06798004339817049,
+        0.08340833717348473,
+        0.11981687172134918,
+        0.0828421308349973,
+        0.10847041645068738,
+        0.08658113687964704,
+        0.09389511991621081,
+        0.08893013700517322,
+        0.09221214649112996,
+        0.08531211583569408
+      ],
+      "max_difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "correction": "empirical_risk",
+      "values": [
+        0.07167091047052533,
+        0.07968138565815297,
+        0.0899832921806485,
+        0.09417817499321317,
+        0.040569107865905965,
+        0.07338240339495444,
+        0.06662574029130018,
+        0.07884662763646404,
+        0.12001604138589927,
+        0.0803957024588848,
+        0.1057366910750137,
+        0.09062401442723919,
+        0.09600969144968277,
+        0.08638398491130578,
+        0.09246557885900829,
+        0.08591873813833834
+      ],
+      "max_difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_balanced",
+      "correction": "tabicl_risk",
+      "values": [
+        0.06553424227865208,
+        0.08175109544664805,
+        0.09038157359976016,
+        0.09133852925046575,
+        0.04008057623310503,
+        0.06986142754219746,
+        0.06781282158162812,
+        0.08215833714081289,
+        0.11907184911538654,
+        0.07977838729367034,
+        0.10510575915825486,
+        0.08826215773037019,
+        0.09800644539904736,
+        0.09257348173176605,
+        0.09446708637405798,
+        0.08467596847773028
+      ],
+      "max_difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_balanced",
+      "correction": "empirical_risk",
+      "values": [
+        0.06906787542821773,
+        0.0797517242375031,
+        0.09130982946831802,
+        0.089254078434403,
+        0.04142969784836853,
+        0.07379130279508044,
+        0.06955702495607802,
+        0.07927543270068096,
+        0.11986175355191991,
+        0.08512516462781654,
+        0.1024012898866612,
+        0.09329521473076526,
+        0.1031601898383674,
+        0.0965735265254522,
+        0.09752827737325731,
+        0.08865157986137107
+      ],
+      "max_difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "correction": "tabicl_risk",
+      "values": [
+        0.06606308062400547,
+        0.0841495953420179,
+        0.09195017527119072,
+        0.09133852925046575,
+        0.04008057623310503,
+        0.06891033811664107,
+        0.06766797876205508,
+        0.08236644934882424,
+        0.11928341692405053,
+        0.07752782461969596,
+        0.10510575915825486,
+        0.08826215773037019,
+        0.09432410181422192,
+        0.08812188261441993,
+        0.09450726294053997,
+        0.08410065033593433
+      ],
+      "max_difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "correction": "empirical_risk",
+      "values": [
+        0.06779273802554912,
+        0.08097244340414982,
+        0.09992696442239088,
+        0.089254078434403,
+        0.04142969784836853,
+        0.07420620066118604,
+        0.06603853460605638,
+        0.07837249579826065,
+        0.12052580462274319,
+        0.08363545827176243,
+        0.1024012898866612,
+        0.09329521473076526,
+        0.09467152046696356,
+        0.08612846020723312,
+        0.09966657222554909,
+        0.08394373870388466
+      ],
+      "max_difference": 0.0
+    }
+  ],
+  "stored_formula_reconstructions": [
+    {
+      "partition": "tabicl_risk_balanced",
+      "correction": "tabicl_risk",
+      "values": 2688,
+      "max_difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_balanced",
+      "correction": "empirical_risk",
+      "values": 2688,
+      "max_difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "correction": "tabicl_risk",
+      "values": 2688,
+      "max_difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "correction": "empirical_risk",
+      "values": 2688,
+      "max_difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_balanced",
+      "correction": "tabicl_risk",
+      "values": 2688,
+      "max_difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_balanced",
+      "correction": "empirical_risk",
+      "values": 2688,
+      "max_difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "correction": "tabicl_risk",
+      "values": 2688,
+      "max_difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "correction": "empirical_risk",
+      "values": 2688,
+      "max_difference": 0.0
+    }
+  ],
+  "objectives": [
+    {
+      "partition": "tabicl_risk_balanced",
+      "stored": 1.533121846266442,
+      "recalculated": 1.533121846266442,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 1.5291419639317874,
+      "recalculated": 1.5291419639317874,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_balanced",
+      "stored": 1.2384055069737308,
+      "recalculated": 1.2384055069737308,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 1.2331233875906207,
+      "recalculated": 1.2331233875906207,
+      "difference": 0.0
+    }
+  ],
+  "recorded_merge_costs": [
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": -2.7755575615628914e-17,
+      "recalculated": -2.7755575615628914e-17,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 3.729515253059201e-05,
+      "recalculated": 3.729515253059201e-05,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 0.002070275162541324,
+      "recalculated": 0.002070275162541324,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 0.002094193287104751,
+      "recalculated": 0.002094193287104751,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 0.002859883031518365,
+      "recalculated": 0.002859883031518365,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 0.0038168727022510757,
+      "recalculated": 0.0038168727022510757,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 0.004361197636178704,
+      "recalculated": 0.004361197636178704,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 0.0056478500682275445,
+      "recalculated": 0.0056478500682275445,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 0.00616581414789813,
+      "recalculated": 0.006165814147898074,
+      "difference": 5.551115123125783e-17
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 0.00854560309528915,
+      "recalculated": 0.00854560309528915,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 0.012061677198174553,
+      "recalculated": 0.012061677198174553,
+      "difference": 0.0
+    },
+    {
+      "partition": "tabicl_risk_unrestricted",
+      "stored": 0.013209409135021444,
+      "recalculated": 0.013209409135021444,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": -1.3877787807814457e-17,
+      "recalculated": -1.3877787807814457e-17,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.00017530192588952054,
+      "recalculated": 0.00017530192588952054,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.0040837314263317825,
+      "recalculated": 0.0040837314263317825,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.005060341103039295,
+      "recalculated": 0.005060341103039295,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.005073788176316513,
+      "recalculated": 0.005073788176316513,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.008171445601618282,
+      "recalculated": 0.008171445601618282,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.008574099890886894,
+      "recalculated": 0.008574099890886894,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.009271167141099101,
+      "recalculated": 0.009271167141099101,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.010793149578168876,
+      "recalculated": 0.010793149578168876,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.012259543211201152,
+      "recalculated": 0.012259543211201152,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.016733759494099915,
+      "recalculated": 0.016733759494099915,
+      "difference": 0.0
+    },
+    {
+      "partition": "empirical_risk_unrestricted",
+      "stored": 0.018599315921262793,
+      "recalculated": 0.018599315921262793,
+      "difference": 0.0
+    }
+  ],
+  "partitions": [
+    {
+      "name": "tabicl_risk_balanced",
+      "sizes": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "rows": [
+        2688,
+        2688,
+        2688,
+        2688
+      ],
+      "batches": [
+        11,
+        11,
+        11,
+        11
+      ]
+    },
+    {
+      "name": "tabicl_risk_unrestricted",
+      "sizes": [
+        2,
+        8,
+        2,
+        4
+      ],
+      "rows": [
+        1344,
+        5376,
+        1344,
+        2688
+      ],
+      "batches": [
+        6,
+        21,
+        6,
+        11
+      ]
+    },
+    {
+      "name": "empirical_risk_balanced",
+      "sizes": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "rows": [
+        2688,
+        2688,
+        2688,
+        2688
+      ],
+      "batches": [
+        11,
+        11,
+        11,
+        11
+      ]
+    },
+    {
+      "name": "empirical_risk_unrestricted",
+      "sizes": [
+        4,
+        5,
+        3,
+        4
+      ],
+      "rows": [
+        2688,
+        3360,
+        2016,
+        2688
+      ],
+      "batches": [
+        11,
+        14,
+        8,
+        11
+      ]
+    }
+  ],
+  "unique_cell_query_labels": 2688,
+  "stored_comparison_matrices": 8,
+  "MAE_scalar_values_checked": 136,
+  "stored_formula_scalar_values_checked": 21504,
+  "recorded_merge_costs_checked": 24,
+  "greedy_selection_algorithm_reexecuted": false,
+  "minimum_of_all_live_candidate_pairs_not_recomputed": true,
+  "all_design_data_values_read": false,
+  "all_risk_NPZ_members_semantically_reviewed": false,
+  "object_dtype_members_not_loaded": true,
+  "pickle_deserialization_performed": false,
+  "source_code_executed": false,
+  "source_code_imported": false,
+  "models_instantiated": false,
+  "new_model_runs": 0,
+  "coverage_increment_applied": false,
+  "scientific_second_pass_complete": false,
+  "checked_at_utc": "2026-10-14T06:18:48.633110+00:00"
+}

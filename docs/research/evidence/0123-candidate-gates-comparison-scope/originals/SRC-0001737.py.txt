@@ -1,0 +1,71 @@
+from pathlib import Path
+import hashlib
+import json
+import shutil
+
+ROOT = Path(__file__).resolve().parents[2]
+WORK = ROOT / 'tmp/redesign_20260925'
+LEDGER = WORK / 'cumulative_execution_budget.json'
+EXPECTED = 'f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+assert sha(LEDGER) == EXPECTED
+audit_path = WORK / 'results/candidate_gate_audit_93/result.json'
+audit = json.loads(audit_path.read_text(encoding='utf-8'))
+for relative, digest in audit['verified_evidence_hashes'].items():
+    assert sha(WORK / relative) == digest
+assert audit['new_model_calls'] == 0 and audit['new_numeric_experiments'] == 0
+
+progress = WORK / 'progress.md'
+content = progress.read_text(encoding='utf-8')
+previous = '## 최신 상태 — 92 순차 예측 증거와 점 예측 목적의 구별'
+assert previous in content
+new = '''## 최신 상태 — 93 후보 판정 기준과 기존 비교의 적용 범위 감사
+
+- 2026-09-26. 93 계획 후 보존된 학습 코드·설정·결과·history 등37개 근거 파일을 대조했다. 코드 hash,29fit 종료,1565epoch,선택 checkpoint,조건별16cell coverage,fit별 기록과 summary 정합성을 확인했다. 모델 호출·예측 재계산·새 통계 검정0이다.
+- 후보 인덱스의 과도한 진입 문구를 보완했다. 같은 유용한 결정을 더 적은 계산/추정 변동으로 얻는 방향도 허용한다. RCTL의 새 입력·target·모듈을 필수로 요구하지 않으며, 함께 학습할 실제 sample 묶음을 바꾸는 것도 명시적인 연결 경로다. pilot 진입과 최종 추천 근거를 분리했다. 원래 goal의 최종 조건을 낮추거나 새 후보를 합격시킨 것은 아니다.
+- B2의 같은K4 empirical 대비 두seed 부정 결과는 유지한다. 보존된 batch loop에서 global은모델당10752행/epoch42update, K4는모델당2688행/epoch11update임을 확인했다. 이 차이만으로 기존 실험을 무효화하거나 과적합·최적화 하나를 원인으로 확정하지 않는다. 기록된epoch에서계산한update 합은 새 학습/측정시간이 아니다.
+- 74는actual-target HGB 압축,80은소속/고정RCTLgradient이며 새로운partition의RCTL전체학습성능을확인한것이아니다. 86·89·91·92의미추천은각각의직접검토범위에한정한다. global표현가능성으로분할의유한학습효용을불가능하다고판정하지않으며, 미검증안을유망하다고승격하지도않는다.
+- 상세93감사·공개보고서·증거JSON·수정된후보인덱스를기록했다. 기존보고서/Word와보관snapshot은변경하지않았다. 다음탐색은실제학습자료의구성을바꾸는기여와같은유용한결정을더효율적으로얻는기여를구별한다. 실패한결정을단순히빠르게만계산하는안은추천하지않는다.
+- 새모델호출0,원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변. 잔여Tab11context/20640행,추가RCTLfit0. 현재최종추천방향/최종Word는미완료다. 이번은판정규칙과증거적용범위를실제기록으로보완한progress이며외부blocker는없다.
+
+'''
+progress.write_text(content.replace(previous, new + previous.replace('최신', '이전'), 1), encoding='utf-8')
+
+report = ROOT / 'output/research/TabICLv2_재설계_후보판정기준과_기존비교_재검토.md'
+findings = WORK / '93_candidate_gate_and_comparison_findings.md'
+index = WORK / 'candidate_decision_index.md'
+for path in (report, findings):
+    value = path.read_text(encoding='utf-8')
+    assert '사례' not in value
+    assert '최종' in value and ('미완료' in value or '완료를 선언하지' in value)
+assert '같은 유용한 결정을 더 적은 계산' in index.read_text(encoding='utf-8')
+assert sha(LEDGER) == EXPECTED
+
+snapshot = ROOT / 'output/research/redesign_20260925_snapshot_35'
+assert not snapshot.exists()
+snapshot.mkdir()
+files = [
+    WORK / '93_candidate_gate_and_comparison_audit_plan.md', findings,
+    WORK / 'audit_candidate_evidence_93.py', Path(__file__).resolve(),
+    audit_path, report, progress, index, LEDGER,
+]
+files += [WORK / relative for relative in audit['verified_evidence_hashes']]
+records = []
+for source in sorted(set(files)):
+    rel = source.relative_to(ROOT)
+    target = snapshot / rel
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+    assert sha(source) == sha(target)
+    if source.suffix == '.json':
+        json.loads(source.read_text(encoding='utf-8'))
+    records.append({'path': rel.as_posix(), 'bytes': source.stat().st_size, 'sha256': sha(source)})
+result = {'files': len(records), 'bytes': sum(row['bytes'] for row in records),
+          'manifest': records, 'ledger_unchanged': True, 'goal_complete': False}
+(snapshot / 'manifest.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+(WORK / '93_archive_verification.json').write_text(json.dumps({
+    'snapshot': str(snapshot), 'files': result['files'], 'bytes': result['bytes'],
+    'verified': True, 'ledger_unchanged': True
+}, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps({key: value for key, value in result.items() if key != 'manifest'}))

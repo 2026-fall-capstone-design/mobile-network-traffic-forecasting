@@ -1,0 +1,80 @@
+from pathlib import Path
+import hashlib, json, shutil
+from pypdf import PdfReader
+
+ROOT=Path(__file__).resolve().parents[2]
+WORK=ROOT/'tmp/redesign_20260925'
+SRC=WORK/'sources/regularity_90'
+LEDGER=WORK/'cumulative_execution_budget.json'
+EXPECTED='f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+assert sha(LEDGER)==EXPECTED
+manifest=json.loads((SRC/'download_manifest.json').read_text(encoding='utf-8'))
+for r in manifest:
+    if 'error' not in r:
+        p=SRC/(r['name']+'.pdf')
+        assert sha(p)==r['sha256'] and len(PdfReader(p).pages)==r['pages']
+renders=json.loads((SRC/'render_manifest.json').read_text(encoding='utf-8'))
+for r in renders:assert sha(Path(r['image']))==r['sha256']
+scope={
+ 'date':'2026-09-26','plan':'90_prescribed_regularity_scope_plan.md',
+ 'new_TabICL_calls':0,'new_RCTL_calls':0,'new_numeric_diagnostics':0,
+ 'sources':[
+  {'arxiv':'1805.10369v4','format':'PDF','scope':'Sections2–3 and AppendixB implementation constraints; p4/28 visual. Full appendix proofs and empirical reproduction not completed.'},
+  {'arxiv':'2504.20651v1','format':'PDF','scope':'SectionsI–IV and AppendixA PropositionII.1 proof; p4/5/7 visual. Whole theorem set not verified or reproduced. One-sample versus n-sample TV passage and rate exponent discrepancy flagged, not treated as certified RCTL guarantees.'},
+  {'arxiv':'2505.04904v1','format':'HTML','scope':'Sections2–3.4, Algorithm1, equations9–25. No control algorithm proof reproduction. PDF incomplete; not counted among acquired full PDFs.'}
+ ],
+ 'valid_pdf_count':2,'valid_pdf_pages':40,'valid_pdf_bytes':1076475,
+ 'rendered_and_visually_inspected_pages':5,'external_code_execution':False,
+ 'queries':[
+  'Lipschitz regression clustering mixture Lipschitz functions supervised clustering',
+  'Lipschitz constrained regression task clustering multi task learning time series',
+  '"Lipschitz" "graph coloring" "identification"',
+  '"Lipschitz" "switched nonlinear" clustering identification',
+  '"Lipschitz regression" "mixture" clustering',
+  '"Stable Recurrent Models" Miller Hardt LSTM Lipschitz',
+  '"Learning and Generalization with Mixture Data" paper authors',
+  'Lipschitz regression minimal constant sample pairs pairwise constraints neural network regression'
+ ],
+ 'search_only_not_methods_evidence':['Zhou UMD Lipschitz clustering thesis','CSMR 2007.09720','Multiscale clustering of nonparametric curves','2112.13542','1804.04368'],
+ 'own_symbolic_result':'Triangle-inequality two-point lower bound for a prescribed L-Lipschitz scalar function; not novel theorem, traffic measurement, MAE identity, or unconstrained RCTL guarantee.',
+ 'decision':'Do not introduce artificial function constraints merely to justify clustering. Real operational necessity for such constraints is not established.',
+ 'ledger_sha256':EXPECTED,'external_blocker':None,'goal_complete':False,
+ 'search_completeness_claimed':False,
+}
+path=WORK/'90_source_reading_scope.json';assert not path.exists()
+path.write_text(json.dumps(scope,ensure_ascii=False,indent=2),encoding='utf-8')
+progress=WORK/'progress.md'
+content=progress.read_text(encoding='utf-8-sig')
+previous='## 최신 상태 — 89 cell 이질성과 별도 RCTL의 필요성 구분'
+assert previous in content
+new='''## 최신 상태 — 90 사전 함수 제약의 필요성과 적용 범위 확인
+
+- 2026-09-26. 90 계획에 따라 Stable Recurrent1805.10369v4, Mixture Generalization2504.20651v1 PDF2개40쪽과 CKLR2505.04904v1 HTML의 지정 방법·가정을 읽었다. PDF5쪽 시각 대조. CKLR PDF는200응답이나1MB에서 끝난 불완전 파일이며 실패 기록을 보존하고 확보 수에 넣지 않았다.
+- 출력 변화 한계를 고정하면 두 점의 평균함수 근사 손해 하한을 삼각부등식으로 확인할 수 있다. 자체 기호 검토이며 MAE·전체분포·Tab추정치·원래RCTL에 대한 보장이 아니다. 실제traffic에서 필요한 한계라는 근거가 없어 제약을 도입해 분리 필요성을 만드는 후보는 미채택이다.
+- Stable Recurrent의 state contraction, 입력 민감도, LSTM반복합성 조건을 구분했다. 현재TCN/BN/LSTM/residual core에 gate조건만 추가해 전체L을 안다고 할 수 없다. CKLR은 입력 공간 partition과kernel제약을 학습하며 제어안정성이 실제목적이다. 현재cell분할과 동일하게 옮기지 않는다.
+- Mixture 논문은공통함수/특정Gaussian입력/제곱손실 조건을 가진다. n표본통계량 대단일표본TV의 증명 passage와지수서술 차이도 있어 원문rate를인증된RCTL 병합기준으로사용하지 않는다. 전체논문무효나불가능성으로확대하지 않는다.
+- 새Tab/RCTL/데이터수치실행0. 원장sha f3e370ba0bb39b220a3448daf00ab532729b91b93bce80b6d92a43a7ea71f2a9 불변. Tab잔여11context/20640행,추가RCTLfit0. 모든이전평가구간은개발자료로유지한다.
+- 상세90판단·공개요약·읽기범위·후보인덱스갱신. 최종추천안과최종Word는미완료,84중간Word불변. 이번은3원문의실제적용조건을확인한progress이며외부blocker없음.
+- 다음은 같은 Lipschitz점수에 penalty/이름을 바꾸는 작업이 아니다. 이미 존재하는 실제 관측·예측 조건이 어떤 결정을 요구하는지부터 찾는다. 47·75·81의 입력공유후보도 다시 대조했으며 다른유용한결정없이반복하지 않는다. 확인되지 않은 운영제약이나업무허용오차를발명하지 않는다.
+
+'''
+progress.write_text(content.replace(previous,new+previous.replace('최신','이전'),1),encoding='utf-8')
+report=ROOT/'output/research/TabICLv2_재설계_함수제약과_clustering연결_검토.md'
+for p in [report,WORK/'90_prescribed_regularity_findings.md']:
+    assert '사례' not in p.read_text(encoding='utf-8')
+snapshot=ROOT/'output/research/redesign_20260925_snapshot_32'
+assert not snapshot.exists();snapshot.mkdir()
+files=[WORK/n for n in ['90_prescribed_regularity_scope_plan.md','90_prescribed_regularity_findings.md','90_source_reading_scope.json','fetch_regularity_sources_90.py','finish_regularity_sources_90.py','progress.md','candidate_decision_index.md']]
+files += [LEDGER,report,Path(__file__).resolve()]+sorted(p for p in SRC.rglob('*') if p.is_file())
+records=[]
+for source in files:
+    rel=source.relative_to(ROOT);target=snapshot/rel
+    target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source,target)
+    assert sha(source)==sha(target)
+    if source.suffix=='.json':json.loads(source.read_text(encoding='utf-8'))
+    records.append({'path':rel.as_posix(),'bytes':source.stat().st_size,'sha256':sha(source)})
+result={'files':len(records),'bytes':sum(r['bytes'] for r in records),'manifest':records,'ledger_unchanged':sha(LEDGER)==EXPECTED,'goal_complete':False}
+(snapshot/'manifest.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+(WORK/'90_archive_verification.json').write_text(json.dumps({'snapshot':str(snapshot),'files':result['files'],'bytes':result['bytes'],'verified':True,'ledger_unchanged':True},ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({k:v for k,v in result.items() if k!='manifest'}))

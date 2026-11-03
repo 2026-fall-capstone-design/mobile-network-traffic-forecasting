@@ -1,0 +1,49 @@
+{
+  "source_id": "SRC-0061929",
+  "source_sha256": "2f9742c427a177ec3cfbe70dd85ea8e02cad1ade4fde96f3335818337993b39c",
+  "line_ranges": [
+    [
+      118,
+      173
+    ]
+  ],
+  "paper_source_id": "SRC-0061921",
+  "paper_page": 4,
+  "paper_equations": [
+    8,
+    9
+  ],
+  "dot_vs_cosine": {
+    "first_vector": [
+      2,
+      0
+    ],
+    "second_vector": [
+      1,
+      0
+    ],
+    "dot": 2,
+    "cosine": 1,
+    "scope": "명시적 L2 정규화 없는 내적이 일반적으로 cosine과 같지 않다는 스칼라 예시. 실제 임베딩 분포 주장 아님."
+  },
+  "shift_identity": {
+    "original_ratio": "S_pos/(S_pos+S_neg)",
+    "separate_shift_ratio": "S_pos*exp(-m_pos/tau)/(S_pos*exp(-m_pos/tau)+S_neg*exp(-m_neg/tau))",
+    "condition_for_cancellation": "비어있지 않은 유한 점수 집합·양의 tau에서 m_pos=m_neg이면 공통 인자로 상쇄됨",
+    "counterexample": {
+      "positive_scores": [
+        1.0
+      ],
+      "negative_scores": [
+        -1.0
+      ],
+      "temperature": 1.0,
+      "ordinary_loss": 0.12692801104297252,
+      "common_shift_loss": 0.12692801104297263,
+      "separate_shift_loss": 0.6931471805599453
+    }
+  },
+  "scope": "현재 정리 작업의 별도 스칼라 대조. 원 연구 코드 실행/import·텐서 모델 실행·논문 실험 재현 없음.",
+  "new_model_runs": 0,
+  "original_source_code_executed": false
+}

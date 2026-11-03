@@ -1,0 +1,28 @@
+from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone
+import hashlib, json, urllib.request
+from pypdf import PdfReader
+
+base=Path(__file__).resolve().parent/'sources/alignment_91'
+commit='3f1e00f62b42782062c3484792f47fe905e5b743'
+paths=['README.md','baselines/CPiRi/arch.py','baselines/CPiRi/runner.py','baselines/CPiRi/mds.py','baselines/CPiRi/datas.py','baselines/CPiRi/METR-LA_LTSF.py']
+folder=base/'CPiRi_code'; folder.mkdir(exist_ok=True)
+def fetch(path):
+    url=f'https://raw.githubusercontent.com/JasonStraka/CPiRi/{commit}/{path}'
+    out=folder/path; out.parent.mkdir(exist_ok=True,parents=True)
+    assert not out.exists(), 'Preserve previous source'
+    with urllib.request.urlopen(url,timeout=30) as res: data=res.read(2000001)
+    assert len(data)<=2000000
+    out.write_bytes(data)
+    return {'repository_path':path,'url':url,'local_path':str(out.relative_to(base)),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+with ThreadPoolExecutor(max_workers=3) as pool: records=list(pool.map(fetch,paths))
+(base/'code_manifest.json').write_text(json.dumps({'commit':commit,'read_at_utc':datetime.now(timezone.utc).isoformat(),'files':records,'external_code_executed':False},ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps(records,ensure_ascii=True,indent=2))
+for name in ('CPiRi_2601.20318v2.pdf','CRAFT_WWW2026.pdf','TIDES_2512.22178v1.pdf'):
+    pdf=PdfReader(base/name)
+    print(name)
+    for i,p in enumerate(pdf.pages):
+        s=p.extract_text() or ''
+        if any(k in s for k in ('3.3','3.4','4.1','IV.','TABLE I','M =','Algorithm 1')):
+            print(i+1,s[:140].replace('\n',' '))

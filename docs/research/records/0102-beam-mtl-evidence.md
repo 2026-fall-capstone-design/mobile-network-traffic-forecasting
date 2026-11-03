@@ -1,5 +1,7 @@
 # Beam GRU-MTL의 발생·양 결합과 성능 근거 대조
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-102.md) · [검수](../verification/history-102.md) · [표](../evidence/0102-beam-mtl/table-review.json) · [개선율 계산](../evidence/0102-beam-mtl/scalar-check.json)
 
 **핵심:** 공유GRU와 발생·양head는 확인되지만 hard gate의 학습 경로·평가 척도와 일부 성능 수치는 미확인 또는 원문 내부 차이가 남는다. 팀의 새 설계는 이 구조와 실제로 다른 공유 결정부터 설명해야 한다.

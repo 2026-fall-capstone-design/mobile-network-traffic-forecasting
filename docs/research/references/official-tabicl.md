@@ -1,5 +1,7 @@
 # 공식 TabICL — 고정 구현과 초기 연구의 연결
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 기준은 최신 배포판 일반론이 아니라 05가 지정한 [공식 commit](https://github.com/soda-inria/tabicl/tree/0dbff3ec8fc68c123c87af77b0ea8b25cd2d23f3)이다. 아래 여섯 파일은 보관 runtime·소스 ZIP·공식 raw의 바이트가 일치했다. 코드 두 개는 전체, 네 개는 지정 구간을 읽었다. 설치 METADATA와 checkpoint 설정은 따로 확인했다. [ID·해시·구간](../sources/history-005.md), [대조 결과](../verification/history-005-official-check.json).
 
 | 구현 | 확인한 기능 | 연구에 적용할 때 구분할 점 |

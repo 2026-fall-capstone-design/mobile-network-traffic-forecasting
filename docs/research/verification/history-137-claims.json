@@ -1,0 +1,1666 @@
+{
+  "batch_id": "history-137",
+  "record_path": "../records/0137-calendar-retention-and-external-support.md",
+  "record_sha256": "36babd52b397fe270ca125c90aa8f6216f0f7dad5aba26414fa820c44aade807",
+  "claims": [
+    {
+      "claim_id": "H137-C01",
+      "title": "같은 K의 RCTL 차이를 묻는 저장 재분석",
+      "claim": "2026-09-26 원107은 동일 K4에서 Tab-risk와 empirical-risk 소속의 RCTL 차이를 자기 시간자료 누락 또는 가까운 외부 입력 부족으로 좁힐 수 있는지 물었다. 기존23 density를 재집계하는 후향 개발 진단이며 새 소속 선정이나 독립 성능 실험은 아니다. 원106의 같은K 비교를 연결하되 기록번호를 실험횟수로 세지 않는다.",
+      "claim_type": "질문/범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            3,
+            14
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            3,
+            3
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        }
+      ],
+      "record_anchor": "claim-01",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C02",
+      "title": "저장 완료와 새 모델 0의 근거 범위",
+      "claim": "원결과 complete=true와 15개 저장 조건이 있으며 입력 density/소속으로 그 조건의 달력개수·비중·비교수치를 대조했다. 원107은 새 TabICL_calls/RCTL_calls/fits=0·inputs_unchanged=true를 기록했고 코드의 분석 경로도 저장 배열/JSON 로드와 산술이다. 당시 모델호출 도구로그나 실행시점 코드hash를 독립 복구한 것은 아니다. 현재 원코드 실행/import·모델생성·학습/추론/BN은0이다.",
+      "claim_type": "실행/근거한계",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/complete",
+            "/new_TabICL_calls",
+            "/new_RCTL_calls",
+            "/new_fits",
+            "/inputs_unchanged"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            19,
+            28
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            69,
+            78
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            33,
+            33
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        }
+      ],
+      "record_anchor": "claim-02",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C03",
+      "title": "입력 SHA와 cell 순서의 고정",
+      "claim": "result의 density3f3fc7…/risk_predictions8ad282…/partitions4a91e2…/training_settings6467b3…/plan269e66… hash는 보존 원문과 일치한다. 3737/3745/3753/3765/4537/4545/4553/4565/5337/5345/5353/5365/6137/6145/6153/6165 순서는 density·risk metadata·partition·result에서 같다. risk의 실제 예측값은 원107과 이번 진단에서 로드하지 않았다.",
+      "claim_type": "입력/판본",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/source_hashes",
+            "/cell_ids"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0023588",
+          "JSON_pointers": [
+            "/cell_ids"
+          ],
+          "source_sha256": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+          "team_source": "../sources/history-137.md#src-0023588"
+        },
+        {
+          "source_id": "SRC-0025173",
+          "NPZ_keys": [
+            "cell_ids",
+            "query_times"
+          ],
+          "source_sha256": "3f3fc7fc11d87f46e50ede9de69075a012e31795d5f535174d4d7fd9023aff94",
+          "team_source": "../sources/history-137.md#src-0025173"
+        },
+        {
+          "source_id": "SRC-0023605",
+          "NPZ_keys": [
+            "cell_ids",
+            "context_times",
+            "query_times"
+          ],
+          "source_sha256": "8ad2825e7b6861540975be3948778a4028cc275a53c4ad6991077c330d43f85e",
+          "team_source": "../sources/history-137.md#src-0023605"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            23,
+            28
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        }
+      ],
+      "record_anchor": "claim-03",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C04",
+      "title": "시간 구간과 개발자료의 경계",
+      "claim": "density context는168–671의504시간/cell이고 query는672–839 안의 고정64시점/cell·총1024개다. RCTL train168–839/validation840–1007/기존test1008–1487와 구별한다. 모든 density query는 전체 RCTL train 안에 있으며 이후480시간 지원 측정도 새 독립 평가도 아니다. 앞뒤32 query는 고정64시점의 절반이다.",
+      "claim_type": "자료/평가범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            11,
+            14
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            23,
+            23
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            25,
+            32
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0023605",
+          "NPZ_keys": [
+            "context_times",
+            "query_times"
+          ],
+          "source_sha256": "8ad2825e7b6861540975be3948778a4028cc275a53c4ad6991077c330d43f85e",
+          "team_source": "../sources/history-137.md#src-0023605"
+        },
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/train_targets",
+            "/validation_targets",
+            "/test_targets"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-137.md#src-0030238"
+        }
+      ],
+      "record_anchor": "claim-04",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        1
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C05",
+      "title": "자기 시간·요일 기록 수의 보존",
+      "claim": "훈련 target672시간=28일이고 weekday×hour168조합마다 자기cell4행이다. 다섯 소속은 모두4cell/cluster여서 조합당16행·cluster당2688행·각cell672행이다. 15개 결과의 모든168개 calendar 원소가16이며 저장 설정/소속과 일치한다. 이는 명시된 고정 시간 격자와 자료 구성의 개수 검수이고 누락된 실행 입력 전체를 복구한 것은 아니다.",
+      "claim_type": "자료 구성",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            11,
+            11
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            7,
+            7
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            29,
+            43
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/records/0",
+            "/records/1",
+            "/records/2",
+            "/records/3",
+            "/records/4",
+            "/records/5",
+            "/records/6",
+            "/records/7",
+            "/records/8",
+            "/records/9",
+            "/records/10",
+            "/records/11",
+            "/records/12",
+            "/records/13",
+            "/records/14"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        }
+      ],
+      "record_anchor": "claim-05",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C06",
+      "title": "기존 입력 이웃 비중의 정의",
+      "claim": "원23 코드의 저장 density는 context 입력으로 StandardScaler를 맞춘 뒤 가까운64개 입력의 출처cell 빈도를 k16/32/64 prefix로 계산한다. 각query에서16cell 비중 합은1이다. 원107은 이 저장 비중만 재사용하며 거리 fit/검색·Tab/RCTL을 다시 실행하지 않았다. 목표 정답으로 근접성을 정한 진단이 아니다. 입력/정규화 상세는 기존 pilot에서 재사용하며 원107의 새 특징 설계가 아니다.",
+      "claim_type": "방법/재사용",
+      "source_locations": [
+        {
+          "source_id": "SRC-0022693",
+          "lines": [
+            68,
+            101
+          ],
+          "source_sha256": "a257662135d30ee35ed0f92feca1cb15b2d60036178e051395a920b8946ffb3a",
+          "team_source": "../sources/history-137.md#src-0022693"
+        },
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            12,
+            14
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0025173",
+          "NPZ_keys": [
+            "density_k16",
+            "density_k32",
+            "density_k64"
+          ],
+          "source_sha256": "3f3fc7fc11d87f46e50ede9de69075a012e31795d5f535174d4d7fd9023aff94",
+          "team_source": "../sources/history-137.md#src-0025173"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            44,
+            50
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        }
+      ],
+      "record_anchor": "claim-06",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C07",
+      "title": "비교 소속은 기존 훈련된 다섯 K4",
+      "claim": "tabicl_risk·empirical_risk·knn_risk·pcc_balanced·random_balanced의 고정 labels를 사용했다. 각 소속의4개 member집합은 RCTL seed20260925 task20개와 저장 fit20개에서 같고 소속을 재선택하지 않았다. density 자체는 이 RCTL seed로 모델을 다시 실행한 결과가 아니다. partition파일에는 median_only/median_iqr/cross_error_profile 이름도 있지만 이번 비교의 다섯에 포함하지 않는다.",
+      "claim_type": "비교조건",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            33,
+            43
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0023588",
+          "JSON_pointers": [
+            "/cell_ids",
+            "/partitions/tabicl_risk",
+            "/partitions/empirical_risk",
+            "/partitions/knn_risk",
+            "/partitions/pcc_balanced",
+            "/partitions/random_balanced"
+          ],
+          "source_sha256": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+          "team_source": "../sources/history-137.md#src-0023588"
+        },
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/tasks/1",
+            "/tasks/2",
+            "/tasks/3",
+            "/tasks/4",
+            "/tasks/5",
+            "/tasks/6",
+            "/tasks/7",
+            "/tasks/8",
+            "/tasks/9",
+            "/tasks/10",
+            "/tasks/11",
+            "/tasks/12",
+            "/tasks/13",
+            "/tasks/14",
+            "/tasks/15",
+            "/tasks/16",
+            "/tasks/17",
+            "/tasks/18",
+            "/tasks/19",
+            "/tasks/20"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-137.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "JSON_pointers": [
+            "/1/method",
+            "/1/seed",
+            "/1/cluster",
+            "/1/members",
+            "/2/method",
+            "/2/seed",
+            "/2/cluster",
+            "/2/members",
+            "/3/method",
+            "/3/seed",
+            "/3/cluster",
+            "/3/members",
+            "/4/method",
+            "/4/seed",
+            "/4/cluster",
+            "/4/members",
+            "/5/method",
+            "/5/seed",
+            "/5/cluster",
+            "/5/members",
+            "/6/method",
+            "/6/seed",
+            "/6/cluster",
+            "/6/members",
+            "/7/method",
+            "/7/seed",
+            "/7/cluster",
+            "/7/members",
+            "/8/method",
+            "/8/seed",
+            "/8/cluster",
+            "/8/members",
+            "/9/method",
+            "/9/seed",
+            "/9/cluster",
+            "/9/members",
+            "/10/method",
+            "/10/seed",
+            "/10/cluster",
+            "/10/members",
+            "/11/method",
+            "/11/seed",
+            "/11/cluster",
+            "/11/members",
+            "/12/method",
+            "/12/seed",
+            "/12/cluster",
+            "/12/members",
+            "/13/method",
+            "/13/seed",
+            "/13/cluster",
+            "/13/members",
+            "/14/method",
+            "/14/seed",
+            "/14/cluster",
+            "/14/members",
+            "/15/method",
+            "/15/seed",
+            "/15/cluster",
+            "/15/members",
+            "/16/method",
+            "/16/seed",
+            "/16/cluster",
+            "/16/members",
+            "/17/method",
+            "/17/seed",
+            "/17/cluster",
+            "/17/members",
+            "/18/method",
+            "/18/seed",
+            "/18/cluster",
+            "/18/members",
+            "/19/method",
+            "/19/seed",
+            "/19/cluster",
+            "/19/members",
+            "/20/method",
+            "/20/seed",
+            "/20/cluster",
+            "/20/members"
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-137.md#src-0030237"
+        },
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            14,
+            14
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        }
+      ],
+      "record_anchor": "claim-07",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C08",
+      "title": "own·external·group 비중의 산술",
+      "claim": "query 소유cell의 비중이own이며 같은cluster 다른cell 비중을 합한 것이external, 둘의 합이group이다. external을group으로 나눈 조건부비율이 아니다. 각16cell×64query에 같은 가중치로 평균하고16cell별·앞32/뒤32query·group=0을 보존했다. cell별 평균을 다시 평균하면 전체 평균이다.",
+      "claim_type": "지표/분모",
+      "source_locations": [
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            44,
+            59
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            13,
+            13
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/records/0",
+            "/records/1",
+            "/records/2",
+            "/records/3",
+            "/records/4",
+            "/records/5",
+            "/records/6",
+            "/records/7",
+            "/records/8",
+            "/records/9",
+            "/records/10",
+            "/records/11",
+            "/records/12",
+            "/records/13",
+            "/records/14"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        }
+      ],
+      "record_anchor": "claim-08",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        2
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C09",
+      "title": "k32 다섯 소속의 외부 비중",
+      "claim": "같은cluster 다른cell의 평균 비중은 k32에서 Tab12.030029296875%·empirical15.9423828125%·KNN12.4908447265625%·PCC22.900390625%·random11.859130859375%다. 보고서의12.03/15.94/12.49/22.90/11.86% 반올림과 일치하며 비중을 RCTL MAE로 읽지 않는다.",
+      "claim_type": "정량 관측",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            9,
+            17
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/records/1",
+            "/records/4",
+            "/records/7",
+            "/records/10",
+            "/records/13"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        }
+      ],
+      "record_anchor": "claim-09",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C10",
+      "title": "k16/32/64에서 보존된 음의 차이",
+      "claim": "Tab−empirical external 차이는 k16 −0.04901123046875, k32 −0.03912353515625, k64 −0.032623291015625로 각각−4.901123/−3.912354/−3.262329 percentage points다. k는 이웃 수이고 소속 K4와 구별한다. 미리 정한 민감도 결과이며 이 값으로 새 k/소속/threshold를 선택하지 않았다.",
+      "claim_type": "정량/민감도",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/comparisons"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/records/0",
+            "/records/1",
+            "/records/2",
+            "/records/3",
+            "/records/4",
+            "/records/5"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            19,
+            19
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            13,
+            14
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        }
+      ],
+      "record_anchor": "claim-10",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C11",
+      "title": "평균 아래에 남은 cell별 반대 방향",
+      "claim": "세 k 모두16cell 중 Tab external이 낮은10개·높은6개이며 동점0이다. main k32에서는4537/4565/5365/6137/6145/6165가 높았고3737/3745/3753/3765/4545/4553/5337/5345/5353/6153은 낮았다. 이 입력비중 부호를 원106의 RCTL 손해cell 부호와 같은 지표로 병합하지 않는다. 240개 cell별 mass와 반대 방향을 함께 보존했다.",
+      "claim_type": "반례/적용범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/comparisons"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/records/0",
+            "/records/1",
+            "/records/2",
+            "/records/3",
+            "/records/4",
+            "/records/5"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            19,
+            21
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        }
+      ],
+      "record_anchor": "claim-11",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C12",
+      "title": "앞뒤 query 절반의 방향과 한계",
+      "claim": "각cell의 앞32·뒤32 query를 16cell 전체에 평균한 Tab−empirical external 차이는 세 k 모두 두절반에서 음수다. k32는−0.03228759765625/−0.04595947265625이며 전체차이는 두 값의 평균이다. 개별cell마다 두절반이 음수라는 주장은 하지 않는다. 이 절반은 훈련기간 안의 query이며 원106의 이후 두10일 구간과 다르다.",
+      "claim_type": "시간별 관측",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/comparisons"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            58,
+            68
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            19,
+            23
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        }
+      ],
+      "record_anchor": "claim-12",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C13",
+      "title": "같은 자기자료 점유와 다른 이웃비중",
+      "claim": "각cluster 학습행에서 자기cell672/2688=1/4이라는 자료개수와 density own_mass는 다른 분모다. own_mass는 소속마다 같지만 k16/32/64에서0.3809814453125/0.32318115234375/0.2704620361328125다. 자기sample 개수의 보존을 가까운 입력비중25% 또는 독립 정보량25%로 바꾸지 않는다.",
+      "claim_type": "분모/해석",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            18,
+            18
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            47,
+            55
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/records/0",
+            "/records/1",
+            "/records/2",
+            "/records/3",
+            "/records/4",
+            "/records/5",
+            "/records/6",
+            "/records/7",
+            "/records/8",
+            "/records/9",
+            "/records/10",
+            "/records/11",
+            "/records/12",
+            "/records/13",
+            "/records/14"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        }
+      ],
+      "record_anchor": "claim-13",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C14",
+      "title": "group 비중이0인 query도 유지",
+      "claim": "group=0 query를 제외하지 않았다. k32의 Tab/empirical/KNN/PCC/random 개수는3/0/18/2/4이고 k16은9/10/37/12/12, k64는0/0/7/1/1이다. 평균 계산의 전체1024개 분모를 그대로 유지한다. 더큰k에서 남은0 사례도 보존하며0이 model 예측 실패를 뜻한다고 추정하지 않는다.",
+      "claim_type": "반례/집계",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            13,
+            13
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            45,
+            59
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/records/0",
+            "/records/1",
+            "/records/2",
+            "/records/3",
+            "/records/4",
+            "/records/5",
+            "/records/6",
+            "/records/7",
+            "/records/8",
+            "/records/9",
+            "/records/10",
+            "/records/11",
+            "/records/12",
+            "/records/13",
+            "/records/14"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        }
+      ],
+      "record_anchor": "claim-14",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        3
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C15",
+      "title": "PCC의 큰 외부 비중은 RCTL 우위를 주지 않았다",
+      "claim": "기존 seed20260925의20개 fit평균을 balanced4cell 가중으로 재집계하면 scaled test MAE는 empirical0.08160039968788624·KNN0.08407308533787727·random0.08559771068394184·Tab0.08732813410460949·PCC0.08987710066139698다. k32 external이 가장 큰PCC는 이 다섯의 기존 RCTL MAE가 가장 컸다. 이후480시간의 이미 관찰된 지표이며 새로운 예측/독립 평가가 아니다.",
+      "claim_type": "기존 성능/반례",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            21,
+            23
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "JSON_pointers": [
+            "/1/members",
+            "/1/test_mean_scaled_mae",
+            "/2/members",
+            "/2/test_mean_scaled_mae",
+            "/3/members",
+            "/3/test_mean_scaled_mae",
+            "/4/members",
+            "/4/test_mean_scaled_mae",
+            "/5/members",
+            "/5/test_mean_scaled_mae",
+            "/6/members",
+            "/6/test_mean_scaled_mae",
+            "/7/members",
+            "/7/test_mean_scaled_mae",
+            "/8/members",
+            "/8/test_mean_scaled_mae",
+            "/9/members",
+            "/9/test_mean_scaled_mae",
+            "/10/members",
+            "/10/test_mean_scaled_mae",
+            "/11/members",
+            "/11/test_mean_scaled_mae",
+            "/12/members",
+            "/12/test_mean_scaled_mae",
+            "/13/members",
+            "/13/test_mean_scaled_mae",
+            "/14/members",
+            "/14/test_mean_scaled_mae",
+            "/15/members",
+            "/15/test_mean_scaled_mae",
+            "/16/members",
+            "/16/test_mean_scaled_mae",
+            "/17/members",
+            "/17/test_mean_scaled_mae",
+            "/18/members",
+            "/18/test_mean_scaled_mae",
+            "/19/members",
+            "/19/test_mean_scaled_mae",
+            "/20/members",
+            "/20/test_mean_scaled_mae"
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-137.md#src-0030237"
+        },
+        {
+          "source_id": "SRC-0030238",
+          "JSON_pointers": [
+            "/seed_primary",
+            "/test_targets"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-137.md#src-0030238"
+        }
+      ],
+      "record_anchor": "claim-15",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C16",
+      "title": "자료 누락·입력 근접성으로 원인을 확정하지 않음",
+      "claim": "시간·요일 sample 개수 보존은 이 고정 격자에서 자기자료 제거로 두 소속 차이를 설명하는 해석을 제한한다. 같은 트래픽 수준/경로 분포를 뜻하지 않는다. 가까운 다른cell sample은 조건부정답 일치·독립 정보량·RCTL 개선을 보장하지 않고 관계충돌/유한표본추정/최적화/평가절차 중 원인은 미식별이다.",
+      "claim_type": "해석/인과한계",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            7,
+            7
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            21,
+            29
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/causal_identification"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            18,
+            20
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        }
+      ],
+      "record_anchor": "claim-16",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        4
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C17",
+      "title": "처음의 추가 소속 오류와 정정",
+      "claim": "보고서와 결과는 처음에 다섯 외의 미훈련 소속까지 읽어 균형검사 assertion으로 멈췄으며 원래계획의 다섯으로 범위를 정정한 뒤 한 번 완료했다고 기록한다. corrected 코드33–34행은 다섯만 선택한다. 초기 실패 code판본/traceback/원도구 로그는 이번 packet에서 복구하지 못했으므로 정확한 실패소속·중단행을 독립 확정하지 않는다. 구현/범위 오류를 근접성 방법의 과학적 기각으로 세지 않는다.",
+      "claim_type": "실패/복구",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            33,
+            33
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/prior_failure",
+            "/prior_failed_process_seconds"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            33,
+            43
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            74,
+            75
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        }
+      ],
+      "record_anchor": "claim-17",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C18",
+      "title": "실행시점 코드 판본의 한계",
+      "claim": "result source_hashes는 density/risk_predictions/partitions/training_settings/plan 다섯이며 실행코드 hash는 없다. 현재 보존 코드77598a…가 산술과 일치하는 것을 실행시점 코드판본의 독립 pin으로 표시하지 않는다. 당시 code가 바뀌었다고 증명한 것도 아니다. 실패 시간/문장은 수정후 코드의 상수와 저장결과/보고에 남아 있다.",
+      "claim_type": "판본/근거공백",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/source_hashes",
+            "/prior_failure",
+            "/prior_failed_process_seconds"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            17,
+            18
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            69,
+            78
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        }
+      ],
+      "record_anchor": "claim-18",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C19",
+      "title": "성공·실패 비용과 측정 범위",
+      "claim": "원결과의 완료 배열분석0.026969499987899326초와 최초 실패process0.3895649초를 합한 비용은0.4165343999878993초다. 현재 다시 측정한 모델시간이 아니다. corrected code는 초기 hash 뒤부터 로드/산술을 재고 finalhash/출력 전에 시간을 저장한다. 최초실패 process의 타이머 범위는 별도 로그로 복구하지 않았다. plan의30초는 상한이며 사용량과 구별한다.",
+      "claim_type": "비용/범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/arithmetic_seconds",
+            "/prior_failed_process_seconds"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            17,
+            22
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "lines": [
+            69,
+            78
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            24,
+            24
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            33,
+            33
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        }
+      ],
+      "record_anchor": "claim-19",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C20",
+      "title": "후속 원장의 실패 포함 단일 사건",
+      "claim": "원108활성화전 ledger98972…의 비용map/상세에 원107 항목은 없다. 후속 원109 회계전300d59…와 현재root17a549…에는 support_composition_107 비용key0.4165343999878993 및 stage9 하나가 같은 실패/성공시간·새fit/forward/call0·cost_not_counted_twice=true로 남아 있다. 두 위치에 기록된 한 사건이며 두번 비용을 합치지 않는다. 정확한 기입시점·원108 관련 다른 회계변경·전체ledger 불변을 이번 선택필드 확인으로 확정하지 않는다.",
+      "claim_type": "회계/판본",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020858",
+          "JSON_pointers": [
+            "/new_cheap_diagnostic_seconds",
+            "/cheap_stage_details"
+          ],
+          "source_sha256": "98972b834adb0c650f6e309bc1b24a7d5a96e0b03eec1f86a9c0f651025204ba",
+          "team_source": "../sources/history-137.md#src-0020858"
+        },
+        {
+          "source_id": "SRC-0032507",
+          "JSON_pointers": [
+            "/new_cheap_diagnostic_seconds/support_composition_107",
+            "/cheap_stage_details/9"
+          ],
+          "source_sha256": "300d59d3efd7f6709d4b9b5da0f83023ef68f4251a74afcbfc73f2dac5afb2dc",
+          "team_source": "../sources/history-137.md#src-0032507"
+        },
+        {
+          "source_id": "SRC-0022700",
+          "JSON_pointers": [
+            "/new_cheap_diagnostic_seconds/support_composition_107",
+            "/cheap_stage_details/9"
+          ],
+          "source_sha256": "17a549fcf926e534eaecd4efd278fe4e13f7c7a13e74805c21059a2d6fc59243",
+          "team_source": "../sources/history-137.md#src-0022700"
+        }
+      ],
+      "record_anchor": "claim-20",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        5
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C21",
+      "title": "당시 후속 BN 비교는 원107 실행결과가 아님",
+      "claim": "findings29행은 RCTL 각block 두개·전체12 BatchNorm을 보고하고 기존가중치/소속을 고정해 훈련입력만으로 통계를 다시 계산하는 한요소 비교를 다음 작업으로 제안했다. 이 문장의 architecture 주장과 그 비교를 이번 packet에서 새로 실행/검증하지 않았다. 원107의15 density조건을 BN 성능 결과나 Tab/clustering 신규성으로 세지 않고 성능을 본 cell선택/혼합비율 tuning도 하지 않는다.",
+      "claim_type": "미실행 후속/범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            25,
+            29
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            19,
+            20
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "JSON_pointers": [
+            "/new_RCTL_calls",
+            "/new_fits"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        }
+      ],
+      "record_anchor": "claim-21",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C22",
+      "title": "과거 Goal·감사·예산 문장과 현재 과제",
+      "claim": "plan24행의 goalactive·원106progress·차단반복감사 새시작은 당시 운영상태 보고다. 이 문장만으로 nativeGoal 상태전환 도구응답을 검증하지 않았다. 앞선 원106의 상태자료와 연결해 이 차이를 보존하며 현재 Goal감사/재개/예산변경/자동화생성/모델권한으로 적용하지 않는다.",
+      "claim_type": "역사 운영/근거범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            24,
+            24
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        }
+      ],
+      "record_anchor": "claim-22",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C23",
+      "title": "재사용과 재검토 조건",
+      "claim": "이 저장분석을 같은자료·같은fiveK4로 다시 수행하기 전에 원23 density/원106 저장오차/원107 결과를 재사용한다. 새 질문은 지원/조건부관계/유한표본/최적화·평가 중 무엇을 구별하고 입력·기간·정규화·소속의 어떤 조건이 달라지는지 적어야 한다. 단순 추가sample·근접입력 수 증가를 원인 해결 또는 Tab 신규성으로 승격하지 않는다. 현재 실험을 수행하라는 지시가 아니다.",
+      "claim_type": "재사용/후속조건",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020856",
+          "lines": [
+            18,
+            20
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "lines": [
+            21,
+            29
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        }
+      ],
+      "record_anchor": "claim-23",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C24",
+      "title": "원본 보존과 선택 읽기의 구분",
+      "claim": "13고유SHA/25물리경로와 보호6개를 대조해 중복을 제거한30원본경로가 불변이었다. 새정확사본 대상은5개73415bytes이며 나머지8개는 기존정확사본을 연결한다. 원107 first4literal전체3204행과 원23code선택107행·JSON146pointer·NPZ8필요키를 구별한다. 원109/root 원장·settings/fits/partitions 전체literal새독을 했다고 세지 않는다.",
+      "claim_type": "보존/검토범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020856",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0032507",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "300d59d3efd7f6709d4b9b5da0f83023ef68f4251a74afcbfc73f2dac5afb2dc",
+          "team_source": "../sources/history-137.md#src-0032507"
+        },
+        {
+          "source_id": "SRC-0025173",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "3f3fc7fc11d87f46e50ede9de69075a012e31795d5f535174d4d7fd9023aff94",
+          "team_source": "../sources/history-137.md#src-0025173"
+        },
+        {
+          "source_id": "SRC-0023605",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "8ad2825e7b6861540975be3948778a4028cc275a53c4ad6991077c330d43f85e",
+          "team_source": "../sources/history-137.md#src-0023605"
+        },
+        {
+          "source_id": "SRC-0023588",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "4a91e2d618091c79a001a0fefb931588669f7ff763dfd82eef7adf9723adeeda",
+          "team_source": "../sources/history-137.md#src-0023588"
+        },
+        {
+          "source_id": "SRC-0030238",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df",
+          "team_source": "../sources/history-137.md#src-0030238"
+        },
+        {
+          "source_id": "SRC-0030237",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "5531c04d35f42281720fb1a88ae4538f5b29940f413366b8a3e6271ff9f01406",
+          "team_source": "../sources/history-137.md#src-0030237"
+        },
+        {
+          "source_id": "SRC-0022693",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "a257662135d30ee35ed0f92feca1cb15b2d60036178e051395a920b8946ffb3a",
+          "team_source": "../sources/history-137.md#src-0022693"
+        },
+        {
+          "source_id": "SRC-0020858",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "98972b834adb0c650f6e309bc1b24a7d5a96e0b03eec1f86a9c0f651025204ba",
+          "team_source": "../sources/history-137.md#src-0020858"
+        },
+        {
+          "source_id": "SRC-0022700",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "17a549fcf926e534eaecd4efd278fe4e13f7c7a13e74805c21059a2d6fc59243",
+          "team_source": "../sources/history-137.md#src-0022700"
+        }
+      ],
+      "record_anchor": "claim-24",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "archive_check_evidence": {
+        "saved_numeric_check": "../evidence/0137-calendar-retention-and-external-support/saved-numeric-check.json"
+      },
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    },
+    {
+      "claim_id": "H137-C25",
+      "title": "아카이브 전체 완료와 다른 작은 packet",
+      "claim": "새본문 단회 집계 대상은 비JSON전문3·literalJSON1·선택원장1이며 재독/재사용/저장산술은 신규집계0이다. 308고유 원장판본의 자동 선택키 검색을308개 본문검토 완료로 표시하지 않는다. 원108이후·긴고유판본/다른형식·통합/장기팀접근/최종원본delta/대표질문10+ 검색검수는 남아 있고 원107 complete를 전체 연구Goal 완료로 읽지 않는다.",
+      "claim_type": "아카이브 진행/범위",
+      "source_locations": [
+        {
+          "source_id": "SRC-0020856",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "269e66f6877a0b2c239d31f30b71edeb11628d9c09b052fcf17dda14bc2adf8c",
+          "team_source": "../sources/history-137.md#src-0020856"
+        },
+        {
+          "source_id": "SRC-0020855",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "eb3dad0b9ef07c21b016940d7c1ce00acb6404baa4008583ece33906b4a84b65",
+          "team_source": "../sources/history-137.md#src-0020855"
+        },
+        {
+          "source_id": "SRC-0023193",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "77598a9a9c76a8027da534379c16f3e1542c970d265fb6653fa8293412096798",
+          "team_source": "../sources/history-137.md#src-0023193"
+        },
+        {
+          "source_id": "SRC-0032345",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "58e72d3acf49c73af2c2842371bcb17e3b16ea548948936d77872cf5d4d36504",
+          "team_source": "../sources/history-137.md#src-0032345"
+        },
+        {
+          "source_id": "SRC-0032507",
+          "metadata_fields": [
+            "path",
+            "sha256",
+            "size_bytes"
+          ],
+          "source_sha256": "300d59d3efd7f6709d4b9b5da0f83023ef68f4251a74afcbfc73f2dac5afb2dc",
+          "team_source": "../sources/history-137.md#src-0032507"
+        }
+      ],
+      "record_anchor": "claim-25",
+      "status": "source_checked",
+      "semantic_second_pass_complete": true,
+      "second_pass_check_indices": [
+        6
+      ],
+      "archive_check_evidence": {},
+      "archive_scope_evidence": {
+        "actual_first_scopes": "../evidence/0137-calendar-retention-and-external-support/first-scope-progress.json",
+        "selected_fields_and_headers": "../evidence/0137-calendar-retention-and-external-support/numeric-scope-packet.json",
+        "selection_identity": "../evidence/0137-calendar-retention-and-external-support/selection.json",
+        "postdraft_actual_reads": "../evidence/0137-calendar-retention-and-external-support/postdraft-actual-reads.json"
+      }
+    }
+  ],
+  "status": "source_checked",
+  "semantic_second_pass_complete": true,
+  "independent_human_reviewer": false,
+  "new_model_runs": 0,
+  "public_link_and_metadata_scope_precision_fixed": true
+}

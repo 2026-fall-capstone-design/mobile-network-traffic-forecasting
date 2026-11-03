@@ -1,0 +1,85 @@
+from pathlib import Path
+import hashlib, json, shutil, time
+import numpy as np
+B = Path(__file__).resolve().parent
+ROOT = B.parent.parent
+O = B / "results/pooled_context_101"
+S = ROOT / "output/research/redesign_20260925_snapshot_43"
+assert not S.exists(), "Do not overwrite an archive."
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def read(p): return json.loads(p.read_text(encoding="utf-8"))
+def save(p, x): p.write_text(json.dumps(x, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+t = time.perf_counter()
+settings, summary, finished = [read(O / n) for n in ["settings.json", "summary.json", "run_finished.json"]]
+update = read(O / "budget_update.json")
+assert finished["success"]
+assert (finished["contexts_completed"], finished["query_rows_attempted"], finished["simple_fits"]) == (9, 16128, 18)
+assert all(finished[k] == 0 for k in ["new_RCTL_fits", "new_RCTL_forwards", "new_RCTL_gradients"])
+assert finished["TabICL_seconds"] < 1200 and finished["cheap_seconds"] < 30
+assert finished["rss_peak_bytes"] < 12 * 1024**3
+assert sum(c["inner_predict_stats_calls"] for c in summary["calls"]) == 9
+assert all(c["status"] == "completed" for c in summary["calls"])
+pred = np.load(O / "predictions.npz")
+data = np.load(O / "inputs.npz")
+assert np.array_equal(pred["context_times"], np.arange(168, 840))
+assert np.array_equal(pred["query_times"], np.arange(1008, 1344))
+assert np.array_equal(data["Y"][:, 672:], pred["actual"])
+assert data["X"].shape == (16, 1008, 16)
+assert all(np.isfinite(pred[k]).all() for k in summary["metrics"])
+for key, value in summary["metrics"].items():
+    err = np.abs(pred[key] - pred["actual"])
+    assert abs(float(err.mean()) - value["mean_cell_MAE"]) < 1e-8
+    assert np.allclose(err.mean(1), value["cell_MAE"], rtol=1e-6, atol=1e-8)
+    assert np.allclose(err.reshape(16,14,24).mean((0,2)), value["day_MAE"], rtol=1e-6, atol=1e-8)
+original_paths = {
+ "plan": B / "101_pooled_context_diagnostic_plan.md", "code": B / "pooled_context_diagnostic_101.py",
+ "design": B / "results/design_data.npz", "partition": B / "results/observed_risk_pilot.json",
+ "traffic": B / "assets/data_git_version.h5", "checkpoint": B / "assets/tabicl-regressor-v2-20260212.ckpt",
+ "RCTL_saved_predictions": B / "results/rctl_pilot/all_predictions.npz",
+}
+assert all(sha(p) == settings["hashes"][k] for k,p in original_paths.items())
+ledger_path = B / "cumulative_execution_budget.json"
+assert sha(ledger_path) == update["ledger_after_sha256"]
+assert (O / "budget_after.json").read_bytes() == ledger_path.read_bytes()
+assert sha(O / "budget_before.json") == settings["hashes"]["ledger"]
+ledger = read(ledger_path)
+assert ledger["used"]["TabICL_contexts"] == 78 and ledger["used"]["TabICL_query_rows"] == 55488
+assert ledger["remaining_count_budgets"] == {"TabICL_contexts":2,"TabICL_query_rows":4512,"RCTL_fits":0}
+word = ROOT / "output/docx/TabICLv2_재설계_근거정리와_남은핵심판단_중간검토.docx"
+assert sha(word) == "4f1112dc09f995b3438a0fccc7801bffdad9220f887251cb9aff710c9571b686"
+src = B / "sources/pooled_context_101"
+src.mkdir(exist_ok=True)
+manifest = []
+for name in ["_sklearn/regressor.py", "_model/tabicl.py", "_model/layers.py", "_model/embedding.py"]:
+    p = B / "runtime/Lib/site-packages/tabicl" / name
+    dest = src / name.replace("/", "_")
+    assert not dest.exists()
+    shutil.copy2(p, dest)
+    manifest.append({"original_local_path":str(p),"saved_local_path":str(dest),"sha256":sha(dest),"bytes":dest.stat().st_size})
+save(src / "manifest.json", {"version":settings["versions"]["tabicl"], "source":"Installed TabICL implementation used by this diagnostic; no new network download.", "files":manifest})
+verification = {
+ "all_checks_passed":True,"new_model_execution_during_verification":False,"new_RCTL_execution":False,
+ "contexts":9,"query_rows":16128,"simple_fits":18,"internal_predict_stats_calls":9,
+ "input_and_prediction_shapes_verified":True,"stored_MAE_recomputed":True,
+ "source_and_input_hashes_unchanged":True,"prior_Word_unchanged":True,
+ "ledger_sha256":sha(ledger_path),"prior_word_sha256":sha(word),
+ "artifact_QA_seconds_excluded_from_model_execution_ledger":time.perf_counter()-t,
+ "independent_test":False,"goal_complete":False,
+}
+save(O / "verification.json", verification)
+files = [B / n for n in ["101_pooled_context_diagnostic_plan.md", "101_pooled_context_findings.md", "pooled_context_diagnostic_101.py", "record_pooled_context_101.py", "verify_and_archive_101.py", "cumulative_execution_budget.json", "candidate_decision_index.md", "progress.md"]]
+files += list(O.glob("*")) + list(src.glob("*"))
+files += [ROOT / "output/research/TabICLv2_재설계_실제context공유와_RCTL판단_비교.md"]
+S.mkdir()
+records=[]
+for p in files:
+    if not p.is_file():continue
+    rel=p.relative_to(ROOT); dest=S/rel
+    dest.parent.mkdir(parents=True,exist_ok=True)
+    shutil.copy2(p,dest)
+    assert sha(p)==sha(dest)
+    records.append({"relative_path":str(rel),"sha256":sha(dest),"bytes":dest.stat().st_size})
+save(S/"manifest.json", {"files":records,"verified":True,"raw_and_checkpoint_assets_not_duplicated":True,"referenced_by_hash":{k:settings["hashes"][k] for k in ["traffic","checkpoint"]},"goal_complete":False})
+result={"snapshot":str(S),"files":len(records),"bytes":sum(r["bytes"] for r in records),"verified":True,"ledger_sha256":sha(ledger_path),"prior_word_sha256":sha(word),"goal_complete":False}
+save(B/"101_archive_verification.json",result)
+print(json.dumps(result,ensure_ascii=False,indent=2))

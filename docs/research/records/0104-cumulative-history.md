@@ -1,5 +1,7 @@
 # 원82까지의 누적 연구일지와 후보 결정 지도
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [출처](../sources/history-104.md) · [검수](../verification/history-104.md) · [판본 차이](../evidence/0104-cumulative-history/unique-deltas.json) · [원82 상세](0099-intermittence-decision.md)
 
 같은 연구를 반복하기 전에 **어떤 결정을 바꾸려 했는지 → 당시 무엇을 실제 수행했는지 → 무엇이 남았는지**를 찾는 문서다. 기록 번호는 실험 횟수가 아니다. 숫자·seed·분할·실행 비용의 세부 조건은 각 상세 기록을 따른다.

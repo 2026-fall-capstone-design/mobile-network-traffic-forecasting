@@ -1,5 +1,7 @@
 # 0095. DUET 저장 코드의 호출 경로·확률 처리·비용 범위
 
+> 과거 연구의 조건·결과를 보존한 문서입니다. 새 실험은 [공통 실험 규약](../../research-protocol.md)을 적용하며, 아래 수치는 새 기준의 재평가 결과가 아닙니다.
+
 [연구 안내](../README.md) · [전체 흐름](../history.md) · [과거 시도](../prior-attempts.md) · [원81](0090-input-partition-decision.md) · [DUET 논문](0094-duet-literature-review.md) · [출처](../sources/history-095.md) · [근거 묶음](../evidence/0095-duet-code/README.md) · [검수](../verification/history-095.md)
 
 원81이 남긴 “입력 관계 선택도 선행연구에 있고, sparse mask만으로 전체 쌍 계산이 없어지지는 않는다”는 판단을 고정 코드 판본에서 확인한다. 학습 가능한 관계·temporal expert와 고정 UPC 소속·독립 RCTL 학습을 구분하고, 논문과 구현의 세부 차이를 당시 성능의 무효화로 확대하지 않는다.

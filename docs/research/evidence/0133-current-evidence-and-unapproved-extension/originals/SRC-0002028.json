@@ -1,0 +1,99 @@
+{
+  "date": "2026-09-26",
+  "objective_file": "output/research/TabICLv2_문제정의부터_신규성과개선근거_재설계_goal_prompt.md",
+  "requirements": [
+    {
+      "requirement": "기존 cell의 연속 traffic 및 clustering 이후 RCTL 범위",
+      "state": "preserved",
+      "evidence": [
+        "results/rctl_pilot/summary.json",
+        "rctl_torch.py"
+      ]
+    },
+    {
+      "requirement": "RCTL 결과로 소속이나 threshold를 고르지 않음",
+      "state": "verified_for_executed_candidates",
+      "evidence": [
+        "results/rctl_pilot/summary.json",
+        "results/pooled_context_101/summary.json"
+      ]
+    },
+    {
+      "requirement": "네트워크 시계열 TFM 및 공유 연구의 실제 방법 검토",
+      "state": "substantial_existing_work_but_not_a_selected_final_candidate",
+      "evidence": [
+        "05_literature_decision_audit.md",
+        "65_residual_and_transform_findings.md",
+        "99_learning_unit_and_cost_findings.md",
+        "102_architecture_proxy_findings.md"
+      ]
+    },
+    {
+      "requirement": "강한 단순 대안 뒤에도 남는 핵심 문제의 직접 근거",
+      "state": "not_established_for_new_recommended_direction",
+      "evidence": [
+        "results/pooled_context_101/summary.json"
+      ]
+    },
+    {
+      "requirement": "TabICLv2가 유용한 새 clustering 결정 또는 같은 판단의 비용을 개선",
+      "state": "not_established",
+      "evidence": [
+        "candidate_decision_index.md",
+        "results/pooled_context_101/summary.json"
+      ]
+    },
+    {
+      "requirement": "최종 추천 후보의 구현 가능한 알고리즘과 비용",
+      "state": "incomplete_no_candidate_selected",
+      "evidence": [
+        "candidate_decision_index.md"
+      ]
+    },
+    {
+      "requirement": "최종 추천 후보의 RCTL 연결 최소 확인 또는 동등한 직접 근거",
+      "state": "missing_existing_candidates_do_not_supply_it",
+      "evidence": [
+        "results/rctl_pilot/summary.json",
+        "102_architecture_proxy_findings.md"
+      ]
+    },
+    {
+      "requirement": "누적 상한 준수 및 후보 변경 시 초기화 금지",
+      "state": "verified_current_ledger",
+      "evidence": [
+        "cumulative_execution_budget.json"
+      ]
+    },
+    {
+      "requirement": "새 후보의 근접 연구 비교 주장과 증거 반론 표",
+      "state": "incomplete_for_final_candidate",
+      "evidence": [
+        "candidate_decision_index.md"
+      ]
+    },
+    {
+      "requirement": "한국어 재설계 보고서 교수님용 Word 및 근거 자료",
+      "state": "interim_artifacts_verified_final_design_incomplete",
+      "evidence": [
+        "103_document_verification.json",
+        "103_evidence_audit.json"
+      ]
+    },
+    {
+      "requirement": "하나의 추천 방향 선택 및 후속 본 실험 실패 시 행동",
+      "state": "incomplete",
+      "evidence": [
+        "103_evidence_audit.json"
+      ]
+    }
+  ],
+  "complete": false,
+  "complete_must_not_be_called": true,
+  "resource_limit": {
+    "RCTL_fits_remaining": 0,
+    "Tab_contexts_remaining": 2,
+    "Tab_query_rows_remaining": 4512
+  },
+  "conditional_extension_proposed_not_authorized_or_applied": true
+}

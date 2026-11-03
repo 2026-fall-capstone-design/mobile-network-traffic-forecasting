@@ -1,0 +1,425 @@
+{
+  "batch_id": "history-132",
+  "check_type": "exact_rational_algebra_witnesses",
+  "source_id": "SRC-0001993",
+  "source_sha256": "b9615ad7033264d3e46e95990e98239e98700269780ebfc051c01d1f71f1c237",
+  "source_actual_re_read_ranges": [
+    [
+      31,
+      65
+    ]
+  ],
+  "scope": "Small finite-support mathematical examples created during archive verification; no original traffic data, fit, trained model, kernel or gradients.",
+  "fixed_affine": {
+    "train_dimension": 2,
+    "query_dimension": 2,
+    "A": [
+      [
+        "1/2",
+        "-1/3"
+      ],
+      [
+        "2/3",
+        "1/4"
+      ]
+    ],
+    "b": [
+      "1/5",
+      "-2/7"
+    ],
+    "W": [
+      [
+        "2/1",
+        "1/2"
+      ],
+      [
+        "1/2",
+        "3/1"
+      ]
+    ],
+    "W_symmetric_positive_definite": true,
+    "states": [
+      {
+        "latent": [
+          -1,
+          -1,
+          -1
+        ],
+        "probability": "1/8",
+        "Y_T": [
+          "-2/1",
+          "-4/1"
+        ],
+        "Y_Q": [
+          "-1/1",
+          "-1/2"
+        ],
+        "error": [
+          "23/15",
+          "-89/42"
+        ],
+        "weighted_square": "658153/44100"
+      },
+      {
+        "latent": [
+          -1,
+          -1,
+          1
+        ],
+        "probability": "1/8",
+        "Y_T": [
+          "-2/1",
+          "-6/1"
+        ],
+        "Y_Q": [
+          "1/1",
+          "7/2"
+        ],
+        "error": [
+          "1/5",
+          "-139/21"
+        ],
+        "weighted_square": "478454/3675"
+      },
+      {
+        "latent": [
+          -1,
+          1,
+          -1
+        ],
+        "probability": "1/8",
+        "Y_T": [
+          "2/1",
+          "-4/1"
+        ],
+        "Y_Q": [
+          "1/1",
+          "-9/2"
+        ],
+        "error": [
+          "23/15",
+          "191/42"
+        ],
+        "weighted_square": "361217/4900"
+      },
+      {
+        "latent": [
+          -1,
+          1,
+          1
+        ],
+        "probability": "1/8",
+        "Y_T": [
+          "2/1",
+          "-6/1"
+        ],
+        "Y_Q": [
+          "3/1",
+          "-1/2"
+        ],
+        "error": [
+          "1/5",
+          "1/21"
+        ],
+        "weighted_square": "118/1225"
+      },
+      {
+        "latent": [
+          1,
+          -1,
+          -1
+        ],
+        "probability": "1/8",
+        "Y_T": [
+          "0/1",
+          "2/1"
+        ],
+        "Y_Q": [
+          "3/1",
+          "3/2"
+        ],
+        "error": [
+          "-52/15",
+          "-9/7"
+        ],
+        "weighted_square": "368807/11025"
+      },
+      {
+        "latent": [
+          1,
+          -1,
+          1
+        ],
+        "probability": "1/8",
+        "Y_T": [
+          "0/1",
+          "0/1"
+        ],
+        "Y_Q": [
+          "5/1",
+          "11/2"
+        ],
+        "error": [
+          "-24/5",
+          "-81/14"
+        ],
+        "weighted_square": "853947/4900"
+      },
+      {
+        "latent": [
+          1,
+          1,
+          -1
+        ],
+        "probability": "1/8",
+        "Y_T": [
+          "4/1",
+          "2/1"
+        ],
+        "Y_Q": [
+          "5/1",
+          "-5/2"
+        ],
+        "error": [
+          "-52/15",
+          "113/21"
+        ],
+        "weighted_square": "1017007/11025"
+      },
+      {
+        "latent": [
+          1,
+          1,
+          1
+        ],
+        "probability": "1/8",
+        "Y_T": [
+          "4/1",
+          "0/1"
+        ],
+        "Y_Q": [
+          "7/1",
+          "3/2"
+        ],
+        "error": [
+          "-24/5",
+          "37/42"
+        ],
+        "weighted_square": "649441/14700"
+      }
+    ],
+    "mu_T": [
+      "1/1",
+      "-2/1"
+    ],
+    "mu_Q": [
+      "3/1",
+      "1/2"
+    ],
+    "Sigma_TT": [
+      [
+        "5/1",
+        "3/1"
+      ],
+      [
+        "3/1",
+        "10/1"
+      ]
+    ],
+    "Sigma_TQ": [
+      [
+        "4/1",
+        "-3/1"
+      ],
+      [
+        "5/1",
+        "1/1"
+      ]
+    ],
+    "Sigma_QT": [
+      [
+        "4/1",
+        "5/1"
+      ],
+      [
+        "-3/1",
+        "1/1"
+      ]
+    ],
+    "Sigma_QQ": [
+      [
+        "6/1",
+        "2/1"
+      ],
+      [
+        "2/1",
+        "9/1"
+      ]
+    ],
+    "d": [
+      "-49/30",
+      "-13/21"
+    ],
+    "error_covariance": [
+      [
+        "241/36",
+        "11/24"
+      ],
+      [
+        "11/24",
+        "1177/72"
+      ]
+    ],
+    "bias_term": "9183/1225",
+    "trace_term": "566/9",
+    "direct_expected_weighted_squared_error": "775997/11025",
+    "formula_expected_weighted_squared_error": "775997/11025",
+    "exact_difference": "0/1",
+    "omitting_cross_covariance": "2791613/44100"
+  },
+  "marginal_quantile_coupling_counterexamples": [
+    {
+      "name": "equal",
+      "joint_pairs": [
+        [
+          -1,
+          -1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "uniform_probability": "1/2",
+      "mean_T": 0,
+      "mean_Q": 0,
+      "variance_T": 1,
+      "variance_Q": 1,
+      "cross_covariance": "1/1",
+      "marginal_quantiles_identical_across_cases": true,
+      "expected_squared_error": "0/1"
+    },
+    {
+      "name": "opposite",
+      "joint_pairs": [
+        [
+          -1,
+          1
+        ],
+        [
+          1,
+          -1
+        ]
+      ],
+      "uniform_probability": "1/2",
+      "mean_T": 0,
+      "mean_Q": 0,
+      "variance_T": 1,
+      "variance_Q": 1,
+      "cross_covariance": "-1/1",
+      "marginal_quantiles_identical_across_cases": true,
+      "expected_squared_error": "4/1"
+    },
+    {
+      "name": "independent",
+      "joint_pairs": [
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "uniform_probability": "1/4",
+      "mean_T": 0,
+      "mean_Q": 0,
+      "variance_T": 1,
+      "variance_Q": 1,
+      "cross_covariance": "0/1",
+      "marginal_quantiles_identical_across_cases": true,
+      "expected_squared_error": "2/1"
+    }
+  ],
+  "identical_first_two_moments_different_MAE": [
+    {
+      "name": "two_point",
+      "values_and_probabilities": [
+        [
+          "-1/1",
+          "1/2"
+        ],
+        [
+          "1/1",
+          "1/2"
+        ]
+      ],
+      "mean": "0/1",
+      "variance": "1/1",
+      "MAE": "1/1"
+    },
+    {
+      "name": "three_point",
+      "values_and_probabilities": [
+        [
+          "-2/1",
+          "1/8"
+        ],
+        [
+          "0/1",
+          "3/4"
+        ],
+        [
+          "2/1",
+          "1/8"
+        ]
+      ],
+      "mean": "0/1",
+      "variance": "1/1",
+      "MAE": "1/2"
+    }
+  ],
+  "adaptive_A_counterexample": {
+    "Y_T_values": [
+      -1,
+      1
+    ],
+    "probabilities": [
+      "1/2",
+      "1/2"
+    ],
+    "A_equals_Y_T": true,
+    "Y_Q": 0,
+    "actual_squared_risk": "1/1",
+    "invalid_substitution_using_mean_A": "0/1",
+    "condition": "The fixed-A identity remains valid after appropriate conditioning with conditional target moments; averaging A does not provide that conditioning."
+  },
+  "lag_conditioning_example": {
+    "X_next_fixed": 1,
+    "Y_previous_given_X_next": 1,
+    "conditional_variance_previous": 0,
+    "unconditional_variance_previous": 1,
+    "probability_independent_target_resample_preserves_fixed_lag": "1/2",
+    "mandatory_temporal_gap_claim": false
+  },
+  "Gaussian_assumption_on_actual_traffic_verified": false,
+  "original_source_executed": false,
+  "original_source_imported": false,
+  "models_instantiated": false,
+  "kernel_matrix_computed": false,
+  "gradient_computed": false,
+  "new_model_runs": 0,
+  "new_research_experiment_credit": 0,
+  "archived_originals_changed": false,
+  "all_exact_checks_passed": true,
+  "recorded_at_utc": "2026-10-12T14:39:55.016328+00:00"
+}

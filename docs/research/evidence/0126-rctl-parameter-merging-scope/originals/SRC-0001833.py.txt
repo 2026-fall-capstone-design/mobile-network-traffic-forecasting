@@ -1,0 +1,21 @@
+from pathlib import Path
+import subprocess,json
+
+root=Path(__file__).resolve().parent/'sources/model_merging_96'
+renderer=Path('C:/Users/jungj/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe')
+dest=root/'render'
+dest.mkdir(exist_ok=True)
+pages={'Model_Soups_ICML2022':[3], 'Git_Re_Basin_2209.04836v4':[21],
+       'Breaking_Silos_ICML2025':[4], 'Probabilistic_Merging_UAI2026':[6,13,14]}
+results=[]
+for name,numbers in pages.items():
+ for n in numbers:
+  prefix=dest/f'{name}_p{n}'
+  image_path=Path(str(prefix)+'.png')
+  if not image_path.exists():
+   process=subprocess.run([str(renderer),'-f',str(n),'-l',str(n),'-scale-to','1600','-singlefile','-png',str(root/(name+'.pdf')),str(prefix)],capture_output=True,text=True,timeout=30)
+   if process.returncode: raise RuntimeError(process.stderr)
+  assert image_path.exists()
+  results.append({'paper':name,'pdf_page_1based':n,'image':str(image_path)})
+(root/'render_manifest.json').write_text(json.dumps(results,ensure_ascii=False,indent=2),encoding='utf-8')
+print(json.dumps({'rendered_pages':len(results)}))

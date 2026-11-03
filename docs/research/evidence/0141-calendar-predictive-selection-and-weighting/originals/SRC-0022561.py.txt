@@ -1,0 +1,300 @@
+"""One preregistered predictive phase-coordinate comparison; no RCTL calls."""
+import os
+for name in ['OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS']:
+    os.environ[name] = '4'
+from pathlib import Path
+import gc
+import hashlib
+import json
+import platform
+import threading
+import time
+import traceback
+import numpy as np
+import psutil
+import sklearn
+import torch
+import tabicl
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor
+from tabicl import TabICLRegressor
+
+B = Path(__file__).resolve().parent
+O = B / 'results/calendar_predictive_112'
+O.mkdir(exist_ok=True)
+torch.set_num_threads(4)
+torch.set_num_interop_threads(2)
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+def save(name, obj):
+    (O/name).write_text(json.dumps(obj, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+
+assert not (O/'run_started.json').exists(), 'Do not restart a begun experiment.'
+auth = json.loads((O/'budget_authorization.json').read_text(encoding='utf-8'))
+assert sha(B/'cumulative_execution_budget.json') == auth['ledger_after_sha256']
+assert all(sha(B/name) == value for name, value in auth['source_hashes'].items())
+budget = json.loads((B/'cumulative_execution_budget.json').read_text(encoding='utf-8'))
+assert budget['additional_rounds']['post_revision_106_round1']['reservations']['calendar_predictive_112']['status'] == 'reserved'
+limits = {'Tab_seconds': 180, 'cheap_seconds': 30, 'stage_seconds': 210, 'rss_bytes': 4*1024**3,
+          'Tab_contexts': 14, 'Tab_query_rows': 3096, 'simple_fits': 28}
+families = ['TabICL', 'Ridge', 'HGB']
+selectors = ['none', 'profile', 'TabICL', 'Ridge', 'HGB']
+settings = {'source_hashes': auth['source_hashes'], 'authorized_ledger_sha256': auth['ledger_after_sha256'],
+    'limits': limits, 'families': families, 'selectors': selectors, 'seed': 20260925,
+    'context_size': 504, 'query_positions_frozen_by_stage': 111,
+    'selection_query_indices': [0, 31], 'evaluation_query_indices': [32, 63],
+    'subperiods': [[32, 47], [48, 63]], 'aggregation': 'equal donor means within target cell, then equal cell mean',
+    'n_estimators': 1, 'point_output': 'median', 'kv_cache': False,
+    'new_RCTL_calls': 0, 'independent_test': False,
+    'versions': {'python': platform.python_version(), 'torch': torch.__version__, 'sklearn': sklearn.__version__,
+                 'tabicl': getattr(tabicl, '__version__', 'unknown')},
+    'torch_threads': torch.get_num_threads(), 'torch_interop_threads': torch.get_num_interop_threads(),
+    'timing_scope': 'After imports/settings/hashes; includes preparing requests, fitting/predicting, partial writes and summaries; excludes final source rehash and settlement'}
+save('settings.json', settings)
+save('run_started.json', {'unix': time.time(), 'pid': os.getpid(), 'settings_sha256': sha(O/'settings.json')})
+started = time.perf_counter()
+state = {'phase': 'prepare', 'Tab_seconds': 0., 'simple_seconds': 0., 'active_tab_start': None,
+    'contexts_attempted': 0, 'contexts_completed': 0, 'query_rows_attempted': 0,
+    'simple_fits_attempted': 0, 'simple_fits_completed': 0, 'rss_peak_bytes': 0}
+calls, simple_calls = [], []
+stop_event = threading.Event()
+process = psutil.Process()
+
+def guard():
+    while not stop_event.wait(.2):
+        now = time.perf_counter()
+        state['rss_peak_bytes'] = max(state['rss_peak_bytes'], process.memory_info().rss)
+        active = 0. if state['active_tab_start'] is None else now - state['active_tab_start']
+        reason = None
+        if state['rss_peak_bytes'] >= limits['rss_bytes']:
+            reason = 'memory_cap'
+        elif state['Tab_seconds']+active >= limits['Tab_seconds']:
+            reason = 'Tab_time_cap'
+        elif now-started-state['Tab_seconds']-active >= limits['cheap_seconds']:
+            reason = 'non_Tab_time_cap'
+        elif now-started >= limits['stage_seconds']:
+            reason = 'stage_time_cap'
+        if reason:
+            save('hard_stop.json', {'reason': reason, 'state': state, 'active_tab_seconds': active,
+                'wall_seconds': now-started, 'automatic_retry': False})
+            print(json.dumps({'hard_stop': reason}), flush=True)
+            os._exit(86)
+
+threading.Thread(target=guard, daemon=True).start()
+success, error, result = False, None, None
+try:
+    with np.load(B/'results/calendar_query_preflight_111/frozen_queries.npz', allow_pickle=False) as data:
+        ctx, q = data['context_X'].astype(np.float32), data['query_X'].astype(np.float32)
+        shifted = data['shifted_query_X'].astype(np.float32)
+        pairs = data['pair_indices'].copy()
+        phases = data['phase_candidates'].copy()
+        masks, eligible, own_masks = data['common_masks'].copy(), data['eligible_pairs'].copy(), data['own_baseline_masks'].copy()
+        positions, ids, query_times = data['query_positions'].copy(), data['cell_ids'].copy(), data['query_target_times'].copy()
+    with np.load(B/'results/pooled_context_101/inputs.npz', allow_pickle=False) as data:
+        labels = data['Y'][:, :672]
+        cy = labels[:, :504].copy()
+        actual = labels[:, 504+positions].copy()
+        assert np.array_equal(ids, data['cell_ids'])
+        assert np.array_equal(ctx, data['X'][:, :504])
+        assert np.array_equal(q, data['X'][:, 504+positions])
+    preflight = json.loads((B/'results/calendar_query_preflight_111/result.json').read_text(encoding='utf-8'))
+    selected_pairs = np.flatnonzero(eligible).tolist()
+    required = sorted(set(pairs[eligible, 1].tolist()) | set(np.flatnonzero(own_masks.any(1)).tolist()))
+    assert len(required) == 14 and len(selected_pairs) == 14 and ctx.shape == (16,504,16)
+    predictions = {f: np.full((32,3,64), np.nan, dtype=np.float64) for f in families}
+    own_predictions = {f: np.full((16,64), np.nan, dtype=np.float64) for f in families}
+    requests = []
+    for j in required:
+        rows, sections = [], []
+        at = 0
+        own_idx = np.flatnonzero(own_masks[j])
+        if len(own_idx):
+            rows.append(q[j, own_idx])
+            sections.append(('own', j, -1, own_idx, at, at+len(own_idx)))
+            at += len(own_idx)
+        for p in selected_pairs:
+            i, donor = pairs[p]
+            if donor != j:
+                continue
+            idx = np.flatnonzero(masks[p])
+            for s in range(3):
+                rows.append(shifted[p, s, idx])
+                sections.append(('cross', p, s, idx, at, at+len(idx)))
+                at += len(idx)
+        qx = np.concatenate(rows, axis=0)
+        assert qx.shape == (at,16) and np.isfinite(qx).all()
+        requests.append((j, qx, sections))
+    assert sum(len(rows) for _,rows,_ in requests) == 3096
+    save('request_manifest.json', {'total_rows': 3096, 'requests': [
+        {'context_cell': int(ids[j]), 'rows': len(rows), 'sections': [
+            {'kind': kind, 'index': int(index), 'phase_index': int(s), 'query_indices': idx.tolist(), 'start': a, 'end': b}
+            for kind,index,s,idx,a,b in sections]} for j,rows,sections in requests]})
+
+    def archive():
+        np.savez_compressed(O/'predictions_partial.npz', actual=actual, cell_ids=ids, query_times=query_times,
+            common_masks=masks, eligible_pairs=eligible, pair_indices=pairs, phase_candidates=phases,
+            **{f'cross_{f}': predictions[f] for f in families}, **{f'own_{f}': own_predictions[f] for f in families})
+
+    for f in families:
+        state['phase'] = f
+        for j, qx, sections in requests:
+            call = {'family': f, 'context_cell': int(ids[j]), 'context_rows': 504,
+                    'query_rows': len(qx), 'status': 'started', 'query_rows_attempted': 0}
+            if f == 'TabICL':
+                calls.append(call)
+                state['contexts_attempted'] += 1
+                assert state['contexts_attempted'] <= 14
+                save('calls.json', calls)
+                m = TabICLRegressor(n_estimators=1, batch_size=1, kv_cache=False,
+                    model_path=str(B/'assets/tabicl-regressor-v2-20260212.ckpt'), allow_auto_download=False,
+                    device='cpu', use_amp=False, use_fa3=False, offload_mode=False,
+                    random_state=20260925, n_jobs=1)
+            else:
+                simple_calls.append(call)
+                state['simple_fits_attempted'] += 1
+                assert state['simple_fits_attempted'] <= 28
+                save('simple_calls.json', simple_calls)
+                m = (make_pipeline(StandardScaler(), Ridge(alpha=1.)) if f == 'Ridge' else
+                    HistGradientBoostingRegressor(loss='absolute_error', max_iter=100, learning_rate=.1,
+                        max_leaf_nodes=15, min_samples_leaf=20, l2_regularization=1,
+                        early_stopping=False, random_state=20260925))
+            t = time.perf_counter()
+            if f == 'TabICL':
+                state['active_tab_start'] = t
+            try:
+                m.fit(ctx[j], cy[j])
+                fit_end = time.perf_counter()
+                call['query_rows_attempted'] = len(qx)
+                if f == 'TabICL':
+                    state['query_rows_attempted'] += len(qx)
+                    assert state['query_rows_attempted'] <= 3096
+                    save('calls.json', calls)
+                    original_stats = m.model_.predict_stats
+                    inner_count = [0]
+                    def counted_stats(*args, **kwargs):
+                        inner_count[0] += 1
+                        return original_stats(*args, **kwargs)
+                    m.model_.predict_stats = counted_stats
+                    pred = np.asarray(m.predict(qx, output_type='median')).reshape(-1)
+                    call['inner_predict_stats_calls'] = inner_count[0]
+                else:
+                    save('simple_calls.json', simple_calls)
+                    pred = np.asarray(m.predict(qx)).reshape(-1)
+                finish = time.perf_counter()
+                assert pred.shape == (len(qx),) and np.isfinite(pred).all()
+                call.update(status='completed', fit_seconds=fit_end-t, predict_seconds=finish-fit_end)
+                if f == 'TabICL':
+                    state['contexts_completed'] += 1
+                else:
+                    state['simple_fits_completed'] += 1
+            finally:
+                elapsed = time.perf_counter()-t
+                if f == 'TabICL':
+                    state['Tab_seconds'] += elapsed
+                    state['active_tab_start'] = None
+                    save('calls.json', calls)
+                else:
+                    state['simple_seconds'] += elapsed
+                    save('simple_calls.json', simple_calls)
+            for kind,index,s,idx,a,b in sections:
+                if kind == 'own':
+                    own_predictions[f][index, idx] = pred[a:b]
+                else:
+                    predictions[f][index, s, idx] = pred[a:b]
+            archive()
+            del m
+            gc.collect()
+            assert time.perf_counter()-started-state['Tab_seconds'] < 30
+        print(json.dumps({'completed_family': f, 'Tab_contexts': state['contexts_completed'],
+            'Tab_rows': state['query_rows_attempted'], 'Tab_seconds': state['Tab_seconds'],
+            'simple_fits': state['simple_fits_completed']}, ensure_ascii=False), flush=True)
+
+    choice, pair_results = {}, []
+    for p in selected_pairs:
+        i,j = pairs[p]
+        first = masks[p] & (np.arange(64)<32)
+        last = masks[p] & (np.arange(64)>=32)
+        assert first.sum() >= 16 and last.sum() >= 16
+        profile_shift = preflight['pairs'][p]['profile_selected_shift']
+        row_choice = {'none': 0, 'profile': int(np.flatnonzero(phases[p] == profile_shift)[0])}
+        calibration = {}
+        for f in families:
+            calibration[f] = np.abs(predictions[f][p][:,first]-actual[i,first]).mean(1).tolist()
+            row_choice[f] = int(np.argmin(calibration[f]))
+        choice[p] = row_choice
+        pair_results.append({'pair_index': p, 'target_cell': int(ids[i]), 'donor_cell': int(ids[j]),
+            'query_counts': [int(first.sum()), int(last.sum())], 'calibration_MAE_by_family': calibration,
+            'selected_shift_hours': {s: int(phases[p,k]) for s,k in row_choice.items()}})
+
+    def table(period):
+        matrix, cell_values, cell_coverages = {}, {}, {}
+        for selector in selectors:
+            matrix[selector], cell_values[selector], cell_coverages[selector] = {}, {}, {}
+            for f in families:
+                values = {}
+                for p in selected_pairs:
+                    i,j = pairs[p]
+                    mask = masks[p] & period
+                    if not mask.any():
+                        continue
+                    val = float(np.abs(predictions[f][p, choice[p][selector],mask]-actual[i,mask]).mean())
+                    values.setdefault(int(ids[i]), []).append(val)
+                means = {str(i): float(np.mean(v)) for i,v in values.items()}
+                matrix[selector][f] = float(np.mean(list(means.values()))) if means else None
+                cell_values[selector][f] = means
+                cell_coverages[selector][f] = {str(i): len(v) for i,v in values.items()}
+        return {'MAE': matrix, 'cell_MAE': cell_values, 'donors_per_cell': cell_coverages}
+
+    idx = np.arange(64)
+    tables = {'selection': table(idx<32), 'heldout': table(idx>=32),
+              'heldout_first': table((idx>=32)&(idx<48)), 'heldout_last': table(idx>=48)}
+    self_metrics = {}
+    for f in families:
+        v = {}
+        for p in selected_pairs:
+            i,j = pairs[p]
+            mask = masks[p] & (idx>=32)
+            v.setdefault(int(ids[i]), []).append(float(np.abs(own_predictions[f][i,mask]-actual[i,mask]).mean()))
+        self_metrics[f] = float(np.mean([np.mean(a) for a in v.values()]))
+    held = tables['heldout']['MAE']
+    delta = {'Tab_selected_minus_none': held['TabICL']['TabICL']-held['none']['TabICL'],
+             'Tab_selected_minus_profile': held['TabICL']['TabICL']-held['profile']['TabICL']}
+    gate = all(v < 0 for v in delta.values())
+    nonzero = {s: sum(phases[p,choice[p][s]] != 0 for p in selected_pairs) for s in selectors}
+    result = {'complete': True, 'tables': tables, 'pair_results': pair_results,
+        'own_context_MAE_on_same_pair_masks': self_metrics,
+        'selected_nonzero_counts': {s: int(v) for s,v in nonzero.items()},
+        'primary_differences': delta, 'first_predictive_gate_passes': gate,
+        'RCTL_improvement_measured': False, 'new_partition_chosen': False,
+        'novelty_established': False, 'directed_pairs_evaluated': 14,
+        'target_cells_evaluated': 11, 'new_RCTL_calls': 0}
+    archive()
+    save('result.json', result)
+    success = True
+except Exception:
+    error = traceback.format_exc()
+    save('error.json', {'error': error, 'automatic_retry': False})
+finally:
+    wall = time.perf_counter()-started
+    stop_event.set()
+    state['rss_peak_bytes'] = max(state['rss_peak_bytes'], process.memory_info().rss)
+    save('run_finished.json', {'success': success, 'wall_seconds': wall,
+        'Tab_seconds': state['Tab_seconds'], 'cheap_seconds': wall-state['Tab_seconds'],
+        'simple_fit_predict_seconds': state['simple_seconds'],
+        'contexts_attempted': state['contexts_attempted'], 'contexts_completed': state['contexts_completed'],
+        'query_rows_attempted': state['query_rows_attempted'], 'simple_fits_attempted': state['simple_fits_attempted'],
+        'simple_fits_completed': state['simple_fits_completed'], 'rss_peak_bytes': state['rss_peak_bytes'],
+        'new_RCTL_calls': 0, 'error': error})
+if not success:
+    raise RuntimeError(error)
+assert all(sha(B/name) == value for name,value in auth['source_hashes'].items())
+save('input_verification.json', {'all_frozen_sources_unchanged': True,
+    'ledger_unchanged_during_run': sha(B/'cumulative_execution_budget.json') == auth['ledger_after_sha256'],
+    'result_sha256': sha(O/'result.json')})
+print(json.dumps({'heldout_MAE': result['tables']['heldout']['MAE'],
+    'primary_differences': result['primary_differences'], 'first_predictive_gate_passes': result['first_predictive_gate_passes'],
+    'Tab_seconds': state['Tab_seconds'], 'wall_seconds': wall}, ensure_ascii=False), flush=True)

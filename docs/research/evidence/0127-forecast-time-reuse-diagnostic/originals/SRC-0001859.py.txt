@@ -1,0 +1,113 @@
+"""Replay fixed stored forecasts; no model imports, fitting, inference, or selection."""
+from pathlib import Path
+import hashlib,json,os,sys,time
+import numpy as np
+import psutil
+
+BASE=Path(__file__).resolve().parent
+OUT=BASE/'results/forecast_reuse_97'
+OUT.mkdir(parents=True,exist_ok=True)
+assert not (OUT/'run_started.json').exists(), 'Do not rerun a started diagnostic.'
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def save(name,value):
+ (OUT/name).write_text(json.dumps(value,ensure_ascii=False,indent=2,allow_nan=False)+'\n',encoding='utf-8')
+paths={'predictions':BASE/'results/rctl_pilot/all_predictions.npz',
+       'design':BASE/'results/design_data.npz',
+       'evaluation':BASE/'results/rctl_pilot/evaluation_data.npz',
+       'previous_summary':BASE/'results/rctl_pilot/summary.json'}
+plan=BASE/'97_forecast_reuse_diagnostic_plan.md'
+ledger=BASE/'cumulative_execution_budget.json'
+ledger_hash='ad8926ba4ef3517043ce8ddc82afe981307352f7c52fc7c1fd251869a2e5e9b7'
+assert sha(ledger)==ledger_hash
+settings={'plan_sha256':sha(plan),'code_sha256':sha(Path(__file__)),
+          'input_files':{k:{'path':str(v),'sha256':sha(v)} for k,v in paths.items()},
+          'ledger_before_sha256':ledger_hash,'cadences':[1,2,3,6],
+          'modes':['hold_output','hold_increment'],'phase':0,
+          'periods':{'all':[0,480],'first_240':[0,240],'last_240':[240,480]},
+          'wall_cap_seconds':20,'rss_cap_bytes':1024**3,
+          'new_model_execution':False,'independent_test':False,'changed_partitions':False}
+save('settings.json',settings)
+save('run_started.json',{'pid':os.getpid(),'unix_time':time.time()})
+started=time.perf_counter()
+error=None
+try:
+ a=np.load(paths['predictions'],allow_pickle=False)
+ d=np.load(paths['design'],allow_pickle=False)
+ e=np.load(paths['evaluation'],allow_pickle=False)
+ previous=json.loads(paths['previous_summary'].read_text(encoding='utf-8'))
+ y=a['y'].astype(np.float64)
+ assert y.shape==(16,480)
+ assert np.array_equal(e['test_times'],np.arange(1008,1488))
+ assert np.array_equal(a['cell_ids'],e['cell_ids'])
+ assert np.allclose(y,e['test_y'],rtol=0,atol=1e-8)
+ idx=[]
+ for cell in a['cell_ids']:
+  match=np.flatnonzero(d['cell_indices']+1==cell)
+  assert len(match)==1
+  idx.append(int(match[0]))
+ assert np.allclose(a['scales'],d['scales'][idx],rtol=1e-7,atol=1e-8)
+ assert int(d['times'][-1])==1007
+ recent=np.concatenate([d['Y'][idx,-1:].astype(np.float64),y[:,:-1]],axis=1)
+ assert recent.shape==y.shape and np.array_equal(recent[:,1:],y[:,:-1])
+ methods=sorted(k for k in a.files if k not in ['y','cell_ids','scales'])
+ assert len(methods)==8
+ rows=[]
+ source_indices={str(step):(np.arange(480)//step*step).tolist() for step in settings['cadences']}
+ assert all(all(0<=s<=t for t,s in enumerate(indices)) for indices in source_indices.values())
+ actual_times=e['test_times']
+ arrays={'y':y,'current_observation':recent,'cell_ids':a['cell_ids'],'target_times':actual_times}
+ persistence=[]
+ for name,(begin,end) in settings['periods'].items():
+  cell_mae=np.abs(recent[:,begin:end]-y[:,begin:end]).mean(1)
+  persistence.append({'period':name,'mean_scaled_mae':float(cell_mae.mean()),'cell_mae':cell_mae.tolist()})
+ for method in methods:
+  fresh=a[method].astype(np.float64)
+  model_count=1 if method.startswith('global_') else 4
+  method_name,seed=method.rsplit('_',1)
+  original=next(r for r in previous['metrics'] if r['method']==method_name and r['seed']==int(seed))
+  assert abs(float(np.abs(fresh-y).mean())-original['mean_scaled_mae'])<2e-8
+  for cadence in settings['cadences']:
+   take=np.asarray(source_indices[str(cadence)])
+   # take[t] is selected by the clock only; the target y[:,t] is never read here.
+   cached=fresh[:,take]
+   for mode in settings['modes']:
+    pred=cached.copy() if mode=='hold_output' else recent+(fresh-recent)[:,take]
+    if cadence==1:assert np.allclose(pred,fresh,rtol=0,atol=1e-15)
+    refresh=(np.arange(480)%cadence)==0
+    assert np.allclose(pred[:,refresh],fresh[:,refresh],rtol=0,atol=1e-15)
+    arrays[f'{method}__{mode}__d{cadence}']=pred
+    for period,(begin,end) in settings['periods'].items():
+     err=np.abs(pred[:,begin:end]-y[:,begin:end])
+     baseerr=np.abs(fresh[:,begin:end]-y[:,begin:end])
+     percell=err.mean(1);baseline=baseerr.mean(1)
+     rows.append({'method':method,'models':model_count,'mode':mode,'cadence_hours':cadence,'period':period,
+                  'mean_scaled_mae':float(percell.mean()),'fresh_mean_scaled_mae':float(baseline.mean()),
+                  'delta_mae':float((percell-baseline).mean()),
+                  'relative_delta_percent':float((percell.mean()/baseline.mean()-1)*100),
+                  'cell_mae':percell.tolist(),'cell_delta_mae':(percell-baseline).tolist(),
+                  'cells_with_lower_mae':int((percell<baseline-1e-12).sum()),
+                  'fresh_prediction_rows_arithmetic':int(16*refresh[begin:end].sum()),
+                  'model_calls_arithmetic':int(model_count*refresh[begin:end].sum()),
+                  'observation_rows_still_read':16*(end-begin)})
+ elapsed=time.perf_counter()-started
+ rss=psutil.Process().memory_info().rss
+ assert elapsed<20 and rss<1024**3
+ assert sha(ledger)==ledger_hash
+ for name,path in paths.items():assert sha(path)==settings['input_files'][name]['sha256']
+ result={'settings':settings,'cell_ids':a['cell_ids'].tolist(),'metrics':rows,
+         'persistence':persistence,'current_observation_first_time':1007,
+         'target_time_range':[1008,1487],'seconds':elapsed,'rss_bytes_end_not_peak':rss,
+         'invariants':{'d1_equals_fresh':True,'refresh_equals_fresh':True,'causal_indices':True,
+                       'inputs_unchanged':True,'partitions_unchanged':True},
+         'no_new_model_execution':True,'saved_RCTL_outputs_not_used_to_choose_new_clusters':True,
+         'new_research_direction_confirmed':False,'runtime_speedup_measured':False}
+ np.savez_compressed(OUT/'replayed_predictions.npz',**arrays)
+ save('summary.json',result)
+ selected=[r for r in rows if r['period']=='all' and r['method'] in ['global_20260925','tabicl_risk_20260925','empirical_risk_20260925'] and (r['cadence_hours']==1 and r['mode']=='hold_output' or r['cadence_hours']>1)]
+ print(json.dumps({'selected_metrics':[{k:r[k] for k in ['method','mode','cadence_hours','mean_scaled_mae','relative_delta_percent','fresh_prediction_rows_arithmetic','model_calls_arithmetic']} for r in selected],
+                   'persistence_mean_mae':persistence[0]['mean_scaled_mae'],'seconds':elapsed},ensure_ascii=False,indent=2))
+except Exception as exc:
+ error=repr(exc)
+ raise
+finally:
+ save('run_finished.json',{'success':error is None,'error':error,'wall_seconds':time.perf_counter()-started,'new_model_execution':False})

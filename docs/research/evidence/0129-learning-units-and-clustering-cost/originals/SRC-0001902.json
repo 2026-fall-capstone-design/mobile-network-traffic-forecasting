@@ -1,0 +1,124 @@
+{
+  "date": "2026-09-26",
+  "previous_goal_turn_classification": "progress",
+  "previous_evidence": "98_archive_verification.json and snapshot40",
+  "search_queries": [
+    "forecasting clustering \"negative transfer\" \"model selection\" foundation model 2026",
+    "\"clustering\" \"optimal prediction\" \"pooling\" heterogeneous time series cost",
+    "\"TabICL\" clustering regression transfer learning 2026",
+    "forecasting \"clustering\" \"cost\" \"pooling\" model selection statistical efficiency",
+    "\"network traffic\" \"clustering\" \"model\" \"training time\" prediction 2026",
+    "\"multi-task\" \"clustering\" \"risk\" \"heteroskedastic\"",
+    "\"On the Role of Time Series Clustering in Traffic Matrix Prediction\"",
+    "\"traffic matrix prediction\" \"clustering\" 2026",
+    "\"traffic matrix\" \"clustering\" \"foundation\"",
+    "\"Martha Cash\" \"clustering\" github",
+    "\"Validation-Driven Clustering\" \"github\" \"Ma\""
+  ],
+  "primary_sources": [
+    {
+      "version": "2509.15072v1",
+      "url": "https://arxiv.org/html/2509.15072v1",
+      "read_scope": [
+        "Sections III-VI, selected method/result text",
+        "dendrogram K selection",
+        "GRU width 30",
+        "MLU ratio definition"
+      ],
+      "visual_pages": [
+        4
+      ],
+      "metadata_status": "arXiv says accepted ICMLA 2025; official conference program also lists title",
+      "unverified": [
+        "author code",
+        "exact head and parameter count",
+        "reproduction of accuracy/MLU"
+      ]
+    },
+    {
+      "version": "2604.26081v1",
+      "url": "https://arxiv.org/html/2604.26081v1",
+      "read_scope": [
+        "Sections III-VI",
+        "representations and linkage",
+        "Tables I-II",
+        "matched K for ARI/NMI",
+        "GRU width 200"
+      ],
+      "visual_pages": [
+        6,
+        8
+      ],
+      "metadata_status": "arXiv says submitted to IEEE; not treated as accepted",
+      "unverified": [
+        "author code",
+        "exact output head",
+        "which split drives Kneedle curves",
+        "end-to-end timing scope"
+      ]
+    },
+    {
+      "version": "2604.13748v1",
+      "url": "https://arxiv.org/html/2604.13748v1",
+      "read_scope": [
+        "Section 2.2.1",
+        "Equations 1-2,9-12",
+        "Sections 2.5,5.1-5.4 unit definitions",
+        "Algorithm 1"
+      ],
+      "visual_pages": [
+        6,
+        19,
+        20
+      ],
+      "pdf_reused": "output\\research\\related_work\\10_Validation_Driven_Clustering_2026.pdf",
+      "unverified": [
+        "author code",
+        "all numerical tables",
+        "full proof/implementation audit"
+      ]
+    },
+    {
+      "url": "https://docs.pytorch.org/docs/2.14/generated/torch.nn.modules.rnn.GRU.html",
+      "read_scope": [
+        "Variables: weight_ih, weight_hh, bias_ih, bias_hh shapes"
+      ],
+      "use": "algebraic count for explicitly assumed architecture, not authors measured checkpoint"
+    }
+  ],
+  "access_notes": [
+    "Initial urllib request returned HTTP406 before any PDF or arithmetic output; retry script with PDF Accept header and unversioned fallback completed. Exact successful transport URL was not separately logged; canonical version URLs and PDF hashes are preserved.",
+    "All three arXiv abstract histories showed only v1 at inspection.",
+    "No author code repository verified; renderer GitHub links excluded.",
+    "Broad search results were noisy and do not establish novelty."
+  ],
+  "existing_evidence_references": [
+    {
+      "path": "tmp\\redesign_20260925\\rctl_torch.py",
+      "sha256": "f704f0ed6add24a5bca1ef23f4423230a1f32799528637554b230b9e495fa50c"
+    },
+    {
+      "path": "tmp\\redesign_20260925\\train_rctl_pilot.py",
+      "sha256": "dd667193e99f04cfcbfe386faeac402655885823826f716116bbbbedb110b82e"
+    },
+    {
+      "path": "tmp\\redesign_20260925\\results\\rctl_pilot\\frozen_settings.json",
+      "sha256": "6467b31eb5201fa234489939036ddccc96ebdff2859638849de8e144f53118df"
+    },
+    {
+      "path": "tmp\\redesign_20260925\\results\\serving_cost_95\\summary.json",
+      "sha256": "266188ceffeb0fea5ec89086140e55865e3a8ffb5c9fd4ec5cb29114b75eeb39"
+    },
+    {
+      "path": "tmp\\redesign_20260925\\05_literature_decision_audit.md",
+      "sha256": "32712471012db2732e9698513ce2579d254ba624143825e24d47ad3c53336562"
+    }
+  ],
+  "new_model_fit_predict_gradient": 0,
+  "new_traffic_statistics": 0,
+  "arithmetic_verified": true,
+  "ledger_unchanged": true,
+  "old_word_unchanged": true,
+  "reading_scope_limit": "61 PDF pages present, selected sections read, six pages visually checked; no full-paper reproduction",
+  "decision": "Separate scalar row pooling, joint-vector partitioning and daily-MTS clustering; retain simple global/naive baselines; no final candidate selected."
+}
